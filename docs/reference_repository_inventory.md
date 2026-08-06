@@ -57,7 +57,7 @@
 - 是否复用代码：否（仅设计参考）。
 - 借鉴设计：PersistentTrackDecoder 的 track-as-query、candidate-as-key/value、ID/NO_MATCH 分类、匈牙利一对一、相对时间 embedding。
 
-## 3. MOTIP-2（后续代码库）
+## 3. MOTIP-2（independent implementation / reproduction repository）
 
 - 项目名称：MOTIP-2
 - 对应论文：同上（MOTIP）
@@ -66,6 +66,7 @@
 - clone 日期：2026-08-06；branch：main
 - commit SHA：`012856c1dc13b324064e79339ae71054518d1b5e`
 - 许可证：Apache-2.0
+- 来源判定：经重新确认，无法证明该仓库由 MOTIP 原作者或官方组织（MCG-NJU）维护；stargazers 少且与原始 MOTIP 主仓库独立。因此不得称其为“官方后续代码库”，按 independent implementation / reproduction repository 处理，引用层级低于原始 MOTIP 官方仓库（MCG-NJU/MOTIP）。
 - 参考文件：`models/id_decoder.py`、`models/trajectory_modeling.py`、`models/motip.py`、`models/seq_decoder.py`、`configs/*.yaml`
 - 关键观察：与主仓库一致的 ID 预测思想；IDDecoder 显式实现 multihead self/cross attention；`related_temporal_embeds` 为可学习相对时间偏置；支持 `MULTI_TIMES_ID_DECODER` ensemble；推理用 `linear_sum_assignment(1 - extended_id_confs)`。
 - 是否复用代码：否。

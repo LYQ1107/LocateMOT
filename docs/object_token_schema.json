@@ -1,21 +1,35 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "ObjectToken",
-  "description": "Stage L0 ObjectToken 数据结构（初始版本，待 PBD 映射验证后定稿）",
+  "description": "Stage L0-B ObjectToken 数据结构（已随映射验证定稿，2026-08-06）",
   "type": "object",
   "properties": {
     "box_xyxy": {"type": "array", "items": {"type": "number"}, "minItems": 4, "maxItems": 4},
     "normalized_box": {"type": "array", "items": {"type": "number"}, "minItems": 4, "maxItems": 4},
-    "pbd_feature": {"type": "array", "items": {"type": "number"}},
+    "pbd_box_end_feature": {"type": "array", "items": {"type": "number"}},
+    "pbd_coordinate_mean_feature": {"type": "array", "items": {"type": "number"}},
+    "pbd_full_block_mean_feature": {"type": "array", "items": {"type": "number"}},
+    "pbd_box_end_penultimate_feature": {"type": "array", "items": {"type": "number"}},
+    "pbd_coordinate_mean_penultimate_feature": {"type": "array", "items": {"type": "number"}},
+    "pbd_full_block_mean_penultimate_feature": {"type": "array", "items": {"type": "number"}},
     "region_feature": {"type": "array", "items": {"type": "number"}},
-    "semantic_feature": {"type": ["array", "null"], "items": {"type": "number"}},
-    "confidence": {"type": "number"},
+    "geometry_feature": {"type": "array", "items": {"type": "number"}},
+    "confidence_feature": {"type": ["number", "null"]},
+    "generation_score": {"type": ["number", "null"]},
     "fused_feature": {"type": ["array", "null"], "items": {"type": "number"}},
     "block_start": {"type": "integer"},
     "block_end": {"type": "integer"},
     "query_text": {"type": "string"},
+    "semantic_label": {"type": "string"},
     "image_size": {"type": "array", "items": {"type": "integer"}, "minItems": 2, "maxItems": 2},
-    "decode_mode": {"enum": ["fast", "slow", "hybrid"]}
+    "feature_grid_shape": {"type": ["array", "null"], "items": {"type": "integer"}},
+    "region_token_count": {"type": "integer"},
+    "box_in_feature_coordinates": {"type": ["array", "null"], "items": {"type": "number"}},
+    "source_frame": {"type": "string"},
+    "model_commit": {"type": "string"},
+    "checkpoint_hash": {"type": "string"},
+    "decode_mode": {"type": "string"},
+    "object_index": {"type": "integer"}
   },
-  "required": ["box_xyxy", "normalized_box", "confidence", "block_start", "block_end", "image_size", "decode_mode"]
+  "required": ["object_index", "box_xyxy", "normalized_box", "block_start", "block_end", "image_size", "decode_mode", "source_frame", "model_commit", "checkpoint_hash"]
 }

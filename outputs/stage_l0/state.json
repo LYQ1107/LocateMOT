@@ -1,13 +1,24 @@
 {
   "project": "LocateMOT",
   "stage": "L0",
-  "state": "REPRODUCE_BASELINE",
+  "state": "L0_B_COMPLETE",
   "history": [
     {"state": "INIT", "ts": "2026-08-06T00:00:00+08:00"},
     {"state": "CREATE_PROJECT", "ts": "2026-08-06T00:00:00+08:00"},
     {"state": "WRITE_AGENTS", "ts": "2026-08-06T00:00:00+08:00"},
     {"state": "AUDIT_OFFICIAL", "ts": "2026-08-06T00:00:00+08:00"},
     {"state": "SETUP_ENV", "ts": "2026-08-06T22:00:00+08:00"},
-    {"state": "REPRODUCE_BASELINE", "ts": "2026-08-06T22:30:00+08:00"}
+    {"state": "REPRODUCE_BASELINE", "ts": "2026-08-06T22:30:00+08:00"},
+    {"state": "L0_B_FIX_DESIGN_DOCS", "ts": "2026-08-06T23:00:00+08:00"},
+    {"state": "L0_B_INSTRUMENT_GENERATION", "ts": "2026-08-06T23:20:00+08:00"},
+    {"state": "L0_B_CAPTURE_BLOCK_EVENTS", "ts": "2026-08-06T23:30:00+08:00"},
+    {"state": "L0_B_IMPLEMENT_PBD_EXTRACTOR", "ts": "2026-08-06T23:40:00+08:00"},
+    {"state": "L0_B_IMPLEMENT_REGION_EXTRACTOR", "ts": "2026-08-06T23:50:00+08:00"},
+    {"state": "L0_B_IMPLEMENT_FUSED_INTERFACE", "ts": "2026-08-07T00:00:00+08:00"},
+    {"state": "L0_B_VALIDATE_MAPPING", "ts": "2026-08-07T00:10:00+08:00"},
+    {"state": "L0_B_VALIDATE_HYBRID", "ts": "2026-08-07T00:20:00+08:00"},
+    {"state": "L0_B_RUN_FEATURE_SANITY", "ts": "2026-08-07T00:40:00+08:00"},
+    {"state": "L0_B_FINAL_REPORT", "ts": "2026-08-07T01:00:00+08:00"},
+    {"state": "L0_B_COMPLETE", "ts": "2026-08-07T01:10:00+08:00"}
   ]
 }

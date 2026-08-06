@@ -37,7 +37,7 @@
     },
     {
       "key": "motip2_followup",
-      "name": "MOTIP-2 (follow-up codebase)",
+      "name": "MOTIP-2 (independent implementation / reproduction)",
       "paper": "Multiple Object Tracking as ID Prediction",
       "paper_url": "https://arxiv.org/abs/2403.16848",
       "official_url": "https://github.com/GISer-WB/MOTIP-2",
@@ -49,7 +49,8 @@
       "license": "Apache-2.0",
       "reuse_status": "仅设计参考",
       "reused_parts": "none (no code copied)",
-      "borrowed_design": "IDDecoder 层结构（first-layer cross-attn + 后续层 self-attn+cross-attn）、relative temporal embedding、legal-id 分类、Hungarian + 阈值分配、newborn 过滤"
+      "borrowed_design": "IDDecoder 层结构（first-layer cross-attn + 后续层 self-attn+cross-attn）、relative temporal embedding、legal-id 分类、Hungarian + 阈值分配、newborn 过滤",
+      "provenance_note": "无法证明由 MOTIP 原作者或官方组织维护；按 independent implementation / reproduction repository 处理，引用层级低于 MCG-NJU/MOTIP"
     },
     {
       "key": "trackformer",

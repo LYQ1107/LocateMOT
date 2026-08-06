@@ -112,6 +112,27 @@
   - 不实现完整 memory bank / QIM 生命周期。
 - Reason for final design: MOTIP 证明了 “current 作为 query、trajectory 作为 memory、self-attn 处理竞争、分类头输出关联” 的端到端关联范式；Stage L0 的固定两帧设定使其可简化为 M×N 分配 + NO_MATCH，同时保留 MOTIP 的上下文竞争与一对一约束。
 
+### 方向修订（2026-08-06，Stage L0-B）
+
+MOTIP 官方实现的方向是 current detections 作为 query、historical trajectories 作为 key/value。当前 Stage L0 设计是 reference tracks 作为 query、current objects 作为 key/value。这不是对 MOTIP 实现的直接照搬，而是为“固定 reference 集合 → current 候选的一对一检索”有意反转：
+
+- 本设计让每个 reference track 独立查询 current 候选，并让 NO_MATCH 成为每个 track 的独立决策，天然支持多个 track 同时不可见。
+- 第一版将其作为 Stage L0 的正式设计。
+- 接口必须保留方向可切换性：后续至少做一个轻量对照（reference-query vs current-query），本阶段不训练两种完整模型，只确保接口支持比较。
+
+### NO_MATCH 分配矩阵修订（2026-08-06，Stage L0-B）
+
+原始设计 `assignment_logits [M, N+1]` 若直接交给 Hungarian，单个 NO_MATCH 列只能被使用一次，错误地禁止了多个 reference 同时不可见。修订为：
+
+- 模型原始输出仍为 `match_logits [M, N]` 与 `no_match_logits [M, 1]`；
+- 推理分配矩阵扩展为 `[M, N+M]`：
+  - 前 N 列是真实 current candidates；
+  - 后 M 列是每个 reference track 自己的 NO_MATCH dummy；
+  - track i 只允许使用 dummy 列 N+i；其他 track 的 dummy 列对 track i 设为不可用大代价；
+- 或者使用数学等价、允许每个 track 独立 NO_MATCH 的一对一求解。
+
+必须新增测试：3 个 reference tracks 全部 NO_MATCH；2 个 NO_MATCH + 1 个真实匹配；多个 track 不能共享同一真实 candidate；每个 track 只能使用自己的 NO_MATCH dummy。
+
 ## Module: Hungarian assignment
 
 - Scientific purpose: 保证推理时一对一分配（一个 candidate 最多一个 track，一个 track 最多一个 candidate 或 NO_MATCH）。
@@ -125,9 +146,9 @@
   - MOTIP-2 直接 `scipy.optimize.linear_sum_assignment(1 - id_confs)`，把 newborn 列复制为每行重复列以支持“未匹配”选项。
   - MOTIP main 有 `assignment_protocol`（hungarian / id-max / object-max），默认 hungarian；论文消融说明 Hungarian 与简化贪心差异 <0.3 HOTA。
   - TrackFormer matcher 强制 track query 与自身 ID 匹配，其余走标准 Hungarian。
-- Parts adopted: Stage L0 推理使用 `linear_sum_assignment` 对 `[M, N+1]` 代价矩阵求解；NO_MATCH 列可作为未分配槽位。
+- Parts adopted: Stage L0 推理使用 `linear_sum_assignment` 对扩展后的 `[M, N+M]` 代价矩阵求解；track i 的 NO_MATCH dummy 列是 N+i，其他 dummy 列置为大代价；这允许任意多个 track 同时 NO_MATCH，同时保持一对一。
 - Parts intentionally not adopted: 不实现多种分配协议（只做 Hungarian + 阈值），不做 ID 词表扩展。
-- Reason for final design: 官方实现一致使用 Hungarian 保证一对一；阈值（id_thresh）控制 NO_MATCH 决策，符合本阶段要求。
+- Reason for final design: 官方实现一致使用 Hungarian 保证一对一；阈值（id_thresh）控制 NO_MATCH 决策。MOTIP 的 newborn 列其实是每个 detection 自己的“未匹配”槽；Stage L0 的 track 侧 NO_MATCH 需要每个 track 一个独立槽，因此扩展为 [M, N+M]。
 
 ## Module: NO_MATCH
 
@@ -177,3 +198,46 @@
   - 训练超参按官方默认 + A100 适配（`--attn_implementation sdpa --max_seq_length 4096 --causal_attn False --block_size 6`）。
 - Parts intentionally not adopted: 不修改官方 `tools.py`；通过生成符合官方格式的 JSONL 实现两帧转换。
 - Reason for final design: 用户明确要求“必须采用官方模型实际支持的数据格式和 special token”，官方代码已提供完整转换逻辑，第一版只需生成与其完全兼容的数据。
+
+## Stage L0-B 实测证据（2026-08-06）
+
+### Module: PBD Generation Trace（instrumented）
+
+- Scientific purpose: 不猜测 box 与 hidden state 的关系，在官方 generate 循环上记录每个 block 事件。
+- Official references inspected: NVlabs/Eagle `Embodied/eaglevl/utils/locany/modeling_locateanything.py::generate`、`generate_utils.py`。
+- Repository commits: Eagle `783f656d127ee498137b5ff52603ce36c292d317`。
+- Files inspected: 同上 + `locateanything_worker.py`。
+- Observed implementation: MTP 每步 6 token；`sample_tokens` 从最后 6 个 logits 解码；`handle_pattern` 区分 coord_box/point/empty/ref/end；hybrid 在 error_box 时切 AR、box_end 时切回 MTP；官方 `@torch.no_grad()`。
+- Parts adopted: 完整复现循环（同一 `sample_tokens`/`handle_pattern` 函数），用 forward hook 只捕获最后两层 hidden states，避免 `output_hidden_states=True` 的全量内存。
+- Parts intentionally not adopted: 不修改官方文件；不复制整段官方代码进入核心包（驱动逻辑为本项目实现，解码函数直接调用官方模块）。
+- Reason for final design: 需要事件级证据；同时验证 traced 输出与官方 `model.generate` 逐字一致（实测 MATCH=True）。
+
+### Module: PBD ObjectToken 映射与坐标顺序
+
+- Observed implementation（实测）:
+  - 6-token 顺序 = `[box_start, x1, y1, x2, y2, box_end]`（合成图 GT (100,200,300,400) → 输出 157,416,469,838）。
+  - accepted coord_box 数量 = parsed boxes = ObjectToken（149=149=149，100%）。
+  - rejected MTP / point / None / ref / end 不生成 ObjectToken。
+  - Hybrid fallback 中被拒 MTP 的部分 box token 与 AR token 合并为最终 box，hidden 位置按 token 实际输入位置取。
+- Parts adopted: 事件 schema（GenerationBlockEvent）、输出顺序 `output_order`、hidden-state 位置记录。
+- Parts intentionally not adopted: 不把 point/empty/ref 作为对象特征；不保存所有层 hidden states。
+- Reason for final design: 映射门禁要求 accepted blocks = final boxes = ObjectTokens，且只允许 accepted coordinate box block 进入特征。
+
+### Module: MoonViT Region Extractor
+
+- Observed implementation: image processor 产生 pre-merge grid `(H/14, W/14)`；`MoonVitPretrainedModel` 用 2×2 patch merger 输出 `(H/28, W/28, 4608)` 特征；无 cls token；多图按 token 维度拼接。
+- Parts adopted: `MoonViTRegionExtractor` 用 `image_grid_hws` 计算 feature grid，归一化 box → `ceil` 映射到特征坐标，框内 mean pooling；同一图像内 token 不跨图（单图索引）。
+- Parts intentionally not adopted: 不做 ROIAlign 第一版（mean pooling 足够接口验证）；不跨图像读取 token。
+- Reason for final design: 官方代码明确了 grid 映射；实测 feature token 数 = grid 乘积。
+
+### Module: Fused ObjectToken 接口
+
+- Parts adopted: `ObjectTokenProjection`（pbd 2048 → 256、region 4608 → 256、geometry(5) → 32、generation score → 32、fuse → 256），随机初始化，未训练。
+- Parts intentionally not adopted: 不把随机投影的相似度当作科学结果（sanity 中 fused AUC 仅作接口检查）。
+- Reason for final design: 规格要求统一 256 维 fused feature，且明确随机投影只用于接口测试。
+
+### Module: NO_MATCH 分配（Hungarian 扩展）
+
+- Parts adopted: `[M, N+M]` 代价矩阵；track i 的 NO_MATCH dummy 列为 N+i；其他 dummy 列大代价；`linear_sum_assignment` 求解。
+- 测试：3 track 全 NO_MATCH、2 NO_MATCH+1 匹配、candidate 不共享、每 track 只用自己 dummy，全部通过。
+- Reason for final design: 修正了原始 `[M, N+1]` 只能使用一次 NO_MATCH 的设计错误。
