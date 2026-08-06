@@ -1,0 +1,6817 @@
+{
+  "schema_version": 2,
+  "stage": "L0-C",
+  "split": "train",
+  "seed": 20260806,
+  "source_frozen_split": "/data3/testdata/vranlee/.MOTSynth.partial/GLEE_PMOT_stage1/stage_u_unified_tracker/unified_train_split.json",
+  "hash": "d007b496c97f4dea4714aad04f51f186f3577892e6fc09adc096a34f1f662861",
+  "summary": {
+    "video_count": 400,
+    "dataset_videos": {
+      "mosev2_train": 200,
+      "youtube_vos_train": 200
+    }
+  },
+  "videos": [
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 20,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "f5e2e7d6a0"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 29,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "472da1c484"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 29,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 3,
+      "target_count": 3,
+      "video_id": "4350f3ab60"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 35,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "4fa160f8a3"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 20,
+      "max_invisible_gap": 3,
+      "max_simultaneous_targets": 3,
+      "target_count": 3,
+      "video_id": "a06722ba82"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 36,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "038c15a5dd"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": false
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 19,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "85b1eda0d9"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": false
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 36,
+      "max_invisible_gap": 9,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "114e7676ec"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 30,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "4ea77bfd15"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 35,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 3,
+      "target_count": 3,
+      "video_id": "acbf581760"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": false
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 30,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "7151c53b32"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 36,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "540cb31cfe"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 36,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "08f561c65e"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 36,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "0ca839ee9a"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": false
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 36,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "d99d770820"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 36,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "1157472b95"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": false
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 10,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 3,
+      "target_count": 3,
+      "video_id": "7435690c8c"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 36,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "17cd79a434"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 36,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "dbca076acd"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 36,
+      "max_invisible_gap": 1,
+      "max_simultaneous_targets": 3,
+      "target_count": 3,
+      "video_id": "6454f548fd"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": false
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 36,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "d205e3cff5"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 35,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "edeab61ee0"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 19,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 3,
+      "target_count": 3,
+      "video_id": "8891aa6dfa"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 36,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "df8ad5deb9"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 36,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "ad3fada9d9"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 10,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 3,
+      "target_count": 3,
+      "video_id": "b8c3210036"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": false
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 19,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "ebc4ec32e6"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": false
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 29,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "3ea4c49bbe"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 34,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "57bd3bcda4"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 19,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "7419e2ab3f"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": false
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 36,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "864ffce4fe"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 36,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 5,
+      "target_count": 5,
+      "video_id": "be1a284edb"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 17,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "c544da6854"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 36,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "b2f6b52100"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 36,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "598c2ad3b2"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 36,
+      "max_invisible_gap": 12,
+      "max_simultaneous_targets": 3,
+      "target_count": 3,
+      "video_id": "45f8128b97"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 19,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 3,
+      "target_count": 3,
+      "video_id": "104f1ab997"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 36,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "1da4e956b1"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 20,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 3,
+      "target_count": 3,
+      "video_id": "081d8250cb"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 30,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 5,
+      "target_count": 5,
+      "video_id": "c8a46ff0c8"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 30,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "27cf2af1f3"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 11,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "51a597ee04"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 20,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "859633d56a"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 29,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "ced7705ab2"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 19,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 3,
+      "target_count": 3,
+      "video_id": "1a8afbad92"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 20,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "1295e19071"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 19,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 3,
+      "target_count": 3,
+      "video_id": "357a710863"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 30,
+      "max_invisible_gap": 10,
+      "max_simultaneous_targets": 4,
+      "target_count": 4,
+      "video_id": "7abdff3086"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": false
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 19,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "851f2f32c1"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 36,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "390352cced"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": false
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 19,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "50b6b3d4b7"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 36,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "de4ddbccb1"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 36,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "450787ac97"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 19,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "a0b208fe2e"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 19,
+      "max_invisible_gap": 3,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "e78d450a9c"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 36,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "197f3ab6f3"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": false
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 36,
+      "max_invisible_gap": 2,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "da6c68708f"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 36,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "83de906ec0"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 18,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "94125907e3"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": false
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 18,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 3,
+      "target_count": 3,
+      "video_id": "1f1a2a9fc0"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 36,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "be2a367a7b"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 36,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "4a86fcfc30"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": false
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 20,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 3,
+      "target_count": 3,
+      "video_id": "7c03a18ec1"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 36,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "b1fcbb3ced"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 36,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "76379a3e69"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": false
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 19,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "e98d57d99c"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 36,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "aaed233bf3"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 19,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "df3c430c24"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 36,
+      "max_invisible_gap": 2,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "96dfc49961"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 20,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "5afe381ae4"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 20,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "44f4f57099"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 19,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "b82e5ad1c9"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 36,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "20142b2f05"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": false
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 30,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "25c750c6db"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 19,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "ac31fcd6d0"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 19,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "bb334e5cdb"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 19,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "7550949b1d"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 30,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "e7ea10db28"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 10,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "e16945b951"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": false
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 19,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 3,
+      "target_count": 3,
+      "video_id": "e0a938c6e7"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 19,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 3,
+      "target_count": 3,
+      "video_id": "941c870569"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 36,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 5,
+      "target_count": 6,
+      "video_id": "5a50640995"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 20,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 3,
+      "target_count": 3,
+      "video_id": "3f0b0dfddd"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 19,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "9ce6f765c3"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 24,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "cdcfe008ad"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 19,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "08e48c1a48"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": false
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 19,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "a0e6da5ba2"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 30,
+      "max_invisible_gap": 2,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "01baa5a4e1"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 36,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "79208585cd"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 20,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 3,
+      "target_count": 3,
+      "video_id": "24440e0ac7"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 36,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "ce2776f78f"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 30,
+      "max_invisible_gap": 6,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "2a6a30a4ea"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 20,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "695b61a2b0"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": false
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 20,
+      "max_invisible_gap": 1,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "8a5d6c619c"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": false
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 36,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "a4a506521f"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 20,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 3,
+      "target_count": 3,
+      "video_id": "3d8997aeb6"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": false
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 30,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "b372a82edf"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 10,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 3,
+      "target_count": 3,
+      "video_id": "e9422ad240"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 36,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "4c9b5017be"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 20,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "8f320d0e09"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 20,
+      "max_invisible_gap": 1,
+      "max_simultaneous_targets": 3,
+      "target_count": 3,
+      "video_id": "3e38336da5"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 36,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "3026bb2f61"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 30,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "610e38b751"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 36,
+      "max_invisible_gap": 4,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "7e24023274"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": false
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 36,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "5ff8b85b53"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 36,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "cf85ab28b5"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": false
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 36,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "84a4b29286"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": false
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 30,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "daebc12b77"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 13,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "e5ce96a55d"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": false
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 16,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "51f384721c"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": false
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 20,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "d4da13e9ba"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 20,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "504dd9c0fd"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": false
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 36,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "871e409c5c"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": false
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 18,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "c7a1a17308"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 19,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "674c12c92d"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 36,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "ee6f9b01f9"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 36,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "f0483250c8"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 30,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "511e8ecd7f"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 20,
+      "max_invisible_gap": 1,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "0ea68d418b"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 36,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "72acb8cdf6"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": false
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 29,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "f8819b42ec"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 20,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "9df0b1e298"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 36,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "4a341402d0"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 36,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "bdb74e333f"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": false
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 19,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "9b22b54ee4"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": false
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 19,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "1669502269"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 30,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "ae93214fe6"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 30,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "b247940d01"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": false
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 36,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "6a5de0535f"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 19,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 3,
+      "target_count": 3,
+      "video_id": "e93f83e512"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 29,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 3,
+      "target_count": 3,
+      "video_id": "d5df027f0c"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": false
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 19,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "939378f6d6"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 36,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "edbfdfe1b4"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 36,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "b573c0677a"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": false
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 30,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "be15e18f1e"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": false
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 36,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "8c3015cccb"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": false
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 19,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 3,
+      "target_count": 3,
+      "video_id": "c909ceea97"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 36,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 3,
+      "target_count": 3,
+      "video_id": "fe24b0677d"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": false
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 33,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "6024888af8"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 29,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "9c7feca6e4"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": false
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 19,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 3,
+      "target_count": 3,
+      "video_id": "541c4da30f"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 20,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "2f17e4fc1e"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 30,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "cad8a85930"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": false
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 19,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 3,
+      "target_count": 3,
+      "video_id": "b77e5eddef"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": false
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 36,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "efe828affa"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 29,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "644081b88d"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": false
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 29,
+      "max_invisible_gap": 11,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "f7afbf4947"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 20,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "bdccd69dde"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 36,
+      "max_invisible_gap": 9,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "b84b8ae665"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 20,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "6a48e4aea8"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": false
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 17,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "3a1d55d22b"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 19,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "54e1054b0f"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 19,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 3,
+      "target_count": 3,
+      "video_id": "de2f35b2fd"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 36,
+      "max_invisible_gap": 6,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "d69f757a3f"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 20,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 3,
+      "target_count": 3,
+      "video_id": "082900c5d4"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 30,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "0e04f636c4"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 20,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "7a3c535f70"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": false
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 30,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "a77b7a91df"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": false
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 36,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "52ee406d9e"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 36,
+      "max_invisible_gap": 6,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "69ea9c09d1"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": false
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 36,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "0fa7b59356"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 36,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "16e8599e94"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 29,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "b96c57d2c7"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 36,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "fb92abdaeb"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 20,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "8859dedf41"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 30,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "cb35a87504"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 36,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "68a2fad4ab"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": false
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 29,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "376bda9651"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 30,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "720e3fa04c"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": false
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 20,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "6061ddbb65"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 18,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "e128124b9d"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 36,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "f1b77bd309"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 20,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "edd22c46a2"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 36,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "91c33b4290"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 20,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "101caff7d4"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 20,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "594065ddd7"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 20,
+      "max_invisible_gap": 1,
+      "max_simultaneous_targets": 3,
+      "target_count": 3,
+      "video_id": "f7961ac1f0"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": false
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 20,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "dba35b87fd"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": false
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 13,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "d3f5c309cc"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": false
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 19,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "26bc786d4f"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 36,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 3,
+      "target_count": 3,
+      "video_id": "94209c86f0"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": false
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 20,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 3,
+      "target_count": 3,
+      "video_id": "ab199e8dfb"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 36,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "887a93b198"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 19,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "365b0501ea"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 36,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "72d8dba870"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 36,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 2,
+      "video_id": "3e04a6be11"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 15,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "f0ad38da27"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 19,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "dd9fe6c6ac"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 36,
+      "max_invisible_gap": 1,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "11c722a456"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 20,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 3,
+      "target_count": 3,
+      "video_id": "f9823a32c2"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 36,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "b11099eb09"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 20,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "34d1b37101"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": false
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 20,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "97eb642e56"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 20,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "74ef677020"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 16,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 3,
+      "target_count": 3,
+      "video_id": "2a5c09acbd"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 20,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "14dae0dc93"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 19,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "4cfdd73249"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 36,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "3d690473e1"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 30,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "b4eaea9e6b"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": false
+      },
+      "dataset": "youtube_vos_train",
+      "frame_count": 20,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 3,
+      "target_count": 3,
+      "video_id": "9773492949"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 42,
+      "max_invisible_gap": 5,
+      "max_simultaneous_targets": 10,
+      "target_count": 10,
+      "video_id": "3ifgbd0t"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 40,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "ax98sesx"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 30,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "250b5034"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 86,
+      "max_invisible_gap": 8,
+      "max_simultaneous_targets": 3,
+      "target_count": 3,
+      "video_id": "c0k0eajg"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 75,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 3,
+      "target_count": 3,
+      "video_id": "94f4c2aa"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 28,
+      "max_invisible_gap": 18,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "e23c6392"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 50,
+      "max_invisible_gap": 4,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "6av4bsgx"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 99,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "adb82dc9"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": false
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 7,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "d3b10bc6"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 131,
+      "max_invisible_gap": 120,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "lxidwwy1"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 126,
+      "max_invisible_gap": 12,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "e6gjwl0h"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 92,
+      "max_invisible_gap": 1,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "a2df1bee"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 171,
+      "max_invisible_gap": 99,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "ikqgio2y"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 81,
+      "max_invisible_gap": 54,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "iq25nid0"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": false
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 62,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "t4yda0gi"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 74,
+      "max_invisible_gap": 4,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "iqw9d0dy"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 49,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 4,
+      "target_count": 4,
+      "video_id": "54b8f502"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 100,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "qypg6770"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 100,
+      "max_invisible_gap": 6,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "mv8gzra0"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": false
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 30,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "ad8cd1e0"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 38,
+      "max_invisible_gap": 10,
+      "max_simultaneous_targets": 3,
+      "target_count": 3,
+      "video_id": "r77uzwv4"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 57,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "mvilnsnh"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 17,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "7bbf38ee"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 62,
+      "max_invisible_gap": 10,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "86d5b29b"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": false
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 44,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 3,
+      "target_count": 3,
+      "video_id": "gfsffezh"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": false
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 56,
+      "max_invisible_gap": 5,
+      "max_simultaneous_targets": 3,
+      "target_count": 3,
+      "video_id": "sahj107v"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 45,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "90c1c43d"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": false
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 90,
+      "max_invisible_gap": 11,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "w17yj4f5"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": false
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 17,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "b87a4f6c"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 45,
+      "max_invisible_gap": 2,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "g2l925f4"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 99,
+      "max_invisible_gap": 30,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "0qiandl3"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 85,
+      "max_invisible_gap": 30,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "pl3nvrt3"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 43,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "9to9see7"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 68,
+      "max_invisible_gap": 17,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "9lav7dy0"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 101,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "y7pqt4fg"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 69,
+      "max_invisible_gap": 26,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "bryllipv"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 99,
+      "max_invisible_gap": 3,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "exusgwaj"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 58,
+      "max_invisible_gap": 56,
+      "max_simultaneous_targets": 13,
+      "target_count": 13,
+      "video_id": "ah5t8wcp"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 109,
+      "max_invisible_gap": 38,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "vt0mc6ug"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 102,
+      "max_invisible_gap": 26,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "4bhktxfz"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 60,
+      "max_invisible_gap": 1,
+      "max_simultaneous_targets": 3,
+      "target_count": 3,
+      "video_id": "dc33acf8"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 16,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "1c80acb0"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 65,
+      "max_invisible_gap": 21,
+      "max_simultaneous_targets": 12,
+      "target_count": 12,
+      "video_id": "fbfb6e30"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": false
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 74,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 3,
+      "target_count": 3,
+      "video_id": "0b4b662c"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 19,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "dy93e0w5"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 62,
+      "max_invisible_gap": 2,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "zyd8x3so"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 42,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "ddf80bcd"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 66,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "86571569"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": false
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 40,
+      "max_invisible_gap": 10,
+      "max_simultaneous_targets": 5,
+      "target_count": 5,
+      "video_id": "0d1237sq"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 47,
+      "max_invisible_gap": 6,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "5zabac5l"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": false
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 46,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 3,
+      "target_count": 3,
+      "video_id": "a217538c"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 57,
+      "max_invisible_gap": 41,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "4a7162bd"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 49,
+      "max_invisible_gap": 4,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "khzhou3j"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 555,
+      "max_invisible_gap": 16,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "sy7poaj5"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 82,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "4b44dc50"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 24,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "988b29a4"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 126,
+      "max_invisible_gap": 7,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "5416fbb7"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": false
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 61,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "059fde0h"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 51,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "7yaaa8za"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": false
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 126,
+      "max_invisible_gap": 18,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "125x18d5"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": false
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 17,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "wamrsfjg"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": false
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 85,
+      "max_invisible_gap": 2,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "9ib17nll"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 36,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 3,
+      "target_count": 3,
+      "video_id": "8d73085e"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": false
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 28,
+      "max_invisible_gap": 10,
+      "max_simultaneous_targets": 3,
+      "target_count": 3,
+      "video_id": "ll2hbtix"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 28,
+      "max_invisible_gap": 1,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "3f54a330"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 56,
+      "max_invisible_gap": 10,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "48piegqg"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 36,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 3,
+      "target_count": 3,
+      "video_id": "aa22f9d0"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 17,
+      "max_invisible_gap": 7,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "51e5ca25"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 48,
+      "max_invisible_gap": 1,
+      "max_simultaneous_targets": 5,
+      "target_count": 5,
+      "video_id": "e36a3026"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 86,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "4b9223ee"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 84,
+      "max_invisible_gap": 4,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "cd49fb99"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 9,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "b80e028c"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 39,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "b8651773"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 101,
+      "max_invisible_gap": 17,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "04oehxxo"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 42,
+      "max_invisible_gap": 16,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "nu6y81zw"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 61,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "5aa1efda"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 100,
+      "max_invisible_gap": 17,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "aesj889h"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 72,
+      "max_invisible_gap": 10,
+      "max_simultaneous_targets": 11,
+      "target_count": 11,
+      "video_id": "d262b7e4"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": false
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 35,
+      "max_invisible_gap": 10,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "rwmfb74z"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 42,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "uump302o"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 70,
+      "max_invisible_gap": 5,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "214pv9si"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 118,
+      "max_invisible_gap": 21,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "wvvmipxy"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 148,
+      "max_invisible_gap": 75,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "972t0d6c"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": false
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 55,
+      "max_invisible_gap": 28,
+      "max_simultaneous_targets": 3,
+      "target_count": 3,
+      "video_id": "414ca58b"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": false
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 46,
+      "max_invisible_gap": 1,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "h1ltcwtf"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 62,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "0ab42ab1"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 63,
+      "max_invisible_gap": 61,
+      "max_simultaneous_targets": 27,
+      "target_count": 27,
+      "video_id": "mn4s0gi8"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 92,
+      "max_invisible_gap": 20,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "nsg01vj9"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 97,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "d0b507c3"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 349,
+      "max_invisible_gap": 162,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "2ujroa82"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 53,
+      "max_invisible_gap": 11,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "09d305d1"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 50,
+      "max_invisible_gap": 36,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "269872de"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": false
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 56,
+      "max_invisible_gap": 15,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "7isbzje8"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": false
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 55,
+      "max_invisible_gap": 14,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "yvcujlht"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 51,
+      "max_invisible_gap": 3,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "570215ac"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 100,
+      "max_invisible_gap": 3,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "ov11nqu3"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 18,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "f76f6cf9"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 54,
+      "max_invisible_gap": 4,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "67138c33"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": false
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 49,
+      "max_invisible_gap": 7,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "dukliiqc"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 19,
+      "max_invisible_gap": 2,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "f22e34d4"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 67,
+      "max_invisible_gap": 10,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "1wga7gtu"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 27,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 3,
+      "target_count": 3,
+      "video_id": "645b84f9"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 43,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "164a7305"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 100,
+      "max_invisible_gap": 30,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "3wk221hp"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": false
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 23,
+      "max_invisible_gap": 1,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "a7b8ac96"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 99,
+      "max_invisible_gap": 24,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "bsai0maq"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 70,
+      "max_invisible_gap": 10,
+      "max_simultaneous_targets": 5,
+      "target_count": 5,
+      "video_id": "a938c6b2"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 175,
+      "max_invisible_gap": 18,
+      "max_simultaneous_targets": 5,
+      "target_count": 5,
+      "video_id": "578f71da"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 22,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "8830d59d"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 55,
+      "max_invisible_gap": 1,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "q7t6494f"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 128,
+      "max_invisible_gap": 28,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "mnpzb7g9"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 50,
+      "max_invisible_gap": 2,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "5f150435"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 175,
+      "max_invisible_gap": 44,
+      "max_simultaneous_targets": 5,
+      "target_count": 5,
+      "video_id": "111e0a5c"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 38,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "5f54d077"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": false
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 44,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "0a8d7b41"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 41,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "c9b27125"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 141,
+      "max_invisible_gap": 38,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "e6348d2c"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": false
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 8,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "sidx2gn3"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 32,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "a7b05677"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 29,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "d7066e20"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 108,
+      "max_invisible_gap": 7,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "ldkjqdxo"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": false
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 131,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "ec66879d"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": false
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 105,
+      "max_invisible_gap": 36,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "42dn1p4x"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": false
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 60,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "qt6trwqj"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 35,
+      "max_invisible_gap": 10,
+      "max_simultaneous_targets": 4,
+      "target_count": 4,
+      "video_id": "7w1y7nse"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": false
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 100,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "381hg4vf"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 66,
+      "max_invisible_gap": 9,
+      "max_simultaneous_targets": 5,
+      "target_count": 5,
+      "video_id": "4a41cbf8"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": false
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 35,
+      "max_invisible_gap": 9,
+      "max_simultaneous_targets": 4,
+      "target_count": 4,
+      "video_id": "228a0234"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 12,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "62ca45c9"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 60,
+      "max_invisible_gap": 6,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "hy97dn1d"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": false
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 93,
+      "max_invisible_gap": 1,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "4v5bu1my"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": false
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 71,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "5pqv843c"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 30,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 3,
+      "target_count": 3,
+      "video_id": "3c87888e"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 38,
+      "max_invisible_gap": 8,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "2bcd6c3b"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 99,
+      "max_invisible_gap": 5,
+      "max_simultaneous_targets": 4,
+      "target_count": 4,
+      "video_id": "zjlrlm8j"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": false
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 54,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "qcz1vwmd"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 47,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "f407a414"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 101,
+      "max_invisible_gap": 39,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "euzp36eu"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": false
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 56,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "ln3zsx8y"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 102,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "pmc4qj2p"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 44,
+      "max_invisible_gap": 5,
+      "max_simultaneous_targets": 5,
+      "target_count": 5,
+      "video_id": "n9otnthe"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": false
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 150,
+      "max_invisible_gap": 2,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "a034feb2"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 229,
+      "max_invisible_gap": 13,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "79af6097"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 48,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 4,
+      "target_count": 4,
+      "video_id": "2cd705a9"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 18,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "bcefdcc4"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 54,
+      "max_invisible_gap": 1,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "93c6411d"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 30,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 4,
+      "target_count": 4,
+      "video_id": "76b18413"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 37,
+      "max_invisible_gap": 10,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "ghg9k8ra"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 81,
+      "max_invisible_gap": 65,
+      "max_simultaneous_targets": 5,
+      "target_count": 5,
+      "video_id": "smpz2v72"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": false
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 180,
+      "max_invisible_gap": 2,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "rbtv34vp"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": false
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 26,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "32ei14yl"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 914,
+      "max_invisible_gap": 27,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "gynlnqq1"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 89,
+      "max_invisible_gap": 2,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "pzhi8uen"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 27,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "0e843fc8"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 60,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "awnl9w8n"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 42,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "b6cadd11"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 18,
+      "max_invisible_gap": 1,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "f0b922bf"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 50,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "blx3xi1r"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 108,
+      "max_invisible_gap": 23,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "y97cgbwv"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": false
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 28,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "ljqxycyx"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 44,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "0d6e7177"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 40,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 4,
+      "target_count": 4,
+      "video_id": "8ae8e7ed"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 60,
+      "max_invisible_gap": 14,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "1is3mqqg"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 18,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "72433603"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": false
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 80,
+      "max_invisible_gap": 6,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "b1vj9u8n"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 74,
+      "max_invisible_gap": 13,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "gsybruwj"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 81,
+      "max_invisible_gap": 32,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "bxrhtygu"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 45,
+      "max_invisible_gap": 43,
+      "max_simultaneous_targets": 17,
+      "target_count": 17,
+      "video_id": "0j354ezu"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": false
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 68,
+      "max_invisible_gap": 5,
+      "max_simultaneous_targets": 3,
+      "target_count": 3,
+      "video_id": "9pq6rtnl"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 98,
+      "max_invisible_gap": 34,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "okyujpk1"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 83,
+      "max_invisible_gap": 8,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "54b9dbba"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 35,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "30e41f1e"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 31,
+      "max_invisible_gap": 10,
+      "max_simultaneous_targets": 4,
+      "target_count": 4,
+      "video_id": "wv2479tb"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": false
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 112,
+      "max_invisible_gap": 7,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "3zc7wpcz"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 36,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "1106f3a7"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 28,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "89fd5681"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": false
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 35,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "c9080ed1"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 77,
+      "max_invisible_gap": 7,
+      "max_simultaneous_targets": 8,
+      "target_count": 8,
+      "video_id": "ab2714f3"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 100,
+      "max_invisible_gap": 6,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "rv0q2e1z"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 86,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "62d44645"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 45,
+      "max_invisible_gap": 1,
+      "max_simultaneous_targets": 10,
+      "target_count": 10,
+      "video_id": "33f9ab47"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": false
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 62,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 3,
+      "target_count": 3,
+      "video_id": "43199a98"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": false
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 150,
+      "max_invisible_gap": 80,
+      "max_simultaneous_targets": 4,
+      "target_count": 4,
+      "video_id": "60827ada"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 96,
+      "max_invisible_gap": 1,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "kx2vxy3n"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": false
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 38,
+      "max_invisible_gap": 5,
+      "max_simultaneous_targets": 4,
+      "target_count": 4,
+      "video_id": "e3uawo8p"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 5,
+      "max_invisible_gap": 1,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "d0d8b874"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 41,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "7bd70d93"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 164,
+      "max_invisible_gap": 4,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "xehvktc6"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 117,
+      "max_invisible_gap": 82,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "s0uoxmwc"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 142,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "rztutksm"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 60,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "149dbae2"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 133,
+      "max_invisible_gap": 12,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "zxh1jkdr"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": false,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 90,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "1e44f47e"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 59,
+      "max_invisible_gap": 6,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "l58f4qda"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 112,
+      "max_invisible_gap": 52,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "o5w9z7uf"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": false
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 45,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "41dae436"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": true,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": true,
+        "single_target": false,
+        "target_leaves_frame": false
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 33,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 2,
+      "target_count": 2,
+      "video_id": "7c5462f5"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 69,
+      "max_invisible_gap": 25,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "89b5mx0s"
+    },
+    {
+      "categories": {
+        "long_invisible": false,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": false,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": false
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 51,
+      "max_invisible_gap": 0,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "aezlw2ej"
+    },
+    {
+      "categories": {
+        "long_invisible": true,
+        "multi_target": false,
+        "occlusion_proxy": true,
+        "reappearing": true,
+        "similar_target_proxy": false,
+        "single_target": true,
+        "target_leaves_frame": true
+      },
+      "dataset": "mosev2_train",
+      "frame_count": 167,
+      "max_invisible_gap": 32,
+      "max_simultaneous_targets": 1,
+      "target_count": 1,
+      "video_id": "ce273ghv"
+    }
+  ]
+}

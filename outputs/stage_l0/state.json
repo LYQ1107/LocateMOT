@@ -1,7 +1,7 @@
 {
   "project": "LocateMOT",
   "stage": "L0",
-  "state": "L0_B_COMPLETE",
+  "state": "L0_C_COMPLETE",
   "history": [
     {"state": "INIT", "ts": "2026-08-06T00:00:00+08:00"},
     {"state": "CREATE_PROJECT", "ts": "2026-08-06T00:00:00+08:00"},
@@ -19,6 +19,8 @@
     {"state": "L0_B_VALIDATE_HYBRID", "ts": "2026-08-07T00:20:00+08:00"},
     {"state": "L0_B_RUN_FEATURE_SANITY", "ts": "2026-08-07T00:40:00+08:00"},
     {"state": "L0_B_FINAL_REPORT", "ts": "2026-08-07T01:00:00+08:00"},
-    {"state": "L0_B_COMPLETE", "ts": "2026-08-07T01:10:00+08:00"}
+    {"state": "L0_B_COMPLETE", "ts": "2026-08-07T01:10:00+08:00"},
+    {"state": "L0_C_INIT", "ts": "2026-08-07T02:00:00+08:00"},
+    {"state": "L0_C_COMPLETE", "ts": "2026-08-07T05:10:00+08:00"}
   ]
 }

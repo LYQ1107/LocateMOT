@@ -1,0 +1,40 @@
+{
+  "stage": "L0-C",
+  "decision": "L0_C_PASS_WITH_LIMITATIONS",
+  "git_commit": "pending",
+  "splits": {
+    "train_videos": 400,
+    "calibration_videos": 80,
+    "heldout_videos": 150,
+    "train_pairs": 6858,
+    "calibration_pairs": 1383,
+    "heldout_pairs": 2556
+  },
+  "cache": {
+    "shards": 3780,
+    "size_mb": 429,
+    "recall_category_guided_0_5": 0.8625,
+    "recall_generic_0_5": 0.5276
+  },
+  "heldout": {
+    "total_refs": 4746,
+    "conditional_refs": 2878,
+    "B0_cond": 0.743,
+    "B1_cond": 0.544,
+    "B2_cond": 0.614,
+    "B3_cond": 0.618,
+    "B4_cond": 0.627,
+    "B4_e2e": 0.425,
+    "B4_no_match_f1": 0.735,
+    "multi_target_2_4_cond": 0.589,
+    "multi_target_5_8_cond": 0.229
+  },
+  "direction_check": {
+    "reference_query_calib": 0.7206,
+    "current_query_calib": 0.7181,
+    "keep": "reference_query"
+  },
+  "bottleneck": "candidate recall on generic protocol (0.528) and MOSE (conditional 0.293)",
+  "recommendation": "进入 Stage L0-D 前优先改善 generic candidate 协议或先做 Visual Prompt LoRA 提升候选覆盖",
+  "note": "B4 beats B1 by >2pp and beats B3, but vs B2 PBD cosine only +1.3pp; the preset >=2pp criterion vs B2 is not met on this medium cache."
+}

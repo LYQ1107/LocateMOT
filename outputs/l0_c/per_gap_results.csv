@@ -1,0 +1,5 @@
+dimension,value,samples,e2e_accuracy,conditional_accuracy,no_match_f1
+gap,5-16,730,0.4137,0.5993,0.8333
+gap,17-64,1224,0.4125,0.6124,0.7174
+gap,>64,432,0.5706,0.7907,0.4375
+gap,1-4,170,0.2616,0.4052,0.8485

@@ -444,6 +444,7 @@ class InstrumentedLocateAnythingGeneration:
                         "input_pos": L - 1,
                         "step": step,
                         "score": score,
+                        "hidden_rel": 0,
                     }]
                     ev.block_type = "box_start_ar"
                 elif ar_box_tokens:

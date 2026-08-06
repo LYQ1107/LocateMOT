@@ -1,0 +1,12 @@
+storage:
+  selected_path: /data3/testdata/vranlee/.MOTSynth.partial/LocateMOT_L0C
+  owner: lwr
+  available_space_gb: 167
+  expected_cache_gb: 8
+  expected_training_output_gb: 1
+  notes: "lwr 自有目录，位于 /data3；缓存与训练输出使用 binary 格式。"
+outputs:
+  project: /data1/LWR/vranlee/SERVER_ONLY/avis/LocateMOT/outputs/l0_c
+  reports: /data1/LWR/vranlee/SERVER_ONLY/avis/LocateMOT/reports
+checkpoints:
+  root: /data1/LWR/vranlee/SERVER_ONLY/avis/LocateMOT/outputs/l0_c/checkpoints

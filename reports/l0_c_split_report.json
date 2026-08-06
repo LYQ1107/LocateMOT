@@ -1,0 +1,32 @@
+[
+  {
+    "split": "heldout",
+    "videos": 150,
+    "hash": "e52777f3909807dc290a5a75cc132e4727058d2cd697c30a3a97adb8e833eec4"
+  },
+  {
+    "split": "calibration",
+    "videos": 80,
+    "hash": "acac14f43d36a453975a8079c20dc9cccf49549fc627af5d00fa11923bacfdb1"
+  },
+  {
+    "split": "train",
+    "videos": 400,
+    "hash": "d007b496c97f4dea4714aad04f51f186f3577892e6fc09adc096a34f1f662861"
+  },
+  {
+    "overlap": "train-calibration",
+    "count": 0,
+    "items": []
+  },
+  {
+    "overlap": "train-heldout",
+    "count": 0,
+    "items": []
+  },
+  {
+    "overlap": "calibration-heldout",
+    "count": 0,
+    "items": []
+  }
+]

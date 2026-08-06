@@ -20,6 +20,9 @@ outputs/*
 !outputs/stage_l0/
 !outputs/l0_b_token_debug/
 outputs/l0_b_token_debug/images/
+!outputs/l0_c/
+outputs/l0_c/precomputed/
+outputs/l0_c/checkpoints/
 outputs/stage_l0/*
 !outputs/stage_l0/state.json
 !outputs/stage_l0/final_status.json

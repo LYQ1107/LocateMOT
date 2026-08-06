@@ -1,0 +1,4 @@
+split,pairs,unique_videos,positive,no_match,candidate_missing,multi_reference
+train,6858,400,4800,513,2900,3144
+calibration,1383,80,985,99,552,606
+heldout,2556,150,1863,182,1008,1293

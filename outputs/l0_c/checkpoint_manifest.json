@@ -1,0 +1,42 @@
+{
+  "b3": {
+    "best_step": 2200,
+    "best_score": 0.5469343990642362,
+    "seed": 20260806,
+    "config_hash": "9fd1534b3b81",
+    "paths": {
+      "best": "outputs/l0_c/checkpoints/b3/best.pt",
+      "latest": "outputs/l0_c/checkpoints/b3/latest.pt"
+    }
+  },
+  "b4": {
+    "best_step": 600,
+    "best_score": 0.6093366093366094,
+    "seed": 20260806,
+    "config_hash": "0fe7e809ea5a",
+    "paths": {
+      "best": "outputs/l0_c/checkpoints/b4_debug4/best.pt",
+      "latest": "outputs/l0_c/checkpoints/b4_debug4/latest.pt"
+    }
+  },
+  "b4_dircheck_ref": {
+    "best_step": 200,
+    "best_score": 0.7205882352941176,
+    "seed": 20260806,
+    "config_hash": "2b9672c043bb",
+    "paths": {
+      "best": "outputs/l0_c/checkpoints/b4_dircheck_ref/best.pt",
+      "latest": "outputs/l0_c/checkpoints/b4_dircheck_ref/latest.pt"
+    }
+  },
+  "b4_dircheck_cur": {
+    "best_step": 400,
+    "best_score": 0.7181372549019608,
+    "seed": 20260806,
+    "config_hash": "2a7a6af8e6bb",
+    "paths": {
+      "best": "outputs/l0_c/checkpoints/b4_dircheck_cur/best.pt",
+      "latest": "outputs/l0_c/checkpoints/b4_dircheck_cur/latest.pt"
+    }
+  }
+}

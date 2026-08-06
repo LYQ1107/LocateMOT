@@ -2,7 +2,7 @@
   "stage": "L0-B",
   "status": "COMPLETED_WITH_LIMITATIONS",
   "decision": "L0_B_PASS_WITH_LIMITATIONS",
-  "git_commit": "91af008",
+  "git_commit": "8523db352765bddeb29d28a4f35d485ac5e1b1e4",
   "mapping_integrity": 1.0,
   "images_validated": 9,
   "queries_validated": 36,

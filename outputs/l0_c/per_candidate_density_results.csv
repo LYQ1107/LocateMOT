@@ -1,0 +1,4 @@
+dimension,value,samples,e2e_accuracy,conditional_accuracy,no_match_f1
+candidate_density,0-5,2117,0.4974,0.7673,0.7735
+candidate_density,6-15,368,0.1946,0.2632,0.4167
+candidate_density,>15,71,0.125,0.0565,0.8824

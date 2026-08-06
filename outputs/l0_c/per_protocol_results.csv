@@ -1,0 +1,3 @@
+dimension,value,samples,e2e_accuracy,conditional_accuracy,no_match_f1
+protocol,category_guided,900,0.6353,0.7228,0.4545
+protocol,generic,1656,0.3211,0.5416,0.7717

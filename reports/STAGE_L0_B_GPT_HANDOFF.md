@@ -1,7 +1,7 @@
 # LocateMOT Stage L0-B GPT Handoff Report
 
 Last updated: 2026-08-07
-Current Git commit: 91af008（本报告随后作为独立提交）
+Current Git commit: 8523db352765bddeb29d28a4f35d485ac5e1b1e4（L0-B 最终提交；本报告与 final_status 由 91af008 之后补充）
 Current state: L0_B_COMPLETE（`outputs/stage_l0/state.json`）
 Overall status: 官方 LocateAnything 复现成功；PBD→ObjectToken 映射验证 100%；小样本特征 sanity 完成
 Completed stages: L0 初始化、官方基线审计、环境搭建、L0-A 复现、L0-B 映射验证
@@ -43,7 +43,7 @@ LocateMOT 是一个基于 NVIDIA LocateAnything（3B VLM）做持久多目标跟
 | 项 | 值 |
 |---|---|
 | 项目路径 | /data1/LWR/vranlee/SERVER_ONLY/avis/LocateMOT |
-| Git commit（L0-B 代码） | 91af008 |
+| Git commit（L0-B 代码） | 91af008；L0-B 最终 HEAD 8523db3 |
 | Eagle 官方 commit | 783f656d127ee498137b5ff52603ce36c292d317 |
 | 模型 | nvidia/LocateAnything-3B（本地 /data1/.../models/LocateAnything-3B） |
 | checkpoint SHA256 | 923cfc10…0d2d58 / 3459ba10…8fc7d47（两个 safetensors） |
@@ -220,7 +220,7 @@ ObjectToken 包含：
 | tools/run_token_sanity.py | sanity 运行 | complete |
 | tests/（5 个测试文件） | 单元测试 | complete（10 passed） |
 
-未修改 third_party；未产生 patch 文件（以 wrapper/hook 接入）；未复制外部代码到核心包（调用官方 generate_utils 函数并注明来源）；许可证处理见 docs/license_audit.md；当前 Git 提交 91af008（本报告后会有新的提交）。
+未修改 third_party；未产生 patch 文件（以 wrapper/hook 接入）；未复制外部代码到核心包（调用官方 generate_utils 函数并注明来源）；许可证处理见 docs/license_audit.md。L0-B 代码提交 91af008，报告与 final_status 补充提交 8523db3（实际 HEAD）。
 
 ## 14. Resource Usage
 
