@@ -1,0 +1,37 @@
+{
+  "stage": "L0-B",
+  "status": "COMPLETED_WITH_LIMITATIONS",
+  "decision": "L0_B_PASS_WITH_LIMITATIONS",
+  "git_commit": "pending-commit",
+  "mapping_integrity": 1.0,
+  "images_validated": 9,
+  "queries_validated": 36,
+  "accepted_blocks": 149,
+  "parsed_boxes": 149,
+  "object_tokens": 149,
+  "order_mismatches": 0,
+  "box_mismatches": 0,
+  "hybrid_fallback_cases": 15,
+  "point_cases": 8,
+  "none_cases": 16,
+  "batch_isolation_failures": 0,
+  "determinism": "verified (same seed -> identical answer/boxes/features)",
+  "coordinate_order": "[box_start, x1, y1, x2, y2, box_end]",
+  "sanity": {
+    "dataset": "YouTube-VOS-2019 train (read-only)",
+    "videos": 8,
+    "positive_pairs": 24,
+    "negative_pairs": 120,
+    "candidate_recall_0_5": 0.75,
+    "auc_pbd_coordinate_mean": 0.777,
+    "auc_region": 0.633
+  },
+  "limitations": [
+    "standard HF path batch=1; batch>1 only via official batch runtime without hidden-state extraction",
+    "sanity sample small (24 positives); not a formal benchmark",
+    "fused feature projection is random-initialized and untrained",
+    "detect_text loop anomaly recorded",
+    "/data3 output root still not writable by lwr"
+  ],
+  "recommended_next": "Stage L0-C: fixed two-frame pair data + small ObjectToken cache + B0-B4 baselines"
+}

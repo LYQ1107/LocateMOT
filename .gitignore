@@ -7,7 +7,7 @@ __pycache__/
 
 # model weights and large caches are never committed
 weights/
-models/
+/models/
 cache/
 *.safetensors
 *.bin
@@ -18,6 +18,8 @@ cache/
 
 outputs/*
 !outputs/stage_l0/
+!outputs/l0_b_token_debug/
+outputs/l0_b_token_debug/images/
 outputs/stage_l0/*
 !outputs/stage_l0/state.json
 !outputs/stage_l0/final_status.json
