@@ -1,7 +1,7 @@
 {
   "stage": "L0-C",
   "decision": "L0_C_PASS_WITH_LIMITATIONS",
-  "git_commit": "pending",
+  "git_commit": "7ba6b8f",
   "splits": {
     "train_videos": 400,
     "calibration_videos": 80,

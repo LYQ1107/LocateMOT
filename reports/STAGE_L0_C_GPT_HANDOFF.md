@@ -1,7 +1,7 @@
 # LocateMOT Stage L0-C GPT Handoff Report
 
 Last updated: 2026-08-07
-Current Git commit: 见 outputs/l0_c/final_status.json（L0-C 主提交）；最终 HEAD 见 Git log
+Current Git commit: 7ba6b8f（L0-C 主提交；本报告与 final_status 由 finalize 提交更新）
 Current state: L0_C_COMPLETE
 Overall status: 两帧多目标关联全链路已跑通；B4 优于简单 PBD cosine 但幅度有限（+1.3pp）；候选覆盖是主要瓶颈
 
