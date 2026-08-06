@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ObjectToken",
+  "description": "Stage L0 ObjectToken 数据结构（初始版本，待 PBD 映射验证后定稿）",
+  "type": "object",
+  "properties": {
+    "box_xyxy": {"type": "array", "items": {"type": "number"}, "minItems": 4, "maxItems": 4},
+    "normalized_box": {"type": "array", "items": {"type": "number"}, "minItems": 4, "maxItems": 4},
+    "pbd_feature": {"type": "array", "items": {"type": "number"}},
+    "region_feature": {"type": "array", "items": {"type": "number"}},
+    "semantic_feature": {"type": ["array", "null"], "items": {"type": "number"}},
+    "confidence": {"type": "number"},
+    "fused_feature": {"type": ["array", "null"], "items": {"type": "number"}},
+    "block_start": {"type": "integer"},
+    "block_end": {"type": "integer"},
+    "query_text": {"type": "string"},
+    "image_size": {"type": "array", "items": {"type": "integer"}, "minItems": 2, "maxItems": 2},
+    "decode_mode": {"enum": ["fast", "slow", "hybrid"]}
+  },
+  "required": ["box_xyxy", "normalized_box", "confidence", "block_start", "block_end", "image_size", "decode_mode"]
+}
