@@ -4,16 +4,19 @@
 This process is the ONE blocking command that waits for the L1-A pipeline. It
 does not expose agent-level polling: all checks happen inside this process.
 
-Protection rules:
-- If MemAvailable < low_gb for `low_streak` consecutive checks, terminate our
-  own resume-safe cache processes (D-LA shards + D-CTRL), freeing RAM so the
-  system OOM-killer does not take down the pipeline.
-- Wait until MemAvailable >= recover_gb, then relaunch every missing shard.
-- If the pipeline process dies before producing final_status.json, restart it.
-- Exit when final_status.json contains a decision (pipeline finished).
+Design:
+- The monitor records the child PIDs it launches, so it can never launch a
+  duplicate shard even if pgrep behaves unexpectedly.
+- If MemAvailable < low_gb for `low_streak` consecutive checks, it terminates
+  our own resume-safe cache processes to keep the system away from OOM.
+- After memory recovers to recover_gb, it relaunches every shard that is not
+  running. Val shards are only relaunched after the train cache is complete.
+- If the pipeline dies before final_status.json exists, it is restarted.
+- Exit when final_status.json contains a decision.
 """
 from __future__ import annotations
 
+import json
 import os
 import signal
 import subprocess
@@ -44,13 +47,17 @@ def mem_avail_gb():
     return 999.0
 
 
-def pids_for(fragment):
+def pgrep_pids(fragment):
     r = subprocess.run(["pgrep", "-f", fragment], capture_output=True, text=True)
     return [p for p in r.stdout.split() if p]
 
 
-def running(fragment):
-    return bool(pids_for(fragment))
+def kill_all_ours():
+    # bracket trick avoids matching this command's own cmdline
+    subprocess.run(["pkill", "-f", "[c]ache_dancetrack_locateanything.py"],
+                   capture_output=True)
+    subprocess.run(["pkill", "-f", "[c]ache_dancetrack_yolox.py"],
+                   capture_output=True)
 
 
 def launch(cmd):
@@ -60,61 +67,64 @@ def launch(cmd):
     return subprocess.Popen(cmd, cwd=ROOT, stdout=open(LOG, "a"), stderr=subprocess.STDOUT)
 
 
-def kill_fragment(fragment):
-    for pid in pids_for(fragment):
-        try:
-            os.kill(int(pid), signal.SIGTERM)
-        except Exception:
-            pass
-
-
 def main():
-    low_gb = float(os.environ.get("L1A_LOW_MEM_GB", "25"))
-    recover_gb = float(os.environ.get("L1A_RECOVER_MEM_GB", "45"))
-    low_streak_limit = int(os.environ.get("L1A_LOW_STREAK", "3"))
+    low_gb = float(os.environ.get("L1A_LOW_MEM_GB", "35"))
+    recover_gb = float(os.environ.get("L1A_RECOVER_MEM_GB", "50"))
+    low_streak_limit = int(os.environ.get("L1A_LOW_STREAK", "2"))
     check_interval = int(os.environ.get("L1A_CHECK_INTERVAL", "60"))
 
-    cache_cmds = []
+    train_cmds = []
     for si, gpu in enumerate([3, 4, 5, 6, 7, 8]):
-        cache_cmds.append((
+        train_cmds.append((
             f"train_shard{si}",
             f"cache_dancetrack_locateanything.py --split train --shard {si}",
             [PY, "tools/cache_dancetrack_locateanything.py", "--split", "train",
              "--gpu", str(gpu), "--shard", str(si), "--num-shards", "6",
              "--query-id", "d1", "--protocol", "person", "--out", "outputs/l1_a"],
         ))
+    val_cmds = []
     for si, gpu in enumerate([3, 4, 5, 6, 7, 8]):
-        cache_cmds.append((
+        val_cmds.append((
             f"val_shard{si}",
             f"cache_dancetrack_locateanything.py --split val --shard {si}",
             [PY, "tools/cache_dancetrack_locateanything.py", "--split", "val",
              "--gpu", str(gpu), "--shard", str(si), "--num-shards", "6",
              "--query-id", "d1", "--protocol", "person", "--out", "outputs/l1_a"],
         ))
-    cache_cmds.append((
-        "calibration",
-        "cache_dancetrack_locateanything.py --split calibration",
-        [PY, "tools/cache_dancetrack_locateanything.py", "--split", "calibration",
-         "--gpu", "9", "--query-id", "d1", "--protocol", "person", "--out", "outputs/l1_a"],
-    ))
-    cache_cmds.append((
-        "dctrl_calibration",
-        "cache_dancetrack_yolox.py --split calibration",
-        [OCPY, "tools/cache_dancetrack_yolox.py", "--split", "calibration", "--gpu", "2"],
-    ))
+    calib_cmd = ("calibration",
+                 "cache_dancetrack_locateanything.py --split calibration",
+                 [PY, "tools/cache_dancetrack_locateanything.py", "--split", "calibration",
+                  "--gpu", "9", "--query-id", "d1", "--protocol", "person",
+                  "--out", "outputs/l1_a"])
+    dctrl_cmd = ("dctrl_calibration",
+                 "cache_dancetrack_yolox.py --split calibration",
+                 [OCPY, "tools/cache_dancetrack_yolox.py", "--split", "calibration",
+                  "--gpu", "2"])
+    base_cmds = train_cmds + [calib_cmd, dctrl_cmd]
 
     pipeline_cmd = [PY, "tools/run_l1_a_pipeline.py", "--gpu", "4", "--ctrl-gpu", "9",
                     "--cache-gpus", "3,4,5,6,7,8"]
     pipeline_frag = "run_l1_a_pipeline.py"
     final_status = os.path.join(ROOT, "outputs", "l1_a", "final_status.json")
+    train_done_target = None
+    cfg = json.load(open(os.path.join(ROOT, "configs/data/l1_a_dancetrack_train.json")))
+    train_done_target = sum(v["frames"] for v in cfg["videos"])
 
-    log(f"monitor start: low={low_gb}GB recover={recover_gb}GB interval={check_interval}s")
+    children = {}
+    log(f"monitor start: low={low_gb}GB recover={recover_gb}GB "
+        f"streak={low_streak_limit} interval={check_interval}s")
     low_streak = 0
     suspended = False
+    first_cycle = True
+
+    def alive(label, frag):
+        proc = children.get(label)
+        if proc is not None and proc.poll() is None:
+            return True
+        return bool(pgrep_pids(frag))
 
     while True:
         if os.path.exists(final_status):
-            import json
             try:
                 st = json.load(open(final_status))
                 if st.get("decision"):
@@ -123,9 +133,9 @@ def main():
             except Exception:
                 pass
 
-        if not running(pipeline_frag):
+        if not pgrep_pids(pipeline_frag):
             log("pipeline not running; restarting")
-            launch(pipeline_cmd)
+            children["pipeline"] = launch(pipeline_cmd)
 
         avail = mem_avail_gb()
         if avail < low_gb:
@@ -133,8 +143,8 @@ def main():
             log(f"low memory: {avail:.0f}GB (streak {low_streak}/{low_streak_limit})")
             if low_streak >= low_streak_limit and not suspended:
                 log("suspending our cache processes to protect the pipeline")
-                kill_fragment("cache_dancetrack_locateanything.py")
-                kill_fragment("cache_dancetrack_yolox.py")
+                kill_all_ours()
+                children = {}
                 suspended = True
                 low_streak = 0
         else:
@@ -145,10 +155,24 @@ def main():
             suspended = False
 
         if not suspended and avail >= recover_gb:
-            for label, frag, cmd in cache_cmds:
-                if not running(frag):
+            for label, frag, cmd in base_cmds:
+                if not alive(label, frag):
                     log(f"relaunch {label}")
-                    launch(cmd)
+                    children[label] = launch(cmd)
+            train_done = 0
+            tr_root = "/data3/testdata/vranlee/.MOTSynth.partial/LocateMOT_L1A/cache_dla/dancetrack"
+            for vid in os.listdir(tr_root):
+                vdir = os.path.join(tr_root, vid)
+                if not os.path.isdir(vdir):
+                    continue
+                for fdir in os.listdir(vdir):
+                    if os.path.exists(os.path.join(vdir, fdir, "person.complete")):
+                        train_done += 1
+            if train_done >= train_done_target:
+                for label, frag, cmd in val_cmds:
+                    if not alive(label, frag):
+                        log(f"relaunch {label}")
+                        children[label] = launch(cmd)
 
         time.sleep(check_interval)
 
