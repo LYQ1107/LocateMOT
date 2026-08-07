@@ -105,6 +105,8 @@ def _load_ctrl_frame(cache_root, vid, fid):
 def build_candidates_dla(frame):
     f = frame["features"]
     meta = frame["meta"]
+    if meta.get("candidate_count", 0) == 0 or "boxes" not in f or len(f["boxes"]) == 0:
+        return [], meta
     boxes = np.asarray(f["boxes"], dtype=np.float64)
     cands = []
     for i in range(len(boxes)):
