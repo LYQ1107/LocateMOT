@@ -232,7 +232,7 @@ class SampleBuilder:
 
 
 def build_b6_batch(refs, curs, ref_boxes, cur_boxes, gap, device):
-    cat = category_hash_embedding("person", 32)
+    cat = category_hash_embedding("person", 32).to(device)
     M = len(refs)
     N = len(curs)
 

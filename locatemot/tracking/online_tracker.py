@@ -127,7 +127,7 @@ class OnlineTracker:
         return np.asarray([c["box"] for c in candidates], dtype=np.float64).reshape(-1, 4)
 
     def _b6_batch(self, ref_feats, cur_feats, ref_boxes, cur_boxes, gap):
-        cat = _cat_embed()
+        cat = _cat_embed().to(self.device)
         M = len(ref_feats)
         N = len(cur_feats)
         R = _raw_feature_arrays(ref_feats, self.device)
