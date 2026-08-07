@@ -61,7 +61,9 @@ def _iou(a, b):
 def normalize_geom(box, image_size):
     w, h = float(image_size[0]), float(image_size[1])
     x1, y1, x2, y2 = box
-    area = max(0.0, (x2 - x1) * (y2 - y1)) / (w * h)
+    bw = max(1e-3, x2 - x1)
+    bh = max(1e-3, y2 - y1)
+    area = min(1.0, (bw * bh) / (w * h))
     return np.asarray([x1 / w, y1 / h, x2 / w, y2 / h, area], dtype=np.float32)
 
 

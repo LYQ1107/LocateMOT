@@ -65,6 +65,8 @@ def last_features(track) -> Optional[Dict[str, np.ndarray]]:
 def normalize_geom(box_xyxy, image_size):
     w, h = float(image_size[0]), float(image_size[1])
     x1, y1, x2, y2 = box_xyxy
+    bw = max(1e-3, x2 - x1)
+    bh = max(1e-3, y2 - y1)
     n = [x1 / w, y1 / h, x2 / w, y2 / h]
-    area = max(0.0, (x2 - x1) * (y2 - y1)) / (w * h)
+    area = min(1.0, (bw * bh) / (w * h))
     return np.asarray([n[0], n[1], n[2], n[3], area], dtype=np.float32)

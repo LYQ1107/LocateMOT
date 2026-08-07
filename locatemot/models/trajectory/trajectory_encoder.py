@@ -42,6 +42,10 @@ class _CausalTransformerLayer(nn.Module):
         )
         kp = key_padding_mask.float().unsqueeze(1) * -1e9  # [B,1,K]
         attn_mask = (causal[None] + kp).repeat_interleave(self.attn.num_heads, dim=0)
+        # always allow self-attention so padded positions (all keys masked)
+        # never produce NaN softmax; padding is excluded later by pooling mask
+        eye = torch.eye(x.shape[1], dtype=torch.bool, device=x.device)
+        attn_mask = attn_mask.masked_fill(eye, 0.0)
         h = self.attn(x, x, x, attn_mask=attn_mask)[0]
         x = self.norm1(x + self.dropout(h))
         x = self.norm2(x + self.dropout(self.ffn(x)))
