@@ -145,7 +145,21 @@ def main():
             p.wait()
         print("[pipeline] val cache launch finished", flush=True)
 
-    # D-CTRL completeness (resume-safe)
+    # train temporal modules
+    ckpt = "outputs/l1_a/checkpoints/temporal/best.pt"
+    if not os.path.exists(os.path.join(ROOT, ckpt)):
+        run([PY, "tools/train_l1_a_trajectory.py", "--gpu", str(args.gpu)])
+
+    # val tracker runs (D-LA main path first)
+    run([PY, "tools/run_l1_a_tracker.py", "--variants", "T0,T1,T2,T3,T4,T5,T6",
+         "--split", "val", "--gpu", str(args.gpu), "--protocol", "dla",
+         "--temporal-ckpt", ckpt])
+
+    # official TrackEval + stratified analysis
+    run([PY, "tools/run_l1_a_trackeval.py", "--protocol", "dla", "--split", "val"])
+    run([PY, "tools/evaluate_l1_a.py", "--split", "val", "--protocols", "dla"])
+
+    # D-CTRL completeness + evaluation (secondary protocol; resume-safe)
     for split in ("calibration", "train", "val"):
         exp = expected_frames(split)
         if ctrl_done(split) < exp:
@@ -156,21 +170,8 @@ def main():
             if ctrl_done(split) < exp:
                 run([OCPY, "tools/cache_dancetrack_yolox.py", "--split", split,
                      "--gpu", str(args.ctrl_gpu)])
-
-    # train temporal modules
-    ckpt = "outputs/l1_a/checkpoints/temporal/best.pt"
-    if not os.path.exists(os.path.join(ROOT, ckpt)):
-        run([PY, "tools/train_l1_a_trajectory.py", "--gpu", str(args.gpu)])
-
-    # val tracker runs
-    run([PY, "tools/run_l1_a_tracker.py", "--variants", "T0,T1,T2,T3,T4,T5,T6",
-         "--split", "val", "--gpu", str(args.gpu), "--protocol", "dla",
-         "--temporal-ckpt", ckpt])
     run([PY, "tools/run_l1_a_tracker.py", "--variants", "T0,T1",
          "--split", "val", "--gpu", str(args.gpu), "--protocol", "ctrl"])
-
-    # official TrackEval + stratified analysis
-    run([PY, "tools/run_l1_a_trackeval.py", "--protocol", "dla", "--split", "val"])
     run([PY, "tools/run_l1_a_trackeval.py", "--protocol", "ctrl", "--split", "val"])
     run([PY, "tools/evaluate_l1_a.py", "--split", "val", "--protocols", "dla,ctrl"])
 
