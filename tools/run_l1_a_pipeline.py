@@ -91,7 +91,26 @@ def run(cmd):
 def launch_dla_shards(split, gpus):
     nshards = min(len(gpus), 6)
     procs = []
+    import subprocess as sp
+    running = set()
+    r = sp.run(["pgrep", "-f", f"cache_dancetrack_locateanything.py --split {split} --shard"],
+               capture_output=True, text=True)
+    for line in r.stdout.splitlines():
+        try:
+            cmdline = open(f"/proc/{line.strip()}/cmdline", "rb").read().replace(b"\0", b" ").decode()
+            for part in cmdline.split():
+                if part.startswith("--shard"):
+                    continue
+            # parse --shard N from cmdline
+            import re
+            m = re.search(r"--shard (\d+)", cmdline)
+            if m:
+                running.add(int(m.group(1)))
+        except Exception:
+            pass
     for si, gpu in enumerate(gpus[:nshards]):
+        if si in running:
+            continue
         p = subprocess.Popen([
             PY, "tools/cache_dancetrack_locateanything.py",
             "--split", split, "--gpu", str(gpu), "--shard", str(si),
@@ -99,6 +118,8 @@ def launch_dla_shards(split, gpus):
             "--protocol", "person", "--out", "outputs/l1_a",
         ], cwd=ROOT)
         procs.append(p)
+    if not procs:
+        print(f"[pipeline] all D-LA {split} shards already running; nothing to launch", flush=True)
     return procs
 
 
@@ -113,10 +134,8 @@ def main():
     cache_gpus = [int(x) for x in args.cache_gpus.split(",")]
 
     if not args.skip_cache_wait:
-        for split in ("train", "calibration"):
-            exp = expected_frames(split)
-            wait_for(f"D-LA cache {split}", lambda s=split: dla_done(s), exp,
-                     on_stall=(lambda s=split: launch_dla_shards(s, cache_gpus)))
+        # monitor_l1_a.py owns shard relaunch; the pipeline only waits.
+        wait_for("D-LA cache train", lambda: dla_done("train"), expected_frames("train"))
 
     # launch val cache if not complete (train/calibration done by now)
     if dla_done("val") < expected_frames("val"):
@@ -143,13 +162,6 @@ def main():
     if not os.path.exists(os.path.join(ROOT, ckpt)):
         run([PY, "tools/train_l1_a_trajectory.py", "--gpu", str(args.gpu)])
 
-    # calibration tracker runs (D-LA all variants; D-CTRL T0/T1)
-    run([PY, "tools/run_l1_a_tracker.py", "--variants", "T0,T1,T2,T3,T4,T5,T6",
-         "--split", "calibration", "--gpu", str(args.gpu), "--protocol", "dla",
-         "--temporal-ckpt", ckpt])
-    run([PY, "tools/run_l1_a_tracker.py", "--variants", "T0,T1",
-         "--split", "calibration", "--gpu", str(args.gpu), "--protocol", "ctrl"])
-
     # val tracker runs
     run([PY, "tools/run_l1_a_tracker.py", "--variants", "T0,T1,T2,T3,T4,T5,T6",
          "--split", "val", "--gpu", str(args.gpu), "--protocol", "dla",
@@ -161,6 +173,17 @@ def main():
     run([PY, "tools/run_l1_a_trackeval.py", "--protocol", "dla", "--split", "val"])
     run([PY, "tools/run_l1_a_trackeval.py", "--protocol", "ctrl", "--split", "val"])
     run([PY, "tools/evaluate_l1_a.py", "--split", "val", "--protocols", "dla,ctrl"])
+
+    # calibration tracker runs (best-effort; thresholds stay frozen defaults)
+    if dla_done("calibration") >= expected_frames("calibration"):
+        run([PY, "tools/run_l1_a_tracker.py", "--variants", "T0,T1,T2,T3,T4,T5,T6",
+             "--split", "calibration", "--gpu", str(args.gpu), "--protocol", "dla",
+             "--temporal-ckpt", ckpt])
+        run([PY, "tools/run_l1_a_tracker.py", "--variants", "T0,T1",
+             "--split", "calibration", "--gpu", str(args.gpu), "--protocol", "ctrl"])
+    else:
+        print("[pipeline] calibration D-LA cache incomplete; skipping calibration tracker runs "
+              "(frozen default thresholds used)", flush=True)
 
     # reports
     run([PY, "tools/write_l1_a_reports.py"])
