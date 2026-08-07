@@ -137,13 +137,9 @@ def main():
         # monitor_l1_a.py owns shard relaunch; the pipeline only waits.
         wait_for("D-LA cache train", lambda: dla_done("train"), expected_frames("train"))
 
-    # launch val cache if not complete (train/calibration done by now)
-    if dla_done("val") < expected_frames("val"):
-        procs = launch_dla_shards("val", cache_gpus)
-        wait_for("D-LA cache val", lambda: dla_done("val"), expected_frames("val"))
-        for p in procs:
-            p.wait()
-        print("[pipeline] val cache launch finished", flush=True)
+    # val cache shards are owned by the conversation monitor (never auto-launch
+    # here: duplicate shards race on the same .tmp files and crash).
+    wait_for("D-LA cache val", lambda: dla_done("val"), expected_frames("val"))
 
     # train temporal modules
     ckpt = "outputs/l1_a/checkpoints/temporal/best.pt"
