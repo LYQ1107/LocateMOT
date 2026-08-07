@@ -1,0 +1,9 @@
+{
+  "model": "b6_nores",
+  "theta": 0.0,
+  "calib_cond": 0.0,
+  "calib_nm_f1": 0.0,
+  "calib_e2e": 0.0,
+  "cond_floor": 0.75,
+  "seed": 20260806
+}

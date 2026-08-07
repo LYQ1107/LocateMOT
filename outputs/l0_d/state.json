@@ -1,0 +1,89 @@
+{
+  "stage": "L0-D",
+  "state": "L0_D_COMPLETE",
+  "history": [
+    {
+      "state": "L0_D_INIT",
+      "ts": "2026-08-07T06:00:00+08:00"
+    },
+    {
+      "state": "L0_D_AUDIT_REFERENCES",
+      "ts": "2026-08-07T06:20:00+08:00"
+    },
+    {
+      "state": "L0_D_AUDIT_TRACKEVAL",
+      "ts": "2026-08-07T06:30:00+08:00"
+    },
+    {
+      "state": "L0_D_DIAGNOSE_BASELINES",
+      "ts": "2026-08-07T07:10:00+08:00"
+    },
+    {
+      "state": "L0_D_GAP_CONFOUND",
+      "ts": "2026-08-07T07:10:00+08:00"
+    },
+    {
+      "state": "L0_D_DEFINE_HARD_SUBSET",
+      "ts": "2026-08-07T07:10:00+08:00"
+    },
+    {
+      "state": "L0_D_IMPLEMENT_RELATIONS",
+      "ts": "2026-08-07T08:10:00+08:00"
+    },
+    {
+      "state": "L0_D_TRAIN_B5",
+      "ts": "2026-08-07T09:00:00+08:00"
+    },
+    {
+      "state": "L0_D_TRAIN_B6",
+      "ts": "2026-08-07T09:40:00+08:00"
+    },
+    {
+      "state": "L0_D_EVALUATE_PAIR_METRICS",
+      "ts": "2026-08-07T10:20:00+08:00"
+    },
+    {
+      "state": "L0_D_BUILD_TWO_FRAME_TRACKEVAL",
+      "ts": "2026-08-07T10:40:00+08:00"
+    },
+    {
+      "state": "L0_D_RUN_TRACKEVAL",
+      "ts": "2026-08-07T11:00:00+08:00"
+    },
+    {
+      "state": "L0_D_RUN_STRATIFIED_EVAL",
+      "ts": "2026-08-07T11:20:00+08:00"
+    },
+    {
+      "state": "L0_D_ABLATION",
+      "ts": "2026-08-07T11:40:00+08:00"
+    },
+    {
+      "state": "L0_D_FAILURE_ANALYSIS",
+      "ts": "2026-08-07T12:00:00+08:00"
+    },
+    {
+      "state": "L0_D_FINAL_REPORT",
+      "ts": "2026-08-07T12:30:00+08:00"
+    },
+    {
+      "state": "L0_D_COMPLETE",
+      "ts": "2026-08-07T12:40:00+08:00"
+    }
+  ],
+  "hard_subset": {
+    "config": "configs/l0_d_hard_subset.json",
+    "heldout_counts": {
+      "hard": 1240,
+      "easy": 1316
+    },
+    "note": "Prediction-side definition frozen before B5/B6."
+  },
+  "baseline_reproduction": {
+    "note": "official-style assignments reproduce L0-C recorded numbers exactly",
+    "B0_cond": 0.7432,
+    "B2be_cond": 0.6432,
+    "B3_cond": 0.6181,
+    "B4_cond": 0.6268
+  }
+}

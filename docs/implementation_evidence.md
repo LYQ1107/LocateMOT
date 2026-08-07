@@ -241,3 +241,75 @@ MOTIP 官方实现的方向是 current detections 作为 query、historical traj
 - Parts adopted: `[M, N+M]` 代价矩阵；track i 的 NO_MATCH dummy 列为 N+i；其他 dummy 列大代价；`linear_sum_assignment` 求解。
 - 测试：3 track 全 NO_MATCH、2 NO_MATCH+1 匹配、candidate 不共享、每 track 只用自己 dummy，全部通过。
 - Reason for final design: 修正了原始 `[M, N+1]` 只能使用一次 NO_MATCH 的设计错误。
+
+---
+
+# Stage L0-D Association Evidence（2026-08-07）
+
+## 诊断证据：为什么 B0 IoU 很强
+
+### Module: Baseline diagnosis (B0/B1/B2/B3/B4 held-out)
+
+- Scientific problem: 在 learned association 设计前，先量化简单几何/外观基线在哪些子组占优。
+- Official references inspected: 无（本项目已冻结基线）。
+- Files inspected: `outputs/l0_c/baseline_results.csv`、`tools/evaluate_l0_c.py`、`tools/l0d_analyze.py`。
+- Observed implementation: 官方脚本对 B3/B4 存在两个评估伪影：no_match logits 在 batch padding 宽度上平均；B3 分配矩阵使用 padding 后宽度（可选中 padded 假候选）。我们在 `tools/l0d_analyze.py` 中同时复现 official-style 与 clean-style。
+- Results:
+  - Official-style（与 L0-C 记录完全一致）：B0 cond=0.7432 / e2e=0.4960 / NO_MATCH F1=0.7465；B2-box-end cond=0.6432；B3 cond=0.6181；B4 cond=0.6268。
+  - Clean-style（只对真实候选分配）：B3 cond=0.6776；B4 cond=0.6268；B0 不变 0.7432。
+  - 5–8 target：B0=0.516，B3=0.223，B4=0.229。
+  - hard 子集（冻结定义，held-out 1240/2556）：B0 easy=0.9557 / hard=0.6387；B4 easy=0.9315 / hard=0.4769。
+- Parts adopted: 用 clean-style 作为本阶段 B5/B6 对比口径；official-style 用于复现 L0-C。
+- Parts intentionally not adopted: 不把 padding 伪影当作模型能力。
+- Reason: 避免基线数字不可比。
+
+## Temporal-gap confound
+
+- `outputs/l0_d/diagnosis/gap_composition.json` 实测：gap>64 桶只含 YouTube-VOS（432/432）、candidate_mean=1.91、无 5–8 目标样本；gap 1–4 桶 100% MOSEv2+generic、candidate_missing 高。B4 gap>64=0.7907 主要由更容易的低密度 YouTube 子集驱动，标记为 confounded，不解释为长时间隔能力强。
+
+## 参考实现证据（每个设计点）
+
+### Module: RelationFeature / RelationMLP
+
+- Scientific problem: 显式 pairwise 几何/外观关系先验，避免 Transformer 从零重学。
+- Official references inspected: GRAE-3DMOT（`spatial_proj(19)->MLP`、DFFL）、TADN（spatial embedding MLP）、GMTracker（IoU+ReID 相加）。
+- Repository commits: GRAE `63def8bd`、TADN `2486a5c8`、GMTracker `2a6cc634`。
+- Files inspected: GRAE `models/main.py`、TADN `components/transformer.py`、GMTracker `GMMOT/model.py`。
+- Observed implementation: 官方用 MLP 编码 pairwise 几何，输出 relation feature 与 scalar affinity。
+- Parts adopted: RelationMLP：输入几何 delta（IoU、中心距、尺寸比等）+ 外观 cos（PBD box-end）+ generation score + 时间 gap → D→128→128，输出 relation_embedding(128) + relation_score(1)。
+- Parts intentionally not adopted: 不做 3D 运动学、不做图卷积、不做门控迭代。
+- Reason: 两帧关联问题只需要轻量 pairwise 编码；官方代码没有证明更复杂结构在此场景必要。
+
+### Module: BaseAffinity + Residual
+
+- Scientific problem: 保留 IoU 强先验，learned 只做有限修正。
+- Official references inspected: GMTracker（`Mp0 = U^T U + iou`）、GTR（`max(asso, IoU)`）、TADN（IoU additive bias）。
+- Observed implementation: 官方把外观相似度与 IoU 直接组合。
+- Parts adopted: `BaseAffinity = w_iou * f(IoU) + w_pbd * f(PBD_box_end_cos)`，`FinalAffinity = BaseAffinity + alpha * tanh(Residual)`，alpha 初始化 0.25、经 sigmoid 约束在 [0,1)，w 初始 0.5 可学习。此公式为本项目 clean design（数学定义公开，无逐字复制）。
+
+### Module: Relation-aware attention bias
+
+- Scientific problem: 把 relation 信息注入 decoder cross-attention。
+- Official references inspected: TADN（memory_mask = weighted IoU additive bias）、GRAE（`attn_dist = -temporal_dist` additive bias）、FDTA（relative temporal PE additive bias）。
+- Observed implementation: 官方均为 additive bias 形式。
+- Parts adopted: `Attention_ij = Q_i K_j/sqrt(d) + beta * RelationBias_ij`；beta 初始化 0.05，经 sigmoid 约束。
+
+### Module: Multi-object competition
+
+- Scientific problem: 5–8 target 明显弱，需要显式竞争。
+- Official references inspected: CO-MOT QIM（track self-attention）、FDTA IDDecoder（同帧 self-attention）、MOTIP（self-attn after layer 0）。
+- Parts adopted: B6 保留 reference self-attention，并增加 relation-aware global matching；B5 通过 row-softmax 与 Hungarian 全局竞争。
+
+### Module: Hard-negative sampling
+
+- Scientific problem: 训练要覆盖候选混淆与多目标竞争。
+- Official references inspected: CO-MOT `_add_fp_tracks`、TrackFormer FP track、HNCD 最近框替换。
+- Observed implementation: 官方在训练中把与真值 IoU 最大的未匹配检测插入为假 track/框。
+- Parts adopted: train split 按 target count 加权采样（single≈25%、2–4≈45%、5–8≈30%）；batch 内 hard 子集（IoU margin 小 / 密度高 / 共享候选）上采样 2 倍；不复制少量 5–8 样本。
+
+### Module: TrackEval two-frame dataset adapter
+
+- Scientific problem: 用官方指标评估两帧关联。
+- Official references inspected: TrackEval `12c8791b`。
+- Observed implementation: `combine_sequences` 聚合；MOT Challenge 数据 xywh 格式。
+- Parts adopted: 新增 `locatemot/evaluation/two_frame_trackeval.py`，从内存数据构造 raw_data，其余 preproc/similarity/指标/聚合全部复用官方 TrackEval。

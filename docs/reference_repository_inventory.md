@@ -153,3 +153,21 @@
 - MOTRv3：论文存在，但未发现官方公开仓库；相近官方实现以 MOTR 为准。
 - R1-SAM：未检索到官方仓库。
 - MedGround-R1：GitHub 仓库 404，仅论文可查。
+
+## Stage L0-D 新增参考仓库（2026-08-07，详见 configs/l0_d_reference_repositories.json 与 docs/l0_d_association_reference_audit.md）
+
+### association_2025_2026/
+
+| 仓库 | 论文 | commit | 许可证 | 用途 |
+|---|---|---|---|---|
+| GTR | Global Tracking Transformers (CVPR 2022) | `7138b95b` | Apache-2.0 | attention 权重头亲和矩阵、background 列、Hungarian+IoU 融合 |
+| CO-MOT | CO-MOT (ICLR 2025) | `1e0618a7` | MIT | track self-attention、FP track 硬负例、memory bank |
+| GMTracker | GNN-Powered End-to-End MOT (CVPR 2021) | `2a6cc634` | GPL-3.0 | 外观点积+IoU 基础亲和（只读参考） |
+| tadn-mot | TADN | `2486a5c8` | GPL-3.0 | null-target 槽、几何 additive bias（只读参考） |
+| HNCD-MOTR | Hard Negative Confusion-aware Denoising (2026) | `1c31207c` | 未附 LICENSE | 最近框替换、IoU 最大 FP track 硬负例（只读参考） |
+| FDTA | From Detection to Association (CVPR 2026) | `b3b3b778` | MIT | 相对时间 PE、同帧 self-attention、ID 分类 |
+| GRAE-3DMOT | GRAE-3DMOT (CVPR 2025) | `63def8bd` | 未附 LICENSE | pairwise 几何 MLP、additive distance bias（只读参考） |
+
+### TrackEval-official
+
+- JonathonLuiten/TrackEval，commit `12c8791b`（MIT）。正式评估唯一来源，只新增内存数据适配层，不改指标与聚合。

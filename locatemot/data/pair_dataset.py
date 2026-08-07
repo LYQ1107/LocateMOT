@@ -26,17 +26,18 @@ def _iou(a, b):
 
 
 class PairDataset(Dataset):
-    def __init__(self, records: List[dict], cache_root: str, seed: int = 20260806):
+    def __init__(self, records: List[dict], cache_root: str, seed: int = 20260806,
+                 cache_items: bool = True):
         self.records = records
         self.cache_root = cache_root
         self.rng = np.random.RandomState(seed)
-        self._cache = {}
+        self._cache = {} if cache_items else None
 
     def __len__(self):
         return len(self.records)
 
     def __getitem__(self, idx: int) -> Dict[str, torch.Tensor]:
-        if idx in self._cache:
+        if self._cache is not None and idx in self._cache:
             return self._cache[idx]
         rec = self.records[idx]
         ref = read_frame_cache(self.cache_root, rec["reference_token_id"])
@@ -98,12 +99,14 @@ class PairDataset(Dataset):
 
         out = {
             "ref_pbd": torch.stack([e["pbd"] for e in ref_entries]),
+            "ref_pbd_be": torch.stack([e["pbd_be"] for e in ref_entries]),
             "ref_region": torch.stack([e["region"] for e in ref_entries]),
             "ref_geom": torch.stack([e["geom"] for e in ref_entries]),
             "ref_gen": torch.tensor([e["gen"] for e in ref_entries], dtype=torch.float32),
             "ref_cat": cat_embed.unsqueeze(0).expand(M, EMBED_DIM).clone(),
             "ref_mask": torch.ones(M, dtype=torch.bool),
             "cur_pbd": torch.stack([e["pbd"] for e in cur_entries]),
+            "cur_pbd_be": torch.stack([e["pbd_be"] for e in cur_entries]),
             "cur_region": torch.stack([e["region"] for e in cur_entries]),
             "cur_geom": torch.stack([e["geom"] for e in cur_entries]),
             "cur_gen": torch.tensor([e["gen"] for e in cur_entries], dtype=torch.float32),
@@ -123,15 +126,18 @@ class PairDataset(Dataset):
             "protocol": rec["protocol"],
             "split": rec["split"],
         }
-        self._cache[idx] = out
+        if self._cache is not None:
+            self._cache[idx] = out
         return out
 
     def _empty(self, rec):
         return {
-            "ref_pbd": torch.zeros((1, 2048)), "ref_region": torch.zeros((1, 4608)),
+            "ref_pbd": torch.zeros((1, 2048)), "ref_pbd_be": torch.zeros((1, 2048)),
+            "ref_region": torch.zeros((1, 4608)),
             "ref_geom": torch.zeros((1, 5)), "ref_gen": torch.zeros(1),
             "ref_cat": torch.zeros((1, EMBED_DIM)), "ref_mask": torch.zeros(1, dtype=torch.bool),
-            "cur_pbd": torch.zeros((1, 2048)), "cur_region": torch.zeros((1, 4608)),
+            "cur_pbd": torch.zeros((1, 2048)), "cur_pbd_be": torch.zeros((1, 2048)),
+            "cur_region": torch.zeros((1, 4608)),
             "cur_geom": torch.zeros((1, 5)), "cur_gen": torch.zeros(1),
             "cur_cat": torch.zeros((1, EMBED_DIM)), "cur_mask": torch.zeros(1, dtype=torch.bool),
             "match_targets": torch.full((1,), -1, dtype=torch.long),
@@ -150,8 +156,8 @@ class PrecomputedPairSet:
     only slices precomputed tensors, removing per-sample feature overhead."""
 
     TENSOR_KEYS = [
-        "ref_pbd", "ref_region", "ref_geom", "ref_gen", "ref_cat", "ref_mask", "ref_boxes",
-        "cur_pbd", "cur_region", "cur_geom", "cur_gen", "cur_cat", "cur_mask", "cur_boxes",
+        "ref_pbd", "ref_pbd_be", "ref_region", "ref_geom", "ref_gen", "ref_cat", "ref_mask", "ref_boxes",
+        "cur_pbd", "cur_pbd_be", "cur_region", "cur_geom", "cur_gen", "cur_cat", "cur_mask", "cur_boxes",
         "match_targets", "no_match_targets", "candidate_missing", "visible", "labels",
         "gt_iou", "gap",
     ]
@@ -235,6 +241,7 @@ def _token_feature(f, i) -> dict:
         return torch.zeros(default_dim)
     return {
         "pbd": arr("pbd_coord_mean_last", 2048),
+        "pbd_be": arr("pbd_box_end_last", 2048),
         "region": arr("region", 4608),
         "geom": arr("geometry", 5) if "geometry" in f and f["geometry"].shape[0] > i else torch.zeros(5),
         "gen": float(f["gen_score"][i]) if "gen_score" in f and f["gen_score"].shape[0] > i else 0.0,
@@ -251,6 +258,7 @@ def _crop_feature(f, meta, tid) -> dict:
         region = torch.zeros(4608)
     return {
         "pbd": torch.zeros(2048),
+        "pbd_be": torch.zeros(2048),
         "region": region,
         "geom": torch.zeros(5),
         "gen": 0.0,

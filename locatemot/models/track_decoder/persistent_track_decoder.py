@@ -20,16 +20,27 @@ class TrackDecoderLayer(nn.Module):
             nn.Linear(dim_feedforward, d_model), nn.Dropout(dropout),
         )
 
-    def forward(self, q, kv, q_mask, kv_mask):
+    def forward(self, q, kv, q_mask, kv_mask, cross_bias=None):
         h = q
         h2, _ = self.self_attn(
             h, h, h,
             key_padding_mask=None if q_mask is None else ~q_mask,
         )
         h = self.norm1(h + h2)
+        kp = None if kv_mask is None else ~kv_mask
+        if cross_bias is not None and kp is not None:
+            # merge boolean key padding mask into the float attention bias to
+            # avoid mismatched attn_mask/key_padding_mask types
+            B = cross_bias.shape[0] // self.cross_attn.num_heads
+            H = self.cross_attn.num_heads
+            M = cross_bias.shape[1]
+            kp_float = kp.float().unsqueeze(1).unsqueeze(2).expand(B, H, M, -1)
+            cross_bias = cross_bias + (kp_float.reshape(-1, M, cross_bias.shape[2]) * -1e9)
+            kp = None
         h2, _ = self.cross_attn(
             h, kv, kv,
-            key_padding_mask=None if kv_mask is None else ~kv_mask,
+            key_padding_mask=kp,
+            attn_mask=cross_bias,
         )
         h = self.norm2(h + h2)
         h = self.norm3(h + self.ffn(h))

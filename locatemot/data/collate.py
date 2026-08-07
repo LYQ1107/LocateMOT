@@ -9,12 +9,12 @@ def collate_track_batch(samples):
     M = max(int(s["ref_mask"].sum()) for s in samples)
     N = max(int(s["cur_mask"].sum()) for s in samples)
     batch = {}
-    for key in ["ref_pbd", "ref_region", "ref_geom"]:
+    for key in ["ref_pbd", "ref_pbd_be", "ref_region", "ref_geom"]:
         batch[key] = torch.stack([_pad(s[key], M, 0) for s in samples])
     batch["ref_gen"] = torch.stack([_pad1(s["ref_gen"], M, 0.0) for s in samples])
     batch["ref_cat"] = torch.stack([_pad(s["ref_cat"], M) for s in samples])
     batch["ref_mask"] = torch.stack([_pad_bool(s["ref_mask"], M) for s in samples])
-    for key in ["cur_pbd", "cur_region", "cur_geom"]:
+    for key in ["cur_pbd", "cur_pbd_be", "cur_region", "cur_geom"]:
         batch[key] = torch.stack([_pad(s[key], N, 0) for s in samples])
     batch["cur_gen"] = torch.stack([_pad1(s["cur_gen"], N, 0.0) for s in samples])
     batch["cur_cat"] = torch.stack([_pad(s["cur_cat"], N) for s in samples])
