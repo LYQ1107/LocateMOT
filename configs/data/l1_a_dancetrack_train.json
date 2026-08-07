@@ -1,0 +1,294 @@
+{
+  "split": "train",
+  "seed": 20260806,
+  "videos": [
+    {
+      "video_id": "dancetrack0074",
+      "dataset": "dancetrack",
+      "frames": 1203,
+      "gt_frames": 1203,
+      "gt_boxes": 5304,
+      "mean_density": 4.409,
+      "max_density": 5
+    },
+    {
+      "video_id": "dancetrack0055",
+      "dataset": "dancetrack",
+      "frames": 1203,
+      "gt_frames": 1203,
+      "gt_boxes": 5820,
+      "mean_density": 4.8379,
+      "max_density": 5
+    },
+    {
+      "video_id": "dancetrack0023",
+      "dataset": "dancetrack",
+      "frames": 1483,
+      "gt_frames": 1483,
+      "gt_boxes": 13025,
+      "mean_density": 8.7829,
+      "max_density": 9
+    },
+    {
+      "video_id": "dancetrack0001",
+      "dataset": "dancetrack",
+      "frames": 703,
+      "gt_frames": 703,
+      "gt_boxes": 4912,
+      "mean_density": 6.9872,
+      "max_density": 7
+    },
+    {
+      "video_id": "dancetrack0024",
+      "dataset": "dancetrack",
+      "frames": 763,
+      "gt_frames": 763,
+      "gt_boxes": 4512,
+      "mean_density": 5.9135,
+      "max_density": 6
+    },
+    {
+      "video_id": "dancetrack0086",
+      "dataset": "dancetrack",
+      "frames": 603,
+      "gt_frames": 603,
+      "gt_boxes": 9496,
+      "mean_density": 15.7479,
+      "max_density": 16
+    },
+    {
+      "video_id": "dancetrack0029",
+      "dataset": "dancetrack",
+      "frames": 1263,
+      "gt_frames": 1263,
+      "gt_boxes": 7886,
+      "mean_density": 6.2439,
+      "max_density": 7
+    },
+    {
+      "video_id": "dancetrack0032",
+      "dataset": "dancetrack",
+      "frames": 604,
+      "gt_frames": 604,
+      "gt_boxes": 3360,
+      "mean_density": 5.5629,
+      "max_density": 6
+    },
+    {
+      "video_id": "dancetrack0062",
+      "dataset": "dancetrack",
+      "frames": 1203,
+      "gt_frames": 1203,
+      "gt_boxes": 6227,
+      "mean_density": 5.1762,
+      "max_density": 6
+    },
+    {
+      "video_id": "dancetrack0044",
+      "dataset": "dancetrack",
+      "frames": 1203,
+      "gt_frames": 1203,
+      "gt_boxes": 13389,
+      "mean_density": 11.1297,
+      "max_density": 13
+    },
+    {
+      "video_id": "dancetrack0039",
+      "dataset": "dancetrack",
+      "frames": 1242,
+      "gt_frames": 1242,
+      "gt_boxes": 6092,
+      "mean_density": 4.905,
+      "max_density": 5
+    },
+    {
+      "video_id": "dancetrack0016",
+      "dataset": "dancetrack",
+      "frames": 2163,
+      "gt_frames": 2163,
+      "gt_boxes": 12613,
+      "mean_density": 5.8313,
+      "max_density": 6
+    },
+    {
+      "video_id": "dancetrack0012",
+      "dataset": "dancetrack",
+      "frames": 1203,
+      "gt_frames": 1203,
+      "gt_boxes": 13032,
+      "mean_density": 10.8329,
+      "max_density": 12
+    },
+    {
+      "video_id": "dancetrack0075",
+      "dataset": "dancetrack",
+      "frames": 803,
+      "gt_frames": 803,
+      "gt_boxes": 5442,
+      "mean_density": 6.7771,
+      "max_density": 7
+    },
+    {
+      "video_id": "dancetrack0068",
+      "dataset": "dancetrack",
+      "frames": 1203,
+      "gt_frames": 1203,
+      "gt_boxes": 6002,
+      "mean_density": 4.9892,
+      "max_density": 5
+    },
+    {
+      "video_id": "dancetrack0096",
+      "dataset": "dancetrack",
+      "frames": 603,
+      "gt_frames": 603,
+      "gt_boxes": 15787,
+      "mean_density": 26.1808,
+      "max_density": 40
+    },
+    {
+      "video_id": "dancetrack0053",
+      "dataset": "dancetrack",
+      "frames": 1204,
+      "gt_frames": 1204,
+      "gt_boxes": 5954,
+      "mean_density": 4.9452,
+      "max_density": 5
+    },
+    {
+      "video_id": "dancetrack0052",
+      "dataset": "dancetrack",
+      "frames": 1203,
+      "gt_frames": 1203,
+      "gt_boxes": 4462,
+      "mean_density": 3.7091,
+      "max_density": 4
+    },
+    {
+      "video_id": "dancetrack0057",
+      "dataset": "dancetrack",
+      "frames": 622,
+      "gt_frames": 622,
+      "gt_boxes": 3004,
+      "mean_density": 4.8296,
+      "max_density": 6
+    },
+    {
+      "video_id": "dancetrack0045",
+      "dataset": "dancetrack",
+      "frames": 1203,
+      "gt_frames": 1203,
+      "gt_boxes": 15830,
+      "mean_density": 13.1588,
+      "max_density": 14
+    },
+    {
+      "video_id": "dancetrack0082",
+      "dataset": "dancetrack",
+      "frames": 603,
+      "gt_frames": 603,
+      "gt_boxes": 12370,
+      "mean_density": 20.5141,
+      "max_density": 24
+    },
+    {
+      "video_id": "dancetrack0087",
+      "dataset": "dancetrack",
+      "frames": 1003,
+      "gt_frames": 1003,
+      "gt_boxes": 10699,
+      "mean_density": 10.667,
+      "max_density": 11
+    },
+    {
+      "video_id": "dancetrack0008",
+      "dataset": "dancetrack",
+      "frames": 883,
+      "gt_frames": 883,
+      "gt_boxes": 6850,
+      "mean_density": 7.7576,
+      "max_density": 8
+    },
+    {
+      "video_id": "dancetrack0006",
+      "dataset": "dancetrack",
+      "frames": 1202,
+      "gt_frames": 1202,
+      "gt_boxes": 10559,
+      "mean_density": 8.7845,
+      "max_density": 9
+    },
+    {
+      "video_id": "dancetrack0051",
+      "dataset": "dancetrack",
+      "frames": 1203,
+      "gt_frames": 1203,
+      "gt_boxes": 10808,
+      "mean_density": 8.9842,
+      "max_density": 9
+    },
+    {
+      "video_id": "dancetrack0069",
+      "dataset": "dancetrack",
+      "frames": 1403,
+      "gt_frames": 1403,
+      "gt_boxes": 8259,
+      "mean_density": 5.8867,
+      "max_density": 6
+    },
+    {
+      "video_id": "dancetrack0066",
+      "dataset": "dancetrack",
+      "frames": 1202,
+      "gt_frames": 1202,
+      "gt_boxes": 6010,
+      "mean_density": 5.0,
+      "max_density": 5
+    },
+    {
+      "video_id": "dancetrack0080",
+      "dataset": "dancetrack",
+      "frames": 1201,
+      "gt_frames": 1201,
+      "gt_boxes": 12040,
+      "mean_density": 10.025,
+      "max_density": 16
+    },
+    {
+      "video_id": "dancetrack0098",
+      "dataset": "dancetrack",
+      "frames": 1203,
+      "gt_frames": 1203,
+      "gt_boxes": 8426,
+      "mean_density": 7.0042,
+      "max_density": 8
+    },
+    {
+      "video_id": "dancetrack0037",
+      "dataset": "dancetrack",
+      "frames": 1203,
+      "gt_frames": 1203,
+      "gt_boxes": 8305,
+      "mean_density": 6.9036,
+      "max_density": 7
+    },
+    {
+      "video_id": "dancetrack0020",
+      "dataset": "dancetrack",
+      "frames": 583,
+      "gt_frames": 583,
+      "gt_boxes": 20174,
+      "mean_density": 34.6038,
+      "max_density": 40
+    },
+    {
+      "video_id": "dancetrack0027",
+      "dataset": "dancetrack",
+      "frames": 403,
+      "gt_frames": 403,
+      "gt_boxes": 3445,
+      "mean_density": 8.5484,
+      "max_density": 12
+    }
+  ]
+}

@@ -313,3 +313,83 @@ MOTIP 官方实现的方向是 current detections 作为 query、historical traj
 - Official references inspected: TrackEval `12c8791b`。
 - Observed implementation: `combine_sequences` 聚合；MOT Challenge 数据 xywh 格式。
 - Parts adopted: 新增 `locatemot/evaluation/two_frame_trackeval.py`，从内存数据构造 raw_data，其余 preproc/similarity/指标/聚合全部复用官方 TrackEval。
+
+---
+
+# Stage L1-A Trajectory-Aware Tracking Evidence（2026-08-07）
+
+## Module: DanceTrack split（32 train / 8 calibration / 25 held-out val）
+
+- Scientific purpose: video-level disjoint、official val 全程 held-out。
+- Official references inspected: DanceTrack 官方 train/val 目录结构（MOTChallenge 格式）。
+- Repository commits: 无（数据集只读）。
+- Files inspected: `/data1/LWR/vranlee/DATASETS/JDE/dancetrack/{train,val}` 的 `seqinfo.ini`、`gt/gt.txt`。
+- Observed implementation: train 40 视频 / val 25 视频；val 列表与 `val_seqmap.txt` 一致。
+- Parts adopted: seed=20260806 固定，按 GT mean density tercile 从 train 40 选低/中/高 2/3/3 = 8 个 calibration 视频，其余 32 个为 train；val 25 不参与任何训练/选择。
+- Parts intentionally not adopted: 旧 GLEE_PMOT 45/10/10 split（seed 20260803）不采用。
+- Reason: 规格指定 32/8/25 与 official val held-out。
+
+## Module: TrajectoryEncoder（T3）
+
+- Scientific purpose: 用最近 K 个可靠 ObjectToken + geometry + time offsets 生成 trajectory token，替代 B6 单帧 reference token。
+- Official references inspected: FDTA `Temporal_Adapter.py`（History_motion_embedding：6 层因果 temporal TransformerEncoderLayer + PositionEmbeddingSine + missing-frame mask）；MOTIP `runtime_tracker.py`（miss_tolerance=30 历史截断）。
+- Repository commits: FDTA `b3b3b778`；MOTIP `ffc0e905`。
+- Files inspected: 同上 + `trajectory_modeling.py`、`id_decoder.py`。
+- Observed implementation: FDTA 用因果时间 transformer + relative time PE 聚合轨迹；MOTIP 用 `(T,N,...)` 缓冲并截断。
+- Parts adopted: 2 层轻量 temporal transformer（因果 mask、relative time embedding、box geometry embedding、missing mask）；K=8。
+- Parts intentionally not adopted: 6 层大 adapter、ID 词表头。
+- Reason for final design: 冻结 B6 的前提下只需要轻量 reference 增强；K=8 是 MOTIP 30 帧窗口按规格建议的小型化，控制训练成本同时足以形成轨迹。
+
+## Module: MotionPredictor（T4）
+
+- Scientific purpose: 预测当前帧期望 box（dx,dy,dw,dh），增强 relation feature。
+- Official references inspected: MATR arXiv:2509.21715（NO VERIFIED OFFICIAL CODE FOUND）；FDTA temporal adapter 提供历史运动建模证据。
+- Repository commits: 无官方 MATR commit 可固定。
+- Files inspected: FDTA `Temporal_Adapter.py`；OC-SORT `ocsort.py`（恒速 Kalman 作对照）。
+- Observed implementation: FDTA 用 transformer 隐含建模运动；OC-SORT 用显式恒速 Kalman。
+- Parts adopted: 小型 2 层 MotionMLP（输入最近 2–4 个 box + time delta，输出 Δx Δy Δw Δh），SmoothL1 motion loss；保留 IoU(last,candidate) 并新增 IoU(pred,candidate)、distance、motion residual。
+- Parts intentionally not adopted: 复杂 ODE/diffusion/state-space motion。
+- Reason for final design: 规格要求最小可验证设计；无官方 MATR 代码时标记 paper-guided clean implementation。
+
+## Module: MemoryFusion（T5）
+
+- Scientific purpose: 短期 token 缓冲 + 长期 anchor token 融合，提供跨帧稳定 reference。
+- Official references inspected: MeMOTR `query_updater.py`（long_memory EMA、short_memory fusion、高可信才写）。
+- Repository commits: MeMOTR 本地 `references/memory_tracking/MeMOTR`（L0-D 审计）。
+- Files inspected: `models/query_updater.py`。
+- Observed implementation: `long_memory = (1-lambda)*long_memory + lambda*output_embed`，`is_pos` 才写；memory attention q/k 均加 query_pos。
+- Parts adopted: anchor token 永久保留；memory 仅在 B6 高可信匹配时写入；轻量 attention/加权融合。
+- Parts intentionally not adopted: 完整 multi-head memory bank、与检测联合训练。
+- Reason for final design: T5 只需最小 memory 证明价值；避免掩盖 T3/T4 归因。
+
+## Module: Lost/Reactivation（T6）
+
+- Scientific purpose: 未匹配 track 保留并能在 candidate 重现时恢复旧 ID。
+- Official references inspected: MOTIP `runtime_tracker.py`（miss_tolerance 内保留）、MeMOTR（long_memory 保留）、MOTR（track query 传播）。
+- Files inspected: 同上。
+- Observed implementation: 三家均在未匹配期间保留 track 状态，靠身份/记忆特征在后续帧再关联。
+- Parts adopted: `lost_age>=2` 后进入 lost 列表；max_lost_age 默认 30（OC-SORT/MOTIP 同量级）；reactivation 用 PBD box-end cos + trajectory 相似度 + motion 加权 IoU（gap 增大时 motion 权重衰减）。
+- Parts intentionally not adopted: 复杂 adaptive lifecycle。
+- Reason for final design: 规格明确生命周期最小化，reactivation 是本阶段唯一的 lost 相关学习/规则模块。
+
+## Module: B6 local kernel（T2/T3–T6 共享）
+
+- Scientific purpose: 冻结 L0-D B6 作为 local association kernel。
+- Official references inspected: 本项目 L0-D 审计（GRAE/TADN/GMTracker/GTR/FDTA/MOTIP）。
+- Repository commits: B6 checkpoint `outputs/l0_d/checkpoints/b6/best.pt`。
+- Files inspected: `locatemot/models/track_decoder/relation_track_decoder.py`、`relation_features.py`、`inference.py`。
+- Observed implementation: `FinalAffinity = BaseAffinity + alpha*tanh(Residual)`；`[M,N+M]` Hungarian；NO_MATCH 分类头。
+- Parts adopted: 每帧以 last accepted token（或 trajectory token）为 ref，当前 candidates 为 cur，跑冻结 B6；仅阈值在 calibration 适配。
+- Parts intentionally not adopted: 不再训练 B6 任何参数。
+- Reason for final design: 规格要求 T3–T6 增益可归因于 trajectory/motion/memory/reactivation，而非重新训练 B6。
+
+## Module: D-CTRL detector（YOLOX-X DanceTrack）
+
+- Scientific purpose: 固定强 detector 分离 detection 上限与 association 能力。
+- Official references inspected: OC-SORT 官方 `docs/MODEL_ZOO.md`（DanceTrack YOLOX 权重继承自 ByteTrack）、`exps/example/mot/yolox_dancetrack_val.py`、`tools/run_ocsort_dance.py`。
+- Repository commits: OC-SORT `8462e7e7`。
+- Files inspected: `yolox/evaluators/mot_evaluator_dance.py`、`yolox/models/yolo_head.py`、`yolox/data/data_augment.py`。
+- Observed implementation: YOLOX-X（depth 1.33 / width 1.25），num_classes=1，test_size=(800,1440)，test_conf=0.1，nmsthre=0.7。
+- Parts adopted: 本地官方 ByteTrack DanceTrack 权重 + OC-SORT vendored YOLOX 推理输出 detections；权重 sha256 `b8d1afba...`。
+- Parts intentionally not adopted: 不下载来源不明权重；不修改官方代码。
+- Reason for final design: 可复现、许可兼容、DanceTrack 常用。
