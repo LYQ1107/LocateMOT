@@ -78,7 +78,7 @@ def main():
 
     split_cfg = json.load(open(os.path.join(ROOT, "configs", "data", f"l1_a_dancetrack_{args.split}.json")))
     vids = [v["video_id"] for v in split_cfg["videos"]]
-    gt_root = os.path.join(DANCETRACK, args.split)
+    gt_root = os.path.join(DANCETRACK, "train" if args.split == "calibration" else args.split)
     tracker_root = os.path.join(out_dir, "trackeval")
     analyzed = analyze_splits(gt_root, tracker_root, variants, vids, protocols=protocols)
     rows = aggregate(analyzed)

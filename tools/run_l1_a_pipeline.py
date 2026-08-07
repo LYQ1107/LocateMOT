@@ -49,7 +49,7 @@ def ctrl_done(split):
     return n
 
 
-def wait_for(label, fn, expected, timeout_hours=48, stall_minutes=45):
+def wait_for(label, fn, expected, timeout_hours=48, stall_minutes=45, on_stall=None):
     t0 = time.time()
     last = -1
     last_t = time.time()
@@ -62,6 +62,9 @@ def wait_for(label, fn, expected, timeout_hours=48, stall_minutes=45):
             last, last_t = cur, time.time()
         elif time.time() - last_t > stall_minutes * 60:
             print(f"[pipeline] WARNING {label} stalled at {cur}/{expected}", flush=True)
+            if on_stall is not None:
+                on_stall()
+                on_stall = None
         elapsed = time.time() - t0
         if elapsed > timeout_hours * 3600:
             print(f"[pipeline] TIMEOUT {label}: {cur}/{expected}", flush=True)
@@ -78,18 +81,43 @@ def run(cmd):
         raise RuntimeError(f"command failed: {cmd}")
 
 
+def launch_dla_shards(split, gpus):
+    nshards = min(len(gpus), 6)
+    procs = []
+    for si, gpu in enumerate(gpus[:nshards]):
+        p = subprocess.Popen([
+            PY, "tools/cache_dancetrack_locateanything.py",
+            "--split", split, "--gpu", str(gpu), "--shard", str(si),
+            "--num-shards", str(nshards), "--query-id", "d1",
+            "--protocol", "person", "--out", "outputs/l1_a",
+        ], cwd=ROOT)
+        procs.append(p)
+    return procs
+
+
 def main():
     import argparse
     ap = argparse.ArgumentParser()
     ap.add_argument("--gpu", type=int, default=3)
     ap.add_argument("--ctrl-gpu", type=int, default=9)
+    ap.add_argument("--cache-gpus", default="3,4,5,6,7,8")
     ap.add_argument("--skip-cache-wait", action="store_true")
     args = ap.parse_args()
+    cache_gpus = [int(x) for x in args.cache_gpus.split(",")]
 
     if not args.skip_cache_wait:
-        for split in ("train", "calibration", "val"):
+        for split in ("train", "calibration"):
             exp = expected_frames(split)
-            wait_for(f"D-LA cache {split}", lambda s=split: dla_done(s), exp)
+            wait_for(f"D-LA cache {split}", lambda s=split: dla_done(s), exp,
+                     on_stall=(lambda s=split: launch_dla_shards(s, cache_gpus)))
+
+    # launch val cache if not complete (train/calibration done by now)
+    if dla_done("val") < expected_frames("val"):
+        procs = launch_dla_shards("val", cache_gpus)
+        wait_for("D-LA cache val", lambda: dla_done("val"), expected_frames("val"))
+        for p in procs:
+            p.wait()
+        print("[pipeline] val cache launch finished", flush=True)
 
     # D-CTRL completeness (resume-safe)
     for split in ("calibration", "train", "val"):

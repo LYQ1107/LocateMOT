@@ -49,7 +49,8 @@ def load_tracker_txt(path):
 def match_gt_to_tracker(gt_boxes, tr_boxes, thr=0.5):
     """For each GT box, best tracker box with IoU>=thr -> (tid, iou) or None."""
     out = {}
-    for oid, g in gt_boxes:
+    for g in gt_boxes:
+        oid = g[4]
         best, best_iou = None, 0.0
         for t in tr_boxes:
             iou = _iou(g[:4], t[:4])
@@ -88,7 +89,7 @@ def analyze_video(gt, tr, video_id):
     for t in frames:
         match = match_gt_to_tracker(gt[t], tr.get(t, []))
         n_gt = len(gt[t])
-        boxes = {oid: g[:4] for oid, g in gt[t]}
+        boxes = {g[4]: g[:4] for g in gt[t]}
         density = density_bucket(n_gt)
         # ambiguity: GT-level top2 IoU overlap
         amb = False
@@ -98,7 +99,8 @@ def analyze_video(gt, tr, video_id):
                     continue
                 if _iou(b, b2) >= 0.1:
                     amb = True
-        for oid, g in gt[t]:
+        for g in gt[t]:
+            oid = g[4]
             prev_box = None
             if oid in last_frame and t - 1 == last_frame[oid]:
                 prev_box = last_box.get(oid)
