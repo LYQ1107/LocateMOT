@@ -85,5 +85,7 @@
     "B2be_cond": 0.6432,
     "B3_cond": 0.6181,
     "B4_cond": 0.6268
-  }
+  },
+  "git_commit": "f8bfe76",
+  "decision": "L0_D_PASS"
 }
