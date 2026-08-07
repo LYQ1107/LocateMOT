@@ -171,3 +171,30 @@
 ### TrackEval-official
 
 - JonathonLuiten/TrackEval，commit `12c8791b`（MIT）。正式评估唯一来源，只新增内存数据适配层，不改指标与聚合。
+
+## Stage L1-A 新增参考仓库（2026-08-07，详见 docs/l1_a_reference_audit.md 与 configs/l1_a_reference_repositories.json）
+
+### association_2025_2026/OC-SORT
+
+- noahcao/OC-SORT（CVPR 2023），commit `8462e7e729a93ccd3bd995c0a79a890336cb3a0b`，MIT（YOLOX 部分 Apache-2.0）。
+- 用途：T1 motion baseline（7 维恒速 Kalman + OCM 第二轮）；shared birth/lifecycle；D-CTRL YOLOX-X DanceTrack 检测引擎。
+- 本地权重：ByteTrack 官方 DanceTrack YOLOX-X（sha256 `b8d1afba...`），已存在服务器，未重新下载。
+
+### identity_decoding/MOTIP 与 MOTIP-2
+
+- MOTIP commit `ffc0e905`（MIT），MOTIP-2 commit `012856c1`（MIT）。
+- 用途：trajectory history buffer、miss_tolerance 截断、ID 词表思想（本阶段不复制 ID 词表实现）。
+
+### memory_tracking/MeMOTR
+
+- MCG-NJU/MeMOTR（ICCV 2023），MIT。
+- 用途：long_memory EMA 更新、高可信才写 memory（T5 设计依据）。
+
+### association_transformers/MOTR
+
+- megvii-research/MOTR（ECCV 2022），MIT。
+- 用途：track query 传播与 unmatched track 保留（lost 语义依据）。
+
+### MATR（arXiv:2509.21715）
+
+- 检索结论：NO VERIFIED OFFICIAL CODE FOUND；`vl2g/MATR` 为不同论文实现，已排除。本阶段如使用其思想，标记 paper-guided clean implementation。

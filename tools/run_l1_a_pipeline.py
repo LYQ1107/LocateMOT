@@ -49,6 +49,13 @@ def ctrl_done(split):
     return n
 
 
+def ctrl_running(split):
+    import subprocess
+    r = subprocess.run(["pgrep", "-f", f"cache_dancetrack_yolox.py --split {split}"],
+                       capture_output=True, text=True)
+    return bool(r.stdout.strip())
+
+
 def wait_for(label, fn, expected, timeout_hours=48, stall_minutes=45, on_stall=None):
     t0 = time.time()
     last = -1
@@ -123,8 +130,13 @@ def main():
     for split in ("calibration", "train", "val"):
         exp = expected_frames(split)
         if ctrl_done(split) < exp:
-            run([OCPY, "tools/cache_dancetrack_yolox.py", "--split", split,
-                 "--gpu", str(args.ctrl_gpu)])
+            if ctrl_running(split):
+                print(f"[pipeline] D-CTRL {split} already running; waiting", flush=True)
+                while ctrl_done(split) < exp and ctrl_running(split):
+                    time.sleep(120)
+            if ctrl_done(split) < exp:
+                run([OCPY, "tools/cache_dancetrack_yolox.py", "--split", split,
+                     "--gpu", str(args.ctrl_gpu)])
 
     # train temporal modules
     ckpt = "outputs/l1_a/checkpoints/temporal/best.pt"
