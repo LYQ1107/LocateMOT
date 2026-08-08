@@ -129,6 +129,7 @@ def main():
     ap.add_argument("--gpu", type=int, default=3)
     ap.add_argument("--ctrl-gpu", type=int, default=9)
     ap.add_argument("--cache-gpus", default="3,4,5,6,7,8")
+    ap.add_argument("--start-variant", default="T0")
     ap.add_argument("--skip-cache-wait", action="store_true")
     args = ap.parse_args()
     cache_gpus = [int(x) for x in args.cache_gpus.split(",")]
@@ -146,8 +147,11 @@ def main():
     if not os.path.exists(os.path.join(ROOT, ckpt)):
         run([PY, "tools/train_l1_a_trajectory.py", "--gpu", str(args.gpu)])
 
-    # val tracker runs (D-LA main path first)
-    run([PY, "tools/run_l1_a_tracker.py", "--variants", "T0,T1,T2,T3,T4,T5,T6",
+    # val tracker runs (D-LA main path first); --start-variant allows resume
+    all_variants = ["T0", "T1", "T2", "T3", "T4", "T5", "T6"]
+    if args.start_variant in all_variants:
+        all_variants = all_variants[all_variants.index(args.start_variant):]
+    run([PY, "tools/run_l1_a_tracker.py", "--variants", ",".join(all_variants),
          "--split", "val", "--gpu", str(args.gpu), "--protocol", "dla",
          "--temporal-ckpt", ckpt])
 

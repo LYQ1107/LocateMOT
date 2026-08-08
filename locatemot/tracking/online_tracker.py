@@ -58,7 +58,7 @@ def _raw_feature_arrays(feats: List[Dict[str, np.ndarray]], device):
         "pbd_be": stack("pbd_be", (2048,)),
         "region": stack("region", (4608,)),
         "geom": stack("geom", (5,)),
-        "gen": torch.as_tensor([[f.get("gen", 0.0) for f in feats]], dtype=torch.float32, device=device),
+        "gen": torch.as_tensor([[float(f.get("gen", 0.0)) for f in feats]], dtype=torch.float32, device=device),
     }
 
 
