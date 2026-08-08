@@ -98,7 +98,8 @@ def _load_ctrl_frame(cache_root, vid, fid):
     txt = os.path.join(cache_root, vid, f"{fid:06d}.txt")
     if not os.path.exists(txt):
         return None
-    rows = np.loadtxt(txt, delimiter=",").reshape(-1, 5)
+    rows = np.loadtxt(txt, delimiter=",").reshape(-1, 6)
+    rows = rows[:, 1:]  # drop frame id column
     return rows
 
 

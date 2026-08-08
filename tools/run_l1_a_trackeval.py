@@ -149,7 +149,8 @@ def main():
     variants = args.variants.split(",")
     gt_dir, trk_dir, vids = build_data_dirs(args.protocol, args.split)
     # only eval variants that have outputs
-    present = [v for v in variants if os.path.exists(os.path.join(trk_dir, v, "data"))]
+    split_dir = os.path.join(trk_dir, f"DanceTrack-{args.split}")
+    present = [v for v in variants if os.path.exists(os.path.join(split_dir, v, "data"))]
     if not present:
         print("[trackeval] no tracker outputs found")
         return

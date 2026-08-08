@@ -18,8 +18,8 @@ def _bbox_to_z(bbox):
 
 def _z_to_bbox(z, score=None):
     z = np.asarray(z).ravel()
-    w = np.sqrt(z[2] * z[3])
-    h = z[2] / w
+    w = np.sqrt(max(float(z[2] * z[3]), 1e-12))
+    h = z[2] / w if w > 0 else 0.0
     b = np.array([z[0] - w / 2, z[1] - h / 2, z[0] + w / 2, z[1] + h / 2])
     return np.concatenate([b, [score]]) if score is not None else b
 

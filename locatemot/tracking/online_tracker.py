@@ -415,7 +415,7 @@ class OnlineTracker:
     def _decode_assignments(self, match, nm):
         out = []
         for r, c in hungarian_with_no_match(match, nm):
-            if isinstance(c, str):
+            if c == "NO_MATCH":
                 continue
             out.append((r, int(c.split(":")[1]), float(match[r, int(c.split(":")[1])])))
         return out
