@@ -123,7 +123,10 @@ def flatten(res):
                 if k.startswith("CLR_"):
                     k = k[4:]
                 prefix = {"CLEAR": "CLEAR", "Identity": "Identity"}.get(metric_name, metric_name)
-                row[f"{prefix}_{k}"] = metric_value(v)
+                mv = metric_value(v)
+                row[f"{prefix}_{k}"] = mv
+                if prefix == "HOTA" and k in ("HOTA", "DetA", "AssA", "LocA", "OWTA", "HOTALocA"):
+                    row[f"{prefix}_{k}(0)"] = mv
         out[tracker] = {"combined": row, "per_seq": {}}
         for seq, cls_data in seqs.items():
             if seq == "COMBINED_SEQ":
@@ -135,7 +138,10 @@ def flatten(res):
                     if k.startswith("CLR_"):
                         k = k[4:]
                     prefix = {"CLEAR": "CLEAR", "Identity": "Identity"}.get(metric_name, metric_name)
-                    per[f"{prefix}_{k}"] = metric_value(v)
+                    mv = metric_value(v)
+                    per[f"{prefix}_{k}"] = mv
+                    if prefix == "HOTA" and k in ("HOTA", "DetA", "AssA", "LocA", "OWTA", "HOTALocA"):
+                        per[f"{prefix}_{k}(0)"] = mv
             out[tracker]["per_seq"][seq] = per
     return out
 
