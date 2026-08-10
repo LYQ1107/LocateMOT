@@ -184,7 +184,15 @@ class InstrumentedLocateAnythingGeneration:
         # saving). Layer indices: n_layers = post-norm output (official
         # hidden_states[-1]); n_layers - 1 = last layer output (official
         # hidden_states[-2]).
-        n_layers = model.language_model.config.num_hidden_layers
+        lm = model.language_model
+        while type(lm).__name__ in ("PeftModelForCausalLM", "LoraModel"):
+            # PEFT-wrapped LocateAnything-LoRA: unwrap to the base Qwen model.
+            # (A plain Qwen2ForCausalLM also exposes a `base_model` property
+            # pointing to Qwen2Model, so we must not follow that chain.)
+            lm = lm.base_model
+        if hasattr(lm, "model") and type(lm.model).__name__.endswith("ForCausalLM"):
+            lm = lm.model
+        n_layers = lm.config.num_hidden_layers
         layer_indices = [n_layers, n_layers - 1]
         hook_capture: Dict[str, torch.Tensor] = {}
 
@@ -195,9 +203,9 @@ class InstrumentedLocateAnythingGeneration:
             return _hook
 
         hooks = []
-        hooks.append(model.language_model.model.norm.register_forward_hook(_make_hook("last")))
+        hooks.append(lm.model.norm.register_forward_hook(_make_hook("last")))
         hooks.append(
-            model.language_model.model.layers[-1].register_forward_hook(_make_hook("penultimate"))
+            lm.model.layers[-1].register_forward_hook(_make_hook("penultimate"))
         )
 
         def _prepare_mtp(current_generated):

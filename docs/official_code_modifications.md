@@ -1,28 +1,43 @@
-# 官方代码修改记录
+# Official Code Modifications（Stage L1-C）
 
-当前状态：尚未修改任何官方仓库文件。
+所有修改均基于 NVlabs/Eagle commit 783f656d；修改目的仅为 A100 兼容与
+LocateMOT 数据接入，不改变官方训练语义。
 
-## 原则
+## 1. `Embodied/eaglevl/train/locany_finetune_magi_stream.py`
 
-- `third_party/Eagle` 原则上只读；通过 wrapper、forward hook、subclass、adapter 或最小 monkey patch 提取 hidden states。
-- 若必须修改官方文件：
-  - 修改范围最小；
-  - 保存独立 patch 到 `patches/`；
-  - 记录原文件、修改行、原因；
-  - 不把修改伪装成官方实现。
+- 位置：LocateAnything 加载路径（约 line 1337）与 vision-only 路径
+  （约 line 1384）。
+- 修改：`config.vision_config._attn_implementation = 'flash_attention_2'`
+  → `'eager'`。
+- 原因：A100 无 magi/flash_attn；官方 sdpa_attention 的 mask 形状在
+  transformers 4.57 下报 CUDA driver error（实测），eager 路径可运行。
+- 影响：视觉编码使用官方 eager attention（内存/速度略低，数值等价）。
 
-## 计划中的最小接入点（尚未实施）
+## 2. `Embodied/eaglevl/model/locany/modeling_locateanything.py`
 
-1. PBD hidden-state hook：
-   - 在 `Embodied/eaglevl/utils/locany/modeling_locateanything.py::generate` 的 `outputs = self.language_model(**prepare_inputs)` 处通过 forward hook / subclass 捕获 `outputs.hidden_states`（对应 MTP 6-token block）。
-   - 优先不修改文件：注册 `forward_hook` 到语言模型，或用子类覆盖 `generate`。
-2. Visual prompt worker：
-   - 复用 `locateanything_worker.py` 的 `_crop_visual_prompt` / `_build_messages`（通过 import 调用，不复制实现，若复制则保留 NVIDIA 版权头并记录）。
-3. 训练数据：
-   - 不修改官方 `tools.py`；生成符合官方 JSONL 格式的两帧数据。
+- 位置：`LocateAnythingForConditionalGeneration.__init__`（约 line 95）。
+- 修改：vision attn 同样 `flash_attention_2` → `'eager'`。
+- 原因：模型类自身会覆盖训练脚本设置的 vision attn（实测），必须同步改。
 
-## 修改记录表
+## 3. A100 运行参数（不改代码，仅记录）
 
-| 日期 | 文件 | 修改内容 | 原因 | patch 文件 |
-| --- | --- | --- | --- | --- |
-| （无） | - | - | - | - |
+- `--attn_implementation sdpa`（文本 LLM 用 SDPA；官方默认 magi 仅
+  Hopper/Blackwell）。
+- `--max_seq_length 4096 --max_num_tokens_per_sample 4096
+  --max_num_tokens 4096 --video_total_pixels 8192 --packing_buffer_size 1`
+  （A100 40GB 内存限制；官方 TRAINING.md 说明 SDPA 仅支持 ~4K）。
+- `PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True`。
+
+## 4. 依赖适配（非官方代码修改）
+
+- `third_party/eagle_deps`：datasets/dotenv/filetype/bitstring/ebmlite/
+  decord/hjson/msgpack/py-cpuinfo/protobuf 3.20.3/liger-kernel v0.3.1
+  （官方要求 0.3.1；PyPI 镜像只有 0.8.1，API 不兼容，从 GitHub tag 安装）。
+- `third_party/DeepSpeed`：官方要求 deepspeed==0.15.4；镜像无该版本，
+  从 GitHub v0.15.4 clone 源码加入 PYTHONPATH（未编译 C++ ops）。
+
+## 5. 验证结果（smoke）
+
+- 5 步训练 loss=3.15（finite），trainable params=119,734,272（LLM LoRA
+  rank 64 + MLP connector，base LLM/backbone 冻结）。
+- checkpoint save→load→同一 prompt 生成正常（输出 PBD box tokens）。

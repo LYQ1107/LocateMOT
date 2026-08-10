@@ -12,6 +12,7 @@ import numpy as np
 import torch
 
 from locatemot.models.track_decoder.features import category_hash_embedding
+from locatemot.models.l1d_association import L1DAssociator, compute_affinity_features
 from locatemot.tracking.association import (
     center_dist_matrix,
     hungarian_max,
@@ -73,6 +74,8 @@ class OnlineTracker:
         self,
         variant: str,
         b6=None,
+        ua=None,
+        l1d=None,
         trajectory_encoder=None,
         motion_predictor=None,
         memory_fusion=None,
@@ -86,9 +89,16 @@ class OnlineTracker:
         min_hits: int = 3,
         memory_conf_threshold: float = 0.5,
         image_size=(1280, 720),
+        output_all_candidates: bool = False,
     ):
         self.variant = variant
         self.b6 = b6
+        self.ua = ua
+        self.l1d = l1d
+        self.l1d_weights = (0.7, 0.3, 0.0)
+        self.l1d_threshold = 0.3
+        self.l1d_delta_scale = 0.6
+        self.l1d_rel_threshold = 0.0
         self.traj_enc = trajectory_encoder
         self.motion_pred = motion_predictor
         self.memory_fusion = memory_fusion
@@ -102,6 +112,7 @@ class OnlineTracker:
         self.min_hits = min_hits
         self.memory_conf_threshold = memory_conf_threshold
         self.image_size = image_size
+        self.output_all_candidates = output_all_candidates
         self.tracks: List[TrackState] = []
         self._next_id = 0
         self.frame_count = 0
@@ -248,10 +259,18 @@ class OnlineTracker:
         tracks = self._active_tracks()
         n = len(cur_boxes)
 
-        if self.variant == "T0":
+        if self.variant in ("T0", "C0"):
             assigns = self._associate_t0(tracks, cur_boxes)
-        elif self.variant == "T1":
+        elif self.variant in ("T1", "C1"):
             assigns = self._associate_t1(tracks, cur_boxes)
+        elif self.variant == "C2":
+            assigns = self._associate_pbd(tracks, cur_feats, cur_boxes)
+        elif self.variant == "C3":
+            assigns = self._associate_iou_pbd(tracks, cur_feats, cur_boxes)
+        elif self.variant == "L1D":
+            assigns = self._associate_l1d(tracks, cur_feats, cur_boxes, frame_id)
+        elif self.variant == "UA":
+            assigns = self._associate_ua(tracks, cur_feats, cur_boxes, frame_id)
         else:
             assigns = self._associate_learned(tracks, cur_feats, cur_boxes, frame_id)
 
@@ -279,12 +298,28 @@ class OnlineTracker:
                 trk.status = TERMINATED
 
         # births: unmatched candidates -> tentative tracks (shared shell)
+        born = []
         for i, cand in enumerate(candidates):
             if i in matched_det:
                 continue
-            self._birth(frame_id, cand)
+            born.append(self._birth(frame_id, cand))
 
         self.tracks = [t for t in self.tracks if t.status != TERMINATED]
+        if self.output_all_candidates:
+            cand_to_trk = {}
+            for trk_idx, cand_idx, _score in assigns:
+                cand_to_trk[cand_idx] = tracks[trk_idx]
+            out = []
+            born_iter = iter(born)
+            for i, cand in enumerate(candidates):
+                trk = cand_to_trk.get(i)
+                if trk is None:
+                    trk = next(born_iter)
+                out.append({
+                    "track_id": trk.track_id, "box": cand["box"].copy(),
+                    "score": float(cand["features"].get("gen", 1.0)),
+                })
+            return out
         out = []
         for trk in self.tracks:
             if trk.status == ACTIVE and trk.last_frame == frame_id:
@@ -293,11 +328,12 @@ class OnlineTracker:
 
     def _birth(self, frame_id, cand):
         feats = cand["features"]
+        status = ACTIVE if self.output_all_candidates else TENTATIVE
         trk = TrackState(
             track_id=self._new_id(),
             last_box=np.asarray(cand["box"], dtype=np.float64),
             last_frame=frame_id,
-            status=TENTATIVE,
+            status=status,
             hits=1,
             age=1,
             birth_frame=frame_id,
@@ -306,9 +342,12 @@ class OnlineTracker:
                          float(feats.get("gen", 0.0)))],
             confidence=float(feats.get("gen", 0.0)),
         )
-        if self.variant == "T1":
+        if self.variant in ("T1", "C1", "L1D"):
             trk.kalman = KalmanBoxTracker7(np.asarray(cand["box"], dtype=np.float64))
+        if self.variant == "L1D":
+            trk.anchor_features = feats
         self.tracks.append(trk)
+        return trk
 
     def _update_track(self, trk, frame_id, cand, match_score=0.0):
         new_box = np.asarray(cand["box"], dtype=np.float64)
@@ -411,6 +450,190 @@ class OnlineTracker:
                 match, tracks, cur_feats, cur_boxes, frame_id, ref_out, cur_out, ref_feats)
         nm = nm - self.no_match_theta - self.no_match_bias
         return self._decode_assignments(match, nm)
+
+    # ---------------- L1-C baselines (C2/C3) and UA ----------------
+    def _feat_matrix(self, feats, key="pbd_be"):
+        M = len(feats)
+        arr = np.zeros((M, 2048), dtype=np.float32)
+        for i, f in enumerate(feats):
+            v = f.get(key)
+            if v is not None:
+                arr[i] = np.asarray(v, dtype=np.float32)
+        n = np.linalg.norm(arr, axis=1, keepdims=True)
+        return arr / np.maximum(n, 1e-6)
+
+    def _associate_pbd(self, tracks, cur_feats, cur_boxes):
+        if not tracks or len(cur_boxes) == 0:
+            return []
+        refs = [trk.history[-1].features if trk.history else trk.last_features
+                for trk in tracks]
+        ref = self._feat_matrix(refs)
+        cur = self._feat_matrix(cur_feats)
+        sim = ref @ cur.T
+        thresh = getattr(self, "pbd_thresh", 0.3)
+        return [(r, c, float(sim[r, c])) for r, c in hungarian_max(sim, thresh)]
+
+    def _associate_iou_pbd(self, tracks, cur_feats, cur_boxes):
+        if not tracks or len(cur_boxes) == 0:
+            return []
+        refs = [trk.history[-1].features if trk.history else trk.last_features
+                for trk in tracks]
+        ref = self._feat_matrix(refs)
+        cur = self._feat_matrix(cur_feats)
+        sim = ref @ cur.T
+        iou = iou_matrix(self._track_boxes(tracks), np.asarray(cur_boxes, dtype=np.float64))
+        wi = getattr(self, "iou_w", 0.5)
+        wp = getattr(self, "pbd_w", 0.5)
+        cost = wi * iou + wp * sim
+        thresh = getattr(self, "c3_thresh", 0.3)
+        return [(r, c, float(cost[r, c])) for r, c in hungarian_max(cost, thresh)]
+
+    def _associate_ua(self, tracks, cur_feats, cur_boxes, frame_id):
+        if not tracks or len(cur_boxes) == 0:
+            return []
+        if self.ua is None:
+            raise RuntimeError("UA variant requires ua model")
+        win = build_window_tensors(tracks, self.ua.max_k, frame_id, device=self.device)
+        T = len(tracks)
+        N = len(cur_feats)
+        K = self.ua.max_k
+        cur_pbd = np.zeros((1, N, 2048), np.float32)
+        cur_reg = np.zeros((1, N, 4608), np.float32)
+        cur_geom = np.zeros((1, N, 5), np.float32)
+        cur_norm = np.zeros((1, N, 4), np.float32)
+        cur_gen = np.zeros((1, N, 1), np.float32)
+        iw, ih = self.image_size
+        diag = float(np.hypot(iw, ih)) + 1e-6
+        for i, f in enumerate(cur_feats):
+            cur_pbd[0, i] = np.asarray(f.get("pbd", np.zeros(2048, np.float32)), dtype=np.float32)
+            cur_reg[0, i] = np.asarray(f.get("region", np.zeros(4608, np.float32)), dtype=np.float32)
+            cur_geom[0, i] = np.asarray(f.get("geom", np.zeros(5, np.float32)), dtype=np.float32)
+            bx = np.asarray(cur_boxes[i], dtype=np.float64)
+            cur_norm[0, i] = [bx[0] / iw, bx[1] / ih, bx[2] / iw, bx[3] / ih]
+            cur_gen[0, i, 0] = float(f.get("gen", 0.0))
+        trk_last = np.zeros((1, T, 4), np.float32)
+        trk_mask = (~win["mask"]).to(self.device).unsqueeze(0)  # [1,T,K] True=valid
+        trk_valid = trk_mask.any(dim=-1)
+        gap = torch.zeros(1, T, dtype=torch.float32, device=self.device)
+        for b in range(T):
+            if trk_valid[0, b]:
+                last_box = tracks[b].last_box
+                trk_last[0, b] = [last_box[0] / iw, last_box[1] / ih,
+                                  last_box[2] / iw, last_box[3] / ih]
+                last_frame = tracks[b].history[-1].frame if tracks[b].history else frame_id - 1
+                gap[0, b] = max(1, frame_id - last_frame)
+        ref_pbd = win["pbd"][:, -1, :].unsqueeze(0)
+        ref_reg = win["region"][:, -1, :].unsqueeze(0)
+        rp = torch.nn.functional.normalize(ref_pbd, dim=-1)
+        cp = torch.nn.functional.normalize(torch.as_tensor(cur_pbd, device=self.device), dim=-1)
+        rr = torch.nn.functional.normalize(ref_reg, dim=-1)
+        cr = torch.nn.functional.normalize(torch.as_tensor(cur_reg, device=self.device), dim=-1)
+        pbd_cos = torch.bmm(rp, cp.transpose(1, 2))
+        region_cos = torch.bmm(rr, cr.transpose(1, 2))
+        batch = {
+            "cur_pbd": torch.as_tensor(cur_pbd, device=self.device),
+            "cur_region": torch.as_tensor(cur_reg, device=self.device),
+            "cur_geom": torch.as_tensor(cur_geom, device=self.device),
+            "cur_gen": torch.as_tensor(cur_gen, device=self.device),
+            "cur_norm_geom": torch.as_tensor(cur_norm, device=self.device),
+            "cur_mask": torch.ones(1, N, dtype=torch.bool, device=self.device),
+            "trk_pbd": win["pbd"].unsqueeze(0).to(self.device),
+            "trk_region": win["region"].unsqueeze(0).to(self.device),
+            "trk_geom": win["geom"].unsqueeze(0).to(self.device),
+            "trk_gen": win["gen"].unsqueeze(0).to(self.device),
+            "trk_times": win["gaps"].long().unsqueeze(0).to(self.device),
+            "trk_mask": trk_mask,
+            "trk_last_geom": torch.as_tensor(trk_last, device=self.device),
+            "trk_valid": trk_valid,
+            "gap": gap,
+            "pbd_cos": pbd_cos,
+            "region_cos": region_cos,
+        }
+        with torch.no_grad():
+            pred = self.ua(batch)
+        scores = pred["scores"][0].cpu().numpy()  # [N,T]
+        new_logits = pred["new_logits"][0].cpu().numpy() - float(
+            getattr(self, "new_margin", 0.0))
+        return self._decode_ua(scores, new_logits)
+
+    def _associate_l1d(self, tracks, cur_feats, cur_boxes, frame_id):
+        if not tracks or len(cur_boxes) == 0:
+            return []
+        if self.l1d is None:
+            raise RuntimeError("L1D variant requires l1d model")
+        T = len(tracks)
+        N = len(cur_feats)
+        tb = np.zeros((T, 4), np.float64)
+        pb = np.zeros((T, 4), np.float64)
+        pred_boxes = np.zeros((T, 4), np.float64)
+        gaps = np.zeros(T, np.float32)
+        ages = np.zeros(T, np.float32)
+        hits = np.zeros(T, np.float32)
+        ref = np.zeros((T, 2048), np.float32)
+        anchor = np.zeros((T, 2048), np.float32)
+        for i, trk in enumerate(tracks):
+            tb[i] = trk.last_box
+            pb[i] = trk.prev_box if trk.prev_box is not None else trk.last_box
+            pred_boxes[i] = trk.kalman.predict() if trk.kalman is not None else trk.last_box
+            last_frame = trk.history[-1].frame if trk.history else frame_id - 1
+            gaps[i] = max(1, frame_id - last_frame)
+            ages[i] = trk.age
+            hits[i] = trk.hits
+            f = trk.history[-1].features if trk.history else trk.last_features
+            if f and f.get("pbd_be") is not None:
+                ref[i] = np.asarray(f["pbd_be"], dtype=np.float32)
+            if trk.anchor_features and trk.anchor_features.get("pbd_be") is not None:
+                anchor[i] = np.asarray(trk.anchor_features["pbd_be"], dtype=np.float32)
+            else:
+                anchor[i] = ref[i]
+        cb = np.asarray(cur_boxes, dtype=np.float64).reshape(N, 4)
+        cp = np.zeros((N, 2048), np.float32)
+        cg = np.zeros(N, np.float32)
+        for i, f in enumerate(cur_feats):
+            if f.get("pbd_be") is not None:
+                cp[i] = np.asarray(f["pbd_be"], dtype=np.float32)
+            cg[i] = float(f.get("gen", 0.0))
+        feats = compute_affinity_features(
+            tb, cb, ref, anchor, cp, cg, gaps, ages, hits, pb,
+            self.l1d_weights, self.image_size,
+            motion_pred_boxes=pred_boxes)
+        batch = {
+            "pair_feats": torch.as_tensor(feats["pair_feats"][None], device=self.device),
+            "track_feats": torch.as_tensor(feats["track_feats"][None], device=self.device),
+            "cand_feats": torch.as_tensor(feats["cand_feats"][None], device=self.device),
+            "base": torch.as_tensor(feats["base"][None], device=self.device),
+            "trk_mask": torch.ones(1, T, dtype=torch.bool, device=self.device),
+            "cand_mask": torch.ones(1, N, dtype=torch.bool, device=self.device),
+        }
+        with torch.no_grad():
+            pred = self.l1d(batch)
+            final = pred["final"][0].cpu().numpy()
+        if self.l1d_rel_threshold > 0.0 or abs(self.l1d_delta_scale - 0.6) > 1e-6:
+            base = feats["base"]
+            rel = pred["reliability"][0].cpu().numpy()
+            delta = pred["delta"][0].cpu().numpy()
+            gate = rel * (rel >= self.l1d_rel_threshold)
+            final = base + (self.l1d_delta_scale / 0.6) * gate[:, None] * delta
+        return [(r, c, float(final[r, c]))
+                for r, c in hungarian_max(final, self.l1d_threshold)]
+
+    def _decode_ua(self, scores, new_logits):
+        """Candidates rows -> tracks or NEW; one-to-one; all candidates output."""
+        from scipy.optimize import linear_sum_assignment
+        N, T = scores.shape
+        if T == 0:
+            return []
+        cost = -scores.astype(np.float64)
+        dummies = np.full((N, N), 1e6, dtype=np.float64)
+        for i in range(N):
+            dummies[i, i] = -float(new_logits[i])
+        cost = np.concatenate([cost, dummies], axis=1)
+        rows, cols = linear_sum_assignment(cost)
+        out = []
+        for r, c in zip(rows, cols):
+            if c < T:
+                out.append((int(c), int(r), float(scores[r, c])))
+        return out
 
     def _decode_assignments(self, match, nm):
         out = []

@@ -393,3 +393,122 @@ MOTIP 官方实现的方向是 current detections 作为 query、historical traj
 - Parts adopted: 本地官方 ByteTrack DanceTrack 权重 + OC-SORT vendored YOLOX 推理输出 detections；权重 sha256 `b8d1afba...`。
 - Parts intentionally not adopted: 不下载来源不明权重；不修改官方代码。
 - Reason for final design: 可复现、许可兼容、DanceTrack 常用。
+
+# Stage L1-C Unified Association Evidence
+
+## Module: UnifiedAssociationDecoder（UAF/UAL 共享结构）
+
+- Scientific purpose: 学习 P(match(i,j) | track history, candidate set, raw
+  PBD, geometry, motion, competing objects)；替代 L1-B 的 universal identity
+  cosine 路线。
+- Official references inspected: MOTIP `models/motip/id_decoder.py` 与
+  `trajectory_modeling.py`；FDTA `models/fdta/id_decoder.py`；OVTR
+  `models/updater.py`（Category_Information_Propagator /
+  QueryInteractionModule）；COVTrack `ovtrack_roi_head.py`
+  （FeatureFusionModule）。
+- Repository commits: MOTIP ffc0e905（Apache-2.0）、FDTA b3b3b778（MIT）、
+  OVTR 500e72c1（无 LICENSE，只读）、COVTrack（HF 官方副本，Apache-2.0）。
+- Files inspected: 见 `docs/l1_c_reference_audit.md`。
+- Observed implementation:
+  - MOTIP/FDTA：unknown detection 之间 self-attn；unknown→trajectory
+    cross-attn + 因果时间掩码 + relative position embedding；ID logits =
+    词表（K+1，+1 为 new-ID）；ID embedding 由 one-hot 词嵌入得到。
+  - OVTR：active track queries 之间 self-attn 更新 query_tgt；obj_idxes
+    sequence-local ID；miss_tolerance 控制消失。
+  - COVTrack：appearance/geometry/semantic 多 cue 门控融合。
+- Parts adopted: candidate self-attn；track history encoder（因果 2 层
+  Transformer + time embedding + missing mask）；candidate→track cross-attn
+  带 geometry/appearance 关系 bias；K+1 assignment logits（K=当前 active
+  tracks，NEW 为最后一类）；序列内动态 track set。
+- Parts intentionally not adopted: 固定 ID 词表（MOTIP/FDTA 的
+  num_id_vocabulary）；端到端 DETR；LDA 式在线统计变换（HATReID）。
+- Reason for final design: Unified MOT 的 ID 是 sequence-local；动态
+  K+1 是 ID prediction 思想的最小合法等价；冻结 LocateAnything 下训练
+  独立 decoder 可归因。
+
+## Module: Association-Controlled Protocol / Fixed Candidate Manifest
+
+- Scientific purpose: 不同 association 方法必须在完全相同的 box/score 集合上
+  只改变 track ID，使 DetA/LocA/FP/FN 固定，才能归因 AssA/IDF1/IDSW。
+- Official references inspected: 本项目 L1-A 报告（T4–T6 DetA 变化导致无法
+  归因）与 TrackEval 官方（`references/TrackEval-official`）。
+- Files inspected: `tools/build_l1c_fixed_manifest.py`、
+  `tools/run_l1c_tracker.py`、`tools/run_l1c_trackeval.py`。
+- Observed implementation: manifest 每帧存 boxes/scores/GT/matched +
+  sha256；所有方法从同一 frozen cache 读取同一候选集合。
+- Parts adopted: 冻结候选 + hash 校验；共享 birth/lifecycle shell
+  （min_hits=3, max_age=30）；NEW 规则对所有方法一致。
+- Parts intentionally not adopted: 不复制特征（manifest 只存索引，
+  训练/推理直接读 cache）。
+- Reason for final design: 避免重复存储 ~15GB 特征；cache 本身是冻结的。
+
+## Module: Visual Prompt LoRA Data Pipeline（Route B 预备）
+
+- Scientific purpose: 用官方 LocateAnything LoRA 基础设施做 tracking-
+  compatible adaptation（grounding rehearsal + association 特征）。
+- Official references inspected: NVlabs/Eagle commit 783f656d
+  `Embodied/shell/locate-anything-lora-visual-prompt.sh`、
+  `eaglevl/train/locany_finetune_magi_stream.py`、
+  `eaglevl/train/tools.py`（apply_visual_prompt_to_sample）、
+  `document/DATA_PREPARATION.md`、`document/TRAINING.md`。
+- Observed implementation: LLM LoRA rank 64 / backbone 0 / freeze_llm=True /
+  freeze_backbone=True / freeze_mlp=False / lr=2e-5 / magi attention
+  （A100 需 sdpa）；visual prompt 是把 positive category 文本替换为
+  `<image-N>` crop（image-1 为 source）；当前官方权重不直接支持 visual
+  prompt 推理。
+- Parts adopted: 官方脚本 + PEFT 封装 + JSONL/recipe 格式；A100 使用
+  `--attn_implementation sdpa` + 4K 内序列。
+- Parts intentionally not adopted: 不在未验证前伪造 joint association loss
+  回传；若 PBD hidden 梯度路径不可行则采用 sequential
+  （先 LoRA grounding，再冻结缓存训练 UA）。
+- Reason for final design: 必须严格复用官方 LoRA 基础设施，不能自写 LoRA。
+
+## Module: L1DBase（校准 Kalman IoU+PBD 融合基座）
+
+- Scientific purpose: 保留强先验的 base affinity：IoU(last box) +
+  PBD cosine + Kalman 预测框 IoU，权重/阈值只在 calibration 校准，
+  用于 L1-D residual 的基础与对照。
+- Official references inspected: OC-SORT（commit 8462e7e7，Kalman/OCM，
+  本项目 `locatemot/tracking/motion.py` 的 7 维恒速 Kalman 已按该实现
+  重写）、LG-Track（定位置信度乘性 cost）、LLTrack（IoU+embedding+
+  角度 cost）。
+- Repository commits: OC-SORT 8462e7e7；LG-Track 432a467；LLTrack 2ab7994。
+- Files inspected: `locatemot/tracking/motion.py`、
+  `locatemot/models/l1d_association.py`（compute_affinity_features）、
+  `tools/build_l1d_dataset.py`（离线 AC 模拟器）。
+- Observed implementation: 离线模拟器逐帧复现共享 shell
+  （全候选输出、unmatched 出生、gap>30 终止），用 Hungarian+阈值；
+  与 L1-C C3 校准结果完全一致（AssA 0.384 / IDSW 573）验证。
+- Parts adopted: Kalman 预测框 IoU 作为 motion cue；IoU+PBD 线性融合；
+  阈值 0.25（calibration 最优 0.4241 AssA）。
+- Parts intentionally not adopted: 不做 OCM 第二轮（保持单一 affinity
+  矩阵便于 residual 叠加）；不按检测置信度分段匹配。
+- Reason for final design: 单一 affinity 矩阵 + Hungarian 是 residual
+  修正的最小平滑接口；两个轮次会破坏“base + residual”的可加性。
+
+## Module: EvidenceGatedResidualAssociator (EGRA, L1-D)
+
+- Scientific purpose: 只对 base 的低可靠行做有界残差修正（set-level
+  competition），保留 base 先验，避免 UAF 的 from-scratch 破坏。
+- Official references inspected: CAMELTrack 46a74bb
+  （`camel.py` GAFFE/InfoNCE/Hungarian、`sampler.py` hard sampling、
+  `transforms/tracklet.py` Dropout/Swap）、MOTIP/FDTA/OVTR
+  （set-level cross-attention）、COVTrack（门控残差融合思想）。
+- Files inspected: `locatemot/models/l1d_association.py`、
+  `tools/train_l1d.py`、`tools/build_l1d_dataset.py`、
+  `tools/audit_l1d_corrections.py`。
+- Observed implementation: pair 特征 19 维（含 iou/pbd/motion/margin/
+  anchor-cos）；2 层 set transformer（cand+track tokens 拼接）；
+  delta=0.6*tanh；track 级 reliability gate；loss = row+col CE +
+  gate BCE + 保留正则；训练分布 = base 真实在线状态（非 GT 完美历史）。
+- Parts adopted: set-level 全集合交互；ranking loss 无 NEW 类；
+  训练用 base states + GT 监督；匈牙利 + 阈值。
+- Parts intentionally not adopted: 不复制 CAMEL 的 from-scratch embedding
+  与 keypoints/part cues；不设 NEW 类；不做 occlusion swap 增强
+  （本协议无遮挡标注）。
+- Reason for final design: L1-C 证据（UAF 破坏先验、失败可预测、
+  89.4% both-correct）支持“保留 base + 门控残差”的最小结构。
+- L1-D 结果：calibration 上 delta=0.3 时 AssA +1.9pp；DanceTrack val
+  不迁移（0.3993 vs base 0.4165）；BDD AssA −4.5pp 但 IDSW −8.2%；
+  MOT20 AssA +0.9pp / IDF1 +6.8pp / IDSW −35.5%。结论：
+  L1_D_PARTIAL，residual 不作为统一部署模块。
