@@ -198,3 +198,18 @@
 ### MATR（arXiv:2509.21715）
 
 - 检索结论：NO VERIFIED OFFICIAL CODE FOUND；`vl2g/MATR` 为不同论文实现，已排除。本阶段如使用其思想，标记 paper-guided clean implementation。
+
+## Stage L4 新增参考仓库（2026-08-10，详见 docs/l4_reference_audit.md）
+
+| 仓库 | 论文 | 本地路径 | commit | License | 用途 |
+|---|---|---|---|---|---|
+| NOVA | Next-step Open-Vocabulary Autoregression for 3D MOT（IROS 2026, arXiv 2603.06254） | `references/l4/nova`（release/v0.1.0） | `4358a627`（main `1bd3ff18`） | Apache-2.0 | open-vocab base/novel class split、hybrid prompt、LM association；L4 只借鉴 class-split 严谨性 |
+| V2-SAM | Marrying SAM2 with Multi-Prompt Experts for Cross-View Object Correspondence（CVPR 2026, arXiv 2511.20886） | `references/l4/v2-sam` | `31c3babf` | README 标注 MIT，仓库无 LICENSE 文件 | visual prompt matcher + contrastive 表示对齐；PCCS 未在 release 代码检出 |
+| DOVTrack | Data-Efficient Open-Vocabulary Tracking（NeurIPS 2025） | `references/l4/dovtrack` | `5748236a` | 无（README only） | 代码未发布，不采用 |
+| TempRMOT | Bootstrapping Referring Multi-Object Tracking（arXiv 2406.05039） | `references/l4/temprmot` | `6a65640d` | 无 LICENSE 文件 | referring query 更新与 loss；非 restriction equivariance |
+| TellTrack | Tell Me What to Track（2024/26） | `references/l4/telltrack` | HEAD（shallow） | 无 | 仓库仅 privacy policy，无代码 |
+
+clone 日期：2026-08-10。
+
+未 clone / 无官方代码：EPIPTrack（arXiv 2510.13235）、GOVTrack
+（CVPR 2026）、ViewSAM（arXiv 2605.02638）、COVTrack/++（ICCV 2025/26）。

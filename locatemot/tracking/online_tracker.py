@@ -90,6 +90,7 @@ class OnlineTracker:
         memory_conf_threshold: float = 0.5,
         image_size=(1280, 720),
         output_all_candidates: bool = False,
+        spec_idx: int = 0,
     ):
         self.variant = variant
         self.b6 = b6
@@ -113,6 +114,7 @@ class OnlineTracker:
         self.memory_conf_threshold = memory_conf_threshold
         self.image_size = image_size
         self.output_all_candidates = output_all_candidates
+        self.spec_idx = spec_idx
         self.tracks: List[TrackState] = []
         self._next_id = 0
         self.frame_count = 0
@@ -605,6 +607,9 @@ class OnlineTracker:
             "trk_mask": torch.ones(1, T, dtype=torch.bool, device=self.device),
             "cand_mask": torch.ones(1, N, dtype=torch.bool, device=self.device),
         }
+        if getattr(self.l1d, "use_spec", False):
+            batch["spec"] = torch.full(
+                (1,), int(self.spec_idx), dtype=torch.long, device=self.device)
         with torch.no_grad():
             pred = self.l1d(batch)
             final = pred["final"][0].cpu().numpy()

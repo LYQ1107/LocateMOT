@@ -299,6 +299,8 @@ class L1DAssociator(nn.Module):
             "delta": delta,
             "reliability_logit": rel_logit,
             "reliability": torch.sigmoid(rel_logit),
+            "trk_tok": trk_out,
+            "cand_tok": cand_out,
         }
 
 

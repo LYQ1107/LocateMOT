@@ -82,3 +82,46 @@ Stage L1-D 已完成：`L1_D_COMPLETE`（stage decision: `L1_D_PARTIAL`）。
   （允许 ID 重映射的 full-tracker）后重新验证 oracle；
 - 否则回到 L1DK base 的 full-tracker 工程路线；
 - TAO cache 缺失，需补 cache 才能做 TAO 域。
+
+---
+
+## Stage L4（2026-08-10，进行中）：Specification-Equivariant Unified MOT
+
+状态：`L4_COMPLETE`（Pilot Gate FAIL，`L4_NOT_SUPPORTED`，ICLR NOT_READY）。
+
+### 已完成
+
+1. 2025–2026 文献/官方代码审计（`docs/l4_reference_audit.md`、
+   `reports/l4_novelty_collision_audit.md`）：
+   `NO_DIRECTLY_EQUIVALENT_VERIFIED_METHOD_FOUND`。
+2. U0 restriction audit（P0 vs P1，`reports/l4_u0_restriction_audit.md`）：
+   - BDD category drift 33–67%；DanceTrack person 32% / instance 31%；
+     TAO car 24% / instance 14%；
+   - P1 通常显著降低 IDSW（DanceTrack instance IDSW 799→72，
+     AssA 0.559→0.841）。
+3. Consistency metric audit（`docs/l4_consistency_metric_audit.md`）：
+   最优 ID 映射后的 co-identity agreement + per-GT drift + TrackEval。
+4. TAO cache 恢复：`cache_key` 覆盖（`docs/l4_tao_cache_recovery_plan.md`），
+   105 视频全部可读。
+5. Paired-view 数据（15,851 pairs）与训练：
+   - A2（spec 条件化，无一致性）与 A5（+ assignment/state consistency）
+     与 A5p（partition co-assignment，一次最小修正）各 20 epochs，
+     1 GPU，U0 初始化。
+
+### Pilot 结果（Gate FAIL）
+
+- Cross-spec drift（Dance inst）：U0 0.3112 → A2 0.3272 / A5 0.3168 /
+  A5p 0.3314；BDD car：U0 0.3291 → A2 0.3502 / A5 0.3262 /
+  A5p 0.3398；
+- 官方 TrackEval ALL：A2/A5/A5p 与 U0 完全一致（macro AssA 0.4013）；
+- 失败根因：身份漂移是时间/轨迹级现象，单帧 consistency 不足。
+
+### 后台进程
+
+无（全部完成）。
+
+### 下一步
+
+- 唯一建议：trajectory-level consistency（clip 级可微 track
+  propagation / path consistency）；
+- 最终报告：`reports/STAGE_L4_FINAL_REPORT.md`（自包含，含 19 个附录）。

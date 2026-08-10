@@ -435,5 +435,67 @@
       "notes": "文档: docs/l1_d_reference_audit.md"
     }
   ],
+  "l4_additions": [
+    {
+      "name": "NOVA",
+      "paper": "NOVA: Next-step Open-Vocabulary Autoregression for 3D Multi-Object Tracking in Autonomous Driving (IROS 2026, arXiv 2603.06254)",
+      "official_url": "https://github.com/xifen523/NOVA",
+      "local_path": "references/l4/nova",
+      "clone_date": "2026-08-10",
+      "branch": "release/v0.1.0",
+      "commit_sha": "4358a627087860d15e02de24b16c74773412b92d",
+      "license": "Apache-2.0",
+      "reuse_status": "clean reimplementation (class-split / hybrid prompt ideas only)",
+      "notes": "docs/l4_reference_audit.md"
+    },
+    {
+      "name": "V2-SAM",
+      "paper": "Marrying SAM2 with Multi-Prompt Experts for Cross-View Object Correspondence (CVPR 2026, arXiv 2511.20886)",
+      "official_url": "https://github.com/jaychempan/V2-SAM",
+      "local_path": "references/l4/v2-sam",
+      "clone_date": "2026-08-10",
+      "branch": "main",
+      "commit_sha": "31c3babff69567ef76e00943d9d69b3816d6b993",
+      "license": "README marks MIT; no LICENSE file in repo",
+      "reuse_status": "clean reimplementation (contrastive visual-prompt alignment)",
+      "notes": "docs/l4_reference_audit.md"
+    },
+    {
+      "name": "DOVTrack",
+      "paper": "Data-Efficient Open-Vocabulary Tracking (NeurIPS 2025)",
+      "official_url": "https://github.com/zekunqian/DOVTrack",
+      "local_path": "references/l4/dovtrack",
+      "clone_date": "2026-08-10",
+      "branch": "main",
+      "commit_sha": "5748236a116ff262bd9360e56782f5f4d116d5e7",
+      "license": "none (README only)",
+      "reuse_status": "no code released",
+      "notes": "docs/l4_reference_audit.md"
+    },
+    {
+      "name": "TempRMOT",
+      "paper": "Bootstrapping Referring Multi-Object Tracking (arXiv 2406.05039)",
+      "official_url": "https://github.com/zyn213/TempRMOT",
+      "local_path": "references/l4/temprmot",
+      "clone_date": "2026-08-10",
+      "branch": "main",
+      "commit_sha": "6a65640d849fdee4a32bb055945ee34c3b0edeb1",
+      "license": "no LICENSE file",
+      "reuse_status": "clean reimplementation (query update / referring loss ideas)",
+      "notes": "docs/l4_reference_audit.md"
+    },
+    {
+      "name": "TellTrack",
+      "paper": "Tell Me What to Track (arXiv 2412.12561)",
+      "official_url": "https://github.com/Durablion/telltrack",
+      "local_path": "references/l4/telltrack",
+      "clone_date": "2026-08-10",
+      "branch": "main",
+      "commit_sha": "HEAD (shallow clone)",
+      "license": "none",
+      "reuse_status": "no model code (privacy pages only)",
+      "notes": "docs/l4_reference_audit.md"
+    }
+  ],
   "updated_at": "2026-08-10"
 }

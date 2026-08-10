@@ -265,3 +265,61 @@
 - 结论：`L3_REGIME_NOT_SUPPORTED + REGIME_ROUTER_DATASET_SHORTCUT`；
   不训练 B/不堆容量。
 - 保留：U0（shared learned baseline）、多类 BDD 协议、全套审计。
+
+## 2026-08-10 — Stage L4：Restriction audit（P0 vs P1）
+
+- 假设：specification（候选集限制）会真实改变 U0 的 persistent
+  identity，且 pre-filter（P1）与 track-all-then-filter（P0）在
+  common objects 上不一致。
+- 实验：frozen U0 在 BDD 200 视频 11 类、DanceTrack val 25 视频、
+  TAO 105 视频上跑 ALL 与受限候选流；用最优 ID 映射后的
+  co-identity agreement（permutation-invariant）度量。
+- 结果：
+  - BDD category drift 33–67%（car 33%、pedestrian 49%、truck 40%、
+    bus 43%、trailer 67%）；P1 的 IDSW 几乎全部显著下降
+    （bus −82%、truck −66%），多数 AssA 上升；
+  - DanceTrack person drift 32%、top-2 instance drift 31%；
+    instance P1 AssA +28.1pp（0.5592→0.8406）、IDSW 799→72；
+  - TAO car drift 24%、instance drift 14%，P1 改善；
+  - ALL vs ALL 自检 agree=1.0，toy-case 指标验证通过。
+- 原因判断：Hungarian 竞争、set-level 特征（log_n_cand/margins）、
+  track-state 更新、P0 过滤产生 gap 共同导致身份漂移。
+- 决策：`L4_SPEC_RESTRICTION_SIGNAL_SUPPORTED` → 进入 paired-view
+  spec-equivariant training pilot（A2 naive vs A5 full）。
+- 保留：审计工具链、TAO cache_key 修复 manifest。
+
+## 2026-08-10 — Stage L4：Paired-view pilot 训练（进行中）
+
+- 假设：paired full/restricted views + assignment/state consistency
+  能降低跨 spec 身份漂移，同时保持 ALL 与受限视图的 TrackEval。
+- 修改：`locatemot/models/l4_spec_eq.py`（U0 core + type-level spec
+  embedding，仅注入 token）、`tools/build_l4_pairs.py`（15,851 pairs：
+  BDD 7,645 + Dance calib 8,006 + MOT17 180 + MOT20 20）、
+  `tools/train_l4.py`（local CE + row/col assignment KL + track-state
+  cosine，lambda_assign=1.0 / lambda_state=0.1）。
+- 状态：A2（无一致性）与 A5（完整一致性）各 20 epochs 训练中，
+  U0 初始化，batch 64，1 GPU each。
+
+## 2026-08-10 — Stage L4：Pilot 评估（A2/A5 失败 + 一次修正 A5p）
+
+- 假设：paired-view assignment/state consistency 能降低跨 spec drift。
+- 结果（P0 vs P1 最优 ID 映射）：
+  - A2：BDD 多数类别 drift 变差（car 0.329→0.350、pedestrian
+    0.488→0.505）；Dance inst 0.311→0.327；TAO inst 0.143→0.187；
+  - A5：BDD car 0.329→0.326、pedestrian 0.488→0.479（小幅改善），
+    bus/trailer 变差；Dance inst 0.311→0.317；TAO inst 0.143→0.196；
+  - 官方 TrackEval ALL：A2/A5 与 U0 完全一致（4 位小数），
+    说明 ALL 未退化，但一致性也未改善；
+  - A5 的 audit 均值 ALL 有微小下降（BDD 0.3518→0.3351），
+    官方 pooled 指标不受影响。
+- 原因判断：身份漂移是**时间/轨迹级**现象，单帧 assignment 或
+  partition 一致性无法约束跨帧 ID 迁移；birth-GT 对齐在身份错误
+  时会把错误固化。
+- 修改（一次最小修正）：A5p = partition-level co-assignment MSE +
+  state cosine（permutation-invariant、不对齐轨迹），20 epochs 训练。
+- 结果（A5p 评估）：Dance inst drift 0.3314（> U0 0.3112）、
+  BDD car 0.3398（> U0 0.3291）、TAO inst 0.1677（> U0 0.1430）；
+  part loss 训练中仅 ~1e-4；官方 TrackEval ALL 与 U0 一致。
+- 决策：`L4_PILOT_GATE_FAIL + L4_NOT_SUPPORTED`；Problem Signal
+  （`L4_SPEC_RESTRICTION_SIGNAL_SUPPORTED`）真实存在但当前机制无法
+  修复；停止训练，进入 failure analysis + final report。

@@ -22,13 +22,15 @@ sys.path.insert(0, str(ROOT))
 
 from locatemot.data.token_cache import read_frame_cache  # noqa: E402
 from locatemot.models.l1d_association import L1DAssociator  # noqa: E402
+from locatemot.models.l4_spec_eq import L4SpecEqAssociator  # noqa: E402
 from locatemot.models.l3_unified import L3Associator  # noqa: E402
 from locatemot.tracking.online_tracker import OnlineTracker  # noqa: E402
 
 
 def build_candidates(entry):
     root = entry["cache_root"]
-    key = f"{entry['dataset']}/{entry['video_id']}/{int(entry['frame']):05d}/{entry['protocol']}"
+    key = entry.get("cache_key") or (
+        f"{entry['dataset']}/{entry['video_id']}/{int(entry['frame']):05d}/{entry['protocol']}")
     fr = read_frame_cache(root, key)
     if fr is None:
         return [], entry.get("image_size", [1280, 720])
@@ -58,12 +60,18 @@ def build_candidates(entry):
 
 def load_model(model_type, ckpt, device):
     if model_type == "u0":
-        model = L1DAssociator()
+        ck = torch.load(ckpt, map_location="cpu", weights_only=False)
+        state = ck["model"] if "model" in ck else ck
+        if "spec_embed.weight" in state:
+            model = L4SpecEqAssociator(n_spec=3, d_spec=16)
+        else:
+            model = L1DAssociator()
+        model.load_state_dict(state)
     else:
         model = L3Associator(use_spec=False)
-    ck = torch.load(ckpt, map_location="cpu", weights_only=False)
-    state = ck["model"] if "model" in ck else ck
-    model.load_state_dict(state)
+        ck = torch.load(ckpt, map_location="cpu", weights_only=False)
+        state = ck["model"] if "model" in ck else ck
+        model.load_state_dict(state)
     return model.to(device).eval()
 
 
