@@ -39,6 +39,7 @@ class TrackState:
     observations: Dict[int, np.ndarray] = field(default_factory=dict)
     confidence: float = 0.0
     birth_frame: int = 0
+    slot: int = -1
 
     @property
     def is_active(self):

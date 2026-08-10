@@ -512,3 +512,35 @@ MOTIP 官方实现的方向是 current detections 作为 query、historical traj
   不迁移（0.3993 vs base 0.4165）；BDD AssA −4.5pp 但 IDSW −8.2%；
   MOT20 AssA +0.9pp / IDF1 +6.8pp / IDSW −35.5%。结论：
   L1_D_PARTIAL，residual 不作为统一部署模块。
+
+## Module: L5TemporalAssociator（Route A，Stage L5）
+
+- Scientific purpose: 把 track identity 从 single-frame evidence 升级为
+  causal temporal state；用 GT trajectory identity 监督，消除 L4 的
+  prediction-imitation 污染；跨 spec 只要求 relation-structure 一致。
+- Official references inspected: MOTIP（CVPR 2025, commit ffc0e905,
+  Apache-2.0：IDDecoder/TrajectoryModeling 相对时间 cross-attention）、
+  TrackFormer（e468bf15）、MOTR（8690da33）、MeMOTR（eb7a177b）、
+  CAMELTrack（46a74bb）、SOTFormer（CVPR 2026, bb28e62, MIT，
+  GT-primed 概念）、NOOUGAT（paper-only）、MO-YOLO（AGPL，仅阅读）。
+- Repository commits: 见 `docs/l5_reference_audit.md`。
+- Files inspected: `locatemot/models/l5_route_a.py`、
+  `tools/build_l5_clips.py`、`tools/train_l5_route_a.py`、
+  `locatemot/tracking/online_tracker.py::_associate_l5`、
+  `tools/l5_drift_eval.py`。
+- Observed implementation: 每个 track 的 ≤16 obs
+  （pbd_box_end_last + box/velocity/gen/log_n_cand/gap）经 causal
+  TransformerEncoder 压缩为 persistent state；候选 token 与 state 一起
+  进入 set-level encoder；pair head 输出 bounded residual 叠加到
+  L1DK base；训练用 GT-anchored row/col ranking CE + trajectory
+  same/different relation BCE + cross-spec relation-structure MSE；
+  推理 = Hungarian + 阈值（与 L1D 相同）。
+- Parts adopted: MOTIP 的相对时间 track-candidate 交互思想、TrackFormer
+  的 persistent track 语义、CAMELTrack/L1D 的 set-level ranking、
+  SOTFormer 的 GT-primed state 概念（无代码复制）。
+- Parts intentionally not adopted: 不用 dataset-global ID 词汇表
+  （区别于 MOTIP）；不做 detection 联合训练；不复制 AGPL 代码；
+  不做 future rollout（L2 已证伪）。
+- Reason for final design: L1-B 证伪 single-frame ReID；L4 证伪
+  prediction-to-prediction consistency；GT-anchored temporal state +
+  relation-structure consistency 是当前唯一未被证伪的统一身份机制。

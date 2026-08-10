@@ -1,5 +1,86 @@
 # Research Log
 
+## 2026-08-11 Stage L5（夜间无人值守）
+
+### L4 评估完整性审计
+- 假设：L4 官方 TrackEval 与 U0 完全一致是 bug。
+- 实验：逐帧重放 + per-tag 数据目录重跑官方 AC。
+- 结果：确认 bug（build_data 只在目录不存在时复制，L4 复用旧 L3 目录）；
+  重跑后 A2/A5/A5p 与 U0 确实不同但差异小（AssA ±0.005–0.025），
+  无模型跨域一致改善。
+- 解释：L4 的 0.488M/20ep frame-level consistency 失败不是评估假象，
+  但也不是路线判决依据。
+- 保留：reports/l5_evaluation_integrity_audit.md；eval_l4_ac.py 修复。
+
+### Phase 2 文献审计
+- 检索 2025/2026：MambaTrack/GatedTemporalFusion/AssociaTR/NOOUGAT/
+  DualPathDecoder/DecoderTracker/SOTFormer 等均无直接等价工作；
+  新 clone SOTFormer（MIT, bb28e62）、MO-YOLO（AGPL，仅阅读）。
+- 保留：docs/l5_reference_audit.md、reports/l5_novelty_collision_audit.md。
+
+### Phase 3 Clip 数据
+- 构建 gt（GT-anchored 轨迹）与 u0（U0 rollout）双源、双视图
+  （ALL + cat/inst）clip 数据，H=16，PBD float16。
+- baseline drift（u0, val 小集）：BDD 46.5%、Dance 68.1%、合计 65.0%；
+  Type2（P0 wrong/P1 correct）1554/2598。
+- 保留：docs/l5_clip_dataset.md、reports/l5_headroom_analysis.md、
+  tools/build_l5_clips.py、tools/l5_drift_eval.py。
+
+### Route A 实现与 overfit
+- 假设：缺少 persistent temporal state 是 drift 主因；
+  GT-anchored 监督 + cross-spec relation consistency。
+- 实现：L5TemporalAssociator（temporal causal encoder + set decoder +
+  bounded residual），接入 OnlineTracker variant L5。
+- 发现 bug 并修复：collate padding 参与 CE/argmax → 掩码后重启训练。
+- 发现 bug 并修复：temporal encoder 的 3D mask + -inf padding 在 torch 2.5
+  下产生 NaN（-inf + -inf）；改为 causal 2D mask + zero-padding，验证无 NaN。
+- 结果1（gt-only，epoch5 Small）：val_row_acc 0.94（≈base），
+  u0 drift 66.0%（baseline 65.0%）→ 未降。
+- 解释：gt-clean 轨迹训练不迁移到 u0 含错轨迹；target 虽 GT-anchored，
+  但输入分布不一致。
+- 修改：训练源改为 gt+u0 混合（target 均为 GT-anchored），spec-weight
+  0.2，rel-weight 0，batch 16，pct_start 0.05。
+- 发现并修复：Base 因 T×T relation 矩阵 OOM（rel_weight=0 却仍计算）→
+  移除 forward 中 rel_mat；collate 大 batch 出现 T=160 的 BDD 样本导致
+  显存激增 → Dataset 按样本 cap T≤48（保留有监督 track 优先）。
+- 结果2（gt+u0 mixed，ep10 Small）：u0 rowacc 几乎不变
+  （BDD train 0.457→0.475、Dance train 0.690→0.690），drift 65% 不变。
+- 解释：gt 源稀释 u0 信号；preservation loss 使 delta 太小
+  （correct 0.016 / wrong 0.089），模型几乎等于 base；
+  cross-spec 目标权重不足。
+- 修改：u0-only 训练，pres-weight=0，delta-scale=1.0，
+  spec-weight=10（assignment-level KL），T≤48 cap。
+- 发现指标错误并修正：u0 target 用 history 多数 GT 会被早期 switch
+  污染；改为当前帧 GT 框 IoU 锚定（track_cur_gt）。cur_gt 下 per-frame
+  base rowacc 达 0.95-0.98，说明单帧关联基本一致；
+  真正的问题是轨迹级 identity chain 漂移。
+- 新主指标：视频级全局最优 ID 对齐后的 track-ID 分歧率
+  （L4 一致）。baseline：BDD val 53.2% / Dance val 37.9%（在线 rollout）。
+- 结果3（u0+cur_gt，delta=1.0，spec-w=10）：BDD 在线 drift ep5 5.6%、
+  ep10 20.4%（不稳定）；Dance ep10 39.4%（≈U0 37.9%）。
+- 解释：过强 delta 在 Dance（外观模糊）制造新 switch；BDD 有明显收益。
+- 修改：delta-scale=0.6 + pres-weight=0.1 + spec-weight=2（温和修正），
+  u0+cur_gt，运行中 GPU 6/7。
+
+### Route B 试点（2026-08-11 早）
+- 假设：sequence-local ID prediction（MOTIP 风格）直接监督跨 spec
+  identity slot。
+- 结果：train slot acc 0.93（Small/Base ep20），val 0.14；在线 drift
+  BDD 69.3%（U0 53.2%）。
+- 判断：小集不迁移 → NOT_SUPPORTED。
+
+### Route A 最终结果（u0+cur_gt，delta=0.6，spec-w=2）
+- 在线 drift（ep40）：BDD 28.7%（U0 53.2%，-46%）、
+  Dance 29.3%（U0 37.9%，-23%）；ep20 后稳定。
+- TrackEval（ep40）：Dance AssA 0.4182（+0.13pp）/IDSW 2558（-30）；
+  BDD AssA 0.2951（+0.7pp）但 IDSW 12399（+1357）；
+  MOT17 AssA 0.5914（-1.4pp）；MOT20 AssA 0.2763（-1.9pp）。
+- 学习曲线：ep1-60 val_row_acc 恒定 0.98；Small==Base（容量饱和）。
+- 判定：L5_ROUTE_A_PARTIAL（正机制信号，未过 full-scale）。
+- Route C：NOT_EXECUTED（被 A 的 cross-spec KL 部分覆盖）。
+- 最终判定：L5_PARTIAL / ICLR_NOT_READY。
+- 交付：reports/STAGE_L5_FINAL_REPORT.md（自包含）。
+
 原则：只记录实验假设、失败现象、原因判断、修改内容、结果变化、是否保留。
 
 ## 2026-08-08 — Stage L1-B 启动

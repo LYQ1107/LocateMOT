@@ -1,13 +1,9 @@
-"""Stage L4: official TrackEval (ALL mode) for trained spec-eq models.
-
-For each tag (a2/a5/u0) and each AC domain, runs the OnlineTracker shell
-(eval_l3) with the shared checkpoint, lays out MOTChallenge files, and runs
-official TrackEval (run_l1d_trackeval).
+"""Stage L5 Route A: official TrackEval for the temporal identity model.
 
 Usage:
-  python tools/eval_l4_ac.py --tag a5 \
-      --ckpt outputs/l4/checkpoints/a5/final.pt \
-      --out outputs/l4/trackeval/a5 --gpu 9
+  python tools/eval_l5_route_a.py --tag route_a_base \
+      --ckpt outputs/l5/checkpoints/route_a_base/final.pt \
+      --model-size base --out outputs/l5/trackeval/route_a_base --gpu 6
 """
 from __future__ import annotations
 
@@ -38,7 +34,7 @@ DOMAINS = {
 
 
 def run(cmd):
-    print("[eval_l4_ac]", " ".join(str(c) for c in cmd), flush=True)
+    print("[eval_l5] ", " ".join(str(c) for c in cmd), flush=True)
     subprocess.run([str(c) for c in cmd], check=True)
 
 
@@ -46,16 +42,23 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--tag", required=True)
     ap.add_argument("--ckpt", required=True)
+    ap.add_argument("--model-size", default=None)
     ap.add_argument("--out", required=True)
-    ap.add_argument("--gpu", type=int, default=9)
+    ap.add_argument("--gpu", type=int, default=6)
+    ap.add_argument("--domains", default="dance,bdd,mot17,mot20")
     args = ap.parse_args()
     out = ROOT / args.out
     tracker_root = out / "trackers"
     eval_root = out / "trackeval"
-    for label, (domain, manifest, fps) in DOMAINS.items():
+    domain_map = {"dance": "dance_l3", "bdd": "bdd_l3",
+                  "mot17": "mot17_l3", "mot20": "mot20_l3"}
+    for key in args.domains.split(","):
+        label = domain_map[key.strip()]
+        domain, manifest, fps = DOMAINS[label]
         split = f"{args.tag}_{label}"
         src_dir = tracker_root / label
-        run([PY, ROOT / "tools/eval_l3.py", "--model", "u0",
+        run([PY, ROOT / "tools/eval_l3.py", "--model", "l5",
+             "--model-size", args.model_size,
              "--ckpt", args.ckpt, "--manifest", manifest,
              "--out", src_dir, "--gpu", args.gpu])
         variant_dir = eval_root / label / "U0"
@@ -67,7 +70,7 @@ def main():
         run([PY, ROOT / "tools/run_l1d_trackeval.py", "--split", split,
              "--manifest", manifest, "--tracker-root", eval_root / label,
              "--variants", "U0", "--fps", str(fps)])
-    print("[eval_l4_ac] done", flush=True)
+    print("[eval_l5] done", flush=True)
 
 
 if __name__ == "__main__":

@@ -24,6 +24,7 @@ from locatemot.data.token_cache import read_frame_cache  # noqa: E402
 from locatemot.models.l1d_association import L1DAssociator  # noqa: E402
 from locatemot.models.l4_spec_eq import L4SpecEqAssociator  # noqa: E402
 from locatemot.models.l3_unified import L3Associator  # noqa: E402
+from locatemot.models.l5_route_a import L5TemporalAssociator  # noqa: E402
 from locatemot.tracking.online_tracker import OnlineTracker  # noqa: E402
 
 
@@ -75,9 +76,30 @@ def load_model(model_type, ckpt, device):
     return model.to(device).eval()
 
 
+def load_l5(ckpt, model_size, device):
+    sizes = {
+        "small": dict(d_model=128, temporal_layers=2, set_layers=2,
+                      n_heads=4, ffn_dim=512),
+        "base": dict(d_model=256, temporal_layers=4, set_layers=4,
+                     n_heads=8, ffn_dim=1024),
+        "large": dict(d_model=384, temporal_layers=6, set_layers=6,
+                      n_heads=8, ffn_dim=1536),
+    }
+    ck = torch.load(ckpt, map_location="cpu", weights_only=False)
+    cfg = ck.get("cfg", {})
+    model_size = model_size or cfg.get("model", "base")
+    model = L5TemporalAssociator(
+        **sizes[model_size],
+        delta_scale=cfg.get("delta_scale", 0.6)).to(device)
+    model.load_state_dict(ck["model"])
+    return model.to(device).eval()
+
+
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--model", choices=["u0", "u1"], required=True)
+    ap.add_argument("--model", choices=["u0", "u1", "l5"], required=True)
+    ap.add_argument("--model-size", default=None,
+                    choices=["small", "base", "large"])
     ap.add_argument("--ckpt", required=True)
     ap.add_argument("--manifest", required=True)
     ap.add_argument("--out", required=True)
@@ -87,7 +109,12 @@ def main():
     args = ap.parse_args()
     os.environ["CUDA_VISIBLE_DEVICES"] = str(args.gpu)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    model = load_model(args.model, args.ckpt, device)
+    if args.model == "l5":
+        model = load_l5(args.ckpt, args.model_size, device)
+        variant = "L5"
+    else:
+        model = load_model(args.model, args.ckpt, device)
+        variant = "L1D"
     out = Path(args.out)
     out.mkdir(parents=True, exist_ok=True)
     by_video = {}
@@ -99,7 +126,10 @@ def main():
         by_video[v].sort(key=lambda e: e["frame"])
     t0 = time.time()
     for vid, entries in by_video.items():
-        tracker = OnlineTracker(variant="L1D", l1d=model, device=str(device),
+        tracker = OnlineTracker(variant=variant,
+                                l1d=model if variant == "L1D" else None,
+                                l5=model if variant == "L5" else None,
+                                device=str(device),
                                 output_all_candidates=True)
         tracker.l1d_weights = (0.4, 0.2, 0.4)
         tracker.l1d_threshold = args.threshold
