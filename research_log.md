@@ -203,3 +203,44 @@
 - 修改：无（不堆容量；不 tune val）。
 - 结论：L1_D_PARTIAL；采用 L1DK base，residual 不部署。
 - 保留：L1DK base（新最强 AC 基座）；EGRA 作为消融。
+
+## 2026-08-10 — Stage L2 启动：baseline 矩阵 + 文献审计
+
+- 假设：L1DK base 是最强统一基座；local correctness 与 future
+  trajectory utility 不同构。
+- 实验：四域 AC 矩阵（C0/C1/C2/C3/L1DK/L1DK_d03）在 DanceTrack val、
+  MOT17、MOT20、BDD（同一固定候选 manifest）全部重跑。
+- 结果：L1DK base macro AssA 0.4062 最高，DanceTrack/MOT17/BDD 三域
+  最优；MOT20 由 L1DK_d03 略优。BEST_STRONG_BASE = L1DK base。
+- 文献：TDLP（下一帧 link prediction）、SambaMOTR（自回归 query）、
+  TRACT（轨迹感知）、UniTrack（轨迹平滑 hinge）、Path Consistency、
+  QuoVadis、FDTA、HATReID-MOT、HNCD-MOTR 全部实际 clone 阅读；
+  无直接等价“counterfactual future utility”方法。
+- 决策：进入 oracle headroom 实验（进行中）。
+
+## 2026-08-10 — Counterfactual Oracle（进行中）
+
+- 假设：存在“局部正确但未来差 / 局部错但未来好”的决策事件，且 oracle
+  best action 相对 base 有可学习 headroom。
+- 实验：L1DK base 精确重放（与 baseline 100% 一致），对冲突组件枚举
+  6-8 个候选 action，冻结 base policy rollout H∈{4,8,16,32} 帧，
+  用 TrackEval 同款公式算 windowed AssA/IDF1/IDSW。
+- 当前状态：DanceTrack val 25 视频 oracle 运行中；BDD/MOT17/MOT20 待跑。
+
+## 2026-08-10 — Oracle 完成：Gate 1 判定 LOW（Stage L2 停止大训练）
+
+- 假设：oracle future-best action 相对 L1DK base 有可学习整视频 headroom。
+- 实验：单事件窗口（H4–H32）+ 端到端 greedy oracle（privileged）。
+- 结果：
+  - 单事件：DanceTrack H32 mean gain +0.74pp（frac 21.9%）、
+    BDD H16 +1.01pp（frac 61.7%）；
+  - 端到端：DanceTrack +0.02/+0.06pp、BDD 均值 −0.88pp、
+    MOT17 −2.32pp；IDSW 全部变差；
+  - mismatch：DanceTrack H32 219/1000 future-best≠base
+    （local_correct_future_bad 128 / local_wrong_future_good 60）；
+    BDD H16 460/745（173/110）。
+- 原因判断：base 短窗口已接近最优；窗口效用与全局 ID 统计不同构；
+  动作经 base 再优化后趋同；历史污染不可在短窗口修复。
+- 修改：无（不训练 TUM，按任务书停止条件）。
+- 结论：`L2_ORACLE_HEADROOM_LOW`；进入失败分析与最终报告。
+- 保留：oracle 工具链、windowed AssA 校验、污染审计、文献审计。

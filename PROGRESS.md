@@ -43,3 +43,42 @@ Stage L1-D 已完成：`L1_D_COMPLETE`（stage decision: `L1_D_PARTIAL`）。
 ## 需要人工确认的问题
 
 无阻塞问题。
+
+---
+
+## Stage L2（2026-08-10）：Counterfactual Future-Utility Learning
+
+状态：`L2_ORACLE_HEADROOM_LOW`（ICLR readiness NOT_READY）。
+
+### 已完成
+
+1. 四域 AC baseline 矩阵（DanceTrack/MOT17/MOT20/BDD）：
+   L1DK base macro AssA 0.4062 最强；BEST_STRONG_BASE = L1DK base。
+2. TrackEval AssA/IDF1 目标审计；windowed AssA 与官方 TrackEval
+   整视频数值完全一致。
+3. 2025–2026 官方代码审计（TDLP/SambaMOTR/TRACT/UniTrack/
+   PathConsistency/QuoVadis/FDTA/HATReID-MOT/HNCD-MOTR）：
+   NO DIRECTLY EQUIVALENT VERIFIED METHOD FOUND。
+4. Counterfactual oracle（1,945 冲突事件）：
+   - 单事件窗口 headroom：DanceTrack H32 +0.74pp、BDD H16 +1.01pp、
+     MOT17 H32 +2.27pp、MOT20 H32 +1.76pp；
+   - 端到端 greedy oracle：DanceTrack +0.02/+0.06pp、BDD −0.88pp、
+     MOT17 −2.32pp；IDSW 全部变差。
+5. Local-vs-future mismatch：DanceTrack H32 21.9%、BDD H16 61.7%、
+   MOT17 70.8%、MOT20 75.0% 事件 future-best ≠ base。
+6. 历史污染审计：EGRA 修正集中在已污染轨迹但 helpful 率低
+   （DanceTrack 25.8%、BDD 9.1%）。
+7. 结论：oracle headroom 不足 → 不训练大型 TUM，进入失败分析。
+
+### 主报告
+
+- `reports/STAGE_L2_FINAL_REPORT.md`
+- `reports/STAGE_L2_GPT_HANDOFF.md`
+- `reports/l2_oracle_headroom.md`、`reports/l2_failure_analysis.md`
+
+### 下一步建议
+
+- 若继续该方向：换效用定义（整序列 ID 映射 + IDSW 惩罚）或换协议
+  （允许 ID 重映射的 full-tracker）后重新验证 oracle；
+- 否则回到 L1DK base 的 full-tracker 工程路线；
+- TAO cache 缺失，需补 cache 才能做 TAO 域。
