@@ -458,6 +458,6 @@ Stage L2：以 L1DK base 为关联主线，进入统一 full-tracker 协议
 
 ## 63. Git Commit
 
-本报告对应的提交：`553d631554f4622725caa71bd94a7d0f9da9f4fc`
+本报告对应的提交：`a11241321b462bbedb28e3b24f0bf09eacced7ac`
 （提交信息：`Stage L1-D complete: evidence-driven unified association
 after PBD and LoRA diagnostics`）。
