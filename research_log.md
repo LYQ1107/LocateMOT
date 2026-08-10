@@ -244,3 +244,24 @@
 - 修改：无（不训练 TUM，按任务书停止条件）。
 - 结论：`L2_ORACLE_HEADROOM_LOW`；进入失败分析与最终报告。
 - 保留：oracle 工具链、windowed AssA 校验、污染审计、文献审计。
+
+## 2026-08-10 — Stage L3：审计 + U0/U1 pilot
+
+- 假设：latent regime 条件化共享核心能减轻多域负迁移。
+- 审计：SAM3/SAM3.1、GLEE、OVTR、OVTrack、grounded-sam-2、SAM2MOT、
+  STORM-Bench、QTrack、AnyTrack 全部 clone 阅读；Claim 2 被
+  SAM3/GLEE 强碰撞；BDD manifest 已含 11 类 GT。
+- 修改：`locatemot/models/l3_unified.py`（RegimeEncoder + FiLM）；
+  `tools/train_l3.py`、`tools/eval_l3.py`、
+  `tools/l3_regime_diagnostics.py`、`tools/analyze_l3_routing.py`。
+- 结果（四域 AC fresh 协议）：
+  - U0 macro AssA 0.4013 > L1DK 0.3944（MOT17 +1.67pp、
+    MOT20 +1.72pp、BDD −0.70pp、DanceTrack +0.04pp）；
+  - U1 macro 0.3915（仅 MOT20 +0.08pp；DanceTrack −1.19pp、
+    MOT17 −1.91pp、BDD −0.89pp）；
+  - z_regime domain classifier 96.6% → dataset shortcut。
+- 原因判断：regime 特征与 dataset 共线（BDD 5fps gap 等）；local CE
+  目标与轨迹级指标不同构；association 可条件化空间小。
+- 结论：`L3_REGIME_NOT_SUPPORTED + REGIME_ROUTER_DATASET_SHORTCUT`；
+  不训练 B/不堆容量。
+- 保留：U0（shared learned baseline）、多类 BDD 协议、全套审计。

@@ -28,3 +28,18 @@ privileged counterfactual oracle 的端到端整视频 AssA headroom
 完整自包含摘要：`reports/STAGE_L2_GPT_HANDOFF.md`；
 主报告：`reports/STAGE_L2_FINAL_REPORT.md`；
 失败分析：`reports/l2_failure_analysis.md`。
+
+---
+
+更新：2026-08-10。最近阶段：Stage L3，状态
+`L3_REGIME_NOT_SUPPORTED + REGIME_ROUTER_DATASET_SHORTCUT`。
+
+一句话：U0（naive shared learned）在四域 AC 超过 L1DK
+（macro AssA 0.4013 vs 0.3944），但 U1（latent regime 条件化）
+未过 Gate A（macro 0.3915，仅 MOT20 微正），z_regime 呈 dataset
+shortcut（domain classifier 96.6%）；SAM3/GLEE 强碰撞 Claim 2
+（prompt 接口统一），B 轴未进入训练。
+
+完整自包含摘要：`reports/STAGE_L3_GPT_HANDOFF.md`；
+主报告（附录 A–M 全嵌入）：`reports/STAGE_L3_FINAL_REPORT.md`；
+失败分析：`reports/l3_failure_analysis.md`。
