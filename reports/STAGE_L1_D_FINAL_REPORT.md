@@ -433,8 +433,9 @@ identity 信号不支持独立 cosine 关联。
 - 正向：L1DK base（采用）；MOT20 上 residual 正向（消融）；
 - 负向：DanceTrack val 上 residual 不迁移；BDD/MOT17 AssA 下降；
   方向不一致 → 不部署 residual；
-- LoRA 子状态：`L1_D_LORA_EXTRACTION_UNSUPPORTED`（沿用
-  L1_C 的 `LORA_PBD_DEGRADED`，未进入 L1-D 主线）。
+- LoRA 子状态：`LORA_PBD_EXTRACTION_SUPPORTED`（Frozen equivalence
+  PASS、8,024 帧 LoRA PBD cache 完成）+ `LORA_PBD_DEGRADED`
+  （判别/grounding/association 均下降，未进入 L1-D 主线）。
 
 ## 61. Next Recommended Stage
 
