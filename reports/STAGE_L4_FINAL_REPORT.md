@@ -425,7 +425,7 @@ ICLR readiness: NOT_READY
 ## 48. Git Commit
 
 `Stage L4 complete: specification-equivariant unified MOT`
-（commit 见 git log，最终提交后记录）。
+commit：`448e844`（后续小提交仅记录该 SHA）。
 
 ## 附录 A — 2025–2026 官方代码审计
 
