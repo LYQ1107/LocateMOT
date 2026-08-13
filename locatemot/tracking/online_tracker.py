@@ -78,6 +78,7 @@ class OnlineTracker:
         l1d=None,
         l5=None,
         l5b=None,
+        uidm=None,
         trajectory_encoder=None,
         motion_predictor=None,
         memory_fusion=None,
@@ -100,6 +101,7 @@ class OnlineTracker:
         self.l1d = l1d
         self.l5 = l5
         self.l5b = l5b
+        self.uidm = uidm
         self.l1d_weights = (0.7, 0.3, 0.0)
         self.l1d_threshold = 0.3
         self.l1d_delta_scale = 0.6
@@ -124,11 +126,15 @@ class OnlineTracker:
         self.frame_count = 0
         self._motion_kalman_delta_t = 3
         self._l5b_slots = {}
+        self._next_birth_state = None
+        self.uidm_new_margin = 0.0
+        self._uidm_birth = {}
 
     def reset(self):
         self.tracks = []
         self._next_id = 0
         self.frame_count = 0
+        self._uidm_birth = {}
 
     # ------------------------------------------------------------------ utils
     def _new_id(self):
@@ -282,6 +288,9 @@ class OnlineTracker:
             assigns = self._associate_l5(tracks, cur_feats, cur_boxes, frame_id)
         elif self.variant == "L5B":
             assigns = self._associate_l5b(tracks, cur_feats, cur_boxes, frame_id)
+        elif self.variant == "UIDM":
+            assigns = self._associate_uidm(tracks, cur_feats, cur_boxes,
+                                           frame_id)
         else:
             assigns = self._associate_learned(tracks, cur_feats, cur_boxes, frame_id)
 
@@ -299,6 +308,18 @@ class OnlineTracker:
                 continue
             trk.lost_age += 1
             trk.age += 1
+            if self.variant == "UIDM" and trk.uidm_state is not None:
+                gap = max(1, frame_id - trk.last_frame)
+                with torch.no_grad():
+                    h = torch.as_tensor(trk.uidm_state["h"],
+                                        device=self.device).float()
+                    gp = torch.as_tensor([gap], device=self.device).float()
+                    h = self.uidm.memory.decay(h, gp).squeeze(0)
+                trk.uidm_state["h"] = h.cpu().numpy()
+                trk.uidm_state["alive"] = (
+                    trk.uidm_state["alive"] - 1.0)
+                if trk.uidm_state["alive"] < 0.0:
+                    trk.status = TERMINATED
             if trk.kalman is not None:
                 trk.kalman.update(None)
             if trk.lost_age > self.max_age:
@@ -313,7 +334,15 @@ class OnlineTracker:
         for i, cand in enumerate(candidates):
             if i in matched_det:
                 continue
+            if self.variant == "UIDM":
+                bs = self._uidm_birth.pop(i, None)
+                if bs is not None:
+                    self._next_birth_state = bs
+                else:
+                    self._next_birth_state = None
             born.append(self._birth(frame_id, cand, cand_idx=i))
+        self._next_birth_state = None
+        self._uidm_birth = {}
 
         self.tracks = [t for t in self.tracks if t.status != TERMINATED]
         if self.output_all_candidates:
@@ -359,6 +388,17 @@ class OnlineTracker:
             trk.anchor_features = feats
         if self.variant == "L5B":
             trk.slot = int(self._l5b_slots.get(cand_idx, -1))
+        if self.variant == "UIDM":
+            trk.anchor_features = feats
+            if getattr(self, "_next_birth_state", None) is not None:
+                bs = self._next_birth_state
+                trk.uidm_state = {
+                    "h": bs["h"], "anchor": bs["anchor"],
+                    "ref_pbd": bs["ref_pbd"], "anchor_pbd": bs["anchor_pbd"],
+                    "alive": 1.0,
+                }
+            else:
+                trk.uidm_state = None
         self.tracks.append(trk)
         return trk
 
@@ -872,6 +912,144 @@ class OnlineTracker:
             "cand_mask": torch.ones(1, N, dtype=torch.bool,
                                     device=self.device),
         }
+
+    def _associate_uidm(self, tracks, cur_feats, cur_boxes, frame_id):
+        """Stage L6 UIDM: learned causal identity dynamics association.
+
+        Uses each track's persistent model state h_i (updated by the model
+        itself), set-level interaction with current candidates, and an
+        extended transition matrix (existing ID / NEW / NO-MATCH).
+        """
+        model = self.uidm
+        if model is None:
+            raise RuntimeError("UIDM variant requires uidm model")
+        from locatemot.models.l6_uidm import decode_lsa
+        T = len(tracks)
+        N = len(cur_boxes)
+        image_size = tuple(self.image_size)
+        iw, ih = image_size
+        d = model.d_model
+        if T == 0 and N == 0:
+            return []
+        T = max(1, T)
+        tb = np.zeros((T, 4), np.float64)
+        pb = np.zeros((T, 4), np.float64)
+        pred_boxes = np.zeros((T, 4), np.float64)
+        gaps = np.zeros(T, np.float32)
+        ages = np.zeros(T, np.float32)
+        hits = np.zeros(T, np.float32)
+        ref = np.zeros((T, 2048), np.float32)
+        anchor = np.zeros((T, 2048), np.float32)
+        h = np.zeros((T, d), np.float32)
+        alive = np.zeros(T, np.float32)
+        for i, trk in enumerate(tracks):
+            tb[i] = trk.last_box
+            pb[i] = trk.prev_box if trk.prev_box is not None else trk.last_box
+            pred_boxes[i] = trk.kalman.predict() if trk.kalman is not None \
+                else trk.last_box
+            gaps[i] = max(1, frame_id - trk.last_frame)
+            ages[i] = trk.age
+            hits[i] = trk.hits
+            if trk.uidm_state is not None:
+                h[i] = np.asarray(trk.uidm_state["h"], np.float32)
+                ref[i] = np.asarray(trk.uidm_state["ref_pbd"], np.float32)
+                anchor[i] = np.asarray(trk.uidm_state["anchor_pbd"],
+                                       np.float32)
+                alive[i] = float(trk.uidm_state["alive"])
+            f = trk.history[-1].features if trk.history else trk.last_features
+            if f and f.get("pbd_be") is not None and \
+                    trk.uidm_state is None:
+                ref[i] = np.asarray(f["pbd_be"], np.float32)
+            if trk.anchor_features is not None and \
+                    trk.uidm_state is None:
+                anchor[i] = np.asarray(
+                    trk.anchor_features.get("pbd_be", ref[i]), np.float32)
+            else:
+                anchor[i] = ref[i]
+        cb = np.asarray(cur_boxes, dtype=np.float64).reshape(N, 4)
+        cp = np.zeros((N, 2048), np.float32)
+        cg = np.zeros(N, np.float32)
+        for i, f in enumerate(cur_feats):
+            if f.get("pbd_be") is not None:
+                cp[i] = np.asarray(f["pbd_be"], dtype=np.float32)
+            cg[i] = float(f.get("gen", 0.0))
+        feats = compute_affinity_features(
+            tb, cb, ref, anchor, cp, cg, gaps, ages, hits, pb,
+            self.l1d_weights, image_size,
+            motion_pred_boxes=pred_boxes)
+        batch = {
+            "trk_tok": torch.as_tensor(h[None], device=self.device),
+            "cand_pbd": torch.as_tensor(cp[None], device=self.device),
+            "cand_feat": torch.as_tensor(
+                feats["cand_feats"][None], device=self.device),
+            "pair_feats": torch.as_tensor(
+                feats["pair_feats"][None], device=self.device),
+            "track_feats": torch.as_tensor(
+                feats["track_feats"][None], device=self.device),
+            "cand_mask": torch.ones(1, N, dtype=torch.bool,
+                                    device=self.device),
+            "trk_mask": torch.zeros(1, T, dtype=torch.bool,
+                                    device=self.device),
+            "gap": torch.as_tensor(gaps[None], device=self.device),
+        }
+        batch["trk_mask"][0, :len(tracks)] = True
+        with torch.no_grad():
+            pred = model.forward_frame(batch)
+            pair = pred["pair_logits"][0, :len(tracks), :].cpu().numpy()
+            nm = pred["no_match"][0, :len(tracks)].cpu().numpy()
+            nw = pred["new"][0, :N].cpu().numpy()
+            cand_tok = pred["cand_tok"][0].cpu().numpy()
+            trk_tok = pred["trk_tok"][0].cpu().numpy()
+            alive_pre = pred["alive_pre"][0].cpu().numpy()
+        self._uidm_birth = {}
+        if len(tracks) == 0:
+            for j in range(N):
+                with torch.no_grad():
+                    h_init = model.memory.init(
+                        torch.as_tensor(cand_tok[j], device=self.device)
+                    ).cpu().numpy()
+                self._uidm_birth[j] = {
+                    "h": np.asarray(h_init, np.float32),
+                    "anchor": cand_tok[j].astype(np.float32),
+                    "ref_pbd": cp[j].astype(np.float32),
+                    "anchor_pbd": cp[j].astype(np.float32),
+                    "alive": 1.0,
+                }
+            return []
+        matches, births = decode_lsa(
+            pair, nm, nw - float(getattr(self, "uidm_new_margin", 0.0)))
+        # update matched track states
+        for t, j, _score in matches:
+            trk = tracks[t]
+            if trk.uidm_state is None:
+                trk.uidm_state = {
+                    "h": h[t], "anchor": anchor[t],
+                    "ref_pbd": ref[t], "anchor_pbd": anchor[t],
+                    "alive": 0.0,
+                }
+            with torch.no_grad():
+                h_t = torch.as_tensor(trk.uidm_state["h"],
+                                      device=self.device).float()
+                obs = torch.as_tensor(cand_tok[j], device=self.device).float()
+                ctx = torch.as_tensor(trk_tok[t], device=self.device).float()
+                new_h = model.memory.update(h_t, obs, ctx).cpu().numpy()
+            trk.uidm_state["h"] = new_h.astype(np.float32)
+            trk.uidm_state["ref_pbd"] = cp[j].astype(np.float32)
+            trk.uidm_state["alive"] = float(alive_pre[t]) + 2.0
+        # decay is handled by the shared unmatched loop; births stashed
+        for j in births:
+            with torch.no_grad():
+                h_init = model.memory.init(
+                    torch.as_tensor(cand_tok[j], device=self.device)
+                ).cpu().numpy()
+            self._uidm_birth[j] = {
+                "h": h_init.astype(np.float32),
+                "anchor": cand_tok[j].astype(np.float32),
+                "ref_pbd": cp[j].astype(np.float32),
+                "anchor_pbd": cp[j].astype(np.float32),
+                "alive": 1.0,
+            }
+        return [(t, j, float(pair[t, j])) for t, j, _ in matches]
 
     def _decode_ua(self, scores, new_logits):
         """Candidates rows -> tracks or NEW; one-to-one; all candidates output."""

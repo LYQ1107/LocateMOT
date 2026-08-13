@@ -404,3 +404,52 @@
 - 决策：`L4_PILOT_GATE_FAIL + L4_NOT_SUPPORTED`；Problem Signal
   （`L4_SPEC_RESTRICTION_SIGNAL_SUPPORTED`）真实存在但当前机制无法
   修复；停止训练，进入 failure analysis + final report。
+
+## 2026-08-11 — Stage L6：UIDM 主模型（Learned Causal Identity Dynamics）
+
+- 假设：MOT 域差异可被一个共享的、在交互轨迹集合上学习的因果身份
+  动力学过程统一（持久记忆 + 集合交互 + 学习化转移 + 生命周期 +
+  tracking-level loss + model-in-the-loop）。
+- 设计：`locatemot/models/l6_uidm.py`（UIDM-Large ~15M: d=384/6层；
+  GRU-like 记忆更新、anchor、set transformer、pair/no_match/new/alive/
+  motion 头、soft-switch hinge loss）；训练脚本
+  `tools/train_l6_uidm.py`（H=16、scheduled sampling、DDP）。
+- 数据：`outputs/l6/data/*`（per-video 帧序列，BDD 200 + Dance 40 +
+  MOT17 3 + MOT20 2 + TAO 105），无 MOTSynth，无 dataset ID。
+- 实验：冒烟通过（loss/grad/rollout/TrackEval 管线）；第一次全量 DDP
+  epoch4 崩溃（DDP unused params）→ `find_unused_parameters=True` 修复；
+  NEW/no-match/pair 头零初始化偏置改进（防止推理早期碎片化）。
+- 状态：全量训练重启中（3 GPU，4200 steps）；epoch1-3 曾显示 rowacc
+  0.6→0.9，但 epoch1 MOT17 TrackEval 仍碎片化（AssA 0.027），判定为
+  训练不足 + 头部初始化问题，继续训练后重新评估。
+
+## 2026-08-11 — Stage L6：关键 bug 修复（births 立即死亡）
+
+- 失败现象：训练 loss 下降、rowacc 0.6-0.9，但推理 TrackEval 严重
+  碎片化（MOT17 IDSW ~4700、AssA 0.025）；逐帧 logits 显示 pair
+  logits 全部为负、new≈1，LSA 全部走 NEW。
+- 原因判断：训练 rollout 中 newborn slot 的 alive_logit=0.0，而
+  active 判定为 alive_logit>0，导致**所有新生轨迹在同一帧内立即
+  失活**——模型从未见过跨帧持久状态，只学到“一切皆 NEW”的退化解；
+  推理 shell 却保留新生轨迹，造成 train/inference 状态语义不一致。
+- 修改：birth alive=1.0（训练 rollout + 推理 birth 同步）；推理
+  NEW margin 保留为可调参数（默认 0）。
+- 结果：待验证（全量训练已用修复版重启，epoch1-3 后将重新 TrackEval）。
+
+## 2026-08-13 — Stage L6：最终评估 + 消融（训练已完成）
+
+- 全量训练完成：UIDM-Large 4200 步（epoch 18），最终 rowacc 0.976、
+  loss 0.74（仍下降）。
+- 主结果（fresh TrackEval）：Macro HOTA 0.5897（+5.2pp）、
+  Macro AssA 0.4922（+9.1pp）、Macro IDF1 0.5199（+5.9pp）；
+  BDD AssA 0.4866、MOT17 0.6991、MOT20 0.4584 大幅提升；
+  **Dance AssA 0.3248 塌陷**（U0 0.4169）。
+- 失败分析：Dance 12,543 switches 中 92% 为 gap=1 连续帧错误，
+  平均 crowd IoU 0.42 —— PBD 外观证据过强、motion/competition 不足；
+  BDD switches 主要发生在 6–10 帧检测缺失后。
+- Cross-spec drift：BDD 53.2%→17.0%（大幅改善），Dance 37.9%→34.0%。
+- Ablation（MOT17 AssA）：full 0.6991；no-trackloss 0.4678；
+  no-memory 0.4724；no-interaction 0.4901；no-lifecycle 0.4876；
+  small-3M 0.5458 —— 四项机制各贡献 ~21–23pp，容量贡献 ~15pp。
+- 决策：`L6_PARTIAL / SUPPORTED with Dance collapse`；报告完成，
+  下一步 cue-reliability 修复 + IDSW 校准 + long-gap memory。

@@ -29,6 +29,7 @@ sys.path.insert(0, ROOT)
 from locatemot.models.l5_route_a import L5TemporalAssociator  # noqa: E402
 from locatemot.models.l5_route_b import L5IdentityPredictor  # noqa: E402
 from locatemot.models.l1d_association import L1DAssociator  # noqa: E402
+from locatemot.models.l6_uidm import UIDM  # noqa: E402
 from locatemot.tracking.online_tracker import OnlineTracker  # noqa: E402
 from tools.eval_l3 import build_candidates  # noqa: E402
 from tools.l4_restriction_audit import spec_mask  # noqa: E402
@@ -42,10 +43,19 @@ SIZES = {
     "large": dict(d_model=384, temporal_layers=6, set_layers=6,
                   n_heads=8, ffn_dim=1536),
 }
+SIZES_UIDM = {
+    "small": dict(d_model=192, n_layers=3, n_heads=4, ffn_dim=768),
+    "base": dict(d_model=320, n_layers=4, n_heads=8, ffn_dim=1280),
+    "large": dict(d_model=384, n_layers=6, n_heads=8, ffn_dim=1536),
+}
 
 
 def run_view(model, entries, spec, device):
-    if getattr(model, "slot_head", None) is not None:
+    if getattr(model, "memory", None) is not None and hasattr(model, "d_model"):
+        tracker = OnlineTracker(variant="UIDM", uidm=model,
+                                device=str(device),
+                                output_all_candidates=True)
+    elif getattr(model, "slot_head", None) is not None:
         tracker = OnlineTracker(variant="L5B", l5b=model, device=str(device),
                                 output_all_candidates=True)
     elif isinstance(model, L5TemporalAssociator):
@@ -97,13 +107,18 @@ def main():
     ap.add_argument("--out", required=True)
     ap.add_argument("--max-videos", type=int, default=0)
     ap.add_argument("--model-type", default="l5",
-                    choices=["l5", "u0", "l5b"])
+                    choices=["l5", "u0", "l5b", "uidm"])
     ap.add_argument("--videos", nargs="*", default=None)
     args = ap.parse_args()
     os.environ["CUDA_VISIBLE_DEVICES"] = str(args.gpu)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     ck = torch.load(args.ckpt, map_location="cpu", weights_only=False)
-    if args.model_type == "u0":
+    if args.model_type == "uidm":
+        model = UIDM(
+            **SIZES_UIDM[ck["cfg"].get("model", "base")],
+            no_interaction=ck["cfg"].get("no_interaction", False))
+        model.load_state_dict(ck["model"])
+    elif args.model_type == "u0":
         state = ck["model"] if "model" in ck else ck
         model = L1DAssociator()
         model.load_state_dict(state)
