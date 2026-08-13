@@ -2,7 +2,7 @@
 
 日期：2026-08-13（实验完成日；训练完成于 2026-08-11）
 项目根目录：`/data1/LWR/vranlee/SERVER_ONLY/avis/LocateMOT`
-Git commit：`d87b0cf00749b90514c6b416013401a672ef3088`
+Git commit：`1b6f7ea4b54fbf1c9b99e0e538b7f5696b6999ca`
 
 > 本报告自包含；把本文件交给任何 GPT 会话即可继续，无需其他上下文。
 
@@ -241,4 +241,4 @@ Dance 塌陷必须解决后才可作为主方法投稿。
   `docs/l6_training_design.md`
 - 报告：本目录 `reports/l6_*.md`
 - 状态：`outputs/l6/state.json`、`research_log.md`
-- Commit SHA：`d87b0cf00749b90514c6b416013401a672ef3088`
+- Commit SHA：`1b6f7ea4b54fbf1c9b99e0e538b7f5696b6999ca`
