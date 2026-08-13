@@ -493,3 +493,8 @@
   `--app-key/--freeze-core` 训练支持。
 - 失败/修正：TAO 文件名非标准（ArgoVerse side 相机 9512 帧）导致解析
   崩溃 → 用 stem/frame_index 双规则；检测文件命名 frameXXXX/原名两种。
+- 验证：TAO val 完整构建（988 视频 / 36,375 帧 / 1.61M dets，0 空 CLIP）；
+  closed-set CLIP 缓存（245 视频 / 428,648 crops，0 空）；OVMOT 评估管线
+  端到端冒烟通过（官方 TETA，随机模型 30 视频：All TETA 22.98 /
+  LocA 60.77 / AssocA 8.16 / ClsA 0；AVA 子集 Detic 类别本身对不上，
+  ClsA=0 是数据特性；关联基线 ~8 为随机水平）。

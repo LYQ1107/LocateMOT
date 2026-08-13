@@ -21,6 +21,13 @@ Stage L7 把 “Unified” 的定义从“一个 tracker 跑多个数据集”�
 4. 建立 TAO 官方 OVMOT 协议（官方 v1 GT + Detic public dets +
    官方 TETA Base/Novel/All），外观 token 由 PBD 换成 frozen CLIP。
 
+当前管线状态（2026-08-14）：Dance repair 4 卡训练中；TAO val 数据
+已完整构建（988 视频 / 36,375 帧 / 1.61M Detic dets，CLIP 特征无缺失）；
+closed-set CLIP 缓存完成（245 视频 / 428,648 crops）；OVMOT 评估链路
+已用官方 TETA 端到端验证（随机模型 30 视频：All TETA 22.98 /
+LocA 60.77 / AssocA 8.16 / ClsA 0；ClsA=0 是 AVA 子集 Detic 类别与
+GT 不对齐的数据特性，非协议 bug）。
+
 最终结论与数字：见下文各节（实验进行中）。
 
 ## 2. L1–L6 evidence chain
@@ -142,7 +149,21 @@ Refer-KITTI-V2 为候选；本地 expression/labels 存在，KITTI tracking
 
 ## 21. RMOT results
 
-待实验（占位）。
+`NOT_EXECUTED`（数据阻塞，如实记录）：
+
+- Refer-KITTI-V2 的 expression/labels_with_ids 本地存在，但其帧要求为
+  官方 KITTI tracking 序列 0000–0020（image_02/{seq:04d}）。服务器上没有
+  这些序列；MFT2025 目录的 SN/BT/MSK/PF 帧属于另一套多数据集组织
+  （帧数 684/3000/1754/15000 等，与 KITTI 序列帧数全部不匹配），不能
+  当作 Refer-KITTI 帧使用。
+- 官方 KITTI tracking 下载在 cvlibs.net 需要注册登录；未找到免登录镜像。
+  STORM-Bench 需要 VidOR 帧（本地没有，磁盘紧张未下载）。
+- 已交付：RMOT 协议与接口设计（`docs/l7_rmot_protocol.md`、
+  `docs/l7_specification_encoder_design.md`），共享 UIDM + frozen
+  language encoder 的 WHAT/HOW 分解已设计并写代码路径；数据到位后可
+  直接接入，不需要重造 tracking core。
+- 因此本阶段只可给出 `L7_OVMOT_SUPPORTED / RMOT_NOT_EXECUTED`
+  级别的结论（若 OVMOT 为正信号），不写 Unified-MOT-Signal。
 
 ## 22. closed-set regression
 

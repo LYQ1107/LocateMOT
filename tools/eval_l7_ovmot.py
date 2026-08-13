@@ -163,11 +163,19 @@ def main():
     ap.add_argument("--score-thr", type=float, default=0.05)
     ap.add_argument("--new-margin", type=float, default=0.0)
     ap.add_argument("--gt-json", default=GT_JSON)
+    ap.add_argument("--max-videos", type=int, default=0)
     args = ap.parse_args()
     out = Path(args.out)
     tracker_dir = out / "trackers" / "UIDM" / "data"
     tracker_dir.mkdir(parents=True, exist_ok=True)
-    run_tracker(args.data_dir, args.ckpt, tracker_dir / "pred.json",
+    data_dir = Path(args.data_dir)
+    tmp_dir = data_dir
+    if args.max_videos:
+        tmp_dir = out / "subset_data"
+        tmp_dir.mkdir(parents=True, exist_ok=True)
+        for p in sorted(data_dir.glob("*.pkl"))[:args.max_videos]:
+            (tmp_dir / p.name).symlink_to(p.resolve())
+    run_tracker(str(tmp_dir), args.ckpt, tracker_dir / "pred.json",
                 args.gpu, args.score_thr, args.new_margin)
     run_teta("UIDM", str(out / "trackers"), args.gt_json)
 
