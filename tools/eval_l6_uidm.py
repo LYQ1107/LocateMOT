@@ -60,7 +60,9 @@ def run_tracker(ckpt, model_size, manifest, out_dir, gpu, new_margin=0.0):
     cfg = ck.get("cfg", {})
     size = model_size or cfg.get("model", "base")
     model = UIDM(**SIZES[size],
-                 no_interaction=cfg.get("no_interaction", False)).to(device)
+                 no_interaction=cfg.get("no_interaction", False),
+                 use_cue_rel=cfg.get("use_cue_rel", False),
+                 app_dim=cfg.get("app_dim", 2048)).to(device)
     model.load_state_dict(ck["model"])
     model.eval()
     by_video = {}

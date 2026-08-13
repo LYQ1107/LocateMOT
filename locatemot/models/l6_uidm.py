@@ -41,12 +41,12 @@ def l2norm(x, dim=-1):
 
 
 class PBDEncoder(nn.Module):
-    """2048-dim PBD object evidence -> d_model token."""
+    """Appearance-token evidence (PBD 2048 or frozen CLIP 512) -> d_model."""
 
-    def __init__(self, d_model=320, dropout=0.1):
+    def __init__(self, d_model=320, dropout=0.1, in_dim=2048):
         super().__init__()
         self.mlp = nn.Sequential(
-            nn.Linear(PBD_DIM, 2 * d_model),
+            nn.Linear(in_dim, 2 * d_model),
             nn.LayerNorm(2 * d_model), nn.GELU(), nn.Dropout(dropout),
             nn.Linear(2 * d_model, d_model),
             nn.LayerNorm(d_model))
@@ -116,12 +116,15 @@ class UIDM(nn.Module):
     """Per-frame transition decoder; the rollout engine drives state."""
 
     def __init__(self, d_model=320, n_layers=4, n_heads=8, ffn_dim=1280,
-                 dropout=0.1, max_obs_gap=30.0, no_interaction=False):
+                 dropout=0.1, max_obs_gap=30.0, no_interaction=False,
+                 use_cue_rel=False, app_dim=2048):
         super().__init__()
         self.d_model = d_model
+        self.app_dim = app_dim
         self.max_obs_gap = max_obs_gap
         self.no_interaction = no_interaction
-        self.pbd_encoder = PBDEncoder(d_model, dropout)
+        self.use_cue_rel = use_cue_rel
+        self.pbd_encoder = PBDEncoder(d_model, dropout, app_dim)
         self.cand_mlp = EvidenceMLP(len(CAND_FEATURES), d_model, dropout)
         self.track_mlp = EvidenceMLP(len(TRACK_FEATURES), d_model, dropout)
         layer = nn.TransformerEncoderLayer(
@@ -133,6 +136,31 @@ class UIDM(nn.Module):
             nn.LayerNorm(256), nn.GELU(), nn.Dropout(dropout),
             nn.Linear(256, 128), nn.GELU(),
             nn.Linear(128, 1))
+        if self.use_cue_rel:
+            # Decision-level cue experts; indices index PAIR_FEATURES.
+            self.cue_groups = {
+                "motion": [1, 4, 7],            # iou_pred, cd_pred, gap
+                "geometry": [0, 3, 5, 15],      # iou, cd, log_scale, cand_size
+                "appearance": [2, 18],          # pbd_cos, pbd_anchor_cos
+                "competition": [9, 10, 11, 12, 13, 14, 8, 17],
+                "memory": [16],                 # + anchor_cos_cur, hits
+            }
+            self.cue_heads = nn.ModuleDict({
+                name: nn.Sequential(
+                    nn.Linear(2 * d_model + len(idxs) +
+                              (2 if name == "memory" else 0), 128),
+                    nn.GELU(), nn.Linear(128, 1))
+                for name, idxs in self.cue_groups.items()
+            })
+            # router context: gap, track_age, log_n_cand, base row margin,
+            # anchor_cos_cur, hits.
+            self.reliability_head = nn.Sequential(
+                nn.Linear(2 * d_model + 6, 128), nn.LayerNorm(128), nn.GELU(),
+                nn.Dropout(dropout), nn.Linear(128, len(self.cue_groups)))
+        else:
+            self.cue_groups = {}
+            self.cue_heads = nn.ModuleDict()
+            self.reliability_head = None
         self.no_match_head = nn.Sequential(
             nn.Linear(d_model + len(TRACK_FEATURES), 128),
             nn.LayerNorm(128), nn.GELU(),
@@ -171,6 +199,16 @@ class UIDM(nn.Module):
         nn.init.constant_(self.new_head[-1].bias, -1.5)
         nn.init.zeros_(self.alive_head[-1].weight)
         nn.init.constant_(self.alive_head[-1].bias, 1.0)
+        if self.use_cue_rel:
+            for head in self.cue_heads.values():
+                nn.init.xavier_uniform_(head[0].weight)
+                nn.init.zeros_(head[0].bias)
+                nn.init.zeros_(head[2].weight)
+                nn.init.zeros_(head[2].bias)
+            nn.init.xavier_uniform_(self.reliability_head[0].weight)
+            nn.init.zeros_(self.reliability_head[0].bias)
+            nn.init.zeros_(self.reliability_head[-1].weight)
+            nn.init.zeros_(self.reliability_head[-1].bias)
 
     def forward_frame(self, frame):
         """One frame. frame: dict with torch tensors:
@@ -206,8 +244,38 @@ class UIDM(nn.Module):
 
         t_exp = trk_out.unsqueeze(2).expand(B, T, N, self.d_model)
         c_exp = cand_out.unsqueeze(1).expand(B, T, N, self.d_model)
-        pair_in = torch.cat([t_exp, c_exp, pair], dim=-1)
-        pair_logits = self.pair_head(pair_in).squeeze(-1)
+        if self.use_cue_rel:
+            cue_scores = []
+            for name, idxs in self.cue_groups.items():
+                feats = pair[..., idxs]
+                if name == "memory":
+                    extra = torch.stack([
+                        track_feat[:, :, 15:16].expand(B, T, N),
+                        track_feat[:, :, 8:9].expand(B, T, N),
+                    ], dim=-1)
+                    feats = torch.cat([feats, extra], dim=-1)
+                cue_scores.append(self.cue_heads[name](
+                    torch.cat([t_exp, c_exp, feats], dim=-1)).squeeze(-1))
+            cue_scores = torch.stack(cue_scores, dim=-1)  # [B,T,N,K]
+            cue_scores = cue_scores.masked_fill(
+                ~cand_mask.unsqueeze(1).unsqueeze(-1), -1e9)
+            cue_scores = cue_scores.masked_fill(
+                ~trk_mask.unsqueeze(2).unsqueeze(-1), -1e9)
+            rel_ctx = torch.stack([
+                pair[..., 7], pair[..., 16], pair[..., 8], pair[..., 11],
+                track_feat[:, :, 15:16].expand(B, T, N),
+                track_feat[:, :, 8:9].expand(B, T, N),
+            ], dim=-1)
+            rel_logits = self.reliability_head(
+                torch.cat([t_exp, c_exp, rel_ctx], dim=-1))
+            rel_w = torch.softmax(rel_logits, dim=-1)
+            pair_mix = (rel_w * cue_scores).sum(-1)
+            ctx = self.pair_head(
+                torch.cat([t_exp, c_exp, pair], dim=-1)).squeeze(-1)
+            pair_logits = pair_mix + ctx
+        else:
+            pair_in = torch.cat([t_exp, c_exp, pair], dim=-1)
+            pair_logits = self.pair_head(pair_in).squeeze(-1)
         pair_logits = pair_logits.masked_fill(~cand_mask.unsqueeze(1), -1e9)
         pair_logits = pair_logits.masked_fill(~trk_mask.unsqueeze(2), -1e9)
 
@@ -222,7 +290,7 @@ class UIDM(nn.Module):
              torch.clamp(frame["gap"].float(), 0, self.max_obs_gap)
              .unsqueeze(-1)], dim=-1)).squeeze(-1)
         pred_box = self.motion_head(trk_out)  # normalized corners
-        return {
+        out = {
             "pair_logits": pair_logits,
             "no_match": no_match,
             "new": new,
@@ -231,6 +299,11 @@ class UIDM(nn.Module):
             "trk_tok": trk_out,
             "cand_tok": cand_out,
         }
+        if self.use_cue_rel:
+            out["cue_scores"] = cue_scores
+            out["rel_logits"] = rel_logits
+            out["cue_rel"] = rel_w
+        return out
 
     def forward(self, frame):
         return self.forward_frame(frame)
@@ -289,6 +362,25 @@ def uidm_frame_loss(frame, pred, tgt):
     loss_motion = (pred["pred_box"][bv] - mb[bv]).abs().mean() if bv.any() \
         else row_logits.new_zeros(())
 
+    # decision-level cue reliability: on the GT-matched candidate row, the
+    # router should upweight the cues whose own top-1 vote is the true target.
+    # Soft-target CE (bounded, avoids logit divergence).
+    loss_rel = row_logits.new_zeros(())
+    if "cue_scores" in pred:
+        cue_valid = rv & (tgt["row_target"] < N)
+        if cue_valid.any():
+            cue_scores = pred["cue_scores"][cue_valid]  # [Rv,N,K]
+            gt_idx = tgt["row_target"][cue_valid]       # [Rv]
+            top1 = cue_scores.argmax(dim=1)  # [Rv,K]
+            vote = (top1 == gt_idx[:, None]).float()  # [Rv,K]
+            n_votes = vote.sum(dim=1, keepdim=True).clamp(min=1.0)
+            q = vote / n_votes  # uniform fallback when no cue votes correctly
+            rel_logits_gt = torch.gather(
+                pred["rel_logits"][cue_valid], 1,
+                gt_idx[:, None, None].expand(-1, 1, q.shape[-1])
+            ).squeeze(1)  # [Rv,K]
+            loss_rel = F.cross_entropy(rel_logits_gt, q)
+
     # soft switch / FP margin (UniTrack-style, vectorised)
     col_probs = torch.softmax(col_logits, dim=-1)  # [B,N,T+1]
     correct = col_probs[torch.arange(B, device=dev)[:, None],
@@ -309,14 +401,16 @@ def uidm_frame_loss(frame, pred, tgt):
         "loss_row": loss_row, "loss_col": loss_col,
         "loss_nm": loss_nm, "loss_new": loss_new, "loss_alive": loss_alive,
         "loss_motion": loss_motion, "loss_switch": loss_switch,
+        "loss_rel": loss_rel,
         "n_row": n_row, "n_col": n_col,
     }
 
 
-def uidm_total_loss(l, w_life=0.3, w_motion=0.3, w_switch=0.5):
+def uidm_total_loss(l, w_life=0.3, w_motion=0.3, w_switch=0.5, w_rel=0.1):
     return (l["loss_row"] + l["loss_col"]
             + w_life * (l["loss_nm"] + l["loss_new"] + l["loss_alive"])
-            + w_motion * l["loss_motion"] + w_switch * l["loss_switch"])
+            + w_motion * l["loss_motion"] + w_switch * l["loss_switch"]
+            + w_rel * l["loss_rel"])
 
 
 def decode_lsa(pair, no_match, new):

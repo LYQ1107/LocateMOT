@@ -125,7 +125,7 @@ class UIDMRollout:
 
     def __init__(self, model, clips, device, teacher=True,
                  max_age=MAX_AGE, max_slots=MAX_SLOTS, raw=None,
-                 stateless=False, no_lifecycle=False):
+                 stateless=False, no_lifecycle=False, app_key="pbd"):
         self.model = model
         self.raw = raw if raw is not None else model
         self.stateless = stateless
@@ -134,6 +134,7 @@ class UIDMRollout:
         self.B = len(clips)
         self.H = H
         self.teacher = teacher
+        self.app_key = app_key
         self.max_age = max_age
         d = self.raw.d_model
         # identity maps per clip
@@ -161,7 +162,8 @@ class UIDMRollout:
         self.S = S
         self.h = torch.zeros(self.B, S, d, device=device)
         self.anchor = torch.zeros_like(self.h)
-        self.ref_pbd = torch.zeros(self.B, S, 2048, device=device)
+        app_dim = getattr(raw, "app_dim", 2048)
+        self.ref_pbd = torch.zeros(self.B, S, app_dim, device=device)
         self.anchor_pbd = torch.zeros_like(self.ref_pbd)
         self.alive_logit = torch.full((self.B, S), -5.0, device=device)
         self.active = torch.zeros(self.B, S, dtype=torch.bool, device=device)
@@ -190,7 +192,8 @@ class UIDMRollout:
         # candidate tensors
         Nmax = max(len(c["frames"][f]["boxes"]) for c in clips)
         Nmax = max(1, Nmax)
-        cand_pbd = torch.zeros(B, Nmax, 2048, device=dev)
+        app_dim = getattr(self.raw, "app_dim", 2048)
+        cand_pbd = torch.zeros(B, Nmax, app_dim, device=dev)
         cand_feat = torch.zeros(B, Nmax, len(
             __import__("locatemot.models.l1d_association", fromlist=["CAND_FEATURES"]).CAND_FEATURES),
             device=dev)
@@ -212,7 +215,7 @@ class UIDMRollout:
                 cand_boxes[b, j] = torch.as_tensor(
                     fr["boxes"][j], dtype=torch.float32, device=dev)
                 cand_pbd[b, j] = torch.as_tensor(
-                    np.asarray(fr["pbd"][j], np.float32), device=dev)
+                    np.asarray(fr[self.app_key][j], np.float32), device=dev)
                 cand_gen[b, j] = float(fr["gen"][j])
                 gid = fr["cand_gt"][j]
                 if gid is not None and gid in self.gid_maps[b]:
@@ -480,6 +483,13 @@ def main():
     ap.add_argument("--no-interaction", action="store_true")
     ap.add_argument("--no-trackloss", action="store_true")
     ap.add_argument("--no-lifecycle", action="store_true")
+    ap.add_argument("--no-cue-rel", action="store_true")
+    ap.add_argument("--init-ckpt", default=None)
+    ap.add_argument("--w-rel", type=float, default=0.1)
+    ap.add_argument("--app-key", default="pbd",
+                    help="frame field holding the appearance token")
+    ap.add_argument("--freeze-core", action="store_true",
+                    help="train only the appearance projector (frozen UIDM core)")
     args = ap.parse_args()
     rank = 0
     if args.ddp:
@@ -498,7 +508,20 @@ def main():
         "base": dict(d_model=320, n_layers=4, n_heads=8, ffn_dim=1280),
         "large": dict(d_model=384, n_layers=6, n_heads=8, ffn_dim=1536),
     }
-    model = UIDM(**sizes[args.model], no_interaction=args.no_interaction).to(device)
+    app_dim = 512 if args.app_key == "clip" else 2048
+    model = UIDM(**sizes[args.model], no_interaction=args.no_interaction,
+                 use_cue_rel=not args.no_cue_rel,
+                 app_dim=app_dim).to(device)
+    if args.init_ckpt:
+        ck = torch.load(args.init_ckpt, map_location="cpu", weights_only=False)
+        missing, unexpected = model.load_state_dict(ck["model"], strict=False)
+        if rank == 0:
+            print(f"[l6] init-ckpt {args.init_ckpt} missing={len(missing)} "
+                  f"unexpected={len(unexpected)}", flush=True)
+    if args.freeze_core:
+        for name, p in model.named_parameters():
+            if not name.startswith("pbd_encoder."):
+                p.requires_grad = False
     raw_model = model
     if args.ddp:
         model = torch.nn.parallel.DistributedDataParallel(
@@ -530,6 +553,8 @@ def main():
     out_dir.mkdir(parents=True, exist_ok=True)
     cfg = vars(args)
     cfg["n_params"] = n_params
+    cfg["use_cue_rel"] = not args.no_cue_rel
+    cfg["app_dim"] = model.app_dim
     with open(out_dir / "train_config.json", "w") as f:
         json.dump(cfg, f, indent=2, ensure_ascii=False)
     curve = []
@@ -546,7 +571,8 @@ def main():
                 random.random() < args.teacher_final)
             rollout = UIDMRollout(model, batch, device, teacher=teacher,
                                   raw=raw_model, stateless=args.stateless,
-                                  no_lifecycle=args.no_lifecycle)
+                                  no_lifecycle=args.no_lifecycle,
+                                  app_key=args.app_key)
             losses, nf = rollout.run(batch)
             row_acc = losses.get("acc_row", 0.0) / max(
                 1.0, losses.get("n_row", 0.0))
@@ -554,8 +580,8 @@ def main():
                 loss = (losses["loss_row"] + losses["loss_col"]) if nf \
                     else torch.zeros((), device=device)
             else:
-                loss = uidm_total_loss(losses) if nf else torch.zeros(
-                    (), device=device)
+                loss = uidm_total_loss(losses, w_rel=args.w_rel) if nf \
+                    else torch.zeros((), device=device)
             opt.zero_grad(set_to_none=True)
             loss.backward()
             torch.nn.utils.clip_grad_norm_(model.parameters(), 5.0)
@@ -572,6 +598,7 @@ def main():
                       f"row={losses.get('loss_row',0):.4f} "
                       f"col={losses.get('loss_col',0):.4f} "
                       f"sw={losses.get('loss_switch',0):.4f} "
+                      f"rel={losses.get('loss_rel',0):.4f} "
                       f"rowacc={row_acc:.3f} "
                       f"lr={lr:.2e} elapsed={time.time()-t0:.0f}s", flush=True)
             if args.max_steps and step >= args.max_steps:

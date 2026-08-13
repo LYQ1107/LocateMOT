@@ -79,6 +79,7 @@ def compute_affinity_features(
     weights,
     image_size=(1280, 720),
     motion_pred_boxes=None,
+    app_dim=2048,
 ):
     """Compute prediction-side pair/track/candidate features and base affinity.
 
@@ -114,12 +115,12 @@ def compute_affinity_features(
     iou = _iou_matrix(tb, cb)
     iou_pred = _iou_matrix(pred, cb)
 
-    rn = _norm_pbd(np.asarray(ref_pbd, dtype=np.float32).reshape(T, PBD_DIM))
+    rn = _norm_pbd(np.asarray(ref_pbd, dtype=np.float32).reshape(T, app_dim))
     if anchor_pbd is None:
         an = rn
     else:
-        an = _norm_pbd(np.asarray(anchor_pbd, dtype=np.float32).reshape(T, PBD_DIM))
-    cn = _norm_pbd(np.asarray(cand_pbd, dtype=np.float32).reshape(N, PBD_DIM))
+        an = _norm_pbd(np.asarray(anchor_pbd, dtype=np.float32).reshape(T, app_dim))
+    cn = _norm_pbd(np.asarray(cand_pbd, dtype=np.float32).reshape(N, app_dim))
     pbd_cos = (rn @ cn.T).astype(np.float32) if T and N else np.zeros((T, N), np.float32)
     pbd_anchor_cos = (an @ cn.T).astype(np.float32) if T and N else np.zeros((T, N), np.float32)
     anchor_cos_cur = (an * rn).sum(-1).astype(np.float32) if T else np.zeros(T, np.float32)

@@ -453,3 +453,43 @@
   small-3M 0.5458 —— 四项机制各贡献 ~21–23pp，容量贡献 ~15pp。
 - 决策：`L6_PARTIAL / SUPPORTED with Dance collapse`；报告完成，
   下一步 cue-reliability 修复 + IDSW 校准 + long-gap memory。
+
+## 2026-08-14 — Stage L7 开始：Unified MOT（ALL / OV / Referring）
+
+- 假设：不同 WHAT-TO-TRACK specification（ALL、open-vocabulary category、
+  referring language）可以共享同一个 HOW-TO-TRACK 因果身份动力学核心；
+ 统一模型 = Specification Encoder（选择目标）+ Shared UIDM（维护身份）。
+- 文献审计（官方仓库，见 docs/l7_reference_audit.md）：
+  OVTR(ICLR25)、OVTrack(CVPR23)、COVTrack(ICCV25)、QTrack(26)、
+  TempRMOT(24)、STORM(26)、ReaMOT(25)、OVT-B(NeurIPS24) 均已阅读 README
+  与关键模型/评估代码；无同时满足 closed-set+OVMOT+RMOT+共享身份核心的
+  直接等价方法（NO_DIRECT_EQUIVALENT_VERIFIED）。
+- 关键碰撞：COVTrack 已公开 association-embedding 级 adaptive
+  appearance/motion/semantic 门控融合，因此 cue reliability 不能作为第一
+  创新，只能作为 UIDM identity-transition decoder 内部组件并明确区分。
+- 数据：TAO 官方 train/val/test 帧+标注本地完整（~354GB），LVIS v1 类别表
+  在 masa 目录；Refer-KITTI-V2 在 MFT2025 目录（仅标注）；OVT-B/C-TAO
+  不可用（C-TAO 在 .MOTSynth.partial，禁用）。
+- 计划：一次 Dance 修复（decision-level cue reliability）→ 四域回归 →
+  OVMOT（TAO 官方协议）→ RMOT（Refer-KITTI）→ joint unified checkpoint
+  → 关键消融与报告。
+
+## 2026-08-14 — Stage L7：Dance repair 训练 + OVMOT 管线实现
+
+- 设计：UIDM Identity Transition Decoder 内新增 decision-level cue
+  experts（motion/geometry/appearance/competition/memory）+ reliability
+  router（softmax 权重 × cue score + full-evidence context head）；
+  辅助损失 = GT 匹配行 soft-target CE（w=0.1）。第一版用 per-candidate
+  BCE 导致 logit 发散（rel≈10），改为 GT 行 soft-target CE 后正常
+  （rel≈0.26/frame）。与 COVTrack embedding 级 MCF 明确区分。
+- 实验：4 卡 DDP 从 L6 uidm_full 微调 4200 步（lr 1.5e-4，
+  teacher 800→0.3，六域同混合），运行中。
+- OVMOT 协议：核对官方 TETA（run_ovmot.py）：Base=frequency!=r、
+  Novel=r、TETA50 逐类均值；本地已有官方 v1 GT、Detic public dets、
+  LVIS v1 CLIP 文本嵌入（与 "a {name}" 模板核对 mean cos 0.9999）。
+- 实现：UIDM app_dim 参数化（PBD 2048 / CLIP 512）；TAO val 构建器
+  （Detic dets + CLIP crops，批量化 cv2+fp16 后 2 视频 19s vs 旧版
+  13min）；官方 TETA 包安装；closed-set CLIP 缓存器；
+  `--app-key/--freeze-core` 训练支持。
+- 失败/修正：TAO 文件名非标准（ArgoVerse side 相机 9512 帧）导致解析
+  崩溃 → 用 stem/frame_index 双规则；检测文件命名 frameXXXX/原名两种。

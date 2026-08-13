@@ -929,6 +929,7 @@ class OnlineTracker:
         image_size = tuple(self.image_size)
         iw, ih = image_size
         d = model.d_model
+        app_dim = getattr(model, "app_dim", 2048)
         if T == 0 and N == 0:
             return []
         T = max(1, T)
@@ -938,8 +939,8 @@ class OnlineTracker:
         gaps = np.zeros(T, np.float32)
         ages = np.zeros(T, np.float32)
         hits = np.zeros(T, np.float32)
-        ref = np.zeros((T, 2048), np.float32)
-        anchor = np.zeros((T, 2048), np.float32)
+        ref = np.zeros((T, app_dim), np.float32)
+        anchor = np.zeros((T, app_dim), np.float32)
         h = np.zeros((T, d), np.float32)
         alive = np.zeros(T, np.float32)
         for i, trk in enumerate(tracks):
@@ -967,7 +968,7 @@ class OnlineTracker:
             else:
                 anchor[i] = ref[i]
         cb = np.asarray(cur_boxes, dtype=np.float64).reshape(N, 4)
-        cp = np.zeros((N, 2048), np.float32)
+        cp = np.zeros((N, app_dim), np.float32)
         cg = np.zeros(N, np.float32)
         for i, f in enumerate(cur_feats):
             if f.get("pbd_be") is not None:
@@ -976,7 +977,7 @@ class OnlineTracker:
         feats = compute_affinity_features(
             tb, cb, ref, anchor, cp, cg, gaps, ages, hits, pb,
             self.l1d_weights, image_size,
-            motion_pred_boxes=pred_boxes)
+            motion_pred_boxes=pred_boxes, app_dim=app_dim)
         batch = {
             "trk_tok": torch.as_tensor(h[None], device=self.device),
             "cand_pbd": torch.as_tensor(cp[None], device=self.device),

@@ -52,3 +52,23 @@
 3. 有官方 RL 框架可复用依据（如 GRPO 的 reward normalization）。
 
 否则保持 supervised utility / preference learning。
+
+## 6. Stage L7 补充（2026-08-14，仅记录，不执行 RL）
+
+- QTrack（arXiv 2603.13759，2026；官方仓库
+  `github.com/gaash-lab/QTrack`，commit bc746fe246217a4de0ecac0318
+  ba1cf9be94a604，Apache-2.0）：3B 多模态 VLM 的 query-driven RMOT，
+  用 verl（Ray+FSDP）做 TPA-PO（Temporal Perception-Aware Policy
+  Optimization）。奖励在 `verl/utils/reward_score/vision_reasoner.py`：
+  thinking/segmentation 格式奖励 + IoU(>0.5)/L1(<10px)/point(距离/含框)
+  结构化定位奖励（Hungarian 匹配后计分），目标是 motion-aware
+  reasoning。官方 RMOT26 指标 MCP/MOTP/CLE/NDE。
+- 可迁移思想：把“时间感知”作为结构化奖励项（motion-aware reasoning），
+  与我们 cue-reliability 的监督目标同构（都是局部证据可信度）；
+- 不可迁移：其奖励针对 VLM box/point 输出格式，不是我们的
+  identity-transition 决策；其训练资源（3B VLM RL）超出本项目
+  4×40G 预算。
+- STORM（arXiv 2604.10527，2026，benchmark 仓库
+  `amazon-science/storm-referring-multi-object-grounding`，commit
+  0d87c3ba，无 LICENSE）：end-to-end RMOT 大模型；模型代码未发布，
+  无法核实其训练/奖励实现（PAPER_ONLY）。

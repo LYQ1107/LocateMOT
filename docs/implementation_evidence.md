@@ -544,3 +544,68 @@ MOTIP 官方实现的方向是 current detections 作为 query、historical traj
 - Reason for final design: L1-B 证伪 single-frame ReID；L4 证伪
   prediction-to-prediction consistency；GT-anchored temporal state +
   relation-structure consistency 是当前唯一未被证伪的统一身份机制。
+
+## Module: Reliability-aware Identity Transition（Stage L7 Dance repair）
+
+- Scientific purpose: 在 UIDM identity-transition decoder 内部让模型学习
+  每个 association decision 的局部 cue 可靠性，修复 Dance dense crowd 下
+  appearance 过度主导导致的 gap=1 switch collapse；机制必须 dataset-agnostic
+  且位于决策层，而不是外挂 dataset-specific 阈值。
+- Official references inspected: COVTrack（ICCV 2025, commit
+  9b0ced5779ee36f5dd73dbe39b5ae5d57abb4b3b, Apache-2.0，读
+  `ovtrack/models/roi_heads/ovtrack_roi_head.py` MCF forward：
+  assoc/bbox/cls 特征 gate + confidence×0.5 + `assoc + residual×
+  max_fusion_ratio×(1-assoc_conf)^2`）；OVTR（ICLR 2025, 500e72c1）、
+  Samba / MOTIP / UniTrack（L6 已审计）。
+- Repository commits: 见 `docs/l7_reference_audit.md`。
+- Files inspected: `locatemot/models/l6_uidm.py`（UIDM/uidm_frame_loss）、
+  `tools/train_l6_uidm.py`（rollout）、COVTrack MCF forward。
+- Observed implementation（我们的 clean reimplementation）：5 个
+  decision-level cue experts（motion/geometry/appearance/competition/
+  memory，输入为分组原始证据 + track/candidate token）各自输出 scalar
+  score；reliability router 输入 [t,c,gap,age,log_n_cand,base_margin,
+  anchor_cos,hits] 输出 per-decision softmax 权重；
+  `pair_logit = Σ_k w_k·score_k + context_head(full evidence)`；
+  辅助损失 = GT 匹配行上的 soft-target CE（哪些 cue 的 top-1 投票命中
+  GT），w_rel=0.1；所有机制 per-(track,candidate,frame) 因果计算。
+- Parts adopted: 借鉴 COVTrack “cue 可靠性应作为局部置信度学习” 的科学
+  原则，但不复制其 embedding 空间门控代码（Apache-2.0 允许复用但我们
+  选择了不同机制）。
+- Parts intentionally not adopted: 不用 COVTrack 的
+  association-embedding 残差门控 + 余弦匹配（它是 embedding 层融合，
+  我们是 decision 层 mixture + lifecycle/NEW/NO-MATCH）；不做
+  dataset router；不手工调 Dance PBD 权重。
+- Reason for final design: L6 失败分析显示 92% switch 为 gap=1 且
+  dense same-class crowd IoU 0.42；COVTrack 证明 association 级
+  cue-confidence 有效但已公开，为保持 novelty，把可靠性做成 identity
+  transition 内的决策级机制，作为 shared UIDM 的组件而非第一创新。
+
+## Module: OpenVocabularyAppearanceFrontEnd（Stage L7 OVMOT）
+
+- Scientific purpose: 把 closed-set 的 PBD 外观 token 换成 open-vocabulary
+  表示，让共享 UIDM core 在 unseen categories 上仍可运行；spec encoder
+  负责 WHAT（类别文本相关性），identity core 不变（HOW）。
+- Official references inspected: OVTR（CLIP text/image embeddings 1732
+  类、patch2query 投影注入 transformer）、OVTrack（CLIP 视觉特征
+  quasi-dense 关联 + 蒸馏）、COVTrack（Detic public dets 协议）、
+  TETA（官方 Base/Novel 定义 + metric，b498aa87）。
+- Repository commits: 见 `docs/l7_reference_audit.md`；TETA commit
+  b498aa87b252bfb75d7cc0d8d6435c3e1e74e4de。
+- Files inspected: `locatemot/models/l6_uidm.py::PBDEncoder`
+  （改为 in_dim 参数化 2048/512）、`tools/build_l7_tao.py`、
+  `tools/eval_l7_ovmot.py`、`tools/cache_l7_clip_closedset.py`、
+  TETA `scripts/run_ovmot.py` + `teta/datasets/tao.py` + `metrics/teta.py`。
+- Observed implementation: frozen CLIP ViT-B/32；文本侧复用官方
+  `lvis_v1_clip_a+cname.npy`（1203×512，与官方 "a {name}" 模板核对
+  mean cos 0.9999）；图像侧 candidate crop 224×224 按 CLIP 预处理
+  （resize bicubic + center crop + normalize）批量编码 fp16 存储；
+  UIDM `app_dim=512` 只重建投影器，set encoder/memory/transition/
+  lifecycle 参数完全共享；分类用 frozen Detic label（perception 与
+  association 分离）；评估用官方 TETA Base=non-r / Novel=r / All。
+- Parts adopted: OVTrack/OVTR 的 “frozen VLM 文本-图像嵌入作为 OV
+  语义接口” 协议思想、TETA 官方评估协议（运行官方包，不复制实现）。
+- Parts intentionally not adopted: 不训练 CLIP；不做 OVTR 的固定 1732
+  类端到端 decoder；不做 COVTrack MCF；不用 C-TAO / MOTSynth 数据。
+- Reason for final design: 任务要求只换 semantic front-end、共享
+  identity dynamics；CLIP ViT-B/32 是本地可验证、官方协议兼容的单一
+  主方案；Detic public dets 保证 Base/Novel 评估的 apples-to-apples。
