@@ -53,7 +53,8 @@ SIZES = {
 }
 
 
-def run_tracker(ckpt, model_size, manifest, out_dir, gpu, new_margin=0.0):
+def run_tracker(ckpt, model_size, manifest, out_dir, gpu, new_margin=0.0,
+                no_cue_mix=False):
     os.environ["CUDA_VISIBLE_DEVICES"] = str(gpu)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     ck = torch.load(ckpt, map_location="cpu", weights_only=False)
@@ -64,6 +65,8 @@ def run_tracker(ckpt, model_size, manifest, out_dir, gpu, new_margin=0.0):
                  use_cue_rel=cfg.get("use_cue_rel", False),
                  app_dim=cfg.get("app_dim", 2048)).to(device)
     model.load_state_dict(ck["model"])
+    if no_cue_mix:
+        model.use_cue_mix = False
     model.eval()
     by_video = {}
     with open(manifest) as f:
@@ -111,6 +114,7 @@ def main():
     ap.add_argument("--gpu", type=int, default=7)
     ap.add_argument("--domains", default="dance,bdd,mot17,mot20")
     ap.add_argument("--new-margin", type=float, default=0.0)
+    ap.add_argument("--no-cue-mix", action="store_true")
     args = ap.parse_args()
     out = ROOT / args.out
     tracker_root = out / "trackers"
@@ -126,7 +130,7 @@ def main():
         src_dir = tracker_root / label
         src_dir.mkdir(parents=True, exist_ok=True)
         run_tracker(args.ckpt, args.model_size, manifest, src_dir, args.gpu,
-                    args.new_margin)
+                    args.new_margin, args.no_cue_mix)
         variant_dir = eval_root / label / "U0"
         if variant_dir.exists():
             shutil.rmtree(variant_dir)

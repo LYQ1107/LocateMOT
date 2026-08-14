@@ -498,3 +498,19 @@
   端到端冒烟通过（官方 TETA，随机模型 30 视频：All TETA 22.98 /
   LocA 60.77 / AssocA 8.16 / ClsA 0；AVA 子集 Detic 类别本身对不上，
   ClsA=0 是数据特性；关联基线 ~8 为随机水平）。
+
+## 2026-08-14 — Dance repair 结果（一次 iteration，失败）
+
+- 实验：cuerel（cue experts + reliability router，4200 步微调）四域回归。
+- 结果：Dance HOTA 0.4888 / AssA 0.2522 / IDSW 9251（L6 为
+  0.5546 / 0.3248 / 5290，更差）；BDD AssA 0.5299（L6 0.4866，升）；
+  MOT17 0.6973（≈）；MOT20 0.4626（微升）。Macro AssA 0.4855
+  vs L6 0.4922。
+- 定向回归：关闭 cue-mixture 只留 context head → Dance
+  0.5466 / 0.3156 / IDSW 9204。说明伤害不仅来自 mixture，cuerel 核心
+  微调本身让 Dance 漂移（IDSW 翻倍）。
+- 判断：cue-reliability 作为 Dance 修复机制未达到“显著恢复”，且普通
+  MOT 出现严重 IDSW collapse；按“只允许一次主要 iteration”冻结普通
+  MOT，改用 L6 uidm_full 作为 OVMOT 共享核心（该核心 Dance 最优）。
+- 决策：`L7_DANCE_REPAIR_FAIL`；cuerel 保留为负结果对照；OVMOT 探针
+  从 L6 core + 新 CLIP 投影器（freeze-core）重启；普通 MOT 冻结。

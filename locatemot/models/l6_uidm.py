@@ -244,7 +244,7 @@ class UIDM(nn.Module):
 
         t_exp = trk_out.unsqueeze(2).expand(B, T, N, self.d_model)
         c_exp = cand_out.unsqueeze(1).expand(B, T, N, self.d_model)
-        if self.use_cue_rel:
+        if self.use_cue_rel and getattr(self, "use_cue_mix", True):
             cue_scores = []
             for name, idxs in self.cue_groups.items():
                 feats = pair[..., idxs]
@@ -299,7 +299,7 @@ class UIDM(nn.Module):
             "trk_tok": trk_out,
             "cand_tok": cand_out,
         }
-        if self.use_cue_rel:
+        if self.use_cue_rel and getattr(self, "use_cue_mix", True):
             out["cue_scores"] = cue_scores
             out["rel_logits"] = rel_logits
             out["cue_rel"] = rel_w

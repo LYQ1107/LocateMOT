@@ -68,7 +68,7 @@ def build_gt_maps(gt):
 
 
 def run_tracker(data_dir, ckpt_path, out_path, gpu, score_thr=0.05,
-                new_margin=0.0):
+                new_margin=0.0, classify="detic"):
     os.environ["CUDA_VISIBLE_DEVICES"] = str(gpu)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     ck = torch.load(ckpt_path, map_location="cpu", weights_only=False)
@@ -84,6 +84,16 @@ def run_tracker(data_dir, ckpt_path, out_path, gpu, score_thr=0.05,
     gt = json.load(open(GT_JSON))
     vid2imgs = build_gt_maps(gt)
     vid_name2id = {v["name"].replace("/", "-"): v["id"] for v in gt["videos"]}
+    gt_img_anns = {}
+    for a in gt["annotations"]:
+        gt_img_anns.setdefault(a["image_id"], []).append(a)
+    text_emb = None
+    if classify == "clip":
+        text_emb = np.load(
+            "/data1/LWR/vranlee/SERVER_ONLY/avis/masa/data/metadata/"
+            "lvis_v1_clip_a+cname.npy").astype(np.float32)
+        text_emb = text_emb / np.linalg.norm(
+            text_emb, axis=1, keepdims=True)
     t0 = time.time()
     files = sorted(Path(data_dir).glob("*.pkl"))
     for vi, pkl_path in enumerate(files):
@@ -119,13 +129,32 @@ def run_tracker(data_dir, ckpt_path, out_path, gpu, score_thr=0.05,
             for o in outputs:
                 x1, y1, x2, y2 = o["box"]
                 best_l, best_v = None, -1.0
+                best_j = -1
                 for j, c in enumerate(cands):
                     v = iou(c["box"], o["box"])
                     if v > best_v:
                         best_v, best_l = v, c["label"]
+                        best_j = j
+                cat_id = best_l if best_l is not None else 0
+                if classify == "clip" and best_j >= 0 and text_emb is not None:
+                    f = np.asarray(fr["clip"][best_j], np.float32)
+                    f = f / max(1e-6, float(np.linalg.norm(f)))
+                    cat_id = int(np.argmax(text_emb @ f)) + 1
+                elif classify == "oracle":
+                    image_id = vid2imgs[vid][frame]
+                    best_v = -1.0
+                    cat_id = 0
+                    for a in gt_img_anns.get(image_id, []):
+                        bx = [a["bbox"][0], a["bbox"][1],
+                              a["bbox"][0] + a["bbox"][2],
+                              a["bbox"][1] + a["bbox"][3]]
+                        v = iou(bx, o["box"])
+                        if v > best_v and v >= 0.5:
+                            best_v = v
+                            cat_id = a["category_id"]
                 preds.append({
                     "image_id": vid2imgs[vid][frame],
-                    "category_id": best_l if best_l is not None else 0,
+                    "category_id": cat_id,
                     "bbox": [x1, y1, x2 - x1, y2 - y1],
                     "score": float(o.get("score", 1.0)),
                     "track_id": int(o["track_id"]),
@@ -164,6 +193,8 @@ def main():
     ap.add_argument("--new-margin", type=float, default=0.0)
     ap.add_argument("--gt-json", default=GT_JSON)
     ap.add_argument("--max-videos", type=int, default=0)
+    ap.add_argument("--classify", default="detic",
+                    choices=["detic", "clip", "oracle"])
     args = ap.parse_args()
     out = Path(args.out)
     tracker_dir = out / "trackers" / "UIDM" / "data"
@@ -176,7 +207,7 @@ def main():
         for p in sorted(data_dir.glob("*.pkl"))[:args.max_videos]:
             (tmp_dir / p.name).symlink_to(p.resolve())
     run_tracker(str(tmp_dir), args.ckpt, tracker_dir / "pred.json",
-                args.gpu, args.score_thr, args.new_margin)
+                args.gpu, args.score_thr, args.new_margin, args.classify)
     run_teta("UIDM", str(out / "trackers"), args.gt_json)
 
 

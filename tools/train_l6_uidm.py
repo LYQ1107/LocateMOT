@@ -514,7 +514,13 @@ def main():
                  app_dim=app_dim).to(device)
     if args.init_ckpt:
         ck = torch.load(args.init_ckpt, map_location="cpu", weights_only=False)
-        missing, unexpected = model.load_state_dict(ck["model"], strict=False)
+        model_sd = model.state_dict()
+        ck_sd = ck["model"]
+        filtered = {
+            k: v for k, v in ck_sd.items()
+            if k in model_sd and model_sd[k].shape == v.shape
+        }
+        missing, unexpected = model.load_state_dict(filtered, strict=False)
         if rank == 0:
             print(f"[l6] init-ckpt {args.init_ckpt} missing={len(missing)} "
                   f"unexpected={len(unexpected)}", flush=True)
@@ -554,7 +560,7 @@ def main():
     cfg = vars(args)
     cfg["n_params"] = n_params
     cfg["use_cue_rel"] = not args.no_cue_rel
-    cfg["app_dim"] = model.app_dim
+    cfg["app_dim"] = raw_model.app_dim
     with open(out_dir / "train_config.json", "w") as f:
         json.dump(cfg, f, indent=2, ensure_ascii=False)
     curve = []

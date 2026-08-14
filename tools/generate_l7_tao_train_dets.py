@@ -32,6 +32,7 @@ TRAIN_GT = TAO_ROOT + "/annotations/train.json"
 
 def worker(gpu, videos, out_root):
     os.environ["CUDA_VISIBLE_DEVICES"] = str(gpu)
+    os.chdir(MASA_ROOT)
     sys.path.insert(0, MASA_ROOT)
     from mmdet.apis import init_detector, inference_detector
     model = init_detector(DETIC_CFG, None, device="cuda")
@@ -40,8 +41,11 @@ def worker(gpu, videos, out_root):
           if k.startswith("detector.")}
     model.load_state_dict(sd, strict=True)
     model = model.eval()
-    model.cfg.model.test_cfg.rcnn.score_thr = 0.05
-    model.cfg.model.test_cfg.rcnn.max_per_img = 50
+    model.cfg.test_dataloader.dataset.pipeline = [
+        dict(type="LoadImageFromFile"),
+        dict(type="Resize", scale=(480, 288), keep_ratio=True),
+        dict(type="PackDetInputs"),
+    ]
     for name, img_path in videos:
         parts = name.split("/")
         stem = parts[-1].replace(".jpg", "")
@@ -62,6 +66,11 @@ def worker(gpu, videos, out_root):
                 b = pred.bboxes.detach().cpu().numpy()
                 s = pred.scores.detach().cpu().numpy()
                 l = pred.labels.detach().cpu().numpy()
+                keep = s >= 0.05
+                b, s, l = b[keep], s[keep], l[keep]
+                if len(b) > 50:
+                    idx = np.argsort(-s)[:50]
+                    b, s, l = b[idx], s[idx], l[idx]
                 boxes = np.concatenate([b, s[:, None]], axis=1)
                 labels = l.astype(np.int64)
             out_path.parent.mkdir(parents=True, exist_ok=True)
@@ -79,6 +88,7 @@ def main():
     ap.add_argument("--out", default="outputs/l7/data/tao_train_dets")
     ap.add_argument("--max-images", type=int, default=0)
     args = ap.parse_args()
+    args.out = str(Path(args.out).resolve())
     gt = json.load(open(TRAIN_GT))
     imgs = sorted(gt["images"], key=lambda x: (x["video"], x["frame_index"]))
     if args.max_images:
