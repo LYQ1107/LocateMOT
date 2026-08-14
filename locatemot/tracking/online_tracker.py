@@ -94,6 +94,8 @@ class OnlineTracker:
         image_size=(1280, 720),
         output_all_candidates: bool = False,
         spec_idx: int = 0,
+        uidm_adapter=None,
+        uidm_spec=None,
     ):
         self.variant = variant
         self.b6 = b6
@@ -121,6 +123,8 @@ class OnlineTracker:
         self.image_size = image_size
         self.output_all_candidates = output_all_candidates
         self.spec_idx = spec_idx
+        self.uidm_adapter = uidm_adapter
+        self.uidm_spec = uidm_spec
         self.tracks: List[TrackState] = []
         self._next_id = 0
         self.frame_count = 0
@@ -930,6 +934,37 @@ class OnlineTracker:
         iw, ih = image_size
         d = model.d_model
         app_dim = getattr(model, "app_dim", 2048)
+        cp = np.zeros((N, app_dim), np.float32)
+        cg = np.zeros(N, np.float32)
+        if self.uidm_adapter is not None:
+            pbd_arr = np.zeros((N, 2048), np.float32)
+            clip_arr = np.zeros((N, 512), np.float32)
+            for i, f in enumerate(cur_feats):
+                pbd_arr[i] = np.asarray(
+                    f.get("pbd", f.get("pbd_be", np.zeros(2048, np.float32))),
+                    np.float32).reshape(-1)[:2048]
+                clip_arr[i] = np.asarray(
+                    f.get("clip", np.zeros(512, np.float32)),
+                    np.float32).reshape(-1)[:512]
+                cg[i] = float(f.get("gen", 0.0))
+            spec = torch.as_tensor(
+                np.asarray(self.uidm_spec, np.float32).reshape(1, -1),
+                device=self.device)
+            with torch.no_grad():
+                sem, _ = self.uidm_adapter(
+                    torch.as_tensor(pbd_arr, device=self.device),
+                    torch.as_tensor(clip_arr, device=self.device),
+                    spec)
+                sem = sem.cpu().numpy().astype(np.float32)
+            if self.uidm_adapter.mode == "semantic":
+                cp = np.zeros((N, app_dim), np.float32)
+            else:
+                cp = pbd_arr
+        else:
+            for i, f in enumerate(cur_feats):
+                if f.get("pbd_be") is not None:
+                    cp[i] = np.asarray(f["pbd_be"], dtype=np.float32)
+                cg[i] = float(f.get("gen", 0.0))
         if T == 0 and N == 0:
             return []
         T = max(1, T)
@@ -971,12 +1006,6 @@ class OnlineTracker:
             else:
                 anchor[i] = ref[i]
         cb = np.asarray(cur_boxes, dtype=np.float64).reshape(N, 4)
-        cp = np.zeros((N, app_dim), np.float32)
-        cg = np.zeros(N, np.float32)
-        for i, f in enumerate(cur_feats):
-            if f.get("pbd_be") is not None:
-                cp[i] = np.asarray(f["pbd_be"], dtype=np.float32)
-            cg[i] = float(f.get("gen", 0.0))
         feats = compute_affinity_features(
             tb, cb, ref, anchor, cp, cg, gaps, ages, hits, pb,
             self.l1d_weights, image_size,
@@ -996,6 +1025,9 @@ class OnlineTracker:
                                     device=self.device),
             "gap": torch.as_tensor(gaps[None], device=self.device),
         }
+        if self.uidm_adapter is not None:
+            batch["cand_sem"] = torch.as_tensor(sem[None],
+                                                device=self.device)
         batch["trk_mask"][0, :len(tracks)] = True
         with torch.no_grad():
             pred = model.forward_frame(batch)

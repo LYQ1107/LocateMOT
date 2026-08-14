@@ -225,6 +225,8 @@ class UIDM(nn.Module):
         pair = torch.nan_to_num(frame["pair_feats"].float())
         trk_tok0 = frame["trk_tok"].float()  # [B,T,d]
         cand_tok0 = self.pbd_encoder(cand_pbd) + self.cand_mlp(cand_feat)
+        if frame.get("cand_sem") is not None:
+            cand_tok0 = cand_tok0 + frame["cand_sem"].float()
         trk_tok = trk_tok0 + self.track_mlp(track_feat)
         cand_mask = frame.get("cand_mask")
         if cand_mask is None:
@@ -406,11 +408,14 @@ def uidm_frame_loss(frame, pred, tgt):
     }
 
 
-def uidm_total_loss(l, w_life=0.3, w_motion=0.3, w_switch=0.5, w_rel=0.1):
+def uidm_total_loss(l, w_life=0.3, w_motion=0.3, w_switch=0.5, w_rel=0.1,
+                    w_relevance=0.2):
     return (l["loss_row"] + l["loss_col"]
             + w_life * (l["loss_nm"] + l["loss_new"] + l["loss_alive"])
             + w_motion * l["loss_motion"] + w_switch * l["loss_switch"]
-            + w_rel * l["loss_rel"])
+            + w_rel * l["loss_rel"]
+            + w_relevance * l.get("loss_relevance",
+                                  l["loss_row"].new_zeros(())))
 
 
 def decode_lsa(pair, no_match, new):

@@ -24,6 +24,7 @@ from pathlib import Path
 
 import numpy as np
 import torch
+import torch.nn.functional as F
 from torch.utils.data import Dataset
 
 ROOT = Path(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -135,6 +136,7 @@ class UIDMRollout:
         self.H = H
         self.teacher = teacher
         self.app_key = app_key
+        self.unified = getattr(raw, "adapter", None) is not None
         self.max_age = max_age
         d = self.raw.d_model
         # identity maps per clip
@@ -201,6 +203,10 @@ class UIDMRollout:
         cand_boxes = torch.zeros(B, Nmax, 4, device=dev)
         cand_gen = torch.zeros(B, Nmax, device=dev)
         cand_gt_int = torch.full((B, Nmax), -1, dtype=torch.long, device=dev)
+        clip_dim = getattr(getattr(self.raw, "adapter", None), "clip_proj", None)
+        clip_dim = clip_dim.mlp[0].in_features if clip_dim is not None else 512
+        cand_clip = torch.zeros(B, Nmax, clip_dim, device=dev)
+        cand_rel_t = torch.zeros(B, Nmax, device=dev)
         S = self.S
         trk_tok = self.h
         trk_mask = self.active
@@ -217,9 +223,26 @@ class UIDMRollout:
                 cand_pbd[b, j] = torch.as_tensor(
                     np.asarray(fr[self.app_key][j], np.float32), device=dev)
                 cand_gen[b, j] = float(fr["gen"][j])
+                if self.unified and "clip" in fr:
+                    cand_clip[b, j] = torch.as_tensor(
+                        np.asarray(fr["clip"][j], np.float32), device=dev)
+                if "target" in fr and len(fr["target"]) > j:
+                    cand_rel_t[b, j] = float(fr["target"][j])
                 gid = fr["cand_gt"][j]
                 if gid is not None and gid in self.gid_maps[b]:
                     cand_gt_int[b, j] = self.gid_maps[b][gid]
+        if self.unified:
+            spec_dim = getattr(self.raw.adapter, "spec_proj", None)
+            spec_dim = spec_dim.mlp[0].in_features if spec_dim is not None \
+                else 512
+            spec = torch.zeros(B, spec_dim, device=dev)
+            for b, c in enumerate(clips):
+                if c.get("spec") is not None:
+                    spec[b] = torch.as_tensor(c["spec"], dtype=torch.float32,
+                                              device=dev)
+            if self.raw.adapter.mode == "semantic":
+                cand_pbd = torch.zeros_like(cand_pbd)
+            cand_sem, _ = self.raw.adapter(cand_pbd, cand_clip, spec)
         # batched GPU evidence features (same schema as L1DK)
         from locatemot.models.l6_uidm import compute_affinity_features_torch
         cur_gap = torch.clamp(
@@ -234,11 +257,16 @@ class UIDMRollout:
                 self.ref_pbd, self.anchor_pbd, cand_pbd, cand_gen,
                 gap, self.age.float(), self.hits.float(), img_size)
         frame = {
-            "cand_pbd": cand_pbd, "cand_feat": cand_feat,
+            "cand_pbd": cand_pbd,
+            "cand_feat": cand_feat,
             "pair_feats": pair_feats, "track_feats": track_feats,
             "cand_mask": cand_mask, "trk_mask": trk_mask,
             "gap": gap, "trk_tok": trk_tok,
         }
+        if self.unified:
+            frame["cand_clip"] = cand_clip
+            frame["spec"] = spec
+            frame["cand_sem"] = cand_sem
         pred = model(frame)
         # ---- GT-based loss targets (never overwritten by student) ----
         row_target = torch.full((B, S), Nmax, dtype=torch.long, device=dev)
@@ -337,6 +365,13 @@ class UIDMRollout:
             "row_box_valid": row_box_valid,
         }
         losses = uidm_frame_loss(frame, pred, tgt)
+        if "relevance" in pred:
+            rel_mask = cand_mask & (cand_rel_t >= 0)
+            if rel_mask.any():
+                losses["loss_relevance"] = F.binary_cross_entropy_with_logits(
+                    pred["relevance"][rel_mask], cand_rel_t[rel_mask])
+            else:
+                losses["loss_relevance"] = pred["relevance"].sum() * 0.0
         if self.no_lifecycle:
             for k in ("loss_nm", "loss_new", "loss_alive"):
                 losses[k] = losses[k].detach() * 0.0
