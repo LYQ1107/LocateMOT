@@ -130,7 +130,12 @@ Full HOTA/IDF1/IDSW in `reports/l8_mot_results.md`.
 
 ### Table B — TAO OVMOT (official TETA)
 
-pending final eval (see `reports/l8_ovmot_results.md`).
+| Method | Split | TETA | LocA | AssocA | ClsA |
+|---|---|---|---|---|---|
+| L7 CLIP-only probe (ref) | All | 33.94 | — | 29.51 | 7.51 |
+| L8 v2 shared (PBD zero) | Base | 34.33 | 65.14 | 30.45 | 7.40 |
+| L8 v2 shared (PBD zero) | Novel | 34.36 | 64.41 | 30.40 | 8.27 |
+| L8 v2 shared (PBD zero) | All | **34.33** | 65.05 | **30.44** | 7.51 |
 
 ### Table C — RMOT (Refer-Dance 40 queries)
 
@@ -149,7 +154,7 @@ RMOT-specialized iKUN; overall HOTA is above.
 | Formulation | Dataset | Spec type | Same UIDM | Same ckpt | Primary metric | Result |
 |---|---|---|---|---|---|---|
 | Ordinary MOT | Dance/BDD/MOT17/MOT20 | category text | yes | yes | Macro AssA | 0.5045 |
-| OVMOT | TAO val | all objects | yes | yes | TETA / AssocA | pending |
+| OVMOT | TAO val | all objects | yes | yes | TETA / AssocA | 34.33 / 30.44 |
 | RMOT | Refer-Dance | expression | yes | yes | HOTA | 35.20 |
 
 ### Table E — Observation ablation
@@ -161,8 +166,8 @@ identity; unified (identity-pure core + semantic relevance) is best on both.
 ## 8. Answers to the five questions
 
 Q1 (same UIDM on ordinary MOT?): yes, Macro AssA 0.5045 ≥ L6.
-Q2 (same UIDM on novel OVMOT categories?): pending OVMOT eval; L7 already
-showed Base≈Novel AssocA.
+Q2 (same UIDM on novel OVMOT categories?): yes — TETA All 34.33, AssocA
+30.44, Base 30.45 ≈ Novel 30.40.
 Q3 (RMOT identity under referring selection?): yes, HOTA 35.20 with the
 same core; association survives language-conditioned filtering.
 Q4 (does semantic interface hurt identity?): yes if injected into identity
@@ -206,4 +211,3 @@ negative result (semantics-in-core) documents the mechanism boundary.
 - Calibration: `outputs/l8/calib/threshold_v2.json`
 - Training logs: `outputs/l8/uidm_l8_v2_train3.log`
 - Git commits: see `reports/LATEST_GPT_HANDOFF.md`
-

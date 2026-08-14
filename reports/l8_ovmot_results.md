@@ -12,10 +12,17 @@ LVIS categories (same as L7's CLIP classification row).
 
 | Method | Split | TETA | LocA | AssocA | ClsA |
 |---|---|---|---|---|---|
-| L7 CLIP-only probe (reference) | All | 31.48 | — | 29.51 | 0.14 |
-| L8 v2 shared (PBD zero) | Base | pending eval | | | |
-| L8 v2 shared (PBD zero) | Novel | pending eval | | | |
-| L8 v2 shared (PBD zero) | All | pending eval | | | |
+| L7 CLIP-only probe, Detic cls (reference) | All | 31.48 | — | 29.51 | 0.14 |
+| L7 CLIP-only probe, CLIP cls (reference) | All | 33.94 | — | 29.51 | 7.51 |
+| L8 v2 shared (PBD zero) | Base | 34.33 | 65.14 | 30.45 | 7.40 |
+| L8 v2 shared (PBD zero) | Novel | 34.36 | 64.41 | 30.40 | 8.27 |
+| L8 v2 shared (PBD zero) | All | **34.33** | 65.05 | **30.44** | 7.51 |
 
-Raw predictions: `outputs/l8/trackeval/ovmot_v2e/trackers/UIDM/data/pred.json`
+Notes:
 
+- Same official protocol/evaluator as L7 (TETA50, Base=non-r, Novel=r).
+- L8 runs in the semantic-only regime (TAO candidates have no cached PBD),
+  enabled by PBD-dropout training of the same shared core.
+- AssocA 30.44 > L7 probe 29.51; Base≈Novel gap 0.05pp; ClsA 7.51 ≈ L7's
+  CLIP classification 7.51.
+- Raw predictions: `outputs/l8/trackeval/ovmot_v2e/trackers/UIDM/data/pred.json`

@@ -26,11 +26,11 @@ training regime via PBD-dropout for the semantic-only case).
 
 | Observation | TETA All | AssocA | ClsA |
 |---|---|---|---|
-| semantic-only (no PBD available on TAO) | in progress | | |
-| L7 CLIP-only probe (reference) | 31.48* | 29.51 | 0.14* |
+| semantic-only (no PBD available on TAO) | **34.33** | **30.44** | 7.51 |
+| L7 CLIP-only probe (reference) | 33.94 | 29.51 | 7.51 |
 
-*L7 reference: frozen L6 core + CLIP projector, Detic classification
-(ClsA 0.14); L8 uses the same CLIP-text classification in this eval.
+L7 reference uses the same CLIP-text classification; L8 uses the same
+official evaluator and protocol.
 
 ## Interpretation
 
@@ -40,4 +40,3 @@ training regime via PBD-dropout for the semantic-only case).
 - Unified keeps identity in the core and semantics in the selection head:
   ordinary MOT is not regressed and RMOT selection works; OVMOT is the
   missing-identity regime handled by PBD-dropout training.
-

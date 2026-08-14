@@ -569,3 +569,14 @@
   WHAT/HOW 解耦；PBD-dropout 让同一 core 可处理无 PBD 的 OVMOT。
 - 实现 `--sem-in-core` 开关（默认 off）；hybrid init = L6 core +
   L8 adapter；2500 步四卡训练中。
+
+## 2026-08-14 — Stage L8：v2 三任务正信号（PBD eval key 修复后）
+
+- 关键 bug：L8 eval 误用 `pbd`（coord_mean）而 L6 训练/评测用
+  `pbd_be`（box_end）→ 所有 L8 数字先作废；修复后 v2 四域 ordinary
+  Macro AssA **0.5045**（L6 0.4922 / L7 0.4290）。
+- v2 RMOT（40 GT queries，train 校准阈值 -0.1）：HOTA **35.20** /
+  DetA 43.42 / AssA 28.63（iKUN 29.06/25.33/33.35，检测器不同）。
+- v2 OVMOT（TAO val 官方 TETA，PBD-zero + pbd-dropout）：All
+  **34.33** / AssocA **30.44** / ClsA 7.51；Base≈Novel（30.45/30.40）。
+  同一 checkpoint 三任务全部为正信号。
