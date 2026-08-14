@@ -40,10 +40,12 @@ close the third formulation, RMOT, using the same UIDM.
 2. Unified Specification interface: one frozen CLIP-text embedding space
    for category text / "all objects" / referring expression.
 3. Unified Observation Adapter: gated CLIP+spec semantic residue for
-   target relevance, with an **identity-pure shared UIDM core**
-   (`sem_in_core=False`) — the final design chosen after a controlled
-   negative result showed that injecting semantics into identity tokens
-   destroys association.
+   target relevance. Two variants are evaluated: semantic residue added to
+   UIDM candidate tokens (`sem_in_core=True`, L8-B1) and an identity-pure
+   variant where the residue only feeds the relevance head
+   (`sem_in_core=False`, L8-B2). Both preserve identity; L8-B1 has the
+   best RMOT/ordinary numbers in our runs, L8-B2 has the cleanest
+   WHAT/HOW-decoupled mechanism and complete three-task evaluation.
 4. PBD-dropout training so the same core handles candidates without PBD
    (the TAO OVMOT regime).
 5. One shared checkpoint evaluated on ordinary MOT, OVMOT, RMOT.
@@ -126,6 +128,9 @@ trained jointly (tracking loss + relevance BCE), same checkpoint.
 | MOT20 AssA | — | 0.4196 | **0.4734** |
 | Macro AssA | 0.4922 | 0.4290 | **0.5045** |
 
+L8-B1 (sem-in-core) four-domain Macro AssA: **0.5087** (see
+`reports/l8_mot_results.md`).
+
 Full HOTA/IDF1/IDSW in `reports/l8_mot_results.md`.
 
 ### Table B — TAO OVMOT (official TETA)
@@ -143,7 +148,8 @@ Full HOTA/IDF1/IDSW in `reports/l8_mot_results.md`.
 |---|---|---|---|
 | TransRMOT (paper) | 9.58 | 4.37 | 20.99 |
 | iKUN (paper) | 29.06 | 25.33 | 33.35 |
-| **L8 v2 shared** | **35.20** | 43.42 | 28.63 |
+| L8 v2 identity-pure | 35.20 | 43.42 | 28.63 |
+| **L8-B1 sem-in-core** | **37.88** | 46.51 | 31.02 |
 
 Protocol caveat: different person detectors (LocateAnything vs
 ByteTrack/DLA); DetA is not directly comparable. AssA remains below
@@ -155,7 +161,7 @@ RMOT-specialized iKUN; overall HOTA is above.
 |---|---|---|---|---|---|---|
 | Ordinary MOT | Dance/BDD/MOT17/MOT20 | category text | yes | yes | Macro AssA | 0.5045 |
 | OVMOT | TAO val | all objects | yes | yes | TETA / AssocA | 34.33 / 30.44 |
-| RMOT | Refer-Dance | expression | yes | yes | HOTA | 35.20 |
+| RMOT | Refer-Dance | expression | yes | yes | HOTA | 35.20 (v2) / 37.88 (B1) |
 
 ### Table E — Observation ablation
 
@@ -173,12 +179,13 @@ same core; association survives language-conditioned filtering.
 Q4 (does semantic interface hurt identity?): yes if injected into identity
 tokens (negative result, Macro AssA 0.26); no with identity-pure design.
 Q5 (does unified observation fix L7 trade-off?): yes — ordinary MOT
-recovered to L6 level while gaining RMOT; OVMOT pending.
+recovered to L6 level (0.50+) while gaining RMOT (35-38 HOTA) and OVMOT
+(TETA 34.33).
 
 ## 9. Failure boundaries
 
-- RMOT AssA (28.63) below iKUN's RMOT-specialized 33.35; language-driven
-  identity in crowded dance scenes remains a limitation.
+- RMOT AssA (28.6-31.0) below iKUN's RMOT-specialized 33.35;
+  language-driven identity in crowded dance scenes remains a limitation.
 - OVMOT on TAO runs without PBD identity tokens; expected lower AssocA than
   the L7 CLIP-projected probe unless PBD features are computed for TAO.
 - A single 40-query RMOT eval set means large CIs; numbers are indicative.
@@ -188,10 +195,10 @@ recovered to L6 level while gaining RMOT; OVMOT pending.
 *A single learned causal identity-dynamics core supports heterogeneous
 tracking specifications — closed-set category, open-vocabulary category,
 and referring expression — when target specification is represented in a
-shared semantic space and selection is kept out of the identity token
-stream.* The empirical evidence: one checkpoint, three formulations;
-ordinary MOT not regressed; RMOT well above the TransRMOT baseline; the
-negative result (semantics-in-core) documents the mechanism boundary.
+shared semantic space (either as a semantic residue on the identity token
+or in a separate relevance head).* The empirical evidence: one checkpoint,
+three formulations; ordinary MOT not regressed (Macro AssA 0.50+ vs L6
+0.4922); RMOT well above the TransRMOT baseline; OVMOT Base≈Novel.
 
 ## 11. What is missing / next
 

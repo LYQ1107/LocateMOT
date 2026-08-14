@@ -570,6 +570,12 @@
 - 实现 `--sem-in-core` 开关（默认 off）；hybrid init = L6 core +
   L8 adapter；2500 步四卡训练中。
 
+- **重要更正**：所谓“sem-in-core 破坏身份”是 PBD eval key bug 的伪影
+  （eval 误用 coord_mean，训练用 box_end）。修正后 L8-B1（sem-in-core）
+  ordinary Macro AssA 0.5087、RMOT HOTA 37.88/AssA 31.02，均优于
+  identity-pure v2（0.5045 / 35.20/28.63）。两个变体都是正结果：
+  语义可以进 token 流，只要身份证据（pbd_be）正确。
+
 ## 2026-08-14 — Stage L8：v2 三任务正信号（PBD eval key 修复后）
 
 - 关键 bug：L8 eval 误用 `pbd`（coord_mean）而 L6 训练/评测用

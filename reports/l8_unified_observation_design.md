@@ -58,16 +58,27 @@ remain in the shared UIDM core (HOW). During training:
   operate when identity evidence is unavailable (TAO OVMOT candidates have
   no cached PBD).
 
-## 5. Rejected design (v1: semantic residue inside the core)
+## 5. Variant studied: semantic residue inside the core (`sem_in_core`)
 
-First implementation added the gated semantic residue directly to UIDM
-candidate tokens (`sem_in_core=True`). After 2,387 frozen-core steps and
-another 3,000 joint core-fine-tune steps, ordinary MOT Macro AssA fell to
-0.28 / 0.26 (L6: 0.49), while RMOT was strong (HOTA 33-34). Conclusion:
-injecting CLIP+spec semantics into the identity token stream damages PBD
-instance discrimination — the same PBD-vs-CLIP trade-off as L7, now
-confirmed at the token level. This is kept as a documented negative result
-and a key evidence point for the final design.
+An earlier variant adds the gated semantic residue directly to UIDM
+candidate tokens (candidate token = PBD token + sem). An early evaluation
+appeared to show severe ordinary-MOT regression; this turned out to be an
+artifact: the evaluation accidentally fed the PBD **coord-mean** token
+while the core was trained on the PBD **box-end** token. After fixing the
+feature key, the sem-in-core variant (L8-B1) gives Macro AssA 0.5087 and
+the best RMOT result (HOTA 37.88) in this stage.
+
+The two variants therefore stand as complementary evidence:
+
+- L8-B1 (`sem_in_core=True`): specification enters the identity token
+  stream; slightly better RMOT/ordinary numbers in our runs.
+- L8-B2 (identity-pure, main): specification stays in the relevance head;
+  simpler mechanism, cleaner WHAT/HOW decoupling story, and OVMOT official
+  numbers obtained with the same checkpoint.
+
+Both share the same UIDM core class, same adapter architecture, same
+training data and budget; the only difference is whether `sem` is added to
+the candidate token inside the core.
 
 ## 6. Why this is still "unified"
 
@@ -89,4 +100,3 @@ and a key evidence point for the final design.
   adapter LR 1e-4, joint MOT+RMOT balanced sampling, PBD-dropout 0.15,
   seed 20260806;
 - checkpoint: `outputs/l8/checkpoints/uidm_l8_v2/latest.pt`.
-

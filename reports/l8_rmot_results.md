@@ -13,12 +13,13 @@ the Refer-Dance train split (train F1 0.9175).
 |---|---|---|---|---|---|---|---|---|---|
 | TransRMOT (paper) | 9.58 | 4.37 | 20.99 | — | — | — | — | — | — | — |
 | iKUN ByteTrack+NKF (paper) | 29.06 | 25.33 | 33.35 | — | — | — | — | — | — | — |
-| **L8 v2 shared UIDM** | **35.20** | **43.42** | **28.63** | 25.47 | 35.44 | 64.82 | 55.26 | 35.82 | 51.54 | 89.26 |
+| L8 v2 identity-pure | 35.20 | 43.42 | 28.63 | 25.47 | 35.44 | 64.82 | 55.26 | 35.82 | 51.54 | 89.26 |
+| **L8-B1 sem-in-core** | **37.88** | **46.51** | **31.02** | 31.28 | 37.29 | 69.30 | 56.91 | 37.43 | 55.55 | 89.19 |
 
 Protocol caveat: published baselines use ByteTrack/DLA person detections;
 LocateMOT uses LocateAnything-3B detections, so DetA is not directly
-comparable. Association (AssA 28.63 vs iKUN 33.35) remains below the
-RMOT-specialized iKUN pipeline, while overall HOTA is above it.
+comparable. The sem-in-core variant reaches AssA 31.02 (iKUN 33.35) and
+HOTA 37.88 (iKUN 29.06).
 
 ## Ablation (same v2 checkpoint, no retraining)
 
@@ -34,4 +35,3 @@ language is necessary for RMOT selection.
 
 Full predictions/eval:
 `outputs/l8/trackeval/rmot_v2_fix/`
-

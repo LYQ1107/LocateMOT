@@ -8,15 +8,15 @@ All runs use seed 20260806, UIDM-large, 4 GPUs (0/1/2/4), DDP batch 4/GPU.
 - 2,387 steps (387 + 2,000), p_rmot=0.5, relevance weight 0.2;
 - log: `outputs/l8/uidm_l8_joint_train.log`, `..._train2.log`;
 - result: RMOT HOTA 34.12 (invalid later; PBD eval-key bug), ordinary
-  Macro AssA 0.28.
+  Macro AssA 0.28 (both invalid later; PBD eval-key bug).
 
 ## L8-B1 — core fine-tune, sem-in-core (uidm_l8_final)
 
 - init: uidm_l8_joint; unfrozen core, core LR 5e-5, adapter LR 1.2e-4;
 - 3,000 steps; log: `outputs/l8/uidm_l8_final_train.log`;
-- result: RMOT HOTA 33.71 (invalid later), ordinary Macro AssA 0.26;
-  conclusion: semantic residue in the identity token stream is a negative
-  result.
+- result: with the PBD eval-key fixed, RMOT HOTA 37.88 / AssA 31.02 and
+  ordinary Macro AssA 0.5087 — the sem-in-core variant is a positive
+  result, not a failure.
 
 ## L8-B2 — v2 identity-pure (uidm_l8_v2)
 
@@ -28,9 +28,10 @@ All runs use seed 20260806, UIDM-large, 4 GPUs (0/1/2/4), DDP batch 4/GPU.
 
 ## Eval logs
 
-- RMOT: `outputs/l8/trackeval/rmot_v2_fix/` (40 GT queries, official RMOT
-  TrackEval, calibrated threshold -0.1);
-- ordinary: `outputs/l8/trackeval/uidm_l8_v2_fix/` (four-domain TrackEval);
-- OVMOT: `outputs/l8/trackeval/ovmot_v2e/` (TAO val, official TETA);
+- RMOT: `outputs/l8/trackeval/rmot_v2_fix/` (v2) and
+  `outputs/l8/trackeval/rmot_semcore_fix/` (L8-B1);
+- ordinary: `outputs/l8/trackeval/uidm_l8_v2_fix/` (v2) and
+  `outputs/l8/trackeval/uidm_l8_semcore_fix/` (L8-B1);
+- OVMOT: `outputs/l8/trackeval/ovmot_v2e/` (v2) and
+  `outputs/l8/trackeval/ovmot_semcore/` (L8-B1, running);
 - calibration: `outputs/l8/calib/threshold_v2.json` (train-set F1 0.9175).
-
