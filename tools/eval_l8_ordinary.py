@@ -61,7 +61,8 @@ def load_manifest(domain):
     return by_video
 
 
-def run_tracker(model, by_video, clip_dir, out_dir, gpu, spec_emb):
+def run_tracker(model, by_video, clip_dir, out_dir, gpu, spec_emb,
+                ablation="none"):
     os.environ["CUDA_VISIBLE_DEVICES"] = str(gpu)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model.to(device).eval()
@@ -86,10 +87,10 @@ def run_tracker(model, by_video, clip_dir, out_dir, gpu, spec_emb):
             assert len(cands) == len(cfr["boxes"])
             for j, c in enumerate(cands):
                 c["features"]["clip"] = np.asarray(cfr["clip"][j], np.float32)
-                if args.ablation == "semantic":
+                if ablation == "semantic":
                     c["features"]["pbd"] = np.zeros(2048, np.float32)
                     c["features"]["pbd_be"] = np.zeros(2048, np.float32)
-                elif args.ablation == "identity":
+                elif ablation == "identity":
                     c["features"]["clip"] = np.zeros(512, np.float32)
             tracker.image_size = image_size
             outputs = tracker.process_frame(frame, cands)
@@ -137,7 +138,7 @@ def main():
         if args.max_videos:
             by_video = dict(list(by_video.items())[:args.max_videos])
         run_tracker(model, by_video, CLIP_EVAL / clip_dom, src_dir,
-                    args.gpu, spec_emb)
+                    args.gpu, spec_emb, args.ablation)
         rel_out = str(Path(args.out).resolve().relative_to(ROOT)) \
             .replace('/', '_')
         split = f"{rel_out}_{label}"

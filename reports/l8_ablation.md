@@ -13,7 +13,7 @@ same data/budget.
 | L6 PBD (reference) | 0.4922 | identity stream only |
 | L8-B1 sem-in-core (same ckpt) | **0.5087** | PBD + CLIP + spec |
 | L8-B2 identity-pure (same ckpt) | **0.5045** | PBD + CLIP + spec |
-| semantic-only (PBD zeroed, inference on v2) | in progress | expected drop (identity removed) |
+| semantic-only (PBD zeroed, inference on v2) | 0.4014 | -10.3pp vs unified |
 
 ## B. RMOT (Refer-Dance 40 queries)
 
@@ -21,13 +21,19 @@ same data/budget.
 |---|---|---|---|
 | L8-B1 sem-in-core | **37.88** | 46.51 | 31.02 |
 | L8-B2 identity-pure | 35.20 | 43.42 | 28.63 |
-| identity-only (no language, same ckpt) | ~0 | ~0 | ~0 |
+| identity-only (no language, same ckpt) | 36.75* | 44.47 | 30.53* |
+
+*Identity-only cannot select targets and keeps all candidates: MOTA
+collapses to 9.27 (unified 25.47-31.28) and DetPr drops to 47.4% (unified
+55-57%). HOTA/AssA stay moderate only because keep-all maximizes recall;
+MOTA/DetPr are the honest language-necessity metrics.
 
 ## C. OVMOT (TAO val TETA)
 
 | Observation | TETA All | AssocA | ClsA |
 |---|---|---|---|
 | L8-B2 identity-pure, PBD zero (TAO) | **34.33** | **30.44** | 7.51 |
+| L8-B1 sem-in-core, PBD zero (TAO) | 34.07 | 29.64 | 7.52 |
 | L7 CLIP-only probe (reference) | 33.94 | 29.51 | 7.51 |
 
 L7 reference uses the same CLIP-text classification; L8 uses the same
@@ -37,8 +43,9 @@ official evaluator and protocol.
 
 - The identity stream is necessary for association quality: with it,
   ordinary MOT is at/above L6 while RMOT and OVMOT are strong.
-- The semantic stream is necessary for language-driven selection (RMOT
-  ~0 without it) and open-vocabulary classification.
+- The semantic stream is necessary for language-driven selection (without
+  it RMOT MOTA collapses from ~25-31 to 9.3) and for open-vocabulary
+  classification.
 - Both trained variants (sem-in-core and identity-pure) work; the
   difference is small and within run-to-run noise.
 - OVMOT (no PBD on TAO) exercises the semantic-only regime enabled by

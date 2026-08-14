@@ -177,7 +177,7 @@ def run_teta(tracker_name, trackers_root):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--ckpt", required=True)
+    ap.add_argument("--ckpt", default=None)
     ap.add_argument("--out", required=True)
     ap.add_argument("--gpu", type=int, default=0)
     ap.add_argument("--score-thr", type=float, default=0.05)
@@ -190,10 +190,19 @@ def main():
     tracker_dir = out / "trackers" / "UIDM" / "data"
     if args.merge_only:
         preds = []
-        for p in sorted(out.glob("pred_shard*.json")):
+        data_dir = out / "trackers" / "UIDM" / "data"
+        shard_files = sorted(data_dir.glob("pred_shard*.json"))
+        if not shard_files:
+            shard_files = sorted((data_dir / "shards")
+                                 .glob("pred_shard*.json"))
+        for p in shard_files:
             preds.extend(json.loads(p.read_text()))
         tracker_dir.mkdir(parents=True, exist_ok=True)
         (tracker_dir / "pred.json").write_text(json.dumps(preds))
+        shard_dir = data_dir / "shards"
+        shard_dir.mkdir(exist_ok=True)
+        for p in shard_files:
+            p.rename(shard_dir / p.name)
         print(f"[l8ovmot] merged {len(preds)} preds", flush=True)
         run_teta("UIDM", str(out / "trackers"))
         return

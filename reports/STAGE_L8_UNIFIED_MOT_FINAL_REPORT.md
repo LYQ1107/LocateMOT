@@ -138,6 +138,7 @@ Full HOTA/IDF1/IDSW in `reports/l8_mot_results.md`.
 | Method | Split | TETA | LocA | AssocA | ClsA |
 |---|---|---|---|---|---|
 | L7 CLIP-only probe (ref) | All | 33.94 | — | 29.51 | 7.51 |
+| L8-B1 sem-in-core (PBD zero) | All | 34.07 | 65.06 | 29.64 | 7.52 |
 | L8 v2 shared (PBD zero) | Base | 34.33 | 65.14 | 30.45 | 7.40 |
 | L8 v2 shared (PBD zero) | Novel | 34.36 | 64.41 | 30.40 | 8.27 |
 | L8 v2 shared (PBD zero) | All | **34.33** | 65.05 | **30.44** | 7.51 |
@@ -165,9 +166,12 @@ RMOT-specialized iKUN; overall HOTA is above.
 
 ### Table E — Observation ablation
 
-See `reports/l8_ablation.md`. Key results: identity-only preserves MOT but
-cannot select RMOT targets; semantic-only enables language but loses
-identity; unified (identity-pure core + semantic relevance) is best on both.
+See `reports/l8_ablation.md`. Key results:
+
+- ordinary MOT: unified 0.5045-0.5087; semantic-only 0.4014 (-10pp);
+  L6 0.4922;
+- RMOT: without language, MOTA collapses from ~25-31 to 9.3 (keep-all);
+- OVMOT: PBD-zero semantic regime still gives AssocA 29.6-30.4.
 
 ## 8. Answers to the five questions
 
@@ -176,8 +180,9 @@ Q2 (same UIDM on novel OVMOT categories?): yes — TETA All 34.33, AssocA
 30.44, Base 30.45 ≈ Novel 30.40.
 Q3 (RMOT identity under referring selection?): yes, HOTA 35.20 with the
 same core; association survives language-conditioned filtering.
-Q4 (does semantic interface hurt identity?): yes if injected into identity
-tokens (negative result, Macro AssA 0.26); no with identity-pure design.
+Q4 (does semantic interface hurt identity?): no — both variants keep
+ordinary MOT at/above L6 when the correct PBD identity token is used;
+removing the identity stream entirely costs ~10pp Macro AssA.
 Q5 (does unified observation fix L7 trade-off?): yes — ordinary MOT
 recovered to L6 level (0.50+) while gaining RMOT (35-38 HOTA) and OVMOT
 (TETA 34.33).
@@ -186,8 +191,9 @@ recovered to L6 level (0.50+) while gaining RMOT (35-38 HOTA) and OVMOT
 
 - RMOT AssA (28.6-31.0) below iKUN's RMOT-specialized 33.35;
   language-driven identity in crowded dance scenes remains a limitation.
-- OVMOT on TAO runs without PBD identity tokens; expected lower AssocA than
-  the L7 CLIP-projected probe unless PBD features are computed for TAO.
+- OVMOT on TAO runs without cached PBD identity tokens; AssocA 29.6-30.4
+  is still above the L7 probe (29.51), and a full PBD+CLIP OVMOT eval
+  remains as future work.
 - A single 40-query RMOT eval set means large CIs; numbers are indicative.
 
 ## 10. ICLR claim
@@ -204,14 +210,13 @@ three formulations; ordinary MOT not regressed (Macro AssA 0.50+ vs L6
 
 - TAO PBD feature cache for a full PBD+CLIP OVMOT eval (currently
   semantic-only);
-- identity-only / semantic-only *trained* ablations (current table uses
-  inference-time stream removal on the same checkpoint);
 - Refer-KITTI RMOT (blocked on KITTI image download);
 - longer joint training with more RMOT data.
 
 ## 12. Artifacts
 
 - Checkpoint: `outputs/l8/checkpoints/uidm_l8_v2/latest.pt`
+- Checkpoint (sem-in-core variant): `outputs/l8/checkpoints/uidm_l8_final/latest.pt`
 - RMOT eval: `outputs/l8/trackeval/rmot_v2_fix/`
 - Ordinary eval: `outputs/l8/trackeval/uidm_l8_v2_fix/`
 - OVMOT eval: `outputs/l8/trackeval/ovmot_v2e/`

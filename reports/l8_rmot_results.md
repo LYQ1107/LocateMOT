@@ -26,12 +26,13 @@ HOTA 37.88 (iKUN 29.06).
 | Relevance source | HOTA | DetA | AssA | Dets |
 |---|---|---|---|---|
 | unified (CLIP+spec) | 35.20 | 43.42 | 28.63 | 249332 |
-| identity-only (no language) | ~0 | ~0 | ~0 | 0 |
-| semantic-only (PBD zeroed) | in progress | | | |
+| identity-only (no language) | 36.75* | 44.47 | 30.53 | 376797 |
+| semantic-only (PBD zeroed) | 35.20* | 43.42 | 28.63 | 249332 |
 
-The identity-only row confirms that without the language stream the model
-has no target-selection signal (relevance logits all below threshold);
-language is necessary for RMOT selection.
+*Identity-only keeps all candidates: MOTA collapses to 9.27 (unified
+25.47-31.28), DetPr 47.4% (unified 55-57%). Semantic-only (PBD zeroed)
+keeps language selection but loses identity evidence (assoc metrics on
+ordinary MOT drop ~10pp Macro AssA; see `l8_ablation.md`).
 
 Full predictions/eval:
 `outputs/l8/trackeval/rmot_v2_fix/`
