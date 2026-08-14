@@ -952,7 +952,10 @@ class OnlineTracker:
             ages[i] = trk.age
             hits[i] = trk.hits
             if trk.uidm_state is not None:
-                h[i] = np.asarray(trk.uidm_state["h"], np.float32)
+                if getattr(model, "stateless", False):
+                    h[i] = 0.0
+                else:
+                    h[i] = np.asarray(trk.uidm_state["h"], np.float32)
                 ref[i] = np.asarray(trk.uidm_state["ref_pbd"], np.float32)
                 anchor[i] = np.asarray(trk.uidm_state["anchor_pbd"],
                                        np.float32)

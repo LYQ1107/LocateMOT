@@ -514,3 +514,25 @@
   MOT，改用 L6 uidm_full 作为 OVMOT 共享核心（该核心 Dance 最优）。
 - 决策：`L7_DANCE_REPAIR_FAIL`；cuerel 保留为负结果对照；OVMOT 探针
   从 L6 core + 新 CLIP 投影器（freeze-core）重启；普通 MOT 冻结。
+
+## 2026-08-14 — Stage L7：OVMOT 正信号 + 消融 + 收口
+
+- 实验：L6 UIDM core 冻结 + 0.69M CLIP 投影器（仅 closed-set CLIP
+  校准，2000 步）→ TAO val 官方 TETA。
+- 结果：All TETA 31.48 / AssocA 29.51；Base 29.54 ≈ Novel 29.31
+  （随机基线 8.2）；ClsA 0.14（Detic label 差）。
+- 归因（同 track_id 只换分类）：Detic ClsA 0.14 → CLIP 文本余弦 7.51
+  → GT oracle 96.05；AssocA 恒 29.51。All TETA 31.48→33.94→63.45。
+  → WHAT（分类/spec）与 HOW（身份）完全解耦；novel 无偏好。
+- closed-set 回归（同一统一 checkpoint，CLIP 前端）：Dance
+  0.5369/0.3045/6164、BDD 0.4317/0.4077/11430、MOT17
+  0.6471/0.584/369、MOT20 0.5973/0.4196/1799；Macro AssA 0.4290
+  （PBD 版 L6 0.4922，-6.3pp，统一语义前端代价）。
+- 消融（stateless，训练+推理都无递归记忆 h，保留 anchor/ref 外观）：
+  All AssocA 24.32（-5.19pp），Base 24.22 / Novel 25.10。
+- 失败/修正：第一版 stateless 只在训练清零 h、推理仍持久 → 无效消融
+  （29.81≈full）；改为推理也清零后得到真实差距。Detic SwinB 本地
+  推理 roi_align OOM（51.7GB），官方 CDN 网络阻断 → TAO train dets
+  未生成，joint OVMOT 训练 NOT_EXECUTED；RMOT 数据（KITTI 帧需登录）
+  阻塞。
+- 决策：`L7_OVMOT_SUPPORTED / RMOT_NOT_EXECUTED`；报告收口。

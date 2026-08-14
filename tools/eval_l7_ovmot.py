@@ -68,7 +68,7 @@ def build_gt_maps(gt):
 
 
 def run_tracker(data_dir, ckpt_path, out_path, gpu, score_thr=0.05,
-                new_margin=0.0, classify="detic"):
+                new_margin=0.0, classify="detic", stateless=False):
     os.environ["CUDA_VISIBLE_DEVICES"] = str(gpu)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     ck = torch.load(ckpt_path, map_location="cpu", weights_only=False)
@@ -79,6 +79,8 @@ def run_tracker(data_dir, ckpt_path, out_path, gpu, score_thr=0.05,
         use_cue_rel=cfg.get("use_cue_rel", False),
         app_dim=cfg.get("app_dim", 512)).to(device)
     model.load_state_dict(ck["model"])
+    if stateless:
+        model.stateless = True
     model.eval()
     preds = []
     gt = json.load(open(GT_JSON))
@@ -195,6 +197,7 @@ def main():
     ap.add_argument("--max-videos", type=int, default=0)
     ap.add_argument("--classify", default="detic",
                     choices=["detic", "clip", "oracle"])
+    ap.add_argument("--stateless", action="store_true")
     args = ap.parse_args()
     out = Path(args.out)
     tracker_dir = out / "trackers" / "UIDM" / "data"
@@ -207,7 +210,8 @@ def main():
         for p in sorted(data_dir.glob("*.pkl"))[:args.max_videos]:
             (tmp_dir / p.name).symlink_to(p.resolve())
     run_tracker(str(tmp_dir), args.ckpt, tracker_dir / "pred.json",
-                args.gpu, args.score_thr, args.new_margin, args.classify)
+                args.gpu, args.score_thr, args.new_margin, args.classify,
+                args.stateless)
     run_teta("UIDM", str(out / "trackers"), args.gt_json)
 
 

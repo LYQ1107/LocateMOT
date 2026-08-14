@@ -27,10 +27,17 @@ Dance repair（cue reliability）一次 iteration 失败（Dance AssA
 
 ## 运行中 / 待办
 
-1. `ovmot_probe_stateless`（无持久记忆消融，4 卡，~2000 步）训练中；
-   完成后跑 OVMOT TETA 并与 AssocA 29.51 对比，填入报告第 26 节。
-2. 报告 `reports/STAGE_L7_FINAL_REPORT.md` 基本完成，等 stateless
-   数字后收口并 git commit。
+1. 无持久记忆消融已完成：All AssocA 24.32（-5.19pp），Base 24.22 /
+   Novel 25.10；已填入报告第 26 节。
+2. 报告 `reports/STAGE_L7_FINAL_REPORT.md` 已收口（自包含）。
+3. 当前无运行中进程（GPUs 已释放）。
+
+## 收口结论
+
+`L7_OVMOT_SUPPORTED / RMOT_NOT_EXECUTED`。主结果：冻结 L6 UIDM core
++ 0.69M CLIP 投影器在 TAO 官方 TETA 上 AssocA 29.5（随机基线 8.2），
+Base≈Novel；替换分类前端不改 AssocA（WHAT/HOW 解耦）；stateless
+-5.2pp。Dance repair 一次迭代失败已冻结普通 MOT。
 
 ## 阻塞（如实记录，不伪造）
 

@@ -1,6 +1,7 @@
 # Stage L7 Final Report：Specification-Conditioned Unified MOT
 
-状态：`IN_PROGRESS`（本文件随实验推进持续更新，完成后自包含）。
+状态：`COMPLETE`（`L7_OVMOT_SUPPORTED / RMOT_NOT_EXECUTED`；本文件
+完全自包含，可独立交给网页版 GPT 继续）。
 
 ## 1. Executive Summary
 
@@ -62,7 +63,25 @@ ALL 本身也是一个 specification。不要求不同 spec 输出相同轨迹
 
 ## 5. 2025/26 literature audit
 
-见 `docs/l7_reference_audit.md`（本节在最终版内联）。
+关键方法与定位：
+
+- OVTR（ICLR 2025）：end-to-end OVMOT（MOTR 式 track query +
+  CLIP 1732 类固定嵌入 + CIP 类别传播）；无 RMOT、无持久记忆/
+  lifecycle/NEW-NO_MATCH 身份动力学。
+- COVTrack（ICCV 2025）：OVMOT 的 association-embedding 级
+  adaptive appearance/motion/semantic 门控残差 + intra/inter-frame
+  confidence；C-TAO 连续监督。与我们的 decision-level cue reliability
+  不同层，但已公开，故 cue reliability 不作为第一创新。
+- OVTrack（CVPR 2023）：CLIP 蒸馏 quasi-dense 关联 + 扩散数据幻觉，
+  static-image-only 训练；是 TAO OVMOT 的 public-dets 协议基准。
+- QTrack（2026）：3B VLM query-driven RMOT + RL（TPA-PO/verl），
+  RMOT26 benchmark；机制与我们的轻量共享核心不同。
+- TempRMOT（2024）：MOTR + frozen RoBERTa + memory bank/时空推理，
+  Refer-KITTI-V2；无 LICENSE（只借鉴接口）。
+- STORM（2026）：end-to-end RMOT 大模型 + STORM-Bench（VidOR）；
+  模型代码未发布（PAPER_ONLY）。
+- OVT-B（NeurIPS 2024 D&B）：OVMOT 基准（7 数据集、Base/Novel、
+  TETA），数据未本地化。
 
 ## 6. official GitHub audit
 
@@ -71,7 +90,9 @@ OVT-B(NeurIPS24, f033b314, Apache-2.0)、COVTrack(ICCV25, 9b0ced57,
 Apache-2.0)、QTrack(26, bc746fe2, Apache-2.0)、TempRMOT(24, 6a65640d,
 无 LICENSE)、STORM(26, 0d87c3ba, 无 LICENSE)、ReaMOT(25, 16951600,
 MIT)、TETA(b498aa87, Apache-2.0)。全部已实际阅读 README 与关键模型/
-评估代码，非摘要转述。
+评估代码（OVTR ovtr.py/attention isolation/CIP、COVTrack MCF forward、
+QTrack verl reward、TempRMOT memory_bank/RoBERTa、TETA run_ovmot.py
+Base/Novel 定义），非摘要转述。TETA 官方包直接用于评估（Apache-2.0）。
 
 ## 7. novelty collision
 
@@ -86,7 +107,15 @@ MIT)、TETA(b498aa87, Apache-2.0)。全部已实际阅读 README 与关键模型
 
 ## 8. dataset inventory
 
-见 `reports/l7_dataset_inventory.md`（最终版内联）。
+- TAO 官方：本地完整（train/val/test 帧 354GB + v0.5 标注 + BURST）；
+  OVMOT 用官方 v1 GT（988 视频 / 36,375 帧 / 1,203 类：c 461+f 405=
+  Base 866，r 337=Novel）与官方 Detic public dets（每帧 ≤50，LVIS v1
+  label）。
+- LVIS v1 类别表/CLIP 文本嵌入：本地（masa metadata，与 ViT-B/32
+  "a {name}" 模板核对 mean cos 0.9999）。
+- Refer-KITTI-V2：expression/labels 本地，但官方 KITTI tracking 帧
+  缺失（MFT25 目录为另一套序列组织，帧数对不上），无法执行 RMOT。
+- OVT-B/C-TAO/STORM(VidOR)：不下载/不使用（磁盘、许可证与项目禁令）。
 
 ## 9. ordinary MOT final status
 
@@ -121,7 +150,12 @@ BDD 收益不足以抵消 Dance 的 IDSW 翻倍。按约束不进行第二次 Da
 
 ## 11. Specification Encoder
 
-见 `docs/l7_specification_encoder_design.md`（最终版内联）。
+`s = SpecEncoder(spec)`；spec ∈ {ALL, "category text", referring text}。
+首版 OVMOT：frozen CLIP ViT-B/32，text 侧用 LVIS v1 类别
+"a {name}" embedding，image 侧用 candidate crop embedding；
+relevance/分类 = cosine argmax。ALL 是显式 specification（track all
+candidates，选择交给 identity dynamics 的 NEW/NO-MATCH）。不训练大
+VLM，只选 CLIP 一个主方案。
 
 ## 12. Shared UIDM architecture
 
@@ -137,7 +171,12 @@ memory 证据；辅助 soft-target CE。区别于 COVTrack embedding 门控。
 
 ## 14. OVMOT protocol
 
-见 `docs/l7_ovmot_protocol.md`（最终版内联）。
+官方协议（核对 TETA 官方代码 run_ovmot.py）：Base = category
+frequency != "r"（LVIS common/frequent），Novel = "r"（rare），All =
+全部；指标 = 逐类 TETA50（alpha=0.5）的 LocA/AssocA/ClsA 均值；
+GT 为官方 v1 `tao_val_lvis_v1_classes.json`，候选为官方 Detic public
+dets，预测为 COCO-VID JSON（tracker 只给 track_id，category 由 frozen
+perception 给出）。
 
 ## 15. OVMOT datasets
 
@@ -190,7 +229,12 @@ OVTrack（CVPR23，同 public dets，apples-to-apples）；COVTrack（ICCV25）
 
 ## 19. RMOT protocol
 
-见 `docs/l7_rmot_protocol.md`（最终版内联）。
+选 Refer-KITTI-V2（TempRMOT 协议：expression JSON label=frame→object_ids
++ sentence；HOTA/DetA/AssA/LocA）。接口与 OVMOT 共享：referring text →
+frozen RoBERTa 风格 language encoder → spec embedding → candidate
+relevance → 同一 UIDM。首版只做标准 RMOT，不做 ReaMOT 级推理；
+GT-selected oracle 用于区分 grounding 与 identity 瓶颈。本阶段因数据
+未执行（NOT_EXECUTED）。
 
 ## 20. RMOT dataset
 
@@ -270,9 +314,14 @@ Frozen core vs joint fine-tune。待实验（占位）。
 
 已执行：
 
-1. **without persistent identity dynamics（OVMOT，训练中）**：
+1. **without persistent identity dynamics（OVMOT）**：
    `ovmot_probe_stateless`（同协议 + `--stateless`），完成后对比
-   All/Base/Novel AssocA。（占位，训练完成后填入）
+   All/Base/Novel AssocA。结果：All AssocA **24.32**（vs full
+   29.51，-5.19pp）；Base 24.22 / Novel 25.10。持久记忆 h 对 OVMOT
+   关联贡献 +5.2pp（L6 closed-set 上为 -22.7pp；OVMOT 场景检测间隔
+   大、外观锚点已提供部分稳定性，故贡献较小但仍显著）。注意该对照
+   保留 anchor/ref 外观状态，只移除递归记忆 h，且训练与推理均为
+   stateless（第一版误在 stateful 推理下评估，已纠正）。
 2. **without cue reliability（closed-set，L6 已做）**：no-memory
    -22.7pp、no-interaction -20.9pp、no-lifecycle -21.2pp、no-trackloss
    -23.1pp（MOT17 AssA），证明四项 HOW 机制各自必要。
@@ -303,7 +352,7 @@ Frozen core vs joint fine-tune。待实验（占位）。
 - TAO val 数据构建：CLIP ViT-B/32 批量编码 1.61M crops，4 GPU
   约 30–40 min。
 - OVMOT TETA 评估：tracker 31 min（1 GPU）+ 官方 TETA 约 10–15 min。
-- stateless 消融训练进行中（占位）。
+- stateless 消融训练：4×A100-40G，2000 步，8740s（2.43h）。
 
 ## 29. efficiency
 
