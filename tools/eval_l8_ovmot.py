@@ -29,7 +29,7 @@ import torch
 ROOT = Path(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.insert(0, str(ROOT))
 
-from locatemot.models.l8_unified import L8UnifiedUIDM  # noqa: E402
+from locatemot.models.l8_unified import L8UnifiedUIDM, load_l8_state  # noqa: E402
 from locatemot.tracking.online_tracker import OnlineTracker  # noqa: E402
 from tools.train_l8_uidm import _specs  # noqa: E402
 
@@ -67,12 +67,18 @@ def build_gt_maps(gt):
 
 def run_tracker(model, data_dir, out_path, gpu, spec_emb, score_thr=0.05,
                 shard=0, num_shards=1):
+    for var in ("OMP_NUM_THREADS", "OPENBLAS_NUM_THREADS",
+                "MKL_NUM_THREADS"):
+        os.environ.setdefault(var, "8")
     os.environ["CUDA_VISIBLE_DEVICES"] = str(gpu)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model.to(device).eval()
     spec = torch.as_tensor(spec_emb[None], device=device)
     preds = []
+    print("[l8ovmot] loading GT json", flush=True)
     gt = json.load(open(GT_JSON))
+    print(f"[l8ovmot] GT loaded: {len(gt['images'])} imgs, "
+          f"{len(gt['annotations'])} anns", flush=True)
     vid2imgs = build_gt_maps(gt)
     vid_name2id = {v["name"].replace("/", "-"): v["id"] for v in gt["videos"]}
     gt_img_anns = {}
@@ -84,6 +90,7 @@ def run_tracker(model, data_dir, out_path, gpu, spec_emb, score_thr=0.05,
     text_emb = text_emb / np.linalg.norm(text_emb, axis=1, keepdims=True)
     t0 = time.time()
     files = sorted(Path(data_dir).glob("*.pkl"))
+    print(f"[l8ovmot] files={len(files)} shard={shard}", flush=True)
     if num_shards > 1:
         files = [p for p in files
                  if int(hashlib.md5(p.stem.encode()).hexdigest(), 16)
@@ -98,6 +105,7 @@ def run_tracker(model, data_dir, out_path, gpu, spec_emb, score_thr=0.05,
             variant="UIDM", uidm=model.uidm, device=str(device),
             output_all_candidates=True,
             uidm_adapter=model.adapter, uidm_spec=spec.cpu().numpy()[0])
+        tracker.uidm_sem_in_core = model.sem_in_core
         tracker.uidm_new_margin = 0.0
         tracker.l1d_weights = (0.4, 0.2, 0.4)
         tracker.l1d_threshold = 0.25
@@ -120,6 +128,14 @@ def run_tracker(model, data_dir, out_path, gpu, spec_emb, score_thr=0.05,
                 })
             tracker.image_size = rec["image_size"]
             outputs = tracker.process_frame(frame, cands)
+            cls_all = None
+            if len(cands) and len(outputs):
+                clip_all = np.stack([
+                    np.asarray(c["features"]["clip"], np.float32)
+                    for c in cands])
+                clip_all /= np.maximum(
+                    1e-6, np.linalg.norm(clip_all, axis=1, keepdims=True))
+                cls_all = np.argmax(clip_all @ text_emb.T, axis=1) + 1
             for o in outputs:
                 x1, y1, x2, y2 = o["box"]
                 best_l, best_v, best_j = None, -1.0, -1
@@ -129,9 +145,7 @@ def run_tracker(model, data_dir, out_path, gpu, spec_emb, score_thr=0.05,
                         best_v, best_l, best_j = v, c["label"], j
                 cat_id = best_l if best_l is not None else 0
                 if best_j >= 0:
-                    f = np.asarray(fr["clip"][best_j], np.float32)
-                    f = f / max(1e-6, float(np.linalg.norm(f)))
-                    cat_id = int(np.argmax(text_emb @ f)) + 1
+                    cat_id = int(cls_all[best_j])
                 preds.append({
                     "image_id": vid2imgs[vid][frame],
                     "category_id": cat_id,
@@ -140,7 +154,7 @@ def run_tracker(model, data_dir, out_path, gpu, spec_emb, score_thr=0.05,
                     "track_id": int(o["track_id"]),
                     "video_id": vid,
                 })
-        if (vi + 1) % 100 == 0 or vi + 1 == len(files):
+        if (vi + 1) % 10 == 0 or vi + 1 == len(files):
             print(f"[l8ovmot] {vi+1}/{len(files)} "
                   f"elapsed={time.time()-t0:.0f}s", flush=True)
     out_path.parent.mkdir(parents=True, exist_ok=True)
@@ -188,7 +202,7 @@ def main():
     model = L8UnifiedUIDM(**SIZES[cfg.get("model", "base")],
                           mode=cfg.get("mode", "unified"),
                           sem_in_core=cfg.get("sem_in_core", True))
-    model.load_state_dict(ck["model"])
+    load_l8_state(model, ck["model"])
     spec_emb = _specs(["all objects"])[0]
     data_dir = DATA_DIR
     if args.max_videos:

@@ -28,7 +28,7 @@ ROOT = Path(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.insert(0, str(ROOT))
 
 from locatemot.models.l6_uidm import UIDM  # noqa: E402
-from locatemot.models.l8_unified import L8UnifiedUIDM  # noqa: E402
+from locatemot.models.l8_unified import L8UnifiedUIDM, load_l8_state  # noqa: E402
 from locatemot.tracking.online_tracker import OnlineTracker  # noqa: E402
 from tools.eval_l3 import build_candidates  # noqa: E402
 
@@ -71,6 +71,8 @@ def main():
     ap.add_argument("--num-shards", type=int, default=1)
     ap.add_argument("--predict-only", action="store_true")
     ap.add_argument("--eval-only", action="store_true")
+    ap.add_argument("--ablation", default="none",
+                    choices=["none", "identity", "semantic"])
     args = ap.parse_args()
     if args.threshold_file:
         calib = json.loads(Path(args.threshold_file).read_text())
@@ -91,7 +93,7 @@ def main():
             use_cue_rel=cfg.get("use_cue_rel", False),
             mode=mode,
             sem_in_core=cfg.get("sem_in_core", True)).to(device)
-        model.load_state_dict(ck["model"])
+        load_l8_state(model, ck["model"])
         model.eval()
         core = model.uidm
         adapter = model.adapter
@@ -154,6 +156,7 @@ def main():
                 variant="UIDM", uidm=core, device=str(device),
                 output_all_candidates=True,
                 uidm_adapter=adapter, uidm_spec=spec)
+            tracker.uidm_sem_in_core = model.sem_in_core
             tracker.uidm_new_margin = 0.0
             tracker.l1d_weights = (0.4, 0.2, 0.4)
             tracker.l1d_threshold = 0.25
@@ -174,11 +177,26 @@ def main():
                     c["features"].get("pbd", np.zeros(2048, np.float32))
                     for c in cands]).astype(np.float32)
                 clip = np.stack([c["features"]["clip"] for c in cands])
+                pbd_eff = pbd
+                clip_eff = clip
+                spec_eff = np.broadcast_to(spec, (len(cands), 512))
+                if args.ablation == "identity":
+                    clip_eff = np.zeros_like(clip)
+                    spec_eff = np.zeros_like(spec_eff)
+                elif args.ablation == "semantic":
+                    pbd_eff = np.zeros_like(pbd)
+                if args.ablation == "semantic":
+                    for c in cands:
+                        c["features"]["pbd"] = np.zeros(2048, np.float32)
+                        c["features"]["pbd_be"] = np.zeros(2048, np.float32)
+                elif args.ablation == "identity":
+                    for c in cands:
+                        c["features"]["clip"] = np.zeros(512, np.float32)
                 with torch.no_grad():
                     rel = adapter(
-                        torch.as_tensor(pbd, device=device),
-                        torch.as_tensor(clip, device=device),
-                        torch.as_tensor(spec[None], device=device))[1]
+                        torch.as_tensor(pbd_eff, device=device),
+                        torch.as_tensor(clip_eff, device=device),
+                        torch.as_tensor(spec_eff, device=device))[1]
                     rel = rel.cpu().numpy()
                 outputs = tracker.process_frame(frame, cands)
                 assert len(outputs) == len(cands)

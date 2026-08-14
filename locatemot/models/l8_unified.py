@@ -153,3 +153,15 @@ def clip_text_embed(texts, model=None, device="cuda"):
     with torch.no_grad():
         e = model.encode_text(toks).float()
     return F.normalize(e, dim=-1)
+
+
+def load_l8_state(model, ck_sd):
+    """Load an L8 state dict, accepting both prefixed (uidm./adapter.) and
+    bare L6 core keys (no uidm. prefix)."""
+    norm = {}
+    for k, v in ck_sd.items():
+        if k.startswith("uidm.") or k.startswith("adapter."):
+            norm[k] = v
+        else:
+            norm["uidm." + k] = v
+    return model.load_state_dict(norm, strict=False)

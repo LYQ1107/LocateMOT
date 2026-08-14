@@ -27,7 +27,7 @@ import torch
 ROOT = Path(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.insert(0, str(ROOT))
 
-from locatemot.models.l8_unified import L8UnifiedUIDM  # noqa: E402
+from locatemot.models.l8_unified import L8UnifiedUIDM, load_l8_state  # noqa: E402
 from locatemot.tracking.online_tracker import OnlineTracker  # noqa: E402
 from tools.eval_l3 import build_candidates  # noqa: E402
 from tools.train_l8_uidm import _specs  # noqa: E402
@@ -74,6 +74,7 @@ def run_tracker(model, by_video, clip_dir, out_dir, gpu, spec_emb):
             variant="UIDM", uidm=model.uidm, device=str(device),
             output_all_candidates=True,
             uidm_adapter=model.adapter, uidm_spec=spec.cpu().numpy()[0])
+        tracker.uidm_sem_in_core = model.sem_in_core
         tracker.uidm_new_margin = 0.0
         tracker.l1d_weights = (0.4, 0.2, 0.4)
         tracker.l1d_threshold = 0.25
@@ -85,6 +86,11 @@ def run_tracker(model, by_video, clip_dir, out_dir, gpu, spec_emb):
             assert len(cands) == len(cfr["boxes"])
             for j, c in enumerate(cands):
                 c["features"]["clip"] = np.asarray(cfr["clip"][j], np.float32)
+                if args.ablation == "semantic":
+                    c["features"]["pbd"] = np.zeros(2048, np.float32)
+                    c["features"]["pbd_be"] = np.zeros(2048, np.float32)
+                elif args.ablation == "identity":
+                    c["features"]["clip"] = np.zeros(512, np.float32)
             tracker.image_size = image_size
             outputs = tracker.process_frame(frame, cands)
             for o in outputs:
@@ -110,13 +116,15 @@ def main():
     ap.add_argument("--gpu", type=int, default=0)
     ap.add_argument("--domains", default="dance,bdd,mot17,mot20")
     ap.add_argument("--max-videos", type=int, default=0)
+    ap.add_argument("--ablation", default="none",
+                    choices=["none", "identity", "semantic"])
     args = ap.parse_args()
     ck = torch.load(args.ckpt, map_location="cpu", weights_only=False)
     cfg = ck.get("cfg", {})
     model = L8UnifiedUIDM(**SIZES[cfg.get("model", "base")],
                           mode=cfg.get("mode", "unified"),
                           sem_in_core=cfg.get("sem_in_core", True))
-    model.load_state_dict(ck["model"])
+    load_l8_state(model, ck["model"])
     out = Path(args.out)
     tracker_root = out / "trackers"
     eval_root = out / "trackeval"
@@ -139,6 +147,14 @@ def main():
         variant_dir.mkdir(parents=True, exist_ok=True)
         for p in src_dir.glob("*.txt"):
             shutil.copyfile(p, variant_dir / p.name)
+        # invalidate any cached TrackEval data for this split
+        for stale in (list((ROOT / "outputs" / "l1_d").glob(
+                f"trackeval_data_{split}*"))
+                + list((ROOT / "outputs" / "l1_d").glob(f"ac_{split}.*"))):
+            if stale.is_dir():
+                shutil.rmtree(stale)
+            else:
+                stale.unlink()
         subprocess.run(
             [PY, str(ROOT / "tools/run_l1d_trackeval.py"),
              "--split", split, "--manifest",

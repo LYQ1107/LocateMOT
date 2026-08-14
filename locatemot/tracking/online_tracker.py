@@ -942,7 +942,7 @@ class OnlineTracker:
             clip_arr = np.zeros((N, 512), np.float32)
             for i, f in enumerate(cur_feats):
                 pbd_arr[i] = np.asarray(
-                    f.get("pbd", f.get("pbd_be", np.zeros(2048, np.float32))),
+                    f.get("pbd_be", f.get("pbd", np.zeros(2048, np.float32))),
                     np.float32).reshape(-1)[:2048]
                 clip_arr[i] = np.asarray(
                     f.get("clip", np.zeros(512, np.float32)),
