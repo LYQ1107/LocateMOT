@@ -536,3 +536,21 @@
   未生成，joint OVMOT 训练 NOT_EXECUTED；RMOT 数据（KITTI 帧需登录）
   阻塞。
 - 决策：`L7_OVMOT_SUPPORTED / RMOT_NOT_EXECUTED`；报告收口。
+
+## 2026-08-14 — Stage L8：RMOT 协议审计 + Unified Observation + 训练
+
+- 假设：MOT/OVMOT/RMOT 共享同一 identity-dynamics core；差异只在
+  WHAT-specification。RMOT 由“语言决定选谁，UIDM 决定身份持续”。
+- 数据：Refer-Dance 官方 zip（40 train / 25 test，40 个有 GT 的 query）；
+  iKUN 论文官方基线 HOTA 29.06（ByteTrack+NKF）、TransRMOT 9.58。
+  本地复用 JDE DanceTrack 图片（symlink）+ L6 PBD cache + L7 CLIP cache，
+  不重复解压大图。
+- 实现：UnifiedObservationAdapter（CLIP crop + spec → gated sem residue
+  注入 UIDM 候选 token，PBD identity 流保留）+ relevance head；
+  同一 UIDM core（large，L6 uidm_full 初始化，冻结）；pbd-dropout
+  0.15 使同一 core 可处理无 PBD（TAO）的缺失身份证据。
+- 失败/修正：relevance logit 阈值 0.0 导致零输出（200 步后 target
+  -0.255 vs non-target -0.752，已学出分离但整体偏负）→ 需要 train-set
+  F1 校准阈值。TrackEval 硬编码 KITTI 路径、numpy 1.x 别名、seq 长度
+  目录层级三处 patch。
+- 状态：2400 步四卡 joint（frozen core）训练中；smoke 全链路已验证。

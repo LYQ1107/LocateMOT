@@ -70,10 +70,11 @@ class L8Dataset(Dataset):
     """Task-balanced mixture of ordinary MOT clips and RMOT clips."""
 
     def __init__(self, seed=20260806, p_rmot=0.5, rmot_only=False,
-                 max_rmot_expr=0):
+                 max_rmot_expr=0, pbd_dropout=0.15):
         self.rng = random.Random(seed)
         self.p_rmot = p_rmot
         self.rmot_only = rmot_only
+        self.pbd_dropout = pbd_dropout
         self.ordinary = []
         if not rmot_only:
             for name, data_dir, spec_text in ORDINARY_DOMAINS:
@@ -105,10 +106,9 @@ class L8Dataset(Dataset):
                 self.rmot.append({"video": vid, "path": str(pkl),
                                   "expr_idx": ei})
         self.cache = OrderedDict()
-        self.cache_max = 10
+        self.cache_max = 4
         self.spec_cache = {}
-        all_spec_texts = sorted({e["spec"]
-                                 for e in [x["spec"] for x in self.ordinary]}
+        all_spec_texts = sorted({x["spec"] for x in self.ordinary}
                                 | {self.rmot_meta[x["video"]][x["expr_idx"]]
                                    ["sentence"] for x in self.rmot})
         if all_spec_texts:
@@ -132,6 +132,7 @@ class L8Dataset(Dataset):
 
     def __getitem__(self, idx):
         r = random.Random((idx * 1000003 + os.getpid()) % (2 ** 31))
+        drop_pbd = r.random() < self.pbd_dropout
         if self.rmot and (self.rmot_only or r.random() < self.p_rmot):
             item = r.choice(self.rmot)
             rec = self._get_video(item["path"])
@@ -154,7 +155,8 @@ class L8Dataset(Dataset):
                         target[j] = 1.0
                 out_frames.append({
                     "frame": fr["frame"], "boxes": fr["boxes"],
-                    "pbd": np.asarray(fr["pbd"], np.float32),
+                    "pbd": np.zeros_like(np.asarray(fr["pbd"], np.float32))
+                    if drop_pbd else np.asarray(fr["pbd"], np.float32),
                     "clip": np.asarray(fr["clip"], np.float32),
                     "gen": fr["gen"], "cand_gt": cand_gt,
                     "gt_boxes": fr["gt_boxes"], "target": target,
@@ -178,7 +180,8 @@ class L8Dataset(Dataset):
             n_c = len(fr["boxes"])
             out_frames.append({
                 "frame": fr["frame"], "boxes": fr["boxes"],
-                "pbd": np.asarray(fr["pbd"], np.float32),
+                "pbd": np.zeros_like(np.asarray(fr["pbd"], np.float32))
+                if drop_pbd else np.asarray(fr["pbd"], np.float32),
                 "clip": np.asarray(fr["clip"], np.float32),
                 "gen": fr["gen"], "cand_gt": fr["cand_gt"],
                 "gt_boxes": fr["gt_boxes"],
@@ -214,6 +217,7 @@ def main():
     ap.add_argument("--p-rmot", type=float, default=0.5)
     ap.add_argument("--w-relevance", type=float, default=0.2)
     ap.add_argument("--max-rmot-expr", type=int, default=0)
+    ap.add_argument("--pbd-dropout", type=float, default=0.15)
     args = ap.parse_args()
 
     rank = 0
@@ -237,15 +241,16 @@ def main():
     model = L8UnifiedUIDM(**sizes[args.model], mode=args.mode).to(device)
     if args.init_ckpt:
         ck = torch.load(args.init_ckpt, map_location="cpu", weights_only=False)
-        core_sd = model.uidm.state_dict()
+        full_sd = model.state_dict()
         ck_sd = ck["model"]
         filtered = {k: v for k, v in ck_sd.items()
-                    if k in core_sd and core_sd[k].shape == v.shape}
-        missing, unexpected = model.uidm.load_state_dict(
-            filtered, strict=False)
+                    if k in full_sd and full_sd[k].shape == v.shape}
+        missing, unexpected = model.load_state_dict(filtered, strict=False)
         if rank == 0:
-            print(f"[l8] init core {args.init_ckpt} missing={len(missing)} "
-                  f"unexpected={len(unexpected)}", flush=True)
+            print(f"[l8] init {args.init_ckpt} missing={len(missing)} "
+                  f"unexpected={len(unexpected)} "
+                  f"adapter_loaded={'adapter.clip_proj.mlp.0.weight' in filtered}",
+                  flush=True)
     if args.freeze_core:
         for p in model.uidm.parameters():
             p.requires_grad = False
@@ -261,14 +266,15 @@ def main():
 
     ds = L8Dataset(seed=args.seed, p_rmot=args.p_rmot,
                    rmot_only=args.rmot_only,
-                   max_rmot_expr=args.max_rmot_expr)
+                   max_rmot_expr=args.max_rmot_expr,
+                   pbd_dropout=args.pbd_dropout)
     sampler = None
     if args.ddp:
         sampler = torch.utils.data.distributed.DistributedSampler(
             ds, shuffle=True, seed=args.seed)
     loader = torch.utils.data.DataLoader(
         ds, batch_size=args.batch, shuffle=(sampler is None),
-        sampler=sampler, num_workers=4, collate_fn=lambda x: x,
+        sampler=sampler, num_workers=2, collate_fn=lambda x: x,
         drop_last=True, persistent_workers=True)
     opt = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=1e-4)
     total_steps = args.epochs * max(1, len(loader))

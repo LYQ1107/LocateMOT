@@ -59,32 +59,43 @@ def load_manifest():
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--ckpt", required=True)
+    ap.add_argument("--ckpt", default=None)
     ap.add_argument("--out", required=True)
     ap.add_argument("--gpu", type=int, default=0)
     ap.add_argument("--threshold", type=float, default=0.0)
+    ap.add_argument("--threshold-file", default=None)
     ap.add_argument("--gt-only", action="store_true", default=True)
     ap.add_argument("--max-videos", type=int, default=0)
+    ap.add_argument("--shard", type=int, default=0)
+    ap.add_argument("--num-shards", type=int, default=1)
+    ap.add_argument("--predict-only", action="store_true")
+    ap.add_argument("--eval-only", action="store_true")
     args = ap.parse_args()
+    if args.threshold_file:
+        calib = json.loads(Path(args.threshold_file).read_text())
+        args.threshold = float(calib["threshold"])
+        print(f"[l8rmot] calibrated threshold={args.threshold}", flush=True)
     os.environ["CUDA_VISIBLE_DEVICES"] = str(args.gpu)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-    ck = torch.load(args.ckpt, map_location="cpu", weights_only=False)
-    cfg = ck.get("cfg", {})
-    size = cfg.get("model", "base")
-    mode = cfg.get("mode", "unified")
-    model = L8UnifiedUIDM(
-        **SIZES[size],
-        no_interaction=cfg.get("no_interaction", False),
-        use_cue_rel=cfg.get("use_cue_rel", False),
-        mode=mode).to(device)
-    model.load_state_dict(ck["model"])
-    model.eval()
-    core = model.uidm
-    adapter = model.adapter
-    print(f"[l8rmot] size={size} mode={mode} "
-          f"trainable={sum(p.numel() for p in model.parameters())/1e6:.2f}M",
-          flush=True)
+    core = adapter = None
+    if not args.eval_only:
+        ck = torch.load(args.ckpt, map_location="cpu", weights_only=False)
+        cfg = ck.get("cfg", {})
+        size = cfg.get("model", "base")
+        mode = cfg.get("mode", "unified")
+        model = L8UnifiedUIDM(
+            **SIZES[size],
+            no_interaction=cfg.get("no_interaction", False),
+            use_cue_rel=cfg.get("use_cue_rel", False),
+            mode=mode).to(device)
+        model.load_state_dict(ck["model"])
+        model.eval()
+        core = model.uidm
+        adapter = model.adapter
+        print(f"[l8rmot] size={size} mode={mode} "
+              f"trainable={sum(p.numel() for p in model.parameters())/1e6:.2f}M",
+              flush=True)
 
     exp_meta = json.loads(
         (ROOT / "outputs" / "l8" / "data" / "rmot_eval" /
@@ -108,6 +119,9 @@ def main():
         if meta is None:
             continue
         queries.append((vid, expr, np.asarray(meta["spec"], np.float32)))
+    if args.num_shards > 1:
+        queries = [q for q in queries
+                   if hash(q[0]) % args.num_shards == args.shard]
     print(f"[l8rmot] queries={len(queries)}", flush=True)
 
     by_video = load_manifest()
@@ -125,6 +139,14 @@ def main():
             assert int(e["frame"]) in clip_frames
         vid_queries = [q for q in queries if q[0] == vid]
         for qi, (_, expr, spec) in enumerate(vid_queries):
+            exp_dir = res_root / vid / expr
+            exp_dir.mkdir(parents=True, exist_ok=True)
+            gt_src = GT_TEMPLATE / vid / expr / "gt.txt"
+            gt_dst = exp_dir / "gt.txt"
+            if gt_src.exists() and not gt_dst.exists():
+                gt_dst.symlink_to(gt_src)
+            if args.eval_only:
+                continue
             tracker = OnlineTracker(
                 variant="UIDM", uidm=core, device=str(device),
                 output_all_candidates=True,
@@ -164,12 +186,6 @@ def main():
                     rows.append([frame, o["track_id"], x1, y1,
                                  x2 - x1, y2 - y1,
                                  float(o.get("score", 1.0)), -1, -1, -1])
-            exp_dir = res_root / vid / expr
-            exp_dir.mkdir(parents=True, exist_ok=True)
-            gt_src = GT_TEMPLATE / vid / expr / "gt.txt"
-            gt_dst = exp_dir / "gt.txt"
-            if gt_src.exists() and not gt_dst.exists():
-                gt_dst.symlink_to(gt_src)
             with open(exp_dir / "predict.txt", "w") as f:
                 for r in rows:
                     f.write(",".join(
@@ -177,6 +193,9 @@ def main():
                         for v in r) + "\n")
         print(f"[l8rmot] {vid} {vi+1}/{len(set(vids))} "
               f"elapsed={time.time()-t0:.0f}s", flush=True)
+    if args.predict_only:
+        print("[l8rmot] predictions written (predict-only)", flush=True)
+        return
     print("[l8rmot] predictions written", flush=True)
 
     eval_vids = set(vids)
