@@ -253,15 +253,26 @@ def main():
     model.sem_in_core = args.sem_in_core
     if args.init_ckpt:
         ck = torch.load(args.init_ckpt, map_location="cpu", weights_only=False)
-        full_sd = model.state_dict()
         ck_sd = ck["model"]
-        filtered = {k: v for k, v in ck_sd.items()
-                    if k in full_sd and full_sd[k].shape == v.shape}
-        missing, unexpected = model.load_state_dict(filtered, strict=False)
+        core_sd = model.uidm.state_dict()
+        core_filtered = {k: v for k, v in ck_sd.items()
+                         if k in core_sd and core_sd[k].shape == v.shape}
+        missing_c, unexpected_c = model.uidm.load_state_dict(
+            core_filtered, strict=False)
+        ad_sd = model.adapter.state_dict()
+        ad_filtered = {}
+        for k, v in ck_sd.items():
+            k2 = k[len("adapter."):] if k.startswith("adapter.") else k
+            if k2 in ad_sd and ad_sd[k2].shape == v.shape:
+                ad_filtered[k2] = v
+        missing_a, unexpected_a = model.adapter.load_state_dict(
+            ad_filtered, strict=False)
         if rank == 0:
-            print(f"[l8] init {args.init_ckpt} missing={len(missing)} "
-                  f"unexpected={len(unexpected)} "
-                  f"adapter_loaded={'adapter.clip_proj.mlp.0.weight' in filtered}",
+            print(f"[l8] init {args.init_ckpt} core_missing={len(missing_c)} "
+                  f"core_unexpected={len(unexpected_c)} "
+                  f"adapter_missing={len(missing_a)} "
+                  f"adapter_unexpected={len(unexpected_a)} "
+                  f"adapter_loaded={'clip_proj.mlp.0.weight' in ad_filtered}",
                   flush=True)
     if args.freeze_core:
         for p in model.uidm.parameters():
