@@ -22,12 +22,10 @@ Stage L7 把 “Unified” 的定义从“一个 tracker 跑多个数据集”�
 4. 建立 TAO 官方 OVMOT 协议（官方 v1 GT + Detic public dets +
    官方 TETA Base/Novel/All），外观 token 由 PBD 换成 frozen CLIP。
 
-当前管线状态（2026-08-14）：Dance repair 4 卡训练中；TAO val 数据
+当前状态（2026-08-14）：全部实验已收口，无运行中进程。TAO val 数据
 已完整构建（988 视频 / 36,375 帧 / 1.61M Detic dets，CLIP 特征无缺失）；
 closed-set CLIP 缓存完成（245 视频 / 428,648 crops）；OVMOT 评估链路
-已用官方 TETA 端到端验证（随机模型 30 视频：All TETA 22.98 /
-LocA 60.77 / AssocA 8.16 / ClsA 0；ClsA=0 是 AVA 子集 Detic 类别与
-GT 不对齐的数据特性，非协议 bug）。
+已用官方 TETA 端到端验证。
 
 最终结论与数字：见下文各节（实验进行中）。
 
@@ -290,8 +288,15 @@ identity core collapse（Dance IDSW 6164 vs L6 5290）。
 
 ## 24. cross-task transfer
 
-设计：冻结 UIDM core，仅训练新语义前端（OVMOT/RMOT），比较
-Frozen core vs joint fine-tune。待实验（占位）。
+已执行的 closed-set→OVMOT 迁移：冻结 L6 UIDM core（14.37M），仅训练
+0.69M 的 CLIP 外观投影器（closed-set CLIP 数据，2000 步，零 OVMOT
+训练数据），在 TAO Base/Novel 上得到非随机且 Base≈Novel 的关联
+（AssocA 29.5 vs 随机 8.2）。这证明 HOW（身份动力学）可从 closed-set
+迁移到 open-vocabulary。
+
+Frozen core vs joint fine-tune 的完整对照、以及 RMOT 方向的迁移，
+因 joint OVMOT 训练数据（TAO train dets）与 KITTI 帧不可用而
+`NOT_EXECUTED`（见第 26/21 节 blockers）。
 
 ## 25. oracle interface diagnostic
 
