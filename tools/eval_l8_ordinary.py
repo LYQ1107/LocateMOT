@@ -36,11 +36,12 @@ PY = "/home/lwr/anaconda3/envs/locatemot/bin/python"
 MANIFEST = ROOT / "outputs" / "l1_c" / "fixed_candidate_manifest"
 CLIP_EVAL = ROOT / "outputs" / "l7" / "data" / "clip_eval"
 DOMAINS = {
-    "dance": ("dancetrack_val", "dancetrack_val", 30, "person"),
-    "bdd": ("bdd100k_train", "bdd100k_train", 5,
+    "dance": ("dancetrack_val", "dancetrack_val", "dancetrack_val", 30,
+              "person"),
+    "bdd": ("bdd100k_train", "bdd100k_train", "bdd100k_train", 5,
             "person, car, truck, bus, rider, bicycle, motorcycle, train"),
-    "mot17": ("mot17_train", "mot17_train", 30, "person"),
-    "mot20": ("mot20_train", "mot20_train", 30, "person"),
+    "mot17": ("mot17_train", "mot17_train", "mot17_train", 30, "person"),
+    "mot20": ("mot20_train", "mot20_train", "mot20_train", 30, "person"),
 }
 SIZES = {
     "small": dict(d_model=192, n_layers=3, n_heads=4, ffn_dim=768),
@@ -146,4 +147,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

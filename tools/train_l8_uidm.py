@@ -76,6 +76,7 @@ class L8Dataset(Dataset):
         self.rmot_only = rmot_only
         self.pbd_dropout = pbd_dropout
         self.ordinary = []
+        self.ordinary_by_domain = {}
         if not rmot_only:
             for name, data_dir, spec_text in ORDINARY_DOMAINS:
                 idx = Path(data_dir) / "index.json"
@@ -84,12 +85,17 @@ class L8Dataset(Dataset):
                     continue
                 index = json.loads(idx.read_text())
                 vids = sorted(index["videos"].keys())
+                group = []
                 for v in vids:
-                    self.ordinary.append({
+                    item = {
                         "domain": name, "spec": spec_text,
                         "path": index["videos"][v]["path"],
                         "n": int(index["videos"][v]["frames"]),
-                    })
+                    }
+                    self.ordinary.append(item)
+                    group.append(item)
+                if group:
+                    self.ordinary_by_domain[name] = group
         # RMOT pool
         self.rmot = []
         self.rmot_meta = {}
@@ -167,7 +173,8 @@ class L8Dataset(Dataset):
                 "spec": self.spec_cache[meta["sentence"]],
                 "frames": out_frames,
             }
-        item = r.choice(self.ordinary)
+        dom = r.choice(list(self.ordinary_by_domain.keys()))
+        item = r.choice(self.ordinary_by_domain[dom])
         rec = self._get_video(item["path"])
         n = len(rec["frames"])
         if n <= H:
@@ -205,6 +212,7 @@ def main():
     ap.add_argument("--epochs", type=int, default=40)
     ap.add_argument("--batch", type=int, default=8)
     ap.add_argument("--lr", type=float, default=3e-4)
+    ap.add_argument("--lr-core", type=float, default=5e-5)
     ap.add_argument("--gpu", type=str, default="0")
     ap.add_argument("--seed", type=int, default=20260806)
     ap.add_argument("--teacher-steps", type=int, default=1000)
@@ -276,12 +284,16 @@ def main():
         ds, batch_size=args.batch, shuffle=(sampler is None),
         sampler=sampler, num_workers=2, collate_fn=lambda x: x,
         drop_last=True, persistent_workers=True)
-    opt = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=1e-4)
+    opt = torch.optim.AdamW([
+        {"params": raw_model.uidm.parameters(), "lr": args.lr_core},
+        {"params": raw_model.adapter.parameters(), "lr": args.lr},
+    ], weight_decay=1e-4)
     total_steps = args.epochs * max(1, len(loader))
     if args.max_steps:
         total_steps = min(total_steps, args.max_steps)
     sched = torch.optim.lr_scheduler.OneCycleLR(
-        opt, max_lr=args.lr, total_steps=total_steps, pct_start=0.05,
+        opt, max_lr=[args.lr_core, args.lr], total_steps=total_steps,
+        pct_start=0.05,
         anneal_strategy="cos")
     out_dir = Path(args.out)
     out_dir.mkdir(parents=True, exist_ok=True)

@@ -12,6 +12,7 @@ Usage:
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
 import pickle
@@ -121,7 +122,8 @@ def main():
         queries.append((vid, expr, np.asarray(meta["spec"], np.float32)))
     if args.num_shards > 1:
         queries = [q for q in queries
-                   if hash(q[0]) % args.num_shards == args.shard]
+                   if int(hashlib.md5(q[0].encode()).hexdigest(), 16)
+                   % args.num_shards == args.shard]
     print(f"[l8rmot] queries={len(queries)}", flush=True)
 
     by_video = load_manifest()

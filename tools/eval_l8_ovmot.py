@@ -14,6 +14,7 @@ Usage:
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
 import pickle
@@ -64,7 +65,8 @@ def build_gt_maps(gt):
     return vid2imgs
 
 
-def run_tracker(model, data_dir, out_path, gpu, spec_emb, score_thr=0.05):
+def run_tracker(model, data_dir, out_path, gpu, spec_emb, score_thr=0.05,
+                shard=0, num_shards=1):
     os.environ["CUDA_VISIBLE_DEVICES"] = str(gpu)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model.to(device).eval()
@@ -82,6 +84,10 @@ def run_tracker(model, data_dir, out_path, gpu, spec_emb, score_thr=0.05):
     text_emb = text_emb / np.linalg.norm(text_emb, axis=1, keepdims=True)
     t0 = time.time()
     files = sorted(Path(data_dir).glob("*.pkl"))
+    if num_shards > 1:
+        files = [p for p in files
+                 if int(hashlib.md5(p.stem.encode()).hexdigest(), 16)
+                 % num_shards == shard]
     for vi, pkl_path in enumerate(files):
         rec = pickle.load(open(pkl_path, "rb"))
         vname = rec["video_id"]
@@ -162,7 +168,21 @@ def main():
     ap.add_argument("--gpu", type=int, default=0)
     ap.add_argument("--score-thr", type=float, default=0.05)
     ap.add_argument("--max-videos", type=int, default=0)
+    ap.add_argument("--shard", type=int, default=0)
+    ap.add_argument("--num-shards", type=int, default=1)
+    ap.add_argument("--merge-only", action="store_true")
     args = ap.parse_args()
+    out = Path(args.out)
+    tracker_dir = out / "trackers" / "UIDM" / "data"
+    if args.merge_only:
+        preds = []
+        for p in sorted(out.glob("pred_shard*.json")):
+            preds.extend(json.loads(p.read_text()))
+        tracker_dir.mkdir(parents=True, exist_ok=True)
+        (tracker_dir / "pred.json").write_text(json.dumps(preds))
+        print(f"[l8ovmot] merged {len(preds)} preds", flush=True)
+        run_teta("UIDM", str(out / "trackers"))
+        return
     ck = torch.load(args.ckpt, map_location="cpu", weights_only=False)
     cfg = ck.get("cfg", {})
     model = L8UnifiedUIDM(**SIZES[cfg.get("model", "base")],
@@ -175,13 +195,12 @@ def main():
         data_dir.mkdir(parents=True, exist_ok=True)
         for p in sorted(DATA_DIR.glob("*.pkl"))[:args.max_videos]:
             (data_dir / p.name).symlink_to(p.resolve())
-    out = Path(args.out)
-    tracker_dir = out / "trackers" / "UIDM" / "data"
-    run_tracker(model, str(data_dir), tracker_dir / "pred.json", args.gpu,
-                spec_emb, args.score_thr)
-    run_teta("UIDM", str(out / "trackers"))
+    run_tracker(model, str(data_dir),
+                tracker_dir / f"pred_shard{args.shard}.json", args.gpu,
+                spec_emb, args.score_thr, args.shard, args.num_shards)
+    if args.num_shards == 1:
+        run_teta("UIDM", str(out / "trackers"))
 
 
 if __name__ == "__main__":
     main()
-
