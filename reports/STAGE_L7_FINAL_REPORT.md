@@ -438,4 +438,5 @@ Refer-KITTI RMOT，把结论升级到 unified signal。其余不要动：不要
 
 ## 38. git commit SHA
 
-`7bc6862`（WIP）；最终提交见完成后更新。
+`acc63e1`（Stage L7 complete）；关键中间提交：`4e140a2`（WIP）、
+`7bc6862`（OVMOT 管线工具）、`118443f`（OVMOT 正信号 + 报告草稿）。
