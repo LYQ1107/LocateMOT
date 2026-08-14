@@ -554,3 +554,18 @@
   F1 校准阈值。TrackEval 硬编码 KITTI 路径、numpy 1.x 别名、seq 长度
   目录层级三处 patch。
 - 状态：2400 步四卡 joint（frozen core）训练中；smoke 全链路已验证。
+
+## 2026-08-14 — Stage L8：统一 token 负结果 → identity-pure v2
+
+- 冻结 core 联合训练 2387 步：RMOT 官方 40-query HOTA 34.12（iKUN 基线
+  29.06，检测输入不同）；但普通 MOT Macro AssA 0.2798（L7 0.4290，
+  L6 0.4922），MOT17/20 因域采样不均几乎塌掉。
+- 域均衡采样 + 解冻 core 再训 3000 步（L8-B1）：RMOT HOTA 33.71，
+  ordinary Macro AssA 0.2643（更差）。结论：**把 CLIP+spec 语义残差
+  直接注入 UIDM 候选 token 破坏 PBD identity**（L7 的 PBD-vs-CLIP
+  trade-off 的又一证据）。
+- 修正假设（v2）：identity-pure 共享 UIDM（PBD 身份流，spec 不进
+  core）+ unified semantic relevance（CLIP+spec 只负责 WHAT/选择），
+  WHAT/HOW 解耦；PBD-dropout 让同一 core 可处理无 PBD 的 OVMOT。
+- 实现 `--sem-in-core` 开关（默认 off）；hybrid init = L6 core +
+  L8 adapter；2500 步四卡训练中。

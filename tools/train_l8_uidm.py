@@ -226,6 +226,9 @@ def main():
     ap.add_argument("--w-relevance", type=float, default=0.2)
     ap.add_argument("--max-rmot-expr", type=int, default=0)
     ap.add_argument("--pbd-dropout", type=float, default=0.15)
+    ap.add_argument("--sem-in-core", action="store_true",
+                    help="add semantic residue to UIDM candidate tokens "
+                         "(default off: identity-pure core)")
     args = ap.parse_args()
 
     rank = 0
@@ -247,6 +250,7 @@ def main():
         "large": dict(d_model=384, n_layers=6, n_heads=8, ffn_dim=1536),
     }
     model = L8UnifiedUIDM(**sizes[args.model], mode=args.mode).to(device)
+    model.sem_in_core = args.sem_in_core
     if args.init_ckpt:
         ck = torch.load(args.init_ckpt, map_location="cpu", weights_only=False)
         full_sd = model.state_dict()

@@ -125,6 +125,7 @@ class OnlineTracker:
         self.spec_idx = spec_idx
         self.uidm_adapter = uidm_adapter
         self.uidm_spec = uidm_spec
+        self.uidm_sem_in_core = getattr(uidm, "sem_in_core", True)
         self.tracks: List[TrackState] = []
         self._next_id = 0
         self.frame_count = 0
@@ -956,6 +957,8 @@ class OnlineTracker:
                     torch.as_tensor(clip_arr, device=self.device),
                     spec)
                 sem = sem.cpu().numpy().astype(np.float32)
+            if not self.uidm_sem_in_core:
+                sem = np.zeros_like(sem)
             if self.uidm_adapter.mode == "semantic":
                 cp = np.zeros((N, app_dim), np.float32)
             else:

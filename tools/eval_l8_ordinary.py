@@ -114,7 +114,8 @@ def main():
     ck = torch.load(args.ckpt, map_location="cpu", weights_only=False)
     cfg = ck.get("cfg", {})
     model = L8UnifiedUIDM(**SIZES[cfg.get("model", "base")],
-                          mode=cfg.get("mode", "unified"))
+                          mode=cfg.get("mode", "unified"),
+                          sem_in_core=cfg.get("sem_in_core", True))
     model.load_state_dict(ck["model"])
     out = Path(args.out)
     tracker_root = out / "trackers"
@@ -129,7 +130,9 @@ def main():
             by_video = dict(list(by_video.items())[:args.max_videos])
         run_tracker(model, by_video, CLIP_EVAL / clip_dom, src_dir,
                     args.gpu, spec_emb)
-        split = f"{Path(args.out).name}_{label}"
+        rel_out = str(Path(args.out).resolve().relative_to(ROOT)) \
+            .replace('/', '_')
+        split = f"{rel_out}_{label}"
         variant_dir = eval_root / label / "U0"
         if variant_dir.exists():
             shutil.rmtree(variant_dir)

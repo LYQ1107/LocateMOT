@@ -89,7 +89,8 @@ def main():
             **SIZES[size],
             no_interaction=cfg.get("no_interaction", False),
             use_cue_rel=cfg.get("use_cue_rel", False),
-            mode=mode).to(device)
+            mode=mode,
+            sem_in_core=cfg.get("sem_in_core", True)).to(device)
         model.load_state_dict(ck["model"])
         model.eval()
         core = model.uidm

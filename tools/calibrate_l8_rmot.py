@@ -46,7 +46,8 @@ def main():
     ck = torch.load(args.ckpt, map_location="cpu", weights_only=False)
     cfg = ck.get("cfg", {})
     model = L8UnifiedUIDM(**SIZES[cfg.get("model", "base")],
-                          mode=cfg.get("mode", "unified")).to(device)
+                          mode=cfg.get("mode", "unified"),
+                          sem_in_core=cfg.get("sem_in_core", True)).to(device)
     model.load_state_dict(ck["model"])
     model.eval()
     adapter = model.adapter

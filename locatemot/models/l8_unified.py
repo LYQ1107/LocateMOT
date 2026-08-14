@@ -105,11 +105,12 @@ class L8UnifiedUIDM(nn.Module):
     def __init__(self, d_model=320, n_layers=4, n_heads=8, ffn_dim=1280,
                  dropout=0.1, no_interaction=False, use_cue_rel=False,
                  pbd_dim=2048, clip_dim=512, spec_dim=512, mode="unified",
-                 core=None):
+                 core=None, sem_in_core=True):
         super().__init__()
         from locatemot.models.l6_uidm import UIDM
         self.d_model = d_model
         self.app_dim = pbd_dim
+        self.sem_in_core = sem_in_core
         self.uidm = core if core is not None else UIDM(
             d_model=d_model, n_layers=n_layers, n_heads=n_heads,
             ffn_dim=ffn_dim, dropout=dropout,
@@ -129,7 +130,10 @@ class L8UnifiedUIDM(nn.Module):
         f2 = dict(frame)
         if self.adapter.mode == "semantic":
             f2["cand_pbd"] = torch.zeros_like(frame["cand_pbd"])
-        f2["cand_sem"] = sem
+        if self.sem_in_core:
+            f2["cand_sem"] = sem
+        else:
+            f2["cand_sem"] = torch.zeros_like(sem)
         pred = self.uidm.forward_frame(f2)
         pred["relevance"] = rel
         return pred
