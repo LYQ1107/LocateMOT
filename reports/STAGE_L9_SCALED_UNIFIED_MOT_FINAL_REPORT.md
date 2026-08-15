@@ -102,7 +102,20 @@ so WHAT (target selection) and HOW (identity) remain decoupled.
 - PBD-dropout 0.15; tracking losses + relevance BCE; seed 20260806;
   2-4 GPUs; resume with optimizer/scheduler/global step.
 - Stage A (completed run): 10,000 steps MOT+RMOT with the gate
-  (this report).  Stage B (planned): resume with OVMOT stream.
+  (v1 regressed due to an init bug and was kept as a failed-run evidence;
+  v2 rerun with the corrected identity init is in progress).
+  Stage B (planned): resume with OVMOT stream.
+
+### 3.4 Negative evidence and fix (L9 v1)
+
+The first L9 main run (10k steps, cond-gated, init L8-B1) regressed
+ordinary MOT (DanceTrack AssA 0.3457 -> 0.1135, Macro AssA 0.5087 ->
+~0.42) and RMOT (AssA 31.02 -> 10.58), while an L8-B1 control eval was
+healthy (Dance AssA 0.3405).  Root cause: `sem_transform` was initialized
+as an all-ones matrix (degenerate rank-1 projection) instead of the
+identity matrix.  The v1 checkpoint is preserved under
+`outputs/l9/checkpoints/uidm_l9_main_v1_failed/`; the corrected v2 run
+uses `eye_` initialization.
 
 ## 4. Protocol
 
@@ -208,4 +221,3 @@ ablation quality, protocol fairness and reproducibility.
   `reports/l9_mot_results.md`, `reports/l9_ovmot_results.md`,
   `reports/l9_rmot_results.md`, `reports/l9_ablation.md`,
   `reports/l9_failure_analysis.md`, `reports/l9_iclr_novelty_audit.md`
-

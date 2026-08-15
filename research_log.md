@@ -629,3 +629,15 @@ per-candidate learned gate（`z = z_id + gate*W(sem)`），让语义仅在需要
 - TAO val PBD cache 完成后跑 L8-B1/B2 full-observation TETA；
 - DLA dets（TAO train）→ CLIP → PBD cache → L9 联合训练；
 - 三任务正式评测 + 4 组消融 + novelty audit + 最终报告。
+
+### L9 v1 训练回归（15:30 发现并修复）
+
+- 现象：L9 main 10k steps（cond-gated, init L8-B1）在 ordinary MOT 上
+  大幅回归（Dance AssA 0.3457→0.1135，Macro 0.5087→~0.42），RMOT
+  AssA 31.02→10.58；L8-B1 对照评测正常（Dance AssA 0.3405）。
+- 原因：`sem_transform` 初始化误用 `nn.init.ones_`（全 1 矩阵，退化
+  投影），应为 `eye_`（单位阵）。L9 语义残差被压成常向量，破坏核心。
+- 修复：`nn.init.eye_(sem_transform.weight)`；v1 权重保留在
+  `outputs/l9/checkpoints/uidm_l9_main_v1_failed/` 作为失败证据。
+- 重训：v2（6k steps, 2 GPU, 同样 init L8-B1）已启动，计划 3k 步时
+  做 dance 快速评估监测是否再次漂移。
