@@ -29,7 +29,7 @@ GPUS = [1, 2, 3, 4, 5, 6, 7, 8, 9]  # re-checked at runtime
 CHECK_SECONDS = 300
 MIN_RAM_PER_WORKER = 12  # GB
 MAX_GPUS = 4
-BUSY_GPUS = [4, 6]  # training occupies these; cache must not use them
+BUSY_GPUS_FILE = LOG_DIR / "busy_gpus.json"
 
 
 def mem_available_gb():
@@ -90,6 +90,12 @@ def main():
         avail = mem_available_gb()
         gpu_used = gpu_mem_used()
         workers = running_workers()
+        busy_gpus = []
+        if BUSY_GPUS_FILE.exists():
+            try:
+                busy_gpus = json.loads(BUSY_GPUS_FILE.read_text())
+            except (ValueError, OSError):
+                busy_gpus = []
         # hysteresis: pause only after two consecutive low-RAM checks;
         # (re)start only after two consecutive high-RAM checks
         low2 = avail < 6 and prev_avail < 10
@@ -118,13 +124,13 @@ def main():
             want = 2
         elif high2 and avail > 16:
             want = 1
-        workers_per_gpu = 2 if want >= 6 else 1
-        max_gpus = max(1, MAX_GPUS - len(BUSY_GPUS))
+        workers_per_gpu = 1
+        max_gpus = max(1, MAX_GPUS - len(busy_gpus))
         missing = [s for s in range(NUM_SHARDS) if s not in workers]
         our_gpus = set(gpu_worker_count.keys())
         candidate_gpus = [
             g for g in GPUS
-            if g not in BUSY_GPUS
+            if g not in busy_gpus
             and (g in our_gpus
                  or gpu_used.get(g, (10 ** 9, 0))[0] < 500)]
         candidate_gpus.sort(key=lambda g: gpu_worker_count.get(g, 0))
