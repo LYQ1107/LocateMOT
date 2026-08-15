@@ -35,3 +35,16 @@ confidence intervals; numbers are indicative.
 
 Threshold: L9-calibrated 0.45 (train F1 0.8905).  v5 is between B2 and
 B1 on RMOT, and above both on ordinary Macro AssA (0.5090).
+
+## Bootstrap 95% CI (per-query, 2000 resamples, seed 20260806)
+
+Rows with non-empty HOTA in the official log: v5 37 queries, B1 38
+queries.
+
+| Method | HOTA mean [CI] | DetA mean [CI] | AssA mean [CI] |
+|---|---|---|---|
+| L8-B1 | 33.25 [26.28, 40.31] | 44.87 [35.44, 54.83] | 28.01 [21.46, 34.75] |
+| L9 v5 | 32.42 [25.24, 39.66] | 43.05 [33.41, 53.20] | 28.10 [21.38, 35.17] |
+
+The v5 vs B1 differences are within the CI overlap; with 40 queries the
+RMOT comparison is indicative, not a significant ranking.
