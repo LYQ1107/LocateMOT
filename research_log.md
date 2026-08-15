@@ -616,6 +616,14 @@ per-candidate learned gate（`z = z_id + gate*W(sem)`），让语义仅在需要
   LocateMOT 先 1 worker 后自动扩到 2 worker；不干扰其进程。
 - GPU 使用仅 1/2/4/6/7（避开 3/5/9）。
 
+### 缓存性能修复（10:45）
+
+- 现象：meta `seconds` 8-12s 但帧间隔 36s。
+- 原因：`_ckpt_hash(MODEL_DIR)` 每帧重算，hash 整个 3B 模型文件
+  （~6GB 磁盘读/帧）。
+- 修改：启动时算一次并复用 → 帧间隔恢复到 ~13s（2 worker 约
+  9.4 帧/分）。已提交。
+
 ### 下一步
 
 - TAO val PBD cache 完成后跑 L8-B1/B2 full-observation TETA；
