@@ -87,7 +87,7 @@ class UnifiedObservationAdapter(nn.Module):
         nn.init.zeros_(self.gate[-1].bias)
         nn.init.zeros_(self.cond_gate[-1].weight)
         nn.init.ones_(self.cond_gate[-1].bias)  # sigmoid(1) ~ 0.73
-        nn.init.ones_(self.sem_transform.weight)
+        nn.init.eye_(self.sem_transform.weight)
         nn.init.zeros_(self.sem_transform.bias)
         nn.init.zeros_(self.relevance[-1].weight)
         nn.init.zeros_(self.relevance[-1].bias)
