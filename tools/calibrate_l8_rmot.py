@@ -25,6 +25,7 @@ ROOT = Path(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.insert(0, str(ROOT))
 
 from locatemot.models.l8_unified import L8UnifiedUIDM  # noqa: E402
+from locatemot.models.l8_unified import load_l8_state  # noqa: E402
 
 SIZES = {
     "small": dict(d_model=192, n_layers=3, n_heads=4, ffn_dim=768),
@@ -47,8 +48,9 @@ def main():
     cfg = ck.get("cfg", {})
     model = L8UnifiedUIDM(**SIZES[cfg.get("model", "base")],
                           mode=cfg.get("mode", "unified"),
-                          sem_in_core=cfg.get("sem_in_core", True)).to(device)
-    model.load_state_dict(ck["model"])
+                          sem_in_core=cfg.get("sem_in_core", True),
+                          cond_gated=cfg.get("cond_gated", False)).to(device)
+    load_l8_state(model, ck["model"])
     model.eval()
     adapter = model.adapter
     meta = json.loads((RMOT / "expressions.json").read_text())

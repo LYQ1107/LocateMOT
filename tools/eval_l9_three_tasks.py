@@ -37,6 +37,7 @@ def main():
     ap.add_argument("--ovmot-cache",
                     default=str(ROOT / "outputs" / "l9" / "cache"
                                 / "tao_val_pbd"))
+    ap.add_argument("--threshold-file", default=None)
     args = ap.parse_args()
     out = Path(args.out)
     out.mkdir(parents=True, exist_ok=True)
@@ -54,11 +55,12 @@ def main():
         logs.append(log)
     # RMOT on the first GPU (sequential after its ordinary half)
     rmot_log = out / "rmot.log"
+    thr = args.threshold_file or str(
+        ROOT / "outputs" / "l9" / "calib" / "threshold_l9.json")
     p = run([PY, str(ROOT / "tools" / "eval_l8_rmot.py"),
              "--ckpt", args.ckpt, "--out", str(out / "rmot"),
              "--gpu", str(gpus[0]),
-             "--threshold-file",
-             str(ROOT / "outputs" / "l8" / "calib" / "threshold_v2.json")],
+             "--threshold-file", thr],
             rmot_log)
     procs.append(p)
     for p in procs:
