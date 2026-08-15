@@ -655,3 +655,16 @@ per-candidate learned gate（`z = z_id + gate*W(sem)`），让语义仅在需要
 - 对策 v4：镜像 L8-B1 成功配方——init `uidm_l8_joint`（未收敛中间点）
   + cond-gated + eye init + 3000 步；与 B1 同轨迹地共同训练 gate 与
   core。已启动（17:22）。
+
+### 真正根因：init 加载 bug（18:40 定位）
+
+- v4/control 依旧高 loss（~110）而手动诊断正常（~7）→ 逐脚本对比
+  定位：`train_l9_uidm.py` 的 `--init-ckpt` 手动过滤只匹配裸 key，
+  而 `uidm_l8_joint` 的 164 个 key 全部带 `uidm.`/`adapter.` 前缀 →
+  **core 从未加载，全程随机初始化**；adapter 加载成功造成假象。
+- L8-B1 当年用的是旧版正确 init（其日志 missing=0）。
+- 修复：改用 `load_l8_state`（兼容前缀/裸 key）；train_l8_uidm.py
+  同步修复。v1-v4 与 control 均为 init bug 产物，不作为 gate 的
+  科学负证据（保留为失败证据）。
+- v5（修复后，uidm_l8_joint + cond-gated + 3k 步）已启动：
+  step10 loss 7.5（对照 v4 的 105），核心恢复正确初始化。

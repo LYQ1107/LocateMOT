@@ -108,14 +108,21 @@ so WHAT (target selection) and HOW (identity) remain decoupled.
 
 ### 3.4 Negative evidence and fix (L9 v1)
 
-The first L9 main run (10k steps, cond-gated, init L8-B1) regressed
-ordinary MOT (DanceTrack AssA 0.3457 -> 0.1135, Macro AssA 0.5087 ->
-~0.42) and RMOT (AssA 31.02 -> 10.58), while an L8-B1 control eval was
-healthy (Dance AssA 0.3405).  Root cause: `sem_transform` was initialized
-as an all-ones matrix (degenerate rank-1 projection) instead of the
-identity matrix.  The v1 checkpoint is preserved under
-`outputs/l9/checkpoints/uidm_l9_main_v1_failed/`; the corrected v2 run
-uses `eye_` initialization.
+Two implementation bugs were found and fixed during L9:
+
+1. `sem_transform` was initialized as an all-ones matrix (degenerate
+   rank-1 projection) instead of the identity matrix; fixed to `eye_`.
+2. The training script's `--init-ckpt` loader matched only bare keys,
+   while the L8 checkpoints store `uidm.`/`adapter.`-prefixed keys, so the
+   UIDM core was silently left randomly initialized (adapter loaded
+   correctly, masking the error).  Fixed by loading through
+   `load_l8_state`.
+
+The v1-v4 checkpoints produced by the buggy loader are preserved under
+`outputs/l9/checkpoints/uidm_l9_main_v{1,2,3}_*/` and
+`uidm_l9_control_nogate_randomcore/` as failure evidence; they are not
+used as scientific evidence about the gated-residual method.  The v5 run
+uses the corrected loader and `eye_` init.
 
 ## 4. Protocol
 
