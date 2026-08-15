@@ -329,8 +329,13 @@ def main():
         ck = torch.load(args.resume, map_location="cpu", weights_only=False)
         if "opt_state" in ck:
             opt.load_state_dict(ck["opt_state"])
-            sched.load_state_dict(ck["sched_state"])
-            print(f"[l9] loaded optimizer/scheduler state", flush=True)
+            # rebuild the scheduler for the new total and fast-forward it
+            # (loading the old phase table is invalid after total_steps
+            # changes)
+            for _ in range(step):
+                sched.step()
+            print(f"[l9] loaded optimizer state; scheduler fast-forwarded "
+                  f"to step {step}", flush=True)
     cfg["n_params"] = n_params
     with open(out_dir / "train_config.json", "w") as f:
         json.dump(cfg, f, indent=2, ensure_ascii=False)

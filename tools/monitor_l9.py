@@ -87,6 +87,17 @@ def main():
         avail = mem_available_gb()
         gpu_used = gpu_mem_used()
         workers = running_workers()
+        if avail < 8 and workers:
+            # protect training / other tenants from OOM: pause cache
+            for shard, info in list(workers.items()):
+                subprocess.run(
+                    ["pkill", "-f",
+                     f"cache_l9_tao_pbd.py --gpu {info['gpu']} "
+                     f"--shard {shard}"], capture_output=True)
+                print(f"[monitor] paused cache shard {shard} "
+                      f"(avail={avail:.0f}G)", flush=True)
+            time.sleep(30)
+            continue
         free_gpus = [g for g in GPUS
                      if gpu_used.get(g, (10 ** 9, 0))[0] < 500]
         want = 0
