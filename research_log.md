@@ -641,3 +641,17 @@ per-candidate learned gate（`z = z_id + gate*W(sem)`），让语义仅在需要
   `outputs/l9/checkpoints/uidm_l9_main_v1_failed/` 作为失败证据。
 - 重训：v2（6k steps, 2 GPU, 同样 init L8-B1）已启动，计划 3k 步时
   做 dance 快速评估监测是否再次漂移。
+
+### v2/v3 仍回归 → 自训练漂移判定（16:45）
+
+- v2（eye init, unfrozen, init L8-B1 final）：step1000 dance AssA
+  0.196（B1 对照 0.3405）→ 即使 init 修复，从已收敛 final ckpt 继续
+  自训练仍立即漂移。
+- v3（eye init, freeze-core, 只训 adapter/gate）：step1000 dance AssA
+  0.175 / IDSW 32477（更差）→ 冻结 core 只改输入流也不稳，说明
+  core 对 cand_sem 分布敏感，且输入侧单边适配会 out-of-distribution。
+- 判定：UIDM 自训练（teacher=student rollout）从收敛点继续必然漂移；
+  “充分训练”不能通过延长已收敛 checkpoint 实现。
+- 对策 v4：镜像 L8-B1 成功配方——init `uidm_l8_joint`（未收敛中间点）
+  + cond-gated + eye init + 3000 步；与 B1 同轨迹地共同训练 gate 与
+  core。已启动（17:22）。
