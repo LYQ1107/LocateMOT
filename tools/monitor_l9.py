@@ -29,6 +29,7 @@ GPUS = [1, 2, 3, 4, 5, 6, 7, 8, 9]  # re-checked at runtime
 CHECK_SECONDS = 300
 MIN_RAM_PER_WORKER = 12  # GB
 MAX_GPUS = 4
+BUSY_GPUS = [4, 6]  # training occupies these; cache must not use them
 
 
 def mem_available_gb():
@@ -104,7 +105,7 @@ def main():
                       f"(avail={avail:.0f}G)", flush=True)
             time.sleep(30)
             continue
-        free_gpus = [g for g in GPUS
+        free_gpus = [g for g in GPUS if g not in BUSY_GPUS
                      if gpu_used.get(g, (10 ** 9, 0))[0] < 500]
         gpu_worker_count = {}
         for info in workers.values():
@@ -120,6 +121,7 @@ def main():
         elif high2 and avail > 16:
             want = 1
         workers_per_gpu = 2 if want >= 6 else 1
+        max_gpus = max(1, MAX_GPUS - len(BUSY_GPUS))
         missing = [s for s in range(NUM_SHARDS) if s not in workers]
         # restart up to `want` workers, at most `workers_per_gpu` per GPU,
         # using at most MAX_GPUS physical GPUs
@@ -130,7 +132,7 @@ def main():
             if gpu_worker_count.get(gpu, 0) >= workers_per_gpu:
                 continue
             if len([g for g, c in gpu_worker_count.items() if c > 0]) \
-                    >= MAX_GPUS and gpu_worker_count.get(gpu, 0) == 0:
+                    >= max_gpus and gpu_worker_count.get(gpu, 0) == 0:
                 continue
             launch_worker(shard, gpu)
             gpu_worker_count[gpu] = gpu_worker_count.get(gpu, 0) + 1
