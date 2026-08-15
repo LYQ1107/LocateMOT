@@ -173,6 +173,7 @@ def main():
         return
 
     extractor = load_model(args.gpu)
+    ckpt_hash = _ckpt_hash(MODEL_DIR)
     rows = []
     n_frames = 0
     n_crops = 0
@@ -255,7 +256,7 @@ def main():
                 "candidate_count": len(boxes),
                 "failed_candidates": fails,
                 "model_commit": MODEL_COMMIT,
-                "checkpoint_hash": _ckpt_hash(MODEL_DIR),
+                "checkpoint_hash": ckpt_hash,
                 "seconds": round(elapsed, 3),
                 "peak_gpu_gb": round(peak, 3),
             }
