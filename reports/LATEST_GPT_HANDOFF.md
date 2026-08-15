@@ -1,81 +1,63 @@
-# LocateMOT — Stage L8 GPT Handoff
+# LocateMOT — Stage L9 GPT Handoff (living draft)
 
-Date: 2026-08-14
-Stage: L8 Specification-Conditioned Unified MOT
-Status: **SUPPORTED**
+Date: 2026-08-15 (updated as the stage progresses)
 
 ## In one sentence
 
-We connected RMOT (Refer-Dance) to the same UIDM identity-dynamics core
-used for ordinary MOT and OVMOT, and obtained positive results on all
-three formulations with a single shared checkpoint.
+Stage L9 adds full-observation OVMOT (crop-based PBD identity tokens for
+every TAO val candidate) and a specification-conditioned identity gate to
+the L8 shared UIDM; the L9 main checkpoint (v5) reaches ordinary Macro
+AssA 0.5090 (vs L8-B1 0.5087) and RMOT HOTA 37.07 / AssA 30.30, with the
+full-PBD TAO evaluation pending the val cache.
 
-## Where the project lives
+## Where things live
 
 - Root: `/data1/LWR/vranlee/SERVER_ONLY/avis/LocateMOT`
 - Conda: `/home/lwr/anaconda3/envs/locatemot`
-- Final report: `reports/STAGE_L8_UNIFIED_MOT_FINAL_REPORT.md`
+- Final report (in progress): `reports/STAGE_L9_SCALED_UNIFIED_MOT_FINAL_REPORT.md`
 - This handoff: `reports/LATEST_GPT_HANDOFF.md`
 
-## Headline numbers (same core class, one checkpoint per variant)
+## State
 
-| Formulation | Dataset | Metric | L8 result | Reference |
-|---|---|---|---|---|
-| Ordinary MOT | Dance/BDD/MOT17/MOT20 | Macro AssA | 0.5045 (v2) / 0.5087 (B1) | L6 0.4922 |
-| OVMOT | TAO val official TETA | TETA / AssocA | 34.33 / 30.44 (v2) | L7 33.94 / 29.51 |
-| RMOT | Refer-Dance 40 queries | HOTA / AssA | 35.20 / 28.63 (v2); 37.88 / 31.02 (B1) | iKUN 29.06 / 33.35 |
-
-Protocol caveat: RMOT baselines use a different person detector
-(ByteTrack/DLA vs LocateAnything-3B); DetA is not directly comparable.
-
-## Method
-
-- Unified Specification: frozen CLIP ViT-B/32 text embeddings (category /
-  "all objects" / referring expression).
-- Unified Observation Adapter: gated CLIP+spec semantic residue; either
-  added to UIDM candidate tokens (L8-B1 `sem_in_core=True`) or used only
-  by a relevance head (L8-B2 identity-pure).
-- Shared UIDM core: L6 `uidm_full` (large) with PBD box-end identity
-  tokens; PBD-dropout 0.15 so the same core works without PBD (TAO).
-- Training: 4 GPUs, DDP, seed 20260806, MOT+RMOT balanced sampler;
-  tracking loss + relevance BCE.
-
-## Critical bug fixed during the stage
-
-The L8 evaluation accidentally used the PBD coord-mean token while the
-core was trained on the box-end token. This produced a false "semantics
-destroy identity" negative result. After fixing the feature key, both L8
-variants preserve (and slightly improve) ordinary MOT.
+- **Training**: L9 main v5 complete (`outputs/l9/checkpoints/uidm_l9_main/`,
+  3000 steps from `uidm_l8_joint`, cond-gated, `eye_` semantic transform,
+  corrected `load_l8_state` init).  v1-v4 were invalidated by an init
+  loader bug (random core) and kept as failure evidence.
+- **TAO val PBD cache**: running with 4 workers (GPUs 1-4), write-through
+  + resume; ~6.9k/36.4k frames at last check; auto-scaled/paused by
+  `tools/monitor_l9.py`; regression-checked
+  (`tools/check_l9_pbd_cache.py`).
+- **Evals done (official)**:
+  - Ordinary: Macro AssA 0.5090 (Dance 0.3509 / BDD 0.5108 / MOT17
+    0.7017 / MOT20 0.4727).
+  - RMOT: HOTA 37.07 / DetA 45.58 / AssA 30.30 / MOTA 29.64 / IDF1 36.41
+    (threshold 0.45 calibrated on Refer-Dance train, F1 0.8905).
+  - OVMOT full-PBD: pending cache.
+- **Next**: full-PBD TETA on L8-B2/L8-B1/L9-v5; eval-time ablation
+  (identity/semantic); then TAO train subset (105 videos: DLA dets +
+  CLIP + crop PBD) and a resumed OVMOT-joint run; final report +
+  ICLR-readiness verdict.
 
 ## Key files
 
-- Checkpoints: `outputs/l8/checkpoints/uidm_l8_v2/latest.pt`,
-  `outputs/l8/checkpoints/uidm_l8_final/latest.pt`
-- Eval results: `outputs/l8/trackeval/{rmot_v2_fix,uidm_l8_v2_fix,
-  ovmot_v2e,rmot_semcore_fix,uidm_l8_semcore_fix,ovmot_semcore}/`
-- Calibration: `outputs/l8/calib/threshold_v2.json` (threshold -0.1,
-  train F1 0.9175)
-- CSV: `results/l8/results_summary.csv`
-- Data: `data/refer_dance/` (symlinked, read-only)
-- Reference repos (outside git): `LocateMOT_reference_repos/{iKUN,
-  rmot_official,temp_rmot,motip}`
+- Model: `locatemot/models/l8_unified.py` (`cond_gated`)
+- Cache: `tools/cache_l9_tao_pbd.py`, `tools/check_l9_pbd_cache.py`,
+  `tools/monitor_l9.py`
+- Train: `tools/train_l9_uidm.py`
+- Eval: `tools/eval_l8_{ordinary,ovmot,rmot}.py`,
+  `tools/eval_l9_three_tasks.py`, `tools/eval_l9_ovmot_full.py`
+- Data prep: `tools/generate_l9_tao_train_dets_subset.py`,
+  `tools/prepare_l9_tao_train.py`, `configs/l9/tao_train_videos.json`
+- Docs: `reports/l9_*.md`, `docs/future_rl_reference.md`
 
-## Honest limitations
+## Known caveats
 
-- RMOT AssA (28.6-31.0) below iKUN's 33.35; crowded dance scenes remain
-  hard for language-driven identity.
-- OVMOT uses the semantic-only (PBD-zero) regime because TAO val has no
-  cached PBD; full PBD+CLIP OVMOT is future work.
-- RMOT eval has only 40 queries; treat numbers as indicative.
-- The two variants differ by a few tenths of a point; no multi-seed error
-  bars.
-
-## Next steps
-
-1. Compute TAO val PBD cache (LocateAnything-3B) for a full-observation
-   OVMOT run.
-2. Add Refer-KITTI RMOT once KITTI images are available.
-3. Longer joint training / more RMOT data.
-4. Write the paper around the core claim in `STAGE_L8_UNIFIED_MOT_FINAL_REPORT.md`
-   section 10.
+- RMOT baselines use different detectors (LocateAnything vs
+  ByteTrack/DLA); DetA is not comparable.
+- 40-query RMOT evaluation has wide confidence intervals.
+- The val cache rate is ~21 frames/min with 4 workers; full TAO val is
+  expected within ~1 day (write-through, resumable).
+- Another user's SAM3_InterMOT jobs intermittently consume host RAM;
+  LocateMOT never exceeds 4 physical GPUs and auto-pauses cache workers
+  under memory pressure.
 
