@@ -35,7 +35,8 @@ sys.path.insert(0, str(ROOT))
 
 from tools.train_l6_uidm import H, MAX_AGE, MAX_SLOTS, UIDMRollout  # noqa: E402
 from locatemot.models.l6_uidm import uidm_total_loss  # noqa: E402
-from locatemot.models.l8_unified import L8UnifiedUIDM, clip_text_embed  # noqa: E402
+from locatemot.models.l8_unified import (  # noqa: E402
+    L8UnifiedUIDM, clip_text_embed, load_l8_state)
 
 ORDINARY_DOMAINS = [
     ("bdd100k_train", "outputs/l7/data/clip_closed/bdd100k_train",
@@ -253,27 +254,10 @@ def main():
     model.sem_in_core = args.sem_in_core
     if args.init_ckpt:
         ck = torch.load(args.init_ckpt, map_location="cpu", weights_only=False)
-        ck_sd = ck["model"]
-        core_sd = model.uidm.state_dict()
-        core_filtered = {k: v for k, v in ck_sd.items()
-                         if k in core_sd and core_sd[k].shape == v.shape}
-        missing_c, unexpected_c = model.uidm.load_state_dict(
-            core_filtered, strict=False)
-        ad_sd = model.adapter.state_dict()
-        ad_filtered = {}
-        for k, v in ck_sd.items():
-            k2 = k[len("adapter."):] if k.startswith("adapter.") else k
-            if k2 in ad_sd and ad_sd[k2].shape == v.shape:
-                ad_filtered[k2] = v
-        missing_a, unexpected_a = model.adapter.load_state_dict(
-            ad_filtered, strict=False)
+        missing_c, unexpected_c = load_l8_state(model, ck["model"])
         if rank == 0:
-            print(f"[l8] init {args.init_ckpt} core_missing={len(missing_c)} "
-                  f"core_unexpected={len(unexpected_c)} "
-                  f"adapter_missing={len(missing_a)} "
-                  f"adapter_unexpected={len(unexpected_a)} "
-                  f"adapter_loaded={'clip_proj.mlp.0.weight' in ad_filtered}",
-                  flush=True)
+            print(f"[l8] init {args.init_ckpt} missing={len(missing_c)} "
+                  f"core_unexpected={len(unexpected_c)}", flush=True)
     if args.freeze_core:
         for p in model.uidm.parameters():
             p.requires_grad = False

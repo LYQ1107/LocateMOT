@@ -34,7 +34,8 @@ sys.path.insert(0, str(ROOT))
 
 from tools.train_l6_uidm import H, MAX_AGE, MAX_SLOTS, UIDMRollout  # noqa: E402
 from locatemot.models.l6_uidm import uidm_total_loss  # noqa: E402
-from locatemot.models.l8_unified import L8UnifiedUIDM, clip_text_embed  # noqa: E402
+from locatemot.models.l8_unified import (  # noqa: E402
+    L8UnifiedUIDM, clip_text_embed, load_l8_state)
 
 ORDINARY_DOMAINS = [
     ("bdd100k_train", "outputs/l7/data/clip_closed/bdd100k_train",
@@ -276,21 +277,13 @@ def main():
     elif args.init_ckpt:
         ck = torch.load(args.init_ckpt, map_location="cpu",
                         weights_only=False)
-        ck_sd = ck["model"]
-        core_sd = model.uidm.state_dict()
-        core_filtered = {k: v for k, v in ck_sd.items()
-                         if k in core_sd and core_sd[k].shape == v.shape}
-        model.uidm.load_state_dict(core_filtered, strict=False)
-        ad_sd = model.adapter.state_dict()
-        ad_filtered = {}
-        for k, v in ck_sd.items():
-            k2 = k[len("adapter."):] if k.startswith("adapter.") else k
-            if k2 in ad_sd and ad_sd[k2].shape == v.shape:
-                ad_filtered[k2] = v
-        model.adapter.load_state_dict(ad_filtered, strict=False)
+        # load_l8_state handles both prefixed (uidm./adapter.) and bare
+        # L6-style keys; the naive per-module filter silently drops
+        # prefixed core keys (was the L9 v1-v4 regression root cause)
+        missing, unexpected = load_l8_state(model, ck["model"])
         if rank == 0:
-            print(f"[l9] init {args.init_ckpt} "
-                  f"adapter_loaded={'clip_proj.mlp.0.weight' in ad_filtered} "
+            print(f"[l9] init {args.init_ckpt} missing={len(missing)} "
+                  f"unexpected={len(unexpected)} "
                   f"cond_gated={args.cond_gated}", flush=True)
     if args.freeze_core:
         for p in model.uidm.parameters():
