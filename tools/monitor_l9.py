@@ -83,11 +83,16 @@ def launch_worker(shard, gpu):
 def main():
     LOG_DIR.mkdir(parents=True, exist_ok=True)
     print(f"[monitor] start {time.ctime()}", flush=True)
+    prev_avail = 999.0
     while True:
         avail = mem_available_gb()
         gpu_used = gpu_mem_used()
         workers = running_workers()
-        if avail < 8 and workers:
+        # hysteresis: pause only after two consecutive low-RAM checks;
+        # (re)start only after two consecutive high-RAM checks
+        low2 = avail < 6 and prev_avail < 10
+        high2 = avail > 16 and prev_avail > 14
+        if low2 and workers:
             # protect training / other tenants from OOM: pause cache
             for shard, info in list(workers.items()):
                 subprocess.run(
@@ -101,13 +106,13 @@ def main():
         free_gpus = [g for g in GPUS
                      if gpu_used.get(g, (10 ** 9, 0))[0] < 500]
         want = 0
-        if avail > 65:
+        if high2 and avail > 65:
             want = len(GPUS) * 2  # 8 workers
-        elif avail > 35:
+        elif high2 and avail > 35:
             want = 4
-        elif avail > 20:
+        elif high2 and avail > 20:
             want = 2
-        elif avail > 12:
+        elif high2 and avail > 16:
             want = 1
         missing = [s for s in range(NUM_SHARDS) if s not in workers]
         # restart only up to `want` workers total, one per free GPU
@@ -129,6 +134,7 @@ def main():
         print(f"[monitor] {time.ctime()} avail={avail:.0f}G "
               f"workers={len(workers)} complete={status['complete_frames']}",
               flush=True)
+        prev_avail = avail
         time.sleep(CHECK_SECONDS)
 
 
