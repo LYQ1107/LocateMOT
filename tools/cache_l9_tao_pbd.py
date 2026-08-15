@@ -246,9 +246,13 @@ def main():
             peak = torch.cuda.max_memory_allocated() / 1e9
             for k in ("pbd_box_end_last", "pbd_box_end_penultimate",
                       "pbd_coord_mean_last", "pbd_full_block_mean_last"):
-                feats[k] = np.stack(feats[k]).astype(np.float32)
+                if feats[k]:
+                    feats[k] = np.stack(feats[k]).astype(np.float32)
+                else:
+                    feats[k] = np.zeros((0, 2048), np.float32)
             feats["gen_score"] = np.asarray(feats["gen_score"],
-                                            np.float32)
+                                            np.float32) if feats["gen_score"] \
+                else np.zeros((0,), np.float32)
             meta = {
                 "dataset": "tao", "video_id": vname, "frame": frame,
                 "protocol": "pbd_full", "query": QUERY,
