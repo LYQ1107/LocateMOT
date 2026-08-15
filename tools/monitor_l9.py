@@ -105,8 +105,6 @@ def main():
                       f"(avail={avail:.0f}G)", flush=True)
             time.sleep(30)
             continue
-        free_gpus = [g for g in GPUS if g not in BUSY_GPUS
-                     if gpu_used.get(g, (10 ** 9, 0))[0] < 500]
         gpu_worker_count = {}
         for info in workers.values():
             gpu_worker_count[info["gpu"]] = \
@@ -123,19 +121,32 @@ def main():
         workers_per_gpu = 2 if want >= 6 else 1
         max_gpus = max(1, MAX_GPUS - len(BUSY_GPUS))
         missing = [s for s in range(NUM_SHARDS) if s not in workers]
+        our_gpus = set(gpu_worker_count.keys())
+        candidate_gpus = [
+            g for g in GPUS
+            if g not in BUSY_GPUS
+            and (g in our_gpus
+                 or gpu_used.get(g, (10 ** 9, 0))[0] < 500)]
+        candidate_gpus.sort(key=lambda g: gpu_worker_count.get(g, 0))
         # restart up to `want` workers, at most `workers_per_gpu` per GPU,
         # using at most MAX_GPUS physical GPUs
         for shard in missing:
-            if len(workers) >= want or not free_gpus:
+            if len(workers) >= want:
                 break
-            gpu = free_gpus.pop(0)
-            if gpu_worker_count.get(gpu, 0) >= workers_per_gpu:
-                continue
-            if len([g for g, c in gpu_worker_count.items() if c > 0]) \
-                    >= max_gpus and gpu_worker_count.get(gpu, 0) == 0:
-                continue
+            gpu = None
+            for g in candidate_gpus:
+                c = gpu_worker_count.get(g, 0)
+                if c >= workers_per_gpu:
+                    continue
+                if c == 0 and len(our_gpus) >= max_gpus:
+                    continue
+                gpu = g
+                break
+            if gpu is None:
+                break
             launch_worker(shard, gpu)
             gpu_worker_count[gpu] = gpu_worker_count.get(gpu, 0) + 1
+            our_gpus.add(gpu)
             workers[shard] = {"gpu": gpu, "pid": -1}
         status = {
             "time": time.ctime(),
