@@ -124,7 +124,8 @@ def main():
     cfg = ck.get("cfg", {})
     model = L8UnifiedUIDM(**SIZES[cfg.get("model", "base")],
                           mode=cfg.get("mode", "unified"),
-                          sem_in_core=cfg.get("sem_in_core", True))
+                          sem_in_core=cfg.get("sem_in_core", True),
+                          cond_gated=cfg.get("cond_gated", False))
     load_l8_state(model, ck["model"])
     out = Path(args.out)
     tracker_root = out / "trackers"

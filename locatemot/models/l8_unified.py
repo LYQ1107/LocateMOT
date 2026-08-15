@@ -51,9 +51,10 @@ class UnifiedObservationAdapter(nn.Module):
     """
 
     def __init__(self, d_model=320, pbd_dim=2048, clip_dim=512, spec_dim=512,
-                 dropout=0.1, mode="unified"):
+                 dropout=0.1, mode="unified", cond_gated=False):
         super().__init__()
         self.mode = mode
+        self.cond_gated = cond_gated
         self.d_model = d_model
         self.pbd_proj = _Proj(pbd_dim, d_model, dropout)
         self.clip_proj = _Proj(clip_dim, d_model, dropout)
@@ -62,6 +63,15 @@ class UnifiedObservationAdapter(nn.Module):
         self.gate = nn.Sequential(
             nn.Linear(d_model, 2 * d_model), nn.GELU(),
             nn.Linear(2 * d_model, d_model))
+        # L9: specification-conditioned identity interaction.
+        # gate = sigmoid(MLP([z_id, sem])); residue = gate * W(sem).
+        # Initialised so the first forward equals the L8-B1 sem-in-core
+        # behavior (gate ~ 1, W = identity) and the gate can learn to
+        # down-weight semantics when identity evidence is strong.
+        self.cond_gate = nn.Sequential(
+            nn.Linear(2 * d_model, 2 * d_model), nn.GELU(),
+            nn.Linear(2 * d_model, d_model))
+        self.sem_transform = nn.Linear(d_model, d_model)
         self.relevance = nn.Sequential(
             nn.Linear(d_model, 128), nn.LayerNorm(128), nn.GELU(),
             nn.Dropout(dropout), nn.Linear(128, 1))
@@ -75,22 +85,40 @@ class UnifiedObservationAdapter(nn.Module):
                     nn.init.zeros_(m.bias)
         nn.init.zeros_(self.gate[-1].weight)
         nn.init.zeros_(self.gate[-1].bias)
+        nn.init.zeros_(self.cond_gate[-1].weight)
+        nn.init.ones_(self.cond_gate[-1].bias)  # sigmoid(1) ~ 0.73
+        nn.init.ones_(self.sem_transform.weight)
+        nn.init.zeros_(self.sem_transform.bias)
         nn.init.zeros_(self.relevance[-1].weight)
         nn.init.zeros_(self.relevance[-1].bias)
 
-    def forward(self, pbd, clip, spec):
-        """Returns (semantic_residue [...,d], relevance_logit [...,1])."""
+    def forward(self, pbd, clip, spec, cond_gated=None):
+        """Returns (semantic_residue [...,d], relevance_logit [...,1]).
+
+        With cond_gated=True the returned residue is
+        sigmoid(MLP([z_id, sem])) * W(sem): the specification semantics
+        condition the identity stream through a learned gate.
+        """
         if spec.dim() < clip.dim():
             spec = spec.unsqueeze(1)
         c = self.clip_proj(clip)
         s = self.spec_proj(spec)
         g = torch.sigmoid(self.gate(c))
-        sem = c + g * s
+        sem_raw = c + g * s
+        use_cond = self.cond_gated if cond_gated is None else cond_gated
+        if use_cond and self.mode != "identity":
+            z_id = self.pbd_proj(pbd)
+            gate = torch.sigmoid(self.cond_gate(
+                torch.cat([z_id, sem_raw], dim=-1)))
+            sem = gate * self.sem_transform(sem_raw)
+        else:
+            sem = sem_raw
         if self.mode == "identity":
             rel_in = self.pbd_proj(pbd)
             sem = torch.zeros_like(sem)
         else:
-            rel_in = sem
+            # relevance always sees ungated semantic content
+            rel_in = sem_raw
         rel = self.relevance(rel_in).squeeze(-1)
         return sem, rel
 
@@ -105,12 +133,13 @@ class L8UnifiedUIDM(nn.Module):
     def __init__(self, d_model=320, n_layers=4, n_heads=8, ffn_dim=1280,
                  dropout=0.1, no_interaction=False, use_cue_rel=False,
                  pbd_dim=2048, clip_dim=512, spec_dim=512, mode="unified",
-                 core=None, sem_in_core=True):
+                 core=None, sem_in_core=True, cond_gated=False):
         super().__init__()
         from locatemot.models.l6_uidm import UIDM
         self.d_model = d_model
         self.app_dim = pbd_dim
         self.sem_in_core = sem_in_core
+        self.cond_gated = cond_gated
         self.uidm = core if core is not None else UIDM(
             d_model=d_model, n_layers=n_layers, n_heads=n_heads,
             ffn_dim=ffn_dim, dropout=dropout,
@@ -118,15 +147,17 @@ class L8UnifiedUIDM(nn.Module):
             app_dim=pbd_dim)
         self.adapter = UnifiedObservationAdapter(
             d_model=d_model, pbd_dim=pbd_dim, clip_dim=clip_dim,
-            spec_dim=spec_dim, dropout=dropout, mode=mode)
+            spec_dim=spec_dim, dropout=dropout, mode=mode,
+            cond_gated=cond_gated)
 
     @property
     def memory(self):
         return self.uidm.memory
 
     def forward_frame(self, frame):
-        sem, rel = self.adapter(frame["cand_pbd"], frame["cand_clip"],
-                                frame["spec"])
+        sem, rel = self.adapter(
+            frame["cand_pbd"], frame["cand_clip"], frame["spec"],
+            cond_gated=self.cond_gated)
         f2 = dict(frame)
         if self.adapter.mode == "semantic":
             f2["cand_pbd"] = torch.zeros_like(frame["cand_pbd"])

@@ -586,3 +586,38 @@
 - v2 OVMOT（TAO val 官方 TETA，PBD-zero + pbd-dropout）：All
   **34.33** / AssocA **30.44** / ClsA 7.51；Base≈Novel（30.45/30.40）。
   同一 checkpoint 三任务全部为正信号。
+
+## 2026-08-15 — Stage L9：Scaled Specification-Conditioned Unified MOT
+
+### 假设
+
+共享 UIDM identity-dynamics core 可同时支持 closed MOT / OVMOT / RMOT；
+在 PBD box-end 身份证据 + CLIP/spec 语义的统一观测空间上，加一个
+per-candidate learned gate（`z = z_id + gate*W(sem)`），让语义仅在需要
+消歧时调制身份流，避免 L7/L8 的 identity-regression trade-off。
+
+### 已完成
+
+- L9-A：文献/code 审计（OVTR ICLR25、TRACT ICCV25、AED TIP25、QTrack
+  2026）；无工作实现“one identity core + one shared ckpt + 三 formulation”。
+- L9-B：`tools/cache_l9_tao_pbd.py`（crop 提取，~0.27s/crop，resume，
+  write-through）；全图生成方案因 L1B 46% 空帧弃用；批量 vision encode
+  尝试后因大 crop OOM/CUDA error 弃用。缓存已启动，`tools/monitor_l9.py`
+  自动扩容/重启 worker。
+- L9-D：`cond_gated` 实现（init ≡ L8-B1，sigmoid gate≈0.73，W=I），
+  L8-B1 large ckpt 加载验证通过（仅新增参数缺失）。
+- L9-C：`eval_l8_ovmot.py --pbd-cache` 接入 `pbd_box_end_last`。
+- L9-E：`tools/train_l9_uidm.py`（3-way task balance、resume opt/sched、
+  周期 ckpt、`--cond-gated`、可选 OVMOT 流）。
+
+### 环境
+
+- 08:45-09:25：SAM3_InterMOT（他人任务）占 ~112GB 主机内存；
+  LocateMOT 先 1 worker 后自动扩到 2 worker；不干扰其进程。
+- GPU 使用仅 1/2/4/6/7（避开 3/5/9）。
+
+### 下一步
+
+- TAO val PBD cache 完成后跑 L8-B1/B2 full-observation TETA；
+- DLA dets（TAO train）→ CLIP → PBD cache → L9 联合训练；
+- 三任务正式评测 + 4 组消融 + novelty audit + 最终报告。

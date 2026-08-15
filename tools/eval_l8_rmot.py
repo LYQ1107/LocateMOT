@@ -92,7 +92,8 @@ def main():
             no_interaction=cfg.get("no_interaction", False),
             use_cue_rel=cfg.get("use_cue_rel", False),
             mode=mode,
-            sem_in_core=cfg.get("sem_in_core", True)).to(device)
+            sem_in_core=cfg.get("sem_in_core", True),
+            cond_gated=cfg.get("cond_gated", False)).to(device)
         load_l8_state(model, ck["model"])
         model.eval()
         core = model.uidm

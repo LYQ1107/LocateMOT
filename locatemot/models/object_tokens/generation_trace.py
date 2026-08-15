@@ -87,12 +87,17 @@ class InstrumentedLocateAnythingGeneration:
         repetition_penalty: float = 1.1,
         keep_layers: Tuple[int, ...] = (-1, -2),
         in_token_limit: Optional[int] = None,
+        prebuilt_inputs: Optional[Dict[str, Any]] = None,
+        vision_feature: Optional[torch.Tensor] = None,
     ) -> Dict[str, Any]:
         if in_token_limit is not None:
             self.processor.image_processor.in_token_limit = in_token_limit
         if self.seed is not None:
             torch.manual_seed(self.seed)
-        inputs = self._build_inputs(image, question)
+        if prebuilt_inputs is None:
+            inputs = self._build_inputs(image, question)
+        else:
+            inputs = prebuilt_inputs
         device = next(self.model.parameters()).device
         input_ids = inputs["input_ids"].to(device)
         vision_dtype = next(self.model.vision_model.parameters()).dtype
@@ -100,7 +105,9 @@ class InstrumentedLocateAnythingGeneration:
         image_grid_hws = inputs.get("image_grid_hws", None)
         if image_grid_hws is not None:
             image_grid_hws = torch.as_tensor(image_grid_hws, dtype=torch.int32, device=device)
-        image_size = [image.size[0], image.size[1]]
+        image_size = inputs.get("image_size")
+        if image_size is None:
+            image_size = [image.size[0], image.size[1]]
 
         return self._generate_loop(
             input_ids=input_ids,
@@ -115,6 +122,7 @@ class InstrumentedLocateAnythingGeneration:
             top_k=top_k,
             repetition_penalty=repetition_penalty,
             keep_layers=keep_layers,
+            vision_feature=vision_feature,
         )
 
     @torch.no_grad()
@@ -132,6 +140,7 @@ class InstrumentedLocateAnythingGeneration:
         top_k: Optional[int],
         repetition_penalty: float,
         keep_layers: Tuple[int, ...],
+        vision_feature: Optional[torch.Tensor] = None,
     ) -> Dict[str, Any]:
         model = self.model
         gu = self.gu
@@ -151,7 +160,11 @@ class InstrumentedLocateAnythingGeneration:
         switch_to_ar_count = 0
 
         # visual features: same as official generate; keep raw list for region reuse
-        raw_vision_features = model.extract_feature(pixel_values, image_grid_hws)
+        if vision_feature is not None:
+            raw_vision_features = [vision_feature]
+        else:
+            raw_vision_features = model.extract_feature(
+                pixel_values, image_grid_hws)
         vit_embeds = raw_vision_features
         if image_grid_hws is not None:
             vit_embeds = torch.cat(vit_embeds, dim=0)

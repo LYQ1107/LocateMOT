@@ -29,6 +29,7 @@ import torch
 ROOT = Path(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.insert(0, str(ROOT))
 
+from locatemot.data.token_cache import cache_key, read_frame_cache  # noqa: E402
 from locatemot.models.l8_unified import L8UnifiedUIDM, load_l8_state  # noqa: E402
 from locatemot.tracking.online_tracker import OnlineTracker  # noqa: E402
 from tools.train_l8_uidm import _specs  # noqa: E402
@@ -66,7 +67,7 @@ def build_gt_maps(gt):
 
 
 def run_tracker(model, data_dir, out_path, gpu, spec_emb, score_thr=0.05,
-                shard=0, num_shards=1):
+                shard=0, num_shards=1, pbd_cache=None):
     for var in ("OMP_NUM_THREADS", "OPENBLAS_NUM_THREADS",
                 "MKL_NUM_THREADS"):
         os.environ.setdefault(var, "8")
@@ -112,15 +113,28 @@ def run_tracker(model, data_dir, out_path, gpu, spec_emb, score_thr=0.05,
         for fr in rec["frames"]:
             frame = int(fr["frame"])
             boxes = fr["boxes"]
+            cache_feats = None
+            if pbd_cache:
+                ck = cache_key("tao", vname, frame, "pbd_full")
+                cache_feats = read_frame_cache(pbd_cache, ck)
+            if cache_feats is not None and \
+                    int(cache_feats["meta"]["candidate_count"]) != len(boxes):
+                cache_feats = None
             cands = []
             for j in range(len(boxes)):
                 if float(fr["gen"][j]) < score_thr:
                     continue
                 x1, y1, x2, y2 = [float(v) for v in boxes[j]]
+                pbd_be = np.zeros(2048, np.float32)
+                if cache_feats is not None:
+                    pbd_be = np.asarray(
+                        cache_feats["features"]["pbd_box_end_last"][j],
+                        np.float32)
                 cands.append({
                     "box": [x1, y1, x2, y2],
                     "features": {
-                        "pbd": np.zeros(2048, np.float32),
+                        "pbd": pbd_be,
+                        "pbd_be": pbd_be,
                         "clip": np.asarray(fr["clip"][j], np.float32),
                         "gen": float(fr["gen"][j]),
                     },
@@ -184,6 +198,7 @@ def main():
     ap.add_argument("--max-videos", type=int, default=0)
     ap.add_argument("--shard", type=int, default=0)
     ap.add_argument("--num-shards", type=int, default=1)
+    ap.add_argument("--pbd-cache", default=None)
     ap.add_argument("--merge-only", action="store_true")
     args = ap.parse_args()
     out = Path(args.out)
@@ -210,7 +225,8 @@ def main():
     cfg = ck.get("cfg", {})
     model = L8UnifiedUIDM(**SIZES[cfg.get("model", "base")],
                           mode=cfg.get("mode", "unified"),
-                          sem_in_core=cfg.get("sem_in_core", True))
+                          sem_in_core=cfg.get("sem_in_core", True),
+                          cond_gated=cfg.get("cond_gated", False))
     load_l8_state(model, ck["model"])
     spec_emb = _specs(["all objects"])[0]
     data_dir = DATA_DIR
@@ -221,7 +237,8 @@ def main():
             (data_dir / p.name).symlink_to(p.resolve())
     run_tracker(model, str(data_dir),
                 tracker_dir / f"pred_shard{args.shard}.json", args.gpu,
-                spec_emb, args.score_thr, args.shard, args.num_shards)
+                spec_emb, args.score_thr, args.shard, args.num_shards,
+                pbd_cache=args.pbd_cache)
     if args.num_shards == 1:
         run_teta("UIDM", str(out / "trackers"))
 

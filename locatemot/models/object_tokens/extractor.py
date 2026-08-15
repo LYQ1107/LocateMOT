@@ -45,14 +45,20 @@ class ObjectTokenExtractor:
         source_frame: str,
         generation_mode: str = "hybrid",
         in_token_limit: Optional[int] = None,
+        need_region: bool = True,
+        prebuilt_inputs: Optional[dict] = None,
+        vision_feature: Optional[torch.Tensor] = None,
         **gen_kwargs,
     ) -> dict:
         trace = self.trace_runner.run(
             image, question, generation_mode=generation_mode,
-            in_token_limit=in_token_limit, **gen_kwargs,
+            in_token_limit=in_token_limit,
+            prebuilt_inputs=prebuilt_inputs, vision_feature=vision_feature,
+            **gen_kwargs,
         )
         tokens = self.extract_from_trace(
-            trace, question=question, semantic_label=semantic_label, source_frame=source_frame
+            trace, question=question, semantic_label=semantic_label,
+            source_frame=source_frame, need_region=need_region,
         )
         return {"trace": trace, "object_tokens": tokens}
 
@@ -62,6 +68,7 @@ class ObjectTokenExtractor:
         question: str,
         semantic_label: str,
         source_frame: str,
+        need_region: bool = True,
     ) -> List[ObjectToken]:
         events = trace["events"]
         hidden_slices = trace["hidden_slices"]
@@ -71,17 +78,16 @@ class ObjectTokenExtractor:
         normalized_boxes = [e["event"].normalized_box for e in pbd_entries]
         pixel_values = trace["pixel_values"]
         grid_hws = trace["image_grid_hws"]
-        region_results = (
-            self.region.extract(
+        if need_region and grid_hws is not None:
+            region_results = self.region.extract(
                 pixel_values,
                 grid_hws,
                 0,
                 normalized_boxes,
                 vision_features=trace.get("raw_vision_features"),
             )
-            if grid_hws is not None
-            else [None] * len(normalized_boxes)
-        )
+        else:
+            region_results = [None] * len(normalized_boxes)
 
         tokens: List[ObjectToken] = []
         for idx, entry in enumerate(pbd_entries):
