@@ -106,9 +106,9 @@ def main():
         free_gpus = [g for g in GPUS
                      if gpu_used.get(g, (10 ** 9, 0))[0] < 500]
         want = 0
-        if high2 and avail > 65:
+        if high2 and avail > 55:
             want = len(GPUS) * 2  # 8 workers
-        elif high2 and avail > 35:
+        elif high2 and avail > 28:
             want = 4
         elif high2 and avail > 20:
             want = 2
