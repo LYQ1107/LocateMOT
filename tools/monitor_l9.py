@@ -25,9 +25,10 @@ CACHE_ROOT = ROOT / "outputs" / "l9" / "cache" / "tao_val_pbd"
 LOG_DIR = ROOT / "outputs" / "l9" / "cache"
 STATUS = LOG_DIR / "cache_status.json"
 NUM_SHARDS = 8
-GPUS = [1, 2, 4, 6]  # currently free cards; re-checked at runtime
+GPUS = [1, 2, 3, 4, 5, 6, 7, 8, 9]  # re-checked at runtime
 CHECK_SECONDS = 300
 MIN_RAM_PER_WORKER = 12  # GB
+MAX_GPUS = 4
 
 
 def mem_available_gb():
@@ -105,22 +106,34 @@ def main():
             continue
         free_gpus = [g for g in GPUS
                      if gpu_used.get(g, (10 ** 9, 0))[0] < 500]
+        gpu_worker_count = {}
+        for info in workers.values():
+            gpu_worker_count[info["gpu"]] = \
+                gpu_worker_count.get(info["gpu"], 0) + 1
         want = 0
         if high2 and avail > 55:
-            want = len(GPUS) * 2  # 8 workers
+            want = 8
         elif high2 and avail > 28:
             want = 4
         elif high2 and avail > 20:
             want = 2
         elif high2 and avail > 16:
             want = 1
+        workers_per_gpu = 2 if want >= 6 else 1
         missing = [s for s in range(NUM_SHARDS) if s not in workers]
-        # restart only up to `want` workers total, one per free GPU
+        # restart up to `want` workers, at most `workers_per_gpu` per GPU,
+        # using at most MAX_GPUS physical GPUs
         for shard in missing:
             if len(workers) >= want or not free_gpus:
                 break
             gpu = free_gpus.pop(0)
+            if gpu_worker_count.get(gpu, 0) >= workers_per_gpu:
+                continue
+            if len([g for g, c in gpu_worker_count.items() if c > 0]) \
+                    >= MAX_GPUS and gpu_worker_count.get(gpu, 0) == 0:
+                continue
             launch_worker(shard, gpu)
+            gpu_worker_count[gpu] = gpu_worker_count.get(gpu, 0) + 1
             workers[shard] = {"gpu": gpu, "pid": -1}
         status = {
             "time": time.ctime(),
