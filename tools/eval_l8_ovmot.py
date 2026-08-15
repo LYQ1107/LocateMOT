@@ -110,6 +110,7 @@ def run_tracker(model, data_dir, out_path, gpu, spec_emb, score_thr=0.05,
         tracker.uidm_new_margin = 0.0
         tracker.l1d_weights = (0.4, 0.2, 0.4)
         tracker.l1d_threshold = 0.25
+        n_hit = n_miss = 0
         for fr in rec["frames"]:
             frame = int(fr["frame"])
             boxes = fr["boxes"]
@@ -120,6 +121,10 @@ def run_tracker(model, data_dir, out_path, gpu, spec_emb, score_thr=0.05,
             if cache_feats is not None and \
                     int(cache_feats["meta"]["candidate_count"]) != len(boxes):
                 cache_feats = None
+            if cache_feats is not None:
+                n_hit += 1
+            else:
+                n_miss += 1
             cands = []
             for j in range(len(boxes)):
                 if float(fr["gen"][j]) < score_thr:
@@ -169,7 +174,8 @@ def run_tracker(model, data_dir, out_path, gpu, spec_emb, score_thr=0.05,
                     "video_id": vid,
                 })
         if (vi + 1) % 10 == 0 or vi + 1 == len(files):
-            print(f"[l8ovmot] {vi+1}/{len(files)} "
+            print(f"[l8ovmot] {vi+1}/{len(files)} cache_hit={n_hit} "
+                  f"cache_miss={n_miss} "
                   f"elapsed={time.time()-t0:.0f}s", flush=True)
     out_path.parent.mkdir(parents=True, exist_ok=True)
     with open(out_path, "w") as f:
@@ -199,6 +205,7 @@ def main():
     ap.add_argument("--shard", type=int, default=0)
     ap.add_argument("--num-shards", type=int, default=1)
     ap.add_argument("--pbd-cache", default=None)
+    ap.add_argument("--data-dir", default=None)
     ap.add_argument("--merge-only", action="store_true")
     args = ap.parse_args()
     out = Path(args.out)
@@ -229,8 +236,8 @@ def main():
                           cond_gated=cfg.get("cond_gated", False))
     load_l8_state(model, ck["model"])
     spec_emb = _specs(["all objects"])[0]
-    data_dir = DATA_DIR
-    if args.max_videos:
+    data_dir = Path(args.data_dir) if args.data_dir else DATA_DIR
+    if args.max_videos and not args.data_dir:
         data_dir = Path(args.out) / "subset_data"
         data_dir.mkdir(parents=True, exist_ok=True)
         for p in sorted(DATA_DIR.glob("*.pkl"))[:args.max_videos]:
