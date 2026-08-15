@@ -150,11 +150,16 @@ uses the corrected loader and `eye_` init.
 | Dataset | Method | HOTA | DetA | AssA | IDF1 | MOTA | IDSW |
 |---|---|---|---|---|---|---|
 | DanceTrack | L8-B2 | | | 0.3457 | | | |
-| DanceTrack | L8-B1 | | | | | | |
-| DanceTrack | L9 | | | | | | |
+| DanceTrack | L8-B1 | | | 0.3405* | | | |
+| DanceTrack | L9 v5 | 0.5763 | | **0.3509** | 0.4991 | | 6282 |
 | BDD100K | L8-B2 | | | 0.5019 | | | |
-| ... | ... | | | | | | |
-| Macro AssA | L6 / L7 / L8-B2 / L8-B1 / L9 | | | 0.4922 / 0.4290 / 0.5045 / 0.5087 / TBD | | | |
+| BDD100K | L9 v5 | 0.4832 | | **0.5108** | 0.4293 | | 6476 |
+| MOT17 | L9 v5 | 0.7095 | | **0.7017** | 0.6256 | | 437 |
+| MOT20 | L9 v5 | 0.6341 | | **0.4727** | 0.5609 | | 1573 |
+| Macro AssA | L6 / L7 / L8-B2 / L8-B1 / L9 v5 | | | 0.4922 / 0.4290 / 0.5045 / 0.5087 / **0.5090** | | | |
+
+*L8-B1 DanceTrack re-measured during L9; other L8-B1 per-domain rows use
+the L8 report values.
 
 ### Table 3 — TAO OVMOT (official TETA)
 
@@ -175,7 +180,7 @@ uses the corrected loader and `eye_` init.
 | iKUN (paper) | ByteTrack/DLA | 29.06 | 25.33 | 33.35 | | |
 | L8-B2 | LocateAnything | 35.20 | 43.42 | 28.63 | | |
 | L8-B1 | LocateAnything | 37.88 | 46.51 | 31.02 | | |
-| L9 main | LocateAnything | TBD | TBD | TBD | | |
+| L9 main v5 | LocateAnything | 37.07 | 45.58 | 30.30 | 29.64 | 36.41 |
 
 Detector caveat: DetA is not directly comparable across detectors;
 AssA comparison is informative but also detector-dependent.
@@ -187,7 +192,7 @@ AssA comparison is informative but also detector-dependent.
 | identity-only | TBD | TBD | TBD |
 | semantic-only | TBD | TBD | TBD |
 | strict decoupled (B2) | TBD | TBD | TBD |
-| spec-conditioned (L9 main) | TBD | TBD | TBD |
+| spec-conditioned (L9 v5) | **0.5090** | TBD (after cache) | 30.30 |
 
 ### Table 6 — Cost
 
@@ -195,7 +200,7 @@ AssA comparison is informative but also detector-dependent.
 |---|---|---|---|---|---|---|
 | L8-B2 | 18.8 M | | 4x40G | | 2500 | |
 | L8-B1 | 18.8 M | | 4x40G | | 3000 | |
-| L9 main | ~19.9 M | | 2x40G | | 10000 | TBD |
+| L9 main v5 | ~19.9 M | | 2x40G | | 3000 | ~1.9 h |
 
 ## 6. Failure analysis
 
