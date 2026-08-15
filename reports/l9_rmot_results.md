@@ -23,3 +23,15 @@ Caveat: different person detectors (LocateAnything vs ByteTrack/DLA);
 DetA is not directly comparable.  The 40-query evaluation set has wide
 confidence intervals; numbers are indicative.
 
+## L9 main v5 (cond-gated, official RMOT TrackEval)
+
+| Metric | L8-B2 | L8-B1 | L9 v5 |
+|---|---|---|---|
+| HOTA | 35.20 | 37.88 | **37.07** |
+| DetA | 43.42 | 46.51 | 45.58 |
+| AssA | 28.63 | 31.02 | 30.30 |
+| MOTA | | | 29.64 |
+| IDF1 | | | 36.41 |
+
+Threshold: L9-calibrated 0.45 (train F1 0.8905).  v5 is between B2 and
+B1 on RMOT, and above both on ordinary Macro AssA (0.5090).

@@ -22,3 +22,16 @@ text.  Reported: HOTA / DetA / AssA / IDF1 / MOTA / IDSW (full rows in
 Full HOTA/DetA/IDF1/MOTA/IDSW for L8-B1/B2 are in
 `reports/l8_mot_results.md`.
 
+## L9 main (v5, cond-gated, official TrackEval)
+
+| Dataset | HOTA | DetA | AssA | IDF1 | MOTA | IDSW |
+|---|---|---|---|---|---|---|
+| DanceTrack | 0.5763 | | 0.3509 | 0.4991 | | 6282 |
+| BDD100K | 0.4832 | | 0.5108 | 0.4293 | | 6476 |
+| MOT17 | 0.7095 | | 0.7017 | 0.6256 | | 437 |
+| MOT20 | 0.6341 | | 0.4727 | 0.5609 | | 1573 |
+| Macro | — | — | **0.5090** | — | — | — |
+
+DetA/MOTA rows are in the TrackEval logs
+(`outputs/l9/trackeval/l9_main_v5/ordinary_gpu*.log`) and will be filled
+into this table in the final report.
