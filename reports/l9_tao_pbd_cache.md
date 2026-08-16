@@ -56,7 +56,17 @@ identical — expected because context and prompt differ.  This motivates
 training the unified core on crop-based PBD for OVMOT (Stage L9 joint
 training) rather than assuming zero-shot transfer from full-frame PBD.
 
-## Current status
+## Current status (2026-08-17 04:05)
 
-See `outputs/l9/cache/cache_status.json` (monitor writes every 5 min).
+**COMPLETE**: 36,375 / 36,375 TAO val frames cached (write-through,
+resumable).  Shard-level `.done` markers let the monitor advance to
+unstarted shards; per-frame `pbd_box_end_last` verified by
+`tools/check_l9_pbd_cache.py` (key, dim 2048, finite, candidate-aligned).
+OVMOT full-observation evaluation (L8-B2 / L8-B1 / L9-v5) is running via
+`tools/finalize_l9_evals.py`; the tracker logs show `cache_miss=0`, i.e.
+every processed frame used the cached PBD identity tokens.
 
+Operational note: another user's SAM3_InterMOT jobs repeatedly triggered
+global OOM (up to ~120 GB anon-rss per process) during the cache run; the
+auto-scaling monitor paused/restarted workers as designed, and the cache
+completed despite the churn.
