@@ -288,6 +288,8 @@ def main():
     print(f"[l9cache shard {args.shard}] done frames={n_frames} "
           f"crops={n_crops} fail={n_fail} seconds={time.time()-t_start:.0f}",
           flush=True)
+    with open(Path(cache_root) / f"shard{args.shard}.done", "w") as f:
+        f.write(f"frames={n_frames} crops={n_crops} fail={n_fail}\n")
 
 
 if __name__ == "__main__":

@@ -126,7 +126,10 @@ def main():
             want = 1
         workers_per_gpu = 1
         max_gpus = max(1, MAX_GPUS - len(busy_gpus))
-        missing = [s for s in range(NUM_SHARDS) if s not in workers]
+        missing = [
+            s for s in range(NUM_SHARDS)
+            if s not in workers
+            and not (CACHE_ROOT / f"shard{s}.done").exists()]
         our_gpus = set(gpu_worker_count.keys())
         candidate_gpus = [
             g for g in GPUS
