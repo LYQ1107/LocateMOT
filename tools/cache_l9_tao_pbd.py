@@ -144,6 +144,7 @@ def main():
                                 / "tao_val_pbd"))
     ap.add_argument("--data-dir", default=str(DATA_DIR))
     ap.add_argument("--gt-json", default=str(VAL_GT))
+    ap.add_argument("--video-name-map", default=None)
     ap.add_argument("--max-videos", type=int, default=0)
     ap.add_argument("--max-frames-per-video", type=int, default=0)
     args = ap.parse_args()
@@ -154,6 +155,12 @@ def main():
 
     gt = json.load(open(args.gt_json))
     vid_name2id = {v["name"].replace("/", "-"): v["id"] for v in gt["videos"]}
+    if args.video_name_map:
+        name_map = json.load(open(args.video_name_map))
+        for vid_id, gt_name in name_map.items():
+            gid = vid_name2id.get(gt_name.replace("/", "-"))
+            if gid is not None:
+                vid_name2id[vid_id] = gid
     vid_id2imgs = {}
     for im in gt["images"]:
         vid_id2imgs.setdefault(im["video_id"], []).append(im)
