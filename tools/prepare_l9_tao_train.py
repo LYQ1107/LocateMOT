@@ -60,8 +60,11 @@ def main():
                 print(f"[l9prep] wait RAM {mem_available_gb():.0f}G < "
                       f"{MIN_RAM_DLA_GB}G", flush=True)
                 time.sleep(300)
-            run([PY_MASA, str(ROOT / "tools" / "generate_l7_tao_train_dets.py"),
-                 "--gpus", args.gpus, "--out", str(DETS)],
+            run([PY_MASA, str(ROOT / "tools"
+                              / "generate_l9_tao_train_dets_subset.py"),
+                 "--gpus", args.gpus, "--out", str(DETS),
+                 "--video-names",
+                 str(ROOT / "configs" / "l9" / "tao_train_videos.json")],
                 log_dir / "tao_train_dets.log")
         else:
             print(f"[l9prep] DLA dets already present ({n_det} files)",
