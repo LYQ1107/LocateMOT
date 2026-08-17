@@ -668,3 +668,15 @@ per-candidate learned gate（`z = z_id + gate*W(sem)`），让语义仅在需要
   科学负证据（保留为失败证据）。
 - v5（修复后，uidm_l8_joint + cond-gated + 3k 步）已启动：
   step10 loss 7.5（对照 v4 的 105），核心恢复正确初始化。
+
+### full-PBD OVMOT 负结果与 crop-PBD 训练适配（08-17）
+
+- TAO val full-PBD 官方 TETA：L8-B2 All TETA 32.22 / AssocA 24.95；
+  L8-B1 31.83 / 23.87；L9-v5 32.04 / 24.22 —— 全部低于 PBD-zero
+  （34.33 / 30.44）。Base≈Novel 保持，判定为 crop-PBD 观测分布与
+  训练分布不匹配，非开放词汇回归。
+- 对策：用 L6 105 个 TAO train 视频构建 crop-PBD + CLIP + GT 的
+  OVMOT 训练流（DLA dets 因 torchvision roi_align OOM 不可用）；
+  4,200 帧 / 7,522 候选 / 86% GT 匹配。缓存完成并合并。
+- L9-ovmot 训练（resume v5 + OVMOT 流, 6k 步, 4 GPU）进行中；完成后
+  复测 full-PBD OVMOT 验证分布适配假设。
