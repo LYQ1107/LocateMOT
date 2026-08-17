@@ -30,6 +30,27 @@ Status: baselines below; full-PBD rows pending the TAO val PBD cache
 | L9 main (10k, MOT+RMOT) | full PBD | Base / Novel / All | TBD | TBD | TBD | TBD |
 | L9 main (+OVMOT, planned) | full PBD | Base / Novel / All | TBD | TBD | TBD | TBD |
 
+## Full-PBD rows (official TETA, 2026-08-17)
+
+| Method | Observation | Split | TETA | LocA | AssocA | ClsA |
+|---|---|---|---|---|---|---|
+| L8-B2 | full PBD | All | 32.22 | 64.19 | 24.95 | 7.53 |
+| L8-B2 | full PBD | Base | 32.19 | 64.17 | 24.97 | 7.42 |
+| L8-B2 | full PBD | Novel | 32.48 | 64.32 | 24.77 | 8.33 |
+| L8-B1 | full PBD | All | 31.83 | 64.09 | 23.87 | 7.53 |
+| L9 v5 | full PBD | All | 32.04 | 64.40 | 24.22 | 7.49 |
+| L9 v5 | full PBD | Base | 32.04 | 64.61 | 24.10 | 7.42 |
+| L9 v5 | full PBD | Novel | 31.99 | 62.78 | 25.15 | 8.04 |
+
+**Key negative result**: adding the crop-based PBD identity tokens to
+checkpoints trained only on full-frame PBD (or on ordinary/RMOT data)
+*degrades* TAO association (L8-B2 AssocA 30.44 PBD-zero -> 24.95
+full-PBD; TETA 34.33 -> 32.22).  Base vs Novel remains balanced, so the
+drop is an observation-distribution mismatch, not open-vocabulary
+regression.  The decisive follow-up is training the shared core on
+crop-PBD OVMOT data (TAO train, Stage L9-B), so the model learns the
+crop-conditioned PBD distribution; that experiment is in progress.
+
 ## Interpretation notes
 
 - Full-PBD rows will answer whether adding per-candidate identity tokens
@@ -37,4 +58,3 @@ Status: baselines below; full-PBD rows pending the TAO val PBD cache
   Base ≈ Novel (open-vocabulary generalization).
 - External OVMOT comparisons (OVTR, OVTrack, TRACT) use different
   detectors/training; only same-protocol rows are directly comparable.
-
