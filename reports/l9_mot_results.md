@@ -35,3 +35,13 @@ Full HOTA/DetA/IDF1/MOTA/IDSW for L8-B1/B2 are in
 DetA/MOTA rows are in the TrackEval logs
 (`outputs/l9/trackeval/l9_main_v5/ordinary_gpu*.log`) and will be filled
 into this table in the final report.
+
+## L9 final (L9-ovmot, official TrackEval)
+
+| Dataset | HOTA | AssA | IDF1 | IDSW |
+|---|---|---|---|---|
+| DanceTrack | 0.5570 | 0.3278 | 0.4883 | 6362 |
+| BDD100K | 0.4856 | 0.5159 | 0.4287 | 6677 |
+| MOT17 | 0.7104 | 0.7037 | 0.6279 | 438 |
+| MOT20 | 0.6358 | 0.4751 | 0.5608 | 1601 |
+| Macro | — | **0.5056** | — | — |

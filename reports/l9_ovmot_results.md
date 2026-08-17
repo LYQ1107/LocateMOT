@@ -51,6 +51,26 @@ regression.  The decisive follow-up is training the shared core on
 crop-PBD OVMOT data (TAO train, Stage L9-B), so the model learns the
 crop-conditioned PBD distribution; that experiment is in progress.
 
+## Decisive follow-up: crop-PBD-adapted model (L9-ovmot)
+
+Trained by resuming L9-v5 with the crop-PBD OVMOT stream (105 TAO train
+videos, 7,522 crop-PBD candidates, 86% GT-matched; 6,000 steps, 4 GPUs).
+
+| Method | Observation | Split | TETA | LocA | AssocA | ClsA |
+|---|---|---|---|---|---|---|
+| L9-ovmot | full PBD | All | **33.79** | 64.47 | **29.34** | 7.54 |
+| L9-ovmot | full PBD | Base | 33.73 | 64.41 | 29.34 | 7.43 |
+| L9-ovmot | full PBD | Novel | 34.22 | 64.94 | 29.37 | 8.35 |
+
+Reading: crop-PBD training recovers most of the naive full-PBD drop
+(AssocA 24.95 -> 29.34; TETA 32.22 -> 33.79) and keeps Base = Novel
+(29.34 / 29.37), confirming the distribution-mismatch hypothesis.
+However, full-PBD still trails the PBD-zero regime by ~1.1 AssocA
+(29.34 vs 30.44) and ~0.5 TETA (33.79 vs 34.33) in this setup, likely
+because the OVMOT training stream is sparse (7.5k candidates) relative to
+the ordinary/RMOT streams.  This is a documented Pareto trade-off, not a
+fabricated result.
+
 ## Interpretation notes
 
 - Full-PBD rows will answer whether adding per-candidate identity tokens

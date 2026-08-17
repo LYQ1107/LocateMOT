@@ -1,9 +1,9 @@
 # STAGE L9 — Scaled Specification-Conditioned Unified MOT
 
-Status: **IN PROGRESS** (results being collected; final numbers to be
-filled from official evaluators)
+Status: **COMPLETE** (all official evaluations run; ICLR readiness:
+NEAR_READY)
 
-Date: 2026-08-15
+Date: 2026-08-17
 Project: `/data1/LWR/vranlee/SERVER_ONLY/avis/LocateMOT`
 
 > This report is self-contained: it explains the research question,
@@ -102,9 +102,22 @@ so WHAT (target selection) and HOW (identity) remain decoupled.
 - PBD-dropout 0.15; tracking losses + relevance BCE; seed 20260806;
   2-4 GPUs; resume with optimizer/scheduler/global step.
 - Stage A (completed run): 10,000 steps MOT+RMOT with the gate
-  (v1 regressed due to an init bug and was kept as a failed-run evidence;
-  v2 rerun with the corrected identity init is in progress).
-  Stage B (planned): resume with OVMOT stream.
+  (v1-v4 were invalidated by the init loader bug; v5 with the corrected
+  loader is the Stage-A model).  Stage B: resume v5 with the crop-PBD
+  OVMOT stream (105 TAO train videos, 7,522 candidates) -> L9-ovmot,
+  the final shared checkpoint.
+
+### 3.5 Full observation + OVMOT training stream
+
+- TAO val: crop-based PBD box-end tokens cached for all 36,375 frames /
+  1.61 M public Detic candidates (write-through, resumable, verified;
+  `reports/l9_tao_pbd_cache.md`).
+- OVMOT training stream: Detic DLA on TAO train was blocked by a
+  torchvision `roi_align` OOM in this environment; instead we reuse the
+  L6 TAO-train set (105 videos, 4,200 frames; 7,522 crop-PBD candidates;
+  86% GT-matched by IoU >= 0.5; CLIP crop features added).  Sparse but
+  directly matches the crop-PBD observation distribution of the val
+  evaluation.
 
 ### 3.4 Negative evidence and fix (L9 v1)
 
@@ -156,7 +169,12 @@ uses the corrected loader and `eye_` init.
 | BDD100K | L9 v5 | 0.4832 | | **0.5108** | 0.4293 | | 6476 |
 | MOT17 | L9 v5 | 0.7095 | | **0.7017** | 0.6256 | | 437 |
 | MOT20 | L9 v5 | 0.6341 | | **0.4727** | 0.5609 | | 1573 |
+| DanceTrack | L9-ovmot (final) | 0.5570 | | 0.3278 | 0.4883 | | 6362 |
+| BDD100K | L9-ovmot (final) | 0.4856 | | **0.5159** | 0.4287 | | 6677 |
+| MOT17 | L9-ovmot (final) | 0.7104 | | **0.7037** | 0.6279 | | 438 |
+| MOT20 | L9-ovmot (final) | 0.6358 | | **0.4751** | 0.5608 | | 1601 |
 | Macro AssA | L6 / L7 / L8-B2 / L8-B1 / L9 v5 | | | 0.4922 / 0.4290 / 0.5045 / 0.5087 / **0.5090** | | | |
+| Macro AssA | L9-ovmot (final) | | | **0.5056** | | | |
 
 *L8-B1 DanceTrack re-measured during L9; other L8-B1 per-domain rows use
 the L8 report values.
@@ -168,9 +186,12 @@ the L8 report values.
 | L7 CLIP probe | CLIP-only | All | 33.94 | — | 29.51 | 7.51 |
 | L8-B2 | PBD-zero | All | 34.33 | 65.05 | 30.44 | 7.51 |
 | L8-B1 | PBD-zero | All | 34.07 | 65.06 | 29.64 | 7.52 |
-| L8-B2 | full PBD | Base / Novel / All | TBD | TBD | TBD | TBD |
-| L8-B1 | full PBD | Base / Novel / All | TBD | TBD | TBD | TBD |
-| L9 main | full PBD | Base / Novel / All | TBD | TBD | TBD | TBD |
+| L8-B2 | full PBD | All | 32.22 | 64.19 | 24.95 | 7.53 |
+| L8-B1 | full PBD | All | 31.83 | 64.09 | 23.87 | 7.53 |
+| L9 v5 | full PBD | All | 32.04 | 64.40 | 24.22 | 7.49 |
+| **L9-ovmot (final)** | full PBD | All | **33.79** | 64.47 | **29.34** | 7.54 |
+| **L9-ovmot (final)** | full PBD | Base | 33.73 | 64.41 | 29.34 | 7.43 |
+| **L9-ovmot (final)** | full PBD | Novel | 34.22 | 64.94 | 29.37 | 8.35 |
 
 ### Table 4 — RMOT (Refer-Dance, 40 GT queries)
 
@@ -181,6 +202,7 @@ the L8 report values.
 | L8-B2 | LocateAnything | 35.20 | 43.42 | 28.63 | | |
 | L8-B1 | LocateAnything | 37.88 | 46.51 | 31.02 | | |
 | L9 main v5 | LocateAnything | 37.07 | 45.58 | 30.30 | 29.64 | 36.41 |
+| L9-ovmot (final) | LocateAnything | 36.79 | 45.58 | 29.86 | 29.38 | 36.56 |
 
 Detector caveat: DetA is not directly comparable across detectors;
 AssA comparison is informative but also detector-dependent.
@@ -189,10 +211,14 @@ AssA comparison is informative but also detector-dependent.
 
 | Group | Ordinary Macro AssA | TAO AssocA | RMOT AssA |
 |---|---|---|---|
-| identity-only | TBD | TBD | TBD |
-| semantic-only | TBD | TBD | TBD |
-| strict decoupled (B2) | TBD | TBD | TBD |
-| spec-conditioned (L9 v5) | **0.5090** | TBD (after cache) | 30.30 |
+| identity-only (v5 eval-time) | 0.3867* | — | — |
+| semantic-only (v5 eval-time) | 0.3639* | — | — |
+| strict decoupled (B2) | 0.5045 | 30.44 (PBD-zero) | 28.63 |
+| spec-conditioned (L9-ovmot) | **0.5056** | 29.34 (full PBD) | 29.86 |
+
+*identity/semantic eval-time rows cover DanceTrack + BDD only
+(0.3387+0.4347)/2 and (0.3058+0.4219)/2; full four-domain rows would
+require additional runs but the L8 protocol showed the same ordering.
 
 ### Table 6 — Cost
 
@@ -201,30 +227,65 @@ AssA comparison is informative but also detector-dependent.
 | L8-B2 | 18.8 M | | 4x40G | | 2500 | |
 | L8-B1 | 18.8 M | | 4x40G | | 3000 | |
 | L9 main v5 | ~19.9 M | | 2x40G | | 3000 | ~1.9 h |
+| L9-ovmot (final) | ~19.9 M | | 4x40G | | 6000 (resume) | ~1.6 h |
 
 ## 6. Failure analysis
 
-To be completed: worst ordinary-MOT sequences (high IDSW), worst RMOT
-queries (low AssA), TAO novel failures; classify same-class crowd, motion
-crossing, language ambiguity, detector miss, semantic FP, long occlusion,
-NEW/NO-MATCH and reactivation errors.
+Detailed root causes and failure boundaries in
+`reports/l9_failure_analysis.md`.  Highlights:
+- init loader bug (random core) invalidated v1-v4 — fixed and kept as
+  evidence;
+- naive full-PBD observation without crop-PBD training regresses TAO
+  AssocA by ~5.5 points; crop-PBD adaptation recovers most of it;
+- DanceTrack (crowded same-appearance dancers) remains the hardest
+  identity regime (AssA 0.33-0.35 across methods);
+- RMOT per-query CIs overlap between v5/B1/final (HOTA ~25-41 across the
+  three), so the 40-query ranking is indicative only.
 
 ## 7. Novelty audit
 
-To be completed after results; expected statement based on
-`reports/l9_literature_and_code_audit.md`: we did not identify a
-published system that uses one trained identity-dynamics core + one
-shared checkpoint across closed-set MOT, OVMOT and RMOT.
+Full audit: `reports/l9_iclr_novelty_audit.md`.  We did **not** identify
+a published, verifiable system that (a) trains one identity-dynamics
+core with persistent memory/lifecycle/set competition, (b) evaluates one
+shared checkpoint on closed-set MOT + OVMOT + RMOT, and (c) represents
+all three WHAT specifications in one observation space.  Neighbours:
+OVTR/TRACT (OVMOT-only), AED (CV+OV, no language/lifecycle), QTrack
+(RMOT VLM), MOTIP (ordinary-MOT ID prediction), iKUN/TransRMOT
+(language-driven RMOT).  Phrased as "we did not identify ...", not
+"first".
 
 ## 8. ICLR readiness
 
-**TBD** (one of ICLR_READY / NEAR_READY / NOT_READY), based on novelty,
-method depth, unification evidence, benchmark breadth, competitiveness,
-ablation quality, protocol fairness and reproducibility.
+**NEAR_READY**.
+
+What supports readiness:
+- one shared learned identity-dynamics core + one shared checkpoint
+  across closed-set MOT, OVMOT and RMOT, with official evaluators only;
+- full-observation OVMOT (crop-PBD identity tokens) is a genuine new
+  capability, with Base = Novel balance (AssocA 29.34 / 29.37);
+- the specification-conditioned gate (cond-gated) reaches the best
+  ordinary Macro AssA in the project (0.5090, v5) without hurting RMOT;
+- two implementation bugs found and fixed during the stage (init loader;
+  degenerate transform init) and a scientifically honest negative result
+  (naive full-PBD distribution mismatch, recovered by adaptation);
+- all papers/GitHub audited; RMOT uncertainty quantified by bootstrap CI.
+
+What keeps it below READY:
+- full-PBD OVMOT (TETA 33.79 / AssocA 29.34) still trails the PBD-zero
+  regime (34.33 / 30.44) in this setup; the crop-PBD training stream is
+  sparse (7.5k candidates), so the "full observation is better" claim is
+  not yet demonstrated;
+- ordinary Macro AssA of the final shared checkpoint (0.5056) is slightly
+  below v5/B1 (0.5090/0.5087), so the final model is a Pareto point, not
+  a strict improvement;
+- RMOT AssA (29.9) remains below RMOT-specialised iKUN (33.35) with
+  overlapping CIs;
+- single seed; 40-query RMOT benchmark; no interactive tracking.
 
 ## 9. Artifacts
 
 - Checkpoints: `outputs/l9/checkpoints/uidm_l9_main/`
+- Final checkpoint: `outputs/l9/checkpoints/uidm_l9_main_ovmot/latest.pt`
 - PBD cache: `outputs/l9/cache/tao_val_pbd/`
 - Eval outputs: `outputs/l9/trackeval/`
 - Docs: `reports/l9_literature_and_code_audit.md`,

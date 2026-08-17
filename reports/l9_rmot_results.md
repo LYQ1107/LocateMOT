@@ -48,3 +48,16 @@ queries.
 
 The v5 vs B1 differences are within the CI overlap; with 40 queries the
 RMOT comparison is indicative, not a significant ranking.
+
+## L9 final (L9-ovmot)
+
+| Metric | L8-B2 | L8-B1 | L9 v5 | L9-ovmot (final) |
+|---|---|---|---|---|
+| HOTA | 35.20 | 37.88 | 37.07 | 36.79 |
+| DetA | 43.42 | 46.51 | 45.58 | 45.58 |
+| AssA | 28.63 | 31.02 | 30.30 | 29.86 |
+| MOTA | | | 29.64 | 29.38 |
+| IDF1 | | | 36.41 | 36.56 |
+
+Bootstrap CI (final): HOTA mean 34.32 [27.90, 40.64], AssA 29.61
+[22.72, 37.01] (36 queries) — overlaps v5 and B1.
