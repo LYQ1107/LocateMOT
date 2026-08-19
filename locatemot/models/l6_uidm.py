@@ -327,14 +327,29 @@ def uidm_frame_loss(frame, pred, tgt):
     loss_col = pair.new_zeros(())
     n_row = 0
     n_col = 0
+    row_w = tgt.get("row_w")
+    col_w = tgt.get("col_w")
+
+    def wce(logits, target, w):
+        logp = F.log_softmax(logits, dim=-1)
+        per = -logp.gather(1, target[:, None]).squeeze(1)
+        return (per * w).sum() / max(1.0, float(w.sum()))
+
+    def wbce(logits, target, w):
+        per = F.binary_cross_entropy_with_logits(
+            logits, target, reduction="none")
+        return (per * w).sum() / max(1.0, float(w.sum()))
 
     # row CE over candidates + NO_MATCH
     row_logits = torch.cat([pair, no_match.unsqueeze(-1)], dim=-1)  # [B,T,N+1]
     rv = tgt["row_valid"]
     if rv.any():
         rt = tgt["row_target"].clamp(0, N)
-        loss_row = F.cross_entropy(
-            row_logits[rv], rt[rv], reduction="mean")
+        if row_w is not None:
+            loss_row = wce(row_logits[rv], rt[rv], row_w[rv])
+        else:
+            loss_row = F.cross_entropy(
+                row_logits[rv], rt[rv], reduction="mean")
         n_row = int(rv.sum())
 
     # col CE over tracks + NEW
@@ -342,8 +357,11 @@ def uidm_frame_loss(frame, pred, tgt):
     cv = tgt["col_valid"]
     if cv.any():
         ct = tgt["col_target"].clamp(0, T)
-        loss_col = F.cross_entropy(
-            col_logits[cv], ct[cv], reduction="mean")
+        if col_w is not None:
+            loss_col = wce(col_logits[cv], ct[cv], col_w[cv])
+        else:
+            loss_col = F.cross_entropy(
+                col_logits[cv], ct[cv], reduction="mean")
         n_col = int(cv.sum())
 
     # lifecycle BCE
@@ -352,8 +370,14 @@ def uidm_frame_loss(frame, pred, tgt):
     alive_t = tgt["alive_target"]
     loss_nm = F.binary_cross_entropy_with_logits(
         no_match[rv], nm_t[rv].float()) if rv.any() else row_logits.new_zeros(())
-    loss_new = F.binary_cross_entropy_with_logits(
-        new[cv], new_t[cv].float()) if cv.any() else row_logits.new_zeros(())
+    if cv.any():
+        if col_w is not None:
+            loss_new = wbce(new[cv], new_t[cv].float(), col_w[cv])
+        else:
+            loss_new = F.binary_cross_entropy_with_logits(
+                new[cv], new_t[cv].float())
+    else:
+        loss_new = row_logits.new_zeros(())
     loss_alive = F.binary_cross_entropy_with_logits(
         pred["alive_pre"][rv], alive_t[rv].float()) if rv.any() \
         else row_logits.new_zeros(())
@@ -394,7 +418,8 @@ def uidm_frame_loss(frame, pred, tgt):
     incorrect = incorrect.masked_fill(bad == target_idx, -1.0)
     if cv.any():
         margin = (incorrect.max(dim=-1).values - correct + 0.1).clamp(min=0)
-        margin = margin * cv.float()
+        w = col_w if col_w is not None else cv.float()
+        margin = margin * w
         loss_switch = margin.sum() / max(1, int(cv.sum()))
     else:
         loss_switch = row_logits.new_zeros(())

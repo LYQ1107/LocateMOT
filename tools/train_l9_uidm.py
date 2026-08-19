@@ -49,6 +49,7 @@ ORDINARY_DOMAINS = [
 ]
 RMOT_PKL = ROOT / "outputs" / "l8" / "data" / "rmot_train"
 OVMOT_DIR = ROOT / "outputs" / "l9" / "data" / "tao_train"
+PSEUDO_DIR = ROOT / "outputs" / "l11" / "data" / "pseudo_tracks"
 SPEC_CACHE = ROOT / "outputs" / "l8" / "data" / "specs.json"
 ALL_OBJECTS_SPEC = "all objects"
 
@@ -77,6 +78,7 @@ class L9Dataset(Dataset):
         self.p_ovmot = p_ovmot
         self.pbd_dropout = pbd_dropout
         self.ovmot_dir = Path(ovmot_dir) if ovmot_dir else OVMOT_DIR
+        self.pseudo_dir = Path(PSEUDO_DIR)
         self.rmot_dir = Path(rmot_dir) if rmot_dir else RMOT_PKL
         self.ordinary = []
         self.ordinary_by_domain = {}
@@ -115,6 +117,8 @@ class L9Dataset(Dataset):
                     "n": int(index["videos"][v]["frames"])})
         self.cache = OrderedDict()
         self.cache_max = 6
+        self.pseudo_cache = OrderedDict()
+        self.pseudo_cache_max = 6
         all_spec_texts = sorted({x["spec"] for x in self.ordinary}
                                 | {self.rmot_meta[x["video"]][x["expr_idx"]]
                                    ["sentence"] for x in self.rmot}
@@ -138,32 +142,73 @@ class L9Dataset(Dataset):
             self.cache.move_to_end(path)
         return self.cache[path]
 
+    def _get_side(self, path):
+        key = Path(path).name
+        side_path = self.pseudo_dir / key
+        if not side_path.exists():
+            return None
+        if key not in self.pseudo_cache:
+            self.pseudo_cache[key] = pickle.load(open(side_path, "rb"))
+            if len(self.pseudo_cache) > self.pseudo_cache_max:
+                self.pseudo_cache.popitem(last=False)
+        else:
+            self.pseudo_cache.move_to_end(key)
+        return self.pseudo_cache[key]
+
     @staticmethod
     def _window(r, frames):
         n = len(frames)
         if n <= H:
-            return frames
+            return frames, 0
         start = r.randrange(0, n - H + 1)
-        return frames[start:start + H]
+        return frames[start:start + H], start
 
     def _pack(self, r, rec, frames, spec, drop_pbd, target_ones,
-              target_matched_only=False):
+              target_matched_only=False, pseudo=None, start=0):
         out_frames = []
-        for fr in frames:
+        for fi, fr in enumerate(frames):
             n_c = len(fr["boxes"])
-            if target_matched_only:
+            if pseudo is not None and start + fi < len(pseudo["frames"]):
+                sc = pseudo["frames"][start + fi]
+                cand_gt_new = list(sc["gt_id"])
+                gt_boxes_new = dict(fr["gt_boxes"])
+                target = np.asarray(sc["rel_target"], np.float32)
+                cand_w = np.asarray(sc["rel_target"], np.float32)
+                no_unmatched_new = True
+                for j in range(n_c):
+                    if sc["pseudo_id"][j] is not None:
+                        pid = "P" + sc["pseudo_id"][j]
+                        cand_gt_new[j] = pid
+                        if pid not in gt_boxes_new:
+                            gt_boxes_new[pid] = fr["boxes"][j]
+                    elif sc["gt_id"][j] is not None:
+                        gid = sc["gt_id"][j]
+                        if gid not in gt_boxes_new:
+                            gt_boxes_new[gid] = fr["boxes"][j]
+            elif target_matched_only:
                 target = np.asarray(
                     [1.0 if g is not None else 0.0
                      for g in fr["cand_gt"]], np.float32)
+                cand_gt_new = list(fr["cand_gt"])
+                gt_boxes_new = dict(fr["gt_boxes"])
+                cand_w = np.ones(n_c, np.float32)
+                no_unmatched_new = False
             else:
                 target = np.ones(n_c, np.float32) if target_ones else None
+                cand_gt_new = list(fr["cand_gt"])
+                gt_boxes_new = dict(fr["gt_boxes"])
+                cand_w = np.ones(n_c, np.float32)
+                no_unmatched_new = False
             out_frames.append({
                 "frame": fr["frame"], "boxes": fr["boxes"],
                 "pbd": np.zeros_like(np.asarray(fr["pbd"], np.float32))
                 if drop_pbd else np.asarray(fr["pbd"], np.float32),
                 "clip": np.asarray(fr["clip"], np.float32),
-                "gen": fr["gen"], "cand_gt": fr["cand_gt"],
-                "gt_boxes": fr["gt_boxes"],
+                "gen": fr["gen"],
+                "cand_gt": cand_gt_new,
+                "gt_boxes": gt_boxes_new,
+                "cand_w": cand_w,
+                "no_unmatched_new": no_unmatched_new,
                 "target": target,
             })
         return {
@@ -182,7 +227,7 @@ class L9Dataset(Dataset):
             rec = self._get_video(item["path"])
             meta = self.rmot_meta[item["video"]][item["expr_idx"]]
             label = meta["label"]
-            frames = self._window(r, rec["frames"])
+            frames, _ = self._window(r, rec["frames"])
             out_frames = []
             for fr in frames:
                 ids = label.get(str(fr["frame"]), [])
@@ -205,13 +250,15 @@ class L9Dataset(Dataset):
         if self.ovmot and p < self.p_rmot + self.p_ovmot:
             item = r.choice(self.ovmot)
             rec = self._get_video(item["path"])
-            frames = self._window(r, rec["frames"])
+            pseudo = self._get_side(item["path"])
+            frames, start = self._window(r, rec["frames"])
             return self._pack(r, rec, frames, ALL_OBJECTS_SPEC, drop_pbd,
-                              target_ones=True, target_matched_only=True)
+                              target_ones=True, target_matched_only=True,
+                              pseudo=pseudo, start=start)
         dom = r.choice(list(self.ordinary_by_domain.keys()))
         item = r.choice(self.ordinary_by_domain[dom])
         rec = self._get_video(item["path"])
-        frames = self._window(r, rec["frames"])
+        frames, _ = self._window(r, rec["frames"])
         return self._pack(r, rec, frames, item["spec"], drop_pbd,
                           target_ones=True)
 

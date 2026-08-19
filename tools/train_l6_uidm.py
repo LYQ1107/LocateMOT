@@ -209,6 +209,8 @@ class UIDMRollout:
         clip_dim = clip_dim.mlp[0].in_features if clip_dim is not None else 512
         cand_clip = torch.zeros(B, Nmax, clip_dim, device=dev)
         cand_rel_t = torch.zeros(B, Nmax, device=dev)
+        cand_w = torch.ones(B, Nmax, device=dev)
+        no_unmatched_new = [False] * B
         S = self.S
         trk_tok = self.h
         trk_mask = self.active
@@ -230,6 +232,10 @@ class UIDMRollout:
                         np.asarray(fr["clip"][j], np.float32), device=dev)
                 if "target" in fr and len(fr["target"]) > j:
                     cand_rel_t[b, j] = float(fr["target"][j])
+                if "cand_w" in fr and len(fr["cand_w"]) > j:
+                    cand_w[b, j] = float(fr["cand_w"][j])
+                if fr.get("no_unmatched_new"):
+                    no_unmatched_new[b] = True
                 gid = fr["cand_gt"][j]
                 if gid is not None and gid in self.gid_maps[b]:
                     cand_gt_int[b, j] = self.gid_maps[b][gid]
@@ -278,6 +284,8 @@ class UIDMRollout:
         alive_target = torch.zeros(B, S, dtype=torch.bool, device=dev)
         no_match_target = torch.zeros(B, S, dtype=torch.bool, device=dev)
         new_target = torch.zeros(B, Nmax, dtype=torch.bool, device=dev)
+        row_w = torch.ones(B, S, device=dev)
+        col_w = cand_w.clone()
         match_box = torch.zeros(B, S, 4, device=dev)
         row_box_valid = torch.zeros(B, S, dtype=torch.bool, device=dev)
         # assignment for state update (teacher labels or student decode)
@@ -307,6 +315,7 @@ class UIDMRollout:
                 if cand_at is not None and cand_at[f] >= 0:
                     row_target[b, si] = int(cand_at[f])
                     j = int(cand_at[f])
+                    row_w[b, si] = cand_w[b, j]
                     match_box[b, si] = torch.as_tensor(
                         _box_norm(fr["boxes"][j], c["image_size"]),
                         dtype=torch.float32, device=dev)
@@ -338,7 +347,8 @@ class UIDMRollout:
                             birth_cand[b, si] = j
                             self.slot_gt[b, si] = g
                 else:
-                    if float(fr["gen"][j]) >= self.new_score_thr:
+                    if (not no_unmatched_new[b]
+                            and float(fr["gen"][j]) >= self.new_score_thr):
                         new_target[b, j] = True
             # student births
             if not self.teacher:
@@ -366,6 +376,7 @@ class UIDMRollout:
             "alive_target": alive_target, "no_match_target": no_match_target,
             "new_target": new_target, "match_box": match_box,
             "row_box_valid": row_box_valid,
+            "col_w": col_w, "row_w": row_w,
         }
         losses = uidm_frame_loss(frame, pred, tgt)
         if "relevance" in pred:
