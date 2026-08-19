@@ -174,17 +174,25 @@ class L9Dataset(Dataset):
                 gt_boxes_new = dict(fr["gt_boxes"])
                 target = np.asarray(sc["rel_target"], np.float32)
                 cand_w = np.asarray(sc["rel_target"], np.float32)
+                cand_nw = cand_w.copy()
                 no_unmatched_new = True
                 for j in range(n_c):
                     if sc["pseudo_id"][j] is not None:
                         pid = "P" + sc["pseudo_id"][j]
                         cand_gt_new[j] = pid
+                        cand_nw[j] = 1.0
                         if pid not in gt_boxes_new:
                             gt_boxes_new[pid] = fr["boxes"][j]
                     elif sc["gt_id"][j] is not None:
                         gid = sc["gt_id"][j]
+                        cand_nw[j] = 1.0
                         if gid not in gt_boxes_new:
                             gt_boxes_new[gid] = fr["boxes"][j]
+                    elif float(fr["gen"][j]) >= 0.30:
+                        # unmatched high-score detection without identity
+                        # evidence: explicit NOT-NEW (NEW tightening), with
+                        # lower weight than identity-positive candidates.
+                        cand_nw[j] = 0.30
             elif target_matched_only:
                 target = np.asarray(
                     [1.0 if g is not None else 0.0
@@ -208,6 +216,7 @@ class L9Dataset(Dataset):
                 "cand_gt": cand_gt_new,
                 "gt_boxes": gt_boxes_new,
                 "cand_w": cand_w,
+                "cand_nw": cand_nw,
                 "no_unmatched_new": no_unmatched_new,
                 "target": target,
             })

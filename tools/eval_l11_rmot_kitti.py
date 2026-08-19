@@ -191,9 +191,12 @@ def main():
                 with torch.no_grad():
                     rel = adapter(
                         torch.as_tensor(pbd, device=device),
-                        torch.as_tensor(fr["clip"], device=device),
                         torch.as_tensor(
-                            np.broadcast_to(spec, (n, 512)), device=device))[1]
+                            np.ascontiguousarray(fr["clip"]), device=device),
+                        torch.as_tensor(
+                            np.ascontiguousarray(
+                                np.broadcast_to(spec, (n, 512))),
+                            device=device))[1]
                     rel = rel.cpu().numpy()
                 outputs = tracker.process_frame(frame, cands)
                 assert len(outputs) == len(cands)

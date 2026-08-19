@@ -210,6 +210,7 @@ class UIDMRollout:
         cand_clip = torch.zeros(B, Nmax, clip_dim, device=dev)
         cand_rel_t = torch.zeros(B, Nmax, device=dev)
         cand_w = torch.ones(B, Nmax, device=dev)
+        cand_nw_t = torch.ones(B, Nmax, device=dev)
         no_unmatched_new = [False] * B
         S = self.S
         trk_tok = self.h
@@ -234,6 +235,8 @@ class UIDMRollout:
                     cand_rel_t[b, j] = float(fr["target"][j])
                 if "cand_w" in fr and len(fr["cand_w"]) > j:
                     cand_w[b, j] = float(fr["cand_w"][j])
+                if "cand_nw" in fr and len(fr["cand_nw"]) > j:
+                    cand_nw_t[b, j] = float(fr["cand_nw"][j])
                 if fr.get("no_unmatched_new"):
                     no_unmatched_new[b] = True
                 gid = fr["cand_gt"][j]
@@ -286,6 +289,7 @@ class UIDMRollout:
         new_target = torch.zeros(B, Nmax, dtype=torch.bool, device=dev)
         row_w = torch.ones(B, S, device=dev)
         col_w = cand_w.clone()
+        new_w = cand_nw_t.clone()
         match_box = torch.zeros(B, S, 4, device=dev)
         row_box_valid = torch.zeros(B, S, dtype=torch.bool, device=dev)
         # assignment for state update (teacher labels or student decode)
@@ -377,6 +381,7 @@ class UIDMRollout:
             "new_target": new_target, "match_box": match_box,
             "row_box_valid": row_box_valid,
             "col_w": col_w, "row_w": row_w,
+            "new_w": new_w,
         }
         losses = uidm_frame_loss(frame, pred, tgt)
         if "relevance" in pred:
