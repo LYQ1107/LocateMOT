@@ -27,6 +27,11 @@ outputs/l0_c/checkpoints/
 outputs/l0_d/precomputed/
 outputs/l0_d/checkpoints/
 outputs/l0_d/trackeval/*.npz
+
+# dataset symlinks and local artifacts are never committed
+data/
+runs/
+third_party/
 outputs/stage_l0/*
 !outputs/stage_l0/state.json
 !outputs/stage_l0/final_status.json

@@ -126,11 +126,13 @@ class UIDMRollout:
 
     def __init__(self, model, clips, device, teacher=True,
                  max_age=MAX_AGE, max_slots=MAX_SLOTS, raw=None,
-                 stateless=False, no_lifecycle=False, app_key="pbd"):
+                 stateless=False, no_lifecycle=False, app_key="pbd",
+                 new_score_thr=0.0):
         self.model = model
         self.raw = raw if raw is not None else model
         self.stateless = stateless
         self.no_lifecycle = no_lifecycle
+        self.new_score_thr = new_score_thr
         self.device = device
         self.B = len(clips)
         self.H = H
@@ -336,7 +338,8 @@ class UIDMRollout:
                             birth_cand[b, si] = j
                             self.slot_gt[b, si] = g
                 else:
-                    new_target[b, j] = True
+                    if float(fr["gen"][j]) >= self.new_score_thr:
+                        new_target[b, j] = True
             # student births
             if not self.teacher:
                 N = len(fr["boxes"])

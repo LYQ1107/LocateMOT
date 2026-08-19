@@ -67,7 +67,7 @@ def build_gt_maps(gt):
 
 
 def run_tracker(model, data_dir, out_path, gpu, spec_emb, score_thr=0.05,
-                shard=0, num_shards=1, pbd_cache=None):
+                shard=0, num_shards=1, pbd_cache=None, new_margin=0.0):
     for var in ("OMP_NUM_THREADS", "OPENBLAS_NUM_THREADS",
                 "MKL_NUM_THREADS"):
         os.environ.setdefault(var, "8")
@@ -107,7 +107,7 @@ def run_tracker(model, data_dir, out_path, gpu, spec_emb, score_thr=0.05,
             output_all_candidates=True,
             uidm_adapter=model.adapter, uidm_spec=spec.cpu().numpy()[0])
         tracker.uidm_sem_in_core = model.sem_in_core
-        tracker.uidm_new_margin = 0.0
+        tracker.uidm_new_margin = new_margin
         tracker.l1d_weights = (0.4, 0.2, 0.4)
         tracker.l1d_threshold = 0.25
         n_hit = n_miss = 0
@@ -207,6 +207,7 @@ def main():
     ap.add_argument("--pbd-cache", default=None)
     ap.add_argument("--data-dir", default=None)
     ap.add_argument("--merge-only", action="store_true")
+    ap.add_argument("--new-margin", type=float, default=0.0)
     args = ap.parse_args()
     out = Path(args.out)
     tracker_dir = out / "trackers" / "UIDM" / "data"
@@ -245,7 +246,7 @@ def main():
     run_tracker(model, str(data_dir),
                 tracker_dir / f"pred_shard{args.shard}.json", args.gpu,
                 spec_emb, args.score_thr, args.shard, args.num_shards,
-                pbd_cache=args.pbd_cache)
+                pbd_cache=args.pbd_cache, new_margin=args.new_margin)
     if args.num_shards == 1:
         run_teta("UIDM", str(out / "trackers"))
 

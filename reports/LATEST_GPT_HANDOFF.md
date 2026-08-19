@@ -1,70 +1,71 @@
-# LocateMOT — Stage L9 GPT Handoff (final)
+# LocateMOT — Stage L10 GPT Handoff (final)
 
-Date: 2026-08-17
+Date: 2026-08-18
 
 ## In one sentence
 
-Stage L9 adds full-observation OVMOT (crop-based PBD identity tokens for
-every TAO val candidate), a specification-conditioned identity gate, and
-a crop-PBD-adapted OVMOT training stream to the L8 shared UIDM.  The
-final shared checkpoint (L9-ovmot) reaches ordinary Macro AssA 0.5056,
-RMOT HOTA 36.79 / AssA 29.86, and full-PBD TAO TETA 33.79 / AssocA 29.34
-with Base = Novel.
-
-## Where things live
-
-- Root: `/data1/LWR/vranlee/SERVER_ONLY/avis/LocateMOT`
-- Conda: `/home/lwr/anaconda3/envs/locatemot`
-- Final report: `reports/STAGE_L9_SCALED_UNIFIED_MOT_FINAL_REPORT.md`
-- This handoff: `reports/LATEST_GPT_HANDOFF.md`
+Stage L10 scaled full-PBD OVMOT supervision to all 500 TAO train videos
+(DLA detections + C-TAO continuous GT, 322.8k candidates), and the
+expanded stream **failed**: full-PBD TAO AssocA collapsed to ~7-8
+(vs L9-adapted 29.34), while ordinary MOT and RMOT stayed stable.  The
+paper's main shared checkpoint remains the L9-ovmot checkpoint; L10
+provides a rigorous supervision-coverage negative result plus the
+Refer-KITTI-V2 second RMOT benchmark.
 
 ## Final state
 
-- **Final checkpoint**: `outputs/l9/checkpoints/uidm_l9_main_ovmot/latest.pt`
-  (L9-v5 + crop-PBD OVMOT resume, 6,000 steps, 4 GPUs).
-- **TAO val PBD cache**: COMPLETE (36,375 frames, verified).
-- **Evals (official)**:
-  - Ordinary: Macro AssA 0.5056 (Dance 0.3278 / BDD 0.5159 / MOT17
-    0.7037 / MOT20 0.4751).  Best-project ordinary model remains L9-v5
-    (0.5090).
-  - RMOT: HOTA 36.79 / DetA 45.58 / AssA 29.86 / MOTA 29.38 / IDF1 36.56;
-    bootstrap CI HOTA [27.9, 40.6], AssA [22.7, 37.0] (36 queries).
-  - OVMOT full-PBD: TETA 33.79 / LocA 64.47 / AssocA 29.34 / ClsA 7.54;
-    Base 29.34, Novel 29.37.
-- **Key findings**:
-  1. Naive full-PBD on PBD-zero-trained checkpoints regresses TAO
-     (AssocA 30.44 -> 24.95); crop-PBD adaptation recovers to 29.34.
-  2. Full-PBD still trails PBD-zero by ~1.1 AssocA / 0.5 TETA — sparse
-     OVMOT training stream (7.5k candidates) is the likely limit.
-  3. v1-v4 were invalidated by an init-loader bug (random core); the
-     corrected v5 reaches Macro AssA 0.5090.
-  4. No published system unifies one identity core + one checkpoint
-     across closed-set MOT + OVMOT + RMOT (novelty: "we did not
-     identify", not "first").
-- **ICLR readiness**: NEAR_READY (evidence solid; headline gain modest;
-  full-PBD not yet beating PBD-zero; single seed; 40-query RMOT).
+- Main shared checkpoint: `outputs/l9/checkpoints/uidm_l9_main_ovmot/
+  latest.pt` (ordinary Macro AssA 0.5056; RMOT Refer-Dance HOTA 36.79 /
+  AssA 29.86; full-PBD TAO TETA 33.79 / AssocA 29.34).
+- L10 v1 checkpoint: `outputs/l10/checkpoints/uidm_l10_main/
+  v1_final_step15000.pt` (ordinary 0.5041; RMOT 36.32/28.79; OVMOT
+  26.39/7.26).
+- L10 v2 checkpoint (target fix): `outputs/l10/checkpoints/
+  uidm_l10_fix/latest.pt` (ordinary 0.4982; RMOT 36.10/29.18; OVMOT
+  26.24/7.86).
+- TAO-train full-PBD cache: COMPLETE (`outputs/l10/cache/tao_train_pbd`,
+  5.5 GB, 18,274 frames, merged 100%).
+- KITTI-V2 data + DLA dets + PBD cache + RMOT eval: COMPLETE
+  (`outputs/l10/cache/kitti_pbd`; official 862-query TrackEval with the
+  L9-ovmot shared checkpoint -> HOTA 3.74 / DetA 0.93 / AssA 16.72 /
+  MOTA -4153 / IDF1 0.97; Detic-SwinB candidates, threshold -0.3).
+  The low score reflects 50 candidates/frame (DetPr ~1%) and Refer-Dance
+  only language training; reported as a cross-domain data point, not a
+  fair comparison with TempRMOT.
 
-## Key files
+## Key scientific findings
 
-- Model: `locatemot/models/l8_unified.py` (`cond_gated`)
-- Cache: `tools/cache_l9_tao_pbd.py`, `tools/check_l9_pbd_cache.py`,
-  `tools/monitor_l9.py`
-- Train: `tools/train_l9_uidm.py`
-- Eval: `tools/eval_l8_{ordinary,ovmot,rmot}.py`,
-  `tools/eval_l9_three_tasks.py`, `tools/eval_l9_ovmot_full.py`,
-  `tools/finalize_l9_evals.py`, `tools/bootstrap_rmot_ci.py`
-- OVMOT train stream: `tools/build_l9_tao_train_from_l6.py`,
-  `tools/merge_l9_train_pbd.py`, `configs/l9/tao_train_videos.json`
-- Docs: `reports/l9_*.md`, `docs/future_rl_reference.md`
+1. DLA (Detic-SwinB) candidates on TAO train match C-TAO base GT at only
+   ~3.5% (val ~5%).  With the L9 target scheme (every unmatched candidate
+   = positive relevance + NEW birth), the model learns to birth a new id
+   for nearly every detection (verified: 1,612 unique ids over 1,650
+   rows in a sample video vs 374 in L9) -> AssocA collapses.
+2. The target-correction retrain (relevance negatives + score-gated NEW,
+   thr 0.4) does not rescue it (7.86); eval NEW margins 0-2 only reach
+   subset AssocA ~6.4.  Dense continuous GT covering detector detections
+   (C-TAO base_and_novel is still insufficient, +51 tracks) or a
+   temporal pseudo-track self-supervision would be required.
+3. Ordinary MOT and RMOT are robust across L10 variants, so the failure
+   is OVMOT-training-supervision-specific, not global model damage.
+4. Training speed: batch 4 -> 8 (+27% clips/s), 15k steps instead of 30k
+   for the same sample budget, LR scaled 2x.
 
-## Known caveats
+## Where things live
 
-- RMOT baselines use different detectors (LocateAnything vs
-  ByteTrack/DLA); DetA is not comparable.
-- 40-query RMOT evaluation has wide confidence intervals.
-- Full-PBD OVMOT does not yet beat the PBD-zero regime; more OVMOT
-  training data (e.g., full TAO train with working DLA dets) is the
-  clearest next step.
-- DLA dets on TAO train are blocked by a torchvision roi_align OOM in
-  this environment (documented; the L6-based stream was used instead).
+- Final report: `reports/STAGE_L10_ICLR_CLOSURE_FINAL_REPORT.md`
+- Literature/code audit: `reports/l10_literature_and_code_audit.md`
+- Candidate-generation audit: `reports/l10_tao_candidate_generation_audit.md`
+- Refer-KITTI/V2 audit: `reports/l10_refer_kitti_and_v2_audit.md`
+- Full-PBD cache: `reports/l10_tao_train_full_pbd.md`
+- Speed audit: `reports/l10_training_speed_audit.md`
+- Scaling ablation + failure analysis: `reports/l10_supervision_scaling_ablation.md`,
+  `reports/l10_failure_analysis.md`
+- Results: `reports/l10_{mot,ovmot,rmot}_results.md`
+- Live status: `outputs/l10/STATUS.md`
 
+## Next steps
+
+1. Optionally implement temporal pseudo-track self-supervision for
+   unmatched OVMOT detections (the evidence-based direction for
+   recovering full-PBD OVMOT).
+2. Git commit the L10 stage.

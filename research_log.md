@@ -680,3 +680,46 @@ per-candidate learned gate（`z = z_id + gate*W(sem)`），让语义仅在需要
   4,200 帧 / 7,522 候选 / 86% GT 匹配。缓存完成并合并。
 - L9-ovmot 训练（resume v5 + OVMOT 流, 6k 步, 4 GPU）进行中；完成后
   复测 full-PBD OVMOT 验证分布适配假设。
+
+### Stage L10：full-supervision scaling（08-17）
+
+- 假设：L9 full-PBD AssocA 29.34 < PBD-zero 30.44 的主因是 OVMOT 训练
+  监督不足（105 视频 / 7.5k 候选 vs val 36k 帧 / 1.6M 候选），而非
+  full-PBD 机制失效。
+- 修复 DLA OOM：torchvision 0.16 的 sampling_ratio=0 roi_align 纯
+  Python 实现物化 [K,C,PH,PW,H,W]（216×256×7×7×100×136≈274GB）；
+  用 tools/patch_adaptive_roi_align.py 等价 kernel 替换，数值
+  maxdiff≈1e-6，Detic 单图峰值 ~1.8GB。
+- 全量 DLA 候选生成：500 视频 / 18,274 帧，Detic-SwinB (detic_masa.pth)，
+  score>=0.05 + top-50，与 val public dets 同族（协议 caveat 记录）。
+- GT 改用 C-TAO（COVTrack ICCV 2025 官方 HF 发布，本地
+  ctao_base.json：500 视频 / 490,210 帧 / 1,489,637 框 / 2,588 track，
+  密度 ≈26x）；评测仍用官方 TAO val。
+- Refer-KITTI-V2 审计完成：官方 protocol 训练/评测同一批 21 个 KITTI
+  序列（861 表达式）；本地 expression+labels_with_ids 已有，KITTI
+  tracking 图像缺失，正在从官方 S3 下载 15.8GB。
+- 当前进行：DLA 全量生成（~53%）→ build_l10_tao_train pkl+CLIP →
+  crop-PBD cache（预估 8 worker ~7h）→ 4-GPU 30k 步联合训练。
+
+### L10 pipeline 进展（08-17 下午）
+
+- DLA 全量 500 视频 / 18,274 帧候选完成（无失败）。
+- TAO train pkl 构建完成：500 视频 / 18,274 帧 / 905,400 candidates /
+  31,331 matched (3.46%)；C-TAO base GT。val 对应 5.0% match rate。
+- 资源整合到 0-3 四卡：12 个 crop-PBD worker（~20-25 s/frame）+
+  KITTI DLA dets (7,241 帧)。KITTI tracking 图像已下载解压
+  (KITTI_tracking/training，软链 data/kitti_tracking_training)。
+- Refer-KITTI-V2 官方协议确认：17 训练序列 + 4 评测序列
+  (0005/0011/0013/0019, 861 queries) —— 无 train/eval 视频泄漏。
+- 新增脚本：build_l10_tao_train.py、merge_l10_train_pbd.py、
+  run_l10_pbd_cache.py、generate_l10_kitti_dets.py、
+  build_l10_refer_kitti.py、cache_l10_kitti_pbd.py、
+  eval_l10_rmot_kitti.py、run_l10_train.sh；train_l9_uidm.py 增加
+  --ovmot-dir/--workers/--prefetch/--profile-steps。
+- PBD 吞吐实测：LocateAnything-3B crop ~0.6-0.8s，四卡聚合 ~40k
+  crops/h；全量 905k candidates 需 ~23h —— 判定为不可接受。
+- 对策（记录在案）：训练流 hard-negative cap —— 保留全部 matched
+  (31,277) + 每帧 top-16 unmatched，共 322,843 candidates
+  (17.7/frame, 43x L9)；评测仍用全量 val candidates。已重建 pkl 并
+  重启 8 个 PBD worker。max_new_tokens 32/64 的 PBD box-end 特征
+  120 crop 全等（验证过），但吞吐几乎无差，未采用。

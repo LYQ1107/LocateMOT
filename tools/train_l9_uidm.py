@@ -71,11 +71,13 @@ class L9Dataset(Dataset):
     """Task-balanced MOT + OVMOT + RMOT mixture."""
 
     def __init__(self, seed=20260806, p_rmot=1 / 3, p_ovmot=1 / 3,
-                 pbd_dropout=0.15):
+                 pbd_dropout=0.15, ovmot_dir=None, rmot_dir=None):
         self.rng = random.Random(seed)
         self.p_rmot = p_rmot
         self.p_ovmot = p_ovmot
         self.pbd_dropout = pbd_dropout
+        self.ovmot_dir = Path(ovmot_dir) if ovmot_dir else OVMOT_DIR
+        self.rmot_dir = Path(rmot_dir) if rmot_dir else RMOT_PKL
         self.ordinary = []
         self.ordinary_by_domain = {}
         for name, data_dir, spec_text in ORDINARY_DOMAINS:
@@ -94,17 +96,17 @@ class L9Dataset(Dataset):
                 self.ordinary_by_domain[name] = group
         self.rmot = []
         self.rmot_meta = {}
-        exp_path = RMOT_PKL / "expressions.json"
+        exp_path = self.rmot_dir / "expressions.json"
         if exp_path.exists():
             self.rmot_meta = json.loads(exp_path.read_text())
         for vid, exps in self.rmot_meta.items():
-            pkl = RMOT_PKL / f"{vid}.pkl"
+            pkl = self.rmot_dir / f"{vid}.pkl"
             if pkl.exists():
                 for ei, e in enumerate(exps):
                     self.rmot.append({"video": vid, "path": str(pkl),
                                       "expr_idx": ei})
         self.ovmot = []
-        idx_path = OVMOT_DIR / "index.json"
+        idx_path = self.ovmot_dir / "index.json"
         if idx_path.exists():
             index = json.loads(idx_path.read_text())
             for v in sorted(index["videos"].keys()):
@@ -144,11 +146,17 @@ class L9Dataset(Dataset):
         start = r.randrange(0, n - H + 1)
         return frames[start:start + H]
 
-    def _pack(self, r, rec, frames, spec, drop_pbd, target_ones):
+    def _pack(self, r, rec, frames, spec, drop_pbd, target_ones,
+              target_matched_only=False):
         out_frames = []
         for fr in frames:
             n_c = len(fr["boxes"])
-            target = np.ones(n_c, np.float32) if target_ones else None
+            if target_matched_only:
+                target = np.asarray(
+                    [1.0 if g is not None else 0.0
+                     for g in fr["cand_gt"]], np.float32)
+            else:
+                target = np.ones(n_c, np.float32) if target_ones else None
             out_frames.append({
                 "frame": fr["frame"], "boxes": fr["boxes"],
                 "pbd": np.zeros_like(np.asarray(fr["pbd"], np.float32))
@@ -199,7 +207,7 @@ class L9Dataset(Dataset):
             rec = self._get_video(item["path"])
             frames = self._window(r, rec["frames"])
             return self._pack(r, rec, frames, ALL_OBJECTS_SPEC, drop_pbd,
-                              target_ones=True)
+                              target_ones=True, target_matched_only=True)
         dom = r.choice(list(self.ordinary_by_domain.keys()))
         item = r.choice(self.ordinary_by_domain[dom])
         rec = self._get_video(item["path"])
@@ -234,6 +242,14 @@ def main():
     ap.add_argument("--pbd-dropout", type=float, default=0.15)
     ap.add_argument("--cond-gated", action="store_true")
     ap.add_argument("--save-every", type=int, default=1000)
+    ap.add_argument("--ovmot-dir", default=None)
+    ap.add_argument("--rmot-dir", default=None)
+    ap.add_argument("--workers", type=int, default=2)
+    ap.add_argument("--prefetch", type=int, default=2)
+    ap.add_argument("--no-pin-memory", action="store_true")
+    ap.add_argument("--profile-steps", type=int, default=0)
+    ap.add_argument("--profile-out", default=None)
+    ap.add_argument("--new-score-thr", type=float, default=0.3)
     args = ap.parse_args()
 
     rank = 0
@@ -299,15 +315,18 @@ def main():
               f"trainable={n_params/1e6:.2f}M device={device}", flush=True)
 
     ds = L9Dataset(seed=args.seed, p_rmot=args.p_rmot,
-                   p_ovmot=args.p_ovmot, pbd_dropout=args.pbd_dropout)
+                   p_ovmot=args.p_ovmot, pbd_dropout=args.pbd_dropout,
+                   ovmot_dir=args.ovmot_dir, rmot_dir=args.rmot_dir)
     sampler = None
     if args.ddp:
         sampler = torch.utils.data.distributed.DistributedSampler(
             ds, shuffle=True, seed=args.seed)
     loader = torch.utils.data.DataLoader(
         ds, batch_size=args.batch, shuffle=(sampler is None),
-        sampler=sampler, num_workers=2, collate_fn=lambda x: x,
-        drop_last=True, persistent_workers=True)
+        sampler=sampler, num_workers=args.workers,
+        collate_fn=lambda x: x, drop_last=True,
+        persistent_workers=True, prefetch_factor=args.prefetch,
+        pin_memory=not args.no_pin_memory)
     opt = torch.optim.AdamW([
         {"params": raw_model.uidm.parameters(), "lr": args.lr_core},
         {"params": raw_model.adapter.parameters(), "lr": args.lr},
@@ -349,6 +368,8 @@ def main():
         ck = torch.load(args.resume, map_location="cpu", weights_only=False)
         curve = list(ck.get("curve", []))
     t0 = time.time()
+    prof = []
+    prof_start = step
     for epoch in range(start_epoch, args.epochs + 1):
         if sampler is not None:
             sampler.set_epoch(epoch)
@@ -356,20 +377,40 @@ def main():
         ep = defaultdict(float)
         ep_n = 0
         for bi, batch in enumerate(loader):
+            t_data = time.time()
             teacher = step < args.teacher_steps or (
                 random.random() < args.teacher_final)
             rollout = UIDMRollout(model, batch, device, teacher=teacher,
-                                  raw=raw_model, app_key="pbd")
+                                  raw=raw_model, app_key="pbd",
+                                  new_score_thr=args.new_score_thr)
+            t_after_data = time.time()
             losses, nf = rollout.run(batch)
             loss = uidm_total_loss(
                 losses, w_rel=0.1, w_relevance=args.w_relevance) if nf \
                 else torch.zeros((), device=device)
+            t_after_fwd = time.time()
             opt.zero_grad(set_to_none=True)
             loss.backward()
             torch.nn.utils.clip_grad_norm_(model.parameters(), 5.0)
             opt.step()
             sched.step()
+            t_after_opt = time.time()
             step += 1
+            if args.profile_steps and step - prof_start <= args.profile_steps \
+                    and rank == 0:
+                prof.append({
+                    "step": step, "data_s": round(t_after_data - t_data, 4),
+                    "fwd_s": round(t_after_fwd - t_after_data, 4),
+                    "bwd_opt_s": round(t_after_opt - t_after_fwd, 4),
+                    "vram_alloc_gb": round(
+                        torch.cuda.memory_allocated() / 1e9, 3),
+                    "vram_reserved_gb": round(
+                        torch.cuda.memory_reserved() / 1e9, 3),
+                    "loss": round(float(loss.detach()), 4),
+                })
+                if args.profile_out and len(prof) % 20 == 0:
+                    with open(args.profile_out, "w") as f:
+                        json.dump(prof, f, indent=2)
             for k, v in losses.items():
                 ep[k] += float(v.detach()) if isinstance(v, torch.Tensor) \
                     else float(v)
@@ -401,6 +442,9 @@ def main():
         save(epoch, curve)
     if args.ddp:
         torch.distributed.destroy_process_group()
+    if prof and rank == 0 and args.profile_out:
+        with open(args.profile_out, "w") as f:
+            json.dump(prof, f, indent=2)
     print(f"[l9] done seconds={time.time()-t0:.1f}", flush=True)
 
 
