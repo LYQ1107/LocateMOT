@@ -26,3 +26,14 @@ Concise experimental log (latest first).
   baseline: unique/rows 0.211 (L9), reused IDs 467.
 - Pending: step-7000 OVMOT quick eval, full TAO TETA, KITTI TrackEval,
   L12 prompt seeding.
+
+## 2026-08-20 continued
+
+- Low-LR continuation (10000->11000, LR~6e-6): RMOT-Dance 32.49 ->
+  34.05 HOTA; ordinary Macro 0.4855 -> 0.4924.  OVMOT full TETA on
+  s11k running.
+- Fresh-optimizer balance run (p_rmot 0.45/p_ovmot 0.20) REJECTED at
+  step 1000 (RMOT 32.06 / ordinary 0.4663).
+- L12 frozen prompt-seeded (DAVIS 2017, 10 multi-object videos):
+  mask/point > box for identity robustness; joint fine-tune not
+  launched (mixed signal).  Infrastructure complete.
