@@ -18,12 +18,14 @@ import time
 from pathlib import Path
 
 import numpy as np
+import cv2
 from PIL import Image
 
 ROOT = Path("/data1/LWR/vranlee/SERVER_ONLY/avis/LocateMOT")
 sys.path.insert(0, str(ROOT))
 
 from tools.cache_l9_tao_pbd import _extract_crop, load_model  # noqa: E402
+from tools.build_l10_refer_kitti import CLIP_MEAN, CLIP_STD, encode_clip  # noqa: E402
 
 DATA = ROOT / "outputs" / "l12" / "data" / "davis"
 FRAMES = Path("/data1/LWR/vranlee/SERVER_ONLY/avis/DAVIS/DAVIS/JPEGImages/480p")
@@ -42,6 +44,9 @@ def main():
     out = {}
     t0 = time.time()
     n = 0
+    import clip as clipmod
+    cm, _ = clipmod.load("ViT-B/32", device="cuda")
+    cm.eval()
     for vi, vid in enumerate(videos):
         rec = pickle.load(open(DATA / f"{vid}.pkl", "rb"))
         m = np.asarray(Image.open(FRAMES / vid / "00000.jpg").convert("RGB"))
@@ -53,11 +58,13 @@ def main():
             x1, y1, x2, y2 = box
             mask = seed["mask"]
             out[vid][str(oid)] = {}
+            crops = {}
             # box prompt
             f = _extract_crop(extractor, img, box)
             if f is not None and f["pbd_box_end_last"] is not None:
                 out[vid][str(oid)]["box"] = \
                     f["pbd_box_end_last"].tolist()
+                crops["box"] = _crop_arr(m, box)
                 n += 1
             # mask prompt: black out background
             masked = m.copy()
@@ -66,6 +73,7 @@ def main():
             f = _extract_crop(extractor, Image.fromarray(masked), box)
             if f is not None and f["pbd_box_end_last"] is not None:
                 out[vid][str(oid)]["mask"] = f["pbd_box_end_last"].tolist()
+                crops["mask"] = _crop_arr(masked, box)
                 n += 1
             # point prompt: square crop centered at the point
             px, py = seed["point"]
@@ -78,12 +86,28 @@ def main():
             f = _extract_crop(extractor, img, sq)
             if f is not None and f["pbd_box_end_last"] is not None:
                 out[vid][str(oid)]["point"] = f["pbd_box_end_last"].tolist()
+                crops["point"] = _crop_arr(m, sq)
                 n += 1
+            if crops:
+                cfeats = encode_clip(cm, list(crops.values()), "cuda")
+                for k, arr in zip(crops.keys(), cfeats):
+                    out[vid][str(oid)][k + "_clip"] = \
+                        arr.astype(np.float32).tolist()
         print(f"[l12seeds] {vid} {vi+1}/{len(videos)} "
               f"elapsed={time.time()-t0:.0f}s", flush=True)
     with open(OUT, "w") as f:
         json.dump(out, f)
     print(f"[l12seeds] done crops={n}", flush=True)
+
+
+def _crop_arr(img, box):
+    x1, y1, x2, y2 = [int(v) for v in box]
+    x1, y1 = max(0, x1), max(0, y1)
+    x2, y2 = min(img.shape[1], x2), min(img.shape[0], y2)
+    if x2 - x1 < 2 or y2 - y1 < 2:
+        x2 = min(img.shape[1], x1 + 2)
+        y2 = min(img.shape[0], y1 + 2)
+    return cv2.cvtColor(img[y1:y2, x1:x2], cv2.COLOR_RGB2BGR)
 
 
 if __name__ == "__main__":

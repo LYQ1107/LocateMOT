@@ -29,6 +29,7 @@ sys.path.insert(0, str(ROOT))
 from locatemot.data.token_cache import cache_key, read_frame_cache  # noqa: E402
 from locatemot.models.l8_unified import L8UnifiedUIDM, load_l8_state  # noqa: E402
 from locatemot.tracking.online_tracker import OnlineTracker  # noqa: E402
+from locatemot.models.l1d_association import CAND_FEATURES  # noqa: E402
 from tools.train_l9_uidm import _specs  # noqa: E402
 
 DATA = ROOT / "outputs" / "l12" / "data" / "davis"
@@ -51,6 +52,24 @@ def iou(a, b):
     return inter / den if den > 1e-9 else 0.0
 
 
+def seed_h(model, sp, clip, spec, device):
+    with torch.no_grad():
+        t = torch.as_tensor(sp, dtype=torch.float32, device=device)
+        tok = model.uidm.pbd_encoder(t.unsqueeze(0))
+        cand_feat = torch.zeros(1, len(CAND_FEATURES), device=device)
+        tok = tok + model.uidm.cand_mlp(cand_feat)
+        if model.adapter is not None:
+            sem, _ = model.adapter(
+                t.unsqueeze(0),
+                torch.as_tensor(clip, dtype=torch.float32,
+                                device=device).unsqueeze(0),
+                torch.as_tensor(spec, dtype=torch.float32,
+                                device=device).unsqueeze(0))
+            tok = tok + sem
+        h = model.uidm.memory.init(tok).squeeze(0).cpu().numpy()
+    return np.asarray(h, np.float32)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--ckpt", required=True)
@@ -58,7 +77,9 @@ def main():
                     required=True)
     ap.add_argument("--gpu", type=int, default=0)
     ap.add_argument("--max-videos", type=int, default=0)
+    ap.add_argument("--videos", nargs="*", default=None)
     ap.add_argument("--out", required=True)
+    ap.add_argument("--match-thr", type=float, default=0.0)
     args = ap.parse_args()
     os.environ["CUDA_VISIBLE_DEVICES"] = str(args.gpu)
     device = torch.device("cuda")
@@ -74,6 +95,8 @@ def main():
     spec = _specs(["all objects"], device=device)[0]
     seed_pbd = json.loads(SEED_PBD.read_text()) if SEED_PBD.exists() else {}
     videos = sorted(p.stem for p in DATA.glob("*.pkl"))
+    if args.videos:
+        videos = [v for v in videos if v in set(args.videos)]
     if args.max_videos:
         videos = videos[:args.max_videos]
     rows = []
@@ -88,6 +111,8 @@ def main():
             uidm_adapter=model.adapter, uidm_spec=spec)
         tracker.uidm_sem_in_core = model.sem_in_core
         tracker.uidm_new_margin = 1e6  # seeded-only policy
+        tracker.uidm_seeded_only = True
+        tracker.uidm_seeded_match_thr = args.match_thr
         tracker.l1d_weights = (0.4, 0.2, 0.4)
         tracker.l1d_threshold = 0.25
         # frame 0: inject seed births
@@ -115,10 +140,16 @@ def main():
         tracker.image_size = rec["image_size"]
         used_idx = set()
         for oid, seed in seeds.items():
-            s = seed_pbd.get(vid, {}).get(args.prompt, {}).get(str(oid))
+            s = seed_pbd.get(vid, {}).get(str(oid), {}).get(args.prompt)
             if s is None:
                 continue
             sp = np.asarray(s, np.float32)
+            sclip = seed_pbd.get(vid, {}).get(str(oid),
+                                              {}).get(args.prompt + "_clip")
+            if sclip is None:
+                sclip = np.zeros(512, np.float32)
+            else:
+                sclip = np.asarray(sclip, np.float32)
             best_j, best_iou = -1, 0.0
             for j in range(n0):
                 if j in used_idx:
@@ -132,19 +163,19 @@ def main():
                     "box": seed["box"],
                     "features": {
                         "pbd": sp, "pbd_be": sp,
-                    "region": np.zeros(4608, np.float32),
-                    "geom": np.zeros(5, np.float32),
-                    "gen": 0.9,
-                },
+                        "region": np.zeros(4608, np.float32),
+                        "geom": np.zeros(5, np.float32),
+                        "gen": 0.9,
+                    },
                     "index": len(cands) - 1,
                 })
                 best_j = len(cands) - 1
             else:
                 used_idx.add(best_j)
-            tracker._uidm_birth[best_j] = {
-                "h": np.zeros(d_model, np.float32),
+            tracker._uidm_forced_birth[best_j] = {
+                "h": seed_h(model, sp, sclip, spec, device),
                 "anchor": sp, "ref_pbd": sp, "anchor_pbd": sp,
-                "alive": 1.0,
+                "alive": 5.0,
             }
         outs0 = tracker.process_frame(0, cands)
         seed_track = {}

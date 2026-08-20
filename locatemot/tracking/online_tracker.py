@@ -134,12 +134,18 @@ class OnlineTracker:
         self._next_birth_state = None
         self.uidm_new_margin = 0.0
         self._uidm_birth = {}
+        self._uidm_forced_birth = {}
+        self.uidm_seeded_only = False
+        self.uidm_seeded_match_thr = 0.0
 
     def reset(self):
         self.tracks = []
         self._next_id = 0
         self.frame_count = 0
         self._uidm_birth = {}
+        self._uidm_forced_birth = {}
+        self.uidm_seeded_only = False
+        self.uidm_seeded_match_thr = 0.0
 
     # ------------------------------------------------------------------ utils
     def _new_id(self):
@@ -340,7 +346,12 @@ class OnlineTracker:
             if i in matched_det:
                 continue
             if self.variant == "UIDM":
-                bs = self._uidm_birth.pop(i, None)
+                bs = self._uidm_forced_birth.pop(i, None)
+                if bs is None:
+                    bs = self._uidm_birth.pop(i, None)
+                if bs is None and getattr(self, "uidm_seeded_only", False):
+                    born.append(None)
+                    continue
                 if bs is not None:
                     self._next_birth_state = bs
                 else:
@@ -360,6 +371,8 @@ class OnlineTracker:
                 trk = cand_to_trk.get(i)
                 if trk is None:
                     trk = next(born_iter)
+                    if trk is None:
+                        continue
                 out.append({
                     "track_id": trk.track_id, "box": cand["box"].copy(),
                     "score": float(cand["features"].get("gen", 1.0)),
@@ -1043,6 +1056,9 @@ class OnlineTracker:
         self._uidm_birth = {}
         if len(tracks) == 0:
             for j in range(N):
+                if getattr(self, "uidm_seeded_only", False) and \
+                        j not in self._uidm_forced_birth:
+                    continue
                 with torch.no_grad():
                     h_init = model.memory.init(
                         torch.as_tensor(cand_tok[j], device=self.device)
@@ -1055,8 +1071,23 @@ class OnlineTracker:
                     "alive": 1.0,
                 }
             return []
-        matches, births = decode_lsa(
-            pair, nm, nw - float(getattr(self, "uidm_new_margin", 0.0)))
+        if getattr(self, "uidm_seeded_only", False):
+            thr = float(getattr(self, "uidm_seeded_match_thr", 0.0))
+            matches = []
+            used_t, used_c = set(), set()
+            for idx in np.argsort(-pair.ravel()):
+                t, c = divmod(int(idx), N)
+                if t in used_t or c in used_c:
+                    continue
+                if float(pair[t, c]) <= thr:
+                    break
+                used_t.add(t)
+                used_c.add(c)
+                matches.append((int(t), int(c), float(pair[t, c])))
+            births = []
+        else:
+            matches, births = decode_lsa(
+                pair, nm, nw - float(getattr(self, "uidm_new_margin", 0.0)))
         # update matched track states
         for t, j, _score in matches:
             trk = tracks[t]
