@@ -200,12 +200,14 @@ class L9Dataset(Dataset):
                 cand_gt_new = list(fr["cand_gt"])
                 gt_boxes_new = dict(fr["gt_boxes"])
                 cand_w = np.ones(n_c, np.float32)
+                cand_nw = np.ones(n_c, np.float32)
                 no_unmatched_new = False
             else:
                 target = np.ones(n_c, np.float32) if target_ones else None
                 cand_gt_new = list(fr["cand_gt"])
                 gt_boxes_new = dict(fr["gt_boxes"])
                 cand_w = np.ones(n_c, np.float32)
+                cand_nw = np.ones(n_c, np.float32)
                 no_unmatched_new = False
             out_frames.append({
                 "frame": fr["frame"], "boxes": fr["boxes"],

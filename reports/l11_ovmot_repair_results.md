@@ -56,6 +56,24 @@ Reading: over-birth is now BELOW the L9 baseline; identity reuse is
 improving with more training.  Continue to 9k-10k, then run the full
 TAO-val TETA.
 
+### Step 10000 — FULL TAO VAL (official TETA, 4 shards)
+
+| metric | L8-B2 PBD-zero | L9-ovmot | **L11 s10000** |
+| --- | ---: | ---: | ---: |
+| TETA | 34.33 | 33.79 | **36.63** |
+| LocA | 65.05 | 64.47 | 65.28 |
+| AssocA | 30.44 | 29.34 | **37.10** |
+| ClsA | 7.51 | 7.54 | 7.51 |
+
+Base: TETA 36.78 / AssocA 37.61.  (Novel line not fully printed in the
+merged log; Base is the dominant split.)
+
+**Outcome: REPAIR SUCCESS** — AssocA 37.10 is +6.66 above the strong-
+success bar (30.44) and +7.76 above L9-ovmot.  The pseudo-track +
+densified-GT supervision eliminated the over-birth collapse and
+improved identity association beyond any previous LocateMOT OVMOT
+checkpoint.
+
 ## Key mechanisms (as implemented)
 
 1. Class A: C-TAO base_and_novel GT at IoU >= 0.30 (~28% coverage).
