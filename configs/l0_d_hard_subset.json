@@ -1,0 +1,10 @@
+{
+  "iou_margin_threshold": 0.1,
+  "pbd_cos_margin_threshold": 0.05,
+  "plausible_iou_threshold": 0.3,
+  "density_hard_threshold": 6,
+  "reference_count_hard_threshold": 5,
+  "shared_plausible_iou_threshold": 0.3,
+  "note": "Prediction-side only; frozen before B5/B6 evaluation.",
+  "sha256": "6a363d86a04b"
+}

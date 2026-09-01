@@ -1,0 +1,49 @@
+stage: L0-C
+seed: 20260806
+data:
+  youtube_vos_root: /data3/testdata/vranlee/.MOTSynth.partial/YouTube-VOS-2019/train
+  mose_root: /data3/testdata/vranlee/.MOTSynth.partial/MOSEv2/train
+  frozen_splits:
+    train: /data3/testdata/vranlee/.MOTSynth.partial/GLEE_PMOT_stage1/stage_u_unified_tracker/unified_train_split.json
+    calibration: /data3/testdata/vranlee/.MOTSynth.partial/GLEE_PMOT_stage1/stage_u_unified_tracker/unified_calibration_split.json
+    heldout: /data3/testdata/vranlee/.MOTSynth.partial/GLEE_PMOT_stage1/stage_d_full/identity_heldout_split.json
+  split_sizes:
+    train: {youtube: 200, mose: 200}
+    calibration: {youtube: 40, mose: 40}
+    heldout: {youtube: 75, mose: 75}
+  frames_per_video: 4
+cache:
+  root: /data3/testdata/vranlee/.MOTSynth.partial/LocateMOT_L0C/cache
+  protocols: [category_guided, generic]
+  generic_query: "Locate all instances of objects."
+  main_feature: pbd_coord_mean_last
+  keep_features: [pbd_coord_mean_last, pbd_coord_mean_penultimate, pbd_box_end_last, region]
+  dtype: float16
+model:
+  d_model: 256
+  num_layers: 4
+  num_heads: 8
+  ffn_dim: 1024
+  dropout: 0.1
+  query_direction: reference_query
+training:
+  optimizer: AdamW
+  lr: 0.0002
+  weight_decay: 0.0001
+  warmup_ratio: 0.05
+  scheduler: cosine
+  grad_clip: 1.0
+  precision: bf16
+  patience: 8
+  max_epochs: 60
+loss_weights:
+  assignment: 1.0
+  no_match: 0.5
+  contrastive: 0.25
+  geometry: 0.1
+  calibration: 0.1
+evaluation:
+  iou_thresholds: [0.3, 0.5, 0.7]
+  gap_buckets: [[1,4],[5,16],[17,64],[65,100000]]
+  target_buckets: [[1,1],[2,4],[5,8]]
+  density_buckets: [[0,5],[6,15],[16,100000]]

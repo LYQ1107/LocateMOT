@@ -1,0 +1,12 @@
+{
+  "locatemot_tracking_grounding_smoke": {
+    "annotation": [
+      "/data1/LWR/vranlee/SERVER_ONLY/avis/LocateMOT/outputs/l1_c/lora/smoke_dancetrack.jsonl",
+      "/data1/LWR/vranlee/SERVER_ONLY/avis/LocateMOT/outputs/l1_c/lora/smoke_bdd100k.jsonl",
+      "/data1/LWR/vranlee/SERVER_ONLY/avis/LocateMOT/outputs/l1_c/lora/smoke_tao_amodal.jsonl"
+    ],
+    "root": "/",
+    "repeat_time": 1.0,
+    "data_augment": false
+  }
+}

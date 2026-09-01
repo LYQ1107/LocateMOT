@@ -1,0 +1,122 @@
+stage: L1-A
+seed: 20260806
+title: Full-Video Trajectory-Aware Association
+
+dancetrack:
+  root: /data1/LWR/vranlee/DATASETS/JDE/dancetrack
+  format: MOTChallenge
+  official_train_videos: 40
+  official_val_videos: 25
+  official_test_videos: 35
+  splits:
+    train: configs/data/l1_a_dancetrack_train.json
+    calibration: configs/data/l1_a_dancetrack_calibration.json
+    val: configs/data/l1_a_dancetrack_val.json
+  note: official val 25 全程 held-out；不用于训练/阈值/checkpoint 选择。
+
+locateanything:
+  model_dir: /data1/LWR/vranlee/SERVER_ONLY/avis/LocateMOT/models/LocateAnything-3B
+  commit: 783f656d127ee498137b5ff52603ce36c292d317
+  frozen: true
+  queries:
+    d1: "Locate all the instances that matches the following description: person."
+    d2: "Locate all the instances that matches the following description: a person."
+    d3: "Locate all the instances that matches the following description: people."
+  pilot_max_videos: 5
+  cache:
+    root: /data3/testdata/vranlee/.MOTSynth.partial/LocateMOT_L1A/cache_dla
+    dtype: float16
+    protocol: person
+
+d_ctrl:
+  enabled: true
+  detector: BYTETrack YOLOX-X DanceTrack (official weights inherited by OC-SORT)
+  weights: /data3/testdata/vranlee/code_previous/HybridSORT/pretrained/bytetrack_dance_model.pth.tar
+  weights_sha256: b8d1afba08f801f3fe2cb122faf3fc9af6c7856405a0da94cf91cdd5eb9b3321
+  engine_repo: references/association_2025_2026/OC-SORT
+  engine_commit: 8462e7e729a93ccd3bd995c0a79a890336cb3a0b
+  engine_license: MIT (YOLOX parts Apache-2.0)
+  config: exps/example/mot/yolox_dancetrack_val.py
+  test_conf: 0.1
+  nmsthre: 0.7
+  test_size: [800, 1440]
+  cache_root: /data3/testdata/vranlee/.MOTSynth.partial/LocateMOT_L1A/detections_ctrl
+
+frozen_l0d:
+  b6_checkpoint: outputs/l0_d/checkpoints/b6/best.pt
+  b6_config: configs/stage_l0_d.yaml
+  b6_calibration: outputs/l0_d/calibration/b6.json
+  note: B6 权重全程冻结；仅允许 calibration threshold 适配。
+
+tracking:
+  shared_lifecycle:
+    max_age: 30
+    min_hits: 3
+    birth_rule: unmatched valid detection -> tentative -> confirmed after min_hits
+    source: OC-SORT/ByteTrack official lifecycle (MIT)
+  t0:
+    iou_threshold: 0.3
+  t1:
+    motion: OCSORT-style constant-velocity Kalman (7-dim, OCM second round)
+    iou_threshold: 0.3
+    delta_t: 3
+    inertia: 0.2
+    use_byte: false
+  t2:
+    b6_frozen: true
+    no_match_threshold: from outputs/l0_d/calibration/b6.json
+  t3:
+    trajectory_window: 8
+    trajectory_encoder_layers: 2
+    trajectory_encoder_heads: 4
+    trajectory_encoder_dim: 256
+  t4:
+    motion_predictor: light 2-layer MLP -> dx,dy,dw,dh
+    motion_loss: SmoothL1
+    lambda_motion: 0.1
+  t5:
+    memory_type: short-term token buffer + anchor token
+    memory_write_confidence: 0.5
+    anchor_keep: true (first accepted token kept permanently)
+  t6:
+    max_lost_age: 30
+    reactivation_similarity: PBD box-end cos + trajectory similarity + motion-weighted IoU
+
+training:
+  clips_frames: 16
+  optimizer: AdamW
+  lr: 0.0002
+  weight_decay: 0.0001
+  warmup_ratio: 0.05
+  scheduler: cosine
+  grad_clip: 1.0
+  precision: bf16
+  max_epochs: 20
+  gpu: auto (idle card only)
+  loss:
+    association: 1.0
+    no_match: 1.0
+    motion: 0.1
+    identity: 0.1
+
+evaluation:
+  trackeval: references/TrackEval-official commit 12c8791b
+  main_metrics: [HOTA, DetA, AssA, LocA, MOTA, MOTP, IDF1, IDP, IDR, IDSW, FP, FN, Frag, MT, PT, ML]
+  outputs: outputs/l1_a
+  detection_manifest: outputs/l1_a/detection_manifest.json
+
+outputs:
+  root: outputs/l1_a
+  checkpoints: outputs/l1_a/checkpoints
+  trackeval: outputs/l1_a/trackeval
+  reports: reports
+
+decision:
+  pass_criteria:
+    t6_vs_t0_assA_pp: 3.0
+    t6_vs_t0_idsw_pct: 20.0
+    t6_vs_t0_hota_pp: 2.0
+    alt_assA_pp: 4.0
+    alt_idf1_pp: 2.0
+    alt_idsw_pct: 25.0
+  fail_code: L1_A_FAIL_TEMPORAL_VALUE_NOT_PROVEN

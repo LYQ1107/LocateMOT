@@ -1,0 +1,94 @@
+{
+  "stage": "L1-A",
+  "generated": "2026-08-07",
+  "repositories": [
+    {
+      "name": "FDTA",
+      "paper": "From Detection to Association: Learning Discriminative Object Embeddings for Multi-Object Tracking (CVPR 2026)",
+      "official_url": "https://github.com/Spongebobbbbbbbb/FDTA",
+      "local_path": "references/association_2025_2026/FDTA",
+      "branch": "main",
+      "commit": "b3b3b778acf93fa4269663b5ea1fd1d5ff8c6730",
+      "license": "MIT",
+      "files_inspected": ["models/fdta/Temporal_Adapter.py", "models/fdta/trajectory_modeling.py", "models/fdta/id_decoder.py", "models/fdta/fdta.py"],
+      "used_for": ["TrajectoryEncoder", "motion-aware trajectory", "temporal relative PE", "ID prediction concept"]
+    },
+    {
+      "name": "MOTIP",
+      "paper": "MOTIP: A Motion-aware Trajectory-aware ID Prediction for Multi-Object Tracking (CVPR 2025)",
+      "official_url": "https://github.com/MCG-NJU/MOTIP",
+      "local_path": "references/identity_decoding/MOTIP",
+      "branch": "main",
+      "commit": "ffc0e905",
+      "license": "MIT",
+      "files_inspected": ["models/runtime_tracker.py", "models/traj_model.py", "models/matcher.py"],
+      "used_for": ["trajectory history buffer", "history truncation (miss_tolerance)", "ID vocabulary prediction concept"]
+    },
+    {
+      "name": "MOTIP-2",
+      "paper": "MOTIP-2 follow-up",
+      "official_url": "https://github.com/MCG-NJU/MOTIP-2",
+      "local_path": "references/identity_decoding/MOTIP-2",
+      "branch": "main",
+      "commit": "012856c1",
+      "license": "MIT",
+      "files_inspected": ["runtime tracker / ID decoder"],
+      "used_for": ["ID consistency", "history encoding updates"]
+    },
+    {
+      "name": "MeMOTR",
+      "paper": "MeMOTR: Long-Term Memory-Augmented Transformer for Multi-Object Tracking (ICCV 2023)",
+      "official_url": "https://github.com/MCG-NJU/MeMOTR",
+      "local_path": "references/memory_tracking/MeMOTR",
+      "branch": "main",
+      "commit": "query_updater.py read",
+      "license": "MIT",
+      "files_inspected": ["models/query_updater.py"],
+      "used_for": ["long-term memory EMA update", "high-confidence-only memory writes"]
+    },
+    {
+      "name": "OC-SORT",
+      "paper": "Observation-Centric SORT (CVPR 2023)",
+      "official_url": "https://github.com/noahcao/OC-SORT",
+      "local_path": "references/association_2025_2026/OC-SORT",
+      "branch": "main",
+      "commit": "8462e7e729a93ccd3bd995c0a79a890336cb3a0b",
+      "license": "MIT",
+      "files_inspected": ["trackers/ocsort_tracker/ocsort.py", "trackers/ocsort_tracker/association.py", "trackers/ocsort_tracker/kalmanfilter.py"],
+      "used_for": ["T1 motion baseline", "lifecycle birth shell", "OCM second-round association"]
+    },
+    {
+      "name": "MOTR",
+      "paper": "MOTR: End-to-End Multiple-Object Tracking with Transformer (ECCV 2022)",
+      "official_url": "https://github.com/megvii-research/MOTR",
+      "local_path": "references/association_transformers/MOTR",
+      "branch": "main",
+      "commit": "read-only",
+      "license": "MIT",
+      "files_inspected": ["models/query_updater.py", "models/motr.py"],
+      "used_for": ["track query propagation concept", "NO_MATCH track slot"]
+    },
+    {
+      "name": "SORT",
+      "paper": "Simple Online and Realtime Tracking (2016)",
+      "official_url": "https://github.com/abewley/sort",
+      "local_path": "references/association_2025_2026/OC-SORT (SORT logic adopted inside)",
+      "branch": "n/a",
+      "commit": "n/a",
+      "license": "MIT",
+      "files_inspected": ["ocsort.py (SORT-adopted KalmanBoxTracker)"],
+      "used_for": ["T1 motion baseline lifecycle"]
+    },
+    {
+      "name": "MATR",
+      "paper": "Motion-Aware Transformer for Multi-Object Tracking (arXiv 2509.21715, 2025)",
+      "official_url": "no verified official repo found",
+      "local_path": "none",
+      "branch": "n/a",
+      "commit": "n/a",
+      "license": "n/a",
+      "files_inspected": [],
+      "note": "NO VERIFIED OFFICIAL CODE FOUND; paper-guided clean implementation only if used."
+    }
+  ]
+}

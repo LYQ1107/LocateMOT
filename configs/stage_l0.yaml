@@ -1,0 +1,48 @@
+stage: L0
+seed: 20260806
+project_root: /data1/LWR/vranlee/SERVER_ONLY/avis/LocateMOT
+output_root: /data3/testdata/vranlee/LocateMOT
+
+official:
+  repo_url: https://github.com/NVlabs/Eagle
+  repo_local: third_party/Eagle
+  model: nvidia/LocateAnything-3B
+  model_page: https://huggingface.co/nvidia/LocateAnything-3B
+  paper: https://arxiv.org/abs/2605.27365
+
+data:
+  datasets: [YouTube-VOS, MOSE]
+  split:
+    train: 6066
+    calibration: 300
+    heldout: 1071
+  pair_gaps:
+    short: [1, 4]
+    medium: [5, 16]
+    long: [17, 64]
+    very_long_min: 65
+
+track_decoder:
+  d_model: 256
+  num_layers: 4
+  num_heads: 8
+  ffn_dim: 1024
+  dropout: 0.1
+  max_targets: 8
+
+training:
+  precision: bf16
+  deepspeed: ZeRO-2
+  per_device_batch_size: 1
+  max_seq_len: 4096
+  moonvit_frozen: true
+  qwen_frozen: true
+  lora_rank: 64
+  projector_trainable: true
+
+loss_weights:
+  assignment: 1.0
+  no_match: 0.5
+  contrastive: 0.25
+  geometry: 0.1
+  confidence_calibration: 0.1

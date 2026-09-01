@@ -1,0 +1,14 @@
+{
+  "locatemot_tracking_grounding": {
+    "annotation": [
+      "/data1/LWR/vranlee/SERVER_ONLY/avis/LocateMOT/outputs/l1_c/lora/dancetrack.jsonl",
+      "/data1/LWR/vranlee/SERVER_ONLY/avis/LocateMOT/outputs/l1_c/lora/bdd100k.jsonl",
+      "/data1/LWR/vranlee/SERVER_ONLY/avis/LocateMOT/outputs/l1_c/lora/tao_amodal.jsonl",
+      "/data1/LWR/vranlee/SERVER_ONLY/avis/LocateMOT/outputs/l1_c/lora/mot17.jsonl",
+      "/data1/LWR/vranlee/SERVER_ONLY/avis/LocateMOT/outputs/l1_c/lora/mot20.jsonl"
+    ],
+    "root": "/",
+    "repeat_time": 1.0,
+    "data_augment": false
+  }
+}

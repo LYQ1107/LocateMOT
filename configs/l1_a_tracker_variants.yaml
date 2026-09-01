@@ -1,0 +1,42 @@
+variants:
+  T0:
+    name: IoU tracker
+    association: IoU(last_box, candidate) + Hungarian
+    motion: none
+    memory: none
+    reactivation: none
+  T1:
+    name: IoU + OC-SORT-style motion
+    association: IoU(Kalman predicted box, candidate) + OCM second round
+    motion: 7-dim constant-velocity Kalman (official OC-SORT logic)
+    memory: none
+    reactivation: none
+  T2:
+    name: B6 local
+    association: frozen B6 with last accepted token vs current candidates
+    motion: none
+    memory: none
+    reactivation: none
+  T3:
+    name: B6 + trajectory context
+    association: frozen B6 with TrajectoryEncoder(K tokens) as reference
+    motion: none
+    memory: short token buffer (K=8)
+    reactivation: none
+  T4:
+    name: B6 + trajectory + motion prediction
+    association: T3 + IoU(pred_box, candidate), center distance, motion residual
+    motion: learned 2-layer MLP (dx,dy,dw,dh)
+    memory: short token buffer
+    reactivation: none
+  T5:
+    name: T4 + short-term/anchor memory
+    association: T4 + memory-fused reference token
+    memory: short-term tokens + anchor token (EMA/attention fusion)
+    reactivation: none
+  T6:
+    name: T5 + lost/reactivation
+    association: T5 + lost-track re-association via trajectory/PBD similarity
+    memory: short-term + anchor
+    reactivation: lost>=2 frames, max_lost_age=30, motion weight decays with gap
+shared: birth shell and lifecycle identical for T0-T6 (frozen minimal infrastructure)

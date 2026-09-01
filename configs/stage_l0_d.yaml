@@ -1,0 +1,42 @@
+stage: L0-D
+seed: 20260806
+frozen:
+  locateanything: third_party/Eagle commit 783f656d
+  splits: configs/data/l0_c_{train,calibration,heldout}_videos.json
+  manifest: outputs/l0_c/pair_manifest.jsonl
+  cache: /data3/testdata/vranlee/.MOTSynth.partial/LocateMOT_L0C/cache
+  baselines: outputs/l0_c/checkpoints/{b3,b4}/best.pt
+relation_features:
+  geometry: [IoU, dx, dy, center_distance, log_w_ratio, log_h_ratio, log_area_ratio]
+  appearance: [pbd_box_end_cos, pbd_coord_cos, region_cos]
+  generation: [cur_gen, ref_gen]
+  temporal: [log1p(gap), gap/100]
+  mlp: D->128->128, LayerNorm/GELU
+residual:
+  base_affinity: w_iou*f(IoU) + w_pbd*f(PBD_box_end_cos)
+  final_affinity: BaseAffinity + alpha*tanh(Residual)
+  alpha_init: 0.25 (0.5*sigmoid(alpha_logit))
+  beta_init: 0.05 (sigmoid(beta_logit))
+no_match:
+  semantic: learned affinity threshold tau_i in (0,1); NO_MATCH if assigned match < tau_i
+  assignment: [M, N+M] Hungarian with dummy cost -tau_i
+hard_subset: configs/l0_d_hard_subset.json
+sampling:
+  buckets_desired: {single: 0.25, "2-4": 0.45, "5-8": 0.30}
+  hard_multiplier: 2.0
+  num_samples: 2 * train_size
+training:
+  optimizer: AdamW
+  lr: 0.0002
+  weight_decay: 0.0001
+  warmup_ratio: 0.05
+  scheduler: cosine
+  grad_clip: 1.0
+  precision: bf16
+  patience: 8
+  max_epochs: 15
+  loss_weights: {assignment: 1.0, no_match: 1.0, contrastive: 0.25, geometry: 0.1, calibration: 0.1}
+trackeval:
+  official: references/TrackEval-official commit 12c8791b
+  naming: Two-frame held-out association TrackEval diagnostic
+  aggregation: COMBINED_SEQ (combine_sequences)

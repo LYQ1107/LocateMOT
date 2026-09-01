@@ -1,0 +1,18 @@
+protocols:
+  D-LA:
+    generator: LocateAnything-3B (frozen)
+    commit: 783f656d127ee498137b5ff52603ce36c292d317
+    query: fixed after calibration (person templates)
+    candidate_fields: [boxes, pbd_box_end_last, pbd_coord_mean_last, region, geometry, gen_score]
+    cache: /data3/testdata/vranlee/.MOTSynth.partial/LocateMOT_L1A/cache_dla
+    purpose: real-system LocateMOT detection protocol
+  D-CTRL:
+    generator: YOLOX-X DanceTrack (ByteTrack official weights)
+    weights: /data3/testdata/vranlee/code_previous/HybridSORT/pretrained/bytetrack_dance_model.pth.tar
+    weights_sha256: b8d1afba08f801f3fe2cb122faf3fc9af6c7856405a0da94cf91cdd5eb9b3321
+    engine: OC-SORT official (MIT; YOLOX Apache-2.0)
+    engine_commit: 8462e7e729a93ccd3bd995c0a79a890336cb3a0b
+    cache: /data3/testdata/vranlee/.MOTSynth.partial/LocateMOT_L1A/detections_ctrl
+    candidate_fields: [boxes, score]
+    purpose: association-control protocol with fixed strong public detector
+rule: T0-T6 use the exact same detection manifest per protocol; never mix protocols in one table.

@@ -1,0 +1,1 @@
+"""LocateMOT model components."""
