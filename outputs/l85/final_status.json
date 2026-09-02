@@ -1,0 +1,54 @@
+{
+  "format": "locatemot-l85-final-status-v1",
+  "status": "full_rmot_hota_complete_below_semantic_gate",
+  "project_root": "/data1/LWR/vranlee/SERVER_ONLY/avis/LocateMOT",
+  "luna_thread": "01a02014-fce8-7f51-8414-e7ed6ab44745",
+  "branch": "codex/l85-full-rmot-hota-20260902",
+  "selected_representation": "L84 Z1 fixed-reference decoder layer 1",
+  "selected_checkpoint": "outputs/l85/train/joint_curriculum40_gpu0/checkpoint_l85_epoch09.pt",
+  "selected_checkpoint_sha256": "785e9a5cd7245f502e6e4eae84592c72b7703739c9d8edb599bc35c495a96f7e",
+  "selected_step": 4716,
+  "selected_rule": {
+    "candidate_threshold": 1.2,
+    "presence_threshold": -0.1,
+    "null_margin": 0.0
+  },
+  "semantic_gate": {
+    "status": "semantic_gate_fail",
+    "validation_recall": 0.41935483870967744,
+    "validation_precision": 0.13,
+    "validation_fp_per_frame": 3.625,
+    "validation_predictions_per_positive": 3.225806451612903,
+    "validation_hard_violation": 0.7692307692307693,
+    "validation_multi_positive_recall": 0.4861111111111111,
+    "validation_inactive_false_acceptance": 1.0
+  },
+  "full_video_validation_hota": {
+    "status": "complete",
+    "trackeval_output": "outputs/l85/trackeval/trackeval_attempt4/trackeval_summary.json",
+    "refer_kitti_v1_hota": 25.05479993919531,
+    "refer_kitti_v2_hota": 17.292352323623604,
+    "refer_kitti_v1_detpr": 17.8399756616976,
+    "refer_kitti_v2_detpr": 10.999148217386194,
+    "refer_kitti_v1_assa": 42.45417801252935,
+    "refer_kitti_v2_assa": 30.838894205303784
+  },
+  "evidence_scope": {
+    "candidate_oracle": "available_internal_validation_upper_bound_only",
+    "fit_smoke": "passed",
+    "fit_full_training": "complete_40_epochs",
+    "dev_selection": "complete_before_fixed_validation",
+    "fixed_semantic_validation": "failed",
+    "screening": "not_run",
+    "official_test": "not_run",
+    "ordinary_mot_ovmot_regression": "not_run"
+  },
+  "candidate_bank_gt_conditioned": false,
+  "candidate_bank_query_conditioned": false,
+  "screening_gt_used": false,
+  "official_test_labels_read": false,
+  "ordinary_mot_ovmot_touched": false,
+  "token_span_region_alignment": "UNALIGNED",
+  "static_motion_alignment": "UNALIGNED",
+  "next_action": "supervisor review and explicit authorization of one RMOT-only correspondence/presence-calibration hypothesis; do not extend L85 automatically"
+}
