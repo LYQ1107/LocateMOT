@@ -22,6 +22,14 @@ if str(WORK_ROOT) not in sys.path: sys.path.insert(0, str(WORK_ROOT))
 if str(ASSET_ROOT) not in sys.path: sys.path.append(str(ASSET_ROOT))
 sys.path.insert(0, str(WORK_ROOT / "locatemot" / "rmot"))
 
+# The isolated worktree intentionally contains the L87 modules, while the
+# historical L80/L29 compatibility model remains read-only in the asset root.
+# Extend only the existing package search path; do not copy or modify it.
+import locatemot.models as _locatemot_models  # noqa: E402
+_asset_models = str(ASSET_ROOT / "locatemot" / "models")
+if _asset_models not in _locatemot_models.__path__:
+    _locatemot_models.__path__.append(_asset_models)
+
 from locatemot.rmot.l80_data import L80BankStore, load_fixed_key_units  # noqa: E402
 from l87_eval_policy import contract_summary, metric  # noqa: E402
 from tools.l86_eval_fixed_semantic import (  # noqa: E402
