@@ -19,7 +19,7 @@ export OMP_NUM_THREADS=1 MKL_NUM_THREADS=1
 "$PY" tools/l87a_contract_smoke.py --cache "$CACHE" \
   --out outputs/l87a/audit/contract_smoke --device cuda:0
 
-torchrun --standalone --nnodes=1 --nproc_per_node=3 --master_port="${MASTER_PORT:-29687}" \
+"$PY" -m torch.distributed.run --standalone --nnodes=1 --nproc_per_node=3 --master_port="${MASTER_PORT:-29687}" \
   tools/l87a_train_full_rmot.py --epochs 40 --seed 20260829 --cache "$CACHE" \
   --out outputs/l87a/train/joint40 --effective-clip-batch 9 --bf16
 
