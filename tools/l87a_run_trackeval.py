@@ -27,7 +27,7 @@ def main() -> int:
             if not path.is_file(): continue
             value = json.loads(path.read_text())
             value.update({"format": "locatemot-l87a-internal-fullvideo-trackeval-v1",
-                          "stage": "L87-A zero-train corrected reselection and deployment",
+                          "stage": "L87-A corrected temporal retraining and deployment",
                           "work_root": str(WORK_ROOT), "asset_root": str(ASSET_ROOT),
                           "base_l86_commit": "97bff208929474d4c4b0d659c80e7eba2f3f5d0a",
                           "screening_gt_used": False, "official_test_labels_read": False,
