@@ -334,10 +334,18 @@ def forward_l88_z1(model: Any, cache_item: dict[str, Any], boxes: torch.Tensor,
             model, cache_item, boxes, [sentence], device,
             query_tile=1, autocast_bf16=autocast_bf16)
                  for sentence in sentences]
+        memory_masks = [part.get("memory_mask") for part in parts]
+        if all(torch.is_tensor(value) for value in memory_masks):
+            memory_mask = torch.cat([value for value in memory_masks if torch.is_tensor(value)], dim=0)
+        elif any(value is not None for value in memory_masks):
+            raise AssertionError("inconsistent L88 memory-mask replay contract")
+        else:
+            memory_mask = None
         result: dict[str, Any] = {
             "z1": torch.cat([part["z1"] for part in parts], dim=0),
             "memory_text": torch.cat([part["memory_text"] for part in parts], dim=0),
             "memory": torch.cat([part["memory"] for part in parts], dim=0),
+            "memory_mask": memory_mask,
             "text_token_mask": torch.cat([part["text_token_mask"] for part in parts], dim=0),
             "captions": [caption for part in parts for caption in part["captions"]],
             "token_maps": [token_map for part in parts for token_map in part["token_maps"]],
@@ -351,6 +359,8 @@ def forward_l88_z1(model: Any, cache_item: dict[str, Any], boxes: torch.Tensor,
                             ("memory", result["memory"])):
             if not bool(torch.isfinite(value.float()).all()):
                 raise FloatingPointError(f"nonfinite serial L88 {name}")
+        if result["memory_mask"] is not None and not bool(torch.isfinite(result["memory_mask"].float()).all()):
+            raise FloatingPointError("nonfinite serial L88 memory_mask")
         return result
     text_dict, captions, token_maps = make_text_batch(model, sentences, device)
     qcount = len(sentences)
@@ -377,6 +387,7 @@ def forward_l88_z1(model: Any, cache_item: dict[str, Any], boxes: torch.Tensor,
         "z1": z1,
         "memory_text": encoded["memory_text"],
         "memory": encoded["memory"],
+        "memory_mask": encoded.get("memory_mask"),
         "text_dict": text_dict,
         "captions": captions,
         "token_maps": token_maps,
