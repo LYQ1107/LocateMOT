@@ -92,6 +92,10 @@ def make_label_free_record(batch: Any, output: dict[str, torch.Tensor], row: dic
     score = output["candidate_energy"].float().detach().cpu().numpy()
     r_total = output["r_total"].float().detach().cpu().numpy()
     prior = output["candidate_prior"].float().detach().cpu().numpy()
+    if score.ndim == 2 and score.shape[0] == 1:
+        score = score[0]
+    if r_total.ndim == 2 and r_total.shape[0] == 1:
+        r_total = r_total[0]
     presence = float(output["presence_logit"].float().detach().cpu().item())
     null = float(output["null_logit"].float().detach().cpu().item())
     if score.shape != (int(batch.candidate_count),):
