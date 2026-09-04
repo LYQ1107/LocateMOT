@@ -199,8 +199,9 @@ def run(args: argparse.Namespace) -> int:
                 frame_global = valid_mean(replay["memory"].float(), None if mmask is None else ~mmask.bool(), "fixed_frame_global")
                 output = sidecar(
                     replay["z1"].float(), text_global, frame_global,
-                    batch.observations.float(), batch.history_observations.float(),
-                    batch.history_mask, batch.history_frame_ids, batch.frame_id, temporal_enabled=True,
+                    batch.observations.float().to(device), batch.history_observations.float().to(device),
+                    batch.history_mask.to(device), batch.history_frame_ids.to(device),
+                    batch.frame_id, temporal_enabled=True,
                 )
                 record = make_label_free_record(batch, output, row, checkpoint_info)
                 records.append(record); batches.append(batch)
