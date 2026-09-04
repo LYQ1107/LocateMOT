@@ -187,7 +187,12 @@ def build_label_free_group(store: L88ClipStore, group_key: str,
 
 
 def attach_labels(store: L88ClipStore, batch: Any) -> dict[str, Any]:
-    full = load_full_unit_for_labels(str(batch.unit_key))
+    # Fit/dev rows are already indexed by the inherited key-only store.  The
+    # lookup is still deliberately made only by this explicit post-score
+    # helper; no label field is present in ``build_label_free_group``.
+    full = getattr(store._base, "labels_by_key", {}).get(str(batch.unit_key))
+    if full is None:
+        full = load_full_unit_for_labels(str(batch.unit_key))
     labels = store.bank_store.attach_labels(batch, full)
     labels["unit_key"] = str(batch.unit_key)
     labels["query_id"] = int(batch.query_id)
