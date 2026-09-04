@@ -400,6 +400,14 @@ def run(args: argparse.Namespace) -> int:
             datasets = [str(args.dataset)]
         split = json.loads(SPLIT.read_text())
         videos_by_dataset = scope_videos(args.scope, datasets, split)
+        if args.video:
+            if len(datasets) != 1:
+                raise ValueError("--video requires exactly one --dataset")
+            dataset = datasets[0]
+            video = str(args.video)
+            if video not in videos_by_dataset.get(dataset, ()):
+                raise ValueError(f"video is not in the selected {args.scope} split: {dataset}|{video}")
+            videos_by_dataset = {dataset: (video,)}
         shortlist = json.loads(args.shortlist.resolve().read_text())
         if shortlist.get("status") != "complete" or not shortlist.get("shortlist"):
             raise AssertionError("L88 shortlist is not complete")
@@ -544,6 +552,7 @@ def run(args: argparse.Namespace) -> int:
             "videos": videos_by_dataset, "shortlist_source": str(args.shortlist.resolve()),
             "shortlist_sha256": sha256(args.shortlist.resolve()), "candidates": summaries,
             "candidate_index_filter": int(args.candidate_index),
+            "video_filter": str(args.video) if args.video else None,
             "cache": str(args.cache.resolve()), "cache_summary_sha256": reader.summary_sha256,
             "base_detector_digest": base_digest, "query_tile": int(args.query_tile),
             "all_candidate_rows_scored": True, "candidate_deletion": False,
@@ -600,6 +609,8 @@ def main() -> int:
     parser.add_argument("--query-tile", type=int, default=4)
     parser.add_argument("--candidate-index", type=int, default=-1,
                         help="run exactly one indexed shortlist candidate; -1 means all selected candidates")
+    parser.add_argument("--video", default="",
+                        help="run one video with --dataset; intended for parallel video-sharded execution")
     parser.add_argument("--max-candidates", type=int, default=0)
     parser.add_argument("--max-frames", type=int, default=0)
     parser.add_argument("--max-queries", type=int, default=0)
