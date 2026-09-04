@@ -722,7 +722,8 @@ def run_distributed(args: argparse.Namespace) -> int:
             random.Random(int(args.seed) + epoch).shuffle(schedule)
             pad_count = padded_groups - len(schedule)
             if pad_count:
-                schedule.extend(schedule[:pad_count])
+                repeats = int(math.ceil(pad_count / max(1, len(schedule))))
+                schedule.extend((schedule * repeats)[:pad_count])
             if len(schedule) != padded_groups:
                 raise AssertionError("L88 distributed schedule padding drift")
             local_keys = schedule[rank::world]
