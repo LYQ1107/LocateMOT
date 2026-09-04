@@ -87,6 +87,19 @@ class L88ClipStore:
     def cache_paths(self) -> dict[str, Path]:
         return self._base.cache_paths
 
+    def release_loaded_cache_items(self) -> int:
+        """Release lazily loaded L85 frame items while retaining the index.
+
+        L88's query-independent encoder cache is read by a separate streaming
+        reader.  The inherited sidecar cache may still hold the compact L85
+        frame objects used for causal observations; clearing those objects at
+        a group boundary keeps resident memory bounded without changing the
+        immutable cache or its row contract.
+        """
+        count = len(self._base.cache_items)
+        self._base.cache_items.clear()
+        return count
+
     def close(self) -> None:
         self._base.close()
 
