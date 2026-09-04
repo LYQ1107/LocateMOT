@@ -317,7 +317,8 @@ def _fixed_reference_z1(model: Any, memory: torch.Tensor, memory_mask: torch.Ten
 
 def forward_l88_z1(model: Any, cache_item: dict[str, Any], boxes: torch.Tensor,
                     sentences: list[str], device: torch.device, *, query_tile: int = 4,
-                    autocast_bf16: bool = False) -> dict[str, Any]:
+                    autocast_bf16: bool = False,
+                    prepared_text: tuple[dict[str, Any], list[str], list[Any]] | None = None) -> dict[str, Any]:
     """Forward a complete expression tile through adapted encoder and Z1."""
     if int(query_tile) != len(sentences):
         raise AssertionError("forward_l88_z1 receives exactly one query tile")
@@ -362,7 +363,14 @@ def forward_l88_z1(model: Any, cache_item: dict[str, Any], boxes: torch.Tensor,
         if result["memory_mask"] is not None and not bool(torch.isfinite(result["memory_mask"].float()).all()):
             raise FloatingPointError("nonfinite serial L88 memory_mask")
         return result
-    text_dict, captions, token_maps = make_text_batch(model, sentences, device)
+    if prepared_text is None:
+        text_dict, captions, token_maps = make_text_batch(model, sentences, device)
+    else:
+        if len(sentences) != 1 or len(prepared_text[1]) != 1 or len(prepared_text[2]) != 1:
+            raise AssertionError("prepared L88 text is only valid for one sentence")
+        text_dict, captions, token_maps = prepared_text
+        if any(torch.is_tensor(value) and value.device != device for value in text_dict.values()):
+            raise AssertionError("prepared L88 text device drift")
     qcount = len(sentences)
     enc = {key: _repeat_batch(cache_item[key], qcount, device)
            for key in ("feat", "feat_mask", "feat_pos", "valid_ratios")}

@@ -54,6 +54,7 @@ _asset_rmot_path()
 from locatemot.rmot.l49_data import load_l49_queries  # noqa: E402
 from locatemot.rmot.l85_runtime import load_validation_key_rows  # noqa: E402
 from locatemot.rmot.l80_data import load_fixed_key_units  # noqa: E402
+from locatemot.rmot.l88_grounding_runtime import make_text_batch  # noqa: E402
 
 
 def file_sha(path: Path) -> str:
@@ -178,11 +179,13 @@ def cache_for_frame(reader: EncoderCacheReader, runtime: Any, first: Any,
 
 
 def encode_query(runtime: Any, reader: EncoderCacheReader, item: dict[str, Any],
-                 first: Any, sentence: str, device: torch.device) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor]:
+                 first: Any, sentence: str, device: torch.device,
+                 prepared_text: tuple[dict[str, Any], list[str], list[Any]] | None = None
+                 ) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor]:
     with torch.inference_mode():
         replay = __import__("locatemot.rmot.l88_grounding_runtime", fromlist=["forward_l88_z1"]).forward_l88_z1(
             runtime.model, item, first.boxes, [str(sentence)], device,
-            query_tile=1, autocast_bf16=False)
+            query_tile=1, autocast_bf16=False, prepared_text=prepared_text)
     if bool(replay.get("candidate_deletion")) or bool(replay.get("candidate_truncation")):
         raise AssertionError(f"L88 full-video replay deleted candidates: {first.unit_key}")
     z1 = replay["z1"].float()
@@ -200,15 +203,21 @@ def encode_query(runtime: Any, reader: EncoderCacheReader, item: dict[str, Any],
 
 def score_frame_queries(runtime: Any, reader: EncoderCacheReader, sidecar: Any,
                         store: L88ClipStore, first: Any, queries: list[dict[str, Any]],
-                        device: torch.device, query_tile: int) -> list[dict[str, Any]]:
+                        device: torch.device, query_tile: int,
+                        text_cache: dict[str, tuple[dict[str, Any], list[str], list[Any]]]
+                        ) -> list[dict[str, Any]]:
     item, _source = cache_for_frame(reader, runtime, first, device)
     z1_parts: list[torch.Tensor] = []
     text_parts: list[torch.Tensor] = []
     frame_parts: list[torch.Tensor] = []
     try:
         for query in queries:
+            sentence = str(query["sentence"])
+            if sentence not in text_cache:
+                with torch.inference_mode():
+                    text_cache[sentence] = make_text_batch(runtime.model, [sentence], device)
             z1, text_global, frame_global = encode_query(runtime, reader, item, first,
-                                                          str(query["sentence"]), device)
+                                                          sentence, device, text_cache[sentence])
             z1_parts.append(z1); text_parts.append(text_global); frame_parts.append(frame_global)
         records: list[dict[str, Any]] = []
         current = first.observations.float().to(device)
@@ -428,6 +437,7 @@ def run(args: argparse.Namespace) -> int:
         reader = EncoderCacheReader(args.cache)
         store = L88ClipStore(L85_CACHE, load_cache_into_ram=False)
         runtime, injector, base_digest = make_runtime(device)
+        text_cache: dict[str, tuple[dict[str, Any], list[str], list[Any]]] = {}
         video_queries: dict[str, dict[str, list[dict[str, Any]]]] = {dataset: {} for dataset in datasets}
         for dataset, videos in videos_by_dataset.items():
             for video in videos:
@@ -465,7 +475,7 @@ def run(args: argparse.Namespace) -> int:
                         for frame_index, frame_id in enumerate(frames):
                             first, _ = make_frame(store, dataset, video, frame_id, queries[0])
                             records = score_frame_queries(runtime, reader, sidecar, store, first, queries, device,
-                                                          int(args.query_tile))
+                                                          int(args.query_tile), text_cache)
                             if len(records) != len(queries):
                                 raise AssertionError(f"full-video query count drift: {dataset}|{video}|{frame_id}")
                             boxes = first.boxes.detach().cpu().numpy()
