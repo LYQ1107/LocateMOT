@@ -44,7 +44,10 @@ def write_json(path: Path, value: Any) -> None:
 def copy_tree(source: Path, destination: Path) -> None:
     if not source.is_dir():
         raise FileNotFoundError(source)
-    shutil.copytree(source, destination, copy_function=shutil.copy2)
+    # Several legal parts share one dataset destination but contain distinct
+    # videos.  Merge those per-video trees without overwriting an existing
+    # sibling; a duplicate file is still rejected by the source-part checks.
+    shutil.copytree(source, destination, copy_function=shutil.copy2, dirs_exist_ok=True)
 
 
 def run(args: argparse.Namespace) -> int:
