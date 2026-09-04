@@ -20,13 +20,13 @@ from typing import Any
 import numpy as np
 import torch
 
-from tools.l88_eval_common import (
+from l88_eval_common import (
     ASSET_ROOT, L88_CACHE, L85_CACHE, MANIFEST, MANIFEST_SHA, SEED, THREAD,
     EncoderCacheReader, L88ClipStore, build_label_free_group, checkpoint_info,
     load_checkpoint_into, make_runtime, release_group, score_label_free_group,
     sha256, write_json,
 )
-from tools.l88_eval_metrics import fit_rule_set, metric
+from l88_eval_metrics import fit_rule_set, metric
 
 
 WORK_ROOT = Path(__file__).resolve().parents[1]
