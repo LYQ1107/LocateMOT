@@ -101,6 +101,7 @@ def run(args: argparse.Namespace) -> int:
         strategy_paths: dict[str, dict[str, dict[str, str]]] = {}
         eval_summary: dict[str, dict[str, dict[str, Any]]] = {rule: {} for rule in RULES}
         for rule in RULES:
+            strategy_paths[rule] = {}
             aggregate_rules[rule] = {
                 "frames": 0, "queries": 0, "candidate_rows": 0, "selected_rows": 0,
                 "candidate_rows_retained": True, "candidate_deletion": False,
