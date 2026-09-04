@@ -614,8 +614,11 @@ def run_distributed(args: argparse.Namespace) -> int:
     out.mkdir(parents=True, exist_ok=True)
     if int(args.seed) != SEED:
         raise AssertionError(f"L88 seed is fixed at {SEED}")
-    if int(args.epochs) != 40:
+    run_epochs = int(args.epochs)
+    if run_epochs != 40 and not args.allow_short:
         raise AssertionError("registered L88 run requires exactly 40 epochs")
+    if run_epochs < 1:
+        raise AssertionError("L88 run requires at least one epoch")
     command = " ".join([sys.executable, *sys.argv])
     started = time.perf_counter()
     world = rank = local_rank = 1
@@ -661,12 +664,17 @@ def run_distributed(args: argparse.Namespace) -> int:
             {"params": list(sidecar.parameters()), "lr": 2e-4, "weight_decay": 1e-2},
             {"params": list(injector.parameters()), "lr": 1e-4, "weight_decay": 0.0},
         ], betas=(0.9, 0.999))
+        source_keys = list(keys)
+        if int(args.max_groups):
+            if not args.allow_short:
+                raise AssertionError("max_groups is only for targeted integration")
+            source_keys = source_keys[:int(args.max_groups)]
         accumulation = max(1, int(math.ceil(8.0 / float(world))))
-        base_local = int(math.ceil(len(keys) / float(world)))
+        base_local = int(math.ceil(len(source_keys) / float(world)))
         local_groups = int(math.ceil(base_local / float(accumulation)) * accumulation)
         padded_groups = local_groups * world
         steps_per_epoch = local_groups // accumulation
-        total_optimizer_steps = steps_per_epoch * 40
+        total_optimizer_steps = steps_per_epoch * run_epochs
         warmup_steps = max(1, int(round(total_optimizer_steps * 0.05)))
         def lr_lambda(step: int) -> float:
             if step < warmup_steps:
@@ -679,12 +687,12 @@ def run_distributed(args: argparse.Namespace) -> int:
                 "format": "locatemot-l88-training-config-v2", "status": "running",
                 "stage": "L88 40-epoch RMOT-only LoRA plus sidecar training",
                 "command": command, "cwd": str(WORK_ROOT), "luna_thread": THREAD,
-                "seed": int(args.seed), "epochs": 40, "device": str(device),
+                "seed": int(args.seed), "epochs": run_epochs, "device": str(device),
                 "world_size": world, "local_rank": local_rank,
                 "cuda_visible_devices": os.environ.get("CUDA_VISIBLE_DEVICES"),
                 "effective_frame_group_batch": 8, "accumulation_steps": accumulation,
                 "local_groups": local_groups, "padded_global_groups": padded_groups,
-                "padding_groups_per_epoch": padded_groups - len(keys), "query_tile": int(args.query_tile),
+                "padding_groups_per_epoch": padded_groups - len(source_keys), "query_tile": int(args.query_tile),
                 "bf16_requested": bool(args.bf16), "bf16_used": False,
                 "precision_deviation": "FP32 required: local MMCV ms_deform_attn_forward_cuda does not implement BFloat16",
                 "cache": str(args.cache.resolve()), "cache_summary_sha256": reader.summary_sha256,
@@ -707,10 +715,10 @@ def run_distributed(args: argparse.Namespace) -> int:
         optimizer.zero_grad(set_to_none=True)
         optimizer_step = 0
         amp_enabled = bool(args.bf16 and device.type == "cuda")
-        for epoch in range(1, 41):
+        for epoch in range(1, run_epochs + 1):
             phase = "S" if epoch <= 8 else ("T" if epoch <= 20 else "J")
             temporal_enabled = epoch > 8
-            schedule = list(keys)
+            schedule = list(source_keys)
             random.Random(int(args.seed) + epoch).shuffle(schedule)
             pad_count = padded_groups - len(schedule)
             if pad_count:
@@ -803,18 +811,18 @@ def run_distributed(args: argparse.Namespace) -> int:
                 trace.append(entry)
                 sampling.append({"epoch": epoch, "phase": phase, "seed": int(args.seed) + epoch,
                                  "world_size": world, "local_groups": local_groups,
-                                 "padding_groups": padded_groups - len(keys), "domain_counts": global_domain,
+                                 "padding_groups": padded_groups - len(source_keys), "domain_counts": global_domain,
                                  "category_counts": global_category, "all_candidate_rows": True,
                                  "candidate_deletion": False, "candidate_truncation": False})
                 print(json.dumps(entry, sort_keys=True), flush=True)
-                if epoch % 2 == 0:
+                if epoch % 2 == 0 or (args.allow_short and epoch == run_epochs):
                     save_checkpoint(out / f"checkpoint_l88_epoch{epoch:03d}.pt", sidecar, injector,
                                     optimizer, scheduler, epoch, optimizer_step, args, phase, world)
             if world > 1:
                 dist.barrier()
             if not global_finite:
                 raise FloatingPointError(f"nonfinite distributed epoch {epoch}")
-        if seen_domains != {"refer_kitti_v1", "refer_kitti_v2"} or not {"positive", "multi_positive", "inactive", "present_uncovered"}.issubset(seen_categories):
+        if not args.allow_short and (seen_domains != {"refer_kitti_v1", "refer_kitti_v2"} or not {"positive", "multi_positive", "inactive", "present_uncovered"}.issubset(seen_categories)):
             raise AssertionError(f"L88 strata coverage drift domains={seen_domains} categories={seen_categories}")
         if world > 1:
             dist.barrier()
@@ -826,7 +834,7 @@ def run_distributed(args: argparse.Namespace) -> int:
                 "format": "locatemot-l88-full-rmot-training-v2", "status": "complete",
                 "stage": "L88 40-epoch RMOT-only LoRA plus sidecar training", "command": command,
                 "cwd": str(WORK_ROOT), "luna_thread": THREAD, "seed": int(args.seed),
-                "epochs": 40, "optimizer_steps": optimizer_step, "world_size": world,
+                "epochs": run_epochs, "optimizer_steps": optimizer_step, "world_size": world,
                 "effective_frame_group_batch": world * accumulation, "accumulation_steps": accumulation,
                 "cache_summary_sha256": reader.summary_sha256, "lora_manifest": injector.manifest(),
                 "sidecar_parameters": sidecar.parameter_report(), "checkpoints": checkpoints,
@@ -850,7 +858,7 @@ def run_distributed(args: argparse.Namespace) -> int:
                 "wall_seconds": time.perf_counter() - started, "peak_memory_bytes": payload["peak_memory_bytes"],
             })
             write_json(out / "status.json", {"format": "locatemot-l88-training-status-v2", "status": "complete",
-                                             "epochs": 40, "optimizer_steps": optimizer_step, "checkpoint_count": len(checkpoints),
+                                             "epochs": run_epochs, "optimizer_steps": optimizer_step, "checkpoint_count": len(checkpoints),
                                              "world_size": world, "both_domains": True, "all_four_categories": True,
                                              "candidate_deletion": False, "candidate_truncation": False,
                                              "screening_gt_used": False, "official_test_labels_read": False,
