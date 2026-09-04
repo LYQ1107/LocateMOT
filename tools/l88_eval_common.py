@@ -262,6 +262,7 @@ def score_label_free_group(group: LabelFreeGroup, runtime: L88GroundingRuntime,
                 "declared_category": str(labels.get("declared_category", "unknown")),
                 "label_source": str(labels["label_source"]),
             })
+        records.append(record)
     del output, z1
     return records
 
