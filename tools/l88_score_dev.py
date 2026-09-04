@@ -39,6 +39,10 @@ def main() -> int:
     parser.add_argument("--out", type=Path, required=True)
     parser.add_argument("--device", default="cuda:0")
     parser.add_argument("--query-tile", type=int, default=4)
+    parser.add_argument("--max-checkpoints", type=int, default=0,
+                        help="targeted regression limit; zero means all registered checkpoints")
+    parser.add_argument("--max-groups", type=int, default=0,
+                        help="targeted regression limit; zero means all registered dev groups")
     args = parser.parse_args()
     out = args.out.resolve()
     if out.exists() and any(out.iterdir()):
@@ -65,22 +69,26 @@ def main() -> int:
         actual_epochs = [int(path.stem.split("epoch")[-1]) for path in checkpoint_paths]
         if actual_epochs != expected_epochs:
             raise AssertionError(f"L88 even checkpoint contract drift: {actual_epochs}")
+        if int(args.max_checkpoints) < 0 or int(args.max_groups) < 0:
+            raise ValueError("targeted limits must be nonnegative")
+        selected_checkpoints = checkpoint_paths[:int(args.max_checkpoints)] if args.max_checkpoints else checkpoint_paths
         reader = EncoderCacheReader(args.cache)
         store = L88ClipStore(L85_CACHE, load_cache_into_ram=False)
         dev_keys = [str(value) for value in store.dev_keys]
         if len(dev_keys) != 138:
             raise AssertionError(f"L88 dev group count drift: {len(dev_keys)}")
-        expected_dev_records = sum(len(store.groups[key]["queries"]) for key in dev_keys)
-        if expected_dev_records != 498:
+        selected_dev_keys = dev_keys[:int(args.max_groups)] if args.max_groups else dev_keys
+        expected_dev_records = sum(len(store.groups[key]["queries"]) for key in selected_dev_keys)
+        if not args.max_groups and expected_dev_records != 498:
             raise AssertionError(f"L88 dev query record count drift: {expected_dev_records}")
         records_path = out / "score_records.jsonl"
         summary_rows: list[dict[str, Any]] = []
         runtime, injector, base_digest = make_runtime(device)
         with records_path.open("w", encoding="utf-8") as handle:
-            for checkpoint_path in checkpoint_paths:
+            for checkpoint_path in selected_checkpoints:
                 sidecar, package_info = load_checkpoint_into(runtime, injector, checkpoint_path, device)
                 checkpoint_records: list[dict[str, Any]] = []
-                for index, group_key in enumerate(dev_keys):
+                for index, group_key in enumerate(selected_dev_keys):
                     group = build_label_free_group(store, group_key, temporal_enabled=True)
                     try:
                         values = score_label_free_group(
@@ -97,13 +105,18 @@ def main() -> int:
                             checkpoint_records.append(row)
                     finally:
                         release_group(store, group)
-                    if (index + 1) % 25 == 0:
-                        print(f"[l88-dev] epoch={package_info['epoch']} group={index + 1}/{len(dev_keys)} elapsed={time.perf_counter()-started:.1f}s", flush=True)
-                if len(checkpoint_records) != expected_dev_records or len({str(row["unit_key"]) for row in checkpoint_records}) != len(checkpoint_records):
-                    raise AssertionError(f"L88 dev record count/key drift epoch={package_info['epoch']}")
+                    if (index + 1) % 25 == 0 or index + 1 == len(selected_dev_keys):
+                        print(f"[l88-dev] epoch={package_info['epoch']} group={index + 1}/{len(selected_dev_keys)} elapsed={time.perf_counter()-started:.1f}s", flush=True)
+                unique_keys = {str(row["unit_key"]) for row in checkpoint_records}
+                if len(checkpoint_records) != expected_dev_records or len(unique_keys) != len(checkpoint_records):
+                    raise AssertionError(
+                        f"L88 dev record count/key drift epoch={package_info['epoch']} "
+                        f"actual={len(checkpoint_records)} expected={expected_dev_records} "
+                        f"unique={len(unique_keys)}"
+                    )
                 measured = metric(checkpoint_records, 0.0, -1.0, 0.0)
                 summary_rows.append({"checkpoint": package_info, "record_count": len(checkpoint_records),
-                                     "group_count": len(dev_keys), "unfitted_reference_metrics": measured,
+                                     "group_count": len(selected_dev_keys), "unfitted_reference_metrics": measured,
                                      "candidate_rows_retained": True, "candidate_deletion": False,
                                      "candidate_truncation": False, "labels_scope": "fit/dev only"})
                 del sidecar
@@ -114,12 +127,13 @@ def main() -> int:
         cheap = {
             "format": "locatemot-l88-cheap-dev-score-v1", "status": "complete",
             "stage": "internal fit/dev checkpoint shortlist; thresholds not selected here",
-            "checkpoint_count": len(summary_rows), "dev_group_count": len(dev_keys),
+            "checkpoint_count": len(summary_rows), "dev_group_count": len(selected_dev_keys),
             "dev_record_count_per_checkpoint": [row["record_count"] for row in summary_rows],
             "checkpoint_summaries": summary_rows,
             "score_records": str(records_path.resolve()), "score_records_sha256": sha256(records_path),
             "base_detector_digest": base_digest, "adapter_target_manifest": injector.manifest(),
             "query_tile": int(args.query_tile), "cache_summary_sha256": reader.summary_sha256,
+            "targeted_limits": {"max_checkpoints": int(args.max_checkpoints), "max_groups": int(args.max_groups)},
             "fit_dev_labels_only": True, "fixed_calibration_read": False, "fixed_validation_read": False,
             "screening_gt_used": False, "official_test_labels_read": False,
             "ordinary_mot_ovmot_touched": False, "hota_trackeval_run": False,
@@ -146,7 +160,7 @@ def main() -> int:
             "no_hota_or_trackeval": True, "z1_representation_changed": True,
         })
         write_json(out / "status.json", {"format": "locatemot-l88-cheap-dev-status-v1", "status": "complete",
-                                         "checkpoint_count": len(summary_rows), "dev_group_count": len(dev_keys),
+                                         "checkpoint_count": len(summary_rows), "dev_group_count": len(selected_dev_keys),
                                          "record_count": sum(row["record_count"] for row in summary_rows),
                                          "candidate_deletion": False, "candidate_truncation": False,
                                          "screening_gt_used": False, "official_test_labels_read": False,
