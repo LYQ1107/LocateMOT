@@ -70,14 +70,15 @@ def main() -> int:
         dev_keys = [str(value) for value in store.dev_keys]
         if len(dev_keys) != 138:
             raise AssertionError(f"L88 dev group count drift: {len(dev_keys)}")
+        expected_dev_records = sum(len(store.groups[key]["queries"]) for key in dev_keys)
+        if expected_dev_records != 498:
+            raise AssertionError(f"L88 dev query record count drift: {expected_dev_records}")
         records_path = out / "score_records.jsonl"
         summary_rows: list[dict[str, Any]] = []
-        all_records_by_checkpoint: dict[str, list[dict[str, Any]]] = defaultdict(list)
         runtime, injector, base_digest = make_runtime(device)
         with records_path.open("w", encoding="utf-8") as handle:
             for checkpoint_path in checkpoint_paths:
                 sidecar, package_info = load_checkpoint_into(runtime, injector, checkpoint_path, device)
-                checkpoint_key = str(checkpoint_path.resolve())
                 checkpoint_records: list[dict[str, Any]] = []
                 for index, group_key in enumerate(dev_keys):
                     group = build_label_free_group(store, group_key, temporal_enabled=True)
@@ -98,9 +99,8 @@ def main() -> int:
                         release_group(store, group)
                     if (index + 1) % 25 == 0:
                         print(f"[l88-dev] epoch={package_info['epoch']} group={index + 1}/{len(dev_keys)} elapsed={time.perf_counter()-started:.1f}s", flush=True)
-                if len(checkpoint_records) == 0 or len({str(row["unit_key"]) for row in checkpoint_records}) != len(checkpoint_records):
+                if len(checkpoint_records) != expected_dev_records or len({str(row["unit_key"]) for row in checkpoint_records}) != len(checkpoint_records):
                     raise AssertionError(f"L88 dev record count/key drift epoch={package_info['epoch']}")
-                all_records_by_checkpoint[checkpoint_key].extend(checkpoint_records)
                 measured = metric(checkpoint_records, 0.0, -1.0, 0.0)
                 summary_rows.append({"checkpoint": package_info, "record_count": len(checkpoint_records),
                                      "group_count": len(dev_keys), "unfitted_reference_metrics": measured,
