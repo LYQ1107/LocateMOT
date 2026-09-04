@@ -374,7 +374,12 @@ def materialize_gt(scope: str, dataset: str, video_queries: dict[str, list[dict[
             (gt_dir / "gt.txt").write_text("".join(lines))
             (gt_dir / "seqinfo.ini").write_text(
                 "[Sequence]\n" f"name={seq}\n" "imDir=img1\n" "frameRate=10\n"
-                f"seqLength={len(native_frames)}\n" f"imWidth={image_size[0]}\n"
+                # L69 stores the candidate-bearing frames, which may be a
+                # sparse subset of the original video frame IDs.  TrackEval
+                # timesteps are 1-based original frame numbers, so the
+                # sequence length is the largest native frame ID plus one,
+                # not the number of observed bank rows.
+                f"seqLength={max(native_frames) + 1}\n" f"imWidth={image_size[0]}\n"
                 f"imHeight={image_size[1]}\n" "imExt=.png\n")
             query_audits.append({"dataset": dataset, "video": video, "query_id": qid,
                                  "sequence": seq, "gt_rows": gt_rows,
