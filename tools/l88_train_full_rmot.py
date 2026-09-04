@@ -101,7 +101,8 @@ class EncoderCacheReader:
             path = (self.root / str(row["file"])).resolve()
             if key in self.entries and self.entries[key] != path:
                 raise AssertionError(f"duplicate L88 encoder cache key: {key}")
-            if row.get("labels_in_cache") or not row.get("query_independent", False):
+            independent = bool(row.get("query_independent", row.get("candidate_independent", False)))
+            if row.get("labels_in_cache") or not independent:
                 raise AssertionError(f"invalid L88 cache manifest flags: {key}")
             self.entries[key] = path
         if len(self.entries) != int(summary.get("entry_count", -1)):
@@ -114,7 +115,7 @@ class EncoderCacheReader:
         # The manifest was indexed once above.  Loading the indexed file
         # directly avoids rescanning a 1.6 MB manifest for every frame/query.
         item = torch.load(path, map_location="cpu", weights_only=False)
-        if item.get("labels_in_cache") or not item.get("query_independent"):
+        if item.get("labels_in_cache") or not bool(item.get("query_independent", item.get("candidate_independent", False))):
             raise AssertionError(f"invalid L88 cache flags: {path}")
         if not self.REQUIRED.issubset(item):
             raise AssertionError(f"L88 cache item missing keys: {sorted(self.REQUIRED - set(item))}")
