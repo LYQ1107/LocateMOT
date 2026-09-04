@@ -50,6 +50,53 @@ def copy_tree(source: Path, destination: Path) -> None:
     shutil.copytree(source, destination, copy_function=shutil.copy2, dirs_exist_ok=True)
 
 
+def _max_timestep(path: Path) -> int:
+    maximum = 0
+    if not path.is_file():
+        return maximum
+    for line in path.read_text().splitlines():
+        if not line.strip():
+            continue
+        try:
+            maximum = max(maximum, int(str(line).split(",", 1)[0]))
+        except (TypeError, ValueError) as exc:
+            raise AssertionError(f"invalid TrackEval timestep in {path}: {line!r}") from exc
+    return maximum
+
+
+def repair_sparse_seqinfo(gt_root: Path, tracker_root: Path) -> None:
+    """Make merged metadata cover sparse original-frame timesteps.
+
+    The completed video parts predate the sparse-frame fix in the inference
+    writer.  This repair only writes new merge outputs and uses the existing
+    GT/tracker text to raise seqLength to the largest legal 1-based timestep;
+    it never changes boxes, IDs, or prediction rows.
+    """
+    if not gt_root.is_dir():
+        raise FileNotFoundError(gt_root)
+    for sequence_dir in sorted(gt_root.iterdir()):
+        if not sequence_dir.is_dir():
+            continue
+        seqinfo = sequence_dir / "seqinfo.ini"
+        if not seqinfo.is_file():
+            raise FileNotFoundError(seqinfo)
+        maximum = max(_max_timestep(sequence_dir / "gt.txt"),
+                      _max_timestep(tracker_root / f"{sequence_dir.name}.txt"))
+        if maximum <= 0:
+            continue
+        lines = seqinfo.read_text().splitlines()
+        replaced = False
+        for index, line in enumerate(lines):
+            if line.startswith("seqLength="):
+                current = int(line.split("=", 1)[1])
+                lines[index] = f"seqLength={max(current, maximum)}"
+                replaced = True
+                break
+        if not replaced:
+            raise AssertionError(f"seqLength missing from {seqinfo}")
+        seqinfo.write_text("\n".join(lines) + "\n")
+
+
 def run(args: argparse.Namespace) -> int:
     if Path.cwd().resolve() != WORK_ROOT:
         raise RuntimeError(f"wrong cwd: {Path.cwd()}")
@@ -121,6 +168,7 @@ def run(args: argparse.Namespace) -> int:
                 dest_trackers = destination / "trackers"
                 copy_tree(source_gt, dest_gt)
                 copy_tree(source_trackers, dest_trackers)
+                repair_sparse_seqinfo(dest_gt, dest_trackers / "l88/data")
                 source_audit = source / "prediction_audits.jsonl"
                 if source_audit.is_file():
                     with (destination / "prediction_audits.jsonl").open("a") as handle:
