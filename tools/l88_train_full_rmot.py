@@ -190,7 +190,14 @@ def cache_key(dataset: str, video: str, frame_id: int) -> str:
 
 def encode_z1(runtime: Any, reader: EncoderCacheReader, store: L88ClipStore,
               frame: Any, device: torch.device, *, query_tile: int, bf16: bool) -> torch.Tensor:
-    batch = store.bank_store.build_unit(store.groups[str(frame.group_key)]["queries"][0])
+    # ``build_clip`` may retain only the query IDs shared by the current and
+    # historical frame.  Use one of those requested rows for the audit key;
+    # using the first group query here can disagree only in the query-id field
+    # even though the native bank offsets and candidate order are identical.
+    query_rows = {int(row["query_id"]): row for row in store.groups[str(frame.group_key)]["queries"]}
+    if not frame.query_ids or int(frame.query_ids[0]) not in query_rows:
+        raise AssertionError(f"L88 frame query selection drift: {frame.group_key}")
+    batch = store.bank_store.build_unit(query_rows[int(frame.query_ids[0])])
     if int(batch.candidate_count) != len(frame.row_offsets) or batch.row_offsets != frame.row_offsets:
         raise AssertionError(f"L88 frame/bank row contract drift: {frame.group_key}")
     if batch.row_keys != frame.row_keys:
