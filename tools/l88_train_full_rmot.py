@@ -26,6 +26,7 @@ from typing import Any
 
 import numpy as np
 import torch
+import torch.distributed as dist
 
 
 WORK_ROOT = Path(__file__).resolve().parents[1]
@@ -75,6 +76,52 @@ def memory_bytes(device: torch.device) -> int | None:
     if device.type != "cuda":
         return None
     return int(torch.cuda.max_memory_allocated(device))
+
+
+def distributed_context(args: argparse.Namespace) -> tuple[int, int, int, torch.device]:
+    """Initialize the registered one-process or manual world-size context."""
+    world = int(os.environ.get("WORLD_SIZE", "1"))
+    rank = int(os.environ.get("RANK", "0"))
+    local_rank = int(os.environ.get("LOCAL_RANK", "0"))
+    if world > 1:
+        if not torch.cuda.is_available():
+            raise RuntimeError("L88 distributed run requires CUDA")
+        if not dist.is_initialized():
+            dist.init_process_group(backend="nccl", init_method="env://")
+        torch.cuda.set_device(local_rank)
+        return world, rank, local_rank, torch.device("cuda", local_rank)
+    device = torch.device(str(args.device))
+    if device.type == "cuda":
+        if not torch.cuda.is_available():
+            raise RuntimeError("CUDA unavailable for L88")
+        torch.cuda.set_device(device)
+    return 1, 0, 0, device
+
+
+def reduce_int(value: int, device: torch.device, world: int) -> int:
+    tensor = torch.tensor(int(value), dtype=torch.int64, device=device)
+    if world > 1:
+        dist.all_reduce(tensor, op=dist.ReduceOp.SUM)
+    return int(tensor.detach().cpu())
+
+
+def reduce_float(value: float, device: torch.device, world: int) -> float:
+    tensor = torch.tensor(float(value), dtype=torch.float64, device=device)
+    if world > 1:
+        dist.all_reduce(tensor, op=dist.ReduceOp.SUM)
+        tensor /= float(world)
+    return float(tensor.detach().cpu())
+
+
+def sync_gradients(parameters: list[torch.nn.Parameter], device: torch.device, world: int) -> None:
+    """Average every adapter/sidecar gradient, including unused zero grads."""
+    if world <= 1:
+        return
+    for parameter in parameters:
+        if parameter.grad is None:
+            parameter.grad = torch.zeros_like(parameter)
+        dist.all_reduce(parameter.grad, op=dist.ReduceOp.SUM)
+        parameter.grad.div_(float(world))
 
 
 class EncoderCacheReader:
@@ -221,7 +268,7 @@ def grad_report(sidecar: torch.nn.Module, injector: Any, model: torch.nn.Module)
 def save_checkpoint(path: Path, sidecar: L88FullRMOT, injector: Any,
                     optimizer: torch.optim.Optimizer, scheduler: Any,
                     epoch: int, optimizer_step: int, args: argparse.Namespace,
-                    phase: str) -> dict[str, Any]:
+                    phase: str, world_size: int = 1) -> dict[str, Any]:
     if path.exists():
         raise FileExistsError(f"refusing to overwrite L88 checkpoint: {path}")
     package = {
@@ -233,7 +280,7 @@ def save_checkpoint(path: Path, sidecar: L88FullRMOT, injector: Any,
         "optimizer_state_dict": optimizer.state_dict(),
         "scheduler_state_dict": scheduler.state_dict(),
         "epoch": int(epoch), "optimizer_step": int(optimizer_step), "phase": str(phase),
-        "seed": SEED, "args": vars(args),
+        "seed": SEED, "world_size": int(world_size), "args": vars(args),
         "manifest_sha256": MANIFEST_SHA,
         "cache_summary_sha256": file_sha(L88_CACHE / "summary.json"),
         "groundingdino_lora_used": True, "groundingdino_backbone_trainable": False,
@@ -559,6 +606,280 @@ def run(args: argparse.Namespace) -> int:
             torch.cuda.empty_cache()
 
 
+def run_distributed(args: argparse.Namespace) -> int:
+    """Run the preregistered 40-epoch job with synchronous manual DDP."""
+    out = args.out.resolve()
+    if out.exists() and any(out.iterdir()):
+        raise FileExistsError(f"refusing nonempty L88 training output: {out}")
+    out.mkdir(parents=True, exist_ok=True)
+    if int(args.seed) != SEED:
+        raise AssertionError(f"L88 seed is fixed at {SEED}")
+    if int(args.epochs) != 40:
+        raise AssertionError("registered L88 run requires exactly 40 epochs")
+    command = " ".join([sys.executable, *sys.argv])
+    started = time.perf_counter()
+    world = rank = local_rank = 1
+    device = torch.device("cpu")
+    runtime = None
+    store = None
+    reader = None
+    sidecar = None
+    trace: list[dict[str, Any]] = []
+    sampling: list[dict[str, Any]] = []
+    seen_categories: set[str] = set()
+    seen_domains: set[str] = set()
+    try:
+        if Path.cwd().resolve() != WORK_ROOT:
+            raise RuntimeError(f"wrong cwd: {Path.cwd()}")
+        if file_sha(MANIFEST) != MANIFEST_SHA:
+            raise AssertionError("fixed manifest SHA drift")
+        world, rank, local_rank, device = distributed_context(args)
+        if world > 4:
+            raise AssertionError(f"L88 maximum world size is 4, got {world}")
+        if device.type != "cuda":
+            raise RuntimeError("L88 registered full training requires CUDA")
+        torch.cuda.reset_peak_memory_stats(device)
+        set_seed(args.seed)
+        reader = EncoderCacheReader(args.cache)
+        store = L88ClipStore(L85_CACHE, load_cache_into_ram=False)
+        keys = [str(value) for value in store.train_keys]
+        if len(keys) != 524:
+            raise AssertionError(f"L88 train group count drift: {len(keys)}")
+        runtime_cls = __import__("locatemot.rmot.l88_grounding_runtime", fromlist=["L88GroundingRuntime"]).L88GroundingRuntime
+        runtime = runtime_cls(device)
+        injector = inject_lora(runtime.model)
+        runtime.model.eval()
+        sidecar = L88FullRMOT(L86Config()).to(device=device, dtype=torch.float32)
+        sidecar.train()
+        trainable = list(injector.parameters()) + list(sidecar.parameters())
+        if not trainable or any(not value.requires_grad for value in trainable):
+            raise AssertionError("L88 trainable parameter contract failed")
+        if any(value.requires_grad for name, value in runtime.model.named_parameters()
+               if id(value) not in {id(x) for x in injector.parameters()}):
+            raise AssertionError("a frozen GroundingDINO parameter is trainable")
+        optimizer = torch.optim.AdamW([
+            {"params": list(sidecar.parameters()), "lr": 2e-4, "weight_decay": 1e-2},
+            {"params": list(injector.parameters()), "lr": 1e-4, "weight_decay": 0.0},
+        ], betas=(0.9, 0.999))
+        accumulation = max(1, int(math.ceil(8.0 / float(world))))
+        base_local = int(math.ceil(len(keys) / float(world)))
+        local_groups = int(math.ceil(base_local / float(accumulation)) * accumulation)
+        padded_groups = local_groups * world
+        steps_per_epoch = local_groups // accumulation
+        total_optimizer_steps = steps_per_epoch * 40
+        warmup_steps = max(1, int(round(total_optimizer_steps * 0.05)))
+        def lr_lambda(step: int) -> float:
+            if step < warmup_steps:
+                return max(1e-8, float(step + 1) / float(warmup_steps))
+            progress = (step - warmup_steps) / max(1, total_optimizer_steps - warmup_steps)
+            return 0.5 * (1.0 + math.cos(math.pi * min(1.0, progress)))
+        scheduler = torch.optim.lr_scheduler.LambdaLR(optimizer, lr_lambda)
+        if rank == 0:
+            write_json(out / "config.json", {
+                "format": "locatemot-l88-training-config-v2", "status": "running",
+                "stage": "L88 40-epoch RMOT-only LoRA plus sidecar training",
+                "command": command, "cwd": str(WORK_ROOT), "luna_thread": THREAD,
+                "seed": int(args.seed), "epochs": 40, "device": str(device),
+                "world_size": world, "local_rank": local_rank,
+                "cuda_visible_devices": os.environ.get("CUDA_VISIBLE_DEVICES"),
+                "effective_frame_group_batch": 8, "accumulation_steps": accumulation,
+                "local_groups": local_groups, "padded_global_groups": padded_groups,
+                "padding_groups_per_epoch": padded_groups - len(keys), "query_tile": int(args.query_tile),
+                "bf16_requested": bool(args.bf16), "bf16_used": False,
+                "precision_deviation": "FP32 required: local MMCV ms_deform_attn_forward_cuda does not implement BFloat16",
+                "cache": str(args.cache.resolve()), "cache_summary_sha256": reader.summary_sha256,
+                "manifest_sha256": MANIFEST_SHA, "curriculum": {"S": [1, 8], "T": [9, 20], "J": [21, 40]},
+                "optimizer": {"sidecar_lr": 2e-4, "lora_lr": 1e-4, "sidecar_weight_decay": 1e-2,
+                              "lora_weight_decay": 0.0, "warmup_fraction": 0.05, "schedule": "cosine",
+                              "gradient_clip": 1.0}, "lora_manifest": injector.manifest(),
+                "sidecar_parameters": sidecar.parameter_report(),
+                "fit_scope": "L49 fit only; V1/V2; no calibration/validation/screening/official-test labels",
+                "same_class_hard_negative_metadata": "unavailable; L87-A all-negative target-bag fallback",
+                "candidate_rows_retained": True, "candidate_deletion": False, "candidate_truncation": False,
+                "groundingdino_lora_used": True, "groundingdino_backbone_trainable": False,
+                "bert_body_trainable": False, "bbox_head_trainable": False, "decoder_layers_2_to_6_trainable": False,
+                "screening_gt_used": False, "official_test_labels_read": False,
+                "ordinary_mot_ovmot_touched": False, "hota_trackeval_run": False,
+                "token_span_region_alignment": "UNALIGNED", "static_motion_alignment": "UNALIGNED",
+            })
+        if world > 1:
+            dist.barrier()
+        optimizer.zero_grad(set_to_none=True)
+        optimizer_step = 0
+        amp_enabled = bool(args.bf16 and device.type == "cuda")
+        for epoch in range(1, 41):
+            phase = "S" if epoch <= 8 else ("T" if epoch <= 20 else "J")
+            temporal_enabled = epoch > 8
+            schedule = list(keys)
+            random.Random(int(args.seed) + epoch).shuffle(schedule)
+            pad_count = padded_groups - len(schedule)
+            if pad_count:
+                schedule.extend(schedule[:pad_count])
+            if len(schedule) != padded_groups:
+                raise AssertionError("L88 distributed schedule padding drift")
+            local_keys = schedule[rank::world]
+            if len(local_keys) != local_groups:
+                raise AssertionError("L88 local schedule length drift")
+            epoch_loss = 0.0; epoch_groups = 0; finite_groups = 0
+            epoch_optimizer_steps = 0; epoch_grad_entries = 0; epoch_grad_nonzero = 0
+            epoch_category = {"positive": 0, "multi_positive": 0, "inactive": 0, "present_uncovered": 0}
+            epoch_domain = {"refer_kitti_v1": 0, "refer_kitti_v2": 0}
+            epoch_pos = epoch_neg = epoch_masked = epoch_temporal_pairs = 0
+            for group_index, anchor in enumerate(local_keys):
+                clip = store.build_clip(anchor, temporal_enabled=temporal_enabled, clip_length=4)
+                current = clip[-1]
+                previous_outputs: list[tuple[dict[str, torch.Tensor], list[dict[str, Any]]]] = []
+                try:
+                    with torch.autocast(device_type="cuda", dtype=torch.bfloat16, enabled=amp_enabled):
+                        current_z1 = encode_z1(runtime, reader, store, current, device,
+                                               query_tile=int(args.query_tile), bf16=args.bf16)
+                        current_output = sidecar_forward(sidecar, current, current_z1, device, temporal_enabled)
+                        for previous in clip[:-1]:
+                            previous_z1 = encode_z1(runtime, reader, store, previous, device,
+                                                    query_tile=int(args.query_tile), bf16=args.bf16)
+                            previous_output = sidecar_forward(sidecar, previous, previous_z1, device, temporal_enabled)
+                            previous_outputs.append((previous_output, previous.labels))
+                            del previous_z1
+                        loss, info = l87a_loss(current_output, current.labels,
+                                               current.current_observation.to(device), previous_outputs,
+                                               temporal_enabled=temporal_enabled)
+                        if not bool(torch.isfinite(loss)):
+                            raise FloatingPointError(f"nonfinite L88 loss epoch={epoch} group={anchor}")
+                        (loss / float(accumulation)).backward()
+                    epoch_loss += float(loss.detach()); epoch_groups += 1; finite_groups += 1
+                    epoch_pos += int(info.get("positive_count", 0)); epoch_neg += int(info.get("negative_target_bags", 0))
+                    epoch_masked += int(info.get("masked_missing_count", 0)); epoch_temporal_pairs += int(info.get("positive_pairs", 0))
+                    epoch_domain[str(current.dataset)] += 1
+                    seen_domains.add(str(current.dataset))
+                    for label in current.labels:
+                        category = str(label["category"])
+                        epoch_category[category] += 1; seen_categories.add(category)
+                    should_step = ((group_index + 1) % accumulation == 0)
+                    if should_step:
+                        gradients = grad_report(sidecar, injector, runtime.model)
+                        if not gradients["all_finite"]:
+                            raise FloatingPointError(f"nonfinite L88 gradient epoch={epoch} group={anchor}")
+                        if gradients["unapproved_detector_gradients"]:
+                            raise AssertionError(f"unapproved detector gradients: {gradients['unapproved_detector_gradients'][:5]}")
+                        sync_gradients(trainable, device, world)
+                        synced = grad_report(sidecar, injector, runtime.model)
+                        if not synced["all_trainable_nonzero"] or not synced["all_finite"]:
+                            raise FloatingPointError(f"zero/nonfinite synchronized L88 gradient epoch={epoch} group={anchor}")
+                        torch.nn.utils.clip_grad_norm_(trainable, 1.0)
+                        optimizer.step(); optimizer.zero_grad(set_to_none=True); scheduler.step()
+                        optimizer_step += 1; epoch_optimizer_steps += 1
+                        epoch_grad_entries += int(synced["lora"]["gradient_entries"] + synced["sidecar_nonzero_gradient_entries"])
+                        epoch_grad_nonzero += int(synced["lora"]["nonzero_gradient_entries"] + synced["sidecar_nonzero_gradient_entries"])
+                    del current_z1, current_output, previous_outputs, clip
+                    store.release_loaded_cache_items(); gc.collect()
+                    if device.type == "cuda": torch.cuda.empty_cache()
+                except Exception:
+                    store.release_loaded_cache_items()
+                    raise
+            # All ranks participate in these reductions at the same point.
+            global_loss = reduce_float(epoch_loss / max(1, epoch_groups), device, world)
+            global_groups = reduce_int(epoch_groups, device, world)
+            global_finite = reduce_int(int(finite_groups == epoch_groups), device, world) == world
+            global_pos = reduce_int(epoch_pos, device, world); global_neg = reduce_int(epoch_neg, device, world)
+            global_masked = reduce_int(epoch_masked, device, world); global_temporal = reduce_int(epoch_temporal_pairs, device, world)
+            global_grad_entries = reduce_int(epoch_grad_entries, device, world); global_grad_nonzero = reduce_int(epoch_grad_nonzero, device, world)
+            global_category = {key: reduce_int(value, device, world) for key, value in epoch_category.items()}
+            global_domain = {key: reduce_int(value, device, world) for key, value in epoch_domain.items()}
+            seen_domains.update(key for key, value in global_domain.items() if value > 0)
+            seen_categories.update(key for key, value in global_category.items() if value > 0)
+            global_peak = reduce_int(memory_bytes(device) or 0, device, world)
+            entry = {
+                "epoch": epoch, "phase": phase, "temporal_enabled": temporal_enabled,
+                "loss_mean": global_loss, "global_groups": global_groups, "finite_group_losses": global_finite,
+                "optimizer_steps_epoch": epoch_optimizer_steps, "optimizer_steps_total": optimizer_step,
+                "positive_rows": global_pos, "negative_target_bags": global_neg, "masked_missing_count": global_masked,
+                "temporal_identity_pairs": global_temporal, "category_counts": global_category,
+                "domain_counts": global_domain, "gradient_entries": global_grad_entries,
+                "nonzero_gradient_entries": global_grad_nonzero, "candidate_rows_retained": True,
+                "candidate_deletion": False, "candidate_truncation": False, "peak_memory_bytes_max": global_peak,
+                "world_size": world, "effective_frame_group_batch": world * accumulation,
+            }
+            if rank == 0:
+                trace.append(entry)
+                sampling.append({"epoch": epoch, "phase": phase, "seed": int(args.seed) + epoch,
+                                 "world_size": world, "local_groups": local_groups,
+                                 "padding_groups": padded_groups - len(keys), "domain_counts": global_domain,
+                                 "category_counts": global_category, "all_candidate_rows": True,
+                                 "candidate_deletion": False, "candidate_truncation": False})
+                print(json.dumps(entry, sort_keys=True), flush=True)
+                if epoch % 2 == 0:
+                    save_checkpoint(out / f"checkpoint_l88_epoch{epoch:03d}.pt", sidecar, injector,
+                                    optimizer, scheduler, epoch, optimizer_step, args, phase, world)
+            if world > 1:
+                dist.barrier()
+            if not global_finite:
+                raise FloatingPointError(f"nonfinite distributed epoch {epoch}")
+        if seen_domains != {"refer_kitti_v1", "refer_kitti_v2"} or not {"positive", "multi_positive", "inactive", "present_uncovered"}.issubset(seen_categories):
+            raise AssertionError(f"L88 strata coverage drift domains={seen_domains} categories={seen_categories}")
+        if world > 1:
+            dist.barrier()
+        if rank == 0:
+            checkpoints = [{"path": str(path.resolve()), "sha256": file_sha(path),
+                            "epoch": int(path.stem.split("epoch")[-1])}
+                           for path in sorted(out.glob("checkpoint_l88_epoch*.pt"))]
+            payload = {
+                "format": "locatemot-l88-full-rmot-training-v2", "status": "complete",
+                "stage": "L88 40-epoch RMOT-only LoRA plus sidecar training", "command": command,
+                "cwd": str(WORK_ROOT), "luna_thread": THREAD, "seed": int(args.seed),
+                "epochs": 40, "optimizer_steps": optimizer_step, "world_size": world,
+                "effective_frame_group_batch": world * accumulation, "accumulation_steps": accumulation,
+                "cache_summary_sha256": reader.summary_sha256, "lora_manifest": injector.manifest(),
+                "sidecar_parameters": sidecar.parameter_report(), "checkpoints": checkpoints,
+                "final_checkpoint": checkpoints[-1] if checkpoints else None,
+                "loss_trace": str((out / "loss_trace.json").resolve()),
+                "sampling_trace": str((out / "sampling_trace.json").resolve()), "trace": trace,
+                "candidate_rows_retained": True, "candidate_deletion": False, "candidate_truncation": False,
+                "groundingdino_lora_used": True, "groundingdino_backbone_trainable": False,
+                "bert_body_trainable": False, "bbox_head_trainable": False, "decoder_layers_2_to_6_trainable": False,
+                "bf16_used": False, "precision_deviation": "FP32 required by local MMCV deformable attention CUDA kernel",
+                "screening_gt_used": False, "official_test_labels_read": False,
+                "ordinary_mot_ovmot_touched": False, "hota_trackeval_run": False, "no_hota_or_trackeval": True,
+                "token_span_region_alignment": "UNALIGNED", "static_motion_alignment": "UNALIGNED",
+                "wall_seconds": time.perf_counter() - started, "peak_memory_bytes": max((x.get("peak_memory_bytes_max", 0) for x in trace), default=0),
+                "failure_root_cause": None, "next_action": "score all even checkpoints on registered internal dev groups",
+            }
+            write_json(out / "loss_trace.json", trace); write_json(out / "sampling_trace.json", sampling)
+            write_json(out / "metrics_l88_training.json", payload); write_json(out / "provenance.json", payload)
+            write_json(out / "config.json", json.loads((out / "config.json").read_text()) | {
+                "status": "complete", "optimizer_steps": optimizer_step, "checkpoints": checkpoints,
+                "wall_seconds": time.perf_counter() - started, "peak_memory_bytes": payload["peak_memory_bytes"],
+            })
+            write_json(out / "status.json", {"format": "locatemot-l88-training-status-v2", "status": "complete",
+                                             "epochs": 40, "optimizer_steps": optimizer_step, "checkpoint_count": len(checkpoints),
+                                             "world_size": world, "both_domains": True, "all_four_categories": True,
+                                             "candidate_deletion": False, "candidate_truncation": False,
+                                             "screening_gt_used": False, "official_test_labels_read": False,
+                                             "ordinary_mot_ovmot_touched": False, "hota_trackeval_run": False})
+        return 0
+    except Exception:
+        trace_text = traceback.format_exc()
+        if rank == 0:
+            (out / "INCOMPLETE.md").write_text("# L88 full RMOT training — INCOMPLETE\n\n" + trace_text)
+            write_json(out / "status.json", {"format": "locatemot-l88-training-status-v2", "status": "incomplete",
+                                             "command": command, "cwd": str(WORK_ROOT), "luna_thread": THREAD,
+                                             "failure_root_cause": "first traceback in INCOMPLETE.md",
+                                             "screening_gt_used": False, "official_test_labels_read": False,
+                                             "ordinary_mot_ovmot_touched": False, "hota_trackeval_run": False})
+        raise
+    finally:
+        if runtime is not None:
+            runtime.close()
+        if store is not None:
+            store.release_loaded_cache_items(); store.close()
+        if sidecar is not None:
+            del sidecar
+        gc.collect()
+        if device.type == "cuda":
+            torch.cuda.empty_cache()
+        if world > 1 and dist.is_initialized():
+            dist.destroy_process_group()
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--epochs", type=int, default=40)
@@ -567,7 +888,7 @@ def main() -> int:
     parser.add_argument("--out", type=Path, default=WORK_ROOT / "outputs/l88/train/joint40")
     parser.add_argument("--device", default="cuda:0")
     parser.add_argument("--query-tile", type=int, default=4)
-    parser.add_argument("--effective-clip-batch", type=int, default=8)
+    parser.add_argument("--effective-clip-batch", "--effective-frame-batch", dest="effective_clip_batch", type=int, default=8)
     parser.add_argument("--bf16", action="store_true")
     parser.add_argument("--max-groups", type=int, default=0)
     parser.add_argument("--allow-short", action="store_true")
@@ -576,7 +897,7 @@ def main() -> int:
         raise ValueError("query tile and effective batch must be positive")
     if args.allow_short and int(args.max_groups) == 0 and int(args.epochs) == 1:
         return short_contract(args, args.out.resolve())
-    return run(args)
+    return run_distributed(args)
 
 
 if __name__ == "__main__":
