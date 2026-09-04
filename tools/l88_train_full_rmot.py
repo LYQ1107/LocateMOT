@@ -152,24 +152,27 @@ def encode_z1(runtime: Any, reader: EncoderCacheReader, store: L88ClipStore,
     if int(item["feat"].shape[1]) != int(item["feat_pos"].shape[1]):
         raise AssertionError(f"L88 encoder feature/position length drift: {frame.group_key}")
     sentences = group_sentences(store, frame.group_key, [int(x) for x in frame.query_ids])
-    if int(query_tile) != len(sentences):
-        raise AssertionError(f"L88 query tile drift: {frame.group_key}")
-    replay = forward_l88_z1(
-        runtime.model, item, batch.boxes, sentences, device,
-        query_tile=len(sentences), autocast_bf16=bool(bf16),
-    )
-    z1 = replay["z1"].float()
+    tile = max(1, int(query_tile))
+    z1_parts: list[torch.Tensor] = []
+    for start in range(0, len(sentences), tile):
+        chunk = sentences[start:start + tile]
+        replay = forward_l88_z1(
+            runtime.model, item, batch.boxes, chunk, device,
+            query_tile=len(chunk), autocast_bf16=bool(bf16),
+        )
+        z1_parts.append(replay["z1"].float())
+        if bool(replay.get("candidate_deletion")) or bool(replay.get("candidate_truncation")):
+            raise AssertionError(f"L88 adapted Z1 dropped candidates: {frame.group_key}")
+        del replay
+    z1 = torch.cat(z1_parts, dim=0)
     expected = (len(sentences), int(frame.row_offsets.__len__()), 256)
     if tuple(z1.shape) != expected:
         raise AssertionError(f"L88 adapted Z1 shape drift: {frame.group_key}: {tuple(z1.shape)}")
     if not bool(torch.isfinite(z1).all()):
         raise FloatingPointError(f"nonfinite L88 adapted Z1: {frame.group_key}")
-    if bool(replay.get("candidate_deletion")) or bool(replay.get("candidate_truncation")):
-        raise AssertionError(f"L88 adapted Z1 dropped candidates: {frame.group_key}")
     # The sidecar only consumes Z1.  Explicitly discard the large adapted
     # memory/text objects before returning the differentiable Z1 tensor.
-    replay.pop("z1", None)
-    del replay, item, batch
+    del item, batch
     gc.collect()
     return z1
 
