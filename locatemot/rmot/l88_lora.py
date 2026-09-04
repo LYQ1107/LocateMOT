@@ -276,6 +276,16 @@ def inject_lora(model: nn.Module, *, rank: int = RANK, alpha: float = ALPHA,
         _register(model, path, "weight", rank=rank, alpha=alpha, targets=targets)
 
     injector = LoRAInjector(model, targets)
+    # Parametrizations are registered after the detector is built and moved to
+    # its execution device.  Explicitly place the newly-created FP32 adapter
+    # factors on that same device; otherwise a manual NCCL reduction would
+    # receive CPU gradients even though the live detector forward is on CUDA.
+    try:
+        model_device = next(model.parameters()).device
+    except StopIteration as exc:
+        raise AssertionError("L88 detector has no parameters") from exc
+    for target in targets:
+        target.lora.to(device=model_device)
     # No base parameter outside the adapter factors is allowed to train.
     for name, parameter in model.named_parameters():
         if ".parametrizations." in name and (name.endswith(".A") or name.endswith(".B")):
