@@ -230,7 +230,11 @@ def fit_rule_set(records: list[dict[str, Any]]) -> dict[str, Any]:
     for presence in GRID:
         for null_margin in NULL_MARGIN_GRID:
             for candidate in GRID:
-                measured = metric(records, candidate, presence, null_margin)
+                # The grid ranking only consumes aggregate fields.  Computing
+                # all V1/V2/category recursive summaries for every grid point
+                # is needlessly expensive; materialize those detailed slices
+                # once for the three selected rules below.
+                measured = _metric(records, candidate, presence, null_margin, stratify=False)
                 measured["rule"] = "grid_candidate_energy_null"
                 candidates.append(measured)
 
@@ -263,13 +267,18 @@ def fit_rule_set(records: list[dict[str, Any]]) -> dict[str, Any]:
     chosen = {"B": max(candidates, key=rule_b_key),
               "R": max(candidates, key=rule_r_key),
               "P": max(candidates, key=rule_p_key)}
-    return {
-        name: {
+    result: dict[str, dict[str, Any]] = {}
+    for name, value in chosen.items():
+        detailed = _metric(records, float(value["candidate_threshold"]),
+                           float(value["presence_threshold"]),
+                           float(value["null_margin"]), stratify=True)
+        detailed["rule"] = "grid_candidate_energy_null"
+        result[name] = {
             "rule": name,
             "candidate_threshold": float(value["candidate_threshold"]),
             "presence_threshold": float(value["presence_threshold"]),
             "null_margin": float(value["null_margin"]),
-            "metrics": value,
+            "metrics": detailed,
             "tie_rule": (
                 "B: higher target-bag F1, lower inactive false acceptance, higher distinct recall, "
                 "higher multi-target exact, fewer false bags, then lower grid thresholds" if name == "B" else
@@ -277,8 +286,7 @@ def fit_rule_set(records: list[dict[str, Any]]) -> dict[str, Any]:
                 "P: distinct recall>=0.60, higher precision, then higher recall/multi-target exact/lower inactive/fewer false bags"
             ),
         }
-        for name, value in chosen.items()
-    }
+    return result
 
 
 __all__ = ["GRID", "NULL_MARGIN_GRID", "corrected_emission_mask", "fit_rule_set",
