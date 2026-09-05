@@ -200,7 +200,8 @@ def run(args: argparse.Namespace) -> int:
                     aggregate_rules[rule][key] += int(counter[key])
                 aggregate_rules[rule].setdefault("source_parts", []).append(str(source.resolve()))
                 eval_summary[rule].setdefault(dataset, {
-                    "label_scope": "fit/dev only", "labels_attached_after_predictions": True,
+                    "label_scope": "fit/dev only" if args.scope == "dev" else "internal validation only",
+                    "labels_attached_after_predictions": True,
                     "query_gt_audits": [], "record_audits": [], "sequence_count": 0, "sequences": [],
                 })
                 part_eval = candidate.get("eval_summary", {}).get(rule, {}).get(dataset, {})
@@ -243,12 +244,15 @@ def run(args: argparse.Namespace) -> int:
             "groundingdino_backbone_trainable": False,
             "token_span_region_alignment": "UNALIGNED", "static_motion_alignment": "UNALIGNED",
             "manifest_sha256": MANIFEST_SHA, "persistent_dense_cache_written": False,
-            "failure_root_cause": None, "next_action": "run L88 dev TrackEval matrix on merged candidate",
+            "failure_root_cause": None,
+            "next_action": ("run L88 dev TrackEval matrix on merged candidate"
+                             if args.scope == "dev" else
+                             "run L88 internal TrackEval matrix on frozen candidate"),
         }
         write_json(out / "summary.json", payload); write_json(out / "provenance.json", payload)
         write_json(out / "status.json", {"format": payload["format"], "status": "complete",
                                           "full_video": True, "candidate_count": 1,
-                                          "source_part_count": 6, "screening_gt_used": False,
+                                          "source_part_count": expected_part_count, "screening_gt_used": False,
                                           "official_test_labels_read": False,
                                           "ordinary_mot_ovmot_touched": False,
                                           "hota_trackeval_run": False, "no_hota_or_trackeval": True})
