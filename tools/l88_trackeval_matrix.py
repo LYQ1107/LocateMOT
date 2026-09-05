@@ -153,12 +153,17 @@ def run(args: argparse.Namespace) -> int:
     started = time.perf_counter()
     results: list[dict[str, Any]] = []
     try:
+        scope_keys: set[str] = set()
         for root in roots:
             summary = json.loads((root / "summary.json").read_text())
             if summary.get("status") != "complete" or not summary.get("full_video"):
                 raise AssertionError(f"source is not complete full-video L88 output: {root}")
             if summary.get("screening_gt_used") or summary.get("official_test_labels_read"):
                 raise AssertionError(f"forbidden labels in source: {root}")
+            scope_key = str(summary.get("scope_key") or "")
+            if scope_key not in {"dev", "internal"}:
+                raise AssertionError(f"source scope is not explicit: {root}")
+            scope_keys.add(scope_key)
             for candidate in summary.get("candidates", []):
                 epoch = int(candidate["checkpoint"]["epoch"])
                 for rule in RULES:
@@ -166,9 +171,16 @@ def run(args: argparse.Namespace) -> int:
                         source = root / f"candidate_epoch{epoch:03d}" / rule / dataset
                         destination = out / root.name / f"candidate_epoch{epoch:03d}" / rule / dataset
                         results.append(run_dataset(source, destination, dataset, rule))
+        if len(scope_keys) != 1:
+            raise AssertionError(f"mixed L88 TrackEval scopes: {sorted(scope_keys)}")
+        scope_key = next(iter(scope_keys))
+        internal_scope = scope_key == "internal"
         payload = {
-            "format": "locatemot-l88-internal-dev-trackeval-matrix-v1", "status": "complete",
-            "evidence_type": "full-video internal fit/dev TrackEval for checkpoint/rule selection",
+            "format": f"locatemot-l88-{scope_key}-trackeval-matrix-v1", "status": "complete",
+            "scope": scope_key,
+            "evidence_type": ("full-video internal V1/V2 validation TrackEval for the frozen selected checkpoint/rule"
+                               if internal_scope else
+                               "full-video internal fit/dev TrackEval for checkpoint/rule selection"),
             "command": command, "cwd": str(WORK_ROOT), "luna_thread": THREAD,
             "inference_roots": [str(path) for path in roots],
             "source_summary_sha256": {str(path): sha256(path / "summary.json") for path in roots},
@@ -179,12 +191,18 @@ def run(args: argparse.Namespace) -> int:
             "candidate_truncation": False, "groundingdino_lora_used": True,
             "groundingdino_backbone_trainable": False,
             "token_span_region_alignment": "UNALIGNED", "static_motion_alignment": "UNALIGNED",
+            "fit_dev_labels_only": not internal_scope,
+            "internal_validation_labels_only": internal_scope,
             "wall_seconds": time.perf_counter() - started,
-            "failure_root_cause": None, "next_action": "select checkpoint/rule before fixed semantic validation",
+            "failure_root_cause": None,
+            "next_action": ("write the internal validation report; screening/official evaluation remains unauthorized"
+                             if internal_scope else
+                             "select checkpoint/rule before fixed semantic validation"),
         }
         write_json(out / "trackeval_matrix.json", payload)
         write_json(out / "provenance.json", payload)
         write_json(out / "status.json", {"format": payload["format"], "status": "complete",
+                                           "scope": scope_key,
                                            "result_count": len(results), "manifest_sha256": MANIFEST_SHA,
                                            "screening_gt_used": False, "official_test_labels_read": False,
                                            "ordinary_mot_ovmot_touched": False, "hota_trackeval_run": True,
@@ -193,7 +211,7 @@ def run(args: argparse.Namespace) -> int:
     except Exception:
         trace = traceback.format_exc()
         (out / "INCOMPLETE.md").write_text("# L88 internal dev TrackEval matrix — INCOMPLETE\n\n" + trace)
-        write_json(out / "status.json", {"format": "locatemot-l88-internal-dev-trackeval-matrix-v1",
+        write_json(out / "status.json", {"format": "locatemot-l88-trackeval-matrix-v1",
                                           "status": "incomplete", "command": command, "cwd": str(WORK_ROOT),
                                           "luna_thread": THREAD, "failure_root_cause": "first traceback in INCOMPLETE.md",
                                           "screening_gt_used": False, "official_test_labels_read": False,
