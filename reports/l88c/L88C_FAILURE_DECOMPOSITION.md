@@ -43,3 +43,19 @@ NULL acceptance, missing proposal coverage, or finite/reload failure.
 No screening or official-test labels were read. No official HOTA, fast
 screening, production RMOT, ordinary MOT, OVMOT or TAO result is claimed.
 The internal dev TrackEval numbers remain clearly scoped to dev only.
+
+## Final-internal repair update — 2026-09-06
+
+The historical control scope was corrected and the original L88 six-metric
+validation control now matches its authoritative 24-validation JSON. The
+frozen epoch30 / Rule B final internal replay completed with 86 V1 and 537 V2
+sequences. HOTA was `26.0715` V1 and `20.2144` V2, versus L87-A
+`28.5752/22.1300`; therefore both domains remain below the strongest prior
+same-scope reference. This is Case C: the deployment-contract bug was real and
+is now repaired, but it is not the main explanation for the broad LoRA failure.
+
+The fixed semantic gate remains failed on recall and multi-positive
+preservation. The primary root cause remains
+`correspondence_and_multi_positive_recall_insufficient_after_corrected_emission`.
+No new structural experiment was launched; supervisor approval is still
+required for any next route.

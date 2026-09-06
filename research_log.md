@@ -113,6 +113,30 @@ Concise experimental log (latest first).
   change, or new L88C training was run. The only next action is the single
   supervisor approval request in `reports/l88c/NEXT_TEST_APPROVAL_REQUEST.md`.
 
+## 2026-09-06 Stage L88C final-internal repair
+
+- Hypothesis/repair: the historical original/pure-gate controls had been
+  aggregated over 40 rows while the corrected final used the 24 validation
+  rows; the registered frozen epoch30/Rule B internal V1/V2 TrackEval was also
+  still missing. No training or selection change was authorized.
+- Code: added validated 16/24 historical splitting plus authoritative six-
+  metric assertion, frozen-selection inference mode, explicit internal video
+  scope checks, and a TrackEval wrapper using the existing `run_dataset()`.
+  Compile and both minimal contract checks passed. Code commit `e0e6a6b` was
+  pushed; final branch head after the storage report is `ece9fc5`.
+- Fixed semantic attempt2: 40 complete ordered rows and label-isolation audit;
+  corrected final exactly matched attempt1 (`recall=.354839`,
+  `precision=.207547`, `FP/frame=1.75`, `pred/positive=1.7097`,
+  `hard=.846154`, `multi=.305556`); gate remains `semantic_gate_fail`.
+- Final internal: frozen epoch30/Rule B, thresholds `1.0/-1.0/0.0`, V1 86
+  sequences and V2 537 sequences. TrackEval HOTA/DetA/AssA/DetRe/DetPr:
+  V1 `26.0715/19.2723/35.6429/58.0484/22.1956`; V2
+  `20.2144/12.0672/34.1349/29.7221/16.7767`. Both HOTA values are below
+  L87-A, so the result is Case C rather than deployment-bug recovery.
+- Boundaries: `zero_training=true`, screening/official-test labels false,
+  ordinary MOT/OVMOT untouched, no new structure launched. Full report:
+  `reports/l88c/L88C_FINAL_INTERNAL_VALIDATION.md`.
+
 ## 2026-09-06 — L88C recoverable storage cleanup
 
 - While the authorized zero-training L88C final-internal replay was running,
