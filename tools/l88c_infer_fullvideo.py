@@ -36,6 +36,10 @@ from l88c_eval_metrics import corrected_emission_mask
 WORK_ROOT = Path(__file__).resolve().parents[1]
 DATASETS = ("refer_kitti_v1", "refer_kitti_v2")
 RULES = ("B", "R", "P")
+EXPECTED_INTERNAL_VIDEOS = {
+    "refer_kitti_v1": ("0004", "0018"),
+    "refer_kitti_v2": ("0016", "0017", "0020"),
+}
 
 
 def _checkpoint_sha(candidate: dict[str, Any]) -> dict[str, Any]:
@@ -45,6 +49,52 @@ def _checkpoint_sha(candidate: dict[str, Any]) -> dict[str, Any]:
         raise AssertionError(f"shortlist checkpoint SHA drift: {path}")
     info["path"] = str(path)
     return info
+
+
+def load_frozen_selection_candidate(
+    selection_path: Path,
+) -> tuple[dict[str, Any], tuple[str, ...]]:
+    """Load the already frozen epoch-30 / Rule-B selection without refitting."""
+    selection_path = selection_path.resolve()
+    selection = json.loads(selection_path.read_text())
+    if selection.get("status") != "complete":
+        raise AssertionError("frozen L88C selection is incomplete")
+    if not bool(selection.get("selection_frozen_before_fixed_validation")):
+        raise AssertionError("L88C selection was not frozen before fixed validation")
+
+    final = selection.get("final_selection")
+    if not isinstance(final, dict):
+        raise AssertionError("L88C final_selection missing")
+    checkpoint_info = dict(final["checkpoint_info"])
+    rule_name = str(final["rule"])
+    rule_fit = dict(final["rule_fit"])
+    if int(checkpoint_info["epoch"]) != 30 or int(final["epoch"]) != 30:
+        raise AssertionError(f"frozen L88C epoch drift: {final.get('epoch')}")
+    if rule_name != "B":
+        raise AssertionError(f"frozen L88C rule drift: {rule_name}")
+    expected_thresholds = {
+        "candidate_threshold": 1.0,
+        "presence_threshold": -1.0,
+        "null_margin": 0.0,
+    }
+    for key, expected in expected_thresholds.items():
+        actual = float(rule_fit[key])
+        if actual != expected:
+            raise AssertionError(f"frozen L88C threshold drift {key}: {actual} != {expected}")
+
+    checkpoint_path = Path(str(checkpoint_info["path"])).resolve()
+    if sha256(checkpoint_path) != str(checkpoint_info["sha256"]):
+        raise AssertionError(f"frozen L88C checkpoint SHA drift: {checkpoint_path}")
+
+    candidate = {
+        "candidate_name": "l88c_frozen_final",
+        "checkpoint_info": checkpoint_info,
+        "rule_fits": {rule_name: rule_fit},
+        "selection_source": str(selection_path),
+        "selection_source_sha256": sha256(selection_path),
+        "selection_frozen_before_fixed_validation": True,
+    }
+    return candidate, (rule_name,)
 
 
 def _write_prediction_row(path: Path, frame_id: int, track_id: int,
@@ -92,19 +142,47 @@ def run(args: argparse.Namespace) -> int:
                 raise ValueError(f"video is outside selected scope: {datasets[0]}|{args.video}")
             videos_by_dataset = {datasets[0]: (str(args.video),)}
 
-        shortlist_path = args.shortlist.resolve()
-        shortlist = json.loads(shortlist_path.read_text())
-        if shortlist.get("status") != "complete":
-            raise AssertionError("corrected shortlist is not complete")
-        candidates = list(shortlist.get("shortlist", []))
-        if not candidates:
-            raise AssertionError("corrected shortlist is empty")
-        if args.candidate_index >= 0:
-            if args.candidate_index >= len(candidates):
-                raise IndexError(f"candidate index out of range: {args.candidate_index}")
-            candidates = [candidates[int(args.candidate_index)]]
-        if args.max_candidates:
-            candidates = candidates[: int(args.max_candidates)]
+        if args.selection is not None:
+            candidate, rule_names = load_frozen_selection_candidate(args.selection)
+            candidates = [candidate]
+            strategy_source = args.selection.resolve()
+            frozen_selection_mode = True
+            if args.candidate_index != -1:
+                raise ValueError("--candidate-index is invalid with --selection")
+            if args.max_candidates:
+                raise ValueError("--max-candidates is invalid with --selection")
+        else:
+            shortlist_path = args.shortlist.resolve()
+            shortlist = json.loads(shortlist_path.read_text())
+            if shortlist.get("status") != "complete":
+                raise AssertionError("corrected shortlist is not complete")
+            candidates = list(shortlist.get("shortlist", []))
+            if not candidates:
+                raise AssertionError("corrected shortlist is empty")
+            if args.candidate_index >= 0:
+                if args.candidate_index >= len(candidates):
+                    raise IndexError(f"candidate index out of range: {args.candidate_index}")
+                candidates = [candidates[int(args.candidate_index)]]
+            if args.max_candidates:
+                candidates = candidates[: int(args.max_candidates)]
+            rule_names = RULES
+            strategy_source = shortlist_path
+            frozen_selection_mode = False
+
+        if args.scope == "internal":
+            expected_videos = {
+                dataset: list(values)
+                for dataset, values in EXPECTED_INTERNAL_VIDEOS.items()
+                if dataset in datasets
+            }
+            actual_videos = {
+                dataset: list(values)
+                for dataset, values in videos_by_dataset.items()
+            }
+            if actual_videos != expected_videos:
+                raise AssertionError(
+                    f"internal scope videos drift: {actual_videos} != {expected_videos}"
+                )
         if args.max_frames < 0 or args.max_queries < 0:
             raise ValueError("negative scope limit")
 
@@ -135,13 +213,13 @@ def run(args: argparse.Namespace) -> int:
             checkpoint_path = Path(str(checkpoint_info["path"])).resolve()
             sidecar, loaded_info = load_checkpoint_into(runtime, injector, checkpoint_path, device)
             strategy_paths: dict[str, dict[str, dict[str, Path]]] = {}
-            for rule_name in RULES:
+            for rule_name in rule_names:
                 strategy_paths[rule_name] = prepare_strategy(
                     strategy_root(out, candidate, rule_name), datasets, video_queries
                 )
             audit_handles = {
                 rule_name: (strategy_root(out, candidate, rule_name) / "prediction_audits.jsonl").open("w", encoding="utf-8")
-                for rule_name in RULES
+                for rule_name in rule_names
             }
             counters = {
                 rule_name: {
@@ -149,7 +227,7 @@ def run(args: argparse.Namespace) -> int:
                     "selected_rows": 0, "key_digest": hashlib.sha256(),
                     "presence_gate_pass": 0, "presence_gate_fail": 0,
                 }
-                for rule_name in RULES
+                for rule_name in rule_names
             }
             try:
                 for dataset in datasets:
@@ -177,7 +255,7 @@ def run(args: argparse.Namespace) -> int:
                                 if len(record["row_keys"]) != int(record["candidate_count"]):
                                     raise AssertionError(f"row-key count drift: {record['unit_key']}")
                                 key_digest_value = _safe_key_digest(record)
-                                for rule_name in RULES:
+                                for rule_name in rule_names:
                                     rule = candidate["rule_fits"][rule_name]
                                     presence = float(record["presence_logit"])
                                     null = float(record["null_logit"])
@@ -236,7 +314,7 @@ def run(args: argparse.Namespace) -> int:
                 for handle in audit_handles.values():
                     handle.close()
 
-            for rule_name in RULES:
+            for rule_name in rule_names:
                 for dataset in datasets:
                     for video, queries in video_queries[dataset].items():
                         tracker_dir = strategy_paths[rule_name][dataset]["tracker_data"]
@@ -244,7 +322,7 @@ def run(args: argparse.Namespace) -> int:
                             (tracker_dir / f"{sequence_id(video, int(query['query_id']))}.txt").touch(exist_ok=True)
 
             eval_summary: dict[str, Any] = {}
-            for rule_name in RULES:
+            for rule_name in rule_names:
                 eval_summary[rule_name] = {}
                 for dataset in datasets:
                     eval_summary[rule_name][dataset] = materialize_gt(
@@ -262,7 +340,7 @@ def run(args: argparse.Namespace) -> int:
                         "candidate_rows_retained": True, "candidate_deletion": False,
                         "candidate_truncation": False,
                     }
-                    for rule in RULES
+                    for rule in rule_names
                 },
                 "rule_fits": candidate["rule_fits"],
                 "strategy_paths": {
@@ -289,7 +367,14 @@ def run(args: argparse.Namespace) -> int:
             "evidence_type": "zero-training corrected candidate-vs-NULL full-video prediction matrix",
             "full_video": bool(full), "command": command, "cwd": str(WORK_ROOT), "luna_thread": THREAD,
             "seed": SEED, "datasets": datasets, "videos": videos_by_dataset,
-            "shortlist_source": str(shortlist_path), "shortlist_sha256": sha256(shortlist_path),
+            "strategy_source": str(strategy_source),
+            "strategy_source_sha256": sha256(strategy_source),
+            "frozen_selection_mode": bool(frozen_selection_mode),
+            "selected_rule_names": list(rule_names),
+            "frozen_checkpoint_epoch": 30 if frozen_selection_mode else None,
+            "selection_frozen_before_fixed_validation": (
+                True if frozen_selection_mode else False
+            ),
             "candidates": summaries, "candidate_index_filter": int(args.candidate_index),
             "video_filter": str(args.video) if args.video else None,
             "cache": str(args.cache.resolve()), "cache_summary_sha256": reader.summary_sha256,
@@ -315,6 +400,8 @@ def run(args: argparse.Namespace) -> int:
         write_json(out / "status.json", {
             "format": "locatemot-l88c-fullvideo-status-v1", "status": "complete",
             "scope": args.scope, "full_video": bool(full), "candidate_count": len(summaries),
+            "frozen_selection_mode": bool(frozen_selection_mode),
+            "selected_rule_names": list(rule_names),
             "zero_training": True, "corrected_candidate_vs_null": True,
             "screening_gt_used": False, "official_test_labels_read": False,
             "ordinary_mot_ovmot_touched": False, "hota_trackeval_run": False,
@@ -350,7 +437,9 @@ def run(args: argparse.Namespace) -> int:
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--scope", choices=("dev", "internal"), required=True)
-    parser.add_argument("--shortlist", type=Path, required=True)
+    source = parser.add_mutually_exclusive_group(required=True)
+    source.add_argument("--shortlist", type=Path)
+    source.add_argument("--selection", type=Path)
     parser.add_argument("--out", type=Path, required=True)
     parser.add_argument("--cache", type=Path, default=L88_CACHE)
     parser.add_argument("--device", default="cuda:0")

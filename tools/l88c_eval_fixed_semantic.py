@@ -78,6 +78,31 @@ def _load_historical_records() -> list[dict[str, Any]]:
     return records
 
 
+def _split_fixed_records(
+    records: list[dict[str, Any]],
+) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
+    """Validate and split the immutable fixed 16/24 record scope."""
+    if len(records) != 40:
+        raise AssertionError(f"fixed historical record count drift: {len(records)}")
+
+    ordered = sorted(records, key=lambda row: int(row["fixed_eval_order"]))
+    orders = [int(row["fixed_eval_order"]) for row in ordered]
+    if orders != list(range(40)):
+        raise AssertionError(f"fixed historical order drift: {orders}")
+
+    calibration = ordered[:16]
+    validation = ordered[16:]
+    if len(calibration) != 16 or len(validation) != 24:
+        raise AssertionError(
+            f"fixed partition count drift: {len(calibration)} / {len(validation)}"
+        )
+    if any(str(row["evaluation_partition"]) != "calibration" for row in calibration):
+        raise AssertionError("historical calibration partition drift")
+    if any(str(row["evaluation_partition"]) != "validation" for row in validation):
+        raise AssertionError("historical validation partition drift")
+    return calibration, validation
+
+
 def _method_bundle(records: list[dict[str, Any]], thresholds: dict[str, float], *, legacy: bool = False) -> dict[str, Any]:
     fn = legacy_metric if legacy else metric
     candidate_only = fn(records, float(thresholds["candidate_threshold"]), -1e30, -1e30)
@@ -203,9 +228,41 @@ def run(args: argparse.Namespace) -> int:
         validation_metrics = _method_bundle(validation, final_thresholds)
 
         historical = _load_historical_records()
+        historical_calibration, historical_validation = _split_fixed_records(historical)
         original_semantic = json.loads(ORIGINAL_SEMANTIC.resolve().read_text())
-        original_bundle = _method_bundle(historical, PURE_THRESHOLDS, legacy=True)
-        pure_bundle = _method_bundle(historical, PURE_THRESHOLDS, legacy=False)
+        authoritative_original_validation = original_semantic.get("validation_frozen_rule")
+        if not isinstance(authoritative_original_validation, dict):
+            raise AssertionError("original L88 semantic.json missing validation_frozen_rule")
+
+        original_calibration_bundle = _method_bundle(
+            historical_calibration, PURE_THRESHOLDS, legacy=True,
+        )
+        original_validation_bundle = _method_bundle(
+            historical_validation, PURE_THRESHOLDS, legacy=True,
+        )
+        pure_calibration_bundle = _method_bundle(
+            historical_calibration, PURE_THRESHOLDS, legacy=False,
+        )
+        pure_validation_bundle = _method_bundle(
+            historical_validation, PURE_THRESHOLDS, legacy=False,
+        )
+        control_keys = (
+            "legacy_candidate_recall",
+            "legacy_candidate_precision",
+            "legacy_fp_per_frame",
+            "legacy_predictions_per_positive",
+            "legacy_row_hard_violation",
+            "legacy_row_multi_positive_recall",
+        )
+        for key in control_keys:
+            lhs = original_validation_bundle["frozen_rule"].get(key)
+            rhs = authoritative_original_validation.get(key)
+            if lhs is None or rhs is None:
+                raise AssertionError(f"original L88 validation control missing {key}")
+            if abs(float(lhs) - float(rhs)) > 1e-10:
+                raise AssertionError(
+                    f"original L88 validation control drift for {key}: {lhs} != {rhs}"
+                )
         l29 = {
             "evidence_type": "immutable accepted L29 control copied from L62/L64 contract",
             "validation": L29_VALIDATION,
@@ -236,11 +293,25 @@ def run(args: argparse.Namespace) -> int:
             "selection_frozen_before_fixed_validation": True, "rule": final_rule,
             "thresholds": final_thresholds, "calibration": calibration_metrics,
             "validation": validation_metrics, "gate": gate, "l29_teacher": l29,
-            "l88_original_final_rule_b": original_bundle,
+            "l88_original_final_rule_b": {
+                "scope": "fixed 16 calibration / 24 validation",
+                "thresholds": PURE_THRESHOLDS,
+                "calibration": original_calibration_bundle,
+                "validation": original_validation_bundle,
+            },
             "l88_original_semantic_source": str(ORIGINAL_SEMANTIC.resolve()),
             "l88_original_semantic_source_sha256": sha256(ORIGINAL_SEMANTIC.resolve()),
-            "l88c_pure_gate": pure_bundle,
+            "l88c_pure_gate": {
+                "scope": "fixed 16 calibration / 24 validation",
+                "thresholds": PURE_THRESHOLDS,
+                "calibration": pure_calibration_bundle,
+                "validation": pure_validation_bundle,
+            },
             "l88c_corrected_final": {"calibration": calibration_metrics, "validation": validation_metrics},
+            "historical_control_scope_corrected": True,
+            "historical_calibration_count": len(historical_calibration),
+            "historical_validation_count": len(historical_validation),
+            "pure_gate_validation_only_comparable": True,
             "historical_original_records_sha256": sha256(L88_ORIGINAL.resolve()),
             "record_count": len(records), "calibration_count": 16, "validation_count": 24,
             "candidate_rows_retained": True, "candidate_deletion": False, "candidate_truncation": False,
