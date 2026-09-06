@@ -71,3 +71,44 @@ Concise experimental log (latest first).
   screening, official test, TrackEval beyond internal validation, or
   ordinary MOT/OVMOT change is authorized. Unique next action is supervisor
   review of one new RMOT correspondence/proposal design.
+
+## 2026-09-05 Stage L88C — corrected candidate-vs-NULL replay
+
+- Hypothesis: the prior L88 semantic failure may include an implementation
+  error in the candidate-vs-NULL gate. Corrected emission is
+  `candidate_energy >= candidate_threshold` AND
+  `candidate_energy-null_logit >= null_margin` AND
+  `presence_logit >= presence_threshold`; candidate-only uses only the first
+  condition. No training, backward, optimizer, checkpoint update, bank
+  change, top-k/NMS or NULL suppression was performed.
+- Implementation: refit all 20 even checkpoints on the registered B/R/P
+  grids, replayed the corrected shortlist (epochs 8/20/40/30/4) over complete
+  V1/V2 dev video, ran the corrected internal TrackEval matrix, froze epoch
+  30 Rule B before fixed validation, and ran the fixed 16-calibration/
+  24-validation replay. A first TrackEval provenance alias failure was
+  preserved; the minimal `scope_key/full_video` alias fix was pushed in
+  `c5a6685` and the corrected matrix is attempt2.
+- Result: L88C corrected final on validation was
+  `recall=.354839, precision=.207547, FP/frame=1.75,
+  pred/positive=1.7097, hard=.846154, multi=.305556,
+  empty=.375, inactive-FA=.666667`. Immutable L29 remains
+  `.733333/.083019/10.125/8.8333/.916667/.819444` for
+  recall/precision/FP/pred-positive/hard/multi. Candidate-only recall was
+  `.419355`; the corrected NULL comparison removed additional positives.
+- Internal dev TrackEval for the frozen epoch30/Rule B was V1
+  HOTA/DetA/AssA `.296615/.216472/.408302` and V2
+  `.265682/.156622/.451938`; these are dev-only, not screening or official
+  results. The semantic gate failed on recall and multi-positive recall.
+- Root cause: existing candidate scores have useful average pairwise ranking,
+  but the lowest-scoring positives in multi-target bags do not survive the
+  fixed emission boundary; V2 is worse. This is a correspondence and
+  multi-positive recall failure, not a universal NULL-acceptance,
+  coverage, finite/reload, or implementation-smoke failure.
+- Preserved outputs: corrected replay, two TrackEval attempts, frozen
+  selection, fixed semantic JSON/gate, and offline A–I diagnosis under
+  `outputs/l88c/`. Code was pushed to branch
+  `codex/l88c-candidate-null-corrected-replay-20260905` at `e8f5f62`.
+- Status: `STOPPED_PENDING_SUPERVISOR_REVIEW`. No screening/official-test
+  labels, HOTA claim beyond internal dev TrackEval, ordinary MOT/OVMOT/TAO
+  change, or new L88C training was run. The only next action is the single
+  supervisor approval request in `reports/l88c/NEXT_TEST_APPROVAL_REQUEST.md`.
