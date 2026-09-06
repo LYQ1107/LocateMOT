@@ -112,3 +112,15 @@ Concise experimental log (latest first).
   labels, HOTA claim beyond internal dev TrackEval, ordinary MOT/OVMOT/TAO
   change, or new L88C training was run. The only next action is the single
   supervisor approval request in `reports/l88c/NEXT_TEST_APPROVAL_REQUEST.md`.
+
+## 2026-09-06 — L88C recoverable storage cleanup
+
+- While the authorized zero-training L88C final-internal replay was running,
+  its open paths were checked. Three superseded L1 intermediate LoRA
+  checkpoint directories (`outputs/l1_c/checkpoints/lora/checkpoint-100/200/300`,
+  about 8.0G each) were not open by any process and were moved, not deleted,
+  to `/data2/usr_for_deadline/locatemot_cleanup_20260906/`.
+- Frozen banks, formal reports, current L88 epoch30 checkpoint/cache, and all
+  ordinary MOT/OVMOT assets were left in place. `/data1` free space increased
+  from about 76G to 114G. The recoverable inventory is documented in
+  `reports/l88c/L88C_RESOURCE_CLEANUP_20260906.md`.
