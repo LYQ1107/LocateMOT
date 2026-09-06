@@ -38,6 +38,12 @@ def run(args: argparse.Namespace) -> int:
     update = {
         "format": "locatemot-l88c-trackeval-matrix-v1",
         "base_l88_sha": "c9b44c07b9b977de9d0f839fb2ff6363abb0386e",
+        # The audited legacy runner calls this field ``scope``.  L88C's
+        # freeze-before-validation selector consumes the explicit aliases so
+        # that a completed internal full-video matrix cannot be mistaken for
+        # a partial or validation result.
+        "scope_key": "dev",
+        "full_video": True,
         "zero_training": True,
         "corrected_candidate_vs_null": True,
         "corrected_emission_contract": "candidate_energy-null_logit >= null_margin AND presence_logit >= presence_threshold",
