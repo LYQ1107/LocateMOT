@@ -124,3 +124,42 @@ Concise experimental log (latest first).
   ordinary MOT/OVMOT assets were left in place. `/data1` free space increased
   from about 76G to 114G. The recoverable inventory is documented in
   `reports/l88c/L88C_RESOURCE_CLEANUP_20260906.md`.
+
+## 2026-09-07 Stage L89 — query-conditioned set correspondence decoder
+
+- Hypothesis: a fresh QSC-D head over the frozen L84/L87-A Z1 candidate states,
+  with candidate self-attention followed by cross-attention to pure frozen
+  GroundingDINO/BERT language tokens, could improve same-frame correspondence
+  without changing the bank, detector, tracker, or ordinary MOT/OVMOT.
+- Implementation: isolated worktree at
+  `/data1/LWR/vranlee/SERVER_ONLY/avis/LocateMOT_L89`, base
+  `ece9fc5549a9210424eb127fb10430c3fed7b7ba`; two set layers, eight heads,
+  FFN 1024, hidden 256, history 8, 4,169,829 trainable parameters. Pure
+  language cache has 3,418 label-free entries. Contract smoke passed after
+  preserving two package/field failures. No token/span or static/motion
+  supervision is verified (`UNALIGNED`).
+- Fit: seed `20260829`, one GPU, BF16, 40 epochs/2,640 optimizer steps,
+  finite loss and nonzero gradients, all 20 even checkpoints plus final.
+  Only L49 fit supervision was used; no screening or official-test labels.
+- Dev/selection: 20 checkpoints scored over 138 legal dev groups; five-item
+  shortlist and full-video B/R/P matrix selected epoch 4, Rule R before fixed
+  validation. Checkpoint SHA is
+  `5ab3cb344b73b320b34de7b4bb41622ce665ecb17c4d90c1999640a318e69aa8`.
+- Fixed semantic: authoritative retry4 failed. L29 was
+  `recall=.7333333, precision=.0830189, FP/frame=10.125,
+  pred/positive=8.8333, hard=.9166667, multi=.8194444`; L89 was
+  `recall=.8709677, precision=.0794118, FP/frame=13.0417,
+  pred/positive=10.9677, hard=.6923077, multi=.9027778`, with inactive
+  false acceptance `1.0`. Hard-negative ranking moved, but deployable volume,
+  precision, and no-match behavior failed.
+- Internal TrackEval: frozen epoch4/Rule R on V1 validation (86 sequences)
+  gave HOTA `2.2906`, V2 validation (537 sequences) HOTA `0.5894`, versus
+  L87-A `28.5752/22.1300`. Full-video post-hoc target-row recall was only
+  `.0131/.0026` and inactive acceptance was `1.0`. This is internal
+  validation TrackEval evidence, not screening or official-test evidence.
+- Root cause judgment: query-conditioned set representation gave limited
+  frame-level ranking signal but failed calibrated persistent emission and
+  absence handling. The branch is stopped pending supervisor review; no L89
+  continuation, screening, official test, or ordinary MOT/OVMOT change is
+  authorized. All L89 outputs are preserved under `outputs/l89/` and the new
+  source/reports are on branch `codex/l89-query-conditioned-set-correspondence-20260907`.
