@@ -45,7 +45,7 @@ for package, name in ((_models_package, "models"), (_rmot_package, "rmot")):
 
 from locatemot.models.l89_full_rmot import L89Config, L89FullRMOT  # noqa: E402
 from locatemot.rmot.l86_clip_data import L86ClipStore  # noqa: E402
-from l88_eval_metrics import fit_rule_set as fit_rules  # noqa: E402
+from l88c_eval_metrics import fit_rule_set as fit_rules  # noqa: E402
 from locatemot.rmot.l89_language_cache import L89LanguageTokenCache  # noqa: E402
 
 

@@ -60,6 +60,7 @@ from locatemot.rmot.l85_runtime import (  # noqa: E402
 )
 from locatemot.rmot.l89_language_cache import L89LanguageTokenCache  # noqa: E402
 from locatemot.rmot.l49_data import load_l49_queries  # noqa: E402
+from l88c_eval_metrics import corrected_emission_mask  # noqa: E402
 
 
 def sha256_file(path: Path) -> str:
@@ -352,6 +353,44 @@ def load_model(checkpoint_info: dict[str, Any], device: torch.device) -> tuple[L
                    "model_config": package["model_config"], "strict_reload": True}
 
 
+def load_frozen_selection_candidate(
+    selection_path: Path,
+) -> tuple[dict[str, Any], tuple[str, ...]]:
+    selection_path = selection_path.resolve()
+    selection = json.loads(selection_path.read_text())
+    if selection.get("status") != "complete":
+        raise AssertionError("L89C selection is incomplete")
+    if not bool(selection.get("selection_frozen_before_fixed_validation")):
+        raise AssertionError("L89C selection was not frozen before fixed validation")
+    final = selection.get("final_selection")
+    if not isinstance(final, dict):
+        raise AssertionError("L89C final_selection missing")
+    checkpoint_info = dict(final["checkpoint_info"])
+    rule_name = str(final["rule"])
+    rule_object = dict(final["rule_object"])
+    if rule_name not in {"B", "R", "P"}:
+        raise AssertionError(f"invalid L89C rule: {rule_name}")
+    for key in ("candidate_threshold", "presence_threshold", "null_margin"):
+        if key not in rule_object:
+            raise AssertionError(f"L89C frozen rule missing {key}")
+        value = float(rule_object[key])
+        if not np.isfinite(value):
+            raise AssertionError(f"nonfinite L89C threshold {key}")
+    checkpoint_path = Path(str(checkpoint_info["path"])).resolve()
+    if sha256_file(checkpoint_path) != str(checkpoint_info["sha256"]):
+        raise AssertionError("L89C selected checkpoint SHA drift")
+    candidate = {
+        "shortlist_index": 0,
+        "reason": "frozen_corrected_l89c_selection",
+        "checkpoint_info": checkpoint_info,
+        "rule_fits": {rule_name: rule_object},
+        "selection_source": str(selection_path),
+        "selection_source_sha256": sha256_file(selection_path),
+        "selection_frozen_before_fixed_validation": True,
+    }
+    return candidate, (rule_name,)
+
+
 def run(args: argparse.Namespace) -> int:
     out = args.out.resolve()
     if out.exists() and any(out.iterdir()):
@@ -371,14 +410,26 @@ def run(args: argparse.Namespace) -> int:
         device = torch.device(args.device)
         if device.type == "cuda":
             torch.cuda.set_device(device); torch.cuda.reset_peak_memory_stats(device)
-        shortlist = json.loads(args.shortlist.resolve().read_text())
-        if shortlist.get("status") != "complete" or not shortlist.get("shortlist"):
-            raise AssertionError("L89 shortlist is incomplete")
-        candidates = shortlist["shortlist"]
-        if args.candidate_index >= 0:
-            if args.candidate_index >= len(candidates):
-                raise IndexError("shortlist candidate index out of range")
-            candidates = [candidates[int(args.candidate_index)]]
+        if args.selection is not None:
+            candidate, rule_names = load_frozen_selection_candidate(args.selection)
+            candidates = [candidate]
+            strategy_source = args.selection.resolve()
+            frozen_selection_mode = True
+            if args.candidate_index != -1:
+                raise ValueError("--candidate-index is invalid with --selection")
+        else:
+            shortlist_path = args.shortlist.resolve()
+            shortlist = json.loads(shortlist_path.read_text())
+            if shortlist.get("status") != "complete" or not shortlist.get("shortlist"):
+                raise AssertionError("L89 shortlist is incomplete")
+            candidates = shortlist["shortlist"]
+            if args.candidate_index >= 0:
+                if args.candidate_index >= len(candidates):
+                    raise IndexError("shortlist candidate index out of range")
+                candidates = [candidates[int(args.candidate_index)]]
+            rule_names = RULES
+            strategy_source = shortlist_path
+            frozen_selection_mode = False
         groups, group_keys, videos_by_dataset = scope_groups(args.scope)
         query_map = unique_queries(groups, group_keys)
         datasets = sorted(query_map)
@@ -391,10 +442,10 @@ def run(args: argparse.Namespace) -> int:
             model, loaded_info = load_model(checkpoint_info, device)
             epoch = int(loaded_info["epoch"])
             candidate_root = out / f"candidate_epoch{epoch:03d}"
-            strategy_paths = {rule: prepare_strategy(candidate_root / rule, datasets, query_map) for rule in RULES}
+            strategy_paths = {rule: prepare_strategy(candidate_root / rule, datasets, query_map) for rule in rule_names}
             audit_handle = (candidate_root / "prediction_audits.jsonl").open("w", encoding="utf-8")
             counters = {rule: {"frames": 0, "queries": 0, "candidate_rows": 0, "selected_rows": 0,
-                               "key_digest": hashlib.sha256()} for rule in RULES}
+                               "key_digest": hashlib.sha256()} for rule in rule_names}
             seen_group_keys: set[str] = set()
             try:
                 for group_index, group_key in enumerate(sorted(group_keys, key=lambda key: (
@@ -445,11 +496,16 @@ def run(args: argparse.Namespace) -> int:
                         if len(row_keys) != batch.candidate_count:
                             raise AssertionError(f"L89 full-video row-key count drift: {group_key}")
                         score = values[local]
-                        for rule in RULES:
+                        for rule in rule_names:
                             rule_object = candidate["rule_fits"][rule]
-                            gate = (float(presence[local]) >= float(rule_object["presence_threshold"]) and
-                                    float(presence[local]) - float(null[local]) >= float(rule_object["null_margin"]))
-                            selected = np.flatnonzero((score >= float(rule_object["candidate_threshold"])) & gate)
+                            candidate_threshold = float(rule_object["candidate_threshold"])
+                            presence_threshold = float(rule_object["presence_threshold"])
+                            null_margin = float(rule_object["null_margin"])
+                            presence_gate = float(presence[local]) >= presence_threshold
+                            selected_mask = corrected_emission_mask(
+                                score, float(presence[local]), float(null[local]),
+                                candidate_threshold, presence_threshold, null_margin)
+                            selected = np.flatnonzero(selected_mask)
                             path = strategy_paths[rule][str(batch.dataset)]["tracker_data"] / f"{sequence_id(batch.video, int(query['query_id']))}.txt"
                             with path.open("a", encoding="utf-8") as handle:
                                 for index in selected.tolist():
@@ -465,7 +521,13 @@ def run(args: argparse.Namespace) -> int:
                                 "rule": rule, "dataset": str(batch.dataset), "video": str(batch.video),
                                 "query_id": int(query["query_id"]), "frame_id": int(batch.frame_id),
                                 "unit_key": str(query["unit_key"]), "candidate_rows_scored": int(batch.candidate_count),
-                                "selected_rows": int(selected.size), "presence_gate": bool(gate),
+                                "selected_rows": int(selected.size), "presence_gate": bool(presence_gate),
+                                "candidate_vs_null_applied": True,
+                                "corrected_candidate_vs_null": True,
+                                "candidate_threshold": candidate_threshold,
+                                "presence_threshold": presence_threshold,
+                                "null_margin": null_margin,
+                                "emission_contract": "candidate>=threshold & candidate-null>=margin & presence>=threshold",
                                 "candidate_rows_retained": True, "candidate_deletion": False,
                                 "candidate_truncation": False, "labels_attached": False,
                             }, ensure_ascii=False) + "\n")
@@ -482,7 +544,7 @@ def run(args: argparse.Namespace) -> int:
             if seen_group_keys != set(group_keys):
                 raise AssertionError("L89 full-video group coverage drift")
             # Ensure every legal query has an explicit (possibly empty) tracker file.
-            for rule in RULES:
+            for rule in rule_names:
                 for dataset, videos in query_map.items():
                     for video, queries in videos.items():
                         tracker_dir = strategy_paths[rule][dataset]["tracker_data"]
@@ -491,7 +553,7 @@ def run(args: argparse.Namespace) -> int:
             eval_summary: dict[str, Any] = {}
             emission: dict[str, Any] = {}
             # This is the first point at which legal labels are read.
-            for rule in RULES:
+            for rule in rule_names:
                 eval_summary[rule] = {}
                 emission[rule] = {}
                 for dataset in datasets:
@@ -508,7 +570,7 @@ def run(args: argparse.Namespace) -> int:
                                  "eval_summary": eval_summary[rule], "emission_descriptor": emission[rule],
                                  "candidate_rows_retained": True, "candidate_deletion": False,
                                  "candidate_truncation": False}
-                           for rule in RULES},
+                           for rule in rule_names},
                 "prediction_strategy_frozen_before_gt": True,
             })
             del model
@@ -522,7 +584,14 @@ def run(args: argparse.Namespace) -> int:
             "full_video": full, "command": command, "cwd": str(WORK_ROOT), "luna_thread": THREAD, "seed": SEED,
             "datasets": datasets, "videos": videos_by_dataset, "group_count": len(group_keys),
             "query_count": sum(len(values) for videos in query_map.values() for values in videos.values()),
-            "shortlist_source": str(args.shortlist.resolve()), "shortlist_sha256": sha256_file(args.shortlist.resolve()),
+            "strategy_source": str(strategy_source),
+            "strategy_source_sha256": sha256_file(strategy_source),
+            "frozen_selection_mode": bool(frozen_selection_mode),
+            "shortlist_source": str(strategy_source) if not frozen_selection_mode else None,
+            "selection_source": str(strategy_source) if frozen_selection_mode else None,
+            "corrected_candidate_vs_null": True,
+            "zero_training": True,
+            "emission_contract": "candidate>=threshold & candidate-null>=margin & presence>=threshold",
             "candidates": summaries, "candidate_index_filter": int(args.candidate_index),
             "z1_cache": str(args.z1_cache.resolve()), "z1_cache_summary_sha256": cache.summary_sha256,
             "language_cache": str(args.language_cache.resolve()),
@@ -540,6 +609,7 @@ def run(args: argparse.Namespace) -> int:
         }
         write_json(out / "summary.json", payload); write_json(out / "provenance.json", payload)
         write_json(out / "status.json", {"format": "locatemot-l89-fullvideo-v1", "status": "complete",
+                                          "corrected_candidate_vs_null": True, "zero_training": True,
                                           "scope": args.scope, "full_video": True, "candidate_count": len(summaries),
                                           "group_count": len(group_keys), "screening_gt_used": False,
                                           "official_test_labels_read": False, "ordinary_mot_ovmot_touched": False,
@@ -566,7 +636,9 @@ def run(args: argparse.Namespace) -> int:
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--scope", choices=("dev", "internal"), required=True)
-    parser.add_argument("--shortlist", type=Path, required=True)
+    source = parser.add_mutually_exclusive_group(required=True)
+    source.add_argument("--shortlist", type=Path)
+    source.add_argument("--selection", type=Path)
     parser.add_argument("--out", type=Path, required=True)
     parser.add_argument("--z1-cache", type=Path, default=Z1_CACHE)
     parser.add_argument("--language-cache", type=Path, default=LANG_CACHE)

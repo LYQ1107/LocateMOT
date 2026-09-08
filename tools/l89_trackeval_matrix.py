@@ -144,10 +144,23 @@ def run(args: argparse.Namespace) -> int:
             raise AssertionError("inference source is not complete full-video output")
         if summary.get("screening_gt_used") or summary.get("official_test_labels_read"):
             raise AssertionError("forbidden labels in inference source")
+        if str(summary.get("scope_key")) != str(args.expected_scope):
+            raise AssertionError(
+                f"L89C TrackEval scope drift: {summary.get('scope_key')} != {args.expected_scope}"
+            )
+        if args.expected_scope == "internal":
+            if len(summary.get("candidates", [])) != 1:
+                raise AssertionError("L89C final internal requires exactly one frozen checkpoint")
+            internal_rules = tuple(summary["candidates"][0].get("rules", {}).keys())
+            if len(internal_rules) != 1:
+                raise AssertionError("L89C final internal requires exactly one frozen rule")
         results: list[dict[str, Any]] = []
         for candidate in summary.get("candidates", []):
             epoch = int(candidate["checkpoint_info"]["epoch"])
-            for rule in RULES:
+            candidate_rules = tuple(candidate.get("rules", {}).keys())
+            if not candidate_rules:
+                raise AssertionError("L89C inference candidate contains no rules")
+            for rule in candidate_rules:
                 per_dataset: list[dict[str, Any]] = []
                 for dataset in sorted(summary["datasets"]):
                     src = source / f"candidate_epoch{epoch:03d}" / rule / dataset
@@ -173,6 +186,7 @@ def run(args: argparse.Namespace) -> int:
             "format": f"locatemot-l89-{summary['scope_key']}-trackeval-matrix-v1", "status": "complete",
             "scope": summary["scope"], "evidence_type": "full-video legal TrackEval; not screening or official test",
             "command": command, "cwd": str(WORK_ROOT), "luna_thread": THREAD, "inference_root": str(source),
+            "expected_scope": args.expected_scope, "corrected_candidate_vs_null": True, "zero_training": True,
             "source_summary_sha256": sha256_file(source / "summary.json"), "results": results,
             "manifest_sha256": MANIFEST_SHA, "screening_gt_used": False, "official_test_labels_read": False,
             "ordinary_mot_ovmot_touched": False, "hota_trackeval_run": True, "no_hota_or_trackeval": False,
@@ -182,7 +196,9 @@ def run(args: argparse.Namespace) -> int:
             "failure_root_cause": None, "next_action": "freeze final selection or run final internal matrix",
         }
         write_json(out / "trackeval_matrix.json", payload); write_json(out / "provenance.json", payload)
-        write_json(out / "status.json", {"format": payload["format"], "status": "complete", "result_count": len(results),
+        write_json(out / "status.json", {"format": payload["format"], "status": "complete",
+                                          "corrected_candidate_vs_null": True, "zero_training": True,
+                                          "result_count": len(results),
                                           "scope": summary["scope_key"], "manifest_sha256": MANIFEST_SHA,
                                           "screening_gt_used": False, "official_test_labels_read": False,
                                           "ordinary_mot_ovmot_touched": False, "hota_trackeval_run": True})
@@ -207,6 +223,7 @@ def np_mean(values: list[float]) -> float:
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--inference-root", type=Path, required=True)
+    parser.add_argument("--expected-scope", choices=("dev", "internal"), required=True)
     parser.add_argument("--out", type=Path, required=True)
     return run(parser.parse_args())
 

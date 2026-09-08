@@ -51,7 +51,7 @@ for package, name in ((_models_package, "models"), (_rmot_package, "rmot")):
 from locatemot.models.l89_full_rmot import L89Config, L89FullRMOT  # noqa: E402
 from locatemot.rmot.l80_data import L80BankStore, load_fixed_key_units, load_full_unit_for_labels  # noqa: E402
 from locatemot.rmot.l89_language_cache import L89LanguageTokenCache  # noqa: E402
-from l88_eval_metrics import fit_rule_set, metric  # noqa: E402
+from l88c_eval_metrics import metric  # noqa: E402
 
 
 def sha256_file(path: Path) -> str:
@@ -253,6 +253,9 @@ def main() -> int:
         semantic = {
             "format": "locatemot-l89-fixed-semantic-v1", "status": "complete",
             "evidence_type": "fixed 16 calibration / 24 validation diagnostic after internal fit/dev selection",
+            "corrected_candidate_vs_null": True,
+            "emission_contract": "candidate>=candidate_threshold & candidate-null>=null_margin & presence>=presence_threshold",
+            "zero_training": True,
             "checkpoint": final["checkpoint_info"], "selection": selection,
             "selection_frozen_before_fixed_validation": True, "rule": rule_name, "thresholds": thresholds,
             "calibration": calibration_metrics, "validation": validation_metrics,
@@ -266,6 +269,9 @@ def main() -> int:
         }
         gate = {"format": "locatemot-l89-fixed-gate-v1", "status": "complete",
                 "decision": "semantic_gate_pass" if all(checks.values()) else "semantic_gate_fail",
+                "corrected_candidate_vs_null": True,
+                "emission_contract": "candidate>=candidate_threshold & candidate-null>=null_margin & presence>=presence_threshold",
+                "zero_training": True,
                 "checks": checks, "thresholds": thresholds, "rule": rule_name,
                 "baseline": L29, "screening_gt_used": False, "official_test_labels_read": False,
                 "ordinary_mot_ovmot_touched": False, "hota_trackeval_run": False, "no_hota_or_trackeval": True}
@@ -284,6 +290,9 @@ def main() -> int:
             "outputs": {"semantic": str((out / "semantic.json").resolve()), "gate": str((out / "gate_decision.json").resolve()),
                         "score_records": str((out / "score_records.jsonl").resolve())},
             "label_boundary": "all 40 score rows were built and scored before labels; calibration labels attached before frozen-rule report, validation labels attached afterward",
+            "corrected_candidate_vs_null": True,
+            "emission_contract": "candidate>=candidate_threshold & candidate-null>=null_margin & presence>=presence_threshold",
+            "zero_training": True,
             "candidate_rows_retained": True, "candidate_deletion": False, "candidate_truncation": False,
             "screening_gt_used": False, "official_test_labels_read": False, "ordinary_mot_ovmot_touched": False,
             "hota_trackeval_run": False, "no_hota_or_trackeval": True,

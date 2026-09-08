@@ -35,7 +35,7 @@ import locatemot.rmot as _rmot_package  # noqa: E402
 package_path = str(WORK_ROOT / "locatemot" / "rmot")
 if package_path not in [str(value) for value in _rmot_package.__path__]:
     _rmot_package.__path__.append(package_path)
-from l88_eval_metrics import GRID, NULL_MARGIN_GRID, _metric  # noqa: E402
+from l88c_eval_metrics import fit_rule_set as corrected_fit_rule_set  # noqa: E402
 
 
 def sha256_file(path: Path) -> str:
@@ -83,121 +83,15 @@ def info(rows: list[dict[str, Any]]) -> dict[str, Any]:
 
 
 def fit_rules_fast(records: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
-    """Fit the registered grid without repeating unused stratified scans.
-
-    The original L88 helper computes the same top-level metric plus all
-    V1/V2/category submetrics for every grid point.  Checkpoint selection only
-    uses the top-level fields, so defer the exact stratified computation until
-    each of the three selected rules.  This is an evaluation-only performance
-    correction; the grid, metrics, and tie keys are unchanged.
-    """
-    # Build the target bags once per checkpoint.  The registered rules only
-    # inspect these top-level aggregates while searching the grid; repeatedly
-    # reconstructing them dominated the selector runtime.
-    prepared: list[dict[str, Any]] = []
-    for row in records:
-        scores = np.asarray(row["score"], dtype=np.float64)
-        labels = np.asarray(row["labels"], dtype=bool)
-        candidate_gt = [None if value is None else str(value) for value in row["candidate_gt"]]
-        target_ids = {str(value) for value in row["target_ids"]}
-        groups: dict[str, list[int]] = {}
-        background: list[int] = []
-        for index, value in enumerate(candidate_gt):
-            if value is None:
-                background.append(index)
-            else:
-                groups.setdefault(value, []).append(index)
-        bag_scores = [float(scores[indexes].max()) for _target, indexes in sorted(groups.items())]
-        bag_positive = [target in target_ids for target in sorted(groups)]
-        bag_scores.extend(float(scores[index]) for index in background)
-        bag_positive.extend(False for _index in background)
-        prepared.append({"scores": scores, "labels": labels, "category": str(row.get("category", "unknown")),
-                         "presence": float(row["presence_logit"]), "null": float(row["null_logit"]),
-                         "bag_scores": np.asarray(bag_scores, dtype=np.float64),
-                         "bag_positive": np.asarray(bag_positive, dtype=bool)})
-
-    candidates: list[dict[str, Any]] = []
-    for presence in GRID:
-        for null_margin in NULL_MARGIN_GRID:
-            for candidate in GRID:
-                bag_tp = bag_fp = bag_fn = bag_selected = bag_positive_total = 0
-                distinct_hit = distinct_total = 0
-                multi_exact: list[float] = []
-                inactive_units = inactive_accept = 0
-                for item in prepared:
-                    unit_gate = item["presence"] >= float(presence) and item["presence"] - item["null"] >= float(null_margin)
-                    row_selected = item["scores"] >= float(candidate) if unit_gate else np.zeros_like(item["labels"], dtype=bool)
-                    bag_selected_mask = item["bag_scores"] >= float(candidate) if unit_gate else np.zeros_like(item["bag_positive"], dtype=bool)
-                    positive_mask = item["bag_positive"]
-                    bag_tp += int((bag_selected_mask & positive_mask).sum())
-                    bag_fp += int((bag_selected_mask & ~positive_mask).sum())
-                    bag_fn += int((~bag_selected_mask & positive_mask).sum())
-                    bag_selected += int(bag_selected_mask.sum())
-                    bag_positive_total += int(positive_mask.sum())
-                    distinct_hit += int((bag_selected_mask & positive_mask).sum())
-                    distinct_total += int(positive_mask.sum())
-                    if positive_mask.sum() > 1:
-                        multi_exact.append(float((bag_selected_mask & positive_mask)[positive_mask].all()))
-                    if item["category"] == "inactive":
-                        inactive_units += 1
-                        inactive_accept += int(bool(row_selected.any()))
-                candidates.append({
-                    "target_bag_f1": float(2.0 * bag_tp / max(1.0, 2.0 * bag_tp + bag_fp + bag_fn)),
-                    "target_bag_precision": float(bag_tp / max(1, bag_selected)),
-                    "distinct_target_recall": float(distinct_hit / max(1, distinct_total)),
-                    "distinct_multi_target_exact": float(np.mean(multi_exact)) if multi_exact else None,
-                    "target_bag_false": int(bag_fp),
-                    "inactive_false_acceptance": float(inactive_accept / max(1, inactive_units)),
-                    "candidate_threshold": float(candidate), "presence_threshold": float(presence),
-                    "null_margin": float(null_margin), "rule": "grid_candidate_presence_null",
-                })
-
-    def rule_b_key(value: dict[str, Any]) -> tuple[Any, ...]:
-        return (float(value["target_bag_f1"]), -float(value["inactive_false_acceptance"]),
-                float(value["distinct_target_recall"]),
-                float(value["distinct_multi_target_exact"] or 0.0),
-                -float(value["target_bag_false"]), -float(value["candidate_threshold"]),
-                -float(value["presence_threshold"]), -float(value["null_margin"]))
-
-    def rule_r_key(value: dict[str, Any]) -> tuple[Any, ...]:
-        if float(value["target_bag_precision"]) < 0.08:
-            return (-1, -1.0, -float(value["inactive_false_acceptance"]),
-                    -float(value["target_bag_false"]))
-        return (1, float(value["distinct_target_recall"]), float(value["target_bag_precision"]),
-                -float(value["inactive_false_acceptance"]), -float(value["target_bag_false"]),
-                -float(value["candidate_threshold"]), -float(value["presence_threshold"]),
-                -float(value["null_margin"]))
-
-    def rule_p_key(value: dict[str, Any]) -> tuple[Any, ...]:
-        if float(value["distinct_target_recall"]) < 0.60:
-            return (-1, -1.0, -float(value["inactive_false_acceptance"]),
-                    -float(value["target_bag_false"]))
-        return (1, float(value["target_bag_precision"]), float(value["distinct_target_recall"]),
-                float(value["distinct_multi_target_exact"] or 0.0),
-                -float(value["inactive_false_acceptance"]), -float(value["target_bag_false"]),
-                -float(value["candidate_threshold"]), -float(value["presence_threshold"]),
-                -float(value["null_margin"]))
-
-    chosen = {"B": max(candidates, key=rule_b_key), "R": max(candidates, key=rule_r_key),
-              "P": max(candidates, key=rule_p_key)}
-    result: dict[str, dict[str, Any]] = {}
-    tie_rules = {
-        "B": "B: higher target-bag F1, lower inactive false acceptance, higher distinct recall, higher multi-target exact, fewer false bags, then lower grid thresholds",
-        "R": "R: precision>=0.08, higher distinct recall, then higher precision/lower inactive/fewer false bags",
-        "P": "P: distinct recall>=0.60, higher precision, then higher recall/multi-target exact/lower inactive/fewer false bags",
-    }
-    for name, value in chosen.items():
-        detailed = _metric(records, value["candidate_threshold"], value["presence_threshold"],
-                           value["null_margin"], stratify=True)
-        detailed["rule"] = "grid_candidate_presence_null"
-        result[name] = {
-            "rule": name,
-            "candidate_threshold": float(value["candidate_threshold"]),
-            "presence_threshold": float(value["presence_threshold"]),
-            "null_margin": float(value["null_margin"]),
-            "metrics": detailed,
-            "tie_rule": tie_rules[name],
-        }
+    result = corrected_fit_rule_set(records)
+    for name in ("B", "R", "P"):
+        if name not in result:
+            raise AssertionError(f"corrected L89C rule missing: {name}")
+        metrics = result[name]["metrics"]
+        if str(metrics.get("rule")) != "grid_candidate_energy_null":
+            raise AssertionError(
+                f"wrong L89C emission rule for {name}: {metrics.get('rule')}"
+            )
     return result
 
 
@@ -259,6 +153,8 @@ def main() -> int:
             payload = {
                 "format": "locatemot-l89-dev-shortlist-v1", "status": "complete",
                 "stage": "fit/dev score shortlist; full-video dev TrackEval selection pending",
+                "evaluation_contract": "candidate_energy_vs_null",
+                "protocol_repair_stage": "L89C", "zero_training": True,
                 "command": command, "cwd": str(WORK_ROOT), "luna_thread": THREAD, "seed": SEED,
                 "source_scores": str(args.scores.resolve()), "source_scores_sha256": sha256_file(args.scores.resolve()),
                 "shortlist": shortlist, "shortlist_count": len(shortlist),
@@ -271,7 +167,9 @@ def main() -> int:
                 "wall_seconds": time.perf_counter() - started,
             }
             write_json(out / "shortlist.json", payload)
-            write_json(out / "status.json", {"format": "locatemot-l89-dev-shortlist-v1", "status": "complete", "shortlist_count": len(shortlist), "selection_pending_trackeval": True,
+            write_json(out / "status.json", {"format": "locatemot-l89-dev-shortlist-v1", "status": "complete",
+                                               "evaluation_contract": "candidate_energy_vs_null", "protocol_repair_stage": "L89C", "zero_training": True,
+                                               "shortlist_count": len(shortlist), "selection_pending_trackeval": True,
                                                "screening_gt_used": False, "official_test_labels_read": False, "ordinary_mot_ovmot_touched": False, "hota_trackeval_run": False})
             write_json(out / "provenance.json", payload | {"format": "locatemot-l89-dev-shortlist-provenance-v1"})
             return 0
@@ -279,7 +177,7 @@ def main() -> int:
         if trackeval.get("status") != "complete":
             raise AssertionError("dev TrackEval matrix is not complete")
         # The matrix contains one frozen-rule summary per shortlist item.  The
-        # registered tie-break is HOTA, then AssA, then DetA, then earlier epoch.
+        # registered tie-break is HOTA, then DetA, then AssA, then earlier epoch.
         candidates = trackeval.get("results") or trackeval.get("candidates")
         if not isinstance(candidates, list) or not candidates:
             raise AssertionError("dev TrackEval matrix has no candidates")
@@ -315,6 +213,8 @@ def main() -> int:
         selection = {
             "format": "locatemot-l89-checkpoint-selection-v1", "status": "complete",
             "stage": "internal full-video dev TrackEval selection; fixed validation pending",
+            "evaluation_contract": "candidate_energy_vs_null",
+            "protocol_repair_stage": "L89C", "zero_training": True,
             "command": command, "cwd": str(WORK_ROOT), "luna_thread": THREAD, "seed": SEED,
             "shortlist": shortlist, "trackeval_source": str(args.trackeval.resolve()),
             "trackeval_source_sha256": sha256_file(args.trackeval.resolve()), "trackeval_candidates": candidates,
@@ -329,7 +229,9 @@ def main() -> int:
             "wall_seconds": time.perf_counter() - started,
         }
         write_json(out / "checkpoint_selection.json", selection)
-        write_json(out / "status.json", {"format": "locatemot-l89-checkpoint-selection-v1", "status": "complete", "selected_epoch": int(chosen["checkpoint_info"]["epoch"]), "rule": rule_name,
+        write_json(out / "status.json", {"format": "locatemot-l89-checkpoint-selection-v1", "status": "complete",
+                                           "evaluation_contract": "candidate_energy_vs_null", "protocol_repair_stage": "L89C", "zero_training": True,
+                                           "selected_epoch": int(chosen["checkpoint_info"]["epoch"]), "rule": rule_name,
                                            "selection_frozen_before_fixed_validation": True, "screening_gt_used": False, "official_test_labels_read": False,
                                            "ordinary_mot_ovmot_touched": False, "hota_trackeval_run": True})
         write_json(out / "provenance.json", selection | {"format": "locatemot-l89-checkpoint-selection-provenance-v1"})
