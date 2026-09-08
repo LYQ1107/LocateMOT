@@ -19,6 +19,7 @@ OUTPUT = WORK_ROOT / "outputs/l89c/audit/boundary_guard.json"
 THREAD = "01a02014-fce8-7f51-8414-e7ed6ab44745"
 
 ALLOWED_EXACT = {
+    "research_log.md",
     "tools/l89_score_dev.py",
     "tools/l89_select_checkpoint.py",
     "tools/l89_eval_fixed_semantic.py",

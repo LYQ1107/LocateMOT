@@ -163,3 +163,44 @@ Concise experimental log (latest first).
   continuation, screening, official test, or ordinary MOT/OVMOT change is
   authorized. All L89 outputs are preserved under `outputs/l89/` and the new
   source/reports are on branch `codex/l89-query-conditioned-set-correspondence-20260907`.
+
+## 2026-09-08 Stage L89C — corrected candidate-vs-NULL replay
+
+- Hypothesis/repair: L89 training and the registered loss use `candidate_energy`
+  against `null_logit`, but the old L89 evaluation/deployment path emitted
+  using `presence_logit - null_logit`. L89C changed only the evaluation,
+  selection, inference, and TrackEval contract to the shared
+  `corrected_emission_mask`: candidate threshold, candidate-minus-NULL margin,
+  and presence threshold. No training, scorer forward, bank/cache rebuild, or
+  model/ordinary-MOT change was made.
+- Inputs/selection: immutable L89 raw dev records (9,960; SHA recorded in
+  `outputs/l89c/dev/corrected_shortlist_attempt1/`), 20 existing checkpoints,
+  and the fixed manifest SHA
+  `06da458b09aa3e61ce30a4f8b58a85ac31ef1a5a10d269abd64ae41cffd127fa`.
+  Corrected dev TrackEval evaluated 5 checkpoints × B/R/P (15 results), then
+  froze epoch 2 / Rule R, checkpoint SHA
+  `f8b175597ece8aad1f0ec3ae9d05c70e0759a0f7480dff9af6ea2619a2e3f08b`, with
+  candidate/presence/NULL thresholds `-0.75/-1.0/0.0` before fixed validation.
+- Fixed semantic evidence: authoritative retry2 has 40 ordered records (16
+  calibration, 24 validation), with preselection forbidden-label fields
+  absent. Validation is recall `.8387097`, precision `.0869565`, FP/frame
+  `11.375`, predictions/positive `9.6452`, hard violation `.6923077`,
+  multi-positive recall `.8333333`, inactive false acceptance `1.0`.
+  The gate is `semantic_gate_fail`: hard/recall/precision/multi floors pass,
+  but volume and inactive/no-match conditions fail.
+- Internal evidence: frozen epoch-2/Rule-R full-video inference covered V1
+  `0004,0018` (86 sequences) and V2 `0016,0017,0020` (537 sequences).
+  Corrected TrackEval HOTA is V1 `2.244718%`, V2 `0.583059%`; no screening or
+  official-test labels were read. These are internal validation-scope metrics,
+  not a final RMOT result. Historical buggy L89 was `2.2906%/0.5894%` and
+  L87-A was `28.5752%/22.1300%` on V1/V2.
+- First actionable root cause: corrected candidate-vs-NULL accounting still
+  leaves no-match acceptance universal and output volume too high. All rows,
+  keys, finite checks, and frozen boundaries passed; the initial GPU OOM is
+  preserved as an implementation/resource attempt and the exact CPU retry
+  completed. Unique next action: supervisor review and authorization of one
+  new RMOT branch explicitly addressing absence/volume calibration with
+  candidate correspondence. Do not extend L89/L89C or tune thresholds.
+- Status: `STOPPED_PENDING_SUPERVISOR_REVIEW`; `zero_training=true`,
+  `screening_gt_used=false`, `official_test_labels_read=false`,
+  `ordinary_mot_ovmot_touched=false`.

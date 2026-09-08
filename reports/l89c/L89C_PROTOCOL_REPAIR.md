@@ -48,3 +48,39 @@ All output must explicitly retain
 `official_test_labels_read=false`, and
 `ordinary_mot_ovmot_touched=false`. After the corrected verdict, stop at
 `STOPPED_PENDING_SUPERVISOR_REVIEW`; do not launch a new model or benchmark.
+
+## Completed evidence (2026-09-08)
+
+The implementation and replay are complete. The first fixed-semantic attempt
+was preserved at
+`outputs/l89c/eval/fixed_semantic_corrected_attempt1/` with its complete CUDA
+OOM traceback. Because GPU0 was occupied by unrelated processes, the exact
+same evaluator and frozen selection were rerun on CPU in the new authoritative
+directory
+`outputs/l89c/eval/fixed_semantic_corrected_attempt2/`; this is a resource
+execution correction, not a protocol or model change.
+
+The corrected developer selection used 20 existing raw checkpoints, the
+corrected `l88c_eval_metrics.fit_rule_set` implementation, five shortlisted
+checkpoints, three rules (B/R/P), and the completed 15-result developer
+TrackEval matrix. It froze epoch 2, Rule R, before fixed-slice labels were
+attached. The selected checkpoint is the immutable L89 checkpoint at
+`outputs/l89/train/joint40/checkpoint_l89_epoch002.pt`, SHA256
+`f8b175597ece8aad1f0ec3ae9d05c70e0759a0f7480dff9af6ea2619a2e3f08b`.
+The frozen corrected thresholds are candidate `-0.75`, presence `-1.0`, and
+NULL margin `0.0`.
+
+The fixed replay completed 16 calibration and 24 validation units with 40/40
+ordered score records. Validation was not used to choose the checkpoint or
+threshold. The corrected validation gate failed: recall `0.8387097`,
+precision `0.0869565`, FP/frame `11.375`, predictions/positive `9.6452`,
+hard violation `0.6923077`, multi-positive recall `0.8333333`, and inactive
+false acceptance `1.0`. Thus the corrected candidate-vs-NULL contract removes
+the historical evaluator ambiguity but does not produce deployable emission.
+
+The final internal full-video replay used only this frozen epoch-2/Rule-R
+strategy over V1 videos `0004,0018` (86 sequences) and V2 videos
+`0016,0017,0020` (537 sequences). Corrected internal TrackEval HOTA is
+V1 `2.244718%` and V2 `0.583059%`; these are internal validation-scope
+TrackEval results, not screening or official-test results. L89C is therefore
+`STOPPED_PENDING_SUPERVISOR_REVIEW` with no new training authorized.
