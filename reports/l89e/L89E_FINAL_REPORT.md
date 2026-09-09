@@ -60,6 +60,21 @@ new training run.
 | L89D phase/history-inconsistent | 25.0799 | 22.6374 | valid timeline, inconsistent phase/history |
 | L89E phase-consistent | 28.7628 | 21.8385 | valid internal validation-scope TrackEval |
 
+Full metric comparison (percentage points):
+
+| method | V1 HOTA | V1 DetA | V1 AssA | V1 DetRe | V1 DetPr | V2 HOTA | V2 DetA | V2 AssA | V2 DetRe | V2 DetPr |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| L86 | 29.1663 | 20.5210 | 41.8054 | 69.5047 | 22.3567 | 21.6467 | 13.3584 | 35.2978 | 42.4989 | 16.1970 |
+| L87-A | 28.5752 | 19.0948 | 43.1006 | 76.9083 | 20.0996 | 22.1300 | 13.3668 | 36.8421 | 48.9007 | 15.4430 |
+| L89D | 25.0799 | 16.3984 | 38.6984 | 67.6963 | 17.6572 | 22.6374 | 13.8605 | 37.1939 | 46.8155 | 16.3337 |
+| L89E | 28.7628 | 18.7680 | 44.3927 | 80.3045 | 19.5312 | 21.8385 | 13.3358 | 35.9990 | 45.1160 | 15.8179 |
+
+L89E minus L89D is V1 `+3.6829/+2.3696/+5.6943/+12.6082/+1.8740`
+and V2 `-0.7989/-0.5247/-1.1949/-1.6995/-0.5158` for
+HOTA/DetA/AssA/DetRe/DetPr.  L89E minus L87-A is V1
+`+0.1876/-0.3268/+1.2921/+3.3962/-0.5684` and V2
+`-0.2915/-0.0310/-0.8431/-3.7847/+0.3749` in the same order.
+
 L89E internal metrics:
 
 - V1: HOTA `28.7628%`, DetA `18.7680%`,
