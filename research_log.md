@@ -204,3 +204,45 @@ Concise experimental log (latest first).
 - Status: `STOPPED_PENDING_SUPERVISOR_REVIEW`; `zero_training=true`,
   `screening_gt_used=false`, `official_test_labels_read=false`,
   `ordinary_mot_ovmot_touched=false`.
+
+## 2026-09-08 Stage L89D — true full-video timeline repair
+
+- Hypothesis/scope: repair only the L89C sparse-prediction versus dense-GT
+  timeline mismatch. No training, model, loss, bank, tracker, threshold, or
+  ordinary MOT/OVMOT change was made. New code is confined to `tools/l89d_*`
+  and new evidence is under `reports/l89d/` and `outputs/l89d/`.
+- Contract repair: native L69 `frame_ids` and frame pointers now drive every
+  video timeline; all query/frame pairs and all candidate rows are scored.
+  The multi-video query-map overwrite was fixed and covered by a targeted
+  regression. Dev inference attempt3 covers 1,152,690/1,152,690 candidate
+  pairs across 2,385 frame groups; internal attempt1 covers
+  243,550/243,550 pairs across 1,844 frame groups. Both passed full-video and
+  pair-completeness checks. The dev and internal dense Z1 supplements were
+  built from frozen query-independent caches and finalized with no labels.
+- Dev evidence: the valid 5-checkpoint × B/R/P TrackEval matrix selected
+  epoch 8 / Rule P on the preregistered dev tuple. The frozen checkpoint is
+  `/data1/LWR/vranlee/SERVER_ONLY/avis/LocateMOT_L89/outputs/l89/train/joint40/checkpoint_l89_epoch008.pt`,
+  SHA256 `28d4c35a189474d446a26fc096bbafbad77e1298429674383ce7ce8b14677d99`.
+  The fixed 16-calibration/24-validation semantic replay then failed: recall
+  `.5483871`, precision `.1517857`, FP/frame `3.9583333`,
+  predictions/positive `3.6129032`, hard violation `.6923077`,
+  multi-positive recall `.4861111`, inactive false acceptance `.6666667`.
+  Recall and multi-positive floors failed; no screening/test labels were read.
+- Internal evidence: fixed epoch 8 / Rule P true full-video TrackEval gives
+  combined HOTA `23.8586078862%`, DetA `15.1294290119%`, AssA
+  `37.9461647913%`, DetRe `57.2559333985%`, DetPr `16.9954368707%`, IDF1
+  `18.6931722536%`, and IDSW `6337.5`; V1 HOTA `25.0798607896%`, V2 HOTA
+  `22.6373549828%`. These are internal validation-scope TrackEval results,
+  not screening, official-test, or final ordinary-RMOT evidence.
+- Attempts preserved: dev ENOSPC, internal exit-137/OOM retries, the expected
+  smoke full-video rejection, the selector directory-argument error, and the
+  earlier multi-video GT-map mismatch. The final boundary guard passed after
+  the path contract correction. The fixed manifest SHA remained
+  `06da458b09aa3e61ce30a4f8b58a85ac31ef1a5a10d269abd64ae41cffd127fa`.
+- Status: `L89D_COMPLETE_ZERO_TRAINING_TRUE_FULLVIDEO_REPAIR /
+  semantic_gate_fail / STOPPED_PENDING_SUPERVISOR_REVIEW`.
+  Flags: `zero_training=true`, `screening_gt_used=false`,
+  `official_test_labels_read=false`, `ordinary_mot_ovmot_touched=false`.
+  Unique next action: supervisor review and authorization of one separate
+  absence/volume-calibration study; do not extend L89/L89C or alter the
+  production MOT/OVMOT paths.
