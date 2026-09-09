@@ -246,3 +246,62 @@ Concise experimental log (latest first).
   Unique next action: supervisor review and authorization of one separate
   absence/volume-calibration study; do not extend L89/L89C or alter the
   production MOT/OVMOT paths.
+
+## 2026-09-09 Stage L89E — phase-consistent temporal/history replay
+
+- Hypothesis/scope: L89D evaluated every checkpoint with temporal history
+  enabled even though L89 training used Stage-S epochs 1–8 with temporal off
+  and zero history. L89E changed only this replay contract: S epochs 2/4/6/8
+  use `temporal_enabled=false` and zero history; T epochs 10–20 and J epochs
+  22–40 use causal last-four history. No training, model, loss, bank, tracker,
+  threshold science, UIDM, ordinary MOT or OVMOT source was changed.
+- Implementation: isolated branch/worktree based on L89D commit
+  `d0960e1d1679414765f79203bef444f0f9968928`; phase policy and wrappers are
+  in `tools/l89e_*`. The required CPU equality check passed for S and T
+  `L86ClipStore` history construction. The first replay failure was a
+  `FrameExample`/`_clip_history` interface mismatch; the minimal adapter fix
+  passed a targeted S/T causality regression. A subsequent historical-score
+  merge check found that the immutable sparse file contains S+T/J rows; the
+  wrapper now filters only the historical T/J epochs and preserves their
+  values. Launch-path and shortlist argument mistakes were preserved as
+  `INCOMPLETE`/operator evidence; no affected model run was treated as data.
+- Stage-S evidence: fresh phase-correct replay of epochs 2/4/6/8 completed
+  `4 x 498 = 1,992` records, all finite, complete and zero-history. Merged
+  phase-consistent fit/dev pool contains 20 epochs and 9,960 records. The
+  registered maximum-five fit/dev shortlist was frozen at epochs
+  `8(S),20(T),40(J),32(J),4(S)`.
+- Dev selection: full native dev replay retained `11,003,527/11,003,527`
+  candidate rows for all five shortlist candidates. The 15-result TrackEval
+  matrix selected epoch 4 / phase S / Rule B by the registered tuple; dev
+  HOTA was `0.296512` (internal fit/dev selection evidence only).
+- Fixed semantic evidence: the new 16-calibration/24-validation replay used
+  the frozen epoch-4/S zero-history policy and Rule B. Immutable L29 remains
+  recall/precision/FP-frame/pred-positive/hard/multi
+  `.7333333/.0830189/10.125/8.8333/.9166667/.8194444`. L89E validation is
+  recall/precision/FP-frame/pred-positive/hard/multi
+  `.4516129/.1458333/3.4166667/3.0967742/.7692308/.3611111`, with inactive
+  false acceptance `.8333333` and empty rate `.2083333`. The semantic gate
+  fails recall and multi-positive floors despite lower volume and higher
+  precision; no threshold rescue was performed.
+- Internal TrackEval: after the frozen selection, exact internal timeline
+  replay covered `243,550/243,550` pairs for V1 0004/0018 and V2 0016/0017/0020.
+  Phase-consistent HOTA/DetA/AssA/DetRe/DetPr were V1
+  `28.7628/18.7680/44.3927/80.3045/19.5312%` and V2
+  `21.8385/13.3358/35.9990/45.1160/15.8179%`; IDSW was 1,997 and 9,915.
+  These are internal validation-scope TrackEval results, not screening or
+  official-test results.
+- Root cause: correcting S-phase temporal/history evaluation does not
+  restore expression correspondence; the fixed emission remains recall- and
+  multi-positive-limited, with substantial inactive acceptance. Status is
+  `L89E_COMPLETE_ZERO_TRAINING_PHASE_CONSISTENT_REPLAY /
+  semantic_gate_fail / STOPPED_PENDING_SUPERVISOR_REVIEW`.
+- Preserved outputs: Stage-S attempts 1–4, merge attempts 1–2, shortlist
+  attempts 1–4, dev/internal full-video and TrackEval outputs, fixed semantic
+  output, and all reports under `reports/l89e/` and `outputs/l89e/`. The fixed
+  manifest SHA remains
+  `06da458b09aa3e61ce30a4f8b58a85ac31ef1a5a10d269abd64ae41cffd127fa`.
+  Flags remain `zero_training=true`, `screening_gt_used=false`,
+  `official_test_labels_read=false`, `ordinary_mot_ovmot_touched=false`.
+- The only next action is supervisor review of a separately authorized
+  absence/volume-calibration study. Do not extend L89/L89C/L89E, alter the
+  bank, or touch production MOT/OVMOT.

@@ -88,7 +88,11 @@ def run(args: argparse.Namespace) -> int:
             raise RuntimeError(f"wrong L89E worktree cwd: {Path.cwd()}")
         manifest_assertion()
         stage_rows = _read(args.stage_s_scores)
-        historical_rows = _read(args.historical_scores)
+        historical_all_rows = _read(args.historical_scores)
+        # The immutable sparse L89 dev file contains the original S rows as
+        # well as T/J.  Stage-S rows are replaced by the phase-correct replay;
+        # only the historical T/J rows are eligible for reuse.
+        historical_rows = [row for row in historical_all_rows if _epoch(row) in TJ_EPOCHS]
         stage_by_epoch: dict[int, list[dict[str, Any]]] = defaultdict(list)
         old_by_epoch: dict[int, list[dict[str, Any]]] = defaultdict(list)
         for row in stage_rows:
@@ -124,6 +128,8 @@ def run(args: argparse.Namespace) -> int:
             "stage_s_source_sha256": sha256_file(args.stage_s_scores.resolve()),
             "historical_tj_source": str(args.historical_scores.resolve()),
             "historical_tj_source_sha256": sha256_file(args.historical_scores.resolve()),
+            "historical_input_epochs": sorted({_epoch(row) for row in historical_all_rows}),
+            "historical_s_rows_ignored": int(sum(_epoch(row) in S_EPOCHS for row in historical_all_rows)),
             "stage_s_epochs": sorted(S_EPOCHS),
             "historical_tj_epochs": sorted(TJ_EPOCHS),
             "merged_epochs": sorted(ALL_EPOCHS),
