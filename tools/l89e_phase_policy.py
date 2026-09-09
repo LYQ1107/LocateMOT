@@ -62,12 +62,25 @@ def history_for_batch(
     batch: Any,
     policy: L89PhasePolicy,
 ) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor]:
-    """Reproduce L86 packing while enforcing phase-specific invariants."""
-    history, mask, frame_ids = _clip_history(
-        batch,
-        enabled=policy.temporal_enabled,
-        length=4,
-    )
+    """Validate the L86-packed history while enforcing phase invariants.
+
+    ``L86ClipStore.build_frame`` already applies ``_clip_history`` to its
+    internal bank batch and returns a ``FrameExample``.  Reapplying the helper
+    to that public frame object is invalid because ``FrameExample`` deliberately
+    exposes the packed tensors rather than ``candidate_count`` and the raw
+    history fields.  Accept both contracts so the phase policy remains usable
+    at the bank-batch and returned-frame boundaries without changing packing.
+    """
+    if hasattr(batch, "candidate_count"):
+        history, mask, frame_ids = _clip_history(
+            batch,
+            enabled=policy.temporal_enabled,
+            length=4,
+        )
+    else:
+        history = batch.history_observations.float().clone()
+        mask = batch.history_mask.bool().clone()
+        frame_ids = batch.history_frame_ids.long().clone()
     if history.shape != batch.history_observations.shape:
         raise AssertionError("history shape drift")
     if mask.shape != batch.history_mask.shape:
