@@ -66,7 +66,7 @@ class R0CandidateVisualEncoder(nn.Module):
         n = int(inner_tokens.shape[0])
         position = self._position(inner_tokens.device)
         # The fixed order is inner level0..3 followed by context level0..3.
-        inner = inner_tokens + position.unsqueeze(0)
+        inner = inner_tokens + position.unsqueeze(0) + self.region_embed.weight[0]
         context = context_tokens + position.unsqueeze(0) + self.region_embed.weight[1]
         tokens = torch.cat((self.obs_token.expand(n, -1, -1), inner, context), dim=1)
         encoded = self.encoder(tokens)

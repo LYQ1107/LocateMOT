@@ -8,9 +8,12 @@ semantic that must be repaired by a separately approved protocol change.
 from __future__ import annotations
 
 import hashlib
+import importlib.util
 import json
 from collections import defaultdict
+from collections.abc import Mapping
 from dataclasses import dataclass
+from functools import lru_cache
 from pathlib import Path
 from typing import Any, Iterable
 
@@ -22,6 +25,7 @@ L49_DATA = ASSET_ROOT / "outputs/l49/data"
 L69_ROOT = ASSET_ROOT / "outputs/l69/attempt9/budget40_features/kitti"
 L82_SPLIT = ASSET_ROOT / "outputs/l82/protocol/fit_video_train_dev_split.json"
 MANIFEST = ASSET_ROOT / "outputs/l19/protocol/kitti_fast_eval_manifest.json"
+L49_SOURCE = ASSET_ROOT / "locatemot/rmot/l49_data.py"
 EXPECTED_MANIFEST_SHA = "06da458b09aa3e61ce30a4f8b58a85ac31ef1a5a10d269abd64ae41cffd127fa"
 FIT_DATASETS = ("refer_kitti_v1", "refer_kitti_v2")
 EXPECTED_FIT_ROWS = 5314
@@ -38,7 +42,25 @@ class R0TrainQuery:
     video: str
     query_id: int
     sentence: str
+
+
+@dataclass(frozen=True)
+class R0FrameSupervision:
+    dataset: str
+    video: str
+    query_id: int
+    frame_id: int
     target_ids: tuple[str, ...]
+    covered_target_ids: tuple[str, ...]
+    visible_target_count: int
+    covered_target_count: int
+    positive_row_count: int
+    category: str
+    target_present: bool
+    candidate_present: bool
+    present_uncovered: bool
+    partially_covered: bool
+    coverage_fraction: float
 
 
 @dataclass(frozen=True)
@@ -121,25 +143,51 @@ class R0BankStore:
         return R0FrameBatch(str(dataset), str(video), int(query_id), int(frame_id), str(sentence), str(self._path),
                             offsets, keys, candidate_indices, track_ids, pool_ids, boxes, (width, height))
 
-    def attach_labels(self, batch: R0FrameBatch, source_row: dict[str, Any]) -> dict[str, Any]:
-        """Read fit labels only after the complete native frame is assembled."""
+    def attach_frame_labels(
+        self,
+        batch: R0FrameBatch,
+        target_ids: Iterable[object],
+    ) -> dict[str, Any]:
+        """Attach authoritative labels after a complete native frame is assembled."""
         label_path = Path(batch.bank_path).with_suffix(".labels.json")
         payload = json.loads(label_path.read_text(encoding="utf-8"))
         candidate_gt = payload.get("candidate_gt")
         if not isinstance(candidate_gt, list) or max(batch.row_offsets, default=-1) >= len(candidate_gt):
             raise R0DataContractError(f"candidate_gt sidecar mismatch: {label_path}")
-        targets = {str(value) for value in source_row.get("target_ids", [])}
-        values = [candidate_gt[offset] for offset in batch.row_offsets]
+        targets = {str(value) for value in target_ids}
+        values = [None if candidate_gt[offset] is None else str(candidate_gt[offset]) for offset in batch.row_offsets]
         labels = torch.tensor([value is not None and str(value) in targets for value in values], dtype=torch.bool)
-        target_present = bool(targets)
-        candidate_present = bool(labels.any())
-        category = "inactive" if not target_present else (
-            "present_uncovered" if not candidate_present else ("multi_positive" if int(labels.sum()) > 1 else "positive"))
+        candidate_targets = {value for value in values if value is not None}
+        covered_targets = targets & candidate_targets
+        visible_target_count = len(targets)
+        covered_target_count = len(covered_targets)
+        positive_row_count = int(labels.sum())
+        target_present = visible_target_count > 0
+        candidate_present = covered_target_count > 0
+        if visible_target_count == 0:
+            category = "inactive"
+        elif covered_target_count == 0:
+            category = "present_uncovered"
+        elif covered_target_count == 1:
+            category = "positive"
+        else:
+            category = "multi_positive"
+        partially_covered = 0 < covered_target_count < visible_target_count
+        coverage_fraction = (
+            float(covered_target_count) / float(visible_target_count)
+            if visible_target_count > 0 else 1.0
+        )
         return {
             "labels": labels, "candidate_gt": [None if value is None else str(value) for value in values],
-            "target_ids": sorted(targets), "positive_count": int(labels.sum()),
+            "target_ids": sorted(targets), "covered_target_ids": sorted(covered_targets),
+            "visible_target_count": visible_target_count,
+            "covered_target_count": covered_target_count,
+            "positive_row_count": positive_row_count,
+            "positive_count": positive_row_count,
             "category": category, "target_present": target_present,
             "candidate_present": candidate_present, "present_uncovered": bool(target_present and not candidate_present),
+            "partially_covered": partially_covered,
+            "coverage_fraction": coverage_fraction,
             "membership_mask": torch.full_like(labels, not (target_present and not candidate_present)),
             "labels_attached_after_feature_construction": True,
         }
@@ -184,6 +232,27 @@ def load_fit_rows() -> list[dict[str, Any]]:
     return rows
 
 
+@lru_cache(maxsize=1)
+def _load_l49_source_module() -> Any:
+    """Load the audited local L49 helper without copying it into R0A."""
+    if not L49_SOURCE.is_file():
+        raise R0DataContractError(f"authoritative local L49 source missing: {L49_SOURCE}")
+    spec = importlib.util.spec_from_file_location("locatemot_r0a_l49_data", L49_SOURCE)
+    if spec is None or spec.loader is None:
+        raise R0DataContractError(f"cannot load authoritative local L49 source: {L49_SOURCE}")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    if not callable(getattr(module, "load_l49_queries", None)):
+        raise R0DataContractError("local L49 source has no callable load_l49_queries")
+    return module
+
+
+def load_authoritative_l49_queries(dataset: str) -> list[dict[str, Any]]:
+    if dataset not in FIT_DATASETS:
+        raise ValueError(dataset)
+    return _load_l49_source_module().load_l49_queries(dataset)
+
+
 def _target_tuple(row: dict[str, Any]) -> tuple[str, ...]:
     value = row.get("target_ids", [])
     if not isinstance(value, (list, tuple, set)):
@@ -191,12 +260,63 @@ def _target_tuple(row: dict[str, Any]) -> tuple[str, ...]:
     return tuple(sorted({str(item) for item in value}))
 
 
+def _sentence_value(row: dict[str, Any]) -> str:
+    value = row.get("sentence") or row.get("expression") or ""
+    return str(value)
+
+
+def canonical_query_diagnostics(rows: Iterable[dict[str, Any]]) -> dict[str, Any]:
+    """Audit stable query sentences while retaining frame target variation."""
+    grouped: dict[tuple[str, str, int], list[dict[str, Any]]] = defaultdict(list)
+    for row in rows:
+        key = (str(row["dataset"]), str(row["video"]), int(row["query_id"]))
+        grouped[key].append(row)
+    sentence_issues: list[dict[str, Any]] = []
+    canonical: list[dict[str, Any]] = []
+    varying = 0
+    static = 0
+    variant_histogram: defaultdict[str, int] = defaultdict(int)
+    for key in sorted(grouped):
+        values = grouped[key]
+        sentences = sorted({_sentence_value(row) for row in values})
+        targets = sorted({_target_tuple(row) for row in values})
+        if len(sentences) != 1 or not sentences[0]:
+            sentence_issues.append({
+                "dataset": key[0], "video": key[1], "query_id": key[2],
+                "row_count": len(values), "sentence_values": sentences,
+                "target_id_values": [list(item) for item in targets],
+                "unit_keys": [str(row.get("unit_key")) for row in values[:8]],
+                "root_cause": "query sentence is missing or unstable",
+            })
+            continue
+        if len(targets) > 1:
+            varying += 1
+        else:
+            static += 1
+        variant_histogram[str(len(targets))] += 1
+        canonical.append({
+            "dataset": key[0], "video": key[1], "query_id": key[2],
+            "sentence": sentences[0],
+        })
+    return {
+        "group_count": len(grouped),
+        "sentence_issue_count": len(sentence_issues),
+        "frame_target_varying_query_count": varying,
+        "frame_target_static_query_count": static,
+        "target_variant_histogram": dict(sorted(variant_histogram.items(), key=lambda item: int(item[0]))),
+        "issues": sentence_issues,
+        "canonical_queries": canonical,
+        "contract": "(dataset,video,query_id) identifies one stable non-empty sentence; target_ids are frame-specific supervision",
+        "passed": not sentence_issues,
+    }
+
+
 def validate_canonical_query_contract(rows: Iterable[dict[str, Any]]) -> dict[str, Any]:
     result = canonical_query_diagnostics(rows)
-    if result["issues"]:
+    if result["sentence_issue_count"]:
         raise R0DataContractError(
-            "R0 canonical query contract failed: repeated fit rows disagree on sentence/target_ids; "
-            + json.dumps({"issue_count": len(result["issues"]), "first": result["issues"][0]}, ensure_ascii=False)
+            "R0 canonical query contract failed: query sentence is missing or unstable; "
+            + json.dumps({"sentence_issue_count": result["sentence_issue_count"], "first": result["issues"][0]}, ensure_ascii=False)
         )
     return {
         "canonical_query_count": len(result["canonical_queries"]),
@@ -205,52 +325,172 @@ def validate_canonical_query_contract(rows: Iterable[dict[str, Any]]) -> dict[st
             for dataset in FIT_DATASETS
         },
         "canonical_queries": result["canonical_queries"],
-        "contract": "repeated (dataset,video,query_id) rows must agree on sentence and target_ids",
+        "contract": result["contract"],
+        "frame_target_varying_query_count": result["frame_target_varying_query_count"],
+        "frame_target_static_query_count": result["frame_target_static_query_count"],
+        "target_variant_histogram": result["target_variant_histogram"],
         "passed": True,
-        "issue_count": 0,
-    }
-
-
-def canonical_query_diagnostics(rows: Iterable[dict[str, Any]]) -> dict[str, Any]:
-    """Return all canonical-query disagreements without repairing them."""
-    grouped: dict[tuple[str, str, int], list[dict[str, Any]]] = defaultdict(list)
-    for row in rows:
-        key = (str(row["dataset"]), str(row["video"]), int(row["query_id"]))
-        grouped[key].append(row)
-    issues: list[dict[str, Any]] = []
-    canonical: list[dict[str, Any]] = []
-    for key in sorted(grouped):
-        values = grouped[key]
-        sentences = sorted({str(row.get("sentence", "")) for row in values})
-        targets = sorted({_target_tuple(row) for row in values})
-        if len(sentences) != 1 or len(targets) != 1:
-            issues.append({
-                "dataset": key[0], "video": key[1], "query_id": key[2],
-                "row_count": len(values), "sentence_values": sentences,
-                "target_id_values": [list(item) for item in targets],
-                "unit_keys": [str(row.get("unit_key")) for row in values[:8]],
-                "root_cause": "L49 target_ids are frame-level visibility labels, not one canonical per-video query target tuple",
-            })
-            continue
-        canonical.append({
-            "dataset": key[0], "video": key[1], "query_id": key[2],
-            "sentence": sentences[0], "target_ids": list(targets[0]),
-        })
-    return {
-        "group_count": len(grouped),
-        "issue_count": len(issues),
-        "issues": issues,
-        "canonical_queries": canonical,
-        "passed": not issues,
+        "sentence_issue_count": 0,
     }
 
 
 def load_canonical_train_queries(dataset: str) -> list[R0TrainQuery]:
     if dataset not in FIT_DATASETS:
         raise ValueError(dataset)
-    rows = [row for row in load_fit_rows() if str(row["dataset"]) == dataset]
+    allowed = train_video_pairs(dataset)
+    rows = [
+        row for row in load_fit_rows()
+        if str(row["dataset"]) == dataset and (str(row["dataset"]), str(row["video"])) in allowed
+    ]
     result = validate_canonical_query_contract(rows)
     return [R0TrainQuery(**item) for item in result["canonical_queries"]]
+
+
+def load_l82_video_split() -> dict[str, Any]:
+    """Load and validate the preregistered video-disjoint fit/dev split."""
+    payload = json.loads(L82_SPLIT.read_text(encoding="utf-8"))
+    if payload.get("format") != "locatemot-l82-video-disjoint-fit-dev-split-v1":
+        raise R0DataContractError(f"unexpected L82 split format: {payload.get('format')}")
+    if payload.get("status") != "complete":
+        raise R0DataContractError(f"L82 split is not complete: {payload.get('status')}")
+    train = payload.get("train_videos")
+    dev = payload.get("dev_videos")
+    if not isinstance(train, list) or not train or not isinstance(dev, list) or not dev:
+        raise R0DataContractError("L82 split has empty or non-list train/dev videos")
+    train_pairs = _parse_video_pairs(train, "train_videos")
+    dev_pairs = _parse_video_pairs(dev, "dev_videos")
+    overlap = sorted(train_pairs & dev_pairs)
+    if overlap:
+        raise R0DataContractError(f"L82 train/dev video overlap: {overlap}")
+    return {
+        **payload,
+        "train_video_pair_count": len(train_pairs),
+        "dev_video_pair_count": len(dev_pairs),
+        "train_dev_overlap": overlap,
+    }
+
+
+def _parse_video_pairs(values: list[Any], field: str) -> set[tuple[str, str]]:
+    result: set[tuple[str, str]] = set()
+    for value in values:
+        if not isinstance(value, str) or value.count("|") != 1:
+            raise R0DataContractError(f"invalid {field} entry: {value!r}")
+        dataset, video = value.split("|", 1)
+        if dataset not in FIT_DATASETS or not video:
+            raise R0DataContractError(f"invalid {field} dataset/video: {value!r}")
+        result.add((dataset, video))
+    if len(result) != len(values):
+        raise R0DataContractError(f"duplicate {field} entries")
+    return result
+
+
+def train_video_pairs(dataset: str | None = None) -> set[tuple[str, str]]:
+    pairs = _parse_video_pairs(load_l82_video_split()["train_videos"], "train_videos")
+    return {pair for pair in pairs if dataset is None or pair[0] == dataset}
+
+
+def dev_video_pairs(dataset: str | None = None) -> set[tuple[str, str]]:
+    pairs = _parse_video_pairs(load_l82_video_split()["dev_videos"], "dev_videos")
+    return {pair for pair in pairs if dataset is None or pair[0] == dataset}
+
+
+def _normalize_target_map(raw: Any) -> dict[int, tuple[str, ...]]:
+    """Normalize frame keys/IDs and reject conflicting normalized-key aliases."""
+    if not isinstance(raw, Mapping):
+        raise R0DataContractError(f"target map is not mapping-like: {type(raw).__name__}")
+    result: dict[int, tuple[str, ...]] = {}
+    for raw_frame, raw_ids in raw.items():
+        try:
+            frame = int(raw_frame)
+        except (TypeError, ValueError) as exc:
+            raise R0DataContractError(f"invalid target-map frame key: {raw_frame!r}") from exc
+        if raw_ids is None:
+            values: tuple[str, ...] = ()
+        elif isinstance(raw_ids, (list, tuple, set, frozenset)):
+            values = tuple(sorted({str(value) for value in raw_ids}))
+        else:
+            values = (str(raw_ids),)
+        previous = result.get(frame)
+        if previous is not None and previous != values:
+            raise R0DataContractError(
+                f"conflicting target-map aliases for frame {frame}: {previous!r} vs {values!r}"
+            )
+        result[frame] = values
+    return result
+
+
+class R0FrameTargetSource:
+    """Frame-specific L49 target source with an explicit video allow-list."""
+
+    _PURPOSES = {"train", "dev", "internal", "audit"}
+
+    def __init__(self, *, purpose: str, allowed_video_pairs: set[tuple[str, str]]) -> None:
+        if purpose not in self._PURPOSES:
+            raise ValueError(f"unsupported target-source purpose: {purpose}")
+        self.purpose = purpose
+        self.allowed_video_pairs = set(allowed_video_pairs)
+        if not self.allowed_video_pairs:
+            raise R0DataContractError(f"empty allowed video scope for {purpose}")
+        for dataset, video in self.allowed_video_pairs:
+            if dataset not in FIT_DATASETS or not video:
+                raise R0DataContractError(f"invalid allowed video pair: {(dataset, video)!r}")
+        self._rows: dict[tuple[str, str, int], dict[str, Any]] = {}
+        self._target_maps: dict[tuple[str, str, int], dict[int, tuple[str, ...]]] = {}
+        for dataset in sorted({pair[0] for pair in self.allowed_video_pairs}):
+            for row in load_authoritative_l49_queries(dataset):
+                pair = (str(row.get("dataset")), str(row.get("video")))
+                if pair not in self.allowed_video_pairs:
+                    continue
+                key = (pair[0], pair[1], int(row["query_id"]))
+                if key in self._rows:
+                    raise R0DataContractError(f"duplicate authoritative query key: {key}")
+                sentence = _sentence_value(row)
+                if not sentence:
+                    raise R0DataContractError(f"empty authoritative sentence: {key}")
+                self._rows[key] = row
+                self._target_maps[key] = _normalize_target_map(row.get("target", {}))
+        if not self._rows:
+            raise R0DataContractError(f"no authoritative queries for allowed {purpose} scope")
+
+    def _assert_allowed(self, dataset: str, video: str) -> tuple[str, str]:
+        pair = (str(dataset), str(video))
+        if pair not in self.allowed_video_pairs:
+            raise R0DataContractError(f"{self.purpose} target lookup outside allow-list: {pair}")
+        return pair
+
+    def _key(self, dataset: str, video: str, query_id: int) -> tuple[str, str, int]:
+        pair = self._assert_allowed(dataset, video)
+        key = (pair[0], pair[1], int(query_id))
+        if key not in self._rows:
+            raise KeyError(f"missing authoritative query: {key}")
+        return key
+
+    def query_sentence(self, dataset: str, video: str, query_id: int) -> str:
+        return _sentence_value(self._rows[self._key(dataset, video, query_id)])
+
+    def target_ids(self, dataset: str, video: str, query_id: int, frame_id: int) -> tuple[str, ...]:
+        key = self._key(dataset, video, query_id)
+        # Missing exact frame keys are legal empty/inactive frames; no temporal fallback.
+        return self._target_maps[key].get(int(frame_id), ())
+
+    def query_ids(self, dataset: str, video: str) -> tuple[int, ...]:
+        pair = self._assert_allowed(dataset, video)
+        return tuple(sorted(key[2] for key in self._rows if key[:2] == pair))
+
+    def source_descriptor(self) -> dict[str, Any]:
+        return {
+            "purpose": self.purpose,
+            "allowed_video_pairs": [f"{dataset}|{video}" for dataset, video in sorted(self.allowed_video_pairs)],
+            "query_count": len(self._rows),
+            "source_path": str(L49_SOURCE),
+            "source_sha256": sha256_file(L49_SOURCE),
+            "frame_specific": True,
+            "target_union_used": False,
+            "nearest_frame_fallback": False,
+            "forward_fill": False,
+            "backward_fill": False,
+            "pseudo_labels_used": False,
+        }
 
 
 def native_frame_ids(video: str) -> list[int]:
