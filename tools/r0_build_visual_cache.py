@@ -156,6 +156,7 @@ def _frame_item(
     runtime: R0FrozenVisualRuntime,
     bank_path: Path,
     blob: dict[str, Any],
+    dataset: str,
     video: str,
     frame_position: int,
     cache_path: Path,
@@ -180,8 +181,8 @@ def _frame_item(
     if not (len(offsets) == len(candidate_indices) == int(boxes.shape[0]) == len(track_ids) == len(pool_ids)):
         raise AssertionError(f"R0 row count drift at {video}:{frame_id}")
     item = {
-        "format": "locatemot-r0-track-visual-token-v1", "dataset": None, "video": str(video),
-        "frame_id": int(frame_id), "group_key": None, "candidate_count": int(len(offsets)),
+        "format": "locatemot-r0-track-visual-token-v1", "dataset": str(dataset), "video": str(video),
+        "frame_id": int(frame_id), "group_key": f"{dataset}|{video}|{frame_id}", "candidate_count": int(len(offsets)),
         "row_offsets": offsets, "candidate_indices": candidate_indices, "track_ids": track_ids,
         "pool_ids": pool_ids, "raw_ranks": raw_ranks, "boxes_xyxy": boxes,
         "boxes_normalized": tokens["boxes_normalized"].float().cpu(),
@@ -211,20 +212,26 @@ def _frame_item(
 
 def run(args: argparse.Namespace) -> int:
     cache_root = args.out.resolve()
-    if cache_root.exists() and any(cache_root.iterdir()):
-        raise FileExistsError(f"refusing nonempty R0 visual cache root: {cache_root}")
+    if not (1 <= int(args.world_size) <= 4) or not (0 <= int(args.rank) < int(args.world_size)):
+        raise ValueError(f"invalid rank/world-size: {args.rank}/{args.world_size}")
     cache_root.mkdir(parents=True, exist_ok=True)
-    audit_root = args.audit_out.resolve()
+    rank_root = cache_root / f"rank{int(args.rank)}"
+    if rank_root.exists() and any(rank_root.iterdir()):
+        raise FileExistsError(f"refusing nonempty R0 visual cache rank root: {rank_root}")
+    rank_root.mkdir(parents=True, exist_ok=True)
+    audit_root = args.audit_out.resolve() / f"rank{int(args.rank)}"
     if audit_root.exists() and any(audit_root.iterdir()):
-        raise FileExistsError(f"refusing nonempty R0 visual-cache audit root: {audit_root}")
+        raise FileExistsError(f"refusing nonempty R0 visual-cache audit rank root: {audit_root}")
     audit_root.mkdir(parents=True, exist_ok=True)
     command = " ".join([sys.executable, *sys.argv])
     started = time.perf_counter()
     pairs = _scope_pairs(args.scopes)
+    local_pairs = [pair for index, pair in enumerate(pairs) if index % int(args.world_size) == int(args.rank)]
     base = {
         "format": "locatemot-r0-visual-cache-v1", "status": "incomplete", "command": command,
         "cwd": str(WORK_ROOT), "luna_thread": THREAD, "seed": SEED, "scopes": list(args.scopes),
-        "pairs": [list(value) for value in pairs], "cache_root": str(cache_root),
+        "pairs": [list(value) for value in pairs], "local_pairs": [list(value) for value in local_pairs],
+        "rank": int(args.rank), "world_size": int(args.world_size), "cache_root": str(cache_root),
         "manifest_sha256": sha256_file(MANIFEST), "expected_manifest_sha256": MANIFEST_SHA,
         "screening_gt_used": False, "official_test_labels_read": False, "ordinary_mot_ovmot_touched": False,
         "tracker_source_changed": False, "uidm_source_changed": False, "l69_source_changed": False,
@@ -244,7 +251,7 @@ def run(args: argparse.Namespace) -> int:
             torch.cuda.set_device(device)
             torch.cuda.reset_peak_memory_stats(device)
         runtime = R0FrozenVisualRuntime(device)
-        first_train = next(((dataset, video) for dataset, video in pairs if dataset in FIT_DATASETS), None)
+        first_train = next(((dataset, video) for dataset, video in local_pairs if dataset in FIT_DATASETS), None)
         if first_train is None:
             raise AssertionError("R0 cache requires a legal train pair for prompt invariance")
         train_path, train_blob = load_l69_bank(first_train[1])
@@ -257,17 +264,15 @@ def run(args: argparse.Namespace) -> int:
         summaries: list[dict[str, Any]] = []
         manifest_lines: list[str] = []
         config = R0VisualTokenConfig()
-        for dataset, video in pairs:
+        for dataset, video in local_pairs:
             bank_path, blob = load_l69_bank(video)
             tensors = blob["tensors"]
-            video_dir = cache_root / dataset / video
+            video_dir = rank_root / dataset / video
             rows: list[dict[str, Any]] = []
             for position in range(int(tensors["frame_ids"].numel())):
                 frame_id = int(tensors["frame_ids"][position])
                 path = video_dir / f"{frame_id:06d}.pt"
-                item_audit = _frame_item(runtime, bank_path, blob, video, position, path, config)
-                item_audit["dataset"] = dataset
-                item_audit["group_key"] = f"{dataset}|{video}|{frame_id}"
+                item_audit = _frame_item(runtime, bank_path, blob, dataset, video, position, path, config)
                 rows.append(item_audit)
                 manifest_lines.append(json.dumps(item_audit, ensure_ascii=False))
             summary = {"dataset": dataset, "video": video, "bank_path": str(bank_path.resolve()),
@@ -279,7 +284,7 @@ def run(args: argparse.Namespace) -> int:
             summaries.append({key: value for key, value in summary.items() if key != "frames"})
             del blob, tensors
             gc.collect()
-        (cache_root / "manifest.jsonl").write_text("\n".join(manifest_lines) + "\n", encoding="utf-8")
+        (rank_root / "manifest.jsonl").write_text("\n".join(manifest_lines) + "\n", encoding="utf-8")
         payload = {**base, "status": "complete", "summaries": summaries,
                    "frame_count": int(sum(item["frame_count"] for item in summaries)),
                    "candidate_rows": int(sum(item["candidate_rows"] for item in summaries)),
@@ -288,15 +293,15 @@ def run(args: argparse.Namespace) -> int:
                    "peak_memory_bytes": int(torch.cuda.max_memory_allocated(device)) if device.type == "cuda" else None,
                    "wall_seconds": time.perf_counter() - started,
                    "failure_root_cause": None, "next_action": "build R0 dense train indexes"}
-        write_json(cache_root / "summary.json", payload)
+        write_json(rank_root / "summary.json", payload)
         write_json(audit_root / "provenance.json", payload)
         write_json(audit_root / "status.json", payload)
         return 0
     except Exception as exc:
         trace = traceback.format_exc()
-        (cache_root / "INCOMPLETE.md").write_text("# R0 visual cache — INCOMPLETE\n\n" + trace, encoding="utf-8")
+        (rank_root / "INCOMPLETE.md").write_text("# R0 visual cache — INCOMPLETE\n\n" + trace, encoding="utf-8")
         payload = {**base, "failure_root_cause": f"{type(exc).__name__}: {exc}",
-                   "traceback_path": str((cache_root / "INCOMPLETE.md").resolve()),
+                   "traceback_path": str((rank_root / "INCOMPLETE.md").resolve()),
                    "wall_seconds": time.perf_counter() - started}
         write_json(audit_root / "provenance.json", payload)
         write_json(audit_root / "status.json", payload)
@@ -313,6 +318,8 @@ def main() -> int:
     parser.add_argument("--audit-out", type=Path, default=Path("outputs/r0/audit/visual_cache"))
     parser.add_argument("--device", default="cuda:0")
     parser.add_argument("--seed", type=int, default=SEED)
+    parser.add_argument("--rank", type=int, default=0)
+    parser.add_argument("--world-size", type=int, default=1)
     return run(parser.parse_args())
 
 

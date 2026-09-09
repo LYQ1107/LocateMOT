@@ -1,23 +1,26 @@
 """R0 dense native-frame data contract.
 
-This module intentionally fails on the R0 preregistered canonical-query
-contract when the existing L49 fit metadata disagrees across frames.  It does
-not invent a union target set: frame-level target visibility is a label
-semantic that must be repaired by a separately approved protocol change.
+Frame-specific supervision is read only from the R0A safe target artifact;
+this module never invokes the historical full L49 query loader. It does not
+invent a union target set: missing exact frame labels remain inactive or
+present-uncovered according to the authoritative frame map.
 """
 from __future__ import annotations
 
 import hashlib
-import importlib.util
 import json
 from collections import defaultdict
-from collections.abc import Mapping
 from dataclasses import dataclass
-from functools import lru_cache
 from pathlib import Path
 from typing import Any, Iterable
 
 import torch
+
+from locatemot.rmot.r0_safe_target_source import (  # noqa: E402
+    R0SafeQueryRecord,
+    R0SafeSourceError,
+    load_safe_query_records,
+)
 
 
 ASSET_ROOT = Path("/data1/LWR/vranlee/SERVER_ONLY/avis/LocateMOT").resolve()
@@ -90,6 +93,12 @@ class R0FrameBatch:
     def candidate_count(self) -> int:
         return len(self.row_offsets)
 
+    @property
+    def image_hw(self) -> tuple[int, int]:
+        """Return image dimensions as ``(height, width)`` for geometry code."""
+        width, height = self.image_size
+        return int(height), int(width)
+
 
 class R0BankStore:
     """Streaming native L69 row reader used by cache/audit/index tools."""
@@ -99,6 +108,7 @@ class R0BankStore:
         self._path: Path | None = None
         self._blob: dict[str, Any] | None = None
         self._track_rows: dict[int, list[int]] = {}
+        self._candidate_gt: list[str | None] | None = None
 
     @property
     def tensors(self) -> dict[str, Any]:
@@ -116,12 +126,22 @@ class R0BankStore:
         path, blob = load_l69_bank(str(video))
         values = [int(x) for x in blob["tensors"]["track_id"].long().tolist()]
         frames = [int(x) for x in blob["tensors"]["frame"].long().tolist()]
+        label_path = path.with_suffix(".labels.json")
+        if not label_path.is_file():
+            raise R0DataContractError(f"missing L69 candidate sidecar: {label_path}")
+        label_payload = json.loads(label_path.read_text(encoding="utf-8"))
+        candidate_gt = label_payload.get("candidate_gt")
+        if not isinstance(candidate_gt, list) or len(candidate_gt) != len(values):
+            raise R0DataContractError(f"candidate_gt/row mismatch: {label_path}")
+        normalized_gt = [None if value is None else str(value) for value in candidate_gt]
         rows: dict[int, list[int]] = defaultdict(list)
         for offset, track in enumerate(values):
             rows[track].append(offset)
         for offsets in rows.values():
             offsets.sort(key=lambda x: (frames[x], x))
-        self._video, self._path, self._blob, self._track_rows = str(video), path, blob, dict(rows)
+        self._video, self._path, self._blob, self._track_rows, self._candidate_gt = (
+            str(video), path, blob, dict(rows), normalized_gt
+        )
 
     def build_frame(self, dataset: str, video: str, query_id: int, frame_id: int, sentence: str) -> R0FrameBatch:
         self.load_video(str(video))
@@ -150,9 +170,8 @@ class R0BankStore:
     ) -> dict[str, Any]:
         """Attach authoritative labels after a complete native frame is assembled."""
         label_path = Path(batch.bank_path).with_suffix(".labels.json")
-        payload = json.loads(label_path.read_text(encoding="utf-8"))
-        candidate_gt = payload.get("candidate_gt")
-        if not isinstance(candidate_gt, list) or max(batch.row_offsets, default=-1) >= len(candidate_gt):
+        candidate_gt = self._candidate_gt
+        if candidate_gt is None or max(batch.row_offsets, default=-1) >= len(candidate_gt):
             raise R0DataContractError(f"candidate_gt sidecar mismatch: {label_path}")
         targets = {str(value) for value in target_ids}
         values = [None if candidate_gt[offset] is None else str(candidate_gt[offset]) for offset in batch.row_offsets]
@@ -230,27 +249,6 @@ def load_fit_rows() -> list[dict[str, Any]]:
     if any(str(row.get("video")) in FORBIDDEN_SCOPE_VIDEOS for row in rows):
         raise R0DataContractError("official-eval video appeared in fit rows")
     return rows
-
-
-@lru_cache(maxsize=1)
-def _load_l49_source_module() -> Any:
-    """Load the audited local L49 helper without copying it into R0A."""
-    if not L49_SOURCE.is_file():
-        raise R0DataContractError(f"authoritative local L49 source missing: {L49_SOURCE}")
-    spec = importlib.util.spec_from_file_location("locatemot_r0a_l49_data", L49_SOURCE)
-    if spec is None or spec.loader is None:
-        raise R0DataContractError(f"cannot load authoritative local L49 source: {L49_SOURCE}")
-    module = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(module)
-    if not callable(getattr(module, "load_l49_queries", None)):
-        raise R0DataContractError("local L49 source has no callable load_l49_queries")
-    return module
-
-
-def load_authoritative_l49_queries(dataset: str) -> list[dict[str, Any]]:
-    if dataset not in FIT_DATASETS:
-        raise ValueError(dataset)
-    return _load_l49_source_module().load_l49_queries(dataset)
 
 
 def _target_tuple(row: dict[str, Any]) -> tuple[str, ...]:
@@ -394,37 +392,18 @@ def dev_video_pairs(dataset: str | None = None) -> set[tuple[str, str]]:
     return {pair for pair in pairs if dataset is None or pair[0] == dataset}
 
 
-def _normalize_target_map(raw: Any) -> dict[int, tuple[str, ...]]:
-    """Normalize frame keys/IDs and reject conflicting normalized-key aliases."""
-    if not isinstance(raw, Mapping):
-        raise R0DataContractError(f"target map is not mapping-like: {type(raw).__name__}")
-    result: dict[int, tuple[str, ...]] = {}
-    for raw_frame, raw_ids in raw.items():
-        try:
-            frame = int(raw_frame)
-        except (TypeError, ValueError) as exc:
-            raise R0DataContractError(f"invalid target-map frame key: {raw_frame!r}") from exc
-        if raw_ids is None:
-            values: tuple[str, ...] = ()
-        elif isinstance(raw_ids, (list, tuple, set, frozenset)):
-            values = tuple(sorted({str(value) for value in raw_ids}))
-        else:
-            values = (str(raw_ids),)
-        previous = result.get(frame)
-        if previous is not None and previous != values:
-            raise R0DataContractError(
-                f"conflicting target-map aliases for frame {frame}: {previous!r} vs {values!r}"
-            )
-        result[frame] = values
-    return result
-
-
 class R0FrameTargetSource:
-    """Frame-specific L49 target source with an explicit video allow-list."""
+    """Index already-isolated frame-specific records; never open raw sources."""
 
     _PURPOSES = {"train", "dev", "internal", "audit"}
 
-    def __init__(self, *, purpose: str, allowed_video_pairs: set[tuple[str, str]]) -> None:
+    def __init__(
+        self,
+        *,
+        purpose: str,
+        allowed_video_pairs: set[tuple[str, str]],
+        records: Iterable[R0SafeQueryRecord],
+    ) -> None:
         if purpose not in self._PURPOSES:
             raise ValueError(f"unsupported target-source purpose: {purpose}")
         self.purpose = purpose
@@ -434,21 +413,19 @@ class R0FrameTargetSource:
         for dataset, video in self.allowed_video_pairs:
             if dataset not in FIT_DATASETS or not video:
                 raise R0DataContractError(f"invalid allowed video pair: {(dataset, video)!r}")
-        self._rows: dict[tuple[str, str, int], dict[str, Any]] = {}
-        self._target_maps: dict[tuple[str, str, int], dict[int, tuple[str, ...]]] = {}
-        for dataset in sorted({pair[0] for pair in self.allowed_video_pairs}):
-            for row in load_authoritative_l49_queries(dataset):
-                pair = (str(row.get("dataset")), str(row.get("video")))
-                if pair not in self.allowed_video_pairs:
-                    continue
-                key = (pair[0], pair[1], int(row["query_id"]))
-                if key in self._rows:
-                    raise R0DataContractError(f"duplicate authoritative query key: {key}")
-                sentence = _sentence_value(row)
-                if not sentence:
-                    raise R0DataContractError(f"empty authoritative sentence: {key}")
-                self._rows[key] = row
-                self._target_maps[key] = _normalize_target_map(row.get("target", {}))
+        self._rows: dict[tuple[str, str, int], R0SafeQueryRecord] = {}
+        for record in records:
+            if not isinstance(record, R0SafeQueryRecord):
+                raise R0DataContractError(f"non-safe target record supplied: {type(record).__name__}")
+            pair = (record.dataset, record.video)
+            if pair not in self.allowed_video_pairs:
+                raise R0DataContractError(f"safe target record outside allow-list: {pair}")
+            if not record.sentence:
+                raise R0DataContractError(f"empty safe target sentence: {record}")
+            key = (record.dataset, record.video, int(record.query_id))
+            if key in self._rows:
+                raise R0DataContractError(f"duplicate safe target query key: {key}")
+            self._rows[key] = record
         if not self._rows:
             raise R0DataContractError(f"no authoritative queries for allowed {purpose} scope")
 
@@ -466,12 +443,12 @@ class R0FrameTargetSource:
         return key
 
     def query_sentence(self, dataset: str, video: str, query_id: int) -> str:
-        return _sentence_value(self._rows[self._key(dataset, video, query_id)])
+        return self._rows[self._key(dataset, video, query_id)].sentence
 
     def target_ids(self, dataset: str, video: str, query_id: int, frame_id: int) -> tuple[str, ...]:
         key = self._key(dataset, video, query_id)
         # Missing exact frame keys are legal empty/inactive frames; no temporal fallback.
-        return self._target_maps[key].get(int(frame_id), ())
+        return self._rows[key].target.get(int(frame_id), ())
 
     def query_ids(self, dataset: str, video: str) -> tuple[int, ...]:
         pair = self._assert_allowed(dataset, video)
@@ -482,8 +459,7 @@ class R0FrameTargetSource:
             "purpose": self.purpose,
             "allowed_video_pairs": [f"{dataset}|{video}" for dataset, video in sorted(self.allowed_video_pairs)],
             "query_count": len(self._rows),
-            "source_path": str(L49_SOURCE),
-            "source_sha256": sha256_file(L49_SOURCE),
+            "safe_artifact_only": True,
             "frame_specific": True,
             "target_union_used": False,
             "nearest_frame_fallback": False,
@@ -575,7 +551,8 @@ def contract_descriptor() -> dict[str, Any]:
         "fit_datasets": list(FIT_DATASETS),
         "expected_fit_rows": EXPECTED_FIT_ROWS,
         "official_evaluation_videos_rejected": sorted(FORBIDDEN_SCOPE_VIDEOS),
-        "label_protocol": "fit expression-level fields are checked only for the registered canonical-query contract",
+        "label_protocol": "stable sentence identity plus frame-specific targets from an R0A safe artifact",
+        "safe_target_source_only": True,
         "no_screening_or_official_test_labels": True,
     }
 
@@ -583,8 +560,10 @@ def contract_descriptor() -> dict[str, Any]:
 __all__ = [
     "ASSET_ROOT", "EXPECTED_FIT_ROWS", "EXPECTED_MANIFEST_SHA", "FIT_DATASETS",
     "FORBIDDEN_SCOPE_VIDEOS", "L49_DATA", "L69_ROOT", "L82_SPLIT", "MANIFEST",
-    "R0BankStore", "R0DataContractError", "R0FrameBatch", "R0TrainQuery", "R0TrainVideoScope", "contract_descriptor",
+    "R0BankStore", "R0DataContractError", "R0FrameBatch", "R0FrameSupervision", "R0FrameTargetSource",
+    "R0SafeQueryRecord", "R0SafeSourceError", "R0TrainQuery", "R0TrainVideoScope", "contract_descriptor",
     "file_meta", "load_canonical_train_queries", "load_fit_rows", "load_l69_bank", "native_frame_ids",
     "native_frame_slice",
     "read_jsonl", "sha256_file", "canonical_query_diagnostics", "validate_canonical_query_contract",
+    "load_safe_query_records",
 ]

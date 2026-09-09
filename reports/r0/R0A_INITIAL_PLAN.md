@@ -75,3 +75,37 @@ monolithic source containing forbidden labels. This attempt is therefore
 index, visual cache, training, dev selection, or TrackEval is valid under this
 attempt. A separate supervisor-approved train-scope source/isolation repair is
 required before resuming.
+
+## R0A safe-source continuation (current authorized attempt)
+
+The supervisor-approved continuation keeps the historical stop above intact.
+The current worktree remains the isolated `LocateMOT_R0A` checkout at commit
+`54541f1d99d4f1d8836354f26d554577ffd84a3d`; no raw V2 loader call is allowed.
+The new `r0_safe_target_source.py` scans the monolithic V2 files lexically and
+deserializes only allowlisted video values. A synthetic CPU fixture must pass
+before any real annotation payload is accessed. The valid retry must retain
+`forbidden_payload_deserialized=false` and `official_test_labels_read=false`.
+
+After that source contract, the fixed order is: build label-bearing safe
+fit/train/dev/internal artifacts; audit exactly 5,314 fit rows against their
+frame-specific authoritative records with four zero-mismatch counters; build
+separate dense native-frame V1/V2 indexes using only L82 train pairs; fix the
+R0-only `(width,height)` versus `(height,width)` geometry property and cache
+metadata contract; compile/boundary/real forward-backward smoke; then, and
+only then, proceed to the registered visual-cache, benchmark-specific R0
+training, legal dev TrackEval selection, and internal full-video TrackEval.
+Any source or data-contract mismatch stops the attempt before model work.
+
+## R0A real smoke result
+
+The R0-only implementation gate passed in
+`outputs/r0/audit/r0_contract_smoke_retry2/contract.json`: one legal V1 fit
+frame completed native visual-token construction, frame-specific supervision,
+forward/backward, and strict reload.  It retained 57 rows including 18
+duplicate candidate indices; visual tokens were `[57,36,256]`, pure language
+tokens were `[1,256,256]`, geometry was `[57,5,10]`, loss was finite, and all
+108 trainable gradients were finite and nonzero.  The optimizer contained no
+GroundingDINO or tracker parameters, strict reload max difference was zero,
+and the temporary visual item was removed.  This is an implementation gate,
+not semantic/RMOT/HOTA evidence.  The next action is to commit/freeze this
+code and build the legal query-independent cache under `/data2`.

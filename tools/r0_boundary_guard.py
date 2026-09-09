@@ -21,6 +21,7 @@ ALLOWED_EXACT = {
     "locatemot/rmot/r0_dense_data.py",
     "locatemot/rmot/r0_geometry.py",
     "locatemot/rmot/r0_losses.py",
+    "locatemot/rmot/r0_safe_target_source.py",
 }
 ALLOWED_PREFIXES = ("tools/r0_", "reports/r0/", "outputs/r0/")
 

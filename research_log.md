@@ -305,3 +305,28 @@ Concise experimental log (latest first).
 - The only next action is supervisor review of a separately authorized
   absence/volume-calibration study. Do not extend L89/L89C/L89E, alter the
   bank, or touch production MOT/OVMOT.
+
+## R0A — safe target contract, dense native indexes, and implementation smoke — 2026-09-09
+
+- Hypothesis: isolate only allowlisted V1/V2 target records, repair the
+  frame-specific target contract, and construct native-frame R0 data without
+  parsing forbidden official-eval payloads.
+- Safe-source retry3 passed: lexical monolithic-JSON isolation deserialized
+  only allowlisted video values and recorded
+  `forbidden_payload_deserialized=false` and
+  `official_test_labels_read=false`.  The exact 5,314 sparse fit rows matched
+  the authoritative frame map with zero sentence/target/missing-query/invalid-
+  frame mismatches.
+- Dense native-frame index retry2 and its contract audit passed for V1/V2;
+  all L69 rows and duplicate candidate indices were retained.  The geometry
+  `image_hw` and visual-cache dataset/group-key contracts were corrected in
+  R0-only files.  Retry1 dense/smoke failures remain preserved with their
+  first trace; retry2 is authoritative.
+- Real R0 contract smoke retry2 passed on one V1 fit frame: loss
+  `3.555824041366577`, 108/108 finite nonzero trainable gradients, frozen
+  GroundingDINO, no tracker optimizer parameters, strict reload max diff `0`,
+  and temporary visual item removed.  This is implementation evidence only;
+  no semantic, screening, official-test, HOTA, or production MOT/OVMOT result.
+- Next action: commit/freeze the R0A safe code and construct the registered
+  query-independent visual cache on `/data2`; no old asset or production
+  entrypoint is modified.
