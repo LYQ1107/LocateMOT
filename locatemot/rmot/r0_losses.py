@@ -20,6 +20,7 @@ def r0_membership_set_loss(
     candidate_gt: Iterable[Iterable[object | None]],
     *,
     weakest_tau: float = 0.20,
+    collect_info: bool = True,
 ) -> tuple[torch.Tensor, dict[str, Any]]:
     """Compute the fixed R0 covered/inactive target-bag objective.
 
@@ -36,9 +37,12 @@ def r0_membership_set_loss(
     if len(categories) != q_count or len(target_ids) != q_count or len(candidate_gt) != q_count:
         raise ValueError("R0 loss query count mismatch")
     total = _zero(membership_logits)
-    info: dict[str, Any] = {"queries": q_count, "positive_count": 0, "negative_count": 0,
-                            "masked_present_uncovered": 0, "hard_negative_count": 0,
-                            "finite": True, "components": []}
+    if not collect_info:
+        info: dict[str, Any] = {"diagnostics_collected": False, "queries": q_count}
+    else:
+        info = {"queries": q_count, "positive_count": 0, "negative_count": 0,
+                "masked_present_uncovered": 0, "hard_negative_count": 0,
+                "finite": True, "components": []}
     tau = float(weakest_tau)
     if tau <= 0:
         raise ValueError("weakest_tau must be positive")
@@ -48,8 +52,9 @@ def r0_membership_set_loss(
         values = membership_logits[q]
         category = categories[q]
         if category == "present_uncovered":
-            info["masked_present_uncovered"] += 1
-            info["components"].append({"category": category, "membership_masked": True})
+            if collect_info:
+                info["masked_present_uncovered"] += 1
+                info["components"].append({"category": category, "membership_masked": True})
             continue
         labels = torch.tensor(
             [value is not None and value in set(target_ids[q]) for value in candidate_gt[q]],
@@ -58,9 +63,10 @@ def r0_membership_set_loss(
         if category == "inactive":
             component = F.softplus(values).mean()
             total = total + component
-            info["negative_count"] += int(labels.numel())
-            info["components"].append({"category": category, "positive_count": 0,
-                                       "negative_count": int(labels.numel()), "inactive_loss": float(component.detach())})
+            if collect_info:
+                info["negative_count"] += int(labels.numel())
+                info["components"].append({"category": category, "positive_count": 0,
+                                           "negative_count": int(labels.numel()), "inactive_loss": float(component.detach())})
             continue
         if not bool(labels.any()):
             raise ValueError(f"covered active unit has no positive candidate at query {q}")
@@ -78,28 +84,32 @@ def r0_membership_set_loss(
         set_margin = F.softplus(0.50 + hard_negative - softmin_pos) if negative_bags.numel() else _zero(values)
         component = positive_cls + negative_cls + positive_floor + set_margin
         total = total + component
-        info["positive_count"] += int(pos_rows.numel())
-        info["negative_count"] += int(neg_rows.numel())
-        info["hard_negative_count"] += int(negative_bags.numel())
-        info["components"].append({
-            "category": category, "positive_count": int(pos_rows.numel()),
-            "negative_count": int(neg_rows.numel()), "positive_bag_count": int(positive_bags.numel()),
-            "negative_bag_count": int(negative_bags.numel()),
-            "minimum_positive_logit": float(positive_bags.min().detach()),
-            "hard_negative_logit": float(hard_negative.detach()),
-            "positive_cls": float(positive_cls.detach()), "negative_cls": float(negative_cls.detach()),
-            "positive_floor": float(positive_floor.detach()), "set_margin": float(set_margin.detach()),
-        })
+        if collect_info:
+            info["positive_count"] += int(pos_rows.numel())
+            info["negative_count"] += int(neg_rows.numel())
+            info["hard_negative_count"] += int(negative_bags.numel())
+            info["components"].append({
+                "category": category, "positive_count": int(pos_rows.numel()),
+                "negative_count": int(neg_rows.numel()), "positive_bag_count": int(positive_bags.numel()),
+                "negative_bag_count": int(negative_bags.numel()),
+                "minimum_positive_logit": float(positive_bags.min().detach()),
+                "hard_negative_logit": float(hard_negative.detach()),
+                "positive_cls": float(positive_cls.detach()), "negative_cls": float(negative_cls.detach()),
+                "positive_floor": float(positive_floor.detach()), "set_margin": float(set_margin.detach()),
+            })
     total = total / max(1, q_count)
     if not bool(torch.isfinite(total.float()).all()):
         raise FloatingPointError("nonfinite R0 membership loss")
-    info["loss"] = float(total.detach())
+    if collect_info:
+        info["loss"] = float(total.detach())
     return total, info
 
 
 def r0_coverage_presence_loss(
     coverage_presence_logits: torch.Tensor,
     categories: Iterable[str],
+    *,
+    collect_info: bool = True,
 ) -> tuple[torch.Tensor, dict[str, Any]]:
     """Balanced query-level coverage-presence BCE for the four strata."""
     values = coverage_presence_logits.reshape(-1)
@@ -118,6 +128,8 @@ def r0_coverage_presence_loss(
     loss = torch.stack(losses).mean() if losses else _zero(values)
     if not bool(torch.isfinite(loss.float()).all()):
         raise FloatingPointError("nonfinite R0 coverage loss")
+    if not collect_info:
+        return loss, {"diagnostics_collected": False, "queries": int(values.numel())}
     return loss, {"loss": float(loss.detach()), "positive_queries": int(pos.sum()),
                   "negative_queries": int(neg.sum()), "finite": True}
 
@@ -128,13 +140,18 @@ def r0_total_loss(
     categories: Iterable[str],
     target_ids: Iterable[Iterable[object]],
     candidate_gt: Iterable[Iterable[object | None]],
+    *,
+    collect_info: bool = True,
 ) -> tuple[torch.Tensor, dict[str, Any]]:
     membership, membership_info = r0_membership_set_loss(
-        membership_logits, categories, target_ids, candidate_gt)
-    coverage, coverage_info = r0_coverage_presence_loss(coverage_presence_logits, categories)
+        membership_logits, categories, target_ids, candidate_gt, collect_info=collect_info)
+    coverage, coverage_info = r0_coverage_presence_loss(
+        coverage_presence_logits, categories, collect_info=collect_info)
     total = membership + 0.50 * coverage
     if not bool(torch.isfinite(total.float()).all()):
         raise FloatingPointError("nonfinite R0 total loss")
+    if not collect_info:
+        return total, {"diagnostics_collected": False, "queries": int(membership_logits.shape[0])}
     return total, {"membership": membership_info, "coverage": coverage_info, "loss": float(total.detach()), "finite": True}
 
 

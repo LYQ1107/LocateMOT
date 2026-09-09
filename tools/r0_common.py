@@ -165,6 +165,7 @@ class DenseIndex:
         self.label_offsets: list[int] = []
         self.by_category: dict[str, list[dict[str, Any]]] = {}
         self.by_domain_category: dict[tuple[str, str], list[dict[str, Any]]] = {}
+        self.by_frame: dict[tuple[str, str, int], list[dict[str, Any]]] = {}
         seen_keys: set[str] = set()
         with self.label_path.open("rb") as handle:
             while True:
@@ -196,10 +197,20 @@ class DenseIndex:
                 self.label_offsets.append(int(offset))
                 self.by_category.setdefault(record["category"], []).append(record)
                 self.by_domain_category.setdefault((record["dataset"], record["category"]), []).append(record)
+                frame_key = (record["dataset"], record["video"], int(record["frame_id"]))
+                self.by_frame.setdefault(frame_key, []).append(record)
         if not self.label_records:
             raise AssertionError(f"empty R0 dense labels: {self.root}")
         if int(self.summary.get("query_frame_count", -1)) != len(self.label_records):
             raise AssertionError(f"dense label count drift: {self.root}")
+        for key, records in self.by_frame.items():
+            records.sort(key=lambda value: (int(value["query_id"]), str(value["unit_key"])))
+            if any((str(value["dataset"]), str(value["video"]), int(value["frame_id"])) != key for value in records):
+                raise AssertionError(f"R0 frame-group identity drift: {key}")
+        grouped_indices = [int(value["index"]) for records in self.by_frame.values() for value in records]
+        if len(grouped_indices) != len(self.label_records) or set(grouped_indices) != set(range(len(self.label_records))):
+            raise AssertionError("R0 frame grouping does not contain every label record exactly once")
+        self.frame_keys = sorted(self.by_frame)
 
     def get_label(self, record: dict[str, Any]) -> dict[str, Any]:
         with self.label_path.open("rb") as handle:

@@ -52,8 +52,12 @@ INTERNAL_VIDEOS = {"refer_kitti_v1": ("0004", "0018"), "refer_kitti_v2": ("0016"
 
 def checkpoint_model(path: Path, device: torch.device) -> tuple[R0TrackGroundingHead, dict[str, Any]]:
     package = torch.load(path, map_location="cpu", weights_only=False)
-    if package.get("format") != "locatemot-r0-tcgh-checkpoint-v1":
+    if package.get("format") != "locatemot-r0-tcgh-checkpoint-v2":
         raise AssertionError(f"invalid R0 inference checkpoint: {path}")
+    if package.get("driver") != "grouped_ddp_v2" or package.get("grouped_query_training") is not True:
+        raise AssertionError(f"R0 inference checkpoint is not grouped training: {path}")
+    if package.get("detector_state_included") or package.get("tracker_state_included"):
+        raise AssertionError(f"R0 inference checkpoint contains forbidden state: {path}")
     model = R0TrackGroundingHead(R0Config(**package["model_config"])).to(device=device, dtype=torch.float32)
     result = model.load_state_dict(package["model_state_dict"], strict=True)
     if result.missing_keys or result.unexpected_keys:
@@ -64,12 +68,35 @@ def checkpoint_model(path: Path, device: torch.device) -> tuple[R0TrackGrounding
     info = {"path": str(path.resolve()), "sha256": sha256_file(path),
             "dataset": str(package["dataset"]), "epoch": int(package["epoch"]),
             "global_step": int(package["global_step"]), "model_config": package["model_config"],
+            "format": package["format"], "driver": package["driver"],
+            "grouped_query_training": True,
+            "primary_selection_eligible": bool(package.get("primary_selection_eligible", False)),
             "strict_reload": True}
     return model, info
 
 
 def candidates_from_args(args: argparse.Namespace) -> list[dict[str, Any]]:
     if args.scope == "dev":
+        if args.preview_checkpoint is not None:
+            checkpoint = args.preview_checkpoint.resolve()
+            if not checkpoint.is_file():
+                raise FileNotFoundError(checkpoint)
+            package = torch.load(checkpoint, map_location="cpu", weights_only=False)
+            if package.get("format") != "locatemot-r0-tcgh-checkpoint-v2":
+                raise AssertionError(f"invalid R0 preview checkpoint: {checkpoint}")
+            return [{"role": f"preview_epoch{int(package['epoch']):03d}",
+                     "checkpoint_info": {"path": str(checkpoint), "sha256": sha256_file(checkpoint),
+                                         "dataset": str(package["dataset"]), "epoch": int(package["epoch"]),
+                                         "global_step": int(package["global_step"]),
+                                         "model_config": package["model_config"], "format": package["format"],
+                                         "driver": package.get("driver"),
+                                         "grouped_query_training": bool(package.get("grouped_query_training", False)),
+                                         "primary_selection_eligible": bool(package.get("primary_selection_eligible", False)),
+                                         "strict_reload": True},
+                     "rule": {"name": "zero", "membership_threshold": 0.0,
+                              "presence_threshold": 0.0, "null_logit": 0.0,
+                              "description": "membership_logit>=0 and coverage_presence_logit>=0"},
+                     "source": {"preview_checkpoint": str(checkpoint)}}]
         payload = json.loads(args.shortlist.resolve().read_text(encoding="utf-8"))
         if payload.get("status") != "complete" or not payload.get("shortlist"):
             raise AssertionError("R0 dev shortlist is incomplete")
@@ -290,6 +317,8 @@ def run(args: argparse.Namespace) -> int:
             "outputs": {"root": str(out)}, "screening_gt_used": False,
             "official_test_labels_read": False, "ordinary_mot_ovmot_touched": False,
             "hota_trackeval_run": False, "candidate_deletion": False, "candidate_truncation": False,
+            "preview_only": bool(args.preview_checkpoint is not None),
+            "checkpoint_selection_run": False if args.preview_checkpoint is not None else None,
             "labels_used_for_prediction": False, "prediction_before_gt": True,
             "failure_root_cause": None, "next_action": "run legal R0 TrackEval matrix or finalize selection"}
     try:
@@ -344,13 +373,19 @@ def main() -> int:
     parser.add_argument("--safe-targets", type=Path, required=True)
     parser.add_argument("--shortlist", type=Path, default=None)
     parser.add_argument("--selection", type=Path, default=None)
-    parser.add_argument("--language-root", type=Path, action="append", default=[Path(value) for value in DEFAULT_LANGUAGE_ROOTS])
+    parser.add_argument("--preview-checkpoint", type=Path, default=None,
+                        help="run one legal dev preview checkpoint without shortlist selection")
+    parser.add_argument("--language-root", type=Path, action="append", default=None)
     parser.add_argument("--out", type=Path, required=True)
     parser.add_argument("--device", default="cuda:0")
     parser.add_argument("--query-batch-size", type=int, default=8)
     args = parser.parse_args()
-    if args.scope == "dev" and args.shortlist is None:
+    if args.language_root is None:
+        args.language_root = [Path(value) for value in DEFAULT_LANGUAGE_ROOTS]
+    if args.scope == "dev" and args.shortlist is None and args.preview_checkpoint is None:
         parser.error("--shortlist is required for dev inference")
+    if args.scope == "dev" and args.shortlist is not None and args.preview_checkpoint is not None:
+        parser.error("--shortlist and --preview-checkpoint are mutually exclusive")
     if args.scope == "internal" and args.selection is None:
         parser.error("--selection is required for internal inference")
     return run(args)

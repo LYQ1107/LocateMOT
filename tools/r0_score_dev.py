@@ -46,13 +46,17 @@ EXPECTED_EPOCHS = (2, 4, 6, 8, 10, 12)
 
 
 def checkpoint_info(path: Path, package: dict[str, Any]) -> dict[str, Any]:
-    if package.get("format") != "locatemot-r0-tcgh-checkpoint-v1":
+    if package.get("format") != "locatemot-r0-tcgh-checkpoint-v2":
         raise AssertionError(f"invalid R0 checkpoint format: {path}")
+    if package.get("driver") != "grouped_ddp_v2" or package.get("grouped_query_training") is not True:
+        raise AssertionError(f"R0 checkpoint is not grouped training: {path}")
     if package.get("detector_state_included") or package.get("tracker_state_included"):
         raise AssertionError(f"R0 checkpoint contains forbidden state: {path}")
     return {"path": str(path.resolve()), "sha256": sha256_file(path),
             "dataset": str(package["dataset"]), "epoch": int(package["epoch"]),
             "global_step": int(package["global_step"]), "model_config": package["model_config"],
+            "format": package["format"], "grouped_query_training": True,
+            "primary_selection_eligible": bool(package.get("primary_selection_eligible", False)),
             "strict_reload": True}
 
 
@@ -157,6 +161,8 @@ def run(args: argparse.Namespace) -> int:
         "visual_cache": str(args.visual_cache.resolve()), "query_batch_size": int(args.query_batch_size),
         "outputs": {"root": str(out)}, "manifest_sha256": check_manifest(),
         "registered_rule": "membership_logit>=0 and coverage_presence_logit>=0; zero-logit no threshold fitting",
+        "preview_only": bool(args.checkpoint is not None),
+        "checkpoint_selection_run": bool(args.checkpoint is None),
         "screening_gt_used": False, "official_test_labels_read": False,
         "ordinary_mot_ovmot_touched": False, "hota_trackeval_run": False,
         "candidate_deletion": False, "candidate_truncation": False,
@@ -180,11 +186,19 @@ def run(args: argparse.Namespace) -> int:
                 raise RuntimeError("R0 dev scoring requested CUDA but it is unavailable")
             torch.cuda.set_device(device)
             torch.cuda.reset_peak_memory_stats(device)
-        checkpoint_paths = sorted(args.checkpoint_dir.resolve().glob(f"checkpoint_r0_{args.dataset}_epoch*.pt"),
-                                  key=lambda path: int(path.stem.split("epoch")[-1]))
-        actual_epochs = tuple(int(path.stem.split("epoch")[-1]) for path in checkpoint_paths)
-        if actual_epochs != EXPECTED_EPOCHS:
-            raise AssertionError(f"R0 checkpoint epochs drift: {actual_epochs} != {EXPECTED_EPOCHS}")
+        if args.checkpoint is not None:
+            checkpoint_paths = [args.checkpoint.resolve()]
+            if not checkpoint_paths[0].is_file():
+                raise FileNotFoundError(checkpoint_paths[0])
+        else:
+            checkpoint_paths = sorted(
+                (path for path in args.checkpoint_dir.resolve().glob(f"checkpoint_r0_{args.dataset}_epoch*.pt")
+                 if "_preview" not in path.stem),
+                key=lambda path: int(path.stem.split("epoch")[-1]),
+            )
+            actual_epochs = tuple(int(path.stem.split("epoch")[-1]) for path in checkpoint_paths)
+            if actual_epochs != EXPECTED_EPOCHS:
+                raise AssertionError(f"R0 checkpoint epochs drift: {actual_epochs} != {EXPECTED_EPOCHS}")
         checkpoint_summaries: list[dict[str, Any]] = []
         runtime = R0RuntimeData(dense, visual, language, device)
         for checkpoint_path in checkpoint_paths:
@@ -232,7 +246,9 @@ def run(args: argparse.Namespace) -> int:
                 "screening_gt_used": False, "official_test_labels_read": False,
                 "ordinary_mot_ovmot_touched": False, "hota_trackeval_run": False,
                 "no_persistent_raw_dense_cache_created": True,
-                "next_action": "include this checkpoint in the legal dev shortlist",
+                "preview_only": bool(args.checkpoint is not None),
+                "checkpoint_selection_run": bool(args.checkpoint is None),
+                "next_action": "inspect preview only" if args.checkpoint is not None else "include this checkpoint in the legal dev shortlist",
             }
             write_json(epoch_out / "metrics.json", summary)
             write_json(epoch_out / "provenance.json", summary | {"format": "locatemot-r0-dev-score-provenance-v1"})
@@ -245,7 +261,7 @@ def run(args: argparse.Namespace) -> int:
         payload = {**base, "status": "complete", "checkpoint_summaries": checkpoint_summaries,
                    "group_count": len(groups), "record_count_per_checkpoint": len(dense.label_records),
                    "wall_seconds": time.perf_counter() - started,
-                   "next_action": "build a maximum-three legal dev shortlist per benchmark"}
+                   "next_action": "inspect preview only" if args.checkpoint is not None else "build a maximum-three legal dev shortlist per benchmark"}
         write_json(out / "score_manifest.json", payload)
         write_json(out / "provenance.json", payload | {"format": "locatemot-r0-dev-scoring-provenance-v1"})
         write_json(out / "status.json", payload)
@@ -267,14 +283,23 @@ def run(args: argparse.Namespace) -> int:
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--dataset", choices=("refer_kitti_v1", "refer_kitti_v2"), required=True)
-    parser.add_argument("--checkpoint-dir", type=Path, required=True)
+    parser.add_argument("--checkpoint-dir", type=Path, required=False, default=None)
     parser.add_argument("--dense-root", type=Path, required=True)
     parser.add_argument("--visual-cache", type=Path, required=True)
-    parser.add_argument("--language-root", type=Path, action="append", default=[Path(value) for value in DEFAULT_LANGUAGE_ROOTS])
+    parser.add_argument("--language-root", type=Path, action="append", default=None)
+    parser.add_argument("--checkpoint", type=Path, default=None,
+                        help="score exactly one grouped v2 checkpoint in preview mode")
     parser.add_argument("--out", type=Path, required=True)
     parser.add_argument("--device", default="cuda:0")
     parser.add_argument("--query-batch-size", type=int, default=8)
-    return run(parser.parse_args())
+    args = parser.parse_args()
+    if args.language_root is None:
+        args.language_root = [Path(value) for value in DEFAULT_LANGUAGE_ROOTS]
+    if args.checkpoint is not None and args.checkpoint_dir is None:
+        args.checkpoint_dir = args.checkpoint.parent
+    if args.checkpoint is None and args.checkpoint_dir is None:
+        parser.error("--checkpoint-dir is required in formal scoring mode")
+    return run(args)
 
 
 if __name__ == "__main__":
