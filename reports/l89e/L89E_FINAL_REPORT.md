@@ -12,6 +12,7 @@ internal V1/V2 TrackEval.  It did not train or change the QSC-D model.
 
 - base L89D commit: `d0960e1d1679414765f79203bef444f0f9968928`
 - branch: `codex/l89e-phase-consistent-temporal-replay-20260909`
+- final branch/code state: `8772909` (initial L89E code `189b454`, minimal merge-contract fix `fce6ab6`)
 - thread: `01a02014-fce8-7f51-8414-e7ed6ab44745`
 - fixed manifest SHA: `06da458b09aa3e61ce30a4f8b58a85ac31ef1a5a10d269abd64ae41cffd127fa`
 - selected checkpoint: `/data1/LWR/vranlee/SERVER_ONLY/avis/LocateMOT_L89/outputs/l89/train/joint40/checkpoint_l89_epoch004.pt`
