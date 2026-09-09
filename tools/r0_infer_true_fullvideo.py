@@ -173,6 +173,7 @@ def materialize_gt(dataset: str, queries_by_video: dict[str, list[dict[str, Any]
             lines: list[str] = []
             target_present_frames = 0
             gt_rows = 0
+            missing_target_boxes: list[dict[str, Any]] = []
             for frame in frames:
                 targets = tuple(str(value) for value in safe.target.get(int(frame), ()))
                 target_present_frames += int(bool(targets))
@@ -182,7 +183,12 @@ def materialize_gt(dataset: str, queries_by_video: dict[str, list[dict[str, Any]
                     if value is None and target.isdigit():
                         value = boxes.get(int(target))
                     if value is None:
-                        raise AssertionError(f"missing legal GT box: {dataset}|{video}|{qid}|{frame}|{target}")
+                        # The safe target map can retain an object through a
+                        # short annotation/occlusion gap.  TrackEval must not
+                        # receive a fabricated box; omit only this GT row and
+                        # retain an explicit audit record.
+                        missing_target_boxes.append({"frame_id": int(frame), "target_id": str(target)})
+                        continue
                     box = [float(item) for item in value]
                     if len(box) != 4 or not np.isfinite(box).all() or box[2] <= box[0] or box[3] <= box[1]:
                         raise AssertionError(f"invalid legal GT box: {dataset}|{video}|{qid}|{frame}|{target}")
@@ -199,6 +205,8 @@ def materialize_gt(dataset: str, queries_by_video: dict[str, list[dict[str, Any]
             query_audits.append({"dataset": dataset, "video": video, "query_id": qid,
                                  "sequence": sequence, "gt_rows": gt_rows,
                                  "target_present_frames": target_present_frames,
+                                 "missing_target_box_count": len(missing_target_boxes),
+                                 "missing_target_boxes": missing_target_boxes,
                                  "label_source": safe.label_source,
                                  "labels_attached_after_predictions": True})
     paths["seqmap"].write_text("name\n" + "\n".join(sequences) + "\n", encoding="utf-8")
