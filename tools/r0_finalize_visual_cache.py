@@ -78,8 +78,18 @@ def run(args: argparse.Namespace) -> int:
                 loaded = torch.load(cache_path, map_location="cpu", weights_only=False)
                 if not isinstance(loaded, dict) or loaded.get("dataset") is None or loaded.get("group_key") is None:
                     raise AssertionError(f"missing cache dataset/group_key: {cache_path}")
-                if loaded.get("dataset") != item.get("dataset") or loaded.get("video") != item.get("video") or loaded.get("frame_id") != item.get("frame_id"):
+                relative = cache_path.relative_to(rank_dir)
+                if len(relative.parts) < 3:
+                    raise AssertionError(f"cache path lacks dataset/video/frame contract: {cache_path}")
+                path_dataset, path_video = str(relative.parts[0]), str(relative.parts[1])
+                path_frame = int(Path(relative.parts[2]).stem)
+                expected_dataset = str(item.get("dataset", path_dataset))
+                expected_video = str(item.get("video", path_video))
+                expected_frame = int(item.get("frame_id", path_frame))
+                if (loaded.get("dataset"), loaded.get("video"), int(loaded.get("frame_id", -1))) != (expected_dataset, expected_video, expected_frame):
                     raise AssertionError(f"cache manifest/item identity drift: {cache_path}")
+                if (str(loaded.get("dataset")), str(loaded.get("video")), int(loaded.get("frame_id", -1))) != (path_dataset, path_video, path_frame):
+                    raise AssertionError(f"cache path/item identity drift: {cache_path}")
                 if loaded.get("group_key") != f"{loaded['dataset']}|{loaded['video']}|{loaded['frame_id']}":
                     raise AssertionError(f"invalid cache group_key: {cache_path}")
                 for field in ("inner_tokens", "context_tokens", "boxes_normalized"):
@@ -88,7 +98,7 @@ def run(args: argparse.Namespace) -> int:
                         raise FloatingPointError(f"invalid cached tensor {field}: {cache_path}")
                 if loaded.get("labels_in_cache") is not False or loaded.get("query_independent") is not True:
                     raise AssertionError(f"cache flags drift: {cache_path}")
-                all_items.append({"dataset": str(item["dataset"]), "video": str(item["video"]), "frame_id": int(item["frame_id"]), "path": str(cache_path), "candidate_count": int(item["candidate_count"]), "rank": int(rank_dir.name.replace("rank", ""))})
+                all_items.append({"dataset": str(loaded["dataset"]), "video": str(loaded["video"]), "frame_id": int(loaded["frame_id"]), "path": str(cache_path), "candidate_count": int(item["candidate_count"]), "rank": int(rank_dir.name.replace("rank", ""))})
                 del loaded
         keys = [(item["dataset"], item["video"], item["frame_id"]) for item in all_items]
         if len(keys) != len(set(keys)):

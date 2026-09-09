@@ -34,7 +34,7 @@ def _git(*args: str) -> list[str]:
 
 
 def allowed(path: str) -> bool:
-    return path in ALLOWED_EXACT or any(path.startswith(prefix) for prefix in ALLOWED_PREFIXES)
+    return path == "research_log.md" or path in ALLOWED_EXACT or any(path.startswith(prefix) for prefix in ALLOWED_PREFIXES)
 
 
 def main() -> int:

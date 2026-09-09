@@ -204,7 +204,7 @@ def _frame_item(
     runtime.capture.clear()
     if runtime.device.type == "cuda":
         torch.cuda.empty_cache()
-    return {"video": str(video), "frame_id": int(frame_id), "path": str(cache_path.resolve()),
+    return {"dataset": str(dataset), "video": str(video), "frame_id": int(frame_id), "path": str(cache_path.resolve()),
             "candidate_count": int(len(offsets)), "row_offset_start": int(begin), "row_offset_end": int(end),
             "image_path": str(image.resolve()), "finite": True, "candidate_deletion": False,
             "candidate_truncation": False}
