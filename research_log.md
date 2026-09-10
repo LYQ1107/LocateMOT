@@ -330,3 +330,38 @@ Concise experimental log (latest first).
 - Next action: commit/freeze the R0A safe code and construct the registered
   query-independent visual cache on `/data2`; no old asset or production
   entrypoint is modified.
+
+## R0B — grouped DDP driver repair and formal legal evidence — 2026-09-09
+
+- Hypothesis: the old Q1 query-at-a-time driver was the actionable R0 training
+  contract bottleneck. A frame-centric grouped driver with complete candidate
+  sets, Q=8, deterministic strata, and DDP accumulation should make the
+  registered R0 experiment executable without changing the frozen bank,
+  tracker, detector, or ordinary MOT/OVMOT.
+- Preserved/disqualified Q1: PID 39571 was stopped gracefully; the old partial
+  `outputs/r0/train/v1_formal_retry1/` remains historical and is not
+  selection-eligible.
+- Repairs: grouped Q8 schedule, video-local tiles, world4 DDP, accumulation 4,
+  frozen detector/language inputs, complete candidate rows, present-uncovered
+  masking, and resumable `locatemot-r0-tcgh-checkpoint-v2`. The legal GT
+  materialization gap was repaired only in the R0 wrapper by recording and
+  skipping missing annotation rows; frozen GT was not edited.
+- Formal training: V1 completed 12 epochs/3,058 optimizer steps and V2
+  completed 12 epochs/3,046 steps. Both were finite with nonzero gradients,
+  strict reload, all four strata and both domains. Checkpoints 2/4/6/8/10/12
+  are retained. Formal jobs used the free physical GPUs 4–7; physical GPUs
+  0–3, which had unrelated processes, were not touched.
+- Legal dev selection: V1 shortlist epochs 12/6 and V2 12/10; full dev
+  TrackEval selected epoch12 for both. Dev HOTA was V1 22.8681% and V2
+  19.5801% for the selected checkpoints.
+- Internal validation-scope TrackEval: V1 0004/0018 HOTA 26.4582%, V2
+  0016/0017/0020 HOTA 15.6097%. These are not screening or official-test
+  results. No screening/official labels were read, and ordinary MOT/OVMOT,
+  UIDM, L69 and production entrypoints were untouched.
+- Outputs: training remains under `outputs/r0/`; large dev/inference/TrackEval
+  products are under `/data2/usr_for_deadline/locatemot_r0b_*` because `/data1`
+  was nearly full. No raw/dense debug cache or detector copy was created.
+- Status: `STOPPED_PENDING_SUPERVISOR_REVIEW`. This is valid grouped R0
+  implementation plus legal dev/internal TrackEval evidence, not final
+  ordinary-RMOT completion. The only next action is supervisor review and a
+  separately authorized follow-up.

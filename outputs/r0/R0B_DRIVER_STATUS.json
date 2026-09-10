@@ -1,0 +1,248 @@
+{
+  "format": "locatemot-r0b-driver-status-v1",
+  "status": "STOPPED_PENDING_SUPERVISOR_REVIEW",
+  "luna_thread": "01a02014-fce8-7f51-8414-e7ed6ab44745",
+  "canonical_project_root": "/data1/LWR/vranlee/SERVER_ONLY/avis/LocateMOT",
+  "worktree": "/data1/LWR/vranlee/SERVER_ONLY/avis/LocateMOT_R0A",
+  "branch": "codex/r0a-frame-specific-target-contract-repair-20260909",
+  "base_head": "b7bf1799a700ae7f85c3170c2b57629dc618a3b6",
+  "start_head_actual": "1f6a73efb3320466d1c2442b891cbfbcd983dda7",
+  "code_head_before_report": "83c8f13",
+  "final_head": "83c8f13",
+  "final_head_note": "Last tested code head before the report/status commit; the final pushed report commit is recorded by git in the branch.",
+  "fixed_manifest": "outputs/l19/protocol/kitti_fast_eval_manifest.json",
+  "manifest_sha256": "06da458b09aa3e61ce30a4f8b58a85ac31ef1a5a10d269abd64ae41cffd127fa",
+  "old_q1_run_preserved": true,
+  "old_q1_primary_eligible": false,
+  "old_q1_path": "outputs/r0/train/v1_formal_retry1/",
+  "old_q1_reason": "old-v1 partial Q1 run; no complete final status/provenance; not grouped complete-set training",
+  "grouped_query_training": true,
+  "max_queries_per_tile": 8,
+  "mean_queries_per_tile": 8.0,
+  "world_size": 4,
+  "gradient_accumulation": 4,
+  "global_tiles_per_epoch": 4000,
+  "video_block_size": 16,
+  "seed": 20260909,
+  "bf16": true,
+  "model_config": {
+    "dim": 256,
+    "heads": 8,
+    "ffn_dim": 1024,
+    "visual_token_layers": 2,
+    "visual_levels": 4,
+    "visual_grid_size": 3,
+    "visual_region_types": 2,
+    "pair_layers": 2,
+    "set_layers": 2,
+    "geometry_steps": 5
+  },
+  "category_quota": {
+    "multi_positive": 3,
+    "positive": 2,
+    "inactive": 2,
+    "present_uncovered": 1
+  },
+  "optimizer": {
+    "name": "AdamW",
+    "lr": 0.0001,
+    "weight_decay": 0.01,
+    "grad_clip": 1.0,
+    "schedule": "cosine",
+    "warmup_fraction": 0.05
+  },
+  "formal_training": {
+    "v1": {
+      "status": "complete",
+      "path": "outputs/r0/train/v1_grouped_ddp_main/",
+      "completed_epoch": 12,
+      "optimizer_step": 3058,
+      "finite_steps": 3058,
+      "nonzero_gradient_steps": 3058,
+      "query_exposures": 391424,
+      "category_exposure": {
+        "inactive": 101934,
+        "multi_positive": 156893,
+        "positive": 131615,
+        "present_uncovered": 982
+      },
+      "wall_seconds": 2233.543460248038,
+      "peak_memory_bytes": 1045657600,
+      "checkpoint_epochs": [2, 4, 6, 8, 10, 12],
+      "checkpoint_sha256": {
+        "2": "f6d94057cfd606d6edb10c2e47606d7e344e086f8cb96b41431d206f60d27123",
+        "4": "bd4706bf622706875eece72d717b132c366d7eb3cf5e8580944f088e7a8aa729",
+        "6": "c3dc817da44948e2fedd39ddb7c322a8ffbe976d7de4fe36174af1ca0c7e6783",
+        "8": "2b50b95f555291494f3d3f8cf041c6be8e3f048665e97efe46e155ce6958d93e",
+        "10": "6f73b6ef5b95340ad35d63346f40be62ecc031088ce6913e22e6f30b0d020dc4",
+        "12": "e499b8506e9a58846c467f2508558f7e730744e73bbbea90ae0285dce3b8f521"
+      }
+    },
+    "v2": {
+      "status": "complete",
+      "path": "outputs/r0/train/v2_grouped_ddp_main/",
+      "completed_epoch": 12,
+      "optimizer_step": 3046,
+      "finite_steps": 3046,
+      "nonzero_gradient_steps": 3046,
+      "query_exposures": 389888,
+      "category_exposure": {
+        "inactive": 97472,
+        "multi_positive": 146372,
+        "positive": 144828,
+        "present_uncovered": 1216
+      },
+      "wall_seconds": 2694.0721797998995,
+      "peak_memory_bytes": 1046859776,
+      "checkpoint_epochs": [2, 4, 6, 8, 10, 12],
+      "checkpoint_sha256": {
+        "2": "25989d12cf7fbbe5e4a54ca355de9b12334104e235ecea7ad1f5277759b11728",
+        "4": "af4cd0a414c9d64b0b885f065766b46fe0816a7b93b38c5328075ecac663044b",
+        "6": "70658fd4edb33ccda406bbf40f402cde582e15bb9c401eabf08e3abbb65082f7",
+        "8": "0f941a3b68272389515945824d9f7d0d5ada1b27f0d7b8c628dc45143d5d34c0",
+        "10": "a2887712fba340d7a23b64f5d584af64ae6d945486b367a8e952f8e0991468c2",
+        "12": "c935840fa6e9fa5e1c4a99df2a10c96024608aad8f66187956c30f2521dae484"
+      }
+    }
+  },
+  "preview_only": {
+    "v1_epoch2": {
+      "path": "outputs/r0/preview/v1_epoch02_retry1/",
+      "groups": 96,
+      "records": 3072,
+      "candidate_rows": 145920,
+      "selected_rows": 23413,
+      "candidate_precision": 0.13633451501302696,
+      "candidate_recall": 0.5283018867924528,
+      "hard_violation": 0.7901849217638691,
+      "multi_positive_recall": 0.5160322422650873,
+      "inactive_false_acceptance": 0.31280193236714976,
+      "preview_only": true
+    },
+    "v2_epoch2": {
+      "path": "outputs/r0/preview/v2_epoch02_retry1/",
+      "groups": 96,
+      "records": 3072,
+      "candidate_rows": 149824,
+      "selected_rows": 39073,
+      "candidate_precision": 0.15294448852148543,
+      "candidate_recall": 0.8137254901960784,
+      "hard_violation": 0.8563569682151589,
+      "multi_positive_recall": 0.73934250808056,
+      "inactive_false_acceptance": 0.576437587657784,
+      "preview_only": true
+    }
+  },
+  "legal_dev_scoring": {
+    "v1_manifest": "/data2/usr_for_deadline/locatemot_r0b_score/v1_grouped_dev_scores/score_manifest.json",
+    "v2_manifest": "/data2/usr_for_deadline/locatemot_r0b_score/v2_grouped_dev_scores/score_manifest.json",
+    "v1_score_records_per_checkpoint": 33435,
+    "v2_score_records_per_checkpoint": 528120,
+    "v2_candidate_rows_per_checkpoint": 24420425,
+    "primary_eligible_epochs": [2, 4, 6, 8, 10, 12],
+    "rule": "membership_logit>=0 and coverage_presence_logit>=0; zero-logit no threshold fitting",
+    "shortlists": {
+      "v1": [12, 6],
+      "v2": [12, 10]
+    },
+    "no_fixed_calibration_or_validation_labels_used": true
+  },
+  "dev_trackeval": {
+    "v1_matrix": "/data2/usr_for_deadline/locatemot_r0b_trackeval/v1_grouped_dev_selection/trackeval_matrix.json",
+    "v2_matrix": "/data2/usr_for_deadline/locatemot_r0b_trackeval/v2_grouped_dev_selection/trackeval_matrix.json",
+    "selected_epoch": {
+      "v1": 12,
+      "v2": 12
+    },
+    "v1": {
+      "epoch12": {
+        "HOTA": 22.86809460998128,
+        "DetA": 11.912849839737936,
+        "DetPr": 14.691165576386055,
+        "DetRe": 38.077836772024845,
+        "AssA": 44.047788295480856,
+        "IDF1": 18.800363164558153,
+        "IDSW": 2749
+      },
+      "epoch6": {
+        "HOTA": 21.612903,
+        "DetA": 9.910762,
+        "DetPr": 10.791737,
+        "DetRe": 53.629037,
+        "AssA": 47.30333,
+        "IDF1": 15.615495,
+        "IDSW": 3448
+      }
+    },
+    "v2": {
+      "epoch12": {
+        "HOTA": 19.58011839152399,
+        "DetA": 7.639989081246911,
+        "DetPr": 8.043542180034276,
+        "DetRe": 59.01485591642776,
+        "AssA": 50.31528797104923,
+        "IDF1": 13.002795376449283,
+        "IDSW": 16515
+      },
+      "epoch10": {
+        "HOTA": 19.348183,
+        "DetA": 7.404181,
+        "DetPr": 7.727272,
+        "DetRe": 62.393946,
+        "AssA": 50.69675,
+        "IDF1": 17525
+      }
+    }
+  },
+  "internal_trackeval": {
+    "v1_inference": "/data2/usr_for_deadline/locatemot_r0b_infer/v1_grouped_internal_selection/summary.json",
+    "v1_matrix": "/data2/usr_for_deadline/locatemot_r0b_trackeval/v1_grouped_internal_selection/trackeval_matrix.json",
+    "v2_inference": "/data2/usr_for_deadline/locatemot_r0b_infer/v2_grouped_internal_selection/summary.json",
+    "v2_matrix": "/data2/usr_for_deadline/locatemot_r0b_trackeval/v2_grouped_internal_selection/trackeval_matrix.json",
+    "v1_scope_videos": ["0004", "0018"],
+    "v2_scope_videos": ["0016", "0017", "0020"],
+    "v1_epoch12": {
+      "HOTA": 26.45823278169338,
+      "DetA": 15.082633120774958,
+      "DetPr": 16.699168633891,
+      "DetRe": 59.126499058442626,
+      "AssA": 46.656466716191076,
+      "IDF1": 22.262481628614253,
+      "IDSW": 1784
+    },
+    "v2_epoch12": {
+      "HOTA": 15.609749,
+      "DetA": 6.852431,
+      "DetPr": 7.178529,
+      "DetRe": 58.437736,
+      "AssA": 35.789671,
+      "IDF1": 9.561028,
+      "IDSW": 15450
+    }
+  },
+  "resource_policy": {
+    "formal_training_physical_gpus": [4, 5, 6, 7],
+    "formal_training_used_only_free_cards_at_start": true,
+    "physical_gpus_0_3_touched": false,
+    "single_gpu_inference_physical_gpu": 4,
+    "trackeval_gpu": "none_cpu",
+    "data1_free_at_final_check_bytes_approx": 6006478848,
+    "data2_free_at_final_check_bytes_approx": 568236457984
+  },
+  "boundary_flags": {
+    "ordinary_mot_ovmot_touched": false,
+    "tracker_changed": false,
+    "uidm_changed": false,
+    "l69_changed": false,
+    "screening_gt_used": false,
+    "official_test_labels_read": false,
+    "no_screening": true,
+    "no_official_test": true,
+    "hota_official_claim": false,
+    "trackeval_official_claim": false,
+    "follow_up_architecture_experiment": false,
+    "raw_dense_debug_cache_created": false,
+    "detector_weight_copied": false
+  },
+  "next_action": "supervisor review of R0B grouped formal dev/internal evidence; no automatic follow-up"
+}
