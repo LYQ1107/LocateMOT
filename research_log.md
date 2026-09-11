@@ -365,3 +365,62 @@ Concise experimental log (latest first).
   implementation plus legal dev/internal TrackEval evidence, not final
   ordinary-RMOT completion. The only next action is supervisor review and a
   separately authorized follow-up.
+
+## R1 — aligned track conditioning legal-dev contract — 2026-09-10
+
+- Hypothesis/scope: test a zero-initialized RMOT-only residual conditioned on
+  aligned frozen L89E Stage-S Z0/Z1/Z4 states and causal observation history;
+  the anchor, L69 bank, ordinary MOT/OVMOT, UIDM and all production paths stay
+  frozen. This is not final RMOT completion.
+- Read-only legal-dev audit: frozen epoch-004 Rule-B anchor selection was
+  rechecked. The epoch-004 presence-only miss is `3/400=.0075`, below the
+  preregistered `.05` activation threshold, so the formal R1 config freezes
+  `presence_residual=false`. Existing full-video artifacts have no candidate
+  score arrays for a valid EXACT_INDEX_DEDUP replay; the conservative RAW
+  policy is therefore frozen without claiming a dedup comparison.
+- Preserved evidence: `outputs/r1/audit/legal_dev_selection_attempt1/` and
+  `reports/r1/R1_LEGAL_DEV_SELECTION.md`; no training or new checkpoint was
+  created by the audit. The next action is the bounded wiring/reload smoke;
+  formal fit remains conditional on that implementation gate.
+
+## R1 — formal fit and legal-development replay — 2026-09-12
+
+- Hypothesis/scope: a zero-initialized aligned track-conditioning residual
+  over frozen L89E stage states, causal observation history, language-directed
+  R0 detail and complete L69 candidate sets could improve expression-to-track
+  correspondence without changing the anchor, bank, tracker or ordinary
+  MOT/OVMOT paths.
+- Formal fit completed in isolated worktree
+  `/data1/LWR/vranlee/SERVER_ONLY/avis/LocateMOT_R1`: six epochs, 2,250
+  optimizer steps, all finite with nonzero gradients, strict reload for eight
+  V1/V2 checkpoints, frozen anchor, and no persistent raw/dense debug cache.
+- Prediction-only replays for legal-dev V1 videos `0008/0010/0020` and V2
+  videos `0000/0008/0009` completed before legal GT was opened. The aggregate
+  contains 2,385 groups and eight internal TrackEval results. Registered
+  selection chose epoch 4 separately for V1 and V2. Selected HOTA was
+  `24.2345%` (V1) and `23.6542%` (V2), versus the L89E anchor's `28.7628%`
+  and `21.8385%`; this is not a stable breakthrough and remains legal-dev
+  evidence only.
+- Fixed 16-calibration/24-validation diagnostic retained all 2,435 L69 rows
+  and 40 keys. R1 candidate-only recall/precision/FP-frame/pred-positive/
+  hard/multi were `0.1000/0.1842/0.7750/0.5429/0.7727/0.1818`; the frozen
+  Rule-B replay emitted zero rows for both anchor and R1 on this slice. The
+  lower volume is a recall/multi-positive collapse, not a semantic repair;
+  no threshold or NULL rescue was attempted.
+- Status: `R1_NO_BREAKTHROUGH / STOPPED_PENDING_SUPERVISOR_REVIEW`.
+  Outputs and failed technical attempts are preserved under `outputs/r1/`
+  and `reports/r1/`. Flags remain
+  `screening_gt_used=false`, `official_test_labels_read=false`, and
+  `ordinary_mot_ovmot_touched=false`. The only next action is supervisor
+  review and explicit authorization of one separate follow-up; no automatic
+  continuation, screening, official test, or production merge is allowed.
+
+## R1 — fixed semantic diagnostic closeout — 2026-09-12
+
+- The fixed-slice evaluator used the native L62 order and attached labels only
+  after row/feature construction and scoring. It used the frozen Rule-B values
+  `candidate_threshold=1.0`, `presence_threshold=0.5`, `null_margin=0.0` and
+  did not fit or tune a new threshold.
+- This is a diagnostic, not a preregistered semantic gate and not HOTA. The
+  authoritative files are in `outputs/r1/eval/fixed_semantic_attempt1/`; the
+  corresponding report is `reports/r1/R1_FIXED_SEMANTIC_DIAGNOSTIC.md`.
