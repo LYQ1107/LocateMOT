@@ -19,7 +19,9 @@
     "foundation_checkpoint_audit": "outputs/unified/protocol/foundation_checkpoint_audit.json",
     "foundation_checkpoint_audit_report": "reports/unified/FOUNDATION_CHECKPOINT_AUDIT.md",
     "u1_preprocessing_contract": "reports/unified/U1_PREPROCESSING_CONTRACT.md",
-    "u1_preprocessing_equivalence": "outputs/unified/u1_preprocessing_equivalence.json"
+    "u1_preprocessing_equivalence": "outputs/unified/u1_preprocessing_equivalence.json",
+    "external_baseline_temprmot": "outputs/unified/external_baselines/temprmot_legal_v1.json",
+    "external_baseline_legal_dev": "reports/unified/EXTERNAL_BASELINE_LEGAL_DEV.md"
   },
   "branch": "codex/u0r-u1r-foundation-repair-20261001",
   "completed": [
@@ -40,7 +42,20 @@
     "compile_total": 10,
     "help_pass": 1,
     "help_total": 10,
-    "training_launched": false
+    "training_launched": false,
+    "real_prediction_methods": [
+      "TempRMOT"
+    ],
+    "real_trackeval_methods": [
+      "TempRMOT"
+    ],
+    "legal_dev_sequences": 2,
+    "official_test_labels_read": false,
+    "screening_gt_used": false,
+    "incomplete_methods": [
+      "DKGTrack",
+      "FlexHook"
+    ]
   },
   "format": "locatemot-u-status-v1",
   "foundation_smoke": {
@@ -105,5 +120,16 @@
     "max_box_abs_diff": 0.0,
     "max_score_abs_diff": 0.0,
     "official_test_labels_read": false
+  },
+  "external_baseline": {
+    "status": "REAL_PREDICTION_AND_EVALUATION_COMPLETE_ONE_METHOD",
+    "method": "TempRMOT",
+    "summary": "outputs/unified/external_baselines/temprmot_legal_v1.json",
+    "hota_combined": 94.679,
+    "mota_combined": 98.925,
+    "idf1_combined": 99.465,
+    "sequence_count": 2,
+    "formal_gate": false,
+    "second_method_required": true
   }
 }

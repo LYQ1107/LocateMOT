@@ -1,0 +1,59 @@
+{
+  "format": "locatemot-u-external-baseline-summary-v1",
+  "method": "TempRMOT",
+  "status": "PREDICTION_AND_TRACKEVAL_COMPLETE",
+  "source_repository": "https://github.com/zyn213/TempRMOT",
+  "source_commit": "6a65640d849fdee4a32bb055945ee34c3b0edeb1",
+  "checkpoint_release": "https://github.com/zyn213/TempRMOT/releases/download/v1.0/checkpoint_rk.pth",
+  "checkpoint_sha256": "55e9b2cecbc1590aface4c9d8639008e694e8c4556d1d3c27bf90549f408c7e8",
+  "dataset": "refer_kitti_v1",
+  "legal_split_part": "validation",
+  "videos": ["0012", "0014"],
+  "expressions": [
+    "cars-in-front-of-the-camera.json",
+    "black-cars-in-the-left.json"
+  ],
+  "sequence_count": 2,
+  "prediction_rows": 94,
+  "ground_truth_rows": 93,
+  "official_test_labels_read": false,
+  "screening_gt_used": false,
+  "training_launched": false,
+  "raw_output_root": "/data2/user/reference_envs/temprmot/outputs",
+  "raw_prediction_files": [
+    "results_epoch49/0012/cars-in-front-of-the-camera/predict.txt",
+    "results_epoch49/0014/black-cars-in-the-left/predict.txt"
+  ],
+  "trackeval": {
+    "implementation": "TempRMOT/TrackEval fork",
+    "seqmap": "seqmap_legal_v1.txt",
+    "metrics": ["HOTA", "CLEAR", "Identity"],
+    "combined": {
+      "HOTA": 94.679,
+      "DetA": 94.632,
+      "AssA": 94.726,
+      "DetRe": 96.718,
+      "DetPr": 95.689,
+      "AssRe": 96.766,
+      "AssPr": 95.762,
+      "LocA": 94.443,
+      "RHOTA": 95.677,
+      "MOTA": 98.925,
+      "MOTP": 94.3,
+      "IDF1": 99.465
+    },
+    "command_log": "/data2/user/reference_envs/temprmot/trackeval.log"
+  },
+  "compatibility": {
+    "environment_root": "/data2/user/reference_envs/temprmot",
+    "source_copy_isolated": true,
+    "patches": [
+      "torchtext tokenizer shim",
+      "PyTorch 2.10 torch.load weights_only=False compatibility",
+      "torchvision pretrained download disabled because the released checkpoint supplies backbone weights",
+      "CUDA extension scalar_type API update",
+      "TrackEval NumPy np.float/np.int compatibility"
+    ]
+  },
+  "scope_note": "This is a real legal-development sanity run on two frozen V1 validation sequences, not the formal LocateMOT-U generic or expression gate. Raw predictions, checkpoints, environments, and caches remain outside the repository."
+}

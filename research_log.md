@@ -603,3 +603,33 @@ Concise experimental log (latest first).
   in under a minute each. Official-test labels and screening ground truth were
   not opened. External baseline execution remains incomplete and is the next
   blocking U0 task.
+
+## LocateMOT-U U0R — TempRMOT legal-development execution — 2026-10-01
+
+- Hypothesis: at least one published external RMOT method can be executed on a
+  frozen legal-development subset without reading official-test labels or
+  mixing its environment into LocateMOT-U.
+- Protocol: copied TempRMOT at commit
+  `6a65640d849fdee4a32bb055945ee34c3b0edeb1` into the isolated environment
+  `/data2/user/reference_envs/temprmot`, loaded the released checkpoint
+  `checkpoint_rk.pth` (SHA-256
+  `55e9b2cecbc1590aface4c9d8639008e694e8c4556d1d3c27bf90549f408c7e8`), and
+  ran the adapter on V1 validation videos `0012` and `0014`, one legal
+  expression per video. TrackEval then evaluated the two generated sequences
+  with HOTA, CLEAR, and Identity.
+- Result: prediction and evaluation completed with 94 prediction rows and 93
+  ground-truth rows. Combined HOTA was `94.679`, MOTA `98.925`, and IDF1
+  `99.465`. Official-test labels, screening ground truth, and training were not
+  used. The raw outputs and environment remain outside the repository;
+  `outputs/unified/external_baselines/temprmot_legal_v1.json` records the
+  reproducible metadata and `reports/unified/EXTERNAL_BASELINE_LEGAL_DEV.md`
+  records the bounded scope.
+- Compatibility work was confined to the isolated copy: a torchtext shim,
+  current PyTorch `torch.load` behavior, disabling a redundant pretrained
+  download, a CUDA scalar-type API update, and NumPy aliases in TrackEval.
+  These changes do not alter the LocateMOT-U model or the frozen split.
+- Decision: keep the TempRMOT run as real external-baseline evidence, while
+  retaining `U0_EXTERNAL_BASELINE=INCOMPLETE` until a second independent
+  method also produces predictions and evaluation. DKGTrack and FlexHook
+  remain pending because their published weight links are not yet available
+  through the isolated download path.
