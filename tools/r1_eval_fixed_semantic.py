@@ -20,6 +20,8 @@ from typing import Any
 
 import torch
 
+from locatemot.paths import R1_L49_DATA, R1_MANIFEST, R1_ROOT, R1_VISUAL_ROOT
+
 WORK_ROOT = Path(__file__).resolve().parents[1]
 if str(WORK_ROOT) not in sys.path:
     sys.path.insert(0, str(WORK_ROOT))
@@ -51,12 +53,12 @@ from tools.r1_infer_legal_dev import (  # noqa: E402
 )
 
 
-FIXED_L62_ROWS = WORK_ROOT / "../LocateMOT/outputs/l62/eval/semantic_16cal24val_retry2/score_records.jsonl"
-L49_CAL = WORK_ROOT / "../LocateMOT/outputs/l49/data/calibration_units.jsonl"
-L49_VAL = WORK_ROOT / "../LocateMOT/outputs/l49/data/validation_units.jsonl"
-ALIGNED_CACHE = WORK_ROOT / "outputs/r1/cache/eval_attempt2"
-VISUAL_SUPPLEMENT = Path("/data2/usr_for_deadline/locatemot_r1_fixed_visual_supplement_attempt1")
-SELECTION_SUMMARY = WORK_ROOT / "outputs/r1/legal_dev_aggregate_attempt11/summary.json"
+FIXED_L62_ROWS = R1_L49_DATA / "fixed_order.jsonl"
+L49_CAL = R1_L49_DATA / "calibration_units.jsonl"
+L49_VAL = R1_L49_DATA / "validation_units.jsonl"
+ALIGNED_CACHE = R1_ROOT / "cache" / "eval_attempt2"
+VISUAL_SUPPLEMENT = R1_VISUAL_ROOT
+SELECTION_SUMMARY = R1_ROOT / "legal_dev" / "summary.json"
 L29_CONTROL = {
     "legacy_candidate_recall": 0.7333333333333333,
     "legacy_candidate_precision": 0.0830188679245283,

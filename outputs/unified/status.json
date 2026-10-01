@@ -1,0 +1,70 @@
+{
+  "artifacts": {
+    "architecture": "reports/unified/ARCHITECTURE.md",
+    "data_manifest": "outputs/unified/protocol/data_manifest.json",
+    "data_provenance": "reports/unified/DATA_PROVENANCE.md",
+    "external_sanity": "reports/unified/EXTERNAL_BASELINE_SANITY.md",
+    "final_goal": "reports/unified/FINAL_GOAL.md",
+    "foundation_asset": "outputs/unified/protocol/foundation_asset.json",
+    "legal_split": "outputs/unified/protocol/legal_video_split.json",
+    "open_source_audit": "reports/unified/OPEN_SOURCE_TRAINING_AUDIT.md",
+    "parameter_sharing": "outputs/unified/parameter_sharing_smoke.json",
+    "proposal_gate": "outputs/unified/u1_proposal_gate.json",
+    "proposal_gate_generic_top900": "outputs/unified/u1_proposal_gate_generic_classes_top900.json",
+    "proposal_gate_top900": "outputs/unified/u1_proposal_gate_top900.json",
+    "skeleton_smoke": "outputs/unified/skeleton_smoke.json",
+    "u1_foundation_smoke": "outputs/unified/u1_foundation_smoke.json"
+  },
+  "branch": "codex/restore-rmot-20261001",
+  "completed": [
+    "U0.0_project_identity",
+    "U0.1_final_goal",
+    "U0.2_open_source_training_audit",
+    "U0.3_external_baseline_sanity",
+    "U0.4_legal_scope_and_public_manifest",
+    "U0.5_unified_skeleton_and_parameter_audit",
+    "U1.0_swinb_assets_acquired",
+    "U1.1_mmdetection_adapter_forward_smoke",
+    "U1.2_label_free_proposal_gate_diagnostic",
+    "U1.3_prompt_and_selection_repair_diagnostic"
+  ],
+  "current": "U1_proposal_gate_repair",
+  "external_sanity": {
+    "compile_pass": 10,
+    "compile_total": 10,
+    "help_pass": 1,
+    "help_total": 10,
+    "training_launched": false
+  },
+  "format": "locatemot-u-status-v1",
+  "foundation_smoke": {
+    "finite_boxes": true,
+    "finite_scores": true,
+    "official_test_labels_read": false,
+    "prediction_count": 300,
+    "status": "pass",
+    "video": "0004"
+  },
+  "next": "U1_proposal_gate_repair",
+  "official_test_labels_read": false,
+  "project_root": "/data2/user/LocateMOT",
+  "proposal_gate": {
+    "generic_top900_iou_at_025": 0.9,
+    "generic_top900_iou_at_050": 0.18,
+    "generic_top900_mean_best_iou": 0.3634762150586171,
+    "iou_at_025": 0.54,
+    "iou_at_050": 0.04,
+    "mean_best_iou": 0.2755743374268208,
+    "mean_best_score": 0.013120486005209386,
+    "official_test_labels_read": false,
+    "rows": 16,
+    "semantic_head_training_allowed": false,
+    "target_boxes": 50,
+    "top900_iou_at_050": 0.1,
+    "top900_mean_best_iou": 0.33412939560264066
+  },
+  "screening_gt_used": false,
+  "stage": "U1",
+  "status": "in_progress_proposal_gate_failed",
+  "unified_checkpoint_sha256": null
+}

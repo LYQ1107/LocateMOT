@@ -18,21 +18,22 @@ from typing import Any, Iterable
 import torch
 
 WORK_ROOT = Path(__file__).resolve().parents[1]
-ASSET_ROOT = Path("/data1/LWR/vranlee/SERVER_ONLY/avis/LocateMOT").resolve()
+from locatemot.paths import PROJECT_ROOT, R1_L49_DATA, R1_L69_ROOT, R1_MANIFEST
+
+ASSET_ROOT = PROJECT_ROOT
 THREAD = "01a02014-fce8-7f51-8414-e7ed6ab44745"
 SEED = 20260909
-MANIFEST = ASSET_ROOT / "outputs/l19/protocol/kitti_fast_eval_manifest.json"
+MANIFEST = R1_MANIFEST
 MANIFEST_SHA = "06da458b09aa3e61ce30a4f8b58a85ac31ef1a5a10d269abd64ae41cffd127fa"
-L69_ROOT = ASSET_ROOT / "outputs/l69/attempt9/budget40_features/kitti"
-L49_DATA = ASSET_ROOT / "outputs/l49/data"
+L69_ROOT = R1_L69_ROOT
+L49_DATA = R1_L49_DATA
 TRAIN_DENSE = {
     "refer_kitti_v1": WORK_ROOT / "outputs/r0/data/v1_dense_train_index_retry2",
     "refer_kitti_v2": WORK_ROOT / "outputs/r0/data/v2_dense_train_index_retry2",
 }
 SAFE_TARGET_ROOT = WORK_ROOT / "outputs/r0/data/safe_targets_retry3"
 DEFAULT_LANGUAGE_ROOTS = (
-    Path("/data1/LWR/vranlee/SERVER_ONLY/avis/LocateMOT_L89/outputs/l89/cache/language_tokens_retry1"),
-    Path("/data2/usr_for_deadline/locatemot_r0a_language_tokens_retry1"),
+    PROJECT_ROOT / "outputs/r1_rebuild/language_tokens",
 )
 FORBIDDEN_VIDEOS = {"0005", "0011", "0013", "0019"}
 

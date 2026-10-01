@@ -17,6 +17,8 @@ from typing import Any
 
 import torch
 
+from locatemot.paths import R1_ANCHOR
+
 WORK_ROOT = Path(__file__).resolve().parents[1]
 if str(WORK_ROOT) not in sys.path:
     sys.path.insert(0, str(WORK_ROOT))
@@ -29,7 +31,7 @@ from tools.r1_common import (  # noqa: E402
     CATEGORIES, FIT_ROOTS, SEED, THREAD, check_manifest, label_from_index, unit_key,
 )
 
-ANCHOR = Path("/data1/LWR/vranlee/SERVER_ONLY/avis/LocateMOT_L89/outputs/l89/train/joint40/checkpoint_l89_epoch004.pt")
+ANCHOR = R1_ANCHOR
 
 
 def sha256_file(path: Path) -> str:

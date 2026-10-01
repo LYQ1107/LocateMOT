@@ -1,0 +1,71 @@
+{
+  "datasets": {
+    "refer_kitti_v1": {
+      "calibration": [
+        "0016"
+      ],
+      "fit": [
+        "0001",
+        "0002",
+        "0003",
+        "0006",
+        "0007",
+        "0008",
+        "0009",
+        "0010",
+        "0012",
+        "0014",
+        "0015",
+        "0020"
+      ],
+      "official_eval_reserved": [
+        "0005",
+        "0011",
+        "0013"
+      ],
+      "validation": [
+        "0004",
+        "0018"
+      ]
+    },
+    "refer_kitti_v2": {
+      "calibration": [
+        "0015"
+      ],
+      "fit": [
+        "0000",
+        "0001",
+        "0002",
+        "0003",
+        "0006",
+        "0007",
+        "0008",
+        "0009",
+        "0010",
+        "0012",
+        "0014"
+      ],
+      "official_eval_reserved": [
+        "0005",
+        "0011",
+        "0013",
+        "0019"
+      ],
+      "validation": [
+        "0016",
+        "0017",
+        "0020"
+      ]
+    }
+  },
+  "forbidden_videos": [
+    "0005",
+    "0011",
+    "0013",
+    "0019"
+  ],
+  "format": "locatemot-u-legal-video-split-v1",
+  "official_test_labels_read": false,
+  "source": "locatemot.unified.data.legal_scope",
+  "status": "frozen_development_scope"
+}

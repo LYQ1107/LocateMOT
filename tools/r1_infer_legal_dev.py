@@ -25,6 +25,8 @@ from typing import Any, Iterable
 import numpy as np
 import torch
 
+from locatemot.paths import R1_ANCHOR, R1_LANGUAGE_ROOT, R1_ROOT, R1_RULE, R1_SAFE_TARGET_ROOT
+
 WORK_ROOT = Path(__file__).resolve().parents[1]
 if str(WORK_ROOT) not in sys.path:
     sys.path.insert(0, str(WORK_ROOT))
@@ -68,16 +70,10 @@ from tools.r1_common import (  # noqa: E402
 )
 
 
-L89E_SELECTION = Path(
-    "/data1/LWR/vranlee/SERVER_ONLY/avis/LocateMOT_L89E/outputs/l89e/dev/selection_attempt1/checkpoint_selection.json"
-)
-L89E_ANCHOR = Path(
-    "/data1/LWR/vranlee/SERVER_ONLY/avis/LocateMOT_L89/outputs/l89/train/joint40/checkpoint_l89_epoch004.pt"
-)
-ALIGNED_CACHE = WORK_ROOT / "outputs/r1/cache/eval_attempt2"
-SAFE_TARGET_ROOT = Path(
-    "/data1/LWR/vranlee/SERVER_ONLY/avis/LocateMOT_R0A/outputs/r0/data/safe_targets_retry3"
-)
+L89E_SELECTION = R1_RULE
+L89E_ANCHOR = R1_ANCHOR
+ALIGNED_CACHE = R1_ROOT / "cache" / "eval_attempt2"
+SAFE_TARGET_ROOT = R1_SAFE_TARGET_ROOT
 LEGAL_DATASETS = ("refer_kitti_v1", "refer_kitti_v2")
 LEGAL_VIDEOS = {
     "refer_kitti_v1": ("0008", "0010", "0020"),
@@ -696,8 +692,7 @@ def run(args: argparse.Namespace) -> int:
         aligned = R1AlignedCacheIndex(aligned_cache)
         visual_index = VisualCacheIndex(R0_VISUAL_MANIFEST)
         language = MergedLanguageCache(tuple(Path(value).resolve() for value in (
-            "/data1/LWR/vranlee/SERVER_ONLY/avis/LocateMOT_L89/outputs/l89/cache/language_tokens_retry1",
-            "/data2/usr_for_deadline/locatemot_r0a_language_tokens_retry1",
+            str(R1_LANGUAGE_ROOT),
         )))
         device = torch.device(args.device)
         if device.type == "cuda":

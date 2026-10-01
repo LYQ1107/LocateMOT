@@ -1,0 +1,31 @@
+{
+  "format": "locatemot-u-foundation-asset-v1",
+  "model_id": "groundingdino_swinb_cogcoor",
+  "target_role": "MM-GroundingDINO-B candidate for U1",
+  "assets": [
+    {
+      "source_url": "https://github.com/IDEA-Research/GroundingDINO/releases/download/v0.1.0-alpha2/groundingdino_swinb_cogcoor.pth",
+      "local_path": "weights/grounding_dino_swin-b.pth",
+      "size_bytes": 938057991,
+      "sha256": "46270f7a822e6906b655b729c90613e48929d0f2bb8b9b76fd10a856f3ac6ab7",
+      "file_type": "original GroundingDINO PyTorch zip checkpoint",
+      "status": "acquired_reference_format"
+    },
+    {
+      "source_url": "https://download.openmmlab.com/mmdetection/v3.0/grounding_dino/groundingdino_swinb_cogcoor_mmdet-55949c9c.pth",
+      "local_path": "weights/groundingdino_swinb_cogcoor_mmdet-55949c9c.pth",
+      "size_bytes": 935971702,
+      "sha256": "55949c9c0f46339a73b415334765615d491ee6ed739ed3f568142b7fc5581143",
+      "file_type": "OpenMMLab/MMDetection PyTorch zip checkpoint",
+      "status": "loaded_and_label_free_forward_smoked"
+    }
+  ],
+  "status": "u1_adapter_smoke_passed",
+  "official_test_labels_read": false,
+  "screening_gt_used": false,
+  "notes": [
+    "The original file is the official GroundingDINO Swin-B CogCoOR release used by the audited ReferDINO configuration.",
+    "The MMDetection-converted asset is the U1 runtime candidate because its key layout matches the local adapter.",
+    "The adapter smoke used one legal V1 video 0004 frame and did not open any target labels."
+  ]
+}

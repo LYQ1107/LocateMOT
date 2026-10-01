@@ -14,12 +14,16 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Iterable
 
+from locatemot.paths import PROJECT_ROOT, V1_ROOT, V2_ROOT
 
-ASSET_ROOT = Path("/data1/LWR/vranlee/SERVER_ONLY/avis/LocateMOT").resolve()
-V1_EXPR_ROOT = ASSET_ROOT / "outputs/l13/data/refer_kitti_v1/expression"
-V2_OLD_PATH = ASSET_ROOT / "outputs/l11/data/rmot_kitti/expressions.json"
-V2_NEW_PATH = ASSET_ROOT / "outputs/l16/data/kitti_missing/records/expressions.json"
-L49_SOURCE = ASSET_ROOT / "locatemot/rmot/l49_data.py"
+ASSET_ROOT = PROJECT_ROOT
+V1_EXPR_ROOT = V1_ROOT / "expression"
+# The migrated public V2 release stores one JSON object per expression file.
+# The old monolithic paths are retained as compatibility names; the loader
+# below detects the directory form and uses the restored release directly.
+V2_OLD_PATH = V2_ROOT / "expression"
+V2_NEW_PATH = V2_ROOT / "expression"
+L49_SOURCE = PROJECT_ROOT / "locatemot/rmot/l49_data.py"
 FORBIDDEN_SCOPE_VIDEOS = {"0005", "0011", "0013", "0019"}
 
 # These sets are copied from the audited local l49_data.py L49_SPLITS source
@@ -404,6 +408,50 @@ def load_safe_v2_records_with_manifest(
     if not allowed_videos <= set(V2_SOURCE_VIDEOS):
         raise R0SafeSourceError(f"V2 pair outside audited L49 source scope: {sorted(allowed_videos)}")
     manifest = _base_manifest(pairs, purpose)
+
+    if V2_OLD_PATH.is_dir():
+        # Restored V2 release format: one expression JSON per video directory.
+        # This branch keeps the same query ordering and frame-specific target
+        # map as the historical safe loader while never opening reserved
+        # official-evaluation videos.
+        files_by_video = {
+            video: sorted((V2_OLD_PATH / video).glob("*.json"))
+            for video in V2_SOURCE_VIDEOS
+        }
+        counts = {video: len(files_by_video[video]) for video in V2_SOURCE_VIDEOS}
+        if any(not files_by_video[video] for video in allowed_videos):
+            missing = sorted(video for video in allowed_videos if not files_by_video[video])
+            raise R0SafeSourceError(f"no restored V2 expression files for allowed videos: {missing}")
+        offsets: dict[str, int] = {}
+        running = 0
+        for video in V2_SOURCE_VIDEOS:
+            offsets[video] = running
+            running += counts[video]
+        manifest["source_code_contract"] = {
+            "source": str(L49_SOURCE),
+            "v2_expression_root": str(V2_OLD_PATH),
+            "format": "one-expression-json-per-video-directory",
+            "query_order": "source rows sorted by (video, expression, sentence), query_id enumerated globally",
+            "label_field": "item.label",
+        }
+        manifest["seen_top_level_key_count"] = len(V2_SOURCE_VIDEOS)
+        manifest["allowed_top_level_keys"] = sorted(allowed_videos)
+        manifest["decoded_top_level_keys"] = sorted(allowed_videos)
+        manifest["skipped_top_level_keys_count"] = len(set(V2_SOURCE_VIDEOS) - allowed_videos)
+        records: list[R0SafeQueryRecord] = []
+        for video in sorted(allowed_videos):
+            local: list[tuple[str, str, dict[int, tuple[str, ...]], str]] = []
+            for path in files_by_video[video]:
+                item = dict(json.loads(path.read_text(encoding="utf-8")))
+                item.setdefault("expression", path.stem)
+                local.append(_record_from_item("refer_kitti_v2", video, item, path))
+            local.sort(key=lambda value: (value[0], value[1], value[3]))
+            for index, (_expression, sentence, target, source) in enumerate(local):
+                records.append(R0SafeQueryRecord("refer_kitti_v2", video, offsets[video] + index, sentence, target, source))
+            manifest["source_paths"].extend(str(path.resolve()) for path in files_by_video[video])
+        manifest["forbidden_payload_deserialized"] = False
+        return R0SafeLoadResult(tuple(sorted(records, key=lambda r: (r.video, r.query_id))), _finish_manifest(manifest))
+
     manifest["source_code_contract"] = {
         "source": str(L49_SOURCE),
         "v2_old_source": str(V2_OLD_PATH),

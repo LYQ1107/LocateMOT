@@ -1,0 +1,151 @@
+{
+  "checks": [
+    {
+      "compile": {
+        "returncode": 0,
+        "stderr": "",
+        "stdout": ""
+      },
+      "help": {
+        "returncode": 1,
+        "stderr": "Traceback (most recent call last): File \"/data2/user/reference_repos/MOTR/main.py\", line 23, in <module> import datasets File \"/data2/user/reference_repos/MOTR/datasets/__init__.py\", line 14, in <module> from .coco import build as build_coco File \"/d ... e_repos/MOTR/util/misc.py\", line 34, in <module> from torchvision.ops.misc import _NewEmptyTensorOp ImportError: cannot import name '_NewEmptyTensorOp' from 'torchvision.ops.misc' (/usr/local/lib/python3.10/dist-packages/torchvision/ops/misc.py)",
+        "stdout": ""
+      },
+      "name": "MOTR",
+      "repo": "/data2/user/reference_repos/MOTR"
+    },
+    {
+      "compile": {
+        "returncode": 0,
+        "stderr": "",
+        "stdout": ""
+      },
+      "help": {
+        "returncode": 1,
+        "stderr": "Traceback (most recent call last): File \"/data2/user/reference_repos/TransRMOT/main.py\", line 24, in <module> import datasets File \"/data2/user/reference_repos/TransRMOT/datasets/__init__.py\", line 14, in <module> from .coco import build as build_coc ... os/TransRMOT/util/misc.py\", line 34, in <module> from torchvision.ops.misc import _NewEmptyTensorOp ImportError: cannot import name '_NewEmptyTensorOp' from 'torchvision.ops.misc' (/usr/local/lib/python3.10/dist-packages/torchvision/ops/misc.py)",
+        "stdout": ""
+      },
+      "name": "TransRMOT",
+      "repo": "/data2/user/reference_repos/TransRMOT"
+    },
+    {
+      "compile": {
+        "returncode": 0,
+        "stderr": "",
+        "stdout": ""
+      },
+      "help": {
+        "returncode": 1,
+        "stderr": "Traceback (most recent call last): File \"/data2/user/reference_repos/TempRMOT/main.py\", line 25, in <module> import datasets File \"/data2/user/reference_repos/TempRMOT/datasets/__init__.py\", line 15, in <module> from .refer_kitti import build as buil ...  in <module> from .transrmot_pro import build as build_rmot File \"/data2/user/reference_repos/TempRMOT/models/transrmot_pro.py\", line 33, in <module> from torchtext.data.utils import get_tokenizer ModuleNotFoundError: No module named 'torchtext'",
+        "stdout": ""
+      },
+      "name": "TempRMOT",
+      "repo": "/data2/user/reference_repos/TempRMOT"
+    },
+    {
+      "compile": {
+        "returncode": 0,
+        "stderr": "",
+        "stdout": ""
+      },
+      "help": {
+        "returncode": 1,
+        "stderr": "Traceback (most recent call last): File \"/data2/user/reference_repos/DKGTrack/main.py\", line 25, in <module> import datasets File \"/data2/user/reference_repos/DKGTrack/datasets/__init__.py\", line 15, in <module> from .refer_kitti import build as buil ... DKGTrack/models/__init__.py\", line 10, in <module> from .transrmot_pro import build as build_rmot File \"/data2/user/reference_repos/DKGTrack/models/transrmot_pro.py\", line 23, in <module> import spacy ModuleNotFoundError: No module named 'spacy'",
+        "stdout": ""
+      },
+      "name": "DKGTrack",
+      "repo": "/data2/user/reference_repos/DKGTrack"
+    },
+    {
+      "compile": {
+        "returncode": 0,
+        "stderr": "",
+        "stdout": ""
+      },
+      "help": {
+        "returncode": 1,
+        "stderr": "Traceback (most recent call last): File \"/data2/user/reference_repos/FlexHook/main.py\", line 18, in <module> from config import get_config File \"/data2/user/reference_repos/FlexHook/config.py\", line 5, in <module> from yacs.config import CfgNode as CN ModuleNotFoundError: No module named 'yacs'",
+        "stdout": ""
+      },
+      "name": "FlexHook",
+      "repo": "/data2/user/reference_repos/FlexHook"
+    },
+    {
+      "compile": {
+        "returncode": 0,
+        "stderr": "",
+        "stdout": ""
+      },
+      "help": {
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "usage: train.py [-h] [--gpus GPUS] [--seed SEED] [--exp_name EXP_NAME] [--save_root SAVE_ROOT] [--save_postfix SAVE_POSTFIX] [--img_hw IMG_HW [IMG_HW ...]] [--norm_mean NORM_MEAN] [--norm_std NORM_STD] [--num_workers NUM_WORKERS] [--clip_model CLIP_M ... AIN_PRINT_FREQ --eval_frequency EVAL_FREQUENCY --save_frequency SAVE_FREQUENCY --loss_rho LOSS_RHO --loss_gamma LOSS_GAMMA --loss_reduction LOSS_REDUCTION --resume_path RESUME_PATH --test_bs TEST_BS --test_ckpt TEST_CKPT --similarity_calibration"
+      },
+      "name": "iKUN",
+      "repo": "/data2/user/reference_repos/iKUN"
+    },
+    {
+      "compile": {
+        "returncode": 0,
+        "stderr": "",
+        "stdout": ""
+      },
+      "help": {
+        "returncode": 1,
+        "stderr": "Traceback (most recent call last): File \"/data2/user/reference_repos/OVTR/ovtr/main.py\", line 20, in <module> from util.events import EventStorage, TensorboardXWriter File \"/data2/user/reference_repos/OVTR/ovtr/util/events.py\", line 10, in <module> from fvcore.common.file_io import PathManager ModuleNotFoundError: No module named 'fvcore'",
+        "stdout": ""
+      },
+      "name": "OVTR",
+      "repo": "/data2/user/reference_repos/OVTR"
+    },
+    {
+      "compile": {
+        "returncode": 0,
+        "stderr": "",
+        "stdout": ""
+      },
+      "help": {
+        "returncode": 1,
+        "stderr": "Traceback (most recent call last): File \"/data2/user/reference_repos/COVTrack/tools/train.py\", line 13, in <module> from mmcv import Config, DictAction ImportError: cannot import name 'Config' from 'mmcv' (/data2/user/LocateMOT/.venv/lib/python3.10/site-packages/mmcv/__init__.py)",
+        "stdout": ""
+      },
+      "name": "COVTrack",
+      "repo": "/data2/user/reference_repos/COVTrack"
+    },
+    {
+      "compile": {
+        "returncode": 0,
+        "stderr": "",
+        "stdout": ""
+      },
+      "help": {
+        "returncode": 1,
+        "stderr": "Traceback (most recent call last): File \"/data2/user/reference_repos/ReferDINO/main.py\", line 6, in <module> from trainer import Trainer File \"/data2/user/reference_repos/ReferDINO/trainer.py\", line 8, in <module> import wandb ModuleNotFoundError: No module named 'wandb'",
+        "stdout": ""
+      },
+      "name": "ReferDINO",
+      "repo": "/data2/user/reference_repos/ReferDINO"
+    },
+    {
+      "compile": {
+        "returncode": 0,
+        "stderr": "",
+        "stdout": ""
+      },
+      "help": {
+        "returncode": 1,
+        "stderr": "Traceback (most recent call last): File \"/data2/user/reference_repos/Open-GroundingDino/main.py\", line 15, in <module> from util.logger import setup_logger File \"/data2/user/reference_repos/Open-GroundingDino/util/logger.py\", line 6, in <module> import colorlog ModuleNotFoundError: No module named 'colorlog'",
+        "stdout": ""
+      },
+      "name": "Open-GroundingDino",
+      "repo": "/data2/user/reference_repos/Open-GroundingDino"
+    }
+  ],
+  "format": "locatemot-u-external-sanity-v1",
+  "note": "Import failures reflect the reference repository dependency contract on this host; no data or checkpoint substitution was made.",
+  "official_test_labels_read": false,
+  "scope": "compile_and_help_only",
+  "screening_gt_used": false,
+  "status": "completed",
+  "training_launched": false
+}

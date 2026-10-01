@@ -18,12 +18,14 @@ from typing import Any
 
 import torch
 
+from locatemot.paths import PROJECT_ROOT, R1_MANIFEST, R1_VISUAL_ROOT
+
 WORK_ROOT = Path(__file__).resolve().parents[1]
-ASSET_ROOT = Path("/data1/LWR/vranlee/SERVER_ONLY/avis/LocateMOT").resolve()
-R0_VISUAL_ROOT = Path("/data2/usr_for_deadline/locatemot_r0a_visual_tokens_retry3_final").resolve()
+ASSET_ROOT = PROJECT_ROOT
+R0_VISUAL_ROOT = R1_VISUAL_ROOT
 THREAD = "01a02014-fce8-7f51-8414-e7ed6ab44745"
 SEED = 20260829
-MANIFEST = ASSET_ROOT / "outputs/l19/protocol/kitti_fast_eval_manifest.json"
+MANIFEST = R1_MANIFEST
 MANIFEST_SHA = "06da458b09aa3e61ce30a4f8b58a85ac31ef1a5a10d269abd64ae41cffd127fa"
 
 if str(WORK_ROOT) not in sys.path:

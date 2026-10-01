@@ -15,17 +15,19 @@ import time
 from pathlib import Path
 from typing import Any
 
+from locatemot.paths import R1_ANCHOR, R1_ROOT
+
 WORK_ROOT = Path(__file__).resolve().parents[1]
 if str(WORK_ROOT) not in sys.path:
     sys.path.insert(0, str(WORK_ROOT))
 
 from tools.r1_common import MANIFEST_SHA, SEED, THREAD, check_manifest, file_meta, write_json  # noqa: E402
 
-ANCHOR = Path("/data1/LWR/vranlee/SERVER_ONLY/avis/LocateMOT_L89/outputs/l89/train/joint40/checkpoint_l89_epoch004.pt")
-SELECTION = Path("/data1/LWR/vranlee/SERVER_ONLY/avis/LocateMOT_L89E/outputs/l89e/dev/selection_attempt1/checkpoint_selection.json")
-MATRIX = Path("/data2/usr_for_deadline/locatemot_l89e/dev_trackeval_matrix_attempt1/trackeval_matrix.json")
-FULL_SUMMARY = Path("/data2/usr_for_deadline/locatemot_l89e/dev_true_fullvideo_attempt1/candidate_epoch004_shortlist04/summary.json")
-DEV_SCORES = Path("/data1/LWR/vranlee/SERVER_ONLY/avis/LocateMOT_L89/outputs/l89/eval/dev_scores_joint40/score_records.jsonl")
+ANCHOR = R1_ANCHOR
+SELECTION = R1_ROOT / "anchor" / "rule.json"
+MATRIX = R1_ROOT / "legal_dev" / "trackeval_matrix.json"
+FULL_SUMMARY = R1_ROOT / "legal_dev" / "summary.json"
+DEV_SCORES = R1_ROOT / "legal_dev" / "score_records.jsonl"
 
 
 def sha256_file(path: Path) -> str:

@@ -16,6 +16,7 @@ from typing import Any, Iterable
 
 import torch
 
+from locatemot.paths import PROJECT_ROOT, R1_L49_DATA, R1_L69_ROOT, R1_MANIFEST, R1_SPLIT
 from locatemot.rmot.r0_safe_target_source import (  # noqa: E402
     R0SafeQueryRecord,
     R0SafeSourceError,
@@ -23,12 +24,12 @@ from locatemot.rmot.r0_safe_target_source import (  # noqa: E402
 )
 
 
-ASSET_ROOT = Path("/data1/LWR/vranlee/SERVER_ONLY/avis/LocateMOT").resolve()
-L49_DATA = ASSET_ROOT / "outputs/l49/data"
-L69_ROOT = ASSET_ROOT / "outputs/l69/attempt9/budget40_features/kitti"
-L82_SPLIT = ASSET_ROOT / "outputs/l82/protocol/fit_video_train_dev_split.json"
-MANIFEST = ASSET_ROOT / "outputs/l19/protocol/kitti_fast_eval_manifest.json"
-L49_SOURCE = ASSET_ROOT / "locatemot/rmot/l49_data.py"
+ASSET_ROOT = PROJECT_ROOT
+L49_DATA = R1_L49_DATA
+L69_ROOT = R1_L69_ROOT
+L82_SPLIT = R1_SPLIT
+MANIFEST = R1_MANIFEST
+L49_SOURCE = PROJECT_ROOT / "locatemot/rmot/l49_data.py"
 EXPECTED_MANIFEST_SHA = "06da458b09aa3e61ce30a4f8b58a85ac31ef1a5a10d269abd64ae41cffd127fa"
 FIT_DATASETS = ("refer_kitti_v1", "refer_kitti_v2")
 EXPECTED_FIT_ROWS = 5314

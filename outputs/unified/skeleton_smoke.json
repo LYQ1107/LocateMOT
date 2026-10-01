@@ -1,0 +1,11 @@
+{
+  "format": "locatemot-u-skeleton-smoke-v1",
+  "status": "pass",
+  "task": "rmot",
+  "score_shape": [
+    1,
+    100
+  ],
+  "finite": true,
+  "official_test_labels_read": false
+}

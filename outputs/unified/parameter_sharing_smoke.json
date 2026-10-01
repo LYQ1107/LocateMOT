@@ -1,0 +1,15 @@
+{
+  "checkpoint": null,
+  "format": "locatemot-u-parameter-sharing-smoke-v1",
+  "groups": {
+    "foundation": 7680,
+    "shared": 356867,
+    "specification": 8655104,
+    "task_heads": 1799,
+    "track_core": 1316357
+  },
+  "official_test_labels_read": false,
+  "shared_non_head_fraction": 0.9998259785658602,
+  "status": "skeleton_only",
+  "total_parameters": 10337807
+}

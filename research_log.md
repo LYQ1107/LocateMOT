@@ -2,6 +2,36 @@
 
 Concise experimental log (latest first).
 
+## 2026-10-01 — latest R1 restoration completed
+
+- Hypothesis: restore only the newest R1 execution boundary and its legal
+  public-data/runtime inputs on `/data2/user/LocateMOT`; do not pretend that
+  unavailable L69/L89E/R1 payloads were reproduced.
+- Restored: official KITTI training images, Refer-KITTI V1, Refer-KITTI V2,
+  MMDetection 3.3.0/GroundingDINO, BERT, and the direct R1 source dependency
+  modules. V1 audit is complete. V2 has 157 legal expression-frame target
+  references (11 repeated physical video/frame/ID pairs) pointing to IDs
+  absent from corrected labels; missing frames are zero, and the anomaly is
+  retained for the next adapter instead of silently filtered. The new public
+  query manifest records every affected row.
+- Runtime evidence: GroundingDINO loads the SHA-verified official checkpoint
+  with 172,977,693 frozen parameters; one real KITTI frame/expression GPU
+  inference returned 300 finite candidate boxes and finite scores. R1 imports
+  and compile checks pass after path migration. The safe source loader also
+  reads all 8,397 legal V1/V2 expression records from the restored
+  per-expression layout without opening official-evaluation videos.
+- Failure/limit: historical R1 checkpoints, L69 bank, dense indexes,
+  language/visual/aligned caches and fixed manifest are unavailable. No old
+  HOTA or score is claimed as reproduced; the old R1 sidecar is not extended
+  with threshold/layer/learning-rate sweeps.
+- Next action: construct a new legal public-data manifest/index and then a
+  freshly generated candidate bank before any new correspondence training.
+  The manifest is now complete. A 40-row midpoint-frame GroundingDINO probe
+  found mean best IoU `.3188`, IoU@.25 `.6585`, IoU@.50 `.1463`, and mean best
+  score `.0107` over 123 target boxes; the frame-zero attempt is preserved as
+  a separate artifact. This supports a new bank audit but is not an RMOT
+  score. Official-evaluation videos remain unread.
+
 ## 2026-08-19 Stage L11 — OVMOT temporal pseudo-track + KITTI front-end
 
 - Hypothesis: unmatched DLA detections on expanded TAO-train OVMOT
@@ -424,3 +454,113 @@ Concise experimental log (latest first).
 - This is a diagnostic, not a preregistered semantic gate and not HOTA. The
   authoritative files are in `outputs/r1/eval/fixed_semantic_attempt1/`; the
   corresponding report is `reports/r1/R1_FIXED_SEMANTIC_DIAGNOSTIC.md`.
+# 2026-10-01 — new-server restoration started
+
+- Hypothesis: restoring public V1/V2 data and exact base inference dependencies enables a new, attributable correspondence experiment; extending the failed R1 sidecar is unjustified.
+- Evidence: fetched all remote branches; latest remains R1 `99090c8`. Read chronological historical endings and R1 reports: V1 legal-dev regression, limited V2 gain, fixed-slice score mismatch/output collapse. Old trained checkpoints are unavailable.
+- Changes: started resumable official KITTI S3 **direct** download (15,813,146,295 bytes); downloaded and CRC-validated V1 expression/labels archives; isolated local data-tools environment. Full inventory/short plan: `reports/RESTORE_STATUS_20261001.md`.
+- Failure/repair: shell sandbox lacks bubblewrap; execution requires tool escalation. Standard venv lacks ensurepip; local virtualenv bootstrap succeeded. Neither is a scientific result.
+- Results: public V1 annotations recovered; KITTI/V2/runtime/project-generated assets pending. No historical checkpoint/bank reproduction claimed. Keep recovery scripts and new provenance; preserve migration AGENTS.md edit.
+
+## LocateMOT-U U0 — unified specification and reference audit — 2026-10-01
+
+- Hypothesis: a single specification-conditioned foundation can absorb the
+  reusable persistent-query, temporal-language, open-vocabulary and reliability
+  ideas from the ten requested repositories, provided the legal video boundary
+  and one-checkpoint/shared-state contract are frozen before training.
+- Code: cloned and shallow-audited MOTR, TransRMOT, TempRMOT, DKGTrack,
+  FlexHook, iKUN, OVTR, COVTrack, ReferDINO and Open-GroundingDino; created
+  `UnifiedSpecTrack` U0 shape skeleton, shared legal-scope guards, task/sample
+  contracts, loss/runtime interfaces, parameter-sharing audit and reproducible
+  audit/sanity tools. Exact source recipes and commit IDs are in
+  `reports/unified/OPEN_SOURCE_TRAINING_AUDIT.md` and
+  `outputs/unified/open_source_audit.json`.
+- Data/protocol: froze V1/V2 fit/calibration/validation splits and reserved
+  V1 `0005,0011,0013` plus V2 `0005,0011,0013,0019`; retained all 157 V2
+  source target-ID-missing rows as unlabeled records. No official-test labels
+  or screening ground truth were opened.
+- Checkpoint/GPU: no LocateMOT-U checkpoint and no training run yet; GPU
+  allocation was zero. External sanity was compile/help only (about 23 s wall
+  time): 10/10 selected source files compiled, 1/10 entrypoints reached help,
+  and the nine remaining failures are recorded dependency/version findings.
+- Results: skeleton CPU forward finite with score shape `[1,100]`; legal guard
+  smoke passed; skeleton non-head parameter fraction `0.9998259786` (not a
+  final-model claim). No benchmark metric was produced. U0 scope/audit/sanity
+  passed; U1 MM-GroundingDINO-B acquisition and proposal/expression gates are
+  next.
+
+## LocateMOT-U U1 — Swin-B foundation acquisition and adapter smoke — 2026-10-01
+
+- Hypothesis: the audited GroundingDINO Swin-B CogCoOR weights can serve as the
+  shared visual/specification foundation after selecting the checkpoint format
+  compatible with the local MMDetection GroundingDINO implementation.
+- Assets: acquired and hashed both the original release
+  (`46270f7a822e6906b655b729c90613e48929d0f2bb8b9b76fd10a856f3ac6ab7`,
+  938,057,991 bytes) and the OpenMMLab conversion
+  (`55949c9c0f46339a73b415334765615d491ee6ed739ed3f568142b7fc5581143`,
+  935,971,702 bytes). The MMDetection asset is the runtime candidate because
+  its key layout matches the adapter; provenance is in
+  `outputs/unified/protocol/foundation_asset.json`.
+- Code/smoke: built the local Swin-B model (232,996,763 parameters), loaded the
+  converted checkpoint with 8 expected initialization keys and 3 BERT metadata
+  keys reported as non-fatal mismatch, then ran one CUDA label-free forward on
+  legal V1 video `0004` frame `000063.png` using `car . pedestrian . cyclist .`.
+- Results: 300 finite predictions, finite boxes and finite scores;
+  `outputs/unified/u1_foundation_smoke.json` records the exact config,
+  checkpoint hash, device and legal frame. This is a compatibility smoke only;
+  no proposal recall, expression grounding metric or tracking result is
+  claimed. Official-test labels and screening ground truth remain unread.
+- Checkpoint/GPU/walltime: no LocateMOT-U checkpoint; one A800-equivalent GPU;
+  model build/forward about 9 s. Next gate is label-free proposal and
+  expression grounding on legal development frames.
+
+## LocateMOT-U U1 — proposal gate diagnostic — 2026-10-01
+
+- Hypothesis: the loaded Swin-B foundation would provide sufficiently localized
+  open-vocabulary candidates for the shared semantic/tracking path on a fixed
+  legal development slice.
+- Protocol: 16 V1/V2 calibration/validation expression-frame rows, 50 target
+  boxes, 300 candidates per row; model inference completed before each
+  corresponding label file was opened. No threshold fitting, training,
+  official-test labels or screening ground truth.
+- Result after correcting the MMDetection BGR input contract: best-IoU
+  `>=0.25` was `0.5400`, best-IoU `>=0.50` was `0.0400`, mean best IoU
+  `0.2756`, and mean score at best IoU `0.01312`. Boxes and scores were finite.
+  This remains below a usable proposal gate, so semantic-head/tracking training
+  from this stream is disallowed. The initial RGB/BGR-swapped diagnostic was
+  discarded and is not used as evidence.
+- Diagnosis/next change: inspect prompt tokenization/category assignment, box
+  decoding and proposal selection on this same legal slice. Preserve the split,
+  rows, checkpoint and labels; do not tune a threshold or delete hard cases.
+  Authoritative output: `outputs/unified/u1_proposal_gate.json` and
+  `reports/unified/U1_PROPOSAL_GATE.md`.
+- Selection-only check: retaining all 900 decoder queries raised IoU@0.50 to
+  `0.1000` and mean best IoU to `0.3341`, so top-k selection contributes but
+  does not repair localization. The top-900 output is retained separately and
+  is not used as a training bank.
+- A fixed class prompt (`car . pedestrian . cyclist .`) with all 900 queries
+  reached IoU@0.25 `0.9000`, IoU@0.50 `0.1800`, mean best IoU `0.3635`; this is
+  a useful direction for the repair but still below the stage gate and remains
+  excluded from training. Output:
+  `outputs/unified/u1_proposal_gate_generic_classes_top900.json`.
+
+## LocateMOT-U U1.3 — proposal-selection repair diagnostics finalized — 2026-10-01
+
+- Change: made the canonical 300-query output reproducible with explicit
+  `max_per_img` and prompt metadata, and synchronized the report/status values
+  with the corrected BGR run. Re-ran the 300-query baseline, the 900-query
+  selection diagnostic, and the fixed class prompt (`car . pedestrian .
+  cyclist .`) diagnostic on the identical legal 16-row slice.
+- Results: the baseline stayed at IoU@0.25 `0.5400`, IoU@0.50 `0.0400`, and
+  mean best IoU `0.2756`; retaining 900 queries reached `0.1000` at IoU@0.50;
+  the fixed class prompt with 900 queries reached `0.1800` at IoU@0.50 and
+  `0.9000` at IoU@0.25. All boxes/scores were finite, no rows were skipped,
+  and no official-test labels or screening ground truth were read.
+- Interpretation: prompt/category assignment and top-k selection are concrete
+  repair directions, but the proposal gate remains below the stage criterion.
+  No semantic-head/tracking training bank was created and no training was
+  launched. The next experiment must keep this split/checkpoint fixed while
+  inspecting prompt tokenization, category assignment and box decoding.
+- Verification: unified modules/tools compile; CPU skeleton smoke is finite;
+  parameter-sharing audit remains skeleton-only with non-head fraction
+  `0.9998259786`; legal guard accepts V1 `0004` and rejects reserved `0013`.

@@ -18,20 +18,28 @@ from typing import Any, Iterable
 import numpy as np
 import torch
 
-ROOT = Path("/data1/LWR/vranlee/SERVER_ONLY/avis/LocateMOT").resolve()
+from locatemot.paths import (
+    PROJECT_ROOT,
+    R1_DEV_INDEX_ROOT,
+    R1_FIT_INDEX_ROOT,
+    R1_L49_DATA,
+    R1_MANIFEST,
+)
+
+ROOT = PROJECT_ROOT
 WORK_ROOT = Path(__file__).resolve().parents[1]
-R0A_ROOT = Path("/data1/LWR/vranlee/SERVER_ONLY/avis/LocateMOT_R0A").resolve()
+R0A_ROOT = PROJECT_ROOT
 THREAD = "01a02014-fce8-7f51-8414-e7ed6ab44745"
 SEED = 20260829
-MANIFEST = ROOT / "outputs/l19/protocol/kitti_fast_eval_manifest.json"
+MANIFEST = R1_MANIFEST
 MANIFEST_SHA = "06da458b09aa3e61ce30a4f8b58a85ac31ef1a5a10d269abd64ae41cffd127fa"
 FIT_ROOTS = {
-    "refer_kitti_v1": R0A_ROOT / "outputs/r0/data/v1_dense_train_index_retry2",
-    "refer_kitti_v2": R0A_ROOT / "outputs/r0/data/v2_dense_train_index_retry2",
+    "refer_kitti_v1": R1_FIT_INDEX_ROOT / "refer_kitti_v1",
+    "refer_kitti_v2": R1_FIT_INDEX_ROOT / "refer_kitti_v2",
 }
 DEV_ROOTS = {
-    "refer_kitti_v1": R0A_ROOT / "outputs/r0/data/v1_dev_index_retry1",
-    "refer_kitti_v2": R0A_ROOT / "outputs/r0/data/v2_dev_index_retry1",
+    "refer_kitti_v1": R1_DEV_INDEX_ROOT / "refer_kitti_v1",
+    "refer_kitti_v2": R1_DEV_INDEX_ROOT / "refer_kitti_v2",
 }
 FORBIDDEN_VIDEOS = {"0005", "0011", "0013", "0019"}
 CATEGORIES = ("positive", "multi_positive", "inactive", "present_uncovered")
@@ -132,9 +140,9 @@ def load_fixed_l62_key_order() -> list[dict[str, Any]]:
     files.  Target arrays, positive indices, categories, and scores are never
     present in the returned records.
     """
-    l62_path = ROOT / "outputs/l62/eval/semantic_16cal24val_retry2/score_records.jsonl"
-    cal_path = ROOT / "outputs/l49/data/calibration_units.jsonl"
-    val_path = ROOT / "outputs/l49/data/validation_units.jsonl"
+    l62_path = R1_L49_DATA / "fixed_order.jsonl"
+    cal_path = R1_L49_DATA / "calibration_units.jsonl"
+    val_path = R1_L49_DATA / "validation_units.jsonl"
     if not l62_path.is_file() or not cal_path.is_file() or not val_path.is_file():
         raise FileNotFoundError("R1 fixed-order input missing")
     metadata: dict[str, dict[str, Any]] = {}

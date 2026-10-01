@@ -27,6 +27,8 @@ import torch
 import torch.distributed as dist
 from torch.nn.parallel import DistributedDataParallel
 
+from locatemot.paths import R1_ANCHOR, R1_RULE
+
 WORK_ROOT = Path(__file__).resolve().parents[1]
 if str(WORK_ROOT) not in sys.path:
     sys.path.insert(0, str(WORK_ROOT))
@@ -40,8 +42,8 @@ from tools.r1_common import (  # noqa: E402
     file_meta, label_from_index, standard_flags, unit_key,
 )
 
-ANCHOR = Path("/data1/LWR/vranlee/SERVER_ONLY/avis/LocateMOT_L89/outputs/l89/train/joint40/checkpoint_l89_epoch004.pt")
-RULE = Path("/data1/LWR/vranlee/SERVER_ONLY/avis/LocateMOT_L89E/outputs/l89e/dev/selection_attempt1/checkpoint_selection.json")
+ANCHOR = R1_ANCHOR
+RULE = R1_RULE
 
 
 def sha256_file(path: Path) -> str:

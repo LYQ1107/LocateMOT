@@ -20,12 +20,14 @@ import torch
 from PIL import Image
 
 
-ROOT = Path("/data1/LWR/vranlee/SERVER_ONLY/avis/LocateMOT").resolve()
-LOCAL_MMDET = Path("/data1/LWR/vranlee/LLM/mmdetection-3.3.0").resolve()
+from locatemot.paths import PROJECT_ROOT
+
+ROOT = PROJECT_ROOT
+LOCAL_MMDET = PROJECT_ROOT / "third_party" / "mmdetection"
 CONFIG = LOCAL_MMDET / "configs/mm_grounding_dino/grounding_dino_swin-t_pretrain_obj365_goldg_grit9m_v3det.py"
-WEIGHT = Path("/data1/LWR/vranlee/SERVER_ONLY/avis/TTAOD-F-main/download/grounding_dino_swin-t_pretrain_obj365_goldg_grit9m_v3det_20231204_095047-b448804b.pth").resolve()
-BERT = Path("/home/lwr/.cache/huggingface/hub/models--bert-base-uncased/snapshots/86b5e0934494bd15c9632b12f734a8a67f723594").resolve()
-CLIP_SOURCE = Path("/data1/LWR/vranlee/LLM/CLIP").resolve()
+WEIGHT = PROJECT_ROOT / "weights" / "grounding_dino_swin-t_pretrain_obj365_goldg_grit9m_v3det.pth"
+BERT = PROJECT_ROOT / "weights" / "bert-base-uncased"
+CLIP_SOURCE = PROJECT_ROOT / "third_party" / "CLIP"
 
 
 def install_clip_torchvision_compat() -> dict[str, Any]:
@@ -133,7 +135,6 @@ def install_clip_torchvision_compat() -> dict[str, Any]:
 def build_groundingdino(device: torch.device) -> tuple[Any, dict[str, Any]]:
     """Build the frozen local MMDetection model on the caller's local GPU."""
     from mmengine.config import Config
-    from mmengine.runner import load_checkpoint
     from mmdet.registry import MODELS
     import mmdet.datasets  # noqa: F401
     import mmdet.models  # noqa: F401
@@ -144,13 +145,18 @@ def build_groundingdino(device: torch.device) -> tuple[Any, dict[str, Any]]:
     cfg.model.backbone.init_cfg = None
     cfg.model.language_model.name = str(BERT)
     model = MODELS.build(cfg.model)
-    loaded = load_checkpoint(model, str(WEIGHT), map_location="cpu", strict=False)
+    # MMEngine 0.10 predates PyTorch 2.6's ``weights_only`` default.  This is
+    # a trusted, SHA-256-verified OpenMMLab checkpoint, so load its ordinary
+    # training dictionary explicitly and retain the state-dict audit below.
+    checkpoint = torch.load(str(WEIGHT), map_location="cpu", weights_only=False)
+    state_dict = checkpoint.get("state_dict", checkpoint) if isinstance(checkpoint, dict) else checkpoint
+    incompatible = model.load_state_dict(state_dict, strict=False)
     model.to(device).eval()
     model.cfg = cfg
     for parameter in model.parameters():
         parameter.requires_grad_(False)
-    missing = loaded.get("missing_keys", []) if isinstance(loaded, dict) else []
-    unexpected = loaded.get("unexpected_keys", []) if isinstance(loaded, dict) else []
+    missing = list(getattr(incompatible, "missing_keys", []))
+    unexpected = list(getattr(incompatible, "unexpected_keys", []))
     return model, {
         "config": str(CONFIG),
         "weight": str(WEIGHT),

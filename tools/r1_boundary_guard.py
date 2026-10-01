@@ -7,6 +7,8 @@ import json
 import sys
 from pathlib import Path
 
+from locatemot.paths import R1_ANCHOR, R1_RULE
+
 WORK_ROOT = Path(__file__).resolve().parents[1]
 if str(WORK_ROOT) not in sys.path:
     sys.path.insert(0, str(WORK_ROOT))
@@ -14,8 +16,8 @@ if str(WORK_ROOT) not in sys.path:
 from locatemot.models.r1_aligned_track_conditioning import ANCHOR_SHA256, load_l89e_rule, sha256_file  # noqa: E402
 from tools.r1_common import MANIFEST, MANIFEST_SHA, THREAD, check_manifest, file_meta, standard_flags, write_json  # noqa: E402
 
-ANCHOR = Path("/data1/LWR/vranlee/SERVER_ONLY/avis/LocateMOT_L89/outputs/l89/train/joint40/checkpoint_l89_epoch004.pt")
-SELECTION = Path("/data1/LWR/vranlee/SERVER_ONLY/avis/LocateMOT_L89E/outputs/l89e/dev/selection_attempt1/checkpoint_selection.json")
+ANCHOR = R1_ANCHOR
+SELECTION = R1_RULE
 
 
 def main() -> int:

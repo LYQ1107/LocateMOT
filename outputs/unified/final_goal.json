@@ -1,0 +1,26 @@
+{
+  "format": "locatemot-u-final-goal-v1",
+  "model_name": "UnifiedSpecTrack",
+  "name": "LOCATEMOT_U_FINAL_GOAL",
+  "official_test_labels_read": false,
+  "sha256": "b4f96ec59571ffd93bde68bbabf914d0da25a49d12951966aa5b067891a885b5",
+  "shared_components": [
+    "visual_foundation",
+    "object_representation",
+    "persistent_identity_dynamics",
+    "track_memory",
+    "association_decoder",
+    "online_state"
+  ],
+  "shared_non_head_fraction_min": 0.9,
+  "source": "/data2/user/LocateMOT/reports/unified/FINAL_GOAL.md",
+  "status": "frozen_u0_specification",
+  "tasks": [
+    "mot",
+    "ovmot",
+    "rmot",
+    "point",
+    "box",
+    "mask"
+  ]
+}

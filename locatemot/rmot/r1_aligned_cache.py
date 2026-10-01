@@ -19,6 +19,14 @@ from typing import Any, Iterable
 import numpy as np
 import torch
 
+from locatemot.paths import (
+    PROJECT_ROOT,
+    R1_L49_DATA,
+    R1_L69_ROOT,
+    R1_LANGUAGE_ROOT,
+    R1_MANIFEST,
+    R1_VISUAL_ROOT,
+)
 from locatemot.models.l82_grounding_reference import (
     boxes_to_reference_points,
     boxes_xyxy_to_normalized,
@@ -27,17 +35,14 @@ from locatemot.models.l82_grounding_reference import (
 )
 
 
-ROOT = Path("/data1/LWR/vranlee/SERVER_ONLY/avis/LocateMOT").resolve()
+ROOT = PROJECT_ROOT
 WORK_ROOT = Path(__file__).resolve().parents[2]
-R0A_ROOT = Path("/data1/LWR/vranlee/SERVER_ONLY/avis/LocateMOT_R0A").resolve()
-L69_ROOT = ROOT / "outputs/l69/attempt9/budget40_features/kitti"
-L49_DATA = ROOT / "outputs/l49/data"
-R0_VISUAL_MANIFEST = Path("/data2/usr_for_deadline/locatemot_r0a_visual_tokens_retry3_final").resolve()
-LANGUAGE_ROOTS = (
-    Path("/data1/LWR/vranlee/SERVER_ONLY/avis/LocateMOT_L89/outputs/l89/cache/language_tokens_retry1").resolve(),
-    Path("/data2/usr_for_deadline/locatemot_r0a_language_tokens_retry1").resolve(),
-)
-MANIFEST = ROOT / "outputs/l19/protocol/kitti_fast_eval_manifest.json"
+R0A_ROOT = PROJECT_ROOT
+L69_ROOT = R1_L69_ROOT
+L49_DATA = R1_L49_DATA
+R0_VISUAL_MANIFEST = R1_VISUAL_ROOT
+LANGUAGE_ROOTS = (R1_LANGUAGE_ROOT,)
+MANIFEST = R1_MANIFEST
 MANIFEST_SHA = "06da458b09aa3e61ce30a4f8b58a85ac31ef1a5a10d269abd64ae41cffd127fa"
 THREAD = "01a02014-fce8-7f51-8414-e7ed6ab44745"
 OBS_FIELDS = ("clip", "history_clip", "uidm_h", "geometry", "motion", "lifecycle", "objectness")
