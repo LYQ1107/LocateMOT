@@ -143,9 +143,19 @@ def prediction_arrays(result: Any) -> tuple[torch.Tensor, torch.Tensor]:
 
 
 def runtime_metadata(runtime: GroundingRuntime, *, config_path: Path = DEFAULT_CONFIG) -> dict[str, Any]:
+    def display_path(path: Path) -> str:
+        resolved = Path(path).resolve()
+        try:
+            return str(resolved.relative_to(PROJECT_ROOT))
+        except ValueError:
+            # Adapted checkpoints intentionally live in the isolated reference
+            # environment; preserve the absolute path instead of failing only
+            # while serializing an otherwise valid evaluation shard.
+            return str(resolved)
+
     return {
-        "config": str(Path(config_path).resolve().relative_to(PROJECT_ROOT)),
-        "checkpoint": str(runtime.checkpoint.resolve().relative_to(PROJECT_ROOT)),
+        "config": display_path(Path(config_path)),
+        "checkpoint": display_path(runtime.checkpoint),
         "checkpoint_sha256": runtime.checkpoint_sha256,
         "device": str(runtime.device),
         "missing_keys": list(runtime.missing_keys),

@@ -128,8 +128,8 @@ def run_worker(args: argparse.Namespace) -> int:
     all_records = frame_records()
     records = all_records[args.worker_index :: args.worker_count]
     runtime = load_grounding_runtime(
-        config_path=DEFAULT_CONFIG,
-        checkpoint=DEFAULT_CHECKPOINT,
+        config_path=Path(args.config),
+        checkpoint=Path(args.checkpoint),
         max_per_img=max(TOP_KS),
         device=f"cuda:{args.gpu}" if torch.cuda.is_available() else "cpu",
         training_contract=False,
@@ -192,7 +192,7 @@ def run_worker(args: argparse.Namespace) -> int:
         "target_count": target_count,
         "unique_physical_objects": len(unique_objects),
         "stats": stats,
-        "runtime": runtime_metadata(runtime),
+        "runtime": runtime_metadata(runtime, config_path=Path(args.config)),
         "elapsed_seconds": time.perf_counter() - started,
         "official_test_labels_read": False,
         "screening_gt_used": False,
@@ -285,6 +285,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--worker-index", type=int)
     parser.add_argument("--worker-count", type=int, default=1)
     parser.add_argument("--gpu", type=int, default=0)
+    parser.add_argument("--config", type=Path, default=DEFAULT_CONFIG)
+    parser.add_argument("--checkpoint", type=Path, default=DEFAULT_CHECKPOINT)
     parser.add_argument("--progress", type=int, default=100)
     parser.add_argument("--out", type=Path, required=True)
     parser.add_argument("--aggregate", action="store_true")

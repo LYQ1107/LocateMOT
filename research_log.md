@@ -664,3 +664,44 @@ Concise experimental log (latest first).
   universal track core work was started. The external-baseline state remains
   incomplete because only TempRMOT has real predictions/evaluation; DKGTrack
   and FlexHook public Baidu links require an authenticated download path.
+
+## LocateMOT-U U1-A — protocol correction, valid adaptation, and stop — 2026-10-01
+
+- The first eight-process launch was invalid because MMEngine's default
+  `--launcher none` left the processes outside DDP; it was stopped before any
+  formal evidence. A later exploratory FP32 run also used `frozen_stages=1`.
+  MMDetection's Swin implementation shows that value freezes patch embedding
+  and stage0 only, while the registered contract requires stages 0 and 1.
+  Those exploratory metrics are excluded from the final record.
+- Corrected hypothesis/protocol: a fixed legal-fit generic stream can repair
+  the foundation proposal localization while freezing Swin stages 0/1 and
+  BERT. The legal-fit stream has 3,606 rows and fixed `label 0 -> car`; the
+  split, vocabulary, official `FixScaleResize(800,1333)` pipeline, and all
+  denominators stayed unchanged. The valid run used
+  `frozen_stages=2`, BF16 AMP, eight-GPU PyTorch DDP, batch 2/GPU, and no
+  accumulation (global batch 16). The logged peak was 5,945 MB/GPU. A two-step
+  smoke passed before the full run.
+- A batch-2/two-step-accumulation attempt passed a one-step smoke but failed in
+  the full run with PyTorch's `expect_autograd_hooks_` DDP reducer assertion.
+  The smallest working fix was accumulation 1; this kept the recommended
+  microbatch 2 and did not alter the official input resolution. This failure
+  and the corrected smoke are retained in the adaptation report.
+- The valid schedule completed epochs 1, 2, 4, and 6, each formally evaluated
+  on the unchanged 4,201-image, 33,526-physical-unit scope. Top150
+  Recall@IoU0.50 (V1/V2) was foundation `0.0803/0.0669`, then
+  `0.8729/0.8515` (epoch1), `0.8873/0.8766` (epoch2),
+  `0.8945/0.8843` (epoch4), and `0.8938/0.8815` (epoch6). IoU0.25 reached
+  about `.99` in both domains, while epoch-6 IoU0.75 was `0.7215/0.6119`.
+  Size-stratum IoU0.50 was small `0.9136`, medium `0.9445`, and large
+  `0.7085`.
+- Training logs contain occasional `grad_norm: nan` values, but loss values
+  remained finite, all six checkpoints were written, and every formal shard
+  produced finite predictions. This telemetry is reported rather than
+  filtered. The final epoch-6 checkpoint SHA-256 is
+  `a1ff39f9c0bd59a5fd2b14968a528fc11e882b8fa6a3e85a9b64253a1cdc5ccc`.
+- Decision: the valid V1/V2 generic gate did not reach `.90/.90` after the
+  registered six-epoch maximum. Expression adaptation was not started because
+  it is downstream of the generic gate. Added the corrected adaptation report,
+  failure decomposition, and four valid formal JSONs. Final status is
+  `LOCATEMOT_U_BLOCKED_GENERIC_GATE_AFTER_MAX_ADAPTATION` with
+  `STOPPED_PENDING_SUPERVISOR_REVIEW`; U2 was not launched.

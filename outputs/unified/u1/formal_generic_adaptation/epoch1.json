@@ -1,0 +1,525 @@
+{
+  "fixed_vocabulary": "car . van . truck . bus . tram . pedestrian . person . cyclist . bicycle . motorcycle .",
+  "format": "locatemot-u-u1-formal-generic-gate-v1",
+  "gate_goal": "Top150 recall >= 0.90 at IoU .25/.50/.75 for both V1 and V2",
+  "gate_pass": false,
+  "image_count": 4201,
+  "main_top150": {
+    "0.25": {
+      "hit": 33202,
+      "recall": 0.990335858736503,
+      "total": 33526
+    },
+    "0.5": {
+      "hit": 28884,
+      "recall": 0.8615402970828611,
+      "total": 33526
+    },
+    "0.75": {
+      "hit": 16183,
+      "recall": 0.4826999940344807,
+      "total": 33526
+    }
+  },
+  "metrics": {
+    "large": {
+      "100": {
+        "0.25": {
+          "hit": 6826,
+          "recall": 0.9884158702577469,
+          "total": 6906
+        },
+        "0.5": {
+          "hit": 4704,
+          "recall": 0.6811468288444831,
+          "total": 6906
+        },
+        "0.75": {
+          "hit": 2872,
+          "recall": 0.41587025774688674,
+          "total": 6906
+        }
+      },
+      "150": {
+        "0.25": {
+          "hit": 6886,
+          "recall": 0.9971039675644368,
+          "total": 6906
+        },
+        "0.5": {
+          "hit": 4793,
+          "recall": 0.6940341731827396,
+          "total": 6906
+        },
+        "0.75": {
+          "hit": 3035,
+          "recall": 0.4394729220967275,
+          "total": 6906
+        }
+      },
+      "300": {
+        "0.25": {
+          "hit": 6904,
+          "recall": 0.9997103967564437,
+          "total": 6906
+        },
+        "0.5": {
+          "hit": 4850,
+          "recall": 0.702287865624095,
+          "total": 6906
+        },
+        "0.75": {
+          "hit": 3328,
+          "recall": 0.4818997972777295,
+          "total": 6906
+        }
+      },
+      "900": {
+        "0.25": {
+          "hit": 6904,
+          "recall": 0.9997103967564437,
+          "total": 6906
+        },
+        "0.5": {
+          "hit": 4889,
+          "recall": 0.7079351288734433,
+          "total": 6906
+        },
+        "0.75": {
+          "hit": 3770,
+          "recall": 0.545902114103678,
+          "total": 6906
+        }
+      }
+    },
+    "medium": {
+      "100": {
+        "0.25": {
+          "hit": 17184,
+          "recall": 0.9953084274543875,
+          "total": 17265
+        },
+        "0.5": {
+          "hit": 15941,
+          "recall": 0.9233130611062844,
+          "total": 17265
+        },
+        "0.75": {
+          "hit": 9236,
+          "recall": 0.5349551114972487,
+          "total": 17265
+        }
+      },
+      "150": {
+        "0.25": {
+          "hit": 17220,
+          "recall": 0.9973935708079931,
+          "total": 17265
+        },
+        "0.5": {
+          "hit": 16087,
+          "recall": 0.9317694758181292,
+          "total": 17265
+        },
+        "0.75": {
+          "hit": 9556,
+          "recall": 0.5534897190848538,
+          "total": 17265
+        }
+      },
+      "300": {
+        "0.25": {
+          "hit": 17247,
+          "recall": 0.9989574283231972,
+          "total": 17265
+        },
+        "0.5": {
+          "hit": 16286,
+          "recall": 0.943295684911671,
+          "total": 17265
+        },
+        "0.75": {
+          "hit": 10069,
+          "recall": 0.583203011873733,
+          "total": 17265
+        }
+      },
+      "900": {
+        "0.25": {
+          "hit": 17257,
+          "recall": 0.9995366348103099,
+          "total": 17265
+        },
+        "0.5": {
+          "hit": 16444,
+          "recall": 0.9524471474080509,
+          "total": 17265
+        },
+        "0.75": {
+          "hit": 10793,
+          "recall": 0.6251375615406892,
+          "total": 17265
+        }
+      }
+    },
+    "overall": {
+      "100": {
+        "0.25": {
+          "hit": 33041,
+          "recall": 0.9855336157012468,
+          "total": 33526
+        },
+        "0.5": {
+          "hit": 28484,
+          "recall": 0.8496092584859513,
+          "total": 33526
+        },
+        "0.75": {
+          "hit": 15577,
+          "recall": 0.46462447056016226,
+          "total": 33526
+        }
+      },
+      "150": {
+        "0.25": {
+          "hit": 33202,
+          "recall": 0.990335858736503,
+          "total": 33526
+        },
+        "0.5": {
+          "hit": 28884,
+          "recall": 0.8615402970828611,
+          "total": 33526
+        },
+        "0.75": {
+          "hit": 16183,
+          "recall": 0.4826999940344807,
+          "total": 33526
+        }
+      },
+      "300": {
+        "0.25": {
+          "hit": 33305,
+          "recall": 0.9934081011752073,
+          "total": 33526
+        },
+        "0.5": {
+          "hit": 29325,
+          "recall": 0.8746942671359542,
+          "total": 33526
+        },
+        "0.75": {
+          "hit": 17195,
+          "recall": 0.5128855216846626,
+          "total": 33526
+        }
+      },
+      "900": {
+        "0.25": {
+          "hit": 33357,
+          "recall": 0.9949591361928056,
+          "total": 33526
+        },
+        "0.5": {
+          "hit": 29708,
+          "recall": 0.8861182365924953,
+          "total": 33526
+        },
+        "0.75": {
+          "hit": 18635,
+          "recall": 0.5558372606335381,
+          "total": 33526
+        }
+      }
+    },
+    "refer_kitti_v1": {
+      "100": {
+        "0.25": {
+          "hit": 15559,
+          "recall": 0.9886890766982271,
+          "total": 15737
+        },
+        "0.5": {
+          "hit": 13609,
+          "recall": 0.8647772764821757,
+          "total": 15737
+        },
+        "0.75": {
+          "hit": 8098,
+          "recall": 0.5145834657177353,
+          "total": 15737
+        }
+      },
+      "150": {
+        "0.25": {
+          "hit": 15616,
+          "recall": 0.9923111139353117,
+          "total": 15737
+        },
+        "0.5": {
+          "hit": 13737,
+          "recall": 0.8729109741373833,
+          "total": 15737
+        },
+        "0.75": {
+          "hit": 8348,
+          "recall": 0.5304695939505624,
+          "total": 15737
+        }
+      },
+      "300": {
+        "0.25": {
+          "hit": 15653,
+          "recall": 0.9946622609137701,
+          "total": 15737
+        },
+        "0.5": {
+          "hit": 13885,
+          "recall": 0.8823155620512169,
+          "total": 15737
+        },
+        "0.75": {
+          "hit": 8776,
+          "recall": 0.5576666454851623,
+          "total": 15737
+        }
+      },
+      "900": {
+        "0.25": {
+          "hit": 15673,
+          "recall": 0.9959331511723962,
+          "total": 15737
+        },
+        "0.5": {
+          "hit": 14011,
+          "recall": 0.8903221706805617,
+          "total": 15737
+        },
+        "0.75": {
+          "hit": 9349,
+          "recall": 0.5940776513948021,
+          "total": 15737
+        }
+      }
+    },
+    "refer_kitti_v2": {
+      "100": {
+        "0.25": {
+          "hit": 17482,
+          "recall": 0.9827421440215863,
+          "total": 17789
+        },
+        "0.5": {
+          "hit": 14875,
+          "recall": 0.8361909044915398,
+          "total": 17789
+        },
+        "0.75": {
+          "hit": 7479,
+          "recall": 0.420428354601158,
+          "total": 17789
+        }
+      },
+      "150": {
+        "0.25": {
+          "hit": 17586,
+          "recall": 0.9885884535387037,
+          "total": 17789
+        },
+        "0.5": {
+          "hit": 15147,
+          "recall": 0.851481252459385,
+          "total": 17789
+        },
+        "0.75": {
+          "hit": 7835,
+          "recall": 0.44044072179436733,
+          "total": 17789
+        }
+      },
+      "300": {
+        "0.25": {
+          "hit": 17652,
+          "recall": 0.9922986115014897,
+          "total": 17789
+        },
+        "0.5": {
+          "hit": 15440,
+          "recall": 0.8679521052335714,
+          "total": 17789
+        },
+        "0.75": {
+          "hit": 8419,
+          "recall": 0.4732699983135646,
+          "total": 17789
+        }
+      },
+      "900": {
+        "0.25": {
+          "hit": 17684,
+          "recall": 0.994097475968295,
+          "total": 17789
+        },
+        "0.5": {
+          "hit": 15697,
+          "recall": 0.8823992354826016,
+          "total": 17789
+        },
+        "0.75": {
+          "hit": 9286,
+          "recall": 0.5220079824610715,
+          "total": 17789
+        }
+      }
+    },
+    "small": {
+      "100": {
+        "0.25": {
+          "hit": 9031,
+          "recall": 0.9653661143773383,
+          "total": 9355
+        },
+        "0.5": {
+          "hit": 7839,
+          "recall": 0.8379476215927312,
+          "total": 9355
+        },
+        "0.75": {
+          "hit": 3469,
+          "recall": 0.3708177445216462,
+          "total": 9355
+        }
+      },
+      "150": {
+        "0.25": {
+          "hit": 9096,
+          "recall": 0.9723142704436131,
+          "total": 9355
+        },
+        "0.5": {
+          "hit": 8004,
+          "recall": 0.8555852485301978,
+          "total": 9355
+        },
+        "0.75": {
+          "hit": 3592,
+          "recall": 0.3839657936932122,
+          "total": 9355
+        }
+      },
+      "300": {
+        "0.25": {
+          "hit": 9154,
+          "recall": 0.9785141635489043,
+          "total": 9355
+        },
+        "0.5": {
+          "hit": 8189,
+          "recall": 0.8753607696419027,
+          "total": 9355
+        },
+        "0.75": {
+          "hit": 3798,
+          "recall": 0.4059861036878675,
+          "total": 9355
+        }
+      },
+      "900": {
+        "0.25": {
+          "hit": 9196,
+          "recall": 0.983003741314805,
+          "total": 9355
+        },
+        "0.5": {
+          "hit": 8375,
+          "recall": 0.8952431854623196,
+          "total": 9355
+        },
+        "0.75": {
+          "hit": 4072,
+          "recall": 0.4352752538749332,
+          "total": 9355
+        }
+      }
+    }
+  },
+  "official_test_labels_read": false,
+  "protocol": {
+    "deduplication": "one label row per dataset/video/frame/track_id",
+    "iou_thresholds": [
+      0.25,
+      0.5,
+      0.75
+    ],
+    "physical_gt_unit": "dataset/video/frame/track_id",
+    "query_independent": true,
+    "size_bins_px": {
+      "large": "height>96",
+      "medium": "32<=height<=96",
+      "small": "height<32"
+    },
+    "split_parts": [
+      "calibration",
+      "validation"
+    ],
+    "top_k_diagnostic": [
+      100,
+      300,
+      900
+    ],
+    "top_k_main": 150
+  },
+  "runtime": {
+    "checkpoint": "/data2/user/reference_envs/u1_generic_adaptation_20261001/valid_work_bf16_batch2_frozen01_noacc/epoch_1.pth",
+    "checkpoint_sha256": "ef7491ec576fc192b0ca43a14ad352fa83f34bdab446aa73500600a531147084",
+    "config": "/data2/user/reference_envs/u1_generic_adaptation_20261001/valid_work_bf16_batch2_frozen01_noacc/u1_generic_adaptation.py",
+    "device": "cuda:0",
+    "missing_keys": [],
+    "preprocessing_contract": {
+      "bgr_to_rgb": true,
+      "box_coordinate_contract": "model postprocess restores boxes to ori_shape",
+      "data_preprocessor": "DetDataPreprocessor",
+      "loader": "LoadImageFromFile",
+      "pack": "PackDetInputs",
+      "resize": {
+        "keep_ratio": true,
+        "scale": [
+          800,
+          1333
+        ],
+        "type": "FixScaleResize"
+      }
+    },
+    "unexpected_keys": []
+  },
+  "screening_gt_used": false,
+  "shards": [
+    "/data2/user/reference_envs/u1_generic_adaptation_20261001/formal_generic_valid_batch2_frozen01_epoch1/shards/shard_0.json",
+    "/data2/user/reference_envs/u1_generic_adaptation_20261001/formal_generic_valid_batch2_frozen01_epoch1/shards/shard_1.json",
+    "/data2/user/reference_envs/u1_generic_adaptation_20261001/formal_generic_valid_batch2_frozen01_epoch1/shards/shard_2.json",
+    "/data2/user/reference_envs/u1_generic_adaptation_20261001/formal_generic_valid_batch2_frozen01_epoch1/shards/shard_3.json",
+    "/data2/user/reference_envs/u1_generic_adaptation_20261001/formal_generic_valid_batch2_frozen01_epoch1/shards/shard_4.json",
+    "/data2/user/reference_envs/u1_generic_adaptation_20261001/formal_generic_valid_batch2_frozen01_epoch1/shards/shard_5.json",
+    "/data2/user/reference_envs/u1_generic_adaptation_20261001/formal_generic_valid_batch2_frozen01_epoch1/shards/shard_6.json",
+    "/data2/user/reference_envs/u1_generic_adaptation_20261001/formal_generic_valid_batch2_frozen01_epoch1/shards/shard_7.json"
+  ],
+  "status": "FORMAL_COMPLETE",
+  "target_count": 33526,
+  "training_contract": {
+    "bert_frozen": true,
+    "checkpoint_source": "U1-A BF16 DDP run from foundation checkpoint",
+    "effective_global_batch": 16,
+    "gradient_accumulation_steps": 1,
+    "microbatch_per_gpu": 2,
+    "official_input_resolution": [
+      800,
+      1333
+    ],
+    "swin_frozen_stages": [
+      0,
+      1
+    ]
+  },
+  "training_launched": false,
+  "unique_physical_objects": 5992
+}

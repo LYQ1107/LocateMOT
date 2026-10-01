@@ -1,0 +1,19 @@
+{
+  "format": "locatemot-u-u1-category-mapping-v1",
+  "generic_vocabulary": [
+    "car",
+    "van",
+    "truck",
+    "bus",
+    "tram",
+    "pedestrian",
+    "person",
+    "cyclist",
+    "bicycle",
+    "motorcycle"
+  ],
+  "fit_label_mapping": {
+    "0": "car"
+  },
+  "policy": "fixed before adaptation; no dev-result vocabulary edits"
+}

@@ -1,34 +1,88 @@
 {
+  "adaptation": {
+    "bert_frozen": true,
+    "category_mapping": "outputs/unified/u1/category_mapping.json",
+    "dataset": "Refer-KITTI legal fit only",
+    "effective_global_batch": 16,
+    "epochs_formally_evaluated": [
+      1,
+      2,
+      4,
+      6
+    ],
+    "final_checkpoint_sha256": "a1ff39f9c0bd59a5fd2b14968a528fc11e882b8fa6a3e85a9b64253a1cdc5ccc",
+    "final_overall_top150_iou050": 0.8872815128556941,
+    "final_v1_top150_iou050": 0.8938171188917837,
+    "final_v2_top150_iou050": 0.881499803249199,
+    "fit_rows": 3606,
+    "formal_gate_goal": "V1 and V2 Top150 Recall@IoU0.50 >= 0.90",
+    "formal_gate_pass": false,
+    "gpu_count": 8,
+    "grad_norm_nan_observed": true,
+    "gradient_accumulation_steps": 1,
+    "invalid_exploratory_runs_excluded": [
+      "initial eight-process launch without --launcher pytorch",
+      "FP32 run with frozen_stages=1 (stage1 was trainable)",
+      "batch2 with accumulation2 hit PyTorch expect_autograd_hooks_ reducer assertion"
+    ],
+    "launcher": "pytorch",
+    "loss_finite": true,
+    "microbatch_per_gpu": 2,
+    "official_test_labels_read": false,
+    "peak_memory_mb_per_gpu": 5945,
+    "precision": "bfloat16",
+    "screening_gt_used": false,
+    "status": "BLOCKED_AFTER_MAX_EPOCH6",
+    "swin_frozen_stages": [
+      0,
+      1
+    ]
+  },
   "artifacts": {
     "architecture": "reports/unified/ARCHITECTURE.md",
     "data_manifest": "outputs/unified/protocol/data_manifest.json",
     "data_provenance": "reports/unified/DATA_PROVENANCE.md",
+    "external_baseline_legal_dev": "reports/unified/EXTERNAL_BASELINE_LEGAL_DEV.md",
+    "external_baseline_real_eval": "reports/unified/EXTERNAL_BASELINE_REAL_EVAL.md",
+    "external_baseline_temprmot": "outputs/unified/external_baselines/temprmot_legal_v1.json",
     "external_sanity": "reports/unified/EXTERNAL_BASELINE_SANITY.md",
     "final_goal": "reports/unified/FINAL_GOAL.md",
+    "formal_expression_gate": "outputs/unified/u1_formal_expression_gate.json",
+    "formal_expression_gate_directory": "outputs/unified/u1/formal_expression_grounding_gate/result.json",
+    "formal_expression_gate_report": "reports/unified/U1_EXPRESSION_GROUNDING_GATE.md",
+    "formal_generic_gate": "outputs/unified/u1_formal_generic_gate.json",
+    "formal_generic_gate_directory": "outputs/unified/u1/formal_generic_proposal_gate/result.json",
+    "formal_generic_gate_report": "reports/unified/U1_GENERIC_PROPOSAL_GATE.md",
     "foundation_asset": "outputs/unified/protocol/foundation_asset.json",
+    "foundation_checkpoint_audit": "outputs/unified/protocol/foundation_checkpoint_audit.json",
+    "foundation_checkpoint_audit_report": "reports/unified/FOUNDATION_CHECKPOINT_AUDIT.md",
     "legal_split": "outputs/unified/protocol/legal_video_split_v2.json",
+    "legal_split_audit": "reports/unified/LEGAL_SPLIT_AUDIT.md",
     "open_source_audit": "reports/unified/OPEN_SOURCE_TRAINING_AUDIT.md",
     "parameter_sharing": "outputs/unified/parameter_sharing_smoke.json",
     "proposal_diagnostic": "outputs/unified/u1_proposal_diagnostic.json",
     "proposal_gate_generic_top900": "outputs/unified/u1_proposal_gate_generic_classes_top900.json",
     "proposal_gate_top900": "outputs/unified/u1_proposal_gate_top900.json",
     "skeleton_smoke": "outputs/unified/skeleton_smoke.json",
-    "u1_foundation_smoke": "outputs/unified/u1_foundation_smoke.json",
-    "legal_split_audit": "reports/unified/LEGAL_SPLIT_AUDIT.md",
     "u0r_reproducibility": "reports/unified/U0R_REPRODUCIBILITY.md",
-    "foundation_checkpoint_audit": "outputs/unified/protocol/foundation_checkpoint_audit.json",
-    "foundation_checkpoint_audit_report": "reports/unified/FOUNDATION_CHECKPOINT_AUDIT.md",
+    "u1_adaptation_config": "tools/unified/configs/u1_generic_adaptation.py",
+    "u1_adaptation_launcher": "tools/unified/train_u1_generic_adaptation.py",
+    "u1_category_mapping": "outputs/unified/u1/category_mapping.json",
+    "u1_failure_decomposition": "reports/unified/U1_FAILURE_DECOMPOSITION.md",
+    "u1_foundation_smoke": "outputs/unified/u1_foundation_smoke.json",
+    "u1_generic_adaptation_epoch1": "outputs/unified/u1/formal_generic_adaptation/epoch1.json",
+    "u1_generic_adaptation_epoch2": "outputs/unified/u1/formal_generic_adaptation/epoch2.json",
+    "u1_generic_adaptation_epoch4": "outputs/unified/u1/formal_generic_adaptation/epoch4.json",
+    "u1_generic_adaptation_epoch6": "outputs/unified/u1/formal_generic_adaptation/epoch6.json",
+    "u1_generic_adaptation_report": "reports/unified/U1_GENERIC_ADAPTATION.md",
+    "u1_generic_adaptation_valid_epoch1": "outputs/unified/u1/formal_generic_adaptation/epoch1.json",
+    "u1_generic_adaptation_valid_epoch2": "outputs/unified/u1/formal_generic_adaptation/epoch2.json",
+    "u1_generic_adaptation_valid_epoch4": "outputs/unified/u1/formal_generic_adaptation/epoch4.json",
+    "u1_generic_adaptation_valid_epoch6": "outputs/unified/u1/formal_generic_adaptation/epoch6.json",
     "u1_preprocessing_contract": "reports/unified/U1_PREPROCESSING_CONTRACT.md",
     "u1_preprocessing_equivalence": "outputs/unified/u1_preprocessing_equivalence.json",
-    "external_baseline_temprmot": "outputs/unified/external_baselines/temprmot_legal_v1.json",
-    "external_baseline_legal_dev": "reports/unified/EXTERNAL_BASELINE_LEGAL_DEV.md",
-    "formal_generic_gate": "outputs/unified/u1_formal_generic_gate.json",
-    "formal_generic_gate_report": "reports/unified/U1_GENERIC_PROPOSAL_GATE.md",
-    "formal_generic_gate_directory": "outputs/unified/u1/formal_generic_proposal_gate/result.json",
-    "formal_expression_gate": "outputs/unified/u1_formal_expression_gate.json",
-    "formal_expression_gate_report": "reports/unified/U1_EXPRESSION_GROUNDING_GATE.md",
-    "formal_expression_gate_directory": "outputs/unified/u1/formal_expression_grounding_gate/result.json",
-    "external_baseline_real_eval": "reports/unified/EXTERNAL_BASELINE_REAL_EVAL.md"
+    "u1_valid_training_log": "/data2/user/reference_envs/u1_generic_adaptation_20261001/train_valid_bf16_batch2_frozen01_noacc.log",
+    "u1_valid_work_dir": "/data2/user/reference_envs/u1_generic_adaptation_20261001/valid_work_bf16_batch2_frozen01_noacc"
   },
   "branch": "codex/u0r-u1r-foundation-repair-20261001",
   "completed": [
@@ -41,28 +95,103 @@
     "U1.0_swinb_assets_acquired",
     "U1.1_mmdetection_adapter_forward_smoke",
     "U1.2_label_free_proposal_gate_diagnostic",
-    "U1.3_prompt_and_selection_repair_diagnostic"
+    "U1.3_prompt_and_selection_repair_diagnostic",
+    "U1.4_formal_measurement_contract",
+    "U1.5_generic_adaptation_epochs_1_2_4_6",
+    "U1.6_failure_decomposition_and_stop"
   ],
-  "current": "U1_controlled_adaptation_or_blocked_external_baseline",
+  "current": "STOPPED_PENDING_SUPERVISOR_REVIEW",
+  "external_baseline": {
+    "formal_gate": false,
+    "hota_combined": 94.679,
+    "idf1_combined": 99.465,
+    "method": "TempRMOT",
+    "mota_combined": 98.925,
+    "second_method_required": true,
+    "sequence_count": 2,
+    "status": "REAL_PREDICTION_AND_EVALUATION_COMPLETE_ONE_METHOD",
+    "summary": "outputs/unified/external_baselines/temprmot_legal_v1.json"
+  },
   "external_sanity": {
     "compile_pass": 10,
     "compile_total": 10,
     "help_pass": 1,
     "help_total": 10,
-    "training_launched": false,
+    "incomplete_methods": [
+      "DKGTrack",
+      "FlexHook"
+    ],
+    "legal_dev_sequences": 2,
+    "official_test_labels_read": false,
     "real_prediction_methods": [
       "TempRMOT"
     ],
     "real_trackeval_methods": [
       "TempRMOT"
     ],
-    "legal_dev_sequences": 2,
-    "official_test_labels_read": false,
     "screening_gt_used": false,
-    "incomplete_methods": [
-      "DKGTrack",
-      "FlexHook"
-    ]
+    "training_launched": false
+  },
+  "formal_expression_gate": {
+    "gate_pass": false,
+    "missing_source_target_count": 0,
+    "official_test_labels_read": false,
+    "query_frame_count": 7160,
+    "status": "FORMAL_COMPLETE_REPRESENTATIVE_FRAME_PER_QUERY",
+    "target_reference_count": 7199,
+    "v1_top1_iou050": 0.0029585798816568047,
+    "v2_top1_iou050": 0.0027594665031427257,
+    "valid_target_count": 7199
+  },
+  "formal_generic_gate": {
+    "adaptation_final": {
+      "checkpoint": "outputs/unified/u1/formal_generic_adaptation/epoch6.json",
+      "checkpoint_sha256": "a1ff39f9c0bd59a5fd2b14968a528fc11e882b8fa6a3e85a9b64253a1cdc5ccc",
+      "gate_pass": false,
+      "max_epoch_reached": 6,
+      "overall_top150": {
+        "0.25": 0.9922746525085009,
+        "0.50": 0.8872815128556941,
+        "0.75": 0.6633657459881883
+      },
+      "overall_top150_iou050": 0.8872815128556941,
+      "v1_top150": {
+        "0.25": 0.9929465590646248,
+        "0.50": 0.8938171188917837,
+        "0.75": 0.7215479443350067
+      },
+      "v1_top150_iou050": 0.8938171188917837,
+      "v2_top150": {
+        "0.25": 0.9916802518410254,
+        "0.50": 0.881499803249199,
+        "0.75": 0.6118949912867503
+      },
+      "v2_top150_iou050": 0.881499803249199
+    },
+    "gate_pass": false,
+    "image_count": 4201,
+    "main_metric": "physical target recall; Top150; official pipeline",
+    "official_test_labels_read": false,
+    "status": "FORMAL_COMPLETE",
+    "target_count": 33526,
+    "unique_physical_objects": 5992,
+    "v1_top150_iou025": 0.5308508610281503,
+    "v1_top150_iou050": 0.08025671983224249,
+    "v1_top150_iou075": 0.0045116604181228955,
+    "v2_top150_iou025": 0.4940131541964135,
+    "v2_top150_iou050": 0.06689527235932317,
+    "v2_top150_iou075": 0.006239811119230986
+  },
+  "formal_measurement": {
+    "adaptation_final_checkpoint_sha256": "a1ff39f9c0bd59a5fd2b14968a528fc11e882b8fa6a3e85a9b64253a1cdc5ccc",
+    "adaptation_final_status": "FAIL_GENERIC_GATE_AFTER_EPOCH6",
+    "adaptation_protocol": "BF16; frozen Swin stages 0/1; BERT frozen; batch2/GPU; DDP 8 GPUs; accumulation1",
+    "adaptation_training_started": true,
+    "checkpoint_sha256": "55949c9c0f46339a73b415334765615d491ee6ed739ed3f568142b7fc5581143",
+    "code_commit": "75264a762824469725ff963f99d0fef42691af9d",
+    "preprocessing": "official MMDetection LoadImageFromFile/FixScaleResize/PackDetInputs/DetDataPreprocessor",
+    "split_sha256": "8ee806048ccbb227919f27edf68cf0bebc1fa50f824a8108878fc5f39fc6e1c0",
+    "training_started": false
   },
   "format": "locatemot-u-status-v1",
   "foundation_smoke": {
@@ -73,10 +202,44 @@
     "status": "pass",
     "video": "0004"
   },
-  "next": "U1_generic_foundation_adaptation_after_formal_failure",
+  "fresh_clone_reproducibility": {
+    "clone_path": "/data2/user/locatemot_u_repro_check_20261001_r1",
+    "initial_failure": "locatemot/unified/data was hidden by the broad data/ ignore rule",
+    "official_test_labels_read": false,
+    "remote_commit": "26f9c989c8b13773d681bbe6962b77e73a0026bd",
+    "status": "PASS"
+  },
+  "legal_split": {
+    "path": "outputs/unified/protocol/legal_video_split_v2.json",
+    "sha256": "8ee806048ccbb227919f27edf68cf0bebc1fa50f824a8108878fc5f39fc6e1c0",
+    "status": "FROZEN_BEFORE_U1_FORMAL_EVALUATION",
+    "v2_source_target_id_missing_references": 157
+  },
+  "next": "supervisor_review_before_u2",
   "official_test_labels_read": false,
+  "phase_status": {
+    "U0_EXTERNAL_BASELINE": "INCOMPLETE_ONE_METHOD_REAL_TWO_REQUIRED",
+    "U0_LEGAL_SCOPE": "PASS_FRESH_CLONE_AND_SPLIT_FROZEN",
+    "U0_OPEN_SOURCE_AUDIT": "PASS",
+    "U0_UNIFIED_SKELETON": "PASS_API_ONLY",
+    "U1_FORMAL_GENERIC_GATE": "FAIL_RECALL_BELOW_0.90_AFTER_EPOCH6",
+    "U1_FORMAL_GROUNDING_GATE": "FAIL_RECALL_BELOW_0.75_FOUNDATION_ONLY_ADAPTATION_BLOCKED",
+    "U1_FOUNDATION_ASSET": "PASS",
+    "U1_FOUNDATION_LOAD": "CONDITIONAL_PASS",
+    "U1_MEASUREMENT_CONTRACT": "PASS",
+    "U1_PROPOSAL_DIAGNOSTIC": "INCONCLUSIVE",
+    "U1_TRAINING": "BLOCKED_GENERIC_GATE_AFTER_MAX_6_EPOCHS"
+  },
+  "preprocessing_equivalence": {
+    "image_count": 10,
+    "max_box_abs_diff": 0.0,
+    "max_score_abs_diff": 0.0,
+    "official_test_labels_read": false,
+    "status": "PASS"
+  },
   "project_root": "/data2/user/LocateMOT",
   "proposal_diagnostic": {
+    "formal_gate": false,
     "generic_top900_iou_at_025": 0.9,
     "generic_top900_iou_at_050": 0.18,
     "generic_top900_mean_best_iou": 0.3634762150586171,
@@ -86,90 +249,12 @@
     "mean_best_score": 0.013120486005209386,
     "official_test_labels_read": false,
     "rows": 16,
-    "formal_gate": false,
     "target_boxes": 50,
     "top900_iou_at_050": 0.1,
     "top900_mean_best_iou": 0.33412939560264066
   },
   "screening_gt_used": false,
   "stage": "U0R_U1R",
-  "phase_status": {
-    "U0_EXTERNAL_BASELINE": "INCOMPLETE_ONE_METHOD_REAL_TWO_REQUIRED",
-    "U0_LEGAL_SCOPE": "PASS_FRESH_CLONE_AND_SPLIT_FROZEN",
-    "U0_OPEN_SOURCE_AUDIT": "PASS",
-    "U0_UNIFIED_SKELETON": "PASS_API_ONLY",
-    "U1_FOUNDATION_ASSET": "PASS",
-    "U1_FOUNDATION_LOAD": "CONDITIONAL_PASS",
-    "U1_FORMAL_GENERIC_GATE": "FAIL_RECALL_BELOW_0.90",
-    "U1_FORMAL_GROUNDING_GATE": "FAIL_RECALL_BELOW_0.75",
-    "U1_PROPOSAL_DIAGNOSTIC": "INCONCLUSIVE",
-    "U1_TRAINING": "NOT_STARTED",
-    "U1_MEASUREMENT_CONTRACT": "PASS"
-  },
-  "status": "U0R_IN_PROGRESS",
-  "unified_checkpoint_sha256": null,
-  "legal_split": {
-    "path": "outputs/unified/protocol/legal_video_split_v2.json",
-    "sha256": "8ee806048ccbb227919f27edf68cf0bebc1fa50f824a8108878fc5f39fc6e1c0",
-    "status": "FROZEN_BEFORE_U1_FORMAL_EVALUATION",
-    "v2_source_target_id_missing_references": 157
-  },
-  "fresh_clone_reproducibility": {
-    "status": "PASS",
-    "remote_commit": "26f9c989c8b13773d681bbe6962b77e73a0026bd",
-    "clone_path": "/data2/user/locatemot_u_repro_check_20261001_r1",
-    "initial_failure": "locatemot/unified/data was hidden by the broad data/ ignore rule",
-    "official_test_labels_read": false
-  },
-  "preprocessing_equivalence": {
-    "status": "PASS",
-    "image_count": 10,
-    "max_box_abs_diff": 0.0,
-    "max_score_abs_diff": 0.0,
-    "official_test_labels_read": false
-  },
-  "external_baseline": {
-    "status": "REAL_PREDICTION_AND_EVALUATION_COMPLETE_ONE_METHOD",
-    "method": "TempRMOT",
-    "summary": "outputs/unified/external_baselines/temprmot_legal_v1.json",
-    "hota_combined": 94.679,
-    "mota_combined": 98.925,
-    "idf1_combined": 99.465,
-    "sequence_count": 2,
-    "formal_gate": false,
-    "second_method_required": true
-  },
-  "formal_generic_gate": {
-    "status": "FORMAL_COMPLETE",
-    "gate_pass": false,
-    "image_count": 4201,
-    "target_count": 33526,
-    "unique_physical_objects": 5992,
-    "v1_top150_iou025": 0.5308508610281503,
-    "v1_top150_iou050": 0.08025671983224249,
-    "v1_top150_iou075": 0.0045116604181228955,
-    "v2_top150_iou025": 0.4940131541964135,
-    "v2_top150_iou050": 0.06689527235932317,
-    "v2_top150_iou075": 0.006239811119230986,
-    "main_metric": "physical target recall; Top150; official pipeline",
-    "official_test_labels_read": false
-  },
-  "formal_expression_gate": {
-    "status": "FORMAL_COMPLETE_REPRESENTATIVE_FRAME_PER_QUERY",
-    "gate_pass": false,
-    "query_frame_count": 7160,
-    "target_reference_count": 7199,
-    "valid_target_count": 7199,
-    "missing_source_target_count": 0,
-    "v1_top1_iou050": 0.0029585798816568047,
-    "v2_top1_iou050": 0.0027594665031427257,
-    "official_test_labels_read": false
-  },
-  "formal_measurement": {
-    "code_commit": "75264a762824469725ff963f99d0fef42691af9d",
-    "split_sha256": "8ee806048ccbb227919f27edf68cf0bebc1fa50f824a8108878fc5f39fc6e1c0",
-    "checkpoint_sha256": "55949c9c0f46339a73b415334765615d491ee6ed739ed3f568142b7fc5581143",
-    "preprocessing": "official MMDetection LoadImageFromFile/FixScaleResize/PackDetInputs/DetDataPreprocessor",
-    "training_started": false
-  }
+  "status": "LOCATEMOT_U_BLOCKED_GENERIC_GATE_AFTER_MAX_ADAPTATION",
+  "unified_checkpoint_sha256": "a1ff39f9c0bd59a5fd2b14968a528fc11e882b8fa6a3e85a9b64253a1cdc5ccc"
 }

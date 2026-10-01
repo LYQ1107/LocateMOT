@@ -33,3 +33,9 @@ The three numbers in each cell are Recall@IoU0.25, Recall@IoU0.50, and Recall@Io
 - V2: IoU0.25=0.4940, IoU0.50=0.0669, IoU0.75=0.0062
 
 The measured IoU0.50 recalls are far below the internal 0.80 adaptation early-pass and the final 0.90 gate. No U2 or tracking-core work is authorized by this result. Raw worker shards remain outside the repository.
+
+This is the unadapted foundation measurement.  The controlled U1-A
+adaptation checkpoints and the final stop decision are recorded separately in
+`reports/unified/U1_GENERIC_ADAPTATION.md` and
+`reports/unified/U1_FAILURE_DECOMPOSITION.md`; the legal split, vocabulary,
+and inference contract are unchanged.
