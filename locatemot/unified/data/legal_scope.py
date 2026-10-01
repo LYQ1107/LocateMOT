@@ -9,18 +9,21 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Iterable
 
+# The forbidden set is the only video boundary used by unified adapters.  The
+# partition below is the v2 split frozen before formal U1 evaluation.
 FORBIDDEN_VIDEOS = frozenset({"0005", "0011", "0013", "0019"})
+LEGAL_SPLIT_VERSION = "v2"
 LEGAL_SPLITS = {
     "refer_kitti_v1": {
-        "fit": ("0001", "0002", "0003", "0006", "0007", "0008", "0009", "0010", "0012", "0014", "0015", "0020"),
-        "calibration": ("0016",),
-        "validation": ("0004", "0018"),
+        "fit": ("0002", "0003", "0004", "0006", "0010", "0012", "0014", "0015", "0016"),
+        "calibration": ("0001", "0007", "0020"),
+        "validation": ("0008", "0009", "0018"),
         "official_eval_reserved": ("0005", "0011", "0013"),
     },
     "refer_kitti_v2": {
-        "fit": ("0000", "0001", "0002", "0003", "0006", "0007", "0008", "0009", "0010", "0012", "0014"),
-        "calibration": ("0015",),
-        "validation": ("0016", "0017", "0020"),
+        "fit": ("0000", "0002", "0003", "0006", "0008", "0010", "0012", "0014", "0017"),
+        "calibration": ("0001", "0009", "0020"),
+        "validation": ("0007", "0015", "0016"),
         "official_eval_reserved": ("0005", "0011", "0013", "0019"),
     },
 }
@@ -55,4 +58,11 @@ def assert_legal_path(path: str | Path) -> Path:
     return candidate
 
 
-__all__ = ["FORBIDDEN_VIDEOS", "LEGAL_SPLITS", "assert_legal_path", "assert_legal_video", "assert_legal_videos"]
+__all__ = [
+    "FORBIDDEN_VIDEOS",
+    "LEGAL_SPLIT_VERSION",
+    "LEGAL_SPLITS",
+    "assert_legal_path",
+    "assert_legal_video",
+    "assert_legal_videos",
+]

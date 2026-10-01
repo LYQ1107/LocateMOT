@@ -564,3 +564,42 @@ Concise experimental log (latest first).
 - Verification: unified modules/tools compile; CPU skeleton smoke is finite;
   parameter-sharing audit remains skeleton-only with non-head fraction
   `0.9998259786`; legal guard accepts V1 `0004` and rejects reserved `0013`.
+
+## LocateMOT-U U0R/U1R measurement-contract repair — 2026-10-01
+
+- Scope: resumed from `014b8a5ec81bb83c5993b56da171089f8a440a11` on
+  `codex/u0r-u1r-foundation-repair-20261001`; no U2 work and no training was
+  launched. The project root was verified as `/data2/user/LocateMOT`.
+- Reproducibility hypothesis: a fresh checkout should import the unified data
+  package using tracked source only. The first clone failed because the broad
+  `data/` ignore rule also hid `locatemot/unified/data/`. Added a narrow ignore
+  exception, committed the package source, pushed it, and re-cloned the remote
+  branch at `26f9c989c8b13773d681bbe6962b77e73a0026bd`. Imports, skeleton smoke,
+  and foundation smoke passed in the clone. Decision: keep the repair and mark
+  U0 legal-scope reproducibility PASS.
+- Checkpoint hypothesis: the MMDetection Swin-B conversion must have only
+  documented non-core load mismatches. `tools/unified/audit_foundation_checkpoint.py`
+  now requires the exact one training-only missing key
+  `dn_query_generator.label_embedding.weight`, the exact three BERT metadata
+  unexpected keys, and zero backbone/encoder/decoder/bbox-head/language-fusion
+  missing keys. Audit result: `PASS_CONDITIONAL_TRAINING_ONLY_MISSING`.
+- Preprocessing hypothesis: the formal runtime must be equivalent to the
+  official MMDetection path. Ten deterministic legal images were compared with
+  the same fixed generic vocabulary; all produced 300 finite predictions,
+  maximum box difference `0.0`, and maximum score difference `0.0`. Decision:
+  preprocessing contract PASS; the prior hand-built tensor smoke is not formal
+  evidence.
+- Split hypothesis: a deterministic video-disjoint split balancing expression
+  volume, physical-target volume, and motion proxy is adequate before formal
+  evaluation. `tools/unified/build_legal_split.py` froze v2 with seed `20261001`
+  and split SHA
+  `8ee806048ccbb227919f27edf68cf0bebc1fa50f824a8108878fc5f39fc6e1c0`.
+  V1 fit/calibration/validation are `9/3/3` videos and V2 are `9/3/3`; V2
+  source-target-ID-missing references remain `157` (fit only in this split),
+  with no replacement or silent drop. Decision: freeze this split before any
+  U1 adaptation or formal gate.
+- Hardware/wall time: one CUDA device (A800-equivalent) was used for the
+  checkpoint audit, smoke, and equivalence check; these short checks completed
+  in under a minute each. Official-test labels and screening ground truth were
+  not opened. External baseline execution remains incomplete and is the next
+  blocking U0 task.

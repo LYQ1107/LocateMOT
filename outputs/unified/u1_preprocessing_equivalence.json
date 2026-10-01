@@ -1,0 +1,112 @@
+{
+  "box_tolerance": 0.0001,
+  "checkpoint": "weights/groundingdino_swinb_cogcoor_mmdet-55949c9c.pth",
+  "checkpoint_sha256": "55949c9c0f46339a73b415334765615d491ee6ed739ed3f568142b7fc5581143",
+  "config": "third_party/mmdetection/configs/grounding_dino/grounding_dino_swin-b_finetune_16xb2_1x_coco.py",
+  "device": "cuda:0",
+  "format": "locatemot-u-u1-preprocessing-equivalence-v1",
+  "image_count": 10,
+  "max_box_abs_diff": 0.0,
+  "max_score_abs_diff": 0.0,
+  "missing_keys": [
+    "dn_query_generator.label_embedding.weight"
+  ],
+  "official_test_labels_read": false,
+  "preprocessing_contract": {
+    "bgr_to_rgb": true,
+    "box_coordinate_contract": "model postprocess restores boxes to ori_shape",
+    "data_preprocessor": "DetDataPreprocessor",
+    "loader": "LoadImageFromFile",
+    "pack": "PackDetInputs",
+    "resize": {
+      "keep_ratio": true,
+      "scale": [
+        800,
+        1333
+      ],
+      "type": "FixScaleResize"
+    }
+  },
+  "prompt": "car . van . truck . bus . tram . pedestrian . person . cyclist . bicycle . motorcycle .",
+  "rows": [
+    {
+      "finite": true,
+      "image": "data/kitti_tracking/training/image_02/0004/000000.png",
+      "max_box_abs_diff": 0.0,
+      "max_score_abs_diff": 0.0,
+      "prediction_count": 300
+    },
+    {
+      "finite": true,
+      "image": "data/kitti_tracking/training/image_02/0004/000157.png",
+      "max_box_abs_diff": 0.0,
+      "max_score_abs_diff": 0.0,
+      "prediction_count": 300
+    },
+    {
+      "finite": true,
+      "image": "data/kitti_tracking/training/image_02/0016/000000.png",
+      "max_box_abs_diff": 0.0,
+      "max_score_abs_diff": 0.0,
+      "prediction_count": 300
+    },
+    {
+      "finite": true,
+      "image": "data/kitti_tracking/training/image_02/0016/000104.png",
+      "max_box_abs_diff": 0.0,
+      "max_score_abs_diff": 0.0,
+      "prediction_count": 300
+    },
+    {
+      "finite": true,
+      "image": "data/kitti_tracking/training/image_02/0018/000000.png",
+      "max_box_abs_diff": 0.0,
+      "max_score_abs_diff": 0.0,
+      "prediction_count": 300
+    },
+    {
+      "finite": true,
+      "image": "data/kitti_tracking/training/image_02/0018/000169.png",
+      "max_box_abs_diff": 0.0,
+      "max_score_abs_diff": 0.0,
+      "prediction_count": 300
+    },
+    {
+      "finite": true,
+      "image": "data/kitti_tracking/training/image_02/0015/000000.png",
+      "max_box_abs_diff": 0.0,
+      "max_score_abs_diff": 0.0,
+      "prediction_count": 300
+    },
+    {
+      "finite": true,
+      "image": "data/kitti_tracking/training/image_02/0015/000188.png",
+      "max_box_abs_diff": 0.0,
+      "max_score_abs_diff": 0.0,
+      "prediction_count": 300
+    },
+    {
+      "finite": true,
+      "image": "data/kitti_tracking/training/image_02/0017/000000.png",
+      "max_box_abs_diff": 0.0,
+      "max_score_abs_diff": 0.0,
+      "prediction_count": 300
+    },
+    {
+      "finite": true,
+      "image": "data/kitti_tracking/training/image_02/0017/000072.png",
+      "max_box_abs_diff": 0.0,
+      "max_score_abs_diff": 0.0,
+      "prediction_count": 300
+    }
+  ],
+  "score_tolerance": 1e-05,
+  "screening_gt_used": false,
+  "status": "PASS",
+  "training_launched": false,
+  "unexpected_keys": [
+    "language_model.language_backbone.body.model.embeddings.position_ids",
+    "language_model.language_backbone.body.model.pooler.dense.bias",
+    "language_model.language_backbone.body.model.pooler.dense.weight"
+  ]
+}

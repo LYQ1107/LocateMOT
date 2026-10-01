@@ -1,0 +1,459 @@
+{
+  "aggregate": {
+    "candidate_count_distribution": {
+      "300": 16
+    },
+    "elapsed_seconds": 2.2774803787469864,
+    "iou_at_025": 0.54,
+    "iou_at_050": 0.04,
+    "mean_best_iou": 0.2755743374268208,
+    "mean_best_score": 0.013120486005209386,
+    "rows": 16,
+    "skipped_missing_target_references": 0,
+    "target_boxes": 50
+  },
+  "checkpoint": "weights/groundingdino_swinb_cogcoor_mmdet-55949c9c.pth",
+  "checkpoint_missing_keys": 8,
+  "checkpoint_unexpected_keys": 3,
+  "device": "cuda:0",
+  "format": "locatemot-u-u1-proposal-gate-v1",
+  "max_per_img": 300,
+  "official_test_labels_read": false,
+  "prediction_before_label": true,
+  "prompt": null,
+  "rows": [
+    {
+      "candidate_count": 300,
+      "dataset": "refer_kitti_v1",
+      "finite_boxes": true,
+      "finite_scores": true,
+      "frame_id": 128,
+      "query_id": 158,
+      "sentence": "black cars in the left",
+      "split": "validation",
+      "target_count": 1,
+      "target_metrics": {
+        "9": {
+          "best_iou": 0.3101444991253238,
+          "best_score": 0.007092618849128485
+        }
+      },
+      "video": "0004"
+    },
+    {
+      "candidate_count": 300,
+      "dataset": "refer_kitti_v1",
+      "finite_boxes": true,
+      "finite_scores": true,
+      "frame_id": 128,
+      "query_id": 159,
+      "sentence": "black vehicles in the left",
+      "split": "validation",
+      "target_count": 1,
+      "target_metrics": {
+        "9": {
+          "best_iou": 0.28027507357329345,
+          "best_score": 0.006385518703609705
+        }
+      },
+      "video": "0004"
+    },
+    {
+      "candidate_count": 300,
+      "dataset": "refer_kitti_v1",
+      "finite_boxes": true,
+      "finite_scores": true,
+      "frame_id": 156,
+      "query_id": 160,
+      "sentence": "cars in black",
+      "split": "validation",
+      "target_count": 1,
+      "target_metrics": {
+        "13": {
+          "best_iou": 0.2949718715493276,
+          "best_score": 0.00822635181248188
+        }
+      },
+      "video": "0004"
+    },
+    {
+      "candidate_count": 300,
+      "dataset": "refer_kitti_v1",
+      "finite_boxes": true,
+      "finite_scores": true,
+      "frame_id": 162,
+      "query_id": 161,
+      "sentence": "cars in front of ours",
+      "split": "validation",
+      "target_count": 2,
+      "target_metrics": {
+        "13": {
+          "best_iou": 0.2525384351193849,
+          "best_score": 0.017882002517580986
+        },
+        "29": {
+          "best_iou": 0.4407023090525194,
+          "best_score": 0.010681604035198689
+        }
+      },
+      "video": "0004"
+    },
+    {
+      "candidate_count": 300,
+      "dataset": "refer_kitti_v1",
+      "finite_boxes": true,
+      "finite_scores": true,
+      "frame_id": 103,
+      "query_id": 569,
+      "sentence": "males in the left",
+      "split": "calibration",
+      "target_count": 8,
+      "target_metrics": {
+        "10": {
+          "best_iou": 0.17153630915928592,
+          "best_score": 0.016775334253907204
+        },
+        "104": {
+          "best_iou": 0.1468413458681694,
+          "best_score": 0.007852334529161453
+        },
+        "113": {
+          "best_iou": 0.287551283273295,
+          "best_score": 0.06000248342752457
+        },
+        "124": {
+          "best_iou": 0.4089343745352685,
+          "best_score": 0.007852334529161453
+        },
+        "125": {
+          "best_iou": 0.1807450933550061,
+          "best_score": 0.012875537388026714
+        },
+        "151": {
+          "best_iou": 0.17376613002996433,
+          "best_score": 0.02292182482779026
+        },
+        "152": {
+          "best_iou": 0.14482547926959868,
+          "best_score": 0.009651988744735718
+        },
+        "153": {
+          "best_iou": 0.1441986534683593,
+          "best_score": 0.07183785736560822
+        }
+      },
+      "video": "0016"
+    },
+    {
+      "candidate_count": 300,
+      "dataset": "refer_kitti_v1",
+      "finite_boxes": true,
+      "finite_scores": true,
+      "frame_id": 103,
+      "query_id": 570,
+      "sentence": "males in the right",
+      "split": "calibration",
+      "target_count": 8,
+      "target_metrics": {
+        "10": {
+          "best_iou": 0.17276118539339025,
+          "best_score": 0.006144901737570763
+        },
+        "104": {
+          "best_iou": 0.17436714110583532,
+          "best_score": 0.004692221060395241
+        },
+        "113": {
+          "best_iou": 0.28326650845570606,
+          "best_score": 0.015030286274850368
+        },
+        "124": {
+          "best_iou": 0.4606068349591116,
+          "best_score": 0.004692221060395241
+        },
+        "125": {
+          "best_iou": 0.19702865996347674,
+          "best_score": 0.0032028956338763237
+        },
+        "151": {
+          "best_iou": 0.25191330694855846,
+          "best_score": 0.0037736217491328716
+        },
+        "152": {
+          "best_iou": 0.11739988886854882,
+          "best_score": 0.006202261429280043
+        },
+        "153": {
+          "best_iou": 0.1653067972752608,
+          "best_score": 0.0035802326165139675
+        }
+      },
+      "video": "0016"
+    },
+    {
+      "candidate_count": 300,
+      "dataset": "refer_kitti_v1",
+      "finite_boxes": true,
+      "finite_scores": true,
+      "frame_id": 103,
+      "query_id": 571,
+      "sentence": "men in the left",
+      "split": "calibration",
+      "target_count": 8,
+      "target_metrics": {
+        "10": {
+          "best_iou": 0.17250301702862827,
+          "best_score": 0.019557341933250427
+        },
+        "104": {
+          "best_iou": 0.1474858758715099,
+          "best_score": 0.010021265596151352
+        },
+        "113": {
+          "best_iou": 0.3122850363775803,
+          "best_score": 0.007546694949269295
+        },
+        "124": {
+          "best_iou": 0.4102500468099429,
+          "best_score": 0.010021265596151352
+        },
+        "125": {
+          "best_iou": 0.15549825931796427,
+          "best_score": 0.02182731404900551
+        },
+        "151": {
+          "best_iou": 0.21017082625884198,
+          "best_score": 0.009753169491887093
+        },
+        "152": {
+          "best_iou": 0.19427277856884895,
+          "best_score": 0.009432652965188026
+        },
+        "153": {
+          "best_iou": 0.28380736203033197,
+          "best_score": 0.007135332562029362
+        }
+      },
+      "video": "0016"
+    },
+    {
+      "candidate_count": 300,
+      "dataset": "refer_kitti_v1",
+      "finite_boxes": true,
+      "finite_scores": true,
+      "frame_id": 103,
+      "query_id": 572,
+      "sentence": "men in the right",
+      "split": "calibration",
+      "target_count": 8,
+      "target_metrics": {
+        "10": {
+          "best_iou": 0.1733448174791322,
+          "best_score": 0.0076602753251791
+        },
+        "104": {
+          "best_iou": 0.26417274463120166,
+          "best_score": 0.0036268255207687616
+        },
+        "113": {
+          "best_iou": 0.3171237715340811,
+          "best_score": 0.0037023983895778656
+        },
+        "124": {
+          "best_iou": 0.46275706989299714,
+          "best_score": 0.004903506487607956
+        },
+        "125": {
+          "best_iou": 0.18447535228982698,
+          "best_score": 0.006128923501819372
+        },
+        "151": {
+          "best_iou": 0.37997324603146615,
+          "best_score": 0.004620896186679602
+        },
+        "152": {
+          "best_iou": 0.220077713560809,
+          "best_score": 0.004092770628631115
+        },
+        "153": {
+          "best_iou": 0.2724740177578784,
+          "best_score": 0.004060194827616215
+        }
+      },
+      "video": "0016"
+    },
+    {
+      "candidate_count": 300,
+      "dataset": "refer_kitti_v2",
+      "finite_boxes": true,
+      "finite_scores": true,
+      "frame_id": 38,
+      "query_id": 5927,
+      "sentence": "applying brakes to cars on the left",
+      "split": "calibration",
+      "target_count": 1,
+      "target_metrics": {
+        "13": {
+          "best_iou": 0.3424156165738539,
+          "best_score": 0.016708943992853165
+        }
+      },
+      "video": "0015"
+    },
+    {
+      "candidate_count": 300,
+      "dataset": "refer_kitti_v2",
+      "finite_boxes": true,
+      "finite_scores": true,
+      "frame_id": 189,
+      "query_id": 5928,
+      "sentence": "automobiles",
+      "split": "calibration",
+      "target_count": 2,
+      "target_metrics": {
+        "13": {
+          "best_iou": 0.23036588111563522,
+          "best_score": 0.014844551682472229
+        },
+        "22": {
+          "best_iou": 0.49499968196465616,
+          "best_score": 0.03294900804758072
+        }
+      },
+      "video": "0015"
+    },
+    {
+      "candidate_count": 300,
+      "dataset": "refer_kitti_v2",
+      "finite_boxes": true,
+      "finite_scores": true,
+      "frame_id": 38,
+      "query_id": 5929,
+      "sentence": "automobiles are applying brakes",
+      "split": "calibration",
+      "target_count": 1,
+      "target_metrics": {
+        "13": {
+          "best_iou": 0.5144858857671639,
+          "best_score": 0.01474987342953682
+        }
+      },
+      "video": "0015"
+    },
+    {
+      "candidate_count": 300,
+      "dataset": "refer_kitti_v2",
+      "finite_boxes": true,
+      "finite_scores": true,
+      "frame_id": 127,
+      "query_id": 5930,
+      "sentence": "automobiles are located to the right",
+      "split": "calibration",
+      "target_count": 1,
+      "target_metrics": {
+        "24": {
+          "best_iou": 0.6294478397916866,
+          "best_score": 0.014793566428124905
+        }
+      },
+      "video": "0015"
+    },
+    {
+      "candidate_count": 300,
+      "dataset": "refer_kitti_v2",
+      "finite_boxes": true,
+      "finite_scores": true,
+      "frame_id": 115,
+      "query_id": 6405,
+      "sentence": "a black t-shirted pedestrians are on the right",
+      "split": "validation",
+      "target_count": 1,
+      "target_metrics": {
+        "150": {
+          "best_iou": 0.37633448125453356,
+          "best_score": 0.01485458854585886
+        }
+      },
+      "video": "0016"
+    },
+    {
+      "candidate_count": 300,
+      "dataset": "refer_kitti_v2",
+      "finite_boxes": true,
+      "finite_scores": true,
+      "frame_id": 89,
+      "query_id": 6406,
+      "sentence": "ahead are individuals",
+      "split": "validation",
+      "target_count": 3,
+      "target_metrics": {
+        "101": {
+          "best_iou": 0.2821628318779033,
+          "best_score": 0.00931587815284729
+        },
+        "149": {
+          "best_iou": 0.1887742723406245,
+          "best_score": 0.011095101945102215
+        },
+        "99": {
+          "best_iou": 0.2050100458744416,
+          "best_score": 0.011943432502448559
+        }
+      },
+      "video": "0016"
+    },
+    {
+      "candidate_count": 300,
+      "dataset": "refer_kitti_v2",
+      "finite_boxes": true,
+      "finite_scores": true,
+      "frame_id": 104,
+      "query_id": 6407,
+      "sentence": "ahead of our car, there are black cars",
+      "split": "validation",
+      "target_count": 1,
+      "target_metrics": {
+        "14": {
+          "best_iou": 0.3050515121133269,
+          "best_score": 0.017869481816887856
+        }
+      },
+      "video": "0016"
+    },
+    {
+      "candidate_count": 300,
+      "dataset": "refer_kitti_v2",
+      "finite_boxes": true,
+      "finite_scores": true,
+      "frame_id": 104,
+      "query_id": 6408,
+      "sentence": "automobiles in black parked",
+      "split": "validation",
+      "target_count": 3,
+      "target_metrics": {
+        "11": {
+          "best_iou": 0.3173876426576431,
+          "best_score": 0.020412404090166092
+        },
+        "13": {
+          "best_iou": 0.24365991866535988,
+          "best_score": 0.028666377067565918
+        },
+        "14": {
+          "best_iou": 0.4282681455544894,
+          "best_score": 0.006373832002282143
+        }
+      },
+      "video": "0016"
+    }
+  ],
+  "screening_gt_used": false,
+  "selection": {
+    "refer_kitti_v1:calibration": 4,
+    "refer_kitti_v1:validation": 4,
+    "refer_kitti_v2:calibration": 4,
+    "refer_kitti_v2:validation": 4
+  },
+  "status": "diagnostic_complete",
+  "training_launched": false
+}

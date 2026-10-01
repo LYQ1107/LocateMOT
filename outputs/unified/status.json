@@ -6,14 +6,20 @@
     "external_sanity": "reports/unified/EXTERNAL_BASELINE_SANITY.md",
     "final_goal": "reports/unified/FINAL_GOAL.md",
     "foundation_asset": "outputs/unified/protocol/foundation_asset.json",
-    "legal_split": "outputs/unified/protocol/legal_video_split.json",
+    "legal_split": "outputs/unified/protocol/legal_video_split_v2.json",
     "open_source_audit": "reports/unified/OPEN_SOURCE_TRAINING_AUDIT.md",
     "parameter_sharing": "outputs/unified/parameter_sharing_smoke.json",
-    "proposal_diagnostic": "outputs/unified/u1_proposal_gate.json",
+    "proposal_diagnostic": "outputs/unified/u1_proposal_diagnostic.json",
     "proposal_gate_generic_top900": "outputs/unified/u1_proposal_gate_generic_classes_top900.json",
     "proposal_gate_top900": "outputs/unified/u1_proposal_gate_top900.json",
     "skeleton_smoke": "outputs/unified/skeleton_smoke.json",
-    "u1_foundation_smoke": "outputs/unified/u1_foundation_smoke.json"
+    "u1_foundation_smoke": "outputs/unified/u1_foundation_smoke.json",
+    "legal_split_audit": "reports/unified/LEGAL_SPLIT_AUDIT.md",
+    "u0r_reproducibility": "reports/unified/U0R_REPRODUCIBILITY.md",
+    "foundation_checkpoint_audit": "outputs/unified/protocol/foundation_checkpoint_audit.json",
+    "foundation_checkpoint_audit_report": "reports/unified/FOUNDATION_CHECKPOINT_AUDIT.md",
+    "u1_preprocessing_contract": "reports/unified/U1_PREPROCESSING_CONTRACT.md",
+    "u1_preprocessing_equivalence": "outputs/unified/u1_preprocessing_equivalence.json"
   },
   "branch": "codex/u0r-u1r-foundation-repair-20261001",
   "completed": [
@@ -28,7 +34,7 @@
     "U1.2_label_free_proposal_gate_diagnostic",
     "U1.3_prompt_and_selection_repair_diagnostic"
   ],
-  "current": "U0R_fresh_clone_reproducibility",
+  "current": "U0_external_baseline_and_formal_eval",
   "external_sanity": {
     "compile_pass": 10,
     "compile_total": 10,
@@ -45,7 +51,7 @@
     "status": "pass",
     "video": "0004"
   },
-  "next": "U0R_fresh_clone_reproducibility",
+  "next": "U0_external_baseline_and_formal_eval",
   "official_test_labels_read": false,
   "project_root": "/data2/user/LocateMOT",
   "proposal_diagnostic": {
@@ -67,7 +73,7 @@
   "stage": "U0R_U1R",
   "phase_status": {
     "U0_EXTERNAL_BASELINE": "INCOMPLETE",
-    "U0_LEGAL_SCOPE": "VERIFYING_GIT_REPRODUCIBILITY",
+    "U0_LEGAL_SCOPE": "PASS_FRESH_CLONE_AND_SPLIT_FROZEN",
     "U0_OPEN_SOURCE_AUDIT": "PASS",
     "U0_UNIFIED_SKELETON": "PASS_API_ONLY",
     "U1_FOUNDATION_ASSET": "PASS",
@@ -75,8 +81,29 @@
     "U1_FORMAL_GENERIC_GATE": "NOT_RUN",
     "U1_FORMAL_GROUNDING_GATE": "NOT_RUN",
     "U1_PROPOSAL_DIAGNOSTIC": "INCONCLUSIVE",
-    "U1_TRAINING": "NOT_STARTED"
+    "U1_TRAINING": "NOT_STARTED",
+    "U1_MEASUREMENT_CONTRACT": "PASS"
   },
   "status": "U0R_IN_PROGRESS",
-  "unified_checkpoint_sha256": null
+  "unified_checkpoint_sha256": null,
+  "legal_split": {
+    "path": "outputs/unified/protocol/legal_video_split_v2.json",
+    "sha256": "8ee806048ccbb227919f27edf68cf0bebc1fa50f824a8108878fc5f39fc6e1c0",
+    "status": "FROZEN_BEFORE_U1_FORMAL_EVALUATION",
+    "v2_source_target_id_missing_references": 157
+  },
+  "fresh_clone_reproducibility": {
+    "status": "PASS",
+    "remote_commit": "26f9c989c8b13773d681bbe6962b77e73a0026bd",
+    "clone_path": "/data2/user/locatemot_u_repro_check_20261001_r1",
+    "initial_failure": "locatemot/unified/data was hidden by the broad data/ ignore rule",
+    "official_test_labels_read": false
+  },
+  "preprocessing_equivalence": {
+    "status": "PASS",
+    "image_count": 10,
+    "max_box_abs_diff": 0.0,
+    "max_score_abs_diff": 0.0,
+    "official_test_labels_read": false
+  }
 }

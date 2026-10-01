@@ -1,0 +1,979 @@
+{
+  "datasets": {
+    "refer_kitti_v1": {
+      "calibration": [
+        "0001",
+        "0007",
+        "0020"
+      ],
+      "fit": [
+        "0002",
+        "0003",
+        "0004",
+        "0006",
+        "0010",
+        "0012",
+        "0014",
+        "0015",
+        "0016"
+      ],
+      "official_eval_reserved": [
+        "0005",
+        "0011",
+        "0013"
+      ],
+      "validation": [
+        "0008",
+        "0009",
+        "0018"
+      ],
+      "video_stats": [
+        {
+          "class_distribution": {
+            "0": 2836
+          },
+          "dataset": "refer_kitti_v1",
+          "expression_count": 66,
+          "expression_frame_count": 14474,
+          "frame_count": 447,
+          "hash_key": "9a7011620fd8aa3dc966c648de795f115e3799421bcba55e41a961fd3e8b7fd2",
+          "image_height": 375,
+          "image_width": 1242,
+          "inactive_expression_frames": 0,
+          "label_frame_count": 428,
+          "median_consecutive_center_displacement_px": 10.000583999999947,
+          "moving_track_ratio": 1.0,
+          "multi_target_expression_frames": 9120,
+          "single_target_expression_frames": 5354,
+          "size_distribution": {
+            "large": 585,
+            "medium": 1606,
+            "small": 645
+          },
+          "source_target_id_missing_physical": 0,
+          "source_target_id_missing_references": 0,
+          "target_references": 37764,
+          "track_count": 95,
+          "unique_physical_targets": 2717,
+          "valid_target_references": 37764,
+          "video": "0001"
+        },
+        {
+          "class_distribution": {
+            "0": 1083
+          },
+          "dataset": "refer_kitti_v1",
+          "expression_count": 58,
+          "expression_frame_count": 8152,
+          "frame_count": 233,
+          "hash_key": "1096aba0210f8576f580fe851a25f657c899dd255e64f2ebe9b036d3280ac728",
+          "image_height": 375,
+          "image_width": 1242,
+          "inactive_expression_frames": 0,
+          "label_frame_count": 218,
+          "median_consecutive_center_displacement_px": 2.2357840146188526,
+          "moving_track_ratio": 1.0,
+          "multi_target_expression_frames": 3470,
+          "single_target_expression_frames": 4682,
+          "size_distribution": {
+            "large": 30,
+            "medium": 359,
+            "small": 694
+          },
+          "source_target_id_missing_physical": 0,
+          "source_target_id_missing_references": 0,
+          "target_references": 14732,
+          "track_count": 16,
+          "unique_physical_targets": 893,
+          "valid_target_references": 14732,
+          "video": "0002"
+        },
+        {
+          "class_distribution": {
+            "0": 363
+          },
+          "dataset": "refer_kitti_v1",
+          "expression_count": 34,
+          "expression_frame_count": 2544,
+          "frame_count": 144,
+          "hash_key": "286c6af13f3de18de4e551689876384fb9c57fdabca87eb8843c171a627377a3",
+          "image_height": 375,
+          "image_width": 1242,
+          "inactive_expression_frames": 0,
+          "label_frame_count": 144,
+          "median_consecutive_center_displacement_px": 6.324731146294174,
+          "moving_track_ratio": 1.0,
+          "multi_target_expression_frames": 1030,
+          "single_target_expression_frames": 1514,
+          "size_distribution": {
+            "large": 57,
+            "medium": 192,
+            "small": 114
+          },
+          "source_target_id_missing_physical": 0,
+          "source_target_id_missing_references": 0,
+          "target_references": 3750,
+          "track_count": 8,
+          "unique_physical_targets": 361,
+          "valid_target_references": 3750,
+          "video": "0003"
+        },
+        {
+          "class_distribution": {
+            "0": 881
+          },
+          "dataset": "refer_kitti_v1",
+          "expression_count": 49,
+          "expression_frame_count": 5829,
+          "frame_count": 314,
+          "hash_key": "ce3972b78149aba575310fe528dcb0e6bf899b6687b2130fbabec206dcd7836a",
+          "image_height": 375,
+          "image_width": 1242,
+          "inactive_expression_frames": 0,
+          "label_frame_count": 314,
+          "median_consecutive_center_displacement_px": 10.123919225804737,
+          "moving_track_ratio": 0.967741935483871,
+          "multi_target_expression_frames": 2123,
+          "single_target_expression_frames": 3706,
+          "size_distribution": {
+            "large": 63,
+            "medium": 365,
+            "small": 453
+          },
+          "source_target_id_missing_physical": 0,
+          "source_target_id_missing_references": 0,
+          "target_references": 9382,
+          "track_count": 31,
+          "unique_physical_targets": 858,
+          "valid_target_references": 9382,
+          "video": "0004"
+        },
+        {
+          "class_distribution": {
+            "0": 537
+          },
+          "dataset": "refer_kitti_v1",
+          "expression_count": 18,
+          "expression_frame_count": 2658,
+          "frame_count": 270,
+          "hash_key": "5ee53022e411023fe9bc846c0bb7d6291f636a0550db4ea977b14dc9926e86e3",
+          "image_height": 375,
+          "image_width": 1242,
+          "inactive_expression_frames": 0,
+          "label_frame_count": 221,
+          "median_consecutive_center_displacement_px": 4.999050000000011,
+          "moving_track_ratio": 1.0,
+          "multi_target_expression_frames": 996,
+          "single_target_expression_frames": 1662,
+          "size_distribution": {
+            "large": 75,
+            "medium": 177,
+            "small": 285
+          },
+          "source_target_id_missing_physical": 0,
+          "source_target_id_missing_references": 0,
+          "target_references": 4646,
+          "track_count": 11,
+          "unique_physical_targets": 534,
+          "valid_target_references": 4646,
+          "video": "0006"
+        },
+        {
+          "class_distribution": {
+            "0": 2325
+          },
+          "dataset": "refer_kitti_v1",
+          "expression_count": 76,
+          "expression_frame_count": 19538,
+          "frame_count": 800,
+          "hash_key": "67c4ca6775767ba5d9b931510878f2857b3e95089cd95f3959d67d9f294cecd6",
+          "image_height": 375,
+          "image_width": 1242,
+          "inactive_expression_frames": 0,
+          "label_frame_count": 637,
+          "median_consecutive_center_displacement_px": 6.9999120000001085,
+          "moving_track_ratio": 1.0,
+          "multi_target_expression_frames": 8118,
+          "single_target_expression_frames": 11420,
+          "size_distribution": {
+            "large": 709,
+            "medium": 1166,
+            "small": 450
+          },
+          "source_target_id_missing_physical": 0,
+          "source_target_id_missing_references": 0,
+          "target_references": 34940,
+          "track_count": 55,
+          "unique_physical_targets": 2254,
+          "valid_target_references": 34940,
+          "video": "0007"
+        },
+        {
+          "class_distribution": {
+            "0": 1042
+          },
+          "dataset": "refer_kitti_v1",
+          "expression_count": 68,
+          "expression_frame_count": 9728,
+          "frame_count": 390,
+          "hash_key": "301910cf8051d62c9e4a794aa5be0f1729585f921adf0c4f56cf3e458aed10a5",
+          "image_height": 375,
+          "image_width": 1242,
+          "inactive_expression_frames": 0,
+          "label_frame_count": 390,
+          "median_consecutive_center_displacement_px": 3.0,
+          "moving_track_ratio": 1.0,
+          "multi_target_expression_frames": 3354,
+          "single_target_expression_frames": 6374,
+          "size_distribution": {
+            "large": 39,
+            "medium": 319,
+            "small": 684
+          },
+          "source_target_id_missing_physical": 0,
+          "source_target_id_missing_references": 0,
+          "target_references": 14502,
+          "track_count": 21,
+          "unique_physical_targets": 1034,
+          "valid_target_references": 14502,
+          "video": "0008"
+        },
+        {
+          "class_distribution": {
+            "0": 2860
+          },
+          "dataset": "refer_kitti_v1",
+          "expression_count": 58,
+          "expression_frame_count": 14588,
+          "frame_count": 803,
+          "hash_key": "f93f067201141f43e8f60b9d0fe8f96d48523800b3538b27db74e0598b2dc7dd",
+          "image_height": 375,
+          "image_width": 1242,
+          "inactive_expression_frames": 0,
+          "label_frame_count": 424,
+          "median_consecutive_center_displacement_px": 9.054933806199124,
+          "moving_track_ratio": 1.0,
+          "multi_target_expression_frames": 8106,
+          "single_target_expression_frames": 6482,
+          "size_distribution": {
+            "large": 559,
+            "medium": 1408,
+            "small": 893
+          },
+          "source_target_id_missing_physical": 0,
+          "source_target_id_missing_references": 0,
+          "target_references": 36846,
+          "track_count": 81,
+          "unique_physical_targets": 2847,
+          "valid_target_references": 36846,
+          "video": "0009"
+        },
+        {
+          "class_distribution": {
+            "0": 657
+          },
+          "dataset": "refer_kitti_v1",
+          "expression_count": 50,
+          "expression_frame_count": 4658,
+          "frame_count": 294,
+          "hash_key": "a075b16865cbdbc396029deb586612a83319f3ad311f40e536fd1d24dfd28eb3",
+          "image_height": 375,
+          "image_width": 1242,
+          "inactive_expression_frames": 0,
+          "label_frame_count": 294,
+          "median_consecutive_center_displacement_px": 3.161776453281516,
+          "moving_track_ratio": 1.0,
+          "multi_target_expression_frames": 1558,
+          "single_target_expression_frames": 3100,
+          "size_distribution": {
+            "large": 32,
+            "medium": 420,
+            "small": 205
+          },
+          "source_target_id_missing_physical": 0,
+          "source_target_id_missing_references": 0,
+          "target_references": 6956,
+          "track_count": 15,
+          "unique_physical_targets": 652,
+          "valid_target_references": 6956,
+          "video": "0010"
+        },
+        {
+          "class_distribution": {
+            "0": 204
+          },
+          "dataset": "refer_kitti_v1",
+          "expression_count": 22,
+          "expression_frame_count": 1436,
+          "frame_count": 78,
+          "hash_key": "9817334fdc38381129a1edad932d0104cf8f974b7d9e62bf0b84a03951caf498",
+          "image_height": 375,
+          "image_width": 1242,
+          "inactive_expression_frames": 0,
+          "label_frame_count": 78,
+          "median_consecutive_center_displacement_px": 1.4139024360258907,
+          "moving_track_ratio": 1.0,
+          "multi_target_expression_frames": 280,
+          "single_target_expression_frames": 1156,
+          "size_distribution": {
+            "medium": 11,
+            "small": 193
+          },
+          "source_target_id_missing_physical": 0,
+          "source_target_id_missing_references": 0,
+          "target_references": 1716,
+          "track_count": 3,
+          "unique_physical_targets": 201,
+          "valid_target_references": 1716,
+          "video": "0012"
+        },
+        {
+          "class_distribution": {
+            "0": 580
+          },
+          "dataset": "refer_kitti_v1",
+          "expression_count": 34,
+          "expression_frame_count": 1844,
+          "frame_count": 106,
+          "hash_key": "6674426fdf0f312abcfeb617f4e19fe0352157b0cdd107de7308ab3192973902",
+          "image_height": 370,
+          "image_width": 1224,
+          "inactive_expression_frames": 0,
+          "label_frame_count": 106,
+          "median_consecutive_center_displacement_px": 5.994916719090863,
+          "moving_track_ratio": 1.0,
+          "multi_target_expression_frames": 1400,
+          "single_target_expression_frames": 444,
+          "size_distribution": {
+            "large": 50,
+            "medium": 327,
+            "small": 203
+          },
+          "source_target_id_missing_physical": 0,
+          "source_target_id_missing_references": 0,
+          "target_references": 4218,
+          "track_count": 16,
+          "unique_physical_targets": 562,
+          "valid_target_references": 4218,
+          "video": "0014"
+        },
+        {
+          "class_distribution": {
+            "0": 1613
+          },
+          "dataset": "refer_kitti_v1",
+          "expression_count": 36,
+          "expression_frame_count": 6821,
+          "frame_count": 376,
+          "hash_key": "d9c608df6cc710ff339a7b7b16a65bc77f36e254dcfde0565dae7e76094541c4",
+          "image_height": 370,
+          "image_width": 1224,
+          "inactive_expression_frames": 0,
+          "label_frame_count": 376,
+          "median_consecutive_center_displacement_px": 4.062935212687999,
+          "moving_track_ratio": 1.0,
+          "multi_target_expression_frames": 2820,
+          "single_target_expression_frames": 4001,
+          "size_distribution": {
+            "large": 703,
+            "medium": 510,
+            "small": 400
+          },
+          "source_target_id_missing_physical": 0,
+          "source_target_id_missing_references": 0,
+          "target_references": 10522,
+          "track_count": 20,
+          "unique_physical_targets": 1496,
+          "valid_target_references": 10522,
+          "video": "0015"
+        },
+        {
+          "class_distribution": {
+            "0": 2839
+          },
+          "dataset": "refer_kitti_v1",
+          "expression_count": 13,
+          "expression_frame_count": 2691,
+          "frame_count": 209,
+          "hash_key": "89723f18b8aaa77de5a6638f63c6d151c3ff7dac51a0169b331bb35e15528096",
+          "image_height": 370,
+          "image_width": 1224,
+          "inactive_expression_frames": 0,
+          "label_frame_count": 209,
+          "median_consecutive_center_displacement_px": 2.957183999999984,
+          "moving_track_ratio": 1.0,
+          "multi_target_expression_frames": 2691,
+          "single_target_expression_frames": 0,
+          "size_distribution": {
+            "large": 840,
+            "medium": 1720,
+            "small": 279
+          },
+          "source_target_id_missing_physical": 0,
+          "source_target_id_missing_references": 0,
+          "target_references": 19262,
+          "track_count": 23,
+          "unique_physical_targets": 1984,
+          "valid_target_references": 19262,
+          "video": "0016"
+        },
+        {
+          "class_distribution": {
+            "0": 1358
+          },
+          "dataset": "refer_kitti_v1",
+          "expression_count": 42,
+          "expression_frame_count": 10282,
+          "frame_count": 339,
+          "hash_key": "70e1628f236e9a504e11b5773a4e9ab31d1ecf2399c7153cb98db7745a45c2f9",
+          "image_height": 374,
+          "image_width": 1238,
+          "inactive_expression_frames": 0,
+          "label_frame_count": 301,
+          "median_consecutive_center_displacement_px": 1.4100049963967958,
+          "moving_track_ratio": 0.9444444444444444,
+          "multi_target_expression_frames": 6676,
+          "single_target_expression_frames": 3606,
+          "size_distribution": {
+            "large": 239,
+            "medium": 814,
+            "small": 305
+          },
+          "source_target_id_missing_physical": 0,
+          "source_target_id_missing_references": 0,
+          "target_references": 22632,
+          "track_count": 18,
+          "unique_physical_targets": 1350,
+          "valid_target_references": 22632,
+          "video": "0018"
+        },
+        {
+          "class_distribution": {
+            "0": 5316
+          },
+          "dataset": "refer_kitti_v1",
+          "expression_count": 36,
+          "expression_frame_count": 19188,
+          "frame_count": 837,
+          "hash_key": "ddc8ef8320ed8544885c2712adfb0f6a5e212d9ed887206e0a5f8df502e4f0bb",
+          "image_height": 376,
+          "image_width": 1241,
+          "inactive_expression_frames": 0,
+          "label_frame_count": 837,
+          "median_consecutive_center_displacement_px": 3.1615076841279,
+          "moving_track_ratio": 0.9646017699115044,
+          "multi_target_expression_frames": 14506,
+          "single_target_expression_frames": 4682,
+          "size_distribution": {
+            "large": 676,
+            "medium": 2835,
+            "small": 1805
+          },
+          "source_target_id_missing_physical": 0,
+          "source_target_id_missing_references": 0,
+          "target_references": 67162,
+          "track_count": 113,
+          "unique_physical_targets": 5312,
+          "valid_target_references": 67162,
+          "video": "0020"
+        }
+      ]
+    },
+    "refer_kitti_v2": {
+      "calibration": [
+        "0001",
+        "0009",
+        "0020"
+      ],
+      "fit": [
+        "0000",
+        "0002",
+        "0003",
+        "0006",
+        "0008",
+        "0010",
+        "0012",
+        "0014",
+        "0017"
+      ],
+      "official_eval_reserved": [
+        "0005",
+        "0011",
+        "0013",
+        "0019"
+      ],
+      "validation": [
+        "0007",
+        "0015",
+        "0016"
+      ],
+      "video_stats": [
+        {
+          "class_distribution": {
+            "0": 264
+          },
+          "dataset": "refer_kitti_v2",
+          "expression_count": 596,
+          "expression_frame_count": 18015,
+          "frame_count": 154,
+          "hash_key": "be2e767a2906946bed11271341da8206fb435b8693c5738489490545c0ac4c64",
+          "image_height": 375,
+          "image_width": 1242,
+          "inactive_expression_frames": 0,
+          "label_frame_count": 50,
+          "median_consecutive_center_displacement_px": 10.049233326407833,
+          "moving_track_ratio": 1.0,
+          "multi_target_expression_frames": 8729,
+          "single_target_expression_frames": 9286,
+          "size_distribution": {
+            "large": 72,
+            "medium": 178,
+            "small": 14
+          },
+          "source_target_id_missing_physical": 2,
+          "source_target_id_missing_references": 32,
+          "target_references": 37512,
+          "track_count": 11,
+          "unique_physical_targets": 264,
+          "valid_target_references": 37480,
+          "video": "0000"
+        },
+        {
+          "class_distribution": {
+            "0": 2836
+          },
+          "dataset": "refer_kitti_v2",
+          "expression_count": 614,
+          "expression_frame_count": 110958,
+          "frame_count": 447,
+          "hash_key": "5ff8e6b6259f4ef0a869626b2529d94c6f2e7364409ca0ffee5889b0e0d579c8",
+          "image_height": 375,
+          "image_width": 1242,
+          "inactive_expression_frames": 0,
+          "label_frame_count": 428,
+          "median_consecutive_center_displacement_px": 10.000583999999947,
+          "moving_track_ratio": 1.0,
+          "multi_target_expression_frames": 64881,
+          "single_target_expression_frames": 46077,
+          "size_distribution": {
+            "large": 585,
+            "medium": 1606,
+            "small": 645
+          },
+          "source_target_id_missing_physical": 0,
+          "source_target_id_missing_references": 0,
+          "target_references": 270630,
+          "track_count": 95,
+          "unique_physical_targets": 2825,
+          "valid_target_references": 270630,
+          "video": "0001"
+        },
+        {
+          "class_distribution": {
+            "0": 1083
+          },
+          "dataset": "refer_kitti_v2",
+          "expression_count": 449,
+          "expression_frame_count": 55714,
+          "frame_count": 233,
+          "hash_key": "faeedf4d8224880fb0225cf1558a2e15f98c91011ddfca575d4034610e70e69b",
+          "image_height": 375,
+          "image_width": 1242,
+          "inactive_expression_frames": 0,
+          "label_frame_count": 218,
+          "median_consecutive_center_displacement_px": 2.2357840146188526,
+          "moving_track_ratio": 1.0,
+          "multi_target_expression_frames": 16162,
+          "single_target_expression_frames": 39552,
+          "size_distribution": {
+            "large": 30,
+            "medium": 359,
+            "small": 694
+          },
+          "source_target_id_missing_physical": 0,
+          "source_target_id_missing_references": 0,
+          "target_references": 84223,
+          "track_count": 16,
+          "unique_physical_targets": 1083,
+          "valid_target_references": 84223,
+          "video": "0002"
+        },
+        {
+          "class_distribution": {
+            "0": 363
+          },
+          "dataset": "refer_kitti_v2",
+          "expression_count": 442,
+          "expression_frame_count": 39662,
+          "frame_count": 144,
+          "hash_key": "e122fd6bdddf12a1cffaa5295e64b8605a617fb1e9cb0e3a77aacf0378b612fa",
+          "image_height": 375,
+          "image_width": 1242,
+          "inactive_expression_frames": 0,
+          "label_frame_count": 144,
+          "median_consecutive_center_displacement_px": 6.324731146294174,
+          "moving_track_ratio": 1.0,
+          "multi_target_expression_frames": 14446,
+          "single_target_expression_frames": 25216,
+          "size_distribution": {
+            "large": 57,
+            "medium": 192,
+            "small": 114
+          },
+          "source_target_id_missing_physical": 0,
+          "source_target_id_missing_references": 0,
+          "target_references": 56231,
+          "track_count": 8,
+          "unique_physical_targets": 363,
+          "valid_target_references": 56231,
+          "video": "0003"
+        },
+        {
+          "class_distribution": {
+            "0": 537
+          },
+          "dataset": "refer_kitti_v2",
+          "expression_count": 618,
+          "expression_frame_count": 70457,
+          "frame_count": 270,
+          "hash_key": "d8c7d15b0e7bc2922fb816166b61e8ab4f1e8e3341ae0959c56eb4da1376919e",
+          "image_height": 375,
+          "image_width": 1242,
+          "inactive_expression_frames": 0,
+          "label_frame_count": 221,
+          "median_consecutive_center_displacement_px": 4.999050000000011,
+          "moving_track_ratio": 1.0,
+          "multi_target_expression_frames": 24917,
+          "single_target_expression_frames": 45540,
+          "size_distribution": {
+            "large": 75,
+            "medium": 177,
+            "small": 285
+          },
+          "source_target_id_missing_physical": 0,
+          "source_target_id_missing_references": 0,
+          "target_references": 109716,
+          "track_count": 11,
+          "unique_physical_targets": 536,
+          "valid_target_references": 109716,
+          "video": "0006"
+        },
+        {
+          "class_distribution": {
+            "0": 2325
+          },
+          "dataset": "refer_kitti_v2",
+          "expression_count": 711,
+          "expression_frame_count": 110056,
+          "frame_count": 800,
+          "hash_key": "cce9068695e5c8d6f475bc9139de6bbe803e046ea9f4df35df7176d123708afe",
+          "image_height": 375,
+          "image_width": 1242,
+          "inactive_expression_frames": 0,
+          "label_frame_count": 637,
+          "median_consecutive_center_displacement_px": 6.9999120000001085,
+          "moving_track_ratio": 1.0,
+          "multi_target_expression_frames": 38173,
+          "single_target_expression_frames": 71883,
+          "size_distribution": {
+            "large": 709,
+            "medium": 1166,
+            "small": 450
+          },
+          "source_target_id_missing_physical": 0,
+          "source_target_id_missing_references": 0,
+          "target_references": 180203,
+          "track_count": 55,
+          "unique_physical_targets": 2324,
+          "valid_target_references": 180203,
+          "video": "0007"
+        },
+        {
+          "class_distribution": {
+            "0": 1042
+          },
+          "dataset": "refer_kitti_v2",
+          "expression_count": 620,
+          "expression_frame_count": 76113,
+          "frame_count": 390,
+          "hash_key": "35cb2d6a842ae9a0ad7a46f713491b7f8e229c6a458c0a1f57075ea71877d158",
+          "image_height": 375,
+          "image_width": 1242,
+          "inactive_expression_frames": 0,
+          "label_frame_count": 390,
+          "median_consecutive_center_displacement_px": 3.0,
+          "moving_track_ratio": 1.0,
+          "multi_target_expression_frames": 20043,
+          "single_target_expression_frames": 56070,
+          "size_distribution": {
+            "large": 39,
+            "medium": 319,
+            "small": 684
+          },
+          "source_target_id_missing_physical": 0,
+          "source_target_id_missing_references": 0,
+          "target_references": 103510,
+          "track_count": 21,
+          "unique_physical_targets": 1042,
+          "valid_target_references": 103510,
+          "video": "0008"
+        },
+        {
+          "class_distribution": {
+            "0": 2860
+          },
+          "dataset": "refer_kitti_v2",
+          "expression_count": 605,
+          "expression_frame_count": 108475,
+          "frame_count": 803,
+          "hash_key": "cbb56de307752db463112bd4fb013cc35e821c25f6a784a2a517c8a76c335093",
+          "image_height": 375,
+          "image_width": 1242,
+          "inactive_expression_frames": 0,
+          "label_frame_count": 424,
+          "median_consecutive_center_displacement_px": 9.054933806199124,
+          "moving_track_ratio": 1.0,
+          "multi_target_expression_frames": 51621,
+          "single_target_expression_frames": 56854,
+          "size_distribution": {
+            "large": 559,
+            "medium": 1408,
+            "small": 893
+          },
+          "source_target_id_missing_physical": 0,
+          "source_target_id_missing_references": 0,
+          "target_references": 231851,
+          "track_count": 81,
+          "unique_physical_targets": 2847,
+          "valid_target_references": 231851,
+          "video": "0009"
+        },
+        {
+          "class_distribution": {
+            "0": 657
+          },
+          "dataset": "refer_kitti_v2",
+          "expression_count": 572,
+          "expression_frame_count": 35036,
+          "frame_count": 294,
+          "hash_key": "7e2d2ed8716b7424483af31d7db57a48beaddca65cc036c399e97fed01c7ca64",
+          "image_height": 375,
+          "image_width": 1242,
+          "inactive_expression_frames": 0,
+          "label_frame_count": 294,
+          "median_consecutive_center_displacement_px": 3.161776453281516,
+          "moving_track_ratio": 1.0,
+          "multi_target_expression_frames": 9983,
+          "single_target_expression_frames": 25053,
+          "size_distribution": {
+            "large": 32,
+            "medium": 420,
+            "small": 205
+          },
+          "source_target_id_missing_physical": 0,
+          "source_target_id_missing_references": 0,
+          "target_references": 49560,
+          "track_count": 15,
+          "unique_physical_targets": 657,
+          "valid_target_references": 49560,
+          "video": "0010"
+        },
+        {
+          "class_distribution": {
+            "0": 204
+          },
+          "dataset": "refer_kitti_v2",
+          "expression_count": 339,
+          "expression_frame_count": 20569,
+          "frame_count": 78,
+          "hash_key": "6e4ca23f7562f230e327910434ee848907fe8d446add288bb3fb4cd9cdb5a214",
+          "image_height": 375,
+          "image_width": 1242,
+          "inactive_expression_frames": 0,
+          "label_frame_count": 78,
+          "median_consecutive_center_displacement_px": 1.4139024360258907,
+          "moving_track_ratio": 1.0,
+          "multi_target_expression_frames": 1328,
+          "single_target_expression_frames": 19241,
+          "size_distribution": {
+            "medium": 11,
+            "small": 193
+          },
+          "source_target_id_missing_physical": 0,
+          "source_target_id_missing_references": 0,
+          "target_references": 21897,
+          "track_count": 3,
+          "unique_physical_targets": 204,
+          "valid_target_references": 21897,
+          "video": "0012"
+        },
+        {
+          "class_distribution": {
+            "0": 580
+          },
+          "dataset": "refer_kitti_v2",
+          "expression_count": 361,
+          "expression_frame_count": 19814,
+          "frame_count": 106,
+          "hash_key": "9614f60fbace13dc4462d33f676115c9e54f942dee62c303728c5405c0cb7daa",
+          "image_height": 370,
+          "image_width": 1224,
+          "inactive_expression_frames": 0,
+          "label_frame_count": 106,
+          "median_consecutive_center_displacement_px": 6.082827961927298,
+          "moving_track_ratio": 1.0,
+          "multi_target_expression_frames": 9455,
+          "single_target_expression_frames": 10359,
+          "size_distribution": {
+            "large": 51,
+            "medium": 326,
+            "small": 203
+          },
+          "source_target_id_missing_physical": 1,
+          "source_target_id_missing_references": 5,
+          "target_references": 38351,
+          "track_count": 16,
+          "unique_physical_targets": 579,
+          "valid_target_references": 38346,
+          "video": "0014"
+        },
+        {
+          "class_distribution": {
+            "0": 1613
+          },
+          "dataset": "refer_kitti_v2",
+          "expression_count": 478,
+          "expression_frame_count": 76216,
+          "frame_count": 376,
+          "hash_key": "95bd2f8022dac49a733196e4dcd2565ec1f03a22dcc2aaf512fc5ec8b21180c2",
+          "image_height": 370,
+          "image_width": 1224,
+          "inactive_expression_frames": 0,
+          "label_frame_count": 376,
+          "median_consecutive_center_displacement_px": 4.123163350283781,
+          "moving_track_ratio": 1.0,
+          "multi_target_expression_frames": 23739,
+          "single_target_expression_frames": 52477,
+          "size_distribution": {
+            "large": 721,
+            "medium": 492,
+            "small": 400
+          },
+          "source_target_id_missing_physical": 0,
+          "source_target_id_missing_references": 0,
+          "target_references": 108281,
+          "track_count": 20,
+          "unique_physical_targets": 1608,
+          "valid_target_references": 108281,
+          "video": "0015"
+        },
+        {
+          "class_distribution": {
+            "0": 2839
+          },
+          "dataset": "refer_kitti_v2",
+          "expression_count": 505,
+          "expression_frame_count": 93599,
+          "frame_count": 209,
+          "hash_key": "3e99f09dcb0a10f49703f0314e8a4ed4dcaf6f7ca75d831582160e262417efce",
+          "image_height": 370,
+          "image_width": 1224,
+          "inactive_expression_frames": 0,
+          "label_frame_count": 209,
+          "median_consecutive_center_displacement_px": 3.0000239999999962,
+          "moving_track_ratio": 1.0,
+          "multi_target_expression_frames": 59940,
+          "single_target_expression_frames": 33659,
+          "size_distribution": {
+            "large": 851,
+            "medium": 1709,
+            "small": 279
+          },
+          "source_target_id_missing_physical": 0,
+          "source_target_id_missing_references": 0,
+          "target_references": 314245,
+          "track_count": 23,
+          "unique_physical_targets": 2836,
+          "valid_target_references": 314245,
+          "video": "0016"
+        },
+        {
+          "class_distribution": {
+            "0": 778
+          },
+          "dataset": "refer_kitti_v2",
+          "expression_count": 353,
+          "expression_frame_count": 43961,
+          "frame_count": 145,
+          "hash_key": "292dd45d00dd767f45a9f5b0aa380de42cf9defbcd2d581ec7593fe5bfa8e568",
+          "image_height": 370,
+          "image_width": 1224,
+          "inactive_expression_frames": 0,
+          "label_frame_count": 145,
+          "median_consecutive_center_displacement_px": 5.000040000000013,
+          "moving_track_ratio": 1.0,
+          "multi_target_expression_frames": 19724,
+          "single_target_expression_frames": 24237,
+          "size_distribution": {
+            "large": 468,
+            "medium": 282,
+            "small": 28
+          },
+          "source_target_id_missing_physical": 8,
+          "source_target_id_missing_references": 120,
+          "target_references": 99627,
+          "track_count": 9,
+          "unique_physical_targets": 778,
+          "valid_target_references": 99507,
+          "video": "0017"
+        },
+        {
+          "class_distribution": {
+            "0": 5316
+          },
+          "dataset": "refer_kitti_v2",
+          "expression_count": 474,
+          "expression_frame_count": 213990,
+          "frame_count": 837,
+          "hash_key": "c7c76821d1f5ee852e086b4cdc485691f7987af5afb4742feee5a9c226b1daae",
+          "image_height": 376,
+          "image_width": 1241,
+          "inactive_expression_frames": 0,
+          "label_frame_count": 837,
+          "median_consecutive_center_displacement_px": 3.162909513612387,
+          "moving_track_ratio": 0.9646017699115044,
+          "multi_target_expression_frames": 115810,
+          "single_target_expression_frames": 98180,
+          "size_distribution": {
+            "large": 658,
+            "medium": 2752,
+            "small": 1906
+          },
+          "source_target_id_missing_physical": 0,
+          "source_target_id_missing_references": 0,
+          "target_references": 536312,
+          "track_count": 113,
+          "unique_physical_targets": 5316,
+          "valid_target_references": 536312,
+          "video": "0020"
+        }
+      ]
+    }
+  },
+  "forbidden_videos": [
+    "0005",
+    "0011",
+    "0013",
+    "0019"
+  ],
+  "format": "locatemot-u-legal-video-split-v2",
+  "official_test_labels_read": false,
+  "screening_gt_used": false,
+  "seed": 20261001,
+  "source_manifest": "outputs/unified/protocol/data_manifest.json",
+  "source_manifest_sha256": "f520fce033d44c18ff31358dcea8cffec4006ae1ba6d4fb7ec14059b9b57b112",
+  "split_sha256": "8ee806048ccbb227919f27edf68cf0bebc1fa50f824a8108878fc5f39fc6e1c0",
+  "status": "FROZEN_BEFORE_U1_FORMAL_EVALUATION",
+  "training_started": false,
+  "v2_source_target_id_missing_count": 157
+}
