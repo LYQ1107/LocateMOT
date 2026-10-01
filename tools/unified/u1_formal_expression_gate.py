@@ -41,10 +41,12 @@ THRESHOLDS = (0.25, 0.50, 0.75)
 TOP_KS = (1, 5, 10, 100, 300)
 SPLITS = ("calibration", "validation")
 STRATA = ("overall", "refer_kitti_v1", "refer_kitti_v2")
+PRECISION_TOP_K = 10
+SCORE_THRESHOLD = 0.05
 
 
 def query_records() -> list[dict[str, Any]]:
-    rows: list[dict[str, Any]] = []
+    query_rows: list[dict[str, Any]] = []
     for dataset in ("refer_kitti_v1", "refer_kitti_v2"):
         root = PROJECT_ROOT / "data" / dataset
         for split in SPLITS:
@@ -60,28 +62,52 @@ def query_records() -> list[dict[str, Any]]:
                         targets = [str(target) for target in targets if target is not None]
                         if targets:
                             frame_rows.append((int(raw_frame), sorted(set(targets))))
-                    if not frame_rows:
-                        continue
-                    frame, targets = sorted(frame_rows)[len(frame_rows) // 2]
-                    image = assert_legal_path(
-                        PROJECT_ROOT / "data/kitti_tracking/training/image_02"
-                        / video / f"{frame:06d}.png"
-                    )
-                    rows.append({
+                    frame_rows.sort()
+                    positive = None if not frame_rows else frame_rows[len(frame_rows) // 2]
+                    image_root = PROJECT_ROOT / "data/kitti_tracking/training/image_02" / video
+                    image_frames = sorted(int(path.stem) for path in image_root.glob("*.png"))
+                    labelled_frames = {frame for frame, _ in frame_rows}
+                    empty_frames = [frame for frame in image_frames if frame not in labelled_frames]
+                    query_rows.append({
                         "dataset": dataset,
                         "split": split,
                         "video": video,
                         "expression": path.stem,
                         "sentence": str(item.get("sentence", path.stem)),
                         "query_id": 0,
-                        "frame": frame,
-                        "target_ids": targets,
-                        "image": image,
+                        "positive": positive,
+                        "empty_frame": empty_frames[0] if empty_frames else None,
                         "expression_path": path,
                     })
-    rows.sort(key=lambda row: (row["dataset"], row["video"], row["expression"], row["sentence"]))
-    for query_id, row in enumerate(rows):
-        row["query_id"] = query_id
+    query_rows.sort(key=lambda row: (row["dataset"], row["video"], row["expression"], row["sentence"]))
+    rows: list[dict[str, Any]] = []
+    for query_id, query in enumerate(query_rows):
+        if query["positive"] is not None:
+            frame, targets = query["positive"]
+            rows.append({
+                **query,
+                "query_id": query_id,
+                "frame": frame,
+                "target_ids": targets,
+                "image": assert_legal_path(
+                    PROJECT_ROOT / "data/kitti_tracking/training/image_02"
+                    / query["video"] / f"{frame:06d}.png"
+                ),
+                "row_kind": "positive",
+            })
+        if query["empty_frame"] is not None:
+            frame = query["empty_frame"]
+            rows.append({
+                **query,
+                "query_id": query_id,
+                "frame": frame,
+                "target_ids": [],
+                "image": assert_legal_path(
+                    PROJECT_ROOT / "data/kitti_tracking/training/image_02"
+                    / query["video"] / f"{frame:06d}.png"
+                ),
+                "row_kind": "empty",
+            })
     return rows
 
 
@@ -130,6 +156,50 @@ def update_stats(stats: dict[str, dict[str, int]], boxes: list[float], target: l
             stats[str(k)][str(threshold)] += int(best >= threshold)
 
 
+def empty_metrics() -> dict[str, float]:
+    return {
+        "precision_hits": 0.0,
+        "precision_predictions": 0.0,
+        "ap50_sum": 0.0,
+        "positive_queries": 0.0,
+        "single_queries": 0.0,
+        "single_hits": 0.0,
+        "multi_queries": 0.0,
+        "multi_target_total": 0.0,
+        "multi_target_hits": 0.0,
+        "multi_exact_hits": 0.0,
+        "empty_queries": 0.0,
+        "empty_fp": 0.0,
+        "score_threshold_predictions": 0.0,
+        "score_threshold_queries": 0.0,
+    }
+
+
+def average_precision(predictions: list[list[float]], scores: list[float], targets: list[list[float]]) -> float:
+    """Query-level AP50 with one-to-one GT matching in score order."""
+    if not targets:
+        return 0.0
+    matched: set[int] = set()
+    tp: list[int] = []
+    for box in predictions:
+        best = max(((iou(box, target), index) for index, target in enumerate(targets) if index not in matched), default=(0.0, -1))
+        if best[0] >= 0.50:
+            matched.add(best[1])
+            tp.append(1)
+        else:
+            tp.append(0)
+    hit = 0
+    previous_recall = 0.0
+    ap = 0.0
+    for index, value in enumerate(tp, start=1):
+        hit += value
+        recall = hit / len(targets)
+        precision = hit / index
+        ap += precision * max(0.0, recall - previous_recall)
+        previous_recall = recall
+    return ap
+
+
 def run_worker(args: argparse.Namespace) -> int:
     all_rows = query_records()
     rows = all_rows[args.worker_index :: args.worker_count]
@@ -141,6 +211,7 @@ def run_worker(args: argparse.Namespace) -> int:
         training_contract=False,
     )
     stats = {stratum: new_stats() for stratum in STRATA}
+    query_metrics = {stratum: empty_metrics() for stratum in STRATA}
     query_frame_count = 0
     target_reference_count = 0
     valid_target_count = 0
@@ -154,6 +225,7 @@ def run_worker(args: argparse.Namespace) -> int:
         prediction_boxes, prediction_scores = prediction_arrays(result)
         order = torch.argsort(prediction_scores, descending=True).tolist()
         boxes = prediction_boxes[order].tolist()
+        scores = prediction_scores[order].tolist()
         if not bool(torch.isfinite(prediction_boxes).all() and torch.isfinite(prediction_scores).all()):
             raise RuntimeError(f"non-finite expression prediction: {row['image']}")
         # The query-conditioned forward is complete before opening the label.
@@ -166,6 +238,13 @@ def run_worker(args: argparse.Namespace) -> int:
         )
         ground_truth = read_gt(label_path, width, height)
         query_frame_count += 1
+        for stratum in ("overall", row["dataset"]):
+            qm = query_metrics[stratum]
+            qm["score_threshold_queries"] += 1
+            qm["score_threshold_predictions"] += sum(score >= SCORE_THRESHOLD for score in scores)
+            if row["row_kind"] == "empty":
+                qm["empty_queries"] += 1
+                qm["empty_fp"] += sum(score >= SCORE_THRESHOLD for score in scores)
         for target_id in row["target_ids"]:
             unit = (row["dataset"], row["video"], row["query_id"], row["frame"], target_id)
             if unit in target_units:
@@ -181,6 +260,35 @@ def run_worker(args: argparse.Namespace) -> int:
             valid_by_dataset[row["dataset"]] += 1
             for stratum in ("overall", row["dataset"]):
                 update_stats(stats[stratum], boxes, target)
+        if row["row_kind"] == "positive":
+            targets = [ground_truth[target_id] for target_id in row["target_ids"] if target_id in ground_truth]
+            if targets:
+                for stratum in ("overall", row["dataset"]):
+                    qm = query_metrics[stratum]
+                    qm["positive_queries"] += 1
+                    if len(targets) == 1:
+                        qm["single_queries"] += 1
+                        qm["single_hits"] += int(max((iou(box, targets[0]) for box in boxes[:PRECISION_TOP_K]), default=0.0) >= 0.50)
+                    else:
+                        qm["multi_queries"] += 1
+                        hits = sum(
+                            int(max((iou(box, target) for box in boxes[:PRECISION_TOP_K]), default=0.0) >= 0.50)
+                            for target in targets
+                        )
+                        qm["multi_target_total"] += len(targets)
+                        qm["multi_target_hits"] += hits
+                        qm["multi_exact_hits"] += int(hits == len(targets))
+                    qm["ap50_sum"] += average_precision(boxes[:TOP_KS[-1]], scores[:TOP_KS[-1]], targets)
+                    selected = boxes[:PRECISION_TOP_K]
+                    matched = 0
+                    used: set[int] = set()
+                    for box in selected:
+                        best = max(((iou(box, target), index) for index, target in enumerate(targets) if index not in used), default=(0.0, -1))
+                        if best[0] >= 0.50:
+                            used.add(best[1])
+                            matched += 1
+                    qm["precision_hits"] += matched
+                    qm["precision_predictions"] += len(selected)
         if args.progress and (index + 1) % args.progress == 0:
             print(
                 f"worker={args.worker_index} {index + 1}/{len(rows)} "
@@ -201,6 +309,7 @@ def run_worker(args: argparse.Namespace) -> int:
         "valid_target_count_by_dataset": valid_by_dataset,
         "missing_source_target_count_by_dataset": missing_by_dataset,
         "stats": stats,
+        "query_metrics": query_metrics,
         "runtime": runtime_metadata(runtime),
         "elapsed_seconds": time.perf_counter() - started,
         "official_test_labels_read": False,
@@ -219,17 +328,24 @@ def merge_stats(target: dict[str, dict[str, int]], source: dict[str, Any]) -> No
             target[str(k)][str(threshold)] += int(source[str(k)][str(threshold)])
 
 
+def merge_query_metrics(target: dict[str, float], source: dict[str, Any]) -> None:
+    for key in target:
+        target[key] += float(source[key])
+
+
 def aggregate(args: argparse.Namespace) -> int:
     shards = [json.loads(path.read_text(encoding="utf-8")) for path in sorted(args.shards)]
     if not shards:
         raise RuntimeError("no expression shards")
     merged = {stratum: new_stats() for stratum in STRATA}
+    merged_query_metrics = {stratum: empty_metrics() for stratum in STRATA}
     query_frame_count = target_reference_count = valid_target_count = missing_target_count = 0
     valid_by_dataset = {dataset: 0 for dataset in ("refer_kitti_v1", "refer_kitti_v2")}
     missing_by_dataset = {dataset: 0 for dataset in ("refer_kitti_v1", "refer_kitti_v2")}
     for shard in shards:
         for stratum in STRATA:
             merge_stats(merged[stratum], shard["stats"][stratum])
+            merge_query_metrics(merged_query_metrics[stratum], shard["query_metrics"][stratum])
         query_frame_count += int(shard["query_frame_count"])
         target_reference_count += int(shard["target_reference_count"])
         valid_target_count += int(shard["valid_target_count"])
@@ -280,6 +396,8 @@ def aggregate(args: argparse.Namespace) -> int:
             "top_k_diagnostic": [1, 5, 10, 100, 300],
             "iou_thresholds": list(THRESHOLDS),
             "missing_source_target_policy": "count in source denominator, exclude only from valid-positive metric denominator",
+            "precision_top_k": PRECISION_TOP_K,
+            "score_threshold": SCORE_THRESHOLD,
         },
         "query_frame_count": query_frame_count,
         "target_reference_count": target_reference_count,
@@ -288,6 +406,20 @@ def aggregate(args: argparse.Namespace) -> int:
         "valid_target_count_by_dataset": valid_by_dataset,
         "missing_source_target_count_by_dataset": missing_by_dataset,
         "metrics": metrics,
+        "query_metrics": {
+            stratum: {
+                "precision_at_top10_iou050": values["precision_hits"] / values["precision_predictions"] if values["precision_predictions"] else 0.0,
+                "ap50_mean": values["ap50_sum"] / values["positive_queries"] if values["positive_queries"] else 0.0,
+                "empty_frame_fp_per_query": values["empty_fp"] / values["empty_queries"] if values["empty_queries"] else 0.0,
+                "predictions_ge_score005_per_query": values["score_threshold_predictions"] / values["score_threshold_queries"] if values["score_threshold_queries"] else 0.0,
+                "single_target_recall_top10_iou050": values["single_hits"] / values["single_queries"] if values["single_queries"] else 0.0,
+                "multi_target_recall_top10_iou050": values["multi_target_hits"] / values["multi_target_total"] if values["multi_target_total"] else 0.0,
+                "multi_target_exact_set_coverage_top10_iou050": values["multi_exact_hits"] / values["multi_queries"] if values["multi_queries"] else 0.0,
+                "positive_queries": int(values["positive_queries"]),
+                "empty_queries": int(values["empty_queries"]),
+            }
+            for stratum, values in merged_query_metrics.items()
+        },
         "main_top1_by_dataset": {dataset: metrics[dataset]["1"] for dataset in ("refer_kitti_v1", "refer_kitti_v2")},
         "runtime": shards[0]["runtime"],
         "official_test_labels_read": False,

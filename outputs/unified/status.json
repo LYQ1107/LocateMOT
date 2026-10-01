@@ -21,7 +21,14 @@
     "u1_preprocessing_contract": "reports/unified/U1_PREPROCESSING_CONTRACT.md",
     "u1_preprocessing_equivalence": "outputs/unified/u1_preprocessing_equivalence.json",
     "external_baseline_temprmot": "outputs/unified/external_baselines/temprmot_legal_v1.json",
-    "external_baseline_legal_dev": "reports/unified/EXTERNAL_BASELINE_LEGAL_DEV.md"
+    "external_baseline_legal_dev": "reports/unified/EXTERNAL_BASELINE_LEGAL_DEV.md",
+    "formal_generic_gate": "outputs/unified/u1_formal_generic_gate.json",
+    "formal_generic_gate_report": "reports/unified/U1_GENERIC_PROPOSAL_GATE.md",
+    "formal_generic_gate_directory": "outputs/unified/u1/formal_generic_proposal_gate/result.json",
+    "formal_expression_gate": "outputs/unified/u1_formal_expression_gate.json",
+    "formal_expression_gate_report": "reports/unified/U1_EXPRESSION_GROUNDING_GATE.md",
+    "formal_expression_gate_directory": "outputs/unified/u1/formal_expression_grounding_gate/result.json",
+    "external_baseline_real_eval": "reports/unified/EXTERNAL_BASELINE_REAL_EVAL.md"
   },
   "branch": "codex/u0r-u1r-foundation-repair-20261001",
   "completed": [
@@ -36,7 +43,7 @@
     "U1.2_label_free_proposal_gate_diagnostic",
     "U1.3_prompt_and_selection_repair_diagnostic"
   ],
-  "current": "U0_external_baseline_and_formal_eval",
+  "current": "U1_controlled_adaptation_or_blocked_external_baseline",
   "external_sanity": {
     "compile_pass": 10,
     "compile_total": 10,
@@ -66,7 +73,7 @@
     "status": "pass",
     "video": "0004"
   },
-  "next": "U0_external_baseline_and_formal_eval",
+  "next": "U1_generic_foundation_adaptation_after_formal_failure",
   "official_test_labels_read": false,
   "project_root": "/data2/user/LocateMOT",
   "proposal_diagnostic": {
@@ -87,14 +94,14 @@
   "screening_gt_used": false,
   "stage": "U0R_U1R",
   "phase_status": {
-    "U0_EXTERNAL_BASELINE": "INCOMPLETE",
+    "U0_EXTERNAL_BASELINE": "INCOMPLETE_ONE_METHOD_REAL_TWO_REQUIRED",
     "U0_LEGAL_SCOPE": "PASS_FRESH_CLONE_AND_SPLIT_FROZEN",
     "U0_OPEN_SOURCE_AUDIT": "PASS",
     "U0_UNIFIED_SKELETON": "PASS_API_ONLY",
     "U1_FOUNDATION_ASSET": "PASS",
     "U1_FOUNDATION_LOAD": "CONDITIONAL_PASS",
-    "U1_FORMAL_GENERIC_GATE": "NOT_RUN",
-    "U1_FORMAL_GROUNDING_GATE": "NOT_RUN",
+    "U1_FORMAL_GENERIC_GATE": "FAIL_RECALL_BELOW_0.90",
+    "U1_FORMAL_GROUNDING_GATE": "FAIL_RECALL_BELOW_0.75",
     "U1_PROPOSAL_DIAGNOSTIC": "INCONCLUSIVE",
     "U1_TRAINING": "NOT_STARTED",
     "U1_MEASUREMENT_CONTRACT": "PASS"
@@ -131,5 +138,38 @@
     "sequence_count": 2,
     "formal_gate": false,
     "second_method_required": true
+  },
+  "formal_generic_gate": {
+    "status": "FORMAL_COMPLETE",
+    "gate_pass": false,
+    "image_count": 4201,
+    "target_count": 33526,
+    "unique_physical_objects": 5992,
+    "v1_top150_iou025": 0.5308508610281503,
+    "v1_top150_iou050": 0.08025671983224249,
+    "v1_top150_iou075": 0.0045116604181228955,
+    "v2_top150_iou025": 0.4940131541964135,
+    "v2_top150_iou050": 0.06689527235932317,
+    "v2_top150_iou075": 0.006239811119230986,
+    "main_metric": "physical target recall; Top150; official pipeline",
+    "official_test_labels_read": false
+  },
+  "formal_expression_gate": {
+    "status": "FORMAL_COMPLETE_REPRESENTATIVE_FRAME_PER_QUERY",
+    "gate_pass": false,
+    "query_frame_count": 7160,
+    "target_reference_count": 7199,
+    "valid_target_count": 7199,
+    "missing_source_target_count": 0,
+    "v1_top1_iou050": 0.0029585798816568047,
+    "v2_top1_iou050": 0.0027594665031427257,
+    "official_test_labels_read": false
+  },
+  "formal_measurement": {
+    "code_commit": "75264a762824469725ff963f99d0fef42691af9d",
+    "split_sha256": "8ee806048ccbb227919f27edf68cf0bebc1fa50f824a8108878fc5f39fc6e1c0",
+    "checkpoint_sha256": "55949c9c0f46339a73b415334765615d491ee6ed739ed3f568142b7fc5581143",
+    "preprocessing": "official MMDetection LoadImageFromFile/FixScaleResize/PackDetInputs/DetDataPreprocessor",
+    "training_started": false
   }
 }

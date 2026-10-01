@@ -633,3 +633,34 @@ Concise experimental log (latest first).
   method also produces predictions and evaluation. DKGTrack and FlexHook
   remain pending because their published weight links are not yet available
   through the isolated download path.
+
+## LocateMOT-U U1R — formal generic and expression measurements — 2026-10-01
+
+- Measurement contract: the frozen split SHA is
+  `8ee806048ccbb227919f27edf68cf0bebc1fa50f824a8108878fc5f39fc6e1c0`; the
+  foundation checkpoint SHA is
+  `55949c9c0f46339a73b415334765615d491ee6ed739ed3f568142b7fc5581143`; every
+  forward used `LoadImageFromFile`, `FixScaleResize(800,1333)`,
+  `PackDetInputs`, and `DetDataPreprocessor` with BGR-to-RGB conversion.
+- Generic protocol: one fixed query-independent vocabulary, all legal
+  calibration/validation frames with materialized labels, physical units
+  `(dataset, video, frame, track_id)`, Top100/150/300/900 diagnostics, and
+  small/medium/large height strata. The run covered 4,201 unique images,
+  33,526 physical GT units, and 5,992 unique physical objects. Top150 recall
+  was V1 `0.0803` and V2 `0.0669` at IoU 0.50 (V1/V2 IoU .25: `.5309/.4940`,
+  IoU .75: `.0045/.0062`). Decision: formal generic gate FAIL; this is below
+  the `.80` adaptation early-pass, so a detection adaptation probe is required
+  before any grounding adaptation.
+- Expression protocol: every legal calibration/validation query contributed
+  one deterministic middle labeled frame and, when available, one first empty
+  target frame. Units were `(dataset, video, query_id, frame, target_id)`;
+  source-missing references stayed in the source denominator. The run covered
+  7,160 query-frame rows and 7,199 valid target units with zero source-missing
+  units in this calibration/validation sample. Top1 IoU .50 recall was V1
+  `0.0030` and V2 `0.0028`; AP50 and empty-frame FP/query are recorded in
+  `reports/unified/U1_EXPRESSION_GROUNDING_GATE.md`. Decision: formal
+  expression gate FAIL; no expression adaptation has started.
+- No official-test labels or screening ground truth were read. No U2 or
+  universal track core work was started. The external-baseline state remains
+  incomplete because only TempRMOT has real predictions/evaluation; DKGTrack
+  and FlexHook public Baidu links require an authenticated download path.

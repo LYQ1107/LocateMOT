@@ -1,0 +1,417 @@
+{
+  "format": "locatemot-u-u1-formal-expression-gate-v1",
+  "gate_goal": "Top1 expression grounding recall at IoU 0.50 >= 0.75 for both V1 and V2",
+  "gate_pass": false,
+  "main_top1_by_dataset": {
+    "refer_kitti_v1": {
+      "0.25": {
+        "hit": 6,
+        "recall": 0.008875739644970414,
+        "total": 676
+      },
+      "0.5": {
+        "hit": 2,
+        "recall": 0.0029585798816568047,
+        "total": 676
+      },
+      "0.75": {
+        "hit": 0,
+        "recall": 0.0,
+        "total": 676
+      }
+    },
+    "refer_kitti_v2": {
+      "0.25": {
+        "hit": 69,
+        "recall": 0.010577954928713782,
+        "total": 6523
+      },
+      "0.5": {
+        "hit": 18,
+        "recall": 0.0027594665031427257,
+        "total": 6523
+      },
+      "0.75": {
+        "hit": 0,
+        "recall": 0.0,
+        "total": 6523
+      }
+    }
+  },
+  "metrics": {
+    "overall": {
+      "1": {
+        "0.25": {
+          "hit": 75,
+          "recall": 0.010418113626892624,
+          "total": 7199
+        },
+        "0.5": {
+          "hit": 20,
+          "recall": 0.002778163633838033,
+          "total": 7199
+        },
+        "0.75": {
+          "hit": 0,
+          "recall": 0.0,
+          "total": 7199
+        }
+      },
+      "10": {
+        "0.25": {
+          "hit": 883,
+          "recall": 0.12265592443394915,
+          "total": 7199
+        },
+        "0.5": {
+          "hit": 59,
+          "recall": 0.008195582719822198,
+          "total": 7199
+        },
+        "0.75": {
+          "hit": 0,
+          "recall": 0.0,
+          "total": 7199
+        }
+      },
+      "100": {
+        "0.25": {
+          "hit": 3192,
+          "recall": 0.4433949159605501,
+          "total": 7199
+        },
+        "0.5": {
+          "hit": 280,
+          "recall": 0.03889429087373246,
+          "total": 7199
+        },
+        "0.75": {
+          "hit": 33,
+          "recall": 0.004583969995832754,
+          "total": 7199
+        }
+      },
+      "300": {
+        "0.25": {
+          "hit": 5010,
+          "recall": 0.6959299902764273,
+          "total": 7199
+        },
+        "0.5": {
+          "hit": 837,
+          "recall": 0.11626614807612168,
+          "total": 7199
+        },
+        "0.75": {
+          "hit": 80,
+          "recall": 0.011112654535352132,
+          "total": 7199
+        }
+      },
+      "5": {
+        "0.25": {
+          "hit": 519,
+          "recall": 0.07209334629809695,
+          "total": 7199
+        },
+        "0.5": {
+          "hit": 41,
+          "recall": 0.005695235449367968,
+          "total": 7199
+        },
+        "0.75": {
+          "hit": 0,
+          "recall": 0.0,
+          "total": 7199
+        }
+      }
+    },
+    "refer_kitti_v1": {
+      "1": {
+        "0.25": {
+          "hit": 6,
+          "recall": 0.008875739644970414,
+          "total": 676
+        },
+        "0.5": {
+          "hit": 2,
+          "recall": 0.0029585798816568047,
+          "total": 676
+        },
+        "0.75": {
+          "hit": 0,
+          "recall": 0.0,
+          "total": 676
+        }
+      },
+      "10": {
+        "0.25": {
+          "hit": 72,
+          "recall": 0.10650887573964497,
+          "total": 676
+        },
+        "0.5": {
+          "hit": 10,
+          "recall": 0.014792899408284023,
+          "total": 676
+        },
+        "0.75": {
+          "hit": 0,
+          "recall": 0.0,
+          "total": 676
+        }
+      },
+      "100": {
+        "0.25": {
+          "hit": 296,
+          "recall": 0.4378698224852071,
+          "total": 676
+        },
+        "0.5": {
+          "hit": 34,
+          "recall": 0.05029585798816568,
+          "total": 676
+        },
+        "0.75": {
+          "hit": 5,
+          "recall": 0.0073964497041420114,
+          "total": 676
+        }
+      },
+      "300": {
+        "0.25": {
+          "hit": 442,
+          "recall": 0.6538461538461539,
+          "total": 676
+        },
+        "0.5": {
+          "hit": 99,
+          "recall": 0.14644970414201183,
+          "total": 676
+        },
+        "0.75": {
+          "hit": 12,
+          "recall": 0.01775147928994083,
+          "total": 676
+        }
+      },
+      "5": {
+        "0.25": {
+          "hit": 34,
+          "recall": 0.05029585798816568,
+          "total": 676
+        },
+        "0.5": {
+          "hit": 6,
+          "recall": 0.008875739644970414,
+          "total": 676
+        },
+        "0.75": {
+          "hit": 0,
+          "recall": 0.0,
+          "total": 676
+        }
+      }
+    },
+    "refer_kitti_v2": {
+      "1": {
+        "0.25": {
+          "hit": 69,
+          "recall": 0.010577954928713782,
+          "total": 6523
+        },
+        "0.5": {
+          "hit": 18,
+          "recall": 0.0027594665031427257,
+          "total": 6523
+        },
+        "0.75": {
+          "hit": 0,
+          "recall": 0.0,
+          "total": 6523
+        }
+      },
+      "10": {
+        "0.25": {
+          "hit": 811,
+          "recall": 0.1243292963360417,
+          "total": 6523
+        },
+        "0.5": {
+          "hit": 49,
+          "recall": 0.0075118810363329755,
+          "total": 6523
+        },
+        "0.75": {
+          "hit": 0,
+          "recall": 0.0,
+          "total": 6523
+        }
+      },
+      "100": {
+        "0.25": {
+          "hit": 2896,
+          "recall": 0.44396749961674076,
+          "total": 6523
+        },
+        "0.5": {
+          "hit": 246,
+          "recall": 0.03771270887628392,
+          "total": 6523
+        },
+        "0.75": {
+          "hit": 28,
+          "recall": 0.004292503449333129,
+          "total": 6523
+        }
+      },
+      "300": {
+        "0.25": {
+          "hit": 4568,
+          "recall": 0.7002912770197762,
+          "total": 6523
+        },
+        "0.5": {
+          "hit": 738,
+          "recall": 0.11313812662885175,
+          "total": 6523
+        },
+        "0.75": {
+          "hit": 68,
+          "recall": 0.010424651234094742,
+          "total": 6523
+        }
+      },
+      "5": {
+        "0.25": {
+          "hit": 485,
+          "recall": 0.07435229189023455,
+          "total": 6523
+        },
+        "0.5": {
+          "hit": 35,
+          "recall": 0.005365629311666411,
+          "total": 6523
+        },
+        "0.75": {
+          "hit": 0,
+          "recall": 0.0,
+          "total": 6523
+        }
+      }
+    }
+  },
+  "missing_source_target_count": 0,
+  "missing_source_target_count_by_dataset": {
+    "refer_kitti_v1": 0,
+    "refer_kitti_v2": 0
+  },
+  "official_test_labels_read": false,
+  "protocol": {
+    "iou_thresholds": [
+      0.25,
+      0.5,
+      0.75
+    ],
+    "missing_source_target_policy": "count in source denominator, exclude only from valid-positive metric denominator",
+    "precision_top_k": 10,
+    "query_frame_sampling": "one middle non-empty labeled frame per legal calibration/validation query",
+    "score_threshold": 0.05,
+    "split_parts": [
+      "calibration",
+      "validation"
+    ],
+    "top_k_diagnostic": [
+      1,
+      5,
+      10,
+      100,
+      300
+    ],
+    "unit": "dataset/video/query_id/representative_frame/target_id"
+  },
+  "query_frame_count": 7160,
+  "query_metrics": {
+    "overall": {
+      "ap50_mean": 0.005633450656391179,
+      "empty_frame_fp_per_query": 12.470451237263465,
+      "empty_queries": 3435,
+      "multi_target_exact_set_coverage_top10_iou050": 0.0,
+      "multi_target_recall_top10_iou050": 0.008147064967620639,
+      "positive_queries": 3725,
+      "precision_at_top10_iou050": 0.0015838926174496645,
+      "predictions_ge_score005_per_query": 11.404888268156425,
+      "single_target_recall_top10_iou050": 0.008291873963515755
+    },
+    "refer_kitti_v1": {
+      "ap50_mean": 0.007974263255486518,
+      "empty_frame_fp_per_query": 8.855491329479769,
+      "empty_queries": 346,
+      "multi_target_exact_set_coverage_top10_iou050": 0.0,
+      "multi_target_recall_top10_iou050": 0.012396694214876033,
+      "positive_queries": 346,
+      "precision_at_top10_iou050": 0.002890173410404624,
+      "predictions_ge_score005_per_query": 9.433526011560694,
+      "single_target_recall_top10_iou050": 0.020833333333333332
+    },
+    "refer_kitti_v2": {
+      "ap50_mean": 0.00539375809667322,
+      "empty_frame_fp_per_query": 12.875364195532535,
+      "empty_queries": 3089,
+      "multi_target_exact_set_coverage_top10_iou050": 0.0,
+      "multi_target_recall_top10_iou050": 0.007669068092028817,
+      "positive_queries": 3379,
+      "precision_at_top10_iou050": 0.0014501331754957088,
+      "predictions_ge_score005_per_query": 11.615800865800866,
+      "single_target_recall_top10_iou050": 0.007207207207207207
+    }
+  },
+  "runtime": {
+    "checkpoint": "weights/groundingdino_swinb_cogcoor_mmdet-55949c9c.pth",
+    "checkpoint_sha256": "55949c9c0f46339a73b415334765615d491ee6ed739ed3f568142b7fc5581143",
+    "config": "third_party/mmdetection/configs/grounding_dino/grounding_dino_swin-b_finetune_16xb2_1x_coco.py",
+    "device": "cuda:0",
+    "missing_keys": [
+      "dn_query_generator.label_embedding.weight"
+    ],
+    "preprocessing_contract": {
+      "bgr_to_rgb": true,
+      "box_coordinate_contract": "model postprocess restores boxes to ori_shape",
+      "data_preprocessor": "DetDataPreprocessor",
+      "loader": "LoadImageFromFile",
+      "pack": "PackDetInputs",
+      "resize": {
+        "keep_ratio": true,
+        "scale": [
+          800,
+          1333
+        ],
+        "type": "FixScaleResize"
+      }
+    },
+    "unexpected_keys": [
+      "language_model.language_backbone.body.model.embeddings.position_ids",
+      "language_model.language_backbone.body.model.pooler.dense.bias",
+      "language_model.language_backbone.body.model.pooler.dense.weight"
+    ]
+  },
+  "screening_gt_used": false,
+  "shards": [
+    "/tmp/locatemot_expression_formal_20261001_r2/shards/shard_0.json",
+    "/tmp/locatemot_expression_formal_20261001_r2/shards/shard_1.json",
+    "/tmp/locatemot_expression_formal_20261001_r2/shards/shard_2.json",
+    "/tmp/locatemot_expression_formal_20261001_r2/shards/shard_3.json",
+    "/tmp/locatemot_expression_formal_20261001_r2/shards/shard_4.json",
+    "/tmp/locatemot_expression_formal_20261001_r2/shards/shard_5.json",
+    "/tmp/locatemot_expression_formal_20261001_r2/shards/shard_6.json",
+    "/tmp/locatemot_expression_formal_20261001_r2/shards/shard_7.json"
+  ],
+  "status": "FORMAL_COMPLETE_REPRESENTATIVE_FRAME_PER_QUERY",
+  "target_reference_count": 7199,
+  "training_launched": false,
+  "valid_target_count": 7199,
+  "valid_target_count_by_dataset": {
+    "refer_kitti_v1": 676,
+    "refer_kitti_v2": 6523
+  }
+}
