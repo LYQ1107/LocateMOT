@@ -30,6 +30,9 @@ outputs/l0_d/trackeval/*.npz
 
 # dataset symlinks and local artifacts are never committed
 data/
+!locatemot/unified/data/
+!locatemot/unified/data/**
+locatemot/unified/data/**/__pycache__/
 runs/
 third_party/
 outputs/stage_l0/*
