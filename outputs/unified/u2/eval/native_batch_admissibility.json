@@ -1,0 +1,63 @@
+{
+  "format": "locatemot-u2-native-batch-admissibility-v1",
+  "status": "REJECT_NATIVE_BATCH_FOR_CURRENT_CACHE",
+  "reference_only": true,
+  "foundation_sha256": "4efc35ce70be5cddf2c4d9a0f91bc4edef3e9ec5277a819211ba4ac42e0d7d26",
+  "precision": "native FP32, no autocast",
+  "images": [
+    "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-02-FRCNN/img1/000302.jpg",
+    "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-02-FRCNN/img1/000303.jpg"
+  ],
+  "frames": 2,
+  "candidate_cap": 150,
+  "same_native_preprocessed_input_shape": [
+    3,
+    749,
+    1333
+  ],
+  "batch_size": 2,
+  "singleton_candidate_equality": [
+    {
+      "bboxes": false,
+      "scores": false,
+      "labels": true
+    },
+    {
+      "bboxes": false,
+      "scores": false,
+      "labels": true
+    }
+  ],
+  "max_same_rank_absolute_error": [
+    {
+      "bboxes": 1033.974853515625,
+      "scores": 0.0005657747387886047,
+      "labels": 0.0
+    },
+    {
+      "bboxes": 1865.548828125,
+      "scores": 0.0026068687438964844,
+      "labels": 0.0
+    }
+  ],
+  "first_frame_equality_after_only_second_pixels_inverted": {
+    "bboxes": true,
+    "scores": true,
+    "labels": true
+  },
+  "observed_batch_seconds": 0.3159527569951024,
+  "fusion_global_softmax_shift_enabled": {
+    "encoder.fusion_layers.0.attn": false,
+    "encoder.fusion_layers.1.attn": false,
+    "encoder.fusion_layers.2.attn": false,
+    "encoder.fusion_layers.3.attn": false,
+    "encoder.fusion_layers.4.attn": false,
+    "encoder.fusion_layers.5.attn": false
+  },
+  "applied_to_formal_cache": false,
+  "full_ovmot_vocabulary_batched": false,
+  "original_full_audit_restarted_or_modified": false,
+  "tracking_benchmark_measured": false,
+  "official_test_labels_read": false,
+  "ready_for_u3": false
+}

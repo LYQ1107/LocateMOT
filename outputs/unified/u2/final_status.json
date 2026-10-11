@@ -273,5 +273,12 @@
     "audit_entry_contract": "outputs/unified/u2/eval/selected_core_audit_entry_contract.json",
     "readiness_gate_contract": "outputs/unified/u2/eval/readiness_gate_contract.json",
     "current_readiness_hold": "outputs/unified/u2/eval/readiness_current_hold.json"
+  },
+  "native_image_batch_probe": {
+    "status": "REJECT_NATIVE_BATCH_FOR_CURRENT_CACHE",
+    "report": "outputs/unified/u2/eval/native_batch_admissibility.json",
+    "applied_to_formal_cache": false,
+    "kept_inference_policy": "native singleton per image plus proven fixed-text reuse",
+    "scope": "two actual F0 MOT17 frames; proposal parity fails before any full-vocabulary batching integration"
   }
 }
