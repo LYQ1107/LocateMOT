@@ -19,8 +19,21 @@ U2 replaces the API-only skeleton with `locatemot/unified/models/u2/`:
   frozen U1 text features only after raw identity logits.  Its sigmoid gate is
   exactly zero for MOT.
 - `U2OnlineTracker` serializes the same state format for both tasks.
+- `runtime/u2_grounding_candidates.py` now bridges actual checkpoint-backed
+  native GroundingDINO predictions into the candidate API. It attaches the
+  selected final decoder query before chunk concatenation/NMS and samples the
+  pre-text multi-scale neck maps for identity. Original box coordinates are
+  scaled into the preprocessor's padded image extent before grid sampling.
 
 The identity GRU, anchor, appearance EMA, and identity association never
 receive class text or task embeddings.  The model accepts only precomputed
 floating-point U1 language features; it has no random vocabulary embedding.
 RMOT, point, box, and mask tracking remain disabled.
+
+Actual F0 image validation (`eval/real_candidate_feature_contract.json`) shows
+bit-exact native box/score/class parity for MOT Top150 and full 1,203-class,
+38-chunk OVMOT Top300. Decoder provenance remains exact after NMS, backbone
+extraction occurs once, and fixed-box identity features remain bit-exact under
+changed vocabulary. This proves feature alignment on the checked images, not
+full-dataset portability. The extractor never opens annotations or includes GT
+IDs in its payload. Full feature-cache generation still awaits U2-P selection.

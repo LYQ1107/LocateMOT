@@ -15,8 +15,20 @@
 `official_test_labels_read=false` and
 `refer_kitti_official_eval_labels_read=false`.
 
-A two-process CUDA forward/backward DDP smoke also passed with the same MOT
-task on both ranks.  The requested eight-process smoke was not accepted as
-evidence: all eight A800 devices were already occupied by an unrelated
-process, and the short launch hung during collective initialization before
-producing a new result.  It was terminated; no training job was started.
+A two-process CUDA forward/backward smoke passed in the original stage. The
+original eight-process attempt hung during collective initialization while
+devices were occupied and produced no accepted result.
+
+On 2026-10-12, the actual eight-GPU temporal core contract passed using
+`tools/unified/u2_ddp_temporal_contract.py`. All ranks bind to distinct devices
+0–7 and use the same task on each global step. Two four-frame clips per rank
+(global 16) keep the recurrent graph connected throughout each clip. MOT and
+OVMOT both produce finite losses/gradients; identity GRU, set interaction and
+association receive nonzero gradients, as do semantic GRU/text projection on
+OVMOT. After each scratch optimizer update, all model parameters are bit-exact
+across the eight ranks. Evidence: `eval/ddp_eight_rank_core.json`.
+
+This is a synthetic contract check with a probe objective and scratch weights.
+It does not substitute for the registered 6,000-step learned MOT baseline or
+measure tracking accuracy. The shared foundation was not modified, and no
+formal track training was launched.

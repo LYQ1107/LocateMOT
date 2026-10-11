@@ -1,0 +1,81 @@
+{
+  "format": "locatemot-u2-eight-gpu-temporal-contract-v1",
+  "status": "PASS",
+  "world_size": 8,
+  "rank_devices": [
+    {
+      "rank": 0,
+      "local_rank": 0,
+      "cuda_device": 0
+    },
+    {
+      "rank": 1,
+      "local_rank": 1,
+      "cuda_device": 1
+    },
+    {
+      "rank": 2,
+      "local_rank": 2,
+      "cuda_device": 2
+    },
+    {
+      "rank": 3,
+      "local_rank": 3,
+      "cuda_device": 3
+    },
+    {
+      "rank": 4,
+      "local_rank": 4,
+      "cuda_device": 4
+    },
+    {
+      "rank": 5,
+      "local_rank": 5,
+      "cuda_device": 5
+    },
+    {
+      "rank": 6,
+      "local_rank": 6,
+      "cuda_device": 6
+    },
+    {
+      "rank": 7,
+      "local_rank": 7,
+      "cuda_device": 7
+    }
+  ],
+  "same_task_all_ranks": true,
+  "clips_per_rank": 2,
+  "global_clips_per_step": 16,
+  "frames_per_clip": 4,
+  "temporal_graph_detached_between_frames": false,
+  "tasks": [
+    {
+      "task": "mot",
+      "finite_loss_and_gradients": true,
+      "nonzero_gradient_branches": [
+        "identity_gru",
+        "pair_head",
+        "set_interaction"
+      ],
+      "maximum_parameter_difference_across_ranks": 0.0
+    },
+    {
+      "task": "ovmot",
+      "finite_loss_and_gradients": true,
+      "nonzero_gradient_branches": [
+        "identity_gru",
+        "pair_head",
+        "semantic_gru",
+        "semantic_text",
+        "set_interaction"
+      ],
+      "maximum_parameter_difference_across_ranks": 0.0
+    }
+  ],
+  "input_source": "synthetic contract-only features",
+  "foundation_weights_modified": false,
+  "formal_track_training_launched": false,
+  "benchmark_metrics_measured": false,
+  "official_test_labels_read": false
+}

@@ -12,6 +12,13 @@ MOT17 Top150/Top300 Recall@.50 = 0.787233/0.806253, and MOT20 =
 0.731010/0.884673, over all 7,115 registered dev frames. Both registered Top150
 gates fail, including the 0.80 hard stop. KITTI retains the U1 reference.
 
+The eight-GPU temporal core check now passes on both tasks with two four-frame
+clips per rank, finite recurrent gradients and bit-exact optimizer parameters
+across ranks. Actual F0 candidate extraction also preserves native predictions
+and final-decoder provenance on MOT and the full 1,203-class OVMOT vocabulary;
+fixed-box identity features are invariant to text. These checks support the
+runtime contract, not learned tracking performance or full portability.
+
 All seven required streams now have complete source-image coverage. DanceTrack's
 full 25,508-frame audit passed: Top150/Top300
 0.996313536/0.997685967 over 225,148 source GT units. TAO modal train/val and all

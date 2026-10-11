@@ -1,0 +1,28 @@
+{
+  "format": "locatemot-u2-real-candidate-feature-contract-v1",
+  "status": "PASS",
+  "foundation_sha256": "4efc35ce70be5cddf2c4d9a0f91bc4edef3e9ec5277a819211ba4ac42e0d7d26",
+  "device": "cuda:0",
+  "ordinary": {
+    "image": "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-02-FRCNN/img1/000302.jpg",
+    "candidates": 150,
+    "native_box_score_class_parity": "BIT_EXACT",
+    "decoder_alignment": "BIT_EXACT"
+  },
+  "ovmot": {
+    "image": "/data2/user/LocateMOT/data/TAO-Amodal/frames/val/YFCC100M/v_25685519b728afd746dfd1b2fe77c/frame0751.jpg",
+    "vocabulary_size": 1203,
+    "chunk_count": 38,
+    "candidates": 300,
+    "backbone_calls": 1,
+    "native_box_score_class_nms_parity": "BIT_EXACT",
+    "decoder_alignment": "BIT_EXACT"
+  },
+  "fixed_box_identity_text_invariance": "BIT_EXACT",
+  "identity_source": "pre_text_neck_multiscale_center_grid_mean",
+  "coordinate_contract": "resized_xyxy_over_padded_batch_shape",
+  "feature_payload_has_gt_labels": false,
+  "full_cache_started": false,
+  "track_training_launched": false,
+  "official_test_labels_read": false
+}

@@ -5,9 +5,10 @@
   "u1_foundation_sha256": "4efc35ce70be5cddf2c4d9a0f91bc4edef3e9ec5277a819211ba4ac42e0d7d26",
   "u2_final_checkpoint": null,
   "perception_portability": {
-    "status": "BLOCKED_MISSING_LOCAL_DATA",
+    "status": "BLOCKED_NOT_MEASURED",
     "bdd100k_top150_iou050": null,
-    "dancetrack_top150_iou050": null,
+    "dancetrack_top150_iou050": 0.9963135359852187,
+    "dancetrack_top300_iou050": 0.9976859665642155,
     "mot17_top150_iou050": 0.7872332529226201,
     "mot20_top150_iou050": 0.7310095149535795,
     "kitti_refer_v1_top150_iou050": 0.986592107771494,
@@ -20,15 +21,16 @@
       "mot17",
       "mot20"
     ],
-    "ordinary_missing_local_data": [
-      "bdd100k"
-    ],
+    "ordinary_missing_local_data": [],
+    "ordinary_unmeasured": ["bdd100k"],
     "mot17_top300_iou050": 0.8062534793097049,
     "mot20_top300_iou050": 0.8846728452361019,
     "tao_base_top300_iou050": null,
     "tao_novel_top300_iou050": null
   },
   "causal_contract": "PASS",
+  "eight_gpu_temporal_core_contract": "outputs/unified/u2/eval/ddp_eight_rank_core.json",
+  "real_candidate_feature_contract": "outputs/unified/u2/eval/real_candidate_feature_contract.json",
   "shared_non_head_fraction": 0.9378111093950003,
   "mot_simple_baseline": null,
   "mot_only_baseline": null,
@@ -40,7 +42,7 @@
   "prompt_tracking_launched": false,
   "status": "LOCATEMOT_U_BLOCKED_U2_PERCEPTION_PORTABILITY",
   "stop": "TRACK_TRAINING_HELD_BY_U2_P_GATES",
-  "execution_state": "FULL_TAO_AND_DANCE_PERCEPTION_AUDITS_AND_BDD_RECOVERY_ACTIVE",
+  "execution_state": "FULL_F0_BDD_TAO_AUDITS_ACTIVE_BOUNDED_PERCEPTION_CONTROLLER_WAITING",
   "track_training_eligible": false,
   "ready_for_u3": false,
   "tao_perception_audit": {
@@ -84,14 +86,17 @@
     "ctao": "AVAILABLE"
   },
   "bdd_annotation_recovery": {
-    "status": "RAW_TRAIN_VAL_ANNOTATIONS_AND_VALIDATION_IMAGES_COMPLETE",
+    "status": "RAW_TRAIN_VAL_ANNOTATIONS_AND_ALL_TRAIN_VALIDATION_IMAGES_COMPLETE",
     "manifest": "outputs/unified/u2/protocol/bdd_labels_acquisition_manifest.json",
     "raw_train_annotation_videos_expected": 1400,
     "raw_validation_annotation_videos_expected": 200,
     "raw_annotations_validated": true,
     "validation_images": 39973,
     "positive_validation_gt_boxes": 442814,
-    "remaining": "Complete original train-image archive extraction and full perception audit"
+    "train_images": 278079,
+    "train_annotation_videos": 1400,
+    "train_extraction": "outputs/unified/u2/acquisition/bdd_train_extraction.json",
+    "remaining": "Complete full perception audit"
   },
   "bdd_perception_audit": {
     "status": "RUNNING_FULL_VALIDATION",
