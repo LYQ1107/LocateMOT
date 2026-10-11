@@ -1,31 +1,40 @@
-"""Persistent online track memory shared by all task heads."""
-from __future__ import annotations
+"""Compatibility facade over the U2 persistent track core.
 
-from dataclasses import dataclass, field
-from typing import Any
+Legacy callers may still import ``TrackMemory`` from this path.  The old
+``torch.arange`` per-frame ID placeholder is intentionally gone: IDs now come
+from ``SharedTrackCore`` and persist in ``UnifiedTrackState``.
+"""
+from __future__ import annotations
 
 import torch
 
+from .u2.shared_track_core import SharedTrackCore
+from .u2.track_state import UnifiedTrackState
 
-@dataclass
-class TrackMemoryState:
-    embeddings: torch.Tensor
-    boxes: torch.Tensor
-    ids: torch.Tensor
-    ages: torch.Tensor
-    metadata: dict[str, Any] = field(default_factory=dict)
+TrackMemoryState = UnifiedTrackState
 
 
 class TrackMemory:
-    def __init__(self, hidden_dim: int = 256) -> None:
+    def __init__(self, hidden_dim: int = 256, max_age: int = 30) -> None:
         self.hidden_dim = int(hidden_dim)
-        self.state: TrackMemoryState | None = None
+        self.core = SharedTrackCore(hidden_dim=hidden_dim, max_age=max_age).eval()
+        self.state: UnifiedTrackState | None = None
 
     def reset(self) -> None:
         self.state = None
 
-    def update(self, embeddings: torch.Tensor, boxes: torch.Tensor, scores: torch.Tensor) -> TrackMemoryState:
-        count = embeddings.shape[0]
-        ids = torch.arange(count, device=embeddings.device, dtype=torch.long)
-        self.state = TrackMemoryState(embeddings, boxes, ids, torch.zeros(count, device=embeddings.device), {"scores": scores})
+    def update(self, embeddings: torch.Tensor, boxes: torch.Tensor, scores: torch.Tensor) -> UnifiedTrackState:
+        candidates = {
+            "id_visual": embeddings,
+            "semantic_visual": embeddings,
+            "decoder_query": embeddings,
+            "boxes": boxes,
+            "scores": scores,
+        }
+        with torch.no_grad():
+            output = self.core(candidates, self.state, task_type="mot")
+        self.state = output["state"]
         return self.state
+
+
+__all__ = ["TrackMemory", "TrackMemoryState", "UnifiedTrackState"]

@@ -1,0 +1,24 @@
+{
+  "ctao_counts": {
+    "images": 490210,
+    "annotations": 1489637,
+    "categories": 1203,
+    "videos": 500,
+    "tracks": 2588
+  },
+  "ctao_supervised_frequencies": {
+    "f": 1378391,
+    "c": 111246
+  },
+  "ctao_image_prefixes": {
+    "train": 490210
+  },
+  "tao_validation_unmapped_lvis_v1_counts": {
+    "butcher_knife": 27,
+    "beaker": 188,
+    "basketball_hoop": 40,
+    "cutting_tool": 25,
+    "biscuit_(bread)": 33,
+    "motorboat": 1
+  }
+}

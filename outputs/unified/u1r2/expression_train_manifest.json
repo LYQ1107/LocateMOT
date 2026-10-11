@@ -1,0 +1,51 @@
+{
+  "files": {
+    "generic": "/data2/user/LocateMOT/outputs/unified/u1r2/expression_mix_generic.jsonl",
+    "refer_kitti_v1": "/data2/user/LocateMOT/outputs/unified/u1r2/expression_mix_v1.jsonl",
+    "refer_kitti_v2": "/data2/user/LocateMOT/outputs/unified/u1r2/expression_mix_v2.jsonl"
+  },
+  "format": "locatemot-u-u1r2-expression-adaptation-manifest-v1",
+  "mix_rows": {
+    "generic": 1000,
+    "refer_kitti_v1": 1500,
+    "refer_kitti_v2": 2500
+  },
+  "official_test_labels_read": false,
+  "policy": {
+    "empty_target_sampling": 0.2,
+    "mix": {
+      "generic": 0.2,
+      "refer_kitti_v1": 0.3,
+      "refer_kitti_v2": 0.5
+    },
+    "mix_total_rows": 5000,
+    "positive_sample": "one deterministic middle valid frame per expression, all visible referred boxes",
+    "source_scope": "legal fit only",
+    "token_span": "whole expression [0, len(sentence)); no fabricated word-level spans",
+    "v2_missing_target_policy": "skip frame and do not create positive or false-negative loss"
+  },
+  "screening_gt_used": false,
+  "source_rows": {
+    "generic": 2545,
+    "refer_kitti_v1": 372,
+    "refer_kitti_v2": 5115
+  },
+  "source_stats": {
+    "refer_kitti_v1": {
+      "empty_rows": 58,
+      "multi_target_positive_rows": 159,
+      "positive_query_rows": 314,
+      "positive_target_boxes": 644
+    },
+    "refer_kitti_v2": {
+      "empty_rows": 782,
+      "missing_source_target_reference": 157,
+      "multi_target_positive_rows": 1650,
+      "positive_query_rows": 4333,
+      "positive_target_boxes": 7023,
+      "query_without_valid_positive": 17,
+      "skipped_frame_with_missing_target": 157
+    }
+  },
+  "training_started": false
+}

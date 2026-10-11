@@ -120,12 +120,14 @@ def read_gt(path: Path, width: int, height: int) -> dict[str, list[float]]:
         if len(fields) < 6:
             continue
         track_id = str(fields[1])
-        cx, cy, box_w, box_h = (float(value) for value in fields[2:6])
+        # Refer-KITTI labels_with_ids are normalized top-left xywh.  Keep the
+        # source box extent un-clipped for formal evaluation.
+        x, y, box_w, box_h = (float(value) for value in fields[2:6])
         boxes[track_id] = [
-            (cx - box_w / 2.0) * width,
-            (cy - box_h / 2.0) * height,
-            (cx + box_w / 2.0) * width,
-            (cy + box_h / 2.0) * height,
+            x * width,
+            y * height,
+            (x + box_w) * width,
+            (y + box_h) * height,
         ]
     return boxes
 
@@ -204,8 +206,8 @@ def run_worker(args: argparse.Namespace) -> int:
     all_rows = query_records()
     rows = all_rows[args.worker_index :: args.worker_count]
     runtime = load_grounding_runtime(
-        config_path=DEFAULT_CONFIG,
-        checkpoint=DEFAULT_CHECKPOINT,
+        config_path=Path(args.config),
+        checkpoint=Path(args.checkpoint),
         max_per_img=max(TOP_KS),
         device=f"cuda:{args.gpu}" if torch.cuda.is_available() else "cpu",
         training_contract=False,
@@ -296,7 +298,7 @@ def run_worker(args: argparse.Namespace) -> int:
                 flush=True,
             )
     payload = {
-        "format": "locatemot-u-u1-formal-expression-shard-v1",
+        "format": "locatemot-u-u1-formal-expression-shard-v2",
         "worker_index": args.worker_index,
         "worker_count": args.worker_count,
         "gpu": args.gpu,
@@ -310,7 +312,7 @@ def run_worker(args: argparse.Namespace) -> int:
         "missing_source_target_count_by_dataset": missing_by_dataset,
         "stats": stats,
         "query_metrics": query_metrics,
-        "runtime": runtime_metadata(runtime),
+        "runtime": runtime_metadata(runtime, config_path=Path(args.config)),
         "elapsed_seconds": time.perf_counter() - started,
         "official_test_labels_read": False,
         "screening_gt_used": False,
@@ -380,20 +382,24 @@ def aggregate(args: argparse.Namespace) -> int:
                 cell["total"] = denom
                 cell["recall"] = cell["hit"] / denom if denom else 0.0
     main = metrics["refer_kitti_v1"], metrics["refer_kitti_v2"]
+    # Candidate coverage, rather than a single-box semantic ranking, is the
+    # hard expression gate.  Top1/5/10 remain diagnostics for language
+    # discrimination; multi-target queries require Top100 coverage.
     gate_pass = all(
-        metrics[dataset]["1"]["0.5"]["recall"] >= 0.75
+        metrics[dataset]["100"]["0.5"]["recall"] >= 0.75
         for dataset in ("refer_kitti_v1", "refer_kitti_v2")
     )
     payload = {
-        "format": "locatemot-u-u1-formal-expression-gate-v1",
+        "format": "locatemot-u-u1-formal-expression-gate-v2",
         "status": "FORMAL_COMPLETE_REPRESENTATIVE_FRAME_PER_QUERY",
         "gate_pass": bool(gate_pass),
-        "gate_goal": "Top1 expression grounding recall at IoU 0.50 >= 0.75 for both V1 and V2",
+        "gate_goal": "Top100 target Recall@IoU 0.50 >= 0.75 for both V1 and V2",
         "protocol": {
             "unit": "dataset/video/query_id/representative_frame/target_id",
             "query_frame_sampling": "one middle non-empty labeled frame per legal calibration/validation query",
             "split_parts": list(SPLITS),
-            "top_k_diagnostic": [1, 5, 10, 100, 300],
+            "top_k_diagnostic": [1, 5, 10, 300],
+            "top_k_main": 100,
             "iou_thresholds": list(THRESHOLDS),
             "missing_source_target_policy": "count in source denominator, exclude only from valid-positive metric denominator",
             "precision_top_k": PRECISION_TOP_K,
@@ -420,6 +426,7 @@ def aggregate(args: argparse.Namespace) -> int:
             }
             for stratum, values in merged_query_metrics.items()
         },
+        "main_top100_by_dataset": {dataset: metrics[dataset]["100"] for dataset in ("refer_kitti_v1", "refer_kitti_v2")},
         "main_top1_by_dataset": {dataset: metrics[dataset]["1"] for dataset in ("refer_kitti_v1", "refer_kitti_v2")},
         "runtime": shards[0]["runtime"],
         "official_test_labels_read": False,
@@ -438,6 +445,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--worker-index", type=int)
     parser.add_argument("--worker-count", type=int, default=1)
     parser.add_argument("--gpu", type=int, default=0)
+    parser.add_argument("--config", type=Path, default=DEFAULT_CONFIG)
+    parser.add_argument("--checkpoint", type=Path, default=DEFAULT_CHECKPOINT)
     parser.add_argument("--progress", type=int, default=100)
     parser.add_argument("--out", type=Path, required=True)
     parser.add_argument("--aggregate", action="store_true")

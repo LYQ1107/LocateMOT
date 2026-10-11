@@ -1,0 +1,41 @@
+{
+  "category_to_id": {
+    "bicycle": 8,
+    "bus": 3,
+    "car": 0,
+    "cyclist": 7,
+    "motorcycle": 9,
+    "pedestrian": 5,
+    "person": 6,
+    "tram": 4,
+    "truck": 2,
+    "van": 1
+  },
+  "format": "locatemot-u-u1r2-generic-category-mapping-v1",
+  "id_to_category": {
+    "0": "car",
+    "1": "van",
+    "2": "truck",
+    "3": "bus",
+    "4": "tram",
+    "5": "pedestrian",
+    "6": "person",
+    "7": "cyclist",
+    "8": "bicycle",
+    "9": "motorcycle"
+  },
+  "misc_policy": "ignore",
+  "official_type_to_category": {
+    "Bus": "bus",
+    "Car": "car",
+    "Cyclist": "cyclist",
+    "DontCare": null,
+    "Misc": null,
+    "Pedestrian": "pedestrian",
+    "Person_sitting": "person",
+    "Tram": "tram",
+    "Truck": "truck",
+    "Van": "van"
+  },
+  "source_track_id_policy": "Refer track ids are local annotation ids; class is recovered by legal same-frame geometry match to official KITTI labels"
+}

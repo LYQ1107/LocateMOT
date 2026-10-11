@@ -14,6 +14,12 @@ from pathlib import Path
 import torch
 from mmcv.ops.multi_scale_deform_attn import MultiScaleDeformableAttnFunction
 
+# U1R2 FP32 refinement permits TF32 matmul on Ampere while keeping all model
+# activations and gradients in FP32.  The flag is harmless for the historical
+# BF16 wrapper and avoids relying on a process-global default.
+torch.backends.cuda.matmul.allow_tf32 = True
+torch.backends.cudnn.allow_tf32 = True
+
 
 _ORIGINAL_FORWARD = MultiScaleDeformableAttnFunction.forward
 

@@ -705,3 +705,79 @@ Concise experimental log (latest first).
   failure decomposition, and four valid formal JSONs. Final status is
   `LOCATEMOT_U_BLOCKED_GENERIC_GATE_AFTER_MAX_ADAPTATION` with
   `STOPPED_PENDING_SUPERVISOR_REVIEW`; U2 was not launched.
+
+## LocateMOT-U U1R2 — measurement repair, class-aware refinement, and foundation completion — 2026-10-01
+
+- Contract hypothesis: the remaining U1 failures were caused by a measurement/data contract mismatch rather than a need to replace the MM-GroundingDINO-B foundation. The source `labels_with_ids` fields are normalized top-left `xywh`; the repaired formal gates preserve source extents and use Top150 IoU.50 for generic proposals and Top100 IoU.50 target coverage for expressions. The previous U1-A-v1 files remain preserved as historical artifacts and were not overwritten.
+- Coordinate/source audit: legal calibration/validation contains 33,526 physical GT boxes. 195 V1 boxes extend below the image at `y1>height` (166 large, 27 medium, 2 small); no x-side overflow exists. Same-frame geometry matching to official KITTI labels gives mean IoU `0.7414883`; Refer and official track IDs are separate namespaces. Decision: retain source extents and recover classes by geometry; do not clip evaluation GT.
+- Data hypothesis: a class-aware physical-frame union can repair localization while removing V1/V2 duplicate training. The fit stream contains 2,545 images and 10,502 boxes; 3,424 V1/V2 overlaps were removed, 580 conflicting boxes and 21 missing class matches were recorded, and observed classes are car 6,787, pedestrian 3,700, cyclist 13, van 2. Decision: retain the stream with fixed class policy and explicit low-confidence audit.
+- Numerical stability: the prior BF16 log has three finite-loss `grad_norm:nan` records (epoch/iter 1/50, 3/100, 6/100). A fresh FP32 one-step audit from epoch4 found 981 trainable parameters, total loss `40.27210998535156`, zero nonfinite gradients, and zero no-gradient parameters. Decision: R2 uses FP32/TF32, no AMP/BF16.
+- Generic refinement: one bounded FP32 epoch from the frozen epoch4 checkpoint passed the corrected gate: V1/V2 Top150 IoU.50 `0.982716/0.971837`; small/medium/large `0.937467/0.989984/0.997825`. Decision: freeze the R2 epoch1 generic checkpoint and skip epoch2/mixed fallback.
+- Expression hypothesis: whole-expression positive spans with all referred boxes, legal empty frames, and preserved V2 missing-target references can add language-conditioned candidate coverage without erasing generic proposals. One FP32 epoch completed from the selected generic checkpoint. Expression Top100 IoU.50 is V1/V2 `1.000000/0.961367`; the same checkpoint's generic regression is V1/V2 Top150 IoU.50 `0.986592/0.958739`.
+- Language audit: on exactly 500 legal validation same-image pairs with a same-video sentence from a different target set, true versus shuffled Top10 recall is `0.959333/0.871133` and AP50 is `0.736901/0.491159`. Both strict comparisons pass, so language conditioning is measurable rather than generic-box-only behavior.
+- External evaluator: synthetic perfect/empty/ID-switch and cross-evaluator arrays pass with maximum difference `0.0`. TempRMOT evaluated videos 0012/0014 occur in its declared training pool; its HOTA 94.679 is reclassified as `PIPELINE_SANITY_ONLY_TRAINING_OVERLAP`.
+- Decision: the final shared expression checkpoint satisfies all U1 hard gates. `official_test_labels_read=false`, `screening_gt_used=false`, V2 source-target-ID-missing references remain explicit (157, silently dropped=false), and no U2/U3/U4 work started. Set `LOCATEMOT_U_READY_FOR_U2` and stop pending supervisor review.
+
+## LocateMOT-U U2 — shared persistent track core and portability stop — 2026-10-02
+
+- Provenance: working branch `codex/u2-shared-persistent-track-core-20261001`,
+  authoritative local base `56507f4aa9a12e76d6f9f6702f0f0b38163666ec`, and
+  immutable U1 foundation SHA
+  `4efc35ce70be5cddf2c4d9a0f91bc4edef3e9ec5277a819211ba4ac42e0d7d26`.
+- Implementation: replaced the U0 tracking placeholders with one shared U2
+  core (`PerceptionBridge`, independent identity/semantic candidate encoders,
+  `UnifiedTrackState`, four-layer identity set interaction, GRU identity
+  memory/anchor/EMA, association/new/no-match, lifecycle, motion, Hungarian
+  rollout, and bounded OVMOT residual). The runtime is
+  `locatemot/unified/runtime/u2_online_tracker.py`; no RMOT or prompt tracking
+  was launched.
+- Contract evidence: `tools/unified/u2_causal_contract.py` passed birth,
+  occlusion, no-future, MOT specification invariance, OVMOT isolation, and
+  online-state save/reload. Actual-model sharing audit passed with
+  `shared_non_head_fraction=0.9378111093950003`.
+- U2-P data manifest SHA-256 is
+  `575bd349e00bab23634c6929c04513149afec838de419bb3f1a53469fafc7fda`.
+  KITTI legal development portability passes (V1/V2 Top150 @.50
+  `0.986592/0.958739`), while BDD100K, DanceTrack, MOT17, MOT20, TAO, and
+  C-TAO are missing locally. Candidate-cache SHA is `not built`.
+- Training command: not launched; GPU count `0`, optimizer steps `0`, wall
+  clock training runtime `0`. Simple MOT, MOT-only, and joint OVMOT metrics
+  are intentionally `null` because the registered portability protocol is
+  incomplete.
+- Decision: `LOCATEMOT_U_BLOCKED_U2_PERCEPTION_PORTABILITY`; stop pending local
+  acquisition/audit of the missing streams. Official test labels and
+  Refer-KITTI official evaluation labels remain unread.
+- Validation note: the 2-process CUDA forward/backward smoke passed with the
+  same MOT task on both ranks. An 8-process smoke could not initialize because
+  all eight A800 devices were occupied by an unrelated process; it was
+  terminated before any training step and is not counted as a pass.
+
+## LocateMOT-U U2 — acquisition recovery — 2026-10-11
+
+- Revalidated local descendant `666ab44` and the actual U1R2 checkpoint SHA
+  `4efc35ce70be5cddf2c4d9a0f91bc4edef3e9ec5277a819211ba4ac42e0d7d26`.
+  U1 references and the checkpoint remain unchanged.
+- Observed MOT17/MOT20 extraction counts of 33,810/13,430 files, with nested
+  release roots. TAO's four volume roots exist but contain zero files; no
+  training or download worker was live. The old download module spawned
+  workers while being imported by each child, recursively launching itself.
+- Replaced that launcher with one guarded entry point and four thread workers
+  running bounded download clients. Keep the registered four-volume assignment,
+  prioritize modal train/validation inputs, validate downloaded sizes, and
+  record actual per-file SHA-256 for source provenance. A fresh direct-network
+  README transfer passed: 9,189/9,189 bytes, so existing Baidu authentication is
+  usable. This does not imply that the dataset or portability gate is complete.
+- Identified a separate eligibility bug: the old portability artifact could
+  return PASS solely from directory availability while all new-domain metrics
+  were null. Correct the audit and eligibility calculation before any training;
+  metric definitions, split rules, thresholds, and seeds remain unchanged.
+
+## U2 frozen-foundation MOT portability — 2026-10-11
+
+Hypothesis: the selected U1R2 foundation may need bounded adaptation on crowded/non-road pedestrian domains. Registered ByteTrack inclusive train-half ranges, FRCNN physical-video deduplication, `person .`, positive mark-1/class-1 GT and unmodified source box geometry before measurement. The loaded checkpoint SHA matched the immutable U1R2 reference, with no missing/unexpected weights.
+
+Ran all 7,115 dev frames on GPUs 1–7 in one parent launch/wait command, leaving an externally occupied GPU 0 alone. MOT17: 2,652 images / 53,890 GT; Top150 0.787233, Top300 0.806253. MOT20: 4,463 images / 615,137 GT; Top150 0.731010, Top300 0.884673. Exact coverage and monotonic count checks passed; partial measurements are rejected. MOT17-02/04 and crowded MOT20-03/05 dominate the shortfall. Retain the measured failure; do not alter visibility filtering, vocabulary, frame scope or gates to improve the reported values.
+
+Track training is held. At most two epochs of mixed U2-P perception adaptation are justified after the missing domains/protocols are ready, with U1 replay and full retention gates. MOT20 Top300 has not met the preferred 0.90 or been accepted as a runtime override. TAO four-volume acquisition/extraction continues. Cloud BDD resources are static detection rather than MOT 2020. Started official DanceTrack train/val and C-TAO base-only acquisition, pinning release revisions; aria2 TLS failed, curl direct HTTP-206 probe succeeded and curl replaces it. No tracker or RMOT/prompt training was launched.
+
+U2-P follow-up: C-TAO base-only source downloaded and inspected: 490,210 train images, 1,489,637 base-category boxes, 500 videos; supervision frequencies f/c only and no validation paths. LVIS v1 full vocabulary frozen (1,203 names; 866 f/c base, 337 rare novel). Native MMDetection chunking passed a real TAO-image smoke with 38 chunks and exactly one backbone call, followed by class-agnostic IoU-0.8 merge and global Top300. This is runtime evidence, not a substitute for full TAO coverage. Original modal TAO validation has 36,375 images / 113,112 boxes; 314 boxes lack a LVIS-v1 synset mapping, so the benchmark conversion/audit must explicitly account for them. Original BDD MOT 2020 image host dl.yf.io is live; started eight train/val archives (38,886,924,336 bytes) with original published MD5 checks, four bounded workers and eight connections/file. Official 2021 tracking-label S3 URL returns 404; keep BDD labels missing while locating a valid original release.

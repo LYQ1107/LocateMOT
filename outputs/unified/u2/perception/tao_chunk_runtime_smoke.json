@@ -1,0 +1,34 @@
+{
+  "status": "PASS",
+  "scope": "one-image vocabulary runtime smoke, not a portability measurement",
+  "image": "/data2/user/LocateMOT/data/TAO-Amodal/frames/val/HACS/Camel_ride_v_FOlkdk4hiKY_scene_0_0-1071/frame0400.jpg",
+  "runtime": {
+    "config": "third_party/mmdetection/configs/grounding_dino/grounding_dino_swin-b_finetune_16xb2_1x_coco.py",
+    "checkpoint": "outputs/unified/u1r2/expression_adaptation_epoch1/epoch_1.pth",
+    "checkpoint_sha256": "4efc35ce70be5cddf2c4d9a0f91bc4edef3e9ec5277a819211ba4ac42e0d7d26",
+    "device": "cuda:1",
+    "missing_keys": [],
+    "unexpected_keys": [],
+    "preprocessing_contract": {
+      "loader": "LoadImageFromFile",
+      "resize": {
+        "type": "FixScaleResize",
+        "scale": [
+          800,
+          1333
+        ],
+        "keep_ratio": true
+      },
+      "pack": "PackDetInputs",
+      "data_preprocessor": "DetDataPreprocessor",
+      "bgr_to_rgb": true,
+      "box_coordinate_contract": "model postprocess restores boxes to ori_shape"
+    }
+  },
+  "backbone_calls": 1,
+  "vocabulary_size": 1203,
+  "chunk_count": 38,
+  "proposals_before_merge": 34200,
+  "proposals_after_merge": 300,
+  "ground_truth_opened": false
+}

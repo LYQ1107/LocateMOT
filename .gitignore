@@ -55,3 +55,6 @@ references/
 *.log
 run.log
 events.log
+
+# Local download clients, browser sessions, and administrator helpers.
+/.tools/

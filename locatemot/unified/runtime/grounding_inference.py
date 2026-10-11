@@ -142,6 +142,51 @@ def prediction_arrays(result: Any) -> tuple[torch.Tensor, torch.Tensor]:
     return boxes, scores
 
 
+def run_grounding_chunked(
+    runtime: GroundingRuntime,
+    image_path: str | Path,
+    entities: list[str],
+    *,
+    chunked_size: int = 32,
+    merge_iou: float = 0.8,
+    top_k: int = 300,
+) -> Any:
+    """Replay vocabulary chunks over MMDetection's single image extraction.
+
+    GroundingDINO.predict already extracts the visual backbone once and
+    replays its multimodal transformer for each text chunk. Preserve that
+    path, check the actual tokenizer budget, then remove cross-chunk box
+    duplicates before taking the registered global Top300.
+    """
+    from torchvision.ops import nms
+
+    path = assert_legal_path(Path(image_path).resolve())
+    model = runtime.model
+    for start in range(0, len(entities), chunked_size):
+        tokenized, _, _, _ = model.get_tokens_and_prompts(entities[start:start + chunked_size], True)
+        if tokenized.input_ids.shape[1] > model.language_model.max_tokens:
+            raise ValueError("A registered vocabulary chunk exceeds the tokenizer budget")
+    previous = model.test_cfg.get("chunked_size", -1)
+    model.test_cfg.chunked_size = chunked_size
+    try:
+        with torch.inference_mode():
+            result = inference_detector(model, str(path), test_pipeline=runtime.test_pipeline,
+                                        text_prompt=entities, custom_entities=True)
+            predictions = result.pred_instances
+            boxes = predictions.bboxes.tensor if hasattr(predictions.bboxes, "tensor") else predictions.bboxes
+            if not torch.isfinite(boxes).all() or not torch.isfinite(predictions.scores).all():
+                raise RuntimeError("Nonfinite chunked vocabulary prediction")
+            keep = nms(boxes.float(), predictions.scores.float(), merge_iou)[:top_k]
+            result.pred_instances = predictions[keep]
+            result.set_metainfo({"vocabulary_size": len(entities), "chunked_size": chunked_size,
+                                 "chunk_count": (len(entities) + chunked_size - 1) // chunked_size,
+                                 "merge_iou": merge_iou, "top_k": top_k,
+                                 "proposals_before_merge": len(predictions)})
+            return result
+    finally:
+        model.test_cfg.chunked_size = previous
+
+
 def runtime_metadata(runtime: GroundingRuntime, *, config_path: Path = DEFAULT_CONFIG) -> dict[str, Any]:
     def display_path(path: Path) -> str:
         resolved = Path(path).resolve()
@@ -173,5 +218,6 @@ __all__ = [
     "load_grounding_runtime",
     "prediction_arrays",
     "run_grounding",
+    "run_grounding_chunked",
     "runtime_metadata",
 ]

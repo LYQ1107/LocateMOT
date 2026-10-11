@@ -1,0 +1,281 @@
+{
+  "by_dataset": {
+    "refer_kitti_v1": {
+      "out_of_image": {
+        "any": 195,
+        "x0_lt_0": 0,
+        "x1_gt_width": 0,
+        "y0_lt_0": 0,
+        "y1_gt_height": 195
+      },
+      "refer_official_match": {
+        "coordinate_delta_sum": null,
+        "count": 15735,
+        "iou_ge_0_5": 14202,
+        "iou_ge_0_9": 2558,
+        "iou_sum": null,
+        "mean_coordinate_delta_max": 13.959925975913562,
+        "mean_iou": 0.7594125997239781,
+        "track_id_equal": 404,
+        "truncation": {
+          "0.0": 14098,
+          "1.0": 1104,
+          "2.0": 533
+        }
+      },
+      "size": {
+        "large": {
+          "out_of_image": 166,
+          "total": 2811
+        },
+        "medium": {
+          "out_of_image": 27,
+          "total": 8144
+        },
+        "small": {
+          "out_of_image": 2,
+          "total": 4782
+        }
+      },
+      "total_gt_boxes": 15737
+    },
+    "refer_kitti_v2": {
+      "out_of_image": {
+        "any": 0,
+        "x0_lt_0": 0,
+        "x1_gt_width": 0,
+        "y0_lt_0": 0,
+        "y1_gt_height": 0
+      },
+      "refer_official_match": {
+        "coordinate_delta_sum": null,
+        "count": 17787,
+        "iou_ge_0_5": 15555,
+        "iou_ge_0_9": 2364,
+        "iou_sum": null,
+        "mean_coordinate_delta_max": 15.463101347669646,
+        "mean_iou": 0.7256318937762399,
+        "track_id_equal": 383,
+        "truncation": {
+          "0.0": 15931,
+          "1.0": 1347,
+          "2.0": 509
+        }
+      },
+      "size": {
+        "large": {
+          "out_of_image": 0,
+          "total": 4087
+        },
+        "medium": {
+          "out_of_image": 0,
+          "total": 9129
+        },
+        "small": {
+          "out_of_image": 0,
+          "total": 4573
+        }
+      },
+      "total_gt_boxes": 17789
+    }
+  },
+  "checkpoint": {
+    "path": "/data2/user/reference_envs/u1_generic_adaptation_20261001/valid_work_bf16_batch2_frozen01_noacc/epoch_4.pth",
+    "sha256": "94fcc1d1b5e29ab24b8b926ae868736449832248a9415e9a3796f8b98ed3db80"
+  },
+  "coordinate_contract": {
+    "evaluation_policy": "source extent retained; no GT clipping",
+    "official_matching": "same-frame maximum-IoU geometry; track IDs are separate namespaces",
+    "refer_label_format": "normalized top-left xywh"
+  },
+  "formal_result": null,
+  "format": "locatemot-u-u1r2-generic-localization-failure-audit-v1",
+  "official_test_labels_read": false,
+  "samples": [
+    {
+      "coordinate_delta_max": 17.653141000000005,
+      "dataset": "refer_kitti_v1",
+      "frame": 0,
+      "iou": 0.8620049875701975,
+      "occlusion": 0,
+      "official_track_id": "0",
+      "official_type": "Car",
+      "refer_track_id": "11",
+      "truncation": 0.0,
+      "video": "0001"
+    },
+    {
+      "coordinate_delta_max": 14.320129000000065,
+      "dataset": "refer_kitti_v1",
+      "frame": 0,
+      "iou": 0.8124763644680624,
+      "occlusion": 1,
+      "official_track_id": "1",
+      "official_type": "Car",
+      "refer_track_id": "12",
+      "truncation": 0.0,
+      "video": "0001"
+    },
+    {
+      "coordinate_delta_max": 13.80134899999996,
+      "dataset": "refer_kitti_v1",
+      "frame": 0,
+      "iou": 0.7275468377168346,
+      "occlusion": 2,
+      "official_track_id": "2",
+      "official_type": "Car",
+      "refer_track_id": "13",
+      "truncation": 0.0,
+      "video": "0001"
+    },
+    {
+      "coordinate_delta_max": 2.7569660000000056,
+      "dataset": "refer_kitti_v1",
+      "frame": 0,
+      "iou": 0.914670249575056,
+      "occlusion": 0,
+      "official_track_id": "3",
+      "official_type": "Car",
+      "refer_track_id": "14",
+      "truncation": 0.0,
+      "video": "0001"
+    },
+    {
+      "coordinate_delta_max": 1.6395120000000247,
+      "dataset": "refer_kitti_v1",
+      "frame": 0,
+      "iou": 0.8945328370073553,
+      "occlusion": 1,
+      "official_track_id": "4",
+      "official_type": "Car",
+      "refer_track_id": "2",
+      "truncation": 0.0,
+      "video": "0001"
+    },
+    {
+      "coordinate_delta_max": 2.155679999999961,
+      "dataset": "refer_kitti_v1",
+      "frame": 0,
+      "iou": 0.8366500761041475,
+      "occlusion": 1,
+      "official_track_id": "5",
+      "official_type": "Car",
+      "refer_track_id": "1",
+      "truncation": 0.0,
+      "video": "0001"
+    },
+    {
+      "coordinate_delta_max": 12.61237699999998,
+      "dataset": "refer_kitti_v1",
+      "frame": 0,
+      "iou": 0.5450280602781771,
+      "occlusion": 2,
+      "official_track_id": "6",
+      "official_type": "Car",
+      "refer_track_id": "3",
+      "truncation": 0.0,
+      "video": "0001"
+    },
+    {
+      "coordinate_delta_max": 17.670033999999873,
+      "dataset": "refer_kitti_v1",
+      "frame": 1,
+      "iou": 0.8749814979984657,
+      "occlusion": 0,
+      "official_track_id": "0",
+      "official_type": "Car",
+      "refer_track_id": "11",
+      "truncation": 1.0,
+      "video": "0001"
+    },
+    {
+      "coordinate_delta_max": 10.546229999999923,
+      "dataset": "refer_kitti_v1",
+      "frame": 1,
+      "iou": 0.8714880825102955,
+      "occlusion": 1,
+      "official_track_id": "1",
+      "official_type": "Car",
+      "refer_track_id": "12",
+      "truncation": 0.0,
+      "video": "0001"
+    },
+    {
+      "coordinate_delta_max": 14.904450999999995,
+      "dataset": "refer_kitti_v1",
+      "frame": 1,
+      "iou": 0.6828092124555628,
+      "occlusion": 2,
+      "official_track_id": "2",
+      "official_type": "Car",
+      "refer_track_id": "13",
+      "truncation": 0.0,
+      "video": "0001"
+    },
+    {
+      "coordinate_delta_max": 2.6289260000000354,
+      "dataset": "refer_kitti_v1",
+      "frame": 1,
+      "iou": 0.9084906162715023,
+      "occlusion": 0,
+      "official_track_id": "3",
+      "official_type": "Car",
+      "refer_track_id": "14",
+      "truncation": 0.0,
+      "video": "0001"
+    },
+    {
+      "coordinate_delta_max": 1.8044539999999643,
+      "dataset": "refer_kitti_v1",
+      "frame": 1,
+      "iou": 0.8652941785975604,
+      "occlusion": 1,
+      "official_track_id": "4",
+      "official_type": "Car",
+      "refer_track_id": "2",
+      "truncation": 0.0,
+      "video": "0001"
+    }
+  ],
+  "screening_gt_used": false,
+  "status": "COMPLETE",
+  "union": {
+    "out_of_image": {
+      "any": 195,
+      "x0_lt_0": 0,
+      "x1_gt_width": 0,
+      "y0_lt_0": 0,
+      "y1_gt_height": 195
+    },
+    "refer_official_match": {
+      "coordinate_delta_sum": null,
+      "count": 33522,
+      "iou_ge_0_5": 29757,
+      "iou_ge_0_9": 4922,
+      "iou_sum": null,
+      "mean_coordinate_delta_max": 14.757520998210078,
+      "mean_iou": 0.7414883285977822,
+      "track_id_equal": 787,
+      "truncation": {
+        "0.0": 30029,
+        "1.0": 2451,
+        "2.0": 1042
+      }
+    },
+    "size": {
+      "large": {
+        "out_of_image": 166,
+        "total": 6898
+      },
+      "medium": {
+        "out_of_image": 27,
+        "total": 17273
+      },
+      "small": {
+        "out_of_image": 2,
+        "total": 9355
+      }
+    },
+    "total_gt_boxes": 33526
+  }
+}

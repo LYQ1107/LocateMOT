@@ -1,0 +1,53 @@
+{
+  "external_result": {
+    "checkpoint": "/data2/user/reference_envs/temprmot/checkpoints/checkpoint_rk.pth",
+    "checkpoint_sha256": "55e9b2cecbc1590aface4c9d8639008e694e8c4556d1d3c27bf90549f408c7e8",
+    "external_commit": "6a65640d849fdee4a32bb055945ee34c3b0edeb1",
+    "reported_assa": 94.726,
+    "reported_deta": 94.632,
+    "reported_hota": 94.679,
+    "status": "PREDICTION_COMPLETE",
+    "training_launched": false,
+    "videos": [
+      "0012",
+      "0014"
+    ]
+  },
+  "format": "locatemot-u-u1r2-temprmot-overlap-audit-v1",
+  "official_test_labels_read": false,
+  "overlap": {
+    "0012": {
+      "external_evaluated": true,
+      "train_pool_frame_rows": 78
+    },
+    "0014": {
+      "external_evaluated": true,
+      "train_pool_frame_rows": 106
+    }
+  },
+  "reason": "released TempRMOT checkpoint result uses sequences present in its declared Refer-KITTI training pool; do not compare 94.679 HOTA as held-out generalization",
+  "screening_gt_used": false,
+  "status": "PIPELINE_SANITY_ONLY_TRAINING_OVERLAP",
+  "train_manifest": "/data2/user/reference_envs/temprmot/source/datasets/data_path/refer-kitti-v2.train",
+  "train_manifest_lines": 5172,
+  "train_manifest_sha256": "8095f9cdab1d149c0c13772e243d4b9e820fc469a77b28738ebdd523f313ed7f",
+  "train_manifest_videos": [
+    "0000",
+    "0001",
+    "0002",
+    "0003",
+    "0004",
+    "0006",
+    "0007",
+    "0008",
+    "0009",
+    "0010",
+    "0012",
+    "0014",
+    "0015",
+    "0016",
+    "0017",
+    "0018",
+    "0020"
+  ]
+}

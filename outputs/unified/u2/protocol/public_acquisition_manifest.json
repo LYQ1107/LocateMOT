@@ -1,0 +1,42 @@
+[
+  {
+    "dataset": "dancetrack",
+    "repo": "datasets/noahcao/dancetrack",
+    "revision": "a0ba42ac690c41e9850a20e76a0b9450a6fb6a47",
+    "remote": "train1.zip",
+    "target": "/data2/user/LocateMOT/data/downloads/DanceTrack/train1.zip",
+    "bytes": 3606300312,
+    "license": "CC-BY-4.0",
+    "split": "train"
+  },
+  {
+    "dataset": "dancetrack",
+    "repo": "datasets/noahcao/dancetrack",
+    "revision": "a0ba42ac690c41e9850a20e76a0b9450a6fb6a47",
+    "remote": "train2.zip",
+    "target": "/data2/user/LocateMOT/data/downloads/DanceTrack/train2.zip",
+    "bytes": 3299320948,
+    "license": "CC-BY-4.0",
+    "split": "train"
+  },
+  {
+    "dataset": "dancetrack",
+    "repo": "datasets/noahcao/dancetrack",
+    "revision": "a0ba42ac690c41e9850a20e76a0b9450a6fb6a47",
+    "remote": "val.zip",
+    "target": "/data2/user/LocateMOT/data/downloads/DanceTrack/val.zip",
+    "bytes": 4209785614,
+    "license": "CC-BY-4.0",
+    "split": "validation"
+  },
+  {
+    "dataset": "ctao",
+    "repo": "clarkqian/COVTrack",
+    "revision": "a6c1a4673a45425d9375f75d1427df7d22590837",
+    "remote": "saved_models/ctao_dataset/ctao_base.json",
+    "target": "/data2/user/LocateMOT/data/C-TAO/ctao_base.json",
+    "bytes": 546599277,
+    "license": "C-TAO release; original TAO frame terms apply",
+    "split": "base-only continuous training"
+  }
+]

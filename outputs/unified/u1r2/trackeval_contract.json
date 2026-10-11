@@ -1,0 +1,69 @@
+{
+  "cross_evaluator": {
+    "absolute_difference": {
+      "AssA": 0.0,
+      "DetA": 0.0,
+      "DetPr": 0.0,
+      "DetRe": 0.0,
+      "HOTA": 0.0,
+      "IDSW": 0.0,
+      "MOTA": 0.0
+    },
+    "max_absolute_difference": 0.0,
+    "metrics_a": {
+      "AssA": 0.3333333333333333,
+      "DetA": 1.0,
+      "DetPr": 1.0,
+      "DetRe": 1.0,
+      "HOTA": 0.5773502691896257,
+      "IDSW": 2.0,
+      "MOTA": 0.5
+    },
+    "metrics_b": {
+      "AssA": 0.3333333333333333,
+      "DetA": 1.0,
+      "DetPr": 1.0,
+      "DetRe": 1.0,
+      "HOTA": 0.5773502691896257,
+      "IDSW": 2.0,
+      "MOTA": 0.5
+    },
+    "registered_wrapper": "locatemot.evaluation.two_frame_trackeval.TwoFrameLocateMOT",
+    "same_prediction_arrays": true,
+    "temprmot_trackeval_root": "/data2/user/reference_envs/temprmot/source/TrackEval"
+  },
+  "format": "locatemot-u-u1r2-trackeval-contract-v1",
+  "official_test_labels_read": false,
+  "screening_gt_used": false,
+  "status": "PASS",
+  "synthetic": {
+    "empty": {
+      "AssA": 0.0,
+      "DetA": 0.0,
+      "DetPr": 0.0,
+      "DetRe": 0.0,
+      "HOTA": 0.0,
+      "IDSW": 0.0,
+      "MOTA": 0.0
+    },
+    "id_switch": {
+      "AssA": 0.3333333333333333,
+      "DetA": 1.0,
+      "DetPr": 1.0,
+      "DetRe": 1.0,
+      "HOTA": 0.5773502691896257,
+      "IDSW": 2.0,
+      "MOTA": 0.5
+    },
+    "perfect": {
+      "AssA": 1.0,
+      "DetA": 1.0,
+      "DetPr": 1.0,
+      "DetRe": 1.0,
+      "HOTA": 1.0,
+      "IDSW": 0.0,
+      "MOTA": 1.0
+    }
+  },
+  "temprmot_trackeval_source_sha256": "65a47c802fb479ebc7bb367649dfe773d2dc94e30b56ccf50064d4dc395a95ec"
+}

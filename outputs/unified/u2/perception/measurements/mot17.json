@@ -1,0 +1,77 @@
+{
+  "format": "locatemot-u2-portability-measurement-v1",
+  "status": "COMPLETE",
+  "dataset": "mot17",
+  "foundation_sha256": "4efc35ce70be5cddf2c4d9a0f91bc4edef3e9ec5277a819211ba4ac42e0d7d26",
+  "protocol_path": "/data2/user/LocateMOT/outputs/unified/u2/protocol/mot17_half.json",
+  "protocol_sha256": "460d52eb575a35c3e8bcfa3112d00c18fbd64c1eb4ea60bb149373e370530e0a",
+  "images_expected": 2652,
+  "images_evaluated": 2652,
+  "candidate_top_k": 150,
+  "counts": {
+    "gt_total": 53890,
+    "hits_top150": 42424,
+    "hits_top300": 43449
+  },
+  "per_sequence": {
+    "MOT17-02-FRCNN": {
+      "images": 299,
+      "counts": {
+        "gt_total": 9880,
+        "hits_top150": 6850,
+        "hits_top300": 7194
+      }
+    },
+    "MOT17-04-FRCNN": {
+      "images": 524,
+      "counts": {
+        "gt_total": 24178,
+        "hits_top150": 18558,
+        "hits_top300": 18821
+      }
+    },
+    "MOT17-05-FRCNN": {
+      "images": 418,
+      "counts": {
+        "gt_total": 3357,
+        "hits_top150": 2946,
+        "hits_top300": 3004
+      }
+    },
+    "MOT17-09-FRCNN": {
+      "images": 262,
+      "counts": {
+        "gt_total": 2879,
+        "hits_top150": 2689,
+        "hits_top300": 2715
+      }
+    },
+    "MOT17-10-FRCNN": {
+      "images": 326,
+      "counts": {
+        "gt_total": 5923,
+        "hits_top150": 4609,
+        "hits_top300": 4834
+      }
+    },
+    "MOT17-11-FRCNN": {
+      "images": 449,
+      "counts": {
+        "gt_total": 4517,
+        "hits_top150": 3935,
+        "hits_top300": 4017
+      }
+    },
+    "MOT17-13-FRCNN": {
+      "images": 374,
+      "counts": {
+        "gt_total": 3156,
+        "hits_top150": 2837,
+        "hits_top300": 2864
+      }
+    }
+  },
+  "coverage_keys_sha256": "63e58e19743bc9787da48a02550dcd5294106f39b4bb253685eb8f2721ceb99e",
+  "worker_artifacts": "/data2/user/LocateMOT/outputs/unified/u2/perception/mot_half_frozen_foundation",
+  "official_test_labels_read": false
+}

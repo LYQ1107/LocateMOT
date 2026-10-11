@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""CPU shape smoke for the LocateMOT-U skeleton."""
+"""CPU integration smoke for the real U2 shared track core."""
 from __future__ import annotations
 
 import json
@@ -8,8 +8,6 @@ from pathlib import Path
 
 import torch
 
-# Direct execution places ``tools/unified`` on ``sys.path``.  Add the project
-# root so this smoke command works without an editable package install.
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
@@ -17,26 +15,44 @@ if str(PROJECT_ROOT) not in sys.path:
 from locatemot.unified.models.unified_spec_track import UnifiedSpecTrack
 
 
+def make_candidates(feature: torch.Tensor, shift: float) -> dict[str, torch.Tensor]:
+    boxes = torch.tensor([[shift, 0.0, shift + 1.0, 1.0]], dtype=feature.dtype)
+    return {
+        "boxes": boxes,
+        "scores": torch.tensor([0.9], dtype=feature.dtype),
+        "id_visual": feature,
+        "semantic_visual": feature * 0.8,
+        "decoder_query": feature * 0.4,
+    }
+
+
 def main() -> int:
     torch.manual_seed(20261001)
     model = UnifiedSpecTrack(hidden_dim=256).eval()
-    frames = torch.randn(1, 2, 3, 64, 64)
-    specification = torch.randint(0, 100, (1, 8))
+    feature = torch.randn(1, 256)
+    specification = torch.randn(4, 256)
     with torch.no_grad():
-        outputs = model(frames=frames, task_type="rmot", specification=specification)
-    scores = outputs["tracks"]["task_score"]
+        first = model(candidates=make_candidates(feature, 0.0), task_type="mot")
+        second = model(
+            candidates=make_candidates(feature + 0.01, 0.02),
+            task_type="ovmot",
+            specification=specification,
+            online_state=first["online_state"],
+        )
+    tracks = second["tracks"]
     payload = {
-        "format": "locatemot-u-skeleton-smoke-v1",
+        "format": "locatemot-u2-integration-smoke-v1",
         "status": "pass",
-        "task": "rmot",
-        "score_shape": list(scores.shape),
-        "finite": bool(torch.isfinite(scores).all()),
+        "tasks": ["mot", "ovmot"],
+        "track_id_shape": list(tracks["track_ids"].shape),
+        "state_tracks": tracks["state"].num_tracks,
+        "finite": all(torch.isfinite(value).all().item() for value in tracks.values() if isinstance(value, torch.Tensor)),
         "official_test_labels_read": False,
     }
-    path = Path("outputs/unified/skeleton_smoke.json")
+    path = Path("outputs/unified/u2/eval/integration_smoke.json")
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
-    print(json.dumps(payload, indent=2))
+    path.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    print(json.dumps(payload, indent=2, sort_keys=True))
     return 0
 
 

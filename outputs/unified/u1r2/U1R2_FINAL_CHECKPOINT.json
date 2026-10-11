@@ -1,0 +1,68 @@
+{
+  "counterfactual_gate": {
+    "gate_pass": true,
+    "pair_count": 500,
+    "shuffled_ap50": 0.49115866528238045,
+    "shuffled_top10_recall_iou050": 0.8711333333333333,
+    "true_ap50": 0.7369013742478133,
+    "true_top10_recall_iou050": 0.9593333333333333
+  },
+  "decision": "STOPPED_PENDING_SUPERVISOR_REVIEW",
+  "expression_gate": {
+    "gate_pass": true,
+    "v1_top100_iou050": 1.0,
+    "v2_top100_iou050": 0.9613674689560019
+  },
+  "formal_measurement_is_training": false,
+  "format": "locatemot-u-u1r2-final-checkpoint-v1",
+  "generic_after_grounding_gate": {
+    "gate_pass": true,
+    "v1_top150_iou050": 0.986592107771494,
+    "v2_top150_iou050": 0.9587385462926528
+  },
+  "generic_base_epoch4": {
+    "path": "/data2/user/reference_envs/u1_generic_adaptation_20261001/valid_work_bf16_batch2_frozen01_noacc/epoch_4.pth",
+    "sha256": "94fcc1d1b5e29ab24b8b926ae868736449832248a9415e9a3796f8b98ed3db80"
+  },
+  "generic_train_manifest": {
+    "class_counts": {
+      "car": 6787,
+      "cyclist": 13,
+      "pedestrian": 3700,
+      "van": 2
+    },
+    "conflicting_box_count": 580,
+    "missing_class_count": 21,
+    "path": "/data2/user/LocateMOT/outputs/unified/u1r2/generic_train_manifest.json",
+    "unique_boxes": 10502,
+    "unique_images": 2545,
+    "v1_v2_overlap_removed": 3424
+  },
+  "official_test_labels_read": false,
+  "reports": {
+    "counterfactual": "outputs/unified/u1r2/expression_counterfactual_epoch1/result.json",
+    "expression_gate": "outputs/unified/u1r2/formal_expression_adaptation_epoch1/result.json",
+    "generic_gate": "outputs/unified/u1r2/formal_generic_expression_epoch1/result.json"
+  },
+  "screening_gt_used": false,
+  "selected_generic_checkpoint": {
+    "path": "/data2/user/LocateMOT/outputs/unified/u1r2/generic_refinement_epoch1/epoch_1.pth",
+    "sha256": "f197bbbf26e784a6a808fe2bf0481f4432d5e7bca6c38d43df9f9e887cbbe1af",
+    "v1_top150_iou050": 0.986592107771494,
+    "v2_top150_iou050": 0.9587385462926528
+  },
+  "selected_shared_checkpoint": {
+    "path": "/data2/user/LocateMOT/outputs/unified/u1r2/expression_adaptation_epoch1/epoch_1.pth",
+    "sha256": "4efc35ce70be5cddf2c4d9a0f91bc4edef3e9ec5277a819211ba4ac42e0d7d26"
+  },
+  "status": "LOCATEMOT_U_READY_FOR_U2",
+  "u1a_training_completed": true,
+  "u1a_training_started": true,
+  "u1b_training_completed": true,
+  "u1b_training_started": true,
+  "u2_launched": false,
+  "u3_launched": false,
+  "u4_launched": false,
+  "v2_missing_references_silently_dropped": false,
+  "v2_source_target_id_missing_references": 157
+}

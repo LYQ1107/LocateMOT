@@ -1,0 +1,40 @@
+{
+  "format": "locatemot-u-u1r2-bf16-gradient-log-audit-v1",
+  "log": "/data2/user/reference_envs/u1_generic_adaptation_20261001/train_valid_bf16_batch2_frozen01_noacc.log",
+  "nan_grad_norm_count": 3,
+  "occurrences": [
+    {
+      "line": 2163,
+      "epoch": 1,
+      "iter": 50,
+      "epoch_iters": 226,
+      "base_lr": "1.0000e-04",
+      "lr": "1.0000e-04",
+      "loss": "21.4998",
+      "text": "10/01 19:17:40 - mmengine - INFO - Epoch(train) [1][ 50/226]  base_lr: 1.0000e-04 lr: 1.0000e-04  eta: 0:38:22  time: 1.7627  data_time: 0.0293  memory: 5945  grad_norm: nan  loss: 21.4998  loss_cls: 0.4655  loss_bbox: 0.3331  loss_iou: 1.0815  d0.loss_cls: 0.4881  d0.loss_bbox: 0.3422  d0.loss_iou: 1.1218  d1.loss_cls: 0.4596  d1.loss_bbox: 0.3387  d1.loss_iou: 1.0976  d2.loss_cls: 0.4855  d2.loss_bbox: 0.3263  d2.loss_iou: 1.0668  d3.loss_cls: 0.4770  d3.loss_bbox: 0.3248  d3.loss_iou: 1.0759  d4.loss_cls: 0.4662  d4.loss_bbox: 0.3338  d4.loss_iou: 1.0860  enc_loss_cls: 0.4840  enc_loss_bbox: 0.3536  enc_loss_iou: 1.1277  dn_loss_cls: 0.0811  dn_loss_bbox: 0.2974  dn_loss_iou: 0.8841  d0.dn_loss_cls: 0.1634  d0.dn_loss_bbox: 0.4251  d0.dn_loss_iou: 1.1715  d1.dn_loss_cls: 0.0911  d1.dn_loss_bbox: 0.3201  d1.dn_loss_iou: 0.9380  d2.dn_loss_cls: 0.0843  d2.dn_loss_bbox: 0.3008  d2.dn_loss_iou: 0.8866  d3.dn_loss_cls: 0.0785  d3.dn_loss_bbox: 0.3006  d3.dn_loss_iou: 0.8809  d4.dn_loss_cls: 0.0804  d4.dn_loss_bbox: 0.2983  d4.dn_loss_iou: 0.8821"
+    },
+    {
+      "line": 2188,
+      "epoch": 3,
+      "iter": 100,
+      "epoch_iters": 226,
+      "base_lr": "1.0000e-04",
+      "lr": "1.0000e-04",
+      "loss": "7.2971",
+      "text": "10/01 19:25:38 - mmengine - INFO - Epoch(train) [3][100/226]  base_lr: 1.0000e-04 lr: 1.0000e-04  eta: 0:13:23  time: 0.6671  data_time: 0.0068  memory: 5945  grad_norm: nan  loss: 7.2971  loss_cls: 0.0824  loss_bbox: 0.0798  loss_iou: 0.4363  d0.loss_cls: 0.1151  d0.loss_bbox: 0.0851  d0.loss_iou: 0.4527  d1.loss_cls: 0.0927  d1.loss_bbox: 0.0812  d1.loss_iou: 0.4403  d2.loss_cls: 0.0868  d2.loss_bbox: 0.0799  d2.loss_iou: 0.4326  d3.loss_cls: 0.0893  d3.loss_bbox: 0.0793  d3.loss_iou: 0.4312  d4.loss_cls: 0.0824  d4.loss_bbox: 0.0802  d4.loss_iou: 0.4369  enc_loss_cls: 0.1695  enc_loss_bbox: 0.0921  enc_loss_iou: 0.4130  dn_loss_cls: 0.0017  dn_loss_bbox: 0.0676  dn_loss_iou: 0.3843  d0.dn_loss_cls: 0.0140  d0.dn_loss_bbox: 0.1073  d0.dn_loss_iou: 0.4970  d1.dn_loss_cls: 0.0041  d1.dn_loss_bbox: 0.0797  d1.dn_loss_iou: 0.4253  d2.dn_loss_cls: 0.0027  d2.dn_loss_bbox: 0.0709  d2.dn_loss_iou: 0.3925  d3.dn_loss_cls: 0.0021  d3.dn_loss_bbox: 0.0683  d3.dn_loss_iou: 0.3868  d4.dn_loss_cls: 0.0018  d4.dn_loss_bbox: 0.0677  d4.dn_loss_iou: 0.3842"
+    },
+    {
+      "line": 2225,
+      "epoch": 6,
+      "iter": 100,
+      "epoch_iters": 226,
+      "base_lr": "1.0000e-04",
+      "lr": "1.0000e-04",
+      "loss": "5.9542",
+      "text": "10/01 19:33:33 - mmengine - INFO - Epoch(train) [6][100/226]  base_lr: 1.0000e-04 lr: 1.0000e-04  eta: 0:01:43  time: 0.6563  data_time: 0.0068  memory: 5945  grad_norm: nan  loss: 5.9542  loss_cls: 0.0427  loss_bbox: 0.0603  loss_iou: 0.3892  d0.loss_cls: 0.0706  d0.loss_bbox: 0.0689  d0.loss_iou: 0.4099  d1.loss_cls: 0.0534  d1.loss_bbox: 0.0630  d1.loss_iou: 0.3976  d2.loss_cls: 0.0527  d2.loss_bbox: 0.0606  d2.loss_iou: 0.3844  d3.loss_cls: 0.0470  d3.loss_bbox: 0.0596  d3.loss_iou: 0.3856  d4.loss_cls: 0.0417  d4.loss_bbox: 0.0602  d4.loss_iou: 0.3909  enc_loss_cls: 0.1219  enc_loss_bbox: 0.0767  enc_loss_iou: 0.3571  dn_loss_cls: 0.0026  dn_loss_bbox: 0.0493  dn_loss_iou: 0.3127  d0.dn_loss_cls: 0.0107  d0.dn_loss_bbox: 0.0772  d0.dn_loss_iou: 0.4035  d1.dn_loss_cls: 0.0037  d1.dn_loss_bbox: 0.0553  d1.dn_loss_iou: 0.3412  d2.dn_loss_cls: 0.0027  d2.dn_loss_bbox: 0.0510  d2.dn_loss_iou: 0.3185  d3.dn_loss_cls: 0.0027  d3.dn_loss_bbox: 0.0497  d3.dn_loss_iou: 0.3144  d4.dn_loss_cls: 0.0027  d4.dn_loss_bbox: 0.0493  d4.dn_loss_iou: 0.3131"
+    }
+  ],
+  "loss_nonfinite_lines": 0,
+  "official_test_labels_read": false,
+  "screening_gt_used": false
+}
