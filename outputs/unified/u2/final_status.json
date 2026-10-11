@@ -256,9 +256,11 @@
     "actual_worker_serialization": "BIT_EXACT",
     "complete_shard_resume": "NO_RERUN",
     "mode": "worker-local fixed native BERT/token maps; copies returned to unchanged native image/multimodal inference",
-    "applies_to": "upcoming selected ordinary and OVMOT candidate-cache workers",
+    "applies_to": "upcoming selected candidate-cache workers and future adapted-checkpoint TAO/C-TAO audits",
     "formal_selected_cache_started": false,
-    "running_full_f0_audits_modified_or_restarted": false
+    "running_full_f0_audits_modified_or_restarted": false,
+    "perception_worker_proof": "outputs/unified/u2/eval/perception_text_reuse_contract.json",
+    "original_f0_cli_default": "unchanged; optional --reuse-frozen-text requested only by future adapted evaluator"
   },
   "finalization_queue": {
     "state": "WAITING_ORIGINAL_JOINT_OWNER",

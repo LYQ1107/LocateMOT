@@ -35,3 +35,13 @@ All full inventories, eight-worker assignment, four-volume storage, candidate
 caps, frozen-foundation eligibility and original simple/learned tracking gates
 stay unchanged. The running F0 audit and perception owner were not modified or
 restarted. Formal selected caches and tracking benchmarks remain pending.
+
+The optional --reuse-frozen-text flag is also integrated into future adapted
+TAO/C-TAO portability audits. The default original F0 CLI remains unchanged;
+the bounded adapted-checkpoint evaluator requests reuse in its freshly
+launched workers. Actual original smoke on one image from each source gives
+identical scope metadata,300 proposals per image and every base/novel/unmapped
+recall count, with one backbone per image and38 BERT calls/38 hits across the
+two complete vocabulary passes. This two-source smoke is not a full audit.
+Evidence: eval/perception_text_reuse_contract.json. Original full F0 workers
+remain on their already-loaded command/code and are not restarted.

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+from contextlib import nullcontext
 from collections import defaultdict
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import hashlib
@@ -77,6 +78,7 @@ def worker(args: argparse.Namespace) -> int:
     from locatemot.unified.runtime.grounding_inference import (
         load_grounding_runtime, prediction_arrays, run_grounding_chunked, runtime_metadata,
     )
+    from locatemot.unified.runtime.u2_frozen_text_cache import frozen_text_cache
 
     torch.set_num_threads(2)
     scopes, all_records = load_scope(args.protocol)
@@ -113,7 +115,8 @@ def worker(args: argparse.Namespace) -> int:
         calls["backbone"] += 1
     hook = runtime.model.backbone.register_forward_hook(count_backbone)
     started = time.perf_counter()
-    with rows_path.open("a") as output:
+    text_context = frozen_text_cache(runtime) if args.reuse_frozen_text else nullcontext(None)
+    with text_context as text_stats, rows_path.open("a") as output:
         for index, record in enumerate(records[len(previous):], start=len(previous)):
             wait_for_extracted(record, ready, args.extraction_pid)
             scope = scopes[record["dataset"]]
@@ -150,6 +153,8 @@ def worker(args: argparse.Namespace) -> int:
     hook.remove()
     terminal = {"state": "SMOKE_COMPLETE" if args.smoke else "COMPLETE", "metadata": metadata,
                 "runtime": runtime_metadata(runtime), "elapsed_seconds": time.perf_counter() - started}
+    if args.reuse_frozen_text:
+        terminal["frozen_text_cache"] = text_stats
     prefix.with_suffix(".result.json").write_text(json.dumps(terminal, indent=2) + "\n")
     print(json.dumps({"worker": args.worker_index, "state": terminal["state"], "images": len(records)}), flush=True)
     return 0
@@ -210,6 +215,8 @@ def main() -> int:
     parser.add_argument("--gpu", type=int, default=1)
     parser.add_argument("--smoke", action="store_true")
     parser.add_argument("--aggregate-only", action="store_true")
+    parser.add_argument("--reuse-frozen-text", action="store_true",
+                        help="Exact worker-local native text reuse; default F0 commands remain unchanged")
     args = parser.parse_args()
     if args.expected_foundation_sha256 != FOUNDATION_SHA:
         if (args.out.resolve() == parser.get_default("out").resolve()
@@ -232,6 +239,8 @@ def main() -> int:
                        "--checkpoint", str(args.checkpoint), "--expected-foundation-sha256", args.expected_foundation_sha256,
                        "--out", str(args.out), "--extraction-pid", str(args.extraction_pid),
                        "--worker-index", str(index), "--worker-count", str(len(args.gpus)), "--gpu", str(gpu)]
+            if args.reuse_frozen_text:
+                command.append("--reuse-frozen-text")
             processes.append((subprocess.Popen(command, env=env, stdout=log, stderr=subprocess.STDOUT), log))
         print(json.dumps({"state": "RUNNING", "gpus": args.gpus, "worker_pids": [p.pid for p, _ in processes]}), flush=True)
         codes = []

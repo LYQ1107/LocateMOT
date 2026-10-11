@@ -1,0 +1,88 @@
+{
+  "format": "locatemot-u2-perception-text-reuse-contract-v1",
+  "status": "PASS",
+  "reference_only": true,
+  "foundation_sha256": "4efc35ce70be5cddf2c4d9a0f91bc4edef3e9ec5277a819211ba4ac42e0d7d26",
+  "actual_native_rows": [
+    {
+      "key": "tao/59150",
+      "dataset": "tao",
+      "file_name": "val/AVA/4Y5qi1gD2Sw_scene_1_28435-31083/frame0721.jpg",
+      "counts": {
+        "base_gt_total": 2,
+        "base_hits_top300": 2,
+        "novel_gt_total": 1,
+        "novel_hits_top300": 1,
+        "unmapped_gt_total": 0,
+        "unmapped_hits_top300": 0
+      },
+      "proposals": 300,
+      "backbone_calls": 1
+    },
+    {
+      "key": "ctao/355773",
+      "dataset": "ctao",
+      "file_name": "train/AVA/5BDj0ow5hnA_scene_10_54385-55758/frame0176.jpg",
+      "counts": {
+        "base_gt_total": 10,
+        "base_hits_top300": 10,
+        "novel_gt_total": 0,
+        "novel_hits_top300": 0,
+        "unmapped_gt_total": 0,
+        "unmapped_hits_top300": 0
+      },
+      "proposals": 300,
+      "backbone_calls": 1
+    }
+  ],
+  "actual_reused_rows": [
+    {
+      "key": "tao/59150",
+      "dataset": "tao",
+      "file_name": "val/AVA/4Y5qi1gD2Sw_scene_1_28435-31083/frame0721.jpg",
+      "counts": {
+        "base_gt_total": 2,
+        "base_hits_top300": 2,
+        "novel_gt_total": 1,
+        "novel_hits_top300": 1,
+        "unmapped_gt_total": 0,
+        "unmapped_hits_top300": 0
+      },
+      "proposals": 300,
+      "backbone_calls": 1
+    },
+    {
+      "key": "ctao/355773",
+      "dataset": "ctao",
+      "file_name": "train/AVA/5BDj0ow5hnA_scene_10_54385-55758/frame0176.jpg",
+      "counts": {
+        "base_gt_total": 10,
+        "base_hits_top300": 10,
+        "novel_gt_total": 0,
+        "novel_hits_top300": 0,
+        "unmapped_gt_total": 0,
+        "unmapped_hits_top300": 0
+      },
+      "proposals": 300,
+      "backbone_calls": 1
+    }
+  ],
+  "frozen_scope_metadata_identical": true,
+  "all_proposal_recall_counts_identical": true,
+  "frozen_text_cache": {
+    "bert_calls": 38,
+    "bert_hits": 38,
+    "token_prompt_calls": 38,
+    "token_prompt_hits": 38,
+    "positive_prompt_calls": 1,
+    "positive_prompt_hits": 1
+  },
+  "native_elapsed_seconds": 11.545474091981305,
+  "reuse_elapsed_seconds": 10.907658887997968,
+  "backbone_once_per_image": true,
+  "scope": "original --smoke: one original frame from each of TAO/C-TAO; not a full audit",
+  "current_full_f0_jobs_restarted_or_modified": false,
+  "actual_adapted_full_audit_complete": false,
+  "official_test_labels_read": false,
+  "ready_for_u3": false
+}

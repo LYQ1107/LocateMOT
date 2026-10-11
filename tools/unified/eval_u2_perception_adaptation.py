@@ -153,7 +153,8 @@ def main() -> int:
     if any(read_measurement(measurements, name, sha) is None for name in ("tao", "ctao")):
         print(json.dumps({"state": "TAO_CTAO_FULL_AUDIT", "epoch": args.epoch}), flush=True)
         run([sys.executable, "-u", str(ROOT / "tools/unified/u2_tao_portability.py"),
-             "--out", str(args.out / "tao_ctao"), "--extraction-pid", str(args.extraction_pid), *common], args.out / "tao_ctao.log")
+             "--out", str(args.out / "tao_ctao"), "--extraction-pid", str(args.extraction_pid),
+             "--reuse-frozen-text", *common], args.out / "tao_ctao.log")
     results = {}
     for name in REFERENCES:
         print(json.dumps({"state": "U1_FULL_AUDIT", "audit": name, "epoch": args.epoch}), flush=True)
