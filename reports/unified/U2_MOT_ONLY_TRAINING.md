@@ -6,6 +6,13 @@ has not started: full perception selection, the complete ordinary candidate
 cache and all-five simple-baseline metrics are prerequisites. There is no trained
 MOT-only checkpoint or benchmark metric yet.
 
+Eligibility arithmetic now compares the recorded decimal scores at the exact
+registered .03 identity-gain/.02 individual-HOTA thresholds, without an epsilon
+or extra rounding allowance. Targeted fixtures exposed binary floating-point
+errors at exact inclusive boundaries; both the three-point gain and two-point
+loss now pass, while larger regressions and insufficient gains remain rejected.
+The original recipe, metric values, data scope, seed and budget are unchanged.
+
 `tools/unified/train_u2_mot_only.py` consumes frozen real detector caches. It uses
 the same 256-dimensional SharedTrackCore, eight GPU ranks, two clips per rank,
 AdamW 1e-4 / weight decay 1e-2, gradient clip 1 and BF16 neural autocast. Losses and

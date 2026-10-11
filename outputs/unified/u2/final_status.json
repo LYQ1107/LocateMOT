@@ -214,6 +214,22 @@
     "formal_joint_training_launched": false,
     "benchmark_metrics_measured": false,
     "full_ovmot_candidate_cache_built": false,
-    "joint_launch_requires_selected_eligible_mot_only": true
+    "joint_launch_requires_selected_eligible_mot_only": true,
+    "joint_trainer": "tools/unified/train_u2_joint.py",
+    "joint_evaluator": "tools/unified/eval_u2_joint.py",
+    "joint_recipe": "outputs/unified/u2/protocol/joint_training_recipe.json",
+    "joint_run_contract": "outputs/unified/u2/eval/joint_run_contract.json",
+    "joint_ddp_and_rng_resume_contract": "outputs/unified/u2/eval/ddp_eight_rank_joint.json",
+    "joint_full_evaluation_entry_contract": "outputs/unified/u2/eval/ddp_eight_rank_joint_evaluation.json"
+  },
+  "joint_queue": {
+    "state": "WAITING_ELIGIBLE_MOT_ONLY",
+    "controller_pid": 883611,
+    "mot_only_controller_pid": 870157,
+    "formal_joint_training_launched": false,
+    "ovmot_cache_started": false,
+    "maximum_optimizer_steps": 4000,
+    "run_state": "outputs/unified/u2/joint_queue/run_state.json",
+    "launch_requires_recomputed_eligible_mot_only": true
   }
 }

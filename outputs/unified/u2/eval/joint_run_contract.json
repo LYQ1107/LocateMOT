@@ -1,0 +1,24 @@
+{
+  "format": "locatemot-u2-joint-run-contract-v1",
+  "status": "PASS",
+  "synthetic_only": true,
+  "strict_all_tensor_mot_initialization": true,
+  "same_core_optimizer_groups": [
+    5e-05,
+    0.0001
+  ],
+  "eight_frame_train_only_separate_base_supervision": true,
+  "deterministic_rank_step_sampling": true,
+  "task_draws_10000": {
+    "mot": 6518,
+    "ovmot": 3482
+  },
+  "exact_one_point_boundary_accepted": true,
+  "individual_hota_and_assa_regression_rejected": true,
+  "both_teta_and_assoc_gate_required": true,
+  "bounded_refinement_thresholds_checked": true,
+  "four_boundary_selection_and_earlier_tie": true,
+  "joint_selection_not_u3_readiness": true,
+  "formal_joint_training_launched": false,
+  "official_test_labels_read": false
+}

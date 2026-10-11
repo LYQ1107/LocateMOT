@@ -132,6 +132,7 @@
   "bf16_cache_expanded_at_autocast_boundary": true,
   "selection_hota_regression_and_identity_gain_checked": true,
   "earlier_checkpoint_tiebreak": true,
+  "exact_three_point_identity_gain_and_two_point_hota_boundaries": true,
   "formal_optimization_launched": false,
   "official_test_labels_read": false
 }

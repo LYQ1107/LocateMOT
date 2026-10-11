@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+from datetime import timedelta
 import json
 import os
 from pathlib import Path
@@ -144,7 +145,8 @@ def main() -> int:
     from tools.unified.eval_u2_mot_only import evaluate_checkpoint, select_mot_only
     rank, local_rank = int(os.environ["RANK"]), int(os.environ["LOCAL_RANK"])
     torch.cuda.set_device(local_rank)
-    dist.init_process_group("nccl")
+    # Other ranks wait while rank zero measures every original dev sequence.
+    dist.init_process_group("nccl", timeout=timedelta(hours=24))
     if dist.get_world_size() != 8:
         raise ValueError("Formal MOT-only training requires eight GPU ranks")
     device = torch.device("cuda", local_rank)

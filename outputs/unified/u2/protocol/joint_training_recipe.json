@@ -1,0 +1,91 @@
+{
+  "format": "locatemot-u2-joint-recipe-v1",
+  "name": "U2_B_JOINT_MOT_OVMOT",
+  "seed": 20261012,
+  "world_size": 8,
+  "clips_per_rank": 2,
+  "global_clips": 16,
+  "maximum_optimizer_steps": 4000,
+  "evaluation_steps": [
+    1000,
+    2000,
+    3000,
+    4000
+  ],
+  "resume_checkpoint_every_steps": 500,
+  "frames_per_clip": 8,
+  "initialization": "strict load of every selected eligible MOT-only core tensor; no core reinitialization",
+  "optimizer_initialization": "new U2-B AdamW moments; selected MOT-only weights preserved",
+  "task_probabilities": {
+    "mot": 0.65,
+    "ovmot": 0.35
+  },
+  "mot_dataset_probabilities": {
+    "bdd100k": 0.25,
+    "dancetrack": 0.25,
+    "mot17": 0.2,
+    "mot20": 0.1,
+    "kitti_legal_development": 0.2
+  },
+  "task_sampling": "one global task per step; independent video/start/stride per rank and clip",
+  "mot_curriculum_counter": "6000 + joint step; retain eight frames and teacher probability .4",
+  "ovmot_stride": "uniform source-image stride1..4; original physical filename/timestamp indices",
+  "ovmot_supervision": "all frozen dense C-TAO base plus modal TAO TRAIN; labels outside candidate shards",
+  "unknown_candidates": "keep inputs/model births; no automatic negative/NEW/alive/contrast label",
+  "teacher_forcing_probability": 0.4,
+  "foundation": "selected actual MM-GroundingDINO and shared BERT frozen; cached real features",
+  "class_text": "selected shared U1 BERT/native projection256, full frozen1203 vocabulary",
+  "classification_training": "base866 targets and softmax columns only; novel337 inference zero-shot",
+  "optimizer": {
+    "type": "AdamW",
+    "shared_core_lr": 5e-05,
+    "ovmot_adapter_lr": 0.0001,
+    "candidate_and_semantic_projection_lr": 5e-05,
+    "weight_decay": 0.01,
+    "gradient_clip": 1.0
+  },
+  "precision": "FP32 parameters/losses; BF16 neural autocast",
+  "identity_loss_weights": {
+    "row": 1.0,
+    "col": 1.0,
+    "switch": 0.25,
+    "alive": 0.25,
+    "motion": 0.5,
+    "identity_contrast": 0.25
+  },
+  "semantic_loss_weights": {
+    "open_vocab_class": 0.5,
+    "semantic_consistency": 0.25,
+    "semantic_gate_reg": 0.1
+  },
+  "ordinary_negative_transfer_max_degradation": {
+    "HOTA": 0.01,
+    "AssA": 0.01
+  },
+  "ovmot_gate": {
+    "TETA": 34.0,
+    "AssocA": 37.0
+  },
+  "strong_gate": {
+    "TETA": 36.0,
+    "AssocA": 40.0
+  },
+  "teta": {
+    "official_unmodified": true,
+    "exhaustive": false,
+    "cluster_threshold": 50,
+    "max_candidates": 300,
+    "scale": "0..100",
+    "full_validation": true
+  },
+  "selection": [
+    "higher TAO overall AssocA",
+    "higher TETA",
+    "higher ordinary macro AssA",
+    "earlier step"
+  ],
+  "bounded_u2_c_eligible_only_if": "ordinary retained, TETA>=31 and AssocA>=34, main OVMOT gate missed",
+  "collective_wait_timeout_hours": 24,
+  "formal_joint_training_launched": false,
+  "official_test_labels_read": false
+}

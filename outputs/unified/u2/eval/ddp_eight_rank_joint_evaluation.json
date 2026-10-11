@@ -1,0 +1,93 @@
+{
+  "format": "locatemot-u2-eight-gpu-joint-evaluation-contract-v1",
+  "status": "PASS",
+  "world_size": 8,
+  "input_source": "explicitly synthetic caches/GT/reference with actual reference-only F0 class text",
+  "ordinary": {
+    "bdd100k": {
+      "HOTA": 0.125,
+      "DetA": 0.125,
+      "AssA": 0.125,
+      "IDF1": 0.125,
+      "IDSW": 0
+    },
+    "dancetrack": {
+      "HOTA": 1.0,
+      "DetA": 1.0,
+      "AssA": 1.0,
+      "IDF1": 1.0,
+      "IDSW": 0
+    },
+    "mot17": {
+      "HOTA": 1.0,
+      "DetA": 1.0,
+      "AssA": 1.0,
+      "IDF1": 1.0,
+      "IDSW": 0
+    },
+    "mot20": {
+      "HOTA": 1.0,
+      "DetA": 1.0,
+      "AssA": 1.0,
+      "IDF1": 1.0,
+      "IDSW": 0
+    },
+    "kitti_legal_development": {
+      "HOTA": 0.5,
+      "DetA": 0.5,
+      "AssA": 0.5,
+      "IDF1": 0.5,
+      "IDSW": 0
+    }
+  },
+  "ordinary_frames_per_dataset": 3,
+  "all_five_official_readers_executed": true,
+  "ovmot": {
+    "overall": {
+      "TETA": 66.667,
+      "LocA": 100.0,
+      "AssocA": 100.0,
+      "ClsA": 0.0,
+      "LocRe": 100.0,
+      "LocPr": 100.0,
+      "AssocRe": 100.0,
+      "AssocPr": 100.0,
+      "ClsRe": 0.0,
+      "ClsPr": 0.0
+    },
+    "base": {
+      "TETA": 66.667,
+      "LocA": 100.0,
+      "AssocA": 100.0,
+      "ClsA": 0.0,
+      "LocRe": 100.0,
+      "LocPr": 100.0,
+      "AssocRe": 100.0,
+      "AssocPr": 100.0,
+      "ClsRe": 0.0,
+      "ClsPr": 0.0
+    },
+    "novel": {
+      "TETA": 66.667,
+      "LocA": 100.0,
+      "AssocA": 100.0,
+      "ClsA": 0.0,
+      "LocRe": 100.0,
+      "LocPr": 100.0,
+      "AssocRe": 100.0,
+      "AssocPr": 100.0,
+      "ClsRe": 0.0,
+      "ClsPr": 0.0
+    }
+  },
+  "tao_fixture_frames": 6,
+  "tao_fixture_videos": 2,
+  "official_teta_parallel_workers": 8,
+  "base_novel_overall_reported": true,
+  "complete_video_resume_no_core_forward_calls": true,
+  "resumed_metrics_identical": true,
+  "same_core_both_tasks": true,
+  "benchmark_metrics_measured": false,
+  "formal_joint_training_launched": false,
+  "official_test_labels_read": false
+}

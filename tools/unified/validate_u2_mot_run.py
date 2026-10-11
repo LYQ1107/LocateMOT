@@ -133,6 +133,12 @@ def main() -> int:
             (directory / "result.json").write_text(json.dumps(result))
         selection = select_mot_only(base, simple, cache_path)
         assert selection["selected"]["step"] == 4000 and not selection["decisions"][0]["eligible"]
+        assert selection["decisions"][1]["identity_gain"], "Exactly three-point identity gain was rejected"
+        boundary_path = base / "evaluation_1000/result.json"
+        boundary_report = json.loads(boundary_path.read_text())
+        boundary_report["datasets"]["mot20"]["metrics"]["HOTA"] = .58
+        boundary_path.write_text(json.dumps(boundary_report))
+        assert select_mot_only(base, simple, cache_path)["decisions"][0]["eligible"], "Exactly two-point HOTA loss was rejected"
         for step in EVALUATION_STEPS:
             path = base / f"evaluation_{step:04d}/result.json"
             report = json.loads(path.read_text())
@@ -147,6 +153,7 @@ def main() -> int:
               "stateless_rank_step_sampling_resume": True, "optimizer_rng_resume_next_update_bit_exact": True,
               "same_dataset_all_ranks": True, "bf16_cache_expanded_at_autocast_boundary": True,
               "selection_hota_regression_and_identity_gain_checked": True, "earlier_checkpoint_tiebreak": True,
+              "exact_three_point_identity_gain_and_two_point_hota_boundaries": True,
               "formal_optimization_launched": False, "official_test_labels_read": False}
     destination = ROOT / "outputs/unified/u2/eval/mot_run_contract.json"
     destination.write_text(json.dumps(report, indent=2) + "\n")

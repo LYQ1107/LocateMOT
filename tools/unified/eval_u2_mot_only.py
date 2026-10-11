@@ -2,12 +2,15 @@
 from __future__ import annotations
 
 import json
+from decimal import Decimal
 from pathlib import Path
 
 from tools.unified.build_u2_candidate_cache import assigned_groups, digest, write_json
 
 
-def evaluate_checkpoint(core, sampler, cache: dict, supervision: dict, args, step: int, checkpoint: Path) -> dict | None:
+def evaluate_checkpoint(core, sampler, cache: dict, supervision: dict, args, step: int, checkpoint: Path,
+                        *, tracker_name: str = "U2_MOT_ONLY_BASELINE",
+                        report_format: str = "locatemot-u2-mot-only-evaluation-v1") -> dict | None:
     import torch
     import torch.distributed as dist
     from locatemot.unified.data.u2_mot_clips import DATASET_PROBABILITIES, source_frame_index
@@ -24,7 +27,7 @@ def evaluate_checkpoint(core, sampler, cache: dict, supervision: dict, args, ste
         dist.barrier()
         return result if rank == 0 else None
     groups = [item["group"] for item in cache["groups"] if item["group"]["role"] == "dev"]
-    tracker = "U2_MOT_ONLY_BASELINE"
+    tracker = tracker_name
     core.eval()
     with torch.no_grad():
         for group in assigned_groups(groups, world)[rank]:
@@ -58,7 +61,7 @@ def evaluate_checkpoint(core, sampler, cache: dict, supervision: dict, args, ste
             write_json(directory / dataset / "result.json", reports[dataset])
         macro = {key: sum(report["metrics"][key] for report in reports.values()) / 5
                  for key in ("HOTA", "DetA", "AssA", "IDF1")}
-        result = {"format": "locatemot-u2-mot-only-evaluation-v1", "status": "COMPLETE", "step": step,
+        result = {"format": report_format, "status": "COMPLETE", "step": step,
                   "checkpoint": str(checkpoint.resolve()), "checkpoint_sha256": digest(checkpoint),
                   "foundation_sha256": cache["spec"]["foundation_sha256"],
                   "candidate_cache_sha256": digest(args.cache_manifest), "task_type": "mot",
@@ -90,8 +93,13 @@ def select_mot_only(directory: Path, simple: dict, cache_manifest: Path) -> dict
         deltas = {dataset: {key: report["datasets"][dataset]["metrics"][key] - simple["datasets"][dataset]["metrics"][key]
                             for key in ("HOTA", "AssA")}
                   for dataset in DATASET_PROBABILITIES}
-        identity_gain = report["macro"]["AssA"] >= simple["macro"]["AssA"] + .03 or report["macro"]["AssA"] >= .50
-        hota_retained = all(delta["HOTA"] >= -.02 for delta in deltas.values())
+        # Compare the recorded decimal scores at the exact registered point
+        # thresholds, without an epsilon or an extra rounding allowance.
+        identity_gain = (Decimal(str(report["macro"]["AssA"])) >= Decimal(str(simple["macro"]["AssA"])) + Decimal(".03")
+                         or report["macro"]["AssA"] >= .50)
+        hota_retained = all(Decimal(str(report["datasets"][dataset]["metrics"]["HOTA"])) >=
+                            Decimal(str(simple["datasets"][dataset]["metrics"]["HOTA"])) - Decimal(".02")
+                            for dataset in DATASET_PROBABILITIES)
         eligible = identity_gain and hota_retained
         decisions.append({"step": step, "eligible": eligible, "identity_gain": identity_gain,
                           "all_dataset_hota_retained": hota_retained, "dataset_delta": deltas,

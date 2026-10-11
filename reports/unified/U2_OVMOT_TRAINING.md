@@ -58,3 +58,41 @@ local-cluster results. Every input frame, including empty emissions, is exported
 Compact video-local runtime IDs avoid large upstream dense ID-map allocations;
 official TAO resolves cross-video namespaces. Formal joint requires TETA >=34
 and AssocA >=37 plus every ordinary HOTA/AssA within .01 of selected MOT-only.
+
+The exact U2-B execution is now implemented and preregistered in
+`outputs/unified/u2/protocol/joint_training_recipe.json`: 4,000 optimizer steps,
+eight ranks/two eight-frame clips per rank, global MOT/OVMOT probabilities
+.65/.35, unchanged ordinary sub-sampling, teacher probability .4, shared
+core/candidate/semantic projection LR5e-5 and adapter LR1e-4. Every selected
+MOT-only core tensor is loaded strictly; optimizer moments start fresh for the
+joint stage. The shared actual foundation/BERT remain outside the optimizer.
+
+At steps1,000/2,000/3,000/4,000, every original ordinary dev sequence and all
+TAO validation images are evaluated through the existing official readers.
+Each checkpoint is ineligible if any dataset loses more than .01 HOTA or AssA.
+Passing selection prioritizes overall TAO AssocA, then TETA, ordinary macro AssA
+and earlier step. A failed main OVMOT gate permits only the separately bounded
+refinement condition (ordinary retained, TETA>=31 and AssocA>=34); it does not
+authorize a larger joint budget or declare readiness.
+
+The eight-GPU BF16 joint proof initializes every tensor from an explicit
+synthetic MOT-shaped checkpoint, alternates MOT/OVMOT through the same core,
+and verifies both optimizer groups and identical rank weights. Actual joint
+checkpoint/optimizer and per-rank CPU/CUDA RNG restore reproduces the next
+stochastic update bit-exact, including scheduled teacher Bernoulli draws.
+MOT gives unused semantic-adapter parameters no gradient/weight decay.
+
+The complete eight-rank joint evaluation entry also passes on synthetic shards:
+all five official ordinary readers (three frames each), two base/novel TAO
+videos (six frames) and official parallel TETA. Resuming after complete video
+units invokes no core forward calls and returns identical metrics. These are
+integration/contract fixtures, not selected-foundation caches or benchmark
+tracking scores. The actual full-source evaluations remain pending.
+
+One blocking joint owner (PID883611/session32672) waits for the original
+MOT-only owner870157 to genuinely finish. It recomputes all four MOT-only
+eligibility boundaries before full OVMOT caching/class-text preparation and
+joint launch. Current state is `WAITING_ELIGIBLE_MOT_ONLY`; no OVMOT cache or
+formal joint optimizer has started. Full rank-zero metric collection has a
+24-hour collective wait limit so peer ranks can wait through complete evaluation;
+no metric threshold, sequence, seed, optimizer step or candidate budget changed.
