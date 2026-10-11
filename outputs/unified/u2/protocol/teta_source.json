@@ -1,0 +1,20 @@
+{
+  "format": "locatemot-u2-official-teta-source-v1",
+  "repository": "https://github.com/siyuanliii/TETA",
+  "commit": "b498aa87b252bfb75d7cc0d8d6435c3e1e74e4de",
+  "unmodified": true,
+  "root": "/data2/user/LocateMOT/third_party/TETA",
+  "acquisition": "direct git clone without proxy",
+  "files": {
+    "teta/eval.py": "8219b9a2858faf0c166bff2fa1d25eb96a96578329916d2e0196f84e5aadbbcc",
+    "teta/config.py": "814174dde9486daf5d4b168e3e0cba4e0131a5b2fed94bf392e5d819f17cc12b",
+    "teta/metrics/teta.py": "47a132d92b2e9c92fd47f9e36140278e7ac263418539b606bf58ceead20d97d4",
+    "teta/metrics/_base_metric.py": "ecd91501c4491aa32a21c8a69daf069d6dc3d979c7691bca978c4b7e883f8a17",
+    "teta/datasets/tao.py": "c174d9cd3df6962474db588eff7cb3e82736d9a5b387f8653cefa603b9a7a6ab",
+    "teta/datasets/_base_dataset.py": "d24fbdf8365cad5045401ac363f891e14ed5b98b5753f525829b7c95c98b4346",
+    "scripts/run_ovmot.py": "165e045118e5228a822f898900aa689d5fc322843767983baa853829e3672f53"
+  },
+  "exhaustive": false,
+  "cluster_threshold": 50,
+  "max_predictions_per_image": 300
+}

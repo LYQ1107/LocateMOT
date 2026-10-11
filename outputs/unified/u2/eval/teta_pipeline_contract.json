@@ -1,0 +1,179 @@
+{
+  "format": "locatemot-u2-official-teta-pipeline-contract-v1",
+  "status": "PASS",
+  "input_source": "synthetic fixtures through actual pinned official TETA",
+  "cases": {
+    "perfect": {
+      "metrics": {
+        "overall": {
+          "TETA": 100.0,
+          "LocA": 100.0,
+          "AssocA": 100.0,
+          "ClsA": 100.0,
+          "LocRe": 100.0,
+          "LocPr": 100.0,
+          "AssocRe": 100.0,
+          "AssocPr": 100.0,
+          "ClsRe": 100.0,
+          "ClsPr": 100.0
+        },
+        "base": {
+          "TETA": 100.0,
+          "LocA": 100.0,
+          "AssocA": 100.0,
+          "ClsA": 100.0,
+          "LocRe": 100.0,
+          "LocPr": 100.0,
+          "AssocRe": 100.0,
+          "AssocPr": 100.0,
+          "ClsRe": 100.0,
+          "ClsPr": 100.0
+        },
+        "novel": {
+          "TETA": 100.0,
+          "LocA": 100.0,
+          "AssocA": 100.0,
+          "ClsA": 100.0,
+          "LocRe": 100.0,
+          "LocPr": 100.0,
+          "AssocRe": 100.0,
+          "AssocPr": 100.0,
+          "ClsRe": 100.0,
+          "ClsPr": 100.0
+        }
+      },
+      "export_frames": 4
+    },
+    "wrong_class": {
+      "metrics": {
+        "overall": {
+          "TETA": 66.667,
+          "LocA": 100.0,
+          "AssocA": 100.0,
+          "ClsA": 0.0,
+          "LocRe": 100.0,
+          "LocPr": 100.0,
+          "AssocRe": 100.0,
+          "AssocPr": 100.0,
+          "ClsRe": 0.0,
+          "ClsPr": 0.0
+        },
+        "base": {
+          "TETA": 66.667,
+          "LocA": 100.0,
+          "AssocA": 100.0,
+          "ClsA": 0.0,
+          "LocRe": 100.0,
+          "LocPr": 100.0,
+          "AssocRe": 100.0,
+          "AssocPr": 100.0,
+          "ClsRe": 0.0,
+          "ClsPr": 0.0
+        },
+        "novel": {
+          "TETA": 66.667,
+          "LocA": 100.0,
+          "AssocA": 100.0,
+          "ClsA": 0.0,
+          "LocRe": 100.0,
+          "LocPr": 100.0,
+          "AssocRe": 100.0,
+          "AssocPr": 100.0,
+          "ClsRe": 0.0,
+          "ClsPr": 0.0
+        }
+      },
+      "export_frames": 4
+    },
+    "identity_switch": {
+      "metrics": {
+        "overall": {
+          "TETA": 80.0,
+          "LocA": 100.0,
+          "AssocA": 40.0,
+          "ClsA": 100.0,
+          "LocRe": 100.0,
+          "LocPr": 100.0,
+          "AssocRe": 55.556,
+          "AssocPr": 55.556,
+          "ClsRe": 100.0,
+          "ClsPr": 100.0
+        },
+        "base": {
+          "TETA": 80.0,
+          "LocA": 100.0,
+          "AssocA": 40.0,
+          "ClsA": 100.0,
+          "LocRe": 100.0,
+          "LocPr": 100.0,
+          "AssocRe": 55.556,
+          "AssocPr": 55.556,
+          "ClsRe": 100.0,
+          "ClsPr": 100.0
+        },
+        "novel": {
+          "TETA": 80.0,
+          "LocA": 100.0,
+          "AssocA": 40.0,
+          "ClsA": 100.0,
+          "LocRe": 100.0,
+          "LocPr": 100.0,
+          "AssocRe": 55.556,
+          "AssocPr": 55.556,
+          "ClsRe": 100.0,
+          "ClsPr": 100.0
+        }
+      },
+      "export_frames": 4
+    },
+    "unlabeled_distant_object": {
+      "metrics": {
+        "overall": {
+          "TETA": 100.0,
+          "LocA": 100.0,
+          "AssocA": 100.0,
+          "ClsA": 100.0,
+          "LocRe": 100.0,
+          "LocPr": 100.0,
+          "AssocRe": 100.0,
+          "AssocPr": 100.0,
+          "ClsRe": 100.0,
+          "ClsPr": 100.0
+        },
+        "base": {
+          "TETA": 100.0,
+          "LocA": 100.0,
+          "AssocA": 100.0,
+          "ClsA": 100.0,
+          "LocRe": 100.0,
+          "LocPr": 100.0,
+          "AssocRe": 100.0,
+          "AssocPr": 100.0,
+          "ClsRe": 100.0,
+          "ClsPr": 100.0
+        },
+        "novel": {
+          "TETA": 100.0,
+          "LocA": 100.0,
+          "AssocA": 100.0,
+          "ClsA": 100.0,
+          "LocRe": 100.0,
+          "LocPr": 100.0,
+          "AssocRe": 100.0,
+          "AssocPr": 100.0,
+          "ClsRe": 100.0,
+          "ClsPr": 100.0
+        }
+      },
+      "export_frames": 4
+    }
+  },
+  "classification_localization_association_separated": true,
+  "unknown_distant_prediction_not_scored_as_false_positive": true,
+  "base_novel_and_overall_reported": true,
+  "unmapped_conversion_counts_explicit": true,
+  "every_frame_exported_including_empty_outputs": true,
+  "benchmark_metrics_measured": false,
+  "formal_joint_optimization_launched": false,
+  "official_test_labels_read": false
+}

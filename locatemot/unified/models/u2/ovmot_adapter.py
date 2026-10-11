@@ -18,6 +18,12 @@ class OVMOTAdapter(nn.Module):
         self.text_projection = nn.Linear(hidden_dim, hidden_dim, bias=False)
         self.temperature = nn.Parameter(torch.tensor(1.0))
 
+    def class_logits(self, semantic: torch.Tensor, class_text: torch.Tensor) -> torch.Tensor:
+        """Shared U1 text features; no learned per-category classifier table."""
+        semantic = F.normalize(semantic.float(), dim=-1)
+        text = F.normalize(self.text_projection(class_text).float(), dim=-1)
+        return semantic @ text.T / self.temperature.float().clamp_min(0.1)
+
     def semantic_pair_residual(
         self, track_semantic: torch.Tensor, candidate_semantic: torch.Tensor, class_text: torch.Tensor | None
     ) -> tuple[torch.Tensor, torch.Tensor]:
@@ -34,7 +40,7 @@ class OVMOTAdapter(nn.Module):
             text = F.normalize(self.text_projection(class_text), dim=-1)
             track_class = trk @ text.T
             cand_class = cand @ text.T
-            class_agreement = (track_class[:, None, :] * cand_class[None, :, :]).mean(dim=-1)
+            class_agreement = track_class @ cand_class.T / text.shape[0]
             base = base + class_agreement / self.temperature.clamp_min(0.1)
         gate = torch.sigmoid(self.gate(torch.cat([trk_exp, cand_exp], dim=-1)).squeeze(-1))
         return base, gate

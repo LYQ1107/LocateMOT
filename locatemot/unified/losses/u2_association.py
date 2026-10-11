@@ -26,12 +26,17 @@ class FrameSupervision:
     trackable_ids: set[int]
     distractor_boxes: torch.Tensor | None = None
     minimum_candidate_height: float = 0.
+    # OVMOT labels remain external. None retains exhaustive ordinary MOT.
+    category_ids: torch.Tensor | None = None
+    negative_category_ids: set[int] | None = None
 
     def to(self, device: torch.device | str) -> "FrameSupervision":
         return FrameSupervision(self.boxes.to(device), self.identity_ids.to(device),
                                 self.ignore_boxes.to(device), self.trackable_ids,
                                 None if self.distractor_boxes is None else self.distractor_boxes.to(device),
-                                self.minimum_candidate_height)
+                                self.minimum_candidate_height,
+                                None if self.category_ids is None else self.category_ids.to(device),
+                                self.negative_category_ids)
 
 
 @dataclass
@@ -44,6 +49,8 @@ class AssociationTargets:
     matched_pairs: list[tuple[int, int]]
     births: set[int]
     gt_boxes: torch.Tensor
+    row_supervised: torch.Tensor | None = None
+    candidate_category_ids: torch.Tensor | None = None
 
 
 def candidate_gt_assignment(boxes: torch.Tensor, gt: FrameSupervision) -> tuple[torch.Tensor, torch.Tensor]:
@@ -90,6 +97,7 @@ def association_targets(
     track_gt_ids: dict[int, int],
     candidates: dict[str, torch.Tensor],
     gt: FrameSupervision,
+    certified_negative_track_ids: set[int] | None = None,
 ) -> AssociationTargets:
     ids, eligible = candidate_gt_assignment(candidates["boxes"], gt)
     n, t = len(ids), state.num_tracks
@@ -117,18 +125,41 @@ def association_targets(
     row = torch.tensor(row_values, device=ids.device, dtype=torch.long)
     col = torch.tensor(col_values, device=ids.device, dtype=torch.long)
     alive = torch.tensor(alive_values, device=ids.device, dtype=torch.float32)
-    return AssociationTargets(ids, eligible, row, col, alive, matches, births, matched_gt_boxes)
+    row_supervised, category_ids = None, None
+    if gt.category_ids is not None:
+        # Partial OVMOT annotations: unknown objects remain candidates but
+        # cannot become negative identity/alive/NEW labels merely by omission.
+        category_ids = torch.full_like(ids, -1)
+        for identity, category in zip(gt.identity_ids.tolist(), gt.category_ids.tolist()):
+            category_ids[ids == identity] = category
+        certified = torch.zeros(n, device=ids.device, dtype=torch.bool)
+        for category in gt.negative_category_ids or set():
+            certified |= candidates["predicted_class"] == category
+        if n and len(gt.boxes):
+            # Duplicate proposals of a labeled base object are real hard
+            # negatives for identity births, even when Hungarian chose another.
+            certified |= _iou_matrix(candidates["boxes"], gt.boxes).amax(dim=1) >= .5
+        eligible &= (ids >= 0) | certified
+        row_supervised = torch.tensor(
+            [track_gt_ids.get(track_id, -1) >= 0 or track_id in (certified_negative_track_ids or set())
+             for track_id in state.track_ids.tolist()], device=ids.device, dtype=torch.bool)
+    return AssociationTargets(ids, eligible, row, col, alive, matches, births, matched_gt_boxes,
+                              row_supervised, category_ids)
 
 
-def u2_association_losses(output: dict, state: UnifiedTrackState, targets: AssociationTargets) -> dict[str, torch.Tensor]:
-    pair = output["identity_pair_logits"].float()
+def u2_association_losses(output: dict, state: UnifiedTrackState, targets: AssociationTargets,
+                          *, semantic: bool = False) -> dict[str, torch.Tensor]:
+    pair = output["pair_logits" if semantic else "identity_pair_logits"].float()
     no_match, new = output["no_match_logits"].float(), output["new_logits"].float()
     t, n = pair.shape
     zero = output["candidate_id_tokens"].sum() * 0 + new.sum() * 0 + no_match.sum() * 0
     row_logits = torch.cat([pair.masked_fill(~targets.eligible[None], -1e4), no_match[:, None]], dim=1)
-    row = F.cross_entropy(row_logits, targets.row) if t else zero
+    supervised = (torch.ones(t, device=pair.device, dtype=torch.bool) if targets.row_supervised is None
+                  else targets.row_supervised)
+    row = F.cross_entropy(row_logits[supervised], targets.row[supervised]) if supervised.any() else zero
     positive = targets.candidate_gt_ids >= 0
-    col_logits = torch.cat([pair.T, new[:, None]], dim=1)
+    col_pair = pair if targets.row_supervised is None else pair.masked_fill(~supervised[:, None], -1e4)
+    col_logits = torch.cat([col_pair.T, new[:, None]], dim=1)
     col_ce = F.cross_entropy(col_logits[positive], targets.col[positive]) if positive.any() else zero
     birth_target = (positive & (targets.col == t)).float()
     # NEW has a fixed zero reject boundary in the runtime core. BCE additionally
@@ -149,6 +180,8 @@ def u2_association_losses(output: dict, state: UnifiedTrackState, targets: Assoc
         cand = F.normalize(output["candidate_id_tokens"][cols].float(), dim=-1)
         for reference in (state.id_memory, state.identity_anchor):
             similarity = cand @ F.normalize(reference.float(), dim=-1).T / .07
+            if targets.row_supervised is not None:
+                similarity = similarity.masked_fill(~supervised[None], -1e4)
             contrast_terms.append(F.cross_entropy(similarity, rows))
         motion_target = _motion_delta(state.boxes[rows].float(), targets.gt_boxes.float()) / output["frame_delta"]
         motion = F.smooth_l1_loss(output["motion_delta"][rows].float(), motion_target)
@@ -156,7 +189,8 @@ def u2_association_losses(output: dict, state: UnifiedTrackState, targets: Assoc
         motion = output["motion_delta"].sum() * 0
     switch = torch.stack(switch_terms).mean() if switch_terms else zero
     contrast = torch.stack(contrast_terms).mean() if contrast_terms else zero
-    alive = F.binary_cross_entropy_with_logits(output["alive_logits"].float(), targets.alive.float()) if t else zero
+    alive = (F.binary_cross_entropy_with_logits(output["alive_logits"][supervised].float(), targets.alive[supervised].float())
+             if supervised.any() else zero)
     col = col_ce + birth
     total = row + col + .25 * switch + .25 * alive + .50 * motion + .25 * contrast
     return {"total": total, "row": row, "col": col, "switch": switch, "alive": alive,

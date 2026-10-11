@@ -1,0 +1,42 @@
+{
+  "format": "locatemot-u2-ovmot-base-supervision-manifest-v1",
+  "status": "COMPLETE",
+  "inventory_sha256": "314356a9a31a20eb82ec923bb0b490add6af43a7705b2db432ff7d8ed37892ee",
+  "vocabulary_sha256": "85e8cd97f7009882e4e6d41b187d85eafdeab3dbe62835dfa35c4ce7bff1f68b",
+  "source_annotations": {
+    "tao_train": {
+      "path": "/data2/user/LocateMOT/data/TAO-Amodal/annotations/train.json",
+      "sha256": "7eb551fdeeeebc76b876ae255f91dc5662c7270a125955c5f1be2d9bd30921d0"
+    },
+    "ctao": {
+      "path": "/data2/user/LocateMOT/data/C-TAO/ctao_base.json",
+      "sha256": "4269b1a5f026350cf45fbbf61689894f7d45d9bd2730331e73ab6f841d9b3adc"
+    }
+  },
+  "counts": {
+    "tao_train_images": 18274,
+    "tao_train_raw_gt_units": 54639,
+    "unique_base_gt_units": 1489990,
+    "tao_train_base_positive_gt_units": 53264,
+    "tao_train_novel_gt_excluded_from_training": 1156,
+    "tao_train_unmapped_gt_excluded_from_training": 219,
+    "ctao_images": 490210,
+    "ctao_source_frame_index_differs_from_physical_filename": 196400,
+    "ctao_camera_original_time_anchors": 578,
+    "ctao_camera_timestamp_interpolated_source_indices": 14713,
+    "ctao_raw_gt_units": 1489637,
+    "duplicate_base_gt_units_shared_by_ctao_and_tao": 52911,
+    "ctao_base_positive_gt_units": 1489637,
+    "ctao_nonpositive_extent_gt_units_preserved": 9
+  },
+  "videos": 500,
+  "images": 491353,
+  "physical_time": "frameNNNN.jpg and LaSOT NNNN.jpg -> NNNN-1; ArgoVerse original TAO indices and integer-rounded timestamp interpolation between original anchors, preserving missing-frame gaps; dense frame_id/reset frame_index never used",
+  "identity_namespace": "per-video original annotation UUID, with source numeric IDs retained separately",
+  "unknown_proposals": "retained as model input; no automatic NEW/background/identity label",
+  "novel_training_gt_units": 0,
+  "validation_or_test_labels_read": false,
+  "formal_joint_optimization_launched": false,
+  "base_classes": 866,
+  "shared_uuid_with_different_numeric_source_track_ids": 0
+}

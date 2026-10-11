@@ -200,5 +200,20 @@
     "blocking_session": 38396,
     "run_state": "outputs/unified/u2/mot_only_queue/run_state.json",
     "formal_optimization_launched": false
+  },
+  "ovmot_implementation": {
+    "dense_base_supervision": "COMPLETE_500_TRAIN_VIDEOS",
+    "images": 491353,
+    "base_positive_gt_units": 1489990,
+    "novel_training_gt_units": 0,
+    "supervision_contract": "outputs/unified/u2/eval/ovmot_supervision_contract.json",
+    "shared_class_text_contract": "outputs/unified/u2/ovmot_semantics/f0_class_text.contract.json",
+    "semantic_training_contract": "outputs/unified/u2/eval/ovmot_training_contract_8gpu.json",
+    "teta_pipeline_contract": "outputs/unified/u2/eval/teta_pipeline_contract.json",
+    "official_metric_source": "outputs/unified/u2/protocol/teta_source.json",
+    "formal_joint_training_launched": false,
+    "benchmark_metrics_measured": false,
+    "full_ovmot_candidate_cache_built": false,
+    "joint_launch_requires_selected_eligible_mot_only": true
   }
 }

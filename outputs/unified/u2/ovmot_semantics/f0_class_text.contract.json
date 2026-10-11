@@ -1,0 +1,22 @@
+{
+  "format": "locatemot-u2-shared-class-text-contract-v1",
+  "status": "PASS",
+  "foundation_sha256": "4efc35ce70be5cddf2c4d9a0f91bc4edef3e9ec5277a819211ba4ac42e0d7d26",
+  "class_text_cache": "/data2/user/LocateMOT/outputs/unified/u2/ovmot_semantics/f0_class_text.pt",
+  "cache_sha256": "b8e4673b42479cd54b4c5a29da5a7f55b5f810328a50ab3c79060db925ae795b",
+  "vocabulary_sha256": "85e8cd97f7009882e4e6d41b187d85eafdeab3dbe62835dfa35c4ce7bff1f68b",
+  "classes": 1203,
+  "base_classes": 866,
+  "novel_classes": 337,
+  "embedding_shape": [
+    1203,
+    256
+  ],
+  "max_chunk_tokens": 104,
+  "chunk_count": 38,
+  "image_backbone_calls": 0,
+  "reference_only": true,
+  "second_text_encoder": false,
+  "novel_training_labels_used": false,
+  "formal_joint_optimization_launched": false
+}

@@ -5,6 +5,7 @@ import torch
 from torch import nn
 
 from locatemot.unified.losses.u2_association import association_targets, u2_association_losses
+from locatemot.unified.losses.u2_semantic import u2_semantic_losses
 from locatemot.unified.models.u2.shared_track_core import SharedTrackCore
 from locatemot.unified.models.u2.track_state import UnifiedTrackState
 
@@ -48,13 +49,20 @@ class U2MOTTemporalTraining(nn.Module):
         self.core = core if core is not None else SharedTrackCore()
 
     def forward(self, clips: list[list[dict]], step: int, *, generator: torch.Generator | None = None,
-                forcing_decisions: list[list[bool]] | None = None, augment: bool = True) -> dict:
+                forcing_decisions: list[list[bool]] | None = None, augment: bool = True,
+                task_type: str = "mot", class_text: torch.Tensor | None = None,
+                base_class_ids: torch.Tensor | None = None) -> dict:
         if not self.training:
             raise ValueError("Temporal supervision is training-only")
+        if task_type not in {"mot", "ovmot"}:
+            raise ValueError("U2 temporal tasks are mot and ovmot")
+        if task_type == "ovmot" and (class_text is None or base_class_ids is None):
+            raise ValueError("OVMOT requires the selected shared language features and base vocabulary")
         losses, diagnostics = [], []
         for clip_index, clip in enumerate(clips):
             state = None
             bookkeeping: dict[int, int] = {}
+            certified_negative_tracks: set[int] = set()
             past_negatives = None
             for index, frame in enumerate(clip):
                 candidates, gt = frame["candidates"], frame["supervision"]
@@ -67,15 +75,30 @@ class U2MOTTemporalTraining(nn.Module):
                     state, query_info = self.core.query_interaction.augment_state(state, past_negatives, generator=generator)
                 live = set(state.track_ids.tolist())
                 bookkeeping = {key: value for key, value in bookkeeping.items() if key in live}
-                targets = association_targets(state, bookkeeping, candidates, gt)
+                certified_negative_tracks &= live
+                certified_negative_tracks.update(query_info["injected_track_ids"])
+                if task_type == "ovmot" and gt.category_ids is None:
+                    raise ValueError("OVMOT requires external base-only original supervision")
+                targets = association_targets(state, bookkeeping, candidates, gt, certified_negative_tracks)
                 forced = (forcing_decisions[clip_index][index] if forcing_decisions is not None
                           else bool(torch.rand((), device=state.track_ids.device, generator=generator)
                                     < teacher_forcing_probability(step)))
-                output = self.core(candidates, state, task_type="mot", frame_index=frame["frame_index"], training=True,
+                output = self.core(candidates, state, task_type=task_type, class_text=class_text,
+                                   frame_index=frame["frame_index"], training=True,
                                    forced_assignment=(targets.matched_pairs, targets.births) if forced else None)
-                frame_losses = u2_association_losses(output, state, targets)
-                losses.append(frame_losses)
+                frame_losses = u2_association_losses(output, state, targets, semantic=task_type == "ovmot")
                 bookkeeping = update_identity_bookkeeping(bookkeeping, output, targets.candidate_gt_ids)
+                if task_type == "ovmot":
+                    semantic_losses = u2_semantic_losses(self.core, output, state, targets, gt, bookkeeping,
+                                                        class_text, base_class_ids)
+                    frame_losses["total"] = frame_losses["total"] + semantic_losses["semantic_total"]
+                    frame_losses.update(semantic_losses)
+                losses.append(frame_losses)
+                for candidate, track_id in zip(output["candidate_indices"].tolist(), output["track_ids"].tolist()):
+                    if targets.eligible[candidate] and targets.candidate_gt_ids[candidate] < 0:
+                        certified_negative_tracks.add(track_id)
+                    elif targets.candidate_gt_ids[candidate] >= 0:
+                        certified_negative_tracks.discard(track_id)
                 state = output["state"]
                 negative = (targets.candidate_gt_ids < 0) & targets.eligible
                 past_negatives = {"candidate_id_tokens": output["candidate_id_tokens"][negative],
@@ -89,4 +112,4 @@ class U2MOTTemporalTraining(nn.Module):
                                     "model_birth_candidates": output["model_birth_candidates"]})
         mean = {key: torch.stack([loss[key] for loss in losses]).mean() for key in losses[0]}
         return {"losses": mean, "diagnostics": diagnostics,
-                "teacher_forcing_probability": teacher_forcing_probability(step), "task_type": "mot"}
+                "teacher_forcing_probability": teacher_forcing_probability(step), "task_type": task_type}
