@@ -88,7 +88,7 @@ def main() -> int:
         print(json.dumps(result, indent=2))
         return 0
     if int(os.environ.get("WORLD_SIZE", "1")) != 8:
-        parser.error("Use .venv/bin/torchrun --standalone --nproc-per-node=8; registered global batch is 16")
+        parser.error("Use .venv/bin/python -m torch.distributed.run --standalone --nproc-per-node=8; registered global batch is 16")
     import torch
     import torch.distributed as dist
     from mmengine.config import Config
@@ -106,7 +106,9 @@ def main() -> int:
     cfg.launcher = "pytorch"
     cfg.work_dir = str(args.work_dir.resolve())
     # Pause at epoch 1 for full audits. Epoch 2 resumes the same optimizer,
-    # data sampler, RNG and scheduler, retaining the absolute two-epoch cap.
+    # sampler epoch and scheduler, retaining the absolute two-epoch cap.
+    # Native MMEngine restores the fixed seed, not worker RNG streams; each
+    # separately launched epoch uses the same registered base seed 20261012.
     cfg.train_cfg.max_epochs = args.epoch
     cfg.max_epochs = args.epoch
     if args.resume:

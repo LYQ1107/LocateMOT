@@ -6,7 +6,7 @@
         "raw_tracking_coverage": {
           "train": {
             "annotation_frames": 278079,
-            "missing_images": 238661,
+            "missing_images": 0,
             "videos": 1400,
             "videos_expected": 1400
           },
@@ -29,27 +29,27 @@
         },
         {
           "annotation_files": 1600,
-          "directories": 408,
+          "directories": 1608,
           "exists": true,
-          "files": 80991,
-          "image_files": 79391,
+          "files": 319652,
+          "image_files": 318052,
           "path": "/data2/user/LocateMOT/data/bdd100k",
           "sample_files": [
-            "/data2/user/LocateMOT/data/bdd100k/images/track/train/006dd004-34630e8d/006dd004-34630e8d-0000001.jpg",
-            "/data2/user/LocateMOT/data/bdd100k/images/track/train/006dd004-34630e8d/006dd004-34630e8d-0000002.jpg",
-            "/data2/user/LocateMOT/data/bdd100k/images/track/train/006dd004-34630e8d/006dd004-34630e8d-0000003.jpg",
-            "/data2/user/LocateMOT/data/bdd100k/images/track/train/006dd004-34630e8d/006dd004-34630e8d-0000004.jpg",
-            "/data2/user/LocateMOT/data/bdd100k/images/track/train/006dd004-34630e8d/006dd004-34630e8d-0000005.jpg"
+            "/data2/user/LocateMOT/data/bdd100k/images/track/train/01c5fd90-949d2d90/01c5fd90-949d2d90-0000001.jpg",
+            "/data2/user/LocateMOT/data/bdd100k/images/track/train/01c5fd90-949d2d90/01c5fd90-949d2d90-0000002.jpg",
+            "/data2/user/LocateMOT/data/bdd100k/images/track/train/01c5fd90-949d2d90/01c5fd90-949d2d90-0000003.jpg",
+            "/data2/user/LocateMOT/data/bdd100k/images/track/train/01c5fd90-949d2d90/01c5fd90-949d2d90-0000004.jpg",
+            "/data2/user/LocateMOT/data/bdd100k/images/track/train/01c5fd90-949d2d90/01c5fd90-949d2d90-0000005.jpg"
           ]
         }
       ],
       "dataset": "bdd100k",
       "kind": "ordinary_mot",
       "license": "BDD100K terms; local acquisition required",
-      "portability_training_allowed": false,
+      "portability_training_allowed": true,
       "selected_root": "/data2/user/LocateMOT/data/bdd100k",
-      "split_protocol": "official train/val; no local copy",
-      "status": "INCOMPLETE_LOCAL_DATA"
+      "split_protocol": "official tracking train/val; full raw annotation and image coverage required",
+      "status": "AVAILABLE"
     },
     {
       "availability_evidence": {

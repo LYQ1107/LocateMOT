@@ -1,0 +1,53 @@
+{
+  "state": "PASS_REAL_REPLAY_EIGHT_RANK_NATIVE_LOADER",
+  "world_size": 8,
+  "rows": 20000,
+  "rows_per_rank": 2500,
+  "batch_per_rank": 2,
+  "steps_per_epoch": 1250,
+  "duplicate_or_omitted_rows": 0,
+  "stream_counts": {
+    "u1_v2": 5000,
+    "u1_v1": 3000,
+    "dancetrack": 2000,
+    "u1_generic": 2000,
+    "bdd100k": 2000,
+    "mot20": 2000,
+    "mot17": 2000,
+    "tao_base": 2000
+  },
+  "native_positive_boxes": {
+    "u1_v2": 6770,
+    "u1_v1": 6270,
+    "dancetrack": 18338,
+    "u1_generic": 8918,
+    "bdd100k": 19673,
+    "mot20": 192696,
+    "mot17": 41601,
+    "tao_base": 5804
+  },
+  "native_empty_positive_rows": {
+    "u1_v2": 766,
+    "u1_v1": 452,
+    "dancetrack": 0,
+    "u1_generic": 0,
+    "bdd100k": 34,
+    "mot20": 0,
+    "mot17": 0,
+    "tao_base": 133
+  },
+  "native_box_filter_removals": {
+    "u1_generic": 0,
+    "u1_v1": 0,
+    "u1_v2": 0,
+    "bdd100k": 0,
+    "dancetrack": 0,
+    "mot17": 0,
+    "mot20": 0,
+    "tao_base": 0
+  },
+  "replay_sha256": "1be4a6e2d03fd3f59aeeca8b931c3f638a2ca1db015ea7d54afa2ca725970947",
+  "optimizer_created": false,
+  "gpu_model_created": false,
+  "official_test_labels_read": false
+}

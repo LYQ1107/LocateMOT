@@ -22,7 +22,7 @@ DATASETS: dict[str, dict[str, Any]] = {
             PROJECT_ROOT / "data" / "bdd100k",
         ],
         "license": "BDD100K terms; local acquisition required",
-        "split": "official train/val; no local copy",
+        "split": "official tracking train/val; full raw annotation and image coverage required",
     },
     "dancetrack": {
         "kind": "ordinary_mot",

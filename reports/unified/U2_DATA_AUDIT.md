@@ -5,7 +5,7 @@ Recovery snapshot: 2026-10-12. Authoritative inventory:
 
 | Dataset | Status | Registered scope / acquisition |
 |---|---|---|
-| bdd100k | INCOMPLETE_LOCAL_DATA | All 1,400/200 raw tracking annotation videos and 39,973 validation images recovered and validated; original train-image extraction remains incomplete |
+| bdd100k | AVAILABLE | All 1,400/200 raw tracking annotation videos and 278,079/39,973 train/val images match; all seven original train-image ZIPs are CRC-extracted |
 | dancetrack | AVAILABLE | All three official archives downloaded and CRC-extracted; existing 32/8/25 videos and 33,772/8,024/25,508 frames match exactly |
 | mot17 | AVAILABLE | 2,664 train / 2,652 dev frames; FRCNN copies only; exact half protocol frozen |
 | mot20 | AVAILABLE | 4,468 train / 4,463 dev frames; exact half protocol frozen |
@@ -30,15 +30,16 @@ Direct networking is used. aria2 failed its TLS handshake before receiving bytes
 curl range request succeeded (HTTP 206), and the official data download resumed with curl.
 
 No Refer-KITTI official evaluation or benchmark test labels were parsed. Track training remains
-ineligible because BDD tracking inputs are incomplete and measured MOT gates failed.
+ineligible because measured MOT gates failed and full BDD/TAO portability is not complete.
 
 C-TAO base-only annotation audit: 490,210 training frames, 1,489,637 boxes, 500 videos; class-supervised boxes are f/c only (1,378,391 frequent, 111,246 common). All image paths start with train/. TAO validation has 36,375 annotated frames and 113,112 GT boxes. Its v0.5→v1 synset mapping leaves 314 boxes in six categories unmapped; retain this explicit count when registering full portability and official TETA conversion, rather than silently dropping them.
 
 Frozen portability scopes now cover all 36,375 TAO validation images and all 17,131
 original C-TAO training-audit images. The interpolated C-TAO images remain in the
 490,210-frame identity-training scope. Full TAO/C-TAO measurement runs on GPUs 1–6;
-full DanceTrack validation runs on GPU 7. Separate real-image smoke runs passed with
-the immutable U1R2 foundation. Full-run recall remains unreported until exact coverage completes.
+full DanceTrack validation completed on GPU 7 (25,508 images, 225,148 GT;
+Top150 0.996313536, Top300 0.997685967). Separate real-image checks passed with
+the immutable U1R2 foundation. TAO/C-TAO full recall remains unreported until exact coverage completes.
 
 The validated BDD annotation mirror is
 [jaffe03195/bdd100k_sot](https://huggingface.co/datasets/jaffe03195/bdd100k_sot/tree/694197099692fe1254e93215e73e68ece8b1f41f),
@@ -53,5 +54,10 @@ and inclusive Box2D coordinates match the cached BDD toolkit and Scalabel functi
 on every validation object. There are 442,814 positive GT units, 18,625 crowd objects
 and 4,073 objects from official ignored categories. All eight positive categories are present.
 The registered training/validation scope contains 278,079/39,973 frames. Complete
-training image coverage is still required for overall data availability. The BDD full
-validation audit is queued after the DanceTrack GPU worker and includes a real-image smoke.
+training image coverage now passes: no missing frame in all 278,079 original training
+annotations. The BDD full
+validation audit is running on GPU 7 after DanceTrack and a successful real-image check.
+All seven original training-image archives are CRC-extracted: 1,400 videos and
+278,079 frames. All seven required data streams are available. The completed
+20,000-row replay uses only the registered train scopes, retains all selected
+empty-positive images, and has no tokenizer truncation (maximum 21 tokens).

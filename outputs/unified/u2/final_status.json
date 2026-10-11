@@ -61,15 +61,21 @@
     ]
   },
   "dance_perception_audit": {
-    "status": "RUNNING",
+    "status": "COMPLETE",
     "protocol": "outputs/unified/u2/protocol/dancetrack.json",
     "validation_images_expected": 25508,
     "gpus": [
       7
-    ]
+    ],
+    "validation_images_evaluated": 25508,
+    "positive_gt_units": 225148,
+    "top150_recall": 0.9963135359852187,
+    "top300_recall": 0.9976859665642155,
+    "measurement": "outputs/unified/u2/perception/measurements/dancetrack.json",
+    "protocol_sha256": "920fc5f4d6fbb1a5948bf7802cf613b023a16bb9a402181c7155a9e775052118"
   },
   "data_availability": {
-    "bdd100k": "INCOMPLETE_LOCAL_DATA",
+    "bdd100k": "AVAILABLE",
     "dancetrack": "AVAILABLE",
     "mot17": "AVAILABLE",
     "mot20": "AVAILABLE",
@@ -88,17 +94,19 @@
     "remaining": "Complete original train-image archive extraction and full perception audit"
   },
   "bdd_perception_audit": {
-    "status": "QUEUED_AFTER_DANCE_GPU_WORKER",
+    "status": "RUNNING_FULL_VALIDATION",
     "gpus": [
       7
     ],
     "validation_images_expected": 39973,
     "protocol": "outputs/unified/u2/protocol/bdd100k.json",
     "protocol_sha256": "8106e49c4aafe8420f9003177ab13b17b850ae11687d2b770cdf6c41df44c933",
-    "raw_gt_reference_comparison": "PASS_ALL_VALIDATION_OBJECTS"
+    "raw_gt_reference_comparison": "PASS_ALL_VALIDATION_OBJECTS",
+    "real_image_check": "PASS",
+    "worker_pid": 825620
   },
   "perception_adaptation": {
-    "state": "PREPARED_WAITING_FULL_DATA_AND_F0_AUDITS",
+    "state": "WAITING_EXISTING_JOBS",
     "recipe": "outputs/unified/u2/protocol/perception_adaptation_recipe.json",
     "model_contract_cpu": "outputs/unified/u2/perception_adaptation/model_contract_cpu.json",
     "native_replay_smoke": "outputs/unified/u2/perception_adaptation/native_replay_smoke.json",
@@ -111,6 +119,16 @@
     "steps_per_epoch": 1250,
     "maximum_optimizer_steps": 2500,
     "optimization_launched": false,
-    "track_training_launched": false
+    "track_training_launched": false,
+    "controller_script": "tools/unified/run_u2_perception_adaptation.py",
+    "evaluation_script": "tools/unified/eval_u2_perception_adaptation.py",
+    "replay_manifest": "outputs/unified/u2/perception_adaptation/replay_manifest.json",
+    "native_full_replay_contract": "outputs/unified/u2/perception_adaptation/native_replay_full_contract.json",
+    "replay_rows": 20000,
+    "max_prompt_tokens": 21,
+    "replay_sha256": "1be4a6e2d03fd3f59aeeca8b931c3f638a2ca1db015ea7d54afa2ca725970947",
+    "phase": "F0_AND_SOURCE_DATA",
+    "run_state": "/data2/user/LocateMOT/outputs/unified/u2/perception_adaptation/run_state.json",
+    "controller_pid": 854970
   }
 }

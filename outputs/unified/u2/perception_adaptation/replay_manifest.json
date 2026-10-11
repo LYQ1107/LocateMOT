@@ -1,0 +1,139 @@
+{
+  "format": "locatemot-u2-bounded-perception-replay-v1",
+  "seed": 20261012,
+  "rows_per_epoch": 20000,
+  "maximum_epochs": 2,
+  "allocations": {
+    "u1_generic": 2000,
+    "u1_v1": 3000,
+    "u1_v2": 5000,
+    "bdd100k": 2000,
+    "dancetrack": 2000,
+    "mot17": 2000,
+    "mot20": 2000,
+    "tao_base": 2000
+  },
+  "sampling": "fixed deterministic round-robin shuffled video/frame pools; cycle small replay pools",
+  "sources": {
+    "u1_generic": {
+      "path": "/data2/user/LocateMOT/outputs/unified/u1r2/expression_mix_generic.jsonl",
+      "sha256": "d3b9f30cdc7ec831aef14304a6aca6862c5ffaa353b0ee0fe9ad2fba80aff997",
+      "pool_rows": 1000,
+      "selected_videos": 12,
+      "scope": "unchanged U1R2 legal-fit replay"
+    },
+    "u1_v1": {
+      "path": "/data2/user/LocateMOT/outputs/unified/u1r2/expression_mix_v1.jsonl",
+      "sha256": "fa9b09597a63afd4d3aceb6e19487bebbcc6404d1a484742819fa2d987f38dbe",
+      "pool_rows": 1500,
+      "selected_videos": 9,
+      "scope": "unchanged U1R2 legal-fit replay"
+    },
+    "u1_v2": {
+      "path": "/data2/user/LocateMOT/outputs/unified/u1r2/expression_mix_v2.jsonl",
+      "sha256": "35b8b530cc8f552f2288ba461f826fc3a301a866c86d70b6d3e65f06460b6cb0",
+      "pool_rows": 2500,
+      "selected_videos": 9,
+      "scope": "unchanged U1R2 legal-fit replay"
+    },
+    "bdd100k": {
+      "path": "/data2/user/LocateMOT/outputs/unified/u2/protocol/bdd100k.json",
+      "sha256": "8106e49c4aafe8420f9003177ab13b17b850ae11687d2b770cdf6c41df44c933",
+      "frames": 278079,
+      "videos": 1400,
+      "split": "registered train frames only"
+    },
+    "dancetrack": {
+      "path": "/data2/user/LocateMOT/outputs/unified/u2/protocol/dancetrack.json",
+      "sha256": "920fc5f4d6fbb1a5948bf7802cf613b023a16bb9a402181c7155a9e775052118",
+      "frames": 33772,
+      "videos": 32,
+      "split": "registered train frames only"
+    },
+    "mot17": {
+      "path": "/data2/user/LocateMOT/outputs/unified/u2/protocol/mot17_half.json",
+      "sha256": "460d52eb575a35c3e8bcfa3112d00c18fbd64c1eb4ea60bb149373e370530e0a",
+      "frames": 2664,
+      "videos": 7,
+      "split": "registered train frames only"
+    },
+    "mot20": {
+      "path": "/data2/user/LocateMOT/outputs/unified/u2/protocol/mot20_half.json",
+      "sha256": "39e3349c01e24812f9ebea38962455cad7e469271049a8397c39a2c357387a63",
+      "frames": 4468,
+      "videos": 4,
+      "split": "registered train frames only"
+    },
+    "tao_base": {
+      "annotation_path": "/data2/user/LocateMOT/data/TAO-Amodal/annotations/train.json",
+      "annotation_sha256": "7eb551fdeeeebc76b876ae255f91dc5662c7270a125955c5f1be2d9bd30921d0",
+      "vocabulary_sha256": "85e8cd97f7009882e4e6d41b187d85eafdeab3dbe62835dfa35c4ce7bff1f68b",
+      "source_frames": 18274,
+      "source_videos": 500,
+      "source_gt": 54639,
+      "class_and_identity_supervision_excluded_gt": {
+        "novel": 1156,
+        "unmapped": 219
+      },
+      "novel_semantic_supervised_gt": 0,
+      "novel_identity_supervised_gt": 0,
+      "policy": "mapped LVIS-v1 f/c positives only; retain every selected frame including empty base positives"
+    }
+  },
+  "replay_path": "/data2/user/LocateMOT/outputs/unified/u2/perception_adaptation/replay_train.jsonl",
+  "replay_sha256": "1be4a6e2d03fd3f59aeeca8b931c3f638a2ca1db015ea7d54afa2ca725970947",
+  "max_prompt_tokens": 21,
+  "native_dataset_mode": "ODVG visual grounding",
+  "stream_counts": {
+    "u1_generic": {
+      "rows": 2000,
+      "videos": 12,
+      "empty_positive_rows": 0,
+      "positive_boxes": 8918
+    },
+    "u1_v1": {
+      "rows": 3000,
+      "videos": 9,
+      "empty_positive_rows": 452,
+      "positive_boxes": 6270
+    },
+    "u1_v2": {
+      "rows": 5000,
+      "videos": 9,
+      "empty_positive_rows": 766,
+      "positive_boxes": 6770
+    },
+    "bdd100k": {
+      "rows": 2000,
+      "videos": 1400,
+      "empty_positive_rows": 34,
+      "positive_boxes": 19673
+    },
+    "dancetrack": {
+      "rows": 2000,
+      "videos": 32,
+      "empty_positive_rows": 0,
+      "positive_boxes": 18338
+    },
+    "mot17": {
+      "rows": 2000,
+      "videos": 7,
+      "empty_positive_rows": 0,
+      "positive_boxes": 41601
+    },
+    "mot20": {
+      "rows": 2000,
+      "videos": 4,
+      "empty_positive_rows": 0,
+      "positive_boxes": 192696
+    },
+    "tao_base": {
+      "rows": 2000,
+      "videos": 500,
+      "empty_positive_rows": 133,
+      "positive_boxes": 5804
+    }
+  },
+  "official_test_labels_read": false,
+  "training_started": false
+}

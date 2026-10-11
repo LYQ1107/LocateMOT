@@ -1,9 +1,7 @@
 {
   "state": "WAITING_PREREQUISITES",
   "reasons": [
-    "incomplete required original source-image coverage",
-    "full F0 portability audits are still incomplete",
-    "complete registered 20,000-row replay is not ready"
+    "full F0 portability audits are still incomplete"
   ],
   "epoch": 1,
   "starting_foundation_sha256": "4efc35ce70be5cddf2c4d9a0f91bc4edef3e9ec5277a819211ba4ac42e0d7d26",

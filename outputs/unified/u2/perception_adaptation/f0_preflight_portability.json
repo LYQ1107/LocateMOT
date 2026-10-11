@@ -8,7 +8,7 @@
         "raw_tracking_coverage": {
           "train": {
             "annotation_frames": 278079,
-            "missing_images": 238661,
+            "missing_images": 0,
             "videos": 1400,
             "videos_expected": 1400
           },
@@ -31,28 +31,28 @@
         },
         {
           "annotation_files": 1600,
-          "directories": 408,
+          "directories": 1608,
           "exists": true,
-          "files": 80991,
-          "image_files": 79391,
+          "files": 319652,
+          "image_files": 318052,
           "path": "/data2/user/LocateMOT/data/bdd100k",
           "sample_files": [
-            "/data2/user/LocateMOT/data/bdd100k/images/track/train/006dd004-34630e8d/006dd004-34630e8d-0000001.jpg",
-            "/data2/user/LocateMOT/data/bdd100k/images/track/train/006dd004-34630e8d/006dd004-34630e8d-0000002.jpg",
-            "/data2/user/LocateMOT/data/bdd100k/images/track/train/006dd004-34630e8d/006dd004-34630e8d-0000003.jpg",
-            "/data2/user/LocateMOT/data/bdd100k/images/track/train/006dd004-34630e8d/006dd004-34630e8d-0000004.jpg",
-            "/data2/user/LocateMOT/data/bdd100k/images/track/train/006dd004-34630e8d/006dd004-34630e8d-0000005.jpg"
+            "/data2/user/LocateMOT/data/bdd100k/images/track/train/01c5fd90-949d2d90/01c5fd90-949d2d90-0000001.jpg",
+            "/data2/user/LocateMOT/data/bdd100k/images/track/train/01c5fd90-949d2d90/01c5fd90-949d2d90-0000002.jpg",
+            "/data2/user/LocateMOT/data/bdd100k/images/track/train/01c5fd90-949d2d90/01c5fd90-949d2d90-0000003.jpg",
+            "/data2/user/LocateMOT/data/bdd100k/images/track/train/01c5fd90-949d2d90/01c5fd90-949d2d90-0000004.jpg",
+            "/data2/user/LocateMOT/data/bdd100k/images/track/train/01c5fd90-949d2d90/01c5fd90-949d2d90-0000005.jpg"
           ]
         }
       ],
       "dataset": "bdd100k",
       "kind": "ordinary_mot",
       "license": "BDD100K terms; local acquisition required",
-      "metrics_status": "NOT_MEASURED_MISSING_LOCAL_DATA",
-      "portability_training_allowed": false,
+      "metrics_status": "NOT_MEASURED",
+      "portability_training_allowed": true,
       "selected_root": "/data2/user/LocateMOT/data/bdd100k",
-      "split_protocol": "official train/val; no local copy",
-      "status": "INCOMPLETE_LOCAL_DATA",
+      "split_protocol": "official tracking train/val; full raw annotation and image coverage required",
+      "status": "AVAILABLE",
       "top150_recall_iou050": null,
       "top300_recall_iou050": null
     },
@@ -139,16 +139,558 @@
           ]
         }
       ],
+      "candidate_top_k": 150,
       "dataset": "dancetrack",
       "kind": "ordinary_mot",
       "license": "DanceTrack research release; local acquisition required",
-      "metrics_status": "NOT_MEASURED",
+      "measurement": {
+        "candidate_top_k": 150,
+        "counts": {
+          "gt_total": 225148,
+          "hits_top150": 224318,
+          "hits_top300": 224627
+        },
+        "coverage_keys_sha256": "e6bdb99edd77de2d68fe133f83c48093f976d2838a0ac68d373c4b8bacd4f86c",
+        "dataset": "dancetrack",
+        "format": "locatemot-u2-portability-measurement-v1",
+        "foundation_sha256": "4efc35ce70be5cddf2c4d9a0f91bc4edef3e9ec5277a819211ba4ac42e0d7d26",
+        "images_evaluated": 25508,
+        "images_expected": 25508,
+        "official_test_labels_read": false,
+        "per_sequence": {
+          "dancetrack0001": {
+            "counts": {
+              "gt_total": 0,
+              "hits_top150": 0,
+              "hits_top300": 0
+            },
+            "images": 0
+          },
+          "dancetrack0002": {
+            "counts": {
+              "gt_total": 0,
+              "hits_top150": 0,
+              "hits_top300": 0
+            },
+            "images": 0
+          },
+          "dancetrack0004": {
+            "counts": {
+              "gt_total": 4586,
+              "hits_top150": 4582,
+              "hits_top300": 4582
+            },
+            "images": 1203
+          },
+          "dancetrack0005": {
+            "counts": {
+              "gt_total": 4739,
+              "hits_top150": 4739,
+              "hits_top300": 4739
+            },
+            "images": 1203
+          },
+          "dancetrack0006": {
+            "counts": {
+              "gt_total": 0,
+              "hits_top150": 0,
+              "hits_top300": 0
+            },
+            "images": 0
+          },
+          "dancetrack0007": {
+            "counts": {
+              "gt_total": 9471,
+              "hits_top150": 9471,
+              "hits_top300": 9471
+            },
+            "images": 1203
+          },
+          "dancetrack0008": {
+            "counts": {
+              "gt_total": 0,
+              "hits_top150": 0,
+              "hits_top300": 0
+            },
+            "images": 0
+          },
+          "dancetrack0010": {
+            "counts": {
+              "gt_total": 7029,
+              "hits_top150": 7029,
+              "hits_top300": 7029
+            },
+            "images": 1203
+          },
+          "dancetrack0012": {
+            "counts": {
+              "gt_total": 0,
+              "hits_top150": 0,
+              "hits_top300": 0
+            },
+            "images": 0
+          },
+          "dancetrack0014": {
+            "counts": {
+              "gt_total": 12655,
+              "hits_top150": 12638,
+              "hits_top300": 12647
+            },
+            "images": 1203
+          },
+          "dancetrack0015": {
+            "counts": {
+              "gt_total": 0,
+              "hits_top150": 0,
+              "hits_top300": 0
+            },
+            "images": 0
+          },
+          "dancetrack0016": {
+            "counts": {
+              "gt_total": 0,
+              "hits_top150": 0,
+              "hits_top300": 0
+            },
+            "images": 0
+          },
+          "dancetrack0018": {
+            "counts": {
+              "gt_total": 2935,
+              "hits_top150": 2814,
+              "hits_top300": 2868
+            },
+            "images": 503
+          },
+          "dancetrack0019": {
+            "counts": {
+              "gt_total": 16504,
+              "hits_top150": 16482,
+              "hits_top300": 16489
+            },
+            "images": 2402
+          },
+          "dancetrack0020": {
+            "counts": {
+              "gt_total": 0,
+              "hits_top150": 0,
+              "hits_top300": 0
+            },
+            "images": 0
+          },
+          "dancetrack0023": {
+            "counts": {
+              "gt_total": 0,
+              "hits_top150": 0,
+              "hits_top300": 0
+            },
+            "images": 0
+          },
+          "dancetrack0024": {
+            "counts": {
+              "gt_total": 0,
+              "hits_top150": 0,
+              "hits_top300": 0
+            },
+            "images": 0
+          },
+          "dancetrack0025": {
+            "counts": {
+              "gt_total": 7079,
+              "hits_top150": 7053,
+              "hits_top300": 7061
+            },
+            "images": 803
+          },
+          "dancetrack0026": {
+            "counts": {
+              "gt_total": 3993,
+              "hits_top150": 3946,
+              "hits_top300": 3974
+            },
+            "images": 302
+          },
+          "dancetrack0027": {
+            "counts": {
+              "gt_total": 0,
+              "hits_top150": 0,
+              "hits_top300": 0
+            },
+            "images": 0
+          },
+          "dancetrack0029": {
+            "counts": {
+              "gt_total": 0,
+              "hits_top150": 0,
+              "hits_top300": 0
+            },
+            "images": 0
+          },
+          "dancetrack0030": {
+            "counts": {
+              "gt_total": 7572,
+              "hits_top150": 7568,
+              "hits_top300": 7568
+            },
+            "images": 1263
+          },
+          "dancetrack0032": {
+            "counts": {
+              "gt_total": 0,
+              "hits_top150": 0,
+              "hits_top300": 0
+            },
+            "images": 0
+          },
+          "dancetrack0033": {
+            "counts": {
+              "gt_total": 0,
+              "hits_top150": 0,
+              "hits_top300": 0
+            },
+            "images": 0
+          },
+          "dancetrack0034": {
+            "counts": {
+              "gt_total": 11142,
+              "hits_top150": 11123,
+              "hits_top300": 11132
+            },
+            "images": 923
+          },
+          "dancetrack0035": {
+            "counts": {
+              "gt_total": 5263,
+              "hits_top150": 5263,
+              "hits_top300": 5263
+            },
+            "images": 703
+          },
+          "dancetrack0037": {
+            "counts": {
+              "gt_total": 0,
+              "hits_top150": 0,
+              "hits_top300": 0
+            },
+            "images": 0
+          },
+          "dancetrack0039": {
+            "counts": {
+              "gt_total": 0,
+              "hits_top150": 0,
+              "hits_top300": 0
+            },
+            "images": 0
+          },
+          "dancetrack0041": {
+            "counts": {
+              "gt_total": 16738,
+              "hits_top150": 16518,
+              "hits_top300": 16604
+            },
+            "images": 1003
+          },
+          "dancetrack0043": {
+            "counts": {
+              "gt_total": 1675,
+              "hits_top150": 1655,
+              "hits_top300": 1663
+            },
+            "images": 183
+          },
+          "dancetrack0044": {
+            "counts": {
+              "gt_total": 0,
+              "hits_top150": 0,
+              "hits_top300": 0
+            },
+            "images": 0
+          },
+          "dancetrack0045": {
+            "counts": {
+              "gt_total": 0,
+              "hits_top150": 0,
+              "hits_top300": 0
+            },
+            "images": 0
+          },
+          "dancetrack0047": {
+            "counts": {
+              "gt_total": 9410,
+              "hits_top150": 9405,
+              "hits_top300": 9408
+            },
+            "images": 1203
+          },
+          "dancetrack0049": {
+            "counts": {
+              "gt_total": 0,
+              "hits_top150": 0,
+              "hits_top300": 0
+            },
+            "images": 0
+          },
+          "dancetrack0051": {
+            "counts": {
+              "gt_total": 0,
+              "hits_top150": 0,
+              "hits_top300": 0
+            },
+            "images": 0
+          },
+          "dancetrack0052": {
+            "counts": {
+              "gt_total": 0,
+              "hits_top150": 0,
+              "hits_top300": 0
+            },
+            "images": 0
+          },
+          "dancetrack0053": {
+            "counts": {
+              "gt_total": 0,
+              "hits_top150": 0,
+              "hits_top300": 0
+            },
+            "images": 0
+          },
+          "dancetrack0055": {
+            "counts": {
+              "gt_total": 0,
+              "hits_top150": 0,
+              "hits_top300": 0
+            },
+            "images": 0
+          },
+          "dancetrack0057": {
+            "counts": {
+              "gt_total": 0,
+              "hits_top150": 0,
+              "hits_top300": 0
+            },
+            "images": 0
+          },
+          "dancetrack0058": {
+            "counts": {
+              "gt_total": 11050,
+              "hits_top150": 11050,
+              "hits_top300": 11050
+            },
+            "images": 1601
+          },
+          "dancetrack0061": {
+            "counts": {
+              "gt_total": 0,
+              "hits_top150": 0,
+              "hits_top300": 0
+            },
+            "images": 0
+          },
+          "dancetrack0062": {
+            "counts": {
+              "gt_total": 0,
+              "hits_top150": 0,
+              "hits_top300": 0
+            },
+            "images": 0
+          },
+          "dancetrack0063": {
+            "counts": {
+              "gt_total": 7614,
+              "hits_top150": 7610,
+              "hits_top300": 7612
+            },
+            "images": 1000
+          },
+          "dancetrack0065": {
+            "counts": {
+              "gt_total": 3505,
+              "hits_top150": 3505,
+              "hits_top300": 3505
+            },
+            "images": 702
+          },
+          "dancetrack0066": {
+            "counts": {
+              "gt_total": 0,
+              "hits_top150": 0,
+              "hits_top300": 0
+            },
+            "images": 0
+          },
+          "dancetrack0068": {
+            "counts": {
+              "gt_total": 0,
+              "hits_top150": 0,
+              "hits_top300": 0
+            },
+            "images": 0
+          },
+          "dancetrack0069": {
+            "counts": {
+              "gt_total": 0,
+              "hits_top150": 0,
+              "hits_top300": 0
+            },
+            "images": 0
+          },
+          "dancetrack0072": {
+            "counts": {
+              "gt_total": 0,
+              "hits_top150": 0,
+              "hits_top300": 0
+            },
+            "images": 0
+          },
+          "dancetrack0073": {
+            "counts": {
+              "gt_total": 8470,
+              "hits_top150": 8400,
+              "hits_top300": 8429
+            },
+            "images": 703
+          },
+          "dancetrack0074": {
+            "counts": {
+              "gt_total": 0,
+              "hits_top150": 0,
+              "hits_top300": 0
+            },
+            "images": 0
+          },
+          "dancetrack0075": {
+            "counts": {
+              "gt_total": 0,
+              "hits_top150": 0,
+              "hits_top300": 0
+            },
+            "images": 0
+          },
+          "dancetrack0077": {
+            "counts": {
+              "gt_total": 10827,
+              "hits_top150": 10822,
+              "hits_top300": 10825
+            },
+            "images": 1203
+          },
+          "dancetrack0079": {
+            "counts": {
+              "gt_total": 14523,
+              "hits_top150": 14489,
+              "hits_top300": 14494
+            },
+            "images": 1202
+          },
+          "dancetrack0080": {
+            "counts": {
+              "gt_total": 0,
+              "hits_top150": 0,
+              "hits_top300": 0
+            },
+            "images": 0
+          },
+          "dancetrack0081": {
+            "counts": {
+              "gt_total": 18809,
+              "hits_top150": 18647,
+              "hits_top300": 18680
+            },
+            "images": 984
+          },
+          "dancetrack0082": {
+            "counts": {
+              "gt_total": 0,
+              "hits_top150": 0,
+              "hits_top300": 0
+            },
+            "images": 0
+          },
+          "dancetrack0083": {
+            "counts": {
+              "gt_total": 0,
+              "hits_top150": 0,
+              "hits_top300": 0
+            },
+            "images": 0
+          },
+          "dancetrack0086": {
+            "counts": {
+              "gt_total": 0,
+              "hits_top150": 0,
+              "hits_top300": 0
+            },
+            "images": 0
+          },
+          "dancetrack0087": {
+            "counts": {
+              "gt_total": 0,
+              "hits_top150": 0,
+              "hits_top300": 0
+            },
+            "images": 0
+          },
+          "dancetrack0090": {
+            "counts": {
+              "gt_total": 13142,
+              "hits_top150": 13127,
+              "hits_top300": 13137
+            },
+            "images": 1004
+          },
+          "dancetrack0094": {
+            "counts": {
+              "gt_total": 11749,
+              "hits_top150": 11714,
+              "hits_top300": 11729
+            },
+            "images": 603
+          },
+          "dancetrack0096": {
+            "counts": {
+              "gt_total": 0,
+              "hits_top150": 0,
+              "hits_top300": 0
+            },
+            "images": 0
+          },
+          "dancetrack0097": {
+            "counts": {
+              "gt_total": 4668,
+              "hits_top150": 4668,
+              "hits_top300": 4668
+            },
+            "images": 1203
+          },
+          "dancetrack0098": {
+            "counts": {
+              "gt_total": 0,
+              "hits_top150": 0,
+              "hits_top300": 0
+            },
+            "images": 0
+          },
+          "dancetrack0099": {
+            "counts": {
+              "gt_total": 0,
+              "hits_top150": 0,
+              "hits_top300": 0
+            },
+            "images": 0
+          }
+        },
+        "protocol_path": "/data2/user/LocateMOT/outputs/unified/u2/protocol/dancetrack.json",
+        "protocol_sha256": "920fc5f4d6fbb1a5948bf7802cf613b023a16bb9a402181c7155a9e775052118",
+        "status": "COMPLETE",
+        "worker_artifacts": "/data2/user/LocateMOT/outputs/unified/u2/perception/dance_frozen_foundation"
+      },
+      "metrics_status": "MEASURED",
       "portability_training_allowed": true,
       "selected_root": "/data2/user/LocateMOT/data/DanceTrack",
       "split_protocol": "existing project protocol configs/data/l1_a_dancetrack_{train,val}.json",
       "status": "AVAILABLE",
-      "top150_recall_iou050": null,
-      "top300_recall_iou050": null
+      "top150_recall_iou050": 0.9963135359852187,
+      "top300_recall_iou050": 0.9976859665642155
     },
     "kitti_legal_development": {
       "availability_evidence": {},
@@ -521,18 +1063,15 @@
     "mot20"
   ],
   "ordinary_hard_stop": 0.8,
-  "ordinary_missing_local_data": [
-    "bdd100k"
-  ],
+  "ordinary_missing_local_data": [],
   "ordinary_target_minimum": 0.85,
   "ordinary_target_preferred": 0.9,
   "ordinary_unmeasured": [
-    "bdd100k",
-    "dancetrack"
+    "bdd100k"
   ],
   "refer_kitti_official_eval_labels_read": false,
   "stage": "U2-P",
-  "status": "BLOCKED_MISSING_LOCAL_DATA",
+  "status": "BLOCKED_NOT_MEASURED",
   "tao_gate_pass": false,
   "tao_insufficient_below": 0.5,
   "tao_missing_local_data": false,
