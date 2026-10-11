@@ -11,6 +11,7 @@ MOT17 uses one FRCNN copy per physical video. The inclusive half ranges follow t
 
 | Stream | Validation images | Physical GT units | Top150 @.50 | Top300 @.50 |
 |---|---:|---:|---:|---:|
+| BDD100K | 39,973 | 442,814 | 0.821896 | 0.852545 |
 | MOT17 | 2,652 | 53,890 | 0.787233 | 0.806253 |
 | MOT20 | 4,463 | 615,137 | 0.731010 | 0.884673 |
 | DanceTrack | 25,508 | 225,148 | 0.996314 | 0.997686 |
@@ -18,14 +19,16 @@ MOT17 uses one FRCNN copy per physical video. The inclusive half ranges follow t
 | refer_kitti_v1 (existing U1 reference) | — | — | 0.986592 | 0.989960 |
 | refer_kitti_v2 (existing U1 reference) | — | — | 0.958739 | 0.964753 |
 
-Both new domains fail the registered Top150 minimum of 0.85 and hard stop of 0.80.
+BDD, MOT17 and MOT20 fail the registered Top150 minimum of 0.85.
+MOT17 and MOT20 also fail the hard stop of 0.80; BDD remains above that hard stop.
 MOT20 improves to 0.884673 at Top300, which remains below the mandatory 0.90
 acceptance threshold for the preregistered crowded-scene K=300 override.
 No Top300 runtime override has been accepted and no track training or candidate cache has started.
 MOT17-02/04 and the crowded MOT20-03/05 are the main shortfalls; complete per-sequence
 numerators and denominators are retained in `outputs/unified/u2/perception/measurements/`.
 
-BDD100K and TAO base/novel full measurements remain unmeasured. The U1 Refer-KITTI references above remain immutable retention gates.
+TAO base/novel full measurements remain unmeasured. All five ordinary domains
+now have complete original-GT F0 measurements. The U1 Refer-KITTI references above remain immutable retention gates.
 Ordinary KITTI additionally requires every original benchmark GT unit on the
 frozen legal V2 development scope: 3,472 images / 15,875 car/pedestrian units,
 using unchanged official visibility preprocessing and original xyxy coordinates.
@@ -55,7 +58,7 @@ BDD raw train/val tracking annotations and all validation images have been recov
 from a pinned mirror. All 39,973 validation frames and 442,814 positive GT boxes are
 registered; positive/ignore handling and box coordinates match the official toolkit
 on every validation object. Validation image sizes/CRCs match the original release.
-The full BDD candidate audit is running on GPU 7 after a successful real-image check.
+The full BDD candidate audit completed on GPU 7 after a successful real-image check.
 All original training images now match the complete raw annotation scope; all seven
 source streams are available. Filtered and converted SOT labels are not used.
 Once all required inputs are ready, the failed gate permits
@@ -93,3 +96,10 @@ Partial frame measurements are rejected by the gate reader. The 7,115-frame meas
 passed coverage and numerator/denominator integrity checks. Official test labels remain unopened.
 
 The complete LVIS-v1 vocabulary runtime smoke passed on an extracted TAO validation image: 1,203 names, 38 chunks, one backbone call, 34,200 raw proposals and 300 after class-agnostic IoU-0.8 suppression. No GT was opened in this smoke, and it is not a TAO portability gate result.
+
+On 2026-10-12 the original blocking BDD audit (session36974 exit0) measured
+every registered validation image: 363,947/442,814 Top150 and 377,519/442,814
+Top300 hits. Source protocol hash, exact frame coverage and GT totals match.
+Top150 .821895875 fails .85; Top300 .852545312 is reported diagnostically and
+does not authorize a BDD K=300 exception. Keep the bounded mixed U2-P repair
+and all existing gates; learned tracking remains held until complete selection.

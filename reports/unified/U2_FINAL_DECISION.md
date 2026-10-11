@@ -26,9 +26,10 @@ full 25,508-frame audit passed: Top150/Top300
 tracking annotation videos and 39,973 validation images were recovered; every
 validation GT object matches the original toolkit and every validation image
 matches the author release ZIP. All seven original train-image archives are CRC-extracted
-(1,400 videos, 278,079 frames). The full BDD validation audit is running on GPU 7;
-full TAO/C-TAO audits continue on GPUs 1–6. Full TAO base/novel and BDD recall
-remain unmeasured until these original blocking commands complete.
+(1,400 videos, 278,079 frames). The full BDD validation audit completed: 39,973 frames / 442,814 GT,
+Top150/Top300 .821895875/.852545312. BDD fails the .85 Top150 minimum without
+a BDD Top300 exception. All five ordinary F0 audits are complete; full TAO/C-TAO
+audits continue on GPUs 1–6 and remain unmeasured until their blocking command ends.
 
 Original KITTI tracking IDs are now frozen separately from the Refer label
 namespace. The complete 3,472-frame / 15,875-GT ordinary KITTI portability audit
