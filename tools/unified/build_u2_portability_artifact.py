@@ -28,10 +28,12 @@ def read_measurement(directory: Path, dataset: str, expected_foundation_sha256: 
     if hashlib.sha256(protocol_path.read_bytes()).hexdigest() != result["protocol_sha256"]:
         raise ValueError(f"Measurement protocol differs: {path}")
     protocol = json.loads(protocol_path.read_text())
+    if dataset == "kitti_legal_development" and result["counts"]["gt_total"] != protocol["positive_gt_boxes"]:
+        raise ValueError("Original KITTI audit does not retain every registered ordinary GT unit")
     expected_images = protocol["measurement_images"] if "measurement_images" in protocol else protocol["validation_images"]
     if protocol["dataset"] != dataset or expected_images != result["images_expected"]:
         raise ValueError(f"Measurement differs from registered frame scope: {path}")
-    if dataset in ("mot17", "mot20", "dancetrack", "bdd100k"):
+    if dataset in ("mot17", "mot20", "dancetrack", "bdd100k", "kitti_legal_development"):
         keys = sorted(f"{dataset}/{sequence['sequence']}/{frame}"
                       for sequence in protocol["sequences"] for frame in sequence["validation_frames"])
         coverage_sha = hashlib.sha256("\n".join(keys).encode()).hexdigest()
@@ -93,6 +95,17 @@ def main() -> int:
         "metrics_status": "MEASURED_U1_REFERENCE" if args.expected_foundation_sha256 == FOUNDATION_SHA else "MEASURED_ADAPTED_FOUNDATION",
         "top300_registered": False,
     }
+    original_kitti = read_measurement(args.measurements_dir, "kitti_legal_development", args.expected_foundation_sha256)
+    kitti["u1_reference_top150_minimum_pass"] = kitti["top150_minimum_pass"]
+    kitti["original_gt_metrics_status"] = "NOT_MEASURED" if original_kitti is None else "MEASURED"
+    kitti.update(original_gt_measurement=original_kitti,
+                 top150_recall_iou050=None if original_kitti is None else recall(original_kitti["counts"]["hits_top150"], original_kitti["counts"]["gt_total"]),
+                 top300_recall_iou050=None if original_kitti is None else recall(original_kitti["counts"]["hits_top300"], original_kitti["counts"]["gt_total"]))
+    kitti["top150_minimum_pass"] = (kitti["top150_minimum_pass"] and original_kitti is not None
+                                    and kitti["top150_recall_iou050"] >= .85)
+    kitti["top150_preferred_pass"] = (kitti["top150_preferred_pass"] and original_kitti is not None
+                                     and kitti["top150_recall_iou050"] >= .90)
+    kitti["measurement"] = original_kitti
     datasets: dict[str, dict] = {}
     for item in manifest["datasets"]:
         name = item["dataset"]
@@ -145,16 +158,20 @@ def main() -> int:
     unmeasured_ordinary = [item["dataset"] for item in ordinary
                           if item["dataset"] != "kitti_legal_development"
                           and item.get(f"top{item.get('candidate_top_k', 150)}_recall_iou050") is None]
+    if original_kitti is None:
+        unmeasured_ordinary.append("kitti_legal_development")
     failed_ordinary = [item["dataset"] for item in ordinary
                        if item["dataset"] != "kitti_legal_development"
                        and item.get(f"top{item.get('candidate_top_k', 150)}_recall_iou050") is not None
                        and item[f"top{item.get('candidate_top_k', 150)}_recall_iou050"] < (.90 if item.get('candidate_top_k', 150) == 300 else .85)]
-    if not kitti["top150_minimum_pass"]:
+    if not kitti["u1_reference_top150_minimum_pass"] or (original_kitti is not None and not kitti["top150_minimum_pass"]):
         failed_ordinary.append("kitti_legal_development")
     hard_stop_ordinary = [item["dataset"] for item in ordinary
                           if item["dataset"] != "kitti_legal_development"
                           and item.get(f"top{item.get('candidate_top_k', 150)}_recall_iou050") is not None
                           and item[f"top{item.get('candidate_top_k', 150)}_recall_iou050"] < .80]
+    if original_kitti is not None and kitti["top150_recall_iou050"] < .80:
+        hard_stop_ordinary.append("kitti_legal_development")
     tao_gates = {}
     for name in ("tao", "ctao"):
         item = datasets[name]
@@ -205,7 +222,7 @@ def main() -> int:
         "official_test_labels_read": False,
         "refer_kitti_official_eval_labels_read": False,
         "notes": [
-            "KITTI values use the same measured foundation and legal development protocol; no reserved official labels were opened.",
+            "Both immutable U1 Refer-KITTI references and the complete original-KITTI legal development GT audit must pass; no reserved official labels are opened.",
             "Missing public datasets remain null rather than being replaced by synthetic or fabricated metrics.",
             "Track training requires available registered data and measured portability gates; availability alone is insufficient.",
         ],

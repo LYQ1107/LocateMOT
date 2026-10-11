@@ -22,7 +22,7 @@
       "mot20"
     ],
     "ordinary_missing_local_data": [],
-    "ordinary_unmeasured": ["bdd100k"],
+    "ordinary_unmeasured": ["bdd100k", "kitti_legal_development"],
     "mot17_top300_iou050": 0.8062534793097049,
     "mot20_top300_iou050": 0.8846728452361019,
     "tao_base_top300_iou050": null,
@@ -31,6 +31,33 @@
   "causal_contract": "PASS",
   "eight_gpu_temporal_core_contract": "outputs/unified/u2/eval/ddp_eight_rank_core.json",
   "real_candidate_feature_contract": "outputs/unified/u2/eval/real_candidate_feature_contract.json",
+  "simple_pipeline_contract": "outputs/unified/u2/eval/simple_pipeline_contract.json",
+  "candidate_cache_inventory": {
+    "status": "PLAN_ONLY_NOT_EXECUTED",
+    "summary": "outputs/unified/u2/perception_cache/inventory_summary.json",
+    "contract": "outputs/unified/u2/eval/cache_inventory_contract.json",
+    "unique_physical_images": 924593,
+    "ordinary_images": 396865,
+    "ovmot_images": 527728,
+    "train_dev_physical_overlap": 0,
+    "formal_cache_started": false
+  },
+  "ordinary_baseline_queue": {
+    "state": "WAITING_PERCEPTION_SELECTION",
+    "controller_pid": 864319,
+    "run_state": "outputs/unified/u2/ordinary_baseline/run_state.json",
+    "cache_and_simple_baseline_launch_after_full_selection_only": true
+  },
+  "kitti_original_gt_perception_audit": {
+    "state": "RUNNING",
+    "parent_pid": 864092,
+    "worker_pid": 864093,
+    "gpus": [0],
+    "protocol": "outputs/unified/u2/protocol/kitti_ordinary_portability.json",
+    "images_expected": 3472,
+    "positive_gt_units_expected": 15875,
+    "u1_reference_scopes_and_gates_unchanged": true
+  },
   "shared_non_head_fraction": 0.9378111093950003,
   "mot_simple_baseline": null,
   "mot_only_baseline": null,

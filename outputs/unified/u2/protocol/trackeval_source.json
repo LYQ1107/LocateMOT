@@ -1,0 +1,16 @@
+{
+  "format": "locatemot-u2-official-trackeval-source-v1",
+  "repository": "https://github.com/JonathonLuiten/TrackEval",
+  "commit": "12c8791b303e0a0b50f753af204249e622d0281a",
+  "root": "/data2/user/LocateMOT/third_party/TrackEval",
+  "unmodified": true,
+  "acquisition": "direct git clone without proxy",
+  "files": {
+    "trackeval/datasets/mot_challenge_2d_box.py": "d636323991fa30e183acd898d89e26e3be04f8000b56c3f2f45b9940315af54f",
+    "trackeval/datasets/kitti_2d_box.py": "050ac54284a982b5ab400ae9f29022370f52df6d6e03566fd8b30a0be7828a97",
+    "trackeval/datasets/bdd100k.py": "e9d5c62f164185bc996b02c61f54f0cf02c09098a715ed04aa9971d6a8de927d",
+    "trackeval/metrics/hota.py": "c582255c3d36bdb49c3ceeb2a5bd912cee009190dfcfe465b4173d03aaa97d6a",
+    "trackeval/metrics/clear.py": "ab3963eac401073fe1b2957c734af1e531368f42fca49627c14422350b2744f0",
+    "trackeval/metrics/identity.py": "e76b1bdcbf5b193662431596a984cf70a5be32e903eb5f2a3d9921b4762f93ba"
+  }
+}

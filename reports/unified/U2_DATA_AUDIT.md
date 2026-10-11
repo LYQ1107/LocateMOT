@@ -9,7 +9,7 @@ Recovery snapshot: 2026-10-12. Authoritative inventory:
 | dancetrack | AVAILABLE | All three official archives downloaded and CRC-extracted; existing 32/8/25 videos and 33,772/8,024/25,508 frames match exactly |
 | mot17 | AVAILABLE | 2,664 train / 2,652 dev frames; FRCNN copies only; exact half protocol frozen |
 | mot20 | AVAILABLE | 4,468 train / 4,463 dev frames; exact half protocol frozen |
-| kitti_legal_development | AVAILABLE | Existing legal U1 development scope and reference retained |
+| kitti_legal_development | AVAILABLE | Original tracking labels retained for 15 legal V2 videos: 1,814 fit / 2,087 calibration / 1,385 validation frames; original IDs and all ignore metadata preserved |
 | tao | AVAILABLE | Every modal train/val annotated image exists; four-volume acquisition continues for remaining release resources |
 | ctao | AVAILABLE | Base-only annotation audited; all 490,210 continuous training frames exist |
 

@@ -1,0 +1,30 @@
+{
+  "format": "locatemot-u2-simple-baseline-registration-v1",
+  "name": "U2_SIMPLE_BASELINE",
+  "config": {
+    "iou_weight": 0.25,
+    "motion_iou_weight": 0.35,
+    "visual_cosine_weight": 0.4,
+    "minimum_match_score": 0.45,
+    "maximum_center_distance": 2.0,
+    "minimum_birth_score": 0.1,
+    "appearance_ema": 0.9,
+    "max_age": 30
+  },
+  "learned_parameters": 0,
+  "source_sha256": "0595a9ba299e95d994177ad4db5d5e20bc3ee5f912486072999d0bdaa4df02f8",
+  "trackeval_commit": "12c8791b303e0a0b50f753af204249e622d0281a",
+  "datasets": [
+    "bdd100k",
+    "dancetrack",
+    "mot17",
+    "mot20",
+    "kitti_legal_development"
+  ],
+  "candidate_policy": "all frozen candidates enter association; low-score observations may recover tracks; fixed .10 birth score",
+  "selection_or_parameter_sweep": false,
+  "before_benchmark_metrics": true,
+  "hota": "mean over official 19 alpha thresholds .05..95; sequence combination then class average",
+  "metric_scale": "fraction, except integer IDSW",
+  "official_test_labels_read": false
+}

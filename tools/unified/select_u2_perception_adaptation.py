@@ -52,21 +52,12 @@ def verified_audit(path: Path, name: str, sha: str) -> dict:
     return result
 
 
-def main() -> int:
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--foundation-sha256", required=True)
-    parser.add_argument("--epoch", type=int, choices=(1, 2), required=True)
-    parser.add_argument("--portability", type=Path, required=True)
-    parser.add_argument("--generic", type=Path, required=True)
-    parser.add_argument("--expression", type=Path, required=True)
-    parser.add_argument("--counterfactual", type=Path, required=True)
-    parser.add_argument("--out", type=Path, required=True)
-    args = parser.parse_args()
+def selection_payload(args: argparse.Namespace) -> dict:
     portability = json.loads(args.portability.read_text())
     if (portability["foundation_sha256"] != args.foundation_sha256
             or portability["status"] not in ("PASS", "FAIL_PORTABILITY_GATES")):
         raise ValueError("Selection requires the complete portability audit of the same adapted checkpoint")
-    for name in ("bdd100k", "dancetrack", "mot17", "mot20", "tao", "ctao"):
+    for name in ("bdd100k", "dancetrack", "mot17", "mot20", "kitti_legal_development", "tao", "ctao"):
         measured = portability["datasets"][name]["measurement"]
         verified = read_measurement(Path(portability["measurements_dir"]), name, args.foundation_sha256)
         if verified != measured:
@@ -102,6 +93,37 @@ def main() -> int:
                "sources": {name: {"path": str(getattr(args, name).resolve()), "sha256": digest(getattr(args, name))}
                            for name in ("portability", *REFERENCES)},
                "official_test_labels_read": False}
+    return payload
+
+
+def verify_selected_foundation(path: Path, sha: str) -> dict:
+    """Recompute the existing full gate before cache or track training."""
+    selected = json.loads(path.read_text())
+    if (selected["status"] != "SELECTED" or not selected["track_training_eligible"]
+            or selected["foundation_sha256"] != sha):
+        raise ValueError("Cache/tracking requires a selected foundation with passing full gates")
+    sources = selected["sources"]
+    for source in sources.values():
+        if digest(Path(source["path"])) != source["sha256"]:
+            raise ValueError("The selected foundation's full audit artifact has changed")
+    args = argparse.Namespace(foundation_sha256=sha, epoch=selected["epoch"],
+                              **{name: Path(source["path"]) for name, source in sources.items()})
+    if selection_payload(args) != selected:
+        raise ValueError("The recorded foundation selection differs from the actual full audits")
+    return selected
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--foundation-sha256", required=True)
+    parser.add_argument("--epoch", type=int, choices=(1, 2), required=True)
+    parser.add_argument("--portability", type=Path, required=True)
+    parser.add_argument("--generic", type=Path, required=True)
+    parser.add_argument("--expression", type=Path, required=True)
+    parser.add_argument("--counterfactual", type=Path, required=True)
+    parser.add_argument("--out", type=Path, required=True)
+    args = parser.parse_args()
+    payload = selection_payload(args)
     args.out.parent.mkdir(parents=True, exist_ok=True)
     args.out.write_text(json.dumps(payload, indent=2) + "\n")
     print(json.dumps(payload, indent=2))

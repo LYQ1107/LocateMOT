@@ -1,0 +1,114 @@
+{
+  "format": "locatemot-u2-label-free-cache-inventory-v1",
+  "status": "PLAN_ONLY_NOT_EXECUTED",
+  "inventory_path": "/data2/user/LocateMOT/outputs/unified/u2/perception_cache/frame_inventory.jsonl",
+  "inventory_sha256": "314356a9a31a20eb82ec923bb0b490add6af43a7705b2db432ff7d8ed37892ee",
+  "counts": {
+    "bdd100k/dev": {
+      "videos": 200,
+      "frames": 39973
+    },
+    "bdd100k/train": {
+      "videos": 1400,
+      "frames": 278079
+    },
+    "dancetrack/dev": {
+      "videos": 25,
+      "frames": 25508
+    },
+    "dancetrack/train": {
+      "videos": 32,
+      "frames": 33772
+    },
+    "kitti_legal_development/dev": {
+      "videos": 6,
+      "frames": 3472
+    },
+    "kitti_legal_development/train": {
+      "videos": 9,
+      "frames": 1814
+    },
+    "mot17/dev": {
+      "videos": 7,
+      "frames": 2652
+    },
+    "mot17/train": {
+      "videos": 7,
+      "frames": 2664
+    },
+    "mot20/dev": {
+      "videos": 4,
+      "frames": 4463
+    },
+    "mot20/train": {
+      "videos": 4,
+      "frames": 4468
+    },
+    "ovmot/dev": {
+      "videos": 988,
+      "frames": 36375
+    },
+    "ovmot/train": {
+      "videos": 500,
+      "frames": 491353
+    }
+  },
+  "sources": {
+    "bdd100k": {
+      "path": "/data2/user/LocateMOT/outputs/unified/u2/protocol/bdd100k.json",
+      "sha256": "8106e49c4aafe8420f9003177ab13b17b850ae11687d2b770cdf6c41df44c933"
+    },
+    "dancetrack": {
+      "path": "/data2/user/LocateMOT/outputs/unified/u2/protocol/dancetrack.json",
+      "sha256": "920fc5f4d6fbb1a5948bf7802cf613b023a16bb9a402181c7155a9e775052118"
+    },
+    "mot17": {
+      "path": "/data2/user/LocateMOT/outputs/unified/u2/protocol/mot17_half.json",
+      "sha256": "460d52eb575a35c3e8bcfa3112d00c18fbd64c1eb4ea60bb149373e370530e0a"
+    },
+    "mot20": {
+      "path": "/data2/user/LocateMOT/outputs/unified/u2/protocol/mot20_half.json",
+      "sha256": "39e3349c01e24812f9ebea38962455cad7e469271049a8397c39a2c357387a63"
+    },
+    "kitti_legal_development": {
+      "path": "/data2/user/LocateMOT/outputs/unified/u2/protocol/kitti_legal_tracking.json",
+      "sha256": "5aea286404da430482014304e2c4520286fda3c7535b05bbf783b6c6e67a7eb9"
+    },
+    "ctao": {
+      "path": "/data2/user/LocateMOT/data/C-TAO/ctao_base.json",
+      "sha256": "4269b1a5f026350cf45fbbf61689894f7d45d9bd2730331e73ab6f841d9b3adc",
+      "source_images": 490210
+    },
+    "tao_train": {
+      "path": "/data2/user/LocateMOT/data/TAO-Amodal/annotations/train.json",
+      "sha256": "7eb551fdeeeebc76b876ae255f91dc5662c7270a125955c5f1be2d9bd30921d0",
+      "source_images": 18274
+    },
+    "tao_val": {
+      "path": "/data2/user/LocateMOT/data/TAO-Amodal/annotations/validation.json",
+      "sha256": "0414885ee2702c2d3176cf6184e7811a7bd1c1347a157fef57a91020976776ee",
+      "source_images": 36375
+    }
+  },
+  "shard_frames": 64,
+  "ovmot_storage_volume_frames": [
+    131934,
+    131931,
+    131931,
+    131932
+  ],
+  "ovmot_storage_roots": [
+    "/data0/user/LocateMOT_U2_perception_cache",
+    "/data1/user/LocateMOT_U2_perception_cache",
+    "/data2/user/LocateMOT_U2_perception_cache",
+    "/data3/user/LocateMOT_U2_perception_cache"
+  ],
+  "ovmot_physical_image_deduplication": "C-TAO dense and modal TAO train use one cache per original file_name",
+  "vocabulary_path": "/data2/user/LocateMOT/outputs/unified/u2/protocol/lvis_v1_vocabulary.json",
+  "vocabulary_sha256": "85e8cd97f7009882e4e6d41b187d85eafdeab3dbe62835dfa35c4ce7bff1f68b",
+  "feature_storage_dtype": "bfloat16",
+  "box_score_storage_dtype": "float32",
+  "gt_ids_in_feature_payload": false,
+  "formal_cache_started": false,
+  "official_test_labels_read": false
+}

@@ -724,16 +724,22 @@
       },
       "kind": "ordinary_mot",
       "license": "KITTI tracking; U1 legal development scope",
+      "measurement": null,
       "metrics_status": "MEASURED_U1_REFERENCE",
+      "original_gt_measurement": null,
+      "original_gt_metrics_status": "NOT_MEASURED",
       "portability_training_allowed": true,
       "protocol": "legal Refer-KITTI calibration/validation scope; V1 and V2 are reported separately",
       "selected_root": "/data2/user/LocateMOT/data/kitti_tracking",
       "source": "/data2/user/LocateMOT/outputs/unified/u1r2/formal_generic_expression_epoch1/result.json",
       "split_protocol": "Refer-KITTI legal calibration/validation only; reserved videos are excluded",
       "status": "AVAILABLE",
-      "top150_minimum_pass": true,
-      "top150_preferred_pass": true,
-      "top300_registered": false
+      "top150_minimum_pass": false,
+      "top150_preferred_pass": false,
+      "top150_recall_iou050": null,
+      "top300_recall_iou050": null,
+      "top300_registered": false,
+      "u1_reference_top150_minimum_pass": true
     },
     "mot17": {
       "availability_evidence": {
@@ -1049,7 +1055,7 @@
   "foundation_sha256": "4efc35ce70be5cddf2c4d9a0f91bc4edef3e9ec5277a819211ba4ac42e0d7d26",
   "measurements_dir": "/data2/user/LocateMOT/outputs/unified/u2/perception/measurements",
   "notes": [
-    "KITTI values use the same measured foundation and legal development protocol; no reserved official labels were opened.",
+    "Both immutable U1 Refer-KITTI references and the complete original-KITTI legal development GT audit must pass; no reserved official labels are opened.",
     "Missing public datasets remain null rather than being replaced by synthetic or fabricated metrics.",
     "Track training requires available registered data and measured portability gates; availability alone is insufficient."
   ],
@@ -1067,7 +1073,8 @@
   "ordinary_target_minimum": 0.85,
   "ordinary_target_preferred": 0.9,
   "ordinary_unmeasured": [
-    "bdd100k"
+    "bdd100k",
+    "kitti_legal_development"
   ],
   "refer_kitti_official_eval_labels_read": false,
   "stage": "U2-P",

@@ -29,6 +29,9 @@ def scope(protocol_paths: list[Path]) -> tuple[dict, list[dict]]:
         dataset = protocol["dataset"]
         protocols[dataset] = {"path": str(path.resolve()), "sha256": digest(path), "data": protocol}
         for sequence in protocol["sequences"]:
+            if dataset == "kitti_legal_development":
+                from locatemot.unified.data.legal_scope import assert_legal_video
+                assert_legal_video(sequence["sequence"], dataset="refer_kitti_v2")
             if digest(Path(sequence["gt_path"])) != sequence["gt_sha256"]:
                 raise RuntimeError(f"GT differs from registered source: {sequence['sequence']}")
             for frame in sequence["validation_frames"]:
@@ -87,6 +90,14 @@ def worker(args: argparse.Namespace) -> int:
                     for frame in json.loads(Path(record["gt_path"]).read_text()):
                         objects, _ = frame_objects(frame)
                         by_frame[frame["name"]] = [obj["bbox"] for obj in objects]
+                elif record["dataset"] == "kitti_legal_development":
+                    for line in Path(record["gt_path"]).read_text().splitlines():
+                        fields = line.split()
+                        # Match the frozen upstream Kitti2DBox GT preprocessing;
+                        # do not replace original tracking IDs with Refer IDs.
+                        if (fields[2].lower() in ("car", "pedestrian")
+                                and int(float(fields[4])) <= 2 and int(float(fields[3])) <= 0):
+                            by_frame[int(fields[0])].append([float(value) for value in fields[6:10]])
                 else:
                     for line in Path(record["gt_path"]).read_text().splitlines():
                         fields = [float(value) for value in line.split(",")]
@@ -197,7 +208,8 @@ def main() -> int:
             log = (args.out / f"worker_{index}.log").open("a")
             process = subprocess.Popen(command, env=env, stdout=log, stderr=subprocess.STDOUT)
             processes.append((process, log))
-        print(json.dumps({"state": "RUNNING", "gpus": args.gpus, "worker_pids": [p.pid for p, _ in processes]}), flush=True)
+        print(json.dumps({"state": "RUNNING", "parent_pid": os.getpid(), "gpus": args.gpus,
+                          "worker_pids": [p.pid for p, _ in processes]}), flush=True)
         codes = [process.wait() for process, _ in processes]
     finally:
         for process, log in processes:

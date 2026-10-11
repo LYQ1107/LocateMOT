@@ -24,7 +24,16 @@ No Top300 runtime override has been accepted and no track training or candidate 
 MOT17-02/04 and the crowded MOT20-03/05 are the main shortfalls; complete per-sequence
 numerators and denominators are retained in `outputs/unified/u2/perception/measurements/`.
 
-BDD100K and TAO base/novel full measurements remain unmeasured.
+BDD100K, original KITTI tracking and TAO base/novel full measurements remain
+unmeasured. The U1 Refer-KITTI references above remain immutable retention gates.
+Ordinary KITTI additionally requires every original benchmark GT unit on the
+frozen legal V2 development scope: 3,472 images / 15,875 car/pedestrian units,
+using unchanged official visibility preprocessing and original xyxy coordinates.
+Its real-image smoke passed; the full F0 audit runs on GPU 0. The same Top150
+minimum .85 / hard stop .80 applies, without a KITTI Top300 runtime override.
+Each U2-P candidate now audits all 76,068 ordinary development images in addition
+to every original U1 and TAO/C-TAO scope. This supplies a missing ordinary-GT
+measurement; no existing scope, gate, seed or two-epoch budget is weakened.
 On 2026-10-12, the complete DanceTrack audit passed: 224,318/225,148 Top150
 hits and 224,627/225,148 Top300 hits across all 25,508 validation frames.
 Exact registered frame coverage and GT totals match the frozen protocol. The

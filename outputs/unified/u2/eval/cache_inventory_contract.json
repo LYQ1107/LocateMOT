@@ -1,0 +1,60 @@
+{
+  "format": "locatemot-u2-complete-cache-inventory-contract-v1",
+  "status": "PASS",
+  "groups": 3182,
+  "unique_physical_images": 924593,
+  "phases": {
+    "ordinary": {
+      "groups": 1694,
+      "frames": 396865,
+      "rank_groups": [
+        211,
+        212,
+        212,
+        212,
+        211,
+        212,
+        212,
+        212
+      ],
+      "rank_frames": [
+        49605,
+        49612,
+        49611,
+        49628,
+        49545,
+        49637,
+        49616,
+        49611
+      ]
+    },
+    "ovmot": {
+      "groups": 1488,
+      "frames": 527728,
+      "rank_groups": [
+        186,
+        186,
+        186,
+        186,
+        186,
+        186,
+        186,
+        186
+      ],
+      "rank_frames": [
+        65966,
+        65969,
+        65966,
+        65967,
+        65965,
+        65964,
+        65964,
+        65967
+      ]
+    }
+  },
+  "all_eight_worker_groups_exactly_once": true,
+  "train_dev_physical_overlap": 0,
+  "formal_cache_started": false,
+  "official_test_labels_read": false
+}

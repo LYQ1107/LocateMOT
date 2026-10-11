@@ -16,9 +16,14 @@ from tools.unified.build_u2_portability_artifact import read_measurement
 from tools.unified.select_u2_perception_adaptation import REFERENCES, SCOPE_FIELDS, verified_audit
 from tools.unified.train_u2_perception_adaptation import CONFIG, DIRECTORY, digest
 
-ORDINARY = ("bdd100k", "dancetrack", "mot17", "mot20")
+ORDINARY = ("bdd100k", "dancetrack", "mot17", "mot20", "kitti_legal_development")
 FROZEN_PREFIXES = ("language_model.", "backbone.patch_embed.", "backbone.stages.0.",
                    "backbone.stages.1.", "backbone.norm0.", "backbone.norm1.")
+
+
+def ordinary_protocol(name: str) -> Path:
+    filename = "kitti_ordinary_portability.json" if name == "kitti_legal_development" else name + ("_half" if name in ("mot17", "mot20") else "") + ".json"
+    return ROOT / "outputs/unified/u2/protocol" / filename
 
 
 def run(command: list[str], log: Path | None = None) -> None:
@@ -102,7 +107,7 @@ def u1_audit(name: str, args: argparse.Namespace, sha: str) -> Path:
 
 def evaluation_plan(args: argparse.Namespace, sha: str) -> dict:
     folder = ROOT / "outputs/unified/u2/protocol"
-    ordinary_images = sum(json.loads((folder / (name + ("_half" if name in ("mot17", "mot20") else "") + ".json")).read_text())["validation_images"]
+    ordinary_images = sum(json.loads(ordinary_protocol(name).read_text())["validation_images"]
                           for name in ORDINARY)
     tao_images = sum(json.loads((folder / f"{name}_portability.json").read_text())["measurement_images"] for name in ("tao", "ctao"))
     references = {name: json.loads(path.read_text()) for name, path in REFERENCES.items()}
@@ -140,8 +145,7 @@ def main() -> int:
     measurements = args.out / "measurements"
     common = ["--checkpoint", str(args.checkpoint), "--expected-foundation-sha256", sha,
               "--measurements-dir", str(measurements), "--gpus", *map(str, args.gpus)]
-    protocols = [ROOT / "outputs/unified/u2/protocol" / (name + ("_half" if name in ("mot17", "mot20") else "") + ".json")
-                 for name in ORDINARY]
+    protocols = [ordinary_protocol(name) for name in ORDINARY]
     if any(read_measurement(measurements, name, sha) is None for name in ORDINARY):
         print(json.dumps({"state": "ORDINARY_FULL_AUDIT", "epoch": args.epoch}), flush=True)
         run([sys.executable, "-u", str(ROOT / "tools/unified/u2_mot_portability.py"),
