@@ -1,0 +1,36 @@
+{
+  "format": "locatemot-u2-temporal-supervision-contract-v1",
+  "status": "PASS",
+  "input_source": "synthetic crossing/occlusion clip; not benchmark metrics",
+  "losses": {
+    "total": 5.881089210510254,
+    "row": 2.0873970985412598,
+    "col": 3.452941417694092,
+    "switch": 0.46890485286712646,
+    "alive": 0.6775488257408142,
+    "motion": 0.02651888318359852,
+    "identity_contrast": 0.1635131984949112,
+    "col_ce": 0.8576645851135254,
+    "birth_reject": 2.5952768325805664
+  },
+  "nonzero_gradient_branches": [
+    "alive",
+    "birth",
+    "candidate_id_projection",
+    "identity_gru",
+    "motion",
+    "pair_head",
+    "set_interaction"
+  ],
+  "connected_temporal_gradient": true,
+  "actual_state_drop_and_past_negative_injection": true,
+  "mixed_teacher_model_rollout": true,
+  "false_birth_suppression": true,
+  "official_ignore_region_excluded_from_negatives": true,
+  "canonical_identity_not_relabelled_after_switch": true,
+  "physical_frame_gap": 4,
+  "expired_identity_not_revived_after_max_age": true,
+  "gt_in_runtime_state": false,
+  "formal_training_launched": false,
+  "official_test_labels_read": false
+}

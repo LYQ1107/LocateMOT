@@ -1,0 +1,84 @@
+{
+  "format": "locatemot-u2-mot-only-recipe-v1",
+  "name": "U2_MOT_ONLY_BASELINE",
+  "seed": 20261012,
+  "world_size": 8,
+  "clips_per_rank": 2,
+  "global_clips": 16,
+  "maximum_optimizer_steps": 6000,
+  "evaluation_steps": [
+    1000,
+    2500,
+    4000,
+    6000
+  ],
+  "resume_checkpoint_every_steps": 500,
+  "curriculum": [
+    {
+      "start": 0,
+      "end_exclusive": 1000,
+      "frames": 2
+    },
+    {
+      "start": 1000,
+      "end_exclusive": 2500,
+      "frames": 4
+    },
+    {
+      "start": 2500,
+      "end_exclusive": 4000,
+      "frames": 6
+    },
+    {
+      "start": 4000,
+      "end_exclusive": 6000,
+      "frames": 8
+    }
+  ],
+  "teacher_forcing": "1 through step 500; linear to .4 at 2500; .4 thereafter; Bernoulli per frame",
+  "stride": "uniform integer 1..min(4,ceil(source_fps/7.5)); forward only",
+  "dataset_probabilities": {
+    "bdd100k": 0.25,
+    "dancetrack": 0.25,
+    "mot17": 0.2,
+    "mot20": 0.1,
+    "kitti_legal_development": 0.2
+  },
+  "dataset_sampling": "same dataset per global step, independent video/start/stride per rank and clip",
+  "task_type": "mot",
+  "foundation": "frozen selected MM-GroundingDINO, cached features only",
+  "architecture": "SharedTrackCore(hidden_dim=256,max_age=30); same as joint core",
+  "optimizer": {
+    "type": "AdamW",
+    "lr": 0.0001,
+    "weight_decay": 0.01,
+    "gradient_clip": 1.0
+  },
+  "precision": "FP32 parameters and six losses; BF16 neural autocast",
+  "loss_weights": {
+    "row": 1.0,
+    "col": 1.0,
+    "switch": 0.25,
+    "alive": 0.25,
+    "motion": 0.5,
+    "identity_contrast": 0.25
+  },
+  "column_loss": "positive-candidate CE over T+NEW plus NEW BCE: true births=1, existing/real negatives=0; ignored proposals excluded",
+  "switch_margin": 0.5,
+  "identity_contrast_temperature": 0.07,
+  "query_drop_probability": 0.1,
+  "past_negative_injection_probability": 0.2,
+  "injected_query_count": "at most max(1,round(.10*active_tracks)) real past unmatched non-ignored proposals",
+  "alive_target": "current eligible GT or an eligible GT observation within next 30 physical source frames; loss label only",
+  "gt_runtime_identity_bookkeeping": "external, first known identity permanent until retirement; duplicate births cannot relabel a switch",
+  "same_candidate_cache_as_simple": true,
+  "eligibility": "macro AssA >= simple+.03 OR >=.50; every dataset HOTA >= simple-.02",
+  "selection": [
+    "higher macro AssA",
+    "higher macro HOTA",
+    "lower IDSW/GT tracks",
+    "earlier step"
+  ],
+  "formal_training_launched": false,
+  "official_test_labels_read": false
+}

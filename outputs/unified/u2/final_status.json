@@ -22,11 +22,15 @@
       "mot20"
     ],
     "ordinary_missing_local_data": [],
-    "ordinary_unmeasured": ["bdd100k", "kitti_legal_development"],
+    "ordinary_unmeasured": [
+      "bdd100k"
+    ],
     "mot17_top300_iou050": 0.8062534793097049,
     "mot20_top300_iou050": 0.8846728452361019,
     "tao_base_top300_iou050": null,
-    "tao_novel_top300_iou050": null
+    "tao_novel_top300_iou050": null,
+    "kitti_original_gt_top150_iou050": 0.928503937007874,
+    "kitti_original_gt_top300_iou050": 0.9405354330708662
   },
   "causal_contract": "PASS",
   "eight_gpu_temporal_core_contract": "outputs/unified/u2/eval/ddp_eight_rank_core.json",
@@ -49,14 +53,22 @@
     "cache_and_simple_baseline_launch_after_full_selection_only": true
   },
   "kitti_original_gt_perception_audit": {
-    "state": "RUNNING",
+    "state": "COMPLETE",
     "parent_pid": 864092,
     "worker_pid": 864093,
-    "gpus": [0],
+    "gpus": [
+      0
+    ],
     "protocol": "outputs/unified/u2/protocol/kitti_ordinary_portability.json",
     "images_expected": 3472,
     "positive_gt_units_expected": 15875,
-    "u1_reference_scopes_and_gates_unchanged": true
+    "u1_reference_scopes_and_gates_unchanged": true,
+    "images_evaluated": 3472,
+    "positive_gt_units": 15875,
+    "top150_recall": 0.928503937007874,
+    "top300_recall": 0.9405354330708662,
+    "measurement": "outputs/unified/u2/perception/measurements/kitti_legal_development.json",
+    "blocking_session_exit_code": 0
   },
   "shared_non_head_fraction": 0.9378111093950003,
   "mot_simple_baseline": null,
@@ -162,5 +174,25 @@
     "phase": "F0_AND_SOURCE_DATA",
     "run_state": "/data2/user/LocateMOT/outputs/unified/u2/perception_adaptation/run_state.json",
     "controller_pid": 854970
+  },
+  "temporal_supervision_contract": "outputs/unified/u2/eval/temporal_supervision_contract.json",
+  "original_train_supervision_contract": "outputs/unified/u2/eval/original_train_supervision_contract.json",
+  "eight_gpu_supervision_contract": "outputs/unified/u2/eval/ddp_eight_rank_supervision.json",
+  "mot_run_contract": "outputs/unified/u2/eval/mot_run_contract.json",
+  "mot_only_training_preparation": {
+    "status": "IMPLEMENTED_REGISTERED_NOT_LAUNCHED",
+    "recipe": "outputs/unified/u2/protocol/mot_only_training_recipe.json",
+    "training_script": "tools/unified/train_u2_mot_only.py",
+    "evaluation_script": "tools/unified/eval_u2_mot_only.py",
+    "maximum_optimizer_steps": 6000,
+    "formal_optimization_launched": false,
+    "same_core_architecture": true
+  },
+  "mot_only_follow_on_queue": {
+    "state": "WAITING_ORDINARY_CACHE_AND_SIMPLE",
+    "controller_pid": 870157,
+    "blocking_session": 38396,
+    "run_state": "outputs/unified/u2/mot_only_queue/run_state.json",
+    "formal_optimization_launched": false
   }
 }

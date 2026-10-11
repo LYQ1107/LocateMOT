@@ -1,0 +1,137 @@
+{
+  "format": "locatemot-u2-mot-run-contract-v1",
+  "status": "PASS",
+  "input_source": "synthetic caches/checkpoints; no benchmark or selected foundation",
+  "sampler_checks": [
+    {
+      "step": 0,
+      "rank": 0,
+      "dataset": "dancetrack",
+      "frames": 2
+    },
+    {
+      "step": 0,
+      "rank": 7,
+      "dataset": "dancetrack",
+      "frames": 2
+    },
+    {
+      "step": 1,
+      "rank": 0,
+      "dataset": "bdd100k",
+      "frames": 2
+    },
+    {
+      "step": 1,
+      "rank": 7,
+      "dataset": "bdd100k",
+      "frames": 2
+    },
+    {
+      "step": 3,
+      "rank": 0,
+      "dataset": "mot17",
+      "frames": 2
+    },
+    {
+      "step": 3,
+      "rank": 7,
+      "dataset": "mot17",
+      "frames": 2
+    },
+    {
+      "step": 5,
+      "rank": 0,
+      "dataset": "mot20",
+      "frames": 2
+    },
+    {
+      "step": 5,
+      "rank": 7,
+      "dataset": "mot20",
+      "frames": 2
+    },
+    {
+      "step": 8,
+      "rank": 0,
+      "dataset": "kitti_legal_development",
+      "frames": 2
+    },
+    {
+      "step": 8,
+      "rank": 7,
+      "dataset": "kitti_legal_development",
+      "frames": 2
+    },
+    {
+      "step": 500,
+      "rank": 0,
+      "dataset": "kitti_legal_development",
+      "frames": 2
+    },
+    {
+      "step": 500,
+      "rank": 7,
+      "dataset": "kitti_legal_development",
+      "frames": 2
+    },
+    {
+      "step": 1000,
+      "rank": 0,
+      "dataset": "mot20",
+      "frames": 4
+    },
+    {
+      "step": 1000,
+      "rank": 7,
+      "dataset": "mot20",
+      "frames": 4
+    },
+    {
+      "step": 2500,
+      "rank": 0,
+      "dataset": "bdd100k",
+      "frames": 6
+    },
+    {
+      "step": 2500,
+      "rank": 7,
+      "dataset": "bdd100k",
+      "frames": 6
+    },
+    {
+      "step": 4000,
+      "rank": 0,
+      "dataset": "mot17",
+      "frames": 8
+    },
+    {
+      "step": 4000,
+      "rank": 7,
+      "dataset": "mot17",
+      "frames": 8
+    },
+    {
+      "step": 5999,
+      "rank": 0,
+      "dataset": "dancetrack",
+      "frames": 8
+    },
+    {
+      "step": 5999,
+      "rank": 7,
+      "dataset": "dancetrack",
+      "frames": 8
+    }
+  ],
+  "all_five_train_only": true,
+  "causal_curriculum": true,
+  "stateless_rank_step_sampling_resume": true,
+  "optimizer_rng_resume_next_update_bit_exact": true,
+  "same_dataset_all_ranks": true,
+  "bf16_cache_expanded_at_autocast_boundary": true,
+  "selection_hota_regression_and_identity_gain_checked": true,
+  "earlier_checkpoint_tiebreak": true,
+  "formal_optimization_launched": false,
+  "official_test_labels_read": false
+}

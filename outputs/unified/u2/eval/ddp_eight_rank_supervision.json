@@ -1,0 +1,165 @@
+{
+  "format": "locatemot-u2-eight-gpu-supervision-contract-v1",
+  "status": "PASS",
+  "world_size": 8,
+  "hidden_dim": 256,
+  "clips_per_rank": 2,
+  "global_clips": 16,
+  "frames_per_clip": 4,
+  "bf16_autocast": true,
+  "same_task_all_ranks": "mot",
+  "registered_six_losses": true,
+  "actual_query_augmentation": true,
+  "temporal_graph_detached": false,
+  "steps": [
+    {
+      "step": 500,
+      "ranks": [
+        {
+          "rank": 0,
+          "cuda_device": 0,
+          "teacher_frames": 8,
+          "model_frames": 0,
+          "loss": 2.885669708251953
+        },
+        {
+          "rank": 1,
+          "cuda_device": 1,
+          "teacher_frames": 8,
+          "model_frames": 0,
+          "loss": 2.7107040882110596
+        },
+        {
+          "rank": 2,
+          "cuda_device": 2,
+          "teacher_frames": 8,
+          "model_frames": 0,
+          "loss": 2.799021005630493
+        },
+        {
+          "rank": 3,
+          "cuda_device": 3,
+          "teacher_frames": 8,
+          "model_frames": 0,
+          "loss": 2.80932354927063
+        },
+        {
+          "rank": 4,
+          "cuda_device": 4,
+          "teacher_frames": 8,
+          "model_frames": 0,
+          "loss": 2.25765323638916
+        },
+        {
+          "rank": 5,
+          "cuda_device": 5,
+          "teacher_frames": 8,
+          "model_frames": 0,
+          "loss": 3.024596691131592
+        },
+        {
+          "rank": 6,
+          "cuda_device": 6,
+          "teacher_frames": 8,
+          "model_frames": 0,
+          "loss": 2.4468069076538086
+        },
+        {
+          "rank": 7,
+          "cuda_device": 7,
+          "teacher_frames": 8,
+          "model_frames": 0,
+          "loss": 2.831890106201172
+        }
+      ],
+      "finite_gradients": true,
+      "nonzero_gradient_branches": [
+        "alive",
+        "birth",
+        "candidate_projection",
+        "identity_gru",
+        "motion",
+        "pair_head",
+        "set_interaction"
+      ],
+      "max_ddp_parameter_difference": 0.0
+    },
+    {
+      "step": 3000,
+      "ranks": [
+        {
+          "rank": 0,
+          "cuda_device": 0,
+          "teacher_frames": 4,
+          "model_frames": 4,
+          "loss": 2.4872565269470215
+        },
+        {
+          "rank": 1,
+          "cuda_device": 1,
+          "teacher_frames": 4,
+          "model_frames": 4,
+          "loss": 2.8680686950683594
+        },
+        {
+          "rank": 2,
+          "cuda_device": 2,
+          "teacher_frames": 4,
+          "model_frames": 4,
+          "loss": 2.813265323638916
+        },
+        {
+          "rank": 3,
+          "cuda_device": 3,
+          "teacher_frames": 4,
+          "model_frames": 4,
+          "loss": 2.613682270050049
+        },
+        {
+          "rank": 4,
+          "cuda_device": 4,
+          "teacher_frames": 4,
+          "model_frames": 4,
+          "loss": 2.722874164581299
+        },
+        {
+          "rank": 5,
+          "cuda_device": 5,
+          "teacher_frames": 4,
+          "model_frames": 4,
+          "loss": 2.354459762573242
+        },
+        {
+          "rank": 6,
+          "cuda_device": 6,
+          "teacher_frames": 4,
+          "model_frames": 4,
+          "loss": 2.307675838470459
+        },
+        {
+          "rank": 7,
+          "cuda_device": 7,
+          "teacher_frames": 4,
+          "model_frames": 4,
+          "loss": 2.7284820079803467
+        }
+      ],
+      "finite_gradients": true,
+      "nonzero_gradient_branches": [
+        "alive",
+        "birth",
+        "candidate_projection",
+        "identity_gru",
+        "motion",
+        "pair_head",
+        "set_interaction"
+      ],
+      "max_ddp_parameter_difference": 0.0
+    }
+  ],
+  "input_source": "synthetic; two scratch optimizer updates, no benchmark training",
+  "foundation_weights_modified": false,
+  "formal_track_training_launched": false,
+  "benchmark_metrics_measured": false,
+  "official_test_labels_read": false
+}

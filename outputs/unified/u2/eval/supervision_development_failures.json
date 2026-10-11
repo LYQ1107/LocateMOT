@@ -1,0 +1,40 @@
+{
+  "format": "locatemot-u2-supervision-development-failures-v1",
+  "scope": "recorded development contract failures and root-cause repairs; no formal training failed or launched",
+  "failures": [
+    {
+      "session": 51784,
+      "exit_code": 1,
+      "root_cause": "NumPy cannot consume BF16 pair logits at Hungarian boundary",
+      "reproduction_session": 68632,
+      "fix": "detach and cast pair logits to FP32 at CPU assignment boundary",
+      "regression_sessions": [
+        30093,
+        2469
+      ]
+    },
+    {
+      "session": 53170,
+      "exit_code": 1,
+      "root_cause": "GT oracle compared upstream MOT XYWH to adapter XYXY",
+      "fix": "convert only oracle MOT arrays from XYWH to XYXY; original GT and training coordinates unchanged",
+      "regression_session": 16135
+    },
+    {
+      "session": 76774,
+      "exit_code": 1,
+      "passed_phase": "eight-GPU FP32 MOT and OVMOT temporal contracts",
+      "root_cause": "batched GRU BF16 source cannot be written by index_put into FP32 persistent memory",
+      "fix": "cast differentiable identity and semantic GRU outputs to destination memory dtype",
+      "single_gpu_regression_session": 57241,
+      "eight_gpu_regression_session": 87550
+    }
+  ],
+  "final_targeted_regressions": [
+    21978,
+    1677
+  ],
+  "final_status": "PASS_AFTER_RECORDED_REPAIRS",
+  "seeds_losses_gates_changed": false,
+  "official_test_labels_read": false
+}

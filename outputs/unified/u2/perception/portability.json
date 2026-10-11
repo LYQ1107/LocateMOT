@@ -724,20 +724,156 @@
       },
       "kind": "ordinary_mot",
       "license": "KITTI tracking; U1 legal development scope",
-      "measurement": null,
+      "measurement": {
+        "candidate_top_k": 150,
+        "counts": {
+          "gt_total": 15875,
+          "hits_top150": 14740,
+          "hits_top300": 14931
+        },
+        "coverage_keys_sha256": "94260bd9dfc5f72124197e2ece2c0fc7ba9412af20337d34952bb35f0ed8ebd7",
+        "dataset": "kitti_legal_development",
+        "format": "locatemot-u2-portability-measurement-v1",
+        "foundation_sha256": "4efc35ce70be5cddf2c4d9a0f91bc4edef3e9ec5277a819211ba4ac42e0d7d26",
+        "images_evaluated": 3472,
+        "images_expected": 3472,
+        "official_test_labels_read": false,
+        "per_sequence": {
+          "0001": {
+            "counts": {
+              "gt_total": 2378,
+              "hits_top150": 2268,
+              "hits_top300": 2292
+            },
+            "images": 447
+          },
+          "0007": {
+            "counts": {
+              "gt_total": 2033,
+              "hits_top150": 1983,
+              "hits_top300": 1996
+            },
+            "images": 800
+          },
+          "0009": {
+            "counts": {
+              "gt_total": 2479,
+              "hits_top150": 2312,
+              "hits_top300": 2348
+            },
+            "images": 803
+          },
+          "0015": {
+            "counts": {
+              "gt_total": 1282,
+              "hits_top150": 1158,
+              "hits_top300": 1169
+            },
+            "images": 376
+          },
+          "0016": {
+            "counts": {
+              "gt_total": 2810,
+              "hits_top150": 2632,
+              "hits_top300": 2667
+            },
+            "images": 209
+          },
+          "0020": {
+            "counts": {
+              "gt_total": 4893,
+              "hits_top150": 4387,
+              "hits_top300": 4459
+            },
+            "images": 837
+          }
+        },
+        "protocol_path": "/data2/user/LocateMOT/outputs/unified/u2/protocol/kitti_ordinary_portability.json",
+        "protocol_sha256": "bf4e51c95dd78039203d4776e51a47739f58d5962207c7640d758c5a1529d12a",
+        "status": "COMPLETE",
+        "worker_artifacts": "/data2/user/LocateMOT/outputs/unified/u2/perception/kitti_original_gt_f0_full"
+      },
       "metrics_status": "MEASURED_U1_REFERENCE",
-      "original_gt_measurement": null,
-      "original_gt_metrics_status": "NOT_MEASURED",
+      "original_gt_measurement": {
+        "candidate_top_k": 150,
+        "counts": {
+          "gt_total": 15875,
+          "hits_top150": 14740,
+          "hits_top300": 14931
+        },
+        "coverage_keys_sha256": "94260bd9dfc5f72124197e2ece2c0fc7ba9412af20337d34952bb35f0ed8ebd7",
+        "dataset": "kitti_legal_development",
+        "format": "locatemot-u2-portability-measurement-v1",
+        "foundation_sha256": "4efc35ce70be5cddf2c4d9a0f91bc4edef3e9ec5277a819211ba4ac42e0d7d26",
+        "images_evaluated": 3472,
+        "images_expected": 3472,
+        "official_test_labels_read": false,
+        "per_sequence": {
+          "0001": {
+            "counts": {
+              "gt_total": 2378,
+              "hits_top150": 2268,
+              "hits_top300": 2292
+            },
+            "images": 447
+          },
+          "0007": {
+            "counts": {
+              "gt_total": 2033,
+              "hits_top150": 1983,
+              "hits_top300": 1996
+            },
+            "images": 800
+          },
+          "0009": {
+            "counts": {
+              "gt_total": 2479,
+              "hits_top150": 2312,
+              "hits_top300": 2348
+            },
+            "images": 803
+          },
+          "0015": {
+            "counts": {
+              "gt_total": 1282,
+              "hits_top150": 1158,
+              "hits_top300": 1169
+            },
+            "images": 376
+          },
+          "0016": {
+            "counts": {
+              "gt_total": 2810,
+              "hits_top150": 2632,
+              "hits_top300": 2667
+            },
+            "images": 209
+          },
+          "0020": {
+            "counts": {
+              "gt_total": 4893,
+              "hits_top150": 4387,
+              "hits_top300": 4459
+            },
+            "images": 837
+          }
+        },
+        "protocol_path": "/data2/user/LocateMOT/outputs/unified/u2/protocol/kitti_ordinary_portability.json",
+        "protocol_sha256": "bf4e51c95dd78039203d4776e51a47739f58d5962207c7640d758c5a1529d12a",
+        "status": "COMPLETE",
+        "worker_artifacts": "/data2/user/LocateMOT/outputs/unified/u2/perception/kitti_original_gt_f0_full"
+      },
+      "original_gt_metrics_status": "MEASURED",
       "portability_training_allowed": true,
       "protocol": "legal Refer-KITTI calibration/validation scope; V1 and V2 are reported separately",
       "selected_root": "/data2/user/LocateMOT/data/kitti_tracking",
       "source": "/data2/user/LocateMOT/outputs/unified/u1r2/formal_generic_expression_epoch1/result.json",
       "split_protocol": "Refer-KITTI legal calibration/validation only; reserved videos are excluded",
       "status": "AVAILABLE",
-      "top150_minimum_pass": false,
-      "top150_preferred_pass": false,
-      "top150_recall_iou050": null,
-      "top300_recall_iou050": null,
+      "top150_minimum_pass": true,
+      "top150_preferred_pass": true,
+      "top150_recall_iou050": 0.928503937007874,
+      "top300_recall_iou050": 0.9405354330708662,
       "top300_registered": false,
       "u1_reference_top150_minimum_pass": true
     },
@@ -1073,8 +1209,7 @@
   "ordinary_target_minimum": 0.85,
   "ordinary_target_preferred": 0.9,
   "ordinary_unmeasured": [
-    "bdd100k",
-    "kitti_legal_development"
+    "bdd100k"
   ],
   "refer_kitti_official_eval_labels_read": false,
   "stage": "U2-P",

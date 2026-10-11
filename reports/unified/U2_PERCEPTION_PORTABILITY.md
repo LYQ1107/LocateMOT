@@ -14,6 +14,7 @@ MOT17 uses one FRCNN copy per physical video. The inclusive half ranges follow t
 | MOT17 | 2,652 | 53,890 | 0.787233 | 0.806253 |
 | MOT20 | 4,463 | 615,137 | 0.731010 | 0.884673 |
 | DanceTrack | 25,508 | 225,148 | 0.996314 | 0.997686 |
+| original KITTI legal V2 dev | 3,472 | 15,875 | 0.928504 | 0.940535 |
 | refer_kitti_v1 (existing U1 reference) | — | — | 0.986592 | 0.989960 |
 | refer_kitti_v2 (existing U1 reference) | — | — | 0.958739 | 0.964753 |
 
@@ -24,12 +25,13 @@ No Top300 runtime override has been accepted and no track training or candidate 
 MOT17-02/04 and the crowded MOT20-03/05 are the main shortfalls; complete per-sequence
 numerators and denominators are retained in `outputs/unified/u2/perception/measurements/`.
 
-BDD100K, original KITTI tracking and TAO base/novel full measurements remain
-unmeasured. The U1 Refer-KITTI references above remain immutable retention gates.
+BDD100K and TAO base/novel full measurements remain unmeasured. The U1 Refer-KITTI references above remain immutable retention gates.
 Ordinary KITTI additionally requires every original benchmark GT unit on the
 frozen legal V2 development scope: 3,472 images / 15,875 car/pedestrian units,
 using unchanged official visibility preprocessing and original xyxy coordinates.
-Its real-image smoke passed; the full F0 audit runs on GPU 0. The same Top150
+The full original-KITTI F0 audit completed (session 95238 exit 0):
+14,740/15,875 Top150 and 14,931/15,875 Top300 hits. It passes the preferred .90
+Top150 threshold. The same Top150
 minimum .85 / hard stop .80 applies, without a KITTI Top300 runtime override.
 Each U2-P candidate now audits all 76,068 ordinary development images in addition
 to every original U1 and TAO/C-TAO scope. This supplies a missing ordinary-GT

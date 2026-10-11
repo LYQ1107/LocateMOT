@@ -1,0 +1,69 @@
+{
+  "format": "locatemot-u2-portability-measurement-v1",
+  "status": "COMPLETE",
+  "dataset": "kitti_legal_development",
+  "foundation_sha256": "4efc35ce70be5cddf2c4d9a0f91bc4edef3e9ec5277a819211ba4ac42e0d7d26",
+  "protocol_path": "/data2/user/LocateMOT/outputs/unified/u2/protocol/kitti_ordinary_portability.json",
+  "protocol_sha256": "bf4e51c95dd78039203d4776e51a47739f58d5962207c7640d758c5a1529d12a",
+  "images_expected": 3472,
+  "images_evaluated": 3472,
+  "candidate_top_k": 150,
+  "counts": {
+    "gt_total": 15875,
+    "hits_top150": 14740,
+    "hits_top300": 14931
+  },
+  "per_sequence": {
+    "0001": {
+      "images": 447,
+      "counts": {
+        "gt_total": 2378,
+        "hits_top150": 2268,
+        "hits_top300": 2292
+      }
+    },
+    "0009": {
+      "images": 803,
+      "counts": {
+        "gt_total": 2479,
+        "hits_top150": 2312,
+        "hits_top300": 2348
+      }
+    },
+    "0020": {
+      "images": 837,
+      "counts": {
+        "gt_total": 4893,
+        "hits_top150": 4387,
+        "hits_top300": 4459
+      }
+    },
+    "0007": {
+      "images": 800,
+      "counts": {
+        "gt_total": 2033,
+        "hits_top150": 1983,
+        "hits_top300": 1996
+      }
+    },
+    "0015": {
+      "images": 376,
+      "counts": {
+        "gt_total": 1282,
+        "hits_top150": 1158,
+        "hits_top300": 1169
+      }
+    },
+    "0016": {
+      "images": 209,
+      "counts": {
+        "gt_total": 2810,
+        "hits_top150": 2632,
+        "hits_top300": 2667
+      }
+    }
+  },
+  "coverage_keys_sha256": "94260bd9dfc5f72124197e2ece2c0fc7ba9412af20337d34952bb35f0ed8ebd7",
+  "worker_artifacts": "/data2/user/LocateMOT/outputs/unified/u2/perception/kitti_original_gt_f0_full",
+  "official_test_labels_read": false
+}

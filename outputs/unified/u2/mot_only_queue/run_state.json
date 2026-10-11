@@ -1,0 +1,8 @@
+{
+  "format": "locatemot-u2-mot-only-queue-v1",
+  "state": "WAITING_ORDINARY_CACHE_AND_SIMPLE",
+  "controller_pid": 870157,
+  "ordinary_controller_pid": 864319,
+  "formal_track_training_launched": false,
+  "maximum_optimizer_steps": 6000
+}

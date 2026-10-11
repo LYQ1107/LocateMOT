@@ -32,13 +32,23 @@ remain unmeasured until these original blocking commands complete.
 
 Original KITTI tracking IDs are now frozen separately from the Refer label
 namespace. The complete 3,472-frame / 15,875-GT ordinary KITTI portability audit
-runs on GPU 0; its result is required alongside the unchanged U1 references.
+completed with Top150/Top300 recall .928503937/.940535433, passing the preferred
+.90 Top150 threshold. Its original-GT result supplements the unchanged U1 references.
 The label-free candidate inventory covers 924,593 unique physical images with
 no train/dev overlap. Video-sharded cache construction and the fixed simple
 baseline are implemented; a separate blocking queue waits for perception
 selection before launching them. All five official file readers, full HOTA
 thresholds, ignore preprocessing and ID-switch metrics passed synthetic checks.
 No full feature cache or benchmark tracking result has been produced yet.
+
+The actual persistent state now participates in past-negative query augmentation.
+Registered temporal losses, source-frame gap handling and partial model rollout
+pass synthetic gradient/causal checks. One complete actual train video per ordinary
+dataset matches the upstream GT reader on every positive box. The eight-GPU BF16
+loss contract passes. A fixed 6,000-step training/evaluation/resume/selection entry
+is implemented and preregistered; its own blocking queue waits for the complete
+selected cache and simple metrics. These are implementation/contract results, not
+trained tracking metrics.
 
 Scientific stage status:
 

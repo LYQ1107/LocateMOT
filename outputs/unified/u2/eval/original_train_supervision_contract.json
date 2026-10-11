@@ -1,0 +1,78 @@
+{
+  "format": "locatemot-u2-original-train-supervision-contract-v1",
+  "status": "PASS",
+  "scope": "one complete actual registered train video per dataset; not all train videos or cached features",
+  "datasets": {
+    "bdd100k": {
+      "video": "0000f77c-6257be58",
+      "role": "train",
+      "frames": 203,
+      "positive_units": 1126,
+      "all_frame_gt_boxes_match_upstream": true,
+      "source_sha256": "8fb183b740d4f349a78b3a1d08d856baf42a4c8dae540285fb205a37d2bb5ba4",
+      "ignored_regions": 0,
+      "distractor_boxes": 0
+    },
+    "dancetrack": {
+      "video": "dancetrack0001",
+      "role": "train",
+      "frames": 703,
+      "positive_units": 4912,
+      "all_frame_gt_boxes_match_upstream": true,
+      "source_sha256": "0b8053212b4aa657cdc9834491c6f156af5ff7c8aad88ab152981b3950d840cc",
+      "ignored_regions": 0,
+      "distractor_boxes": 0
+    },
+    "mot17": {
+      "video": "MOT17-02-FRCNN",
+      "role": "train",
+      "frames": 301,
+      "positive_units": 8701,
+      "all_frame_gt_boxes_match_upstream": true,
+      "source_sha256": "2e3ecb488da8886d3200d402b2b08890c6d2879923839444e9b74fa43a551440",
+      "ignored_regions": 0,
+      "distractor_boxes": 4085
+    },
+    "mot20": {
+      "video": "MOT20-01",
+      "role": "train",
+      "frames": 215,
+      "positive_units": 9060,
+      "all_frame_gt_boxes_match_upstream": true,
+      "source_sha256": "89fd0196d67a5eb6011a470dc2a49b02255403b49e8848031cdf99add8a36d9c",
+      "ignored_regions": 0,
+      "distractor_boxes": 1290
+    },
+    "kitti_legal_development": {
+      "video": "0000",
+      "role": "train",
+      "frames": 154,
+      "positive_units": 234,
+      "all_frame_gt_boxes_match_upstream": true,
+      "source_sha256": "97f772a27181dfc7ef51b3e64b86bd42e682753b6855fdc58d259ecbed501fd4",
+      "ignored_regions": 378,
+      "distractor_boxes": 323
+    }
+  },
+  "trackeval_commit": "12c8791b303e0a0b50f753af204249e622d0281a",
+  "distractor_iou_and_region_ioa_distinguished": true,
+  "small_unmatched_kitti_rule": true,
+  "registered_sampling_probabilities": {
+    "bdd100k": 0.25,
+    "dancetrack": 0.25,
+    "mot17": 0.2,
+    "mot20": 0.1,
+    "kitti_legal_development": 0.2
+  },
+  "seed": 20261012,
+  "dataset_draw_counts_6000_steps": {
+    "dancetrack": 1486,
+    "bdd100k": 1541,
+    "mot17": 1187,
+    "mot20": 555,
+    "kitti_legal_development": 1231
+  },
+  "gt_features_used_by_core": false,
+  "formal_training_launched": false,
+  "official_test_labels_read": false
+}

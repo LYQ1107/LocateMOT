@@ -1,0 +1,13 @@
+{
+  "birth_persistence": "pass",
+  "format": "locatemot-u2-causal-contract-v1",
+  "max_age": 30,
+  "mot_specification_invariance": "pass",
+  "no_future_dependency": "pass",
+  "occlusion_retention": "pass",
+  "official_test_labels_read": false,
+  "online_state_save_reload": "pass",
+  "ovmot_semantic_isolation": "pass",
+  "refer_kitti_official_eval_labels_read": false,
+  "status": "pass"
+}
