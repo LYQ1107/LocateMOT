@@ -17,7 +17,8 @@ MOT17 uses one FRCNN copy per physical video. The inclusive half ranges follow t
 | refer_kitti_v2 (existing U1 reference) | — | — | 0.958739 | 0.964753 |
 
 Both new domains fail the registered Top150 minimum of 0.85 and hard stop of 0.80.
-MOT20 improves to 0.884673 at Top300, which remains below the preferred 0.90.
+MOT20 improves to 0.884673 at Top300, which remains below the mandatory 0.90
+acceptance threshold for the preregistered crowded-scene K=300 override.
 No Top300 runtime override has been accepted and no track training or candidate cache has started.
 MOT17-02/04 and the crowded MOT20-03/05 are the main shortfalls; complete per-sequence
 numerators and denominators are retained in `outputs/unified/u2/perception/measurements/`.
@@ -36,10 +37,37 @@ contains 53,263 base GT units and zero novel GT. Both streams must meet base ≥
 TAO must also meet novel ≥0.60. C-TAO novel recall is explicitly inapplicable for this
 base-only release. All 490,210 C-TAO frames remain registered for later identity training.
 
-BDD tracking annotation acquisition is recovering from a pinned mirror with raw
-train/val JSON videos; filtered and converted SOT labels are not used. Once all required inputs are ready, the failed gate permits
+BDD raw train/val tracking annotations and all validation images have been recovered
+from a pinned mirror. All 39,973 validation frames and 442,814 positive GT boxes are
+registered; positive/ignore handling and box coordinates match the official toolkit
+on every validation object. Validation image sizes/CRCs match the original release.
+The full BDD candidate audit is queued after DanceTrack on GPU 7; training image
+acquisition remains incomplete. Filtered and converted SOT labels are not used.
+Once all required inputs are ready, the failed gate permits
 at most two epochs of mixed perception adaptation with U1 replay, decoder LR 1e-5,
 Swin stages 2/3 LR 1e-6 and frozen BERT, followed by full portability and U1 retention checks.
+
+The bounded U2-P recipe is now preregistered: seed 20261012, 20,000 replay rows
+per epoch, at most two epochs. U1 generic/V1/V2 proportions are 10%/15%/25%;
+BDD, Dance, MOT17, MOT20 and TAO-base each contribute 10%. Only registered train
+frames and unchanged U1 legal-fit replay are eligible. Mapped TAO f/c labels
+supervise detection; rare/unmapped labels supply neither semantic nor identity
+supervision. The existing native ODVG grounding path retains multi-box regions
+and empty-positive images. BERT stays frozen and in eval mode; Swin stages 0/1
+stay frozen. FP32 batch 2 on eight ranks gives exactly 1,250 steps per epoch
+and a total cap of 2,500. Aspect-ratio buckets are disabled to avoid singleton
+tail batches changing that budget.
+
+CPU checkpoint loading has no missing/unexpected keys and the freeze contract
+passes. Native pipeline checks pass on one real training image per stream plus
+an empty-positive image; these checks are not portability measurements. The
+complete replay preparator waits internally for all seven original BDD train
+archives, then verifies full source-image coverage before selecting its rows.
+No optimization has launched. The guarded trainer pauses after epoch 1 for full
+portability, unchanged U1 generic/expression audits, and the original 500-pair
+language audit. Epoch 2 is allowed only for the same evaluated epoch-1 weights
+when retention passes and portability still fails. Candidate evaluators require
+an explicit checkpoint SHA and separate outputs; F0 references remain intact.
 
 Decision: `LOCATEMOT_U_BLOCKED_U2_PERCEPTION_PORTABILITY`; acquisition/recovery is active.
 This is a numerical gate failure plus missing/incomplete inputs, not evidence that U2 is ready.

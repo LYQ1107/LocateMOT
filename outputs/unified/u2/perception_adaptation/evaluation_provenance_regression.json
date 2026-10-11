@@ -1,0 +1,8 @@
+{
+  "state": "PASS",
+  "complete_f0_mot_results_identical": true,
+  "mixed_checkpoint_measurement_rejected": true,
+  "mixed_checkpoint_workers_rejected": true,
+  "ordinary_original_images": 7115,
+  "optimization_launched": false
+}

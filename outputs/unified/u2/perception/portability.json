@@ -2,7 +2,23 @@
   "candidate_cache_built": false,
   "datasets": {
     "bdd100k": {
-      "availability_evidence": {},
+      "availability_evidence": {
+        "annotation_acquisition_manifest": "outputs/unified/u2/protocol/bdd_labels_acquisition_manifest.json",
+        "raw_tracking_coverage": {
+          "train": {
+            "annotation_frames": 278079,
+            "missing_images": 238661,
+            "videos": 1400,
+            "videos_expected": 1400
+          },
+          "val": {
+            "annotation_frames": 39973,
+            "missing_images": 0,
+            "videos": 200,
+            "videos_expected": 200
+          }
+        }
+      },
       "candidate_roots": [
         {
           "exists": false,
@@ -13,8 +29,19 @@
           "path": "/data2/user/datasets/bdd100k"
         },
         {
-          "exists": false,
-          "path": "/data2/user/LocateMOT/data/bdd100k"
+          "annotation_files": 1600,
+          "directories": 408,
+          "exists": true,
+          "files": 80991,
+          "image_files": 79391,
+          "path": "/data2/user/LocateMOT/data/bdd100k",
+          "sample_files": [
+            "/data2/user/LocateMOT/data/bdd100k/images/track/train/006dd004-34630e8d/006dd004-34630e8d-0000001.jpg",
+            "/data2/user/LocateMOT/data/bdd100k/images/track/train/006dd004-34630e8d/006dd004-34630e8d-0000002.jpg",
+            "/data2/user/LocateMOT/data/bdd100k/images/track/train/006dd004-34630e8d/006dd004-34630e8d-0000003.jpg",
+            "/data2/user/LocateMOT/data/bdd100k/images/track/train/006dd004-34630e8d/006dd004-34630e8d-0000004.jpg",
+            "/data2/user/LocateMOT/data/bdd100k/images/track/train/006dd004-34630e8d/006dd004-34630e8d-0000005.jpg"
+          ]
         }
       ],
       "dataset": "bdd100k",
@@ -22,9 +49,9 @@
       "license": "BDD100K terms; local acquisition required",
       "metrics_status": "NOT_MEASURED_MISSING_LOCAL_DATA",
       "portability_training_allowed": false,
-      "selected_root": null,
+      "selected_root": "/data2/user/LocateMOT/data/bdd100k",
       "split_protocol": "official train/val; no local copy",
-      "status": "MISSING_LOCAL_DATA",
+      "status": "INCOMPLETE_LOCAL_DATA",
       "top150_recall_iou050": null,
       "top300_recall_iou050": null
     },
@@ -449,10 +476,10 @@
         },
         {
           "annotation_files": 2,
-          "directories": 2053,
+          "directories": 2947,
           "exists": true,
-          "files": 2150425,
-          "image_files": 2150421,
+          "files": 3082195,
+          "image_files": 3082191,
           "path": "/data2/user/LocateMOT/data/TAO-Amodal",
           "sample_files": [
             "/data2/user/LocateMOT/data/TAO-Amodal/README.md",

@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "validation_videos": 200,
+  "validation_frames": 39973,
+  "positive_gt_boxes": 442814,
+  "positive_category_counts": {
+    "bicycle": 4136,
+    "bus": 9078,
+    "car": 341335,
+    "motorcycle": 902,
+    "pedestrian": 57101,
+    "rider": 2540,
+    "train": 308,
+    "truck": 27414
+  },
+  "reference": "cached official BDD category converter and Scalabel crowd/ignore/Box2D functions",
+  "scope": "every raw validation frame and object",
+  "coordinates_equal_exactly": true,
+  "official_test_labels_read": false
+}

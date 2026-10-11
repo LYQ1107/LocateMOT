@@ -1,0 +1,561 @@
+{
+  "candidate_cache_built": false,
+  "crowded_override_minimum": 0.9,
+  "datasets": {
+    "bdd100k": {
+      "availability_evidence": {
+        "annotation_acquisition_manifest": "outputs/unified/u2/protocol/bdd_labels_acquisition_manifest.json",
+        "raw_tracking_coverage": {
+          "train": {
+            "annotation_frames": 278079,
+            "missing_images": 238661,
+            "videos": 1400,
+            "videos_expected": 1400
+          },
+          "val": {
+            "annotation_frames": 39973,
+            "missing_images": 0,
+            "videos": 200,
+            "videos_expected": 200
+          }
+        }
+      },
+      "candidate_roots": [
+        {
+          "exists": false,
+          "path": "/data1/LWR/vranlee/SERVER_ONLY/avis/masa/data/bdd"
+        },
+        {
+          "exists": false,
+          "path": "/data2/user/datasets/bdd100k"
+        },
+        {
+          "annotation_files": 1600,
+          "directories": 408,
+          "exists": true,
+          "files": 80991,
+          "image_files": 79391,
+          "path": "/data2/user/LocateMOT/data/bdd100k",
+          "sample_files": [
+            "/data2/user/LocateMOT/data/bdd100k/images/track/train/006dd004-34630e8d/006dd004-34630e8d-0000001.jpg",
+            "/data2/user/LocateMOT/data/bdd100k/images/track/train/006dd004-34630e8d/006dd004-34630e8d-0000002.jpg",
+            "/data2/user/LocateMOT/data/bdd100k/images/track/train/006dd004-34630e8d/006dd004-34630e8d-0000003.jpg",
+            "/data2/user/LocateMOT/data/bdd100k/images/track/train/006dd004-34630e8d/006dd004-34630e8d-0000004.jpg",
+            "/data2/user/LocateMOT/data/bdd100k/images/track/train/006dd004-34630e8d/006dd004-34630e8d-0000005.jpg"
+          ]
+        }
+      ],
+      "dataset": "bdd100k",
+      "kind": "ordinary_mot",
+      "license": "BDD100K terms; local acquisition required",
+      "metrics_status": "NOT_MEASURED_MISSING_LOCAL_DATA",
+      "portability_training_allowed": false,
+      "selected_root": "/data2/user/LocateMOT/data/bdd100k",
+      "split_protocol": "official train/val; no local copy",
+      "status": "INCOMPLETE_LOCAL_DATA",
+      "top150_recall_iou050": null,
+      "top300_recall_iou050": null
+    },
+    "ctao": {
+      "availability_evidence": {
+        "annotation_sha256": "4269b1a5f026350cf45fbbf61689894f7d45d9bd2730331e73ab6f841d9b3adc",
+        "images_expected": 490210,
+        "missing_images": 0,
+        "non_training_images": 0,
+        "source": "https://huggingface.co/clarkqian/COVTrack",
+        "variant": "ctao_base.json"
+      },
+      "candidate_roots": [
+        {
+          "exists": false,
+          "path": "/data3/testdata/vranlee/.MOTSynth.partial/C-TAO"
+        },
+        {
+          "exists": false,
+          "path": "/data1/LWR/vranlee/SERVER_ONLY/avis/OCD_OVMOT/data/C-TAO"
+        },
+        {
+          "exists": false,
+          "path": "/data2/user/datasets/C-TAO"
+        },
+        {
+          "annotation_files": 1,
+          "directories": 0,
+          "exists": true,
+          "files": 1,
+          "image_files": 0,
+          "path": "/data2/user/LocateMOT/data/C-TAO",
+          "sample_files": [
+            "/data2/user/LocateMOT/data/C-TAO/ctao_base.json"
+          ]
+        }
+      ],
+      "dataset": "ctao",
+      "kind": "ovmot",
+      "license": "C-TAO continuous annotation release; local acquisition required",
+      "metrics_status": "NOT_MEASURED",
+      "portability_training_allowed": true,
+      "selected_root": "/data2/user/LocateMOT/data/C-TAO",
+      "split_protocol": "C-TAO train base annotations; TAO validation remains held out",
+      "status": "AVAILABLE",
+      "top150_recall_iou050": null,
+      "top300_recall_iou050": null
+    },
+    "dancetrack": {
+      "availability_evidence": {
+        "calibration_images": 8024,
+        "metadata_frame_differences": [],
+        "missing_registered_images": 0,
+        "protocol_path": "/data2/user/LocateMOT/outputs/unified/u2/protocol/dancetrack.json",
+        "protocol_sha256": "920fc5f4d6fbb1a5948bf7802cf613b023a16bb9a402181c7155a9e775052118",
+        "registered_gt_matches": true,
+        "source": "https://huggingface.co/datasets/noahcao/dancetrack",
+        "train_images": 33772,
+        "validation_images": 25508,
+        "version": "a0ba42ac690c41e9850a20e76a0b9450a6fb6a47"
+      },
+      "candidate_roots": [
+        {
+          "exists": false,
+          "path": "/data1/LWR/vranlee/DATASETS/JDE/dancetrack"
+        },
+        {
+          "exists": false,
+          "path": "/data2/user/datasets/DanceTrack"
+        },
+        {
+          "annotation_files": 65,
+          "directories": 197,
+          "exists": true,
+          "files": 67434,
+          "image_files": 67304,
+          "path": "/data2/user/LocateMOT/data/DanceTrack",
+          "sample_files": [
+            "/data2/user/LocateMOT/data/DanceTrack/train/dancetrack0002/seqinfo.ini",
+            "/data2/user/LocateMOT/data/DanceTrack/train/dancetrack0002/gt/gt.txt",
+            "/data2/user/LocateMOT/data/DanceTrack/train/dancetrack0002/img1/00000001.jpg",
+            "/data2/user/LocateMOT/data/DanceTrack/train/dancetrack0002/img1/00000002.jpg",
+            "/data2/user/LocateMOT/data/DanceTrack/train/dancetrack0002/img1/00000003.jpg"
+          ]
+        }
+      ],
+      "dataset": "dancetrack",
+      "kind": "ordinary_mot",
+      "license": "DanceTrack research release; local acquisition required",
+      "metrics_status": "NOT_MEASURED",
+      "portability_training_allowed": true,
+      "selected_root": "/data2/user/LocateMOT/data/DanceTrack",
+      "split_protocol": "existing project protocol configs/data/l1_a_dancetrack_{train,val}.json",
+      "status": "AVAILABLE",
+      "top150_recall_iou050": null,
+      "top300_recall_iou050": null
+    },
+    "kitti_legal_development": {
+      "availability_evidence": {},
+      "candidate_roots": [
+        {
+          "annotation_files": 0,
+          "directories": 23,
+          "exists": true,
+          "files": 8008,
+          "image_files": 8008,
+          "path": "/data2/user/LocateMOT/data/kitti_tracking",
+          "sample_files": [
+            "/data2/user/LocateMOT/data/kitti_tracking/training/image_02/0019/000000.png",
+            "/data2/user/LocateMOT/data/kitti_tracking/training/image_02/0019/000001.png",
+            "/data2/user/LocateMOT/data/kitti_tracking/training/image_02/0019/000002.png",
+            "/data2/user/LocateMOT/data/kitti_tracking/training/image_02/0019/000003.png",
+            "/data2/user/LocateMOT/data/kitti_tracking/training/image_02/0019/000004.png"
+          ]
+        }
+      ],
+      "dataset": "kitti_legal_development",
+      "domains": {
+        "refer_kitti_v1": {
+          "top150_recall_iou050": 0.986592107771494,
+          "top300_recall_iou050": 0.9899599669568533
+        },
+        "refer_kitti_v2": {
+          "top150_recall_iou050": 0.9587385462926528,
+          "top300_recall_iou050": 0.964753499353533
+        }
+      },
+      "kind": "ordinary_mot",
+      "license": "KITTI tracking; U1 legal development scope",
+      "metrics_status": "MEASURED_U1_REFERENCE",
+      "portability_training_allowed": true,
+      "protocol": "legal Refer-KITTI calibration/validation scope; V1 and V2 are reported separately",
+      "selected_root": "/data2/user/LocateMOT/data/kitti_tracking",
+      "source": "/data2/user/LocateMOT/outputs/unified/u1r2/formal_generic_expression_epoch1/result.json",
+      "split_protocol": "Refer-KITTI legal calibration/validation only; reserved videos are excluded",
+      "status": "AVAILABLE",
+      "top150_minimum_pass": true,
+      "top150_preferred_pass": true,
+      "top300_registered": false
+    },
+    "mot17": {
+      "availability_evidence": {
+        "missing_registered_images": 0,
+        "protocol_path": "/data2/user/LocateMOT/outputs/unified/u2/protocol/mot17_half.json",
+        "protocol_sha256": "460d52eb575a35c3e8bcfa3112d00c18fbd64c1eb4ea60bb149373e370530e0a",
+        "registered_gt_matches": true,
+        "source": "https://motchallenge.net/data/MOT17/",
+        "train_images": 2664,
+        "validation_images": 2652,
+        "version": "MOT17"
+      },
+      "candidate_roots": [
+        {
+          "exists": false,
+          "path": "/data1/LWR/vranlee/DATASETS/JDE/MOT17"
+        },
+        {
+          "exists": false,
+          "path": "/data2/user/datasets/MOT17"
+        },
+        {
+          "annotation_files": 21,
+          "directories": 149,
+          "exists": true,
+          "files": 33810,
+          "image_files": 33705,
+          "path": "/data2/user/LocateMOT/data/MOT17/MOT17",
+          "sample_files": [
+            "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-09-FRCNN/seqinfo.ini",
+            "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-09-FRCNN/gt/gt.txt",
+            "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-09-FRCNN/img1/000001.jpg",
+            "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-09-FRCNN/img1/000002.jpg",
+            "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-09-FRCNN/img1/000003.jpg"
+          ]
+        },
+        {
+          "annotation_files": 21,
+          "directories": 150,
+          "exists": true,
+          "files": 33810,
+          "image_files": 33705,
+          "path": "/data2/user/LocateMOT/data/MOT17",
+          "sample_files": [
+            "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-09-FRCNN/seqinfo.ini",
+            "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-09-FRCNN/gt/gt.txt",
+            "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-09-FRCNN/img1/000001.jpg",
+            "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-09-FRCNN/img1/000002.jpg",
+            "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-09-FRCNN/img1/000003.jpg"
+          ]
+        }
+      ],
+      "candidate_top_k": 150,
+      "dataset": "mot17",
+      "kind": "ordinary_mot",
+      "license": "MOTChallenge terms; local acquisition required",
+      "measurement": {
+        "candidate_top_k": 150,
+        "counts": {
+          "gt_total": 53890,
+          "hits_top150": 42424,
+          "hits_top300": 43449
+        },
+        "coverage_keys_sha256": "63e58e19743bc9787da48a02550dcd5294106f39b4bb253685eb8f2721ceb99e",
+        "dataset": "mot17",
+        "format": "locatemot-u2-portability-measurement-v1",
+        "foundation_sha256": "4efc35ce70be5cddf2c4d9a0f91bc4edef3e9ec5277a819211ba4ac42e0d7d26",
+        "images_evaluated": 2652,
+        "images_expected": 2652,
+        "official_test_labels_read": false,
+        "per_sequence": {
+          "MOT17-02-FRCNN": {
+            "counts": {
+              "gt_total": 9880,
+              "hits_top150": 6850,
+              "hits_top300": 7194
+            },
+            "images": 299
+          },
+          "MOT17-04-FRCNN": {
+            "counts": {
+              "gt_total": 24178,
+              "hits_top150": 18558,
+              "hits_top300": 18821
+            },
+            "images": 524
+          },
+          "MOT17-05-FRCNN": {
+            "counts": {
+              "gt_total": 3357,
+              "hits_top150": 2946,
+              "hits_top300": 3004
+            },
+            "images": 418
+          },
+          "MOT17-09-FRCNN": {
+            "counts": {
+              "gt_total": 2879,
+              "hits_top150": 2689,
+              "hits_top300": 2715
+            },
+            "images": 262
+          },
+          "MOT17-10-FRCNN": {
+            "counts": {
+              "gt_total": 5923,
+              "hits_top150": 4609,
+              "hits_top300": 4834
+            },
+            "images": 326
+          },
+          "MOT17-11-FRCNN": {
+            "counts": {
+              "gt_total": 4517,
+              "hits_top150": 3935,
+              "hits_top300": 4017
+            },
+            "images": 449
+          },
+          "MOT17-13-FRCNN": {
+            "counts": {
+              "gt_total": 3156,
+              "hits_top150": 2837,
+              "hits_top300": 2864
+            },
+            "images": 374
+          }
+        },
+        "protocol_path": "/data2/user/LocateMOT/outputs/unified/u2/protocol/mot17_half.json",
+        "protocol_sha256": "460d52eb575a35c3e8bcfa3112d00c18fbd64c1eb4ea60bb149373e370530e0a",
+        "status": "COMPLETE",
+        "worker_artifacts": "/data2/user/LocateMOT/outputs/unified/u2/perception/mot_half_frozen_foundation"
+      },
+      "metrics_status": "MEASURED",
+      "portability_training_allowed": true,
+      "selected_root": "/data2/user/LocateMOT/data/MOT17/MOT17",
+      "split_protocol": "ByteTrack train-half; frozen outputs/unified/u2/protocol/mot17_half.json; FRCNN copies only",
+      "status": "AVAILABLE",
+      "top150_recall_iou050": 0.7872332529226201,
+      "top300_recall_iou050": 0.8062534793097049
+    },
+    "mot20": {
+      "availability_evidence": {
+        "missing_registered_images": 0,
+        "protocol_path": "/data2/user/LocateMOT/outputs/unified/u2/protocol/mot20_half.json",
+        "protocol_sha256": "39e3349c01e24812f9ebea38962455cad7e469271049a8397c39a2c357387a63",
+        "registered_gt_matches": true,
+        "source": "https://motchallenge.net/data/MOT20/",
+        "train_images": 4468,
+        "validation_images": 4463,
+        "version": "MOT20"
+      },
+      "candidate_roots": [
+        {
+          "exists": false,
+          "path": "/data1/LWR/vranlee/M4FTMoveOut4Doing/ByteTrack-mbt/datasets/mix_mot20_ch/mot20_train"
+        },
+        {
+          "exists": false,
+          "path": "/data2/user/datasets/MOT20"
+        },
+        {
+          "annotation_files": 4,
+          "directories": 30,
+          "exists": true,
+          "files": 13430,
+          "image_files": 13410,
+          "path": "/data2/user/LocateMOT/data/MOT20/MOT20",
+          "sample_files": [
+            "/data2/user/LocateMOT/data/MOT20/MOT20/train/MOT20-03/seqinfo.ini",
+            "/data2/user/LocateMOT/data/MOT20/MOT20/train/MOT20-03/gt/gt.txt",
+            "/data2/user/LocateMOT/data/MOT20/MOT20/train/MOT20-03/img1/000001.jpg",
+            "/data2/user/LocateMOT/data/MOT20/MOT20/train/MOT20-03/img1/000002.jpg",
+            "/data2/user/LocateMOT/data/MOT20/MOT20/train/MOT20-03/img1/000003.jpg"
+          ]
+        },
+        {
+          "annotation_files": 4,
+          "directories": 31,
+          "exists": true,
+          "files": 13430,
+          "image_files": 13410,
+          "path": "/data2/user/LocateMOT/data/MOT20",
+          "sample_files": [
+            "/data2/user/LocateMOT/data/MOT20/MOT20/train/MOT20-03/seqinfo.ini",
+            "/data2/user/LocateMOT/data/MOT20/MOT20/train/MOT20-03/gt/gt.txt",
+            "/data2/user/LocateMOT/data/MOT20/MOT20/train/MOT20-03/img1/000001.jpg",
+            "/data2/user/LocateMOT/data/MOT20/MOT20/train/MOT20-03/img1/000002.jpg",
+            "/data2/user/LocateMOT/data/MOT20/MOT20/train/MOT20-03/img1/000003.jpg"
+          ]
+        }
+      ],
+      "candidate_top_k": 150,
+      "dataset": "mot20",
+      "kind": "ordinary_mot",
+      "license": "MOTChallenge terms; local acquisition required",
+      "measurement": {
+        "candidate_top_k": 150,
+        "counts": {
+          "gt_total": 615137,
+          "hits_top150": 449671,
+          "hits_top300": 544195
+        },
+        "coverage_keys_sha256": "92c9e6f0855ba5fb2b450a6522b7bebb01bc2da14292da72cbb1fc9acbba7fcd",
+        "dataset": "mot20",
+        "format": "locatemot-u2-portability-measurement-v1",
+        "foundation_sha256": "4efc35ce70be5cddf2c4d9a0f91bc4edef3e9ec5277a819211ba4ac42e0d7d26",
+        "images_evaluated": 4463,
+        "images_expected": 4463,
+        "official_test_labels_read": false,
+        "per_sequence": {
+          "MOT20-01": {
+            "counts": {
+              "gt_total": 10810,
+              "hits_top150": 9405,
+              "hits_top300": 9496
+            },
+            "images": 214
+          },
+          "MOT20-02": {
+            "counts": {
+              "gt_total": 91855,
+              "hits_top150": 78848,
+              "hits_top300": 81001
+            },
+            "images": 1390
+          },
+          "MOT20-03": {
+            "counts": {
+              "gt_total": 193410,
+              "hits_top150": 149179,
+              "hits_top300": 169596
+            },
+            "images": 1202
+          },
+          "MOT20-05": {
+            "counts": {
+              "gt_total": 319062,
+              "hits_top150": 212239,
+              "hits_top300": 284102
+            },
+            "images": 1657
+          }
+        },
+        "protocol_path": "/data2/user/LocateMOT/outputs/unified/u2/protocol/mot20_half.json",
+        "protocol_sha256": "39e3349c01e24812f9ebea38962455cad7e469271049a8397c39a2c357387a63",
+        "status": "COMPLETE",
+        "worker_artifacts": "/data2/user/LocateMOT/outputs/unified/u2/perception/mot_half_frozen_foundation"
+      },
+      "metrics_status": "MEASURED",
+      "portability_training_allowed": true,
+      "selected_root": "/data2/user/LocateMOT/data/MOT20/MOT20",
+      "split_protocol": "ByteTrack train-half; frozen outputs/unified/u2/protocol/mot20_half.json",
+      "status": "AVAILABLE",
+      "top150_recall_iou050": 0.7310095149535795,
+      "top300_recall_iou050": 0.8846728452361019
+    },
+    "tao": {
+      "availability_evidence": {
+        "modal_annotation_coverage": {
+          "train": {
+            "annotation_sha256": "7eb551fdeeeebc76b876ae255f91dc5662c7270a125955c5f1be2d9bd30921d0",
+            "images_expected": 18274,
+            "missing_images": 0
+          },
+          "validation": {
+            "annotation_sha256": "0414885ee2702c2d3176cf6184e7811a7bd1c1347a157fef57a91020976776ee",
+            "images_expected": 36375,
+            "missing_images": 0
+          }
+        },
+        "shard_manifest": "outputs/unified/u2/protocol/tao_shard_manifest.json",
+        "source": "/\u6211\u7684\u8d44\u6e90/TAO-Amodal"
+      },
+      "candidate_roots": [
+        {
+          "exists": false,
+          "path": "/data1/LWR/vranlee/SERVER_ONLY/avis/TAO/TAO-download/TAO-Amodal"
+        },
+        {
+          "exists": false,
+          "path": "/data2/user/datasets/TAO-Amodal"
+        },
+        {
+          "annotation_files": 2,
+          "directories": 2947,
+          "exists": true,
+          "files": 3082195,
+          "image_files": 3082191,
+          "path": "/data2/user/LocateMOT/data/TAO-Amodal",
+          "sample_files": [
+            "/data2/user/LocateMOT/data/TAO-Amodal/README.md",
+            "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/HACS/Croquet_v_Or8dXBSS_LM_scene_0_0-4556/frame0001.jpg",
+            "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/HACS/Croquet_v_Or8dXBSS_LM_scene_0_0-4556/frame0002.jpg",
+            "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/HACS/Croquet_v_Or8dXBSS_LM_scene_0_0-4556/frame0003.jpg",
+            "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/HACS/Croquet_v_Or8dXBSS_LM_scene_0_0-4556/frame0004.jpg"
+          ]
+        }
+      ],
+      "dataset": "tao",
+      "kind": "ovmot",
+      "license": "TAO research terms; local acquisition required",
+      "metrics_status": "NOT_MEASURED",
+      "portability_training_allowed": true,
+      "selected_root": "/data2/user/LocateMOT/data/TAO-Amodal",
+      "split_protocol": "TAO train for learning, TAO validation for evaluation",
+      "status": "AVAILABLE",
+      "top150_recall_iou050": null,
+      "top300_recall_iou050": null
+    }
+  },
+  "format": "locatemot-u2-perception-portability-v1",
+  "foundation_sha256": "4efc35ce70be5cddf2c4d9a0f91bc4edef3e9ec5277a819211ba4ac42e0d7d26",
+  "measurements_dir": "/data2/user/LocateMOT/outputs/unified/u2/perception/measurements",
+  "notes": [
+    "KITTI values use the same measured foundation and legal development protocol; no reserved official labels were opened.",
+    "Missing public datasets remain null rather than being replaced by synthetic or fabricated metrics.",
+    "Track training requires available registered data and measured portability gates; availability alone is insufficient."
+  ],
+  "official_test_labels_read": false,
+  "ordinary_below_hard_stop": [
+    "mot17",
+    "mot20"
+  ],
+  "ordinary_below_minimum": [
+    "mot17",
+    "mot20"
+  ],
+  "ordinary_hard_stop": 0.8,
+  "ordinary_missing_local_data": [
+    "bdd100k"
+  ],
+  "ordinary_target_minimum": 0.85,
+  "ordinary_target_preferred": 0.9,
+  "ordinary_unmeasured": [
+    "bdd100k",
+    "dancetrack"
+  ],
+  "refer_kitti_official_eval_labels_read": false,
+  "stage": "U2-P",
+  "status": "BLOCKED_MISSING_LOCAL_DATA",
+  "tao_gate_pass": false,
+  "tao_insufficient_below": 0.5,
+  "tao_missing_local_data": false,
+  "tao_stream_gates": {
+    "ctao": {
+      "base_recall_iou050": null,
+      "novel_recall_iou050": null,
+      "novel_required": false,
+      "pass": false,
+      "unmeasured": true
+    },
+    "tao": {
+      "base_recall_iou050": null,
+      "novel_recall_iou050": null,
+      "novel_required": true,
+      "pass": false,
+      "unmeasured": true
+    }
+  },
+  "tao_target_base": 0.7,
+  "tao_target_novel": 0.6,
+  "tao_unmeasured": true,
+  "top_k_crowded_override": 300,
+  "top_k_default": 150,
+  "training_eligible": false
+}

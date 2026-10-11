@@ -1,0 +1,17 @@
+{
+  "state": "WAITING_PREREQUISITES",
+  "reasons": [
+    "incomplete required original source-image coverage",
+    "full F0 portability audits are still incomplete",
+    "complete registered 20,000-row replay is not ready"
+  ],
+  "epoch": 1,
+  "starting_foundation_sha256": "4efc35ce70be5cddf2c4d9a0f91bc4edef3e9ec5277a819211ba4ac42e0d7d26",
+  "recipe_sha256": "0e81dc153ee8e8c6fe28a010f88211e456f91cec9b30b8258d7f5c668e78a720",
+  "config_sha256": "7e64b55a5bc22ce651b1d71868f0352f94102f4e1af075ae02f67c55857458a7",
+  "world_size": 8,
+  "global_batch": 16,
+  "steps_per_epoch": 1250,
+  "maximum_total_optimizer_steps": 2500,
+  "optimization_launched": false
+}

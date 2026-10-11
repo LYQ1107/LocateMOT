@@ -84,7 +84,7 @@ def worker(args: argparse.Namespace) -> int:
     if args.smoke:
         records = [next(row for row in records if row["dataset"] == dataset) for dataset in scopes]
     prefix = args.out / f"worker_{args.worker_index}"
-    metadata = {"foundation_sha256": FOUNDATION_SHA, "protocols": {name: scope["sha256"] for name, scope in scopes.items()},
+    metadata = {"foundation_sha256": args.expected_foundation_sha256, "protocols": {name: scope["sha256"] for name, scope in scopes.items()},
                 "worker_index": args.worker_index, "worker_count": args.worker_count,
                 "smoke": args.smoke, "expected_keys": [row["key"] for row in records]}
     meta_path, rows_path = prefix.with_suffix(".metadata.json"), prefix.with_suffix(".jsonl")
@@ -95,8 +95,8 @@ def worker(args: argparse.Namespace) -> int:
     if [row["key"] for row in previous] != metadata["expected_keys"][:len(previous)]:
         raise RuntimeError("Resume rows are not an exact completed frame prefix")
     runtime = load_grounding_runtime(checkpoint=args.checkpoint, device=f"cuda:{args.gpu}", max_per_img=900)
-    if runtime.checkpoint_sha256 != FOUNDATION_SHA:
-        raise RuntimeError("The actual foundation differs from the immutable U1R2 checkpoint")
+    if runtime.checkpoint_sha256 != args.expected_foundation_sha256:
+        raise RuntimeError("The actual foundation differs from the explicitly registered checkpoint")
     print(json.dumps({"worker": args.worker_index, "state": "LOADED", "runtime": runtime_metadata(runtime)}), flush=True)
     gt, by_group, unmapped_categories = {}, {}, {}
     for dataset, scope in scopes.items():
@@ -163,7 +163,7 @@ def aggregate(args: argparse.Namespace) -> dict:
         result = json.loads(prefix.with_suffix(".result.json").read_text())
         expected_keys = [row["key"] for row in records[index::len(args.gpus)]]
         if (result["state"] != "COMPLETE" or result["metadata"]["smoke"]
-                or result["metadata"]["foundation_sha256"] != FOUNDATION_SHA
+                or result["metadata"]["foundation_sha256"] != args.expected_foundation_sha256
                 or result["metadata"]["protocols"] != {name: scope["sha256"] for name, scope in scopes.items()}
                 or result["metadata"]["expected_keys"] != expected_keys):
             raise RuntimeError(f"Worker {index} has incomplete or different measurement scope")
@@ -182,7 +182,7 @@ def aggregate(args: argparse.Namespace) -> dict:
         if counts["unmapped_gt_total"] != sum(scope["protocol"]["unmapped_lvis_v1_gt"].values()):
             raise RuntimeError("Unmapped categories were not completely retained")
         payload = {"format": "locatemot-u2-portability-measurement-v1", "status": "COMPLETE", "dataset": dataset,
-                   "foundation_sha256": FOUNDATION_SHA, "protocol_path": scope["path"], "protocol_sha256": scope["sha256"],
+                   "foundation_sha256": args.expected_foundation_sha256, "protocol_path": scope["path"], "protocol_sha256": scope["sha256"],
                    "images_expected": scope["protocol"]["measurement_images"], "images_evaluated": len(selected),
                    "coverage_keys_sha256": hashlib.sha256("\n".join(sorted(row["key"] for row in selected)).encode()).hexdigest(),
                    "counts": counts, "proposals_per_frame": {
@@ -200,6 +200,7 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--protocol", type=Path, nargs="+", default=[ROOT / f"outputs/unified/u2/protocol/{name}_portability.json" for name in ("tao", "ctao")])
     parser.add_argument("--checkpoint", type=Path, default=CHECKPOINT)
+    parser.add_argument("--expected-foundation-sha256", default=FOUNDATION_SHA)
     parser.add_argument("--out", type=Path, default=ROOT / "outputs/unified/u2/perception/tao_frozen_foundation")
     parser.add_argument("--measurements-dir", type=Path, default=ROOT / "outputs/unified/u2/perception/measurements")
     parser.add_argument("--gpus", type=int, nargs="+", default=[1, 2, 3, 4, 5, 6, 7])
@@ -210,6 +211,10 @@ def main() -> int:
     parser.add_argument("--smoke", action="store_true")
     parser.add_argument("--aggregate-only", action="store_true")
     args = parser.parse_args()
+    if args.expected_foundation_sha256 != FOUNDATION_SHA:
+        if (args.out.resolve() == parser.get_default("out").resolve()
+                or args.measurements_dir.resolve() == parser.get_default("measurements_dir").resolve()):
+            parser.error("Adapted foundations require separate --out and --measurements-dir; preserve F0 measurements")
     args.out.mkdir(parents=True, exist_ok=True)
     if args.worker_index is not None:
         return worker(args)
@@ -224,7 +229,8 @@ def main() -> int:
         for index, gpu in enumerate(args.gpus):
             log = (args.out / f"worker_{index}.log").open("a")
             command = [sys.executable, "-u", str(Path(__file__).resolve()), "--protocol", *map(str, args.protocol),
-                       "--checkpoint", str(args.checkpoint), "--out", str(args.out), "--extraction-pid", str(args.extraction_pid),
+                       "--checkpoint", str(args.checkpoint), "--expected-foundation-sha256", args.expected_foundation_sha256,
+                       "--out", str(args.out), "--extraction-pid", str(args.extraction_pid),
                        "--worker-index", str(index), "--worker-count", str(len(args.gpus)), "--gpu", str(gpu)]
             processes.append((subprocess.Popen(command, env=env, stdout=log, stderr=subprocess.STDOUT), log))
         print(json.dumps({"state": "RUNNING", "gpus": args.gpus, "worker_pids": [p.pid for p, _ in processes]}), flush=True)

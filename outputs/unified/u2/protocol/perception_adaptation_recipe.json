@@ -1,0 +1,54 @@
+{
+  "format": "locatemot-u2-bounded-perception-adaptation-recipe-v1",
+  "seed": 20261012,
+  "rows_per_epoch": 20000,
+  "allocations": {
+    "u1_generic": 2000,
+    "u1_v1": 3000,
+    "u1_v2": 5000,
+    "bdd100k": 2000,
+    "dancetrack": 2000,
+    "mot17": 2000,
+    "mot20": 2000,
+    "tao_base": 2000
+  },
+  "maximum_epochs": 2,
+  "maximum_optimizer_steps_8gpu_batch16": 2500,
+  "starting_checkpoint": "outputs/unified/u1r2/expression_adaptation_epoch1/epoch_1.pth",
+  "starting_checkpoint_sha256": "4efc35ce70be5cddf2c4d9a0f91bc4edef3e9ec5277a819211ba4ac42e0d7d26",
+  "precision": "fp32",
+  "global_batch": 16,
+  "gpus": 8,
+  "batch_per_gpu": 2,
+  "decoder_multimodal_lr": 1e-05,
+  "swin_stage_2_3_lr": 1e-06,
+  "bert": "requires_grad=False; eval mode; weights retained",
+  "swin_stage_0_1": "frozen",
+  "weight_decay": 0.0001,
+  "gradient_clip_norm": 0.1,
+  "selection": "check epoch1 complete portability and U1 retention; evaluate epoch2 only within the same two-epoch cap if still needed",
+  "train_scope": "frozen U1 legal-fit replay; ordinary registered train frames; TAO original train annotations with mapped LVIS-v1 f/c class supervision only",
+  "detection_encoding": "existing native ODVG grounding regions with explicit class phrase spans; empty selected frames kept with an absent registered base-class caption",
+  "sampling": "fixed deterministic stratified video/frame pools; cycle smaller U1 replay pools; no failed sample skipping",
+  "preconditions": [
+    "all required source-image coverage AVAILABLE",
+    "complete F0 audits for all ordinary/TAO/C-TAO streams",
+    "at least one U2-P portability gate fails"
+  ],
+  "u1_retention": {
+    "generic_v1_min": 0.966,
+    "generic_v2_min": 0.939,
+    "generic_hard_min": 0.9,
+    "expression_v1_top100_min": 0.97,
+    "expression_v2_top100_min": 0.93,
+    "expression_hard_min": 0.75
+  },
+  "mot20_crowded_candidate_rule": {
+    "default_k": 150,
+    "conditional_k": 300,
+    "top300_acceptance_min": 0.9,
+    "decision": "preregistered audit only; record before any track training; no later top-K sweep"
+  },
+  "official_test_labels_read": false,
+  "training_started": false
+}

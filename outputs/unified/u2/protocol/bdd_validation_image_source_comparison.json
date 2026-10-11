@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "validation_images": 39973,
+  "every_image_size_and_crc_matches_original_archive": true,
+  "original_source": "http://dl.yf.io/bdd100k/mot20/images20-track-val-1.zip",
+  "original_archive_md5": "743ab4c7b5ff8eeebd60bbfd15b20bd6",
+  "original_archive_sha256": "4d678810a14095ab4064013d81e3bc2bda45f730bfc09c3e66d3a5ef1c076778",
+  "mirror_archive_sha256": "6f5b9d47837925a64f1280af588b05800392a2ab163e7c6110195d70c13781a5"
+}

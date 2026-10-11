@@ -5,7 +5,7 @@ Recovery snapshot: 2026-10-12. Authoritative inventory:
 
 | Dataset | Status | Registered scope / acquisition |
 |---|---|---|
-| bdd100k | MISSING_LOCAL_DATA | Original MOT 2020 image downloads running; pinned mirror containing raw train/val tracking annotations identified, downloading and awaiting validation |
+| bdd100k | INCOMPLETE_LOCAL_DATA | All 1,400/200 raw tracking annotation videos and 39,973 validation images recovered and validated; original train-image extraction remains incomplete |
 | dancetrack | AVAILABLE | All three official archives downloaded and CRC-extracted; existing 32/8/25 videos and 33,772/8,024/25,508 frames match exactly |
 | mot17 | AVAILABLE | 2,664 train / 2,652 dev frames; FRCNN copies only; exact half protocol frozen |
 | mot20 | AVAILABLE | 4,468 train / 4,463 dev frames; exact half protocol frozen |
@@ -40,13 +40,18 @@ original C-TAO training-audit images. The interpolated C-TAO images remain in th
 full DanceTrack validation runs on GPU 7. Separate real-image smoke runs passed with
 the immutable U1R2 foundation. Full-run recall remains unreported until exact coverage completes.
 
-The candidate BDD annotation mirror is
+The validated BDD annotation mirror is
 [jaffe03195/bdd100k_sot](https://huggingface.co/datasets/jaffe03195/bdd100k_sot/tree/694197099692fe1254e93215e73e68ece8b1f41f),
 archive `bdd100k.zip`, SHA `6f5b9d47837925a64f1280af588b05800392a2ab163e7c6110195d70c13781a5`.
 Its ZIP directory contains raw `labels/box_track_20/train` (1,400 JSON videos),
 raw `labels/box_track_20/val` (200 JSON videos), and validation images. Only these
 original directories are selected. Converted annotations, filtered labels and SOT labels
-are excluded from acquisition output. Archive hash, selected-member CRC and actual
-raw label/image coverage must pass before this mirror establishes availability.
-Original category aliases, ignored/crowd objects and inclusive Box2D coordinates follow
-the cached BDD toolkit and Scalabel sources; the audit will report every exclusion count.
+are excluded from acquisition output. Archive SHA and selected-member CRC passed;
+every validation image's size and CRC match the original release archive (MD5
+`743ab4c7b5ff8eeebd60bbfd15b20bd6`). Original category aliases, ignored/crowd objects
+and inclusive Box2D coordinates match the cached BDD toolkit and Scalabel functions
+on every validation object. There are 442,814 positive GT units, 18,625 crowd objects
+and 4,073 objects from official ignored categories. All eight positive categories are present.
+The registered training/validation scope contains 278,079/39,973 frames. Complete
+training image coverage is still required for overall data availability. The BDD full
+validation audit is queued after the DanceTrack GPU worker and includes a real-image smoke.

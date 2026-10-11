@@ -69,7 +69,7 @@
     ]
   },
   "data_availability": {
-    "bdd100k": "MISSING_LOCAL_DATA",
+    "bdd100k": "INCOMPLETE_LOCAL_DATA",
     "dancetrack": "AVAILABLE",
     "mot17": "AVAILABLE",
     "mot20": "AVAILABLE",
@@ -78,10 +78,39 @@
     "ctao": "AVAILABLE"
   },
   "bdd_annotation_recovery": {
-    "status": "DOWNLOAD_AND_EXTRACTION_ACTIVE",
+    "status": "RAW_TRAIN_VAL_ANNOTATIONS_AND_VALIDATION_IMAGES_COMPLETE",
     "manifest": "outputs/unified/u2/protocol/bdd_labels_acquisition_manifest.json",
     "raw_train_annotation_videos_expected": 1400,
     "raw_validation_annotation_videos_expected": 200,
-    "raw_annotations_validated": false
+    "raw_annotations_validated": true,
+    "validation_images": 39973,
+    "positive_validation_gt_boxes": 442814,
+    "remaining": "Complete original train-image archive extraction and full perception audit"
+  },
+  "bdd_perception_audit": {
+    "status": "QUEUED_AFTER_DANCE_GPU_WORKER",
+    "gpus": [
+      7
+    ],
+    "validation_images_expected": 39973,
+    "protocol": "outputs/unified/u2/protocol/bdd100k.json",
+    "protocol_sha256": "8106e49c4aafe8420f9003177ab13b17b850ae11687d2b770cdf6c41df44c933",
+    "raw_gt_reference_comparison": "PASS_ALL_VALIDATION_OBJECTS"
+  },
+  "perception_adaptation": {
+    "state": "PREPARED_WAITING_FULL_DATA_AND_F0_AUDITS",
+    "recipe": "outputs/unified/u2/protocol/perception_adaptation_recipe.json",
+    "model_contract_cpu": "outputs/unified/u2/perception_adaptation/model_contract_cpu.json",
+    "native_replay_smoke": "outputs/unified/u2/perception_adaptation/native_replay_smoke.json",
+    "training_preflight": "outputs/unified/u2/perception_adaptation/training_preflight.json",
+    "replay_preparation_session": 81929,
+    "maximum_epochs": 2,
+    "seed": 20261012,
+    "rows_per_epoch": 20000,
+    "global_batch": 16,
+    "steps_per_epoch": 1250,
+    "maximum_optimizer_steps": 2500,
+    "optimization_launched": false,
+    "track_training_launched": false
   }
 }

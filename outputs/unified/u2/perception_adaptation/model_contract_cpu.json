@@ -1,0 +1,33 @@
+{
+  "state": "PASS_CPU_CHECKPOINT_AND_FREEZE",
+  "runtime": {
+    "config": "tools/unified/configs/u2_perception_adaptation_fp32.py",
+    "checkpoint": "outputs/unified/u1r2/expression_adaptation_epoch1/epoch_1.pth",
+    "checkpoint_sha256": "4efc35ce70be5cddf2c4d9a0f91bc4edef3e9ec5277a819211ba4ac42e0d7d26",
+    "device": "cpu",
+    "missing_keys": [],
+    "unexpected_keys": [],
+    "preprocessing_contract": {
+      "loader": "LoadImageFromFile",
+      "resize": {
+        "type": "FixScaleResize",
+        "scale": [
+          800,
+          1333
+        ],
+        "keep_ratio": true
+      },
+      "pack": "PackDetInputs",
+      "data_preprocessor": "DetDataPreprocessor",
+      "bgr_to_rgb": true,
+      "box_coordinate_contract": "model postprocess restores boxes to ori_shape"
+    }
+  },
+  "bert_eval_and_frozen": true,
+  "swin_stage_0_1_frozen": true,
+  "swin_stage_2_3_trainable": true,
+  "trainable_parameters": 121450876,
+  "missing_keys": [],
+  "unexpected_keys": [],
+  "optimization_launched": false
+}

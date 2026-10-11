@@ -1,0 +1,127 @@
+{
+  "state": "PASS_NATIVE_ODVG_PACKING",
+  "rows": 9,
+  "checks": [
+    {
+      "stream": "u1_generic",
+      "boxes": 5,
+      "input_shape": [
+        3,
+        402,
+        1332
+      ],
+      "positive_labels": [
+        0,
+        1
+      ],
+      "caption": "car . pedestrian ."
+    },
+    {
+      "stream": "u1_v1",
+      "boxes": 2,
+      "input_shape": [
+        3,
+        402,
+        1333
+      ],
+      "positive_labels": [
+        0
+      ],
+      "caption": "turning vehicles. "
+    },
+    {
+      "stream": "u1_v2",
+      "boxes": 2,
+      "input_shape": [
+        3,
+        402,
+        1333
+      ],
+      "positive_labels": [
+        0
+      ],
+      "caption": "cars that are parked. "
+    },
+    {
+      "stream": "bdd100k",
+      "boxes": 2,
+      "input_shape": [
+        3,
+        749,
+        1333
+      ],
+      "positive_labels": [
+        0
+      ],
+      "caption": "car ."
+    },
+    {
+      "stream": "dancetrack",
+      "boxes": 7,
+      "input_shape": [
+        3,
+        749,
+        1333
+      ],
+      "positive_labels": [
+        0
+      ],
+      "caption": "person ."
+    },
+    {
+      "stream": "mot17",
+      "boxes": 22,
+      "input_shape": [
+        3,
+        749,
+        1333
+      ],
+      "positive_labels": [
+        0
+      ],
+      "caption": "person ."
+    },
+    {
+      "stream": "mot20",
+      "boxes": 36,
+      "input_shape": [
+        3,
+        749,
+        1333
+      ],
+      "positive_labels": [
+        0
+      ],
+      "caption": "person ."
+    },
+    {
+      "stream": "tao_base",
+      "boxes": 4,
+      "input_shape": [
+        3,
+        749,
+        1333
+      ],
+      "positive_labels": [
+        0,
+        1,
+        2
+      ],
+      "caption": "dispenser . faucet . person ."
+    },
+    {
+      "stream": "empty_positive",
+      "boxes": 0,
+      "input_shape": [
+        3,
+        402,
+        1332
+      ],
+      "positive_labels": [],
+      "caption": "car ."
+    }
+  ],
+  "empty_row_retained": true,
+  "optimization_launched": false,
+  "scope": "one real training image per stream plus one empty-positive image; not a portability measurement"
+}

@@ -14,12 +14,12 @@ U1_RESULT = ROOT / "outputs/unified/u1r2/formal_generic_expression_epoch1/result
 FOUNDATION_SHA = "4efc35ce70be5cddf2c4d9a0f91bc4edef3e9ec5277a819211ba4ac42e0d7d26"
 
 
-def read_measurement(directory: Path, dataset: str) -> dict | None:
+def read_measurement(directory: Path, dataset: str, expected_foundation_sha256: str = FOUNDATION_SHA) -> dict | None:
     path = directory / f"{dataset}.json"
     if not path.is_file():
         return None
     result = json.loads(path.read_text(encoding="utf-8"))
-    if result["dataset"] != dataset or result["foundation_sha256"] != FOUNDATION_SHA:
+    if result["dataset"] != dataset or result["foundation_sha256"] != expected_foundation_sha256:
         raise ValueError(f"Measurement provenance mismatch: {path}")
     if (result.get("status") != "COMPLETE" or result["images_evaluated"] <= 0
             or result["images_evaluated"] != result.get("images_expected")):
@@ -57,13 +57,24 @@ def main() -> int:
     parser.add_argument("--manifest", type=Path, default=MANIFEST)
     parser.add_argument("--measurements-dir", type=Path, default=ROOT / "outputs/unified/u2/perception/measurements")
     parser.add_argument("--out", type=Path, default=ROOT / "outputs/unified/u2/perception/portability.json")
+    parser.add_argument("--expected-foundation-sha256", default=FOUNDATION_SHA)
+    parser.add_argument("--u1-generic-result", type=Path, default=U1_RESULT)
+    parser.add_argument("--crowded-registration", type=Path)
     args = parser.parse_args()
+    if args.expected_foundation_sha256 != FOUNDATION_SHA:
+        if (args.out.resolve() == parser.get_default("out").resolve()
+                or args.measurements_dir.resolve() == parser.get_default("measurements_dir").resolve()
+                or args.u1_generic_result.resolve() == U1_RESULT.resolve()):
+            parser.error("Adapted foundations require their own measurements, U1 generic result, and output")
     manifest = json.loads(args.manifest.read_text(encoding="utf-8"))
-    u1 = json.loads(U1_RESULT.read_text(encoding="utf-8"))
+    u1 = json.loads(args.u1_generic_result.read_text(encoding="utf-8"))
+    if (u1["status"] != "FORMAL_COMPLETE"
+            or u1["runtime"]["checkpoint_sha256"] != args.expected_foundation_sha256):
+        raise ValueError("KITTI development metrics do not belong to the measured foundation")
     metrics = u1["metrics"]
 
     kitti = {
-        "source": "U1R2 formal_generic_expression_epoch1/result.json",
+        "source": str(args.u1_generic_result),
         "protocol": "legal Refer-KITTI calibration/validation scope; V1 and V2 are reported separately",
         "domains": {
             "refer_kitti_v1": {
@@ -79,7 +90,7 @@ def main() -> int:
                                    for domain in ("refer_kitti_v1", "refer_kitti_v2")),
         "top150_preferred_pass": all(metrics[domain]["150"]["0.5"]["recall"] >= .90
                                      for domain in ("refer_kitti_v1", "refer_kitti_v2")),
-        "metrics_status": "MEASURED_U1_REFERENCE",
+        "metrics_status": "MEASURED_U1_REFERENCE" if args.expected_foundation_sha256 == FOUNDATION_SHA else "MEASURED_ADAPTED_FOUNDATION",
         "top300_registered": False,
     }
     datasets: dict[str, dict] = {}
@@ -94,7 +105,7 @@ def main() -> int:
                 "top300_recall_iou050": None,
                 "metrics_status": "NOT_MEASURED" if item["status"] == "AVAILABLE" else "NOT_MEASURED_MISSING_LOCAL_DATA",
             }
-            measured = read_measurement(args.measurements_dir, name)
+            measured = read_measurement(args.measurements_dir, name, args.expected_foundation_sha256)
             if measured is not None:
                 datasets[name].update(metrics_status="MEASURED", measurement=measured)
                 if "candidate_top_k" in measured:
@@ -106,7 +117,29 @@ def main() -> int:
                 else:
                     datasets[name]["base_recall_iou050"] = recall(counts["base_hits_top300"], counts["base_gt_total"])
                     datasets[name]["novel_recall_iou050"] = recall(counts["novel_hits_top300"], counts["novel_gt_total"])
+    if args.crowded_registration:
+        registration = json.loads(args.crowded_registration.read_text())
+        measurement_path = args.measurements_dir / "mot20.json"
+        if (registration["foundation_sha256"] != args.expected_foundation_sha256
+                or registration["measurement_sha256"] != hashlib.sha256(measurement_path.read_bytes()).hexdigest()
+                or registration["selected_top_k"] != 300
+                or registration["minimum_recall"] != .90
+                or not registration["before_track_training"]
+                or datasets["mot20"]["top300_recall_iou050"] < .90):
+            raise ValueError("Crowded Top300 registration does not satisfy the preregistered 0.90 gate")
+        recipe = Path(registration["recipe_path"])
+        if hashlib.sha256(recipe.read_bytes()).hexdigest() != registration["recipe_sha256"]:
+            raise ValueError("Crowded candidate recipe differs from its registration")
+        rule = json.loads(recipe.read_text())["mot20_crowded_candidate_rule"]
+        if rule["conditional_k"] != 300 or rule["top300_acceptance_min"] != .90:
+            raise ValueError("Crowded candidate decision was not preregistered at 0.90")
+        datasets["mot20"]["candidate_top_k"] = 300
+        datasets["mot20"]["crowded_registration"] = str(args.crowded_registration)
     ordinary = [datasets[name] for name in ("bdd100k", "dancetrack", "mot17", "mot20", "kitti_legal_development")]
+    for item in ordinary:
+        if item.get("candidate_top_k", 150) != 150:
+            if item["dataset"] != "mot20" or not args.crowded_registration or item["candidate_top_k"] != 300:
+                raise ValueError("Ordinary candidate overrides require the registered MOT20 Top300 audit")
     missing_ordinary = [item["dataset"] for item in ordinary if item["status"] != "AVAILABLE"]
     tao_missing = any(datasets[name]["status"] != "AVAILABLE" for name in ("tao", "ctao"))
     unmeasured_ordinary = [item["dataset"] for item in ordinary
@@ -115,7 +148,7 @@ def main() -> int:
     failed_ordinary = [item["dataset"] for item in ordinary
                        if item["dataset"] != "kitti_legal_development"
                        and item.get(f"top{item.get('candidate_top_k', 150)}_recall_iou050") is not None
-                       and item[f"top{item.get('candidate_top_k', 150)}_recall_iou050"] < .85]
+                       and item[f"top{item.get('candidate_top_k', 150)}_recall_iou050"] < (.90 if item.get('candidate_top_k', 150) == 300 else .85)]
     if not kitti["top150_minimum_pass"]:
         failed_ordinary.append("kitti_legal_development")
     hard_stop_ordinary = [item["dataset"] for item in ordinary
@@ -146,8 +179,11 @@ def main() -> int:
     payload = {
         "format": "locatemot-u2-perception-portability-v1",
         "stage": "U2-P",
+        "foundation_sha256": args.expected_foundation_sha256,
+        "measurements_dir": str(args.measurements_dir.resolve()),
         "top_k_default": 150,
         "top_k_crowded_override": 300,
+        "crowded_override_minimum": .90,
         "ordinary_target_minimum": 0.85,
         "ordinary_target_preferred": 0.90,
         "ordinary_hard_stop": 0.80,
@@ -169,7 +205,7 @@ def main() -> int:
         "official_test_labels_read": False,
         "refer_kitti_official_eval_labels_read": False,
         "notes": [
-            "KITTI values are existing U1R2 legal development measurements; no reserved official labels were opened.",
+            "KITTI values use the same measured foundation and legal development protocol; no reserved official labels were opened.",
             "Missing public datasets remain null rather than being replaced by synthetic or fabricated metrics.",
             "Track training requires available registered data and measured portability gates; availability alone is insufficient.",
         ],
