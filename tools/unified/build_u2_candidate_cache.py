@@ -133,6 +133,7 @@ def worker(args: argparse.Namespace) -> int:
     import torch
     from locatemot.unified.runtime.grounding_inference import load_grounding_runtime
     from locatemot.unified.runtime.u2_grounding_candidates import run_u2_candidates
+    from locatemot.unified.runtime.u2_frozen_text_cache import frozen_text_cache
 
     torch.set_num_threads(2)
     spec_path = args.spec
@@ -148,47 +149,49 @@ def worker(args: argparse.Namespace) -> int:
     categories = json.loads(Path(spec["vocabulary_path"]).read_text())["categories"]
     vocabulary = [category["name"] for category in categories]
     manifests = []
-    for group in groups:
-        directory = group_directory(group, spec)
-        directory.mkdir(parents=True, exist_ok=True)
-        k = spec["candidate_caps"].get(group["dataset"], 300)
-        caption = vocabulary if group["dataset"] == "ovmot" else group["vocabulary"]
-        units = []
-        for start in range(0, len(group["frames"]), SHARD_FRAMES):
-            frames = group["frames"][start:start + SHARD_FRAMES]
-            path = directory / f"frames_{start:06d}.pt"
-            expected = {"format": "locatemot-u2-label-free-video-shard-v1", "group_key": group["key"],
-                        "foundation_sha256": spec["foundation_sha256"], "cache_spec_sha256": digest(spec_path),
-                        "frames": frames, "max_candidates": k}
-            if path.exists():
-                loaded = torch.load(path, map_location="cpu", weights_only=False)
-                if loaded["header"] != expected or [item["frame"] for item in loaded["frames"]] != frames:
-                    raise ValueError(f"Existing cache unit has different weights or scope: {path}")
-                del loaded
-            else:
-                payload = []
-                for frame in frames:
-                    candidates = run_u2_candidates(runtime, Path(group["image_dir"]) / frame, caption, max_candidates=k)
-                    # Semantic/decoder fields share the same serialized storage.
-                    decoder = candidates["decoder_query"].to(device="cpu", dtype=torch.bfloat16)
-                    cpu = {key: value.cpu() for key, value in candidates.items() if isinstance(value, torch.Tensor)
-                           and key not in ("id_visual", "semantic_visual", "decoder_query")}
-                    cpu.update(id_visual=candidates["id_visual"].to(device="cpu", dtype=torch.bfloat16),
-                               semantic_visual=decoder, decoder_query=decoder)
-                    metadata = dict(candidates["source_metadata"])
-                    metadata.pop("vocabulary")
-                    payload.append({"dataset": group["dataset"], "video": group["video"], "frame": frame,
-                                    "candidates": cpu, "source_metadata": metadata})
-                temporary = path.with_suffix(".tmp")
-                torch.save({"header": expected, "frames": payload}, temporary)
-                temporary.replace(path)
-            units.append({"path": str(path), "sha256": digest(path), "frames": frames})
-        manifest = {"group": group, "foundation_sha256": spec["foundation_sha256"], "units": units}
-        write_json(directory / "manifest.json", manifest)
-        manifests.append(manifest)
-        print(json.dumps({"worker": args.worker_index, "video_complete": group["key"], "frames": len(group["frames"])}), flush=True)
+    with frozen_text_cache(runtime) as text_stats:
+        for group in groups:
+            directory = group_directory(group, spec)
+            directory.mkdir(parents=True, exist_ok=True)
+            k = spec["candidate_caps"].get(group["dataset"], 300)
+            caption = vocabulary if group["dataset"] == "ovmot" else group["vocabulary"]
+            units = []
+            for start in range(0, len(group["frames"]), SHARD_FRAMES):
+                frames = group["frames"][start:start + SHARD_FRAMES]
+                path = directory / f"frames_{start:06d}.pt"
+                expected = {"format": "locatemot-u2-label-free-video-shard-v1", "group_key": group["key"],
+                            "foundation_sha256": spec["foundation_sha256"], "cache_spec_sha256": digest(spec_path),
+                            "frames": frames, "max_candidates": k}
+                if path.exists():
+                    loaded = torch.load(path, map_location="cpu", weights_only=False)
+                    if loaded["header"] != expected or [item["frame"] for item in loaded["frames"]] != frames:
+                        raise ValueError(f"Existing cache unit has different weights or scope: {path}")
+                    del loaded
+                else:
+                    payload = []
+                    for frame in frames:
+                        candidates = run_u2_candidates(runtime, Path(group["image_dir"]) / frame, caption, max_candidates=k)
+                        # Semantic/decoder fields share the same serialized storage.
+                        decoder = candidates["decoder_query"].to(device="cpu", dtype=torch.bfloat16)
+                        cpu = {key: value.cpu() for key, value in candidates.items() if isinstance(value, torch.Tensor)
+                               and key not in ("id_visual", "semantic_visual", "decoder_query")}
+                        cpu.update(id_visual=candidates["id_visual"].to(device="cpu", dtype=torch.bfloat16),
+                                   semantic_visual=decoder, decoder_query=decoder)
+                        metadata = dict(candidates["source_metadata"])
+                        metadata.pop("vocabulary")
+                        payload.append({"dataset": group["dataset"], "video": group["video"], "frame": frame,
+                                        "candidates": cpu, "source_metadata": metadata})
+                    temporary = path.with_suffix(".tmp")
+                    torch.save({"header": expected, "frames": payload}, temporary)
+                    temporary.replace(path)
+                units.append({"path": str(path), "sha256": digest(path), "frames": frames})
+            manifest = {"group": group, "foundation_sha256": spec["foundation_sha256"], "units": units}
+            write_json(directory / "manifest.json", manifest)
+            manifests.append(manifest)
+            print(json.dumps({"worker": args.worker_index, "video_complete": group["key"], "frames": len(group["frames"])}), flush=True)
     write_json(spec_path.parent / f"worker_{args.worker_index}.json", {"status": "COMPLETE", "worker_index": args.worker_index,
-               "worker_count": spec["worker_count"], "cache_spec_sha256": digest(spec_path), "groups": manifests})
+               "worker_count": spec["worker_count"], "cache_spec_sha256": digest(spec_path), "groups": manifests,
+               "frozen_text_cache": text_stats})
     return 0
 
 
@@ -227,6 +230,9 @@ def main() -> int:
             "checkpoint": str(args.checkpoint.resolve()), "selection": str(args.selection.resolve()),
             "selection_sha256": digest(args.selection), "phase": args.phase,
             "worker_count": len(args.gpus), "candidate_caps": caps,
+            "frozen_text_cache": {"mode": "worker-local exact native BERT and token-prompt reuse; cloned return values",
+                                  "implementation_sha256": digest(ROOT / "locatemot/unified/runtime/u2_frozen_text_cache.py"),
+                                  "reference_validation_sha256": digest(ROOT / "outputs/unified/u2/eval/frozen_text_cache_contract.json")},
             **{key: summary[key] for key in ("inventory_sha256", "ovmot_storage_roots", "vocabulary_path", "vocabulary_sha256",
                                            "feature_storage_dtype", "box_score_storage_dtype", "shard_frames")}}
     directory = DIRECTORY / sha / args.phase
@@ -256,11 +262,13 @@ def main() -> int:
     groups = [json.loads(line) for line in PLAN.read_text().splitlines()]
     expected_groups = [group for group in groups if (group["dataset"] == "ovmot") == (args.phase == "ovmot")]
     completed = []
+    text_reports = []
     for index in range(len(args.gpus)):
         report = json.loads((directory / f"worker_{index}.json").read_text())
         if report["status"] != "COMPLETE" or report["cache_spec_sha256"] != digest(spec_path):
             raise ValueError("Cache worker did not complete the current registered scope")
         completed.extend(report["groups"])
+        text_reports.append({"worker_index": index, **report["frozen_text_cache"]})
     if sorted(group["group"]["key"] for group in completed) != sorted(group["key"] for group in expected_groups):
         raise ValueError("Candidate cache omits or duplicates registered videos")
     for result in completed:
@@ -270,7 +278,8 @@ def main() -> int:
     manifest = {"format": "locatemot-u2-complete-label-free-cache-v1", "status": "COMPLETE",
                 "spec": spec, "cache_spec_sha256": digest(spec_path), "groups": completed,
                 "frames": sum(len(group["frames"]) for group in expected_groups),
-                "gt_ids_in_feature_payload": False, "official_test_labels_read": False}
+                "gt_ids_in_feature_payload": False, "official_test_labels_read": False,
+                "frozen_text_cache_workers": text_reports}
     manifest_path = directory / "complete_manifest.json"
     write_json(manifest_path, manifest)
     print(json.dumps({"status": "COMPLETE", "manifest": str(manifest_path), "candidate_cache_sha256": digest(manifest_path),

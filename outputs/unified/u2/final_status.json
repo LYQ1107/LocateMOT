@@ -246,5 +246,16 @@
     "selected_final_checkpoint_exists": false,
     "selected_final_integration_retention_measured": false,
     "sharing_scope": "actual F0 foundation and current random contract core architecture; recompute on selected final artifact"
+  },
+  "frozen_text_cache_implementation": {
+    "runtime": "locatemot/unified/runtime/u2_frozen_text_cache.py",
+    "proof": "outputs/unified/u2/eval/frozen_text_cache_contract.json",
+    "real_f0_outputs": "BIT_EXACT",
+    "actual_worker_serialization": "BIT_EXACT",
+    "complete_shard_resume": "NO_RERUN",
+    "mode": "worker-local fixed native BERT/token maps; copies returned to unchanged native image/multimodal inference",
+    "applies_to": "upcoming selected ordinary and OVMOT candidate-cache workers",
+    "formal_selected_cache_started": false,
+    "running_full_f0_audits_modified_or_restarted": false
   }
 }

@@ -1,0 +1,132 @@
+{
+  "format": "locatemot-u2-frozen-text-reuse-contract-v1",
+  "status": "PASS",
+  "foundation_sha256": "4efc35ce70be5cddf2c4d9a0f91bc4edef3e9ec5277a819211ba4ac42e0d7d26",
+  "reference_only": true,
+  "precision": "native FP32, no autocast",
+  "cases": [
+    {
+      "task": "mot",
+      "images": [
+        "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-02-FRCNN/img1/000302.jpg",
+        "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-02-FRCNN/img1/000303.jpg"
+      ],
+      "frames": 2,
+      "candidate_cap": 150,
+      "chunks_per_frame": 1,
+      "all_candidate_features": "BIT_EXACT",
+      "native_calls": {
+        "bert": 2,
+        "backbone": 2,
+        "decoder": 2
+      },
+      "cached_calls": {
+        "bert": 1,
+        "backbone": 2,
+        "decoder": 2
+      },
+      "cache_counters_before_mutation_probe": {
+        "bert_calls": 1,
+        "bert_hits": 1,
+        "token_prompt_calls": 1,
+        "token_prompt_hits": 0,
+        "positive_prompt_calls": 1,
+        "positive_prompt_hits": 1
+      },
+      "tensor_and_positive_map_mutation_isolation": "PASS",
+      "methods_restored": true,
+      "native_seconds_per_frame": [
+        0.189506432012422,
+        0.18899133597733453
+      ],
+      "cached_seconds_per_frame": [
+        0.1891695800004527,
+        0.1807779950031545
+      ],
+      "observed_two_frame_speed_ratio": 1.023111904399065,
+      "observed_warm_frame_speed_ratio": 1.0454333005188863
+    },
+    {
+      "task": "ovmot",
+      "images": [
+        "/data2/user/LocateMOT/data/TAO-Amodal/frames/val/YFCC100M/v_25685519b728afd746dfd1b2fe77c/frame0751.jpg",
+        "/data2/user/LocateMOT/data/TAO-Amodal/frames/val/YFCC100M/v_25685519b728afd746dfd1b2fe77c/frame0781.jpg"
+      ],
+      "frames": 2,
+      "candidate_cap": 300,
+      "chunks_per_frame": 38,
+      "all_candidate_features": "BIT_EXACT",
+      "native_calls": {
+        "bert": 76,
+        "backbone": 2,
+        "decoder": 76
+      },
+      "cached_calls": {
+        "bert": 38,
+        "backbone": 2,
+        "decoder": 76
+      },
+      "cache_counters_before_mutation_probe": {
+        "bert_calls": 38,
+        "bert_hits": 38,
+        "token_prompt_calls": 38,
+        "token_prompt_hits": 38,
+        "positive_prompt_calls": 1,
+        "positive_prompt_hits": 1
+      },
+      "tensor_and_positive_map_mutation_isolation": "PASS",
+      "methods_restored": true,
+      "native_seconds_per_frame": [
+        5.376407174015185,
+        5.255846486019436
+      ],
+      "cached_seconds_per_frame": [
+        5.275856915017357,
+        4.638013206014875
+      ],
+      "observed_two_frame_speed_ratio": 1.0724624722971043,
+      "observed_warm_frame_speed_ratio": 1.133210763437093
+    }
+  ],
+  "performance_scope": "two real frames per task on a shared GPU; not full-cache throughput",
+  "actual_worker_serialization_and_resume": [
+    {
+      "task": "mot",
+      "reference_only_frames": 2,
+      "serialized_all_features": "BIT_EXACT",
+      "semantic_decoder_storage_shared": true,
+      "gt_labels_in_payload": false,
+      "complete_shard_resume": "NO_RERUN",
+      "first_run_text_counts": {
+        "bert_calls": 1,
+        "bert_hits": 1,
+        "token_prompt_calls": 1,
+        "token_prompt_hits": 0,
+        "positive_prompt_calls": 1,
+        "positive_prompt_hits": 1
+      }
+    },
+    {
+      "task": "ovmot",
+      "reference_only_frames": 2,
+      "serialized_all_features": "BIT_EXACT",
+      "semantic_decoder_storage_shared": true,
+      "gt_labels_in_payload": false,
+      "complete_shard_resume": "NO_RERUN",
+      "first_run_text_counts": {
+        "bert_calls": 38,
+        "bert_hits": 38,
+        "token_prompt_calls": 38,
+        "token_prompt_hits": 38,
+        "positive_prompt_calls": 1,
+        "positive_prompt_hits": 1
+      }
+    }
+  ],
+  "image_and_multimodal_computations_unchanged": true,
+  "vocabulary_or_candidate_caps_changed": false,
+  "live_full_audits_modified_or_restarted": false,
+  "formal_selected_candidate_cache_started": false,
+  "benchmark_tracking_measured": false,
+  "official_test_labels_read": false
+}
