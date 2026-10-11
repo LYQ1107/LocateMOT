@@ -98,7 +98,7 @@ def main() -> int:
                "language_conditioning_pass": language_pass,
                "true_ap50": cf["true_ap50_top300_mean"], "shuffled_ap50": cf["shuffled_ap50_top300_mean"],
                "portability_status": portability["status"], "track_training_eligible": status == "SELECTED",
-               "next_epoch_eligible": args.epoch == 1 and status == "REJECT_PORTABILITY",
+               "next_epoch_eligible": args.epoch == 1 and status != "SELECTED",
                "sources": {name: {"path": str(getattr(args, name).resolve()), "sha256": digest(getattr(args, name))}
                            for name in ("portability", *REFERENCES)},
                "official_test_labels_read": False}

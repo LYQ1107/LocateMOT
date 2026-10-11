@@ -65,8 +65,9 @@ complete replay preparator waits internally for all seven original BDD train
 archives, then verifies full source-image coverage before selecting its rows.
 No optimization has launched. The guarded trainer pauses after epoch 1 for full
 portability, unchanged U1 generic/expression audits, and the original 500-pair
-language audit. Epoch 2 is allowed only for the same evaluated epoch-1 weights
-when retention passes and portability still fails. Candidate evaluators require
+language audit. If epoch 1 fails either gate, its checkpoint is rejected for
+tracking and the second bounded epoch may continue from those evaluated weights.
+Epoch 2 must pass both unchanged gates to be selected. Candidate evaluators require
 an explicit checkpoint SHA and separate outputs; F0 references remain intact.
 
 Decision: `LOCATEMOT_U_BLOCKED_U2_PERCEPTION_PORTABILITY`; acquisition/recovery is active.
