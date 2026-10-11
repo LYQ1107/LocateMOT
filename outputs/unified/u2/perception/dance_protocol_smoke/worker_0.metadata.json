@@ -1,0 +1,12 @@
+{
+  "foundation_sha256": "4efc35ce70be5cddf2c4d9a0f91bc4edef3e9ec5277a819211ba4ac42e0d7d26",
+  "protocols": {
+    "dancetrack": "920fc5f4d6fbb1a5948bf7802cf613b023a16bb9a402181c7155a9e775052118"
+  },
+  "worker_index": 0,
+  "worker_count": 1,
+  "smoke": true,
+  "expected_keys": [
+    "dancetrack/dancetrack0004/00000001.jpg"
+  ]
+}

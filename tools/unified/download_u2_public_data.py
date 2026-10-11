@@ -78,6 +78,10 @@ def acquire(entry: dict) -> dict:
         result.update(state="FAILED", error="SOURCE_MD5_MISMATCH", actual_md5=md5.hexdigest())
         save()
         return result
+    if entry.get("expected_sha256") and digest.hexdigest() != entry["expected_sha256"]:
+        result.update(state="FAILED", error="SOURCE_SHA256_MISMATCH", actual_sha256=digest.hexdigest())
+        save()
+        return result
     result.update(state="COMPLETE", sha256=digest.hexdigest(), proxy_used=False)
     save()
     return result

@@ -1,0 +1,14 @@
+{
+  "foundation_sha256": "4efc35ce70be5cddf2c4d9a0f91bc4edef3e9ec5277a819211ba4ac42e0d7d26",
+  "protocols": {
+    "tao": "1341afb98df7606d393093d05ffd9daa2b7b0ca7f275ed8e8ed26b3738361094",
+    "ctao": "d70dbf7d3c35b9285878a27b5aeb19ed10234f8b05cf6148f7bdc61b8eb48941"
+  },
+  "worker_index": 0,
+  "worker_count": 1,
+  "smoke": true,
+  "expected_keys": [
+    "tao/59150",
+    "ctao/355773"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "annotation_path": "/data2/user/LocateMOT/data/C-TAO/ctao_base.json",
+  "annotation_sha256": "4269b1a5f026350cf45fbbf61689894f7d45d9bd2730331e73ab6f841d9b3adc",
+  "candidate_top_k": 300,
+  "chunked_size": 32,
+  "coverage_keys_sha256": "baec04c678f39e3b22de32bbac43d0508fd2e00079a1a86d0eb67252dab981ab",
+  "dataset": "ctao",
+  "format": "locatemot-u2-tao-portability-protocol-v1",
+  "foundation_sha256": "4efc35ce70be5cddf2c4d9a0f91bc4edef3e9ec5277a819211ba4ac42e0d7d26",
+  "frame_keys_sha256": "3d922377d4a99800c1908e24d5ce54988cba8917613937b0384145cac83adbc8",
+  "gt_policy": "all source modal xywh boxes on selected images; no clipping, visibility cut or category exclusion",
+  "gt_units_expected": {
+    "base": 53263,
+    "novel": 0
+  },
+  "image_order": "file_name, id ascending",
+  "image_root": "/data2/user/LocateMOT/data/TAO-Amodal/frames",
+  "image_selector": "all_original_training_frames",
+  "interpolated_ctao_training_frames_retained_for_identity_training": true,
+  "iou_threshold": 0.5,
+  "max_per_img_per_chunk": 900,
+  "measurement_images": 17131,
+  "merge_iou": 0.8,
+  "official_test_labels_read": false,
+  "source_archive_required_state": "CRC-checked extraction complete",
+  "unmapped_lvis_v1_gt": {},
+  "unmapped_policy": "retain every original GT unit; group using original frequency if no LVIS-v1 synset match",
+  "videos": 500,
+  "vocabulary_path": "/data2/user/LocateMOT/outputs/unified/u2/protocol/lvis_v1_vocabulary.json",
+  "vocabulary_sha256": "85e8cd97f7009882e4e6d41b187d85eafdeab3dbe62835dfa35c4ce7bff1f68b",
+  "vocabulary_size": 1203
+}

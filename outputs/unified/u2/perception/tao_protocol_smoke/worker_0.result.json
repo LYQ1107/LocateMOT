@@ -1,0 +1,41 @@
+{
+  "state": "SMOKE_COMPLETE",
+  "metadata": {
+    "foundation_sha256": "4efc35ce70be5cddf2c4d9a0f91bc4edef3e9ec5277a819211ba4ac42e0d7d26",
+    "protocols": {
+      "tao": "1341afb98df7606d393093d05ffd9daa2b7b0ca7f275ed8e8ed26b3738361094",
+      "ctao": "d70dbf7d3c35b9285878a27b5aeb19ed10234f8b05cf6148f7bdc61b8eb48941"
+    },
+    "worker_index": 0,
+    "worker_count": 1,
+    "smoke": true,
+    "expected_keys": [
+      "tao/59150",
+      "ctao/355773"
+    ]
+  },
+  "runtime": {
+    "config": "third_party/mmdetection/configs/grounding_dino/grounding_dino_swin-b_finetune_16xb2_1x_coco.py",
+    "checkpoint": "outputs/unified/u1r2/expression_adaptation_epoch1/epoch_1.pth",
+    "checkpoint_sha256": "4efc35ce70be5cddf2c4d9a0f91bc4edef3e9ec5277a819211ba4ac42e0d7d26",
+    "device": "cuda:1",
+    "missing_keys": [],
+    "unexpected_keys": [],
+    "preprocessing_contract": {
+      "loader": "LoadImageFromFile",
+      "resize": {
+        "type": "FixScaleResize",
+        "scale": [
+          800,
+          1333
+        ],
+        "keep_ratio": true
+      },
+      "pack": "PackDetInputs",
+      "data_preprocessor": "DetDataPreprocessor",
+      "bgr_to_rgb": true,
+      "box_coordinate_contract": "model postprocess restores boxes to ori_shape"
+    }
+  },
+  "elapsed_seconds": 11.71623517399712
+}

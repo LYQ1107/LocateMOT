@@ -1,0 +1,105 @@
+[
+  {
+    "directory": "/我的资源/tracking",
+    "errno": 0,
+    "files": [
+      {
+        "name": "data_tracking_calib.zip",
+        "isdir": 0,
+        "size": 89829
+      },
+      {
+        "name": "data_tracking_det_2_lsvm.zip",
+        "isdir": 0,
+        "size": 107704811
+      },
+      {
+        "name": "data_tracking_det_2_regionlets.zip",
+        "isdir": 0,
+        "size": 32284320
+      },
+      {
+        "name": "data_tracking_image_2.zip",
+        "isdir": 0,
+        "size": 15813146295
+      },
+      {
+        "name": "data_tracking_image_3.zip",
+        "isdir": 0,
+        "size": 15092936413
+      },
+      {
+        "name": "data_tracking_label_2.zip",
+        "isdir": 0,
+        "size": 2259128
+      },
+      {
+        "name": "data_tracking_oxts.zip",
+        "isdir": 0,
+        "size": 8352970
+      },
+      {
+        "name": "data_tracking_velodyne.zip",
+        "isdir": 0,
+        "size": 36829852418
+      },
+      {
+        "name": "devkit_tracking.zip",
+        "isdir": 0,
+        "size": 158947
+      },
+      {
+        "name": "NEW_SHA256SUM",
+        "isdir": 0,
+        "size": 906
+      }
+    ]
+  },
+  {
+    "directory": "/我的资源/KITTI_BDD100K",
+    "errno": 0,
+    "files": [
+      {
+        "name": "BDD100K",
+        "isdir": 1,
+        "size": 0
+      },
+      {
+        "name": "KITTI",
+        "isdir": 1,
+        "size": 0
+      }
+    ]
+  },
+  {
+    "directory": "/我的资源/KITTI_BDD100K/BDD100K",
+    "errno": 0,
+    "files": [
+      {
+        "name": "bdd100k_drivable_maps.zip",
+        "isdir": 0,
+        "size": 693038872
+      },
+      {
+        "name": "bdd100k_images.zip",
+        "isdir": 0,
+        "size": 6941520264
+      },
+      {
+        "name": "bdd100k_info.zip",
+        "isdir": 0,
+        "size": 4094020433
+      },
+      {
+        "name": "bdd100k_labels.zip",
+        "isdir": 0,
+        "size": 154084208
+      },
+      {
+        "name": "bdd100k_seg.zip",
+        "isdir": 0,
+        "size": 1314053409
+      }
+    ]
+  }
+]

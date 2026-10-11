@@ -21,8 +21,7 @@
       "mot20"
     ],
     "ordinary_missing_local_data": [
-      "bdd100k",
-      "dancetrack"
+      "bdd100k"
     ],
     "mot17_top300_iou050": 0.8062534793097049,
     "mot20_top300_iou050": 0.8846728452361019,
@@ -41,7 +40,48 @@
   "prompt_tracking_launched": false,
   "status": "LOCATEMOT_U_BLOCKED_U2_PERCEPTION_PORTABILITY",
   "stop": "TRACK_TRAINING_HELD_BY_U2_P_GATES",
-  "execution_state": "DATA_ACQUISITION_AND_PERCEPTION_REPAIR_ACTIVE",
+  "execution_state": "FULL_TAO_AND_DANCE_PERCEPTION_AUDITS_AND_BDD_RECOVERY_ACTIVE",
   "track_training_eligible": false,
-  "ready_for_u3": false
+  "ready_for_u3": false,
+  "tao_perception_audit": {
+    "status": "RUNNING",
+    "protocols": [
+      "outputs/unified/u2/protocol/tao_portability.json",
+      "outputs/unified/u2/protocol/ctao_portability.json"
+    ],
+    "tao_validation_images_expected": 36375,
+    "ctao_original_training_audit_images_expected": 17131,
+    "gpus": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ]
+  },
+  "dance_perception_audit": {
+    "status": "RUNNING",
+    "protocol": "outputs/unified/u2/protocol/dancetrack.json",
+    "validation_images_expected": 25508,
+    "gpus": [
+      7
+    ]
+  },
+  "data_availability": {
+    "bdd100k": "MISSING_LOCAL_DATA",
+    "dancetrack": "AVAILABLE",
+    "mot17": "AVAILABLE",
+    "mot20": "AVAILABLE",
+    "kitti_legal_development": "AVAILABLE",
+    "tao": "AVAILABLE",
+    "ctao": "AVAILABLE"
+  },
+  "bdd_annotation_recovery": {
+    "status": "DOWNLOAD_AND_EXTRACTION_ACTIVE",
+    "manifest": "outputs/unified/u2/protocol/bdd_labels_acquisition_manifest.json",
+    "raw_train_annotation_videos_expected": 1400,
+    "raw_validation_annotation_videos_expected": 200,
+    "raw_annotations_validated": false
+  }
 }

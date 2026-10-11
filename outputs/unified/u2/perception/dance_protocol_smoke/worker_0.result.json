@@ -1,0 +1,39 @@
+{
+  "state": "SMOKE_COMPLETE",
+  "metadata": {
+    "foundation_sha256": "4efc35ce70be5cddf2c4d9a0f91bc4edef3e9ec5277a819211ba4ac42e0d7d26",
+    "protocols": {
+      "dancetrack": "920fc5f4d6fbb1a5948bf7802cf613b023a16bb9a402181c7155a9e775052118"
+    },
+    "worker_index": 0,
+    "worker_count": 1,
+    "smoke": true,
+    "expected_keys": [
+      "dancetrack/dancetrack0004/00000001.jpg"
+    ]
+  },
+  "runtime": {
+    "config": "third_party/mmdetection/configs/grounding_dino/grounding_dino_swin-b_finetune_16xb2_1x_coco.py",
+    "checkpoint": "outputs/unified/u1r2/expression_adaptation_epoch1/epoch_1.pth",
+    "checkpoint_sha256": "4efc35ce70be5cddf2c4d9a0f91bc4edef3e9ec5277a819211ba4ac42e0d7d26",
+    "device": "cuda:7",
+    "missing_keys": [],
+    "unexpected_keys": [],
+    "preprocessing_contract": {
+      "loader": "LoadImageFromFile",
+      "resize": {
+        "type": "FixScaleResize",
+        "scale": [
+          800,
+          1333
+        ],
+        "keep_ratio": true
+      },
+      "pack": "PackDetInputs",
+      "data_preprocessor": "DetDataPreprocessor",
+      "bgr_to_rgb": true,
+      "box_coordinate_contract": "model postprocess restores boxes to ori_shape"
+    }
+  },
+  "elapsed_seconds": 0.6248485820105998
+}

@@ -32,7 +32,7 @@
       "availability_evidence": {
         "annotation_sha256": "4269b1a5f026350cf45fbbf61689894f7d45d9bd2730331e73ab6f841d9b3adc",
         "images_expected": 490210,
-        "missing_images": 120444,
+        "missing_images": 0,
         "non_training_images": 0,
         "source": "https://huggingface.co/clarkqian/COVTrack",
         "variant": "ctao_base.json"
@@ -65,16 +65,27 @@
       "dataset": "ctao",
       "kind": "ovmot",
       "license": "C-TAO continuous annotation release; local acquisition required",
-      "metrics_status": "NOT_MEASURED_MISSING_LOCAL_DATA",
-      "portability_training_allowed": false,
+      "metrics_status": "NOT_MEASURED",
+      "portability_training_allowed": true,
       "selected_root": "/data2/user/LocateMOT/data/C-TAO",
       "split_protocol": "C-TAO train base annotations; TAO validation remains held out",
-      "status": "INCOMPLETE_LOCAL_DATA",
+      "status": "AVAILABLE",
       "top150_recall_iou050": null,
       "top300_recall_iou050": null
     },
     "dancetrack": {
-      "availability_evidence": {},
+      "availability_evidence": {
+        "calibration_images": 8024,
+        "metadata_frame_differences": [],
+        "missing_registered_images": 0,
+        "protocol_path": "/data2/user/LocateMOT/outputs/unified/u2/protocol/dancetrack.json",
+        "protocol_sha256": "920fc5f4d6fbb1a5948bf7802cf613b023a16bb9a402181c7155a9e775052118",
+        "registered_gt_matches": true,
+        "source": "https://huggingface.co/datasets/noahcao/dancetrack",
+        "train_images": 33772,
+        "validation_images": 25508,
+        "version": "a0ba42ac690c41e9850a20e76a0b9450a6fb6a47"
+      },
       "candidate_roots": [
         {
           "exists": false,
@@ -85,18 +96,29 @@
           "path": "/data2/user/datasets/DanceTrack"
         },
         {
-          "exists": false,
-          "path": "/data2/user/LocateMOT/data/DanceTrack"
+          "annotation_files": 65,
+          "directories": 197,
+          "exists": true,
+          "files": 67434,
+          "image_files": 67304,
+          "path": "/data2/user/LocateMOT/data/DanceTrack",
+          "sample_files": [
+            "/data2/user/LocateMOT/data/DanceTrack/train/dancetrack0002/seqinfo.ini",
+            "/data2/user/LocateMOT/data/DanceTrack/train/dancetrack0002/gt/gt.txt",
+            "/data2/user/LocateMOT/data/DanceTrack/train/dancetrack0002/img1/00000001.jpg",
+            "/data2/user/LocateMOT/data/DanceTrack/train/dancetrack0002/img1/00000002.jpg",
+            "/data2/user/LocateMOT/data/DanceTrack/train/dancetrack0002/img1/00000003.jpg"
+          ]
         }
       ],
       "dataset": "dancetrack",
       "kind": "ordinary_mot",
       "license": "DanceTrack research release; local acquisition required",
-      "metrics_status": "NOT_MEASURED_MISSING_LOCAL_DATA",
-      "portability_training_allowed": false,
-      "selected_root": null,
+      "metrics_status": "NOT_MEASURED",
+      "portability_training_allowed": true,
+      "selected_root": "/data2/user/LocateMOT/data/DanceTrack",
       "split_protocol": "existing project protocol configs/data/l1_a_dancetrack_{train,val}.json",
-      "status": "MISSING_LOCAL_DATA",
+      "status": "AVAILABLE",
       "top150_recall_iou050": null,
       "top300_recall_iou050": null
     },
@@ -405,12 +427,12 @@
           "train": {
             "annotation_sha256": "7eb551fdeeeebc76b876ae255f91dc5662c7270a125955c5f1be2d9bd30921d0",
             "images_expected": 18274,
-            "missing_images": 4691
+            "missing_images": 0
           },
           "validation": {
             "annotation_sha256": "0414885ee2702c2d3176cf6184e7811a7bd1c1347a157fef57a91020976776ee",
             "images_expected": 36375,
-            "missing_images": 24040
+            "missing_images": 0
           }
         },
         "shard_manifest": "outputs/unified/u2/protocol/tao_shard_manifest.json",
@@ -427,10 +449,10 @@
         },
         {
           "annotation_files": 2,
-          "directories": 856,
+          "directories": 2053,
           "exists": true,
-          "files": 1025221,
-          "image_files": 1025218,
+          "files": 2150425,
+          "image_files": 2150421,
           "path": "/data2/user/LocateMOT/data/TAO-Amodal",
           "sample_files": [
             "/data2/user/LocateMOT/data/TAO-Amodal/README.md",
@@ -444,11 +466,11 @@
       "dataset": "tao",
       "kind": "ovmot",
       "license": "TAO research terms; local acquisition required",
-      "metrics_status": "NOT_MEASURED_MISSING_LOCAL_DATA",
-      "portability_training_allowed": false,
+      "metrics_status": "NOT_MEASURED",
+      "portability_training_allowed": true,
       "selected_root": "/data2/user/LocateMOT/data/TAO-Amodal",
       "split_protocol": "TAO train for learning, TAO validation for evaluation",
-      "status": "INCOMPLETE_LOCAL_DATA",
+      "status": "AVAILABLE",
       "top150_recall_iou050": null,
       "top300_recall_iou050": null
     }
@@ -470,8 +492,7 @@
   ],
   "ordinary_hard_stop": 0.8,
   "ordinary_missing_local_data": [
-    "bdd100k",
-    "dancetrack"
+    "bdd100k"
   ],
   "ordinary_target_minimum": 0.85,
   "ordinary_target_preferred": 0.9,
@@ -484,7 +505,23 @@
   "status": "BLOCKED_MISSING_LOCAL_DATA",
   "tao_gate_pass": false,
   "tao_insufficient_below": 0.5,
-  "tao_missing_local_data": true,
+  "tao_missing_local_data": false,
+  "tao_stream_gates": {
+    "ctao": {
+      "base_recall_iou050": null,
+      "novel_recall_iou050": null,
+      "novel_required": false,
+      "pass": false,
+      "unmeasured": true
+    },
+    "tao": {
+      "base_recall_iou050": null,
+      "novel_recall_iou050": null,
+      "novel_required": true,
+      "pass": false,
+      "unmeasured": true
+    }
+  },
   "tao_target_base": 0.7,
   "tao_target_novel": 0.6,
   "tao_unmeasured": true,

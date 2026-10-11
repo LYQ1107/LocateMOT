@@ -1,0 +1,131 @@
+[
+  {
+    "repo": "Myszz/BDD100k",
+    "revision": "cb3072451518466386a4e0fbc9dd4abe3959b426",
+    "file_count": 4,
+    "archive_and_metadata_files": [
+      "test.zip",
+      "train.zip",
+      "val.zip"
+    ]
+  },
+  {
+    "repo": "Myszz/BDD100k_over",
+    "revision": "0e194c320e580a425be77baf2dae9af224095859",
+    "file_count": 17,
+    "archive_and_metadata_files": [
+      "splited/train/conversion_summary.json",
+      "splited/train_cleaned/conversion_summary.json",
+      "splited/val/conversion_summary.json"
+    ]
+  },
+  {
+    "repo": "ggamm/BDD100k",
+    "revision": "d75e2d9a881c452dc9666a5c030cb7ad702671a3",
+    "file_count": 3,
+    "archive_and_metadata_files": [
+      "bdd100k.tar.gz"
+    ]
+  },
+  {
+    "repo": "2inf/bdd100k",
+    "revision": "84db41160e172cfa725392e52bd3399f3d9d8b5c",
+    "file_count": 2,
+    "archive_and_metadata_files": [
+      "solesensei_bdd100k.zip"
+    ]
+  },
+  {
+    "repo": "Xing1210/bdd100k",
+    "revision": "c45de4b70434647956b4fea75fbbbadc18218f08",
+    "file_count": 4,
+    "archive_and_metadata_files": [
+      "bdd100k_images_100k.zip"
+    ]
+  },
+  {
+    "repo": "Hanshiya/bdd100k",
+    "revision": "175c264ae5bf637fff1cea1a2d72a42575e19c15",
+    "file_count": 20006,
+    "archive_and_metadata_files": [
+      "metadata.json",
+      "samples.json"
+    ]
+  },
+  {
+    "repo": "epiphanicc/bdd100k",
+    "revision": "6574f9ebac962ec80dee882b7461632f7f353bac",
+    "file_count": 2,
+    "archive_and_metadata_files": [
+      "bdd100kmot_vehicle.zip"
+    ]
+  },
+  {
+    "repo": "dgural/bdd100k",
+    "revision": "c2e7f266756bcd07b87f1a45a35937c8eac20241",
+    "file_count": 20006,
+    "archive_and_metadata_files": [
+      "metadata.json",
+      "samples.json"
+    ]
+  },
+  {
+    "repo": "clairexu198/bdd100k",
+    "revision": "762edc227bdcafb71fe426974f84b196f2f80f0a",
+    "file_count": 1,
+    "archive_and_metadata_files": []
+  },
+  {
+    "repo": "jaffe03195/bdd100k_sot",
+    "revision": "694197099692fe1254e93215e73e68ece8b1f41f",
+    "file_count": 11,
+    "archive_and_metadata_files": [
+      "bdd100k.zip",
+      "bdd_created.zip",
+      "code-master.zip"
+    ]
+  },
+  {
+    "repo": "TheRedJMMonkey/bdd100k",
+    "revision": "d9c099ddee1639cc920c66a28a71075d257f81d9",
+    "file_count": 1,
+    "archive_and_metadata_files": []
+  },
+  {
+    "repo": "vanthanh/bdd100kmot_vehicle",
+    "revision": "6f2bc08f2de93f19ff0ef1dff6892f51fd2e2abd",
+    "file_count": 2,
+    "archive_and_metadata_files": [
+      "bdd100kmot_vehicle.zip"
+    ]
+  },
+  {
+    "repo": "vanthanh/BDD100kMOT",
+    "revision": "76beb28f58a07f0b8fbb5f9b1d0a1f485443ecf1",
+    "file_count": 22,
+    "archive_and_metadata_files": [
+      "images20-track-test-1.zip",
+      "images20-track-test-2.zip",
+      "images20-track-train-1.zip",
+      "images20-track-train-2.zip",
+      "images20-track-train-3.zip",
+      "images20-track-train-4.zip",
+      "images20-track-train-5.zip",
+      "images20-track-train-6.zip",
+      "images20-track-train-7.zip",
+      "images20-track-val-1.zip"
+    ]
+  },
+  {
+    "repo": "kd7/graid-bdd100k",
+    "revision": "c99b17c1ae956749de9275d3f29cb403f45c9503",
+    "file_count": 193,
+    "archive_and_metadata_files": []
+  },
+  {
+    "repo": "dronefreak/BDD100K",
+    "revision": "2e47ffeefc1066a36ea8cefa324aae1dae0b5e33",
+    "file_count": 100000,
+    "archive_and_metadata_files": []
+  }
+]

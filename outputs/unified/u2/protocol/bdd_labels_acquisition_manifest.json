@@ -1,0 +1,13 @@
+[
+  {
+    "dataset": "bdd100k_tracking_labels",
+    "repo": "datasets/jaffe03195/bdd100k_sot",
+    "revision": "694197099692fe1254e93215e73e68ece8b1f41f",
+    "remote": "bdd100k.zip",
+    "target": "/data2/user/LocateMOT/data/downloads/BDD100K/bdd100k_tracking_original_labels_and_val_mirror.zip",
+    "bytes": 5352373031,
+    "license": "BDD100K original dataset terms; repackaged mirror",
+    "split": "raw box_track_20 train/val; original validation images",
+    "expected_sha256": "6f5b9d47837925a64f1280af588b05800392a2ab163e7c6110195d70c13781a5"
+  }
+]

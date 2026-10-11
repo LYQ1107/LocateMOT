@@ -130,12 +130,33 @@ def audit_dataset(name: str, spec: dict[str, Any]) -> dict[str, Any]:
     status = "AVAILABLE" if existing else "MISSING_LOCAL_DATA"
     selected = existing[0]["path"] if existing else None
     evidence: dict[str, Any] = {}
+    if name == "bdd100k":
+        view = PROJECT_ROOT / "data/bdd100k"
+        scopes = {}
+        for split, expected_videos in (("train", 1400), ("val", 200)):
+            labels = sorted((view / "labels/box_track_20" / split).glob("*.json"))
+            frames = missing = 0
+            for label_path in labels:
+                video = json.loads(label_path.read_text())
+                frames += len(video)
+                missing += sum(not (view / "images/track" / split / label_path.stem / frame["name"]).is_file()
+                               for frame in video)
+            scopes[split] = {"videos": len(labels), "videos_expected": expected_videos,
+                             "annotation_frames": frames, "missing_images": missing}
+        if any(scope["videos"] for scope in scopes.values()):
+            selected = str(view)
+            evidence = {"raw_tracking_coverage": scopes,
+                        "annotation_acquisition_manifest": "outputs/unified/u2/protocol/bdd_labels_acquisition_manifest.json"}
+            status = "AVAILABLE" if all(scope["videos"] == scope["videos_expected"] and not scope["missing_images"]
+                                         for scope in scopes.values()) else "INCOMPLETE_LOCAL_DATA"
     protocol = PROJECT_ROOT / f"outputs/unified/u2/protocol/{name}_half.json"
-    if name in ("mot17", "mot20") and protocol.exists():
+    if name == "dancetrack":
+        protocol = PROJECT_ROOT / "outputs/unified/u2/protocol/dancetrack.json"
+    if name in ("mot17", "mot20", "dancetrack") and protocol.exists():
         registered = json.loads(protocol.read_text())
         missing = [str(Path(sequence["image_dir"]) / frame)
                    for sequence in registered["sequences"]
-                   for frame in sequence["train_frames"] + sequence["validation_frames"]
+                   for frame in sequence["train_frames"] + sequence.get("calibration_frames", []) + sequence["validation_frames"]
                    if not (Path(sequence["image_dir"]) / frame).is_file()]
         gt_matches = all(sha256(Path(sequence["gt_path"])) == sequence["gt_sha256"]
                          for sequence in registered["sequences"])
@@ -143,6 +164,9 @@ def audit_dataset(name: str, spec: dict[str, Any]) -> dict[str, Any]:
                     "train_images": registered["train_images"], "validation_images": registered["validation_images"],
                     "missing_registered_images": len(missing), "registered_gt_matches": gt_matches,
                     "source": registered["source"], "version": registered["version"]}
+        if name == "dancetrack":
+            evidence.update(calibration_images=registered["calibration_images"],
+                            metadata_frame_differences=registered["metadata_frame_differences"])
         selected = registered["root"]
         status = "AVAILABLE" if not missing and gt_matches else "INCOMPLETE_LOCAL_DATA"
     if name == "tao":

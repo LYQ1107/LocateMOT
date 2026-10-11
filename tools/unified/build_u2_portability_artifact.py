@@ -28,14 +28,19 @@ def read_measurement(directory: Path, dataset: str) -> dict | None:
     if hashlib.sha256(protocol_path.read_bytes()).hexdigest() != result["protocol_sha256"]:
         raise ValueError(f"Measurement protocol differs: {path}")
     protocol = json.loads(protocol_path.read_text())
-    if protocol["dataset"] != dataset or protocol["validation_images"] != result["images_expected"]:
+    expected_images = protocol["measurement_images"] if "measurement_images" in protocol else protocol["validation_images"]
+    if protocol["dataset"] != dataset or expected_images != result["images_expected"]:
         raise ValueError(f"Measurement differs from registered frame scope: {path}")
-    if dataset in ("mot17", "mot20"):
+    if dataset in ("mot17", "mot20", "dancetrack", "bdd100k"):
         keys = sorted(f"{dataset}/{sequence['sequence']}/{frame}"
                       for sequence in protocol["sequences"] for frame in sequence["validation_frames"])
         coverage_sha = hashlib.sha256("\n".join(keys).encode()).hexdigest()
         if result["coverage_keys_sha256"] != coverage_sha:
             raise ValueError(f"Incomplete registered frame coverage: {path}")
+    elif dataset in ("tao", "ctao"):
+        if (result["coverage_keys_sha256"] != protocol["coverage_keys_sha256"]
+                or not result["every_frame_backbone_calls_one"]):
+            raise ValueError(f"Incomplete TAO scope or backbone-reuse contract: {path}")
     return result
 
 
@@ -117,10 +122,19 @@ def main() -> int:
                           if item["dataset"] != "kitti_legal_development"
                           and item.get(f"top{item.get('candidate_top_k', 150)}_recall_iou050") is not None
                           and item[f"top{item.get('candidate_top_k', 150)}_recall_iou050"] < .80]
-    tao = datasets["tao"]
-    base, novel = tao.get("base_recall_iou050"), tao.get("novel_recall_iou050")
-    tao_unmeasured = base is None or novel is None
-    tao_pass = not tao_unmeasured and base >= .70 and novel >= .60
+    tao_gates = {}
+    for name in ("tao", "ctao"):
+        item = datasets[name]
+        base, novel = item.get("base_recall_iou050"), item.get("novel_recall_iou050")
+        # C-TAO is the official base-only release: zero novel GT is an
+        # inapplicable group, while its measured base recall is still required.
+        novel_required = name == "tao"
+        unmeasured = base is None or (novel_required and novel is None)
+        passed = not unmeasured and base >= .70 and (not novel_required or novel >= .60)
+        tao_gates[name] = {"base_recall_iou050": base, "novel_recall_iou050": novel,
+                           "novel_required": novel_required, "unmeasured": unmeasured, "pass": passed}
+    tao_unmeasured = any(gate["unmeasured"] for gate in tao_gates.values())
+    tao_pass = all(gate["pass"] for gate in tao_gates.values())
     if missing_ordinary or tao_missing:
         status = "BLOCKED_MISSING_LOCAL_DATA"
     elif unmeasured_ordinary or tao_unmeasured:
@@ -148,6 +162,7 @@ def main() -> int:
         "ordinary_below_hard_stop": hard_stop_ordinary,
         "tao_unmeasured": tao_unmeasured,
         "tao_gate_pass": tao_pass,
+        "tao_stream_gates": tao_gates,
         "status": status,
         "training_eligible": status == "PASS",
         "candidate_cache_built": False,

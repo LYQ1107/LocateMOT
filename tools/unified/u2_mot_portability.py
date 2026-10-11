@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Measure the frozen U1R2 foundation on every registered MOT-half dev frame."""
+"""Measure the frozen U1R2 foundation on registered ordinary MOT dev frames."""
 from __future__ import annotations
 
 import argparse
@@ -82,13 +82,20 @@ def worker(args: argparse.Namespace) -> int:
             # the image and the preregistered vocabulary.
             if record["gt_path"] not in labels:
                 by_frame = defaultdict(list)
-                for line in Path(record["gt_path"]).read_text().splitlines():
-                    fields = [float(value) for value in line.split(",")]
-                    if fields[6] == 1 and fields[7] == 1:
-                        x, y, width, height = fields[2:6]
-                        by_frame[int(fields[0])].append([x, y, x + width, y + height])
+                if record["gt_path"].endswith(".json"):
+                    from locatemot.unified.data.bdd_tracking import frame_objects
+                    for frame in json.loads(Path(record["gt_path"]).read_text()):
+                        objects, _ = frame_objects(frame)
+                        by_frame[frame["name"]] = [obj["bbox"] for obj in objects]
+                else:
+                    for line in Path(record["gt_path"]).read_text().splitlines():
+                        fields = [float(value) for value in line.split(",")]
+                        if fields[6] == 1 and fields[7] == 1:
+                            x, y, width, height = fields[2:6]
+                            by_frame[int(fields[0])].append([x, y, x + width, y + height])
                 labels[record["gt_path"]] = by_frame
-            targets = torch.tensor(labels[record["gt_path"]][int(Path(record["frame"]).stem)], dtype=torch.float32).reshape(-1, 4)
+            frame_key = record["frame"] if record["gt_path"].endswith(".json") else int(Path(record["frame"]).stem)
+            targets = torch.tensor(labels[record["gt_path"]][frame_key], dtype=torch.float32).reshape(-1, 4)
             counts = {"gt_total": len(targets)}
             overlaps = box_iou(targets, boxes[:300])
             for k in (150, 300):

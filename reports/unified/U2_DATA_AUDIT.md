@@ -1,17 +1,17 @@
 # LocateMOT-U U2 data audit
 
-Recovery snapshot: 2026-10-11. Authoritative inventory:
+Recovery snapshot: 2026-10-12. Authoritative inventory:
 `outputs/unified/u2/protocol/data_manifest.json`.
 
 | Dataset | Status | Registered scope / acquisition |
 |---|---|---|
-| bdd100k | MISSING_LOCAL_DATA | Cloud folder contains static detection resources; original MOT 2020 train/val image downloads running; tracking labels still required |
-| dancetrack | MISSING_LOCAL_DATA | Official Hugging Face train1/train2/val acquisition running; existing 32/8/25 protocol preserved |
+| bdd100k | MISSING_LOCAL_DATA | Original MOT 2020 image downloads running; pinned mirror containing raw train/val tracking annotations identified, downloading and awaiting validation |
+| dancetrack | AVAILABLE | All three official archives downloaded and CRC-extracted; existing 32/8/25 videos and 33,772/8,024/25,508 frames match exactly |
 | mot17 | AVAILABLE | 2,664 train / 2,652 dev frames; FRCNN copies only; exact half protocol frozen |
 | mot20 | AVAILABLE | 4,468 train / 4,463 dev frames; exact half protocol frozen |
 | kitti_legal_development | AVAILABLE | Existing legal U1 development scope and reference retained |
-| tao | INCOMPLETE_LOCAL_DATA | Four-volume cloud acquisition and CRC-checked extraction running; official modal train/val coverage audited |
-| ctao | INCOMPLETE_LOCAL_DATA | Base-only annotation downloaded and audited; complete training-frame coverage still pending |
+| tao | AVAILABLE | Every modal train/val annotated image exists; four-volume acquisition continues for remaining release resources |
+| ctao | AVAILABLE | Base-only annotation audited; all 490,210 continuous training frames exist |
 
 TAO archives and extracted frames stay on their registered /data0..3/user volume;
 the project data directory contains a symlink view. An existing or partially populated
@@ -30,6 +30,23 @@ Direct networking is used. aria2 failed its TLS handshake before receiving bytes
 curl range request succeeded (HTTP 206), and the official data download resumed with curl.
 
 No Refer-KITTI official evaluation or benchmark test labels were parsed. Track training remains
-ineligible both because required inputs are incomplete and because measured MOT gates failed.
+ineligible because BDD tracking inputs are incomplete and measured MOT gates failed.
 
 C-TAO base-only annotation audit: 490,210 training frames, 1,489,637 boxes, 500 videos; class-supervised boxes are f/c only (1,378,391 frequent, 111,246 common). All image paths start with train/. TAO validation has 36,375 annotated frames and 113,112 GT boxes. Its v0.5→v1 synset mapping leaves 314 boxes in six categories unmapped; retain this explicit count when registering full portability and official TETA conversion, rather than silently dropping them.
+
+Frozen portability scopes now cover all 36,375 TAO validation images and all 17,131
+original C-TAO training-audit images. The interpolated C-TAO images remain in the
+490,210-frame identity-training scope. Full TAO/C-TAO measurement runs on GPUs 1–6;
+full DanceTrack validation runs on GPU 7. Separate real-image smoke runs passed with
+the immutable U1R2 foundation. Full-run recall remains unreported until exact coverage completes.
+
+The candidate BDD annotation mirror is
+[jaffe03195/bdd100k_sot](https://huggingface.co/datasets/jaffe03195/bdd100k_sot/tree/694197099692fe1254e93215e73e68ece8b1f41f),
+archive `bdd100k.zip`, SHA `6f5b9d47837925a64f1280af588b05800392a2ab163e7c6110195d70c13781a5`.
+Its ZIP directory contains raw `labels/box_track_20/train` (1,400 JSON videos),
+raw `labels/box_track_20/val` (200 JSON videos), and validation images. Only these
+original directories are selected. Converted annotations, filtered labels and SOT labels
+are excluded from acquisition output. Archive hash, selected-member CRC and actual
+raw label/image coverage must pass before this mirror establishes availability.
+Original category aliases, ignored/crowd objects and inclusive Box2D coordinates follow
+the cached BDD toolkit and Scalabel sources; the audit will report every exclusion count.

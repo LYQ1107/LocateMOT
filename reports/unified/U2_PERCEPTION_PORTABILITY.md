@@ -22,8 +22,22 @@ No Top300 runtime override has been accepted and no track training or candidate 
 MOT17-02/04 and the crowded MOT20-03/05 are the main shortfalls; complete per-sequence
 numerators and denominators are retained in `outputs/unified/u2/perception/measurements/`.
 
-BDD100K/DanceTrack and TAO base/novel measurements remain unmeasured. Acquisition and
-protocol preparation continue. Once all required inputs are ready, the failed gate permits
+BDD100K/DanceTrack and TAO base/novel full measurements remain unmeasured.
+On 2026-10-12, all 25,508 DanceTrack validation frames were registered and a real
+first-frame smoke passed (3/3 GT at both K values). The full audit runs on GPU 7.
+TAO/C-TAO now have complete required image coverage; their registered audit covers
+36,375 validation images and 17,131 original training-audit images, respectively,
+and runs on GPUs 1–6. Real smoke frames from both domains passed the one-backbone-call
+contract with the specified foundation. Smoke frames do not establish aggregate recall.
+
+The TAO localization audit retains all 113,112 source GT units, including 314 unmapped
+LVIS-v0.5 synsets: 110,055 base and 3,057 novel GT units. C-TAO's original-frame audit
+contains 53,263 base GT units and zero novel GT. Both streams must meet base ≥0.70;
+TAO must also meet novel ≥0.60. C-TAO novel recall is explicitly inapplicable for this
+base-only release. All 490,210 C-TAO frames remain registered for later identity training.
+
+BDD tracking annotation acquisition is recovering from a pinned mirror with raw
+train/val JSON videos; filtered and converted SOT labels are not used. Once all required inputs are ready, the failed gate permits
 at most two epochs of mixed perception adaptation with U1 replay, decoder LR 1e-5,
 Swin stages 2/3 LR 1e-6 and frozen BERT, followed by full portability and U1 retention checks.
 
