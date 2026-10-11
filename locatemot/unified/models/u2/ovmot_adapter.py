@@ -17,6 +17,11 @@ class OVMOTAdapter(nn.Module):
         nn.init.constant_(self.gate[-1].bias, -2.0)
         self.text_projection = nn.Linear(hidden_dim, hidden_dim, bias=False)
         self.temperature = nn.Parameter(torch.tensor(1.0))
+        # Task conditioning belongs only to the bounded semantic gate. Zero
+        # initialization preserves the original gate before any task training.
+        # Supplying zero weights also preserves the original initialization
+        # RNG stream for all subsequent shared-core modules.
+        self.task_embeddings = nn.Embedding.from_pretrained(torch.zeros(2, hidden_dim), freeze=False)
 
     def class_logits(self, semantic: torch.Tensor, class_text: torch.Tensor) -> torch.Tensor:
         """Shared U1 text features; no learned per-category classifier table."""
@@ -25,7 +30,8 @@ class OVMOTAdapter(nn.Module):
         return semantic @ text.T / self.temperature.float().clamp_min(0.1)
 
     def semantic_pair_residual(
-        self, track_semantic: torch.Tensor, candidate_semantic: torch.Tensor, class_text: torch.Tensor | None
+        self, track_semantic: torch.Tensor, candidate_semantic: torch.Tensor, class_text: torch.Tensor | None,
+        task_type: str = "ovmot",
     ) -> tuple[torch.Tensor, torch.Tensor]:
         t, n = track_semantic.shape[0], candidate_semantic.shape[0]
         if t == 0 or n == 0:
@@ -42,7 +48,8 @@ class OVMOTAdapter(nn.Module):
             cand_class = cand @ text.T
             class_agreement = track_class @ cand_class.T / text.shape[0]
             base = base + class_agreement / self.temperature.clamp_min(0.1)
-        gate = torch.sigmoid(self.gate(torch.cat([trk_exp, cand_exp], dim=-1)).squeeze(-1))
+        task = self.task_embeddings.weight[0 if task_type == "mot" else 1]
+        gate = torch.sigmoid(self.gate(torch.cat([trk_exp, cand_exp + task], dim=-1)).squeeze(-1))
         return base, gate
 
     def forward(
@@ -56,7 +63,7 @@ class OVMOTAdapter(nn.Module):
     ) -> dict[str, torch.Tensor]:
         if task_type not in {"mot", "ovmot"}:
             raise ValueError("U2 adapter accepts only mot or ovmot")
-        residual, learned_gate = self.semantic_pair_residual(track_semantic, candidate_semantic, class_text)
+        residual, learned_gate = self.semantic_pair_residual(track_semantic, candidate_semantic, class_text, task_type)
         if task_type == "mot":
             gate = torch.zeros_like(learned_gate)
         else:

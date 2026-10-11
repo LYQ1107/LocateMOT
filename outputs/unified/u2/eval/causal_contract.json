@@ -9,5 +9,6 @@
   "online_state_save_reload": "pass",
   "ovmot_semantic_isolation": "pass",
   "refer_kitti_official_eval_labels_read": false,
-  "status": "pass"
+  "status": "pass",
+  "task_embedding_identity_isolation": "pass"
 }

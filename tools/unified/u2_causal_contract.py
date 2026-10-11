@@ -91,6 +91,18 @@ def main() -> int:
     assert torch.all((ov_a["semantic_gate"] >= 0) & (ov_a["semantic_gate"] <= 1))
     assert torch.allclose(core(frame1, second["state"], task_type="mot", class_text=text_a)["semantic_gate"], torch.zeros_like(ov_a["semantic_gate"]))
 
+    original_task_embeddings = core.ovmot.task_embeddings.weight.detach().clone()
+    with torch.no_grad():
+        core.ovmot.task_embeddings.weight.add_(3.)
+    changed_mot = core(frame1, second["state"].clone(), task_type="mot", class_text=text_a)
+    changed_ov = core(frame1, second["state"].clone(), task_type="ovmot", class_text=text_a)
+    assert state_equal(changed_mot["state"], mot_a["state"]), "Task embeddings leaked into ordinary MOT"
+    assert torch.equal(changed_ov["identity_pair_logits"], ov_a["identity_pair_logits"])
+    assert torch.equal(changed_ov["state"].id_memory, ov_a["state"].id_memory)
+    assert not torch.equal(changed_ov["semantic_gate"], ov_a["semantic_gate"])
+    with torch.no_grad():
+        core.ovmot.task_embeddings.weight.copy_(original_task_embeddings)
+
     sequence = [frame0, frame1, candidate(feature + 0.02, x=0.1)]
     continuous = U2OnlineTracker(copy.deepcopy(core))
     continuous_outputs = [continuous.step(item, task_type="mot") for item in sequence]
@@ -113,6 +125,7 @@ def main() -> int:
         "no_future_dependency": "pass",
         "mot_specification_invariance": "pass",
         "ovmot_semantic_isolation": "pass",
+        "task_embedding_identity_isolation": "pass",
         "online_state_save_reload": "pass",
         "max_age": core.max_age,
         "official_test_labels_read": False,

@@ -130,6 +130,7 @@
             "semantic_gru",
             "semantic_projection",
             "semantic_residual",
+            "task_embeddings",
             "temperature"
           ]
         },
@@ -147,6 +148,7 @@
             "semantic_gru",
             "semantic_projection",
             "semantic_residual",
+            "task_embeddings",
             "temperature"
           ]
         },
@@ -164,6 +166,7 @@
             "semantic_gru",
             "semantic_projection",
             "semantic_residual",
+            "task_embeddings",
             "temperature"
           ]
         },
@@ -181,6 +184,7 @@
             "semantic_gru",
             "semantic_projection",
             "semantic_residual",
+            "task_embeddings",
             "temperature"
           ]
         },
@@ -198,6 +202,7 @@
             "semantic_gru",
             "semantic_projection",
             "semantic_residual",
+            "task_embeddings",
             "temperature"
           ]
         },
@@ -215,6 +220,7 @@
             "semantic_gru",
             "semantic_projection",
             "semantic_residual",
+            "task_embeddings",
             "temperature"
           ]
         },
@@ -232,6 +238,7 @@
             "semantic_gru",
             "semantic_projection",
             "semantic_residual",
+            "task_embeddings",
             "temperature"
           ]
         },
@@ -249,6 +256,7 @@
             "semantic_gru",
             "semantic_projection",
             "semantic_residual",
+            "task_embeddings",
             "temperature"
           ]
         }

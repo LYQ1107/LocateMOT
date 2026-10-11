@@ -78,7 +78,8 @@ def main() -> int:
                              semantic_residual=core.ovmot.residual[0].weight.grad,
                              semantic_gate=core.ovmot.gate[0].weight.grad,
                              class_text_projection=core.ovmot.text_projection.weight.grad,
-                             temperature=core.ovmot.temperature.grad)
+                             temperature=core.ovmot.temperature.grad,
+                             task_embeddings=core.ovmot.task_embeddings.weight.grad)
         else:
             assert all(parameter.grad is None for parameter in core.ovmot.parameters()), "MOT updated unused semantic adapter"
         if check_gradients:

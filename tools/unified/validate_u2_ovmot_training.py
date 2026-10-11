@@ -87,6 +87,7 @@ def main() -> int:
                  "semantic_gate": core.ovmot.gate[0].weight.grad,
                  "shared_text_projection": core.ovmot.text_projection.weight.grad,
                  "temperature": core.ovmot.temperature.grad,
+                 "task_embeddings": core.ovmot.task_embeddings.weight.grad,
                  "identity_gru": core.identity_gru.weight_hh.grad,
                  "identity_pair": core.association.pair[0].weight.grad}
     assert all(g is not None and torch.isfinite(g).all() and g.abs().sum() > 0 for g in gradients.values())
@@ -138,7 +139,8 @@ def main() -> int:
                   "identical_parameters_all_ranks": True if args.eight_gpu else None,
                   "gt_in_runtime_state": False, "synthetic_tracking_candidates": True,
                   "scratch_optimizer_updates": 1, "formal_joint_optimization_launched": False}
-        path = ROOT / f"outputs/unified/u2/eval/ovmot_training_contract_{'8gpu' if args.eight_gpu else 'single'}.json"
+        suffix = "8gpu" if args.eight_gpu else ("single" if device.type == "cuda" else "cpu")
+        path = ROOT / f"outputs/unified/u2/eval/ovmot_training_contract_{suffix}.json"
         path.write_text(json.dumps(report, indent=2) + "\n")
         print(json.dumps(report, indent=2))
     if args.eight_gpu:

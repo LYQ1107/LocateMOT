@@ -36,6 +36,7 @@
   "foundation": "selected actual MM-GroundingDINO and shared BERT frozen; cached real features",
   "class_text": "selected shared U1 BERT/native projection256, full frozen1203 vocabulary",
   "classification_training": "base866 targets and softmax columns only; novel337 inference zero-shot",
+  "task_embeddings": "two zero-initialized256-D embeddings in bounded semantic gate only; ordinary gate zero",
   "optimizer": {
     "type": "AdamW",
     "shared_core_lr": 5e-05,

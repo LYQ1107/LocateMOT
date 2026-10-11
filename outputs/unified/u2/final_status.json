@@ -70,7 +70,7 @@
     "measurement": "outputs/unified/u2/perception/measurements/kitti_legal_development.json",
     "blocking_session_exit_code": 0
   },
-  "shared_non_head_fraction": 0.9378111093950003,
+  "shared_non_head_fraction": 0.9986102878298792,
   "mot_simple_baseline": null,
   "mot_only_baseline": null,
   "joint_mot_ovmot": null,
@@ -231,5 +231,20 @@
     "maximum_optimizer_steps": 4000,
     "run_state": "outputs/unified/u2/joint_queue/run_state.json",
     "launch_requires_recomputed_eligible_mot_only": true
+  },
+  "native_checkpoint_implementation": {
+    "format": "locatemot-u-u2-shared-track-core-v1",
+    "runtime": "locatemot/unified/runtime/u2_checkpoint.py",
+    "packer": "tools/unified/pack_u2_checkpoint.py",
+    "integration_retention": "tools/unified/audit_u2_checkpoint_retention.py",
+    "reference_only_contract": "outputs/unified/u2/eval/native_checkpoint_contract.json",
+    "actual_f0_tensor_and_full_class_text_reload": "BIT_EXACT",
+    "mot_and_ovmot_candidate_and_state_reload": "BIT_EXACT",
+    "reference_small_u1_integration_predictions": "BIT_EXACT",
+    "task_embedding_identity_isolation": "PASS",
+    "reference_actual_shared_non_head_fraction": 0.9986102878298792,
+    "selected_final_checkpoint_exists": false,
+    "selected_final_integration_retention_measured": false,
+    "sharing_scope": "actual F0 foundation and current random contract core architecture; recompute on selected final artifact"
   }
 }

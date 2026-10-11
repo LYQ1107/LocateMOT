@@ -39,6 +39,7 @@ def recipe() -> dict:
             "foundation": "selected actual MM-GroundingDINO and shared BERT frozen; cached real features",
             "class_text": "selected shared U1 BERT/native projection256, full frozen1203 vocabulary",
             "classification_training": "base866 targets and softmax columns only; novel337 inference zero-shot",
+            "task_embeddings": "two zero-initialized256-D embeddings in bounded semantic gate only; ordinary gate zero",
             "optimizer": {"type": "AdamW", "shared_core_lr": 5e-5, "ovmot_adapter_lr": 1e-4,
                           "candidate_and_semantic_projection_lr": 5e-5, "weight_decay": 1e-2, "gradient_clip": 1.},
             "precision": "FP32 parameters/losses; BF16 neural autocast",
