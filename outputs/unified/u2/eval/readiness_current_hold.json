@@ -1,0 +1,7 @@
+{
+  "format": "locatemot-u2-readiness-v1",
+  "status": "LOCATEMOT_U_U2_IN_PROGRESS",
+  "ready_for_u3": false,
+  "reason": "MOT-only optimization requires the complete selected ordinary cache and all-five simple metrics",
+  "actual_evidence_complete": false
+}

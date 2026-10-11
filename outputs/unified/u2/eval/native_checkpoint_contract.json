@@ -91,5 +91,7 @@
   "formal_track_training_launched": false,
   "ready_for_u3": false,
   "official_test_labels_read": false,
-  "non_head_sharing_recomputed_on_actual_strictly_reloaded_model": true
+  "non_head_sharing_recomputed_on_actual_strictly_reloaded_model": true,
+  "historical_small_generic_probe_vocabulary": "car .",
+  "current_original_vocabulary_retention_entry_contract": "outputs/unified/u2/eval/final_retention_entry_contract.json"
 }

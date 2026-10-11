@@ -34,6 +34,7 @@
     "semantic_projection",
     "semantic_residual",
     "shared_text_projection",
+    "task_embeddings",
     "temperature"
   ],
   "unknown_candidate_retained_without_birth_negative_labels": true,

@@ -1,0 +1,35 @@
+{
+  "format": "locatemot-u2-selected-core-audit-entry-contract-v1",
+  "status": "PASS",
+  "reference_only": true,
+  "core_source": "existing explicitly random reference pack; no weights altered during this audit",
+  "foundation_sha256": "4efc35ce70be5cddf2c4d9a0f91bc4edef3e9ec5277a819211ba4ac42e0d7d26",
+  "results": {
+    "birth_persistence": true,
+    "observed_births": 150,
+    "observed_repeat_matches": 150,
+    "occlusion_retention": true,
+    "no_future_dependency": true,
+    "mot_specification_invariance": true,
+    "ovmot_raw_identity_and_fixed_pair_gru_isolation": true,
+    "semantic_scores_may_change": true,
+    "online_state_save_reload": "BIT_EXACT",
+    "serialized_tasks": [
+      "mot",
+      "ovmot"
+    ],
+    "both_tasks_same_core_object": true,
+    "selected_weights_modified": false,
+    "teacher_forcing_used": false,
+    "scope": "four original candidate frames plus repeated-observation/one-frame-occlusion causal probes"
+  },
+  "frames": [
+    "000302.jpg",
+    "000303.jpg",
+    "000304.jpg",
+    "000305.jpg"
+  ],
+  "actual_selected_checkpoint_audited": false,
+  "ready_for_u3": false,
+  "official_test_labels_read": false
+}

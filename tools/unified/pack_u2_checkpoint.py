@@ -11,14 +11,7 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 
 
-def main() -> int:
-    parser = argparse.ArgumentParser(description=__doc__)
-    for name in ("cache-manifest", "simple-baseline", "mot-only-selection", "ovmot-cache", "ovmot-supervision", "class-text", "tao-gt-view"):
-        parser.add_argument("--" + name, type=Path, required=True)
-    parser.add_argument("--joint-selection", type=Path, required=True)
-    parser.add_argument("--out", type=Path, required=True)
-    parser.add_argument("--device", default="cuda:0")
-    args = parser.parse_args()
+def selected_inputs(args):
     from tools.unified.train_u2_joint import preflight
     from tools.unified.eval_u2_joint import select_joint
     from tools.unified.build_u2_candidate_cache import digest, write_json
@@ -31,6 +24,19 @@ def main() -> int:
     selected = select_joint(args.joint_selection.parent, reference, provenance)
     if provided != selected or selected["status"] != "U2_B_JOINT_SELECTED" or selected["selected"] is None:
         raise ValueError("Final packing requires all full joint measurements and unchanged passing gates")
+    return ordinary, simple, reference, ovmot, labels, text, selected
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    for name in ("cache-manifest", "simple-baseline", "mot-only-selection", "ovmot-cache", "ovmot-supervision", "class-text", "tao-gt-view"):
+        parser.add_argument("--" + name, type=Path, required=True)
+    parser.add_argument("--joint-selection", type=Path, required=True)
+    parser.add_argument("--out", type=Path, required=True)
+    parser.add_argument("--device", default="cuda:0")
+    args = parser.parse_args()
+    from tools.unified.build_u2_candidate_cache import digest, write_json
+    ordinary, simple, reference, ovmot, labels, text, selected = selected_inputs(args)
     import torch
     from locatemot.unified.models.u2.shared_track_core import SharedTrackCore
     from locatemot.unified.runtime.grounding_inference import DEFAULT_BERT, load_grounding_runtime

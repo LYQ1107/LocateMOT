@@ -1,0 +1,104 @@
+{
+  "format": "locatemot-u2-two-gpu-joint-contract-v1",
+  "status": "PASS",
+  "world_size": 2,
+  "hidden_dim": 256,
+  "clips_per_rank": 2,
+  "global_clips": 4,
+  "frames_per_clip": 8,
+  "bf16": true,
+  "strict_all_tensor_mot_initialization": true,
+  "registered_optimizer_group_lrs": [
+    5e-05,
+    0.0001
+  ],
+  "alternating_tasks_same_all_ranks": true,
+  "scratch_task_schedule": [
+    "mot",
+    "ovmot",
+    "mot"
+  ],
+  "steps": [
+    {
+      "task": "mot",
+      "ranks": [
+        {
+          "rank": 0,
+          "device": 0,
+          "task": "mot",
+          "loss": 6.985450267791748,
+          "frames_per_clip": 8,
+          "nonzero_gradient_branches": [
+            "identity_gru",
+            "identity_pair"
+          ]
+        },
+        {
+          "rank": 1,
+          "device": 1,
+          "task": "mot",
+          "loss": 8.140348434448242,
+          "frames_per_clip": 8,
+          "nonzero_gradient_branches": [
+            "identity_gru",
+            "identity_pair"
+          ]
+        }
+      ],
+      "max_parameter_discrepancy": 0.0
+    },
+    {
+      "task": "ovmot",
+      "ranks": [
+        {
+          "rank": 0,
+          "device": 0,
+          "task": "ovmot",
+          "loss": 9.731668472290039,
+          "frames_per_clip": 8,
+          "nonzero_gradient_branches": [
+            "class_text_projection",
+            "identity_gru",
+            "identity_pair",
+            "semantic_gate",
+            "semantic_gru",
+            "semantic_projection",
+            "semantic_residual",
+            "task_embeddings",
+            "temperature"
+          ]
+        },
+        {
+          "rank": 1,
+          "device": 1,
+          "task": "ovmot",
+          "loss": 9.873331069946289,
+          "frames_per_clip": 8,
+          "nonzero_gradient_branches": [
+            "class_text_projection",
+            "identity_gru",
+            "identity_pair",
+            "semantic_gate",
+            "semantic_gru",
+            "semantic_projection",
+            "semantic_residual",
+            "task_embeddings",
+            "temperature"
+          ]
+        }
+      ],
+      "max_parameter_discrepancy": 0.0
+    }
+  ],
+  "actual_joint_checkpoint_save_restore": true,
+  "rank_cpu_cuda_rng_and_optimizer_restored": true,
+  "next_stochastic_update_bit_exact_after_resume": true,
+  "scheduled_teacher_bernoulli_rng_in_resume_proof": true,
+  "mot_unused_semantic_adapter_no_gradient_or_decay": true,
+  "class_text_source": "actual shared F0 BERT, reference-only contract",
+  "tracking_candidates": "synthetic",
+  "formal_joint_training_launched": false,
+  "benchmark_metrics_measured": false,
+  "foundation_weights_modified": false,
+  "official_test_labels_read": false
+}

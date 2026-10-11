@@ -72,7 +72,6 @@ def make_payload(runtime: GroundingRuntime, core: SharedTrackCore, class_text: d
     if not sharing["pass"]:
         raise ValueError("Actual shared-parameter gate failed")
     return {"format": FORMAT, "stage": "U2", "reference_only": reference_only,
-            "ready_for_u3": False,
             "foundation": {"state_dict": {k: v.detach().cpu() for k, v in runtime.model.state_dict().items()},
                            "config": cfg, "bert_config": bert_config, "tokenizer_files": tokenizer_files},
             "core": {k: v.detach().cpu() for k, v in core.state_dict().items()},

@@ -1,0 +1,55 @@
+{
+  "format": "locatemot-u2-final-retention-entry-contract-v1",
+  "status": "PASS",
+  "reference_only": true,
+  "foundation_sha256": "4efc35ce70be5cddf2c4d9a0f91bc4edef3e9ec5277a819211ba4ac42e0d7d26",
+  "scope": [
+    {
+      "dataset": "refer_kitti_v1",
+      "video": "0001",
+      "frame": 138,
+      "targets": 1,
+      "generic_objects": 7,
+      "generic_vocabulary": "car . van . truck . bus . tram . pedestrian . person . cyclist . bicycle . motorcycle .",
+      "native_metrics": {
+        "generic_top150_recall": 1.0,
+        "expression_top100_recall": 1.0,
+        "true_ap50_top300": 0.3333333333333333,
+        "shuffled_ap50_top300": 0.3333333333333333
+      },
+      "packed_metrics": {
+        "generic_top150_recall": 1.0,
+        "expression_top100_recall": 1.0,
+        "true_ap50_top300": 0.3333333333333333,
+        "shuffled_ap50_top300": 0.3333333333333333
+      },
+      "all_box_score_tensors": "BIT_EXACT"
+    },
+    {
+      "dataset": "refer_kitti_v2",
+      "video": "0001",
+      "frame": 204,
+      "targets": 1,
+      "generic_objects": 2,
+      "generic_vocabulary": "car . van . truck . bus . tram . pedestrian . person . cyclist . bicycle . motorcycle .",
+      "native_metrics": {
+        "generic_top150_recall": 1.0,
+        "expression_top100_recall": 1.0,
+        "true_ap50_top300": 1.0,
+        "shuffled_ap50_top300": 0.3333333333333333
+      },
+      "packed_metrics": {
+        "generic_top150_recall": 1.0,
+        "expression_top100_recall": 1.0,
+        "true_ap50_top300": 1.0,
+        "shuffled_ap50_top300": 0.3333333333333333
+      },
+      "all_box_score_tensors": "BIT_EXACT"
+    }
+  ],
+  "all_box_score_tensors": "BIT_EXACT",
+  "original_full_generic_vocabulary": true,
+  "actual_selected_checkpoint_audited": false,
+  "ready_for_u3": false,
+  "official_test_labels_read": false
+}

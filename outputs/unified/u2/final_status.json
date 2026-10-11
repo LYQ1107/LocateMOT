@@ -245,7 +245,9 @@
     "reference_actual_shared_non_head_fraction": 0.9986102878298792,
     "selected_final_checkpoint_exists": false,
     "selected_final_integration_retention_measured": false,
-    "sharing_scope": "actual F0 foundation and current random contract core architecture; recompute on selected final artifact"
+    "sharing_scope": "actual F0 foundation and current random contract core architecture; recompute on selected final artifact",
+    "current_full_u1_vocabulary_retention_entry_contract": "outputs/unified/u2/eval/final_retention_entry_contract.json",
+    "historical_reference_generic_probe": "car .; current audit uses original full U1 fixed vocabulary"
   },
   "frozen_text_cache_implementation": {
     "runtime": "locatemot/unified/runtime/u2_frozen_text_cache.py",
@@ -257,5 +259,19 @@
     "applies_to": "upcoming selected ordinary and OVMOT candidate-cache workers",
     "formal_selected_cache_started": false,
     "running_full_f0_audits_modified_or_restarted": false
+  },
+  "finalization_queue": {
+    "state": "WAITING_ORIGINAL_JOINT_OWNER",
+    "controller_pid": 896659,
+    "joint_controller_pid": 883611,
+    "pack_started": false,
+    "ready_for_u3": false,
+    "run_state": "outputs/unified/u2/finalization/run_state.json",
+    "owner": "tools/unified/queue_u2_finalize.py",
+    "readiness": "tools/unified/verify_u2_ready.py",
+    "actual_selected_core_audit": "tools/unified/audit_u2_selected_core.py",
+    "audit_entry_contract": "outputs/unified/u2/eval/selected_core_audit_entry_contract.json",
+    "readiness_gate_contract": "outputs/unified/u2/eval/readiness_gate_contract.json",
+    "current_readiness_hold": "outputs/unified/u2/eval/readiness_current_hold.json"
   }
 }

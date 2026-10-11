@@ -33,10 +33,14 @@ def eight_frames(clip: list[dict]) -> list[dict]:
 
 
 def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--expected-world-size", type=int, choices=(2, 8), default=8)
+    args = parser.parse_args()
     rank, local_rank = int(os.environ["RANK"]), int(os.environ["LOCAL_RANK"])
     torch.cuda.set_device(local_rank)
     dist.init_process_group("nccl", timeout=timedelta(hours=24))
-    assert dist.get_world_size() == 8
+    world = dist.get_world_size()
+    assert world == args.expected_world_size
     torch.set_num_threads(2)
     device = torch.device("cuda", local_rank)
     text = torch.load(ROOT / "outputs/unified/u2/ovmot_semantics/f0_class_text.pt", map_location="cpu", weights_only=False)
@@ -93,7 +97,7 @@ def main() -> int:
         dist.all_reduce(difference, op=dist.ReduceOp.MAX)
         assert difference == 0
         if check_gradients:
-            ranks = [None] * 8
+            ranks = [None] * world
             dist.all_gather_object(ranks, {"rank": rank, "device": local_rank, "task": task, "loss": float(loss.detach()),
                                           "frames_per_clip": len(mot[0]), "nonzero_gradient_branches": sorted(gradients)})
             details.append({"task": task, "ranks": ranks, "max_parameter_discrepancy": 0.})
@@ -120,8 +124,9 @@ def main() -> int:
     dist.barrier()
     if rank == 0:
         temporary.cleanup()
-        report = {"format": "locatemot-u2-eight-gpu-joint-contract-v1", "status": "PASS", "world_size": 8,
-                  "hidden_dim": 256, "clips_per_rank": 2, "global_clips": 16, "frames_per_clip": 8,
+        report = {"format": "locatemot-u2-eight-gpu-joint-contract-v1" if world == 8 else "locatemot-u2-two-gpu-joint-contract-v1",
+                  "status": "PASS", "world_size": world,
+                  "hidden_dim": 256, "clips_per_rank": 2, "global_clips": world * 2, "frames_per_clip": 8,
                   "bf16": True, "strict_all_tensor_mot_initialization": True,
                   "registered_optimizer_group_lrs": [5e-5, 1e-4], "alternating_tasks_same_all_ranks": True,
                   "scratch_task_schedule": ["mot", "ovmot", "mot"], "steps": details,
@@ -133,8 +138,9 @@ def main() -> int:
                   "tracking_candidates": "synthetic", "formal_joint_training_launched": False,
                   "benchmark_metrics_measured": False, "foundation_weights_modified": False,
                   "official_test_labels_read": False}
-        write_json(ROOT / "outputs/unified/u2/eval/ddp_eight_rank_joint.json", report)
-        print(json.dumps({"status": "PASS", "world_size": 8, "resume_next_update": "BIT_EXACT"}), flush=True)
+        name = "ddp_eight_rank_joint.json" if world == 8 else "ddp_two_rank_joint.json"
+        write_json(ROOT / "outputs/unified/u2/eval" / name, report)
+        print(json.dumps({"status": "PASS", "world_size": world, "resume_next_update": "BIT_EXACT"}), flush=True)
     dist.destroy_process_group()
     return 0
 

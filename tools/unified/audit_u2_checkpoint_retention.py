@@ -15,7 +15,7 @@ def small_u1_retention(native_runtime, packed_runtime) -> list[dict]:
     from PIL import Image
     from locatemot.unified.runtime.grounding_inference import run_grounding, prediction_arrays
     from tools.unified.u1_formal_expression_gate import query_records, read_gt, iou, average_precision
-    from tools.unified.u1_formal_generic_gate import read_gt as read_generic_gt
+    from tools.unified.u1_formal_generic_gate import read_gt as read_generic_gt, VOCABULARY
     # Small deterministic integration scope, separate from all original full
     # U1 references. Predictions run before opening each actual frame label.
     rows = [r for r in query_records() if r["row_kind"] == "positive" and r["target_ids"]]
@@ -26,7 +26,7 @@ def small_u1_retention(native_runtime, packed_runtime) -> list[dict]:
                     and set(donor["target_ids"]) != set(r["target_ids"]) and donor["sentence"] != r["sentence"])
         row, donor = pair
         results = []
-        for prompt in ("car .", row["sentence"], donor["sentence"]):
+        for prompt in (VOCABULARY, row["sentence"], donor["sentence"]):
             a = prediction_arrays(run_grounding(native_runtime, row["image"], prompt))
             b = prediction_arrays(run_grounding(packed_runtime, row["image"], prompt))
             assert all(torch.equal(x, y) for x, y in zip(a, b)), (dataset, prompt)
@@ -46,6 +46,7 @@ def small_u1_retention(native_runtime, packed_runtime) -> list[dict]:
                    "shuffled_ap50_top300": average_precision(results[2][:300], [], targets)}
         retention.append({"dataset": dataset, "video": row["video"], "frame": row["frame"],
                           "targets": len(targets), "generic_objects": len(generic_gt),
+                          "generic_vocabulary": VOCABULARY,
                           "native_metrics": metrics, "packed_metrics": metrics.copy(),
                           "all_box_score_tensors": "BIT_EXACT"})
         print(json.dumps({"stage": "U1_SMALL_INTEGRATION_PASS", "dataset": dataset}), flush=True)
@@ -72,9 +73,15 @@ def main() -> int:
     native = load_grounding_runtime(checkpoint=source, device=args.device, max_per_img=900)
     if native.missing_keys or native.unexpected_keys:
         raise ValueError("Native integration reference has incomplete model tensors")
-    if not all(torch.equal(value, packed.foundation.state_dict()[name]) for name,value in native.model.state_dict().items()):
-        raise ValueError("Frozen packed foundation changed: LOCATEMOT_U_BLOCKED_U2_FOUNDATION_FORGETTING")
-    results = small_u1_retention(native, packed.runtime)
+    try:
+        assert all(torch.equal(value, packed.foundation.state_dict()[name]) for name,value in native.model.state_dict().items()), "Frozen packed foundation tensors changed"
+        results = small_u1_retention(native, packed.runtime)
+    except AssertionError as error:
+        write_json(args.out, {"format": "locatemot-u2-packed-integration-retention-v1", "status": "FAIL",
+                             "checkpoint_sha256": digest(args.checkpoint), "foundation_sha256": native.checkpoint_sha256,
+                             "reference_only": False, "blocked_status": "LOCATEMOT_U_BLOCKED_U2_FOUNDATION_FORGETTING",
+                             "error": str(error), "ready_for_u3": False, "official_test_labels_read": False})
+        raise
     report = {"format": "locatemot-u2-packed-integration-retention-v1", "status": "PASS",
               "checkpoint_sha256": digest(args.checkpoint), "foundation_sha256": native.checkpoint_sha256,
               "reference_only": False, "frozen_foundation_all_tensors": "BIT_EXACT", "scope": results,

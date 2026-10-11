@@ -1,0 +1,15 @@
+{
+  "format": "locatemot-u2-readiness-gate-contract-v1",
+  "status": "PASS",
+  "synthetic_only": true,
+  "explicit_complete_requirement_set_preserved": true,
+  "missing_selected_audit_does_not_become_ready": true,
+  "independent_material_failure_cases": {
+    "every_ordinary_dataset_retained": "LOCATEMOT_U_BLOCKED_U2_NEGATIVE_TRANSFER",
+    "tao_teta_and_association": "LOCATEMOT_U_BLOCKED_U2_OVMOT",
+    "actual_packed_integration_retention": "LOCATEMOT_U_BLOCKED_U2_FOUNDATION_FORGETTING",
+    "actual_selected_causal_and_serialization": "LOCATEMOT_U_BLOCKED_U2_CAUSAL_CONTRACT"
+  },
+  "actual_experiments_used_to_claim_readiness": false,
+  "ready_for_u3": false
+}
