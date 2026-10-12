@@ -1,0 +1,691 @@
+{
+  "state": "COMPLETE",
+  "pid": 1073883,
+  "mode": "move_extracted_test_val_directories_atomic_symlink_exchange",
+  "train_directories_moved": false,
+  "moved": [
+    {
+      "volume": 1,
+      "source": "/data1/user/TAO-Amodal/frames/test/LaSOT",
+      "target": "/data3/user/TAO-Amodal/frames/test/LaSOT",
+      "allocated_bytes": 33429233664,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 0,
+      "source": "/data0/user/TAO-Amodal/frames/test/HACS",
+      "target": "/data3/user/TAO-Amodal/frames/test/HACS",
+      "allocated_bytes": 42214248448,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 0,
+      "source": "/data0/user/TAO-Amodal/frames/test/YFCC100M/v_77b4a6d66e35e9d2bc5eedb86f34bde",
+      "target": "/data3/user/TAO-Amodal/frames/test/YFCC100M/v_77b4a6d66e35e9d2bc5eedb86f34bde",
+      "allocated_bytes": 153440256,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 1,
+      "source": "/data1/user/TAO-Amodal/frames/val/YFCC100M",
+      "target": "/data3/user/TAO-Amodal/frames/val/YFCC100M",
+      "allocated_bytes": 6759493632,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 0,
+      "source": "/data0/user/TAO-Amodal/frames/test/YFCC100M/v_4f3d4b5fa4441976376d4e94a89c9",
+      "target": "/data3/user/TAO-Amodal/frames/test/YFCC100M/v_4f3d4b5fa4441976376d4e94a89c9",
+      "allocated_bytes": 149536768,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 0,
+      "source": "/data0/user/TAO-Amodal/frames/test/YFCC100M/v_e5924320912dc1917e69c0852f74ef1e",
+      "target": "/data3/user/TAO-Amodal/frames/test/YFCC100M/v_e5924320912dc1917e69c0852f74ef1e",
+      "allocated_bytes": 144269312,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 0,
+      "source": "/data0/user/TAO-Amodal/frames/test/YFCC100M/v_23544db9fc443c4391e69c3c44ff83d",
+      "target": "/data3/user/TAO-Amodal/frames/test/YFCC100M/v_23544db9fc443c4391e69c3c44ff83d",
+      "allocated_bytes": 140378112,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 1,
+      "source": "/data1/user/TAO-Amodal/frames/val/BDD/b2fbf86d-d5de82a4",
+      "target": "/data3/user/TAO-Amodal/frames/val/BDD/b2fbf86d-d5de82a4",
+      "allocated_bytes": 472100864,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 0,
+      "source": "/data0/user/TAO-Amodal/frames/test/YFCC100M/v_8d1777025fc4ce137cdcd425a5288b4",
+      "target": "/data3/user/TAO-Amodal/frames/test/YFCC100M/v_8d1777025fc4ce137cdcd425a5288b4",
+      "allocated_bytes": 133173248,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 0,
+      "source": "/data0/user/TAO-Amodal/frames/test/YFCC100M/v_a14934850b0a027dff8b97ca5e196ae",
+      "target": "/data3/user/TAO-Amodal/frames/test/YFCC100M/v_a14934850b0a027dff8b97ca5e196ae",
+      "allocated_bytes": 131256320,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 0,
+      "source": "/data0/user/TAO-Amodal/frames/test/YFCC100M/v_69a339d7e0f8866977b82810f4e884c4",
+      "target": "/data3/user/TAO-Amodal/frames/test/YFCC100M/v_69a339d7e0f8866977b82810f4e884c4",
+      "allocated_bytes": 122019840,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 1,
+      "source": "/data1/user/TAO-Amodal/frames/val/BDD/b433534e-ff3646aa",
+      "target": "/data3/user/TAO-Amodal/frames/val/BDD/b433534e-ff3646aa",
+      "allocated_bytes": 446935040,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 0,
+      "source": "/data0/user/TAO-Amodal/frames/test/YFCC100M/v_d7145d585b17eaebce3ef711365814ea",
+      "target": "/data3/user/TAO-Amodal/frames/test/YFCC100M/v_d7145d585b17eaebce3ef711365814ea",
+      "allocated_bytes": 114089984,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 0,
+      "source": "/data0/user/TAO-Amodal/frames/test/YFCC100M/v_3d13e78a27129b7582515599bd5755c",
+      "target": "/data3/user/TAO-Amodal/frames/test/YFCC100M/v_3d13e78a27129b7582515599bd5755c",
+      "allocated_bytes": 103583744,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 0,
+      "source": "/data0/user/TAO-Amodal/frames/test/YFCC100M/v_6ad3efb2c7dbecd73ca8923e534ea4",
+      "target": "/data3/user/TAO-Amodal/frames/test/YFCC100M/v_6ad3efb2c7dbecd73ca8923e534ea4",
+      "allocated_bytes": 102756352,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 1,
+      "source": "/data1/user/TAO-Amodal/frames/val/BDD/b3497248-54bbe9be",
+      "target": "/data3/user/TAO-Amodal/frames/val/BDD/b3497248-54bbe9be",
+      "allocated_bytes": 421994496,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 0,
+      "source": "/data0/user/TAO-Amodal/frames/test/YFCC100M/v_1a02df3e6cb4f17166cdbb59a44674",
+      "target": "/data3/user/TAO-Amodal/frames/test/YFCC100M/v_1a02df3e6cb4f17166cdbb59a44674",
+      "allocated_bytes": 101900288,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 0,
+      "source": "/data0/user/TAO-Amodal/frames/test/YFCC100M/v_3a583388c7458cb447244875815319d",
+      "target": "/data3/user/TAO-Amodal/frames/test/YFCC100M/v_3a583388c7458cb447244875815319d",
+      "allocated_bytes": 101163008,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 0,
+      "source": "/data0/user/TAO-Amodal/frames/test/YFCC100M/v_fe33f44071364cb9984b7e3b5f81595b",
+      "target": "/data3/user/TAO-Amodal/frames/test/YFCC100M/v_fe33f44071364cb9984b7e3b5f81595b",
+      "allocated_bytes": 101085184,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 1,
+      "source": "/data1/user/TAO-Amodal/frames/val/BDD/b3d6c39a-0a14df0d",
+      "target": "/data3/user/TAO-Amodal/frames/val/BDD/b3d6c39a-0a14df0d",
+      "allocated_bytes": 410877952,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 0,
+      "source": "/data0/user/TAO-Amodal/frames/test/YFCC100M/v_74dfbf68f8f1e379b36e95f17a3b655",
+      "target": "/data3/user/TAO-Amodal/frames/test/YFCC100M/v_74dfbf68f8f1e379b36e95f17a3b655",
+      "allocated_bytes": 98979840,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 0,
+      "source": "/data0/user/TAO-Amodal/frames/test/YFCC100M/v_666d4f6ecf23f5466a851f8205a2f",
+      "target": "/data3/user/TAO-Amodal/frames/test/YFCC100M/v_666d4f6ecf23f5466a851f8205a2f",
+      "allocated_bytes": 97329152,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 0,
+      "source": "/data0/user/TAO-Amodal/frames/test/YFCC100M/v_bc2ccd6093888a803298c6502f940fe",
+      "target": "/data3/user/TAO-Amodal/frames/test/YFCC100M/v_bc2ccd6093888a803298c6502f940fe",
+      "allocated_bytes": 96841728,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 0,
+      "source": "/data0/user/TAO-Amodal/frames/test/YFCC100M/v_f98d1d68f8e95fd6b239782647171",
+      "target": "/data3/user/TAO-Amodal/frames/test/YFCC100M/v_f98d1d68f8e95fd6b239782647171",
+      "allocated_bytes": 96567296,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 1,
+      "source": "/data1/user/TAO-Amodal/frames/val/BDD/b2cbf6d8-732b47be",
+      "target": "/data3/user/TAO-Amodal/frames/val/BDD/b2cbf6d8-732b47be",
+      "allocated_bytes": 409718784,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 0,
+      "source": "/data0/user/TAO-Amodal/frames/test/YFCC100M/v_bdba9438431e5e62ce3e34cdc17c47",
+      "target": "/data3/user/TAO-Amodal/frames/test/YFCC100M/v_bdba9438431e5e62ce3e34cdc17c47",
+      "allocated_bytes": 96485376,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 0,
+      "source": "/data0/user/TAO-Amodal/frames/test/YFCC100M/v_4a54fb18dba530e01f2538e363cd434b",
+      "target": "/data3/user/TAO-Amodal/frames/test/YFCC100M/v_4a54fb18dba530e01f2538e363cd434b",
+      "allocated_bytes": 95789056,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 0,
+      "source": "/data0/user/TAO-Amodal/frames/test/YFCC100M/v_fa8af599859e5ce947bc5234a6319d2b",
+      "target": "/data3/user/TAO-Amodal/frames/test/YFCC100M/v_fa8af599859e5ce947bc5234a6319d2b",
+      "allocated_bytes": 95518720,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 1,
+      "source": "/data1/user/TAO-Amodal/frames/val/BDD/b2778280-4179c4af",
+      "target": "/data3/user/TAO-Amodal/frames/val/BDD/b2778280-4179c4af",
+      "allocated_bytes": 398127104,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 0,
+      "source": "/data0/user/TAO-Amodal/frames/test/YFCC100M/v_f9c6b580b9c65c27c145b742e07231f0",
+      "target": "/data3/user/TAO-Amodal/frames/test/YFCC100M/v_f9c6b580b9c65c27c145b742e07231f0",
+      "allocated_bytes": 95219712,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 0,
+      "source": "/data0/user/TAO-Amodal/frames/test/YFCC100M/v_e6724fa43e62931d7231a8798176bd3f",
+      "target": "/data3/user/TAO-Amodal/frames/test/YFCC100M/v_e6724fa43e62931d7231a8798176bd3f",
+      "allocated_bytes": 94351360,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 0,
+      "source": "/data0/user/TAO-Amodal/frames/test/YFCC100M/v_be46b715abd56f97eab96b53118de8a2",
+      "target": "/data3/user/TAO-Amodal/frames/test/YFCC100M/v_be46b715abd56f97eab96b53118de8a2",
+      "allocated_bytes": 93405184,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 1,
+      "source": "/data1/user/TAO-Amodal/frames/val/BDD/b279bc06-b7bc42a9",
+      "target": "/data3/user/TAO-Amodal/frames/val/BDD/b279bc06-b7bc42a9",
+      "allocated_bytes": 372883456,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 0,
+      "source": "/data0/user/TAO-Amodal/frames/test/YFCC100M/v_b3b12dc41e315b9461a0d270b3ee92",
+      "target": "/data3/user/TAO-Amodal/frames/test/YFCC100M/v_b3b12dc41e315b9461a0d270b3ee92",
+      "allocated_bytes": 92155904,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 0,
+      "source": "/data0/user/TAO-Amodal/frames/test/YFCC100M/v_9494a79f2ede89d2cade2f358cdb6d19",
+      "target": "/data3/user/TAO-Amodal/frames/test/YFCC100M/v_9494a79f2ede89d2cade2f358cdb6d19",
+      "allocated_bytes": 92139520,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 0,
+      "source": "/data0/user/TAO-Amodal/frames/test/YFCC100M/v_2f794ea5a9d5c97f47add5bbc87c5c9",
+      "target": "/data3/user/TAO-Amodal/frames/test/YFCC100M/v_2f794ea5a9d5c97f47add5bbc87c5c9",
+      "allocated_bytes": 91648000,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 1,
+      "source": "/data1/user/TAO-Amodal/frames/val/BDD/b251064f-5f6b663e",
+      "target": "/data3/user/TAO-Amodal/frames/val/BDD/b251064f-5f6b663e",
+      "allocated_bytes": 363659264,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 0,
+      "source": "/data0/user/TAO-Amodal/frames/test/YFCC100M/v_5ac9fe8e95dcd44b6612c188dab26f79",
+      "target": "/data3/user/TAO-Amodal/frames/test/YFCC100M/v_5ac9fe8e95dcd44b6612c188dab26f79",
+      "allocated_bytes": 90705920,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 0,
+      "source": "/data0/user/TAO-Amodal/frames/test/YFCC100M/v_631c6a1444525d17ca153e158547dd",
+      "target": "/data3/user/TAO-Amodal/frames/test/YFCC100M/v_631c6a1444525d17ca153e158547dd",
+      "allocated_bytes": 90554368,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 0,
+      "source": "/data0/user/TAO-Amodal/frames/test/YFCC100M/v_c4182c64b524a8c6fd61a3637440bf",
+      "target": "/data3/user/TAO-Amodal/frames/test/YFCC100M/v_c4182c64b524a8c6fd61a3637440bf",
+      "allocated_bytes": 90533888,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 0,
+      "source": "/data0/user/TAO-Amodal/frames/test/YFCC100M/v_be97ef58eccb780fc5cb57d30e0578e",
+      "target": "/data3/user/TAO-Amodal/frames/test/YFCC100M/v_be97ef58eccb780fc5cb57d30e0578e",
+      "allocated_bytes": 88387584,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 1,
+      "source": "/data1/user/TAO-Amodal/frames/val/BDD/b3f3c908-baffb699",
+      "target": "/data3/user/TAO-Amodal/frames/val/BDD/b3f3c908-baffb699",
+      "allocated_bytes": 338636800,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 0,
+      "source": "/data0/user/TAO-Amodal/frames/test/YFCC100M/v_c4148a294c7510f9a350943fbeb1da5",
+      "target": "/data3/user/TAO-Amodal/frames/test/YFCC100M/v_c4148a294c7510f9a350943fbeb1da5",
+      "allocated_bytes": 88285184,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 0,
+      "source": "/data0/user/TAO-Amodal/frames/test/YFCC100M/v_224debaa9f0905f384f16fbb937b32",
+      "target": "/data3/user/TAO-Amodal/frames/test/YFCC100M/v_224debaa9f0905f384f16fbb937b32",
+      "allocated_bytes": 88018944,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 0,
+      "source": "/data0/user/TAO-Amodal/frames/test/YFCC100M/v_3aac68a91113557a49599abc905d490",
+      "target": "/data3/user/TAO-Amodal/frames/test/YFCC100M/v_3aac68a91113557a49599abc905d490",
+      "allocated_bytes": 86896640,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 1,
+      "source": "/data1/user/TAO-Amodal/frames/val/BDD/b439c4fe-5064fe59",
+      "target": "/data3/user/TAO-Amodal/frames/val/BDD/b439c4fe-5064fe59",
+      "allocated_bytes": 335331328,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 0,
+      "source": "/data0/user/TAO-Amodal/frames/test/YFCC100M/v_e2806e1f1dfe14d209dc8c989184477",
+      "target": "/data3/user/TAO-Amodal/frames/test/YFCC100M/v_e2806e1f1dfe14d209dc8c989184477",
+      "allocated_bytes": 84295680,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 0,
+      "source": "/data0/user/TAO-Amodal/frames/test/YFCC100M/v_3495b7c7ca2ab4bb335d75859447817",
+      "target": "/data3/user/TAO-Amodal/frames/test/YFCC100M/v_3495b7c7ca2ab4bb335d75859447817",
+      "allocated_bytes": 84250624,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 0,
+      "source": "/data0/user/TAO-Amodal/frames/test/YFCC100M/v_297bdbbedb637498d14ff89d9d13c2",
+      "target": "/data3/user/TAO-Amodal/frames/test/YFCC100M/v_297bdbbedb637498d14ff89d9d13c2",
+      "allocated_bytes": 83976192,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 1,
+      "source": "/data1/user/TAO-Amodal/frames/val/BDD/b2bceb54-4d3cc92c",
+      "target": "/data3/user/TAO-Amodal/frames/val/BDD/b2bceb54-4d3cc92c",
+      "allocated_bytes": 327143424,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 0,
+      "source": "/data0/user/TAO-Amodal/frames/test/YFCC100M/v_7e972a6c90998d5a290c8f0e1abce5f",
+      "target": "/data3/user/TAO-Amodal/frames/test/YFCC100M/v_7e972a6c90998d5a290c8f0e1abce5f",
+      "allocated_bytes": 83079168,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 0,
+      "source": "/data0/user/TAO-Amodal/frames/test/YFCC100M/v_7e11717cf0a786558855c8d9cd3ac0aa",
+      "target": "/data3/user/TAO-Amodal/frames/test/YFCC100M/v_7e11717cf0a786558855c8d9cd3ac0aa",
+      "allocated_bytes": 82202624,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 0,
+      "source": "/data0/user/TAO-Amodal/frames/test/YFCC100M/v_6313f0fd804a19e64e61894af697bb7",
+      "target": "/data3/user/TAO-Amodal/frames/test/YFCC100M/v_6313f0fd804a19e64e61894af697bb7",
+      "allocated_bytes": 81158144,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 1,
+      "source": "/data1/user/TAO-Amodal/frames/val/BDD/b2b74321-f6578001",
+      "target": "/data3/user/TAO-Amodal/frames/val/BDD/b2b74321-f6578001",
+      "allocated_bytes": 295301120,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 0,
+      "source": "/data0/user/TAO-Amodal/frames/test/YFCC100M/v_84decf6fd557c9951098ccd852969aea",
+      "target": "/data3/user/TAO-Amodal/frames/test/YFCC100M/v_84decf6fd557c9951098ccd852969aea",
+      "allocated_bytes": 80834560,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 0,
+      "source": "/data0/user/TAO-Amodal/frames/test/YFCC100M/v_907ee2961881a75c30d9561370db44e4",
+      "target": "/data3/user/TAO-Amodal/frames/test/YFCC100M/v_907ee2961881a75c30d9561370db44e4",
+      "allocated_bytes": 78925824,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 1,
+      "source": "/data1/user/TAO-Amodal/frames/val/BDD/b255cd6c-e5f99451",
+      "target": "/data3/user/TAO-Amodal/frames/val/BDD/b255cd6c-e5f99451",
+      "allocated_bytes": 290148352,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 0,
+      "source": "/data0/user/TAO-Amodal/frames/test/YFCC100M/v_b3ee5f7cbbb8b901d8a4d5df81026e",
+      "target": "/data3/user/TAO-Amodal/frames/test/YFCC100M/v_b3ee5f7cbbb8b901d8a4d5df81026e",
+      "allocated_bytes": 78835712,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 0,
+      "source": "/data0/user/TAO-Amodal/frames/test/YFCC100M/v_389eaedd1b515fcc93925a33901c88",
+      "target": "/data3/user/TAO-Amodal/frames/test/YFCC100M/v_389eaedd1b515fcc93925a33901c88",
+      "allocated_bytes": 77910016,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 0,
+      "source": "/data0/user/TAO-Amodal/frames/test/YFCC100M/v_b7e989203357fea4ae74e64539ee2e0",
+      "target": "/data3/user/TAO-Amodal/frames/test/YFCC100M/v_b7e989203357fea4ae74e64539ee2e0",
+      "allocated_bytes": 77049856,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 1,
+      "source": "/data1/user/TAO-Amodal/frames/val/BDD/b2f68bad-aa8f35d1",
+      "target": "/data3/user/TAO-Amodal/frames/val/BDD/b2f68bad-aa8f35d1",
+      "allocated_bytes": 276779008,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 0,
+      "source": "/data0/user/TAO-Amodal/frames/test/YFCC100M/v_d49eaacfa9eecaf940fbdf92fd58ba",
+      "target": "/data3/user/TAO-Amodal/frames/test/YFCC100M/v_d49eaacfa9eecaf940fbdf92fd58ba",
+      "allocated_bytes": 76623872,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 0,
+      "source": "/data0/user/TAO-Amodal/frames/test/YFCC100M/v_7e8c276ba6f7eea3ac36f135b74d7811",
+      "target": "/data3/user/TAO-Amodal/frames/test/YFCC100M/v_7e8c276ba6f7eea3ac36f135b74d7811",
+      "allocated_bytes": 76251136,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 0,
+      "source": "/data0/user/TAO-Amodal/frames/test/YFCC100M/v_a9b1966020998e7831b59d1b55e345",
+      "target": "/data3/user/TAO-Amodal/frames/test/YFCC100M/v_a9b1966020998e7831b59d1b55e345",
+      "allocated_bytes": 75399168,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 1,
+      "source": "/data1/user/TAO-Amodal/frames/val/BDD/b1d59b1f-a38aec79",
+      "target": "/data3/user/TAO-Amodal/frames/val/BDD/b1d59b1f-a38aec79",
+      "allocated_bytes": 274677760,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 0,
+      "source": "/data0/user/TAO-Amodal/frames/test/YFCC100M/v_e5e739711cc7ea3b496a4fa95e9e1029",
+      "target": "/data3/user/TAO-Amodal/frames/test/YFCC100M/v_e5e739711cc7ea3b496a4fa95e9e1029",
+      "allocated_bytes": 75395072,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 0,
+      "source": "/data0/user/TAO-Amodal/frames/test/YFCC100M/v_9bd37fedced53924070d5d9155f882",
+      "target": "/data3/user/TAO-Amodal/frames/test/YFCC100M/v_9bd37fedced53924070d5d9155f882",
+      "allocated_bytes": 75247616,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 0,
+      "source": "/data0/user/TAO-Amodal/frames/test/YFCC100M/v_672e64b6d787ff393d8d3df9861d13e",
+      "target": "/data3/user/TAO-Amodal/frames/test/YFCC100M/v_672e64b6d787ff393d8d3df9861d13e",
+      "allocated_bytes": 74981376,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 1,
+      "source": "/data1/user/TAO-Amodal/frames/val/BDD/b28ec521-8266e1a4",
+      "target": "/data3/user/TAO-Amodal/frames/val/BDD/b28ec521-8266e1a4",
+      "allocated_bytes": 256212992,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 0,
+      "source": "/data0/user/TAO-Amodal/frames/test/YFCC100M/v_1159a9e3237eeacb0511eecc61c5e89",
+      "target": "/data3/user/TAO-Amodal/frames/test/YFCC100M/v_1159a9e3237eeacb0511eecc61c5e89",
+      "allocated_bytes": 73973760,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 0,
+      "source": "/data0/user/TAO-Amodal/frames/test/YFCC100M/v_786ca16e1ae99adfe075134bdfad64c",
+      "target": "/data3/user/TAO-Amodal/frames/test/YFCC100M/v_786ca16e1ae99adfe075134bdfad64c",
+      "allocated_bytes": 73498624,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 1,
+      "source": "/data1/user/TAO-Amodal/frames/val/BDD/b4448a1d-e9c03bb5",
+      "target": "/data3/user/TAO-Amodal/frames/val/BDD/b4448a1d-e9c03bb5",
+      "allocated_bytes": 254959616,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 0,
+      "source": "/data0/user/TAO-Amodal/frames/test/YFCC100M/v_c9b8eb148de1329cbd946f21d26cc65",
+      "target": "/data3/user/TAO-Amodal/frames/test/YFCC100M/v_c9b8eb148de1329cbd946f21d26cc65",
+      "allocated_bytes": 73318400,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 0,
+      "source": "/data0/user/TAO-Amodal/frames/test/YFCC100M/v_8cd313bdff216c559bd53de561dfa37a",
+      "target": "/data3/user/TAO-Amodal/frames/test/YFCC100M/v_8cd313bdff216c559bd53de561dfa37a",
+      "allocated_bytes": 73228288,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 0,
+      "source": "/data0/user/TAO-Amodal/frames/test/YFCC100M/v_63521302e69882a3d67f0657b141fcc",
+      "target": "/data3/user/TAO-Amodal/frames/test/YFCC100M/v_63521302e69882a3d67f0657b141fcc",
+      "allocated_bytes": 73195520,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 1,
+      "source": "/data1/user/TAO-Amodal/frames/val/BDD/b29f09ea-911177ce",
+      "target": "/data3/user/TAO-Amodal/frames/val/BDD/b29f09ea-911177ce",
+      "allocated_bytes": 254509056,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 0,
+      "source": "/data0/user/TAO-Amodal/frames/test/YFCC100M/v_5c2eca2bee220cc23e2e49812b91e",
+      "target": "/data3/user/TAO-Amodal/frames/test/YFCC100M/v_5c2eca2bee220cc23e2e49812b91e",
+      "allocated_bytes": 72466432,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 0,
+      "source": "/data0/user/TAO-Amodal/frames/test/YFCC100M/v_a22d1a7c6d21979b9d8f41c59d39a9",
+      "target": "/data3/user/TAO-Amodal/frames/test/YFCC100M/v_a22d1a7c6d21979b9d8f41c59d39a9",
+      "allocated_bytes": 71757824,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 0,
+      "source": "/data0/user/TAO-Amodal/frames/test/YFCC100M/v_9e2fd037a94dedadb7b48dfad57e45b7",
+      "target": "/data3/user/TAO-Amodal/frames/test/YFCC100M/v_9e2fd037a94dedadb7b48dfad57e45b7",
+      "allocated_bytes": 70852608,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 1,
+      "source": "/data1/user/TAO-Amodal/frames/val/BDD/b322412a-b47af37f",
+      "target": "/data3/user/TAO-Amodal/frames/val/BDD/b322412a-b47af37f",
+      "allocated_bytes": 254013440,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 0,
+      "source": "/data0/user/TAO-Amodal/frames/test/YFCC100M/v_f04988f295967c9e96f233cd9a65bbad",
+      "target": "/data3/user/TAO-Amodal/frames/test/YFCC100M/v_f04988f295967c9e96f233cd9a65bbad",
+      "allocated_bytes": 70807552,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 0,
+      "source": "/data0/user/TAO-Amodal/frames/test/YFCC100M/v_ab945066e09cb6be6be1b7937d3b9e82",
+      "target": "/data3/user/TAO-Amodal/frames/test/YFCC100M/v_ab945066e09cb6be6be1b7937d3b9e82",
+      "allocated_bytes": 70426624,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 1,
+      "source": "/data1/user/TAO-Amodal/frames/val/BDD/b1ee702d-0ae1fc10",
+      "target": "/data3/user/TAO-Amodal/frames/val/BDD/b1ee702d-0ae1fc10",
+      "allocated_bytes": 242229248,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 0,
+      "source": "/data0/user/TAO-Amodal/frames/test/YFCC100M/v_e4249083229931e9f2164044e94acda7",
+      "target": "/data3/user/TAO-Amodal/frames/test/YFCC100M/v_e4249083229931e9f2164044e94acda7",
+      "allocated_bytes": 70135808,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 0,
+      "source": "/data0/user/TAO-Amodal/frames/test/YFCC100M/v_af5e547991e5d238887adee2fa8d22",
+      "target": "/data3/user/TAO-Amodal/frames/test/YFCC100M/v_af5e547991e5d238887adee2fa8d22",
+      "allocated_bytes": 70111232,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 0,
+      "source": "/data0/user/TAO-Amodal/frames/test/YFCC100M/v_e66781ecfaee7322d65c0fcd3c15f3b",
+      "target": "/data3/user/TAO-Amodal/frames/test/YFCC100M/v_e66781ecfaee7322d65c0fcd3c15f3b",
+      "allocated_bytes": 69545984,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 1,
+      "source": "/data1/user/TAO-Amodal/frames/val/BDD/b27688b6-1af27060",
+      "target": "/data3/user/TAO-Amodal/frames/val/BDD/b27688b6-1af27060",
+      "allocated_bytes": 238231552,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 0,
+      "source": "/data0/user/TAO-Amodal/frames/test/YFCC100M/v_a763adbf59f8fcdb181ca9bbe86ef28a",
+      "target": "/data3/user/TAO-Amodal/frames/test/YFCC100M/v_a763adbf59f8fcdb181ca9bbe86ef28a",
+      "allocated_bytes": 69382144,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 0,
+      "source": "/data0/user/TAO-Amodal/frames/test/YFCC100M/v_3e27bfe566f648e85db997b9aa19c847",
+      "target": "/data3/user/TAO-Amodal/frames/test/YFCC100M/v_3e27bfe566f648e85db997b9aa19c847",
+      "allocated_bytes": 68296704,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 0,
+      "source": "/data0/user/TAO-Amodal/frames/test/YFCC100M/v_acfedc3a9691ad953574215c47431578",
+      "target": "/data3/user/TAO-Amodal/frames/test/YFCC100M/v_acfedc3a9691ad953574215c47431578",
+      "allocated_bytes": 28880896,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 1,
+      "source": "/data1/user/TAO-Amodal/frames/val/BDD/b1e1a7b8-a7426a97",
+      "target": "/data3/user/TAO-Amodal/frames/val/BDD/b1e1a7b8-a7426a97",
+      "allocated_bytes": 237121536,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 1,
+      "source": "/data1/user/TAO-Amodal/frames/val/BDD/b2715214-d38332ea",
+      "target": "/data3/user/TAO-Amodal/frames/val/BDD/b2715214-d38332ea",
+      "allocated_bytes": 235315200,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 1,
+      "source": "/data1/user/TAO-Amodal/frames/val/BDD/b22a4d9f-48b2e986",
+      "target": "/data3/user/TAO-Amodal/frames/val/BDD/b22a4d9f-48b2e986",
+      "allocated_bytes": 233603072,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 1,
+      "source": "/data1/user/TAO-Amodal/frames/val/BDD/b3a58c04-e89d17a2",
+      "target": "/data3/user/TAO-Amodal/frames/val/BDD/b3a58c04-e89d17a2",
+      "allocated_bytes": 226447360,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    },
+    {
+      "volume": 1,
+      "source": "/data1/user/TAO-Amodal/frames/val/BDD/b39fe3cd-398678c5",
+      "target": "/data3/user/TAO-Amodal/frames/val/BDD/b39fe3cd-398678c5",
+      "allocated_bytes": 162447360,
+      "state": "VERIFIED_COPIED_ATOMICALLY_LINKED"
+    }
+  ],
+  "freed_allocated_bytes": {
+    "0": 48119009280,
+    "1": 48218132480
+  },
+  "final_directory_bytes": {
+    "/data0/user": 48120467456,
+    "/data1/user": 48219656192,
+    "/data2/user": 317591363584,
+    "/data3/user": 191813926912,
+    "/home/user": 1364672512
+  },
+  "df": "Filesystem      Size  Used Avail Use% Mounted on\n/dev/nvme1n1p1  3.5T  3.2T  310G  92% /data0\n/dev/nvme0n1    3.5T  3.0T  296G  92% /data1\n/dev/nvme3n1p1  3.5T  2.7T  783G  78% /data3\n",
+  "post_completion_validation": {
+    "original_paths_resolve": 95,
+    "sample_images_verified_through_original_paths": 95,
+    "deleted_archives_absent": true,
+    "old_directory_copies_absent": true
+  }
+}

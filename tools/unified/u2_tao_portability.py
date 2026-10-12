@@ -237,7 +237,8 @@ def main() -> int:
             log = (args.out / f"worker_{index}.log").open("a")
             command = [sys.executable, "-u", str(Path(__file__).resolve()), "--protocol", *map(str, args.protocol),
                        "--checkpoint", str(args.checkpoint), "--expected-foundation-sha256", args.expected_foundation_sha256,
-                       "--out", str(args.out), "--extraction-pid", str(args.extraction_pid),
+                       "--out", str(args.out), "--measurements-dir", str(args.measurements_dir),
+                       "--extraction-pid", str(args.extraction_pid),
                        "--worker-index", str(index), "--worker-count", str(len(args.gpus)), "--gpu", str(gpu)]
             if args.reuse_frozen_text:
                 command.append("--reuse-frozen-text")

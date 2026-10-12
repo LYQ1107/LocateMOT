@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "reference_only": true,
+  "foundation_sha256": "1d9077ae603f40de0e955a11a88083f914f98faa967bc46cdd06bcdfb5129688",
+  "completed_optimizer_steps": 1250,
+  "formal_full_audit": false,
+  "ready_for_u3": false,
+  "launchers": {
+    "ordinary": {
+      "actual_worker_exit": 0,
+      "smoke_images": 1,
+      "measurements_dir_forwarded": true,
+      "real_adapted_checkpoint_loaded": true,
+      "terminal_state": "SMOKE_COMPLETE"
+    },
+    "tao_ctao": {
+      "actual_worker_exit": 0,
+      "smoke_images": 2,
+      "measurements_dir_forwarded": true,
+      "real_adapted_checkpoint_loaded": true,
+      "terminal_state": "SMOKE_COMPLETE"
+    }
+  }
+}

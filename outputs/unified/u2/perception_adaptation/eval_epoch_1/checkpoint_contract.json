@@ -1,0 +1,8 @@
+{
+  "state": "PASS",
+  "epoch": 1,
+  "optimizer_steps": 1250,
+  "foundation_sha256": "1d9077ae603f40de0e955a11a88083f914f98faa967bc46cdd06bcdfb5129688",
+  "frozen_tensors_compared": 265,
+  "bert_and_swin_stage_0_1_exactly_retained": true
+}

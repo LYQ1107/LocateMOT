@@ -5,7 +5,7 @@
   "u1_foundation_sha256": "4efc35ce70be5cddf2c4d9a0f91bc4edef3e9ec5277a819211ba4ac42e0d7d26",
   "u2_final_checkpoint": null,
   "perception_portability": {
-    "status": "BLOCKED_NOT_MEASURED",
+    "status": "FAIL_PORTABILITY_GATES",
     "bdd100k_top150_iou050": 0.8218958750175017,
     "dancetrack_top150_iou050": 0.9963135359852187,
     "dancetrack_top300_iou050": 0.9976859665642155,
@@ -26,11 +26,13 @@
     "ordinary_unmeasured": [],
     "mot17_top300_iou050": 0.8062534793097049,
     "mot20_top300_iou050": 0.8846728452361019,
-    "tao_base_top300_iou050": null,
-    "tao_novel_top300_iou050": null,
+    "tao_base_top300_iou050": 0.9577756576257326,
+    "tao_novel_top300_iou050": 0.9084069349035002,
     "kitti_original_gt_top150_iou050": 0.928503937007874,
     "kitti_original_gt_top300_iou050": 0.9405354330708662,
-    "bdd100k_top300_iou050": 0.8525453124788286
+    "bdd100k_top300_iou050": 0.8525453124788286,
+    "ctao_base_top300_iou050": 0.9570433509190245,
+    "tao_gate_pass": true
   },
   "causal_contract": "PASS",
   "eight_gpu_temporal_core_contract": "outputs/unified/u2/eval/ddp_eight_rank_core.json",
@@ -48,9 +50,10 @@
   },
   "ordinary_baseline_queue": {
     "state": "WAITING_PERCEPTION_SELECTION",
-    "controller_pid": 864319,
+    "controller_pid": 1089958,
     "run_state": "outputs/unified/u2/ordinary_baseline/run_state.json",
-    "cache_and_simple_baseline_launch_after_full_selection_only": true
+    "cache_and_simple_baseline_launch_after_full_selection_only": true,
+    "blocking_session": 95952
   },
   "kitti_original_gt_perception_audit": {
     "state": "COMPLETE",
@@ -74,18 +77,18 @@
   "mot_simple_baseline": null,
   "mot_only_baseline": null,
   "joint_mot_ovmot": null,
-  "foundation_retention": "REFERENCE_FROZEN_NO_ADAPTATION",
+  "foundation_retention": "FULL_U1_RETENTION_PENDING_FOR_U2_P_EPOCH1",
   "official_test_labels_read": false,
   "refer_kitti_official_eval_labels_read": false,
   "rmot_tracking_launched": false,
   "prompt_tracking_launched": false,
-  "status": "LOCATEMOT_U_BLOCKED_U2_PERCEPTION_PORTABILITY",
+  "status": "LOCATEMOT_U_U2_IN_PROGRESS",
   "stop": "TRACK_TRAINING_HELD_BY_U2_P_GATES",
-  "execution_state": "FULL_F0_ORDINARY_AUDITS_COMPLETE_TAO_AUDIT_ACTIVE_BOUNDED_PERCEPTION_CONTROLLER_WAITING",
+  "execution_state": "U2_P_EPOCH1_1250_STEPS_COMPLETE_FULL_AUDIT_RECOVERED",
   "track_training_eligible": false,
   "ready_for_u3": false,
   "tao_perception_audit": {
-    "status": "RUNNING",
+    "status": "COMPLETE",
     "protocols": [
       "outputs/unified/u2/protocol/tao_portability.json",
       "outputs/unified/u2/protocol/ctao_portability.json"
@@ -99,7 +102,15 @@
       4,
       5,
       6
-    ]
+    ],
+    "blocking_session_exit_code": 0,
+    "tao_validation_images_evaluated": 36375,
+    "ctao_original_training_images_evaluated": 17131,
+    "tao_base_recall": 0.9577756576257326,
+    "tao_novel_recall": 0.9084069349035002,
+    "ctao_base_recall": 0.9570433509190245,
+    "completion_integrity": "PASS_53506_EXACT_FRAMES_SIX_SHARDS_REGISTERED_DENOMINATORS",
+    "integrity_and_loader_proof": "outputs/unified/u2/eval/perception_native_checkpoint_load_contract.json"
   },
   "dance_perception_audit": {
     "status": "COMPLETE",
@@ -156,7 +167,7 @@
     "blocking_session_exit_code": 0
   },
   "perception_adaptation": {
-    "state": "WAITING_EXISTING_JOBS",
+    "state": "RUNNING",
     "recipe": "outputs/unified/u2/protocol/perception_adaptation_recipe.json",
     "model_contract_cpu": "outputs/unified/u2/perception_adaptation/model_contract_cpu.json",
     "native_replay_smoke": "outputs/unified/u2/perception_adaptation/native_replay_smoke.json",
@@ -168,7 +179,7 @@
     "global_batch": 16,
     "steps_per_epoch": 1250,
     "maximum_optimizer_steps": 2500,
-    "optimization_launched": false,
+    "optimization_launched": true,
     "track_training_launched": false,
     "controller_script": "tools/unified/run_u2_perception_adaptation.py",
     "evaluation_script": "tools/unified/eval_u2_perception_adaptation.py",
@@ -177,9 +188,29 @@
     "replay_rows": 20000,
     "max_prompt_tokens": 21,
     "replay_sha256": "1be4a6e2d03fd3f59aeeca8b931c3f638a2ca1db015ea7d54afa2ca725970947",
-    "phase": "F0_AND_SOURCE_DATA",
+    "phase": "FULL_AUDIT_EPOCH_1",
     "run_state": "/data2/user/LocateMOT/outputs/unified/u2/perception_adaptation/run_state.json",
-    "controller_pid": 854970
+    "controller_pid": 1089957,
+    "load_failure_repair": {
+      "first_failure": "native MMEngine implicit weights_only=True rejects U1R2 HistoryBuffer before the first optimizer step",
+      "fix": "process-local TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD=1, as in original U1 gradient audit",
+      "regression": "PASS_ACTUAL_U1R2_NATIVE_LOADER",
+      "proof": "outputs/unified/u2/eval/perception_native_checkpoint_load_contract.json",
+      "completed_optimizer_steps_before_failure": 0
+    },
+    "recovery_receipt": "outputs/unified/u2/recovery_20261012/owners.json",
+    "blocking_session": 95952,
+    "completed_optimizer_steps": 1250,
+    "completed_epoch1_checkpoint": {
+      "path": "outputs/unified/u2/perception_adaptation/training/epoch_1.pth",
+      "sha256": "1d9077ae603f40de0e955a11a88083f914f98faa967bc46cdd06bcdfb5129688"
+    },
+    "epoch1_frozen_tensor_contract": "outputs/unified/u2/perception_adaptation/eval_epoch_1/checkpoint_contract.json",
+    "adapted_worker_argument_repair": {
+      "cause": "parent omitted separate measurements directory in both MOT and TAO worker commands",
+      "regression": "outputs/unified/u2/eval/adapted_portability_launcher_contract.json",
+      "resume_unit": "full epoch1 evaluation; never rerun completed epoch1 updates"
+    }
   },
   "temporal_supervision_contract": "outputs/unified/u2/eval/temporal_supervision_contract.json",
   "original_train_supervision_contract": "outputs/unified/u2/eval/original_train_supervision_contract.json",
@@ -196,8 +227,8 @@
   },
   "mot_only_follow_on_queue": {
     "state": "WAITING_ORDINARY_CACHE_AND_SIMPLE",
-    "controller_pid": 870157,
-    "blocking_session": 38396,
+    "controller_pid": 1089959,
+    "blocking_session": 95952,
     "run_state": "outputs/unified/u2/mot_only_queue/run_state.json",
     "formal_optimization_launched": false
   },
@@ -224,13 +255,14 @@
   },
   "joint_queue": {
     "state": "WAITING_ELIGIBLE_MOT_ONLY",
-    "controller_pid": 883611,
-    "mot_only_controller_pid": 870157,
+    "controller_pid": 1089960,
+    "mot_only_controller_pid": 1089959,
     "formal_joint_training_launched": false,
     "ovmot_cache_started": false,
     "maximum_optimizer_steps": 4000,
     "run_state": "outputs/unified/u2/joint_queue/run_state.json",
-    "launch_requires_recomputed_eligible_mot_only": true
+    "launch_requires_recomputed_eligible_mot_only": true,
+    "blocking_session": 95952
   },
   "native_checkpoint_implementation": {
     "format": "locatemot-u-u2-shared-track-core-v1",
@@ -264,8 +296,8 @@
   },
   "finalization_queue": {
     "state": "WAITING_ORIGINAL_JOINT_OWNER",
-    "controller_pid": 896659,
-    "joint_controller_pid": 883611,
+    "controller_pid": 1089961,
+    "joint_controller_pid": 1089960,
     "pack_started": false,
     "ready_for_u3": false,
     "run_state": "outputs/unified/u2/finalization/run_state.json",
@@ -274,7 +306,8 @@
     "actual_selected_core_audit": "tools/unified/audit_u2_selected_core.py",
     "audit_entry_contract": "outputs/unified/u2/eval/selected_core_audit_entry_contract.json",
     "readiness_gate_contract": "outputs/unified/u2/eval/readiness_gate_contract.json",
-    "current_readiness_hold": "outputs/unified/u2/eval/readiness_current_hold.json"
+    "current_readiness_hold": "outputs/unified/u2/eval/readiness_current_hold.json",
+    "blocking_session": 95952
   },
   "native_image_batch_probe": {
     "status": "REJECT_NATIVE_BATCH_FOR_CURRENT_CACHE",
@@ -282,5 +315,15 @@
     "applied_to_formal_cache": false,
     "kept_inference_policy": "native singleton per image plus proven fixed-text reuse",
     "scope": "two actual F0 MOT17 frames; proposal parity fails before any full-vocabulary batching integration"
+  },
+  "storage_rebalance": {
+    "state": "COMPLETE",
+    "completed_archives_removed": 21,
+    "archive_gib_freed": 345.6736869812012,
+    "data0_to_data3_gib": 44.8143196105957,
+    "data1_to_data3_gib": 44.90663528442383,
+    "original_paths_preserved": true,
+    "train_directories_moved": false,
+    "receipt": "outputs/unified/u2/storage_rebalance_20261012/image_migration_result.json"
   }
 }

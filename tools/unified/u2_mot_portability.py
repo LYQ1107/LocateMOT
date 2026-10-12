@@ -203,7 +203,7 @@ def main() -> int:
         for index, gpu in enumerate(args.gpus):
             command = [sys.executable, "-u", str(Path(__file__).resolve()), "--protocol", *map(str, args.protocol),
                        "--checkpoint", str(args.checkpoint), "--expected-foundation-sha256", args.expected_foundation_sha256,
-                       "--out", str(args.out),
+                       "--out", str(args.out), "--measurements-dir", str(args.measurements_dir),
                        "--worker-index", str(index), "--worker-count", str(len(args.gpus)), "--gpu", str(gpu)]
             log = (args.out / f"worker_{index}.log").open("a")
             process = subprocess.Popen(command, env=env, stdout=log, stderr=subprocess.STDOUT)

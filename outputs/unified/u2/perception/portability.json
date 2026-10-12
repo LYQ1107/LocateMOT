@@ -12887,6 +12887,7 @@
         "source": "https://huggingface.co/clarkqian/COVTrack",
         "variant": "ctao_base.json"
       },
+      "base_recall_iou050": 0.9570433509190245,
       "candidate_roots": [
         {
           "exists": false,
@@ -12915,7 +12916,35 @@
       "dataset": "ctao",
       "kind": "ovmot",
       "license": "C-TAO continuous annotation release; local acquisition required",
-      "metrics_status": "NOT_MEASURED",
+      "measurement": {
+        "counts": {
+          "base_gt_total": 53263,
+          "base_hits_top300": 50975,
+          "novel_gt_total": 0,
+          "novel_hits_top300": 0,
+          "unmapped_gt_total": 0,
+          "unmapped_hits_top300": 0
+        },
+        "coverage_keys_sha256": "baec04c678f39e3b22de32bbac43d0508fd2e00079a1a86d0eb67252dab981ab",
+        "dataset": "ctao",
+        "every_frame_backbone_calls_one": true,
+        "format": "locatemot-u2-portability-measurement-v1",
+        "foundation_sha256": "4efc35ce70be5cddf2c4d9a0f91bc4edef3e9ec5277a819211ba4ac42e0d7d26",
+        "images_evaluated": 17131,
+        "images_expected": 17131,
+        "official_test_labels_read": false,
+        "proposals_per_frame": {
+          "max": 300,
+          "mean": 300.0,
+          "min": 300
+        },
+        "protocol_path": "/data2/user/LocateMOT/outputs/unified/u2/protocol/ctao_portability.json",
+        "protocol_sha256": "d70dbf7d3c35b9285878a27b5aeb19ed10234f8b05cf6148f7bdc61b8eb48941",
+        "status": "COMPLETE",
+        "worker_artifacts": "/data2/user/LocateMOT/outputs/unified/u2/perception/tao_frozen_foundation"
+      },
+      "metrics_status": "MEASURED",
+      "novel_recall_iou050": null,
       "portability_training_allowed": true,
       "selected_root": "/data2/user/LocateMOT/data/C-TAO",
       "split_protocol": "C-TAO train base annotations; TAO validation remains held out",
@@ -13972,6 +14001,7 @@
         "shard_manifest": "outputs/unified/u2/protocol/tao_shard_manifest.json",
         "source": "/\u6211\u7684\u8d44\u6e90/TAO-Amodal"
       },
+      "base_recall_iou050": 0.9577756576257326,
       "candidate_roots": [
         {
           "exists": false,
@@ -14000,7 +14030,35 @@
       "dataset": "tao",
       "kind": "ovmot",
       "license": "TAO research terms; local acquisition required",
-      "metrics_status": "NOT_MEASURED",
+      "measurement": {
+        "counts": {
+          "base_gt_total": 110055,
+          "base_hits_top300": 105408,
+          "novel_gt_total": 3057,
+          "novel_hits_top300": 2777,
+          "unmapped_gt_total": 314,
+          "unmapped_hits_top300": 290
+        },
+        "coverage_keys_sha256": "336ff061d9e69a2aadf6e21635b89ddb4b6f0ae4f86ca2e32b982b90e57e8fc9",
+        "dataset": "tao",
+        "every_frame_backbone_calls_one": true,
+        "format": "locatemot-u2-portability-measurement-v1",
+        "foundation_sha256": "4efc35ce70be5cddf2c4d9a0f91bc4edef3e9ec5277a819211ba4ac42e0d7d26",
+        "images_evaluated": 36375,
+        "images_expected": 36375,
+        "official_test_labels_read": false,
+        "proposals_per_frame": {
+          "max": 300,
+          "mean": 300.0,
+          "min": 300
+        },
+        "protocol_path": "/data2/user/LocateMOT/outputs/unified/u2/protocol/tao_portability.json",
+        "protocol_sha256": "1341afb98df7606d393093d05ffd9daa2b7b0ca7f275ed8e8ed26b3738361094",
+        "status": "COMPLETE",
+        "worker_artifacts": "/data2/user/LocateMOT/outputs/unified/u2/perception/tao_frozen_foundation"
+      },
+      "metrics_status": "MEASURED",
+      "novel_recall_iou050": 0.9084069349035002,
       "portability_training_allowed": true,
       "selected_root": "/data2/user/LocateMOT/data/TAO-Amodal",
       "split_protocol": "TAO train for learning, TAO validation for evaluation",
@@ -14034,29 +14092,29 @@
   "ordinary_unmeasured": [],
   "refer_kitti_official_eval_labels_read": false,
   "stage": "U2-P",
-  "status": "BLOCKED_NOT_MEASURED",
-  "tao_gate_pass": false,
+  "status": "FAIL_PORTABILITY_GATES",
+  "tao_gate_pass": true,
   "tao_insufficient_below": 0.5,
   "tao_missing_local_data": false,
   "tao_stream_gates": {
     "ctao": {
-      "base_recall_iou050": null,
+      "base_recall_iou050": 0.9570433509190245,
       "novel_recall_iou050": null,
       "novel_required": false,
-      "pass": false,
-      "unmeasured": true
+      "pass": true,
+      "unmeasured": false
     },
     "tao": {
-      "base_recall_iou050": null,
-      "novel_recall_iou050": null,
+      "base_recall_iou050": 0.9577756576257326,
+      "novel_recall_iou050": 0.9084069349035002,
       "novel_required": true,
-      "pass": false,
-      "unmeasured": true
+      "pass": true,
+      "unmeasured": false
     }
   },
   "tao_target_base": 0.7,
   "tao_target_novel": 0.6,
-  "tao_unmeasured": true,
+  "tao_unmeasured": false,
   "top_k_crowded_override": 300,
   "top_k_default": 150,
   "training_eligible": false

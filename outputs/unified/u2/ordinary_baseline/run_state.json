@@ -1,8 +1,8 @@
 {
   "format": "locatemot-u2-ordinary-baseline-queue-v1",
   "state": "WAITING_PERCEPTION_SELECTION",
-  "perception_pid": 854970,
-  "controller_pid": 864319,
+  "perception_pid": 1089957,
+  "controller_pid": 1089958,
   "kitti_audit_pid": 864092,
   "formal_cache_started": false,
   "formal_track_training_launched": false

@@ -1,0 +1,191 @@
+{
+  "state": "COMPLETE",
+  "files": [
+    {
+      "path": "/data0/user/TAO-Amodal/frames/train/Charades.zip",
+      "bytes": 5454572564,
+      "allocated_bytes": 5454577664,
+      "images": 70286,
+      "kind": "completed_archive"
+    },
+    {
+      "path": "/data0/user/TAO-Amodal/frames/train/YFCC100M.zip",
+      "bytes": 3410104357,
+      "allocated_bytes": 3410112512,
+      "images": 57866,
+      "kind": "completed_archive"
+    },
+    {
+      "path": "/data0/user/TAO-Amodal/frames/val/ArgoVerse.zip",
+      "bytes": 21129197708,
+      "allocated_bytes": 21129207808,
+      "images": 44474,
+      "kind": "completed_archive"
+    },
+    {
+      "path": "/data0/user/TAO-Amodal/frames/val/Charades.zip",
+      "bytes": 12724038790,
+      "allocated_bytes": 12724043776,
+      "images": 142074,
+      "kind": "completed_archive"
+    },
+    {
+      "path": "/data0/user/TAO-Amodal/frames/test/HACS.zip",
+      "bytes": 41473555306,
+      "allocated_bytes": 41473564672,
+      "images": 344798,
+      "kind": "completed_archive"
+    },
+    {
+      "path": "/data0/user/TAO-Amodal/frames/test/YFCC100M.zip",
+      "bytes": 10278244701,
+      "allocated_bytes": 10278252544,
+      "images": 173308,
+      "kind": "completed_archive"
+    },
+    {
+      "path": "/data1/user/TAO-Amodal/frames/train/LaSOT.zip",
+      "bytes": 11482289418,
+      "allocated_bytes": 11482300416,
+      "images": 118091,
+      "kind": "completed_archive"
+    },
+    {
+      "path": "/data1/user/TAO-Amodal/frames/val/BDD.zip",
+      "bytes": 19131283087,
+      "allocated_bytes": 19131289600,
+      "images": 161508,
+      "kind": "completed_archive"
+    },
+    {
+      "path": "/data1/user/TAO-Amodal/frames/val/LaSOT.zip",
+      "bytes": 22125419752,
+      "allocated_bytes": 22125424640,
+      "images": 234111,
+      "kind": "completed_archive"
+    },
+    {
+      "path": "/data1/user/TAO-Amodal/frames/val/YFCC100M.zip",
+      "bytes": 6524282044,
+      "allocated_bytes": 6524289024,
+      "images": 116318,
+      "kind": "completed_archive"
+    },
+    {
+      "path": "/data1/user/TAO-Amodal/frames/test/LaSOT.zip",
+      "bytes": 32356841625,
+      "allocated_bytes": 32356847616,
+      "images": 351092,
+      "kind": "completed_archive"
+    },
+    {
+      "path": "/data2/user/TAO-Amodal/frames/train/BDD.zip",
+      "bytes": 9699236175,
+      "allocated_bytes": 9699241984,
+      "images": 84294,
+      "kind": "completed_archive"
+    },
+    {
+      "path": "/data2/user/TAO-Amodal/frames/train/HACS.zip",
+      "bytes": 13837702122,
+      "allocated_bytes": 13837709312,
+      "images": 116500,
+      "kind": "completed_archive"
+    },
+    {
+      "path": "/data2/user/TAO-Amodal/frames/val/AVA.zip",
+      "bytes": 12697042116,
+      "allocated_bytes": 12697059328,
+      "images": 118277,
+      "kind": "completed_archive"
+    },
+    {
+      "path": "/data2/user/TAO-Amodal/frames/test/AVA.zip",
+      "bytes": 26882454272,
+      "allocated_bytes": 26882469888,
+      "images": 174898,
+      "kind": "completed_archive"
+    },
+    {
+      "path": "/data2/user/TAO-Amodal/frames/test/ArgoVerse.zip",
+      "bytes": 29790550727,
+      "allocated_bytes": 29790560256,
+      "images": 62572,
+      "kind": "completed_archive"
+    },
+    {
+      "path": "/data3/user/TAO-Amodal/frames/train/AVA.zip",
+      "bytes": 7384778815,
+      "allocated_bytes": 7384784896,
+      "images": 65089,
+      "kind": "completed_archive"
+    },
+    {
+      "path": "/data3/user/TAO-Amodal/frames/train/ArgoVerse.zip",
+      "bytes": 10675962864,
+      "allocated_bytes": 10675970048,
+      "images": 21967,
+      "kind": "completed_archive"
+    },
+    {
+      "path": "/data3/user/TAO-Amodal/frames/val/HACS.zip",
+      "bytes": 27288308461,
+      "allocated_bytes": 27288322048,
+      "images": 228886,
+      "kind": "completed_archive"
+    },
+    {
+      "path": "/data3/user/TAO-Amodal/frames/test/BDD.zip",
+      "bytes": 28073842653,
+      "allocated_bytes": 28073857024,
+      "images": 228883,
+      "kind": "completed_archive"
+    },
+    {
+      "path": "/data3/user/TAO-Amodal/frames/test/Charades.zip",
+      "bytes": 18744398188,
+      "allocated_bytes": 18744410112,
+      "images": 166899,
+      "kind": "completed_archive"
+    },
+    {
+      "path": "/data3/user/TAO-Amodal/frames/test/HACS.zip.relocating",
+      "bytes": 41473555306,
+      "allocated_bytes": 41473572864,
+      "kind": "cancelled_relocation_temporary"
+    },
+    {
+      "path": "/data3/user/TAO-Amodal/frames/test/LaSOT.zip.relocating",
+      "bytes": 32356841625,
+      "allocated_bytes": 32356855808,
+      "kind": "cancelled_relocation_temporary"
+    }
+  ],
+  "deleted": [
+    "/data0/user/TAO-Amodal/frames/train/Charades.zip",
+    "/data0/user/TAO-Amodal/frames/train/YFCC100M.zip",
+    "/data0/user/TAO-Amodal/frames/val/ArgoVerse.zip",
+    "/data0/user/TAO-Amodal/frames/val/Charades.zip",
+    "/data0/user/TAO-Amodal/frames/test/HACS.zip",
+    "/data0/user/TAO-Amodal/frames/test/YFCC100M.zip",
+    "/data1/user/TAO-Amodal/frames/train/LaSOT.zip",
+    "/data1/user/TAO-Amodal/frames/val/BDD.zip",
+    "/data1/user/TAO-Amodal/frames/val/LaSOT.zip",
+    "/data1/user/TAO-Amodal/frames/val/YFCC100M.zip",
+    "/data1/user/TAO-Amodal/frames/test/LaSOT.zip",
+    "/data2/user/TAO-Amodal/frames/train/BDD.zip",
+    "/data2/user/TAO-Amodal/frames/train/HACS.zip",
+    "/data2/user/TAO-Amodal/frames/val/AVA.zip",
+    "/data2/user/TAO-Amodal/frames/test/AVA.zip",
+    "/data2/user/TAO-Amodal/frames/test/ArgoVerse.zip",
+    "/data3/user/TAO-Amodal/frames/train/AVA.zip",
+    "/data3/user/TAO-Amodal/frames/train/ArgoVerse.zip",
+    "/data3/user/TAO-Amodal/frames/val/HACS.zip",
+    "/data3/user/TAO-Amodal/frames/test/BDD.zip",
+    "/data3/user/TAO-Amodal/frames/test/Charades.zip",
+    "/data3/user/TAO-Amodal/frames/test/HACS.zip.relocating",
+    "/data3/user/TAO-Amodal/frames/test/LaSOT.zip.relocating"
+  ],
+  "archive_allocated_bytes": 371164295168,
+  "temporary_allocated_bytes": 73830428672
+}

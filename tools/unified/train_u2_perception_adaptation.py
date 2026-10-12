@@ -10,6 +10,10 @@ from pathlib import Path
 import subprocess
 import sys
 
+# MMEngine's native loader omits weights_only. Our verified local training
+# checkpoints include HistoryBuffer and optimizer state, including on resume.
+os.environ.setdefault("TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD", "1")
+
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(ROOT / "third_party/mmdetection"))

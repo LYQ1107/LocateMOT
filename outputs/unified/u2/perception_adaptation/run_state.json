@@ -1,16 +1,29 @@
 {
   "format": "locatemot-u2-bounded-perception-run-v1",
-  "state": "WAITING_EXISTING_JOBS",
-  "phase": "F0_AND_SOURCE_DATA",
+  "state": "RUNNING",
+  "phase": "FULL_AUDIT_EPOCH_1",
   "wait_pids": {
     "tao_audit": 670232,
     "bdd_audit": 781721,
     "replay": 816267
   },
-  "controller_pid": 854970,
+  "controller_pid": 1089957,
   "world_size": 8,
   "maximum_epochs": 2,
   "maximum_optimizer_steps": 2500,
   "track_training_launched": false,
-  "official_test_labels_read": false
+  "official_test_labels_read": false,
+  "optimization_launched": true,
+  "command": [
+    "/data2/user/LocateMOT/.venv/bin/python",
+    "-u",
+    "/data2/user/LocateMOT/tools/unified/eval_u2_perception_adaptation.py",
+    "--checkpoint",
+    "/data2/user/LocateMOT/outputs/unified/u2/perception_adaptation/training/epoch_1.pth",
+    "--epoch",
+    "1",
+    "--extraction-pid",
+    "625610"
+  ],
+  "log": "/data2/user/LocateMOT/outputs/unified/u2/perception_adaptation/eval_epoch_1.log"
 }
