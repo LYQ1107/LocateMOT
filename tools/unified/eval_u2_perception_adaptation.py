@@ -154,7 +154,7 @@ def main() -> int:
         print(json.dumps({"state": "TAO_CTAO_FULL_AUDIT", "epoch": args.epoch}), flush=True)
         run([sys.executable, "-u", str(ROOT / "tools/unified/u2_tao_portability.py"),
              "--out", str(args.out / "tao_ctao"), "--extraction-pid", str(args.extraction_pid),
-             "--reuse-frozen-text", *common], args.out / "tao_ctao.log")
+             "--reuse-frozen-text", "--bulk-label-metadata", *common], args.out / "tao_ctao.log")
     results = {}
     for name in REFERENCES:
         print(json.dumps({"state": "U1_FULL_AUDIT", "audit": name, "epoch": args.epoch}), flush=True)

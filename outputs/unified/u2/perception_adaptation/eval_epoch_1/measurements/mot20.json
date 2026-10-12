@@ -1,0 +1,53 @@
+{
+  "format": "locatemot-u2-portability-measurement-v1",
+  "status": "COMPLETE",
+  "dataset": "mot20",
+  "foundation_sha256": "1d9077ae603f40de0e955a11a88083f914f98faa967bc46cdd06bcdfb5129688",
+  "protocol_path": "/data2/user/LocateMOT/outputs/unified/u2/protocol/mot20_half.json",
+  "protocol_sha256": "39e3349c01e24812f9ebea38962455cad7e469271049a8397c39a2c357387a63",
+  "images_expected": 4463,
+  "images_evaluated": 4463,
+  "candidate_top_k": 150,
+  "counts": {
+    "gt_total": 615137,
+    "hits_top150": 503881,
+    "hits_top300": 598701
+  },
+  "per_sequence": {
+    "MOT20-01": {
+      "images": 214,
+      "counts": {
+        "gt_total": 10810,
+        "hits_top150": 10161,
+        "hits_top300": 10283
+      }
+    },
+    "MOT20-02": {
+      "images": 1390,
+      "counts": {
+        "gt_total": 91855,
+        "hits_top150": 88584,
+        "hits_top300": 90159
+      }
+    },
+    "MOT20-03": {
+      "images": 1202,
+      "counts": {
+        "gt_total": 193410,
+        "hits_top150": 169821,
+        "hits_top300": 187802
+      }
+    },
+    "MOT20-05": {
+      "images": 1657,
+      "counts": {
+        "gt_total": 319062,
+        "hits_top150": 235315,
+        "hits_top300": 310457
+      }
+    }
+  },
+  "coverage_keys_sha256": "92c9e6f0855ba5fb2b450a6522b7bebb01bc2da14292da72cbb1fc9acbba7fcd",
+  "worker_artifacts": "/data2/user/LocateMOT/outputs/unified/u2/perception_adaptation/eval_epoch_1/ordinary",
+  "official_test_labels_read": false
+}

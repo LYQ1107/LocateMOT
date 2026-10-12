@@ -50,10 +50,10 @@
   },
   "ordinary_baseline_queue": {
     "state": "WAITING_PERCEPTION_SELECTION",
-    "controller_pid": 1089958,
+    "controller_pid": 1313650,
     "run_state": "outputs/unified/u2/ordinary_baseline/run_state.json",
     "cache_and_simple_baseline_launch_after_full_selection_only": true,
-    "blocking_session": 95952
+    "blocking_session": 57530
   },
   "kitti_original_gt_perception_audit": {
     "state": "COMPLETE",
@@ -84,7 +84,7 @@
   "prompt_tracking_launched": false,
   "status": "LOCATEMOT_U_U2_IN_PROGRESS",
   "stop": "TRACK_TRAINING_HELD_BY_U2_P_GATES",
-  "execution_state": "U2_P_EPOCH1_1250_STEPS_COMPLETE_FULL_AUDIT_RECOVERED",
+  "execution_state": "U2_P_EPOCH1_ORDINARY_COMPLETE_TAO_OPTIMIZED_PREFIX_RESUME_ACTIVE",
   "track_training_eligible": false,
   "ready_for_u3": false,
   "tao_perception_audit": {
@@ -190,7 +190,7 @@
     "replay_sha256": "1be4a6e2d03fd3f59aeeca8b931c3f638a2ca1db015ea7d54afa2ca725970947",
     "phase": "FULL_AUDIT_EPOCH_1",
     "run_state": "/data2/user/LocateMOT/outputs/unified/u2/perception_adaptation/run_state.json",
-    "controller_pid": 1089957,
+    "controller_pid": 1313649,
     "load_failure_repair": {
       "first_failure": "native MMEngine implicit weights_only=True rejects U1R2 HistoryBuffer before the first optimizer step",
       "fix": "process-local TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD=1, as in original U1 gradient audit",
@@ -199,7 +199,7 @@
       "completed_optimizer_steps_before_failure": 0
     },
     "recovery_receipt": "outputs/unified/u2/recovery_20261012/owners.json",
-    "blocking_session": 95952,
+    "blocking_session": 57530,
     "completed_optimizer_steps": 1250,
     "completed_epoch1_checkpoint": {
       "path": "outputs/unified/u2/perception_adaptation/training/epoch_1.pth",
@@ -210,6 +210,20 @@
       "cause": "parent omitted separate measurements directory in both MOT and TAO worker commands",
       "regression": "outputs/unified/u2/eval/adapted_portability_launcher_contract.json",
       "resume_unit": "full epoch1 evaluation; never rerun completed epoch1 updates"
+    },
+    "ordinary_epoch1_summary": "outputs/unified/u2/perception_adaptation/eval_epoch_1/ordinary_summary.json",
+    "inference_acceleration": {
+      "same_gpu_concurrency": "REJECT_2_AND_4_PROCESSES_SINGLETON_FASTEST",
+      "concurrency_report": "outputs/unified/u2/performance/same_gpu_epoch1/report.json",
+      "bulk_integer_metadata": "ENABLED_FOR_ADAPTED_TAO_WORKERS",
+      "proposal_parity": "BIT_EXACT_12_REFERENCE_FRAMES",
+      "original_two_source_recall_parity": "EXACT",
+      "proposal_proof": "outputs/unified/u2/eval/bulk_label_metadata_contract.json",
+      "worker_proof": "outputs/unified/u2/eval/bulk_label_worker_contract.json",
+      "reference_sample_observed_speedup": 1.5307223037434008,
+      "full_run_speedup_measured": false,
+      "preserved_completed_tao_frames": 440,
+      "resume_registration": "outputs/unified/u2/performance/optimized_resume_registration.json"
     }
   },
   "temporal_supervision_contract": "outputs/unified/u2/eval/temporal_supervision_contract.json",
@@ -227,8 +241,8 @@
   },
   "mot_only_follow_on_queue": {
     "state": "WAITING_ORDINARY_CACHE_AND_SIMPLE",
-    "controller_pid": 1089959,
-    "blocking_session": 95952,
+    "controller_pid": 1313651,
+    "blocking_session": 57530,
     "run_state": "outputs/unified/u2/mot_only_queue/run_state.json",
     "formal_optimization_launched": false
   },
@@ -255,14 +269,14 @@
   },
   "joint_queue": {
     "state": "WAITING_ELIGIBLE_MOT_ONLY",
-    "controller_pid": 1089960,
-    "mot_only_controller_pid": 1089959,
+    "controller_pid": 1313652,
+    "mot_only_controller_pid": 1313651,
     "formal_joint_training_launched": false,
     "ovmot_cache_started": false,
     "maximum_optimizer_steps": 4000,
     "run_state": "outputs/unified/u2/joint_queue/run_state.json",
     "launch_requires_recomputed_eligible_mot_only": true,
-    "blocking_session": 95952
+    "blocking_session": 57530
   },
   "native_checkpoint_implementation": {
     "format": "locatemot-u-u2-shared-track-core-v1",
@@ -296,8 +310,8 @@
   },
   "finalization_queue": {
     "state": "WAITING_ORIGINAL_JOINT_OWNER",
-    "controller_pid": 1089961,
-    "joint_controller_pid": 1089960,
+    "controller_pid": 1313653,
+    "joint_controller_pid": 1313652,
     "pack_started": false,
     "ready_for_u3": false,
     "run_state": "outputs/unified/u2/finalization/run_state.json",
@@ -307,7 +321,7 @@
     "audit_entry_contract": "outputs/unified/u2/eval/selected_core_audit_entry_contract.json",
     "readiness_gate_contract": "outputs/unified/u2/eval/readiness_gate_contract.json",
     "current_readiness_hold": "outputs/unified/u2/eval/readiness_current_hold.json",
-    "blocking_session": 95952
+    "blocking_session": 57530
   },
   "native_image_batch_probe": {
     "status": "REJECT_NATIVE_BATCH_FOR_CURRENT_CACHE",

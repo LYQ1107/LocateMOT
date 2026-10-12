@@ -1,0 +1,38 @@
+{
+  "status": "COMPLETE_ORDINARY_ONLY",
+  "foundation_sha256": "1d9077ae603f40de0e955a11a88083f914f98faa967bc46cdd06bcdfb5129688",
+  "streams": {
+    "bdd100k": {
+      "images": 39973,
+      "gt": 442814,
+      "top150_recall": 0.936573821062568,
+      "top300_recall": 0.9542403808371009
+    },
+    "dancetrack": {
+      "images": 25508,
+      "gt": 225148,
+      "top150_recall": 0.9990361895286656,
+      "top300_recall": 0.9994803418196031
+    },
+    "mot17": {
+      "images": 2652,
+      "gt": 53890,
+      "top150_recall": 0.8780664316199666,
+      "top300_recall": 0.894618667656337
+    },
+    "mot20": {
+      "images": 4463,
+      "gt": 615137,
+      "top150_recall": 0.8191362249385097,
+      "top300_recall": 0.973280748841315
+    },
+    "kitti_legal_development": {
+      "images": 3472,
+      "gt": 15875,
+      "top150_recall": 0.9463937007874016,
+      "top300_recall": 0.9566614173228346
+    }
+  },
+  "full_tao_and_u1_retention_pending": true,
+  "ready_for_u3": false
+}

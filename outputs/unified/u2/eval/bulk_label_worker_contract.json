@@ -1,0 +1,49 @@
+{
+  "status": "PASS",
+  "reference_only": true,
+  "checkpoint_sha256": "1d9077ae603f40de0e955a11a88083f914f98faa967bc46cdd06bcdfb5129688",
+  "rows_and_gt_hit_counts_exact": true,
+  "resume_metadata_identical": true,
+  "backbone_once_per_image": true,
+  "frames": 2,
+  "original_two_source_scope": [
+    {
+      "key": "tao/59150",
+      "dataset": "tao",
+      "file_name": "val/AVA/4Y5qi1gD2Sw_scene_1_28435-31083/frame0721.jpg",
+      "counts": {
+        "base_gt_total": 2,
+        "base_hits_top300": 2,
+        "novel_gt_total": 1,
+        "novel_hits_top300": 1,
+        "unmapped_gt_total": 0,
+        "unmapped_hits_top300": 0
+      },
+      "proposals": 300,
+      "backbone_calls": 1
+    },
+    {
+      "key": "ctao/355773",
+      "dataset": "ctao",
+      "file_name": "train/AVA/5BDj0ow5hnA_scene_10_54385-55758/frame0176.jpg",
+      "counts": {
+        "base_gt_total": 10,
+        "base_hits_top300": 9,
+        "novel_gt_total": 0,
+        "novel_hits_top300": 0,
+        "unmapped_gt_total": 0,
+        "unmapped_hits_top300": 0
+      },
+      "proposals": 300,
+      "backbone_calls": 1
+    }
+  ],
+  "native_elapsed_seconds": 68.84182413198869,
+  "bulk_elapsed_seconds": 51.96604019400547,
+  "bulk_stats": {
+    "head_calls": 76,
+    "integer_labels_transferred": 68400
+  },
+  "full_scope_evaluation_complete": false,
+  "ready_for_u3": false
+}

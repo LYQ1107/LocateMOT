@@ -79,8 +79,11 @@ def worker(args: argparse.Namespace) -> int:
         load_grounding_runtime, prediction_arrays, run_grounding_chunked, runtime_metadata,
     )
     from locatemot.unified.runtime.u2_frozen_text_cache import frozen_text_cache
+    from locatemot.unified.runtime.u2_label_metadata import bulk_label_metadata
 
     torch.set_num_threads(2)
+    if args.bulk_label_metadata:
+        torch.cuda.set_device(args.gpu)
     scopes, all_records = load_scope(args.protocol)
     records = all_records[args.worker_index::args.worker_count]
     if args.smoke:
@@ -116,7 +119,8 @@ def worker(args: argparse.Namespace) -> int:
     hook = runtime.model.backbone.register_forward_hook(count_backbone)
     started = time.perf_counter()
     text_context = frozen_text_cache(runtime) if args.reuse_frozen_text else nullcontext(None)
-    with text_context as text_stats, rows_path.open("a") as output:
+    label_context = bulk_label_metadata(runtime) if args.bulk_label_metadata else nullcontext(None)
+    with text_context as text_stats, label_context as label_stats, rows_path.open("a") as output:
         for index, record in enumerate(records[len(previous):], start=len(previous)):
             wait_for_extracted(record, ready, args.extraction_pid)
             scope = scopes[record["dataset"]]
@@ -155,6 +159,8 @@ def worker(args: argparse.Namespace) -> int:
                 "runtime": runtime_metadata(runtime), "elapsed_seconds": time.perf_counter() - started}
     if args.reuse_frozen_text:
         terminal["frozen_text_cache"] = text_stats
+    if args.bulk_label_metadata:
+        terminal["bulk_label_metadata"] = label_stats
     prefix.with_suffix(".result.json").write_text(json.dumps(terminal, indent=2) + "\n")
     print(json.dumps({"worker": args.worker_index, "state": terminal["state"], "images": len(records)}), flush=True)
     return 0
@@ -217,6 +223,7 @@ def main() -> int:
     parser.add_argument("--aggregate-only", action="store_true")
     parser.add_argument("--reuse-frozen-text", action="store_true",
                         help="Exact worker-local native text reuse; default F0 commands remain unchanged")
+    parser.add_argument("--bulk-label-metadata", action="store_true")
     args = parser.parse_args()
     if args.expected_foundation_sha256 != FOUNDATION_SHA:
         if (args.out.resolve() == parser.get_default("out").resolve()
@@ -242,6 +249,8 @@ def main() -> int:
                        "--worker-index", str(index), "--worker-count", str(len(args.gpus)), "--gpu", str(gpu)]
             if args.reuse_frozen_text:
                 command.append("--reuse-frozen-text")
+            if args.bulk_label_metadata:
+                command.append("--bulk-label-metadata")
             processes.append((subprocess.Popen(command, env=env, stdout=log, stderr=subprocess.STDOUT), log))
         print(json.dumps({"state": "RUNNING", "gpus": args.gpus, "worker_pids": [p.pid for p, _ in processes]}), flush=True)
         codes = []

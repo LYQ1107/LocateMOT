@@ -1,0 +1,28 @@
+{
+  "status": "PASS",
+  "reference_only": true,
+  "checkpoint_sha256": "1d9077ae603f40de0e955a11a88083f914f98faa967bc46cdd06bcdfb5129688",
+  "images": 12,
+  "native_seconds": 158.9960450560029,
+  "bulk_metadata_seconds": 103.86994732302264,
+  "observed_speedup": 1.5307223037434008,
+  "proposal_boxes_scores_labels": "BIT_EXACT_ALL_12_FRAMES",
+  "native_label_names": "EXACT_FIRST_FRAME_FULL_VOCABULARY",
+  "native_methods_restored": true,
+  "integer_only_cpu_copy": true,
+  "native_singleton_fp32": true,
+  "full_vocabulary": 1203,
+  "stats": {
+    "head_calls": 494,
+    "integer_labels_transferred": 444600
+  },
+  "actual_peak_gpu_memory_bytes": 1664202752,
+  "performance_scope": "12 repeated original validation frames spanning TAO source domains; no formal benchmark metric",
+  "ready_for_u3": false,
+  "explicit_target_cuda_binding": true,
+  "comparison_conditions": {
+    "initial_native_probe": "CUDA current device remained0, model/images on GPU1; other formal audit workers held",
+    "bulk_probe": "CUDA current device explicitly1, model/images on GPU1; other seven formal audit workers resumed"
+  },
+  "observed_speedup_scope": "Combined explicit CUDA binding and bulk integer metadata; short reference sample, not isolated causal attribution or full-run throughput"
+}

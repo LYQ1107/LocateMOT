@@ -1,0 +1,91 @@
+{
+  "status": "PASS",
+  "reference_only": true,
+  "checkpoint_sha256": "1d9077ae603f40de0e955a11a88083f914f98faa967bc46cdd06bcdfb5129688",
+  "gpu": 1,
+  "frames": [
+    {
+      "key": "0/tao/145",
+      "image": "/data2/user/LocateMOT/data/TAO-Amodal/frames/val/YFCC100M/v_25685519b728afd746dfd1b2fe77c/frame0751.jpg"
+    },
+    {
+      "key": "1/tao/2240",
+      "image": "/data2/user/LocateMOT/data/TAO-Amodal/frames/val/HACS/Mixing_drinks_v_JoWmkSgJ3S0_scene_0_0-4205/frame0001.jpg"
+    },
+    {
+      "key": "2/tao/26365",
+      "image": "/data2/user/LocateMOT/data/TAO-Amodal/frames/val/BDD/b3432539-8f9fc466/frame0001.jpg"
+    },
+    {
+      "key": "3/tao/46386",
+      "image": "/data2/user/LocateMOT/data/TAO-Amodal/frames/val/ArgoVerse/side_left_21e37598-52d4-345c-8ef9-03ae19615d3d/ring_side_left_315970611020959528.jpg"
+    },
+    {
+      "key": "4/tao/46956",
+      "image": "/data2/user/LocateMOT/data/TAO-Amodal/frames/val/AVA/4Y5qi1gD2Sw_scene_7_114751-116198/frame0121.jpg"
+    },
+    {
+      "key": "5/tao/61230",
+      "image": "/data2/user/LocateMOT/data/TAO-Amodal/frames/val/LaSOT/tank-6/00000211.jpg"
+    },
+    {
+      "key": "6/tao/81321",
+      "image": "/data2/user/LocateMOT/data/TAO-Amodal/frames/val/Charades/J7BOV/frame0001.jpg"
+    },
+    {
+      "key": "7/tao/145",
+      "image": "/data2/user/LocateMOT/data/TAO-Amodal/frames/val/YFCC100M/v_25685519b728afd746dfd1b2fe77c/frame0751.jpg"
+    },
+    {
+      "key": "8/tao/2240",
+      "image": "/data2/user/LocateMOT/data/TAO-Amodal/frames/val/HACS/Mixing_drinks_v_JoWmkSgJ3S0_scene_0_0-4205/frame0001.jpg"
+    },
+    {
+      "key": "9/tao/26365",
+      "image": "/data2/user/LocateMOT/data/TAO-Amodal/frames/val/BDD/b3432539-8f9fc466/frame0001.jpg"
+    },
+    {
+      "key": "10/tao/46386",
+      "image": "/data2/user/LocateMOT/data/TAO-Amodal/frames/val/ArgoVerse/side_left_21e37598-52d4-345c-8ef9-03ae19615d3d/ring_side_left_315970611020959528.jpg"
+    },
+    {
+      "key": "11/tao/46956",
+      "image": "/data2/user/LocateMOT/data/TAO-Amodal/frames/val/AVA/4Y5qi1gD2Sw_scene_7_114751-116198/frame0121.jpg"
+    }
+  ],
+  "cases": [
+    {
+      "workers_per_gpu": 1,
+      "images": 12,
+      "seconds": 158.9960450560029,
+      "parent_wall_seconds_with_teardown": 160.21173234900925,
+      "images_per_second": 0.07547357543247858,
+      "all_proposals_bit_exact": true,
+      "backbone_calls": 12
+    },
+    {
+      "workers_per_gpu": 2,
+      "images": 12,
+      "seconds": 251.2862241010007,
+      "parent_wall_seconds_with_teardown": 252.78291682401323,
+      "images_per_second": 0.04775430902721027,
+      "all_proposals_bit_exact": true,
+      "backbone_calls": 12
+    },
+    {
+      "workers_per_gpu": 4,
+      "images": 12,
+      "seconds": 220.05395537000732,
+      "parent_wall_seconds_with_teardown": 222.08731790300226,
+      "images_per_second": 0.054532080461006625,
+      "all_proposals_bit_exact": true,
+      "backbone_calls": 12
+    }
+  ],
+  "full_vocabulary": 1203,
+  "native_singleton_fp32": true,
+  "selected_workers_per_gpu": 1,
+  "scope": "12 repeated original validation frames spanning TAO source domains; actual parent/worker proposal parity, not formal metric evidence",
+  "ready_for_u3": false,
+  "memory_measurement": "not collected on the target device in the initial concurrency probe"
+}

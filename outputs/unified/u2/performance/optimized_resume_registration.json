@@ -1,0 +1,58 @@
+{
+  "state": "CONTROLLED_INTERRUPTION_FOR_VERIFIED_INFERENCE_ACCELERATION",
+  "terminated_tao_pids": [
+    1238269,
+    1238271,
+    1238270,
+    1238272,
+    1238273,
+    1238274,
+    1238275,
+    1238276,
+    1238277
+  ],
+  "resumed_evaluators_to_record_terminal": [
+    1090197
+  ],
+  "prefixes": [
+    {
+      "worker": 0,
+      "completed_images_preserved": 63,
+      "expected_images": 6689
+    },
+    {
+      "worker": 2,
+      "completed_images_preserved": 62,
+      "expected_images": 6688
+    },
+    {
+      "worker": 3,
+      "completed_images_preserved": 63,
+      "expected_images": 6688
+    },
+    {
+      "worker": 4,
+      "completed_images_preserved": 62,
+      "expected_images": 6688
+    },
+    {
+      "worker": 5,
+      "completed_images_preserved": 79,
+      "expected_images": 6688
+    },
+    {
+      "worker": 6,
+      "completed_images_preserved": 51,
+      "expected_images": 6688
+    },
+    {
+      "worker": 7,
+      "completed_images_preserved": 60,
+      "expected_images": 6688
+    }
+  ],
+  "completed_images_preserved": 440,
+  "ordinary_complete_images_preserved": 76068,
+  "epoch1_optimizer_steps_preserved": 1250,
+  "same_checkpoint_and_scope": true
+}
