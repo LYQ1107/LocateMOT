@@ -1,0 +1,9 @@
+{
+  "registered_frames": 4,
+  "actual_video": {
+    "width": 640,
+    "height": 480,
+    "nb_read_frames": "4"
+  },
+  "all_input_frames_processed": true
+}

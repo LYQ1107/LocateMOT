@@ -1412,3 +1412,32 @@ not every RMOT failure can be attributed to the perception front end.
 The new all-class TAO owner remains active. A800-SXM4-80GB hardware was
 verified for4/5/6; foreign UDMT processes are unchanged. Original OneJev
 500step and fullDanceTrack owners remain responsible for their jobs.
+
+
+## Exhaustive TAO functional control completed
+
+All52native requests completed:13chunks and1203fixed categories for each
+of4registered annotation frames. Unchanged TETA yields0TETA/LocA/AssocA/
+ClsA and0predictions under the recorded whole-frame-rejection policy; Base0,
+Novelnull because this video's GT contains no Novel class. No full-video
+or complete-dataset result is claimed. Actual complete processing
+FPS.0037577955 includes all calls, association, file/video writes and writer
+completion; preloaded remote DLM startup and9s-class OneJev loading excluded.
+
+Rejected/scored chunks per frame:11/2,10/3,7/6,10/3. Independently scored
+chunks contain201/441/777/354boxes. Evaluation-only class-agnostic target
+coverage is10/18 atIoU.5 before whole-frame rejection. This is a localization
+diagnostic, not TETA or classification correctness. Whole-frame rejection
+discards useful native outputs; retain this negative control and preregister
+a query-level empty-prediction control that retains independently scored
+chunks, all class requests, all GT and frames. Never label invalid chunks
+valid or change the official parser/metrics. Raw native responses remain local.
+
+At this completion check, the original blocking SFT500 owner is live, last
+reported50steps/loss2.8577/20.6GiB allocator; original fullDanceTrack owner
+is live, completed769of1203frames. Dataset physical clocks independently
+agree with seqinfo:MOT17=30Hz,DanceTrack=20Hz,MOT20=25Hz. TAO sourceFPS
+remains unavailable and annotation-step units explicitly declared.
+The69-file native-feature/GT-contract stage was verified on GitHub at
+1724df9de3465fce5fd1de96ccf81510029cd7f1 with exact local tree equality.
+No Pilot or final-goal completion claim.

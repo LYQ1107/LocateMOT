@@ -1,0 +1,42 @@
+{
+  "previous_goal_turn": "progress",
+  "this_goal_turn": "progress",
+  "formal_SFT500_last_live_handle": 4617,
+  "formal_SFT500_last_reported_optimizer_step": 50,
+  "formal_SFT500_last_loss": 2.8577,
+  "full_DanceTrack_last_live_handle": 17033,
+  "full_DanceTrack_last_completed_frame": 769,
+  "full_DanceTrack_registered_frames": 1203,
+  "TAO_all_class_handle": 15348,
+  "TAO_all_class_exit_code": 0,
+  "TAO_all_class_native_requests": 52,
+  "TAO_all_class_functional_frames": 4,
+  "GroundJEV_physical_GPUs_in_use": [
+    4,
+    5,
+    6
+  ],
+  "allowlist": [
+    4,
+    5,
+    6,
+    7
+  ],
+  "GPU_model": "NVIDIA A800-SXM4-80GB",
+  "full_Pilot_complete": false,
+  "final_goal_complete": false,
+  "source_FPS_verified": {
+    "MOT17": 30,
+    "DanceTrack": 20,
+    "MOT20": 25
+  },
+  "TAO_physical_FPS_verified": false,
+  "next_research": [
+    "RMOT V1 versus current-crop V3 fixed-candidate before/after",
+    "retain independently scored TAO chunks with explicitly empty failed-query predictions and unchanged official metrics",
+    "actual Ground-proposal training rollouts",
+    "formal500 reload and before/after",
+    "native DLM training and dense/referring retention",
+    "Compact and matched learnable controls"
+  ]
+}
