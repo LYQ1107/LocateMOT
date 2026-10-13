@@ -2,7 +2,8 @@
 
 This curriculum isolates decision learning: proposals are teacher GT plus
 explicit synthetic negatives; histories are exclusively the model's states.
-Actual GroundAnything-proposal rollout remains a separate next stage.
+An explicit native_ground mode uses all actual DLM proposals, with no GT
+proposal substitution or synthetic fragments and no corrected actor states.
 """
 import argparse
 from collections import Counter
@@ -28,16 +29,19 @@ def main():
     parser=argparse.ArgumentParser()
     parser.add_argument('--out',type=Path,default=ROOT/'outputs/groundjev/training_data/student_v3')
     parser.add_argument('--checkpoint',type=Path,default=ROOT/'outputs/groundjev/training/onejev_teacher_check_100/final')
+    parser.add_argument('--candidate-source', choices=['gt_fragments', 'native_ground'], default='gt_fragments')
     args=parser.parse_args()
     if args.out.exists() and any(args.out.iterdir()):
         parser.error('preserve prior model rollout; choose a fresh curriculum path')
     args.out.mkdir(parents=True,exist_ok=True)
     class Recorder(OneJevDecision):
-        def build_request(self,image,group,ranked,timestamp,specification):
-            request,media=super().build_request(image,group,ranked,timestamp,specification)
+        def accepted_batch(self,image,group,ranked,timestamp,specification):
             self.captured.append((copy.deepcopy(group),[copy.copy(t) for t in ranked],timestamp,specification))
-            return request,media
-    model=Recorder(args.checkpoint,evidence_format='v3_crop_motion')
+    native_ground = args.candidate_source == 'native_ground'
+    model=Recorder(args.checkpoint,evidence_format='v3_crop_motion',adaptive_context=native_ground)
+    if native_ground:
+        from locatemot.groundjev.perception import GroundAnythingAdapter, GroundingProtocolError
+        frontend=GroundAnythingAdapter(parser_policy='official_scoring',decoder_policy='tracking_dense')
     builder=OneJevDecision.__new__(OneJevDecision)
     builder.evidence_format='v3_crop_motion'
     counts,clips=Counter(),[]
@@ -55,20 +59,30 @@ def main():
             tracker=OnlineTracker(model)
             anchors,last_observation,aliases={},{},{}
             rng=random.Random(clip_index*1009)
-            alias_pool=list(range(1,577));rng.shuffle(alias_pool)
+            alias_pool=list(range(1,100001 if native_ground else 577));rng.shuffle(alias_pool)
             clip_rows=0
             for frame in frames:
                 path=Path(sequence['image_dir'])/frame_names[frame]
                 with Image.open(path) as source: image=source.convert('RGB')
                 targets=gt[frame]
                 ordered=sorted(targets,key=lambda c:(-max((overlap(c['box'],o['box']) for o in targets if o['gt_id']!=c['gt_id']),default=0.),c['visibility'],c['gt_id']))
-                candidates=[{'box':list(c['box']),'label':'person','native_score':None,
-                             'source':'legal_train_gt_proposal'} for c in ordered[:32]]
-                for c in ordered[:2]:
-                    x1,y1,x2,y2=c['box'];cx,cy=(x1+x2)/2,(y1+y2)/2
-                    candidates.append({'box':[cx-(x2-x1)*.175,cy-(y2-y1)*.175,cx+(x2-x1)*.175,cy+(y2-y1)*.175],
-                        'label':'person','native_score':None,'source':'synthetic_box_fragment_training_augmentation'})
-                rng.shuffle(candidates)
+                perception=None
+                if native_ground:
+                    try:
+                        candidates,perception=frontend(image,'mot',['person'],image_path=path)
+                    except GroundingProtocolError as error:
+                        candidates=[];perception=dict(error.metadata,model_response_rejected=True,
+                            rejected_output_policy='empty native candidates; training frame and all GT supervision retained')
+                        counts['rejected_perception_frames']+=1
+                    counts['actual_native_candidates']+=len(candidates)
+                else:
+                    candidates=[{'box':list(c['box']),'label':'person','native_score':None,
+                                 'source':'legal_train_gt_proposal'} for c in ordered[:32]]
+                    for c in ordered[:2]:
+                        x1,y1,x2,y2=c['box'];cx,cy=(x1+x2)/2,(y1+y2)/2
+                        candidates.append({'box':[cx-(x2-x1)*.175,cy-(y2-y1)*.175,cx+(x2-x1)*.175,cy+(y2-y1)*.175],
+                            'label':'person','native_score':None,'source':'synthetic_box_fragment_training_augmentation'})
+                    rng.shuffle(candidates)
                 matched={}
                 if candidates and targets:
                     similarities=np.array([[overlap(c['box'],g['box']) for g in targets] for c in candidates])
@@ -78,7 +92,7 @@ def main():
                 before=dict(anchors)
                 model.captured=[]
                 outputs,state=tracker.step(image,candidates,frame/sequence['fps'],{'task':'mot','vocabulary':['person'],'expression':None})
-                native.write(json.dumps({'sequence':name,'frame':frame,'image_path':str(path),'candidates':candidates,'outputs':outputs,'state':state})+'\n');native.flush()
+                native.write(json.dumps({'sequence':name,'frame':frame,'image_path':str(path),'candidates':candidates,'outputs':outputs,'state':state,'perception':perception})+'\n');native.flush()
                 global_index=0
                 for batch,(group,ranked,timestamp,specification) in enumerate(model.captured):
                     for t in ranked:
@@ -95,6 +109,8 @@ def main():
                         m['image'].save(file)
                         files.append({'type':'image','path':str(file),'w':m['image'].width,'h':m['image'].height})
                     labels={}
+                    if 'empty' in request.questions:
+                        labels['empty']=('yes' if targets else 'no','empty_image_target_presence')
                     for local,candidate in enumerate(group):
                         truth=matched.get(global_index+local)
                         gid=truth['gt_id'] if truth else None
@@ -128,12 +144,13 @@ def main():
                         row={'id':f'{name}_{frame}_batch{batch}_{key}','split':'train','source':name,'task':kind,
                             'state':request.state,'question':question.model_dump(exclude_none=True),'target':{target:1.},'media':files,
                             'supervision':{'frame':frame,'clip_length':16,'state_source':'actual_model_rollout_with_permuted_identity_labels',
-                                'candidate_source':'legal_training_GT_proposals_and_explicit_synthetic_fragments',
+                                'candidate_source':'actual_native_GroundAnything_DLM_proposals' if native_ground else 'legal_training_GT_proposals_and_explicit_synthetic_fragments',
                                 'actor_state_corrected_by_GT':False,'GT_labels_outside_model_state':True,'evidence_format':'v3_crop_motion'}}
                         training.write(json.dumps(row)+'\n')
                         counts[kind+':'+target]+=1;clip_rows+=1;total_rows+=1
                         counts['max_options']=max(counts['max_options'],len(rendered.labels))
                     global_index+=len(group)
+                assert global_index==len(candidates), 'Every actual candidate must have one accepted actor group'
                 training.flush()
                 for event in state['events']:
                     if 'candidate' not in event or 'track_id' not in event: continue
@@ -142,11 +159,12 @@ def main():
                     last_observation[event['track_id']]=gid
                 print(json.dumps({'sequence':name,'frame':frame,'tracks':len(outputs),'training_rows':total_rows}),flush=True)
             clips.append({'sequence':name,'frames':frames,'rows':clip_rows,'last_runtime_id':tracker.next_id-1,'own_model_states':True})
-    summary={'status':'REAL_MODEL_HISTORY_CURRICULUM_COMPLETE_NOT_GROUND_DETECTOR_ROLLOUT',
+    summary={'status':'ACTUAL_NATIVE_GROUND_OWN_HISTORY_CURRICULUM_COMPLETE' if native_ground else 'REAL_MODEL_HISTORY_CURRICULUM_COMPLETE_NOT_GROUND_DETECTOR_ROLLOUT',
         'rows':total_rows,'seed':0,'checkpoint':str(args.checkpoint),'clips':clips,'counts':dict(counts),
         'evidence_png_bytes':sum(p.stat().st_size for p in (args.out/'evidence').glob('*.png')),
         'actor_GT_ID_inputs':False,'actor_state_corrected_by_GT':False,'validation_or_test_supervision_used':False,
-        'next_stage':'actual GroundAnything proposals and joint teacher/model-history mixture under the same evidence protocol'}
+        'actual_native_GroundAnything_proposals':native_ground,'synthetic_fragments':not native_ground,
+        'next_stage':'train on joint teacher/model-history mixture; evaluate unchanged full legal protocols'}
     (args.out/'summary.json').write_text(json.dumps(summary,indent=2)+'\n')
     print(json.dumps(summary),flush=True)
 

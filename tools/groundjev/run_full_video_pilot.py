@@ -18,7 +18,12 @@ def main():
     parser.add_argument('--out', type=Path, default=ROOT/'outputs/groundjev/pilot_runs/dancetrack0004_pretrained_native_v1')
     parser.add_argument('--decoder-policy', choices=['generic_greedy', 'tracking_dense'], default='generic_greedy')
     parser.add_argument('--perception-failure-policy', choices=['stop','empty_and_record'], default='stop')
+    parser.add_argument('--evidence-format', choices=['v1','v3_crop_motion'], default='v1')
+    parser.add_argument('--adaptive-context-groups', action='store_true')
+    parser.add_argument('--checkpoint', type=Path, default=ROOT/'models/OneJev-0.8B')
     parser.add_argument('--resume-from', type=Path)
+    parser.add_argument('--reuse-completed-full', type=Path, help='preserve and reuse verified complete native Full predictions')
+    parser.add_argument('--resume-simple', type=Path, help='rehydrate the unchanged completed Simple prefix in a fresh output')
     args = parser.parse_args()
     if args.out.exists() and any(args.out.iterdir()):
         parser.error('preserve an existing pilot owner and its results')
@@ -26,7 +31,8 @@ def main():
     manifest = json.loads(args.video.read_text())
     state = {'status':'STARTING_FULL_REGISTERED_VIDEO', 'video':str(args.video),
              'frames':len(manifest['images']), 'scope':manifest['scope'], 'physical_gpus':[6],
-             'checkpoint':str(ROOT/'models/OneJev-0.8B'), 'parser_policy':'official_scoring',
+             'checkpoint':str(args.checkpoint), 'parser_policy':'official_scoring',
+             'evidence_format':args.evidence_format,'adaptive_context_groups':args.adaptive_context_groups,
              'decoder_policy':args.decoder_policy,
              'perception_failure_policy':args.perception_failure_policy,
              'resume_from':str(args.resume_from) if args.resume_from else None,
@@ -81,20 +87,48 @@ def main():
             raise RuntimeError(f'{stage} failed; retain completed frames and inspect its first failure')
     try:
         start = time.perf_counter()
-        full, simple = args.out/'full', args.out/'simple'
+        full, simple = args.reuse_completed_full or args.out/'full', args.out/'simple'
         command = ['python3',str(ROOT/'tools/groundjev/run_with_resources.py'),'--gpus','6','--',
             str(ROOT/'.venv-onejev-py310/bin/python'),str(ROOT/'tools/groundjev/run_video.py'),
-            '--task','mot','--video',str(args.video),'--backend','full','--grounding-parser','official_scoring',
+            '--task','mot','--video',str(args.video),'--backend','full','--checkpoint',str(args.checkpoint),
+            '--evidence-format',args.evidence_format,'--grounding-parser','official_scoring',
             '--grounding-decoder-policy',args.decoder_policy,'--perception-failure-policy',args.perception_failure_policy,'--out',str(full)]
         if args.resume_from:
             command += ['--resume-from',str(args.resume_from)]
-        run('RUNNING_NATIVE_FULL_VIDEO',command)
-        state['full_invocation_wall_seconds'] = time.perf_counter()-start
-        run('RUNNING_IDENTICAL_CANDIDATE_SIMPLE_CONTROL', [str(ROOT/'.venv-onejev-py310/bin/python'),
+        if args.adaptive_context_groups:command += ['--adaptive-context-groups']
+        if args.reuse_completed_full:
+            result=json.loads((full/'result.json').read_text())
+            rows=[json.loads(s) for s in (full/'frame_decisions.jsonl').read_text().splitlines()]
+            # The original ordinary-MOT run predates the result-level
+            # specification field. Its actual recorded native prompts are
+            # authoritative; never invent missing run metadata.
+            assert result['status'] in ('VIDEO_INFERENCE_COMPLETE','VIDEO_INFERENCE_COMPLETE_WITH_REJECTED_PERCEPTION')
+            assert result['frames']==len(rows)==len(manifest['images'])
+            assert result['scope']==manifest['scope'] and result['task']==manifest['task']=='mot'
+            assert result['grounding_parser_policy']==state['parser_policy']
+            assert result['grounding_decoder_policy']==args.decoder_policy
+            assert result['perception_failure_policy']==args.perception_failure_policy
+            assert Path(result['checkpoint']).resolve()==args.checkpoint.resolve()
+            assert result.get('evidence_format','v1')==args.evidence_format
+            assert not result['gt_read_by_runtime'] and not result['future_frames_read_by_runtime']
+            assert [r['frame'] for r in rows]==manifest['frame_numbers']
+            assert [r['image_path'] for r in rows]==manifest['images']
+            expected_prompt='Locate all the instances that match the following categories: '+'</c>'.join(manifest['vocabulary'])+'.'
+            assert all(r['perception']['prompt']==expected_prompt for r in rows)
+            if result['backend']!='full':raise ValueError('Only actual complete Full outputs may be reused')
+            state['reused_verified_full']=str(full)
+            state['source_full_resume_from']=result['resume_source']
+            state['source_full_end_to_end_fps']=result['end_to_end_fps']
+        else:
+            run('RUNNING_NATIVE_FULL_VIDEO',command)
+            state['full_invocation_wall_seconds'] = time.perf_counter()-start
+        simple_command = [str(ROOT/'.venv-onejev-py310/bin/python'),
             str(ROOT/'tools/groundjev/run_video.py'),'--task','mot','--video',str(args.video),'--backend','simple',
             '--grounding-parser','official_scoring','--grounding-decoder-policy',args.decoder_policy,
             '--perception-failure-policy',args.perception_failure_policy,
-            '--candidate-replay',str(full/'frame_decisions.jsonl'),'--out',str(simple)])
+            '--candidate-replay',str(full/'frame_decisions.jsonl'),'--out',str(simple)]
+        if args.resume_simple:simple_command += ['--resume-from',str(args.resume_simple)]
+        run('RUNNING_IDENTICAL_CANDIDATE_SIMPLE_CONTROL',simple_command)
         for name, directory in [('FULL',full),('SIMPLE',simple)]:
             run('EVALUATING_'+name, ['python3',str(ROOT/'tools/groundjev/evaluate_video.py'),
                                     '--video',str(args.video),'--run',str(directory)])

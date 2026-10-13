@@ -1,0 +1,20 @@
+         71771 function calls in 3.283 seconds
+
+   Ordered by: cumulative time
+   List reduced from 66 to 12 due to restriction <12>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.004    0.004    3.283    3.283 /data2/user/LocateMOT_GroundJEV/locatemot/groundjev/tracker.py:150(state_dict)
+      465    0.005    0.000    3.256    0.007 /usr/local/lib/python3.10/dist-packages/PIL/Image.py:2476(save)
+      465    0.006    0.000    3.243    0.007 /usr/local/lib/python3.10/dist-packages/PIL/PngImagePlugin.py:1325(_save)
+      465    0.003    0.000    3.229    0.007 /usr/local/lib/python3.10/dist-packages/PIL/ImageFile.py:641(_save)
+      465    0.003    0.000    3.224    0.007 /usr/local/lib/python3.10/dist-packages/PIL/ImageFile.py:669(_encode_tile)
+      465    3.202    0.007    3.202    0.007 {method 'encode' of 'ImagingEncoder' objects}
+     1395    0.004    0.000    0.020    0.000 /usr/local/lib/python3.10/dist-packages/PIL/PngImagePlugin.py:1124(putchunk)
+      465    0.000    0.000    0.019    0.000 /usr/lib/python3.10/base64.py:51(b64encode)
+      465    0.019    0.000    0.019    0.000 {built-in method binascii.b2a_base64}
+      465    0.000    0.000    0.015    0.000 /usr/local/lib/python3.10/dist-packages/PIL/PngImagePlugin.py:1142(write)
+     2790    0.001    0.000    0.012    0.000 /usr/local/lib/python3.10/dist-packages/PIL/PngImagePlugin.py:154(_crc32)
+     2790    0.011    0.000    0.011    0.000 {built-in method zlib.crc32}
+
+

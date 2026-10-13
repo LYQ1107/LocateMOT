@@ -1618,3 +1618,155 @@ Next research hypothesis: exact object geometry grouping improves localization,
 but copying a native query label leaves ClsA0. A real typed OneJev category
 head using every supplied vocabulary class, separate from identity and absent
 detection confidence, is required. It must preserve all candidates and GT.
+
+
+### Native shared JEV category hypothesis (registered before execution)
+
+Exact-geometry Simple/Full ClsA0 exposes first-label copying. Add an opt-in
+native typed category head on the same OneJev parameters, with all1203input
+labels represented in deterministic128class root groups, selected conditional
+leaf and explicitUNKNOWN. Hierarchical routing is approximate, not a flat
+1203class probability distribution. Preserve all306geometries and unknown
+predictions; no GT/class/box filtering or metric changes. First run fixes
+Simple identity to isolate semantics, then same-policy Full uses the same
+engine for identity/category. Keep class confidence separate from identity
+and missing detector confidence. Plan:configs/groundjev/native_category_control_20261014.json.
+
+
+### Actual GroundAnything proposal own-history rollout
+
+The current500step training corpus uses GT proposals and declared synthetic
+fragments. To close that gap, register48legal training frames from the same
+three MOT sources, original DLM candidates with no topK/NMS/GT substitution,
+and the valid100step OneJev actor. Ground failures remain empty frames.
+Record only successful context groups, retain every native candidate, keep
+GT matching/aliases outside uncorrected actor state, and supervise lifecycle
+from targets matched to current actual proposals. This creates training
+supervision, not validation predictions or a new500step result.
+Plan:configs/groundjev/native_candidate_rollout_20261014.json.
+
+
+### Real-video memory export performance repair
+
+Native Full1203predictions completed, but Simple control spends seconds per
+frame re-encoding unchanged historical images. Actual155track profile:3.283s
+state serialization,3.256s inside465PNG saves. Cache at most one exact PNG
+encoding per live track/image field, keyed by image object identity. Native
+tracking replaces images rather than mutating saved crops. Encodings remain
+byte-equivalent and are released with each track; no persistent feature cache.
+Verify actual32frame decision replay, cold/warm/full-state reload equality,
+then preserve complete Full and the interrupted valid Simple prefix in a
+fresh owner. No detector rerun, new seed, metric/filter/state change or E2E
+speed claim. Source failure/controlled interruption remains recorded.
+
+
+### Native class decisions, actual detector rollout, and serialization repair
+
+Opt-in native_hierarchical category inference now shares the actual OneJev
+engine/parameters with Full identity decisions. All1203input categories are
+represented in128class root groups; selected-group leaf and explicit UNKNOWN.
+This is approximate hierarchical routing, not a flat global MAP classifier.
+Native path probability remains separate from identity probability and absent
+native detector confidence. Every306exact native geometry is retained.
+
+Completed Simple/Full TAO controls:33.042/23.320TETA, bothClsA0, unchanged
+localization/association compared to native-label controls.299/306objects
+choose rootUNKNOWN; seven receive vehicle labels. Full and Simple category
+decisions are exactly equal; all identity probability differences are0.
+Actual four-frame videos, six-decimal probability rounding, all candidates,
+GT/empty/rejected frames and unmodified TETA verified. Native category
+inference is implemented but does not solve classification; it remains
+opt-in. No OVMOT gain or Novel result claim. Next step is legal category
+supervision and targeted visual/group-routing diagnosis, not GT relabeling.
+Receipt:outputs/groundjev/task_controls/native_category_v1/aggregate_results.json.
+
+Actual GroundAnything proposals now feed a finite48frame legal own-history
+training exporter on physical7, original DLM service6. Actor is the valid
+OneJev100step checkpoint, V3 crops/motion. No GT proposal substitution,
+synthetic fragments, topK/NMS or corrected actor state. Independent GT
+matching supplies training targets only; lifecycle labels use targets matched
+to actual current proposals. Record only accepted context groups and retain
+all candidates including empty/rejected native frames. This closes a genuine
+training-data gap; corpus owner remains active, not completed training.
+Plan:configs/groundjev/native_candidate_rollout_20261014.json.
+
+Full native DanceTrack0004 predictions completed1203frames,27rejected frames
+(2.244%) retained. Original20frame resume means end_to_end_fps remains null.
+Official full-video metrics remain pending the exact-candidate Simple control.
+Simple recompressed all historical PNG crops every frame:actual155track
+profile3.283s,3.256s in465PNG saves. Exact per-field cached encoding retains
+at most3encodings per live track and releases them with the track. Actual
+223track snapshot:4.487s cold/.003874s unchanged warm call;20,884,556cached
+encoded bytes.32frame recorded causal replay, cold/warm payload and fresh
+reload are exact. These are serializer timings, not whole-video speed gains.
+
+Only verified owned Simple child4127910 was interrupted after its valid
+200frame prefix; original failed owner and interruption receipt preserved.
+Fresh owner reuses all complete native Full outputs and restores the entire
+unchanged Simple prefix. First reuse preflight wrongly expected the newer
+multitask specification field in the older ordinary-MOT receipt; retained
+failure and fixed using actual registered paths/frame numbers/native prompts,
+not synthesized metadata. v5 owner is active with cached PNG export, no new
+native detector calls or changed experimental protocol.
+Full/Compact/matched trained controls, mixed task supervision, full original
+GroundAnything retention and formal500step checkpoint remain required.
+
+
+### Fresh full-video V3 evidence measurement
+
+Full V1 actual1203frames:HOTA.0214546,IDF1.00482694,IDSW3792; identical
+Simple:.0852976,.0395616,746. Native candidate recall4341/4586=.946577,
+Full existing-identity accuracy234/4330=.054042 and option coverage.847113.
+Retain this negative baseline. Register a fresh complete1203frame V3 run:
+real current/history crops and geometry, native NO_MATCH, all proposals,
+unchanged native decoder/official metrics, adaptive context groups without
+option/candidate removal. Use verified cached PNG persistence; no resumption
+or candidate replay in Full, so a complete E2E record can finally be measured.
+Still pretraining baseline, not trained500checkpoint or a completed Pilot.
+Plan:configs/groundjev/dancetrack_fresh_v3_20261014.json.
+
+
+### Full DanceTrack0004 baseline is now official and validated
+
+Both1203frame video artifacts and exact candidate equality passed. Native
+Full V1 HOTA.0214546/IDF1.00482694/IDSW3792/FP9300/FN241; same-candidate
+Simple HOTA.0852976/IDF1.0395616/IDSW746/FP9334/FN256.27native rejected
+frames (2.244%) stay in every official denominator. GT4586observations,
+native13664candidates, one-to-one IoU.5 coverage4341/4586=.946577.
+Full correct surviving identity associations234/4330=.054042; correct
+option coverage3668/4330=.847113.9323unmatched candidate diagnostics
+include official ignore regions and are not themselves official FP labels.
+These negative results show both excessive candidate output and weak
+pretrained identity decisions; detection recall alone is insufficient.
+
+The complete200frame Simple prefix matches its preserved source row for row.
+Original Full20frame resumption and Simple200frame resumption preclude a
+continuous E2E claim. Simple32.62198replayFPS excludes native detection and
+full persistence/rendering costs. Scalar diagnostics never modify output.
+Receipt:outputs/groundjev/pilot_runs/dancetrack0004_pretrained_dense_v5_cached_memory_control/aggregate_results.json.
+
+A fresh complete1203frame V3 native run is now active on physical6. Same
+pretrained OneJev/original DLM, decoder and official evaluator, real current
+candidate/history crops and motion evidence, explicitNO_MATCH, no resumed
+prefix or Full candidate replay. Native context splitting retains all boxes
+and up-to32identity options. Exact cached PNG export preserves checkpoint
+payloads. Completion will measure actual complete pipeline E2E speed; no
+performance or full-goal completion claim while active. Formal500step
+training remains the original live owner; no restart or shortened protocol.
+
+
+### Actual native detector own-history corpus completed and validated
+
+48declared legal training frames,1184actual native proposals,5661supervised
+rows:1184identity,1184update,1184reliability,69withheldNO_MATCH,2040lifecycle.
+All typed targets/options/media and training split membership validated,
+no GT IDs in model state, no GT state correction or synthetic fragments.
+Native GT matches:474/526MOT17,110/110DanceTrack,496/806MOT20. Uncovered
+GT remains explicitly counted; never invented as native proposals. This is
+decision supervision, not localization supervision for missing boxes.
+Actor outputs only74across48frames (31/12/31first-frame births, subsequent
+collapse), exposing the valid100step actor's negative transfer rather than
+hiding it. All raw own histories are retained.31,045,329bytes of crop evidence,
+no full source-dataset feature cache. Corpus completion is not weight update
+or formal training completion. Receipt:
+outputs/groundjev/training_data/native_ground_own_history_v1/corpus_validation.json.

@@ -68,6 +68,7 @@ def main():
                     '--backend',job['backend'],'--evidence-format',job['evidence_format'],'--out',str(out)]
                 if 'checkpoint' in job:command+=['--checkpoint',str(ROOT/job['checkpoint'])]
                 if job.get('adaptive_context'):command+=['--adaptive-context-groups']
+                if 'category_policy' in job:command+=['--category-policy',job['category_policy']]
                 run(name+'_INFERENCE',command)
             run(name+'_OFFICIAL_EVAL',['python3',str(ROOT/'tools/groundjev/evaluate_multitask.py'),'--video',str(video),'--run',str(out)])
             state['completed'][name]={'run':str(out),'official_metrics':json.loads((out/'official_metrics.json').read_text())};save()

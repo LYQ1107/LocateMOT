@@ -1,0 +1,73 @@
+{
+  "status": "NATIVE_CATEGORY_SIMPLE_FULL_CONTROLS_VALIDATED_NO_CLASSIFICATION_GAIN",
+  "units": [
+    {
+      "backend": "simple",
+      "frames": 4,
+      "objects": 306,
+      "metrics": {
+        "TETA": 33.042,
+        "LocA": 48.539,
+        "AssocA": 50.587,
+        "ClsA": 0.0,
+        "LocRe": 49.167,
+        "LocPr": 93.333,
+        "AssocRe": 53.181,
+        "AssocPr": 85.644,
+        "ClsRe": 0.0,
+        "ClsPr": 0.0
+      },
+      "replay_fps": 0.035607897963417755,
+      "category_counts": {
+        "__unknown__": 299,
+        "limousine": 2,
+        "passenger car (part of a train)": 1,
+        "motor vehicle": 3,
+        "minivan": 1
+      },
+      "root_UNKNOWN_count": 299,
+      "identical_geometries_and_identity_assignments": true,
+      "native_identity_probability_max_difference": 0,
+      "native_probability_max_sum_error": 7.0000000008674235e-06,
+      "video_frames": 4,
+      "end_to_end_fps_claim": false
+    },
+    {
+      "backend": "full",
+      "frames": 4,
+      "objects": 306,
+      "metrics": {
+        "TETA": 23.32,
+        "LocA": 49.095,
+        "AssocA": 20.866,
+        "ClsA": 0.0,
+        "LocRe": 49.722,
+        "LocPr": 93.333,
+        "AssocRe": 26.917,
+        "AssocPr": 51.141,
+        "ClsRe": 0.0,
+        "ClsPr": 0.0
+      },
+      "replay_fps": 0.012894707281714927,
+      "category_counts": {
+        "__unknown__": 299,
+        "limousine": 2,
+        "passenger car (part of a train)": 1,
+        "motor vehicle": 3,
+        "minivan": 1
+      },
+      "root_UNKNOWN_count": 299,
+      "identical_geometries_and_identity_assignments": true,
+      "native_identity_probability_max_difference": 0,
+      "native_probability_max_sum_error": 7.0000000008674235e-06,
+      "video_frames": 4,
+      "end_to_end_fps_claim": false
+    }
+  ],
+  "same_OneJev_engine_for_Full_identity_and_categories": true,
+  "same_native_categories_in_both_controls": true,
+  "all_1203_classes_offered_in_hierarchical_root": true,
+  "GT_filter_or_confidence_fabrication": false,
+  "Novel_result": null,
+  "conclusion": "Both ClsA0; root UNKNOWN299/306. Native typed category inference exists but does not solve the classification problem. Keep explicit opt-in and train/diagnose with legal class supervision; no broad OVMOT gain."
+}

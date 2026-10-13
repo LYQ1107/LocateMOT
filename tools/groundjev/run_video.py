@@ -57,6 +57,7 @@ def main():
     parser.add_argument('--evidence-format',choices=['v1','v2_crop_motion','v3_crop_motion','v4_native_features','v5_native_features_csv','v6_native_compact_history'],default='v1')
     parser.add_argument('--native-feature-url',help='isolated official DLM visual encoder RPC; no substitute image features')
     parser.add_argument('--adaptive-context-groups',action='store_true',help='split native preflight-rejected groups, retaining all candidate rows and identity options')
+    parser.add_argument('--category-policy', choices=['native_label', 'native_hierarchical'], default='native_label')
     parser.add_argument('--expression')
     parser.add_argument('--vocabulary', nargs='+')
     parser.add_argument('--out', type=Path, required=True)
@@ -87,6 +88,10 @@ def main():
     if args.backend=='simple': decision=SimpleDecision()
     elif args.backend in ('simple_native','simple_temporal'): decision=FeatureDecision(temporal=args.backend=='simple_temporal')
     else: decision=OneJevDecision(args.checkpoint,evidence_format=args.evidence_format,adaptive_context=args.adaptive_context_groups)
+    if args.category_policy == 'native_hierarchical':
+        from locatemot.groundjev.category import NativeCategoryHead, CategorizedDecision
+        engine = decision.engine if args.backend == 'full' else OneJevDecision(args.checkpoint).engine
+        decision = CategorizedDecision(decision, NativeCategoryHead(engine))
     tracker = OnlineTracker(decision)
     feature_client=None
     if args.native_feature_url:
@@ -218,6 +223,7 @@ def main():
               'evidence_format':args.evidence_format,
               'native_feature_url':args.native_feature_url,
               'adaptive_context_groups':args.adaptive_context_groups,
+              'category_policy':args.category_policy,
               'scope': 'short_functional_check' if args.limit else manifest['scope'],
               'video_manifest': str(args.video), 'frames': len(frames), 'latencies_seconds': latencies,
               'grounding_parser_policy': args.grounding_parser,
@@ -240,10 +246,10 @@ def main():
               'resumed_completed_frames': len(resumed),
               'timing_limitations': 'resumed legacy run lacks original failed-attempt/interruption timing; no complete end-to-end FPS claim' if resumed else None,
               'official_metrics': 'PENDING_OFFICIAL_EVALUATOR',
-              'checkpoint': str(args.checkpoint) if args.backend == 'full' else None,
+              'checkpoint': str(args.checkpoint) if args.backend == 'full' or args.category_policy == 'native_hierarchical' else None,
               'motchallenge_confidence_column': 'constant unscored-output sentinel; native detection score is absent',
               'gt_read_by_runtime': False, 'future_frames_read_by_runtime': False}
-    if args.backend == 'full':
+    if args.backend == 'full' or args.category_policy == 'native_hierarchical':
         import torch
         result['peak_decision_gpu_memory_bytes'] = torch.cuda.max_memory_allocated()
     (args.out/'result.json').write_text(json.dumps(result, indent=2)+'\n')

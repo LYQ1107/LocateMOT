@@ -1,0 +1,32 @@
+{
+  "scope": "full_validation_video",
+  "frames": 1203,
+  "counts": {
+    "gt_observations": 4586,
+    "candidates": 13664,
+    "gt_matched_candidates": 4341,
+    "unmatched_candidate_events": 9323,
+    "unmatched_candidates_ignored": 18,
+    "memory_initializations_unmatched_GT": 6775,
+    "memory_updates_wrong_identity_or_unmatched": 454,
+    "no_surviving_correct_anchor_events": 11,
+    "memory_holds": 4181,
+    "memory_initializations_matched_GT": 2203,
+    "correct_to_wrong_events": 195,
+    "wrong_to_correct_events": 194,
+    "existing_identity_events": 4330,
+    "correct_identity_option_present": 3668,
+    "correct_existing_associations": 234,
+    "existing_identity_recreated_as_NEW": 2199,
+    "memory_updates_identity_consistent": 32
+  },
+  "correct_option_coverage": 0.8471131639722864,
+  "existing_association_accuracy": 0.05404157043879908,
+  "mean_native_correct_identity_option_mass": 0.10305108729792126,
+  "candidate_GT_recall_at_iou05": 0.9465765372873964,
+  "diagnostic_policy": "marked pedestrian GT, one-to-one candidate IoU>=.5; immutable track-anchor ownership from birth, not GT correction",
+  "unmatched_candidates_note": "includes evaluator-ignore regions; these are unmatched diagnostics, not official FP/NoMatch precision",
+  "explicit_NO_MATCH_decision_currently_supported": false,
+  "gt_used_posthoc_only": true,
+  "official_metric_replacement": false
+}

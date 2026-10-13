@@ -188,6 +188,7 @@ class OneJevDecision:
                 pending[:0]=[group[:middle],group[middle:]]
                 context_splits.append({'group_size':len(group),'error':str(error),'new_group_sizes':[middle,len(group)-middle]})
                 continue
+            self.accepted_batch(image, group, ranked, timestamp, specification)
             for i in range(len(group)):
                 results.append({'probabilities': response.answers[f'match_{i}'].probabilities,
                     'update_probability': response.answers[f'update_{i}'].noul,
@@ -206,3 +207,7 @@ class OneJevDecision:
         if self.adaptive_context or self.evidence_format=='v6_native_compact_history':
             metadata.update(context_group_policy='split only native preflight-rejected groups; retain every candidate and all up-to32 identity options',context_splits=context_splits)
         return results, life, metadata
+
+    def accepted_batch(self, image, group, ranked, timestamp, specification):
+        """Training exporters may record only actually inferred request groups."""
+        pass

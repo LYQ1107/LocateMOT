@@ -1,0 +1,19 @@
+{
+  "status": "RUNNING_NATIVE_FULL_VIDEO",
+  "video": "outputs/groundjev/pilot_data/dancetrack.json",
+  "frames": 1203,
+  "scope": "full_validation_video",
+  "physical_gpus": [
+    6
+  ],
+  "checkpoint": "/data2/user/LocateMOT_GroundJEV/models/OneJev-0.8B",
+  "parser_policy": "official_scoring",
+  "evidence_format": "v3_crop_motion",
+  "adaptive_context_groups": true,
+  "decoder_policy": "tracking_dense",
+  "perception_failure_policy": "empty_and_record",
+  "resume_from": null,
+  "candidate_controls": "exact full-run candidates replayed by Simple",
+  "training_gt_used_by_inference": false,
+  "pilot_completion": false
+}

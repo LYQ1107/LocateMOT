@@ -1,0 +1,12 @@
+{
+  "status": "CACHED_PNG_MEMORY_EXACT_REGRESSION_PASSED",
+  "actual_snapshot_tracks": 223,
+  "cold_seconds": 4.487397332035471,
+  "warm_seconds": 0.0038736379938200116,
+  "cached_encoded_image_bytes": 20884556,
+  "cache_policy": "at most3encodings per live track; released with track; no disk feature cache",
+  "actual_recorded_prefix_frames": 32,
+  "actual_prefix_outputs_state_unchanged": true,
+  "cold_warm_roundtrip_payload_equal": true,
+  "no_end_to_end_speed_claim": true
+}

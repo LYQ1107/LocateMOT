@@ -1,0 +1,34 @@
+{
+  "status": "NATIVE_TYPED_CATEGORY_SIMPLE_CONTROL_COMPLETE_NO_GAIN",
+  "frames": 4,
+  "objects": 306,
+  "all_original_geometries_and_identity_assignments_preserved": true,
+  "root_counts": {
+    "UNKNOWN": 299,
+    "5": 7
+  },
+  "label_counts": {
+    "__unknown__": 299,
+    "limousine": 2,
+    "passenger car (part of a train)": 1,
+    "motor vehicle": 3,
+    "minivan": 1
+  },
+  "native_probability_max_sum_error": 7.0000000008674235e-06,
+  "rounding_policy": "native six decimal probabilities; verified within half-unit-per-option rounding budget",
+  "official_metrics": {
+    "TETA": 33.042,
+    "LocA": 48.539,
+    "AssocA": 50.587,
+    "ClsA": 0.0,
+    "LocRe": 49.167,
+    "LocPr": 93.333,
+    "AssocRe": 53.181,
+    "AssocPr": 85.644,
+    "ClsRe": 0.0,
+    "ClsPr": 0.0
+  },
+  "GT_used_in_classification": false,
+  "all_supplied_1203_classes_in_root": true,
+  "conclusion": "299/306root UNKNOWN; ClsA remains0. Implemented native head is not a successful classifier or formal OVMOT gain."
+}

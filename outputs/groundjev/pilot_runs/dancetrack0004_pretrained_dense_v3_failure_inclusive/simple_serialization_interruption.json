@@ -1,0 +1,30 @@
+{
+  "status": "CONTROLLED_SIMPLE_INTERRUPTION_FOR_VERIFIED_SERIALIZATION_REPAIR",
+  "reason": "actual PNG recompression dominates memory persistence; exact cached encoding regression passed",
+  "preserved_full_frames": 1203,
+  "source": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/pilot_runs/dancetrack0004_pretrained_dense_v3_failure_inclusive",
+  "verified_owned_child": {
+    "pid": 4127910,
+    "parent": 3943641,
+    "cmd": [
+      "/data2/user/LocateMOT_GroundJEV/.venv-onejev-py310/bin/python",
+      "/data2/user/LocateMOT_GroundJEV/tools/groundjev/run_video.py",
+      "--task",
+      "mot",
+      "--video",
+      "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/pilot_data/dancetrack.json",
+      "--backend",
+      "simple",
+      "--grounding-parser",
+      "official_scoring",
+      "--grounding-decoder-policy",
+      "tracking_dense",
+      "--candidate-replay",
+      "outputs/groundjev/pilot_runs/dancetrack0004_pretrained_dense_v3_failure_inclusive/full/frame_decisions.jsonl",
+      "--out",
+      "outputs/groundjev/pilot_runs/dancetrack0004_pretrained_dense_v3_failure_inclusive/simple"
+    ]
+  },
+  "original_DLM_server_and_foreign_jobs_untouched": true,
+  "next": "fresh owner reuses complete Full and rehydrates every completed Simple prefix frame"
+}

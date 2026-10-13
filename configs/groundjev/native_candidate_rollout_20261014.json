@@ -1,0 +1,21 @@
+{
+  "name": "Actual native GroundAnything candidate own-history training rollout",
+  "physical_gpu": 7,
+  "GroundAnything_service_physical_gpu": 6,
+  "actor_checkpoint": "outputs/groundjev/training/onejev_teacher_check_100/final",
+  "actor_evidence": "v3_crop_motion, adaptive splitting of rejected context groups with all candidates retained",
+  "legal_training_sources": [
+    "MOT17-02-FRCNN train half",
+    "dancetrack0001 train",
+    "MOT20-01 train half"
+  ],
+  "frames": "16 existing hard/reappearance frames per sequence,48total",
+  "candidate_source": "all actual original GroundAnything DLM official_scoring tracking_dense proposals; no GT proposals or synthetic fragments",
+  "model_state_GT_corrected": false,
+  "GT_use": "supervision matching after native proposals, never actor identity/state inputs",
+  "empty_failure": "retain frame as empty and retain actual lifecycle/empty-image supervision",
+  "purpose": "close detector proposal/model-state distribution gap, not benchmark evaluation",
+  "maximum_GPUs": 4,
+  "temporary_cache_budget_bytes": 26843545600,
+  "new_formal_500_owner_restarted": false
+}

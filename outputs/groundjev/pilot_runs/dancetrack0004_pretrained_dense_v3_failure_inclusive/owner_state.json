@@ -1,0 +1,20 @@
+{
+  "status": "FULL_VIDEO_PILOT_FAILED",
+  "video": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/pilot_data/dancetrack.json",
+  "frames": 1203,
+  "scope": "full_validation_video",
+  "physical_gpus": [
+    6
+  ],
+  "checkpoint": "/data2/user/LocateMOT_GroundJEV/models/OneJev-0.8B",
+  "parser_policy": "official_scoring",
+  "decoder_policy": "tracking_dense",
+  "perception_failure_policy": "empty_and_record",
+  "resume_from": "outputs/groundjev/pilot_runs/dancetrack0004_pretrained_dense_v2/full",
+  "candidate_controls": "exact full-run candidates replayed by Simple",
+  "training_gt_used_by_inference": false,
+  "pilot_completion": false,
+  "full_invocation_wall_seconds": 14805.401296711003,
+  "failed_stage": "RUNNING_IDENTICAL_CANDIDATE_SIMPLE_CONTROL",
+  "exit_code": -15
+}

@@ -1,0 +1,19 @@
+{
+  "name": "Fresh full DanceTrack0004 V3 native cropped and geometric evidence",
+  "physical_gpu": 6,
+  "checkpoint": "models/OneJev-0.8B",
+  "frames": 1203,
+  "scope": "full registered legal validation video, not whole dataset",
+  "evidence": "v3_crop_motion real candidate crops, history anchor/long/recent crops, motionIoU/distances, dynamic up-to32identities and explicitNO_MATCH when history exists",
+  "reason": "V1 full HOTA2.1454, correct existing association5.404%, option coverage84.711%; genuine current/history/motion evidence and tracking-specialized training are required",
+  "detector": "unchanged original DLM official_scoring tracking_dense seed42 temperature.1 topP.95",
+  "all_native_proposals_retained": true,
+  "rejected_frames": "empty_and_record; all denominator frames retained",
+  "start": "fresh frame1, no saved prefix or candidate replay in Full",
+  "speed": "actual uninterrupted full pipeline E2E FPS required at terminal; no isolated speed gain claim under shared workload",
+  "control": "exact resulting candidate replay Simple and official TrackEval",
+  "serialization": "exact per-live-image cached PNG export; bounded3encodings perliveTrack",
+  "maximum_GPUs": 4,
+  "temporary_feature_budget_bytes": 26843545600,
+  "full_goal_complete": false
+}

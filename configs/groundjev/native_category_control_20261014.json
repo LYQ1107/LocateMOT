@@ -1,0 +1,41 @@
+{
+  "name": "OVMOT_native_OneJev_hierarchical_category_control",
+  "physical_gpu": 5,
+  "hypothesis": "First query-label copying causes ClsA0; native visual typed category decisions may recover semantics independently of identity",
+  "scope": "same registered TAO validation 4frames, all306exact native object geometries; no GT in inference",
+  "category_tree": "input vocabulary order partitioned into128class groups; every one of1203labels offered in root group descriptions; select highest-probability root, then native conditional leaf plusUNKNOWN; routing approximation not global flat MAP",
+  "category_probability": "native selected root probability times native conditional leaf probability; uncalibrated hierarchical path confidence; not detection confidence",
+  "association": "unchanged Simple geometry first, then Full same checkpoint/identity core",
+  "seed": "existing deterministic OneJev reference backend; no new detector requests",
+  "checkpoint": "models/OneJev-0.8B",
+  "candidate_source": "outputs/groundjev/multitask_candidate_controls/tao_exact_geometry_v1/frame_candidates.jsonl",
+  "video": "outputs/groundjev/multitask_pilot_data/ovmot_tao_first4.json",
+  "empty_UNKNOWN_policy": "keep every geometry; UNKNOWN outputs retained with category-1 in unchanged TETA",
+  "metrics": "unchanged official TETA, allGT/allframes; Base-only scope, Novel null",
+  "speed": "candidate replay only; noE2E claim",
+  "maximum_physical_GPUs": 4,
+  "temporary_cache_budget_bytes": 26843545600,
+  "formal_gain_claim": false,
+  "jobs": [
+    {
+      "name": "ovmot_native_category_simple",
+      "video": "outputs/groundjev/multitask_pilot_data/ovmot_tao_first4.json",
+      "candidates": "outputs/groundjev/multitask_candidate_controls/tao_exact_geometry_v1/frame_candidates.jsonl",
+      "backend": "simple",
+      "evidence_format": "v1",
+      "checkpoint": "models/OneJev-0.8B",
+      "adaptive_context": false,
+      "category_policy": "native_hierarchical"
+    },
+    {
+      "name": "ovmot_native_category_full",
+      "video": "outputs/groundjev/multitask_pilot_data/ovmot_tao_first4.json",
+      "candidates": "outputs/groundjev/multitask_candidate_controls/tao_exact_geometry_v1/frame_candidates.jsonl",
+      "backend": "full",
+      "evidence_format": "v1",
+      "checkpoint": "models/OneJev-0.8B",
+      "adaptive_context": true,
+      "category_policy": "native_hierarchical"
+    }
+  ]
+}

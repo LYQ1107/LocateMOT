@@ -71,13 +71,15 @@ class OnlineTracker:
             if column >= m and (column-m) % width:
                 events.append({'candidate': i, 'action': actions[(column-m)%width], 'decision': decisions[i]})
                 continue
+            category = decisions[i].get('category_decision')
+            label = category['label'] if category else candidate['label']
             reliable = decisions[i]['update_probability'] >= self.update_threshold
             crop = image.crop(tuple(candidate['box'])).convert('RGB')
             crop.thumbnail((192, 192))
             if column >= m:
                 tid = self.next_id
                 self.next_id += 1
-                track = Track(tid, list(candidate['box']), candidate['label'], crop.copy(), crop.copy(),
+                track = Track(tid, list(candidate['box']), label, crop.copy(), crop.copy(),
                               long_image=crop.copy(),
                               timestamp=timestamp, last_reliable_timestamp=timestamp,
                               recent_boxes=[list(candidate['box'])])
@@ -88,7 +90,7 @@ class OnlineTracker:
                 action = 'REACTIVATE' if track.lost_age else 'ACTIVE'
                 dt = timestamp-track.timestamp
                 track.velocity = [(x-y)/dt for x, y in zip(candidate['box'], track.box)]
-                track.box, track.timestamp, track.label = list(candidate['box']), timestamp, candidate['label']
+                track.box, track.timestamp, track.label = list(candidate['box']), timestamp, label
                 track.age += 1
                 track.recent_boxes = (track.recent_boxes + [list(candidate['box'])])[-16:]
                 track.recent_image = crop.copy()
@@ -107,18 +109,24 @@ class OnlineTracker:
                 if reliable:
                     track.long_feature=feature.copy();track.long_temporal_feature=temporal
                 track.feature_history=(track.feature_history+[{'timestamp':timestamp,'feature':feature,'temporal_feature':temporal}])[-16:]
-                track.semantic_counts[candidate['label']]=track.semantic_counts.get(candidate['label'],0)+1
+                if not category:
+                    track.semantic_counts[label]=track.semantic_counts.get(label,0)+1
                 if is_jev:
                     probabilities=list(decisions[i]['probabilities'].values())
                     track.identity_uncertainty=-sum(p*math.log(max(p,1e-12)) for p in probabilities)/math.log(len(probabilities))
                     life=lifecycle.get(track.track_id)
                     track.alive_probability=1.-life['probabilities']['TERMINATE'] if life else None
+            if category:
+                track.semantic_counts[label] = track.semantic_counts.get(label, 0) + category['probability']
             track.state, track.lost_age = 'ACTIVE', 0.
             probability = decisions[i]['probabilities'].get(str(track.track_id), decisions[i]['probabilities']['NEW'])
             track.confidence = probability if is_jev else None
             seen.add(track.track_id)
             outputs.append({'track_id': track.track_id, 'box': track.box, 'label': track.label,
                             'association_probability': track.confidence, 'native_detection_score': candidate['native_score']})
+            if category:
+                outputs[-1].update(category_probability=category['probability'],
+                    category_probability_kind=category['probability_kind'])
             events.append({'candidate': i, 'track_id': track.track_id, 'action': action,
                            'memory_action': 'UPDATE' if reliable else 'HOLD', 'decision': decisions[i]})
         for track in tracks:
@@ -149,14 +157,25 @@ class OnlineTracker:
             'long_temporal_feature','feature_history','alive_probability','identity_uncertainty','semantic_counts'}
         for track in self.tracks.values():
             row = {}
+            # Retain at most one encoding per live track/image field. Anchor
+            # and lost-track pixels do not change each frame; repeated PNG
+            # compression otherwise dominates persistent-memory export.
+            encoded_images = getattr(track, '_encoded_images', {})
             for field in fields(track):
-                if not native and field.name in native_fields: continue
+                if not native and field.name in native_fields and not (field.name == 'semantic_counts' and track.semantic_counts): continue
                 value = getattr(track, field.name)
                 if field.name.endswith('_image'):
-                    buffer = io.BytesIO()
-                    value.save(buffer, format='PNG')
-                    value = base64.b64encode(buffer.getvalue()).decode()
+                    cached = encoded_images.get(field.name)
+                    if cached is not None and cached[0] is value:
+                        value = cached[1]
+                    else:
+                        buffer = io.BytesIO()
+                        value.save(buffer, format='PNG')
+                        encoded = base64.b64encode(buffer.getvalue()).decode()
+                        encoded_images[field.name] = (value, encoded)
+                        value = encoded
                 row[field.name] = value
+            track._encoded_images = encoded_images
             rows.append(row)
         return {'format': 'groundjev-causal-memory-v2-native' if native else 'groundjev-causal-memory-v1', 'tracks': rows, 'next_id': self.next_id,
                 'previous_timestamp': self.previous_timestamp, 'lost_seconds': self.lost_seconds,

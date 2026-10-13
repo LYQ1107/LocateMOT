@@ -1,0 +1,8 @@
+{
+  "status": "ACTUAL_SIMPLE_MEMORY_SERIALIZATION_PROFILE",
+  "stored_tracks": 155,
+  "state_bytes": 14396340,
+  "serialization_seconds": 3.283099246036727,
+  "byte_semantics_roundtrip_equal": true,
+  "source": "outputs/groundjev/pilot_runs/dancetrack0004_pretrained_dense_v3_failure_inclusive/simple/latest_identity_memory.json"
+}
