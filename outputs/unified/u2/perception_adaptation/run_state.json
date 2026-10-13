@@ -1,7 +1,7 @@
 {
   "format": "locatemot-u2-bounded-perception-run-v1",
-  "state": "RUNNING",
-  "phase": "FULL_AUDIT_EPOCH_1",
+  "state": "PERCEPTION_SELECTED",
+  "phase": "COMPLETE",
   "wait_pids": {
     "tao_audit": 670232,
     "bdd_audit": 781721,
@@ -25,5 +25,12 @@
     "--extraction-pid",
     "625610"
   ],
-  "log": "/data2/user/LocateMOT/outputs/unified/u2/perception_adaptation/eval_epoch_1.log"
+  "log": "/data2/user/LocateMOT/outputs/unified/u2/perception_adaptation/eval_epoch_1.log",
+  "epoch": 1,
+  "checkpoint": "/data2/user/LocateMOT/outputs/unified/u2/perception_adaptation/training/epoch_1.pth",
+  "foundation_sha256": "1d9077ae603f40de0e955a11a88083f914f98faa967bc46cdd06bcdfb5129688",
+  "completed_optimizer_steps": 1250,
+  "selection": "/data2/user/LocateMOT/outputs/unified/u2/perception_adaptation/eval_epoch_1/selection.json",
+  "selection_status": "SELECTED",
+  "next_stage": "U2_A_LABEL_FREE_CANDIDATE_CACHE"
 }

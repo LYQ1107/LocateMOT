@@ -1,0 +1,13 @@
+{
+  "format": "locatemot-u2-crowded-candidate-registration-v1",
+  "dataset": "mot20",
+  "foundation_sha256": "1d9077ae603f40de0e955a11a88083f914f98faa967bc46cdd06bcdfb5129688",
+  "selected_top_k": 300,
+  "minimum_recall": 0.9,
+  "measured_recall": 0.973280748841315,
+  "before_track_training": true,
+  "measurement_sha256": "2281f2b5eb2622b81b8e37b8df088c30cebed3905c83dbc9e848a59528c0349f",
+  "recipe_path": "/data2/user/LocateMOT/outputs/unified/u2/protocol/perception_adaptation_recipe.json",
+  "recipe_sha256": "0e81dc153ee8e8c6fe28a010f88211e456f91cec9b30b8258d7f5c668e78a720",
+  "source_commit": "e063b2306ab4fcf9970b05f7c93cebc591729e85"
+}

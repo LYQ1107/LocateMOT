@@ -1,0 +1,27 @@
+{
+  "format": "locatemot-u2-portability-measurement-v1",
+  "status": "COMPLETE",
+  "dataset": "tao",
+  "foundation_sha256": "1d9077ae603f40de0e955a11a88083f914f98faa967bc46cdd06bcdfb5129688",
+  "protocol_path": "/data2/user/LocateMOT/outputs/unified/u2/protocol/tao_portability.json",
+  "protocol_sha256": "1341afb98df7606d393093d05ffd9daa2b7b0ca7f275ed8e8ed26b3738361094",
+  "images_expected": 36375,
+  "images_evaluated": 36375,
+  "coverage_keys_sha256": "336ff061d9e69a2aadf6e21635b89ddb4b6f0ae4f86ca2e32b982b90e57e8fc9",
+  "counts": {
+    "base_gt_total": 110055,
+    "base_hits_top300": 107225,
+    "novel_gt_total": 3057,
+    "novel_hits_top300": 2892,
+    "unmapped_gt_total": 314,
+    "unmapped_hits_top300": 305
+  },
+  "proposals_per_frame": {
+    "mean": 300.0,
+    "min": 300,
+    "max": 300
+  },
+  "every_frame_backbone_calls_one": true,
+  "worker_artifacts": "/data2/user/LocateMOT/outputs/unified/u2/perception_adaptation/eval_epoch_1/tao_ctao",
+  "official_test_labels_read": false
+}

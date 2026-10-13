@@ -1,9 +1,31 @@
 {
   "format": "locatemot-u2-ordinary-baseline-queue-v1",
-  "state": "WAITING_PERCEPTION_SELECTION",
+  "state": "BUILDING_ORDINARY_CACHE",
   "perception_pid": 1313649,
   "controller_pid": 1313650,
   "kitti_audit_pid": 864092,
-  "formal_cache_started": false,
-  "formal_track_training_launched": false
+  "formal_cache_started": true,
+  "formal_track_training_launched": false,
+  "foundation_sha256": "1d9077ae603f40de0e955a11a88083f914f98faa967bc46cdd06bcdfb5129688",
+  "command": [
+    "/data2/user/LocateMOT/.venv/bin/python",
+    "-u",
+    "/data2/user/LocateMOT/tools/unified/build_u2_candidate_cache.py",
+    "--checkpoint",
+    "/data2/user/LocateMOT/outputs/unified/u2/perception_adaptation/training/epoch_1.pth",
+    "--selection",
+    "/data2/user/LocateMOT/outputs/unified/u2/perception_adaptation/eval_epoch_1/selection.json",
+    "--phase",
+    "ordinary",
+    "--gpus",
+    "0",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7"
+  ],
+  "log": "/data2/user/LocateMOT/outputs/unified/u2/ordinary_baseline/cache.log"
 }
