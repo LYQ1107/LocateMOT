@@ -58,3 +58,9 @@ events.log
 
 # Local download clients, browser sessions, and administrator helpers.
 /.tools/
+
+# GroundJEV isolated dependencies, interpreters and generated resources.
+/external/
+/.venv-*/
+/.python/
+/.download-cache/

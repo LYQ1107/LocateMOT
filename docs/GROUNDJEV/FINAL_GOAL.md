@@ -1,0 +1,24 @@
+# GroundJEV-MOT
+
+User-directed research pivot, 2026-10-13. Goal:
+`GOAL_GROUNDJEV_UNIFIED_ONLINE_TRACKING`; first milestone:
+`GOAL_4GPU_REAL_VIDEO_PILOT`.
+
+Build and train one causal online MOT/RMOT/OVMOT system using real
+GroundAnything DLM 4B localization, real pretrained OneJev-0.8B structured
+identity/lifecycle/update decisions, and shared persistent identity memory.
+Preserve the old LocateMOT results and datasets. Limit simultaneous computation
+to four physical GPUs and temporary features to 25 GiB. Do not restart U2's
+whole-dataset cache route.
+
+The Pilot requires a complete legal MOT video, legal RMOT and OVMOT loops,
+tracking-specific pretrained OneJev fine-tuning with before/after measurements,
+a fixed-candidate association baseline, official tracking metrics and actual
+end-to-end speed/memory records. Publish code/configuration/results and retain
+real checkpoint paths/sizes/digests locally. Negative results guide controlled
+follow-up experiments; they do not terminate the entire research project.
+
+After the Pilot, continue Full/Compact distillation, controlled GroundAnything
+tracking adaptation, memory and multitask studies. Interactive prompting is
+secondary to the first three-task Pilot. Never claim synthetic tensors or
+perception recall as completed video tracking results.

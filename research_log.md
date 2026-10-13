@@ -952,3 +952,11 @@ Actual epoch1 ordinary summary: BDD Top150.936574, Dance.999036, MOT17.878066, M
 - Epoch 1 foundation `1d9077ae603f40de0e955a11a88083f914f98faa967bc46cdd06bcdfb5129688` passed all seven portability streams and U1 retention: generic V1/V2 0.9918663023 / 0.9672269380; expression Top100 V1/V2 1.0 / 0.9785374828. Fixed 500-pair language audit true/shuffled AP50 0.7301285093 / 0.4067468580. Generic scope 4,201 images; expression scope 7,160 representative query frames, 7,199 target references.
 - Selection source receipts and their registered digests agree; retain epoch 1, no second adaptation epoch required. Existing recovery owner exited successfully and advanced the eight-GPU ordinary candidate cache automatically. Formal tracking scores and U3 readiness remain pending.
 - Evidence: `outputs/unified/u2/perception_adaptation/eval_epoch_1/selection.json`, seven `measurements/*.json`, and generic/expression/counterfactual `result.json`.
+
+### 2026-10-13 — user-directed GroundJEV research pivot
+
+- User terminated full U2 candidate caching and authorized GroundAnything DLM + pretrained OneJev tracking research on at most four GPUs. Goal changed; this is not algorithm failure/NO_GO.
+- Verified /proc ancestry/start ticks and stopped 13 old U2 processes with SIGTERM; no old queue/cache worker remains. Other project GPU jobs preserved. Removed 4,748 verified feature shards (39.89 GiB allocated), retaining manifests/data/results and loadable epoch-1 checkpoint SHA 1d9077ae… (1,909,880,505 bytes).
+- New worktree /data2/user/LocateMOT_GroundJEV and branch codex/groundjev-4gpu-20261013 inherit freshly fetched remote 51614cb. Official GroundAnything/OneJev code cloned directly without proxy; isolated environments/weights setup started. No new training or tracking metric claimed.
+- Correct inherited status terminology: generic .9787925789 is Top150 recall IoU .5, not AP; expression Top100 V1/V2 recall 1/.9785374828, while .7237566558/.6556441180 are query AP diagnostics. Raw receipts unchanged.
+- Next: real DLM/OneJev loading, own-state short clip → full legal MOT video, fixed-candidate Simple/Full comparison, tracking-SFT and shared RMOT/OVMOT evaluation. Keep evidence-based failure repair and finite training budgets.

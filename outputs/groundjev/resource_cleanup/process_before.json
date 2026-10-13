@@ -1,0 +1,245 @@
+{
+  "status": "VERIFIED_BEFORE_STOP",
+  "gpu": "index, uuid, name, utilization.gpu [%], memory.used [MiB], memory.total [MiB]\n0, GPU-bf21a95d-d96d-9ec5-cb15-b0fb7ad50536, NVIDIA A800-SXM4-80GB, 100 %, 22173 MiB, 81920 MiB\n1, GPU-f35654b3-bbf5-7303-cfcb-9bd5d3e16e69, NVIDIA A800-SXM4-80GB, 100 %, 21745 MiB, 81920 MiB\n2, GPU-c2484ded-5f87-237c-bbf0-d23fcb74fdb2, NVIDIA A800-SXM4-80GB, 100 %, 22047 MiB, 81920 MiB\n3, GPU-6cb11599-704e-c3aa-9e28-5f15faa25c7c, NVIDIA A800-SXM4-80GB, 100 %, 21733 MiB, 81920 MiB\n4, GPU-44f62835-4095-23ec-d3dd-5af16a00705c, NVIDIA A800-SXM4-80GB, 99 %, 41882 MiB, 81920 MiB\n5, GPU-c6523d98-cb2d-95ed-4cb2-a84936acceb6, NVIDIA A800-SXM4-80GB, 100 %, 39964 MiB, 81920 MiB\n6, GPU-883c8be3-25b0-3d19-6fa8-4c2e335e67d2, NVIDIA A800-SXM4-80GB, 93 %, 5723 MiB, 81920 MiB\n7, GPU-0322c0e7-ffbf-e068-5bdd-587b8216a9d9, NVIDIA A800-SXM4-80GB, 100 %, 41444 MiB, 81920 MiB\n",
+  "targets": [
+    {
+      "pid": 1313648,
+      "ppid": 1313647,
+      "pgid": 1313647,
+      "start_ticks": 17221462,
+      "state": "S",
+      "argv": [
+        ".venv/bin/python",
+        "-u",
+        "-"
+      ],
+      "cwd": "/data2/user/LocateMOT"
+    },
+    {
+      "pid": 1313650,
+      "ppid": 1313648,
+      "pgid": 1313647,
+      "start_ticks": 17221467,
+      "state": "S",
+      "argv": [
+        "/data2/user/LocateMOT/.venv/bin/python",
+        "-u",
+        "/data2/user/LocateMOT/tools/unified/queue_u2_ordinary_baseline.py",
+        "--wait-perception-pid",
+        "1313649",
+        "--kitti-audit-pid",
+        "864092",
+        "--extraction-pid",
+        "625610"
+      ],
+      "cwd": "/data2/user/LocateMOT"
+    },
+    {
+      "pid": 1313651,
+      "ppid": 1313648,
+      "pgid": 1313647,
+      "start_ticks": 17221467,
+      "state": "S",
+      "argv": [
+        "/data2/user/LocateMOT/.venv/bin/python",
+        "-u",
+        "/data2/user/LocateMOT/tools/unified/queue_u2_mot_only.py",
+        "--wait-ordinary-pid",
+        "1313650"
+      ],
+      "cwd": "/data2/user/LocateMOT"
+    },
+    {
+      "pid": 1313652,
+      "ppid": 1313648,
+      "pgid": 1313647,
+      "start_ticks": 17221467,
+      "state": "S",
+      "argv": [
+        "/data2/user/LocateMOT/.venv/bin/python",
+        "-u",
+        "/data2/user/LocateMOT/tools/unified/queue_u2_joint.py",
+        "--wait-mot-only-pid",
+        "1313651"
+      ],
+      "cwd": "/data2/user/LocateMOT"
+    },
+    {
+      "pid": 1313653,
+      "ppid": 1313648,
+      "pgid": 1313647,
+      "start_ticks": 17221468,
+      "state": "S",
+      "argv": [
+        "/data2/user/LocateMOT/.venv/bin/python",
+        "-u",
+        "/data2/user/LocateMOT/tools/unified/queue_u2_finalize.py",
+        "--wait-joint-pid",
+        "1313652"
+      ],
+      "cwd": "/data2/user/LocateMOT"
+    },
+    {
+      "pid": 3099009,
+      "ppid": 1313650,
+      "pgid": 1313647,
+      "start_ticks": 26068771,
+      "state": "S",
+      "argv": [
+        "/data2/user/LocateMOT/.venv/bin/python",
+        "-u",
+        "/data2/user/LocateMOT/tools/unified/build_u2_candidate_cache.py",
+        "--checkpoint",
+        "/data2/user/LocateMOT/outputs/unified/u2/perception_adaptation/training/epoch_1.pth",
+        "--selection",
+        "/data2/user/LocateMOT/outputs/unified/u2/perception_adaptation/eval_epoch_1/selection.json",
+        "--phase",
+        "ordinary",
+        "--gpus",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "cwd": "/data2/user/LocateMOT"
+    },
+    {
+      "pid": 3099205,
+      "ppid": 3099009,
+      "pgid": 1313647,
+      "start_ticks": 26069303,
+      "state": "R",
+      "argv": [
+        "/data2/user/LocateMOT/.venv/bin/python",
+        "-u",
+        "/data2/user/LocateMOT/tools/unified/build_u2_candidate_cache.py",
+        "--worker-index",
+        "0",
+        "--gpu",
+        "0",
+        "--spec",
+        "/data2/user/LocateMOT/outputs/unified/u2/perception_cache/1d9077ae603f40de0e955a11a88083f914f98faa967bc46cdd06bcdfb5129688/ordinary/cache_spec.json"
+      ],
+      "cwd": "/data2/user/LocateMOT"
+    },
+    {
+      "pid": 3099206,
+      "ppid": 3099009,
+      "pgid": 1313647,
+      "start_ticks": 26069304,
+      "state": "R",
+      "argv": [
+        "/data2/user/LocateMOT/.venv/bin/python",
+        "-u",
+        "/data2/user/LocateMOT/tools/unified/build_u2_candidate_cache.py",
+        "--worker-index",
+        "1",
+        "--gpu",
+        "1",
+        "--spec",
+        "/data2/user/LocateMOT/outputs/unified/u2/perception_cache/1d9077ae603f40de0e955a11a88083f914f98faa967bc46cdd06bcdfb5129688/ordinary/cache_spec.json"
+      ],
+      "cwd": "/data2/user/LocateMOT"
+    },
+    {
+      "pid": 3099207,
+      "ppid": 3099009,
+      "pgid": 1313647,
+      "start_ticks": 26069304,
+      "state": "R",
+      "argv": [
+        "/data2/user/LocateMOT/.venv/bin/python",
+        "-u",
+        "/data2/user/LocateMOT/tools/unified/build_u2_candidate_cache.py",
+        "--worker-index",
+        "2",
+        "--gpu",
+        "2",
+        "--spec",
+        "/data2/user/LocateMOT/outputs/unified/u2/perception_cache/1d9077ae603f40de0e955a11a88083f914f98faa967bc46cdd06bcdfb5129688/ordinary/cache_spec.json"
+      ],
+      "cwd": "/data2/user/LocateMOT"
+    },
+    {
+      "pid": 3099208,
+      "ppid": 3099009,
+      "pgid": 1313647,
+      "start_ticks": 26069305,
+      "state": "R",
+      "argv": [
+        "/data2/user/LocateMOT/.venv/bin/python",
+        "-u",
+        "/data2/user/LocateMOT/tools/unified/build_u2_candidate_cache.py",
+        "--worker-index",
+        "3",
+        "--gpu",
+        "3",
+        "--spec",
+        "/data2/user/LocateMOT/outputs/unified/u2/perception_cache/1d9077ae603f40de0e955a11a88083f914f98faa967bc46cdd06bcdfb5129688/ordinary/cache_spec.json"
+      ],
+      "cwd": "/data2/user/LocateMOT"
+    },
+    {
+      "pid": 3099209,
+      "ppid": 3099009,
+      "pgid": 1313647,
+      "start_ticks": 26069306,
+      "state": "R",
+      "argv": [
+        "/data2/user/LocateMOT/.venv/bin/python",
+        "-u",
+        "/data2/user/LocateMOT/tools/unified/build_u2_candidate_cache.py",
+        "--worker-index",
+        "4",
+        "--gpu",
+        "4",
+        "--spec",
+        "/data2/user/LocateMOT/outputs/unified/u2/perception_cache/1d9077ae603f40de0e955a11a88083f914f98faa967bc46cdd06bcdfb5129688/ordinary/cache_spec.json"
+      ],
+      "cwd": "/data2/user/LocateMOT"
+    },
+    {
+      "pid": 3099210,
+      "ppid": 3099009,
+      "pgid": 1313647,
+      "start_ticks": 26069307,
+      "state": "R",
+      "argv": [
+        "/data2/user/LocateMOT/.venv/bin/python",
+        "-u",
+        "/data2/user/LocateMOT/tools/unified/build_u2_candidate_cache.py",
+        "--worker-index",
+        "5",
+        "--gpu",
+        "5",
+        "--spec",
+        "/data2/user/LocateMOT/outputs/unified/u2/perception_cache/1d9077ae603f40de0e955a11a88083f914f98faa967bc46cdd06bcdfb5129688/ordinary/cache_spec.json"
+      ],
+      "cwd": "/data2/user/LocateMOT"
+    },
+    {
+      "pid": 3099212,
+      "ppid": 3099009,
+      "pgid": 1313647,
+      "start_ticks": 26069308,
+      "state": "R",
+      "argv": [
+        "/data2/user/LocateMOT/.venv/bin/python",
+        "-u",
+        "/data2/user/LocateMOT/tools/unified/build_u2_candidate_cache.py",
+        "--worker-index",
+        "7",
+        "--gpu",
+        "7",
+        "--spec",
+        "/data2/user/LocateMOT/outputs/unified/u2/perception_cache/1d9077ae603f40de0e955a11a88083f914f98faa967bc46cdd06bcdfb5129688/ordinary/cache_spec.json"
+      ],
+      "cwd": "/data2/user/LocateMOT"
+    }
+  ],
+  "timestamp_unix": 1791902251.4840093
+}

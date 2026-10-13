@@ -1,0 +1,51 @@
+{
+  "status": "CACHE_FEATURES_REMOVED_BY_USER_RESEARCH_PIVOT",
+  "deleted_files": 4748,
+  "deleted_allocated_bytes": 42831618048,
+  "disk_before": {
+    "/data0/user": {
+      "used_bytes": 3450871926784,
+      "available_bytes": 328412876800
+    },
+    "/data1/user": {
+      "used_bytes": 3342249783296,
+      "available_bytes": 244998623232
+    },
+    "/data2/user": {
+      "used_bytes": 3391303626752,
+      "available_bytes": 387981176832
+    },
+    "/data3/user": {
+      "used_bytes": 3459036491776,
+      "available_bytes": 320248311808
+    }
+  },
+  "disk_after": {
+    "/data0/user": {
+      "used_bytes": 3450871926784,
+      "available_bytes": 328412876800
+    },
+    "/data1/user": {
+      "used_bytes": 3342249783296,
+      "available_bytes": 244998623232
+    },
+    "/data2/user": {
+      "used_bytes": 3348498751488,
+      "available_bytes": 430786052096
+    },
+    "/data3/user": {
+      "used_bytes": 3459039395840,
+      "available_bytes": 320245407744
+    }
+  },
+  "freed_bytes_by_volume": {
+    "/data0/user": 0,
+    "/data1/user": 0,
+    "/data2/user": 42804875264,
+    "/data3/user": -2904064
+  },
+  "remaining_feature_files": 0,
+  "preserved_checkpoint": "/data2/user/LocateMOT/outputs/unified/u2/perception_adaptation/training/epoch_1.pth",
+  "timestamp_unix": 1791902448.204924,
+  "recoverable": "Not retained; rebuild from preserved images and checkpoint"
+}

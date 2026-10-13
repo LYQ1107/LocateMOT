@@ -1,0 +1,62 @@
+{
+  "status": "STOPPED_BY_USER_RESEARCH_PIVOT",
+  "signals": [
+    {
+      "pid": 1313648,
+      "signal": "SIGTERM"
+    },
+    {
+      "pid": 1313653,
+      "signal": "SIGTERM"
+    },
+    {
+      "pid": 1313652,
+      "signal": "SIGTERM"
+    },
+    {
+      "pid": 1313651,
+      "signal": "SIGTERM"
+    },
+    {
+      "pid": 1313650,
+      "signal": "SIGTERM"
+    },
+    {
+      "pid": 3099009,
+      "signal": "SIGTERM"
+    },
+    {
+      "pid": 3099205,
+      "signal": "SIGTERM"
+    },
+    {
+      "pid": 3099206,
+      "signal": "SIGTERM"
+    },
+    {
+      "pid": 3099207,
+      "signal": "SIGTERM"
+    },
+    {
+      "pid": 3099208,
+      "signal": "SIGTERM"
+    },
+    {
+      "pid": 3099209,
+      "signal": "SIGTERM"
+    },
+    {
+      "pid": 3099210,
+      "signal": "SIGTERM"
+    },
+    {
+      "pid": 3099212,
+      "signal": "SIGTERM"
+    }
+  ],
+  "remaining_verified_pids": [],
+  "remaining_u2_processes": [],
+  "gpu": "index, uuid, name, utilization.gpu [%], memory.used [MiB], memory.total [MiB]\n0, GPU-bf21a95d-d96d-9ec5-cb15-b0fb7ad50536, NVIDIA A800-SXM4-80GB, 93 %, 19747 MiB, 81920 MiB\n1, GPU-f35654b3-bbf5-7303-cfcb-9bd5d3e16e69, NVIDIA A800-SXM4-80GB, 93 %, 19319 MiB, 81920 MiB\n2, GPU-c2484ded-5f87-237c-bbf0-d23fcb74fdb2, NVIDIA A800-SXM4-80GB, 90 %, 19299 MiB, 81920 MiB\n3, GPU-6cb11599-704e-c3aa-9e28-5f15faa25c7c, NVIDIA A800-SXM4-80GB, 93 %, 18985 MiB, 81920 MiB\n4, GPU-44f62835-4095-23ec-d3dd-5af16a00705c, NVIDIA A800-SXM4-80GB, 0 %, 44944 MiB, 81920 MiB\n5, GPU-c6523d98-cb2d-95ed-4cb2-a84936acceb6, NVIDIA A800-SXM4-80GB, 100 %, 37740 MiB, 81920 MiB\n6, GPU-883c8be3-25b0-3d19-6fa8-4c2e335e67d2, NVIDIA A800-SXM4-80GB, 91 %, 5723 MiB, 81920 MiB\n7, GPU-0322c0e7-ffbf-e068-5bdd-587b8216a9d9, NVIDIA A800-SXM4-80GB, 100 %, 36912 MiB, 81920 MiB\n",
+  "timestamp_unix": 1791902260.0779915,
+  "checkpoint_or_data_deleted": false
+}
