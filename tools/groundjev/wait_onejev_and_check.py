@@ -42,7 +42,7 @@ def main():
     OUT.write_text(json.dumps(state,indent=2)+'\n')
     print(json.dumps(state),flush=True)
     receipt = ROOT/'outputs/groundjev/model_setup/OneJev-0.8B_download.json'
-    check = [str(PYTHON),'-c','import torch,transformers,accelerate,peft,qev; assert transformers.__version__ == "5.5.4"']
+    check = [str(PYTHON),'-c','import torch,transformers,accelerate,peft,qev; assert transformers.__version__ == "5.17.0"']
     while True:
         weights_ready = receipt.exists() and json.loads(receipt.read_text())['status'] == 'DOWNLOAD_COMPLETE_NOT_MODEL_LOAD'
         env_pending = 'environment' in owners and alive(owners['environment'])

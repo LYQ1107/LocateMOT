@@ -3,10 +3,11 @@
   "python": "3.10.12",
   "torch": "2.10.0+cu128",
   "torchvision": "0.25.0+cu128",
-  "transformers": "5.5.4",
+  "transformers": "5.17.0",
   "packages_compatible": 69,
   "cuda_available": true,
   "cuda_check_physical_gpu": 6,
-  "pretrained_model_check": "WAITING_OFFICIAL_WEIGHT_RECEIPT",
-  "old_environment_modified": false
+  "pretrained_model_check": "REAL_PRETRAINED_FRAME_DECISION_COMPLETE",
+  "old_environment_modified": false,
+  "official_auto_fork_check": "PASSED_UNCHANGED_0.05_THRESHOLD"
 }

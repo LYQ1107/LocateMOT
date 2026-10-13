@@ -1,0 +1,12 @@
+{
+  "state": "REAL_PRETRAINED_FRAME_CHECK_COMPLETE_AFTER_VERSION_REPAIR",
+  "upstream_pids": {
+    "weights": 3771412
+  },
+  "physical_gpus": [
+    6
+  ],
+  "training_launched": false,
+  "repair": "OneJev checkpoint declared Transformers5.17.0; replace wrong initial5.5.4 only in isolated OneJev environment",
+  "result": "outputs/groundjev/model_setup/onejev_real_frame.json"
+}

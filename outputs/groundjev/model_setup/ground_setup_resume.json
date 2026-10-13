@@ -1,0 +1,51 @@
+{
+  "status": "OFFICIAL_SERVE_ENVIRONMENT_CHECKS_COMPLETE_NOT_MODEL_LOAD",
+  "commands": [
+    [
+      "/data2/user/LocateMOT_GroundJEV/.venv-bootstrap/bin/uv",
+      "pip",
+      "install",
+      "--python",
+      "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python",
+      "--find-links",
+      "/data2/user/LocateMOT_GroundJEV/.download-cache/wheelhouse",
+      "-c",
+      "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/requirements/serve.txt",
+      "-r",
+      "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/requirements/serve.txt",
+      "-e",
+      "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/vendor/sglang"
+    ],
+    [
+      "/data2/user/LocateMOT_GroundJEV/.venv-bootstrap/bin/uv",
+      "pip",
+      "install",
+      "--python",
+      "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python",
+      "--find-links",
+      "/data2/user/LocateMOT_GroundJEV/.download-cache/wheelhouse",
+      "--no-deps",
+      "nvidia-cudnn-cu12==9.16.0.29"
+    ],
+    [
+      "/data2/user/LocateMOT_GroundJEV/.venv-bootstrap/bin/uv",
+      "pip",
+      "install",
+      "--python",
+      "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python",
+      "--find-links",
+      "/data2/user/LocateMOT_GroundJEV/.download-cache/wheelhouse",
+      "--no-deps",
+      "-e",
+      "/data2/user/LocateMOT_GroundJEV/external/GroundAnything"
+    ],
+    [
+      "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python",
+      "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/scripts/check_serve_environment.py"
+    ]
+  ],
+  "vendor_archive_verified": true,
+  "prior_interruption": "controlled replacement of slow single-connection package transport",
+  "bootstrap_and_vendor_preparation_reused": true,
+  "runtime_constraints_changed": false
+}

@@ -60,7 +60,7 @@ def main():
                     candidates, perception = original['candidates'], {'mode': 'fixed_candidate_replay',
                         'source': str(args.candidate_replay), 'original_perception': original['perception']}
                 else:
-                    candidates, perception = frontend(image, args.task, vocabulary, args.expression)
+                    candidates, perception = frontend(image, args.task, vocabulary, args.expression, image_path=path)
                 outputs, state = tracker.step(image, candidates, frame_number/fps,
                     {'task': args.task, 'vocabulary': vocabulary, 'expression': args.expression})
                 elapsed = time.perf_counter()-start

@@ -1,0 +1,160 @@
+{
+  "status": "DOWNLOAD_COMPLETE_NOT_MODEL_LOAD",
+  "repo": "GroundingPI/GroundAnything",
+  "revision": "e44e8f1bd518323db31c551aeaa07e370e12d264",
+  "files": [
+    {
+      "path": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM/LICENSE",
+      "bytes": 1014,
+      "sha256": "c419c191a33774f4e1f834b3fb36033dc84e8ba316a3d1935eed1fa529884a74",
+      "official_lfs_sha256": null
+    },
+    {
+      "path": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM/LICENSE-Apache-2.0",
+      "bytes": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "official_lfs_sha256": null
+    },
+    {
+      "path": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM/LICENSE-Kimi-K3",
+      "bytes": 3065,
+      "sha256": "20c797ce19af0c17de52c6afb144644768a591c521655f5ebf5712c9850f2887",
+      "official_lfs_sha256": null
+    },
+    {
+      "path": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM/README.md",
+      "bytes": 39093,
+      "sha256": "3189f325228af1f532159028f03b81c1ad871e163e47737a9e70e1d68ed3772d",
+      "official_lfs_sha256": null
+    },
+    {
+      "path": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM/added_tokens.json",
+      "bytes": 19637,
+      "sha256": "669bb095cca2e86ddc821926f4c3b42dd7389f2ad3ec49c8edca8fe6294aae7f",
+      "official_lfs_sha256": null
+    },
+    {
+      "path": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM/chat_template.jinja",
+      "bytes": 1017,
+      "sha256": "a0bc6f6fc7a29a80017a433e8f03a1cc1236e838a944a2d034295a60c4f2fddb",
+      "official_lfs_sha256": null
+    },
+    {
+      "path": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM/checksums.sha256",
+      "bytes": 2361,
+      "sha256": "9611442dd5fb775dda73a5b315f403170d7df3f195cea7e907c4dfe02cfe38fb",
+      "official_lfs_sha256": null
+    },
+    {
+      "path": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM/config.json",
+      "bytes": 3942,
+      "sha256": "22c369e2bdac19723fe7db7e4c64b224462744b1f1aae7bd5daf05307db3b9fd",
+      "official_lfs_sha256": null
+    },
+    {
+      "path": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM/configuration_groundinganything.py",
+      "bytes": 7845,
+      "sha256": "7ad33532c846fdd81dd41a6ba54db54e3c47cada50472d732ba91eaede725323",
+      "official_lfs_sha256": null
+    },
+    {
+      "path": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM/configuration_groundinganything_vision.py",
+      "bytes": 11498,
+      "sha256": "6b255ff08426effe581833b3809bf2232cac9eb93d1e5cf83fff76ce62791e38",
+      "official_lfs_sha256": null
+    },
+    {
+      "path": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM/generation_config.json",
+      "bytes": 226,
+      "sha256": "42e0cb3d5a6a9e5c93c20555739f1038753ba1adb139c5c82a3a9f3b39ed5eab",
+      "official_lfs_sha256": null
+    },
+    {
+      "path": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM/image_processing_groundinganything.py",
+      "bytes": 8111,
+      "sha256": "33cb222671104ec4f0d3d234a3db7561b94d11543089d5f250c14a2f1b8651c3",
+      "official_lfs_sha256": null
+    },
+    {
+      "path": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM/media_utils.py",
+      "bytes": 13844,
+      "sha256": "78403540328f9847d6b7ebc5c44eb2e6a752863de0afb7d0710728bb161dc60d",
+      "official_lfs_sha256": null
+    },
+    {
+      "path": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM/merges.txt",
+      "bytes": 1671853,
+      "sha256": "8831e4f1a044471340f7c0a83d7bd71306a5b867e95fd870f74d0c5308a904d5",
+      "official_lfs_sha256": null
+    },
+    {
+      "path": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM/model.safetensors",
+      "bytes": 9687419736,
+      "sha256": "3cf09355cde8cf4877cdc76e0a72301d572c1d6263b2831f8a03368285bb65e2",
+      "official_lfs_sha256": "3cf09355cde8cf4877cdc76e0a72301d572c1d6263b2831f8a03368285bb65e2"
+    },
+    {
+      "path": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM/modeling_groundinganything.py",
+      "bytes": 77519,
+      "sha256": "86ba0522e32bcf5d512f8e7dcc529abd22a39f10d55fa8327efcb65cbd758a67",
+      "official_lfs_sha256": null
+    },
+    {
+      "path": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM/modeling_groundinganything_vision.py",
+      "bytes": 54576,
+      "sha256": "a839e10631620ae5fe70ec3aa9d009af521f7ea03faa66b32adce287105003be",
+      "official_lfs_sha256": null
+    },
+    {
+      "path": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM/preprocessor_config.json",
+      "bytes": 953,
+      "sha256": "11ddb518de0bcafe3f46f49310887bf7424b4f533d300c5f4749052c9d6465d1",
+      "official_lfs_sha256": null
+    },
+    {
+      "path": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM/processing_groundinganything.py",
+      "bytes": 5367,
+      "sha256": "90e533272ff79d068ce922e9156e5d83f3cf2cc9e565af37b135c09e9fe57b81",
+      "official_lfs_sha256": null
+    },
+    {
+      "path": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM/requirements.txt",
+      "bytes": 75,
+      "sha256": "534931ef99997dec0735da46a570a45696cfee6dace291cc9fa9a2da24420685",
+      "official_lfs_sha256": null
+    },
+    {
+      "path": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM/special_tokens_map.json",
+      "bytes": 141421,
+      "sha256": "d948513463b339ae85d6be6c99ecee787cc9c7a96be09180aa521a32a216eff4",
+      "official_lfs_sha256": null
+    },
+    {
+      "path": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM/streammind_gate.py",
+      "bytes": 5102,
+      "sha256": "5d9a9d7525aeecc0360ffd43f891ce9d2220297df5092a293a98e2fd31e9d99d",
+      "official_lfs_sha256": null
+    },
+    {
+      "path": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM/tokenizer.json",
+      "bytes": 11604906,
+      "sha256": "7e0398aca93659140fd6345deb335db2330dee89a2aad1228d8604c1952f6dc8",
+      "official_lfs_sha256": "7e0398aca93659140fd6345deb335db2330dee89a2aad1228d8604c1952f6dc8"
+    },
+    {
+      "path": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM/tokenizer_config.json",
+      "bytes": 191605,
+      "sha256": "2aa39a017b159c2ac86edb3baf6a78a77549fc7b26ea3cee9c37128b31fec589",
+      "official_lfs_sha256": null
+    },
+    {
+      "path": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM/vocab.json",
+      "bytes": 2776833,
+      "sha256": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910",
+      "official_lfs_sha256": null
+    }
+  ],
+  "proxy": false,
+  "gpu_used": false,
+  "large_weight_transport": "16 verified parallel official HTTP byte ranges"
+}

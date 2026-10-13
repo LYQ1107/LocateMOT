@@ -1,0 +1,58 @@
+{
+  "status": "DOWNLOAD_COMPLETE_NOT_MODEL_LOAD",
+  "repo": "OmniJev/OneJev-0.8B",
+  "revision": "c3939d8bf4cad34549a2b13bbb6aee9bcb6afee8",
+  "files": [
+    {
+      "path": "/data2/user/LocateMOT_GroundJEV/models/OneJev-0.8B/README.md",
+      "bytes": 4622,
+      "sha256": "637421876e7b950b4c54dd40e78334aa7f07706f6392fc386d5e28289d26caa5",
+      "official_lfs_sha256": null
+    },
+    {
+      "path": "/data2/user/LocateMOT_GroundJEV/models/OneJev-0.8B/chat_template.jinja",
+      "bytes": 7755,
+      "sha256": "273d8e0e683b885071fb17e08d71e5f2a5ddfb5309756181681de4f5a1822d80",
+      "official_lfs_sha256": null
+    },
+    {
+      "path": "/data2/user/LocateMOT_GroundJEV/models/OneJev-0.8B/config.json",
+      "bytes": 2730,
+      "sha256": "09e987471d022500c939c71e06f86bf1239586e491546a8296d855689c022e2a",
+      "official_lfs_sha256": null
+    },
+    {
+      "path": "/data2/user/LocateMOT_GroundJEV/models/OneJev-0.8B/generation_config.json",
+      "bytes": 116,
+      "sha256": "62153eb6c69f2e1f426beaa8002b7186437e949c7588167085df14e10e9c0a73",
+      "official_lfs_sha256": null
+    },
+    {
+      "path": "/data2/user/LocateMOT_GroundJEV/models/OneJev-0.8B/model.safetensors",
+      "bytes": 2214590296,
+      "sha256": "cb4b7456703baa26a0cfacf177067200b50021df5a6ba2a2cd1e6f6c868f2244",
+      "official_lfs_sha256": "cb4b7456703baa26a0cfacf177067200b50021df5a6ba2a2cd1e6f6c868f2244"
+    },
+    {
+      "path": "/data2/user/LocateMOT_GroundJEV/models/OneJev-0.8B/processor_config.json",
+      "bytes": 1220,
+      "sha256": "bfbc24af59a3e73a9cd0653b8d4ae758dfaec4e3e6c15dfb1c6c8ee8d5683c85",
+      "official_lfs_sha256": null
+    },
+    {
+      "path": "/data2/user/LocateMOT_GroundJEV/models/OneJev-0.8B/tokenizer.json",
+      "bytes": 19989493,
+      "sha256": "b6d27c11283798debbfbcb1bd3bbdbcebac6c9b20d0be0c5b79231c97de97501",
+      "official_lfs_sha256": "b6d27c11283798debbfbcb1bd3bbdbcebac6c9b20d0be0c5b79231c97de97501"
+    },
+    {
+      "path": "/data2/user/LocateMOT_GroundJEV/models/OneJev-0.8B/tokenizer_config.json",
+      "bytes": 1164,
+      "sha256": "7488550a894dcf741616126e322ea31d66cf9457b59ec5825f4c7efdced421f8",
+      "official_lfs_sha256": null
+    }
+  ],
+  "proxy": false,
+  "gpu_used": false,
+  "large_weight_transport": "16 verified parallel official HTTP byte ranges"
+}

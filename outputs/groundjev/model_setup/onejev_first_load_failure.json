@@ -1,0 +1,17 @@
+{
+  "status": "FIRST_REAL_WEIGHT_LOAD_FAILED_OFFICIAL_FORK_SELF_CHECK",
+  "physical_gpu": 6,
+  "checkpoint": "/data2/user/LocateMOT_GroundJEV/models/OneJev-0.8B",
+  "weight_sha256": "cb4b7456703baa26a0cfacf177067200b50021df5a6ba2a2cd1e6f6c868f2244",
+  "weight_entries_loaded": 474,
+  "initial_transformers": "5.5.4",
+  "checkpoint_declared_transformers": "5.17.0",
+  "official_shared_prefix_probability_error_rounded": 0.0857,
+  "official_tolerance": 0.05,
+  "tolerance_changed": false,
+  "repair": "Use checkpoint-declared Transformers5.17.0 in isolated OneJev runtime",
+  "subsequent_official_auto_fork_check": "PASS",
+  "subsequent_real_frame_receipt": "outputs/groundjev/model_setup/onejev_real_frame.json",
+  "training_steps": 0,
+  "algorithm_no_go": false
+}

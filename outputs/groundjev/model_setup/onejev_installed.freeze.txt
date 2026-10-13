@@ -56,12 +56,12 @@ scipy==1.15.3
 shellingham==1.5.4
 starlette==1.7.0
 sympy==1.14.0
-tokenizers==0.22.2
+tokenizers==0.23.3
 tomli==2.5.0
 torch==2.10.0
 torchvision==0.25.0
 tqdm==4.70.1
-transformers==5.5.4
+transformers==5.17.0
 triton==3.6.0
 typer==0.27.3
 typing-extensions==4.16.0

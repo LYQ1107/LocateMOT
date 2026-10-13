@@ -1,0 +1,67 @@
+{
+  "status": "REAL_PRETRAINED_MODEL_FRAME_DECISION_COMPLETE_NOT_TRACKING_BENCHMARK",
+  "checkpoint": "/data2/user/LocateMOT_GroundJEV/models/OneJev-0.8B",
+  "image": "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-02-FRCNN/img1/000302.jpg",
+  "physical_gpu": "6",
+  "load_seconds": 9.24577409500489,
+  "decision_seconds": 0.28673735295888036,
+  "peak_memory_bytes": 3119928832,
+  "response": {
+    "model": "",
+    "answers": {
+      "identity": {
+        "type": "choice",
+        "choice": "IGNORE",
+        "probabilities": {
+          "NEW": 0.36689,
+          "IGNORE": 0.63311
+        },
+        "confidence": 0.26622
+      },
+      "visible": {
+        "type": "noul",
+        "noul": 0.978877
+      },
+      "quality": {
+        "type": "score",
+        "score": 0.919935,
+        "legend": {
+          "0": "none",
+          "1": "ambiguous",
+          "2": "good",
+          "3": "strong"
+        },
+        "probabilities": {
+          "0": 0.486245,
+          "1": 0.203776,
+          "2": 0.213778,
+          "3": 0.096201
+        },
+        "confidence": 0.080065
+      }
+    },
+    "usage": {
+      "input_tokens": 2309,
+      "output_tokens": 3
+    }
+  },
+  "metadata": {
+    "prompt_version": "qev-labels-v2",
+    "prompt_sha256": "3726fd55c4159abb6e19121855e6cd32f64d57e4a89f64cfe89b0708d9baca2b",
+    "fork_mode": "batched",
+    "prefix_tokens": 2128,
+    "branches": 3,
+    "timing": {
+      "render_s": 0.05282775202067569,
+      "forward_s": 0.2293885700055398,
+      "total_s": 0.28656335605774075
+    },
+    "media": {
+      "images": 1,
+      "videos": 0,
+      "load_s": 0.003543763014022261
+    }
+  },
+  "official_test_labels_read": false,
+  "training_steps": 0
+}

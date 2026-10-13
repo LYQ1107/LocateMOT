@@ -2,7 +2,7 @@
 # Local ABI-matched CUDA/framework copies avoid re-downloading large wheels.
 torch==2.10.0
 torchvision==0.25.0
-transformers==5.5.4
+transformers==5.17.0
 huggingface-hub<2
 scipy>=1.11,<2
 -e ./external/OneJev[train]

@@ -974,3 +974,27 @@ Actual epoch1 ordinary summary: BDD Top150.936574, Dance.999036, MOT17.878066, M
 - To avoid repeated multi-GB dependency transfers, copied matching CPython3.10 installed framework files into an independent OneJev environment, excluding old Transformers/MMDetection and source console scripts. First copy attempt used the assumed venv package directory and copied zero files; corrected to actual distribution roots, then recorded nonzero distributions. Source environment untouched, no shared symlinks. Torch2.10+cu128/vision0.25 imports and CUDA availability on GPU6 pass; OneJev/Transformers5.5.4 installed and all69 package requirements compatible.
 - Prefetched official pinned large PyPI wheels via verified byte ranges. Exact-version py3-none NVIDIA dependencies reused for GroundAnything's separate Python3.12/Torch2.9.1 setup. Controlled package transport interruptions preserve caches/bootstrap/custom vendor source; remaining official installation/ABI check continues. Universal flashinfer-cubin wheel was initially excluded by the platform selector; corrected from actual PyPI filename and completed the missing wheel.
 - One blocking readiness queue owns the actual pretrained MOT-frame check, gated on full official OneJev weight receipt. Models still downloading; no real-model tracking or training result claimed. Optimizer steps zero, at most four physical GPUs enforced by common launcher; other projects preserved.
+
+### 2026-10-14 — first actual OneJev frame and checkpoint-version repair
+
+- Official OneJev weights complete and LFS digest matches: model.safetensors2,214,590,296bytes SHA cb4b7456703baa26a0cfacf177067200b50021df5a6ba2a2cd1e6f6c868f2244. No weight/model substitution.
+- FirstGPU load reads474 weight entries but default official fork self-check fails (.0857 rounded probability difference > .05). Initial OneJev5.5.4 pin incorrectly reused GroundAnything's requirement; actual checkpoint config declaresTransformers5.17.0. Update only isolated OneJev to5.17.0/tokenizers.23.3, keep all official checks and .05 tolerance; same pretrained weights then pass auto validation and use batched mode.
+- Real MOT17-02 frame000302 processed on GPU6 with Choice/Noul/Score: NEW.36689/IGNORE.63311, visible people.978877, quality expected level.919935. Preserve the negative generic choice; this is a load/interface check, not association accuracy. Actual three-question request.286737s, allocator peak3,119,928,832bytes, steps0.
+- GroundAnything's independent Python3.12/Torch2.9.1/Transformers5.5.4 custom serve environment completes and official ABI check reports only its expected cuDNN9.16 metadata override, no unexpected conflicts. Single DLM owner waits for verified bundle and available GPU6 memory before starting official denoising with static memory fraction.4. GroundAnything download remains active. No full online video or fine-tuning claimed yet.
+
+## 2026-10-14 — official DLM service and GPU ownership
+
+GroundAnything DLM download completed at the pinned official revision with
+its 9,687,419,736-byte weight matching the official LFS SHA256. The single
+service owner launched official custom SGLang denoising on physical GPU6
+(static memory fraction .4); the model endpoint responds. A single blocking
+clip owner starts four real MOT17 dev frames using native DLM candidates,
+pretrained OneJev, global assignment and its own causal identity memory.
+Completion, output validity and tracking quality are still pending.
+
+The user asked why physical4/5/6/7 still showed processes. A one-time GPU
+process/cwd/argv audit identified UDMT training/inference on4/5/7, the two
+GroundJEV model processes on6, and an unrelated user process on6. This is
+not four-GPU GroundJEV usage and not old U2 caching. Other project processes
+were preserved. Keep the explicit project device allowlist and ownership
+attribution; no metric, seed or protocol changed.

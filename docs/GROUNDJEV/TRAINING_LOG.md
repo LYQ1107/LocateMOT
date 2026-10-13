@@ -19,3 +19,12 @@ after that verification. GroundAnything retains its own Python3.12/Torch2.9.1
 recipe and official cuDNN override; remaining package stages use verified
 local PyPI wheel transport. Weight-dependent real-frame check is queued;
 training steps remain zero.
+
+2026-10-14: actual OneJev weight loading (474 entries) initially failed the
+official fork self-check under Transformers5.5.4 (.0857 probability error vs
+.05 tolerance). Checkpoint metadata declares5.17.0; upgraded only OneJev's
+isolated runtime and retained the check/tolerance. Same checkpoint then passes
+auto validation and answers real MOT-frame Choice/Noul/Score questions, native
+probabilities retained. Request .286737s, allocator peak3,119,928,832 bytes;
+not a video benchmark. GroundAnything's separate official serve setup finished
+and passed its cuDNN compatibility check. DLM weights pending; optimizer steps0.
