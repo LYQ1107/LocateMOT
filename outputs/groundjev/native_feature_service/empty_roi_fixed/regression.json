@@ -1,0 +1,17 @@
+{
+  "status": "ACTUAL_FRAME21_EMPTY_ROI_AND_COMPACT_LIFECYCLE_REGRESSION_PASSED",
+  "empty_native_ROI_shape": [
+    0,
+    2560,
+    3,
+    3
+  ],
+  "nonempty_native_feature_max_difference_after_restart": 0.0,
+  "actual_previous20frame_memory_loaded": true,
+  "registered_fps": 20,
+  "timestamp": 1.05,
+  "empty_prediction_frame_retained": true,
+  "lifecycle_events": 33,
+  "GT_read": false,
+  "altered_metrics_seeds_or_GT": false
+}

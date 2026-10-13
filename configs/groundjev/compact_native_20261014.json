@@ -1,0 +1,24 @@
+{
+  "name": "Native evidence Compact distillation and matched controls",
+  "train_source": "outputs/groundjev/training_data/native_ground_own_history_v1",
+  "training_scope": "48legal train frames from MOT17/DanceTrack/MOT20; all1184actual Ground DLM proposals; no validationGT",
+  "visual_source": "unchanged official frozen DLM MoonViT/projector2560 ROI through existing8111GPU5service",
+  "histories": "replay uncorrected valid100step OneJev actor events; native anchor/long/recent ROI from actual past observations, noGT correction",
+  "teacher": "actual recorded Full OneJev100 typed probabilities; weak teacher, GT dominates",
+  "architectures": {
+    "compact": "two set-interaction blocks, dynamic ID logits, NEW/IGNORE/NO_MATCH, update/reliability/lifecycle heads; GT plus.2native Full distribution loss",
+    "set_gt": "identical Compact architecture, GT only, isolating distillation rather than claiming unique set ability",
+    "mlp_distilled": "matched-width feedforward control without set attention, same evidence/heads/GT/distillation"
+  },
+  "steps": 300,
+  "seed": 0,
+  "lr": 0.0003,
+  "physical_training_gpu": 7,
+  "feature_gpu": 5,
+  "GT_state_leakage": false,
+  "option_withholding": "use recorded training augmentation; remove correct identity from inputs and move its teacher mass toNO_MATCH, declared derived teacher target",
+  "scope_claim": "MOT-only initial supervised/distilled Compact study, not completed unified multitask or long-memory research",
+  "validation": "save/reload actual outputs, nonzero gradients/changed weights, candidate/history permutation and actual legal4frame native-candidate TrackEval comparisons; then full-video follow-up",
+  "temporary_feature_cap_bytes": 26843545600,
+  "maximum_physical_GPUs": 4
+}

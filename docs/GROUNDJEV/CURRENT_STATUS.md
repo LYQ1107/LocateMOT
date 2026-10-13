@@ -1,7 +1,15 @@
 # Current status — 2026-10-14
 
 
-Latest verified state: complete native DanceTrack0004 V1 baseline and exact
+Latest Compact update: three real300step models and matched4frame controls
+completed. Distilled Compact HOTA66.911%, same set GT-only57.641%, matched
+MLP63.436%; Simple74.881%. These are short controls, not full-video gains.
+Complete1203frame Compact controls resumed from a preserved20frame prefix
+after an actual empty-ROI dtype repair; all scoring/GT/frame policies remain.
+Formal OneJev500latest report125/500with saved intermediate checkpoint;
+fresh pretrained FullV3 and original services continue.
+
+Earlier verified state: complete native DanceTrack0004 V1 baseline and exact
 Simple control both evaluated over1203frames. HOTA2.145%Full/8.530%Simple,
 IDSW3792/746.27rejected native frames retained. Both resumed runs have no
 continuous E2E FPS claim. A fresh full1203frame V3 crop/motion run is active
@@ -544,3 +552,65 @@ hiding it. All raw own histories are retained.31,045,329bytes of crop evidence,
 no full source-dataset feature cache. Corpus completion is not weight update
 or formal training completion. Receipt:
 outputs/groundjev/training_data/native_ground_own_history_v1/corpus_validation.json.
+
+
+### Actual trained Compact and matched baselines (2026-10-14)
+
+All48legal native detector/OneJev100own-history train frames are packed as
+80base groups plus69declared option-withholding augmentations,149examples.
+Native DLM ROI2560and uncorrected anchor/recent/long feature history; noGT
+state correction. The removed teacher identity mass is projected toNO_MATCH
+only in the declared training augmentation. Native pack131,123,485bytes,
+not a whole-source-dataset feature cache.
+
+Three actual300step/seed0 models completed with finite nonzero gradients,
+changed weights, exact checkpoint reloads. Compact distilled and GT-only
+set control each930,829parameters; feedforward distilled control929,805,
+ratio1.001101. Two set blocks provide interactions; feedforward control has
+no set attention but shares mean context, evidence and structured heads.
+All support dynamic identities/NEW/IGNORE/NO_MATCH, update, reliability and
+lifecycle. They are trained structured decision heads, not direct pretrained
+OneJev decoding. GT supervision plus.2native recorded Full teacher loss;
+identical set GT-only control omits only that loss. Auxiliary visual backbone
+remains original frozen DLM. Parameters for all models changed, reload0,
+candidate/history permutation error<=7.63e-6. Allocation peaks about40.5MB
+are core-only, excluding CUDA runtime and shared native visual/DLM services.
+Initial Compact training is MOT-only: task-index conditioning exists, but
+joint expression/class training and full unified-task/long-memory proof remain
+required. Never present natural set capabilities as JEV-exclusive novelty.
+
+Same real128native proposals/ROIs,4MOT17development frames and unchanged
+TrackEval, actual4frame videos validated:
+
+| Core | HOTA fraction | IDF1 | IDSW | FP | FN |
+|---|---:|---:|---:|---:|---:|
+| Compact distilled set | .669111 | .738197 | 1 | 9 | 46 |
+| Same set, GT-only | .576415 | .638889 | 8 | 3 | 57 |
+| Matched distilled feedforward | .634360 | .703196 | 3 | 3 | 54 |
+| Existing plain Simple reference | .748813 | .836502 | 1 | 17 | 24 |
+
+Distillation helps the same architecture in this tiny single-seed control;
+Compact still trails Simple and has more missed targets. ReplayFPS4.358/
+3.959/4.512exclude detector/native feature extraction and full export costs;
+no E2E or full-video accuracy claim. Receipts in
+outputs/groundjev/compact/native300_controls_v1/aggregate_results.json;
+trained checkpoints and SHA receipts in outputs/groundjev/compact/native300_v1.
+
+Registered full1203frame DanceTrack0004 Compact and two controls reuse every
+original native detector candidate, unchanged official GT and scorer. Stream
+ROI once through physical5native feature service; controls reuse identical
+ROI values on physical7. Source frames are read progressively rather than
+loading the complete replay into memory; actual4/1203row equivalence passed.
+These are candidate/feature replay controls, not detector-inclusive E2E.
+First run failed at actual empty-proposal frame21: empty ROI pool returned
+BF16 whereas nonempty interpolation and optional temporal layer useFP32.
+Preserved20complete frames and failure; fixed only empty output dtype.
+Only verified owned native feature service4043767 was restarted on5. A
+real frame21 empty RPC/lifecycle probe passes and real frame20nonempty ROI
+max difference after restart is0. A probe initially used the wrong timestamp
+constant; it was corrected to the registered20Hz clock, with no data/clock
+protocol changes. Fresh v2 owner restores all20native prediction/state rows
+and resumes frame21, without dropping it. Original OneJev500/Ground/freshV3
+and foreign UDMT remain untouched. Full metrics are pending its terminal
+owner. First model frame latency includes ROI RPC; later controls read fixed
+ROIs, so do not claim a direct comparable speed ranking across those latencies.

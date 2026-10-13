@@ -1,0 +1,13 @@
+{
+  "status": "compact_distilled_INFERENCE",
+  "physical_core_gpu": 7,
+  "native_feature_service_gpu": 5,
+  "registered_frames_per_model": 1203,
+  "scope": "one full legal validation video",
+  "candidate_source": "original complete native Ground DLM V1 candidates; no new detector queries",
+  "native_ROI_policy": "stream original frozen DLM ROI once, reuse identical frame features for controls",
+  "temporary_feature_cache_budget_bytes": 26843545600,
+  "end_to_end_FPS_claim": false,
+  "timing": "feature extraction and association replay; detector excluded",
+  "completed": {}
+}

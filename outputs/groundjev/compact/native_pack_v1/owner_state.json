@@ -1,0 +1,16 @@
+{
+  "status": "REAL_NATIVE_COMPACT_TRAIN_PACK_COMPLETE",
+  "scope": "48 legal training frames only",
+  "source": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/native_ground_own_history_v1",
+  "frames": 48,
+  "examples": 149,
+  "GT_corrected_actor": false,
+  "feature_source": "official_DLM_native_MoonViT_and_trained_projector",
+  "feature_file_bytes": 131123485,
+  "feature_cache_budget_bytes": 26843545600,
+  "native_feature_dimension": 2560,
+  "actual_Full_teacher": true,
+  "derived_option_withholding": 69,
+  "validation_GT_used": false,
+  "full_source_dataset_cache": false
+}

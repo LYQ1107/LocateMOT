@@ -10,6 +10,20 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 
 
+class ReplayFrames:
+    """Read only the next requested native frame, bounding replay memory."""
+    def __init__(self, path):
+        self.file = path.open()
+    def frame(self, number):
+        for line in self.file:
+            row = json.loads(line)
+            if row['frame'] < number: continue
+            if row['frame'] != number: break
+            return row
+        raise ValueError(f'Native replay lacks requested frame {number}; frame cannot be skipped')
+    def close(self): self.file.close()
+
+
 def restore_completed_prefix(tracker, rows, frames, fps, specification, timestamps=None):
     """Rehydrate exact prior memory from saved native decisions, without GT."""
     from PIL import Image
@@ -53,7 +67,7 @@ def main():
     parser.add_argument('--task', choices=['mot', 'rmot', 'ovmot'], default='mot')
     parser.add_argument('--video', type=Path, required=True, help='legal JSON video scope manifest')
     parser.add_argument('--checkpoint', type=Path, default=ROOT / 'models/OneJev-0.8B')
-    parser.add_argument('--backend', choices=['simple', 'simple_native', 'simple_temporal', 'full'], default='full')
+    parser.add_argument('--backend', choices=['simple', 'simple_native', 'simple_temporal', 'full', 'compact'], default='full')
     parser.add_argument('--evidence-format',choices=['v1','v2_crop_motion','v3_crop_motion','v4_native_features','v5_native_features_csv','v6_native_compact_history'],default='v1')
     parser.add_argument('--native-feature-url',help='isolated official DLM visual encoder RPC; no substitute image features')
     parser.add_argument('--adaptive-context-groups',action='store_true',help='split native preflight-rejected groups, retaining all candidate rows and identity options')
@@ -82,11 +96,18 @@ def main():
     args.expression = args.expression or manifest.get('expression')
     if args.task == 'rmot' and not args.expression:
         parser.error('RMOT requires --expression')
+    if args.backend=='compact' and not args.native_feature_url and not args.candidate_replay:
+        parser.error('Compact requires native feature RPC or exact replay already containing native features')
+    if args.backend=='compact' and args.category_policy!='native_label':
+        parser.error('Compact category training is pending; the native category policy currently uses OneJev checkpoints')
     args.out.mkdir(parents=True, exist_ok=True)
     frontend = GroundAnythingAdapter(args.grounding_url, parser_policy=args.grounding_parser,
         decoder_policy=args.grounding_decoder_policy, vocabulary_chunk_size=args.grounding_vocabulary_chunk_size)
     if args.backend=='simple': decision=SimpleDecision()
     elif args.backend in ('simple_native','simple_temporal'): decision=FeatureDecision(temporal=args.backend=='simple_temporal')
+    elif args.backend=='compact':
+        from locatemot.groundjev.compact import CompactDecision
+        decision=CompactDecision(args.checkpoint)
     else: decision=OneJevDecision(args.checkpoint,evidence_format=args.evidence_format,adaptive_context=args.adaptive_context_groups)
     if args.category_policy == 'native_hierarchical':
         from locatemot.groundjev.category import NativeCategoryHead, CategorizedDecision
@@ -102,9 +123,7 @@ def main():
         frames = frames[:args.limit]
     replay = {}
     if args.candidate_replay:
-        replay = {row['frame']: row for row in map(json.loads, args.candidate_replay.read_text().splitlines())}
-        if any(number not in replay for _, number in frames):
-            parser.error('replay lacks a requested frame')
+        replay = ReplayFrames(args.candidate_replay)
     fps, latencies, rejected_frames, strict_invalid_frames = manifest['fps'], [], [], []
     timestamps = dict(zip(manifest['frame_numbers'], manifest['timestamps'])) if 'timestamps' in manifest else None
     resumed = []
@@ -126,14 +145,14 @@ def main():
                 start = time.perf_counter()
                 with Image.open(path) as source:
                     image = source.convert('RGB')
+                original = replay.frame(frame_number) if replay else None
+                if original is not None and original['image_path'] != path:
+                    raise ValueError('Fixed-candidate replay uses a different physical image')
                 if index < len(resumed):
                     row = resumed[index]
                     candidates, perception, outputs, state = (row[k] for k in ('candidates','perception','outputs','state'))
                     elapsed = row['seconds']
                 elif replay:
-                    original = replay[frame_number]
-                    if original['image_path'] != path:
-                        raise ValueError('Fixed-candidate replay uses a different physical image')
                     candidates, perception = original['candidates'], {'mode': 'fixed_candidate_replay',
                         'source': str(args.candidate_replay), 'original_perception': original['perception'],
                         'model_response_rejected': original['perception'].get('model_response_rejected',False)}
@@ -203,6 +222,7 @@ def main():
         (args.out/'failure.json').write_text(json.dumps(failure, indent=2)+'\n')
         raise
     finally:
+        if replay: replay.close()
         if video_writer is not None and video_writer.poll() is None:
             # On perception failure ffmpeg still waits for the next raw frame.
             # Close the pipe before waiting so cleanup cannot hide the exception.
@@ -246,10 +266,10 @@ def main():
               'resumed_completed_frames': len(resumed),
               'timing_limitations': 'resumed legacy run lacks original failed-attempt/interruption timing; no complete end-to-end FPS claim' if resumed else None,
               'official_metrics': 'PENDING_OFFICIAL_EVALUATOR',
-              'checkpoint': str(args.checkpoint) if args.backend == 'full' or args.category_policy == 'native_hierarchical' else None,
+              'checkpoint': str(args.checkpoint) if args.backend in ('full','compact') or args.category_policy == 'native_hierarchical' else None,
               'motchallenge_confidence_column': 'constant unscored-output sentinel; native detection score is absent',
               'gt_read_by_runtime': False, 'future_frames_read_by_runtime': False}
-    if args.backend == 'full' or args.category_policy == 'native_hierarchical':
+    if args.backend in ('full','compact') or args.category_policy == 'native_hierarchical':
         import torch
         result['peak_decision_gpu_memory_bytes'] = torch.cuda.max_memory_allocated()
     (args.out/'result.json').write_text(json.dumps(result, indent=2)+'\n')

@@ -1,0 +1,224 @@
+{
+  "status": "REAL_NATIVE_COMPACT_MATCHED_CONTROL_TRAINING_COMPLETE",
+  "steps_per_model": 300,
+  "seed": 0,
+  "examples": 149,
+  "MOT_only": true,
+  "completed": {
+    "compact_distilled": {
+      "parameters": 930829,
+      "steps": 300,
+      "changed_elements": 930829,
+      "checkpoint_reload_max_difference": 0.0,
+      "candidate_identity_permutation_max_difference": 2.86102294921875e-06,
+      "peak_allocated_bytes": 40534016,
+      "checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/native300_v1/compact_distilled.pt",
+      "checkpoint_bytes": 3740242,
+      "training_log": [
+        {
+          "model": "compact_distilled",
+          "step": 1,
+          "loss": 5.243371963500977,
+          "native_teacher_loss": 3.961886167526245,
+          "gradient_norm": 4.000586986541748,
+          "elapsed_seconds": 0.5015221029752865
+        },
+        {
+          "model": "compact_distilled",
+          "step": 50,
+          "loss": 4.514602184295654,
+          "native_teacher_loss": 3.472900867462158,
+          "gradient_norm": 5.343438625335693,
+          "elapsed_seconds": 3.237633062992245
+        },
+        {
+          "model": "compact_distilled",
+          "step": 100,
+          "loss": 3.545048952102661,
+          "native_teacher_loss": 3.755122661590576,
+          "gradient_norm": 10.466699600219727,
+          "elapsed_seconds": 5.264535225986037
+        },
+        {
+          "model": "compact_distilled",
+          "step": 150,
+          "loss": 1.833251953125,
+          "native_teacher_loss": 4.746609687805176,
+          "gradient_norm": 4.716272830963135,
+          "elapsed_seconds": 7.217581034987234
+        },
+        {
+          "model": "compact_distilled",
+          "step": 200,
+          "loss": 2.84782338142395,
+          "native_teacher_loss": 4.145148754119873,
+          "gradient_norm": 6.851123332977295,
+          "elapsed_seconds": 9.246968032966834
+        },
+        {
+          "model": "compact_distilled",
+          "step": 250,
+          "loss": 2.5280935764312744,
+          "native_teacher_loss": 4.3070244789123535,
+          "gradient_norm": 9.055509567260742,
+          "elapsed_seconds": 11.746268059010617
+        },
+        {
+          "model": "compact_distilled",
+          "step": 300,
+          "loss": 2.2982497215270996,
+          "native_teacher_loss": 3.6328234672546387,
+          "gradient_norm": 9.191030502319336,
+          "elapsed_seconds": 13.686920541978907
+        }
+      ],
+      "Full_teacher_coefficient": 0.2
+    },
+    "set_gt": {
+      "parameters": 930829,
+      "steps": 300,
+      "changed_elements": 930829,
+      "checkpoint_reload_max_difference": 0.0,
+      "candidate_identity_permutation_max_difference": 7.62939453125e-06,
+      "peak_allocated_bytes": 40547328,
+      "checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/native300_v1/set_gt.pt",
+      "checkpoint_bytes": 3736521,
+      "training_log": [
+        {
+          "model": "set_gt",
+          "step": 1,
+          "loss": 4.450994491577148,
+          "native_teacher_loss": 3.961886167526245,
+          "gradient_norm": 4.668520927429199,
+          "elapsed_seconds": 0.020993625978007913
+        },
+        {
+          "model": "set_gt",
+          "step": 50,
+          "loss": 4.076984405517578,
+          "native_teacher_loss": 4.894291400909424,
+          "gradient_norm": 7.762702465057373,
+          "elapsed_seconds": 1.6859389629680663
+        },
+        {
+          "model": "set_gt",
+          "step": 100,
+          "loss": 2.8075129985809326,
+          "native_teacher_loss": 5.430854320526123,
+          "gradient_norm": 8.080815315246582,
+          "elapsed_seconds": 4.081816577992868
+        },
+        {
+          "model": "set_gt",
+          "step": 150,
+          "loss": 0.7304101586341858,
+          "native_teacher_loss": 9.202305793762207,
+          "gradient_norm": 2.9641144275665283,
+          "elapsed_seconds": 6.494205329974648
+        },
+        {
+          "model": "set_gt",
+          "step": 200,
+          "loss": 2.0750794410705566,
+          "native_teacher_loss": 9.194202423095703,
+          "gradient_norm": 15.176409721374512,
+          "elapsed_seconds": 8.46106169000268
+        },
+        {
+          "model": "set_gt",
+          "step": 250,
+          "loss": 1.9160078763961792,
+          "native_teacher_loss": 7.894639492034912,
+          "gradient_norm": 23.79762840270996,
+          "elapsed_seconds": 9.79380320198834
+        },
+        {
+          "model": "set_gt",
+          "step": 300,
+          "loss": 1.2423861026763916,
+          "native_teacher_loss": 8.402262687683105,
+          "gradient_norm": 9.103047370910645,
+          "elapsed_seconds": 12.730889293015935
+        }
+      ],
+      "Full_teacher_coefficient": 0.0
+    },
+    "mlp_distilled": {
+      "parameters": 929805,
+      "steps": 300,
+      "changed_elements": 929805,
+      "checkpoint_reload_max_difference": 0.0,
+      "candidate_identity_permutation_max_difference": 4.76837158203125e-07,
+      "peak_allocated_bytes": 40526848,
+      "checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/native300_v1/mlp_distilled.pt",
+      "checkpoint_bytes": 3732098,
+      "training_log": [
+        {
+          "model": "mlp_distilled",
+          "step": 1,
+          "loss": 5.186403274536133,
+          "native_teacher_loss": 4.519741058349609,
+          "gradient_norm": 2.8295350074768066,
+          "elapsed_seconds": 0.03253518097335473
+        },
+        {
+          "model": "mlp_distilled",
+          "step": 50,
+          "loss": 4.6110029220581055,
+          "native_teacher_loss": 3.361340284347534,
+          "gradient_norm": 3.2876193523406982,
+          "elapsed_seconds": 1.7477821709471755
+        },
+        {
+          "model": "mlp_distilled",
+          "step": 100,
+          "loss": 3.7101128101348877,
+          "native_teacher_loss": 3.5837090015411377,
+          "gradient_norm": 10.512234687805176,
+          "elapsed_seconds": 3.5646636890014634
+        },
+        {
+          "model": "mlp_distilled",
+          "step": 150,
+          "loss": 1.895737648010254,
+          "native_teacher_loss": 4.602381229400635,
+          "gradient_norm": 2.9197309017181396,
+          "elapsed_seconds": 5.078731463989243
+        },
+        {
+          "model": "mlp_distilled",
+          "step": 200,
+          "loss": 3.164557695388794,
+          "native_teacher_loss": 4.000212669372559,
+          "gradient_norm": 15.232978820800781,
+          "elapsed_seconds": 6.846676304994617
+        },
+        {
+          "model": "mlp_distilled",
+          "step": 250,
+          "loss": 2.544421672821045,
+          "native_teacher_loss": 4.784245491027832,
+          "gradient_norm": 11.191240310668945,
+          "elapsed_seconds": 9.231539613974746
+        },
+        {
+          "model": "mlp_distilled",
+          "step": 300,
+          "loss": 2.2000794410705566,
+          "native_teacher_loss": 3.6138556003570557,
+          "gradient_norm": 9.435382843017578,
+          "elapsed_seconds": 11.08334210596513
+        }
+      ],
+      "Full_teacher_coefficient": 0.2
+    }
+  },
+  "parameter_counts": {
+    "compact_distilled": 930829,
+    "set_gt": 930829,
+    "mlp_distilled": 929805
+  },
+  "matched_parameter_ratio": 1.0011013061878566,
+  "official_tracking_results": "pending actual causal video inference and TrackEval",
+  "probability_semantics": "trained structured heads, not native OneJev decoder; set-only capabilities are controlled"
+}

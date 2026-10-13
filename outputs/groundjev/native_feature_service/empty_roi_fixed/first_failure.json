@@ -1,0 +1,9 @@
+{
+  "actual_failed_frame": 21,
+  "preserved_completed_prefix": 20,
+  "client_error": "RemoteDisconnected",
+  "server_first_actionable_root_cause": "RuntimeError: mat1 and mat2 must have the same dtype, but got BFloat16 and Float",
+  "reason": "empty pool used spatial BF16, nonempty ROIAlign uses FP32; optional temporal layer is FP32",
+  "smallest_fix": "empty native ROI/local outputs Float32; no nonempty feature values or weights changed",
+  "metric_or_decoder_policy_change": false
+}

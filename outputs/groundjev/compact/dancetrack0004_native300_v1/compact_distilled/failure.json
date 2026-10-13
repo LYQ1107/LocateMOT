@@ -1,0 +1,9 @@
+{
+  "status": "VIDEO_INFERENCE_FAILED",
+  "frame": 21,
+  "image_path": "/data2/user/LocateMOT/data/DanceTrack/val/dancetrack0004/img1/00000021.jpg",
+  "error_type": "RemoteDisconnected",
+  "error": "Remote end closed connection without response",
+  "completed_frames": 20,
+  "failed_frame_not_skipped": true
+}

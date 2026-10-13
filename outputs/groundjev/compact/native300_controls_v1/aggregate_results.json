@@ -1,0 +1,61 @@
+{
+  "status": "TRAINED_COMPACT_MATCHED_SHORT_CONTROLS_VALIDATED",
+  "units": [
+    {
+      "model": "compact_distilled",
+      "frames": 4,
+      "metrics": {
+        "HOTA": 0.6691112091980717,
+        "DetA": 0.543861066282316,
+        "AssA": 0.8478515445539507,
+        "IDF1": 0.7381974248927039,
+        "IDSW": 1,
+        "FP": 9,
+        "FN": 46
+      },
+      "native_candidate_feature_equality": true,
+      "video_frames": 4,
+      "replay_fps": 4.358075413467761,
+      "end_to_end_fps": null
+    },
+    {
+      "model": "set_gt",
+      "frames": 4,
+      "metrics": {
+        "HOTA": 0.5764145087481699,
+        "DetA": 0.4932911375423572,
+        "AssA": 0.6884391429844147,
+        "IDF1": 0.6388888888888888,
+        "IDSW": 8,
+        "FP": 3,
+        "FN": 57
+      },
+      "native_candidate_feature_equality": true,
+      "video_frames": 4,
+      "replay_fps": 3.9589980821909587,
+      "end_to_end_fps": null
+    },
+    {
+      "model": "mlp_distilled",
+      "frames": 4,
+      "metrics": {
+        "HOTA": 0.6343604747516275,
+        "DetA": 0.5119808763533661,
+        "AssA": 0.8071162321246318,
+        "IDF1": 0.7031963470319634,
+        "IDSW": 3,
+        "FP": 3,
+        "FN": 54
+      },
+      "native_candidate_feature_equality": true,
+      "video_frames": 4,
+      "replay_fps": 4.51191454187259,
+      "end_to_end_fps": null
+    }
+  ],
+  "same_native128proposals": true,
+  "simple_geometry_HOTA_reference": 0.748813,
+  "single_seed": 0,
+  "scope": "4legalMOT17developmentframes, not full video/dataset",
+  "interpretation": "Distillation improves the same set architecture in this short control; Compact still trails Simple. Full-video controls and multiple tasks/long occlusion remain required."
+}

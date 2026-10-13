@@ -64,7 +64,10 @@ class NativeGroundFeatures:
         import torch
         from torchvision.ops import roi_align
         if not boxes:
-            return spatial.new_empty((0,spatial.shape[1])),spatial.new_empty((0,spatial.shape[1],local_size,local_size))
+            # Nonempty ROIAlign interpolates spatial.float(); empty outputs
+            # must obey the same dtype contract for the FP32 temporal adapter.
+            return (spatial.new_empty((0,spatial.shape[1]),dtype=torch.float32),
+                    spatial.new_empty((0,spatial.shape[1],local_size,local_size),dtype=torch.float32))
         width,height=metadata['image_size']
         resize=metadata['resize_and_padding']
         cell=self.processor.patch_size*self.processor.merge_size

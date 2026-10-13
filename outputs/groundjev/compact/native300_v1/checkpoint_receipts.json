@@ -1,0 +1,32 @@
+{
+  "compact_distilled": {
+    "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/native300_v1/compact_distilled.pt",
+    "bytes": 3740242,
+    "sha256": "f81e5ec0d6ea81e220028518eadc248a3a940bab264e85ae077d1ae649dfbebd",
+    "steps": 300,
+    "parameters": 930829,
+    "changed_elements": 930829,
+    "reload_max_difference": 0.0,
+    "permutation_max_difference": 2.86102294921875e-06
+  },
+  "set_gt": {
+    "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/native300_v1/set_gt.pt",
+    "bytes": 3736521,
+    "sha256": "6e102e0e92c69b785261714f20a29a2498f91d80a2f56ec035c976108417a03b",
+    "steps": 300,
+    "parameters": 930829,
+    "changed_elements": 930829,
+    "reload_max_difference": 0.0,
+    "permutation_max_difference": 7.62939453125e-06
+  },
+  "mlp_distilled": {
+    "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/native300_v1/mlp_distilled.pt",
+    "bytes": 3732098,
+    "sha256": "f1b8ec1e568ed1b6730ac75b3d74a7e9af320fa8f895dbca71da434335a40f82",
+    "steps": 300,
+    "parameters": 929805,
+    "changed_elements": 929805,
+    "reload_max_difference": 0.0,
+    "permutation_max_difference": 4.76837158203125e-07
+  }
+}

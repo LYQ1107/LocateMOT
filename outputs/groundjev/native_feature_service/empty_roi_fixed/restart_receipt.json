@@ -1,0 +1,14 @@
+{
+  "status": "VERIFIED_OWNED_FEATURE_SERVICE_RESTART_FOR_EMPTY_ROI_DTYPE",
+  "pid": 4043767,
+  "argv": [
+    "external/GroundAnything/.venv-serve/bin/python",
+    "tools/groundjev/serve_native_features.py",
+    "--temporal-checkpoint",
+    "outputs/groundjev/ground_adaptation/native_temporal200/checkpoint.pt",
+    "--receipt",
+    "outputs/groundjev/native_feature_service/receipt.json"
+  ],
+  "root_cause": "empty ROI BFloat16 versus nonempty Float32 broke optional Float32 temporal adapter at actual frame21",
+  "original_DLM_OneJev_training_foreign_processes_untouched": true
+}
