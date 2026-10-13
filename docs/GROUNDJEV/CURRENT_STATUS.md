@@ -1,96 +1,82 @@
 # Current status — 2026-10-14
 
-GroundAnything DLM + real pretrained OneJev completed four causal MOT17 frames
-302–305, producing native candidates, typed decision probabilities, global
-assignment, identity memory, prediction logs and a verified four-frame ID video.
-This is a functional check, not a full-video/dataset result.
+Real OneJev tracking SFT completed100steps/400examples, saved all474weights,
+and passed two exact reloads of real multimodal decisions (max probability
+difference0). Three BF16-aligned language-weight probes changed. This proves
+training correctness, not tracking improvement.
 
-A same-candidate Simple control completed with unchanged TrackEval:
+## Four-frame same-candidate results
 
-| Four-frame experiment | HOTA | DetA | AssA | IDF1 | IDSW | FP | FN |
-|---|---:|---:|---:|---:|---:|---:|---:|
-| Pretrained OneJev Full | .42163 | .65004 | .28169 | .42748 | 60 | 16 | 24 |
-| Simple IoU reference | .74881 | .64230 | .89516 | .83650 | 1 | 17 | 24 |
+All results use exactly the native DLM candidates for MOT17 frames302–305
+and unchanged TrackEval; this is a short functional scope, not full video.
 
-The generic pretrained model currently fragments identities:62 persistent
-IDs after four frames. Keep this negative result. It motivates tracking SFT;
-it does not establish a paper-scale conclusion or a global NO_GO.
+| Model / evidence | HOTA | IDF1 | IDSW | FP | FN |
+|---|---:|---:|---:|---:|---:|
+| Simple | .74881 | .83650 | 1 | 17 | 24 |
+| Pretrain / V1 | .42163 | .42748 | 60 | 16 | 24 |
+| SFT100 / V1 | .32834 | .31179 | 75 | 17 | 24 |
+| Pretrain / V2 | 0 | 0 | 0 | 0 | 135 |
+| SFT100 / V2 | 0 | 0 | 0 | 0 | 135 |
+| Pretrain / V3 | .34394 | .35193 | 47 | 11 | 48 |
+| SFT100 / V3 | .19740 | .30120 | 0 | 6 | 110 |
 
-## Running work
+Zero IDSW in collapsed runs reflects missing predictions. Retain these
+negative results. Correct-identity-option coverage is100% in V1 for both
+models, but fixed-anchor existing association accuracy falls17.95% to8.11%
+after SFT100. Candidate GT recall.82222 is identical. Post-hoc diagnostics
+never correct runtime memory and do not replace official metrics.
 
-The generic-greedy DanceTrack attempt stopped at frame21 after20 completed
-frames: duplicated boxes plus a trailing separator are rejected even by the
-official scoring parser. Its failed prediction/log/memory/resources remain.
-The generic client lacked the official dense task request contract. A targeted
-frame21 probe with the official dense tier produces5 scoring-valid boxes,
-while still retaining its strict duplicate-coordinate diagnostic.
+V2 adds current indexed crops, historical crops and causal geometry matrices,
+but its NO_MATCH definition overlapped NEW and collapsed all128 proposals.
+V3 preserves those real inputs while requiring a previously observed object
+for NO_MATCH and omitting it with empty memory. V1 remains unchanged for the
+complete native video baseline. V3 has not demonstrated improvement.
 
-One new blocking owner runs the complete DanceTrack0004 validation video
-(1,203 real frames) on physical GPU6, followed by a Simple control using the
-exact same candidates and official HOTA/CLEAR/Identity evaluation. It records
-per-frame stage progress, native decisions, latest causal memory, video,
-actual native pipeline FPS and internally observed project GPU process peaks.
-No full-video result exists yet. The new run is an explicit request-policy
-repair: outer/inner temperature.1/top-p.95, official B32/subblock4/4 denoise
-steps/entropy.8, sampling seed42 unchanged from the live server. Model and
-DLM algorithm unchanged; parser and metric gates unchanged. The old20 frames
-are not mixed into this distinct protocol run.
+## Current running jobs
 
-A second blocking owner runs the official OneJev multimodal100-step full
-language-model SFT check on physical GPU4, frozen vision. It loads all474
-pretrained entries and trains752.39M of852.99M parameters. Through observed step40, losses remain finite and gradients nonzero; peak
-allocator15.2GiB. A full step25 checkpoint has been saved; reload/finished
-training evidence is still pending. Training is still
-running, so no completed SFT checkpoint/result is claimed.
+PhysicalGPU4: official500-step full language-model own-history adaptation,
+initialized from the valid100-step checkpoint, frozen vision, seed0/lr5e-6.
+13,501 unique supervised rows from two real actor rollouts become20,881
+training rows with explicitly registered4x identity repeats. The real
+histories include526 contaminated observations,96-observation total across
+MOT17/DanceTrack/MOT20 train clips,35-option exposure, synthetic false
+fragments and real reappearance. GT proposals are explicitly declared;
+actual GroundAnything-proposal training rollout is still pending.
 
-The teacher curriculum has18 legal16-observation clips from MOT17-02,
-DanceTrack0001 and MOT20-01,8,964 official decision rows and59,665,520bytes
-of historical crop sheets. Identity aliases are randomized per clip. All
-rows fit the official16384-token plan (max7858); none dropped. Noul labels
-were corrected to official yes/no before training. Teacher history is only
-initial curriculum; false-candidate/termination/long-gap and actual model
-rollout coverage must be completed before formal500–1000step adaptation.
+All20,881 rows fit32768context (max22817,p50/p90/p99 15520/22158/22544),
+none dropped. First two500-step losses3.2479/8.0658, gradients299.979/513.188,
+peak allocator18.1GiB, measured75.8/76.2s per optimizer step. This is a
+running finite stage; no final checkpoint or improvement claim yet.
 
-GroundJEV currently uses two physical GPUs4and6 within allowlist4/5/6/7.
-UDMT and other-user processes remain untouched. Temporary feature budget25GiB;
-no full-dataset features are cached.
+PhysicalGPU6: one blocking owner processes all1,203DanceTrack0004 validation
+frames with the real frozen DLM + pretrained V1 core, then the exact-candidate
+Simple control and official metrics. Both earlier attempts stopped at frame21;
+the dense request profile does not ensure valid model output. Preserve those
+attempts. The current explicitly registered empty_and_record measurement
+policy keeps the unchanged scorer: rejected output becomes an empty prediction
+set and the real tracker takes that causal frame step. Raw error and elapsed
+time are recorded; every frame remains in the official denominator. Completed
+20-frame memory/decisions were restored exactly. The job is still running;
+its resumed timing cannot be claimed as uninterrupted end-to-end FPS.
 
-## Failure evidence and repair
+GroundJEV uses physical4and6 within allowlist4/5/6/7; other projects untouched.
+Crop evidence: teacher59,665,520bytes, SFT100 student38,165,373bytes and
+pretrained student44,023,768bytes. Temporary feature limit25GiB; no full
+source-dataset feature extraction or old U2 queue is running.
 
-Frame305 initially failed strict client syntax (coordinate ordering/repeated
-label blocks). Three identical retries reproduced it. The pinned official
-scoring parser extracts35 geometrically valid boxes; the explicit
-`official_scoring` policy calls that function unchanged. Strict wire validity
-stays false in the log; every raw output/error and coordinate is retained.
-A real-failure regression matches all official scorer labels/coordinates and
-rejects truncated generations. Model, decoder, sampling and metrics unchanged.
+## Preserved foundation and remaining scope
 
-The original runner cleanup waited on ffmpeg with its input pipe still open.
-The exact owned encoder received SIGTERM then SIGKILL after its10s timeout;
-closing stdin before waiting fixes cleanup and preserves the first failure.
-Completed native decision replay exactly restored frames302–304 without GT
-or extra model calls. A request-builder variable-name error in the first
-resume was repaired and its failed run retained; the second resume completed.
-Legacy failed-attempt/interruption timing is incomplete, so its complete
-end-to-end FPS is null. Simple replay FPS is not native end-to-end speed.
+Old U2 owners/queues stopped;39.89GiB regenerable features removed, original
+data/checkpoints/results preserved. Independent worktree
+/data2/user/LocateMOT_GroundJEV, branch codex/groundjev-4gpu-20261013,
+inherits U2 remote51614cb. Both official model bundles are complete with
+matching LFS digests. Separate environments: DLM Python3.12/Torch2.9.1/custom
+SGLang; OneJev Python3.10/Torch2.10/Transformers5.17.0. Its original.05 fork
+check remains unchanged and passes.
 
-## Preserved foundations
-
-Old U2 owners/queues stopped and39.89GiB regenerable features removed; original
-data/checkpoints/results remain. Independent worktree
-`/data2/user/LocateMOT_GroundJEV`, branch`codex/groundjev-4gpu-20261013`,
-inherited freshly fetched U2`51614cb`.
-
-Official source revisions: GroundAnything8a3b43a1…, OneJev2470c759….
-Both official weight bundles downloaded directly, matching pinned LFS digests.
-GroundAnything uses its own Python3.12/Torch2.9.1/custom SGLang environment;
-OneJev uses Python3.10/Torch2.10/Transformers5.17.0. Correcting OneJev's wrong
-initial5.5.4 pin fixed the original fork check without changing its.05 tolerance.
-Native GroundAnything hidden-feature export is pending; historical visual
-memory currently holds real anchor/long/recent crops, explicitly labeled.
-
-Old U2 has no trained tracking checkpoint. Its preserved perception recall
-is not MOT HOTA. Full pilot remains incomplete: full-video results, completed
-SFT and before/after metrics, RMOT/OVMOT loops, native features and further
-controls/adaptation still require real work. Pilot completion will not end
-the unified tracking research goal.
+GroundAnything tracking-aware gradient adaptation and native hidden-feature
+export remain pending; current historical visual evidence is honestly labeled
+real crops. Full-video results, formal500-step before/after, true detector
+rollout, legal RMOT/OVMOT, Compact/matched controls, long-memory ablations and
+joint-task research remain incomplete. Pilot completion will not complete the
+full unified online tracking goal. Old U2 perception recall is not MOT HOTA.

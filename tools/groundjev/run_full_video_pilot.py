@@ -17,6 +17,8 @@ def main():
     parser.add_argument('--video', type=Path, default=ROOT/'outputs/groundjev/pilot_data/dancetrack.json')
     parser.add_argument('--out', type=Path, default=ROOT/'outputs/groundjev/pilot_runs/dancetrack0004_pretrained_native_v1')
     parser.add_argument('--decoder-policy', choices=['generic_greedy', 'tracking_dense'], default='generic_greedy')
+    parser.add_argument('--perception-failure-policy', choices=['stop','empty_and_record'], default='stop')
+    parser.add_argument('--resume-from', type=Path)
     args = parser.parse_args()
     if args.out.exists() and any(args.out.iterdir()):
         parser.error('preserve an existing pilot owner and its results')
@@ -26,6 +28,8 @@ def main():
              'frames':len(manifest['images']), 'scope':manifest['scope'], 'physical_gpus':[6],
              'checkpoint':str(ROOT/'models/OneJev-0.8B'), 'parser_policy':'official_scoring',
              'decoder_policy':args.decoder_policy,
+             'perception_failure_policy':args.perception_failure_policy,
+             'resume_from':str(args.resume_from) if args.resume_from else None,
              'candidate_controls':'exact full-run candidates replayed by Simple',
              'training_gt_used_by_inference':False, 'pilot_completion':False}
     def save():
@@ -78,14 +82,18 @@ def main():
     try:
         start = time.perf_counter()
         full, simple = args.out/'full', args.out/'simple'
-        run('RUNNING_NATIVE_FULL_VIDEO', ['python3',str(ROOT/'tools/groundjev/run_with_resources.py'),'--gpus','6','--',
+        command = ['python3',str(ROOT/'tools/groundjev/run_with_resources.py'),'--gpus','6','--',
             str(ROOT/'.venv-onejev-py310/bin/python'),str(ROOT/'tools/groundjev/run_video.py'),
             '--task','mot','--video',str(args.video),'--backend','full','--grounding-parser','official_scoring',
-            '--grounding-decoder-policy',args.decoder_policy,'--out',str(full)])
+            '--grounding-decoder-policy',args.decoder_policy,'--perception-failure-policy',args.perception_failure_policy,'--out',str(full)]
+        if args.resume_from:
+            command += ['--resume-from',str(args.resume_from)]
+        run('RUNNING_NATIVE_FULL_VIDEO',command)
         state['full_invocation_wall_seconds'] = time.perf_counter()-start
         run('RUNNING_IDENTICAL_CANDIDATE_SIMPLE_CONTROL', [str(ROOT/'.venv-onejev-py310/bin/python'),
             str(ROOT/'tools/groundjev/run_video.py'),'--task','mot','--video',str(args.video),'--backend','simple',
             '--grounding-parser','official_scoring','--grounding-decoder-policy',args.decoder_policy,
+            '--perception-failure-policy',args.perception_failure_policy,
             '--candidate-replay',str(full/'frame_decisions.jsonl'),'--out',str(simple)])
         for name, directory in [('FULL',full),('SIMPLE',simple)]:
             run('EVALUATING_'+name, ['python3',str(ROOT/'tools/groundjev/evaluate_video.py'),

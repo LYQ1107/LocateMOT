@@ -1,0 +1,33 @@
+{
+  "status": "VIDEO_INFERENCE_COMPLETE",
+  "task": "mot",
+  "backend": "full",
+  "scope": "short_functional_check",
+  "video_manifest": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/pilot_data/mot17_first4.json",
+  "frames": 4,
+  "latencies_seconds": [
+    2.1458979659946635,
+    11.515075675968546,
+    11.908469017012976,
+    14.902887943957467
+  ],
+  "grounding_parser_policy": "official_scoring",
+  "grounding_decoder_policy": "generic_greedy",
+  "end_to_end_fps": null,
+  "successful_frame_pipeline_fps": 0.09883295427790507,
+  "association_replay_fps": 0.09883295427790507,
+  "resume_source": null,
+  "resumed_completed_frames": 0,
+  "timing_limitations": null,
+  "official_metrics": {
+    "status": "COMPLETE",
+    "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/runs/mot17_first4_onejev_sft100_fixed_candidates/official_metrics.json",
+    "scope": "short_functional_check",
+    "frames": 4
+  },
+  "checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_teacher_check_100/final",
+  "motchallenge_confidence_column": "constant unscored-output sentinel; native detection score is absent",
+  "gt_read_by_runtime": false,
+  "future_frames_read_by_runtime": false,
+  "peak_decision_gpu_memory_bytes": 8499917824
+}

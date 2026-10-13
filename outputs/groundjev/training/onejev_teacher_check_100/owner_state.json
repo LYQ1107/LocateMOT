@@ -1,0 +1,26 @@
+{
+  "status": "TRAINING_CHECK_TERMINAL",
+  "physical_gpus": [
+    4
+  ],
+  "optimizer_step_budget": 100,
+  "scope": "teacher_history_training_correctness_check_not_formal_training_completion",
+  "training_rows": 8964,
+  "seed": 0,
+  "owner_pid": 3907168,
+  "initialization": "real pinned OmniJev/OneJev-0.8B",
+  "other_projects_preserved": true,
+  "command": [
+    "python3",
+    "/data2/user/LocateMOT_GroundJEV/tools/groundjev/run_with_resources.py",
+    "--gpus",
+    "4",
+    "--",
+    "/data2/user/LocateMOT_GroundJEV/.venv-onejev-py310/bin/python",
+    "-m",
+    "train.sft",
+    "--config",
+    "/data2/user/LocateMOT_GroundJEV/configs/groundjev/onejev_teacher_check.yaml"
+  ],
+  "exit_code": 0
+}

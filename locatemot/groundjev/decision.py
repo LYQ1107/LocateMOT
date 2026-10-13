@@ -25,10 +25,24 @@ class SimpleDecision:
 
 
 class OneJevDecision:
-    def __init__(self, checkpoint, device='cuda:0', batch_candidates=16, shortlist=32):
+    def __init__(self, checkpoint, device='cuda:0', batch_candidates=16, shortlist=32, evidence_format='v1'):
         from qev.mm_engine import MMDecisionEngine
+        self.checkpoint = str(Path(checkpoint).resolve())
         self.engine = MMDecisionEngine(str(checkpoint), device=device, dtype='bfloat16', cuda_graphs=False)
         self.batch_candidates, self.shortlist = batch_candidates, shortlist
+        self.evidence_format = evidence_format
+
+    def _candidate_sheet(self, image, candidates):
+        from PIL import Image, ImageDraw
+        sheet = Image.new('RGB',(4*160,max(1,math.ceil(len(candidates)/4))*192),'white')
+        draw = ImageDraw.Draw(sheet)
+        for i,candidate in enumerate(candidates):
+            x,y = (i%4)*160,(i//4)*192
+            draw.text((x+2,y+2),f'Candidate {i}',fill='black')
+            crop = image.crop(tuple(candidate['box'])).convert('RGB')
+            crop.thumbnail((156,164))
+            sheet.paste(crop,(x+2,y+22))
+        return sheet
 
     def _history_sheet(self, tracks):
         from PIL import Image, ImageDraw
@@ -54,14 +68,29 @@ class OneJevDecision:
                  'candidates': [{'index': i, 'box': c['box'], 'label': c['label']} for i, c in enumerate(group)],
                  'historical_tracks': history}
         media = [{'type': 'image', 'image': image}]
+        evidence_format = getattr(self,'evidence_format','v1')
+        v2 = evidence_format in ('v2_crop_motion','v3_crop_motion')
+        if v2 and group:
+            state['current_candidate_crop_sheet'] = '<image:2>'
+            media.append({'type':'image','image':self._candidate_sheet(image,group)})
+            state['geometry_columns_track_ids'] = [t.track_id for t in ranked]
+            state['motion_iou_rows_by_candidate'] = [[round(overlap(c['box'],t.predicted_box(timestamp)),4) for t in ranked] for c in group]
+            scale = math.hypot(image.width,image.height)
+            state['center_distance_rows_by_candidate'] = [[round(math.hypot(
+                (c['box'][0]+c['box'][2]-t.predicted_box(timestamp)[0]-t.predicted_box(timestamp)[2])/2,
+                (c['box'][1]+c['box'][3]-t.predicted_box(timestamp)[1]-t.predicted_box(timestamp)[3])/2)/scale,4) for t in ranked] for c in group]
         if ranked:
-            state['historical_anchor_and_recent_crops'] = '<image:2>'
+            state['historical_anchor_and_recent_crops'] = f'<image:{len(media)+1}>'
             media.append({'type': 'image', 'image': self._history_sheet(ranked)})
         questions = {}
         for i, candidate in enumerate(group):
             options = {str(t.track_id): f'Existing persistent identity {t.track_id}, evidence in history and visual crop sheet' for t in ranked}
             options.update(NEW='A valid newly appearing object that belongs to no existing identity',
                            IGNORE='Invalid/duplicate detection, do not create an identity')
+            if evidence_format == 'v2_crop_motion':
+                options['NO_MATCH'] = 'A valid object has no supported matching identity among the shortlisted options; hold the unresolved association without creating a false ID'
+            elif evidence_format == 'v3_crop_motion' and ranked:
+                options['NO_MATCH'] = 'This object was previously observed in the video, but no listed identity supports its match; hold the unresolved association. A genuinely new object must use NEW instead.'
             questions[f'match_{i}'] = ChoiceQuestion(type='choice', instructions=
                 f'Which identity owns current candidate {i}? Compare visual content, history, motion and competing identities. Never use a class label alone as identity.', criteria=options)
             questions[f'update_{i}'] = NoulQuestion(type='noul', instructions=
@@ -98,5 +127,7 @@ class OneJevDecision:
                 # this identity; group order is deterministic and causal.
                 life.setdefault(t.track_id, response.answers[f'life_{t.track_id}'].model_dump())
             reports.append({'batch': offset, 'metadata': meta, 'questions': len(request.questions)})
-        return results, life, {'backend': 'pretrained_onejev_full', 'native_probabilities': True,
+        return results, life, {'backend': 'onejev_full', 'checkpoint': self.checkpoint, 'native_probabilities': True,
+                               'evidence_format':self.evidence_format,
+                               'explicit_no_match':self.evidence_format in ('v2_crop_motion','v3_crop_motion'),
                                'shortlist_limit': self.shortlist, 'batches': reports}

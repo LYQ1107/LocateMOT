@@ -52,6 +52,7 @@ def main():
     parser.add_argument('--video', type=Path, required=True, help='legal JSON video scope manifest')
     parser.add_argument('--checkpoint', type=Path, default=ROOT / 'models/OneJev-0.8B')
     parser.add_argument('--backend', choices=['simple', 'full'], default='full')
+    parser.add_argument('--evidence-format',choices=['v1','v2_crop_motion','v3_crop_motion'],default='v1')
     parser.add_argument('--expression')
     parser.add_argument('--vocabulary', nargs='+')
     parser.add_argument('--out', type=Path, required=True)
@@ -60,6 +61,8 @@ def main():
     parser.add_argument('--grounding-parser', choices=['strict_client', 'official_scoring'], default='strict_client',
                         help='explicit candidate protocol; official scorer preserves strict wire diagnostics')
     parser.add_argument('--grounding-decoder-policy', choices=['generic_greedy', 'tracking_dense'], default='generic_greedy')
+    parser.add_argument('--perception-failure-policy', choices=['stop', 'empty_and_record'], default='stop',
+                        help='official scorer rejection is an explicitly logged empty prediction, included in every metric denominator')
     parser.add_argument('--candidate-replay', type=Path, help='exact prior frame log for a fixed-candidate association control; no end-to-end FPS claim')
     parser.add_argument('--resume-from', type=Path, help='preserve source run and restore its completed causal prefix in this fresh output')
     args = parser.parse_args()
@@ -71,7 +74,7 @@ def main():
         parser.error('RMOT requires --expression')
     args.out.mkdir(parents=True, exist_ok=True)
     frontend = GroundAnythingAdapter(args.grounding_url, parser_policy=args.grounding_parser, decoder_policy=args.grounding_decoder_policy)
-    decision = SimpleDecision() if args.backend == 'simple' else OneJevDecision(args.checkpoint)
+    decision = SimpleDecision() if args.backend == 'simple' else OneJevDecision(args.checkpoint,evidence_format=args.evidence_format)
     tracker = OnlineTracker(decision)
     frames = list(zip(manifest['images'], manifest['frame_numbers']))
     if args.limit:
@@ -81,7 +84,7 @@ def main():
         replay = {row['frame']: row for row in map(json.loads, args.candidate_replay.read_text().splitlines())}
         if any(number not in replay for _, number in frames):
             parser.error('replay lacks a requested frame')
-    fps, latencies = manifest['fps'], []
+    fps, latencies, rejected_frames, strict_invalid_frames = manifest['fps'], [], [], []
     resumed = []
     specification = {'task': args.task, 'vocabulary': vocabulary, 'expression': args.expression}
     if args.resume_from:
@@ -108,10 +111,25 @@ def main():
                     if original['image_path'] != path:
                         raise ValueError('Fixed-candidate replay uses a different physical image')
                     candidates, perception = original['candidates'], {'mode': 'fixed_candidate_replay',
-                        'source': str(args.candidate_replay), 'original_perception': original['perception']}
+                        'source': str(args.candidate_replay), 'original_perception': original['perception'],
+                        'model_response_rejected': original['perception'].get('model_response_rejected',False)}
                 else:
                     print(json.dumps({'frame': frame_number, 'stage': 'native_perception'}), flush=True)
-                    candidates, perception = frontend(image, args.task, vocabulary, args.expression, image_path=path)
+                    try:
+                        candidates, perception = frontend(image, args.task, vocabulary, args.expression, image_path=path)
+                    except GroundingProtocolError as error:
+                        if args.perception_failure_policy == 'stop':
+                            raise
+                        candidates, perception = [], dict(error.metadata)
+                        perception.update(model_response_rejected=True,
+                            rejected_output_policy='empty official prediction set; frame retained for all metrics')
+                        print(json.dumps({'frame': frame_number,'stage':'decoder_output_rejected',
+                            'error':perception['result']['parse_error']}),flush=True)
+                if perception.get('model_response_rejected'):
+                    rejected_frames.append(frame_number)
+                diagnostic = perception.get('original_perception',perception)
+                if diagnostic.get('strict_wire_valid') is False:
+                    strict_invalid_frames.append(frame_number)
                 if index >= len(resumed):
                     print(json.dumps({'frame': frame_number, 'stage': 'association_and_memory', 'candidates': len(candidates)}), flush=True)
                     outputs, state = tracker.step(image, candidates, frame_number/fps, specification)
@@ -168,11 +186,18 @@ def main():
             except subprocess.TimeoutExpired:
                 video_writer.kill()
                 video_writer.wait()
-    result = {'status': 'VIDEO_INFERENCE_COMPLETE', 'task': args.task, 'backend': args.backend,
+    result = {'status': 'VIDEO_INFERENCE_COMPLETE_WITH_REJECTED_PERCEPTION' if rejected_frames else 'VIDEO_INFERENCE_COMPLETE',
+              'task': args.task, 'backend': args.backend,
+              'evidence_format':args.evidence_format,
               'scope': 'short_functional_check' if args.limit else manifest['scope'],
               'video_manifest': str(args.video), 'frames': len(frames), 'latencies_seconds': latencies,
               'grounding_parser_policy': args.grounding_parser,
               'grounding_decoder_policy': args.grounding_decoder_policy,
+              'perception_failure_policy': args.perception_failure_policy,
+              'perception_rejected_frames': rejected_frames,
+              'perception_rejection_rate': len(rejected_frames)/len(frames),
+              'strict_wire_invalid_frames': strict_invalid_frames,
+              'all_input_frames_processed': True,
               'end_to_end_fps': None if replay or resumed else len(frames)/sum(latencies),
               'successful_frame_pipeline_fps': len(frames)/sum(latencies),
               'association_replay_fps': len(frames)/sum(latencies) if replay else None,

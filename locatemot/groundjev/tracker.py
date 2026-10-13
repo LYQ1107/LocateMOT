@@ -38,7 +38,9 @@ class OnlineTracker:
         tracks = list(self.tracks.values())
         decisions, lifecycle, meta = self.decision.decide(image, candidates, tracks, timestamp, specification)
         n, m = len(candidates), len(tracks)
-        costs = np.full((n, m+2*n), 1e9)
+        actions = ('NEW','IGNORE','NO_MATCH') if meta.get('explicit_no_match') else ('NEW','IGNORE')
+        width = len(actions)
+        costs = np.full((n, m+width*n), 1e9)
         is_jev = meta['native_probabilities']
         for i, d in enumerate(decisions):
             probabilities = d['probabilities']
@@ -46,16 +48,18 @@ class OnlineTracker:
                 if str(t.track_id) in probabilities:
                     p = probabilities[str(t.track_id)]
                     costs[i, j] = -math.log(max(p, 1e-12)) if is_jev else -p
-            for j, option in enumerate(('NEW', 'IGNORE')):
+            for j, option in enumerate(actions):
+                if option not in probabilities:
+                    continue
                 p = probabilities[option]
-                costs[i, m+2*i+j] = -math.log(max(p, 1e-12)) if is_jev else -p
+                costs[i, m+width*i+j] = -math.log(max(p, 1e-12)) if is_jev else -p
         rows, columns = linear_sum_assignment(costs) if n else ([], [])
         assigned = dict(zip(rows, columns))
         seen, outputs, events = set(), [], []
         for i, candidate in enumerate(candidates):
             column = assigned[i]
-            if column >= m and (column-m) % 2:
-                events.append({'candidate': i, 'action': 'IGNORE', 'decision': decisions[i]})
+            if column >= m and (column-m) % width:
+                events.append({'candidate': i, 'action': actions[(column-m)%width], 'decision': decisions[i]})
                 continue
             reliable = decisions[i]['update_probability'] >= self.update_threshold
             crop = image.crop(tuple(candidate['box'])).convert('RGB')

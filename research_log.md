@@ -1110,3 +1110,122 @@ SFT owner remains live and has reached observed step40 with finite losses,
 nonzero gradients and15.2GiB allocator peak. Full ckpt-step25 is saved; no
 completed100-step or reload result yet. Disk check:365GiB free on/data2,
 enough for the finite model saves; feature-cache budget unchanged.
+
+## 2026-10-14 — checkpoint validation and same-candidate SFT check plan
+
+Previous goal turn made concrete progress: native model tracking, official
+four-frame baseline metrics, actual SFT and verified GitHub publication.
+Current single training handle is live at observed step80; dense full-video
+owner is live at observed frame14. Continue those exact owners.
+
+After the100-step owner exits, validate its done record and finite losses/
+gradients; compare saved language-weight probes against the original at the
+same BF16 precision, then load the checkpoint twice and check the same real
+tracking Choice/Noul/Score probability distributions. Follow with the exact
+four-frame candidate replay before/after control and unchanged TrackEval.
+No evaluation GT enters inference and no full-video result is inferred from
+this short scope. Then create real legal-train detector/model-history rollout
+supervision for the finite formal adaptation budget; teacher-only training
+does not complete the target.
+
+## 2026-10-14 —100-step negative result and complete-frame scoring policy
+
+Official SFT completed100steps/400examples in1509.262s. All474weight names
+retained; three BF16-aligned language MLP probes changed1.882M/1.623M/1.083M
+elements. Two reloads yield identical real tracking probabilities (maxdiff0),
+unchanged official fork auto check passes. Four same-candidate official
+metrics worsen: HOTA.328338,AssA.172383,IDF1.311787,75IDSW,17FP,24FN vs
+pretrained HOTA.421629,60IDSW. Keep the100-step negative checkpoint; do not
+claim completed formal adaptation or improvement from a falling training loss.
+
+Dense request full-video attempt also stops at frame21 with repeated/malformed
+wrappers, despite the isolated frame21 probe passing earlier. The request
+contract repair does not guarantee valid output and must not be described
+as a complete fix. Preserve both failures and20 valid native states.
+
+For complete-video measurement, register explicit empty_and_record policy:
+the same unchanged official scorer rejects malformed/truncated output; use
+its empty prediction set, record raw error and latency, and run the actual
+causal tracker on zero candidates. Every image remains in the official
+metric denominator. Mark completion WITH_REJECTED_PERCEPTION, never all-valid
+model success. Only GroundingProtocolError is handled; file/service/runtime
+failures still stop. Reuse the verified20-frame prefix under unchanged
+model/request/core settings; no skipped sample or reconstructed fake box.
+This is an explicit measurement policy, not a GroundAnything quality fix.
+Analyze correct-option coverage, selected identity and memory contamination
+to determine why GT-teacher SFT is not sufficient before formal rollout SFT.
+
+## 2026-10-14 — identity error diagnosis and evidence-format controlled repair
+
+Post-hoc fixed-anchor diagnostics on the same four frames show correct-option
+coverage100% for both pretrain and SFT100. Existing identity accuracy falls
+from14/78(17.95%) to6/74(8.11%); native correct-option mass.09925 to.04026.
+Candidate GT recall is the same111/135(.82222) for all three controls. The
+shortlist is not the immediate cause on this scope. SFT100 holds all93
+existing memory observations, while pretrain has7 wrong/unmatched memory
+updates and only1 identity-consistent update. Preserve diagnostics as
+post-hoc analysis, not official metric replacements or inference GT input.
+
+Two concrete exposure mismatches need repair: inference candidates have no
+explicit crop identifiers, relying on pixel-coordinate arithmetic in the
+full image; teacher rows use6candidates/16historical options vs16/32 at
+runtime, and miss wrong detections/model histories. Preregister optional
+v2_crop_motion evidence: current candidate crop sheet plus immutable
+anchor/long/recent history sheet, explicit causal IoU/center-distance
+matrices as features, and a genuine NO_MATCH option. Hungarian still uses
+native OneJev probabilities. Keep v1 unchanged for the ongoing full-video
+baseline. Run pretrain and SFT100 with identical v2 evidence/candidate lists
+as a controlled diagnosis before forming the new own-history curriculum.
+
+Evidence v2 pretrain produced no tracks: all128 candidate actions were
+NO_MATCH, including the first frame with no past identity. The new criterion
+was semantically overlapping with NEW. Retain that version/results and finish
+the matched SFT100 control. Register v3 as a minimum semantic repair: NO_MATCH
+requires a previously observed object and is not offered with empty history.
+Current crop/motion evidence otherwise identical. Do not silently overwrite
+v2 or alter its model scores.
+
+Evidence v2 pretrain and SFT100 both collapse to NO_MATCH on all128
+candidates (HOTA0,FN135); retain this actual semantic-error result.
+V3 removes NO_MATCH from empty history and distinguishes previously observed
+objects from NEW. Pretrain produces10/29/24/35tracks,HOTA.343944,47IDSW,48FN.
+SFT100 produces31/0/0/0tracks,HOTA.197395,0IDSW,110FN: zeroIDSW here reflects
+missing outputs, not good association. No improvement or full-video claim.
+The initial16-option teacher curriculum never exposes production35-option
+questions; together with teacher-only states/absent wrong detections this
+requires a matched-density own-state curriculum.
+
+Start actual checkpoint100 V3 rollouts on three legal16-observation train
+clips,32GT proposals plus two explicitly synthetic box-fragment negatives
+per dense frame, actual model states/decisions and no GT state correction.
+Reuse the observed real DanceTrack reappearance clip. Export supervised
+requests with correctly permuted IDs and crop-sheet labels,35-option
+exposure where actual memory permits, false-candidate IGNORE and real
+wrong-history/lifecycle/memory labels. This isolates decision learning;
+GT proposals are declared, not mislabeled as GroundAnything detections.
+Actual DLM-proposal training rollout remains a further required stage.
+
+The actual SFT100 V3 student rollout completed48legal observations and
+6792supervised rows,38,165,373bytes crop evidence,max35options. It has96
+IGNORE negatives,139NEW labels,87withheld-option NO_MATCH cases,206
+TERMINATE and2620REACTIVATE supervision. Actor after the first frame chooses
+NO_MATCH and keeps lost memory, so this branch does not supply enough wrong
+identity updates. Preserve that collapsed real rollout, then generate the
+same registered clips with the real pretrained V3 actor to obtain diverse
+wrong association/memory states. Both branches use GT proposals plus explicitly
+synthetic fragments, with GT labels only in the post-hoc supervisor.
+Formal adaptation will mix both branches and increase identity row weight
+4x (explicit repeat sampling) because the initial curriculum overweights
+lifecycle relative to association. Keep seed0,optimizer/lr and all registered
+frames; do not claim a completed formal500-step run until it actually ends.
+
+Pretrained V3 rollout completed6709rows/48observations/44,023,768bytes
+and526 contaminated history observations. Combined with the6792-row SFT100
+rollout gives13,501unique rows,20,881 after explicit4x identity repeats.
+Official complete plan: max22817/p50 15520/p90 22158/p99 22544,0 dropped
+at32768 context; actual35-option exposure. Finite500-step official full
+language-model SFT began from checkpoint100 with a deliberate new curriculum
+optimizer, seed0/lr5e-6 unchanged. First two losses3.2479/8.0658 and nonzero
+gradients299.979/513.188; peak18.1GiB,75.8/76.2s per step. Formal completion
+and before/after remain pending. Source proposals remain declared GT plus
+synthetic fragments; no claim of completed GroundAnything-proposal rollout.

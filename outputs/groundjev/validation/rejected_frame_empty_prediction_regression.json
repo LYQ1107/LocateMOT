@@ -1,0 +1,10 @@
+{
+  "status": "OBSERVED_MALFORMED_FRAME_REJECTED_AND_PROCESSED_AS_EMPTY",
+  "frame": 21,
+  "raw_model_response_preserved": true,
+  "parser_still_rejects": true,
+  "candidate_count": 0,
+  "causal_frame_step_executed": true,
+  "metric_denominator_must_include_frame": true,
+  "model_success_claim": false
+}

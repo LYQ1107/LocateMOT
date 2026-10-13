@@ -1,22 +1,28 @@
 # Latest training status — 2026-10-14
 
-Official real-image OneJev full language-model100-step correctness check is
-running on physicalGPU4.474 pretrained tensors loaded;752.39M parameters
-trainable, vision frozen. First5steps: loss2.4260/2.1067/2.0229/1.3239/1.7547,
-nonzero gradient norms215.007/190.773/172.794/212.342/128.342; allocator peak
-15.1GiB. These are online training logs, not completed training or tracking
-performance. Save every25steps; validate/reload after the blocking owner ends.
+100-step official full language-model check completed400examples/1509.262s,
+peak15.3GiB. All474weights saved; three BF16-aligned MLP probes changed,
+two real multimodal reloads agree exactly. Original fork check unchanged.
+Same-candidate V1 HOTA worsens.42163 to.32834, IDSW60to75. Preserve the
+negative checkpoint and do not equate lower training loss with tracking gains.
 
-Initial teacher curriculum:18 legal16-frame-observation clips,8,964rows,
-59,665,520bytes history sheets. Actual max7858tokens vs16384cap,0rows dropped;
-maximum18Choice options vs255API limit. Corrected1728 Noul target labels to
-yes/no before training. Seed0/lr5e-6 unchanged. Real detector/model rollout,
-negative detections and formal500–1000step stage are still pending.
+Teacher context was limited to18options and had no wrong detections/model
+states, unlike production35options. V2 crop/motion evidence collapsed due
+to ambiguous NO_MATCH; V3 semantic repair retains substantial missing outputs.
+All controls/results remain in the registry.
 
-Four-frame same-candidate before-SFT result is negative: Full HOTA.42163,
-IDF1.42748,60IDSW; Simple HOTA.74881,IDF1.83650,1IDSW. This small functional
-scope is not the full-video before/after evaluation. Complete native
-DanceTrack0004 baseline and identical-candidate control are running onGPU6.
+Two actual V3 actor rollouts completed96legal observations and13,501unique
+supervised rows. They include526 contaminated history observations and
+explicit synthetic false fragments; GT IDs never correct the actor. GT
+proposals remain a declared curriculum source, not GroundAnything predictions.
+Mix both branches with4x identity repeats:20,881rows. Official plan max22817
+of32768tokens,0dropped.500-step finite full-language SFT is running onGPU4
+from checkpoint100, fresh optimizer as an explicit curriculum stage, unchanged
+seed0/lr5e-6. First2steps finite loss/gradient, peak18.1GiB, about76s/step.
+Save every125steps, then validate/reload and run the exact before/after protocol.
+
+Actual DLM-proposal rollout and the other task/adaptation studies remain
+required; this finite stage does not by itself finish the pilot or full goal.
 
 ## Earlier setup history
 

@@ -1,0 +1,52 @@
+{
+  "status": "VIDEO_INFERENCE_FAILED",
+  "frame": 21,
+  "image_path": "/data2/user/LocateMOT/data/DanceTrack/val/dancetrack0004/img1/00000021.jpg",
+  "error_type": "GroundingProtocolError",
+  "error": "GroundAnything invalid/truncated output: {'task': 'bbox', 'raw_output': '<|object_ref_start|>person<|object_ref_end|><|box_start|><257><434><452><868>,<282><587><734><999>,<436><452><496><663>,<437><452><496><663>,<496><424><643><821>,<496><424><643><818>,<497><424><643><816>,<499><424><643><814>,<500><424><643><812>,<501><424><643><810>,<502><424><643><809>,<504><424><643><807>,<505><424><643><805>,<506><424><643><804>,<508><424><643><803>,<509><424><643><802>,<510><424><643><801>,<511><424><643><800><|box_end|><|box_end|>', 'predictions': (), 'finish_reason': 'stop', 'usage': {'prompt_tokens': 1042, 'total_tokens': 1138, 'completion_tokens': 96, 'prompt_tokens_details': None, 'reasoning_tokens': 0}, 'parse_error': \"expected ', ' at offset 445 (entry separator); found '<|box_end|>'\", 'valid': False}",
+  "completed_frames": 20,
+  "failed_frame_not_skipped": true,
+  "perception": {
+    "seconds": 2.2394154319772497,
+    "prompt": "Locate all the instances that match the following categories: person.",
+    "result": {
+      "task": "bbox",
+      "raw_output": "<|object_ref_start|>person<|object_ref_end|><|box_start|><257><434><452><868>,<282><587><734><999>,<436><452><496><663>,<437><452><496><663>,<496><424><643><821>,<496><424><643><818>,<497><424><643><816>,<499><424><643><814>,<500><424><643><812>,<501><424><643><810>,<502><424><643><809>,<504><424><643><807>,<505><424><643><805>,<506><424><643><804>,<508><424><643><803>,<509><424><643><802>,<510><424><643><801>,<511><424><643><800><|box_end|><|box_end|>",
+      "predictions": [],
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 1042,
+        "total_tokens": 1138,
+        "completion_tokens": 96,
+        "prompt_tokens_details": null,
+        "reasoning_tokens": 0
+      },
+      "parse_error": "expected ', ' at offset 445 (entry separator); found '<|box_end|>'",
+      "valid": false
+    },
+    "parser_policy": "official_scoring",
+    "strict_wire_valid": false,
+    "decoder_policy": "tracking_dense",
+    "request_decode_parameters": {
+      "acceptance_policy": "entropy",
+      "entropy_threshold": 0.8,
+      "top_k": 0,
+      "position_penalty": 0.0,
+      "repetition_mode": "none",
+      "repetition_weight": 0.0,
+      "enable_eos_early_stop": false,
+      "block_size": 32,
+      "sub_block_size": 4,
+      "denoise_steps": 4,
+      "legacy_force_fill_all": false,
+      "sampling_seed": 42,
+      "temperature": 0.1,
+      "top_p": 0.95
+    },
+    "official_scoring_recovery": false,
+    "source_image_path": "/data2/user/LocateMOT/data/DanceTrack/val/dancetrack0004/img1/00000021.jpg",
+    "source_encoding": "image/jpeg",
+    "lossy_reencoding_applied": false,
+    "coordinate_rule": "official_grid_0_999_times_image_dimension_minus_one"
+  }
+}

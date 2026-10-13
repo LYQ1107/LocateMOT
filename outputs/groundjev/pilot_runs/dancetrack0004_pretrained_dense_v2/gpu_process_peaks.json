@@ -1,0 +1,15 @@
+{
+  "sampling_interval_seconds": 5,
+  "process_peaks_bytes": {
+    "GPU-44f62835-4095-23ec-d3dd-5af16a00705c:3907191": 18532532224,
+    "GPU-883c8be3-25b0-3d19-6fa8-4c2e335e67d2:3858659": 19065208832,
+    "GPU-883c8be3-25b0-3d19-6fa8-4c2e335e67d2:3928005": 18261999616
+  },
+  "simultaneous_project_device_peaks_bytes": {
+    "GPU-44f62835-4095-23ec-d3dd-5af16a00705c": 18532532224,
+    "GPU-883c8be3-25b0-3d19-6fa8-4c2e335e67d2": 37327208448
+  },
+  "foreign_processes_excluded": true,
+  "scope": "all_groundjev_processes_observed_during_full_video_including_concurrent_training",
+  "monitor_errors": []
+}

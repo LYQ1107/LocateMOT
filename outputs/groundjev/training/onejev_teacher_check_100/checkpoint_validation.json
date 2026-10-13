@@ -1,0 +1,176 @@
+{
+  "status": "REAL_100_STEP_SFT_CHECKPOINT_RELOAD_VALIDATED",
+  "checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_teacher_check_100/final",
+  "steps": 100,
+  "examples": 400,
+  "elapsed_seconds": 1509.2624442179804,
+  "weight_entries": 474,
+  "same_bf16_precision_weight_probes": [
+    {
+      "name": "model.language_model.layers.0.mlp.gate_proj.weight",
+      "changed_elements": 1882269,
+      "mean_absolute_delta": 2.162035343644675e-05,
+      "max_absolute_delta": 0.000244140625
+    },
+    {
+      "name": "model.language_model.layers.16.mlp.gate_proj.weight",
+      "changed_elements": 1623414,
+      "mean_absolute_delta": 1.7419737559976056e-05,
+      "max_absolute_delta": 0.000244140625
+    },
+    {
+      "name": "model.language_model.layers.23.mlp.gate_proj.weight",
+      "changed_elements": 1082524,
+      "mean_absolute_delta": 1.0026647942140698e-05,
+      "max_absolute_delta": 0.0001220703125
+    }
+  ],
+  "logged_loss_and_gradient_finite_nonzero": true,
+  "reload_probability_max_absolute_difference": 0.0,
+  "reload_tolerance": 1e-06,
+  "responses": [
+    {
+      "model": "",
+      "answers": {
+        "match_0": {
+          "type": "choice",
+          "choice": "1",
+          "probabilities": {
+            "1": 0.523621,
+            "2": 0.234512,
+            "3": 0.213644,
+            "NEW": 0.022795,
+            "IGNORE": 0.005429
+          },
+          "confidence": 0.404527
+        },
+        "update_0": {
+          "type": "noul",
+          "noul": 0.015167
+        },
+        "reliability_0": {
+          "type": "score",
+          "score": 1.002403,
+          "legend": {
+            "0": "contradictory",
+            "1": "ambiguous",
+            "2": "supported",
+            "3": "strong"
+          },
+          "probabilities": {
+            "0": 0.001135,
+            "1": 0.996376,
+            "2": 0.00144,
+            "3": 0.001049
+          },
+          "confidence": 0.995327
+        },
+        "life_1": {
+          "type": "choice",
+          "choice": "ACTIVE",
+          "probabilities": {
+            "ACTIVE": 0.999984,
+            "LOST": 8e-06,
+            "REACTIVATE": 4e-06,
+            "TERMINATE": 5e-06
+          },
+          "confidence": 0.999978
+        }
+      },
+      "usage": {
+        "input_tokens": 3743,
+        "output_tokens": 4
+      }
+    },
+    {
+      "model": "",
+      "answers": {
+        "match_0": {
+          "type": "choice",
+          "choice": "1",
+          "probabilities": {
+            "1": 0.523621,
+            "2": 0.234512,
+            "3": 0.213644,
+            "NEW": 0.022795,
+            "IGNORE": 0.005429
+          },
+          "confidence": 0.404527
+        },
+        "update_0": {
+          "type": "noul",
+          "noul": 0.015167
+        },
+        "reliability_0": {
+          "type": "score",
+          "score": 1.002403,
+          "legend": {
+            "0": "contradictory",
+            "1": "ambiguous",
+            "2": "supported",
+            "3": "strong"
+          },
+          "probabilities": {
+            "0": 0.001135,
+            "1": 0.996376,
+            "2": 0.00144,
+            "3": 0.001049
+          },
+          "confidence": 0.995327
+        },
+        "life_1": {
+          "type": "choice",
+          "choice": "ACTIVE",
+          "probabilities": {
+            "ACTIVE": 0.999984,
+            "LOST": 8e-06,
+            "REACTIVATE": 4e-06,
+            "TERMINATE": 5e-06
+          },
+          "confidence": 0.999978
+        }
+      },
+      "usage": {
+        "input_tokens": 3743,
+        "output_tokens": 4
+      }
+    }
+  ],
+  "engine_info": [
+    {
+      "model_path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_teacher_check_100/final",
+      "model_type": "qwen3_5",
+      "dtype": "bfloat16",
+      "device": "cuda:0",
+      "fork_mode": "batched",
+      "fork_max_abs_diff": 0.0025653860943184864,
+      "prompt_version": "qev-labels-v2",
+      "transformers_version": "5.17.0",
+      "torch_version": "2.10.0+cu128",
+      "extra": {
+        "head_dtype": "float32",
+        "multimodal": true,
+        "split_vs_full_max_abs_diff": 0.010512095569748275
+      }
+    },
+    {
+      "model_path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_teacher_check_100/final",
+      "model_type": "qwen3_5",
+      "dtype": "bfloat16",
+      "device": "cuda:0",
+      "fork_mode": "batched",
+      "fork_max_abs_diff": 0.0025653860943184864,
+      "prompt_version": "qev-labels-v2",
+      "transformers_version": "5.17.0",
+      "torch_version": "2.10.0+cu128",
+      "extra": {
+        "head_dtype": "float32",
+        "multimodal": true,
+        "split_vs_full_max_abs_diff": 0.010512095569748275
+      }
+    }
+  ],
+  "native_fork_auto_check_unchanged": true,
+  "evaluation_gt_read_by_inference": false,
+  "scope": "teacher_curriculum_correctness_check_not_formal500_to1000_step_completion"
+}

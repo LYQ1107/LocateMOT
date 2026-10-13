@@ -20,7 +20,7 @@ def main():
     manifest = json.loads(args.video.read_text())
     result = json.loads((args.run/'result.json').read_text())
     rows = [json.loads(line) for line in (args.run/'frame_decisions.jsonl').read_text().splitlines()]
-    if result['status'] != 'VIDEO_INFERENCE_COMPLETE' or result['frames'] != len(manifest['images']):
+    if result['status'] not in ('VIDEO_INFERENCE_COMPLETE','VIDEO_INFERENCE_COMPLETE_WITH_REJECTED_PERCEPTION') or result['frames'] != len(manifest['images']):
         parser.error('official scope evaluation requires every registered frame')
     if result['scope'] != manifest['scope'] or [r['frame'] for r in rows] != manifest['frame_numbers']:
         parser.error('short/altered/missing frame scope cannot be presented as the complete video')
@@ -71,6 +71,9 @@ def main():
               'metric_scale':'fraction, counts for IDSW/FP/FN','trackeval_commit':source['commit'],
               'gt_view':view,'gt_access':'evaluation only','official_test_labels_read':False,
               'fixture_only':args.fixture_only,'model_score_claim':not args.fixture_only,
+              'perception_rejected_frames':result.get('perception_rejected_frames',[]),
+              'perception_rejection_rate':result.get('perception_rejection_rate',0.),
+              'rejected_frames_in_official_denominator':True,
               'end_to_end_fps':result.get('end_to_end_fps'),'association_replay_fps':result.get('association_replay_fps')}
     (args.run/'official_metrics.json').write_text(json.dumps(report,indent=2)+'\n')
     result['official_metrics'] = {'status': 'COMPLETE', 'path': str(args.run/'official_metrics.json'),
