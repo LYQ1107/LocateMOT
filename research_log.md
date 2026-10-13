@@ -1085,3 +1085,28 @@ A separate single blocking owner starts all1,203DanceTrack0004 validation
 frames with native DLM + pretrained Full, then same-candidate Simple and
 unchanged TrackEval. Internal GPU monitoring excludes foreign jobs.
 GroundJEV uses physical4and6 only; no queue/task was restarted implicitly.
+
+## 2026-10-14 — complete-video generic decoder failure and official dense repair
+
+DanceTrack native attempt completed20frames then failed frame21. The raw
+output repeats the same box and ends with a trailing separator; even the
+unmodified official scorer returns no valid predictions. Preserve all20
+real frames, the valid latest memory, failure JSON and internally recorded
+resource peaks. Encoder cleanup now returns the real failure promptly.
+No frame is skipped or accepted as a valid prediction.
+
+Root cause hypothesis: generic client uses greedy inner/outer sampling rather
+than the officially documented dense request profile. The running server
+YAML fixes sampling_seed42; retain42. Probe the same frame with official
+DecodeV4 shared fields plus dense temperature.1/top_p.95/max8192 in both
+outer sampling and nested gam_dlm_decode. Actual probe3.345s produces5
+official-scoring-valid boxes; strict duplicate-coordinate error still logged.
+Do not relax geometry/truncation/metric validation or switch DLM to VLM/AR.
+Run a distinct, explicitly registered dense_v2 full video from its first
+frame because request numerics changed; the old20frames remain a separate
+negative attempt. This repair is retained pending full-video evidence.
+
+SFT owner remains live and has reached observed step40 with finite losses,
+nonzero gradients and15.2GiB allocator peak. Full ckpt-step25 is saved; no
+completed100-step or reload result yet. Disk check:365GiB free on/data2,
+enough for the finite model saves; feature-cache budget unchanged.

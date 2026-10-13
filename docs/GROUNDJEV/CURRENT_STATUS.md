@@ -18,17 +18,29 @@ it does not establish a paper-scale conclusion or a global NO_GO.
 
 ## Running work
 
-One blocking owner runs the complete DanceTrack0004 validation video
+The generic-greedy DanceTrack attempt stopped at frame21 after20 completed
+frames: duplicated boxes plus a trailing separator are rejected even by the
+official scoring parser. Its failed prediction/log/memory/resources remain.
+The generic client lacked the official dense task request contract. A targeted
+frame21 probe with the official dense tier produces5 scoring-valid boxes,
+while still retaining its strict duplicate-coordinate diagnostic.
+
+One new blocking owner runs the complete DanceTrack0004 validation video
 (1,203 real frames) on physical GPU6, followed by a Simple control using the
 exact same candidates and official HOTA/CLEAR/Identity evaluation. It records
 per-frame stage progress, native decisions, latest causal memory, video,
 actual native pipeline FPS and internally observed project GPU process peaks.
-No full-video result exists yet.
+No full-video result exists yet. The new run is an explicit request-policy
+repair: outer/inner temperature.1/top-p.95, official B32/subblock4/4 denoise
+steps/entropy.8, sampling seed42 unchanged from the live server. Model and
+DLM algorithm unchanged; parser and metric gates unchanged. The old20 frames
+are not mixed into this distinct protocol run.
 
 A second blocking owner runs the official OneJev multimodal100-step full
 language-model SFT check on physical GPU4, frozen vision. It loads all474
-pretrained entries and trains752.39M of852.99M parameters. First5steps have
-finite loss and nonzero gradients; peak allocator15.1GiB. Training is still
+pretrained entries and trains752.39M of852.99M parameters. Through observed step40, losses remain finite and gradients nonzero; peak
+allocator15.2GiB. A full step25 checkpoint has been saved; reload/finished
+training evidence is still pending. Training is still
 running, so no completed SFT checkpoint/result is claimed.
 
 The teacher curriculum has18 legal16-observation clips from MOT17-02,

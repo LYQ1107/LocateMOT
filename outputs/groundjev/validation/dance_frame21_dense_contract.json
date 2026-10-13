@@ -1,0 +1,48 @@
+{
+  "status": "REAL_DENSE_CONTRACT_FRAME21_VALID",
+  "frame": 21,
+  "candidate_count": 5,
+  "metadata": {
+    "seconds": 3.3450309289619327,
+    "prompt": "Locate all the instances that match the following categories: person.",
+    "result": {
+      "task": "bbox",
+      "raw_output": "<|object_ref_start|>person<|object_ref_end|><|box_start|><259><437><451><868>,<284><588><733><999>,<436><455><497><660>,<436><456><497><660>,<500><424><643><818>,<500><424><643><818>,<500><424><643><818>,<500><424><643><818>,<500><424><643><818>,<500><424><643><818>,<500><424><643><818>,<500><424><643><818><|box_end|>",
+      "predictions": [],
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 1042,
+        "total_tokens": 1107,
+        "completion_tokens": 65,
+        "prompt_tokens_details": null,
+        "reasoning_tokens": 0
+      },
+      "parse_error": "duplicate coordinate tuples are not canonical",
+      "valid": false
+    },
+    "parser_policy": "official_scoring",
+    "strict_wire_valid": false,
+    "decoder_policy": "tracking_dense",
+    "request_decode_parameters": {
+      "acceptance_policy": "entropy",
+      "entropy_threshold": 0.8,
+      "top_k": 0,
+      "position_penalty": 0.0,
+      "repetition_mode": "none",
+      "repetition_weight": 0.0,
+      "enable_eos_early_stop": false,
+      "block_size": 32,
+      "sub_block_size": 4,
+      "denoise_steps": 4,
+      "legacy_force_fill_all": false,
+      "sampling_seed": 42,
+      "temperature": 0.1,
+      "top_p": 0.95
+    },
+    "official_scoring_recovery": true,
+    "source_image_path": "/data2/user/LocateMOT/data/DanceTrack/val/dancetrack0004/img1/00000021.jpg",
+    "source_encoding": "image/jpeg",
+    "lossy_reencoding_applied": false,
+    "coordinate_rule": "official_grid_0_999_times_image_dimension_minus_one"
+  }
+}

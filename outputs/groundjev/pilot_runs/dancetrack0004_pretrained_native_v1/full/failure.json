@@ -1,0 +1,35 @@
+{
+  "status": "VIDEO_INFERENCE_FAILED",
+  "frame": 21,
+  "image_path": "/data2/user/LocateMOT/data/DanceTrack/val/dancetrack0004/img1/00000021.jpg",
+  "error_type": "GroundingProtocolError",
+  "error": "GroundAnything invalid/truncated output: {'task': 'bbox', 'raw_output': '<|object_ref_start|>person<|object_ref_end|><|box_start|><259><437><451><866>,<284><587><733><999>,<436><455><496><660>,<437><456><496><660>,<500><424><643><818>,<500><424><643><818>,<500><424><643><818>,<500><424><643><818>,<500><424><643><818>,<500><424><643><818>,<500><424><643><818>,<500><424><643><818>,<500><424><643><818>,<500><424><643><818>,<500><424><643><818>,<500><424><643><818>,<500><424><643><818>,<500><424><643><818><|box_end|>,', 'predictions': (), 'finish_reason': 'stop', 'usage': {'prompt_tokens': 1042, 'total_tokens': 1138, 'completion_tokens': 96, 'prompt_tokens_details': None, 'reasoning_tokens': 0}, 'parse_error': 'duplicate coordinate tuples are not canonical', 'valid': False}",
+  "completed_frames": 20,
+  "failed_frame_not_skipped": true,
+  "perception": {
+    "seconds": 1.7628393389750272,
+    "prompt": "Locate all the instances that match the following categories: person.",
+    "result": {
+      "task": "bbox",
+      "raw_output": "<|object_ref_start|>person<|object_ref_end|><|box_start|><259><437><451><866>,<284><587><733><999>,<436><455><496><660>,<437><456><496><660>,<500><424><643><818>,<500><424><643><818>,<500><424><643><818>,<500><424><643><818>,<500><424><643><818>,<500><424><643><818>,<500><424><643><818>,<500><424><643><818>,<500><424><643><818>,<500><424><643><818>,<500><424><643><818>,<500><424><643><818>,<500><424><643><818>,<500><424><643><818><|box_end|>,",
+      "predictions": [],
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 1042,
+        "total_tokens": 1138,
+        "completion_tokens": 96,
+        "prompt_tokens_details": null,
+        "reasoning_tokens": 0
+      },
+      "parse_error": "duplicate coordinate tuples are not canonical",
+      "valid": false
+    },
+    "parser_policy": "official_scoring",
+    "strict_wire_valid": false,
+    "official_scoring_recovery": false,
+    "source_image_path": "/data2/user/LocateMOT/data/DanceTrack/val/dancetrack0004/img1/00000021.jpg",
+    "source_encoding": "image/jpeg",
+    "lossy_reencoding_applied": false,
+    "coordinate_rule": "official_grid_0_999_times_image_dimension_minus_one"
+  }
+}

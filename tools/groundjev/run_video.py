@@ -59,6 +59,7 @@ def main():
     parser.add_argument('--grounding-url', default='http://127.0.0.1:8101/v1')
     parser.add_argument('--grounding-parser', choices=['strict_client', 'official_scoring'], default='strict_client',
                         help='explicit candidate protocol; official scorer preserves strict wire diagnostics')
+    parser.add_argument('--grounding-decoder-policy', choices=['generic_greedy', 'tracking_dense'], default='generic_greedy')
     parser.add_argument('--candidate-replay', type=Path, help='exact prior frame log for a fixed-candidate association control; no end-to-end FPS claim')
     parser.add_argument('--resume-from', type=Path, help='preserve source run and restore its completed causal prefix in this fresh output')
     args = parser.parse_args()
@@ -69,7 +70,7 @@ def main():
     if args.task == 'rmot' and not args.expression:
         parser.error('RMOT requires --expression')
     args.out.mkdir(parents=True, exist_ok=True)
-    frontend = GroundAnythingAdapter(args.grounding_url, parser_policy=args.grounding_parser)
+    frontend = GroundAnythingAdapter(args.grounding_url, parser_policy=args.grounding_parser, decoder_policy=args.grounding_decoder_policy)
     decision = SimpleDecision() if args.backend == 'simple' else OneJevDecision(args.checkpoint)
     tracker = OnlineTracker(decision)
     frames = list(zip(manifest['images'], manifest['frame_numbers']))
@@ -171,6 +172,7 @@ def main():
               'scope': 'short_functional_check' if args.limit else manifest['scope'],
               'video_manifest': str(args.video), 'frames': len(frames), 'latencies_seconds': latencies,
               'grounding_parser_policy': args.grounding_parser,
+              'grounding_decoder_policy': args.grounding_decoder_policy,
               'end_to_end_fps': None if replay or resumed else len(frames)/sum(latencies),
               'successful_frame_pipeline_fps': len(frames)/sum(latencies),
               'association_replay_fps': len(frames)/sum(latencies) if replay else None,

@@ -22,9 +22,17 @@ class GroundingProtocolError(RuntimeError):
 
 
 class GroundAnythingAdapter:
-    def __init__(self, base_url='http://127.0.0.1:8101/v1', max_tokens=8192, parser_policy='strict_client'):
+    def __init__(self, base_url='http://127.0.0.1:8101/v1', max_tokens=8192, parser_policy='strict_client', decoder_policy='generic_greedy'):
         self.base_url, self.max_tokens = base_url.rstrip('/'), max_tokens
         self.parser_policy = parser_policy
+        self.decoder_policy = decoder_policy
+        self.decode_parameters = None
+        if decoder_policy == 'tracking_dense':
+            profiles = json.loads((ROOT/'external/GroundAnything/infer/decode/configs/task_profiles.json').read_text())
+            self.decode_parameters = dict(profiles['shared_decode'])
+            tier = profiles['tiers']['dense']
+            self.decode_parameters.update(temperature=tier['temperature'], top_p=tier['top_p'])
+            self.max_tokens = tier['max_tokens']
 
     def adapt_response(self, response, image, image_path, mime, prompt, elapsed):
         result = parse_response(response, 'bbox')
@@ -42,6 +50,7 @@ class GroundAnythingAdapter:
             parsed = sys.modules[name]._parse_gam_predictions_deduplicated(result.raw_output, 'bbox')
         metadata = {'seconds': elapsed, 'prompt': prompt, 'result': result.to_dict(),
                     'parser_policy': self.parser_policy, 'strict_wire_valid': result.valid,
+                    'decoder_policy': self.decoder_policy, 'request_decode_parameters': self.decode_parameters,
                     'official_scoring_recovery': not result.valid and bool(parsed),
                     'source_image_path': str(image_path) if image_path else None,
                     'source_encoding': mime, 'lossy_reencoding_applied': False,
@@ -71,6 +80,9 @@ class GroundAnythingAdapter:
                 'messages': [{'role': 'user', 'content': [
                     {'type': 'image_url', 'image_url': {'url': f'data:{mime};base64,' + base64.b64encode(payload).decode()}},
                     {'type': 'text', 'text': prompt}]}]}
+        if self.decode_parameters is not None:
+            body.update(temperature=self.decode_parameters['temperature'], top_p=self.decode_parameters['top_p'],
+                        custom_params={'gam_dlm_decode': self.decode_parameters})
         start = time.perf_counter()
         request = Request(self.base_url + '/chat/completions', json.dumps(body).encode(), {'Content-Type': 'application/json'})
         with urlopen(request, timeout=600) as response:
