@@ -10,3 +10,12 @@ Setup outcomes: Python 3.12.15 installed; isolated uv setup cache fixed a
 active. Model download transport failures are recorded in CURRENT_STATUS;
 completed byte prefixes remain. No training optimizer or GPU inference has
 been launched yet.
+
+OneJev install completed in a separate Python3.10 environment using copied,
+ABI-matched local Torch2.10 CUDA dependencies and freshly installed
+Transformers5.5.4/qev/peft/accelerate. All69 packages compatible; CUDA check on
+visible physical GPU6 succeeds. Slow unused Python3.12 OneJev install stopped
+after that verification. GroundAnything retains its own Python3.12/Torch2.9.1
+recipe and official cuDNN override; remaining package stages use verified
+local PyPI wheel transport. Weight-dependent real-frame check is queued;
+training steps remain zero.

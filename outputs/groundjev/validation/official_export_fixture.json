@@ -1,0 +1,25 @@
+{
+  "status": "OFFICIAL_TRACK_EVAL_EXPORT_FIXTURE_PASS_NOT_MODEL_BENCHMARK",
+  "dataset": "mot17",
+  "sequence": "MOT17-02-FRCNN",
+  "scope": "full_registered_development_half",
+  "frames": 299,
+  "metrics": {
+    "HOTA": 1.0,
+    "DetA": 1.0,
+    "AssA": 1.0,
+    "IDF1": 1.0,
+    "IDSW": 0,
+    "FP": 0,
+    "FN": 0
+  },
+  "metric_scale": "fraction, counts for IDSW/FP/FN",
+  "trackeval_commit": "12c8791b303e0a0b50f753af204249e622d0281a",
+  "gt_access": "evaluation only",
+  "official_test_labels_read": false,
+  "fixture_only": true,
+  "model_score_claim": false,
+  "end_to_end_fps": null,
+  "association_replay_fps": null,
+  "input_kind": "legal development GT oracle fixture; no model inference"
+}

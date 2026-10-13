@@ -55,6 +55,8 @@ def main():
                     image = source.convert('RGB')
                 if replay:
                     original = replay[frame_number]
+                    if original['image_path'] != path:
+                        raise ValueError('Fixed-candidate replay uses a different physical image')
                     candidates, perception = original['candidates'], {'mode': 'fixed_candidate_replay',
                         'source': str(args.candidate_replay), 'original_perception': original['perception']}
                 else:
@@ -68,7 +70,7 @@ def main():
                     # MOTChallenge requires a confidence column; 1 here is an
                     # explicit unscored-output sentinel, not detector confidence.
                     predictions.write(f'{frame_number},{row["track_id"]},{x1:.3f},{y1:.3f},{x2-x1:.3f},{y2-y1:.3f},1,-1,-1,-1\n')
-                log.write(json.dumps({'frame': frame_number, 'seconds': elapsed, 'candidates': candidates,
+                log.write(json.dumps({'frame': frame_number, 'image_path': path, 'seconds': elapsed, 'candidates': candidates,
                                      'outputs': outputs, 'state': state, 'perception': perception})+'\n')
                 log.flush()
                 predictions.flush()
