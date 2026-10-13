@@ -998,3 +998,90 @@ GroundJEV model processes on6, and an unrelated user process on6. This is
 not four-GPU GroundJEV usage and not old U2 caching. Other project processes
 were preserved. Keep the explicit project device allowlist and ownership
 attribution; no metric, seed or protocol changed.
+
+## 2026-10-14 — tracking SFT teacher curriculum hypothesis
+
+Hypothesis: the pretrained generic decision model needs explicit tracking
+identity, lifecycle and memory-update supervision before own-state rollout.
+Prepare real 16-observation legal training clips from MOT17-02, DanceTrack0001
+and MOT20-01, mined for overlap, low visibility and missing observations.
+Use a single shared runtime question/state builder and randomized persistent
+identity aliases per clip. Teacher GT proposals/history are allowed only in
+this initial curriculum; they are not GroundAnything output or benchmark
+predictions. Missing shortlist identity and withheld correct-option rows are
+explicit NO_MATCH supervision, never mislabeled as NEW. Full completion also
+requires verified false-candidate supervision and actual model-state rollout.
+
+Start with official multimodal language-model full SFT, frozen vision,
+100 optimizer steps, one-row microbatches and four-row accumulation. Retain
+the original seed0 and5e-6 recipe, verify all rows fit the token plan, save
+every25steps, inspect real gradients/loss and reload the checkpoint. The
+subsequent finite first training budget remains500–1000steps including
+model rollout; this100-step check does not satisfy formal training completion.
+The first native online clip is unexpectedly slow, so profile that exact live
+process once before proposing a speed change.
+
+## 2026-10-14 — native video failure, official parsing and resume
+
+The native DLM + OneJev loop completed real frames302–304:31 candidates
+each,30/31/31 output tracks,18.194/19.647/19.763s per frame. OneJev
+created51 persistent IDs by the third frame, evidence of unadapted identity
+fragmentation, not tracking success. The fourth frame failed the strict
+client parser with non-canonical coordinate ordering/repeated phrase blocks.
+The runner then deadlocked during cleanup: its parent waited for ffmpeg while
+ffmpeg waited for an unclosed raw-frame pipe. A one-time targeted process
+diagnosis identified this, the exact owned encoder received SIGTERM and
+then SIGKILL after its verified10s timeout; no model/other-project process
+was signalled. The original traceback returned and is preserved.
+
+Repeating the exact frame/request three times yielded the same strict parse
+error (17.009s total); resampling is not a fix and default inference still
+uses one request per frame with unchanged model/decoder/sampling parameters.
+The pinned official evaluation scoring parser preserves35 geometrically
+valid boxes in this response. Add an explicit official_scoring adapter policy
+using that unmodified function, retaining strict_wire_valid=false, raw output
+and error. A regression on the observed failure matches every label/coordinate
+with the official scorer and still rejects truncated generations. Client
+strict mode remains selectable; no GT, coordinate repair or metric change.
+
+Fix encoder cleanup by closing stdin before waiting, persist the first
+failure, and reconstruct completed causal identity states from saved native
+Choice/Noul/Score decisions. Real prefix reconstruction reproduced all three
+frames' outputs/events/state exactly without GT or further model calls.
+A refactoring mistake (len(questions) after moving request construction)
+caused the first resumed attempt to fail at frame305; use len(request.questions)
+and retain that failed attempt. The second resume starts from the same three
+verified completed frames. Resumed legacy timing cannot account for the
+original failed request/interruption, so no complete end-to-end FPS is claimed.
+
+Teacher curriculum:18 legal16-observation clips,8964rows,59,665,520 history
+PNG bytes,3 real reappearance observations in DanceTrack. All8964 official
+question/target schemas verified;1728 Noul targets corrected from true/false
+to the official yes/no labels before any training. No development/test GT
+used. Official plan-only: p50/p90/p99/max5553/7201/7637/7858tokens,0 rows
+dropped at16384, maximum18options (actual API limit255). Full pretrained
+language-model100-step check launched on physicalGPU4 with frozen vision;
+GroundJEV now uses two physical cards4and6, other jobs preserved. The training
+owner is unique and blocking. This teacher phase still lacks complete false
+candidate/termination/long-gap/model-rollout coverage, explicitly pending
+for the next curriculum and formal500–1000step budget.
+
+## 2026-10-14 — first native online output and negative association control
+
+Four native MOT17 frames completed and passed prediction/one-to-one/memory
+and ffprobe integrity checks:31/31/31/35 candidates,30/31/31/35 tracks,62
+persistent IDs,next_id63. Official same-candidate4-frame TrackEval: Full
+HOTA.421629,DetA.650042,AssA.281686,IDF1.427481,60IDSW,16FP,24FN; Simple
+HOTA.748813,DetA.642304,AssA.895161,IDF1.836502,1IDSW,17FP,24FN. Retain
+this negative generic-pretraining result; it supports tracking adaptation,
+not a full-video/paper claim or global NO_GO. The resumed Full invocation
+allocator peak8,350,338,048bytes covers that invocation only. Complete
+end-to-end FPS remains null because the legacy interrupted run lacks failed
+attempt timing; Simple10.8387FPS is association replay only.
+
+The actual100-step SFT check is running: all474weights loaded,752.39M/852.99M
+parameters trainable, first5 losses finite and nonzero gnorm, peak15.1GiB.
+A separate single blocking owner starts all1,203DanceTrack0004 validation
+frames with native DLM + pretrained Full, then same-candidate Simple and
+unchanged TrackEval. Internal GPU monitoring excludes foreign jobs.
+GroundJEV uses physical4and6 only; no queue/task was restarted implicitly.

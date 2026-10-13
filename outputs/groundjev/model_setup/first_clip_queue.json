@@ -1,0 +1,8 @@
+{
+  "state": "FIRST_NATIVE_CLIP_TERMINAL",
+  "service_owner_pid": 3850611,
+  "scope": "four_frame_functional_check",
+  "training_steps": 0,
+  "physical_gpu": 6,
+  "exit_code": 1
+}

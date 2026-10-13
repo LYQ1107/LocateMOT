@@ -73,6 +73,9 @@ def main():
               'fixture_only':args.fixture_only,'model_score_claim':not args.fixture_only,
               'end_to_end_fps':result.get('end_to_end_fps'),'association_replay_fps':result.get('association_replay_fps')}
     (args.run/'official_metrics.json').write_text(json.dumps(report,indent=2)+'\n')
+    result['official_metrics'] = {'status': 'COMPLETE', 'path': str(args.run/'official_metrics.json'),
+                                  'scope': manifest['scope'], 'frames': len(rows)}
+    (args.run/'result.json').write_text(json.dumps(result,indent=2)+'\n')
     print(json.dumps({k:v for k,v in report.items() if k!='gt_view'}),flush=True)
 
 

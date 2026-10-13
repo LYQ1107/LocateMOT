@@ -1,0 +1,13 @@
+{
+  "status": "REAL_NATIVE_PREFIX_REHYDRATION_PASSED",
+  "frames": [
+    302,
+    303,
+    304
+  ],
+  "tracks": 51,
+  "next_id": 52,
+  "identical_outputs_and_native_state": true,
+  "gt_read": false,
+  "new_model_calls": 0
+}

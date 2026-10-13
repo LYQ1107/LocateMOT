@@ -44,8 +44,40 @@ class OneJevDecision:
                 sheet.paste(resized, (x + j*96, y+22))
         return sheet
 
-    def decide(self, image, candidates, tracks, timestamp, specification):
+    def build_request(self, image, group, ranked, timestamp, specification):
         from qev.schema import ChoiceQuestion, NoulQuestion, ScoreQuestion, SystemOneRequest
+        history = [{'id': t.track_id, 'box': t.box, 'predicted_box': t.predicted_box(timestamp),
+                    'age': t.age, 'lost_age': t.lost_age, 'velocity': t.velocity,
+                    'last_reliable_timestamp': t.last_reliable_timestamp, 'state': t.state,
+                    'confidence': t.confidence} for t in ranked]
+        state = {'current_frame': '<image:1>', 'timestamp': timestamp, 'task': specification,
+                 'candidates': [{'index': i, 'box': c['box'], 'label': c['label']} for i, c in enumerate(group)],
+                 'historical_tracks': history}
+        media = [{'type': 'image', 'image': image}]
+        if ranked:
+            state['historical_anchor_and_recent_crops'] = '<image:2>'
+            media.append({'type': 'image', 'image': self._history_sheet(ranked)})
+        questions = {}
+        for i, candidate in enumerate(group):
+            options = {str(t.track_id): f'Existing persistent identity {t.track_id}, evidence in history and visual crop sheet' for t in ranked}
+            options.update(NEW='A valid newly appearing object that belongs to no existing identity',
+                           IGNORE='Invalid/duplicate detection, do not create an identity')
+            questions[f'match_{i}'] = ChoiceQuestion(type='choice', instructions=
+                f'Which identity owns current candidate {i}? Compare visual content, history, motion and competing identities. Never use a class label alone as identity.', criteria=options)
+            questions[f'update_{i}'] = NoulQuestion(type='noul', instructions=
+                f'Is candidate {i} a clear, reliable identity observation suitable for long-term memory update? Reject occlusion, ambiguous identity and drifting boxes.')
+            questions[f'reliability_{i}'] = ScoreQuestion(type='score', instructions=
+                f'How reliable is the identity evidence for candidate {i}?', criteria=['contradictory', 'ambiguous', 'supported', 'strong'])
+        for t in ranked:
+            questions[f'life_{t.track_id}'] = ChoiceQuestion(type='choice', instructions=
+                f'What is the current lifecycle of identity {t.track_id} given only current and past evidence?',
+                criteria={'ACTIVE': 'currently visible and associated', 'LOST': 'temporarily unobserved, retain memory',
+                          'REACTIVATE': 'returned after a gap', 'TERMINATE': 'permanently leave this tracked video'})
+        if not questions:
+            questions['empty'] = NoulQuestion(type='noul', instructions='Does the current image contain a valid tracking target?')
+        return SystemOneRequest(state=state, model='jev-latest', questions=questions), media
+
+    def decide(self, image, candidates, tracks, timestamp, specification):
         results, life, reports = [], {}, []
         groups = [candidates[i:i+self.batch_candidates] for i in range(0, len(candidates), self.batch_candidates)] or [[]]
         for offset, group in enumerate(groups):
@@ -53,36 +85,7 @@ class OneJevDecision:
             # identity options is measured downstream, never used to choose it.
             ranked = sorted(tracks, key=lambda t: (-max((overlap(c['box'], t.predicted_box(timestamp)) for c in group), default=0.),
                                                  t.lost_age, t.track_id))[:self.shortlist]
-            history = [{'id': t.track_id, 'box': t.box, 'predicted_box': t.predicted_box(timestamp),
-                        'age': t.age, 'lost_age': t.lost_age, 'velocity': t.velocity,
-                        'last_reliable_timestamp': t.last_reliable_timestamp, 'state': t.state,
-                        'confidence': t.confidence} for t in ranked]
-            state = {'current_frame': '<image:1>', 'timestamp': timestamp, 'task': specification,
-                     'candidates': [{'index': i, 'box': c['box'], 'label': c['label']} for i, c in enumerate(group)],
-                     'historical_tracks': history}
-            media = [{'type': 'image', 'image': image}]
-            if ranked:
-                state['historical_anchor_and_recent_crops'] = '<image:2>'
-                media.append({'type': 'image', 'image': self._history_sheet(ranked)})
-            questions = {}
-            for i, candidate in enumerate(group):
-                options = {str(t.track_id): f'Existing persistent identity {t.track_id}, evidence in history and visual crop sheet' for t in ranked}
-                options.update(NEW='A valid newly appearing object that belongs to no existing identity',
-                               IGNORE='Invalid/duplicate detection, do not create an identity')
-                questions[f'match_{i}'] = ChoiceQuestion(type='choice', instructions=
-                    f'Which identity owns current candidate {i}? Compare visual content, history, motion and competing identities. Never use a class label alone as identity.', criteria=options)
-                questions[f'update_{i}'] = NoulQuestion(type='noul', instructions=
-                    f'Is candidate {i} a clear, reliable identity observation suitable for long-term memory update? Reject occlusion, ambiguous identity and drifting boxes.')
-                questions[f'reliability_{i}'] = ScoreQuestion(type='score', instructions=
-                    f'How reliable is the identity evidence for candidate {i}?', criteria=['contradictory', 'ambiguous', 'supported', 'strong'])
-            for t in ranked:
-                questions[f'life_{t.track_id}'] = ChoiceQuestion(type='choice', instructions=
-                    f'What is the current lifecycle of identity {t.track_id} given only current and past evidence?',
-                    criteria={'ACTIVE': 'currently visible and associated', 'LOST': 'temporarily unobserved, retain memory',
-                              'REACTIVATE': 'returned after a gap', 'TERMINATE': 'permanently leave this tracked video'})
-            if not questions:
-                questions['empty'] = NoulQuestion(type='noul', instructions='Does the current image contain a valid tracking target?')
-            request = SystemOneRequest(state=state, model='jev-latest', questions=questions)
+            request, media = self.build_request(image, group, ranked, timestamp, specification)
             response, meta = self.engine.decide(request, media=media)
             for i in range(len(group)):
                 results.append({'probabilities': response.answers[f'match_{i}'].probabilities,
@@ -94,6 +97,6 @@ class OneJevDecision:
                 # Lifecycle is recorded once, from the first group that sees
                 # this identity; group order is deterministic and causal.
                 life.setdefault(t.track_id, response.answers[f'life_{t.track_id}'].model_dump())
-            reports.append({'batch': offset, 'metadata': meta, 'questions': len(questions)})
+            reports.append({'batch': offset, 'metadata': meta, 'questions': len(request.questions)})
         return results, life, {'backend': 'pretrained_onejev_full', 'native_probabilities': True,
                                'shortlist_limit': self.shortlist, 'batches': reports}

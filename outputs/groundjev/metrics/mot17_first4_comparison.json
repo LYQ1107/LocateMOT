@@ -1,0 +1,39 @@
+{
+  "status": "REAL_FOUR_FRAME_FIXED_CANDIDATE_COMPARISON_COMPLETE",
+  "dataset": "mot17",
+  "sequence": "MOT17-02-FRCNN",
+  "frames": [
+    302,
+    303,
+    304,
+    305
+  ],
+  "scope": "short_functional_check_not_full_video_or_dataset_result",
+  "same_candidates": true,
+  "same_persistent_memory_and_assignment": true,
+  "ground_checkpoint_revision": "e44e8f1bd518323db31c551aeaa07e370e12d264",
+  "onejev_checkpoint_revision": "c3939d8bf4cad34549a2b13bbb6aee9bcb6afee8",
+  "onejev_tracking_sft_steps": 0,
+  "trackeval_commit": "12c8791b303e0a0b50f753af204249e622d0281a",
+  "full": {
+    "HOTA": 0.4216292932210159,
+    "DetA": 0.6500419266945674,
+    "AssA": 0.2816864719176665,
+    "IDF1": 0.42748091603053434,
+    "IDSW": 60,
+    "FP": 16,
+    "FN": 24
+  },
+  "simple": {
+    "HOTA": 0.7488134158919785,
+    "DetA": 0.6423040599609131,
+    "AssA": 0.8951607936143764,
+    "IDF1": 0.8365019011406845,
+    "IDSW": 1,
+    "FP": 17,
+    "FN": 24
+  },
+  "complete_end_to_end_fps": null,
+  "timing_limitation": "native run resumed after an encoder deadlock and unmeasured failed request; simple uses candidate replay",
+  "interpretation": "generic pretrained OneJev has severe identity fragmentation on this short clip; tracking SFT and full-video validation remain necessary; no global NO_GO"
+}

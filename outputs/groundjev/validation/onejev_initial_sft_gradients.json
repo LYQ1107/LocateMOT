@@ -1,0 +1,34 @@
+{
+  "status": "REAL_TRACKING_SFT_GRADIENTS_OBSERVED_TRAINING_STILL_RUNNING",
+  "observed_steps": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "loss": [
+    2.426,
+    2.1067,
+    2.0229,
+    1.3239,
+    1.7547
+  ],
+  "grad_norm": [
+    215.007,
+    190.773,
+    172.794,
+    212.342,
+    128.342
+  ],
+  "trainable_parameters_millions": 752.39,
+  "total_parameters_millions": 852.99,
+  "observed_peak_allocator_gib": 15.1,
+  "physical_gpu": 4,
+  "actual_pretrained_weight_entries_loaded": 474,
+  "official_training_framework": "external/OneJev/train/sft.py",
+  "checkpoint_saved_and_reloaded_verified": false,
+  "completed_training_claim": false,
+  "scope": "teacher_curriculum_correctness_check",
+  "evidence": "blocking training owner stdout first five completed optimizer steps"
+}

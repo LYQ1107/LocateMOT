@@ -1,0 +1,32 @@
+{
+  "status": "VIDEO_INFERENCE_COMPLETE",
+  "task": "mot",
+  "backend": "full",
+  "scope": "short_functional_check",
+  "video_manifest": "outputs/groundjev/pilot_data/mot17.json",
+  "frames": 4,
+  "latencies_seconds": [
+    18.19437708199257,
+    19.646802151983138,
+    19.76283710001735,
+    26.68826851795893
+  ],
+  "grounding_parser_policy": "official_scoring",
+  "end_to_end_fps": null,
+  "successful_frame_pipeline_fps": 0.047453927806387734,
+  "association_replay_fps": null,
+  "resume_source": "outputs/groundjev/runs/mot17_first_native_clip_repair1",
+  "resumed_completed_frames": 3,
+  "timing_limitations": "resumed legacy run lacks original failed-attempt/interruption timing; no complete end-to-end FPS claim",
+  "official_metrics": {
+    "status": "COMPLETE",
+    "path": "outputs/groundjev/runs/mot17_first_native_clip_repair2/official_metrics.json",
+    "scope": "short_functional_check",
+    "frames": 4
+  },
+  "checkpoint": "/data2/user/LocateMOT_GroundJEV/models/OneJev-0.8B",
+  "motchallenge_confidence_column": "constant unscored-output sentinel; native detection score is absent",
+  "gt_read_by_runtime": false,
+  "future_frames_read_by_runtime": false,
+  "peak_decision_gpu_memory_bytes": 8350338048
+}

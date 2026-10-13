@@ -1,0 +1,9 @@
+{
+  "status": "VIDEO_INFERENCE_FAILED",
+  "frame": 305,
+  "image_path": "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-02-FRCNN/img1/000305.jpg",
+  "error_type": "NameError",
+  "error": "name 'questions' is not defined",
+  "completed_frames": 3,
+  "failed_frame_not_skipped": true
+}

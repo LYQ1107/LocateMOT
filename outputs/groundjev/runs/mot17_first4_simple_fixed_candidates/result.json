@@ -1,0 +1,31 @@
+{
+  "status": "VIDEO_INFERENCE_COMPLETE",
+  "task": "mot",
+  "backend": "simple",
+  "scope": "short_functional_check",
+  "video_manifest": "outputs/groundjev/pilot_data/mot17_first4.json",
+  "frames": 4,
+  "latencies_seconds": [
+    0.2790169229847379,
+    0.04409684496931732,
+    0.02294521703151986,
+    0.02299020701320842
+  ],
+  "grounding_parser_policy": "official_scoring",
+  "end_to_end_fps": null,
+  "successful_frame_pipeline_fps": 10.838663480973521,
+  "association_replay_fps": 10.838663480973521,
+  "resume_source": null,
+  "resumed_completed_frames": 0,
+  "timing_limitations": null,
+  "official_metrics": {
+    "status": "COMPLETE",
+    "path": "outputs/groundjev/runs/mot17_first4_simple_fixed_candidates/official_metrics.json",
+    "scope": "short_functional_check",
+    "frames": 4
+  },
+  "checkpoint": null,
+  "motchallenge_confidence_column": "constant unscored-output sentinel; native detection score is absent",
+  "gt_read_by_runtime": false,
+  "future_frames_read_by_runtime": false
+}

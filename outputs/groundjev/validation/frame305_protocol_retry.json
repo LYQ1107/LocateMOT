@@ -1,0 +1,88 @@
+{
+  "status": "REAL_FAILED_FRAME_RETRY_STILL_INVALID",
+  "frame": 305,
+  "metadata": {
+    "seconds": 17.008840583031997,
+    "prompt": "Locate all the instances that match the following categories: person.",
+    "result": {
+      "task": "bbox",
+      "raw_output": "<|object_ref_start|>person<|object_ref_end|><|box_start|><0><370><61><793>,<198><429><220><531>,<212><433><236><528>,<212><421><227><503>,<226><419><241><521>,<261><420><280><520>,<263><428><275><502>,<279><422><290><479>,<290><426><300><480>,<290><420><300><475>,<301><425><312><480>,<301><419><312><475>,<310><423><322><474>,<310><407><320><448>,<326><423><337><479>,<345><421><357><477>,<404><409><441><604>,<420><411><435><484>,<440><414><452><480>,<464><389><537><875>,<503><415><518><485>,<513><413><531><518>,<525><389><618><818>,<526><370><621><945>,<525><419><540><493>,<544><447><565><546>,<564><403><585><505>,<571><403><591><505>,<613><412><636><508>,<692><394><751><652>,<835><379><914><758>,<866><392><943><839>,<866><387><938><804><|box_end|>, <|object_ref_start|>person<|object_ref_end|><|box_start|><198><429><221><532><|box_end|>, <|object_ref_start|>person<|object_ref_end|><|box_start|><212><433><236><529><|box_end|>",
+      "predictions": [],
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 1042,
+        "total_tokens": 1234,
+        "completion_tokens": 192,
+        "prompt_tokens_details": null,
+        "reasoning_tokens": 0
+      },
+      "parse_error": "coordinate tuples are not in canonical sorted order",
+      "valid": false
+    },
+    "protocol_attempts": [
+      {
+        "attempt": 1,
+        "seconds": 6.248088029038627,
+        "result": {
+          "task": "bbox",
+          "raw_output": "<|object_ref_start|>person<|object_ref_end|><|box_start|><0><370><61><793>,<198><429><220><531>,<212><433><236><528>,<212><421><227><503>,<226><419><241><521>,<261><420><280><520>,<263><428><275><502>,<279><422><290><479>,<290><426><300><480>,<290><420><300><475>,<301><425><312><480>,<301><419><312><475>,<310><423><322><474>,<310><407><320><448>,<326><423><337><479>,<345><421><357><477>,<404><409><441><604>,<420><411><435><484>,<440><414><452><480>,<464><389><537><875>,<503><415><518><485>,<513><413><531><518>,<525><389><618><818>,<526><370><621><945>,<525><419><540><493>,<544><447><565><546>,<564><403><585><505>,<571><403><591><505>,<613><412><636><508>,<692><394><751><652>,<835><379><914><758>,<866><392><943><839>,<866><387><938><804><|box_end|>, <|object_ref_start|>person<|object_ref_end|><|box_start|><198><429><221><532><|box_end|>, <|object_ref_start|>person<|object_ref_end|><|box_start|><212><433><236><529><|box_end|>",
+          "predictions": [],
+          "finish_reason": "stop",
+          "usage": {
+            "prompt_tokens": 1042,
+            "total_tokens": 1234,
+            "completion_tokens": 192,
+            "prompt_tokens_details": null,
+            "reasoning_tokens": 0
+          },
+          "parse_error": "coordinate tuples are not in canonical sorted order",
+          "valid": false
+        }
+      },
+      {
+        "attempt": 2,
+        "seconds": 6.134159855952021,
+        "result": {
+          "task": "bbox",
+          "raw_output": "<|object_ref_start|>person<|object_ref_end|><|box_start|><0><370><61><793>,<198><429><220><531>,<212><433><236><528>,<212><421><227><503>,<226><419><241><521>,<261><420><280><520>,<263><428><275><502>,<279><422><290><479>,<290><426><300><480>,<290><420><300><475>,<301><425><312><480>,<301><419><312><475>,<310><423><322><474>,<310><407><320><448>,<326><423><337><479>,<345><421><357><477>,<404><409><441><604>,<420><411><435><484>,<440><414><452><480>,<464><389><537><875>,<503><415><518><485>,<513><413><531><518>,<525><389><618><818>,<526><370><621><945>,<525><419><540><493>,<544><447><565><546>,<564><403><585><505>,<571><403><591><505>,<613><412><636><508>,<692><394><751><652>,<835><379><914><758>,<866><392><943><839>,<866><387><938><804><|box_end|>, <|object_ref_start|>person<|object_ref_end|><|box_start|><198><429><221><532><|box_end|>, <|object_ref_start|>person<|object_ref_end|><|box_start|><212><433><236><529><|box_end|>",
+          "predictions": [],
+          "finish_reason": "stop",
+          "usage": {
+            "prompt_tokens": 1042,
+            "total_tokens": 1234,
+            "completion_tokens": 192,
+            "prompt_tokens_details": null,
+            "reasoning_tokens": 0
+          },
+          "parse_error": "coordinate tuples are not in canonical sorted order",
+          "valid": false
+        }
+      },
+      {
+        "attempt": 3,
+        "seconds": 4.6250856289989315,
+        "result": {
+          "task": "bbox",
+          "raw_output": "<|object_ref_start|>person<|object_ref_end|><|box_start|><0><370><61><793>,<198><429><220><531>,<212><433><236><528>,<212><421><227><503>,<226><419><241><521>,<261><420><280><520>,<263><428><275><502>,<279><422><290><479>,<290><426><300><480>,<290><420><300><475>,<301><425><312><480>,<301><419><312><475>,<310><423><322><474>,<310><407><320><448>,<326><423><337><479>,<345><421><357><477>,<404><409><441><604>,<420><411><435><484>,<440><414><452><480>,<464><389><537><875>,<503><415><518><485>,<513><413><531><518>,<525><389><618><818>,<526><370><621><945>,<525><419><540><493>,<544><447><565><546>,<564><403><585><505>,<571><403><591><505>,<613><412><636><508>,<692><394><751><652>,<835><379><914><758>,<866><392><943><839>,<866><387><938><804><|box_end|>, <|object_ref_start|>person<|object_ref_end|><|box_start|><198><429><221><532><|box_end|>, <|object_ref_start|>person<|object_ref_end|><|box_start|><212><433><236><529><|box_end|>",
+          "predictions": [],
+          "finish_reason": "stop",
+          "usage": {
+            "prompt_tokens": 1042,
+            "total_tokens": 1234,
+            "completion_tokens": 192,
+            "prompt_tokens_details": null,
+            "reasoning_tokens": 0
+          },
+          "parse_error": "coordinate tuples are not in canonical sorted order",
+          "valid": false
+        }
+      }
+    ],
+    "protocol_attempt_budget": 3,
+    "strict_official_parser_unchanged": true,
+    "source_image_path": "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-02-FRCNN/img1/000305.jpg",
+    "source_encoding": "image/jpeg",
+    "lossy_reencoding_applied": false,
+    "coordinate_rule": "official_grid_0_999_times_image_dimension_minus_one"
+  }
+}

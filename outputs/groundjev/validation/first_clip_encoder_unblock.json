@@ -1,0 +1,12 @@
+{
+  "reason": "native runner waiting for owned encoder while encoder waits on unclosed stdin",
+  "parent_pid": 3866869,
+  "encoder_pid": 3867890,
+  "encoder_command": "ffmpeg -hide_banner -loglevel error -y -f rawvideo -pixel_format rgb24 -video_size 1920x1080 -framerate 30 -i - -an -c:v libx264 -pix_fmt yuv420p /data2/user/LocateMOT_GroundJEV/outputs/groundjev/runs/mot17_first_native_clip/tracks.mp4 ",
+  "actions": [
+    "SIGTERM",
+    "SIGKILL_after_verified_SIGTERM_timeout"
+  ],
+  "model_process_not_signalled": true,
+  "other_projects_preserved": true
+}

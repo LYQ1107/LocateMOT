@@ -1,0 +1,39 @@
+{
+  "status": "REAL_DLM_ONEJEV_FOUR_FRAME_OUTPUTS_VERIFIED",
+  "frames": [
+    302,
+    303,
+    304,
+    305
+  ],
+  "candidates": [
+    31,
+    31,
+    31,
+    35
+  ],
+  "tracks": [
+    30,
+    31,
+    31,
+    35
+  ],
+  "next_id": 63,
+  "persistent_tracks": 62,
+  "video": {
+    "programs": [],
+    "streams": [
+      {
+        "width": 1920,
+        "height": 1080,
+        "nb_read_frames": "4"
+      }
+    ]
+  },
+  "one_to_one_per_frame": true,
+  "native_detection_scores_absent_not_fabricated": true,
+  "strict_wire_error_frame305_preserved": true,
+  "official_scoring_coordinates_used": true,
+  "gt_read_by_runtime": false,
+  "scope": "four_frame_functional_check_not_full_video_benchmark"
+}

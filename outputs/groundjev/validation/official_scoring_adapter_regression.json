@@ -1,0 +1,10 @@
+{
+  "status": "OBSERVED_FAILURE_OFFICIAL_SCORER_REGRESSION_PASSED",
+  "source": "external/GroundAnything/eval/utils/prompt_mode.py:_parse_gam_predictions_deduplicated",
+  "observed_frame": 305,
+  "official_valid_boxes": 35,
+  "strict_wire_error_preserved": true,
+  "coordinates_equal_unchanged_official_scorer": true,
+  "truncated_output_rejected": true,
+  "model_benchmark": false
+}
