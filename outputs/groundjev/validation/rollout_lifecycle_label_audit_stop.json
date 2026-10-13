@@ -1,0 +1,17 @@
+{
+  "reason": "203 lifecycle targets label ACTIVE/REACTIVATE when the registered current proposal set misses that identity; audit found 164/39 cases in the two corpora",
+  "action": "SIGTERM_verified_exact_formal_trainer_for_data_label_repair",
+  "target": {
+    "pid": 3993066,
+    "argv": [
+      "/data2/user/LocateMOT_GroundJEV/.venv-onejev-py310/bin/python",
+      "-m",
+      "train.sft",
+      "--config",
+      "/data2/user/LocateMOT_GroundJEV/configs/groundjev/onejev_own_history_v3_500.json"
+    ]
+  },
+  "seed_unchanged": 0,
+  "original_artifacts_preserved": true,
+  "other_projects_not_signalled": true
+}

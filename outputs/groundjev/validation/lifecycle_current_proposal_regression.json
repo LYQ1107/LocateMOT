@@ -1,0 +1,16 @@
+[
+  {
+    "source": "student_v3",
+    "changed_lifecycle_targets": 164,
+    "checked_lifecycle_rows": 3015,
+    "original_curriculum_preserved": true,
+    "all_states_and_non_lifecycle_targets_unchanged": true
+  },
+  {
+    "source": "pretrained_student_v3",
+    "changed_lifecycle_targets": 39,
+    "checked_lifecycle_rows": 2936,
+    "original_curriculum_preserved": true,
+    "all_states_and_non_lifecycle_targets_unchanged": true
+  }
+]

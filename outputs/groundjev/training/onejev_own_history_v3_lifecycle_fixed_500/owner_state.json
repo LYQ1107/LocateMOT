@@ -1,0 +1,14 @@
+{
+  "status": "FAILED_BEFORE_TRAINING_DUE_TO_INCOMPLETE_LABEL_REPAIR",
+  "producer_pids": [],
+  "owner_pid": 4015656,
+  "physical_gpus": [
+    4
+  ],
+  "optimizer_step_budget": 500,
+  "seed": 0,
+  "identity_row_repeat_weight": 4,
+  "scope": "own-model-history_decision_adaptation_with_declared_GT_proposals; actual_DLM_proposal_stage_pending",
+  "exit_code": 1,
+  "optimizer_steps": 0
+}

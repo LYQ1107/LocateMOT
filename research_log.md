@@ -1229,3 +1229,23 @@ optimizer, seed0/lr5e-6 unchanged. First two losses3.2479/8.0658 and nonzero
 gradients299.979/513.188; peak18.1GiB,75.8/76.2s per step. Formal completion
 and before/after remain pending. Source proposals remain declared GT plus
 synthetic fragments; no claim of completed GroundAnything-proposal rollout.
+
+## 2026-10-14 — proposal-aware lifecycle label regression and resume
+
+A targeted audit found203 wrong ACTIVE/REACTIVATE lifecycle targets:164/3015
+student100 and39/2936pretrain rows label visibility despite no matching
+current proposal. Lifecycle requires association, so these targets are LOST.
+Signal only the verified exact500-step trainer (PID3993066, own cwd/config,
+SIGTERM), preserve its first5logged steps and alloriginal artifacts. No
+checkpoint was saved in this aborted stage; resume from validated100-step
+weights, seed0 unchanged. Old owner state STOPPED_FOR_VERIFIED_LABEL_REPAIR.
+
+The repair initially parsed life_357 as _357; fix the delimiter, preserve
+the partial derived repair, and regenerate from original real actor traces.
+The prematurely started repaired preflight correctly refused incomplete
+corpora and did not train. Source corpora, allstates/media, identity aliases
+and non-lifecycle targets stay identical. Assert all5951 lifecycle targets
+consistent with supplied current proposals and exactly164+39labelchanges.
+A new corrected500-step owner starts with unchanged weights/lr/seed/context/
+identity-repeat budget. The stopped run is not declared formal completion
+or silently combined into an improved result.

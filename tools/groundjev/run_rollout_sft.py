@@ -1,5 +1,6 @@
 """One blocking owner for finite, preregistered own-history decision adaptation."""
 import json
+import argparse
 import os
 from pathlib import Path
 import subprocess
@@ -9,12 +10,17 @@ ROOT=Path(__file__).resolve().parents[2]
 
 
 def main():
-    out=ROOT/'outputs/groundjev/training/onejev_own_history_v3_500'
+    parser=argparse.ArgumentParser()
+    parser.add_argument('--name',default='onejev_own_history_v3_500')
+    parser.add_argument('--sources',nargs=2,default=['pretrained_student_v3','student_v3'])
+    args=parser.parse_args()
+    out=ROOT/'outputs/groundjev/training'/args.name
     out.mkdir(parents=True,exist_ok=True)
     state_file=out/'owner_state.json'
     if state_file.exists():
         raise RuntimeError('Preserve an existing formal training owner and checkpoint')
-    expected=ROOT/'outputs/groundjev/training_data/pretrained_student_v3'
+    expected=ROOT/'outputs/groundjev/training_data'/args.sources[0]
+    sources=[ROOT/'outputs/groundjev/training_data'/name for name in args.sources]
     owners=[]
     for p in Path('/proc').iterdir():
         if not p.name.isdigit(): continue
@@ -33,15 +39,15 @@ def main():
     save()
     while any((Path('/proc')/str(pid)/'stat').exists() and (Path('/proc')/str(pid)/'stat').read_text().rsplit(')',1)[1].split()[0]!='Z' for pid in owners):
         time.sleep(10)
-    for directory in [expected,ROOT/'outputs/groundjev/training_data/student_v3']:
+    for directory in sources:
         receipt=directory/'summary.json'
         if not receipt.exists() or json.loads(receipt.read_text())['status']!='REAL_MODEL_HISTORY_CURRICULUM_COMPLETE_NOT_GROUND_DETECTOR_ROLLOUT':
             raise RuntimeError('A real rollout producer failed; do not train from incomplete units')
-    curriculum=ROOT/'outputs/groundjev/training_data/mixed_student_v3'
+    curriculum=ROOT/'outputs/groundjev/training_data'/('mixed_'+args.name)
     curriculum.mkdir(parents=True,exist_ok=True)
     counts,unique,total={},0,0
     with (curriculum/'train.jsonl').open('w') as output:
-        for directory in [expected,ROOT/'outputs/groundjev/training_data/student_v3']:
+        for directory in sources:
             for line in (directory/'train.jsonl').read_text().splitlines():
                 row=json.loads(line);unique+=1
                 repeats=4 if row['task']=='identity' else 1
@@ -53,7 +59,7 @@ def main():
         'family_counts':counts,'identity_repeat_weight':4,'seed':0,'actor_state_corrected_by_GT':False,
         'candidate_source':'legal_train_GT_plus_explicit_fragments','GroundAnything_prediction_claim':False},indent=2)+'\n')
     env=os.environ.copy();env['PYTHONPATH']=str(ROOT/'external/OneJev')
-    config=ROOT/'configs/groundjev/onejev_own_history_v3_500.json'
+    config=ROOT/'configs/groundjev'/(args.name+'.json')
     settings={'model':str(ROOT/'outputs/groundjev/training/onejev_teacher_check_100/final'),
         'train':str(curriculum/'train.jsonl'),'media_root':str(ROOT),'name':out.name,'runs_dir':str(out.parent),
         'dtype':'bfloat16','multimodal':True,'full_finetune':True,'train_vision':False,'lr':5e-6,
@@ -70,7 +76,10 @@ def main():
             for line in process.stdout:
                 log.write(line);log.flush();print(line,end='',flush=True)
             code=process.wait()
-        if code: raise RuntimeError(f'{stage} failed with{code}; preserve all prior artifacts')
+        if code:
+            state.update(status='FORMAL_TRAINING_STAGE_FAILED',failed_stage=stage,exit_code=code)
+            save()
+            raise RuntimeError(f'{stage} failed with{code}; preserve all prior artifacts')
     state.update(unique_rows=unique,training_rows=total,initialization=settings['model'],
                  optimizer_reset='explicit new curriculum stage; weights continue from100-step checkpoint',
                  maximum_context='32768 measured-plan cap; no rows may be dropped')

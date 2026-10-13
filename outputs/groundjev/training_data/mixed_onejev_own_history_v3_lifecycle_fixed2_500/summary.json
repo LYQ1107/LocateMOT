@@ -1,0 +1,16 @@
+{
+  "unique_real_supervised_rows": 13501,
+  "training_rows_with_explicit_repeat_sampling": 20881,
+  "family_counts": {
+    "identity": 9840,
+    "memory_update": 2460,
+    "reliability": 2460,
+    "lifecycle": 5951,
+    "withheld_correct_options": 170
+  },
+  "identity_repeat_weight": 4,
+  "seed": 0,
+  "actor_state_corrected_by_GT": false,
+  "candidate_source": "legal_train_GT_plus_explicit_fragments",
+  "GroundAnything_prediction_claim": false
+}

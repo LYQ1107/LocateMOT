@@ -114,7 +114,7 @@ def main():
                             for t in correct: question.criteria.pop(str(aliases[t.track_id]))
                             request.questions[f'withheld_{local}']=question
                             labels[f'withheld_{local}']=('NO_MATCH','withheld_correct_options')
-                    present={g['gt_id'] for g in targets}
+                    present={g['gt_id'] for g in matched.values()}
                     for t in ranked:
                         gid=before.get(t.track_id)
                         action='TERMINATE' if gid is None else 'REACTIVATE' if gid in present and t.lost_age else 'ACTIVE' if gid in present else 'LOST'

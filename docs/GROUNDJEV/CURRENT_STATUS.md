@@ -34,7 +34,20 @@ complete native video baseline. V3 has not demonstrated improvement.
 
 ## Current running jobs
 
-PhysicalGPU4: official500-step full language-model own-history adaptation,
+PhysicalGPU4: the corrected finite500-step full language-model own-history
+adaptation owner has resumed from checkpoint100. The initial run was stopped
+for an audited lifecycle-label error before any new valid save.
+
+The audit found203 ACTIVE/REACTIVATE labels whose identity is absent from
+current supplied proposals (164student100,39pretrain). They are now LOST.
+All5951 lifecycle rows passed current-proposal consistency regression; actor
+states, image evidence, other targets, IDs and all registered frames unchanged.
+Original corpora/partial training logs remain. The label repair initially
+failed on an ID underscore; that failed derived fragment and failed preflight
+owner are preserved. Corrected export passed and a fresh owner was started.
+
+Current config: configs/groundjev/onejev_own_history_v3_lifecycle_fixed2_500.json.
+The new stage uses the same official full language-model configuration,
 initialized from the valid100-step checkpoint, frozen vision, seed0/lr5e-6.
 13,501 unique supervised rows from two real actor rollouts become20,881
 training rows with explicitly registered4x identity repeats. The real

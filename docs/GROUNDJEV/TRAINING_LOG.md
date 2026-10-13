@@ -16,7 +16,12 @@ supervised rows. They include526 contaminated history observations and
 explicit synthetic false fragments; GT IDs never correct the actor. GT
 proposals remain a declared curriculum source, not GroundAnything predictions.
 Mix both branches with4x identity repeats:20,881rows. Official plan max22817
-of32768tokens,0dropped.500-step finite full-language SFT is running onGPU4
+of32768tokens,0dropped.The first500-step run was stopped for203 verified lifecycle target errors:
+GT-visible identities absent from actual current proposals need LOST. All
+5951 lifecycle rows passed the corrected-proposal regression, preserving
+actual states/images/IDs/other supervision. An underscore parsing error
+in the first repair was fixed, and that failed preflight was retained.
+A fresh corrected500-step finite full-language SFT owner is running onGPU4
 from checkpoint100, fresh optimizer as an explicit curriculum stage, unchanged
 seed0/lr5e-6. First2steps finite loss/gradient, peak18.1GiB, about76s/step.
 Save every125steps, then validate/reload and run the exact before/after protocol.
