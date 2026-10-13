@@ -10,7 +10,7 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 
 
-def restore_completed_prefix(tracker, rows, frames, fps, specification):
+def restore_completed_prefix(tracker, rows, frames, fps, specification, timestamps=None):
     """Rehydrate exact prior memory from saved native decisions, without GT."""
     from PIL import Image
     original = tracker.decision
@@ -35,7 +35,8 @@ def restore_completed_prefix(tracker, rows, frames, fps, specification):
             replay.row = row
             with Image.open(path) as source:
                 image = source.convert('RGB')
-            outputs, state = tracker.step(image, row['candidates'], number/fps, specification)
+            timestamp = timestamps[number] if timestamps is not None else number/fps
+            outputs, state = tracker.step(image, row['candidates'], timestamp, specification)
             if outputs != row['outputs'] or state != row['state']:
                 raise ValueError('Native decision replay did not restore identical causal outputs/state')
     finally:
@@ -43,16 +44,18 @@ def restore_completed_prefix(tracker, rows, frames, fps, specification):
 
 
 def main():
+    invocation_start = time.perf_counter()
     from PIL import Image, ImageDraw
     from locatemot.groundjev.perception import GroundAnythingAdapter, GroundingProtocolError
-    from locatemot.groundjev.decision import OneJevDecision, SimpleDecision
+    from locatemot.groundjev.decision import OneJevDecision, SimpleDecision, FeatureDecision
     from locatemot.groundjev.tracker import OnlineTracker
     parser = argparse.ArgumentParser()
     parser.add_argument('--task', choices=['mot', 'rmot', 'ovmot'], default='mot')
     parser.add_argument('--video', type=Path, required=True, help='legal JSON video scope manifest')
     parser.add_argument('--checkpoint', type=Path, default=ROOT / 'models/OneJev-0.8B')
-    parser.add_argument('--backend', choices=['simple', 'full'], default='full')
-    parser.add_argument('--evidence-format',choices=['v1','v2_crop_motion','v3_crop_motion'],default='v1')
+    parser.add_argument('--backend', choices=['simple', 'simple_native', 'simple_temporal', 'full'], default='full')
+    parser.add_argument('--evidence-format',choices=['v1','v2_crop_motion','v3_crop_motion','v4_native_features','v5_native_features_csv','v6_native_compact_history'],default='v1')
+    parser.add_argument('--native-feature-url',help='isolated official DLM visual encoder RPC; no substitute image features')
     parser.add_argument('--expression')
     parser.add_argument('--vocabulary', nargs='+')
     parser.add_argument('--out', type=Path, required=True)
@@ -61,6 +64,8 @@ def main():
     parser.add_argument('--grounding-parser', choices=['strict_client', 'official_scoring'], default='strict_client',
                         help='explicit candidate protocol; official scorer preserves strict wire diagnostics')
     parser.add_argument('--grounding-decoder-policy', choices=['generic_greedy', 'tracking_dense'], default='generic_greedy')
+    parser.add_argument('--grounding-vocabulary-chunk-size', type=int,
+                        help='OVMOT: exhaustively request this many vocabulary classes at a time, then associate the union once')
     parser.add_argument('--perception-failure-policy', choices=['stop', 'empty_and_record'], default='stop',
                         help='official scorer rejection is an explicitly logged empty prediction, included in every metric denominator')
     parser.add_argument('--candidate-replay', type=Path, help='exact prior frame log for a fixed-candidate association control; no end-to-end FPS claim')
@@ -69,13 +74,23 @@ def main():
     if args.out.exists() and any(args.out.iterdir()):
         parser.error('choose a fresh output directory to preserve existing experiment results')
     manifest = json.loads(args.video.read_text())
+    if manifest['task'] != args.task:
+        parser.error('requested task differs from the registered video scope')
     vocabulary = args.vocabulary or manifest['vocabulary']
+    args.expression = args.expression or manifest.get('expression')
     if args.task == 'rmot' and not args.expression:
         parser.error('RMOT requires --expression')
     args.out.mkdir(parents=True, exist_ok=True)
-    frontend = GroundAnythingAdapter(args.grounding_url, parser_policy=args.grounding_parser, decoder_policy=args.grounding_decoder_policy)
-    decision = SimpleDecision() if args.backend == 'simple' else OneJevDecision(args.checkpoint,evidence_format=args.evidence_format)
+    frontend = GroundAnythingAdapter(args.grounding_url, parser_policy=args.grounding_parser,
+        decoder_policy=args.grounding_decoder_policy, vocabulary_chunk_size=args.grounding_vocabulary_chunk_size)
+    if args.backend=='simple': decision=SimpleDecision()
+    elif args.backend in ('simple_native','simple_temporal'): decision=FeatureDecision(temporal=args.backend=='simple_temporal')
+    else: decision=OneJevDecision(args.checkpoint,evidence_format=args.evidence_format)
     tracker = OnlineTracker(decision)
+    feature_client=None
+    if args.native_feature_url:
+        from locatemot.groundjev.feature_client import NativeFeatureClient
+        feature_client=NativeFeatureClient(args.native_feature_url)
     frames = list(zip(manifest['images'], manifest['frame_numbers']))
     if args.limit:
         frames = frames[:args.limit]
@@ -85,17 +100,20 @@ def main():
         if any(number not in replay for _, number in frames):
             parser.error('replay lacks a requested frame')
     fps, latencies, rejected_frames, strict_invalid_frames = manifest['fps'], [], [], []
+    timestamps = dict(zip(manifest['frame_numbers'], manifest['timestamps'])) if 'timestamps' in manifest else None
     resumed = []
     specification = {'task': args.task, 'vocabulary': vocabulary, 'expression': args.expression}
     if args.resume_from:
         resumed = list(map(json.loads, (args.resume_from/'frame_decisions.jsonl').read_text().splitlines()))
         if len(resumed) > len(frames):
             raise ValueError('Resume prefix is longer than the requested video')
-        restore_completed_prefix(tracker, resumed, frames, fps, specification)
+        restore_completed_prefix(tracker, resumed, frames, fps, specification, timestamps)
         (args.out/'resume_memory.json').write_text(json.dumps(tracker.state_dict())+'\n')
         print(json.dumps({'restored_completed_frames': len(resumed), 'source': str(args.resume_from),
                           'identical_native_outputs_and_state': True, 'gt_used': False}), flush=True)
     video_writer = None
+    video_start = time.perf_counter()
+    initialization_seconds = video_start-invocation_start
     try:
         with (args.out / 'predictions.txt').open('w') as predictions, (args.out / 'frame_decisions.jsonl').open('w') as log:
             for index, (path, frame_number) in enumerate(frames):
@@ -131,8 +149,12 @@ def main():
                 if diagnostic.get('strict_wire_valid') is False:
                     strict_invalid_frames.append(frame_number)
                 if index >= len(resumed):
+                    if feature_client:
+                        candidates,feature_metadata=feature_client(image,candidates,image_path=path)
+                        perception['native_feature_extraction']=feature_metadata
                     print(json.dumps({'frame': frame_number, 'stage': 'association_and_memory', 'candidates': len(candidates)}), flush=True)
-                    outputs, state = tracker.step(image, candidates, frame_number/fps, specification)
+                    timestamp = timestamps[frame_number] if timestamps is not None else frame_number/fps
+                    outputs, state = tracker.step(image, candidates, timestamp, specification)
                     elapsed = time.perf_counter()-start
                 latencies.append(elapsed)
                 for row in outputs:
@@ -156,7 +178,8 @@ def main():
                 if video_writer is None:
                     video_writer = subprocess.Popen(['ffmpeg', '-hide_banner', '-loglevel', 'error', '-y',
                         '-f', 'rawvideo', '-pixel_format', 'rgb24', '-video_size', f'{image.width}x{image.height}',
-                        '-framerate', str(fps), '-i', '-', '-an', '-c:v', 'libx264', '-pix_fmt', 'yuv420p',
+                        '-framerate', str(fps), '-i', '-', '-an', '-vf', 'pad=ceil(iw/2)*2:ceil(ih/2)*2',
+                        '-c:v', 'libx264', '-pix_fmt', 'yuv420p',
                         str(args.out/'tracks.mp4')], stdin=subprocess.PIPE)
                 video_writer.stdin.write(canvas.tobytes())
                 print(json.dumps({'frame': frame_number, 'seconds': elapsed, 'tracks': len(outputs)}), flush=True)
@@ -186,19 +209,27 @@ def main():
             except subprocess.TimeoutExpired:
                 video_writer.kill()
                 video_writer.wait()
+    complete_video_wall_seconds = time.perf_counter()-video_start
     result = {'status': 'VIDEO_INFERENCE_COMPLETE_WITH_REJECTED_PERCEPTION' if rejected_frames else 'VIDEO_INFERENCE_COMPLETE',
               'task': args.task, 'backend': args.backend,
               'evidence_format':args.evidence_format,
+              'native_feature_url':args.native_feature_url,
               'scope': 'short_functional_check' if args.limit else manifest['scope'],
               'video_manifest': str(args.video), 'frames': len(frames), 'latencies_seconds': latencies,
               'grounding_parser_policy': args.grounding_parser,
               'grounding_decoder_policy': args.grounding_decoder_policy,
+              'grounding_vocabulary_chunk_size':args.grounding_vocabulary_chunk_size,
+              'specification':specification,
+              'timestamp_policy':manifest.get('timestamp_policy','physical frame number / registered video FPS'),
               'perception_failure_policy': args.perception_failure_policy,
               'perception_rejected_frames': rejected_frames,
               'perception_rejection_rate': len(rejected_frames)/len(frames),
               'strict_wire_invalid_frames': strict_invalid_frames,
               'all_input_frames_processed': True,
-              'end_to_end_fps': None if replay or resumed else len(frames)/sum(latencies),
+              'end_to_end_fps': None if replay or resumed else len(frames)/complete_video_wall_seconds,
+              'complete_video_wall_seconds':complete_video_wall_seconds,
+              'model_initialization_seconds':initialization_seconds,
+              'timing_scope':'all image reads, native requests including service queueing, association, memory persistence, prediction/log writes, drawing, video encoding and encoder completion; preloaded remote DLM server startup excluded',
               'successful_frame_pipeline_fps': len(frames)/sum(latencies),
               'association_replay_fps': len(frames)/sum(latencies) if replay else None,
               'resume_source': str(args.resume_from) if args.resume_from else None,

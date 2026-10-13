@@ -1,0 +1,7 @@
+{
+  "root_cause": "official TETA return uses variable t assigned only when OUTPUT_SUMMARY=True",
+  "fix": "use official defaults OUTPUT_SUMMARY=True and OUTPUT_PER_SEQ_RES=True",
+  "source_changed": false,
+  "predictions_changed": false,
+  "GT_changed": false
+}

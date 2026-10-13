@@ -1,0 +1,7 @@
+{
+  "status": "FIRST_EVALUATOR_ATTEMPT_FAILED",
+  "root_cause": "GT_LOC_FORMAT default expects seq/gt/gt.txt; query GT was materialized at seq/gt.txt",
+  "fix": "explicit GT_LOC_FORMAT matching the existing release-query view",
+  "predictions_changed": false,
+  "GT_values_changed": false
+}

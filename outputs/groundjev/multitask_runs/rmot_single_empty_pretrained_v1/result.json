@@ -1,0 +1,64 @@
+{
+  "status": "VIDEO_INFERENCE_COMPLETE_WITH_REJECTED_PERCEPTION",
+  "task": "rmot",
+  "backend": "full",
+  "evidence_format": "v1",
+  "scope": "registered_short_functional_clip",
+  "video_manifest": "outputs/groundjev/multitask_pilot_data/rmot_single_empty.json",
+  "frames": 8,
+  "latencies_seconds": [
+    1.9292536639841273,
+    1.297386838006787,
+    1.2383396690129302,
+    1.1730998669518158,
+    2.638631128007546,
+    2.094495287979953,
+    1.3135465509840287,
+    1.0589564960100688
+  ],
+  "grounding_parser_policy": "official_scoring",
+  "grounding_decoder_policy": "tracking_dense",
+  "grounding_vocabulary_chunk_size": null,
+  "specification": {
+    "task": "rmot",
+    "vocabulary": [
+      "person",
+      "car"
+    ],
+    "expression": "a red coat is being worn by the woman"
+  },
+  "timestamp_policy": "KITTI 10 Hz frame clock; source zero-based frame numbers retained",
+  "perception_failure_policy": "empty_and_record",
+  "perception_rejected_frames": [
+    152
+  ],
+  "perception_rejection_rate": 0.125,
+  "strict_wire_invalid_frames": [
+    150,
+    151,
+    152,
+    153,
+    154,
+    155,
+    156,
+    157
+  ],
+  "all_input_frames_processed": true,
+  "end_to_end_fps": null,
+  "successful_frame_pipeline_fps": 0.6277607002428631,
+  "association_replay_fps": null,
+  "resume_source": null,
+  "resumed_completed_frames": 0,
+  "timing_limitations": "Legacy per-frame timers exclude output serialization, visualization and writer completion; frame compute FPS only, no complete end-to-end FPS claim.",
+  "official_metrics": {
+    "status": "COMPLETE",
+    "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_runs/rmot_single_empty_pretrained_v1/official_metrics.json",
+    "scope": "registered_short_functional_clip"
+  },
+  "checkpoint": "/data2/user/LocateMOT_GroundJEV/models/OneJev-0.8B",
+  "motchallenge_confidence_column": "constant unscored-output sentinel; native detection score is absent",
+  "gt_read_by_runtime": false,
+  "future_frames_read_by_runtime": false,
+  "peak_decision_gpu_memory_bytes": 3254893568,
+  "frame_compute_fps": 0.6277607002428631
+}

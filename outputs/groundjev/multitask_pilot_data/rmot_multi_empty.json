@@ -1,0 +1,53 @@
+{
+  "dataset": "refer_kitti_v2",
+  "sequence": "0007",
+  "task": "rmot",
+  "expression": "arranging automobiles",
+  "expression_file_for_evaluation_only": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0007/arranging-automobiles.json",
+  "label_dir_for_evaluation_only": "/data2/user/LocateMOT/data/refer_kitti_v2/labels_with_ids/image_02/0007",
+  "legal_split_version": "v2",
+  "split": "validation",
+  "images": [
+    "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0007/000032.png",
+    "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0007/000033.png",
+    "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0007/000034.png",
+    "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0007/000035.png",
+    "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0007/000036.png",
+    "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0007/000037.png",
+    "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0007/000038.png",
+    "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0007/000039.png",
+    "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0007/000040.png",
+    "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0007/000041.png",
+    "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0007/000042.png",
+    "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0007/000043.png"
+  ],
+  "frame_numbers": [
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43
+  ],
+  "fps": 10,
+  "vocabulary": [
+    "person",
+    "car"
+  ],
+  "scope": "registered_short_functional_clip",
+  "timestamp_policy": "KITTI 10 Hz frame clock; source zero-based frame numbers retained",
+  "GT_policy": "release expression target IDs intersect exact per-frame release boxes; no visibility or clipping filter",
+  "image_size": [
+    1242,
+    375
+  ],
+  "training_on_this_scope": false,
+  "official_test_labels_read": false,
+  "runtime_GT_fields": false
+}

@@ -1,0 +1,44 @@
+{
+  "status": "INVALIDATED_RMOT_GT_COORDINATE_FORMAT",
+  "task": "rmot",
+  "dataset": "refer_kitti_v2",
+  "sequence": "0007",
+  "scope": "registered_short_functional_clip",
+  "frames": 8,
+  "all_registered_frames_included": true,
+  "GT_access": "evaluation only",
+  "official_test_labels_read": false,
+  "end_to_end_fps": null,
+  "association_replay_fps": null,
+  "perception_rejected_frames": [
+    152
+  ],
+  "evaluator": "unmodified official TrackEval HOTA/CLEAR/Identity",
+  "evaluator_commit": "12c8791b303e0a0b50f753af204249e622d0281a",
+  "metrics": {
+    "HOTA": 0.0,
+    "DetA": 0.0,
+    "AssA": 0.0,
+    "IDF1": 0.0,
+    "IDSW": 0,
+    "FP": 0,
+    "FN": 5
+  },
+  "metric_scale": "fraction; counts for IDSW/FP/FN",
+  "release_query_GT_boxes": 5,
+  "multi_target_frames": 0,
+  "posthoc_proposal_coverage_IoU_05": {
+    "covered": 0,
+    "GT_boxes": 5,
+    "recall": 0.0,
+    "scope": "evaluation-only target coverage; not HOTA; never used to correct runtime state"
+  },
+  "empty_target_frames": 3,
+  "empty_target_frame_predictions": 0,
+  "GT_transport_class": "class1 is a query-target transport convention, including cars and people",
+  "GT_policy": "only release expression target IDs; empty frames retained; exact release boxes without clipping",
+  "ignore_policy": "registered expressions have empty release ignore fields",
+  "official_complete_dataset_result": false,
+  "model_score_claim": false,
+  "invalid_reason": "Release is normalized top-left xywh; first adapter incorrectly treated x/y as center coordinates"
+}

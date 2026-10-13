@@ -1,0 +1,54 @@
+{
+  "status": "REAL_NATIVE_DLM_FEATURES_VALIDATED",
+  "image": "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-02-FRCNN/img1/000302.jpg",
+  "metadata": {
+    "feature_source": "official_DLM_native_MoonViT_and_trained_projector",
+    "checkpoint": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM",
+    "weight_prefix": "base_model.model.visual.",
+    "native_parameters": 428482048,
+    "native_weight_entries": 170,
+    "image_size": [
+      1920,
+      1080
+    ],
+    "grid_thw": [
+      1,
+      48,
+      84
+    ],
+    "merged_grid": [
+      24,
+      42
+    ],
+    "resize_and_padding": {
+      "num_tokens": 1008,
+      "new_width": 1172,
+      "new_height": 659,
+      "pad_width": 4,
+      "pad_height": 13,
+      "sampled_nframes": 1
+    },
+    "feature_dimension": 2560,
+    "attention": "official eager",
+    "seconds": 2.0583544020191766
+  },
+  "region_shape": [
+    31,
+    2560
+  ],
+  "local_tokens_shape": [
+    31,
+    2560,
+    3,
+    3
+  ],
+  "unmodified_serving_entry_max_abs_difference": 0.0,
+  "immutable_checkpoint_reference_max_abs_difference": 0.0,
+  "independent_ROI_coordinate_ramp_max_abs_difference": 9.5367431640625e-07,
+  "reference_scope": "same real image and exact serving visual function, not a live-scheduler RPC",
+  "language_decoder_not_loaded": true,
+  "substituted_encoder": false,
+  "GT_read": false,
+  "peak_gpu_allocated_bytes": 4101049344,
+  "physical_gpu": 5
+}

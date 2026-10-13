@@ -1,0 +1,58 @@
+{
+  "outputs/groundjev/multitask_runs/rmot_single_empty_pretrained_v1": {
+    "visualization": {
+      "width": 1242,
+      "height": 376,
+      "nb_read_frames": "8"
+    },
+    "registered_frames": 8,
+    "official_metrics": {
+      "HOTA": 0.0,
+      "DetA": 0.0,
+      "AssA": 0.0,
+      "IDF1": 0.0,
+      "IDSW": 0,
+      "FP": 0,
+      "FN": 5
+    },
+    "RMOT_GT_contract": "verified normalized top-left xywh; earlier provisional metrics invalidated"
+  },
+  "outputs/groundjev/multitask_runs/pretrained_v1_registered_v1/rmot_multi_empty/full": {
+    "visualization": {
+      "width": 1242,
+      "height": 376,
+      "nb_read_frames": "12"
+    },
+    "registered_frames": 12,
+    "official_metrics": {
+      "HOTA": 0.19479176400993647,
+      "DetA": 0.1439317246917687,
+      "AssA": 0.2665934316310256,
+      "IDF1": 0.21739130434782608,
+      "IDSW": 0,
+      "FP": 11,
+      "FN": 25
+    },
+    "RMOT_GT_contract": "verified normalized top-left xywh; earlier provisional metrics invalidated"
+  },
+  "outputs/groundjev/multitask_runs/pretrained_v1_registered_v2_evaluation_repair/ovmot_tao_first4/full": {
+    "visualization": {
+      "width": 640,
+      "height": 480,
+      "nb_read_frames": "4"
+    },
+    "registered_frames": 4,
+    "official_metrics": {
+      "TETA": 0.0,
+      "LocA": 0.0,
+      "AssocA": 0.0,
+      "ClsA": 0.0,
+      "LocRe": 0.0,
+      "LocPr": 0.0,
+      "AssocRe": 0.0,
+      "AssocPr": 0.0,
+      "ClsRe": 0.0,
+      "ClsPr": 0.0
+    }
+  }
+}

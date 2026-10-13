@@ -72,7 +72,8 @@ time are recorded; every frame remains in the official denominator. Completed
 20-frame memory/decisions were restored exactly. The job is still running;
 its resumed timing cannot be claimed as uninterrupted end-to-end FPS.
 
-GroundJEV uses physical4and6 within allowlist4/5/6/7; other projects untouched.
+GroundJEV now uses physical4/5/6 within allowlist4/5/6/7; other projects untouched.
+Physical5 runs native visual-feature RPC and finite RMOT/OVMOT/native-evidence checks.
 Crop evidence: teacher59,665,520bytes, SFT100 student38,165,373bytes and
 pretrained student44,023,768bytes. Temporary feature limit25GiB; no full
 source-dataset feature extraction or old U2 queue is running.
@@ -87,9 +88,152 @@ matching LFS digests. Separate environments: DLM Python3.12/Torch2.9.1/custom
 SGLang; OneJev Python3.10/Torch2.10/Transformers5.17.0. Its original.05 fork
 check remains unchanged and passes.
 
-GroundAnything tracking-aware gradient adaptation and native hidden-feature
-export remain pending; current historical visual evidence is honestly labeled
-real crops. Full-video results, formal500-step before/after, true detector
-rollout, legal RMOT/OVMOT, Compact/matched controls, long-memory ablations and
-joint-task research remain incomplete. Pilot completion will not complete the
+Native hidden-feature export is verified, and a frozen-backbone temporal
+adapter completed200steps with actual gradients/checkpoint reload. It matches
+the unadapted calibration retrieval131/134, so no tracking gain is established.
+DLM decoder adaptation and dense/referring retention benchmarks remain pending.
+Real RMOT short loops and same-candidate controls completed; TAO exhaustive requests are active; V6 native-feature OneJev checks completed
+with negative tracking evidence. Full-video results, formal500
+before/after, true detector rollout, full RMOT/OVMOT, Compact/matched controls,
+long-memory ablations and joint-task research remain incomplete. Pilot completion will not complete the
 full unified online tracking goal. Old U2 perception recall is not MOT HOTA.
+
+
+## Native features and legal multitask checks
+
+Official DLM MoonViT/projector428,482,048parameters,170weights; real image
+features31x2560 and local region tokens31x2560x3x3. Exact agreement with the
+unmodified serving visual function and checkpoint reference; ROI coordinate
+ramp error9.54e-7. Language decoder is not loaded by the feature RPC.
+
+Temporal adapter200steps/seed0,693,632changed weights, loss4.20862 to.09104,
+finite nonzero gradients, reload difference0. Training:legal MOT17/DanceTrack/
+MOT20 clips; calibration:disjoint train DanceTrack0006. Native and trained
+adapter retrieval both131/134=.977612. No HOTA or detection improvement claim.
+Checkpoint:/data2/user/LocateMOT_GroundJEV/outputs/groundjev/ground_adaptation/
+native_temporal200/checkpoint.pt,8,331,829bytes, SHA256
+9ad17570ca88e972b837389373ca94b3668ee433033f6f9c8c0044489b62e35b.
+
+Legal Refer-KITTIv2 validation0007, release expressions with empty ignore
+fields; unchanged TrackEval on every registered frame, GT read only after
+predictions. These are explicit short clips, not full-dataset metrics:
+
+| Scope / backend | HOTA | IDF1 | FP | FN | Native target recall IoU.5 |
+|---|---:|---:|---:|---:|---:|
+| Single/empty8frames Full | 0 | 0 | 0 | 5 | 4/5 |
+| Same candidates Simple | .242284 | .375000 | 7 | 1 | 4/5 |
+| Multi/empty12frames Full | .194792 | .217391 | 11 | 25 | 5/30 |
+| Same candidates Simple | .243151 | .217391 | 11 | 25 | 5/30 |
+
+Single-query V1 wrongly suppresses correct proposals; multi-query proposal
+coverage is low. See the authoritative GT-contract correction below. Strict wire errors
+remain in logs; scorer rejects frame152/single and34/multi, both retained in
+metrics. Multi Full complete processing FPS.579804 includes video encoding,
+output serialization and RPC queueing;9.18752s OneJev initialization separate.
+Single legacy frame-compute FPS.627761 is not complete end-to-end FPS.
+
+TAO registers all1203fixed LVIS-v1 classes in96-class chunks; the first
+run stopped at a rejected prefix. The corrected exhaustive request owner is active. A rejected chunk yields an explicitly logged rejected
+whole frame; allframes/classes remain requested. Source physical FPS absent:
+registered sparse functional scope uses declared annotation-step time, not
+verified source seconds. Original categories/GT/frequency split retained for
+unmodified TETA; no Novel evaluation GT in training.
+
+Native memory2real-frame sanity uses actual saved DLM proposals, no GT:
+31persistent IDs, exact reload, fixed anchors, held long features unchanged,
+past timestamps rejected before mutation,10,682,927byte serialized memory.
+V1 behavior stays unchanged; native mode adds region/temporal memories,
+causal feature history, lifecycle survival probability and identity entropy.
+V4 first real history request exceeded32768with56426tokens and was preserved.
+V5 uses declared CSV milli-units for matrices without dropping candidates or
+identity options; its actual4frame controlled evaluation is pending.
+
+
+### Completed native-feature control and measured limitations
+
+V5 still exceeded context at34313tokens. V6 compresses native-history rows
+in addition to all-pair similarity matrices; frame304 then reached34419tokens.
+The smallest further fix is context-adaptive candidate grouping only when the
+unchanged official native preflight rejects a group before inference. Every
+proposal and up-to32 shortlisted identity options remains. The two valid
+V6 prefix frames restore exact native outputs/state; resume completes304/305.
+Original V4/V5/V6 failed artifacts remain, no sample skipped, no token-limit
+relaxation and no retraining/checkpoint change.
+
+MOT17 same128native candidates,4frames, unchanged TrackEval:
+
+| Decision | HOTA | IDF1 | IDSW | FP | FN |
+|---|---:|---:|---:|---:|---:|
+| Simple IoU | .748813 | .836502 | 1 | 17 | 24 |
+| Fixed IoU + native2560cosine | .738898 | .813688 | 4 | 17 | 24 |
+| Fixed IoU + trained temporal128cosine | .746248 | .828897 | 2 | 17 | 24 |
+| Pretrained OneJev V6 native/crop/motion | .359328 | .330709 | 61 | 17 | 33 |
+
+Native/temporal fixed controls use exactly the exported features, coefficients
+.5/.5, NEWscore.3,32-identity geometry shortlist and16-candidate groups. They
+are untrained association controls, not JEV/Compact. Temporal-vs-native is
+also a dimensionality change; random128 and larger video controls remain
+required before attributing the difference solely to training. Native-feature
+OneJev still underperforms Simple; no isolated feature or foundation gain
+claim. Existing-ID diagnostic accuracy9/75=.12, option coverage72/75=.96,
+mean correct native mass.062495; candidate GT coverage remains111/135.
+Its8,504,115,712byte allocator peak and.042028association replay FPS exclude
+live detection; resumed timing does not support an end-to-end speed claim.
+
+TAO first4frames have zero predictions and TETA/LocA/AssocA/ClsA0 under the
+unmodified official source b498aa87b252bfb75d7cc0d8d6435c3e1e74e4de. There
+are18GT boxes, source canonical class baby/person.n.01, Base. Novel is null
+because this scope has no Novel GT; never report it as a Novel benchmark.
+Two evaluator formatting configuration errors were repaired by restoring
+its official defaults OUTPUT_PER_SEQ_RES=True and OUTPUT_SUMMARY=True;
+metrics/source/GT/predictions unchanged, failures retained.
+
+The first vocabulary run registered1203classes but stopped on a rejected
+96-class chunk:192/192/192/288classes actually requested across the4frames.
+This is recorded in vocabulary_coverage.json, not claimed as exhaustive
+1203-class inference. A new finite owner requests ALL13chunks on every frame,
+records every native outcome, and only then applies the same explicitly
+registered whole-frame-rejection policy. It is active at publication.
+First-prefix run processing FPS.020682 is not full-vocabulary inference FPS.
+Original raw failures show many class-conditioned hallucinated boxes. The
+next grounding research must address proposal quality and negative classes
+through the official spatial/DLM training route, with dense/referring retention.
+
+Visualization integrity verified8/12/4frames; KITTI display edge padded from
+1242x375 to1242x376, predictions/GT coordinates unchanged. Formal500-step
+SFT and fullDanceTrack original blocking owners continue. Pilot and final
+unified research goal remain incomplete.
+
+
+## Pre-publication RMOT GT-contract repair (authoritative results)
+
+The new RMOT evaluator incorrectly read release top-left x/y as centers.
+This was found before updating GitHub's branch. Existing established
+read_gt in tools/unified/u1_formal_expression_gate.py defines normalized
+top-left xywh. Corrected transport agrees for all70target box comparisons
+to5.68e-14pixels. Predictions, target sets, frames, source extents, seeds,
+metrics and thresholds unchanged. Original metric receipts are preserved
+as invalid_center_format_metrics.json and explicitly marked invalid;
+local invalid GT views remain but raw GT is excluded from GitHub.
+
+Authoritative corrected results:
+
+| RMOT scope / backend | HOTA | IDF1 | IDSW | FP | FN | Proposal target recall IoU.5 |
+|---|---:|---:|---:|---:|---:|---:|
+| Single/empty8frames Full | 0 | 0 | 0 | 0 | 5 | 4/5 |
+| Exact candidates Simple | .242284 | .375000 | 2 | 7 | 1 | 4/5 |
+| Multi/empty12frames Full | .194792 | .217391 | 0 | 11 | 25 | 5/30 |
+| Exact candidates Simple | .243151 | .217391 | 0 | 11 | 25 | 5/30 |
+
+The earlier zero-proposal-coverage diagnosis is invalid. On the single
+query, four correct observations are present but V1 OneJev suppresses them
+as IGNORE; association/birth/input evidence is the first failure. On the
+multiple-target query, proposal coverage5/30 still limits every tracker.
+Next controlled check should compare V1 against current-crop V3 on the
+same RMOT proposals, while preserving the DLM multi-target recall deficit.
+Dense/referring adaptation and original retention remain required, but
+not every RMOT failure can be attributed to the perception front end.
+
+The new all-class TAO owner remains active. A800-SXM4-80GB hardware was
+verified for4/5/6; foreign UDMT processes are unchanged. Original OneJev
+500step and fullDanceTrack owners remain responsible for their jobs.

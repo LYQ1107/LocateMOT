@@ -1,0 +1,37 @@
+{
+  "execution_date": "2026-10-14",
+  "GPU_model": "NVIDIA A800-SXM4-80GB",
+  "stage_physical_GPUs": [
+    5,
+    6
+  ],
+  "concurrent_formal_SFT_GPU": 4,
+  "allowlist": [
+    4,
+    5,
+    6,
+    7
+  ],
+  "max_physical_GPUs": 4,
+  "features_budget_bytes": 26843545600,
+  "source_local_parent_commit": "6c28e27",
+  "verified_previous_remote_commit": "c96fb0b4c787dccf63f6ec79f044b656a4477b1f",
+  "published_payload": "source/configuration/registered legal scopes/aggregate receipts and actual predictions metrics; no weights, raw GT, images or vectors",
+  "active_owners": {
+    "formal_SFT_500": 4617,
+    "full_DanceTrack": 17033,
+    "all_class_TAO_first4": 15348,
+    "DLM_service": 58871,
+    "native_feature_RPC": 43071
+  },
+  "Pilot_complete": false,
+  "Final_goal_complete": false,
+  "temporary_feature_artifact_bytes": 165477115,
+  "feature_artifact_scope": "native-feature four-frame runs, failed predecessors, geometry/appearance controls and memory receipts; no source-dataset feature cache",
+  "prepublication_RMOT_measurement_repair": {
+    "format": "normalized top-left xywh",
+    "old_metrics_explicitly_invalidated": true,
+    "existing_canonical_reader_comparisons": 70,
+    "predictions_changed": false
+  }
+}

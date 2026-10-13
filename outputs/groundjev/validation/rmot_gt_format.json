@@ -1,0 +1,13 @@
+{
+  "status": "RMOT_GT_TRANSPORT_AGREES_WITH_ESTABLISHED_RELEASE_CONTRACT",
+  "box_format": "normalized top-left xywh",
+  "reference": "/data2/user/LocateMOT_GroundJEV/tools/unified/u1_formal_expression_gate.py:read_gt",
+  "source_scope": "legal current v2 validation0007",
+  "target_box_comparisons": 70,
+  "maximum_coordinate_difference_pixels": 5.684341886080802e-14,
+  "prediction_changed": false,
+  "source_extent_clipped": false,
+  "thresholds_changed": false,
+  "invalid_prior_metrics_preserved": true,
+  "public_branch_updated_before_repair": false
+}

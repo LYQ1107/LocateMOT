@@ -1,0 +1,121 @@
+{
+  "execution_date": "2026-10-14",
+  "status": "NATIVE_FEATURE_AND_TRAINED_TEMPORAL_CONTROL_SHORT_SCOPE_COMPLETE",
+  "scope": "MOT17-02-FRCNN frames302-305, registered short functional scope, not full video or dataset",
+  "source_local_parent_commit": "6c28e27",
+  "DLM_checkpoint": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM",
+  "OneJev_checkpoint": "/data2/user/LocateMOT_GroundJEV/models/OneJev-0.8B",
+  "temporal_adapter": {
+    "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/ground_adaptation/native_temporal200/checkpoint.pt",
+    "bytes": 8331829,
+    "sha256": "9ad17570ca88e972b837389373ca94b3668ee433033f6f9c8c0044489b62e35b"
+  },
+  "native_and_temporal_controls": "same saved native candidate boxes and exact exported feature vectors; fixed0.5IoU+0.5cosine, NEW0.3, shortlist32, grouping16, no association training",
+  "JEV_variant": "genuine pretrained OneJev V6 native-feature/crop/motion questions, context-adaptive grouping; two exact completed frames restored after token-limit failure",
+  "controls_are_identical_JEV_prompt_ablations": false,
+  "metrics": {
+    "mot17_first4_simple_fixed_candidates": {
+      "HOTA": 0.7488134158919785,
+      "DetA": 0.6423040599609131,
+      "AssA": 0.8951607936143764,
+      "IDF1": 0.8365019011406845,
+      "IDSW": 1,
+      "FP": 17,
+      "FN": 24
+    },
+    "mot17_first_native_clip_repair2": {
+      "HOTA": 0.4216292932210159,
+      "DetA": 0.6500419266945674,
+      "AssA": 0.2816864719176665,
+      "IDF1": 0.42748091603053434,
+      "IDSW": 60,
+      "FP": 16,
+      "FN": 24
+    },
+    "mot17_first4_pretrained_evidence_v3": {
+      "HOTA": 0.3439443160419115,
+      "DetA": 0.5308409784551259,
+      "AssA": 0.23169428942701925,
+      "IDF1": 0.351931330472103,
+      "IDSW": 47,
+      "FP": 11,
+      "FN": 48
+    },
+    "mot17_first4_pretrained_v6_native_adaptive_resume": {
+      "HOTA": 0.35932817692312924,
+      "DetA": 0.596797861735217,
+      "AssA": 0.2231059191383404,
+      "IDF1": 0.33070866141732286,
+      "IDSW": 61,
+      "FP": 17,
+      "FN": 33
+    },
+    "mot17_first4_simple_native_fixed_native_features": {
+      "HOTA": 0.7388975851397518,
+      "DetA": 0.6423040599609131,
+      "AssA": 0.8726180061742603,
+      "IDF1": 0.8136882129277566,
+      "IDSW": 4,
+      "FP": 17,
+      "FN": 24
+    },
+    "mot17_first4_simple_temporal_fixed_native_features": {
+      "HOTA": 0.7462482940773899,
+      "DetA": 0.6423040599609131,
+      "AssA": 0.8894836475029126,
+      "IDF1": 0.8288973384030418,
+      "IDSW": 2,
+      "FP": 17,
+      "FN": 24
+    }
+  },
+  "full_native_feature_JEV_diagnostics": {
+    "scope": "short_functional_check",
+    "frames": 4,
+    "counts": {
+      "gt_observations": 135,
+      "candidates": 128,
+      "gt_matched_candidates": 111,
+      "no_surviving_correct_anchor_events": 36,
+      "memory_initializations_matched_GT": 43,
+      "unmatched_candidate_events": 17,
+      "unmatched_candidates_ignored": 0,
+      "memory_initializations_unmatched_GT": 9,
+      "existing_identity_events": 75,
+      "correct_identity_option_present": 72,
+      "correct_existing_associations": 9,
+      "correct_to_wrong_events": 27,
+      "wrong_to_correct_events": 6,
+      "memory_holds": 67,
+      "existing_identity_recreated_as_NEW": 17
+    },
+    "correct_option_coverage": 0.96,
+    "existing_association_accuracy": 0.12,
+    "mean_native_correct_identity_option_mass": 0.062494813333333316,
+    "candidate_GT_recall_at_iou05": 0.8222222222222222,
+    "diagnostic_policy": "marked pedestrian GT, one-to-one candidate IoU>=.5; immutable track-anchor ownership from birth, not GT correction",
+    "unmatched_candidates_note": "includes evaluator-ignore regions; these are unmatched diagnostics, not official FP/NoMatch precision",
+    "explicit_NO_MATCH_decision_currently_supported": true,
+    "gt_used_posthoc_only": true,
+    "official_metric_replacement": false
+  },
+  "tracking_training_gain_claim": "temporal128 control has fewer switches than raw2560 control on4frames, but representation dimension differs and random128/full-video controls remain necessary",
+  "end_to_end_fps_claim": false,
+  "resource_limits": {
+    "physical_gpu_allowlist": [
+      4,
+      5,
+      6,
+      7
+    ],
+    "feature_cache_budget_bytes": 26843545600
+  },
+  "remaining": [
+    "formal500-step before/after",
+    "full videos",
+    "actualDLM proposal training rollout",
+    "matched Compact/MLP/SetTransformer",
+    "decoder adaptation and dense/referring retention",
+    "multitask training and long memory ablations"
+  ]
+}

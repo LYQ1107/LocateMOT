@@ -24,6 +24,33 @@ class SimpleDecision:
         return decisions, {}, {'backend': 'simple_iou_reference', 'native_probabilities': False}
 
 
+class FeatureDecision:
+    """Fixed geometry/appearance control; neither learned association nor JEV."""
+    def __init__(self,temporal=False): self.temporal=temporal
+
+    def decide(self,image,candidates,tracks,timestamp,specification):
+        import numpy as np
+        results=[]
+        key='temporal_region_feature' if self.temporal else 'native_region_feature'
+        memory='recent_temporal_feature' if self.temporal else 'recent_feature'
+        for offset in range(0,len(candidates),16):
+            group=candidates[offset:offset+16]
+            ranked=sorted(tracks,key=lambda t:(-max((overlap(c['box'],t.predicted_box(timestamp)) for c in group),default=0.),t.lost_age,t.track_id))[:32]
+            for candidate in group:
+                a=np.asarray(candidate[key],dtype=float)
+                scores={}
+                for track in ranked:
+                    b=np.asarray(getattr(track,memory),dtype=float)
+                    cosine=float(a@b/max(np.linalg.norm(a)*np.linalg.norm(b),1e-12))
+                    scores[str(track.track_id)]=.5*overlap(candidate['box'],track.predicted_box(timestamp))+.5*max(0.,cosine)
+                scores.update(NEW=.3,IGNORE=0.)
+                results.append({'probabilities':scores,'update_probability':1.,'reliability':None,
+                    'shortlisted_ids':[t.track_id for t in ranked]})
+        return results,{}, {'backend':'fixed_iou_temporal_cosine' if self.temporal else 'fixed_iou_native_cosine',
+            'native_probabilities':False,'appearance_coefficient':.5,'motion_coefficient':.5,
+            'NEW_score':.3,'shortlist_limit':32,'candidate_group_size':16,'learned_association_parameters':0}
+
+
 class OneJevDecision:
     def __init__(self, checkpoint, device='cuda:0', batch_candidates=16, shortlist=32, evidence_format='v1'):
         from qev.mm_engine import MMDecisionEngine
@@ -69,7 +96,7 @@ class OneJevDecision:
                  'historical_tracks': history}
         media = [{'type': 'image', 'image': image}]
         evidence_format = getattr(self,'evidence_format','v1')
-        v2 = evidence_format in ('v2_crop_motion','v3_crop_motion')
+        v2 = evidence_format in ('v2_crop_motion','v3_crop_motion','v4_native_features','v5_native_features_csv','v6_native_compact_history')
         if v2 and group:
             state['current_candidate_crop_sheet'] = '<image:2>'
             media.append({'type':'image','image':self._candidate_sheet(image,group)})
@@ -79,6 +106,37 @@ class OneJevDecision:
             state['center_distance_rows_by_candidate'] = [[round(math.hypot(
                 (c['box'][0]+c['box'][2]-t.predicted_box(timestamp)[0]-t.predicted_box(timestamp)[2])/2,
                 (c['box'][1]+c['box'][3]-t.predicted_box(timestamp)[1]-t.predicted_box(timestamp)[3])/2)/scale,4) for t in ranked] for c in group]
+        if evidence_format in ('v4_native_features','v5_native_features_csv','v6_native_compact_history'):
+            def cosine(a,b):
+                if a is None or b is None:return None
+                return round(sum(x*y for x,y in zip(a,b))/max(math.sqrt(sum(x*x for x in a)*sum(y*y for y in b)),1e-12),4)
+            if any(c.get('native_region_feature') is None for c in group):
+                raise ValueError('V4 requires actual native features for every candidate')
+            state['native_appearance_columns_track_ids']=[t.track_id for t in ranked]
+            for memory in ('anchor','long','recent'):
+                state['native_'+memory+'_cosine_rows_by_candidate']=[[cosine(c['native_region_feature'],getattr(t,memory+'_feature')) for t in ranked] for c in group]
+                state['temporal_'+memory+'_cosine_rows_by_candidate']=[[cosine(c.get('temporal_region_feature'),getattr(t,memory+'_temporal_feature')) for t in ranked] for c in group]
+            state['native_history_consistency']=[{'id':t.track_id,'anchor_recent_cosine':cosine(t.anchor_feature,t.recent_feature),
+                'anchor_long_cosine':cosine(t.anchor_feature,t.long_feature),'alive_probability':t.alive_probability,
+                'identity_uncertainty':t.identity_uncertainty,'semantic_observations':t.semantic_counts} for t in ranked]
+            state['native_feature_semantics']='cosine of official DLM visual/projector region embeddings; temporal embedding is separately trained auxiliary adapter; missing memory evidence is null'
+            if evidence_format in ('v5_native_features_csv','v6_native_compact_history'):
+                # Pretty JSON numbers consumed 56,426 tokens on the first real
+                # history frame. Keep every pair/option, but encode matrices
+                # as compact CSV rows in explicitly declared milli-units.
+                keys=['motion_iou_rows_by_candidate','center_distance_rows_by_candidate']
+                keys += [kind+'_'+memory+'_cosine_rows_by_candidate' for kind in ('native','temporal') for memory in ('anchor','long','recent')]
+                for key in keys:
+                    state[key]=[','.join('null' if value is None else str(round(value*1000)) for value in row) for row in state[key]]
+                state['matrix_numeric_encoding']='CSV row strings; columns follow declared track IDs; integer value / 1000; null means missing evidence; no candidate or identity truncation'
+            if evidence_format=='v6_native_compact_history':
+                import json
+                state['native_history_columns']=['ID','anchor_recent_cosine','anchor_long_cosine','alive_probability','identity_uncertainty','semantic_counts']
+                state['native_history_consistency']=['|'.join([str(row['id'])]+[
+                    'null' if row[key] is None else str(round(row[key]*1000)) for key in (
+                        'anchor_recent_cosine','anchor_long_cosine','alive_probability','identity_uncertainty')]+[
+                        json.dumps(row['semantic_observations'],separators=(',',':'))]) for row in state['native_history_consistency']]
+                state['native_history_numeric_encoding']='pipe-separated rows, final column JSON semantic counts; all numeric evidence except ID/counts in integer/1000 units; no history-track exclusion'
         if ranked:
             state['historical_anchor_and_recent_crops'] = f'<image:{len(media)+1}>'
             media.append({'type': 'image', 'image': self._history_sheet(ranked)})
@@ -89,7 +147,7 @@ class OneJevDecision:
                            IGNORE='Invalid/duplicate detection, do not create an identity')
             if evidence_format == 'v2_crop_motion':
                 options['NO_MATCH'] = 'A valid object has no supported matching identity among the shortlisted options; hold the unresolved association without creating a false ID'
-            elif evidence_format == 'v3_crop_motion' and ranked:
+            elif evidence_format in ('v3_crop_motion','v4_native_features','v5_native_features_csv','v6_native_compact_history') and ranked:
                 options['NO_MATCH'] = 'This object was previously observed in the video, but no listed identity supports its match; hold the unresolved association. A genuinely new object must use NEW instead.'
             questions[f'match_{i}'] = ChoiceQuestion(type='choice', instructions=
                 f'Which identity owns current candidate {i}? Compare visual content, history, motion and competing identities. Never use a class label alone as identity.', criteria=options)
@@ -109,13 +167,26 @@ class OneJevDecision:
     def decide(self, image, candidates, tracks, timestamp, specification):
         results, life, reports = [], {}, []
         groups = [candidates[i:i+self.batch_candidates] for i in range(0, len(candidates), self.batch_candidates)] or [[]]
-        for offset, group in enumerate(groups):
+        pending=list(groups)
+        context_splits=[]
+        while pending:
+            group=pending.pop(0)
             # The shortlist uses only predicted past geometry. Coverage of GT
             # identity options is measured downstream, never used to choose it.
             ranked = sorted(tracks, key=lambda t: (-max((overlap(c['box'], t.predicted_box(timestamp)) for c in group), default=0.),
                                                  t.lost_age, t.track_id))[:self.shortlist]
             request, media = self.build_request(image, group, ranked, timestamp, specification)
-            response, meta = self.engine.decide(request, media=media)
+            try:
+                response, meta = self.engine.decide(request, media=media)
+            except ValueError as error:
+                if self.evidence_format!='v6_native_compact_history' or not str(error).startswith('state plus longest question is ') or len(group)<2:
+                    raise
+                # The native engine rejects this branch before inference. Split
+                # the candidate group, preserving all identity options and rows.
+                middle=len(group)//2
+                pending[:0]=[group[:middle],group[middle:]]
+                context_splits.append({'group_size':len(group),'error':str(error),'new_group_sizes':[middle,len(group)-middle]})
+                continue
             for i in range(len(group)):
                 results.append({'probabilities': response.answers[f'match_{i}'].probabilities,
                     'update_probability': response.answers[f'update_{i}'].noul,
@@ -126,8 +197,11 @@ class OneJevDecision:
                 # Lifecycle is recorded once, from the first group that sees
                 # this identity; group order is deterministic and causal.
                 life.setdefault(t.track_id, response.answers[f'life_{t.track_id}'].model_dump())
-            reports.append({'batch': offset, 'metadata': meta, 'questions': len(request.questions)})
-        return results, life, {'backend': 'onejev_full', 'checkpoint': self.checkpoint, 'native_probabilities': True,
+            reports.append({'batch': len(reports), 'metadata': meta, 'questions': len(request.questions)})
+        metadata={'backend': 'onejev_full', 'checkpoint': self.checkpoint, 'native_probabilities': True,
                                'evidence_format':self.evidence_format,
-                               'explicit_no_match':self.evidence_format in ('v2_crop_motion','v3_crop_motion'),
+                               'explicit_no_match':self.evidence_format in ('v2_crop_motion','v3_crop_motion','v4_native_features','v5_native_features_csv','v6_native_compact_history'),
                                'shortlist_limit': self.shortlist, 'batches': reports}
+        if self.evidence_format=='v6_native_compact_history':
+            metadata.update(context_group_policy='split only native preflight-rejected groups; retain every candidate and all up-to32 identity options',context_splits=context_splits)
+        return results, life, metadata

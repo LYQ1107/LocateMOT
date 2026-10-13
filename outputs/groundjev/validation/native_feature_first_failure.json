@@ -1,0 +1,8 @@
+{
+  "status": "NATIVE_FEATURE_FIRST_CHECK_FAILED",
+  "root_cause": "AutoConfig wrapper does not expose root hidden_size; native projected dimension is vision_config.out_hidden_size",
+  "weights_loaded_before_failure": true,
+  "encoder_forward_executed_before_failure": true,
+  "source_checkpoint_modified": false,
+  "fix": "read actual vision output dimension from its native configuration"
+}

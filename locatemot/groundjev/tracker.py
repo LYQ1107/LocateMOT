@@ -19,6 +19,16 @@ class Track:
     timestamp: float = 0.
     last_reliable_timestamp: float = 0.
     recent_boxes: list = field(default_factory=list)
+    anchor_feature: list | None = None
+    recent_feature: list | None = None
+    long_feature: list | None = None
+    anchor_temporal_feature: list | None = None
+    recent_temporal_feature: list | None = None
+    long_temporal_feature: list | None = None
+    feature_history: list = field(default_factory=list)
+    alive_probability: float | None = None
+    identity_uncertainty: float | None = None
+    semantic_counts: dict = field(default_factory=dict)
 
     def predicted_box(self, timestamp):
         return [x + v*(timestamp-self.timestamp) for x, v in zip(self.box, self.velocity)]
@@ -85,6 +95,24 @@ class OnlineTracker:
                 if reliable:
                     track.long_image = crop.copy()
                     track.last_reliable_timestamp = timestamp
+            if candidate.get('native_region_feature') is not None:
+                feature=list(candidate['native_region_feature'])
+                temporal=candidate.get('temporal_region_feature')
+                temporal=list(temporal) if temporal is not None else None
+                if track.anchor_feature is None:
+                    track.anchor_feature=feature.copy();track.long_feature=feature.copy()
+                    track.anchor_temporal_feature=temporal;track.long_temporal_feature=temporal
+                track.recent_feature=feature
+                track.recent_temporal_feature=temporal
+                if reliable:
+                    track.long_feature=feature.copy();track.long_temporal_feature=temporal
+                track.feature_history=(track.feature_history+[{'timestamp':timestamp,'feature':feature,'temporal_feature':temporal}])[-16:]
+                track.semantic_counts[candidate['label']]=track.semantic_counts.get(candidate['label'],0)+1
+                if is_jev:
+                    probabilities=list(decisions[i]['probabilities'].values())
+                    track.identity_uncertainty=-sum(p*math.log(max(p,1e-12)) for p in probabilities)/math.log(len(probabilities))
+                    life=lifecycle.get(track.track_id)
+                    track.alive_probability=1.-life['probabilities']['TERMINATE'] if life else None
             track.state, track.lost_age = 'ACTIVE', 0.
             probability = decisions[i]['probabilities'].get(str(track.track_id), decisions[i]['probabilities']['NEW'])
             track.confidence = probability if is_jev else None
@@ -98,24 +126,31 @@ class OnlineTracker:
                 continue
             track.lost_age = timestamp-track.timestamp
             decision = lifecycle.get(track.track_id)
+            if track.anchor_feature is not None and decision:
+                track.alive_probability=1.-decision['probabilities']['TERMINATE']
             terminate = decision and decision['choice'] == 'TERMINATE'
             track.state = 'TERMINATE' if terminate or track.lost_age > self.lost_seconds else 'LOST'
             events.append({'track_id': track.track_id, 'action': track.state, 'lifecycle_decision': decision})
             if track.state == 'TERMINATE':
                 self.tracks.pop(track.track_id)
         self.previous_timestamp = timestamp
+        native=any(t.anchor_feature is not None for t in self.tracks.values())
         return outputs, {'events': events, 'decision_metadata': meta, 'persistent_ids': list(self.tracks),
                          'next_id': self.next_id, 'timestamp': timestamp,
-                         'visual_memory_source': 'real_causal_crops; native feature adapter pending'}
+                         'visual_memory_source': 'real_causal_crops_and_native_DLM_region_features' if native else 'real_causal_crops; native feature adapter pending'}
 
     def state_dict(self):
         import base64
         import io
         from dataclasses import fields
         rows = []
+        native=any(t.anchor_feature is not None for t in self.tracks.values())
+        native_fields={'anchor_feature','recent_feature','long_feature','anchor_temporal_feature','recent_temporal_feature',
+            'long_temporal_feature','feature_history','alive_probability','identity_uncertainty','semantic_counts'}
         for track in self.tracks.values():
             row = {}
             for field in fields(track):
+                if not native and field.name in native_fields: continue
                 value = getattr(track, field.name)
                 if field.name.endswith('_image'):
                     buffer = io.BytesIO()
@@ -123,7 +158,7 @@ class OnlineTracker:
                     value = base64.b64encode(buffer.getvalue()).decode()
                 row[field.name] = value
             rows.append(row)
-        return {'format': 'groundjev-causal-memory-v1', 'tracks': rows, 'next_id': self.next_id,
+        return {'format': 'groundjev-causal-memory-v2-native' if native else 'groundjev-causal-memory-v1', 'tracks': rows, 'next_id': self.next_id,
                 'previous_timestamp': self.previous_timestamp, 'lost_seconds': self.lost_seconds,
                 'update_threshold': self.update_threshold}
 
@@ -131,7 +166,7 @@ class OnlineTracker:
         import base64
         import io
         from PIL import Image
-        if state['format'] != 'groundjev-causal-memory-v1':
+        if state['format'] not in ('groundjev-causal-memory-v1','groundjev-causal-memory-v2-native'):
             raise ValueError('Unknown identity-memory checkpoint format')
         self.tracks = {}
         for source in state['tracks']:

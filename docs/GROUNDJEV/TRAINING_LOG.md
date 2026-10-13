@@ -61,3 +61,19 @@ auto validation and answers real MOT-frame Choice/Noul/Score questions, native
 probabilities retained. Request .286737s, allocator peak3,119,928,832 bytes;
 not a video benchmark. GroundAnything's separate official serve setup finished
 and passed its cuDNN compatibility check. DLM weights were pending at that check; optimizer steps were0 then.
+
+
+## Frozen native DLM temporal adapter — actual200steps
+
+Official428,482,048parameter visual/projector frozen;693,632parameter
+LayerNorm2560→Linear256→GELU→Linear128 auxiliary adapter trained on legal
+MOT17/DanceTrack/MOT20 identity pairs,seed0/AdamWlr1e-3. Loss4.20862→.09104,
+finite gradients,693,632elements changed, checkpoint reload maxdiff0. Native
+backbone gradients absent; DLM decoder unchanged. Disjoint train calibration
+retrieval131/134 for both original native features and trained adapter; this
+is GT-region retrieval, not a tracking benchmark. Small transient region
+tensors, no full-dataset feature cache. Actual checkpoint metadata is in
+outputs/groundjev/ground_adaptation/native_temporal200/result.json.
+
+Region adapter gradients are real; detection/decoder SFT gradients, actual
+tracking benefit and dense/referring retention benchmarks remain required.

@@ -1,0 +1,65 @@
+{
+  "status": "VIDEO_INFERENCE_COMPLETE_WITH_REJECTED_PERCEPTION",
+  "task": "rmot",
+  "backend": "simple",
+  "evidence_format": "v1",
+  "scope": "registered_short_functional_clip",
+  "video_manifest": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_pilot_data/rmot_single_empty.json",
+  "frames": 8,
+  "latencies_seconds": [
+    0.26023422298021615,
+    0.03239914000732824,
+    0.012332378013525158,
+    0.011812703043688089,
+    0.01181416300823912,
+    0.011719256988726556,
+    0.011632005975116044,
+    0.011578413017559797
+  ],
+  "grounding_parser_policy": "strict_client",
+  "grounding_decoder_policy": "generic_greedy",
+  "grounding_vocabulary_chunk_size": null,
+  "specification": {
+    "task": "rmot",
+    "vocabulary": [
+      "person",
+      "car"
+    ],
+    "expression": "a red coat is being worn by the woman"
+  },
+  "timestamp_policy": "KITTI 10 Hz frame clock; source zero-based frame numbers retained",
+  "perception_failure_policy": "stop",
+  "perception_rejected_frames": [
+    152
+  ],
+  "perception_rejection_rate": 0.125,
+  "strict_wire_invalid_frames": [
+    150,
+    151,
+    152,
+    153,
+    154,
+    155,
+    156,
+    157
+  ],
+  "all_input_frames_processed": true,
+  "end_to_end_fps": null,
+  "complete_video_wall_seconds": 0.6895628430065699,
+  "model_initialization_seconds": 0.05190727801527828,
+  "timing_scope": "all image reads, native requests including service queueing, association, memory persistence, prediction/log writes, drawing, video encoding and encoder completion; preloaded remote DLM server startup excluded",
+  "successful_frame_pipeline_fps": 22.00690404236645,
+  "association_replay_fps": 22.00690404236645,
+  "resume_source": null,
+  "resumed_completed_frames": 0,
+  "timing_limitations": null,
+  "official_metrics": {
+    "status": "COMPLETE",
+    "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_runs/rmot_single_empty_simple_fixed/official_metrics.json",
+    "scope": "registered_short_functional_clip"
+  },
+  "checkpoint": null,
+  "motchallenge_confidence_column": "constant unscored-output sentinel; native detection score is absent",
+  "gt_read_by_runtime": false,
+  "future_frames_read_by_runtime": false
+}

@@ -1,0 +1,6 @@
+{
+  "root_cause": "official TETA OUTPUT_PER_SEQ_RES=False flattens all_res but its summary loop indexes COMBINED_SEQ",
+  "fix": "use the official default OUTPUT_PER_SEQ_RES=True",
+  "official_source_modified": false,
+  "predictions_or_GT_changed": false
+}

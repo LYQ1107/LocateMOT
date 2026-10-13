@@ -1,0 +1,54 @@
+{
+  "status": "VIDEO_INFERENCE_COMPLETE",
+  "task": "mot",
+  "backend": "full",
+  "evidence_format": "v6_native_compact_history",
+  "native_feature_url": "http://127.0.0.1:8111",
+  "scope": "short_functional_check",
+  "video_manifest": "outputs/groundjev/pilot_data/mot17_first4.json",
+  "frames": 4,
+  "latencies_seconds": [
+    2.793942194955889,
+    21.925938098982442,
+    32.909559247025754,
+    37.54512182198232
+  ],
+  "grounding_parser_policy": "strict_client",
+  "grounding_decoder_policy": "generic_greedy",
+  "grounding_vocabulary_chunk_size": null,
+  "specification": {
+    "task": "mot",
+    "vocabulary": [
+      "person"
+    ],
+    "expression": null
+  },
+  "timestamp_policy": "physical frame number / registered video FPS",
+  "perception_failure_policy": "stop",
+  "perception_rejected_frames": [],
+  "perception_rejection_rate": 0.0,
+  "strict_wire_invalid_frames": [
+    305
+  ],
+  "all_input_frames_processed": true,
+  "end_to_end_fps": null,
+  "complete_video_wall_seconds": 72.05686412297655,
+  "model_initialization_seconds": 10.11234554904513,
+  "timing_scope": "all image reads, native requests including service queueing, association, memory persistence, prediction/log writes, drawing, video encoding and encoder completion; preloaded remote DLM server startup excluded",
+  "successful_frame_pipeline_fps": 0.04202803714267802,
+  "association_replay_fps": 0.04202803714267802,
+  "resume_source": "outputs/groundjev/runs/mot17_first4_pretrained_v6_native_temporal200",
+  "resumed_completed_frames": 2,
+  "timing_limitations": "resumed legacy run lacks original failed-attempt/interruption timing; no complete end-to-end FPS claim",
+  "official_metrics": {
+    "status": "COMPLETE",
+    "path": "outputs/groundjev/runs/mot17_first4_pretrained_v6_native_adaptive_resume/official_metrics.json",
+    "scope": "short_functional_check",
+    "frames": 4
+  },
+  "checkpoint": "/data2/user/LocateMOT_GroundJEV/models/OneJev-0.8B",
+  "motchallenge_confidence_column": "constant unscored-output sentinel; native detection score is absent",
+  "gt_read_by_runtime": false,
+  "future_frames_read_by_runtime": false,
+  "peak_decision_gpu_memory_bytes": 8504115712
+}

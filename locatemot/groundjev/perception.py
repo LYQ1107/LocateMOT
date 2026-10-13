@@ -22,10 +22,11 @@ class GroundingProtocolError(RuntimeError):
 
 
 class GroundAnythingAdapter:
-    def __init__(self, base_url='http://127.0.0.1:8101/v1', max_tokens=8192, parser_policy='strict_client', decoder_policy='generic_greedy'):
+    def __init__(self, base_url='http://127.0.0.1:8101/v1', max_tokens=8192, parser_policy='strict_client', decoder_policy='generic_greedy', vocabulary_chunk_size=None):
         self.base_url, self.max_tokens = base_url.rstrip('/'), max_tokens
         self.parser_policy = parser_policy
         self.decoder_policy = decoder_policy
+        self.vocabulary_chunk_size = vocabulary_chunk_size
         self.decode_parameters = None
         if decoder_policy == 'tracking_dense':
             profiles = json.loads((ROOT/'external/GroundAnything/infer/decode/configs/task_profiles.json').read_text())
@@ -67,6 +68,38 @@ class GroundAnythingAdapter:
         return candidates, metadata
 
     def __call__(self, image, task, vocabulary, expression=None, image_path=None):
+        if task == 'ovmot' and self.vocabulary_chunk_size and len(vocabulary) > self.vocabulary_chunk_size:
+            start = time.perf_counter()
+            candidates, reports, failures, outcomes = [], [], [], []
+            for offset in range(0, len(vocabulary), self.vocabulary_chunk_size):
+                chunk = vocabulary[offset:offset+self.vocabulary_chunk_size]
+                try:
+                    current, report = self._request(image, task, chunk, expression, image_path)
+                except GroundingProtocolError as error:
+                    failures.append({'offset':offset,'vocabulary':chunk,'metadata':error.metadata})
+                    outcomes.append({'offset':offset,'classes':len(chunk),'status':'REJECTED','metadata':error.metadata})
+                    continue
+                candidates.extend(current)
+                reports.append(report)
+                outcomes.append({'offset':offset,'classes':len(chunk),'status':'SCORED','metadata':report})
+            if failures:
+                metadata=dict(failures[0]['metadata'],vocabulary_chunk_offset=failures[0]['offset'],
+                    vocabulary_chunk=failures[0]['vocabulary'],completed_chunk_reports=reports,
+                    seconds=time.perf_counter()-start,chunk_outcomes=outcomes,
+                    requested_vocabulary_size=len(vocabulary),all_vocabulary_classes_requested=True,
+                    rejected_chunk_count=len(failures),
+                    chunk_failure_policy='request every registered class; retain every raw outcome; reject the entire frame if any chunk fails')
+                raise GroundingProtocolError(metadata)
+            return candidates, {'seconds':time.perf_counter()-start, 'mode':'full_vocabulary_chunks',
+                'vocabulary_size':len(vocabulary), 'vocabulary_chunk_size':self.vocabulary_chunk_size,
+                'chunk_count':len(reports), 'chunks':reports,
+                'all_vocabulary_classes_requested':True,
+                'strict_wire_valid':all(r['strict_wire_valid'] for r in reports),
+                'decoder_policy':self.decoder_policy,
+                'candidate_merge':'concatenate all native outputs; no GT filtering or cross-label NMS'}
+        return self._request(image, task, vocabulary, expression, image_path)
+
+    def _request(self, image, task, vocabulary, expression, image_path):
         if image_path is not None:
             payload = Path(image_path).read_bytes()
             mime = mimetypes.guess_type(str(image_path))[0]

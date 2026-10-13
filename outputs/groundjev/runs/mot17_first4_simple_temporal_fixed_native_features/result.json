@@ -1,0 +1,51 @@
+{
+  "status": "VIDEO_INFERENCE_COMPLETE",
+  "task": "mot",
+  "backend": "simple_temporal",
+  "evidence_format": "v1",
+  "native_feature_url": null,
+  "scope": "short_functional_check",
+  "video_manifest": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/pilot_data/mot17_first4.json",
+  "frames": 4,
+  "latencies_seconds": [
+    0.27483303198823705,
+    0.05396020197076723,
+    0.037021094001829624,
+    0.0386032160022296
+  ],
+  "grounding_parser_policy": "strict_client",
+  "grounding_decoder_policy": "generic_greedy",
+  "grounding_vocabulary_chunk_size": null,
+  "specification": {
+    "task": "mot",
+    "vocabulary": [
+      "person"
+    ],
+    "expression": null
+  },
+  "timestamp_policy": "physical frame number / registered video FPS",
+  "perception_failure_policy": "stop",
+  "perception_rejected_frames": [],
+  "perception_rejection_rate": 0.0,
+  "strict_wire_invalid_frames": [],
+  "all_input_frames_processed": true,
+  "end_to_end_fps": null,
+  "complete_video_wall_seconds": 2.697739247989375,
+  "model_initialization_seconds": 0.17512890696525574,
+  "timing_scope": "all image reads, native requests including service queueing, association, memory persistence, prediction/log writes, drawing, video encoding and encoder completion; preloaded remote DLM server startup excluded",
+  "successful_frame_pipeline_fps": 9.890767746627061,
+  "association_replay_fps": 9.890767746627061,
+  "resume_source": null,
+  "resumed_completed_frames": 0,
+  "timing_limitations": null,
+  "official_metrics": {
+    "status": "COMPLETE",
+    "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/runs/mot17_first4_simple_temporal_fixed_native_features/official_metrics.json",
+    "scope": "short_functional_check",
+    "frames": 4
+  },
+  "checkpoint": null,
+  "motchallenge_confidence_column": "constant unscored-output sentinel; native detection score is absent",
+  "gt_read_by_runtime": false,
+  "future_frames_read_by_runtime": false
+}

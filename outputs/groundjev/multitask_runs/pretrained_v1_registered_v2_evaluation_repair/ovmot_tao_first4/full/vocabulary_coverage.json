@@ -1,0 +1,32 @@
+{
+  "protocol": "96-class requests; stop on first rejected chunk and reject whole frame",
+  "full_registered_vocabulary_size": 1203,
+  "all_vocabulary_classes_requested_on_each_frame": false,
+  "frames": [
+    {
+      "frame": 751,
+      "requested_class_count": 192,
+      "failed_chunk_offset": 96,
+      "successful_chunks": 1
+    },
+    {
+      "frame": 781,
+      "requested_class_count": 192,
+      "failed_chunk_offset": 96,
+      "successful_chunks": 1
+    },
+    {
+      "frame": 811,
+      "requested_class_count": 192,
+      "failed_chunk_offset": 96,
+      "successful_chunks": 1
+    },
+    {
+      "frame": 841,
+      "requested_class_count": 288,
+      "failed_chunk_offset": 192,
+      "successful_chunks": 2
+    }
+  ],
+  "next_action": "collect all chunk outcomes before whole-frame rejection, register a fresh scope result; do not call these zero scores exhaustive 1203-class inference"
+}

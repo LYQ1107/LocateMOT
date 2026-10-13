@@ -1,0 +1,213 @@
+{
+  "status": "REAL_NATIVE_GROUND_TEMPORAL_ADAPTER_TRAINING_COMPLETE",
+  "steps": 200,
+  "seed": 0,
+  "native_DLM_visual_parameters": 428482048,
+  "native_backbone_frozen": true,
+  "native_backbone_gradients_present": false,
+  "trainable_adapter_parameters": 693632,
+  "changed_weight_elements": 693632,
+  "checkpoint_reload_max_abs_difference": 0.0,
+  "scopes": [
+    {
+      "sequence": "MOT17-02-FRCNN",
+      "split": "train",
+      "frames": [
+        209,
+        210,
+        211,
+        212,
+        213,
+        214,
+        215,
+        216,
+        217,
+        218,
+        219,
+        220,
+        221,
+        222,
+        223,
+        224
+      ],
+      "region_observations": 512
+    },
+    {
+      "sequence": "dancetrack0001",
+      "split": "train",
+      "frames": [
+        129,
+        130,
+        131,
+        132,
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144
+      ],
+      "region_observations": 110
+    },
+    {
+      "sequence": "MOT20-01",
+      "split": "train",
+      "frames": [
+        185,
+        186,
+        187,
+        188,
+        189,
+        190,
+        191,
+        192,
+        193,
+        194,
+        195,
+        196,
+        197,
+        198,
+        199,
+        200
+      ],
+      "region_observations": 512
+    },
+    {
+      "sequence": "dancetrack0006",
+      "split": "calibration",
+      "frames": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "region_observations": 143
+    }
+  ],
+  "native_feature_cache_bytes": 11612160,
+  "full_dataset_cache": false,
+  "native_unadapted_calibration_retrieval": {
+    "correct": 131,
+    "eligible_events": 134,
+    "correct_option_missing": 0,
+    "accuracy": 0.9776119402985075,
+    "scope": "GT-region adjacent-frame retrieval on disjoint train calibration video, not HOTA"
+  },
+  "random_adapter_before_training": {
+    "correct": 130,
+    "eligible_events": 134,
+    "correct_option_missing": 0,
+    "accuracy": 0.9701492537313433,
+    "scope": "GT-region adjacent-frame retrieval on disjoint train calibration video, not HOTA"
+  },
+  "trained_adapter_calibration_retrieval": {
+    "correct": 131,
+    "eligible_events": 134,
+    "correct_option_missing": 0,
+    "accuracy": 0.9776119402985075,
+    "scope": "GT-region adjacent-frame retrieval on disjoint train calibration video, not HOTA"
+  },
+  "training_log": [
+    {
+      "step": 1,
+      "loss": 4.208620548248291,
+      "gradient_norm": 12.506341934204102,
+      "elapsed_seconds": 0.14527182799065486
+    },
+    {
+      "step": 20,
+      "loss": 0.5989336371421814,
+      "gradient_norm": 2.736661911010742,
+      "elapsed_seconds": 0.21904655097750947
+    },
+    {
+      "step": 40,
+      "loss": 0.25942787528038025,
+      "gradient_norm": 3.543818235397339,
+      "elapsed_seconds": 0.31729309097863734
+    },
+    {
+      "step": 60,
+      "loss": 0.14211232960224152,
+      "gradient_norm": 2.602787971496582,
+      "elapsed_seconds": 0.4187983670271933
+    },
+    {
+      "step": 80,
+      "loss": 0.14994123578071594,
+      "gradient_norm": 3.883500814437866,
+      "elapsed_seconds": 0.5174949700012803
+    },
+    {
+      "step": 100,
+      "loss": 0.12160474807024002,
+      "gradient_norm": 4.251522541046143,
+      "elapsed_seconds": 0.6170061869779602
+    },
+    {
+      "step": 120,
+      "loss": 0.1302986890077591,
+      "gradient_norm": 4.398606777191162,
+      "elapsed_seconds": 0.7055358159705065
+    },
+    {
+      "step": 140,
+      "loss": 0.0913604199886322,
+      "gradient_norm": 3.549823522567749,
+      "elapsed_seconds": 0.7877460970194079
+    },
+    {
+      "step": 160,
+      "loss": 0.15328159928321838,
+      "gradient_norm": 4.7126240730285645,
+      "elapsed_seconds": 0.8870618040091358
+    },
+    {
+      "step": 180,
+      "loss": 0.03471650928258896,
+      "gradient_norm": 1.7103885412216187,
+      "elapsed_seconds": 0.9846519230050035
+    },
+    {
+      "step": 200,
+      "loss": 0.09104128181934357,
+      "gradient_norm": 1.667571783065796,
+      "elapsed_seconds": 1.0839039090205915
+    }
+  ],
+  "peak_adapter_training_allocated_bytes": 1050782720,
+  "Ground_DLM_decoder_weights_changed": false,
+  "dense_referring_retention_evaluation": "pending actual protocol runs; frozen decoder alone is not reported as a benchmark",
+  "complete_video_tracking_improvement_claim": false,
+  "actual_DLM_candidate_rollout_training": false,
+  "checkpoint": {
+    "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/ground_adaptation/native_temporal200/checkpoint.pt",
+    "bytes": 8331829,
+    "sha256": "9ad17570ca88e972b837389373ca94b3668ee433033f6f9c8c0044489b62e35b"
+  },
+  "feature_cache_accounting": {
+    "reported_training_device_region_bytes": 11612160,
+    "CPU_training_region_bytes": 11612160,
+    "CPU_calibration_region_bytes": 1464320,
+    "persistent_feature_files": 0,
+    "additional_encoder_ROI_workspace": "transient, released each image; not a full-dataset cache"
+  }
+}

@@ -1,0 +1,119 @@
+{
+  "status": "MULTITASK_STAGE_FAILED",
+  "names": [
+    "rmot_multi_empty",
+    "ovmot_tao_first4"
+  ],
+  "decision_physical_gpu": 5,
+  "DLM_service_physical_gpu": 6,
+  "checkpoint": "/data2/user/LocateMOT_GroundJEV/models/OneJev-0.8B",
+  "vocabulary_chunk_size": 96,
+  "evidence_format": "v1",
+  "grounding_decoder_policy": "tracking_dense",
+  "candidate_control": "exact native candidate replay by Simple",
+  "resume_from": "outputs/groundjev/multitask_runs/pretrained_v1_registered_v1",
+  "trained_on_evaluation_GT": false,
+  "pilot_completion": false,
+  "reused_completed_units": [
+    "outputs/groundjev/multitask_runs/pretrained_v1_registered_v1/rmot_multi_empty/full",
+    "outputs/groundjev/multitask_runs/pretrained_v1_registered_v1/rmot_multi_empty/simple"
+  ],
+  "completed_scopes": {
+    "rmot_multi_empty": {
+      "full": {
+        "status": "OFFICIAL_REGISTERED_MULTITASK_SCOPE_EVALUATION_COMPLETE",
+        "task": "rmot",
+        "dataset": "refer_kitti_v2",
+        "sequence": "0007",
+        "scope": "registered_short_functional_clip",
+        "frames": 12,
+        "all_registered_frames_included": true,
+        "GT_access": "evaluation only",
+        "official_test_labels_read": false,
+        "end_to_end_fps": 0.5798042906912096,
+        "association_replay_fps": null,
+        "perception_rejected_frames": [
+          34
+        ],
+        "evaluator": "unmodified official TrackEval HOTA/CLEAR/Identity",
+        "evaluator_commit": "12c8791b303e0a0b50f753af204249e622d0281a",
+        "metrics": {
+          "HOTA": 0.07211666240380032,
+          "DetA": 0.050600017499511575,
+          "AssA": 0.10906622617148932,
+          "IDF1": 0.0,
+          "IDSW": 0,
+          "FP": 16,
+          "FN": 30
+        },
+        "metric_scale": "fraction; counts for IDSW/FP/FN",
+        "release_query_GT_boxes": 30,
+        "multi_target_frames": 7,
+        "posthoc_proposal_coverage_IoU_05": {
+          "covered": 0,
+          "GT_boxes": 30,
+          "recall": 0.0,
+          "scope": "evaluation-only target coverage; not HOTA; never used to correct runtime state"
+        },
+        "empty_target_frames": 3,
+        "empty_target_frame_predictions": 2,
+        "GT_transport_class": "class1 is a query-target transport convention, including cars and people",
+        "GT_policy": "only release expression target IDs; empty frames retained; exact release boxes without clipping",
+        "ignore_policy": "registered expressions have empty release ignore fields",
+        "official_complete_dataset_result": false
+      },
+      "simple": {
+        "status": "OFFICIAL_REGISTERED_MULTITASK_SCOPE_EVALUATION_COMPLETE",
+        "task": "rmot",
+        "dataset": "refer_kitti_v2",
+        "sequence": "0007",
+        "scope": "registered_short_functional_clip",
+        "frames": 12,
+        "all_registered_frames_included": true,
+        "GT_access": "evaluation only",
+        "official_test_labels_read": false,
+        "end_to_end_fps": null,
+        "association_replay_fps": 28.414105134202124,
+        "perception_rejected_frames": [
+          34
+        ],
+        "evaluator": "unmodified official TrackEval HOTA/CLEAR/Identity",
+        "evaluator_commit": "12c8791b303e0a0b50f753af204249e622d0281a",
+        "metrics": {
+          "HOTA": 0.08186011648413197,
+          "DetA": 0.050600017499511575,
+          "AssA": 0.13679084073820916,
+          "IDF1": 0.0,
+          "IDSW": 0,
+          "FP": 16,
+          "FN": 30
+        },
+        "metric_scale": "fraction; counts for IDSW/FP/FN",
+        "release_query_GT_boxes": 30,
+        "multi_target_frames": 7,
+        "posthoc_proposal_coverage_IoU_05": {
+          "covered": 0,
+          "GT_boxes": 30,
+          "recall": 0.0,
+          "scope": "evaluation-only target coverage; not HOTA; never used to correct runtime state"
+        },
+        "empty_target_frames": 3,
+        "empty_target_frame_predictions": 2,
+        "GT_transport_class": "class1 is a query-target transport convention, including cars and people",
+        "GT_policy": "only release expression target IDs; empty frames retained; exact release boxes without clipping",
+        "ignore_policy": "registered expressions have empty release ignore fields",
+        "official_complete_dataset_result": false
+      }
+    }
+  },
+  "failed_stage": "ovmot_tao_first4_EVALUATE_full",
+  "exit_code": 1,
+  "invalidated_completed_scope_keys": [
+    "rmot_multi_empty"
+  ],
+  "invalidated_scope_reason": "provisional RMOT center-format GT metrics were invalidated before publication",
+  "corrected_RMOT_metrics": {
+    "full": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_runs/pretrained_v1_registered_v1/rmot_multi_empty/full/official_metrics.json",
+    "simple": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_runs/pretrained_v1_registered_v1/rmot_multi_empty/simple/official_metrics.json"
+  }
+}

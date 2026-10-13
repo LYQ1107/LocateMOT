@@ -1,0 +1,9 @@
+{
+  "status": "VIDEO_INFERENCE_FAILED",
+  "frame": 303,
+  "image_path": "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-02-FRCNN/img1/000303.jpg",
+  "error_type": "ValueError",
+  "error": "state plus longest question is 56426 tokens, limit is 32768",
+  "completed_frames": 1,
+  "failed_frame_not_skipped": true
+}

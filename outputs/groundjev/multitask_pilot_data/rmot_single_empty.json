@@ -1,0 +1,45 @@
+{
+  "dataset": "refer_kitti_v2",
+  "sequence": "0007",
+  "task": "rmot",
+  "expression": "a red coat is being worn by the woman",
+  "expression_file_for_evaluation_only": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0007/a-red-coat-is-being-worn-by-the-woman.json",
+  "label_dir_for_evaluation_only": "/data2/user/LocateMOT/data/refer_kitti_v2/labels_with_ids/image_02/0007",
+  "legal_split_version": "v2",
+  "split": "validation",
+  "images": [
+    "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0007/000150.png",
+    "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0007/000151.png",
+    "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0007/000152.png",
+    "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0007/000153.png",
+    "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0007/000154.png",
+    "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0007/000155.png",
+    "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0007/000156.png",
+    "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0007/000157.png"
+  ],
+  "frame_numbers": [
+    150,
+    151,
+    152,
+    153,
+    154,
+    155,
+    156,
+    157
+  ],
+  "fps": 10,
+  "vocabulary": [
+    "person",
+    "car"
+  ],
+  "scope": "registered_short_functional_clip",
+  "timestamp_policy": "KITTI 10 Hz frame clock; source zero-based frame numbers retained",
+  "GT_policy": "release expression target IDs intersect exact per-frame release boxes; no visibility or clipping filter",
+  "image_size": [
+    1242,
+    375
+  ],
+  "training_on_this_scope": false,
+  "official_test_labels_read": false,
+  "runtime_GT_fields": false
+}

@@ -1249,3 +1249,166 @@ consistent with supplied current proposals and exactly164+39labelchanges.
 A new corrected500-step owner starts with unchanged weights/lr/seed/context/
 identity-repeat budget. The stopped run is not declared formal completion
 or silently combined into an improved result.
+
+## 2026-10-14 — native DLM visual feature adapter plan
+
+Previous goal turn made verified progress: real SFT/reload/negative controls,
+real actor histories, lifecycle label repair/regression, resumed finite500
+training and exact GitHub publication. Continue existing live owners, not
+new copies. Add a native visual adapter using DLM checkpoint visual/projector
+weights and the unmodified official eager MoonViT/K3 preprocessing path.
+Compare the official reference visual module with the SGLang visual adapter
+on the same real image, preserve feature-grid geometry through resize/padding,
+then ROI pool candidates. Only this small validation uses physicalGPU5,
+within the project allowlist/4card ceiling; live training4 and video6 unchanged.
+This provides genuine native features for temporal adaptation/Compact, not
+a substituted crop encoder or a full-dataset cache.
+
+
+## 2026-10-14 — Native feature adaptation and legal task loops
+
+Plan after source inspection: verify the actual DLM visual/projector output,
+train a finite frozen-backbone temporal adapter, wire these features into
+causal memory, then run legal Refer-KITTI/TAO loops with the existing OneJev
+checkpoint and exact-candidate Simple controls. Keep formal SFT500 and the
+full DanceTrack owner unchanged; use physical5 for new checks within4/5/6/7.
+
+Native DLM:428,482,048 visual parameters/170weights; real MOT regions31x2560
+and local tokens31x2560x3x3. Official serving visual function and immutable
+checkpoint reference both match exactly; independent ROI mapping differs
+9.54e-7. Initial config.hidden_size lookup failed after real forward; fixed
+only the adapter to use vision_config.out_hidden_size and retained failure.
+
+Temporal adapter:200steps, seed0,693,632 changed parameters, loss4.2086 to
+.09104, nonzero finite gradients; exact reload difference0. Frozen native
+backbone and decoder unchanged. Independent TRAIN calibration retrieval
+131/134=.977612, identical to unadapted features (random adapter130/134).
+No tracking-improvement or decoder-fine-tuning claim. Features are transient;
+training-device/CPU-training regions11,612,160bytes each, calibration1,464,320.
+Checkpoint receipt records absolute path,8,331,829bytes and SHA256.
+
+RMOT:legal current v2 validation0007, single+empty8frames and multi+empty
+12frames, GT-free inference/shared V1 core. Single Full HOTA0/IDF1=0/FN5;
+Simple HOTA.084894/FP11/FN5/IDF1=0. Multi Full HOTA.072117/FP16/FN30; Simple
+HOTA.081860/FP16/FN30; both IDF1=0. Proposal target coverage at IoU.5 is0/5
+and0/30. First bottleneck is referring proposals, not evidence of an identity
+head improvement. All rejected/empty frames remain in denominators. Multi
+full video-processing FPS.579804 including serialization/encoding; preloaded
+remote DLM initialization excluded. Single legacy frame-compute FPS.627761
+is explicitly not complete end-to-end speed. Exact fixed-candidate controls
+never claim detector FPS.
+
+Evaluation first failed on GT_LOC_FORMAT, then on omitted YOLO files in empty
+query frames. Set the correct path format, and look up boxes only when the
+release expression has targets; nonempty targets still require real labels.
+Original failures and predictions remain; completed multi Full/Simple units
+were reused by a new evaluation owner. No GT boxes, thresholds or scopes altered.
+
+TAO:registered first video40annotation frames and4frame functional scope,
+all1203fixed LVIS-v1 names in96-class native requests. Failure in any chunk
+rejects the whole frame explicitly; no class or sample silently dropped.
+Source physical FPS unavailable, so this functional scope declares annotation
+step time and does not claim a verified physical video clock. Full TETA with
+all original modal GT/category/frequency metadata is required; currently pending.
+
+Memory:real native proposals/features on2frames pass exact serialization,
+anchor immutability, held-long-feature consistency and past-time rejection,
+with10,682,927byte memory. V1 crops-only state remains backward compatible.
+New memory adds actual region/temporal anchors, recent/reliable-long features,
+16-observation feature history, native lifecycle survival probability, identity
+entropy and semantic observation counts. These are used only with native input.
+V4 JEV native-matrix request failed at56,426tokens on frame303; preserve it.
+V5 explicitly changes numeric evidence to CSV milli-units, retaining every
+candidate/identity pair and the original32768limit. Its real4frame test is
+running; no performance gain claimed. Compact/full-task and retention studies
+remain required. Previous goal work is progress, not goal completion.
+
+
+### Completed native-feature control and measured limitations
+
+V5 still exceeded context at34313tokens. V6 compresses native-history rows
+in addition to all-pair similarity matrices; frame304 then reached34419tokens.
+The smallest further fix is context-adaptive candidate grouping only when the
+unchanged official native preflight rejects a group before inference. Every
+proposal and up-to32 shortlisted identity options remains. The two valid
+V6 prefix frames restore exact native outputs/state; resume completes304/305.
+Original V4/V5/V6 failed artifacts remain, no sample skipped, no token-limit
+relaxation and no retraining/checkpoint change.
+
+MOT17 same128native candidates,4frames, unchanged TrackEval:
+
+| Decision | HOTA | IDF1 | IDSW | FP | FN |
+|---|---:|---:|---:|---:|---:|
+| Simple IoU | .748813 | .836502 | 1 | 17 | 24 |
+| Fixed IoU + native2560cosine | .738898 | .813688 | 4 | 17 | 24 |
+| Fixed IoU + trained temporal128cosine | .746248 | .828897 | 2 | 17 | 24 |
+| Pretrained OneJev V6 native/crop/motion | .359328 | .330709 | 61 | 17 | 33 |
+
+Native/temporal fixed controls use exactly the exported features, coefficients
+.5/.5, NEWscore.3,32-identity geometry shortlist and16-candidate groups. They
+are untrained association controls, not JEV/Compact. Temporal-vs-native is
+also a dimensionality change; random128 and larger video controls remain
+required before attributing the difference solely to training. Native-feature
+OneJev still underperforms Simple; no isolated feature or foundation gain
+claim. Existing-ID diagnostic accuracy9/75=.12, option coverage72/75=.96,
+mean correct native mass.062495; candidate GT coverage remains111/135.
+Its8,504,115,712byte allocator peak and.042028association replay FPS exclude
+live detection; resumed timing does not support an end-to-end speed claim.
+
+TAO first4frames have zero predictions and TETA/LocA/AssocA/ClsA0 under the
+unmodified official source b498aa87b252bfb75d7cc0d8d6435c3e1e74e4de. There
+are18GT boxes, source canonical class baby/person.n.01, Base. Novel is null
+because this scope has no Novel GT; never report it as a Novel benchmark.
+Two evaluator formatting configuration errors were repaired by restoring
+its official defaults OUTPUT_PER_SEQ_RES=True and OUTPUT_SUMMARY=True;
+metrics/source/GT/predictions unchanged, failures retained.
+
+The first vocabulary run registered1203classes but stopped on a rejected
+96-class chunk:192/192/192/288classes actually requested across the4frames.
+This is recorded in vocabulary_coverage.json, not claimed as exhaustive
+1203-class inference. A new finite owner requests ALL13chunks on every frame,
+records every native outcome, and only then applies the same explicitly
+registered whole-frame-rejection policy. It is active at publication.
+First-prefix run processing FPS.020682 is not full-vocabulary inference FPS.
+Original raw failures show many class-conditioned hallucinated boxes. The
+next grounding research must address proposal quality and negative classes
+through the official spatial/DLM training route, with dense/referring retention.
+
+Visualization integrity verified8/12/4frames; KITTI display edge padded from
+1242x375 to1242x376, predictions/GT coordinates unchanged. Formal500-step
+SFT and fullDanceTrack original blocking owners continue. Pilot and final
+unified research goal remain incomplete.
+
+
+## Pre-publication RMOT GT-contract repair (authoritative results)
+
+The new RMOT evaluator incorrectly read release top-left x/y as centers.
+This was found before updating GitHub's branch. Existing established
+read_gt in tools/unified/u1_formal_expression_gate.py defines normalized
+top-left xywh. Corrected transport agrees for all70target box comparisons
+to5.68e-14pixels. Predictions, target sets, frames, source extents, seeds,
+metrics and thresholds unchanged. Original metric receipts are preserved
+as invalid_center_format_metrics.json and explicitly marked invalid;
+local invalid GT views remain but raw GT is excluded from GitHub.
+
+Authoritative corrected results:
+
+| RMOT scope / backend | HOTA | IDF1 | IDSW | FP | FN | Proposal target recall IoU.5 |
+|---|---:|---:|---:|---:|---:|---:|
+| Single/empty8frames Full | 0 | 0 | 0 | 0 | 5 | 4/5 |
+| Exact candidates Simple | .242284 | .375000 | 2 | 7 | 1 | 4/5 |
+| Multi/empty12frames Full | .194792 | .217391 | 0 | 11 | 25 | 5/30 |
+| Exact candidates Simple | .243151 | .217391 | 0 | 11 | 25 | 5/30 |
+
+The earlier zero-proposal-coverage diagnosis is invalid. On the single
+query, four correct observations are present but V1 OneJev suppresses them
+as IGNORE; association/birth/input evidence is the first failure. On the
+multiple-target query, proposal coverage5/30 still limits every tracker.
+Next controlled check should compare V1 against current-crop V3 on the
+same RMOT proposals, while preserving the DLM multi-target recall deficit.
+Dense/referring adaptation and original retention remain required, but
+not every RMOT failure can be attributed to the perception front end.
+
+The new all-class TAO owner remains active. A800-SXM4-80GB hardware was
+verified for4/5/6; foreign UDMT processes are unchanged. Original OneJev
+500step and fullDanceTrack owners remain responsible for their jobs.

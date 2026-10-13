@@ -1,0 +1,18 @@
+{
+  "status": "MULTITASK_STAGE_FAILED",
+  "names": [
+    "rmot_multi_empty",
+    "ovmot_tao_first4"
+  ],
+  "decision_physical_gpu": 5,
+  "DLM_service_physical_gpu": 6,
+  "checkpoint": "/data2/user/LocateMOT_GroundJEV/models/OneJev-0.8B",
+  "vocabulary_chunk_size": 96,
+  "evidence_format": "v1",
+  "grounding_decoder_policy": "tracking_dense",
+  "candidate_control": "exact native candidate replay by Simple",
+  "trained_on_evaluation_GT": false,
+  "pilot_completion": false,
+  "failed_stage": "rmot_multi_empty_EVALUATE_full",
+  "exit_code": 1
+}

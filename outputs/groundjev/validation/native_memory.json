@@ -1,0 +1,110 @@
+{
+  "status": "REAL_NATIVE_FEATURE_MEMORY_ROUNDTRIP_AND_HOLD_PASS",
+  "images": [
+    "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-02-FRCNN/img1/000302.jpg",
+    "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-02-FRCNN/img1/000303.jpg"
+  ],
+  "candidate_counts": [
+    31,
+    31
+  ],
+  "feature_receipts": [
+    {
+      "feature_source": "official_DLM_native_MoonViT_and_trained_projector",
+      "checkpoint": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM",
+      "weight_prefix": "base_model.model.visual.",
+      "native_parameters": 428482048,
+      "native_weight_entries": 170,
+      "image_size": [
+        1920,
+        1080
+      ],
+      "grid_thw": [
+        1,
+        48,
+        84
+      ],
+      "merged_grid": [
+        24,
+        42
+      ],
+      "resize_and_padding": {
+        "num_tokens": 1008,
+        "new_width": 1172,
+        "new_height": 659,
+        "pad_width": 4,
+        "pad_height": 13,
+        "sampled_nframes": 1
+      },
+      "feature_dimension": 2560,
+      "attention": "official eager",
+      "seconds": 1.8343671970069408,
+      "temporal_checkpoint": "outputs/groundjev/ground_adaptation/native_temporal200/checkpoint.pt",
+      "temporal_adapter_claim": "auxiliary region representation, not JEV or a trained DLM decoder",
+      "full_dataset_cache": false,
+      "GT_read": false,
+      "rpc_seconds": 1.933399620000273,
+      "global_feature_dimension": 2560,
+      "local_tokens_shape": [
+        31,
+        2560,
+        3,
+        3
+      ]
+    },
+    {
+      "feature_source": "official_DLM_native_MoonViT_and_trained_projector",
+      "checkpoint": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM",
+      "weight_prefix": "base_model.model.visual.",
+      "native_parameters": 428482048,
+      "native_weight_entries": 170,
+      "image_size": [
+        1920,
+        1080
+      ],
+      "grid_thw": [
+        1,
+        48,
+        84
+      ],
+      "merged_grid": [
+        24,
+        42
+      ],
+      "resize_and_padding": {
+        "num_tokens": 1008,
+        "new_width": 1172,
+        "new_height": 659,
+        "pad_width": 4,
+        "pad_height": 13,
+        "sampled_nframes": 1
+      },
+      "feature_dimension": 2560,
+      "attention": "official eager",
+      "seconds": 0.3174093390116468,
+      "temporal_checkpoint": "outputs/groundjev/ground_adaptation/native_temporal200/checkpoint.pt",
+      "temporal_adapter_claim": "auxiliary region representation, not JEV or a trained DLM decoder",
+      "full_dataset_cache": false,
+      "GT_read": false,
+      "rpc_seconds": 0.4124365389579907,
+      "global_feature_dimension": 2560,
+      "local_tokens_shape": [
+        31,
+        2560,
+        3,
+        3
+      ]
+    }
+  ],
+  "retained_ids": 31,
+  "state_format": "groundjev-causal-memory-v2-native",
+  "serialized_final_memory_bytes": 10682927,
+  "GT_read": false,
+  "features": "real native DLM 2560 + trained auxiliary temporal128",
+  "identical_resume": true,
+  "immutable_anchor": true,
+  "held_long_memory_unchanged": true,
+  "past_timestamp_rejected_before_mutation": true,
+  "decision_backend": "explicit fixed geometry sanity control, not OneJev",
+  "benchmark_claim": false
+}
