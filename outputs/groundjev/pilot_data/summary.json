@@ -1,0 +1,84 @@
+{
+  "status": "REAL_LEGAL_VIDEO_FILES_VERIFIED",
+  "clips": {
+    "mot17": {
+      "protocol": "/data2/user/LocateMOT/outputs/unified/u2/protocol/mot17_half.json",
+      "sequence": "MOT17-02-FRCNN",
+      "fps": 30,
+      "image_size": [
+        1920,
+        1080
+      ],
+      "gt_path_for_evaluation_only": "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-02-FRCNN/gt/gt.txt",
+      "gt_policy": {
+        "boxes": "source xywh converted to xyxy without clipping or coordinate shift",
+        "positive": "mark == 1 and category == 1 (pedestrian)",
+        "recall_unit": "one positive physical GT object per frame",
+        "visibility_cutoff": null
+      },
+      "task": "mot",
+      "vocabulary": [
+        "person"
+      ],
+      "scope": "full_registered_development_half",
+      "training_on_this_scope": false,
+      "official_test_labels_read": false,
+      "frames": 299,
+      "first": "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-02-FRCNN/img1/000302.jpg",
+      "last": "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-02-FRCNN/img1/000600.jpg"
+    },
+    "dancetrack": {
+      "protocol": "/data2/user/LocateMOT/outputs/unified/u2/protocol/dancetrack.json",
+      "sequence": "dancetrack0004",
+      "fps": 20,
+      "image_size": [
+        1920,
+        1080
+      ],
+      "gt_path_for_evaluation_only": "/data2/user/LocateMOT/data/DanceTrack/val/dancetrack0004/gt/gt.txt",
+      "gt_policy": {
+        "boxes": "source xywh converted to xyxy without clipping or coordinate shift",
+        "positive": "mark == 1 and category == 1",
+        "recall_unit": "one positive physical GT object per frame",
+        "visibility_cutoff": null
+      },
+      "task": "mot",
+      "vocabulary": [
+        "person"
+      ],
+      "scope": "full_validation_video",
+      "training_on_this_scope": false,
+      "official_test_labels_read": false,
+      "frames": 1203,
+      "first": "/data2/user/LocateMOT/data/DanceTrack/val/dancetrack0004/img1/00000001.jpg",
+      "last": "/data2/user/LocateMOT/data/DanceTrack/val/dancetrack0004/img1/00001203.jpg"
+    },
+    "mot20": {
+      "protocol": "/data2/user/LocateMOT/outputs/unified/u2/protocol/mot20_half.json",
+      "sequence": "MOT20-01",
+      "fps": 25,
+      "image_size": [
+        1920,
+        1080
+      ],
+      "gt_path_for_evaluation_only": "/data2/user/LocateMOT/data/MOT20/MOT20/train/MOT20-01/gt/gt.txt",
+      "gt_policy": {
+        "boxes": "source xywh converted to xyxy without clipping or coordinate shift",
+        "positive": "mark == 1 and category == 1 (pedestrian)",
+        "recall_unit": "one positive physical GT object per frame",
+        "visibility_cutoff": null
+      },
+      "task": "mot",
+      "vocabulary": [
+        "person"
+      ],
+      "scope": "full_registered_development_half",
+      "training_on_this_scope": false,
+      "official_test_labels_read": false,
+      "frames": 214,
+      "first": "/data2/user/LocateMOT/data/MOT20/MOT20/train/MOT20-01/img1/000216.jpg",
+      "last": "/data2/user/LocateMOT/data/MOT20/MOT20/train/MOT20-01/img1/000429.jpg"
+    }
+  },
+  "runtime_gt_access": false
+}

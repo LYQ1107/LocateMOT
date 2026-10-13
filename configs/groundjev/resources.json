@@ -1,0 +1,9 @@
+{
+  "physical_gpu_allowlist": [4, 5, 6, 7],
+  "max_physical_gpus": 4,
+  "feature_cache_budget_bytes": 26843545600,
+  "initial_decision_gpu": 6,
+  "initial_grounding_gpu": 4,
+  "other_project_jobs_must_be_preserved": true,
+  "selection_note": "0-3 held a busy foreign DDP job at pivot. 4-7 have sufficient memory but can be shared; inspect free memory at actual launch. No exclusive reservation is claimed."
+}

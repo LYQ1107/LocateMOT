@@ -1,0 +1,15 @@
+{
+  "status": "CPU_MEMORY_SERIALIZATION_AND_PAST_TIME_REJECTION_PASS",
+  "frames": [
+    "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-02-FRCNN/img1/000302.jpg",
+    "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-02-FRCNN/img1/000303.jpg"
+  ],
+  "source": "real GT boxes as explicit annotated fixture",
+  "detector_used": false,
+  "pretrained_onejev_used": false,
+  "benchmark": false,
+  "gt_used_in_fixture": true,
+  "identical_resumed_state": true,
+  "identity_retained": true,
+  "metric_claim": null
+}
