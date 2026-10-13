@@ -1,0 +1,159 @@
+{
+  "status": "NATIVE_PROJECTOR_FUNCTIONAL_RETENTION_VALIDATED",
+  "total_native_frames": 48,
+  "units": [
+    {
+      "unit": "dense_mot4_original",
+      "frames": 4,
+      "metric_scale": "fraction",
+      "metrics": {
+        "HOTA": 0.7450832797716312,
+        "DetA": 0.6590556200953703,
+        "AssA": 0.8629926494212384,
+        "IDF1": 0.8244274809160306,
+        "IDSW": 3,
+        "FP": 16,
+        "FN": 24
+      },
+      "end_to_end_fps": 0.19972926900315596,
+      "rejected_frames": [],
+      "visualization": {
+        "width": 1920,
+        "height": 1080,
+        "nb_read_frames": "4"
+      },
+      "runtime_ground_truth_access": false,
+      "run": "outputs/groundjev/ground_adaptation/projector3_retention_v2_memory_budget/dense_mot4/original"
+    },
+    {
+      "unit": "dense_mot4_projector3",
+      "frames": 4,
+      "metric_scale": "fraction",
+      "metrics": {
+        "HOTA": 0.7550285057394698,
+        "DetA": 0.6602109396069904,
+        "AssA": 0.8850317768697954,
+        "IDF1": 0.8473282442748091,
+        "IDSW": 1,
+        "FP": 15,
+        "FN": 23
+      },
+      "end_to_end_fps": 0.13247352318201763,
+      "rejected_frames": [],
+      "visualization": {
+        "width": 1920,
+        "height": 1080,
+        "nb_read_frames": "4"
+      },
+      "runtime_ground_truth_access": false,
+      "run": "outputs/groundjev/ground_adaptation/projector3_retention_v2_memory_budget/dense_mot4/projector3"
+    },
+    {
+      "unit": "refer_single8_original",
+      "frames": 8,
+      "metric_scale": "fraction",
+      "metrics": {
+        "HOTA": 0.2993551121997217,
+        "DetA": 0.24853041695146957,
+        "AssA": 0.3613157894736842,
+        "IDF1": 0.375,
+        "IDSW": 1,
+        "FP": 7,
+        "FN": 1
+      },
+      "end_to_end_fps": 0.8033493717566639,
+      "rejected_frames": [
+        152
+      ],
+      "visualization": {
+        "width": 1242,
+        "height": 376,
+        "nb_read_frames": "8"
+      },
+      "runtime_ground_truth_access": false,
+      "run": "outputs/groundjev/ground_adaptation/projector3_retention_v2_memory_budget/refer_single8/original"
+    },
+    {
+      "unit": "refer_single8_projector3",
+      "frames": 8,
+      "metric_scale": "fraction",
+      "metrics": {
+        "HOTA": 0.30385299622392276,
+        "DetA": 0.26967769073032233,
+        "AssA": 0.34346491228070175,
+        "IDF1": 0.4,
+        "IDSW": 1,
+        "FP": 6,
+        "FN": 1
+      },
+      "end_to_end_fps": 0.5632582786772088,
+      "rejected_frames": [
+        152
+      ],
+      "visualization": {
+        "width": 1242,
+        "height": 376,
+        "nb_read_frames": "8"
+      },
+      "runtime_ground_truth_access": false,
+      "run": "outputs/groundjev/ground_adaptation/projector3_retention_v2_memory_budget/refer_single8/projector3"
+    },
+    {
+      "unit": "refer_multi12_original",
+      "frames": 12,
+      "metric_scale": "fraction",
+      "metrics": {
+        "HOTA": 0.22951723304947305,
+        "DetA": 0.13007709449789517,
+        "AssA": 0.41210443065706215,
+        "IDF1": 0.2222222222222222,
+        "IDSW": 0,
+        "FP": 10,
+        "FN": 25
+      },
+      "end_to_end_fps": 0.7124587700452552,
+      "rejected_frames": [
+        34
+      ],
+      "visualization": {
+        "width": 1242,
+        "height": 376,
+        "nb_read_frames": "12"
+      },
+      "runtime_ground_truth_access": false,
+      "run": "outputs/groundjev/ground_adaptation/projector3_retention_v2_memory_budget/refer_multi12/original"
+    },
+    {
+      "unit": "refer_multi12_projector3",
+      "frames": 12,
+      "metric_scale": "fraction",
+      "metrics": {
+        "HOTA": 0.22759202912365617,
+        "DetA": 0.12819024251946212,
+        "AssA": 0.4167499897763056,
+        "IDF1": 0.2127659574468085,
+        "IDSW": 1,
+        "FP": 12,
+        "FN": 25
+      },
+      "end_to_end_fps": 0.7081131289780918,
+      "rejected_frames": [
+        34
+      ],
+      "visualization": {
+        "width": 1242,
+        "height": 376,
+        "nb_read_frames": "12"
+      },
+      "runtime_ground_truth_access": false,
+      "run": "outputs/groundjev/ground_adaptation/projector3_retention_v2_memory_budget/refer_multi12/projector3"
+    }
+  ],
+  "same_scope_parser_decoder_associator": true,
+  "original_model_server_unchanged": true,
+  "adapted_replica_stopped": true,
+  "formal_adaptation_complete": false,
+  "original_full_dense_ref_benchmark_complete": false,
+  "speed_comparison_limit": "Different GPUs and concurrent foreign/project workloads; actual E2E FPS recorded, no isolated speed gain claim",
+  "conclusion": "Dense and single-referring short controls improve slightly; multi-referring decreases. Three optimizer steps and short clips are not formal adaptation or broad gain evidence."
+}

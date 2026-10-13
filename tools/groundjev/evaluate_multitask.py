@@ -141,6 +141,7 @@ def ovmot(manifest, rows, directory):
         'TRACKERS_TO_EVAL':['groundjev'],'TRACKER_SUB_FOLDER':'data','PRINT_CONFIG':False,
         'SPLIT_TO_EVAL':'val','MAX_DETECTIONS':0})
     evaluator=Evaluator({'USE_PARALLEL':False,'BREAK_ON_ERROR':True,'RETURN_ON_ERROR':False,
+        'LOG_ON_ERROR':str(directory/'teta_error.log'),
         'PRINT_CONFIG':False,'PRINT_RESULTS':False,'TIME_PROGRESS':False,
         'OUTPUT_SUMMARY':True,'OUTPUT_TEM_RAW_DATA':True,'OUTPUT_PER_SEQ_RES':True})
     _,messages=evaluator.evaluate([adapter],[TETA(exhaustive=False)])

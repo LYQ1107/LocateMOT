@@ -1,0 +1,70 @@
+{
+  "name": "legal_RMOT_V3_before_after_and_OVMOT_query_combiner_controls",
+  "execution_date": "2026-10-14",
+  "physical_gpu": 5,
+  "GPU_model": "NVIDIA A800-SXM4-80GB",
+  "scope": "registered legal short clips; not full video or dataset",
+  "hypotheses": [
+    "current-crop V3 may reduce false IGNORE on RMOT single target",
+    "MOT-only SFT100 may help or harm RMOT with identical proposals",
+    "whole-frame rejection creates extra loss beyond independent failed-query-empty aggregation"
+  ],
+  "metrics": "unchanged TrackEval/TETA, exact registered GT including empty/rejected frames",
+  "seed_policy": "no new detector sampling; replay exact recorded native outputs; OneJev deterministic typed probabilities",
+  "candidate_query_policy": "official parser unchanged, every class request/GT/frame retained, no NMS/topK/GT filter or label replacement",
+  "timing_claim": "association replay only",
+  "maximum_GPU_count": 4,
+  "temporary_feature_budget_bytes": 26843545600,
+  "jobs": [
+    {
+      "name": "rmot_single_empty_pretrained_v3",
+      "video": "outputs/groundjev/multitask_pilot_data/rmot_single_empty.json",
+      "candidates": "outputs/groundjev/multitask_runs/rmot_single_empty_pretrained_v1/frame_decisions.jsonl",
+      "backend": "full",
+      "evidence_format": "v3_crop_motion",
+      "checkpoint": "models/OneJev-0.8B"
+    },
+    {
+      "name": "rmot_single_empty_sft100_v3",
+      "video": "outputs/groundjev/multitask_pilot_data/rmot_single_empty.json",
+      "candidates": "outputs/groundjev/multitask_runs/rmot_single_empty_pretrained_v1/frame_decisions.jsonl",
+      "backend": "full",
+      "evidence_format": "v3_crop_motion",
+      "checkpoint": "outputs/groundjev/training/onejev_teacher_check_100/final"
+    },
+    {
+      "name": "rmot_multi_empty_pretrained_v3",
+      "video": "outputs/groundjev/multitask_pilot_data/rmot_multi_empty.json",
+      "candidates": "outputs/groundjev/multitask_runs/pretrained_v1_registered_v1/rmot_multi_empty/full/frame_decisions.jsonl",
+      "backend": "full",
+      "evidence_format": "v3_crop_motion",
+      "checkpoint": "models/OneJev-0.8B"
+    },
+    {
+      "name": "rmot_multi_empty_sft100_v3",
+      "video": "outputs/groundjev/multitask_pilot_data/rmot_multi_empty.json",
+      "candidates": "outputs/groundjev/multitask_runs/pretrained_v1_registered_v1/rmot_multi_empty/full/frame_decisions.jsonl",
+      "backend": "full",
+      "evidence_format": "v3_crop_motion",
+      "checkpoint": "outputs/groundjev/training/onejev_teacher_check_100/final"
+    },
+    {
+      "name": "ovmot_scored_queries_simple",
+      "video": "outputs/groundjev/multitask_pilot_data/ovmot_tao_first4.json",
+      "candidates": "outputs/groundjev/multitask_candidate_controls/tao_scored_queries_v1/frame_candidates.jsonl",
+      "backend": "simple",
+      "evidence_format": "v1",
+      "checkpoint": "models/OneJev-0.8B",
+      "adaptive_context": false
+    },
+    {
+      "name": "ovmot_scored_queries_full",
+      "video": "outputs/groundjev/multitask_pilot_data/ovmot_tao_first4.json",
+      "candidates": "outputs/groundjev/multitask_candidate_controls/tao_scored_queries_v1/frame_candidates.jsonl",
+      "backend": "full",
+      "evidence_format": "v1",
+      "checkpoint": "models/OneJev-0.8B",
+      "adaptive_context": true
+    }
+  ]
+}

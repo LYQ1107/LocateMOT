@@ -1,0 +1,24 @@
+{
+  "status": "COMPLETE_NATIVE_DLM_PROJECTOR_DELTA_BUNDLE_EXPORTED",
+  "source": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM",
+  "delta": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/ground_adaptation/native_tracking_grad3_v6_native_runtime_flags/projector_delta.pt",
+  "output": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM-TrackProj3",
+  "native_tensor_count": 569,
+  "replaced_native_projector_keys": [
+    "base_model.model.visual.projector.pre_norm.weight",
+    "base_model.model.visual.projector.pre_norm.bias",
+    "base_model.model.visual.projector.fc1.weight",
+    "base_model.model.visual.projector.fc2.weight",
+    "base_model.model.visual.projector.post_norm.weight"
+  ],
+  "BF16_changed_elements": 1968676,
+  "all_other_native_tensors_unmodified": true,
+  "source_bundle_overwritten": false,
+  "tokenizer_code_and_configuration": "copied unchanged from complete released DLM bundle",
+  "bytes": 9687419704,
+  "sha256": "a626aad29c5bbc17e3a465a519e93681aaedacd81cbb21805cce40b7122777e9",
+  "training_steps": 3,
+  "seed": 42,
+  "dense_referring_retention": "pending actual before/after",
+  "benchmark_improvement_claim": false
+}

@@ -1,0 +1,54 @@
+{
+  "status": "VIDEO_INFERENCE_COMPLETE",
+  "task": "mot",
+  "backend": "simple",
+  "evidence_format": "v1",
+  "native_feature_url": null,
+  "adaptive_context_groups": false,
+  "scope": "short_functional_check",
+  "video_manifest": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/pilot_data/mot17_first4.json",
+  "frames": 4,
+  "latencies_seconds": [
+    10.42283012799453,
+    6.451781291048974,
+    6.265931745001581,
+    6.117845277010929
+  ],
+  "grounding_parser_policy": "official_scoring",
+  "grounding_decoder_policy": "tracking_dense",
+  "grounding_vocabulary_chunk_size": null,
+  "specification": {
+    "task": "mot",
+    "vocabulary": [
+      "person"
+    ],
+    "expression": null
+  },
+  "timestamp_policy": "physical frame number / registered video FPS",
+  "perception_failure_policy": "empty_and_record",
+  "perception_rejected_frames": [],
+  "perception_rejection_rate": 0.0,
+  "strict_wire_invalid_frames": [
+    305
+  ],
+  "all_input_frames_processed": true,
+  "end_to_end_fps": 0.13247352318201763,
+  "complete_video_wall_seconds": 30.194712905038614,
+  "model_initialization_seconds": 0.05194002896314487,
+  "timing_scope": "all image reads, native requests including service queueing, association, memory persistence, prediction/log writes, drawing, video encoding and encoder completion; preloaded remote DLM server startup excluded",
+  "successful_frame_pipeline_fps": 0.1367129296289987,
+  "association_replay_fps": null,
+  "resume_source": null,
+  "resumed_completed_frames": 0,
+  "timing_limitations": null,
+  "official_metrics": {
+    "status": "COMPLETE",
+    "path": "outputs/groundjev/ground_adaptation/projector3_retention_v2_memory_budget/dense_mot4/projector3/official_metrics.json",
+    "scope": "short_functional_check",
+    "frames": 4
+  },
+  "checkpoint": null,
+  "motchallenge_confidence_column": "constant unscored-output sentinel; native detection score is absent",
+  "gt_read_by_runtime": false,
+  "future_frames_read_by_runtime": false
+}

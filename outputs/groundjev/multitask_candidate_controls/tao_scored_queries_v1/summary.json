@@ -1,0 +1,35 @@
+{
+  "status": "GT_FREE_NATIVE_QUERY_CONTROL_MATERIALIZED",
+  "frames": [
+    {
+      "frame": 751,
+      "retained_candidates": 201,
+      "scored_chunks": 2,
+      "failed_chunks": 11
+    },
+    {
+      "frame": 781,
+      "retained_candidates": 441,
+      "scored_chunks": 3,
+      "failed_chunks": 10
+    },
+    {
+      "frame": 811,
+      "retained_candidates": 777,
+      "scored_chunks": 6,
+      "failed_chunks": 7
+    },
+    {
+      "frame": 841,
+      "retained_candidates": 354,
+      "scored_chunks": 3,
+      "failed_chunks": 10
+    }
+  ],
+  "policy": "failed-query-empty, retain independently scored native queries",
+  "original_whole_frame_rejection_preserved": true,
+  "official_parser_changed": false,
+  "raw_GT_read": false,
+  "seed_changed": false,
+  "end_to_end_speed_claim": false
+}

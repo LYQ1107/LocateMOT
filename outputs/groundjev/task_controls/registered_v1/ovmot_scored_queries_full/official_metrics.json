@@ -1,0 +1,541 @@
+{
+  "status": "OFFICIAL_REGISTERED_MULTITASK_SCOPE_EVALUATION_COMPLETE",
+  "task": "ovmot",
+  "dataset": "tao_amodal",
+  "sequence": "val/YFCC100M/v_25685519b728afd746dfd1b2fe77c",
+  "scope": "registered_short_functional_clip",
+  "frames": 4,
+  "all_registered_frames_included": true,
+  "GT_access": "evaluation only",
+  "official_test_labels_read": false,
+  "end_to_end_fps": null,
+  "association_replay_fps": 0.0035228079902742955,
+  "perception_rejected_frames": [
+    751,
+    781,
+    811,
+    841
+  ],
+  "evaluator": "unmodified official TETA OVMOT recipe; non-exhaustive TAO",
+  "evaluator_commit": "b498aa87b252bfb75d7cc0d8d6435c3e1e74e4de",
+  "metrics": {
+    "TETA": 16.815,
+    "LocA": 27.459,
+    "AssocA": 22.987,
+    "ClsA": 0.0,
+    "LocRe": 38.333,
+    "LocPr": 48.158,
+    "AssocRe": 25.625,
+    "AssocPr": 77.369,
+    "ClsRe": 0.0,
+    "ClsPr": 0.0
+  },
+  "base_novel": {
+    "base": {
+      "TETA": 16.815,
+      "LocA": 27.459,
+      "AssocA": 22.987,
+      "ClsA": 0.0,
+      "LocRe": 38.333,
+      "LocPr": 48.158,
+      "AssocRe": 25.625,
+      "AssocPr": 77.369,
+      "ClsRe": 0.0,
+      "ClsPr": 0.0
+    },
+    "novel": null
+  },
+  "metric_scale": "official TETA summary percent",
+  "evaluated_categories": [
+    {
+      "name": "baby",
+      "group": "base"
+    }
+  ],
+  "GT_boxes": 18,
+  "predictions": 1643,
+  "unmapped_predicted_labels": [
+    {
+      "frame": 751,
+      "label": "blouse"
+    },
+    {
+      "frame": 751,
+      "label": "blouse"
+    },
+    {
+      "frame": 751,
+      "label": "bob"
+    },
+    {
+      "frame": 751,
+      "label": "washbasin"
+    },
+    {
+      "frame": 781,
+      "label": "chalice"
+    },
+    {
+      "frame": 781,
+      "label": "chalice"
+    },
+    {
+      "frame": 781,
+      "label": "cleat (for securing rope)"
+    },
+    {
+      "frame": 781,
+      "label": "clippers (for plants)"
+    },
+    {
+      "frame": 781,
+      "label": "cloak"
+    },
+    {
+      "frame": 781,
+      "label": "cockroach"
+    },
+    {
+      "frame": 781,
+      "label": "cockroach"
+    },
+    {
+      "frame": 781,
+      "label": "cockroach"
+    },
+    {
+      "frame": 781,
+      "label": "cocoa (beverage)"
+    },
+    {
+      "frame": 781,
+      "label": "cocoa (beverage)"
+    },
+    {
+      "frame": 781,
+      "label": "skullcap"
+    },
+    {
+      "frame": 781,
+      "label": "crawfish"
+    },
+    {
+      "frame": 781,
+      "label": "squid (food)"
+    },
+    {
+      "frame": 781,
+      "label": "stage"
+    },
+    {
+      "frame": 781,
+      "label": "stpladder"
+    },
+    {
+      "frame": 781,
+      "label": "st"
+    },
+    {
+      "frame": 781,
+      "label": "strainer)"
+    },
+    {
+      "frame": 781,
+      "label": "washbasin"
+    },
+    {
+      "frame": 811,
+      "label": "blackberry"
+    },
+    {
+      "frame": 811,
+      "label": "blouse"
+    },
+    {
+      "frame": 811,
+      "label": "blouse"
+    },
+    {
+      "frame": 811,
+      "label": "blouse"
+    },
+    {
+      "frame": 811,
+      "label": "blouse"
+    },
+    {
+      "frame": 811,
+      "label": "blouse"
+    },
+    {
+      "frame": 811,
+      "label": "blouse"
+    },
+    {
+      "frame": 811,
+      "label": "blouse"
+    },
+    {
+      "frame": 811,
+      "label": "blouse"
+    },
+    {
+      "frame": 811,
+      "label": "blouse"
+    },
+    {
+      "frame": 811,
+      "label": "blouse"
+    },
+    {
+      "frame": 811,
+      "label": "bob"
+    },
+    {
+      "frame": 811,
+      "label": "bob"
+    },
+    {
+      "frame": 811,
+      "label": "bob"
+    },
+    {
+      "frame": 811,
+      "label": "bob"
+    },
+    {
+      "frame": 811,
+      "label": "bob"
+    },
+    {
+      "frame": 811,
+      "label": "bob"
+    },
+    {
+      "frame": 811,
+      "label": "bob"
+    },
+    {
+      "frame": 811,
+      "label": "bob"
+    },
+    {
+      "frame": 811,
+      "label": "bob"
+    },
+    {
+      "frame": 811,
+      "label": "bob"
+    },
+    {
+      "frame": 811,
+      "label": "box"
+    },
+    {
+      "frame": 811,
+      "label": "bread"
+    },
+    {
+      "frame": 811,
+      "label": "chalice"
+    },
+    {
+      "frame": 811,
+      "label": "clar"
+    },
+    {
+      "frame": 811,
+      "label": "cleat (for securing rope)"
+    },
+    {
+      "frame": 811,
+      "label": "generator"
+    },
+    {
+      "frame": 811,
+      "label": "gr"
+    },
+    {
+      "frame": 811,
+      "label": "grill"
+    },
+    {
+      "frame": 811,
+      "label": "halter top"
+    },
+    {
+      "frame": 811,
+      "label": "halter top"
+    },
+    {
+      "frame": 811,
+      "label": "halter top"
+    },
+    {
+      "frame": 811,
+      "label": "halter top"
+    },
+    {
+      "frame": 811,
+      "label": "halter top"
+    },
+    {
+      "frame": 811,
+      "label": "halter top"
+    },
+    {
+      "frame": 811,
+      "label": "halter top"
+    },
+    {
+      "frame": 811,
+      "label": "hookah"
+    },
+    {
+      "frame": 811,
+      "label": "hornet"
+    },
+    {
+      "frame": 811,
+      "label": "hornet"
+    },
+    {
+      "frame": 811,
+      "label": "humm"
+    },
+    {
+      "frame": 811,
+      "label": "jar"
+    },
+    {
+      "frame": 811,
+      "label": "jewel"
+    },
+    {
+      "frame": 811,
+      "label": "latchousine"
+    },
+    {
+      "frame": 811,
+      "label": "leather (clothing)"
+    },
+    {
+      "frame": 811,
+      "label": "leather (clothing)"
+    },
+    {
+      "frame": 811,
+      "label": "legume"
+    },
+    {
+      "frame": 811,
+      "label": "milk can"
+    },
+    {
+      "frame": 811,
+      "label": "milkshake"
+    },
+    {
+      "frame": 811,
+      "label": "newspaper"
+    },
+    {
+      "frame": 811,
+      "label": "oven"
+    },
+    {
+      "frame": 811,
+      "label": "paras"
+    },
+    {
+      "frame": 811,
+      "label": "parasol"
+    },
+    {
+      "frame": 811,
+      "label": "m"
+    },
+    {
+      "frame": 811,
+      "label": "skullcap"
+    },
+    {
+      "frame": 811,
+      "label": "crawfish"
+    },
+    {
+      "frame": 811,
+      "label": "squid (food)"
+    },
+    {
+      "frame": 811,
+      "label": "stagecoach"
+    },
+    {
+      "frame": 811,
+      "label": "sun"
+    },
+    {
+      "frame": 841,
+      "label": "arctic (type of shoe)"
+    },
+    {
+      "frame": 841,
+      "label": "arctic (type of shoe)"
+    },
+    {
+      "frame": 841,
+      "label": "arctic (type of shoe)"
+    },
+    {
+      "frame": 841,
+      "label": "arctic (type of shoe)"
+    },
+    {
+      "frame": 841,
+      "label": "arctic (type of shoe)"
+    },
+    {
+      "frame": 841,
+      "label": "arctic (type of shoe)"
+    },
+    {
+      "frame": 841,
+      "label": "arctic (type of shoe)"
+    },
+    {
+      "frame": 841,
+      "label": "arctic (type of shoe)"
+    },
+    {
+      "frame": 841,
+      "label": "arctic (type of shoe)"
+    },
+    {
+      "frame": 841,
+      "label": "arctic (type of shoe)"
+    },
+    {
+      "frame": 841,
+      "label": "arctic (type of shoe)"
+    },
+    {
+      "frame": 841,
+      "label": "arctic (type of shoe)"
+    },
+    {
+      "frame": 841,
+      "label": "arctic (type of shoe)"
+    },
+    {
+      "frame": 841,
+      "label": "arctic (type of shoe)"
+    },
+    {
+      "frame": 841,
+      "label": "arctic (type of shoe)"
+    },
+    {
+      "frame": 841,
+      "label": "arctic (type of shoe)"
+    },
+    {
+      "frame": 841,
+      "label": "arctic (type of shoe)"
+    },
+    {
+      "frame": 841,
+      "label": "arctic (type of shoe)"
+    },
+    {
+      "frame": 841,
+      "label": "arctic (type of shoe)"
+    },
+    {
+      "frame": 841,
+      "label": "baboon"
+    },
+    {
+      "frame": 841,
+      "label": "bedpan"
+    },
+    {
+      "frame": 841,
+      "label": "bedpan"
+    },
+    {
+      "frame": 841,
+      "label": "visorboard"
+    },
+    {
+      "frame": 841,
+      "label": "visorboard"
+    },
+    {
+      "frame": 841,
+      "label": "billboard"
+    },
+    {
+      "frame": 841,
+      "label": "billboard"
+    },
+    {
+      "frame": 841,
+      "label": "blackberry"
+    },
+    {
+      "frame": 841,
+      "label": "blouse"
+    },
+    {
+      "frame": 841,
+      "label": "bob"
+    },
+    {
+      "frame": 841,
+      "label": "box"
+    },
+    {
+      "frame": 841,
+      "label": "bread"
+    },
+    {
+      "frame": 841,
+      "label": "calculatorboard"
+    },
+    {
+      "frame": 841,
+      "label": "camel camera lens"
+    },
+    {
+      "frame": 841,
+      "label": "chalice"
+    },
+    {
+      "frame": 841,
+      "label": "cleat (for securing rope)"
+    },
+    {
+      "frame": 841,
+      "label": "clippers (for plants)"
+    },
+    {
+      "frame": 841,
+      "label": "cloak"
+    },
+    {
+      "frame": 841,
+      "label": "cockroach"
+    },
+    {
+      "frame": 841,
+      "label": "cocoa (beverage)"
+    }
+  ],
+  "unmapped_policy": "retain boxes with unknown category -1; never discard predictions or GT",
+  "prediction_score": "constant unscored sentinel 1; no detector confidence and no score-based truncation",
+  "GT_policy": "all original modal xywh boxes; no clipping, visibility threshold, or category exclusion",
+  "novel_evaluation_GT_used_for_training": false,
+  "official_complete_dataset_result": false,
+  "timestamp_policy": "annotation-step units; physical source FPS unavailable; display at one step per second"
+}

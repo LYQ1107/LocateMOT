@@ -1,0 +1,82 @@
+{
+  "outputs/groundjev/task_controls/registered_v1/rmot_single_empty_sft100_v3": {
+    "frames": 8,
+    "video": {
+      "width": 1242,
+      "height": 376,
+      "nb_read_frames": "8"
+    },
+    "GT_read_by_runtime": false,
+    "end_to_end_fps": null
+  },
+  "outputs/groundjev/task_controls/registered_v1/rmot_single_empty_pretrained_v3": {
+    "frames": 8,
+    "video": {
+      "width": 1242,
+      "height": 376,
+      "nb_read_frames": "8"
+    },
+    "GT_read_by_runtime": false,
+    "end_to_end_fps": null
+  },
+  "outputs/groundjev/task_controls/registered_v1/rmot_multi_empty_pretrained_v3": {
+    "frames": 12,
+    "video": {
+      "width": 1242,
+      "height": 376,
+      "nb_read_frames": "12"
+    },
+    "GT_read_by_runtime": false,
+    "end_to_end_fps": null
+  },
+  "outputs/groundjev/task_controls/registered_v1/ovmot_scored_queries_simple": {
+    "frames": 4,
+    "video": {
+      "width": 640,
+      "height": 480,
+      "nb_read_frames": "4"
+    },
+    "GT_read_by_runtime": false,
+    "end_to_end_fps": null
+  },
+  "outputs/groundjev/task_controls/registered_v1/ovmot_scored_queries_full": {
+    "frames": 4,
+    "video": {
+      "width": 640,
+      "height": 480,
+      "nb_read_frames": "4"
+    },
+    "GT_read_by_runtime": false,
+    "end_to_end_fps": null
+  },
+  "outputs/groundjev/task_controls/registered_v1/rmot_multi_empty_sft100_v3": {
+    "frames": 12,
+    "video": {
+      "width": 1242,
+      "height": 376,
+      "nb_read_frames": "12"
+    },
+    "GT_read_by_runtime": false,
+    "end_to_end_fps": null
+  },
+  "outputs/groundjev/task_controls/exact_geometry_v1/ovmot_exact_geometry_full": {
+    "frames": 4,
+    "video": {
+      "width": 640,
+      "height": 480,
+      "nb_read_frames": "4"
+    },
+    "GT_read_by_runtime": false,
+    "end_to_end_fps": null
+  },
+  "outputs/groundjev/task_controls/exact_geometry_v1/ovmot_exact_geometry_simple": {
+    "frames": 4,
+    "video": {
+      "width": 640,
+      "height": 480,
+      "nb_read_frames": "4"
+    },
+    "GT_read_by_runtime": false,
+    "end_to_end_fps": null
+  }
+}

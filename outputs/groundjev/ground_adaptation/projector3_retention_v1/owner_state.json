@@ -1,0 +1,19 @@
+{
+  "status": "NATIVE_PROJECTOR_RETENTION_CONTROL_FAILED",
+  "scope": "legal4frame dense and8/12frame referring functional controls",
+  "adapted_checkpoint": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM-TrackProj3",
+  "adapted_physical_gpu": 7,
+  "original_server_gpu": 6,
+  "same_parser": "official_scoring",
+  "same_decoder": "tracking_dense",
+  "requested_seed": 42,
+  "associator": "unchanged geometry Simple",
+  "original_server_restarted": false,
+  "original_model_overwritten": false,
+  "formal_original_dense_ref_benchmark_claim": false,
+  "formal_adaptation_complete": false,
+  "completed": {},
+  "owned_replica_process_group": 4116957,
+  "error": "Adapted native service failed before readiness; inspect server log",
+  "owned_adapted_replica_stopped": true
+}

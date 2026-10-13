@@ -1,0 +1,71 @@
+{
+  "status": "REAL_NATIVE_DLM_DENSE_AND_IDENTITY_GRADIENTS_VERIFIED",
+  "steps_budget": 3,
+  "seed": 42,
+  "native_loss": "official GAMQwen3DLM MDM0.5 + causal0.5",
+  "auxiliary_loss": "same-ID cross-frame ROI contrastive, weight0.1",
+  "trainable_policy": "native multimodal projector only; language and native vision tower frozen",
+  "official_stock_full_language_recipe_claim": false,
+  "formal_adaptation_complete": false,
+  "native_FlexAttention_runtime": "official GAM_DLM_FLEX_CUDAGRAPHS=0; same compiled operator and masks",
+  "gradient_probe_runtime": "task-local AOT donated_buffer=False for independently retained gradient probes",
+  "independent_native_dense_gradient_norm": 8.759472846984863,
+  "independent_temporal_identity_gradient_norm": 2.1333773136138916,
+  "steps": 3,
+  "trainable_native_projector_parameters": 27267584,
+  "changed_projector_elements": 27266531,
+  "BF16_changed_projector_elements": 1968676,
+  "source_frames": [
+    "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-02-FRCNN/img1/000209.jpg",
+    "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-02-FRCNN/img1/000210.jpg"
+  ],
+  "dense_GT_targets": [
+    32,
+    32
+  ],
+  "shared_identity_positives": 32,
+  "original_native_weight_tensors": 569,
+  "tokenizer_and_checkpoint_rows": 152671,
+  "language_and_ViT_gradients_present": false,
+  "training_log": [
+    {
+      "step": 1,
+      "native_loss": 1.6170825958251953,
+      "mdm_loss": 1.6572004556655884,
+      "causal_loss": 1.5769646167755127,
+      "temporal_identity_loss": 2.648193359375,
+      "total_loss": 1.8819019794464111,
+      "projector_gradient_norm": 8.771405220031738,
+      "elapsed_seconds": 10.855951488949358
+    },
+    {
+      "step": 2,
+      "native_loss": 1.6677982807159424,
+      "mdm_loss": 1.758609652519226,
+      "causal_loss": 1.5769867897033691,
+      "temporal_identity_loss": 2.6484375,
+      "total_loss": 1.9326419830322266,
+      "projector_gradient_norm": 9.255566596984863,
+      "elapsed_seconds": 16.006316155951936
+    },
+    {
+      "step": 3,
+      "native_loss": 1.6547749042510986,
+      "mdm_loss": 1.738460659980774,
+      "causal_loss": 1.571089267730713,
+      "temporal_identity_loss": 2.64697265625,
+      "total_loss": 1.9194722175598145,
+      "projector_gradient_norm": 9.02193546295166,
+      "elapsed_seconds": 19.775379517988767
+    }
+  ],
+  "peak_allocated_bytes": 18455674368,
+  "checkpoint_reload_max_difference": 0.0,
+  "checkpoint": {
+    "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/ground_adaptation/native_tracking_grad3_v6_native_runtime_flags/projector_delta.pt",
+    "bytes": 327218423,
+    "sha256": "bf8537a97675e465d80dfb08cb5b21454ee37711f622510fe8181b86370e2b3e"
+  },
+  "complete_video_tracking_gain_claim": false,
+  "dense_and_referring_retention": "pending exported delta/bundle protocol runs"
+}

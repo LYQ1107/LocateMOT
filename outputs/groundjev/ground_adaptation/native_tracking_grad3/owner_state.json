@@ -1,0 +1,12 @@
+{
+  "status": "NATIVE_TRACKING_GRADIENT_CHECK_FAILED",
+  "steps_budget": 3,
+  "seed": 42,
+  "native_loss": "official GAMQwen3DLM MDM0.5 + causal0.5",
+  "auxiliary_loss": "same-ID cross-frame ROI contrastive, weight0.1",
+  "trainable_policy": "native multimodal projector only; language and native vision tower frozen",
+  "official_stock_full_language_recipe_claim": false,
+  "formal_adaptation_complete": false,
+  "error_type": "NotImplementedError",
+  "error": "Cannot copy out of meta tensor; no data! Please use torch.nn.Module.to_empty() instead of torch.nn.Module.to() when moving module from meta to a different device."
+}

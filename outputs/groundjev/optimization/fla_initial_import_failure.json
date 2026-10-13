@@ -1,0 +1,6 @@
+{
+  "status": "FIRST_KERNEL_CHECK_FAILED_BEFORE_COMPUTE",
+  "root_cause": "einops required by fla-core was missing in isolated OneJev environment",
+  "original_training_modified": false,
+  "targeted_fix": "install einops only into the task-local FLA addon"
+}

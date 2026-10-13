@@ -77,3 +77,73 @@ outputs/groundjev/ground_adaptation/native_temporal200/result.json.
 
 Region adapter gradients are real; detection/decoder SFT gradients, actual
 tracking benefit and dense/referring retention benchmarks remain required.
+
+
+### Actual native DLM spatial and temporal gradient proof
+
+Final v6 native training unit completed3optimizer steps on legalMOT17TRAIN
+209/210, all32targets each frame and32same-ID positives. Official native
+GAMQwen3DLM MDM.5+causal.5/block32 retained, with.1identity ROI contrastive
+loss. Language and native ViT frozen;27,267,584native projector parameters
+useFP32masters. Independent dense-gradient norm8.75947 and temporal-gradient
+norm2.13338, finite combined norms8.77141/9.25557/9.02194. Native losses
+1.61708/1.66780/1.65477 include different sampled noise; do not claim training
+improvement from this warmup.26,766,531FP32elements and1,968,676BF16elements
+changed. Delta reload weight difference0,327,218,423bytes, SHA256
+bf8537a97675e465d80dfb08cb5b21454ee37711f622510fe8181b86370e2b3e,
+peak18,455,674,368GPUbytes. This proves actual localization and identity
+gradients, not formal adaptation or tracking gain.
+
+Checkpoint:/data2/user/LocateMOT_GroundJEV/outputs/groundjev/ground_adaptation/
+native_tracking_grad3_v6_native_runtime_flags/projector_delta.pt. Frozen
+nonpersistent rotary buffers remainFP32. Native official CUDA-graph flag0
+and task-local donated_buffer=False accommodate checkpointed backward and
+independent gradient probes; math/masks/loss weights/seed42unchanged.
+Failed meta-buffer/image-schema/list-output/CUDAgraph/donation units retained.
+
+Exported complete DLM variant models/GroundAnything-DLM-TrackProj3 replaces
+only5native projector tensors, retaining all569keys and every other native
+weight/tokenizer/code/config unchanged.9,687,419,704bytes, SHA256
+a626aad29c5bbc17e3a465a519e93681aaedacd81cbb21805cce40b7122777e9.
+Original model/server untouched. A distinct GPU7replica/8102 and launch bundle
+are used for48same-profile native frames:4dense+8single-ref+12multi-ref,
+original/updated, fixed Simple association. Requesteddecoderseed42, same
+unchanged official parsers and evaluator. These functional retention probes
+do not stand in for the full original GroundAnything benchmark suite.
+The one blocking owner stops only its owned adapted replica on completion.
+
+
+### Verified native projector retention controls (2026-10-14)
+
+All six fresh inference and official evaluation units passed scope and encoded
+video frame checks:48frames total, no runtime GT or future access, every
+rejected/empty frame retained. Original versus projector3 HOTA/IDF1 fractions:
+
+| Scope | Original HOTA | Projector3 HOTA | Original IDF1 | Projector3 IDF1 | IDSW before/after |
+|---|---:|---:|---:|---:|---:|
+| MOT17 4frames | .745083 | .755029 | .824427 | .847328 | 3/1 |
+| Single RMOT 8frames | .299355 | .303853 | .375000 | .400000 | 1/1 |
+| Multi RMOT 12frames | .229517 | .227592 | .222222 | .212766 | 0/1 |
+
+Both single variants reject frame152; both multi variants reject frame34.
+These frames remain in official denominators. Decoder tracking_dense,
+requested seed42, official_scoring parser, unchanged geometry Simple and
+legal validation scopes are identical. Short dense and single controls
+improve slightly, multi-referring declines. This is not formal adaptation,
+full original grounding/referring benchmark retention or a broad gain claim.
+Actual detector-inclusive FPS are in aggregate_results.json; concurrent
+workloads and original GPU6 versus replica GPU7 preclude an isolated speed
+comparison. The first replica failed KV allocation at mem-fraction.25;
+its failure is retained. The completed replica used.4 and stopped its own
+process group. Original server/model and foreign UDMT are unchanged.
+
+Authoritative receipt:
+outputs/groundjev/ground_adaptation/projector3_retention_v2_memory_budget/aggregate_results.json.
+OneJev formal500step owner remains live, latest returned report100/500;
+full1203frame DanceTrack owner remains live, latest returned frame1183.
+No completion claim for either. Current persistent feature service on5
+uses about4GiB; no GroundJEV process remains on7 after replica cleanup.
+Next research hypothesis: exact object geometry grouping improves localization,
+but copying a native query label leaves ClsA0. A real typed OneJev category
+head using every supplied vocabulary class, separate from identity and absent
+detection confidence, is required. It must preserve all candidates and GT.

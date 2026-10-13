@@ -1,0 +1,396 @@
+{
+  "mode": "fla",
+  "records": [
+    {
+      "frame": 302,
+      "candidate_count": 3,
+      "history_count": 0,
+      "answers": {
+        "match_0": {
+          "type": "choice",
+          "choice": "NEW",
+          "probabilities": {
+            "NEW": 0.559696,
+            "IGNORE": 0.440304
+          },
+          "confidence": 0.119392
+        },
+        "update_0": {
+          "type": "noul",
+          "noul": 0.430742
+        },
+        "reliability_0": {
+          "type": "score",
+          "score": 1.422797,
+          "legend": {
+            "0": "contradictory",
+            "1": "ambiguous",
+            "2": "supported",
+            "3": "strong"
+          },
+          "probabilities": {
+            "0": 0.208986,
+            "1": 0.325862,
+            "2": 0.298521,
+            "3": 0.166631
+          },
+          "confidence": 0.159231
+        },
+        "match_1": {
+          "type": "choice",
+          "choice": "IGNORE",
+          "probabilities": {
+            "NEW": 0.486511,
+            "IGNORE": 0.513489
+          },
+          "confidence": 0.026977
+        },
+        "update_1": {
+          "type": "noul",
+          "noul": 0.360792
+        },
+        "reliability_1": {
+          "type": "score",
+          "score": 1.232763,
+          "legend": {
+            "0": "contradictory",
+            "1": "ambiguous",
+            "2": "supported",
+            "3": "strong"
+          },
+          "probabilities": {
+            "0": 0.229779,
+            "1": 0.41559,
+            "2": 0.246721,
+            "3": 0.107911
+          },
+          "confidence": 0.307679
+        },
+        "match_2": {
+          "type": "choice",
+          "choice": "IGNORE",
+          "probabilities": {
+            "NEW": 0.49386,
+            "IGNORE": 0.50614
+          },
+          "confidence": 0.01228
+        },
+        "update_2": {
+          "type": "noul",
+          "noul": 0.387508
+        },
+        "reliability_2": {
+          "type": "score",
+          "score": 1.353078,
+          "legend": {
+            "0": "contradictory",
+            "1": "ambiguous",
+            "2": "supported",
+            "3": "strong"
+          },
+          "probabilities": {
+            "0": 0.214534,
+            "1": 0.34749,
+            "2": 0.308341,
+            "3": 0.129635
+          },
+          "confidence": 0.217855
+        }
+      },
+      "seconds": 0.8666073759668507
+    },
+    {
+      "frame": 303,
+      "candidate_count": 3,
+      "history_count": 3,
+      "answers": {
+        "match_0": {
+          "type": "choice",
+          "choice": "1",
+          "probabilities": {
+            "1": 0.345008,
+            "2": 0.139315,
+            "3": 0.242111,
+            "NEW": 0.116358,
+            "IGNORE": 0.082675,
+            "NO_MATCH": 0.074533
+          },
+          "confidence": 0.21401
+        },
+        "update_0": {
+          "type": "noul",
+          "noul": 0.437256
+        },
+        "reliability_0": {
+          "type": "score",
+          "score": 1.783471,
+          "legend": {
+            "0": "contradictory",
+            "1": "ambiguous",
+            "2": "supported",
+            "3": "strong"
+          },
+          "probabilities": {
+            "0": 0.148159,
+            "1": 0.180512,
+            "2": 0.411029,
+            "3": 0.2603
+          },
+          "confidence": 0.262871
+        },
+        "match_1": {
+          "type": "choice",
+          "choice": "3",
+          "probabilities": {
+            "1": 0.261081,
+            "2": 0.15691,
+            "3": 0.304416,
+            "NEW": 0.112273,
+            "IGNORE": 0.09488,
+            "NO_MATCH": 0.070441
+          },
+          "confidence": 0.165299
+        },
+        "update_1": {
+          "type": "noul",
+          "noul": 0.356871
+        },
+        "reliability_1": {
+          "type": "score",
+          "score": 1.548492,
+          "legend": {
+            "0": "contradictory",
+            "1": "ambiguous",
+            "2": "supported",
+            "3": "strong"
+          },
+          "probabilities": {
+            "0": 0.196198,
+            "1": 0.251759,
+            "2": 0.359398,
+            "3": 0.192646
+          },
+          "confidence": 0.1632
+        },
+        "match_2": {
+          "type": "choice",
+          "choice": "3",
+          "probabilities": {
+            "1": 0.195381,
+            "2": 0.159371,
+            "3": 0.470005,
+            "NEW": 0.07507,
+            "IGNORE": 0.064317,
+            "NO_MATCH": 0.035855
+          },
+          "confidence": 0.364006
+        },
+        "update_2": {
+          "type": "noul",
+          "noul": 0.378086
+        },
+        "reliability_2": {
+          "type": "score",
+          "score": 1.67672,
+          "legend": {
+            "0": "contradictory",
+            "1": "ambiguous",
+            "2": "supported",
+            "3": "strong"
+          },
+          "probabilities": {
+            "0": 0.169619,
+            "1": 0.218019,
+            "2": 0.378386,
+            "3": 0.233977
+          },
+          "confidence": 0.208767
+        },
+        "life_1": {
+          "type": "choice",
+          "choice": "ACTIVE",
+          "probabilities": {
+            "ACTIVE": 0.786476,
+            "LOST": 0.096872,
+            "REACTIVATE": 0.064466,
+            "TERMINATE": 0.052186
+          },
+          "confidence": 0.715302
+        },
+        "life_2": {
+          "type": "choice",
+          "choice": "ACTIVE",
+          "probabilities": {
+            "ACTIVE": 0.69152,
+            "LOST": 0.135875,
+            "REACTIVATE": 0.089874,
+            "TERMINATE": 0.082731
+          },
+          "confidence": 0.588693
+        },
+        "life_3": {
+          "type": "choice",
+          "choice": "ACTIVE",
+          "probabilities": {
+            "ACTIVE": 0.750453,
+            "LOST": 0.110474,
+            "REACTIVATE": 0.075698,
+            "TERMINATE": 0.063375
+          },
+          "confidence": 0.667271
+        }
+      },
+      "seconds": 2.9444019839866087
+    },
+    {
+      "frame": 304,
+      "candidate_count": 3,
+      "history_count": 3,
+      "answers": {
+        "match_0": {
+          "type": "choice",
+          "choice": "1",
+          "probabilities": {
+            "1": 0.327662,
+            "2": 0.131916,
+            "3": 0.237298,
+            "NEW": 0.14356,
+            "IGNORE": 0.076227,
+            "NO_MATCH": 0.083338
+          },
+          "confidence": 0.193194
+        },
+        "update_0": {
+          "type": "noul",
+          "noul": 0.365379
+        },
+        "reliability_0": {
+          "type": "score",
+          "score": 1.610641,
+          "legend": {
+            "0": "contradictory",
+            "1": "ambiguous",
+            "2": "supported",
+            "3": "strong"
+          },
+          "probabilities": {
+            "0": 0.174837,
+            "1": 0.236053,
+            "2": 0.392741,
+            "3": 0.196369
+          },
+          "confidence": 0.217903
+        },
+        "match_1": {
+          "type": "choice",
+          "choice": "3",
+          "probabilities": {
+            "1": 0.242433,
+            "2": 0.157655,
+            "3": 0.292846,
+            "NEW": 0.143587,
+            "IGNORE": 0.084231,
+            "NO_MATCH": 0.079247
+          },
+          "confidence": 0.151415
+        },
+        "update_1": {
+          "type": "noul",
+          "noul": 0.278902
+        },
+        "reliability_1": {
+          "type": "score",
+          "score": 1.264107,
+          "legend": {
+            "0": "contradictory",
+            "1": "ambiguous",
+            "2": "supported",
+            "3": "strong"
+          },
+          "probabilities": {
+            "0": 0.247876,
+            "1": 0.354569,
+            "2": 0.283128,
+            "3": 0.114428
+          },
+          "confidence": 0.240141
+        },
+        "match_2": {
+          "type": "choice",
+          "choice": "3",
+          "probabilities": {
+            "1": 0.171468,
+            "2": 0.131288,
+            "3": 0.517073,
+            "NEW": 0.095439,
+            "IGNORE": 0.046256,
+            "NO_MATCH": 0.038476
+          },
+          "confidence": 0.420487
+        },
+        "update_2": {
+          "type": "noul",
+          "noul": 0.324052
+        },
+        "reliability_2": {
+          "type": "score",
+          "score": 1.543778,
+          "legend": {
+            "0": "contradictory",
+            "1": "ambiguous",
+            "2": "supported",
+            "3": "strong"
+          },
+          "probabilities": {
+            "0": 0.19561,
+            "1": 0.252752,
+            "2": 0.363885,
+            "3": 0.187752
+          },
+          "confidence": 0.168275
+        },
+        "life_1": {
+          "type": "choice",
+          "choice": "ACTIVE",
+          "probabilities": {
+            "ACTIVE": 0.790185,
+            "LOST": 0.091857,
+            "REACTIVATE": 0.065749,
+            "TERMINATE": 0.052209
+          },
+          "confidence": 0.720247
+        },
+        "life_2": {
+          "type": "choice",
+          "choice": "ACTIVE",
+          "probabilities": {
+            "ACTIVE": 0.641068,
+            "LOST": 0.154118,
+            "REACTIVATE": 0.112913,
+            "TERMINATE": 0.091901
+          },
+          "confidence": 0.521424
+        },
+        "life_3": {
+          "type": "choice",
+          "choice": "ACTIVE",
+          "probabilities": {
+            "ACTIVE": 0.760183,
+            "LOST": 0.098247,
+            "REACTIVATE": 0.089306,
+            "TERMINATE": 0.052265
+          },
+          "confidence": 0.680243
+        }
+      },
+      "seconds": 0.7476302239811048
+    }
+  ],
+  "checkpoint": "/data2/user/LocateMOT_GroundJEV/models/OneJev-0.8B",
+  "GT_read": false,
+  "history": "same GT-free geometry-control history in both subprocesses",
+  "official_fork_check": "unchanged automatic check and original0.05tolerance",
+  "peak_GPU_allocated_bytes": 4218028544,
+  "GPU": "NVIDIA A800-SXM4-80GB",
+  "scope": "three multimodal requests with three real proposals each; not video performance"
+}

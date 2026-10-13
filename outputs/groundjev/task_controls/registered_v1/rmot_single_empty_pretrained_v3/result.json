@@ -1,0 +1,68 @@
+{
+  "status": "VIDEO_INFERENCE_COMPLETE_WITH_REJECTED_PERCEPTION",
+  "task": "rmot",
+  "backend": "full",
+  "evidence_format": "v3_crop_motion",
+  "native_feature_url": null,
+  "adaptive_context_groups": false,
+  "scope": "registered_short_functional_clip",
+  "video_manifest": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_pilot_data/rmot_single_empty.json",
+  "frames": 8,
+  "latencies_seconds": [
+    0.49023141496581957,
+    0.5663620569976047,
+    0.33704422001028433,
+    0.5137160049634986,
+    0.40302483399864286,
+    0.3340195759665221,
+    0.23544419300742447,
+    0.20222969900351018
+  ],
+  "grounding_parser_policy": "strict_client",
+  "grounding_decoder_policy": "generic_greedy",
+  "grounding_vocabulary_chunk_size": null,
+  "specification": {
+    "task": "rmot",
+    "vocabulary": [
+      "person",
+      "car"
+    ],
+    "expression": "a red coat is being worn by the woman"
+  },
+  "timestamp_policy": "KITTI 10 Hz frame clock; source zero-based frame numbers retained",
+  "perception_failure_policy": "stop",
+  "perception_rejected_frames": [
+    152
+  ],
+  "perception_rejection_rate": 0.125,
+  "strict_wire_invalid_frames": [
+    150,
+    151,
+    152,
+    153,
+    154,
+    155,
+    156,
+    157
+  ],
+  "all_input_frames_processed": true,
+  "end_to_end_fps": null,
+  "complete_video_wall_seconds": 3.403573610004969,
+  "model_initialization_seconds": 8.234302675002255,
+  "timing_scope": "all image reads, native requests including service queueing, association, memory persistence, prediction/log writes, drawing, video encoding and encoder completion; preloaded remote DLM server startup excluded",
+  "successful_frame_pipeline_fps": 2.595656429447684,
+  "association_replay_fps": 2.595656429447684,
+  "resume_source": null,
+  "resumed_completed_frames": 0,
+  "timing_limitations": null,
+  "official_metrics": {
+    "status": "COMPLETE",
+    "path": "outputs/groundjev/task_controls/registered_v1/rmot_single_empty_pretrained_v3/official_metrics.json",
+    "scope": "registered_short_functional_clip"
+  },
+  "checkpoint": "/data2/user/LocateMOT_GroundJEV/models/OneJev-0.8B",
+  "motchallenge_confidence_column": "constant unscored-output sentinel; native detection score is absent",
+  "gt_read_by_runtime": false,
+  "future_frames_read_by_runtime": false,
+  "peak_decision_gpu_memory_bytes": 3280834048
+}

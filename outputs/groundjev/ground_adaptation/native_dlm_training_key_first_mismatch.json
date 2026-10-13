@@ -1,0 +1,42 @@
+{
+  "status": "NATIVE_DLM_WRAPPER_KEY_MISMATCH",
+  "checkpoint": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM",
+  "native_wrapper": "official models.dlm.vlm.GAMQwen3DLM",
+  "base_model_class": "<class 'transformers_modules.GroundAnything_hyphen_DLM.modeling_groundinganything.GroundAnythingVLMForConditionalGeneration'>",
+  "metadata_reconstruction_only": true,
+  "tensors": 569,
+  "missing": [],
+  "unexpected": [],
+  "shape_mismatches": {
+    "base_model.model.language_model.embed_tokens.weight": {
+      "expected": [
+        152670,
+        2560
+      ],
+      "checkpoint": [
+        152671,
+        2560
+      ]
+    },
+    "base_model.lm_head.weight": {
+      "expected": [
+        152670,
+        2560
+      ],
+      "checkpoint": [
+        152671,
+        2560
+      ]
+    }
+  },
+  "native_loss_contract": {
+    "mdm_loss_weight": 0.5,
+    "causal_loss_weight": 0.5,
+    "block_size": 32
+  },
+  "gradient_training_performed": false,
+  "matching_AR_checkpoint_download_required": true,
+  "HF_plain_CausalLM_SFT_used": false,
+  "image_GT_read": false,
+  "language_weights_randomly_substituted": false
+}

@@ -1,0 +1,61 @@
+{
+  "flash-linear-attention": {
+    "version": "0.5.2",
+    "requires_dist": [
+      "fla-core==0.5.2",
+      "transformers>=4.45.0",
+      "fla-core[cuda]==0.5.2; extra == \"cuda\"",
+      "fla-core[rocm]==0.5.2; extra == \"rocm\"",
+      "fla-core[xpu]==0.5.2; extra == \"xpu\"",
+      "fla-core[npu]==0.5.2; extra == \"npu\"",
+      "fla-core[cpu]==0.5.2; extra == \"cpu\"",
+      "tilelang>=0.1.9; extra == \"tilelang\"",
+      "causal-conv1d>=1.4.0; extra == \"conv1d\"",
+      "matplotlib; extra == \"benchmark\"",
+      "pandas; extra == \"benchmark\"",
+      "datasets>=3.3.0; extra == \"benchmark\"",
+      "pytest; extra == \"test\"",
+      "pytest-xdist; extra == \"test\""
+    ],
+    "files": [
+      {
+        "filename": "flash_linear_attention-0.5.2-py3-none-any.whl",
+        "url": "https://files.pythonhosted.org/packages/90/d2/2070e3cf2148c5cce99ca4876633c4b7b89ec085323600bd3d47aeacd306/flash_linear_attention-0.5.2-py3-none-any.whl",
+        "sha256": "dcf405d81f5426393b59037097aa700d0f4a841465d5028d5aa543f4502f2400"
+      },
+      {
+        "filename": "flash_linear_attention-0.5.2.tar.gz",
+        "url": "https://files.pythonhosted.org/packages/d2/76/c180949eae5161b9fcf4c928cab52f0c257ce84c1a59b4462b1d2b6e5883/flash_linear_attention-0.5.2.tar.gz",
+        "sha256": "c053d3a75c8f5b725063f719ae6bce0f4d9dac6da32735be8ae7d485a6c9820f"
+      }
+    ]
+  },
+  "fla-core": {
+    "version": "0.5.2",
+    "requires_dist": [
+      "einops",
+      "torch>=2.7.0; extra == \"cuda\"",
+      "triton>=3.3; extra == \"cuda\"",
+      "torch>=2.7.0; extra == \"rocm\"",
+      "torch>=2.7.0; extra == \"xpu\"",
+      "torch==2.7.1; extra == \"npu\"",
+      "torch_npu==2.7.1.post4; extra == \"npu\"",
+      "torchvision==0.22.1; extra == \"npu\"",
+      "triton-ascend==3.2.1; extra == \"npu\"",
+      "torch>=2.7.0; extra == \"cpu\"",
+      "triton>=3.3; extra == \"cpu\""
+    ],
+    "files": [
+      {
+        "filename": "fla_core-0.5.2-py3-none-any.whl",
+        "url": "https://files.pythonhosted.org/packages/2d/ed/dfe19c4da779957eb6a42a26812f9b4e2280bf757a17a71933ff59ffcb98/fla_core-0.5.2-py3-none-any.whl",
+        "sha256": "5e830c85bad3d0d34677f98ac7074d08687a3756f0f0499d95ceb96eb6920761"
+      },
+      {
+        "filename": "fla_core-0.5.2.tar.gz",
+        "url": "https://files.pythonhosted.org/packages/94/85/20bdc0fbbbaeec27b5b198e0dbbbc51161a267066a4aebd9e4b413637c6c/fla_core-0.5.2.tar.gz",
+        "sha256": "9360fc412f784c1c8f05c320ec2902d5d968764178c9b8a92efc919e17a39680"
+      }
+    ]
+  }
+}

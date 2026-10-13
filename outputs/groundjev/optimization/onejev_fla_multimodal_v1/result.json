@@ -1,0 +1,22 @@
+{
+  "status": "REAL_ONEJEV_ACCELERATOR_PARITY_REJECTED",
+  "maximum_typed_numeric_answer_difference": 0.021210999999999994,
+  "preregistered_tolerance": 0.001,
+  "changed_typed_choices": [],
+  "reference_request_seconds": [
+    1.1736085339798592,
+    1.8328717079712078,
+    1.977977903035935
+  ],
+  "fla_request_seconds": [
+    0.8666073759668507,
+    2.9444019839866087,
+    0.7476302239811048
+  ],
+  "component_speed_ratio": 1.0934091307751321,
+  "scope": "three multimodal requests with three real proposals each; not video performance",
+  "GT_read": false,
+  "original_training_changed": false,
+  "end_to_end_speed_claim": false,
+  "timing_conditions": "component timing under concurrent project/foreign workloads; startup and first warmup excluded"
+}

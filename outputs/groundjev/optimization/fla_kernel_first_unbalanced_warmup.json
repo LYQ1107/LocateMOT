@@ -1,0 +1,66 @@
+{
+  "status": "ISOLATED_FLA_KERNEL_REFERENCE_COMPARISON_COMPLETE",
+  "seed": 0,
+  "fla_version": "0.5.2",
+  "torch_version": "2.10.0+cu128",
+  "GPU": "NVIDIA A800-SXM4-80GB",
+  "results": [
+    {
+      "length": 257,
+      "shape": [
+        1,
+        257,
+        16,
+        128
+      ],
+      "reference_seconds": 0.31607744796201587,
+      "fla_seconds": 0.005016794020775706,
+      "speed_ratio": 63.00387192558952,
+      "output_max_abs_difference": 0.00048828125,
+      "output_RMSE": 2.4484790628775954e-05,
+      "state_max_abs_difference": 0.0027354061603546143,
+      "gradient_max_abs_differences": [
+        1.1641532182693481e-10,
+        1.1641532182693481e-10,
+        2.9103830456733704e-11,
+        6.406821739801671e-10,
+        1.862645149230957e-09
+      ],
+      "finite_nonzero_gradients": true
+    },
+    {
+      "length": 1024,
+      "shape": [
+        1,
+        1024,
+        16,
+        128
+      ],
+      "reference_seconds": 0.013261760002933443,
+      "fla_seconds": 0.00519033899763599,
+      "speed_ratio": 2.555085517337825,
+      "output_max_abs_difference": 0.00048828125,
+      "output_RMSE": 2.487429628672544e-05,
+      "state_max_abs_difference": 0.003532201051712036
+    },
+    {
+      "length": 4096,
+      "shape": [
+        1,
+        4096,
+        16,
+        128
+      ],
+      "reference_seconds": 0.036607457033824176,
+      "fla_seconds": 0.0057197000132873654,
+      "speed_ratio": 6.400240737937626,
+      "output_max_abs_difference": 0.00048828125,
+      "output_RMSE": 2.4669816411915235e-05,
+      "state_max_abs_difference": 0.004041731357574463
+    }
+  ],
+  "actual_model_probability_verification": "pending",
+  "adopted_in_running_training": false,
+  "end_to_end_speed_claim": false,
+  "original_reference_environment_modified": false
+}

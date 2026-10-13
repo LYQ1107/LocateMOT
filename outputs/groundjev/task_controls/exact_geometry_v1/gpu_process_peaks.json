@@ -1,0 +1,20 @@
+{
+  "sampling_interval_seconds": 5,
+  "process_peaks_bytes": {
+    "GPU-44f62835-4095-23ec-d3dd-5af16a00705c:4018069": 26187137024,
+    "GPU-c6523d98-cb2d-95ed-4cb2-a84936acceb6:4043767": 4229955584,
+    "GPU-883c8be3-25b0-3d19-6fa8-4c2e335e67d2:3858659": 19065208832,
+    "GPU-883c8be3-25b0-3d19-6fa8-4c2e335e67d2:3943776": 24180162560,
+    "GPU-c6523d98-cb2d-95ed-4cb2-a84936acceb6:4105531": 536870912,
+    "GPU-0322c0e7-ffbf-e068-5bdd-587b8216a9d9:4105461": 3110076416,
+    "GPU-c6523d98-cb2d-95ed-4cb2-a84936acceb6:4106102": 13843300352
+  },
+  "simultaneous_project_device_peaks_bytes": {
+    "GPU-44f62835-4095-23ec-d3dd-5af16a00705c": 26187137024,
+    "GPU-c6523d98-cb2d-95ed-4cb2-a84936acceb6": 18073255936,
+    "GPU-883c8be3-25b0-3d19-6fa8-4c2e335e67d2": 43245371392,
+    "GPU-0322c0e7-ffbf-e068-5bdd-587b8216a9d9": 3110076416
+  },
+  "scope": "all GroundJEV processes observed, including concurrent SFT/MOT; foreign projects excluded",
+  "errors": []
+}

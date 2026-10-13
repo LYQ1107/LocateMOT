@@ -1,0 +1,31 @@
+{
+  "status": "EXACT_NATIVE_GEOMETRY_GROUPING_VALIDATED",
+  "frames": [
+    {
+      "frame": 751,
+      "native_label_box_rows": 201,
+      "distinct_object_geometries": 54
+    },
+    {
+      "frame": 781,
+      "native_label_box_rows": 441,
+      "distinct_object_geometries": 58
+    },
+    {
+      "frame": 811,
+      "native_label_box_rows": 777,
+      "distinct_object_geometries": 109
+    },
+    {
+      "frame": 841,
+      "native_label_box_rows": 354,
+      "distinct_object_geometries": 85
+    }
+  ],
+  "distinct_geometry_coverage_preserved": true,
+  "all_original_class_labels_preserved": true,
+  "classification_improvement_claim": false,
+  "GT_read": false,
+  "official_GT_metric_or_parser_changed": false,
+  "source": "outputs/groundjev/multitask_candidate_controls/tao_scored_queries_v1/frame_candidates.jsonl"
+}

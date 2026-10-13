@@ -1,0 +1,354 @@
+{
+  "status": "REGISTERED_FINITE_CONTROLS_COMPLETE",
+  "plan": "configs/groundjev/exact_geometry_controls_20261014.json",
+  "physical_gpu": 5,
+  "native_candidates_fixed": true,
+  "end_to_end_FPS_claim": false,
+  "Pilot_complete": false,
+  "completed": {
+    "ovmot_exact_geometry_simple": {
+      "run": "outputs/groundjev/task_controls/exact_geometry_v1/ovmot_exact_geometry_simple",
+      "official_metrics": {
+        "status": "OFFICIAL_REGISTERED_MULTITASK_SCOPE_EVALUATION_COMPLETE",
+        "task": "ovmot",
+        "dataset": "tao_amodal",
+        "sequence": "val/YFCC100M/v_25685519b728afd746dfd1b2fe77c",
+        "scope": "registered_short_functional_clip",
+        "frames": 4,
+        "all_registered_frames_included": true,
+        "GT_access": "evaluation only",
+        "official_test_labels_read": false,
+        "end_to_end_fps": null,
+        "association_replay_fps": 9.822601170769437,
+        "perception_rejected_frames": [
+          751,
+          781,
+          811,
+          841
+        ],
+        "evaluator": "unmodified official TETA OVMOT recipe; non-exhaustive TAO",
+        "evaluator_commit": "b498aa87b252bfb75d7cc0d8d6435c3e1e74e4de",
+        "metrics": {
+          "TETA": 33.042,
+          "LocA": 48.539,
+          "AssocA": 50.587,
+          "ClsA": 0.0,
+          "LocRe": 49.167,
+          "LocPr": 93.333,
+          "AssocRe": 53.181,
+          "AssocPr": 85.644,
+          "ClsRe": 0.0,
+          "ClsPr": 0.0
+        },
+        "base_novel": {
+          "base": {
+            "TETA": 33.042,
+            "LocA": 48.539,
+            "AssocA": 50.587,
+            "ClsA": 0.0,
+            "LocRe": 49.167,
+            "LocPr": 93.333,
+            "AssocRe": 53.181,
+            "AssocPr": 85.644,
+            "ClsRe": 0.0,
+            "ClsPr": 0.0
+          },
+          "novel": null
+        },
+        "metric_scale": "official TETA summary percent",
+        "evaluated_categories": [
+          {
+            "name": "baby",
+            "group": "base"
+          }
+        ],
+        "GT_boxes": 18,
+        "predictions": 306,
+        "unmapped_predicted_labels": [
+          {
+            "frame": 751,
+            "label": "blouse"
+          },
+          {
+            "frame": 751,
+            "label": "blouse"
+          },
+          {
+            "frame": 751,
+            "label": "blouse"
+          },
+          {
+            "frame": 751,
+            "label": "blouse"
+          },
+          {
+            "frame": 781,
+            "label": "washbasin"
+          },
+          {
+            "frame": 811,
+            "label": "blouse"
+          },
+          {
+            "frame": 811,
+            "label": "blouse"
+          },
+          {
+            "frame": 811,
+            "label": "blouse"
+          },
+          {
+            "frame": 811,
+            "label": "blouse"
+          },
+          {
+            "frame": 811,
+            "label": "blouse"
+          },
+          {
+            "frame": 811,
+            "label": "blouse"
+          },
+          {
+            "frame": 811,
+            "label": "bob"
+          },
+          {
+            "frame": 811,
+            "label": "halter top"
+          },
+          {
+            "frame": 811,
+            "label": "halter top"
+          },
+          {
+            "frame": 811,
+            "label": "halter top"
+          },
+          {
+            "frame": 811,
+            "label": "humm"
+          },
+          {
+            "frame": 811,
+            "label": "skullcap"
+          },
+          {
+            "frame": 841,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 841,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 841,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 841,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 841,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 841,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 841,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 841,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 841,
+            "label": "arctic (type of shoe)"
+          }
+        ],
+        "unmapped_policy": "retain boxes with unknown category -1; never discard predictions or GT",
+        "prediction_score": "constant unscored sentinel 1; no detector confidence and no score-based truncation",
+        "GT_policy": "all original modal xywh boxes; no clipping, visibility threshold, or category exclusion",
+        "novel_evaluation_GT_used_for_training": false,
+        "official_complete_dataset_result": false,
+        "timestamp_policy": "annotation-step units; physical source FPS unavailable; display at one step per second"
+      }
+    },
+    "ovmot_exact_geometry_full": {
+      "run": "outputs/groundjev/task_controls/exact_geometry_v1/ovmot_exact_geometry_full",
+      "official_metrics": {
+        "status": "OFFICIAL_REGISTERED_MULTITASK_SCOPE_EVALUATION_COMPLETE",
+        "task": "ovmot",
+        "dataset": "tao_amodal",
+        "sequence": "val/YFCC100M/v_25685519b728afd746dfd1b2fe77c",
+        "scope": "registered_short_functional_clip",
+        "frames": 4,
+        "all_registered_frames_included": true,
+        "GT_access": "evaluation only",
+        "official_test_labels_read": false,
+        "end_to_end_fps": null,
+        "association_replay_fps": 0.019777244749447885,
+        "perception_rejected_frames": [
+          751,
+          781,
+          811,
+          841
+        ],
+        "evaluator": "unmodified official TETA OVMOT recipe; non-exhaustive TAO",
+        "evaluator_commit": "b498aa87b252bfb75d7cc0d8d6435c3e1e74e4de",
+        "metrics": {
+          "TETA": 23.32,
+          "LocA": 49.095,
+          "AssocA": 20.866,
+          "ClsA": 0.0,
+          "LocRe": 49.722,
+          "LocPr": 93.333,
+          "AssocRe": 26.917,
+          "AssocPr": 51.141,
+          "ClsRe": 0.0,
+          "ClsPr": 0.0
+        },
+        "base_novel": {
+          "base": {
+            "TETA": 23.32,
+            "LocA": 49.095,
+            "AssocA": 20.866,
+            "ClsA": 0.0,
+            "LocRe": 49.722,
+            "LocPr": 93.333,
+            "AssocRe": 26.917,
+            "AssocPr": 51.141,
+            "ClsRe": 0.0,
+            "ClsPr": 0.0
+          },
+          "novel": null
+        },
+        "metric_scale": "official TETA summary percent",
+        "evaluated_categories": [
+          {
+            "name": "baby",
+            "group": "base"
+          }
+        ],
+        "GT_boxes": 18,
+        "predictions": 286,
+        "unmapped_predicted_labels": [
+          {
+            "frame": 751,
+            "label": "blouse"
+          },
+          {
+            "frame": 751,
+            "label": "blouse"
+          },
+          {
+            "frame": 751,
+            "label": "blouse"
+          },
+          {
+            "frame": 751,
+            "label": "blouse"
+          },
+          {
+            "frame": 781,
+            "label": "washbasin"
+          },
+          {
+            "frame": 811,
+            "label": "blouse"
+          },
+          {
+            "frame": 811,
+            "label": "blouse"
+          },
+          {
+            "frame": 811,
+            "label": "blouse"
+          },
+          {
+            "frame": 811,
+            "label": "blouse"
+          },
+          {
+            "frame": 811,
+            "label": "blouse"
+          },
+          {
+            "frame": 811,
+            "label": "blouse"
+          },
+          {
+            "frame": 811,
+            "label": "bob"
+          },
+          {
+            "frame": 811,
+            "label": "halter top"
+          },
+          {
+            "frame": 811,
+            "label": "halter top"
+          },
+          {
+            "frame": 811,
+            "label": "halter top"
+          },
+          {
+            "frame": 811,
+            "label": "humm"
+          },
+          {
+            "frame": 811,
+            "label": "skullcap"
+          },
+          {
+            "frame": 841,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 841,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 841,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 841,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 841,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 841,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 841,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 841,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 841,
+            "label": "arctic (type of shoe)"
+          }
+        ],
+        "unmapped_policy": "retain boxes with unknown category -1; never discard predictions or GT",
+        "prediction_score": "constant unscored sentinel 1; no detector confidence and no score-based truncation",
+        "GT_policy": "all original modal xywh boxes; no clipping, visibility threshold, or category exclusion",
+        "novel_evaluation_GT_used_for_training": false,
+        "official_complete_dataset_result": false,
+        "timestamp_policy": "annotation-step units; physical source FPS unavailable; display at one step per second"
+      }
+    }
+  }
+}

@@ -21,6 +21,8 @@ def main():
     parser.add_argument('--model', type=Path, default=ROOT/'models/GroundAnything-DLM')
     parser.add_argument('--port', type=int, default=8101)
     parser.add_argument('--mem-fraction-static', type=float, default=.65)
+    parser.add_argument('--out',type=Path,default=ROOT/'outputs/groundjev/groundanything_service',
+                        help='separate launch/bundle directory for an adapted checkpoint service')
     args = parser.parse_args()
     visible = os.environ.get('CUDA_VISIBLE_DEVICES', '').split(',')
     config = json.loads((ROOT/'configs/groundjev/resources.json').read_text())
@@ -42,7 +44,7 @@ def main():
         vocab = weights.get_slice('base_model.model.language_model.embed_tokens.weight').get_shape()[0]
     if len(mask) != 1 or mask[0] != vocab-1 or len(tokenizer) != vocab:
         raise RuntimeError('DLM tokenizer and embedding rows differ')
-    output = ROOT/'outputs/groundjev/groundanything_service'
+    output = args.out.resolve()
     output.mkdir(parents=True, exist_ok=True)
     command, env, settings, algorithm = build_launch(model, output, 'denoise', mask[0], vocab,
         tokenizer.convert_tokens_to_ids('<|im_end|>'), paths, os.environ, port=args.port)

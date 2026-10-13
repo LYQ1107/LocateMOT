@@ -56,6 +56,7 @@ def main():
     parser.add_argument('--backend', choices=['simple', 'simple_native', 'simple_temporal', 'full'], default='full')
     parser.add_argument('--evidence-format',choices=['v1','v2_crop_motion','v3_crop_motion','v4_native_features','v5_native_features_csv','v6_native_compact_history'],default='v1')
     parser.add_argument('--native-feature-url',help='isolated official DLM visual encoder RPC; no substitute image features')
+    parser.add_argument('--adaptive-context-groups',action='store_true',help='split native preflight-rejected groups, retaining all candidate rows and identity options')
     parser.add_argument('--expression')
     parser.add_argument('--vocabulary', nargs='+')
     parser.add_argument('--out', type=Path, required=True)
@@ -85,7 +86,7 @@ def main():
         decoder_policy=args.grounding_decoder_policy, vocabulary_chunk_size=args.grounding_vocabulary_chunk_size)
     if args.backend=='simple': decision=SimpleDecision()
     elif args.backend in ('simple_native','simple_temporal'): decision=FeatureDecision(temporal=args.backend=='simple_temporal')
-    else: decision=OneJevDecision(args.checkpoint,evidence_format=args.evidence_format)
+    else: decision=OneJevDecision(args.checkpoint,evidence_format=args.evidence_format,adaptive_context=args.adaptive_context_groups)
     tracker = OnlineTracker(decision)
     feature_client=None
     if args.native_feature_url:
@@ -145,7 +146,9 @@ def main():
                             'error':perception['result']['parse_error']}),flush=True)
                 if perception.get('model_response_rejected'):
                     rejected_frames.append(frame_number)
-                diagnostic = perception.get('original_perception',perception)
+                diagnostic = perception
+                while 'original_perception' in diagnostic:
+                    diagnostic = diagnostic['original_perception']
                 if diagnostic.get('strict_wire_valid') is False:
                     strict_invalid_frames.append(frame_number)
                 if index >= len(resumed):
@@ -214,6 +217,7 @@ def main():
               'task': args.task, 'backend': args.backend,
               'evidence_format':args.evidence_format,
               'native_feature_url':args.native_feature_url,
+              'adaptive_context_groups':args.adaptive_context_groups,
               'scope': 'short_functional_check' if args.limit else manifest['scope'],
               'video_manifest': str(args.video), 'frames': len(frames), 'latencies_seconds': latencies,
               'grounding_parser_policy': args.grounding_parser,

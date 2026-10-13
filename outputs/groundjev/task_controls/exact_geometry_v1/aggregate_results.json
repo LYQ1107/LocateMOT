@@ -1,0 +1,42 @@
+{
+  "status": "EXACT_NATIVE_GEOMETRY_CONTROLS_COMPLETE",
+  "scope": "registered four-frame TAO Base-only functional scope",
+  "GT_parser_and_evaluator_changed": false,
+  "results": {
+    "ovmot_exact_geometry_simple": {
+      "official_TETA_percent": {
+        "TETA": 33.042,
+        "LocA": 48.539,
+        "AssocA": 50.587,
+        "ClsA": 0.0,
+        "LocRe": 49.167,
+        "LocPr": 93.333,
+        "AssocRe": 53.181,
+        "AssocPr": 85.644,
+        "ClsRe": 0.0,
+        "ClsPr": 0.0
+      },
+      "replay_FPS": 9.822601170769437,
+      "peak_allocated_bytes": null,
+      "Novel_GT_present": false
+    },
+    "ovmot_exact_geometry_full": {
+      "official_TETA_percent": {
+        "TETA": 23.32,
+        "LocA": 49.095,
+        "AssocA": 20.866,
+        "ClsA": 0.0,
+        "LocRe": 49.722,
+        "LocPr": 93.333,
+        "AssocRe": 26.917,
+        "AssocPr": 51.141,
+        "ClsRe": 0.0,
+        "ClsPr": 0.0
+      },
+      "replay_FPS": 0.019777244749447885,
+      "peak_allocated_bytes": 8391591424,
+      "Novel_GT_present": false
+    }
+  },
+  "interpretation": "exact geometry grouping reduces duplicate identity competitors, improves localization precision and replay speed; unchanged first-label category baseline still ClsA0; no Full superiority or end-to-end speed claim"
+}

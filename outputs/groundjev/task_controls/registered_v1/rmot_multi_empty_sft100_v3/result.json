@@ -1,0 +1,76 @@
+{
+  "status": "VIDEO_INFERENCE_COMPLETE_WITH_REJECTED_PERCEPTION",
+  "task": "rmot",
+  "backend": "full",
+  "evidence_format": "v3_crop_motion",
+  "native_feature_url": null,
+  "adaptive_context_groups": false,
+  "scope": "registered_short_functional_clip",
+  "video_manifest": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_pilot_data/rmot_multi_empty.json",
+  "frames": 12,
+  "latencies_seconds": [
+    0.25038517301436514,
+    0.2572602709988132,
+    0.22970934596378356,
+    0.44105827901512384,
+    0.4306537589873187,
+    0.3019257400301285,
+    0.28279794700210914,
+    0.4183100290247239,
+    0.6062902300036512,
+    0.31852164096198976,
+    0.3263817600090988,
+    0.7554567970219068
+  ],
+  "grounding_parser_policy": "strict_client",
+  "grounding_decoder_policy": "generic_greedy",
+  "grounding_vocabulary_chunk_size": null,
+  "specification": {
+    "task": "rmot",
+    "vocabulary": [
+      "person",
+      "car"
+    ],
+    "expression": "arranging automobiles"
+  },
+  "timestamp_policy": "KITTI 10 Hz frame clock; source zero-based frame numbers retained",
+  "perception_failure_policy": "stop",
+  "perception_rejected_frames": [
+    34
+  ],
+  "perception_rejection_rate": 0.08333333333333333,
+  "strict_wire_invalid_frames": [
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43
+  ],
+  "all_input_frames_processed": true,
+  "end_to_end_fps": null,
+  "complete_video_wall_seconds": 5.129741654032841,
+  "model_initialization_seconds": 9.673249921994284,
+  "timing_scope": "all image reads, native requests including service queueing, association, memory persistence, prediction/log writes, drawing, video encoding and encoder completion; preloaded remote DLM server startup excluded",
+  "successful_frame_pipeline_fps": 2.5981050012570863,
+  "association_replay_fps": 2.5981050012570863,
+  "resume_source": null,
+  "resumed_completed_frames": 0,
+  "timing_limitations": null,
+  "official_metrics": {
+    "status": "COMPLETE",
+    "path": "outputs/groundjev/task_controls/registered_v1/rmot_multi_empty_sft100_v3/official_metrics.json",
+    "scope": "registered_short_functional_clip"
+  },
+  "checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_teacher_check_100/final",
+  "motchallenge_confidence_column": "constant unscored-output sentinel; native detection score is absent",
+  "gt_read_by_runtime": false,
+  "future_frames_read_by_runtime": false,
+  "peak_decision_gpu_memory_bytes": 3691230208
+}

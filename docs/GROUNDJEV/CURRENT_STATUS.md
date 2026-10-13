@@ -266,3 +266,163 @@ remains unavailable and annotation-step units explicitly declared.
 The69-file native-feature/GT-contract stage was verified on GitHub at
 1724df9de3465fce5fd1de96ccf81510029cd7f1 with exact local tree equality.
 No Pilot or final-goal completion claim.
+
+
+## 2026-10-14 — Registered task and inference controls
+
+All six controls completed on A800 GPU5 with original OneJev weights or
+actual SFT100. Predictions use exactly the same saved native candidates;
+GT uses verified top-left Refer-KITTI release coordinates and unchanged TETA.
+Official scopes remain8/12RMOT frames and4TAO annotation frames.
+
+| RMOT / V3 | HOTA (fraction) | IDF1 | FP | FN |
+|---|---:|---:|---:|---:|
+| Single pretrained | 0 | 0 | 0 | 5 |
+| Single SFT100 | 0 | 0 | 3 | 5 |
+| Multi pretrained | .222720 | .177778 | 10 | 25 |
+| Multi SFT100 | 0 | 0 | 1 | 30 |
+
+Current crops alone do not fix cold IGNORE. MOT-only SFT100 has negative
+transfer; it is not evidence of useful RMOT fine-tuning. Original finite
+MOT SFT500 continues, and mixed-task/actual-proposal training remains needed.
+
+| TAO scored-query retention | TETA (%) | LocA | AssocA | ClsA |
+|---|---:|---:|---:|---:|
+| Fixed native candidates Simple | 24.171 | 29.452 | 43.061 | 0 |
+| Same native candidates OneJev Full | 16.815 | 27.459 | 22.987 | 0 |
+
+Failed query chunks remain empty; independently scored chunks retained,
+without re-running the detector, filtering classes/GT, repairing invalid
+syntax, altering metrics or dropping frames. This is a registered combiner
+control, not an output-format pass. Full remains slower and less accurate.
+Both classification terms0 expose missing/wrong class decisions; the native
+shared JEV class head is still required. Novel is null in this Base-only scope.
+No detector-inclusive or full-dataset speed claim:replay FPS.838284Simple
+and.00352281Full, with all1773label/box rows kept.
+
+Exact-coordinate object-hypothesis grouping preserves every distinct native
+box and all label alternatives:201/441/777/354rows become54/58/109/85.
+No overlap threshold/NMS/topK/GT filtering. Independent Simple/Full controls
+completed; first native label remains an explicitly unlearned class baseline.
+A future genuine typed classification head must use the full dynamic vocabulary.
+
+Isolated FLA0.5.2 + einops0.8.2 addon (original environments untouched):
+GDN kernels2.29/3.24/8.43x faster at257/1024/4096tokens after both sides'
+warmup, maxoutput difference.0004883, finite gradients. First import lacked
+einops and was fixed only in the addon. First unbalanced warmup is preserved
+and does not support63x speed. Actual3multimodal OneJev requests differ up
+to.021211 in typed answers, exceeding the preregistered.001. Choices unchanged
+but probabilities/material memory gates can change. Accelerator rejected;
+original automatic fork check/.05 tolerance remains unchanged, training
+and original video owners stay on the reference backend. No end-to-end gain.
+
+Native DLM training preparation reconstructs the actual official
+GAMQwen3DLM wrapper, MDM.5+causal.5/block32, with all569tensor keys/shapes
+matched. The released JSON has152670AR rows; real checkpoint/tokenizer have
+152671including MASK152670. Native reconstruction uses real header size; no
+weight is added or randomized, no new AR download required. Initial mismatch
+retained. This is a key audit, not gradient proof.
+
+A finite3step native projector-only gradient check on legalMOT17TRAIN209/210
+combines original DLM spatial loss and same-ID contrastive ROI loss. Language/
+ViT frozen, projectorFP32masters, seed42, all32targets each frame with no
+clipping or dropping. It is a custom native-adapter policy, not the stock full
+language SFT recipe or completed adaptation. Meta nonpersistent rotary buffers
+initially caused allocation failure; native Accelerate initialization fixes
+that without creating learned values. The strict native cached-image schema
+then rejected a path-only dict; real original bytes/path are now supplied.
+All failed units preserved; the final v6 real-gradient check passed onGPU7. Four
+physical GPUs4/5/6/7max; foreign UDMT jobs untouched. Dense/referring retention,
+exported bundle inference and formal adaptation remain required.
+
+
+### Exact object geometry and native gradient runtime
+
+Exact geometry grouping controls completed:Simple TETA33.042,LocA48.539,
+AssocA50.587; Full23.320,49.095,20.866; bothClsA0. Recorded replayFPS
+9.82260Simple/.0197772Full. Every distinct box and all class hypotheses
+retained, first native label is an explicitly unlearned category baseline.
+The native class decision head and mixed-task supervision remain necessary.
+All8new video units have exact registered frame counts, no runtime GT and
+no detector-inclusive FPS claim.
+
+Initial native DLM projector checks failed before gradient acceptance; the
+final v6 unit now passed (authoritative receipt below).
+First runs failed on meta-only nonpersistent buffers, cached-image schema,
+projector per-image list output and CUDA-graph lifetime replay. Corrected
+with native buffer initialization, actual original image bytes, tensor-list
+concatenation and the official GAM_DLM_FLEX_CUDAGRAPHS=0 flag. Independent
+loss-gradient probes further require task-local AOT donated_buffer=False.
+Original failures preserved; native MDM/causal/block32/seed42/GT unchanged.
+Final3-step native check passed on physical7; exported-replica before/after
+controls completed. Formal adaptation remains incomplete.
+
+
+### Actual native DLM spatial and temporal gradient proof
+
+Final v6 native training unit completed3optimizer steps on legalMOT17TRAIN
+209/210, all32targets each frame and32same-ID positives. Official native
+GAMQwen3DLM MDM.5+causal.5/block32 retained, with.1identity ROI contrastive
+loss. Language and native ViT frozen;27,267,584native projector parameters
+useFP32masters. Independent dense-gradient norm8.75947 and temporal-gradient
+norm2.13338, finite combined norms8.77141/9.25557/9.02194. Native losses
+1.61708/1.66780/1.65477 include different sampled noise; do not claim training
+improvement from this warmup.26,766,531FP32elements and1,968,676BF16elements
+changed. Delta reload weight difference0,327,218,423bytes, SHA256
+bf8537a97675e465d80dfb08cb5b21454ee37711f622510fe8181b86370e2b3e,
+peak18,455,674,368GPUbytes. This proves actual localization and identity
+gradients, not formal adaptation or tracking gain.
+
+Checkpoint:/data2/user/LocateMOT_GroundJEV/outputs/groundjev/ground_adaptation/
+native_tracking_grad3_v6_native_runtime_flags/projector_delta.pt. Frozen
+nonpersistent rotary buffers remainFP32. Native official CUDA-graph flag0
+and task-local donated_buffer=False accommodate checkpointed backward and
+independent gradient probes; math/masks/loss weights/seed42unchanged.
+Failed meta-buffer/image-schema/list-output/CUDAgraph/donation units retained.
+
+Exported complete DLM variant models/GroundAnything-DLM-TrackProj3 replaces
+only5native projector tensors, retaining all569keys and every other native
+weight/tokenizer/code/config unchanged.9,687,419,704bytes, SHA256
+a626aad29c5bbc17e3a465a519e93681aaedacd81cbb21805cce40b7122777e9.
+Original model/server untouched. A distinct GPU7replica/8102 and launch bundle
+are used for48same-profile native frames:4dense+8single-ref+12multi-ref,
+original/updated, fixed Simple association. Requesteddecoderseed42, same
+unchanged official parsers and evaluator. These functional retention probes
+do not stand in for the full original GroundAnything benchmark suite.
+The one blocking owner stops only its owned adapted replica on completion.
+
+
+### Verified native projector retention controls (2026-10-14)
+
+All six fresh inference and official evaluation units passed scope and encoded
+video frame checks:48frames total, no runtime GT or future access, every
+rejected/empty frame retained. Original versus projector3 HOTA/IDF1 fractions:
+
+| Scope | Original HOTA | Projector3 HOTA | Original IDF1 | Projector3 IDF1 | IDSW before/after |
+|---|---:|---:|---:|---:|---:|
+| MOT17 4frames | .745083 | .755029 | .824427 | .847328 | 3/1 |
+| Single RMOT 8frames | .299355 | .303853 | .375000 | .400000 | 1/1 |
+| Multi RMOT 12frames | .229517 | .227592 | .222222 | .212766 | 0/1 |
+
+Both single variants reject frame152; both multi variants reject frame34.
+These frames remain in official denominators. Decoder tracking_dense,
+requested seed42, official_scoring parser, unchanged geometry Simple and
+legal validation scopes are identical. Short dense and single controls
+improve slightly, multi-referring declines. This is not formal adaptation,
+full original grounding/referring benchmark retention or a broad gain claim.
+Actual detector-inclusive FPS are in aggregate_results.json; concurrent
+workloads and original GPU6 versus replica GPU7 preclude an isolated speed
+comparison. The first replica failed KV allocation at mem-fraction.25;
+its failure is retained. The completed replica used.4 and stopped its own
+process group. Original server/model and foreign UDMT are unchanged.
+
+Authoritative receipt:
+outputs/groundjev/ground_adaptation/projector3_retention_v2_memory_budget/aggregate_results.json.
+OneJev formal500step owner remains live, latest returned report100/500;
+full1203frame DanceTrack owner remains live, latest returned frame1183.
+No completion claim for either. Current persistent feature service on5
+uses about4GiB; no GroundJEV process remains on7 after replica cleanup.
+Next research hypothesis: exact object geometry grouping improves localization,
+but copying a native query label leaves ClsA0. A real typed OneJev category
+head using every supplied vocabulary class, separate from identity and absent
+detection confidence, is required. It must preserve all candidates and GT.

@@ -1,0 +1,37 @@
+{
+  "name": "OVMOT_exact_geometry_identity_controls",
+  "execution_date": "2026-10-14",
+  "physical_gpu": 5,
+  "GPU_model": "NVIDIA A800-SXM4-80GB",
+  "scope": "registered legal short clips; not full video or dataset",
+  "hypotheses": [
+    "cross-label exact duplicates create artificial competing identities and model calls",
+    "retain every distinct native geometry and all label hypotheses; first-label category baseline explicitly unchanged/unlearned"
+  ],
+  "metrics": "unchanged TrackEval/TETA, exact registered GT including empty/rejected frames",
+  "seed_policy": "no new detector sampling; replay exact recorded native outputs; OneJev deterministic typed probabilities",
+  "candidate_query_policy": "official parser unchanged, every class request/GT/frame retained, no NMS/topK/GT filter or label replacement",
+  "timing_claim": "association replay only",
+  "maximum_GPU_count": 4,
+  "temporary_feature_budget_bytes": 26843545600,
+  "jobs": [
+    {
+      "name": "ovmot_exact_geometry_simple",
+      "video": "outputs/groundjev/multitask_pilot_data/ovmot_tao_first4.json",
+      "candidates": "outputs/groundjev/multitask_candidate_controls/tao_exact_geometry_v1/frame_candidates.jsonl",
+      "backend": "simple",
+      "evidence_format": "v1",
+      "checkpoint": "models/OneJev-0.8B",
+      "adaptive_context": false
+    },
+    {
+      "name": "ovmot_exact_geometry_full",
+      "video": "outputs/groundjev/multitask_pilot_data/ovmot_tao_first4.json",
+      "candidates": "outputs/groundjev/multitask_candidate_controls/tao_exact_geometry_v1/frame_candidates.jsonl",
+      "backend": "full",
+      "evidence_format": "v1",
+      "checkpoint": "models/OneJev-0.8B",
+      "adaptive_context": true
+    }
+  ]
+}

@@ -52,12 +52,13 @@ class FeatureDecision:
 
 
 class OneJevDecision:
-    def __init__(self, checkpoint, device='cuda:0', batch_candidates=16, shortlist=32, evidence_format='v1'):
+    def __init__(self, checkpoint, device='cuda:0', batch_candidates=16, shortlist=32, evidence_format='v1', adaptive_context=False):
         from qev.mm_engine import MMDecisionEngine
         self.checkpoint = str(Path(checkpoint).resolve())
         self.engine = MMDecisionEngine(str(checkpoint), device=device, dtype='bfloat16', cuda_graphs=False)
         self.batch_candidates, self.shortlist = batch_candidates, shortlist
         self.evidence_format = evidence_format
+        self.adaptive_context = adaptive_context
 
     def _candidate_sheet(self, image, candidates):
         from PIL import Image, ImageDraw
@@ -179,7 +180,7 @@ class OneJevDecision:
             try:
                 response, meta = self.engine.decide(request, media=media)
             except ValueError as error:
-                if self.evidence_format!='v6_native_compact_history' or not str(error).startswith('state plus longest question is ') or len(group)<2:
+                if not (self.adaptive_context or self.evidence_format=='v6_native_compact_history') or not str(error).startswith('state plus longest question is ') or len(group)<2:
                     raise
                 # The native engine rejects this branch before inference. Split
                 # the candidate group, preserving all identity options and rows.
@@ -202,6 +203,6 @@ class OneJevDecision:
                                'evidence_format':self.evidence_format,
                                'explicit_no_match':self.evidence_format in ('v2_crop_motion','v3_crop_motion','v4_native_features','v5_native_features_csv','v6_native_compact_history'),
                                'shortlist_limit': self.shortlist, 'batches': reports}
-        if self.evidence_format=='v6_native_compact_history':
+        if self.adaptive_context or self.evidence_format=='v6_native_compact_history':
             metadata.update(context_group_policy='split only native preflight-rejected groups; retain every candidate and all up-to32 identity options',context_splits=context_splits)
         return results, life, metadata

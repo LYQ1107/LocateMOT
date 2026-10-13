@@ -1,0 +1,140 @@
+{
+  "status": "SIX_REGISTERED_CONTROL_UNITS_COMPLETE",
+  "execution_date": "2026-10-14",
+  "scope": "explicit short legal clips, not full dataset",
+  "shared_GJ_tracker": true,
+  "GT_contract": "Refer-KITTI normalized top-left xywh verified; unchanged TAO GT",
+  "official_metrics": {
+    "rmot_single_empty_pretrained_v3": {
+      "metrics": {
+        "HOTA": 0.0,
+        "DetA": 0.0,
+        "AssA": 0.0,
+        "IDF1": 0.0,
+        "IDSW": 0,
+        "FP": 0,
+        "FN": 5
+      },
+      "frames": 8,
+      "proposal_coverage": {
+        "covered": 4,
+        "GT_boxes": 5,
+        "recall": 0.8,
+        "scope": "evaluation-only target coverage; not HOTA; never used to correct runtime state"
+      },
+      "replay_FPS": 2.595656429447684,
+      "peak_allocated_bytes": 3280834048,
+      "unmapped_label_count": 0
+    },
+    "rmot_single_empty_sft100_v3": {
+      "metrics": {
+        "HOTA": 0.0,
+        "DetA": 0.0,
+        "AssA": 0.0,
+        "IDF1": 0.0,
+        "IDSW": 0,
+        "FP": 3,
+        "FN": 5
+      },
+      "frames": 8,
+      "proposal_coverage": {
+        "covered": 4,
+        "GT_boxes": 5,
+        "recall": 0.8,
+        "scope": "evaluation-only target coverage; not HOTA; never used to correct runtime state"
+      },
+      "replay_FPS": 2.390520696820998,
+      "peak_allocated_bytes": 3508775936,
+      "unmapped_label_count": 0
+    },
+    "rmot_multi_empty_pretrained_v3": {
+      "metrics": {
+        "HOTA": 0.22272041440942322,
+        "DetA": 0.139873897230986,
+        "AssA": 0.3634791946195455,
+        "IDF1": 0.17777777777777778,
+        "IDSW": 1,
+        "FP": 10,
+        "FN": 25
+      },
+      "frames": 12,
+      "proposal_coverage": {
+        "covered": 5,
+        "GT_boxes": 30,
+        "recall": 0.16666666666666666,
+        "scope": "evaluation-only target coverage; not HOTA; never used to correct runtime state"
+      },
+      "replay_FPS": 1.7409840862444415,
+      "peak_allocated_bytes": 4579409920,
+      "unmapped_label_count": 0
+    },
+    "rmot_multi_empty_sft100_v3": {
+      "metrics": {
+        "HOTA": 0.0,
+        "DetA": 0.0,
+        "AssA": 0.0,
+        "IDF1": 0.0,
+        "IDSW": 0,
+        "FP": 1,
+        "FN": 30
+      },
+      "frames": 12,
+      "proposal_coverage": {
+        "covered": 5,
+        "GT_boxes": 30,
+        "recall": 0.16666666666666666,
+        "scope": "evaluation-only target coverage; not HOTA; never used to correct runtime state"
+      },
+      "replay_FPS": 2.5981050012570863,
+      "peak_allocated_bytes": 3691230208,
+      "unmapped_label_count": 0
+    },
+    "ovmot_scored_queries_simple": {
+      "metrics": {
+        "TETA": 24.171,
+        "LocA": 29.452,
+        "AssocA": 43.061,
+        "ClsA": 0.0,
+        "LocRe": 51.111,
+        "LocPr": 40.153,
+        "AssocRe": 44.918,
+        "AssocPr": 85.14,
+        "ClsRe": 0.0,
+        "ClsPr": 0.0
+      },
+      "frames": 4,
+      "proposal_coverage": null,
+      "replay_FPS": 0.8382839306868861,
+      "peak_allocated_bytes": null,
+      "unmapped_label_count": 130
+    },
+    "ovmot_scored_queries_full": {
+      "metrics": {
+        "TETA": 16.815,
+        "LocA": 27.459,
+        "AssocA": 22.987,
+        "ClsA": 0.0,
+        "LocRe": 38.333,
+        "LocPr": 48.158,
+        "AssocRe": 25.625,
+        "AssocPr": 77.369,
+        "ClsRe": 0.0,
+        "ClsPr": 0.0
+      },
+      "frames": 4,
+      "proposal_coverage": null,
+      "replay_FPS": 0.0035228079902742955,
+      "peak_allocated_bytes": 8599418880,
+      "unmapped_label_count": 119
+    }
+  },
+  "replay_timing_only": true,
+  "raw_GT_uploaded": false,
+  "source_candidate_counts_unchanged": true,
+  "interpretation": [
+    "V3 current-crop evidence does not fix single-query IGNORE; SFT100 introduces false outputs and multi-query collapse",
+    "query-level failure retention improves the measurement combiner without changing official parser/metrics or dropping GT",
+    "both OV variants ClsA0; a genuine class decision head is still required",
+    "OneJev Full association is worse and slower than Simple on this sparse scope"
+  ]
+}
