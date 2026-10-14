@@ -1,0 +1,16 @@
+{
+  "status": "REAL_NATIVE_EMA_MEMORY_ROUNDTRIP_AND_UPDATE_PASS",
+  "actual_video": "dancetrack0004",
+  "frames": [
+    1,
+    2
+  ],
+  "real_native_feature_width": 2560,
+  "matched_previous_tracks_checked": 1,
+  "EMA_alpha": 0.1,
+  "identical_save_restore_next_outputs_and_state": true,
+  "immutable_anchor_preserved": true,
+  "forced_write_does_not_falsify_last_reliable_time": true,
+  "GT_read": false,
+  "benchmark_claim": false
+}

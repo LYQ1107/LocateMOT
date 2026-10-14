@@ -1,0 +1,58 @@
+{
+  "name": "Frozen sharedCompact native full1203video memory interventions",
+  "physical_gpu": 5,
+  "GPU_model": "A800-SXM4-80GB",
+  "manifest": "outputs/groundjev/pilot_data/dancetrack.json",
+  "checkpoint": "outputs/groundjev/compact/rmot_native72_stage_v1/broad_native_training/checkpoint.pt",
+  "checkpoint_training": "joint1200 initialization plus1200broadnative steps, seed0; all intervention weights identical",
+  "candidates": "outputs/groundjev/compact/dancetrack0004_native300_v2_empty_roi_fixed/compact_distilled/frame_decisions.jsonl",
+  "prior_reference": "outputs/groundjev/compact/rmot_native72_stage_v1/broad_native_full1203_v2_cuda_resume/joint1200",
+  "scope": "all1203frames and27rejected frames of one legal validationvideo, not full dataset",
+  "GT": "only original officialevaluation and posthoc event labels; no state corrections",
+  "variants": [
+    {
+      "name": "reference_gated3",
+      "memory_policy": "gated",
+      "feature_view": "all",
+      "lost_seconds": 3.0
+    },
+    {
+      "name": "frame_only",
+      "memory_policy": "frame_only",
+      "feature_view": "recent",
+      "lost_seconds": 3.0
+    },
+    {
+      "name": "recent_observation3",
+      "memory_policy": "gated",
+      "feature_view": "recent",
+      "lost_seconds": 3.0
+    },
+    {
+      "name": "ema_always3",
+      "memory_policy": "ema",
+      "feature_view": "ema",
+      "lost_seconds": 3.0
+    },
+    {
+      "name": "anchor_always3",
+      "memory_policy": "always",
+      "feature_view": "all",
+      "lost_seconds": 3.0
+    },
+    {
+      "name": "anchor_gated30",
+      "memory_policy": "gated",
+      "feature_view": "all",
+      "lost_seconds": 30.0
+    }
+  ],
+  "interpretation": "frozen-model feature/update/lifetime interventions; do not claim independently retrained EMA or architecture competitors",
+  "EMA_alpha": 0.1,
+  "temporal_policy": "past/current observations only; no artificial GT-based occlusions or future correction",
+  "metrics": "unchanged officialTrackEval plus explicitlyposthoc birth-anchor recovery/option-missingNO_MATCH counts; no metric replacement",
+  "cache": "shared790667425byte nativeinput reused, omit only duplicated feature arrays in outputlogs; preserve boxes/labels/decisions and source reference",
+  "temporary_feature_budget_bytes": 26843545600,
+  "speed_claim": "association replay only, detector/ROI excluded; no E2E/real-time claim",
+  "same_major_core_across_tasks": true
+}

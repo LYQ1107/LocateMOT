@@ -1,0 +1,13 @@
+{
+  "status": "WAITING_REGISTERED_GPU5_MEMORY_OWNER",
+  "physical_gpu": 5,
+  "manifest": "outputs/groundjev/multitask_pilot_data/ovmot_tao_base_novel63_full.json",
+  "all40annotation_frames": true,
+  "fixed1203vocabulary": true,
+  "Novel_GT_for_training": false,
+  "completed": {},
+  "verified_memory_owner": [
+    1389525,
+    "36989871"
+  ]
+}

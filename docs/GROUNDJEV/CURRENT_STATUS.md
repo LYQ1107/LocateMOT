@@ -405,3 +405,48 @@ wrapper uses originalpreflight/runner/scorers; no sample skip or metric changes.
 Full9results still pending; exactstochasticcountercontinuation and adaptation
 retention gains are not asserted. One500training/completion owner continues.
 Currentrecovery owner: outputs/groundjev/ground_retention/full9_queue_recovery_v3_verified.
+
+## Fixed-core memory intervention study (running)
+
+Nativebroad1200 semanticCompact checkpoint is frozen for six full1203frame
+DanceTrack0004variants onGPU5: priorreferenceanchor/gated3s, immediateframe-only
+identities with recentfeatures, recent-observationfeatures with3sretention,
+unconditionalEMA(.1)features, anchor/alwaysreplace3s, anchor/gated30s. Same
+790,667,425byte originalnative candidate/ROI log, all27rejectedframes and
+originalTrackEval/GT/thresholds. These are frozenmodel inference interventions,
+not separately retrained policy competitors or full-dataset evidence.
+
+Long-memory writes and reliabilitytimestamps are separate: forcedwrites do not
+falsify lastreliabletime. EMAuses convexmixtures of actual nativefeatures,
+not synthesizedimages. Twoactualnative frames verify expectedEMA, immutable
+anchor and identical state-save/restore nextoutputs. Outputlogs omit only
+sharedfeaturearray duplication; allboxes/labels/decisions and originalsource
+reference remain. Resume rehydrates vectors from the retained exactsource.
+
+Posthocdiagnostics add natural candidate-gap identityrecovery by timebucket,
+correct-to-wrong/globalcompetition effects, and matchedGT-onlyNO_MATCH
+precision/recall under explicitmissing-correct-shortlist rule. Undefined
+support staysnull; ignored/unmatchedregions do not become falseNoMatchtruth.
+These diagnostics never correct runtime state or replace officialHOTA/IDF1.
+Owner: outputs/groundjev/compact/memory_full1203_v1; plan:
+configs/groundjev/memory_full1203_20261015.json. Nativefull9recovery and
+One500/completion-controls owners remain live and unchanged.
+
+Prior preserved referenceposthoc has4341/4586one-to-one nativeGTcoverage but
+only575/1768existingbirth-anchor associations correct; globalcompetition moves
+94correctmodelchoices towrong and18wrongchoices tocorrect. Naturalcandidate
+returns: ≤1s9/177samecorrectbirthIDs,1–3s0/4, >3ssupport0(null). Long30svariant
+therefore testsretention/competition, not provenlong>3srecovery in thisvideo.
+NO_MATCHdiagnostics are conditional on the stated immutablebirth-anchor rule,
+not claims about ignoredregions or a replacement for officialIDF1/HOTA.
+
+FullTAO Base/Novel video63 registration has40annotationframes and160GTboxes:
+Base120(person/baby+knife), Novel40(peeler), allsynsets available within the
+unchanged1203fixedvocabulary. LowestcompleteeligiblevalID selectedbeforemodel
+outputs, allimagegeometryverified. NovelGTis evaluation-only. A finiteowner
+waits currentGPU5memoryjobexit, runs all520nativevocabularyqueries/realnative
+ROIs, then exact-proposalSimple/sharedCompact underoriginalTETA. Explicit
+scored-query aggregation retains every nativeoutcome/rejectedquery and all
+classes/frames, no GT filter/NMS/topK. SourceFPSunknown; annotationstep time,
+no physicalFPSor E2Espeedclaim fromreplay. Owner:
+outputs/groundjev/multitask_runs/tao_base_novel63_full_v1.

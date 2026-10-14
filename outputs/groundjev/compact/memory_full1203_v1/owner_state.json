@@ -1,0 +1,478 @@
+{
+  "status": "anchor_always3_INFERENCE",
+  "physical_gpu": 5,
+  "checkpoint": "outputs/groundjev/compact/rmot_native72_stage_v1/broad_native_training/checkpoint.pt",
+  "candidate_feature_source": "outputs/groundjev/compact/dancetrack0004_native300_v2_empty_roi_fixed/compact_distilled/frame_decisions.jsonl",
+  "GT_or_threshold_or_metric_or_model_weights_changed": false,
+  "completed": {
+    "reference_gated3": {
+      "variant": {
+        "name": "reference_gated3",
+        "memory_policy": "gated",
+        "feature_view": "all",
+        "lost_seconds": 3.0
+      },
+      "run": "outputs/groundjev/compact/memory_full1203_v1/reference_gated3",
+      "metrics": {
+        "HOTA": 0.2631573142603841,
+        "DetA": 0.4518423629241236,
+        "AssA": 0.15347649228497243,
+        "IDF1": 0.30632943895236875,
+        "IDSW": 165,
+        "FP": 579,
+        "FN": 1962
+      },
+      "posthoc": {
+        "scope": "full_validation_video",
+        "frames": 1203,
+        "counts": {
+          "gt_observations": 4586,
+          "candidates": 13664,
+          "gt_matched_candidates": 4341,
+          "unmatched_candidate_events": 9323,
+          "unmatched_candidates_ignored": 55,
+          "memory_initializations_unmatched_GT": 49,
+          "memory_updates_wrong_identity_or_unmatched": 2349,
+          "no_surviving_correct_anchor_events": 2573,
+          "correct_to_wrong_events": 101,
+          "wrong_to_correct_events": 101,
+          "memory_initializations_matched_GT": 6,
+          "model_correct_before_global_matching": 651,
+          "model_correct_to_wrong_after_global_matching": 94,
+          "model_wrong_to_correct_after_global_matching": 18,
+          "existing_identity_events": 1768,
+          "correct_identity_option_present": 1768,
+          "correct_existing_associations": 575,
+          "memory_updates_identity_consistent": 518,
+          "recovery_identity_options_present": 174,
+          "recovery_global_assignment_same_ID": 50,
+          "memory_holds": 281,
+          "existing_identity_recreated_as_NEW": 1
+        },
+        "correct_option_coverage": 1.0,
+        "existing_association_accuracy": 0.3252262443438914,
+        "mean_native_correct_identity_option_mass": 0.31365843149412626,
+        "candidate_GT_recall_at_iou05": 0.9465765372873964,
+        "diagnostic_policy": "marked pedestrian GT, one-to-one candidate IoU>=.5; immutable track-anchor ownership from birth, not GT correction",
+        "unmatched_candidates_note": "includes evaluator-ignore regions; these are unmatched diagnostics, not official FP/NoMatch precision",
+        "explicit_NO_MATCH_decision_currently_supported": true,
+        "posthoc_NO_MATCH_matched_GT_only": {
+          "counts": {
+            "FP": 2100,
+            "TN": 2241
+          },
+          "precision": 0.0,
+          "recall": null,
+          "gold_rule": "GT-matched valid object has a surviving correct birth anchor, but no correct identity in its actual shortlist",
+          "unmatched_or_ignore_regions_excluded": true
+        },
+        "posthoc_identity_recovery": {
+          "counts": {
+            "candidate_gap_return_events": 194,
+            "gap_le1s_eligible": 177,
+            "gap_le1s_same_correct_birth_anchor_ID": 9,
+            "candidate_gap_returns_without_prior_emitted_identity": 13,
+            "GT_gap_returns_with_matched_candidate": 19,
+            "gap_1to3s_eligible": 4,
+            "gap_1to3s_same_correct_birth_anchor_ID": 0
+          },
+          "success_rates": {
+            "gap_le1s": 0.05084745762711865,
+            "gap_1to3s": 0.0,
+            "gap_gt3s": null
+          },
+          "rule": "first GT-aligned candidate after at least one missing candidate observation; same previous emitted ID with matching immutable birth anchor",
+          "scope": "natural candidate/GT gaps only; no artificial occlusion, future GT correction or recovery metric replacing TrackEval"
+        },
+        "gt_used_posthoc_only": true,
+        "official_metric_replacement": false
+      },
+      "fixed_candidate_and_feature_source_rows": 1203,
+      "rejected_frames": [
+        21,
+        29,
+        59,
+        61,
+        63,
+        64,
+        70,
+        100,
+        236,
+        270,
+        279,
+        286,
+        381,
+        422,
+        452,
+        460,
+        482,
+        587,
+        653,
+        691,
+        716,
+        724,
+        847,
+        882,
+        1063,
+        1129,
+        1148
+      ],
+      "decoded_video_frames": 1203,
+      "peak_decision_gpu_allocated_bytes": 16765440,
+      "association_replay_fps": 24.1459220978413,
+      "reference_retention": {
+        "prior_reference_changed_prediction_frames": [],
+        "maximum_native_probability_difference_on_same_predictions": 0.0,
+        "comparison_scope": "prior GPU7/resumed run; current GPU5 fresh baseline is common to every intervention"
+      }
+    },
+    "frame_only": {
+      "variant": {
+        "name": "frame_only",
+        "memory_policy": "frame_only",
+        "feature_view": "recent",
+        "lost_seconds": 3.0
+      },
+      "run": "outputs/groundjev/compact/memory_full1203_v1/frame_only",
+      "metrics": {
+        "HOTA": 0.11440835507732543,
+        "DetA": 0.41720258820592226,
+        "AssA": 0.03168875815459741,
+        "IDF1": 0.08461459085749665,
+        "IDSW": 295,
+        "FP": 2067,
+        "FN": 1548
+      },
+      "posthoc": {
+        "scope": "full_validation_video",
+        "frames": 1203,
+        "counts": {
+          "gt_observations": 4586,
+          "candidates": 13664,
+          "gt_matched_candidates": 4341,
+          "unmatched_candidate_events": 9323,
+          "unmatched_candidates_ignored": 61,
+          "memory_initializations_unmatched_GT": 1454,
+          "memory_updates_wrong_identity_or_unmatched": 1897,
+          "no_surviving_correct_anchor_events": 2156,
+          "correct_to_wrong_events": 377,
+          "wrong_to_correct_events": 379,
+          "memory_initializations_matched_GT": 209,
+          "model_correct_before_global_matching": 1908,
+          "model_correct_to_wrong_after_global_matching": 385,
+          "model_wrong_to_correct_after_global_matching": 22,
+          "existing_identity_events": 2185,
+          "correct_identity_option_present": 2185,
+          "correct_existing_associations": 1545,
+          "memory_updates_identity_consistent": 1545,
+          "existing_identity_recreated_as_NEW": 10,
+          "recovery_identity_options_present": 25,
+          "recovery_global_assignment_same_ID": 9
+        },
+        "correct_option_coverage": 1.0,
+        "existing_association_accuracy": 0.7070938215102975,
+        "mean_native_correct_identity_option_mass": 0.7060640453059014,
+        "candidate_GT_recall_at_iou05": 0.9465765372873964,
+        "diagnostic_policy": "marked pedestrian GT, one-to-one candidate IoU>=.5; immutable track-anchor ownership from birth, not GT correction",
+        "unmatched_candidates_note": "includes evaluator-ignore regions; these are unmatched diagnostics, not official FP/NoMatch precision",
+        "explicit_NO_MATCH_decision_currently_supported": true,
+        "posthoc_NO_MATCH_matched_GT_only": {
+          "counts": {
+            "FP": 1872,
+            "TN": 2469
+          },
+          "precision": 0.0,
+          "recall": null,
+          "gold_rule": "GT-matched valid object has a surviving correct birth anchor, but no correct identity in its actual shortlist",
+          "unmatched_or_ignore_regions_excluded": true
+        },
+        "posthoc_identity_recovery": {
+          "counts": {
+            "candidate_gap_return_events": 194,
+            "candidate_gap_returns_without_prior_emitted_identity": 1,
+            "gap_le1s_eligible": 189,
+            "gap_le1s_same_correct_birth_anchor_ID": 4,
+            "GT_gap_returns_with_matched_candidate": 19,
+            "gap_1to3s_eligible": 4,
+            "gap_1to3s_same_correct_birth_anchor_ID": 0
+          },
+          "success_rates": {
+            "gap_le1s": 0.021164021164021163,
+            "gap_1to3s": 0.0,
+            "gap_gt3s": null
+          },
+          "rule": "first GT-aligned candidate after at least one missing candidate observation; same previous emitted ID with matching immutable birth anchor",
+          "scope": "natural candidate/GT gaps only; no artificial occlusion, future GT correction or recovery metric replacing TrackEval"
+        },
+        "gt_used_posthoc_only": true,
+        "official_metric_replacement": false
+      },
+      "fixed_candidate_and_feature_source_rows": 1203,
+      "rejected_frames": [
+        21,
+        29,
+        59,
+        61,
+        63,
+        64,
+        70,
+        100,
+        236,
+        270,
+        279,
+        286,
+        381,
+        422,
+        452,
+        460,
+        482,
+        587,
+        653,
+        691,
+        716,
+        724,
+        847,
+        882,
+        1063,
+        1129,
+        1148
+      ],
+      "decoded_video_frames": 1203,
+      "peak_decision_gpu_allocated_bytes": 16760320,
+      "association_replay_fps": 24.52778177520977,
+      "reference_retention": {}
+    },
+    "recent_observation3": {
+      "variant": {
+        "name": "recent_observation3",
+        "memory_policy": "gated",
+        "feature_view": "recent",
+        "lost_seconds": 3.0
+      },
+      "run": "outputs/groundjev/compact/memory_full1203_v1/recent_observation3",
+      "metrics": {
+        "HOTA": 0.16394348751570836,
+        "DetA": 0.300964827398473,
+        "AssA": 0.08971167969907007,
+        "IDF1": 0.18202342316918302,
+        "IDSW": 141,
+        "FP": 669,
+        "FN": 2754
+      },
+      "posthoc": {
+        "scope": "full_validation_video",
+        "frames": 1203,
+        "counts": {
+          "gt_observations": 4586,
+          "candidates": 13664,
+          "gt_matched_candidates": 4341,
+          "unmatched_candidate_events": 9323,
+          "unmatched_candidates_ignored": 80,
+          "memory_initializations_unmatched_GT": 107,
+          "memory_updates_wrong_identity_or_unmatched": 2108,
+          "no_surviving_correct_anchor_events": 3853,
+          "correct_to_wrong_events": 12,
+          "wrong_to_correct_events": 12,
+          "memory_initializations_matched_GT": 5,
+          "model_correct_before_global_matching": 26,
+          "model_correct_to_wrong_after_global_matching": 6,
+          "model_wrong_to_correct_after_global_matching": 6,
+          "existing_identity_events": 488,
+          "correct_identity_option_present": 488,
+          "correct_existing_associations": 26,
+          "memory_updates_identity_consistent": 26,
+          "recovery_identity_options_present": 150,
+          "recovery_global_assignment_same_ID": 38,
+          "memory_holds": 255
+        },
+        "correct_option_coverage": 1.0,
+        "existing_association_accuracy": 0.05327868852459016,
+        "mean_native_correct_identity_option_mass": 0.0546039044909582,
+        "candidate_GT_recall_at_iou05": 0.9465765372873964,
+        "diagnostic_policy": "marked pedestrian GT, one-to-one candidate IoU>=.5; immutable track-anchor ownership from birth, not GT correction",
+        "unmatched_candidates_note": "includes evaluator-ignore regions; these are unmatched diagnostics, not official FP/NoMatch precision",
+        "explicit_NO_MATCH_decision_currently_supported": true,
+        "posthoc_NO_MATCH_matched_GT_only": {
+          "counts": {
+            "FP": 2844,
+            "TN": 1497
+          },
+          "precision": 0.0,
+          "recall": null,
+          "gold_rule": "GT-matched valid object has a surviving correct birth anchor, but no correct identity in its actual shortlist",
+          "unmatched_or_ignore_regions_excluded": true
+        },
+        "posthoc_identity_recovery": {
+          "counts": {
+            "candidate_gap_return_events": 194,
+            "candidate_gap_returns_without_prior_emitted_identity": 16,
+            "gap_le1s_eligible": 174,
+            "gap_le1s_same_correct_birth_anchor_ID": 0,
+            "GT_gap_returns_with_matched_candidate": 19,
+            "gap_1to3s_eligible": 4,
+            "gap_1to3s_same_correct_birth_anchor_ID": 0
+          },
+          "success_rates": {
+            "gap_le1s": 0.0,
+            "gap_1to3s": 0.0,
+            "gap_gt3s": null
+          },
+          "rule": "first GT-aligned candidate after at least one missing candidate observation; same previous emitted ID with matching immutable birth anchor",
+          "scope": "natural candidate/GT gaps only; no artificial occlusion, future GT correction or recovery metric replacing TrackEval"
+        },
+        "gt_used_posthoc_only": true,
+        "official_metric_replacement": false
+      },
+      "fixed_candidate_and_feature_source_rows": 1203,
+      "rejected_frames": [
+        21,
+        29,
+        59,
+        61,
+        63,
+        64,
+        70,
+        100,
+        236,
+        270,
+        279,
+        286,
+        381,
+        422,
+        452,
+        460,
+        482,
+        587,
+        653,
+        691,
+        716,
+        724,
+        847,
+        882,
+        1063,
+        1129,
+        1148
+      ],
+      "decoded_video_frames": 1203,
+      "peak_decision_gpu_allocated_bytes": 16760320,
+      "association_replay_fps": 21.568851055079428,
+      "reference_retention": {}
+    },
+    "ema_always3": {
+      "variant": {
+        "name": "ema_always3",
+        "memory_policy": "ema",
+        "feature_view": "ema",
+        "lost_seconds": 3.0
+      },
+      "run": "outputs/groundjev/compact/memory_full1203_v1/ema_always3",
+      "metrics": {
+        "HOTA": 0.1464263221666784,
+        "DetA": 0.275242119102161,
+        "AssA": 0.07802018002009657,
+        "IDF1": 0.16876430205949658,
+        "IDSW": 119,
+        "FP": 792,
+        "FN": 2972
+      },
+      "posthoc": {
+        "scope": "full_validation_video",
+        "frames": 1203,
+        "counts": {
+          "gt_observations": 4586,
+          "candidates": 13664,
+          "gt_matched_candidates": 4341,
+          "unmatched_candidate_events": 9323,
+          "unmatched_candidates_ignored": 37,
+          "memory_initializations_unmatched_GT": 68,
+          "memory_updates_wrong_identity_or_unmatched": 2334,
+          "no_surviving_correct_anchor_events": 4173,
+          "correct_to_wrong_events": 2,
+          "wrong_to_correct_events": 2,
+          "memory_initializations_matched_GT": 2,
+          "model_correct_before_global_matching": 2,
+          "model_correct_to_wrong_after_global_matching": 0,
+          "model_wrong_to_correct_after_global_matching": 0,
+          "existing_identity_events": 168,
+          "correct_identity_option_present": 168,
+          "correct_existing_associations": 2,
+          "memory_updates_identity_consistent": 2,
+          "recovery_identity_options_present": 153,
+          "recovery_global_assignment_same_ID": 34
+        },
+        "correct_option_coverage": 1.0,
+        "existing_association_accuracy": 0.011904761904761904,
+        "mean_native_correct_identity_option_mass": 0.023379949818869743,
+        "candidate_GT_recall_at_iou05": 0.9465765372873964,
+        "diagnostic_policy": "marked pedestrian GT, one-to-one candidate IoU>=.5; immutable track-anchor ownership from birth, not GT correction",
+        "unmatched_candidates_note": "includes evaluator-ignore regions; these are unmatched diagnostics, not official FP/NoMatch precision",
+        "explicit_NO_MATCH_decision_currently_supported": true,
+        "posthoc_NO_MATCH_matched_GT_only": {
+          "counts": {
+            "FP": 3022,
+            "TN": 1319
+          },
+          "precision": 0.0,
+          "recall": null,
+          "gold_rule": "GT-matched valid object has a surviving correct birth anchor, but no correct identity in its actual shortlist",
+          "unmatched_or_ignore_regions_excluded": true
+        },
+        "posthoc_identity_recovery": {
+          "counts": {
+            "candidate_gap_return_events": 194,
+            "gap_le1s_eligible": 184,
+            "gap_le1s_same_correct_birth_anchor_ID": 0,
+            "candidate_gap_returns_without_prior_emitted_identity": 6,
+            "GT_gap_returns_with_matched_candidate": 19,
+            "gap_1to3s_eligible": 4,
+            "gap_1to3s_same_correct_birth_anchor_ID": 0
+          },
+          "success_rates": {
+            "gap_le1s": 0.0,
+            "gap_1to3s": 0.0,
+            "gap_gt3s": null
+          },
+          "rule": "first GT-aligned candidate after at least one missing candidate observation; same previous emitted ID with matching immutable birth anchor",
+          "scope": "natural candidate/GT gaps only; no artificial occlusion, future GT correction or recovery metric replacing TrackEval"
+        },
+        "gt_used_posthoc_only": true,
+        "official_metric_replacement": false
+      },
+      "fixed_candidate_and_feature_source_rows": 1203,
+      "rejected_frames": [
+        21,
+        29,
+        59,
+        61,
+        63,
+        64,
+        70,
+        100,
+        236,
+        270,
+        279,
+        286,
+        381,
+        422,
+        452,
+        460,
+        482,
+        587,
+        653,
+        691,
+        716,
+        724,
+        847,
+        882,
+        1063,
+        1129,
+        1148
+      ],
+      "decoded_video_frames": 1203,
+      "peak_decision_gpu_allocated_bytes": 16765440,
+      "association_replay_fps": 21.87179462295229,
+      "reference_retention": {}
+    }
+  },
+  "end_to_end_FPS_claim": false
+}

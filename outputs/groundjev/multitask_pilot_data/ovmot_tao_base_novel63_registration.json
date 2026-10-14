@@ -1,0 +1,32 @@
+{
+  "status": "COMPLETE_EXISTING_BASE_NOVEL_VALIDATION_VIDEO_REGISTERED",
+  "selection": "lowest numeric validationvideo ID with both Base andNovel GT and every annotationframe already present, selected before any modeloutputs",
+  "video_id": 63,
+  "annotation_frames": 40,
+  "all_image_annotation_geometry_matches": true,
+  "fixed_vocabulary_size": 1203,
+  "GT_for_evaluation_only": [
+    {
+      "name": "baby",
+      "group": "base",
+      "boxes": 80,
+      "synset_in_fixed_vocabulary": true
+    },
+    {
+      "name": "knife",
+      "group": "base",
+      "boxes": 40,
+      "synset_in_fixed_vocabulary": true
+    },
+    {
+      "name": "peeler_(tool_for_fruit_and_vegetables)",
+      "group": "novel",
+      "boxes": 40,
+      "synset_in_fixed_vocabulary": true
+    }
+  ],
+  "all_GT_boxes": 160,
+  "vocabulary_not_GT_filtered": true,
+  "Novel_training_supervision_used": false,
+  "all_frames_in_registered_manifest": "outputs/groundjev/multitask_pilot_data/ovmot_tao_base_novel63_full.json"
+}

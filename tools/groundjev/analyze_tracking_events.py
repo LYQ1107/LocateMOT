@@ -24,6 +24,8 @@ def analyze(manifest, rows):
             x,y,w,h = map(float,fields[2:6])
             truth[frame].append({'identity':int(fields[1]),'box':[x,y,x+w,y+h],'visibility':float(fields[8])})
     anchors, prior_ids, last_correct = {}, set(), {}
+    previous_observation, last_emitted, previous_gt_frame = {}, {}, {}
+    no_match, recovery = Counter(), Counter()
     counts, diagnostics, correct_masses = Counter(), [], []
     for row in rows:
         gt, candidates = truth[row['frame']], row['candidates']
@@ -48,6 +50,36 @@ def analyze(manifest, rows):
             option_present = bool(set(shortlist)&set(existing))
             tid = event.get('track_id')
             if target:
+                available=set(shortlist)&set(existing)
+                expected_no_match=bool(existing) and not available
+                predicted_no_match=event['action']=='NO_MATCH'
+                no_match['TP' if predicted_no_match and expected_no_match else
+                         'FP' if predicted_no_match else 'FN' if expected_no_match else 'TN'] += 1
+                if existing:
+                    model_choice=max(d['probabilities'],key=d['probabilities'].get)
+                    model_correct=model_choice in {str(t) for t in existing}
+                    assigned_correct=tid in existing
+                    counts['model_correct_before_global_matching']+=model_correct
+                    counts['model_correct_to_wrong_after_global_matching']+=model_correct and not assigned_correct
+                    counts['model_wrong_to_correct_after_global_matching']+=not model_correct and assigned_correct
+                previous=previous_observation.get(identity)
+                if previous and row['frame']-previous['frame']>1:
+                    recovery['candidate_gap_return_events']+=1
+                    gap=row['state']['timestamp']-previous['timestamp']
+                    bucket='gap_le1s' if gap<=1 else 'gap_1to3s' if gap<=3 else 'gap_gt3s'
+                    old=last_emitted.get(identity)
+                    if old is not None:
+                        recovery[bucket+'_eligible']+=1
+                        recovered=tid==old and before.get(tid)==identity
+                        recovery[bucket+'_same_correct_birth_anchor_ID']+=recovered
+                        counts['recovery_identity_options_present']+=old in shortlist
+                        counts['recovery_global_assignment_same_ID']+=tid==old
+                    else:
+                        recovery['candidate_gap_returns_without_prior_emitted_identity']+=1
+                if identity in previous_gt_frame and row['frame']-previous_gt_frame[identity]>1:
+                    recovery['GT_gap_returns_with_matched_candidate']+=1
+                previous_observation[identity]={'frame':row['frame'],'timestamp':row['state']['timestamp']}
+                if tid is not None:last_emitted[identity]=tid
                 if existing:
                     counts['existing_identity_events'] += 1
                     counts['correct_identity_option_present'] += option_present
@@ -83,6 +115,7 @@ def analyze(manifest, rows):
                 'association_correct_under_fixed_anchor_diagnostic':correct,
                 'memory_action':event.get('memory_action')})
         prior_ids = set(row['state']['persistent_ids'])
+        previous_gt_frame.update({g['identity']:row['frame'] for g in gt})
     n = counts['existing_identity_events']
     return {'scope':manifest['scope'],'frames':len(rows),'counts':dict(counts),
         'correct_option_coverage':counts['correct_identity_option_present']/n if n else None,
@@ -92,6 +125,16 @@ def analyze(manifest, rows):
         'diagnostic_policy':'marked pedestrian GT, one-to-one candidate IoU>=.5; immutable track-anchor ownership from birth, not GT correction',
         'unmatched_candidates_note':'includes evaluator-ignore regions; these are unmatched diagnostics, not official FP/NoMatch precision',
         'explicit_NO_MATCH_decision_currently_supported':any(r['state']['decision_metadata'].get('explicit_no_match',False) for r in rows),
+        'posthoc_NO_MATCH_matched_GT_only':{'counts':dict(no_match),
+            'precision':no_match['TP']/(no_match['TP']+no_match['FP']) if no_match['TP']+no_match['FP'] else None,
+            'recall':no_match['TP']/(no_match['TP']+no_match['FN']) if no_match['TP']+no_match['FN'] else None,
+            'gold_rule':'GT-matched valid object has a surviving correct birth anchor, but no correct identity in its actual shortlist',
+            'unmatched_or_ignore_regions_excluded':True},
+        'posthoc_identity_recovery':{'counts':dict(recovery),
+            'success_rates':{b:recovery[b+'_same_correct_birth_anchor_ID']/recovery[b+'_eligible'] if recovery[b+'_eligible'] else None
+                             for b in ('gap_le1s','gap_1to3s','gap_gt3s')},
+            'rule':'first GT-aligned candidate after at least one missing candidate observation; same previous emitted ID with matching immutable birth anchor',
+            'scope':'natural candidate/GT gaps only; no artificial occlusion, future GT correction or recovery metric replacing TrackEval'},
         'gt_used_posthoc_only':True,'official_metric_replacement':False,'events':diagnostics}
 
 

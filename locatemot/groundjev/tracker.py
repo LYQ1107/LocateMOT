@@ -35,10 +35,11 @@ class Track:
 
 
 class OnlineTracker:
-    def __init__(self, decision, lost_seconds=3., update_threshold=.5):
+    def __init__(self, decision, lost_seconds=3., update_threshold=.5, memory_policy='gated', ema_alpha=.1):
         self.decision = decision
         self.lost_seconds, self.update_threshold = lost_seconds, update_threshold
         self.tracks, self.next_id, self.previous_timestamp = {}, 1, None
+        self.memory_policy,self.ema_alpha = memory_policy,ema_alpha
 
     def step(self, image, candidates, timestamp, specification):
         import numpy as np
@@ -74,6 +75,7 @@ class OnlineTracker:
             category = decisions[i].get('category_decision')
             label = category['label'] if category else candidate['label']
             reliable = decisions[i]['update_probability'] >= self.update_threshold
+            write_memory = reliable or self.memory_policy in ('always','ema','frame_only')
             crop = image.crop(tuple(candidate['box'])).convert('RGB')
             crop.thumbnail((192, 192))
             if column >= m:
@@ -94,8 +96,9 @@ class OnlineTracker:
                 track.age += 1
                 track.recent_boxes = (track.recent_boxes + [list(candidate['box'])])[-16:]
                 track.recent_image = crop.copy()
-                if reliable:
+                if write_memory:
                     track.long_image = crop.copy()
+                if reliable:
                     track.last_reliable_timestamp = timestamp
             if candidate.get('native_region_feature') is not None:
                 feature=list(candidate['native_region_feature'])
@@ -106,8 +109,15 @@ class OnlineTracker:
                     track.anchor_temporal_feature=temporal;track.long_temporal_feature=temporal
                 track.recent_feature=feature
                 track.recent_temporal_feature=temporal
-                if reliable:
-                    track.long_feature=feature.copy();track.long_temporal_feature=temporal
+                if write_memory:
+                    if self.memory_policy=='ema' and column<m:
+                        track.long_feature=[(1-self.ema_alpha)*old+self.ema_alpha*new
+                            for old,new in zip(track.long_feature,feature)]
+                        if temporal is not None:
+                            track.long_temporal_feature=[(1-self.ema_alpha)*old+self.ema_alpha*new
+                                for old,new in zip(track.long_temporal_feature,temporal)]
+                    else:
+                        track.long_feature=feature.copy();track.long_temporal_feature=temporal
                 track.feature_history=(track.feature_history+[{'timestamp':timestamp,'feature':feature,'temporal_feature':temporal}])[-16:]
                 if not category:
                     track.semantic_counts[label]=track.semantic_counts.get(label,0)+1
@@ -132,7 +142,7 @@ class OnlineTracker:
                 outputs[-1]['query_membership_probability']=membership
                 if membership<.5:outputs.pop()
             events.append({'candidate': i, 'track_id': track.track_id, 'action': action,
-                           'memory_action': 'UPDATE' if reliable else 'HOLD', 'decision': decisions[i]})
+                           'memory_action': 'UPDATE' if write_memory else 'HOLD', 'decision': decisions[i]})
         for track in tracks:
             if track.track_id in seen:
                 continue
@@ -140,13 +150,24 @@ class OnlineTracker:
             decision = lifecycle.get(track.track_id)
             if track.anchor_feature is not None and decision:
                 track.alive_probability=1.-decision['probabilities']['TERMINATE']
-            terminate = decision and decision['choice'] == 'TERMINATE'
+            terminate = (decision and decision['choice'] == 'TERMINATE') or self.memory_policy=='frame_only'
             track.state = 'TERMINATE' if terminate or track.lost_age > self.lost_seconds else 'LOST'
             events.append({'track_id': track.track_id, 'action': track.state, 'lifecycle_decision': decision})
             if track.state == 'TERMINATE':
                 self.tracks.pop(track.track_id)
         self.previous_timestamp = timestamp
+        if self.memory_policy=='frame_only':
+            for track in self.tracks.values():
+                track.anchor_image=track.recent_image
+                track.long_image=track.recent_image
+                track.anchor_feature=track.recent_feature
+                track.long_feature=track.recent_feature
+                track.anchor_temporal_feature=track.recent_temporal_feature
+                track.long_temporal_feature=track.recent_temporal_feature
+                track.feature_history=track.feature_history[-1:]
+                track.recent_boxes=track.recent_boxes[-1:]
         native=any(t.anchor_feature is not None for t in self.tracks.values())
+        if self.memory_policy!='gated':meta.update(memory_update_policy=self.memory_policy,ema_alpha=self.ema_alpha)
         return outputs, {'events': events, 'decision_metadata': meta, 'persistent_ids': list(self.tracks),
                          'next_id': self.next_id, 'timestamp': timestamp,
                          'visual_memory_source': 'real_causal_crops_and_native_DLM_region_features' if native else 'real_causal_crops; native feature adapter pending'}
@@ -181,9 +202,11 @@ class OnlineTracker:
                 row[field.name] = value
             track._encoded_images = encoded_images
             rows.append(row)
-        return {'format': 'groundjev-causal-memory-v2-native' if native else 'groundjev-causal-memory-v1', 'tracks': rows, 'next_id': self.next_id,
+        state = {'format': 'groundjev-causal-memory-v2-native' if native else 'groundjev-causal-memory-v1', 'tracks': rows, 'next_id': self.next_id,
                 'previous_timestamp': self.previous_timestamp, 'lost_seconds': self.lost_seconds,
                 'update_threshold': self.update_threshold}
+        if self.memory_policy!='gated':state.update(memory_policy=self.memory_policy,ema_alpha=self.ema_alpha)
+        return state
 
     def load_state_dict(self, state):
         import base64
@@ -201,3 +224,4 @@ class OnlineTracker:
             self.tracks[track.track_id] = track
         self.next_id, self.previous_timestamp = state['next_id'], state['previous_timestamp']
         self.lost_seconds, self.update_threshold = state['lost_seconds'], state['update_threshold']
+        self.memory_policy=state.get('memory_policy','gated');self.ema_alpha=state.get('ema_alpha',.1)

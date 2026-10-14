@@ -2146,3 +2146,48 @@ Queue32regressionv1timeout: newserverlog actuallyEADDRINUSE, while HTTPmodelspro
 Freshclean-port queue32v2 actual18parallel callbacks allHTTP200; fullownedgroup1339199 verifiedemptyaftercleanup, old775337/1051638 verifiedempty. Recoveryv2 hadlocalargparseNamespace overwrittenbyprocargvlist beforeanychildrenlaunch; repairloopvariablename, preservefailure, v3runs samevalidregression gate/no retest or changedcriterion.
 
 Queue32v2passed all18HTTP200; verifiedfullgroupcleanup and currentoldAPIports released. Full9recoveryv3startsoriginal8remaining plusadapted200all9 with validatedCOCO4952/4952reuse andSQLitecache backups through unchangednativefunctions/scorers. Keep allfailedstates/cache prefixes; no samples skipped/metric changes/base seed changes or exactstochasticcontinuation claim.
+
+### Fixed-checkpoint full-video memory intervention (registered)
+
+Read actualCompact/tracker: neuralhistory merges immutableanchor/recent/long
+native2560features, learnedupdate>=.5, 3secondlifespan with learnedtermination.
+Hypotheses: persistentanchors/gating improve naturalgap recovery, while always
+updates can contaminate;30secondretention may recover longer gaps but increase
+competition. Keep exactbroadnative1200checkpoint/1203originalV1candidates/
+realnativeROIs/GT/scorer/thresholds. Six frozenmodel inferenceinterventions:
+referenceanchor+gated3s, immediatepreviousframe noLostmemory/recentinput,
+latest-observationinput withnormal3sretention, unconditionalEMA(.1)input,
+anchor+alwaysreplace3s, anchor+gated30s. EMA is a convex mixture of realfeatures,
+not a synthetic image encoder; lastreliabletimestamp still uses learnedreliability.
+These are input/policy interventions, not independently retrained competitors.
+No nativeDLMquery/newcache; reuse790,667,425byte sharedfullvideo featurelog.
+Only featurearrays omitted from new logs, retain source reference/allboxes/
+labels/scores/decisions; actualNNinputs unchanged. Evaluate allframes/rejected
+frames with originalTrackEval and posthocfixed-birth-anchor recovery/NoMatch
+counts (never inputGT/replaceofficialmetrics). Actualnativefeature2frame EMA
+memorysave/load regression precedes fullruns; defaultprediction retention also
+checked against preserved existing baseline, recording any numerical variance.
+
+Actualnative two-frame EMAprobe passed:2560wide features, one matchedpriortrack expectedconvexupdate, originalanchor unchanged, forcedwrites leave lastreliabletime honest, restorednextoutputs/state exact. Sixfull1203frame memoryowner42123launchedGPU5; featurearrays omitted only in duplicatedlogs, exactsharedsource retained for inference/rehydration. Originalfull9owner39013 and One500/500completion owners remain active without restart.
+
+Prior fullvideo posthoc: GTobservations4586/nativeone-to-one matches4341,
+existingbirth-anchor associations575/1768, modelcorrectbeforematching651,
+globalcompetition changes94correct->wrong and18wrong->correct. MatchedGT
+NO_MATCH2100predictions with0option-missinggoldpositives under declared
+birth-anchor rule; this diagnostic excludesunmatched/ignoredregions and is
+notofficialNoMatchtruth beyond its rule. Candidate-gap returns194, ≤1s recovery
+9/177,1–3s0/4, >3ssupport0/null. This video cannot establish long>3srecovery;
+keep30sintervention asretention/competition sensitivity, not invented support.
+
+Novel evaluation breadth: select lowestexistingcompletevalidationvideo with
+bothofficialBase andNovel: TAOvideo63,40annotationframes/160GTboxes (Base120,
+Novel40peeler), allpresentwithcorrectimagegeometry. Fullfixed1203vocabulary
+unchanged, GTonlyscopeinventory/evaluation, noNoveltraininglabels. Register
+40fullannotation-frame online nativeDLM520classqueries plus realnativeROIs,
+then fixedproposalSimple/sharedCompact controls with unmodifiedTETA. Explicit
+per-queryrejection contributesempty for thatquery only, concatenates remaining
+original-parserboxes, noNMS/topK/GTselection; matches existing scored-query
+control policy, not old whole-frame-rejection scores. One blocking owner waits
+currentGPU5memoryjobexit beforeowning temporaryDLM/feature services; stops
+bothcompletegroups beforecorecontrols. Timestampannotationsteps, notphysical
+seconds/FPS. No rawdatasets/modelweights uploaded or all-datasetfeaturecache.

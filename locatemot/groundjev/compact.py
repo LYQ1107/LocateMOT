@@ -59,13 +59,14 @@ class CompactCore(nn.Module):
 
 
 class CompactDecision:
-    def __init__(self, checkpoint, device='cuda:0', batch_candidates=16, shortlist=32):
+    def __init__(self, checkpoint, device='cuda:0', batch_candidates=16, shortlist=32, memory_feature_view='all'):
         from pathlib import Path
         data = torch.load(checkpoint,map_location=device,weights_only=True)
         self.model = CompactCore(data['architecture'],semantic=data.get('semantic',False)).to(device)
         self.model.load_state_dict(data['state_dict']); self.model.eval()
         self.checkpoint = str(Path(checkpoint).resolve()); self.device = device
         self.batch_candidates,self.shortlist = batch_candidates,shortlist
+        self.memory_feature_view = memory_feature_view
         if self.model.semantic:
             from locatemot.groundjev.text_features import OneJevTextFeatures
             self.text_features=OneJevTextFeatures();self.text_cache={};self.class_cache={}
@@ -78,8 +79,11 @@ class CompactDecision:
             ranked = sorted(tracks,key=lambda t:(-max((overlap(c['box'],t.predicted_box(timestamp)) for c in group),default=0.),t.lost_age,t.track_id))[:self.shortlist]
             n,m = len(group),len(ranked); w,height = image.size
             if not n and not m: continue
+            history = [[t.anchor_feature,t.recent_feature,t.long_feature] for t in ranked]
+            if self.memory_feature_view=='recent':history=[[t.recent_feature]*3 for t in ranked]
+            elif self.memory_feature_view=='ema':history=[[t.long_feature]*3 for t in ranked]
             e = {'candidates':torch.tensor([c['native_region_feature'] for c in group]).reshape(n,2560),
-                'history':torch.tensor([[t.anchor_feature,t.recent_feature,t.long_feature] for t in ranked]).reshape(m,3,2560),
+                'history':torch.tensor(history).reshape(m,3,2560),
                 'candidate_geo':torch.tensor([[c['box'][0]/w,c['box'][1]/height,c['box'][2]/w,c['box'][3]/height] for c in group]).reshape(n,4),
                 'history_geo':torch.tensor([[*(x/s for x,s in zip(t.predicted_box(timestamp),(w,height,w,height))),
                     t.age/100,t.lost_age/3,(timestamp-t.last_reliable_timestamp)/3,t.confidence or 0.] for t in ranked]).reshape(m,8),
@@ -121,4 +125,5 @@ class CompactDecision:
         if self.model.semantic:metadata.update(shared_semantic_heads=True,
             query_output_policy='RMOT learned membership>=.5; physical identity state preserved before output filtering',
             class_policy='OVMOT full supplied-vocabulary learned softmax; no GT-based class or box filtering')
+        if self.memory_feature_view!='all':metadata['memory_feature_view']=self.memory_feature_view
         return results,life,metadata

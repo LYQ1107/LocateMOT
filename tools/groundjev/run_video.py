@@ -86,6 +86,11 @@ def main():
                         help='official scorer rejection is an explicitly logged empty prediction, included in every metric denominator')
     parser.add_argument('--candidate-replay', type=Path, help='exact prior frame log for a fixed-candidate association control; no end-to-end FPS claim')
     parser.add_argument('--resume-from', type=Path, help='preserve source run and restore its completed causal prefix in this fresh output')
+    parser.add_argument('--memory-policy',choices=['gated','always','ema','frame_only'],default='gated')
+    parser.add_argument('--memory-feature-view',choices=['all','recent','ema'],default='all')
+    parser.add_argument('--lost-seconds',type=float,default=3.)
+    parser.add_argument('--ema-alpha',type=float,default=.1)
+    parser.add_argument('--omit-replay-feature-vectors',action='store_true',help='retain shared source reference and all boxes/decisions; avoid duplicating input feature arrays')
     args = parser.parse_args()
     if args.out.exists() and any(args.out.iterdir()):
         parser.error('choose a fresh output directory to preserve existing experiment results')
@@ -100,6 +105,12 @@ def main():
         parser.error('Compact requires native feature RPC or exact replay already containing native features')
     if args.backend=='compact' and args.category_policy!='native_label':
         parser.error('Compact category training is pending; the native category policy currently uses OneJev checkpoints')
+    if args.memory_feature_view!='all' and args.backend!='compact':
+        parser.error('feature-view ablation requires the native-feature Compact model')
+    if args.memory_policy=='ema' and (args.backend!='compact' or args.memory_feature_view!='ema'):
+        parser.error('EMA baseline uses causal native feature EMA with Compact; no synthetic image EMA')
+    if args.omit_replay_feature_vectors and not args.candidate_replay:
+        parser.error('feature omission requires the retained exact shared input source')
     args.out.mkdir(parents=True, exist_ok=True)
     frontend = GroundAnythingAdapter(args.grounding_url, parser_policy=args.grounding_parser,
         decoder_policy=args.grounding_decoder_policy, vocabulary_chunk_size=args.grounding_vocabulary_chunk_size)
@@ -107,13 +118,13 @@ def main():
     elif args.backend in ('simple_native','simple_temporal'): decision=FeatureDecision(temporal=args.backend=='simple_temporal')
     elif args.backend=='compact':
         from locatemot.groundjev.compact import CompactDecision
-        decision=CompactDecision(args.checkpoint)
+        decision=CompactDecision(args.checkpoint,memory_feature_view=args.memory_feature_view)
     else: decision=OneJevDecision(args.checkpoint,evidence_format=args.evidence_format,adaptive_context=args.adaptive_context_groups)
     if args.category_policy == 'native_hierarchical':
         from locatemot.groundjev.category import NativeCategoryHead, CategorizedDecision
         engine = decision.engine if args.backend == 'full' else OneJevDecision(args.checkpoint).engine
         decision = CategorizedDecision(decision, NativeCategoryHead(engine))
-    tracker = OnlineTracker(decision)
+    tracker = OnlineTracker(decision,lost_seconds=args.lost_seconds,memory_policy=args.memory_policy,ema_alpha=args.ema_alpha)
     feature_client=None
     if args.native_feature_url:
         from locatemot.groundjev.feature_client import NativeFeatureClient
@@ -130,6 +141,22 @@ def main():
     specification = {'task': args.task, 'vocabulary': vocabulary, 'expression': args.expression}
     if args.resume_from:
         resumed = list(map(json.loads, (args.resume_from/'frame_decisions.jsonl').read_text().splitlines()))
+        prior_result_path=args.resume_from/'result.json'
+        feature_source_path=None
+        if prior_result_path.exists():
+            prior_result=json.loads(prior_result_path.read_text())
+            if prior_result.get('replay_feature_vectors_omitted_from_log'):
+                feature_source_path=Path(prior_result['shared_input_features_source'])
+        elif args.omit_replay_feature_vectors:
+            feature_source_path=args.candidate_replay
+        if feature_source_path:
+            feature_source=ReplayFrames(feature_source_path)
+            for row in resumed:
+                original_features=feature_source.frame(row['frame'])['candidates']
+                geometry=[{k:v for k,v in c.items() if k not in ('native_region_feature','temporal_region_feature')} for c in original_features]
+                assert row['candidates']==geometry
+                row['candidates']=original_features
+            feature_source.close()
         if len(resumed) > len(frames):
             raise ValueError('Resume prefix is longer than the requested video')
         restore_completed_prefix(tracker, resumed, frames, fps, specification, timestamps)
@@ -189,7 +216,10 @@ def main():
                     # MOTChallenge requires a confidence column; 1 here is an
                     # explicit unscored-output sentinel, not detector confidence.
                     predictions.write(f'{frame_number},{row["track_id"]},{x1:.3f},{y1:.3f},{x2-x1:.3f},{y2-y1:.3f},1,-1,-1,-1\n')
-                log.write(json.dumps({'frame': frame_number, 'image_path': path, 'seconds': elapsed, 'candidates': candidates,
+                recorded_candidates = candidates
+                if args.omit_replay_feature_vectors:
+                    recorded_candidates = [{k:v for k,v in c.items() if k not in ('native_region_feature','temporal_region_feature')} for c in candidates]
+                log.write(json.dumps({'frame': frame_number, 'image_path': path, 'seconds': elapsed, 'candidates': recorded_candidates,
                                      'outputs': outputs, 'state': state, 'perception': perception})+'\n')
                 log.flush()
                 predictions.flush()
@@ -268,7 +298,11 @@ def main():
               'official_metrics': 'PENDING_OFFICIAL_EVALUATOR',
               'checkpoint': str(args.checkpoint) if args.backend in ('full','compact') or args.category_policy == 'native_hierarchical' else None,
               'motchallenge_confidence_column': 'constant unscored-output sentinel; native detection score is absent',
-              'gt_read_by_runtime': False, 'future_frames_read_by_runtime': False}
+              'gt_read_by_runtime': False, 'future_frames_read_by_runtime': False,
+              'memory_policy':args.memory_policy,'memory_feature_view':args.memory_feature_view,
+              'lost_seconds':args.lost_seconds,'ema_alpha':args.ema_alpha,
+              'replay_feature_vectors_omitted_from_log':args.omit_replay_feature_vectors,
+              'shared_input_features_source':str(args.candidate_replay) if args.omit_replay_feature_vectors else None}
     if args.backend in ('full','compact') or args.category_policy == 'native_hierarchical':
         import torch
         result['peak_decision_gpu_memory_bytes'] = torch.cuda.max_memory_allocated()
