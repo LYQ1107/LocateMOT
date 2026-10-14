@@ -1,0 +1,20 @@
+{
+  "status": "UNMODIFIED_ORIGINAL_DENSE_REF9_INPUT_DRY_RUN_PASSED",
+  "tasks": [
+    "gam_coco",
+    "gam_lvis",
+    "gam_dense200",
+    "gam_visdrone",
+    "gam_refcocog_val",
+    "gam_refcocog_test",
+    "gam_refcoco",
+    "gam_refcocog",
+    "gam_refcocoplus"
+  ],
+  "missing_inputs": [],
+  "evaluation_scope": "full",
+  "native_evaluator_source_modified": false,
+  "model_files_hardlinks_to_original_release": true,
+  "model_evaluation_performed": false,
+  "benchmark_data_revision": "772e34bb1505053ed4857bba4405ee7b308bbfb6"
+}

@@ -1,0 +1,650 @@
+[
+  {
+    "video": "0000",
+    "frame": 0,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0000/000000.png",
+    "native_candidates": 1,
+    "native_matched_regions": 0,
+    "teacher_regions": 1,
+    "native_response_rejected": false
+  },
+  {
+    "video": "0000",
+    "frame": 1,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0000/000001.png",
+    "native_candidates": 2,
+    "native_matched_regions": 0,
+    "teacher_regions": 1,
+    "native_response_rejected": false
+  },
+  {
+    "video": "0000",
+    "frame": 2,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0000/000002.png",
+    "native_candidates": 1,
+    "native_matched_regions": 0,
+    "teacher_regions": 1,
+    "native_response_rejected": false
+  },
+  {
+    "video": "0000",
+    "frame": 3,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0000/000003.png",
+    "native_candidates": 1,
+    "native_matched_regions": 0,
+    "teacher_regions": 1,
+    "native_response_rejected": false
+  },
+  {
+    "video": "0000",
+    "frame": 4,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0000/000004.png",
+    "native_candidates": 1,
+    "native_matched_regions": 0,
+    "teacher_regions": 1,
+    "native_response_rejected": false
+  },
+  {
+    "video": "0000",
+    "frame": 5,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0000/000005.png",
+    "native_candidates": 1,
+    "native_matched_regions": 0,
+    "teacher_regions": 0,
+    "native_response_rejected": false
+  },
+  {
+    "video": "0000",
+    "frame": 6,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0000/000006.png",
+    "native_candidates": 2,
+    "native_matched_regions": 0,
+    "teacher_regions": 0,
+    "native_response_rejected": false
+  },
+  {
+    "video": "0000",
+    "frame": 7,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0000/000007.png",
+    "native_candidates": 1,
+    "native_matched_regions": 0,
+    "teacher_regions": 0,
+    "native_response_rejected": false
+  },
+  {
+    "video": "0002",
+    "frame": 53,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000053.png",
+    "native_candidates": 1,
+    "native_matched_regions": 0,
+    "teacher_regions": 4,
+    "native_response_rejected": false
+  },
+  {
+    "video": "0002",
+    "frame": 54,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000054.png",
+    "native_candidates": 2,
+    "native_matched_regions": 0,
+    "teacher_regions": 4,
+    "native_response_rejected": false
+  },
+  {
+    "video": "0002",
+    "frame": 55,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000055.png",
+    "native_candidates": 0,
+    "native_matched_regions": 0,
+    "teacher_regions": 4,
+    "native_response_rejected": true
+  },
+  {
+    "video": "0002",
+    "frame": 56,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000056.png",
+    "native_candidates": 5,
+    "native_matched_regions": 0,
+    "teacher_regions": 4,
+    "native_response_rejected": false
+  },
+  {
+    "video": "0002",
+    "frame": 57,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000057.png",
+    "native_candidates": 1,
+    "native_matched_regions": 0,
+    "teacher_regions": 4,
+    "native_response_rejected": false
+  },
+  {
+    "video": "0002",
+    "frame": 58,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000058.png",
+    "native_candidates": 2,
+    "native_matched_regions": 0,
+    "teacher_regions": 5,
+    "native_response_rejected": false
+  },
+  {
+    "video": "0002",
+    "frame": 59,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000059.png",
+    "native_candidates": 1,
+    "native_matched_regions": 0,
+    "teacher_regions": 5,
+    "native_response_rejected": false
+  },
+  {
+    "video": "0002",
+    "frame": 60,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000060.png",
+    "native_candidates": 4,
+    "native_matched_regions": 0,
+    "teacher_regions": 5,
+    "native_response_rejected": false
+  },
+  {
+    "video": "0003",
+    "frame": 0,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0003/000000.png",
+    "native_candidates": 5,
+    "native_matched_regions": 1,
+    "teacher_regions": 2,
+    "native_response_rejected": false
+  },
+  {
+    "video": "0003",
+    "frame": 1,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0003/000001.png",
+    "native_candidates": 4,
+    "native_matched_regions": 2,
+    "teacher_regions": 2,
+    "native_response_rejected": false
+  },
+  {
+    "video": "0003",
+    "frame": 2,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0003/000002.png",
+    "native_candidates": 5,
+    "native_matched_regions": 1,
+    "teacher_regions": 2,
+    "native_response_rejected": false
+  },
+  {
+    "video": "0003",
+    "frame": 3,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0003/000003.png",
+    "native_candidates": 4,
+    "native_matched_regions": 2,
+    "teacher_regions": 2,
+    "native_response_rejected": false
+  },
+  {
+    "video": "0003",
+    "frame": 4,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0003/000004.png",
+    "native_candidates": 4,
+    "native_matched_regions": 2,
+    "teacher_regions": 2,
+    "native_response_rejected": false
+  },
+  {
+    "video": "0003",
+    "frame": 5,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0003/000005.png",
+    "native_candidates": 5,
+    "native_matched_regions": 2,
+    "teacher_regions": 2,
+    "native_response_rejected": false
+  },
+  {
+    "video": "0003",
+    "frame": 6,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0003/000006.png",
+    "native_candidates": 5,
+    "native_matched_regions": 3,
+    "teacher_regions": 3,
+    "native_response_rejected": false
+  },
+  {
+    "video": "0003",
+    "frame": 7,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0003/000007.png",
+    "native_candidates": 4,
+    "native_matched_regions": 3,
+    "teacher_regions": 3,
+    "native_response_rejected": false
+  },
+  {
+    "video": "0006",
+    "frame": 0,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0006/000000.png",
+    "native_candidates": 0,
+    "native_matched_regions": 0,
+    "teacher_regions": 1,
+    "native_response_rejected": true
+  },
+  {
+    "video": "0006",
+    "frame": 1,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0006/000001.png",
+    "native_candidates": 1,
+    "native_matched_regions": 1,
+    "teacher_regions": 1,
+    "native_response_rejected": false
+  },
+  {
+    "video": "0006",
+    "frame": 2,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0006/000002.png",
+    "native_candidates": 1,
+    "native_matched_regions": 1,
+    "teacher_regions": 1,
+    "native_response_rejected": false
+  },
+  {
+    "video": "0006",
+    "frame": 3,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0006/000003.png",
+    "native_candidates": 0,
+    "native_matched_regions": 0,
+    "teacher_regions": 1,
+    "native_response_rejected": true
+  },
+  {
+    "video": "0006",
+    "frame": 4,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0006/000004.png",
+    "native_candidates": 0,
+    "native_matched_regions": 0,
+    "teacher_regions": 2,
+    "native_response_rejected": true
+  },
+  {
+    "video": "0006",
+    "frame": 5,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0006/000005.png",
+    "native_candidates": 1,
+    "native_matched_regions": 1,
+    "teacher_regions": 2,
+    "native_response_rejected": false
+  },
+  {
+    "video": "0006",
+    "frame": 6,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0006/000006.png",
+    "native_candidates": 2,
+    "native_matched_regions": 1,
+    "teacher_regions": 2,
+    "native_response_rejected": false
+  },
+  {
+    "video": "0006",
+    "frame": 7,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0006/000007.png",
+    "native_candidates": 1,
+    "native_matched_regions": 1,
+    "teacher_regions": 2,
+    "native_response_rejected": false
+  },
+  {
+    "video": "0008",
+    "frame": 0,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0008/000000.png",
+    "native_candidates": 1,
+    "native_matched_regions": 0,
+    "teacher_regions": 2,
+    "native_response_rejected": false
+  },
+  {
+    "video": "0008",
+    "frame": 1,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0008/000001.png",
+    "native_candidates": 2,
+    "native_matched_regions": 0,
+    "teacher_regions": 2,
+    "native_response_rejected": false
+  },
+  {
+    "video": "0008",
+    "frame": 2,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0008/000002.png",
+    "native_candidates": 8,
+    "native_matched_regions": 4,
+    "teacher_regions": 4,
+    "native_response_rejected": false
+  },
+  {
+    "video": "0008",
+    "frame": 3,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0008/000003.png",
+    "native_candidates": 9,
+    "native_matched_regions": 2,
+    "teacher_regions": 3,
+    "native_response_rejected": false
+  },
+  {
+    "video": "0008",
+    "frame": 4,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0008/000004.png",
+    "native_candidates": 7,
+    "native_matched_regions": 3,
+    "teacher_regions": 3,
+    "native_response_rejected": false
+  },
+  {
+    "video": "0008",
+    "frame": 5,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0008/000005.png",
+    "native_candidates": 9,
+    "native_matched_regions": 3,
+    "teacher_regions": 3,
+    "native_response_rejected": false
+  },
+  {
+    "video": "0008",
+    "frame": 6,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0008/000006.png",
+    "native_candidates": 7,
+    "native_matched_regions": 3,
+    "teacher_regions": 3,
+    "native_response_rejected": false
+  },
+  {
+    "video": "0008",
+    "frame": 7,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0008/000007.png",
+    "native_candidates": 6,
+    "native_matched_regions": 3,
+    "teacher_regions": 3,
+    "native_response_rejected": false
+  },
+  {
+    "video": "0010",
+    "frame": 134,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0010/000134.png",
+    "native_candidates": 4,
+    "native_matched_regions": 0,
+    "teacher_regions": 6,
+    "native_response_rejected": false
+  },
+  {
+    "video": "0010",
+    "frame": 135,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0010/000135.png",
+    "native_candidates": 4,
+    "native_matched_regions": 0,
+    "teacher_regions": 6,
+    "native_response_rejected": false
+  },
+  {
+    "video": "0010",
+    "frame": 136,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0010/000136.png",
+    "native_candidates": 1,
+    "native_matched_regions": 0,
+    "teacher_regions": 6,
+    "native_response_rejected": false
+  },
+  {
+    "video": "0010",
+    "frame": 137,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0010/000137.png",
+    "native_candidates": 1,
+    "native_matched_regions": 0,
+    "teacher_regions": 5,
+    "native_response_rejected": false
+  },
+  {
+    "video": "0010",
+    "frame": 138,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0010/000138.png",
+    "native_candidates": 1,
+    "native_matched_regions": 0,
+    "teacher_regions": 5,
+    "native_response_rejected": false
+  },
+  {
+    "video": "0010",
+    "frame": 139,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0010/000139.png",
+    "native_candidates": 1,
+    "native_matched_regions": 0,
+    "teacher_regions": 5,
+    "native_response_rejected": false
+  },
+  {
+    "video": "0010",
+    "frame": 140,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0010/000140.png",
+    "native_candidates": 4,
+    "native_matched_regions": 0,
+    "teacher_regions": 5,
+    "native_response_rejected": false
+  },
+  {
+    "video": "0010",
+    "frame": 141,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0010/000141.png",
+    "native_candidates": 2,
+    "native_matched_regions": 0,
+    "teacher_regions": 5,
+    "native_response_rejected": false
+  },
+  {
+    "video": "0012",
+    "frame": 13,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0012/000013.png",
+    "native_candidates": 1,
+    "native_matched_regions": 0,
+    "teacher_regions": 2,
+    "native_response_rejected": false
+  },
+  {
+    "video": "0012",
+    "frame": 14,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0012/000014.png",
+    "native_candidates": 0,
+    "native_matched_regions": 0,
+    "teacher_regions": 2,
+    "native_response_rejected": true
+  },
+  {
+    "video": "0012",
+    "frame": 15,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0012/000015.png",
+    "native_candidates": 0,
+    "native_matched_regions": 0,
+    "teacher_regions": 2,
+    "native_response_rejected": true
+  },
+  {
+    "video": "0012",
+    "frame": 16,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0012/000016.png",
+    "native_candidates": 0,
+    "native_matched_regions": 0,
+    "teacher_regions": 2,
+    "native_response_rejected": true
+  },
+  {
+    "video": "0012",
+    "frame": 17,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0012/000017.png",
+    "native_candidates": 1,
+    "native_matched_regions": 0,
+    "teacher_regions": 3,
+    "native_response_rejected": false
+  },
+  {
+    "video": "0012",
+    "frame": 18,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0012/000018.png",
+    "native_candidates": 1,
+    "native_matched_regions": 0,
+    "teacher_regions": 3,
+    "native_response_rejected": false
+  },
+  {
+    "video": "0012",
+    "frame": 19,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0012/000019.png",
+    "native_candidates": 0,
+    "native_matched_regions": 0,
+    "teacher_regions": 3,
+    "native_response_rejected": true
+  },
+  {
+    "video": "0012",
+    "frame": 20,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0012/000020.png",
+    "native_candidates": 1,
+    "native_matched_regions": 0,
+    "teacher_regions": 3,
+    "native_response_rejected": false
+  },
+  {
+    "video": "0014",
+    "frame": 0,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0014/000000.png",
+    "native_candidates": 3,
+    "native_matched_regions": 2,
+    "teacher_regions": 5,
+    "native_response_rejected": false
+  },
+  {
+    "video": "0014",
+    "frame": 1,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0014/000001.png",
+    "native_candidates": 2,
+    "native_matched_regions": 2,
+    "teacher_regions": 5,
+    "native_response_rejected": false
+  },
+  {
+    "video": "0014",
+    "frame": 2,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0014/000002.png",
+    "native_candidates": 1,
+    "native_matched_regions": 0,
+    "teacher_regions": 5,
+    "native_response_rejected": false
+  },
+  {
+    "video": "0014",
+    "frame": 3,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0014/000003.png",
+    "native_candidates": 1,
+    "native_matched_regions": 0,
+    "teacher_regions": 5,
+    "native_response_rejected": false
+  },
+  {
+    "video": "0014",
+    "frame": 4,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0014/000004.png",
+    "native_candidates": 1,
+    "native_matched_regions": 0,
+    "teacher_regions": 5,
+    "native_response_rejected": false
+  },
+  {
+    "video": "0014",
+    "frame": 5,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0014/000005.png",
+    "native_candidates": 1,
+    "native_matched_regions": 0,
+    "teacher_regions": 5,
+    "native_response_rejected": false
+  },
+  {
+    "video": "0014",
+    "frame": 6,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0014/000006.png",
+    "native_candidates": 1,
+    "native_matched_regions": 0,
+    "teacher_regions": 5,
+    "native_response_rejected": false
+  },
+  {
+    "video": "0014",
+    "frame": 7,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0014/000007.png",
+    "native_candidates": 1,
+    "native_matched_regions": 0,
+    "teacher_regions": 5,
+    "native_response_rejected": false
+  },
+  {
+    "video": "0017",
+    "frame": 0,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0017/000000.png",
+    "native_candidates": 1,
+    "native_matched_regions": 1,
+    "teacher_regions": 6,
+    "native_response_rejected": false
+  },
+  {
+    "video": "0017",
+    "frame": 1,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0017/000001.png",
+    "native_candidates": 3,
+    "native_matched_regions": 1,
+    "teacher_regions": 5,
+    "native_response_rejected": false
+  },
+  {
+    "video": "0017",
+    "frame": 2,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0017/000002.png",
+    "native_candidates": 2,
+    "native_matched_regions": 0,
+    "teacher_regions": 5,
+    "native_response_rejected": false
+  },
+  {
+    "video": "0017",
+    "frame": 3,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0017/000003.png",
+    "native_candidates": 2,
+    "native_matched_regions": 0,
+    "teacher_regions": 5,
+    "native_response_rejected": false
+  },
+  {
+    "video": "0017",
+    "frame": 4,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0017/000004.png",
+    "native_candidates": 2,
+    "native_matched_regions": 1,
+    "teacher_regions": 6,
+    "native_response_rejected": false
+  },
+  {
+    "video": "0017",
+    "frame": 5,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0017/000005.png",
+    "native_candidates": 2,
+    "native_matched_regions": 1,
+    "teacher_regions": 5,
+    "native_response_rejected": false
+  },
+  {
+    "video": "0017",
+    "frame": 6,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0017/000006.png",
+    "native_candidates": 1,
+    "native_matched_regions": 1,
+    "teacher_regions": 5,
+    "native_response_rejected": false
+  },
+  {
+    "video": "0017",
+    "frame": 7,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0017/000007.png",
+    "native_candidates": 2,
+    "native_matched_regions": 1,
+    "teacher_regions": 6,
+    "native_response_rejected": false
+  }
+]

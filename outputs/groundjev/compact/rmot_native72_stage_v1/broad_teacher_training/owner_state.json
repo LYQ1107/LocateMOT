@@ -1,0 +1,160 @@
+{
+  "status": "SHARED_COMPACT_JOINT1200_TRAINING_COMPLETE",
+  "steps": 1200,
+  "target_steps": 1200,
+  "seed": 0,
+  "task_examples": {
+    "0": 149,
+    "1": 183,
+    "2": 62
+  },
+  "Novel_GT_supervised": false,
+  "additional_teacher_proposal_stage_not_native_detector_rollout": true,
+  "source_pack": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/rmot_native72_v1/broad_teacher",
+  "initialization": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/joint1200_v1/checkpoint.pt",
+  "actual_native_RMOT_groups": 0,
+  "parameters": 1146511,
+  "changed_elements": 1123329,
+  "changed_semantic_head_elements": {
+    "text.0.weight": 1024,
+    "text.0.bias": 1024,
+    "text.1.weight": 131072,
+    "text.1.bias": 128,
+    "text.3.weight": 16384,
+    "text.3.bias": 128,
+    "category.weight": 16384,
+    "category.bias": 128,
+    "membership.0.weight": 49152,
+    "membership.0.bias": 128,
+    "membership.2.weight": 128,
+    "membership.2.bias": 1
+  },
+  "three_task_checkpoint_reload_max_difference": {
+    "0": 0.0,
+    "1": 0.0,
+    "2": 0.0
+  },
+  "peak_allocated_bytes": 55228928,
+  "checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/rmot_native72_stage_v1/broad_teacher_training/checkpoint.pt",
+  "checkpoint_bytes": 4606389,
+  "training_log": [
+    {
+      "step": 1,
+      "task": 0,
+      "loss": 1.3300328254699707,
+      "class_loss": 0.009412599727511406,
+      "membership_loss": 8.892436017049477e-05,
+      "gradient_norm": 14.011347770690918,
+      "elapsed_seconds": 0.7585072999936529
+    },
+    {
+      "step": 100,
+      "task": 0,
+      "loss": 0.9454320073127747,
+      "class_loss": 0.002388112246990204,
+      "membership_loss": 0.000220962188905105,
+      "gradient_norm": 2.6159567832946777,
+      "elapsed_seconds": 4.118705773958936
+    },
+    {
+      "step": 200,
+      "task": 1,
+      "loss": 1.1048016548156738,
+      "class_loss": -0.0,
+      "membership_loss": 0.7600571513175964,
+      "gradient_norm": 16.394256591796875,
+      "elapsed_seconds": 7.53385826095473
+    },
+    {
+      "step": 300,
+      "task": 2,
+      "loss": 0.004793969448655844,
+      "class_loss": 0.003249839646741748,
+      "membership_loss": 6.892096735100495e-06,
+      "gradient_norm": 0.1194477453827858,
+      "elapsed_seconds": 10.859922881005332
+    },
+    {
+      "step": 400,
+      "task": 0,
+      "loss": 2.023566246032715,
+      "class_loss": 0.0031886461656540632,
+      "membership_loss": 0.001214196439832449,
+      "gradient_norm": 16.404170989990234,
+      "elapsed_seconds": 14.217812646995299
+    },
+    {
+      "step": 500,
+      "task": 1,
+      "loss": 0.525104284286499,
+      "class_loss": -0.0,
+      "membership_loss": 0.29012924432754517,
+      "gradient_norm": 9.0073881149292,
+      "elapsed_seconds": 17.561493552988395
+    },
+    {
+      "step": 600,
+      "task": 2,
+      "loss": 0.042744457721710205,
+      "class_loss": 0.015846041962504387,
+      "membership_loss": 5.020458411308937e-05,
+      "gradient_norm": 1.1330221891403198,
+      "elapsed_seconds": 20.883565319993068
+    },
+    {
+      "step": 700,
+      "task": 0,
+      "loss": 1.0436816215515137,
+      "class_loss": 0.0006074481643736362,
+      "membership_loss": 0.00010931810538750142,
+      "gradient_norm": 9.479921340942383,
+      "elapsed_seconds": 24.20890446397243
+    },
+    {
+      "step": 800,
+      "task": 1,
+      "loss": 0.3550246059894562,
+      "class_loss": -0.0,
+      "membership_loss": 0.09302181005477905,
+      "gradient_norm": 25.551172256469727,
+      "elapsed_seconds": 27.511196706967894
+    },
+    {
+      "step": 900,
+      "task": 2,
+      "loss": 0.0028690029866993427,
+      "class_loss": 0.00196486571803689,
+      "membership_loss": 0.00013278824917506427,
+      "gradient_norm": 0.0725456178188324,
+      "elapsed_seconds": 30.904064011992887
+    },
+    {
+      "step": 1000,
+      "task": 0,
+      "loss": 2.059800624847412,
+      "class_loss": 0.001562117482535541,
+      "membership_loss": 0.0008691824041306973,
+      "gradient_norm": 12.901955604553223,
+      "elapsed_seconds": 34.234472383977845
+    },
+    {
+      "step": 1100,
+      "task": 1,
+      "loss": 0.4211543798446655,
+      "class_loss": -0.0,
+      "membership_loss": 0.45075398683547974,
+      "gradient_norm": 8.852383613586426,
+      "elapsed_seconds": 37.5184693110059
+    },
+    {
+      "step": 1200,
+      "task": 2,
+      "loss": 0.005105550400912762,
+      "class_loss": 0.003638029098510742,
+      "membership_loss": 5.368721758713946e-06,
+      "gradient_norm": 0.32550302147865295,
+      "elapsed_seconds": 40.85818548995303
+    }
+  ],
+  "official_tracking_class_referring_results": "pending same native proposals and official evaluation"
+}

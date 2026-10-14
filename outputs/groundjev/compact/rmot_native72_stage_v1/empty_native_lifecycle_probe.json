@@ -1,0 +1,8 @@
+{
+  "scope": "actual native training history, functional model-head gradient check; not RMOT accuracy",
+  "history_count": 31,
+  "empty_candidates": 0,
+  "loss": 3.8286855220794678,
+  "lifecycle_gradient_norm": 12.401034355163574,
+  "training_sample_drop_or_GT_state_repair": false
+}

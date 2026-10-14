@@ -1,0 +1,27 @@
+{
+  "status": "BROAD_FIT_NATIVE_OWN_HISTORY_PACK_COMPLETE",
+  "frames": 72,
+  "registered_frames": 72,
+  "actual_native_candidates": 165,
+  "actor_GT_corrected": false,
+  "validation_or_test_labels_read": false,
+  "counter_expression_is_supervised_snapshot_not_actor_rollout": true,
+  "counts": {
+    "native_group_without_query_positive": 103,
+    "native_matched_regions": 49,
+    "rejected_native_frames": 8,
+    "native_membership_positive": 58,
+    "contaminated_history_observations": 28
+  },
+  "teacher_groups": 138,
+  "native_groups": 142,
+  "feature_budget_existing_conservative_bytes": 6297714921,
+  "feature_budget_new_tensor_upper_bound_bytes": 375050562,
+  "feature_files_bytes": {
+    "broad_teacher": 158758109,
+    "broad_native": 167439709
+  },
+  "GT_IDs_in_actor_input": false,
+  "future_images_read_by_actor": false,
+  "original_teacher_groups_retained": 256
+}

@@ -1919,3 +1919,72 @@ All1203candidate+ROIrows match, video1203decoded, all27rejectedframes kept.
 No GT/parser/metric/candidate changes. Keep as positive complete-video MOT
 retention plus negative RMOT/OVassociation ablation; not unified-success.
 GPU7owner exited. ReplayFPS22.747excludes detector/ROI costs.
+
+### RMOT fit breadth and native own-history intervention (registered)
+
+Current membership fits96teacher regions but suppresses every covered native
+validation target. Register72frames from all9fit-v2 videos, exact18primary/
+counter expressions. Compare broader teacher curriculum with same broadened
+teacher+actual nativeGroundproposals/uncorrectedCompact ownhistory; original
+MOT/OVgroups, initialization,seed,optimizer,1200steps and allvalidation protocols
+remain fixed. Alternate-expression supervised snapshots add query contrast;
+no alternate detector request or actor update is claimed. AllGT mappings and
+quality proxies remain outside model inputs. Never replace a rejected native
+proposal frame byGT. Plan:configs/groundjev/rmot_native72_20261014.json.
+
+Native72owner has confirmed owned original Ground API readiness onGPU6
+and is building72fit frames through actualCompact own histories onGPU7.
+Existing conservative feature/crop/readable-result bytes6,288,115,739(5.856GiB),
+models/optimizer/videos excluded; newtensorserialization checkedbeforewrite.
+Empty-candidate lifecycle check fromactualnative train history31slots passes
+finite loss3.8286855,lifegradient12.4010; no droppedemptyframe rule needed.
+
+### Original Ground dense/referring retention data preparation
+
+Original nine dense/referring benchmark inputs are absent locally. Official
+GroundAnything README links Skywalker0410/Grounding-EvalData. Direct no-proxy
+HF API succeeds; pin772e34bb1505053ed4857bba4405ee7b308bbfb6. Fetch only
+complete archives/annotations needed by4dense+5referring task entries, not
+GUI/OCR/etc. Rawdata/model checkpoints are outside25GiBfeaturebudget.
+Parallel3downloads, noGPU. Original full30helper requires allotherdata, so
+reuse its verified unmodified archive extraction/path functions and explicitly
+label this a nine-task data subset. No evaluation/retention score is claimed
+until original unmodified scorer runs on all declared examples.
+
+### Broad fit/native own-history outcomes and CUDA recovery
+
+Both1200additional-step models genuinely trained fromjoint1200, all3task
+reload differences0. Same params/initialization/seed/lr/taskcycle; not equal
+training-budget/parameter comparison againstoldCompact300. Broadteacher:
+MOT4HOTA71.359%,singleRMO20.921%,multi17.740%,TAOBaseTETA46.279/ClsA67.0%.
+Matched teacher+native:63.077/0/14.846/56.733/100.0%. Allpairedcandidates/ROIs
+and videos validated. Native data165candidates/49GTaligned,8rejectedframes,
+all72retained;28contaminatedactorhistoryobservations; noGTstate repair.
+Native mixture restores6/6covered singlequeryprobabilities below.5(.362-.498),
+versusteacher2/6. Keep threshold.5. Hypothesis: weak native proposal support
+and negative-heavy own-history/counter samples shift query decisions; mixing
+not universally beneficial. Preserve bothmethods/negative transfer, no promotion.
+
+Full1203GT/candidate/ROI/video controls: teacherHOTA.2040093/IDF.2383171,
+IDSW151/FP615/FN2276;nativeHOTA.2631573/IDF.3063294,165/579/1962.
+Native run failedCUDAunspecifiedlaunch at799, preserved798rows/memory39.9.
+NVMLECC0/recoveryNone; privilegedkernel unavailable, externalcauseunknown.
+FreshsameGPU7 actual799probe finite; CPU/GPUprob delta.000115(referenceonly).
+No reset ormodelmath/data change. Strictsource798prefixreplayexact, resume799,
+all1203candidate/ROIrows anddecodedvideoframes validated,all27rejections kept.
+Originalfailureowner retained; separateterminalrecoveryreceipt. E2Enull.
+
+Native Ground original retentioninputs direct3parallel downloads complete:
+6.929GB archives, all4dense+5ref canonicaltasks, 91,124rows. Officialhelper
+hash/extraction unchanged. Originalevaluator full/limitnull dry-run reports
+no missinginputs. Initialrecipe-path resolution and Pythonvenv-symlink mistakes
+fixed locally; no metric/source modifications. Benchmark scores still pending.
+
+OneJevstatefuloriginal500replay reached125/500 with500examples, actualcomplete
+FP32/Adam/scheduler/RNG/cursor checkpoint9,029,140,249bytes. Genuineintermediate
+125BF16MMcheckpoint reload is executing onGPU7; notformal500completion.
+
+ActualOne125MMreload terminal:474weights, BF16changed2,306,395/2,035,222/
+1,627,638elements in threeMLPprobes vsinit100; independent nativeMMreload
+probabilitydifference0(autoFork unchanged). Onlyintermediatecorrectness, no
+formal500or trackinggain/exactFullFP32nextstep claim. GPU7probe exited.

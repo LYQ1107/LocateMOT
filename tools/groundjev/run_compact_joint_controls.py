@@ -1,4 +1,5 @@
 """One blocking owner for native-proposal joint-task before/after metrics."""
+import argparse
 import json
 from pathlib import Path
 import subprocess
@@ -7,8 +8,12 @@ ROOT=Path(__file__).resolve().parents[2]
 
 
 def main():
-    out=ROOT/'outputs/groundjev/compact/joint1200_controls_v1';out.mkdir(parents=True,exist_ok=False)
-    train=json.loads((ROOT/'outputs/groundjev/compact/joint1200_v1/owner_state.json').read_text())
+    parser=argparse.ArgumentParser()
+    parser.add_argument('--out',type=Path,default=ROOT/'outputs/groundjev/compact/joint1200_controls_v1')
+    parser.add_argument('--training',type=Path,default=ROOT/'outputs/groundjev/compact/joint1200_v1')
+    parser.add_argument('--reuse-before',type=Path)
+    args=parser.parse_args();out=args.out;out.mkdir(parents=True,exist_ok=False)
+    train=json.loads((args.training/'owner_state.json').read_text())
     assert train['status']=='SHARED_COMPACT_JOINT1200_TRAINING_COMPLETE'
     state={'status':'JOINT_TASK_NATIVE_PROPOSAL_CONTROLS_STARTED','physical_core_gpu':7,
         'native_ROI_service_gpu':5,'same_shared_core_and_memory_for_three_tasks':True,
@@ -39,11 +44,16 @@ def main():
                 state['completed'][name+'_before']={'run':'outputs/groundjev/compact/native300_controls_v1/compact_distilled',
                     'metrics':json.loads((ROOT/'outputs/groundjev/compact/native300_controls_v1/compact_distilled/official_metrics.json').read_text())}
                 variants=['after']
+            elif args.reuse_before:
+                previous=json.loads((args.reuse_before/'owner_state.json').read_text())
+                assert previous['status']=='JOINT_THREE_TASK_NATIVE_PROPOSAL_CONTROLS_COMPLETE'
+                state['completed'][name+'_before']=previous['completed'][name+'_before']
+                variants=['after']
             else:variants=['before','after']
             for variant in variants:
                 directory=out/(name+'_'+variant)
-                checkpoint=ROOT/'outputs/groundjev/compact'/('native300_v1/compact_distilled.pt' if variant=='before' else 'joint1200_v1/checkpoint.pt')
-                source=out/(name+'_before')/'frame_decisions.jsonl' if variant=='after' and task!='mot' else ROOT/candidates
+                checkpoint=ROOT/'outputs/groundjev/compact/native300_v1/compact_distilled.pt' if variant=='before' else args.training/'checkpoint.pt'
+                source=Path(state['completed'][name+'_before']['run'])/'frame_decisions.jsonl' if variant=='after' and task!='mot' else ROOT/candidates
                 command=['python3','tools/groundjev/run_with_resources.py','--gpus','7','--',
                     str(ROOT/'.venv-onejev-py310/bin/python'),'tools/groundjev/run_video.py','--task',task,
                     '--video',video,'--backend','compact','--checkpoint',str(checkpoint),

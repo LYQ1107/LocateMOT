@@ -1,0 +1,13 @@
+{
+  "status": "ACTUAL_FAILED_FRAME_FRESH_CUDA_CONTEXT_PASSED",
+  "frame": 799,
+  "saved_memory_prefix": 798,
+  "native_candidates": 31,
+  "actual_output_tracks": 3,
+  "all_head_outputs_finite": true,
+  "GPU_CPU_match_probability_max_difference": 0.00011524558067321777,
+  "GT_read": false,
+  "GPU_reset_or_driver_change": false,
+  "CUDA_LAUNCH_BLOCKING": true,
+  "previous_async_launch_failure_external_root_cause": "not established from accessible driver logs"
+}

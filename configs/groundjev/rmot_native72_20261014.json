@@ -1,0 +1,200 @@
+{
+  "name": "Broader fit RMOT teacher versus native proposal own-history controlled adaptation",
+  "split": "refer_kitti_v2 fit-v2 only",
+  "clips": [
+    {
+      "video": "0000",
+      "primary_expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0000/designated-path-for-people-on-foot.json",
+      "counter_expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0000/automobiles-currently-parking.json",
+      "primary_expression": "designated path for people on foot",
+      "counter_expression": "automobiles currently parking",
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "fps": 10.0,
+      "distinct_training_target_maps": true
+    },
+    {
+      "video": "0002",
+      "primary_expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0002/individuals-who-are-human.json",
+      "counter_expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0002/automobiles-are-being-parked.json",
+      "primary_expression": "individuals who are human",
+      "counter_expression": "automobiles are being parked",
+      "frames": [
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "fps": 10.0,
+      "distinct_training_target_maps": true
+    },
+    {
+      "video": "0003",
+      "primary_expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0003/automobiles.json",
+      "counter_expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0003/automobiles-are-driving-in-the-same-direction-as-our-automobile.json",
+      "primary_expression": "automobiles",
+      "counter_expression": "automobiles are driving in the same direction as our automobile",
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "fps": 10.0,
+      "distinct_training_target_maps": true
+    },
+    {
+      "video": "0006",
+      "primary_expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0006/automobiles-on-the-move.json",
+      "counter_expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0006/automobiles-faster-than-ours.json",
+      "primary_expression": "automobiles on the move",
+      "counter_expression": "automobiles faster than ours",
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "fps": 10.0,
+      "distinct_training_target_maps": true
+    },
+    {
+      "video": "0008",
+      "primary_expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0008/automobiles-proceeding-in-the-same-direction-as-our-vehicle.json",
+      "counter_expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0008/automobiles-that-are-light-in-color,-moving.json",
+      "primary_expression": "automobiles proceeding in the same direction as our vehicle",
+      "counter_expression": "automobiles that are light in color, moving",
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "fps": 10.0,
+      "distinct_training_target_maps": true
+    },
+    {
+      "video": "0010",
+      "primary_expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0010/pedestrians-that-are-wearing-t-shirt.json",
+      "counter_expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0010/automobiles-in-the-same-direction-of-our-vehicle.json",
+      "primary_expression": "pedestrians that are wearing t-shirt",
+      "counter_expression": "automobiles in the same direction of our vehicle",
+      "frames": [
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141
+      ],
+      "fps": 10.0,
+      "distinct_training_target_maps": true
+    },
+    {
+      "video": "0012",
+      "primary_expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0012/human-beings.json",
+      "counter_expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0012/automobiles.json",
+      "primary_expression": "human beings",
+      "counter_expression": "automobiles",
+      "frames": [
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "fps": 10.0,
+      "distinct_training_target_maps": true
+    },
+    {
+      "video": "0014",
+      "primary_expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0014/a-bag-carrying-pedestrians-are-walking.json",
+      "counter_expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0014/automobiles.json",
+      "primary_expression": "a bag-carrying pedestrians are walking",
+      "counter_expression": "automobiles",
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "fps": 10.0,
+      "distinct_training_target_maps": true
+    },
+    {
+      "video": "0017",
+      "primary_expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0017/men-are-wearing-a-t-shirt-and-pants.json",
+      "counter_expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0017/females-that-are-wearing-pants.json",
+      "primary_expression": "men are wearing a t-shirt and pants",
+      "counter_expression": "females that are wearing pants",
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "fps": 10.0,
+      "distinct_training_target_maps": true
+    }
+  ],
+  "frames": 72,
+  "selection": "nine fixed fit videos; prefer human phrase with most labeled training frames, lexicographic ties; counter phrase has different training target map when available; no validation annotations used for selection",
+  "actor_checkpoint": "outputs/groundjev/compact/joint1200_v1/checkpoint.pt",
+  "Ground_checkpoint": "models/GroundAnything-DLM",
+  "Ground_parser": "official_scoring",
+  "Ground_decoder": "tracking_dense",
+  "rejected_perception_policy": "empty_and_record; keep every registered frame; never substitute GT boxes for native failed frames",
+  "native_actor_state": "actual uncorrected Compact identity/memory state; anchor-to-GT association recorded only for training labels outside model",
+  "counter_expression_examples": "same native candidate and own-history snapshot; alternate legal training sentence; supervised outside input; not an additional actor update or detector request",
+  "controls": "same initialization joint1200, seed0/lr2e-4/1200balancedsteps; both retain original nativeMOT/teacherRMOT/BaseOV; compare broad teacher with broad teacher+native own-history",
+  "teacher_proposals": "explicit GT-region teacher curriculum; no native detector claim",
+  "native_update_reliability": "GT alignment IoU quality proxy (.7 update, .5/.7/.85 levels), never native detection confidence",
+  "novel_GT_supervised": false,
+  "physical_GPU_roles": {
+    "OneJev500": 4,
+    "native_ROI": 5,
+    "Ground_decoder": 6,
+    "actor_and_finite_train_controls": 7
+  },
+  "max_physical_GPUs": 4,
+  "temporary_feature_cache_limit_bytes": 26843545600,
+  "evaluation": "unchanged registered MOT4/RMOT8+12/TAOBase4 and same-candidate full1203DanceTrack; all fixed validation queries/classes/thresholds/GT/frames/metrics unchanged",
+  "full_goal_complete": false
+}

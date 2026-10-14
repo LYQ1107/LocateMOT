@@ -1,0 +1,9 @@
+{
+  "status": "VIDEO_INFERENCE_FAILED",
+  "frame": 799,
+  "image_path": "/data2/user/LocateMOT/data/DanceTrack/val/dancetrack0004/img1/00000799.jpg",
+  "error_type": "AcceleratorError",
+  "error": "CUDA error: unspecified launch failure\nSearch for `cudaErrorLaunchFailure' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.\nCUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.\nFor debugging consider passing CUDA_LAUNCH_BLOCKING=1\nCompile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.\n",
+  "completed_frames": 798,
+  "failed_frame_not_skipped": true
+}

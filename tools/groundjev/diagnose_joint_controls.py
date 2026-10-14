@@ -1,4 +1,5 @@
 """Validate paired artifacts and diagnose RMOT output loss after inference."""
+import argparse
 import json
 from pathlib import Path
 import subprocess
@@ -10,7 +11,9 @@ sys.path.insert(0, str(ROOT))
 
 def main():
     from locatemot.groundjev.decision import overlap
-    root = ROOT / 'outputs/groundjev/compact/joint1200_controls_v1'
+    parser=argparse.ArgumentParser()
+    parser.add_argument('--root',type=Path,default=ROOT/'outputs/groundjev/compact/joint1200_controls_v1')
+    root = parser.parse_args().root
     owner = json.loads((root / 'owner_state.json').read_text())
     assert owner['status'] == 'JOINT_THREE_TASK_NATIVE_PROPOSAL_CONTROLS_COMPLETE'
     scopes = {}

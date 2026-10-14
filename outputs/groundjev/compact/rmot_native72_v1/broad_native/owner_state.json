@@ -1,0 +1,11 @@
+{
+  "status": "DECLARED_JOINT_SEMANTIC_TRAIN_PACK_COMPLETE",
+  "examples": 536,
+  "registered_new_frames": 72,
+  "variant": "broad_native",
+  "feature_file_bytes": 167439709,
+  "teacher_GT_proposals_declared": true,
+  "actual_native_own_history_groups": 142,
+  "GT_state_correction": false,
+  "Novel_GT_supervised": false
+}

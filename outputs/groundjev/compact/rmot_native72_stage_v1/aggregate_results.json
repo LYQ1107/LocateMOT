@@ -1,0 +1,151 @@
+{
+  "status": "BROAD_FIT_STAGE_COMPLETE_WITH_RETAINED_CUDA_FAILURE_AND_CAUSAL_RESUME",
+  "scope": "four registered short validation clips and one complete1203frameDanceTrack video; one seed",
+  "initialization_for_both": "joint1200_v1/checkpoint.pt",
+  "additional_steps_per_variant": 1200,
+  "same_initialization_seed_optimizer_task_sampling": true,
+  "candidate_GT_metric_protocol_unchanged": true,
+  "all_query_and_category_thresholds_unchanged": true,
+  "variants": {
+    "broad_teacher": {
+      "short": {
+        "mot4_after": {
+          "HOTA": 0.7135869303408869,
+          "DetA": 0.6031863050655893,
+          "AssA": 0.8662469583526899,
+          "IDF1": 0.8114754098360656,
+          "IDSW": 1,
+          "FP": 9,
+          "FN": 35
+        },
+        "rmot_single8_after": {
+          "HOTA": 0.20921291678017803,
+          "DetA": 0.16228070175438594,
+          "AssA": 0.26973684210526316,
+          "IDF1": 0.46153846153846156,
+          "IDSW": 1,
+          "FP": 5,
+          "FN": 2
+        },
+        "rmot_multi12_after": {
+          "HOTA": 0.17739580751487213,
+          "DetA": 0.1439317246917687,
+          "AssA": 0.22065370437219178,
+          "IDF1": 0.13043478260869565,
+          "IDSW": 0,
+          "FP": 11,
+          "FN": 25
+        },
+        "ovmot4_after": {
+          "TETA": 46.279,
+          "LocA": 41.555,
+          "AssocA": 30.282,
+          "ClsA": 67.0,
+          "LocRe": 43.889,
+          "LocPr": 82.181,
+          "AssocRe": 39.888,
+          "AssocPr": 44.398,
+          "ClsRe": 67.0,
+          "ClsPr": 100.0
+        }
+      },
+      "full1203": {
+        "HOTA": 0.204009314411607,
+        "DetA": 0.39383899467029754,
+        "AssA": 0.10596967306593326,
+        "IDF1": 0.238317134868859,
+        "IDSW": 151,
+        "FP": 615,
+        "FN": 2276
+      },
+      "full_artifact_validated_rows": 1203,
+      "decoded_video_frames": 1203,
+      "end_to_end_fps": null,
+      "all27native_rejected_frames_retained": true,
+      "native_resume_completed_prefix": 0,
+      "checkpoint": {
+        "checkpoint": "outputs/groundjev/compact/rmot_native72_stage_v1/broad_teacher_training/checkpoint.pt",
+        "bytes": 4606389,
+        "sha256": "a3bb79d288a513ca4a39392b10885faa0d791eef4da107ceb5921d84077939a4",
+        "three_task_reload_max_difference": {
+          "0": 0.0,
+          "1": 0.0,
+          "2": 0.0
+        },
+        "steps": 1200,
+        "seed": 0
+      },
+      "promotion": "not promoted as final unified model; full legal RMOT/OVMOT/Novel and memory controls remain"
+    },
+    "broad_native": {
+      "short": {
+        "mot4_after": {
+          "HOTA": 0.6307702917113627,
+          "DetA": 0.5107944182961721,
+          "AssA": 0.7951119378978021,
+          "IDF1": 0.7022222222222222,
+          "IDSW": 3,
+          "FP": 8,
+          "FN": 53
+        },
+        "rmot_single8_after": {
+          "HOTA": 0.0,
+          "DetA": 0.0,
+          "AssA": 0.0,
+          "IDF1": 0.0,
+          "IDSW": 0,
+          "FP": 0,
+          "FN": 5
+        },
+        "rmot_multi12_after": {
+          "HOTA": 0.14845658242338686,
+          "DetA": 0.09913538038538039,
+          "AssA": 0.2332728918255234,
+          "IDF1": 0.0975609756097561,
+          "IDSW": 0,
+          "FP": 9,
+          "FN": 28
+        },
+        "ovmot4_after": {
+          "TETA": 56.733,
+          "LocA": 44.565,
+          "AssocA": 25.634,
+          "ClsA": 100.0,
+          "LocRe": 45.0,
+          "LocPr": 93.571,
+          "AssocRe": 36.549,
+          "AssocPr": 44.002,
+          "ClsRe": 100.0,
+          "ClsPr": 100.0
+        }
+      },
+      "full1203": {
+        "HOTA": 0.2631573142603841,
+        "DetA": 0.4518423629241236,
+        "AssA": 0.15347649228497243,
+        "IDF1": 0.30632943895236875,
+        "IDSW": 165,
+        "FP": 579,
+        "FN": 1962
+      },
+      "full_artifact_validated_rows": 1203,
+      "decoded_video_frames": 1203,
+      "end_to_end_fps": null,
+      "all27native_rejected_frames_retained": true,
+      "native_resume_completed_prefix": 798,
+      "checkpoint": {
+        "checkpoint": "outputs/groundjev/compact/rmot_native72_stage_v1/broad_native_training/checkpoint.pt",
+        "bytes": 4606389,
+        "sha256": "59a64b46d6783c31b3d4e020a634cb3652218406cd8913a724571291ed3e29d5",
+        "three_task_reload_max_difference": {
+          "0": 0.0,
+          "1": 0.0,
+          "2": 0.0
+        },
+        "steps": 1200,
+        "seed": 0
+      },
+      "promotion": "not promoted as final unified model; full legal RMOT/OVMOT/Novel and memory controls remain"
+    }
+  }
+}

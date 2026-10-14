@@ -95,21 +95,102 @@ The old intermediate is preserved and is not declared a completed 500-step run.
 A new finite replay of the original unfinished 500-step protocol starts from
 its original valid 100-step initialization, with unchanged corpus, seed0,
 lr5e-6, 32768 context, native fork tolerance and zero dropped rows. It runs on
-physical GPU4; the latest returned live report was step50/500. It does not
+physical GPU4; the latest returned live report was step125/500, with an actual9.029GB
+FP32/Adam/scheduler/RNG/cursor state checkpoint saved. It does not
 pretend to reconstruct missing Adam state at old step250. Checkpoint handling
 now atomically saves FP32 masters, Adam, scheduler, all RNG and exact planned
 step cursor every125 steps, retaining one latest full training-state checkpoint.
 A real-native-ROI functional resume regression gives identical next-step loss
 and parameters; this small probe is not itself an actual OneJev training result.
+Actual intermediate125checkpoint contains all474weights, with millions of
+BF16-visible changes in three language probes versus initialization100. Two
+independent native multimodal reloads agree exactly(probability max delta0),
+with native fork auto-check unchanged. This establishes genuine intermediate
+checkpoint correctness, not500completion or a tracking accuracy gain.
 Config: configs/groundjev/onejev_own_history_v3_exact500_replay_stateful.json.
 
-Physical GPU5 runs only the owned native visual-feature RPC on port8111.
-The original Ground decoder service on8101 is currently absent. GPU7
-was released after the finite full-video retention owner completed. GroundJEV does not own the fufu
-GPU6 job or UDMT GPU4/5 jobs and has not stopped them. At most four physical
-GPUs are allowed. No old U2 queue or full-dataset feature extraction is running.
+Physical GPU5 runs the owned native visual-feature RPC on port8111.
+The temporary Ground GPU6replica was stopped immediately after native72pack
+completion; both Compact training/control owners and the recovery owner are
+terminal. GPU7was released after the finite actualOneJev125multimodal checkpoint
+reload check completed. GroundJEV does not own the fufu/UDMT/ywh jobs and has not stopped
+them. At most four physical GPUs are allowed. No old U2 queue is running.
 Temporary feature caches remain bounded to25GiB; datasets and training-state
 checkpoints are separate preserved artifacts.
+
+## Completed RMOT breadth and native-history intervention
+
+Plan: configs/groundjev/rmot_native72_20261014.json. All9frozen fit-v2 videos,
+8frames each. Actual native Ground supplied165candidates,49one-to-one GT-aligned
+regions and8rejected frames; all72frames were retained. The Compact actor had
+28contaminated history observations and was never corrected byGT. Counter
+expressions reuse actual causal candidate/history snapshots without another
+actor or detector update. Both comparison packs retain all original256groups;
+their new groups are138broader teachers and142native own-history/counter groups.
+Their serialized files total326,197,818bytes. Teacher proposals and IoU-derived
+update/reliability quality proxies remain explicit, never native confidences.
+
+Both models initialize from joint1200 and train1200additional balanced steps,
+seed0/lr2e-4, with the same1,146,511parameters and exact3task checkpoint reload.
+This compares broad teacher with broad teacher+native own history; initial
+Compact300 has a different training budget/semantic parameter count.
+
+| Scope (percent unless counts) | Initial joint1200 | Broad teacher | Teacher + native |
+|---|---:|---:|---:|
+| MOT17 4-frame HOTA | 71.556 | 71.359 | 63.077 |
+| RMOT single8 HOTA | 0 | 20.921 | 0 |
+| RMOT multi12 HOTA | 0 | 17.740 | 14.846 |
+| TAO Base4 TETA | 39.272 | 46.279 | 56.733 |
+| TAO Base4 ClsA | 58.286 | 67.000 | 100.000 |
+| Complete DanceTrack1203 HOTA | 22.103 | 20.401 | 26.316 |
+| Complete DanceTrack1203 IDF1 | 21.413 | 23.832 | 30.633 |
+| Complete DanceTrack1203 IDSW | 346 | 151 | 165 |
+| Complete DanceTrack1203 FP | 1653 | 615 | 579 |
+| Complete DanceTrack1203 FN | 1485 | 2276 | 1962 |
+
+Native own history helps this complete MOT video relative to the matched
+broader-teacher comparison, while degrading short MOT and single-query RMOT.
+Neither is a final unified-model success. All candidate boxes/native ROIs,
+GT, frame denominators and official scorers stay identical. RMOT membership
+threshold remains.5. Native mixed training produces6/6covered single-query
+probabilities below.5 (range.362–.498), whereas broader teachers suppress2/6.
+No threshold tuning or GT prediction correction was performed. TAO clip has
+only the Base person/baby canonical category: Novel remains unevaluated.
+The emitted labels include several categories; this is not a claim of100%
+general open-vocabulary classification.
+
+Native full-video inference failed at frame799 with asynchronous CUDA launch
+failure. Preserved798complete rows and causal memorytimestamp39.9. A fresh
+GPU7process passed actualframe799with finite outputs; CPU/GPU probability
+difference1.15e-4 is recorded without claiming numerical identity. Accessible
+NVML ECC counters were0/recovery actionNone; privileged kernel records were
+unavailable, so the external root cause is not established. No GPU reset,
+driver/model/GT/metric change occurred. Existing strict prefix replay restores
+all798prediction/state rows identically, resumes799, and validates all1203rows
+plus1203decoded video frames and27rejected native frames. Original failure
+remains in owner_state.json; recovery_owner_state.json is separately terminal.
+No end-to-end FPS claim on the resumed candidate/feature replay.
+Evidence: outputs/groundjev/compact/rmot_native72_stage_v1/aggregate_results.json.
+
+## Original Ground dense/referring benchmark inputs
+
+Downloaded6.929GB of complete required archives directly without a proxy,
+with3parallelCPUdownloadworkers. Pinned official Grounding-EvalData revision
+772e34bb1505053ed4857bba4405ee7b308bbfb6; unmodified native extraction functions
+and original data. Raw inputs live in/data3/user/Grounding-EvalData-data;
+annotations/archive bundle in/data3/user/Grounding-EvalData-bundle. These are
+raw datasets, separate from temporary model-feature budgets.
+
+All4dense and5referring canonical task entries are prepared (91,124declared
+evaluation rows), not the other21paper tasks. Unmodified native evaluate.py
+dry-run with limit:null reports full scope and missing_inputs:[]. Its own
+checkout needs a relative local recipe; copy the tracked recipe to a unique
+local config. Resolve the venv executable lexically, not to its base-Python
+symlink target. Original model files are immutable hardlinks within the native
+evaluator checkout. No retention accuracy score has yet been computed and
+none of these benchmark labels is adaptation supervision. Recipe:
+configs/groundjev/ground_retention_dense_ref9_original.yaml. Evidence:
+outputs/groundjev/ground_retention/dense_ref9_data/input_validation.json.
 
 ## Earlier verified foundation and remaining requirements
 

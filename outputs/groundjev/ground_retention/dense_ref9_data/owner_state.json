@@ -1,0 +1,69 @@
+{
+  "status": "ORIGINAL_DENSE_REF9_INPUT_DATA_PREPARED",
+  "revision": "772e34bb1505053ed4857bba4405ee7b308bbfb6",
+  "tasks": [
+    "gam_coco",
+    "gam_lvis",
+    "gam_dense200",
+    "gam_visdrone",
+    "gam_refcocog_val",
+    "gam_refcocog_test",
+    "gam_refcoco",
+    "gam_refcocog",
+    "gam_refcocoplus"
+  ],
+  "GT_used_for_training": false,
+  "GPU_usage": 0,
+  "direct_without_proxy": true,
+  "complete_30_benchmark_bundle_claim": false,
+  "model_evaluation_performed": false,
+  "verified_archives": [
+    "coco.tar.gz",
+    "dense200.tar.gz",
+    "refcoco.tar.gz",
+    "refcocog.tar.gz",
+    "refcocoplus.tar.gz",
+    "visdrone.tar.gz"
+  ],
+  "extracted": {
+    "coco.tar.gz": {
+      "written_files": 23753,
+      "reused_identical_files": 0
+    },
+    "dense200.tar.gz": {
+      "written_files": 200,
+      "reused_identical_files": 0
+    },
+    "refcoco.tar.gz": {
+      "written_files": 6,
+      "reused_identical_files": 0
+    },
+    "refcocog.tar.gz": {
+      "written_files": 5,
+      "reused_identical_files": 0
+    },
+    "refcocoplus.tar.gz": {
+      "written_files": 4,
+      "reused_identical_files": 0
+    },
+    "visdrone.tar.gz": {
+      "written_files": 1610,
+      "reused_identical_files": 0
+    }
+  },
+  "bundle": "/data3/user/Grounding-EvalData-bundle",
+  "data_root": "/data3/user/Grounding-EvalData-data",
+  "data_paths": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/ground_retention/dense_ref9_data/datasets.local.yaml",
+  "declared_evaluation_rows": {
+    "gam_refcocog_val": 4889,
+    "gam_refcocog_test": 9577,
+    "gam_refcoco": 25080,
+    "gam_refcocog": 14432,
+    "gam_refcocoplus": 10758,
+    "gam_coco": 4952,
+    "gam_lvis": 19626,
+    "gam_dense200": 200,
+    "gam_visdrone": 1610
+  },
+  "original_scorer_input_validation": "pending dry-run and actual unmodified benchmark evaluation"
+}

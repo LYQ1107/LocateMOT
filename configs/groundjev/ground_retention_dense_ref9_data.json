@@ -1,0 +1,125 @@
+{
+  "name": "Original GroundAnything dense/referring benchmark data preparation",
+  "repository": "Skywalker0410/Grounding-EvalData",
+  "revision": "772e34bb1505053ed4857bba4405ee7b308bbfb6",
+  "tasks": [
+    "gam_coco",
+    "gam_lvis",
+    "gam_dense200",
+    "gam_visdrone",
+    "gam_refcocog_val",
+    "gam_refcocog_test",
+    "gam_refcoco",
+    "gam_refcocog",
+    "gam_refcocoplus"
+  ],
+  "archive_manifest": [
+    {
+      "path": "coco.tar.gz",
+      "sha256": "31c06e9401b8c359af7ffd43694fd58a6b74250e829bfcc638d10063c8e70f4b",
+      "bytes": 3880477371,
+      "extract_to": "images",
+      "tasks": [
+        "gam_refcocog_val",
+        "gam_refcocog_test",
+        "gam_coco",
+        "gam_lvis",
+        "gam_rex_point_refcocog_test",
+        "gam_rex_point_refcocog_val",
+        "gam_rex_point_coco",
+        "gam_rex_point_lvis",
+        "gam_visual_coco",
+        "gam_visual_lvis"
+      ],
+      "source_url": "https://huggingface.co/datasets/Mountchicken/Rex-Omni-EvalData",
+      "packaging": "unchanged upstream image archive"
+    },
+    {
+      "path": "dense200.tar.gz",
+      "sha256": "c1afb5d2a07a6ed0d69a4c429a4bff868f1a61f86cd090a488a9f9cbfd2b3e5f",
+      "bytes": 104949216,
+      "extract_to": "images",
+      "tasks": [
+        "gam_dense200",
+        "gam_rex_point_dense200",
+        "gam_visual_dense200"
+      ],
+      "source_url": "https://huggingface.co/datasets/Mountchicken/Rex-Omni-EvalData",
+      "packaging": "unchanged upstream image archive"
+    },
+    {
+      "path": "refcoco.tar.gz",
+      "sha256": "8467cd94acad7bb4a5607ce22ed436d0a12da892965232314d9a85a8cad8c22b",
+      "bytes": 1137580964,
+      "extract_to": ".",
+      "tasks": [
+        "gam_refcoco"
+      ],
+      "source_url": "https://huggingface.co/datasets/lmms-lab/RefCOCO",
+      "packaging": "selected evaluation files; file bytes preserved; loader card adjusted where needed"
+    },
+    {
+      "path": "refcocog.tar.gz",
+      "sha256": "b557cb0b68b30ddc1a44bf3b2b1a73aafeb19773661e1515e17801bc5ceee9ce",
+      "bytes": 1233820214,
+      "extract_to": ".",
+      "tasks": [
+        "gam_refcocog"
+      ],
+      "source_url": "https://huggingface.co/datasets/lmms-lab/RefCOCOg",
+      "packaging": "selected evaluation files; file bytes preserved; loader card adjusted where needed"
+    },
+    {
+      "path": "refcocoplus.tar.gz",
+      "sha256": "09577e734cc5277eda456db89491a50536a747ab3cb7b5325635a7b2c1bf45f4",
+      "bytes": 262543047,
+      "extract_to": ".",
+      "tasks": [
+        "gam_refcocoplus"
+      ],
+      "source_url": "https://huggingface.co/datasets/lmms-lab/RefCOCOplus",
+      "packaging": "selected evaluation files; file bytes preserved; loader card adjusted where needed"
+    },
+    {
+      "path": "visdrone.tar.gz",
+      "sha256": "ac86b8f66e73234c2256b61a84fefddd0c3dcc0c28b820a3f0ec41afd2262d0e",
+      "bytes": 310037185,
+      "extract_to": "images",
+      "tasks": [
+        "gam_visdrone",
+        "gam_rex_point_visdrone"
+      ],
+      "source_url": "https://huggingface.co/datasets/Mountchicken/Rex-Omni-EvalData",
+      "packaging": "unchanged upstream image archive"
+    }
+  ],
+  "annotations": [
+    "_annotations/box_eval/COCO.jsonl",
+    "_annotations/box_eval/Dense200.jsonl",
+    "_annotations/box_eval/LVIS.jsonl",
+    "_annotations/box_eval/RefCOCOg_test.jsonl",
+    "_annotations/box_eval/RefCOCOg_val.jsonl",
+    "_annotations/box_eval/VisDrone.jsonl"
+  ],
+  "benchmark_rows": {
+    "gam_refcocog_val": 4889,
+    "gam_refcocog_test": 9577,
+    "gam_refcoco": 25080,
+    "gam_refcocog": 14432,
+    "gam_refcocoplus": 10758,
+    "gam_coco": 4952,
+    "gam_lvis": 19626,
+    "gam_dense200": 200,
+    "gam_visdrone": 1610
+  },
+  "bundle": "/data3/user/Grounding-EvalData-bundle",
+  "data_root": "/data3/user/Grounding-EvalData-data",
+  "direct_download_without_proxy": true,
+  "parallel_download_workers": 3,
+  "declared_scope": "complete input data for nine original dense/referring task entries; not all30benchmark groups and not model evaluation",
+  "GT_policy": "retention evaluation only; never model-adaptation training input",
+  "GPU_usage": 0,
+  "raw_dataset_not_feature_cache": true,
+  "archive_bytes": 6929407997,
+  "helpers": "unmodified pinned official dataset prepare_data.py.extract_archive and make_data_paths; verify its official SHA before use"
+}

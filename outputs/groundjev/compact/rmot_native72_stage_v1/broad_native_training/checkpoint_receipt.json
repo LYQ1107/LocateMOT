@@ -1,0 +1,12 @@
+{
+  "checkpoint": "outputs/groundjev/compact/rmot_native72_stage_v1/broad_native_training/checkpoint.pt",
+  "bytes": 4606389,
+  "sha256": "59a64b46d6783c31b3d4e020a634cb3652218406cd8913a724571291ed3e29d5",
+  "three_task_reload_max_difference": {
+    "0": 0.0,
+    "1": 0.0,
+    "2": 0.0
+  },
+  "steps": 1200,
+  "seed": 0
+}

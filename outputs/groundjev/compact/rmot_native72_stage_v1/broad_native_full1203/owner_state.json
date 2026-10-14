@@ -1,0 +1,12 @@
+{
+  "status": "JOINT_CORE_FULL_VIDEO_RETENTION_FAILED",
+  "physical_gpu": 7,
+  "registered_frames": 1203,
+  "seed": 0,
+  "candidate_and_ROI_replay": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/dancetrack0004_native300_v2_empty_roi_fixed/compact_distilled",
+  "same_native_proposals_as_Compact300_and_matched_controls": true,
+  "scope": "one complete legal DanceTrack validation video, not full dataset",
+  "GT_parser_metrics_unchanged": true,
+  "end_to_end_fps": null,
+  "error": "Command '['python3', 'tools/groundjev/run_with_resources.py', '--gpus', '7', '--', '/data2/user/LocateMOT_GroundJEV/.venv-onejev-py310/bin/python', 'tools/groundjev/run_video.py', '--task', 'mot', '--video', 'outputs/groundjev/pilot_data/dancetrack.json', '--backend', 'compact', '--checkpoint', '/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/rmot_native72_stage_v1/broad_native_training/checkpoint.pt', '--candidate-replay', '/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/dancetrack0004_native300_v2_empty_roi_fixed/compact_distilled/frame_decisions.jsonl', '--out', '/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/rmot_native72_stage_v1/broad_native_full1203/joint1200']' returned non-zero exit status 1."
+}
