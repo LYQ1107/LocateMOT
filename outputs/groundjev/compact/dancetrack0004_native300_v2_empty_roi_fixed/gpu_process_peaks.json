@@ -1,0 +1,21 @@
+{
+  "sampling_interval_seconds": 5,
+  "process_peaks_bytes": {
+    "GPU-44f62835-4095-23ec-d3dd-5af16a00705c:4018069": 26187137024,
+    "GPU-c6523d98-cb2d-95ed-4cb2-a84936acceb6:4164457": 4229955584,
+    "GPU-883c8be3-25b0-3d19-6fa8-4c2e335e67d2:3858659": 19065208832,
+    "GPU-883c8be3-25b0-3d19-6fa8-4c2e335e67d2:4138207": 20952645632,
+    "GPU-0322c0e7-ffbf-e068-5bdd-587b8216a9d9:4169704": 553648128,
+    "GPU-0322c0e7-ffbf-e068-5bdd-587b8216a9d9:4179982": 553648128,
+    "GPU-0322c0e7-ffbf-e068-5bdd-587b8216a9d9:1921": 553648128
+  },
+  "simultaneous_all_project_device_peaks_bytes": {
+    "GPU-44f62835-4095-23ec-d3dd-5af16a00705c": 26187137024,
+    "GPU-c6523d98-cb2d-95ed-4cb2-a84936acceb6": 4229955584,
+    "GPU-883c8be3-25b0-3d19-6fa8-4c2e335e67d2": 40017854464,
+    "GPU-0322c0e7-ffbf-e068-5bdd-587b8216a9d9": 553648128
+  },
+  "foreign_projects_excluded": true,
+  "scope": "includes concurrent original OneJev500 and freshFullV3",
+  "monitor_errors": []
+}

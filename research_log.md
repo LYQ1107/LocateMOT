@@ -1846,3 +1846,76 @@ and resumes frame21, without dropping it. Original OneJev500/Ground/freshV3
 and foreign UDMT remain untouched. Full metrics are pending its terminal
 owner. First model frame latency includes ROI RPC; later controls read fixed
 ROIs, so do not claim a direct comparable speed ranking across those latencies.
+
+
+### Shared semantic Compact adaptation (registered)
+
+MOT-only Compact cannot establish task transfer or category accuracy. Keep
+all native MOT149groups, add48frozen-fitKITTI teacher-GT-proposal frames
+with expression membership targets and64TAOtrain Base-only GT-region frames
+with category targets. Clearly separate teacher proposals/history from native
+MOT rollout; never present GT boxes as evaluation predictions. No NovelGT
+supervision and no non-exhaustive TAO unmatched-as-negative labeling.
+Use original real OneJev frozen token embedding means for text; add shared
+learned expression/category heads to the same visual/identity/set core.
+All1203classes remain available at inference. Balanced1200step seeded joint
+stage; unchanged evaluation scopes/metrics and before-after native proposals.
+Plan:configs/groundjev/compact_joint_semantics_20261014.json.
+
+
+### Lost original trainer and exact-protocol recovery
+
+Authoritative/proc audit finds no original trainer or model services. FullV3
+and Compact full-video owners have terminal success receipts. Original
+OneJev500has only275last log,250BF16weight checkpoint, no final/done or
+optimizer/FP32master/RNG state. External termination cause is not established.
+Do not call this complete or silently reset Adam from250. Preserve that
+intermediate; replay the unfinished original500step unit from its original
+100step initialization with unchanged seed/corpus/lr/schedule/steps. A small
+wrapper extends official checkpoint handling only: atomic FP32masters,
+Adam moments, scheduler, RNG and exact planned-step cursor. Single latest
+training state is a checkpoint, not a feature cache. Original loss/rendering/
+row plans/native fork checks remain unchanged. New config:
+configs/groundjev/onejev_own_history_v3_exact500_replay_stateful.json.
+
+### Completed joint semantic controls and full-video evidence
+
+Joint1200 truly trained1,146,511 shared parameters with exact3task reload.
+Pack149nativeMOT+45RMOT+62TAO teacher groups,112declaredteacherframes,
+5emptyframeswithoutregionexamples. TeacherGT/idealupdate proxies remain
+explicit. Same candidates/nativeROI and decodedframes validated for all four
+short scopes. MOT HOTA66.911->71.556%, butIDSW1->3. SingleRMOT8.932->0%,
+multi0->0%; TAOBaseTETA14.013->39.272%,ClsA0->58.286%,AssocA21.350->17.971%.
+Reject a unified-success claim. Posthoc evaluation finds all6single/all8multi
+GT-covered candidate observations have membership below.008 and no emitted
+coveredboxes. Keep threshold.5, allGT/frames/negative results unchanged.
+Hypothesis: limited-fit teacher region supervision and frozen token means do
+not transfer expression membership to native validation proposals; covered
+regions show semantic suppression, not an absence of proposals. Preserve
+stage as an ablation, not production promotion. Next training must use broader
+legal fit/native proposal supervision and verified query sensitivity.
+
+Full1203DanceTrack Compact300/setGT/MLP and freshFullV3 controls are terminal
+and validated. Original same-candidate HOTA20.157/5.977/11.197% vsSimple8.530%
+andFullV1 2.145%; single-video/seed only. FreshV3 HOTA2.389% vs its exactSimple
+8.257%, detector-inclusive uninterrupted E2EFPS.118560 excluding model/server
+initialization; do not compare fresh responses toV1 as identical candidates.
+Register/execute joint1200 retention on all1203sameCompact300candidate+ROI
+rows, unchangedGT/TrackEval and rejectiondenominator, onefiniteowner GPU7.
+
+Stateful original500protocol replay latest returned50/500 onGPU4, not old250
+exactAdam resumption. Resume-state functional probe nextloss/params difference0.
+Old250/last275/interruption retained; completion and modelgain remain unproved.
+
+Training-fit membership96/96correct(45positive/51negative). Swapping other
+fitexpression vectors changes probability mean.10595/max.99159; this is
+input sensitivity only, not a semantic correctness score. Native validation
+covered positives remain suppressed. Hypothesis strengthened: limited-fit
+teacher/domain/query generalization rather than failure to update head weights.
+
+Joint1200full1203retention terminal and validated: HOTA.22103185,IDF1.21413276,
+IDSW346,FP1653,FN1485 vsCompact300.20156623/.17140097/588/2129/951.
+All1203candidate+ROIrows match, video1203decoded, all27rejectedframes kept.
+No GT/parser/metric/candidate changes. Keep as positive complete-video MOT
+retention plus negative RMOT/OVassociation ablation; not unified-success.
+GPU7owner exited. ReplayFPS22.747excludes detector/ROI costs.

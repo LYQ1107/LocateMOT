@@ -1,0 +1,13 @@
+{
+  "status": "JOINT_PACK_FAILED_BEFORE_EXTRACTION",
+  "frames": 0,
+  "teacher_examples": 0,
+  "MOT_native_examples": 149,
+  "RMOT_split": "fit-v2",
+  "TAO_split": "train-Base-only",
+  "Novel_GT_supervised": false,
+  "GT_labels_in_input": false,
+  "new_proposal_source": "teacherGT; not native detector",
+  "error": "Duplicated LocateMOT component in vocabulary path",
+  "completed_native_or_teacher_frames": 0
+}

@@ -1,0 +1,13 @@
+{
+  "status": "RUNNING_STATEFUL_OFFICIAL500_PROTOCOL",
+  "owner_pid": 301239,
+  "physical_gpu": 4,
+  "target_steps": 500,
+  "original_interrupted_log_step": 275,
+  "original_BF16_weight_snapshot_step": 250,
+  "optimizer_reset_from250": false,
+  "initialization": "original valid100 checkpoint, identical original500 protocol",
+  "scope": "unfinished-unit replay; not exact reconstruction of missing original250Adam state",
+  "new_checkpoint_policy": "one atomic FP32masters/Adam/scheduler/RNG/cursor training state",
+  "child_pid": 301241
+}

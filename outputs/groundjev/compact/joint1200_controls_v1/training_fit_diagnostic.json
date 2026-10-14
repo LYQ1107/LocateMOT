@@ -1,0 +1,14 @@
+{
+  "scope": "training-fit teacher proposals/history only; not validation performance",
+  "counts": {
+    "positive": 45,
+    "negative": 51,
+    "correct": 96,
+    "total": 96
+  },
+  "training_membership_accuracy": 1.0,
+  "different_training_expression_mean_absolute_probability_change": 0.10595082746831963,
+  "different_training_expression_max_absolute_probability_change": 0.9915913939476013,
+  "swapped_expression_correctness_not_scored": true,
+  "test_predictions_or_threshold_modified": false
+}

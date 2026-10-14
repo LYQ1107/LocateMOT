@@ -1,0 +1,22 @@
+{
+  "status": "DECLARED_JOINT_SEMANTIC_TRAIN_PACK_COMPLETE",
+  "frames": 112,
+  "teacher_examples": 107,
+  "MOT_native_examples": 149,
+  "RMOT_split": "fit-v2",
+  "TAO_split": "train-Base-only",
+  "Novel_GT_supervised": false,
+  "GT_labels_in_input": false,
+  "new_proposal_source": "teacherGT; not native detector",
+  "examples": 256,
+  "feature_file_bytes": 149242269,
+  "semantic_encoder": "original real OneJev frozen input token mean, not language-decoder reasoning",
+  "text_embedding_shape": [
+    248320,
+    1024
+  ],
+  "class_choices": 1203,
+  "KITTI_legal_split_version": "v2",
+  "teacher_empty_frames": 5,
+  "teacher_proposal_stage_not_native_rollout": true
+}

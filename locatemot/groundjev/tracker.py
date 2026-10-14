@@ -127,6 +127,10 @@ class OnlineTracker:
             if category:
                 outputs[-1].update(category_probability=category['probability'],
                     category_probability_kind=category['probability_kind'])
+            membership=decisions[i].get('query_membership_probability')
+            if membership is not None:
+                outputs[-1]['query_membership_probability']=membership
+                if membership<.5:outputs.pop()
             events.append({'candidate': i, 'track_id': track.track_id, 'action': action,
                            'memory_action': 'UPDATE' if reliable else 'HOLD', 'decision': decisions[i]})
         for track in tracks:

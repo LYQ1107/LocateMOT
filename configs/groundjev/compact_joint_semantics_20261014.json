@@ -1,0 +1,22 @@
+{
+  "name": "Shared Compact MOT/RMOT/OVMOT semantic adaptation",
+  "initialization": "outputs/groundjev/compact/native300_v1/compact_distilled.pt",
+  "MOT_source": "all149native uncorrected Full-history groups, preserved native distillation",
+  "RMOT_source": "six explicit expressions from frozen Refer-KITTIv2fit0000/0002/0003, eight chronological frames each from first target observation; exact normalized top-left xywh release GT proposals and causal teacher history; all release objects offered, membership labels outside input",
+  "OVMOT_source": "64annotation frames across eight TAOtrain Base-diverse videos0/1/7/9/13/16/38/47; original BaseGT ROIs and causal teacher histories; no NovelGT supervision and no assumption that unmatched TAO objects are negatives",
+  "new_data_policy": "teacher GT proposal stage declared, not a native detector rollout; existing actual MOT native corpus retained",
+  "semantic_input": "real frozen original OneJev token embedding mean (248320x1024table); no language-decoder reasoning claim",
+  "class_choices": "all1203LVIS names/synonyms/definitions; originalWordNet mapping; GT class labels hidden from inputs",
+  "shared_heads": "one native visual stem/set core/identity/lifecycle/update/reliability/expression-membership/category model across all three tasks",
+  "steps": 1200,
+  "seed": 0,
+  "lr": 0.0002,
+  "balanced_task_sampling": "cycleMOT/RMOT/OVMOT",
+  "physical_training_gpu": 7,
+  "ROI_service_gpu": 5,
+  "temporary_feature_budget_bytes": 26843545600,
+  "maximum_GPUs": 4,
+  "MOT_native_Full_teacher_coefficient": 0.2,
+  "before_after_validation": "same legal MOT4/RMOT8+12/OVMOT4 native candidates and unmodified official TrackEval/TETA; all empty/rejected frames retained, no E2E claims on replay",
+  "full_goal_complete": false
+}

@@ -1,0 +1,157 @@
+{
+  "status": "SHARED_COMPACT_JOINT1200_TRAINING_COMPLETE",
+  "steps": 1200,
+  "target_steps": 1200,
+  "seed": 0,
+  "task_examples": {
+    "0": 149,
+    "1": 45,
+    "2": 62
+  },
+  "Novel_GT_supervised": false,
+  "additional_teacher_proposal_stage_not_native_detector_rollout": true,
+  "parameters": 1146511,
+  "changed_elements": 1143669,
+  "changed_semantic_head_elements": {
+    "text.0.weight": 1024,
+    "text.0.bias": 1024,
+    "text.1.weight": 131072,
+    "text.1.bias": 128,
+    "text.3.weight": 16384,
+    "text.3.bias": 128,
+    "category.weight": 16384,
+    "category.bias": 128,
+    "membership.0.weight": 49152,
+    "membership.0.bias": 128,
+    "membership.2.weight": 128,
+    "membership.2.bias": 1
+  },
+  "three_task_checkpoint_reload_max_difference": {
+    "0": 0.0,
+    "1": 0.0,
+    "2": 0.0
+  },
+  "peak_allocated_bytes": 55228928,
+  "checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/joint1200_v1/checkpoint.pt",
+  "checkpoint_bytes": 4606389,
+  "training_log": [
+    {
+      "step": 1,
+      "task": 0,
+      "loss": 9.603020668029785,
+      "class_loss": 7.359820365905762,
+      "membership_loss": 0.6939842700958252,
+      "gradient_norm": 41.53826904296875,
+      "elapsed_seconds": 0.5241136680124328
+    },
+    {
+      "step": 100,
+      "task": 0,
+      "loss": 2.333658456802368,
+      "class_loss": 0.005740146618336439,
+      "membership_loss": 0.006105762906372547,
+      "gradient_norm": 9.258737564086914,
+      "elapsed_seconds": 3.284876179008279
+    },
+    {
+      "step": 200,
+      "task": 1,
+      "loss": 0.004728806670755148,
+      "class_loss": -0.0,
+      "membership_loss": 0.006458508316427469,
+      "gradient_norm": 0.13566382229328156,
+      "elapsed_seconds": 6.428494400985073
+    },
+    {
+      "step": 300,
+      "task": 2,
+      "loss": 1.4926069974899292,
+      "class_loss": 1.486154556274414,
+      "membership_loss": 0.0051880450919270515,
+      "gradient_norm": 34.586490631103516,
+      "elapsed_seconds": 9.567793841997627
+    },
+    {
+      "step": 400,
+      "task": 0,
+      "loss": 2.350749969482422,
+      "class_loss": 0.01093323901295662,
+      "membership_loss": 0.0005902893026359379,
+      "gradient_norm": 15.416430473327637,
+      "elapsed_seconds": 12.684888522024266
+    },
+    {
+      "step": 500,
+      "task": 1,
+      "loss": 4.858364263782278e-05,
+      "class_loss": -0.0,
+      "membership_loss": 6.351972842821851e-05,
+      "gradient_norm": 0.0017505252035334706,
+      "elapsed_seconds": 15.802880399976857
+    },
+    {
+      "step": 600,
+      "task": 2,
+      "loss": 0.1509556919336319,
+      "class_loss": 0.10578994452953339,
+      "membership_loss": 0.0007353324326686561,
+      "gradient_norm": 4.180246829986572,
+      "elapsed_seconds": 18.589340328995604
+    },
+    {
+      "step": 700,
+      "task": 0,
+      "loss": 0.2917429208755493,
+      "class_loss": 0.003178058657795191,
+      "membership_loss": 0.0001668950280873105,
+      "gradient_norm": 3.326890707015991,
+      "elapsed_seconds": 21.360387268010527
+    },
+    {
+      "step": 800,
+      "task": 1,
+      "loss": 0.0010245635639876127,
+      "class_loss": -0.0,
+      "membership_loss": 0.001922053168527782,
+      "gradient_norm": 0.09071166068315506,
+      "elapsed_seconds": 24.45792190800421
+    },
+    {
+      "step": 900,
+      "task": 2,
+      "loss": 0.449738085269928,
+      "class_loss": 0.27030205726623535,
+      "membership_loss": 5.3249394113663584e-05,
+      "gradient_norm": 12.462631225585938,
+      "elapsed_seconds": 27.531952782999724
+    },
+    {
+      "step": 1000,
+      "task": 0,
+      "loss": 2.186330795288086,
+      "class_loss": 0.00668485788628459,
+      "membership_loss": 0.0013660492841154337,
+      "gradient_norm": 17.473167419433594,
+      "elapsed_seconds": 30.599534142005723
+    },
+    {
+      "step": 1100,
+      "task": 1,
+      "loss": 0.03361282870173454,
+      "class_loss": -0.0,
+      "membership_loss": 0.007103319745510817,
+      "gradient_norm": 1.9324671030044556,
+      "elapsed_seconds": 33.749393388978206
+    },
+    {
+      "step": 1200,
+      "task": 2,
+      "loss": 0.2098803073167801,
+      "class_loss": 0.197882279753685,
+      "membership_loss": 1.2475916264520492e-05,
+      "gradient_norm": 10.971816062927246,
+      "elapsed_seconds": 36.86850121599855
+    }
+  ],
+  "official_tracking_class_referring_results": "completed; see joint1200_controls_v1/validation_and_diagnostic.json"
+}

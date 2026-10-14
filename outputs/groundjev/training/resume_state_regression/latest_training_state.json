@@ -1,0 +1,13 @@
+{
+  "format": "groundjev-full-fp32-adam-rng-v1",
+  "step": 1,
+  "seen": 16,
+  "epoch": 0,
+  "next_step_in_epoch": 1,
+  "path": "outputs/groundjev/training/resume_state_regression/latest_training_state.pt",
+  "bytes": 17701,
+  "FP32_masters_and_Adam_moments_saved": true,
+  "scheduler_and_all_RNG_saved": true,
+  "single_latest_training_state": true,
+  "feature_cache": false
+}

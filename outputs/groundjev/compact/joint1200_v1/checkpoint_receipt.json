@@ -1,0 +1,21 @@
+{
+  "checkpoint": "outputs/groundjev/compact/joint1200_v1/checkpoint.pt",
+  "bytes": 4606389,
+  "sha256": "609e246f95a896e4a143f95cd32f8dd9166826b91f46e82e90b1f3d30dcd15a7",
+  "steps": 1200,
+  "seed": 0,
+  "tasks": [
+    "mot",
+    "rmot",
+    "ovmot"
+  ],
+  "three_task_reload_max_difference": {
+    "0": 0.0,
+    "1": 0.0,
+    "2": 0.0
+  },
+  "text_features": "frozen real original OneJev token means; not decoder reasoning",
+  "evaluation_receipt": "outputs/groundjev/compact/joint1200_controls_v1/validation_and_diagnostic.json",
+  "promotion": "not promoted: RMOT regression and OVMOT association regression preserved",
+  "full_video_retention_receipt": "outputs/groundjev/compact/joint1200_dancetrack0004_v1/owner_state.json"
+}

@@ -1,0 +1,8 @@
+{
+  "status": "FP32_ADAM_SCHEDULER_CURSOR_RNG_RESUME_REGRESSION_PASSED",
+  "real_native_training_ROI_used": true,
+  "functional_probe_not_OneJev_training_claim": true,
+  "next_update_parameter_max_difference": 0.0,
+  "next_update_loss_difference": 0.0,
+  "all_RNG_equal": true
+}

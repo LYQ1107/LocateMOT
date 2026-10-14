@@ -1,0 +1,786 @@
+[
+  {
+    "scope": "rmot_0000_automobiles-colored-silver-are-located-on-the-right",
+    "task": "rmot",
+    "frame": 109,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0000/000109.png",
+    "teacher_GT_regions": 1
+  },
+  {
+    "scope": "rmot_0000_automobiles-colored-silver-are-located-on-the-right",
+    "task": "rmot",
+    "frame": 110,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0000/000110.png",
+    "teacher_GT_regions": 1
+  },
+  {
+    "scope": "rmot_0000_automobiles-colored-silver-are-located-on-the-right",
+    "task": "rmot",
+    "frame": 111,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0000/000111.png",
+    "teacher_GT_regions": 1
+  },
+  {
+    "scope": "rmot_0000_automobiles-colored-silver-are-located-on-the-right",
+    "task": "rmot",
+    "frame": 112,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0000/000112.png",
+    "teacher_GT_regions": 1
+  },
+  {
+    "scope": "rmot_0000_automobiles-colored-silver-are-located-on-the-right",
+    "task": "rmot",
+    "frame": 113,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0000/000113.png",
+    "teacher_GT_regions": 2
+  },
+  {
+    "scope": "rmot_0000_automobiles-colored-silver-are-located-on-the-right",
+    "task": "rmot",
+    "frame": 114,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0000/000114.png",
+    "teacher_GT_regions": 2
+  },
+  {
+    "scope": "rmot_0000_automobiles-colored-silver-are-located-on-the-right",
+    "task": "rmot",
+    "frame": 115,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0000/000115.png",
+    "teacher_GT_regions": 2
+  },
+  {
+    "scope": "rmot_0000_automobiles-colored-silver-are-located-on-the-right",
+    "task": "rmot",
+    "frame": 116,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0000/000116.png",
+    "teacher_GT_regions": 2
+  },
+  {
+    "scope": "rmot_0000_the-right-side-features-women",
+    "task": "rmot",
+    "frame": 0,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0000/000000.png",
+    "teacher_GT_regions": 1
+  },
+  {
+    "scope": "rmot_0000_the-right-side-features-women",
+    "task": "rmot",
+    "frame": 1,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0000/000001.png",
+    "teacher_GT_regions": 1
+  },
+  {
+    "scope": "rmot_0000_the-right-side-features-women",
+    "task": "rmot",
+    "frame": 2,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0000/000002.png",
+    "teacher_GT_regions": 1
+  },
+  {
+    "scope": "rmot_0000_the-right-side-features-women",
+    "task": "rmot",
+    "frame": 3,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0000/000003.png",
+    "teacher_GT_regions": 1
+  },
+  {
+    "scope": "rmot_0000_the-right-side-features-women",
+    "task": "rmot",
+    "frame": 4,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0000/000004.png",
+    "teacher_GT_regions": 1
+  },
+  {
+    "scope": "rmot_0000_the-right-side-features-women",
+    "task": "rmot",
+    "frame": 5,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0000/000005.png",
+    "teacher_GT_regions": 0
+  },
+  {
+    "scope": "rmot_0000_the-right-side-features-women",
+    "task": "rmot",
+    "frame": 6,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0000/000006.png",
+    "teacher_GT_regions": 0
+  },
+  {
+    "scope": "rmot_0000_the-right-side-features-women",
+    "task": "rmot",
+    "frame": 7,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0000/000007.png",
+    "teacher_GT_regions": 0
+  },
+  {
+    "scope": "rmot_0002_automobiles-applying-the-brakes",
+    "task": "rmot",
+    "frame": 25,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000025.png",
+    "teacher_GT_regions": 1
+  },
+  {
+    "scope": "rmot_0002_automobiles-applying-the-brakes",
+    "task": "rmot",
+    "frame": 26,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000026.png",
+    "teacher_GT_regions": 1
+  },
+  {
+    "scope": "rmot_0002_automobiles-applying-the-brakes",
+    "task": "rmot",
+    "frame": 27,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000027.png",
+    "teacher_GT_regions": 1
+  },
+  {
+    "scope": "rmot_0002_automobiles-applying-the-brakes",
+    "task": "rmot",
+    "frame": 28,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000028.png",
+    "teacher_GT_regions": 1
+  },
+  {
+    "scope": "rmot_0002_automobiles-applying-the-brakes",
+    "task": "rmot",
+    "frame": 29,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000029.png",
+    "teacher_GT_regions": 1
+  },
+  {
+    "scope": "rmot_0002_automobiles-applying-the-brakes",
+    "task": "rmot",
+    "frame": 30,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000030.png",
+    "teacher_GT_regions": 1
+  },
+  {
+    "scope": "rmot_0002_automobiles-applying-the-brakes",
+    "task": "rmot",
+    "frame": 31,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000031.png",
+    "teacher_GT_regions": 1
+  },
+  {
+    "scope": "rmot_0002_automobiles-applying-the-brakes",
+    "task": "rmot",
+    "frame": 32,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000032.png",
+    "teacher_GT_regions": 1
+  },
+  {
+    "scope": "rmot_0002_standing-women",
+    "task": "rmot",
+    "frame": 53,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000053.png",
+    "teacher_GT_regions": 4
+  },
+  {
+    "scope": "rmot_0002_standing-women",
+    "task": "rmot",
+    "frame": 54,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000054.png",
+    "teacher_GT_regions": 4
+  },
+  {
+    "scope": "rmot_0002_standing-women",
+    "task": "rmot",
+    "frame": 55,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000055.png",
+    "teacher_GT_regions": 4
+  },
+  {
+    "scope": "rmot_0002_standing-women",
+    "task": "rmot",
+    "frame": 56,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000056.png",
+    "teacher_GT_regions": 4
+  },
+  {
+    "scope": "rmot_0002_standing-women",
+    "task": "rmot",
+    "frame": 57,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000057.png",
+    "teacher_GT_regions": 4
+  },
+  {
+    "scope": "rmot_0002_standing-women",
+    "task": "rmot",
+    "frame": 58,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000058.png",
+    "teacher_GT_regions": 5
+  },
+  {
+    "scope": "rmot_0002_standing-women",
+    "task": "rmot",
+    "frame": 59,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000059.png",
+    "teacher_GT_regions": 5
+  },
+  {
+    "scope": "rmot_0002_standing-women",
+    "task": "rmot",
+    "frame": 60,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000060.png",
+    "teacher_GT_regions": 5
+  },
+  {
+    "scope": "rmot_0003_automobiles-are-driving-in-the-same-direction-as-our-automobile",
+    "task": "rmot",
+    "frame": 0,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0003/000000.png",
+    "teacher_GT_regions": 2
+  },
+  {
+    "scope": "rmot_0003_automobiles-are-driving-in-the-same-direction-as-our-automobile",
+    "task": "rmot",
+    "frame": 1,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0003/000001.png",
+    "teacher_GT_regions": 2
+  },
+  {
+    "scope": "rmot_0003_automobiles-are-driving-in-the-same-direction-as-our-automobile",
+    "task": "rmot",
+    "frame": 2,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0003/000002.png",
+    "teacher_GT_regions": 2
+  },
+  {
+    "scope": "rmot_0003_automobiles-are-driving-in-the-same-direction-as-our-automobile",
+    "task": "rmot",
+    "frame": 3,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0003/000003.png",
+    "teacher_GT_regions": 2
+  },
+  {
+    "scope": "rmot_0003_automobiles-are-driving-in-the-same-direction-as-our-automobile",
+    "task": "rmot",
+    "frame": 4,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0003/000004.png",
+    "teacher_GT_regions": 2
+  },
+  {
+    "scope": "rmot_0003_automobiles-are-driving-in-the-same-direction-as-our-automobile",
+    "task": "rmot",
+    "frame": 5,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0003/000005.png",
+    "teacher_GT_regions": 2
+  },
+  {
+    "scope": "rmot_0003_automobiles-are-driving-in-the-same-direction-as-our-automobile",
+    "task": "rmot",
+    "frame": 6,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0003/000006.png",
+    "teacher_GT_regions": 3
+  },
+  {
+    "scope": "rmot_0003_automobiles-are-driving-in-the-same-direction-as-our-automobile",
+    "task": "rmot",
+    "frame": 7,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0003/000007.png",
+    "teacher_GT_regions": 3
+  },
+  {
+    "scope": "rmot_0003_automobiles-are-moving-in-the-same-direction-as-our-vehicle",
+    "task": "rmot",
+    "frame": 0,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0003/000000.png",
+    "teacher_GT_regions": 2
+  },
+  {
+    "scope": "rmot_0003_automobiles-are-moving-in-the-same-direction-as-our-vehicle",
+    "task": "rmot",
+    "frame": 1,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0003/000001.png",
+    "teacher_GT_regions": 2
+  },
+  {
+    "scope": "rmot_0003_automobiles-are-moving-in-the-same-direction-as-our-vehicle",
+    "task": "rmot",
+    "frame": 2,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0003/000002.png",
+    "teacher_GT_regions": 2
+  },
+  {
+    "scope": "rmot_0003_automobiles-are-moving-in-the-same-direction-as-our-vehicle",
+    "task": "rmot",
+    "frame": 3,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0003/000003.png",
+    "teacher_GT_regions": 2
+  },
+  {
+    "scope": "rmot_0003_automobiles-are-moving-in-the-same-direction-as-our-vehicle",
+    "task": "rmot",
+    "frame": 4,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0003/000004.png",
+    "teacher_GT_regions": 2
+  },
+  {
+    "scope": "rmot_0003_automobiles-are-moving-in-the-same-direction-as-our-vehicle",
+    "task": "rmot",
+    "frame": 5,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0003/000005.png",
+    "teacher_GT_regions": 2
+  },
+  {
+    "scope": "rmot_0003_automobiles-are-moving-in-the-same-direction-as-our-vehicle",
+    "task": "rmot",
+    "frame": 6,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0003/000006.png",
+    "teacher_GT_regions": 3
+  },
+  {
+    "scope": "rmot_0003_automobiles-are-moving-in-the-same-direction-as-our-vehicle",
+    "task": "rmot",
+    "frame": 7,
+    "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0003/000007.png",
+    "teacher_GT_regions": 3
+  },
+  {
+    "scope": "tao_train_0",
+    "task": "ovmot",
+    "frame": 391,
+    "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_f69ebe5b731d3e87c1a3992ee39c3b7e/frame0391.jpg",
+    "teacher_GT_regions": 6
+  },
+  {
+    "scope": "tao_train_0",
+    "task": "ovmot",
+    "frame": 421,
+    "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_f69ebe5b731d3e87c1a3992ee39c3b7e/frame0421.jpg",
+    "teacher_GT_regions": 2
+  },
+  {
+    "scope": "tao_train_0",
+    "task": "ovmot",
+    "frame": 451,
+    "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_f69ebe5b731d3e87c1a3992ee39c3b7e/frame0451.jpg",
+    "teacher_GT_regions": 2
+  },
+  {
+    "scope": "tao_train_0",
+    "task": "ovmot",
+    "frame": 481,
+    "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_f69ebe5b731d3e87c1a3992ee39c3b7e/frame0481.jpg",
+    "teacher_GT_regions": 2
+  },
+  {
+    "scope": "tao_train_0",
+    "task": "ovmot",
+    "frame": 511,
+    "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_f69ebe5b731d3e87c1a3992ee39c3b7e/frame0511.jpg",
+    "teacher_GT_regions": 2
+  },
+  {
+    "scope": "tao_train_0",
+    "task": "ovmot",
+    "frame": 541,
+    "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_f69ebe5b731d3e87c1a3992ee39c3b7e/frame0541.jpg",
+    "teacher_GT_regions": 3
+  },
+  {
+    "scope": "tao_train_0",
+    "task": "ovmot",
+    "frame": 571,
+    "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_f69ebe5b731d3e87c1a3992ee39c3b7e/frame0571.jpg",
+    "teacher_GT_regions": 4
+  },
+  {
+    "scope": "tao_train_0",
+    "task": "ovmot",
+    "frame": 601,
+    "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_f69ebe5b731d3e87c1a3992ee39c3b7e/frame0601.jpg",
+    "teacher_GT_regions": 4
+  },
+  {
+    "scope": "tao_train_1",
+    "task": "ovmot",
+    "frame": 151,
+    "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_8b6283255797fc7e94f3a93947a2803/frame0151.jpg",
+    "teacher_GT_regions": 3
+  },
+  {
+    "scope": "tao_train_1",
+    "task": "ovmot",
+    "frame": 181,
+    "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_8b6283255797fc7e94f3a93947a2803/frame0181.jpg",
+    "teacher_GT_regions": 3
+  },
+  {
+    "scope": "tao_train_1",
+    "task": "ovmot",
+    "frame": 211,
+    "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_8b6283255797fc7e94f3a93947a2803/frame0211.jpg",
+    "teacher_GT_regions": 3
+  },
+  {
+    "scope": "tao_train_1",
+    "task": "ovmot",
+    "frame": 241,
+    "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_8b6283255797fc7e94f3a93947a2803/frame0241.jpg",
+    "teacher_GT_regions": 3
+  },
+  {
+    "scope": "tao_train_1",
+    "task": "ovmot",
+    "frame": 271,
+    "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_8b6283255797fc7e94f3a93947a2803/frame0271.jpg",
+    "teacher_GT_regions": 3
+  },
+  {
+    "scope": "tao_train_1",
+    "task": "ovmot",
+    "frame": 301,
+    "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_8b6283255797fc7e94f3a93947a2803/frame0301.jpg",
+    "teacher_GT_regions": 3
+  },
+  {
+    "scope": "tao_train_1",
+    "task": "ovmot",
+    "frame": 331,
+    "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_8b6283255797fc7e94f3a93947a2803/frame0331.jpg",
+    "teacher_GT_regions": 3
+  },
+  {
+    "scope": "tao_train_1",
+    "task": "ovmot",
+    "frame": 361,
+    "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_8b6283255797fc7e94f3a93947a2803/frame0361.jpg",
+    "teacher_GT_regions": 3
+  },
+  {
+    "scope": "tao_train_7",
+    "task": "ovmot",
+    "frame": 1,
+    "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_a556a65c3a85d0de0717b8cef2f219c/frame0001.jpg",
+    "teacher_GT_regions": 6
+  },
+  {
+    "scope": "tao_train_7",
+    "task": "ovmot",
+    "frame": 31,
+    "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_a556a65c3a85d0de0717b8cef2f219c/frame0031.jpg",
+    "teacher_GT_regions": 6
+  },
+  {
+    "scope": "tao_train_7",
+    "task": "ovmot",
+    "frame": 61,
+    "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_a556a65c3a85d0de0717b8cef2f219c/frame0061.jpg",
+    "teacher_GT_regions": 6
+  },
+  {
+    "scope": "tao_train_7",
+    "task": "ovmot",
+    "frame": 91,
+    "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_a556a65c3a85d0de0717b8cef2f219c/frame0091.jpg",
+    "teacher_GT_regions": 6
+  },
+  {
+    "scope": "tao_train_7",
+    "task": "ovmot",
+    "frame": 121,
+    "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_a556a65c3a85d0de0717b8cef2f219c/frame0121.jpg",
+    "teacher_GT_regions": 4
+  },
+  {
+    "scope": "tao_train_7",
+    "task": "ovmot",
+    "frame": 151,
+    "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_a556a65c3a85d0de0717b8cef2f219c/frame0151.jpg",
+    "teacher_GT_regions": 3
+  },
+  {
+    "scope": "tao_train_7",
+    "task": "ovmot",
+    "frame": 181,
+    "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_a556a65c3a85d0de0717b8cef2f219c/frame0181.jpg",
+    "teacher_GT_regions": 3
+  },
+  {
+    "scope": "tao_train_7",
+    "task": "ovmot",
+    "frame": 211,
+    "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_a556a65c3a85d0de0717b8cef2f219c/frame0211.jpg",
+    "teacher_GT_regions": 3
+  },
+  {
+    "scope": "tao_train_9",
+    "task": "ovmot",
+    "frame": 121,
+    "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_6f90a13c795ef37404d95983341df/frame0121.jpg",
+    "teacher_GT_regions": 4
+  },
+  {
+    "scope": "tao_train_9",
+    "task": "ovmot",
+    "frame": 151,
+    "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_6f90a13c795ef37404d95983341df/frame0151.jpg",
+    "teacher_GT_regions": 3
+  },
+  {
+    "scope": "tao_train_9",
+    "task": "ovmot",
+    "frame": 181,
+    "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_6f90a13c795ef37404d95983341df/frame0181.jpg",
+    "teacher_GT_regions": 3
+  },
+  {
+    "scope": "tao_train_9",
+    "task": "ovmot",
+    "frame": 211,
+    "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_6f90a13c795ef37404d95983341df/frame0211.jpg",
+    "teacher_GT_regions": 4
+  },
+  {
+    "scope": "tao_train_9",
+    "task": "ovmot",
+    "frame": 241,
+    "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_6f90a13c795ef37404d95983341df/frame0241.jpg",
+    "teacher_GT_regions": 5
+  },
+  {
+    "scope": "tao_train_9",
+    "task": "ovmot",
+    "frame": 271,
+    "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_6f90a13c795ef37404d95983341df/frame0271.jpg",
+    "teacher_GT_regions": 4
+  },
+  {
+    "scope": "tao_train_9",
+    "task": "ovmot",
+    "frame": 301,
+    "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_6f90a13c795ef37404d95983341df/frame0301.jpg",
+    "teacher_GT_regions": 3
+  },
+  {
+    "scope": "tao_train_9",
+    "task": "ovmot",
+    "frame": 331,
+    "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_6f90a13c795ef37404d95983341df/frame0331.jpg",
+    "teacher_GT_regions": 1
+  },
+  {
+    "scope": "tao_train_13",
+    "task": "ovmot",
+    "frame": 1,
+    "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_5b8014f2ebc4628f33a9dcc2d1fbc3b/frame0001.jpg",
+    "teacher_GT_regions": 3
+  },
+  {
+    "scope": "tao_train_13",
+    "task": "ovmot",
+    "frame": 31,
+    "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_5b8014f2ebc4628f33a9dcc2d1fbc3b/frame0031.jpg",
+    "teacher_GT_regions": 3
+  },
+  {
+    "scope": "tao_train_13",
+    "task": "ovmot",
+    "frame": 61,
+    "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_5b8014f2ebc4628f33a9dcc2d1fbc3b/frame0061.jpg",
+    "teacher_GT_regions": 3
+  },
+  {
+    "scope": "tao_train_13",
+    "task": "ovmot",
+    "frame": 91,
+    "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_5b8014f2ebc4628f33a9dcc2d1fbc3b/frame0091.jpg",
+    "teacher_GT_regions": 4
+  },
+  {
+    "scope": "tao_train_13",
+    "task": "ovmot",
+    "frame": 121,
+    "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_5b8014f2ebc4628f33a9dcc2d1fbc3b/frame0121.jpg",
+    "teacher_GT_regions": 4
+  },
+  {
+    "scope": "tao_train_13",
+    "task": "ovmot",
+    "frame": 151,
+    "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_5b8014f2ebc4628f33a9dcc2d1fbc3b/frame0151.jpg",
+    "teacher_GT_regions": 4
+  },
+  {
+    "scope": "tao_train_13",
+    "task": "ovmot",
+    "frame": 181,
+    "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_5b8014f2ebc4628f33a9dcc2d1fbc3b/frame0181.jpg",
+    "teacher_GT_regions": 4
+  },
+  {
+    "scope": "tao_train_13",
+    "task": "ovmot",
+    "frame": 211,
+    "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_5b8014f2ebc4628f33a9dcc2d1fbc3b/frame0211.jpg",
+    "teacher_GT_regions": 4
+  },
+  {
+    "scope": "tao_train_16",
+    "task": "ovmot",
+    "frame": 541,
+    "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_6f26504bb5244ddd4469376ecc9d29d/frame0541.jpg",
+    "teacher_GT_regions": 0
+  },
+  {
+    "scope": "tao_train_16",
+    "task": "ovmot",
+    "frame": 571,
+    "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_6f26504bb5244ddd4469376ecc9d29d/frame0571.jpg",
+    "teacher_GT_regions": 1
+  },
+  {
+    "scope": "tao_train_16",
+    "task": "ovmot",
+    "frame": 601,
+    "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_6f26504bb5244ddd4469376ecc9d29d/frame0601.jpg",
+    "teacher_GT_regions": 2
+  },
+  {
+    "scope": "tao_train_16",
+    "task": "ovmot",
+    "frame": 631,
+    "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_6f26504bb5244ddd4469376ecc9d29d/frame0631.jpg",
+    "teacher_GT_regions": 2
+  },
+  {
+    "scope": "tao_train_16",
+    "task": "ovmot",
+    "frame": 661,
+    "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_6f26504bb5244ddd4469376ecc9d29d/frame0661.jpg",
+    "teacher_GT_regions": 2
+  },
+  {
+    "scope": "tao_train_16",
+    "task": "ovmot",
+    "frame": 691,
+    "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_6f26504bb5244ddd4469376ecc9d29d/frame0691.jpg",
+    "teacher_GT_regions": 2
+  },
+  {
+    "scope": "tao_train_16",
+    "task": "ovmot",
+    "frame": 721,
+    "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_6f26504bb5244ddd4469376ecc9d29d/frame0721.jpg",
+    "teacher_GT_regions": 1
+  },
+  {
+    "scope": "tao_train_16",
+    "task": "ovmot",
+    "frame": 751,
+    "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_6f26504bb5244ddd4469376ecc9d29d/frame0751.jpg",
+    "teacher_GT_regions": 1
+  },
+  {
+    "scope": "tao_train_38",
+    "task": "ovmot",
+    "frame": 1,
+    "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_f1a914ab56b365013c9101083423370/frame0001.jpg",
+    "teacher_GT_regions": 4
+  },
+  {
+    "scope": "tao_train_38",
+    "task": "ovmot",
+    "frame": 31,
+    "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_f1a914ab56b365013c9101083423370/frame0031.jpg",
+    "teacher_GT_regions": 3
+  },
+  {
+    "scope": "tao_train_38",
+    "task": "ovmot",
+    "frame": 61,
+    "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_f1a914ab56b365013c9101083423370/frame0061.jpg",
+    "teacher_GT_regions": 2
+  },
+  {
+    "scope": "tao_train_38",
+    "task": "ovmot",
+    "frame": 91,
+    "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_f1a914ab56b365013c9101083423370/frame0091.jpg",
+    "teacher_GT_regions": 2
+  },
+  {
+    "scope": "tao_train_38",
+    "task": "ovmot",
+    "frame": 121,
+    "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_f1a914ab56b365013c9101083423370/frame0121.jpg",
+    "teacher_GT_regions": 2
+  },
+  {
+    "scope": "tao_train_38",
+    "task": "ovmot",
+    "frame": 151,
+    "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_f1a914ab56b365013c9101083423370/frame0151.jpg",
+    "teacher_GT_regions": 2
+  },
+  {
+    "scope": "tao_train_38",
+    "task": "ovmot",
+    "frame": 181,
+    "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_f1a914ab56b365013c9101083423370/frame0181.jpg",
+    "teacher_GT_regions": 1
+  },
+  {
+    "scope": "tao_train_38",
+    "task": "ovmot",
+    "frame": 211,
+    "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_f1a914ab56b365013c9101083423370/frame0211.jpg",
+    "teacher_GT_regions": 0
+  },
+  {
+    "scope": "tao_train_47",
+    "task": "ovmot",
+    "frame": 601,
+    "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_8794cde67aad8552ecfc59bb6fbe72d/frame0601.jpg",
+    "teacher_GT_regions": 5
+  },
+  {
+    "scope": "tao_train_47",
+    "task": "ovmot",
+    "frame": 631,
+    "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_8794cde67aad8552ecfc59bb6fbe72d/frame0631.jpg",
+    "teacher_GT_regions": 5
+  },
+  {
+    "scope": "tao_train_47",
+    "task": "ovmot",
+    "frame": 661,
+    "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_8794cde67aad8552ecfc59bb6fbe72d/frame0661.jpg",
+    "teacher_GT_regions": 5
+  },
+  {
+    "scope": "tao_train_47",
+    "task": "ovmot",
+    "frame": 691,
+    "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_8794cde67aad8552ecfc59bb6fbe72d/frame0691.jpg",
+    "teacher_GT_regions": 5
+  },
+  {
+    "scope": "tao_train_47",
+    "task": "ovmot",
+    "frame": 721,
+    "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_8794cde67aad8552ecfc59bb6fbe72d/frame0721.jpg",
+    "teacher_GT_regions": 6
+  },
+  {
+    "scope": "tao_train_47",
+    "task": "ovmot",
+    "frame": 751,
+    "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_8794cde67aad8552ecfc59bb6fbe72d/frame0751.jpg",
+    "teacher_GT_regions": 7
+  },
+  {
+    "scope": "tao_train_47",
+    "task": "ovmot",
+    "frame": 781,
+    "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_8794cde67aad8552ecfc59bb6fbe72d/frame0781.jpg",
+    "teacher_GT_regions": 7
+  },
+  {
+    "scope": "tao_train_47",
+    "task": "ovmot",
+    "frame": 811,
+    "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_8794cde67aad8552ecfc59bb6fbe72d/frame0811.jpg",
+    "teacher_GT_regions": 6
+  }
+]

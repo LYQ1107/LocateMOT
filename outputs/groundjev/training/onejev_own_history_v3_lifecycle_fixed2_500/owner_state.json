@@ -1,0 +1,22 @@
+{
+  "status": "INTERRUPTED_WITHOUT_TERMINAL_TRAINER_RECEIPT",
+  "producer_pids": [],
+  "owner_pid": 4016951,
+  "physical_gpus": [
+    4
+  ],
+  "optimizer_step_budget": 500,
+  "seed": 0,
+  "identity_row_repeat_weight": 4,
+  "scope": "own-model-history_decision_adaptation_with_declared_GT_proposals; actual_DLM_proposal_stage_pending",
+  "unique_rows": 13501,
+  "training_rows": 20881,
+  "initialization": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_teacher_check_100/final",
+  "optimizer_reset": "explicit new curriculum stage; weights continue from100-step checkpoint",
+  "maximum_context": "32768 measured-plan cap; no rows may be dropped",
+  "last_logged_step": 275,
+  "latest_inference_weight_checkpoint_step": 250,
+  "exact_optimizer_resume_available": false,
+  "recovery": "Replay unfinished original500step unit from original valid100initialization, preserving original protocol and all250weights/logs; add full FP32/Adam/RNG checkpoints for future resumption",
+  "root_cause": "Trainer process absent; original exporter saved BF16 weights only, no FP32 masters/optimizer/RNG. External termination cause not established."
+}
