@@ -1,0 +1,14 @@
+{
+  "status": "dense_mot4_original_INFERENCE",
+  "scope": "registered MOT4/RMOTsingle8/RMOTmulti12 functional controls",
+  "original_checkpoint": "models/GroundAnything-DLM",
+  "adapted_checkpoint": "models/GroundAnything-DLM-TrackProj200",
+  "backend": "same unchanged Simple geometry associator",
+  "parser": "official_scoring",
+  "decoder": "tracking_dense",
+  "requested_seed": 42,
+  "all_registered_empty_and_rejected_frames_retained": true,
+  "full_dataset_accuracy_claim": false,
+  "services_created_or_stopped": false,
+  "completed": {}
+}

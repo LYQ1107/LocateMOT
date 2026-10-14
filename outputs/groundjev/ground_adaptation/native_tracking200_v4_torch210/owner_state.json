@@ -1,0 +1,17 @@
+{
+  "status": "NATIVE_GROUND_TRACKING200_FAILED",
+  "steps": 0,
+  "target_steps": 200,
+  "physical_gpu": 6,
+  "seed": 42,
+  "native_language_and_vision_frozen": true,
+  "formal_adaptation_and_retention_complete": false,
+  "execution_runtime": {
+    "torch": "2.10.0+cu128",
+    "transformers": "5.7.0",
+    "triton": "3.6.0"
+  },
+  "actual_checkpoint_interval": 5,
+  "execution_diagnostic": "synchronize native noisy FlexAttention before native clean attention; masks/math unchanged",
+  "error": "ModuleNotFoundError(\"No module named 'scipy'\")"
+}

@@ -95,7 +95,7 @@ The old intermediate is preserved and is not declared a completed 500-step run.
 A new finite replay of the original unfinished 500-step protocol starts from
 its original valid 100-step initialization, with unchanged corpus, seed0,
 lr5e-6, 32768 context, native fork tolerance and zero dropped rows. It runs on
-physical GPU4; the latest returned live report was step125/500, with an actual9.029GB
+physical GPU4; the latest persisted training log was step300/500, with an actual9.029GB
 FP32/Adam/scheduler/RNG/cursor state checkpoint saved. It does not
 pretend to reconstruct missing Adam state at old step250. Checkpoint handling
 now atomically saves FP32 masters, Adam, scheduler, all RNG and exact planned
@@ -110,10 +110,8 @@ checkpoint correctness, not500completion or a tracking accuracy gain.
 Config: configs/groundjev/onejev_own_history_v3_exact500_replay_stateful.json.
 
 Physical GPU5 runs the owned native visual-feature RPC on port8111.
-The temporary Ground GPU6replica was stopped immediately after native72pack
-completion; both Compact training/control owners and the recovery owner are
-terminal. GPU7was released after the finite actualOneJev125multimodal checkpoint
-reload check completed. GroundJEV does not own the fufu/UDMT/ywh jobs and has not stopped
+The native72pack and all Compact training/control/recovery owners are terminal.
+The later originalGround full-retention service now runs onGPU7; formalGround200 training has finished and its full dense/ref9 evaluation now ownsGPU6. GroundJEV does not own the fufu/UDMT/ywh jobs and has not stopped
 them. At most four physical GPUs are allowed. No old U2 queue is running.
 Temporary feature caches remain bounded to25GiB; datasets and training-state
 checkpoints are separate preserved artifacts.
@@ -191,6 +189,59 @@ evaluator checkout. No retention accuracy score has yet been computed and
 none of these benchmark labels is adaptation supervision. Recipe:
 configs/groundjev/ground_retention_dense_ref9_original.yaml. Evidence:
 outputs/groundjev/ground_retention/dense_ref9_data/input_validation.json.
+
+## Native Ground tracking200 execution and full retention baseline
+
+Registered112native SFT rows/56two-image pairs from32MOT17/DanceTrack train
+images and40fit-v2KITTIimages (five sequences, two expressions). Native-space
+coordinate preflight keeps every selected target without clipping; MOT20
+window69out-of-grid annotations are outside this explicitly new SFT corpus,
+with existing evaluation labels/denominators unchanged. All112rows fit the
+original native collator. First dense step proves separate nativeDLM,
+GTidentity and real decoded-proposal identity gradients. Only27,267,584native
+projector parameters train; original native language/vision remain frozen.
+
+The borrowed servingTorch2.9.1runtime fails on varying-length batches: v1GPU7
+cuBLAS at2; v2GPU6validsteps1–3, saved fullstate1, thenfailure4; synchronization
+v3restoresactualstate1, validthrough20, localizesillegalmemoryaccess immediately
+after noisycompiledFlexAttention at21. All failures/logs/states retained.
+No GPU reset, seed/loss/data/mask change or sample skip. The isolated native
+Py312 Torch2.10cu128/TF5.7/Triton3.6 runtime is installed; serving and OneJev
+environments remain unchanged. v5 resumed1, saved55, failed before58. v6
+specialized the same native FlexAttention operator to concrete shapes, saved185,
+and failed before186. v7 restored185 with CUDA_LAUNCH_BLOCKING=1 plus boundary
+synchronization and completed186–200. Asynchronous failure root cause remains
+unestablished; passing synchronized replay is not proof that it is fixed.
+
+The actual checkpoint chain has exactly200updates (100dense/100referring),
+all56registered pairs visited, finite logged losses/gradient norms, complete
+FP32/Adam/allRNG/cursor state at200, and native checkpoint reload difference0.
+All failed attempts and the execution/library changes are retained; this is
+not an uninterrupted or bit-identical cross-runtime run. FP32changed27,267,353
+and BF16-visible changed16,204,590 projector elements. The complete569tensor
+TrackProj200 bundle replaces only five projector tensors; all other native
+weights, tokenizer and configuration are unchanged. Training completion alone
+does not establish dense/referring retention or tracking improvements.
+Existing112rows include0absent expression targets;40realfit absent-target rows
+on the sameimages remain separately registered for a later explicit curriculum.
+Evidence: native_tracking200_v7_boundary_trace/complete200_validation.json,
+complete200_history.jsonl, owner_state.json and export_receipt.json.
+
+Original benchmark nativeCPUeval environment has been installed. First full9
+baseline had9client initialization failures from inherited HTTPproxy configuration,
+before any model score. Task-local proxy vars are now cleared. Fresh v2owner
+has launched all original canonical4dense+5ref tasks, limit:null (91,124rows),
+with unchanged original scorer and native decode profiles. PhysicalGPU7owned
+originalGroundservice; local evaluatorCPU-only. Originalfailedrun remains.
+The exported TrackProj200 full9retention owner usesGPU6/API8102 and separate
+rendezvous ports22345+, with the identical canonical tasks/data/limit:null/
+concurrency2/originalscorers/native decode profiles. ExistingOne training4 and
+nativeROI5 keep the project within4/5/6/7. Both full-suite results are pending. Fresh48frame MOT/RMOT functional
+controls through these services also run with the unchanged Simple associator,
+parser/tracking_dense/seed42 and all empty/rejected frames; this remains
+separate from full original benchmark retention.
+Evidence roots: outputs/groundjev/ground_adaptation/native_tracking200_v*;
+outputs/groundjev/ground_retention/original_dense_ref9_v1 and v2_direct.
 
 ## Earlier verified foundation and remaining requirements
 

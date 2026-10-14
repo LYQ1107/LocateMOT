@@ -1,0 +1,10 @@
+{
+  "status": "RUNNING_UNMODIFIED_FULL_DENSE_REF9_BASELINE",
+  "physical_server_gpu": 7,
+  "local_evaluator_CPU_only": true,
+  "limit": null,
+  "declared_canonical_rows": 91124,
+  "nine_original_dense_referring_tasks_not_all30": true,
+  "adaptation_or_retention_gain_claim": false,
+  "owned_server_process_group": 775337
+}

@@ -1,0 +1,17 @@
+{
+  "status": "OFFICIAL_CPU_EVAL_ENV_INSTALLED",
+  "packages": {
+    "torch": "2.5.1+cpu",
+    "torchvision": "0.20.1+cpu",
+    "numpy": "1.26.4",
+    "pyarrow": "21.0.0",
+    "pycocotools": "2.0.11",
+    "accelerate": "1.15.0",
+    "openai": "2.54.0",
+    "httpx": "0.23.3"
+  },
+  "original_setup_command": "run.py setup eval",
+  "GPU_evaluator": false,
+  "native_source_scorers_unchanged": true,
+  "serving_OneJev_training_environments_modified": false
+}

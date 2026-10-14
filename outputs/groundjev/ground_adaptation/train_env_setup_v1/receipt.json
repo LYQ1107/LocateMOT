@@ -1,0 +1,17 @@
+{
+  "status": "ISOLATED_NATIVE_TRAINING_RUNTIME_INSTALLED",
+  "packages": {
+    "torch": "2.10.0+cu128",
+    "transformers": "5.7.0",
+    "triton": "3.6.0",
+    "torchvision": "0.25.0+cu128",
+    "accelerate": "1.13.0",
+    "datasets": "5.0.0",
+    "pyarrow": "24.0.0",
+    "scipy": "1.18.1",
+    "numpy": "2.5.2"
+  },
+  "CUDA_family": "cu128 for installed driver/A800; native recipe cu129/SM90 extension profile not used",
+  "original_serving_and_OneJev_envs_modified": false,
+  "Math_or_mask_or_GT_or_seed_change_claim": false
+}

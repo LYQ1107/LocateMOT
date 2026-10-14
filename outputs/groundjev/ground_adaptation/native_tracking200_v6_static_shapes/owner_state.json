@@ -1,0 +1,42 @@
+{
+  "status": "NATIVE_GROUND_TRACKING200_FAILED",
+  "steps": 185,
+  "target_steps": 200,
+  "physical_gpu": 6,
+  "seed": 42,
+  "native_language_and_vision_frozen": true,
+  "formal_adaptation_and_retention_complete": false,
+  "execution_runtime": {
+    "torch": "2.10.0+cu128",
+    "transformers": "5.7.0",
+    "triton": "3.6.0"
+  },
+  "actual_checkpoint_interval": 5,
+  "native_attention_compile_policy": "same original native FlexAttention kernel/masks; concrete shapes, CUDA graphs disabled",
+  "execution_diagnostic": "synchronize native noisy FlexAttention before native clean attention; masks/math unchanged",
+  "corpus": {
+    "rows": 112,
+    "dense_rows": 32,
+    "referring_rows": 80,
+    "negative_referring_rows": 0,
+    "native_proposals": 884,
+    "native_aligned_regions": 628,
+    "pairs": 56,
+    "unique_images": 72,
+    "native_pair_contrastive_support": 24
+  },
+  "trainable_parameters": 27267584,
+  "gradient_probes": {
+    "referring": {
+      "native_DLM_gradient_norm": 16.475908279418945,
+      "teacher_identity_gradient_norm": 1.2069052457809448
+    },
+    "dense": {
+      "native_DLM_gradient_norm": 8.388372421264648,
+      "teacher_identity_gradient_norm": 2.1152093410491943,
+      "decoded_proposal_identity_gradient_norm": 2.0671193599700928
+    }
+  },
+  "latest_complete_training_state_step": 185,
+  "error": "AcceleratorError(\"CUDA error: an illegal memory access was encountered\\nSearch for `cudaErrorIllegalAddress' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.\\nCUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.\\nFor debugging consider passing CUDA_LAUNCH_BLOCKING=1\\nCompile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.\\n\")"
+}

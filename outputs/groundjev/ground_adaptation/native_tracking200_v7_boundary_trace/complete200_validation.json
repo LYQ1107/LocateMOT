@@ -1,0 +1,35 @@
+{
+  "status": "EXACT200_CURSOR_HISTORY_VALIDATED",
+  "steps": 200,
+  "all_losses_and_gradient_norms_finite": true,
+  "dense_steps": 100,
+  "referring_steps": 100,
+  "unique_pair_indices": 56,
+  "segments": [
+    {
+      "output": "native_tracking200_v2_gpu6",
+      "first": 1,
+      "last": 1
+    },
+    {
+      "output": "native_tracking200_v5_torch210_scipy",
+      "first": 2,
+      "last": 55
+    },
+    {
+      "output": "native_tracking200_v6_static_shapes",
+      "first": 56,
+      "last": 185
+    },
+    {
+      "output": "native_tracking200_v7_boundary_trace",
+      "first": 186,
+      "last": 200
+    }
+  ],
+  "unsafe_v3_logs_not_in_checkpoint_chain": true,
+  "library_and_synchronization_execution_changes_recorded": true,
+  "uninterrupted_run_claim": false,
+  "asynchronous_failure_root_cause": "not established: synchronous185-to200replay passed; concrete-shape-only v6 failed before186",
+  "benchmark_improvement_claim": false
+}

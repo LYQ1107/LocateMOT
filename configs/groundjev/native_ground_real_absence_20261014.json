@@ -1,0 +1,91 @@
+{
+  "status": "REAL_LEGAL_FIT_ABSENT_EXPRESSION_WINDOWS_REGISTERED",
+  "query_selection": "first lexicographic real release expression with no target on all existing registered eightframes; fit-only labels",
+  "entries": [
+    {
+      "video": "0002",
+      "expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0002/automobiles-painted-in-yellow-on-the-right.json",
+      "expression": "automobiles painted in yellow on the right",
+      "frames": [
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "actual_absent_target_rows": 8
+    },
+    {
+      "video": "0008",
+      "expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0008/all-the-cars-moving-in-the-same-direction-are-on-the-left.json",
+      "expression": "all the cars moving in the same direction are on the left",
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "actual_absent_target_rows": 8
+    },
+    {
+      "video": "0010",
+      "expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0010/automobiles-that-are-light-colored-are-on-the-right.json",
+      "expression": "automobiles that are light-colored are on the right",
+      "frames": [
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141
+      ],
+      "actual_absent_target_rows": 8
+    },
+    {
+      "video": "0012",
+      "expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0012/all-the-vehicles-headed-our-way.json",
+      "expression": "all the vehicles headed our way",
+      "frames": [
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "actual_absent_target_rows": 8
+    },
+    {
+      "video": "0014",
+      "expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0014/automobiles-on-the-right-hand-side.json",
+      "expression": "automobiles on the right-hand side",
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "actual_absent_target_rows": 8
+    }
+  ],
+  "negative_rows": 40,
+  "source_image_corpus": "same72native200images, no synthetic empty images",
+  "validation_labels_read": false,
+  "used_in_existing_positive_native200": false,
+  "next_stage": "explicit additional absent-target native DLM supervision after current200; no silent changes to current protocol"
+}

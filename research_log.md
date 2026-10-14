@@ -1988,3 +1988,82 @@ ActualOne125MMreload terminal:474weights, BF16changed2,306,395/2,035,222/
 1,627,638elements in threeMLPprobes vsinit100; independent nativeMMreload
 probabilitydifference0(autoFork unchanged). Onlyintermediatecorrectness, no
 formal500or trackinggain/exactFullFP32nextstep claim. GPU7probe exited.
+
+### Native Ground formal200 tracking adaptation (registered)
+
+Advance3step projector proof to200seed42steps on32dense train images plus
+40fit-v2KITTIimages with2expressions each (112native SFT rows/56pairs).
+Alternate dense/ref; allpairs visited. Preflight proves entireselected target
+sets grid-representable, not clipped: MOT20window has69out-of-grid targets
+and4otherKITTIwindows haveviolations, so theyareoutside thisnewregistered
+native-token corpus, not droppedfromoldprotocols/evaluation. Frozen native
+vision/language, trainoriginal27Mprojector FP32; officialMDM.5/causal.5 plus
+.1GTidentity/.1actualnative-proposalidentity contrastive. Native boxes come
+fromcompletedoriginal decoderrollouts, GTonlylabelalignment; adaptedlive
+decoderrollout notclaimed. CompleteAdam/RNG/cursorcheckpoint every25steps.
+Fulloriginaldense/ref9 inputs are ready; adaptation benefit remains unproved
+until original unmodified before/after scoring. Newplan native_ground_tracking200_20261014.json.
+
+Native200v1all112rows/56pairs fit native collator; actual0negative ref rows
+(so absent-target supervision remains a later required stage). Firststep1
+completed nativeMLM+teacher/native temporal gradients,27,267,584parameters;
+step2cleanBF16attention cuBLAS internal failure onGPU7 before next update.
+No validoptimizer/RNG checkpoint yet. Preserve v1failure/step1log. New GPU6
+executionvariant holds actualdata/seed42/200steps/loss/optimizer unchanged,
+adds checkpoint atstep1 toexisting25interval. SameA800architecture, noGPU
+reset orforeignjob mutation. Externalrootcause notestablished; verify actual
+secondbatch in freshGPU6context while replayingunfinished initialunit.
+
+GPU6same protocol progressed3steps then failedcuBLAS;1fullstate saved.
+Sync nativeFlexAttention beforecleanattention diagnostic resumedexact1state,
+reached20steps then exposedillegalmemoryaccess immediatelyafterNoisyFlex
+(step21), so clean cuBLAS was downstream/asynchronous symptom. NoGPUreset,
+no samples/masks/seeds/loss changes. Native trainingprofile pinsTorch2.10,
+whereassmoke usedServeTorch2.9.1. PrepareindependentPy312Torch2.10cu128
+(A800/driver570-compatible CUDA family) /nativeTF5.7/Triton3.6; no serving/
+One env edits. Resume native200 fromvalid1withall optimizer/RNG/cursor.
+Any runtime numerical differences are to be recorded, not silently ignored.
+
+NativeCPUevalenvironment officialsetup completed (Torch2.5.1CPU, shipped
+lmms snapshot; serving/training environments unchanged). Startoneowned
+originalGroundservice GPU7 + originalfull9canonicalbenchmark evaluator
+CPU-only, limitnull,91,124declaredrows. No8sample-smoke orretentiongain claim.
+Nativeevalresponsecache is originalscorer output, not U2candidatefeatures.
+
+Originalfull9preflight/service ready; all9clients failedbeforefirstinference
+while constructingHTTPproxy mappings in SDK/httpx0.23. Task-inherited proxy
+configuration conflictswithlocalAPIclient; cleartasklocalHTTP/HTTPS/ALLproxy
+vars only, preserveglobalenv/source/metric. Fresh v2runid retainsold9failure
+logs/caches; all9unfinishedcanonicaltasks re-executed, no sample/seed changes.
+
+IsolatedTorch2.10cu128/TF5.7/Triton3.6 installed; missingSciPy preflight
+fixed withoutchangingdata. Actualstate1 resumed, validthrough57 with55full
+state. Earlierbad-runtimegradientnorm at20=387471 vsnew=13.49, numerical
+unsafe-runtimebehavior retained, notclaimed equivalent. StillillegalnoisyFlex
+access at58, so runtimeupgrade alone is insufficient. Concrete-shape compile
+specializes SAMEoriginalnative_flex_attention_kernel/masks/GQA; no score/
+loss/model changes, no dense-reference fallback. Resume55in freshv6out.
+Recompileguards raisedonlyforthefinite declaredvariable-shape corpus.
+
+### Native Ground200 concrete-shape failure and targeted diagnosis
+
+Concrete-shape v6 completed185updates and saved full FP32/Adam/allRNG/cursor185, then failed before186update with CUDA illegal access. Static shapes alone are insufficient; no metrics or samples are changed. Previous output handle is absent and owner terminal. Next action: replay from185 with CUDA_LAUNCH_BLOCKING and a persisted Q/K/V boundary plus full traceback, same operator/masks/data/seed/loss. This localizes the actual first failing kernel before choosing a repair; failing attempts remain preserved. Full original dense/ref9 baseline handle73408 was confirmed live, so it is not restarted.
+
+### Native Ground200 resumed completion and full original-protocol retention
+
+v7 synchronous replay from185 completed186–200, keeping exact native operator,
+masks, seed42, data/loss/optimizer/schedule. Asynchronous kernel root cause is
+still unestablished; all v1–v6 failures remain. Complete checkpoint chain:
+v2step1, v5steps2–55, v6steps56–185, v7steps186–200. All200loss/gradient rows
+finite;100dense+100ref, all56pairs visited. Native200reload maximum delta0;
+27,267,353FP32 and16,204,590BF16 elements changed. Exported complete569tensor
+9,687,419,704byte model; only five projector tensors replaced. These are
+training/execution results, not benchmark or tracking accuracy improvements.
+
+Original full9baseline handle73408 remains live. New adapted full9owner uses
+GPU6/API8102 and separate execution rendezvous ports22345+, preserving all
+canonical tasks, full rows, original scoring and native decode profiles. No
+benchmark GT training or limit reductions. Four project GPUs maximum; other
+projects are untouched. Real absent-target40rows remain a separate next stage.
+
+Fresh nativeGround200 MOT4/RMOTsingle8/RMOTmulti12 before/after controls also launched through the two existing owned retention services, same Simple associator/parser/tracking_dense/seed42, no new GPU service or benchmark-limit changes. This48frame functional comparison is separate from original full91,124-row dense/ref9 scoring. All registered empty/rejected frames remain.

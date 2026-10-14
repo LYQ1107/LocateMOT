@@ -1,0 +1,15 @@
+{
+  "status": "FINITE_COMPLETE_TRAINING_STATE185_VALIDATED",
+  "steps": 185,
+  "FP32_parameters": 27267584,
+  "all_projector_tensors_FP32": true,
+  "Adam_parameter_states": 5,
+  "all_Adam_step_cursors": 185,
+  "finite_parameters_and_Adam": true,
+  "planned_schedule_steps": 200,
+  "registered_pairs_visited_in_prefix": 56,
+  "Torch_CPU_CUDA_Python_NumPy_RNG_present": true,
+  "next_pair_index": 53,
+  "numerical_correctness_of_compiled_attention": "not proven by finiteness; targeted kernel diagnosis pending",
+  "formal_retention_gain": false
+}

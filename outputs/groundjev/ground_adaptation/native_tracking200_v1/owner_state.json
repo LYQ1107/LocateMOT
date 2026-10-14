@@ -1,0 +1,22 @@
+{
+  "status": "NATIVE_GROUND_TRACKING200_FAILED",
+  "steps": 0,
+  "target_steps": 200,
+  "physical_gpu": 7,
+  "seed": 42,
+  "native_language_and_vision_frozen": true,
+  "formal_adaptation_and_retention_complete": false,
+  "corpus": {
+    "rows": 112,
+    "dense_rows": 32,
+    "referring_rows": 80,
+    "negative_referring_rows": 0,
+    "native_proposals": 884,
+    "native_aligned_regions": 628,
+    "pairs": 56,
+    "unique_images": 72,
+    "native_pair_contrastive_support": 24
+  },
+  "trainable_parameters": 27267584,
+  "error": "RuntimeError('CUDA error: CUBLAS_STATUS_INTERNAL_ERROR when calling `cublasGemmStridedBatchedEx(handle, opa, opb, (int)m, (int)n, (int)k, (void*)&falpha, a, CUDA_R_16BF, (int)lda, stridea, b, CUDA_R_16BF, (int)ldb, strideb, (void*)&fbeta, c, std::is_same_v<C_Dtype, float> ? CUDA_R_32F : CUDA_R_16BF, (int)ldc, stridec, (int)num_batches, compute_type, CUBLAS_GEMM_DEFAULT_TENSOR_OP)`')"
+}

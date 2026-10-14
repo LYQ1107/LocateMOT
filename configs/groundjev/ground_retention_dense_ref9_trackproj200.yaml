@@ -1,0 +1,27 @@
+{
+  "mode": "GAM",
+  "model_path": "weights/groundjev_trackproj200_dlm",
+  "model_type": "qwen3vl",
+  "api_url": "http://127.0.0.1:8102/v1",
+  "data_root": "/data3/user/Grounding-EvalData-data",
+  "datasets": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/ground_retention/dense_ref9_data/datasets.local.yaml",
+  "output_root": "outputs/groundjev_retention",
+  "tasks": [
+    "gam_coco",
+    "gam_lvis",
+    "gam_dense200",
+    "gam_visdrone",
+    "gam_refcocog_val",
+    "gam_refcocog_test",
+    "gam_refcoco",
+    "gam_refcocog",
+    "gam_refcocoplus"
+  ],
+  "run_id": "groundjev_trackproj200_dense_ref9_20261014",
+  "limit": null,
+  "concurrency": 2,
+  "base_port": 22345,
+  "model_id": "groundinganything",
+  "service_contract": "openai",
+  "decoder": "denoise"
+}
