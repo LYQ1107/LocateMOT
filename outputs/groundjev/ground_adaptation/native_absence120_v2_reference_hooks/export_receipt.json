@@ -1,0 +1,28 @@
+{
+  "status": "COMPLETE_NATIVE_DLM_PROJECTOR_DELTA_BUNDLE_EXPORTED",
+  "source": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM",
+  "delta": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/ground_adaptation/native_absence120_v2_reference_hooks/projector_delta.pt",
+  "output": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM-TrackProj320",
+  "native_tensor_count": 569,
+  "replaced_native_projector_keys": [
+    "base_model.model.visual.projector.pre_norm.weight",
+    "base_model.model.visual.projector.pre_norm.bias",
+    "base_model.model.visual.projector.fc1.weight",
+    "base_model.model.visual.projector.fc2.weight",
+    "base_model.model.visual.projector.post_norm.weight"
+  ],
+  "BF16_changed_elements": 17246128,
+  "all_other_native_tensors_unmodified": true,
+  "source_bundle_overwritten": false,
+  "tokenizer_code_and_configuration": "copied unchanged from complete released DLM bundle",
+  "bytes": 9687419704,
+  "sha256": "4be0d7a1f198b1c5293a6cc5ca0818547447593a3dc6d2b28bd4afaf13861926",
+  "training_steps": 120,
+  "seed": 42,
+  "dense_referring_retention": "pending actual before/after",
+  "benchmark_improvement_claim": false,
+  "initial_projector_training_steps": 200,
+  "total_projector_optimization_steps": 320,
+  "additional_curriculum_steps": 120,
+  "optimizer_reset_between_stages": "explicit newstage AdamW reset atlr1e-6/seed42"
+}

@@ -110,8 +110,9 @@ checkpoint correctness, not500completion or a tracking accuracy gain.
 Config: configs/groundjev/onejev_own_history_v3_exact500_replay_stateful.json.
 
 The idle owned native visual-feature RPC onGPU5/port8111 was stopped after
-all feature consumers finished and no established clients remained. GPU5 is
-now reused for the separately registered absence120training stage.
+all feature consumers finished and no established clients remained. GPU5 was
+reused for the completed absence120stage and now runs isolated checkpoint
+controls; each owned replica stops at terminal.
 The native72pack and all Compact training/control/recovery owners are terminal.
 The later originalGround full-retention service now runs onGPU7; formalGround200 training has finished and its full dense/ref9 evaluation now ownsGPU6. GroundJEV does not own the fufu/UDMT/ywh jobs and has not stopped
 them. At most four physical GPUs are allowed. No old U2 queue is running.
@@ -238,7 +239,7 @@ originalGroundservice; local evaluatorCPU-only. Originalfailedrun remains.
 The exported TrackProj200 full9retention owner usesGPU6/API8102 and separate
 rendezvous ports22345+, with the identical canonical tasks/data/limit:null/
 concurrency2/originalscorers/native decode profiles. ExistingOne training4 and
-new absence-training5 keep the project within4/5/6/7. Both full-suite results are pending. Fresh48frame MOT/RMOT functional
+fresh isolated checkpoint controls5 keep the project within4/5/6/7. Both full-suite results are pending. Fresh48frame MOT/RMOT functional
 controls through these services also run with the unchanged Simple associator,
 parser/tracking_dense/seed42 and all empty/rejected frames; this remains
 separate from full original benchmark retention.
@@ -306,3 +307,61 @@ passed: maximum BF16 output difference .005859/.003906/.005859 and Q-gradient
 relativeL2 difference .043767/.033754/.036040 (K/V below .007), within the
 unchanged registered criteria. These checks cover the first real layer of
 each supervision type; additional120training/results remain pending.
+
+## Completed absence120 and effective-seed isolation
+
+Additional120finished from native200: all152rows/76pairs,40realfit absences,
+finite logs, projectorFP32changed27,266,797/BF16changed8,256,449 relative to200,
+reload difference0, peak18,414,616,064bytes. Full569tensor native320bundle
+preserves all non-projector tensors. The original200full9owner remains intact.
+
+Fresh shared-service200/320 HOTA: MOT83.737/83.402%, single18.406/20.046%,
+multi23.496/24.817%. Empty-frame outputs stay7/3, singleIDSW1->2/multi2->4.
+All48frames and six videos validate. Absence correction is not established.
+
+Original native sampling uses a monotonically incremented request_index in
+addition to suppliedseed42. Shared full9services consume unrelated requests;
+effective stochastic seeds in preliminary checkpoint comparisons are therefore
+unpaired. Preserve those real scores as descriptive observations, not causal
+proof that adaptation produced their change. Newisolated96owner runs fresh
+original/200/200repeat/320 replicas sequentially onGPU5, same24request order
+and unchanged source/math/seed/scorers. Repeated200raw wire/candidates/outputs
+must agree. Original and200full9owners stay running and unmodified; these full
+benchmark results also need sampling-variance qualification before causal claims.
+
+A finite OneJev500completion owner now waits for the specifically verified
+current training process. After terminal500receipt it validates actual native
+multimodal2reload and runs fourway Simple/pretrained/init100/500 matched-native
+controls acrossMOT4/RMO8/RMO12/TAOBase4, reusingGPU4 only after training exits.
+No oldU2queue or newtraining restart. CompleteDanceTrack before/after and
+Novel-diverse/fulltask evaluation remain required subsequent work.
+Evidence: native_absence120_v2_reference_hooks/training_validation.json,
+projector320_tracking_controls_v1/aggregate_results.json, isolated96_v1,
+and training/onejev500_completion_controls_v1. Live owner handles are preserved.
+
+## Authoritative isolated native checkpoint comparison (completed)
+
+All96native frames and12decoded videos validate. Freshordered200repeat agrees
+exactly in rawwire, candidateboxes and causaloutputs for all24frames. Native
+source and requestedseed42 unchanged. SameGPU5/server/orderedrequests, Simple
+associator/parser/tracking_dense, originalGT and empty/rejected denominators.
+Original24validunit reused after transientportfailure; allother variants fresh.
+
+| Registered short scope | Original HOTA % | Native200 HOTA % | Native320 HOTA % |
+|---|---:|---:|---:|
+| MOT17 four frames | 75.069 | 83.467 | 83.402 |
+| Referring single eight frames | 30.385 | 24.876 | 20.046 |
+| Referring multiple twelve frames | 22.664 | 23.675 | 24.817 |
+
+Single empty-frame outputs3->7->7, multiple2->3->3. MultipleIDSW0->2->4;
+AssocA41.678->33.457->30.669%. MOTIDSW1->0->0, FN24->15->13 and FP16->4->2.
+Thus detection improves in this shortMOTscope, singleRMOTregresses, and the
+realabsence120intervention does not fix absent-target false positives. Multiple
+HOTA/recall gain comes with weaker association. Neither adaptedmodel is
+promoted as the shared default foundation. These are single-short-scope
+observations, not full-dataset or generalization claims. Shared-service results
+remain descriptive; use this controlled aggregate for these checkpoint effects.
+Evidence: isolated96_v2_port_release/aggregate_results.json and repeat_checks.
+All isolated replicas have stopped. Original/full9GPU7 and native200/full9GPU6
+owners and originalOne500GPU4training remain intact. The new completion owner
+waits the actual trainer before native500validation and matched-core controls.

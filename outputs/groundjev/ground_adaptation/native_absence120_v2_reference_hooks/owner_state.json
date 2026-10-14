@@ -1,6 +1,6 @@
 {
-  "status": "RUNNING_NATIVE_GROUND_TRACKING200",
-  "steps": 50,
+  "status": "NATIVE_GROUND_TRACKING200_TRAINING_COMPLETE",
+  "steps": 120,
   "target_steps": 120,
   "physical_gpu": 5,
   "seed": 42,
@@ -109,5 +109,14 @@
       "teacher_identity_gradient_norm": 1.6690046787261963
     }
   },
-  "latest_complete_training_state_step": 50
+  "latest_complete_training_state_step": 120,
+  "changed_FP32_elements": 27266797,
+  "changed_BF16_elements": 8256449,
+  "checkpoint_reload_max_difference": 0.0,
+  "peak_allocated_bytes": 18414616064,
+  "all_registered_pairs_visited": true,
+  "registered_pair_count": 76,
+  "full_model_original_tensor_count": 569,
+  "dense_referring_tracking_retention_evaluation": "pending actual unchanged before/after scoring",
+  "complete_training_not_full_research_goal": true
 }

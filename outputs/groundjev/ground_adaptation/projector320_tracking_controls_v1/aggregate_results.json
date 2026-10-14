@@ -1,0 +1,119 @@
+{
+  "status": "ALL48_NATIVE_FRAMES_OFFICIAL_METRICS_AND_VIDEOS_VALIDATED",
+  "rows": [
+    {
+      "scope": "dense_mot4",
+      "variants": {
+        "projector200": {
+          "metrics": {
+            "HOTA": 0.8373711176785211,
+            "DetA": 0.7810376347420314,
+            "AssA": 0.9148883867664184,
+            "IDF1": 0.9420849420849421,
+            "IDSW": 0,
+            "FP": 2,
+            "FN": 13
+          },
+          "frames": 4,
+          "empty_target_frame_predictions": null,
+          "empty_target_frames": null,
+          "perception_rejected_frames": []
+        },
+        "projector320": {
+          "metrics": {
+            "HOTA": 0.8340156158451205,
+            "DetA": 0.7777138223282171,
+            "AssA": 0.9106548618611978,
+            "IDF1": 0.9420849420849421,
+            "IDSW": 0,
+            "FP": 2,
+            "FN": 13
+          },
+          "frames": 4,
+          "empty_target_frame_predictions": null,
+          "empty_target_frames": null,
+          "perception_rejected_frames": []
+        }
+      }
+    },
+    {
+      "scope": "refer_single8",
+      "variants": {
+        "projector200": {
+          "metrics": {
+            "HOTA": 0.18406053081042598,
+            "DetA": 0.17520824119121334,
+            "AssA": 0.19881370091896408,
+            "IDF1": 0.10526315789473684,
+            "IDSW": 1,
+            "FP": 12,
+            "FN": 3
+          },
+          "frames": 8,
+          "empty_target_frame_predictions": 7,
+          "empty_target_frames": 3,
+          "perception_rejected_frames": []
+        },
+        "projector320": {
+          "metrics": {
+            "HOTA": 0.20045650624404399,
+            "DetA": 0.20472816657027182,
+            "AssA": 0.19657894736842102,
+            "IDF1": 0.1111111111111111,
+            "IDSW": 2,
+            "FP": 10,
+            "FN": 2
+          },
+          "frames": 8,
+          "empty_target_frame_predictions": 7,
+          "empty_target_frames": 3,
+          "perception_rejected_frames": []
+        }
+      }
+    },
+    {
+      "scope": "refer_multi12",
+      "variants": {
+        "projector200": {
+          "metrics": {
+            "HOTA": 0.23495737404979766,
+            "DetA": 0.1683483328526168,
+            "AssA": 0.33296200457854597,
+            "IDF1": 0.2553191489361702,
+            "IDSW": 2,
+            "FP": 9,
+            "FN": 22
+          },
+          "frames": 12,
+          "empty_target_frame_predictions": 3,
+          "empty_target_frames": 3,
+          "perception_rejected_frames": []
+        },
+        "projector320": {
+          "metrics": {
+            "HOTA": 0.2481730275995651,
+            "DetA": 0.20288080574714035,
+            "AssA": 0.30668665561209424,
+            "IDF1": 0.27450980392156865,
+            "IDSW": 4,
+            "FP": 11,
+            "FN": 20
+          },
+          "frames": 12,
+          "empty_target_frame_predictions": 3,
+          "empty_target_frames": 3,
+          "perception_rejected_frames": []
+        }
+      }
+    }
+  ],
+  "same_Simple_associator_parser_tracking_dense_seed42_and_original_GT": true,
+  "all_empty_and_rejected_frames_retained": true,
+  "native_candidate_boxes_may_change": true,
+  "no_GT_correction_or_threshold_tuning": true,
+  "single_seed_short_scope_not_full_dataset": true,
+  "full_dense_ref9_retention": "original and200 owners still running;320full9not yet evaluated",
+  "owned_adapted_service_stopped": true,
+  "effective_native_sampling_seed_pairing": "not controlled on shared service: native request_index affects sampling; isolated96replication pending",
+  "causal_attribution_of_small_metric_changes_to_absence_training": false
+}

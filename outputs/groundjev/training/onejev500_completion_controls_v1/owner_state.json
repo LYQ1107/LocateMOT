@@ -1,0 +1,10 @@
+{
+  "status": "WAITING_VERIFIED_ORIGINAL500_TRAINER",
+  "training_owner_pid": 301239,
+  "training_owner_start_ticks": "34227430",
+  "physical_eval_gpu": 4,
+  "training_restarted_or_protocol_modified": false,
+  "end_to_end_FPS_claim": false,
+  "fixed_native_candidate_controls": true,
+  "completed": {}
+}

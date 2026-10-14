@@ -2090,3 +2090,49 @@ terminal. GPU5 is reused for this declared training, no other project stopped.
 Absence120v1 preflight verifies152rows/76pairs/40realabsences, but stops beforefirstupdate: detached reference-probe backward inherits native activation-checkpoint saved-tensor hooks and recursively re-enters itself (_StopRecomputationError). This is a diagnostic integration failure, not a measured attention discrepancy. Small repair: isolate only detached diagnostic saved tensors with identity pack/unpack hooks; production model checkpointing and forward remain unchanged. Preserve failedv1. Freshv2 replays unfinished stage from exactTrackProj200, identical seed/data/loss/criterion.
 
 Actual v2 native attention reference checks pass for first real dense/positive-ref/absent-ref layer: maxBF16 output delta.005859/.003906/.005859; Q-gradient relativeL2.043767/.033754/.036040, K/V below.007. Criteriaunchanged(output rtol/atol.02; QKVrelativeL2<.05), no diagnosticRNG consumption. This targeted check covers three real input types, not every layer/step. Training remains owned by the same v2blocking command.
+
+### Real absence120 completion and unchanged native200/320 tracking comparison
+
+Additional120 completed: all76pairs/152rows visited, including20actualabsent
+pairs/40fit-negative rows; finite losses/gradients, FP32changed27,266,797,
+BF16changed8,256,449 versus initialization200, native reload delta0, peak
+allocated18,414,616,064bytes. Complete200model/full9owners retained.
+Export full569tensor model320 (explicit200+120; five projector tensors only).
+Next test: fresh200-versus320 native MOT4/RMO8/RMO12, same Simple associator,
+parser/tracking_dense/seed42/GT/empty+rejected frames. New ownedGPU5/API8103
+service only, auto-clean at terminal; existing200/API8102 onGPU6 untouched.
+Short-scope result is not fulloriginal9retention or a completeRMOTclaim.
+
+### Absence320 short negative result and native sampling-counter confound
+
+Fresh shared200vs320 controls finish48frames/sixvideos. MOT HOTA83.737->83.402,
+RMO single18.406->20.046, multi23.496->24.817%. Empty outputs unchanged7and3;
+IDSWsingle1->2/multi2->4. No successful absence correction is established.
+Originalnativecode inspection finds sampling seed depends on monotonically
+incremented request_index, not just suppliedsampling_seed42. Shared full9
+service consumes many intervening requests, so preliminary checkpoint
+comparisons do not pair effective stochastic seeds. Preserve their real scores,
+but do not attribute small changes solely to adaptation. New explicitly
+registered control: all original/200/200repeat/320 on fresh isolatedGPU5
+services, identical ordered24requests each, native source/math/seed42/scorers
+unchanged. Require repeated200raw wire/candidates/outputs identical. Keep
+both originalfull9owners unaffected. This is a small controlled protocol
+verification, not a repetition of full91k benchmarks or threshold tuning.
+
+Registered one finite blocking OneJev500completion owner: wait exactlive originaltrainer and verify terminal500receipt, actual474weight nativeMM2reload, then same candidate/GT/core4way Simple/pretrained/init100/500 controls acrossMOT/RMOT/TAOBase. GPU4 reused only after originaltraining exits. No original500restart or math/seed/corpus change. No detector E2E or Novelclaim from replay/Base-only clip. Fullvideo500before/after remains subsequent required work.
+
+Isolated96v1 original24frame unit completed, then next immediate replica bind failedEADDRINUSE after ownedserverparentexit. Later targetedlistener/bind check shows portfree; sourceparentwait does not guarantee immediate TCPport reuse. Small execution fix: SO_REUSEADDR probe plus internal30second port-release wait, no model/math/seed changes or other process signals. Preserve originalfailedowner; newv2reuses complete original24rows/metrics and resumes only200/200repeat/320fresh replicas.
+
+### Isolated native96 completed: confirmed positiveMOT/negativeRMOT transfer
+
+All96frames/12videos validated;200repeat rawwire/candidates/causaloutputs
+identical on24frames. Original/200/320 HOTA: MOT75.0687/83.4673/83.4016,
+single30.3853/24.8762/20.0457, multi22.6643/23.6754/24.8173%. Singleempty
+outputs3/7/7; multiple2/3/3. MultiIDSW0/2/4 and AssocA41.678/33.457/30.669.
+Keep adaptedcheckpoints as research controls, do not promote320as unified
+foundation. No successful absencecorrection. FixedSimple means observedMOT
+benefit is front-end adaptation, not a claimedJEVassociation gain. Shared
+service metrics remain preserved but not causal checkpoint evidence. Both
+full9owners unaffected; isolatedservices all stopped. Next major stage is
+actual500nativeMMreload and exact-proposal Fullbefore/after/multitask controls;
+completion owner already waits verifiedcurrenttrainer, no restart/sample skip.

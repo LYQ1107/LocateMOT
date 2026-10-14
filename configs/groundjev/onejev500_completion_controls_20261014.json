@@ -1,0 +1,130 @@
+{
+  "name": "Actual original500 completion/reload and matched three-task native controls",
+  "physical_gpu": 4,
+  "GPU_model": "A800-SXM4-80GB",
+  "training": "outputs/groundjev/training/onejev_own_history_v3_exact500_replay_stateful",
+  "jobs": [
+    {
+      "name": "mot4_simple",
+      "manifest": "outputs/groundjev/pilot_data/mot17_first4.json",
+      "candidates": "outputs/groundjev/runs/mot17_first_native_clip_repair2/frame_decisions.jsonl",
+      "backend": "simple",
+      "checkpoint": "models/OneJev-0.8B"
+    },
+    {
+      "name": "mot4_pretrained",
+      "manifest": "outputs/groundjev/pilot_data/mot17_first4.json",
+      "candidates": "outputs/groundjev/runs/mot17_first_native_clip_repair2/frame_decisions.jsonl",
+      "backend": "full",
+      "checkpoint": "models/OneJev-0.8B"
+    },
+    {
+      "name": "mot4_init100",
+      "manifest": "outputs/groundjev/pilot_data/mot17_first4.json",
+      "candidates": "outputs/groundjev/runs/mot17_first_native_clip_repair2/frame_decisions.jsonl",
+      "backend": "full",
+      "checkpoint": "outputs/groundjev/training/onejev_teacher_check_100/final"
+    },
+    {
+      "name": "mot4_sft500",
+      "manifest": "outputs/groundjev/pilot_data/mot17_first4.json",
+      "candidates": "outputs/groundjev/runs/mot17_first_native_clip_repair2/frame_decisions.jsonl",
+      "backend": "full",
+      "checkpoint": "outputs/groundjev/training/onejev_own_history_v3_exact500_replay_stateful/ckpt-step500"
+    },
+    {
+      "name": "rmot_single8_simple",
+      "manifest": "outputs/groundjev/multitask_pilot_data/rmot_single_empty.json",
+      "candidates": "outputs/groundjev/multitask_runs/rmot_single_empty_pretrained_v1/frame_decisions.jsonl",
+      "backend": "simple",
+      "checkpoint": "models/OneJev-0.8B"
+    },
+    {
+      "name": "rmot_single8_pretrained",
+      "manifest": "outputs/groundjev/multitask_pilot_data/rmot_single_empty.json",
+      "candidates": "outputs/groundjev/multitask_runs/rmot_single_empty_pretrained_v1/frame_decisions.jsonl",
+      "backend": "full",
+      "checkpoint": "models/OneJev-0.8B"
+    },
+    {
+      "name": "rmot_single8_init100",
+      "manifest": "outputs/groundjev/multitask_pilot_data/rmot_single_empty.json",
+      "candidates": "outputs/groundjev/multitask_runs/rmot_single_empty_pretrained_v1/frame_decisions.jsonl",
+      "backend": "full",
+      "checkpoint": "outputs/groundjev/training/onejev_teacher_check_100/final"
+    },
+    {
+      "name": "rmot_single8_sft500",
+      "manifest": "outputs/groundjev/multitask_pilot_data/rmot_single_empty.json",
+      "candidates": "outputs/groundjev/multitask_runs/rmot_single_empty_pretrained_v1/frame_decisions.jsonl",
+      "backend": "full",
+      "checkpoint": "outputs/groundjev/training/onejev_own_history_v3_exact500_replay_stateful/ckpt-step500"
+    },
+    {
+      "name": "rmot_multi12_simple",
+      "manifest": "outputs/groundjev/multitask_pilot_data/rmot_multi_empty.json",
+      "candidates": "outputs/groundjev/multitask_runs/pretrained_v1_registered_v1/rmot_multi_empty/full/frame_decisions.jsonl",
+      "backend": "simple",
+      "checkpoint": "models/OneJev-0.8B"
+    },
+    {
+      "name": "rmot_multi12_pretrained",
+      "manifest": "outputs/groundjev/multitask_pilot_data/rmot_multi_empty.json",
+      "candidates": "outputs/groundjev/multitask_runs/pretrained_v1_registered_v1/rmot_multi_empty/full/frame_decisions.jsonl",
+      "backend": "full",
+      "checkpoint": "models/OneJev-0.8B"
+    },
+    {
+      "name": "rmot_multi12_init100",
+      "manifest": "outputs/groundjev/multitask_pilot_data/rmot_multi_empty.json",
+      "candidates": "outputs/groundjev/multitask_runs/pretrained_v1_registered_v1/rmot_multi_empty/full/frame_decisions.jsonl",
+      "backend": "full",
+      "checkpoint": "outputs/groundjev/training/onejev_teacher_check_100/final"
+    },
+    {
+      "name": "rmot_multi12_sft500",
+      "manifest": "outputs/groundjev/multitask_pilot_data/rmot_multi_empty.json",
+      "candidates": "outputs/groundjev/multitask_runs/pretrained_v1_registered_v1/rmot_multi_empty/full/frame_decisions.jsonl",
+      "backend": "full",
+      "checkpoint": "outputs/groundjev/training/onejev_own_history_v3_exact500_replay_stateful/ckpt-step500"
+    },
+    {
+      "name": "tao_base4_simple",
+      "manifest": "outputs/groundjev/multitask_pilot_data/ovmot_tao_first4.json",
+      "candidates": "outputs/groundjev/multitask_candidate_controls/tao_scored_queries_v1/frame_candidates.jsonl",
+      "backend": "simple",
+      "checkpoint": "models/OneJev-0.8B"
+    },
+    {
+      "name": "tao_base4_pretrained",
+      "manifest": "outputs/groundjev/multitask_pilot_data/ovmot_tao_first4.json",
+      "candidates": "outputs/groundjev/multitask_candidate_controls/tao_scored_queries_v1/frame_candidates.jsonl",
+      "backend": "full",
+      "checkpoint": "models/OneJev-0.8B"
+    },
+    {
+      "name": "tao_base4_init100",
+      "manifest": "outputs/groundjev/multitask_pilot_data/ovmot_tao_first4.json",
+      "candidates": "outputs/groundjev/multitask_candidate_controls/tao_scored_queries_v1/frame_candidates.jsonl",
+      "backend": "full",
+      "checkpoint": "outputs/groundjev/training/onejev_teacher_check_100/final"
+    },
+    {
+      "name": "tao_base4_sft500",
+      "manifest": "outputs/groundjev/multitask_pilot_data/ovmot_tao_first4.json",
+      "candidates": "outputs/groundjev/multitask_candidate_controls/tao_scored_queries_v1/frame_candidates.jsonl",
+      "backend": "full",
+      "checkpoint": "outputs/groundjev/training/onejev_own_history_v3_exact500_replay_stateful/ckpt-step500"
+    }
+  ],
+  "same_all_task_core_checkpoint_and_persistent_identity_memory": true,
+  "same_per_scope_native_proposals_frames_GT_parser_and_global_matching": true,
+  "OneJev_evidence": "v3_crop_motion matching original500curriculum, adaptive native preflight grouping preserves every candidate/identity option",
+  "full_OneJev_weights_initialized_from_real_pretrained100": true,
+  "scope": "matched MOT4/RMOTsingle8/RMOTmulti12/TAOBase4 functional controls; completeDanceTrack before/after follows based on outputs",
+  "Novel_coverage": "this registeredTAOclip has onlyBaseGT; Novel remains null",
+  "timing": "association replay includes nativeOne/crops/memory but excludes frozen detector; no E2Eclaim",
+  "no_training_restart_or_math_seed_scope_change": true,
+  "maximum_project_GPUs": 4,
+  "peak_feature_cache_budget_bytes": 26843545600
+}

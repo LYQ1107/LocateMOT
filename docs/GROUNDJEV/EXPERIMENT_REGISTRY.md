@@ -3,11 +3,11 @@
 | Experiment | Status | Checkpoint / scope |
 |---|---|---|
 | B0 old U2 | perception results preserved; no trained tracker | epoch-1 1d9077ae… |
-| B1 GroundAnything + Simple | four-frame official result; full video pending | same legal candidates as Full |
+| B1 GroundAnything + Simple | complete1203frame controls validated | V1HOTA8.530%; freshV3HOTA8.257%, each its own exact Full candidates |
 | B2 GroundAnything + U2 Core | pending; no fabricated trained checkpoint | reused architecture explicitly labeled |
-| B3 GroundAnything + pretrained OneJev Full | four-frame native result; full DanceTrack video running | OmniJev/OneJev-0.8B |
-| B4 tracking-SFT OneJev | 100-step valid reload; negative same-candidate metrics; own-history500-step running | GT-proposal curriculum; actual DLM rollout pending |
-| B5 distilled Compact | pending teacher/GT data | matched-capacity controls required |
+| B3 GroundAnything + pretrained OneJev Full | complete1203frame nativeV3 validated; HOTA2.389%, actual E2EFPS.118560 | real originalOneJev, singlevideo/seed, concurrent workloads |
+| B4 tracking-SFT OneJev | actual100step reload/negative matched controls; formal500 replay running, completion-controls owner waits exact trainer | actual48frame DLM rollout/5661rows prepared, not yet used in500 |
+| B5 distilled Compact | three matched300step controls/full1203video complete; semantic joint1200 and matched broad-fit interventions complete | matched SetGT/MLP/soft-distilled; short RMOT transfer remains poor, TAOBase-only |
 
 Every run records date/commit, devices, split, checkpoints, steps/loss,
 official metrics, full FPS, peak memory, failures and next action. Empty
@@ -457,3 +457,27 @@ and resumes frame21, without dropping it. Original OneJev500/Ground/freshV3
 and foreign UDMT remain untouched. Full metrics are pending its terminal
 owner. First model frame latency includes ROI RPC; later controls read fixed
 ROIs, so do not claim a direct comparable speed ranking across those latencies.
+
+## Formal native Ground adaptations and current strict sampling controls
+
+Native200complete checkpoint chain and120additional real-absence updates are
+validated (200+120native320). Complete569tensor models preserve non-projector
+weights; all failures remain. Shared-service short scores are descriptive:
+original200: MOT75.250->84.553%; RMOT26.866->25.277/24.780->23.959%.
+Fresh200/320: MOT83.737/83.402%; RMOT18.406/20.046 and23.496/24.817%.
+Absence outputs unchanged7/3; no successful absence remedy established.
+
+The original native RNG adds monotonic request_index to sampling_seed42;
+shared full9services consume unrelated calls and do not pair effective seeds.
+Strictisolated96plan resets native services percheckpoint with identical24call
+order: original/200/200repeat/320. Require identical repeated200raw outputs,
+candidates and predictions. Firstoriginal24unit is complete; transient port
+reuse failure preserved, v2waits TCPport release and reuses only that complete
+unit. No source/metric/seed/GT edits; full9baseline/adapted200 owners untouched.
+
+One500 completion-controls plan will verify actual nativeMMreload and fourway
+Simple/pretrained/init100/500 with exact native proposals acrossMOT4/RMO8/
+RMO12/TAOBase4. It reusesGPU4 after existingtrainerexit without restarting it.
+Complete500video comparison, actual-native-proposal SFT, Novel-diverse/fulltask
+scopes, long-memory evidence/update ablations and fair complete speed/resource
+comparisons remain required; no final research completion is asserted.

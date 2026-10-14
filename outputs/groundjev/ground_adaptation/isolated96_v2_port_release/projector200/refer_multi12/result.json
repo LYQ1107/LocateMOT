@@ -1,0 +1,73 @@
+{
+  "status": "VIDEO_INFERENCE_COMPLETE",
+  "task": "rmot",
+  "backend": "simple",
+  "evidence_format": "v1",
+  "native_feature_url": null,
+  "adaptive_context_groups": false,
+  "category_policy": "native_label",
+  "scope": "registered_short_functional_clip",
+  "video_manifest": "outputs/groundjev/multitask_pilot_data/rmot_multi_empty.json",
+  "frames": 12,
+  "latencies_seconds": [
+    1.0882406170130707,
+    0.6967517900047824,
+    0.6758132050163113,
+    0.7101618270389736,
+    0.7988078610505909,
+    0.7340519489953294,
+    0.795968406018801,
+    1.2388165480224416,
+    0.7102997199981473,
+    0.9547112740110606,
+    0.7333754649735056,
+    0.8055653760093264
+  ],
+  "grounding_parser_policy": "official_scoring",
+  "grounding_decoder_policy": "tracking_dense",
+  "grounding_vocabulary_chunk_size": null,
+  "specification": {
+    "task": "rmot",
+    "vocabulary": [
+      "person",
+      "car"
+    ],
+    "expression": "arranging automobiles"
+  },
+  "timestamp_policy": "KITTI 10 Hz frame clock; source zero-based frame numbers retained",
+  "perception_failure_policy": "empty_and_record",
+  "perception_rejected_frames": [],
+  "perception_rejection_rate": 0.0,
+  "strict_wire_invalid_frames": [
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    40,
+    41,
+    42,
+    43
+  ],
+  "all_input_frames_processed": true,
+  "end_to_end_fps": 1.1165470423060704,
+  "complete_video_wall_seconds": 10.74741998797981,
+  "model_initialization_seconds": 0.05418038001516834,
+  "timing_scope": "all image reads, native requests including service queueing, association, memory persistence, prediction/log writes, drawing, video encoding and encoder completion; preloaded remote DLM server startup excluded",
+  "successful_frame_pipeline_fps": 1.2069321307816288,
+  "association_replay_fps": null,
+  "resume_source": null,
+  "resumed_completed_frames": 0,
+  "timing_limitations": null,
+  "official_metrics": {
+    "status": "COMPLETE",
+    "path": "outputs/groundjev/ground_adaptation/isolated96_v2_port_release/projector200/refer_multi12/official_metrics.json",
+    "scope": "registered_short_functional_clip"
+  },
+  "checkpoint": null,
+  "motchallenge_confidence_column": "constant unscored-output sentinel; native detection score is absent",
+  "gt_read_by_runtime": false,
+  "future_frames_read_by_runtime": false
+}

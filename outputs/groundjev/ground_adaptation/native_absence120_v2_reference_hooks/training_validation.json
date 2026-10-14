@@ -1,0 +1,11 @@
+{
+  "status": "ADDITIONAL120_NATIVE_UPDATES_VALIDATED",
+  "steps": 120,
+  "initial_projector_steps": 200,
+  "all76pairs_visited": true,
+  "actual_absent_pairs": 20,
+  "actual_absent_rows": 40,
+  "finite_loss_and_gradient_logs": true,
+  "checkpoint_reload_max_difference": 0.0,
+  "retention_gain_claim": false
+}

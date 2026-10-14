@@ -226,3 +226,32 @@ and resumes frame21, without dropping it. Original OneJev500/Ground/freshV3
 and foreign UDMT remain untouched. Full metrics are pending its terminal
 owner. First model frame latency includes ROI RPC; later controls read fixed
 ROIs, so do not claim a direct comparable speed ranking across those latencies.
+
+## 2026-10-14 native Ground200 plus explicit absence120
+
+Original27,267,584projector parameters FP32; frozen real native vision/language.
+OfficialMDM.5/causal.5 plus .1GTidentity/.1actualdecoded-proposal identity losses,
+seed42/lr2e-6/200steps;112rows/56pairs/all72images. Exact200checkpoint chain,
+changedFP32/BF16 and reload0 validated; repeatedCUDAillegalaccess attempts
+preserved, rootcause not established. Separate nativeTorch2.10cu128/TF5.7/
+Triton3.6 runtime, concrete shapes and synchronized native operator documented.
+
+Additional120stage from exactFP32 projector200, explicitAdamWreset/lr1e-6,
+retains112rows and adds40realfit absences (152rows/76pairs); all76pairs and40
+negatives receive actual training. First-layer native attention forward/QKV
+reference checks for dense/positive/absent pass unchangedcriteria after
+isolating detached diagnostic checkpoint hooks.120finite updates, exactreload0,
+27,266,797FP32/8,256,449BF16changes relative200; peak18,414,616,064bytes.
+Native320bundle569tensors/fiveprojector replacements; original models retained.
+
+Shared-service48frame before/after gains/regressions do not pair effective
+native seeds becauserequest_index enters originalsampling. Real metrics remain;
+no causalimprovement assertion. Strictorderedfresh-service original/200/repeat/
+320 control is running, with incompleteportunit failure retained and valid
+original24frames reused. Fulloriginal9retention is still pending. Real absence
+correction and successful unified tracking are not established by trainingloss.
+
+OriginalOne500statefulreplay continues unchanged; latestpublished observation
+300/500, fullFP32/Adam/scheduler/allRNG/cursor state available. A finite verified
+completion owner waits the actual trainer, checks500nativeMMreload then runs
+matchedthree-task controls. It does not restart or alter the training recipe.
