@@ -501,3 +501,27 @@ maximum26028tokens/cap32768, zero droppedrows, PLAN_OK. Bothdomains have
 identicaltyped-question eligibilitycounts; no nativeunique row omitted. Actual
 newstage training remains pending500completion/controlreview. Full375FP32
 initialization probe is numericalcorrectness evidence, not a newtracking gain.
+
+## 2026-10-15: native full9 CUDA failure and synchronized resumption
+
+The adapted200 queue32 evaluation terminated after the native scheduler reported
+CUDA unspecified launch failure at 2026-10-15 00:04:41. Subsequent client
+APIConnectionError failures are downstream; the asynchronous trace does not
+establish the failing CUDA kernel. No complete task metric is claimed from
+this failed attempt. All response SQLite caches and failure logs are retained.
+
+The separate trackproj200_dense_ref9_v3_sync owner is confirmed live through
+its existing blocking session. It resumes all nine unfinished tasks from the
+latest valid response caches on GPU6 with task-local CUDA_LAUNCH_BLOCKING=1.
+The checkpoint, native operators, scorer, data, task limits and seed are
+unchanged; this is a diagnostic recovery, with no GPU reset or claim of exact
+stochastic request-counter continuation. The original full9 GPU7 owner
+continues independently; its parent may eventually report the earlier adapted
+child failure, so that parent must not be used to restart the original task.
+
+OneJev500 last observed progress is 450/500, with original training protocol
+unchanged. The prepared matched additional200 study has not been launched.
+TAO Base/Novel63 v2 remains live on GPU5 after the explicit None expression
+argument repair; its metrics are pending. Six full1203 memory interventions,
+all predictions and the comparison figure were published and remote-tree
+verified in commit 085125569af96d47b89f2fd269c6501f02b0b28f.

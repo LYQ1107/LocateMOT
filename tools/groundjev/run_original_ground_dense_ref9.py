@@ -26,6 +26,7 @@ def main():
     parser.add_argument('--recipe',default='configs/eval/groundjev_original_dense_ref9.local.yaml')
     parser.add_argument('--max-queued-requests',type=int,default=32)
     parser.add_argument('--resume-result-root',type=Path)
+    parser.add_argument('--debug-kernel-sync',action='store_true')
     args=parser.parse_args();out = args.out
     out.mkdir(parents=True, exist_ok=False)
     recipe=json.loads((SOURCE/args.recipe).read_text())
@@ -43,6 +44,7 @@ def main():
         'execution_rendezvous_base_port':recipe['base_port']}
     state['max_queued_requests'] = args.max_queued_requests
     state['resume_result_root'] = str(args.resume_result_root) if args.resume_result_root else None
+    state['task_local_CUDA_LAUNCH_BLOCKING'] = args.debug_kernel_sync
     def save():
         (out/'owner_state.json').write_text(json.dumps(state, indent=2)+'\n')
         print(json.dumps(state), flush=True)
@@ -51,12 +53,14 @@ def main():
         with socket.socket() as probe:
             probe.bind(('127.0.0.1', args.port))
         with (out/'server.log').open('w') as log:
+            service_env=os.environ.copy()
+            if args.debug_kernel_sync:service_env['CUDA_LAUNCH_BLOCKING']='1'
             server = subprocess.Popen(['python3', 'tools/groundjev/run_with_resources.py', '--gpus', str(args.gpu), '--',
                 str(SOURCE/'.venv-serve/bin/python'), 'tools/groundjev/serve_groundanything.py', '--port', str(args.port),
                 '--model',str(args.model),
                 '--max-queued-requests',str(args.max_queued_requests),
                 '--mem-fraction-static', '.4', '--out', str(out/'service')], cwd=ROOT,
-                stdout=log, stderr=subprocess.STDOUT, start_new_session=True)
+                stdout=log, stderr=subprocess.STDOUT, start_new_session=True,env=service_env)
             state.update(status='WAITING_OWNED_ORIGINAL_GROUND_SERVICE', owned_server_process_group=server.pid); save()
             deadline = time.monotonic()+600
             while True:

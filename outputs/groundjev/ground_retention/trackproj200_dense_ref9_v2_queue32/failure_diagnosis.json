@@ -1,0 +1,10 @@
+{
+  "status": "ADAPTED_NATIVE_FULL9_FAILED_AFTER_GPU_SCHEDULER_ERROR",
+  "first_actionable_trace": "nativeModelRunner._forward_raw synchronization: CUDA unspecified launch failure at2026-10-15 00:04:41; APIConnectionError is downstream",
+  "root_cause_of_launch_failure": "not established from asynchronous trace",
+  "no_completed_task_metric_claim": true,
+  "partial_response_SQLite_caches_and_original_failure_logs_preserved": true,
+  "next_action": "same model/data/scorers/limits/seed/base/nativeoperator and boundedqueue32, freshGPU6context, tasklocalCUDA_LAUNCH_BLOCKING1, resumeallunfinished9 fromlatestpartialcache",
+  "exact_stochastic_counter_continuation_claim": false,
+  "GPUreset_or_other_project_mutation": false
+}
