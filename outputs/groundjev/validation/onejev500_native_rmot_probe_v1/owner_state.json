@@ -1,0 +1,11 @@
+{
+  "status": "WAITING_ORIGINAL500_MATCHED_CONTROLLER",
+  "owner_pid": 1489923,
+  "controller_pid": 1209639,
+  "controller_start_ticks": "36491025",
+  "physical_GPU_after_controller_exit": 4,
+  "new_training_started": false,
+  "probe_scope": "first4 real registered RMOT frames, functional native Noul check only",
+  "GT_used": false,
+  "benchmark_accuracy_or_E2E_claim": false
+}

@@ -1,0 +1,792 @@
+{
+  "status": "REGISTERED_BASE_NATIVE_CATEGORY_QUESTION_SUPERVISION_COMPLETE",
+  "counts": {
+    "category_group": 215,
+    "category_leaf": 215,
+    "Base_objects": 215
+  },
+  "rows": 430,
+  "registered_frames": [
+    {
+      "scope": "tao_train_0",
+      "task": "ovmot",
+      "frame": 391,
+      "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_f69ebe5b731d3e87c1a3992ee39c3b7e/frame0391.jpg",
+      "teacher_GT_regions": 6
+    },
+    {
+      "scope": "tao_train_0",
+      "task": "ovmot",
+      "frame": 421,
+      "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_f69ebe5b731d3e87c1a3992ee39c3b7e/frame0421.jpg",
+      "teacher_GT_regions": 2
+    },
+    {
+      "scope": "tao_train_0",
+      "task": "ovmot",
+      "frame": 451,
+      "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_f69ebe5b731d3e87c1a3992ee39c3b7e/frame0451.jpg",
+      "teacher_GT_regions": 2
+    },
+    {
+      "scope": "tao_train_0",
+      "task": "ovmot",
+      "frame": 481,
+      "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_f69ebe5b731d3e87c1a3992ee39c3b7e/frame0481.jpg",
+      "teacher_GT_regions": 2
+    },
+    {
+      "scope": "tao_train_0",
+      "task": "ovmot",
+      "frame": 511,
+      "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_f69ebe5b731d3e87c1a3992ee39c3b7e/frame0511.jpg",
+      "teacher_GT_regions": 2
+    },
+    {
+      "scope": "tao_train_0",
+      "task": "ovmot",
+      "frame": 541,
+      "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_f69ebe5b731d3e87c1a3992ee39c3b7e/frame0541.jpg",
+      "teacher_GT_regions": 3
+    },
+    {
+      "scope": "tao_train_0",
+      "task": "ovmot",
+      "frame": 571,
+      "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_f69ebe5b731d3e87c1a3992ee39c3b7e/frame0571.jpg",
+      "teacher_GT_regions": 4
+    },
+    {
+      "scope": "tao_train_0",
+      "task": "ovmot",
+      "frame": 601,
+      "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_f69ebe5b731d3e87c1a3992ee39c3b7e/frame0601.jpg",
+      "teacher_GT_regions": 4
+    },
+    {
+      "scope": "tao_train_1",
+      "task": "ovmot",
+      "frame": 151,
+      "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_8b6283255797fc7e94f3a93947a2803/frame0151.jpg",
+      "teacher_GT_regions": 3
+    },
+    {
+      "scope": "tao_train_1",
+      "task": "ovmot",
+      "frame": 181,
+      "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_8b6283255797fc7e94f3a93947a2803/frame0181.jpg",
+      "teacher_GT_regions": 3
+    },
+    {
+      "scope": "tao_train_1",
+      "task": "ovmot",
+      "frame": 211,
+      "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_8b6283255797fc7e94f3a93947a2803/frame0211.jpg",
+      "teacher_GT_regions": 3
+    },
+    {
+      "scope": "tao_train_1",
+      "task": "ovmot",
+      "frame": 241,
+      "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_8b6283255797fc7e94f3a93947a2803/frame0241.jpg",
+      "teacher_GT_regions": 3
+    },
+    {
+      "scope": "tao_train_1",
+      "task": "ovmot",
+      "frame": 271,
+      "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_8b6283255797fc7e94f3a93947a2803/frame0271.jpg",
+      "teacher_GT_regions": 3
+    },
+    {
+      "scope": "tao_train_1",
+      "task": "ovmot",
+      "frame": 301,
+      "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_8b6283255797fc7e94f3a93947a2803/frame0301.jpg",
+      "teacher_GT_regions": 3
+    },
+    {
+      "scope": "tao_train_1",
+      "task": "ovmot",
+      "frame": 331,
+      "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_8b6283255797fc7e94f3a93947a2803/frame0331.jpg",
+      "teacher_GT_regions": 3
+    },
+    {
+      "scope": "tao_train_1",
+      "task": "ovmot",
+      "frame": 361,
+      "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_8b6283255797fc7e94f3a93947a2803/frame0361.jpg",
+      "teacher_GT_regions": 3
+    },
+    {
+      "scope": "tao_train_7",
+      "task": "ovmot",
+      "frame": 1,
+      "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_a556a65c3a85d0de0717b8cef2f219c/frame0001.jpg",
+      "teacher_GT_regions": 6
+    },
+    {
+      "scope": "tao_train_7",
+      "task": "ovmot",
+      "frame": 31,
+      "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_a556a65c3a85d0de0717b8cef2f219c/frame0031.jpg",
+      "teacher_GT_regions": 6
+    },
+    {
+      "scope": "tao_train_7",
+      "task": "ovmot",
+      "frame": 61,
+      "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_a556a65c3a85d0de0717b8cef2f219c/frame0061.jpg",
+      "teacher_GT_regions": 6
+    },
+    {
+      "scope": "tao_train_7",
+      "task": "ovmot",
+      "frame": 91,
+      "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_a556a65c3a85d0de0717b8cef2f219c/frame0091.jpg",
+      "teacher_GT_regions": 6
+    },
+    {
+      "scope": "tao_train_7",
+      "task": "ovmot",
+      "frame": 121,
+      "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_a556a65c3a85d0de0717b8cef2f219c/frame0121.jpg",
+      "teacher_GT_regions": 4
+    },
+    {
+      "scope": "tao_train_7",
+      "task": "ovmot",
+      "frame": 151,
+      "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_a556a65c3a85d0de0717b8cef2f219c/frame0151.jpg",
+      "teacher_GT_regions": 3
+    },
+    {
+      "scope": "tao_train_7",
+      "task": "ovmot",
+      "frame": 181,
+      "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_a556a65c3a85d0de0717b8cef2f219c/frame0181.jpg",
+      "teacher_GT_regions": 3
+    },
+    {
+      "scope": "tao_train_7",
+      "task": "ovmot",
+      "frame": 211,
+      "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_a556a65c3a85d0de0717b8cef2f219c/frame0211.jpg",
+      "teacher_GT_regions": 3
+    },
+    {
+      "scope": "tao_train_9",
+      "task": "ovmot",
+      "frame": 121,
+      "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_6f90a13c795ef37404d95983341df/frame0121.jpg",
+      "teacher_GT_regions": 4
+    },
+    {
+      "scope": "tao_train_9",
+      "task": "ovmot",
+      "frame": 151,
+      "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_6f90a13c795ef37404d95983341df/frame0151.jpg",
+      "teacher_GT_regions": 3
+    },
+    {
+      "scope": "tao_train_9",
+      "task": "ovmot",
+      "frame": 181,
+      "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_6f90a13c795ef37404d95983341df/frame0181.jpg",
+      "teacher_GT_regions": 3
+    },
+    {
+      "scope": "tao_train_9",
+      "task": "ovmot",
+      "frame": 211,
+      "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_6f90a13c795ef37404d95983341df/frame0211.jpg",
+      "teacher_GT_regions": 4
+    },
+    {
+      "scope": "tao_train_9",
+      "task": "ovmot",
+      "frame": 241,
+      "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_6f90a13c795ef37404d95983341df/frame0241.jpg",
+      "teacher_GT_regions": 5
+    },
+    {
+      "scope": "tao_train_9",
+      "task": "ovmot",
+      "frame": 271,
+      "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_6f90a13c795ef37404d95983341df/frame0271.jpg",
+      "teacher_GT_regions": 4
+    },
+    {
+      "scope": "tao_train_9",
+      "task": "ovmot",
+      "frame": 301,
+      "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_6f90a13c795ef37404d95983341df/frame0301.jpg",
+      "teacher_GT_regions": 3
+    },
+    {
+      "scope": "tao_train_9",
+      "task": "ovmot",
+      "frame": 331,
+      "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_6f90a13c795ef37404d95983341df/frame0331.jpg",
+      "teacher_GT_regions": 1
+    },
+    {
+      "scope": "tao_train_13",
+      "task": "ovmot",
+      "frame": 1,
+      "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_5b8014f2ebc4628f33a9dcc2d1fbc3b/frame0001.jpg",
+      "teacher_GT_regions": 3
+    },
+    {
+      "scope": "tao_train_13",
+      "task": "ovmot",
+      "frame": 31,
+      "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_5b8014f2ebc4628f33a9dcc2d1fbc3b/frame0031.jpg",
+      "teacher_GT_regions": 3
+    },
+    {
+      "scope": "tao_train_13",
+      "task": "ovmot",
+      "frame": 61,
+      "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_5b8014f2ebc4628f33a9dcc2d1fbc3b/frame0061.jpg",
+      "teacher_GT_regions": 3
+    },
+    {
+      "scope": "tao_train_13",
+      "task": "ovmot",
+      "frame": 91,
+      "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_5b8014f2ebc4628f33a9dcc2d1fbc3b/frame0091.jpg",
+      "teacher_GT_regions": 4
+    },
+    {
+      "scope": "tao_train_13",
+      "task": "ovmot",
+      "frame": 121,
+      "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_5b8014f2ebc4628f33a9dcc2d1fbc3b/frame0121.jpg",
+      "teacher_GT_regions": 4
+    },
+    {
+      "scope": "tao_train_13",
+      "task": "ovmot",
+      "frame": 151,
+      "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_5b8014f2ebc4628f33a9dcc2d1fbc3b/frame0151.jpg",
+      "teacher_GT_regions": 4
+    },
+    {
+      "scope": "tao_train_13",
+      "task": "ovmot",
+      "frame": 181,
+      "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_5b8014f2ebc4628f33a9dcc2d1fbc3b/frame0181.jpg",
+      "teacher_GT_regions": 4
+    },
+    {
+      "scope": "tao_train_13",
+      "task": "ovmot",
+      "frame": 211,
+      "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_5b8014f2ebc4628f33a9dcc2d1fbc3b/frame0211.jpg",
+      "teacher_GT_regions": 4
+    },
+    {
+      "scope": "tao_train_16",
+      "task": "ovmot",
+      "frame": 541,
+      "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_6f26504bb5244ddd4469376ecc9d29d/frame0541.jpg",
+      "teacher_GT_regions": 0
+    },
+    {
+      "scope": "tao_train_16",
+      "task": "ovmot",
+      "frame": 571,
+      "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_6f26504bb5244ddd4469376ecc9d29d/frame0571.jpg",
+      "teacher_GT_regions": 1
+    },
+    {
+      "scope": "tao_train_16",
+      "task": "ovmot",
+      "frame": 601,
+      "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_6f26504bb5244ddd4469376ecc9d29d/frame0601.jpg",
+      "teacher_GT_regions": 2
+    },
+    {
+      "scope": "tao_train_16",
+      "task": "ovmot",
+      "frame": 631,
+      "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_6f26504bb5244ddd4469376ecc9d29d/frame0631.jpg",
+      "teacher_GT_regions": 2
+    },
+    {
+      "scope": "tao_train_16",
+      "task": "ovmot",
+      "frame": 661,
+      "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_6f26504bb5244ddd4469376ecc9d29d/frame0661.jpg",
+      "teacher_GT_regions": 2
+    },
+    {
+      "scope": "tao_train_16",
+      "task": "ovmot",
+      "frame": 691,
+      "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_6f26504bb5244ddd4469376ecc9d29d/frame0691.jpg",
+      "teacher_GT_regions": 2
+    },
+    {
+      "scope": "tao_train_16",
+      "task": "ovmot",
+      "frame": 721,
+      "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_6f26504bb5244ddd4469376ecc9d29d/frame0721.jpg",
+      "teacher_GT_regions": 1
+    },
+    {
+      "scope": "tao_train_16",
+      "task": "ovmot",
+      "frame": 751,
+      "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_6f26504bb5244ddd4469376ecc9d29d/frame0751.jpg",
+      "teacher_GT_regions": 1
+    },
+    {
+      "scope": "tao_train_38",
+      "task": "ovmot",
+      "frame": 1,
+      "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_f1a914ab56b365013c9101083423370/frame0001.jpg",
+      "teacher_GT_regions": 4
+    },
+    {
+      "scope": "tao_train_38",
+      "task": "ovmot",
+      "frame": 31,
+      "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_f1a914ab56b365013c9101083423370/frame0031.jpg",
+      "teacher_GT_regions": 3
+    },
+    {
+      "scope": "tao_train_38",
+      "task": "ovmot",
+      "frame": 61,
+      "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_f1a914ab56b365013c9101083423370/frame0061.jpg",
+      "teacher_GT_regions": 2
+    },
+    {
+      "scope": "tao_train_38",
+      "task": "ovmot",
+      "frame": 91,
+      "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_f1a914ab56b365013c9101083423370/frame0091.jpg",
+      "teacher_GT_regions": 2
+    },
+    {
+      "scope": "tao_train_38",
+      "task": "ovmot",
+      "frame": 121,
+      "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_f1a914ab56b365013c9101083423370/frame0121.jpg",
+      "teacher_GT_regions": 2
+    },
+    {
+      "scope": "tao_train_38",
+      "task": "ovmot",
+      "frame": 151,
+      "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_f1a914ab56b365013c9101083423370/frame0151.jpg",
+      "teacher_GT_regions": 2
+    },
+    {
+      "scope": "tao_train_38",
+      "task": "ovmot",
+      "frame": 181,
+      "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_f1a914ab56b365013c9101083423370/frame0181.jpg",
+      "teacher_GT_regions": 1
+    },
+    {
+      "scope": "tao_train_38",
+      "task": "ovmot",
+      "frame": 211,
+      "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_f1a914ab56b365013c9101083423370/frame0211.jpg",
+      "teacher_GT_regions": 0
+    },
+    {
+      "scope": "tao_train_47",
+      "task": "ovmot",
+      "frame": 601,
+      "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_8794cde67aad8552ecfc59bb6fbe72d/frame0601.jpg",
+      "teacher_GT_regions": 5
+    },
+    {
+      "scope": "tao_train_47",
+      "task": "ovmot",
+      "frame": 631,
+      "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_8794cde67aad8552ecfc59bb6fbe72d/frame0631.jpg",
+      "teacher_GT_regions": 5
+    },
+    {
+      "scope": "tao_train_47",
+      "task": "ovmot",
+      "frame": 661,
+      "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_8794cde67aad8552ecfc59bb6fbe72d/frame0661.jpg",
+      "teacher_GT_regions": 5
+    },
+    {
+      "scope": "tao_train_47",
+      "task": "ovmot",
+      "frame": 691,
+      "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_8794cde67aad8552ecfc59bb6fbe72d/frame0691.jpg",
+      "teacher_GT_regions": 5
+    },
+    {
+      "scope": "tao_train_47",
+      "task": "ovmot",
+      "frame": 721,
+      "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_8794cde67aad8552ecfc59bb6fbe72d/frame0721.jpg",
+      "teacher_GT_regions": 6
+    },
+    {
+      "scope": "tao_train_47",
+      "task": "ovmot",
+      "frame": 751,
+      "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_8794cde67aad8552ecfc59bb6fbe72d/frame0751.jpg",
+      "teacher_GT_regions": 7
+    },
+    {
+      "scope": "tao_train_47",
+      "task": "ovmot",
+      "frame": 781,
+      "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_8794cde67aad8552ecfc59bb6fbe72d/frame0781.jpg",
+      "teacher_GT_regions": 7
+    },
+    {
+      "scope": "tao_train_47",
+      "task": "ovmot",
+      "frame": 811,
+      "image_path": "/data2/user/LocateMOT/data/TAO-Amodal/frames/train/YFCC100M/v_8794cde67aad8552ecfc59bb6fbe72d/frame0811.jpg",
+      "teacher_GT_regions": 6
+    }
+  ],
+  "source_groups": [
+    {
+      "source_group": "tao_train_0_391_0",
+      "offset": 0,
+      "objects": 6
+    },
+    {
+      "source_group": "tao_train_0_421_0",
+      "offset": 0,
+      "objects": 2
+    },
+    {
+      "source_group": "tao_train_0_451_0",
+      "offset": 0,
+      "objects": 2
+    },
+    {
+      "source_group": "tao_train_0_481_0",
+      "offset": 0,
+      "objects": 2
+    },
+    {
+      "source_group": "tao_train_0_511_0",
+      "offset": 0,
+      "objects": 2
+    },
+    {
+      "source_group": "tao_train_0_541_0",
+      "offset": 0,
+      "objects": 3
+    },
+    {
+      "source_group": "tao_train_0_571_0",
+      "offset": 0,
+      "objects": 4
+    },
+    {
+      "source_group": "tao_train_0_601_0",
+      "offset": 0,
+      "objects": 4
+    },
+    {
+      "source_group": "tao_train_1_151_0",
+      "offset": 0,
+      "objects": 3
+    },
+    {
+      "source_group": "tao_train_1_181_0",
+      "offset": 0,
+      "objects": 3
+    },
+    {
+      "source_group": "tao_train_1_211_0",
+      "offset": 0,
+      "objects": 3
+    },
+    {
+      "source_group": "tao_train_1_241_0",
+      "offset": 0,
+      "objects": 3
+    },
+    {
+      "source_group": "tao_train_1_271_0",
+      "offset": 0,
+      "objects": 3
+    },
+    {
+      "source_group": "tao_train_1_301_0",
+      "offset": 0,
+      "objects": 3
+    },
+    {
+      "source_group": "tao_train_1_331_0",
+      "offset": 0,
+      "objects": 3
+    },
+    {
+      "source_group": "tao_train_1_361_0",
+      "offset": 0,
+      "objects": 3
+    },
+    {
+      "source_group": "tao_train_7_1_0",
+      "offset": 0,
+      "objects": 6
+    },
+    {
+      "source_group": "tao_train_7_31_0",
+      "offset": 0,
+      "objects": 6
+    },
+    {
+      "source_group": "tao_train_7_61_0",
+      "offset": 0,
+      "objects": 6
+    },
+    {
+      "source_group": "tao_train_7_91_0",
+      "offset": 0,
+      "objects": 6
+    },
+    {
+      "source_group": "tao_train_7_121_0",
+      "offset": 0,
+      "objects": 4
+    },
+    {
+      "source_group": "tao_train_7_151_0",
+      "offset": 0,
+      "objects": 3
+    },
+    {
+      "source_group": "tao_train_7_181_0",
+      "offset": 0,
+      "objects": 3
+    },
+    {
+      "source_group": "tao_train_7_211_0",
+      "offset": 0,
+      "objects": 3
+    },
+    {
+      "source_group": "tao_train_9_121_0",
+      "offset": 0,
+      "objects": 4
+    },
+    {
+      "source_group": "tao_train_9_151_0",
+      "offset": 0,
+      "objects": 3
+    },
+    {
+      "source_group": "tao_train_9_181_0",
+      "offset": 0,
+      "objects": 3
+    },
+    {
+      "source_group": "tao_train_9_211_0",
+      "offset": 0,
+      "objects": 4
+    },
+    {
+      "source_group": "tao_train_9_241_0",
+      "offset": 0,
+      "objects": 5
+    },
+    {
+      "source_group": "tao_train_9_271_0",
+      "offset": 0,
+      "objects": 4
+    },
+    {
+      "source_group": "tao_train_9_301_0",
+      "offset": 0,
+      "objects": 3
+    },
+    {
+      "source_group": "tao_train_9_331_0",
+      "offset": 0,
+      "objects": 1
+    },
+    {
+      "source_group": "tao_train_13_1_0",
+      "offset": 0,
+      "objects": 3
+    },
+    {
+      "source_group": "tao_train_13_31_0",
+      "offset": 0,
+      "objects": 3
+    },
+    {
+      "source_group": "tao_train_13_61_0",
+      "offset": 0,
+      "objects": 3
+    },
+    {
+      "source_group": "tao_train_13_91_0",
+      "offset": 0,
+      "objects": 4
+    },
+    {
+      "source_group": "tao_train_13_121_0",
+      "offset": 0,
+      "objects": 4
+    },
+    {
+      "source_group": "tao_train_13_151_0",
+      "offset": 0,
+      "objects": 4
+    },
+    {
+      "source_group": "tao_train_13_181_0",
+      "offset": 0,
+      "objects": 4
+    },
+    {
+      "source_group": "tao_train_13_211_0",
+      "offset": 0,
+      "objects": 4
+    },
+    {
+      "source_group": "tao_train_16_571_0",
+      "offset": 0,
+      "objects": 1
+    },
+    {
+      "source_group": "tao_train_16_601_0",
+      "offset": 0,
+      "objects": 2
+    },
+    {
+      "source_group": "tao_train_16_631_0",
+      "offset": 0,
+      "objects": 2
+    },
+    {
+      "source_group": "tao_train_16_661_0",
+      "offset": 0,
+      "objects": 2
+    },
+    {
+      "source_group": "tao_train_16_691_0",
+      "offset": 0,
+      "objects": 2
+    },
+    {
+      "source_group": "tao_train_16_721_0",
+      "offset": 0,
+      "objects": 1
+    },
+    {
+      "source_group": "tao_train_16_751_0",
+      "offset": 0,
+      "objects": 1
+    },
+    {
+      "source_group": "tao_train_38_1_0",
+      "offset": 0,
+      "objects": 4
+    },
+    {
+      "source_group": "tao_train_38_31_0",
+      "offset": 0,
+      "objects": 3
+    },
+    {
+      "source_group": "tao_train_38_61_0",
+      "offset": 0,
+      "objects": 2
+    },
+    {
+      "source_group": "tao_train_38_91_0",
+      "offset": 0,
+      "objects": 2
+    },
+    {
+      "source_group": "tao_train_38_121_0",
+      "offset": 0,
+      "objects": 2
+    },
+    {
+      "source_group": "tao_train_38_151_0",
+      "offset": 0,
+      "objects": 2
+    },
+    {
+      "source_group": "tao_train_38_181_0",
+      "offset": 0,
+      "objects": 1
+    },
+    {
+      "source_group": "tao_train_47_601_0",
+      "offset": 0,
+      "objects": 5
+    },
+    {
+      "source_group": "tao_train_47_631_0",
+      "offset": 0,
+      "objects": 5
+    },
+    {
+      "source_group": "tao_train_47_661_0",
+      "offset": 0,
+      "objects": 5
+    },
+    {
+      "source_group": "tao_train_47_691_0",
+      "offset": 0,
+      "objects": 5
+    },
+    {
+      "source_group": "tao_train_47_721_0",
+      "offset": 0,
+      "objects": 6
+    },
+    {
+      "source_group": "tao_train_47_751_0",
+      "offset": 0,
+      "objects": 7
+    },
+    {
+      "source_group": "tao_train_47_781_0",
+      "offset": 0,
+      "objects": 7
+    },
+    {
+      "source_group": "tao_train_47_811_0",
+      "offset": 0,
+      "objects": 6
+    }
+  ],
+  "class_counts": {
+    "bicycle": 18,
+    "person": 105,
+    "bottle": 8,
+    "paddle": 13,
+    "kayak": 12,
+    "car (automobile)": 19,
+    "sandwich": 21,
+    "dog": 11,
+    "camera": 8
+  },
+  "original_pack": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/joint_pack_v3/examples.pt",
+  "all_input_vocabulary_classes": 1203,
+  "Novel_or_validation_GT_supervised": false,
+  "new_native_DLM_rollout_claim": false,
+  "teacher_GT_crop_stage_explicit": true,
+  "empty_frames_retained_in_registration": true,
+  "empty_frames_with_no_crop_have_no_category_rows": true,
+  "unknown_negative_supervision_added": false,
+  "native_runtime_or_training_complete": false,
+  "evidence_png_bytes": 5655816
+}

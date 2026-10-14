@@ -1,0 +1,11 @@
+{
+  "status": "OFFICIAL_SFT_PLAN_OK",
+  "eligible_rows": 430,
+  "max_context": 32768,
+  "max_actual_tokens": 4233,
+  "overlength_dropped_rows": 0,
+  "total_tokens": 1283259,
+  "model_loaded": false,
+  "GPU_used": false,
+  "native_runtime_or_training_complete": false
+}

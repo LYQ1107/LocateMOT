@@ -1,0 +1,1970 @@
+{
+  "status": "REAL_NATIVE_CPU_QUERY_RESPONSE_DIAGNOSTIC_COMPLETE",
+  "variants": {
+    "joint": {
+      "checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/joint1200_v1/checkpoint.pt",
+      "validation": {
+        "rmot_single8": {
+          "frames": 8,
+          "candidate_observations": 11,
+          "GT_covered_candidate_observations": 6,
+          "all_candidate_mean_membership": {
+            "original": 0.1891580599317835,
+            "no_expression": 0.14939948653971608,
+            "counter": 0.2166674395557493
+          },
+          "GT_covered_mean_membership": {
+            "original": 0.005028787379463513,
+            "no_expression": 0.006632086083603402,
+            "counter": 0.0074832073878496885
+          },
+          "GT_covered_above_fixed_half": {
+            "original": 0,
+            "no_expression": 0,
+            "counter": 0
+          },
+          "mean_absolute_query_intervention_change": {
+            "no_expression": 0.049899107162756,
+            "counter": 0.027509379623965782
+          },
+          "CPU_vs_recorded_GPU_changed_output_frames": [],
+          "CPU_vs_recorded_GPU_max_membership_difference": 7.152557373046875e-05,
+          "inverse_aligned_permutation_max_probability_difference": {
+            "match": 2.384185791015625e-07,
+            "update": 0.0,
+            "reliability": 6.984919309616089e-10,
+            "life": 1.210719347000122e-08,
+            "membership": 5.960464477539063e-08,
+            "category": 2.3283064365386963e-09
+          },
+          "inverse_aligned_permutation_within_declared_tolerance": true,
+          "candidate_grouping_unchanged": true,
+          "permutation_scope": "within captured groups and identity shortlists; no cross-group/full-pipeline invariance claim",
+          "counter": "arranging automobiles",
+          "rows": [
+            {
+              "frame": 150,
+              "boxes": [
+                [
+                  643.4814814814814,
+                  162.1041041041041,
+                  655.9039039039038,
+                  187.1871871871872
+                ],
+                [
+                  644.7237237237237,
+                  162.1041041041041,
+                  655.9039039039038,
+                  187.1871871871872
+                ],
+                [
+                  644.7237237237237,
+                  162.1041041041041,
+                  655.9039039039038,
+                  187.1871871871872
+                ]
+              ],
+              "scores": {
+                "original": [
+                  0.6189738512039185,
+                  0.6029607057571411,
+                  0.6029607057571411
+                ],
+                "no_expression": [
+                  0.45634278655052185,
+                  0.43771761655807495,
+                  0.43771761655807495
+                ],
+                "counter": [
+                  0.6874244213104248,
+                  0.6711337566375732,
+                  0.6711337566375732
+                ]
+              },
+              "posthoc_primary_query_GT_covered": [
+                false,
+                false,
+                false
+              ]
+            },
+            {
+              "frame": 151,
+              "boxes": [
+                [
+                  445.96496496496496,
+                  177.07907907907907,
+                  483.2322322322322,
+                  207.40340340340342
+                ]
+              ],
+              "scores": {
+                "original": [
+                  0.2243662178516388
+                ],
+                "no_expression": [
+                  0.2698741853237152
+                ],
+                "counter": [
+                  0.3068564534187317
+                ]
+              },
+              "posthoc_primary_query_GT_covered": [
+                false
+              ]
+            },
+            {
+              "frame": 152,
+              "boxes": [],
+              "scores": {
+                "original": [],
+                "no_expression": [],
+                "counter": []
+              },
+              "posthoc_primary_query_GT_covered": []
+            },
+            {
+              "frame": 153,
+              "boxes": [
+                [
+                  445.96496496496496,
+                  187.1871871871872,
+                  458.3873873873874,
+                  207.40340340340342
+                ],
+                [
+                  447.2072072072072,
+                  187.1871871871872,
+                  458.3873873873874,
+                  207.40340340340342
+                ]
+              ],
+              "scores": {
+                "original": [
+                  0.007147670723497868,
+                  0.007705386728048325
+                ],
+                "no_expression": [
+                  0.010053725913167,
+                  0.01083021704107523
+                ],
+                "counter": [
+                  0.011079858057200909,
+                  0.011977439746260643
+                ]
+              },
+              "posthoc_primary_query_GT_covered": [
+                true,
+                true
+              ]
+            },
+            {
+              "frame": 154,
+              "boxes": [
+                [
+                  434.7847847847848,
+                  177.07907907907907,
+                  445.96496496496496,
+                  220.88088088088088
+                ]
+              ],
+              "scores": {
+                "original": [
+                  0.0013044544029980898
+                ],
+                "no_expression": [
+                  0.001949630444869399
+                ],
+                "counter": [
+                  0.0018942027818411589
+                ]
+              },
+              "posthoc_primary_query_GT_covered": [
+                false
+              ]
+            },
+            {
+              "frame": 155,
+              "boxes": [
+                [
+                  421.12012012012013,
+                  187.1871871871872,
+                  445.96496496496496,
+                  211.52152152152152
+                ],
+                [
+                  422.3623623623624,
+                  187.1871871871872,
+                  445.96496496496496,
+                  211.52152152152152
+                ]
+              ],
+              "scores": {
+                "original": [
+                  0.0036307647824287415,
+                  0.0037947529926896095
+                ],
+                "no_expression": [
+                  0.004522878676652908,
+                  0.004714950919151306
+                ],
+                "counter": [
+                  0.005173127166926861,
+                  0.005412552040070295
+                ]
+              },
+              "posthoc_primary_query_GT_covered": [
+                true,
+                true
+              ]
+            },
+            {
+              "frame": 156,
+              "boxes": [
+                [
+                  409.9399399399399,
+                  177.07907907907907,
+                  445.96496496496496,
+                  226.12212212212214
+                ]
+              ],
+              "scores": {
+                "original": [
+                  0.005149248521775007
+                ],
+                "no_expression": [
+                  0.005986297037452459
+                ],
+                "counter": [
+                  0.007214509882032871
+                ]
+              },
+              "posthoc_primary_query_GT_covered": [
+                true
+              ]
+            },
+            {
+              "frame": 157,
+              "boxes": [
+                [
+                  397.5175175175175,
+                  187.1871871871872,
+                  434.7847847847848,
+                  226.12212212212214
+                ]
+              ],
+              "scores": {
+                "original": [
+                  0.0027449005283415318
+                ],
+                "no_expression": [
+                  0.0036844469141215086
+                ],
+                "counter": [
+                  0.004041757434606552
+                ]
+              },
+              "posthoc_primary_query_GT_covered": [
+                true
+              ]
+            }
+          ]
+        },
+        "rmot_multi12": {
+          "frames": 12,
+          "candidate_observations": 16,
+          "GT_covered_candidate_observations": 8,
+          "all_candidate_mean_membership": {
+            "original": 0.08109644348724032,
+            "no_expression": 0.032367291982382085,
+            "counter": 0.07898664342951633
+          },
+          "GT_covered_mean_membership": {
+            "original": 0.0002543277505537844,
+            "no_expression": 0.00023672257839280064,
+            "counter": 0.00021580964767053956
+          },
+          "GT_covered_above_fixed_half": {
+            "original": 0,
+            "no_expression": 0,
+            "counter": 0
+          },
+          "mean_absolute_query_intervention_change": {
+            "no_expression": 0.0487310010209967,
+            "counter": 0.0021098000577239873
+          },
+          "CPU_vs_recorded_GPU_changed_output_frames": [],
+          "CPU_vs_recorded_GPU_max_membership_difference": 2.1338462829589844e-05,
+          "inverse_aligned_permutation_max_probability_difference": {
+            "match": 6.556510925292969e-07,
+            "update": 0.0,
+            "reliability": 1.2223608791828156e-09,
+            "life": 3.259629011154175e-09,
+            "membership": 3.7834979593753815e-10,
+            "category": 1.979060471057892e-09
+          },
+          "inverse_aligned_permutation_within_declared_tolerance": true,
+          "candidate_grouping_unchanged": true,
+          "permutation_scope": "within captured groups and identity shortlists; no cross-group/full-pipeline invariance claim",
+          "counter": "a red coat is being worn by the woman",
+          "rows": [
+            {
+              "frame": 32,
+              "boxes": [
+                [
+                  0.0,
+                  0.0,
+                  1241.0,
+                  374.0
+                ]
+              ],
+              "scores": {
+                "original": [
+                  0.7417469620704651
+                ],
+                "no_expression": [
+                  0.3392563760280609
+                ],
+                "counter": [
+                  0.7098067402839661
+                ]
+              },
+              "posthoc_primary_query_GT_covered": [
+                false
+              ]
+            },
+            {
+              "frame": 33,
+              "boxes": [
+                [
+                  0.0,
+                  0.0,
+                  1241.0,
+                  374.0
+                ]
+              ],
+              "scores": {
+                "original": [
+                  0.5532293319702148
+                ],
+                "no_expression": [
+                  0.1762569695711136
+                ],
+                "counter": [
+                  0.5518121719360352
+                ]
+              },
+              "posthoc_primary_query_GT_covered": [
+                false
+              ]
+            },
+            {
+              "frame": 34,
+              "boxes": [],
+              "scores": {
+                "original": [],
+                "no_expression": [],
+                "counter": []
+              },
+              "posthoc_primary_query_GT_covered": []
+            },
+            {
+              "frame": 35,
+              "boxes": [
+                [
+                  0.0,
+                  187.1871871871872,
+                  73.29229229229229,
+                  271.4214214214214
+                ]
+              ],
+              "scores": {
+                "original": [
+                  0.00018580222968012094
+                ],
+                "no_expression": [
+                  0.0001991713506868109
+                ],
+                "counter": [
+                  0.00013046078674960881
+                ]
+              },
+              "posthoc_primary_query_GT_covered": [
+                true
+              ]
+            },
+            {
+              "frame": 36,
+              "boxes": [
+                [
+                  0.0,
+                  187.1871871871872,
+                  135.4044044044044,
+                  275.9139139139139
+                ]
+              ],
+              "scores": {
+                "original": [
+                  5.396294727688655e-05
+                ],
+                "no_expression": [
+                  5.53899553779047e-05
+                ],
+                "counter": [
+                  4.320426523918286e-05
+                ]
+              },
+              "posthoc_primary_query_GT_covered": [
+                true
+              ]
+            },
+            {
+              "frame": 37,
+              "boxes": [
+                [
+                  0.0,
+                  187.1871871871872,
+                  186.33633633633633,
+                  271.7957957957958
+                ]
+              ],
+              "scores": {
+                "original": [
+                  6.036577542545274e-05
+                ],
+                "no_expression": [
+                  5.932870408287272e-05
+                ],
+                "counter": [
+                  5.0124453991884366e-05
+                ]
+              },
+              "posthoc_primary_query_GT_covered": [
+                false
+              ]
+            },
+            {
+              "frame": 38,
+              "boxes": [
+                [
+                  0.0,
+                  187.1871871871872,
+                  223.6036036036036,
+                  259.8158158158158
+                ],
+                [
+                  0.0,
+                  187.1871871871872,
+                  222.36136136136133,
+                  259.8158158158158
+                ]
+              ],
+              "scores": {
+                "original": [
+                  8.3719271060545e-05,
+                  8.296775922644883e-05
+                ],
+                "no_expression": [
+                  7.465874659828842e-05,
+                  7.404255302390084e-05
+                ],
+                "counter": [
+                  6.725527055095881e-05,
+                  6.663380190730095e-05
+                ]
+              },
+              "posthoc_primary_query_GT_covered": [
+                false,
+                false
+              ]
+            },
+            {
+              "frame": 39,
+              "boxes": [
+                [
+                  0.0,
+                  175.95595595595594,
+                  272.05105105105105,
+                  253.82582582582583
+                ]
+              ],
+              "scores": {
+                "original": [
+                  0.0001561007957207039
+                ],
+                "no_expression": [
+                  0.00015013889060355723
+                ],
+                "counter": [
+                  0.00012148337555117905
+                ]
+              },
+              "posthoc_primary_query_GT_covered": [
+                false
+              ]
+            },
+            {
+              "frame": 40,
+              "boxes": [
+                [
+                  110.55955955955956,
+                  187.1871871871872,
+                  310.5605605605606,
+                  251.5795795795796
+                ],
+                [
+                  111.8018018018018,
+                  187.1871871871872,
+                  310.5605605605606,
+                  251.5795795795796
+                ]
+              ],
+              "scores": {
+                "original": [
+                  7.470183481927961e-05,
+                  7.432431448251009e-05
+                ],
+                "no_expression": [
+                  5.584219979937188e-05,
+                  5.553439768846147e-05
+                ],
+                "counter": [
+                  6.785891309846193e-05,
+                  6.754965579602867e-05
+                ]
+              },
+              "posthoc_primary_query_GT_covered": [
+                false,
+                false
+              ]
+            },
+            {
+              "frame": 41,
+              "boxes": [
+                [
+                  0.0,
+                  156.48848848848849,
+                  74.53453453453453,
+                  331.6956956956957
+                ]
+              ],
+              "scores": {
+                "original": [
+                  0.0003854777605738491
+                ],
+                "no_expression": [
+                  0.00037786696339026093
+                ],
+                "counter": [
+                  0.00032215137616731226
+                ]
+              },
+              "posthoc_primary_query_GT_covered": [
+                true
+              ]
+            },
+            {
+              "frame": 42,
+              "boxes": [
+                [
+                  0.0,
+                  127.28728728728728,
+                  135.4044044044044,
+                  331.6956956956957
+                ]
+              ],
+              "scores": {
+                "original": [
+                  0.0007644332945346832
+                ],
+                "no_expression": [
+                  0.0007237193640321493
+                ],
+                "counter": [
+                  0.0006375550874508917
+                ]
+              },
+              "posthoc_primary_query_GT_covered": [
+                true
+              ]
+            },
+            {
+              "frame": 43,
+              "boxes": [
+                [
+                  0.0,
+                  156.48848848848849,
+                  186.33633633633633,
+                  331.3213213213213
+                ],
+                [
+                  0.0,
+                  156.48848848848849,
+                  186.33633633633633,
+                  332.4444444444444
+                ],
+                [
+                  0.0,
+                  156.48848848848849,
+                  186.33633633633633,
+                  333.56756756756755
+                ],
+                [
+                  0.0,
+                  156.48848848848849,
+                  186.33633633633633,
+                  334.6906906906907
+                ]
+              ],
+              "scores": {
+                "original": [
+                  0.0001639620604692027,
+                  0.0001620663533685729,
+                  0.00016028991376515478,
+                  0.00015862744476180524
+                ],
+                "no_expression": [
+                  0.00013751858205068856,
+                  0.00013537329505197704,
+                  0.00013333657989278436,
+                  0.00013140453665982932
+                ],
+                "counter": [
+                  0.00015015463577583432,
+                  0.00014883790572639555,
+                  0.00014761899365112185,
+                  0.0001464941306039691
+                ]
+              },
+              "posthoc_primary_query_GT_covered": [
+                true,
+                true,
+                true,
+                true
+              ]
+            }
+          ]
+        }
+      },
+      "fit_membership_at_unchanged_half": {
+        "groups": 45,
+        "positive": 45,
+        "positive_above_half": 45,
+        "negative": 51,
+        "negative_below_half": 51
+      }
+    },
+    "broad_teacher": {
+      "checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/rmot_native72_stage_v1/broad_teacher_training/checkpoint.pt",
+      "validation": {
+        "rmot_single8": {
+          "frames": 8,
+          "candidate_observations": 11,
+          "GT_covered_candidate_observations": 6,
+          "all_candidate_mean_membership": {
+            "original": 0.5868168026208878,
+            "no_expression": 0.791326414455067,
+            "counter": 0.8072967610575936
+          },
+          "GT_covered_mean_membership": {
+            "original": 0.5206921646992365,
+            "no_expression": 0.8255883852640787,
+            "counter": 0.9607952137788137
+          },
+          "GT_covered_above_fixed_half": {
+            "original": 4,
+            "no_expression": 6,
+            "counter": 6
+          },
+          "mean_absolute_query_intervention_change": {
+            "no_expression": 0.2567914792082526,
+            "counter": 0.4585011750459671
+          },
+          "CPU_vs_recorded_GPU_changed_output_frames": [],
+          "CPU_vs_recorded_GPU_max_membership_difference": 5.498528480529785e-05,
+          "inverse_aligned_permutation_max_probability_difference": {
+            "match": 4.76837158203125e-07,
+            "update": 0.0,
+            "reliability": 1.3969838619232178e-09,
+            "life": 2.384185791015625e-07,
+            "membership": 1.1920928955078125e-07,
+            "category": 2.2351741790771484e-08
+          },
+          "inverse_aligned_permutation_within_declared_tolerance": true,
+          "candidate_grouping_unchanged": true,
+          "permutation_scope": "within captured groups and identity shortlists; no cross-group/full-pipeline invariance claim",
+          "counter": "arranging automobiles",
+          "rows": [
+            {
+              "frame": 150,
+              "boxes": [
+                [
+                  643.4814814814814,
+                  162.1041041041041,
+                  655.9039039039038,
+                  187.1871871871872
+                ],
+                [
+                  644.7237237237237,
+                  162.1041041041041,
+                  655.9039039039038,
+                  187.1871871871872
+                ],
+                [
+                  644.7237237237237,
+                  162.1041041041041,
+                  655.9039039039038,
+                  187.1871871871872
+                ]
+              ],
+              "scores": {
+                "original": [
+                  0.8251266479492188,
+                  0.8226402401924133,
+                  0.8226402401924133
+                ],
+                "no_expression": [
+                  0.7340742945671082,
+                  0.7243912816047668,
+                  0.7243912816047668
+                ],
+                "counter": [
+                  0.39613983035087585,
+                  0.38257530331611633,
+                  0.38257530331611633
+                ]
+              },
+              "posthoc_primary_query_GT_covered": [
+                false,
+                false,
+                false
+              ]
+            },
+            {
+              "frame": 151,
+              "boxes": [
+                [
+                  445.96496496496496,
+                  177.07907907907907,
+                  483.2322322322322,
+                  207.40340340340342
+                ]
+              ],
+              "scores": {
+                "original": [
+                  0.7226408123970032
+                ],
+                "no_expression": [
+                  0.9565380215644836
+                ],
+                "counter": [
+                  0.9807985424995422
+                ]
+              },
+              "posthoc_primary_query_GT_covered": [
+                false
+              ]
+            },
+            {
+              "frame": 152,
+              "boxes": [],
+              "scores": {
+                "original": [],
+                "no_expression": [],
+                "counter": []
+              },
+              "posthoc_primary_query_GT_covered": []
+            },
+            {
+              "frame": 153,
+              "boxes": [
+                [
+                  445.96496496496496,
+                  187.1871871871872,
+                  458.3873873873874,
+                  207.40340340340342
+                ],
+                [
+                  447.2072072072072,
+                  187.1871871871872,
+                  458.3873873873874,
+                  207.40340340340342
+                ]
+              ],
+              "scores": {
+                "original": [
+                  0.5617033243179321,
+                  0.5807482004165649
+                ],
+                "no_expression": [
+                  0.9115325212478638,
+                  0.9177709221839905
+                ],
+                "counter": [
+                  0.977403461933136,
+                  0.9779098033905029
+                ]
+              },
+              "posthoc_primary_query_GT_covered": [
+                true,
+                true
+              ]
+            },
+            {
+              "frame": 154,
+              "boxes": [
+                [
+                  434.7847847847848,
+                  177.07907907907907,
+                  445.96496496496496,
+                  220.88088088088088
+                ]
+              ],
+              "scores": {
+                "original": [
+                  0.13778389990329742
+                ],
+                "no_expression": [
+                  0.6116653680801392
+                ],
+                "counter": [
+                  0.9734041094779968
+                ]
+              },
+              "posthoc_primary_query_GT_covered": [
+                false
+              ]
+            },
+            {
+              "frame": 155,
+              "boxes": [
+                [
+                  421.12012012012013,
+                  187.1871871871872,
+                  445.96496496496496,
+                  211.52152152152152
+                ],
+                [
+                  422.3623623623624,
+                  187.1871871871872,
+                  445.96496496496496,
+                  211.52152152152152
+                ]
+              ],
+              "scores": {
+                "original": [
+                  0.3808320164680481,
+                  0.3861646354198456
+                ],
+                "no_expression": [
+                  0.7090757489204407,
+                  0.7127833962440491
+                ],
+                "counter": [
+                  0.9567229151725769,
+                  0.9565442204475403
+                ]
+              },
+              "posthoc_primary_query_GT_covered": [
+                true,
+                true
+              ]
+            },
+            {
+              "frame": 156,
+              "boxes": [
+                [
+                  409.9399399399399,
+                  177.07907907907907,
+                  445.96496496496496,
+                  226.12212212212214
+                ]
+              ],
+              "scores": {
+                "original": [
+                  0.6066154837608337
+                ],
+                "no_expression": [
+                  0.8100403547286987
+                ],
+                "counter": [
+                  0.9365447759628296
+                ]
+              },
+              "posthoc_primary_query_GT_covered": [
+                true
+              ]
+            },
+            {
+              "frame": 157,
+              "boxes": [
+                [
+                  397.5175175175175,
+                  187.1871871871872,
+                  434.7847847847848,
+                  226.12212212212214
+                ]
+              ],
+              "scores": {
+                "original": [
+                  0.6080893278121948
+                ],
+                "no_expression": [
+                  0.8923273682594299
+                ],
+                "counter": [
+                  0.9596461057662964
+                ]
+              },
+              "posthoc_primary_query_GT_covered": [
+                true
+              ]
+            }
+          ]
+        },
+        "rmot_multi12": {
+          "frames": 12,
+          "candidate_observations": 16,
+          "GT_covered_candidate_observations": 8,
+          "all_candidate_mean_membership": {
+            "original": 0.9890778139233589,
+            "no_expression": 0.5406188126653433,
+            "counter": 0.3468218268826604
+          },
+          "GT_covered_mean_membership": {
+            "original": 0.9901317432522774,
+            "no_expression": 0.5196515768766403,
+            "counter": 0.3081796318292618
+          },
+          "GT_covered_above_fixed_half": {
+            "original": 8,
+            "no_expression": 6,
+            "counter": 0
+          },
+          "mean_absolute_query_intervention_change": {
+            "no_expression": 0.44845900125801563,
+            "counter": 0.6489935545250773
+          },
+          "CPU_vs_recorded_GPU_changed_output_frames": [],
+          "CPU_vs_recorded_GPU_max_membership_difference": 4.827976226806641e-06,
+          "inverse_aligned_permutation_max_probability_difference": {
+            "match": 1.1920928955078125e-07,
+            "update": 0.0,
+            "reliability": 2.6193447411060333e-10,
+            "life": 8.940696716308594e-08,
+            "membership": 0.0,
+            "category": 2.1827872842550278e-11
+          },
+          "inverse_aligned_permutation_within_declared_tolerance": true,
+          "candidate_grouping_unchanged": true,
+          "permutation_scope": "within captured groups and identity shortlists; no cross-group/full-pipeline invariance claim",
+          "counter": "a red coat is being worn by the woman",
+          "rows": [
+            {
+              "frame": 32,
+              "boxes": [
+                [
+                  0.0,
+                  0.0,
+                  1241.0,
+                  374.0
+                ]
+              ],
+              "scores": {
+                "original": [
+                  0.9618933200836182
+                ],
+                "no_expression": [
+                  0.9573044180870056
+                ],
+                "counter": [
+                  0.9924153685569763
+                ]
+              },
+              "posthoc_primary_query_GT_covered": [
+                false
+              ]
+            },
+            {
+              "frame": 33,
+              "boxes": [
+                [
+                  0.0,
+                  0.0,
+                  1241.0,
+                  374.0
+                ]
+              ],
+              "scores": {
+                "original": [
+                  0.9703659415245056
+                ],
+                "no_expression": [
+                  0.9579451680183411
+                ],
+                "counter": [
+                  0.993744432926178
+                ]
+              },
+              "posthoc_primary_query_GT_covered": [
+                false
+              ]
+            },
+            {
+              "frame": 34,
+              "boxes": [],
+              "scores": {
+                "original": [],
+                "no_expression": [],
+                "counter": []
+              },
+              "posthoc_primary_query_GT_covered": []
+            },
+            {
+              "frame": 35,
+              "boxes": [
+                [
+                  0.0,
+                  187.1871871871872,
+                  73.29229229229229,
+                  271.4214214214214
+                ]
+              ],
+              "scores": {
+                "original": [
+                  0.9929640293121338
+                ],
+                "no_expression": [
+                  0.38784241676330566
+                ],
+                "counter": [
+                  0.050721317529678345
+                ]
+              },
+              "posthoc_primary_query_GT_covered": [
+                true
+              ]
+            },
+            {
+              "frame": 36,
+              "boxes": [
+                [
+                  0.0,
+                  187.1871871871872,
+                  135.4044044044044,
+                  275.9139139139139
+                ]
+              ],
+              "scores": {
+                "original": [
+                  0.9940449595451355
+                ],
+                "no_expression": [
+                  0.3162679672241211
+                ],
+                "counter": [
+                  0.09162598848342896
+                ]
+              },
+              "posthoc_primary_query_GT_covered": [
+                true
+              ]
+            },
+            {
+              "frame": 37,
+              "boxes": [
+                [
+                  0.0,
+                  187.1871871871872,
+                  186.33633633633633,
+                  271.7957957957958
+                ]
+              ],
+              "scores": {
+                "original": [
+                  0.9934230446815491
+                ],
+                "no_expression": [
+                  0.2942352592945099
+                ],
+                "counter": [
+                  0.08342429250478745
+                ]
+              },
+              "posthoc_primary_query_GT_covered": [
+                false
+              ]
+            },
+            {
+              "frame": 38,
+              "boxes": [
+                [
+                  0.0,
+                  187.1871871871872,
+                  223.6036036036036,
+                  259.8158158158158
+                ],
+                [
+                  0.0,
+                  187.1871871871872,
+                  222.36136136136133,
+                  259.8158158158158
+                ]
+              ],
+              "scores": {
+                "original": [
+                  0.995128870010376,
+                  0.9951369166374207
+                ],
+                "no_expression": [
+                  0.3322039544582367,
+                  0.3321038782596588
+                ],
+                "counter": [
+                  0.08529026806354523,
+                  0.08488496392965317
+                ]
+              },
+              "posthoc_primary_query_GT_covered": [
+                false,
+                false
+              ]
+            },
+            {
+              "frame": 39,
+              "boxes": [
+                [
+                  0.0,
+                  175.95595595595594,
+                  272.05105105105105,
+                  253.82582582582583
+                ]
+              ],
+              "scores": {
+                "original": [
+                  0.9942037463188171
+                ],
+                "no_expression": [
+                  0.5542595386505127
+                ],
+                "counter": [
+                  0.19309906661510468
+                ]
+              },
+              "posthoc_primary_query_GT_covered": [
+                false
+              ]
+            },
+            {
+              "frame": 40,
+              "boxes": [
+                [
+                  110.55955955955956,
+                  187.1871871871872,
+                  310.5605605605606,
+                  251.5795795795796
+                ],
+                [
+                  111.8018018018018,
+                  187.1871871871872,
+                  310.5605605605606,
+                  251.5795795795796
+                ]
+              ],
+              "scores": {
+                "original": [
+                  0.9970166683197021,
+                  0.9970225691795349
+                ],
+                "no_expression": [
+                  0.5324461460113525,
+                  0.5321900248527527
+                ],
+                "counter": [
+                  0.3245401680469513,
+                  0.3263136148452759
+                ]
+              },
+              "posthoc_primary_query_GT_covered": [
+                false,
+                false
+              ]
+            },
+            {
+              "frame": 41,
+              "boxes": [
+                [
+                  0.0,
+                  156.48848848848849,
+                  74.53453453453453,
+                  331.6956956956957
+                ]
+              ],
+              "scores": {
+                "original": [
+                  0.9843242168426514
+                ],
+                "no_expression": [
+                  0.6932274699211121
+                ],
+                "counter": [
+                  0.35308679938316345
+                ]
+              },
+              "posthoc_primary_query_GT_covered": [
+                true
+              ]
+            },
+            {
+              "frame": 42,
+              "boxes": [
+                [
+                  0.0,
+                  127.28728728728728,
+                  135.4044044044044,
+                  331.6956956956957
+                ]
+              ],
+              "scores": {
+                "original": [
+                  0.9815281629562378
+                ],
+                "no_expression": [
+                  0.5522422790527344
+                ],
+                "counter": [
+                  0.31801849603652954
+                ]
+              },
+              "posthoc_primary_query_GT_covered": [
+                true
+              ]
+            },
+            {
+              "frame": 43,
+              "boxes": [
+                [
+                  0.0,
+                  156.48848848848849,
+                  186.33633633633633,
+                  331.3213213213213
+                ],
+                [
+                  0.0,
+                  156.48848848848849,
+                  186.33633633633633,
+                  332.4444444444444
+                ],
+                [
+                  0.0,
+                  156.48848848848849,
+                  186.33633633633633,
+                  333.56756756756755
+                ],
+                [
+                  0.0,
+                  156.48848848848849,
+                  186.33633633633633,
+                  334.6906906906907
+                ]
+              ],
+              "scores": {
+                "original": [
+                  0.9919413328170776,
+                  0.9920133948326111,
+                  0.9920841455459595,
+                  0.9921537041664124
+                ],
+                "no_expression": [
+                  0.5521308779716492,
+                  0.5519568920135498,
+                  0.551821231842041,
+                  0.5517234802246094
+                ],
+                "counter": [
+                  0.4059969484806061,
+                  0.4106418490409851,
+                  0.41531890630722046,
+                  0.4200267493724823
+                ]
+              },
+              "posthoc_primary_query_GT_covered": [
+                true,
+                true,
+                true,
+                true
+              ]
+            }
+          ]
+        }
+      },
+      "fit_membership_at_unchanged_half": {
+        "groups": 183,
+        "positive": 258,
+        "positive_above_half": 255,
+        "negative": 316,
+        "negative_below_half": 226
+      }
+    },
+    "broad_native": {
+      "checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/rmot_native72_stage_v1/broad_native_training/checkpoint.pt",
+      "validation": {
+        "rmot_single8": {
+          "frames": 8,
+          "candidate_observations": 11,
+          "GT_covered_candidate_observations": 6,
+          "all_candidate_mean_membership": {
+            "original": 0.3465902398933064,
+            "no_expression": 0.5769177946177396,
+            "counter": 0.656775867397135
+          },
+          "GT_covered_mean_membership": {
+            "original": 0.43222106496493023,
+            "no_expression": 0.7073385814825693,
+            "counter": 0.7722199559211731
+          },
+          "GT_covered_above_fixed_half": {
+            "original": 0,
+            "no_expression": 6,
+            "counter": 6
+          },
+          "mean_absolute_query_intervention_change": {
+            "no_expression": 0.2303275547244332,
+            "counter": 0.31018562750382855
+          },
+          "CPU_vs_recorded_GPU_changed_output_frames": [],
+          "CPU_vs_recorded_GPU_max_membership_difference": 3.409385681152344e-05,
+          "inverse_aligned_permutation_max_probability_difference": {
+            "match": 1.4901161193847656e-07,
+            "update": 2.9802322387695312e-08,
+            "reliability": 5.960464477539063e-08,
+            "life": 5.960464477539063e-08,
+            "membership": 5.960464477539063e-08,
+            "category": 1.1920928955078125e-07
+          },
+          "inverse_aligned_permutation_within_declared_tolerance": true,
+          "candidate_grouping_unchanged": true,
+          "permutation_scope": "within captured groups and identity shortlists; no cross-group/full-pipeline invariance claim",
+          "counter": "arranging automobiles",
+          "rows": [
+            {
+              "frame": 150,
+              "boxes": [
+                [
+                  643.4814814814814,
+                  162.1041041041041,
+                  655.9039039039038,
+                  187.1871871871872
+                ],
+                [
+                  644.7237237237237,
+                  162.1041041041041,
+                  655.9039039039038,
+                  187.1871871871872
+                ],
+                [
+                  644.7237237237237,
+                  162.1041041041041,
+                  655.9039039039038,
+                  187.1871871871872
+                ]
+              ],
+              "scores": {
+                "original": [
+                  0.27156683802604675,
+                  0.270918607711792,
+                  0.270918607711792
+                ],
+                "no_expression": [
+                  0.3562425374984741,
+                  0.35416314005851746,
+                  0.35416311025619507
+                ],
+                "counter": [
+                  0.4512196481227875,
+                  0.4495014548301697,
+                  0.4495014548301697
+                ]
+              },
+              "posthoc_primary_query_GT_covered": [
+                false,
+                false,
+                false
+              ]
+            },
+            {
+              "frame": 151,
+              "boxes": [
+                [
+                  445.96496496496496,
+                  177.07907907907907,
+                  483.2322322322322,
+                  207.40340340340342
+                ]
+              ],
+              "scores": {
+                "original": [
+                  0.13745474815368652
+                ],
+                "no_expression": [
+                  0.3995112478733063
+                ],
+                "counter": [
+                  0.4689441919326782
+                ]
+              },
+              "posthoc_primary_query_GT_covered": [
+                false
+              ]
+            },
+            {
+              "frame": 152,
+              "boxes": [],
+              "scores": {
+                "original": [],
+                "no_expression": [],
+                "counter": []
+              },
+              "posthoc_primary_query_GT_covered": []
+            },
+            {
+              "frame": 153,
+              "boxes": [
+                [
+                  445.96496496496496,
+                  187.1871871871872,
+                  458.3873873873874,
+                  207.40340340340342
+                ],
+                [
+                  447.2072072072072,
+                  187.1871871871872,
+                  458.3873873873874,
+                  207.40340340340342
+                ]
+              ],
+              "scores": {
+                "original": [
+                  0.3640718162059784,
+                  0.3620246648788452
+                ],
+                "no_expression": [
+                  0.6703492999076843,
+                  0.668357789516449
+                ],
+                "counter": [
+                  0.7704768180847168,
+                  0.767548680305481
+                ]
+              },
+              "posthoc_primary_query_GT_covered": [
+                true,
+                true
+              ]
+            },
+            {
+              "frame": 154,
+              "boxes": [
+                [
+                  434.7847847847848,
+                  177.07907907907907,
+                  445.96496496496496,
+                  220.88088088088088
+                ]
+              ],
+              "scores": {
+                "original": [
+                  0.2683074474334717
+                ],
+                "no_expression": [
+                  0.6379842162132263
+                ],
+                "counter": [
+                  0.7720480561256409
+                ]
+              },
+              "posthoc_primary_query_GT_covered": [
+                false
+              ]
+            },
+            {
+              "frame": 155,
+              "boxes": [
+                [
+                  421.12012012012013,
+                  187.1871871871872,
+                  445.96496496496496,
+                  211.52152152152152
+                ],
+                [
+                  422.3623623623624,
+                  187.1871871871872,
+                  445.96496496496496,
+                  211.52152152152152
+                ]
+              ],
+              "scores": {
+                "original": [
+                  0.4568071961402893,
+                  0.45347729325294495
+                ],
+                "no_expression": [
+                  0.733293890953064,
+                  0.7295901775360107
+                ],
+                "counter": [
+                  0.8025509715080261,
+                  0.7988552451133728
+                ]
+              },
+              "posthoc_primary_query_GT_covered": [
+                true,
+                true
+              ]
+            },
+            {
+              "frame": 156,
+              "boxes": [
+                [
+                  409.9399399399399,
+                  177.07907907907907,
+                  445.96496496496496,
+                  226.12212212212214
+                ]
+              ],
+              "scores": {
+                "original": [
+                  0.4977516829967499
+                ],
+                "no_expression": [
+                  0.6934888958930969
+                ],
+                "counter": [
+                  0.7131493091583252
+                ]
+              },
+              "posthoc_primary_query_GT_covered": [
+                true
+              ]
+            },
+            {
+              "frame": 157,
+              "boxes": [
+                [
+                  397.5175175175175,
+                  187.1871871871872,
+                  434.7847847847848,
+                  226.12212212212214
+                ]
+              ],
+              "scores": {
+                "original": [
+                  0.45919373631477356
+                ],
+                "no_expression": [
+                  0.7489514350891113
+                ],
+                "counter": [
+                  0.7807387113571167
+                ]
+              },
+              "posthoc_primary_query_GT_covered": [
+                true
+              ]
+            }
+          ]
+        },
+        "rmot_multi12": {
+          "frames": 12,
+          "candidate_observations": 16,
+          "GT_covered_candidate_observations": 8,
+          "all_candidate_mean_membership": {
+            "original": 0.6447582461405545,
+            "no_expression": 0.5601650911848992,
+            "counter": 0.4240881111472845
+          },
+          "GT_covered_mean_membership": {
+            "original": 0.5959208533167839,
+            "no_expression": 0.508795939385891,
+            "counter": 0.3562115300446749
+          },
+          "GT_covered_above_fixed_half": {
+            "original": 5,
+            "no_expression": 5,
+            "counter": 1
+          },
+          "mean_absolute_query_intervention_change": {
+            "no_expression": 0.08459315495565534,
+            "counter": 0.2552907846402377
+          },
+          "CPU_vs_recorded_GPU_changed_output_frames": [],
+          "CPU_vs_recorded_GPU_max_membership_difference": 1.4781951904296875e-05,
+          "inverse_aligned_permutation_max_probability_difference": {
+            "match": 2.980232238769531e-07,
+            "update": 0.0,
+            "reliability": 6.51925802230835e-09,
+            "life": 2.2351741790771484e-08,
+            "membership": 0.0,
+            "category": 8.731149137020111e-10
+          },
+          "inverse_aligned_permutation_within_declared_tolerance": true,
+          "candidate_grouping_unchanged": true,
+          "permutation_scope": "within captured groups and identity shortlists; no cross-group/full-pipeline invariance claim",
+          "counter": "a red coat is being worn by the woman",
+          "rows": [
+            {
+              "frame": 32,
+              "boxes": [
+                [
+                  0.0,
+                  0.0,
+                  1241.0,
+                  374.0
+                ]
+              ],
+              "scores": {
+                "original": [
+                  0.3006294071674347
+                ],
+                "no_expression": [
+                  0.23295903205871582
+                ],
+                "counter": [
+                  0.5684820413589478
+                ]
+              },
+              "posthoc_primary_query_GT_covered": [
+                false
+              ]
+            },
+            {
+              "frame": 33,
+              "boxes": [
+                [
+                  0.0,
+                  0.0,
+                  1241.0,
+                  374.0
+                ]
+              ],
+              "scores": {
+                "original": [
+                  0.04137982800602913
+                ],
+                "no_expression": [
+                  0.023879509419202805
+                ],
+                "counter": [
+                  0.05049239099025726
+                ]
+              },
+              "posthoc_primary_query_GT_covered": [
+                false
+              ]
+            },
+            {
+              "frame": 34,
+              "boxes": [],
+              "scores": {
+                "original": [],
+                "no_expression": [],
+                "counter": []
+              },
+              "posthoc_primary_query_GT_covered": []
+            },
+            {
+              "frame": 35,
+              "boxes": [
+                [
+                  0.0,
+                  187.1871871871872,
+                  73.29229229229229,
+                  271.4214214214214
+                ]
+              ],
+              "scores": {
+                "original": [
+                  0.49396899342536926
+                ],
+                "no_expression": [
+                  0.32981204986572266
+                ],
+                "counter": [
+                  0.17178073525428772
+                ]
+              },
+              "posthoc_primary_query_GT_covered": [
+                true
+              ]
+            },
+            {
+              "frame": 36,
+              "boxes": [
+                [
+                  0.0,
+                  187.1871871871872,
+                  135.4044044044044,
+                  275.9139139139139
+                ]
+              ],
+              "scores": {
+                "original": [
+                  0.8440549373626709
+                ],
+                "no_expression": [
+                  0.7465454339981079
+                ],
+                "counter": [
+                  0.5222434997558594
+                ]
+              },
+              "posthoc_primary_query_GT_covered": [
+                true
+              ]
+            },
+            {
+              "frame": 37,
+              "boxes": [
+                [
+                  0.0,
+                  187.1871871871872,
+                  186.33633633633633,
+                  271.7957957957958
+                ]
+              ],
+              "scores": {
+                "original": [
+                  0.8302120566368103
+                ],
+                "no_expression": [
+                  0.7249727845191956
+                ],
+                "counter": [
+                  0.45527464151382446
+                ]
+              },
+              "posthoc_primary_query_GT_covered": [
+                false
+              ]
+            },
+            {
+              "frame": 38,
+              "boxes": [
+                [
+                  0.0,
+                  187.1871871871872,
+                  223.6036036036036,
+                  259.8158158158158
+                ],
+                [
+                  0.0,
+                  187.1871871871872,
+                  222.36136136136133,
+                  259.8158158158158
+                ]
+              ],
+              "scores": {
+                "original": [
+                  0.8623543381690979,
+                  0.8629989624023438
+                ],
+                "no_expression": [
+                  0.7481514811515808,
+                  0.7486802339553833
+                ],
+                "counter": [
+                  0.5025603175163269,
+                  0.5027831792831421
+                ]
+              },
+              "posthoc_primary_query_GT_covered": [
+                false,
+                false
+              ]
+            },
+            {
+              "frame": 39,
+              "boxes": [
+                [
+                  0.0,
+                  175.95595595595594,
+                  272.05105105105105,
+                  253.82582582582583
+                ]
+              ],
+              "scores": {
+                "original": [
+                  0.7953665256500244
+                ],
+                "no_expression": [
+                  0.6866129636764526
+                ],
+                "counter": [
+                  0.3882087171077728
+                ]
+              },
+              "posthoc_primary_query_GT_covered": [
+                false
+              ]
+            },
+            {
+              "frame": 40,
+              "boxes": [
+                [
+                  110.55955955955956,
+                  187.1871871871872,
+                  310.5605605605606,
+                  251.5795795795796
+                ],
+                [
+                  111.8018018018018,
+                  187.1871871871872,
+                  310.5605605605606,
+                  251.5795795795796
+                ]
+              ],
+              "scores": {
+                "original": [
+                  0.9277111291885376,
+                  0.9281128644943237
+                ],
+                "no_expression": [
+                  0.8631690144538879,
+                  0.8638489246368408
+                ],
+                "counter": [
+                  0.7333353161811829,
+                  0.734580934047699
+                ]
+              },
+              "posthoc_primary_query_GT_covered": [
+                false,
+                false
+              ]
+            },
+            {
+              "frame": 41,
+              "boxes": [
+                [
+                  0.0,
+                  156.48848848848849,
+                  74.53453453453453,
+                  331.6956956956957
+                ]
+              ],
+              "scores": {
+                "original": [
+                  0.48652908205986023
+                ],
+                "no_expression": [
+                  0.4588924050331116
+                ],
+                "counter": [
+                  0.23110732436180115
+                ]
+              },
+              "posthoc_primary_query_GT_covered": [
+                true
+              ]
+            },
+            {
+              "frame": 42,
+              "boxes": [
+                [
+                  0.0,
+                  127.28728728728728,
+                  135.4044044044044,
+                  331.6956956956957
+                ]
+              ],
+              "scores": {
+                "original": [
+                  0.46604132652282715
+                ],
+                "no_expression": [
+                  0.42095333337783813
+                ],
+                "counter": [
+                  0.21709536015987396
+                ]
+              },
+              "posthoc_primary_query_GT_covered": [
+                true
+              ]
+            },
+            {
+              "frame": 43,
+              "boxes": [
+                [
+                  0.0,
+                  156.48848848848849,
+                  186.33633633633633,
+                  331.3213213213213
+                ],
+                [
+                  0.0,
+                  156.48848848848849,
+                  186.33633633633633,
+                  332.4444444444444
+                ],
+                [
+                  0.0,
+                  156.48848848848849,
+                  186.33633633633633,
+                  333.56756756756755
+                ],
+                [
+                  0.0,
+                  156.48848848848849,
+                  186.33633633633633,
+                  334.6906906906907
+                ]
+              ],
+              "scores": {
+                "original": [
+                  0.6150667667388916,
+                  0.6177980899810791,
+                  0.6205590963363647,
+                  0.6233485341072083
+                ],
+                "no_expression": [
+                  0.5252561569213867,
+                  0.5274218320846558,
+                  0.5296241044998169,
+                  0.531862199306488
+                ],
+                "counter": [
+                  0.4203503727912903,
+                  0.42466869950294495,
+                  0.4290260076522827,
+                  0.43342024087905884
+                ]
+              },
+              "posthoc_primary_query_GT_covered": [
+                true,
+                true,
+                true,
+                true
+              ]
+            }
+          ]
+        }
+      },
+      "fit_membership_at_unchanged_half": {
+        "groups": 325,
+        "positive": 316,
+        "positive_above_half": 282,
+        "negative": 588,
+        "negative_below_half": 460
+      }
+    }
+  },
+  "runtime_GT_read": false,
+  "no_threshold_tuning": true,
+  "official_metric_replacement": false,
+  "extra_GPU_or_native_requests": false,
+  "scope": "20 registered short validation frames and each existing fit pack; not full datasets",
+  "intervention": "same captured primary-query causal core input; change spec_text only",
+  "counter_expression": "other registered validation expression, fixed before model outputs",
+  "feature_source": "retained original DLM native2560 ROI features",
+  "permutation_probability_tolerance": 0.0001
+}

@@ -26,35 +26,44 @@ class NativeCategoryHead:
             sheet.paste(crop, (x+2, y+22))
         return sheet
 
-    def classify(self, image, candidates, vocabulary):
+    def build_root_request(self, image, batch, vocabulary):
         from qev.schema import ChoiceQuestion, SystemOneRequest
         groups = [vocabulary[i:i+self.group_size] for i in range(0, len(vocabulary), self.group_size)]
         roots = {str(i): ', '.join(labels) for i, labels in enumerate(groups)}
         roots['UNKNOWN'] = 'No supplied category describes this object, or visual evidence is insufficient'
+        state = {'object_crop_sheet': '<image:1>', 'object_indices': list(range(len(batch))),
+                 'task': 'visual object category recognition; identity is a separate decision',
+                 'class_groups': 'Disjoint input vocabulary groups; group membership is alphabetical/input order, not a semantic class',
+                 'evidence': 'Use the image crops; detector query labels are not category evidence'}
+        questions = {f'group_{i}': ChoiceQuestion(type='choice',
+            instructions=f'Which category group contains the best visual category for object {i}? Check the listed class names, not the group number. Choose UNKNOWN if none fits.',
+            criteria=roots) for i in range(len(batch))}
+        return (SystemOneRequest(state=state, model='jev-latest', questions=questions),
+                [{'type': 'image', 'image': self.crop_sheet(image, batch)}], groups)
+
+    def build_leaf_request(self, state, groups, root_choices):
+        from qev.schema import ChoiceQuestion, SystemOneRequest
+        questions = {}
+        for i, choice in root_choices.items():
+            if choice != 'UNKNOWN':
+                labels = groups[int(choice)]
+                options = {str(j): label for j, label in enumerate(labels)}
+                options['UNKNOWN'] = 'None of these visual categories fits, or the crop is insufficient'
+                questions[f'class_{i}'] = ChoiceQuestion(type='choice',
+                    instructions=f'What is the visual object category of object {i}? Select the actual category from this group. Do not use identity or detector query labels.', criteria=options)
+        return SystemOneRequest(state=state, model='jev-latest', questions=questions) if questions else None
+
+    def classify(self, image, candidates, vocabulary):
         outputs, reports = [], []
         for offset in range(0, len(candidates), self.batch_candidates):
             batch = candidates[offset:offset+self.batch_candidates]
-            media = [{'type': 'image', 'image': self.crop_sheet(image, batch)}]
-            state = {'object_crop_sheet': '<image:1>', 'object_indices': list(range(len(batch))),
-                     'task': 'visual object category recognition; identity is a separate decision',
-                     'class_groups': 'Disjoint input vocabulary groups; group membership is alphabetical/input order, not a semantic class',
-                     'evidence': 'Use the image crops; detector query labels are not category evidence'}
-            questions = {f'group_{i}': ChoiceQuestion(type='choice',
-                instructions=f'Which category group contains the best visual category for object {i}? Check the listed class names, not the group number. Choose UNKNOWN if none fits.',
-                criteria=roots) for i in range(len(batch))}
-            response, root_meta = self.engine.decide(SystemOneRequest(state=state, model='jev-latest', questions=questions), media=media)
-            leaf_questions = {}
-            for i in range(len(batch)):
-                root = response.answers[f'group_{i}']
-                if root.choice != 'UNKNOWN':
-                    labels = groups[int(root.choice)]
-                    options = {str(j): label for j, label in enumerate(labels)}
-                    options['UNKNOWN'] = 'None of these visual categories fits, or the crop is insufficient'
-                    leaf_questions[f'class_{i}'] = ChoiceQuestion(type='choice',
-                        instructions=f'What is the visual object category of object {i}? Select the actual category from this group. Do not use identity or detector query labels.', criteria=options)
+            request, media, groups = self.build_root_request(image, batch, vocabulary)
+            response, root_meta = self.engine.decide(request, media=media)
+            leaf_request = self.build_leaf_request(request.state, groups,
+                {i: response.answers[f'group_{i}'].choice for i in range(len(batch))})
             leaf_response, leaf_meta = (None, None)
-            if leaf_questions:
-                leaf_response, leaf_meta = self.engine.decide(SystemOneRequest(state=state, model='jev-latest', questions=leaf_questions), media=media)
+            if leaf_request is not None:
+                leaf_response, leaf_meta = self.engine.decide(leaf_request, media=media)
             for i in range(len(batch)):
                 root = response.answers[f'group_{i}']
                 label, leaf, probability = '__unknown__', None, root.probabilities[root.choice]

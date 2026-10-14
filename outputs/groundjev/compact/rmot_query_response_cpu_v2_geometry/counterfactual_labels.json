@@ -1,0 +1,456 @@
+{
+  "status": "POSTHOC_REAL_QUERY_COUNTERFACTUAL_LABELS_COMPLETE",
+  "source": "outputs/groundjev/compact/rmot_query_response_cpu_v2_geometry/report.json",
+  "GT_used_during_actor_or_interventions": false,
+  "official_metric_replacement": false,
+  "diagnostic": "candidate IoU>=.5 with primary target and not counter target, conditional membership only",
+  "unknown_or_unmatched_candidates_used_as_counter_negatives": false,
+  "counter_expressions_chosen_before_model_outputs": true,
+  "threshold": 0.5,
+  "variants": {
+    "joint": {
+      "rmot_single8": {
+        "primary_only_candidate_observations": 6,
+        "original_positive_at_fixed_half": 0,
+        "counter_false_positive_at_fixed_half": 0,
+        "counter_score_exceeds_correct_query": 6,
+        "mean_original_score": 0.005028787379463513,
+        "mean_counter_score": 0.0074832073878496885,
+        "records": [
+          {
+            "frame": 153,
+            "candidate": 0,
+            "scores": {
+              "original": 0.007147670723497868,
+              "no_expression": 0.010053725913167,
+              "counter": 0.011079858057200909
+            }
+          },
+          {
+            "frame": 153,
+            "candidate": 1,
+            "scores": {
+              "original": 0.007705386728048325,
+              "no_expression": 0.01083021704107523,
+              "counter": 0.011977439746260643
+            }
+          },
+          {
+            "frame": 155,
+            "candidate": 0,
+            "scores": {
+              "original": 0.0036307647824287415,
+              "no_expression": 0.004522878676652908,
+              "counter": 0.005173127166926861
+            }
+          },
+          {
+            "frame": 155,
+            "candidate": 1,
+            "scores": {
+              "original": 0.0037947529926896095,
+              "no_expression": 0.004714950919151306,
+              "counter": 0.005412552040070295
+            }
+          },
+          {
+            "frame": 156,
+            "candidate": 0,
+            "scores": {
+              "original": 0.005149248521775007,
+              "no_expression": 0.005986297037452459,
+              "counter": 0.007214509882032871
+            }
+          },
+          {
+            "frame": 157,
+            "candidate": 0,
+            "scores": {
+              "original": 0.0027449005283415318,
+              "no_expression": 0.0036844469141215086,
+              "counter": 0.004041757434606552
+            }
+          }
+        ]
+      },
+      "rmot_multi12": {
+        "primary_only_candidate_observations": 8,
+        "original_positive_at_fixed_half": 0,
+        "counter_false_positive_at_fixed_half": 0,
+        "counter_score_exceeds_correct_query": 0,
+        "mean_original_score": 0.0002543277505537844,
+        "mean_counter_score": 0.00021580964767053956,
+        "records": [
+          {
+            "frame": 35,
+            "candidate": 0,
+            "scores": {
+              "original": 0.00018580222968012094,
+              "no_expression": 0.0001991713506868109,
+              "counter": 0.00013046078674960881
+            }
+          },
+          {
+            "frame": 36,
+            "candidate": 0,
+            "scores": {
+              "original": 5.396294727688655e-05,
+              "no_expression": 5.53899553779047e-05,
+              "counter": 4.320426523918286e-05
+            }
+          },
+          {
+            "frame": 41,
+            "candidate": 0,
+            "scores": {
+              "original": 0.0003854777605738491,
+              "no_expression": 0.00037786696339026093,
+              "counter": 0.00032215137616731226
+            }
+          },
+          {
+            "frame": 42,
+            "candidate": 0,
+            "scores": {
+              "original": 0.0007644332945346832,
+              "no_expression": 0.0007237193640321493,
+              "counter": 0.0006375550874508917
+            }
+          },
+          {
+            "frame": 43,
+            "candidate": 0,
+            "scores": {
+              "original": 0.0001639620604692027,
+              "no_expression": 0.00013751858205068856,
+              "counter": 0.00015015463577583432
+            }
+          },
+          {
+            "frame": 43,
+            "candidate": 1,
+            "scores": {
+              "original": 0.0001620663533685729,
+              "no_expression": 0.00013537329505197704,
+              "counter": 0.00014883790572639555
+            }
+          },
+          {
+            "frame": 43,
+            "candidate": 2,
+            "scores": {
+              "original": 0.00016028991376515478,
+              "no_expression": 0.00013333657989278436,
+              "counter": 0.00014761899365112185
+            }
+          },
+          {
+            "frame": 43,
+            "candidate": 3,
+            "scores": {
+              "original": 0.00015862744476180524,
+              "no_expression": 0.00013140453665982932,
+              "counter": 0.0001464941306039691
+            }
+          }
+        ]
+      }
+    },
+    "broad_teacher": {
+      "rmot_single8": {
+        "primary_only_candidate_observations": 6,
+        "original_positive_at_fixed_half": 4,
+        "counter_false_positive_at_fixed_half": 6,
+        "counter_score_exceeds_correct_query": 6,
+        "mean_original_score": 0.5206921646992365,
+        "mean_counter_score": 0.9607952137788137,
+        "records": [
+          {
+            "frame": 153,
+            "candidate": 0,
+            "scores": {
+              "original": 0.5617033243179321,
+              "no_expression": 0.9115325212478638,
+              "counter": 0.977403461933136
+            }
+          },
+          {
+            "frame": 153,
+            "candidate": 1,
+            "scores": {
+              "original": 0.5807482004165649,
+              "no_expression": 0.9177709221839905,
+              "counter": 0.9779098033905029
+            }
+          },
+          {
+            "frame": 155,
+            "candidate": 0,
+            "scores": {
+              "original": 0.3808320164680481,
+              "no_expression": 0.7090757489204407,
+              "counter": 0.9567229151725769
+            }
+          },
+          {
+            "frame": 155,
+            "candidate": 1,
+            "scores": {
+              "original": 0.3861646354198456,
+              "no_expression": 0.7127833962440491,
+              "counter": 0.9565442204475403
+            }
+          },
+          {
+            "frame": 156,
+            "candidate": 0,
+            "scores": {
+              "original": 0.6066154837608337,
+              "no_expression": 0.8100403547286987,
+              "counter": 0.9365447759628296
+            }
+          },
+          {
+            "frame": 157,
+            "candidate": 0,
+            "scores": {
+              "original": 0.6080893278121948,
+              "no_expression": 0.8923273682594299,
+              "counter": 0.9596461057662964
+            }
+          }
+        ]
+      },
+      "rmot_multi12": {
+        "primary_only_candidate_observations": 8,
+        "original_positive_at_fixed_half": 8,
+        "counter_false_positive_at_fixed_half": 0,
+        "counter_score_exceeds_correct_query": 0,
+        "mean_original_score": 0.9901317432522774,
+        "mean_counter_score": 0.3081796318292618,
+        "records": [
+          {
+            "frame": 35,
+            "candidate": 0,
+            "scores": {
+              "original": 0.9929640293121338,
+              "no_expression": 0.38784241676330566,
+              "counter": 0.050721317529678345
+            }
+          },
+          {
+            "frame": 36,
+            "candidate": 0,
+            "scores": {
+              "original": 0.9940449595451355,
+              "no_expression": 0.3162679672241211,
+              "counter": 0.09162598848342896
+            }
+          },
+          {
+            "frame": 41,
+            "candidate": 0,
+            "scores": {
+              "original": 0.9843242168426514,
+              "no_expression": 0.6932274699211121,
+              "counter": 0.35308679938316345
+            }
+          },
+          {
+            "frame": 42,
+            "candidate": 0,
+            "scores": {
+              "original": 0.9815281629562378,
+              "no_expression": 0.5522422790527344,
+              "counter": 0.31801849603652954
+            }
+          },
+          {
+            "frame": 43,
+            "candidate": 0,
+            "scores": {
+              "original": 0.9919413328170776,
+              "no_expression": 0.5521308779716492,
+              "counter": 0.4059969484806061
+            }
+          },
+          {
+            "frame": 43,
+            "candidate": 1,
+            "scores": {
+              "original": 0.9920133948326111,
+              "no_expression": 0.5519568920135498,
+              "counter": 0.4106418490409851
+            }
+          },
+          {
+            "frame": 43,
+            "candidate": 2,
+            "scores": {
+              "original": 0.9920841455459595,
+              "no_expression": 0.551821231842041,
+              "counter": 0.41531890630722046
+            }
+          },
+          {
+            "frame": 43,
+            "candidate": 3,
+            "scores": {
+              "original": 0.9921537041664124,
+              "no_expression": 0.5517234802246094,
+              "counter": 0.4200267493724823
+            }
+          }
+        ]
+      }
+    },
+    "broad_native": {
+      "rmot_single8": {
+        "primary_only_candidate_observations": 6,
+        "original_positive_at_fixed_half": 0,
+        "counter_false_positive_at_fixed_half": 6,
+        "counter_score_exceeds_correct_query": 6,
+        "mean_original_score": 0.43222106496493023,
+        "mean_counter_score": 0.7722199559211731,
+        "records": [
+          {
+            "frame": 153,
+            "candidate": 0,
+            "scores": {
+              "original": 0.3640718162059784,
+              "no_expression": 0.6703492999076843,
+              "counter": 0.7704768180847168
+            }
+          },
+          {
+            "frame": 153,
+            "candidate": 1,
+            "scores": {
+              "original": 0.3620246648788452,
+              "no_expression": 0.668357789516449,
+              "counter": 0.767548680305481
+            }
+          },
+          {
+            "frame": 155,
+            "candidate": 0,
+            "scores": {
+              "original": 0.4568071961402893,
+              "no_expression": 0.733293890953064,
+              "counter": 0.8025509715080261
+            }
+          },
+          {
+            "frame": 155,
+            "candidate": 1,
+            "scores": {
+              "original": 0.45347729325294495,
+              "no_expression": 0.7295901775360107,
+              "counter": 0.7988552451133728
+            }
+          },
+          {
+            "frame": 156,
+            "candidate": 0,
+            "scores": {
+              "original": 0.4977516829967499,
+              "no_expression": 0.6934888958930969,
+              "counter": 0.7131493091583252
+            }
+          },
+          {
+            "frame": 157,
+            "candidate": 0,
+            "scores": {
+              "original": 0.45919373631477356,
+              "no_expression": 0.7489514350891113,
+              "counter": 0.7807387113571167
+            }
+          }
+        ]
+      },
+      "rmot_multi12": {
+        "primary_only_candidate_observations": 8,
+        "original_positive_at_fixed_half": 5,
+        "counter_false_positive_at_fixed_half": 1,
+        "counter_score_exceeds_correct_query": 0,
+        "mean_original_score": 0.5959208533167839,
+        "mean_counter_score": 0.3562115300446749,
+        "records": [
+          {
+            "frame": 35,
+            "candidate": 0,
+            "scores": {
+              "original": 0.49396899342536926,
+              "no_expression": 0.32981204986572266,
+              "counter": 0.17178073525428772
+            }
+          },
+          {
+            "frame": 36,
+            "candidate": 0,
+            "scores": {
+              "original": 0.8440549373626709,
+              "no_expression": 0.7465454339981079,
+              "counter": 0.5222434997558594
+            }
+          },
+          {
+            "frame": 41,
+            "candidate": 0,
+            "scores": {
+              "original": 0.48652908205986023,
+              "no_expression": 0.4588924050331116,
+              "counter": 0.23110732436180115
+            }
+          },
+          {
+            "frame": 42,
+            "candidate": 0,
+            "scores": {
+              "original": 0.46604132652282715,
+              "no_expression": 0.42095333337783813,
+              "counter": 0.21709536015987396
+            }
+          },
+          {
+            "frame": 43,
+            "candidate": 0,
+            "scores": {
+              "original": 0.6150667667388916,
+              "no_expression": 0.5252561569213867,
+              "counter": 0.4203503727912903
+            }
+          },
+          {
+            "frame": 43,
+            "candidate": 1,
+            "scores": {
+              "original": 0.6177980899810791,
+              "no_expression": 0.5274218320846558,
+              "counter": 0.42466869950294495
+            }
+          },
+          {
+            "frame": 43,
+            "candidate": 2,
+            "scores": {
+              "original": 0.6205590963363647,
+              "no_expression": 0.5296241044998169,
+              "counter": 0.4290260076522827
+            }
+          },
+          {
+            "frame": 43,
+            "candidate": 3,
+            "scores": {
+              "original": 0.6233485341072083,
+              "no_expression": 0.531862199306488,
+              "counter": 0.43342024087905884
+            }
+          }
+        ]
+      }
+    }
+  }
+}

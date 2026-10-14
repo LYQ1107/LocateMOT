@@ -52,13 +52,14 @@ class FeatureDecision:
 
 
 class OneJevDecision:
-    def __init__(self, checkpoint, device='cuda:0', batch_candidates=16, shortlist=32, evidence_format='v1', adaptive_context=False):
+    def __init__(self, checkpoint, device='cuda:0', batch_candidates=16, shortlist=32, evidence_format='v1', adaptive_context=False, rmot_membership=False):
         from qev.mm_engine import MMDecisionEngine
         self.checkpoint = str(Path(checkpoint).resolve())
         self.engine = MMDecisionEngine(str(checkpoint), device=device, dtype='bfloat16', cuda_graphs=False)
         self.batch_candidates, self.shortlist = batch_candidates, shortlist
         self.evidence_format = evidence_format
         self.adaptive_context = adaptive_context
+        self.rmot_membership = rmot_membership
 
     def _candidate_sheet(self, image, candidates):
         from PIL import Image, ImageDraw
@@ -156,6 +157,9 @@ class OneJevDecision:
                 f'Is candidate {i} a clear, reliable identity observation suitable for long-term memory update? Reject occlusion, ambiguous identity and drifting boxes.')
             questions[f'reliability_{i}'] = ScoreQuestion(type='score', instructions=
                 f'How reliable is the identity evidence for candidate {i}?', criteria=['contradictory', 'ambiguous', 'supported', 'strong'])
+            if getattr(self, 'rmot_membership', False) and specification['task'] == 'rmot':
+                questions[f'membership_{i}'] = NoulQuestion(type='noul', instructions=
+                    f'Does candidate {i} satisfy the supplied referring expression? Use current visual content and the expression, including attributes and relations. A detector query label or a matching identity alone does not prove expression membership.')
         for t in ranked:
             questions[f'life_{t.track_id}'] = ChoiceQuestion(type='choice', instructions=
                 f'What is the current lifecycle of identity {t.track_id} given only current and past evidence?',
@@ -163,6 +167,8 @@ class OneJevDecision:
                           'REACTIVATE': 'returned after a gap', 'TERMINATE': 'permanently leave this tracked video'})
         if not questions:
             questions['empty'] = NoulQuestion(type='noul', instructions='Does the current image contain a valid tracking target?')
+            if getattr(self, 'rmot_membership', False) and specification['task'] == 'rmot':
+                questions['empty'].instructions = 'Does the current image contain an object that satisfies the supplied referring expression? Use the visual evidence and the expression.'
         return SystemOneRequest(state=state, model='jev-latest', questions=questions), media
 
     def decide(self, image, candidates, tracks, timestamp, specification):
@@ -195,6 +201,8 @@ class OneJevDecision:
                     'reliability': response.answers[f'reliability_{i}'].score,
                     'reliability_probabilities': response.answers[f'reliability_{i}'].probabilities,
                     'shortlisted_ids': [t.track_id for t in ranked]})
+                if f'membership_{i}' in request.questions:
+                    results[-1]['query_membership_probability'] = response.answers[f'membership_{i}'].noul
             for t in ranked:
                 # Lifecycle is recorded once, from the first group that sees
                 # this identity; group order is deterministic and causal.
@@ -206,6 +214,9 @@ class OneJevDecision:
                                'shortlist_limit': self.shortlist, 'batches': reports}
         if self.adaptive_context or self.evidence_format=='v6_native_compact_history':
             metadata.update(context_group_policy='split only native preflight-rejected groups; retain every candidate and all up-to32 identity options',context_splits=context_splits)
+        if getattr(self, 'rmot_membership', False) and specification['task'] == 'rmot':
+            metadata.update(query_membership_source='native pretrained OneJev Noul decision, not token-mean Compact head',
+                            query_output_policy='native Noul membership>=.5; physical identity memory retained before output filtering')
         return results, life, metadata
 
     def accepted_batch(self, image, group, ranked, timestamp, specification):

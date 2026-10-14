@@ -525,3 +525,59 @@ TAO Base/Novel63 v2 remains live on GPU5 after the explicit None expression
 argument repair; its metrics are pending. Six full1203 memory interventions,
 all predictions and the comparison figure were published and remote-tree
 verified in commit 085125569af96d47b89f2fd269c6501f02b0b28f.
+
+## Real expression response diagnostic and Full semantic training gap
+
+CPU replays of all20registeredRMOTframes/27native candidate observations
+for joint, broadteacher and broadnative checkpoints reproduce recordedGPU
+boxes/IDs exactly. MembershipGPUCPUmaximum difference is7.15256e-5.
+Within captured groups and identity shortlists, inverse-aligned candidate/history
+permutations differ by at most6.55651e-7 across all six probability heads;
+this does not establish full-pipeline invariance across candidate group boundaries.
+
+On the six primary-onlyGTcovered redcoatwoman observations, broadnative
+correct-expression mean membership is .432221, versus .772220 for the wrong
+arranging-automobiles expression. The unchanged .5 threshold rejects all six
+correct expressions and accepts all six wrong counterparts. Posthoc counter
+labels confirm these women are not targets of that car query. Language response
+is present but direction is wrong here; numerical/order effects do not explain
+this failure. These are conditional diagnostic observations, not official
+accuracy metrics or evidence of broad generalization. Sources:
+outputs/groundjev/compact/rmot_query_response_cpu_v2_geometry/report.json and
+counterfactual_labels.json. The first diagnostic accidentally included floating
+query scores in its geometry comparison; correctedv2 preserves v1 and reports
+score differences separately.
+
+The actual original50020881row curriculum and prepared41762row native mixture
+contain only state.task=mot, person vocabulary and no expressions. Mixed question
+families are not mixed tracking tasks. One500 is an identity/memory adaptation
+stage; neither it nor the prepared200domain experiment proves unified Full
+semantic training. Scope audit: validation/onejev_sft_task_scope_20261015.json.
+
+Full now has an opt-in native-rmot-membership flag: an explicit pretrained
+OneJev Noul question supplies expression membership, and the existing .5
+output rule retains physical identity memory before filtering. The default
+protocol is unchanged. Its genuine native-kernel4frame functional probe has one
+blocking owner waiting for the existing500matchedcontroller to exit and pass;
+GPU4 is reused only then. Owner: validation/onejev500_native_rmot_probe_v1.
+Native execution and semantic adaptation evidence remain pending.
+
+New native RMOT instantaneous supervision has346rows: all165recordedDLM
+proposals under both registered expressions give330membership rows (58yes,
+272no), plus16presence rows for the eight rejected/empty proposal frames.
+All72fitframes/144query contexts remain; GTnever enters state and no new
+One500actor-history claim is made. Initialv1 failed before its first row
+because the independent worktree has no data symlink; v2 uses the registered
+release root without modifying data or omitting samples. Official plan-only
+accepts all346, max2293/32768tokens, zero dropped,457637tokens total.
+
+New Base-category supervision uses the earlier registered64TAOtrainframes:
+215GTteacher crops over9Base classes yield430root/leaf questions, with all1203
+input categories retained and noNovelGTsupervision. GTteacher proposals and
+conditional correct-root teacher forcing are explicit; runtime chooses its
+root using the model. No unknown negative supervision was added. Official
+plan-only accepts all430, max4233/32768tokens, zero dropped,1283259tokens total.
+Shared category request builders reproduce prior root/leaf request text and
+real crop pixels exactly on a real six-object input; capture-only routing
+answers are not native inference or accuracy evidence. These776semantic rows
+are prepared data, not trained weights or completed unified evaluation.

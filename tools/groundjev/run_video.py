@@ -72,6 +72,7 @@ def main():
     parser.add_argument('--native-feature-url',help='isolated official DLM visual encoder RPC; no substitute image features')
     parser.add_argument('--adaptive-context-groups',action='store_true',help='split native preflight-rejected groups, retaining all candidate rows and identity options')
     parser.add_argument('--category-policy', choices=['native_label', 'native_hierarchical'], default='native_label')
+    parser.add_argument('--native-rmot-membership', action='store_true', help='Full: explicit native OneJev Noul expression decision, with fixed .5 output threshold')
     parser.add_argument('--expression')
     parser.add_argument('--vocabulary', nargs='+')
     parser.add_argument('--out', type=Path, required=True)
@@ -97,6 +98,8 @@ def main():
     manifest = json.loads(args.video.read_text())
     if manifest['task'] != args.task:
         parser.error('requested task differs from the registered video scope')
+    if args.native_rmot_membership and (args.backend != 'full' or args.task != 'rmot'):
+        parser.error('native RMOT membership requires the Full OneJev backend and RMOT task')
     vocabulary = args.vocabulary or manifest['vocabulary']
     args.expression = args.expression or manifest.get('expression')
     if args.task == 'rmot' and not args.expression:
@@ -119,7 +122,8 @@ def main():
     elif args.backend=='compact':
         from locatemot.groundjev.compact import CompactDecision
         decision=CompactDecision(args.checkpoint,memory_feature_view=args.memory_feature_view)
-    else: decision=OneJevDecision(args.checkpoint,evidence_format=args.evidence_format,adaptive_context=args.adaptive_context_groups)
+    else: decision=OneJevDecision(args.checkpoint,evidence_format=args.evidence_format,adaptive_context=args.adaptive_context_groups,
+                                rmot_membership=args.native_rmot_membership)
     if args.category_policy == 'native_hierarchical':
         from locatemot.groundjev.category import NativeCategoryHead, CategorizedDecision
         engine = decision.engine if args.backend == 'full' else OneJevDecision(args.checkpoint).engine

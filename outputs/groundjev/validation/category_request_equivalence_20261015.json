@@ -1,0 +1,10 @@
+{
+  "status": "REAL_CROP_CATEGORY_ROOT_LEAF_REQUEST_MEDIA_EQUIVALENCE_PASS",
+  "objects": 6,
+  "classes": 1203,
+  "native_engine_calls_captured": 2,
+  "native_model_inference_claim": false,
+  "answer_values": "fixed capture-only values, no accuracy claim",
+  "old_source": "8b880bd036e7b0d4dac1f97eb147621710549042",
+  "root_leaf_requests_and_real_crop_pixels_exactly_unchanged": true
+}

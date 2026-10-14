@@ -1,0 +1,6 @@
+{
+  "status": "FAILED_BEFORE_FIRST_SUPERVISED_ROW",
+  "root_cause": "worktree has no data symlink; labels live under registered original release root",
+  "fix": "derive release root from registered primary expression path; no dataset mutation or sample omission",
+  "next_output": "onejev_native_rmot_membership_v2_registered_release_root"
+}

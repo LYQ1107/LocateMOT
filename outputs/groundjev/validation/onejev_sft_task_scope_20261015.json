@@ -1,0 +1,50 @@
+{
+  "status": "ACTUAL_ONEJEv_SFT_TASK_SCOPE_AUDITED",
+  "corpora": {
+    "outputs/groundjev/training_data/mixed_onejev_own_history_v3_lifecycle_fixed2_500/train.jsonl": {
+      "rows": 20881,
+      "tracking_task_counts": {
+        "mot": 20881
+      },
+      "structured_question_family_counts": {
+        "identity": 9840,
+        "memory_update": 2460,
+        "reliability": 2460,
+        "lifecycle": 5951,
+        "withheld_correct_options": 170
+      },
+      "sources": {
+        "MOT17-02-FRCNN": 9418,
+        "dancetrack0001": 2064,
+        "MOT20-01": 9399
+      },
+      "nonempty_expression_rows": 0,
+      "vocabulary_counts": {
+        "person": 20881
+      }
+    },
+    "outputs/groundjev/training_data/onejev_native_mixture200_v2_family_matched/train.jsonl": {
+      "rows": 41762,
+      "tracking_task_counts": {
+        "mot": 41762
+      },
+      "structured_question_family_counts": {
+        "identity": 19680,
+        "memory_update": 4920,
+        "reliability": 4920,
+        "lifecycle": 11902,
+        "withheld_correct_options": 340
+      },
+      "sources": {
+        "MOT17-02-FRCNN": 18372,
+        "MOT20-01": 18359,
+        "dancetrack0001": 5031
+      },
+      "nonempty_expression_rows": 0,
+      "vocabulary_counts": {
+        "person": 41762
+      }
+    }
+  },
+  "no_runtime_or_training_protocol_change": true
+}
