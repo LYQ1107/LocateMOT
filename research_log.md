@@ -2191,3 +2191,28 @@ control policy, not old whole-frame-rejection scores. One blocking owner waits
 currentGPU5memoryjobexit beforeowning temporaryDLM/feature services; stops
 bothcompletegroups beforecorecontrols. Timestampannotationsteps, notphysical
 seconds/FPS. No rawdatasets/modelweights uploaded or all-datasetfeaturecache.
+
+Prepare explicit nativeOne200curriculum for proposal-domain mismatch: retainall20881existingteacher-weighted rows; native5661unique realDLM/uncorrectedown-history rows identityweight4=>9213, deterministiccyclicexpand to20881, total41762equal-source rows. No eval/Novellabels, no state correction or omittednativeunit. Register matchedteacher-only200 andnative-mixture200 fromsame eventualOne500FP32 initialization, same lr2e-6/seed0/budget/officialloss. These are additional200 stages, not changes to current500. Run officialCPUplan-only with existing100tokenizer/config (same released tokenizer/visiongeometry) before anytraining; reject anydroppedrow. Stage launch requires actual500completion/evaluation and correctFP32 initialization.
+
+Beforetraining, strengthen domaincomparison: preparedv1eligible familyratios differed. Preserveunusedv1; v2pairs eachteacherrow withnative row ofidenticalquestionfamily (9840identity/2460update/2460reliability/5951lifecycle/170withheld per source), equal50/50sources41762rows andall5661unique native rows. No label/dataframe or metricchange. Preflightv1stilldiagnoses allunique originals, newv2willget its own officialplan preflight; current500untouched.
+
+Realfull375stage initialization probe passed: all320trainableparameter tensors/752393024parameters copiedfromactualFP32trainingstate withmaxdelta0;498430914elements differfromBF16inference-export-derived initialization. CPUonly, no old375weights/state/live500modification. Newstageinitializerexplicitreset is distinctfrom exactresume. v1officialplan-only41762rows max26028/cap32768, zero drops; exactfamilymatchedv2officialpreflight nowrunning separately. Stage200launch remains pending real500completion/controlreview, no blind extra training started.
+
+### Full7218frame memory interventions complete
+
+Allsix1203frame traces/videos/GT/scorers/samecandidate+ROI sources validated;
+all27native rejectionframes eachretain denominator. Freshdefault matches
+preservedGPU7/resumed baseline exactly, maxprobdelta0. OfficialHOTA/IDF1:
+referencegated3=26.3157/30.6329%; frameonly11.4408/8.4615;
+recentobs3=16.3943/18.2023; EMAalways3=14.6426/16.8764;
+anchoralways3=24.2449/29.8179; anchorgated30=18.5523/19.8490.
+ReferenceIDSW165 vsalways154, but referenceFN1962 vs2143 andFP579vs604;
+no claim that gating improves everymetric. Keep default3s; longerretention
+worsens thisvideo and haszero >3snaturalrecovery support, so do not claim
+long-term recovery. Anchor/update evidence is frozenmodel interventions only,
+not optimalEMA/newarchitecture superiority. MatchedGTNoMatch excessive;
+nextnativeOne data-domain intervention remains pendingreal500results.
+
+Selectedv2family-matched native mixture officialCPUpreflight passed41762rows, max26028/cap32768, zero drops andPLAN_OK,119seconds,723724879tokens. Alloriginalunique native rows retained. RealFP32stage initialization proved on375fullmodel; no additional200training started before500result review.
+
+TAO63v1 failedbeforefirstnativequery: stream call omitted requiredexpression parameter (OVMOTNone). Bothownedservicegroups stoppedverified. SmallfixexplicitNone; preservev1empty prefix/failure; v2replays entireunfinished40frame unit withidenticalvocab/parser/scorer/seed/scope, actualfirstquery is targeted regression beforeremaining519requests.

@@ -1,0 +1,19 @@
+{
+  "status": "ALL7218_FRAME_MEMORY_INTERVENTIONS_VALIDATED",
+  "variants": 6,
+  "frames_each": 1203,
+  "decoded_video_frames_total": 7218,
+  "same_native_boxes_labels_scores_and_shared_ROIs": true,
+  "all27rejected_frames_per_variant_in_denominators": true,
+  "default_previous_baseline_raw_predictions_and_probabilities_retained": true,
+  "trained_model_weights_unchanged": true,
+  "GT_during_inference": false,
+  "natural_gap_gt3s_support": 0,
+  "long_gt3s_recovery_claim": false,
+  "frozen_model_input_policy_intervention_not_independently_retrained_methods": true,
+  "detector_E2E_speed_claim": false,
+  "intervention_output_bytes_including_videos": 372087301,
+  "feature_log_and_memory_bytes": 207974382,
+  "shared_original_native_feature_log_bytes": 790667425,
+  "new_full_dataset_feature_cache_created": false
+}

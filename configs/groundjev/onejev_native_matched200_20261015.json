@@ -1,0 +1,30 @@
+{
+  "name": "MatchedOne500FP32 teacher-only vs real-native-source continuation200",
+  "initialization": "actual500complete FP32masters from existingoriginal500state, same752393024trainablelanguage parameters; frozenvision retained",
+  "new_stage": "explicitoptimizer/scheduler reset, sameofficialSFTmath",
+  "checkpoint_reference": "outputs/groundjev/training/onejev_own_history_v3_exact500_replay_stateful/latest_training_state.pt at verifiedstep500",
+  "required_before_launch": "actual500complete and existing500matchednativecontrol results reviewed; no running500interruption",
+  "steps_each": 200,
+  "seed_each": 0,
+  "lr_each": 2e-06,
+  "accum_rows_each": 4,
+  "max_context_each": 32768,
+  "variants": [
+    {
+      "name": "teacher_continuation",
+      "config": "configs/groundjev/onejev_teacher_continuation200_v1.json",
+      "eligible_source": "same20881teacher/fragment rows from original500"
+    },
+    {
+      "name": "native_mixture",
+      "config": "configs/groundjev/onejev_native_mixture200_v1.json",
+      "eligible_source": "41762rows, equalteacher/native and identicaltyped-question-family counts, all5661unique actualDLM/uncorrectedOne100history rows retained"
+    }
+  ],
+  "primary_hypothesis": "realcandidate/own-history distribution addresses GT-proposal domain mismatch; matchedteachercontinuation controls extra200budget",
+  "native_corpus": "legal48trainframes MOT17/DanceTrack/MOT20, not newlyadapted500actor rollout",
+  "stage_initialization_validation": "actual full375model 320FP32parameter tensors/752393024parameters restored difference0;498430914elements retain precision beyondBF16 export",
+  "training_started": false,
+  "Novel_or_eval_GT_for_training": false,
+  "full_research_goal_complete": false
+}

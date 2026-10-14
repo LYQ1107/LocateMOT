@@ -1,0 +1,27 @@
+{
+  "status": "NATIVE_TEACHER_EQUAL_SOURCE_AND_EXACT_FAMILY_ELIGIBILITY_PREPARED_NOT_TRAINED",
+  "seed": 0,
+  "total_rows": 41762,
+  "teacher_rows": 20881,
+  "native_resampled_rows": 20881,
+  "native_unique_rows_retained": 5661,
+  "native_frames": 48,
+  "both_domain_family_counts_match": {
+    "teacher:identity": 9840,
+    "native:identity": 9840,
+    "teacher:memory_update": 2460,
+    "native:memory_update": 2460,
+    "teacher:reliability": 2460,
+    "native:reliability": 2460,
+    "teacher:lifecycle": 5951,
+    "native:lifecycle": 5951,
+    "teacher:withheld_correct_options": 170,
+    "native:withheld_correct_options": 170
+  },
+  "identity_repeat_weight_both_domains": 4,
+  "sourceSampling": "one native row of the same typed-question family per teacher row, deterministic cyclic nativepool, no unique native row omitted",
+  "proposal_sources": "teacherGT+declaredfragments vs actualGroundDLM; both uncorrected actualmodelhistory",
+  "Novel_or_evaluation_training_labels_used": false,
+  "native_stage_training_complete": false,
+  "supersedes": "v1equal-source mixture had differing domainfamily ratios; preserved as unused prepared data"
+}

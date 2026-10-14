@@ -1,0 +1,28 @@
+{
+  "status": "EXPLICIT_EQUAL_SOURCE_MIXTURE_PREPARED_NOT_TRAINED",
+  "seed": 0,
+  "teacher_rows": 20881,
+  "native_unique_rows": 5661,
+  "native_identity_weighted_rows": 9213,
+  "native_resampled_rows": 20881,
+  "total_rows": 41762,
+  "native_source_frames": 48,
+  "sources": "MOT17/DanceTrack/MOT20 legaltrain only, realDLM proposals and uncorrected actualOne100 actorhistory",
+  "identity_repeat_weight_both_sources": 4,
+  "source_sampling": "teacher/native equal eligible row weight by explicit deterministic cyclic native expansion; no omitted unique native row",
+  "family_counts": {
+    "teacher:identity": 9840,
+    "native:identity": 10717,
+    "native:memory_update": 2682,
+    "native:lifecycle": 4623,
+    "teacher:memory_update": 2460,
+    "teacher:reliability": 2460,
+    "native:withheld_correct_options": 157,
+    "native:reliability": 2702,
+    "teacher:lifecycle": 5951,
+    "teacher:withheld_correct_options": 170
+  },
+  "Native_GT_inputs_or_actor_correction": false,
+  "evaluation_or_Novel_training_labels_used": false,
+  "actual_native_stage_training": false
+}

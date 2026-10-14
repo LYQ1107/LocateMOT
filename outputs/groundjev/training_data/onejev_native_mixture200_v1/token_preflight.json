@@ -1,0 +1,10 @@
+{
+  "status": "OFFICIAL_CPU_PLAN_PREFLIGHT_PASS",
+  "source_mixture": "v1equal-source, unused afterfamilymatchingv2",
+  "model_configuration": "existingreal100checkpoint/tokenizer/visionprocessor, unchanged across375andplanned500",
+  "native_model_weights_loaded_for_preflight": false,
+  "official_plan": "plan-only: 41762 rows rendered in 121s; tokens p50 18509 p90 24764 p99 25988 max 26028; 0 rows over max-len 32768; 41762 micro-batches, 10441 steps for 1 ranks; total tokens 722,037,426",
+  "dropped_rows": 0,
+  "max_length": 32768,
+  "training_complete": false
+}

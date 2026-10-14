@@ -1,5 +1,5 @@
 {
-  "status": "WAITING_REGISTERED_GPU5_MEMORY_OWNER",
+  "status": "FULL_BASE_NOVEL_VIDEO_FAILED",
   "physical_gpu": 5,
   "manifest": "outputs/groundjev/multitask_pilot_data/ovmot_tao_base_novel63_full.json",
   "all40annotation_frames": true,
@@ -9,5 +9,11 @@
   "verified_memory_owner": [
     1389525,
     "36989871"
-  ]
+  ],
+  "owned_service_groups": [
+    1436506,
+    1436507
+  ],
+  "error": "CalledProcessError(1, ['.venv-onejev-py310/bin/python', 'tools/groundjev/stream_tao_native_candidates.py', '--manifest', 'outputs/groundjev/multitask_pilot_data/ovmot_tao_base_novel63_full.json', '--out', 'outputs/groundjev/multitask_runs/tao_base_novel63_full_v1/native_candidates'])",
+  "owned_native_service_groups_stopped": true
 }

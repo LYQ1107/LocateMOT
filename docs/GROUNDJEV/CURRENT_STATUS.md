@@ -450,3 +450,54 @@ scored-query aggregation retains every nativeoutcome/rejectedquery and all
 classes/frames, no GT filter/NMS/topK. SourceFPSunknown; annotationstep time,
 no physicalFPSor E2Espeedclaim fromreplay. Owner:
 outputs/groundjev/multitask_runs/tao_base_novel63_full_v1.
+
+## Real native-proposal OneJev continuation preparation
+
+Existing original500uses declaredGTproposals/fragments. Prepare a matched
+additional200teacher-only/native-mixture study to isolate proposal-domain
+history effects from extra trainingbudget. Equalinitial real500FP32masters,
+seed0/lr2e-6/200steps/4rows/32768context/officialloss/frozenvision; explicitnew
+optimizer/scheduler reset. No change to running500 and no stage200launch yet.
+Native48trainframe corpus contains5661unique actualDLM/uncorrectedOne100history
+rows, includingMOT20. Preserve all originals; identityweight4inbothsources.
+Native/teacher eligibility is exactlymatched bytyped-question family and50/50
+sourceweight (41762rows). v1preparation withunmatchedfamilyratios retained as
+unused; v2is selected. No Novel/evaluation supervision or correctedactorstates.
+
+Actualfull375checkpoint probe validates320FP32tensors/752,393,024trainable
+parameters, maximuminitializationdifference0. It restores498,430,914elements
+withadditionalprecision relative toBF16inference-export initialization; frozen
+vision/config/tokenizer unchanged, CPUonly, oldlive500andweights untouched.
+Officialv1CPUplan-only41762rows max26028/cap32768 andzero drops. The exact
+familymatchedv2 gets its own officialpreflight. Launch requires actual500
+completion and existing matchednativecontrol review. Nativecorpus actor is
+One100; do not claim newlyadapted500onlinehistory in this preparedstage.
+
+## Full memory intervention results (complete)
+
+All7218nativeinput frames/six videos verified; samecheckpoint/candidates/ROIs,
+all27rejectedframes pervariant and unmodifiedTrackEval. Freshdefault reproduces
+priorbaseline predictions and probabilities exactly (maximumdelta0).
+
+| Frozen-model memory intervention | HOTA % | IDF1 % | IDSW | FN |
+|---|---:|---:|---:|---:|
+| Anchor + learned gated update,3s | 26.316 | 30.633 | 165 | 1962 |
+| Previousframe-only identity memory | 11.441 | 8.461 | 295 | 1548 |
+| Recentobservation features,3s | 16.394 | 18.202 | 141 | 2754 |
+| UnconditionalEMA features,3s | 14.643 | 16.876 | 119 | 2972 |
+| Anchor + unconditionalupdate,3s | 24.245 | 29.818 | 154 | 2143 |
+| Anchor + learnedupdate,30s | 18.552 | 19.849 | 148 | 2484 |
+
+Keep currentgated3s default. It improvesHOTA/IDF1relativealwayswrite here, with
+moreIDSW but fewerFP/FN. No generalization/independentlyretrainedEMA superiority
+claim. Natural >3srecovery support remains0/null, so 30srun is retention/
+competition sensitivity, not proof of longtermrecovery. ExcessiveNoMatch and
+weakshortgap recovery remain problems. Evidence: memory_full1203_v1/
+aggregate_results.json, validation.json and memory_comparison.svg. FullTAO
+Base/Novelowner now reusesGPU5 after thisfiniteownerexit; no extraGPU added.
+
+Selected exactfamilymatchedv2officialCPUpreflight completed:41762rows rendered,
+maximum26028tokens/cap32768, zero droppedrows, PLAN_OK. Bothdomains have
+identicaltyped-question eligibilitycounts; no nativeunique row omitted. Actual
+newstage training remains pending500completion/controlreview. Full375FP32
+initialization probe is numericalcorrectness evidence, not a newtracking gain.

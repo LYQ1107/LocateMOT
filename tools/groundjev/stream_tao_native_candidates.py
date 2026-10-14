@@ -28,7 +28,7 @@ def main():
             for offset in range(0,len(vocabulary),96):
                 chunk=vocabulary[offset:offset+96]
                 try:
-                    current,metadata=frontend._request(image,'ovmot',chunk,image_path=path)
+                    current,metadata=frontend._request(image,'ovmot',chunk,None,image_path=path)
                     candidates.extend(current);status='SCORED';counts['scored_queries']+=1
                 except GroundingProtocolError as error:
                     metadata=error.metadata;status='REJECTED';counts['rejected_queries']+=1

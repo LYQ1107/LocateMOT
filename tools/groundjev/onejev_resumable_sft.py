@@ -52,12 +52,45 @@ def restore_state(path,model,opt,sched,args):
     return state
 
 
+def initialize_fp32_stage(path,model,args,expected_step):
+    """New explicit curriculum: preserve real masters, reset optimizer/scheduler/RNG by its recipe."""
+    import torch
+    state=torch.load(path,map_location='cpu',weights_only=True)
+    assert state['format']=='groundjev-full-fp32-adam-rng-v1' and state['step']==expected_step
+    parameters={name:value for name,value in model.named_parameters() if value.requires_grad}
+    assert parameters.keys()==state['fp32_trainable_parameters'].keys()
+    changed=0
+    with torch.no_grad():
+        for name,param in parameters.items():
+            master=state['fp32_trainable_parameters'][name]
+            assert param.dtype==master.dtype==torch.float32
+            target=master.to(param.device)
+            changed+=int((param!=target).sum())
+            param.copy_(target)
+            assert torch.equal(param,target)
+    receipt={'status':'NEW_STAGE_REAL_FP32_MASTERS_INITIALIZED','source':str(path),'source_step':expected_step,
+        'FP32_parameter_entries':len(parameters),'parameters':sum(p.numel() for p in parameters.values()),
+        'changed_vs_BF16_inference_export_initialization':changed,'initialization_max_difference':0.,
+        'new_optimizer_scheduler_and_RNG':'explicit newrecipe reset, not originaltrajectory resume',
+        'old_training_state_or_inference_weights_modified':False}
+    out=Path(args.runs_dir)/args.name/'initial_fp32_state_receipt.json'
+    out.write_text(json.dumps(receipt,indent=2)+'\n');print(json.dumps(receipt),flush=True)
+    return receipt
+
+
 def main():
     parser=argparse.ArgumentParser(add_help=False);parser.add_argument('--resume-state',type=Path)
+    parser.add_argument('--initial-training-state',type=Path)
+    parser.add_argument('--expected-initial-step',type=int,default=500)
     options,argv=parser.parse_known_args()
+    assert not (options.resume_state and options.initial_training_state)
     from train import sft
     code=inspect.getsource(sft.main)
     replacements=[
+        ('    params = [p for p in model.parameters() if p.requires_grad]\n    if world > 1 and not args.full_finetune:',
+         '    if _initial_training_state:\n'
+         '        _initialize_fp32_stage(_initial_training_state,model,args,_expected_initial_step)\n'
+         '    params = [p for p in model.parameters() if p.requires_grad]\n    if world > 1 and not args.full_finetune:'),
         ('    step = 0\n    seen = 0',
          '    resume = _restore_state(_resume_path,model,opt,sched,args) if _resume_path else None\n'
          '    step = resume["step"] if resume else 0\n    seen = resume["seen"] if resume else 0'),
@@ -74,7 +107,9 @@ def main():
         code=code.replace(old,new)
     args=sft.parse_args(argv)
     assert not args.fsdp and int(__import__('os').environ.get('WORLD_SIZE','1'))==1
-    namespace=dict(sft.__dict__,_write_state=write_state,_restore_state=restore_state,_resume_path=options.resume_state)
+    namespace=dict(sft.__dict__,_write_state=write_state,_restore_state=restore_state,_resume_path=options.resume_state,
+        _initialize_fp32_stage=initialize_fp32_stage,_initial_training_state=options.initial_training_state,
+        _expected_initial_step=options.expected_initial_step)
     exec(compile(code,str(Path(__file__).resolve()),'exec'),namespace)
     return namespace['main'](argv)
 

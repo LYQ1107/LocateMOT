@@ -1,0 +1,8 @@
+{
+  "status": "FAILED_BEFORE_FIRST_NATIVE_QUERY",
+  "first_actionable_root_cause": "OVMOT adapter call omitted required expression argument; OVMOT expression is explicitly None",
+  "fix": "pass None, keep full1203class/frame/scorer/seed settings unchanged",
+  "valid_native_prefix_frames": 0,
+  "both_owned_services_verified_stopped": true,
+  "original_failure_preserved": true
+}

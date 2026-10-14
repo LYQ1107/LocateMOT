@@ -1,0 +1,10 @@
+{
+  "status": "OFFICIAL_FULL_FAMILY_MATCHED_NATIVE_MIXTURE_PREFLIGHT_PASS",
+  "official_plan": "plan-only: 41762 rows rendered in 119s; tokens p50 18362 p90 24724 p99 25988 max 26028; 0 rows over max-len 32768; 41762 micro-batches, 10441 steps for 1 ranks; total tokens 723,724,879",
+  "rows": 41762,
+  "dropped_rows": 0,
+  "context_cap": 32768,
+  "same_question_family_counts_per_domain": true,
+  "all_original_unique_native_rows_retained": true,
+  "new_stage_training_started": false
+}
