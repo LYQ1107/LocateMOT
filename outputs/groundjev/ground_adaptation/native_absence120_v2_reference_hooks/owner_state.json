@@ -1,0 +1,113 @@
+{
+  "status": "RUNNING_NATIVE_GROUND_TRACKING200",
+  "steps": 50,
+  "target_steps": 120,
+  "physical_gpu": 5,
+  "seed": 42,
+  "native_language_and_vision_frozen": true,
+  "formal_adaptation_and_retention_complete": false,
+  "execution_runtime": {
+    "torch": "2.10.0+cu128",
+    "transformers": "5.7.0",
+    "triton": "3.6.0"
+  },
+  "actual_checkpoint_interval": 5,
+  "native_attention_compile_policy": "same original native FlexAttention kernel/masks; concrete shapes, CUDA graphs disabled",
+  "execution_diagnostic": "synchronize native noisy FlexAttention before native clean attention; masks/math unchanged",
+  "corpus": {
+    "rows": 152,
+    "dense_rows": 32,
+    "referring_rows": 120,
+    "negative_referring_rows": 40,
+    "native_proposals": 982,
+    "native_aligned_regions": 650,
+    "pairs": 76,
+    "unique_images": 72,
+    "native_pair_contrastive_support": 28
+  },
+  "initial_projector_optimization_steps": 200,
+  "new_stage_Adam_reset": true,
+  "resume_state": null,
+  "trainable_parameters": 27267584,
+  "current_supervision": "referring",
+  "actual_native_flex_reference_checks": {
+    "dense": {
+      "q_shape": [
+        4,
+        32,
+        198,
+        128
+      ],
+      "kv_shape": [
+        4,
+        8,
+        1405,
+        128
+      ],
+      "maximum_output_difference": 0.005859375,
+      "QKV_gradient_relative_L2_difference": [
+        0.043767201460970365,
+        0.0058997310830982905,
+        0.00326490464700862
+      ],
+      "scope": "first real native layer of this supervision kind, not all steps/layers",
+      "no_RNG_consumed": true
+    },
+    "referring": {
+      "q_shape": [
+        4,
+        32,
+        52,
+        128
+      ],
+      "kv_shape": [
+        4,
+        8,
+        721,
+        128
+      ],
+      "maximum_output_difference": 0.00390625,
+      "QKV_gradient_relative_L2_difference": [
+        0.03375446459053412,
+        0.006911884293714105,
+        0.003278420643740517
+      ],
+      "scope": "first real native layer of this supervision kind, not all steps/layers",
+      "no_RNG_consumed": true
+    },
+    "absent_referring": {
+      "q_shape": [
+        4,
+        32,
+        57,
+        128
+      ],
+      "kv_shape": [
+        4,
+        8,
+        745,
+        128
+      ],
+      "maximum_output_difference": 0.005859375,
+      "QKV_gradient_relative_L2_difference": [
+        0.036040267712992666,
+        0.006434513841051442,
+        0.0033300058807096172
+      ],
+      "scope": "first real native layer of this supervision kind, not all steps/layers",
+      "no_RNG_consumed": true
+    }
+  },
+  "gradient_probes": {
+    "dense": {
+      "native_DLM_gradient_norm": 6.752780437469482,
+      "teacher_identity_gradient_norm": 2.2782082557678223,
+      "decoded_proposal_identity_gradient_norm": 2.265758752822876
+    },
+    "referring": {
+      "native_DLM_gradient_norm": 6.382430076599121,
+      "teacher_identity_gradient_norm": 1.6690046787261963
+    }
+  },
+  "latest_complete_training_state_step": 50
+}

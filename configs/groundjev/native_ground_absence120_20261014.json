@@ -1,0 +1,98 @@
+{
+  "name": "Explicit native Ground200 -> additional absence-balanced120 curriculum",
+  "initialization": "models/GroundAnything-DLM, complete original569tensors",
+  "seed": 42,
+  "steps": 120,
+  "lr": 1e-06,
+  "weight_decay": 0.01,
+  "trainable_policy": "native multimodal projector FP32 masters only; native vision and language frozen",
+  "native_loss": "official GAMQwen3DLM MDM.5+causal.5, block32, unchanged masks",
+  "auxiliary_losses": {
+    "teacher_GT_same_ID_cross_frame_contrastive": 0.1,
+    "actual_native_proposal_same_ID_cross_frame_contrastive": 0.1,
+    "temperature": 0.07,
+    "support_policy": "<=1 common identity yields zero contrastive signal, recorded; every image still receives native DLM supervision"
+  },
+  "dense_clips": [
+    {
+      "protocol": "mot17_half.json",
+      "sequence": "MOT17-02-FRCNN",
+      "frames": [
+        209,
+        210,
+        211,
+        212,
+        213,
+        214,
+        215,
+        216,
+        217,
+        218,
+        219,
+        220,
+        221,
+        222,
+        223,
+        224
+      ]
+    },
+    {
+      "protocol": "dancetrack.json",
+      "sequence": "dancetrack0001",
+      "frames": [
+        129,
+        130,
+        131,
+        132,
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144
+      ]
+    }
+  ],
+  "referring_fit_videos": [
+    "0002",
+    "0008",
+    "0010",
+    "0012",
+    "0014"
+  ],
+  "referring_clips_source": "configs/groundjev/rmot_native72_20261014.json, both fixed primary/counter expressions on all8frames",
+  "unique_images": 72,
+  "native_SFT_rows": 152,
+  "two_image_pairs": 76,
+  "task_sampling": "alternate dense/referring; seed42 shuffled cyclic family; all76pairs visited, all20absent pairs receive one120stage update",
+  "labels": "all selected GT target boxes exactly mapped to native0..999 grid with no clipping; canonical None for absent referring targets",
+  "scope_reason": "preflight finds69out-of-grid MOT20targets and out-of-grid targets in other4fit windows; these are not in this new explicit native-token SFT registration and remain unchanged in evaluation/other corpora",
+  "native_proposal_source": [
+    "outputs/groundjev/training_data/native_ground_own_history_v1/native_rollout.jsonl",
+    "outputs/groundjev/compact/rmot_native72_v1/native_rollout.jsonl"
+  ],
+  "native_proposal_policy": "same actual original decoder boxes and GT-only alignment; absent queries reuse corresponding primary-query boxes for generic identity loss, not a claim of absent-query detector rollout",
+  "gradient_validation": "separate actual native dense/referring and teacher/native temporal gradient probes, finite updates, frozen-parameter gradients absent",
+  "checkpoint_policy": "atomic full FP32/Adam/allRNG/cursor each5steps",
+  "physical_training_GPU": 5,
+  "original_OneJev_training_GPU": 4,
+  "existing_ROI_GPU": null,
+  "maximum_project_GPUs": 4,
+  "feature_cache_limit_bytes": 26843545600,
+  "no_large_feature_cache": "stream images/native ROI with real differentiable projector; no full-dataset features",
+  "before_after": "new model compared to preserved TrackProj200 with unchanged legal evaluation scope and original metrics; no GT threshold tuning",
+  "original_dense_ref_benchmark_GT_for_training": false,
+  "formal_adaptation_complete_before_evaluation": false,
+  "full_goal_complete": false,
+  "execution_variant": "new registered120step curriculum onGPU5, CUDA_LAUNCH_BLOCKING=1/concrete native FlexAttention; original200model/retention preserved",
+  "negative_referring_rows": 40,
+  "absent_expression_registry": "configs/groundjev/native_ground_real_absence_20261014.json",
+  "initial_projector_state": "outputs/groundjev/ground_adaptation/native_tracking200_v7_boundary_trace/projector_delta.pt",
+  "optimizer_policy": "explicit newstage AdamW reset; initialized from full FP32 projector200, lr1e-6 constant"
+}

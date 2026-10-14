@@ -1,0 +1,22 @@
+{
+  "status": "FAILED_BEFORE_FIRST_OPTIMIZER_UPDATE",
+  "first_actionable_root_cause": "detached diagnostic autograd executed under native activation-checkpoint saved-tensor hooks, recursive recomputation stops comparison",
+  "trace_markers": [
+    "  File \"/data2/user/LocateMOT_GroundJEV/.venv-ground-train-py312/lib/python3.12/site-packages/torch/utils/checkpoint.py\", line 1120, in pack_hook",
+    "    raise _StopRecomputationError",
+    "torch.utils.checkpoint._StopRecomputationError",
+    "  File \"/data2/user/LocateMOT_GroundJEV/tools/groundjev/train_native_ground_tracking200.py\", line 222, in main",
+    "  File \"/data2/user/LocateMOT_GroundJEV/.venv-ground-train-py312/lib/python3.12/site-packages/torch/utils/checkpoint.py\", line 512, in checkpoint",
+    "  File \"/data2/user/LocateMOT_GroundJEV/tools/groundjev/train_native_ground_tracking200.py\", line 120, in synchronized_flex",
+    "  File \"/data2/user/LocateMOT_GroundJEV/tools/groundjev/train_native_ground_tracking200.py\", line 96, in verified_flex",
+    "  File \"/data2/user/LocateMOT_GroundJEV/.venv-ground-train-py312/lib/python3.12/site-packages/torch/utils/checkpoint.py\", line 1173, in unpack_hook",
+    "  File \"/data2/user/LocateMOT_GroundJEV/.venv-ground-train-py312/lib/python3.12/site-packages/torch/utils/checkpoint.py\", line 1139, in _run_fn_with_dynamo_disabled",
+    "  File \"/data2/user/LocateMOT_GroundJEV/.venv-ground-train-py312/lib/python3.12/site-packages/torch/utils/checkpoint.py\", line 1591, in recompute_fn",
+    "  File \"/data2/user/LocateMOT_GroundJEV/tools/groundjev/train_native_ground_tracking200.py\", line 120, in synchronized_flex",
+    "  File \"/data2/user/LocateMOT_GroundJEV/tools/groundjev/train_native_ground_tracking200.py\", line 95, in verified_flex"
+  ],
+  "attention_forward_discrepancy_measured": false,
+  "model_training_steps": 0,
+  "fix": "identity saved_tensors_hooks on detached reference graph only; keep production checkpointing and numerical criteria unchanged",
+  "original_failure_files_preserved": true
+}

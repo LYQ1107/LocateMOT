@@ -37,8 +37,11 @@ def main():
     parser.add_argument('--checkpoint-every', type=int, default=25)
     parser.add_argument('--static-flex-shapes', action='store_true')
     parser.add_argument('--trace-flex-boundary', action='store_true')
+    parser.add_argument('--initial-projector-state', type=Path)
+    parser.add_argument('--verify-flex-reference', action='store_true')
     args = parser.parse_args()
     plan = json.loads(args.plan.read_text())
+    assert not (args.resume_state and args.initial_projector_state)
     out = args.out; out.mkdir(parents=True, exist_ok=False)
     state = {'status': 'PREPARING_REGISTERED_NATIVE_DLM_TRACKING200', 'steps': 0,
         'target_steps': plan['steps'], 'physical_gpu': int(os.environ['CUDA_VISIBLE_DEVICES']), 'seed': plan['seed'],
@@ -65,19 +68,54 @@ def main():
         if args.trace_flex_boundary:
             from models.dlm import hybrid, vlm
             compiled = vlm._compiled_flex_attention
-            def traced_flex(query, key, value, block_mask):
+            def traced_flex(query, key, value, block_mask, _compiled=compiled):
                 boundary = {'step': state['steps']+1,
                     'q': {'shape': list(query.shape), 'stride': list(query.stride()), 'dtype': str(query.dtype)},
                     'k': {'shape': list(key.shape), 'stride': list(key.stride()), 'dtype': str(key.dtype)},
                     'v': {'shape': list(value.shape), 'stride': list(value.stride()), 'dtype': str(value.dtype)},
                     'block_mask_lengths': list(block_mask.seq_lengths)}
                 (out/'last_flex_boundary.json').write_text(json.dumps(boundary, indent=2)+'\n')
-                result = compiled(query, key, value, block_mask)
+                result = _compiled(query, key, value, block_mask)
                 torch.cuda.synchronize()
                 return result
             hybrid._compiled_flex_attention = traced_flex
             vlm._compiled_flex_attention = traced_flex
             state['trace_flex_boundary'] = True
+        if args.verify_flex_reference:
+            from models.dlm import hybrid, vlm
+            from torch.nn.attention.flex_attention import flex_attention
+            compiled = vlm._compiled_flex_attention
+            verified = set()
+            def verified_flex(query, key, value, block_mask, _compiled=compiled):
+                category = state['current_supervision']
+                if category not in verified:
+                    # Keep this detached diagnostic graph outside native activation-checkpoint hooks.
+                    with torch.autograd.graph.saved_tensors_hooks(lambda tensor: tensor, lambda tensor: tensor):
+                        inputs = [x.detach().clone().requires_grad_(True) for x in (query, key, value)]
+                        actual = _compiled(*inputs, block_mask)
+                        reference = flex_attention(*inputs, block_mask=block_mask, enable_gqa=True)
+                        torch.testing.assert_close(actual, reference, rtol=.02, atol=.02)
+                        a_grad = torch.autograd.grad(actual.float().sum()/actual.numel(), inputs)
+                        r_grad = torch.autograd.grad(reference.float().sum()/reference.numel(), inputs)
+                        relative = []
+                        for a, r in zip(a_grad, r_grad):
+                            delta = float((a.float()-r.float()).norm())
+                            scale = float(r.float().norm())
+                            ratio = delta/max(scale, 1e-12)
+                            assert ratio < .05, (category, ratio)
+                            relative.append(ratio)
+                        verified.add(category)
+                        state.setdefault('actual_native_flex_reference_checks', {})[category] = {
+                            'q_shape': list(query.shape), 'kv_shape': list(key.shape),
+                            'maximum_output_difference': float((actual.float()-reference.float()).abs().max()),
+                            'QKV_gradient_relative_L2_difference': relative,
+                            'scope': 'first real native layer of this supervision kind, not all steps/layers',
+                            'no_RNG_consumed': True}
+                        (out/'flex_reference_checks.json').write_text(json.dumps(state['actual_native_flex_reference_checks'], indent=2)+'\n')
+                        del inputs, actual, reference, a_grad, r_grad
+                return _compiled(query, key, value, block_mask)
+            hybrid._compiled_flex_attention = verified_flex
+            vlm._compiled_flex_attention = verified_flex
         if args.debug_kernel_sync:
             original_flex = GAMQwen3DLM._flex_qwen_attention
             def synchronized_flex(*values, **kwargs):
@@ -110,6 +148,13 @@ def main():
         model.to('cuda:0').requires_grad_(False)
         projector = model.base_model.model.visual.projector
         projector.float().requires_grad_(True)
+        if args.initial_projector_state:
+            assert plan['initial_projector_state'] == str(args.initial_projector_state)
+            initialized = torch.load(args.initial_projector_state, map_location='cpu', weights_only=True)
+            projector.load_state_dict(initialized['native_projector_state_dict'])
+            state['initial_projector_optimization_steps'] = initialized['steps']
+            state['new_stage_Adam_reset'] = True
+            del initialized
         initial = {k: v.detach().cpu().clone() for k, v in projector.state_dict().items()}
         model.train(); model.base_model.model.visual.vision_tower.eval()
         model.gradient_checkpointing_enable({'use_reentrant': False})
@@ -154,6 +199,8 @@ def main():
                 'torch_rng': torch.get_rng_state(), 'cuda_rng': torch.cuda.get_rng_state_all(),
                 'python_rng': random.getstate(), 'numpy_rng': (n[0], n[1].tolist(), n[2], n[3], n[4]),
                 'initial_DLM_checkpoint': str(checkpoint), 'trainable_policy': 'native_projector_only'}
+            if args.initial_projector_state:
+                payload['initial_projector_state'] = str(args.initial_projector_state)
             temporary = out/'latest_training_state.tmp'; torch.save(payload, temporary)
             temporary.replace(out/'latest_training_state.pt')
             (out/'latest_training_state.json').write_text(json.dumps({'steps': step, 'FP32_projector_Adam_all_RNG_cursor': True,
@@ -165,6 +212,7 @@ def main():
             trainable_parameters=sum(p.numel() for p in projector.parameters())); save()
         for step in range(start_step+1, plan['steps']+1):
             pair = pairs[schedule[step-1]]
+            state['current_supervision'] = 'absent_referring' if pair.get('absent_expression') else pair['family']
             with_images = []
             for row in pair['rows']:
                 with Image.open(row['image_path']) as raw_image:
@@ -203,6 +251,8 @@ def main():
                 'mdm_loss': float(output.mdm_loss), 'causal_loss': float(output.causal_loss), 'teacher_identity_loss': float(teacher),
                 'decoded_proposal_identity_loss': float(native), 'GT_common_IDs': gt_common, 'native_common_IDs': native_common,
                 'total_loss': float(loss), 'gradient_norm': norm, 'elapsed_seconds': time.perf_counter()-start}
+            if plan.get('absent_expression_registry'):
+                entry['absent_expression_pair'] = bool(pair.get('absent_expression'))
             logs.append(entry)
             with (out/'log.jsonl').open('a') as log:
                 log.write(json.dumps(entry)+'\n')
@@ -222,7 +272,7 @@ def main():
         state.update(status='NATIVE_GROUND_TRACKING200_TRAINING_COMPLETE', steps=plan['steps'], corpus=corpus,
             changed_FP32_elements=changed, changed_BF16_elements=bf16_changed, checkpoint_reload_max_difference=difference,
             gradient_probes=probes, peak_allocated_bytes=torch.cuda.max_memory_allocated(),
-            all56registered_pairs_visited=True, full_model_original_tensor_count=569,
+            all_registered_pairs_visited=True, registered_pair_count=len(pairs), full_model_original_tensor_count=569,
             dense_referring_tracking_retention_evaluation='pending actual unchanged before/after scoring',
             complete_training_not_full_research_goal=True); save()
     except Exception as error:

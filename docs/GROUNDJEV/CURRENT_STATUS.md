@@ -109,7 +109,9 @@ with native fork auto-check unchanged. This establishes genuine intermediate
 checkpoint correctness, not500completion or a tracking accuracy gain.
 Config: configs/groundjev/onejev_own_history_v3_exact500_replay_stateful.json.
 
-Physical GPU5 runs the owned native visual-feature RPC on port8111.
+The idle owned native visual-feature RPC onGPU5/port8111 was stopped after
+all feature consumers finished and no established clients remained. GPU5 is
+now reused for the separately registered absence120training stage.
 The native72pack and all Compact training/control/recovery owners are terminal.
 The later originalGround full-retention service now runs onGPU7; formalGround200 training has finished and its full dense/ref9 evaluation now ownsGPU6. GroundJEV does not own the fufu/UDMT/ywh jobs and has not stopped
 them. At most four physical GPUs are allowed. No old U2 queue is running.
@@ -236,7 +238,7 @@ originalGroundservice; local evaluatorCPU-only. Originalfailedrun remains.
 The exported TrackProj200 full9retention owner usesGPU6/API8102 and separate
 rendezvous ports22345+, with the identical canonical tasks/data/limit:null/
 concurrency2/originalscorers/native decode profiles. ExistingOne training4 and
-nativeROI5 keep the project within4/5/6/7. Both full-suite results are pending. Fresh48frame MOT/RMOT functional
+new absence-training5 keep the project within4/5/6/7. Both full-suite results are pending. Fresh48frame MOT/RMOT functional
 controls through these services also run with the unchanged Simple associator,
 parser/tracking_dense/seed42 and all empty/rejected frames; this remains
 separate from full original benchmark retention.
@@ -267,3 +269,40 @@ long-memory/reappearance/NO_MATCH and permutation ablations; controlled joint
 negative-transfer studies; matched Full/Compact/MLP/SetTransformer accuracy,
 end-to-end speed and resource comparisons; and continued GitHub publication.
 Pilot and these short controls do not complete the research goal.
+
+## Native Ground200 actual short tracking results and next curriculum
+
+All48native frames and six rendered videos validated with unchanged official
+TrackEval, Simple associator, parser/tracking_dense/seed42. This is a fresh
+before/after native detector comparison; changed candidates are expected.
+
+| Scope | Original HOTA % | TrackProj200 HOTA % | Original IDSW | Adapted IDSW |
+|---|---:|---:|---:|---:|
+| MOT17 four frames | 75.250 | 84.553 | 2 | 0 |
+| Referring single eight frames | 26.866 | 25.277 | 2 | 0 |
+| Referring multiple twelve frames | 24.780 | 23.959 | 0 | 2 |
+
+MOT FP16->2/FN24->13, but single referring empty-frame output count rises3->8
+on the same three absent frames. Multiple referring FP7->8/FN25->22. All
+empty/rejected frames stay in official denominators. No full-dataset accuracy
+or concurrent-service speed advantage is inferred from these short controls.
+Evidence: projector200_tracking_controls_v1/aggregate_results.json.
+
+Hypothesis: missing native absence supervision contributes to referring false
+positives; not proven as the sole cause. A separate120step stage initializes
+exactFP32 projector200, explicitlyresetsAdamW atlr1e-6/seed42, retains all112
+existing nativeSFTrows and adds40previouslyregistered realfit absences on the
+sameimages (152rows/76pairs). Everypair is visited. No synthetic emptyimage,
+validation-label training, threshold change or silent original200protocol edit.
+Actual noisy FlexAttention forward/QKVgradient checks on the first real dense,
+positive referring and absent pair use PyTorch's eager reference and consume
+no RNG; they do not cover every layer/step. Original200model and bothfull9
+retention owners are preserved. Initialv1 stopped beforefirstupdate because detached diagnostic backward
+inherited native activation-checkpoint hooks. Only this probe graph is now
+isolated with identity saved-tensor hooks; production checkpointing and
+acceptance tolerances remain unchanged. Failure is preserved. Currentstage
+owner: native_absence120_v2_reference_hooks. Three actual reference checks
+passed: maximum BF16 output difference .005859/.003906/.005859 and Q-gradient
+relativeL2 difference .043767/.033754/.036040 (K/V below .007), within the
+unchanged registered criteria. These checks cover the first real layer of
+each supervision type; additional120training/results remain pending.

@@ -1,0 +1,9 @@
+{
+  "status": "OWNED_IDLE_FEATURE_SERVICE_STOPPED",
+  "pid": 289524,
+  "physical_gpu": 5,
+  "reason": "all native/Compact feature consumers terminal; reuse registeredGPU5 for explicit absent-target training",
+  "datasets_checkpoints_feature_results_preserved": true,
+  "other_projects_touched": false,
+  "observed_owner_exit_code": 241
+}

@@ -1,0 +1,126 @@
+{
+  "status": "ALL48_NATIVE_FRAMES_OFFICIAL_METRICS_AND_VIDEOS_VALIDATED",
+  "rows": [
+    {
+      "scope": "dense_mot4",
+      "variants": {
+        "original": {
+          "frames": 4,
+          "decoded_video_frames": 4,
+          "metrics": {
+            "HOTA": 0.7524981380220378,
+            "DetA": 0.6629235678117211,
+            "AssA": 0.872796101674999,
+            "IDF1": 0.8320610687022901,
+            "IDSW": 2,
+            "FP": 16,
+            "FN": 24
+          },
+          "perception_rejected_frames": [],
+          "empty_target_frame_predictions": null,
+          "empty_target_frames": null
+        },
+        "projector200": {
+          "frames": 4,
+          "decoded_video_frames": 4,
+          "metrics": {
+            "HOTA": 0.8455322372910551,
+            "DetA": 0.7934850275902133,
+            "AssA": 0.9170173323790076,
+            "IDF1": 0.9420849420849421,
+            "IDSW": 0,
+            "FP": 2,
+            "FN": 13
+          },
+          "perception_rejected_frames": [],
+          "empty_target_frame_predictions": null,
+          "empty_target_frames": null
+        }
+      }
+    },
+    {
+      "scope": "refer_single8",
+      "variants": {
+        "original": {
+          "frames": 8,
+          "decoded_video_frames": 8,
+          "metrics": {
+            "HOTA": 0.2686649127084672,
+            "DetA": 0.2768547242231453,
+            "AssA": 0.26335839598997496,
+            "IDF1": 0.4,
+            "IDSW": 2,
+            "FP": 6,
+            "FN": 1
+          },
+          "perception_rejected_frames": [
+            152
+          ],
+          "empty_target_frame_predictions": 3,
+          "empty_target_frames": 3
+        },
+        "projector200": {
+          "frames": 8,
+          "decoded_video_frames": 8,
+          "metrics": {
+            "HOTA": 0.25276864146425276,
+            "DetA": 0.1565052336724163,
+            "AssA": 0.4116165413533835,
+            "IDF1": 0.3157894736842105,
+            "IDSW": 0,
+            "FP": 11,
+            "FN": 2
+          },
+          "perception_rejected_frames": [],
+          "empty_target_frame_predictions": 8,
+          "empty_target_frames": 3
+        }
+      }
+    },
+    {
+      "scope": "refer_multi12",
+      "variants": {
+        "original": {
+          "frames": 12,
+          "decoded_video_frames": 12,
+          "metrics": {
+            "HOTA": 0.24779993761559338,
+            "DetA": 0.148726472255884,
+            "AssA": 0.41904243417401316,
+            "IDF1": 0.23809523809523808,
+            "IDSW": 0,
+            "FP": 7,
+            "FN": 25
+          },
+          "perception_rejected_frames": [
+            34
+          ],
+          "empty_target_frame_predictions": 2,
+          "empty_target_frames": 3
+        },
+        "projector200": {
+          "frames": 12,
+          "decoded_video_frames": 12,
+          "metrics": {
+            "HOTA": 0.23958866311150986,
+            "DetA": 0.16999010529994452,
+            "AssA": 0.34572104865337955,
+            "IDF1": 0.2608695652173913,
+            "IDSW": 2,
+            "FP": 8,
+            "FN": 22
+          },
+          "perception_rejected_frames": [],
+          "empty_target_frame_predictions": 3,
+          "empty_target_frames": 3
+        }
+      }
+    }
+  ],
+  "all_empty_rejected_frames_in_official_denominators": true,
+  "same_Simple_associator_and_parser_and_decode_policy": true,
+  "native_candidate_boxes_may_change_with_projector": true,
+  "single_seed_short_scope_not_complete_dataset": true,
+  "formal_original_dense_ref9_retention": "still running; no full suite gain claim",
+  "interpretation": "MOT gain; both RMOT HOTA regress, single empty-frame output count rises3to8. Absence supervision is missing from positive200, a hypothesis not proven sole cause."
+}

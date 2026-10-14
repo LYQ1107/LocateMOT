@@ -2067,3 +2067,26 @@ benchmark GT training or limit reductions. Four project GPUs maximum; other
 projects are untouched. Real absent-target40rows remain a separate next stage.
 
 Fresh nativeGround200 MOT4/RMOTsingle8/RMOTmulti12 before/after controls also launched through the two existing owned retention services, same Simple associator/parser/tracking_dense/seed42, no new GPU service or benchmark-limit changes. This48frame functional comparison is separate from original full91,124-row dense/ref9 scoring. All registered empty/rejected frames remain.
+
+### Ground200 short-control negative transfer and registered absence120
+
+All48frames and six rendered videos validated. Same fresh Simple associator:
+MOT4 HOTA75.2498->84.5532%, IDSW2->0,FP16->2,FN24->13.
+RMO single8 HOTA26.8665->25.2769%, empty-frame outputs3->8; multi12
+HOTA24.7800->23.9589%, IDSW0->2. All empty/rejected frames retained, official
+GT/scorers unchanged. These are single-seed short scopes, not full datasets.
+Hypothesis: missing absent-target supervision contributes to referring false
+positives; not established as the sole cause. Keep original200 and bothfull9
+retention owners unchanged. Register a separate additional120step curriculum:
+initialize exactFP32 projector200, explicitlyresetAdamW/lr1e-6, seed42;
+all112existing rows+40previouslyregistered actualfit absences=152rows/76pairs,
+all76visited. Same native loss/teacher and native identity losses. No synthetic
+emptyimages, no evaluation labels in training. Verify first real native noisy
+attention forward/QKV gradients for dense, positive referring and absence
+against PyTorch eager mathematical reference; diagnostics consume no RNG.
+Idle ownedROIservice5 stopped after no established clients; all consumers were
+terminal. GPU5 is reused for this declared training, no other project stopped.
+
+Absence120v1 preflight verifies152rows/76pairs/40realabsences, but stops beforefirstupdate: detached reference-probe backward inherits native activation-checkpoint saved-tensor hooks and recursively re-enters itself (_StopRecomputationError). This is a diagnostic integration failure, not a measured attention discrepancy. Small repair: isolate only detached diagnostic saved tensors with identity pack/unpack hooks; production model checkpointing and forward remain unchanged. Preserve failedv1. Freshv2 replays unfinished stage from exactTrackProj200, identical seed/data/loss/criterion.
+
+Actual v2 native attention reference checks pass for first real dense/positive-ref/absent-ref layer: maxBF16 output delta.005859/.003906/.005859; Q-gradient relativeL2.043767/.033754/.036040, K/V below.007. Criteriaunchanged(output rtol/atol.02; QKVrelativeL2<.05), no diagnosticRNG consumption. This targeted check covers three real input types, not every layer/step. Training remains owned by the same v2blocking command.

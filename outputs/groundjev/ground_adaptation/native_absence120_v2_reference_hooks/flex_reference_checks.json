@@ -1,0 +1,68 @@
+{
+  "dense": {
+    "q_shape": [
+      4,
+      32,
+      198,
+      128
+    ],
+    "kv_shape": [
+      4,
+      8,
+      1405,
+      128
+    ],
+    "maximum_output_difference": 0.005859375,
+    "QKV_gradient_relative_L2_difference": [
+      0.043767201460970365,
+      0.0058997310830982905,
+      0.00326490464700862
+    ],
+    "scope": "first real native layer of this supervision kind, not all steps/layers",
+    "no_RNG_consumed": true
+  },
+  "referring": {
+    "q_shape": [
+      4,
+      32,
+      52,
+      128
+    ],
+    "kv_shape": [
+      4,
+      8,
+      721,
+      128
+    ],
+    "maximum_output_difference": 0.00390625,
+    "QKV_gradient_relative_L2_difference": [
+      0.03375446459053412,
+      0.006911884293714105,
+      0.003278420643740517
+    ],
+    "scope": "first real native layer of this supervision kind, not all steps/layers",
+    "no_RNG_consumed": true
+  },
+  "absent_referring": {
+    "q_shape": [
+      4,
+      32,
+      57,
+      128
+    ],
+    "kv_shape": [
+      4,
+      8,
+      745,
+      128
+    ],
+    "maximum_output_difference": 0.005859375,
+    "QKV_gradient_relative_L2_difference": [
+      0.036040267712992666,
+      0.006434513841051442,
+      0.0033300058807096172
+    ],
+    "scope": "first real native layer of this supervision kind, not all steps/layers",
+    "no_RNG_consumed": true
+  }
+}

@@ -55,6 +55,10 @@ def build_pairs(plan):
                     {g['gt_id'] for g in gt[n]}, 'person', 'dense', n) for n in clip['frames']]
         pairs.extend({'family': 'dense', 'sequence': clip['sequence'], 'rows': rows[i:i+2]} for i in range(0, len(rows), 2))
     referring = json.loads((ROOT/plan['referring_clips_source'].split(',')[0]).read_text())
+    absent = {}
+    if plan.get('absent_expression_registry'):
+        registry = json.loads((ROOT/plan['absent_expression_registry']).read_text())
+        absent = {entry['video']: entry for entry in registry['entries']}
     for clip in referring['clips']:
         if clip['video'] not in plan['referring_fit_videos']:
             continue
@@ -76,8 +80,20 @@ def build_pairs(plan):
             rows = [row(video, DATA/'kitti_tracking_training/image_02'/video/f'{n:06d}.png',
                         gt[n], set(query['label'].get(str(n), [])), query['sentence'], 'referring', n) for n in clip['frames']]
             pairs.extend({'family': 'referring', 'sequence': video, 'rows': rows[i:i+2]} for i in range(0, len(rows), 2))
+        if video in absent:
+            entry = absent[video]
+            assert entry['frames'] == clip['frames']
+            query = json.loads(Path(entry['expression_file']).read_text())
+            assert query['sentence'] == entry['expression'] and not query.get('ignore')
+            assert all(not query['label'].get(str(n), []) for n in clip['frames'])
+            rows = [row(video, DATA/'kitti_tracking_training/image_02'/video/f'{n:06d}.png',
+                        gt[n], set(), query['sentence'], 'referring', n) for n in clip['frames']]
+            pairs.extend({'family': 'referring', 'sequence': video, 'absent_expression': True,
+                          'rows': rows[i:i+2]} for i in range(0, len(rows), 2))
     assert len(pairs) == plan['two_image_pairs'] and counts['rows'] == plan['native_SFT_rows']
     counts.update(pairs=len(pairs), unique_images=len({r['image_path'] for p in pairs for r in p['rows']}),
                   native_pair_contrastive_support=sum(len(set(p['rows'][0]['native']) & set(p['rows'][1]['native'])) > 1 for p in pairs))
     assert counts['unique_images'] == plan['unique_images']
+    if absent:
+        assert counts['negative_referring_rows'] == plan['negative_referring_rows']
     return pairs, counts
