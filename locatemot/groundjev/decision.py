@@ -209,6 +209,7 @@ class OneJevDecision:
                 life.setdefault(t.track_id, response.answers[f'life_{t.track_id}'].model_dump())
             reports.append({'batch': len(reports), 'metadata': meta, 'questions': len(request.questions)})
         metadata={'backend': 'onejev_full', 'checkpoint': self.checkpoint, 'native_probabilities': True,
+                               'GT_read': False,
                                'evidence_format':self.evidence_format,
                                'explicit_no_match':self.evidence_format in ('v2_crop_motion','v3_crop_motion','v4_native_features','v5_native_features_csv','v6_native_compact_history'),
                                'shortlist_limit': self.shortlist, 'batches': reports}

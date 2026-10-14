@@ -1,0 +1,28 @@
+{
+  "eligible_rows": 125286,
+  "tracking_task_buckets": {
+    "mot": 41762,
+    "rmot": 41762,
+    "ovmot": 41762
+  },
+  "question_families": {
+    "identity": 19680,
+    "query_membership": 39834,
+    "category_group": 20881,
+    "category_leaf": 20881,
+    "memory_update": 4920,
+    "reliability": 4920,
+    "empty_query_presence": 1928,
+    "lifecycle": 11902,
+    "withheld_correct_options": 340
+  },
+  "unique_source_row_ids": {
+    "mot": 41762,
+    "rmot": 346,
+    "ovmot": 430
+  },
+  "JSONL_bytes": 1260090091,
+  "all_registered_sources_retained": true,
+  "tracking_task_field": "supervision.tracking_task_bucket; native category request state intentionally retains its deployed descriptive task string",
+  "native_category_question_templates_and_all1203_vocabulary_unchanged": true
+}

@@ -1,0 +1,83 @@
+{
+  "status": "VIDEO_INFERENCE_COMPLETE_WITH_REJECTED_PERCEPTION",
+  "task": "rmot",
+  "backend": "full",
+  "evidence_format": "v3_crop_motion",
+  "native_feature_url": null,
+  "adaptive_context_groups": true,
+  "category_policy": "native_label",
+  "scope": "registered_short_functional_clip",
+  "video_manifest": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_pilot_data/rmot_multi_empty.json",
+  "frames": 12,
+  "latencies_seconds": [
+    0.2685103729600087,
+    0.32755684800213203,
+    0.22041073103901,
+    0.2593265629839152,
+    0.2998217499698512,
+    0.36490587604930624,
+    0.43212683900492266,
+    0.5250209500081837,
+    0.585229427961167,
+    0.5383797489921562,
+    0.471443762013223,
+    0.8965999860083684
+  ],
+  "grounding_parser_policy": "strict_client",
+  "grounding_decoder_policy": "generic_greedy",
+  "grounding_vocabulary_chunk_size": null,
+  "specification": {
+    "task": "rmot",
+    "vocabulary": [
+      "person",
+      "car"
+    ],
+    "expression": "arranging automobiles"
+  },
+  "timestamp_policy": "KITTI 10 Hz frame clock; source zero-based frame numbers retained",
+  "perception_failure_policy": "stop",
+  "perception_rejected_frames": [
+    34
+  ],
+  "perception_rejection_rate": 0.08333333333333333,
+  "strict_wire_invalid_frames": [
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43
+  ],
+  "all_input_frames_processed": true,
+  "end_to_end_fps": null,
+  "complete_video_wall_seconds": 5.758835271990392,
+  "model_initialization_seconds": 8.242080464027822,
+  "timing_scope": "all image reads, native requests including service queueing, association, memory persistence, prediction/log writes, drawing, video encoding and encoder completion; preloaded remote DLM server startup excluded",
+  "successful_frame_pipeline_fps": 2.3124359788283293,
+  "association_replay_fps": 2.3124359788283293,
+  "resume_source": null,
+  "resumed_completed_frames": 0,
+  "timing_limitations": null,
+  "official_metrics": {
+    "status": "COMPLETE",
+    "path": "outputs/groundjev/training/onejev500_completion_controls_v1/rmot_multi12_sft500/official_metrics.json",
+    "scope": "registered_short_functional_clip"
+  },
+  "checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_own_history_v3_exact500_replay_stateful/ckpt-step500",
+  "motchallenge_confidence_column": "constant unscored-output sentinel; native detection score is absent",
+  "gt_read_by_runtime": false,
+  "future_frames_read_by_runtime": false,
+  "memory_policy": "gated",
+  "memory_feature_view": "all",
+  "lost_seconds": 3.0,
+  "ema_alpha": 0.1,
+  "replay_feature_vectors_omitted_from_log": false,
+  "shared_input_features_source": null,
+  "peak_decision_gpu_memory_bytes": 4824379392
+}

@@ -1,0 +1,283 @@
+{
+  "status": "ALL16_ORIGINAL500_MATCHED_SHORT_CONTROLS_VALIDATED",
+  "actual_training_steps": 500,
+  "actual_training_rows": 2000,
+  "decoded_video_frames": 112,
+  "all_registered_frames_and_exact_frozen_native_candidates_retained": true,
+  "GT_and_future_read_by_runtime": false,
+  "Novel_GT_in_this_TAO_clip": false,
+  "scope": "MOT4/RMOTsingle8/RMOTmulti12/TAOBase4, four models; not complete videos or full datasets",
+  "inference_protocol": "legacy v3_crop_motion/None native membership gate/native_label; new explicit semantic policy is a separate before-after comparison",
+  "grounding_provenance": "frozen source candidates and per-frame perception metadata; grounding CLI defaults are unused on replay",
+  "end_to_end_or_standalone_speed_claim": false,
+  "runs": {
+    "mot4_simple": {
+      "run": "outputs/groundjev/training/onejev500_completion_controls_v1/mot4_simple",
+      "frames": 4,
+      "metrics": {
+        "HOTA": 0.7488134158919785,
+        "DetA": 0.6423040599609131,
+        "AssA": 0.8951607936143764,
+        "IDF1": 0.8365019011406845,
+        "IDSW": 1,
+        "FP": 17,
+        "FN": 24
+      },
+      "metric_scale": "fraction, counts for IDSW/FP/FN",
+      "association_replay_fps_not_E2E": 10.773143274191106,
+      "peak_decision_gpu_memory_bytes": null
+    },
+    "mot4_pretrained": {
+      "run": "outputs/groundjev/training/onejev500_completion_controls_v1/mot4_pretrained",
+      "frames": 4,
+      "metrics": {
+        "HOTA": 0.3439443160419115,
+        "DetA": 0.5308409784551259,
+        "AssA": 0.23169428942701925,
+        "IDF1": 0.351931330472103,
+        "IDSW": 47,
+        "FP": 11,
+        "FN": 48
+      },
+      "metric_scale": "fraction, counts for IDSW/FP/FN",
+      "association_replay_fps_not_E2E": 0.08852777630477765,
+      "peak_decision_gpu_memory_bytes": 8491878912
+    },
+    "mot4_init100": {
+      "run": "outputs/groundjev/training/onejev500_completion_controls_v1/mot4_init100",
+      "frames": 4,
+      "metrics": {
+        "HOTA": 0.19739548559595474,
+        "DetA": 0.15973903317095328,
+        "AssA": 0.25,
+        "IDF1": 0.30120481927710846,
+        "IDSW": 0,
+        "FP": 6,
+        "FN": 110
+      },
+      "metric_scale": "fraction, counts for IDSW/FP/FN",
+      "association_replay_fps_not_E2E": 0.07115248249497128,
+      "peak_decision_gpu_memory_bytes": 8456614400
+    },
+    "mot4_sft500": {
+      "run": "outputs/groundjev/training/onejev500_completion_controls_v1/mot4_sft500",
+      "frames": 4,
+      "metrics": {
+        "HOTA": 0.3086802263922558,
+        "DetA": 0.5379129890340048,
+        "AssA": 0.18500680267982458,
+        "IDF1": 0.2966101694915254,
+        "IDSW": 57,
+        "FP": 11,
+        "FN": 45
+      },
+      "metric_scale": "fraction, counts for IDSW/FP/FN",
+      "association_replay_fps_not_E2E": 0.06685912038057958,
+      "peak_decision_gpu_memory_bytes": 8416805376
+    },
+    "rmot_single8_simple": {
+      "run": "outputs/groundjev/training/onejev500_completion_controls_v1/rmot_single8_simple",
+      "frames": 8,
+      "metrics": {
+        "HOTA": 0.24228399266377812,
+        "DetA": 0.23112326270221004,
+        "AssA": 0.2581453634085213,
+        "IDF1": 0.375,
+        "IDSW": 2,
+        "FP": 7,
+        "FN": 1
+      },
+      "metric_scale": "fraction; counts for IDSW/FP/FN",
+      "association_replay_fps_not_E2E": 21.507558385137745,
+      "peak_decision_gpu_memory_bytes": null
+    },
+    "rmot_single8_pretrained": {
+      "run": "outputs/groundjev/training/onejev500_completion_controls_v1/rmot_single8_pretrained",
+      "frames": 8,
+      "metrics": {
+        "HOTA": 0.0,
+        "DetA": 0.0,
+        "AssA": 0.0,
+        "IDF1": 0.0,
+        "IDSW": 0,
+        "FP": 0,
+        "FN": 5
+      },
+      "metric_scale": "fraction; counts for IDSW/FP/FN",
+      "association_replay_fps_not_E2E": 4.090614302350608,
+      "peak_decision_gpu_memory_bytes": 3283321344
+    },
+    "rmot_single8_init100": {
+      "run": "outputs/groundjev/training/onejev500_completion_controls_v1/rmot_single8_init100",
+      "frames": 8,
+      "metrics": {
+        "HOTA": 0.0,
+        "DetA": 0.0,
+        "AssA": 0.0,
+        "IDF1": 0.0,
+        "IDSW": 0,
+        "FP": 3,
+        "FN": 5
+      },
+      "metric_scale": "fraction; counts for IDSW/FP/FN",
+      "association_replay_fps_not_E2E": 2.663332632347722,
+      "peak_decision_gpu_memory_bytes": 3508440064
+    },
+    "rmot_single8_sft500": {
+      "run": "outputs/groundjev/training/onejev500_completion_controls_v1/rmot_single8_sft500",
+      "frames": 8,
+      "metrics": {
+        "HOTA": 0.2488619985331044,
+        "DetA": 0.2351332877648667,
+        "AssA": 0.26482142857142854,
+        "IDF1": 0.375,
+        "IDSW": 1,
+        "FP": 7,
+        "FN": 1
+      },
+      "metric_scale": "fraction; counts for IDSW/FP/FN",
+      "association_replay_fps_not_E2E": 2.1571637455103025,
+      "peak_decision_gpu_memory_bytes": 3912212992
+    },
+    "rmot_multi12_simple": {
+      "run": "outputs/groundjev/training/onejev500_completion_controls_v1/rmot_multi12_simple",
+      "frames": 12,
+      "metrics": {
+        "HOTA": 0.2431512222445247,
+        "DetA": 0.1439317246917687,
+        "AssA": 0.42104788486367434,
+        "IDF1": 0.21739130434782608,
+        "IDSW": 0,
+        "FP": 11,
+        "FN": 25
+      },
+      "metric_scale": "fraction; counts for IDSW/FP/FN",
+      "association_replay_fps_not_E2E": 27.93045956110776,
+      "peak_decision_gpu_memory_bytes": null
+    },
+    "rmot_multi12_pretrained": {
+      "run": "outputs/groundjev/training/onejev500_completion_controls_v1/rmot_multi12_pretrained",
+      "frames": 12,
+      "metrics": {
+        "HOTA": 0.22272041440942322,
+        "DetA": 0.139873897230986,
+        "AssA": 0.3634791946195455,
+        "IDF1": 0.17777777777777778,
+        "IDSW": 1,
+        "FP": 10,
+        "FN": 25
+      },
+      "metric_scale": "fraction; counts for IDSW/FP/FN",
+      "association_replay_fps_not_E2E": 2.6146225894964026,
+      "peak_decision_gpu_memory_bytes": 4574328832
+    },
+    "rmot_multi12_init100": {
+      "run": "outputs/groundjev/training/onejev500_completion_controls_v1/rmot_multi12_init100",
+      "frames": 12,
+      "metrics": {
+        "HOTA": 0.0,
+        "DetA": 0.0,
+        "AssA": 0.0,
+        "IDF1": 0.0,
+        "IDSW": 0,
+        "FP": 1,
+        "FN": 30
+      },
+      "metric_scale": "fraction; counts for IDSW/FP/FN",
+      "association_replay_fps_not_E2E": 3.6530937406597594,
+      "peak_decision_gpu_memory_bytes": 3691067392
+    },
+    "rmot_multi12_sft500": {
+      "run": "outputs/groundjev/training/onejev500_completion_controls_v1/rmot_multi12_sft500",
+      "frames": 12,
+      "metrics": {
+        "HOTA": 0.21424610750777973,
+        "DetA": 0.15444037355881546,
+        "AssA": 0.30446138494384106,
+        "IDF1": 0.18604651162790697,
+        "IDSW": 1,
+        "FP": 8,
+        "FN": 25
+      },
+      "metric_scale": "fraction; counts for IDSW/FP/FN",
+      "association_replay_fps_not_E2E": 2.3124359788283293,
+      "peak_decision_gpu_memory_bytes": 4824379392
+    },
+    "tao_base4_simple": {
+      "run": "outputs/groundjev/training/onejev500_completion_controls_v1/tao_base4_simple",
+      "frames": 4,
+      "metrics": {
+        "TETA": 24.171,
+        "LocA": 29.452,
+        "AssocA": 43.061,
+        "ClsA": 0.0,
+        "LocRe": 51.111,
+        "LocPr": 40.153,
+        "AssocRe": 44.918,
+        "AssocPr": 85.14,
+        "ClsRe": 0.0,
+        "ClsPr": 0.0
+      },
+      "metric_scale": "official TETA summary percent",
+      "association_replay_fps_not_E2E": 0.8259372118639735,
+      "peak_decision_gpu_memory_bytes": null
+    },
+    "tao_base4_pretrained": {
+      "run": "outputs/groundjev/training/onejev500_completion_controls_v1/tao_base4_pretrained",
+      "frames": 4,
+      "metrics": {
+        "TETA": 13.243,
+        "LocA": 16.018,
+        "AssocA": 23.711,
+        "ClsA": 0.0,
+        "LocRe": 18.611,
+        "LocPr": 50.043,
+        "AssocRe": 28.958,
+        "AssocPr": 61.69,
+        "ClsRe": 0.0,
+        "ClsPr": 0.0
+      },
+      "metric_scale": "official TETA summary percent",
+      "association_replay_fps_not_E2E": 0.004442681151403801,
+      "peak_decision_gpu_memory_bytes": 8581774848
+    },
+    "tao_base4_init100": {
+      "run": "outputs/groundjev/training/onejev500_completion_controls_v1/tao_base4_init100",
+      "frames": 4,
+      "metrics": {
+        "TETA": 11.732,
+        "LocA": 11.445,
+        "AssocA": 23.75,
+        "ClsA": 0.0,
+        "LocRe": 15.278,
+        "LocPr": 30.556,
+        "AssocRe": 23.75,
+        "AssocPr": 95.0,
+        "ClsRe": 0.0,
+        "ClsPr": 0.0
+      },
+      "metric_scale": "official TETA summary percent",
+      "association_replay_fps_not_E2E": 0.003998620107262073,
+      "peak_decision_gpu_memory_bytes": 8114070528
+    },
+    "tao_base4_sft500": {
+      "run": "outputs/groundjev/training/onejev500_completion_controls_v1/tao_base4_sft500",
+      "frames": 4,
+      "metrics": {
+        "TETA": 11.981,
+        "LocA": 17.545,
+        "AssocA": 18.399,
+        "ClsA": 0.0,
+        "LocRe": 23.333,
+        "LocPr": 38.184,
+        "AssocRe": 24.702,
+        "AssocPr": 41.081,
+        "ClsRe": 0.0,
+        "ClsPr": 0.0
+      },
+      "metric_scale": "official TETA summary percent",
+      "association_replay_fps_not_E2E": 0.003968595753504002,
+      "peak_decision_gpu_memory_bytes": 8429160960
+    }
+  }
+}

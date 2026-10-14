@@ -1,0 +1,61 @@
+{
+  "status": "VIDEO_INFERENCE_COMPLETE",
+  "task": "mot",
+  "backend": "simple",
+  "evidence_format": "v3_crop_motion",
+  "native_feature_url": null,
+  "adaptive_context_groups": true,
+  "category_policy": "native_label",
+  "scope": "short_functional_check",
+  "video_manifest": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/pilot_data/mot17_first4.json",
+  "frames": 4,
+  "latencies_seconds": [
+    0.2801739979768172,
+    0.04410060902591795,
+    0.02354603895219043,
+    0.023473032983019948
+  ],
+  "grounding_parser_policy": "strict_client",
+  "grounding_decoder_policy": "generic_greedy",
+  "grounding_vocabulary_chunk_size": null,
+  "specification": {
+    "task": "mot",
+    "vocabulary": [
+      "person"
+    ],
+    "expression": null
+  },
+  "timestamp_policy": "physical frame number / registered video FPS",
+  "perception_failure_policy": "stop",
+  "perception_rejected_frames": [],
+  "perception_rejection_rate": 0.0,
+  "strict_wire_invalid_frames": [
+    305
+  ],
+  "all_input_frames_processed": true,
+  "end_to_end_fps": null,
+  "complete_video_wall_seconds": 1.0992200510227121,
+  "model_initialization_seconds": 0.05425800598459318,
+  "timing_scope": "all image reads, native requests including service queueing, association, memory persistence, prediction/log writes, drawing, video encoding and encoder completion; preloaded remote DLM server startup excluded",
+  "successful_frame_pipeline_fps": 10.773143274191106,
+  "association_replay_fps": 10.773143274191106,
+  "resume_source": null,
+  "resumed_completed_frames": 0,
+  "timing_limitations": null,
+  "official_metrics": {
+    "status": "COMPLETE",
+    "path": "outputs/groundjev/training/onejev500_completion_controls_v1/mot4_simple/official_metrics.json",
+    "scope": "short_functional_check",
+    "frames": 4
+  },
+  "checkpoint": null,
+  "motchallenge_confidence_column": "constant unscored-output sentinel; native detection score is absent",
+  "gt_read_by_runtime": false,
+  "future_frames_read_by_runtime": false,
+  "memory_policy": "gated",
+  "memory_feature_view": "all",
+  "lost_seconds": 3.0,
+  "ema_alpha": 0.1,
+  "replay_feature_vectors_omitted_from_log": false,
+  "shared_input_features_source": null
+}

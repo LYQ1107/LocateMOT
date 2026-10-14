@@ -1,0 +1,11 @@
+{
+  "status": "NEW_STAGE_REAL_FP32_MASTERS_INITIALIZED",
+  "source": "outputs/groundjev/training/onejev_own_history_v3_exact500_replay_stateful/latest_training_state.pt",
+  "source_step": 500,
+  "FP32_parameter_entries": 320,
+  "parameters": 752393024,
+  "changed_vs_BF16_inference_export_initialization": 498431025,
+  "initialization_max_difference": 0.0,
+  "new_optimizer_scheduler_and_RNG": "explicit newrecipe reset, not originaltrajectory resume",
+  "old_training_state_or_inference_weights_modified": false
+}

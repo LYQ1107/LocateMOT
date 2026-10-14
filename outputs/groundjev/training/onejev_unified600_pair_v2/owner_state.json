@@ -1,0 +1,22 @@
+{
+  "status": "PAIRED_UNIFIED600_OWNER_FAILED",
+  "owner_pid": 1556506,
+  "probe_owner": null,
+  "GPU5_TAO_resource_owner": [
+    1444656,
+    "37238782"
+  ],
+  "physical_gpus": {
+    "teacher": 4,
+    "native": 5
+  },
+  "registered_additional_updates_each": 600,
+  "sampler": "paired-index-shuffle-v1",
+  "actual_semantic_rows_and_question_families_per_step_identical": true,
+  "actual_prefix_rows_each": 2400,
+  "exact_old_optimizer_trajectory_resume_claim": false,
+  "new_stage_optimizer_scheduler_RNG": "explicit recipe reset from original500 FP32 masters",
+  "completed": {},
+  "new_training_started": false,
+  "error": "AssertionError('NATIVE_RMOT_PROBE_OWNER_FAILED')"
+}

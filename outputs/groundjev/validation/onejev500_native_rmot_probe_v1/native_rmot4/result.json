@@ -1,0 +1,63 @@
+{
+  "status": "VIDEO_INFERENCE_COMPLETE_WITH_REJECTED_PERCEPTION",
+  "task": "rmot",
+  "backend": "full",
+  "evidence_format": "v3_crop_motion",
+  "native_feature_url": null,
+  "adaptive_context_groups": true,
+  "category_policy": "native_label",
+  "scope": "short_functional_check",
+  "video_manifest": "outputs/groundjev/multitask_pilot_data/rmot_single_empty.json",
+  "frames": 4,
+  "latencies_seconds": [
+    0.23514209303539246,
+    0.2906538959941827,
+    0.24305068998364732,
+    0.37144726695260033
+  ],
+  "grounding_parser_policy": "strict_client",
+  "grounding_decoder_policy": "generic_greedy",
+  "grounding_vocabulary_chunk_size": null,
+  "specification": {
+    "task": "rmot",
+    "vocabulary": [
+      "person",
+      "car"
+    ],
+    "expression": "a red coat is being worn by the woman"
+  },
+  "timestamp_policy": "KITTI 10 Hz frame clock; source zero-based frame numbers retained",
+  "perception_failure_policy": "stop",
+  "perception_rejected_frames": [
+    152
+  ],
+  "perception_rejection_rate": 0.25,
+  "strict_wire_invalid_frames": [
+    150,
+    151,
+    152,
+    153
+  ],
+  "all_input_frames_processed": true,
+  "end_to_end_fps": null,
+  "complete_video_wall_seconds": 1.4810897230054252,
+  "model_initialization_seconds": 8.272590538021177,
+  "timing_scope": "all image reads, native requests including service queueing, association, memory persistence, prediction/log writes, drawing, video encoding and encoder completion; preloaded remote DLM server startup excluded",
+  "successful_frame_pipeline_fps": 3.507867435542703,
+  "association_replay_fps": 3.507867435542703,
+  "resume_source": null,
+  "resumed_completed_frames": 0,
+  "timing_limitations": null,
+  "official_metrics": "PENDING_OFFICIAL_EVALUATOR",
+  "checkpoint": "outputs/groundjev/training/onejev_own_history_v3_exact500_replay_stateful/ckpt-step500",
+  "motchallenge_confidence_column": "constant unscored-output sentinel; native detection score is absent",
+  "gt_read_by_runtime": false,
+  "future_frames_read_by_runtime": false,
+  "memory_policy": "gated",
+  "memory_feature_view": "all",
+  "lost_seconds": 3.0,
+  "ema_alpha": 0.1,
+  "replay_feature_vectors_omitted_from_log": false,
+  "shared_input_features_source": null,
+  "peak_decision_gpu_memory_bytes": 3867352064
+}

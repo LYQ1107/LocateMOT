@@ -1,0 +1,9 @@
+{
+  "status": "NATIVE_FOUR_FRAME_INFERENCE_COMPLETE_VALIDATOR_FIELD_LOOKUP_FAILED",
+  "root_cause": "GT_read is absent in old OneJev per-frame metadata; correct gt_read_by_runtime and future_frames_read_by_runtime fields already exist in completed result.json",
+  "native_frames_completed": 4,
+  "native_Noul_probabilities_finite": 6,
+  "fix": "validate correct run-level GT/future flags and reuse all completed native frames; add consistent GT_read=False metadata for future OneJev runs",
+  "acceptance_numerical_or_GT_criteria_weakened": false,
+  "new_training_started": false
+}

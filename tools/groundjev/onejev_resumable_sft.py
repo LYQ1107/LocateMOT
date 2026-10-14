@@ -18,7 +18,7 @@ def write_state(model,opt,sched,args,step,seen,epoch,next_step,run_dir):
     import torch
     import numpy as np
     state={'format':'groundjev-full-fp32-adam-rng-v1','step':step,'seen':seen,'epoch':epoch,
-        'next_step_in_epoch':next_step,'protocol':{k:getattr(args,k) for k in PROTOCOL_KEYS},
+        'next_step_in_epoch':next_step,'protocol':protocol(args),
         'fp32_trainable_parameters':{k:v.detach().cpu().clone() for k,v in model.named_parameters() if v.requires_grad},
         'optimizer':opt.state_dict(),'scheduler':sched.state_dict(),'torch_rng':torch.get_rng_state(),
         'cuda_rng':torch.cuda.get_rng_state_all(),'python_rng':random.getstate()}
@@ -36,12 +36,19 @@ PROTOCOL_KEYS=('model','train_file','seed','lr','max_steps','epochs','max_len','
     'accum_rows','max_rows','brier_weight','augment','train_vision','full_finetune','weight_decay','warmup_frac')
 
 
+def protocol(args):
+    result = {k: getattr(args, k) for k in PROTOCOL_KEYS}
+    if getattr(args, 'paired_index_shuffle', False):
+        result['sampling_protocol'] = 'paired-index-shuffle-v1'
+    return result
+
+
 def restore_state(path,model,opt,sched,args):
     import torch
     import numpy as np
     state=torch.load(path,map_location='cpu',weights_only=True)
     assert state['format']=='groundjev-full-fp32-adam-rng-v1'
-    assert state['protocol']=={k:getattr(args,k) for k in PROTOCOL_KEYS}
+    assert state['protocol']==protocol(args)
     parameters={k:v for k,v in model.named_parameters() if v.requires_grad}
     assert parameters.keys()==state['fp32_trainable_parameters'].keys()
     with torch.no_grad():
@@ -82,9 +89,19 @@ def main():
     parser=argparse.ArgumentParser(add_help=False);parser.add_argument('--resume-state',type=Path)
     parser.add_argument('--initial-training-state',type=Path)
     parser.add_argument('--expected-initial-step',type=int,default=500)
+    parser.add_argument('--paired-index-shuffle',action='store_true')
     options,argv=parser.parse_known_args()
     assert not (options.resume_state and options.initial_training_state)
     from train import sft
+    if options.paired_index_shuffle:
+        from paired_sft_sampler import index_shuffle_plan
+        sft.plan_epoch = index_shuffle_plan(sft.plan_epoch)
+        native_parse_args = sft.parse_args
+        def parse_paired_args(argv=None):
+            args = native_parse_args(argv)
+            args.paired_index_shuffle = True
+            return args
+        sft.parse_args = parse_paired_args
     code=inspect.getsource(sft.main)
     replacements=[
         ('    params = [p for p in model.parameters() if p.requires_grad]\n    if world > 1 and not args.full_finetune:',

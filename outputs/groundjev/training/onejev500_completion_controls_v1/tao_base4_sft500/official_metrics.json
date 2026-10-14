@@ -1,0 +1,189 @@
+{
+  "status": "OFFICIAL_REGISTERED_MULTITASK_SCOPE_EVALUATION_COMPLETE",
+  "task": "ovmot",
+  "dataset": "tao_amodal",
+  "sequence": "val/YFCC100M/v_25685519b728afd746dfd1b2fe77c",
+  "scope": "registered_short_functional_clip",
+  "frames": 4,
+  "all_registered_frames_included": true,
+  "GT_access": "evaluation only",
+  "official_test_labels_read": false,
+  "end_to_end_fps": null,
+  "association_replay_fps": 0.003968595753504002,
+  "perception_rejected_frames": [
+    751,
+    781,
+    811,
+    841
+  ],
+  "evaluator": "unmodified official TETA OVMOT recipe; non-exhaustive TAO",
+  "evaluator_commit": "b498aa87b252bfb75d7cc0d8d6435c3e1e74e4de",
+  "metrics": {
+    "TETA": 11.981,
+    "LocA": 17.545,
+    "AssocA": 18.399,
+    "ClsA": 0.0,
+    "LocRe": 23.333,
+    "LocPr": 38.184,
+    "AssocRe": 24.702,
+    "AssocPr": 41.081,
+    "ClsRe": 0.0,
+    "ClsPr": 0.0
+  },
+  "base_novel": {
+    "base": {
+      "TETA": 11.981,
+      "LocA": 17.545,
+      "AssocA": 18.399,
+      "ClsA": 0.0,
+      "LocRe": 23.333,
+      "LocPr": 38.184,
+      "AssocRe": 24.702,
+      "AssocPr": 41.081,
+      "ClsRe": 0.0,
+      "ClsPr": 0.0
+    },
+    "novel": null
+  },
+  "metric_scale": "official TETA summary percent",
+  "evaluated_categories": [
+    {
+      "name": "baby",
+      "group": "base"
+    }
+  ],
+  "GT_boxes": 18,
+  "predictions": 450,
+  "unmapped_predicted_labels": [
+    {
+      "frame": 751,
+      "label": "blackberry"
+    },
+    {
+      "frame": 751,
+      "label": "blouse"
+    },
+    {
+      "frame": 751,
+      "label": "blouse"
+    },
+    {
+      "frame": 751,
+      "label": "blouse"
+    },
+    {
+      "frame": 751,
+      "label": "blouse"
+    },
+    {
+      "frame": 751,
+      "label": "blouse"
+    },
+    {
+      "frame": 751,
+      "label": "blouse"
+    },
+    {
+      "frame": 751,
+      "label": "blouse"
+    },
+    {
+      "frame": 751,
+      "label": "blouse"
+    },
+    {
+      "frame": 751,
+      "label": "bob"
+    },
+    {
+      "frame": 751,
+      "label": "box"
+    },
+    {
+      "frame": 751,
+      "label": "bread"
+    },
+    {
+      "frame": 751,
+      "label": "buroy"
+    },
+    {
+      "frame": 751,
+      "label": "cakeboard"
+    },
+    {
+      "frame": 751,
+      "label": "washbasin"
+    },
+    {
+      "frame": 781,
+      "label": "chalice"
+    },
+    {
+      "frame": 781,
+      "label": "cleat (for securing rope)"
+    },
+    {
+      "frame": 781,
+      "label": "cloak"
+    },
+    {
+      "frame": 781,
+      "label": "cocoa (beverage)"
+    },
+    {
+      "frame": 781,
+      "label": "skullcap"
+    },
+    {
+      "frame": 811,
+      "label": "bob"
+    },
+    {
+      "frame": 811,
+      "label": "generator"
+    },
+    {
+      "frame": 811,
+      "label": "halter top"
+    },
+    {
+      "frame": 811,
+      "label": "halter top"
+    },
+    {
+      "frame": 811,
+      "label": "legume"
+    },
+    {
+      "frame": 841,
+      "label": "arctic (type of shoe)"
+    },
+    {
+      "frame": 841,
+      "label": "arctic (type of shoe)"
+    },
+    {
+      "frame": 841,
+      "label": "arctic (type of shoe)"
+    },
+    {
+      "frame": 841,
+      "label": "bread"
+    },
+    {
+      "frame": 841,
+      "label": "calculatorboard"
+    },
+    {
+      "frame": 841,
+      "label": "cockroach"
+    }
+  ],
+  "unmapped_policy": "retain boxes with unknown category -1; never discard predictions or GT",
+  "prediction_score": "constant unscored sentinel 1; no detector confidence and no score-based truncation",
+  "GT_policy": "all original modal xywh boxes; no clipping, visibility threshold, or category exclusion",
+  "novel_evaluation_GT_used_for_training": false,
+  "official_complete_dataset_result": false,
+  "timestamp_policy": "annotation-step units; physical source FPS unavailable; display at one step per second"
+}

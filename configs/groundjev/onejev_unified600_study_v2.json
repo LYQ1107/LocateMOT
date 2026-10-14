@@ -1,0 +1,53 @@
+{
+  "name": "Paired sharedFull600 semantic adaptation and MOT proposal-domain study",
+  "source_initialization": "actual completed500 FP32 masters, verified320trainable tensors/752393024parameters/zero restore difference",
+  "variants": {
+    "teacher": "configs/groundjev/onejev_unified600_teacher_v2.json",
+    "native": "configs/groundjev/onejev_unified600_native_v2.json"
+  },
+  "steps_each": 600,
+  "sampling_protocol": "explicit new paired-index-shuffle-v1; native loss, math,AMP,4rowupdates unchanged",
+  "training_wrapper_flag": "--paired-index-shuffle",
+  "eligible_rows_each": 125286,
+  "eligible_buckets_each": {
+    "mot": 41762,
+    "rmot": 41762,
+    "ovmot": 41762
+  },
+  "actual600_prefix_each": {
+    "mot": 811,
+    "rmot": 749,
+    "ovmot": 840
+  },
+  "per_step_common_semantic_payloads_and_MOT_question_families_exact": true,
+  "shared_semantic_prefix_rows": 1589,
+  "all_eligible_semantic_payloads_equal": 83524,
+  "token_or_FLOP_matched": false,
+  "optimizer_scheduler_RNG": "explicit newstage reset, not old500trajectory continuation",
+  "native_RMOT_semantics": "actualDLM fit72frames/144expressions contexts; instantaneous membership, notnewOne500ownhistory",
+  "OVMOT_semantics": "registered64trainBaseframes/215GTteacher crops/9Baseclasses, all1203inputcategories; conditionalrootteacherforcing; noNovelGT/unknownnegative supervision",
+  "before_after_runtime_policies": {
+    "mot": "Fullv3_crop_motion adaptive groups",
+    "rmot": "sameFull with --native-rmot-membership",
+    "ovmot": "sameFull with --category-policy native_hierarchical"
+  },
+  "same_checkpoint_for_all_three_tasks_each_variant": true,
+  "launch": "python3 tools/groundjev/run_onejev_unified600.py --out outputs/groundjev/training/onejev_unified600_pair_v3_probe_validated",
+  "prerequisites": "completed500matched16controls captured, genuine nativeNoul4frameprobe passed; exactliveowner resource handoff forGPU4/GPU5",
+  "prior500_review": "MOT34.39pretrained ->30.87at500, RMOsingle0 ->24.89, RMOmulti22.27 ->21.42; shortscope mixed outcome motivates controlledstage, no promotion",
+  "remaining_measurements": [
+    "real600nativeMMreload",
+    "sameprotocol500/teacher600/native600 officialtracking controls includingBase/Novel",
+    "complete1203frame pairedFullvideo comparisons",
+    "fulllegalRMOT and broaderBase/Novel scope",
+    "freshnative E2E speed/resources, notcachedreplayFPS"
+  ],
+  "new_training_launched": true,
+  "full_goal_complete": false,
+  "native_probe": "outputs/groundjev/validation/onejev500_native_rmot_probe_v2_validated/owner_state.json",
+  "original500_full_matched_controls_complete": true,
+  "queued_owner_output": "outputs/groundjev/training/onejev_unified600_pair_v3_probe_validated",
+  "teacher_runtime": "GPU4 process started; actual500 FP32 restore0 verified",
+  "native_runtime": "waiting verifiedTAOGPU5owner and completeownedservicegroup exit",
+  "actual_owner": "outputs/groundjev/training/onejev_unified600_pair_v3_probe_validated/owner_state.json"
+}

@@ -1,0 +1,11 @@
+{
+  "status": "EXPORTED_TIED_EMBEDDING_ALIAS_ACCOUNTED",
+  "exported_tensor_elements": 1107265600,
+  "same_embedding_and_lm_head_export_elements": 254279680,
+  "unique_model_parameters_after_tied_alias_deduplication": 852985920,
+  "trainable_language_parameters": 752393024,
+  "frozen_visual_parameters": 100592896,
+  "changed_BF16_unique_parameter_elements_vs_initial100": 333632768,
+  "model_brand_name": "OneJev-0.8B",
+  "GPU_used": false
+}

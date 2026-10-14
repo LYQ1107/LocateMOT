@@ -1,5 +1,5 @@
 {
-  "status": "RUNNING_STATEFUL_OFFICIAL500_PROTOCOL",
+  "status": "STATEFUL_ONEJEV500_TRAINING_COMPLETE",
   "owner_pid": 301239,
   "physical_gpu": 4,
   "target_steps": 500,
@@ -9,5 +9,14 @@
   "initialization": "original valid100 checkpoint, identical original500 protocol",
   "scope": "unfinished-unit replay; not exact reconstruction of missing original250Adam state",
   "new_checkpoint_policy": "one atomic FP32masters/Adam/scheduler/RNG/cursor training state",
-  "child_pid": 301241
+  "child_pid": 301241,
+  "exit_code": 0,
+  "done": {
+    "event": "done",
+    "steps": 500,
+    "examples": 2000,
+    "elapsed_s": 33469.233003931,
+    "examples_per_s": 0.05975637385431263
+  },
+  "checkpoint_reload_before_after_official_results": "pending"
 }

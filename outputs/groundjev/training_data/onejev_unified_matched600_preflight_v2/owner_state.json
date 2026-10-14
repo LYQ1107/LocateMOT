@@ -1,0 +1,110 @@
+{
+  "status": "BOTH_UNIFIED600_OFFICIAL_CPU_PREFLIGHTS_COMPLETE_NOT_TRAINED",
+  "owner_pid": 1532361,
+  "models_or_GPUs_loaded": false,
+  "training_started": false,
+  "completed": {
+    "teacher": {
+      "status": "OFFICIAL_CPU_PLAN_AND_FINITE_PREFIX_COMPLETE",
+      "eligible_rows": 125286,
+      "overlength_dropped_rows": 0,
+      "max_context": 32768,
+      "max_actual_tokens": 22817,
+      "total_eligible_tokens": 830860043,
+      "planned_updates": 31322,
+      "registered_new_stage_updates": 600,
+      "actual_prefix_rows": 2400,
+      "actual_prefix_task_counts": {
+        "mot": 811,
+        "rmot": 749,
+        "ovmot": 840
+      },
+      "actual_prefix_question_families": {
+        "lifecycle": 243,
+        "identity": 380,
+        "reliability": 90,
+        "query_membership": 717,
+        "category_leaf": 398,
+        "category_group": 442,
+        "memory_update": 88,
+        "withheld_correct_options": 10,
+        "empty_query_presence": 32
+      },
+      "actual_prefix_conditional_Base_category_counts": {
+        "person": 187,
+        "bicycle": 31,
+        "car (automobile)": 32,
+        "sandwich": 57,
+        "kayak": 26,
+        "paddle": 28,
+        "bottle": 8,
+        "dog": 13,
+        "camera": 16
+      },
+      "actual_prefix_tokens": 15774003,
+      "official_rendering_augmentation_step_planning_and_loss_unchanged": true,
+      "official_length_bucket_sampler_unchanged": false,
+      "sampling_protocol": "paired-index-shuffle-v1",
+      "one_CPU_plan_reused_for_native_report_only": true,
+      "model_or_GPU_loaded": false,
+      "new_training_complete": false
+    },
+    "native": {
+      "status": "OFFICIAL_CPU_PLAN_AND_FINITE_PREFIX_COMPLETE",
+      "eligible_rows": 125286,
+      "overlength_dropped_rows": 0,
+      "max_context": 32768,
+      "max_actual_tokens": 26028,
+      "total_eligible_tokens": 904191450,
+      "planned_updates": 31322,
+      "registered_new_stage_updates": 600,
+      "actual_prefix_rows": 2400,
+      "actual_prefix_task_counts": {
+        "mot": 811,
+        "rmot": 749,
+        "ovmot": 840
+      },
+      "actual_prefix_question_families": {
+        "lifecycle": 243,
+        "identity": 380,
+        "reliability": 90,
+        "query_membership": 717,
+        "category_leaf": 398,
+        "category_group": 442,
+        "memory_update": 88,
+        "withheld_correct_options": 10,
+        "empty_query_presence": 32
+      },
+      "actual_prefix_conditional_Base_category_counts": {
+        "person": 187,
+        "bicycle": 31,
+        "car (automobile)": 32,
+        "sandwich": 57,
+        "kayak": 26,
+        "paddle": 28,
+        "bottle": 8,
+        "dog": 13,
+        "camera": 16
+      },
+      "actual_prefix_tokens": 17216498,
+      "official_rendering_augmentation_step_planning_and_loss_unchanged": true,
+      "official_length_bucket_sampler_unchanged": false,
+      "sampling_protocol": "paired-index-shuffle-v1",
+      "one_CPU_plan_reused_for_native_report_only": true,
+      "model_or_GPU_loaded": false,
+      "new_training_complete": false
+    }
+  },
+  "return_codes": {
+    "teacher": 0,
+    "native": 0
+  },
+  "common_semantic_prefix_row_ids": {
+    "teacher": 1589,
+    "native": 1589,
+    "intersection": 1589,
+    "identical_actual_semantic_prefix": true
+  },
+  "paired_per_step_semantic_rows_and_all_question_families_exact": true,
+  "same_optimizer_update_budget_not_equal_token_FLOPs": true
+}

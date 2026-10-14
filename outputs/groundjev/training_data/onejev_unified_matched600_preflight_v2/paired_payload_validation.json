@@ -1,0 +1,8 @@
+{
+  "status": "PAIRED_SEMANTIC_ACTUAL_PAYLOADS_IDENTICAL",
+  "all_eligible_semantic_rows_compared": 83524,
+  "selected600_prefix_semantic_rows_compared": 1589,
+  "exact_same_state_question_media_targets_and_provenance": true,
+  "native_MOT_question_families_per_step_already_verified": true,
+  "no_training_or_GPU_inference": true
+}

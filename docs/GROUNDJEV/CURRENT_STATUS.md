@@ -581,3 +581,74 @@ Shared category request builders reproduce prior root/leaf request text and
 real crop pixels exactly on a real six-object input; capture-only routing
 answers are not native inference or accuracy evidence. These776semantic rows
 are prepared data, not trained weights or completed unified evaluation.
+
+## Completed original One500 and registered paired Full600 training
+
+Actual original500 finished500updates/2000examples at2026-10-15 01:30:56,
+elapsed33469.233s. Its9,029,140,249byte fullFP32/Adam/scheduler/RNG/cursor
+checkpoint and final BF16 model are saved. RealnativeMMtworeloads agree exactly.
+All16matched short controls and112decodedvideo frames now validate, with
+identical source proposals and unchanged official scorers.
+
+| Scope | Simple | Pretrained | Init100 | One500 |
+|---|---:|---:|---:|---:|
+| MOT4 HOTA percent |74.881|34.394|19.740|30.868|
+| RMOTsingle8 HOTA percent |24.228|0|0|24.886|
+| RMOTmulti12 HOTA percent |24.315|22.272|0|21.425|
+| TAOBase4 TETA |24.171|13.243|11.732|11.981|
+
+MOT IDSW Simple/pretrained/100/500 is1/47/0/57. TAOClsA is0 for allfour
+under this legacy native-label protocol. These are short pilot comparisons,
+not full-dataset or Novel results. One500 improves over100 but does not
+consistently improve over pretrained/Simple; no model promotion follows.
+Review validation_and_summary.json in training/onejev500_completion_controls_v1.
+
+Complete500CPUstage initialization verifies all320trainable tensors/752393024
+parameters restored exactly from real masters.498431025FP32 elements retain
+precision beyond BF16 export. All153visual tensors stay unchanged. Safetensors
+contain two identical tied embedding/head exports; removing that alias gives
+852985920unique model parameters (752393024trainable language,100592896frozen
+vision),333632768changed BF16unique elements versus initial100. Legacydefault
+checkpoint protocol remains exactlycompatible with the real500 state.
+
+NewFullsemantic training is an explicit additional600step paired study, not
+a change to the completed500 or preparedMOT-only200 protocols. Each arm has
+125286eligible rows:41762MOT,41762RMOT,41762OVMOT. Sharedsemantic sources are
+the346nativefitRMOT rows and430Basecategory rows; noNovel/eval GTtraining.
+Both begin from immutable500FP32masters with explicit newAdam/scheduler/RNG.
+
+V1native length-sorted sampling changed the finite semantic exposure despite
+equal eligible counts:686common repetition IDs out of1558/1553. Bothv1plans
+and rawtrainingdata remain. Selectedv2adjacent teacher duplication matches
+everyMOTquestionfamily to the native-mixture row, and paired-index-shuffle-v1
+selects identical indices and questions per step. This optional new-stage
+sampler is recorded in resumable checkpoint protocol; defaultoldsampler,
+loss/AMP/kernel/seed/context/4rowstep planning are preserved.
+
+Bothv2officialCPUplans accept all125286rows with0dropped, max22817teacher
+and26028native tokens versus32768limit. Each600prefix has2400rows:
+811MOT/749RMOT/840OVMOT, with identical per-step question families and1589
+semantic repetition rows. DirectJSONcomparison confirms all83524eligible
+sharedsemantic payloads, including those1589selected rows, byte-identical.
+Prefix tokens differ15774003teacher versus17216498native, so not FLOPmatched.
+Conservative text/features including both retained dataset versions total
+16,289,535,076bytes before newruntime logs, below25GiB.
+
+Actual native One500 Noul4frame inference succeeded (150..153,6candidate
+answers, allfinite .172542..176372), but firstowner misread GT_read from
+per-frame metadata. The correct GT/future flags already exist in result.json.
+Originalfailure and completed outputs remain; fresh validation checks those
+run-level flags and reuses all4nativeframes. No metric, numerical criterion,
+source frame or model changed. FutureOne metadata now also declaresGT_read.
+The firstpairedowner correctlyfailed before training on the failedprobe flag;
+its logs remain. Fixedprobe: validation/onejev500_native_rmot_probe_v2_validated.
+
+Pairedtraining owner: training/onejev_unified600_pair_v3_probe_validated.
+Teacher arm has started onGPU4 with pairedsampler and actual500masterrestore0
+verified onGPU. Nativearm waits exactliveTAOownerPID/startticks onGPU5, then
+requires empty ownedservicegroups before launch; an independentTAOmeasurement
+failure does not invalidate training once resources truly exit. Oldsource500
+state is read-only, new600statepaths distinct. ExistingGroundfull9 jobs keep
+their own owners. After600, actualnative reloads, same semantic-policy500/600
+tracking comparisons, completevideos and native E2E/resource measurements
+remain required. No600accuracy, Novelgain or completed unifiedgoal claim.

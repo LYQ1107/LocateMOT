@@ -1,0 +1,94 @@
+{
+  "status": "NEW_UNIFIED_FULL_MATCHED_ELIGIBLE_CURRICULA_COMPLETE_NOT_TRAINED",
+  "source_rows": {
+    "teacher": 20881,
+    "native": 41762,
+    "rmot": 346,
+    "ovmot": 430
+  },
+  "sources": {
+    "teacher": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/mixed_onejev_own_history_v3_lifecycle_fixed2_500/train.jsonl",
+    "native": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/onejev_native_mixture200_v2_family_matched/train.jsonl",
+    "rmot": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/onejev_native_rmot_membership_v2_registered_release_root/train.jsonl",
+    "ovmot": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/onejev_base_categories_v1/train.jsonl"
+  },
+  "conservative_existing_feature_and_text_bytes": 13841604560,
+  "planned_new_JSONL_bytes": {
+    "teacher": 1187840425,
+    "native": 1260090091
+  },
+  "temporary_feature_budget_bytes": 26843545600,
+  "common_semantics": "same real native fit RMOT rows and registered Base-only teacher crop category rows",
+  "Base_category_ground_native_proposal_claim": false,
+  "native_RMOT_One500_history_claim": false,
+  "same_initialization": "actual original500 FP32 masters; new optimizer/scheduler reset",
+  "steps_each": 600,
+  "seed": 0,
+  "lr": 2e-06,
+  "accum_rows": 4,
+  "official_loss_and_step_planning_unchanged": true,
+  "sampling_protocol": "paired-index-shuffle-v1",
+  "matched_budget": "optimizer updates and eligible bucket counts; actual prefix exposures recorded; v2 also matches every per-step semantic row and MOT question family; not token/FLOP matched",
+  "new_training_started": false,
+  "Novel_or_eval_GT_supervised": false,
+  "launch_requirement": "actual500 matched controls reviewed and queued real native Noul probe completed",
+  "existing500_or_MOTonly200_protocol_changed": false,
+  "variants": {
+    "teacher": {
+      "eligible_rows": 125286,
+      "tracking_task_buckets": {
+        "mot": 41762,
+        "rmot": 41762,
+        "ovmot": 41762
+      },
+      "question_families": {
+        "identity": 19680,
+        "query_membership": 39834,
+        "category_group": 20881,
+        "category_leaf": 20881,
+        "memory_update": 4920,
+        "reliability": 4920,
+        "empty_query_presence": 1928,
+        "lifecycle": 11902,
+        "withheld_correct_options": 340
+      },
+      "unique_source_row_ids": {
+        "mot": 20881,
+        "rmot": 346,
+        "ovmot": 430
+      },
+      "JSONL_bytes": 1187840425,
+      "all_registered_sources_retained": true,
+      "tracking_task_field": "supervision.tracking_task_bucket; native category request state intentionally retains its deployed descriptive task string",
+      "native_category_question_templates_and_all1203_vocabulary_unchanged": true
+    },
+    "native": {
+      "eligible_rows": 125286,
+      "tracking_task_buckets": {
+        "mot": 41762,
+        "rmot": 41762,
+        "ovmot": 41762
+      },
+      "question_families": {
+        "identity": 19680,
+        "query_membership": 39834,
+        "category_group": 20881,
+        "category_leaf": 20881,
+        "memory_update": 4920,
+        "reliability": 4920,
+        "empty_query_presence": 1928,
+        "lifecycle": 11902,
+        "withheld_correct_options": 340
+      },
+      "unique_source_row_ids": {
+        "mot": 41762,
+        "rmot": 346,
+        "ovmot": 430
+      },
+      "JSONL_bytes": 1260090091,
+      "all_registered_sources_retained": true,
+      "tracking_task_field": "supervision.tracking_task_bucket; native category request state intentionally retains its deployed descriptive task string",
+      "native_category_question_templates_and_all1203_vocabulary_unchanged": true
+    }
+  }
+}

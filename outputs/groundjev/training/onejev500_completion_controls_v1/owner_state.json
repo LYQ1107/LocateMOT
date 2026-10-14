@@ -1,10 +1,1758 @@
 {
-  "status": "WAITING_VERIFIED_ORIGINAL500_TRAINER",
+  "status": "ONEJEV500_MATCHED_OFFICIAL_CONTROLS_COMPLETE",
   "training_owner_pid": 301239,
   "training_owner_start_ticks": "34227430",
   "physical_eval_gpu": 4,
   "training_restarted_or_protocol_modified": false,
   "end_to_end_FPS_claim": false,
   "fixed_native_candidate_controls": true,
-  "completed": {}
+  "completed": {
+    "mot4_simple": {
+      "run": "outputs/groundjev/training/onejev500_completion_controls_v1/mot4_simple",
+      "official_metrics": {
+        "status": "OFFICIAL_SCOPE_EVALUATION_COMPLETE",
+        "dataset": "mot17",
+        "sequence": "MOT17-02-FRCNN",
+        "scope": "short_functional_check",
+        "frames": 4,
+        "metrics": {
+          "HOTA": 0.7488134158919785,
+          "DetA": 0.6423040599609131,
+          "AssA": 0.8951607936143764,
+          "IDF1": 0.8365019011406845,
+          "IDSW": 1,
+          "FP": 17,
+          "FN": 24
+        },
+        "metric_scale": "fraction, counts for IDSW/FP/FN",
+        "trackeval_commit": "12c8791b303e0a0b50f753af204249e622d0281a",
+        "gt_view": {
+          "dataset": "mot17",
+          "sequence_lengths": {
+            "MOT17-02-FRCNN": 4
+          },
+          "sources": [
+            {
+              "video": "MOT17-02-FRCNN",
+              "source": {
+                "source_path": "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-02-FRCNN/gt/gt.txt",
+                "sha256": "2e3ecb488da8886d3200d402b2b08890c6d2879923839444e9b74fa43a551440"
+              },
+              "source_frames": [
+                "000302.jpg",
+                "000303.jpg",
+                "000304.jpg",
+                "000305.jpg"
+              ],
+              "view_path": "outputs/groundjev/training/onejev500_completion_controls_v1/mot4_simple/official_evaluation/gt/MOT17-02-FRCNN/gt/gt.txt",
+              "view_sha256": "0e62d9b0dba42241650152d70b07d4fdabe574249502d8ce7d98b7f9f9c09e35",
+              "positive_gt_units_before_official_preprocessing": 135
+            }
+          ],
+          "frame_count": 4,
+          "official_test_labels_read": false
+        },
+        "gt_access": "evaluation only",
+        "official_test_labels_read": false,
+        "fixture_only": false,
+        "model_score_claim": true,
+        "perception_rejected_frames": [],
+        "perception_rejection_rate": 0.0,
+        "rejected_frames_in_official_denominator": true,
+        "end_to_end_fps": null,
+        "association_replay_fps": 10.773143274191106
+      },
+      "all_exact_native_candidate_rows_preserved": true
+    },
+    "mot4_pretrained": {
+      "run": "outputs/groundjev/training/onejev500_completion_controls_v1/mot4_pretrained",
+      "official_metrics": {
+        "status": "OFFICIAL_SCOPE_EVALUATION_COMPLETE",
+        "dataset": "mot17",
+        "sequence": "MOT17-02-FRCNN",
+        "scope": "short_functional_check",
+        "frames": 4,
+        "metrics": {
+          "HOTA": 0.3439443160419115,
+          "DetA": 0.5308409784551259,
+          "AssA": 0.23169428942701925,
+          "IDF1": 0.351931330472103,
+          "IDSW": 47,
+          "FP": 11,
+          "FN": 48
+        },
+        "metric_scale": "fraction, counts for IDSW/FP/FN",
+        "trackeval_commit": "12c8791b303e0a0b50f753af204249e622d0281a",
+        "gt_view": {
+          "dataset": "mot17",
+          "sequence_lengths": {
+            "MOT17-02-FRCNN": 4
+          },
+          "sources": [
+            {
+              "video": "MOT17-02-FRCNN",
+              "source": {
+                "source_path": "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-02-FRCNN/gt/gt.txt",
+                "sha256": "2e3ecb488da8886d3200d402b2b08890c6d2879923839444e9b74fa43a551440"
+              },
+              "source_frames": [
+                "000302.jpg",
+                "000303.jpg",
+                "000304.jpg",
+                "000305.jpg"
+              ],
+              "view_path": "outputs/groundjev/training/onejev500_completion_controls_v1/mot4_pretrained/official_evaluation/gt/MOT17-02-FRCNN/gt/gt.txt",
+              "view_sha256": "0e62d9b0dba42241650152d70b07d4fdabe574249502d8ce7d98b7f9f9c09e35",
+              "positive_gt_units_before_official_preprocessing": 135
+            }
+          ],
+          "frame_count": 4,
+          "official_test_labels_read": false
+        },
+        "gt_access": "evaluation only",
+        "official_test_labels_read": false,
+        "fixture_only": false,
+        "model_score_claim": true,
+        "perception_rejected_frames": [],
+        "perception_rejection_rate": 0.0,
+        "rejected_frames_in_official_denominator": true,
+        "end_to_end_fps": null,
+        "association_replay_fps": 0.08852777630477765
+      },
+      "all_exact_native_candidate_rows_preserved": true
+    },
+    "mot4_init100": {
+      "run": "outputs/groundjev/training/onejev500_completion_controls_v1/mot4_init100",
+      "official_metrics": {
+        "status": "OFFICIAL_SCOPE_EVALUATION_COMPLETE",
+        "dataset": "mot17",
+        "sequence": "MOT17-02-FRCNN",
+        "scope": "short_functional_check",
+        "frames": 4,
+        "metrics": {
+          "HOTA": 0.19739548559595474,
+          "DetA": 0.15973903317095328,
+          "AssA": 0.25,
+          "IDF1": 0.30120481927710846,
+          "IDSW": 0,
+          "FP": 6,
+          "FN": 110
+        },
+        "metric_scale": "fraction, counts for IDSW/FP/FN",
+        "trackeval_commit": "12c8791b303e0a0b50f753af204249e622d0281a",
+        "gt_view": {
+          "dataset": "mot17",
+          "sequence_lengths": {
+            "MOT17-02-FRCNN": 4
+          },
+          "sources": [
+            {
+              "video": "MOT17-02-FRCNN",
+              "source": {
+                "source_path": "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-02-FRCNN/gt/gt.txt",
+                "sha256": "2e3ecb488da8886d3200d402b2b08890c6d2879923839444e9b74fa43a551440"
+              },
+              "source_frames": [
+                "000302.jpg",
+                "000303.jpg",
+                "000304.jpg",
+                "000305.jpg"
+              ],
+              "view_path": "outputs/groundjev/training/onejev500_completion_controls_v1/mot4_init100/official_evaluation/gt/MOT17-02-FRCNN/gt/gt.txt",
+              "view_sha256": "0e62d9b0dba42241650152d70b07d4fdabe574249502d8ce7d98b7f9f9c09e35",
+              "positive_gt_units_before_official_preprocessing": 135
+            }
+          ],
+          "frame_count": 4,
+          "official_test_labels_read": false
+        },
+        "gt_access": "evaluation only",
+        "official_test_labels_read": false,
+        "fixture_only": false,
+        "model_score_claim": true,
+        "perception_rejected_frames": [],
+        "perception_rejection_rate": 0.0,
+        "rejected_frames_in_official_denominator": true,
+        "end_to_end_fps": null,
+        "association_replay_fps": 0.07115248249497128
+      },
+      "all_exact_native_candidate_rows_preserved": true
+    },
+    "mot4_sft500": {
+      "run": "outputs/groundjev/training/onejev500_completion_controls_v1/mot4_sft500",
+      "official_metrics": {
+        "status": "OFFICIAL_SCOPE_EVALUATION_COMPLETE",
+        "dataset": "mot17",
+        "sequence": "MOT17-02-FRCNN",
+        "scope": "short_functional_check",
+        "frames": 4,
+        "metrics": {
+          "HOTA": 0.3086802263922558,
+          "DetA": 0.5379129890340048,
+          "AssA": 0.18500680267982458,
+          "IDF1": 0.2966101694915254,
+          "IDSW": 57,
+          "FP": 11,
+          "FN": 45
+        },
+        "metric_scale": "fraction, counts for IDSW/FP/FN",
+        "trackeval_commit": "12c8791b303e0a0b50f753af204249e622d0281a",
+        "gt_view": {
+          "dataset": "mot17",
+          "sequence_lengths": {
+            "MOT17-02-FRCNN": 4
+          },
+          "sources": [
+            {
+              "video": "MOT17-02-FRCNN",
+              "source": {
+                "source_path": "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-02-FRCNN/gt/gt.txt",
+                "sha256": "2e3ecb488da8886d3200d402b2b08890c6d2879923839444e9b74fa43a551440"
+              },
+              "source_frames": [
+                "000302.jpg",
+                "000303.jpg",
+                "000304.jpg",
+                "000305.jpg"
+              ],
+              "view_path": "outputs/groundjev/training/onejev500_completion_controls_v1/mot4_sft500/official_evaluation/gt/MOT17-02-FRCNN/gt/gt.txt",
+              "view_sha256": "0e62d9b0dba42241650152d70b07d4fdabe574249502d8ce7d98b7f9f9c09e35",
+              "positive_gt_units_before_official_preprocessing": 135
+            }
+          ],
+          "frame_count": 4,
+          "official_test_labels_read": false
+        },
+        "gt_access": "evaluation only",
+        "official_test_labels_read": false,
+        "fixture_only": false,
+        "model_score_claim": true,
+        "perception_rejected_frames": [],
+        "perception_rejection_rate": 0.0,
+        "rejected_frames_in_official_denominator": true,
+        "end_to_end_fps": null,
+        "association_replay_fps": 0.06685912038057958
+      },
+      "all_exact_native_candidate_rows_preserved": true
+    },
+    "rmot_single8_simple": {
+      "run": "outputs/groundjev/training/onejev500_completion_controls_v1/rmot_single8_simple",
+      "official_metrics": {
+        "status": "OFFICIAL_REGISTERED_MULTITASK_SCOPE_EVALUATION_COMPLETE",
+        "task": "rmot",
+        "dataset": "refer_kitti_v2",
+        "sequence": "0007",
+        "scope": "registered_short_functional_clip",
+        "frames": 8,
+        "all_registered_frames_included": true,
+        "GT_access": "evaluation only",
+        "official_test_labels_read": false,
+        "end_to_end_fps": null,
+        "association_replay_fps": 21.507558385137745,
+        "perception_rejected_frames": [
+          152
+        ],
+        "evaluator": "unmodified official TrackEval HOTA/CLEAR/Identity",
+        "evaluator_commit": "12c8791b303e0a0b50f753af204249e622d0281a",
+        "metrics": {
+          "HOTA": 0.24228399266377812,
+          "DetA": 0.23112326270221004,
+          "AssA": 0.2581453634085213,
+          "IDF1": 0.375,
+          "IDSW": 2,
+          "FP": 7,
+          "FN": 1
+        },
+        "metric_scale": "fraction; counts for IDSW/FP/FN",
+        "release_query_GT_boxes": 5,
+        "multi_target_frames": 0,
+        "posthoc_proposal_coverage_IoU_05": {
+          "covered": 4,
+          "GT_boxes": 5,
+          "recall": 0.8,
+          "scope": "evaluation-only target coverage; not HOTA; never used to correct runtime state"
+        },
+        "empty_target_frames": 3,
+        "empty_target_frame_predictions": 4,
+        "GT_transport_class": "class1 is a query-target transport convention, including cars and people",
+        "GT_policy": "only release expression target IDs; empty frames retained; exact release boxes without clipping",
+        "release_box_format": "normalized top-left xywh",
+        "ignore_policy": "registered expressions have empty release ignore fields",
+        "official_complete_dataset_result": false
+      },
+      "all_exact_native_candidate_rows_preserved": true
+    },
+    "rmot_single8_pretrained": {
+      "run": "outputs/groundjev/training/onejev500_completion_controls_v1/rmot_single8_pretrained",
+      "official_metrics": {
+        "status": "OFFICIAL_REGISTERED_MULTITASK_SCOPE_EVALUATION_COMPLETE",
+        "task": "rmot",
+        "dataset": "refer_kitti_v2",
+        "sequence": "0007",
+        "scope": "registered_short_functional_clip",
+        "frames": 8,
+        "all_registered_frames_included": true,
+        "GT_access": "evaluation only",
+        "official_test_labels_read": false,
+        "end_to_end_fps": null,
+        "association_replay_fps": 4.090614302350608,
+        "perception_rejected_frames": [
+          152
+        ],
+        "evaluator": "unmodified official TrackEval HOTA/CLEAR/Identity",
+        "evaluator_commit": "12c8791b303e0a0b50f753af204249e622d0281a",
+        "metrics": {
+          "HOTA": 0.0,
+          "DetA": 0.0,
+          "AssA": 0.0,
+          "IDF1": 0.0,
+          "IDSW": 0,
+          "FP": 0,
+          "FN": 5
+        },
+        "metric_scale": "fraction; counts for IDSW/FP/FN",
+        "release_query_GT_boxes": 5,
+        "multi_target_frames": 0,
+        "posthoc_proposal_coverage_IoU_05": {
+          "covered": 4,
+          "GT_boxes": 5,
+          "recall": 0.8,
+          "scope": "evaluation-only target coverage; not HOTA; never used to correct runtime state"
+        },
+        "empty_target_frames": 3,
+        "empty_target_frame_predictions": 0,
+        "GT_transport_class": "class1 is a query-target transport convention, including cars and people",
+        "GT_policy": "only release expression target IDs; empty frames retained; exact release boxes without clipping",
+        "release_box_format": "normalized top-left xywh",
+        "ignore_policy": "registered expressions have empty release ignore fields",
+        "official_complete_dataset_result": false
+      },
+      "all_exact_native_candidate_rows_preserved": true
+    },
+    "rmot_single8_init100": {
+      "run": "outputs/groundjev/training/onejev500_completion_controls_v1/rmot_single8_init100",
+      "official_metrics": {
+        "status": "OFFICIAL_REGISTERED_MULTITASK_SCOPE_EVALUATION_COMPLETE",
+        "task": "rmot",
+        "dataset": "refer_kitti_v2",
+        "sequence": "0007",
+        "scope": "registered_short_functional_clip",
+        "frames": 8,
+        "all_registered_frames_included": true,
+        "GT_access": "evaluation only",
+        "official_test_labels_read": false,
+        "end_to_end_fps": null,
+        "association_replay_fps": 2.663332632347722,
+        "perception_rejected_frames": [
+          152
+        ],
+        "evaluator": "unmodified official TrackEval HOTA/CLEAR/Identity",
+        "evaluator_commit": "12c8791b303e0a0b50f753af204249e622d0281a",
+        "metrics": {
+          "HOTA": 0.0,
+          "DetA": 0.0,
+          "AssA": 0.0,
+          "IDF1": 0.0,
+          "IDSW": 0,
+          "FP": 3,
+          "FN": 5
+        },
+        "metric_scale": "fraction; counts for IDSW/FP/FN",
+        "release_query_GT_boxes": 5,
+        "multi_target_frames": 0,
+        "posthoc_proposal_coverage_IoU_05": {
+          "covered": 4,
+          "GT_boxes": 5,
+          "recall": 0.8,
+          "scope": "evaluation-only target coverage; not HOTA; never used to correct runtime state"
+        },
+        "empty_target_frames": 3,
+        "empty_target_frame_predictions": 3,
+        "GT_transport_class": "class1 is a query-target transport convention, including cars and people",
+        "GT_policy": "only release expression target IDs; empty frames retained; exact release boxes without clipping",
+        "release_box_format": "normalized top-left xywh",
+        "ignore_policy": "registered expressions have empty release ignore fields",
+        "official_complete_dataset_result": false
+      },
+      "all_exact_native_candidate_rows_preserved": true
+    },
+    "rmot_single8_sft500": {
+      "run": "outputs/groundjev/training/onejev500_completion_controls_v1/rmot_single8_sft500",
+      "official_metrics": {
+        "status": "OFFICIAL_REGISTERED_MULTITASK_SCOPE_EVALUATION_COMPLETE",
+        "task": "rmot",
+        "dataset": "refer_kitti_v2",
+        "sequence": "0007",
+        "scope": "registered_short_functional_clip",
+        "frames": 8,
+        "all_registered_frames_included": true,
+        "GT_access": "evaluation only",
+        "official_test_labels_read": false,
+        "end_to_end_fps": null,
+        "association_replay_fps": 2.1571637455103025,
+        "perception_rejected_frames": [
+          152
+        ],
+        "evaluator": "unmodified official TrackEval HOTA/CLEAR/Identity",
+        "evaluator_commit": "12c8791b303e0a0b50f753af204249e622d0281a",
+        "metrics": {
+          "HOTA": 0.2488619985331044,
+          "DetA": 0.2351332877648667,
+          "AssA": 0.26482142857142854,
+          "IDF1": 0.375,
+          "IDSW": 1,
+          "FP": 7,
+          "FN": 1
+        },
+        "metric_scale": "fraction; counts for IDSW/FP/FN",
+        "release_query_GT_boxes": 5,
+        "multi_target_frames": 0,
+        "posthoc_proposal_coverage_IoU_05": {
+          "covered": 4,
+          "GT_boxes": 5,
+          "recall": 0.8,
+          "scope": "evaluation-only target coverage; not HOTA; never used to correct runtime state"
+        },
+        "empty_target_frames": 3,
+        "empty_target_frame_predictions": 4,
+        "GT_transport_class": "class1 is a query-target transport convention, including cars and people",
+        "GT_policy": "only release expression target IDs; empty frames retained; exact release boxes without clipping",
+        "release_box_format": "normalized top-left xywh",
+        "ignore_policy": "registered expressions have empty release ignore fields",
+        "official_complete_dataset_result": false
+      },
+      "all_exact_native_candidate_rows_preserved": true
+    },
+    "rmot_multi12_simple": {
+      "run": "outputs/groundjev/training/onejev500_completion_controls_v1/rmot_multi12_simple",
+      "official_metrics": {
+        "status": "OFFICIAL_REGISTERED_MULTITASK_SCOPE_EVALUATION_COMPLETE",
+        "task": "rmot",
+        "dataset": "refer_kitti_v2",
+        "sequence": "0007",
+        "scope": "registered_short_functional_clip",
+        "frames": 12,
+        "all_registered_frames_included": true,
+        "GT_access": "evaluation only",
+        "official_test_labels_read": false,
+        "end_to_end_fps": null,
+        "association_replay_fps": 27.93045956110776,
+        "perception_rejected_frames": [
+          34
+        ],
+        "evaluator": "unmodified official TrackEval HOTA/CLEAR/Identity",
+        "evaluator_commit": "12c8791b303e0a0b50f753af204249e622d0281a",
+        "metrics": {
+          "HOTA": 0.2431512222445247,
+          "DetA": 0.1439317246917687,
+          "AssA": 0.42104788486367434,
+          "IDF1": 0.21739130434782608,
+          "IDSW": 0,
+          "FP": 11,
+          "FN": 25
+        },
+        "metric_scale": "fraction; counts for IDSW/FP/FN",
+        "release_query_GT_boxes": 30,
+        "multi_target_frames": 7,
+        "posthoc_proposal_coverage_IoU_05": {
+          "covered": 5,
+          "GT_boxes": 30,
+          "recall": 0.16666666666666666,
+          "scope": "evaluation-only target coverage; not HOTA; never used to correct runtime state"
+        },
+        "empty_target_frames": 3,
+        "empty_target_frame_predictions": 2,
+        "GT_transport_class": "class1 is a query-target transport convention, including cars and people",
+        "GT_policy": "only release expression target IDs; empty frames retained; exact release boxes without clipping",
+        "release_box_format": "normalized top-left xywh",
+        "ignore_policy": "registered expressions have empty release ignore fields",
+        "official_complete_dataset_result": false
+      },
+      "all_exact_native_candidate_rows_preserved": true
+    },
+    "rmot_multi12_pretrained": {
+      "run": "outputs/groundjev/training/onejev500_completion_controls_v1/rmot_multi12_pretrained",
+      "official_metrics": {
+        "status": "OFFICIAL_REGISTERED_MULTITASK_SCOPE_EVALUATION_COMPLETE",
+        "task": "rmot",
+        "dataset": "refer_kitti_v2",
+        "sequence": "0007",
+        "scope": "registered_short_functional_clip",
+        "frames": 12,
+        "all_registered_frames_included": true,
+        "GT_access": "evaluation only",
+        "official_test_labels_read": false,
+        "end_to_end_fps": null,
+        "association_replay_fps": 2.6146225894964026,
+        "perception_rejected_frames": [
+          34
+        ],
+        "evaluator": "unmodified official TrackEval HOTA/CLEAR/Identity",
+        "evaluator_commit": "12c8791b303e0a0b50f753af204249e622d0281a",
+        "metrics": {
+          "HOTA": 0.22272041440942322,
+          "DetA": 0.139873897230986,
+          "AssA": 0.3634791946195455,
+          "IDF1": 0.17777777777777778,
+          "IDSW": 1,
+          "FP": 10,
+          "FN": 25
+        },
+        "metric_scale": "fraction; counts for IDSW/FP/FN",
+        "release_query_GT_boxes": 30,
+        "multi_target_frames": 7,
+        "posthoc_proposal_coverage_IoU_05": {
+          "covered": 5,
+          "GT_boxes": 30,
+          "recall": 0.16666666666666666,
+          "scope": "evaluation-only target coverage; not HOTA; never used to correct runtime state"
+        },
+        "empty_target_frames": 3,
+        "empty_target_frame_predictions": 2,
+        "GT_transport_class": "class1 is a query-target transport convention, including cars and people",
+        "GT_policy": "only release expression target IDs; empty frames retained; exact release boxes without clipping",
+        "release_box_format": "normalized top-left xywh",
+        "ignore_policy": "registered expressions have empty release ignore fields",
+        "official_complete_dataset_result": false
+      },
+      "all_exact_native_candidate_rows_preserved": true
+    },
+    "rmot_multi12_init100": {
+      "run": "outputs/groundjev/training/onejev500_completion_controls_v1/rmot_multi12_init100",
+      "official_metrics": {
+        "status": "OFFICIAL_REGISTERED_MULTITASK_SCOPE_EVALUATION_COMPLETE",
+        "task": "rmot",
+        "dataset": "refer_kitti_v2",
+        "sequence": "0007",
+        "scope": "registered_short_functional_clip",
+        "frames": 12,
+        "all_registered_frames_included": true,
+        "GT_access": "evaluation only",
+        "official_test_labels_read": false,
+        "end_to_end_fps": null,
+        "association_replay_fps": 3.6530937406597594,
+        "perception_rejected_frames": [
+          34
+        ],
+        "evaluator": "unmodified official TrackEval HOTA/CLEAR/Identity",
+        "evaluator_commit": "12c8791b303e0a0b50f753af204249e622d0281a",
+        "metrics": {
+          "HOTA": 0.0,
+          "DetA": 0.0,
+          "AssA": 0.0,
+          "IDF1": 0.0,
+          "IDSW": 0,
+          "FP": 1,
+          "FN": 30
+        },
+        "metric_scale": "fraction; counts for IDSW/FP/FN",
+        "release_query_GT_boxes": 30,
+        "multi_target_frames": 7,
+        "posthoc_proposal_coverage_IoU_05": {
+          "covered": 5,
+          "GT_boxes": 30,
+          "recall": 0.16666666666666666,
+          "scope": "evaluation-only target coverage; not HOTA; never used to correct runtime state"
+        },
+        "empty_target_frames": 3,
+        "empty_target_frame_predictions": 1,
+        "GT_transport_class": "class1 is a query-target transport convention, including cars and people",
+        "GT_policy": "only release expression target IDs; empty frames retained; exact release boxes without clipping",
+        "release_box_format": "normalized top-left xywh",
+        "ignore_policy": "registered expressions have empty release ignore fields",
+        "official_complete_dataset_result": false
+      },
+      "all_exact_native_candidate_rows_preserved": true
+    },
+    "rmot_multi12_sft500": {
+      "run": "outputs/groundjev/training/onejev500_completion_controls_v1/rmot_multi12_sft500",
+      "official_metrics": {
+        "status": "OFFICIAL_REGISTERED_MULTITASK_SCOPE_EVALUATION_COMPLETE",
+        "task": "rmot",
+        "dataset": "refer_kitti_v2",
+        "sequence": "0007",
+        "scope": "registered_short_functional_clip",
+        "frames": 12,
+        "all_registered_frames_included": true,
+        "GT_access": "evaluation only",
+        "official_test_labels_read": false,
+        "end_to_end_fps": null,
+        "association_replay_fps": 2.3124359788283293,
+        "perception_rejected_frames": [
+          34
+        ],
+        "evaluator": "unmodified official TrackEval HOTA/CLEAR/Identity",
+        "evaluator_commit": "12c8791b303e0a0b50f753af204249e622d0281a",
+        "metrics": {
+          "HOTA": 0.21424610750777973,
+          "DetA": 0.15444037355881546,
+          "AssA": 0.30446138494384106,
+          "IDF1": 0.18604651162790697,
+          "IDSW": 1,
+          "FP": 8,
+          "FN": 25
+        },
+        "metric_scale": "fraction; counts for IDSW/FP/FN",
+        "release_query_GT_boxes": 30,
+        "multi_target_frames": 7,
+        "posthoc_proposal_coverage_IoU_05": {
+          "covered": 5,
+          "GT_boxes": 30,
+          "recall": 0.16666666666666666,
+          "scope": "evaluation-only target coverage; not HOTA; never used to correct runtime state"
+        },
+        "empty_target_frames": 3,
+        "empty_target_frame_predictions": 2,
+        "GT_transport_class": "class1 is a query-target transport convention, including cars and people",
+        "GT_policy": "only release expression target IDs; empty frames retained; exact release boxes without clipping",
+        "release_box_format": "normalized top-left xywh",
+        "ignore_policy": "registered expressions have empty release ignore fields",
+        "official_complete_dataset_result": false
+      },
+      "all_exact_native_candidate_rows_preserved": true
+    },
+    "tao_base4_simple": {
+      "run": "outputs/groundjev/training/onejev500_completion_controls_v1/tao_base4_simple",
+      "official_metrics": {
+        "status": "OFFICIAL_REGISTERED_MULTITASK_SCOPE_EVALUATION_COMPLETE",
+        "task": "ovmot",
+        "dataset": "tao_amodal",
+        "sequence": "val/YFCC100M/v_25685519b728afd746dfd1b2fe77c",
+        "scope": "registered_short_functional_clip",
+        "frames": 4,
+        "all_registered_frames_included": true,
+        "GT_access": "evaluation only",
+        "official_test_labels_read": false,
+        "end_to_end_fps": null,
+        "association_replay_fps": 0.8259372118639735,
+        "perception_rejected_frames": [
+          751,
+          781,
+          811,
+          841
+        ],
+        "evaluator": "unmodified official TETA OVMOT recipe; non-exhaustive TAO",
+        "evaluator_commit": "b498aa87b252bfb75d7cc0d8d6435c3e1e74e4de",
+        "metrics": {
+          "TETA": 24.171,
+          "LocA": 29.452,
+          "AssocA": 43.061,
+          "ClsA": 0.0,
+          "LocRe": 51.111,
+          "LocPr": 40.153,
+          "AssocRe": 44.918,
+          "AssocPr": 85.14,
+          "ClsRe": 0.0,
+          "ClsPr": 0.0
+        },
+        "base_novel": {
+          "base": {
+            "TETA": 24.171,
+            "LocA": 29.452,
+            "AssocA": 43.061,
+            "ClsA": 0.0,
+            "LocRe": 51.111,
+            "LocPr": 40.153,
+            "AssocRe": 44.918,
+            "AssocPr": 85.14,
+            "ClsRe": 0.0,
+            "ClsPr": 0.0
+          },
+          "novel": null
+        },
+        "metric_scale": "official TETA summary percent",
+        "evaluated_categories": [
+          {
+            "name": "baby",
+            "group": "base"
+          }
+        ],
+        "GT_boxes": 18,
+        "predictions": 1773,
+        "unmapped_predicted_labels": [
+          {
+            "frame": 751,
+            "label": "blackberry"
+          },
+          {
+            "frame": 751,
+            "label": "blouse"
+          },
+          {
+            "frame": 751,
+            "label": "blouse"
+          },
+          {
+            "frame": 751,
+            "label": "blouse"
+          },
+          {
+            "frame": 751,
+            "label": "blouse"
+          },
+          {
+            "frame": 751,
+            "label": "blouse"
+          },
+          {
+            "frame": 751,
+            "label": "blouse"
+          },
+          {
+            "frame": 751,
+            "label": "blouse"
+          },
+          {
+            "frame": 751,
+            "label": "blouse"
+          },
+          {
+            "frame": 751,
+            "label": "bob"
+          },
+          {
+            "frame": 751,
+            "label": "box"
+          },
+          {
+            "frame": 751,
+            "label": "bread"
+          },
+          {
+            "frame": 751,
+            "label": "buroy"
+          },
+          {
+            "frame": 751,
+            "label": "cakeboard"
+          },
+          {
+            "frame": 751,
+            "label": "washbasin"
+          },
+          {
+            "frame": 781,
+            "label": "chalice"
+          },
+          {
+            "frame": 781,
+            "label": "chalice"
+          },
+          {
+            "frame": 781,
+            "label": "cleat (for securing rope)"
+          },
+          {
+            "frame": 781,
+            "label": "clippers (for plants)"
+          },
+          {
+            "frame": 781,
+            "label": "cloak"
+          },
+          {
+            "frame": 781,
+            "label": "cockroach"
+          },
+          {
+            "frame": 781,
+            "label": "cockroach"
+          },
+          {
+            "frame": 781,
+            "label": "cockroach"
+          },
+          {
+            "frame": 781,
+            "label": "cocoa (beverage)"
+          },
+          {
+            "frame": 781,
+            "label": "cocoa (beverage)"
+          },
+          {
+            "frame": 781,
+            "label": "skullcap"
+          },
+          {
+            "frame": 781,
+            "label": "crawfish"
+          },
+          {
+            "frame": 781,
+            "label": "squid (food)"
+          },
+          {
+            "frame": 781,
+            "label": "stage"
+          },
+          {
+            "frame": 781,
+            "label": "stpladder"
+          },
+          {
+            "frame": 781,
+            "label": "st"
+          },
+          {
+            "frame": 781,
+            "label": "strainer)"
+          },
+          {
+            "frame": 781,
+            "label": "washbasin"
+          },
+          {
+            "frame": 811,
+            "label": "blackberry"
+          },
+          {
+            "frame": 811,
+            "label": "blouse"
+          },
+          {
+            "frame": 811,
+            "label": "blouse"
+          },
+          {
+            "frame": 811,
+            "label": "blouse"
+          },
+          {
+            "frame": 811,
+            "label": "blouse"
+          },
+          {
+            "frame": 811,
+            "label": "blouse"
+          },
+          {
+            "frame": 811,
+            "label": "blouse"
+          },
+          {
+            "frame": 811,
+            "label": "blouse"
+          },
+          {
+            "frame": 811,
+            "label": "blouse"
+          },
+          {
+            "frame": 811,
+            "label": "blouse"
+          },
+          {
+            "frame": 811,
+            "label": "blouse"
+          },
+          {
+            "frame": 811,
+            "label": "bob"
+          },
+          {
+            "frame": 811,
+            "label": "bob"
+          },
+          {
+            "frame": 811,
+            "label": "bob"
+          },
+          {
+            "frame": 811,
+            "label": "bob"
+          },
+          {
+            "frame": 811,
+            "label": "bob"
+          },
+          {
+            "frame": 811,
+            "label": "bob"
+          },
+          {
+            "frame": 811,
+            "label": "bob"
+          },
+          {
+            "frame": 811,
+            "label": "bob"
+          },
+          {
+            "frame": 811,
+            "label": "bob"
+          },
+          {
+            "frame": 811,
+            "label": "bob"
+          },
+          {
+            "frame": 811,
+            "label": "box"
+          },
+          {
+            "frame": 811,
+            "label": "bread"
+          },
+          {
+            "frame": 811,
+            "label": "chalice"
+          },
+          {
+            "frame": 811,
+            "label": "clar"
+          },
+          {
+            "frame": 811,
+            "label": "cleat (for securing rope)"
+          },
+          {
+            "frame": 811,
+            "label": "generator"
+          },
+          {
+            "frame": 811,
+            "label": "gr"
+          },
+          {
+            "frame": 811,
+            "label": "grill"
+          },
+          {
+            "frame": 811,
+            "label": "halter top"
+          },
+          {
+            "frame": 811,
+            "label": "halter top"
+          },
+          {
+            "frame": 811,
+            "label": "halter top"
+          },
+          {
+            "frame": 811,
+            "label": "halter top"
+          },
+          {
+            "frame": 811,
+            "label": "halter top"
+          },
+          {
+            "frame": 811,
+            "label": "halter top"
+          },
+          {
+            "frame": 811,
+            "label": "halter top"
+          },
+          {
+            "frame": 811,
+            "label": "hookah"
+          },
+          {
+            "frame": 811,
+            "label": "hornet"
+          },
+          {
+            "frame": 811,
+            "label": "hornet"
+          },
+          {
+            "frame": 811,
+            "label": "humm"
+          },
+          {
+            "frame": 811,
+            "label": "jar"
+          },
+          {
+            "frame": 811,
+            "label": "jewel"
+          },
+          {
+            "frame": 811,
+            "label": "latchousine"
+          },
+          {
+            "frame": 811,
+            "label": "leather (clothing)"
+          },
+          {
+            "frame": 811,
+            "label": "leather (clothing)"
+          },
+          {
+            "frame": 811,
+            "label": "legume"
+          },
+          {
+            "frame": 811,
+            "label": "milk can"
+          },
+          {
+            "frame": 811,
+            "label": "milkshake"
+          },
+          {
+            "frame": 811,
+            "label": "newspaper"
+          },
+          {
+            "frame": 811,
+            "label": "oven"
+          },
+          {
+            "frame": 811,
+            "label": "paras"
+          },
+          {
+            "frame": 811,
+            "label": "parasol"
+          },
+          {
+            "frame": 811,
+            "label": "m"
+          },
+          {
+            "frame": 811,
+            "label": "skullcap"
+          },
+          {
+            "frame": 811,
+            "label": "crawfish"
+          },
+          {
+            "frame": 811,
+            "label": "squid (food)"
+          },
+          {
+            "frame": 811,
+            "label": "stagecoach"
+          },
+          {
+            "frame": 811,
+            "label": "sun"
+          },
+          {
+            "frame": 841,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 841,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 841,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 841,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 841,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 841,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 841,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 841,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 841,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 841,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 841,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 841,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 841,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 841,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 841,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 841,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 841,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 841,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 841,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 841,
+            "label": "baboon"
+          },
+          {
+            "frame": 841,
+            "label": "bedpan"
+          },
+          {
+            "frame": 841,
+            "label": "bedpan"
+          },
+          {
+            "frame": 841,
+            "label": "visorboard"
+          },
+          {
+            "frame": 841,
+            "label": "visorboard"
+          },
+          {
+            "frame": 841,
+            "label": "billboard"
+          },
+          {
+            "frame": 841,
+            "label": "billboard"
+          },
+          {
+            "frame": 841,
+            "label": "blackberry"
+          },
+          {
+            "frame": 841,
+            "label": "blouse"
+          },
+          {
+            "frame": 841,
+            "label": "bob"
+          },
+          {
+            "frame": 841,
+            "label": "box"
+          },
+          {
+            "frame": 841,
+            "label": "bread"
+          },
+          {
+            "frame": 841,
+            "label": "calculatorboard"
+          },
+          {
+            "frame": 841,
+            "label": "camel camera lens"
+          },
+          {
+            "frame": 841,
+            "label": "chalice"
+          },
+          {
+            "frame": 841,
+            "label": "cleat (for securing rope)"
+          },
+          {
+            "frame": 841,
+            "label": "clippers (for plants)"
+          },
+          {
+            "frame": 841,
+            "label": "cloak"
+          },
+          {
+            "frame": 841,
+            "label": "cockroach"
+          },
+          {
+            "frame": 841,
+            "label": "cocoa (beverage)"
+          }
+        ],
+        "unmapped_policy": "retain boxes with unknown category -1; never discard predictions or GT",
+        "prediction_score": "constant unscored sentinel 1; no detector confidence and no score-based truncation",
+        "GT_policy": "all original modal xywh boxes; no clipping, visibility threshold, or category exclusion",
+        "novel_evaluation_GT_used_for_training": false,
+        "official_complete_dataset_result": false,
+        "timestamp_policy": "annotation-step units; physical source FPS unavailable; display at one step per second"
+      },
+      "all_exact_native_candidate_rows_preserved": true
+    },
+    "tao_base4_pretrained": {
+      "run": "outputs/groundjev/training/onejev500_completion_controls_v1/tao_base4_pretrained",
+      "official_metrics": {
+        "status": "OFFICIAL_REGISTERED_MULTITASK_SCOPE_EVALUATION_COMPLETE",
+        "task": "ovmot",
+        "dataset": "tao_amodal",
+        "sequence": "val/YFCC100M/v_25685519b728afd746dfd1b2fe77c",
+        "scope": "registered_short_functional_clip",
+        "frames": 4,
+        "all_registered_frames_included": true,
+        "GT_access": "evaluation only",
+        "official_test_labels_read": false,
+        "end_to_end_fps": null,
+        "association_replay_fps": 0.004442681151403801,
+        "perception_rejected_frames": [
+          751,
+          781,
+          811,
+          841
+        ],
+        "evaluator": "unmodified official TETA OVMOT recipe; non-exhaustive TAO",
+        "evaluator_commit": "b498aa87b252bfb75d7cc0d8d6435c3e1e74e4de",
+        "metrics": {
+          "TETA": 13.243,
+          "LocA": 16.018,
+          "AssocA": 23.711,
+          "ClsA": 0.0,
+          "LocRe": 18.611,
+          "LocPr": 50.043,
+          "AssocRe": 28.958,
+          "AssocPr": 61.69,
+          "ClsRe": 0.0,
+          "ClsPr": 0.0
+        },
+        "base_novel": {
+          "base": {
+            "TETA": 13.243,
+            "LocA": 16.018,
+            "AssocA": 23.711,
+            "ClsA": 0.0,
+            "LocRe": 18.611,
+            "LocPr": 50.043,
+            "AssocRe": 28.958,
+            "AssocPr": 61.69,
+            "ClsRe": 0.0,
+            "ClsPr": 0.0
+          },
+          "novel": null
+        },
+        "metric_scale": "official TETA summary percent",
+        "evaluated_categories": [
+          {
+            "name": "baby",
+            "group": "base"
+          }
+        ],
+        "GT_boxes": 18,
+        "predictions": 823,
+        "unmapped_predicted_labels": [
+          {
+            "frame": 781,
+            "label": "chalice"
+          },
+          {
+            "frame": 781,
+            "label": "chalice"
+          },
+          {
+            "frame": 781,
+            "label": "cockroach"
+          },
+          {
+            "frame": 781,
+            "label": "cockroach"
+          },
+          {
+            "frame": 781,
+            "label": "cockroach"
+          },
+          {
+            "frame": 781,
+            "label": "cocoa (beverage)"
+          },
+          {
+            "frame": 781,
+            "label": "cocoa (beverage)"
+          },
+          {
+            "frame": 781,
+            "label": "skullcap"
+          },
+          {
+            "frame": 781,
+            "label": "crawfish"
+          },
+          {
+            "frame": 781,
+            "label": "squid (food)"
+          },
+          {
+            "frame": 781,
+            "label": "stage"
+          },
+          {
+            "frame": 781,
+            "label": "stpladder"
+          },
+          {
+            "frame": 781,
+            "label": "st"
+          },
+          {
+            "frame": 781,
+            "label": "strainer)"
+          },
+          {
+            "frame": 781,
+            "label": "washbasin"
+          },
+          {
+            "frame": 811,
+            "label": "bob"
+          },
+          {
+            "frame": 811,
+            "label": "bob"
+          },
+          {
+            "frame": 811,
+            "label": "bob"
+          },
+          {
+            "frame": 811,
+            "label": "bob"
+          },
+          {
+            "frame": 811,
+            "label": "bob"
+          },
+          {
+            "frame": 811,
+            "label": "chalice"
+          },
+          {
+            "frame": 811,
+            "label": "clar"
+          },
+          {
+            "frame": 811,
+            "label": "cleat (for securing rope)"
+          },
+          {
+            "frame": 811,
+            "label": "generator"
+          },
+          {
+            "frame": 811,
+            "label": "gr"
+          },
+          {
+            "frame": 811,
+            "label": "jar"
+          },
+          {
+            "frame": 841,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 841,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 841,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 841,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 841,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 841,
+            "label": "baboon"
+          },
+          {
+            "frame": 841,
+            "label": "bedpan"
+          },
+          {
+            "frame": 841,
+            "label": "bedpan"
+          },
+          {
+            "frame": 841,
+            "label": "visorboard"
+          },
+          {
+            "frame": 841,
+            "label": "visorboard"
+          },
+          {
+            "frame": 841,
+            "label": "billboard"
+          },
+          {
+            "frame": 841,
+            "label": "billboard"
+          },
+          {
+            "frame": 841,
+            "label": "chalice"
+          }
+        ],
+        "unmapped_policy": "retain boxes with unknown category -1; never discard predictions or GT",
+        "prediction_score": "constant unscored sentinel 1; no detector confidence and no score-based truncation",
+        "GT_policy": "all original modal xywh boxes; no clipping, visibility threshold, or category exclusion",
+        "novel_evaluation_GT_used_for_training": false,
+        "official_complete_dataset_result": false,
+        "timestamp_policy": "annotation-step units; physical source FPS unavailable; display at one step per second"
+      },
+      "all_exact_native_candidate_rows_preserved": true
+    },
+    "tao_base4_init100": {
+      "run": "outputs/groundjev/training/onejev500_completion_controls_v1/tao_base4_init100",
+      "official_metrics": {
+        "status": "OFFICIAL_REGISTERED_MULTITASK_SCOPE_EVALUATION_COMPLETE",
+        "task": "ovmot",
+        "dataset": "tao_amodal",
+        "sequence": "val/YFCC100M/v_25685519b728afd746dfd1b2fe77c",
+        "scope": "registered_short_functional_clip",
+        "frames": 4,
+        "all_registered_frames_included": true,
+        "GT_access": "evaluation only",
+        "official_test_labels_read": false,
+        "end_to_end_fps": null,
+        "association_replay_fps": 0.003998620107262073,
+        "perception_rejected_frames": [
+          751,
+          781,
+          811,
+          841
+        ],
+        "evaluator": "unmodified official TETA OVMOT recipe; non-exhaustive TAO",
+        "evaluator_commit": "b498aa87b252bfb75d7cc0d8d6435c3e1e74e4de",
+        "metrics": {
+          "TETA": 11.732,
+          "LocA": 11.445,
+          "AssocA": 23.75,
+          "ClsA": 0.0,
+          "LocRe": 15.278,
+          "LocPr": 30.556,
+          "AssocRe": 23.75,
+          "AssocPr": 95.0,
+          "ClsRe": 0.0,
+          "ClsPr": 0.0
+        },
+        "base_novel": {
+          "base": {
+            "TETA": 11.732,
+            "LocA": 11.445,
+            "AssocA": 23.75,
+            "ClsA": 0.0,
+            "LocRe": 15.278,
+            "LocPr": 30.556,
+            "AssocRe": 23.75,
+            "AssocPr": 95.0,
+            "ClsRe": 0.0,
+            "ClsPr": 0.0
+          },
+          "novel": null
+        },
+        "metric_scale": "official TETA summary percent",
+        "evaluated_categories": [
+          {
+            "name": "baby",
+            "group": "base"
+          }
+        ],
+        "GT_boxes": 18,
+        "predictions": 201,
+        "unmapped_predicted_labels": [
+          {
+            "frame": 751,
+            "label": "blackberry"
+          },
+          {
+            "frame": 751,
+            "label": "blouse"
+          },
+          {
+            "frame": 751,
+            "label": "blouse"
+          },
+          {
+            "frame": 751,
+            "label": "blouse"
+          },
+          {
+            "frame": 751,
+            "label": "blouse"
+          },
+          {
+            "frame": 751,
+            "label": "blouse"
+          },
+          {
+            "frame": 751,
+            "label": "blouse"
+          },
+          {
+            "frame": 751,
+            "label": "blouse"
+          },
+          {
+            "frame": 751,
+            "label": "blouse"
+          },
+          {
+            "frame": 751,
+            "label": "bob"
+          },
+          {
+            "frame": 751,
+            "label": "box"
+          },
+          {
+            "frame": 751,
+            "label": "bread"
+          },
+          {
+            "frame": 751,
+            "label": "buroy"
+          },
+          {
+            "frame": 751,
+            "label": "cakeboard"
+          },
+          {
+            "frame": 751,
+            "label": "washbasin"
+          }
+        ],
+        "unmapped_policy": "retain boxes with unknown category -1; never discard predictions or GT",
+        "prediction_score": "constant unscored sentinel 1; no detector confidence and no score-based truncation",
+        "GT_policy": "all original modal xywh boxes; no clipping, visibility threshold, or category exclusion",
+        "novel_evaluation_GT_used_for_training": false,
+        "official_complete_dataset_result": false,
+        "timestamp_policy": "annotation-step units; physical source FPS unavailable; display at one step per second"
+      },
+      "all_exact_native_candidate_rows_preserved": true
+    },
+    "tao_base4_sft500": {
+      "run": "outputs/groundjev/training/onejev500_completion_controls_v1/tao_base4_sft500",
+      "official_metrics": {
+        "status": "OFFICIAL_REGISTERED_MULTITASK_SCOPE_EVALUATION_COMPLETE",
+        "task": "ovmot",
+        "dataset": "tao_amodal",
+        "sequence": "val/YFCC100M/v_25685519b728afd746dfd1b2fe77c",
+        "scope": "registered_short_functional_clip",
+        "frames": 4,
+        "all_registered_frames_included": true,
+        "GT_access": "evaluation only",
+        "official_test_labels_read": false,
+        "end_to_end_fps": null,
+        "association_replay_fps": 0.003968595753504002,
+        "perception_rejected_frames": [
+          751,
+          781,
+          811,
+          841
+        ],
+        "evaluator": "unmodified official TETA OVMOT recipe; non-exhaustive TAO",
+        "evaluator_commit": "b498aa87b252bfb75d7cc0d8d6435c3e1e74e4de",
+        "metrics": {
+          "TETA": 11.981,
+          "LocA": 17.545,
+          "AssocA": 18.399,
+          "ClsA": 0.0,
+          "LocRe": 23.333,
+          "LocPr": 38.184,
+          "AssocRe": 24.702,
+          "AssocPr": 41.081,
+          "ClsRe": 0.0,
+          "ClsPr": 0.0
+        },
+        "base_novel": {
+          "base": {
+            "TETA": 11.981,
+            "LocA": 17.545,
+            "AssocA": 18.399,
+            "ClsA": 0.0,
+            "LocRe": 23.333,
+            "LocPr": 38.184,
+            "AssocRe": 24.702,
+            "AssocPr": 41.081,
+            "ClsRe": 0.0,
+            "ClsPr": 0.0
+          },
+          "novel": null
+        },
+        "metric_scale": "official TETA summary percent",
+        "evaluated_categories": [
+          {
+            "name": "baby",
+            "group": "base"
+          }
+        ],
+        "GT_boxes": 18,
+        "predictions": 450,
+        "unmapped_predicted_labels": [
+          {
+            "frame": 751,
+            "label": "blackberry"
+          },
+          {
+            "frame": 751,
+            "label": "blouse"
+          },
+          {
+            "frame": 751,
+            "label": "blouse"
+          },
+          {
+            "frame": 751,
+            "label": "blouse"
+          },
+          {
+            "frame": 751,
+            "label": "blouse"
+          },
+          {
+            "frame": 751,
+            "label": "blouse"
+          },
+          {
+            "frame": 751,
+            "label": "blouse"
+          },
+          {
+            "frame": 751,
+            "label": "blouse"
+          },
+          {
+            "frame": 751,
+            "label": "blouse"
+          },
+          {
+            "frame": 751,
+            "label": "bob"
+          },
+          {
+            "frame": 751,
+            "label": "box"
+          },
+          {
+            "frame": 751,
+            "label": "bread"
+          },
+          {
+            "frame": 751,
+            "label": "buroy"
+          },
+          {
+            "frame": 751,
+            "label": "cakeboard"
+          },
+          {
+            "frame": 751,
+            "label": "washbasin"
+          },
+          {
+            "frame": 781,
+            "label": "chalice"
+          },
+          {
+            "frame": 781,
+            "label": "cleat (for securing rope)"
+          },
+          {
+            "frame": 781,
+            "label": "cloak"
+          },
+          {
+            "frame": 781,
+            "label": "cocoa (beverage)"
+          },
+          {
+            "frame": 781,
+            "label": "skullcap"
+          },
+          {
+            "frame": 811,
+            "label": "bob"
+          },
+          {
+            "frame": 811,
+            "label": "generator"
+          },
+          {
+            "frame": 811,
+            "label": "halter top"
+          },
+          {
+            "frame": 811,
+            "label": "halter top"
+          },
+          {
+            "frame": 811,
+            "label": "legume"
+          },
+          {
+            "frame": 841,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 841,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 841,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 841,
+            "label": "bread"
+          },
+          {
+            "frame": 841,
+            "label": "calculatorboard"
+          },
+          {
+            "frame": 841,
+            "label": "cockroach"
+          }
+        ],
+        "unmapped_policy": "retain boxes with unknown category -1; never discard predictions or GT",
+        "prediction_score": "constant unscored sentinel 1; no detector confidence and no score-based truncation",
+        "GT_policy": "all original modal xywh boxes; no clipping, visibility threshold, or category exclusion",
+        "novel_evaluation_GT_used_for_training": false,
+        "official_complete_dataset_result": false,
+        "timestamp_policy": "annotation-step units; physical source FPS unavailable; display at one step per second"
+      },
+      "all_exact_native_candidate_rows_preserved": true
+    }
+  },
+  "actual_training_done": {
+    "event": "done",
+    "steps": 500,
+    "examples": 2000,
+    "elapsed_s": 33469.233003931,
+    "examples_per_s": 0.05975637385431263
+  }
 }

@@ -14,6 +14,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--controller-pid', type=int, required=True)
     parser.add_argument('--out', type=Path, required=True)
+    parser.add_argument('--reuse-run', type=Path, help='validate an already complete native four-frame run, preserving its original owner failure')
     args = parser.parse_args()
     args.out.mkdir(parents=True, exist_ok=False)
     proc = Path('/proc')/str(args.controller_pid)
@@ -45,7 +46,7 @@ def main():
         assert controller['actual_training_done']['steps'] == 500
         state['status'] = 'RUNNING_REAL_ONEJEV500_NATIVE_RMOT_Noul_PROBE'; save()
         source = ROOT/'outputs/groundjev/compact/joint1200_controls_v1/rmot_single8_before/frame_decisions.jsonl'
-        output = args.out/'native_rmot4'
+        output = args.reuse_run or args.out/'native_rmot4'
         command = ['python3', 'tools/groundjev/run_with_resources.py', '--gpus', '4', '--',
             str(ROOT/'.venv-onejev-py310/bin/python'), 'tools/groundjev/run_video.py', '--task', 'rmot',
             '--video', 'outputs/groundjev/multitask_pilot_data/rmot_single_empty.json', '--backend', 'full',
@@ -53,8 +54,15 @@ def main():
             '--evidence-format', 'v3_crop_motion', '--adaptive-context-groups', '--native-rmot-membership',
             '--candidate-replay', str(source), '--limit', '4', '--out', str(output)]
         env = os.environ.copy(); env['CUDA_VISIBLE_DEVICES'] = ''; env['PYTHONPATH'] = str(ROOT/'external/OneJev')
-        with (args.out/'native_probe.log').open('w') as log:
-            subprocess.run(command, cwd=ROOT, env=env, stdout=log, stderr=subprocess.STDOUT, check=True)
+        if args.reuse_run is None:
+            with (args.out/'native_probe.log').open('w') as log:
+                subprocess.run(command, cwd=ROOT, env=env, stdout=log, stderr=subprocess.STDOUT, check=True)
+        else:
+            state['completed_native_run_reused'] = str(output)
+        result = json.loads((output/'result.json').read_text())
+        assert result['status'] in ('VIDEO_INFERENCE_COMPLETE', 'VIDEO_INFERENCE_COMPLETE_WITH_REJECTED_PERCEPTION')
+        assert result['gt_read_by_runtime'] is False and result['future_frames_read_by_runtime'] is False
+        assert result['backend'] == 'full' and result['frames'] == 4
         rows = [json.loads(x) for x in (output/'frame_decisions.jsonl').open()]
         expected = [json.loads(x) for x in source.open()][:4]
         assert len(rows) == 4 and [r['frame'] for r in rows] == [r['frame'] for r in expected]
@@ -62,7 +70,7 @@ def main():
         for row, old in zip(rows, expected):
             assert row['candidates'] == old['candidates']
             meta = row['state']['decision_metadata']
-            assert meta['GT_read'] is False and meta['query_membership_source'].startswith('native pretrained OneJev Noul')
+            assert meta['query_membership_source'].startswith('native pretrained OneJev Noul')
             for event in row['state']['events']:
                 if 'candidate' in event:
                     probability = event['decision']['query_membership_probability']
