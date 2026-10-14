@@ -8,8 +8,11 @@ import socket
 import subprocess
 import time
 from urllib.request import urlopen
+import sys
 
 ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0,str(ROOT))
+from tools.groundjev.service_process_group import stop_owned_service
 SOURCE = ROOT/'external/GroundAnything'
 
 
@@ -21,6 +24,8 @@ def main():
     parser.add_argument('--port',type=int,default=8101)
     parser.add_argument('--model',type=Path,default=ROOT/'models/GroundAnything-DLM')
     parser.add_argument('--recipe',default='configs/eval/groundjev_original_dense_ref9.local.yaml')
+    parser.add_argument('--max-queued-requests',type=int,default=32)
+    parser.add_argument('--resume-result-root',type=Path)
     args=parser.parse_args();out = args.out
     out.mkdir(parents=True, exist_ok=False)
     recipe=json.loads((SOURCE/args.recipe).read_text())
@@ -36,6 +41,8 @@ def main():
         'checkpoint':str(args.model.resolve()),'original_model':original,'recipe':args.recipe,
         'native_parser_scorers_decode_profiles_and_all_task_settings_unchanged':True,
         'execution_rendezvous_base_port':recipe['base_port']}
+    state['max_queued_requests'] = args.max_queued_requests
+    state['resume_result_root'] = str(args.resume_result_root) if args.resume_result_root else None
     def save():
         (out/'owner_state.json').write_text(json.dumps(state, indent=2)+'\n')
         print(json.dumps(state), flush=True)
@@ -47,6 +54,7 @@ def main():
             server = subprocess.Popen(['python3', 'tools/groundjev/run_with_resources.py', '--gpus', str(args.gpu), '--',
                 str(SOURCE/'.venv-serve/bin/python'), 'tools/groundjev/serve_groundanything.py', '--port', str(args.port),
                 '--model',str(args.model),
+                '--max-queued-requests',str(args.max_queued_requests),
                 '--mem-fraction-static', '.4', '--out', str(out/'service')], cwd=ROOT,
                 stdout=log, stderr=subprocess.STDOUT, start_new_session=True)
             state.update(status='WAITING_OWNED_ORIGINAL_GROUND_SERVICE', owned_server_process_group=server.pid); save()
@@ -69,8 +77,12 @@ def main():
             for key in ('HTTP_PROXY','HTTPS_PROXY','ALL_PROXY','http_proxy','https_proxy','all_proxy'):
                 env.pop(key,None)
             with (out/'native_evaluator.log').open('w') as log:
-                subprocess.run([str(SOURCE/'.venv-eval/bin/python'), 'scripts/evaluate.py',
-                    args.recipe,'--run-id',args.run_id], cwd=SOURCE,
+                if args.resume_result_root:
+                    command=[str(SOURCE/'.venv-eval/bin/python'),str(ROOT/'tools/groundjev/resume_ground_dense_ref9.py'),
+                        args.recipe,'--run-id',args.run_id,'--resume-result-root',str(args.resume_result_root.resolve())]
+                else:
+                    command=[str(SOURCE/'.venv-eval/bin/python'),'scripts/evaluate.py',args.recipe,'--run-id',args.run_id]
+                subprocess.run(command, cwd=SOURCE,
                     env=env, stdout=log, stderr=subprocess.STDOUT, check=True)
             result_root = SOURCE/'outputs/groundjev_retention'/args.run_id
             summary = json.loads((result_root/'summary.json').read_text())
@@ -81,12 +93,8 @@ def main():
         state.update(status='ORIGINAL_DENSE_REF9_BASELINE_FAILED' if original else 'ADAPTED_DENSE_REF9_FAILED', error=repr(error)); save()
         raise
     finally:
-        if server is not None and server.poll() is None:
-            os.killpg(server.pid, signal.SIGTERM)
-            try:
-                server.wait(timeout=20)
-            except subprocess.TimeoutExpired:
-                os.killpg(server.pid, signal.SIGKILL); server.wait()
+        if server is not None:
+            stop_owned_service(server)
         state['owned_Ground_service_stopped'] = True
         if original: state['owned_original_Ground_service_stopped'] = True
         save()

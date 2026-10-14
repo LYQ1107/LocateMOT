@@ -1,0 +1,18 @@
+{
+  "completed_tasks_reused": [],
+  "unfinished_tasks": [
+    "gam_coco",
+    "gam_lvis",
+    "gam_dense200",
+    "gam_visdrone",
+    "gam_refcocog_val",
+    "gam_refcocog_test",
+    "gam_refcoco",
+    "gam_refcocog",
+    "gam_refcocoplus"
+  ],
+  "native_response_cache_backups": [],
+  "source": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/outputs/groundjev_retention/groundjev_trackproj200_dense_ref9_20261014",
+  "native_source_parser_scorer_data_decode_profile_and_seed_unchanged": true,
+  "exact_stochastic_request_counter_continuation_claim": false
+}

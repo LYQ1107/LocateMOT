@@ -1,9 +1,9 @@
 {
   "format": "groundjev-full-fp32-adam-rng-v1",
-  "step": 250,
-  "seen": 1000,
+  "step": 375,
+  "seen": 1500,
   "epoch": 0,
-  "next_step_in_epoch": 250,
+  "next_step_in_epoch": 375,
   "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_own_history_v3_exact500_replay_stateful/latest_training_state.pt",
   "bytes": 9029140249,
   "FP32_masters_and_Adam_moments_saved": true,

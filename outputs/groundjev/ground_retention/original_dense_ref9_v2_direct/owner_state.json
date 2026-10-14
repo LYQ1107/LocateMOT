@@ -1,10 +1,12 @@
 {
-  "status": "RUNNING_UNMODIFIED_FULL_DENSE_REF9_BASELINE",
+  "status": "ORIGINAL_DENSE_REF9_BASELINE_FAILED",
   "physical_server_gpu": 7,
   "local_evaluator_CPU_only": true,
   "limit": null,
   "declared_canonical_rows": 91124,
   "nine_original_dense_referring_tasks_not_all30": true,
   "adaptation_or_retention_gain_claim": false,
-  "owned_server_process_group": 775337
+  "owned_server_process_group": 775337,
+  "error": "CalledProcessError(1, ['/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-eval/bin/python', 'scripts/evaluate.py', 'configs/eval/groundjev_original_dense_ref9.local.yaml', '--run-id', 'groundjev_original_dense_ref9_direct_v2_20261014'])",
+  "owned_original_Ground_service_stopped": true
 }

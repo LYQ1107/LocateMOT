@@ -21,6 +21,7 @@ def main():
     parser.add_argument('--model', type=Path, default=ROOT/'models/GroundAnything-DLM')
     parser.add_argument('--port', type=int, default=8101)
     parser.add_argument('--mem-fraction-static', type=float, default=.65)
+    parser.add_argument('--max-queued-requests', type=int, default=2)
     parser.add_argument('--out',type=Path,default=ROOT/'outputs/groundjev/groundanything_service',
                         help='separate launch/bundle directory for an adapted checkpoint service')
     args = parser.parse_args()
@@ -49,10 +50,12 @@ def main():
     command, env, settings, algorithm = build_launch(model, output, 'denoise', mask[0], vocab,
         tokenizer.convert_tokens_to_ids('<|im_end|>'), paths, os.environ, port=args.port)
     command[command.index('--mem-fraction-static')+1] = str(args.mem_fraction_static)
+    command[command.index('--max-queued-requests')+1] = str(args.max_queued_requests)
     algorithm.write_text(yaml.safe_dump(settings['algorithm_config']))
     receipt = {'status': 'LAUNCHING_NOT_YET_GPU_VALIDATED', 'decoder': 'official_entropy_guided_dlm',
                'checkpoint': str(model), 'physical_gpu': visible, 'command': command, 'revision': revision,
                'memory_fraction_static': args.mem_fraction_static, 'execution': 'bf16_eager_triton',
+               'max_queued_requests': args.max_queued_requests, 'max_running_requests': 1,
                'packages': {n: importlib.metadata.version(n) for n in ('torch','transformers','sglang','sgl-kernel')}}
     (output/'launch.json').write_text(json.dumps(receipt, indent=2)+'\n')
     print(json.dumps(receipt), flush=True)

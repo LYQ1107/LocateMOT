@@ -1,0 +1,31 @@
+{
+  "status": "VERIFIED_OWNED_ORPHAN_GROUPS_STOPPED",
+  "groups": [
+    {
+      "group": 775337,
+      "verified_members": [
+        775339,
+        776153
+      ],
+      "frontends": [
+        775339
+      ],
+      "signal": "SIGKILL after priorSIGTERM/grace600seconds failed to stop orphan frontends"
+    },
+    {
+      "group": 1051638,
+      "verified_members": [
+        1051641,
+        1052634
+      ],
+      "frontends": [
+        1051641
+      ],
+      "signal": "SIGKILL after priorSIGTERM/grace600seconds failed to stop orphan frontends"
+    }
+  ],
+  "other_projects_touched": false,
+  "prior_launcher_only_stop_claim_invalid": true,
+  "all_verified_original_adapted_groups_no_live_members": true,
+  "queue32_regression_group1339199_no_live_members": true
+}

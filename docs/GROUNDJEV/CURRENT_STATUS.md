@@ -365,3 +365,43 @@ Evidence: isolated96_v2_port_release/aggregate_results.json and repeat_checks.
 All isolated replicas have stopped. Original/full9GPU7 and native200/full9GPU6
 owners and originalOne500GPU4training remain intact. The new completion owner
 waits the actual trainer before native500validation and matched-core controls.
+
+## Original full9 terminal partial result and bounded-queue repair
+
+Originalv2full9owner has exitedfailed: gam_coco completed all4952/4952canonical
+rows (zero provider-policy filtering), native recallIoU.5=.744359 andF1mIoU=
+.479781. Other8tasks failed HTTP503 because officialservice maxrunning1/
+maxqueued2 cannot accept9clients*concurrency2. Originalservice stopped;
+completedCOCOscores and partial responseSQLite caches remain intact. This is
+one original canonical task result, not all9or adaptation retention gain.
+
+Task-owned serve wrapper now permits boundedmaxqueue32 while preserving native
+running1/source/model/decode/math, and full9client concurrency remains2.
+Separateactual18concurrent HTTPregression is running onGPU7; its ownedservice
+will stop before freshoriginal8unfinished-task resumption. NativeCLIrejects
+reusedoutputroots; a task-local wrapper calls its same nativefunctions in a
+freshroot, copies only verified all-sample completedtask result and SQLite
+backup caches, spawns only unfinishedtasks and aggregates all original9.
+No changedsamples/GT/metrics/limits/seeds, no claim of exactstochasticrequest-
+counter continuation. Adapted200full9owner remains live; One500latestreport350.
+
+## Verified queue32/whole-service cleanup and full9resumption
+
+Actualqueue32v1regression failed because its APIreadiness probe reached old
+orphanfrontends after newserverEADDRINUSE. Oldlauncher-only stoppedflags were
+insufficient: API775339(group775337) and1051641(group1051638) remained. Their
+commands/cwd/checkpoints and isolatedPGIDs were verified; priorTERM hadfailed,
+so onlythoseownedgroups were killed. Newhelper waits/verifies allgroupmembers,
+usesSIGKILLonlyafterfailed20secondTERM, and verifiesnonealive. No foreignjob
+or driver reset. Regression now checks portavailability beforelaunch.
+
+Freshqueue32v2all18simultaneous clients returnedHTTP200. Its entireownedgroup
+1339199 and botholdgroups are verifiedempty. Original/evaldata/model math/
+seed42/concurrency2 unchanged. Firstrecovery gates and a localNamespace naming
+failure are preserved. Verifiedv3blocking owner launches original8unfinished
+and adapted200all9unfinished units with boundedqueue32, freshnative resultroots,
+SQLitebackup responses, and verified all4952/4952COCO result reuse. Native
+wrapper uses originalpreflight/runner/scorers; no sample skip or metric changes.
+Full9results still pending; exactstochasticcountercontinuation and adaptation
+retention gains are not asserted. One500training/completion owner continues.
+Currentrecovery owner: outputs/groundjev/ground_retention/full9_queue_recovery_v3_verified.

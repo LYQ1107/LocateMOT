@@ -1,0 +1,31 @@
+{
+  "status": "COOPERATIVELY_CANCELLED_AFTER_CONFIRMED8_TASK_QUEUE_FAILURES",
+  "native_summary": {
+    "records": [],
+    "missing_tasks": [
+      "gam_coco",
+      "gam_dense200",
+      "gam_lvis",
+      "gam_refcoco",
+      "gam_refcocog",
+      "gam_refcocog_test",
+      "gam_refcocog_val",
+      "gam_refcocoplus",
+      "gam_visdrone"
+    ],
+    "returncode": 143,
+    "status": "interrupted",
+    "termination_signal": 15,
+    "error_type": null,
+    "runner_cleanup_timed_out": false,
+    "mode": "GAM",
+    "evaluation_scope": "full",
+    "config_sha256": "d071a45658818ae9c8f48d8fad6a4a762b4d23408057439f255713c6051fcb70"
+  },
+  "first_actionable_root_cause": "same maxqueued2 vs9clients*concurrency2 HTTP503 queuefull",
+  "verified_native_evaluator_pid": 1053747,
+  "signal": "SIGTERM to native cooperative supervisor only, ownedserver stopped by its originalowner",
+  "all_partial_caches_results_failure_logs_preserved": true,
+  "resume": "freshsame200model/nativeprotocol with boundedqueue32, nativepartialresponsecache backups, allunfinished9tasks",
+  "other_projects_touched": false
+}

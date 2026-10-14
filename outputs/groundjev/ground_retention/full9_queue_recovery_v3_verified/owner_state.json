@@ -1,0 +1,19 @@
+{
+  "status": "RESUMING_VERIFIED_UNFINISHED_CANONICAL_UNITS",
+  "regression_owner": null,
+  "max_queued_requests": 32,
+  "max_running_requests": 1,
+  "unchanged_client_concurrency_per_task": 2,
+  "nine_canonical_tasks_not_all30": true,
+  "completed": {},
+  "children": {
+    "original": {
+      "pid": 1345022,
+      "out": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/ground_retention/original_dense_ref9_v3_queue32"
+    },
+    "projector200": {
+      "pid": 1345023,
+      "out": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/ground_retention/trackproj200_dense_ref9_v2_queue32"
+    }
+  }
+}

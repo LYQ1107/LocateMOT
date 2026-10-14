@@ -1,0 +1,11 @@
+{
+  "status": "QUEUE32_REGRESSION_FAILED",
+  "physical_gpu": 7,
+  "max_queued_requests": 32,
+  "max_running_requests": 1,
+  "concurrent_clients": 18,
+  "GT_read": false,
+  "benchmark_score_claim": false,
+  "error": "TimeoutError('timed out')",
+  "owned_regression_service_stopped": true
+}

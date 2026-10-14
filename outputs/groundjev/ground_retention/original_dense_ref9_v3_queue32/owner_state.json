@@ -1,0 +1,17 @@
+{
+  "status": "RUNNING_UNMODIFIED_FULL_DENSE_REF9_BASELINE",
+  "physical_server_gpu": 7,
+  "local_evaluator_CPU_only": true,
+  "limit": null,
+  "declared_canonical_rows": 91124,
+  "nine_original_dense_referring_tasks_not_all30": true,
+  "adaptation_or_retention_gain_claim": false,
+  "checkpoint": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM",
+  "original_model": true,
+  "recipe": "configs/eval/groundjev_original_dense_ref9.local.yaml",
+  "native_parser_scorers_decode_profiles_and_all_task_settings_unchanged": true,
+  "execution_rendezvous_base_port": 12345,
+  "max_queued_requests": 32,
+  "resume_result_root": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/outputs/groundjev_retention/groundjev_original_dense_ref9_direct_v2_20261014",
+  "owned_server_process_group": 1345024
+}

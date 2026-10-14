@@ -6,9 +6,12 @@ from pathlib import Path
 import signal
 import subprocess
 import time
+import sys
 from urllib.request import urlopen
 
 ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0,str(ROOT))
+from tools.groundjev.service_process_group import stop_owned_service
 
 
 def main():
@@ -104,12 +107,7 @@ def main():
         raise
     finally:
         if server is not None:
-            if server.poll() is None:
-                os.killpg(server.pid, signal.SIGTERM)
-                try:
-                    server.wait(timeout=20)
-                except subprocess.TimeoutExpired:
-                    os.killpg(server.pid, signal.SIGKILL); server.wait()
+            stop_owned_service(server)
             state['owned_adapted_service_stopped'] = True
             save()
         if server_log is not None:

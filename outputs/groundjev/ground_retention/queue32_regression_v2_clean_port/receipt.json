@@ -1,0 +1,85 @@
+{
+  "status": "ACTUAL18_CONCURRENT_REQUESTS_QUEUE32_PASS",
+  "physical_gpu": 7,
+  "max_queued_requests": 32,
+  "max_running_requests": 1,
+  "concurrent_clients": 18,
+  "GT_read": false,
+  "benchmark_score_claim": false,
+  "owned_server_process_group": 1339199,
+  "replies": [
+    {
+      "client": 0,
+      "HTTP_status": 200
+    },
+    {
+      "client": 1,
+      "HTTP_status": 200
+    },
+    {
+      "client": 2,
+      "HTTP_status": 200
+    },
+    {
+      "client": 3,
+      "HTTP_status": 200
+    },
+    {
+      "client": 4,
+      "HTTP_status": 200
+    },
+    {
+      "client": 5,
+      "HTTP_status": 200
+    },
+    {
+      "client": 6,
+      "HTTP_status": 200
+    },
+    {
+      "client": 7,
+      "HTTP_status": 200
+    },
+    {
+      "client": 8,
+      "HTTP_status": 200
+    },
+    {
+      "client": 9,
+      "HTTP_status": 200
+    },
+    {
+      "client": 10,
+      "HTTP_status": 200
+    },
+    {
+      "client": 11,
+      "HTTP_status": 200
+    },
+    {
+      "client": 12,
+      "HTTP_status": 200
+    },
+    {
+      "client": 13,
+      "HTTP_status": 200
+    },
+    {
+      "client": 14,
+      "HTTP_status": 200
+    },
+    {
+      "client": 15,
+      "HTTP_status": 200
+    },
+    {
+      "client": 16,
+      "HTTP_status": 200
+    },
+    {
+      "client": 17,
+      "HTTP_status": 200
+    }
+  ],
+  "owned_regression_service_stopped": true
+}

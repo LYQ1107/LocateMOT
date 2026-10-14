@@ -1,0 +1,11 @@
+{
+  "status": "FULL9_QUEUE_RECOVERY_FAILED",
+  "regression_owner": null,
+  "max_queued_requests": 32,
+  "max_running_requests": 1,
+  "unchanged_client_concurrency_per_task": 2,
+  "nine_canonical_tasks_not_all30": true,
+  "completed": {},
+  "children": {},
+  "error": "AttributeError(\"'list' object has no attribute 'regression_receipt'\")"
+}

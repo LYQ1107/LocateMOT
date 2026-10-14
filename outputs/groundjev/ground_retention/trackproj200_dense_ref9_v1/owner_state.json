@@ -1,5 +1,5 @@
 {
-  "status": "RUNNING_UNMODIFIED_FULL_DENSE_REF9_ADAPTED",
+  "status": "ADAPTED_DENSE_REF9_FAILED",
   "physical_server_gpu": 6,
   "local_evaluator_CPU_only": true,
   "limit": null,
@@ -11,5 +11,7 @@
   "recipe": "configs/eval/groundjev_trackproj200_dense_ref9.local.yaml",
   "native_parser_scorers_decode_profiles_and_all_task_settings_unchanged": true,
   "execution_rendezvous_base_port": 22345,
-  "owned_server_process_group": 1051638
+  "owned_server_process_group": 1051638,
+  "error": "CalledProcessError(143, ['/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-eval/bin/python', 'scripts/evaluate.py', 'configs/eval/groundjev_trackproj200_dense_ref9.local.yaml', '--run-id', 'groundjev_trackproj200_dense_ref9_20261014'])",
+  "owned_Ground_service_stopped": true
 }

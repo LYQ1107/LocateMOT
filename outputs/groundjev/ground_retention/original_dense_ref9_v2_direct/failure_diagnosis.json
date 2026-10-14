@@ -1,0 +1,49 @@
+{
+  "status": "ORIGINAL_FULL9_PARTIAL_COMPLETION_NOT_FULL_SUITE",
+  "first_actionable_root_cause": "native TP1 service max-running1/max-queued2 rejects nine clients*concurrency2 with HTTP503 request queue full",
+  "completed_task": "gam_coco",
+  "native_metrics": {
+    "alias": "gam_coco",
+    "recall_iou_50,none": 0.7443590145704103,
+    "recall_iou_50_stderr,none": "N/A",
+    "recall_iou_95,none": 0.26450308040961473,
+    "recall_iou_95_stderr,none": "N/A",
+    "recall_mean_iou,none": 0.5999254703353675,
+    "recall_mean_iou_stderr,none": "N/A",
+    "precision_iou_50,none": 0.5044490493888624,
+    "precision_iou_50_stderr,none": "N/A",
+    "precision_iou_95,none": 0.1647301091701634,
+    "precision_iou_95_stderr,none": "N/A",
+    "precision_mean_iou,none": 0.399791699211337,
+    "precision_mean_iou_stderr,none": "N/A",
+    "f1_iou_50,none": 0.6013593411842666,
+    "f1_iou_50_stderr,none": "N/A",
+    "f1_iou_95,none": 0.20302074662202715,
+    "f1_iou_95_stderr,none": "N/A",
+    "F1mIoU,none": 0.4797806560343516,
+    "F1mIoU_stderr,none": "N/A",
+    "mae,none": [],
+    "mae_stderr,none": []
+  },
+  "native_samples": {
+    "gam_coco": {
+      "original": 4952,
+      "effective": 4952,
+      "provider_policy_filtered": 0
+    }
+  },
+  "unfinished_tasks": [
+    "gam_dense200",
+    "gam_lvis",
+    "gam_refcoco",
+    "gam_refcocog",
+    "gam_refcocog_test",
+    "gam_refcocog_val",
+    "gam_refcocoplus",
+    "gam_visdrone"
+  ],
+  "smallest_fix": "task-local maxqueued32, keep running1 and all scorer/data/decode/base seed settings unchanged",
+  "completed_scores_and_partial_response_caches_preserved": true,
+  "planned_resumption": "native wrapper copies verified all-sample completed task, SQLite backup partial response caches, unchanged native execute_evaluation spawns only unfinished tasks",
+  "full_suite_or_retention_gain_claim": false
+}

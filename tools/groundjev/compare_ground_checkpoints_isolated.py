@@ -7,9 +7,12 @@ import signal
 import socket
 import subprocess
 import time
+import sys
 from urllib.request import urlopen
 
 ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0,str(ROOT))
+from tools.groundjev.service_process_group import stop_owned_service
 
 
 def main():
@@ -104,12 +107,8 @@ def main():
                         state['completed'][name+'_'+clip['name']] = json.loads((output/'official_metrics.json').read_text())
                         save()
                 finally:
-                    if server is not None and server.poll() is None:
-                        os.killpg(server.pid, signal.SIGTERM)
-                        try:
-                            server.wait(timeout=20)
-                        except subprocess.TimeoutExpired:
-                            os.killpg(server.pid, signal.SIGKILL); server.wait()
+                    if server is not None:
+                        stop_owned_service(server)
             state['last_owned_service_stopped'] = name; save()
         repeat_checks = {}
         for clip in plan['clips']:
