@@ -29,6 +29,9 @@ def main():
     if plan.get('packed_archive_regression'):
         packed = json.loads((ROOT/plan['packed_archive_regression']).read_text())
         assert packed['status'] == 'REAL21_PACKED_NATIVE_ROI_ARCHIVE_REPLAY_AND_NEXT_FRAME_EXACT'
+    if plan.get('input_evidence_regression'):
+        evidence = json.loads((ROOT/plan['input_evidence_regression']).read_text())
+        assert evidence['status'] == 'REAL_THREE_TASK_INPUT_EVIDENCE_ISOLATION_AND_DEFAULT_EXACT'
     args.out.mkdir(parents=True, exist_ok=False)
     state = {'status': 'STARTING_FIXED_AFFINITY_CONTROLS', 'owner_pid': os.getpid(),
         'plan': str(args.plan), 'device': 'cpu', 'additional_GPUs': 0,
@@ -84,6 +87,7 @@ def main():
                 shortlist = policies.get('shortlist', 32)
                 shortlist_policy = policies.get('shortlist_policy', 'geometry')
                 backend = policies.get('backend', 'compact')
+                checkpoint = ROOT/policies.get('checkpoint', plan.get('checkpoint', ''))
                 if not reused:
                     command = [python, 'tools/groundjev/run_video.py', '--task', m['task'],
                         '--video', str(manifest), '--backend', backend, '--candidate-replay', str(source),
@@ -92,7 +96,7 @@ def main():
                         '--lost-seconds', str(policies.get('lost_seconds', 3.)), '--ema-alpha', str(policies.get('EMA_alpha', .1)),
                         '--out', str(output)]
                     if backend == 'compact':
-                        command += ['--compact-device', 'cpu', '--checkpoint', str(ROOT/plan['checkpoint']),
+                        command += ['--compact-device', 'cpu', '--checkpoint', str(checkpoint),
                             '--compact-association-policy', policies['association'], '--compact-auxiliary-policy', policies['auxiliary'],
                             '--compact-shortlist', str(shortlist), '--compact-shortlist-policy', shortlist_policy]
                     run(name+'_INFERENCE', command)
@@ -116,6 +120,8 @@ def main():
                         if backend == 'compact':
                             assert new['state']['decision_metadata']['shortlist_limit'] == shortlist
                             assert new['state']['decision_metadata'].get('shortlist_policy', 'geometry') == shortlist_policy
+                            if policies.get('input_evidence'):
+                                assert new['state']['decision_metadata'].get('input_evidence', 'geometry_appearance_language') == policies['input_evidence']
                         expected_rejection = bool(old['perception'].get('model_response_rejected', False))
                         assert bool(new['perception'].get('model_response_rejected', False)) == expected_rejection
                         if expected_rejection:
@@ -140,7 +146,7 @@ def main():
                     assert report['compact_auxiliary_policy'] == policies['auxiliary']
                     assert report.get('compact_shortlist_limit', 32) == shortlist
                     assert report.get('compact_shortlist_policy', 'geometry') == shortlist_policy
-                    assert Path(report['checkpoint']).resolve() == (ROOT/plan['checkpoint']).resolve()
+                    assert Path(report['checkpoint']).resolve() == checkpoint.resolve()
                 assert Path(report['final_identity_memory_path']).is_file()
                 official = json.loads((output/'official_metrics.json').read_text())
                 events = json.loads((output/'association_events.json').read_text())

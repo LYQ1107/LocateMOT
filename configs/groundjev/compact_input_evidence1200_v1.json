@@ -1,0 +1,23 @@
+{
+  "name": "Task14.2 matched Compact input evidence study",
+  "regression": "outputs/groundjev/validation/input_evidence_v1/validation.json",
+  "upstream_owner": "outputs/groundjev/compact/hybrid_shortlist32_v1",
+  "initialization": "outputs/groundjev/compact/task_subsets1200_cpu_v1/shared_MOT300_initialization.pt",
+  "source_pack": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/rmot_native72_v1/broad_native",
+  "baseline_training": "outputs/groundjev/compact/task_subsets1200_cpu_v1/all_three_training",
+  "steps": 1200,
+  "seed": 0,
+  "device": "cpu",
+  "additional_GPUs": 0,
+  "new_feature_cache_files": false,
+  "controls": "configs/groundjev/compact_input_evidence_controls_v1.json",
+  "limits": "Same architecture/resident parameters, original visual-native frontend/proposals, initialization,1200updates/sample IDs/GT/native teacher targets. Geometry/motion remains in allarms; ablations mask raw nativeROI branch and runtime specification embedding, respectively. Output-only class-vocabulary prototypes remain in allarms; not language-free perception. Older shared actor histories fixed during training; runtime eacharm evolves itsown causal state. Full native-image JEV controls differ in architecture/budget and cannot isolate JEV uniqueness. No validation tuning or E2E FPS claim.",
+  "runtime_modes": [
+    "geometry_motion",
+    "geometry_appearance",
+    "geometry_appearance_language"
+  ],
+  "full_goal_complete": false,
+  "launch": "python3 tools/groundjev/run_compact_input_evidence.py --plan configs/groundjev/compact_input_evidence1200_v1.json --out outputs/groundjev/compact/input_evidence1200_v1",
+  "scheduler_regression": "outputs/groundjev/validation/input_evidence_scheduler21_v1/owner_state.json"
+}

@@ -1,0 +1,33 @@
+{
+  "checkpoint": "outputs/groundjev/compact/rmot_native72_stage_v1/broad_native_training/checkpoint.pt",
+  "regression": "outputs/groundjev/validation/fixed_affinity_storage_v1/validation.json",
+  "memory_storage": "All new arms binary final full state with every original float64/list/image/history field; per-frame complete decisions plus exact shared native sources support causal replay. Actual4-frame outputs/states and next-frame restoration exact versus old JSON1. No replay or storage-policy speed comparison with legacy runs.",
+  "comparison_limit": "Frozen inference interventions, not independently trained optimal conventional models or unique JEV proof. Same raw visual/text inputs and semantic functions; endogenous confidence/history/state differ by policy. Geometry-only describes association only, semantic heads still consume visual/text inputs. One legal video per full-video scope, one checkpoint/seed; no full-dataset claim.",
+  "name": "Two-step checkpoints and real21 packed native scheduler integration only",
+  "cpu_blas_threads": 4,
+  "packed_archive_regression": "outputs/groundjev/validation/packed_native_archive21_v1/validation.json",
+  "arms": {
+    "geometry_motion": {
+      "association": "learned",
+      "auxiliary": "learned",
+      "input_evidence": "geometry_motion",
+      "checkpoint": "outputs/groundjev/validation/input_evidence_v1/geometry_motion_two_step/checkpoint.pt"
+    },
+    "geometry_appearance": {
+      "association": "learned",
+      "auxiliary": "learned",
+      "input_evidence": "geometry_appearance",
+      "checkpoint": "outputs/groundjev/validation/input_evidence_v1/geometry_appearance_two_step/checkpoint.pt"
+    }
+  },
+  "scopes": {
+    "real21": {
+      "manifest": "outputs/groundjev/validation/packed_native_archive21_v1/manifest.json",
+      "candidates": "outputs/groundjev/validation/packed_native_archive21_v1/packed_record/frame_candidates.jsonl",
+      "frames": 21,
+      "candidates_count": 266
+    }
+  },
+  "scope": "explicit functional integration only, no full-video or model promotion claim",
+  "input_evidence_regression": "outputs/groundjev/validation/input_evidence_v1/validation.json"
+}

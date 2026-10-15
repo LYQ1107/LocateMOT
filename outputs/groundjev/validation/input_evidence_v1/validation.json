@@ -1,0 +1,50 @@
+{
+  "status": "REAL_THREE_TASK_INPUT_EVIDENCE_ISOLATION_AND_DEFAULT_EXACT",
+  "results": [
+    {
+      "task": 0,
+      "mode": "geometry_motion",
+      "parameters": 1146511,
+      "runtime_specification_blocked_exactly": true,
+      "appearance_blocked_exactly": true
+    },
+    {
+      "task": 0,
+      "mode": "geometry_appearance",
+      "parameters": 1146511,
+      "runtime_specification_blocked_exactly": true,
+      "appearance_blocked_exactly": false
+    },
+    {
+      "task": 1,
+      "mode": "geometry_motion",
+      "parameters": 1146511,
+      "runtime_specification_blocked_exactly": true,
+      "appearance_blocked_exactly": true
+    },
+    {
+      "task": 1,
+      "mode": "geometry_appearance",
+      "parameters": 1146511,
+      "runtime_specification_blocked_exactly": true,
+      "appearance_blocked_exactly": false
+    },
+    {
+      "task": 2,
+      "mode": "geometry_motion",
+      "parameters": 1146511,
+      "runtime_specification_blocked_exactly": true,
+      "appearance_blocked_exactly": true
+    },
+    {
+      "task": 2,
+      "mode": "geometry_appearance",
+      "parameters": 1146511,
+      "runtime_specification_blocked_exactly": true,
+      "appearance_blocked_exactly": false
+    }
+  ],
+  "default_all_outputs_equal_previous_committed_model": true,
+  "class_vocabulary_output_head_text_retained_all_modes": true,
+  "scope": "Functional real-pack permutations only; no new video accuracy or speed claim."
+}

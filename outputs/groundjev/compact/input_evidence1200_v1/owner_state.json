@@ -1,0 +1,13 @@
+{
+  "status": "WAITING_REGISTERED_HYBRID_CPU_OWNER_EXIT",
+  "owner_pid": 2137548,
+  "upstream_registered": [
+    2034367,
+    "42762109"
+  ],
+  "device": "cpu",
+  "additional_GPUs": 0,
+  "completed_training": {},
+  "new_feature_cache_files": false,
+  "full_goal_complete": false
+}

@@ -1,0 +1,307 @@
+{
+  "status": "ACTUAL_SAVED_NATIVE_ENGINE_TIMINGS_AGGREGATED",
+  "results": {
+    "outputs/groundjev/multitask_runs/full_rmot_shared600_v1/single800_pretrained": {
+      "frames": 800,
+      "fork_mode_counts": {
+        "batched": 800
+      },
+      "native_requests": 800,
+      "request_timing_seconds": {
+        "render_s": {
+          "count": 800,
+          "sum": 28.226297611079644,
+          "mean": 0.03528287201384955,
+          "p50": 0.02466320400708355,
+          "p95": 0.0960714989923872,
+          "max": 0.18709029897581786
+        },
+        "forward_s": {
+          "count": 800,
+          "sum": 142.53141844994389,
+          "mean": 0.17816427306242985,
+          "p50": 0.14556505251675844,
+          "p95": 0.37473007303196937,
+          "max": 0.5613575290190056
+        },
+        "total_s": {
+          "count": 800,
+          "sum": 171.62665017833933,
+          "mean": 0.21453331272292417,
+          "p50": 0.17150945952744223,
+          "p95": 0.47322473797248676,
+          "max": 0.7504568039439619
+        },
+        "media_load_s": {
+          "count": 800,
+          "sum": 0.28671179740922526,
+          "mean": 0.00035838974676153155,
+          "p50": 0.0003360344853717834,
+          "p95": 0.00048723601503297687,
+          "max": 0.001495127973612398
+        }
+      },
+      "prefix_tokens": {
+        "count": 800,
+        "sum": 1077658,
+        "mean": 1347.0725,
+        "p50": 986.5,
+        "p95": 3160,
+        "max": 4206
+      },
+      "branches": {
+        "count": 800,
+        "sum": 6342,
+        "mean": 7.9275,
+        "p50": 6.0,
+        "p95": 17,
+        "max": 38
+      },
+      "typed_questions_per_request": {
+        "count": 800,
+        "sum": 6342,
+        "mean": 7.9275,
+        "p50": 6.0,
+        "p95": 17,
+        "max": 38
+      },
+      "actual_frame_latency_seconds": {
+        "count": 800,
+        "sum": 185.2364446700667,
+        "mean": 0.23154555583758338,
+        "p50": 0.18733915098709986,
+        "p95": 0.4979245360009372,
+        "max": 0.7801241370034404
+      },
+      "perception_included_E2E": false,
+      "limits": "Saved engine timing labels; nested scopes can overlap. Media loading is not an additional disjoint cost. Concurrent work and video density differ; not an optimization benchmark."
+    },
+    "outputs/groundjev/multitask_runs/full_rmot_shared600_v1/single800_before500": {
+      "frames": 800,
+      "fork_mode_counts": {
+        "batched": 800
+      },
+      "native_requests": 800,
+      "request_timing_seconds": {
+        "render_s": {
+          "count": 800,
+          "sum": 89.38867217459483,
+          "mean": 0.11173584021824354,
+          "p50": 0.0894348165311385,
+          "p95": 0.2638720370014198,
+          "max": 0.5558904320350848
+        },
+        "forward_s": {
+          "count": 800,
+          "sum": 344.6695730127394,
+          "mean": 0.43083696626592427,
+          "p50": 0.38251476048026234,
+          "p95": 0.7977424099808559,
+          "max": 1.3671664079884067
+        },
+        "total_s": {
+          "count": 800,
+          "sum": 435.39671260415344,
+          "mean": 0.5442458907551918,
+          "p50": 0.4785151734831743,
+          "p95": 1.0951142009580508,
+          "max": 1.9137766609783284
+        },
+        "media_load_s": {
+          "count": 800,
+          "sum": 0.42430253425845876,
+          "mean": 0.0005303781678230734,
+          "p50": 0.0005164039903320372,
+          "p95": 0.0006552939885295928,
+          "max": 0.002146747021470219
+        }
+      },
+      "prefix_tokens": {
+        "count": 800,
+        "sum": 3189689,
+        "mean": 3987.11125,
+        "p50": 3647.5,
+        "p95": 6367,
+        "max": 8849
+      },
+      "branches": {
+        "count": 800,
+        "sum": 11360,
+        "mean": 14.2,
+        "p50": 13.0,
+        "p95": 28,
+        "max": 48
+      },
+      "typed_questions_per_request": {
+        "count": 800,
+        "sum": 11360,
+        "mean": 14.2,
+        "p50": 13.0,
+        "p95": 28,
+        "max": 48
+      },
+      "actual_frame_latency_seconds": {
+        "count": 800,
+        "sum": 454.7971722110524,
+        "mean": 0.5684964652638155,
+        "p50": 0.5026599104749039,
+        "p95": 1.1279597450047731,
+        "max": 1.9815945340087637
+      },
+      "perception_included_E2E": false,
+      "limits": "Saved engine timing labels; nested scopes can overlap. Media loading is not an additional disjoint cost. Concurrent work and video density differ; not an optimization benchmark."
+    },
+    "outputs/groundjev/multitask_runs/full_rmot_shared600_v1/single800_teacher600": {
+      "frames": 800,
+      "fork_mode_counts": {
+        "batched": 800
+      },
+      "native_requests": 800,
+      "request_timing_seconds": {
+        "render_s": {
+          "count": 800,
+          "sum": 247.31936688220594,
+          "mean": 0.3091492086027574,
+          "p50": 0.2746745249896776,
+          "p95": 0.6107154810451902,
+          "max": 1.199588991003111
+        },
+        "forward_s": {
+          "count": 800,
+          "sum": 787.308974718384,
+          "mean": 0.9841362183979799,
+          "p50": 0.9997867294878233,
+          "p95": 1.3856563700246625,
+          "max": 2.3688802889664657
+        },
+        "total_s": {
+          "count": 800,
+          "sum": 1036.6464283004752,
+          "mean": 1.295808035375594,
+          "p50": 1.2847957869817037,
+          "p95": 1.9993710129638202,
+          "max": 3.573675092018675
+        },
+        "media_load_s": {
+          "count": 800,
+          "sum": 0.6370957685867324,
+          "mean": 0.0007963697107334156,
+          "p50": 0.0007864899816922843,
+          "p95": 0.0010341739980503917,
+          "max": 0.0019074120209552348
+        }
+      },
+      "prefix_tokens": {
+        "count": 800,
+        "sum": 6587927,
+        "mean": 8234.90875,
+        "p50": 8231.0,
+        "p95": 11931,
+        "max": 15469
+      },
+      "branches": {
+        "count": 800,
+        "sum": 19502,
+        "mean": 24.3775,
+        "p50": 22.0,
+        "p95": 40,
+        "max": 61
+      },
+      "typed_questions_per_request": {
+        "count": 800,
+        "sum": 19502,
+        "mean": 24.3775,
+        "p50": 22.0,
+        "p95": 40,
+        "max": 61
+      },
+      "actual_frame_latency_seconds": {
+        "count": 800,
+        "sum": 1065.5078846578253,
+        "mean": 1.3318848558222818,
+        "p50": 1.3187253985088319,
+        "p95": 2.0538597609847784,
+        "max": 3.6538415440008976
+      },
+      "perception_included_E2E": false,
+      "limits": "Saved engine timing labels; nested scopes can overlap. Media loading is not an additional disjoint cost. Concurrent work and video density differ; not an optimization benchmark."
+    },
+    "outputs/groundjev/multitask_runs/full_rmot_shared600_v1/single800_native600": {
+      "frames": 800,
+      "fork_mode_counts": {
+        "batched": 800
+      },
+      "native_requests": 800,
+      "request_timing_seconds": {
+        "render_s": {
+          "count": 800,
+          "sum": 135.8183726282441,
+          "mean": 0.16977296578530512,
+          "p50": 0.15492339950287715,
+          "p95": 0.3071563590201549,
+          "max": 0.835139902017545
+        },
+        "forward_s": {
+          "count": 800,
+          "sum": 481.17831725999713,
+          "mean": 0.6014728965749964,
+          "p50": 0.562758058484178,
+          "p95": 0.9587403129553422,
+          "max": 2.029088749026414
+        },
+        "total_s": {
+          "count": 800,
+          "sum": 618.576803283242,
+          "mean": 0.7732210041040526,
+          "p50": 0.718128244014224,
+          "p95": 1.279147174966056,
+          "max": 2.8677949670236558
+        },
+        "media_load_s": {
+          "count": 800,
+          "sum": 0.49846540251746774,
+          "mean": 0.0006230817531468347,
+          "p50": 0.0006126075168140233,
+          "p95": 0.0007506340043619275,
+          "max": 0.0016671380144543946
+        }
+      },
+      "prefix_tokens": {
+        "count": 800,
+        "sum": 4379029,
+        "mean": 5473.78625,
+        "p50": 5170.5,
+        "p95": 7417,
+        "max": 12374
+      },
+      "branches": {
+        "count": 800,
+        "sum": 14179,
+        "mean": 17.72375,
+        "p50": 17.0,
+        "p95": 29,
+        "max": 55
+      },
+      "typed_questions_per_request": {
+        "count": 800,
+        "sum": 14179,
+        "mean": 17.72375,
+        "p50": 17.0,
+        "p95": 29,
+        "max": 55
+      },
+      "actual_frame_latency_seconds": {
+        "count": 800,
+        "sum": 641.5325701789698,
+        "mean": 0.8019157127237122,
+        "p50": 0.7467820695019327,
+        "p95": 1.3130381280207075,
+        "max": 2.9140454530133866
+      },
+      "perception_included_E2E": false,
+      "limits": "Saved engine timing labels; nested scopes can overlap. Media loading is not an additional disjoint cost. Concurrent work and video density differ; not an optimization benchmark."
+    }
+  },
+  "new_model_invocations": 0,
+  "full_goal_complete": false
+}

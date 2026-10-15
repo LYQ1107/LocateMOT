@@ -304,3 +304,24 @@ Curated official-artifact receipts: `outputs/groundjev/compact/` under
 `fixed_affinity_controls_v1/validated_summary.json`,
 `task_subsets1200_cpu_v2_feature_sources/validated_summary.json` and
 `context_sizes_v1/validated_summary.json`.
+
+
+Input evidence14.2 now has a registered matched retraining study,
+`configs/groundjev/compact_input_evidence1200_v1.json`. Two new1200step CPU
+models mask nativeROI and runtime specification conditioning, respectively;
+the full-input arm reuses completed all_three1200 weights. All modes retain
+1146511resident parameters and the output-only class vocabulary text head.
+The same original native semantic frontend and native softteacher targets remain;
+this is association-input isolation, not language-free perception or isolated
+JEV proof. Initialization tensors and all1200sample IDs must equal baseline.
+Three modes each evaluate fullDT1203/rawTAO40/single800/multi800. One serial
+owner waits hybridCPU completion; no new GPU/feature cache. Real three-task
+isolation/default-exact, two-step reloads and two real21frame scheduler controls
+passed; no full-video accuracy is claimed for these new modes yet.
+
+Actual completed single800Full timing logs show all3200requests use batched
+forking. Pretrained/500/teacher600/native600 average prefix tokens are
+1347/3987/8235/5474 and branches7.93/14.20/24.38/17.72; forward totals are
+142.531/344.670/787.309/481.178s. Different causal histories and concurrent
+loads prevent isolated causal speed attribution. No evidence of universal
+sequential fallback; no native-engine optimization protocol changed.

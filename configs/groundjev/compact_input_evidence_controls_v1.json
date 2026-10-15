@@ -1,0 +1,56 @@
+{
+  "regression": "outputs/groundjev/validation/fixed_affinity_storage_v1/validation.json",
+  "comparison_limit": "Same architecture/resident parameters, original visual-native frontend/proposals, initialization,1200updates/sample IDs/GT/native teacher targets. Geometry/motion remains in allarms; ablations mask raw nativeROI branch and runtime specification embedding, respectively. Output-only class-vocabulary prototypes remain in allarms; not language-free perception. Older shared actor histories fixed during training; runtime eacharm evolves itsown causal state. Full native-image JEV controls differ in architecture/budget and cannot isolate JEV uniqueness. No validation tuning or E2E FPS claim.",
+  "memory_storage": "All new arms binary final full state with every original float64/list/image/history field; per-frame complete decisions plus exact shared native sources support causal replay. Actual4-frame outputs/states and next-frame restoration exact versus old JSON1. No replay or storage-policy speed comparison with legacy runs.",
+  "name": "Matched three runtime input-evidence modes; full causal video controls",
+  "device": "cpu",
+  "cpu_blas_threads": 4,
+  "new_feature_cache_files": false,
+  "input_evidence_regression": "outputs/groundjev/validation/input_evidence_v1/validation.json",
+  "arms": {
+    "geometry_motion": {
+      "association": "learned",
+      "auxiliary": "learned",
+      "input_evidence": "geometry_motion",
+      "checkpoint": "outputs/groundjev/compact/input_evidence1200_v1/geometry_motion_training/checkpoint.pt"
+    },
+    "geometry_appearance": {
+      "association": "learned",
+      "auxiliary": "learned",
+      "input_evidence": "geometry_appearance",
+      "checkpoint": "outputs/groundjev/compact/input_evidence1200_v1/geometry_appearance_training/checkpoint.pt"
+    },
+    "geometry_appearance_language": {
+      "association": "learned",
+      "auxiliary": "learned",
+      "input_evidence": "geometry_appearance_language",
+      "checkpoint": "outputs/groundjev/compact/task_subsets1200_cpu_v1/all_three_training/checkpoint.pt"
+    }
+  },
+  "scopes": {
+    "mot_full1203": {
+      "manifest": "outputs/groundjev/pilot_data/dancetrack.json",
+      "candidates": "outputs/groundjev/compact/dancetrack0004_native300_v2_empty_roi_fixed/compact_distilled/frame_decisions.jsonl",
+      "frames": 1203,
+      "candidates_count": 13664
+    },
+    "tao_raw_full40": {
+      "manifest": "outputs/groundjev/multitask_pilot_data/ovmot_tao_base_novel63_full.json",
+      "candidates": "outputs/groundjev/multitask_runs/tao_base_novel63_full_v2_expression_none/native_candidates/frame_candidates.jsonl",
+      "frames": 40,
+      "candidates_count": 35228
+    },
+    "single800": {
+      "manifest": "outputs/groundjev/multitask_pilot_data/rmot_single_empty_full.json",
+      "candidates": "outputs/groundjev/multitask_runs/full_rmot_shared600_v1/single800_shared_compact_fresh/frame_candidates.jsonl",
+      "frames": 800,
+      "candidates_count": 1412
+    },
+    "multi800": {
+      "manifest": "outputs/groundjev/multitask_pilot_data/rmot_multi_empty_full.json",
+      "candidates": "outputs/groundjev/multitask_runs/full_rmot_shared600_v1/multi800_shared_compact_fresh/frame_candidates.jsonl",
+      "frames": 800,
+      "candidates_count": 2208
+    }
+  }
+}

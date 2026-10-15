@@ -23,6 +23,8 @@ def main():
     parser.add_argument('--tasks', nargs='+', choices=['mot','rmot','ovmot'], default=['mot','rmot','ovmot'])
     parser.add_argument('--per-task-sampling', action='store_true', help='independent seed0+task sampling streams for shared task prefixes across subset controls')
     parser.add_argument('--resume-state', type=Path)
+    parser.add_argument('--input-evidence', choices=['geometry_motion','geometry_appearance','geometry_appearance_language'],
+        default='geometry_appearance_language')
     args=parser.parse_args();source=args.pack
     assert json.loads((source/'owner_state.json').read_text())['status']=='DECLARED_JOINT_SEMANTIC_TRAIN_PACK_COMPLETE'
     pack=torch.load(source/'examples.pt',weights_only=True);by_task={i:[e for e in pack['examples'] if e['task_index']==i] for i in range(3)}
@@ -40,7 +42,8 @@ def main():
         'actual_native_RMOT_groups':sum(e.get('proposal_source')=='actual_native_GroundAnything_DLM' for e in pack['examples'])}
     def save():
         (out/'owner_state.json').write_text(json.dumps(state,indent=2)+'\n');print(json.dumps(state),flush=True)
-    save();model=CompactCore(semantic=True).to(args.device)
+    state['input_evidence']=args.input_evidence
+    save();model=CompactCore(semantic=True,input_evidence=args.input_evidence).to(args.device)
     previous=torch.load(args.checkpoint,weights_only=True)
     missing,unexpected=model.load_state_dict(previous['state_dict'],strict=False)
     assert not unexpected and all(k.startswith(('text.','category.','membership.','class_scale')) for k in missing)
@@ -49,6 +52,7 @@ def main():
     classes=pack['class_text'].to(args.device);start=time.perf_counter();logs=[]
     protocol={'pack':str(source.resolve()),'initialization':str(args.checkpoint.resolve()),
         'tasks':args.tasks,'device':args.device,'steps':args.steps,'per_task_sampling':args.per_task_sampling}
+    if args.input_evidence!='geometry_appearance_language':protocol['input_evidence']=args.input_evidence
     start_step=0
     if args.resume_state:
         saved=torch.load(args.resume_state,map_location=args.device,weights_only=False)
@@ -90,13 +94,17 @@ def main():
                 'membership_loss':float(member_loss),'gradient_norm':gradient,'elapsed_seconds':time.perf_counter()-start};logs.append(record);print(json.dumps(record),flush=True)
     model.eval();checkpoint={'architecture':'set','semantic':True,'state_dict':{k:v.detach().cpu() for k,v in model.state_dict().items()},
         'steps':args.steps,'seed':0,'tasks':args.tasks,'Base_only_OV_supervision':True,'text_features':'real original OneJev frozen token mean; not language decoder reasoning'}
+    if args.input_evidence!='geometry_appearance_language':checkpoint['input_evidence']=args.input_evidence
     torch.save(checkpoint,out/'checkpoint.pt');changed={k:int((initial[k]!=v.detach().cpu()).sum()) for k,v in model.state_dict().items()}
-    fresh=CompactCore(semantic=True).to(args.device);fresh.load_state_dict(torch.load(out/'checkpoint.pt',weights_only=True)['state_dict']);fresh.eval();deltas={}
+    fresh=CompactCore(semantic=True,input_evidence=args.input_evidence).to(args.device);fresh.load_state_dict(torch.load(out/'checkpoint.pt',weights_only=True)['state_dict']);fresh.eval();deltas={}
     for task in range(3):
         e={k:v.to(args.device) if torch.is_tensor(v) else v for k,v in by_task[task][0].items()};e['class_text']=classes
         with torch.no_grad():a=model(e);b=fresh(e)
         delta=max(float((a[k]-b[k]).abs().max()) for k in a if a[k].numel());assert delta==0;deltas[str(task)]=delta
-    assert all(changed[k]>0 for k in ('category.weight','membership.0.weight','text.1.weight','visual.1.weight'))
+    expected_changed=['category.weight','membership.0.weight','text.1.weight']
+    if args.input_evidence!='geometry_motion':expected_changed.append('visual.1.weight')
+    assert all(changed[k]>0 for k in expected_changed)
+    if args.input_evidence=='geometry_motion':assert changed['visual.1.weight']==0
     state.update(status='SHARED_COMPACT_JOINT1200_TRAINING_COMPLETE' if args.steps==1200 else 'SHARED_COMPACT_TRAINING_COMPLETE',steps=args.steps,
         parameters=sum(p.numel() for p in model.parameters()),changed_elements=sum(changed.values()),
         changed_semantic_head_elements={k:v for k,v in changed.items() if k.startswith(('text.','category.','membership.'))},

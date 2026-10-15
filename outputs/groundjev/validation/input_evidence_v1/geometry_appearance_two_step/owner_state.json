@@ -1,0 +1,69 @@
+{
+  "status": "SHARED_COMPACT_TRAINING_COMPLETE",
+  "steps": 2,
+  "target_steps": 2,
+  "seed": 0,
+  "task_examples": {
+    "0": 149,
+    "1": 325,
+    "2": 62
+  },
+  "Novel_GT_supervised": false,
+  "additional_teacher_proposal_stage_not_native_detector_rollout": true,
+  "source_pack": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/rmot_native72_v1/broad_native",
+  "initialization": "outputs/groundjev/compact/task_subsets1200_cpu_v1/shared_MOT300_initialization.pt",
+  "device": "cpu",
+  "selected_tasks": [
+    "mot",
+    "rmot",
+    "ovmot"
+  ],
+  "per_task_independent_sampling": true,
+  "actual_native_RMOT_groups": 142,
+  "input_evidence": "geometry_appearance",
+  "parameters": 1146511,
+  "changed_elements": 1143437,
+  "changed_semantic_head_elements": {
+    "text.0.weight": 1024,
+    "text.0.bias": 1024,
+    "text.1.weight": 131072,
+    "text.1.bias": 128,
+    "text.3.weight": 16384,
+    "text.3.bias": 128,
+    "category.weight": 16384,
+    "category.bias": 128,
+    "membership.0.weight": 49152,
+    "membership.0.bias": 128,
+    "membership.2.weight": 128,
+    "membership.2.bias": 1
+  },
+  "three_task_checkpoint_reload_max_difference": {
+    "0": 0.0,
+    "1": 0.0,
+    "2": 0.0
+  },
+  "peak_allocated_bytes": 0,
+  "sampled_example_ids": {
+    "0": [
+      "MOT20-01_187_batch0"
+    ],
+    "1": [
+      "broad_teacher_0002_59_0_query1"
+    ],
+    "2": []
+  },
+  "checkpoint": "outputs/groundjev/validation/input_evidence_v1/geometry_appearance_two_step/checkpoint.pt",
+  "checkpoint_bytes": 4606453,
+  "training_log": [
+    {
+      "step": 1,
+      "task": 0,
+      "loss": 9.610841751098633,
+      "class_loss": 7.388425350189209,
+      "membership_loss": 0.723908007144928,
+      "gradient_norm": 39.77943801879883,
+      "elapsed_seconds": 0.17957697197562084
+    }
+  ],
+  "official_tracking_class_referring_results": "pending same native proposals and official evaluation"
+}

@@ -11,9 +11,10 @@ class FeedForwardBlock(nn.Module):
 
 
 class CompactCore(nn.Module):
-    def __init__(self, architecture='set', width=128, semantic=False):
+    def __init__(self, architecture='set', width=128, semantic=False, input_evidence='geometry_appearance_language'):
         super().__init__()
         self.architecture, self.width = architecture, width
+        self.input_evidence = input_evidence
         self.visual = nn.Sequential(nn.LayerNorm(2560), nn.Linear(2560,width), nn.GELU())
         self.history_merge = nn.Linear(3*width,width)
         self.candidate_geo = nn.Linear(4,width); self.history_geo = nn.Linear(8,width)
@@ -36,10 +37,15 @@ class CompactCore(nn.Module):
 
     def forward(self, e):
         n,m = len(e['candidates']),len(e['history'])
-        c = self.visual(e['candidates'])+self.candidate_geo(e['candidate_geo'])
-        h = self.history_merge(self.visual(e['history']).flatten(1))+self.history_geo(e['history_geo'])
+        cv = self.visual(e['candidates'])
+        hv = self.history_merge(self.visual(e['history']).flatten(1))
+        if self.input_evidence == 'geometry_motion':
+            cv, hv = torch.zeros_like(cv), torch.zeros_like(hv)
+        c = cv+self.candidate_geo(e['candidate_geo'])
+        h = hv+self.history_geo(e['history_geo'])
         specification = self.task.weight[e['task_index']]
-        if self.semantic:specification=specification+self.text(e['spec_text'])
+        if self.semantic and self.input_evidence == 'geometry_appearance_language':
+            specification=specification+self.text(e['spec_text'])
         tokens = self.body((torch.cat([c,h])+specification).unsqueeze(0)).squeeze(0)
         c,h = tokens[:n],tokens[n:]
         context = tokens.mean(0,keepdim=True)
@@ -62,7 +68,8 @@ class CompactDecision:
     def __init__(self, checkpoint, device='cuda:0', batch_candidates=16, shortlist=32, memory_feature_view='all', shortlist_policy='geometry'):
         from pathlib import Path
         data = torch.load(checkpoint,map_location=device,weights_only=True)
-        self.model = CompactCore(data['architecture'],semantic=data.get('semantic',False)).to(device)
+        self.model = CompactCore(data['architecture'],semantic=data.get('semantic',False),
+            input_evidence=data.get('input_evidence','geometry_appearance_language')).to(device)
         self.model.load_state_dict(data['state_dict']); self.model.eval()
         self.checkpoint = str(Path(checkpoint).resolve()); self.device = device
         self.batch_candidates,self.shortlist = batch_candidates,shortlist
@@ -151,6 +158,9 @@ class CompactDecision:
             class_policy='OVMOT full supplied-vocabulary learned softmax; no GT-based class or box filtering')
         if self.memory_feature_view!='all':metadata['memory_feature_view']=self.memory_feature_view
         if self.shortlist_policy!='geometry':metadata['shortlist_policy']=self.shortlist_policy
+        if self.model.input_evidence!='geometry_appearance_language':
+            metadata['input_evidence']=self.model.input_evidence
+            metadata['evidence_scope']='Shared native frontend; class-vocabulary text remains output-head-only; runtime specification conditioning disabled'
         return results,life,metadata
 
 

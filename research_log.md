@@ -2342,3 +2342,11 @@ fullRMO现有5策略×2完整800已全部exit0/验证，CPUlearned参考的全�
 真实21帧packed原生FP32存储/空拒绝帧/下一帧恢复精确通过，15.0MB到3.4MB；两臂实际scheduler及实际single800自然gap后验功能检查通过。自然MOT20单owner2126039等待GPU7原native retention释放，未提前占卡；登记低可见度29.76s不等于真实候选缺失。缓存上界含3GiB新源及32MiB回归余量25725928890<25GiB；原默认JSON不变。
 
 Full single800 pretrained/500/teacher600/native600实际完成HOTA16.119/0/6.847/2.506%，FN16/18/14/17（GT18），训练不改善该scope；pretrained只有2TP，不能只看较高HOTA宣称成功。Full multi800/DT1203、原生retention、localization和pairedE2E仍按原owner继续。
+
+研究计划（任务14.2输入证据控制）：冻结策略干预不等价输入消融。新增geometry_motion（屏蔽rawROI投影与spec条件）、geometry_appearance（保留rawROI，屏蔽spec条件）、geometry_appearance_language（原完整输入）三组同Set结构/1146511resident参数。所有组几何/运动保持，类别词汇只在输出分类头保留，原DLM感知自带语义不消除，不能称全系统无语言。复用已完成all_three1200完整组，仅新增两组相同MOT300+seed0语义初始化/1200步/逐项相同样本ID/原GT与native softteacher/同536组既有actor历史；teacher视觉知识本身保持，非从零纯单模态监督。共享原生候选，完整DT1203/rawTAO40/单多RMO800各3组，binary-final同存储，无GT回填/新增feature/GPU/E2E速度声明。Full真实image原生JEV已有独立完整控制继续，但架构/预算不同，不能将其与Compact差异解释为JEV唯一收益。
+
+输入数值回归通过：三个任务真实pack的同初始权重默认全输出与原e9111b5精确一致；屏蔽spec后更换实际spec不影响任何输出；屏蔽外观后置换真实外观不影响输出、视觉分支无梯度；仍用外观组match真实改变。两模式各2步实际训练保存/三任务reload差0，随后真实21帧scheduler/packed原生源/266候选/真实拒绝空帧和官方scorer均通过，仅功能回归不当精度结果。正式owner等hybrid CPU owner退出再串行，不挤占现有Full/native/GPU队列。
+
+Full原生性能诊断用已完成四组single800实际日志，不新增模型调用：全部3200请求fork_mode=batched。pretrained/500/teacher600/native600平均prefix1347/3987/8235/5474tokens、branches7.93/14.20/24.38/17.72，native forward总142.531/344.670/787.309/481.178s，render28.226/89.389/247.319/135.818s。较长内生历史/更多分支与更高耗时并存，不归因未控制的并发差异；日志没有全程sequentialfallback证据。原引擎已有prefix共享与末token logits，不盲改原fork阈值/算子/上下文或删候选。
+
+Input-evidence正式单一阻塞owner2137548/session36336已启动，实际等待hybrid owner2034367/start42762109；日志/tmp/groundjev_input_evidence1200_v1.log。未启动额外GPU/model服务、不重复既有Full/native实验；预计正式CPU工作仅在原hybrid成功退出后开始。
