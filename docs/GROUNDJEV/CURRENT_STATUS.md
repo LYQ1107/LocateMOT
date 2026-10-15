@@ -19,8 +19,9 @@ result nor proof that the new performance goal has been reached.
 
 Next bounded model experiment: refresh currentnative600 actual own-history
 rollout on the same48fit frames/all1184original DLM candidates. CPU replay/
-scope/budget checks pass. A single owner waits for the originalGPU4Full1203
-three-arm cohort to finish successfully before usingGPU4. No additional DLM
+scope/budget checks pass. The originalGPU4Full1203three-arm cohort exited0;
+the registered single owner has automatically started this rollout onGPU4.
+No additional DLM
 calls or automatic further training; export cap512MiB keeps the registered
 combined upper26,262,799,802bytes below25GiB. Review actual existing-identity
 and conflicting-anchor support before changing Q3 supervision. Plan:
@@ -42,6 +43,7 @@ HOTA/IDF1 below are percentages, IDSW/FP/FN counts.
 |Shared Compact, broad native history|26.316|30.633|165|579|1962|
 |Full MOT500, V3 native heads|7.848|5.056|3530|6387|765|
 |Full MOT500 + own-history600, V3 native heads|8.703|5.826|3631|7516|416|
+|Full MOT500 + teacher-history600, V3 native heads|7.577|5.015|3839|7683|384|
 
 Shared Compact has1146511learnable resident parameters plus original frozen
 OneJev CPU token lookup254279680parameters/508559360nominal bytes and external
@@ -53,10 +55,12 @@ Fresh pretrained Full V3 uses a different actual source: HOTA2.389 versus its
 own matched Simple8.257. Actual unresumed native pipeline FPS.118560, under
 concurrent workloads, excluding preloaded service/model initialization. Its
 historical final-checkpoint timer definition is preserved. Full native600 and
-MOT500 controls above each have all1203decoded frames, exact13664V1candidates,
+MOT500 and teacher600 controls above each have all1203decoded frames, exact13664V1candidates,
 all27parser-rejected frames, unchanged official metrics and final memory
-validated. Teacher600full1203 remains pending; the three-arm cohort is not
-complete. These are replay measurements with no E2E FPS claim. Receipt:
+validated. All three registered units are complete, without failed/pending
+arms. Teacher600 lowers HOTA versus MOT500 despite fewer FN and has more
+ID switches/FP; neither600branch establishes stable multi-task improvement.
+These are replay measurements with no E2E FPS claim. Receipt:
 `training/onejev_full1203_controls_v2_wait_fix/completed_units_validated_summary.json`.
 
 Same-source posthoc diagnostics align4341/4586GT observations (94.658%) to
@@ -67,14 +71,19 @@ times; global matching loses222/145 and rescues182/116, giving the same214/149
 actual assignments. Low native identity ranking and global competition both
 contribute; different endogenous event sets prevent a strict causal comparison.
 
+Completed teacher600 has1588correct options among1833existing-anchor events
+(86.634% coverage), but82correct final assignments (4.474%). Raw argmax is
+correct77times; matching loses69and rescues74, yielding82. The same candidate
+GT recall is94.658%; proposal misses alone do not explain this weak ranking.
+
 Existing-memory UPDATE breakdown, excluding NEW initialization:
 
-|Birth-anchor diagnostic|MOT500|Own-history600|
-|---|---:|---:|
-|Matched GT, known consistent anchor|192|136|
-|Matched GT, known conflicting anchor|594|465|
-|Matched GT, unknown birth anchor|2545|2984|
-|Unmatched candidate, not universal negative truth|5812|6648|
+|Birth-anchor diagnostic|MOT500|Own-history600|Teacher-history600|
+|---|---:|---:|---:|
+|Matched GT, known consistent anchor|192|136|56|
+|Matched GT, known conflicting anchor|594|465|152|
+|Matched GT, unknown birth anchor|2545|2984|2962|
+|Unmatched candidate, not universal negative truth|5812|6648|4977|
 
 Known conflicting writes show real memory contamination in each run. Unknown
 birth anchors and unmatched/ignore-region candidates are kept separate; they
@@ -402,7 +411,7 @@ Receipt: `ground_adaptation/localization200_control_gpu5_v1/validated_summary.js
 
 |Queue/device|Remaining actual work|
 |---|---|
-|GPU4|TrainedFull native600/MOT500/teacher600DT1203; `training/onejev_full1203_controls_v2_wait_fix`|
+|GPU4|Full native600/MOT500/teacher600DT1203 complete and validated; currentnative60048fit-frame own-history refresh running; `training_data/native600_fit_rollout_refresh_v1`|
 |GPU5|Paired E2E and localization200/96frames/18controls complete; fresh naturalMOT20 running, then8CPUcontrols; `gpu5_followups_v1`|
 |GPU6|AdaptedGround200nativefull9 remains unchanged|
 |GPU7|OriginalGroundnativefull9 remains unchanged|

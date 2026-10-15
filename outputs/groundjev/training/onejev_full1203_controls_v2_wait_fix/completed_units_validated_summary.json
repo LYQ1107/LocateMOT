@@ -1,5 +1,5 @@
 {
-  "status": "COMPLETED_FULL_MOT_UNITS_OFFICIAL_ARTIFACTS_VALIDATED",
+  "status": "ALL_THREE_FULL_MOT_CONTROLS_OFFICIAL_ARTIFACTS_VALIDATED",
   "results": {
     "native_mot_full1203": {
       "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_full1203_controls_v2_wait_fix/native_mot_full1203",
@@ -19,25 +19,6 @@
       "checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_unified600_native_v2/ckpt-step600",
       "correct_option_coverage": 0.9502060439560439,
       "existing_association_accuracy": 0.051167582417582416,
-      "posthoc_identity_recovery": {
-        "counts": {
-          "candidate_gap_return_events": 194,
-          "gap_le1s_eligible": 190,
-          "gap_le1s_same_correct_birth_anchor_ID": 0,
-          "GT_gap_returns_with_matched_candidate": 19,
-          "gap_1to3s_eligible": 4,
-          "gap_1to3s_same_correct_birth_anchor_ID": 0
-        },
-        "success_rates": {
-          "gap_le1s": 0.0,
-          "gap_1to3s": 0.0,
-          "gap_gt3s": null
-        },
-        "rule": "first GT-aligned candidate after at least one missing candidate observation; same previous emitted ID with matching immutable birth anchor",
-        "scope": "natural candidate/GT gaps only; no artificial occlusion, future GT correction or recovery metric replacing TrackEval"
-      },
-      "perception_excluded_replay_FPS": 0.16509922486400228,
-      "actual_end_to_end_FPS": null,
       "candidate_GT_recall_at_iou05": 0.9465765372873964,
       "mean_native_correct_identity_option_mass": 0.05414967170329663,
       "association_and_memory_counts": {
@@ -69,7 +50,26 @@
         "unmatched_candidate_not_universal_negative_truth": 6648,
         "matched_GT_known_conflicting_birth_anchor": 465,
         "matched_GT_known_consistent_birth_anchor": 136
-      }
+      },
+      "posthoc_identity_recovery": {
+        "counts": {
+          "candidate_gap_return_events": 194,
+          "gap_le1s_eligible": 190,
+          "gap_le1s_same_correct_birth_anchor_ID": 0,
+          "GT_gap_returns_with_matched_candidate": 19,
+          "gap_1to3s_eligible": 4,
+          "gap_1to3s_same_correct_birth_anchor_ID": 0
+        },
+        "success_rates": {
+          "gap_le1s": 0.0,
+          "gap_1to3s": 0.0,
+          "gap_gt3s": null
+        },
+        "rule": "first GT-aligned candidate after at least one missing candidate observation; same previous emitted ID with matching immutable birth anchor",
+        "scope": "natural candidate/GT gaps only; no artificial occlusion, future GT correction or recovery metric replacing TrackEval"
+      },
+      "perception_excluded_replay_FPS": 0.16509922486400228,
+      "actual_end_to_end_FPS": null
     },
     "before500_mot_full1203": {
       "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_full1203_controls_v2_wait_fix/before500_mot_full1203",
@@ -89,26 +89,6 @@
       "checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_own_history_v3_exact500_replay_stateful/ckpt-step500",
       "correct_option_coverage": 0.9860279441117764,
       "existing_association_accuracy": 0.053393213572854294,
-      "posthoc_identity_recovery": {
-        "counts": {
-          "candidate_gap_return_events": 194,
-          "gap_le1s_eligible": 181,
-          "gap_le1s_same_correct_birth_anchor_ID": 0,
-          "candidate_gap_returns_without_prior_emitted_identity": 9,
-          "GT_gap_returns_with_matched_candidate": 19,
-          "gap_1to3s_eligible": 4,
-          "gap_1to3s_same_correct_birth_anchor_ID": 0
-        },
-        "success_rates": {
-          "gap_le1s": 0.0,
-          "gap_1to3s": 0.0,
-          "gap_gt3s": null
-        },
-        "rule": "first GT-aligned candidate after at least one missing candidate observation; same previous emitted ID with matching immutable birth anchor",
-        "scope": "natural candidate/GT gaps only; no artificial occlusion, future GT correction or recovery metric replacing TrackEval"
-      },
-      "perception_excluded_replay_FPS": 0.16640235044752333,
-      "actual_end_to_end_FPS": null,
       "candidate_GT_recall_at_iou05": 0.9465765372873964,
       "mean_native_correct_identity_option_mass": 0.06632003892215568,
       "association_and_memory_counts": {
@@ -140,14 +120,103 @@
         "matched_GT_unknown_birth_anchor": 2545,
         "matched_GT_known_conflicting_birth_anchor": 594,
         "matched_GT_known_consistent_birth_anchor": 192
-      }
+      },
+      "posthoc_identity_recovery": {
+        "counts": {
+          "candidate_gap_return_events": 194,
+          "gap_le1s_eligible": 181,
+          "gap_le1s_same_correct_birth_anchor_ID": 0,
+          "candidate_gap_returns_without_prior_emitted_identity": 9,
+          "GT_gap_returns_with_matched_candidate": 19,
+          "gap_1to3s_eligible": 4,
+          "gap_1to3s_same_correct_birth_anchor_ID": 0
+        },
+        "success_rates": {
+          "gap_le1s": 0.0,
+          "gap_1to3s": 0.0,
+          "gap_gt3s": null
+        },
+        "rule": "first GT-aligned candidate after at least one missing candidate observation; same previous emitted ID with matching immutable birth anchor",
+        "scope": "natural candidate/GT gaps only; no artificial occlusion, future GT correction or recovery metric replacing TrackEval"
+      },
+      "perception_excluded_replay_FPS": 0.16640235044752333,
+      "actual_end_to_end_FPS": null
+    },
+    "teacher_mot_full1203": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_full1203_controls_v2_wait_fix/teacher_mot_full1203",
+      "frames": 1203,
+      "native_candidates": 13664,
+      "same_exact_native_V1_candidates": true,
+      "parser_rejected_frame_count": 27,
+      "metrics": {
+        "HOTA": 0.0757661383012695,
+        "DetA": 0.29307500533241293,
+        "AssA": 0.019595975011453885,
+        "IDF1": 0.050148746281342964,
+        "IDSW": 3839,
+        "FP": 7683,
+        "FN": 384
+      },
+      "checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_unified600_teacher_v2/ckpt-step600",
+      "correct_option_coverage": 0.8663393344244408,
+      "existing_association_accuracy": 0.0447354064375341,
+      "candidate_GT_recall_at_iou05": 0.9465765372873964,
+      "mean_native_correct_identity_option_mass": 0.046072124931805666,
+      "association_and_memory_counts": {
+        "gt_observations": 4586,
+        "candidates": 13664,
+        "gt_matched_candidates": 4341,
+        "unmatched_candidate_events": 9323,
+        "unmatched_candidates_ignored": 657,
+        "memory_initializations_unmatched_GT": 177,
+        "no_surviving_correct_anchor_events": 2508,
+        "memory_initializations_matched_GT": 21,
+        "model_correct_before_global_matching": 77,
+        "model_correct_to_wrong_after_global_matching": 69,
+        "model_wrong_to_correct_after_global_matching": 74,
+        "existing_identity_events": 1833,
+        "correct_identity_option_present": 1588,
+        "correct_existing_associations": 82,
+        "existing_identity_recreated_as_NEW": 15,
+        "correct_to_wrong_events": 77,
+        "wrong_to_correct_events": 74,
+        "memory_holds": 3540,
+        "memory_updates_identity_consistent": 56,
+        "memory_updates_wrong_identity_or_unmatched": 8091,
+        "recovery_identity_options_present": 189,
+        "recovery_global_assignment_same_ID": 6
+      },
+      "memory_UPDATE_known_anchor_breakdown": {
+        "matched_GT_known_consistent_birth_anchor": 56,
+        "matched_GT_known_conflicting_birth_anchor": 152,
+        "unmatched_candidate_not_universal_negative_truth": 4977,
+        "matched_GT_unknown_birth_anchor": 2962
+      },
+      "posthoc_identity_recovery": {
+        "counts": {
+          "candidate_gap_return_events": 194,
+          "gap_le1s_eligible": 190,
+          "gap_le1s_same_correct_birth_anchor_ID": 1,
+          "GT_gap_returns_with_matched_candidate": 19,
+          "gap_1to3s_eligible": 4,
+          "gap_1to3s_same_correct_birth_anchor_ID": 0
+        },
+        "success_rates": {
+          "gap_le1s": 0.005263157894736842,
+          "gap_1to3s": 0.0,
+          "gap_gt3s": null
+        },
+        "rule": "first GT-aligned candidate after at least one missing candidate observation; same previous emitted ID with matching immutable birth anchor",
+        "scope": "natural candidate/GT gaps only; no artificial occlusion, future GT correction or recovery metric replacing TrackEval"
+      },
+      "perception_excluded_replay_FPS": 0.1706400398800558,
+      "actual_end_to_end_FPS": null
     }
   },
-  "pending_units": [
-    "teacher_mot_full1203"
-  ],
+  "pending_units": [],
   "failed_units": {},
-  "all_three_registered_units_complete": false,
+  "owner_terminal_status": "SAME_SEMANTIC_POLICY_THREE_ARM_CONTROLS_COMPLETE",
+  "all_three_registered_units_complete": true,
   "full_goal_complete": false,
-  "limits": "One complete legal DanceTrack0004 video, one seed, replay of the original 13664 V1 candidates/27 rejected frames; no E2E FPS or complete-dataset claim. Teacher/native checkpoints add600updates to MOT500 (1100total), not600total. Shortlist coverage and decision accuracy use each model own endogenous event set, not a strict same-event causal comparison. Pending units have no inferred scores."
+  "limits": "One complete legal DanceTrack0004 video, one seed, replay of the original 13664 V1 candidates/27 rejected frames; no E2E FPS or complete-dataset claim. Teacher/native checkpoints add600updates after the completed MOT500-stage checkpoint;600is not the complete training lineage. Shortlist coverage and decision accuracy use each model own endogenous event set, not a strict same-event causal comparison. Pending units have no inferred scores."
 }

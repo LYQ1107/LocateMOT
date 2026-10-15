@@ -38,6 +38,16 @@ assigned-ID-conditioned update supervision requires an explicit matching
 training/runtime question, not relabeling the old observation-only question.
 No additional training or model invocation is launched by this log correction.
 
+Latest execution update: the original Full1203owner has now exited0 with all
+three arms complete; registered48-frame current-actor refresh automatically
+started onGPU4. Whole-video MOT500/native600/teacher600 HOTA percentages are
+7.848/8.703/7.577 and IDF1 5.056/5.826/5.015. All original V1 proposals and
+parser-rejected frames are retained. The teacher branch does not improve this
+full video; neither branch establishes stable multi-task gains. No new SFT
+is implied by the active refresh. Full cohort official/output validation:
+`outputs/groundjev/training/onejev_full1203_controls_v2_wait_fix/`
+`completed_units_validated_summary.json`.
+
 ## Historical snapshot — 2026-10-14 (superseded)
 
 100-step official full language-model check completed400examples/1509.262s,

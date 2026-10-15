@@ -1,4 +1,4 @@
-"""Validate immutable completed Full MOT units without treating the owner as done."""
+"""Validate immutable completed Full MOT units and registered cohort completion."""
 from itertools import zip_longest
 from collections import Counter
 import json
@@ -84,13 +84,19 @@ def main():
             'perception_excluded_replay_FPS':runtime['association_replay_fps'],
             'actual_end_to_end_FPS':None}
     pending = [name for name in expected_names if name not in rows and name not in owner['failed']]
-    report = {'status':'COMPLETED_FULL_MOT_UNITS_OFFICIAL_ARTIFACTS_VALIDATED',
+    all_complete = len(rows) == 3 and not owner['failed']
+    if all_complete:
+        assert owner['status'] == 'SAME_SEMANTIC_POLICY_THREE_ARM_CONTROLS_COMPLETE'
+    report = {'status':('ALL_THREE_FULL_MOT_CONTROLS_OFFICIAL_ARTIFACTS_VALIDATED'
+            if all_complete else 'COMPLETED_FULL_MOT_UNITS_OFFICIAL_ARTIFACTS_VALIDATED'),
         'results':rows,'pending_units':pending,'failed_units':owner['failed'],
-        'all_three_registered_units_complete':len(rows)==3 and not owner['failed'],
+        'owner_terminal_status':owner['status'],
+        'all_three_registered_units_complete':all_complete,
         'full_goal_complete':False,
         'limits':'One complete legal DanceTrack0004 video, one seed, replay of the original '
             '13664 V1 candidates/27 rejected frames; no E2E FPS or complete-dataset claim. '
-            'Teacher/native checkpoints add600updates to MOT500 (1100total), not600total. '
+            'Teacher/native checkpoints add600updates after the completed MOT500-stage '
+            'checkpoint;600is not the complete training lineage. '
             'Shortlist coverage and decision accuracy use each model own endogenous event set, '
             'not a strict same-event causal comparison. Pending units have no inferred scores.'}
     (directory/'completed_units_validated_summary.json').write_text(json.dumps(report,indent=2)+'\n')
