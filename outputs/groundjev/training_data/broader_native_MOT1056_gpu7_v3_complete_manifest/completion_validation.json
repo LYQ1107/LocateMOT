@@ -7,6 +7,7 @@
   "archive_bytes": 474314908,
   "all_empty_and_rejected_frames_retained": true,
   "source_owned_services_closed_in_finally_before_actual_exit": true,
-  "group_export_last_clip_CPU_plan_still_pending": true,
-  "full_goal_complete": false
+  "group_export_last_clip_CPU_plan_still_pending": false,
+  "full_goal_complete": false,
+  "all43_group_exports_and_CPU_plans_complete": true
 }

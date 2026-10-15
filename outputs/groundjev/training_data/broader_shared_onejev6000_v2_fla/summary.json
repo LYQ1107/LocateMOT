@@ -1,0 +1,810 @@
+{
+  "status": "BROADER_SHARED24000_ROWS_PREPARED_NOT_YET_TRAINED",
+  "source_git_commit": "efb7975f1b685a458e99fa92570cf05922946823",
+  "rows_per_task": {
+    "mot": 8000,
+    "rmot": 8000,
+    "ovmot": 8000
+  },
+  "unique_source_rows_per_task": {
+    "mot": 8000,
+    "rmot": 7475,
+    "ovmot": 7298
+  },
+  "MOT_physical_frames": 1056,
+  "MOT_videos": 43,
+  "MOT_zero_candidate_frames_using_native_lifecycle_supervision": 37,
+  "RMOT_expressions": 4350,
+  "RMOT_physical_frames": 72,
+  "OVMOT_Base_classes": 175,
+  "OVMOT_unique_images": 3227,
+  "OVMOT_unique_objects": 3649,
+  "family_labels": [
+    {
+      "task_bucket": "mot",
+      "question_family": "assigned_identity_memory_update",
+      "target": "no",
+      "rows": 1000
+    },
+    {
+      "task_bucket": "mot",
+      "question_family": "assigned_identity_memory_update",
+      "target": "yes",
+      "rows": 1000
+    },
+    {
+      "task_bucket": "mot",
+      "question_family": "empty_presence",
+      "target": "yes",
+      "rows": 3
+    },
+    {
+      "task_bucket": "mot",
+      "question_family": "identity",
+      "target": "EXISTING",
+      "rows": 1000
+    },
+    {
+      "task_bucket": "mot",
+      "question_family": "identity",
+      "target": "IGNORE",
+      "rows": 999
+    },
+    {
+      "task_bucket": "mot",
+      "question_family": "identity",
+      "target": "NEW",
+      "rows": 999
+    },
+    {
+      "task_bucket": "mot",
+      "question_family": "identity",
+      "target": "NO_MATCH",
+      "rows": 999
+    },
+    {
+      "task_bucket": "mot",
+      "question_family": "lifecycle",
+      "target": "ACTIVE",
+      "rows": 250
+    },
+    {
+      "task_bucket": "mot",
+      "question_family": "lifecycle",
+      "target": "LOST",
+      "rows": 250
+    },
+    {
+      "task_bucket": "mot",
+      "question_family": "lifecycle",
+      "target": "REACTIVATE",
+      "rows": 250
+    },
+    {
+      "task_bucket": "mot",
+      "question_family": "lifecycle",
+      "target": "TERMINATE",
+      "rows": 250
+    },
+    {
+      "task_bucket": "mot",
+      "question_family": "memory_update",
+      "target": "no",
+      "rows": 250
+    },
+    {
+      "task_bucket": "mot",
+      "question_family": "memory_update",
+      "target": "yes",
+      "rows": 250
+    },
+    {
+      "task_bucket": "mot",
+      "question_family": "reliability",
+      "target": "0",
+      "rows": 125
+    },
+    {
+      "task_bucket": "mot",
+      "question_family": "reliability",
+      "target": "1",
+      "rows": 125
+    },
+    {
+      "task_bucket": "mot",
+      "question_family": "reliability",
+      "target": "2",
+      "rows": 125
+    },
+    {
+      "task_bucket": "mot",
+      "question_family": "reliability",
+      "target": "3",
+      "rows": 125
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_group",
+      "target": "0",
+      "rows": 460
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_group",
+      "target": "1",
+      "rows": 529
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_group",
+      "target": "2",
+      "rows": 276
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_group",
+      "target": "3",
+      "rows": 322
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_group",
+      "target": "4",
+      "rows": 391
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_group",
+      "target": "5",
+      "rows": 368
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_group",
+      "target": "6",
+      "rows": 437
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_group",
+      "target": "7",
+      "rows": 598
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_group",
+      "target": "8",
+      "rows": 487
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_group",
+      "target": "9",
+      "rows": 132
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "0",
+      "rows": 91
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "1",
+      "rows": 23
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "10",
+      "rows": 46
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "101",
+      "rows": 46
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "102",
+      "rows": 69
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "103",
+      "rows": 46
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "104",
+      "rows": 23
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "105",
+      "rows": 22
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "108",
+      "rows": 22
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "109",
+      "rows": 69
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "11",
+      "rows": 23
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "111",
+      "rows": 23
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "112",
+      "rows": 69
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "113",
+      "rows": 68
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "116",
+      "rows": 23
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "117",
+      "rows": 46
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "118",
+      "rows": 46
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "12",
+      "rows": 46
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "120",
+      "rows": 23
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "121",
+      "rows": 23
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "124",
+      "rows": 23
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "125",
+      "rows": 23
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "126",
+      "rows": 46
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "14",
+      "rows": 23
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "15",
+      "rows": 23
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "17",
+      "rows": 46
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "18",
+      "rows": 23
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "2",
+      "rows": 46
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "21",
+      "rows": 22
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "24",
+      "rows": 69
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "25",
+      "rows": 23
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "26",
+      "rows": 45
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "27",
+      "rows": 69
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "28",
+      "rows": 23
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "29",
+      "rows": 91
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "3",
+      "rows": 23
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "30",
+      "rows": 46
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "31",
+      "rows": 115
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "33",
+      "rows": 69
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "34",
+      "rows": 23
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "35",
+      "rows": 68
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "36",
+      "rows": 23
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "37",
+      "rows": 68
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "38",
+      "rows": 23
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "4",
+      "rows": 23
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "40",
+      "rows": 23
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "42",
+      "rows": 46
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "43",
+      "rows": 22
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "44",
+      "rows": 69
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "45",
+      "rows": 23
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "46",
+      "rows": 23
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "47",
+      "rows": 22
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "49",
+      "rows": 68
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "5",
+      "rows": 23
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "50",
+      "rows": 23
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "51",
+      "rows": 46
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "52",
+      "rows": 45
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "54",
+      "rows": 46
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "56",
+      "rows": 69
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "57",
+      "rows": 46
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "58",
+      "rows": 23
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "59",
+      "rows": 46
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "60",
+      "rows": 46
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "61",
+      "rows": 23
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "62",
+      "rows": 46
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "63",
+      "rows": 45
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "65",
+      "rows": 46
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "66",
+      "rows": 46
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "67",
+      "rows": 46
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "7",
+      "rows": 23
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "70",
+      "rows": 46
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "71",
+      "rows": 23
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "72",
+      "rows": 23
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "73",
+      "rows": 23
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "74",
+      "rows": 23
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "75",
+      "rows": 23
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "76",
+      "rows": 91
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "77",
+      "rows": 22
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "78",
+      "rows": 68
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "79",
+      "rows": 23
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "8",
+      "rows": 91
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "80",
+      "rows": 45
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "81",
+      "rows": 23
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "82",
+      "rows": 23
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "83",
+      "rows": 45
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "84",
+      "rows": 23
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "85",
+      "rows": 68
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "86",
+      "rows": 22
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "87",
+      "rows": 23
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "88",
+      "rows": 46
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "89",
+      "rows": 23
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "91",
+      "rows": 23
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "92",
+      "rows": 45
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "93",
+      "rows": 46
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "94",
+      "rows": 23
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "96",
+      "rows": 46
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "97",
+      "rows": 22
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "98",
+      "rows": 68
+    },
+    {
+      "task_bucket": "ovmot",
+      "question_family": "category_leaf",
+      "target": "99",
+      "rows": 23
+    },
+    {
+      "task_bucket": "rmot",
+      "question_family": "empty_query_presence",
+      "target": "no",
+      "rows": 247
+    },
+    {
+      "task_bucket": "rmot",
+      "question_family": "empty_query_presence",
+      "target": "yes",
+      "rows": 1030
+    },
+    {
+      "task_bucket": "rmot",
+      "question_family": "query_membership",
+      "target": "no",
+      "rows": 3753
+    },
+    {
+      "task_bucket": "rmot",
+      "question_family": "query_membership",
+      "target": "yes",
+      "rows": 2970
+    }
+  ],
+  "compressed_training_bytes": 9964895,
+  "actual_new_optimizer_updates": 0,
+  "train": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_shared_onejev6000_v2_fla/train.jsonl.gz",
+  "config": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_shared_onejev6000_v2_fla/training_config.json",
+  "all_source_corpora_preserved": true,
+  "full_goal_complete": false
+}
