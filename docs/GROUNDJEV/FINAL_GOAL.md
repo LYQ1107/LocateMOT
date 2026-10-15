@@ -40,3 +40,5 @@ checkpoint on those videos is a training-overlap reference, not an unbiased
 held-out baseline. Preserve existing forbidden evaluation-label boundaries;
 use compatible reference training/splits for formal comparisons. No current
 model has established the final performance target.
+
+Same-proposal CPU ByteTrack association now measures16.473HOTA/13.903IDF1 on the single registered DanceTrack0004 video. All input scores are explicit constant1; official detector confidence is unavailable, the low-score branch is empty, and default1s lost-buffer/Kalman output boxes differ from GroundJEV. This is a local association diagnostic, not a substitute for the published full-pipeline ordinary-model reference or a new easier success threshold. Compact exceeding this one control does not achieve the three-task ordinary-model-level goal.

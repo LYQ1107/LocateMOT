@@ -1,0 +1,20 @@
+{
+  "status": "OFFICIAL_CPU_BYTETRACK_ACTUAL_NATIVE21_AND_EMPTY_FRAME_PASSED",
+  "versions": {
+    "numpy": "1.23.5",
+    "scipy": "1.10.1",
+    "lap": "0.5.12",
+    "torch": "2.10.0+cu128",
+    "tracker_source_commit": "d1bf0191adff59bc8fcfeaa0b33d3d1642552a99",
+    "upstream_tracker_source_modified": false,
+    "CUDA_initialized": false,
+    "loader": "tracker-only upstream package namespace; detector root initialization unused"
+  },
+  "frames": 21,
+  "candidates": 266,
+  "real_rejected_frame21_processed": true,
+  "all_input_boxes_and_unit_scores_unchanged": true,
+  "CUDA_initialized": false,
+  "new_feature_archive_bytes": 0,
+  "new_tracking_metrics_claimed": false
+}

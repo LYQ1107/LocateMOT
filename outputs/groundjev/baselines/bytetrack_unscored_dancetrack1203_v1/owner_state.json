@@ -1,0 +1,33 @@
+{
+  "status": "OFFICIAL_UNSCORED_BYTETRACK_COMPLETE_FULL_VIDEO_VALIDATED",
+  "owner_pid": 2490353,
+  "physical_gpus": [],
+  "upstream_commit": "d1bf0191adff59bc8fcfeaa0b33d3d1642552a99",
+  "implementation_git_commit": "420316c4ce336263d1073398f9fffab5db60d42b",
+  "plan": "configs/groundjev/bytetrack_unscored_mot_reference_v1.json",
+  "versions": {
+    "numpy": "1.23.5",
+    "scipy": "1.10.1",
+    "lap": "0.5.12",
+    "torch": "2.10.0+cu128",
+    "tracker_source_commit": "d1bf0191adff59bc8fcfeaa0b33d3d1642552a99",
+    "upstream_tracker_source_modified": false,
+    "CUDA_initialized": false,
+    "loader": "tracker-only upstream package namespace; detector root initialization unused"
+  },
+  "GT_read_by_runtime": false,
+  "full_goal_complete": false,
+  "frames": 1203,
+  "native_candidates": 13664,
+  "metrics": {
+    "HOTA": 0.16473417369663024,
+    "DetA": 0.3214296760293695,
+    "AssA": 0.08454696316177006,
+    "IDF1": 0.1390336164442224,
+    "IDSW": 367,
+    "FP": 5234,
+    "FN": 395
+  },
+  "original_all_frames_candidates_and_rejections_retained": true,
+  "full_YOLOX_ByteTrack_published_result_reproduction": false
+}

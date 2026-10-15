@@ -1,0 +1,35 @@
+{
+  "status": "OFFICIAL_CPU_UNSCORED_BYTETRACK_FULL1203_ARTIFACTS_VALIDATED",
+  "frames": 1203,
+  "same_exact_native_candidates": 13664,
+  "same_rejected_frames": 27,
+  "predictions_match_all_frame_outputs": true,
+  "upstream_commit": "d1bf0191adff59bc8fcfeaa0b33d3d1642552a99",
+  "metrics": {
+    "HOTA": 0.16473417369663024,
+    "DetA": 0.3214296760293695,
+    "AssA": 0.08454696316177006,
+    "IDF1": 0.1390336164442224,
+    "IDSW": 367,
+    "FP": 5234,
+    "FN": 395
+  },
+  "versions": {
+    "numpy": "1.23.5",
+    "scipy": "1.10.1",
+    "lap": "0.5.12",
+    "torch": "2.10.0+cu128",
+    "tracker_source_commit": "d1bf0191adff59bc8fcfeaa0b33d3d1642552a99",
+    "upstream_tracker_source_modified": false,
+    "CUDA_initialized": false,
+    "loader": "tracker-only upstream package namespace; detector root initialization unused"
+  },
+  "actual_lost_buffer_frames": 20,
+  "constant_score": 1.0,
+  "low_score_branch_empty": true,
+  "default_Kalman_output_boxes_retained": true,
+  "CPU_only": true,
+  "new_native_feature_cache_bytes": 0,
+  "limits": "One complete legal validation0004 video; association-only same-candidate control, not the full YOLOX+ByteTrack pipeline, published score reproduction or ordinary-model parity proof.",
+  "full_goal_complete": false
+}

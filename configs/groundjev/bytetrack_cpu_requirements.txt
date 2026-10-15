@@ -1,0 +1,12 @@
+# Isolated target: /data2/user/reference_envs/bytetrack/site-packages
+# Install cython-bbox after these build dependencies, with --no-build-isolation.
+# Torch is imported read-only from the existing OneJev environment; no weights
+# are loaded, and CUDA_VISIBLE_DEVICES must remain empty for this reference.
+numpy==1.23.5
+scipy==1.10.1
+lap==0.5.12
+opencv-python-headless==4.10.0.84
+Cython==0.29.37
+setuptools==80.9.0
+wheel==0.45.1
+cython-bbox==0.1.5

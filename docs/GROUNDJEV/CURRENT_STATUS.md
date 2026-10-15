@@ -77,6 +77,7 @@ HOTA/IDF1 below are percentages, IDSW/FP/FN counts.
 |Method|HOTA|IDF1|IDSW|FP|FN|
 |---|---:|---:|---:|---:|---:|
 |Simple|8.530|3.956|746|9334|256|
+|Official ByteTrack association, explicit constant-score inputs|16.473|13.903|367|5234|395|
 |Distilled Compact300|20.157|17.140|588|2129|951|
 |Matched MLP300|11.197|15.118|161|549|3556|
 |Same Set architecture, GT-only300|5.977|3.406|1322|5954|1796|
@@ -91,6 +92,21 @@ OneJev CPU token lookup254279680parameters/508559360nominal bytes and external
 Ground perception. It is not a replacement claim for the0.8B decoder. The
 shared stage has a larger/different training budget than the matched300arms.
 Lower IDSW alone does not establish improvement when FN rises.
+
+ByteTrack uses untouched official tracker code
+[`d1bf019`](https://github.com/FoundationVision/ByteTrack/tree/d1bf0191adff59bc8fcfeaa0b33d3d1642552a99),
+CPU-only with no weights/CUDA. All13664native boxes enter with explicit
+constant1because DLM scores are absent; the low-score branch is empty.
+Official CLI defaults .6track threshold/30buffer/.9match threshold are fixed,
+giving20lost frames at20Hz (1s), versus GroundJEV3s. Native Kalman output
+boxes and all returned active tracks remain, with no extra area/aspect filter.
+All1203frames/27rejects and the exact unchanged input geometry are validated,
+and MOT prediction text agrees with every saved frame output. This is a
+same-proposal association control, not the full YOLOX+ByteTrack pipeline,
+published-score reproduction, matched training budget or proof of unique JEV
+benefit/parity. Compact has fewer FP but more FN; Fullnative600 is weaker
+than this conventional association reference. Receipt:
+`baselines/bytetrack_unscored_dancetrack1203_v1/validated_summary.json`.
 
 Fresh pretrained Full V3 uses a different actual source: HOTA2.389 versus its
 own matched Simple8.257. Actual unresumed native pipeline FPS.118560, under

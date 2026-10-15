@@ -1,0 +1,29 @@
+{
+  "name": "Official ByteTrack association on identical unscored native DLM proposals",
+  "upstream": "https://github.com/FoundationVision/ByteTrack",
+  "upstream_commit": "d1bf0191adff59bc8fcfeaa0b33d3d1642552a99",
+  "source": "external/ByteTrack-reference",
+  "reference_packages": "/data2/user/reference_envs/bytetrack/site-packages",
+  "read_only_torch_packages": "/data2/user/LocateMOT_GroundJEV/.venv-onejev-py310/lib/python3.10/site-packages",
+  "manifest": "outputs/groundjev/pilot_data/dancetrack.json",
+  "candidates": "outputs/groundjev/compact/dancetrack0004_native300_v2_empty_roi_fixed/compact_distilled/frame_decisions.jsonl",
+  "frames": 1203,
+  "native_candidates": 13664,
+  "parser_rejected_frames": 27,
+  "tracker_arguments": {
+    "track_thresh": 0.6,
+    "track_buffer": 30,
+    "match_thresh": 0.9,
+    "mot20": false
+  },
+  "input_score_policy": "All original unscored proposals enter with explicit constant1, no learned/fabricated detector-confidence claim; low-score branch has no inputs.",
+  "input_boxes_rescaled_or_filtered": false,
+  "output_policy": "All active tracks returned by unmodified upstream tracker API; no additional area/aspect/score postfilter.",
+  "output_boxes": "native ByteTrack Kalman-filtered estimates; not forced equal to detection boxes",
+  "lost_buffer": "Official frame_rate/30*track_buffer convention,1s with these defaults; differs from GroundJEV3s.",
+  "runtime_GT_read": false,
+  "threshold_tuning_or_validation_selection": false,
+  "physical_gpus": [],
+  "scope": "One complete legal validation0004 video; association-only same-candidate control, not the full YOLOX+ByteTrack pipeline, published score reproduction or ordinary-model parity proof.",
+  "full_goal_complete": false
+}
