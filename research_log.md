@@ -2316,3 +2316,21 @@ localization CPU预检v1失败：比较最终Ground200 checkpoint与最初GPU7�
 Full三分支12同策略短测已终端验证：before500/teacher600/native600 MOT HOTA30.868/30.601/32.236、单RMO全0、多RMO0/9.945/11.214、Base4 TETA11.981/52.181/47.682。native多RMO IDF10.256/IDSW1/FP6/FN27，Base4ClsA100只涵盖person/baby单一Basecanonical类，不泛化Novel。native历史效果混合、不晋升模型。Full1203 freshv2 owner2049900/session70182实际进入native_mot_full1203_INFERENCE，原v1错误/无模型执行事实保留。
 
 localization200实际CPU预检v2通过112行图像bytes/prompt/targets/nativealign及与完成checkpoint全部200draw完全相同，72图/56pairs、884nativeproposals/628alignedregions/24支持身份pairs；只定位两个身份coeff0，原图像标签和native核不变。新owner2052936/session76692已等待GPU6 native200 full9真实clients+服务组释放，不中止其原测评；随后200步训练+导出+原始/只定位/跟踪视觉三前端及localization repeat共96帧，再与pretrainedOne/native600组合18短测，明确非联合梯度训练，不新增featurefiles。
+
+真实完整RMO初次完成1600帧：single800 Compact HOTA6.0247/IDF2.8902/FP323/FN13，samecandidateSimple4.9658/1.2587/FP1402/FN8；multi800Compact19.8019/21.0082/IDSW165/FP619/FN1054。fresh E2E .678005/.882942含真实DLM+ROI+state/archive/video，不能与cachedSimple或旧不同视频Full测速算加速比。single仅18GT/782空目标帧，不能只报宏指标；官方empty_target_frame_predictions是检测条数，新增posthoc另算空帧告警率。
+
+训练监督审计假设：现prepare_rmot_native72 update_target仅quality>=.7且目标不是NO_MATCH，没有检查实际Hungarian所选身份是否与该候选一致。完整RMO后验中大量memory_updates_wrong_identity_or_unmatched不等同普遍错误真值，但提示此代理目标可能教会错误写入。先只在原72合法fit帧审计，按原GT对齐和不可修改birth-anchor归属复算原142native组标签；不改原包/模型/评测，候选无实际写入时不臆造条件标签。之后自身历史训练应使用当前权重逐帧状态并以真实所选身份监督更新，保留待验证假设。
+
+训练更新标签审计结论修正：原72fit/165候选、128非空primary/counter组的原proxy更新标签全部精确复现；28个正标签中16个已知一致、12个出生GT归属未知，0个正标签同时存在两个已知冲突身份。不能把未知锚点判成错误；v1把未知proposed_target置0的诊断建议无效、从未用于训练，v2/v3改为None/mask，保留解释限制。已知跨两个标注身份写入仅1例，原标签已是0，说明不能据此宣称正标签导致全视频失败。优先补当前权重逐帧actor状态训练/硬错误覆盖，不改未知样本为负、不改原包/权重/评测。
+
+完整multi800的Simple基线在原GPU5队列中排在慢Full对照之后；为及时完成必要固定候选比较，独立CPU目录按原800/2208候选/19拒绝帧/Simple/JSON每帧原参数执行，不中断原GPU5 owner或已有推理、不新建features。原owner若日后重复生成其计划基线，保留两份并明确是同输入重复、不是新seed或额外独立样本，不做FPS加速比。
+
+任务范围澄清：任务书16要求teacher-forcing后增加自身预测历史且逐帧状态真实影响未来；现有One100实际rollout→500SFT，以及Compactjoint1200实际72帧rollout→native1200，已提供离线迭代的自身状态训练证据，不能称为每个梯度更新都重新采样的on-policy训练。进一步逐梯度当前权重rollout是改进方向，不擅自把它增设为用户原任务的额外完成门槛；保留离线历史、模型版本和无GT修正限制的明确表述。
+
+完整800输出核验通过：native档案与全部1600输出geometry/labels/scores/order/ROI2560/时钟一致，1412/2208候选、36/19解析拒绝帧、197218901总档案bytes<2GiB。真实完整wall1179.932/906.062s、FPS.678005/.882942，init5.232/5.362s及服务预加载除外，含最终状态存盘。single空帧200/782告警=25.575%（318检测），multi143/247=57.895%（185检测）；别混淆检测数量与帧告警率。核心GPU allocator14970368/14855168bytes、RSS1.467/1.478GB不含外部DLM/ROI或整pipelineVRAM；不与cachedSimple或其他视频Full算速比。新CPU multiSimple owner2079614/session84279不改变老GPU5队列。
+
+multi800早期Simple CPU控制exit0并验证全部800帧/2208候选/19拒绝：HOTA31.8769/IDF37.6852/IDSW99/FP1076/FN980，vs共享Compact19.8019/21.0082/165/619/1054。身份关联退化不能被较少FP掩盖，不晋升。为回答语言筛选与学习关联的贡献，将现有5个冻结策略原样扩展到两段full800，另跑CPU学习参考、同语义权重/输入/32选项，全部binary-final存储、不测E2E，不读GT改状态、不新建features、不增加GPU。独立CPU4线程并行，不修改原GPU5Full队列或原25个范围协议。
+
+文档整理：CURRENT_STATUS改为当前证据快照，集中完整MOT/RMO/TAO表、真实FPS/资源口径、训练/监督限制和GPU/CPU待完成清单；原逐次追加全文原样保存STATUS_HISTORY_20261015.md及Git历史，未删除失败/旧结果。
+
+fullRMO现有5策略×2完整800已全部exit0/验证，CPUlearned参考的全部官方accuracy与freshGPU5精确一致。singleHOTA6.025/7.766/5.538/6.009/6.636；multiHOTA19.802/32.813/16.622/22.035/19.558，IDF21.008/41.432/14.009/23.803/21.064，IDSW165/79/105/119/157（注册顺序）。固定IoU+同冻结语义函数优于当前学习关联，nativeappearancecos反而恶化纯IoU。此对照否定本场景学习关联优势，不以MOT正结果掩盖；非最优重训baseline/唯一JEV证明，保留语义状态内生差异与actionprior差异。全部800/36或19拒绝/相同1412或2208候选，binary-final同存储、不测E2E，不改模型默认。

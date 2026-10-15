@@ -576,3 +576,23 @@ mot_exposure_controls_v1.json. No full goal completion or model promotion.
   Then train/export +96native frontend frames +18same-candidate Full short
   factorial controls, including original/visual-only/One-only/composed
   tracking-aware cells. No joint-gradient, pending accuracy or cache claims.
+
+## 2026-10-15 — Full800 native Compact and update-label audit
+
+- full_rmot_shared600_v1: both fresh800Compact units validated, native
+  single HOTA6.025/IDF1 2.890/FPS.678005, multi19.802/21.008/.882942.
+  Single samecandidateSimple4.966/1.259, replay only; Full controls continue.
+  Samevideo expressions18/2112GT,36/19rejections and197218901archivebytes;
+  no realtime, full-dataset, matchedFullspeed or per-video totalVRAM claim.
+- multi800_simple_cpu_v1: early CPU baseline with unchanged800/raw2208
+  source/JSON1 protocol, noextraGPU/newfeaturefile or interruption toFull.
+  Later same-source scheduled duplicate cannot count as another seed.
+- causal_update_supervision_fit72_v3: originallabels reproduced,0positive
+  known-identity conflicts,12unknown-birth positives not proven wrong.
+  One real known-conflict write already has target0. No label/weight repair
+  applied; initial unknown-as-negative proposal rejected and retained as
+  a hypothesis failure. Offline iterative own-state training is explicit.
+
+Early multi800Simple completed: HOTA31.877/IDF1 37.685/IDSW99 vssharedCompact19.802/21.008/165, lowerFPbutworseidentity. full_rmot_affinity800_v1 nowruns existing5frozenpolicies onboth800expressions withsame semantics/inputs/newCPUreferences; owner2084981/session72414, noGPU/newfeatures or changes tooriginalregisteredstudies.
+
+full_rmot_affinity800_v1 complete: all10full800controls validated, bothCPUlearned reference accuracies exact vsfreshGPU5. MultiIoU+same semantic functions HOTA32.813/IDF141.432/IDSW79 beatslearned19.802/21.008/165. All five policies retained, no modelpromotion or uniqueJEV claim; this frozen intervention is not optimal retraining.

@@ -1,0 +1,230 @@
+{
+  "status": "BOTH_FULL800_NATIVE_COMPACT_RMOT_OUTPUTS_AND_TIMING_VALIDATED",
+  "physical_GPU": 5,
+  "results": {
+    "single800": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_runs/full_rmot_shared600_v1/single800_shared_compact_fresh",
+      "frames": 800,
+      "native_candidates": 1412,
+      "native_parser_rejected_frames": 36,
+      "strict_wire_invalid_frames": 698,
+      "strict_wire_diagnostic_not_reclassified_or_discarded": true,
+      "metrics": {
+        "HOTA": 0.06024700178718496,
+        "DetA": 0.01563715802110191,
+        "AssA": 0.2322529259028115,
+        "IDF1": 0.028901734104046242,
+        "IDSW": 0,
+        "FP": 323,
+        "FN": 13
+      },
+      "query_GT_boxes": 18,
+      "posthoc_proposal_coverage": {
+        "covered": 10,
+        "GT_boxes": 18,
+        "recall": 0.5555555555555556,
+        "scope": "evaluation-only target coverage; not HOTA; never used to correct runtime state"
+      },
+      "empty_target_frames": 782,
+      "predicted_detections_on_empty_frames": 318,
+      "empty_frames_with_any_prediction": 200,
+      "empty_frame_alarm_rate": 0.2557544757033248,
+      "actual_unresumed_pipeline_FPS": 0.6780050745677036,
+      "pipeline_wall_seconds": 1179.9321716140257,
+      "model_initialization_seconds_excluded": 5.23202317696996,
+      "timing_scope": "all image reads, native requests including service queueing, association, memory persistence, prediction/log writes, drawing, video encoding and encoder completion; preloaded remote DLM server startup excluded",
+      "core_GPU_Torch_allocator_peak_bytes": 14970368,
+      "core_process_RSS_peak_bytes": 1467027456,
+      "frozen_CPU_One_text_lookup": {
+        "shape": [
+          248320,
+          1024
+        ],
+        "dtype": "torch.bfloat16",
+        "parameters": 254279680,
+        "nominal_tensor_bytes": 508559360,
+        "device": "cpu",
+        "scope": "frozen originalOneJev lookup table, not decoder inference; nominal bytes are not resident RSS"
+      },
+      "core_memory_does_not_include_external_DLM_and_ROI_services": true,
+      "native_archive_bytes": 77398666,
+      "all_frames_candidates_geometry_labels_scores_order_and_video_validated": true,
+      "query_membership_matched_physical_GT_only": {
+        "counts": {
+          "TN": 134,
+          "FP": 107,
+          "FN": 5,
+          "TP": 5
+        },
+        "precision": 0.044642857142857144,
+        "recall": 0.5,
+        "head_was_present": true,
+        "threshold": 0.5,
+        "legacy_missing_head_not_interpreted_as_negative_predictions": true
+      },
+      "physical_birth_anchor_recovery_posthoc": {
+        "counts": {
+          "candidate_gap_return_events": 108,
+          "gap_le1s_eligible": 84,
+          "gap_le1s_same_correct_birth_anchor_ID": 16,
+          "gap_1to3s_eligible": 21,
+          "gap_1to3s_same_correct_birth_anchor_ID": 2,
+          "candidate_gap_returns_without_prior_emitted_identity": 1,
+          "gap_gt3s_eligible": 2,
+          "gap_gt3s_same_correct_birth_anchor_ID": 0
+        },
+        "success_rates": {
+          "gap_le1s": 0.19047619047619047,
+          "gap_1to3s": 0.09523809523809523,
+          "gap_gt3s": 0.0
+        },
+        "rule": "first GT-aligned candidate after at least one missing candidate observation; same previous emitted ID with matching immutable birth anchor",
+        "scope": "natural candidate/GT gaps only; no artificial occlusion, future GT correction or recovery metric replacing TrackEval"
+      },
+      "physical_memory_update_counts": {
+        "memory_initializations_unmatched_GT": 101,
+        "memory_updates_wrong_identity_or_unmatched": 717,
+        "memory_holds": 7,
+        "memory_initializations_matched_GT": 28,
+        "memory_updates_identity_consistent": 29
+      },
+      "native_invocation_git_commit": "e3ed72b087c7a618c08b40098ce1e600d8c3b2ff",
+      "video": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_runs/full_rmot_shared600_v1/single800_shared_compact_fresh/tracks.mp4"
+    },
+    "multi800": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_runs/full_rmot_shared600_v1/multi800_shared_compact_fresh",
+      "frames": 800,
+      "native_candidates": 2208,
+      "native_parser_rejected_frames": 19,
+      "strict_wire_invalid_frames": 519,
+      "strict_wire_diagnostic_not_reclassified_or_discarded": true,
+      "metrics": {
+        "HOTA": 0.19801918474265423,
+        "DetA": 0.32957066628797865,
+        "AssA": 0.12032554458881159,
+        "IDF1": 0.21008181578252838,
+        "IDSW": 165,
+        "FP": 619,
+        "FN": 1054
+      },
+      "query_GT_boxes": 2112,
+      "posthoc_proposal_coverage": {
+        "covered": 1133,
+        "GT_boxes": 2112,
+        "recall": 0.5364583333333334,
+        "scope": "evaluation-only target coverage; not HOTA; never used to correct runtime state"
+      },
+      "empty_target_frames": 247,
+      "predicted_detections_on_empty_frames": 185,
+      "empty_frames_with_any_prediction": 143,
+      "empty_frame_alarm_rate": 0.5789473684210527,
+      "actual_unresumed_pipeline_FPS": 0.8829422447935927,
+      "pipeline_wall_seconds": 906.0615286190296,
+      "model_initialization_seconds_excluded": 5.362353093980346,
+      "timing_scope": "all image reads, native requests including service queueing, association, memory persistence, prediction/log writes, drawing, video encoding and encoder completion; preloaded remote DLM server startup excluded",
+      "core_GPU_Torch_allocator_peak_bytes": 14855168,
+      "core_process_RSS_peak_bytes": 1478381568,
+      "frozen_CPU_One_text_lookup": {
+        "shape": [
+          248320,
+          1024
+        ],
+        "dtype": "torch.bfloat16",
+        "parameters": 254279680,
+        "nominal_tensor_bytes": 508559360,
+        "device": "cpu",
+        "scope": "frozen originalOneJev lookup table, not decoder inference; nominal bytes are not resident RSS"
+      },
+      "core_memory_does_not_include_external_DLM_and_ROI_services": true,
+      "native_archive_bytes": 119820235,
+      "all_frames_candidates_geometry_labels_scores_order_and_video_validated": true,
+      "query_membership_matched_physical_GT_only": {
+        "counts": {
+          "FP": 93,
+          "FN": 71,
+          "TP": 1061,
+          "TN": 14
+        },
+        "precision": 0.9194107452339688,
+        "recall": 0.9372791519434629,
+        "head_was_present": true,
+        "threshold": 0.5,
+        "legacy_missing_head_not_interpreted_as_negative_predictions": true
+      },
+      "physical_birth_anchor_recovery_posthoc": {
+        "counts": {
+          "candidate_gap_return_events": 255,
+          "gap_le1s_eligible": 249,
+          "gap_le1s_same_correct_birth_anchor_ID": 9,
+          "candidate_gap_returns_without_prior_emitted_identity": 1,
+          "gap_1to3s_eligible": 5,
+          "gap_1to3s_same_correct_birth_anchor_ID": 0
+        },
+        "success_rates": {
+          "gap_le1s": 0.03614457831325301,
+          "gap_1to3s": 0.0,
+          "gap_gt3s": null
+        },
+        "rule": "first GT-aligned candidate after at least one missing candidate observation; same previous emitted ID with matching immutable birth anchor",
+        "scope": "natural candidate/GT gaps only; no artificial occlusion, future GT correction or recovery metric replacing TrackEval"
+      },
+      "physical_memory_update_counts": {
+        "memory_initializations_matched_GT": 18,
+        "memory_initializations_unmatched_GT": 74,
+        "memory_updates_identity_consistent": 85,
+        "memory_updates_wrong_identity_or_unmatched": 1893,
+        "memory_holds": 4
+      },
+      "native_invocation_git_commit": "9d6087f8d666b9c6b4adf9496f79db2e33e56730",
+      "video": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_runs/full_rmot_shared600_v1/multi800_shared_compact_fresh/tracks.mp4"
+    },
+    "single800_same_candidates_simple": {
+      "run": "outputs/groundjev/multitask_runs/full_rmot_shared600_v1/single800_simple",
+      "frames": 800,
+      "metrics": {
+        "HOTA": 0.04965755853249176,
+        "DetA": 0.007393081699629365,
+        "AssA": 0.3341184081625745,
+        "IDF1": 0.012587412587412588,
+        "IDSW": 3,
+        "FP": 1402,
+        "FN": 8
+      },
+      "same_native_candidates_validated": true,
+      "pipeline_FPS": null,
+      "replay_speed_not_comparable_to_live_Compact_FPS": true,
+      "empty_target_frames": 782,
+      "empty_frames_with_any_prediction": 747,
+      "empty_frame_alarm_rate": 0.9552429667519181,
+      "predicted_detections_on_empty_frames": 1387
+    },
+    "multi800_same_candidates_simple": {
+      "run": "outputs/groundjev/multitask_runs/multi800_simple_cpu_v1/run",
+      "frames": 800,
+      "metrics": {
+        "HOTA": 0.3187691470023726,
+        "DetA": 0.30605259768579707,
+        "AssA": 0.3363421538244022,
+        "IDF1": 0.3768518518518518,
+        "IDSW": 99,
+        "FP": 1076,
+        "FN": 980
+      },
+      "same_native_candidates_validated": true,
+      "pipeline_FPS": null,
+      "replay_speed_not_comparable_to_live_Compact_FPS": true,
+      "empty_target_frames": 247,
+      "empty_frames_with_any_prediction": 243,
+      "empty_frame_alarm_rate": 0.9838056680161943,
+      "predicted_detections_on_empty_frames": 354
+    }
+  },
+  "total_new_archive_bytes": 197218901,
+  "registered_new_archive_cap_bytes": 2147483648,
+  "new_feature_files_created_by_validation": false,
+  "absolute_pipeline_speed_only": true,
+  "paired_Full_Compact_speed_or_total_service_VRAM_claim": false,
+  "limits": "Two expressions on one legal validation video, not complete RMOT dataset. Single target has only18GT/782emptyframes; empty-frame alarm rate and detection counts are distinct. Physical recovery counts concern all annotated objects, not only query targets. Unmatched/unknown birth ownership does not prove every such memory write wrong. No promotion or full-goal completion.",
+  "GT_used_for_posthoc_only": true,
+  "full_goal_complete": false
+}

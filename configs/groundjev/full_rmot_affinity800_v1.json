@@ -1,0 +1,54 @@
+{
+  "name": "Full800 RMOT frozen matched-input association and auxiliary controls",
+  "hypothesis": "On full multi800 same proposals Simple HOTA31.877 > sharedCompact19.802 despite moreSimpleFP. Compare existing5frozenpolicies with exactlysame semantic functions/nativeinputs to distinguish identity association and query filtering. No accuracy assumed.",
+  "checkpoint": "outputs/groundjev/compact/rmot_native72_stage_v1/broad_native_training/checkpoint.pt",
+  "regression": "outputs/groundjev/validation/fixed_affinity_storage_v1/validation.json",
+  "arms": {
+    "learned_reference": {
+      "association": "learned",
+      "auxiliary": "learned"
+    },
+    "iou_fixed": {
+      "association": "fixed_iou",
+      "auxiliary": "fixed"
+    },
+    "iou_cosine_fixed": {
+      "association": "fixed_iou_cosine",
+      "auxiliary": "fixed"
+    },
+    "iou_cosine_learned_aux": {
+      "association": "fixed_iou_cosine",
+      "auxiliary": "learned"
+    },
+    "learned_fixed_aux": {
+      "association": "learned",
+      "auxiliary": "fixed"
+    }
+  },
+  "association": "Same learned 32-ID geometry shortlist and 16-candidate groups. IoU only, or .5IoU+.5max(0,mean cosine against actual raw2560 anchor/recent/long)). NEW=.3 IGNORE=0 follow existing conventional scores; fixed scores are not calibrated probabilities, have no NO_MATCH, and produce confidence=None. No tuning on evaluation GT.",
+  "auxiliary": "Fixed: update1 and no learned lifecycle. Learned: same frozen update/reliability/lifecycle functions on each policy's actual state. Shared >=.5 RMOT membership and all1203category softmax unchanged.",
+  "comparison_limit": "Same original five frozen inference interventions, now both full800 expressions. All CPU reference/new policies withlosslessbinaryfinal storage; learned semantic weights/functions fixed but actual confidence/history/lifecycle trajectories differ. Fixed scores are not native probabilities; not optimal retrained matchers, uniqueJEV or complete-dataset proof. CPUlearned reference is rerun to avoidGPU/CPU confounding; no E2E/throughput comparison.",
+  "device": "CPU four threads per child, one serial owner, zero extra GPUs",
+  "memory_storage": "All new arms binary final full state with every original float64/list/image/history field; per-frame complete decisions plus exact shared native sources support causal replay. Actual4-frame outputs/states and next-frame restoration exact versus old JSON1. No replay or storage-policy speed comparison with legacy runs.",
+  "new_feature_cache_files": false,
+  "scopes": {
+    "single800": {
+      "manifest": "outputs/groundjev/multitask_pilot_data/rmot_single_empty_full.json",
+      "candidates": "outputs/groundjev/multitask_runs/full_rmot_shared600_v1/single800_shared_compact_fresh/frame_candidates.jsonl",
+      "frames": 800,
+      "candidates_count": 1412
+    },
+    "multi800": {
+      "manifest": "outputs/groundjev/multitask_pilot_data/rmot_multi_empty_full.json",
+      "candidates": "outputs/groundjev/multitask_runs/full_rmot_shared600_v1/multi800_shared_compact_fresh/frame_candidates.jsonl",
+      "frames": 800,
+      "candidates_count": 2208
+    }
+  },
+  "official_metrics": "Unmodified TrackEval/TETA, all frames including empty/rejected, GT only for scorer/posthoc; never runtime state correction.",
+  "status": "registered before any new full800policy control inference",
+  "launch": "python3 tools/groundjev/run_fixed_affinity_controls.py --plan configs/groundjev/full_rmot_affinity800_v1.json --out outputs/groundjev/compact/full_rmot_affinity800_v1",
+  "full_goal_complete": false,
+  "cpu_blas_threads": 4,
+  "resource_policy": "CPU4Torch/BLASthreads, noGPU or newfeaturefiles, immutable alreadyvalidated800sources; independent of currentGPU5Full owner. Existing original affinity/context/hybrid protocols unchanged."
+}

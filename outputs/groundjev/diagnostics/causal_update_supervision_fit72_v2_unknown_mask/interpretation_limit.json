@@ -1,0 +1,5 @@
+{
+  "status": "SUPERSEDED_BY_EXPLICIT_KNOWN_CONFLICT_AND_UNKNOWN_SEPARATION",
+  "authoritative": "outputs/groundjev/diagnostics/causal_update_supervision_fit72_v3_known_conflicts/audit.json",
+  "reason": "All12 apparently inconsistent positive labels have unknown GT birth ownership, not two known conflicting identities. Unknown supervision is masked, never forced negative. No pack or model labels changed. v1 proposed zero forunknown is not a valid training target."
+}

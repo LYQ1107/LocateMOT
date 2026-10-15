@@ -1,0 +1,33 @@
+{
+  "status": "EARLY_FIXED_CANDIDATE_MULTI800_SIMPLE_VALIDATED",
+  "owner_pid": 2079614,
+  "additional_GPUs": 0,
+  "new_feature_cache_files": false,
+  "existing_GPU5_owner_or_inference_interrupted": false,
+  "protocol": "same800frames/rawsource/Simple/JSONeveryframe as scheduled baseline, separate output for early comparison",
+  "full_goal_complete": false,
+  "run": "outputs/groundjev/multitask_runs/multi800_simple_cpu_v1/run",
+  "decoded_frames": 800,
+  "native_candidates": 2208,
+  "all_native_geometry_order_and_frames_retained": true,
+  "metrics": {
+    "HOTA": 0.3187691470023726,
+    "DetA": 0.30605259768579707,
+    "AssA": 0.3363421538244022,
+    "IDF1": 0.3768518518518518,
+    "IDSW": 99,
+    "FP": 1076,
+    "FN": 980
+  },
+  "compact_metrics": {
+    "HOTA": 0.19801918474265423,
+    "DetA": 0.32957066628797865,
+    "AssA": 0.12032554458881159,
+    "IDF1": 0.21008181578252838,
+    "IDSW": 165,
+    "FP": 619,
+    "FN": 1054
+  },
+  "E2E_or_paired_speed_claim": false,
+  "later_identical_baseline_not_independent_seed": "If the existing owner later produces its scheduled baseline, retain both as duplicate same-source executions, not extra statistical samples."
+}
