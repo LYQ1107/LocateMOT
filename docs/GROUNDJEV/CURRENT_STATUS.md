@@ -1,5 +1,34 @@
 # GroundJEV-MOT current evidence — 2026-10-16
 
+## Three-arm final-assignment memory diagnosis — 2026-10-16
+
+Read-only full-video diagnosis now includes all three completed Full arms,
+not just MOT500/native600. All13,664candidate events per arm reconcile with
+saved final assignments and actual0.5-gated UPDATE/HOLD decisions; every
+historical v1 statistic for the original two arms reproduces exactly.
+
+| Completed arm | Q3 AUROC, known consistent vs conflicting assignment | Consistent writes / assignments | Conflicting writes / assignments |
+| --- | ---: | ---: | ---: |
+| MOT500 | .513176 | 192/214 (89.72%) | 594/696 (85.34%) |
+| native additional600 | .485748 | 136/149 (91.28%) | 465/514 (90.47%) |
+| teacher additional600 | .499661 | 56/82 (68.29%) | 152/216 (70.37%) |
+
+Teacher's assigned-identity probability AUROC is.467395; its argmax-agreement
+AUROC is.479336. Requiring final-ID=argmax on already-observed writes would
+hold51/56known-consistent and127/152known-conflicting teacher writes, retaining
+only5consistent/25conflicting writes. This is not an accepted policy or causal
+rollout. These values describe each model's own endogenous known-anchor event
+set, not a same-event training effect; unknown-birth and unmatched candidates
+remain separate rather than being labeled negative. No universal memory-write
+precision, threshold sweep, modified prediction or new HOTA is claimed.
+
+All three trajectories support the diagnosis that the current pre-assignment,
+candidate-observation Q3 does not discriminate correctness of the ultimately
+assigned identity. Explicit final-ID-conditioned training/runtime supervision
+remains a separate hypothesis; the ongoing paired history-refresh study keeps
+its original questions, loss and runtime unchanged. Evidence:
+`outputs/groundjev/diagnostics/full_mot_assignment_memory_v2_all_three/summary.json`.
+
 ## RMOT expression component — 2026-10-16
 
 Prepared and validated all4,350legal-fit expression files on the same72

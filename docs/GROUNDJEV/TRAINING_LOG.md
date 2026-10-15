@@ -353,3 +353,21 @@ The component has not been trained; current paired600jobs remain unchanged.
 Evidence: `outputs/groundjev/training_data/rmot_query_diversity_component_v3_official_box_projection/{summary,validated_component_summary,unboxed_expression_targets,files_manifest}.json`,
 `outputs/groundjev/validation/rmot_release_box_projection_v2/validated_summary.json`,
 `outputs/groundjev/validation/rmot_query_diversity_full_cpu_plan_v1/owner_state.json`.
+
+
+## Complete three-arm assignment/write diagnosis — 2026-10-16
+
+`diagnose_full_memory_assignment.py --out outputs/groundjev/diagnostics/full_mot_assignment_memory_v2_all_three`
+exits0, covering all3completed1203-frame Full trajectories and13,664candidate
+events each; actual saved0.5write gating is checked. Every old v1 field for
+MOT500/native600 reproduces exactly. New teacher Q3 AUROC.499661; correct known
+assignments write56/82(.682927), conflicting known assignments152/216(.703704).
+Assigned-ID probability AUROC.467395, argmax agreement.479336. On frozen teacher
+writes, argmax agreement would hold51/56correct versus127/152conflicting writes,
+retaining5correct/25conflicting; reject this heuristic. Unknown-birth/unmatched
+remain separate, not negative truth. These are model-specific endogenous event
+sets, one video/seed, not causal intervention, new tracking accuracy or universal
+write precision. The current candidate-only Q3 question precedes final matching;
+final-ID-conditioned supervision needs a separately matched training/runtime
+protocol. No running paired600data/loss/runtime changed, new model calls, GPU
+allocation, feature cache or predictions.
