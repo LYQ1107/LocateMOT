@@ -1,0 +1,93 @@
+{
+  "status": "ALL_FOUR_SUBSET_MODELS_FULL1203_MOT_CONTROLS_VALIDATED",
+  "scope": "onecompleteDT0004legalvalidationvideo,1203frames,one seed",
+  "actual_updates_each": 1200,
+  "trainable_core_parameters_each": 1146511,
+  "same_native_candidate_source": "outputs/groundjev/compact/dancetrack0004_native300_v2_empty_roi_fixed/compact_distilled/frame_decisions.jsonl",
+  "original_native_candidates": 13664,
+  "native_rejected_frames_retained": 27,
+  "same_seed_optimizer_loss_initialization_and_source_pack": true,
+  "initialization": "actualMOT300stem+identicalseed0semanticheads sharedfile; nojoint-pretrainedinit",
+  "source_examples": 536,
+  "pertask_MOT_exposure": {
+    "mot": 1200,
+    "mot_rmot": 600,
+    "mot_ovmot": 600,
+    "all_three": 400
+  },
+  "comparison_limit": "fixedtotalupdates,notfixedpertaskexposure/FLOPs; newMOT400/600controls registered, notattributingcausalnegativeinterference yet",
+  "frozen_original_One_text_table_and_native_perception_extra_to_core_count": true,
+  "result": "mixed; M+RMOT missesmostGT; M+OVHOTA improvesbutIDF1/IDSWtradeoffs; no overallunifiedsuccessorfull-datasetclaim",
+  "RMOT_and_OVMOT_subset_scores": "separate running controls, no inferencefromMOTonly",
+  "runs": {
+    "mot_mot_full1203": {
+      "run": "outputs/groundjev/compact/task_subsets1200_cpu_v1/mot_mot_full1203",
+      "decoded_frames": 1203,
+      "metrics": {
+        "HOTA": 0.1963864227047442,
+        "DetA": 0.4457675377808985,
+        "AssA": 0.08673625202379324,
+        "IDF1": 0.20786252354048965,
+        "IDSW": 348,
+        "FP": 1089,
+        "FN": 1765
+      },
+      "base_novel": null,
+      "all_exact_candidate_geometry_order_and_frames_retained": true,
+      "correct_option_coverage": 1.0,
+      "existing_association_accuracy": 0.06861989205859677
+    },
+    "mot_rmot_mot_full1203": {
+      "run": "outputs/groundjev/compact/task_subsets1200_cpu_v1/mot_rmot_mot_full1203",
+      "decoded_frames": 1203,
+      "metrics": {
+        "HOTA": 0.06759687179809916,
+        "DetA": 0.13731988318610452,
+        "AssA": 0.03340464925988852,
+        "IDF1": 0.09884255006430277,
+        "IDSW": 80,
+        "FP": 136,
+        "FN": 3865
+      },
+      "base_novel": null,
+      "all_exact_candidate_geometry_order_and_frames_retained": true,
+      "correct_option_coverage": 1.0,
+      "existing_association_accuracy": 0.06059285091543156
+    },
+    "mot_ovmot_mot_full1203": {
+      "run": "outputs/groundjev/compact/task_subsets1200_cpu_v2_feature_sources/mot_ovmot_mot_full1203",
+      "decoded_frames": 1203,
+      "metrics": {
+        "HOTA": 0.21228453169330472,
+        "DetA": 0.453943791256767,
+        "AssA": 0.09937026572775054,
+        "IDF1": 0.2008092594335184,
+        "IDSW": 414,
+        "FP": 2461,
+        "FN": 1006
+      },
+      "base_novel": null,
+      "all_exact_candidate_geometry_order_and_frames_retained": true,
+      "correct_option_coverage": 1.0,
+      "existing_association_accuracy": 0.08096280087527352
+    },
+    "all_three_mot_full1203": {
+      "run": "outputs/groundjev/compact/task_subsets1200_cpu_v2_feature_sources/all_three_mot_full1203",
+      "decoded_frames": 1203,
+      "metrics": {
+        "HOTA": 0.193119281499306,
+        "DetA": 0.3578798916533271,
+        "AssA": 0.10432798100057517,
+        "IDF1": 0.1782674908178805,
+        "IDSW": 422,
+        "FP": 3363,
+        "FN": 1372
+      },
+      "base_novel": null,
+      "all_exact_candidate_geometry_order_and_frames_retained": true,
+      "correct_option_coverage": 1.0,
+      "existing_association_accuracy": 0.009615384615384616
+    }
+  },
+  "full_goal_complete": false
+}

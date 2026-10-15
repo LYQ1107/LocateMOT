@@ -1,5 +1,5 @@
 {
-  "status": "all_three_mot_full1203_INFERENCE",
+  "status": "mot_ovmot_tao_raw_full40_INFERENCE",
   "owner_pid": 1927135,
   "device": "cpu",
   "additional_GPUs": 0,
@@ -720,6 +720,113 @@
       "all_exact_candidate_geometry_order_and_frames_retained": true,
       "correct_option_coverage": 1.0,
       "existing_association_accuracy": 0.08096280087527352
+    },
+    "all_three_mot_full1203": {
+      "run": "outputs/groundjev/compact/task_subsets1200_cpu_v2_feature_sources/all_three_mot_full1203",
+      "decoded_frames": 1203,
+      "metrics": {
+        "HOTA": 0.193119281499306,
+        "DetA": 0.3578798916533271,
+        "AssA": 0.10432798100057517,
+        "IDF1": 0.1782674908178805,
+        "IDSW": 422,
+        "FP": 3363,
+        "FN": 1372
+      },
+      "base_novel": null,
+      "all_exact_candidate_geometry_order_and_frames_retained": true,
+      "correct_option_coverage": 1.0,
+      "existing_association_accuracy": 0.009615384615384616
+    },
+    "mot_tao_raw_full40": {
+      "run": "outputs/groundjev/compact/task_subsets1200_cpu_v2_feature_sources/mot_tao_raw_full40",
+      "decoded_frames": 40,
+      "metrics": {
+        "TETA": 12.421,
+        "LocA": 9.1092,
+        "AssocA": 15.903,
+        "ClsA": 12.25,
+        "LocRe": 15.458,
+        "LocPr": 22.117,
+        "AssocRe": 16.512,
+        "AssocPr": 78.28,
+        "ClsRe": 33.333,
+        "ClsPr": 12.25
+      },
+      "base_novel": {
+        "base": {
+          "TETA": 15.433150000000001,
+          "LocA": 7.65145,
+          "AssocA": 20.2735,
+          "ClsA": 18.375,
+          "LocRe": 15.8125,
+          "LocPr": 14.0805,
+          "AssocRe": 21.08,
+          "AssocPr": 84.614,
+          "ClsRe": 50.0,
+          "ClsPr": 18.375
+        },
+        "novel": {
+          "TETA": 6.3957,
+          "LocA": 12.025,
+          "AssocA": 7.1623,
+          "ClsA": 0.0,
+          "LocRe": 14.75,
+          "LocPr": 38.19,
+          "AssocRe": 7.375,
+          "AssocPr": 65.611,
+          "ClsRe": 0.0,
+          "ClsPr": 0.0
+        }
+      },
+      "all_exact_candidate_geometry_order_and_frames_retained": true,
+      "correct_option_coverage": 0.375,
+      "existing_association_accuracy": 0.0
+    },
+    "mot_rmot_tao_raw_full40": {
+      "run": "outputs/groundjev/compact/task_subsets1200_cpu_v2_feature_sources/mot_rmot_tao_raw_full40",
+      "decoded_frames": 40,
+      "metrics": {
+        "TETA": 19.284,
+        "LocA": 18.642,
+        "AssocA": 36.734,
+        "ClsA": 2.4748,
+        "LocRe": 59.521,
+        "LocPr": 21.581,
+        "AssocRe": 42.279,
+        "AssocPr": 56.084,
+        "ClsRe": 33.333,
+        "ClsPr": 2.4748
+      },
+      "base_novel": {
+        "base": {
+          "TETA": 20.734,
+          "LocA": 12.951699999999999,
+          "AssocA": 45.537499999999994,
+          "ClsA": 3.71225,
+          "LocRe": 60.281,
+          "LocPr": 13.9655,
+          "AssocRe": 51.536,
+          "AssocPr": 62.685,
+          "ClsRe": 50.0,
+          "ClsPr": 3.71225
+        },
+        "novel": {
+          "TETA": 16.384,
+          "LocA": 30.023,
+          "AssocA": 19.127,
+          "ClsA": 0.0,
+          "LocRe": 58.0,
+          "LocPr": 36.812,
+          "AssocRe": 23.764,
+          "AssocPr": 42.882,
+          "ClsRe": 0.0,
+          "ClsPr": 0.0
+        }
+      },
+      "all_exact_candidate_geometry_order_and_frames_retained": true,
+      "correct_option_coverage": 0.21739130434782608,
+      "existing_association_accuracy": 0.13043478260869565
     }
   },
   "failed": {},

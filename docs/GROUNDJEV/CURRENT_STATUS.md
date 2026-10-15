@@ -893,3 +893,65 @@ Tasksubset parameter counts above refer to the trainableCompactcore. Its text
 inputs stilluse the originalOneJev frozen token-embedding table onCPU; theyare
 not free, nativeOneJevdecoderreasoning, or a1.146Mparameter totalend-to-end system.
 The table andnativeGround perception/ROI services arecommonwithinthiscohort.
+
+
+## Four task mixtures: complete MOT video comparison
+
+All four new models have completed the same 1203-frame DanceTrack0004
+validation video with the same 13664 native candidates, all 27 rejected
+frames retained, and unchanged official TrackEval. These are one-video,
+one-seed results, not a full dataset benchmark.
+
+| Training tasks, 1200 total updates | MOT updates | HOTA % | IDF1 % | IDSW | FP | FN |
+|---|---:|---:|---:|---:|---:|---:|
+| MOT |1200|19.639|20.786|348|1089|1765|
+| MOT + RMOT |600|6.760|9.884|80|136|3865|
+| MOT + OVMOT |600|21.228|20.081|414|2461|1006|
+| All three |400|19.312|17.827|422|3363|1372|
+
+MOT+RMOT misses most GT; fewer identity switches are not a success under that
+collapse. MOT+OVMOT improves HOTA but has worse IDF1 and more switches. The
+three-task model is also mixed. The total update budget is fixed, but MOT
+exposure differs, so these measurements do not isolate task interference.
+Two additional MOT-only 400/600-update controls now use the same initialization,
+constant optimizer and exact per-task sample stream. Their logged loss/sample
+prefixes must agree with MOT1200 before full-video evaluation. They complement
+the fixed-total-budget study, and do not replace its original arms. No new GPU,
+detector query or candidate feature file is required. RMOT/OVMOT scores for the
+four-task mixtures are still being measured.
+
+Evidence: compact/task_subsets1200_cpu_v2_feature_sources/
+mot_full1203_comparison.json. Exposure control plan:
+configs/groundjev/mot_exposure_controls_v1.json.
+
+## Genuine paired Full/Compact end-to-end measurement queued
+
+The separate paired measurement waits for the verified GPU5 full-RMOT owner
+to finish all its work and release its owned service groups. It then runs Full
+native600 and the current shared Compact on the same legal 800-frame RMOT
+video and the same physical GPU5. Each arm gets a newly started original DLM
+service and its own native request counter. Compact includes its actual native
+ROI RPC cost; Full uses its actual V3 image crops. All reads, detector/ROI
+requests and queueing, association, memory, source writes, rendering and encoder
+completion are timed. Preloaded model/service initialization is recorded
+separately, under the earlier Full timing convention. This is a fixed-order
+single pair under concurrent machine workloads, not a counterbalanced benchmark.
+
+All 800 frames, including rejected and empty frames, remain in the metrics.
+Canonical frame/image/box/label/native-score/parser-rejection equality is
+required before accepting the controlled association comparison. A mismatch
+retains both real runs and fails pairing; it does not silently change decoding,
+seeds, frames or criteria. Process-group-filtered GPU memory is sampled every
+5 seconds, alongside the core allocator peak and core process peak RSS. The
+sampled total is a lower bound on instantaneous peak. Frozen text-table and
+native ROI service components are reported separately from the small core.
+The source archive cap is another 1GiB; conservative reserved sources remain
+22,471,148,986 bytes below the 25GiB limit. No current GPU job is restarted.
+
+The candidate contract passed on four real frames/13 regions. A separate
+actual Compact CPU replay probe confirms zero GPU allocation, positive process
+RSS, 1146511 core parameters and the frozen 248320x1024 BF16 lookup table
+(508559360 nominal tensor bytes, not resident RSS). The probe is not fresh
+native inference or an end-to-end speed result.
+Plan: configs/groundjev/paired_tracking_e2e_v1.json.
+Owner: e2e/full_compact_rmot800_v1/owner_state.json. Measurements are pending.

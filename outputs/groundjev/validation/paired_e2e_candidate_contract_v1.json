@@ -1,0 +1,9 @@
+{
+  "status": "REAL_NATIVE4_CANONICAL_CANDIDATE_PAIRING_REGRESSION_PASSED",
+  "frames": 4,
+  "candidates": 13,
+  "fields": "frame,image,box,label,native_score,score_kind,parserrejection",
+  "ROI_and_replay_provenance_metadata_excluded": true,
+  "GT_or_future_read": false,
+  "native_fresh_E2E_or_performance_claim": false
+}

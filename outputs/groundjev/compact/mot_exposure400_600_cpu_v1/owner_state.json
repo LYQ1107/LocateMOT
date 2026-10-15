@@ -1,0 +1,30 @@
+{
+  "status": "MOT600_INFERENCE",
+  "owner_pid": 1957205,
+  "device": "cpu",
+  "additional_GPUs": 0,
+  "new_feature_cache_files": false,
+  "completed": {
+    "MOT400": {
+      "training": "outputs/groundjev/compact/mot_exposure400_600_cpu_v1/MOT400_training",
+      "steps": 400,
+      "parameters": 1146511,
+      "all_actual_MOT_example_prefixes_exact": true,
+      "logged_loss_prefix_max_difference": 0.0,
+      "decoded_frames": 1203,
+      "run": "outputs/groundjev/compact/mot_exposure400_600_cpu_v1/MOT400_full1203",
+      "all_native_candidates_geometry_order_retained": true,
+      "metrics": {
+        "HOTA": 0.1331725552088343,
+        "DetA": 0.19864958673802888,
+        "AssA": 0.09007124879960951,
+        "IDF1": 0.17757158854583266,
+        "IDSW": 174,
+        "FP": 562,
+        "FN": 3483
+      }
+    }
+  },
+  "full_goal_complete": false,
+  "interpretation": "same MOT exposure, different total updates from multi-task arms; complements fixed-total-budget comparison"
+}

@@ -1,0 +1,22 @@
+{
+  "name": "ComplementaryMOT400/600exposure controls for task-subset study",
+  "original_MOT_training": "outputs/groundjev/compact/task_subsets1200_cpu_v1/mot_training",
+  "pack": "outputs/groundjev/compact/rmot_native72_v1/broad_native",
+  "initialization": "outputs/groundjev/compact/task_subsets1200_cpu_v1/shared_MOT300_initialization.pt",
+  "steps": [
+    400,
+    600
+  ],
+  "device": "cpu",
+  "seed": 0,
+  "parameters": 1146511,
+  "sampling": "sameper-taskseed0stream; exact selectedexample andloggedloss prefixes againstactualMOT1200",
+  "optimizer": "sameconstantAdamWlr2e-4wd1e-4/loss/gradientclip; differentendstep doesnotchangeearlylearningrate",
+  "manifest": "outputs/groundjev/pilot_data/dancetrack.json",
+  "candidates": "outputs/groundjev/compact/dancetrack0004_native300_v2_empty_roi_fixed/compact_distilled/frame_decisions.jsonl",
+  "comparison": "MOT600 againstMOT+RMO/MOT+OV600MOTupdates; MOT400againsttriple400MOTupdates. ComplementarymatchedMOTexposure, notmatchedtotalupdates/FLOPs. Originalfour1200budgetarmsunchanged.",
+  "scope": "sameonecomplete1203DTvalidationvideo/one seed, nofull-dataset/modelpromotionclaim",
+  "new_Groundqueries_features_or_GPUs": false,
+  "full_goal_complete": false,
+  "launch": "python3 tools/groundjev/run_mot_exposure_controls.py --plan configs/groundjev/mot_exposure_controls_v1.json --out outputs/groundjev/compact/mot_exposure400_600_cpu_v1"
+}

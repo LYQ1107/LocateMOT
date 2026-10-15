@@ -1,0 +1,44 @@
+{
+  "name": "Samevideo sameGPU fresh Full versus Compact E2E, isolated native service eacharm",
+  "upstream": "outputs/groundjev/multitask_runs/full_rmot_shared600_v1",
+  "physical_gpu": 5,
+  "ground_port": 8106,
+  "feature_port": 8114,
+  "manifest": "outputs/groundjev/multitask_pilot_data/rmot_single_empty_full.json",
+  "frames": 800,
+  "arms": {
+    "full_native600": {
+      "backend": "full",
+      "checkpoint": "outputs/groundjev/training/onejev_unified600_native_v2/ckpt-step600"
+    },
+    "compact": {
+      "backend": "compact",
+      "checkpoint": "outputs/groundjev/compact/rmot_native72_stage_v1/broad_native_training/checkpoint.pt"
+    }
+  },
+  "order": "fixed full_native600 thencompact; singlepairedmeasurement, notcounterbalanced/statisticalrepeat",
+  "native_frontend": "pristineGroundDLM4B/official_scoring/tracking_dense/empty_and_record, newprivate service perarm, onecaller native requestcounter reset",
+  "feature_path": "Compact additionallyusesrealDLMvisionROI RPC; Fullv3 usesrealimagecrops. Bothcostsactuallytimed, notsyntheticidenticalpipelines",
+  "runtime": "Fullv3adaptive+nativeNoul.5; Compact sharednative72weights withfrozenoriginalOneJev tokenmean; notnativeFullreasoning",
+  "timing": "all800frames inclrejected/empty, image IO,nativequeue/DLM/ROI whenneeded,association,causal memory, candidatearchive,predictions,render,encodercompletion; preloadedremote/coreinitialization excluded andseparatelyrecorded",
+  "candidate_pairing": "strict canonicalframe/image/box/label/native_score/score_kind andparser-rejection equality acrossfresharms; reportpairedfailureifnotexact, preservebothruns",
+  "hardware": "onephysicalA800GPU5botharms, process-group-filtered5secondsampledtotalVRAM andcoreTorchallocatorpeak/coreprocesspeakRSS; concurrentotherproject/CPUwork notclaimeddifferent",
+  "feature_budget_bytes": 1073741824,
+  "conservative_with_prior_reserved_sources_bytes": 22471148986,
+  "global_feature_budget_bytes": 26843545600,
+  "dependency": "wait verifiedfullRMOTownerPID/startticks toexit withcompleteallcontrols/ownedgroupsstopped beforeGPU5allocation; noforeignjobs stopped",
+  "metric": "sameofficialTrackEval800GTscope; detectorcandidatesmustmatch beforeassociationcomparisonaccepted",
+  "new_training_or_threshold_tuning": false,
+  "full_goal_complete": false,
+  "launch": "python3 tools/groundjev/run_paired_tracking_e2e.py --plan configs/groundjev/paired_tracking_e2e_v1.json --out outputs/groundjev/e2e/full_compact_rmot800_v1",
+  "candidate_contract_validation": "outputs/groundjev/validation/paired_e2e_candidate_contract_v1.json",
+  "actual_resource_metadata_validation": "outputs/groundjev/validation/paired_e2e_resource_metadata4_v1/validation.json",
+  "legal_preflight": {
+    "dataset": "refer_kitti_v2",
+    "sequence": "0007",
+    "frames": 800,
+    "split": "validation",
+    "version": "v2",
+    "GT_or_images_read_by_preflight": false
+  }
+}

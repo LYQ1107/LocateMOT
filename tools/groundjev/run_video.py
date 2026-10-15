@@ -1,7 +1,9 @@
 """Stream real video frames through DLM + Simple/Full persistent tracking."""
 import argparse
 from contextlib import nullcontext
+from datetime import datetime, timezone
 import json
+import resource
 from pathlib import Path
 import subprocess
 import sys
@@ -60,6 +62,8 @@ def restore_completed_prefix(tracker, rows, frames, fps, specification, timestam
 
 def main():
     invocation_start = time.perf_counter()
+    invocation_utc = datetime.now(timezone.utc).isoformat()
+    invocation_git_commit = subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip()
     from PIL import Image, ImageDraw
     from locatemot.groundjev.perception import GroundAnythingAdapter, GroundingProtocolError
     from locatemot.groundjev.decision import OneJevDecision, SimpleDecision, FeatureDecision
@@ -288,6 +292,7 @@ def main():
                 video_writer.wait()
     complete_video_wall_seconds = time.perf_counter()-video_start
     result = {'status': 'VIDEO_INFERENCE_COMPLETE_WITH_REJECTED_PERCEPTION' if rejected_frames else 'VIDEO_INFERENCE_COMPLETE',
+              'invocation_utc':invocation_utc,'invocation_git_commit':invocation_git_commit,
               'task': args.task, 'backend': args.backend,
               'evidence_format':args.evidence_format,
               'native_feature_url':args.native_feature_url,
@@ -326,6 +331,14 @@ def main():
               'native_candidate_archive':str(args.out/'frame_candidates.jsonl') if args.record_native_candidates else None,
               'native_candidate_archive_bytes':(args.out/'frame_candidates.jsonl').stat().st_size if args.record_native_candidates else 0,
               'native_candidate_archive_budget_bytes':args.native_candidate_byte_budget if args.record_native_candidates else None}
+    result['peak_decision_process_rss_bytes'] = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss*1024
+    if args.backend=='compact':
+        result['trainable_compact_core_parameters'] = sum(p.numel() for p in decision.model.parameters())
+        if decision.model.semantic:
+            table=decision.text_features.embedding
+            result['frozen_CPU_text_table']={'shape':list(table.shape),'dtype':str(table.dtype),
+                'parameters':table.numel(),'nominal_tensor_bytes':table.numel()*table.element_size(),
+                'device':str(table.device),'scope':'frozen originalOneJev lookup table, not decoder inference; nominal bytes are not resident RSS'}
     if args.backend in ('full','compact') or args.category_policy == 'native_hierarchical':
         import torch
         cpu_compact=args.backend=='compact' and args.compact_device=='cpu'

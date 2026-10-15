@@ -97,7 +97,7 @@ def main():
         with torch.no_grad():a=model(e);b=fresh(e)
         delta=max(float((a[k]-b[k]).abs().max()) for k in a if a[k].numel());assert delta==0;deltas[str(task)]=delta
     assert all(changed[k]>0 for k in ('category.weight','membership.0.weight','text.1.weight','visual.1.weight'))
-    state.update(status='SHARED_COMPACT_JOINT1200_TRAINING_COMPLETE',steps=args.steps,
+    state.update(status='SHARED_COMPACT_JOINT1200_TRAINING_COMPLETE' if args.steps==1200 else 'SHARED_COMPACT_TRAINING_COMPLETE',steps=args.steps,
         parameters=sum(p.numel() for p in model.parameters()),changed_elements=sum(changed.values()),
         changed_semantic_head_elements={k:v for k,v in changed.items() if k.startswith(('text.','category.','membership.'))},
         three_task_checkpoint_reload_max_difference=deltas,peak_allocated_bytes=torch.cuda.max_memory_allocated() if args.device.startswith('cuda') else 0,

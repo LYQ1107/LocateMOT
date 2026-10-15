@@ -1,5 +1,5 @@
 {
-  "status": "before500_tao_base4_INFERENCE",
+  "status": "teacher_tao_base4_INFERENCE",
   "owner_pid": 1870814,
   "registered_training_children": {
     "teacher": [
@@ -151,6 +151,233 @@
           "IDSW": 0,
           "FP": 0,
           "FN": 30
+        },
+        "metric_scale": "fraction; counts for IDSW/FP/FN",
+        "release_query_GT_boxes": 30,
+        "multi_target_frames": 7,
+        "posthoc_proposal_coverage_IoU_05": {
+          "covered": 5,
+          "GT_boxes": 30,
+          "recall": 0.16666666666666666,
+          "scope": "evaluation-only target coverage; not HOTA; never used to correct runtime state"
+        },
+        "empty_target_frames": 3,
+        "empty_target_frame_predictions": 0,
+        "GT_transport_class": "class1 is a query-target transport convention, including cars and people",
+        "GT_policy": "only release expression target IDs; empty frames retained; exact release boxes without clipping",
+        "release_box_format": "normalized top-left xywh",
+        "ignore_policy": "registered expressions have empty release ignore fields",
+        "official_complete_dataset_result": false
+      }
+    },
+    "before500_tao_base4": {
+      "run": "outputs/groundjev/training/onejev_unified600_semantic_controls_v1/before500_tao_base4",
+      "decoded_frames": 4,
+      "all_exact_native_candidates_retained": true,
+      "reused_identical_completed_MOT_control": false,
+      "official": {
+        "status": "OFFICIAL_REGISTERED_MULTITASK_SCOPE_EVALUATION_COMPLETE",
+        "task": "ovmot",
+        "dataset": "tao_amodal",
+        "sequence": "val/YFCC100M/v_25685519b728afd746dfd1b2fe77c",
+        "scope": "registered_short_functional_clip",
+        "frames": 4,
+        "all_registered_frames_included": true,
+        "GT_access": "evaluation only",
+        "official_test_labels_read": false,
+        "end_to_end_fps": null,
+        "association_replay_fps": 0.002732871766231744,
+        "perception_rejected_frames": [
+          751,
+          781,
+          811,
+          841
+        ],
+        "evaluator": "unmodified official TETA OVMOT recipe; non-exhaustive TAO",
+        "evaluator_commit": "b498aa87b252bfb75d7cc0d8d6435c3e1e74e4de",
+        "metrics": {
+          "TETA": 11.981,
+          "LocA": 17.545,
+          "AssocA": 18.399,
+          "ClsA": 0.0,
+          "LocRe": 23.333,
+          "LocPr": 38.184,
+          "AssocRe": 24.702,
+          "AssocPr": 41.081,
+          "ClsRe": 0.0,
+          "ClsPr": 0.0
+        },
+        "base_novel": {
+          "base": {
+            "TETA": 11.981,
+            "LocA": 17.545,
+            "AssocA": 18.399,
+            "ClsA": 0.0,
+            "LocRe": 23.333,
+            "LocPr": 38.184,
+            "AssocRe": 24.702,
+            "AssocPr": 41.081,
+            "ClsRe": 0.0,
+            "ClsPr": 0.0
+          },
+          "novel": null
+        },
+        "metric_scale": "official TETA summary percent",
+        "evaluated_categories": [
+          {
+            "name": "baby",
+            "group": "base"
+          }
+        ],
+        "GT_boxes": 18,
+        "predictions": 450,
+        "unmapped_predicted_labels": [],
+        "unmapped_policy": "retain boxes with unknown category -1; never discard predictions or GT",
+        "prediction_score": "constant unscored sentinel 1; no detector confidence and no score-based truncation",
+        "GT_policy": "all original modal xywh boxes; no clipping, visibility threshold, or category exclusion",
+        "novel_evaluation_GT_used_for_training": false,
+        "official_complete_dataset_result": false,
+        "timestamp_policy": "annotation-step units; physical source FPS unavailable; display at one step per second"
+      }
+    },
+    "teacher_mot4": {
+      "run": "outputs/groundjev/training/onejev_unified600_semantic_controls_v1/teacher_mot4",
+      "decoded_frames": 4,
+      "all_exact_native_candidates_retained": true,
+      "reused_identical_completed_MOT_control": false,
+      "official": {
+        "status": "OFFICIAL_SCOPE_EVALUATION_COMPLETE",
+        "dataset": "mot17",
+        "sequence": "MOT17-02-FRCNN",
+        "scope": "short_functional_check",
+        "frames": 4,
+        "metrics": {
+          "HOTA": 0.30600636847802176,
+          "DetA": 0.5849618206324839,
+          "AssA": 0.16528015952184952,
+          "IDF1": 0.2971887550200803,
+          "IDSW": 64,
+          "FP": 15,
+          "FN": 36
+        },
+        "metric_scale": "fraction, counts for IDSW/FP/FN",
+        "trackeval_commit": "12c8791b303e0a0b50f753af204249e622d0281a",
+        "gt_view": {
+          "dataset": "mot17",
+          "sequence_lengths": {
+            "MOT17-02-FRCNN": 4
+          },
+          "sources": [
+            {
+              "video": "MOT17-02-FRCNN",
+              "source": {
+                "source_path": "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-02-FRCNN/gt/gt.txt",
+                "sha256": "2e3ecb488da8886d3200d402b2b08890c6d2879923839444e9b74fa43a551440"
+              },
+              "source_frames": [
+                "000302.jpg",
+                "000303.jpg",
+                "000304.jpg",
+                "000305.jpg"
+              ],
+              "view_path": "outputs/groundjev/training/onejev_unified600_semantic_controls_v1/teacher_mot4/official_evaluation/gt/MOT17-02-FRCNN/gt/gt.txt",
+              "view_sha256": "0e62d9b0dba42241650152d70b07d4fdabe574249502d8ce7d98b7f9f9c09e35",
+              "positive_gt_units_before_official_preprocessing": 135
+            }
+          ],
+          "frame_count": 4,
+          "official_test_labels_read": false
+        },
+        "gt_access": "evaluation only",
+        "official_test_labels_read": false,
+        "fixture_only": false,
+        "model_score_claim": true,
+        "perception_rejected_frames": [],
+        "perception_rejection_rate": 0.0,
+        "rejected_frames_in_official_denominator": true,
+        "end_to_end_fps": null,
+        "association_replay_fps": 0.08661532055828484
+      }
+    },
+    "teacher_rmot_single8": {
+      "run": "outputs/groundjev/training/onejev_unified600_semantic_controls_v1/teacher_rmot_single8",
+      "decoded_frames": 8,
+      "all_exact_native_candidates_retained": true,
+      "reused_identical_completed_MOT_control": false,
+      "official": {
+        "status": "OFFICIAL_REGISTERED_MULTITASK_SCOPE_EVALUATION_COMPLETE",
+        "task": "rmot",
+        "dataset": "refer_kitti_v2",
+        "sequence": "0007",
+        "scope": "registered_short_functional_clip",
+        "frames": 8,
+        "all_registered_frames_included": true,
+        "GT_access": "evaluation only",
+        "official_test_labels_read": false,
+        "end_to_end_fps": null,
+        "association_replay_fps": 2.3088788562885383,
+        "perception_rejected_frames": [
+          152
+        ],
+        "evaluator": "unmodified official TrackEval HOTA/CLEAR/Identity",
+        "evaluator_commit": "12c8791b303e0a0b50f753af204249e622d0281a",
+        "metrics": {
+          "HOTA": 0.0,
+          "DetA": 0.0,
+          "AssA": 0.0,
+          "IDF1": 0.0,
+          "IDSW": 0,
+          "FP": 0,
+          "FN": 5
+        },
+        "metric_scale": "fraction; counts for IDSW/FP/FN",
+        "release_query_GT_boxes": 5,
+        "multi_target_frames": 0,
+        "posthoc_proposal_coverage_IoU_05": {
+          "covered": 4,
+          "GT_boxes": 5,
+          "recall": 0.8,
+          "scope": "evaluation-only target coverage; not HOTA; never used to correct runtime state"
+        },
+        "empty_target_frames": 3,
+        "empty_target_frame_predictions": 0,
+        "GT_transport_class": "class1 is a query-target transport convention, including cars and people",
+        "GT_policy": "only release expression target IDs; empty frames retained; exact release boxes without clipping",
+        "release_box_format": "normalized top-left xywh",
+        "ignore_policy": "registered expressions have empty release ignore fields",
+        "official_complete_dataset_result": false
+      }
+    },
+    "teacher_rmot_multi12": {
+      "run": "outputs/groundjev/training/onejev_unified600_semantic_controls_v1/teacher_rmot_multi12",
+      "decoded_frames": 12,
+      "all_exact_native_candidates_retained": true,
+      "reused_identical_completed_MOT_control": false,
+      "official": {
+        "status": "OFFICIAL_REGISTERED_MULTITASK_SCOPE_EVALUATION_COMPLETE",
+        "task": "rmot",
+        "dataset": "refer_kitti_v2",
+        "sequence": "0007",
+        "scope": "registered_short_functional_clip",
+        "frames": 12,
+        "all_registered_frames_included": true,
+        "GT_access": "evaluation only",
+        "official_test_labels_read": false,
+        "end_to_end_fps": null,
+        "association_replay_fps": 2.5192901955308566,
+        "perception_rejected_frames": [
+          34
+        ],
+        "evaluator": "unmodified official TrackEval HOTA/CLEAR/Identity",
+        "evaluator_commit": "12c8791b303e0a0b50f753af204249e622d0281a",
+        "metrics": {
+          "HOTA": 0.09944683273940194,
+          "DetA": 0.06606326548214593,
+          "AssA": 0.17765246449456976,
+          "IDF1": 0.05714285714285714,
+          "IDSW": 0,
+          "FP": 4,
+          "FN": 29
         },
         "metric_scale": "fraction; counts for IDSW/FP/FN",
         "release_query_GT_boxes": 30,

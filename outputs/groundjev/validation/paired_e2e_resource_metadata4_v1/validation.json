@@ -1,0 +1,23 @@
+{
+  "frames": 4,
+  "decision_device": "cpu",
+  "peak_decision_gpu_memory_bytes": 0,
+  "peak_decision_process_rss_bytes": 1009238016,
+  "trainable_compact_core_parameters": 1146511,
+  "frozen_CPU_text_table": {
+    "shape": [
+      248320,
+      1024
+    ],
+    "dtype": "torch.bfloat16",
+    "parameters": 254279680,
+    "nominal_tensor_bytes": 508559360,
+    "device": "cpu",
+    "scope": "frozen originalOneJev lookup table, not decoder inference; nominal bytes are not resident RSS"
+  },
+  "invocation_utc": "2026-10-15T06:52:56.426126+00:00",
+  "invocation_git_commit": "aeaea37ab3151dfd4551a0c730a41185db93d791",
+  "status": "ACTUAL_COMPACT4_CPU_RESOURCE_METADATA_VALIDATED",
+  "new_Ground_queries": 0,
+  "standalone_native_E2E_speed_claim": false
+}

@@ -1,0 +1,14 @@
+{
+  "status": "WAITING_VERIFIED_GPU5_FULL_RMOT_OWNER_EXIT",
+  "owner_pid": 1953808,
+  "upstream_owner": [
+    1896249,
+    "41992371"
+  ],
+  "physical_gpu": 5,
+  "completed": {},
+  "candidate_comparison": null,
+  "new_feature_cache_budget_bytes": 1073741824,
+  "all_input_frames_including_empty_and_rejected_retained": true,
+  "full_goal_complete": false
+}

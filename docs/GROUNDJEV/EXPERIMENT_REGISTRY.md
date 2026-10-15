@@ -512,3 +512,13 @@ Currentowner: compact/task_subsets1200_cpu_v2_feature_sources/owner_state.json.
 TeacherFull600trainingalso complete; native600/official600controls pending.
 RestoredFP32stateexact butoverlaplossdelta.001735 disprovesbitwisereplayclaim;
 curatedresumeelapsed/throughput scope excludesfalsecumulativerate.
+
+
+All four matched task-subset models now have complete DT1203 metrics:
+MOT/MOT+RMOT/MOT+OVMOT/all-three HOTA19.639/6.760/21.228/19.312 percent.
+Different MOT exposure prevents isolated negative-transfer attribution; extra
+MOT-only400/600 prefix controls are running with the original matrix retained.
+Full/Compact fresh same800/GPU5 E2E is queued after the existing full-RMOT owner,
+with separately restarted DLM services and strict actual candidate pairing.
+No replay timing is used as native E2E. See paired_tracking_e2e_v1.json and
+mot_exposure_controls_v1.json. No full goal completion or model promotion.
