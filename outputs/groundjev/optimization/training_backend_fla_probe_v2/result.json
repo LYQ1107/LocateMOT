@@ -1,0 +1,41 @@
+{
+  "status": "TRAINING_BACKEND_CANDIDATE",
+  "sampled_gradient_cosine": 0.9995499875736215,
+  "sampled_gradient_relative_L2": 0.03000655257095198,
+  "full_gradient_norms": [
+    72.59661293456243,
+    72.61484342197666
+  ],
+  "full_norm_relative_difference": 0.000251120357786687,
+  "steady_step_component_speed_ratio": 6.048313725357699,
+  "source_plan": {
+    "name": "Real multimodal OneJev training-only FLA probe",
+    "seed": 0,
+    "physical_gpu": 5,
+    "steps_each": 4,
+    "accum_rows": 5,
+    "examples_each": 20,
+    "sampling": "same5 real rows per step; same native seed/index-shuffle/rendering/loss",
+    "first_gradient_gate": {
+      "sampled_cosine_min": 0.99,
+      "sampled_relative_L2_max": 0.1,
+      "full_norm_relative_difference_max": 0.1
+    },
+    "steady_step_speed_ratio_min": 1.5,
+    "timing": "median steps2..4, first compilation/warmup step excluded; concurrent workloads recorded, component timing only",
+    "diagnostic_budget_bytes": 33554432,
+    "combined_registered_feature_upper_bytes": 26773193834,
+    "global_temporary_feature_budget_bytes": 26843545600,
+    "previous_inference_parity_rejection": "outputs/groundjev/optimization/onejev_fla_multimodal_v1/result.json",
+    "previous_inference_tolerance_unchanged": 0.001,
+    "production_reference6000_queue_unchanged": true,
+    "no_tracking_accuracy_or_Ground_One_joint_gradient_claim": true,
+    "full_goal_complete": false
+  },
+  "actual_optimizer_steps_each": 4,
+  "actual_examples_each": 20,
+  "sampled_not_full_gradient_vector_comparison": true,
+  "old_inference_rejection_preserved": true,
+  "production_training_changed": false,
+  "full_goal_complete": false
+}

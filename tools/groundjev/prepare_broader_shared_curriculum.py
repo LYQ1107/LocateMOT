@@ -153,7 +153,7 @@ def main():
                 if bucket != 'mot': actual_frame_sets[bucket].add(row['media'][0]['path'])
     assert train.stat().st_size <= plan['new_mixture_budget_bytes']
     config = json.loads((ROOT/'configs/groundjev/onejev_history_refresh600_refreshed_v1.json').read_text())
-    config.update(train=str(train), name='onejev_broader_shared6000_v1', max_steps=6000, save_every=plan['save_every'],
+    config.update(train=str(train), name=plan.get('training_name', 'onejev_broader_shared6000_v1'), max_steps=6000, save_every=plan['save_every'],
                   model=str(ROOT/'outputs/groundjev/training/onejev_unified600_native_v2/ckpt-step600'))
     (out/'training_config.json').write_text(json.dumps(config, indent=2)+'\n')
     summary = {'status': 'BROADER_SHARED24000_ROWS_PREPARED_NOT_YET_TRAINED',

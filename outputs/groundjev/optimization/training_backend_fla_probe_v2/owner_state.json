@@ -1,0 +1,94 @@
+{
+  "status": "TRAINING_BACKEND_CANDIDATE",
+  "owner_pid": 3189122,
+  "owner_starttick": "47729717",
+  "owner_git_commit": "5c922c4d11a06a282b397d1de8be0706325da4a8",
+  "completed": {
+    "reference": {
+      "done": {
+        "event": "done",
+        "steps": 4,
+        "examples": 20,
+        "elapsed_s": 691.5267034479766,
+        "examples_per_s": 0.02892151510603899
+      },
+      "steady_step_seconds": [
+        164.31982771900948,
+        163.08469465299277,
+        194.21245778998127
+      ]
+    },
+    "fla": {
+      "done": {
+        "event": "done",
+        "steps": 4,
+        "examples": 20,
+        "elapsed_s": 217.9558525439934,
+        "examples_per_s": 0.09176170204451423
+      },
+      "steady_step_seconds": [
+        18.54444527195301,
+        63.1610641439911,
+        27.16787441598717
+      ]
+    }
+  },
+  "physical_gpu": 5,
+  "production_training_changed": false,
+  "full_goal_complete": false,
+  "GPU5_free_MiB_before_launch": 70274,
+  "command": [
+    "python3",
+    "tools/groundjev/run_with_resources.py",
+    "--gpus",
+    "5",
+    "--",
+    "/data2/user/LocateMOT_GroundJEV/.venv-onejev-py310/bin/python",
+    "tools/groundjev/probe_onejev_training_backend.py",
+    "--mode",
+    "fla",
+    "--config",
+    "outputs/groundjev/optimization/training_backend_fla_probe_v2/fla_config.json"
+  ],
+  "result": {
+    "status": "TRAINING_BACKEND_CANDIDATE",
+    "sampled_gradient_cosine": 0.9995499875736215,
+    "sampled_gradient_relative_L2": 0.03000655257095198,
+    "full_gradient_norms": [
+      72.59661293456243,
+      72.61484342197666
+    ],
+    "full_norm_relative_difference": 0.000251120357786687,
+    "steady_step_component_speed_ratio": 6.048313725357699,
+    "source_plan": {
+      "name": "Real multimodal OneJev training-only FLA probe",
+      "seed": 0,
+      "physical_gpu": 5,
+      "steps_each": 4,
+      "accum_rows": 5,
+      "examples_each": 20,
+      "sampling": "same5 real rows per step; same native seed/index-shuffle/rendering/loss",
+      "first_gradient_gate": {
+        "sampled_cosine_min": 0.99,
+        "sampled_relative_L2_max": 0.1,
+        "full_norm_relative_difference_max": 0.1
+      },
+      "steady_step_speed_ratio_min": 1.5,
+      "timing": "median steps2..4, first compilation/warmup step excluded; concurrent workloads recorded, component timing only",
+      "diagnostic_budget_bytes": 33554432,
+      "combined_registered_feature_upper_bytes": 26773193834,
+      "global_temporary_feature_budget_bytes": 26843545600,
+      "previous_inference_parity_rejection": "outputs/groundjev/optimization/onejev_fla_multimodal_v1/result.json",
+      "previous_inference_tolerance_unchanged": 0.001,
+      "production_reference6000_queue_unchanged": true,
+      "no_tracking_accuracy_or_Ground_One_joint_gradient_claim": true,
+      "full_goal_complete": false
+    },
+    "actual_optimizer_steps_each": 4,
+    "actual_examples_each": 20,
+    "sampled_not_full_gradient_vector_comparison": true,
+    "old_inference_rejection_preserved": true,
+    "production_training_changed": false,
+    "full_goal_complete": false
+  }
+}

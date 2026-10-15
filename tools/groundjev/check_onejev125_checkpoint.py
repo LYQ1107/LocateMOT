@@ -23,6 +23,7 @@ def main():
     parser.add_argument('--checkpoint', type=Path)
     parser.add_argument('--training-root', type=Path)
     parser.add_argument('--reference-checkpoint', type=Path)
+    parser.add_argument('--validation-output', type=Path)
     args = parser.parse_args()
     training = args.training_root or ROOT/'outputs/groundjev/training/onejev_own_history_v3_exact500_replay_stateful'
     checkpoint = args.checkpoint or training/f'ckpt-step{args.step}'
@@ -85,7 +86,8 @@ def main():
         'responses': responses, 'intermediate_only': not formal,
         'formal500_complete': formal and args.step == 500, 'formal_training_steps': args.step if formal else None,
         'tracking_accuracy_or_exact_FP32_training_resume_claim': False}
-    (training/f'checkpoint{args.step}_validation.json').write_text(json.dumps(result, indent=2)+'\n')
+    destination = args.validation_output or training/f'checkpoint{args.step}_validation.json'
+    destination.write_text(json.dumps(result, indent=2)+'\n')
     print(json.dumps({k: v for k, v in result.items() if k != 'responses'}, indent=2))
 
 

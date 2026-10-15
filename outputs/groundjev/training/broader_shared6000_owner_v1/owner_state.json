@@ -1,0 +1,33 @@
+{
+  "status": "SUPERSEDED_BEFORE_CURRICULUM_OR_MODEL_START",
+  "owner_pid": 3136429,
+  "owner_starttick": "47470137",
+  "owner_git_commit": "f32fbce7a862f03adbd4bb260c71e50c526fd3bc",
+  "physical_gpu_only_after_dependencies": 7,
+  "new_optimizer_steps": 0,
+  "plan": "configs/groundjev/broader_shared_onejev6000_v1.json",
+  "completed": {},
+  "full_goal_complete": false,
+  "dependencies": [
+    {
+      "directory": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1",
+      "script": "tools/groundjev/export_broader_native_full_groups.py",
+      "identity": [
+        3103835,
+        "47322399"
+      ],
+      "required_terminal_status": "ALL43_NATIVE_TRAIN_CLIPS_FULL_V3_GROUP_REFS_AND_CPU_PLANS_VALIDATED"
+    },
+    {
+      "directory": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest",
+      "script": "tools/groundjev/collect_broader_native_MOT.py",
+      "identity": [
+        3032116,
+        "47104873"
+      ],
+      "required_terminal_status": "BROADER_NATIVE_TRAIN43_VIDEO1056_FRAME_COLLECTION_COMPLETE"
+    }
+  ],
+  "actual_exit_code": 143,
+  "superseded_by_plan": "configs/groundjev/broader_shared_onejev6000_v2_fla.json"
+}

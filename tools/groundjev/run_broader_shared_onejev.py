@@ -59,13 +59,22 @@ def main():
         return cpu_plan(args.cpu_plan, args.report)
     plan = json.loads(args.plan.read_text())
     assert plan['project_root'] == '/data2/user/LocateMOT'
-    assert plan['training_backend'] == 'reference' and plan['physical_gpu'] == 7
+    assert plan['training_backend'] in ('reference', 'fla052_training_only') and plan['physical_gpu'] == 7
+    if plan['training_backend'] == 'fla052_training_only':
+        probe = json.loads((ROOT/plan['training_backend_probe']).read_text())
+        reload = json.loads((ROOT/plan['training_backend_native_reload']).read_text())
+        assert probe['status'] == 'TRAINING_BACKEND_CANDIDATE'
+        assert reload['status'] == 'REAL_ONEJEV4_NATIVE_MM_RELOAD_VALIDATED'
+        assert reload['repeated_reload_probability_max_difference'] <= reload['reload_tolerance'] == 1e-6
+        entry_validation = json.loads((ROOT/plan['production_entry_validation']).read_text())
+        assert entry_validation['status'] == 'PRODUCTION_FLA_ENTRY_REAL_NATIVE_SFT_FIRST_LOSS_AND_EXPLICIT_PROTOCOL_VALIDATED'
     assert plan['combined_registered_feature_upper_bytes'] < plan['global_temporary_feature_budget_bytes']
     args.out.mkdir(parents=True, exist_ok=False)
     state = {'status': 'REGISTERED_WAITING_ORIGINAL_NATIVE_SOURCE_AND_GROUP_EXPORT',
              'owner_pid': os.getpid(), 'owner_starttick': Path('/proc/self/stat').read_text().rsplit(')', 1)[1].split()[19],
              'owner_git_commit': subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip(),
              'physical_gpu_only_after_dependencies': 7, 'new_optimizer_steps': 0,
+             'training_compute_backend': plan['training_backend'], 'inference_compute_backend': 'native_reference',
              'plan': str(args.plan), 'completed': {}, 'full_goal_complete': False}
     python = str(ROOT/'.venv-onejev-py310/bin/python')
     env = dict(os.environ, CUDA_VISIBLE_DEVICES='', PYTHONPATH=str(ROOT/'external/OneJev'),
@@ -124,7 +133,9 @@ def main():
         assert shutil.disk_usage(ROOT).free >= 40*2**30, 'Need40GiB for new checkpoint series; do not delete prior results'
         training = Path(config['runs_dir'])/config['name']
         assert not training.exists(), 'Resume latest valid full state explicitly; do not overwrite'
-        run('SHARED_ONEJEV6000_TRAINING', gpu+['tools/groundjev/run_group_reference_sft.py',
+        entry = ('tools/groundjev/run_fla_group_reference_sft.py' if plan['training_backend'] == 'fla052_training_only'
+                 else 'tools/groundjev/run_group_reference_sft.py')
+        run('SHARED_ONEJEV6000_TRAINING', gpu+[entry,
             '--config', str(curriculum/'training_config.json'), '--paired-index-shuffle',
             '--initial-training-state', str(ROOT/plan['initial_training_state']), '--expected-initial-step', '600'])
         records = [json.loads(line) for line in (training/'log.jsonl').open()]

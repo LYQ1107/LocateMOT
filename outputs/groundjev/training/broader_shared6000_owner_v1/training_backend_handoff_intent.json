@@ -1,0 +1,14 @@
+{
+  "status": "SUPERSEDING_UNSTARTED_REFERENCE6000_CPU_WAITER",
+  "old_owner_pid": 3136429,
+  "old_owner_starttick": "47470137",
+  "original_blocking_session": 36231,
+  "observed_old_status": "REGISTERED_WAITING_ORIGINAL_NATIVE_SOURCE_AND_GROUP_EXPORT",
+  "old_actual_optimizer_steps": 0,
+  "old_model_child_never_started": true,
+  "old_curriculum_not_created": true,
+  "new_plan": "configs/groundjev/broader_shared_onejev6000_v2_fla.json",
+  "reason": "Independent training-only FLA gradient/time probe and native MM reload passed before any large phase started. All data/seed/steps/scorers/reference inference preserved.",
+  "source_collector_and_exporter_not_stopped": true,
+  "goal_active": true
+}

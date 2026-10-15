@@ -1,12 +1,21 @@
 {
-  "status": "LOCALIZATION200",
+  "status": "GPU5_LOCALIZATION_AND_NATURAL_MEMORY_STUDIES_COMPLETE",
   "owner_pid": 2207841,
   "physical_gpu": 5,
   "upstream_owner_identity": [
     1953808,
     "42350971"
   ],
-  "completed": {},
+  "completed": {
+    "LOCALIZATION200": {
+      "run": "outputs/groundjev/ground_adaptation/localization200_control_gpu5_v1",
+      "status": "LOCALIZATION200_AND_CONTROLLED_VISUAL_ONE_COMPOSITION_COMPLETE"
+    },
+    "NATURAL_MOT20": {
+      "run": "outputs/groundjev/natural_memory/mot20_05_full_validation_gpu5_v1",
+      "status": "NATURAL_MOT20_SCOPE_AND_FROZEN_MEMORY_CONTROLS_COMPLETE"
+    }
+  },
   "native_retention_jobs_unchanged": true,
   "full_goal_complete": false,
   "actual_GPU5_release": {
@@ -27,9 +36,5 @@
     ],
     "all_owned_groups_gone": true,
     "hardware_at_release": "GPU-c6523d98-cb2d-95ed-4cb2-a84936acceb6, NVIDIA A800-SXM4-80GB, 81920, 81151"
-  },
-  "current_child": [
-    2213633,
-    "44011696"
-  ]
+  }
 }

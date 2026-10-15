@@ -1,0 +1,12 @@
+{
+  "mode": "reference",
+  "actual_optimizer_steps": 4,
+  "actual_examples": 20,
+  "FLA_chunk_training_calls": 0,
+  "sampled_gradient_bytes": 3712793,
+  "all320_full_gradients_finite": true,
+  "gradient_sampling": "deterministic uniform stride, at most4096 values per parameter before native clipping",
+  "inference_backend_adopted": false,
+  "production_training_changed": false,
+  "full_goal_complete": false
+}

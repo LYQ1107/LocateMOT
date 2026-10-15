@@ -1,0 +1,12 @@
+{
+  "status": "ALL43_NATIVE_TRAIN_CLIPS1056_FRAMES_SOURCE_OWNER_EXIT0",
+  "original_blocking_session": 84427,
+  "actual_exit_code": 0,
+  "frames": 1056,
+  "native_candidates": 48051,
+  "archive_bytes": 474314908,
+  "all_empty_and_rejected_frames_retained": true,
+  "source_owned_services_closed_in_finally_before_actual_exit": true,
+  "group_export_last_clip_CPU_plan_still_pending": true,
+  "full_goal_complete": false
+}

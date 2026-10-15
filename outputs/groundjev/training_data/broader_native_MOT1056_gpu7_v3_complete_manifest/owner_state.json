@@ -1,0 +1,340 @@
+{
+  "status": "BROADER_NATIVE_TRAIN43_VIDEO1056_FRAME_COLLECTION_COMPLETE",
+  "owner_pid": 3032116,
+  "owner_starttick": "47104873",
+  "physical_gpu": 7,
+  "verified_GPU7_release": {
+    "status": "VERIFIED_COMPLETED_GPU_OWNER_RELEASE",
+    "physical_gpu": 7,
+    "upstream_owner_identity": [
+      1347145,
+      "36827524"
+    ],
+    "upstream_owner_output": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/outputs/groundjev_retention/groundjev_original_dense_ref9_queue32_v3_20261014",
+    "upstream_variant": "original",
+    "owned_process_groups": [
+      1345024
+    ],
+    "all_owned_groups_gone": true,
+    "original_all9_complete": true,
+    "all_registered_original_clients_exited": true,
+    "complete_native_rows": 91124,
+    "missing_tasks": [],
+    "actual_runner_exit_code_unknown_after_parent_exit": true,
+    "adapted200_GPU6_retention_still_owned_by_original_reattach_waiter": true,
+    "hardware_at_release": "GPU-0322c0e7-ffbf-e068-5bdd-587b8216a9d9, NVIDIA A800-SXM4-80GB, 81920, 70229"
+  },
+  "completed": {
+    "MOT17-02-FRCNN": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/MOT17-02-FRCNN",
+      "frames": 32,
+      "archive_bytes": 9818682,
+      "native_candidates": 992,
+      "rejected_frames": 0
+    },
+    "MOT17-04-FRCNN": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/MOT17-04-FRCNN",
+      "frames": 32,
+      "archive_bytes": 13871531,
+      "native_candidates": 1404,
+      "rejected_frames": 6
+    },
+    "MOT17-05-FRCNN": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/MOT17-05-FRCNN",
+      "frames": 32,
+      "archive_bytes": 3848903,
+      "native_candidates": 384,
+      "rejected_frames": 0
+    },
+    "MOT17-09-FRCNN": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/MOT17-09-FRCNN",
+      "frames": 32,
+      "archive_bytes": 3360930,
+      "native_candidates": 334,
+      "rejected_frames": 0
+    },
+    "MOT17-10-FRCNN": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/MOT17-10-FRCNN",
+      "frames": 32,
+      "archive_bytes": 3237412,
+      "native_candidates": 322,
+      "rejected_frames": 14
+    },
+    "MOT17-11-FRCNN": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/MOT17-11-FRCNN",
+      "frames": 32,
+      "archive_bytes": 3851481,
+      "native_candidates": 384,
+      "rejected_frames": 0
+    },
+    "MOT17-13-FRCNN": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/MOT17-13-FRCNN",
+      "frames": 32,
+      "archive_bytes": 3997627,
+      "native_candidates": 399,
+      "rejected_frames": 2
+    },
+    "dancetrack0001": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0001",
+      "frames": 16,
+      "archive_bytes": 1924942,
+      "native_candidates": 192,
+      "rejected_frames": 0
+    },
+    "dancetrack0006": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0006",
+      "frames": 16,
+      "archive_bytes": 1649750,
+      "native_candidates": 164,
+      "rejected_frames": 0
+    },
+    "dancetrack0008": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0008",
+      "frames": 16,
+      "archive_bytes": 1721609,
+      "native_candidates": 171,
+      "rejected_frames": 0
+    },
+    "dancetrack0012": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0012",
+      "frames": 16,
+      "archive_bytes": 1660097,
+      "native_candidates": 165,
+      "rejected_frames": 1
+    },
+    "dancetrack0016": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0016",
+      "frames": 16,
+      "archive_bytes": 1270050,
+      "native_candidates": 125,
+      "rejected_frames": 0
+    },
+    "dancetrack0020": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0020",
+      "frames": 16,
+      "archive_bytes": 4428993,
+      "native_candidates": 447,
+      "rejected_frames": 0
+    },
+    "dancetrack0023": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0023",
+      "frames": 16,
+      "archive_bytes": 1925833,
+      "native_candidates": 192,
+      "rejected_frames": 0
+    },
+    "dancetrack0024": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0024",
+      "frames": 16,
+      "archive_bytes": 1321705,
+      "native_candidates": 130,
+      "rejected_frames": 0
+    },
+    "dancetrack0027": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0027",
+      "frames": 16,
+      "archive_bytes": 1769291,
+      "native_candidates": 176,
+      "rejected_frames": 0
+    },
+    "dancetrack0029": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0029",
+      "frames": 16,
+      "archive_bytes": 1622370,
+      "native_candidates": 161,
+      "rejected_frames": 2
+    },
+    "dancetrack0032": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0032",
+      "frames": 16,
+      "archive_bytes": 1525105,
+      "native_candidates": 151,
+      "rejected_frames": 0
+    },
+    "dancetrack0037": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0037",
+      "frames": 16,
+      "archive_bytes": 1788434,
+      "native_candidates": 178,
+      "rejected_frames": 0
+    },
+    "dancetrack0039": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0039",
+      "frames": 16,
+      "archive_bytes": 1114956,
+      "native_candidates": 109,
+      "rejected_frames": 0
+    },
+    "dancetrack0044": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0044",
+      "frames": 16,
+      "archive_bytes": 1954914,
+      "native_candidates": 195,
+      "rejected_frames": 0
+    },
+    "dancetrack0045": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0045",
+      "frames": 16,
+      "archive_bytes": 2038568,
+      "native_candidates": 203,
+      "rejected_frames": 1
+    },
+    "dancetrack0051": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0051",
+      "frames": 16,
+      "archive_bytes": 1689458,
+      "native_candidates": 168,
+      "rejected_frames": 0
+    },
+    "dancetrack0052": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0052",
+      "frames": 16,
+      "archive_bytes": 1026172,
+      "native_candidates": 100,
+      "rejected_frames": 0
+    },
+    "dancetrack0053": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0053",
+      "frames": 16,
+      "archive_bytes": 2482260,
+      "native_candidates": 249,
+      "rejected_frames": 0
+    },
+    "dancetrack0055": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0055",
+      "frames": 16,
+      "archive_bytes": 2044160,
+      "native_candidates": 204,
+      "rejected_frames": 0
+    },
+    "dancetrack0057": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0057",
+      "frames": 16,
+      "archive_bytes": 2052028,
+      "native_candidates": 205,
+      "rejected_frames": 1
+    },
+    "dancetrack0062": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0062",
+      "frames": 16,
+      "archive_bytes": 1358609,
+      "native_candidates": 134,
+      "rejected_frames": 0
+    },
+    "dancetrack0066": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0066",
+      "frames": 16,
+      "archive_bytes": 1708878,
+      "native_candidates": 170,
+      "rejected_frames": 0
+    },
+    "dancetrack0068": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0068",
+      "frames": 16,
+      "archive_bytes": 1036786,
+      "native_candidates": 101,
+      "rejected_frames": 0
+    },
+    "dancetrack0069": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0069",
+      "frames": 16,
+      "archive_bytes": 1164085,
+      "native_candidates": 114,
+      "rejected_frames": 0
+    },
+    "dancetrack0074": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0074",
+      "frames": 16,
+      "archive_bytes": 1360731,
+      "native_candidates": 136,
+      "rejected_frames": 0
+    },
+    "dancetrack0075": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0075",
+      "frames": 16,
+      "archive_bytes": 1233870,
+      "native_candidates": 121,
+      "rejected_frames": 0
+    },
+    "dancetrack0080": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0080",
+      "frames": 16,
+      "archive_bytes": 1925762,
+      "native_candidates": 192,
+      "rejected_frames": 0
+    },
+    "dancetrack0082": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0082",
+      "frames": 16,
+      "archive_bytes": 2967815,
+      "native_candidates": 298,
+      "rejected_frames": 2
+    },
+    "dancetrack0086": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0086",
+      "frames": 16,
+      "archive_bytes": 2658742,
+      "native_candidates": 267,
+      "rejected_frames": 0
+    },
+    "dancetrack0087": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0087",
+      "frames": 16,
+      "archive_bytes": 1896759,
+      "native_candidates": 189,
+      "rejected_frames": 0
+    },
+    "dancetrack0096": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0096",
+      "frames": 16,
+      "archive_bytes": 2844578,
+      "native_candidates": 286,
+      "rejected_frames": 1
+    },
+    "dancetrack0098": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0098",
+      "frames": 16,
+      "archive_bytes": 1679476,
+      "native_candidates": 167,
+      "rejected_frames": 0
+    },
+    "MOT20-01": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/MOT20-01",
+      "frames": 32,
+      "archive_bytes": 9856170,
+      "native_candidates": 996,
+      "rejected_frames": 0
+    },
+    "MOT20-02": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/MOT20-02",
+      "frames": 32,
+      "archive_bytes": 9455697,
+      "native_candidates": 955,
+      "rejected_frames": 1
+    },
+    "MOT20-03": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/MOT20-03",
+      "frames": 128,
+      "archive_bytes": 145463423,
+      "native_candidates": 14784,
+      "rejected_frames": 7
+    },
+    "MOT20-05": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/MOT20-05",
+      "frames": 128,
+      "archive_bytes": 208706266,
+      "native_candidates": 21237,
+      "rejected_frames": 2
+    }
+  },
+  "actual_new_training_updates": 0,
+  "full_goal_complete": false,
+  "planned_clips": 43,
+  "planned_frames": 1056,
+  "GT_read_to_select_frames": false,
+  "owned_service_groups": [
+    3032121,
+    3032122
+  ],
+  "combined_registered_feature_upper_bytes": 26739639402
+}
