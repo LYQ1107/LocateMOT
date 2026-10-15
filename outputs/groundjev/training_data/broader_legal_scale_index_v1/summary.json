@@ -1,0 +1,120 @@
+{
+  "status": "BROADER_LEGAL_TRAINING_SOURCE_INDEX_COMPLETE_NOT_SFT_OR_TRAINING",
+  "plan": "configs/groundjev/training_scale_index_v1.json",
+  "counts": {
+    "mot_indexed_images": 40904,
+    "rmot_indexed_images": 1814,
+    "rmot_expressions": 4350,
+    "tao_Base_target_references": 52978,
+    "tao_zero_eligible_Base_target_images": 1251,
+    "tao_indexed_images": 18274
+  },
+  "missing_indexed_image_counts": {
+    "mot": 0,
+    "rmot": 0,
+    "tao": 0
+  },
+  "video_counts": {
+    "mot": 43,
+    "rmot": 9,
+    "tao": 500
+  },
+  "MOT": {
+    "mot17": {
+      "frames": 2664,
+      "videos": 7
+    },
+    "dancetrack": {
+      "frames": 33772,
+      "videos": 32
+    },
+    "mot20": {
+      "frames": 4468,
+      "videos": 4
+    }
+  },
+  "RMOT": {
+    "0000": {
+      "local_physical_frames": 154,
+      "expression_files": 596,
+      "query_positive_annotation_frames": 18015,
+      "queries_with_nonempty_ignore": 0,
+      "positive_labeled_frames_missing_images": []
+    },
+    "0002": {
+      "local_physical_frames": 233,
+      "expression_files": 449,
+      "query_positive_annotation_frames": 55714,
+      "queries_with_nonempty_ignore": 0,
+      "positive_labeled_frames_missing_images": []
+    },
+    "0003": {
+      "local_physical_frames": 144,
+      "expression_files": 442,
+      "query_positive_annotation_frames": 39662,
+      "queries_with_nonempty_ignore": 0,
+      "positive_labeled_frames_missing_images": []
+    },
+    "0006": {
+      "local_physical_frames": 270,
+      "expression_files": 618,
+      "query_positive_annotation_frames": 70457,
+      "queries_with_nonempty_ignore": 0,
+      "positive_labeled_frames_missing_images": []
+    },
+    "0008": {
+      "local_physical_frames": 390,
+      "expression_files": 620,
+      "query_positive_annotation_frames": 76113,
+      "queries_with_nonempty_ignore": 0,
+      "positive_labeled_frames_missing_images": []
+    },
+    "0010": {
+      "local_physical_frames": 294,
+      "expression_files": 572,
+      "query_positive_annotation_frames": 35036,
+      "queries_with_nonempty_ignore": 0,
+      "positive_labeled_frames_missing_images": []
+    },
+    "0012": {
+      "local_physical_frames": 78,
+      "expression_files": 339,
+      "query_positive_annotation_frames": 20569,
+      "queries_with_nonempty_ignore": 0,
+      "positive_labeled_frames_missing_images": []
+    },
+    "0014": {
+      "local_physical_frames": 106,
+      "expression_files": 361,
+      "query_positive_annotation_frames": 19814,
+      "queries_with_nonempty_ignore": 0,
+      "positive_labeled_frames_missing_images": []
+    },
+    "0017": {
+      "local_physical_frames": 145,
+      "expression_files": 353,
+      "query_positive_annotation_frames": 43961,
+      "queries_with_nonempty_ignore": 0,
+      "positive_labeled_frames_missing_images": []
+    }
+  },
+  "TAO_training_Base_classes_with_targets": 175,
+  "TAO_non_supervised_annotations": {
+    "non_Base_annotations_not_supervised": 6172,
+    "outside_frozen_vocabulary_not_supervised": 50
+  },
+  "all_TAO_training_annotation_images_retained": 18274,
+  "all_RMOT_expressions_in_legal_fit_videos_retained": true,
+  "RMOT_physical_frames_are_local_listing_not_external_sequence_completeness_proof": true,
+  "no_GT_evaluation_or_forbidden_video_labels_read": true,
+  "Novel_GT_supervised_or_negative": false,
+  "metadata_bytes_before_summary": 33844812,
+  "registered_metadata_cap_bytes": 134217728,
+  "combined_registered_upper_bytes": 26091442957,
+  "new_native_feature_cache_bytes": 0,
+  "new_model_calls": false,
+  "new_training_steps": 0,
+  "ready_as_existing_SFT_training_JSONL": false,
+  "new_training_protocol_or_gpu_job_started": false,
+  "full_goal_complete": false
+}

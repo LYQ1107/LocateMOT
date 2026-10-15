@@ -1,0 +1,28 @@
+{
+  "name": "Broader legal shared-task training availability index, not generated SFT or feature cache",
+  "project_root": "/data2/user/LocateMOT",
+  "protocol_root": "/data2/user/LocateMOT/outputs/unified/u2/protocol",
+  "mot_protocols": [
+    "mot17_half.json",
+    "dancetrack.json",
+    "mot20_half.json"
+  ],
+  "RMOT_dataset": "refer_kitti_v2",
+  "RMOT_split": "fit-v2 only",
+  "RMOT_image_root": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02",
+  "RMOT_expression_root": "/data2/user/LocateMOT/data/refer_kitti_v2/expression",
+  "RMOT_label_root": "/data2/user/LocateMOT/data/refer_kitti_v2/labels_with_ids/image_02",
+  "TAO_train_annotation": "/data2/user/TAO-Amodal/annotations/train_with_freeform.json",
+  "TAO_image_root": "/data2/user/LocateMOT/data/TAO-Amodal/frames",
+  "input_vocabulary": "/data2/user/LocateMOT/outputs/unified/u2/protocol/lvis_v1_vocabulary.json",
+  "TAO_supervision": "Source frequency c/f and exact frozen LVIS synset; assert mapped class is Base. Keep all training images including zero eligible Base labels; do not invent Novel/unannotated negatives.",
+  "index_role": "Source references/availability only, not native proposals, causal actor states, rendered JEV SFT or completed training.",
+  "conservative_prior_upper_bytes": 25957225229,
+  "metadata_export_budget_bytes": 134217728,
+  "combined_registered_upper_bytes": 26091442957,
+  "global_temporary_feature_budget_bytes": 26843545600,
+  "new_model_calls_or_feature_archive": false,
+  "GT_evaluation_or_Novel_supervision": false,
+  "existing_training_protocol_or_runtime_changed": false,
+  "full_goal_complete": false
+}

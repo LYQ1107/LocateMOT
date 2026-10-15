@@ -1,0 +1,1577 @@
+[
+  {
+    "vocabulary_index": 0,
+    "name": "aerosol_can",
+    "synset": "aerosol.n.02",
+    "frequency": "c",
+    "training_targets": 36,
+    "training_images": 36,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 2,
+    "name": "airplane",
+    "synset": "airplane.n.01",
+    "frequency": "f",
+    "training_targets": 40,
+    "training_images": 40,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 18,
+    "name": "armchair",
+    "synset": "armchair.n.01",
+    "frequency": "f",
+    "training_targets": 97,
+    "training_images": 97,
+    "training_videos": 3
+  },
+  {
+    "vocabulary_index": 31,
+    "name": "baby_buggy",
+    "synset": "baby_buggy.n.01",
+    "frequency": "f",
+    "training_targets": 45,
+    "training_images": 45,
+    "training_videos": 3
+  },
+  {
+    "vocabulary_index": 33,
+    "name": "backpack",
+    "synset": "backpack.n.01",
+    "frequency": "f",
+    "training_targets": 45,
+    "training_images": 45,
+    "training_videos": 4
+  },
+  {
+    "vocabulary_index": 34,
+    "name": "handbag",
+    "synset": "bag.n.04",
+    "frequency": "f",
+    "training_targets": 198,
+    "training_images": 198,
+    "training_videos": 9
+  },
+  {
+    "vocabulary_index": 35,
+    "name": "suitcase",
+    "synset": "bag.n.06",
+    "frequency": "f",
+    "training_targets": 15,
+    "training_images": 15,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 40,
+    "name": "ball",
+    "synset": "ball.n.06",
+    "frequency": "f",
+    "training_targets": 875,
+    "training_images": 497,
+    "training_videos": 16
+  },
+  {
+    "vocabulary_index": 57,
+    "name": "baseball_bat",
+    "synset": "baseball_bat.n.01",
+    "frequency": "f",
+    "training_targets": 77,
+    "training_images": 77,
+    "training_videos": 2
+  },
+  {
+    "vocabulary_index": 59,
+    "name": "baseball_glove",
+    "synset": "baseball_glove.n.01",
+    "frequency": "f",
+    "training_targets": 6,
+    "training_images": 6,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 61,
+    "name": "basketball",
+    "synset": "basketball.n.02",
+    "frequency": "c",
+    "training_targets": 73,
+    "training_images": 73,
+    "training_videos": 2
+  },
+  {
+    "vocabulary_index": 76,
+    "name": "bed",
+    "synset": "bed.n.01",
+    "frequency": "f",
+    "training_targets": 40,
+    "training_images": 40,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 78,
+    "name": "bedspread",
+    "synset": "bedspread.n.01",
+    "frequency": "f",
+    "training_targets": 60,
+    "training_images": 60,
+    "training_videos": 3
+  },
+  {
+    "vocabulary_index": 79,
+    "name": "cow",
+    "synset": "beef.n.01",
+    "frequency": "f",
+    "training_targets": 291,
+    "training_images": 161,
+    "training_videos": 5
+  },
+  {
+    "vocabulary_index": 89,
+    "name": "bench",
+    "synset": "bench.n.01",
+    "frequency": "f",
+    "training_targets": 40,
+    "training_images": 40,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 93,
+    "name": "bicycle",
+    "synset": "bicycle.n.01",
+    "frequency": "f",
+    "training_targets": 448,
+    "training_images": 334,
+    "training_videos": 13
+  },
+  {
+    "vocabulary_index": 98,
+    "name": "bird",
+    "synset": "bird.n.01",
+    "frequency": "f",
+    "training_targets": 111,
+    "training_images": 93,
+    "training_videos": 4
+  },
+  {
+    "vocabulary_index": 109,
+    "name": "blanket",
+    "synset": "blanket.n.01",
+    "frequency": "f",
+    "training_targets": 283,
+    "training_images": 283,
+    "training_videos": 9
+  },
+  {
+    "vocabulary_index": 117,
+    "name": "boat",
+    "synset": "boat.n.01",
+    "frequency": "f",
+    "training_targets": 143,
+    "training_images": 141,
+    "training_videos": 4
+  },
+  {
+    "vocabulary_index": 126,
+    "name": "book",
+    "synset": "book.n.01",
+    "frequency": "f",
+    "training_targets": 524,
+    "training_images": 345,
+    "training_videos": 14
+  },
+  {
+    "vocabulary_index": 128,
+    "name": "booklet",
+    "synset": "booklet.n.01",
+    "frequency": "c",
+    "training_targets": 34,
+    "training_images": 34,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 132,
+    "name": "bottle",
+    "synset": "bottle.n.01",
+    "frequency": "f",
+    "training_targets": 422,
+    "training_images": 408,
+    "training_videos": 22
+  },
+  {
+    "vocabulary_index": 138,
+    "name": "bowl",
+    "synset": "bowl.n.03",
+    "frequency": "f",
+    "training_targets": 175,
+    "training_images": 151,
+    "training_videos": 5
+  },
+  {
+    "vocabulary_index": 152,
+    "name": "briefcase",
+    "synset": "briefcase.n.01",
+    "frequency": "c",
+    "training_targets": 20,
+    "training_images": 20,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 155,
+    "name": "broom",
+    "synset": "broom.n.01",
+    "frequency": "c",
+    "training_targets": 157,
+    "training_images": 157,
+    "training_videos": 5
+  },
+  {
+    "vocabulary_index": 159,
+    "name": "bucket",
+    "synset": "bucket.n.01",
+    "frequency": "f",
+    "training_targets": 112,
+    "training_images": 112,
+    "training_videos": 3
+  },
+  {
+    "vocabulary_index": 161,
+    "name": "bull",
+    "synset": "bull.n.11",
+    "frequency": "c",
+    "training_targets": 40,
+    "training_images": 40,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 172,
+    "name": "bus_(vehicle)",
+    "synset": "bus.n.01",
+    "frequency": "f",
+    "training_targets": 180,
+    "training_images": 170,
+    "training_videos": 14
+  },
+  {
+    "vocabulary_index": 177,
+    "name": "cab_(taxi)",
+    "synset": "cab.n.03",
+    "frequency": "f",
+    "training_targets": 300,
+    "training_images": 267,
+    "training_videos": 12
+  },
+  {
+    "vocabulary_index": 187,
+    "name": "camel",
+    "synset": "camel.n.01",
+    "frequency": "c",
+    "training_targets": 31,
+    "training_images": 31,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 188,
+    "name": "camera",
+    "synset": "camera.n.01",
+    "frequency": "f",
+    "training_targets": 96,
+    "training_images": 96,
+    "training_videos": 6
+  },
+  {
+    "vocabulary_index": 191,
+    "name": "can",
+    "synset": "can.n.01",
+    "frequency": "f",
+    "training_targets": 38,
+    "training_images": 38,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 193,
+    "name": "candle",
+    "synset": "candle.n.01",
+    "frequency": "f",
+    "training_targets": 40,
+    "training_images": 40,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 198,
+    "name": "canister",
+    "synset": "canister.n.02",
+    "frequency": "c",
+    "training_targets": 121,
+    "training_images": 23,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 203,
+    "name": "bottle_cap",
+    "synset": "cap.n.02",
+    "frequency": "f",
+    "training_targets": 75,
+    "training_images": 75,
+    "training_videos": 4
+  },
+  {
+    "vocabulary_index": 206,
+    "name": "car_(automobile)",
+    "synset": "car.n.01",
+    "frequency": "f",
+    "training_targets": 4522,
+    "training_images": 2390,
+    "training_videos": 104
+  },
+  {
+    "vocabulary_index": 216,
+    "name": "carrot",
+    "synset": "carrot.n.01",
+    "frequency": "f",
+    "training_targets": 31,
+    "training_images": 19,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 219,
+    "name": "carton",
+    "synset": "carton.n.02",
+    "frequency": "c",
+    "training_targets": 208,
+    "training_images": 208,
+    "training_videos": 10
+  },
+  {
+    "vocabulary_index": 224,
+    "name": "cat",
+    "synset": "cat.n.01",
+    "frequency": "f",
+    "training_targets": 501,
+    "training_images": 421,
+    "training_videos": 12
+  },
+  {
+    "vocabulary_index": 229,
+    "name": "cellular_telephone",
+    "synset": "cellular_telephone.n.01",
+    "frequency": "f",
+    "training_targets": 443,
+    "training_images": 425,
+    "training_videos": 21
+  },
+  {
+    "vocabulary_index": 231,
+    "name": "chair",
+    "synset": "chair.n.01",
+    "frequency": "f",
+    "training_targets": 216,
+    "training_images": 216,
+    "training_videos": 7
+  },
+  {
+    "vocabulary_index": 240,
+    "name": "chicken_(animal)",
+    "synset": "chicken.n.02",
+    "frequency": "c",
+    "training_targets": 15,
+    "training_images": 15,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 253,
+    "name": "chopstick",
+    "synset": "chopstick.n.01",
+    "frequency": "f",
+    "training_targets": 64,
+    "training_images": 40,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 258,
+    "name": "cigarette",
+    "synset": "cigarette.n.01",
+    "frequency": "f",
+    "training_targets": 49,
+    "training_images": 49,
+    "training_videos": 4
+  },
+  {
+    "vocabulary_index": 284,
+    "name": "coffee_table",
+    "synset": "coffee_table.n.01",
+    "frequency": "f",
+    "training_targets": 34,
+    "training_images": 34,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 285,
+    "name": "coffeepot",
+    "synset": "coffeepot.n.01",
+    "frequency": "c",
+    "training_targets": 31,
+    "training_images": 31,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 298,
+    "name": "control",
+    "synset": "control.n.09",
+    "frequency": "f",
+    "training_targets": 47,
+    "training_images": 47,
+    "training_videos": 2
+  },
+  {
+    "vocabulary_index": 310,
+    "name": "cornet",
+    "synset": "cornet.n.01",
+    "frequency": "c",
+    "training_targets": 62,
+    "training_images": 62,
+    "training_videos": 2
+  },
+  {
+    "vocabulary_index": 337,
+    "name": "crumb",
+    "synset": "crumb.n.03",
+    "frequency": "f",
+    "training_targets": 29,
+    "training_images": 29,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 343,
+    "name": "cup",
+    "synset": "cup.n.01",
+    "frequency": "f",
+    "training_targets": 892,
+    "training_images": 682,
+    "training_videos": 29
+  },
+  {
+    "vocabulary_index": 349,
+    "name": "curtain",
+    "synset": "curtain.n.01",
+    "frequency": "f",
+    "training_targets": 63,
+    "training_images": 63,
+    "training_videos": 2
+  },
+  {
+    "vocabulary_index": 358,
+    "name": "deer",
+    "synset": "deer.n.01",
+    "frequency": "c",
+    "training_targets": 120,
+    "training_images": 80,
+    "training_videos": 2
+  },
+  {
+    "vocabulary_index": 368,
+    "name": "dish",
+    "synset": "dish.n.01",
+    "frequency": "f",
+    "training_targets": 27,
+    "training_images": 27,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 374,
+    "name": "dispenser",
+    "synset": "dispenser.n.01",
+    "frequency": "f",
+    "training_targets": 75,
+    "training_images": 75,
+    "training_videos": 2
+  },
+  {
+    "vocabulary_index": 377,
+    "name": "dog",
+    "synset": "dog.n.01",
+    "frequency": "f",
+    "training_targets": 1091,
+    "training_images": 863,
+    "training_videos": 36
+  },
+  {
+    "vocabulary_index": 389,
+    "name": "drawer",
+    "synset": "drawer.n.01",
+    "frequency": "f",
+    "training_targets": 66,
+    "training_images": 37,
+    "training_videos": 2
+  },
+  {
+    "vocabulary_index": 392,
+    "name": "dress_hat",
+    "synset": "dress_hat.n.01",
+    "frequency": "c",
+    "training_targets": 40,
+    "training_images": 40,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 398,
+    "name": "drum_(musical_instrument)",
+    "synset": "drum.n.01",
+    "frequency": "c",
+    "training_targets": 91,
+    "training_images": 31,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 408,
+    "name": "earphone",
+    "synset": "earphone.n.01",
+    "frequency": "f",
+    "training_targets": 18,
+    "training_images": 18,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 414,
+    "name": "egg",
+    "synset": "egg.n.02",
+    "frequency": "f",
+    "training_targets": 103,
+    "training_images": 39,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 420,
+    "name": "refrigerator",
+    "synset": "electric_refrigerator.n.01",
+    "frequency": "f",
+    "training_targets": 17,
+    "training_images": 17,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 421,
+    "name": "elephant",
+    "synset": "elephant.n.01",
+    "frequency": "f",
+    "training_targets": 370,
+    "training_images": 119,
+    "training_videos": 3
+  },
+  {
+    "vocabulary_index": 428,
+    "name": "fan",
+    "synset": "fan.n.01",
+    "frequency": "f",
+    "training_targets": 80,
+    "training_images": 80,
+    "training_videos": 2
+  },
+  {
+    "vocabulary_index": 429,
+    "name": "faucet",
+    "synset": "faucet.n.01",
+    "frequency": "f",
+    "training_targets": 80,
+    "training_images": 80,
+    "training_videos": 2
+  },
+  {
+    "vocabulary_index": 446,
+    "name": "fish",
+    "synset": "fish.n.01",
+    "frequency": "f",
+    "training_targets": 608,
+    "training_images": 198,
+    "training_videos": 5
+  },
+  {
+    "vocabulary_index": 450,
+    "name": "flag",
+    "synset": "flag.n.01",
+    "frequency": "f",
+    "training_targets": 107,
+    "training_images": 107,
+    "training_videos": 3
+  },
+  {
+    "vocabulary_index": 468,
+    "name": "fork",
+    "synset": "fork.n.01",
+    "frequency": "f",
+    "training_targets": 28,
+    "training_images": 28,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 493,
+    "name": "gift_wrap",
+    "synset": "gift_wrap.n.01",
+    "frequency": "c",
+    "training_targets": 35,
+    "training_images": 35,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 495,
+    "name": "giraffe",
+    "synset": "giraffe.n.01",
+    "frequency": "f",
+    "training_targets": 181,
+    "training_images": 78,
+    "training_videos": 2
+  },
+  {
+    "vocabulary_index": 519,
+    "name": "grocery_bag",
+    "synset": "grocery_bag.n.01",
+    "frequency": "c",
+    "training_targets": 279,
+    "training_images": 234,
+    "training_videos": 13
+  },
+  {
+    "vocabulary_index": 520,
+    "name": "guitar",
+    "synset": "guitar.n.01",
+    "frequency": "f",
+    "training_targets": 198,
+    "training_images": 105,
+    "training_videos": 3
+  },
+  {
+    "vocabulary_index": 522,
+    "name": "gun",
+    "synset": "gun.n.01",
+    "frequency": "c",
+    "training_targets": 50,
+    "training_images": 50,
+    "training_videos": 2
+  },
+  {
+    "vocabulary_index": 539,
+    "name": "handle",
+    "synset": "handle.n.01",
+    "frequency": "f",
+    "training_targets": 61,
+    "training_images": 61,
+    "training_videos": 2
+  },
+  {
+    "vocabulary_index": 543,
+    "name": "hat",
+    "synset": "hat.n.01",
+    "frequency": "f",
+    "training_targets": 63,
+    "training_images": 63,
+    "training_videos": 2
+  },
+  {
+    "vocabulary_index": 549,
+    "name": "headscarf",
+    "synset": "headscarf.n.01",
+    "frequency": "c",
+    "training_targets": 15,
+    "training_images": 15,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 568,
+    "name": "horse",
+    "synset": "horse.n.01",
+    "frequency": "f",
+    "training_targets": 303,
+    "training_images": 235,
+    "training_videos": 7
+  },
+  {
+    "vocabulary_index": 583,
+    "name": "igniter",
+    "synset": "igniter.n.01",
+    "frequency": "c",
+    "training_targets": 47,
+    "training_images": 47,
+    "training_videos": 4
+  },
+  {
+    "vocabulary_index": 588,
+    "name": "jacket",
+    "synset": "jacket.n.01",
+    "frequency": "f",
+    "training_targets": 118,
+    "training_images": 118,
+    "training_videos": 5
+  },
+  {
+    "vocabulary_index": 592,
+    "name": "jeep",
+    "synset": "jeep.n.01",
+    "frequency": "c",
+    "training_targets": 5,
+    "training_images": 5,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 600,
+    "name": "kayak",
+    "synset": "kayak.n.01",
+    "frequency": "c",
+    "training_targets": 84,
+    "training_images": 75,
+    "training_videos": 2
+  },
+  {
+    "vocabulary_index": 614,
+    "name": "knife",
+    "synset": "knife.n.01",
+    "frequency": "f",
+    "training_targets": 38,
+    "training_images": 38,
+    "training_videos": 2
+  },
+  {
+    "vocabulary_index": 621,
+    "name": "ladle",
+    "synset": "ladle.n.01",
+    "frequency": "c",
+    "training_targets": 49,
+    "training_images": 49,
+    "training_videos": 2
+  },
+  {
+    "vocabulary_index": 625,
+    "name": "lamp",
+    "synset": "lamp.n.02",
+    "frequency": "f",
+    "training_targets": 9,
+    "training_images": 9,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 629,
+    "name": "lanyard",
+    "synset": "lanyard.n.02",
+    "frequency": "f",
+    "training_targets": 12,
+    "training_images": 12,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 630,
+    "name": "laptop_computer",
+    "synset": "laptop.n.01",
+    "frequency": "f",
+    "training_targets": 31,
+    "training_images": 31,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 632,
+    "name": "latch",
+    "synset": "latch.n.02",
+    "frequency": "f",
+    "training_targets": 29,
+    "training_images": 29,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 640,
+    "name": "lettuce",
+    "synset": "lettuce.n.02",
+    "frequency": "f",
+    "training_targets": 2,
+    "training_images": 2,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 648,
+    "name": "lion",
+    "synset": "lion.n.01",
+    "frequency": "c",
+    "training_targets": 428,
+    "training_images": 151,
+    "training_videos": 4
+  },
+  {
+    "vocabulary_index": 657,
+    "name": "magazine",
+    "synset": "magazine.n.02",
+    "frequency": "f",
+    "training_targets": 59,
+    "training_images": 59,
+    "training_videos": 2
+  },
+  {
+    "vocabulary_index": 684,
+    "name": "microphone",
+    "synset": "microphone.n.01",
+    "frequency": "f",
+    "training_targets": 88,
+    "training_images": 88,
+    "training_videos": 3
+  },
+  {
+    "vocabulary_index": 691,
+    "name": "minivan",
+    "synset": "minivan.n.01",
+    "frequency": "f",
+    "training_targets": 14,
+    "training_images": 14,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 696,
+    "name": "money",
+    "synset": "money.n.03",
+    "frequency": "c",
+    "training_targets": 4,
+    "training_images": 3,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 698,
+    "name": "monkey",
+    "synset": "monkey.n.01",
+    "frequency": "c",
+    "training_targets": 215,
+    "training_images": 119,
+    "training_videos": 3
+  },
+  {
+    "vocabulary_index": 700,
+    "name": "motor_scooter",
+    "synset": "motor_scooter.n.01",
+    "frequency": "f",
+    "training_targets": 78,
+    "training_images": 74,
+    "training_videos": 5
+  },
+  {
+    "vocabulary_index": 702,
+    "name": "motorcycle",
+    "synset": "motorcycle.n.01",
+    "frequency": "f",
+    "training_targets": 162,
+    "training_images": 148,
+    "training_videos": 5
+  },
+  {
+    "vocabulary_index": 712,
+    "name": "napkin",
+    "synset": "napkin.n.01",
+    "frequency": "f",
+    "training_targets": 107,
+    "training_images": 107,
+    "training_videos": 3
+  },
+  {
+    "vocabulary_index": 714,
+    "name": "necklace",
+    "synset": "necklace.n.01",
+    "frequency": "f",
+    "training_targets": 15,
+    "training_images": 15,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 723,
+    "name": "notebook",
+    "synset": "notebook.n.01",
+    "frequency": "f",
+    "training_targets": 156,
+    "training_images": 156,
+    "training_videos": 6
+  },
+  {
+    "vocabulary_index": 741,
+    "name": "packet",
+    "synset": "packet.n.03",
+    "frequency": "c",
+    "training_targets": 62,
+    "training_images": 62,
+    "training_videos": 2
+  },
+  {
+    "vocabulary_index": 744,
+    "name": "paddle",
+    "synset": "paddle.n.04",
+    "frequency": "f",
+    "training_targets": 122,
+    "training_images": 76,
+    "training_videos": 2
+  },
+  {
+    "vocabulary_index": 756,
+    "name": "paper_towel",
+    "synset": "paper_towel.n.01",
+    "frequency": "f",
+    "training_targets": 10,
+    "training_images": 10,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 766,
+    "name": "parrot",
+    "synset": "parrot.n.01",
+    "frequency": "c",
+    "training_targets": 79,
+    "training_images": 40,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 779,
+    "name": "pelican",
+    "synset": "pelican.n.01",
+    "frequency": "c",
+    "training_targets": 40,
+    "training_images": 40,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 780,
+    "name": "pen",
+    "synset": "pen.n.01",
+    "frequency": "f",
+    "training_targets": 166,
+    "training_images": 166,
+    "training_videos": 8
+  },
+  {
+    "vocabulary_index": 792,
+    "name": "person",
+    "synset": "person.n.01",
+    "frequency": "f",
+    "training_targets": 29125,
+    "training_images": 12996,
+    "training_videos": 418
+  },
+  {
+    "vocabulary_index": 797,
+    "name": "piano",
+    "synset": "piano.n.01",
+    "frequency": "f",
+    "training_targets": 80,
+    "training_images": 80,
+    "training_videos": 2
+  },
+  {
+    "vocabulary_index": 798,
+    "name": "pickle",
+    "synset": "pickle.n.01",
+    "frequency": "f",
+    "training_targets": 4,
+    "training_images": 4,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 799,
+    "name": "pickup_truck",
+    "synset": "pickup.n.01",
+    "frequency": "f",
+    "training_targets": 147,
+    "training_images": 143,
+    "training_videos": 12
+  },
+  {
+    "vocabulary_index": 801,
+    "name": "pigeon",
+    "synset": "pigeon.n.01",
+    "frequency": "c",
+    "training_targets": 105,
+    "training_images": 40,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 803,
+    "name": "pillow",
+    "synset": "pillow.n.01",
+    "frequency": "f",
+    "training_targets": 385,
+    "training_images": 309,
+    "training_videos": 11
+  },
+  {
+    "vocabulary_index": 810,
+    "name": "pipe",
+    "synset": "pipe.n.02",
+    "frequency": "f",
+    "training_targets": 34,
+    "training_images": 34,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 817,
+    "name": "plate",
+    "synset": "plate.n.04",
+    "frequency": "f",
+    "training_targets": 60,
+    "training_images": 60,
+    "training_videos": 3
+  },
+  {
+    "vocabulary_index": 820,
+    "name": "pliers",
+    "synset": "pliers.n.01",
+    "frequency": "c",
+    "training_targets": 19,
+    "training_images": 19,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 834,
+    "name": "poster",
+    "synset": "poster.n.01",
+    "frequency": "f",
+    "training_targets": 31,
+    "training_images": 31,
+    "training_videos": 2
+  },
+  {
+    "vocabulary_index": 835,
+    "name": "pot",
+    "synset": "pot.n.01",
+    "frequency": "f",
+    "training_targets": 234,
+    "training_images": 234,
+    "training_videos": 9
+  },
+  {
+    "vocabulary_index": 853,
+    "name": "pumpkin",
+    "synset": "pumpkin.n.02",
+    "frequency": "c",
+    "training_targets": 40,
+    "training_images": 40,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 860,
+    "name": "rabbit",
+    "synset": "rabbit.n.01",
+    "frequency": "c",
+    "training_targets": 119,
+    "training_images": 119,
+    "training_videos": 3
+  },
+  {
+    "vocabulary_index": 862,
+    "name": "racket",
+    "synset": "racket.n.04",
+    "frequency": "c",
+    "training_targets": 29,
+    "training_images": 29,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 867,
+    "name": "raft",
+    "synset": "raft.n.01",
+    "frequency": "c",
+    "training_targets": 63,
+    "training_images": 63,
+    "training_videos": 2
+  },
+  {
+    "vocabulary_index": 880,
+    "name": "remote_control",
+    "synset": "remote_control.n.01",
+    "frequency": "f",
+    "training_targets": 28,
+    "training_images": 28,
+    "training_videos": 3
+  },
+  {
+    "vocabulary_index": 881,
+    "name": "rhinoceros",
+    "synset": "rhinoceros.n.01",
+    "frequency": "c",
+    "training_targets": 120,
+    "training_images": 40,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 899,
+    "name": "saddle_blanket",
+    "synset": "saddle_blanket.n.01",
+    "frequency": "f",
+    "training_targets": 30,
+    "training_images": 30,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 911,
+    "name": "sandwich",
+    "synset": "sandwich.n.01",
+    "frequency": "f",
+    "training_targets": 159,
+    "training_images": 92,
+    "training_videos": 6
+  },
+  {
+    "vocabulary_index": 921,
+    "name": "school_bus",
+    "synset": "school_bus.n.01",
+    "frequency": "c",
+    "training_targets": 29,
+    "training_images": 29,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 922,
+    "name": "scissors",
+    "synset": "scissors.n.01",
+    "frequency": "f",
+    "training_targets": 37,
+    "training_images": 37,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 923,
+    "name": "scoreboard",
+    "synset": "scoreboard.n.01",
+    "frequency": "f",
+    "training_targets": 14,
+    "training_images": 14,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 925,
+    "name": "screwdriver",
+    "synset": "screwdriver.n.01",
+    "frequency": "c",
+    "training_targets": 3,
+    "training_images": 3,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 927,
+    "name": "sculpture",
+    "synset": "sculpture.n.01",
+    "frequency": "c",
+    "training_targets": 40,
+    "training_images": 40,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 934,
+    "name": "shampoo",
+    "synset": "shampoo.n.01",
+    "frequency": "c",
+    "training_targets": 14,
+    "training_images": 14,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 942,
+    "name": "sheep",
+    "synset": "sheep.n.01",
+    "frequency": "f",
+    "training_targets": 40,
+    "training_images": 40,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 946,
+    "name": "shirt",
+    "synset": "shirt.n.01",
+    "frequency": "f",
+    "training_targets": 65,
+    "training_images": 65,
+    "training_videos": 3
+  },
+  {
+    "vocabulary_index": 947,
+    "name": "shoe",
+    "synset": "shoe.n.01",
+    "frequency": "f",
+    "training_targets": 80,
+    "training_images": 40,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 950,
+    "name": "short_pants",
+    "synset": "short_pants.n.01",
+    "frequency": "f",
+    "training_targets": 33,
+    "training_images": 33,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 952,
+    "name": "shoulder_bag",
+    "synset": "shoulder_bag.n.01",
+    "frequency": "f",
+    "training_targets": 21,
+    "training_images": 21,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 953,
+    "name": "shovel",
+    "synset": "shovel.n.01",
+    "frequency": "c",
+    "training_targets": 36,
+    "training_images": 36,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 961,
+    "name": "skateboard",
+    "synset": "skateboard.n.01",
+    "frequency": "f",
+    "training_targets": 195,
+    "training_images": 160,
+    "training_videos": 4
+  },
+  {
+    "vocabulary_index": 963,
+    "name": "ski",
+    "synset": "ski.n.01",
+    "frequency": "f",
+    "training_targets": 80,
+    "training_images": 40,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 966,
+    "name": "ski_pole",
+    "synset": "ski_pole.n.01",
+    "frequency": "f",
+    "training_targets": 7,
+    "training_images": 7,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 969,
+    "name": "sled",
+    "synset": "sled.n.01",
+    "frequency": "c",
+    "training_targets": 80,
+    "training_images": 29,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 972,
+    "name": "slipper_(footwear)",
+    "synset": "slipper.n.01",
+    "frequency": "c",
+    "training_targets": 24,
+    "training_images": 18,
+    "training_videos": 2
+  },
+  {
+    "vocabulary_index": 978,
+    "name": "soap",
+    "synset": "soap.n.01",
+    "frequency": "f",
+    "training_targets": 8,
+    "training_images": 8,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 981,
+    "name": "sofa",
+    "synset": "sofa.n.01",
+    "frequency": "f",
+    "training_targets": 66,
+    "training_images": 66,
+    "training_videos": 2
+  },
+  {
+    "vocabulary_index": 992,
+    "name": "spatula",
+    "synset": "spatula.n.02",
+    "frequency": "f",
+    "training_targets": 18,
+    "training_images": 18,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 994,
+    "name": "spectacles",
+    "synset": "spectacles.n.01",
+    "frequency": "f",
+    "training_targets": 78,
+    "training_images": 78,
+    "training_videos": 3
+  },
+  {
+    "vocabulary_index": 998,
+    "name": "sponge",
+    "synset": "sponge.n.01",
+    "frequency": "c",
+    "training_targets": 39,
+    "training_images": 39,
+    "training_videos": 2
+  },
+  {
+    "vocabulary_index": 999,
+    "name": "spoon",
+    "synset": "spoon.n.01",
+    "frequency": "f",
+    "training_targets": 131,
+    "training_images": 116,
+    "training_videos": 6
+  },
+  {
+    "vocabulary_index": 1020,
+    "name": "stove",
+    "synset": "stove.n.01",
+    "frequency": "f",
+    "training_targets": 32,
+    "training_images": 32,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 1025,
+    "name": "street_sign",
+    "synset": "street_sign.n.01",
+    "frequency": "f",
+    "training_targets": 16,
+    "training_images": 16,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 1036,
+    "name": "surfboard",
+    "synset": "surfboard.n.01",
+    "frequency": "f",
+    "training_targets": 80,
+    "training_images": 80,
+    "training_videos": 2
+  },
+  {
+    "vocabulary_index": 1041,
+    "name": "sweater",
+    "synset": "sweater.n.01",
+    "frequency": "f",
+    "training_targets": 76,
+    "training_images": 76,
+    "training_videos": 4
+  },
+  {
+    "vocabulary_index": 1045,
+    "name": "sword",
+    "synset": "sword.n.01",
+    "frequency": "c",
+    "training_targets": 38,
+    "training_images": 38,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 1050,
+    "name": "table_lamp",
+    "synset": "table_lamp.n.01",
+    "frequency": "c",
+    "training_targets": 39,
+    "training_images": 39,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 1067,
+    "name": "teacup",
+    "synset": "teacup.n.02",
+    "frequency": "c",
+    "training_targets": 27,
+    "training_images": 27,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 1071,
+    "name": "telephone",
+    "synset": "telephone.n.01",
+    "frequency": "f",
+    "training_targets": 13,
+    "training_images": 13,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 1076,
+    "name": "television_set",
+    "synset": "television_receiver.n.01",
+    "frequency": "f",
+    "training_targets": 31,
+    "training_images": 31,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 1087,
+    "name": "tiger",
+    "synset": "tiger.n.02",
+    "frequency": "c",
+    "training_targets": 160,
+    "training_images": 120,
+    "training_videos": 3
+  },
+  {
+    "vocabulary_index": 1100,
+    "name": "toolbox",
+    "synset": "toolbox.n.01",
+    "frequency": "c",
+    "training_targets": 3,
+    "training_images": 3,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 1101,
+    "name": "toothbrush",
+    "synset": "toothbrush.n.01",
+    "frequency": "f",
+    "training_targets": 81,
+    "training_images": 63,
+    "training_videos": 2
+  },
+  {
+    "vocabulary_index": 1102,
+    "name": "toothpaste",
+    "synset": "toothpaste.n.01",
+    "frequency": "f",
+    "training_targets": 26,
+    "training_images": 26,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 1104,
+    "name": "cover",
+    "synset": "top.n.09",
+    "frequency": "f",
+    "training_targets": 21,
+    "training_images": 21,
+    "training_videos": 3
+  },
+  {
+    "vocabulary_index": 1107,
+    "name": "towel",
+    "synset": "towel.n.01",
+    "frequency": "f",
+    "training_targets": 341,
+    "training_images": 341,
+    "training_videos": 14
+  },
+  {
+    "vocabulary_index": 1109,
+    "name": "toy",
+    "synset": "toy.n.03",
+    "frequency": "f",
+    "training_targets": 81,
+    "training_images": 81,
+    "training_videos": 3
+  },
+  {
+    "vocabulary_index": 1110,
+    "name": "tractor_(farm_equipment)",
+    "synset": "tractor.n.01",
+    "frequency": "c",
+    "training_targets": 40,
+    "training_images": 40,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 1116,
+    "name": "tray",
+    "synset": "tray.n.01",
+    "frequency": "f",
+    "training_targets": 31,
+    "training_images": 31,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 1121,
+    "name": "trousers",
+    "synset": "trouser.n.01",
+    "frequency": "f",
+    "training_targets": 11,
+    "training_images": 11,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 1122,
+    "name": "truck",
+    "synset": "truck.n.01",
+    "frequency": "f",
+    "training_targets": 639,
+    "training_images": 460,
+    "training_videos": 25
+  },
+  {
+    "vocabulary_index": 1129,
+    "name": "turtle",
+    "synset": "turtle.n.02",
+    "frequency": "c",
+    "training_targets": 40,
+    "training_images": 40,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 1132,
+    "name": "umbrella",
+    "synset": "umbrella.n.01",
+    "frequency": "f",
+    "training_targets": 39,
+    "training_images": 39,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 1137,
+    "name": "vacuum_cleaner",
+    "synset": "vacuum.n.04",
+    "frequency": "c",
+    "training_targets": 76,
+    "training_images": 76,
+    "training_videos": 3
+  },
+  {
+    "vocabulary_index": 1152,
+    "name": "walking_stick",
+    "synset": "walking_stick.n.01",
+    "frequency": "c",
+    "training_targets": 35,
+    "training_images": 26,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 1160,
+    "name": "watch",
+    "synset": "watch.n.01",
+    "frequency": "f",
+    "training_targets": 12,
+    "training_images": 12,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 1181,
+    "name": "wig",
+    "synset": "wig.n.01",
+    "frequency": "c",
+    "training_targets": 8,
+    "training_images": 8,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 1187,
+    "name": "wine_bottle",
+    "synset": "wine_bottle.n.01",
+    "frequency": "f",
+    "training_targets": 9,
+    "training_images": 9,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 1189,
+    "name": "wineglass",
+    "synset": "wineglass.n.01",
+    "frequency": "f",
+    "training_targets": 33,
+    "training_images": 33,
+    "training_videos": 1
+  },
+  {
+    "vocabulary_index": 1201,
+    "name": "zebra",
+    "synset": "zebra.n.01",
+    "frequency": "f",
+    "training_targets": 160,
+    "training_images": 120,
+    "training_videos": 3
+  }
+]

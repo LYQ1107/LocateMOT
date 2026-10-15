@@ -387,6 +387,26 @@ No new accuracy/speed claim from this storage test.
 
 ## Training, adaptation and remaining work
 
+Broader legal TRAIN-source availability is now indexed without new model
+calls/features: MOT40904frames/43videos (2664MOT17,33772Dance,4468MOT20),
+RMOT1814local frames/9fit videos/4350expression files, andTAO18274annotation
+images/500train videos. All indexed image paths exist. TAO provides52978
+eligible Base annotation references across175frozen-vocabulary classes,
+versus only9classes/64images in the existing category SFT. All175class
+synsets/frequencies and52978image/annotation links validate against actual
+train-only sources;6172nonBase and50outside-vocabulary annotations are not
+supervised or converted into negatives. All1251images with no eligible Base
+label remain indexed. Full1203input vocabulary stays unchanged.
+
+The index uses33.85MB of metadata under a128MiB export reserve; conservative
+registered upper26091442957bytes<25GiB. It is source availability, not rendered
+JEV SFT, native proposals, actual training exposure, new large-scale training,
+or joint Ground+One gradient optimization. RMOT local-frame listing is not an
+external sequence-length completeness proof. Current600paired runs continue
+unchanged. Index/coverage/validation live under
+`training_data/broader_legal_scale_index_v1`; generator and source plan are
+`build_training_scale_index.py` and `training_scale_index_v1.json`.
+
 Original One100real uncorrected rollout→500SFT and Compactjoint1200real72frame
 rollout→native1200 provide offline iterative own-state training. Not per-gradient
 on-policy resampling; the latter is a research direction, not an invented gate.

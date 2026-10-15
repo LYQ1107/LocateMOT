@@ -1,0 +1,14 @@
+{
+  "status": "ACTUAL_LEGAL_TRAINING_INDEX_COUNTS_AND_ALL_BASE_TARGET_REFERENCES_VALIDATED",
+  "MOT_frames": 40904,
+  "RMOT_local_frames": 1814,
+  "RMOT_expression_files": 4350,
+  "TAO_annotation_images": 18274,
+  "Base_annotation_references": 52978,
+  "Base_classes": 175,
+  "all_indexed_image_availability_true": true,
+  "all_RMOT_videos_exact_legal_fit": true,
+  "TAO_eligible_and_non_supervised_annotations_conserve_all59200": true,
+  "new_training_or_model_calls": false,
+  "full_goal_complete": false
+}

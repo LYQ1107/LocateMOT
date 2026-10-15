@@ -1,0 +1,35 @@
+{
+  "status": "SOURCE_REFERENCE_INDEX_FILES_PRESERVED_LOCALLY",
+  "files": [
+    {
+      "name": "Base_class_coverage.json",
+      "bytes": 33913
+    },
+    {
+      "name": "mot_frames.jsonl",
+      "bytes": 17597580
+    },
+    {
+      "name": "rmot_queries.jsonl",
+      "bytes": 1922429
+    },
+    {
+      "name": "rmot_videos.jsonl",
+      "bytes": 688545
+    },
+    {
+      "name": "summary.json",
+      "bytes": 3689
+    },
+    {
+      "name": "tao_train_frames.jsonl",
+      "bytes": 13602345
+    },
+    {
+      "name": "validation.json",
+      "bytes": 509
+    }
+  ],
+  "large_raw_source_indices_regenerable_from_published_builder_and_existing_dataset_sources": true,
+  "not_feature_cache_or_model_training": true
+}
