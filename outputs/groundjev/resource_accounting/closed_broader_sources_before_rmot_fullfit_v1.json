@@ -1,0 +1,48 @@
+{
+  "status": "COMPLETED_IMMUTABLE_RESERVATIONS_CLOSED_TO_ACTUAL_BYTES_NO_DELETION",
+  "prior_upper_bytes": 26773193834,
+  "closures": [
+    {
+      "name": "completed1056_source_exact_ROI",
+      "prior_cap": 805306368,
+      "actual_bytes": 474314908,
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest",
+      "measurement": "completed native archive index plus exactFP32 NPZ; original collector exit0"
+    },
+    {
+      "name": "completed_full_v3_groups",
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1",
+      "prior_cap": 67108864,
+      "actual_bytes": 44442675,
+      "files": 284,
+      "measurement": "all completed non-model/checkpoint files; original producers exited0; ongoing training reads immutable course only"
+    },
+    {
+      "name": "immutable_shared6000_course",
+      "path": "outputs/groundjev/training_data/broader_shared_onejev6000_v2_fla",
+      "prior_cap": 67108864,
+      "actual_bytes": 9982915,
+      "files": 3,
+      "measurement": "all completed non-model/checkpoint files; original producers exited0; ongoing training reads immutable course only"
+    },
+    {
+      "name": "completed_training_backend_diagnostics",
+      "path": "outputs/groundjev/optimization/training_backend_fla_probe_v2",
+      "prior_cap": 33554432,
+      "actual_bytes": 7468654,
+      "files": 27,
+      "measurement": "all completed non-model/checkpoint files; original producers exited0; ongoing training reads immutable course only"
+    }
+  ],
+  "closed_upper_bytes": 26336324458,
+  "new_RMOT_reserves": {
+    "native_archive": 402653184,
+    "scope_and_group_export": 50331648,
+    "future_curriculum_refs": 16777216
+  },
+  "combined_registered_feature_upper_bytes": 26806086506,
+  "global_temporary_feature_budget_bytes": 26843545600,
+  "remaining_bytes": 37459094,
+  "files_deleted": 0,
+  "checkpoints_and_original_data_preserved": true
+}
