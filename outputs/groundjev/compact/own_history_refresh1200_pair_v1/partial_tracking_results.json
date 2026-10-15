@@ -1,0 +1,270 @@
+{
+  "status": "PARTIAL_COMPACT_HISTORY_REFRESH_OFFICIAL_RESULTS_FIVE_SCOPES_NOT_COMPLETE",
+  "original_owner_session": 70970,
+  "completed": {
+    "mot_full1203_before": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/own_history_refresh1200_pair_v1/reference_runs/mot_full1203_before",
+      "frames": 1203,
+      "native_candidates": 13664,
+      "all_candidates_and_rejected_frames_validated": true,
+      "metrics": {
+        "HOTA": 0.2631573142603841,
+        "DetA": 0.4518423629241236,
+        "AssA": 0.15347649228497243,
+        "IDF1": 0.30632943895236875,
+        "IDSW": 165,
+        "FP": 579,
+        "FN": 1962
+      },
+      "base_novel": null,
+      "checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/rmot_native72_stage_v1/broad_native_training/checkpoint.pt",
+      "reused_before": true
+    },
+    "mot_full1203_old": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/own_history_refresh1200_pair_v1/controls/mot_full1203_old",
+      "frames": 1203,
+      "native_candidates": 13664,
+      "all_candidates_and_rejected_frames_validated": true,
+      "metrics": {
+        "HOTA": 0.09612482525767485,
+        "DetA": 0.28095988118894666,
+        "AssA": 0.03304202747272012,
+        "IDF1": 0.046296296296296294,
+        "IDSW": 750,
+        "FP": 8507,
+        "FN": 399
+      },
+      "base_novel": null,
+      "checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/own_history_refresh1200_pair_v1/old_training/checkpoint.pt",
+      "reused_before": false
+    },
+    "mot_full1203_refreshed": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/own_history_refresh1200_pair_v1/controls/mot_full1203_refreshed",
+      "frames": 1203,
+      "native_candidates": 13664,
+      "all_candidates_and_rejected_frames_validated": true,
+      "metrics": {
+        "HOTA": 0.12251075460382796,
+        "DetA": 0.2974598466812489,
+        "AssA": 0.05061534297828303,
+        "IDF1": 0.0776759167492567,
+        "IDSW": 653,
+        "FP": 7458,
+        "FN": 486
+      },
+      "base_novel": null,
+      "checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/own_history_refresh1200_pair_v1/refreshed_training/checkpoint.pt",
+      "reused_before": false
+    },
+    "rmot_single800_before": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/own_history_refresh1200_pair_v1/reference_runs/rmot_single800_before",
+      "frames": 800,
+      "native_candidates": 1412,
+      "all_candidates_and_rejected_frames_validated": true,
+      "metrics": {
+        "HOTA": 0.06024700178718496,
+        "DetA": 0.01563715802110191,
+        "AssA": 0.2322529259028115,
+        "IDF1": 0.028901734104046242,
+        "IDSW": 0,
+        "FP": 323,
+        "FN": 13
+      },
+      "base_novel": null,
+      "checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/rmot_native72_stage_v1/broad_native_training/checkpoint.pt",
+      "reused_before": true
+    },
+    "rmot_single800_old": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/own_history_refresh1200_pair_v1/controls/rmot_single800_old",
+      "frames": 800,
+      "native_candidates": 1412,
+      "all_candidates_and_rejected_frames_validated": true,
+      "metrics": {
+        "HOTA": 0.07677918851505176,
+        "DetA": 0.037108659923950744,
+        "AssA": 0.15955227990925933,
+        "IDF1": 0.03571428571428571,
+        "IDSW": 1,
+        "FP": 91,
+        "FN": 15
+      },
+      "base_novel": null,
+      "checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/own_history_refresh1200_pair_v1/old_training/checkpoint.pt",
+      "reused_before": false
+    },
+    "rmot_single800_refreshed": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/own_history_refresh1200_pair_v1/controls/rmot_single800_refreshed",
+      "frames": 800,
+      "native_candidates": 1412,
+      "all_candidates_and_rejected_frames_validated": true,
+      "metrics": {
+        "HOTA": 0.10048876834815948,
+        "DetA": 0.05784977519980591,
+        "AssA": 0.17540125421614042,
+        "IDF1": 0.0821917808219178,
+        "IDSW": 0,
+        "FP": 52,
+        "FN": 15
+      },
+      "base_novel": null,
+      "checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/own_history_refresh1200_pair_v1/refreshed_training/checkpoint.pt",
+      "reused_before": false
+    },
+    "rmot_multi800_before": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/own_history_refresh1200_pair_v1/reference_runs/rmot_multi800_before",
+      "frames": 800,
+      "native_candidates": 2208,
+      "all_candidates_and_rejected_frames_validated": true,
+      "metrics": {
+        "HOTA": 0.19801918474265423,
+        "DetA": 0.32957066628797865,
+        "AssA": 0.12032554458881159,
+        "IDF1": 0.21008181578252838,
+        "IDSW": 165,
+        "FP": 619,
+        "FN": 1054
+      },
+      "base_novel": null,
+      "checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/rmot_native72_stage_v1/broad_native_training/checkpoint.pt",
+      "reused_before": true
+    },
+    "rmot_multi800_old": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/own_history_refresh1200_pair_v1/controls/rmot_multi800_old",
+      "frames": 800,
+      "native_candidates": 2208,
+      "all_candidates_and_rejected_frames_validated": true,
+      "metrics": {
+        "HOTA": 0.20685509525275816,
+        "DetA": 0.21589961228622742,
+        "AssA": 0.1994259718402754,
+        "IDF1": 0.2653061224489796,
+        "IDSW": 82,
+        "FP": 228,
+        "FN": 1512
+      },
+      "base_novel": null,
+      "checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/own_history_refresh1200_pair_v1/old_training/checkpoint.pt",
+      "reused_before": false
+    },
+    "rmot_multi800_refreshed": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/own_history_refresh1200_pair_v1/controls/rmot_multi800_refreshed",
+      "frames": 800,
+      "native_candidates": 2208,
+      "all_candidates_and_rejected_frames_validated": true,
+      "metrics": {
+        "HOTA": 0.22062929970880857,
+        "DetA": 0.21175909575060697,
+        "AssA": 0.23071460312810205,
+        "IDF1": 0.2555036691127418,
+        "IDSW": 60,
+        "FP": 286,
+        "FN": 1512
+      },
+      "base_novel": null,
+      "checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/own_history_refresh1200_pair_v1/refreshed_training/checkpoint.pt",
+      "reused_before": false
+    },
+    "tao_raw_full40_before": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/own_history_refresh1200_pair_v1/reference_runs/tao_raw_full40_before",
+      "frames": 40,
+      "native_candidates": 35228,
+      "all_candidates_and_rejected_frames_validated": true,
+      "metrics": {
+        "TETA": 14.517,
+        "LocA": 8.088,
+        "AssocA": 5.1478,
+        "ClsA": 30.314,
+        "LocRe": 84.833,
+        "LocPr": 8.2072,
+        "AssocRe": 5.2406,
+        "AssocPr": 71.608,
+        "ClsRe": 33.333,
+        "ClsPr": 30.314
+      },
+      "base_novel": {
+        "base": {
+          "TETA": 18.93545,
+          "LocA": 5.80265,
+          "AssocA": 5.5325500000000005,
+          "ClsA": 45.471,
+          "LocRe": 84.6875,
+          "LocPr": 5.89035,
+          "AssocRe": 5.644,
+          "AssocPr": 69.38749999999999,
+          "ClsRe": 50.0,
+          "ClsPr": 45.471
+        },
+        "novel": {
+          "TETA": 5.679,
+          "LocA": 12.659,
+          "AssocA": 4.3785,
+          "ClsA": 0.0,
+          "LocRe": 85.125,
+          "LocPr": 12.841,
+          "AssocRe": 4.4338,
+          "AssocPr": 76.049,
+          "ClsRe": 0.0,
+          "ClsPr": 0.0
+        }
+      },
+      "checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/rmot_native72_stage_v1/broad_native_training/checkpoint.pt",
+      "reused_before": true
+    },
+    "tao_raw_full40_old": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/own_history_refresh1200_pair_v1/controls/tao_raw_full40_old",
+      "frames": 40,
+      "native_candidates": 35228,
+      "all_candidates_and_rejected_frames_validated": true,
+      "metrics": {
+        "TETA": 10.426,
+        "LocA": 6.6138,
+        "AssocA": 4.8882,
+        "ClsA": 19.776,
+        "LocRe": 84.875,
+        "LocPr": 6.6899,
+        "AssocRe": 4.9673,
+        "AssocPr": 72.904,
+        "ClsRe": 33.333,
+        "ClsPr": 19.776
+      },
+      "base_novel": {
+        "base": {
+          "TETA": 13.3945,
+          "LocA": 5.1903,
+          "AssocA": 5.3299,
+          "ClsA": 29.6635,
+          "LocRe": 84.625,
+          "LocPr": 5.25425,
+          "AssocRe": 5.4216,
+          "AssocPr": 72.12049999999999,
+          "ClsRe": 50.0,
+          "ClsPr": 29.6635
+        },
+        "novel": {
+          "TETA": 4.4886,
+          "LocA": 9.4609,
+          "AssocA": 4.0048,
+          "ClsA": 0.0,
+          "LocRe": 85.375,
+          "LocPr": 9.5613,
+          "AssocRe": 4.0587,
+          "AssocPr": 74.471,
+          "ClsRe": 0.0,
+          "ClsPr": 0.0
+        }
+      },
+      "checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/own_history_refresh1200_pair_v1/old_training/checkpoint.pt",
+      "reused_before": false
+    }
+  },
+  "pending": [
+    "tao_raw_full40_refreshed",
+    "mot20_challenge_before",
+    "mot20_challenge_old",
+    "mot20_challenge_refreshed"
+  ],
+  "same_final_checkpoint_across_tasks": true,
+  "new_training_complete_both": true,
+  "model_promotion_or_per_task_checkpoint_selection": false,
+  "full_goal_complete": false
+}

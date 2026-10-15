@@ -1,0 +1,23 @@
+{
+  "status": "ORIGINAL_ALL9_RAW_NATIVE_RESULTS_COUNTS_AND_OWNED_GPU_RELEASE_VALIDATED",
+  "tasks": {
+    "gam_lvis": 19626,
+    "gam_dense200": 200,
+    "gam_visdrone": 1610,
+    "gam_refcocog_val": 4889,
+    "gam_refcocog_test": 9577,
+    "gam_refcoco": 25080,
+    "gam_refcocog": 14432,
+    "gam_refcocoplus": 10758,
+    "gam_coco": 4952
+  },
+  "total_native_rows": 91124,
+  "all9_raw_result_metrics_exact_to_unchanged_native_summary": true,
+  "all_original_equals_effective": true,
+  "provider_policy_filtered_rows": 0,
+  "all_registered_clients_exited": true,
+  "owned_GPU7_service_group_gone": true,
+  "actual_parentless_runner_exit_code_unknown_not_invented": true,
+  "adapted200_all9_complete": false,
+  "full_goal_complete": false
+}

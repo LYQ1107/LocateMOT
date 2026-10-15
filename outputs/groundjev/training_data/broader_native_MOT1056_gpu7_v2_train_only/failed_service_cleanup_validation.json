@@ -1,0 +1,8 @@
+{
+  "status": "FAILED_PREINFERENCE_COLLECTOR_OWNED_SERVICES_ALL_STOPPED",
+  "owned_process_groups": [
+    3027207,
+    3027208
+  ],
+  "new_frames_collected": 0
+}

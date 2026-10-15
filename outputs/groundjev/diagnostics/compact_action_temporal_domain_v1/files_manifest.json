@@ -1,0 +1,21 @@
+{
+  "files": [
+    {
+      "name": "deployment_group_domains.jsonl",
+      "bytes": 6111791
+    },
+    {
+      "name": "frozen_training_input_predictions.jsonl",
+      "bytes": 157258
+    },
+    {
+      "name": "owner_state.json",
+      "bytes": 189
+    },
+    {
+      "name": "summary.json",
+      "bytes": 6194
+    }
+  ],
+  "raw_group_domains_and_frozen_fit_predictions_retained_locally": true
+}

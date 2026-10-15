@@ -1,0 +1,56 @@
+{
+  "status": "PAIRED_COMPACT_PHYSICAL_HISTORY_PACKS_AND_REAL_INPUT_CAPTURE_VALIDATED",
+  "packs": {
+    "old": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/own_history_refresh1200_pair_v1/packs/old",
+    "refreshed": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/own_history_refresh1200_pair_v1/packs/refreshed"
+  },
+  "physical_MOT_groups_each": 80,
+  "physical_candidates_each": 1184,
+  "all48_default_outputs_states_and_instrumented_actor_exact": true,
+  "actual_native_forward_inputs_captured_before_memory_write": true,
+  "same_every_row_ID_and_nonMOT_examples_and_class_table": true,
+  "refreshed_target_action_counts": {
+    "NEW": 126,
+    "IGNORE": 104,
+    "EXISTING": 941,
+    "NO_MATCH": 13
+  },
+  "refreshed_history_scalar_domain": {
+    "observations": 2021,
+    "min": [
+      0.009999999776482582,
+      0.0,
+      0.011111111380159855,
+      0.16641145944595337
+    ],
+    "max": [
+      0.15000000596046448,
+      0.18666666746139526,
+      0.20000000298023224,
+      0.9997701048851013
+    ],
+    "p50": [
+      0.03999999910593033,
+      0.0,
+      0.02666666731238365,
+      0.6693653464317322
+    ],
+    "p95": [
+      0.12999999523162842,
+      0.1066666692495346,
+      0.1599999964237213,
+      0.9985973238945007
+    ],
+    "p99": [
+      0.15000000596046448,
+      0.1599999964237213,
+      0.18666666746139526,
+      0.9995805621147156
+    ]
+  },
+  "new_training_updates": 0,
+  "feature_pack_bytes": 223698546,
+  "combined_registered_feature_upper_bytes": 26754142989,
+  "physical_coverage_or_large_foundation_training_claim": false,
+  "full_goal_complete": false
+}

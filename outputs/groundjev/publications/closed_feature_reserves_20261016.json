@@ -1,0 +1,17 @@
+{
+  "status": "COMPLETED_IMMUTABLE_SOURCE_RESERVES_CLOSED_AT_ACTUAL_BYTES",
+  "previous_registered_upper_bytes": 26754142989,
+  "closed_natural_archive": {
+    "old_cap": 3221225472,
+    "actual_bytes": 2311933077,
+    "source_writer_complete": true,
+    "all1657_feature_files_retained": true
+  },
+  "closed_compact_history_packs": {
+    "old_cap": 268435456,
+    "actual_bytes": 223700168,
+    "both_datasets_complete_and_immutable": true
+  },
+  "no_data_feature_checkpoint_or_result_deleted": true,
+  "new_conservative_upper_bytes": 25800115306
+}

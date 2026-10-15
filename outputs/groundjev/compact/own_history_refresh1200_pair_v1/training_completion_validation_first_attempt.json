@@ -1,0 +1,21 @@
+{
+  "status": "FIRST_COMPLETION_VALIDATION_FAILED_SAMPLER_KEY_REPRESENTATION",
+  "session": 56311,
+  "exit_code": 1,
+  "first_failed_check": "Torch saved sampler dict integer keys directly compared with JSON string keys",
+  "normalized_key_values_exactly_equal": true,
+  "native_Adam_step_profiles_both": [
+    {
+      "1200": 56,
+      "1181": 6,
+      "1067": 4
+    },
+    {
+      "1200": 56,
+      "1181": 6,
+      "1067": 4
+    }
+  ],
+  "conditional_heads_native_Adam_counters_preserved_not_reset_to_global_steps": true,
+  "training_or_optimizer_state_changed": false
+}

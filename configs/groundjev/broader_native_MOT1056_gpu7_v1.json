@@ -1,0 +1,43 @@
+{
+  "project_root": "/data2/user/LocateMOT",
+  "name": "Broader legal MOT native online training-source collection",
+  "physical_gpu": 7,
+  "gpu_release": "outputs/groundjev/ground_retention/reattached_full9_owner_v1/original_gpu7_release.json",
+  "protocols": {
+    "mot17": "mot17_half.json",
+    "dancetrack": "dancetrack.json",
+    "mot20": "mot20_half.json"
+  },
+  "frames_per_clip": {
+    "mot17": 32,
+    "dancetrack": 16,
+    "mot20": 32
+  },
+  "longer_training_clips": {
+    "MOT20-03": 128,
+    "MOT20-05": 128
+  },
+  "selection": "middle chronological interval from the43sequences with nonempty frozen train_frames; held-out-only sequences have no planned training observations and are not eligible; deterministic, no GT or visibility filtering",
+  "expected_videos": 43,
+  "expected_frames": 1056,
+  "checkpoint": "outputs/groundjev/compact/rmot_native72_stage_v1/broad_native_training/checkpoint.pt",
+  "source_actor": "fixed existing sharedCompact CPU4 actual own history; not yet trained new paired weights and no GT-corrected state",
+  "ground_port": 8120,
+  "feature_port": 8121,
+  "output": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest",
+  "archive_format": "packed_npz_f32",
+  "native_candidate_archive_budget_bytes": 805306368,
+  "future_group_request_export_budget_bytes": 67108864,
+  "future_shared_curriculum_reference_budget_bytes": 67108864,
+  "prior_closed_conservative_upper_bytes": 25800115306,
+  "combined_registered_feature_upper_bytes": 26739639402,
+  "global_temporary_feature_budget_bytes": 26843545600,
+  "all_parser_rejections_empty_frames_and_actual_candidates_retained": true,
+  "GT_read_by_runtime": false,
+  "full_dataset_U2_cache_restart": false,
+  "new_training_started_by_collector": false,
+  "research_purpose": "Expand physical training support beyond48fit frames before the next broader shared OneJev SFT; originalBase175 and4350RMOT components remain available. Group/question export and actual training require separate verified steps.",
+  "full_goal_complete": false,
+  "failed_preflight_preserved": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v1",
+  "failed_missing_vocabulary_preserved": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v2_train_only"
+}

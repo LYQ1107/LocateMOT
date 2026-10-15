@@ -1,0 +1,51 @@
+{
+  "task": "mot",
+  "dataset": "dancetrack",
+  "sequence": "dancetrack0027",
+  "scope": "registered_train_only_native_source_not_benchmark_evaluation",
+  "vocabulary": [
+    "person"
+  ],
+  "expression": null,
+  "fps": 20,
+  "images": [
+    "/data2/user/LocateMOT/data/DanceTrack/train/dancetrack0027/img1/00000194.jpg",
+    "/data2/user/LocateMOT/data/DanceTrack/train/dancetrack0027/img1/00000195.jpg",
+    "/data2/user/LocateMOT/data/DanceTrack/train/dancetrack0027/img1/00000196.jpg",
+    "/data2/user/LocateMOT/data/DanceTrack/train/dancetrack0027/img1/00000197.jpg",
+    "/data2/user/LocateMOT/data/DanceTrack/train/dancetrack0027/img1/00000198.jpg",
+    "/data2/user/LocateMOT/data/DanceTrack/train/dancetrack0027/img1/00000199.jpg",
+    "/data2/user/LocateMOT/data/DanceTrack/train/dancetrack0027/img1/00000200.jpg",
+    "/data2/user/LocateMOT/data/DanceTrack/train/dancetrack0027/img1/00000201.jpg",
+    "/data2/user/LocateMOT/data/DanceTrack/train/dancetrack0027/img1/00000202.jpg",
+    "/data2/user/LocateMOT/data/DanceTrack/train/dancetrack0027/img1/00000203.jpg",
+    "/data2/user/LocateMOT/data/DanceTrack/train/dancetrack0027/img1/00000204.jpg",
+    "/data2/user/LocateMOT/data/DanceTrack/train/dancetrack0027/img1/00000205.jpg",
+    "/data2/user/LocateMOT/data/DanceTrack/train/dancetrack0027/img1/00000206.jpg",
+    "/data2/user/LocateMOT/data/DanceTrack/train/dancetrack0027/img1/00000207.jpg",
+    "/data2/user/LocateMOT/data/DanceTrack/train/dancetrack0027/img1/00000208.jpg",
+    "/data2/user/LocateMOT/data/DanceTrack/train/dancetrack0027/img1/00000209.jpg"
+  ],
+  "frame_numbers": [
+    194,
+    195,
+    196,
+    197,
+    198,
+    199,
+    200,
+    201,
+    202,
+    203,
+    204,
+    205,
+    206,
+    207,
+    208,
+    209
+  ],
+  "gt_path": "/data2/user/LocateMOT/data/DanceTrack/train/dancetrack0027/gt/gt.txt",
+  "source_train_protocol": "/data2/user/LocateMOT/outputs/unified/u2/protocol/dancetrack.json",
+  "frame_selection": "middle chronological interval from the43sequences with nonempty frozen train_frames; held-out-only sequences have no planned training observations and are not eligible; deterministic, no GT or visibility filtering",
+  "physical_video_fps_verified": true
+}

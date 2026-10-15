@@ -132,6 +132,9 @@ class CompactDecision:
                 if vocabulary not in self.class_cache:self.class_cache[vocabulary]=self.text_features.vocabulary(vocabulary).to(self.device)
                 e.update(spec_text=self.text_cache[key],class_text=self.class_cache[vocabulary])
             e = {k:v.to(self.device) if torch.is_tensor(v) else v for k,v in e.items()}
+            capture = getattr(self, 'accepted_batch', None)
+            if capture is not None:
+                capture(group, ranked, e)
             with torch.no_grad(): output = self.model(e)
             p = output['match'].softmax(-1).cpu();update = output['update'].sigmoid().cpu(); reliability = output['reliability'].softmax(-1).cpu()
             names = [str(t.track_id) for t in ranked]+['NEW','IGNORE','NO_MATCH']

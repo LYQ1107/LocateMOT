@@ -1,0 +1,26 @@
+{
+  "project_root": "/data2/user/LocateMOT",
+  "training_owner": "outputs/groundjev/compact/rmot_native72_stage_v1/broad_native_training/owner_state.json",
+  "completed_natural_run": "outputs/groundjev/natural_memory/mot20_05_full_validation_gpu5_v1/fresh_compact_gated3",
+  "completed_natural_validation": "outputs/groundjev/natural_memory/mot20_05_full_validation_gpu5_v1/completed_fresh_source_validation.json",
+  "output": "outputs/groundjev/diagnostics/compact_action_temporal_domain_v1",
+  "hypothesis": "Test whether final-stage eligible action-label prevalence explains NO_MATCH saturation, and measure temporal/confidence input-domain shift on the completed long causal sequence.",
+  "audit_scope": "eligible final-stage pack, frozen trained-checkpoint CPU predictions on those examples, actual pre-frame scalar reconstruction; not unsaved exact sample exposure or causal ablation",
+  "fields": [
+    "age/100",
+    "lost_age/3",
+    "seconds_since_reliable/3",
+    "confidence"
+  ],
+  "compact_group_size": 16,
+  "torch_threads": 2,
+  "device": "cpu",
+  "no_input_intervention": true,
+  "GT_usage": "existing external training targets and published posthoc validation summaries only; no actor correction",
+  "new_GPU_or_optimizer_or_feature_archive": false,
+  "new_result_budget_bytes": 8388608,
+  "prior_registered_upper_bytes": 26477318925,
+  "combined_registered_upper_bytes": 26485707533,
+  "global_temporary_feature_budget_bytes": 26843545600,
+  "full_goal_complete": false
+}

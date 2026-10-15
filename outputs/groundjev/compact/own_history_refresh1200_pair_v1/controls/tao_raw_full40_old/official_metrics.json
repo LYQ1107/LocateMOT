@@ -1,0 +1,78 @@
+{
+  "status": "OFFICIAL_REGISTERED_MULTITASK_SCOPE_EVALUATION_COMPLETE",
+  "task": "ovmot",
+  "dataset": "tao_amodal",
+  "sequence": "val/HACS/Making_a_sandwich_v_SMk4troNhwE_scene_0_0-2482",
+  "scope": "full_legal_validation_video_annotation_frames",
+  "frames": 40,
+  "all_registered_frames_included": true,
+  "GT_access": "evaluation only",
+  "official_test_labels_read": false,
+  "end_to_end_fps": null,
+  "association_replay_fps": 0.21729520429526072,
+  "perception_rejected_frames": [],
+  "evaluator": "unmodified official TETA OVMOT recipe; non-exhaustive TAO",
+  "evaluator_commit": "b498aa87b252bfb75d7cc0d8d6435c3e1e74e4de",
+  "metrics": {
+    "TETA": 10.426,
+    "LocA": 6.6138,
+    "AssocA": 4.8882,
+    "ClsA": 19.776,
+    "LocRe": 84.875,
+    "LocPr": 6.6899,
+    "AssocRe": 4.9673,
+    "AssocPr": 72.904,
+    "ClsRe": 33.333,
+    "ClsPr": 19.776
+  },
+  "base_novel": {
+    "base": {
+      "TETA": 13.3945,
+      "LocA": 5.1903,
+      "AssocA": 5.3299,
+      "ClsA": 29.6635,
+      "LocRe": 84.625,
+      "LocPr": 5.25425,
+      "AssocRe": 5.4216,
+      "AssocPr": 72.12049999999999,
+      "ClsRe": 50.0,
+      "ClsPr": 29.6635
+    },
+    "novel": {
+      "TETA": 4.4886,
+      "LocA": 9.4609,
+      "AssocA": 4.0048,
+      "ClsA": 0.0,
+      "LocRe": 85.375,
+      "LocPr": 9.5613,
+      "AssocRe": 4.0587,
+      "AssocPr": 74.471,
+      "ClsRe": 0.0,
+      "ClsPr": 0.0
+    }
+  },
+  "metric_scale": "official TETA summary percent",
+  "evaluated_categories": [
+    {
+      "name": "knife",
+      "group": "base"
+    },
+    {
+      "name": "peeler_(tool_for_fruit_and_vegetables)",
+      "group": "novel"
+    },
+    {
+      "name": "baby",
+      "group": "base"
+    }
+  ],
+  "GT_boxes": 160,
+  "predictions": 35136,
+  "unmapped_predicted_labels": [],
+  "unmapped_policy": "retain boxes with unknown category -1; never discard predictions or GT",
+  "prediction_score": "constant unscored sentinel 1; no detector confidence and no score-based truncation",
+  "GT_policy": "all original modalxywh, no clipping/visibility/category exclusions",
+  "novel_evaluation_GT_used_for_training": false,
+  "official_complete_dataset_result": false,
+  "timestamp_policy": "annotation-step units; physical source FPS unavailable; display at one step per second"
+}

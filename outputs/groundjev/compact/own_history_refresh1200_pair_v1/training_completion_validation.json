@@ -1,0 +1,73 @@
+{
+  "status": "BOTH_REAL_COMPACT1200_TRAININGS_FULL_STATES_AND_PAIRED_EXPOSURE_VALIDATED",
+  "original_owner_session": 70970,
+  "arms": {
+    "old": {
+      "steps": 1200,
+      "sampled_groups_per_task": {
+        "0": 400,
+        "1": 400,
+        "2": 400
+      },
+      "parameters": 1146511,
+      "all_logged_losses_and_gradient_norms_finite": true,
+      "final_training_log_elapsed_s": 25.313668770017102,
+      "actual_full_training_state_loaded_on_CPU": true,
+      "saved_final_state_equals_inference_checkpoint": true,
+      "all_saved_state_tensors_finite": true,
+      "native_per_parameter_Adam_step_profile": {
+        "1200": 56,
+        "1181": 6,
+        "1067": 4
+      },
+      "sampler_RNG_protocol_saved": true,
+      "three_task_actual_reload_max_difference": {
+        "0": 0.0,
+        "1": 0.0,
+        "2": 0.0
+      },
+      "checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/own_history_refresh1200_pair_v1/old_training/checkpoint.pt",
+      "feature_exposure_not_unique_frame_count": true
+    },
+    "refreshed": {
+      "steps": 1200,
+      "sampled_groups_per_task": {
+        "0": 400,
+        "1": 400,
+        "2": 400
+      },
+      "parameters": 1146511,
+      "all_logged_losses_and_gradient_norms_finite": true,
+      "final_training_log_elapsed_s": 25.50067003199365,
+      "actual_full_training_state_loaded_on_CPU": true,
+      "saved_final_state_equals_inference_checkpoint": true,
+      "all_saved_state_tensors_finite": true,
+      "native_per_parameter_Adam_step_profile": {
+        "1200": 56,
+        "1181": 6,
+        "1067": 4
+      },
+      "sampler_RNG_protocol_saved": true,
+      "three_task_actual_reload_max_difference": {
+        "0": 0.0,
+        "1": 0.0,
+        "2": 0.0
+      },
+      "checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/own_history_refresh1200_pair_v1/refreshed_training/checkpoint.pt",
+      "feature_exposure_not_unique_frame_count": true
+    }
+  },
+  "actual_per_step_example_ID_lists_equal": true,
+  "MOT_physical_frames": 48,
+  "MOT_physical_candidates": 1184,
+  "MOT_physical_groups": 80,
+  "RMOT_groups": 325,
+  "OVMOT_groups": 62,
+  "derived_withholding_aug_omitted_both": 69,
+  "MOT_native_teacher_distillation_disabled_both": true,
+  "not_isolated_age_confidence_or_FLOP_matched": true,
+  "official_five_scope_tracking_results": "original single CPU owner running",
+  "new_GPUs": 0,
+  "ordinary_model_level_achieved": false,
+  "full_goal_complete": false
+}

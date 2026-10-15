@@ -1,0 +1,24 @@
+{
+  "status": "ALL43_TRAIN_CLIPS_AND_FIRST_REAL_NATIVE32_FRAME_UNIT_VALIDATED",
+  "owner_pid": 3032116,
+  "owner_starttick": "47104873",
+  "original_blocking_session": 84427,
+  "physical_gpu": 7,
+  "planned_videos": 43,
+  "planned_frames": 1056,
+  "all1056_original_images_exist_and_frozen_train_intervals_registered": true,
+  "all_manifests_match_MOT_vocabulary_and_expression_contract": true,
+  "first_completed_native_clip": {
+    "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/MOT17-02-FRCNN",
+    "frames": 32,
+    "archive_bytes": 9818682,
+    "native_candidates": 992,
+    "rejected_frames": 0
+  },
+  "actual_first_clip_all32_FP32_archives_and_runtime_GTfree_validated": true,
+  "new_training_updates": 0,
+  "only_original_completed_GPU7_variant_reused": true,
+  "other_original_GPU_owners_unchanged": true,
+  "combined_registered_feature_upper_bytes": 26739639402,
+  "full_goal_complete": false
+}

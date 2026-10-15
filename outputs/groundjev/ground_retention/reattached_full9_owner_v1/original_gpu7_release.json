@@ -1,0 +1,21 @@
+{
+  "status": "VERIFIED_COMPLETED_GPU_OWNER_RELEASE",
+  "physical_gpu": 7,
+  "upstream_owner_identity": [
+    1347145,
+    "36827524"
+  ],
+  "upstream_owner_output": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/outputs/groundjev_retention/groundjev_original_dense_ref9_queue32_v3_20261014",
+  "upstream_variant": "original",
+  "owned_process_groups": [
+    1345024
+  ],
+  "all_owned_groups_gone": true,
+  "original_all9_complete": true,
+  "all_registered_original_clients_exited": true,
+  "complete_native_rows": 91124,
+  "missing_tasks": [],
+  "actual_runner_exit_code_unknown_after_parent_exit": true,
+  "adapted200_GPU6_retention_still_owned_by_original_reattach_waiter": true,
+  "hardware_at_release": "GPU-0322c0e7-ffbf-e068-5bdd-587b8216a9d9, NVIDIA A800-SXM4-80GB, 81920, 70229"
+}

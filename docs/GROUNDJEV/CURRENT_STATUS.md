@@ -1,5 +1,114 @@
 # GroundJEV-MOT current evidence — 2026-10-16
 
+## Native original full9 completed; GPU7 reused for broader TRAIN sources
+
+All nine original GroundAnything tasks now have their full unchanged native
+summaries: 91,124 original/effective rows, zero provider-policy filtering and
+no missing task. Every raw result's metrics and sample counts match the
+summary. Original registered clients have exited and service group 1345024
+is gone. The original parentless runner's exit code remains unknown; it is
+not invented as zero. Adapted200 full9 on GPU6 is still pending under the
+same original reattached owner, so this is not a complete before/after result.
+
+GPU7 release is verified separately for the completed original variant.
+The new source collector uses the original DLM and real ROI service there,
+with the fixed existing sharedCompact actor on CPU4. All 43 frozen MOT TRAIN
+videos and 1,056 source images are registered: MOT17 7x32 frames, DanceTrack
+32x16, and MOT20 two32/two128-frame clips. Intervals are chosen chronologically
+from the middle of registered train frames, without GT/visibility screening.
+The first complete real clip has 32 frames/992 native candidates/9,818,682
+archive bytes and no rejected frames. Collection is active, not complete;
+there are zero new OneJev training updates from this source yet.
+
+Two startup failures are retained: v1 included held-out-only protocol sequences
+with empty train_frames and failed before launching a model; v2 omitted the
+required person vocabulary and stopped before its first frame. Its owned
+services were fully stopped. v3 fixes these input contracts, validates all43
+TRAIN manifests, and now runs actual native frames. No planned train frame is
+omitted or substituted. All future parser rejections remain registered empties.
+
+The completed immutable MOT20 archive and two finalized Compact packs now
+use their measured bytes rather than unused caps; no file was deleted.
+New collection reserves 768MiB exact FP32 archives plus64MiB future group
+export/64MiB future mixture references. Conservative upper is
+26,739,639,402 < 26,843,545,600 bytes. This expands physical support before
+broader shared SFT, rather than restarting the old U2 whole-dataset cache.
+Evidence: ground_retention/reattached_full9_owner_v1/original_* and
+training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/ under
+outputs/groundjev/. Original collection handle84427, owner3032116/start47104873.
+
+## Actual Compact own-history1200 pair trained; partial tracking regressions
+
+Both new CPU sharedCompact arms completed 1,200 updates with 400 sampled
+groups per task. Their actual per-step sample IDs match exactly. Each has
+1,146,511 parameters; three actual task reload probes have maxdifference0.
+The final training-state model tensors equal the inference checkpoint and
+are finite, with sampler/RNG/protocol saved. Native per-parameter Adam step
+histogram is identical:56 tensors at1200,6 at1181,4 at1067. Conditional heads
+do not all receive gradients on every group. The first receipt check failed
+because Torch integer sampler keys were compared directly with JSON string
+keys; normalized values match exactly. No optimizer state was changed.
+
+Each arm has80 physical MOT groups/1,184 candidates/48 fit frames plus the
+same325RMOT/62OV groups. Both explicitly omit69 derived-withholding duplicate
+groups and disable the MOT .2 distillation term in this new continuation.
+The old arm retains original Full100 histories; the new arm captures actual
+pre-write Compact forward tensors and re-evaluates the same label rules.
+All48 instrumented actor outputs/states reproduce the prior diagnostic
+exactly; image/candidate/specification tensors match the original physical
+groups. History/targets differ, and sequence lengths/FLOPs are not matched.
+The comparison is not an isolated age or confidence intervention.
+Both feature packs total223,700,168 bytes; models/full optimizer states are
+preserved separately. Training-loop timers25.314/25.501s are for this tiny
+Compact continuation, not foundation training or pipeline throughput.
+
+Snapshot of already-validated CPU official results (percent):
+
+| Scope | Before | Old-history1200 | Own-history1200 |
+| --- | ---: | ---: | ---: |
+| DT1203 HOTA |26.316|9.612|12.251|
+| RMOT single800 HOTA |6.025|7.678|10.049|
+| RMOT multi800 HOTA |19.802|20.686|22.063|
+| Raw TAO40 TETA |14.517|10.426|pending|
+
+The five-scope cohort also includes the same full MOT20-05 source. Eleven
+of fifteen units are in this frozen snapshot; pending units are explicit.
+Both new checkpoints regress badly on DT despite some RMOT improvement.
+No checkpoint is promoted or selected per task. The original single CPU
+owner70970 continues all registered units. The source collector deliberately
+keeps the existing baseline actor rather than promoting these partial models.
+Evidence: compact/own_history_refresh1200_pair_v1/
+{training_completion_validation,partial_tracking_results}.json.
+
+## Frozen action-support and actual temporal-domain diagnosis
+
+The final-stage eligible MOT pack has2,204 candidate targets:1,704existing,
+229NEW,202IGNORE,69NO_MATCH. It is not dominated by NO_MATCH. Historical
+per-step sampled IDs were not saved for that old stage; eligible proportions
+are not asserted as actual optimizer exposure. The fixed checkpoint's CPU
+fit-input exact ID/action accuracy is69.83% MOT/80.97% RMOT/92.56% OV; MOT
+includes380existing->NO_MATCH and71NEW->NO_MATCH errors. These are fit probes.
+
+All MOT eligible history ages are1 observation, confidence .991545.. .999416.
+Across all three task inputs the maximum age is7. Actual completed MOT20
+candidate groups contain410,796 history rows:95.752% have ages above that
+joint eligible maximum, max909/median121 observations. Confidence median is
+.429819;20.551% of rows exceed the eligible maximum time since reliable write.
+The audit reconstructs all1,657 frames/235,232 candidates; surviving final
+age/lost/reliable/timestamp/confidence fields match saved binary memory exactly.
+Empty-candidate groups do not expose saved shortlist inputs and are excluded
+only from scalar-domain rows; their frames still update reconstructed state.
+No feature/input intervention was made; these shifts are not causal proof.
+Evidence: diagnostics/compact_action_temporal_domain_v1/summary.json.
+
+Original GPU4 Full history-refresh training remains separate, last observed
+125/600 with finite loss/gradient. The original GPU5 natural CPU controls and
+GPU6 adapted retention also remain active. Natural CPU gated3 reference HOTA
+7.4316 differs from fresh GPU7.3347; CPU variants are compared with their CPU
+reference. No CPU/GPU exact closed-loop equivalence or ordinary-model success
+is assumed. Broader data and controlled actual shared foundation training
+remain required for the full goal.
+
 ## Fresh MOT20-05 completed; severe NO_MATCH suppression — 2026-10-16
 
 The original natural-study owner completed fresh original-DLM+ROI+sharedCompact

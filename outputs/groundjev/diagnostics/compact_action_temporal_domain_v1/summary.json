@@ -1,0 +1,271 @@
+{
+  "status": "ELIGIBLE_ACTION_SUPPORT_FROZEN_FIT_PROBES_AND_ACTUAL_TEMPORAL_DOMAIN_VALIDATED",
+  "checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/rmot_native72_stage_v1/broad_native_training/checkpoint.pt",
+  "final_stage_eligible_pack": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/rmot_native72_v1/broad_native",
+  "eligible_groups": {
+    "mot": 149,
+    "rmot": 325,
+    "ovmot": 62
+  },
+  "eligible_action_counts": {
+    "mot": {
+      "NEW": 229,
+      "IGNORE": 202,
+      "EXISTING": 1704,
+      "NO_MATCH": 69
+    },
+    "rmot": {
+      "NEW": 127,
+      "EXISTING": 545,
+      "IGNORE": 232
+    },
+    "ovmot": {
+      "NEW": 37,
+      "EXISTING": 178
+    }
+  },
+  "frozen_fit_input_predicted_action_confusion": {
+    "mot": {
+      "NEW->NEW": 132,
+      "IGNORE->NEW": 7,
+      "EXISTING->EXISTING": 1308,
+      "IGNORE->NO_MATCH": 14,
+      "EXISTING->NO_MATCH": 380,
+      "NO_MATCH->NO_MATCH": 68,
+      "IGNORE->EXISTING": 11,
+      "EXISTING->NEW": 10,
+      "NEW->NO_MATCH": 71,
+      "IGNORE->IGNORE": 170,
+      "EXISTING->IGNORE": 6,
+      "NEW->EXISTING": 26,
+      "NO_MATCH->EXISTING": 1
+    },
+    "rmot": {
+      "NEW->NEW": 103,
+      "EXISTING->EXISTING": 545,
+      "NEW->EXISTING": 24,
+      "IGNORE->IGNORE": 113,
+      "IGNORE->NEW": 27,
+      "IGNORE->EXISTING": 92
+    },
+    "ovmot": {
+      "NEW->NEW": 34,
+      "EXISTING->EXISTING": 178,
+      "NEW->EXISTING": 3
+    }
+  },
+  "frozen_fit_exact_identity_or_action_accuracy": {
+    "mot": 0.6982758620689655,
+    "rmot": 0.8097345132743363,
+    "ovmot": 0.9255813953488372
+  },
+  "frozen_fit_mean_group_CE": {
+    "mot": 0.7266071767104014,
+    "rmot": 0.6102208479261083,
+    "ovmot": 0.18355100354397766
+  },
+  "actual_sampled_example_IDs_saved": false,
+  "exact_historical_optimizer_sample_exposure_claim": false,
+  "scalar_fields": [
+    "age/100",
+    "lost_age/3",
+    "seconds_since_reliable/3",
+    "confidence"
+  ],
+  "final_stage_eligible_scalar_domain": {
+    "observations": 5009,
+    "min": [
+      0.009999999776482582,
+      0.0,
+      0.011111111380159855,
+      6.800094354275643e-08
+    ],
+    "max": [
+      0.07000000029802322,
+      1.0,
+      1.3333333730697632,
+      1.0
+    ],
+    "p50": [
+      0.009999999776482582,
+      0.06666667014360428,
+      0.08888889104127884,
+      0.9963110089302063
+    ],
+    "p95": [
+      0.05000000074505806,
+      0.17933431267738342,
+      0.23333333432674408,
+      1.0
+    ],
+    "p99": [
+      0.07000000029802322,
+      0.23333333432674408,
+      0.3333333432674408,
+      1.0
+    ]
+  },
+  "per_task_eligible_scalar_domain": {
+    "mot": {
+      "observations": 3825,
+      "min": [
+        0.009999999776482582,
+        0.0,
+        0.011111111380159855,
+        0.9915450215339661
+      ],
+      "max": [
+        0.009999999776482582,
+        0.23333333432674408,
+        0.25,
+        0.9994159936904907
+      ],
+      "p50": [
+        0.009999999776482582,
+        0.08888889104127884,
+        0.10000000149011612,
+        0.9959620237350464
+      ],
+      "p95": [
+        0.009999999776482582,
+        0.18333333730697632,
+        0.20000000298023224,
+        0.9991239905357361
+      ],
+      "p99": [
+        0.009999999776482582,
+        0.21666666865348816,
+        0.23333333432674408,
+        0.9993849992752075
+      ]
+    },
+    "rmot": {
+      "observations": 957,
+      "min": [
+        0.009999999776482582,
+        0.0,
+        0.03333333507180214,
+        6.800094354275643e-08
+      ],
+      "max": [
+        0.07000000029802322,
+        0.20000000298023224,
+        0.23333333432674408,
+        1.0
+      ],
+      "p50": [
+        0.029999999329447746,
+        0.0,
+        0.03333333507180214,
+        1.0
+      ],
+      "p95": [
+        0.07000000029802322,
+        0.10000000149011612,
+        0.13333334028720856,
+        1.0
+      ],
+      "p99": [
+        0.07000000029802322,
+        0.1480000913143158,
+        0.18133342266082764,
+        1.0
+      ]
+    },
+    "ovmot": {
+      "observations": 227,
+      "min": [
+        0.009999999776482582,
+        0.0,
+        0.3333333432674408,
+        1.0
+      ],
+      "max": [
+        0.07000000029802322,
+        1.0,
+        1.3333333730697632,
+        1.0
+      ],
+      "p50": [
+        0.029999999329447746,
+        0.0,
+        0.3333333432674408,
+        1.0
+      ],
+      "p95": [
+        0.07000000029802322,
+        0.6666666865348816,
+        1.0,
+        1.0
+      ],
+      "p99": [
+        0.07000000029802322,
+        1.0,
+        1.3333333730697632,
+        1.0
+      ]
+    }
+  },
+  "deployment_preframe_scalar_domain": {
+    "observations": 410796,
+    "min": [
+      0.009999999776482582,
+      0.0,
+      0.013333333656191826,
+      0.03250449150800705
+    ],
+    "max": [
+      9.09000015258789,
+      1.0,
+      8.706666946411133,
+      0.9995402097702026
+    ],
+    "p50": [
+      1.2100000381469727,
+      0.0,
+      0.4000000059604645,
+      0.4298193156719208
+    ],
+    "p95": [
+      5.360000133514404,
+      0.7066666483879089,
+      3.7066667079925537,
+      0.8190675973892212
+    ],
+    "p99": [
+      7.409999847412109,
+      0.9333333373069763,
+      6.226666450500488,
+      0.9056452512741089
+    ]
+  },
+  "deployment_candidate_groups": 15391,
+  "deployment_nonempty_history_rows": 410796,
+  "deployment_above_eligible_max_counts": [
+    393346,
+    0,
+    84424,
+    0
+  ],
+  "deployment_below_eligible_min_counts": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "deployment_above_eligible_max_fractions": [
+    0.9575214948538934,
+    0.0,
+    0.2055131987653239,
+    0.0
+  ],
+  "all1657_frames_and235232_candidates_reconstructed": true,
+  "all_surviving_final_temporal_and_confidence_fields_match_saved_memory_exactly": true,
+  "zero_candidate_groups_not_in_scalar_domain": "Empty-candidate groups have no saved shortlist; audited candidate groups only. All frames still update reconstructed state.",
+  "GT_or_input_or_model_intervention": false,
+  "new_GPU_or_optimizer_or_feature_archive": false,
+  "temporal_distribution_shift_not_causal_failure_or_repair_proof": true,
+  "fit_probe_is_not_held_out_accuracy": true,
+  "combined_registered_upper_bytes": 26485707533,
+  "full_goal_complete": false
+}
