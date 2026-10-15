@@ -14,7 +14,7 @@
   "checkpoint_storage": "retain every new phase500-step checkpoint and atomic latest fullFP32/Adam/RNG state; require40GiB available before launch, no old checkpoint deletion",
   "seed": 0,
   "MOT_family_rows": {"identity_and_all_empty_frames": 4000, "assigned_identity_memory_update": 2000, "lifecycle": 1000, "memory_update": 500, "reliability": 500},
-  "MOT_sampling": "one identity/presence row from every physical source frame first, then fill identity quota by least-exposed available NEW/existing/NO_MATCH/IGNORE labels; other families balanced over available original labels with replacement only after per-label pool exhaustion",
+  "MOT_sampling": "one native question from every physical source frame first: identity/presence where available, lifecycle for zero-candidate frames with surviving history; these mandatory rows count within their existing4000identity/presence and1000lifecycle quotas. Fill identity quota by least-exposed available NEW/existing/NO_MATCH/IGNORE labels; all families use unseen rows before repetition within each label. No extra empty questions fabricated.",
   "RMOT_sampling": "one row per all4350 frozen fit expression files, prefer an existing positive when available; ensure all72 source physical frames represented; fill exactly4000yes/4000no from original membership/presence labels",
   "OVMOT_sampling": "4000 Base objects stratified as equally as possible over175classes, preserve root+leaf pair; rare-class repetitions explicit, original1203input vocabulary and GT teacher-crop provenance retained; noNovelGT",
   "compute_protocol": "existing reference Torch backend, native multimodal loss,752393024 language parameters fullFP32masters, frozen vision, seed0/lr2e-6/4rowaccumulation/max32768; no FLA substitution",

@@ -1,0 +1,26 @@
+{
+  "status": "REAL_IMMUTABLE41_CLIP_IDENTITY_SAMPLING_REPEAT_ONLY_AFTER_LABEL_POOL_EXHAUSTION_VALIDATED",
+  "source_clips": 41,
+  "source_physical_frames": 772,
+  "source_identity_rows": 12030,
+  "selected_rows": 4000,
+  "selected_unique_rows": 3020,
+  "target_exposure": {
+    "IGNORE": 999,
+    "EXISTING": 1000,
+    "NEW": 999,
+    "empty_presence": 3,
+    "NO_MATCH": 999
+  },
+  "first_repeats": {
+    "NO_MATCH": {
+      "output_index": 791,
+      "unique_rows_seen_before_repeat": 19,
+      "eligible_source_rows": 19
+    }
+  },
+  "all_source_frames_represented": true,
+  "actual_new_optimizer_steps": 0,
+  "limitations": "Targeted real completed-clip regression only; full43/1056 corpus still requires all-row native CPU preflight.",
+  "coverage_limit_discovered": "First identity/presence-only subset contained772 of800 actual source frames;28 zero-candidate frames have native lifecycle questions only. This receipt validates repeat ordering only, not all-frame coverage."
+}

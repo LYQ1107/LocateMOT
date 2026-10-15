@@ -1,0 +1,27 @@
+{
+  "status": "REAL41_CLIPS_ALL800_FRAMES_AND8000_MOT_ROWS_QUOTAS_REPEAT_ORDER_VALIDATED",
+  "source_clips": 41,
+  "source_physical_frames": 800,
+  "actual_selected_physical_frames": 800,
+  "native_lifecycle_only_frames_retained": 28,
+  "selected_rows": 8000,
+  "unique_rows": 7020,
+  "family_rows": {
+    "identity": 3997,
+    "empty_presence": 3,
+    "assigned_identity_memory_update": 2000,
+    "lifecycle": 1000,
+    "memory_update": 500,
+    "reliability": 500
+  },
+  "first_repeats": {
+    "identity/NO_MATCH": {
+      "output_index": 791,
+      "unique_rows_seen_before_repeat": 19,
+      "eligible_source_rows": 19
+    }
+  },
+  "all_original_targets_and_refs_unchanged": true,
+  "actual_new_optimizer_steps": 0,
+  "limitations": "Real frozen41-clip regression; complete43/1056 and all24000 native CPU plan remain required."
+}
