@@ -1,0 +1,10 @@
+{
+  "status": "VALIDATOR_FAILED_BEFORE_EXPORT_ROWS",
+  "original_blocking_session": 4404,
+  "actual_exit_code": 1,
+  "first_actionable_root_cause": "validator passed relative --out into exporter requiring absolute project-local paths",
+  "fix": "resolve validator output before invoking exporter; production caller already uses absolute ROOT paths",
+  "new_GPU_calls": 0,
+  "new_training_updates": 0,
+  "source_or_labels_changed": false
+}

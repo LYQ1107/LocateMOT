@@ -16,7 +16,7 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path[:0] = [str(ROOT), str(ROOT/'external/OneJev')]
 
 
-def export_clip(name, source, destination, plan, actor, stateful):
+def export_clip(name, source, destination, plan, actor, stateful, *, context=None):
     import numpy as np
     import torch
     from PIL import Image
@@ -31,27 +31,35 @@ def export_clip(name, source, destination, plan, actor, stateful):
     from train import common, mm, sft
     from qev.prompt import render_question
 
-    manifest = json.loads((source/'manifests'/(name+'.json')).read_text())
-    source_plan = json.loads((ROOT/plan['source_collector_plan']).read_text())
-    seq = next(s for s in json.loads((PROTOCOL/source_plan['protocols'][manifest['dataset']]).read_text())['sequences']
-               if s['sequence'] == name)
-    allowed = {int(Path(f).stem) for f in seq['train_frames']}
-    assert set(manifest['frame_numbers']) <= allowed
-    truth = annotations(seq, set(manifest['frame_numbers']))
-    runtime = json.loads((source/'clips'/name/'result.json').read_text())
-    original = source/'clips'/name
+    if context is None:
+        manifest = json.loads((source/'manifests'/(name+'.json')).read_text())
+        source_plan = json.loads((ROOT/plan['source_collector_plan']).read_text())
+        seq = next(s for s in json.loads((PROTOCOL/source_plan['protocols'][manifest['dataset']]).read_text())['sequences']
+                   if s['sequence'] == name)
+        allowed = {int(Path(f).stem) for f in seq['train_frames']}
+        assert set(manifest['frame_numbers']) <= allowed
+        truth = annotations(seq, set(manifest['frame_numbers']))
+        original = source/'clips'/name
+        specification = {'task': 'mot', 'vocabulary': ['person'], 'expression': None}
+        alias_index = sorted(p.stem for p in (source/'manifests').glob('*.json')).index(name)
+    else:
+        manifest, truth, original = context['manifest'], context['truth'], Path(context['original'])
+        specification, alias_index = context['specification'], context['alias_index']
+        assert specification['task'] == 'rmot'
+    is_rmot = specification['task'] == 'rmot'
+    runtime = json.loads((original/'result.json').read_text())
     destination.mkdir(parents=True, exist_ok=False)
     groups_path = destination/'groups.jsonl.gz'
     rows_path = destination/'train_refs.jsonl.gz'
     group_reference = str(groups_path.relative_to(ROOT))
     replay = ReplayFrames(ROOT/runtime['native_candidate_archive'])
     builder = OneJevDecision.__new__(OneJevDecision); builder.evidence_format = plan['evidence_format']
+    builder.rmot_membership = is_rmot
     tracker = OnlineTracker(actor)
     anchors, aliases, provenance = {}, {}, {}
     pool = list(range(1, 100001))
-    random.Random(sorted(p.stem for p in (source/'manifests').glob('*.json')).index(name)*1009).shuffle(pool)
+    random.Random(alias_index*1009).shuffle(pool)
     counts = Counter()
-    specification = {'task': 'mot', 'vocabulary': ['person'], 'expression': None}
     mm.set_root(ROOT)
 
     with gzip.open(groups_path, 'wt', encoding='utf-8') as groups, \
@@ -68,8 +76,12 @@ def export_clip(name, source, destination, plan, actor, stateful):
                 common.target_vector({str(answer): 1.}, render_question('q', question).labels)
                 row = {'id': identifier+'_'+key, 'split': 'train', 'source': name, 'task': family,
                     'target': {str(answer): 1.}, REFERENCE_KEY: {'path': group_reference, 'group': identifier, 'question': key},
-                    'supervision': {'tracking_task_bucket': 'mot', 'actor': 'actual fixed sharedCompact CPU own history',
+                    'supervision': {'tracking_task_bucket': specification['task'], 'actor': 'actual fixed sharedCompact CPU own history',
                         'GT_labels_external_only_no_state_correction': True}}
+                if is_rmot:
+                    row['supervision'].update(query_expression_file=manifest['expression_file'],
+                        update_reliability_source='matched candidate IoU quality proxy, not visibility or native confidence',
+                        membership_source='any released same-frame query box with candidate IoU>=.5')
                 refs.write(json.dumps(row, ensure_ascii=False)+'\n')
                 counts['rows'] += 1; counts['family:'+family] += 1
 
@@ -88,11 +100,13 @@ def export_clip(name, source, destination, plan, actor, stateful):
             assert outputs == saved['outputs'] and state == saved['state']
             events = {e['candidate']: e for e in state['events'] if 'candidate' in e}
             assert set(events) == set(range(len(candidates)))
-            gt, matched = truth[frame], {}
+            gt, matched, qualities = truth[frame], {}, {}
             if candidates and gt:
                 matrix = np.asarray([[overlap(c['box'], g['box']) for g in gt] for c in candidates])
                 rr, cc = linear_sum_assignment(-matrix)
                 matched = {int(i): gt[int(j)] for i, j in zip(rr, cc) if matrix[i, j] >= .5}
+                qualities = {int(i): float(matrix[i, j]) for i, j in zip(rr, cc) if matrix[i, j] >= .5}
+            query_boxes = [g['box'] for g in gt if g.get('is_query')] if is_rmot else []
             present = {g['gt_id'] for g in matched.values()}
             captured = actor.captured or [([], [])]
             offset = 0
@@ -120,16 +134,25 @@ def export_clip(name, source, destination, plan, actor, stateful):
                 counts['native_crop_sheets_exact'] += len(native)-1
                 targets = {}
                 if 'empty' in base.questions:
-                    targets['empty'] = ('yes' if gt else 'no', 'empty_presence')
+                    present_target = bool(query_boxes) if is_rmot else bool(gt)
+                    targets['empty'] = ('yes' if present_target else 'no', 'empty_query_presence' if is_rmot else 'empty_presence')
                 for local in range(len(group)):
                     target = matched.get(offset+local); gid = target['gt_id'] if target else None
                     correct = [t for t in ranked_source if gid is not None and before.get(t.track_id) == gid]
                     known = any(gid is not None and before.get(tid) == gid for tid in prior_ids)
                     answer = 'IGNORE' if gid is None else str(aliases[min(correct, key=lambda t: t.track_id).track_id]) if correct else 'NO_MATCH' if known else 'NEW'
-                    reliable = target is not None and target['visibility'] >= .6 and answer != 'NO_MATCH'
+                    quality = qualities.get(offset+local, 0.)
+                    reliable = (quality >= .7 if is_rmot else target is not None and target['visibility'] >= .6) and answer != 'NO_MATCH'
+                    strong = quality >= .85 if is_rmot else target is not None and target['visibility'] >= .85
+                    level = ('0' if target is None else '1' if quality < .7 else '3' if strong else '2') if is_rmot else (
+                        '0' if target is None else '1' if not reliable else '3' if strong else '2')
                     targets[f'match_{local}'] = (answer, 'identity')
                     targets[f'update_{local}'] = ('yes' if reliable else 'no', 'memory_update')
-                    targets[f'reliability_{local}'] = ('0' if target is None else '1' if not reliable else '3' if target['visibility'] >= .85 else '2', 'reliability')
+                    targets[f'reliability_{local}'] = (level, 'reliability')
+                    if is_rmot:
+                        member = any(overlap(group[local]['box'], box) >= .5 for box in query_boxes)
+                        targets[f'membership_{local}'] = ('yes' if member else 'no', 'query_membership')
+                        counts['query_membership:'+('yes' if member else 'no')] += 1
                 for track in ranked_source:
                     gid = before.get(track.track_id)
                     action = 'TERMINATE' if gid is None else 'REACTIVATE' if gid in present and track.lost_age else 'ACTIVE' if gid in present else 'LOST'
@@ -145,7 +168,8 @@ def export_clip(name, source, destination, plan, actor, stateful):
                     event = events[offset+local]; tid = event.get('track_id')
                     answer = None
                     if local in selected and gid is not None and before.get(tid) is not None:
-                        answer = 'yes' if before[tid] == gid and target['visibility'] >= .6 else 'no'
+                        clear = qualities[offset+local] >= .7 if is_rmot else target['visibility'] >= .6
+                        answer = 'yes' if before[tid] == gid and clear else 'no'
                         assigned_targets[f'assigned_update_{local}'] = (answer, 'assigned_identity_memory_update')
                     registry.write(json.dumps({'sequence': name, 'frame': frame, 'candidate': offset+local,
                         'ordinary_group': identifier, 'actual_actor_action': event['action'], 'actual_actor_identity': tid,
