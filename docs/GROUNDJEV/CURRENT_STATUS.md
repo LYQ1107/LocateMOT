@@ -1,4 +1,4 @@
-# GroundJEV-MOT current evidence — 2026-10-15
+# GroundJEV-MOT current evidence — 2026-10-16
 
 Independent worktree `/data2/user/LocateMOT_GroundJEV`; original LocateMOT data
 and preserved U2 results remain under `/data2/user/LocateMOT`. The full goal
@@ -406,6 +406,30 @@ external sequence-length completeness proof. Current600paired runs continue
 unchanged. Index/coverage/validation live under
 `training_data/broader_legal_scale_index_v1`; generator and source plan are
 `build_training_scale_index.py` and `training_scale_index_v1.json`.
+
+The175Base category component is now prepared and input-validated:52978train
+objects produce105956native root/conditional-leaf questions across500videos.
+Expanded JSONL1005240705bytes is stored as25820145gzip bytes; real-image crop
+sheets are generated only when requested through the unchanged native
+`NativeCategoryHead.crop_sheet`, with no PNG/ROI dataset cache. Typed questions,
+1203input categories and conditional-root teacher forcing match the earlier
+category component. No Novel/unknown negative labels are added; all18274images
+are registered, including1251without eligible Base labels.
+
+Actual regressions reproduce all215earlier Base object pixels/62sheets, native
+question/pixel evidence on175class representatives and exact processor tensors
+for root/leaf at both768x216/768x432sizes. All105956annotation/image/class/box
+targets validate. Official CPU planning drops0rows, max4238tokens and total
+315781843planned tokens; these are not training exposure. The reported26489
+steps are hypothetical at4rows/update for this category-only component, not
+an optimizer launch. Text rows still load into RAM (actual CPU peak3746652160
+bytes); media generation is on demand. The native cached-plan reporter's1s
+message is not complete tokenization timing or throughput. Existing normal
+rows/images and native optimizer/rendering math remain unchanged; the separate
+streamed-input entry records its IO version in checkpoint resume protocols.
+Use this component within a future balanced MOT/RMOT/OVMOT curriculum, not an
+automatic category-only training stage. Original600paired training continues.
+Receipt: `training_data/base175_streamed_component_v1/validated_component_summary.json`.
 
 Original One100real uncorrected rollout→500SFT and Compactjoint1200real72frame
 rollout→native1200 provide offline iterative own-state training. Not per-gradient

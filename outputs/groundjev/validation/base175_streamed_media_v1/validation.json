@@ -1,0 +1,79 @@
+{
+  "status": "REAL_STREAMED_CATEGORY_PIXELS_QUESTIONS_AND_PROCESSOR_TENSORS_EXACT",
+  "input_io_protocol": "gzip-jsonl-and-native-category-crop-recipes-v1",
+  "ordinary_legacy_rows_and_media_unchanged": true,
+  "previous_Base_objects_pixels_exact": 215,
+  "previous_Base_crop_sheets_exact": 62,
+  "all_rows_validated": 105956,
+  "all_Base_annotation_ids_paired_exact": 52978,
+  "actual_175_classes_native_questions_and_pixels_exact": 175,
+  "processor_tensors_exact_cases": [
+    {
+      "size": [
+        768,
+        432
+      ],
+      "family": "category_group",
+      "all_processor_tensors_exact": true,
+      "tokens": 4228,
+      "keys": [
+        "input_ids",
+        "attention_mask",
+        "mm_token_type_ids",
+        "pixel_values",
+        "image_grid_thw"
+      ]
+    },
+    {
+      "size": [
+        768,
+        432
+      ],
+      "family": "category_leaf",
+      "all_processor_tensors_exact": true,
+      "tokens": 1921,
+      "keys": [
+        "input_ids",
+        "attention_mask",
+        "mm_token_type_ids",
+        "pixel_values",
+        "image_grid_thw"
+      ]
+    },
+    {
+      "size": [
+        768,
+        216
+      ],
+      "family": "category_group",
+      "all_processor_tensors_exact": true,
+      "tokens": 4045,
+      "keys": [
+        "input_ids",
+        "attention_mask",
+        "mm_token_type_ids",
+        "pixel_values",
+        "image_grid_thw"
+      ]
+    },
+    {
+      "size": [
+        768,
+        216
+      ],
+      "family": "category_leaf",
+      "all_processor_tensors_exact": true,
+      "tokens": 1783,
+      "keys": [
+        "input_ids",
+        "attention_mask",
+        "mm_token_type_ids",
+        "pixel_values",
+        "image_grid_thw"
+      ]
+    }
+  ],
+  "GPU_or_model_weights_loaded": false,
+  "new_training_steps": 0,
+  "full_goal_complete": false
+}

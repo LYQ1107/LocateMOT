@@ -320,3 +320,5 @@ OriginalOne500statefulreplay continues unchanged; latestpublished observation
 300/500, fullFP32/Adam/scheduler/allRNG/cursor state available. A finite verified
 completion owner waits the actual trainer, checks500nativeMMreload then runs
 matchedthree-task controls. It does not restart or alter the training recipe.
+
+2026-10-16 broader175Base input component complete, not trained:52978Baseobjects/105956root+leafrows/500trainvideos/all1203inputclasses. Native crop recipes and gzip reduce1005240705JSONLbytes to25820145; no PNG/ROI dataset archive. Old215objects/62sheets exact and175class representatives match native questions/pixels, four actual processor tensor cases exact. All105956targets validate and official CPU full plan has0drops/max4238tokens/315781843planned tokens, not trained tokens;26489steps hypothetical only. Text rows remain in RAM, CPU peak3746652160bytes; cached reporter1s is not tokenizer speed. Separate IO adapter records format version in checkpoint protocols; original paired600runs untouched. Component must join balanced three-task training, no new optimizer/model calls or joint foundation-training claim.

@@ -1,0 +1,23 @@
+{
+  "status": "RAW_COMPONENT_GZIP_AND_FRAME_SCOPE_PRESERVED_LOCALLY",
+  "files": [
+    {
+      "name": "frame_scope.jsonl",
+      "bytes": 3566566
+    },
+    {
+      "name": "summary.json",
+      "bytes": 4048
+    },
+    {
+      "name": "train.jsonl.gz",
+      "bytes": 25820145
+    },
+    {
+      "name": "validated_component_summary.json",
+      "bytes": 1770
+    }
+  ],
+  "generator": "tools/groundjev/prepare_base175_streamed_component.py",
+  "input_io_entry": "tools/groundjev/run_streamed_media_sft.py"
+}

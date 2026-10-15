@@ -1,0 +1,23 @@
+{
+  "name": "Broader175Base native category component with gzip rows and native on-demand crop sheets",
+  "source_index": "outputs/groundjev/training_data/broader_legal_scale_index_v1",
+  "annotation": "/data2/user/TAO-Amodal/annotations/train_with_freeform.json",
+  "vocabulary": "/data2/user/LocateMOT/outputs/unified/u2/protocol/lvis_v1_vocabulary.json",
+  "eligible_objects": 52978,
+  "category_rows": 105956,
+  "Base_classes": 175,
+  "all_input_categories": 1203,
+  "group_size": 128,
+  "batch_candidates": 8,
+  "question_and_pixels": "NativeCategoryHead root/conditional-leaf questions and unmodified crop_sheet; GT teacher crops declared, no native detector or own-history claim.",
+  "storage": "gzip JSONL, original image references and exact crop recipes; no generated PNG or ROI archive.",
+  "input_io_protocol": "gzip-jsonl-and-native-category-crop-recipes-v1",
+  "role": "One category component for a future balanced MOT/RMOT/OVMOT mixture, not a category-only training launch.",
+  "conservative_prior_upper_bytes": 26091442957,
+  "new_export_budget_bytes": 268435456,
+  "combined_registered_upper_bytes": 26359878413,
+  "global_temporary_feature_budget_bytes": 26843545600,
+  "Novel_or_evaluation_supervision": false,
+  "new_GPU_or_training_steps": 0,
+  "full_goal_complete": false
+}

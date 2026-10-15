@@ -1,0 +1,25 @@
+{
+  "status": "FULL_BASE175_OFFICIAL_CPU_TOKEN_PLAN_COMPLETE_NOT_TRAINED",
+  "owner_pid": 2563615,
+  "component": "outputs/groundjev/training_data/base175_streamed_component_v1",
+  "new_model_or_GPU_loaded": false,
+  "training_started": false,
+  "text_rows_loaded_in_RAM_by_native_trainer": true,
+  "images_generated_only_when_requested": true,
+  "max_steps0_role": "plan-only full component; no optimizer budget or training launch registered",
+  "full_goal_complete": false,
+  "all_rows": 105956,
+  "overlength_dropped_rows": 0,
+  "max_actual_tokens": 4238,
+  "total_actual_tokens": 315781843,
+  "question_families": {
+    "category_group": 52978,
+    "category_leaf": 52978
+  },
+  "Base_classes": 175,
+  "hypothetical_full_component_epoch_updates": 26489,
+  "actual_new_training_updates": 0,
+  "input_io_resume_protocol": "gzip-jsonl-and-native-category-crop-recipes-v1",
+  "native_rendering_step_planning_and_optimizer_math_changed": false,
+  "process_CPU_RSS_peak_bytes": 3746652160
+}
