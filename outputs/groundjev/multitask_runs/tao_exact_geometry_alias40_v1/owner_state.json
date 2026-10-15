@@ -1,5 +1,5 @@
 {
-  "status": "simple_INFERENCE",
+  "status": "FULL40_EXACT_GEOMETRY_ALIAS_PROPOSAL_POLICY_CONTROLS_COMPLETE",
   "owner_pid": 1901350,
   "device": "cpu",
   "additional_GPUs": 0,
@@ -12,7 +12,118 @@
     "different_proposal_protocol_from_raw_reference": true,
     "association_only_or_JEV_causal_gain_claim": false
   },
-  "completed": {},
+  "completed": {
+    "simple": {
+      "run": "outputs/groundjev/multitask_runs/tao_exact_geometry_alias40_v1/simple",
+      "decoded_frames": 40,
+      "metrics": {
+        "TETA": 22.556,
+        "LocA": 22.871,
+        "AssocA": 26.472,
+        "ClsA": 18.325,
+        "LocRe": 85.688,
+        "LocPr": 23.365,
+        "AssocRe": 29.469,
+        "AssocPr": 63.109,
+        "ClsRe": 18.325,
+        "ClsPr": 33.333
+      },
+      "base_novel": {
+        "base": {
+          "TETA": 26.747500000000002,
+          "LocA": 21.985,
+          "AssocA": 30.7705,
+          "ClsA": 27.487,
+          "LocRe": 84.5315,
+          "LocPr": 22.522,
+          "AssocRe": 34.3695,
+          "AssocPr": 64.02,
+          "ClsRe": 27.487,
+          "ClsPr": 50.0
+        },
+        "novel": {
+          "TETA": 14.173,
+          "LocA": 24.644,
+          "AssocA": 17.874,
+          "ClsA": 0.0,
+          "LocRe": 88.0,
+          "LocPr": 25.05,
+          "AssocRe": 19.666,
+          "AssocPr": 61.286,
+          "ClsRe": 0.0,
+          "ClsPr": 0.0
+        }
+      },
+      "all7343group_inputs_and35228aliases_preserved": true,
+      "original_reference_metrics": {
+        "TETA": 18.64,
+        "LocA": 7.0114,
+        "AssocA": 28.618,
+        "ClsA": 20.29,
+        "LocRe": 89.375,
+        "LocPr": 7.0629,
+        "AssocRe": 30.888,
+        "AssocPr": 60.706,
+        "ClsRe": 20.29,
+        "ClsPr": 63.333
+      }
+    },
+    "shared_compact": {
+      "run": "outputs/groundjev/multitask_runs/tao_exact_geometry_alias40_v1/shared_compact",
+      "decoded_frames": 40,
+      "metrics": {
+        "TETA": 21.773,
+        "LocA": 23.273,
+        "AssocA": 9.6266,
+        "ClsA": 32.419,
+        "LocRe": 81.042,
+        "LocPr": 24.186,
+        "AssocRe": 10.31,
+        "AssocPr": 55.418,
+        "ClsRe": 33.333,
+        "ClsPr": 32.419
+      },
+      "base_novel": {
+        "base": {
+          "TETA": 26.831,
+          "LocA": 21.6485,
+          "AssocA": 10.2147,
+          "ClsA": 48.6285,
+          "LocRe": 83.1875,
+          "LocPr": 22.227,
+          "AssocRe": 10.907,
+          "AssocPr": 57.2775,
+          "ClsRe": 50.0,
+          "ClsPr": 48.6285
+        },
+        "novel": {
+          "TETA": 11.658,
+          "LocA": 26.522,
+          "AssocA": 8.4508,
+          "ClsA": 0.0,
+          "LocRe": 76.75,
+          "LocPr": 28.105,
+          "AssocRe": 9.1162,
+          "AssocPr": 51.699,
+          "ClsRe": 0.0,
+          "ClsPr": 0.0
+        }
+      },
+      "all7343group_inputs_and35228aliases_preserved": true,
+      "original_reference_metrics": {
+        "TETA": 14.517,
+        "LocA": 8.088,
+        "AssocA": 5.1478,
+        "ClsA": 30.314,
+        "LocRe": 84.833,
+        "LocPr": 8.2072,
+        "AssocRe": 5.2406,
+        "AssocPr": 71.608,
+        "ClsRe": 33.333,
+        "ClsPr": 30.314
+      }
+    }
+  },
   "raw_native_source": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_runs/tao_base_novel63_full_v2_expression_none/native_candidates/frame_candidates.jsonl",
   "raw_reference": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_runs/tao_base_novel63_full_v3_empty_crop_cpu",
   "weights_thresholds_metrics_and_all40frames_unchanged": true,

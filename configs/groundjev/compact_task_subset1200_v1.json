@@ -1,0 +1,85 @@
+{
+  "name": "Matched Compact task-subset ablation, same MOT-only initialization and1200updates",
+  "source_pack": "outputs/groundjev/compact/rmot_native72_v1/broad_native",
+  "initialization": "outputs/groundjev/compact/native300_v1/compact_distilled.pt",
+  "initial_semantic_heads": "seed0 sameinitialization inallfour; no priorjointtrainedcheckpoint contamination",
+  "arms": {
+    "mot": [
+      "mot"
+    ],
+    "mot_rmot": [
+      "mot",
+      "rmot"
+    ],
+    "mot_ovmot": [
+      "mot",
+      "ovmot"
+    ],
+    "all_three": [
+      "mot",
+      "rmot",
+      "ovmot"
+    ]
+  },
+  "steps_each": 1200,
+  "device": "cpu",
+  "seed": 0,
+  "model": "same shared semantic CompactCore width128/1146511parameters",
+  "optimizer": "sameoriginaljoint AdamWlr2e-4wd1e-4clip1/nativeGT+softteacherlossunchanged",
+  "sampling": "cyclicselectedtasks, independentRandom(seed0+taskindex) per-task streams; common selectedexample-ID prefixes exact acrossarms",
+  "task_exposure": "MOTonly1200; pair600each; triple400each; fixedtotalupdates notfixedpertaskexposure/FLOPs; noisolatedinterferenceattribution",
+  "training_source": "existingnativeMOT149groups andlegalfitRMO teacher/nativeownhistory plusTAOtrainBaseGTteacher groups; frozenolderactor trajectories, notcurrent-gradientonpolicyrollouts",
+  "Novel_GT_supervised": false,
+  "new_native_queries_or_feature_cache_files": false,
+  "additional_GPUs": 0,
+  "all_heads_present": "MOTsupervisionstilltrainsclass/membershiponMOTspec underexistingjointloss; doesnotmeanRMOT/OVMOTdomainexamples were seen",
+  "evaluations": {
+    "mot": "all1203DT0004frames sameoriginalV1nativeROI/candidates",
+    "ovmot": "all40TAO63originalrawcandidateframes (notnewaliaspolicy), unchangedTETA/BaseNovel",
+    "rmot": "existing8single/12multi functional source thenafterqueuedfreshsource readiness all800single/all800multi onexactfreshRMOnativecandidates"
+  },
+  "official_metrics": "unmodifiedTrackEval/TETA, allregisteredframes/empty/rejected retained; CPUreplayneverdetectorE2E",
+  "old_shared26.316_DT_comparability": "previous modelhadjoint1200+additional1200 anddifferentinit/budget; notpairedwiththese1200newarms",
+  "longwait": "singleblockingCPUowner trains/scoresknownsources thenwaitsexactfreshRMOTownerchildhandle andvalid800frameoutputs beforemissingfullRMOunits",
+  "plan_status": "registeredbeforefirstoptimizerstep",
+  "full_goal_complete": false,
+  "actual_source_examples": 536,
+  "actual_source_task_counts": {
+    "mot": 149,
+    "rmot": 325,
+    "ovmot": 62
+  },
+  "actual_native_RMOT_groups": 142,
+  "full_RMOT_owner": "outputs/groundjev/multitask_runs/full_rmot_shared600_v1",
+  "known_controls": {
+    "mot_full1203": {
+      "manifest": "outputs/groundjev/pilot_data/dancetrack.json",
+      "candidates": "outputs/groundjev/compact/dancetrack0004_native300_v2_empty_roi_fixed/compact_distilled/frame_decisions.jsonl"
+    },
+    "tao_raw_full40": {
+      "manifest": "outputs/groundjev/multitask_pilot_data/ovmot_tao_base_novel63_full.json",
+      "candidates": "outputs/groundjev/multitask_runs/tao_base_novel63_full_v2_expression_none/native_candidates/frame_candidates.jsonl"
+    },
+    "rmot_single8": {
+      "manifest": "outputs/groundjev/multitask_pilot_data/rmot_single_empty.json",
+      "candidates": "outputs/groundjev/multitask_runs/rmot_single_empty_pretrained_v1/frame_decisions.jsonl"
+    },
+    "rmot_multi12": {
+      "manifest": "outputs/groundjev/multitask_pilot_data/rmot_multi_empty.json",
+      "candidates": "outputs/groundjev/multitask_runs/pretrained_v1_registered_v1/rmot_multi_empty/full/frame_decisions.jsonl"
+    }
+  },
+  "future_RMOT_controls": {
+    "single800": {
+      "manifest": "outputs/groundjev/multitask_pilot_data/rmot_single_empty_full.json",
+      "candidates": "outputs/groundjev/multitask_runs/full_rmot_shared600_v1/single800_shared_compact_fresh/frame_candidates.jsonl",
+      "fresh_compact_result": "outputs/groundjev/multitask_runs/full_rmot_shared600_v1/single800_shared_compact_fresh/result.json"
+    },
+    "multi800": {
+      "manifest": "outputs/groundjev/multitask_pilot_data/rmot_multi_empty_full.json",
+      "candidates": "outputs/groundjev/multitask_runs/full_rmot_shared600_v1/multi800_shared_compact_fresh/frame_candidates.jsonl",
+      "fresh_compact_result": "outputs/groundjev/multitask_runs/full_rmot_shared600_v1/multi800_shared_compact_fresh/result.json"
+    }
+  },
+  "launch": ".venv-onejev-py310/bin/python tools/groundjev/run_compact_task_subsets.py --plan configs/groundjev/compact_task_subset1200_v1.json --out outputs/groundjev/compact/task_subsets1200_cpu_v1"
+}

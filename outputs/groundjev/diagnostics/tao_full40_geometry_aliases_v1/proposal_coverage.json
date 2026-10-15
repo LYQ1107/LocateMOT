@@ -1,0 +1,257 @@
+{
+  "status": "POSTHOC_GEOMETRY_ALIAS_PROPOSAL_COVERAGE_COMPLETE",
+  "threshold": 0.5,
+  "counts": {
+    "raw_covered": 147,
+    "grouped_covered": 147,
+    "GT": 160
+  },
+  "raw_recall": 0.91875,
+  "grouped_recall": 0.91875,
+  "all_exact_box_sets_equal": true,
+  "GT_access": "posthoc only after grouping; neverinput orselection",
+  "same_assignment_definition_as_prior_physical_diagnostics": true,
+  "official_metric_replacement": false,
+  "frames": [
+    {
+      "frame": 1,
+      "GT": 4,
+      "raw_covered": 4,
+      "grouped_covered": 4
+    },
+    {
+      "frame": 30,
+      "GT": 4,
+      "raw_covered": 4,
+      "grouped_covered": 4
+    },
+    {
+      "frame": 59,
+      "GT": 4,
+      "raw_covered": 3,
+      "grouped_covered": 3
+    },
+    {
+      "frame": 88,
+      "GT": 4,
+      "raw_covered": 4,
+      "grouped_covered": 4
+    },
+    {
+      "frame": 117,
+      "GT": 4,
+      "raw_covered": 4,
+      "grouped_covered": 4
+    },
+    {
+      "frame": 146,
+      "GT": 4,
+      "raw_covered": 4,
+      "grouped_covered": 4
+    },
+    {
+      "frame": 175,
+      "GT": 4,
+      "raw_covered": 4,
+      "grouped_covered": 4
+    },
+    {
+      "frame": 204,
+      "GT": 4,
+      "raw_covered": 4,
+      "grouped_covered": 4
+    },
+    {
+      "frame": 233,
+      "GT": 4,
+      "raw_covered": 4,
+      "grouped_covered": 4
+    },
+    {
+      "frame": 262,
+      "GT": 4,
+      "raw_covered": 4,
+      "grouped_covered": 4
+    },
+    {
+      "frame": 291,
+      "GT": 4,
+      "raw_covered": 4,
+      "grouped_covered": 4
+    },
+    {
+      "frame": 320,
+      "GT": 4,
+      "raw_covered": 3,
+      "grouped_covered": 3
+    },
+    {
+      "frame": 349,
+      "GT": 4,
+      "raw_covered": 4,
+      "grouped_covered": 4
+    },
+    {
+      "frame": 378,
+      "GT": 4,
+      "raw_covered": 4,
+      "grouped_covered": 4
+    },
+    {
+      "frame": 407,
+      "GT": 4,
+      "raw_covered": 3,
+      "grouped_covered": 3
+    },
+    {
+      "frame": 436,
+      "GT": 4,
+      "raw_covered": 3,
+      "grouped_covered": 3
+    },
+    {
+      "frame": 465,
+      "GT": 4,
+      "raw_covered": 4,
+      "grouped_covered": 4
+    },
+    {
+      "frame": 494,
+      "GT": 4,
+      "raw_covered": 4,
+      "grouped_covered": 4
+    },
+    {
+      "frame": 523,
+      "GT": 4,
+      "raw_covered": 4,
+      "grouped_covered": 4
+    },
+    {
+      "frame": 552,
+      "GT": 4,
+      "raw_covered": 4,
+      "grouped_covered": 4
+    },
+    {
+      "frame": 581,
+      "GT": 4,
+      "raw_covered": 1,
+      "grouped_covered": 1
+    },
+    {
+      "frame": 610,
+      "GT": 4,
+      "raw_covered": 1,
+      "grouped_covered": 1
+    },
+    {
+      "frame": 639,
+      "GT": 4,
+      "raw_covered": 4,
+      "grouped_covered": 4
+    },
+    {
+      "frame": 668,
+      "GT": 4,
+      "raw_covered": 4,
+      "grouped_covered": 4
+    },
+    {
+      "frame": 697,
+      "GT": 4,
+      "raw_covered": 3,
+      "grouped_covered": 3
+    },
+    {
+      "frame": 726,
+      "GT": 4,
+      "raw_covered": 4,
+      "grouped_covered": 4
+    },
+    {
+      "frame": 755,
+      "GT": 4,
+      "raw_covered": 4,
+      "grouped_covered": 4
+    },
+    {
+      "frame": 784,
+      "GT": 4,
+      "raw_covered": 4,
+      "grouped_covered": 4
+    },
+    {
+      "frame": 813,
+      "GT": 4,
+      "raw_covered": 4,
+      "grouped_covered": 4
+    },
+    {
+      "frame": 842,
+      "GT": 4,
+      "raw_covered": 4,
+      "grouped_covered": 4
+    },
+    {
+      "frame": 871,
+      "GT": 4,
+      "raw_covered": 3,
+      "grouped_covered": 3
+    },
+    {
+      "frame": 900,
+      "GT": 4,
+      "raw_covered": 4,
+      "grouped_covered": 4
+    },
+    {
+      "frame": 929,
+      "GT": 4,
+      "raw_covered": 3,
+      "grouped_covered": 3
+    },
+    {
+      "frame": 958,
+      "GT": 4,
+      "raw_covered": 4,
+      "grouped_covered": 4
+    },
+    {
+      "frame": 987,
+      "GT": 4,
+      "raw_covered": 4,
+      "grouped_covered": 4
+    },
+    {
+      "frame": 1016,
+      "GT": 4,
+      "raw_covered": 4,
+      "grouped_covered": 4
+    },
+    {
+      "frame": 1045,
+      "GT": 4,
+      "raw_covered": 4,
+      "grouped_covered": 4
+    },
+    {
+      "frame": 1074,
+      "GT": 4,
+      "raw_covered": 4,
+      "grouped_covered": 4
+    },
+    {
+      "frame": 1103,
+      "GT": 4,
+      "raw_covered": 4,
+      "grouped_covered": 4
+    },
+    {
+      "frame": 1132,
+      "GT": 4,
+      "raw_covered": 4,
+      "grouped_covered": 4
+    }
+  ]
+}

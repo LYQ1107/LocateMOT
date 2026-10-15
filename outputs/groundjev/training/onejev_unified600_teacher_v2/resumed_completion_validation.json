@@ -1,0 +1,47 @@
+{
+  "status": "ACTUAL_RETAINED600_SFT_COMPLETION_VALIDATED_WITH_SCOPED_RESUME_LIMITATIONS",
+  "training": "outputs/groundjev/training/onejev_unified600_teacher_v2",
+  "retained_stage_updates": 600,
+  "retained_stage_examples": 2400,
+  "complete_FP32_Adam_scheduler_RNG_cursor_saved": true,
+  "latest_full_state": {
+    "format": "groundjev-full-fp32-adam-rng-v1",
+    "step": 600,
+    "seen": 2400,
+    "epoch": 0,
+    "next_step_in_epoch": 600,
+    "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_unified600_teacher_v2/latest_training_state.pt",
+    "bytes": 9029141401,
+    "FP32_masters_and_Adam_moments_saved": true,
+    "scheduler_and_all_RNG_saved": true,
+    "single_latest_training_state": true,
+    "feature_cache": false
+  },
+  "restored_cursor": 450,
+  "restored_FP32_master_max_difference": 0,
+  "restored_protocol_exact": true,
+  "completed_updates_after_restore": 150,
+  "completed_examples_after_restore": 600,
+  "raw_done_elapsed_s_scope": "only resumed process; not complete original+resumed600stage wall time",
+  "resumed_process_elapsed_s": 3595.081282679981,
+  "resumed_tail_examples_per_s": 0.16689469662080222,
+  "raw_done_cumulative_examples_per_s_not_valid_tail_speed": 0.6675787864832089,
+  "raw_done_records_preserved": true,
+  "logged_unretained_updates_after_saved_cursor": 25,
+  "total_observed_optimizer_updates_lower_bound": 625,
+  "original_complete_wall_time_or_standalone_training_throughput_claim": false,
+  "overlap_log_comparisons": [
+    {
+      "step": 475,
+      "original_loss": 1.404405526193159,
+      "replayed_loss": 1.4026707123278492,
+      "loss_absolute_difference": 0.0017348138653097145,
+      "slot_accuracy_absolute_difference": 0.0,
+      "gradient_norm_absolute_difference": 0.22634408831595465
+    }
+  ],
+  "bitwise_training_trajectory_replay_proven": false,
+  "numerical_replay_difference_root_cause": "not established; full-state restore is exact, deterministic row-seeded render/sampler unchanged, subsequent CUDA trajectory equality is not asserted",
+  "native_MM_reload_and_official_tracking_performance": "separate running matched controls, not proved by training completion",
+  "seed_loss_kernel_or_acceptance_criterion_modified": false
+}

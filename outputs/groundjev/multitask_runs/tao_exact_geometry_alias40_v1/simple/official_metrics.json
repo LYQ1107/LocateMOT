@@ -1,0 +1,1759 @@
+{
+  "status": "OFFICIAL_REGISTERED_MULTITASK_SCOPE_EVALUATION_COMPLETE",
+  "task": "ovmot",
+  "dataset": "tao_amodal",
+  "sequence": "val/HACS/Making_a_sandwich_v_SMk4troNhwE_scene_0_0-2482",
+  "scope": "full_legal_validation_video_annotation_frames",
+  "frames": 40,
+  "all_registered_frames_included": true,
+  "GT_access": "evaluation only",
+  "official_test_labels_read": false,
+  "end_to_end_fps": null,
+  "association_replay_fps": 2.2428149855976076,
+  "perception_rejected_frames": [],
+  "evaluator": "unmodified official TETA OVMOT recipe; non-exhaustive TAO",
+  "evaluator_commit": "b498aa87b252bfb75d7cc0d8d6435c3e1e74e4de",
+  "metrics": {
+    "TETA": 22.556,
+    "LocA": 22.871,
+    "AssocA": 26.472,
+    "ClsA": 18.325,
+    "LocRe": 85.688,
+    "LocPr": 23.365,
+    "AssocRe": 29.469,
+    "AssocPr": 63.109,
+    "ClsRe": 18.325,
+    "ClsPr": 33.333
+  },
+  "base_novel": {
+    "base": {
+      "TETA": 26.747500000000002,
+      "LocA": 21.985,
+      "AssocA": 30.7705,
+      "ClsA": 27.487,
+      "LocRe": 84.5315,
+      "LocPr": 22.522,
+      "AssocRe": 34.3695,
+      "AssocPr": 64.02,
+      "ClsRe": 27.487,
+      "ClsPr": 50.0
+    },
+    "novel": {
+      "TETA": 14.173,
+      "LocA": 24.644,
+      "AssocA": 17.874,
+      "ClsA": 0.0,
+      "LocRe": 88.0,
+      "LocPr": 25.05,
+      "AssocRe": 19.666,
+      "AssocPr": 61.286,
+      "ClsRe": 0.0,
+      "ClsPr": 0.0
+    }
+  },
+  "metric_scale": "official TETA summary percent",
+  "evaluated_categories": [
+    {
+      "name": "knife",
+      "group": "base"
+    },
+    {
+      "name": "peeler_(tool_for_fruit_and_vegetables)",
+      "group": "novel"
+    },
+    {
+      "name": "baby",
+      "group": "base"
+    }
+  ],
+  "GT_boxes": 160,
+  "predictions": 7343,
+  "unmapped_predicted_labels": [
+    {
+      "frame": 1,
+      "label": "blackberry"
+    },
+    {
+      "frame": 1,
+      "label": "blouse"
+    },
+    {
+      "frame": 1,
+      "label": "bob"
+    },
+    {
+      "frame": 1,
+      "label": "bob"
+    },
+    {
+      "frame": 1,
+      "label": "bread"
+    },
+    {
+      "frame": 1,
+      "label": "compass"
+    },
+    {
+      "frame": 1,
+      "label": "condiment"
+    },
+    {
+      "frame": 1,
+      "label": "cupboard"
+    },
+    {
+      "frame": 1,
+      "label": "halter top"
+    },
+    {
+      "frame": 1,
+      "label": "newspaper"
+    },
+    {
+      "frame": 1,
+      "label": "wooden leg"
+    },
+    {
+      "frame": 1,
+      "label": "washbasin"
+    },
+    {
+      "frame": 30,
+      "label": "blackberry"
+    },
+    {
+      "frame": 30,
+      "label": "blouse"
+    },
+    {
+      "frame": 30,
+      "label": "bob"
+    },
+    {
+      "frame": 30,
+      "label": "bob"
+    },
+    {
+      "frame": 30,
+      "label": "bread"
+    },
+    {
+      "frame": 30,
+      "label": "bread"
+    },
+    {
+      "frame": 30,
+      "label": "compass"
+    },
+    {
+      "frame": 30,
+      "label": "condiment"
+    },
+    {
+      "frame": 30,
+      "label": "crabmeat"
+    },
+    {
+      "frame": 30,
+      "label": "cupboard"
+    },
+    {
+      "frame": 30,
+      "label": "cupboard"
+    },
+    {
+      "frame": 30,
+      "label": "dollhouse"
+    },
+    {
+      "frame": 30,
+      "label": "newspaper"
+    },
+    {
+      "frame": 30,
+      "label": "pillow plant"
+    },
+    {
+      "frame": 30,
+      "label": "washbasin"
+    },
+    {
+      "frame": 59,
+      "label": "halter top"
+    },
+    {
+      "frame": 59,
+      "label": "halter top"
+    },
+    {
+      "frame": 59,
+      "label": "jewel"
+    },
+    {
+      "frame": 59,
+      "label": "wooden leg"
+    },
+    {
+      "frame": 59,
+      "label": "skullcap"
+    },
+    {
+      "frame": 59,
+      "label": "washbasin"
+    },
+    {
+      "frame": 88,
+      "label": "blackberry"
+    },
+    {
+      "frame": 88,
+      "label": "blouse"
+    },
+    {
+      "frame": 88,
+      "label": "bob"
+    },
+    {
+      "frame": 88,
+      "label": "bob"
+    },
+    {
+      "frame": 88,
+      "label": "bread"
+    },
+    {
+      "frame": 88,
+      "label": "bread"
+    },
+    {
+      "frame": 88,
+      "label": "jewel"
+    },
+    {
+      "frame": 88,
+      "label": "wooden leg"
+    },
+    {
+      "frame": 88,
+      "label": "scraperbing brush"
+    },
+    {
+      "frame": 88,
+      "label": "skullcap"
+    },
+    {
+      "frame": 88,
+      "label": "washbasin"
+    },
+    {
+      "frame": 117,
+      "label": "arctic (type of shoe)"
+    },
+    {
+      "frame": 117,
+      "label": "bedpan"
+    },
+    {
+      "frame": 117,
+      "label": "blackberry"
+    },
+    {
+      "frame": 117,
+      "label": "blouse"
+    },
+    {
+      "frame": 117,
+      "label": "bob"
+    },
+    {
+      "frame": 117,
+      "label": "bob"
+    },
+    {
+      "frame": 117,
+      "label": "bread"
+    },
+    {
+      "frame": 117,
+      "label": "compass"
+    },
+    {
+      "frame": 117,
+      "label": "condiment"
+    },
+    {
+      "frame": 117,
+      "label": "cupboard"
+    },
+    {
+      "frame": 117,
+      "label": "halter top"
+    },
+    {
+      "frame": 117,
+      "label": "halter top"
+    },
+    {
+      "frame": 117,
+      "label": "washbasin"
+    },
+    {
+      "frame": 146,
+      "label": "blackberry"
+    },
+    {
+      "frame": 146,
+      "label": "blouse"
+    },
+    {
+      "frame": 146,
+      "label": "bob"
+    },
+    {
+      "frame": 146,
+      "label": "bob"
+    },
+    {
+      "frame": 146,
+      "label": "bread"
+    },
+    {
+      "frame": 146,
+      "label": "bread"
+    },
+    {
+      "frame": 146,
+      "label": "generator"
+    },
+    {
+      "frame": 146,
+      "label": "halter top"
+    },
+    {
+      "frame": 146,
+      "label": "humm"
+    },
+    {
+      "frame": 146,
+      "label": "humm"
+    },
+    {
+      "frame": 146,
+      "label": "humm"
+    },
+    {
+      "frame": 146,
+      "label": "oven"
+    },
+    {
+      "frame": 146,
+      "label": "wooden leg"
+    },
+    {
+      "frame": 146,
+      "label": "washbasin"
+    },
+    {
+      "frame": 175,
+      "label": "blackberry"
+    },
+    {
+      "frame": 175,
+      "label": "blouse"
+    },
+    {
+      "frame": 175,
+      "label": "bread"
+    },
+    {
+      "frame": 175,
+      "label": "bread"
+    },
+    {
+      "frame": 175,
+      "label": "coopping board"
+    },
+    {
+      "frame": 175,
+      "label": "compass"
+    },
+    {
+      "frame": 175,
+      "label": "condiment"
+    },
+    {
+      "frame": 175,
+      "label": "cupboard"
+    },
+    {
+      "frame": 175,
+      "label": "cupboard"
+    },
+    {
+      "frame": 175,
+      "label": "cupboard"
+    },
+    {
+      "frame": 175,
+      "label": "humm"
+    },
+    {
+      "frame": 175,
+      "label": "oven"
+    },
+    {
+      "frame": 175,
+      "label": "wooden leg"
+    },
+    {
+      "frame": 175,
+      "label": "washbasin"
+    },
+    {
+      "frame": 204,
+      "label": "blackberry"
+    },
+    {
+      "frame": 204,
+      "label": "blouse"
+    },
+    {
+      "frame": 204,
+      "label": "blouse"
+    },
+    {
+      "frame": 204,
+      "label": "bob"
+    },
+    {
+      "frame": 204,
+      "label": "bob"
+    },
+    {
+      "frame": 204,
+      "label": "bread"
+    },
+    {
+      "frame": 204,
+      "label": "bread"
+    },
+    {
+      "frame": 204,
+      "label": "humm"
+    },
+    {
+      "frame": 204,
+      "label": "washbasin"
+    },
+    {
+      "frame": 233,
+      "label": "arctic (type of shoe)"
+    },
+    {
+      "frame": 233,
+      "label": "bedpan"
+    },
+    {
+      "frame": 233,
+      "label": "billboard"
+    },
+    {
+      "frame": 233,
+      "label": "jar"
+    },
+    {
+      "frame": 233,
+      "label": "newspaper"
+    },
+    {
+      "frame": 233,
+      "label": "wooden leg"
+    },
+    {
+      "frame": 262,
+      "label": "arctic (type of shoe)"
+    },
+    {
+      "frame": 262,
+      "label": "coopping board"
+    },
+    {
+      "frame": 262,
+      "label": "coopping board"
+    },
+    {
+      "frame": 262,
+      "label": "newspaper"
+    },
+    {
+      "frame": 291,
+      "label": "blackberry"
+    },
+    {
+      "frame": 291,
+      "label": "blackberry"
+    },
+    {
+      "frame": 291,
+      "label": "blouse"
+    },
+    {
+      "frame": 291,
+      "label": "blouse"
+    },
+    {
+      "frame": 291,
+      "label": "bob"
+    },
+    {
+      "frame": 291,
+      "label": "bob"
+    },
+    {
+      "frame": 291,
+      "label": "box"
+    },
+    {
+      "frame": 291,
+      "label": "coopping board"
+    },
+    {
+      "frame": 291,
+      "label": "coopping board"
+    },
+    {
+      "frame": 291,
+      "label": "compass"
+    },
+    {
+      "frame": 291,
+      "label": "condiment"
+    },
+    {
+      "frame": 291,
+      "label": "cooker"
+    },
+    {
+      "frame": 291,
+      "label": "cupboard"
+    },
+    {
+      "frame": 291,
+      "label": "cupboard"
+    },
+    {
+      "frame": 291,
+      "label": "generator"
+    },
+    {
+      "frame": 291,
+      "label": "grill"
+    },
+    {
+      "frame": 291,
+      "label": "halter top"
+    },
+    {
+      "frame": 291,
+      "label": "humm"
+    },
+    {
+      "frame": 291,
+      "label": "milkshake"
+    },
+    {
+      "frame": 291,
+      "label": "newspaper"
+    },
+    {
+      "frame": 291,
+      "label": "oven"
+    },
+    {
+      "frame": 291,
+      "label": "wooden leg"
+    },
+    {
+      "frame": 320,
+      "label": "compass"
+    },
+    {
+      "frame": 320,
+      "label": "condiment"
+    },
+    {
+      "frame": 320,
+      "label": "cupboard"
+    },
+    {
+      "frame": 320,
+      "label": "cupboard"
+    },
+    {
+      "frame": 320,
+      "label": "cupboard"
+    },
+    {
+      "frame": 320,
+      "label": "cupboard"
+    },
+    {
+      "frame": 320,
+      "label": "cupboard"
+    },
+    {
+      "frame": 320,
+      "label": "cupboard"
+    },
+    {
+      "frame": 320,
+      "label": "cupboard"
+    },
+    {
+      "frame": 320,
+      "label": "dollhouse"
+    },
+    {
+      "frame": 320,
+      "label": "jar"
+    },
+    {
+      "frame": 320,
+      "label": "washbasin"
+    },
+    {
+      "frame": 349,
+      "label": "compass"
+    },
+    {
+      "frame": 349,
+      "label": "condiment"
+    },
+    {
+      "frame": 349,
+      "label": "cupboard"
+    },
+    {
+      "frame": 349,
+      "label": "cupboard"
+    },
+    {
+      "frame": 349,
+      "label": "cupboard"
+    },
+    {
+      "frame": 349,
+      "label": "cupboard"
+    },
+    {
+      "frame": 349,
+      "label": "cupboard"
+    },
+    {
+      "frame": 349,
+      "label": "cupboard"
+    },
+    {
+      "frame": 349,
+      "label": "cupboard"
+    },
+    {
+      "frame": 378,
+      "label": "billboard"
+    },
+    {
+      "frame": 378,
+      "label": "billboard"
+    },
+    {
+      "frame": 378,
+      "label": "billboard"
+    },
+    {
+      "frame": 378,
+      "label": "billboard"
+    },
+    {
+      "frame": 378,
+      "label": "blackberry"
+    },
+    {
+      "frame": 378,
+      "label": "blackberry"
+    },
+    {
+      "frame": 378,
+      "label": "blouse"
+    },
+    {
+      "frame": 378,
+      "label": "blouse"
+    },
+    {
+      "frame": 378,
+      "label": "bob"
+    },
+    {
+      "frame": 378,
+      "label": "bread"
+    },
+    {
+      "frame": 378,
+      "label": "wooden leg"
+    },
+    {
+      "frame": 378,
+      "label": "washbasin"
+    },
+    {
+      "frame": 407,
+      "label": "arctic (type of shoe)"
+    },
+    {
+      "frame": 407,
+      "label": "condiment"
+    },
+    {
+      "frame": 407,
+      "label": "condiment"
+    },
+    {
+      "frame": 407,
+      "label": "cupboard"
+    },
+    {
+      "frame": 407,
+      "label": "cupboard"
+    },
+    {
+      "frame": 407,
+      "label": "cupboard"
+    },
+    {
+      "frame": 407,
+      "label": "dollhouse"
+    },
+    {
+      "frame": 407,
+      "label": "dollhouse"
+    },
+    {
+      "frame": 407,
+      "label": "halter top"
+    },
+    {
+      "frame": 407,
+      "label": "halter top"
+    },
+    {
+      "frame": 407,
+      "label": "washbasin"
+    },
+    {
+      "frame": 436,
+      "label": "arctic (type of shoe)"
+    },
+    {
+      "frame": 436,
+      "label": "bedpan"
+    },
+    {
+      "frame": 436,
+      "label": "blackberry"
+    },
+    {
+      "frame": 436,
+      "label": "blouse"
+    },
+    {
+      "frame": 436,
+      "label": "blouse"
+    },
+    {
+      "frame": 436,
+      "label": "bob"
+    },
+    {
+      "frame": 436,
+      "label": "bread"
+    },
+    {
+      "frame": 436,
+      "label": "halter top"
+    },
+    {
+      "frame": 436,
+      "label": "halter top"
+    },
+    {
+      "frame": 436,
+      "label": "oven"
+    },
+    {
+      "frame": 436,
+      "label": "washbasin"
+    },
+    {
+      "frame": 465,
+      "label": "bedpan"
+    },
+    {
+      "frame": 465,
+      "label": "blackberry"
+    },
+    {
+      "frame": 465,
+      "label": "blouse"
+    },
+    {
+      "frame": 465,
+      "label": "blouse"
+    },
+    {
+      "frame": 465,
+      "label": "bob"
+    },
+    {
+      "frame": 465,
+      "label": "bob"
+    },
+    {
+      "frame": 465,
+      "label": "compass"
+    },
+    {
+      "frame": 465,
+      "label": "condiment"
+    },
+    {
+      "frame": 465,
+      "label": "cupboard"
+    },
+    {
+      "frame": 465,
+      "label": "dollhouse"
+    },
+    {
+      "frame": 465,
+      "label": "legume"
+    },
+    {
+      "frame": 465,
+      "label": "washbasin"
+    },
+    {
+      "frame": 494,
+      "label": "blackberry"
+    },
+    {
+      "frame": 494,
+      "label": "blouse"
+    },
+    {
+      "frame": 494,
+      "label": "blouse"
+    },
+    {
+      "frame": 494,
+      "label": "bob"
+    },
+    {
+      "frame": 494,
+      "label": "bob"
+    },
+    {
+      "frame": 494,
+      "label": "bread"
+    },
+    {
+      "frame": 494,
+      "label": "bread"
+    },
+    {
+      "frame": 494,
+      "label": "compass"
+    },
+    {
+      "frame": 494,
+      "label": "cupboard"
+    },
+    {
+      "frame": 494,
+      "label": "halter top"
+    },
+    {
+      "frame": 523,
+      "label": "ambulanceifier"
+    },
+    {
+      "frame": 523,
+      "label": "bedpan"
+    },
+    {
+      "frame": 523,
+      "label": "blackberry"
+    },
+    {
+      "frame": 523,
+      "label": "blouse"
+    },
+    {
+      "frame": 523,
+      "label": "blouse"
+    },
+    {
+      "frame": 523,
+      "label": "bob"
+    },
+    {
+      "frame": 523,
+      "label": "bob"
+    },
+    {
+      "frame": 523,
+      "label": "bread"
+    },
+    {
+      "frame": 523,
+      "label": "bread"
+    },
+    {
+      "frame": 523,
+      "label": "bread"
+    },
+    {
+      "frame": 523,
+      "label": "compass"
+    },
+    {
+      "frame": 523,
+      "label": "condiment"
+    },
+    {
+      "frame": 523,
+      "label": "cupboard"
+    },
+    {
+      "frame": 523,
+      "label": "washbasin"
+    },
+    {
+      "frame": 552,
+      "label": "arctic (type of shoe)"
+    },
+    {
+      "frame": 552,
+      "label": "bedpan"
+    },
+    {
+      "frame": 552,
+      "label": "blouse"
+    },
+    {
+      "frame": 552,
+      "label": "blouse"
+    },
+    {
+      "frame": 552,
+      "label": "bob"
+    },
+    {
+      "frame": 552,
+      "label": "bob"
+    },
+    {
+      "frame": 552,
+      "label": "bread"
+    },
+    {
+      "frame": 552,
+      "label": "bread"
+    },
+    {
+      "frame": 552,
+      "label": "compass"
+    },
+    {
+      "frame": 552,
+      "label": "condiment"
+    },
+    {
+      "frame": 552,
+      "label": "cupboard"
+    },
+    {
+      "frame": 552,
+      "label": "cupboard"
+    },
+    {
+      "frame": 552,
+      "label": "halter top"
+    },
+    {
+      "frame": 552,
+      "label": "halter top"
+    },
+    {
+      "frame": 552,
+      "label": "wooden leg"
+    },
+    {
+      "frame": 552,
+      "label": "vest"
+    },
+    {
+      "frame": 552,
+      "label": "washbasin"
+    },
+    {
+      "frame": 581,
+      "label": "bedpan"
+    },
+    {
+      "frame": 581,
+      "label": "compass"
+    },
+    {
+      "frame": 581,
+      "label": "condiment"
+    },
+    {
+      "frame": 581,
+      "label": "cupboard"
+    },
+    {
+      "frame": 581,
+      "label": "cupboard"
+    },
+    {
+      "frame": 581,
+      "label": "cupboard"
+    },
+    {
+      "frame": 581,
+      "label": "cupboard"
+    },
+    {
+      "frame": 581,
+      "label": "halter top"
+    },
+    {
+      "frame": 581,
+      "label": "humm"
+    },
+    {
+      "frame": 581,
+      "label": "kitchen"
+    },
+    {
+      "frame": 581,
+      "label": "washbasin"
+    },
+    {
+      "frame": 610,
+      "label": "compass"
+    },
+    {
+      "frame": 610,
+      "label": "cooker"
+    },
+    {
+      "frame": 610,
+      "label": "cupboard"
+    },
+    {
+      "frame": 610,
+      "label": "newspaper"
+    },
+    {
+      "frame": 610,
+      "label": "oven"
+    },
+    {
+      "frame": 639,
+      "label": "blackberry"
+    },
+    {
+      "frame": 639,
+      "label": "blackberry"
+    },
+    {
+      "frame": 639,
+      "label": "blouse"
+    },
+    {
+      "frame": 639,
+      "label": "blouse"
+    },
+    {
+      "frame": 639,
+      "label": "bob"
+    },
+    {
+      "frame": 639,
+      "label": "bob"
+    },
+    {
+      "frame": 639,
+      "label": "bread"
+    },
+    {
+      "frame": 639,
+      "label": "bread"
+    },
+    {
+      "frame": 639,
+      "label": "compass"
+    },
+    {
+      "frame": 639,
+      "label": "condiment"
+    },
+    {
+      "frame": 639,
+      "label": "cupboard"
+    },
+    {
+      "frame": 639,
+      "label": "cupboard"
+    },
+    {
+      "frame": 639,
+      "label": "cupboard"
+    },
+    {
+      "frame": 639,
+      "label": "cupboard"
+    },
+    {
+      "frame": 639,
+      "label": "cupboard"
+    },
+    {
+      "frame": 639,
+      "label": "cupboard"
+    },
+    {
+      "frame": 639,
+      "label": "cupboard"
+    },
+    {
+      "frame": 639,
+      "label": "halter top"
+    },
+    {
+      "frame": 639,
+      "label": "halter top"
+    },
+    {
+      "frame": 639,
+      "label": "skullcap"
+    },
+    {
+      "frame": 639,
+      "label": "washbasin"
+    },
+    {
+      "frame": 668,
+      "label": "blackberry"
+    },
+    {
+      "frame": 668,
+      "label": "blackberry"
+    },
+    {
+      "frame": 668,
+      "label": "blouse"
+    },
+    {
+      "frame": 668,
+      "label": "blouse"
+    },
+    {
+      "frame": 668,
+      "label": "bob"
+    },
+    {
+      "frame": 668,
+      "label": "bob"
+    },
+    {
+      "frame": 668,
+      "label": "bread"
+    },
+    {
+      "frame": 668,
+      "label": "bread"
+    },
+    {
+      "frame": 668,
+      "label": "bread"
+    },
+    {
+      "frame": 668,
+      "label": "halter top"
+    },
+    {
+      "frame": 668,
+      "label": "halter top"
+    },
+    {
+      "frame": 668,
+      "label": "jar"
+    },
+    {
+      "frame": 668,
+      "label": "jar"
+    },
+    {
+      "frame": 668,
+      "label": "jewel"
+    },
+    {
+      "frame": 668,
+      "label": "milk can"
+    },
+    {
+      "frame": 668,
+      "label": "oven"
+    },
+    {
+      "frame": 668,
+      "label": "wooden leg"
+    },
+    {
+      "frame": 668,
+      "label": "washbasin"
+    },
+    {
+      "frame": 697,
+      "label": "arctic (type of shoe)"
+    },
+    {
+      "frame": 697,
+      "label": "compass"
+    },
+    {
+      "frame": 697,
+      "label": "condiment"
+    },
+    {
+      "frame": 697,
+      "label": "condiment"
+    },
+    {
+      "frame": 697,
+      "label": "cupboard"
+    },
+    {
+      "frame": 697,
+      "label": "flap"
+    },
+    {
+      "frame": 697,
+      "label": "wooden leg"
+    },
+    {
+      "frame": 726,
+      "label": "halter top"
+    },
+    {
+      "frame": 726,
+      "label": "halter top"
+    },
+    {
+      "frame": 726,
+      "label": "wooden leg"
+    },
+    {
+      "frame": 755,
+      "label": "compass"
+    },
+    {
+      "frame": 755,
+      "label": "condiment"
+    },
+    {
+      "frame": 755,
+      "label": "cupboard"
+    },
+    {
+      "frame": 755,
+      "label": "first-aid kit"
+    },
+    {
+      "frame": 755,
+      "label": "flap"
+    },
+    {
+      "frame": 755,
+      "label": "flap"
+    },
+    {
+      "frame": 755,
+      "label": "flap"
+    },
+    {
+      "frame": 755,
+      "label": "grill"
+    },
+    {
+      "frame": 755,
+      "label": "wooden leg"
+    },
+    {
+      "frame": 755,
+      "label": "washbasin"
+    },
+    {
+      "frame": 784,
+      "label": "blackberry"
+    },
+    {
+      "frame": 784,
+      "label": "blouse"
+    },
+    {
+      "frame": 784,
+      "label": "bob"
+    },
+    {
+      "frame": 784,
+      "label": "bob"
+    },
+    {
+      "frame": 784,
+      "label": "bread"
+    },
+    {
+      "frame": 784,
+      "label": "oven"
+    },
+    {
+      "frame": 784,
+      "label": "washbasin"
+    },
+    {
+      "frame": 813,
+      "label": "blackberry"
+    },
+    {
+      "frame": 813,
+      "label": "blouse"
+    },
+    {
+      "frame": 813,
+      "label": "bob"
+    },
+    {
+      "frame": 813,
+      "label": "bob"
+    },
+    {
+      "frame": 813,
+      "label": "bread"
+    },
+    {
+      "frame": 813,
+      "label": "bread"
+    },
+    {
+      "frame": 813,
+      "label": "humm"
+    },
+    {
+      "frame": 813,
+      "label": "newspaper"
+    },
+    {
+      "frame": 813,
+      "label": "oven"
+    },
+    {
+      "frame": 813,
+      "label": "wooden leg"
+    },
+    {
+      "frame": 813,
+      "label": "washbasin"
+    },
+    {
+      "frame": 842,
+      "label": "arctic (type of shoe)"
+    },
+    {
+      "frame": 842,
+      "label": "billboard"
+    },
+    {
+      "frame": 842,
+      "label": "billboard"
+    },
+    {
+      "frame": 842,
+      "label": "billboard"
+    },
+    {
+      "frame": 842,
+      "label": "blackberry"
+    },
+    {
+      "frame": 842,
+      "label": "blackberry"
+    },
+    {
+      "frame": 842,
+      "label": "blouse"
+    },
+    {
+      "frame": 842,
+      "label": "bob"
+    },
+    {
+      "frame": 842,
+      "label": "bob"
+    },
+    {
+      "frame": 842,
+      "label": "bread"
+    },
+    {
+      "frame": 842,
+      "label": "bread"
+    },
+    {
+      "frame": 842,
+      "label": "washbasin"
+    },
+    {
+      "frame": 871,
+      "label": "arctic (type of shoe)"
+    },
+    {
+      "frame": 871,
+      "label": "compass"
+    },
+    {
+      "frame": 871,
+      "label": "cupboard"
+    },
+    {
+      "frame": 871,
+      "label": "washbasin"
+    },
+    {
+      "frame": 900,
+      "label": "bedpan"
+    },
+    {
+      "frame": 900,
+      "label": "blackberry"
+    },
+    {
+      "frame": 900,
+      "label": "blouse"
+    },
+    {
+      "frame": 900,
+      "label": "bob"
+    },
+    {
+      "frame": 900,
+      "label": "bob"
+    },
+    {
+      "frame": 900,
+      "label": "bread"
+    },
+    {
+      "frame": 900,
+      "label": "jar"
+    },
+    {
+      "frame": 900,
+      "label": "jewel"
+    },
+    {
+      "frame": 900,
+      "label": "newspaper"
+    },
+    {
+      "frame": 929,
+      "label": "halter top"
+    },
+    {
+      "frame": 929,
+      "label": "halter top"
+    },
+    {
+      "frame": 958,
+      "label": "arctic (type of shoe)"
+    },
+    {
+      "frame": 958,
+      "label": "bedpan"
+    },
+    {
+      "frame": 958,
+      "label": "billboard"
+    },
+    {
+      "frame": 958,
+      "label": "blackberry"
+    },
+    {
+      "frame": 958,
+      "label": "blouse"
+    },
+    {
+      "frame": 958,
+      "label": "box"
+    },
+    {
+      "frame": 958,
+      "label": "box"
+    },
+    {
+      "frame": 958,
+      "label": "bread"
+    },
+    {
+      "frame": 958,
+      "label": "bread"
+    },
+    {
+      "frame": 958,
+      "label": "compass"
+    },
+    {
+      "frame": 958,
+      "label": "cupboard"
+    },
+    {
+      "frame": 958,
+      "label": "generator"
+    },
+    {
+      "frame": 958,
+      "label": "halter top"
+    },
+    {
+      "frame": 958,
+      "label": "halter top"
+    },
+    {
+      "frame": 958,
+      "label": "wooden leg"
+    },
+    {
+      "frame": 987,
+      "label": "compass"
+    },
+    {
+      "frame": 987,
+      "label": "cupboard"
+    },
+    {
+      "frame": 987,
+      "label": "generator"
+    },
+    {
+      "frame": 987,
+      "label": "halter top"
+    },
+    {
+      "frame": 987,
+      "label": "legume"
+    },
+    {
+      "frame": 987,
+      "label": "oven"
+    },
+    {
+      "frame": 987,
+      "label": "wooden leg"
+    },
+    {
+      "frame": 987,
+      "label": "crawfish"
+    },
+    {
+      "frame": 987,
+      "label": "washbasin"
+    },
+    {
+      "frame": 1016,
+      "label": "blackberry"
+    },
+    {
+      "frame": 1016,
+      "label": "blouse"
+    },
+    {
+      "frame": 1016,
+      "label": "blouse"
+    },
+    {
+      "frame": 1016,
+      "label": "bread"
+    },
+    {
+      "frame": 1016,
+      "label": "halter top"
+    },
+    {
+      "frame": 1016,
+      "label": "washbasin"
+    },
+    {
+      "frame": 1045,
+      "label": "arctic (type of shoe)"
+    },
+    {
+      "frame": 1045,
+      "label": "blackberry"
+    },
+    {
+      "frame": 1045,
+      "label": "blouse"
+    },
+    {
+      "frame": 1045,
+      "label": "blouse"
+    },
+    {
+      "frame": 1045,
+      "label": "bread"
+    },
+    {
+      "frame": 1045,
+      "label": "wooden leg"
+    },
+    {
+      "frame": 1045,
+      "label": "washbasin"
+    },
+    {
+      "frame": 1074,
+      "label": "billboard"
+    },
+    {
+      "frame": 1074,
+      "label": "billboard"
+    },
+    {
+      "frame": 1074,
+      "label": "billboard"
+    },
+    {
+      "frame": 1074,
+      "label": "billboard"
+    },
+    {
+      "frame": 1074,
+      "label": "blouse"
+    },
+    {
+      "frame": 1074,
+      "label": "bob"
+    },
+    {
+      "frame": 1074,
+      "label": "bob"
+    },
+    {
+      "frame": 1074,
+      "label": "condiment"
+    },
+    {
+      "frame": 1074,
+      "label": "cupboard"
+    },
+    {
+      "frame": 1074,
+      "label": "cupboard"
+    },
+    {
+      "frame": 1074,
+      "label": "wooden leg"
+    },
+    {
+      "frame": 1103,
+      "label": "bedpan"
+    },
+    {
+      "frame": 1103,
+      "label": "blackberry"
+    },
+    {
+      "frame": 1103,
+      "label": "blouse"
+    },
+    {
+      "frame": 1103,
+      "label": "compass"
+    },
+    {
+      "frame": 1103,
+      "label": "condiment"
+    },
+    {
+      "frame": 1103,
+      "label": "cupboard"
+    },
+    {
+      "frame": 1103,
+      "label": "halter top"
+    },
+    {
+      "frame": 1103,
+      "label": "wooden leg"
+    },
+    {
+      "frame": 1103,
+      "label": "washbasin"
+    },
+    {
+      "frame": 1132,
+      "label": "blackberry"
+    },
+    {
+      "frame": 1132,
+      "label": "blouse"
+    },
+    {
+      "frame": 1132,
+      "label": "bob"
+    },
+    {
+      "frame": 1132,
+      "label": "bread"
+    },
+    {
+      "frame": 1132,
+      "label": "jar"
+    },
+    {
+      "frame": 1132,
+      "label": "jewel"
+    },
+    {
+      "frame": 1132,
+      "label": "newspaper"
+    },
+    {
+      "frame": 1132,
+      "label": "oven"
+    },
+    {
+      "frame": 1132,
+      "label": "washbasin"
+    }
+  ],
+  "unmapped_policy": "retain boxes with unknown category -1; never discard predictions or GT",
+  "prediction_score": "constant unscored sentinel 1; no detector confidence and no score-based truncation",
+  "GT_policy": "all original modalxywh, no clipping/visibility/category exclusions",
+  "novel_evaluation_GT_used_for_training": false,
+  "official_complete_dataset_result": false,
+  "timestamp_policy": "annotation-step units; physical source FPS unavailable; display at one step per second"
+}

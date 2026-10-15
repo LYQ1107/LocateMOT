@@ -495,3 +495,20 @@ a separate CPU exactalias proposal-policy control is registered andrunning,
 notanassociation-only comparison. FullRMOT two800frame freshCompact/native
 andmatchedpretrained/500/teacher600/native600 controls wait verifiedGPU5handoff;
 configs/groundjev/full_rmot_study_v1.json. Fullgoalremains active.
+
+
+ExactaliasTAO40bothcomplete: SimpleTETA22.556 vsCompact21.773, comparedto
+raw18.640/14.517. BothNovelClsA0; no promotion. All35228aliases/7343groups,
+40frames preserved, rawandgroupedproposalIoU.5coverage147/160unchanged.
+Separateproposalpolicy, notisolatedJEVgain; source402723754bytes/1GiBcap.
+
+Fourtask-subset1200CPUtrainingscomplete, sameactualsharedMOT300+seed0heads,
+1146511trainablecoreparams, same536pack. Common400taskdrawprefixes exact,
+all3taskreloads0. Fullvideo controlsrunning; onlyMOTonly1203reportedsofar:
+HOTA19.6386/IDF120.7863,IDSW348,FN1765. Parametercount excludesfrozenOne
+texttable andnativeGround. RMOsourcepointercontractfixedusingexistingexact
+ROIlogs; replaceonlyCPUmanager,preservecurrentMOTworker/checkpoints, no retrain.
+Currentowner: compact/task_subsets1200_cpu_v2_feature_sources/owner_state.json.
+TeacherFull600trainingalso complete; native600/official600controls pending.
+RestoredFP32stateexact butoverlaplossdelta.001735 disprovesbitwisereplayclaim;
+curatedresumeelapsed/throughput scope excludesfalsecumulativerate.

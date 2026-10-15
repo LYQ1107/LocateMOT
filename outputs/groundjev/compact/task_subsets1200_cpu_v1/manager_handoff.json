@@ -1,0 +1,67 @@
+{
+  "reason": "shortRMO plan referenced raw Full logs lacking nativeROI; use alreadyexisting exactlymatching enrichedlogs beforeunfinishedunits",
+  "old_owner_pid": 1915707,
+  "old_owner_start_ticks": "42107363",
+  "old_owner_process_group": 1915707,
+  "phase_at_handoff": "mot_rmot_mot_full1203_INFERENCE",
+  "four1200step_models_already_complete": true,
+  "workers_preserved_without_any_signal": [
+    {
+      "pid": 1925936,
+      "start_ticks": "42163302",
+      "argv": [
+        "/data2/user/LocateMOT_GroundJEV/.venv-onejev-py310/bin/python",
+        "tools/groundjev/run_video.py",
+        "--task",
+        "mot",
+        "--video",
+        "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/pilot_data/dancetrack.json",
+        "--backend",
+        "compact",
+        "--compact-device",
+        "cpu",
+        "--checkpoint",
+        "outputs/groundjev/compact/task_subsets1200_cpu_v1/mot_rmot_training/checkpoint.pt",
+        "--candidate-replay",
+        "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/dancetrack0004_native300_v2_empty_roi_fixed/compact_distilled/frame_decisions.jsonl",
+        "--omit-replay-feature-vectors",
+        "--out",
+        "outputs/groundjev/compact/task_subsets1200_cpu_v1/mot_rmot_mot_full1203",
+        ""
+      ]
+    },
+    {
+      "pid": 1926238,
+      "start_ticks": "42163815",
+      "argv": [
+        "ffmpeg",
+        "-hide_banner",
+        "-loglevel",
+        "error",
+        "-y",
+        "-f",
+        "rawvideo",
+        "-pixel_format",
+        "rgb24",
+        "-video_size",
+        "1920x1080",
+        "-framerate",
+        "20",
+        "-i",
+        "-",
+        "-an",
+        "-vf",
+        "pad=ceil(iw/2)*2:ceil(ih/2)*2",
+        "-c:v",
+        "libx264",
+        "-pix_fmt",
+        "yuv420p",
+        "outputs/groundjev/compact/task_subsets1200_cpu_v1/mot_rmot_mot_full1203/tracks.mp4",
+        ""
+      ]
+    }
+  ],
+  "training_or_inference_workers_killed": false,
+  "signals": "SIGTERM toverifiedmanagerPID only; no process-group signal",
+  "training_restarted": false
+}

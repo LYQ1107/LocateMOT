@@ -815,6 +815,81 @@ All40frames/originalqueryoutcomes and all35228alias observations remain.
 
 The new source cap is1GiB; priorfeatures+TAO+reserved2GiBRMOT+probe+aliascap
 remain conservatively21,397,407,162bytes<25GiB. No GPU/detector/training is added.
-Study results are pending; no observed improvement is claimed.
+Both exact-alias controls have now completed; detailed results follow below.
 Plan: configs/groundjev/tao_exact_alias_control_v1.json.
 Owner: multitask_runs/tao_exact_geometry_alias40_v1/owner_state.json.
+
+
+## Exact-alias controls complete; task-sharing matrix trained
+
+All40frames,7343exactboxgroups and35228originalalias records validate, with
+identical nativeROI arrays inside each group. Source file402723754bytes fits
+its1GiB cap. A separate posthoc check confirms identical box sets and unchanged
+one-to-one IoU.5 coverage147/160(.91875) forrawandgrouped candidates; GTdidnot
+select groups or representatives.
+
+| Proposal policy / method | TETA | LocA | AssocA | ClsA |
+|---|---:|---:|---:|---:|
+| Raw / Simple |18.640|7.0114|28.618|20.290|
+| Raw / shared Compact |14.517|8.088|5.1478|30.314|
+| Exact aliases / Simple |22.556|22.871|26.472|18.325|
+| Exact aliases / shared Compact |21.773|23.273|9.6266|32.419|
+
+Compact correct birthanchor option coverage improves.1567->.5310, but remaining
+missing options and association errors stillmatter. Both NovelClsA remain0;
+Compact still trails Simple in TETA andassociation under the newpolicy. This
+changes proposal representation andSimple's representative label, so the gain
+isnot isolated JEV evidence. Originalrawresults remainunchanged.
+Evidence: multitask_runs/tao_exact_geometry_alias40_v1/validation_and_summary.json.
+
+The explicitly required task-sharing matrix now has four actual1200update CPU
+models: MOT, MOT+RMOT, MOT+OVMOT, allthree. Each has1146511parameters, the same
+actualMOT300initialization plusseed0newsemanticheads, sameoptimizer/losses and
+existing536group pack (149MOT/325RMOT/62OVMOT,142actualnativeRMOgroups). None
+starts froma jointlytrained checkpoint. Independenttaskstreams give identical
+actualexample-ID prefixes (400commonMOT/RMO/OV examples whereapplicable).
+Allthree task reloads agree exactly for everymodel; checkpoints andfullAdam/RNG
+snapshots remain preserved. Fixedtotalupdates changespertaskexposure:
+1200MOT,600eachinpairedarms,400eachintriple; notFLOP/exposurematched andnotan
+isolated negativeinterference attribution. Older frozenactor histories and
+GTteacher Base crops remain explicit; noNovel/evaluation GTtraining.
+
+Full1203DT/raw40TAO/shortRMO8/12 controls are running, followed by twofull800RMO
+scopes when the existing freshsource owner completes them. FirstMOT-only
+full1203HOTA19.6386%,IDF120.7863%,IDSW348,FP1089,FN1765; othernewarm scores
+arepending. Legacy26.316 has differentjointinitialization/additionaltraining
+budget andisnotapaired task-subset result.
+
+A plan wiringerror used rawshortRMOlogswithoutROI. Existing enriched logs were
+verified tohaveexactlythesame frames/images/boxes/labels/scores and2560features.
+Only the verified CPU manager was replaced; its activeMOTinference andffmpeg
+were left running, and the newmanager waits for their processgroup to finish.
+Allfour1200step checkpoints/completedvideo units are reused, no retraining or
+validinference restart. The oldplan, managerstate andhandoff receipt remain.
+Currentowner: compact/task_subsets1200_cpu_v2_feature_sources/owner_state.json.
+Plans: configs/groundjev/compact_task_subset1200_v1.json and correctedv2.
+Evidence: compact/task_subsets1200_cpu_v1/training_validation_and_summary.json.
+
+
+TeacherFull600 has now completed600retainedupdates/2400examples with its
+9,029,141,401byte fullstate. The GPU4 before/after controller has begun the
+same native semantic-policy controls; before500single/multiRMOT HOTA areboth0
+under explicitNoulmembership. Legacyungated500scores24.886/21.425 aredifferent
+runtimepolicies andmustnot be compared aspairedaccuracy. Nativearm and600
+three-task officialmetrics remainpending.
+
+Resume timing isscoped explicitly:3595.081seconds covers onlythe150updates/
+600examples afterrestore450. Nativeforkdone-rate.66758 usescumulative2400,
+so itisnotvalidtail/whole-stage throughput; actualtailrate.166895examples/s.
+Atleast25loggedunretainedupdates werealsoexecuted beforetheinterruption and
+replayed (totalobservedwork>=625). Full450masters/protocolrestore isexact,
+butactualoverlap475loss differs.001734814 withsame.78slotaccuracy; subsequent
+CUDAtrajectory isnotbitwiseproven andspecificnumericalcauseisunknown. No
+kernel, seed, numericaltolerance oracceptance criterion waschanged. Rawlogs
+remain, andthecompletionreceipt reportsthislimitation ratherthan hidingit.
+Evidence: training/onejev_unified600_teacher_v2/resumed_completion_validation.json.
+
+Tasksubset parameter counts above refer to the trainableCompactcore. Its text
+inputs stilluse the originalOneJev frozen token-embedding table onCPU; theyare
+not free, nativeOneJevdecoderreasoning, or a1.146Mparameter totalend-to-end system.
+The table andnativeGround perception/ROI services arecommonwithinthiscohort.

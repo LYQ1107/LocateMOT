@@ -1,0 +1,25 @@
+{
+  "status": "SHORT_RMOT_EXISTING_NATIVE_ROI_SOURCE_CONTRACT_VALIDATED",
+  "units": {
+    "rmot_single8": {
+      "raw_reference": "outputs/groundjev/multitask_runs/rmot_single_empty_pretrained_v1/frame_decisions.jsonl",
+      "existing_ROI_source": "outputs/groundjev/compact/joint1200_controls_v1/rmot_single8_before/frame_decisions.jsonl",
+      "frames": 8,
+      "candidates": 11,
+      "all_frame_image_box_label_native_score_scorekind_exact": true,
+      "all_native_ROI_dimensions": 2560
+    },
+    "rmot_multi12": {
+      "raw_reference": "outputs/groundjev/multitask_runs/pretrained_v1_registered_v1/rmot_multi_empty/full/frame_decisions.jsonl",
+      "existing_ROI_source": "outputs/groundjev/compact/joint1200_controls_v1/rmot_multi12_before/frame_decisions.jsonl",
+      "frames": 12,
+      "candidates": 16,
+      "all_frame_image_box_label_native_score_scorekind_exact": true,
+      "all_native_ROI_dimensions": 2560
+    }
+  },
+  "new_native_queries_or_training_steps": 0,
+  "GT_or_future_read": false,
+  "source_change": "usealreadyexistingfeature-enrichedsamecandidates; preserveoldrawresults and badplan asdiagnosis",
+  "model_or_scoring_protocol_changed": false
+}
