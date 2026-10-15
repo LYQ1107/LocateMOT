@@ -1,0 +1,5 @@
+{
+  "status": "COMPACT_ACTUAL_FIT48_CPU_SUPPORT_FAILED",
+  "plan": "configs/groundjev/compact_fit48_identity_support_v1.json",
+  "error": "KeyError('native_region_feature')"
+}

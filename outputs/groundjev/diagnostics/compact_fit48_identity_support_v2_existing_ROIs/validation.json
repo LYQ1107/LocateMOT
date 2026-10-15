@@ -1,0 +1,38 @@
+{
+  "status": "ALL48_COMPACT_ACTOR_FRAMES_AND1184_POSTHOC_SUPPORT_LABELS_INDEPENDENTLY_VALIDATED",
+  "actual_CPU_owner_session": 34284,
+  "exit_code": 0,
+  "frames": 48,
+  "candidates": 1184,
+  "all_frame_identity_image_perception_and_candidate_counts_match_original": true,
+  "all_candidate_events_and_output_boxes_labels_reconcile": true,
+  "all_saved_candidate_probabilities_finite": true,
+  "all1184_GT_matches_birth_anchors_eligibility_and_targets_recomputed": true,
+  "counts": {
+    "NEW_initialization": 82,
+    "frames": 48,
+    "candidates": 1184,
+    "source_rejected_frames": 0,
+    "known_consistent_existing_identity": 620,
+    "potential_supervised:yes": 377,
+    "no_final_identity": 374,
+    "known_conflicting_existing_identity": 102,
+    "potential_supervised:no": 345,
+    "unmatched_not_universal_negative_truth": 4,
+    "unknown_birth_anchor": 2
+  },
+  "Compact_actor_potential_yes_no": [
+    377,
+    345
+  ],
+  "previous_Full_native600_actor_yes_no": [
+    29,
+    584
+  ],
+  "different_endogenous_actor_states_not_same_event_causal_or_generalization_comparison": true,
+  "no_Full_training_or_new_GPU_or_feature_cache": true,
+  "next_evidence_based_action": "Consider an explicitly cross-actor final-ID component with balanced support alongside original Full hard negatives; matching Full SFT and continuous held-out three-task evaluation remain required.",
+  "failed_first_attempt_preserved": "outputs/groundjev/diagnostics/compact_fit48_identity_support_v1",
+  "combined_registered_upper_bytes": 26460541709,
+  "full_goal_complete": false
+}

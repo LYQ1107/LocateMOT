@@ -1,0 +1,18 @@
+{
+  "status": "ACTUAL_COMPACT_CPU_FIT48_IDENTITY_SUPPORT_DIAGNOSIS_COMPLETE",
+  "plan": "configs/groundjev/compact_fit48_identity_support_v1.json",
+  "counts": {
+    "NEW_initialization": 82,
+    "frames": 48,
+    "candidates": 1184,
+    "source_rejected_frames": 0,
+    "known_consistent_existing_identity": 620,
+    "potential_supervised:yes": 377,
+    "no_final_identity": 374,
+    "known_conflicting_existing_identity": 102,
+    "potential_supervised:no": 345,
+    "unmatched_not_universal_negative_truth": 4,
+    "unknown_birth_anchor": 2
+  },
+  "summary": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/diagnostics/compact_fit48_identity_support_v2_existing_ROIs/summary.json"
+}

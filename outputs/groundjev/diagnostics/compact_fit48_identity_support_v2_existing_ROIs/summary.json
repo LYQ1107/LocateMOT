@@ -1,0 +1,71 @@
+{
+  "status": "ACTUAL_COMPACT_CPU_FIT48_IDENTITY_SUPPORT_DIAGNOSIS_COMPLETE",
+  "checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/rmot_native72_stage_v1/broad_native_training/checkpoint.pt",
+  "candidate_source": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/native600_fit_rollout_refresh_v1/rollout/native_rollout.jsonl",
+  "native_ROI_source": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/native_pack_v1/examples.pt",
+  "existing_ROI_groups_joined_by_exact_sequence_frame_batch_and_boxes": 80,
+  "counts": {
+    "NEW_initialization": 82,
+    "frames": 48,
+    "candidates": 1184,
+    "source_rejected_frames": 0,
+    "known_consistent_existing_identity": 620,
+    "potential_supervised:yes": 377,
+    "no_final_identity": 374,
+    "known_conflicting_existing_identity": 102,
+    "potential_supervised:no": 345,
+    "unmatched_not_universal_negative_truth": 4,
+    "unknown_birth_anchor": 2
+  },
+  "per_sequence": {
+    "MOT17-02-FRCNN": {
+      "NEW_initialization": 41,
+      "frames": 16,
+      "candidates": 496,
+      "known_consistent_existing_identity": 279,
+      "potential_supervised:yes": 131,
+      "no_final_identity": 121,
+      "known_conflicting_existing_identity": 50,
+      "potential_supervised:no": 198,
+      "unmatched_not_universal_negative_truth": 3,
+      "unknown_birth_anchor": 2
+    },
+    "dancetrack0001": {
+      "NEW_initialization": 7,
+      "no_final_identity": 81,
+      "frames": 16,
+      "candidates": 192,
+      "known_consistent_existing_identity": 102,
+      "potential_supervised:yes": 102,
+      "known_conflicting_existing_identity": 1,
+      "potential_supervised:no": 1,
+      "unmatched_not_universal_negative_truth": 1
+    },
+    "MOT20-01": {
+      "NEW_initialization": 34,
+      "frames": 16,
+      "candidates": 496,
+      "known_consistent_existing_identity": 239,
+      "potential_supervised:yes": 144,
+      "no_final_identity": 172,
+      "potential_supervised:no": 146,
+      "known_conflicting_existing_identity": 51
+    }
+  },
+  "actual_existing_assignments": 728,
+  "device": "cpu",
+  "dtype": "float32",
+  "torch_threads": 2,
+  "causal_rollout_elapsed_s_excluding_model_and_annotation_loading": 3.5834143409738317,
+  "source_candidate_boxes_labels_and_rejects_unchanged": true,
+  "ROI_features_reused_exactly_from_existing_native_pack_not_synthesized": true,
+  "GT_only_external_posthoc_labels_no_state_corrections": true,
+  "unknown_or_unmatched_not_negative_targets": true,
+  "actor": "existing trained sharedCompact, not a Full native actor or teacher-corrected state",
+  "new_training_rows_exported": 0,
+  "new_GPU_jobs": 0,
+  "new_image_or_feature_artifacts": 0,
+  "fit_support_not_held_out_tracking_accuracy_or_Full_training_gain": true,
+  "combined_registered_upper_bytes": 26460541709,
+  "full_goal_complete": false
+}

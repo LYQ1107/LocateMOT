@@ -1,5 +1,43 @@
 # GroundJEV-MOT current evidence — 2026-10-16
 
+## CPU Compact fit-history support diagnosis — 2026-10-16
+
+The final-ID component has only29positive versus584negative known Full
+assignments. To test a concrete source of richer support, the existing fixed
+sharedCompact checkpoint ran causally onCPU/FP32/2threads over the SAME48
+legal-fit frames/1,184native proposals, with original gated.5/3s memory,
+group16/shortlist32. No GT enters or corrects the actor. All image/proposal
+records, source perception and empty/rejected-frame handling are retained.
+
+The first attempt(session23118exit1) stopped before any frame output because
+the Full replay lacks native_region_feature. The repaired v2 joins the
+already-existing native_pack_v1 ROI tensors by exact sequence/frame/batch
+order and every candidate box. Only duplicate option-withholding augmentations
+are excluded from this physical-ROI lookup; all1,184physical proposals remain.
+No new detector, ROI request, image/feature archive or GPU job was created.
+The original failure is preserved under compact_fit48_identity_support_v1.
+
+The complete CPU actor(session34284exit0) produces728existing assignments:
+620known-consistent,102known-conflicting,2unknown birth and4unmatched; plus
+82NEW and374without final identity, conserving1,184. Under the unchanged
+identity-consistency/visibility>=.6 rule,722known assignments could supply
+377yes/345no final-ID targets. The six unknown/unmatched remain without targets.
+Independent reconstruction validates all48frames and1,184external IoU matches,
+immutable birth anchors, eligibility/targets, saved event/output boxes/labels
+and finite candidate probabilities.
+
+These are different actors' endogenous histories on the same small fit scope,
+not a same-event causal comparison, held-out tracking score or Full gain.
+No SFT component has been exported or trained from this diagnosis. The result
+supports considering an explicitly cross-actor final-ID component alongside
+the original Full hard negatives; it does not expand physical-frame coverage.
+The current old/refreshed600training and four-scope queues remain unchanged.
+All small raw traces/labels/receipts total2.33MB; new16MiB reserve gives
+conservative26,460,541,709<26,843,545,600bytes. Evidence:
+outputs/groundjev/diagnostics/compact_fit48_identity_support_v2_existing_ROIs/
+{summary,validation,owner_state}.json plus actor_frames.jsonl and
+posthoc_candidate_labels.jsonl; reproducible code/plan under tools/configs.
+
 ## Old-history600 arm completed; refreshed arm started — 2026-10-16
 
 The original paired owner completed the old-history arm:600updates/2400rows,
