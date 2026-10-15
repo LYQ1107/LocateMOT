@@ -1,5 +1,5 @@
 {
-  "status": "WAITING_EXISTING_ADAPTED200_GPU6_RELEASE",
+  "status": "UNSTARTED_CPU_WAITER_SUPERSEDED_WITHOUT_GPU_JOB",
   "owner_pid": 2052936,
   "physical_gpu": 6,
   "registered_retention_owner": [
@@ -10,5 +10,6 @@
   "new_feature_cache_files": false,
   "foreign_or_current_retention_jobs_stopped": false,
   "composed_adapted_weights_not_joint_gradient_training": true,
-  "full_goal_complete": false
+  "full_goal_complete": false,
+  "manager_handoff": "manager_handoff.json"
 }

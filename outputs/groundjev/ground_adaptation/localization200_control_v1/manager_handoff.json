@@ -1,0 +1,13 @@
+{
+  "status": "UNSTARTED_CPU_WAITER_SUPERSEDED_WITHOUT_GPU_JOB",
+  "old_owner_identity": [
+    2052936,
+    "42864217"
+  ],
+  "previous_status": "WAITING_EXISTING_ADAPTED200_GPU6_RELEASE",
+  "old_completed_units": 0,
+  "old_children_at_handoff": [],
+  "new_plan": "configs/groundjev/gpu5_followups_v1.json",
+  "reason": "Same scientific studies move serially to GPU5 after verified pairedE2E release; original GPU6/7native retention untouched.",
+  "intentional_signal": "SIGTERM after frozen identity/no-children/no-experiment check; not a measurement failure"
+}

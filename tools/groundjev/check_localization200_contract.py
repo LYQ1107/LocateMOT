@@ -14,10 +14,11 @@ def main():
     import torch
     parser = argparse.ArgumentParser()
     parser.add_argument('--out', type=Path, required=True)
+    parser.add_argument('--plan', type=Path, default=ROOT/'configs/groundjev/native_ground_localization200_v1.json')
     args = parser.parse_args()
     args.out.mkdir(parents=True, exist_ok=False)
     original = json.loads((ROOT/'configs/groundjev/native_ground_tracking200_gpu6_20261014.json').read_text())
-    control = json.loads((ROOT/'configs/groundjev/native_ground_localization200_v1.json').read_text())
+    control = json.loads(args.plan.read_text())
     before, a = build_pairs(original)
     after, b = build_pairs(control)
     assert before == after and a == b
@@ -26,7 +27,7 @@ def main():
     checkpoint = ROOT/'outputs/groundjev/ground_adaptation/native_tracking200_v7_boundary_trace/projector_delta.pt'
     actual = torch.load(checkpoint, map_location='cpu', weights_only=True)
     assert actual['steps'] == 200 and actual['protocol'] == original and actual['schedule'] == schedule
-    for key in ('seed', 'steps', 'lr', 'weight_decay', 'trainable_policy', 'native_loss'):
+    for key in ('initialization', 'seed', 'steps', 'lr', 'weight_decay', 'trainable_policy', 'native_loss'):
         assert original[key] == control[key]
     assert control['auxiliary_losses']['teacher_GT_same_ID_cross_frame_contrastive'] == 0
     assert control['auxiliary_losses']['actual_native_proposal_same_ID_cross_frame_contrastive'] == 0
@@ -38,6 +39,8 @@ def main():
         'reference_checkpoint': str(checkpoint), 'same_seed_steps_optimizer_lr_and_initialization': True,
         'new_identity_loss_coefficients': [0., 0.], 'reference_identity_loss_coefficients': [.1, .1],
         'localization_training_started_or_accuracy_claim': False,
+        'reference_training_physical_gpu': original['physical_training_GPU'],
+        'registered_control_training_physical_gpu': control['physical_training_GPU'],
         'comparison_limit': 'Reference tracking200 had interrupted/resumed execution; same data/schedule does not imply bitwise CUDA trajectory or matched wall time.',
         'original_dense_ref_benchmark_GT_used_for_training': False, 'new_feature_cache_files': False}
     (args.out/'validation.json').write_text(json.dumps(report, indent=2)+'\n')

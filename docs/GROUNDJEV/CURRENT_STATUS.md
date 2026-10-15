@@ -205,8 +205,10 @@ These are frozen policy interventions; no successful >3sDTrecovery evidence.
 SingleRMOT800has two natural >3s candidate returns, recovered0 by both Compact/
 Simple under immutable correct-birth-anchor diagnostics.
 
-Natural MOT20-05validation1657frames(1659..3315,25Hz) remains queued only after
-originalGPU7native retention release. Eight same-source CPU memory/Simple
+Natural MOT20-05validation1657frames(1659..3315,25Hz) is now queued on GPU5
+after pairedE2E and localization200 complete. OriginalGPU7retention continues
+independently; this execution-device/dependency amendment occurred before any
+natural inference in the superseded waiting owner. Eight same-source CPU memory/Simple
 controls, packed FP32 archive3GiBcap. Registered ID854's29.76s low-visibility
 interval retains743intermediate annotated frames; it is not a proven missing-
 candidate interval. No synthetic occlusion/GT correction/visibility filtering.
@@ -240,18 +242,20 @@ no promotion. Original/Ground200nativefull9retention each targets91124released
 rows, not all30paper benchmarks; neither complete while native clients remain.
 GPU6native CUDA failure/retry evidence retained; first failing kernel unknown.
 
-Localization-only200 remains queued after verifiedGPU6retention clients/service
-release: same112rows/56pairs/200actual draws/seed42/lr2e-6 as completedGround200,
+Localization-only200 now follows the completed/released pairedE2E GPU5 owner: same112rows/56pairs/200actual draws/seed42/lr2e-6 as completedGround200,
 identity coefficients0; then fresh export,96ordered native frames and18Full
 visual×pretrained/native600composition controls. This is composed adaptation,
-not joint-gradient training. No pending adaptation/retention score inferred.
+not joint-gradient training. All new frontend/factorial comparisons run on GPU5;
+the actual reference tracking200 training ran on GPU6 (same A800 model), so no
+bitwise cross-device training trajectory claim. No pending adaptation/retention
+score inferred.
 
 |Queue/device|Remaining actual work|
 |---|---|
 |GPU4|TrainedFull native600/MOT500/teacher600DT1203; `training/onejev_full1203_controls_v2_wait_fix`|
-|GPU5|Paired freshFullnative600thenCompact800 E2E now running; `e2e/full_compact_rmot800_v1`|
-|GPU6|AdaptedGround200nativefull9, then localization-only200/native/factorial controls|
-|GPU7|OriginalGroundnativefull9, then naturalMOT20source and8CPU controls|
+|GPU5|Paired E2E, then serial localization200/96frames/18controls and naturalMOT20/8CPUcontrols; `gpu5_followups_v1`|
+|GPU6|AdaptedGround200nativefull9 remains unchanged|
+|GPU7|OriginalGroundnativefull9 remains unchanged|
 |CPU|Policy25, tasksubset24, context12, hybrid12, input12 all complete|
 
 At most four physical GPUs4/5/6/7combined; foreign jobs and stopped U2 queues
@@ -266,3 +270,19 @@ model outputs/lifecycle/metadata match scalar exactly. Three warm16candidate
 post-state probe medians147.08→51.11ms geometry and784.82→675.81ms hybrid;
 not causal-video or E2E FPS. Historical timings unchanged, actual childGit
 revisions recorded. Receipt: `validation/dense_geometry_batching_v1/validation.json`.
+
+
+Execution scheduling amendment: both old localization/natural owners were
+verified still CPU-only waiters, no children/completed experimental units, and
+superseded with preserved manager-handoff receipts. The old localization shell
+returned241 from intentionalSIGTERM; this is a canceled wait, not a completed
+measurement or hidden experimental failure. New owner2207841/start43963616
+(blocking session36847) waits original paired owner1953808/start42350971 before
+any GPU5 allocation. It verifies successful paired completion and all owned
+process groups gone, then runs both existing studies serially. No active
+training/inference/retention jobs stopped. Real112row/200draw/native-proposal
+alignment matches, all other scientific plan fields and96/18/1657/8scopes
+unchanged; GPU5/6/7 allNVIDIA A800-SXM4-80GB. Cache bound unchanged.
+Receipts: `validation/localization200_contract_gpu5_v1/validation.json` and
+`validation/gpu5_followup_registration_v1/validation.json`.
+New plans: `configs/groundjev/gpu5_followups_v1.json` and referenced GPU5variants.

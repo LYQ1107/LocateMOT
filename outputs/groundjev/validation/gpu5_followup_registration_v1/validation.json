@@ -1,0 +1,18 @@
+{
+  "status": "GPU5_FOLLOWUPS_SCIENTIFIC_PLANS_AND_COMPLETED_HANDOFF_VALIDATED",
+  "all_scientific_training_fields_exact": true,
+  "real112rows_and200draws_vs_completed_training_checked": true,
+  "all96_frontend_frames_sampling_and18_factorial_scopes_unchanged": true,
+  "natural1657frames_8controls_original_manifest_model_and_budget_exact": true,
+  "actual_completed_GPU5_owner_and_owned_groups_release_verified": true,
+  "physical_GPU5_6_7_model": "NVIDIA A800-SXM4-80GB",
+  "actual_GPU_set_remains": [
+    4,
+    5,
+    6,
+    7
+  ],
+  "limits": "Execution devices/dependencies explicitly changed before any experiment in the superseded queues started. Reference tracking200 training GPU6, localization execution GPU5; same A800 model does not establish bitwise cross-device training trajectory or wall-time pairing.",
+  "no_new_GPU_model_or_training_started_by_this_check": true,
+  "full_goal_complete": false
+}

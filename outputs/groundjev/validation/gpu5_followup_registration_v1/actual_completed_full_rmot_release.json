@@ -1,0 +1,13 @@
+{
+  "status": "VERIFIED_COMPLETED_GPU_OWNER_RELEASE",
+  "physical_gpu": 5,
+  "upstream_owner_identity": [
+    1896249,
+    "41992371"
+  ],
+  "owned_process_groups": [
+    2006988,
+    2006989
+  ],
+  "all_owned_groups_gone": true
+}

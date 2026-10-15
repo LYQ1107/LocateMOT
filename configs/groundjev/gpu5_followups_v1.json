@@ -1,0 +1,26 @@
+{
+  "name": "Reuse GPU5 serially after pairedE2E instead of waiting independent native retention",
+  "physical_gpu": 5,
+  "upstream_e2e": "outputs/groundjev/e2e/full_compact_rmot800_v1",
+  "registration_validation": "outputs/groundjev/validation/gpu5_followup_registration_v1/validation.json",
+  "gpu_handoff_receipt": "outputs/groundjev/gpu5_followups_v1/gpu_release.json",
+  "localization_plan": "configs/groundjev/ground_localization_study_gpu5_v1.json",
+  "localization_output": "outputs/groundjev/ground_adaptation/localization200_control_gpu5_v1",
+  "natural_plan": "configs/groundjev/natural_memory_study_gpu5_v1.json",
+  "natural_output": "outputs/groundjev/natural_memory/mot20_05_full_validation_gpu5_v1",
+  "superseded_waiter_receipts": [
+    "outputs/groundjev/ground_adaptation/localization200_control_v1/manager_handoff.json",
+    "outputs/groundjev/natural_memory/mot20_05_full_validation_v1/manager_handoff.json"
+  ],
+  "scope_change": "Execution devices and dependency only. Original/track/localization frontend comparisons all on GPU5; reference tracking200 training was GPU6; matched scientific inputs preserved, no bitwise claim.",
+  "GPU_limit": 4,
+  "physical_GPU_set": [
+    4,
+    5,
+    6,
+    7
+  ],
+  "feature_cache_limit_bytes": 26843545600,
+  "full_goal_complete": false,
+  "launch": "python3 tools/groundjev/run_gpu5_followups.py --plan configs/groundjev/gpu5_followups_v1.json --out outputs/groundjev/gpu5_followups_v1"
+}

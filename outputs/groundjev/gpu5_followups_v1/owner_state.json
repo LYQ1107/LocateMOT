@@ -1,0 +1,12 @@
+{
+  "status": "WAITING_ORIGINAL_PAIRED_E2E_GPU5_RELEASE",
+  "owner_pid": 2207841,
+  "physical_gpu": 5,
+  "upstream_owner_identity": [
+    1953808,
+    "42350971"
+  ],
+  "completed": {},
+  "native_retention_jobs_unchanged": true,
+  "full_goal_complete": false
+}

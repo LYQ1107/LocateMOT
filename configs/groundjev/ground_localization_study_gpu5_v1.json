@@ -1,0 +1,19 @@
+{
+  "name": "Required localization-only vs tracking visual adaptation and controlled One composition",
+  "physical_gpu": 5,
+  "contract_validation": "outputs/groundjev/validation/localization200_contract_gpu5_v1/validation.json",
+  "retention_owner": "outputs/groundjev/ground_retention/reattached_full9_owner_v1",
+  "existing_client_contract": "outputs/groundjev/ground_retention/existing_native_clients_20261015.json",
+  "training_plan": "configs/groundjev/native_ground_localization200_gpu5_v1.json",
+  "training_output": "outputs/groundjev/ground_adaptation/localization200_control_gpu5_v1/training",
+  "bundle": "models/GroundAnything-DLM-LocProj200-GPU5",
+  "frontend_plan": "configs/groundjev/ground_localization_frontends_gpu5_v1.json",
+  "frontend_output": "outputs/groundjev/ground_adaptation/localization200_control_gpu5_v1/native_frontends",
+  "factorial_plan": "configs/groundjev/ground_one_factorial_gpu5_v1.json",
+  "factorial_output": "outputs/groundjev/ground_adaptation/localization200_control_gpu5_v1/factorial",
+  "resource_policy": "Same four physical GPUs4/5/6/7 maximum; GPU5 only after pairedE2E success/exit/groups gone. Run serially before naturalMOT20. Existing GPU6/7retention unchanged.",
+  "scope": "Task14.4 initialcontrolledvisual/JEVcomposition, native96frontendframes then18Fullshortcontrols; fulllegalvideo elsewhere unchanged",
+  "full_goal_complete": false,
+  "launch": "Invoked serially by tools/groundjev/run_gpu5_followups.py after GPU5release",
+  "gpu_handoff_receipt": "outputs/groundjev/gpu5_followups_v1/gpu_release.json"
+}

@@ -1,0 +1,69 @@
+{
+  "training_owner": "outputs/groundjev/training/onejev_unified600_pair_v4_detached_resume",
+  "policies": {
+    "mot": "Full v3_crop_motion,adaptive groups",
+    "rmot": "sameFull + native Noul membership fixed .5",
+    "ovmot": "sameFull + native_hierarchical all1203 inputcategories, explicitUNKNOWN"
+  },
+  "all_native_candidates_retained": true,
+  "same_alltask_checkpoint_each_arm": true,
+  "native_math_or_thresholds_changed": false,
+  "E2E_speed_claim": false,
+  "name": "Controlled Groundweights x original/adapted One composition",
+  "physical_gpu": 5,
+  "arms": {
+    "pretrained": {
+      "checkpoint": "models/OneJev-0.8B"
+    },
+    "native": {
+      "training": "outputs/groundjev/training/onejev_unified600_native_v2",
+      "checkpoint": "outputs/groundjev/training/onejev_unified600_native_v2/ckpt-step600"
+    }
+  },
+  "scopes": {
+    "original_dense_mot4": {
+      "manifest": "outputs/groundjev/pilot_data/mot17_first4.json",
+      "candidates": "outputs/groundjev/ground_adaptation/localization200_control_gpu5_v1/native_frontends/original/dense_mot4/frame_decisions.jsonl"
+    },
+    "original_refer_single8": {
+      "manifest": "outputs/groundjev/multitask_pilot_data/rmot_single_empty.json",
+      "candidates": "outputs/groundjev/ground_adaptation/localization200_control_gpu5_v1/native_frontends/original/refer_single8/frame_decisions.jsonl"
+    },
+    "original_refer_multi12": {
+      "manifest": "outputs/groundjev/multitask_pilot_data/rmot_multi_empty.json",
+      "candidates": "outputs/groundjev/ground_adaptation/localization200_control_gpu5_v1/native_frontends/original/refer_multi12/frame_decisions.jsonl"
+    },
+    "localization200_dense_mot4": {
+      "manifest": "outputs/groundjev/pilot_data/mot17_first4.json",
+      "candidates": "outputs/groundjev/ground_adaptation/localization200_control_gpu5_v1/native_frontends/localization200/dense_mot4/frame_decisions.jsonl"
+    },
+    "localization200_refer_single8": {
+      "manifest": "outputs/groundjev/multitask_pilot_data/rmot_single_empty.json",
+      "candidates": "outputs/groundjev/ground_adaptation/localization200_control_gpu5_v1/native_frontends/localization200/refer_single8/frame_decisions.jsonl"
+    },
+    "localization200_refer_multi12": {
+      "manifest": "outputs/groundjev/multitask_pilot_data/rmot_multi_empty.json",
+      "candidates": "outputs/groundjev/ground_adaptation/localization200_control_gpu5_v1/native_frontends/localization200/refer_multi12/frame_decisions.jsonl"
+    },
+    "tracking200_dense_mot4": {
+      "manifest": "outputs/groundjev/pilot_data/mot17_first4.json",
+      "candidates": "outputs/groundjev/ground_adaptation/localization200_control_gpu5_v1/native_frontends/tracking200/dense_mot4/frame_decisions.jsonl"
+    },
+    "tracking200_refer_single8": {
+      "manifest": "outputs/groundjev/multitask_pilot_data/rmot_single_empty.json",
+      "candidates": "outputs/groundjev/ground_adaptation/localization200_control_gpu5_v1/native_frontends/tracking200/refer_single8/frame_decisions.jsonl"
+    },
+    "tracking200_refer_multi12": {
+      "manifest": "outputs/groundjev/multitask_pilot_data/rmot_multi_empty.json",
+      "candidates": "outputs/groundjev/ground_adaptation/localization200_control_gpu5_v1/native_frontends/tracking200/refer_multi12/frame_decisions.jsonl"
+    }
+  },
+  "reuse_native_MM_validation": true,
+  "omit_feature_vectors": true,
+  "memory_checkpoint_format": "binary",
+  "memory_export_interval": 0,
+  "success_status": "SAME_POLICY_GROUND_ONE_FACTORIAL_CONTROLS_COMPLETE",
+  "comparison": "Ground original/localization200/tracking200 times actual originalOne/native600 (MOT500+shared600). Same frontend candidates inbothOne arms, V3causalvisual/motion andnative Noul.5 RMOTgate. Frontend weights legitimately change proposals; distinguish detector fromdecision effects. Composed separately adapted models, not jointly backpropagated gradients.",
+  "scope_limit": "MOT4/RMOsingle8/RMOmulti12 functional factorial, no fullvideo/dataset/Novel/E2E claims",
+  "full_goal_complete": false
+}

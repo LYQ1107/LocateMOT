@@ -1,0 +1,16 @@
+{
+  "status": "UNSTARTED_CPU_WAITER_SUPERSEDED_WITHOUT_GPU_JOB",
+  "owner_pid": 2126039,
+  "physical_gpu": 7,
+  "registered_retention_owner": [
+    1865651,
+    "41803969"
+  ],
+  "completed": {},
+  "new_archive_cap_bytes": 3221225472,
+  "old_U2_queue_restarted": false,
+  "GT_read_by_runtime": false,
+  "artificial_occlusion_or_visibility_filter": false,
+  "full_goal_complete": false,
+  "manager_handoff": "manager_handoff.json"
+}

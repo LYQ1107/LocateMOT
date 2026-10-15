@@ -1,4 +1,4 @@
-"""GPU7 retention handoff, bounded native challenge archive, then CPU memory controls."""
+"""Owned GPU handoff, bounded native challenge archive, then CPU memory controls."""
 import argparse
 import csv
 import io
@@ -34,18 +34,20 @@ def main():
     posthoc = json.loads((ROOT/plan['natural_posthoc_validation']).read_text())
     assert posthoc['status'] == 'ACTUAL_COMPLETED800_NATURAL_GAP_POSTHOC_FUNCTIONAL_VALIDATED'
     args.out.mkdir(parents=True, exist_ok=False)
-    retention = ROOT/plan['retention_owner']
-    upstream = json.loads((retention/'owner_state.json').read_text())
-    proc = Path('/proc')/str(upstream['owner_pid'])
     identity = None
-    if proc.exists():
-        assert (proc/'cwd').resolve() == ROOT
-        assert 'tools/groundjev/reattach_native_full9.py' in (proc/'cmdline').read_bytes().decode().split('\0')
-        identity = [upstream['owner_pid'], (proc/'stat').read_text().rsplit(')', 1)[1].split()[19]]
-    clients = [c for c in json.loads((ROOT/plan['client_contract']).read_text()) if ':8101' in c['port_or_url']]
-    assert clients
-    state = {'status': 'WAITING_ORIGINAL_NATIVE_RETENTION_GPU7_RELEASE', 'owner_pid': os.getpid(),
-        'physical_gpu': 7, 'registered_retention_owner': identity, 'completed': {},
+    if not plan.get('gpu_handoff_receipt'):
+        retention = ROOT/plan['retention_owner']
+        upstream = json.loads((retention/'owner_state.json').read_text())
+        proc = Path('/proc')/str(upstream['owner_pid'])
+        if proc.exists():
+            assert (proc/'cwd').resolve() == ROOT
+            assert 'tools/groundjev/reattach_native_full9.py' in (proc/'cmdline').read_bytes().decode().split('\0')
+            identity = [upstream['owner_pid'], (proc/'stat').read_text().rsplit(')', 1)[1].split()[19]]
+        clients = [c for c in json.loads((ROOT/plan['client_contract']).read_text()) if ':8101' in c['port_or_url']]
+        assert clients
+    gpu = plan['physical_gpu']
+    state = {'status': 'VERIFYING_COMPLETED_GPU_HANDOFF' if plan.get('gpu_handoff_receipt') else 'WAITING_ORIGINAL_NATIVE_RETENTION_GPU7_RELEASE', 'owner_pid': os.getpid(),
+        'physical_gpu': gpu, 'registered_retention_owner': identity, 'completed': {},
         'new_archive_cap_bytes': plan['archive_cap_bytes'], 'old_U2_queue_restarted': False,
         'GT_read_by_runtime': False, 'artificial_occlusion_or_visibility_filter': False,
         'full_goal_complete': False}
@@ -56,7 +58,8 @@ def main():
         env.pop(key, None)
     services, service_logs, groups = [], [], set()
     stop = threading.Event()
-    resource = {'sampling_seconds': 5, 'owned_group_peaks_MiB': {}, 'owned_GPU7_sum_peak_MiB': 0, 'errors': [],
+    peak_key = f'owned_GPU{gpu}_sum_peak_MiB'
+    resource = {'sampling_seconds': 5, 'owned_group_peaks_MiB': {}, peak_key: 0, 'errors': [],
         'scope': 'fresh native source only; five-second samples are a lower bound on instantaneous peak'}
 
     def save():
@@ -80,7 +83,7 @@ def main():
     def monitor():
         while not stop.is_set():
             try:
-                raw = subprocess.check_output(['nvidia-smi', '-i', '7', '--query-compute-apps=pid,used_gpu_memory',
+                raw = subprocess.check_output(['nvidia-smi', '-i', str(gpu), '--query-compute-apps=pid,used_gpu_memory',
                     '--format=csv,noheader,nounits'], text=True)
                 total, by_group = 0, {}
                 for pid, memory in csv.reader(io.StringIO(raw)):
@@ -93,7 +96,7 @@ def main():
                         total += used
                 for group, used in by_group.items():
                     resource['owned_group_peaks_MiB'][group] = max(resource['owned_group_peaks_MiB'].get(group, 0), used)
-                resource['owned_GPU7_sum_peak_MiB'] = max(resource['owned_GPU7_sum_peak_MiB'], total)
+                resource[peak_key] = max(resource[peak_key], total)
                 (args.out/'fresh_source_resources.json').write_text(json.dumps(resource, indent=2)+'\n')
             except Exception as error:
                 resource['errors'].append(repr(error))
@@ -103,7 +106,10 @@ def main():
     save()
     thread = None
     try:
-        while True:
+        if plan.get('gpu_handoff_receipt'):
+            from tools.groundjev.completed_gpu_handoff import validate_release
+            state['upstream_GPU_release'] = validate_release(ROOT/plan['gpu_handoff_receipt'], gpu)
+        while not plan.get('gpu_handoff_receipt'):
             current = json.loads((retention/'owner_state.json').read_text())
             release = current['completed'].get('original')
             if release and not any(client_alive(c) for c in clients):
@@ -113,7 +119,7 @@ def main():
             if not alive(identity):
                 raise RuntimeError('Retention owner ended without verified original GPU7 release; do not stop or duplicate its jobs')
             time.sleep(20)
-        state['GPU7_at_handoff'] = subprocess.check_output(['nvidia-smi', '-i', '7',
+        state[f'GPU{gpu}_at_handoff'] = subprocess.check_output(['nvidia-smi', '-i', str(gpu),
             '--query-gpu=uuid,name,memory.total,memory.free', '--format=csv,noheader,nounits'], text=True).strip()
         for port in (plan['ground_port'], plan['feature_port']):
             with socket.socket() as probe:
@@ -123,7 +129,7 @@ def main():
                 ('features', ['tools/groundjev/serve_native_features.py', '--port', str(plan['feature_port']),
                 '--receipt', str(args.out/'feature_service.json')])]:
             log = (args.out/(name+'_service.log')).open('w'); service_logs.append(log)
-            child = subprocess.Popen(['python3', 'tools/groundjev/run_with_resources.py', '--gpus', '7', '--',
+            child = subprocess.Popen(['python3', 'tools/groundjev/run_with_resources.py', '--gpus', str(gpu), '--',
                 str(ROOT/'external/GroundAnything/.venv-serve/bin/python'), *command], cwd=ROOT, env=env,
                 stdin=subprocess.DEVNULL, stdout=log, stderr=subprocess.STDOUT, start_new_session=True)
             services.append(child); groups.add(child.pid)
@@ -145,7 +151,7 @@ def main():
         assert len(manifest['images']) == 1657 and manifest['frame_numbers'][0] == 1659 and manifest['frame_numbers'][-1] == 3315
         output = args.out/'fresh_compact_gated3'
         thread = threading.Thread(target=monitor, daemon=True); thread.start()
-        run('FRESH_NATIVE_MOT20_1657', ['python3', 'tools/groundjev/run_with_resources.py', '--gpus', '7', '--',
+        run('FRESH_NATIVE_MOT20_1657', ['python3', 'tools/groundjev/run_with_resources.py', '--gpus', str(gpu), '--',
             str(ROOT/'.venv-onejev-py310/bin/python'), 'tools/groundjev/run_video.py', '--task', 'mot',
             '--video', str(manifest_path), '--backend', 'compact', '--checkpoint', str(ROOT/plan['checkpoint']),
             '--grounding-url', ground_url, '--grounding-parser', 'official_scoring', '--grounding-decoder-policy', 'tracking_dense',
@@ -197,7 +203,7 @@ def main():
             recovery = analyze(manifest, ROOT/record['run'])
             summaries[name] = dict(record, natural_recovery=recovery)
         state['completed']['memory_controls'] = summaries
-        state['CPU_gated3_accuracy_matches_fresh_GPU7'] = summaries['mot20_challenge_reference_gated3']['metrics'] == state['completed']['fresh_source']['metrics']
+        state[f'CPU_gated3_accuracy_matches_fresh_GPU{gpu}'] = summaries['mot20_challenge_reference_gated3']['metrics'] == state['completed']['fresh_source']['metrics']
         state.update(status='NATURAL_MOT20_SCOPE_AND_FROZEN_MEMORY_CONTROLS_COMPLETE',
             interpretation='Report actual candidate-gap support and all official metrics; registered low-visibility interval alone is not proof of missing candidates or successful recovery.')
         save()

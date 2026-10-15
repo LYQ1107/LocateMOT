@@ -1,0 +1,32 @@
+{
+  "status": "REAL_LOCALIZATION200_ROWS_AND_ACTUAL_TRACKING200_SCHEDULE_MATCH_VALIDATED",
+  "corpus": {
+    "rows": 112,
+    "dense_rows": 32,
+    "referring_rows": 80,
+    "negative_referring_rows": 0,
+    "native_proposals": 884,
+    "native_aligned_regions": 628,
+    "pairs": 56,
+    "unique_images": 72,
+    "native_pair_contrastive_support": 24
+  },
+  "same_all112_actual_image_bytes_prompt_answers_boxes_native_alignment": true,
+  "same_all200_scheduled_pair_indices_vs_actual_completed_checkpoint": true,
+  "reference_checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/ground_adaptation/native_tracking200_v7_boundary_trace/projector_delta.pt",
+  "same_seed_steps_optimizer_lr_and_initialization": true,
+  "new_identity_loss_coefficients": [
+    0.0,
+    0.0
+  ],
+  "reference_identity_loss_coefficients": [
+    0.1,
+    0.1
+  ],
+  "localization_training_started_or_accuracy_claim": false,
+  "reference_training_physical_gpu": 6,
+  "registered_control_training_physical_gpu": 5,
+  "comparison_limit": "Reference tracking200 had interrupted/resumed execution; same data/schedule does not imply bitwise CUDA trajectory or matched wall time.",
+  "original_dense_ref_benchmark_GT_used_for_training": false,
+  "new_feature_cache_files": false
+}

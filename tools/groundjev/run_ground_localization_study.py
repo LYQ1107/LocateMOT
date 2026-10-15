@@ -1,4 +1,4 @@
-"""GPU6 handoff, native localization200, and controlled visual/JEV composition."""
+"""Owned GPU handoff, native localization200, and controlled visual/JEV composition."""
 import argparse
 import json
 import os
@@ -23,19 +23,20 @@ def main():
     validated = json.loads((ROOT/plan['contract_validation']).read_text())
     assert validated['status'] == 'REAL_LOCALIZATION200_ROWS_AND_ACTUAL_TRACKING200_SCHEDULE_MATCH_VALIDATED'
     args.out.mkdir(parents=True, exist_ok=False)
-    retention = ROOT/plan['retention_owner']
-    prior = json.loads((retention/'owner_state.json').read_text())
-    proc = Path('/proc')/str(prior['owner_pid'])
     identity = None
-    if proc.exists():
-        assert (proc/'cwd').resolve() == ROOT
-        assert 'tools/groundjev/reattach_native_full9.py' in (proc/'cmdline').read_bytes().decode().split('\0')
-        identity = [prior['owner_pid'], (proc/'stat').read_text().rsplit(')', 1)[1].split()[19]]
-    clients = json.loads((ROOT/plan['existing_client_contract']).read_text())
-    clients = [c for c in clients if ':8102' in c['port_or_url']]
-    assert clients
-    state = {'status': 'WAITING_EXISTING_ADAPTED200_GPU6_RELEASE', 'owner_pid': os.getpid(),
-        'physical_gpu': 6, 'registered_retention_owner': identity, 'completed': {},
+    if not plan.get('gpu_handoff_receipt'):
+        retention = ROOT/plan['retention_owner']
+        prior = json.loads((retention/'owner_state.json').read_text())
+        proc = Path('/proc')/str(prior['owner_pid'])
+        if proc.exists():
+            assert (proc/'cwd').resolve() == ROOT
+            assert 'tools/groundjev/reattach_native_full9.py' in (proc/'cmdline').read_bytes().decode().split('\0')
+            identity = [prior['owner_pid'], (proc/'stat').read_text().rsplit(')', 1)[1].split()[19]]
+        clients = json.loads((ROOT/plan['existing_client_contract']).read_text())
+        clients = [c for c in clients if ':8102' in c['port_or_url']]
+        assert clients
+    state = {'status': 'VERIFYING_COMPLETED_GPU_HANDOFF' if plan.get('gpu_handoff_receipt') else 'WAITING_EXISTING_ADAPTED200_GPU6_RELEASE', 'owner_pid': os.getpid(),
+        'physical_gpu': plan['physical_gpu'], 'registered_retention_owner': identity, 'completed': {},
         'new_feature_cache_files': False, 'foreign_or_current_retention_jobs_stopped': False,
         'composed_adapted_weights_not_joint_gradient_training': True, 'full_goal_complete': False}
     env = os.environ.copy()
@@ -63,7 +64,10 @@ def main():
 
     save()
     try:
-        while True:
+        if plan.get('gpu_handoff_receipt'):
+            from tools.groundjev.completed_gpu_handoff import validate_release
+            state['upstream_GPU_release'] = validate_release(ROOT/plan['gpu_handoff_receipt'], plan['physical_gpu'])
+        while not plan.get('gpu_handoff_receipt'):
             current = json.loads((retention/'owner_state.json').read_text())
             release = current['completed'].get('adapted200')
             if release and not any(client_alive(c) for c in clients):
@@ -78,7 +82,7 @@ def main():
             time.sleep(20)
         train = ROOT/plan['training_output']
         python = str(ROOT/'.venv-ground-train-py312/bin/python')
-        run('LOCALIZATION200_TRAINING', ['python3', 'tools/groundjev/run_with_resources.py', '--gpus', '6', '--',
+        run('LOCALIZATION200_TRAINING', ['python3', 'tools/groundjev/run_with_resources.py', '--gpus', str(plan['physical_gpu']), '--',
             python, 'tools/groundjev/train_native_ground_tracking200.py', '--plan', str(ROOT/plan['training_plan']),
             '--out', str(train), '--static-flex-shapes', '--debug-kernel-sync', '--checkpoint-every', '25'])
         trained = json.loads((train/'owner_state.json').read_text())
