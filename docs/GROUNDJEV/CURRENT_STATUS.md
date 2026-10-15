@@ -1,5 +1,34 @@
 # GroundJEV-MOT current evidence — 2026-10-16
 
+## Old-history600 arm completed; refreshed arm started — 2026-10-16
+
+The original paired owner completed the old-history arm:600updates/2400rows,
+800per task,15,605.720s for the whole uninterrupted training process
+(about4h20m). Logged losses/gradient norms remain finite; final logged loss
+1.020472 and peak allocated memory21.618GiB. These training values do not
+establish tracking accuracy or standalone end-to-end throughput.
+
+Checkpoint600/final exports are saved. Two actual native multimodal reloads
+retain474weight entries and give identical probabilities(maxdifference0).
+A separate CPU mmap read of the9,029,140,441-byte full training state verifies
+all320FP32parameter entries/752,393,024elements and both Adam moment tensors
+per parameter are finite; all320Adam counters equal600. Scheduler, all saved
+RNG states and cursor600/2400 are present, and saved protocol matches actual
+args. This is structural/numerical checkpoint validation, not a new exact
+restart-trajectory experiment. Small raw records and curated receipt are
+published; multi-GB model/master files remain on the server.
+
+The same original owner automatically started refreshed-history training on
+GPU4. Its320FP32entries initialize from the same native600source with maximum
+difference0;600planned updates and0overlength drops are recorded. Both arms'
+current observation questions/runtime remain unchanged, including default-OFF
+assigned-ID writes. The old/refreshed four-scope tracking workers retain their
+original dependencies and have no new metrics from this completion.
+No new GPU queue or feature archive was created by this validation.
+Evidence: outputs/groundjev/training/onejev_history_refresh600_old_v1/
+{completion_validation,checkpoint600_validation,initial_fp32_state_receipt,latest_training_state}.json
+and log.jsonl.
+
 ## Opt-in post-assignment native write path — 2026-10-16
 
 Implemented `AssignedIdentityUpdateDecision` and explicit

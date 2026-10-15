@@ -59,9 +59,15 @@ parameters/320tensors, first-arm restore difference0. Actual native planner
 registers600steps/0dropped, within-step length order may differ but exact
 row-to-step/family matching passed CPU planning. Owner
 `outputs/groundjev/training/full_history_refresh600_pair_v2`, session21963.
-Training completion/native-MM reload and official tracking scores remain
-pending. This is a controlled small-corpus adaptation, not joint Ground+One
-training or ordinary-model performance success.
+Old-history600 is now complete:2400examples/15,605.720s,800per task;
+checkpoint600 and complete9,029,140,441-byteFP32/Adam/RNG state saved.
+CPU mmap verifies320FP32parameter tensors/752,393,024elements and all Adam
+moments finite, all320Adam counters600, protocol/cursor correct. Two actual
+native-MM reloads retain474weights and agree exactly. The original owner
+automatically started refreshed-history600 with the same FP32 initialization
+(maxdifference0),600planned updates/0drops. Paired completion and official
+tracking scores remain pending. This is a controlled small-corpus adaptation,
+not joint Ground+One training or ordinary-model performance success.
 
 ## Historical snapshot — 2026-10-14 (superseded)
 
