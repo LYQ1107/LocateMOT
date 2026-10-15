@@ -1,0 +1,10 @@
+{
+  "status": "HISTORY_REFRESH_CPU_OWNER_POST_PLAN_SIGNATURE_FAILED",
+  "owner_pid": 2442382,
+  "model_or_GPU_loaded": false,
+  "training_started": false,
+  "study": "outputs/groundjev/training_data/full_history_refresh600_v1",
+  "completed": {},
+  "exit_code": 1,
+  "error": "Compared native within-step token-length ordering instead of exact sample-to-step membership; both completed official CPU plans preserved."
+}

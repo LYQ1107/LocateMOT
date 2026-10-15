@@ -1,0 +1,26 @@
+{
+  "status": "PAIRED_HISTORY_REFRESH600_OWNER_FAILED",
+  "owner_pid": 2447362,
+  "owner_starttick": "45145055",
+  "owner_git_commit": "f81e557ea781068577242586291d94779df212e4",
+  "physical_gpus": [
+    4
+  ],
+  "serial_order": [
+    "old",
+    "refreshed"
+  ],
+  "new_stage_updates_each": 600,
+  "new_stage_samples_each": 2400,
+  "same_initial_FP32_state": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_unified600_native_v2/latest_training_state.pt",
+  "same_per_step_task_and_question_families": true,
+  "changed_native_history_rows_each": 400,
+  "token_or_FLOP_matched": false,
+  "completed": {},
+  "new_training_started": false,
+  "official_tracking_metrics": "pending; training and reload do not establish tracking accuracy",
+  "ordinary_model_performance_achieved": false,
+  "full_goal_complete": false,
+  "GPU4_free_MiB_before_launch": 81027,
+  "error": "AssertionError('Preserve prior training; resume its latest valid cursor explicitly')"
+}

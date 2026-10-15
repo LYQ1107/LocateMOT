@@ -1,0 +1,203 @@
+{
+  "status": "FULL_NATIVE_FIT_OBSERVATION_Q3_VERSUS_ASSIGNED_IDENTITY_AUDITED",
+  "source": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/native600_fit_rollout_refresh_v1/rollout",
+  "checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_unified600_native_v2/ckpt-step600",
+  "eligible_mixture": null,
+  "counts": {
+    "native_candidate_Q3_labels_reproduced": 1184,
+    "NEW_initialization": 82,
+    "NEW_initialization_Q3_yes": 47,
+    "frames": 48,
+    "known_conflicting_existing_identity": 568,
+    "known_conflicting_existing_identity_Q3_yes": 300,
+    "known_conflicting_existing_identity_actual_UPDATE": 41,
+    "unmatched_not_universal_negative_truth": 30,
+    "unmatched_not_universal_negative_truth_Q3_yes": 0,
+    "unmatched_not_universal_negative_truth_actual_UPDATE": 20,
+    "known_consistent_existing_identity": 45,
+    "known_consistent_existing_identity_Q3_yes": 29,
+    "known_consistent_existing_identity_actual_UPDATE": 12,
+    "no_final_identity": 444,
+    "no_final_identity_Q3_yes": 211,
+    "unknown_birth_anchor": 15,
+    "unknown_birth_anchor_Q3_yes": 13,
+    "unknown_birth_anchor_actual_UPDATE": 12
+  },
+  "first_known_conflicting_positive_examples": [
+    {
+      "sequence": "MOT17-02-FRCNN",
+      "fit_frame": 210,
+      "candidate": 0,
+      "training_row_id": "MOT17-02-FRCNN_210_batch0_update_0",
+      "candidate_GT_identity": 29,
+      "assigned_ID": 10,
+      "immutable_birth_GT_identity": 36,
+      "original_Q3_target": {
+        "yes": 1.0
+      },
+      "actual_memory_action": "HOLD",
+      "question": "Is candidate 0 a clear, reliable identity observation suitable for long-term memory update? Reject occlusion, ambiguous identity and drifting boxes."
+    },
+    {
+      "sequence": "MOT17-02-FRCNN",
+      "fit_frame": 210,
+      "candidate": 1,
+      "training_row_id": "MOT17-02-FRCNN_210_batch0_update_1",
+      "candidate_GT_identity": 26,
+      "assigned_ID": 3,
+      "immutable_birth_GT_identity": 31,
+      "original_Q3_target": {
+        "yes": 1.0
+      },
+      "actual_memory_action": "HOLD",
+      "question": "Is candidate 1 a clear, reliable identity observation suitable for long-term memory update? Reject occlusion, ambiguous identity and drifting boxes."
+    },
+    {
+      "sequence": "MOT17-02-FRCNN",
+      "fit_frame": 210,
+      "candidate": 3,
+      "training_row_id": "MOT17-02-FRCNN_210_batch0_update_3",
+      "candidate_GT_identity": 28,
+      "assigned_ID": 2,
+      "immutable_birth_GT_identity": 26,
+      "original_Q3_target": {
+        "yes": 1.0
+      },
+      "actual_memory_action": "HOLD",
+      "question": "Is candidate 3 a clear, reliable identity observation suitable for long-term memory update? Reject occlusion, ambiguous identity and drifting boxes."
+    },
+    {
+      "sequence": "MOT17-02-FRCNN",
+      "fit_frame": 210,
+      "candidate": 8,
+      "training_row_id": "MOT17-02-FRCNN_210_batch0_update_8",
+      "candidate_GT_identity": 59,
+      "assigned_ID": 12,
+      "immutable_birth_GT_identity": 43,
+      "original_Q3_target": {
+        "yes": 1.0
+      },
+      "actual_memory_action": "HOLD",
+      "question": "Is candidate 8 a clear, reliable identity observation suitable for long-term memory update? Reject occlusion, ambiguous identity and drifting boxes."
+    },
+    {
+      "sequence": "MOT17-02-FRCNN",
+      "fit_frame": 210,
+      "candidate": 9,
+      "training_row_id": "MOT17-02-FRCNN_210_batch0_update_9",
+      "candidate_GT_identity": 58,
+      "assigned_ID": 15,
+      "immutable_birth_GT_identity": 69,
+      "original_Q3_target": {
+        "yes": 1.0
+      },
+      "actual_memory_action": "HOLD",
+      "question": "Is candidate 9 a clear, reliable identity observation suitable for long-term memory update? Reject occlusion, ambiguous identity and drifting boxes."
+    },
+    {
+      "sequence": "MOT17-02-FRCNN",
+      "fit_frame": 210,
+      "candidate": 11,
+      "training_row_id": "MOT17-02-FRCNN_210_batch0_update_11",
+      "candidate_GT_identity": 36,
+      "assigned_ID": 1,
+      "immutable_birth_GT_identity": 29,
+      "original_Q3_target": {
+        "yes": 1.0
+      },
+      "actual_memory_action": "HOLD",
+      "question": "Is candidate 11 a clear, reliable identity observation suitable for long-term memory update? Reject occlusion, ambiguous identity and drifting boxes."
+    },
+    {
+      "sequence": "MOT17-02-FRCNN",
+      "fit_frame": 210,
+      "candidate": 17,
+      "training_row_id": "MOT17-02-FRCNN_210_batch1_update_1",
+      "candidate_GT_identity": 19,
+      "assigned_ID": 18,
+      "immutable_birth_GT_identity": 23,
+      "original_Q3_target": {
+        "yes": 1.0
+      },
+      "actual_memory_action": "HOLD",
+      "question": "Is candidate 1 a clear, reliable identity observation suitable for long-term memory update? Reject occlusion, ambiguous identity and drifting boxes."
+    },
+    {
+      "sequence": "MOT17-02-FRCNN",
+      "fit_frame": 210,
+      "candidate": 20,
+      "training_row_id": "MOT17-02-FRCNN_210_batch1_update_4",
+      "candidate_GT_identity": 3,
+      "assigned_ID": 4,
+      "immutable_birth_GT_identity": 28,
+      "original_Q3_target": {
+        "yes": 1.0
+      },
+      "actual_memory_action": "HOLD",
+      "question": "Is candidate 4 a clear, reliable identity observation suitable for long-term memory update? Reject occlusion, ambiguous identity and drifting boxes."
+    },
+    {
+      "sequence": "MOT17-02-FRCNN",
+      "fit_frame": 210,
+      "candidate": 30,
+      "training_row_id": "MOT17-02-FRCNN_210_batch1_update_14",
+      "candidate_GT_identity": 39,
+      "assigned_ID": 23,
+      "immutable_birth_GT_identity": 40,
+      "original_Q3_target": {
+        "yes": 1.0
+      },
+      "actual_memory_action": "HOLD",
+      "question": "Is candidate 14 a clear, reliable identity observation suitable for long-term memory update? Reject occlusion, ambiguous identity and drifting boxes."
+    },
+    {
+      "sequence": "MOT17-02-FRCNN",
+      "fit_frame": 211,
+      "candidate": 0,
+      "training_row_id": "MOT17-02-FRCNN_211_batch0_update_0",
+      "candidate_GT_identity": 29,
+      "assigned_ID": 13,
+      "immutable_birth_GT_identity": 61,
+      "original_Q3_target": {
+        "yes": 1.0
+      },
+      "actual_memory_action": "HOLD",
+      "question": "Is candidate 0 a clear, reliable identity observation suitable for long-term memory update? Reject occlusion, ambiguous identity and drifting boxes."
+    },
+    {
+      "sequence": "MOT17-02-FRCNN",
+      "fit_frame": 211,
+      "candidate": 1,
+      "training_row_id": "MOT17-02-FRCNN_211_batch0_update_1",
+      "candidate_GT_identity": 26,
+      "assigned_ID": 1,
+      "immutable_birth_GT_identity": 29,
+      "original_Q3_target": {
+        "yes": 1.0
+      },
+      "actual_memory_action": "HOLD",
+      "question": "Is candidate 1 a clear, reliable identity observation suitable for long-term memory update? Reject occlusion, ambiguous identity and drifting boxes."
+    },
+    {
+      "sequence": "MOT17-02-FRCNN",
+      "fit_frame": 211,
+      "candidate": 3,
+      "training_row_id": "MOT17-02-FRCNN_211_batch0_update_3",
+      "candidate_GT_identity": 28,
+      "assigned_ID": 8,
+      "immutable_birth_GT_identity": 59,
+      "original_Q3_target": {
+        "yes": 1.0
+      },
+      "actual_memory_action": "HOLD",
+      "question": "Is candidate 3 a clear, reliable identity observation suitable for long-term memory update? Reject occlusion, ambiguous identity and drifting boxes."
+    }
+  ],
+  "actual_existing_identity_assignments": 658,
+  "all_original_Q3_labels_reproduced": true,
+  "all_original_Q3_labels_and_actual_family_matched_copies_reproduced": null,
+  "original_data_checkpoints_or_predictions_modified": false,
+  "new_model_calls": false,
+  "GT_access": "Registered legal fit frames only; no validation/test supervision or actor state correction.",
+  "interpretation": "Original Q3 asks whether the candidate is a reliable observation. Its labels use visibility and correct-option availability, not the identity actually assigned after global matching. Counts explicitly report actual existing-ID assignments, known consistent/conflicting writes and unknown events in the selected actor trajectory. Identity/lifecycle target rows still exist; absence of actual assignments does not mean the training corpus contains no association targets. Unknown birth anchors remain unknown. This eligible corpus audit does not prove actual600-prefix exposure or a causal source of validation failure. A repair needs an explicit selected-identity question and matched training/inference, rather than silently replacing labels under the old question."
+}

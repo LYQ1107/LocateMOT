@@ -1,0 +1,64 @@
+{
+  "status": "BOTH_HISTORY_REFRESH_OFFICIAL_CPU_PLANS_COMPLETE",
+  "owner_pid": 2445610,
+  "model_or_GPU_loaded": false,
+  "training_started": false,
+  "study": "outputs/groundjev/training_data/full_history_refresh600_v1",
+  "completed": {
+    "old": {
+      "max_actual_tokens": 25998,
+      "actual_prefix_rows": 2400,
+      "actual_prefix_task_counts": {
+        "mot": 800,
+        "rmot": 800,
+        "ovmot": 800
+      },
+      "actual_prefix_question_families": {
+        "reliability": 94,
+        "memory_update": 102,
+        "query_membership": 764,
+        "lifecycle": 230,
+        "identity": 362,
+        "category_group": 397,
+        "withheld_correct_options": 12,
+        "category_leaf": 403,
+        "empty_query_presence": 36
+      },
+      "actual_prefix_tokens": 17484419
+    },
+    "refreshed": {
+      "max_actual_tokens": 27960,
+      "actual_prefix_rows": 2400,
+      "actual_prefix_task_counts": {
+        "mot": 800,
+        "rmot": 800,
+        "ovmot": 800
+      },
+      "actual_prefix_question_families": {
+        "reliability": 94,
+        "memory_update": 102,
+        "query_membership": 764,
+        "lifecycle": 230,
+        "identity": 362,
+        "category_group": 397,
+        "withheld_correct_options": 12,
+        "category_leaf": 403,
+        "empty_query_presence": 36
+      },
+      "actual_prefix_tokens": 17987455
+    }
+  },
+  "reused_completed_CPU_plans_from": "outputs/groundjev/validation/full_history_refresh600_preflight_v1",
+  "return_codes": {
+    "old": 0,
+    "refreshed": 0
+  },
+  "paired_every_step_task_and_question_family_exact": true,
+  "native_intra_step_length_order_may_differ": true,
+  "unchanged_teacher_MOT_and_RMOT_OVMOT_payloads": true,
+  "replaced_native_history_rows": 400,
+  "all_referenced_media_exist": true,
+  "unique_media_paths": 958,
+  "token_or_FLOP_matched": false,
+  "new_training_complete": false
+}

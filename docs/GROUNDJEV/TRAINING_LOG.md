@@ -30,23 +30,38 @@ controls show mixed/negative transfer, and ordinary-model-level performance
 on all three tasks remains unachieved; see `CURRENT_STATUS.md` and
 `FINAL_GOAL.md`. No unique JEV advantage is established.
 
-Next declared intervention remains the bounded current-native60048-frame fit
-rollout, serialized after the original Full1203owner. It reuses all1184actual
-native candidates without correcting actor history from GT. Review real
-existing-ID and known-conflict support before launching further training;
+The bounded current-native60048-frame fit rollout has now completed after
+the original Full1203owner. It reuses all1184actual native candidates without
+correcting actor history from GT. It produces5741supervised rows and658actual
+existing-ID assignments (45known-consistent,568known-conflicting,15unknown
+births,30unmatched). Actual known-conflicting UPDATE writes41versus12known
+consistent writes. This establishes fit-history support, not tracking gains.
+Review this support before launching further training;
 assigned-ID-conditioned update supervision requires an explicit matching
 training/runtime question, not relabeling the old observation-only question.
 No additional training or model invocation is launched by this log correction.
 
 Latest execution update: the original Full1203owner has now exited0 with all
 three arms complete; registered48-frame current-actor refresh automatically
-started onGPU4. Whole-video MOT500/native600/teacher600 HOTA percentages are
+ran onGPU4 and exited0. Whole-video MOT500/native600/teacher600 HOTA percentages are
 7.848/8.703/7.577 and IDF1 5.056/5.826/5.015. All original V1 proposals and
 parser-rejected frames are retained. The teacher branch does not improve this
 full video; neither branch establishes stable multi-task gains. No new SFT
-is implied by the active refresh. Full cohort official/output validation:
+is implied by the completed refresh. Full cohort official/output validation:
 `outputs/groundjev/training/onejev_full1203_controls_v2_wait_fix/`
 `completed_units_validated_summary.json`.
+
+Current paired history-refresh SFT is now active on physicalGPU4, serial
+old then refreshed,600new updates/2400examples per arm and800per task.
+Only400native MOT history rows differ;400teacher MOT and1600semantic rows
+are unchanged. Same native600FP32 initialization,752393024trainable language
+parameters/320tensors, first-arm restore difference0. Actual native planner
+registers600steps/0dropped, within-step length order may differ but exact
+row-to-step/family matching passed CPU planning. Owner
+`outputs/groundjev/training/full_history_refresh600_pair_v2`, session21963.
+Training completion/native-MM reload and official tracking scores remain
+pending. This is a controlled small-corpus adaptation, not joint Ground+One
+training or ordinary-model performance success.
 
 ## Historical snapshot — 2026-10-14 (superseded)
 

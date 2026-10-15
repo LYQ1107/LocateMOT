@@ -1,0 +1,44 @@
+{
+  "status": "old_FULL600_TRAINING",
+  "owner_pid": 2448456,
+  "owner_starttick": "45150423",
+  "owner_git_commit": "d938c520b203152b9e22452a4a554eb5d10e773b",
+  "physical_gpus": [
+    4
+  ],
+  "serial_order": [
+    "old",
+    "refreshed"
+  ],
+  "new_stage_updates_each": 600,
+  "new_stage_samples_each": 2400,
+  "same_initial_FP32_state": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_unified600_native_v2/latest_training_state.pt",
+  "same_per_step_task_and_question_families": true,
+  "changed_native_history_rows_each": 400,
+  "token_or_FLOP_matched": false,
+  "completed": {},
+  "new_training_started": true,
+  "official_tracking_metrics": "pending; training and reload do not establish tracking accuracy",
+  "ordinary_model_performance_achieved": false,
+  "full_goal_complete": false,
+  "GPU4_free_MiB_before_launch": 81027,
+  "current_command": [
+    "python3",
+    "tools/groundjev/run_with_resources.py",
+    "--gpus",
+    "4",
+    "--",
+    "/data2/user/LocateMOT_GroundJEV/.venv-onejev-py310/bin/python",
+    "tools/groundjev/onejev_resumable_sft.py",
+    "--config",
+    "/data2/user/LocateMOT_GroundJEV/configs/groundjev/onejev_history_refresh600_old_v1.json",
+    "--paired-index-shuffle",
+    "--initial-training-state",
+    "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_unified600_native_v2/latest_training_state.pt",
+    "--expected-initial-step",
+    "600"
+  ],
+  "current_child_pid": 2448461,
+  "blocking_session": 21963,
+  "new_training_updates_completed_at_registration": "not inferred; read original training logs after terminal completion"
+}

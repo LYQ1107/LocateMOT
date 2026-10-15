@@ -17,15 +17,42 @@ videos, so its released weights cannot establish unbiased held-out parity
 there. The old TempRMOT V1 sanity report is neither a currentV2validation
 result nor proof that the new performance goal has been reached.
 
-Next bounded model experiment: refresh currentnative600 actual own-history
-rollout on the same48fit frames/all1184original DLM candidates. CPU replay/
-scope/budget checks pass. The originalGPU4Full1203three-arm cohort exited0;
-the registered single owner has automatically started this rollout onGPU4.
-No additional DLM
-calls or automatic further training; export cap512MiB keeps the registered
+Currentnative600 actual own-history refresh completed with its original
+blocking owner exit0 after the successful Full1203cohort. All48fit frames/
+1184original DLM candidates and perception records exactly match the original;
+5741supervised rows,165806581exported bytes, no new DLM calls or GT-corrected
+actor states. No automatic further training; export cap512MiB keeps the registered
 combined upper26,262,799,802bytes below25GiB. Review actual existing-identity
 and conflicting-anchor support before changing Q3 supervision. Plan:
 `configs/groundjev/native600_fit_rollout_refresh_v1.json`.
+
+Fit-only audit now reproduces all1184observation Q3 targets on refreshed
+histories. Actual existing-ID assignments rise from0(original100actor) to658:
+45known-consistent,568known-conflicting,15unknown-birth and30unmatched. Of
+these, actual existing-memory UPDATE counts are12/41/12/20respectively.
+There are82NEW initializations and444events without an assigned identity;
+all counts conserve1184. The original observation-question target is yes for
+300known-conflicting assigned events, which does not make that original
+candidate-only question an assigned-ID correctness label. Unknown/unmatched
+cases are not relabeled negative. Audit:
+`diagnostics/full_fit_update_supervision_native600_v1/audit.json`.
+
+Refreshed versus old actor history SFT is now running serially onGPU4,
+retaining RMOT/OVMOT content and the existing runtime policy. Each arm adds
+600updates/2400sampled rows from the same native600FP32 masters:320tensors/
+752393024trainable parameters, first-arm initialization difference0. Each
+arm uses800MOT/800RMOT/800OVMOT rows; only400native MOT histories change,
+while400teacher MOT and all semantic rows remain equal. Actual row-to-step
+membership and question families match; native length ordering within steps
+can differ. CPU plans drop0rows, max25998/27960tokens; not token/FLOP matched.
+New JSONL48712542bytes; combined registered upper25957225229<25GiB.
+The first owner stopped before loading models because plan-only had created
+args-only directories; these are preserved under the CPU validation, and
+the corrected live owner is `training/full_history_refresh600_pair_v2`.
+Original blocking session21963, PID2448456/start45150423; no subsequent
+tracking gains are claimed. Explicit assigned-ID Q3 would be a
+separate declared training/runtime protocol, rather than silently replacing
+the current observation labels.
 
 ## Complete DanceTrack video
 
@@ -411,7 +438,7 @@ Receipt: `ground_adaptation/localization200_control_gpu5_v1/validated_summary.js
 
 |Queue/device|Remaining actual work|
 |---|---|
-|GPU4|Full native600/MOT500/teacher600DT1203 complete and validated; currentnative60048fit-frame own-history refresh running; `training_data/native600_fit_rollout_refresh_v1`|
+|GPU4|Full DT1203/fit48 refresh complete; paired old/refreshed history sharedFull600SFT serially running, `training/full_history_refresh600_pair_v2`|
 |GPU5|Paired E2E and localization200/96frames/18controls complete; fresh naturalMOT20 running, then8CPUcontrols; `gpu5_followups_v1`|
 |GPU6|AdaptedGround200nativefull9 remains unchanged|
 |GPU7|OriginalGroundnativefull9 remains unchanged|

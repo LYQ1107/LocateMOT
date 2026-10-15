@@ -1,0 +1,24 @@
+{
+  "status": "UNTRAINED_CPU_PLAN_ARGUMENT_DIRECTORIES_PRESERVED",
+  "moves": [
+    {
+      "variant": "old",
+      "original_path": "outputs/groundjev/training/onejev_history_refresh600_old_v1",
+      "preserved_at": "outputs/groundjev/validation/full_history_refresh600_preflight_v2/plan_only_run_dirs/old",
+      "only_file": "args.json",
+      "plan_only": true,
+      "training_steps": 0,
+      "models_loaded": false
+    },
+    {
+      "variant": "refreshed",
+      "original_path": "outputs/groundjev/training/onejev_history_refresh600_refreshed_v1",
+      "preserved_at": "outputs/groundjev/validation/full_history_refresh600_preflight_v2/plan_only_run_dirs/refreshed",
+      "only_file": "args.json",
+      "plan_only": true,
+      "training_steps": 0,
+      "models_loaded": false
+    }
+  ],
+  "new_training_steps": 0
+}

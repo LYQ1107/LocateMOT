@@ -14,6 +14,7 @@ def main():
     parser = argparse.ArgumentParser(add_help=False)
     parser.add_argument('--receipt', type=Path, required=True)
     parser.add_argument('--paired-index-shuffle', action='store_true')
+    parser.add_argument('--expected-rows',type=int,default=125286)
     options, argv = parser.parse_known_args()
     args = sft.parse_args(argv)
     assert args.plan_only
@@ -25,7 +26,7 @@ def main():
     def capture(bundle, rows, config, world):
         cached = native_epoch(bundle, rows, config, 0, 0, 1)
         batches, dropped, lengths = cached
-        assert dropped == 0 and len(rows) == 125286
+        assert dropped == 0 and len(rows) == options.expected_rows
         steps = sft.plan_steps(batches, lengths, 1, config.accum_rows)
         prefix = steps[:config.max_steps]
         buckets, families, conditional_categories, labels = Counter(), Counter(), Counter(), Counter()

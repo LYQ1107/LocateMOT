@@ -1,0 +1,59 @@
+{
+  "status": "MATCHED_HISTORY_REFRESH_CURRICULA_PREPARED_NOT_TRAINED",
+  "hypothesis": "Refresh actual native MOT actor states while preserving paired shared-task supervision.",
+  "configs": {
+    "old": "/data2/user/LocateMOT_GroundJEV/configs/groundjev/onejev_history_refresh600_old_v1.json",
+    "refreshed": "/data2/user/LocateMOT_GroundJEV/configs/groundjev/onejev_history_refresh600_refreshed_v1.json"
+  },
+  "rows_each": 2400,
+  "steps_each": 600,
+  "seed": 0,
+  "task_counts_each": {
+    "mot": 800,
+    "rmot": 800,
+    "ovmot": 800
+  },
+  "question_families_each": {
+    "identity": 362,
+    "query_membership": 764,
+    "category_leaf": 403,
+    "category_group": 397,
+    "empty_query_presence": 36,
+    "reliability": 94,
+    "memory_update": 102,
+    "lifecycle": 230,
+    "withheld_correct_options": 12
+  },
+  "replaced_native_MOT_rows": 400,
+  "unchanged_teacher_MOT_rows": 400,
+  "actual_refreshed_family_exposures": {
+    "identity": 181,
+    "reliability": 47,
+    "memory_update": 51,
+    "lifecycle": 115,
+    "withheld_correct_options": 6
+  },
+  "unique_refreshed_source_rows": 400,
+  "unique_refreshed_fit_frames": 48,
+  "all_common_semantic_payloads_and_per_index_families_equal": true,
+  "all_RMOT_OVMOT_source_rows_included": {
+    "rmot": 346,
+    "ovmot": 430
+  },
+  "initial_FP32_state": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_unified600_native_v2/latest_training_state.pt",
+  "expected_initial_step": 600,
+  "optimizer_scheduler_RNG": "explicit same new-stage recipe reset in both arms",
+  "source_old_native_mixture": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/onejev_native_mixture200_v2_family_matched/train.jsonl",
+  "source_refreshed": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/native600_fit_rollout_refresh_v1/rollout/train.jsonl",
+  "native_observation_Q3_labels_or_runtime_policy_changed": false,
+  "new_JSONL_bytes": 48712542,
+  "metadata_reserve_bytes": 16777216,
+  "combined_registered_upper_bytes": 25957225229,
+  "global_temporary_feature_budget_bytes": 26843545600,
+  "new_model_calls": false,
+  "new_feature_or_image_cache": false,
+  "token_or_FLOP_matched": false,
+  "large_scale_unique_video_or_joint_foundation_training": false,
+  "ordinary_model_performance_achieved": false,
+  "full_goal_complete": false
+}

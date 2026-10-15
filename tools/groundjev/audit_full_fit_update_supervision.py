@@ -1,4 +1,5 @@
-"""Audit original Full fit rollout Q3 labels against the final assigned identity."""
+"""Audit legal Full fit rollout Q3 labels against the final assigned identity."""
+import argparse
 from collections import Counter, defaultdict
 import json
 from pathlib import Path
@@ -10,11 +11,21 @@ sys.path.insert(0,str(ROOT))
 
 
 def main():
+    original_source = ROOT/'outputs/groundjev/training_data/native_ground_own_history_v1'
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--source',type=Path,default=original_source)
+    parser.add_argument('--out',type=Path,default=ROOT/'outputs/groundjev/diagnostics/full_fit_update_supervision_v1')
+    parser.add_argument('--eligible-mixture',type=Path)
+    args = parser.parse_args()
     import numpy as np
     from scipy.optimize import linear_sum_assignment
     from locatemot.groundjev.decision import overlap
     from tools.groundjev.prepare_tracking_decisions import PROTOCOL, annotations
-    source = ROOT/'outputs/groundjev/training_data/native_ground_own_history_v1'
+    source = args.source.resolve()
+    rollout_summary = json.loads((source/'summary.json').read_text())
+    mixture = args.eligible_mixture
+    if mixture is None and source == original_source.resolve():
+        mixture = ROOT/'outputs/groundjev/training_data/onejev_native_mixture200_v2_family_matched/train.jsonl'
     updates, grouped = {}, defaultdict(dict)
     for line in (source/'train.jsonl').open():
         row = json.loads(line)
@@ -77,6 +88,8 @@ def main():
                     category = 'known_conflicting_existing_identity'
                 counts[category] += 1
                 counts[category+'_Q3_yes'] += proxy
+                if assigned is not None and event['action'] != 'NEW':
+                    counts[category+'_actual_UPDATE'] += event.get('memory_action') == 'UPDATE'
                 if category=='known_conflicting_existing_identity' and proxy and len(examples)<12:
                     examples.append({'sequence':name,'fit_frame':frame,'candidate':offset+local,
                         'training_row_id':training['id'],'candidate_GT_identity':gid,
@@ -93,35 +106,43 @@ def main():
     assert checked == set(updates) and counts['frames']==48 and len(checked)==1184
     original = {r['id']:r for r in updates.values()}
     retained = set()
-    for line in (ROOT/'outputs/groundjev/training_data/onejev_native_mixture200_v2_family_matched/train.jsonl').open():
-        row = json.loads(line)
-        if row['task']!='memory_update' or not row['id'].startswith('native_'):
-            continue
-        match = re.fullmatch(r'native_(.+)_idweight\d+_familycycle\d+',row['id'])
-        base = original[match[1]]
-        assert row['target']==base['target'] and row['question']==base['question'] and row['state']==base['state']
-        retained.add(base['id'])
-        counts['actual_family_matched_eligible_native_Q3_rows'] += 1
-    assert retained == set(original) and counts['actual_family_matched_eligible_native_Q3_rows']==2460
+    if mixture is not None:
+        for line in mixture.open():
+            row = json.loads(line)
+            if row['task']!='memory_update' or not row['id'].startswith('native_'):
+                continue
+            match = re.fullmatch(r'native_(.+)_idweight\d+_familycycle\d+',row['id'])
+            base = original[match[1]]
+            assert row['target']==base['target'] and row['question']==base['question'] and row['state']==base['state']
+            retained.add(base['id'])
+            counts['actual_family_matched_eligible_native_Q3_rows'] += 1
+        assert retained == set(original)
+        if source == original_source.resolve():
+            assert counts['actual_family_matched_eligible_native_Q3_rows']==2460
     report = {'status':'FULL_NATIVE_FIT_OBSERVATION_Q3_VERSUS_ASSIGNED_IDENTITY_AUDITED',
+        'source':str(source),'checkpoint':rollout_summary['checkpoint'],
+        'eligible_mixture':str(mixture) if mixture else None,
         'counts':dict(counts),'first_known_conflicting_positive_examples':examples,
-        'actual_existing_identity_assignments_in_original_native_actor_rollout':sum(counts[k] for k in
+        'actual_existing_identity_assignments':sum(counts[k] for k in
             ('known_consistent_existing_identity','known_conflicting_existing_identity',
              'unknown_birth_anchor','unmatched_not_universal_negative_truth')),
-        'all_original_Q3_labels_and_actual_family_matched_copies_reproduced':True,
+        'all_original_Q3_labels_reproduced':True,
+        'all_original_Q3_labels_and_actual_family_matched_copies_reproduced':True if mixture else None,
         'original_data_checkpoints_or_predictions_modified':False,'new_model_calls':False,
         'GT_access':'Registered legal fit frames only; no validation/test supervision or actor state correction.',
         'interpretation':'Original Q3 asks whether the candidate is a reliable observation. Its labels '
             'use visibility and correct-option availability, not the identity actually assigned after '
-            'global matching. The audited native actor has no existing-identity assignments, '
-            'so these native fit trajectories provide no actual conflicting existing-ID write '
-            'contexts. Identity/lifecycle target rows still exist; absence of actual assignments '
+            'global matching. Counts explicitly report actual existing-ID assignments, known '
+            'consistent/conflicting writes and unknown events in the selected actor trajectory. '
+            'Identity/lifecycle target rows still exist; absence of actual assignments '
             'does not mean the training corpus contains no association targets. Unknown birth '
             'anchors remain unknown. This eligible '
             'corpus audit does not prove actual600-prefix exposure or a causal source of validation failure. '
             'A repair needs an explicit selected-identity question and matched training/inference, '
             'rather than silently replacing labels under the old question.'}
-    out = ROOT/'outputs/groundjev/diagnostics/full_fit_update_supervision_v1'
+    if source == original_source.resolve():
+        report['actual_existing_identity_assignments_in_original_native_actor_rollout'] = report['actual_existing_identity_assignments']
+    out = args.out
     out.mkdir(parents=True,exist_ok=False)
     (out/'audit.json').write_text(json.dumps(report,indent=2)+'\n')
     print(json.dumps({'status':report['status'],'counts':report['counts']}))
