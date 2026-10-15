@@ -2409,3 +2409,5 @@ Full fit监督实际核验：48合法fit帧/1184native候选全部Q3旧标签按
 研究计划：全9任务原生保留评测仍在运行，但已有不可变完整task_results。调用原生未改summarize只读取已完成task，核对n-original=n-effective/provider-filter0，固化原始6项与adapted200两项及共同dense200/VisDrone对照；未完成任务不补分、不汇总成全9结果。明确原始queue32与适配sync执行差异及随机requestcounter不构成bitwise配对，报告实际变化，不将差异全部归因训练。继续保留原owner/服务。
 
 原生保留完整task阶段已固化：调用原scripts.evaluate.summarize不改scorer、不调用模型；原始6/9（31986完整task行）、adapted2002/9（1810行），各task n-original=effective且provider过滤0；原始COCO严格按既有resume复用，所有raw源仍本地保留。共同Dense200 F1@.5 78.986→78.679（-.307pp），F1mIoU66.644→66.054；VisDrone F1@.5 46.125→42.145（-3.980pp），F1mIoU29.662→27.870。后者precision/recall均下降，未见该两项保留能力改善，不推广视觉200为更好基础模型。原始queue32与adapted-sync、CUDA恢复及requestcounter不同均明确，不把差异独归因训练。其余full9继续原句柄，不将当前response进度前缀冒充完整task或完整9项分数。
+
+2026-10-15训练规模与创新声明纠正：TRAINING_LOG顶部仍是旧500步运行状态，现以两个实际600追加阶段的完成校验、Compact训练配置及Ground200/320记录更新，保留旧快照为历史。明确仅做过共享多任务微调和分开基础模型适配，没有Ground+One端到端联合梯度训练；3595/8767秒仅150/350步恢复尾段，重复语料行不等于独立视频帧。方法设计仍待收益证据，未证明独立JEV创新或达到三任务普通模型水平。下一步仍按已登记GPU4依赖刷新48fit帧/1184原生候选，先看实际existing-ID/冲突支持再决定训练；本次不新增GPU任务、缓存或测评。原五个阻塞句柄均实际返回still-running，继续保留原owner，不因观察等待重启。

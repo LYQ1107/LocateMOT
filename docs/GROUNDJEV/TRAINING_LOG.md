@@ -1,4 +1,44 @@
-# Latest training status — 2026-10-14
+# Current training scope — 2026-10-15
+
+Cross-task shared-model fine-tuning has run; large-scale, long-duration,
+end-to-end joint optimization of GroundAnything and OneJev has not. Ground
+adaptation and OneJev SFT are separate optimizer runs, subsequently composed
+for tracking. There is no joint gradient through both foundations and the
+online association/memory pipeline. Elapsed evaluation/cache time is not
+training time, and corpus rows containing repetitions are not unique frames.
+
+* Full teacher-history and native-own-history branches each retained600
+  additional updates/2400sampled examples from the completed MOT500 model.
+  Their saved FP32/Adam/scheduler/RNG state and actual native-MM reload are
+  validated. Sources: `training/onejev_unified600_{teacher,native}_v2/`
+  `resumed_completion_validation.json`, relative to `outputs/groundjev/`.
+  The3595.081s teacher and8767.184s native timers cover only resumed tails
+  (150/350updates), not complete600-stage or lifetime training duration.
+* Shared Compact has a1200-step multi-task stage followed by1200steps on
+  native own-history data; this remains a small fixed-corpus adaptation.
+  Configurations: `configs/groundjev/compact_joint_semantics_20261014.json`
+  and `configs/groundjev/memory_full1203_20261015.json`.
+* Ground tracking200 trains27,267,584native projector parameters on112rows/
+  56pairs/72images. Ground320 adds120updates with40fit absence rows; the
+  localization-only200 control preserves the original200pair schedule.
+  These are small controlled adaptations, not joint foundation training.
+
+Specification-conditioned persistent memory, uncertainty-aware identity
+updates and Full-to-Compact transfer are research hypotheses. Existing typed
+OneJev heads, memory and distillation alone do not establish novelty. Completed
+controls show mixed/negative transfer, and ordinary-model-level performance
+on all three tasks remains unachieved; see `CURRENT_STATUS.md` and
+`FINAL_GOAL.md`. No unique JEV advantage is established.
+
+Next declared intervention remains the bounded current-native60048-frame fit
+rollout, serialized after the original Full1203owner. It reuses all1184actual
+native candidates without correcting actor history from GT. Review real
+existing-ID and known-conflict support before launching further training;
+assigned-ID-conditioned update supervision requires an explicit matching
+training/runtime question, not relabeling the old observation-only question.
+No additional training or model invocation is launched by this log correction.
+
+## Historical snapshot — 2026-10-14 (superseded)
 
 100-step official full language-model check completed400examples/1509.262s,
 peak15.3GiB. All474weights saved; three BF16-aligned MLP probes changed,
