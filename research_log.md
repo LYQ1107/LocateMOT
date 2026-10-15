@@ -2334,3 +2334,11 @@ multi800早期Simple CPU控制exit0并验证全部800帧/2208候选/19拒绝：H
 文档整理：CURRENT_STATUS改为当前证据快照，集中完整MOT/RMO/TAO表、真实FPS/资源口径、训练/监督限制和GPU/CPU待完成清单；原逐次追加全文原样保存STATUS_HISTORY_20261015.md及Git历史，未删除失败/旧结果。
 
 fullRMO现有5策略×2完整800已全部exit0/验证，CPUlearned参考的全部官方accuracy与freshGPU5精确一致。singleHOTA6.025/7.766/5.538/6.009/6.636；multiHOTA19.802/32.813/16.622/22.035/19.558，IDF21.008/41.432/14.009/23.803/21.064，IDSW165/79/105/119/157（注册顺序）。固定IoU+同冻结语义函数优于当前学习关联，nativeappearancecos反而恶化纯IoU。此对照否定本场景学习关联优势，不以MOT正结果掩盖；非最优重训baseline/唯一JEV证明，保留语义状态内生差异与actionprior差异。全部800/36或19拒绝/相同1412或2208候选，binary-final同存储、不测E2E，不改模型默认。
+
+研究计划：补齐已登记自然MOT20-05完整validation半段1657帧（1659..3315,25Hz），比较原Simple/共享Compact的3s/30s及已有memory干预；固定同一真实原DLM候选/ROI，无人工遮挡/丢框/GT修正/可见度过滤。GT身份854的29.76s只是低可见度间隔且743中间帧仍有标注，不预称真实候选缺失或成功重识别。GPU7队列只在原nativefull9客户结束且原owner释放服务后启动，GPU6适配队列互不干扰。新archive最多3GiB，既有保守资源上界22471148986+3221225472=25692374458<26843545600（25GiB）。为避免denseROI JSON膨胀，保存原始FP32ROI为逐帧无损npz、JSON索引留全部框/标签/分数/metadata，读回float数值必须精确，非FP16/量化，不新增独立候选。默认老JSON格式不变，先用真实帧验证序列及下一帧恢复一致；所有新存储/IO均计入真实pipeline时钟，重放不声明E2E。
+
+2026-10-15：完成后统一整理25冻结策略、24任务组合和12context单位，逐项将owner指标/解码计数与实际official_metrics/result对齐，核对完整帧、无GT/未来读取及最终状态存在。整理脚本初次遇到旧JSON result无final_identity_memory_path元数据；实际final_identity_memory.json存在，按旧格式真实路径读取修复，未重跑或改指标。三组摘要均通过。TAOalias学习32/64/128 TETA21.773/23.100/24.749、固定cos23.913/26.099/29.062；DT学习均26.316，固定cos13.311/13.289/12.491。完整single800任务三组0、三任务7.860；multi800为7.673/18.255/15.794/18.674，均低于Simple31.877。保留负结果，不调验证集阈值。
+
+真实21帧packed原生FP32存储/空拒绝帧/下一帧恢复精确通过，15.0MB到3.4MB；两臂实际scheduler及实际single800自然gap后验功能检查通过。自然MOT20单owner2126039等待GPU7原native retention释放，未提前占卡；登记低可见度29.76s不等于真实候选缺失。缓存上界含3GiB新源及32MiB回归余量25725928890<25GiB；原默认JSON不变。
+
+Full single800 pretrained/500/teacher600/native600实际完成HOTA16.119/0/6.847/2.506%，FN16/18/14/17（GT18），训练不改善该scope；pretrained只有2TP，不能只看较高HOTA宣称成功。Full multi800/DT1203、原生retention、localization和pairedE2E仍按原owner继续。

@@ -26,6 +26,9 @@ def main():
     if plan.get('hybrid_regression'):
         hybrid = json.loads((ROOT/plan['hybrid_regression']).read_text())
         assert hybrid['status'] == 'REAL_DENSE_TAO_HYBRID32_FUNCTIONAL_VALIDATED'
+    if plan.get('packed_archive_regression'):
+        packed = json.loads((ROOT/plan['packed_archive_regression']).read_text())
+        assert packed['status'] == 'REAL21_PACKED_NATIVE_ROI_ARCHIVE_REPLAY_AND_NEXT_FRAME_EXACT'
     args.out.mkdir(parents=True, exist_ok=False)
     state = {'status': 'STARTING_FIXED_AFFINITY_CONTROLS', 'owner_pid': os.getpid(),
         'plan': str(args.plan), 'device': 'cpu', 'additional_GPUs': 0,
@@ -80,15 +83,19 @@ def main():
                 output = reference_root/(scope+'_'+policies['reference_arm']) if reused else args.out/name
                 shortlist = policies.get('shortlist', 32)
                 shortlist_policy = policies.get('shortlist_policy', 'geometry')
+                backend = policies.get('backend', 'compact')
                 if not reused:
-                    run(name+'_INFERENCE', [python, 'tools/groundjev/run_video.py', '--task', m['task'],
-                    '--video', str(manifest), '--backend', 'compact', '--compact-device', 'cpu',
-                    '--checkpoint', str(ROOT/plan['checkpoint']), '--candidate-replay', str(source),
-                    '--compact-association-policy', policies['association'],
-                    '--compact-auxiliary-policy', policies['auxiliary'], '--omit-replay-feature-vectors',
-                    '--compact-shortlist', str(shortlist),
-                    '--compact-shortlist-policy', shortlist_policy,
-                    '--memory-checkpoint-format', 'binary', '--memory-export-interval', '0', '--out', str(output)])
+                    command = [python, 'tools/groundjev/run_video.py', '--task', m['task'],
+                        '--video', str(manifest), '--backend', backend, '--candidate-replay', str(source),
+                        '--omit-replay-feature-vectors', '--memory-checkpoint-format', 'binary', '--memory-export-interval', '0',
+                        '--memory-policy', policies.get('memory_policy', 'gated'), '--memory-feature-view', policies.get('feature_view', 'all'),
+                        '--lost-seconds', str(policies.get('lost_seconds', 3.)), '--ema-alpha', str(policies.get('EMA_alpha', .1)),
+                        '--out', str(output)]
+                    if backend == 'compact':
+                        command += ['--compact-device', 'cpu', '--checkpoint', str(ROOT/plan['checkpoint']),
+                            '--compact-association-policy', policies['association'], '--compact-auxiliary-policy', policies['auxiliary'],
+                            '--compact-shortlist', str(shortlist), '--compact-shortlist-policy', shortlist_policy]
+                    run(name+'_INFERENCE', command)
                 scorer = 'evaluate_video.py' if m['task'] == 'mot' else 'evaluate_multitask.py'
                 if not reused:
                     run(name+'_OFFICIAL', ['python3', 'tools/groundjev/'+scorer, '--video', str(manifest), '--run', str(output)])
@@ -99,13 +106,16 @@ def main():
                     for old, new in zip_longest(native, predictions):
                         assert old is not None and new is not None
                         old, new = json.loads(old), json.loads(new)
+                        from locatemot.groundjev.candidate_archive import decode_candidate_row
+                        old = decode_candidate_row(old, source.parent)
                         geometry = [{k: v for k, v in c.items() if k not in
                             ('native_region_feature', 'temporal_region_feature')} for c in old['candidates']]
                         assert new['candidates'] == geometry
                         assert new['frame'] == old['frame'] == m['frame_numbers'][count]
                         assert new['image_path'] == old['image_path'] == m['images'][count]
-                        assert new['state']['decision_metadata']['shortlist_limit'] == shortlist
-                        assert new['state']['decision_metadata'].get('shortlist_policy', 'geometry') == shortlist_policy
+                        if backend == 'compact':
+                            assert new['state']['decision_metadata']['shortlist_limit'] == shortlist
+                            assert new['state']['decision_metadata'].get('shortlist_policy', 'geometry') == shortlist_policy
                         expected_rejection = bool(old['perception'].get('model_response_rejected', False))
                         assert bool(new['perception'].get('model_response_rejected', False)) == expected_rejection
                         if expected_rejection:
@@ -121,16 +131,21 @@ def main():
                 assert report['end_to_end_fps'] is None and report['all_input_frames_processed']
                 assert not report['gt_read_by_runtime'] and not report['future_frames_read_by_runtime']
                 assert report['memory_checkpoint_format'] == 'binary' and report['memory_export_interval'] == 0
-                assert report['compact_association_policy'] == policies['association']
-                assert report['compact_auxiliary_policy'] == policies['auxiliary']
-                assert report.get('compact_shortlist_limit', 32) == shortlist
-                assert report.get('compact_shortlist_policy', 'geometry') == shortlist_policy
-                assert Path(report['checkpoint']).resolve() == (ROOT/plan['checkpoint']).resolve()
+                assert report['backend'] == backend
+                assert report['memory_policy'] == policies.get('memory_policy', 'gated')
+                assert report['memory_feature_view'] == policies.get('feature_view', 'all')
+                assert report['lost_seconds'] == policies.get('lost_seconds', 3.)
+                if backend == 'compact':
+                    assert report['compact_association_policy'] == policies['association']
+                    assert report['compact_auxiliary_policy'] == policies['auxiliary']
+                    assert report.get('compact_shortlist_limit', 32) == shortlist
+                    assert report.get('compact_shortlist_policy', 'geometry') == shortlist_policy
+                    assert Path(report['checkpoint']).resolve() == (ROOT/plan['checkpoint']).resolve()
                 assert Path(report['final_identity_memory_path']).is_file()
                 official = json.loads((output/'official_metrics.json').read_text())
                 events = json.loads((output/'association_events.json').read_text())
                 state['completed'][name] = {'run': str(output), 'policies': policies,
-                    'reused_validated_same_CPU_reference': reused, 'shortlist_limit': shortlist,
+                    'reused_validated_same_CPU_reference': reused, 'shortlist_limit': shortlist if backend=='compact' else None,
                     'decoded_frames': decoded, 'native_candidates': candidates, 'native_rejected_frames': rejected,
                     'all_native_geometry_labels_scores_order_and_frames_retained': True,
                     'metrics': official['metrics'], 'base_novel': official.get('base_novel'),

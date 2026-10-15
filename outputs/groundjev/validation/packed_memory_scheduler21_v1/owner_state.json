@@ -1,0 +1,71 @@
+{
+  "status": "ALL_FIXED_AFFINITY_CONTROLS_COMPLETE",
+  "owner_pid": 2119819,
+  "plan": "outputs/groundjev/validation/packed_native_archive21_v1/scheduler_plan.json",
+  "device": "cpu",
+  "additional_GPUs": 0,
+  "new_feature_cache_files": false,
+  "completed": {
+    "real21_simple3": {
+      "run": "outputs/groundjev/validation/packed_memory_scheduler21_v1/real21_simple3",
+      "policies": {
+        "backend": "simple",
+        "association": "simple_iou",
+        "auxiliary": "fixed"
+      },
+      "reused_validated_same_CPU_reference": false,
+      "shortlist_limit": null,
+      "decoded_frames": 21,
+      "native_candidates": 266,
+      "native_rejected_frames": [
+        21
+      ],
+      "all_native_geometry_labels_scores_order_and_frames_retained": true,
+      "metrics": {
+        "HOTA": 0.2862546791573398,
+        "DetA": 0.19150599068744245,
+        "AssA": 0.4292443187468756,
+        "IDF1": 0.24778761061946902,
+        "IDSW": 11,
+        "FP": 206,
+        "FN": 13
+      },
+      "base_novel": null,
+      "correct_option_coverage": 1.0,
+      "existing_association_accuracy": 0.37254901960784315,
+      "speed_comparison_or_E2E_claim": false
+    },
+    "real21_compact30": {
+      "run": "outputs/groundjev/validation/packed_memory_scheduler21_v1/real21_compact30",
+      "policies": {
+        "association": "learned",
+        "auxiliary": "learned",
+        "lost_seconds": 30.0
+      },
+      "reused_validated_same_CPU_reference": false,
+      "shortlist_limit": 32,
+      "decoded_frames": 21,
+      "native_candidates": 266,
+      "native_rejected_frames": [
+        21
+      ],
+      "all_native_geometry_labels_scores_order_and_frames_retained": true,
+      "metrics": {
+        "HOTA": 0.1888794427172403,
+        "DetA": 0.15884080356525082,
+        "AssA": 0.22498977397466108,
+        "IDF1": 0.20725388601036268,
+        "IDSW": 7,
+        "FP": 90,
+        "FN": 43
+      },
+      "base_novel": null,
+      "correct_option_coverage": 1.0,
+      "existing_association_accuracy": 0.07142857142857142,
+      "speed_comparison_or_E2E_claim": false
+    }
+  },
+  "full_goal_complete": false,
+  "comparison": "Frozen inference interventions, not independently trained optimal conventional models or unique JEV proof. Same raw visual/text inputs and semantic functions; endogenous confidence/history/state differ by policy. Geometry-only describes association only, semantic heads still consume visual/text inputs. One legal video per full-video scope, one checkpoint/seed; no full-dataset claim.",
+  "memory_storage": "All new arms binary final full state with every original float64/list/image/history field; per-frame complete decisions plus exact shared native sources support causal replay. Actual4-frame outputs/states and next-frame restoration exact versus old JSON1. No replay or storage-policy speed comparison with legacy runs."
+}

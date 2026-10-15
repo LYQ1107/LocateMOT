@@ -16,13 +16,15 @@ sys.path.insert(0, str(ROOT))
 class ReplayFrames:
     """Read only the next requested native frame, bounding replay memory."""
     def __init__(self, path):
+        self.directory = path.parent
         self.file = path.open()
     def frame(self, number):
         for line in self.file:
             row = json.loads(line)
             if row['frame'] < number: continue
             if row['frame'] != number: break
-            return row
+            from locatemot.groundjev.candidate_archive import decode_candidate_row
+            return decode_candidate_row(row, self.directory)
         raise ValueError(f'Native replay lacks requested frame {number}; frame cannot be skipped')
     def close(self): self.file.close()
 
@@ -104,6 +106,8 @@ def main():
     parser.add_argument('--ema-alpha',type=float,default=.1)
     parser.add_argument('--omit-replay-feature-vectors',action='store_true',help='retain shared source reference and all boxes/decisions; avoid duplicating input feature arrays')
     parser.add_argument('--record-native-candidates', action='store_true', help='archive actual current native candidates once for subsequent matched controls')
+    parser.add_argument('--native-candidate-format',choices=['jsonl','packed_npz_f32'],default='jsonl',
+                        help='packed stores exact native FP32 ROI vectors in per-frame compressed files; no quantization')
     parser.add_argument('--native-candidate-byte-budget', type=int, default=2*2**30)
     parser.add_argument('--memory-checkpoint-format',choices=['json','binary'],default='json')
     parser.add_argument('--memory-export-interval',type=int,default=1,
@@ -208,11 +212,16 @@ def main():
         print(json.dumps({'restored_completed_frames': len(resumed), 'source': str(args.resume_from),
                           'identical_native_outputs_and_state': True, 'gt_used': False}), flush=True)
     video_writer = None
+    native_archive_path = args.out/'frame_candidates.jsonl'
+    native_archive = None
     video_start = time.perf_counter()
     initialization_seconds = video_start-invocation_start
+    if args.record_native_candidates:
+        from locatemot.groundjev.candidate_archive import CandidateArchiveWriter
+        native_archive = CandidateArchiveWriter(native_archive_path, packed=args.native_candidate_format=='packed_npz_f32')
     try:
         with (args.out / 'predictions.txt').open('w') as predictions, (args.out / 'frame_decisions.jsonl').open('w') as log, \
-                ((args.out/'frame_candidates.jsonl').open('w') if args.record_native_candidates else nullcontext(None)) as native_log:
+                (native_archive if native_archive else nullcontext(None)) as native_log:
             for index, (path, frame_number) in enumerate(frames):
                 start = time.perf_counter()
                 with Image.open(path) as source:
@@ -252,8 +261,8 @@ def main():
                         candidates,feature_metadata=feature_client(image,candidates,image_path=path)
                         perception['native_feature_extraction']=feature_metadata
                 if native_log is not None:
-                    native_log.write(json.dumps({'frame': frame_number, 'image_path': path,
-                        'candidates': candidates, 'perception': perception})+'\n')
+                    native_log.write({'frame': frame_number, 'image_path': path,
+                        'candidates': candidates, 'perception': perception})
                     native_log.flush()
                     if native_log.tell() > args.native_candidate_byte_budget:
                         raise RuntimeError('Registered per-study native feature budget exceeded; preserve source and do not skip candidates')
@@ -357,10 +366,12 @@ def main():
               'memory_policy':args.memory_policy,'memory_feature_view':args.memory_feature_view,
               'lost_seconds':args.lost_seconds,'ema_alpha':args.ema_alpha,
               'replay_feature_vectors_omitted_from_log':args.omit_replay_feature_vectors,
-              'shared_input_features_source':str(args.out/'frame_candidates.jsonl') if args.record_native_candidates else
+              'shared_input_features_source':str(native_archive_path) if args.record_native_candidates else
                   str(args.candidate_replay) if args.omit_replay_feature_vectors else None,
-              'native_candidate_archive':str(args.out/'frame_candidates.jsonl') if args.record_native_candidates else None,
-              'native_candidate_archive_bytes':(args.out/'frame_candidates.jsonl').stat().st_size if args.record_native_candidates else 0,
+              'native_candidate_archive':str(native_archive_path) if args.record_native_candidates else None,
+              'native_candidate_archive_bytes':native_archive.tell() if native_archive else 0,
+              'native_candidate_archive_format':args.native_candidate_format if native_archive else None,
+              'native_candidate_archive_feature_files':native_archive.feature_files if native_archive else 0,
               'native_candidate_archive_budget_bytes':args.native_candidate_byte_budget if args.record_native_candidates else None}
     result.update(memory_checkpoint_format=args.memory_checkpoint_format,memory_export_interval=args.memory_export_interval,
                   causal_resume_source='complete frame_decisions plus retained exact native input source',

@@ -1,0 +1,16 @@
+{
+  "status": "REAL21_PACKED_NATIVE_ROI_ARCHIVE_REPLAY_AND_NEXT_FRAME_EXACT",
+  "actual_frames": 21,
+  "native_candidates": 266,
+  "actual_rejected_empty_frames_retained": [
+    21
+  ],
+  "all_candidate_fields_native_vectors_temporal_vectors_and_archived_metadata_exact": true,
+  "all21_predictions_states_full_memory_and_next_real_frame22_exact": true,
+  "FP32_inputs_lossless_not_quantized": true,
+  "raw_JSON_equivalent_bytes": 14998172,
+  "packed_total_index_and_feature_bytes": 3409159,
+  "new_feature_cap_bytes": 33554432,
+  "GT_or_future_used_by_inference": false,
+  "fresh_DLM_E2E_or_accuracy_claim": false
+}

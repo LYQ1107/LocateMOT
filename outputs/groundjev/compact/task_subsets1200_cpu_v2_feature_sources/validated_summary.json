@@ -1,0 +1,603 @@
+{
+  "status": "COMPLETED_STUDY_OFFICIAL_ARTIFACTS_VALIDATED",
+  "study": "task_subsets1200_cpu_v2_feature_sources",
+  "completed_units": 24,
+  "results": {
+    "mot_mot_full1203": {
+      "run": "outputs/groundjev/compact/task_subsets1200_cpu_v1/mot_mot_full1203",
+      "decoded_frames": 1203,
+      "metrics": {
+        "HOTA": 0.1963864227047442,
+        "DetA": 0.4457675377808985,
+        "AssA": 0.08673625202379324,
+        "IDF1": 0.20786252354048965,
+        "IDSW": 348,
+        "FP": 1089,
+        "FN": 1765
+      },
+      "base_novel": null,
+      "all_exact_candidate_geometry_order_and_frames_retained": true,
+      "correct_option_coverage": 1.0,
+      "existing_association_accuracy": 0.06861989205859677,
+      "official_metrics_file": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/task_subsets1200_cpu_v1/mot_mot_full1203/official_metrics.json",
+      "metrics_equal_actual_official_report": true,
+      "runtime_all_frames_causal_and_final_state_present": true
+    },
+    "mot_rmot_mot_full1203": {
+      "run": "outputs/groundjev/compact/task_subsets1200_cpu_v1/mot_rmot_mot_full1203",
+      "decoded_frames": 1203,
+      "metrics": {
+        "HOTA": 0.06759687179809916,
+        "DetA": 0.13731988318610452,
+        "AssA": 0.03340464925988852,
+        "IDF1": 0.09884255006430277,
+        "IDSW": 80,
+        "FP": 136,
+        "FN": 3865
+      },
+      "base_novel": null,
+      "all_exact_candidate_geometry_order_and_frames_retained": true,
+      "correct_option_coverage": 1.0,
+      "existing_association_accuracy": 0.06059285091543156,
+      "official_metrics_file": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/task_subsets1200_cpu_v1/mot_rmot_mot_full1203/official_metrics.json",
+      "metrics_equal_actual_official_report": true,
+      "runtime_all_frames_causal_and_final_state_present": true
+    },
+    "mot_ovmot_mot_full1203": {
+      "run": "outputs/groundjev/compact/task_subsets1200_cpu_v2_feature_sources/mot_ovmot_mot_full1203",
+      "decoded_frames": 1203,
+      "metrics": {
+        "HOTA": 0.21228453169330472,
+        "DetA": 0.453943791256767,
+        "AssA": 0.09937026572775054,
+        "IDF1": 0.2008092594335184,
+        "IDSW": 414,
+        "FP": 2461,
+        "FN": 1006
+      },
+      "base_novel": null,
+      "all_exact_candidate_geometry_order_and_frames_retained": true,
+      "correct_option_coverage": 1.0,
+      "existing_association_accuracy": 0.08096280087527352,
+      "official_metrics_file": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/task_subsets1200_cpu_v2_feature_sources/mot_ovmot_mot_full1203/official_metrics.json",
+      "metrics_equal_actual_official_report": true,
+      "runtime_all_frames_causal_and_final_state_present": true
+    },
+    "all_three_mot_full1203": {
+      "run": "outputs/groundjev/compact/task_subsets1200_cpu_v2_feature_sources/all_three_mot_full1203",
+      "decoded_frames": 1203,
+      "metrics": {
+        "HOTA": 0.193119281499306,
+        "DetA": 0.3578798916533271,
+        "AssA": 0.10432798100057517,
+        "IDF1": 0.1782674908178805,
+        "IDSW": 422,
+        "FP": 3363,
+        "FN": 1372
+      },
+      "base_novel": null,
+      "all_exact_candidate_geometry_order_and_frames_retained": true,
+      "correct_option_coverage": 1.0,
+      "existing_association_accuracy": 0.009615384615384616,
+      "official_metrics_file": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/task_subsets1200_cpu_v2_feature_sources/all_three_mot_full1203/official_metrics.json",
+      "metrics_equal_actual_official_report": true,
+      "runtime_all_frames_causal_and_final_state_present": true
+    },
+    "mot_tao_raw_full40": {
+      "run": "outputs/groundjev/compact/task_subsets1200_cpu_v2_feature_sources/mot_tao_raw_full40",
+      "decoded_frames": 40,
+      "metrics": {
+        "TETA": 12.421,
+        "LocA": 9.1092,
+        "AssocA": 15.903,
+        "ClsA": 12.25,
+        "LocRe": 15.458,
+        "LocPr": 22.117,
+        "AssocRe": 16.512,
+        "AssocPr": 78.28,
+        "ClsRe": 33.333,
+        "ClsPr": 12.25
+      },
+      "base_novel": {
+        "base": {
+          "TETA": 15.433150000000001,
+          "LocA": 7.65145,
+          "AssocA": 20.2735,
+          "ClsA": 18.375,
+          "LocRe": 15.8125,
+          "LocPr": 14.0805,
+          "AssocRe": 21.08,
+          "AssocPr": 84.614,
+          "ClsRe": 50.0,
+          "ClsPr": 18.375
+        },
+        "novel": {
+          "TETA": 6.3957,
+          "LocA": 12.025,
+          "AssocA": 7.1623,
+          "ClsA": 0.0,
+          "LocRe": 14.75,
+          "LocPr": 38.19,
+          "AssocRe": 7.375,
+          "AssocPr": 65.611,
+          "ClsRe": 0.0,
+          "ClsPr": 0.0
+        }
+      },
+      "all_exact_candidate_geometry_order_and_frames_retained": true,
+      "correct_option_coverage": 0.375,
+      "existing_association_accuracy": 0.0,
+      "official_metrics_file": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/task_subsets1200_cpu_v2_feature_sources/mot_tao_raw_full40/official_metrics.json",
+      "metrics_equal_actual_official_report": true,
+      "runtime_all_frames_causal_and_final_state_present": true
+    },
+    "mot_rmot_tao_raw_full40": {
+      "run": "outputs/groundjev/compact/task_subsets1200_cpu_v2_feature_sources/mot_rmot_tao_raw_full40",
+      "decoded_frames": 40,
+      "metrics": {
+        "TETA": 19.284,
+        "LocA": 18.642,
+        "AssocA": 36.734,
+        "ClsA": 2.4748,
+        "LocRe": 59.521,
+        "LocPr": 21.581,
+        "AssocRe": 42.279,
+        "AssocPr": 56.084,
+        "ClsRe": 33.333,
+        "ClsPr": 2.4748
+      },
+      "base_novel": {
+        "base": {
+          "TETA": 20.734,
+          "LocA": 12.951699999999999,
+          "AssocA": 45.537499999999994,
+          "ClsA": 3.71225,
+          "LocRe": 60.281,
+          "LocPr": 13.9655,
+          "AssocRe": 51.536,
+          "AssocPr": 62.685,
+          "ClsRe": 50.0,
+          "ClsPr": 3.71225
+        },
+        "novel": {
+          "TETA": 16.384,
+          "LocA": 30.023,
+          "AssocA": 19.127,
+          "ClsA": 0.0,
+          "LocRe": 58.0,
+          "LocPr": 36.812,
+          "AssocRe": 23.764,
+          "AssocPr": 42.882,
+          "ClsRe": 0.0,
+          "ClsPr": 0.0
+        }
+      },
+      "all_exact_candidate_geometry_order_and_frames_retained": true,
+      "correct_option_coverage": 0.21739130434782608,
+      "existing_association_accuracy": 0.13043478260869565,
+      "official_metrics_file": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/task_subsets1200_cpu_v2_feature_sources/mot_rmot_tao_raw_full40/official_metrics.json",
+      "metrics_equal_actual_official_report": true,
+      "runtime_all_frames_causal_and_final_state_present": true
+    },
+    "mot_ovmot_tao_raw_full40": {
+      "run": "outputs/groundjev/compact/task_subsets1200_cpu_v2_feature_sources/mot_ovmot_tao_raw_full40",
+      "decoded_frames": 40,
+      "metrics": {
+        "TETA": 12.85,
+        "LocA": 12.514,
+        "AssocA": 6.3423,
+        "ClsA": 19.695,
+        "LocRe": 83.479,
+        "LocPr": 12.99,
+        "AssocRe": 6.4891,
+        "AssocPr": 67.958,
+        "ClsRe": 33.333,
+        "ClsPr": 19.695
+      },
+      "base_novel": {
+        "base": {
+          "TETA": 14.3427,
+          "LocA": 6.193149999999999,
+          "AssocA": 7.293049999999999,
+          "ClsA": 29.542,
+          "LocRe": 85.6565,
+          "LocPr": 6.2753499999999995,
+          "AssocRe": 7.4472,
+          "AssocPr": 68.05199999999999,
+          "ClsRe": 50.0,
+          "ClsPr": 29.542
+        },
+        "novel": {
+          "TETA": 9.8659,
+          "LocA": 25.157,
+          "AssocA": 4.4409,
+          "ClsA": 0.0,
+          "LocRe": 79.125,
+          "LocPr": 26.42,
+          "AssocRe": 4.5727,
+          "AssocPr": 67.77,
+          "ClsRe": 0.0,
+          "ClsPr": 0.0
+        }
+      },
+      "all_exact_candidate_geometry_order_and_frames_retained": true,
+      "correct_option_coverage": 0.2125984251968504,
+      "existing_association_accuracy": 0.07086614173228346,
+      "official_metrics_file": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/task_subsets1200_cpu_v2_feature_sources/mot_ovmot_tao_raw_full40/official_metrics.json",
+      "metrics_equal_actual_official_report": true,
+      "runtime_all_frames_causal_and_final_state_present": true
+    },
+    "all_three_tao_raw_full40": {
+      "run": "outputs/groundjev/compact/task_subsets1200_cpu_v2_feature_sources/all_three_tao_raw_full40",
+      "decoded_frames": 40,
+      "metrics": {
+        "TETA": 10.081,
+        "LocA": 7.4113,
+        "AssocA": 5.3013,
+        "ClsA": 17.532,
+        "LocRe": 84.771,
+        "LocPr": 7.508,
+        "AssocRe": 5.4377,
+        "AssocPr": 66.196,
+        "ClsRe": 33.333,
+        "ClsPr": 17.532
+      },
+      "base_novel": {
+        "base": {
+          "TETA": 12.525,
+          "LocA": 5.2411,
+          "AssocA": 6.0364,
+          "ClsA": 26.2975,
+          "LocRe": 84.406,
+          "LocPr": 5.30725,
+          "AssocRe": 6.20115,
+          "AssocPr": 65.6925,
+          "ClsRe": 50.0,
+          "ClsPr": 26.2975
+        },
+        "novel": {
+          "TETA": 5.1942,
+          "LocA": 11.752,
+          "AssocA": 3.8311,
+          "ClsA": 0.0,
+          "LocRe": 85.5,
+          "LocPr": 11.909,
+          "AssocRe": 3.9109,
+          "AssocPr": 67.204,
+          "ClsRe": 0.0,
+          "ClsPr": 0.0
+        }
+      },
+      "all_exact_candidate_geometry_order_and_frames_retained": true,
+      "correct_option_coverage": 0.15079365079365079,
+      "existing_association_accuracy": 0.047619047619047616,
+      "official_metrics_file": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/task_subsets1200_cpu_v2_feature_sources/all_three_tao_raw_full40/official_metrics.json",
+      "metrics_equal_actual_official_report": true,
+      "runtime_all_frames_causal_and_final_state_present": true
+    },
+    "mot_rmot_single8": {
+      "run": "outputs/groundjev/compact/task_subsets1200_cpu_v2_feature_sources/mot_rmot_single8",
+      "decoded_frames": 8,
+      "metrics": {
+        "HOTA": 0.0,
+        "DetA": 0.0,
+        "AssA": 0.0,
+        "IDF1": 0.0,
+        "IDSW": 0,
+        "FP": 3,
+        "FN": 5
+      },
+      "base_novel": null,
+      "all_exact_candidate_geometry_order_and_frames_retained": true,
+      "correct_option_coverage": null,
+      "existing_association_accuracy": null,
+      "official_metrics_file": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/task_subsets1200_cpu_v2_feature_sources/mot_rmot_single8/official_metrics.json",
+      "metrics_equal_actual_official_report": true,
+      "runtime_all_frames_causal_and_final_state_present": true
+    },
+    "mot_rmot_rmot_single8": {
+      "run": "outputs/groundjev/compact/task_subsets1200_cpu_v2_feature_sources/mot_rmot_rmot_single8",
+      "decoded_frames": 8,
+      "metrics": {
+        "HOTA": 0.0,
+        "DetA": 0.0,
+        "AssA": 0.0,
+        "IDF1": 0.0,
+        "IDSW": 0,
+        "FP": 3,
+        "FN": 5
+      },
+      "base_novel": null,
+      "all_exact_candidate_geometry_order_and_frames_retained": true,
+      "correct_option_coverage": 1.0,
+      "existing_association_accuracy": 0.3333333333333333,
+      "official_metrics_file": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/task_subsets1200_cpu_v2_feature_sources/mot_rmot_rmot_single8/official_metrics.json",
+      "metrics_equal_actual_official_report": true,
+      "runtime_all_frames_causal_and_final_state_present": true
+    },
+    "mot_ovmot_rmot_single8": {
+      "run": "outputs/groundjev/compact/task_subsets1200_cpu_v2_feature_sources/mot_ovmot_rmot_single8",
+      "decoded_frames": 8,
+      "metrics": {
+        "HOTA": 0.26494134810163766,
+        "DetA": 0.25782112624217884,
+        "AssA": 0.27348370927318294,
+        "IDF1": 0.4,
+        "IDSW": 1,
+        "FP": 6,
+        "FN": 1
+      },
+      "base_novel": null,
+      "all_exact_candidate_geometry_order_and_frames_retained": true,
+      "correct_option_coverage": 1.0,
+      "existing_association_accuracy": 0.6666666666666666,
+      "official_metrics_file": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/task_subsets1200_cpu_v2_feature_sources/mot_ovmot_rmot_single8/official_metrics.json",
+      "metrics_equal_actual_official_report": true,
+      "runtime_all_frames_causal_and_final_state_present": true
+    },
+    "all_three_rmot_single8": {
+      "run": "outputs/groundjev/compact/task_subsets1200_cpu_v2_feature_sources/all_three_rmot_single8",
+      "decoded_frames": 8,
+      "metrics": {
+        "HOTA": 0.3726509118486759,
+        "DetA": 0.3574162679425838,
+        "AssA": 0.3942481203007519,
+        "IDF1": 0.6666666666666666,
+        "IDSW": 1,
+        "FP": 3,
+        "FN": 1
+      },
+      "base_novel": null,
+      "all_exact_candidate_geometry_order_and_frames_retained": true,
+      "correct_option_coverage": 1.0,
+      "existing_association_accuracy": 0.0,
+      "official_metrics_file": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/task_subsets1200_cpu_v2_feature_sources/all_three_rmot_single8/official_metrics.json",
+      "metrics_equal_actual_official_report": true,
+      "runtime_all_frames_causal_and_final_state_present": true
+    },
+    "mot_rmot_multi12": {
+      "run": "outputs/groundjev/compact/task_subsets1200_cpu_v2_feature_sources/mot_rmot_multi12",
+      "decoded_frames": 12,
+      "metrics": {
+        "HOTA": 0.04096261274294866,
+        "DetA": 0.022071307300509335,
+        "AssA": 0.07602339181286549,
+        "IDF1": 0.0625,
+        "IDSW": 0,
+        "FP": 1,
+        "FN": 29
+      },
+      "base_novel": null,
+      "all_exact_candidate_geometry_order_and_frames_retained": true,
+      "correct_option_coverage": 1.0,
+      "existing_association_accuracy": 0.0,
+      "official_metrics_file": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/task_subsets1200_cpu_v2_feature_sources/mot_rmot_multi12/official_metrics.json",
+      "metrics_equal_actual_official_report": true,
+      "runtime_all_frames_causal_and_final_state_present": true
+    },
+    "mot_rmot_rmot_multi12": {
+      "run": "outputs/groundjev/compact/task_subsets1200_cpu_v2_feature_sources/mot_rmot_rmot_multi12",
+      "decoded_frames": 12,
+      "metrics": {
+        "HOTA": 0.035125112369853356,
+        "DetA": 0.022524052065647993,
+        "AssA": 0.055973266499582286,
+        "IDF1": 0.0,
+        "IDSW": 0,
+        "FP": 2,
+        "FN": 30
+      },
+      "base_novel": null,
+      "all_exact_candidate_geometry_order_and_frames_retained": true,
+      "correct_option_coverage": 1.0,
+      "existing_association_accuracy": 1.0,
+      "official_metrics_file": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/task_subsets1200_cpu_v2_feature_sources/mot_rmot_rmot_multi12/official_metrics.json",
+      "metrics_equal_actual_official_report": true,
+      "runtime_all_frames_causal_and_final_state_present": true
+    },
+    "mot_ovmot_rmot_multi12": {
+      "run": "outputs/groundjev/compact/task_subsets1200_cpu_v2_feature_sources/mot_ovmot_rmot_multi12",
+      "decoded_frames": 12,
+      "metrics": {
+        "HOTA": 0.09621617241427152,
+        "DetA": 0.06777934061521321,
+        "AssA": 0.14933925723399408,
+        "IDF1": 0.05128205128205128,
+        "IDSW": 0,
+        "FP": 8,
+        "FN": 29
+      },
+      "base_novel": null,
+      "all_exact_candidate_geometry_order_and_frames_retained": true,
+      "correct_option_coverage": null,
+      "existing_association_accuracy": null,
+      "official_metrics_file": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/task_subsets1200_cpu_v2_feature_sources/mot_ovmot_rmot_multi12/official_metrics.json",
+      "metrics_equal_actual_official_report": true,
+      "runtime_all_frames_causal_and_final_state_present": true
+    },
+    "all_three_rmot_multi12": {
+      "run": "outputs/groundjev/compact/task_subsets1200_cpu_v2_feature_sources/all_three_rmot_multi12",
+      "decoded_frames": 12,
+      "metrics": {
+        "HOTA": 0.035125112369853356,
+        "DetA": 0.022524052065647993,
+        "AssA": 0.055973266499582286,
+        "IDF1": 0.0,
+        "IDSW": 0,
+        "FP": 2,
+        "FN": 30
+      },
+      "base_novel": null,
+      "all_exact_candidate_geometry_order_and_frames_retained": true,
+      "correct_option_coverage": 1.0,
+      "existing_association_accuracy": 1.0,
+      "official_metrics_file": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/task_subsets1200_cpu_v2_feature_sources/all_three_rmot_multi12/official_metrics.json",
+      "metrics_equal_actual_official_report": true,
+      "runtime_all_frames_causal_and_final_state_present": true
+    },
+    "mot_single800": {
+      "run": "outputs/groundjev/compact/task_subsets1200_cpu_v2_feature_sources/mot_single800",
+      "decoded_frames": 800,
+      "metrics": {
+        "HOTA": 0.0,
+        "DetA": 0.0,
+        "AssA": 0.0,
+        "IDF1": 0.0,
+        "IDSW": 0,
+        "FP": 173,
+        "FN": 18
+      },
+      "base_novel": null,
+      "all_exact_candidate_geometry_order_and_frames_retained": true,
+      "correct_option_coverage": 1.0,
+      "existing_association_accuracy": 0.2857142857142857,
+      "official_metrics_file": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/task_subsets1200_cpu_v2_feature_sources/mot_single800/official_metrics.json",
+      "metrics_equal_actual_official_report": true,
+      "runtime_all_frames_causal_and_final_state_present": true
+    },
+    "mot_rmot_single800": {
+      "run": "outputs/groundjev/compact/task_subsets1200_cpu_v2_feature_sources/mot_rmot_single800",
+      "decoded_frames": 800,
+      "metrics": {
+        "HOTA": 0.0,
+        "DetA": 0.0,
+        "AssA": 0.0,
+        "IDF1": 0.0,
+        "IDSW": 0,
+        "FP": 366,
+        "FN": 18
+      },
+      "base_novel": null,
+      "all_exact_candidate_geometry_order_and_frames_retained": true,
+      "correct_option_coverage": 1.0,
+      "existing_association_accuracy": 0.6,
+      "official_metrics_file": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/task_subsets1200_cpu_v2_feature_sources/mot_rmot_single800/official_metrics.json",
+      "metrics_equal_actual_official_report": true,
+      "runtime_all_frames_causal_and_final_state_present": true
+    },
+    "mot_ovmot_single800": {
+      "run": "outputs/groundjev/compact/task_subsets1200_cpu_v2_feature_sources/mot_ovmot_single800",
+      "decoded_frames": 800,
+      "metrics": {
+        "HOTA": 0.0,
+        "DetA": 0.0,
+        "AssA": 0.0,
+        "IDF1": 0.0,
+        "IDSW": 0,
+        "FP": 830,
+        "FN": 18
+      },
+      "base_novel": null,
+      "all_exact_candidate_geometry_order_and_frames_retained": true,
+      "correct_option_coverage": 1.0,
+      "existing_association_accuracy": 0.6,
+      "official_metrics_file": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/task_subsets1200_cpu_v2_feature_sources/mot_ovmot_single800/official_metrics.json",
+      "metrics_equal_actual_official_report": true,
+      "runtime_all_frames_causal_and_final_state_present": true
+    },
+    "all_three_single800": {
+      "run": "outputs/groundjev/compact/task_subsets1200_cpu_v2_feature_sources/all_three_single800",
+      "decoded_frames": 800,
+      "metrics": {
+        "HOTA": 0.07860349432578986,
+        "DetA": 0.021737686139406392,
+        "AssA": 0.284459695694406,
+        "IDF1": 0.04157043879907621,
+        "IDSW": 3,
+        "FP": 406,
+        "FN": 9
+      },
+      "base_novel": null,
+      "all_exact_candidate_geometry_order_and_frames_retained": true,
+      "correct_option_coverage": 1.0,
+      "existing_association_accuracy": 0.5319148936170213,
+      "official_metrics_file": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/task_subsets1200_cpu_v2_feature_sources/all_three_single800/official_metrics.json",
+      "metrics_equal_actual_official_report": true,
+      "runtime_all_frames_causal_and_final_state_present": true
+    },
+    "mot_multi800": {
+      "run": "outputs/groundjev/compact/task_subsets1200_cpu_v2_feature_sources/mot_multi800",
+      "decoded_frames": 800,
+      "metrics": {
+        "HOTA": 0.07672542067553095,
+        "DetA": 0.06575282342126784,
+        "AssA": 0.09253789129906137,
+        "IDF1": 0.07984031936127745,
+        "IDSW": 24,
+        "FP": 208,
+        "FN": 1927
+      },
+      "base_novel": null,
+      "all_exact_candidate_geometry_order_and_frames_retained": true,
+      "correct_option_coverage": 1.0,
+      "existing_association_accuracy": 0.14814814814814814,
+      "official_metrics_file": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/task_subsets1200_cpu_v2_feature_sources/mot_multi800/official_metrics.json",
+      "metrics_equal_actual_official_report": true,
+      "runtime_all_frames_causal_and_final_state_present": true
+    },
+    "mot_rmot_multi800": {
+      "run": "outputs/groundjev/compact/task_subsets1200_cpu_v2_feature_sources/mot_rmot_multi800",
+      "decoded_frames": 800,
+      "metrics": {
+        "HOTA": 0.1825481769577826,
+        "DetA": 0.2803416399657711,
+        "AssA": 0.11984766847460289,
+        "IDF1": 0.21471389645776567,
+        "IDSW": 126,
+        "FP": 638,
+        "FN": 1192
+      },
+      "base_novel": null,
+      "all_exact_candidate_geometry_order_and_frames_retained": true,
+      "correct_option_coverage": 1.0,
+      "existing_association_accuracy": 0.5123674911660777,
+      "official_metrics_file": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/task_subsets1200_cpu_v2_feature_sources/mot_rmot_multi800/official_metrics.json",
+      "metrics_equal_actual_official_report": true,
+      "runtime_all_frames_causal_and_final_state_present": true
+    },
+    "mot_ovmot_multi800": {
+      "run": "outputs/groundjev/compact/task_subsets1200_cpu_v2_feature_sources/mot_ovmot_multi800",
+      "decoded_frames": 800,
+      "metrics": {
+        "HOTA": 0.15793902511611513,
+        "DetA": 0.230838191668172,
+        "AssA": 0.10963239665462851,
+        "IDF1": 0.16770354341357857,
+        "IDSW": 110,
+        "FP": 801,
+        "FN": 1328
+      },
+      "base_novel": null,
+      "all_exact_candidate_geometry_order_and_frames_retained": true,
+      "correct_option_coverage": 1.0,
+      "existing_association_accuracy": 0.3971631205673759,
+      "official_metrics_file": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/task_subsets1200_cpu_v2_feature_sources/mot_ovmot_multi800/official_metrics.json",
+      "metrics_equal_actual_official_report": true,
+      "runtime_all_frames_causal_and_final_state_present": true
+    },
+    "all_three_multi800": {
+      "run": "outputs/groundjev/compact/task_subsets1200_cpu_v2_feature_sources/all_three_multi800",
+      "decoded_frames": 800,
+      "metrics": {
+        "HOTA": 0.18674359751817846,
+        "DetA": 0.31611226620637756,
+        "AssA": 0.11171620492561904,
+        "IDF1": 0.1929869465062708,
+        "IDSW": 153,
+        "FP": 727,
+        "FN": 1044
+      },
+      "base_novel": null,
+      "all_exact_candidate_geometry_order_and_frames_retained": true,
+      "correct_option_coverage": 1.0,
+      "existing_association_accuracy": 0.5838926174496645,
+      "official_metrics_file": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/task_subsets1200_cpu_v2_feature_sources/all_three_multi800/official_metrics.json",
+      "metrics_equal_actual_official_report": true,
+      "runtime_all_frames_causal_and_final_state_present": true
+    }
+  },
+  "validation_scope": "Official scores and runtime frame counts agree with terminal owner; candidate ordering and decoded-video counts use already completed per-unit owner checks.",
+  "metric_scales": "HOTA/IDF1 fractions; TETA/AssocA/ClsA percentages; IDSW/FP/FN counts",
+  "limits": "One-seed registered validation scopes, frozen policy interventions or fixed-total-update training subsets; not complete datasets, isolated JEV proof or E2E speed.",
+  "full_goal_complete": false
+}

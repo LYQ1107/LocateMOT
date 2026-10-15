@@ -121,8 +121,19 @@ exposure differs:1200MOT,600per paired task,400per triple task.
 |MOT+OV|21.229|12.850|26.494|9.622|
 |All three|19.312|10.081|37.265|3.513|
 
-All16known scopes validate. Full800task-subset controls continue on the new
-sources. NovelClsA0 in every subset. Complementary MOT400/600 controls have
+All24registered scopes validate, including both complete800frame sources.
+
+|Training tasks|Single800 HOTA %|Multi800 HOTA %|Multi800 IDF1 %|
+|---|---:|---:|---:|
+|MOT|0|7.673|7.984|
+|MOT+RMO|0|18.255|21.471|
+|MOT+OV|0|15.794|16.770|
+|All three|7.860|18.674|19.299|
+
+Triple training transfers to the single expression, but every multi800 arm is
+below same-candidate Simple31.877HOTA/37.685IDF1. These matched1200update
+arms differ in budget/initialization from the older shared broad native model.
+ NovelClsA0 in every subset. Complementary MOT400/600 controls have
 HOTA13.317/13.979 with exact actual sample/loss prefixes versusMOT1200; total
 compute still differs from the multitask arms. No isolated gradient-interference
 or universal transfer conclusion.
@@ -142,8 +153,23 @@ history evolve with each policy. Learned policy also suppresses many proposals;
 this is not isolated identity-ranking evidence, an optimally retrained conventional
 matcher, or unique JEV proof. The same five policies have now completed both
 full800RMOT scopes; CPU learned-reference official metrics exactly match the
-fresh GPU5 runs. Full TAO portions,32/64/128
-contexts and fixed32hybrid retrieval studies remain running/queued. Hybrid
+fresh GPU5 runs. All25original policy units now validate, including raw and
+aliasTAO40. AliasTAO TETA learned21.773 versus IoU26.928; rawTAO learned14.517
+versus IoU13.995. NovelClsA remains0. The two proposal protocols are separate.
+
+The context study also completed:12units, four32references and eight new64/128
+runs. These are actual independently evolving tracking trajectories, not frozen
+ranking coverage estimates.
+
+|Context IDs|DT learned HOTA %|DT fixed cosine HOTA %|AliasTAO learned TETA %|AliasTAO fixed cosine TETA %|
+|---|---:|---:|---:|---:|
+|32|26.316|13.311|21.773|23.913|
+|64|26.316|13.289|23.100|26.099|
+|128|26.316|12.491|24.749|29.062|
+
+Larger context helps this TAO scope but does not establish a learned-association
+advantage. Context64/128 exceeds the training32-option distribution and changes
+semantic normalization and histories. Fixed32hybrid retrieval remains running. Hybrid
 keeps16geometry IDs then fills32from native appearance; real251-ID differential
 checks preserve old defaults exactly. No newGPU/feature sources or speed claims.
 
@@ -202,7 +228,19 @@ They are frozen policy interventions. The full singleRMO800diagnostic has two
 natural candidate returns beyond3s; bothSimple/Compactrecover0under immutable
 birth-anchor diagnostics. This does not prove successful long recovery; GTgap
 and candidate-gap scopes differ. The registered natural MOT20challenge still
-requires actual inference. No artificial occlusion or metric filtering is used.
+requires actual inference. A single registered owner2126039 waits only original
+GPU7 native-retention release. It will use every1657validation frame,25Hz, with
+8same-source memory/Simple controls and a3GiB packed native ROI archive cap.
+Registered ID854's29.76s low-visibility interval retains743intermediate annotated
+frames; it is not yet a measured missing-candidate interval. No artificial
+occlusion or metric filtering is used.
+
+Real21frame packed-storage regression preserves266candidates, the actual rejected
+empty frame, every FP32ROI value, predictions, full state and next-frame recovery
+exactly:14998172JSON-equivalent bytes versus3409159packed bytes. This is a
+storage functional result, not new model accuracy or a full-video speed claim.
+Existing conservative cache upper22471148986+3GiB+32MiB regression reserve is
+25725928890bytes, below25GiB. The default older JSON archive remains unchanged.
 
 ## Active execution and remaining work
 
@@ -217,7 +255,8 @@ see `RESOURCE_CLEANUP.md` for limits of the original resource snapshots.
 |GPU5|Full RMOT matched controls; `multitask_runs/full_rmot_shared600_v1`, then fresh pairedE2E|
 |GPU6|Ground200nativefull9, then `ground_adaptation/localization200_control_v1`|
 |GPU7|OriginalGroundnativefull9; summaries under `ground_retention/reattached_full9_owner_v1`|
-|CPU|Original5-policy TAO controls, task-subset full800, context-size and hybrid studies|
+|CPU|Original25policies, all24task-subsets and12context units complete; hybrid study running|
+|GPU7 after retention|Natural MOT20-05 validation1657, then8CPU memory controls; `natural_memory/mot20_05_full_validation_v1`|
 |Completed CPU|`compact/full_rmot_affinity800_v1`:all10full800matched-semantic controls|
 
 The v1Full1203waiting manager failed before any inference when a PID handle
@@ -251,3 +290,17 @@ policy comparison, not isolated JEV uniqueness or an optimal conventional
 training claim; states/action priors and future semantic outputs differ.
 No model promotion. Receipt:
 `outputs/groundjev/compact/full_rmot_affinity800_v1/validation_and_summary.json`.
+
+
+Latest Full single800 controls are also complete (same1412native proposals,
+800decoded frames/36parser-rejected frames, unchanged nativeNoul.5 semantics):
+pretrained/500/teacher600/native600 HOTA16.119/0/6.847/2.506%,
+IDF1 17.391/0/4.839/2.062%, FN16/18/14/17 out of18GTboxes.
+Pretrained recovers only2GTboxes, so its higher HOTA does not imply adequate
+recall. Training does not improve this full single-expression scope. Multi800
+Full controls still run; all Full replay speeds exclude perception.
+
+Curated official-artifact receipts: `outputs/groundjev/compact/` under
+`fixed_affinity_controls_v1/validated_summary.json`,
+`task_subsets1200_cpu_v2_feature_sources/validated_summary.json` and
+`context_sizes_v1/validated_summary.json`.

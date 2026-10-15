@@ -1,0 +1,80 @@
+{
+  "checkpoint": "outputs/groundjev/compact/rmot_native72_stage_v1/broad_native_training/checkpoint.pt",
+  "regression": "outputs/groundjev/validation/fixed_affinity_storage_v1/validation.json",
+  "memory_storage": "All new arms binary final full state with every original float64/list/image/history field; per-frame complete decisions plus exact shared native sources support causal replay. Actual4-frame outputs/states and next-frame restoration exact versus old JSON1. No replay or storage-policy speed comparison with legacy runs.",
+  "name": "Natural MOT20 same-native-input memory/lifetime controls",
+  "cpu_blas_threads": 4,
+  "packed_archive_regression": "outputs/groundjev/validation/packed_native_archive21_v1/validation.json",
+  "arms": {
+    "reference_gated3": {
+      "memory_policy": "gated",
+      "feature_view": "all",
+      "lost_seconds": 3.0,
+      "association": "learned",
+      "auxiliary": "learned",
+      "EMA_alpha": 0.1
+    },
+    "frame_only": {
+      "memory_policy": "frame_only",
+      "feature_view": "recent",
+      "lost_seconds": 3.0,
+      "association": "learned",
+      "auxiliary": "learned",
+      "EMA_alpha": 0.1
+    },
+    "recent_observation3": {
+      "memory_policy": "gated",
+      "feature_view": "recent",
+      "lost_seconds": 3.0,
+      "association": "learned",
+      "auxiliary": "learned",
+      "EMA_alpha": 0.1
+    },
+    "ema_always3": {
+      "memory_policy": "ema",
+      "feature_view": "ema",
+      "lost_seconds": 3.0,
+      "association": "learned",
+      "auxiliary": "learned",
+      "EMA_alpha": 0.1
+    },
+    "anchor_always3": {
+      "memory_policy": "always",
+      "feature_view": "all",
+      "lost_seconds": 3.0,
+      "association": "learned",
+      "auxiliary": "learned",
+      "EMA_alpha": 0.1
+    },
+    "anchor_gated30": {
+      "memory_policy": "gated",
+      "feature_view": "all",
+      "lost_seconds": 30.0,
+      "association": "learned",
+      "auxiliary": "learned",
+      "EMA_alpha": 0.1
+    },
+    "simple3": {
+      "backend": "simple",
+      "association": "simple_iou",
+      "auxiliary": "fixed",
+      "lost_seconds": 3.0
+    },
+    "simple30": {
+      "backend": "simple",
+      "association": "simple_iou",
+      "auxiliary": "fixed",
+      "lost_seconds": 30.0
+    }
+  },
+  "scopes": {
+    "mot20_challenge": {
+      "manifest": "outputs/groundjev/recovery_scope_20261015/registered_mot_challenge.json",
+      "candidates": "outputs/groundjev/natural_memory/mot20_05_full_validation_v1/fresh_compact_gated3/frame_candidates.jsonl",
+      "frames": 1657,
+      "candidates_count": null
+    }
+  },
+  "comparison_limit": "Same frozen shared model and actual native source, eight CPU memory/lifetime interventions including Simple3/30. Lost30 does not guarantee learned lifecycle retains an ID or correct retrieval. All official frames/GT retained; no synthetic gaps/visibility filtering/GT correction. Fresh GPU reference scored separately; CPU/GPU agreement is measured, not presumed. No paired speed or unique JEV claim.",
+  "status": "registered before natural inference; candidate_count resolved only from complete immutable source"
+}

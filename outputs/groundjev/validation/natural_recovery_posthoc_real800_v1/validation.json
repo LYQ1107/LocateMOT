@@ -1,0 +1,16 @@
+{
+  "status": "ACTUAL_COMPLETED800_NATURAL_GAP_POSTHOC_FUNCTIONAL_VALIDATED",
+  "actual_case": {
+    "identity": 47,
+    "before": 412,
+    "after": 450,
+    "kind": "existing_real_candidate_gap_functional_only"
+  },
+  "counts": {
+    "natural_candidate_returns_3to30s": 2,
+    "unknown_or_no_previous_correct_birth_anchor_excluded": 2
+  },
+  "missing_frames_equals_real_endpoint_gap_minus_one": true,
+  "existing_predictions_and_GT_or_candidates_modified": false,
+  "functional_fixture_only_not_new_MOT20_result": true
+}

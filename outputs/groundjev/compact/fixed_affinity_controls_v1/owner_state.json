@@ -1,5 +1,5 @@
 {
-  "status": "tao_raw_full40_learned_reference_INFERENCE",
+  "status": "ALL_FIXED_AFFINITY_CONTROLS_COMPLETE",
   "owner_pid": 1986817,
   "plan": "configs/groundjev/fixed_affinity_controls_v1.json",
   "device": "cpu",
@@ -784,6 +784,266 @@
       },
       "correct_option_coverage": 0.5309734513274337,
       "existing_association_accuracy": 0.08849557522123894,
+      "speed_comparison_or_E2E_claim": false
+    },
+    "tao_raw_full40_learned_reference": {
+      "run": "outputs/groundjev/compact/fixed_affinity_controls_v1/tao_raw_full40_learned_reference",
+      "policies": {
+        "association": "learned",
+        "auxiliary": "learned"
+      },
+      "decoded_frames": 40,
+      "native_candidates": 35228,
+      "native_rejected_frames": [],
+      "all_native_geometry_labels_scores_order_and_frames_retained": true,
+      "metrics": {
+        "TETA": 14.517,
+        "LocA": 8.088,
+        "AssocA": 5.1478,
+        "ClsA": 30.314,
+        "LocRe": 84.833,
+        "LocPr": 8.2072,
+        "AssocRe": 5.2406,
+        "AssocPr": 71.608,
+        "ClsRe": 33.333,
+        "ClsPr": 30.314
+      },
+      "base_novel": {
+        "base": {
+          "TETA": 18.93545,
+          "LocA": 5.80265,
+          "AssocA": 5.5325500000000005,
+          "ClsA": 45.471,
+          "LocRe": 84.6875,
+          "LocPr": 5.89035,
+          "AssocRe": 5.644,
+          "AssocPr": 69.38749999999999,
+          "ClsRe": 50.0,
+          "ClsPr": 45.471
+        },
+        "novel": {
+          "TETA": 5.679,
+          "LocA": 12.659,
+          "AssocA": 4.3785,
+          "ClsA": 0.0,
+          "LocRe": 85.125,
+          "LocPr": 12.841,
+          "AssocRe": 4.4338,
+          "AssocPr": 76.049,
+          "ClsRe": 0.0,
+          "ClsPr": 0.0
+        }
+      },
+      "correct_option_coverage": 0.15671641791044777,
+      "existing_association_accuracy": 0.05223880597014925,
+      "speed_comparison_or_E2E_claim": false
+    },
+    "tao_raw_full40_iou_fixed": {
+      "run": "outputs/groundjev/compact/fixed_affinity_controls_v1/tao_raw_full40_iou_fixed",
+      "policies": {
+        "association": "fixed_iou",
+        "auxiliary": "fixed"
+      },
+      "decoded_frames": 40,
+      "native_candidates": 35228,
+      "native_rejected_frames": [],
+      "all_native_geometry_labels_scores_order_and_frames_retained": true,
+      "metrics": {
+        "TETA": 13.995,
+        "LocA": 6.7001,
+        "AssocA": 4.9496,
+        "ClsA": 30.336,
+        "LocRe": 86.083,
+        "LocPr": 6.7744,
+        "AssocRe": 5.0133,
+        "AssocPr": 82.523,
+        "ClsRe": 33.333,
+        "ClsPr": 30.336
+      },
+      "base_novel": {
+        "base": {
+          "TETA": 18.77715,
+          "LocA": 5.36725,
+          "AssocA": 5.459949999999999,
+          "ClsA": 45.5035,
+          "LocRe": 86.75,
+          "LocPr": 5.42695,
+          "AssocRe": 5.5465,
+          "AssocPr": 79.1345,
+          "ClsRe": 50.0,
+          "ClsPr": 45.5035
+        },
+        "novel": {
+          "TETA": 4.4315,
+          "LocA": 9.3658,
+          "AssocA": 3.9288,
+          "ClsA": 0.0,
+          "LocRe": 84.75,
+          "LocPr": 9.4693,
+          "AssocRe": 3.9469,
+          "AssocPr": 89.299,
+          "ClsRe": 0.0,
+          "ClsPr": 0.0
+        }
+      },
+      "correct_option_coverage": 0.15384615384615385,
+      "existing_association_accuracy": 0.09090909090909091,
+      "speed_comparison_or_E2E_claim": false
+    },
+    "tao_raw_full40_iou_cosine_fixed": {
+      "run": "outputs/groundjev/compact/fixed_affinity_controls_v1/tao_raw_full40_iou_cosine_fixed",
+      "policies": {
+        "association": "fixed_iou_cosine",
+        "auxiliary": "fixed"
+      },
+      "decoded_frames": 40,
+      "native_candidates": 35228,
+      "native_rejected_frames": [],
+      "all_native_geometry_labels_scores_order_and_frames_retained": true,
+      "metrics": {
+        "TETA": 13.964,
+        "LocA": 6.6623,
+        "AssocA": 5.0805,
+        "ClsA": 30.151,
+        "LocRe": 85.667,
+        "LocPr": 6.7376,
+        "AssocRe": 5.1952,
+        "AssocPr": 69.357,
+        "ClsRe": 33.333,
+        "ClsPr": 30.151
+      },
+      "base_novel": {
+        "base": {
+          "TETA": 18.60035,
+          "LocA": 5.2771,
+          "AssocA": 5.29805,
+          "ClsA": 45.226,
+          "LocRe": 85.8125,
+          "LocPr": 5.3376,
+          "AssocRe": 5.45355,
+          "AssocPr": 63.722,
+          "ClsRe": 50.0,
+          "ClsPr": 45.226
+        },
+        "novel": {
+          "TETA": 4.6927,
+          "LocA": 9.4326,
+          "AssocA": 4.6454,
+          "ClsA": 0.0,
+          "LocRe": 85.375,
+          "LocPr": 9.5376,
+          "AssocRe": 4.6785,
+          "AssocPr": 80.627,
+          "ClsRe": 0.0,
+          "ClsPr": 0.0
+        }
+      },
+      "correct_option_coverage": 0.11851851851851852,
+      "existing_association_accuracy": 0.07407407407407407,
+      "speed_comparison_or_E2E_claim": false
+    },
+    "tao_raw_full40_iou_cosine_learned_aux": {
+      "run": "outputs/groundjev/compact/fixed_affinity_controls_v1/tao_raw_full40_iou_cosine_learned_aux",
+      "policies": {
+        "association": "fixed_iou_cosine",
+        "auxiliary": "learned"
+      },
+      "decoded_frames": 40,
+      "native_candidates": 35228,
+      "native_rejected_frames": [],
+      "all_native_geometry_labels_scores_order_and_frames_retained": true,
+      "metrics": {
+        "TETA": 13.964,
+        "LocA": 6.6623,
+        "AssocA": 5.0805,
+        "ClsA": 30.151,
+        "LocRe": 85.667,
+        "LocPr": 6.7376,
+        "AssocRe": 5.1952,
+        "AssocPr": 69.357,
+        "ClsRe": 33.333,
+        "ClsPr": 30.151
+      },
+      "base_novel": {
+        "base": {
+          "TETA": 18.60035,
+          "LocA": 5.2771,
+          "AssocA": 5.29805,
+          "ClsA": 45.226,
+          "LocRe": 85.8125,
+          "LocPr": 5.3376,
+          "AssocRe": 5.45355,
+          "AssocPr": 63.722,
+          "ClsRe": 50.0,
+          "ClsPr": 45.226
+        },
+        "novel": {
+          "TETA": 4.6927,
+          "LocA": 9.4326,
+          "AssocA": 4.6454,
+          "ClsA": 0.0,
+          "LocRe": 85.375,
+          "LocPr": 9.5376,
+          "AssocRe": 4.6785,
+          "AssocPr": 80.627,
+          "ClsRe": 0.0,
+          "ClsPr": 0.0
+        }
+      },
+      "correct_option_coverage": 0.11851851851851852,
+      "existing_association_accuracy": 0.07407407407407407,
+      "speed_comparison_or_E2E_claim": false
+    },
+    "tao_raw_full40_learned_fixed_aux": {
+      "run": "outputs/groundjev/compact/fixed_affinity_controls_v1/tao_raw_full40_learned_fixed_aux",
+      "policies": {
+        "association": "learned",
+        "auxiliary": "fixed"
+      },
+      "decoded_frames": 40,
+      "native_candidates": 35228,
+      "native_rejected_frames": [],
+      "all_native_geometry_labels_scores_order_and_frames_retained": true,
+      "metrics": {
+        "TETA": 14.493,
+        "LocA": 8.088,
+        "AssocA": 5.0775,
+        "ClsA": 30.314,
+        "LocRe": 84.833,
+        "LocPr": 8.2072,
+        "AssocRe": 5.1703,
+        "AssocPr": 70.527,
+        "ClsRe": 33.333,
+        "ClsPr": 30.314
+      },
+      "base_novel": {
+        "base": {
+          "TETA": 18.92105,
+          "LocA": 5.80265,
+          "AssocA": 5.489850000000001,
+          "ClsA": 45.471,
+          "LocRe": 84.6875,
+          "LocPr": 5.89035,
+          "AssocRe": 5.59985,
+          "AssocPr": 68.993,
+          "ClsRe": 50.0,
+          "ClsPr": 45.471
+        },
+        "novel": {
+          "TETA": 5.6371,
+          "LocA": 12.659,
+          "AssocA": 4.2527,
+          "ClsA": 0.0,
+          "LocRe": 85.125,
+          "LocPr": 12.841,
+          "AssocRe": 4.3111,
+          "AssocPr": 73.594,
+          "ClsRe": 0.0,
+          "ClsPr": 0.0
+        }
+      },
+      "correct_option_coverage": 0.16417910447761194,
+      "existing_association_accuracy": 0.04477611940298507,
       "speed_comparison_or_E2E_claim": false
     }
   },

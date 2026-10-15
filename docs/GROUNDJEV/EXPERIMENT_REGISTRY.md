@@ -596,3 +596,12 @@ mot_exposure_controls_v1.json. No full goal completion or model promotion.
 Early multi800Simple completed: HOTA31.877/IDF1 37.685/IDSW99 vssharedCompact19.802/21.008/165, lowerFPbutworseidentity. full_rmot_affinity800_v1 nowruns existing5frozenpolicies onboth800expressions withsame semantics/inputs/newCPUreferences; owner2084981/session72414, noGPU/newfeatures or changes tooriginalregisteredstudies.
 
 full_rmot_affinity800_v1 complete: all10full800controls validated, bothCPUlearned reference accuracies exact vsfreshGPU5. MultiIoU+same semantic functions HOTA32.813/IDF141.432/IDSW79 beatslearned19.802/21.008/165. All five policies retained, no modelpromotion or uniqueJEV claim; this frozen intervention is not optimal retraining.
+
+## Completed policy/multitask/context and queued natural-memory studies, 2026-10-15
+
+- Original frozen-policy cohort: all25complete, actual official-artifact receipt `compact/fixed_affinity_controls_v1/validated_summary.json`.
+- Four matched1200update task subsets: all24controls complete, receipt `compact/task_subsets1200_cpu_v2_feature_sources/validated_summary.json`; task exposure differs.
+- Context32/64/128: all12complete, receipt `compact/context_sizes_v1/validated_summary.json`; aliasTAO gains, DT learned unchanged; fixedcos still better on aliasTAO.
+- Fixed32geometry/appearance hybrid: runs after terminal context owner; actual results pending completion.
+- Natural memory plan `configs/groundjev/natural_memory_study_v1.json`: fullMOT20-05validation1657, originalGround/realROI/sharedCompact, 8same-source CPU controls, packed exact FP32 archive3GiBcap; owner2126039 waits originalGPU7retention release. Registered29.76s is low visibility, not proven candidate gap.
+- Full single800 pretrained/500/teacher600/native600 completed; HOTA16.119/0/6.847/2.506%, GT18 and FN16/18/14/17. No training improvement or model promotion. Full multi800 remains pending.

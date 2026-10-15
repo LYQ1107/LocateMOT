@@ -1,5 +1,5 @@
 {
-  "status": "WAITING_VERIFIED_FRESH_SINGLE800_SOURCE",
+  "status": "ALL_FOUR_TASK_SUBSETS_AND_REGISTERED_OFFICIAL_CONTROLS_COMPLETE",
   "owner_pid": 1927135,
   "device": "cpu",
   "additional_GPUs": 0,
@@ -1053,6 +1053,142 @@
       "all_exact_candidate_geometry_order_and_frames_retained": true,
       "correct_option_coverage": 1.0,
       "existing_association_accuracy": 1.0
+    },
+    "mot_single800": {
+      "run": "outputs/groundjev/compact/task_subsets1200_cpu_v2_feature_sources/mot_single800",
+      "decoded_frames": 800,
+      "metrics": {
+        "HOTA": 0.0,
+        "DetA": 0.0,
+        "AssA": 0.0,
+        "IDF1": 0.0,
+        "IDSW": 0,
+        "FP": 173,
+        "FN": 18
+      },
+      "base_novel": null,
+      "all_exact_candidate_geometry_order_and_frames_retained": true,
+      "correct_option_coverage": 1.0,
+      "existing_association_accuracy": 0.2857142857142857
+    },
+    "mot_rmot_single800": {
+      "run": "outputs/groundjev/compact/task_subsets1200_cpu_v2_feature_sources/mot_rmot_single800",
+      "decoded_frames": 800,
+      "metrics": {
+        "HOTA": 0.0,
+        "DetA": 0.0,
+        "AssA": 0.0,
+        "IDF1": 0.0,
+        "IDSW": 0,
+        "FP": 366,
+        "FN": 18
+      },
+      "base_novel": null,
+      "all_exact_candidate_geometry_order_and_frames_retained": true,
+      "correct_option_coverage": 1.0,
+      "existing_association_accuracy": 0.6
+    },
+    "mot_ovmot_single800": {
+      "run": "outputs/groundjev/compact/task_subsets1200_cpu_v2_feature_sources/mot_ovmot_single800",
+      "decoded_frames": 800,
+      "metrics": {
+        "HOTA": 0.0,
+        "DetA": 0.0,
+        "AssA": 0.0,
+        "IDF1": 0.0,
+        "IDSW": 0,
+        "FP": 830,
+        "FN": 18
+      },
+      "base_novel": null,
+      "all_exact_candidate_geometry_order_and_frames_retained": true,
+      "correct_option_coverage": 1.0,
+      "existing_association_accuracy": 0.6
+    },
+    "all_three_single800": {
+      "run": "outputs/groundjev/compact/task_subsets1200_cpu_v2_feature_sources/all_three_single800",
+      "decoded_frames": 800,
+      "metrics": {
+        "HOTA": 0.07860349432578986,
+        "DetA": 0.021737686139406392,
+        "AssA": 0.284459695694406,
+        "IDF1": 0.04157043879907621,
+        "IDSW": 3,
+        "FP": 406,
+        "FN": 9
+      },
+      "base_novel": null,
+      "all_exact_candidate_geometry_order_and_frames_retained": true,
+      "correct_option_coverage": 1.0,
+      "existing_association_accuracy": 0.5319148936170213
+    },
+    "mot_multi800": {
+      "run": "outputs/groundjev/compact/task_subsets1200_cpu_v2_feature_sources/mot_multi800",
+      "decoded_frames": 800,
+      "metrics": {
+        "HOTA": 0.07672542067553095,
+        "DetA": 0.06575282342126784,
+        "AssA": 0.09253789129906137,
+        "IDF1": 0.07984031936127745,
+        "IDSW": 24,
+        "FP": 208,
+        "FN": 1927
+      },
+      "base_novel": null,
+      "all_exact_candidate_geometry_order_and_frames_retained": true,
+      "correct_option_coverage": 1.0,
+      "existing_association_accuracy": 0.14814814814814814
+    },
+    "mot_rmot_multi800": {
+      "run": "outputs/groundjev/compact/task_subsets1200_cpu_v2_feature_sources/mot_rmot_multi800",
+      "decoded_frames": 800,
+      "metrics": {
+        "HOTA": 0.1825481769577826,
+        "DetA": 0.2803416399657711,
+        "AssA": 0.11984766847460289,
+        "IDF1": 0.21471389645776567,
+        "IDSW": 126,
+        "FP": 638,
+        "FN": 1192
+      },
+      "base_novel": null,
+      "all_exact_candidate_geometry_order_and_frames_retained": true,
+      "correct_option_coverage": 1.0,
+      "existing_association_accuracy": 0.5123674911660777
+    },
+    "mot_ovmot_multi800": {
+      "run": "outputs/groundjev/compact/task_subsets1200_cpu_v2_feature_sources/mot_ovmot_multi800",
+      "decoded_frames": 800,
+      "metrics": {
+        "HOTA": 0.15793902511611513,
+        "DetA": 0.230838191668172,
+        "AssA": 0.10963239665462851,
+        "IDF1": 0.16770354341357857,
+        "IDSW": 110,
+        "FP": 801,
+        "FN": 1328
+      },
+      "base_novel": null,
+      "all_exact_candidate_geometry_order_and_frames_retained": true,
+      "correct_option_coverage": 1.0,
+      "existing_association_accuracy": 0.3971631205673759
+    },
+    "all_three_multi800": {
+      "run": "outputs/groundjev/compact/task_subsets1200_cpu_v2_feature_sources/all_three_multi800",
+      "decoded_frames": 800,
+      "metrics": {
+        "HOTA": 0.18674359751817846,
+        "DetA": 0.31611226620637756,
+        "AssA": 0.11171620492561904,
+        "IDF1": 0.1929869465062708,
+        "IDSW": 153,
+        "FP": 727,
+        "FN": 1044
+      },
+      "base_novel": null,
+      "all_exact_candidate_geometry_order_and_frames_retained": true,
+      "correct_option_coverage": 1.0,
+      "existing_association_accuracy": 0.5838926174496645
     }
   },
   "failed": {},
