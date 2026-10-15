@@ -1,0 +1,178 @@
+{
+  "status": "HISTORY_REFRESH_FOUR_SCOPE_SOURCES_AND_DEPENDENCIES_VALIDATED",
+  "plan": "configs/groundjev/full_history_refresh600_controls_v1.json",
+  "scopes": {
+    "mot_full1203": {
+      "frames": 1203,
+      "native_candidates": 13664,
+      "parser_rejected_frames": [
+        21,
+        29,
+        59,
+        61,
+        63,
+        64,
+        70,
+        100,
+        236,
+        270,
+        279,
+        286,
+        381,
+        422,
+        452,
+        460,
+        482,
+        587,
+        653,
+        691,
+        716,
+        724,
+        847,
+        882,
+        1063,
+        1129,
+        1148
+      ],
+      "manifest": "outputs/groundjev/pilot_data/dancetrack.json",
+      "source": "outputs/groundjev/compact/dancetrack0004_native300_v2_empty_roi_fixed/compact_distilled/frame_decisions.jsonl",
+      "before_baseline": {
+        "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_full1203_controls_v2_wait_fix/native_mot_full1203",
+        "metrics": {
+          "HOTA": 0.08702996032001276,
+          "DetA": 0.3010472804984555,
+          "AssA": 0.025168031826705423,
+          "IDF1": 0.05825958702064897,
+          "IDSW": 3631,
+          "FP": 7516,
+          "FN": 416
+        },
+        "unchanged_existing_artifacts": true
+      }
+    },
+    "rmot_single800": {
+      "frames": 800,
+      "native_candidates": 1412,
+      "parser_rejected_frames": [
+        27,
+        28,
+        44,
+        56,
+        82,
+        91,
+        127,
+        135,
+        136,
+        139,
+        152,
+        163,
+        211,
+        217,
+        219,
+        244,
+        245,
+        294,
+        299,
+        335,
+        340,
+        342,
+        345,
+        362,
+        364,
+        381,
+        387,
+        425,
+        426,
+        447,
+        451,
+        483,
+        498,
+        572,
+        573,
+        746
+      ],
+      "manifest": "outputs/groundjev/multitask_pilot_data/rmot_single_empty_full.json",
+      "source": "outputs/groundjev/multitask_runs/full_rmot_shared600_v1/single800_shared_compact_fresh/frame_candidates.jsonl",
+      "before_baseline": {
+        "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_runs/full_rmot_shared600_v1/single800_native600",
+        "metrics": {
+          "HOTA": 0.025062491270483527,
+          "DetA": 0.013810018467220683,
+          "AssA": 0.04678362573099415,
+          "IDF1": 0.020618556701030927,
+          "IDSW": 0,
+          "FP": 78,
+          "FN": 17
+        },
+        "unchanged_existing_artifacts": true
+      }
+    },
+    "rmot_multi800": {
+      "frames": 800,
+      "native_candidates": 2208,
+      "parser_rejected_frames": [
+        30,
+        34,
+        107,
+        108,
+        109,
+        110,
+        117,
+        138,
+        286,
+        291,
+        292,
+        379,
+        508,
+        708,
+        711,
+        771,
+        774,
+        778,
+        789
+      ],
+      "manifest": "outputs/groundjev/multitask_pilot_data/rmot_multi_empty_full.json",
+      "source": "outputs/groundjev/multitask_runs/full_rmot_shared600_v1/multi800_shared_compact_fresh/frame_candidates.jsonl",
+      "before_baseline": {
+        "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_runs/full_rmot_shared600_v1/multi800_native600",
+        "metrics": {
+          "HOTA": 0.06740006654792335,
+          "DetA": 0.10547747538761035,
+          "AssA": 0.04328675321004638,
+          "IDF1": 0.06693227091633466,
+          "IDSW": 185,
+          "FP": 145,
+          "FN": 1859
+        },
+        "unchanged_existing_artifacts": true
+      }
+    },
+    "tao_raw_full40": {
+      "frames": 40,
+      "native_candidates": 35228,
+      "parser_rejected_frames": [],
+      "manifest": "outputs/groundjev/multitask_pilot_data/ovmot_tao_base_novel63_full.json",
+      "source": "outputs/groundjev/multitask_runs/tao_base_novel63_full_v2_expression_none/native_candidates/frame_candidates.jsonl",
+      "before_baseline": null
+    }
+  },
+  "dependencies": {
+    "training": {
+      "identity": [
+        2448456,
+        "45150423"
+      ],
+      "live_process_identity_verified": true
+    },
+    "gpu5_release": {
+      "identity": [
+        2207841,
+        "43963616"
+      ],
+      "live_process_identity_verified": true
+    }
+  },
+  "new_model_calls_or_feature_archive": false,
+  "official_scores_or_runtime_policy_changed": false,
+  "full_goal_complete": false
+}

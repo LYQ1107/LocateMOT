@@ -1,0 +1,32 @@
+{
+  "status": "WAITING_ORIGINAL_GPU5_NATURAL_OWNER_EXIT",
+  "owner_pid": 2467924,
+  "owner_starttick": "45243513",
+  "worker": "refreshed",
+  "physical_gpu": 5,
+  "training_dependency": {
+    "directory": "outputs/groundjev/training/full_history_refresh600_pair_v2",
+    "identity": [
+      2448456,
+      "45150423"
+    ],
+    "script": "tools/groundjev/run_full_history_refresh_training.py",
+    "required_terminal_status": "PAIRED_HISTORY_REFRESH600_TRAINING_AND_MM_RELOAD_COMPLETE"
+  },
+  "GPU5_dependency": {
+    "directory": "outputs/groundjev/gpu5_followups_v1",
+    "identity": [
+      2207841,
+      "43963616"
+    ],
+    "script": "tools/groundjev/run_gpu5_followups.py",
+    "required_terminal_status": "GPU5_LOCALIZATION_AND_NATURAL_MEMORY_STUDIES_COMPLETE"
+  },
+  "owner_git_commit": "f067c0c0adfd4f017636534a0fe52c9c1d8a16d0",
+  "completed": {},
+  "new_model_calls_started": false,
+  "new_DLM_or_feature_archive": false,
+  "full_goal_complete": false,
+  "ordinary_model_performance_achieved": false,
+  "blocking_session": 46228
+}

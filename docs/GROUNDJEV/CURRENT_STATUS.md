@@ -54,6 +54,20 @@ tracking gains are claimed. Explicit assigned-ID Q3 would be a
 separate declared training/runtime protocol, rather than silently replacing
 the current observation labels.
 
+Preregistered post-training controls are queued through two CPU pidfd owners:
+GPU4old worker waits for both training arms and native-MM reloads; GPU5worker
+waits for the original natural-study queue to exit, fills the missing initial
+native600 Full TAO40baseline, then waits for training and measures refreshed.
+Each trained checkpoint covers DT1203, RMOTsingle800/multi800 and rawTAO40;
+the initial checkpoint's already-completed exact MOT/RMOT units are reused.
+All13664/1412/2208/35228native candidates and27/36/19/0rejected frames retain
+their original denominators. TAO uses all1203inputclasses/UNKNOWN and the
+annotation clock, not physical video seconds. No new DLM/ROI archive or
+per-task checkpoint selection. Plan `full_history_refresh600_controls_v1.json`,
+CPU source/real-baseline-validator evidence under
+`validation/full_history_refresh600_controls_registration_v1`.
+No post-training model calls or new accuracy results exist at registration.
+
 ## Complete DanceTrack video
 
 Same original V1 Ground proposals, all1203frames of validation0004,
@@ -438,8 +452,8 @@ Receipt: `ground_adaptation/localization200_control_gpu5_v1/validated_summary.js
 
 |Queue/device|Remaining actual work|
 |---|---|
-|GPU4|Full DT1203/fit48 refresh complete; paired old/refreshed history sharedFull600SFT serially running, `training/full_history_refresh600_pair_v2`|
-|GPU5|Paired E2E and localization200/96frames/18controls complete; fresh naturalMOT20 running, then8CPUcontrols; `gpu5_followups_v1`|
+|GPU4|Paired old/refreshed history sharedFull600SFT running; queuedold four-scope worker follows successful training/MMreload|
+|GPU5|Fresh naturalMOT20 then8CPUcontrols; queuedbeforeTAO/refreshed four-scope worker follows original queue release|
 |GPU6|AdaptedGround200nativefull9 remains unchanged|
 |GPU7|OriginalGroundnativefull9 remains unchanged|
 |CPU|Policy25, tasksubset24, context12, hybrid12, input12 all complete|

@@ -1,0 +1,24 @@
+{
+  "status": "WAITING_PAIRED_TRAINING_AND_BOTH_NATIVE_MM_RELOADS",
+  "owner_pid": 2467896,
+  "owner_starttick": "45243395",
+  "worker": "old",
+  "physical_gpu": 4,
+  "training_dependency": {
+    "directory": "outputs/groundjev/training/full_history_refresh600_pair_v2",
+    "identity": [
+      2448456,
+      "45150423"
+    ],
+    "script": "tools/groundjev/run_full_history_refresh_training.py",
+    "required_terminal_status": "PAIRED_HISTORY_REFRESH600_TRAINING_AND_MM_RELOAD_COMPLETE"
+  },
+  "GPU5_dependency": null,
+  "owner_git_commit": "f067c0c0adfd4f017636534a0fe52c9c1d8a16d0",
+  "completed": {},
+  "new_model_calls_started": false,
+  "new_DLM_or_feature_archive": false,
+  "full_goal_complete": false,
+  "ordinary_model_performance_achieved": false,
+  "blocking_session": 14226
+}

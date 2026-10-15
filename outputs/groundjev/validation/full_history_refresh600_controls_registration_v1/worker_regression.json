@@ -1,0 +1,67 @@
+{
+  "status": "ACTUAL_COMPLETE_MOT_AND_TWO_RMOT_CONTROLS_VALIDATOR_PASSED",
+  "results": {
+    "mot_full1203": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_full1203_controls_v2_wait_fix/native_mot_full1203",
+      "checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_unified600_native_v2/ckpt-step600",
+      "frames": 1203,
+      "native_candidates": 13664,
+      "same_exact_all_candidates": true,
+      "parser_rejected_frame_count": 27,
+      "official_metrics": {
+        "HOTA": 0.08702996032001276,
+        "DetA": 0.3010472804984555,
+        "AssA": 0.025168031826705423,
+        "IDF1": 0.05825958702064897,
+        "IDSW": 3631,
+        "FP": 7516,
+        "FN": 416
+      },
+      "base_novel": null,
+      "GT_and_future_frames_not_read_by_runtime": true,
+      "actual_end_to_end_FPS": null
+    },
+    "rmot_single800": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_runs/full_rmot_shared600_v1/single800_native600",
+      "checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_unified600_native_v2/ckpt-step600",
+      "frames": 800,
+      "native_candidates": 1412,
+      "same_exact_all_candidates": true,
+      "parser_rejected_frame_count": 36,
+      "official_metrics": {
+        "HOTA": 0.025062491270483527,
+        "DetA": 0.013810018467220683,
+        "AssA": 0.04678362573099415,
+        "IDF1": 0.020618556701030927,
+        "IDSW": 0,
+        "FP": 78,
+        "FN": 17
+      },
+      "base_novel": null,
+      "GT_and_future_frames_not_read_by_runtime": true,
+      "actual_end_to_end_FPS": null
+    },
+    "rmot_multi800": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_runs/full_rmot_shared600_v1/multi800_native600",
+      "checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_unified600_native_v2/ckpt-step600",
+      "frames": 800,
+      "native_candidates": 2208,
+      "same_exact_all_candidates": true,
+      "parser_rejected_frame_count": 19,
+      "official_metrics": {
+        "HOTA": 0.06740006654792335,
+        "DetA": 0.10547747538761035,
+        "AssA": 0.04328675321004638,
+        "IDF1": 0.06693227091633466,
+        "IDSW": 185,
+        "FP": 145,
+        "FN": 1859
+      },
+      "base_novel": null,
+      "GT_and_future_frames_not_read_by_runtime": true,
+      "actual_end_to_end_FPS": null
+    }
+  },
+  "terminal_dependency_reader_passed": true,
+  "new_model_calls_or_modified_original_results": false
+}
