@@ -1,0 +1,13 @@
+{
+  "owner_pid": 3189122,
+  "owner_starttick": "47729717",
+  "owner_git_commit": "5c922c4d11a06a282b397d1de8be0706325da4a8",
+  "physical_gpu": 5,
+  "production_training_changed": false,
+  "full_goal_complete": false,
+  "blocking_session": 59743,
+  "planned_steps_each": 4,
+  "planned_examples_each": 20,
+  "gradient_vector_comparison": "uniform samples plus full per-parameter norms; not full-vector equality",
+  "source_plan": "plan.json"
+}

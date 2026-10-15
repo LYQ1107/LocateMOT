@@ -1,0 +1,8 @@
+{
+  "prior_registered_feature_upper_bytes": 26739639402,
+  "new_training_gradient_sample_diagnostics_reserve_bytes": 33554432,
+  "combined_registered_feature_upper_bytes": 26773193834,
+  "global_temporary_feature_budget_bytes": 26843545600,
+  "existing_training_or_collection_reservations_removed": false,
+  "model_weights_preserved_separately": true
+}

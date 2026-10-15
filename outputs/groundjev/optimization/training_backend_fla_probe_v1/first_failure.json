@@ -1,0 +1,9 @@
+{
+  "original_blocking_session": 34386,
+  "exit_code": 1,
+  "root_cause": "Probe passed argv positionally to onejev_resumable_sft.main(), whose interface accepts no positional args and reads sys.argv. Failure occurred before sft.main/model loading.",
+  "actual_optimizer_steps": 0,
+  "actual_completed_units": [],
+  "fix": "Assign native argv then call stateful.main() without arguments; source rows, seed, math and gates unchanged.",
+  "next_attempt": "outputs/groundjev/optimization/training_backend_fla_probe_v2"
+}

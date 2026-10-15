@@ -1,0 +1,25 @@
+{
+  "status": "TRAINING_BACKEND_PROBE_FAILED",
+  "owner_pid": 3186773,
+  "owner_starttick": "47719681",
+  "owner_git_commit": "f9fc04687efe46159ef65a3321177f1c0d6b1e31",
+  "completed": {},
+  "physical_gpu": 5,
+  "production_training_changed": false,
+  "full_goal_complete": false,
+  "GPU5_free_MiB_before_launch": 70274,
+  "command": [
+    "python3",
+    "tools/groundjev/run_with_resources.py",
+    "--gpus",
+    "5",
+    "--",
+    "/data2/user/LocateMOT_GroundJEV/.venv-onejev-py310/bin/python",
+    "tools/groundjev/probe_onejev_training_backend.py",
+    "--mode",
+    "reference",
+    "--config",
+    "outputs/groundjev/optimization/training_backend_fla_probe_v1/reference_config.json"
+  ],
+  "error": "AssertionError('reference failed; preserve source, first failure and completed unit')"
+}

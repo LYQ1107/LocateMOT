@@ -1,0 +1,80 @@
+{
+  "scope": "full_legal_validation_video",
+  "frames": 800,
+  "counts": {
+    "gt_observations": 2325,
+    "candidates": 2208,
+    "gt_matched_candidates": 1239,
+    "no_surviving_correct_anchor_events": 1045,
+    "memory_initializations_matched_GT": 23,
+    "unmatched_candidate_events": 969,
+    "unmatched_candidates_ignored": 148,
+    "memory_initializations_unmatched_GT": 70,
+    "model_correct_before_global_matching": 122,
+    "model_correct_to_wrong_after_global_matching": 3,
+    "model_wrong_to_correct_after_global_matching": 5,
+    "existing_identity_events": 194,
+    "correct_identity_option_present": 194,
+    "correct_existing_associations": 124,
+    "correct_to_wrong_events": 15,
+    "wrong_to_correct_events": 17,
+    "memory_updates_identity_consistent": 122,
+    "memory_updates_wrong_identity_or_unmatched": 1802,
+    "memory_holds": 19,
+    "recovery_identity_options_present": 245,
+    "recovery_global_assignment_same_ID": 160
+  },
+  "correct_option_coverage": 1.0,
+  "existing_association_accuracy": 0.6391752577319587,
+  "mean_native_correct_identity_option_mass": 0.6048371328983506,
+  "candidate_GT_recall_at_iou05": 0.5329032258064517,
+  "diagnostic_policy": "all registered physical GT (MOT marked pedestrians; RMOT all release physical objects; TAO annotated objects), one-to-one candidate IoU>=.5; immutable track-anchor ownership from birth, no GT correction",
+  "physical_identity_state_diagnostic_separate_from_query_output_filter": true,
+  "GT_annotation_scope": "registered release GT",
+  "physical_seconds_verified": true,
+  "posthoc_query_membership_matched_physical_GT_only": {
+    "counts": {
+      "FP": 90,
+      "TP": 908,
+      "FN": 224,
+      "TN": 17
+    },
+    "precision": 0.9098196392785571,
+    "recall": 0.8021201413427562,
+    "head_was_present": true,
+    "threshold": 0.5,
+    "legacy_missing_head_not_interpreted_as_negative_predictions": true
+  },
+  "unmatched_candidates_note": "includes evaluator-ignore regions; these are unmatched diagnostics, not official FP/NoMatch precision",
+  "explicit_NO_MATCH_decision_currently_supported": true,
+  "posthoc_NO_MATCH_matched_GT_only": {
+    "counts": {
+      "TN": 1228,
+      "FP": 11
+    },
+    "precision": 0.0,
+    "recall": null,
+    "gold_rule": "GT-matched valid object has a surviving correct birth anchor, but no correct identity in its actual shortlist",
+    "unmatched_or_ignore_regions_excluded": true
+  },
+  "posthoc_identity_recovery": {
+    "counts": {
+      "candidate_gap_return_events": 255,
+      "gap_le1s_eligible": 249,
+      "gap_le1s_same_correct_birth_anchor_ID": 22,
+      "gap_1to3s_eligible": 5,
+      "gap_1to3s_same_correct_birth_anchor_ID": 0,
+      "candidate_gap_returns_without_prior_emitted_identity": 1
+    },
+    "success_rates": {
+      "gap_le1s": 0.08835341365461848,
+      "gap_1to3s": 0.0,
+      "gap_gt3s": null
+    },
+    "rule": "first GT-aligned candidate after at least one missing candidate observation; same previous emitted ID with matching immutable birth anchor",
+    "scope": "natural candidate/GT gaps only; no artificial occlusion, future GT correction or recovery metric replacing TrackEval"
+  },
+  "gt_used_posthoc_only": true,
+  "official_metric_replacement": false,
+  "per_candidate_event_rows_retained_on_server": 2208
+}
