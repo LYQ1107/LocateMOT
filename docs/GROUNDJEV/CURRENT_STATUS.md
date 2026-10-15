@@ -21,6 +21,8 @@ HOTA/IDF1 below are percentages, IDSW/FP/FN counts.
 |Same Set architecture, GT-only300|5.977|3.406|1322|5954|1796|
 |New original U2 core/bridge300|1.243|0.625|250|455|4191|
 |Shared Compact, broad native history|26.316|30.633|165|579|1962|
+|Full MOT500, V3 native heads|7.848|5.056|3530|6387|765|
+|Full MOT500 + own-history600, V3 native heads|8.703|5.826|3631|7516|416|
 
 Shared Compact has1146511learnable resident parameters plus original frozen
 OneJev CPU token lookup254279680parameters/508559360nominal bytes and external
@@ -31,9 +33,34 @@ Lower IDSW alone does not establish improvement when FN rises.
 Fresh pretrained Full V3 uses a different actual source: HOTA2.389 versus its
 own matched Simple8.257. Actual unresumed native pipeline FPS.118560, under
 concurrent workloads, excluding preloaded service/model initialization. Its
-historical final-checkpoint timer definition is preserved. Trained Full native600/
-MOT500/teacher600 full1203 controls continue on the original V1 source; do not
-infer scores before completion or compare different-video speeds as paired.
+historical final-checkpoint timer definition is preserved. Full native600 and
+MOT500 controls above each have all1203decoded frames, exact13664V1candidates,
+all27parser-rejected frames, unchanged official metrics and final memory
+validated. Teacher600full1203 remains pending; the three-arm cohort is not
+complete. These are replay measurements with no E2E FPS claim. Receipt:
+`training/onejev_full1203_controls_v2_wait_fix/completed_units_validated_summary.json`.
+
+Same-source posthoc diagnostics align4341/4586GT observations (94.658%) to
+candidate boxes atIoU.5. MOT500/native600 correct-option coverage is98.603%/
+95.021% of their respective4008/2912existing-anchor events, but actual correct
+assignments are214/149 (5.339%/5.117%). Per-candidate argmax is correct254/178
+times; global matching loses222/145 and rescues182/116, giving the same214/149
+actual assignments. Low native identity ranking and global competition both
+contribute; different endogenous event sets prevent a strict causal comparison.
+
+Existing-memory UPDATE breakdown, excluding NEW initialization:
+
+|Birth-anchor diagnostic|MOT500|Own-history600|
+|---|---:|---:|
+|Matched GT, known consistent anchor|192|136|
+|Matched GT, known conflicting anchor|594|465|
+|Matched GT, unknown birth anchor|2545|2984|
+|Unmatched candidate, not universal negative truth|5812|6648|
+
+Known conflicting writes show real memory contamination in each run. Unknown
+birth anchors and unmatched/ignore-region candidates are kept separate; they
+are not relabeled wrong identities or supervised negatives. Counts preserve
+the original analyzer, metrics and uncorrected causal tracking states.
 
 ## All12complete800frame RMOT controls
 

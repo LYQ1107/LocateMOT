@@ -2386,3 +2386,9 @@ Pilot文档核对：原FOUR_GPU_PILOT仍写2026-10-14未完成，现用真实sto
 2026-10-15：定位对照200实际完成，27,267,584参数、identity系数0、200真实pair_indices与完成tracking200相同，全部total_loss=native_loss且有限；16,164,180BF16元素改变，reload0。导出569张量其余不变。96native帧/18Full组合完成并核验真实官方artifact、完整帧、GT/future不读、相同前端候选在两个One中逐项精确保留；定位重复raw wire/候选/输出一致。native MOT4 HOTA原始75.069→定位84.099/跟踪83.467，single8原始30.385→18.776/24.876，multi12仅22.664→23.355/23.675；Full Single8六组合均0且FN5，multi12非普遍提升。保留负结果，不将4/8/12短片外推完整视频，不称联合梯度训练或模型晋升，reference训练GPU6/controlGPU5区别明确。parent正常接入自然MOT20，无重新启动推理。
 
 只读事件转发器实际注册Full/GPU5queue/native-retention三个PID/starttick并输出九个状态路径已有快照，原阻塞session70182/36847/52020保持权威；新observer session58829只inotify/pidfd阻塞等候，不周期检查实验进度、不开新模型或改实验。注册证据单独固定保存，持续events.jsonl本地增长不作为冻结完成结果发布。
+
+研究计划：先固化Full1203三臂中已完成的两个不可变单元，逐帧核对注册V1候选（仅按原计划剥离feature向量）、官方metrics、完整1203帧视频、checkpoint和最终memory；第三teacher臂未完成即明确pending。补齐same-source Full对Simple/Compact的正式表，不新增模型推理或更改科学协议。然后沿原三个阻塞句柄等待剩余Full/native9/natural完成。
+
+Full1203两个已完成单元逐帧核验通过：每个1203真实decoded帧、13664原始V1候选精确一致（只剥离注册feature向量）、27拒绝帧保留、checkpoint准确、finalbinarymemory存在、无GT/future读取，官方metrics不变。MOT500 HOTA7.848/IDF5.056/IDSW3530/FP6387/FN765；追加native600 HOTA8.703/IDF5.826/IDSW3631/FP7516/FN416。只报告两个完整单元，第三teacher仍pending，非完整三臂完成和非E2E。
+
+同源候选IoU.5一对一覆盖4341/4586GT=94.658%；Full before500/native600自身existing-anchor事件4008/2912中正确选项3952/2767，最终正确关联214/149=5.339/5.117%。原始argmax正确254/178，globalmatching丢失222/145、救回182/116；identity ranking与全局竞争均有问题，不只Ground漏检，不做跨模型同事件因果比较。新增只读已存events的UPDATE拆分初次守恒失败，原因是NEW初始化的memory_action也写UPDATE，原analyzer将NEW单列；按原分支语义排除NEW后守恒通过，未改原事件/指标。before500/native600真实known-consistent更新192/136、known-conflicting594/465、GTmatched未知birth2545/2984、unmatched5812/6648，后两类不冒充错误身份或负监督。保留原权重/预测与负结果；等待teacher和自然memory完成后再据主要原因选择最小受控修复。
