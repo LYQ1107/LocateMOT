@@ -1,0 +1,12 @@
+{
+  "status": "INITIAL_REGISTRATION_VS_ACTUAL_EXECUTION_METADATA_MISMATCH",
+  "failing_assertion": "completed checkpoint protocol equals initial GPU7 registration",
+  "actual_200_schedule_matches_initial_registration": true,
+  "differences": [
+    "physical GPU6 vs original GPU7",
+    "step1 checkpoint added",
+    "execution_variant annotation"
+  ],
+  "native_loss_data_seed_lr_steps_changed": false,
+  "correction": "use final checkpoint actual GPU6 registration as reference; preserve exact equality and all data/schedule checks; fresh v2 output"
+}

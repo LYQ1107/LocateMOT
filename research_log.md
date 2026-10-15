@@ -2306,3 +2306,13 @@ Full teacher600四个同策略短测均完成：MOT HOTA30.868->30.601，单RMO0
 完成并核验任务组合16现有范围：DT1203 HOTA19.639/6.760/21.229/19.312；rawTAO40 TETA12.421/19.284/12.850/10.081；单RMO8 HOTA0/0/26.494/37.265；多RMO12 4.096/3.513/9.622/3.513。所有实际结果/官方指标/候选完整性一致、空失败表，full800仍待源。无普遍最优，三任务单query受益但多query IDF1=0/FN30且TAO退化；四组NovelClsA0。共享总1200步但每任务暴露不同，保留MOT400/600对照，不宣称纯梯度干扰。
 
 5个同输入完整MOT策略完成：learned/learned26.316，IoU/fixed7.488，cos/fixed13.311，cos/learnedaux13.009，learned/fixedaux24.283。学习辅助只在学习关联组合有增益；learned FP579/FN1962 vsfixedcos9328/250，不能将总体收益全归因身份排序。各轨迹内生不同，不是唯一JEV证明。Hybrid32真实251身份片段检查通过：几何默认与旧版全输出状态精确一致，每个新候选32个独特live IDs、前16几何一致，230候选的身份集合实际变化。新CPU owner2034367/session35730只等待已有contextowner2003663完成+退出，再跑3视频范围×2关联策略；保留原默认、不改训练、GT阈值和指标。
+
+研究计划（补齐任务书14.4必需控制）：原Ground200含native MDM/AR+.1GT身份+.1decoded-proposal身份，缺少只视觉定位对照。新localization200从原569张量初始化，同72图/112native行/56pair、seed42/200步/AdamWlr2e-6、相同采样/参数27M，只将两个身份loss系数置0，仍记录非加权分量，不改变native算子/掩码/GT。原track200有中断恢复，声明相同注册配方/采样，不声称bitwise轨迹配对。先CPU比较全部样本payload与schedule，GPU6 owner仅等已有adapted200 full9客户全部结束、该服务组已被原owner释放后才训练，不要求GPU7也结束。随后导出新bundle，并用同GPU6/私有新service/requestcounter同序列比较原始/只定位/跟踪视觉适配；同各自原生候选再比较原始One与native600，组成受控视觉×JEV组合，不称端到端联合梯度训练。无新featurecache，保留全部原测评。
+
+localization CPU预检v1失败：比较最终Ground200 checkpoint与最初GPU7登记的整个protocol，实际差异仅GPU6、step1保存和execution_variant。全部200采样索引已匹配，loss/data/seed/lr未改变。改以实际完成的native_ground_tracking200_gpu6_20261014.json为参考，仍要求实际protocol精确相同及全部112行/200索引相同，fresh v2重跑；保留v1诊断，不放宽数值标准。
+
+发现并修复Full1203排队driver句柄变量遮蔽：upstream registered list/None覆盖teacher/native dict。原等待owner2024544在短测owner1870814正常exit0交接时已实际报TypeError退出（88330 exit1），completed={}，未启动GPU模型；试图替换前的状态断言阻止了任何误杀。修复为独立upstream_registered。真实已完成owner+两份实际600记录的CPU调度回归通过，不启动推理、不冒充评测。原failure保留，fresh v2同1203协议恢复，无已有训练/有效推理重跑。
+
+Full三分支12同策略短测已终端验证：before500/teacher600/native600 MOT HOTA30.868/30.601/32.236、单RMO全0、多RMO0/9.945/11.214、Base4 TETA11.981/52.181/47.682。native多RMO IDF10.256/IDSW1/FP6/FN27，Base4ClsA100只涵盖person/baby单一Basecanonical类，不泛化Novel。native历史效果混合、不晋升模型。Full1203 freshv2 owner2049900/session70182实际进入native_mot_full1203_INFERENCE，原v1错误/无模型执行事实保留。
+
+localization200实际CPU预检v2通过112行图像bytes/prompt/targets/nativealign及与完成checkpoint全部200draw完全相同，72图/56pairs、884nativeproposals/628alignedregions/24支持身份pairs；只定位两个身份coeff0，原图像标签和native核不变。新owner2052936/session76692已等待GPU6 native200 full9真实clients+服务组释放，不中止其原测评；随后200步训练+导出+原始/只定位/跟踪视觉三前端及localization repeat共96帧，再与pretrainedOne/native600组合18短测，明确非联合梯度训练，不新增featurefiles。

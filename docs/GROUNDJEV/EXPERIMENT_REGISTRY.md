@@ -557,3 +557,22 @@ mot_exposure_controls_v1.json. No full goal completion or model promotion.
   waits context-size owner2003663 success+exit; six new learned/fixedcos
   DT1203/aliasTAO40/rawTAO40 runs, matched geometry32 references revalidated.
   No GT selection, newfeatures/GPU, uniqueJEV or pending accuracy claim.
+
+## 2026-10-15 — Full short controls complete and localization-only control
+
+- sharedFull600_same_policy: all12 short controls complete. Native600
+  HOTA32.236/0/11.214 and Base4TETA47.682 versus before500
+ 30.868/0/0/11.981; teacher60030.601/0/9.945/52.181. No full-video/Novel
+  claim; native history is not uniformly better.
+- Full1203 v2_wait_fix: v1 failed before inference due dictionary overwritten
+  by upstream PID list. Minimal fix, real CPU scheduler regression, then
+  owner2049900/session70182 starts the original full native600 arm onGPU4.
+  Three full arms/protocol/metrics preserved.
+- localization200_control_v1: required14.4 native localization-only control,
+  same actual112rows/56pairs/200draws/seed42/lr2e-6/projector asTrack200,
+  identity-loss coefficients0. Real CPU row/schedule contract passes after
+  correcting reference from initialGPU7 to completedGPU6 metadata.
+  Owner2052936/session76692 waits only verifiedGPU6 retention release.
+  Then train/export +96native frontend frames +18same-candidate Full short
+  factorial controls, including original/visual-only/One-only/composed
+  tracking-aware cells. No joint-gradient, pending accuracy or cache claims.

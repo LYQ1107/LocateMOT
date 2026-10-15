@@ -1117,3 +1117,47 @@ geometry predictions/states remain exact versus prior version. CPU owner
 2034367/session35730 waits current context-size owner2003663 success+exit
 before six new full-video runs, with geometry32 references reused/revalidated.
 No extraGPU or newfeature source; not yet a tracking accuracy result.
+
+## All three Full branches scored; required visual-only control queued
+
+All12 same-policy native short controls completed and passed integrity checks:
+
+|Full checkpoint|MOT4 HOTA %|Single RMO8 HOTA %|Multi RMO12 HOTA %|TAO Base4 TETA %|
+|---|---:|---:|---:|---:|
+|Before500|30.868|0|0|11.981|
+|Teacher600|30.601|0|9.945|52.181|
+|Native600|32.236|0|11.214|47.682|
+
+Native600 multi-query IDF1=10.256%,IDSW1,FP6,FN27; single remains FP0/FN5.
+Base4 native ClsA100 but only Base person/baby canonical category is present;
+all1203 input categories, no Novel evidence. Compared with teacher600, native
+history gives slightly better shortMOT/multiRMO but weaker BaseTAO. These
+short scopes do not prove full-video/dataset transfer or unified success.
+Receipt: training/onejev_unified600_semantic_controls_v1/
+three_arm_validation_and_summary.json under outputs/groundjev.
+
+Full1203 ownerv1 hit a deterministic scheduler TypeError after GPU4 handoff:
+the upstream PID handle overwrote the teacher/native dictionary. It exited
+before any model job, so no trained model or valid inference was repeated.
+Minimal variable fix passes a CPU regression with the actual completed GPU4
+owner and actual two600 completion/reload records. Fresh v2 owner2049900
+(session70182) is now executing native_mot_full1203_INFERENCE. Same original
+V1 candidates/all1203frames/27rejections/checkpoints/metrics remain unchanged.
+Old error/owner/log and failure_diagnosis.json are retained.
+
+Required visual-only comparison: configs/groundjev/ground_localization_study_v1.json.
+CPU contract matches all112 actual training rows (72images/56pairs) and every
+200 pair index against completed Ground200 checkpoint. Same original weights,
+seed42,lr2e-6/AdamW and27267584trainable projector parameters; only GT/native
+identity-loss weights become0. The first preflight compared initial GPU7
+registration rather than the completed GPU6 execution; only GPU/checkpoint
+metadata differed, now actual recipe equality passes. Original failures remain.
+
+Queued owner2052936/session76692 waits specifically for existing GPU6 adapted200
+native clients and their services to finish/release under owner1865651. It
+does not stop them or wait unnecessarily for GPU7. Then localization200 trains,
+exports a fresh569-tensor bundle, runs96 ordered native frontend frames with
+an actual localization repeat, and scores threeGroundweights x originalOne/
+native600 on9shortscopes (18controls). Those are separately adapted weight
+compositions, not jointly backpropagated models. No extraGPU/newfeaturecache
+or pending accuracy/retention improvement claim. Full goal remains active.

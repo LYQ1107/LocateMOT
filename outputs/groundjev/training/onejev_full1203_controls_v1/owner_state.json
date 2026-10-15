@@ -1,5 +1,5 @@
 {
-  "status": "WAITING_REGISTERED_GPU_OWNER_EXIT",
+  "status": "UNIFIED600_CONTROLS_OWNER_FAILED",
   "owner_pid": 2024544,
   "registered_training_children": {
     "teacher": null,
@@ -15,5 +15,6 @@
   "upstream_GPU_owner": [
     1870814,
     "41851012"
-  ]
+  ],
+  "error": "TypeError('list indices must be integers or slices, not str')"
 }

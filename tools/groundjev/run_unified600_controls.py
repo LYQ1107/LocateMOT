@@ -84,22 +84,23 @@ def main():
             upstream = ROOT/plan['upstream_GPU_owner']
             previous = json.loads((upstream/'owner_state.json').read_text())
             proc = Path('/proc')/str(previous['owner_pid'])
-            registered = None
+            upstream_registered = None
             if proc.exists():
                 assert (proc/'cwd').resolve() == ROOT
                 assert 'tools/groundjev/run_unified600_controls.py' in (proc/'cmdline').read_bytes().decode().split('\0')
-                registered = [previous['owner_pid'], (proc/'stat').read_text().rsplit(')', 1)[1].split()[19]]
-            state.update(status='WAITING_REGISTERED_GPU_OWNER_EXIT', upstream_GPU_owner=registered)
+                upstream_registered = [previous['owner_pid'], (proc/'stat').read_text().rsplit(')', 1)[1].split()[19]]
+            state.update(status='WAITING_REGISTERED_GPU_OWNER_EXIT', upstream_GPU_owner=upstream_registered)
             save()
-            while alive(registered):
+            while alive(upstream_registered):
                 time.sleep(20)
             assert json.loads((upstream/'owner_state.json').read_text())['status'] == 'SAME_SEMANTIC_POLICY_THREE_ARM_CONTROLS_COMPLETE'
-        wait_training('teacher')
+        if 'teacher' in plan['arms']:
+            wait_training('teacher')
         for arm, recipe in plan['arms'].items():
             if arm == 'native':
                 wait_training('native')
             checkpoint = ROOT/recipe['checkpoint']
-            if arm != 'before500':
+            if recipe.get('training'):
                 if plan.get('reuse_native_MM_validation'):
                     validated = json.loads((ROOT/recipe['training']/'checkpoint600_validation.json').read_text())
                     assert validated['status'] == 'REAL_ONEJEV600_NATIVE_MM_RELOAD_VALIDATED'
@@ -167,7 +168,7 @@ def main():
                     state['failed'][name] = repr(error)
                     save()
                     # A failure in one registered task does not discard the other task results.
-        state['status'] = ('SAME_SEMANTIC_POLICY_THREE_ARM_CONTROLS_COMPLETE' if not state['failed']
+        state['status'] = (plan.get('success_status', 'SAME_SEMANTIC_POLICY_THREE_ARM_CONTROLS_COMPLETE') if not state['failed']
                            else 'SAME_POLICY_CONTROLS_FINISHED_WITH_RECORDED_FAILURES')
         save()
         if state['failed']:

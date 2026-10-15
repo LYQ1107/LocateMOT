@@ -1,0 +1,98 @@
+{
+  "name": "Native Ground localization-only200 matched recipe control",
+  "initialization": "models/GroundAnything-DLM, complete original569tensors",
+  "seed": 42,
+  "steps": 200,
+  "lr": 2e-06,
+  "weight_decay": 0.01,
+  "trainable_policy": "native multimodal projector FP32 masters only; native vision and language frozen",
+  "native_loss": "official GAMQwen3DLM MDM.5+causal.5, block32, unchanged masks",
+  "auxiliary_losses": {
+    "teacher_GT_same_ID_cross_frame_contrastive": 0.0,
+    "actual_native_proposal_same_ID_cross_frame_contrastive": 0.0,
+    "temperature": 0.07,
+    "support_policy": "<=1 common identity yields zero contrastive signal, recorded; every image still receives native DLM supervision"
+  },
+  "dense_clips": [
+    {
+      "protocol": "mot17_half.json",
+      "sequence": "MOT17-02-FRCNN",
+      "frames": [
+        209,
+        210,
+        211,
+        212,
+        213,
+        214,
+        215,
+        216,
+        217,
+        218,
+        219,
+        220,
+        221,
+        222,
+        223,
+        224
+      ]
+    },
+    {
+      "protocol": "dancetrack.json",
+      "sequence": "dancetrack0001",
+      "frames": [
+        129,
+        130,
+        131,
+        132,
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144
+      ]
+    }
+  ],
+  "referring_fit_videos": [
+    "0002",
+    "0008",
+    "0010",
+    "0012",
+    "0014"
+  ],
+  "referring_clips_source": "configs/groundjev/rmot_native72_20261014.json, both fixed primary/counter expressions on all8frames",
+  "unique_images": 72,
+  "native_SFT_rows": 112,
+  "two_image_pairs": 56,
+  "task_sampling": "alternate dense/referring; shuffled cyclic family indices, visit every registered pair; seed42",
+  "labels": "all selected GT target boxes exactly mapped to native0..999 grid with no clipping; canonical None for absent referring targets",
+  "scope_reason": "preflight finds69out-of-grid MOT20targets and out-of-grid targets in other4fit windows; these are not in this new explicit native-token SFT registration and remain unchanged in evaluation/other corpora",
+  "native_proposal_source": [
+    "outputs/groundjev/training_data/native_ground_own_history_v1/native_rollout.jsonl",
+    "outputs/groundjev/compact/rmot_native72_v1/native_rollout.jsonl"
+  ],
+  "native_proposal_policy": "reuse actual original decoder outputs, IoU.5 training-label alignment only; no GT proposal substitution or corrected actor state; adapted decoder online rollout not claimed",
+  "gradient_validation": "Nonzero nativeDLM projector gradient; identity components recorded unweighted but coefficients0, no identity gradient probe/update. Same native operators/masks and frozen vision/language.",
+  "checkpoint_policy": "atomic latest projector FP32+Adam+Torch/CUDA/Python/NumPy RNG+exact planned step at1 and every25; separate model delta export at200",
+  "physical_training_GPU": 6,
+  "original_OneJev_training_GPU": null,
+  "existing_ROI_GPU": 5,
+  "maximum_project_GPUs": 4,
+  "feature_cache_limit_bytes": 26843545600,
+  "no_large_feature_cache": "stream images/native ROI with real differentiable projector; no full-dataset features",
+  "before_after": "After native training+export, same GPU6 fresh single-client native decoding original/localization200/track200, then pretrained/native600 One on exact per-frontend proposals. Composed weights, not joint gradient optimization.",
+  "original_dense_ref_benchmark_GT_for_training": false,
+  "formal_adaptation_complete_before_evaluation": false,
+  "full_goal_complete": false,
+  "adaptation_objective": "native_dense_referring_localization_only",
+  "comparison": "Same original weights,112rows/56pairs,200updates/seed42/optimizer/lr and family schedule as tracking200. Existing tracking200 interruption/resumes mean not a bitwise trajectory pair. Native token localization includes label/spatial tokens, not box-regression only.",
+  "queue": "GPU6 only after verified existing adapted200 full9 clients terminate and original retention owner stops their owned services; no need to wait GPU7.",
+  "registration_status": "before localization-only training",
+  "reference_actual_training_plan": "configs/groundjev/native_ground_tracking200_gpu6_20261014.json"
+}

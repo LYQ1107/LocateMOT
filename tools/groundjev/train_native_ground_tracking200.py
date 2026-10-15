@@ -13,6 +13,20 @@ sys.path[:0] = [str(ROOT), str(ROOT/'external/GroundAnything'), str(ROOT/'.tools
 os.environ['GAM_DLM_FLEX_CUDAGRAPHS'] = '0'
 
 
+def training_schedule(plan, pairs):
+    rng = random.Random(plan['seed']); schedule = []; pools = {}; cursors = {}
+    for family in ('dense', 'referring'):
+        pools[family] = [i for i, p in enumerate(pairs) if p['family'] == family]
+        rng.shuffle(pools[family]); cursors[family] = 0
+    for step in range(plan['steps']):
+        family = 'dense' if step % 2 == 0 else 'referring'
+        if cursors[family] == len(pools[family]):
+            rng.shuffle(pools[family]); cursors[family] = 0
+        schedule.append(pools[family][cursors[family]]); cursors[family] += 1
+    assert set(schedule) == set(range(len(pairs)))
+    return schedule
+
+
 def main():
     import numpy as np
     import torch
@@ -41,11 +55,16 @@ def main():
     parser.add_argument('--verify-flex-reference', action='store_true')
     args = parser.parse_args()
     plan = json.loads(args.plan.read_text())
+    teacher_weight = plan['auxiliary_losses']['teacher_GT_same_ID_cross_frame_contrastive']
+    native_weight = plan['auxiliary_losses']['actual_native_proposal_same_ID_cross_frame_contrastive']
+    temperature = plan['auxiliary_losses']['temperature']
     assert not (args.resume_state and args.initial_projector_state)
     out = args.out; out.mkdir(parents=True, exist_ok=False)
     state = {'status': 'PREPARING_REGISTERED_NATIVE_DLM_TRACKING200', 'steps': 0,
         'target_steps': plan['steps'], 'physical_gpu': int(os.environ['CUDA_VISIBLE_DEVICES']), 'seed': plan['seed'],
         'native_language_and_vision_frozen': True, 'formal_adaptation_and_retention_complete': False}
+    state.update(adaptation_objective=plan.get('adaptation_objective', 'localization_and_identity'),
+        identity_loss_coefficients={'teacher': teacher_weight, 'native_proposals': native_weight})
     import importlib.metadata
     state['execution_runtime']={k:importlib.metadata.version(k) for k in ('torch','transformers','triton')}
     state['actual_checkpoint_interval']=args.checkpoint_every
@@ -161,16 +180,7 @@ def main():
         optimizer = torch.optim.AdamW(projector.parameters(), lr=plan['lr'], weight_decay=plan['weight_decay'])
         assert sum(p.numel() for p in model.parameters() if p.requires_grad) == sum(p.numel() for p in projector.parameters())
         pooler = NativeGroundFeatures.__new__(NativeGroundFeatures); pooler.processor = processor.image_processor
-        rng = random.Random(plan['seed']); schedule = []; pools = {}; cursors = {}
-        for family in ('dense', 'referring'):
-            pools[family] = [i for i, p in enumerate(pairs) if p['family'] == family]
-            rng.shuffle(pools[family]); cursors[family] = 0
-        for step in range(plan['steps']):
-            family = 'dense' if step % 2 == 0 else 'referring'
-            if cursors[family] == len(pools[family]):
-                rng.shuffle(pools[family]); cursors[family] = 0
-            schedule.append(pools[family][cursors[family]]); cursors[family] += 1
-        assert set(schedule) == set(range(len(pairs)))
+        schedule = training_schedule(plan, pairs)
         start_step = 0
         if args.resume_state:
             restored = torch.load(args.resume_state, map_location='cpu', weights_only=True)
@@ -190,7 +200,7 @@ def main():
             for spatial, meta, row in zip(spatials, metadata, pair['rows']):
                 pooled, _ = pooler.pool(spatial, meta, [row[source][identity] for identity in common])
                 regions.append(F.normalize(pooled.float(), dim=-1))
-            logits = regions[0]@regions[1].T/.07; target = torch.arange(len(common), device='cuda:0')
+            logits = regions[0]@regions[1].T/temperature; target = torch.arange(len(common), device='cuda:0')
             return .5*(F.cross_entropy(logits, target)+F.cross_entropy(logits.T, target)), len(common)
         def checkpoint_state(step):
             n = np.random.get_state()
@@ -232,10 +242,10 @@ def main():
                 assert offset == len(features)
                 teacher, gt_common = contrastive(spatials, metadata, pair, 'gt')
                 native, native_common = contrastive(spatials, metadata, pair, 'native')
-                loss = output.loss+.1*teacher+.1*native
+                loss = output.loss+teacher_weight*teacher+native_weight*native
             if pair['family'] not in probes:
                 parameters = list(projector.parameters()); record = {}
-                for label, component, supported in [('native_DLM', output.loss, True), ('teacher_identity', teacher, gt_common > 1), ('decoded_proposal_identity', native, native_common > 1)]:
+                for label, component, supported in [('native_DLM', output.loss, True), ('teacher_identity', teacher, teacher_weight != 0 and gt_common > 1), ('decoded_proposal_identity', native, native_weight != 0 and native_common > 1)]:
                     if supported:
                         grads = torch.autograd.grad(component, parameters, retain_graph=True, allow_unused=True)
                         norm = float(sum(g.float().square().sum() for g in grads if g is not None).sqrt())
@@ -269,7 +279,10 @@ def main():
         reloaded = torch.load(out/'projector_delta.pt', map_location='cuda:0', weights_only=True)
         difference = max(float((v-reloaded['native_projector_state_dict'][k]).abs().max()) for k, v in projector.state_dict().items())
         assert difference == 0
-        state.update(status='NATIVE_GROUND_TRACKING200_TRAINING_COMPLETE', steps=plan['steps'], corpus=corpus,
+        complete_status = ('NATIVE_GROUND_LOCALIZATION200_TRAINING_COMPLETE'
+            if plan.get('adaptation_objective') == 'native_dense_referring_localization_only'
+            else 'NATIVE_GROUND_TRACKING200_TRAINING_COMPLETE')
+        state.update(status=complete_status, steps=plan['steps'], corpus=corpus,
             changed_FP32_elements=changed, changed_BF16_elements=bf16_changed, checkpoint_reload_max_difference=difference,
             gradient_probes=probes, peak_allocated_bytes=torch.cuda.max_memory_allocated(),
             all_registered_pairs_visited=True, registered_pair_count=len(pairs), full_model_original_tensor_count=569,

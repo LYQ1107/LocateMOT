@@ -1,0 +1,8 @@
+{
+  "status": "DETERMINISTIC_WAIT_HANDLE_SHADOWING_BEFORE_ANY_MODEL_JOB",
+  "error": "TypeError('list indices must be integers or slices, not str')",
+  "model_jobs_started": 0,
+  "fix": "separate upstream_registered from training registered dictionary",
+  "regression": "outputs/groundjev/validation/queued_full_wait_fix_v1/validation.json",
+  "resume": "fresh v2 output, same complete1203 scope/checkpoints/seed/metrics; no valid inference or training repeated"
+}

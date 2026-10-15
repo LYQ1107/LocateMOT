@@ -1,0 +1,18 @@
+{
+  "name": "Required localization-only vs tracking visual adaptation and controlled One composition",
+  "physical_gpu": 6,
+  "contract_validation": "outputs/groundjev/validation/localization200_contract_v2_actual_recipe/validation.json",
+  "retention_owner": "outputs/groundjev/ground_retention/reattached_full9_owner_v1",
+  "existing_client_contract": "outputs/groundjev/ground_retention/existing_native_clients_20261015.json",
+  "training_plan": "configs/groundjev/native_ground_localization200_v1.json",
+  "training_output": "outputs/groundjev/ground_adaptation/localization200_control_v1/training",
+  "bundle": "models/GroundAnything-DLM-LocProj200",
+  "frontend_plan": "configs/groundjev/ground_localization_frontends_v1.json",
+  "frontend_output": "outputs/groundjev/ground_adaptation/localization200_control_v1/native_frontends",
+  "factorial_plan": "configs/groundjev/ground_one_factorial_v1.json",
+  "factorial_output": "outputs/groundjev/ground_adaptation/localization200_control_v1/factorial",
+  "resource_policy": "Wait actualGPU6 nativeclients and verifiedservice release from existingretentionowner, thenuseonly6. GPU7originalretention and4/5tracking jobs untouched. No newnativefeature cache. Preserveallcheckpoints/data/results.",
+  "scope": "Task14.4 initialcontrolledvisual/JEVcomposition, native96frontendframes then18Fullshortcontrols; fulllegalvideo elsewhere unchanged",
+  "full_goal_complete": false,
+  "launch": "python3 tools/groundjev/run_ground_localization_study.py --plan configs/groundjev/ground_localization_study_v1.json --out outputs/groundjev/ground_adaptation/localization200_control_v1"
+}

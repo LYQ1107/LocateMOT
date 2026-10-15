@@ -38,7 +38,8 @@
   "scope_limit": "All1203frames DT0004 legalvalidation, same13664nativeV1boxes/labels/scores/all27rejectedframes, onevideo/seed. Fullv3 realcausal crops/motion, native Choice/Noul/Score and adaptivegroups underunchanged context limit. Original nativeDLM replay, not live perception/E2E.",
   "comparison": "All three Full arms use identical inference/storage policy, weights500 or600 additional updates, actualuncorrected own histories. Core600teacher/native same paired semantic exposure but GTteacher vs older native actors differences explicit. Existing Simple/Compact same V1 source remain references, not unique JEV or whole-dataset proof.",
   "wait": "Register GPU4 short-control owner PID/startticks, internalwait untilverifiedowner exits successfully. Onlythen useGPU4, no overlap; GPU5 fullRMOT and6/7nativefull9 unchanged.",
-  "launch": "python3 tools/groundjev/run_unified600_controls.py --plan configs/groundjev/onejev_full1203_controls_v1.json --out outputs/groundjev/training/onejev_full1203_controls_v1",
+  "launch": "python3 tools/groundjev/run_unified600_controls.py --plan configs/groundjev/onejev_full1203_controls_v1.json --out outputs/groundjev/training/onejev_full1203_controls_v2_wait_fix",
   "status": "registered before any full1203 Full500/600 inference",
-  "full_goal_complete": false
+  "full_goal_complete": false,
+  "execution_repair": "v1 failed before any GPU model job due upstream handle shadowing; validation/queued_full_wait_fix_v1 actual CPU scheduler regression passes, all experimental settings unchanged"
 }

@@ -1,5 +1,5 @@
 {
-  "status": "WAITING_VERIFIED_SHARED600_GPU5_HANDOFF",
+  "status": "multi800_FRESH_COMPACT_NATIVE800",
   "owner_pid": 1896249,
   "training_children": {
     "teacher": [
@@ -12,7 +12,93 @@
     ]
   },
   "physical_gpu": 5,
-  "completed": {},
+  "completed": {
+    "single800_shared_compact_fresh": {
+      "run": "outputs/groundjev/multitask_runs/full_rmot_shared600_v1/single800_shared_compact_fresh",
+      "decoded_frames": 800,
+      "all_native_candidates_and_rejected_frames_retained": true,
+      "official": {
+        "status": "OFFICIAL_REGISTERED_MULTITASK_SCOPE_EVALUATION_COMPLETE",
+        "task": "rmot",
+        "dataset": "refer_kitti_v2",
+        "sequence": "0007",
+        "scope": "full_legal_validation_video",
+        "frames": 800,
+        "all_registered_frames_included": true,
+        "GT_access": "evaluation only",
+        "official_test_labels_read": false,
+        "end_to_end_fps": 0.6780050745677036,
+        "association_replay_fps": null,
+        "perception_rejected_frames": [
+          27,
+          28,
+          44,
+          56,
+          82,
+          91,
+          127,
+          135,
+          136,
+          139,
+          152,
+          163,
+          211,
+          217,
+          219,
+          244,
+          245,
+          294,
+          299,
+          335,
+          340,
+          342,
+          345,
+          362,
+          364,
+          381,
+          387,
+          425,
+          426,
+          447,
+          451,
+          483,
+          498,
+          572,
+          573,
+          746
+        ],
+        "evaluator": "unmodified official TrackEval HOTA/CLEAR/Identity",
+        "evaluator_commit": "12c8791b303e0a0b50f753af204249e622d0281a",
+        "metrics": {
+          "HOTA": 0.06024700178718496,
+          "DetA": 0.01563715802110191,
+          "AssA": 0.2322529259028115,
+          "IDF1": 0.028901734104046242,
+          "IDSW": 0,
+          "FP": 323,
+          "FN": 13
+        },
+        "metric_scale": "fraction; counts for IDSW/FP/FN",
+        "release_query_GT_boxes": 18,
+        "multi_target_frames": 0,
+        "posthoc_proposal_coverage_IoU_05": {
+          "covered": 10,
+          "GT_boxes": 18,
+          "recall": 0.5555555555555556,
+          "scope": "evaluation-only target coverage; not HOTA; never used to correct runtime state"
+        },
+        "empty_target_frames": 782,
+        "empty_target_frame_predictions": 318,
+        "GT_transport_class": "class1 is a query-target transport convention, including cars and people",
+        "GT_policy": "only release expression target IDs; empty frames retained; exact release boxes without clipping",
+        "release_box_format": "normalized top-left xywh",
+        "ignore_policy": "registered expressions have empty release ignore fields",
+        "official_complete_dataset_result": false
+      },
+      "native_end_to_end_fps": 0.6780050745677036,
+      "detector_excluded_replay_fps": null
+    }
+  },
   "fresh_native_compact_not_replay": true,
   "full_Goal_complete": false,
   "total_new_feature_cache_budget_bytes": 2147483648,
@@ -28,5 +114,11 @@
     "GT_or_future_read": false,
     "archive_bytes": 742680,
     "cap_bytes": 8388608
-  }
+  },
+  "GPU5_at_handoff": "GPU-c6523d98-cb2d-95ed-4cb2-a84936acceb6, NVIDIA A800-SXM4-80GB, 81920, 81151",
+  "owned_service_groups": [
+    2006988,
+    2006989
+  ],
+  "new_feature_cache_bytes": 77398666
 }

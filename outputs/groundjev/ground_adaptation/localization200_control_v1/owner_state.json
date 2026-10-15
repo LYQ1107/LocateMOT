@@ -1,0 +1,14 @@
+{
+  "status": "WAITING_EXISTING_ADAPTED200_GPU6_RELEASE",
+  "owner_pid": 2052936,
+  "physical_gpu": 6,
+  "registered_retention_owner": [
+    1865651,
+    "41803969"
+  ],
+  "completed": {},
+  "new_feature_cache_files": false,
+  "foreign_or_current_retention_jobs_stopped": false,
+  "composed_adapted_weights_not_joint_gradient_training": true,
+  "full_goal_complete": false
+}

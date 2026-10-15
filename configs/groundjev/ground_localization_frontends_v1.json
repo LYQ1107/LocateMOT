@@ -1,0 +1,52 @@
+{
+  "name": "Matched original/localization200/track200 native frontends on GPU6",
+  "physical_gpu": 6,
+  "GPU_model": "A800-SXM4-80GB",
+  "port": 8107,
+  "requested_sampling_seed": 42,
+  "native_seed_formula": "(sampling_seed + request_index*1000003 + rel_start*97409 + step*17) mod(2**63-1)",
+  "source": "external/GroundAnything/infer/decode/sglang_algorithm.py:GAMDecodeV2Block._generator",
+  "reason": "shared full9service has persistent request counter; unrelated requests confound effective seeds in preliminary short controls",
+  "execution": "one fresh native service per variant, one ordered client, same GPU/software/server settings, identical image/prompt order; no other decoding requests on this owned port",
+  "metrics": "unchanged TrackEval with all existing empty/rejected frames, exact GT and original threshold",
+  "limits": "96nativeframes4variants, exact native newlocalization repeat; one fresh service pervariant/GPU6/sharedrequestorder, shortscopes only; nofull-dataset/E2E-speed comparison",
+  "variants": [
+    {
+      "name": "original",
+      "checkpoint": "models/GroundAnything-DLM"
+    },
+    {
+      "name": "localization200",
+      "checkpoint": "models/GroundAnything-DLM-LocProj200"
+    },
+    {
+      "name": "localization200_repeat",
+      "checkpoint": "models/GroundAnything-DLM-LocProj200"
+    },
+    {
+      "name": "tracking200",
+      "checkpoint": "models/GroundAnything-DLM-TrackProj200"
+    }
+  ],
+  "repeat_pair": [
+    "localization200",
+    "localization200_repeat"
+  ],
+  "clips": [
+    {
+      "name": "dense_mot4",
+      "task": "mot",
+      "manifest": "outputs/groundjev/pilot_data/mot17_first4.json"
+    },
+    {
+      "name": "refer_single8",
+      "task": "rmot",
+      "manifest": "outputs/groundjev/multitask_pilot_data/rmot_single_empty.json"
+    },
+    {
+      "name": "refer_multi12",
+      "task": "rmot",
+      "manifest": "outputs/groundjev/multitask_pilot_data/rmot_multi_empty.json"
+    }
+  ]
+}

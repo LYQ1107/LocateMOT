@@ -1,0 +1,188 @@
+{
+  "status": "ALL12_THREE_ARM_SAME_POLICY_SHORT_CONTROLS_VALIDATED",
+  "results": {
+    "before500_mot4": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev500_completion_controls_v1/mot4_sft500",
+      "decoded_frames": 4,
+      "metrics": {
+        "HOTA": 0.3086802263922558,
+        "DetA": 0.5379129890340048,
+        "AssA": 0.18500680267982458,
+        "IDF1": 0.2966101694915254,
+        "IDSW": 57,
+        "FP": 11,
+        "FN": 45
+      },
+      "all_exact_native_candidates_retained": true
+    },
+    "before500_rmot_single8": {
+      "run": "outputs/groundjev/training/onejev_unified600_semantic_controls_v1/before500_rmot_single8",
+      "decoded_frames": 8,
+      "metrics": {
+        "HOTA": 0.0,
+        "DetA": 0.0,
+        "AssA": 0.0,
+        "IDF1": 0.0,
+        "IDSW": 0,
+        "FP": 0,
+        "FN": 5
+      },
+      "all_exact_native_candidates_retained": true
+    },
+    "before500_rmot_multi12": {
+      "run": "outputs/groundjev/training/onejev_unified600_semantic_controls_v1/before500_rmot_multi12",
+      "decoded_frames": 12,
+      "metrics": {
+        "HOTA": 0.0,
+        "DetA": 0.0,
+        "AssA": 0.0,
+        "IDF1": 0.0,
+        "IDSW": 0,
+        "FP": 0,
+        "FN": 30
+      },
+      "all_exact_native_candidates_retained": true
+    },
+    "before500_tao_base4": {
+      "run": "outputs/groundjev/training/onejev_unified600_semantic_controls_v1/before500_tao_base4",
+      "decoded_frames": 4,
+      "metrics": {
+        "TETA": 11.981,
+        "LocA": 17.545,
+        "AssocA": 18.399,
+        "ClsA": 0.0,
+        "LocRe": 23.333,
+        "LocPr": 38.184,
+        "AssocRe": 24.702,
+        "AssocPr": 41.081,
+        "ClsRe": 0.0,
+        "ClsPr": 0.0
+      },
+      "all_exact_native_candidates_retained": true
+    },
+    "teacher_mot4": {
+      "run": "outputs/groundjev/training/onejev_unified600_semantic_controls_v1/teacher_mot4",
+      "decoded_frames": 4,
+      "metrics": {
+        "HOTA": 0.30600636847802176,
+        "DetA": 0.5849618206324839,
+        "AssA": 0.16528015952184952,
+        "IDF1": 0.2971887550200803,
+        "IDSW": 64,
+        "FP": 15,
+        "FN": 36
+      },
+      "all_exact_native_candidates_retained": true
+    },
+    "teacher_rmot_single8": {
+      "run": "outputs/groundjev/training/onejev_unified600_semantic_controls_v1/teacher_rmot_single8",
+      "decoded_frames": 8,
+      "metrics": {
+        "HOTA": 0.0,
+        "DetA": 0.0,
+        "AssA": 0.0,
+        "IDF1": 0.0,
+        "IDSW": 0,
+        "FP": 0,
+        "FN": 5
+      },
+      "all_exact_native_candidates_retained": true
+    },
+    "teacher_rmot_multi12": {
+      "run": "outputs/groundjev/training/onejev_unified600_semantic_controls_v1/teacher_rmot_multi12",
+      "decoded_frames": 12,
+      "metrics": {
+        "HOTA": 0.09944683273940194,
+        "DetA": 0.06606326548214593,
+        "AssA": 0.17765246449456976,
+        "IDF1": 0.05714285714285714,
+        "IDSW": 0,
+        "FP": 4,
+        "FN": 29
+      },
+      "all_exact_native_candidates_retained": true
+    },
+    "teacher_tao_base4": {
+      "run": "outputs/groundjev/training/onejev_unified600_semantic_controls_v1/teacher_tao_base4",
+      "decoded_frames": 4,
+      "metrics": {
+        "TETA": 52.181,
+        "LocA": 28.236,
+        "AssocA": 28.308,
+        "ClsA": 100.0,
+        "LocRe": 49.167,
+        "LocPr": 38.533,
+        "AssocRe": 31.54,
+        "AssocPr": 74.446,
+        "ClsRe": 100.0,
+        "ClsPr": 100.0
+      },
+      "all_exact_native_candidates_retained": true
+    },
+    "native_mot4": {
+      "run": "outputs/groundjev/training/onejev_unified600_semantic_controls_v1/native_mot4",
+      "decoded_frames": 4,
+      "metrics": {
+        "HOTA": 0.3223625318510581,
+        "DetA": 0.5465293406331485,
+        "AssA": 0.19502416184589666,
+        "IDF1": 0.3247863247863248,
+        "IDSW": 56,
+        "FP": 9,
+        "FN": 45
+      },
+      "all_exact_native_candidates_retained": true
+    },
+    "native_rmot_single8": {
+      "run": "outputs/groundjev/training/onejev_unified600_semantic_controls_v1/native_rmot_single8",
+      "decoded_frames": 8,
+      "metrics": {
+        "HOTA": 0.0,
+        "DetA": 0.0,
+        "AssA": 0.0,
+        "IDF1": 0.0,
+        "IDSW": 0,
+        "FP": 0,
+        "FN": 5
+      },
+      "all_exact_native_candidates_retained": true
+    },
+    "native_rmot_multi12": {
+      "run": "outputs/groundjev/training/onejev_unified600_semantic_controls_v1/native_rmot_multi12",
+      "decoded_frames": 12,
+      "metrics": {
+        "HOTA": 0.11214453616002637,
+        "DetA": 0.12712196963357955,
+        "AssA": 0.11010860484544698,
+        "IDF1": 0.10256410256410256,
+        "IDSW": 1,
+        "FP": 6,
+        "FN": 27
+      },
+      "all_exact_native_candidates_retained": true
+    },
+    "native_tao_base4": {
+      "run": "outputs/groundjev/training/onejev_unified600_semantic_controls_v1/native_tao_base4",
+      "decoded_frames": 4,
+      "metrics": {
+        "TETA": 47.682,
+        "LocA": 22.692,
+        "AssocA": 20.354,
+        "ClsA": 100.0,
+        "LocRe": 31.389,
+        "LocPr": 42.34,
+        "AssocRe": 28.353,
+        "AssocPr": 42.144,
+        "ClsRe": 100.0,
+        "ClsPr": 100.0
+      },
+      "all_exact_native_candidates_retained": true
+    }
+  },
+  "scope": "MOT4/RMOsingle8/RMOmulti12/TAOBase4, same native candidates/frames/v3evidence and same native semantic gate/policy",
+  "RMOT_policy": "native Noul >=.5 inallthree, not comparable tolegacyungated500 clips",
+  "OVMOT_policy": "all1203 supplied categories; Base4onlyperson/baby, no Novel result",
+  "resume_limits": "teacher actual475 overlap differs afterexact450restore; native has no250+overlap; no bitwise trajectory or fullstage timing claim",
+  "interpretation": "mixed results, no unified model promotion/fullvideo/full-dataset/Novel or E2E claims",
+  "full_goal_complete": false
+}

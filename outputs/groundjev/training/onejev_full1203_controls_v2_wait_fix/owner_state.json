@@ -1,0 +1,60 @@
+{
+  "status": "native_mot_full1203_INFERENCE",
+  "owner_pid": 2049900,
+  "registered_training_children": {
+    "teacher": null,
+    "native": null
+  },
+  "physical_gpu": 4,
+  "completed": {},
+  "failed": {},
+  "same_checkpoint_all_three_tasks_each_arm": true,
+  "native_semantic_policy_identical_before_after": true,
+  "E2E_FPS_claim": false,
+  "training_or_scorers_or_thresholds_changed": false,
+  "upstream_GPU_owner": null,
+  "teacher_terminal_training_evidence": {
+    "done": {
+      "event": "done",
+      "steps": 600,
+      "examples": 2400,
+      "elapsed_s": 3595.081282679981,
+      "examples_per_s": 0.6675787864832089
+    },
+    "master": {
+      "format": "groundjev-full-fp32-adam-rng-v1",
+      "step": 600,
+      "seen": 2400,
+      "epoch": 0,
+      "next_step_in_epoch": 600,
+      "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_unified600_teacher_v2/latest_training_state.pt",
+      "bytes": 9029141401,
+      "FP32_masters_and_Adam_moments_saved": true,
+      "scheduler_and_all_RNG_saved": true,
+      "single_latest_training_state": true,
+      "feature_cache": false
+    }
+  },
+  "native_terminal_training_evidence": {
+    "done": {
+      "event": "done",
+      "steps": 600,
+      "examples": 2400,
+      "elapsed_s": 8767.184433915012,
+      "examples_per_s": 0.2737480907457393
+    },
+    "master": {
+      "format": "groundjev-full-fp32-adam-rng-v1",
+      "step": 600,
+      "seen": 2400,
+      "epoch": 0,
+      "next_step_in_epoch": 600,
+      "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_unified600_native_v2/latest_training_state.pt",
+      "bytes": 9029141401,
+      "FP32_masters_and_Adam_moments_saved": true,
+      "scheduler_and_all_RNG_saved": true,
+      "single_latest_training_state": true,
+      "feature_cache": false
+    }
+  }
+}
