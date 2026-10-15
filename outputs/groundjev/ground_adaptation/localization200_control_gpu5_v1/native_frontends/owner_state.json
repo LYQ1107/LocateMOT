@@ -1,0 +1,576 @@
+{
+  "status": "ISOLATED_ORDERED_GROUND_CONTROLS_COMPLETE",
+  "plan": "/data2/user/LocateMOT_GroundJEV/configs/groundjev/ground_localization_frontends_gpu5_v1.json",
+  "physical_gpu": 5,
+  "completed": {
+    "original_dense_mot4": {
+      "status": "OFFICIAL_SCOPE_EVALUATION_COMPLETE",
+      "dataset": "mot17",
+      "sequence": "MOT17-02-FRCNN",
+      "scope": "short_functional_check",
+      "frames": 4,
+      "metrics": {
+        "HOTA": 0.7506873030378555,
+        "DetA": 0.6524872012044383,
+        "AssA": 0.8858282015805041,
+        "IDF1": 0.8396946564885496,
+        "IDSW": 1,
+        "FP": 16,
+        "FN": 24
+      },
+      "metric_scale": "fraction, counts for IDSW/FP/FN",
+      "trackeval_commit": "12c8791b303e0a0b50f753af204249e622d0281a",
+      "gt_view": {
+        "dataset": "mot17",
+        "sequence_lengths": {
+          "MOT17-02-FRCNN": 4
+        },
+        "sources": [
+          {
+            "video": "MOT17-02-FRCNN",
+            "source": {
+              "source_path": "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-02-FRCNN/gt/gt.txt",
+              "sha256": "2e3ecb488da8886d3200d402b2b08890c6d2879923839444e9b74fa43a551440"
+            },
+            "source_frames": [
+              "000302.jpg",
+              "000303.jpg",
+              "000304.jpg",
+              "000305.jpg"
+            ],
+            "view_path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/ground_adaptation/localization200_control_gpu5_v1/native_frontends/original/dense_mot4/official_evaluation/gt/MOT17-02-FRCNN/gt/gt.txt",
+            "view_sha256": "0e62d9b0dba42241650152d70b07d4fdabe574249502d8ce7d98b7f9f9c09e35",
+            "positive_gt_units_before_official_preprocessing": 135
+          }
+        ],
+        "frame_count": 4,
+        "official_test_labels_read": false
+      },
+      "gt_access": "evaluation only",
+      "official_test_labels_read": false,
+      "fixture_only": false,
+      "model_score_claim": true,
+      "perception_rejected_frames": [],
+      "perception_rejection_rate": 0.0,
+      "rejected_frames_in_official_denominator": true,
+      "end_to_end_fps": 0.2594528416053639,
+      "association_replay_fps": null
+    },
+    "original_refer_single8": {
+      "status": "OFFICIAL_REGISTERED_MULTITASK_SCOPE_EVALUATION_COMPLETE",
+      "task": "rmot",
+      "dataset": "refer_kitti_v2",
+      "sequence": "0007",
+      "scope": "registered_short_functional_clip",
+      "frames": 8,
+      "all_registered_frames_included": true,
+      "GT_access": "evaluation only",
+      "official_test_labels_read": false,
+      "end_to_end_fps": 0.9528148191030189,
+      "association_replay_fps": null,
+      "perception_rejected_frames": [
+        152
+      ],
+      "evaluator": "unmodified official TrackEval HOTA/CLEAR/Identity",
+      "evaluator_commit": "12c8791b303e0a0b50f753af204249e622d0281a",
+      "metrics": {
+        "HOTA": 0.30385299622392276,
+        "DetA": 0.26967769073032233,
+        "AssA": 0.34346491228070175,
+        "IDF1": 0.4,
+        "IDSW": 1,
+        "FP": 6,
+        "FN": 1
+      },
+      "metric_scale": "fraction; counts for IDSW/FP/FN",
+      "release_query_GT_boxes": 5,
+      "multi_target_frames": 0,
+      "posthoc_proposal_coverage_IoU_05": {
+        "covered": 4,
+        "GT_boxes": 5,
+        "recall": 0.8,
+        "scope": "evaluation-only target coverage; not HOTA; never used to correct runtime state"
+      },
+      "empty_target_frames": 3,
+      "empty_target_frame_predictions": 3,
+      "GT_transport_class": "class1 is a query-target transport convention, including cars and people",
+      "GT_policy": "only release expression target IDs; empty frames retained; exact release boxes without clipping",
+      "release_box_format": "normalized top-left xywh",
+      "ignore_policy": "registered expressions have empty release ignore fields",
+      "official_complete_dataset_result": false
+    },
+    "original_refer_multi12": {
+      "status": "OFFICIAL_REGISTERED_MULTITASK_SCOPE_EVALUATION_COMPLETE",
+      "task": "rmot",
+      "dataset": "refer_kitti_v2",
+      "sequence": "0007",
+      "scope": "registered_short_functional_clip",
+      "frames": 12,
+      "all_registered_frames_included": true,
+      "GT_access": "evaluation only",
+      "official_test_labels_read": false,
+      "end_to_end_fps": 1.176082795341825,
+      "association_replay_fps": null,
+      "perception_rejected_frames": [
+        34
+      ],
+      "evaluator": "unmodified official TrackEval HOTA/CLEAR/Identity",
+      "evaluator_commit": "12c8791b303e0a0b50f753af204249e622d0281a",
+      "metrics": {
+        "HOTA": 0.226642857944184,
+        "DetA": 0.12560241099599692,
+        "AssA": 0.41678279323016154,
+        "IDF1": 0.21739130434782608,
+        "IDSW": 0,
+        "FP": 11,
+        "FN": 25
+      },
+      "metric_scale": "fraction; counts for IDSW/FP/FN",
+      "release_query_GT_boxes": 30,
+      "multi_target_frames": 7,
+      "posthoc_proposal_coverage_IoU_05": {
+        "covered": 5,
+        "GT_boxes": 30,
+        "recall": 0.16666666666666666,
+        "scope": "evaluation-only target coverage; not HOTA; never used to correct runtime state"
+      },
+      "empty_target_frames": 3,
+      "empty_target_frame_predictions": 2,
+      "GT_transport_class": "class1 is a query-target transport convention, including cars and people",
+      "GT_policy": "only release expression target IDs; empty frames retained; exact release boxes without clipping",
+      "release_box_format": "normalized top-left xywh",
+      "ignore_policy": "registered expressions have empty release ignore fields",
+      "official_complete_dataset_result": false
+    },
+    "localization200_dense_mot4": {
+      "status": "OFFICIAL_SCOPE_EVALUATION_COMPLETE",
+      "dataset": "mot17",
+      "sequence": "MOT17-02-FRCNN",
+      "scope": "short_functional_check",
+      "frames": 4,
+      "metrics": {
+        "HOTA": 0.8409871137499395,
+        "DetA": 0.7847289159025048,
+        "AssA": 0.9186247889704194,
+        "IDF1": 0.9498069498069498,
+        "IDSW": 0,
+        "FP": 1,
+        "FN": 12
+      },
+      "metric_scale": "fraction, counts for IDSW/FP/FN",
+      "trackeval_commit": "12c8791b303e0a0b50f753af204249e622d0281a",
+      "gt_view": {
+        "dataset": "mot17",
+        "sequence_lengths": {
+          "MOT17-02-FRCNN": 4
+        },
+        "sources": [
+          {
+            "video": "MOT17-02-FRCNN",
+            "source": {
+              "source_path": "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-02-FRCNN/gt/gt.txt",
+              "sha256": "2e3ecb488da8886d3200d402b2b08890c6d2879923839444e9b74fa43a551440"
+            },
+            "source_frames": [
+              "000302.jpg",
+              "000303.jpg",
+              "000304.jpg",
+              "000305.jpg"
+            ],
+            "view_path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/ground_adaptation/localization200_control_gpu5_v1/native_frontends/localization200/dense_mot4/official_evaluation/gt/MOT17-02-FRCNN/gt/gt.txt",
+            "view_sha256": "0e62d9b0dba42241650152d70b07d4fdabe574249502d8ce7d98b7f9f9c09e35",
+            "positive_gt_units_before_official_preprocessing": 135
+          }
+        ],
+        "frame_count": 4,
+        "official_test_labels_read": false
+      },
+      "gt_access": "evaluation only",
+      "official_test_labels_read": false,
+      "fixture_only": false,
+      "model_score_claim": true,
+      "perception_rejected_frames": [],
+      "perception_rejection_rate": 0.0,
+      "rejected_frames_in_official_denominator": true,
+      "end_to_end_fps": 0.27985720590478674,
+      "association_replay_fps": null
+    },
+    "localization200_refer_single8": {
+      "status": "OFFICIAL_REGISTERED_MULTITASK_SCOPE_EVALUATION_COMPLETE",
+      "task": "rmot",
+      "dataset": "refer_kitti_v2",
+      "sequence": "0007",
+      "scope": "registered_short_functional_clip",
+      "frames": 8,
+      "all_registered_frames_included": true,
+      "GT_access": "evaluation only",
+      "official_test_labels_read": false,
+      "end_to_end_fps": 0.9166179096532412,
+      "association_replay_fps": null,
+      "perception_rejected_frames": [],
+      "evaluator": "unmodified official TrackEval HOTA/CLEAR/Identity",
+      "evaluator_commit": "12c8791b303e0a0b50f753af204249e622d0281a",
+      "metrics": {
+        "HOTA": 0.1877613930639993,
+        "DetA": 0.1876424658932399,
+        "AssA": 0.19270676691729327,
+        "IDF1": 0.1111111111111111,
+        "IDSW": 1,
+        "FP": 11,
+        "FN": 3
+      },
+      "metric_scale": "fraction; counts for IDSW/FP/FN",
+      "release_query_GT_boxes": 5,
+      "multi_target_frames": 0,
+      "posthoc_proposal_coverage_IoU_05": {
+        "covered": 2,
+        "GT_boxes": 5,
+        "recall": 0.4,
+        "scope": "evaluation-only target coverage; not HOTA; never used to correct runtime state"
+      },
+      "empty_target_frames": 3,
+      "empty_target_frame_predictions": 7,
+      "GT_transport_class": "class1 is a query-target transport convention, including cars and people",
+      "GT_policy": "only release expression target IDs; empty frames retained; exact release boxes without clipping",
+      "release_box_format": "normalized top-left xywh",
+      "ignore_policy": "registered expressions have empty release ignore fields",
+      "official_complete_dataset_result": false
+    },
+    "localization200_refer_multi12": {
+      "status": "OFFICIAL_REGISTERED_MULTITASK_SCOPE_EVALUATION_COMPLETE",
+      "task": "rmot",
+      "dataset": "refer_kitti_v2",
+      "sequence": "0007",
+      "scope": "registered_short_functional_clip",
+      "frames": 12,
+      "all_registered_frames_included": true,
+      "GT_access": "evaluation only",
+      "official_test_labels_read": false,
+      "end_to_end_fps": 1.2012497975881664,
+      "association_replay_fps": null,
+      "perception_rejected_frames": [],
+      "evaluator": "unmodified official TrackEval HOTA/CLEAR/Identity",
+      "evaluator_commit": "12c8791b303e0a0b50f753af204249e622d0281a",
+      "metrics": {
+        "HOTA": 0.2335478457286567,
+        "DetA": 0.19689523584432106,
+        "AssA": 0.28294845911073985,
+        "IDF1": 0.23529411764705882,
+        "IDSW": 4,
+        "FP": 11,
+        "FN": 20
+      },
+      "metric_scale": "fraction; counts for IDSW/FP/FN",
+      "release_query_GT_boxes": 30,
+      "multi_target_frames": 7,
+      "posthoc_proposal_coverage_IoU_05": {
+        "covered": 10,
+        "GT_boxes": 30,
+        "recall": 0.3333333333333333,
+        "scope": "evaluation-only target coverage; not HOTA; never used to correct runtime state"
+      },
+      "empty_target_frames": 3,
+      "empty_target_frame_predictions": 3,
+      "GT_transport_class": "class1 is a query-target transport convention, including cars and people",
+      "GT_policy": "only release expression target IDs; empty frames retained; exact release boxes without clipping",
+      "release_box_format": "normalized top-left xywh",
+      "ignore_policy": "registered expressions have empty release ignore fields",
+      "official_complete_dataset_result": false
+    },
+    "localization200_repeat_dense_mot4": {
+      "status": "OFFICIAL_SCOPE_EVALUATION_COMPLETE",
+      "dataset": "mot17",
+      "sequence": "MOT17-02-FRCNN",
+      "scope": "short_functional_check",
+      "frames": 4,
+      "metrics": {
+        "HOTA": 0.8409871137499395,
+        "DetA": 0.7847289159025048,
+        "AssA": 0.9186247889704194,
+        "IDF1": 0.9498069498069498,
+        "IDSW": 0,
+        "FP": 1,
+        "FN": 12
+      },
+      "metric_scale": "fraction, counts for IDSW/FP/FN",
+      "trackeval_commit": "12c8791b303e0a0b50f753af204249e622d0281a",
+      "gt_view": {
+        "dataset": "mot17",
+        "sequence_lengths": {
+          "MOT17-02-FRCNN": 4
+        },
+        "sources": [
+          {
+            "video": "MOT17-02-FRCNN",
+            "source": {
+              "source_path": "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-02-FRCNN/gt/gt.txt",
+              "sha256": "2e3ecb488da8886d3200d402b2b08890c6d2879923839444e9b74fa43a551440"
+            },
+            "source_frames": [
+              "000302.jpg",
+              "000303.jpg",
+              "000304.jpg",
+              "000305.jpg"
+            ],
+            "view_path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/ground_adaptation/localization200_control_gpu5_v1/native_frontends/localization200_repeat/dense_mot4/official_evaluation/gt/MOT17-02-FRCNN/gt/gt.txt",
+            "view_sha256": "0e62d9b0dba42241650152d70b07d4fdabe574249502d8ce7d98b7f9f9c09e35",
+            "positive_gt_units_before_official_preprocessing": 135
+          }
+        ],
+        "frame_count": 4,
+        "official_test_labels_read": false
+      },
+      "gt_access": "evaluation only",
+      "official_test_labels_read": false,
+      "fixture_only": false,
+      "model_score_claim": true,
+      "perception_rejected_frames": [],
+      "perception_rejection_rate": 0.0,
+      "rejected_frames_in_official_denominator": true,
+      "end_to_end_fps": 0.28400725146715683,
+      "association_replay_fps": null
+    },
+    "localization200_repeat_refer_single8": {
+      "status": "OFFICIAL_REGISTERED_MULTITASK_SCOPE_EVALUATION_COMPLETE",
+      "task": "rmot",
+      "dataset": "refer_kitti_v2",
+      "sequence": "0007",
+      "scope": "registered_short_functional_clip",
+      "frames": 8,
+      "all_registered_frames_included": true,
+      "GT_access": "evaluation only",
+      "official_test_labels_read": false,
+      "end_to_end_fps": 0.92474653224199,
+      "association_replay_fps": null,
+      "perception_rejected_frames": [],
+      "evaluator": "unmodified official TrackEval HOTA/CLEAR/Identity",
+      "evaluator_commit": "12c8791b303e0a0b50f753af204249e622d0281a",
+      "metrics": {
+        "HOTA": 0.1877613930639993,
+        "DetA": 0.1876424658932399,
+        "AssA": 0.19270676691729327,
+        "IDF1": 0.1111111111111111,
+        "IDSW": 1,
+        "FP": 11,
+        "FN": 3
+      },
+      "metric_scale": "fraction; counts for IDSW/FP/FN",
+      "release_query_GT_boxes": 5,
+      "multi_target_frames": 0,
+      "posthoc_proposal_coverage_IoU_05": {
+        "covered": 2,
+        "GT_boxes": 5,
+        "recall": 0.4,
+        "scope": "evaluation-only target coverage; not HOTA; never used to correct runtime state"
+      },
+      "empty_target_frames": 3,
+      "empty_target_frame_predictions": 7,
+      "GT_transport_class": "class1 is a query-target transport convention, including cars and people",
+      "GT_policy": "only release expression target IDs; empty frames retained; exact release boxes without clipping",
+      "release_box_format": "normalized top-left xywh",
+      "ignore_policy": "registered expressions have empty release ignore fields",
+      "official_complete_dataset_result": false
+    },
+    "localization200_repeat_refer_multi12": {
+      "status": "OFFICIAL_REGISTERED_MULTITASK_SCOPE_EVALUATION_COMPLETE",
+      "task": "rmot",
+      "dataset": "refer_kitti_v2",
+      "sequence": "0007",
+      "scope": "registered_short_functional_clip",
+      "frames": 12,
+      "all_registered_frames_included": true,
+      "GT_access": "evaluation only",
+      "official_test_labels_read": false,
+      "end_to_end_fps": 1.2219384151898605,
+      "association_replay_fps": null,
+      "perception_rejected_frames": [],
+      "evaluator": "unmodified official TrackEval HOTA/CLEAR/Identity",
+      "evaluator_commit": "12c8791b303e0a0b50f753af204249e622d0281a",
+      "metrics": {
+        "HOTA": 0.2335478457286567,
+        "DetA": 0.19689523584432106,
+        "AssA": 0.28294845911073985,
+        "IDF1": 0.23529411764705882,
+        "IDSW": 4,
+        "FP": 11,
+        "FN": 20
+      },
+      "metric_scale": "fraction; counts for IDSW/FP/FN",
+      "release_query_GT_boxes": 30,
+      "multi_target_frames": 7,
+      "posthoc_proposal_coverage_IoU_05": {
+        "covered": 10,
+        "GT_boxes": 30,
+        "recall": 0.3333333333333333,
+        "scope": "evaluation-only target coverage; not HOTA; never used to correct runtime state"
+      },
+      "empty_target_frames": 3,
+      "empty_target_frame_predictions": 3,
+      "GT_transport_class": "class1 is a query-target transport convention, including cars and people",
+      "GT_policy": "only release expression target IDs; empty frames retained; exact release boxes without clipping",
+      "release_box_format": "normalized top-left xywh",
+      "ignore_policy": "registered expressions have empty release ignore fields",
+      "official_complete_dataset_result": false
+    },
+    "tracking200_dense_mot4": {
+      "status": "OFFICIAL_SCOPE_EVALUATION_COMPLETE",
+      "dataset": "mot17",
+      "sequence": "MOT17-02-FRCNN",
+      "scope": "short_functional_check",
+      "frames": 4,
+      "metrics": {
+        "HOTA": 0.8346729605968443,
+        "DetA": 0.7741052138257749,
+        "AssA": 0.9159188965823158,
+        "IDF1": 0.9266409266409267,
+        "IDSW": 0,
+        "FP": 4,
+        "FN": 15
+      },
+      "metric_scale": "fraction, counts for IDSW/FP/FN",
+      "trackeval_commit": "12c8791b303e0a0b50f753af204249e622d0281a",
+      "gt_view": {
+        "dataset": "mot17",
+        "sequence_lengths": {
+          "MOT17-02-FRCNN": 4
+        },
+        "sources": [
+          {
+            "video": "MOT17-02-FRCNN",
+            "source": {
+              "source_path": "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-02-FRCNN/gt/gt.txt",
+              "sha256": "2e3ecb488da8886d3200d402b2b08890c6d2879923839444e9b74fa43a551440"
+            },
+            "source_frames": [
+              "000302.jpg",
+              "000303.jpg",
+              "000304.jpg",
+              "000305.jpg"
+            ],
+            "view_path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/ground_adaptation/localization200_control_gpu5_v1/native_frontends/tracking200/dense_mot4/official_evaluation/gt/MOT17-02-FRCNN/gt/gt.txt",
+            "view_sha256": "0e62d9b0dba42241650152d70b07d4fdabe574249502d8ce7d98b7f9f9c09e35",
+            "positive_gt_units_before_official_preprocessing": 135
+          }
+        ],
+        "frame_count": 4,
+        "official_test_labels_read": false
+      },
+      "gt_access": "evaluation only",
+      "official_test_labels_read": false,
+      "fixture_only": false,
+      "model_score_claim": true,
+      "perception_rejected_frames": [],
+      "perception_rejection_rate": 0.0,
+      "rejected_frames_in_official_denominator": true,
+      "end_to_end_fps": 0.28124416994547174,
+      "association_replay_fps": null
+    },
+    "tracking200_refer_single8": {
+      "status": "OFFICIAL_REGISTERED_MULTITASK_SCOPE_EVALUATION_COMPLETE",
+      "task": "rmot",
+      "dataset": "refer_kitti_v2",
+      "sequence": "0007",
+      "scope": "registered_short_functional_clip",
+      "frames": 8,
+      "all_registered_frames_included": true,
+      "GT_access": "evaluation only",
+      "official_test_labels_read": false,
+      "end_to_end_fps": 0.903821345431653,
+      "association_replay_fps": null,
+      "perception_rejected_frames": [],
+      "evaluator": "unmodified official TrackEval HOTA/CLEAR/Identity",
+      "evaluator_commit": "12c8791b303e0a0b50f753af204249e622d0281a",
+      "metrics": {
+        "HOTA": 0.2487620445461611,
+        "DetA": 0.18438914027149322,
+        "AssA": 0.3361278195488722,
+        "IDF1": 0.2222222222222222,
+        "IDSW": 0,
+        "FP": 11,
+        "FN": 3
+      },
+      "metric_scale": "fraction; counts for IDSW/FP/FN",
+      "release_query_GT_boxes": 5,
+      "multi_target_frames": 0,
+      "posthoc_proposal_coverage_IoU_05": {
+        "covered": 2,
+        "GT_boxes": 5,
+        "recall": 0.4,
+        "scope": "evaluation-only target coverage; not HOTA; never used to correct runtime state"
+      },
+      "empty_target_frames": 3,
+      "empty_target_frame_predictions": 7,
+      "GT_transport_class": "class1 is a query-target transport convention, including cars and people",
+      "GT_policy": "only release expression target IDs; empty frames retained; exact release boxes without clipping",
+      "release_box_format": "normalized top-left xywh",
+      "ignore_policy": "registered expressions have empty release ignore fields",
+      "official_complete_dataset_result": false
+    },
+    "tracking200_refer_multi12": {
+      "status": "OFFICIAL_REGISTERED_MULTITASK_SCOPE_EVALUATION_COMPLETE",
+      "task": "rmot",
+      "dataset": "refer_kitti_v2",
+      "sequence": "0007",
+      "scope": "registered_short_functional_clip",
+      "frames": 12,
+      "all_registered_frames_included": true,
+      "GT_access": "evaluation only",
+      "official_test_labels_read": false,
+      "end_to_end_fps": 1.1975057891980556,
+      "association_replay_fps": null,
+      "perception_rejected_frames": [],
+      "evaluator": "unmodified official TrackEval HOTA/CLEAR/Identity",
+      "evaluator_commit": "12c8791b303e0a0b50f753af204249e622d0281a",
+      "metrics": {
+        "HOTA": 0.23675419215491136,
+        "DetA": 0.17001748549129855,
+        "AssA": 0.33456584583151,
+        "IDF1": 0.2553191489361702,
+        "IDSW": 2,
+        "FP": 9,
+        "FN": 22
+      },
+      "metric_scale": "fraction; counts for IDSW/FP/FN",
+      "release_query_GT_boxes": 30,
+      "multi_target_frames": 7,
+      "posthoc_proposal_coverage_IoU_05": {
+        "covered": 8,
+        "GT_boxes": 30,
+        "recall": 0.26666666666666666,
+        "scope": "evaluation-only target coverage; not HOTA; never used to correct runtime state"
+      },
+      "empty_target_frames": 3,
+      "empty_target_frame_predictions": 3,
+      "GT_transport_class": "class1 is a query-target transport convention, including cars and people",
+      "GT_policy": "only release expression target IDs; empty frames retained; exact release boxes without clipping",
+      "release_box_format": "normalized top-left xywh",
+      "ignore_policy": "registered expressions have empty release ignore fields",
+      "official_complete_dataset_result": false
+    }
+  },
+  "variant_roots": {
+    "original": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/ground_adaptation/localization200_control_gpu5_v1/native_frontends/original",
+    "localization200": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/ground_adaptation/localization200_control_gpu5_v1/native_frontends/localization200",
+    "localization200_repeat": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/ground_adaptation/localization200_control_gpu5_v1/native_frontends/localization200_repeat",
+    "tracking200": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/ground_adaptation/localization200_control_gpu5_v1/native_frontends/tracking200"
+  },
+  "original_source_or_seed_or_metric_changes": false,
+  "full_dataset_claim": false,
+  "shared_full9_services_touched": false,
+  "owned_server_process_group": 2225448,
+  "last_owned_service_stopped": "tracking200",
+  "repeat_checks": {
+    "dense_mot4": {
+      "frames": 4,
+      "same_raw_wire_candidates_and_outputs": true
+    },
+    "refer_single8": {
+      "frames": 8,
+      "same_raw_wire_candidates_and_outputs": true
+    },
+    "refer_multi12": {
+      "frames": 12,
+      "same_raw_wire_candidates_and_outputs": true
+    }
+  }
+}

@@ -2380,3 +2380,9 @@ GPU5后续调度预检实际通过：新旧定位计划除明确硬件/说明元
 GPU5新串行队列已真正接棒：原owner1953808结束且五组2173897/2174768/2197749/2197750/2198799全部退出，release receipt真实free81151MiB；owner2207841进入LOCALIZATION200、child2213633/start44011696。实际trainer state physical5/seed42/native_dense_referring_localization_only/target200/identity coeff0，训练正在进行，未宣称200完成或新指标。旧保留6/7及Full4未动，仍四卡；下一阶段96native/18factorial之后原自然1657/8controls。
 
 Pilot文档核对：原FOUR_GPU_PILOT仍写2026-10-14未完成，现用真实stop/cache receipts、originalOneFull1203run、实际500updates/2000examples/state/checkpoint、RMOT/TAO正式结果、paired800实际FPS/资源及已验证GitHub树逐项核对用户§17十二项执行交付。新增evidence_audit，限定注册开发范围，不等于模型晋升/Novel成功/全数据集或完整goal完成。资源口径澄清：持久化before/after全设备表可重算净减少14042MiB，非全归因U2；17584MiB为历史compute-app观测，不能从这两个device表独立复算，不伪造更精确归因。清理4748分片/42831618048allocatedbytes及1.909GB保留checkpoint实际存在。同步将ARCHITECTURE中的已过时“nativefeature/Compact待实现”改为实际实现及范围限制。剩余Full1203/native9/localization/natural继续原队列，无新增模型运行或评测。
+
+执行改进计划：现有阻塞wrapper将研究owner的stdout写文件，所以工具句柄只在最终退出时返回、真实阶段变化未向终端转发。增加一个只读Linux inotify+pidfd事件转发器：单一阻塞命令监听已注册owner状态及定位训练/前端/自然子阶段，状态改变/进程退出时输出真实摘要，不做周期ps/tail/wc/nvidia-smi/模型级poll，不启动或修改任何实验。保留原owner命令和退出码作为最终完成/失败权威，事件仅用于及时取得已完成子单元和训练阶段。
+
+2026-10-15：定位对照200实际完成，27,267,584参数、identity系数0、200真实pair_indices与完成tracking200相同，全部total_loss=native_loss且有限；16,164,180BF16元素改变，reload0。导出569张量其余不变。96native帧/18Full组合完成并核验真实官方artifact、完整帧、GT/future不读、相同前端候选在两个One中逐项精确保留；定位重复raw wire/候选/输出一致。native MOT4 HOTA原始75.069→定位84.099/跟踪83.467，single8原始30.385→18.776/24.876，multi12仅22.664→23.355/23.675；Full Single8六组合均0且FN5，multi12非普遍提升。保留负结果，不将4/8/12短片外推完整视频，不称联合梯度训练或模型晋升，reference训练GPU6/controlGPU5区别明确。parent正常接入自然MOT20，无重新启动推理。
+
+只读事件转发器实际注册Full/GPU5queue/native-retention三个PID/starttick并输出九个状态路径已有快照，原阻塞session70182/36847/52020保持权威；新observer session58829只inotify/pidfd阻塞等候，不周期检查实验进度、不开新模型或改实验。注册证据单独固定保存，持续events.jsonl本地增长不作为冻结完成结果发布。

@@ -108,8 +108,9 @@ no counterbalanced/statistical speed or real-time claim. Historical other-video
 or replay FPS is unchanged and not used for this ratio. Evidence:
 `e2e/full_compact_rmot800_v1/validated_summary.json` and both run artifacts.
 All prior owned groups exited before GPU5followup allocation; localization-only
-training has now actually started on GPU5, seed42/200updates/identity weights0.
-Snapshot: `ground_adaptation/localization200_control_gpu5_v1/registered_start_snapshot.json`.
+training and its96native-frame/18Full controls have completed on GPU5. The
+serial queue has advanced to fresh naturalMOT20; see the completed comparison
+below. Original start/device evidence is preserved.
 
 ## Same-source saved-output diagnosis
 
@@ -271,18 +272,44 @@ no promotion. Original/Ground200nativefull9retention each targets91124released
 rows, not all30paper benchmarks; neither complete while native clients remain.
 GPU6native CUDA failure/retry evidence retained; first failing kernel unknown.
 
-Localization-only200 now follows the completed/released pairedE2E GPU5 owner: same112rows/56pairs/200actual draws/seed42/lr2e-6 as completedGround200,
-identity coefficients0; then fresh export,96ordered native frames and18Full
-visual×pretrained/native600composition controls. This is composed adaptation,
-not joint-gradient training. All new frontend/factorial comparisons run on GPU5;
-the actual reference tracking200 training ran on GPU6 (same A800 model), so no
-bitwise cross-device training trajectory claim. No pending adaptation/retention
-score inferred.
+Localization-only200 and all96native-frame/18Full controls are complete and
+official-artifact validated. Same112rows/56pairs/200actual draws/seed42/lr2e-6
+as completedGround200, both identity coefficients0. All200logged total losses
+equal native loss;27,267,584trainable parameters,16,164,180BF16elements changed,
+checkpoint reload delta0. Export569native tensors; all other weights unchanged.
+Localization repeat reproduces all raw-wire candidates/outputs on4/8/12frames.
+
+|Native frontend|MOT4 HOTA %|Single8 HOTA %|Multi12 HOTA %|
+|---|---:|---:|---:|
+|Original|75.069|30.385|22.664|
+|Localization200|84.099|18.776|23.355|
+|Tracking200|83.467|24.876|23.675|
+
+Full policy HOTA %, each frontend's exact candidates reused in bothOne arms:
+
+|One weights + frontend|MOT4|Single8|Multi12|
+|---|---:|---:|---:|
+|Pretrained + original|33.913|0|17.636|
+|Pretrained + localization200|36.858|0|1.754|
+|Pretrained + tracking200|35.199|0|6.697|
+|Native600 + original|31.932|0|7.605|
+|Native600 + localization200|34.709|0|7.313|
+|Native600 + tracking200|34.934|0|5.504|
+
+ShortMOT improves after either visual adaptation; single-expression native
+results worsen and Full misses all5single-scope GT boxes. Composition has no
+general RMOT gain. These4/8/12frame controls do not establish complete-video
+or dataset quality, full9retention, Novel capability or model promotion.
+Separately adapted weights are composed, not jointly optimized. Frontend
+adaptation changes proposals; exact input pairing holds within each twoOne
+comparison. All new frontend/factorial runs useGPU5; reference tracking200
+training usedGPU6 (same A800), so no bitwise cross-device trajectory claim.
+Receipt: `ground_adaptation/localization200_control_gpu5_v1/validated_summary.json`.
 
 |Queue/device|Remaining actual work|
 |---|---|
 |GPU4|TrainedFull native600/MOT500/teacher600DT1203; `training/onejev_full1203_controls_v2_wait_fix`|
-|GPU5|Paired E2E complete; localization200training now running, then96frames/18controls and naturalMOT20/8CPUcontrols; `gpu5_followups_v1`|
+|GPU5|Paired E2E and localization200/96frames/18controls complete; fresh naturalMOT20 running, then8CPUcontrols; `gpu5_followups_v1`|
 |GPU6|AdaptedGround200nativefull9 remains unchanged|
 |GPU7|OriginalGroundnativefull9 remains unchanged|
 |CPU|Policy25, tasksubset24, context12, hybrid12, input12 all complete|
@@ -317,13 +344,17 @@ Receipts: `validation/localization200_contract_gpu5_v1/validation.json` and
 New plans: `configs/groundjev/gpu5_followups_v1.json` and referenced GPU5variants.
 
 
-The GPU5handoff is now executed, not only queued: paired blocking session87824
-exited0; its five recorded model process groups are all gone. New serial owner
-2207841 started localization child2213633/start44011696. The actual trainer
-reports physicalGPU5, native_dense_referring_localization_only, seed42,200target
-updates, teacher/native identity coefficients0. This is a start/device receipt,
-not training completion or new adaptation accuracy. Original retention6/7 and
-Full1203owner remain independent.
+The GPU5handoff executed after paired blocking session87824 exited0 and all
+five owned model process groups were gone. Serial owner2207841 completed
+localization child2213633 and advanced to naturalMOT20. Original retention6/7
+and Full1203owner remain independent.
+
+Progress visibility: `tools/groundjev/stream_owner_events.py` uses blocking
+Linux inotify/pidfd events for the three existing owners and their registered
+child state files. It prints actual state changes and process exits without
+periodic filesystem/process polling or model calls. Original blocking commands
+retain authoritative exit codes; an exit event alone is not scientific success.
+Registration snapshot: `progress_events/remaining_v1/registration.json`.
 
 Pilot documentation is now reconciled with the actual12execution deliverables
 in usertask17; see `FOUR_GPU_PILOT.md` and

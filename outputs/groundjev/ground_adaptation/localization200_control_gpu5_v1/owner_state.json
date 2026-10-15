@@ -1,0 +1,361 @@
+{
+  "status": "LOCALIZATION200_AND_CONTROLLED_VISUAL_ONE_COMPOSITION_COMPLETE",
+  "owner_pid": 2213633,
+  "physical_gpu": 5,
+  "registered_retention_owner": null,
+  "completed": {
+    "training": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/ground_adaptation/localization200_control_gpu5_v1/training",
+      "steps": 200,
+      "parameters": 27267584,
+      "same_registered112_rows_200_pair_draws": true,
+      "identity_loss_coefficients_zero": true,
+      "reload_max_difference": 0,
+      "actual_native_loss_equals_total_loss_every_step": true
+    },
+    "export": {
+      "status": "COMPLETE_NATIVE_DLM_PROJECTOR_DELTA_BUNDLE_EXPORTED",
+      "source": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM",
+      "delta": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/ground_adaptation/localization200_control_gpu5_v1/training/projector_delta.pt",
+      "output": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM-LocProj200-GPU5",
+      "native_tensor_count": 569,
+      "replaced_native_projector_keys": [
+        "base_model.model.visual.projector.pre_norm.weight",
+        "base_model.model.visual.projector.pre_norm.bias",
+        "base_model.model.visual.projector.fc1.weight",
+        "base_model.model.visual.projector.fc2.weight",
+        "base_model.model.visual.projector.post_norm.weight"
+      ],
+      "BF16_changed_elements": 16164180,
+      "all_other_native_tensors_unmodified": true,
+      "source_bundle_overwritten": false,
+      "tokenizer_code_and_configuration": "copied unchanged from complete released DLM bundle",
+      "bytes": 9687419704,
+      "sha256": "873d5f9a3e156891a555fb52b63ed586d1c32e866394f8164f9f2862e60d29d3",
+      "training_steps": 200,
+      "seed": 42,
+      "dense_referring_retention": "pending actual before/after",
+      "benchmark_improvement_claim": false
+    },
+    "native_frontends": {
+      "run": "outputs/groundjev/ground_adaptation/localization200_control_gpu5_v1/native_frontends",
+      "native_frames": 96,
+      "scope_metrics": {
+        "original_dense_mot4": {
+          "HOTA": 0.7506873030378555,
+          "DetA": 0.6524872012044383,
+          "AssA": 0.8858282015805041,
+          "IDF1": 0.8396946564885496,
+          "IDSW": 1,
+          "FP": 16,
+          "FN": 24
+        },
+        "original_refer_single8": {
+          "HOTA": 0.30385299622392276,
+          "DetA": 0.26967769073032233,
+          "AssA": 0.34346491228070175,
+          "IDF1": 0.4,
+          "IDSW": 1,
+          "FP": 6,
+          "FN": 1
+        },
+        "original_refer_multi12": {
+          "HOTA": 0.226642857944184,
+          "DetA": 0.12560241099599692,
+          "AssA": 0.41678279323016154,
+          "IDF1": 0.21739130434782608,
+          "IDSW": 0,
+          "FP": 11,
+          "FN": 25
+        },
+        "localization200_dense_mot4": {
+          "HOTA": 0.8409871137499395,
+          "DetA": 0.7847289159025048,
+          "AssA": 0.9186247889704194,
+          "IDF1": 0.9498069498069498,
+          "IDSW": 0,
+          "FP": 1,
+          "FN": 12
+        },
+        "localization200_refer_single8": {
+          "HOTA": 0.1877613930639993,
+          "DetA": 0.1876424658932399,
+          "AssA": 0.19270676691729327,
+          "IDF1": 0.1111111111111111,
+          "IDSW": 1,
+          "FP": 11,
+          "FN": 3
+        },
+        "localization200_refer_multi12": {
+          "HOTA": 0.2335478457286567,
+          "DetA": 0.19689523584432106,
+          "AssA": 0.28294845911073985,
+          "IDF1": 0.23529411764705882,
+          "IDSW": 4,
+          "FP": 11,
+          "FN": 20
+        },
+        "localization200_repeat_dense_mot4": {
+          "HOTA": 0.8409871137499395,
+          "DetA": 0.7847289159025048,
+          "AssA": 0.9186247889704194,
+          "IDF1": 0.9498069498069498,
+          "IDSW": 0,
+          "FP": 1,
+          "FN": 12
+        },
+        "localization200_repeat_refer_single8": {
+          "HOTA": 0.1877613930639993,
+          "DetA": 0.1876424658932399,
+          "AssA": 0.19270676691729327,
+          "IDF1": 0.1111111111111111,
+          "IDSW": 1,
+          "FP": 11,
+          "FN": 3
+        },
+        "localization200_repeat_refer_multi12": {
+          "HOTA": 0.2335478457286567,
+          "DetA": 0.19689523584432106,
+          "AssA": 0.28294845911073985,
+          "IDF1": 0.23529411764705882,
+          "IDSW": 4,
+          "FP": 11,
+          "FN": 20
+        },
+        "tracking200_dense_mot4": {
+          "HOTA": 0.8346729605968443,
+          "DetA": 0.7741052138257749,
+          "AssA": 0.9159188965823158,
+          "IDF1": 0.9266409266409267,
+          "IDSW": 0,
+          "FP": 4,
+          "FN": 15
+        },
+        "tracking200_refer_single8": {
+          "HOTA": 0.2487620445461611,
+          "DetA": 0.18438914027149322,
+          "AssA": 0.3361278195488722,
+          "IDF1": 0.2222222222222222,
+          "IDSW": 0,
+          "FP": 11,
+          "FN": 3
+        },
+        "tracking200_refer_multi12": {
+          "HOTA": 0.23675419215491136,
+          "DetA": 0.17001748549129855,
+          "AssA": 0.33456584583151,
+          "IDF1": 0.2553191489361702,
+          "IDSW": 2,
+          "FP": 9,
+          "FN": 22
+        }
+      },
+      "actual_localization_repeat": {
+        "dense_mot4": {
+          "frames": 4,
+          "same_raw_wire_candidates_and_outputs": true
+        },
+        "refer_single8": {
+          "frames": 8,
+          "same_raw_wire_candidates_and_outputs": true
+        },
+        "refer_multi12": {
+          "frames": 12,
+          "same_raw_wire_candidates_and_outputs": true
+        }
+      }
+    },
+    "factorial": {
+      "run": "outputs/groundjev/ground_adaptation/localization200_control_gpu5_v1/factorial",
+      "controls": 18,
+      "scope_metrics": {
+        "pretrained_original_dense_mot4": {
+          "HOTA": 0.33913062347412115,
+          "DetA": 0.5632161248364749,
+          "AssA": 0.21257789144435893,
+          "IDF1": 0.3148936170212766,
+          "IDSW": 54,
+          "FP": 9,
+          "FN": 44
+        },
+        "pretrained_original_refer_single8": {
+          "HOTA": 0.0,
+          "DetA": 0.0,
+          "AssA": 0.0,
+          "IDF1": 0.0,
+          "IDSW": 0,
+          "FP": 0,
+          "FN": 5
+        },
+        "pretrained_original_refer_multi12": {
+          "HOTA": 0.1763629691497842,
+          "DetA": 0.0963974106388967,
+          "AssA": 0.3354155590997696,
+          "IDF1": 0.16666666666666666,
+          "IDSW": 0,
+          "FP": 3,
+          "FN": 27
+        },
+        "pretrained_localization200_dense_mot4": {
+          "HOTA": 0.3685789278182504,
+          "DetA": 0.5805950005345971,
+          "AssA": 0.24126557666310547,
+          "IDF1": 0.37168141592920356,
+          "IDSW": 48,
+          "FP": 1,
+          "FN": 45
+        },
+        "pretrained_localization200_refer_single8": {
+          "HOTA": 0.0,
+          "DetA": 0.0,
+          "AssA": 0.0,
+          "IDF1": 0.0,
+          "IDSW": 0,
+          "FP": 0,
+          "FN": 5
+        },
+        "pretrained_localization200_refer_multi12": {
+          "HOTA": 0.017543859649122806,
+          "DetA": 0.013157894736842105,
+          "AssA": 0.023391812865497075,
+          "IDF1": 0.0,
+          "IDSW": 0,
+          "FP": 4,
+          "FN": 30
+        },
+        "pretrained_tracking200_dense_mot4": {
+          "HOTA": 0.3519902927995333,
+          "DetA": 0.5847670338903285,
+          "AssA": 0.21998154677641754,
+          "IDF1": 0.33480176211453744,
+          "IDSW": 53,
+          "FP": 3,
+          "FN": 46
+        },
+        "pretrained_tracking200_refer_single8": {
+          "HOTA": 0.0,
+          "DetA": 0.0,
+          "AssA": 0.0,
+          "IDF1": 0.0,
+          "IDSW": 0,
+          "FP": 0,
+          "FN": 5
+        },
+        "pretrained_tracking200_refer_multi12": {
+          "HOTA": 0.06696505889340372,
+          "DetA": 0.04582979626485569,
+          "AssA": 0.10526315789473684,
+          "IDF1": 0.06060606060606061,
+          "IDSW": 0,
+          "FP": 2,
+          "FN": 29
+        },
+        "native_original_dense_mot4": {
+          "HOTA": 0.3193200353056629,
+          "DetA": 0.539669477136249,
+          "AssA": 0.19458687375040676,
+          "IDF1": 0.3389830508474576,
+          "IDSW": 55,
+          "FP": 13,
+          "FN": 47
+        },
+        "native_original_refer_single8": {
+          "HOTA": 0.0,
+          "DetA": 0.0,
+          "AssA": 0.0,
+          "IDF1": 0.0,
+          "IDSW": 0,
+          "FP": 0,
+          "FN": 5
+        },
+        "native_original_refer_multi12": {
+          "HOTA": 0.0760545090060766,
+          "DetA": 0.08028473968689188,
+          "AssA": 0.07602339181286549,
+          "IDF1": 0.05714285714285714,
+          "IDSW": 1,
+          "FP": 3,
+          "FN": 28
+        },
+        "native_localization200_dense_mot4": {
+          "HOTA": 0.3470876204866115,
+          "DetA": 0.6266664255755906,
+          "AssA": 0.19791267616028901,
+          "IDF1": 0.3504273504273504,
+          "IDSW": 58,
+          "FP": 1,
+          "FN": 37
+        },
+        "native_localization200_refer_single8": {
+          "HOTA": 0.0,
+          "DetA": 0.0,
+          "AssA": 0.0,
+          "IDF1": 0.0,
+          "IDSW": 0,
+          "FP": 0,
+          "FN": 5
+        },
+        "native_localization200_refer_multi12": {
+          "HOTA": 0.0731301699935475,
+          "DetA": 0.05815262128929362,
+          "AssA": 0.0935672514619883,
+          "IDF1": 0.058823529411764705,
+          "IDSW": 1,
+          "FP": 2,
+          "FN": 28
+        },
+        "native_tracking200_dense_mot4": {
+          "HOTA": 0.34933560843444206,
+          "DetA": 0.6343809683162451,
+          "AssA": 0.19828146142076175,
+          "IDF1": 0.3305084745762712,
+          "IDSW": 60,
+          "FP": 4,
+          "FN": 38
+        },
+        "native_tracking200_refer_single8": {
+          "HOTA": 0.0,
+          "DetA": 0.0,
+          "AssA": 0.0,
+          "IDF1": 0.0,
+          "IDSW": 0,
+          "FP": 0,
+          "FN": 5
+        },
+        "native_tracking200_refer_multi12": {
+          "HOTA": 0.05504072560633626,
+          "DetA": 0.03331918505942275,
+          "AssA": 0.0935672514619883,
+          "IDF1": 0.06060606060606061,
+          "IDSW": 0,
+          "FP": 2,
+          "FN": 29
+        }
+      },
+      "scope": "shortMOT4/RMO8/RMO12, threeGroundweights x originalOne/native600; not a full-dataset result"
+    }
+  },
+  "new_feature_cache_files": false,
+  "foreign_or_current_retention_jobs_stopped": false,
+  "composed_adapted_weights_not_joint_gradient_training": true,
+  "full_goal_complete": false,
+  "upstream_GPU_release": {
+    "status": "VERIFIED_COMPLETED_GPU_OWNER_RELEASE",
+    "physical_gpu": 5,
+    "upstream_owner_identity": [
+      1953808,
+      "42350971"
+    ],
+    "upstream_owner_output": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/e2e/full_compact_rmot800_v1",
+    "upstream_status": "SAME800_SAME_GPU_FRESH_FULL_COMPACT_E2E_AND_DETECTOR_PAIRING_VALIDATED",
+    "owned_process_groups": [
+      2173897,
+      2174768,
+      2197749,
+      2197750,
+      2198799
+    ],
+    "all_owned_groups_gone": true,
+    "hardware_at_release": "GPU-c6523d98-cb2d-95ed-4cb2-a84936acceb6, NVIDIA A800-SXM4-80GB, 81920, 81151"
+  }
+}

@@ -1,0 +1,518 @@
+{
+  "status": "READ_ONLY_EVENT_OBSERVER_REGISTERED_LIVE",
+  "observer_pid": 2303017,
+  "live_owners": [
+    "full1203",
+    "gpu5_followups",
+    "native_retention"
+  ],
+  "periodic_polling": false,
+  "registration_events": [
+    {
+      "event": "owner_registered_live",
+      "observed_utc_unix": 1792066884.8702881,
+      "name": "full1203",
+      "identity": [
+        2049900,
+        "42845776"
+      ]
+    },
+    {
+      "event": "owner_registered_live",
+      "observed_utc_unix": 1792066884.8704937,
+      "name": "gpu5_followups",
+      "identity": [
+        2207841,
+        "43963616"
+      ]
+    },
+    {
+      "event": "owner_registered_live",
+      "observed_utc_unix": 1792066884.8706446,
+      "name": "native_retention",
+      "identity": [
+        1865651,
+        "41803969"
+      ]
+    }
+  ],
+  "initial_states": {
+    "full1203": {
+      "event": "state_change",
+      "observed_utc_unix": 1792066884.8710825,
+      "name": "full1203",
+      "source": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_full1203_controls_v2_wait_fix/owner_state.json",
+      "status": "teacher_mot_full1203_INFERENCE",
+      "steps": null,
+      "target_steps": null,
+      "completed": {
+        "native_mot_full1203": {
+          "metrics": {
+            "HOTA": 0.08702996032001276,
+            "DetA": 0.3010472804984555,
+            "AssA": 0.025168031826705423,
+            "IDF1": 0.05825958702064897,
+            "IDSW": 3631,
+            "FP": 7516,
+            "FN": 416
+          }
+        },
+        "before500_mot_full1203": {
+          "metrics": {
+            "HOTA": 0.07848464308003483,
+            "DetA": 0.30378691832007576,
+            "AssA": 0.020287084006875487,
+            "IDF1": 0.05056103825875355,
+            "IDSW": 3530,
+            "FP": 6387,
+            "FN": 765
+          }
+        }
+      },
+      "completed_training": [],
+      "failed": {},
+      "error": null
+    },
+    "gpu5_followups": {
+      "event": "state_change",
+      "observed_utc_unix": 1792066884.8713136,
+      "name": "gpu5_followups",
+      "source": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/gpu5_followups_v1/owner_state.json",
+      "status": "NATURAL_MOT20",
+      "steps": null,
+      "target_steps": null,
+      "completed": {
+        "LOCALIZATION200": {}
+      },
+      "completed_training": [],
+      "failed": null,
+      "error": null
+    },
+    "native_retention": {
+      "event": "state_change",
+      "observed_utc_unix": 1792066884.8713846,
+      "name": "native_retention",
+      "source": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/ground_retention/reattached_full9_owner_v1/owner_state.json",
+      "status": "WAITING_VERIFIED_EXISTING_NATIVE_RUNNERS_AND_CLIENTS",
+      "steps": null,
+      "target_steps": null,
+      "completed": {},
+      "completed_training": [],
+      "failed": null,
+      "error": null
+    },
+    "localization_workflow": {
+      "event": "state_change",
+      "observed_utc_unix": 1792066884.871551,
+      "name": "localization_workflow",
+      "source": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/ground_adaptation/localization200_control_gpu5_v1/owner_state.json",
+      "status": "LOCALIZATION200_AND_CONTROLLED_VISUAL_ONE_COMPOSITION_COMPLETE",
+      "steps": null,
+      "target_steps": null,
+      "completed": {
+        "training": {
+          "steps": 200
+        },
+        "export": {},
+        "native_frontends": {},
+        "factorial": {
+          "controls": 18
+        }
+      },
+      "completed_training": [],
+      "failed": null,
+      "error": null
+    },
+    "localization_training": {
+      "event": "state_change",
+      "observed_utc_unix": 1792066884.8716388,
+      "name": "localization_training",
+      "source": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/ground_adaptation/localization200_control_gpu5_v1/training/owner_state.json",
+      "status": "NATIVE_GROUND_LOCALIZATION200_TRAINING_COMPLETE",
+      "steps": 200,
+      "target_steps": 200,
+      "completed": {},
+      "completed_training": [],
+      "failed": null,
+      "error": null
+    },
+    "localization_native_frontends": {
+      "event": "state_change",
+      "observed_utc_unix": 1792066884.871858,
+      "name": "localization_native_frontends",
+      "source": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/ground_adaptation/localization200_control_gpu5_v1/native_frontends/owner_state.json",
+      "status": "ISOLATED_ORDERED_GROUND_CONTROLS_COMPLETE",
+      "steps": null,
+      "target_steps": null,
+      "completed": {
+        "original_dense_mot4": {
+          "metrics": {
+            "HOTA": 0.7506873030378555,
+            "DetA": 0.6524872012044383,
+            "AssA": 0.8858282015805041,
+            "IDF1": 0.8396946564885496,
+            "IDSW": 1,
+            "FP": 16,
+            "FN": 24
+          }
+        },
+        "original_refer_single8": {
+          "metrics": {
+            "HOTA": 0.30385299622392276,
+            "DetA": 0.26967769073032233,
+            "AssA": 0.34346491228070175,
+            "IDF1": 0.4,
+            "IDSW": 1,
+            "FP": 6,
+            "FN": 1
+          }
+        },
+        "original_refer_multi12": {
+          "metrics": {
+            "HOTA": 0.226642857944184,
+            "DetA": 0.12560241099599692,
+            "AssA": 0.41678279323016154,
+            "IDF1": 0.21739130434782608,
+            "IDSW": 0,
+            "FP": 11,
+            "FN": 25
+          }
+        },
+        "localization200_dense_mot4": {
+          "metrics": {
+            "HOTA": 0.8409871137499395,
+            "DetA": 0.7847289159025048,
+            "AssA": 0.9186247889704194,
+            "IDF1": 0.9498069498069498,
+            "IDSW": 0,
+            "FP": 1,
+            "FN": 12
+          }
+        },
+        "localization200_refer_single8": {
+          "metrics": {
+            "HOTA": 0.1877613930639993,
+            "DetA": 0.1876424658932399,
+            "AssA": 0.19270676691729327,
+            "IDF1": 0.1111111111111111,
+            "IDSW": 1,
+            "FP": 11,
+            "FN": 3
+          }
+        },
+        "localization200_refer_multi12": {
+          "metrics": {
+            "HOTA": 0.2335478457286567,
+            "DetA": 0.19689523584432106,
+            "AssA": 0.28294845911073985,
+            "IDF1": 0.23529411764705882,
+            "IDSW": 4,
+            "FP": 11,
+            "FN": 20
+          }
+        },
+        "localization200_repeat_dense_mot4": {
+          "metrics": {
+            "HOTA": 0.8409871137499395,
+            "DetA": 0.7847289159025048,
+            "AssA": 0.9186247889704194,
+            "IDF1": 0.9498069498069498,
+            "IDSW": 0,
+            "FP": 1,
+            "FN": 12
+          }
+        },
+        "localization200_repeat_refer_single8": {
+          "metrics": {
+            "HOTA": 0.1877613930639993,
+            "DetA": 0.1876424658932399,
+            "AssA": 0.19270676691729327,
+            "IDF1": 0.1111111111111111,
+            "IDSW": 1,
+            "FP": 11,
+            "FN": 3
+          }
+        },
+        "localization200_repeat_refer_multi12": {
+          "metrics": {
+            "HOTA": 0.2335478457286567,
+            "DetA": 0.19689523584432106,
+            "AssA": 0.28294845911073985,
+            "IDF1": 0.23529411764705882,
+            "IDSW": 4,
+            "FP": 11,
+            "FN": 20
+          }
+        },
+        "tracking200_dense_mot4": {
+          "metrics": {
+            "HOTA": 0.8346729605968443,
+            "DetA": 0.7741052138257749,
+            "AssA": 0.9159188965823158,
+            "IDF1": 0.9266409266409267,
+            "IDSW": 0,
+            "FP": 4,
+            "FN": 15
+          }
+        },
+        "tracking200_refer_single8": {
+          "metrics": {
+            "HOTA": 0.2487620445461611,
+            "DetA": 0.18438914027149322,
+            "AssA": 0.3361278195488722,
+            "IDF1": 0.2222222222222222,
+            "IDSW": 0,
+            "FP": 11,
+            "FN": 3
+          }
+        },
+        "tracking200_refer_multi12": {
+          "metrics": {
+            "HOTA": 0.23675419215491136,
+            "DetA": 0.17001748549129855,
+            "AssA": 0.33456584583151,
+            "IDF1": 0.2553191489361702,
+            "IDSW": 2,
+            "FP": 9,
+            "FN": 22
+          }
+        }
+      },
+      "completed_training": [],
+      "failed": null,
+      "error": null
+    },
+    "localization_factorial": {
+      "event": "state_change",
+      "observed_utc_unix": 1792066884.8722205,
+      "name": "localization_factorial",
+      "source": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/ground_adaptation/localization200_control_gpu5_v1/factorial/owner_state.json",
+      "status": "SAME_POLICY_GROUND_ONE_FACTORIAL_CONTROLS_COMPLETE",
+      "steps": null,
+      "target_steps": null,
+      "completed": {
+        "pretrained_original_dense_mot4": {
+          "metrics": {
+            "HOTA": 0.33913062347412115,
+            "DetA": 0.5632161248364749,
+            "AssA": 0.21257789144435893,
+            "IDF1": 0.3148936170212766,
+            "IDSW": 54,
+            "FP": 9,
+            "FN": 44
+          }
+        },
+        "pretrained_original_refer_single8": {
+          "metrics": {
+            "HOTA": 0.0,
+            "DetA": 0.0,
+            "AssA": 0.0,
+            "IDF1": 0.0,
+            "IDSW": 0,
+            "FP": 0,
+            "FN": 5
+          }
+        },
+        "pretrained_original_refer_multi12": {
+          "metrics": {
+            "HOTA": 0.1763629691497842,
+            "DetA": 0.0963974106388967,
+            "AssA": 0.3354155590997696,
+            "IDF1": 0.16666666666666666,
+            "IDSW": 0,
+            "FP": 3,
+            "FN": 27
+          }
+        },
+        "pretrained_localization200_dense_mot4": {
+          "metrics": {
+            "HOTA": 0.3685789278182504,
+            "DetA": 0.5805950005345971,
+            "AssA": 0.24126557666310547,
+            "IDF1": 0.37168141592920356,
+            "IDSW": 48,
+            "FP": 1,
+            "FN": 45
+          }
+        },
+        "pretrained_localization200_refer_single8": {
+          "metrics": {
+            "HOTA": 0.0,
+            "DetA": 0.0,
+            "AssA": 0.0,
+            "IDF1": 0.0,
+            "IDSW": 0,
+            "FP": 0,
+            "FN": 5
+          }
+        },
+        "pretrained_localization200_refer_multi12": {
+          "metrics": {
+            "HOTA": 0.017543859649122806,
+            "DetA": 0.013157894736842105,
+            "AssA": 0.023391812865497075,
+            "IDF1": 0.0,
+            "IDSW": 0,
+            "FP": 4,
+            "FN": 30
+          }
+        },
+        "pretrained_tracking200_dense_mot4": {
+          "metrics": {
+            "HOTA": 0.3519902927995333,
+            "DetA": 0.5847670338903285,
+            "AssA": 0.21998154677641754,
+            "IDF1": 0.33480176211453744,
+            "IDSW": 53,
+            "FP": 3,
+            "FN": 46
+          }
+        },
+        "pretrained_tracking200_refer_single8": {
+          "metrics": {
+            "HOTA": 0.0,
+            "DetA": 0.0,
+            "AssA": 0.0,
+            "IDF1": 0.0,
+            "IDSW": 0,
+            "FP": 0,
+            "FN": 5
+          }
+        },
+        "pretrained_tracking200_refer_multi12": {
+          "metrics": {
+            "HOTA": 0.06696505889340372,
+            "DetA": 0.04582979626485569,
+            "AssA": 0.10526315789473684,
+            "IDF1": 0.06060606060606061,
+            "IDSW": 0,
+            "FP": 2,
+            "FN": 29
+          }
+        },
+        "native_original_dense_mot4": {
+          "metrics": {
+            "HOTA": 0.3193200353056629,
+            "DetA": 0.539669477136249,
+            "AssA": 0.19458687375040676,
+            "IDF1": 0.3389830508474576,
+            "IDSW": 55,
+            "FP": 13,
+            "FN": 47
+          }
+        },
+        "native_original_refer_single8": {
+          "metrics": {
+            "HOTA": 0.0,
+            "DetA": 0.0,
+            "AssA": 0.0,
+            "IDF1": 0.0,
+            "IDSW": 0,
+            "FP": 0,
+            "FN": 5
+          }
+        },
+        "native_original_refer_multi12": {
+          "metrics": {
+            "HOTA": 0.0760545090060766,
+            "DetA": 0.08028473968689188,
+            "AssA": 0.07602339181286549,
+            "IDF1": 0.05714285714285714,
+            "IDSW": 1,
+            "FP": 3,
+            "FN": 28
+          }
+        },
+        "native_localization200_dense_mot4": {
+          "metrics": {
+            "HOTA": 0.3470876204866115,
+            "DetA": 0.6266664255755906,
+            "AssA": 0.19791267616028901,
+            "IDF1": 0.3504273504273504,
+            "IDSW": 58,
+            "FP": 1,
+            "FN": 37
+          }
+        },
+        "native_localization200_refer_single8": {
+          "metrics": {
+            "HOTA": 0.0,
+            "DetA": 0.0,
+            "AssA": 0.0,
+            "IDF1": 0.0,
+            "IDSW": 0,
+            "FP": 0,
+            "FN": 5
+          }
+        },
+        "native_localization200_refer_multi12": {
+          "metrics": {
+            "HOTA": 0.0731301699935475,
+            "DetA": 0.05815262128929362,
+            "AssA": 0.0935672514619883,
+            "IDF1": 0.058823529411764705,
+            "IDSW": 1,
+            "FP": 2,
+            "FN": 28
+          }
+        },
+        "native_tracking200_dense_mot4": {
+          "metrics": {
+            "HOTA": 0.34933560843444206,
+            "DetA": 0.6343809683162451,
+            "AssA": 0.19828146142076175,
+            "IDF1": 0.3305084745762712,
+            "IDSW": 60,
+            "FP": 4,
+            "FN": 38
+          }
+        },
+        "native_tracking200_refer_single8": {
+          "metrics": {
+            "HOTA": 0.0,
+            "DetA": 0.0,
+            "AssA": 0.0,
+            "IDF1": 0.0,
+            "IDSW": 0,
+            "FP": 0,
+            "FN": 5
+          }
+        },
+        "native_tracking200_refer_multi12": {
+          "metrics": {
+            "HOTA": 0.05504072560633626,
+            "DetA": 0.03331918505942275,
+            "AssA": 0.0935672514619883,
+            "IDF1": 0.06060606060606061,
+            "IDSW": 0,
+            "FP": 2,
+            "FN": 29
+          }
+        }
+      },
+      "completed_training": [],
+      "failed": {},
+      "error": null
+    },
+    "natural_memory": {
+      "event": "state_change",
+      "observed_utc_unix": 1792066884.8723717,
+      "name": "natural_memory",
+      "source": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/natural_memory/mot20_05_full_validation_gpu5_v1/owner_state.json",
+      "status": "FRESH_NATIVE_MOT20_1657",
+      "steps": null,
+      "target_steps": null,
+      "completed": {},
+      "completed_training": [],
+      "failed": null,
+      "error": null
+    }
+  },
+  "original_blocking_sessions": {
+    "full1203": 70182,
+    "gpu5_followups": 36847,
+    "native_retention": 52020
+  },
+  "observer_blocking_session": 58829,
+  "limit": "Registration and observed saved state only; original exit codes and completed artifact validation remain required. Full goal not complete."
+}

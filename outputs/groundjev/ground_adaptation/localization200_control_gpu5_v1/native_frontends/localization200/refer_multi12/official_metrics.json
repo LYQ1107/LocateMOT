@@ -1,0 +1,41 @@
+{
+  "status": "OFFICIAL_REGISTERED_MULTITASK_SCOPE_EVALUATION_COMPLETE",
+  "task": "rmot",
+  "dataset": "refer_kitti_v2",
+  "sequence": "0007",
+  "scope": "registered_short_functional_clip",
+  "frames": 12,
+  "all_registered_frames_included": true,
+  "GT_access": "evaluation only",
+  "official_test_labels_read": false,
+  "end_to_end_fps": 1.2012497975881664,
+  "association_replay_fps": null,
+  "perception_rejected_frames": [],
+  "evaluator": "unmodified official TrackEval HOTA/CLEAR/Identity",
+  "evaluator_commit": "12c8791b303e0a0b50f753af204249e622d0281a",
+  "metrics": {
+    "HOTA": 0.2335478457286567,
+    "DetA": 0.19689523584432106,
+    "AssA": 0.28294845911073985,
+    "IDF1": 0.23529411764705882,
+    "IDSW": 4,
+    "FP": 11,
+    "FN": 20
+  },
+  "metric_scale": "fraction; counts for IDSW/FP/FN",
+  "release_query_GT_boxes": 30,
+  "multi_target_frames": 7,
+  "posthoc_proposal_coverage_IoU_05": {
+    "covered": 10,
+    "GT_boxes": 30,
+    "recall": 0.3333333333333333,
+    "scope": "evaluation-only target coverage; not HOTA; never used to correct runtime state"
+  },
+  "empty_target_frames": 3,
+  "empty_target_frame_predictions": 3,
+  "GT_transport_class": "class1 is a query-target transport convention, including cars and people",
+  "GT_policy": "only release expression target IDs; empty frames retained; exact release boxes without clipping",
+  "release_box_format": "normalized top-left xywh",
+  "ignore_policy": "registered expressions have empty release ignore fields",
+  "official_complete_dataset_result": false
+}

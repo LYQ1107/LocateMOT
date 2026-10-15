@@ -1,0 +1,53 @@
+{
+  "status": "OFFICIAL_SCOPE_EVALUATION_COMPLETE",
+  "dataset": "mot17",
+  "sequence": "MOT17-02-FRCNN",
+  "scope": "short_functional_check",
+  "frames": 4,
+  "metrics": {
+    "HOTA": 0.8409871137499395,
+    "DetA": 0.7847289159025048,
+    "AssA": 0.9186247889704194,
+    "IDF1": 0.9498069498069498,
+    "IDSW": 0,
+    "FP": 1,
+    "FN": 12
+  },
+  "metric_scale": "fraction, counts for IDSW/FP/FN",
+  "trackeval_commit": "12c8791b303e0a0b50f753af204249e622d0281a",
+  "gt_view": {
+    "dataset": "mot17",
+    "sequence_lengths": {
+      "MOT17-02-FRCNN": 4
+    },
+    "sources": [
+      {
+        "video": "MOT17-02-FRCNN",
+        "source": {
+          "source_path": "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-02-FRCNN/gt/gt.txt",
+          "sha256": "2e3ecb488da8886d3200d402b2b08890c6d2879923839444e9b74fa43a551440"
+        },
+        "source_frames": [
+          "000302.jpg",
+          "000303.jpg",
+          "000304.jpg",
+          "000305.jpg"
+        ],
+        "view_path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/ground_adaptation/localization200_control_gpu5_v1/native_frontends/localization200_repeat/dense_mot4/official_evaluation/gt/MOT17-02-FRCNN/gt/gt.txt",
+        "view_sha256": "0e62d9b0dba42241650152d70b07d4fdabe574249502d8ce7d98b7f9f9c09e35",
+        "positive_gt_units_before_official_preprocessing": 135
+      }
+    ],
+    "frame_count": 4,
+    "official_test_labels_read": false
+  },
+  "gt_access": "evaluation only",
+  "official_test_labels_read": false,
+  "fixture_only": false,
+  "model_score_claim": true,
+  "perception_rejected_frames": [],
+  "perception_rejection_rate": 0.0,
+  "rejected_frames_in_official_denominator": true,
+  "end_to_end_fps": 0.28400725146715683,
+  "association_replay_fps": null
+}

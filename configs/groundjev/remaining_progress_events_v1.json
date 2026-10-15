@@ -1,0 +1,37 @@
+{
+  "owners": {
+    "full1203": {
+      "identity": [
+        2049900,
+        "42845776"
+      ],
+      "command": "tools/groundjev/run_unified600_controls.py"
+    },
+    "gpu5_followups": {
+      "identity": [
+        2207841,
+        "43963616"
+      ],
+      "command": "tools/groundjev/run_gpu5_followups.py"
+    },
+    "native_retention": {
+      "identity": [
+        1865651,
+        "41803969"
+      ],
+      "command": "tools/groundjev/reattach_native_full9.py"
+    }
+  },
+  "states": {
+    "full1203": "outputs/groundjev/training/onejev_full1203_controls_v2_wait_fix/owner_state.json",
+    "gpu5_followups": "outputs/groundjev/gpu5_followups_v1/owner_state.json",
+    "native_retention": "outputs/groundjev/ground_retention/reattached_full9_owner_v1/owner_state.json",
+    "localization_workflow": "outputs/groundjev/ground_adaptation/localization200_control_gpu5_v1/owner_state.json",
+    "localization_training": "outputs/groundjev/ground_adaptation/localization200_control_gpu5_v1/training/owner_state.json",
+    "localization_native_frontends": "outputs/groundjev/ground_adaptation/localization200_control_gpu5_v1/native_frontends/owner_state.json",
+    "localization_factorial": "outputs/groundjev/ground_adaptation/localization200_control_gpu5_v1/factorial/owner_state.json",
+    "natural_memory": "outputs/groundjev/natural_memory/mot20_05_full_validation_gpu5_v1/owner_state.json",
+    "natural_controls": "outputs/groundjev/natural_memory/mot20_05_full_validation_gpu5_v1/controls/owner_state.json"
+  },
+  "scope": "Read-only state and process-exit events for existing registered owners; original blocking handles retain authoritative exit codes. No model/GPU commands or periodic filesystem/process polling."
+}

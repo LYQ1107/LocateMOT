@@ -1,0 +1,54 @@
+{
+  "status": "NATIVE_GROUND_LOCALIZATION200_TRAINING_COMPLETE",
+  "steps": 200,
+  "target_steps": 200,
+  "physical_gpu": 5,
+  "seed": 42,
+  "native_language_and_vision_frozen": true,
+  "formal_adaptation_and_retention_complete": false,
+  "adaptation_objective": "native_dense_referring_localization_only",
+  "identity_loss_coefficients": {
+    "teacher": 0.0,
+    "native_proposals": 0.0
+  },
+  "execution_runtime": {
+    "torch": "2.10.0+cu128",
+    "transformers": "5.7.0",
+    "triton": "3.6.0"
+  },
+  "actual_checkpoint_interval": 25,
+  "native_attention_compile_policy": "same original native FlexAttention kernel/masks; concrete shapes, CUDA graphs disabled",
+  "execution_diagnostic": "synchronize native noisy FlexAttention before native clean attention; masks/math unchanged",
+  "corpus": {
+    "rows": 112,
+    "dense_rows": 32,
+    "referring_rows": 80,
+    "negative_referring_rows": 0,
+    "native_proposals": 884,
+    "native_aligned_regions": 628,
+    "pairs": 56,
+    "unique_images": 72,
+    "native_pair_contrastive_support": 24
+  },
+  "resume_state": null,
+  "trainable_parameters": 27267584,
+  "current_supervision": "referring",
+  "gradient_probes": {
+    "dense": {
+      "native_DLM_gradient_norm": 8.869149208068848
+    },
+    "referring": {
+      "native_DLM_gradient_norm": 11.324326515197754
+    }
+  },
+  "latest_complete_training_state_step": 200,
+  "changed_FP32_elements": 27267384,
+  "changed_BF16_elements": 16164180,
+  "checkpoint_reload_max_difference": 0.0,
+  "peak_allocated_bytes": 18313928704,
+  "all_registered_pairs_visited": true,
+  "registered_pair_count": 56,
+  "full_model_original_tensor_count": 569,
+  "dense_referring_tracking_retention_evaluation": "pending actual unchanged before/after scoring",
+  "complete_training_not_full_research_goal": true
+}
