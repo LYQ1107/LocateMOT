@@ -1,0 +1,30 @@
+{
+  "owner_pid": 3153611,
+  "owner_starttick": "47552778",
+  "owner_git_commit": "e8cfa2664df21413afbd8bf6a307213a3d69486a",
+  "plan": "configs/groundjev/compact_original_recipe_continuation1200_v1.json",
+  "GPUs": [],
+  "source_groups": {
+    "0": 149,
+    "1": 325,
+    "2": 62
+  },
+  "source_withholding_groups": 69,
+  "source_native_teacher_groups": {
+    "0": 149
+  },
+  "additional_feature_cache_bytes": 0,
+  "status": "ORIGINAL_RECIPE1200_REAL_TRAINING_COMPLETE_TRACKING_CONTROLS_PENDING",
+  "blocking_session": 76373,
+  "training": {
+    "steps": 1200,
+    "sampled_groups_each_task": 400,
+    "RMOT_OVMOT_sample_streams_exactly_equal_completed_pair": true,
+    "three_task_reload_max_difference": 0,
+    "full_state_equals_checkpoint_and_finite": true,
+    "checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/original_recipe_continuation1200_v1/training/checkpoint.pt",
+    "parameters": 1146511,
+    "actual_loop_seconds": 26.2949645339977
+  },
+  "full_goal_complete": false
+}

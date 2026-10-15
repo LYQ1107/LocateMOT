@@ -1,0 +1,21 @@
+{
+  "project_root": "/data2/user/LocateMOT",
+  "hypothesis": "Determine whether the previous DT/TAO regression also occurs when continuing the complete original recipe, rather than attributing it to history refresh or removing distillation/withholding without a continuation control.",
+  "paired_history_plan": "configs/groundjev/compact_own_history_refresh1200_pair_v1.json",
+  "pack": "outputs/groundjev/compact/rmot_native72_v1/broad_native",
+  "checkpoint": "outputs/groundjev/compact/rmot_native72_stage_v1/broad_native_training/checkpoint.pt",
+  "output": "outputs/groundjev/compact/original_recipe_continuation1200_v1",
+  "steps": 1200,
+  "seed": 0,
+  "lr": 0.0002,
+  "device": "cpu",
+  "cpu_threads": 4,
+  "sampling": "same independent per-task seed0/1/2 streams as the completed history pair,400groups per task; RMOT/OVMOT sampled IDs must match exactly, MOT original149-group pool differs intentionally",
+  "recipe": "All original536groups including69derived-withholding MOT groups, original native_teacher flags and0.2distillation, unchanged labels/loss/architecture; new phase optimizer/RNG reset as in the completed pair, not an exact original optimizer continuation",
+  "evaluation": "same final shared1200 checkpoint on all five registered scopes; before references reused and validated, original scorers and thresholds; no model selection from individual tasks",
+  "comparison_limit": "Original-recipe continuation versus before and the already completed recipe/history pair. Original versus altered recipe changes both withholding and distillation; this does not isolate those two factors separately.",
+  "new_GPU_DLM_ROI_or_feature_pack": false,
+  "combined_registered_feature_upper_bytes": 26739639402,
+  "global_temporary_feature_budget_bytes": 26843545600,
+  "full_goal_complete": false
+}
