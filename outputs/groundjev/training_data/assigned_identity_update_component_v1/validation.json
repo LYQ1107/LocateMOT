@@ -1,0 +1,11 @@
+{
+  "status": "ACTUAL_FINAL_ID_COMPONENT_INPUTS_TARGETS_AND_UNKNOWNS_VALIDATED",
+  "all_source_candidates_registered": 1184,
+  "supervised_rows_checked": 613,
+  "source_state_and_media_preserved_exactly": true,
+  "every_new_question_names_actual_selected_input_alias": true,
+  "existing_independent_audit_conflicting_examples_reproduced": 12,
+  "unknown_existing_assignments_have_no_target_but_remain_in_request": 45,
+  "source_observation_questions_and_targets_preserved": true,
+  "no_new_model_or_tracking_result": true
+}

@@ -1,5 +1,42 @@
 # GroundJEV-MOT current evidence — 2026-10-16
 
+## Final-assigned-ID update component — 2026-10-16
+
+Implemented a separate question builder, not enabled in the current tracker:
+`locatemot/groundjev/assigned_identity_update.py`. It preserves the original
+causal visual state and adds all actual existing-ID assignments from final
+global matching, including unknown/unmatched assignments. Each new Noul question
+explicitly asks whether this candidate should enter that specific identity's
+long-term memory. No GT eligibility controls which assignments enter the input.
+The builder is intended for a future post-global-matching, pre-write phase;
+that runtime and its causal tracking evaluation are still required.
+
+Prepared the component from the already-completed native600actor's48legal-fit
+frames/1,184native candidates. All candidates are registered:82NEW,444without
+final ID,45known-consistent existing,568known-conflicting existing,15unknown
+birth and30unmatched existing. Actor IDs map consistently to saved randomized
+history/crop aliases using actual shortlist order. The613known assignments
+supply29yes/584no labels, using immutable birth-ID consistency and the original
+visibility>=.6proxy. The45unknown/unmatched existing assignments have no
+supervised target and remain present in the input assignments. The300old
+candidate-observation Q3yes/new assigned-IDno cases are different questions,
+not silently changed labels. All original questions/targets and actor states
+remain untouched; no GT state correction, new image artifact or model call.
+
+All613new questions retain exact old state apart from the declared final
+assignment, retain exact media references and name the actual selected input
+alias. Twelve independent audit conflict examples reproduce exactly. Full CPU
+native planning exits0:613rows,0drops,max27,234tokens,total13,305,265tokens,
+actual plan_epoch17.393s;154updates is only a hypothetical4-row component epoch.
+All component files are under16MiB; conservative total26,443,764,493<25GiB.
+This tiny, highly imbalanced component is not trained or deployed and does not
+establish accuracy, runtime/training equivalence or ordinary-model performance.
+Current paired600training/questions/loss and four-scope control queues remain
+unchanged. Broader balanced data and matched post-assignment runtime are needed
+before a future causal comparison.
+
+Evidence: `outputs/groundjev/training_data/assigned_identity_update_component_v1/{validated_component_summary,validation,files_manifest}.json`.
+
 ## Three-arm final-assignment memory diagnosis — 2026-10-16
 
 Read-only full-video diagnosis now includes all three completed Full arms,

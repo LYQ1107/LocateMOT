@@ -699,3 +699,31 @@ write precision. The current candidate-only Q3 question precedes final matching;
 final-ID-conditioned supervision needs a separately matched training/runtime
 protocol. No running paired600data/loss/runtime changed, new model calls, GPU
 allocation, feature cache or predictions.
+
+
+## Explicit final-ID-conditioned write supervision — 2026-10-16
+
+A new standalone builder names the actually assigned existing identity after
+global matching, before memory write; it is not enabled in the current tracker.
+Input includes all assigned existing IDs irrespective of GT eligibility and
+reuses original state/crop aliases/media. Source is the completed native600fit48
+actor, not evaluation GT or a new actor run. All1,184candidates are registered,
+including82NEW/444no-final-ID/45known-consistent/568known-conflicting/15unknown
+birth/30unmatched. The613known assignments yield29yes/584no using immutable
+birth-ID equality plus originalvisibility>=.6. All45unknown/unmatched existing
+assignments remain input-visible and lack a target; no negative truth invented.
+300oldQ3yes/newassigned-IDno cases are explicitly different questions; old data
+and ongoing paired600runs remain unchanged.
+
+Session66147exit0: complete613-row CPU plan,0drops,max27,234,total13,305,265tokens,
+17.393actual plan_epoch seconds;154hypothetical4-row updates,0optimizer updates.
+All613states/media match original apart from declared final assignment, questions
+name the actual selected alias,12independent audit conflict examples reproduce.
+No new image/features/GPU/model calls;16MiBreserve,total26,443,764,493<25GiB.
+Not trained, not deployed, not runtime/training equivalence or tracking gain.
+Future work must implement the same builder at the actual pre-write runtime
+boundary, balance data and run causal same-protocol three-task comparisons.
+
+Code: `locatemot/groundjev/assigned_identity_update.py`,
+`tools/groundjev/prepare_assigned_identity_update_component.py`.
+Evidence: `outputs/groundjev/training_data/assigned_identity_update_component_v1/{validated_component_summary,validation,files_manifest}.json`.

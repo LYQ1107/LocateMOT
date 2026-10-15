@@ -1,0 +1,19 @@
+{
+  "project_root": "/data2/user/LocateMOT",
+  "source": "outputs/groundjev/training_data/native600_fit_rollout_refresh_v1/rollout",
+  "source_audit": "outputs/groundjev/diagnostics/full_fit_update_supervision_native600_v1/audit.json",
+  "output": "outputs/groundjev/training_data/assigned_identity_update_component_v1",
+  "known_consistent_existing_assignments": 45,
+  "known_conflicting_existing_assignments": 568,
+  "unknown_birth_existing_assignments": 15,
+  "unmatched_existing_assignments": 30,
+  "visibility_threshold_from_existing_observation_proxy": 0.6,
+  "new_export_budget_bytes": 16777216,
+  "combined_registered_upper_bytes": 26443764493,
+  "global_temporary_feature_budget_bytes": 26843545600,
+  "question_role": "new explicitly final-ID-conditioned task; not replacement labels under the old candidate-only Q3",
+  "known_target_rule": "yes iff final assigned immutable birth anchor matches current candidate GT identity and visibility>=0.6; known conflicting assignment is no",
+  "unknown_rule": "register without a supervised target; never infer negative truth",
+  "current_tracker_or_training_enabled": false,
+  "future_requirement": "post-global-matching runtime using the same builder and pre-write evidence; needs separate training, causal rollout, and matched three-task evaluation"
+}
