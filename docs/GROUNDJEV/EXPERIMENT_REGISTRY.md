@@ -522,3 +522,23 @@ Full/Compact fresh same800/GPU5 E2E is queued after the existing full-RMOT owner
 with separately restarted DLM services and strict actual candidate pairing.
 No replay timing is used as native E2E. See paired_tracking_e2e_v1.json and
 mot_exposure_controls_v1.json. No full goal completion or model promotion.
+
+## 2026-10-15 — Frozen association/context and shared Full teacher controls
+
+- fixed_affinity_controls_v1: five frozen association/auxiliary combinations,
+  same semantic functions/native2560/text inputs; allDT1203, RMO8/12,
+  raw/aliasTAO40. CPU owner1986817/session48561 running. Learnt CPU32
+  DT reference exactly reproduces official HOTA26.3157/IDF1 30.6329/IDSW165;
+  full comparison is pending, not a unique JEV proof.
+- shortlist_rank_alias40_v1: all40 causal states/outputs exactly reproduced,
+  same-trajectory32/64/128 correct-option coverage53.097/60.177/74.336%,
+ 113eligible existing-anchor events; max420tracks/rank395. Coverage only.
+- compact_context_sizes_v1: registered before64/128full-video inference.
+  Dense2-frame251-ID CLI regression passes; queued CPU owner2003663 waits
+  existing affinity owner complete+exit. Same frozen learned/fixedcos policies
+  onDT1203 and aliasTAO40,32references reused,8new64/128units, no newfeatures.
+  Out-of-training-context and changed semantic/softmax/history effects explicit.
+- Full before500/teacher600 same-policy4/8/12/4 controls validated: HOTA
+ 30.868->30.601,0->0,0->9.945; BaseTAO TETA11.981->52.181. All1203
+  categories supplied but one Base class in4frames, no Novel claim. Native600
+  remains pending; no full-video transfer/promotion/E2E or unified success claim.

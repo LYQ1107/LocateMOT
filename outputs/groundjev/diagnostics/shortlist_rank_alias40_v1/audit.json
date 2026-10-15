@@ -1,0 +1,250 @@
+{
+  "status": "EXACT_CAUSAL_REPLAY_FROZEN_TRAJECTORY_SHORTLIST_RANKS_VALIDATED",
+  "manifest": "outputs/groundjev/multitask_pilot_data/ovmot_tao_base_novel63_full.json",
+  "source": "outputs/groundjev/multitask_runs/tao_exact_geometry_alias40_v1/frame_candidates.jsonl",
+  "run": "outputs/groundjev/multitask_runs/tao_exact_geometry_alias40_v1/shared_compact",
+  "counts": {
+    "maximum_live_tracks": 420,
+    "frames_with_more_than32_live_tracks": 39,
+    "frames": 40,
+    "candidates": 7343,
+    "existing_identity_events": 113
+  },
+  "candidate_group_size": 16,
+  "actual_shortlist_size": 32,
+  "fixed_original_trajectory_coverage": {
+    "32": 0.5309734513274337,
+    "64": 0.6017699115044248,
+    "128": 0.7433628318584071
+  },
+  "all_live_id_upper_bound": 1.0,
+  "minimum_rank_of_any_correct_surviving_birth_anchor_histogram": {
+    "1": 2,
+    "2": 2,
+    "3": 3,
+    "4": 4,
+    "5": 7,
+    "6": 4,
+    "7": 2,
+    "8": 5,
+    "9": 2,
+    "10": 5,
+    "11": 3,
+    "12": 1,
+    "14": 2,
+    "15": 1,
+    "16": 3,
+    "17": 2,
+    "18": 2,
+    "20": 1,
+    "22": 1,
+    "26": 1,
+    "28": 2,
+    "29": 2,
+    "30": 1,
+    "31": 1,
+    "32": 1,
+    "35": 1,
+    "37": 1,
+    "39": 1,
+    "44": 1,
+    "51": 1,
+    "58": 1,
+    "59": 2,
+    "74": 1,
+    "76": 2,
+    "77": 1,
+    "80": 1,
+    "84": 1,
+    "85": 1,
+    "91": 1,
+    "93": 1,
+    "98": 1,
+    "99": 2,
+    "103": 1,
+    "120": 1,
+    "127": 1,
+    "128": 1,
+    "142": 1,
+    "152": 1,
+    "169": 1,
+    "186": 1,
+    "190": 1,
+    "196": 1,
+    "202": 2,
+    "205": 1,
+    "219": 1,
+    "221": 1,
+    "226": 1,
+    "251": 1,
+    "257": 1,
+    "261": 1,
+    "264": 1,
+    "280": 1,
+    "285": 1,
+    "294": 1,
+    "296": 1,
+    "300": 1,
+    "309": 1,
+    "311": 1,
+    "320": 1,
+    "328": 1,
+    "350": 1,
+    "362": 1,
+    "373": 1,
+    "395": 1
+  },
+  "first16_rank_gt32_examples": [
+    {
+      "frame": 30,
+      "candidate": 184,
+      "best_correct_anchor_rank": 103,
+      "live_tracks": 251,
+      "correct_anchor_ids": [
+        220
+      ]
+    },
+    {
+      "frame": 59,
+      "candidate": 47,
+      "best_correct_anchor_rank": 186,
+      "live_tracks": 300,
+      "correct_anchor_ids": [
+        24
+      ]
+    },
+    {
+      "frame": 59,
+      "candidate": 190,
+      "best_correct_anchor_rank": 77,
+      "live_tracks": 300,
+      "correct_anchor_ids": [
+        163
+      ]
+    },
+    {
+      "frame": 88,
+      "candidate": 21,
+      "best_correct_anchor_rank": 280,
+      "live_tracks": 323,
+      "correct_anchor_ids": [
+        24
+      ]
+    },
+    {
+      "frame": 88,
+      "candidate": 99,
+      "best_correct_anchor_rank": 84,
+      "live_tracks": 323,
+      "correct_anchor_ids": [
+        220,
+        289
+      ]
+    },
+    {
+      "frame": 88,
+      "candidate": 113,
+      "best_correct_anchor_rank": 59,
+      "live_tracks": 323,
+      "correct_anchor_ids": [
+        163
+      ]
+    },
+    {
+      "frame": 88,
+      "candidate": 126,
+      "best_correct_anchor_rank": 190,
+      "live_tracks": 323,
+      "correct_anchor_ids": [
+        205
+      ]
+    },
+    {
+      "frame": 117,
+      "candidate": 43,
+      "best_correct_anchor_rank": 328,
+      "live_tracks": 406,
+      "correct_anchor_ids": [
+        205
+      ]
+    },
+    {
+      "frame": 117,
+      "candidate": 64,
+      "best_correct_anchor_rank": 80,
+      "live_tracks": 406,
+      "correct_anchor_ids": [
+        163
+      ]
+    },
+    {
+      "frame": 117,
+      "candidate": 141,
+      "best_correct_anchor_rank": 362,
+      "live_tracks": 406,
+      "correct_anchor_ids": [
+        24
+      ]
+    },
+    {
+      "frame": 146,
+      "candidate": 22,
+      "best_correct_anchor_rank": 373,
+      "live_tracks": 419,
+      "correct_anchor_ids": [
+        24
+      ]
+    },
+    {
+      "frame": 146,
+      "candidate": 153,
+      "best_correct_anchor_rank": 350,
+      "live_tracks": 419,
+      "correct_anchor_ids": [
+        205
+      ]
+    },
+    {
+      "frame": 175,
+      "candidate": 191,
+      "best_correct_anchor_rank": 395,
+      "live_tracks": 420,
+      "correct_anchor_ids": [
+        205
+      ]
+    },
+    {
+      "frame": 233,
+      "candidate": 14,
+      "best_correct_anchor_rank": 142,
+      "live_tracks": 389,
+      "correct_anchor_ids": [
+        422
+      ]
+    },
+    {
+      "frame": 262,
+      "candidate": 17,
+      "best_correct_anchor_rank": 219,
+      "live_tracks": 373,
+      "correct_anchor_ids": [
+        422
+      ]
+    },
+    {
+      "frame": 291,
+      "candidate": 195,
+      "best_correct_anchor_rank": 205,
+      "live_tracks": 324,
+      "correct_anchor_ids": [
+        422
+      ]
+    }
+  ],
+  "every_actual_outputs_and_state_replayed_exactly": true,
+  "GT_input_to_tracker_or_repaired_history": false,
+  "GT_ownership_read_from_completed_posthoc_diagnostic_only": true,
+  "counterfactual_tracking_accuracy_or_new_model_inference": false,
+  "limit": "Coverage only under the original causal trajectory. Larger context changes model softmax/context and subsequent histories; requires actual new full-video runs. Excludes already terminated or never correctly born identities.",
+  "new_feature_cache_files_or_GPUs": false
+}

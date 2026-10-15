@@ -1,0 +1,66 @@
+{
+  "checkpoint": "outputs/groundjev/compact/rmot_native72_stage_v1/broad_native_training/checkpoint.pt",
+  "regression": "outputs/groundjev/validation/fixed_affinity_storage_v1/validation.json",
+  "device": "CPU four threads per child, one serial owner, zero extra GPUs",
+  "memory_storage": "All new arms binary final full state with every original float64/list/image/history field; per-frame complete decisions plus exact shared native sources support causal replay. Actual4-frame outputs/states and next-frame restoration exact versus old JSON1. No replay or storage-policy speed comparison with legacy runs.",
+  "new_feature_cache_files": false,
+  "official_metrics": "Unmodified TrackEval/TETA, all frames including empty/rejected, GT only for scorer/posthoc; never runtime state correction.",
+  "name": "Frozen Compact context32/64/128 intervention",
+  "hypothesis": "Actual frozen trajectory loses surviving correct birth anchors outside geometry shortlist32; test context size on real full-video state evolution without new training or GT correction.",
+  "upstream_owner": "outputs/groundjev/compact/fixed_affinity_controls_v1",
+  "arms": {
+    "learned32": {
+      "association": "learned",
+      "auxiliary": "learned",
+      "shortlist": 32,
+      "reference_arm": "learned_reference"
+    },
+    "fixed_cosine32": {
+      "association": "fixed_iou_cosine",
+      "auxiliary": "fixed",
+      "shortlist": 32,
+      "reference_arm": "iou_cosine_fixed"
+    },
+    "learned64": {
+      "association": "learned",
+      "auxiliary": "learned",
+      "shortlist": 64
+    },
+    "fixed_cosine64": {
+      "association": "fixed_iou_cosine",
+      "auxiliary": "fixed",
+      "shortlist": 64
+    },
+    "learned128": {
+      "association": "learned",
+      "auxiliary": "learned",
+      "shortlist": 128
+    },
+    "fixed_cosine128": {
+      "association": "fixed_iou_cosine",
+      "auxiliary": "fixed",
+      "shortlist": 128
+    }
+  },
+  "scopes": {
+    "mot_full1203": {
+      "manifest": "outputs/groundjev/pilot_data/dancetrack.json",
+      "candidates": "outputs/groundjev/compact/dancetrack0004_native300_v2_empty_roi_fixed/compact_distilled/frame_decisions.jsonl",
+      "frames": 1203,
+      "candidates_count": 13664
+    },
+    "tao_alias_full40": {
+      "manifest": "outputs/groundjev/multitask_pilot_data/ovmot_tao_base_novel63_full.json",
+      "candidates": "outputs/groundjev/multitask_runs/tao_exact_geometry_alias40_v1/frame_candidates.jsonl",
+      "frames": 40,
+      "candidates_count": 7343,
+      "scope_limit": "Separate exact-geometry proposal/first-label policy; not pooled with raw candidate comparisons. All35228 aliases retained."
+    }
+  },
+  "comparison_limit": "Prespecified32/64/128, same frozen1.146511Mweights/nativeinputs/group16/semanticfunctions. Context64/128 is outside original training32 and changes pooled context, softmax, semantic output and endogenous trajectory; not pure retrieval isolation or retuned model. Matched32 references reused only after entire actual affinity owner completes+exits; no rawTAO/alias mixing. Onevideo/seed, CPUreplay noE2E/speed or best-arm promotion claim.",
+  "wait": "One blocking owner registers original PID/start ticks and waits internal sleep; no new control child until upstream exits with successful completed status.",
+  "status": "registered before actual64/128video inference",
+  "launch": "python3 tools/groundjev/run_fixed_affinity_controls.py --plan configs/groundjev/compact_context_sizes_v1.json --out outputs/groundjev/compact/context_sizes_v1",
+  "full_goal_complete": false,
+  "context_regression": "outputs/groundjev/validation/compact_context_sizes_v1/validation.json"
+}

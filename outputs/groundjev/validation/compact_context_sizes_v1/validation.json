@@ -1,0 +1,9 @@
+{
+  "status": "REAL_DENSE_TAO_CONTEXT32_64_128_FUNCTIONAL_VALIDATED",
+  "actual_frames_each": 2,
+  "actual_live_IDs_before_second_frame": 251,
+  "default32_vs_explicit32_all_predictions_and_state_exact": true,
+  "every_second_frame_candidate_has_exact_requested32_64_128_options": true,
+  "GT_or_future_read": false,
+  "official_accuracy_or_native_E2E_claim": false
+}

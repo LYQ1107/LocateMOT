@@ -74,6 +74,8 @@ def main():
     parser.add_argument('--checkpoint', type=Path, default=ROOT / 'models/OneJev-0.8B')
     parser.add_argument('--backend', choices=['simple', 'simple_native', 'simple_temporal', 'full', 'compact'], default='full')
     parser.add_argument('--compact-device',choices=['cpu','cuda:0'],default='cuda:0',help='explicit device for trained Compact replay; report actual device, no detector E2E claim')
+    parser.add_argument('--compact-shortlist',type=int,choices=[32,64,128],default=32,
+                        help='registered context-size intervention; larger values exceed the original 32-ID training context')
     parser.add_argument('--compact-association-policy',choices=['learned','fixed_iou','fixed_iou_cosine'],default='learned')
     parser.add_argument('--compact-auxiliary-policy',choices=['learned','fixed'],default='learned')
     parser.add_argument('--evidence-format',choices=['v1','v2_crop_motion','v3_crop_motion','v4_native_features','v5_native_features_csv','v6_native_compact_history'],default='v1')
@@ -113,7 +115,7 @@ def main():
         parser.error('requested task differs from the registered video scope')
     if args.native_rmot_membership and (args.backend != 'full' or args.task != 'rmot'):
         parser.error('native RMOT membership requires the Full OneJev backend and RMOT task')
-    if args.backend!='compact' and (args.compact_association_policy!='learned' or args.compact_auxiliary_policy!='learned'):
+    if args.backend!='compact' and (args.compact_association_policy!='learned' or args.compact_auxiliary_policy!='learned' or args.compact_shortlist!=32):
         parser.error('Compact policy controls require the Compact backend')
     vocabulary = args.vocabulary or manifest['vocabulary']
     args.expression = args.expression or manifest.get('expression')
@@ -139,7 +141,7 @@ def main():
             import torch
             torch.set_num_threads(4)
         from locatemot.groundjev.compact import CompactDecision
-        decision=CompactDecision(args.checkpoint,device=args.compact_device,memory_feature_view=args.memory_feature_view)
+        decision=CompactDecision(args.checkpoint,device=args.compact_device,shortlist=args.compact_shortlist,memory_feature_view=args.memory_feature_view)
         if args.compact_association_policy!='learned' or args.compact_auxiliary_policy!='learned':
             from locatemot.groundjev.compact import CompactAffinityControl
             if not decision.model.semantic:
@@ -320,6 +322,7 @@ def main():
               'evidence_format':args.evidence_format,
               'native_feature_url':args.native_feature_url,
               'compact_association_policy':args.compact_association_policy,'compact_auxiliary_policy':args.compact_auxiliary_policy,
+              'compact_shortlist_limit':args.compact_shortlist if args.backend=='compact' else None,
               'adaptive_context_groups':args.adaptive_context_groups,
               'category_policy':args.category_policy,
               'scope': 'short_functional_check' if args.limit else manifest['scope'],

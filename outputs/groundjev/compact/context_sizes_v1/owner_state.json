@@ -1,0 +1,16 @@
+{
+  "status": "WAITING_REGISTERED_AFFINITY_OWNER_EXIT",
+  "owner_pid": 2003663,
+  "plan": "configs/groundjev/compact_context_sizes_v1.json",
+  "device": "cpu",
+  "additional_GPUs": 0,
+  "new_feature_cache_files": false,
+  "completed": {},
+  "full_goal_complete": false,
+  "comparison": "Prespecified32/64/128, same frozen1.146511Mweights/nativeinputs/group16/semanticfunctions. Context64/128 is outside original training32 and changes pooled context, softmax, semantic output and endogenous trajectory; not pure retrieval isolation or retuned model. Matched32 references reused only after entire actual affinity owner completes+exits; no rawTAO/alias mixing. Onevideo/seed, CPUreplay noE2E/speed or best-arm promotion claim.",
+  "memory_storage": "All new arms binary final full state with every original float64/list/image/history field; per-frame complete decisions plus exact shared native sources support causal replay. Actual4-frame outputs/states and next-frame restoration exact versus old JSON1. No replay or storage-policy speed comparison with legacy runs.",
+  "upstream_owner": [
+    1986817,
+    "42593585"
+  ]
+}

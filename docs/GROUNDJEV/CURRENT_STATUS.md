@@ -107,7 +107,7 @@ GPU4 reuse. It will validate real600 native MM reloads and score the same
 native semantic policies for before500/teacher600/native600 on four registered
 short scopes. The before500 MOT result is reused because its policy is already
 identical. RMOT uses native Noul membership with unchanged .5 threshold; OVMOT
-uses all1203 supplied categories and explicit UNKNOWN. No600 accuracy claim yet.
+uses all1203 supplied categories and explicit UNKNOWN. Teacher600 same-policy four-scope scores have completed (table below); native600 scores remain pending.
 Plan: configs/groundjev/onejev_unified600_controls_v1.json.
 
 TAO Base/Novel63 perception is complete: all40frames,520native queries,
@@ -988,3 +988,46 @@ state; no speed comparison to older JSON/every-frame exports. Defaults remain
 JSON/every-frame. Final full state export is now included in the pipeline timer;
 older timing receipts excluded that duplicate final export and remain historical.
 The queued fresh paired E2E runs will use the corrected boundary for both arms.
+
+## Same-policy Full teacher600 scores and context research — 2026-10-15
+
+Real pretrained OneJev500 versus600 additional shared teacher-stage updates,
+unchanged native candidates and native semantic policies:
+
+| Registered short scope | Before500 | Teacher600 |
+|---|---:|---:|
+|MOT4 HOTA %|30.868|30.601|
+|RMOT single8 HOTA %|0|0|
+|RMOT multiple12 HOTA %|0|9.945|
+|TAO Base4 TETA %|11.981|52.181|
+|TAO Base4 AssocA %|18.399|28.308|
+|TAO Base4 ClsA %|0|100|
+
+All8 actual controls retain their original frames/candidates and decoded videos.
+Both RMOT phases use native Noul membership>=.5, unlike the legacy ungated
+500 controls. All1203categories remain supplied; Base4 has only the Base
+person/baby canonical category, so ClsA100 is not broad or Novel recognition.
+Teacher600 resumed exact450 FP32/Adam/RNG state but not bitwise trajectory;
+that discrepancy remains explicit. No model promotion/whole-video/E2E claim.
+Receipt: training/onejev_unified600_semantic_controls_v1/
+before500_teacher600_validation_and_summary.json under outputs/groundjev.
+Native600 trainer and its registered controls continue independently.
+
+TAO exact-alias40 causal replay reproduced every original output and state,
+including all7343candidates. With113 surviving-birth-anchor observations,
+frozen-trajectory correct-option coverage at32/64/128 is53.097/60.177/74.336%.
+Maximum420live tracks; best correct rank reaches395. This is a coverage
+diagnostic, excluding already terminated/never correctly born anchors; it
+does not establish larger-context tracking accuracy. No GT modifies runtime.
+RawTAO40 rank audit is running in its original blocking session86629.
+
+New context32/64/128 experiment is registered in
+configs/groundjev/compact_context_sizes_v1.json. Same frozen model, native
+inputs, group16 and semantic functions; actual64/128 runs exceed the training
+context32 and change pooled context/softmax and the entire subsequent history.
+Dense functional check uses251live IDs before frame2, all requested option
+counts valid and default32/explicit32 predictions/states exact. Owner2003663
+(session5404) waits for affinity owner1986817 to finish and exit before
+running8 additional full-video controls (learned and fixed-cosine64/128 on
+DT1203 and aliasTAO40); it revalidates existing matched CPU32 references.
+No additional GPUs/new feature source or speed claim. Full goal remains active.

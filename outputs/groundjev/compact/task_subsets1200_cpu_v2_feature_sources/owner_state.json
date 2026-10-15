@@ -1,5 +1,5 @@
 {
-  "status": "all_three_tao_raw_full40_INFERENCE",
+  "status": "WAITING_VERIFIED_FRESH_SINGLE800_SOURCE",
   "owner_pid": 1927135,
   "device": "cpu",
   "additional_GPUs": 0,
@@ -872,6 +872,187 @@
       "all_exact_candidate_geometry_order_and_frames_retained": true,
       "correct_option_coverage": 0.2125984251968504,
       "existing_association_accuracy": 0.07086614173228346
+    },
+    "all_three_tao_raw_full40": {
+      "run": "outputs/groundjev/compact/task_subsets1200_cpu_v2_feature_sources/all_three_tao_raw_full40",
+      "decoded_frames": 40,
+      "metrics": {
+        "TETA": 10.081,
+        "LocA": 7.4113,
+        "AssocA": 5.3013,
+        "ClsA": 17.532,
+        "LocRe": 84.771,
+        "LocPr": 7.508,
+        "AssocRe": 5.4377,
+        "AssocPr": 66.196,
+        "ClsRe": 33.333,
+        "ClsPr": 17.532
+      },
+      "base_novel": {
+        "base": {
+          "TETA": 12.525,
+          "LocA": 5.2411,
+          "AssocA": 6.0364,
+          "ClsA": 26.2975,
+          "LocRe": 84.406,
+          "LocPr": 5.30725,
+          "AssocRe": 6.20115,
+          "AssocPr": 65.6925,
+          "ClsRe": 50.0,
+          "ClsPr": 26.2975
+        },
+        "novel": {
+          "TETA": 5.1942,
+          "LocA": 11.752,
+          "AssocA": 3.8311,
+          "ClsA": 0.0,
+          "LocRe": 85.5,
+          "LocPr": 11.909,
+          "AssocRe": 3.9109,
+          "AssocPr": 67.204,
+          "ClsRe": 0.0,
+          "ClsPr": 0.0
+        }
+      },
+      "all_exact_candidate_geometry_order_and_frames_retained": true,
+      "correct_option_coverage": 0.15079365079365079,
+      "existing_association_accuracy": 0.047619047619047616
+    },
+    "mot_rmot_single8": {
+      "run": "outputs/groundjev/compact/task_subsets1200_cpu_v2_feature_sources/mot_rmot_single8",
+      "decoded_frames": 8,
+      "metrics": {
+        "HOTA": 0.0,
+        "DetA": 0.0,
+        "AssA": 0.0,
+        "IDF1": 0.0,
+        "IDSW": 0,
+        "FP": 3,
+        "FN": 5
+      },
+      "base_novel": null,
+      "all_exact_candidate_geometry_order_and_frames_retained": true,
+      "correct_option_coverage": null,
+      "existing_association_accuracy": null
+    },
+    "mot_rmot_rmot_single8": {
+      "run": "outputs/groundjev/compact/task_subsets1200_cpu_v2_feature_sources/mot_rmot_rmot_single8",
+      "decoded_frames": 8,
+      "metrics": {
+        "HOTA": 0.0,
+        "DetA": 0.0,
+        "AssA": 0.0,
+        "IDF1": 0.0,
+        "IDSW": 0,
+        "FP": 3,
+        "FN": 5
+      },
+      "base_novel": null,
+      "all_exact_candidate_geometry_order_and_frames_retained": true,
+      "correct_option_coverage": 1.0,
+      "existing_association_accuracy": 0.3333333333333333
+    },
+    "mot_ovmot_rmot_single8": {
+      "run": "outputs/groundjev/compact/task_subsets1200_cpu_v2_feature_sources/mot_ovmot_rmot_single8",
+      "decoded_frames": 8,
+      "metrics": {
+        "HOTA": 0.26494134810163766,
+        "DetA": 0.25782112624217884,
+        "AssA": 0.27348370927318294,
+        "IDF1": 0.4,
+        "IDSW": 1,
+        "FP": 6,
+        "FN": 1
+      },
+      "base_novel": null,
+      "all_exact_candidate_geometry_order_and_frames_retained": true,
+      "correct_option_coverage": 1.0,
+      "existing_association_accuracy": 0.6666666666666666
+    },
+    "all_three_rmot_single8": {
+      "run": "outputs/groundjev/compact/task_subsets1200_cpu_v2_feature_sources/all_three_rmot_single8",
+      "decoded_frames": 8,
+      "metrics": {
+        "HOTA": 0.3726509118486759,
+        "DetA": 0.3574162679425838,
+        "AssA": 0.3942481203007519,
+        "IDF1": 0.6666666666666666,
+        "IDSW": 1,
+        "FP": 3,
+        "FN": 1
+      },
+      "base_novel": null,
+      "all_exact_candidate_geometry_order_and_frames_retained": true,
+      "correct_option_coverage": 1.0,
+      "existing_association_accuracy": 0.0
+    },
+    "mot_rmot_multi12": {
+      "run": "outputs/groundjev/compact/task_subsets1200_cpu_v2_feature_sources/mot_rmot_multi12",
+      "decoded_frames": 12,
+      "metrics": {
+        "HOTA": 0.04096261274294866,
+        "DetA": 0.022071307300509335,
+        "AssA": 0.07602339181286549,
+        "IDF1": 0.0625,
+        "IDSW": 0,
+        "FP": 1,
+        "FN": 29
+      },
+      "base_novel": null,
+      "all_exact_candidate_geometry_order_and_frames_retained": true,
+      "correct_option_coverage": 1.0,
+      "existing_association_accuracy": 0.0
+    },
+    "mot_rmot_rmot_multi12": {
+      "run": "outputs/groundjev/compact/task_subsets1200_cpu_v2_feature_sources/mot_rmot_rmot_multi12",
+      "decoded_frames": 12,
+      "metrics": {
+        "HOTA": 0.035125112369853356,
+        "DetA": 0.022524052065647993,
+        "AssA": 0.055973266499582286,
+        "IDF1": 0.0,
+        "IDSW": 0,
+        "FP": 2,
+        "FN": 30
+      },
+      "base_novel": null,
+      "all_exact_candidate_geometry_order_and_frames_retained": true,
+      "correct_option_coverage": 1.0,
+      "existing_association_accuracy": 1.0
+    },
+    "mot_ovmot_rmot_multi12": {
+      "run": "outputs/groundjev/compact/task_subsets1200_cpu_v2_feature_sources/mot_ovmot_rmot_multi12",
+      "decoded_frames": 12,
+      "metrics": {
+        "HOTA": 0.09621617241427152,
+        "DetA": 0.06777934061521321,
+        "AssA": 0.14933925723399408,
+        "IDF1": 0.05128205128205128,
+        "IDSW": 0,
+        "FP": 8,
+        "FN": 29
+      },
+      "base_novel": null,
+      "all_exact_candidate_geometry_order_and_frames_retained": true,
+      "correct_option_coverage": null,
+      "existing_association_accuracy": null
+    },
+    "all_three_rmot_multi12": {
+      "run": "outputs/groundjev/compact/task_subsets1200_cpu_v2_feature_sources/all_three_rmot_multi12",
+      "decoded_frames": 12,
+      "metrics": {
+        "HOTA": 0.035125112369853356,
+        "DetA": 0.022524052065647993,
+        "AssA": 0.055973266499582286,
+        "IDF1": 0.0,
+        "IDSW": 0,
+        "FP": 2,
+        "FN": 30
+      },
+      "base_novel": null,
+      "all_exact_candidate_geometry_order_and_frames_retained": true,
+      "correct_option_coverage": 1.0,
+      "existing_association_accuracy": 1.0
     }
   },
   "failed": {},
