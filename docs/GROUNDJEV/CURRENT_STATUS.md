@@ -169,7 +169,7 @@ ranking coverage estimates.
 
 Larger context helps this TAO scope but does not establish a learned-association
 advantage. Context64/128 exceeds the training32-option distribution and changes
-semantic normalization and histories. Fixed32hybrid retrieval remains running. Hybrid
+semantic normalization and histories. Fixed32hybrid retrieval has completed all12registered units (six new trajectories and six reused geometry references). Hybrid
 keeps16geometry IDs then fills32from native appearance; real251-ID differential
 checks preserve old defaults exactly. No newGPU/feature sources or speed claims.
 
@@ -255,7 +255,7 @@ see `RESOURCE_CLEANUP.md` for limits of the original resource snapshots.
 |GPU5|Full RMOT matched controls; `multitask_runs/full_rmot_shared600_v1`, then fresh pairedE2E|
 |GPU6|Ground200nativefull9, then `ground_adaptation/localization200_control_v1`|
 |GPU7|OriginalGroundnativefull9; summaries under `ground_retention/reattached_full9_owner_v1`|
-|CPU|Original25policies, all24task-subsets and12context units complete; hybrid study running|
+|CPU|Original25policies, all24task-subsets and12context units complete; hybrid12units complete; matched input-evidence study now follows|
 |GPU7 after retention|Natural MOT20-05 validation1657, then8CPU memory controls; `natural_memory/mot20_05_full_validation_v1`|
 |Completed CPU|`compact/full_rmot_affinity800_v1`:all10full800matched-semantic controls|
 
@@ -315,7 +315,7 @@ The same original native semantic frontend and native softteacher targets remain
 this is association-input isolation, not language-free perception or isolated
 JEV proof. Initialization tensors and all1200sample IDs must equal baseline.
 Three modes each evaluate fullDT1203/rawTAO40/single800/multi800. One serial
-owner waits hybridCPU completion; no new GPU/feature cache. Real three-task
+owner follows the successfully completed hybridCPU study; no new GPU/feature cache. Real three-task
 isolation/default-exact, two-step reloads and two real21frame scheduler controls
 passed; no full-video accuracy is claimed for these new modes yet.
 
@@ -348,3 +348,34 @@ models. Candidate-aligned funnels do not decompose officialFN across HOTA
 thresholds; unknown/unmatched proposals remain unknown. Wait registered600
 controls before choosing a training change; no threshold tuning or extra runs.
 Evidence: `diagnostics/multi800_full_compact_output_funnel_v1/summary.json`.
+
+
+Hybrid16geometry+16native-appearance retrieval completed without changing the
+32-ID option budget or model weights. Official artifacts validate all12units:
+
+|Scope|Learned geometry32|Learned hybrid32|Fixed cosine geometry32|Fixed cosine hybrid32|
+|---|---:|---:|---:|---:|
+|DT1203 HOTA %|26.316|26.316|13.311|12.811|
+|AliasTAO40 TETA %|21.773|21.466|23.913|24.435|
+|RawTAO40 TETA %|14.517|15.178|13.964|15.652|
+
+This is a mixed retrieval intervention; keep the original geometry default.
+Raw and alias protocols remain separate, and all NovelClsA remain0. Frozen
+weights, histories and semantic normalization interactions prevent a claim
+that improved ranking alone explains changes. No new GPU/features or E2E claim.
+Receipt: `compact/hybrid_shortlist32_v1/validated_summary.json`.
+
+MOT500Full multi800 completed with HOTA0/IDF1 0/FP11/FN2112. On1132matched
+query-positive candidates, all1132membership scores reject at the original.5
+threshold:263lack physical assignment and869are assigned then filtered. This
+is distinct from the pretrainedFull105/687/340funnel. MOT-only training does
+not establish RMOT transfer; teacher/native600full-video arms remain pending.
+
+
+The input-evidence owner has now completed both new1200step training arms:
+initial tensors and every sampled exampleID equal the completed full-input
+baseline; three-task reload delta0 and additionalGPU allocation0. Full-video
+controls have started under the same owner. Geometry-motion disables382208
+visual/history-projection parameters, so1146511is the shared resident count,
+not equal active capacity; no unique-JEV or pure capacity-isolated claim.
+Training receipt: `compact/input_evidence1200_v1/completed_matched_training_summary.json`.

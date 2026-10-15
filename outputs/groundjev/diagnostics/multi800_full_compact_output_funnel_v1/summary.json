@@ -64,6 +64,66 @@
       "existing_association_accuracy": 0.10206561360874848,
       "actual_outputs_exactly_reconstructed_from_saved_actions_and_membership": true
     },
+    "outputs/groundjev/multitask_runs/full_rmot_shared600_v1/multi800_before500": {
+      "official_metrics": {
+        "HOTA": 0.0,
+        "DetA": 0.0,
+        "AssA": 0.0,
+        "IDF1": 0.0,
+        "IDSW": 0,
+        "FP": 11,
+        "FN": 2112
+      },
+      "frames": 800,
+      "candidates": 2208,
+      "actual_emitted_detections": 11,
+      "registered_target_proposal_coverage": {
+        "covered": 1133,
+        "GT_boxes": 2112,
+        "recall": 0.5364583333333334,
+        "scope": "evaluation-only target coverage; not HOTA; never used to correct runtime state"
+      },
+      "matched_candidate_output_funnel": {
+        "query_positive": {
+          "total": 1132,
+          "head_rejects": 1132,
+          "assigned_then_membership_rejected": 869,
+          "no_physical_assignment": 263
+        },
+        "query_negative": {
+          "total": 107,
+          "head_rejects": 100,
+          "assigned_then_membership_rejected": 97,
+          "head_accepts": 7,
+          "emitted": 7,
+          "no_physical_assignment": 3
+        },
+        "unmatched_unknown": {
+          "total": 969,
+          "head_accepts": 4,
+          "emitted": 4,
+          "head_rejects": 965,
+          "assigned_then_membership_rejected": 735,
+          "no_physical_assignment": 230
+        }
+      },
+      "query_membership_matched_physical_GT_only": {
+        "counts": {
+          "TN": 100,
+          "FP": 7,
+          "FN": 1132
+        },
+        "precision": 0.0,
+        "recall": 0.0,
+        "head_was_present": true,
+        "threshold": 0.5,
+        "legacy_missing_head_not_interpreted_as_negative_predictions": true
+      },
+      "existing_identity_events": 237,
+      "correct_option_coverage": 1.0,
+      "existing_association_accuracy": 0.16033755274261605,
+      "actual_outputs_exactly_reconstructed_from_saved_actions_and_membership": true
+    },
     "outputs/groundjev/multitask_runs/full_rmot_shared600_v1/multi800_shared_compact_fresh": {
       "official_metrics": {
         "HOTA": 0.19801918474265423,

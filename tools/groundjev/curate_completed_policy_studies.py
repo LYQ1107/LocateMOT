@@ -11,6 +11,7 @@ def main():
         'task_subsets1200_cpu_v2_feature_sources':
             (24, 'ALL_FOUR_TASK_SUBSETS_AND_REGISTERED_OFFICIAL_CONTROLS_COMPLETE'),
         'context_sizes_v1': (12, 'ALL_FIXED_AFFINITY_CONTROLS_COMPLETE'),
+        'hybrid_shortlist32_v1': (12, 'ALL_FIXED_AFFINITY_CONTROLS_COMPLETE'),
     }
     for name, (expected, terminal) in studies.items():
         directory = ROOT/'outputs/groundjev/compact'/name

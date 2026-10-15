@@ -1,0 +1,350 @@
+{
+  "status": "BOTH_MATCHED1200_INPUT_EVIDENCE_TRAINING_ARMS_VALIDATED",
+  "completed_training": {
+    "geometry_motion": {
+      "status": "SHARED_COMPACT_JOINT1200_TRAINING_COMPLETE",
+      "steps": 1200,
+      "target_steps": 1200,
+      "seed": 0,
+      "task_examples": {
+        "0": 149,
+        "1": 325,
+        "2": 62
+      },
+      "Novel_GT_supervised": false,
+      "additional_teacher_proposal_stage_not_native_detector_rollout": true,
+      "source_pack": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/rmot_native72_v1/broad_native",
+      "initialization": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/task_subsets1200_cpu_v1/shared_MOT300_initialization.pt",
+      "device": "cpu",
+      "selected_tasks": [
+        "mot",
+        "rmot",
+        "ovmot"
+      ],
+      "per_task_independent_sampling": true,
+      "actual_native_RMOT_groups": 142,
+      "input_evidence": "geometry_motion",
+      "parameters": 1146511,
+      "changed_elements": 764303,
+      "changed_semantic_head_elements": {
+        "text.0.weight": 1024,
+        "text.0.bias": 1024,
+        "text.1.weight": 131072,
+        "text.1.bias": 128,
+        "text.3.weight": 16384,
+        "text.3.bias": 128,
+        "category.weight": 16384,
+        "category.bias": 128,
+        "membership.0.weight": 49152,
+        "membership.0.bias": 128,
+        "membership.2.weight": 128,
+        "membership.2.bias": 1
+      },
+      "three_task_checkpoint_reload_max_difference": {
+        "0": 0.0,
+        "1": 0.0,
+        "2": 0.0
+      },
+      "peak_allocated_bytes": 0,
+      "checkpoint": "outputs/groundjev/compact/input_evidence1200_v1/geometry_motion_training/checkpoint.pt",
+      "checkpoint_bytes": 4606453,
+      "training_log": [
+        {
+          "step": 1,
+          "task": 0,
+          "loss": 13.130350112915039,
+          "class_loss": 8.598005294799805,
+          "membership_loss": 0.6287578344345093,
+          "gradient_norm": 41.589176177978516,
+          "elapsed_seconds": 0.1656070869648829
+        },
+        {
+          "step": 100,
+          "task": 0,
+          "loss": 4.295058727264404,
+          "class_loss": 0.0026184492744505405,
+          "membership_loss": 0.004978681914508343,
+          "gradient_norm": 5.9224629402160645,
+          "elapsed_seconds": 1.8350373639841564
+        },
+        {
+          "step": 200,
+          "task": 1,
+          "loss": 1.7840402126312256,
+          "class_loss": -0.0,
+          "membership_loss": 0.33658409118652344,
+          "gradient_norm": 9.733643531799316,
+          "elapsed_seconds": 3.512827794998884
+        },
+        {
+          "step": 300,
+          "task": 2,
+          "loss": 2.719813585281372,
+          "class_loss": 2.7028589248657227,
+          "membership_loss": 0.0021375420037657022,
+          "gradient_norm": 15.050087928771973,
+          "elapsed_seconds": 5.174126769998111
+        },
+        {
+          "step": 400,
+          "task": 0,
+          "loss": 3.302035093307495,
+          "class_loss": 0.003693339880555868,
+          "membership_loss": 0.001788697438314557,
+          "gradient_norm": 15.374921798706055,
+          "elapsed_seconds": 6.812848667963408
+        },
+        {
+          "step": 500,
+          "task": 1,
+          "loss": 0.5697693228721619,
+          "class_loss": -0.0,
+          "membership_loss": 0.8191486597061157,
+          "gradient_norm": 4.142517566680908,
+          "elapsed_seconds": 8.568072054011282
+        },
+        {
+          "step": 600,
+          "task": 2,
+          "loss": 1.4422599077224731,
+          "class_loss": 1.1273754835128784,
+          "membership_loss": 0.0009643469820730388,
+          "gradient_norm": 9.78468132019043,
+          "elapsed_seconds": 10.210027354012709
+        },
+        {
+          "step": 700,
+          "task": 0,
+          "loss": 2.845140218734741,
+          "class_loss": 0.03510108217597008,
+          "membership_loss": 0.00132254627533257,
+          "gradient_norm": 30.233551025390625,
+          "elapsed_seconds": 11.834071833989583
+        },
+        {
+          "step": 800,
+          "task": 1,
+          "loss": 1.8677659034729004,
+          "class_loss": -0.0,
+          "membership_loss": 0.7099644541740417,
+          "gradient_norm": 3.606877565383911,
+          "elapsed_seconds": 13.460620193975046
+        },
+        {
+          "step": 900,
+          "task": 2,
+          "loss": 2.079958200454712,
+          "class_loss": 0.879259467124939,
+          "membership_loss": 0.001374695566482842,
+          "gradient_norm": 10.213537216186523,
+          "elapsed_seconds": 15.102080743992701
+        },
+        {
+          "step": 1000,
+          "task": 0,
+          "loss": 2.2836785316467285,
+          "class_loss": 0.01757732592523098,
+          "membership_loss": 0.0008618556312285364,
+          "gradient_norm": 5.072385311126709,
+          "elapsed_seconds": 16.724607897980604
+        },
+        {
+          "step": 1100,
+          "task": 1,
+          "loss": 1.0871813297271729,
+          "class_loss": -0.0,
+          "membership_loss": 1.257250428199768,
+          "gradient_norm": 3.484530210494995,
+          "elapsed_seconds": 18.336262619995978
+        },
+        {
+          "step": 1200,
+          "task": 2,
+          "loss": 3.687988758087158,
+          "class_loss": 2.2180612087249756,
+          "membership_loss": 0.0011783639201894403,
+          "gradient_norm": 17.519695281982422,
+          "elapsed_seconds": 19.95030141097959
+        }
+      ],
+      "official_tracking_class_referring_results": "pending same native proposals and official evaluation"
+    },
+    "geometry_appearance": {
+      "status": "SHARED_COMPACT_JOINT1200_TRAINING_COMPLETE",
+      "steps": 1200,
+      "target_steps": 1200,
+      "seed": 0,
+      "task_examples": {
+        "0": 149,
+        "1": 325,
+        "2": 62
+      },
+      "Novel_GT_supervised": false,
+      "additional_teacher_proposal_stage_not_native_detector_rollout": true,
+      "source_pack": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/rmot_native72_v1/broad_native",
+      "initialization": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/task_subsets1200_cpu_v1/shared_MOT300_initialization.pt",
+      "device": "cpu",
+      "selected_tasks": [
+        "mot",
+        "rmot",
+        "ovmot"
+      ],
+      "per_task_independent_sampling": true,
+      "actual_native_RMOT_groups": 142,
+      "input_evidence": "geometry_appearance",
+      "parameters": 1146511,
+      "changed_elements": 1143566,
+      "changed_semantic_head_elements": {
+        "text.0.weight": 1024,
+        "text.0.bias": 1024,
+        "text.1.weight": 131072,
+        "text.1.bias": 128,
+        "text.3.weight": 16384,
+        "text.3.bias": 128,
+        "category.weight": 16384,
+        "category.bias": 128,
+        "membership.0.weight": 49152,
+        "membership.0.bias": 128,
+        "membership.2.weight": 128,
+        "membership.2.bias": 1
+      },
+      "three_task_checkpoint_reload_max_difference": {
+        "0": 0.0,
+        "1": 0.0,
+        "2": 0.0
+      },
+      "peak_allocated_bytes": 0,
+      "checkpoint": "outputs/groundjev/compact/input_evidence1200_v1/geometry_appearance_training/checkpoint.pt",
+      "checkpoint_bytes": 4606453,
+      "training_log": [
+        {
+          "step": 1,
+          "task": 0,
+          "loss": 9.610841751098633,
+          "class_loss": 7.388425350189209,
+          "membership_loss": 0.723908007144928,
+          "gradient_norm": 39.77943801879883,
+          "elapsed_seconds": 0.2212886270135641
+        },
+        {
+          "step": 100,
+          "task": 0,
+          "loss": 2.242438554763794,
+          "class_loss": 0.011049017310142517,
+          "membership_loss": 0.0058870441280305386,
+          "gradient_norm": 9.749410629272461,
+          "elapsed_seconds": 2.2343973639653996
+        },
+        {
+          "step": 200,
+          "task": 1,
+          "loss": 0.7136027216911316,
+          "class_loss": -0.0,
+          "membership_loss": 0.10494720935821533,
+          "gradient_norm": 17.988826751708984,
+          "elapsed_seconds": 4.332369973999448
+        },
+        {
+          "step": 300,
+          "task": 2,
+          "loss": 0.367678165435791,
+          "class_loss": 0.3595050275325775,
+          "membership_loss": 0.00509302644059062,
+          "gradient_norm": 7.774654388427734,
+          "elapsed_seconds": 6.515560721978545
+        },
+        {
+          "step": 400,
+          "task": 0,
+          "loss": 1.9774214029312134,
+          "class_loss": 0.004829771816730499,
+          "membership_loss": 0.0007339703151956201,
+          "gradient_norm": 10.387741088867188,
+          "elapsed_seconds": 8.718550399993546
+        },
+        {
+          "step": 500,
+          "task": 1,
+          "loss": 0.47372719645500183,
+          "class_loss": -0.0,
+          "membership_loss": 0.9442521929740906,
+          "gradient_norm": 7.958636283874512,
+          "elapsed_seconds": 10.818562285974622
+        },
+        {
+          "step": 600,
+          "task": 2,
+          "loss": 0.7563417553901672,
+          "class_loss": 0.6777632832527161,
+          "membership_loss": 0.0018354441272094846,
+          "gradient_norm": 34.28679656982422,
+          "elapsed_seconds": 12.941067559004296
+        },
+        {
+          "step": 700,
+          "task": 0,
+          "loss": 1.5252341032028198,
+          "class_loss": 0.0019938142504543066,
+          "membership_loss": 0.0002873404009733349,
+          "gradient_norm": 16.127975463867188,
+          "elapsed_seconds": 15.11569117900217
+        },
+        {
+          "step": 800,
+          "task": 1,
+          "loss": 0.7722761034965515,
+          "class_loss": -0.0,
+          "membership_loss": 0.4058832824230194,
+          "gradient_norm": 9.733603477478027,
+          "elapsed_seconds": 17.219133122009225
+        },
+        {
+          "step": 900,
+          "task": 2,
+          "loss": 1.2165262699127197,
+          "class_loss": 0.025427410379052162,
+          "membership_loss": 0.0012811238411813974,
+          "gradient_norm": 10.291537284851074,
+          "elapsed_seconds": 19.332468101987615
+        },
+        {
+          "step": 1000,
+          "task": 0,
+          "loss": 1.319499135017395,
+          "class_loss": 0.0039045887533575296,
+          "membership_loss": 0.00025049809482879937,
+          "gradient_norm": 10.237611770629883,
+          "elapsed_seconds": 21.461861246963963
+        },
+        {
+          "step": 1100,
+          "task": 1,
+          "loss": 1.1859256029129028,
+          "class_loss": -0.0,
+          "membership_loss": 1.9866470098495483,
+          "gradient_norm": 7.563547134399414,
+          "elapsed_seconds": 23.599582410999574
+        },
+        {
+          "step": 1200,
+          "task": 2,
+          "loss": 0.9908567667007446,
+          "class_loss": 0.3303968608379364,
+          "membership_loss": 7.926126272650436e-05,
+          "gradient_norm": 13.566723823547363,
+          "elapsed_seconds": 25.73879625397967
+        }
+      ],
+      "official_tracking_class_referring_results": "pending same native proposals and official evaluation"
+    }
+  },
+  "same_initial_tensors_verified_by_owner": true,
+  "all_actual1200_sample_IDs_exactly_equal_full_input_baseline": true,
+  "shared_source": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/rmot_native72_v1/broad_native",
+  "full_input_baseline": "outputs/groundjev/compact/task_subsets1200_cpu_v1/all_three_training/checkpoint.pt",
+  "parameters_resident_each": 1146511,
+  "geometry_motion_disabled_visual_branch_parameters": 382208,
+  "effective_capacity_note": "Nominal architecture/resident parameter count shared; geometry_motion zeros visual projection outputs so382208visual/history-projection parameters receive no gradients. This is input-branch ablation, not equal active capacity or unique JEV proof. Class output vocabulary text/native frontend/teacher knowledge remain in all modes.",
+  "full_video_results": "running under existing owner",
+  "full_goal_complete": false
+}

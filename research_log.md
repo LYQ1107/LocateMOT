@@ -2352,3 +2352,9 @@ Full原生性能诊断用已完成四组single800实际日志，不新增模型�
 Input-evidence正式单一阻塞owner2137548/session36336已启动，实际等待hybrid owner2034367/start42762109；日志/tmp/groundjev_input_evidence1200_v1.log。未启动额外GPU/model服务、不重复既有Full/native实验；预计正式CPU工作仅在原hybrid成功退出后开始。
 
 2026-10-15：Full预训练multi800已完成并验证800解码/2208相同候选/19拒绝帧/官方指标：HOTA8.6210、IDF7.6347、IDSW215、FP214、FN1766（2112GT）。低于同源Compact19.8019/21.0082和Simple31.8769/37.6852，不能将低FP当成功。按任务18要求只分析实际已完成失败，不增加实验范围：直接交叉原GT后验对齐与真实保存的每候选action/member/output，未重跑模型/修改阈值/预测或状态。1132个对齐query-positive candidates，Full=105无物理assignment+687有assignment但member拒绝+340实际输出；Compact=4+71+1057。全部2208候选的输出ID/box逐帧能由真实action与原member>=.5精确重建，head混淆计数与原association_events完全相同。Full成员召回31.625% vsCompact93.728%，已有正确birth-anchor选项覆盖99.149%但对应关联准确率10.207%，说明本scope语义拒绝与决策排序均有问题，不优先盲增短名单。两模型内生已有身份事件集合不同，不作严格相同事件因果对照；上述funnel不是HOTA各阈值下官方FN的可加分解、未对未知candidate贴负标签。先等待已注册teacher/native600完整对照，再决定训练改进，不新增训练量或调验证阈值。
+
+2026-10-15：原hybrid阻塞句柄35730返回exit0，六新轨迹+六已验证geometry参考共12单位全部官方artifact核验通过。原始TAO学习TETA14.517→15.178、fixedcos13.964→15.652；alias学习21.773→21.466、fixedcos23.913→24.435；DT学习26.316不变、fixedcos13.311→12.811。混合检索非普遍收益，不更改默认geometry，不宣称Novel/唯一JEV或速度提升。后续输入对照owner2137548原依赖成功解除，沿既有CPU队列自动衔接，不重启。
+
+Full MOT500 multi800完整退化核验：HOTA0/IDF0/FP11/FN2112，原2208候选/19拒绝/800decoded全部保留。加入同源后验funnel：1132query-positive候选全被member<.5拒绝，其中263无物理assignment、869已有assignment但被过滤。原始真实输出逐帧精确重构及混淆计数一致，不修改阈值/状态；不要错误归因869候选均未获物理身份。仅MOT训练对RMOT不迁移，等原注册共享teacher/native600结果，不加验证阈值搜索或额外训练。
+
+输入对照队列已实际自动衔接：两新模式均完成1200步，每个实际sample ID与完整输入all_three1200相同，初始tensor由owner精确核验；三任务reload全0、GPU allocator0。原owner已进入ALL_THREE_INPUT_EVIDENCE_FULL_VIDEO_CONTROLS，无重启。报告澄清同1146511为resident参数；geometry_motion屏蔽visual/history_merge输出，382208参数无梯度，不宣称相同有效容量或唯一JEV证明。输出类别prototype文本/原DLM语义/native软教师知识均保留，完整视频结果仍待完成。

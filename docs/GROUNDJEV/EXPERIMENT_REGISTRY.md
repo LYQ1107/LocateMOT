@@ -611,3 +611,6 @@ full_rmot_affinity800_v1 complete: all10full800controls validated, bothCPUlearne
 
 - PretrainedFull multi800 complete, HOTA8.621/IDF7.635/IDSW215/FP214/FN1766; trainedFull arms pending. Artifact receipt `multitask_runs/full_rmot_shared600_v1/completed_full_multi800_pretrained_summary.json`.
 - Saved-output failure diagnosis, no new model runs:1132aligned query-positive candidates Full105unassigned/687member-rejected-after-assignment/340emitted vsCompact4/71/1057. Original.5threshold/actions/state/predictions unchanged; all candidate outputIDs/boxes reconstruct exactly, original confusion counts agree. Candidate funnel is separate from officialFN; unknown candidates not negative GT.
+
+- Fixed32hybrid retrieval all12units complete (six new/six reused), official-artifact receipt `compact/hybrid_shortlist32_v1/validated_summary.json`. RawTAO learned14.517→15.178, alias21.773→21.466, DT26.316unchanged. Mixed results, geometry default retained. Input-evidence owner follows the successful CPU handoff.
+- Full MOT500 multi800 complete: HOTA0/IDF0/FP11/FN2112. All1132aligned query-positive membership decisions reject;263unassigned+869assigned-then-filtered. Artifact receipt and updated saved-output diagnostic retained; teacher/native600pending.
