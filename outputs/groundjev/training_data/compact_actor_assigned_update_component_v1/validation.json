@@ -1,0 +1,19 @@
+{
+  "status": "ALL722_CROSS_ACTOR_TARGETS_QUESTIONS_ALIASES_AND_MEDIA_PROVENANCE_VALIDATED",
+  "rows": 722,
+  "targets": {
+    "yes": 377,
+    "no": 345
+  },
+  "all_registered_candidates": 1184,
+  "all728_actual_existing_assignments_present_in_exported_training_states": true,
+  "six_unknown_existing_assignments_have_no_target_but_remain_in_input": true,
+  "all722_question_builder_round_trips_exact": true,
+  "all_history_alias_geometry_crop_order_and_causal_provenance_exact": true,
+  "ordinary_legacy_and_Base_category_passthrough_real_pixel_cases": 4,
+  "native_media_full80group_and155sheet_pixel_comparisons": "completed by generator; see validated_component_summary.json",
+  "native_processor_tensors": "two actual 31/32-history comparisons, all tensors exact; see validated_component_summary.json",
+  "actual_new_optimizer_updates": 0,
+  "physical_fit_frame_coverage": 48,
+  "full_goal_complete": false
+}

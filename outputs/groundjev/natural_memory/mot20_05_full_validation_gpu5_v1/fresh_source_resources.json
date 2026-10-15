@@ -1,0 +1,11 @@
+{
+  "sampling_seconds": 5,
+  "owned_group_peaks_MiB": {
+    "2248075": 4058,
+    "2248074": 18226,
+    "2248833": 528
+  },
+  "owned_GPU5_sum_peak_MiB": 22812,
+  "errors": [],
+  "scope": "fresh native source only; five-second samples are a lower bound on instantaneous peak"
+}

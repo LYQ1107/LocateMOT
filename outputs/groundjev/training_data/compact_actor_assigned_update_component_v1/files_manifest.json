@@ -1,0 +1,38 @@
+{
+  "files": [
+    {
+      "path": "outputs/groundjev/training_data/compact_actor_assigned_update_component_v1/CPU_plan/compact_actor_assigned_update_CPU_plan/args.json",
+      "bytes": 1656
+    },
+    {
+      "path": "outputs/groundjev/training_data/compact_actor_assigned_update_component_v1/all_candidate_registry.jsonl",
+      "bytes": 450380
+    },
+    {
+      "path": "outputs/groundjev/training_data/compact_actor_assigned_update_component_v1/official_CPU_plan_config.json",
+      "bytes": 939
+    },
+    {
+      "path": "outputs/groundjev/training_data/compact_actor_assigned_update_component_v1/owner_state.json",
+      "bytes": 548
+    },
+    {
+      "path": "outputs/groundjev/training_data/compact_actor_assigned_update_component_v1/summary.json",
+      "bytes": 1627
+    },
+    {
+      "path": "outputs/groundjev/training_data/compact_actor_assigned_update_component_v1/train.jsonl.gz",
+      "bytes": 3482066
+    },
+    {
+      "path": "outputs/groundjev/training_data/compact_actor_assigned_update_component_v1/validated_component_summary.json",
+      "bytes": 1857
+    },
+    {
+      "path": "outputs/groundjev/training_data/compact_actor_assigned_update_component_v1/validation.json",
+      "bytes": 914
+    }
+  ],
+  "raw_gzip_and_registry_retained_locally": true,
+  "reproducible_generator_and_small_validation_receipts_published": true
+}

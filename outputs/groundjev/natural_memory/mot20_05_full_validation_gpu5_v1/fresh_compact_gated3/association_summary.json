@@ -1,0 +1,111 @@
+{
+  "scope": "complete_registered_validation_scope_natural_visibility_challenge",
+  "frames": 1657,
+  "counts": {
+    "gt_observations": 319062,
+    "candidates": 235232,
+    "gt_matched_candidates": 219060,
+    "no_surviving_correct_anchor_events": 194026,
+    "memory_initializations_matched_GT": 272,
+    "unmatched_candidate_events": 16172,
+    "unmatched_candidates_ignored": 3401,
+    "memory_initializations_unmatched_GT": 15,
+    "model_correct_before_global_matching": 5239,
+    "model_correct_to_wrong_after_global_matching": 572,
+    "model_wrong_to_correct_after_global_matching": 143,
+    "existing_identity_events": 25034,
+    "correct_identity_option_present": 19294,
+    "correct_existing_associations": 4810,
+    "correct_to_wrong_events": 546,
+    "wrong_to_correct_events": 395,
+    "memory_holds": 23053,
+    "memory_updates_identity_consistent": 1330,
+    "memory_updates_low_visibility": 1322,
+    "memory_updates_wrong_identity_or_unmatched": 6515,
+    "recovery_identity_options_present": 8275,
+    "recovery_global_assignment_same_ID": 1928,
+    "existing_identity_recreated_as_NEW": 60
+  },
+  "correct_option_coverage": 0.7707118319086043,
+  "existing_association_accuracy": 0.1921386913797236,
+  "mean_native_correct_identity_option_mass": 0.1447722351037773,
+  "candidate_GT_recall_at_iou05": 0.686575023036275,
+  "diagnostic_policy": "all registered physical GT (MOT marked pedestrians; RMOT all release physical objects; TAO annotated objects), one-to-one candidate IoU>=.5; immutable track-anchor ownership from birth, no GT correction",
+  "physical_identity_state_diagnostic_separate_from_query_output_filter": true,
+  "GT_annotation_scope": "registered release GT",
+  "physical_seconds_verified": true,
+  "posthoc_query_membership_matched_physical_GT_only": {
+    "counts": {},
+    "precision": null,
+    "recall": null,
+    "head_was_present": false,
+    "threshold": 0.5,
+    "legacy_missing_head_not_interpreted_as_negative_predictions": true
+  },
+  "unmatched_candidates_note": "includes evaluator-ignore regions; these are unmatched diagnostics, not official FP/NoMatch precision",
+  "explicit_NO_MATCH_decision_currently_supported": true,
+  "posthoc_NO_MATCH_matched_GT_only": {
+    "counts": {
+      "TN": 44214,
+      "FP": 169106,
+      "TP": 4722,
+      "FN": 1018
+    },
+    "precision": 0.027164783579170213,
+    "recall": 0.8226480836236933,
+    "gold_rule": "GT-matched valid object has a surviving correct birth anchor, but no correct identity in its actual shortlist",
+    "unmatched_or_ignore_regions_excluded": true
+  },
+  "posthoc_identity_recovery": {
+    "counts": {
+      "candidate_gap_return_events": 23698,
+      "gap_le1s_eligible": 11954,
+      "gap_le1s_same_correct_birth_anchor_ID": 283,
+      "candidate_gap_returns_without_prior_emitted_identity": 11364,
+      "gap_1to3s_eligible": 306,
+      "gap_1to3s_same_correct_birth_anchor_ID": 0,
+      "gap_gt3s_eligible": 74,
+      "gap_gt3s_same_correct_birth_anchor_ID": 0
+    },
+    "success_rates": {
+      "gap_le1s": 0.023674083988623053,
+      "gap_1to3s": 0.0,
+      "gap_gt3s": 0.0
+    },
+    "rule": "first GT-aligned candidate after at least one missing candidate observation; same previous emitted ID with matching immutable birth anchor",
+    "scope": "natural candidate/GT gaps only; no artificial occlusion, future GT correction or recovery metric replacing TrackEval"
+  },
+  "gt_used_posthoc_only": true,
+  "official_metric_replacement": false,
+  "candidate_action_counts": {
+    "NEW": 287,
+    "ACTIVE": 27604,
+    "NO_MATCH": 185585,
+    "IGNORE": 18462,
+    "REACTIVATE": 3294
+  },
+  "GT_matched_gold_action_vs_actual_action": {
+    "NEW": {
+      "NEW": 212,
+      "NO_MATCH": 158687,
+      "ACTIVE": 18555,
+      "IGNORE": 14405,
+      "REACTIVATE": 2167
+    },
+    "EXISTING": {
+      "ACTIVE": 7370,
+      "NO_MATCH": 10419,
+      "IGNORE": 622,
+      "REACTIVATE": 825,
+      "NEW": 58
+    },
+    "NO_MATCH": {
+      "NO_MATCH": 4722,
+      "ACTIVE": 883,
+      "REACTIVATE": 99,
+      "IGNORE": 34,
+      "NEW": 2
+    }
+  },
+  "posthoc_gold_action_rule": "NEW if no surviving known-correct birth anchor; otherwise EXISTING if correct option present, else NO_MATCH; unmatched/ignore regions excluded"
+}

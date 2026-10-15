@@ -1,0 +1,61 @@
+{
+  "status": "COMPACT_ACTOR_FINAL_ID_INPUTS_PIXELS_AND_FULL_CPU_PLAN_VALIDATED_NOT_TRAINED",
+  "counts": {
+    "native_media_groups_pixels_exact": 80,
+    "native_sheets_pixels_exact": 155,
+    "existing_assignments_in_questions": 728,
+    "registered_candidates": 1184,
+    "frames": 48,
+    "supervised:yes": 377,
+    "supervised:no": 345
+  },
+  "rows": 722,
+  "yes": 377,
+  "no": 345,
+  "all_actual_existing_assignments_in_input_including_six_unknown": true,
+  "actor_outputs_and_state_exact_to_completed_CPU_diagnosis": true,
+  "question_protocol": "final-assigned-existing-identity-memory-update-v1",
+  "input_io_protocol": "gzip-jsonl-native-category-and-tracking-crop-recipes-v1",
+  "processor_tensor_checks": [
+    {
+      "history_count": 31,
+      "all_processor_tensors_exact": true,
+      "tokens": 25095,
+      "keys": [
+        "input_ids",
+        "attention_mask",
+        "mm_token_type_ids",
+        "pixel_values",
+        "image_grid_thw"
+      ]
+    },
+    {
+      "history_count": 32,
+      "all_processor_tensors_exact": true,
+      "tokens": 26215,
+      "keys": [
+        "input_ids",
+        "attention_mask",
+        "mm_token_type_ids",
+        "pixel_values",
+        "image_grid_thw"
+      ]
+    }
+  ],
+  "unique_physical_fit_frames": 48,
+  "original_images": 48,
+  "native_ROI_pack_reused": true,
+  "new_PNG_or_feature_archives": 0,
+  "source_actor": "actual fixed sharedCompact CPU; explicitly cross-actor for Full",
+  "Full_inference_or_quality_gain_proven": false,
+  "new_optimizer_steps": 0,
+  "new_GPU_jobs": 0,
+  "combined_registered_upper_bytes": 26477318925,
+  "full_goal_complete": false,
+  "overlength_dropped_rows": 0,
+  "max_actual_tokens": 26614,
+  "total_actual_tokens": 14664308,
+  "actual_full_native_plan_seconds": 2.5358305649715476,
+  "actual_CPU_world_size": 1,
+  "hypothetical_4row_epoch_updates": 181
+}

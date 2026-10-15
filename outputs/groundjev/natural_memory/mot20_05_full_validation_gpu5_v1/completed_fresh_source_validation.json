@@ -1,0 +1,82 @@
+{
+  "status": "FRESH_MOT20_05_ALL1657_OUTPUTS_OFFICIAL_METRICS_AND_ARCHIVE_INTEGRITY_VALIDATED",
+  "whole_study_status": "original CPU eight-control owner still running; this receipt covers only completed fresh source",
+  "frames": 1657,
+  "frame_range": [
+    1659,
+    3315
+  ],
+  "native_candidates": 235232,
+  "rejected_frames_retained": 117,
+  "all_raw_prediction_lines_exactly_reconstructed": 31185,
+  "candidate_action_counts": {
+    "NEW": 287,
+    "ACTIVE": 27604,
+    "NO_MATCH": 185585,
+    "IGNORE": 18462,
+    "REACTIVATE": 3294
+  },
+  "official_metrics": {
+    "HOTA": 0.07334696070115383,
+    "DetA": 0.09026982781621751,
+    "AssA": 0.05967427073481851,
+    "IDF1": 0.059598451365333885,
+    "IDSW": 1933,
+    "FP": 417,
+    "FN": 288297
+  },
+  "metric_scale": "fraction; IDSW/FP/FN counts",
+  "TrackEval_commit": "12c8791b303e0a0b50f753af204249e622d0281a",
+  "one_to_one_physical_candidate_GT_recall_at_iou05": 0.686575023036275,
+  "GT_matched_gold_action_vs_actual_action": {
+    "NEW": {
+      "NEW": 212,
+      "NO_MATCH": 158687,
+      "ACTIVE": 18555,
+      "IGNORE": 14405,
+      "REACTIVATE": 2167
+    },
+    "EXISTING": {
+      "ACTIVE": 7370,
+      "NO_MATCH": 10419,
+      "IGNORE": 622,
+      "REACTIVATE": 825,
+      "NEW": 58
+    },
+    "NO_MATCH": {
+      "NO_MATCH": 4722,
+      "ACTIVE": 883,
+      "REACTIVATE": 99,
+      "IGNORE": 34,
+      "NEW": 2
+    }
+  },
+  "NO_MATCH_posthoc_counts": {
+    "TN": 44214,
+    "FP": 169106,
+    "TP": 4722,
+    "FN": 1018
+  },
+  "NO_MATCH_posthoc_precision": 0.027164783579170213,
+  "NO_MATCH_diagnostic_not_official_FP_or_metric_replacement": true,
+  "native_end_to_end_FPS": 0.061369784416757965,
+  "complete_native_pipeline_wall_s": 27000.257793760975,
+  "timing_scope": "all image reads, native requests including service queueing, association, memory persistence, prediction/log writes, drawing, video encoding and encoder completion; preloaded remote DLM server startup excluded",
+  "owned_GPU5_sampled_sum_peak_MiB": 22812,
+  "peak_memory_samples_are_lower_bounds": true,
+  "archive_bytes": 2311933077,
+  "FP32_feature_files": 1657,
+  "archive_cap_bytes": 3221225472,
+  "final_binary_memory_present": true,
+  "GT_or_future_read_by_runtime": false,
+  "natural_3to30s_counts": {
+    "natural_candidate_returns_3to30s": 132,
+    "known_birth_anchor_eligible_returns": 20,
+    "previous_correct_ID_survives_before_return": 3,
+    "same_known_correct_birth_ID_recovered": 0,
+    "unknown_or_no_previous_correct_birth_anchor_excluded": 112
+  },
+  "new_training_or_threshold_change": false,
+  "full_dataset_or_ordinary_model_performance_achieved": false,
+  "full_goal_complete": false
+}

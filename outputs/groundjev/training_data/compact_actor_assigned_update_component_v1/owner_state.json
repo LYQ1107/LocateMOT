@@ -1,0 +1,17 @@
+{
+  "status": "COMPACT_ACTOR_FINAL_ID_INPUTS_PIXELS_AND_FULL_CPU_PLAN_VALIDATED_NOT_TRAINED",
+  "source_plan": "configs/groundjev/compact_actor_assigned_update_component_v1.json",
+  "new_training_steps": 0,
+  "new_GPU_jobs": 0,
+  "full_goal_complete": false,
+  "counts": {
+    "native_media_groups_pixels_exact": 80,
+    "native_sheets_pixels_exact": 155,
+    "existing_assignments_in_questions": 728,
+    "registered_candidates": 1184,
+    "frames": 48,
+    "supervised:yes": 377,
+    "supervised:no": 345
+  },
+  "real_component_bytes": 3938749
+}

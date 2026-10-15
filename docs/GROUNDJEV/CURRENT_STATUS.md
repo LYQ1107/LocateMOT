@@ -1,5 +1,77 @@
 # GroundJEV-MOT current evidence — 2026-10-16
 
+## Fresh MOT20-05 completed; severe NO_MATCH suppression — 2026-10-16
+
+The original natural-study owner completed fresh original-DLM+ROI+sharedCompact
+inference on all1,657frames(1659..3315),235,232native candidates, retaining all
+117parser-rejected frames as registered empty predictions. Official TrackEval
+12c8791 gives HOTA 7.334696%, IDF1 5.959845%,IDSW1,933,FP417,FN288,297.
+All31,185raw prediction lines reconstruct exactly from the frame outputs.
+The bounded packed archive contains1,657FP32feature files/2,311,933,077bytes
+under its original3GiBcap. Final binary memory and1,657-frame video are retained;
+the original owner already verified every archive candidate and video decoding.
+Fresh source validation81592exit0 independently checks frame/image/event/
+prediction conservation, official/source records and actual archive sizes.
+
+The actual native pipeline took27,000.258s(about7.50h),.0613698FPS including
+DLM/ROI/IO/archive/state/drawing/encoder completion; preloaded remote service
+startup is excluded. Five-second sampled ownedGPU5sum peaks22,812MiB, a lower
+bound on instantaneous peak. This is one dense legal validation half, not full
+MOT20 benchmark or standalone/realtime throughput.
+
+Posthoc one-to-one physical candidate recall atIoU.5 is219,060/319,062=68.6575%.
+Actual candidate actions:287NEW/27,604ACTIVE/3,294REACTIVATE/185,585NO_MATCH/
+18,462IGNORE. Among GT-matched candidates,169,106NO_MATCH decisions violate
+the existing missing-correct-option diagnostic; posthoc precision2.7165%.
+158,687of these have no surviving known-correct birth anchor, where the
+registered diagnostic expectsNEW. Only212of194,026such observations becomeNEW.
+This identifies a major learned action/initiation failure alongside detector
+coverage limits; it is not an official FP count or a causal threshold intervention.
+Future fit supervision must addressNEW/NO_MATCH, beyond memory-write gating.
+The eight original CPU memory controls are now running with unchanged policy.
+
+Of132natural3..30s candidate returns,20have eligible known birth anchors;
+the old correct ID survives in3and is recovered in0. The112unknown/no-correct-
+anchor events remain excluded from this particular eligibility denominator.
+No long-gap gain or ordinary-model parity is established. Published artifacts:
+completed_fresh_source_validation.json, fresh official/result/raw predictions,
+association_summary.json and natural_recovery_case.json under
+outputs/groundjev/natural_memory/mot20_05_full_validation_gpu5_v1/.
+The multi-GB native archive and full event trace remain on the server.
+
+## Cross-actor final-ID component with streamed crops — 2026-10-16
+
+Prepared722supervised questions(377yes/345no) from the fixed sharedCompact's
+actual causal48fit-frame history. All1,184candidates are registered; all728
+actual existing assignments, including6unknown/unmatched without target,
+remain in exported input states. Full v3 is a rendering of Compact actor
+state, explicitly not Full own-history or GT-corrected history. A fresh CPU
+rollout reproduces every completed diagnostic output/state exactly before
+export. Shared final-ID builder/alias/history/crop provenance round trips pass
+for all722questions; images are always current/past legal-fit observations.
+
+New independent tracking recipe reader reconstructs exact native candidate
+and anchor/long/recent sheets from original images and real crop provenance.
+All80groups/155sheets match native builder pixels; two actual31/32-history
+native processor comparisons match every inputid/mask/mmtype/pixel/grid tensor.
+Four ordinary-legacy/Base-category media cases pass unchanged passthrough.
+The separate SFT entry records a new explicit IO protocol; existing default
+entry/category IO and registered GPU workers remain untouched. Bounded CPU
+caches hold at most8original images/192observation crops per process.
+
+Full native CPU planning63984exit0 retains722rows/0drops,max26,614tokens,
+14,664,308total planned tokens,actual plan_epoch2.536s,world1CPU.
+181is only a hypothetical4-row component epoch; no optimizer or GPU training.
+Independent target/alias/provenance validation60712exit0 passes. Raw gzip
+3,482,066bytes/registry retained locally; generator, reader, plan and small
+receipts are published. NoPNG/feature archive;16MiBreserve makes conservative
+26,477,318,925<26,843,545,600bytes. This supplements positive support beside
+existing Full hard negatives; physical coverage stays48frames and no tracking
+gain is established. Evidence: training_data/compact_actor_assigned_update_component_v1/
+under outputs/groundjev/. Current refreshed-history600training is ongoing;
+the original handle last reported50/600with finite loss/gradient and saved
+complete FP32/Adam/RNG cursor50/200.
+
 ## CPU Compact fit-history support diagnosis — 2026-10-16
 
 The final-ID component has only29positive versus584negative known Full
