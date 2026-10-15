@@ -614,3 +614,5 @@ full_rmot_affinity800_v1 complete: all10full800controls validated, bothCPUlearne
 
 - Fixed32hybrid retrieval all12units complete (six new/six reused), official-artifact receipt `compact/hybrid_shortlist32_v1/validated_summary.json`. RawTAO learned14.517→15.178, alias21.773→21.466, DT26.316unchanged. Mixed results, geometry default retained. Input-evidence owner follows the successful CPU handoff.
 - Full MOT500 multi800 complete: HOTA0/IDF0/FP11/FN2112. All1132aligned query-positive membership decisions reject;263unassigned+869assigned-then-filtered. Artifact receipt and updated saved-output diagnostic retained; teacher/native600pending.
+
+- Compact batched geometry implementation:1397715real dense pair IoUs and37groups'32/64/128rankings exact; full decisions/lifecycle/metadata exact for both shortlist policies and empty/no-history cases. Warm16candidate geometry median147.08→51.11ms, hybrid784.82→675.81ms; post-state probe only, not E2E speed. Running imports/historical timings unchanged. Receipt `validation/dense_geometry_batching_v1/validation.json`.

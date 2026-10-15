@@ -379,3 +379,17 @@ controls have started under the same owner. Geometry-motion disables382208
 visual/history-projection parameters, so1146511is the shared resident count,
 not equal active capacity; no unique-JEV or pure capacity-isolated claim.
 Training receipt: `compact/input_evidence1200_v1/completed_matched_training_summary.json`.
+
+
+Compact geometry engineering improvement: cache same-timestamp predicted boxes
+within a decision and compute shortlistIoU in FP64 batches with the identical
+scalar operation order and lost-age/ID ties. Actual completed dense-state
+validation covers591candidates×2365tracks=1397715exact overlaps,37groups'
+32/64/128orders, and full model decisions/lifecycle/metadata for geometry and
+hybrid modes, including empty observations/no history. All equal the scalar
+ba94b94reference. Three warm16candidate probe medians geometry147.08→51.11ms
+and hybrid784.82→675.81ms; these are post-state numerical/performance probes,
+not causal video or E2E FPS results. Existing running processes retain their
+old imports. Historical video timings/metrics remain untouched; future child
+processes record their actual Git revision. No new GPU/features/protocol changes.
+Receipt: `validation/dense_geometry_batching_v1/validation.json`.

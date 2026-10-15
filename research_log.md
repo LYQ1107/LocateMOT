@@ -2358,3 +2358,7 @@ Input-evidence正式单一阻塞owner2137548/session36336已启动，实际等�
 Full MOT500 multi800完整退化核验：HOTA0/IDF0/FP11/FN2112，原2208候选/19拒绝/800decoded全部保留。加入同源后验funnel：1132query-positive候选全被member<.5拒绝，其中263无物理assignment、869已有assignment但被过滤。原始真实输出逐帧精确重构及混淆计数一致，不修改阈值/状态；不要错误归因869候选均未获物理身份。仅MOT训练对RMOT不迁移，等原注册共享teacher/native600结果，不加验证阈值搜索或额外训练。
 
 输入对照队列已实际自动衔接：两新模式均完成1200步，每个实际sample ID与完整输入all_three1200相同，初始tensor由owner精确核验；三任务reload全0、GPU allocator0。原owner已进入ALL_THREE_INPUT_EVIDENCE_FULL_VIDEO_CONTROLS，无重启。报告澄清同1146511为resident参数；geometry_motion屏蔽visual/history_merge输出，382208参数无梯度，不宣称相同有效容量或唯一JEV证明。输出类别prototype文本/原DLM语义/native软教师知识均保留，完整视频结果仍待完成。
+
+研究计划：已完成rawTAO真实final state/同一实际图像前16候选的CPU profile（2365live IDs）定位geometry shortlist耗时，sorted累计.2116s、38352overlap累计.1311s、40432predicted_box累计.0518s，NN module累计.0095s；hybrid native array转换另.5039s、初次1203类别文本冷缓存.2639s，不能把单次cold profile当整视频FPS。只优化Compact几何IoU排序为FP64批量计算并每次decide缓存同timestamp预测框；候选/轨迹/几何公式/tie order/分组/权重/metadata不变。先核对真实高密度全部pair IoU和各16候选组shortlist精确一致，再比较真实dense state的完整模型输出；不改运行中任务、不新训练或重跑官方评测。
+
+几何批量优化真实回归通过：591实际候选×2365live tracks=1397715个FP64IoU逐值与原scalar完全相同；37实际16候选组的32/64/128顺序及空组/空history相同。普通geometry和hybrid16_16各自dense32候选/空观测/无history的全部决策概率、生命周期及metadata与ba94b94原实现精确一致。完整scalar IoU矩阵2.1921s→.03212s；16候选暖缓存3次中位geometry .14708→.05111s、hybrid .78482→.67581s（native数组转换仍占用），不是整视频或E2E速度结论。保留优化，原权重/候选/tie order/状态算法不变；已有进程继续旧import，之后新进程按actualgit记录新实现，历史FPS不改写。不重复已有全部官方测评。

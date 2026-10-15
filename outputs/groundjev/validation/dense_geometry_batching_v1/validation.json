@@ -1,0 +1,85 @@
+{
+  "status": "REAL_DENSE_GEOMETRY_AND_COMPACT_DECISIONS_EXACT",
+  "scalar_reference_revision": "ba94b948373ea5e2d2891130c502d48e2acd3e86",
+  "candidates": 591,
+  "live_tracks": 2365,
+  "pairwise_overlaps_exact": 1397715,
+  "all_group_shortlists32_64_128_exact": 37,
+  "model_checks": [
+    {
+      "shortlist_policy": "geometry",
+      "case": "dense_two_groups",
+      "all_decisions_lifecycle_metadata_exact": true
+    },
+    {
+      "shortlist_policy": "geometry",
+      "case": "empty_observation",
+      "all_decisions_lifecycle_metadata_exact": true
+    },
+    {
+      "shortlist_policy": "geometry",
+      "case": "no_history",
+      "all_decisions_lifecycle_metadata_exact": true
+    },
+    {
+      "shortlist_policy": "hybrid16_16",
+      "case": "dense_two_groups",
+      "all_decisions_lifecycle_metadata_exact": true
+    },
+    {
+      "shortlist_policy": "hybrid16_16",
+      "case": "empty_observation",
+      "all_decisions_lifecycle_metadata_exact": true
+    },
+    {
+      "shortlist_policy": "hybrid16_16",
+      "case": "no_history",
+      "all_decisions_lifecycle_metadata_exact": true
+    }
+  ],
+  "one_shot_overlap_matrix_seconds": {
+    "scalar": 2.192120047053322,
+    "batched": 0.03211715101497248
+  },
+  "warm16candidate_decision_probe": {
+    "geometry": {
+      "scalar": {
+        "samples_seconds": [
+          0.1469538409728557,
+          0.14739368297159672,
+          0.14707653794903308
+        ],
+        "median_seconds": 0.14707653794903308
+      },
+      "batched": {
+        "samples_seconds": [
+          0.051105085003655404,
+          0.05511577503057197,
+          0.050824908015783876
+        ],
+        "median_seconds": 0.051105085003655404
+      }
+    },
+    "hybrid16_16": {
+      "scalar": {
+        "samples_seconds": [
+          0.7718018000014126,
+          0.8064460150199011,
+          0.784822725050617
+        ],
+        "median_seconds": 0.784822725050617
+      },
+      "batched": {
+        "samples_seconds": [
+          0.6758114289841615,
+          0.6759386499761604,
+          0.6708092430490069
+        ],
+        "median_seconds": 0.6758114289841615
+      }
+    }
+  },
+  "new_GPU_processes": 0,
+  "new_feature_cache_files": false,
+  "limits": "Actual completed final state and actual image/candidates; post-state numerical/performance probe, not a new causal video trajectory or official accuracy result. Cold input/state/model loading excluded from timings, three unprofiled warm repeats per policy, concurrent workload not controlled; no full-pipeline FPS/speedup claim. Existing processes retain imported old code."
+}

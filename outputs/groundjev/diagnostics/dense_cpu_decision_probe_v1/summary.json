@@ -1,0 +1,211 @@
+{
+  "status": "COMPLETED_REAL_DENSE_STATE_CPU_DECISION_PROFILE",
+  "candidates": 16,
+  "live_tracks": 2365,
+  "profiled_wall_seconds": 1.1818970819585957,
+  "top_cumulative_functions": [
+    {
+      "file": "/data2/user/LocateMOT_GroundJEV/locatemot/groundjev/compact.py",
+      "line": 82,
+      "function": "decide",
+      "calls": 1,
+      "self_seconds": 0.06615939,
+      "cumulative_seconds": 1.181376071
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<built-in method numpy.asarray>",
+      "calls": 4,
+      "self_seconds": 0.50387691,
+      "cumulative_seconds": 0.50387691
+    },
+    {
+      "file": "/data2/user/LocateMOT_GroundJEV/locatemot/groundjev/text_features.py",
+      "line": 16,
+      "function": "__call__",
+      "calls": 1204,
+      "self_seconds": 0.047978982,
+      "cumulative_seconds": 0.286145918
+    },
+    {
+      "file": "/data2/user/LocateMOT_GroundJEV/locatemot/groundjev/text_features.py",
+      "line": 26,
+      "function": "vocabulary",
+      "calls": 1,
+      "self_seconds": 0.0041799260000000005,
+      "cumulative_seconds": 0.263948301
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<built-in method builtins.sorted>",
+      "calls": 2,
+      "self_seconds": 0.002599624,
+      "cumulative_seconds": 0.21155425400000002
+    },
+    {
+      "file": "/data2/user/LocateMOT_GroundJEV/locatemot/groundjev/compact.py",
+      "line": 98,
+      "function": "<lambda>",
+      "calls": 2365,
+      "self_seconds": 0.0014086910000000001,
+      "cumulative_seconds": 0.207580186
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<built-in method builtins.max>",
+      "calls": 347567,
+      "self_seconds": 0.054301315,
+      "cumulative_seconds": 0.20689457900000002
+    },
+    {
+      "file": "/data2/user/LocateMOT_GroundJEV/locatemot/groundjev/compact.py",
+      "line": 98,
+      "function": "<genexpr>",
+      "calls": 40205,
+      "self_seconds": 0.022617332,
+      "cumulative_seconds": 0.20048037500000002
+    },
+    {
+      "file": "/data2/user/LocateMOT_GroundJEV/.venv-onejev-py310/lib/python3.10/site-packages/transformers/tokenization_utils_base.py",
+      "line": 2231,
+      "function": "encode",
+      "calls": 1204,
+      "self_seconds": 0.005114477,
+      "cumulative_seconds": 0.17630268200000002
+    },
+    {
+      "file": "/data2/user/LocateMOT_GroundJEV/.venv-onejev-py310/lib/python3.10/site-packages/transformers/tokenization_utils_tokenizers.py",
+      "line": 972,
+      "function": "_encode_plus",
+      "calls": 1204,
+      "self_seconds": 0.013263148,
+      "cumulative_seconds": 0.168126469
+    },
+    {
+      "file": "/data2/user/LocateMOT_GroundJEV/locatemot/groundjev/decision.py",
+      "line": 10,
+      "function": "overlap",
+      "calls": 38352,
+      "self_seconds": 0.068674093,
+      "cumulative_seconds": 0.131071598
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<method 'encode_batch' of 'tokenizers.Tokenizer' objects>",
+      "calls": 1204,
+      "self_seconds": 0.11615249200000001,
+      "cumulative_seconds": 0.11615249200000001
+    },
+    {
+      "file": "/data2/user/LocateMOT_GroundJEV/locatemot/groundjev/tracker.py",
+      "line": 33,
+      "function": "predicted_box",
+      "calls": 40432,
+      "self_seconds": 0.021716254,
+      "cumulative_seconds": 0.051788124000000005
+    },
+    {
+      "file": "/data2/user/LocateMOT_GroundJEV/.venv-onejev-py310/lib/python3.10/site-packages/numpy/linalg/_linalg.py",
+      "line": 2575,
+      "function": "norm",
+      "calls": 2,
+      "self_seconds": 0.040329695000000006,
+      "cumulative_seconds": 0.051311739
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<built-in method torch.tensor>",
+      "calls": 1209,
+      "self_seconds": 0.048797482,
+      "cumulative_seconds": 0.048797482
+    },
+    {
+      "file": "/data2/user/LocateMOT_GroundJEV/locatemot/groundjev/text_features.py",
+      "line": 22,
+      "function": "specification",
+      "calls": 1,
+      "self_seconds": 4.3782e-05,
+      "cumulative_seconds": 0.031655817
+    },
+    {
+      "file": "/data2/user/LocateMOT_GroundJEV/locatemot/groundjev/tracker.py",
+      "line": 34,
+      "function": "<listcomp>",
+      "calls": 40432,
+      "self_seconds": 0.03007187,
+      "cumulative_seconds": 0.03007187
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<method 'mean' of 'torch._C.TensorBase' objects>",
+      "calls": 1205,
+      "self_seconds": 0.023787797000000003,
+      "cumulative_seconds": 0.023787797000000003
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<method 'float' of 'torch._C.TensorBase' objects>",
+      "calls": 1204,
+      "self_seconds": 0.021041803,
+      "cumulative_seconds": 0.021041803
+    },
+    {
+      "file": "/data2/user/LocateMOT_GroundJEV/.venv-onejev-py310/lib/python3.10/site-packages/transformers/tokenization_utils_base.py",
+      "line": 222,
+      "function": "__init__",
+      "calls": 2408,
+      "self_seconds": 0.005275069,
+      "cumulative_seconds": 0.017298895
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<built-in method builtins.min>",
+      "calls": 76704,
+      "self_seconds": 0.013828089,
+      "cumulative_seconds": 0.013828089
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<method 'reduce' of 'numpy.ufunc' objects>",
+      "calls": 4,
+      "self_seconds": 0.011866327000000001,
+      "cumulative_seconds": 0.011866327000000001
+    },
+    {
+      "file": "/usr/lib/python3.10/collections/__init__.py",
+      "line": 1091,
+      "function": "__init__",
+      "calls": 2408,
+      "self_seconds": 0.001954869,
+      "cumulative_seconds": 0.011231839
+    },
+    {
+      "file": "/data2/user/LocateMOT_GroundJEV/.venv-onejev-py310/lib/python3.10/site-packages/torch/nn/modules/module.py",
+      "line": 1772,
+      "function": "_wrapped_call_impl",
+      "calls": 47,
+      "self_seconds": 8.4998e-05,
+      "cumulative_seconds": 0.009471846
+    },
+    {
+      "file": "/data2/user/LocateMOT_GroundJEV/.venv-onejev-py310/lib/python3.10/site-packages/torch/nn/modules/module.py",
+      "line": 1780,
+      "function": "_call_impl",
+      "calls": 47,
+      "self_seconds": 0.00015199200000000002,
+      "cumulative_seconds": 0.009468047
+    }
+  ],
+  "scope": "Completed real final state and same actual final image/candidates; one16candidate group performance probe, not a causal video replay, accuracy or E2E FPS result. Model initialization/input/state loading excluded; cProfile adds overhead.",
+  "new_GPU_processes": 0,
+  "feature_cache_files_created": false
+}

@@ -81,8 +81,10 @@ class CompactDecision:
 
     def decide(self,image,candidates,tracks,timestamp,specification):
         from locatemot.groundjev.decision import overlap
+        from locatemot.groundjev.geometry import rank_tracks
         results,life = [],{}
         groups = [candidates[i:i+self.batch_candidates] for i in range(0,len(candidates),self.batch_candidates)] or [[]]
+        predicted_boxes = [t.predicted_box(timestamp) for t in tracks]
         similarities = None
         if self.shortlist_policy == 'hybrid16_16' and candidates and tracks:
             import numpy as np
@@ -95,7 +97,7 @@ class CompactDecision:
             current = current / np.maximum(np.linalg.norm(current, axis=-1, keepdims=True), 1e-12)
             similarities = (current @ memory.reshape(-1, 2560).T).reshape(len(candidates), len(tracks), 3).mean(-1)
         for group_index, group in enumerate(groups):
-            ranked = sorted(tracks,key=lambda t:(-max((overlap(c['box'],t.predicted_box(timestamp)) for c in group),default=0.),t.lost_age,t.track_id))[:self.shortlist]
+            ranked = rank_tracks(group, tracks, predicted_boxes, self.shortlist)
             if similarities is not None and group:
                 begin = group_index*self.batch_candidates
                 scores = similarities[begin:begin+len(group)].max(0)
