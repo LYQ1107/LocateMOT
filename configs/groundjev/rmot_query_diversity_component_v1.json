@@ -1,0 +1,22 @@
+{
+  "project_root": "/data2/user/LocateMOT",
+  "query_index": "outputs/groundjev/training_data/broader_legal_scale_index_v1/rmot_queries.jsonl",
+  "native_source": "outputs/groundjev/compact/rmot_native72_v1/native_rollout.jsonl",
+  "native_plan": "configs/groundjev/rmot_native72_20261014.json",
+  "reference_rows": "outputs/groundjev/training_data/onejev_native_rmot_membership_v2_registered_release_root/train.jsonl",
+  "label_root": "/data2/user/LocateMOT/data/refer_kitti_v2/labels_with_ids/image_02",
+  "output": "outputs/groundjev/training_data/rmot_query_diversity_component_v1",
+  "expression_files": 4350,
+  "physical_frames": 72,
+  "native_candidates": 165,
+  "query_frame_contexts": 34800,
+  "expression_files_with_positive_sample": 2213,
+  "positive_query_frame_contexts": 15446,
+  "empty_query_frame_contexts": 19354,
+  "export_budget_bytes": 67108864,
+  "combined_registered_upper_bytes": 26426987277,
+  "global_temporary_feature_budget_bytes": 26843545600,
+  "protocol": "unchanged instantaneous native membership/empty-presence questions; no identity history; all fit expressions and all recorded frames retained",
+  "sampling": "component only; future mixed-task curriculum must account for per-expression positive/negative coverage",
+  "new_GPU_training": false
+}

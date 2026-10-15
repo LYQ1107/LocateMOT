@@ -1,0 +1,38 @@
+{
+  "status": "PINNED_OFFICIAL_RMOT_RELEASE_BOX_PROJECTION_VALIDATED",
+  "official_commit": "6a65640d849fdee4a32bb055945ee34c3b0edeb1",
+  "official_reader": "datasets/refer_kitti.py:DetMOTDetection._pre_single_frame",
+  "source_url": "https://github.com/zyn213/TempRMOT/blob/6a65640d849fdee4a32bb055945ee34c3b0edeb1/datasets/refer_kitti.py",
+  "source_path": "/data2/user/reference_envs/temprmot/refer_kitti_6a65640d849fdee4a32bb055945ee34c3b0edeb1.py",
+  "unmodified_official_method_executed": true,
+  "actual_official_method_cases": 198,
+  "legacy_missing_empty_label_file_cases_recorded_without_fabricating_files": 6,
+  "all_affected_contexts_validated": 60,
+  "unique_missing": [
+    [
+      "0017",
+      1,
+      148
+    ],
+    [
+      "0017",
+      2,
+      148
+    ],
+    [
+      "0017",
+      5,
+      146
+    ],
+    [
+      "0017",
+      6,
+      146
+    ]
+  ],
+  "rule": "iterate released same-frame boxes; mark each as a query target iff its ID is listed in the expression; unboxed IDs create no extra box",
+  "physical_visibility_or_annotation_completeness_inferred": false,
+  "component_question_and_existing_candidate_IoU_proxy_are_our_protocol_not_official_tracker": true,
+  "training_or_evaluation_protocol_of_running_jobs_changed": false,
+  "new_training_started": false
+}

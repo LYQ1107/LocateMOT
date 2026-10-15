@@ -322,3 +322,34 @@ completion owner waits the actual trainer, checks500nativeMMreload then runs
 matchedthree-task controls. It does not restart or alter the training recipe.
 
 2026-10-16 broader175Base input component complete, not trained:52978Baseobjects/105956root+leafrows/500trainvideos/all1203inputclasses. Native crop recipes and gzip reduce1005240705JSONLbytes to25820145; no PNG/ROI dataset archive. Old215objects/62sheets exact and175class representatives match native questions/pixels, four actual processor tensor cases exact. All105956targets validate and official CPU full plan has0drops/max4238tokens/315781843planned tokens, not trained tokens;26489steps hypothetical only. Text rows remain in RAM, CPU peak3746652160bytes; cached reporter1s is not tokenizer speed. Separate IO adapter records format version in checkpoint protocols; original paired600runs untouched. Component must join balanced three-task training, no new optimizer/model calls or joint foundation-training claim.
+
+
+## RMOT all-fit expression component — 2026-10-16
+
+Generated87,721questions from4,350legal-fit expression files and the same72
+native frames/165proposals, preserving all34,800query-frame contexts and8
+rejected native frames. This is counterfactual instantaneous membership data;
+the detector proposals remain conditioned on their original primary expressions.
+It adds language coverage, not image/history coverage. Candidate positives6,873,
+negatives77,189;2,137expressions have no positive target in these72frames, so
+future training requires positive/negative-aware mixed-task sampling.
+
+Initial target-ID containment failed on60contexts/15expressions in fit0017.
+The full preflight held with0exports. An unchanged pinned official TempRMOT
+reader(6a65640) subsequently validated the released-box projection on198actual
+cases, including all60; all contexts are retained and missing-box references
+remain explicit. First official-reader verification's path-alias error was
+fixed without changing source bytes or the official method. All failures remain
+local. Legacy346sample input/question/targets reproduce exactly;136native
+media and200legacy query-media pixel comparisons pass.
+
+The complete native CPU token plan exits0:87,721rows,0drops,max2,301tokens,
+120,061,085total planned tokens,111.924actual plan_epoch seconds,CPUpeak2.07GB.
+No GPU/optimizer was loaded.21,931updates describe only a hypothetical4-row
+component epoch; the reporter's default4-rank label is not actual GPU use
+(actual CPUworld1). Gzip3.16MB;64MiBreserved, combined26,426,987,277<25GiB.
+The component has not been trained; current paired600jobs remain unchanged.
+
+Evidence: `outputs/groundjev/training_data/rmot_query_diversity_component_v3_official_box_projection/{summary,validated_component_summary,unboxed_expression_targets,files_manifest}.json`,
+`outputs/groundjev/validation/rmot_release_box_projection_v2/validated_summary.json`,
+`outputs/groundjev/validation/rmot_query_diversity_full_cpu_plan_v1/owner_state.json`.

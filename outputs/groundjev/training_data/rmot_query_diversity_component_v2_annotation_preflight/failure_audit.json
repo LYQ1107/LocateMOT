@@ -1,0 +1,519 @@
+{
+  "status": "RMOT_QUERY_COMPONENT_HELD_MISSING_GT_TARGET_BOXES",
+  "audited_expression_files": 4350,
+  "audited_query_frame_contexts": 34800,
+  "missing_query_frame_contexts": 60,
+  "affected_expression_files": 15,
+  "unique_missing_video_frame_identity_refs": 4,
+  "unique_missing": [
+    [
+      "0017",
+      1,
+      148
+    ],
+    [
+      "0017",
+      2,
+      148
+    ],
+    [
+      "0017",
+      5,
+      146
+    ],
+    [
+      "0017",
+      6,
+      146
+    ]
+  ],
+  "affected_contexts": [
+    {
+      "video": "0017",
+      "frame": 1,
+      "expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0017/individuals-donning-jeans.json",
+      "missing_ids": [
+        148
+      ]
+    },
+    {
+      "video": "0017",
+      "frame": 2,
+      "expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0017/individuals-donning-jeans.json",
+      "missing_ids": [
+        148
+      ]
+    },
+    {
+      "video": "0017",
+      "frame": 5,
+      "expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0017/individuals-donning-jeans.json",
+      "missing_ids": [
+        146
+      ]
+    },
+    {
+      "video": "0017",
+      "frame": 6,
+      "expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0017/individuals-donning-jeans.json",
+      "missing_ids": [
+        146
+      ]
+    },
+    {
+      "video": "0017",
+      "frame": 1,
+      "expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0017/individuals-dressed-in-denim.json",
+      "missing_ids": [
+        148
+      ]
+    },
+    {
+      "video": "0017",
+      "frame": 2,
+      "expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0017/individuals-dressed-in-denim.json",
+      "missing_ids": [
+        148
+      ]
+    },
+    {
+      "video": "0017",
+      "frame": 5,
+      "expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0017/individuals-dressed-in-denim.json",
+      "missing_ids": [
+        146
+      ]
+    },
+    {
+      "video": "0017",
+      "frame": 6,
+      "expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0017/individuals-dressed-in-denim.json",
+      "missing_ids": [
+        146
+      ]
+    },
+    {
+      "video": "0017",
+      "frame": 1,
+      "expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0017/individuals-dressed-in-jeans.json",
+      "missing_ids": [
+        148
+      ]
+    },
+    {
+      "video": "0017",
+      "frame": 2,
+      "expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0017/individuals-dressed-in-jeans.json",
+      "missing_ids": [
+        148
+      ]
+    },
+    {
+      "video": "0017",
+      "frame": 5,
+      "expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0017/individuals-dressed-in-jeans.json",
+      "missing_ids": [
+        146
+      ]
+    },
+    {
+      "video": "0017",
+      "frame": 6,
+      "expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0017/individuals-dressed-in-jeans.json",
+      "missing_ids": [
+        146
+      ]
+    },
+    {
+      "video": "0017",
+      "frame": 1,
+      "expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0017/individuals-in-denim-walking.json",
+      "missing_ids": [
+        148
+      ]
+    },
+    {
+      "video": "0017",
+      "frame": 2,
+      "expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0017/individuals-in-denim-walking.json",
+      "missing_ids": [
+        148
+      ]
+    },
+    {
+      "video": "0017",
+      "frame": 5,
+      "expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0017/individuals-in-denim-walking.json",
+      "missing_ids": [
+        146
+      ]
+    },
+    {
+      "video": "0017",
+      "frame": 6,
+      "expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0017/individuals-in-denim-walking.json",
+      "missing_ids": [
+        146
+      ]
+    },
+    {
+      "video": "0017",
+      "frame": 1,
+      "expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0017/individuals-sporting-jeans.json",
+      "missing_ids": [
+        148
+      ]
+    },
+    {
+      "video": "0017",
+      "frame": 2,
+      "expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0017/individuals-sporting-jeans.json",
+      "missing_ids": [
+        148
+      ]
+    },
+    {
+      "video": "0017",
+      "frame": 5,
+      "expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0017/individuals-sporting-jeans.json",
+      "missing_ids": [
+        146
+      ]
+    },
+    {
+      "video": "0017",
+      "frame": 6,
+      "expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0017/individuals-sporting-jeans.json",
+      "missing_ids": [
+        146
+      ]
+    },
+    {
+      "video": "0017",
+      "frame": 1,
+      "expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0017/individuals-wearing-denim-pants.json",
+      "missing_ids": [
+        148
+      ]
+    },
+    {
+      "video": "0017",
+      "frame": 2,
+      "expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0017/individuals-wearing-denim-pants.json",
+      "missing_ids": [
+        148
+      ]
+    },
+    {
+      "video": "0017",
+      "frame": 5,
+      "expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0017/individuals-wearing-denim-pants.json",
+      "missing_ids": [
+        146
+      ]
+    },
+    {
+      "video": "0017",
+      "frame": 6,
+      "expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0017/individuals-wearing-denim-pants.json",
+      "missing_ids": [
+        146
+      ]
+    },
+    {
+      "video": "0017",
+      "frame": 1,
+      "expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0017/pedestrians-clad-in-jeans-on-foot.json",
+      "missing_ids": [
+        148
+      ]
+    },
+    {
+      "video": "0017",
+      "frame": 2,
+      "expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0017/pedestrians-clad-in-jeans-on-foot.json",
+      "missing_ids": [
+        148
+      ]
+    },
+    {
+      "video": "0017",
+      "frame": 5,
+      "expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0017/pedestrians-clad-in-jeans-on-foot.json",
+      "missing_ids": [
+        146
+      ]
+    },
+    {
+      "video": "0017",
+      "frame": 6,
+      "expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0017/pedestrians-clad-in-jeans-on-foot.json",
+      "missing_ids": [
+        146
+      ]
+    },
+    {
+      "video": "0017",
+      "frame": 1,
+      "expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0017/pedestrians-wearing-jeans.json",
+      "missing_ids": [
+        148
+      ]
+    },
+    {
+      "video": "0017",
+      "frame": 2,
+      "expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0017/pedestrians-wearing-jeans.json",
+      "missing_ids": [
+        148
+      ]
+    },
+    {
+      "video": "0017",
+      "frame": 5,
+      "expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0017/pedestrians-wearing-jeans.json",
+      "missing_ids": [
+        146
+      ]
+    },
+    {
+      "video": "0017",
+      "frame": 6,
+      "expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0017/pedestrians-wearing-jeans.json",
+      "missing_ids": [
+        146
+      ]
+    },
+    {
+      "video": "0017",
+      "frame": 1,
+      "expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0017/people-wearing-jeans.json",
+      "missing_ids": [
+        148
+      ]
+    },
+    {
+      "video": "0017",
+      "frame": 2,
+      "expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0017/people-wearing-jeans.json",
+      "missing_ids": [
+        148
+      ]
+    },
+    {
+      "video": "0017",
+      "frame": 5,
+      "expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0017/people-wearing-jeans.json",
+      "missing_ids": [
+        146
+      ]
+    },
+    {
+      "video": "0017",
+      "frame": 6,
+      "expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0017/people-wearing-jeans.json",
+      "missing_ids": [
+        146
+      ]
+    },
+    {
+      "video": "0017",
+      "frame": 1,
+      "expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0017/people-who-have-jeans-on.json",
+      "missing_ids": [
+        148
+      ]
+    },
+    {
+      "video": "0017",
+      "frame": 2,
+      "expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0017/people-who-have-jeans-on.json",
+      "missing_ids": [
+        148
+      ]
+    },
+    {
+      "video": "0017",
+      "frame": 5,
+      "expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0017/people-who-have-jeans-on.json",
+      "missing_ids": [
+        146
+      ]
+    },
+    {
+      "video": "0017",
+      "frame": 6,
+      "expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0017/people-who-have-jeans-on.json",
+      "missing_ids": [
+        146
+      ]
+    },
+    {
+      "video": "0017",
+      "frame": 1,
+      "expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0017/persons-in-denim.json",
+      "missing_ids": [
+        148
+      ]
+    },
+    {
+      "video": "0017",
+      "frame": 2,
+      "expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0017/persons-in-denim.json",
+      "missing_ids": [
+        148
+      ]
+    },
+    {
+      "video": "0017",
+      "frame": 5,
+      "expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0017/persons-in-denim.json",
+      "missing_ids": [
+        146
+      ]
+    },
+    {
+      "video": "0017",
+      "frame": 6,
+      "expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0017/persons-in-denim.json",
+      "missing_ids": [
+        146
+      ]
+    },
+    {
+      "video": "0017",
+      "frame": 1,
+      "expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0017/persons-in-jeans-crossing-the-street.json",
+      "missing_ids": [
+        148
+      ]
+    },
+    {
+      "video": "0017",
+      "frame": 2,
+      "expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0017/persons-in-jeans-crossing-the-street.json",
+      "missing_ids": [
+        148
+      ]
+    },
+    {
+      "video": "0017",
+      "frame": 5,
+      "expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0017/persons-in-jeans-crossing-the-street.json",
+      "missing_ids": [
+        146
+      ]
+    },
+    {
+      "video": "0017",
+      "frame": 6,
+      "expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0017/persons-in-jeans-crossing-the-street.json",
+      "missing_ids": [
+        146
+      ]
+    },
+    {
+      "video": "0017",
+      "frame": 1,
+      "expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0017/persons-wearing-jeans-walking-by.json",
+      "missing_ids": [
+        148
+      ]
+    },
+    {
+      "video": "0017",
+      "frame": 2,
+      "expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0017/persons-wearing-jeans-walking-by.json",
+      "missing_ids": [
+        148
+      ]
+    },
+    {
+      "video": "0017",
+      "frame": 5,
+      "expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0017/persons-wearing-jeans-walking-by.json",
+      "missing_ids": [
+        146
+      ]
+    },
+    {
+      "video": "0017",
+      "frame": 6,
+      "expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0017/persons-wearing-jeans-walking-by.json",
+      "missing_ids": [
+        146
+      ]
+    },
+    {
+      "video": "0017",
+      "frame": 1,
+      "expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0017/persons-wearing-jeans.json",
+      "missing_ids": [
+        148
+      ]
+    },
+    {
+      "video": "0017",
+      "frame": 2,
+      "expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0017/persons-wearing-jeans.json",
+      "missing_ids": [
+        148
+      ]
+    },
+    {
+      "video": "0017",
+      "frame": 5,
+      "expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0017/persons-wearing-jeans.json",
+      "missing_ids": [
+        146
+      ]
+    },
+    {
+      "video": "0017",
+      "frame": 6,
+      "expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0017/persons-wearing-jeans.json",
+      "missing_ids": [
+        146
+      ]
+    },
+    {
+      "video": "0017",
+      "frame": 1,
+      "expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0017/those-in-trousers-made-of-denim.json",
+      "missing_ids": [
+        148
+      ]
+    },
+    {
+      "video": "0017",
+      "frame": 2,
+      "expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0017/those-in-trousers-made-of-denim.json",
+      "missing_ids": [
+        148
+      ]
+    },
+    {
+      "video": "0017",
+      "frame": 5,
+      "expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0017/those-in-trousers-made-of-denim.json",
+      "missing_ids": [
+        146
+      ]
+    },
+    {
+      "video": "0017",
+      "frame": 6,
+      "expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0017/those-in-trousers-made-of-denim.json",
+      "missing_ids": [
+        146
+      ]
+    }
+  ],
+  "no_targets_intersected_or_relabeled": true,
+  "actual_native_vs_existing_media_pixel_comparisons": 136,
+  "training_rows_written": 0,
+  "new_model_calls": false,
+  "new_GPU_training": false,
+  "first_actionable_root_cause": "release expression target IDs have no same-frame released box; determine visibility/annotation contract before supervision",
+  "full_goal_complete": false
+}

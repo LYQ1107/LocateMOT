@@ -1,0 +1,107 @@
+{
+  "status": "RMOT_ALL_FIT_EXPRESSION_COMPONENT_GENERATED_NOT_TRAINED",
+  "counts": {
+    "query_membership:no": 77189,
+    "expressions": 4350,
+    "expressions_with_positive_context": 2213,
+    "positive_contexts": 15446,
+    "empty_contexts": 19354,
+    "rows": 87721,
+    "empty_query_presence:yes": 1199,
+    "empty_query_presence:no": 2460,
+    "query_membership:yes": 6873
+  },
+  "per_video": {
+    "0000": {
+      "expressions": 596,
+      "expressions_with_positive_context": 58,
+      "positive_contexts": 290,
+      "empty_contexts": 4478,
+      "rows": 5960
+    },
+    "0002": {
+      "expressions": 449,
+      "expressions_with_positive_context": 341,
+      "positive_contexts": 2728,
+      "empty_contexts": 864,
+      "rows": 7633
+    },
+    "0003": {
+      "expressions": 442,
+      "expressions_with_positive_context": 371,
+      "positive_contexts": 2674,
+      "empty_contexts": 862,
+      "rows": 15912
+    },
+    "0006": {
+      "expressions": 618,
+      "expressions_with_positive_context": 62,
+      "positive_contexts": 424,
+      "empty_contexts": 4520,
+      "rows": 5562
+    },
+    "0008": {
+      "expressions": 620,
+      "expressions_with_positive_context": 268,
+      "positive_contexts": 2036,
+      "empty_contexts": 2924,
+      "rows": 30380
+    },
+    "0010": {
+      "expressions": 572,
+      "expressions_with_positive_context": 302,
+      "positive_contexts": 1921,
+      "empty_contexts": 2655,
+      "rows": 10296
+    },
+    "0012": {
+      "expressions": 339,
+      "expressions_with_positive_context": 273,
+      "positive_contexts": 1658,
+      "empty_contexts": 1054,
+      "rows": 2712
+    },
+    "0014": {
+      "expressions": 361,
+      "expressions_with_positive_context": 249,
+      "positive_contexts": 1992,
+      "empty_contexts": 896,
+      "rows": 3971
+    },
+    "0017": {
+      "expressions": 353,
+      "expressions_with_positive_context": 289,
+      "positive_contexts": 1723,
+      "empty_contexts": 1101,
+      "rows": 5295
+    }
+  },
+  "physical_frames": 72,
+  "native_candidates": 165,
+  "rejected_native_frames": 8,
+  "reference_rows_exact_state_question_target_task": 346,
+  "reference_native_input_state_and_question_checks": 72,
+  "actual_native_vs_existing_media_pixel_comparisons": 136,
+  "legacy_query_media_pixel_pairs_compared": 200,
+  "unboxed_target_contexts_retained_with_official_projection": 60,
+  "annotation_contract_validation": "outputs/groundjev/validation/rmot_release_box_projection_v2/validation.json",
+  "existing_unique_media_paths_reused": 136,
+  "new_image_or_feature_artifacts": 0,
+  "all_fit_expressions_and_recorded_frames_retained": true,
+  "no_evaluation_or_forbidden_GT_supervision": true,
+  "GT_IDs_in_model_input": false,
+  "no_actor_history_or_temporal_expression_observability_claim": true,
+  "negative_membership_is_unchanged_GT_IoU_proxy_not_calibrated_uncertainty": true,
+  "requires_positive_negative_aware_mixed_task_curriculum": true,
+  "compressed_train_bytes": 3156280,
+  "export_bytes_before_summary": 4845340,
+  "export_budget_bytes": 67108864,
+  "combined_registered_upper_bytes": 26426987277,
+  "new_model_calls": false,
+  "new_GPU_training": false,
+  "full_goal_complete": false,
+  "explicit_generation_command": ".venv-onejev-py310/bin/python tools/groundjev/prepare_rmot_query_diversity_component.py --plan configs/groundjev/rmot_query_diversity_component_v1.json --out outputs/groundjev/training_data/rmot_query_diversity_component_v3_official_box_projection --annotation-contract outputs/groundjev/validation/rmot_release_box_projection_v2/validation.json",
+  "all_partial_and_failed_attempts_preserved_locally": true,
+  "proposals_still_conditioned_on_original_recorded_primary_expression": true,
+  "counterfactual_membership_not_new_expression_conditioned_detector_rollouts": true
+}

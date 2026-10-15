@@ -1,0 +1,26 @@
+{
+  "status": "FULL_RMOT_EXPRESSION_COMPONENT_CPU_PLAN_COMPLETE_NOT_TRAINED",
+  "owner_pid": 2615287,
+  "component": "outputs/groundjev/training_data/rmot_query_diversity_component_v3_official_box_projection",
+  "expected_rows": 87721,
+  "physical_frames": 72,
+  "expression_files": 4350,
+  "new_model_or_GPU_loaded": false,
+  "training_started": false,
+  "text_rows_loaded_in_RAM_by_native_trainer": true,
+  "native_reporter_timing_scope": "cached-plan reporter only; separate full token planning timer below",
+  "full_goal_complete": false,
+  "all_rows": 87721,
+  "overlength_dropped_rows": 0,
+  "max_actual_tokens": 2301,
+  "total_actual_tokens": 120061085,
+  "question_families": {
+    "query_membership": 84062,
+    "empty_query_presence": 3659
+  },
+  "hypothetical_full_component_epoch_updates": 21931,
+  "actual_new_training_updates": 0,
+  "input_io_resume_protocol": "gzip-jsonl-and-native-category-crop-recipes-v1",
+  "actual_full_native_plan_epoch_wall_seconds": 111.92437006800901,
+  "process_CPU_RSS_peak_bytes": 2068492288
+}

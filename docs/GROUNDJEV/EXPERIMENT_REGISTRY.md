@@ -650,3 +650,34 @@ full_rmot_affinity800_v1 complete: all10full800controls validated, bothCPUlearne
 - Broader legal TRAIN index complete and all eligible Base target references validated, not generated SFT/training:40904MOTframes/43videos;1814RMOT local frames/9fit/4350expressionfiles;18274TAOtrainimages/500videos/175Baseclasses/52978eligibleannotations. Zero missing indexed images; no forbidden/eval GT read or Novel negative labels. Raw metadata33.85MB,128MiBcap/registered26091442957<25GiB; no model calls/feature archive. Current600pair unchanged. Source reference files kept locally; builder/config/summary/Basecoverage/validation published.
 
 -175Base native category component input validation complete, not trained:105956typed root/leaf questions from52978GTteacher Baseobjects/500trainvideos, no new PNG/nativefeature cache, gzip25.82MB vs1.005GB text. Actual215oldobject pixels/175class native questions and pixels/four processor tensors match; all label/box/image links validated. Official CPU full plan0drop/max4238/315781843planned tokens;26489hypothetical category steps not optimizer updates. CPUtextRAMpeak3.746GB; media on demand, not constant-memory row streaming. Separate IO resume version protects input interpretation; current600controls unchanged. Receipt `training_data/base175_streamed_component_v1/validated_component_summary.json`.
+
+
+## RMOT all-fit expression component — 2026-10-16
+
+Generated87,721questions from4,350legal-fit expression files and the same72
+native frames/165proposals, preserving all34,800query-frame contexts and8
+rejected native frames. This is counterfactual instantaneous membership data;
+the detector proposals remain conditioned on their original primary expressions.
+It adds language coverage, not image/history coverage. Candidate positives6,873,
+negatives77,189;2,137expressions have no positive target in these72frames, so
+future training requires positive/negative-aware mixed-task sampling.
+
+Initial target-ID containment failed on60contexts/15expressions in fit0017.
+The full preflight held with0exports. An unchanged pinned official TempRMOT
+reader(6a65640) subsequently validated the released-box projection on198actual
+cases, including all60; all contexts are retained and missing-box references
+remain explicit. First official-reader verification's path-alias error was
+fixed without changing source bytes or the official method. All failures remain
+local. Legacy346sample input/question/targets reproduce exactly;136native
+media and200legacy query-media pixel comparisons pass.
+
+The complete native CPU token plan exits0:87,721rows,0drops,max2,301tokens,
+120,061,085total planned tokens,111.924actual plan_epoch seconds,CPUpeak2.07GB.
+No GPU/optimizer was loaded.21,931updates describe only a hypothetical4-row
+component epoch; the reporter's default4-rank label is not actual GPU use
+(actual CPUworld1). Gzip3.16MB;64MiBreserved, combined26,426,987,277<25GiB.
+The component has not been trained; current paired600jobs remain unchanged.
+
+Evidence: `outputs/groundjev/training_data/rmot_query_diversity_component_v3_official_box_projection/{summary,validated_component_summary,unboxed_expression_targets,files_manifest}.json`,
+`outputs/groundjev/validation/rmot_release_box_projection_v2/validated_summary.json`,
+`outputs/groundjev/validation/rmot_query_diversity_full_cpu_plan_v1/owner_state.json`.

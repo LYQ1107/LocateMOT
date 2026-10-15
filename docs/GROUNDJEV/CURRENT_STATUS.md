@@ -1,5 +1,50 @@
 # GroundJEV-MOT current evidence — 2026-10-16
 
+## RMOT expression component — 2026-10-16
+
+Prepared and validated all4,350legal-fit expression files on the same72
+recorded native frames/165candidates, retaining all8rejected frames and34,800
+query-frame contexts. The87,721questions comprise84,062candidate membership
+and3,659empty-frame presence questions; candidate positives6,873 versus77,189
+negatives. Only2,213expressions have a positive target in these sampled frames;
+2,137do not. Per-expression positive/negative coverage is preserved for a
+future balanced mixed-task curriculum. This expands language coverage, not
+physical-image coverage or identity-history supervision. Proposals still come
+from their original recorded primary-expression DLM requests; no detector was
+rerun for the new expressions, so this is counterfactual membership supervision.
+
+The initial generator stopped on missing same-frame boxes for expression IDs:
+60contexts/15expressions/four unique video-frame-ID references, all in fit0017.
+An early-preflight rerun correctly held before exporting any rows. Pinned
+TempRMOT6a65640's unchanged `_pre_single_frame` was then executed on198actual
+cases, including all60affected contexts: it iterates released boxes and marks
+membership by expression ID; it does not invent boxes for unboxed IDs. Six
+legacy empty-frame missing-label-file cases remain explicitly recorded. The
+first official-reader verification failed because our symlink setup gave only
+the image path the required KITTI token; fixing the label alias too selects
+the official KITTI geometry branch. All failed attempts are preserved locally.
+
+The final component explicitly records the official box-projection rule and
+all60affected contexts; none were skipped, interpolated or silently relabeled.
+All346legacy samples reproduce exact state/question/target/task, with136native
+input-media pixel comparisons and200legacy query-media pixel pairs checked.
+Full native CPU planning retains all87,721rows, max2,301tokens,120,061,085total
+planned tokens,0overlength drops; actual `plan_epoch` took111.924s and peakCPU
+RSS2,068,492,288bytes. The cached native reporter's0s and default4-rank label
+are not full tokenization time or GPU use: actual world size was1onCPU; future
+entry explicitly sets PLAN_WORLD to match. The21,931steps are a hypothetical
+4-row accumulation epoch, not an optimizer run. Gzip training text3,156,280bytes;
+all generated/failed-attempt real files total about7.98MB, within64MiB reserve.
+Combined conservative temporary upper26,426,987,277bytes remains below25GiB.
+No new image/feature archive or GPU training was created. Existing paired600
+training and queued four-scope controls remain unchanged; ordinary-model-level
+three-task performance and large-scale joint foundation training remain unproven.
+
+Sources: `configs/groundjev/rmot_query_diversity_component_v1.json`,
+`tools/groundjev/{prepare_rmot_query_diversity_component,check_rmot_release_box_projection,plan_rmot_query_diversity_component}.py`,
+`outputs/groundjev/training_data/rmot_query_diversity_component_v3_official_box_projection/validated_component_summary.json`,
+`outputs/groundjev/validation/rmot_query_diversity_full_cpu_plan_v1/owner_state.json`.
+
 Independent worktree `/data2/user/LocateMOT_GroundJEV`; original LocateMOT data
 and preserved U2 results remain under `/data2/user/LocateMOT`. The full goal
 remains active. These are registered legal validation scopes, one seed; no
