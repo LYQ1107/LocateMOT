@@ -1,0 +1,147 @@
+{
+  "status": "GROUND_U2_CORE300_TRAINING_COMPLETE_OFFICIAL_METRICS_PENDING",
+  "owner_pid": 1878155,
+  "device": "cpu",
+  "steps_registered": 300,
+  "seed": 0,
+  "scope": {
+    "frames": 48,
+    "sequences": {
+      "MOT17-02-FRCNN": 16,
+      "dancetrack0001": 16,
+      "MOT20-01": 16
+    },
+    "two_frame_clips": 45,
+    "new_feature_cache_bytes": 0,
+    "source": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/native_pack_v1",
+    "validation_or_Novel_GT_used": false
+  },
+  "core_architecture_and_native_U2_losses_unchanged": true,
+  "hidden_dim": 256,
+  "max_age": 30,
+  "adapter": "trainable LayerNorm2560 and Linear2560to256 on original native ROI",
+  "original_U2_tracking_checkpoint_available": false,
+  "initialization": "new seed0 initialization",
+  "training": "original U2 MOT loss/scheduled forcing/query augmentation, FP32 CPU, 2frame clips",
+  "Compact_budget_comparability": "300optimizer steps only; different loss, parameters, optimizer recipe and frame exposure, not FLOP/parameter matched",
+  "completed_steps": 300,
+  "loss_log": [
+    {
+      "step": 1,
+      "losses": {
+        "total": 4.631803512573242,
+        "row": 1.7574437856674194,
+        "col": 2.368870258331299,
+        "switch": 0.34607380628585815,
+        "alive": 0.3948115408420563,
+        "motion": 0.0031823301687836647,
+        "identity_contrast": 1.2747094631195068,
+        "col_ce": 1.736920714378357,
+        "birth_reject": 0.6319494843482971
+      },
+      "gradient_norm": 7.263956069946289,
+      "elapsed_seconds": 0.26386731094680727
+    },
+    {
+      "step": 50,
+      "losses": {
+        "total": 3.7003989219665527,
+        "row": 1.5971869230270386,
+        "col": 1.9601140022277832,
+        "switch": 0.358908474445343,
+        "alive": 0.02035292610526085,
+        "motion": 0.0007284771418198943,
+        "identity_contrast": 0.19167254865169525,
+        "col_ce": 1.560288667678833,
+        "birth_reject": 0.39982539415359497
+      },
+      "gradient_norm": 7.072338104248047,
+      "elapsed_seconds": 3.169040196982678
+    },
+    {
+      "step": 100,
+      "losses": {
+        "total": 2.7490646839141846,
+        "row": 1.100257158279419,
+        "col": 1.4939273595809937,
+        "switch": 0.2310880571603775,
+        "alive": 0.02393888495862484,
+        "motion": 0.00045198146835900843,
+        "identity_contrast": 0.3635897636413574,
+        "col_ce": 1.1062358617782593,
+        "birth_reject": 0.387691468000412
+      },
+      "gradient_norm": 8.818368911743164,
+      "elapsed_seconds": 5.981718839961104
+    },
+    {
+      "step": 150,
+      "losses": {
+        "total": 1.4326298236846924,
+        "row": 0.4474443197250366,
+        "col": 0.9372081756591797,
+        "switch": 0.028642069548368454,
+        "alive": 0.02333557792007923,
+        "motion": 0.0007415300351567566,
+        "identity_contrast": 0.13844884932041168,
+        "col_ce": 0.5830617547035217,
+        "birth_reject": 0.3541463613510132
+      },
+      "gradient_norm": 14.401835441589355,
+      "elapsed_seconds": 8.907560913998168
+    },
+    {
+      "step": 200,
+      "losses": {
+        "total": 0.37230733036994934,
+        "row": 0.05018565058708191,
+        "col": 0.30475857853889465,
+        "switch": 0.0,
+        "alive": 0.00430647237226367,
+        "motion": 0.00039477774407714605,
+        "identity_contrast": 0.06435631960630417,
+        "col_ce": 0.12162626534700394,
+        "birth_reject": 0.1831323206424713
+      },
+      "gradient_norm": 8.813894271850586,
+      "elapsed_seconds": 11.662085698975716
+    },
+    {
+      "step": 250,
+      "losses": {
+        "total": 0.6804518699645996,
+        "row": 0.1978617161512375,
+        "col": 0.4081920087337494,
+        "switch": 0.030857104808092117,
+        "alive": 0.013232653960585594,
+        "motion": 0.0006013214006088674,
+        "identity_contrast": 0.25230029225349426,
+        "col_ce": 0.17267653346061707,
+        "birth_reject": 0.23551547527313232
+      },
+      "gradient_norm": 6.902692794799805,
+      "elapsed_seconds": 14.371666195977014
+    },
+    {
+      "step": 300,
+      "losses": {
+        "total": 0.1420089155435562,
+        "row": 0.025358036160469055,
+        "col": 0.10324399918317795,
+        "switch": 0.0,
+        "alive": 0.0014744537184014916,
+        "motion": 0.0007318455609492958,
+        "identity_contrast": 0.05068939924240112,
+        "col_ce": 0.022246669977903366,
+        "birth_reject": 0.08099732547998428
+      },
+      "gradient_norm": 4.845285892486572,
+      "elapsed_seconds": 17.12510124297114
+    }
+  ],
+  "changed_elements": 4361991,
+  "parameters": 5942795,
+  "reload_max_difference": 0.0,
+  "elapsed_seconds": 17.324756235990208,
+  "checkpoint": "outputs/groundjev/baselines/u2_core300_cpu_v1/training/checkpoint.pt"
+}

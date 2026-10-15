@@ -1,0 +1,10 @@
+{
+  "all198_prefix_decisions_exact": true,
+  "prefix_native_U2_logit_max_difference": 0.0,
+  "failed_frame199_now_finite": true,
+  "native_proposals_or_model_weights_or_thresholds_changed": false,
+  "overflow_root": "finite coordinates around7.6e19 overflow FP32 squared-sum norm; inf/inf center-distance produces NaN",
+  "repair": "only undefined FP32 inf_over_inf center distances recomputedFP64; every defined FP32 distance preserved",
+  "resume_source_state": "validated_identity_state198.pt",
+  "GT_used": false
+}

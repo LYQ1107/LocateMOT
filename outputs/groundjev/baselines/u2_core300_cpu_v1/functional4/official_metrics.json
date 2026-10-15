@@ -1,0 +1,53 @@
+{
+  "status": "OFFICIAL_SCOPE_EVALUATION_COMPLETE",
+  "dataset": "dancetrack",
+  "sequence": "dancetrack0004",
+  "scope": "explicit_B2_four_frame_functional_check",
+  "frames": 4,
+  "metrics": {
+    "HOTA": 0.02172157206231691,
+    "DetA": 0.01282051282051282,
+    "AssA": 0.03684210526315789,
+    "IDF1": 0.0,
+    "IDSW": 0,
+    "FP": 2,
+    "FN": 12
+  },
+  "metric_scale": "fraction, counts for IDSW/FP/FN",
+  "trackeval_commit": "12c8791b303e0a0b50f753af204249e622d0281a",
+  "gt_view": {
+    "dataset": "dancetrack",
+    "sequence_lengths": {
+      "dancetrack0004": 4
+    },
+    "sources": [
+      {
+        "video": "dancetrack0004",
+        "source": {
+          "source_path": "/data2/user/LocateMOT/data/DanceTrack/val/dancetrack0004/gt/gt.txt",
+          "sha256": "a6ce73e1eedb04f299943f92231aa4b6b7ce177af500f3862cd12a690b86fc86"
+        },
+        "source_frames": [
+          "00000001.jpg",
+          "00000002.jpg",
+          "00000003.jpg",
+          "00000004.jpg"
+        ],
+        "view_path": "outputs/groundjev/baselines/u2_core300_cpu_v1/functional4/official_evaluation/gt/dancetrack0004/gt/gt.txt",
+        "view_sha256": "5769a6718e867bb0a935ef381995f3b531fbea391f6541caf746c8d2daabe425",
+        "positive_gt_units_before_official_preprocessing": 12
+      }
+    ],
+    "frame_count": 4,
+    "official_test_labels_read": false
+  },
+  "gt_access": "evaluation only",
+  "official_test_labels_read": false,
+  "fixture_only": false,
+  "model_score_claim": true,
+  "perception_rejected_frames": [],
+  "perception_rejection_rate": 0.0,
+  "rejected_frames_in_official_denominator": true,
+  "end_to_end_fps": null,
+  "association_replay_fps": 10.234172554963607
+}

@@ -1,0 +1,80 @@
+{
+  "first_failed_frame": 199,
+  "error": "ValueError('matrix contains invalid numeric entries')",
+  "earliest_nonfinite_modules": [
+    {
+      "frame": 199,
+      "module": "core.set_interaction.pair_to_track.0",
+      "type": "Linear",
+      "input_nonfinite": true
+    },
+    {
+      "frame": 199,
+      "module": "core.set_interaction.pair_to_track.1",
+      "type": "GELU",
+      "input_nonfinite": true
+    },
+    {
+      "frame": 199,
+      "module": "core.set_interaction.pair_to_track.2",
+      "type": "Linear",
+      "input_nonfinite": true
+    },
+    {
+      "frame": 199,
+      "module": "core.set_interaction.pair_to_track",
+      "type": "Sequential",
+      "input_nonfinite": true
+    },
+    {
+      "frame": 199,
+      "module": "core.set_interaction.pair_to_candidate.0",
+      "type": "Linear",
+      "input_nonfinite": true
+    },
+    {
+      "frame": 199,
+      "module": "core.set_interaction.pair_to_candidate.1",
+      "type": "GELU",
+      "input_nonfinite": true
+    },
+    {
+      "frame": 199,
+      "module": "core.set_interaction.pair_to_candidate.2",
+      "type": "Linear",
+      "input_nonfinite": true
+    },
+    {
+      "frame": 199,
+      "module": "core.set_interaction.pair_to_candidate",
+      "type": "Sequential",
+      "input_nonfinite": true
+    },
+    {
+      "frame": 199,
+      "module": "core.set_interaction.encoder.layers.0.norm1",
+      "type": "LayerNorm",
+      "input_nonfinite": true
+    },
+    {
+      "frame": 199,
+      "module": "core.set_interaction.encoder.layers.0.self_attn",
+      "type": "MultiheadAttention",
+      "input_nonfinite": true
+    },
+    {
+      "frame": 199,
+      "module": "core.set_interaction.encoder.layers.0.dropout1",
+      "type": "Dropout",
+      "input_nonfinite": true
+    },
+    {
+      "frame": 199,
+      "module": "core.set_interaction.encoder.layers.0.norm2",
+      "type": "LayerNorm",
+      "input_nonfinite": true
+    }
+  ],
+  "input_nonfinite": false,
+  "state_nonfinite": false
+}

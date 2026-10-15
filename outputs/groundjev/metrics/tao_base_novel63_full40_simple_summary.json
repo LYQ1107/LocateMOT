@@ -1,0 +1,76 @@
+{
+  "status": "OFFICIAL_REGISTERED_MULTITASK_SCOPE_EVALUATION_COMPLETE",
+  "task": "ovmot",
+  "dataset": "tao_amodal",
+  "sequence": "val/HACS/Making_a_sandwich_v_SMk4troNhwE_scene_0_0-2482",
+  "scope": "full_legal_validation_video_annotation_frames",
+  "frames": 40,
+  "all_registered_frames_included": true,
+  "GT_access": "evaluation only",
+  "official_test_labels_read": false,
+  "evaluator": "unmodified official TETA OVMOT recipe; non-exhaustive TAO",
+  "evaluator_commit": "b498aa87b252bfb75d7cc0d8d6435c3e1e74e4de",
+  "metrics": {
+    "TETA": 18.64,
+    "LocA": 7.0114,
+    "AssocA": 28.618,
+    "ClsA": 20.29,
+    "LocRe": 89.375,
+    "LocPr": 7.0629,
+    "AssocRe": 30.888,
+    "AssocPr": 60.706,
+    "ClsRe": 20.29,
+    "ClsPr": 63.333
+  },
+  "base_novel": {
+    "base": {
+      "TETA": 23.372500000000002,
+      "LocA": 5.66265,
+      "AssocA": 34.0205,
+      "ClsA": 30.43485,
+      "LocRe": 90.125,
+      "LocPr": 5.70445,
+      "AssocRe": 35.983999999999995,
+      "AssocPr": 65.011,
+      "ClsRe": 30.43485,
+      "ClsPr": 95.0
+    },
+    "novel": {
+      "TETA": 9.1737,
+      "LocA": 9.7088,
+      "AssocA": 17.812,
+      "ClsA": 0.0,
+      "LocRe": 87.875,
+      "LocPr": 9.7799,
+      "AssocRe": 20.697,
+      "AssocPr": 52.095,
+      "ClsRe": 0.0,
+      "ClsPr": 0.0
+    }
+  },
+  "metric_scale": "official TETA summary percent",
+  "evaluated_categories": [
+    {
+      "name": "knife",
+      "group": "base"
+    },
+    {
+      "name": "peeler_(tool_for_fruit_and_vegetables)",
+      "group": "novel"
+    },
+    {
+      "name": "baby",
+      "group": "base"
+    }
+  ],
+  "GT_boxes": 160,
+  "predictions": 35228,
+  "source_official_metrics": "outputs/groundjev/multitask_runs/tao_base_novel63_full_v3_empty_crop_cpu/simple/official_metrics.json",
+  "decoded_frames": 40,
+  "all35228native_proposals_retained": true,
+  "native_source": "outputs/groundjev/multitask_runs/tao_base_novel63_full_v2_expression_none/native_candidates/frame_candidates.jsonl",
+  "candidate_protocol": "all520nativequeries/40frames;317scored203parserrejected; all13chunks1203classes perframe; originalparser queryrejection retained; noNMS/confidencefilter/topK",
+  "same_source_sharedCompact_result": "pending",
+  "replay_CPU_not_E2E_FPS": true,
+  "full_dataset_claim": false
+}

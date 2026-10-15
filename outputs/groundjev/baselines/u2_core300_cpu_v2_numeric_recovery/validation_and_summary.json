@@ -1,0 +1,57 @@
+{
+  "status": "B2_REAL_CORE300_FULL1203_OFFICIAL_CONTROL_AND_GEOMETRY_VALIDATED",
+  "frames": 1203,
+  "native_candidates": 13664,
+  "emitted_candidate_observations": 850,
+  "births": 336,
+  "matched_observations": 514,
+  "decoded_frames": 1203,
+  "all_native_geometry_and_perframe_identity_uniqueness_validated": true,
+  "official_metrics": {
+    "HOTA": 0.012434110573200322,
+    "DetA": 0.07354991038055407,
+    "AssA": 0.0021138460942293326,
+    "IDF1": 0.006254598969830758,
+    "IDSW": 250,
+    "FP": 455,
+    "FN": 4191
+  },
+  "metric_scale": "fraction, counts for IDSW/FP/FN",
+  "trackeval_commit": "12c8791b303e0a0b50f753af204249e622d0281a",
+  "rejected_native_frames_retained": 27,
+  "GT_or_future_in_runtime": false,
+  "actual_training_steps": 300,
+  "actual_parameters": 5942795,
+  "changed_elements": 4361991,
+  "training_scope": {
+    "frames": 48,
+    "sequences": {
+      "MOT17-02-FRCNN": 16,
+      "dancetrack0001": 16,
+      "MOT20-01": 16
+    },
+    "two_frame_clips": 45,
+    "new_feature_cache_bytes": 0,
+    "source": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/native_pack_v1",
+    "validation_or_Novel_GT_used": false
+  },
+  "initialization": "newseed0, notoldtrainedU2trackingcheckpoint",
+  "same_model_reload_max_difference": 0.0,
+  "accepted_numeric_repair_regression": {
+    "all198_prefix_decisions_exact": true,
+    "prefix_native_U2_logit_max_difference": 0.0,
+    "failed_frame199_now_finite": true,
+    "native_proposals_or_model_weights_or_thresholds_changed": false,
+    "overflow_root": "finite coordinates around7.6e19 overflow FP32 squared-sum norm; inf/inf center-distance produces NaN",
+    "repair": "only undefined FP32 inf_over_inf center distances recomputedFP64; every defined FP32 distance preserved",
+    "resume_source_state": "validated_identity_state198.pt",
+    "GT_used": false
+  },
+  "resumed_valid_prefix_frames": 198,
+  "native_detector_E2E_or_uninterrupted_speed_claim": false,
+  "original_failure": "outputs/groundjev/baselines/u2_core300_cpu_v1/full1203/failure.json",
+  "video": "outputs/groundjev/baselines/u2_core300_cpu_v2_numeric_recovery/full1203/tracks.mp4",
+  "official_source": "outputs/groundjev/baselines/u2_core300_cpu_v2_numeric_recovery/full1203/official_metrics.json",
+  "fairness": "sameV1nativeproposals asSimple/Compact; same300updatebudget asoriginalCompact300 only; U2losses/params/optimizer/exposure/maxage differ. NoisolatedJEVcausality claim",
+  "result": "HOTA1.2434/IDF1.6255 percent, muchworse thanSimple8.5298/3.9562. FN4191 dominates; no promotion or lowIDSWsuccessclaim."
+}

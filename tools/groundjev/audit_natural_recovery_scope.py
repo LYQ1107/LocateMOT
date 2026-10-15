@@ -54,6 +54,7 @@ def main():
         s=next(s for s in protocol['sequences'] if s['sequence']==selected['sequence'])
         paths=[str(Path(s['image_dir'])/p) for p in s['validation_frames']]
         manifest={'dataset':selected['dataset'],'sequence':s['sequence'],'task':'mot','images':paths,
+            'protocol':str(PROTOCOL/(selected['dataset']+'.json')),
             'frame_numbers':[int(Path(p).stem) for p in paths],'fps':s['fps'],'vocabulary':['person'],
             'gt_path_for_evaluation_only':s['gt_path'],'scope':'complete_registered_validation_scope_natural_visibility_challenge',
             'training_on_this_scope':False,'runtime_GT_fields':False,'official_test_labels_read':False,

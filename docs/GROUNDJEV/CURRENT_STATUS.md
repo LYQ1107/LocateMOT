@@ -17,6 +17,7 @@ This is one video and one training seed, not a complete-dataset result.
 | Same set architecture, GT only | 5.977 | 3.406 | 1322 | 5954 | 1796 |
 | Matched distilled feedforward | 11.197 | 15.118 | 161 | 549 | 3556 |
 | Simple reference | 8.530 | 3.956 | 746 | 9334 | 256 |
+| Newly trained original U2 core + native ROI bridge,300steps | 1.243 | 0.625 | 250 | 455 | 4191 |
 | Original pretrained Full V1 | 2.145 | 0.483 | 3792 | 9300 | 241 |
 
 The three trained models preserve identical original native candidate boxes,
@@ -117,7 +118,10 @@ The corrected memory format preserves the exact empty dimensions without
 changing the box, score, metric or invented pixels. The real frame755 regression
 passes. CPU recovery replays all28 complete causal decisions and must finish
 all40 frames for both Simple and the existing shared Compact checkpoint.
-Owner: multitask_runs/tao_base_novel63_full_v3_empty_crop_cpu. Results pending.
+Simple now completes all40 decodedframes and unchanged official TETA18.640,
+Base23.3725/Novel9.1737, with all35228proposals and160GTboxes. NovelClsA0,
+so this is not demonstrated Novel recognition. SharedCompact remains pending.
+Owner: multitask_runs/tao_base_novel63_full_v3_empty_crop_cpu.
 No native perception is repeated; no CPU/replay speed is claimed as E2E.
 
 The original and Ground200 native full9 client runners survived loss of their
@@ -682,3 +686,60 @@ recovery. No synthetic occlusion, proposal removal, GT feedback or visibility
 filtering of official metrics was introduced. Native challenge inference and
 long recovery evidence remain required.
 Evidence: recovery_scope_20261015/audit.json and registered_mot_challenge.json.
+
+
+## Original U2 core baseline now running
+
+B2 uses the unchanged original SharedTrackCore(hidden_dim256,max_age30 source
+frames), original Hungarian margins/lifecycle/identity GRU/motion and original
+six MOT losses. A newly trained LayerNorm2560+Linear2560to256 bridge supplies
+actual shared DLM ROI features. This is newly initialized seed0 training,
+not a nonexistent pretrained U2 tracking checkpoint. CPU training reuses all48
+existing native training frames from MOT17-02/Dance0001/MOT20-01, with original
+GT ignore/distractor handling, all45 adjacent observation pairs and300updates.
+Source frame gaps are retained; adjacency does not imply contiguous frames.
+Original scheduled GT forcing and query augmentation remain explicit training
+operations; evaluation uses neither GT nor teacher forcing. The registered
+owner will validate a four-frame state roundtrip and then the complete1203
+DanceTrack video with exactly the existingV1candidates/ROIs and officialTrackEval.
+No additional GPU, detector query, cache, or oldU2queue is started.
+
+Comparison limits: same300optimizer updates as earlyCompact controls only.
+Core parameters, loss, optimizer, frame exposure and memory max_age differ;
+this baseline alone cannot establish an isolated JEV advantage. B2 is MOT-only,
+with no claimed trained RMOT/OVMOT semantics. Results are pending.
+Plan: configs/groundjev/u2_core300_baseline_v1.json.
+Owner: baselines/u2_core300_cpu_v1/owner_state.json.
+
+
+B2 update: the actual300step CPU training completed (5,942,795 parameters,
+4,361,991 changed elements,17.325seconds) and exact model reload plusfour-frame
+video/memory/evaluator checks passed. Fullvideo failed at199: a finite retained
+track with coordinates near7.6e19 overflowed FP32 squared-sum norms, producing
+inf/inf center distances. Model parameters and actual input features were finite.
+The smallest accepted numerical repair recomputes only undefined ratios inFP64;
+all defined FP32 distances remain unchanged. A broader norm repair was rejected
+because it changed frame198 logits. The accepted fix reproduces everypair/new/
+no-match/alive logit andID in the entire198frame prefix exactly(maxdifference0),
+and actualfailedframe199 is nowfinite. Weights, native candidates, thresholds,
+assignment, lifecycle and source-frame max_age are unchanged. The original
+failure and rejected regression remain. A newowner resumes the validated198state
+and renders all1203frames; no training restart and no skipped frames.
+Currentowner: baselines/u2_core300_cpu_v2_numeric_recovery/owner_state.json.
+Officialfullvideo metrics remainpending until terminal and validated.
+
+
+B2 fullvideo is now complete: all1203decodedframes,13664identical native
+candidates, all27rejectedframes retained and unchanged official TrackEval.
+HOTA1.2434%,IDF1.6255%,IDSW250,FP455,FN4191. The complete geometry/order,
+per-frame output ID uniqueness and emitted-box membership in the original
+candidates were validated. This newly trained U2 baseline substantially
+underperforms Simple8.5298%HOTA and misses most GT; fewerIDSW cannot be
+interpreted as successful association under that loss of recall. This does
+not isolate JEV causality because losses, parameter counts and exposure differ.
+Weights and all198prefix logits/IDs remain unchanged through numerical recovery.
+A metadata error initially labeled resumed processing asassociation replayFPS;
+raw receipts are retained, the speed claim is removed, and unchanged official
+accuracy metrics reproduce exactly. The restored198frames are rendered but
+skipcorecompute, so no uninterrupted or detector-inclusive speed is asserted.
+Evidence: baselines/u2_core300_cpu_v2_numeric_recovery/validation_and_summary.json.

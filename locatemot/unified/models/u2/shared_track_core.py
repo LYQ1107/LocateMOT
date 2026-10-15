@@ -42,6 +42,17 @@ PAIR_FEATURE_NAMES = (
 )
 
 
+def _center_distance(offsets: torch.Tensor, extent: torch.Tensor) -> torch.Tensor:
+    """Preserve defined FP32 distances; repair overflow's inf/inf with FP64."""
+    scale = extent.norm(dim=-1).clamp_min(1.0)
+    result = offsets.norm(dim=-1) / scale[:, None]
+    invalid = torch.isnan(result)
+    if invalid.any():
+        precise = offsets.double().norm(dim=-1) / extent.double().norm(dim=-1).clamp_min(1.0)[:, None]
+        result = torch.where(invalid, precise.to(result.dtype), result)
+    return result
+
+
 def _iou_matrix(left: torch.Tensor, right: torch.Tensor) -> torch.Tensor:
     """Return pairwise xyxy IoU without using future frames or labels."""
     if left.shape[0] == 0 or right.shape[0] == 0:
@@ -102,9 +113,8 @@ def _pair_features(
     predicted_centers = (predicted[:, :2] + predicted[:, 2:]) * 0.5
     candidate_centers = (boxes[:, :2] + boxes[:, 2:]) * 0.5
     extent = (state.boxes[:, 2:] - state.boxes[:, :2]).clamp_min(1e-5)
-    scale = extent.norm(dim=-1).clamp_min(1.0)
-    center_distance = (track_centers[:, None] - candidate_centers[None]).norm(dim=-1) / scale[:, None]
-    predicted_distance = (predicted_centers[:, None] - candidate_centers[None]).norm(dim=-1) / scale[:, None]
+    center_distance = _center_distance(track_centers[:, None] - candidate_centers[None], extent)
+    predicted_distance = _center_distance(predicted_centers[:, None] - candidate_centers[None], extent)
 
     track_size = (state.boxes[:, 2:] - state.boxes[:, :2]).clamp_min(1e-5)
     candidate_size = (boxes[:, 2:] - boxes[:, :2]).clamp_min(1e-5)

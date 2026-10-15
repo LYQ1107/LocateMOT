@@ -3345,5 +3345,6 @@
     "intermediate_max_visibility": 0.59917,
     "not_a_prediction_or_candidate_missing_gap": true
   },
-  "scope_note": "complete registeredvalidation frames; halfvideo protocols are not complete physical videos"
+  "scope_note": "complete registeredvalidation frames; halfvideo protocols are not complete physical videos",
+  "protocol": "/data2/user/LocateMOT/outputs/unified/u2/protocol/mot20_half.json"
 }

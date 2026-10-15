@@ -1,0 +1,31 @@
+{
+  "status": "VIDEO_INFERENCE_COMPLETE",
+  "backend": "B2_original_U2_SharedTrackCore",
+  "checkpoint": "outputs/groundjev/baselines/u2_core300_cpu_v1/training/checkpoint.pt",
+  "scope": "explicit_B2_four_frame_functional_check",
+  "task": "mot",
+  "frames": 4,
+  "device": "cpu",
+  "all_input_frames_processed": true,
+  "GT_read": false,
+  "gt_read_by_runtime": false,
+  "future_frames_read_by_runtime": false,
+  "perception_rejected_frames": [],
+  "perception_rejection_rate": 0.0,
+  "association_replay_fps": 10.234172554963607,
+  "end_to_end_fps": null,
+  "shared_input_features_source": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/dancetrack0004_native300_v2_empty_roi_fixed/compact_distilled/frame_decisions.jsonl",
+  "all_native_candidates_and_geometry_preserved": true,
+  "native_feature_vectors_omitted_from_log": true,
+  "original_U2_assignment_lifecycle_and_motion_unchanged": true,
+  "max_age_source_frames": 30,
+  "GT_or_OneJev_decision_used_by_runtime": false,
+  "causal_memory_save_restore_next_frame_max_difference": 0.0,
+  "timing_scope": "CPU U2 association replay and frame/video writes; excludes frozen native perception/ROI extraction",
+  "official_metrics": {
+    "status": "COMPLETE",
+    "path": "outputs/groundjev/baselines/u2_core300_cpu_v1/functional4/official_metrics.json",
+    "scope": "explicit_B2_four_frame_functional_check",
+    "frames": 4
+  }
+}

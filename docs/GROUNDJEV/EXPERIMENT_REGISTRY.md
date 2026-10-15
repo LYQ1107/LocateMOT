@@ -4,9 +4,9 @@
 |---|---|---|
 | B0 old U2 | perception results preserved; no trained tracker | epoch-1 1d9077ae… |
 | B1 GroundAnything + Simple | complete1203frame controls validated | V1HOTA8.530%; freshV3HOTA8.257%, each its own exact Full candidates |
-| B2 GroundAnything + U2 Core | pending; no fabricated trained checkpoint | reused architecture explicitly labeled |
+| B2 GroundAnything + U2 Core | actual300steps and all1203frames complete: HOTA1.243%,IDF1.625%,FN4191; no promotion | original256D core/learned2560to256ROIbridge; actualoverflow-only geometry repair,198prefix exactlyreproduced; new training, notoldcheckpoint |
 | B3 GroundAnything + pretrained OneJev Full | complete1203frame nativeV3 validated; HOTA2.389%, actual E2EFPS.118560 | real originalOneJev, singlevideo/seed, concurrent workloads |
-| B4 tracking-SFT OneJev | actual100step reload/negative matched controls; formal500 replay running, completion-controls owner waits exact trainer | actual48frame DLM rollout/5661rows prepared, not yet used in500 |
+| B4 tracking-SFT OneJev | actual500complete/all16shortcontrols; shared600 paired arms resumed from450/250 with exact fullstates; same-policy controls queued | MOT500 is notmultitask; new600 adds shared nativeRMOT/Basecategory supervision, no600metric claim |
 | B5 distilled Compact | three matched300step controls/full1203video complete; semantic joint1200 and matched broad-fit interventions complete | matched SetGT/MLP/soft-distilled; short RMOT transfer remains poor, TAOBase-only |
 
 Every run records date/commit, devices, split, checkpoints, steps/loss,
@@ -481,3 +481,7 @@ RMO12/TAOBase4. It reusesGPU4 after existingtrainerexit without restarting it.
 Complete500video comparison, actual-native-proposal SFT, Novel-diverse/fulltask
 scopes, long-memory evidence/update ablations and fair complete speed/resource
 comparisons remain required; no final research completion is asserted.
+
+B2 registration: configs/groundjev/u2_core300_baseline_v1.json. Same48existingnativeMOTfitframes/300updates, but different originalU2 losses, parameter count, optimizer andclip exposure versusCompact; notFLOP/parammatched. NooldU2queue/perception rerun. OriginalSharedTrackCore/assignment/state/losses unchanged; CPUFP32 bridge/core training with sameGTignore/distractorreader. ExactsameoriginalV1DTcandidate/ROIfile fornewbaseline. Scope MOTonly. Owner: baselines/u2_core300_cpu_v1.
+
+TAOBaseNovel63 Simple full40 annotationframes now complete, all35228nativeboxes/160GT preserved, officialTETA18.640 (Base23.3725/Novel9.1737). NovelClsA0; thisonevideo isnotfullTAO. SharedCompactsame-source control stillpending. Summary: metrics/tao_base_novel63_full40_simple_summary.json.

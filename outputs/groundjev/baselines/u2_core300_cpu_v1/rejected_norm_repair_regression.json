@@ -1,0 +1,7 @@
+{
+  "status": "REJECTED_BEFORE_RESUMING_VIDEO",
+  "reason": "recomputing every overflowing norm altered a previously finite pairfeature atframe198",
+  "frame": 198,
+  "pair_logits_max_difference": 0.12063676118850708,
+  "action": "preserve every defined FP32 distance; recompute onlyactualundefinedinf_over_inf ratios in FP64; requireall198prefixlogits exactagain"
+}
