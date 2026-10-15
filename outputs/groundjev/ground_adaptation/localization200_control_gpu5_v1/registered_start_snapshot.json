@@ -1,0 +1,16 @@
+{
+  "workflow_status": "LOCALIZATION200_TRAINING",
+  "source_gpu_release": "outputs/groundjev/gpu5_followups_v1/gpu_release.json",
+  "new_training_accuracy_claim": false,
+  "training_observed": {
+    "status": "RUNNING_NATIVE_GROUND_TRACKING200",
+    "physical_gpu": 5,
+    "target_steps": 200,
+    "seed": 42,
+    "adaptation_objective": "native_dense_referring_localization_only",
+    "identity_loss_coefficients": {
+      "teacher": 0.0,
+      "native_proposals": 0.0
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "scope": "full_native600",
+  "sampling_seconds": 5,
+  "sampled_owned_GPU_sum_peak_MiB": 37052,
+  "sampled_group_peaks_MiB": {
+    "2173897": 16452,
+    "2174768": 20600
+  },
+  "errors": [],
+  "peak_kind": "5second sample lower bound, not exact instantaneous maximum"
+}

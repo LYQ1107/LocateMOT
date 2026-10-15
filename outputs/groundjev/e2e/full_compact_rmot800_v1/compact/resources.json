@@ -1,0 +1,12 @@
+{
+  "scope": "compact",
+  "sampling_seconds": 5,
+  "sampled_owned_GPU_sum_peak_MiB": 19626,
+  "sampled_group_peaks_MiB": {
+    "2197750": 2646,
+    "2197749": 16452,
+    "2198799": 528
+  },
+  "errors": [],
+  "peak_kind": "5second sample lower bound, not exact instantaneous maximum"
+}

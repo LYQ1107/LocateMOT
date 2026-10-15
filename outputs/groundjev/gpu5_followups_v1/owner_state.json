@@ -1,5 +1,5 @@
 {
-  "status": "WAITING_ORIGINAL_PAIRED_E2E_GPU5_RELEASE",
+  "status": "LOCALIZATION200",
   "owner_pid": 2207841,
   "physical_gpu": 5,
   "upstream_owner_identity": [
@@ -8,5 +8,28 @@
   ],
   "completed": {},
   "native_retention_jobs_unchanged": true,
-  "full_goal_complete": false
+  "full_goal_complete": false,
+  "actual_GPU5_release": {
+    "status": "VERIFIED_COMPLETED_GPU_OWNER_RELEASE",
+    "physical_gpu": 5,
+    "upstream_owner_identity": [
+      1953808,
+      "42350971"
+    ],
+    "upstream_owner_output": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/e2e/full_compact_rmot800_v1",
+    "upstream_status": "SAME800_SAME_GPU_FRESH_FULL_COMPACT_E2E_AND_DETECTOR_PAIRING_VALIDATED",
+    "owned_process_groups": [
+      2173897,
+      2174768,
+      2197749,
+      2197750,
+      2198799
+    ],
+    "all_owned_groups_gone": true,
+    "hardware_at_release": "GPU-c6523d98-cb2d-95ed-4cb2-a84936acceb6, NVIDIA A800-SXM4-80GB, 81920, 81151"
+  },
+  "current_child": [
+    2213633,
+    "44011696"
+  ]
 }

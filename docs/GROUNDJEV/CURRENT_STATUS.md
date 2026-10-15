@@ -76,11 +76,40 @@ False-alarm frame counts and detection counts are separate. Live-video paths:
 `multitask_runs/full_rmot_shared600_v1/{single,multi}800_shared_compact_fresh/tracks.mp4`.
 Receipt: `multitask_runs/full_rmot_shared600_v1/all12_validated_summary.json`.
 
-Paired fresh Fullnative600/Compact800same-video/same-GPU5 E2E has now actually
-started after the previous owner exited/released services. It uses a fresh
-private native service for each arm and exact canonical candidate equality;
-no paired speed/resource result is claimed until it finishes. Fixed arm order,
-one seed and concurrent other workloads remain explicit limitations.
+Paired fresh Fullnative600/Compact800same-video/same-GPU5 E2E has completed.
+All800frame/image/box/label/native-score/score-kind/parser-rejection records are
+exactly equal:1412candidates and36rejected frames. Official accuracy exactly
+matches the prior same-candidate native600/Compact controls. Both decoded800.
+
+|Fresh same-video method|Actual pipeline FPS|Wall seconds|Sampled owned VRAM GiB|HOTA %|FN /18|
+|---|---:|---:|---:|---:|---:|
+|Full native600|0.495914|1613.184|36.184|2.506|17|
+|Shared Compact|0.687099|1164.316|19.166|6.025|13|
+
+Observed pipeline FPS ratio1.3855x, wall reduction27.825%. Sampled total owned
+GPU peaks37052/19626MiB (47.031%lower), five-second samples are lower bounds
+on instantaneous peak, not exact maxima. Full core Torch allocator8426480128
+bytes/RSS3305140224bytes; Compact14970368/1466036224bytes exclude external
+services. Compact also has original frozen CPU text lookup; the1.146M core
+alone does not describe whole-pipeline model/memory cost.
+
+Actual pipeline includes imageIO/nativeDLM/ROIwhenrequired/association/state/
+archive/prediction/render/video-encoder completion/final export. Private
+service startup26.052/26.046s and core initialization8.010/5.004s are excluded
+and separately recorded. Full uses real images/crops; Compact additionally
+pays nativeROI cost. Per-frame inference p50/p95seconds Full1.810/2.930,
+Compact1.202/2.136 exclude trailing output/state/video writes that are included
+in whole-pipeline wall time. Both remain below1FPS with poor18-box recall.
+
+Empty-target alarm frames Full67/782 versusCompact200/782; fewer misses/higher
+HOTA here still trade against more false alarms. One single-expression pair,
+fixed Full-then-Compact order, one seed, concurrent other CPU/project loads:
+no counterbalanced/statistical speed or real-time claim. Historical other-video
+or replay FPS is unchanged and not used for this ratio. Evidence:
+`e2e/full_compact_rmot800_v1/validated_summary.json` and both run artifacts.
+All prior owned groups exited before GPU5followup allocation; localization-only
+training has now actually started on GPU5, seed42/200updates/identity weights0.
+Snapshot: `ground_adaptation/localization200_control_gpu5_v1/registered_start_snapshot.json`.
 
 ## Same-source saved-output diagnosis
 
@@ -253,7 +282,7 @@ score inferred.
 |Queue/device|Remaining actual work|
 |---|---|
 |GPU4|TrainedFull native600/MOT500/teacher600DT1203; `training/onejev_full1203_controls_v2_wait_fix`|
-|GPU5|Paired E2E, then serial localization200/96frames/18controls and naturalMOT20/8CPUcontrols; `gpu5_followups_v1`|
+|GPU5|Paired E2E complete; localization200training now running, then96frames/18controls and naturalMOT20/8CPUcontrols; `gpu5_followups_v1`|
 |GPU6|AdaptedGround200nativefull9 remains unchanged|
 |GPU7|OriginalGroundnativefull9 remains unchanged|
 |CPU|Policy25, tasksubset24, context12, hybrid12, input12 all complete|
@@ -286,3 +315,12 @@ unchanged; GPU5/6/7 allNVIDIA A800-SXM4-80GB. Cache bound unchanged.
 Receipts: `validation/localization200_contract_gpu5_v1/validation.json` and
 `validation/gpu5_followup_registration_v1/validation.json`.
 New plans: `configs/groundjev/gpu5_followups_v1.json` and referenced GPU5variants.
+
+
+The GPU5handoff is now executed, not only queued: paired blocking session87824
+exited0; its five recorded model process groups are all gone. New serial owner
+2207841 started localization child2213633/start44011696. The actual trainer
+reports physicalGPU5, native_dense_referring_localization_only, seed42,200target
+updates, teacher/native identity coefficients0. This is a start/device receipt,
+not training completion or new adaptation accuracy. Original retention6/7 and
+Full1203owner remain independent.
