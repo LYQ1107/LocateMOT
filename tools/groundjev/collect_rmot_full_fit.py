@@ -1,4 +1,4 @@
-"""One blocking owner: wait for original GPU6 release, then collect native fit queries."""
+"""One blocking owner: explicitly allocate native query collection on allowed GPUs."""
 import argparse
 import json
 import os
@@ -21,7 +21,8 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--plan', type=Path, required=True)
     args = parser.parse_args(); plan = json.loads(args.plan.read_text())
-    assert plan['project_root'] == '/data2/user/LocateMOT' and plan['physical_gpu'] == 6
+    gpu = plan['physical_gpu']
+    assert plan['project_root'] == '/data2/user/LocateMOT' and gpu in (6, 7)
     assert plan['combined_registered_feature_upper_bytes'] < plan['global_temporary_feature_budget_bytes']
     scope = ROOT/plan['scope_output']
     validation = json.loads((scope/'validation.json').read_text())
@@ -29,10 +30,11 @@ def main():
     assert validation['counts']['physical_frames'] == plan['expected_physical_frames']
     assert validation['counts']['query_frame_contexts'] == plan['expected_query_frame_contexts']
     out = ROOT/plan['output']; out.mkdir(parents=True, exist_ok=False)
-    state = dict(status='CPU_WAITING_REGISTERED_GPU6_RETENTION_OWNER', owner_pid=os.getpid(),
+    shared = plan.get('co_location')
+    state = dict(status='VALIDATING_REGISTERED_SHARED_GPU7_ALLOCATION' if shared else 'CPU_WAITING_REGISTERED_GPU6_RETENTION_OWNER', owner_pid=os.getpid(),
         owner_starttick=Path('/proc/self/stat').read_text().rsplit(')', 1)[1].split()[19],
         git_commit=subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip(),
-        physical_gpu_only_after_upstream_release=6, upstream_owner_identity=plan['upstream_owner_identity'],
+        physical_gpu=gpu, upstream_owner_identity=plan.get('upstream_owner_identity'),
         actual_new_training_updates=0, completed={}, full_goal_complete=False)
 
     def save():
@@ -49,55 +51,80 @@ def main():
     services, service_logs = [], []
     save()
     try:
-        registered = plan['upstream_owner_identity']
-        if alive(registered):
+        if shared:
+            assert gpu == 7 and plan['ground_mem_fraction_static'] == .3
+            registered = shared['training_owner_identity']
+            assert alive(registered)
             proc = Path('/proc')/str(registered[0])
             assert (proc/'cwd').resolve() == ROOT
-            assert plan['upstream_owner_script'] in (proc/'cmdline').read_bytes().decode().split('\0')
-            fd = os.pidfd_open(registered[0])
-            try:
-                if alive(registered):
-                    select.select([fd], [], [])
-            finally:
-                os.close(fd)
-        assert not alive(registered)
-        upstream = ROOT/plan['upstream_owner']
-        terminal = json.loads((upstream/'owner_state.json').read_text())
-        assert terminal['status'] == plan['upstream_required_terminal_status']
-        completed = terminal['completed']['adapted200']
-        assert completed['complete_all9'] and not completed['missing_tasks']
-        assert completed['full_native_row_count'] == plan['upstream_required_all9_rows']
-        group = plan['upstream_adapted_service_group']
-        assert completed['owned_service_group_stopped'] == group and not members(group)
-        summary = json.loads((upstream/'adapted200_native_summary.json').read_text())
-        assert summary['completed_all9'] and summary['native_summarizer_unchanged']
-        release = dict(status='VERIFIED_COMPLETED_GPU_OWNER_RELEASE', physical_gpu=6,
-            upstream_owner_identity=registered, owned_process_groups=[group], all_owned_groups_gone=True,
-            original_native_summary=str(upstream/'adapted200_native_summary.json'),
-            native_runner_exit_code_unknown=summary['actual_runner_exit_code_unknown_after_parent_exit'])
-        (out/'upstream_gpu6_release.json').write_text(json.dumps(release, indent=2)+'\n')
-        state.update(status='UPSTREAM_GPU6_ALL9_RELEASE_VERIFIED', verified_upstream_release=release); save()
+            assert shared['training_owner_script'] in (proc/'cmdline').read_bytes().decode().split('\0')
+            training = json.loads((ROOT/shared['training_owner']/'owner_state.json').read_text())
+            assert training['status'] == 'SHARED_ONEJEV6000_TRAINING'
+            child = training['child_pid']; child_proc = Path('/proc')/str(child)
+            child_fields = (child_proc/'stat').read_text().rsplit(')', 1)[1].split()
+            assert child_fields[0] != 'Z'
+            child_args = (child_proc/'cmdline').read_bytes().decode().split('\0')
+            assert 'tools/groundjev/run_fla_group_reference_sft.py' in child_args
+            # run_with_resources is a wrapper; CUDA visibility is passed to
+            # its training child, so verify the registered physical GPU argv.
+            assert '--gpus' in child_args and child_args[child_args.index('--gpus')+1] == '7'
+            allocation = dict(status='VERIFIED_SHARED_GPU7_ALLOCATION_WITH_EXISTING_TRAINING',
+                physical_gpu=7, registered_training_owner=registered,
+                registered_training_child=[child, child_fields[19]], new_physical_GPUs=0,
+                ground_mem_fraction_static=plan['ground_mem_fraction_static'],
+                tracking_or_training_protocols_changed=False, contention_timing_declared=True)
+            (out/'shared_gpu7_allocation.json').write_text(json.dumps(allocation, indent=2)+'\n')
+            state.update(status='SHARED_GPU7_TRAINING_ALLOCATION_VERIFIED', allocation=allocation); save()
+        else:
+            registered = plan['upstream_owner_identity']
+            if alive(registered):
+                proc = Path('/proc')/str(registered[0])
+                assert (proc/'cwd').resolve() == ROOT
+                assert plan['upstream_owner_script'] in (proc/'cmdline').read_bytes().decode().split('\0')
+                fd = os.pidfd_open(registered[0])
+                try:
+                    if alive(registered):
+                        select.select([fd], [], [])
+                finally:
+                    os.close(fd)
+            assert not alive(registered)
+            upstream = ROOT/plan['upstream_owner']
+            terminal = json.loads((upstream/'owner_state.json').read_text())
+            assert terminal['status'] == plan['upstream_required_terminal_status']
+            completed = terminal['completed']['adapted200']
+            assert completed['complete_all9'] and not completed['missing_tasks']
+            assert completed['full_native_row_count'] == plan['upstream_required_all9_rows']
+            group = plan['upstream_adapted_service_group']
+            assert completed['owned_service_group_stopped'] == group and not members(group)
+            summary = json.loads((upstream/'adapted200_native_summary.json').read_text())
+            assert summary['completed_all9'] and summary['native_summarizer_unchanged']
+            release = dict(status='VERIFIED_COMPLETED_GPU_OWNER_RELEASE', physical_gpu=6,
+                upstream_owner_identity=registered, owned_process_groups=[group], all_owned_groups_gone=True,
+                original_native_summary=str(upstream/'adapted200_native_summary.json'),
+                native_runner_exit_code_unknown=summary['actual_runner_exit_code_unknown_after_parent_exit'])
+            (out/'upstream_gpu6_release.json').write_text(json.dumps(release, indent=2)+'\n')
+            state.update(status='UPSTREAM_GPU6_ALL9_RELEASE_VERIFIED', verified_upstream_release=release); save()
         for port in (plan['ground_port'], plan['feature_port']):
             with socket.socket() as probe:
                 probe.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
                 probe.bind(('127.0.0.1', port))
         while True:
-            free = int(subprocess.check_output(['nvidia-smi', '-i', '6', '--query-gpu=memory.free',
+            free = int(subprocess.check_output(['nvidia-smi', '-i', str(gpu), '--query-gpu=memory.free',
                 '--format=csv,noheader,nounits'], text=True).strip())
-            if free >= 45*1024:
+            if free >= plan.get('launch_min_free_MiB', 45*1024):
                 break
             time.sleep(20)
-        state.update(status='STARTING_OWNED_GPU6_NATIVE_DLM_AND_ROI', launch_free_memory_MiB=free); save()
+        state.update(status=f'STARTING_OWNED_GPU{gpu}_NATIVE_DLM_AND_ROI', launch_free_memory_MiB=free); save()
         for name, command in [('ground', ['tools/groundjev/serve_groundanything.py',
-                '--port', str(plan['ground_port']), '--mem-fraction-static', '.4', '--out', str(out/'ground_service')]),
+                '--port', str(plan['ground_port']), '--mem-fraction-static', str(plan.get('ground_mem_fraction_static', .4)), '--out', str(out/'ground_service')]),
                 ('features', ['tools/groundjev/serve_native_features.py', '--port', str(plan['feature_port']),
                 '--receipt', str(out/'feature_service.json')])]:
             log = (out/(name+'_service.log')).open('w'); service_logs.append(log)
-            service = subprocess.Popen(['python3', 'tools/groundjev/run_with_resources.py', '--gpus', '6', '--',
+            service = subprocess.Popen(['python3', 'tools/groundjev/run_with_resources.py', '--gpus', str(gpu), '--',
                 str(ROOT/'external/GroundAnything/.venv-serve/bin/python'), *command], cwd=ROOT, env=env,
                 stdin=subprocess.DEVNULL, stdout=log, stderr=subprocess.STDOUT, start_new_session=True)
             services.append(service)
-        state.update(status='WAITING_OWNED_GPU6_NATIVE_SERVICES', owned_service_groups=[s.pid for s in services]); save()
+        state.update(status=f'WAITING_OWNED_GPU{gpu}_NATIVE_SERVICES', owned_service_groups=[s.pid for s in services]); save()
         ground_url = f'http://127.0.0.1:{plan["ground_port"]}/v1'
         feature_url = f'http://127.0.0.1:{plan["feature_port"]}'
         deadline = time.monotonic()+600

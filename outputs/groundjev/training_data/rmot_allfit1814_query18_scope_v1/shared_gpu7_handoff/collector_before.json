@@ -1,0 +1,14 @@
+{
+  "status": "CPU_WAITING_REGISTERED_GPU6_RETENTION_OWNER",
+  "owner_pid": 3305309,
+  "owner_starttick": "48315814",
+  "git_commit": "4a5d48f9a6c1bec68a2dac70721bfaee5ea7cf71",
+  "physical_gpu_only_after_upstream_release": 6,
+  "upstream_owner_identity": [
+    1865651,
+    "41803969"
+  ],
+  "actual_new_training_updates": 0,
+  "completed": {},
+  "full_goal_complete": false
+}

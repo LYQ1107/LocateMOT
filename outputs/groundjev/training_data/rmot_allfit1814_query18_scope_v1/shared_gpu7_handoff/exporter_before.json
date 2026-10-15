@@ -1,0 +1,9 @@
+{
+  "status": "CPU_WAITING_MORE_COMPLETED_NATIVE_RMOT_QUERY_ROLLOUTS",
+  "owner_pid": 3314955,
+  "owner_starttick": "48367755",
+  "completed": {},
+  "new_GPUs": 0,
+  "new_OneJev_training_updates": 0,
+  "full_goal_complete": false
+}

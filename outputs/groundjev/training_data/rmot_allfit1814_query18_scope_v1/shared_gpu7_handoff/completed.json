@@ -1,0 +1,17 @@
+{
+  "status": "BOTH_ZERO_DATA_CPU_WAITERS_EXIT143_REPLACED_BY_EXPLICIT_SHARED_GPU7_PHASE",
+  "collector_original_session": 19338,
+  "collector_actual_exit_code": 143,
+  "export_original_session": 40644,
+  "export_actual_exit_code": 143,
+  "original_data_plan_preserved": true,
+  "old_collected_query_frames": 0,
+  "original_training_or_evaluation_jobs_stopped": false,
+  "new_training_compute_or_data_protocol_changed": false,
+  "physical_GPU_allowlist": [
+    4,
+    5,
+    6,
+    7
+  ]
+}

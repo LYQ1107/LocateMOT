@@ -1,0 +1,28 @@
+{
+  "status": "ONLY_ZERO_DATA_CPU_WAITERS_AUTHORIZED_FOR_SHARED_GPU7_HANDOFF",
+  "reason": "GPU7 actual81920MiB total/22665used/58489free; use .3 native DLM static allocation plus ROI alongside existing752M SFT instead of blocking on GPU6 all9 retention",
+  "targets": [
+    {
+      "role": "exporter",
+      "source": "outputs/groundjev/training_data/rmot_allfit1814_query18_full_v3_groups_v1",
+      "script": "tools/groundjev/export_rmot_full_fit_groups.py",
+      "session_id": 40644
+    },
+    {
+      "role": "collector",
+      "source": "outputs/groundjev/training_data/rmot_allfit1814_query18_gpu6_v1",
+      "script": "tools/groundjev/collect_rmot_full_fit.py",
+      "session_id": 19338
+    }
+  ],
+  "actual_collected_query_frames": 0,
+  "original6000_training_stopped": false,
+  "original_full9_or_Full600_or_TAO_workers_stopped": false,
+  "physical_GPU_allowlist": [
+    4,
+    5,
+    6,
+    7
+  ],
+  "new_physical_GPU_count": 0
+}

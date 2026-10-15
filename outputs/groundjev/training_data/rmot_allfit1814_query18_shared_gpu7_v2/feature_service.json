@@ -1,0 +1,11 @@
+{
+  "status": "NATIVE_FEATURE_RPC_READY",
+  "url": "http://127.0.0.1:8123",
+  "checkpoint": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM",
+  "native_parameters": 428482048,
+  "region_dimension": 2560,
+  "temporal_checkpoint": null,
+  "dataset_cache_created": false,
+  "request_concurrency": 1,
+  "language_decoder_loaded": false
+}

@@ -1,0 +1,16 @@
+{
+  "status": "VERIFIED_SHARED_GPU7_ALLOCATION_WITH_EXISTING_TRAINING",
+  "physical_gpu": 7,
+  "registered_training_owner": [
+    3219708,
+    "47863228"
+  ],
+  "registered_training_child": [
+    3247243,
+    "47992048"
+  ],
+  "new_physical_GPUs": 0,
+  "ground_mem_fraction_static": 0.3,
+  "tracking_or_training_protocols_changed": false,
+  "contention_timing_declared": true
+}

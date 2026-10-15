@@ -1,0 +1,52 @@
+{
+  "project_root": "/data2/user/LocateMOT",
+  "name": "RMOT all1814fit frames with18 independent native queries, explicit sharedGPU7 allocation",
+  "scope_output": "outputs/groundjev/training_data/rmot_allfit1814_query18_scope_v1",
+  "output": "outputs/groundjev/training_data/rmot_allfit1814_query18_shared_gpu7_v2",
+  "original_query_plan": "configs/groundjev/rmot_native72_20261014.json",
+  "image_root": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02",
+  "label_root": "/data2/user/LocateMOT/data/refer_kitti_v2/labels_with_ids/image_02",
+  "expected_physical_frames": 1814,
+  "new_physical_frames_beyond_original72": 1742,
+  "expected_query_frame_contexts": 3628,
+  "expected_query_rollouts": 18,
+  "selection": "All available chronological images of exactly nine frozen fit videos; same two frozen expressions per video; no GT/visibility/positive-frame selection",
+  "physical_gpu": 7,
+  "checkpoint": "outputs/groundjev/compact/rmot_native72_stage_v1/broad_native_training/checkpoint.pt",
+  "actor": "fixed existing sharedCompact CPU4; independent uncorrected history for every expression; no GT correction",
+  "ground_checkpoint": "models/GroundAnything-DLM",
+  "ground_port": 8122,
+  "feature_port": 8123,
+  "parser": "official_scoring",
+  "decoder": "tracking_dense",
+  "perception_failure_policy": "empty_and_record",
+  "native_candidate_archive_budget_bytes": 402653184,
+  "scope_and_future_group_budget_bytes": 50331648,
+  "future_curriculum_refs_budget_bytes": 16777216,
+  "budget_closure": "outputs/groundjev/resource_accounting/closed_broader_sources_before_rmot_fullfit_v1.json",
+  "combined_registered_feature_upper_bytes": 26806086506,
+  "global_temporary_feature_budget_bytes": 26843545600,
+  "physical_GPU_allowlist": [
+    4,
+    5,
+    6,
+    7
+  ],
+  "max_physical_GPUs": 4,
+  "original6000_training_inputs_or_optimizer_changed": false,
+  "new_training_updates": 0,
+  "full_goal_complete": false,
+  "ground_mem_fraction_static": 0.3,
+  "launch_min_free_MiB": 40960,
+  "co_location": {
+    "training_owner_identity": [
+      3219708,
+      "47863228"
+    ],
+    "training_owner": "outputs/groundjev/training/broader_shared6000_fla_owner_v2",
+    "training_owner_script": "tools/groundjev/run_broader_shared_onejev.py"
+  },
+  "allocation_note": "PhysicalGPU7 already allocated to752MFA SFT; measured58489MiB free; new standalone nativeDLM .3 static andROI share that card, no fifthGPU and no existing owner stopped. Resource contention invalidates unconstrained timing comparisons.",
+  "supersedes_only_zero_data_CPU_waiter": "configs/groundjev/rmot_allfit1814_query18_gpu6_v1.json",
+  "handoff": "outputs/groundjev/training_data/rmot_allfit1814_query18_scope_v1/shared_gpu7_handoff/completed.json"
+}
