@@ -325,3 +325,26 @@ forking. Pretrained/500/teacher600/native600 average prefix tokens are
 142.531/344.670/787.309/481.178s. Different causal histories and concurrent
 loads prevent isolated causal speed attribution. No evidence of universal
 sequential fallback; no native-engine optimization protocol changed.
+
+
+PretrainedFull multi800 also completed: HOTA8.621%, IDF1 7.635%, IDSW215,
+FP214, FN1766 out of2112target boxes, on the same2208native candidates and
+19parser-rejected frames. Remaining trainedFull multi800 arms still run.
+Replay speed is not full native perception-inclusive speed.
+
+Saved-output diagnosis at the unchanged membership threshold.5, with the same
+1132one-to-one physically aligned query-positive candidates:
+
+|Completed method|No physical assignment|Assigned then membership rejects|Actually emitted aligned positives|
+|---|---:|---:|---:|
+|PretrainedFull|105|687|340|
+|SharedCompact|4|71|1057|
+
+All2208candidate outputIDs/boxes reconstruct exactly from saved actions and
+membership, without new model calls or corrected states. Head recall is
+31.625% versus93.728%. Full surviving-correct-anchor option coverage is99.149%
+but existing-association accuracy10.207%; these causal event sets differ between
+models. Candidate-aligned funnels do not decompose officialFN across HOTA
+thresholds; unknown/unmatched proposals remain unknown. Wait registered600
+controls before choosing a training change; no threshold tuning or extra runs.
+Evidence: `diagnostics/multi800_full_compact_output_funnel_v1/summary.json`.

@@ -1,0 +1,136 @@
+{
+  "status": "ACTUAL_MATCHED_RMOT_OUTPUT_FUNNELS_VALIDATED",
+  "results": {
+    "outputs/groundjev/multitask_runs/full_rmot_shared600_v1/multi800_pretrained": {
+      "official_metrics": {
+        "HOTA": 0.0862103492180664,
+        "DetA": 0.1369490485384435,
+        "AssA": 0.05529246027399678,
+        "IDF1": 0.07634730538922156,
+        "IDSW": 215,
+        "FP": 214,
+        "FN": 1766
+      },
+      "frames": 800,
+      "candidates": 2208,
+      "actual_emitted_detections": 560,
+      "registered_target_proposal_coverage": {
+        "covered": 1133,
+        "GT_boxes": 2112,
+        "recall": 0.5364583333333334,
+        "scope": "evaluation-only target coverage; not HOTA; never used to correct runtime state"
+      },
+      "matched_candidate_output_funnel": {
+        "query_positive": {
+          "total": 1132,
+          "head_rejects": 774,
+          "assigned_then_membership_rejected": 687,
+          "no_physical_assignment": 105,
+          "head_accepts": 358,
+          "emitted": 340
+        },
+        "query_negative": {
+          "total": 107,
+          "head_rejects": 34,
+          "assigned_then_membership_rejected": 27,
+          "no_physical_assignment": 9,
+          "head_accepts": 73,
+          "emitted": 71
+        },
+        "unmatched_unknown": {
+          "total": 969,
+          "head_rejects": 816,
+          "assigned_then_membership_rejected": 675,
+          "head_accepts": 153,
+          "emitted": 149,
+          "no_physical_assignment": 145
+        }
+      },
+      "query_membership_matched_physical_GT_only": {
+        "counts": {
+          "TN": 34,
+          "FP": 73,
+          "FN": 774,
+          "TP": 358
+        },
+        "precision": 0.8306264501160093,
+        "recall": 0.31625441696113077,
+        "head_was_present": true,
+        "threshold": 0.5,
+        "legacy_missing_head_not_interpreted_as_negative_predictions": true
+      },
+      "existing_identity_events": 823,
+      "correct_option_coverage": 0.991494532199271,
+      "existing_association_accuracy": 0.10206561360874848,
+      "actual_outputs_exactly_reconstructed_from_saved_actions_and_membership": true
+    },
+    "outputs/groundjev/multitask_runs/full_rmot_shared600_v1/multi800_shared_compact_fresh": {
+      "official_metrics": {
+        "HOTA": 0.19801918474265423,
+        "DetA": 0.32957066628797865,
+        "AssA": 0.12032554458881159,
+        "IDF1": 0.21008181578252838,
+        "IDSW": 165,
+        "FP": 619,
+        "FN": 1054
+      },
+      "frames": 800,
+      "candidates": 2208,
+      "actual_emitted_detections": 1677,
+      "registered_target_proposal_coverage": {
+        "covered": 1133,
+        "GT_boxes": 2112,
+        "recall": 0.5364583333333334,
+        "scope": "evaluation-only target coverage; not HOTA; never used to correct runtime state"
+      },
+      "matched_candidate_output_funnel": {
+        "query_positive": {
+          "total": 1132,
+          "head_rejects": 71,
+          "assigned_then_membership_rejected": 71,
+          "head_accepts": 1061,
+          "emitted": 1057,
+          "no_physical_assignment": 4
+        },
+        "query_negative": {
+          "total": 107,
+          "head_accepts": 93,
+          "emitted": 93,
+          "head_rejects": 14,
+          "assigned_then_membership_rejected": 14
+        },
+        "unmatched_unknown": {
+          "total": 969,
+          "head_accepts": 579,
+          "emitted": 527,
+          "head_rejects": 390,
+          "assigned_then_membership_rejected": 312,
+          "no_physical_assignment": 130
+        }
+      },
+      "query_membership_matched_physical_GT_only": {
+        "counts": {
+          "FP": 93,
+          "FN": 71,
+          "TP": 1061,
+          "TN": 14
+        },
+        "precision": 0.9194107452339688,
+        "recall": 0.9372791519434629,
+        "head_was_present": true,
+        "threshold": 0.5,
+        "legacy_missing_head_not_interpreted_as_negative_predictions": true
+      },
+      "existing_identity_events": 191,
+      "correct_option_coverage": 1.0,
+      "existing_association_accuracy": 0.44502617801047123,
+      "actual_outputs_exactly_reconstructed_from_saved_actions_and_membership": true
+    }
+  },
+  "threshold": 0.5,
+  "thresholds_or_predictions_or_states_changed": false,
+  "new_model_invocations": 0,
+  "GT_used_posthoc_only": true,
+  "full_goal_complete": false,
+  "limits": "Disjoint funnel counts describe GT-aligned candidate observations, not official FN decomposition across HOTA thresholds. Proposal coverage uses per-target overlap and may differ from one-to-one physical alignment. Unknown/unmatched candidates are not labeled negatives. Birth-anchor association event sets differ with each causal history; no oracle correction or metric replacement."
+}
