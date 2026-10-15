@@ -43,3 +43,12 @@ these are not additive totals).
 Removed feature shards are not retained in trash; they are regenerable from
 the preserved images and foundation. Do not resume their old manifests.
 Generated evidence is in `outputs/groundjev/resource_cleanup/`.
+
+2026-10-15 evidence-scope clarification: the durable per-device snapshots in
+`process_before.json` and `process_stop.json` sum to14042MiB net memory decrease
+across all eight devices, with concurrent unrelated activity (device4increased).
+This is directly recomputable from the saved snapshots; it is not an exclusive
+causal U2 VRAM total. The17584MiB worker compute-app inventory above is a
+historical observed report, not independently reconstructable from those two
+per-device tables. Both scopes are retained; no old job is restarted to measure
+past cleanup. The checkpoint still exists at1909880505bytes.

@@ -1,0 +1,122 @@
+{
+  "status": "PILOT12_EXECUTION_DELIVERABLES_SUPPORTED_AT_REGISTERED_DEVELOPMENT_SCOPES",
+  "requirements": {
+    "1": {
+      "deliverable": "Old U2 owners and queue safely stopped",
+      "evidence": "resource_cleanup/process_stop.json",
+      "observed_remaining_U2_processes": 0,
+      "execution_deliverable_supported": true
+    },
+    "2": {
+      "deliverable": "Actual cleanup resource report, weights/data preserved",
+      "evidence": "resource_cleanup/{process_before,process_stop,cache_cleanup_result}.json",
+      "deleted_allocated_bytes": 42831618048,
+      "measured_total_device_usage_drop_MiB": 14042,
+      "scope": "Net all-device snapshot difference during concurrent unrelated activity, not exclusively attributable U2 VRAM. Historical17584MiB owned-process inventory is documented separately, not reconstructed from these two device snapshots.",
+      "execution_deliverable_supported": true
+    },
+    "3": {
+      "deliverable": "At most four project physical GPUs enforced/recorded",
+      "evidence": [
+        "configs/groundjev/gpu5_followups_v1.json",
+        "tools/groundjev/run_with_resources.py",
+        "gpu5_followups_v1/gpu_release.json",
+        "e2e/full_compact_rmot800_v1/validated_summary.json"
+      ],
+      "registered_physical_GPU_set": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "execution_deliverable_supported": true
+    },
+    "4": {
+      "deliverable": "Real Ground DLM processes real frames",
+      "evidence": "e2e/full_compact_rmot800_v1/{full_native600,compact}/video/result.json",
+      "actual_fresh_frames_each": 800,
+      "execution_deliverable_supported": true
+    },
+    "5": {
+      "deliverable": "Actual pretrained OneJev loaded",
+      "evidence": "pilot_runs/dancetrack0004_pretrained_v3_evidence_fresh_v1/full/result.json",
+      "checkpoint": "/data2/user/LocateMOT_GroundJEV/models/OneJev-0.8B",
+      "execution_deliverable_supported": true
+    },
+    "6": {
+      "deliverable": "Dynamic native typed decisions and persistent model-generated identity memory",
+      "evidence": "pilot_runs/dancetrack0004_pretrained_v3_evidence_fresh_v1/full/{frame_decisions.jsonl,final_identity_memory.json}",
+      "observed_dynamic_historical_ID_frame": 2,
+      "execution_deliverable_supported": true
+    },
+    "7": {
+      "deliverable": "At least one complete real MOT video",
+      "evidence": "pilot_runs/dancetrack0004_pretrained_v3_evidence_fresh_v1/full/{result,official_metrics}.json",
+      "frames": 1203,
+      "execution_deliverable_supported": true
+    },
+    "8": {
+      "deliverable": "Legal RMOT and Base/Novel-vocabulary OVMOT video loops",
+      "evidence": [
+        "multitask_runs/full_rmot_shared600_v1/all12_validated_summary.json",
+        "compact/fixed_affinity_controls_v1/validated_summary.json"
+      ],
+      "RMOT_frames_each": 800,
+      "TAO_annotation_frames": 40,
+      "NovelClsA_limit": "zero, not successful novel recognition",
+      "execution_deliverable_supported": true
+    },
+    "9": {
+      "deliverable": "Real tracking-specific pretrained fine-tuning and saved before/after metrics",
+      "evidence": [
+        "training/onejev_own_history_v3_exact500_replay_stateful/{log.jsonl,latest_training_state.json,ckpt-step500}",
+        "multitask_runs/full_rmot_shared600_v1/all12_validated_summary.json"
+      ],
+      "actual_steps": 500,
+      "actual_examples": 2000,
+      "before_after_limit": "Full pretrained versus MOT500 both same800candidate sources; negative results retained. Additional600stages reported separately.",
+      "execution_deliverable_supported": true
+    },
+    "10": {
+      "deliverable": "Identical Ground proposals with association baseline comparison",
+      "evidence": "multitask_runs/full_rmot_shared600_v1/all12_validated_summary.json",
+      "simple_full_compact_same_candidates": true,
+      "execution_deliverable_supported": true
+    },
+    "11": {
+      "deliverable": "Actual complete native pipeline speed/resource records",
+      "evidence": "e2e/full_compact_rmot800_v1/validated_summary.json",
+      "FPS": {
+        "full_native600": 0.4959138201320226,
+        "compact": 0.6870989019273199
+      },
+      "limits": "One800frame single-expression pair,18GTboxes/782empty frames; poor recall remains. Fixed Full-then-Compact order, one seed, concurrent other CPU/project workloads; observed speed ratio is not counterbalanced/statistical evidence or realtime performance. Native services/core initialization excluded and separately timed. Total VRAM is a5second sampled lower bound, distinct from core allocator/RSS. Full uses real images; Compact additionally pays nativeROI service cost. CPU frozen token lookup is extra to the1.146M core.",
+      "execution_deliverable_supported": true
+    },
+    "12": {
+      "deliverable": "Code/configs/results published and remote tree verified",
+      "evidence": "publications/latest_verified.json",
+      "verified_remote_commit": "1a1bf1a2dacb8aceced7e70207629d0928dc18cd",
+      "verified_shared_tree": "e638f60c3733ecb04ae600f5da3f41713fc2e413",
+      "execution_deliverable_supported": true
+    }
+  },
+  "GPU_usage_drop_per_device_MiB": {
+    "0": 2426,
+    "1": 2426,
+    "2": 2748,
+    "3": 2748,
+    "4": -3062,
+    "5": 2224,
+    "6": 0,
+    "7": 4532
+  },
+  "full_research_goal_complete": false,
+  "remaining": [
+    "Full trained1203controls",
+    "original/adapted nativefull9retention",
+    "localization200/native96/factorial18",
+    "naturalMOT20_1657and8memorycontrols"
+  ],
+  "interpretation": "Pilot execution evidence is not model quality promotion, realtime performance, successfulNovel recognition or complete-dataset research. Follow-on research continues under the active goal."
+}

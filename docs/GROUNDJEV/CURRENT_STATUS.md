@@ -324,3 +324,12 @@ reports physicalGPU5, native_dense_referring_localization_only, seed42,200target
 updates, teacher/native identity coefficients0. This is a start/device receipt,
 not training completion or new adaptation accuracy. Original retention6/7 and
 Full1203owner remain independent.
+
+Pilot documentation is now reconciled with the actual12execution deliverables
+in usertask17; see `FOUR_GPU_PILOT.md` and
+`pilot_milestone_20261015/evidence_audit.json`. This is a limited-development-scope
+execution milestone, not completion of the full research goal or model promotion.
+The durable original cleanup snapshots directly show14042MiB net all-device
+memory decrease; concurrent other jobs prevent exclusive U2 attribution. The
+historically reported17584MiB owned-worker inventory is kept as historical,
+not reconstructed from those per-device tables. No old model is restarted.
