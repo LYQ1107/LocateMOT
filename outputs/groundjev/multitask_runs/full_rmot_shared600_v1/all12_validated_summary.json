@@ -1,0 +1,660 @@
+{
+  "status": "ALL12_TWO800_RMOT_OFFICIAL_ARTIFACTS_VALIDATED",
+  "results": {
+    "single800_shared_compact_fresh": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_runs/full_rmot_shared600_v1/single800_shared_compact_fresh",
+      "frames": 800,
+      "metrics": {
+        "HOTA": 0.06024700178718496,
+        "DetA": 0.01563715802110191,
+        "AssA": 0.2322529259028115,
+        "IDF1": 0.028901734104046242,
+        "IDSW": 0,
+        "FP": 323,
+        "FN": 13
+      },
+      "same_native_candidates_and_all_parser_rejections_validated_by_terminal_owner": true,
+      "query_GT_boxes": 18,
+      "empty_target_frames": 782,
+      "empty_target_detection_count": 318,
+      "native_parser_rejected_frames": 36,
+      "native_membership": {
+        "counts": {
+          "TN": 134,
+          "FP": 107,
+          "FN": 5,
+          "TP": 5
+        },
+        "precision": 0.044642857142857144,
+        "recall": 0.5,
+        "head_was_present": true,
+        "threshold": 0.5,
+        "legacy_missing_head_not_interpreted_as_negative_predictions": true
+      },
+      "correct_option_coverage": 1.0,
+      "existing_association_accuracy": 0.5,
+      "identity_recovery": {
+        "counts": {
+          "candidate_gap_return_events": 108,
+          "gap_le1s_eligible": 84,
+          "gap_le1s_same_correct_birth_anchor_ID": 16,
+          "gap_1to3s_eligible": 21,
+          "gap_1to3s_same_correct_birth_anchor_ID": 2,
+          "candidate_gap_returns_without_prior_emitted_identity": 1,
+          "gap_gt3s_eligible": 2,
+          "gap_gt3s_same_correct_birth_anchor_ID": 0
+        },
+        "success_rates": {
+          "gap_le1s": 0.19047619047619047,
+          "gap_1to3s": 0.09523809523809523,
+          "gap_gt3s": 0.0
+        },
+        "rule": "first GT-aligned candidate after at least one missing candidate observation; same previous emitted ID with matching immutable birth anchor",
+        "scope": "natural candidate/GT gaps only; no artificial occlusion, future GT correction or recovery metric replacing TrackEval"
+      },
+      "actual_live_pipeline_FPS": 0.6780050745677036,
+      "perception_excluded_replay_FPS": null,
+      "core_Torch_GPU_allocator_peak_bytes": 14970368,
+      "core_process_RSS_peak_bytes": 1467027456,
+      "GT_and_future_frames_not_read_by_runtime": true
+    },
+    "multi800_shared_compact_fresh": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_runs/full_rmot_shared600_v1/multi800_shared_compact_fresh",
+      "frames": 800,
+      "metrics": {
+        "HOTA": 0.19801918474265423,
+        "DetA": 0.32957066628797865,
+        "AssA": 0.12032554458881159,
+        "IDF1": 0.21008181578252838,
+        "IDSW": 165,
+        "FP": 619,
+        "FN": 1054
+      },
+      "same_native_candidates_and_all_parser_rejections_validated_by_terminal_owner": true,
+      "query_GT_boxes": 2112,
+      "empty_target_frames": 247,
+      "empty_target_detection_count": 185,
+      "native_parser_rejected_frames": 19,
+      "native_membership": {
+        "counts": {
+          "FP": 93,
+          "FN": 71,
+          "TP": 1061,
+          "TN": 14
+        },
+        "precision": 0.9194107452339688,
+        "recall": 0.9372791519434629,
+        "head_was_present": true,
+        "threshold": 0.5,
+        "legacy_missing_head_not_interpreted_as_negative_predictions": true
+      },
+      "correct_option_coverage": 1.0,
+      "existing_association_accuracy": 0.44502617801047123,
+      "identity_recovery": {
+        "counts": {
+          "candidate_gap_return_events": 255,
+          "gap_le1s_eligible": 249,
+          "gap_le1s_same_correct_birth_anchor_ID": 9,
+          "candidate_gap_returns_without_prior_emitted_identity": 1,
+          "gap_1to3s_eligible": 5,
+          "gap_1to3s_same_correct_birth_anchor_ID": 0
+        },
+        "success_rates": {
+          "gap_le1s": 0.03614457831325301,
+          "gap_1to3s": 0.0,
+          "gap_gt3s": null
+        },
+        "rule": "first GT-aligned candidate after at least one missing candidate observation; same previous emitted ID with matching immutable birth anchor",
+        "scope": "natural candidate/GT gaps only; no artificial occlusion, future GT correction or recovery metric replacing TrackEval"
+      },
+      "actual_live_pipeline_FPS": 0.8829422447935927,
+      "perception_excluded_replay_FPS": null,
+      "core_Torch_GPU_allocator_peak_bytes": 14855168,
+      "core_process_RSS_peak_bytes": 1478381568,
+      "GT_and_future_frames_not_read_by_runtime": true
+    },
+    "single800_simple": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_runs/full_rmot_shared600_v1/single800_simple",
+      "frames": 800,
+      "metrics": {
+        "HOTA": 0.04965755853249176,
+        "DetA": 0.007393081699629365,
+        "AssA": 0.3341184081625745,
+        "IDF1": 0.012587412587412588,
+        "IDSW": 3,
+        "FP": 1402,
+        "FN": 8
+      },
+      "same_native_candidates_and_all_parser_rejections_validated_by_terminal_owner": true,
+      "query_GT_boxes": 18,
+      "empty_target_frames": 782,
+      "empty_target_detection_count": 1387,
+      "native_parser_rejected_frames": 36,
+      "native_membership": {
+        "counts": {},
+        "precision": null,
+        "recall": null,
+        "head_was_present": false,
+        "threshold": 0.5,
+        "legacy_missing_head_not_interpreted_as_negative_predictions": true
+      },
+      "correct_option_coverage": 1.0,
+      "existing_association_accuracy": 0.6569767441860465,
+      "identity_recovery": {
+        "counts": {
+          "candidate_gap_return_events": 108,
+          "gap_le1s_eligible": 84,
+          "gap_le1s_same_correct_birth_anchor_ID": 45,
+          "gap_1to3s_eligible": 22,
+          "gap_1to3s_same_correct_birth_anchor_ID": 1,
+          "gap_gt3s_eligible": 2,
+          "gap_gt3s_same_correct_birth_anchor_ID": 0
+        },
+        "success_rates": {
+          "gap_le1s": 0.5357142857142857,
+          "gap_1to3s": 0.045454545454545456,
+          "gap_gt3s": 0.0
+        },
+        "rule": "first GT-aligned candidate after at least one missing candidate observation; same previous emitted ID with matching immutable birth anchor",
+        "scope": "natural candidate/GT gaps only; no artificial occlusion, future GT correction or recovery metric replacing TrackEval"
+      },
+      "actual_live_pipeline_FPS": null,
+      "perception_excluded_replay_FPS": 67.21156169296496,
+      "core_Torch_GPU_allocator_peak_bytes": null,
+      "core_process_RSS_peak_bytes": 178860032,
+      "GT_and_future_frames_not_read_by_runtime": true
+    },
+    "single800_pretrained": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_runs/full_rmot_shared600_v1/single800_pretrained",
+      "frames": 800,
+      "metrics": {
+        "HOTA": 0.1611866588320882,
+        "DetA": 0.1611866588320882,
+        "AssA": 0.1611866588320882,
+        "IDF1": 0.17391304347826086,
+        "IDSW": 0,
+        "FP": 3,
+        "FN": 16
+      },
+      "same_native_candidates_and_all_parser_rejections_validated_by_terminal_owner": true,
+      "query_GT_boxes": 18,
+      "empty_target_frames": 782,
+      "empty_target_detection_count": 0,
+      "native_parser_rejected_frames": 36,
+      "native_membership": {
+        "counts": {
+          "TN": 241,
+          "FN": 8,
+          "TP": 2
+        },
+        "precision": 1.0,
+        "recall": 0.2,
+        "head_was_present": true,
+        "threshold": 0.5,
+        "legacy_missing_head_not_interpreted_as_negative_predictions": true
+      },
+      "correct_option_coverage": 1.0,
+      "existing_association_accuracy": 0.7419354838709677,
+      "identity_recovery": {
+        "counts": {
+          "candidate_gap_return_events": 108,
+          "candidate_gap_returns_without_prior_emitted_identity": 88,
+          "gap_le1s_eligible": 17,
+          "gap_le1s_same_correct_birth_anchor_ID": 4,
+          "gap_1to3s_eligible": 3,
+          "gap_1to3s_same_correct_birth_anchor_ID": 0
+        },
+        "success_rates": {
+          "gap_le1s": 0.23529411764705882,
+          "gap_1to3s": 0.0,
+          "gap_gt3s": null
+        },
+        "rule": "first GT-aligned candidate after at least one missing candidate observation; same previous emitted ID with matching immutable birth anchor",
+        "scope": "natural candidate/GT gaps only; no artificial occlusion, future GT correction or recovery metric replacing TrackEval"
+      },
+      "actual_live_pipeline_FPS": null,
+      "perception_excluded_replay_FPS": 4.3188045496388,
+      "core_Torch_GPU_allocator_peak_bytes": 6969160704,
+      "core_process_RSS_peak_bytes": 3304091648,
+      "GT_and_future_frames_not_read_by_runtime": true
+    },
+    "single800_before500": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_runs/full_rmot_shared600_v1/single800_before500",
+      "frames": 800,
+      "metrics": {
+        "HOTA": 0.0,
+        "DetA": 0.0,
+        "AssA": 0.0,
+        "IDF1": 0.0,
+        "IDSW": 0,
+        "FP": 0,
+        "FN": 18
+      },
+      "same_native_candidates_and_all_parser_rejections_validated_by_terminal_owner": true,
+      "query_GT_boxes": 18,
+      "empty_target_frames": 782,
+      "empty_target_detection_count": 0,
+      "native_parser_rejected_frames": 36,
+      "native_membership": {
+        "counts": {
+          "TN": 241,
+          "FN": 10
+        },
+        "precision": null,
+        "recall": 0.0,
+        "head_was_present": true,
+        "threshold": 0.5,
+        "legacy_missing_head_not_interpreted_as_negative_predictions": true
+      },
+      "correct_option_coverage": 1.0,
+      "existing_association_accuracy": 0.22916666666666666,
+      "identity_recovery": {
+        "counts": {
+          "candidate_gap_return_events": 108,
+          "gap_le1s_eligible": 73,
+          "gap_le1s_same_correct_birth_anchor_ID": 1,
+          "gap_1to3s_eligible": 20,
+          "gap_1to3s_same_correct_birth_anchor_ID": 0,
+          "candidate_gap_returns_without_prior_emitted_identity": 15
+        },
+        "success_rates": {
+          "gap_le1s": 0.0136986301369863,
+          "gap_1to3s": 0.0,
+          "gap_gt3s": null
+        },
+        "rule": "first GT-aligned candidate after at least one missing candidate observation; same previous emitted ID with matching immutable birth anchor",
+        "scope": "natural candidate/GT gaps only; no artificial occlusion, future GT correction or recovery metric replacing TrackEval"
+      },
+      "actual_live_pipeline_FPS": null,
+      "perception_excluded_replay_FPS": 1.7590258886410872,
+      "core_Torch_GPU_allocator_peak_bytes": 8401882112,
+      "core_process_RSS_peak_bytes": 3304296448,
+      "GT_and_future_frames_not_read_by_runtime": true
+    },
+    "single800_teacher600": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_runs/full_rmot_shared600_v1/single800_teacher600",
+      "frames": 800,
+      "metrics": {
+        "HOTA": 0.06846877676336723,
+        "DetA": 0.04093620535434008,
+        "AssA": 0.11473310469155343,
+        "IDF1": 0.04838709677419355,
+        "IDSW": 1,
+        "FP": 102,
+        "FN": 14
+      },
+      "same_native_candidates_and_all_parser_rejections_validated_by_terminal_owner": true,
+      "query_GT_boxes": 18,
+      "empty_target_frames": 782,
+      "empty_target_detection_count": 95,
+      "native_parser_rejected_frames": 36,
+      "native_membership": {
+        "counts": {
+          "TN": 158,
+          "FP": 83,
+          "FN": 6,
+          "TP": 4
+        },
+        "precision": 0.04597701149425287,
+        "recall": 0.4,
+        "head_was_present": true,
+        "threshold": 0.5,
+        "legacy_missing_head_not_interpreted_as_negative_predictions": true
+      },
+      "correct_option_coverage": 1.0,
+      "existing_association_accuracy": 0.02127659574468085,
+      "identity_recovery": {
+        "counts": {
+          "candidate_gap_return_events": 108,
+          "gap_le1s_eligible": 65,
+          "gap_le1s_same_correct_birth_anchor_ID": 0,
+          "gap_1to3s_eligible": 17,
+          "gap_1to3s_same_correct_birth_anchor_ID": 0,
+          "candidate_gap_returns_without_prior_emitted_identity": 24,
+          "gap_gt3s_eligible": 2,
+          "gap_gt3s_same_correct_birth_anchor_ID": 0
+        },
+        "success_rates": {
+          "gap_le1s": 0.0,
+          "gap_1to3s": 0.0,
+          "gap_gt3s": 0.0
+        },
+        "rule": "first GT-aligned candidate after at least one missing candidate observation; same previous emitted ID with matching immutable birth anchor",
+        "scope": "natural candidate/GT gaps only; no artificial occlusion, future GT correction or recovery metric replacing TrackEval"
+      },
+      "actual_live_pipeline_FPS": null,
+      "perception_excluded_replay_FPS": 0.7508156546930763,
+      "core_Torch_GPU_allocator_peak_bytes": 8686253056,
+      "core_process_RSS_peak_bytes": 3304923136,
+      "GT_and_future_frames_not_read_by_runtime": true
+    },
+    "single800_native600": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_runs/full_rmot_shared600_v1/single800_native600",
+      "frames": 800,
+      "metrics": {
+        "HOTA": 0.025062491270483527,
+        "DetA": 0.013810018467220683,
+        "AssA": 0.04678362573099415,
+        "IDF1": 0.020618556701030927,
+        "IDSW": 0,
+        "FP": 78,
+        "FN": 17
+      },
+      "same_native_candidates_and_all_parser_rejections_validated_by_terminal_owner": true,
+      "query_GT_boxes": 18,
+      "empty_target_frames": 782,
+      "empty_target_detection_count": 76,
+      "native_parser_rejected_frames": 36,
+      "native_membership": {
+        "counts": {
+          "TN": 173,
+          "FP": 68,
+          "FN": 9,
+          "TP": 1
+        },
+        "precision": 0.014492753623188406,
+        "recall": 0.1,
+        "head_was_present": true,
+        "threshold": 0.5,
+        "legacy_missing_head_not_interpreted_as_negative_predictions": true
+      },
+      "correct_option_coverage": 1.0,
+      "existing_association_accuracy": 0.11392405063291139,
+      "identity_recovery": {
+        "counts": {
+          "candidate_gap_return_events": 108,
+          "gap_le1s_eligible": 72,
+          "gap_le1s_same_correct_birth_anchor_ID": 1,
+          "gap_1to3s_eligible": 16,
+          "gap_1to3s_same_correct_birth_anchor_ID": 0,
+          "candidate_gap_returns_without_prior_emitted_identity": 19,
+          "gap_gt3s_eligible": 1,
+          "gap_gt3s_same_correct_birth_anchor_ID": 0
+        },
+        "success_rates": {
+          "gap_le1s": 0.013888888888888888,
+          "gap_1to3s": 0.0,
+          "gap_gt3s": 0.0
+        },
+        "rule": "first GT-aligned candidate after at least one missing candidate observation; same previous emitted ID with matching immutable birth anchor",
+        "scope": "natural candidate/GT gaps only; no artificial occlusion, future GT correction or recovery metric replacing TrackEval"
+      },
+      "actual_live_pipeline_FPS": null,
+      "perception_excluded_replay_FPS": 1.2470138496270302,
+      "core_Torch_GPU_allocator_peak_bytes": 8425579008,
+      "core_process_RSS_peak_bytes": 3304468480,
+      "GT_and_future_frames_not_read_by_runtime": true
+    },
+    "multi800_simple": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_runs/full_rmot_shared600_v1/multi800_simple",
+      "frames": 800,
+      "metrics": {
+        "HOTA": 0.3187691470023726,
+        "DetA": 0.30605259768579707,
+        "AssA": 0.3363421538244022,
+        "IDF1": 0.3768518518518518,
+        "IDSW": 99,
+        "FP": 1076,
+        "FN": 980
+      },
+      "same_native_candidates_and_all_parser_rejections_validated_by_terminal_owner": true,
+      "query_GT_boxes": 2112,
+      "empty_target_frames": 247,
+      "empty_target_detection_count": 354,
+      "native_parser_rejected_frames": 19,
+      "native_membership": {
+        "counts": {},
+        "precision": null,
+        "recall": null,
+        "head_was_present": false,
+        "threshold": 0.5,
+        "legacy_missing_head_not_interpreted_as_negative_predictions": true
+      },
+      "correct_option_coverage": 1.0,
+      "existing_association_accuracy": 0.7213483146067415,
+      "identity_recovery": {
+        "counts": {
+          "candidate_gap_return_events": 255,
+          "gap_le1s_eligible": 249,
+          "gap_le1s_same_correct_birth_anchor_ID": 126,
+          "gap_1to3s_eligible": 6,
+          "gap_1to3s_same_correct_birth_anchor_ID": 0
+        },
+        "success_rates": {
+          "gap_le1s": 0.5060240963855421,
+          "gap_1to3s": 0.0,
+          "gap_gt3s": null
+        },
+        "rule": "first GT-aligned candidate after at least one missing candidate observation; same previous emitted ID with matching immutable birth anchor",
+        "scope": "natural candidate/GT gaps only; no artificial occlusion, future GT correction or recovery metric replacing TrackEval"
+      },
+      "actual_live_pipeline_FPS": null,
+      "perception_excluded_replay_FPS": 62.140027692148486,
+      "core_Torch_GPU_allocator_peak_bytes": null,
+      "core_process_RSS_peak_bytes": 166109184,
+      "GT_and_future_frames_not_read_by_runtime": true
+    },
+    "multi800_pretrained": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_runs/full_rmot_shared600_v1/multi800_pretrained",
+      "frames": 800,
+      "metrics": {
+        "HOTA": 0.0862103492180664,
+        "DetA": 0.1369490485384435,
+        "AssA": 0.05529246027399678,
+        "IDF1": 0.07634730538922156,
+        "IDSW": 215,
+        "FP": 214,
+        "FN": 1766
+      },
+      "same_native_candidates_and_all_parser_rejections_validated_by_terminal_owner": true,
+      "query_GT_boxes": 2112,
+      "empty_target_frames": 247,
+      "empty_target_detection_count": 92,
+      "native_parser_rejected_frames": 19,
+      "native_membership": {
+        "counts": {
+          "TN": 34,
+          "FP": 73,
+          "FN": 774,
+          "TP": 358
+        },
+        "precision": 0.8306264501160093,
+        "recall": 0.31625441696113077,
+        "head_was_present": true,
+        "threshold": 0.5,
+        "legacy_missing_head_not_interpreted_as_negative_predictions": true
+      },
+      "correct_option_coverage": 0.991494532199271,
+      "existing_association_accuracy": 0.10206561360874848,
+      "identity_recovery": {
+        "counts": {
+          "candidate_gap_return_events": 255,
+          "gap_le1s_eligible": 245,
+          "gap_le1s_same_correct_birth_anchor_ID": 4,
+          "candidate_gap_returns_without_prior_emitted_identity": 4,
+          "gap_1to3s_eligible": 6,
+          "gap_1to3s_same_correct_birth_anchor_ID": 0
+        },
+        "success_rates": {
+          "gap_le1s": 0.0163265306122449,
+          "gap_1to3s": 0.0,
+          "gap_gt3s": null
+        },
+        "rule": "first GT-aligned candidate after at least one missing candidate observation; same previous emitted ID with matching immutable birth anchor",
+        "scope": "natural candidate/GT gaps only; no artificial occlusion, future GT correction or recovery metric replacing TrackEval"
+      },
+      "actual_live_pipeline_FPS": null,
+      "perception_excluded_replay_FPS": 0.5643293788782794,
+      "core_Torch_GPU_allocator_peak_bytes": 8756570112,
+      "core_process_RSS_peak_bytes": 3304091648,
+      "GT_and_future_frames_not_read_by_runtime": true
+    },
+    "multi800_before500": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_runs/full_rmot_shared600_v1/multi800_before500",
+      "frames": 800,
+      "metrics": {
+        "HOTA": 0.0,
+        "DetA": 0.0,
+        "AssA": 0.0,
+        "IDF1": 0.0,
+        "IDSW": 0,
+        "FP": 11,
+        "FN": 2112
+      },
+      "same_native_candidates_and_all_parser_rejections_validated_by_terminal_owner": true,
+      "query_GT_boxes": 2112,
+      "empty_target_frames": 247,
+      "empty_target_detection_count": 11,
+      "native_parser_rejected_frames": 19,
+      "native_membership": {
+        "counts": {
+          "TN": 100,
+          "FP": 7,
+          "FN": 1132
+        },
+        "precision": 0.0,
+        "recall": 0.0,
+        "head_was_present": true,
+        "threshold": 0.5,
+        "legacy_missing_head_not_interpreted_as_negative_predictions": true
+      },
+      "correct_option_coverage": 1.0,
+      "existing_association_accuracy": 0.16033755274261605,
+      "identity_recovery": {
+        "counts": {
+          "candidate_gap_return_events": 255,
+          "gap_le1s_eligible": 229,
+          "gap_le1s_same_correct_birth_anchor_ID": 2,
+          "candidate_gap_returns_without_prior_emitted_identity": 20,
+          "gap_1to3s_eligible": 6,
+          "gap_1to3s_same_correct_birth_anchor_ID": 0
+        },
+        "success_rates": {
+          "gap_le1s": 0.008733624454148471,
+          "gap_1to3s": 0.0,
+          "gap_gt3s": null
+        },
+        "rule": "first GT-aligned candidate after at least one missing candidate observation; same previous emitted ID with matching immutable birth anchor",
+        "scope": "natural candidate/GT gaps only; no artificial occlusion, future GT correction or recovery metric replacing TrackEval"
+      },
+      "actual_live_pipeline_FPS": null,
+      "perception_excluded_replay_FPS": 1.2412333035076952,
+      "core_Torch_GPU_allocator_peak_bytes": 8398863360,
+      "core_process_RSS_peak_bytes": 3303768064,
+      "GT_and_future_frames_not_read_by_runtime": true
+    },
+    "multi800_teacher600": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_runs/full_rmot_shared600_v1/multi800_teacher600",
+      "frames": 800,
+      "metrics": {
+        "HOTA": 0.04577750427725778,
+        "DetA": 0.06297538309716963,
+        "AssA": 0.03353873551792576,
+        "IDF1": 0.042283298097251586,
+        "IDSW": 108,
+        "FP": 104,
+        "FN": 1963
+      },
+      "same_native_candidates_and_all_parser_rejections_validated_by_terminal_owner": true,
+      "query_GT_boxes": 2112,
+      "empty_target_frames": 247,
+      "empty_target_detection_count": 60,
+      "native_parser_rejected_frames": 19,
+      "native_membership": {
+        "counts": {
+          "FP": 63,
+          "TN": 44,
+          "FN": 918,
+          "TP": 214
+        },
+        "precision": 0.7725631768953068,
+        "recall": 0.18904593639575973,
+        "head_was_present": true,
+        "threshold": 0.5,
+        "legacy_missing_head_not_interpreted_as_negative_predictions": true
+      },
+      "correct_option_coverage": 1.0,
+      "existing_association_accuracy": 0.03838383838383838,
+      "identity_recovery": {
+        "counts": {
+          "candidate_gap_return_events": 255,
+          "gap_le1s_eligible": 221,
+          "gap_le1s_same_correct_birth_anchor_ID": 1,
+          "candidate_gap_returns_without_prior_emitted_identity": 29,
+          "gap_1to3s_eligible": 5,
+          "gap_1to3s_same_correct_birth_anchor_ID": 0
+        },
+        "success_rates": {
+          "gap_le1s": 0.004524886877828055,
+          "gap_1to3s": 0.0,
+          "gap_gt3s": null
+        },
+        "rule": "first GT-aligned candidate after at least one missing candidate observation; same previous emitted ID with matching immutable birth anchor",
+        "scope": "natural candidate/GT gaps only; no artificial occlusion, future GT correction or recovery metric replacing TrackEval"
+      },
+      "actual_live_pipeline_FPS": null,
+      "perception_excluded_replay_FPS": 0.6754183627527798,
+      "core_Torch_GPU_allocator_peak_bytes": 8513269760,
+      "core_process_RSS_peak_bytes": 3305807872,
+      "GT_and_future_frames_not_read_by_runtime": true
+    },
+    "multi800_native600": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_runs/full_rmot_shared600_v1/multi800_native600",
+      "frames": 800,
+      "metrics": {
+        "HOTA": 0.06740006654792335,
+        "DetA": 0.10547747538761035,
+        "AssA": 0.04328675321004638,
+        "IDF1": 0.06693227091633466,
+        "IDSW": 185,
+        "FP": 145,
+        "FN": 1859
+      },
+      "same_native_candidates_and_all_parser_rejections_validated_by_terminal_owner": true,
+      "query_GT_boxes": 2112,
+      "empty_target_frames": 247,
+      "empty_target_detection_count": 80,
+      "native_parser_rejected_frames": 19,
+      "native_membership": {
+        "counts": {
+          "FP": 71,
+          "FN": 867,
+          "TP": 265,
+          "TN": 36
+        },
+        "precision": 0.7886904761904762,
+        "recall": 0.23409893992932862,
+        "head_was_present": true,
+        "threshold": 0.5,
+        "legacy_missing_head_not_interpreted_as_negative_predictions": true
+      },
+      "correct_option_coverage": 1.0,
+      "existing_association_accuracy": 0.11473272490221642,
+      "identity_recovery": {
+        "counts": {
+          "candidate_gap_return_events": 255,
+          "gap_le1s_eligible": 227,
+          "gap_le1s_same_correct_birth_anchor_ID": 2,
+          "candidate_gap_returns_without_prior_emitted_identity": 23,
+          "gap_1to3s_eligible": 5,
+          "gap_1to3s_same_correct_birth_anchor_ID": 0
+        },
+        "success_rates": {
+          "gap_le1s": 0.00881057268722467,
+          "gap_1to3s": 0.0,
+          "gap_gt3s": null
+        },
+        "rule": "first GT-aligned candidate after at least one missing candidate observation; same previous emitted ID with matching immutable birth anchor",
+        "scope": "natural candidate/GT gaps only; no artificial occlusion, future GT correction or recovery metric replacing TrackEval"
+      },
+      "actual_live_pipeline_FPS": null,
+      "perception_excluded_replay_FPS": 0.9295939905481698,
+      "core_Torch_GPU_allocator_peak_bytes": 8387856384,
+      "core_process_RSS_peak_bytes": 3304656896,
+      "GT_and_future_frames_not_read_by_runtime": true
+    }
+  },
+  "total_feature_archive_bytes": 197218901,
+  "full_goal_complete": false,
+  "limits": "Two expressions on one legal validation video. Simple/Full replay the same live Compact candidate source; only fresh Compact is perception-inclusive here. Paired same-video fresh Full/Compact is a separate running study. Core allocator/RSS are not external-service/total VRAM peaks. Birth-anchor diagnostic sets evolve with each model. No model promotion."
+}

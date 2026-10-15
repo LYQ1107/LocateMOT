@@ -12,6 +12,7 @@ def main():
             (24, 'ALL_FOUR_TASK_SUBSETS_AND_REGISTERED_OFFICIAL_CONTROLS_COMPLETE'),
         'context_sizes_v1': (12, 'ALL_FIXED_AFFINITY_CONTROLS_COMPLETE'),
         'hybrid_shortlist32_v1': (12, 'ALL_FIXED_AFFINITY_CONTROLS_COMPLETE'),
+        'input_evidence1200_v1/controls': (12, 'ALL_FIXED_AFFINITY_CONTROLS_COMPLETE'),
     }
     for name, (expected, terminal) in studies.items():
         directory = ROOT/'outputs/groundjev/compact'/name
@@ -48,6 +49,18 @@ def main():
                 'fixed-total-update training subsets; not complete datasets, isolated JEV proof or E2E speed.',
             'full_goal_complete': False,
         }
+        if name == 'input_evidence1200_v1/controls':
+            parent = json.loads((directory.parent/'owner_state.json').read_text())
+            assert parent['status'] == 'MATCHED_THREE_INPUT_EVIDENCE_TRAINING_AND12_CONTROLS_COMPLETE'
+            assert parent['actual_all1200_sample_IDs_and_initial_tensors_exact']
+            baseline = json.loads((ROOT/'outputs/groundjev/compact/task_subsets1200_cpu_v2_feature_sources/owner_state.json').read_text())
+            for scope in ('mot_full1203','tao_raw_full40','single800','multi800'):
+                assert rows[scope+'_geometry_appearance_language']['metrics'] == baseline['completed_controls']['all_three_'+scope]['metrics']
+            report['same_actual_initialization_and1200_sample_IDs_verified_by_owner'] = True
+            report['full_input_baseline_official_scores_equal_all_four_prior_scopes'] = True
+            report['limits'] += (' Geometry-motion disables382208visual-projection parameters; nominal resident '
+                'parameters match but active capacity differs. Native semantic frontend/teacher knowledge and '
+                'output-only class text prototypes remain. Three trained input modes do not isolate JEV uniqueness.')
         (directory/'validated_summary.json').write_text(json.dumps(report, indent=2)+'\n')
         print(name, expected, report['status'])
 

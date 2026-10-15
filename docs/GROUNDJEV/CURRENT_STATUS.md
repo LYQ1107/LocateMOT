@@ -1,19 +1,17 @@
 # GroundJEV-MOT current evidence — 2026-10-15
 
-Project worktree: `/data2/user/LocateMOT_GroundJEV`; original LocateMOT data
-and U2 results remain in `/data2/user/LocateMOT`. The full research goal is
-active. Results below are legal development scopes, one seed; they are not
-complete-dataset results or a successful unified-model promotion.
+Independent worktree `/data2/user/LocateMOT_GroundJEV`; original LocateMOT data
+and preserved U2 results remain under `/data2/user/LocateMOT`. The full goal
+remains active. These are registered legal validation scopes, one seed; no
+complete-dataset result or successful unified-model promotion is claimed.
+Earlier snapshots/failures remain in Git, `STATUS_HISTORY_20261015.md` and
+`research_log.md`. Official artifacts remain authoritative.
 
-Earlier snapshots and failures are preserved in
-[status history](STATUS_HISTORY_20261015.md), `research_log.md` and Git history.
-This page summarizes current evidence rather than repeating the running log.
+## Complete DanceTrack video
 
-## Complete-video tracking
-
-All DanceTrack rows use the same original native V1 proposals, all1203 frames
-of validation0004,13664candidates and27rejected frames. Official TrackEval is
-unchanged. HOTA/IDF1 are percentages; IDSW/FP/FN are counts.
+Same original V1 Ground proposals, all1203frames of validation0004,
+13664candidates/27parser-rejected frames; unchanged official TrackEval.
+HOTA/IDF1 below are percentages, IDSW/FP/FN counts.
 
 |Method|HOTA|IDF1|IDSW|FP|FN|
 |---|---:|---:|---:|---:|---:|
@@ -21,145 +19,146 @@ unchanged. HOTA/IDF1 are percentages; IDSW/FP/FN are counts.
 |Distilled Compact300|20.157|17.140|588|2129|951|
 |Matched MLP300|11.197|15.118|161|549|3556|
 |Same Set architecture, GT-only300|5.977|3.406|1322|5954|1796|
-|Newly trained original U2 core/bridge300|1.243|0.625|250|455|4191|
+|New original U2 core/bridge300|1.243|0.625|250|455|4191|
 |Shared Compact, broad native history|26.316|30.633|165|579|1962|
 
-The shared core has1146511learnable parameters, plus original frozen OneJev
-CPU token lookup (254279680parameters/508559360nominal bytes) and external
-Ground perception. It is not a replacement claim for the0.8B decoder. This
-shared stage has a different training budget from the matched300 baselines.
-Lower IDSW alone does not establish a gain when FN increases.
+Shared Compact has1146511learnable resident parameters plus original frozen
+OneJev CPU token lookup254279680parameters/508559360nominal bytes and external
+Ground perception. It is not a replacement claim for the0.8B decoder. The
+shared stage has a larger/different training budget than the matched300arms.
+Lower IDSW alone does not establish improvement when FN rises.
 
-Fresh pretrained Full V3 uses a different actual native proposal sequence:
-HOTA2.389 versus its own matched Simple8.257. Its uninterrupted detector-inclusive
-FPS is0.118560 under concurrent workloads, excluding preloaded model/service
-initialization. Do not compare this speed to replay or to other videos as a
-paired speedup. Trained Full500/teacher600/native600 full1203 controls are now
-running on the original V1 source; no scores are inferred before completion.
+Fresh pretrained Full V3 uses a different actual source: HOTA2.389 versus its
+own matched Simple8.257. Actual unresumed native pipeline FPS.118560, under
+concurrent workloads, excluding preloaded service/model initialization. Its
+historical final-checkpoint timer definition is preserved. Trained Full native600/
+MOT500/teacher600 full1203 controls continue on the original V1 source; do not
+infer scores before completion or compare different-video speeds as paired.
 
-## Full800-frame RMOT and actual pipeline speed
+## All12complete800frame RMOT controls
 
-Both expressions cover every frame0..799 of legal Refer-KITTI-v2 validation0007.
-The fresh Compact runs use live original DLM, real native2560ROI, association,
-identity memory, all archive/prediction writes, video rendering/encoding and
-final state export. Both are unresumed. Remote preloading and local model
-initialization are excluded. Simple controls replay exactly the same source.
+Both expressions cover all frames0..799 of legal Refer-KITTI-v2 validation0007.
+Single has18target boxes/782empty-target frames; multiple2112/247. Same actual
+native sources1412/2208candidates,36/19parser rejections and every empty/rejected
+frame retained. Official parsing unchanged; strict-wire diagnostic failures are
+not relabeled as valid or omitted. All12actual official/runtime/video receipts
+validate; the original blocking owner exited0 and released its own services.
 
-|Expression/method|HOTA %|IDF1 %|IDSW|FP|FN|Live pipeline FPS|
-|---|---:|---:|---:|---:|---:|---:|
-|Single Compact|6.025|2.890|0|323|13|0.678005|
-|Single same-candidate Simple|4.966|1.259|3|1402|8|not measured live|
-|Multiple Compact|19.802|21.008|165|619|1054|0.882942|
-|Multiple same-candidate Simple|31.877|37.685|99|1076|980|not measured live|
+|Method|Single HOTA %|Single IDF1 %|Single FN|Multi HOTA %|Multi IDF1 %|Multi IDSW|Multi FP|Multi FN|
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+|Simple|4.966|1.259|8|31.877|37.685|99|1076|980|
+|Shared Compact|6.025|2.890|13|19.802|21.008|165|619|1054|
+|Pretrained Full|16.119|17.391|16|8.621|7.635|215|214|1766|
+|MOT500 Full|0|0|18|0|0|0|11|2112|
+|Teacher-history additional600 Full|6.847|4.839|14|4.578|4.228|108|104|1963|
+|Own-history additional600 Full|2.506|2.062|17|6.740|6.693|185|145|1859|
 
-Single has18target GT boxes,782empty-target frames and10/18target proposal
-coverage atIoU.5. Multiple has2112target boxes,247empty-target frames and
-1133/2112coverage. All36/19native parser rejections remain in the800frame
-denominators; official-scoring parsing is unchanged and strict-wire diagnostic
-failures are not relabeled as strict-valid.
+Both additional600stages start from the actual completed MOT500 weights and
+have600further updates/2400examples each. They partly recover MOT500's RMOT
+collapse but do not beat pretrainedFull here. PretrainedSingle's higher HOTA
+still accompanies16/18misses. No training/unified-model success is claimed.
 
-|Empty-target behavior|Frames with any output|False-alarm frame rate|
+Compact fresh runs used live pristine DLM and real native2560ROI, association,
+causal memory, archive/prediction writes, rendering/encoding and final export:
+actual pipeline FPS.678005/.882942, wall1179.932/906.062s. Core initialization
+5.232/5.362s and remote preloading excluded. Simple/Full in this table replay
+these exact sources, so their replay FPS is not comparable to native Compact
+FPS. Archive total197218901bytes<2GiB. Core Torch allocator peaks14970368/
+14855168bytes and core RSS1467027456/1478381568bytes exclude external services.
+
+|Empty-target frames with any output|Single|Multiple|
 |---|---:|---:|
-|Single Compact|200/782|25.575%|
-|Single Simple|747/782|95.524%|
-|Multiple Compact|143/247|57.895%|
-|Multiple Simple|243/247|98.381%|
+|Compact|200/782=25.575%|143/247=57.895%|
+|Simple|747/782=95.524%|243/247=98.381%|
 
-Compact reduces false alarms but loses multi-target identity accuracy. Its
-single IDSW0 does not offset13misses out of18target boxes. No model promotion.
-These are two expressions on one video, not the full RMOT dataset or real-time
-performance. Absolute pipeline wall times are1179.932/906.062seconds.
+Compact reduces false alarms but loses multiple-target identity accuracy.
+False-alarm frame counts and detection counts are separate. Live-video paths:
+`multitask_runs/full_rmot_shared600_v1/{single,multi}800_shared_compact_fresh/tracks.mp4`.
+Receipt: `multitask_runs/full_rmot_shared600_v1/all12_validated_summary.json`.
 
-Both sources and decoded videos were validated:1412/2208native candidates,
-197218901combined archive bytes under2GiB. Core Torch allocator peaks are
-14970368/14855168bytes and core-processRSS1467027456/1478381568bytes; these
-exclude external DLM/ROI services. Cross-stage resource snapshots are not
-per-video total-VRAM peaks. Paired fresh Full/Compact speed/resource comparison
-on the same800frames/GPU5 is still queued.
+Paired fresh Fullnative600/Compact800same-video/same-GPU5 E2E has now actually
+started after the previous owner exited/released services. It uses a fresh
+private native service for each arm and exact canonical candidate equality;
+no paired speed/resource result is claimed until it finishes. Fixed arm order,
+one seed and concurrent other workloads remain explicit limitations.
 
-Evidence under `outputs/groundjev/`:
+## Same-source saved-output diagnosis
 
-- `multitask_runs/full_rmot_shared600_v1/fresh_compact800_validation_and_summary.json`
-- `multitask_runs/full_rmot_shared600_v1/{single,multi}800_shared_compact_fresh/tracks.mp4`
-- `multitask_runs/multi800_simple_cpu_v1/owner_state.json`
+All2208candidate outputIDs/boxes reconstruct exactly from saved actions and
+original membership>=.5, with no new model calls, corrected states, thresholds
+or predictions. Same1132one-to-one aligned query-positive candidates:
 
-The early CPU multiSimple baseline leaves the original GPU5 Full queue intact.
-Any later identical scheduled baseline is a duplicate, not another seed.
+|Method|No physical assignment|Assigned then membership rejects|Actually emitted aligned positives|
+|---|---:|---:|---:|
+|PretrainedFull|105|687|340|
+|MOT500Full|263|869|0|
+|Teacher600Full|544|445|143|
+|Native600Full|330|555|247|
+|SharedCompact|4|71|1057|
 
-## Complete TAO annotation-frame scope
+These disjoint candidate funnels are not an officialFN decomposition across
+HOTA thresholds. Per-target proposal coverage1133/2112uses a different matching
+rule. Unknown/unmatched candidates are not fabricated negativeGT. Full query
+rejection and association decisions both need work; the membership gate alone
+is not the whole teacher/native600failure. Different causal birth-anchor event
+sets prevent strict same-event identity-accuracy comparisons.
+Receipt: `diagnostics/multi800_full_compact_output_funnel_v1/summary.json`.
 
-The legal Base/Novel video has40annotation frames,160GTboxes and all1203LVIS
-input categories. Original native source has35228proposals; a separate exact
-geometry-alias policy has7343groups while retaining every original alias.
-Physical sourceFPS is unknown; annotation-step timing is explicitly not physical
-seconds. Unchanged official TETA, no detector-inclusive replay speed claim.
+## Completed matched input-evidence study14.2
+
+All12full-video controls complete: three modes on fullDT1203/rawTAO40/single800/
+multi800. Two new1200step models and reused completed all_three1200 full-input
+weights share actual initialization, all1200sample IDs, seed0,536source groups,
+GT/native teacher targets and1146511resident parameters. Three-task reload
+delta0. Full-input official scores exactly reproduce all four prior baseline
+scopes despite changed state-storage implementation.
+
+|Runtime evidence|DT HOTA %|RawTAO TETA %|Single800 HOTA %|Multi800 HOTA %|
+|---|---:|---:|---:|---:|
+|Geometry/motion, ROI/specification branches masked|9.144|13.568|0|14.462|
+|Native appearance, specification condition masked|26.061|11.444|2.491|12.900|
+|Native appearance plus specification condition|19.312|10.081|7.860|18.674|
+
+Appearance helps this MOT scope; specification conditioning helps both RMOT
+expressions but hurts MOT/TAO here. All NovelClsA0, and every multi800arm is
+below same-candidate Simple31.877HOTA. Keep negative transfer; no universal
+multimodal/JEV superiority claim or validation-threshold tuning.
+
+Geometry-motion disables382208visual/history-projection parameters, so equal
+resident count does not mean equal active capacity. All modes retain the native
+semantic frontend, softteacher knowledge and output-only class-vocabulary text
+prototypes. These are association-input ablations on common older-actor training
+histories, not language-free perception or unique JEV proof. Full native-image
+JEV differs in architecture/training budget and is separately reported.
+Receipt: `compact/input_evidence1200_v1/controls/validated_summary.json`.
+
+## Complete TAO annotation-frame scope and policy studies
+
+One legal Base/Novel video:40annotation frames/160GTboxes, all1203LVIS input
+categories. Raw source35228proposals, separate exact geometry-alias protocol
+7343groups retaining every alias. Physical source FPS unknown; annotation-step
+timing is not physical seconds. Official unchanged TETA, all NovelClsA0.
 
 |Proposal protocol/method|TETA %|AssocA %|ClsA %|
 |---|---:|---:|---:|
-|Original raw/Simple|18.640|28.618|20.290|
-|Original raw/shared Compact|14.517|5.148|30.314|
-|Exact geometry aliases/Simple|22.556|26.472|18.325|
-|Exact geometry aliases/shared Compact|21.773|9.627|32.419|
+|Raw/Simple|18.640|28.618|20.290|
+|Raw/shared Compact|14.517|5.148|30.314|
+|Aliases/Simple|22.556|26.472|18.325|
+|Aliases/shared Compact|21.773|9.627|32.419|
 
-NovelClsA is0 in all four. Raw versus alias changes proposal representation
-and representative labels, so it is not an association-only improvement. Source
-coverage remains147/160atIoU.5. Exact causal replay shows frozen-trajectory
-correct-option coverage at32/64/128IDs of15.672/31.343/44.776% on raw data,
-and53.097/60.177/74.336% on alias data. These are coverage diagnostics, not
-counterfactual larger-context tracking scores.
+Raw versus alias changes proposal representation/representative labels, not
+association alone. Coverage147/160atIoU.5. Frozen-trajectory correct-option
+coverage32/64/128 is15.672/31.343/44.776% raw and53.097/60.177/74.336% alias;
+these are ranking diagnostics, not counterfactual tracking scores.
 
-## Controlled training and policy studies
+Original five-policy cohort25units and both full800RMOT five-policy cohorts
+10units complete. Same-input DT HOTA learned/IoU/cosine/cosine+learnedaux/
+learned+fixedaux=26.316/7.488/13.311/13.009/24.283. But fullmulti800 gives
+19.802/32.813/16.622/22.035/19.558. Current learned association loses to fixed
+IoU plus identical semantic functions here. Histories/confidence/action priors
+and filtering evolve by policy; not optimal retrained baselines or JEV proof.
 
-All four new task subsets have the same MOT300+seed0semantic initialization,
-1200total updates,536source groups and1146511core parameters. Per-task
-exposure differs:1200MOT,600per paired task,400per triple task.
-
-|Training tasks|DT1203 HOTA %|RawTAO40 TETA %|SingleRMO8 HOTA %|MultiRMO12 HOTA %|
-|---|---:|---:|---:|---:|
-|MOT|19.639|12.421|0|4.096|
-|MOT+RMO|6.760|19.284|0|3.513|
-|MOT+OV|21.229|12.850|26.494|9.622|
-|All three|19.312|10.081|37.265|3.513|
-
-All24registered scopes validate, including both complete800frame sources.
-
-|Training tasks|Single800 HOTA %|Multi800 HOTA %|Multi800 IDF1 %|
-|---|---:|---:|---:|
-|MOT|0|7.673|7.984|
-|MOT+RMO|0|18.255|21.471|
-|MOT+OV|0|15.794|16.770|
-|All three|7.860|18.674|19.299|
-
-Triple training transfers to the single expression, but every multi800 arm is
-below same-candidate Simple31.877HOTA/37.685IDF1. These matched1200update
-arms differ in budget/initialization from the older shared broad native model.
- NovelClsA0 in every subset. Complementary MOT400/600 controls have
-HOTA13.317/13.979 with exact actual sample/loss prefixes versusMOT1200; total
-compute still differs from the multitask arms. No isolated gradient-interference
-or universal transfer conclusion.
-
-All five frozen same-input policies completed the original DT1203 source:
-
-|Association/auxiliaries|HOTA %|IDF1 %|IDSW|FP|FN|
-|---|---:|---:|---:|---:|---:|
-|Learned/learned|26.316|30.633|165|579|1962|
-|IoU/fixed|7.488|2.597|775|9335|257|
-|IoU+cosine/fixed|13.311|9.841|553|9328|250|
-|IoU+cosine/learned|13.009|9.688|545|9329|251|
-|Learned/fixed|24.283|29.761|155|608|2139|
-
-Same semantic functions/input information are retained, but confidence and
-history evolve with each policy. Learned policy also suppresses many proposals;
-this is not isolated identity-ranking evidence, an optimally retrained conventional
-matcher, or unique JEV proof. The same five policies have now completed both
-full800RMOT scopes; CPU learned-reference official metrics exactly match the
-fresh GPU5 runs. All25original policy units now validate, including raw and
-aliasTAO40. AliasTAO TETA learned21.773 versus IoU26.928; rawTAO learned14.517
-versus IoU13.995. NovelClsA remains0. The two proposal protocols are separate.
-
-The context study also completed:12units, four32references and eight new64/128
-runs. These are actual independently evolving tracking trajectories, not frozen
-ranking coverage estimates.
+Actual context study12units, four32references/eight new64/128trajectories:
 
 |Context IDs|DT learned HOTA %|DT fixed cosine HOTA %|AliasTAO learned TETA %|AliasTAO fixed cosine TETA %|
 |---|---:|---:|---:|---:|
@@ -167,229 +166,103 @@ ranking coverage estimates.
 |64|26.316|13.289|23.100|26.099|
 |128|26.316|12.491|24.749|29.062|
 
-Larger context helps this TAO scope but does not establish a learned-association
-advantage. Context64/128 exceeds the training32-option distribution and changes
-semantic normalization and histories. Fixed32hybrid retrieval has completed all12registered units (six new trajectories and six reused geometry references). Hybrid
-keeps16geometry IDs then fills32from native appearance; real251-ID differential
-checks preserve old defaults exactly. No newGPU/feature sources or speed claims.
+Larger context helps this TAO scope but exceeds training32options and changes
+semantic normalization/histories; fixed cosine still leads. No isolated JEV gain.
 
-## Full fine-tuning and Ground adaptation
+Hybrid32retrieval12units, six new/six geometry references, all complete:
 
-Original One500 and paired teacher600/native600 additional stages completed.
-Both600FP32/Adam/scheduler/RNG states are saved; both real native multimodal
-repeated reload checks have probability delta0. Teacher restored450 and native
-250 exactly. Teacher replayed475loss differs by.001734814; native has no
-unsaved-log overlap. Neither is called bitwise training replay. Resumed tail
-timing is not full-stage throughput.
-
-|Full checkpoint|MOT4 HOTA %|SingleRMO8 HOTA %|MultiRMO12 HOTA %|TAOBase4 TETA %|
+|Scope|Learned geometry|Learned16geometry+16appearance|Fixed cosine geometry|Fixed cosine hybrid|
 |---|---:|---:|---:|---:|
-|Before500|30.868|0|0|11.981|
-|Teacher600|30.601|0|9.945|52.181|
-|Native600|32.236|0|11.214|47.682|
+|DT HOTA %|26.316|26.316|13.311|12.811|
+|AliasTAO TETA %|21.773|21.466|23.913|24.435|
+|RawTAO TETA %|14.517|15.178|13.964|15.652|
 
-All12same-policy controls validate. NativeNoul membership>=.5 applies to all
-three RMO arms; they cannot be compared to older ungated scores. Base4 has
-only the person/baby Basecanonical class; ClsA100 is not Novel recognition.
-Native history is not universally better. These remain short scopes.
+Mixed gains; geometry remains the default. All receipts under respective
+`compact/{fixed_affinity_controls_v1,context_sizes_v1,hybrid_shortlist32_v1}/validated_summary.json`.
 
-Ground200 trained the actual native projector (27267584parameters), with
-native dense/referring plus identity losses; all569native tensors export with
-other weights untouched. Ground320adds actual absence supervision. Isolated
-original/200/200repeat/320 native controls preserved seeds/request order and
-repeat raw outputs exactly, but showed mixed MOT/RMO behavior; no promotion.
-Original and Ground200 full9native retention evaluates all91124released rows
-per model; neither is claimed complete while native clients remain active.
+## Completed task-subset and memory studies
 
-Required localization-only200 control has actual112rows/56pairs/200indices
-matched to completed Ground200, same seed42/lr2e-6, identity-loss coefficients0.
-It waits only verifiedGPU6retention clients/service release, then trains/exports,
-runs96ordered native frontend frames and18pretrained/native600Full composition
-controls. Composing adapted weights is not joint-gradient optimization. No
-localization-only accuracy/retention score is claimed yet.
+Four new task subsets share MOT300+seed0semantic initialization,1200totalupdates,
+536groups and1146511resident core parameters. Per-task exposures differ:
+MOT1200; pair600each; triple400each. All24controls complete:
 
-## History/update supervision and long gaps
+|Tasks|DT HOTA %|RawTAO TETA %|Single800 HOTA %|Multi800 HOTA %|
+|---|---:|---:|---:|---:|
+|MOT|19.639|12.421|0|7.673|
+|MOT+RMO|6.760|19.284|0|18.255|
+|MOT+OV|21.229|12.850|0|15.794|
+|All three|19.312|10.081|7.860|18.674|
 
-One100realrollout->500SFT and Compactjoint1200real72-frame rollout->native1200
-provide offline iterative own-state training. Recorded states are causal and
-uncorrected byGT. They are not per-gradient on-policy resampling; the latter is
-a research direction, not an additional invented acceptance gate.
+All NovelClsA0. No universal transfer; older shared26.316DT/19.802multi model
+has different initialization and joint1200+native1200 budget. MOT400/600extra
+controls HOTA13.317/13.979 have exact actual sample/loss prefixes versus1200,
+but different total compute prevents pure gradient-interference attribution.
+Receipt: `compact/task_subsets1200_cpu_v2_feature_sources/validated_summary.json`.
 
-Fit72update audit reproduces every original label. Of28positive labels,12have
-unknown GTbirth ownership; none has two known conflicting identities. The one
-known conflicting write already has update_target0. Unknowns must not become
-fabricated negative labels. The initial hypothesis that wrong positive update
-labels explain failures is unproven; original packs/models are unchanged.
+Complete DT1203 memory interventions HOTA11.441(frame-only),16.394(recent),
+14.643(EMA),24.245(anchor/always),26.316(anchor/gated3s),18.552(gated30s).
+These are frozen policy interventions; no successful >3sDTrecovery evidence.
+SingleRMOT800has two natural >3s candidate returns, recovered0 by both Compact/
+Simple under immutable correct-birth-anchor diagnostics.
+
+Natural MOT20-05validation1657frames(1659..3315,25Hz) remains queued only after
+originalGPU7native retention release. Eight same-source CPU memory/Simple
+controls, packed FP32 archive3GiBcap. Registered ID854's29.76s low-visibility
+interval retains743intermediate annotated frames; it is not a proven missing-
+candidate interval. No synthetic occlusion/GT correction/visibility filtering.
+Real21frame exact archive regression preserves266candidates/rejected empty
+frame/full state/next-frame restore:14998172JSON-equivalent→3409159packed bytes.
+No new accuracy/speed claim from this storage test.
+
+## Training, adaptation and remaining work
+
+Original One100real uncorrected rollout→500SFT and Compactjoint1200real72frame
+rollout→native1200 provide offline iterative own-state training. Not per-gradient
+on-policy resampling; the latter is a research direction, not an invented gate.
+Both additionalFull600FP32/Adam/scheduler/RNG states saved,2400examples each,
+nativeMM reload delta0. Teacher resumed450, native250 exactly; teacher replayed
+475loss differs.001734814 and native has no saved-log overlap. Neither called
+bitwise training replay; resumed-tail timings are not whole-stage throughput.
+All12same-policy shortFull controls completed, but complete-video results above
+show the short multiRMO gains do not establish full-video improvement.
+
+Fit72update audit reproduces original labels:28positive,12unknown birth owners,
+0two-known-identity-conflicting positives. One known conflicting write already
+has target0. Initial unknown→negative diagnostic suggestion was invalid and
+never applied. No pack/model changed; do not claim this label hypothesis proved.
 Authoritative audit: `diagnostics/causal_update_supervision_fit72_v3_known_conflicts/audit.json`.
 
-Complete DT1203 memory interventions have HOTA11.441(frame-only),16.394(recent),
-14.643(EMA),24.245(anchor/always),26.316(anchor/gated3s),18.552(anchor/gated30s).
-They are frozen policy interventions. The full singleRMO800diagnostic has two
-natural candidate returns beyond3s; bothSimple/Compactrecover0under immutable
-birth-anchor diagnostics. This does not prove successful long recovery; GTgap
-and candidate-gap scopes differ. The registered natural MOT20challenge still
-requires actual inference. A single registered owner2126039 waits only original
-GPU7 native-retention release. It will use every1657validation frame,25Hz, with
-8same-source memory/Simple controls and a3GiB packed native ROI archive cap.
-Registered ID854's29.76s low-visibility interval retains743intermediate annotated
-frames; it is not yet a measured missing-candidate interval. No artificial
-occlusion or metric filtering is used.
+Ground200trained native27267584parameter projector, native dense/referring plus
+identity losses, exported569tensors with remaining weights untouched. Ground320
+adds actual absence supervision. Isolated original/200/200repeat/320controls
+preserve request order/repeat raw outputs exactly, show mixed MOT/RMO behavior;
+no promotion. Original/Ground200nativefull9retention each targets91124released
+rows, not all30paper benchmarks; neither complete while native clients remain.
+GPU6native CUDA failure/retry evidence retained; first failing kernel unknown.
 
-Real21frame packed-storage regression preserves266candidates, the actual rejected
-empty frame, every FP32ROI value, predictions, full state and next-frame recovery
-exactly:14998172JSON-equivalent bytes versus3409159packed bytes. This is a
-storage functional result, not new model accuracy or a full-video speed claim.
-Existing conservative cache upper22471148986+3GiB+32MiB regression reserve is
-25725928890bytes, below25GiB. The default older JSON archive remains unchanged.
+Localization-only200 remains queued after verifiedGPU6retention clients/service
+release: same112rows/56pairs/200actual draws/seed42/lr2e-6 as completedGround200,
+identity coefficients0; then fresh export,96ordered native frames and18Full
+visual×pretrained/native600composition controls. This is composed adaptation,
+not joint-gradient training. No pending adaptation/retention score inferred.
 
-## Active execution and remaining work
-
-At most physical GPUs4/5/6/7combined; other users and stopped oldU2 queues
-remain untouched. Temporary feature cache cap is25GiB; all data/checkpoints/
-valid results are preserved. Historical verified old cache cleanup freed39.89GiB;
-see `RESOURCE_CLEANUP.md` for limits of the original resource snapshots.
-
-|Device/queue|Work and authoritative owner output|
+|Queue/device|Remaining actual work|
 |---|---|
-|GPU4|Fullnative600/before500/teacher600DT1203; `training/onejev_full1203_controls_v2_wait_fix`|
-|GPU5|Full RMOT matched controls; `multitask_runs/full_rmot_shared600_v1`, then fresh pairedE2E|
-|GPU6|Ground200nativefull9, then `ground_adaptation/localization200_control_v1`|
-|GPU7|OriginalGroundnativefull9; summaries under `ground_retention/reattached_full9_owner_v1`|
-|CPU|Original25policies, all24task-subsets and12context units complete; hybrid12units complete; matched input-evidence study now follows|
-|GPU7 after retention|Natural MOT20-05 validation1657, then8CPU memory controls; `natural_memory/mot20_05_full_validation_v1`|
-|Completed CPU|`compact/full_rmot_affinity800_v1`:all10full800matched-semantic controls|
+|GPU4|TrainedFull native600/MOT500/teacher600DT1203; `training/onejev_full1203_controls_v2_wait_fix`|
+|GPU5|Paired freshFullnative600thenCompact800 E2E now running; `e2e/full_compact_rmot800_v1`|
+|GPU6|AdaptedGround200nativefull9, then localization-only200/native/factorial controls|
+|GPU7|OriginalGroundnativefull9, then naturalMOT20source and8CPU controls|
+|CPU|Policy25, tasksubset24, context12, hybrid12, input12 all complete|
 
-The v1Full1203waiting manager failed before any inference when a PID handle
-shadowed training handles. Minimal fix and actual completed-owner CPU regression
-passed; v2nowruns unchanged data/checkpoints/metrics. Failure/logs remain.
+At most four physical GPUs4/5/6/7combined; foreign jobs and stopped U2 queues
+untouched. No new GPU/feature cache for completed CPU studies. Conservative
+prior feature upper22471148986+3GiB+32MiBregression reserve=25725928890bytes
+<25GiB(26843545600). Data/checkpoints/results retained. Historical old-cache
+cleanup freed39.89GiB; resource-snapshot limits in `RESOURCE_CLEANUP.md`.
 
-Remaining work is to finish and validate these exact full-video, retention and
-paired resource studies, complete the required visual-only/composed adaptation
-comparison and natural long-gap experiment, and consolidate the scientific
-input/budget controls without inventing missing evidence. Negative results are
-retained. Pilot evidence never implies completion of the full research goal.
-
-## Complete full800 matched-semantic policy comparison
-
-Both CPU references exactly reproduce the corresponding freshGPU5 official
-accuracy. All ten runs retain their800frames,1412/2208native candidates and
-36/19rejections; same frozen semantic functions, no GT correction or speed claim.
-
-|Association/auxiliaries|Single HOTA %|Multi HOTA %|Multi IDF1 %|Multi IDSW|
-|---|---:|---:|---:|---:|
-|Learned/learned|6.025|19.802|21.008|165|
-|IoU/fixed|7.766|32.813|41.432|79|
-|IoU+cosine/fixed|5.538|16.622|14.009|105|
-|IoU+cosine/learned|6.009|22.035|23.803|119|
-|Learned/fixed|6.636|19.558|21.064|157|
-
-The same learned semantic functions plus fixedIoU outperform the current
-learned association on this complete multiple-target expression. Raw native
-appearance cosine does not help this geometry baseline. This remains a frozen
-policy comparison, not isolated JEV uniqueness or an optimal conventional
-training claim; states/action priors and future semantic outputs differ.
-No model promotion. Receipt:
-`outputs/groundjev/compact/full_rmot_affinity800_v1/validation_and_summary.json`.
-
-
-Latest Full single800 controls are also complete (same1412native proposals,
-800decoded frames/36parser-rejected frames, unchanged nativeNoul.5 semantics):
-pretrained/500/teacher600/native600 HOTA16.119/0/6.847/2.506%,
-IDF1 17.391/0/4.839/2.062%, FN16/18/14/17 out of18GTboxes.
-Pretrained recovers only2GTboxes, so its higher HOTA does not imply adequate
-recall. Training does not improve this full single-expression scope. Multi800
-Full controls still run; all Full replay speeds exclude perception.
-
-Curated official-artifact receipts: `outputs/groundjev/compact/` under
-`fixed_affinity_controls_v1/validated_summary.json`,
-`task_subsets1200_cpu_v2_feature_sources/validated_summary.json` and
-`context_sizes_v1/validated_summary.json`.
-
-
-Input evidence14.2 now has a registered matched retraining study,
-`configs/groundjev/compact_input_evidence1200_v1.json`. Two new1200step CPU
-models mask nativeROI and runtime specification conditioning, respectively;
-the full-input arm reuses completed all_three1200 weights. All modes retain
-1146511resident parameters and the output-only class vocabulary text head.
-The same original native semantic frontend and native softteacher targets remain;
-this is association-input isolation, not language-free perception or isolated
-JEV proof. Initialization tensors and all1200sample IDs must equal baseline.
-Three modes each evaluate fullDT1203/rawTAO40/single800/multi800. One serial
-owner follows the successfully completed hybridCPU study; no new GPU/feature cache. Real three-task
-isolation/default-exact, two-step reloads and two real21frame scheduler controls
-passed; no full-video accuracy is claimed for these new modes yet.
-
-Actual completed single800Full timing logs show all3200requests use batched
-forking. Pretrained/500/teacher600/native600 average prefix tokens are
-1347/3987/8235/5474 and branches7.93/14.20/24.38/17.72; forward totals are
-142.531/344.670/787.309/481.178s. Different causal histories and concurrent
-loads prevent isolated causal speed attribution. No evidence of universal
-sequential fallback; no native-engine optimization protocol changed.
-
-
-PretrainedFull multi800 also completed: HOTA8.621%, IDF1 7.635%, IDSW215,
-FP214, FN1766 out of2112target boxes, on the same2208native candidates and
-19parser-rejected frames. Remaining trainedFull multi800 arms still run.
-Replay speed is not full native perception-inclusive speed.
-
-Saved-output diagnosis at the unchanged membership threshold.5, with the same
-1132one-to-one physically aligned query-positive candidates:
-
-|Completed method|No physical assignment|Assigned then membership rejects|Actually emitted aligned positives|
-|---|---:|---:|---:|
-|PretrainedFull|105|687|340|
-|SharedCompact|4|71|1057|
-
-All2208candidate outputIDs/boxes reconstruct exactly from saved actions and
-membership, without new model calls or corrected states. Head recall is
-31.625% versus93.728%. Full surviving-correct-anchor option coverage is99.149%
-but existing-association accuracy10.207%; these causal event sets differ between
-models. Candidate-aligned funnels do not decompose officialFN across HOTA
-thresholds; unknown/unmatched proposals remain unknown. Wait registered600
-controls before choosing a training change; no threshold tuning or extra runs.
-Evidence: `diagnostics/multi800_full_compact_output_funnel_v1/summary.json`.
-
-
-Hybrid16geometry+16native-appearance retrieval completed without changing the
-32-ID option budget or model weights. Official artifacts validate all12units:
-
-|Scope|Learned geometry32|Learned hybrid32|Fixed cosine geometry32|Fixed cosine hybrid32|
-|---|---:|---:|---:|---:|
-|DT1203 HOTA %|26.316|26.316|13.311|12.811|
-|AliasTAO40 TETA %|21.773|21.466|23.913|24.435|
-|RawTAO40 TETA %|14.517|15.178|13.964|15.652|
-
-This is a mixed retrieval intervention; keep the original geometry default.
-Raw and alias protocols remain separate, and all NovelClsA remain0. Frozen
-weights, histories and semantic normalization interactions prevent a claim
-that improved ranking alone explains changes. No new GPU/features or E2E claim.
-Receipt: `compact/hybrid_shortlist32_v1/validated_summary.json`.
-
-MOT500Full multi800 completed with HOTA0/IDF1 0/FP11/FN2112. On1132matched
-query-positive candidates, all1132membership scores reject at the original.5
-threshold:263lack physical assignment and869are assigned then filtered. This
-is distinct from the pretrainedFull105/687/340funnel. MOT-only training does
-not establish RMOT transfer; teacher/native600full-video arms remain pending.
-
-
-The input-evidence owner has now completed both new1200step training arms:
-initial tensors and every sampled exampleID equal the completed full-input
-baseline; three-task reload delta0 and additionalGPU allocation0. Full-video
-controls have started under the same owner. Geometry-motion disables382208
-visual/history-projection parameters, so1146511is the shared resident count,
-not equal active capacity; no unique-JEV or pure capacity-isolated claim.
-Training receipt: `compact/input_evidence1200_v1/completed_matched_training_summary.json`.
-
-
-Compact geometry engineering improvement: cache same-timestamp predicted boxes
-within a decision and compute shortlistIoU in FP64 batches with the identical
-scalar operation order and lost-age/ID ties. Actual completed dense-state
-validation covers591candidates×2365tracks=1397715exact overlaps,37groups'
-32/64/128orders, and full model decisions/lifecycle/metadata for geometry and
-hybrid modes, including empty observations/no history. All equal the scalar
-ba94b94reference. Three warm16candidate probe medians geometry147.08→51.11ms
-and hybrid784.82→675.81ms; these are post-state numerical/performance probes,
-not causal video or E2E FPS results. Existing running processes retain their
-old imports. Historical video timings/metrics remain untouched; future child
-processes record their actual Git revision. No new GPU/features/protocol changes.
-Receipt: `validation/dense_geometry_batching_v1/validation.json`.
+Compact batches FP64 geometry and caches same-timestamp predicted boxes in
+new processes. Real591×2365=1397715overlaps/37groups32/64/128ordering and full
+model outputs/lifecycle/metadata match scalar exactly. Three warm16candidate
+post-state probe medians147.08→51.11ms geometry and784.82→675.81ms hybrid;
+not causal-video or E2E FPS. Historical timings unchanged, actual childGit
+revisions recorded. Receipt: `validation/dense_geometry_batching_v1/validation.json`.
