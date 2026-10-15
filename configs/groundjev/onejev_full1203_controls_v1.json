@@ -1,0 +1,44 @@
+{
+  "training_owner": "outputs/groundjev/training/onejev_unified600_pair_v4_detached_resume",
+  "physical_gpu": 4,
+  "policies": {
+    "mot": "Full v3_crop_motion,adaptive groups",
+    "rmot": "sameFull + native Noul membership fixed .5",
+    "ovmot": "sameFull + native_hierarchical all1203 inputcategories, explicitUNKNOWN"
+  },
+  "all_native_candidates_retained": true,
+  "same_alltask_checkpoint_each_arm": true,
+  "native_math_or_thresholds_changed": false,
+  "E2E_speed_claim": false,
+  "name": "Same native V1 complete DT1203 Full500/teacher600/native600 controls",
+  "arms": {
+    "native": {
+      "training": "outputs/groundjev/training/onejev_unified600_native_v2",
+      "checkpoint": "outputs/groundjev/training/onejev_unified600_native_v2/ckpt-step600"
+    },
+    "before500": {
+      "checkpoint": "outputs/groundjev/training/onejev_own_history_v3_exact500_replay_stateful/ckpt-step500"
+    },
+    "teacher": {
+      "training": "outputs/groundjev/training/onejev_unified600_teacher_v2",
+      "checkpoint": "outputs/groundjev/training/onejev_unified600_teacher_v2/ckpt-step600"
+    }
+  },
+  "scopes": {
+    "mot_full1203": {
+      "manifest": "outputs/groundjev/pilot_data/dancetrack.json",
+      "candidates": "outputs/groundjev/compact/dancetrack0004_native300_v2_empty_roi_fixed/compact_distilled/frame_decisions.jsonl"
+    }
+  },
+  "upstream_GPU_owner": "outputs/groundjev/training/onejev_unified600_semantic_controls_v1",
+  "reuse_native_MM_validation": true,
+  "omit_feature_vectors": true,
+  "memory_checkpoint_format": "binary",
+  "memory_export_interval": 0,
+  "scope_limit": "All1203frames DT0004 legalvalidation, same13664nativeV1boxes/labels/scores/all27rejectedframes, onevideo/seed. Fullv3 realcausal crops/motion, native Choice/Noul/Score and adaptivegroups underunchanged context limit. Original nativeDLM replay, not live perception/E2E.",
+  "comparison": "All three Full arms use identical inference/storage policy, weights500 or600 additional updates, actualuncorrected own histories. Core600teacher/native same paired semantic exposure but GTteacher vs older native actors differences explicit. Existing Simple/Compact same V1 source remain references, not unique JEV or whole-dataset proof.",
+  "wait": "Register GPU4 short-control owner PID/startticks, internalwait untilverifiedowner exits successfully. Onlythen useGPU4, no overlap; GPU5 fullRMOT and6/7nativefull9 unchanged.",
+  "launch": "python3 tools/groundjev/run_unified600_controls.py --plan configs/groundjev/onejev_full1203_controls_v1.json --out outputs/groundjev/training/onejev_full1203_controls_v1",
+  "status": "registered before any full1203 Full500/600 inference",
+  "full_goal_complete": false
+}

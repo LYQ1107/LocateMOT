@@ -49,7 +49,9 @@ def main():
         'original_complete_wall_time_or_standalone_training_throughput_claim': False,
         'overlap_log_comparisons': overlaps,
         'bitwise_training_trajectory_replay_proven': bool(overlaps) and all(r['loss_absolute_difference'] == 0 for r in overlaps),
-        'numerical_replay_difference_root_cause': 'not established; full-state restore is exact, deterministic row-seeded render/sampler unchanged, subsequent CUDA trajectory equality is not asserted',
+        'numerical_replay_difference_root_cause': (
+            'not established; full-state restore is exact, deterministic row-seeded render/sampler unchanged, subsequent CUDA trajectory equality is not asserted'
+            if overlaps else 'no overlapping unsaved logged updates beyond the restored cursor; subsequent trajectory equality cannot be tested from these logs'),
         'native_MM_reload_and_official_tracking_performance': 'separate running matched controls, not proved by training completion',
         'seed_loss_kernel_or_acceptance_criterion_modified': False}
     (args.training/'resumed_completion_validation.json').write_text(json.dumps(result, indent=2)+'\n')

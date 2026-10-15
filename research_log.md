@@ -2294,3 +2294,9 @@ MOT400/600补充对照已验证完整1203帧/13664候选/27拒绝帧：HOTA13.31
 已验证aliasTAO40因果重放全部7343候选/原始输出/状态，113个已有正确birth-anchor事件下32/64/128覆盖53.097/60.177/74.336%，最大420活跃身份、正确最小rank最大395。说明128也非完整覆盖，不能用覆盖率当精度；原始TAO排名审计owner2000016/session86629仍按原单一阻塞命令运行。真实2帧高密度检查：第2帧前251live IDs，64/128各候选选项数量正确，默认32与显式32全预测/状态一致。后续完整DT1203与aliasTAO40、学习/固定cos两策略×64/128共8新单位，CPU owner2003663/session5404等待当前affinity全部完成并退出，复用并重新核验32参考，不新增feature/GPU。
 
 Full teacher600四个同策略短测均完成：MOT HOTA30.868->30.601，单RMO0->0，多RMO0->9.945，BaseTAO TETA11.981->52.181/AssocA18.399->28.308/ClsA0->100。四个before与四个after都保留原候选/帧并完整decode，RMO双方native Noul.5一致；TAO都输入1203类但4帧只有Base person/baby，不作Novel/广泛分类结论。实际native600训练/后续控制仍待完成，教师600恢复非bitwise限制未更改，无整体成功/模型提升/E2E声明。
+
+原paired600阻塞训练句柄68568已exit0，teacher/native均600更新/2400例，两个最新FP32/Adam/scheduler/RNG文件均9029141401bytes。两个600真实nativeMM重复加载均delta0/474entries；native从250完整state精确恢复，后350更新1400例耗8767.184s，尾段.159686例/s，不能使用累计2400除尾段耗时的.273748当全程速度。native无250之后旧日志重叠，无法证明bitwise重放；teacher475已有差异仍保留。GPU4原owner继续native600评测；GPU5原fullRMOTowner已完成训练交接，实际状态single800_FRESH_COMPACT_NATIVE800，禁止重复启动。后续pairedE2E仍等待其全部结束。
+
+补齐关键完整MOT证据：此前Full微调前后只有短MOT4，不能据此替代完整视频。新注册原V1 DT1203固定候选上Full native600/before500/teacher600三组、固定顺序，各用原生Choice/Noul/Score+V3真实crop/motion、动态分组不增token上限、全部27拒绝帧保留。GPU4新owner只在原短控制owner1870814成功并退出后执行，不与其重叠；GPU5完整RMOT继续。复用已验证600真实MM加载结果，三组统一binary-final存储/共享输入feature只读/逐帧决策trace，无新features或E2E速度声明。通用控制runner流式核对源候选，避免整源重复常驻内存；默认短测行为不变。
+
+原始TAO40排名审计session86629已exit0：全35228候选/原轨迹逐帧输出和状态精确恢复，最大2670live IDs，134已有正确anchor事件，32/64/128覆盖15.672/31.343/44.776%。不把覆盖反事实当精度，也不排除已终止/从未正确初始化身份这一诊断局限。Full DT1203新owner2024544/session88330已验证等待原GPU4短测owner1870814/start41851012，未提前占卡。

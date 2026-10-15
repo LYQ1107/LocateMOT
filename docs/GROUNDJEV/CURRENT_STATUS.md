@@ -92,10 +92,10 @@ The original500 replay and all16 short official controls are complete (see
 below). The earlier250BF16-only interruption remains preserved; it was not
 used to fabricate an exact optimizer resume.
 
-Paired shared Full600 is running from actual500 FP32 masters with an explicit
+Both paired shared Full600 arms completed from actual500 FP32 masters with an explicit
 new-stage optimizer reset and matched semantic exposure. The first owner and
 children subsequently disappeared without a captured traceback or exit code.
-Saved valid cursors are450teacher/250native. Detached recovery restores the
+The interrupted saved cursors were450teacher/250native; both final cursors are now600. Detached recovery restores the
 fullFP32/Adam/scheduler/RNG/cursor state exactly: both restore receipts report
 FP32 maximum difference0 and exact paired-index-shuffle-v1 protocol. Unsaved
 teacher475 log rows remain in the interrupted archive and are replayed from450.
@@ -1031,3 +1031,39 @@ counts valid and default32/explicit32 predictions/states exact. Owner2003663
 running8 additional full-video controls (learned and fixed-cosine64/128 on
 DT1203 and aliasTAO40); it revalidates existing matched CPU32 references.
 No additional GPUs/new feature source or speed claim. Full goal remains active.
+
+## Both paired Full600 checkpoints complete — latest 2026-10-15
+
+The original blocking training shell returned exit0. Both retained600 updates /
+2400 examples and real9,029,141,401byte FP32/Adam/scheduler/RNG state files.
+Both native multimodal repeated reload checks completed with probability delta0
+and474 BF16 weight entries; selected language weights changed versus500.
+Native arm restored250 exactly and completed350 updates/1400examples in
+8767.184s (.159686examples/s for resumed tail only). Raw cumulative2400
+examples divided by resumed-process time is not whole-stage throughput.
+There is no native unsaved-log overlap after250, so bitwise trajectory equality
+is untested; the separate teacher475 discrepancy remains recorded.
+
+Existing GPU4 control owner continues native600 same-policy scoring. The
+verified GPU5 handoff has occurred: full_rmot_shared600_v1 is now executing
+single800_FRESH_COMPACT_NATIVE800, not waiting for training. This first genuine
+full800 query run uses original live DLM and real ROI/memory/video path, and
+its subsequent matched controls consume the same bounded archive. Full/Compact
+paired E2E owner still waits for this entire registered RMOT owner to finish.
+No full800 accuracy or new E2E result is claimed before terminal validation.
+
+RawTAO40 rank audit has also completed (original blocking shell exit0):
+all35228 candidates and every original causal output/state reproduce exactly.
+Maximum2670live tracks,134existing-anchor events, frozen32/64/128 coverage
+15.672/31.343/44.776%. Context size alone cannot establish correct retrieval
+or accurate association; these remain frozen-trajectory diagnostics only.
+
+Registered fullMOT follow-up: configs/groundjev/onejev_full1203_controls_v1.json.
+Three actualFull native600/before500/teacher600 arms on the identical original
+V1 DT1203 source, genuine nativeChoice/Noul/Score and realV3crops/motion,
+unchanged context limit/adaptive grouping, all27 rejected frames retained.
+GPU4 owner2024544/session88330 waits current short-control owner1870814
+success+exit before allocation. Existing600 nativeMM validation is reused;
+all three new arms retain binary final state/complete per-frame decisions
+and share the existing source, with no newfeatures or detectorE2E claim.
+These full-video fine-tuning comparisons remain pending.

@@ -1,0 +1,19 @@
+{
+  "status": "WAITING_REGISTERED_GPU_OWNER_EXIT",
+  "owner_pid": 2024544,
+  "registered_training_children": {
+    "teacher": null,
+    "native": null
+  },
+  "physical_gpu": 4,
+  "completed": {},
+  "failed": {},
+  "same_checkpoint_all_three_tasks_each_arm": true,
+  "native_semantic_policy_identical_before_after": true,
+  "E2E_FPS_claim": false,
+  "training_or_scorers_or_thresholds_changed": false,
+  "upstream_GPU_owner": [
+    1870814,
+    "41851012"
+  ]
+}

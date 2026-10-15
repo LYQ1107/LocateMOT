@@ -1,5 +1,5 @@
 {
-  "status": "BOTH_PAIRED_UNIFIED600_FULL_MODELS_TRAINING",
+  "status": "PAIRED_UNIFIED600_TRAINING_COMPLETE_NATIVE_OFFICIAL_CONTROLS_PENDING",
   "owner_pid": 1859208,
   "probe_owner": null,
   "GPU5_TAO_resource_owner": null,
@@ -13,7 +13,54 @@
   "actual_prefix_rows_each": 2400,
   "exact_old_optimizer_trajectory_resume_claim": false,
   "new_stage_optimizer_scheduler_RNG": "explicit recipe reset from original500 FP32 masters",
-  "completed": {},
+  "completed": {
+    "teacher": {
+      "done": {
+        "event": "done",
+        "steps": 600,
+        "examples": 2400,
+        "elapsed_s": 3595.081282679981,
+        "examples_per_s": 0.6675787864832089
+      },
+      "latest_full_state": {
+        "format": "groundjev-full-fp32-adam-rng-v1",
+        "step": 600,
+        "seen": 2400,
+        "epoch": 0,
+        "next_step_in_epoch": 600,
+        "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_unified600_teacher_v2/latest_training_state.pt",
+        "bytes": 9029141401,
+        "FP32_masters_and_Adam_moments_saved": true,
+        "scheduler_and_all_RNG_saved": true,
+        "single_latest_training_state": true,
+        "feature_cache": false
+      },
+      "native_reload_and_three_task_official_controls": "pending, not claimed by training completion"
+    },
+    "native": {
+      "done": {
+        "event": "done",
+        "steps": 600,
+        "examples": 2400,
+        "elapsed_s": 8767.184433915012,
+        "examples_per_s": 0.2737480907457393
+      },
+      "latest_full_state": {
+        "format": "groundjev-full-fp32-adam-rng-v1",
+        "step": 600,
+        "seen": 2400,
+        "epoch": 0,
+        "next_step_in_epoch": 600,
+        "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_unified600_native_v2/latest_training_state.pt",
+        "bytes": 9029141401,
+        "FP32_masters_and_Adam_moments_saved": true,
+        "scheduler_and_all_RNG_saved": true,
+        "single_latest_training_state": true,
+        "feature_cache": false
+      },
+      "native_reload_and_three_task_official_controls": "pending, not claimed by training completion"
+    }
+  },
   "new_training_started": true,
   "resume_existing": true,
   "original500_matched_metrics": {
@@ -205,5 +252,9 @@
     "single_latest_training_state": true,
     "feature_cache": false
   },
-  "native_child_pid": 1859216
+  "native_child_pid": 1859216,
+  "return_codes": {
+    "teacher": 0,
+    "native": 0
+  }
 }

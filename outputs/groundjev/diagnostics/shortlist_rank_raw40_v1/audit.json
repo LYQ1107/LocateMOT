@@ -1,0 +1,312 @@
+{
+  "status": "EXACT_CAUSAL_REPLAY_FROZEN_TRAJECTORY_SHORTLIST_RANKS_VALIDATED",
+  "manifest": "outputs/groundjev/multitask_pilot_data/ovmot_tao_base_novel63_full.json",
+  "source": "outputs/groundjev/multitask_runs/tao_base_novel63_full_v2_expression_none/native_candidates/frame_candidates.jsonl",
+  "run": "outputs/groundjev/multitask_runs/tao_base_novel63_full_v3_empty_crop_cpu/shared_compact",
+  "counts": {
+    "maximum_live_tracks": 2670,
+    "frames_with_more_than32_live_tracks": 39,
+    "frames": 40,
+    "candidates": 35228,
+    "existing_identity_events": 134
+  },
+  "candidate_group_size": 16,
+  "actual_shortlist_size": 32,
+  "fixed_original_trajectory_coverage": {
+    "32": 0.15671641791044777,
+    "64": 0.31343283582089554,
+    "128": 0.44776119402985076
+  },
+  "all_live_id_upper_bound": 1.0,
+  "minimum_rank_of_any_correct_surviving_birth_anchor_histogram": {
+    "1": 3,
+    "2": 3,
+    "5": 1,
+    "7": 1,
+    "8": 1,
+    "9": 1,
+    "11": 1,
+    "12": 1,
+    "14": 1,
+    "17": 1,
+    "19": 1,
+    "21": 1,
+    "23": 1,
+    "26": 2,
+    "29": 1,
+    "30": 1,
+    "36": 1,
+    "39": 1,
+    "42": 1,
+    "44": 2,
+    "45": 3,
+    "46": 2,
+    "47": 1,
+    "48": 1,
+    "53": 1,
+    "55": 1,
+    "56": 1,
+    "57": 1,
+    "59": 1,
+    "61": 2,
+    "64": 2,
+    "65": 1,
+    "67": 1,
+    "70": 1,
+    "81": 1,
+    "83": 1,
+    "84": 2,
+    "85": 1,
+    "87": 1,
+    "89": 2,
+    "99": 1,
+    "101": 1,
+    "104": 1,
+    "112": 1,
+    "119": 1,
+    "122": 1,
+    "128": 1,
+    "132": 1,
+    "134": 1,
+    "136": 1,
+    "138": 1,
+    "141": 1,
+    "142": 1,
+    "143": 1,
+    "146": 1,
+    "147": 1,
+    "149": 1,
+    "153": 1,
+    "156": 1,
+    "159": 1,
+    "161": 1,
+    "162": 1,
+    "186": 1,
+    "191": 1,
+    "192": 1,
+    "194": 1,
+    "197": 2,
+    "199": 1,
+    "201": 1,
+    "202": 1,
+    "203": 1,
+    "205": 1,
+    "206": 1,
+    "209": 1,
+    "212": 1,
+    "215": 1,
+    "216": 2,
+    "226": 1,
+    "231": 1,
+    "237": 1,
+    "247": 1,
+    "257": 1,
+    "261": 1,
+    "294": 1,
+    "300": 1,
+    "305": 1,
+    "323": 1,
+    "327": 1,
+    "335": 1,
+    "340": 1,
+    "342": 1,
+    "353": 1,
+    "363": 1,
+    "388": 1,
+    "399": 1,
+    "402": 1,
+    "416": 1,
+    "430": 1,
+    "435": 1,
+    "438": 1,
+    "450": 1,
+    "455": 1,
+    "459": 1,
+    "469": 1,
+    "489": 1,
+    "547": 1,
+    "550": 1,
+    "557": 1,
+    "625": 1,
+    "722": 1,
+    "748": 1,
+    "932": 1,
+    "1028": 1,
+    "1077": 1,
+    "1130": 1,
+    "1244": 1,
+    "1312": 1,
+    "2089": 1,
+    "2176": 1
+  },
+  "first16_rank_gt32_examples": [
+    {
+      "frame": 30,
+      "candidate": 567,
+      "best_correct_anchor_rank": 47,
+      "live_tracks": 1037,
+      "correct_anchor_ids": [
+        523
+      ]
+    },
+    {
+      "frame": 30,
+      "candidate": 696,
+      "best_correct_anchor_rank": 194,
+      "live_tracks": 1037,
+      "correct_anchor_ids": [
+        866
+      ]
+    },
+    {
+      "frame": 59,
+      "candidate": 129,
+      "best_correct_anchor_rank": 416,
+      "live_tracks": 1600,
+      "correct_anchor_ids": [
+        27
+      ]
+    },
+    {
+      "frame": 59,
+      "candidate": 227,
+      "best_correct_anchor_rank": 1130,
+      "live_tracks": 1600,
+      "correct_anchor_ids": [
+        782
+      ]
+    },
+    {
+      "frame": 59,
+      "candidate": 797,
+      "best_correct_anchor_rank": 203,
+      "live_tracks": 1600,
+      "correct_anchor_ids": [
+        523,
+        1378
+      ]
+    },
+    {
+      "frame": 88,
+      "candidate": 26,
+      "best_correct_anchor_rank": 323,
+      "live_tracks": 2021,
+      "correct_anchor_ids": [
+        27,
+        1652
+      ]
+    },
+    {
+      "frame": 88,
+      "candidate": 261,
+      "best_correct_anchor_rank": 932,
+      "live_tracks": 2021,
+      "correct_anchor_ids": [
+        866,
+        1457
+      ]
+    },
+    {
+      "frame": 88,
+      "candidate": 363,
+      "best_correct_anchor_rank": 237,
+      "live_tracks": 2021,
+      "correct_anchor_ids": [
+        523,
+        1378,
+        2019
+      ]
+    },
+    {
+      "frame": 117,
+      "candidate": 127,
+      "best_correct_anchor_rank": 56,
+      "live_tracks": 2365,
+      "correct_anchor_ids": [
+        782,
+        1713
+      ]
+    },
+    {
+      "frame": 117,
+      "candidate": 142,
+      "best_correct_anchor_rank": 42,
+      "live_tracks": 2365,
+      "correct_anchor_ids": [
+        866,
+        1457,
+        2117
+      ]
+    },
+    {
+      "frame": 117,
+      "candidate": 220,
+      "best_correct_anchor_rank": 305,
+      "live_tracks": 2365,
+      "correct_anchor_ids": [
+        523,
+        1378,
+        2019
+      ]
+    },
+    {
+      "frame": 117,
+      "candidate": 611,
+      "best_correct_anchor_rank": 402,
+      "live_tracks": 2365,
+      "correct_anchor_ids": [
+        27,
+        1652,
+        2033
+      ]
+    },
+    {
+      "frame": 146,
+      "candidate": 26,
+      "best_correct_anchor_rank": 231,
+      "live_tracks": 2431,
+      "correct_anchor_ids": [
+        27,
+        1652,
+        2033
+      ]
+    },
+    {
+      "frame": 146,
+      "candidate": 40,
+      "best_correct_anchor_rank": 209,
+      "live_tracks": 2431,
+      "correct_anchor_ids": [
+        1457,
+        2117
+      ]
+    },
+    {
+      "frame": 146,
+      "candidate": 227,
+      "best_correct_anchor_rank": 459,
+      "live_tracks": 2431,
+      "correct_anchor_ids": [
+        523,
+        1378,
+        2019
+      ]
+    },
+    {
+      "frame": 175,
+      "candidate": 346,
+      "best_correct_anchor_rank": 46,
+      "live_tracks": 2431,
+      "correct_anchor_ids": [
+        2019,
+        2964
+      ]
+    }
+  ],
+  "every_actual_outputs_and_state_replayed_exactly": true,
+  "GT_input_to_tracker_or_repaired_history": false,
+  "GT_ownership_read_from_completed_posthoc_diagnostic_only": true,
+  "counterfactual_tracking_accuracy_or_new_model_inference": false,
+  "limit": "Coverage only under the original causal trajectory. Larger context changes model softmax/context and subsequent histories; requires actual new full-video runs. Excludes already terminated or never correctly born identities.",
+  "new_feature_cache_files_or_GPUs": false
+}
