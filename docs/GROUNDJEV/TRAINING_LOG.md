@@ -399,3 +399,29 @@ boundary, balance data and run causal same-protocol three-task comparisons.
 Code: `locatemot/groundjev/assigned_identity_update.py`,
 `tools/groundjev/prepare_assigned_identity_update_component.py`.
 Evidence: `outputs/groundjev/training_data/assigned_identity_update_component_v1/{validated_component_summary,validation,files_manifest}.json`.
+
+
+## Opt-in assigned-ID write runtime and actual CPU checks — 2026-10-16
+
+Added `AssignedIdentityUpdateDecision`, tracker callback after global matching
+and before any memory mutation, category-wrapper forwarding and explicit
+`run_video.py --assigned-identity-updates` (Full v3/gated; defaultOFF). Same new
+question builder as613-row component; all existing assignments including unknown
+enter requests. Native Noul second pass controls only existing long-memory writes
+at original.5; original Q3 retained in logs. Association/lifecycle/NEW/current
+box/recent-memory policies unchanged. Resume checks the recorded update protocol.
+Current training and four-scope workers do not enable this flag.
+
+Session64482exit0: parent tracker blob9f092b04 versus newdefault exactly reproduces
+three complete savedFull1203trajectories,13,664same native candidates/all27rejected
+frames each, full per-frame outputs/state, parent/current final memory. Native
+features and real images reused; saved decisions, not new model predictions.
+The fit48functional branch tests use explicit scripted0/1answers:96single-frame
+branches,1,316questions,150pre-write calls,1,316canonical training/runtime
+state/question matches,150alias-history real-pixel comparisons. All658existing
+assignments per answer pass include45unknown/unmatched. Category forwarding and
+scripted hold/update effects pass. These are not continuous causal tracking,
+native second-pass model predictions, trained improvement or new E2E measurements.
+Actual matching SFT/native-MM reload/fresh three-task rollout remain pending.
+
+Evidence: `outputs/groundjev/validation/assigned_identity_runtime_v1/{owner_state,validated_summary}.json`.

@@ -1,5 +1,44 @@
 # GroundJEV-MOT current evidence — 2026-10-16
 
+## Opt-in post-assignment native write path — 2026-10-16
+
+Implemented `AssignedIdentityUpdateDecision` and explicit
+`run_video.py --assigned-identity-updates` (Full v3/gated only, default OFF).
+The original association/lifecycle pass and global matching run first. Before
+any current-frame track mutation, the new path asks native Noul questions using
+the SAME final-ID builder as the prepared613-row component. All assigned existing
+IDs enter the request; there is no runtime GT filtering. These answers govern
+existing long-memory writes at the unchanged.5threshold. Original observation
+Q3 probabilities remain logged, and NEW initialization, boxes/recent memory,
+association, lifecycle, RMOT membership and category policies remain as before.
+The category wrapper forwards the callback for this explicit backend. Resuming
+an existing run requires its recorded observation/final-ID protocol to match.
+Current registered workers do not enable the new flag.
+
+CPU execution validation completed(session64482exit0): the parent tracker blob
+`9f092b04` and new default path reproduce all three saved complete Full MOT
+trajectories exactly:1,203frames/13,664native candidates/all27rejected frames per
+arm, identical outputs/per-frame state, and parent/current final memory equality.
+Native original features and actual images are used; no new model forward.
+Visible-track lifecycle probabilities absent from traces are not invented as
+original full-memory truth. This is a frozen-decision compatibility check.
+
+On the native600fit48original prefixes,96single-frame branches with explicitly
+scripted gate answers0/1 exercise the new path:1,316questions,150pre-write calls,
+all658existing assignments per gate value including all45unknown/unmatched.
+All1,316training/runtime states/questions match after the declared identity
+alias mapping;150historical crop-sheet pixel comparisons pass with saved aliases.
+Long memory and last-reliable timestamps hold/update as scripted, original
+association outputs remain identical, and category callback forwarding passes.
+This is execution/schema/pixel evidence, NOT native second-pass model inference,
+a causal continuous rollout, trained gain or a new tracking score.
+
+The new questions still require matching SFT, balanced known positive/negative
+support, fresh native-MM reload and controlled continuous three-task evaluation.
+No new GPU job or feature archive was launched. All new small receipts fit the
+already registered16MiBreserve; conservative upper26,443,764,493<25GiB. Evidence:
+`outputs/groundjev/validation/assigned_identity_runtime_v1/{owner_state,validated_summary}.json`.
+
 ## Final-assigned-ID update component — 2026-10-16
 
 Implemented a separate question builder, not enabled in the current tracker:
@@ -8,8 +47,8 @@ causal visual state and adds all actual existing-ID assignments from final
 global matching, including unknown/unmatched assignments. Each new Noul question
 explicitly asks whether this candidate should enter that specific identity's
 long-term memory. No GT eligibility controls which assignments enter the input.
-The builder is intended for a future post-global-matching, pre-write phase;
-that runtime and its causal tracking evaluation are still required.
+The builder is now shared with the opt-in post-global-matching/pre-write path
+above; matching SFT and fresh causal tracking evaluation are still required.
 
 Prepared the component from the already-completed native600actor's48legal-fit
 frames/1,184native candidates. All candidates are registered:82NEW,444without

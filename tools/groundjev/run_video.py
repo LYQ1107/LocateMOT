@@ -86,6 +86,8 @@ def main():
     parser.add_argument('--adaptive-context-groups',action='store_true',help='split native preflight-rejected groups, retaining all candidate rows and identity options')
     parser.add_argument('--category-policy', choices=['native_label', 'native_hierarchical'], default='native_label')
     parser.add_argument('--native-rmot-membership', action='store_true', help='Full: explicit native OneJev Noul expression decision, with fixed .5 output threshold')
+    parser.add_argument('--assigned-identity-updates', action='store_true',
+                        help='experimental Full v3 second native Noul pass after global matching and before memory write; needs matching question training')
     parser.add_argument('--expression')
     parser.add_argument('--vocabulary', nargs='+')
     parser.add_argument('--out', type=Path, required=True)
@@ -120,6 +122,8 @@ def main():
         parser.error('requested task differs from the registered video scope')
     if args.native_rmot_membership and (args.backend != 'full' or args.task != 'rmot'):
         parser.error('native RMOT membership requires the Full OneJev backend and RMOT task')
+    if args.assigned_identity_updates and (args.backend != 'full' or args.evidence_format != 'v3_crop_motion' or args.memory_policy != 'gated'):
+        parser.error('assigned-identity updates require Full v3_crop_motion and gated memory')
     if args.backend!='compact' and (args.compact_association_policy!='learned' or args.compact_auxiliary_policy!='learned' or args.compact_shortlist!=32 or args.compact_shortlist_policy!='geometry'):
         parser.error('Compact policy controls require the Compact backend')
     if args.compact_shortlist_policy=='hybrid16_16' and args.compact_shortlist!=32:
@@ -154,8 +158,13 @@ def main():
             if not decision.model.semantic:
                 parser.error('matched semantic affinity control requires the trained shared semantic checkpoint')
             decision=CompactAffinityControl(decision,args.compact_association_policy,args.compact_auxiliary_policy)
-    else: decision=OneJevDecision(args.checkpoint,evidence_format=args.evidence_format,adaptive_context=args.adaptive_context_groups,
-                                rmot_membership=args.native_rmot_membership)
+    else:
+        decision_type = OneJevDecision
+        if args.assigned_identity_updates:
+            from locatemot.groundjev.assigned_identity_decision import AssignedIdentityUpdateDecision
+            decision_type = AssignedIdentityUpdateDecision
+        decision=decision_type(args.checkpoint,evidence_format=args.evidence_format,adaptive_context=args.adaptive_context_groups,
+                               rmot_membership=args.native_rmot_membership)
     if args.category_policy == 'native_hierarchical':
         from locatemot.groundjev.category import NativeCategoryHead, CategorizedDecision
         engine = decision.engine if args.backend == 'full' else OneJevDecision(args.checkpoint).engine
@@ -193,6 +202,8 @@ def main():
         feature_source_path=None
         if prior_result_path.exists():
             prior_result=json.loads(prior_result_path.read_text())
+            if bool(prior_result.get('assigned_identity_updates', False)) != args.assigned_identity_updates:
+                raise ValueError('Resume source uses a different observation/final-ID memory update protocol')
             if prior_result.get('replay_feature_vectors_omitted_from_log'):
                 feature_source_path=Path(prior_result['shared_input_features_source'])
         elif args.omit_replay_feature_vectors:
@@ -376,6 +387,10 @@ def main():
     result.update(memory_checkpoint_format=args.memory_checkpoint_format,memory_export_interval=args.memory_export_interval,
                   causal_resume_source='complete frame_decisions plus retained exact native input source',
                   final_identity_memory_path=final_memory_path,final_full_memory_export_in_pipeline_timer=True)
+    if args.assigned_identity_updates:
+        from locatemot.groundjev.assigned_identity_update import PROTOCOL
+        result.update(assigned_identity_updates=True, assigned_identity_update_protocol=PROTOCOL,
+                      assigned_identity_update_training_and_accuracy='requires separately validated same-question SFT and causal evaluation')
     result['peak_decision_process_rss_bytes'] = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss*1024
     if args.backend=='compact':
         result['trainable_compact_core_parameters'] = sum(p.numel() for p in decision.model.parameters())

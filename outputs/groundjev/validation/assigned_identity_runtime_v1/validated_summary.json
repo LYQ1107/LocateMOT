@@ -1,0 +1,45 @@
+{
+  "status": "DEFAULT_THREE_ARM_EXACT_AND_REAL_FIT_CONDITIONAL_BOUNDARY_CHECKS_PASS",
+  "default_three_arm_frozen_decision_replay": {
+    "native_mot_full1203": {
+      "frames": 1203,
+      "candidates": 13664,
+      "rejected_frames": 27
+    },
+    "before500_mot_full1203": {
+      "frames": 1203,
+      "candidates": 13664,
+      "rejected_frames": 27
+    },
+    "teacher_mot_full1203": {
+      "frames": 1203,
+      "candidates": 13664,
+      "rejected_frames": 27
+    }
+  },
+  "default_parent_and_current_outputs_events_final_memory_exact": true,
+  "default_outputs_and_per_frame_state_match_saved_original_full_trajectories": true,
+  "parent_tracker_blob": "9f092b04d6743c99495b9179f8f5ef25718bcb43",
+  "conditional_fit_frames": 48,
+  "single_frame_branches": 96,
+  "scripted_gate_values": [
+    0,
+    1
+  ],
+  "scripted_second_pass_questions": 1316,
+  "actual_pre_write_engine_boundary_checks": 150,
+  "training_runtime_canonical_state_and_question_checks": 1316,
+  "history_crop_pixels_with_saved_training_aliases_checks": 150,
+  "unknown_existing_assignments_in_each_gate_value_pass": 45,
+  "unknown_existing_questions_across_both_gate_values": 90,
+  "category_wrapper_forwards_new_callback": true,
+  "default_entry_flag_enabled": false,
+  "native_model_second_pass_executed": false,
+  "new_GPU_or_optimizer_loaded": false,
+  "conditional_question_trained_checkpoint_or_continuous_rollout_validated": false,
+  "new_tracking_accuracy_or_E2E_speed_established": false,
+  "current_registered_workers_enable_this_flag": false,
+  "combined_registered_upper_bytes": 26443764493,
+  "full_goal_complete": false,
+  "limitations": "Frozen first-pass model decisions; second-pass answers are explicitly scripted 0/1 single-frame branches from the original prefix. No fresh model prediction, causal multi-frame conditional-policy rollout, model accuracy, E2E cost or trained benefit established. Parent/current final memory matches each other; visible-track lifecycle probabilities not saved in traces are not reconstructed as original full-memory truth."
+}

@@ -1,4 +1,4 @@
-"""Explicit post-assignment questions; not enabled in the current tracker."""
+"""Explicit post-assignment questions shared by training and opt-in runtime."""
 from copy import deepcopy
 
 PROTOCOL = 'final-assigned-existing-identity-memory-update-v1'

@@ -90,6 +90,8 @@ class CategorizedDecision:
     """Compose category and identity decisions without changing association."""
     def __init__(self, decision, category_head):
         self.decision, self.category_head = decision, category_head
+        if hasattr(decision, 'decide_assigned_updates'):
+            self.decide_assigned_updates = decision.decide_assigned_updates
 
     def decide(self, image, candidates, tracks, timestamp, specification):
         decisions, lifecycle, metadata = self.decision.decide(image, candidates, tracks, timestamp, specification)

@@ -66,6 +66,14 @@ class OnlineTracker:
                 costs[i, m+width*i+j] = -math.log(max(p, 1e-12)) if is_jev else -p
         rows, columns = linear_sum_assignment(costs) if n else ([], [])
         assigned = dict(zip(rows, columns))
+        assigned_update = getattr(self.decision, 'decide_assigned_updates', None)
+        if assigned_update is not None:
+            selected_existing = {i: tracks[column].track_id for i, column in assigned.items() if column < m}
+            updates, report = assigned_update(selected_existing)
+            for i, probability in updates.items():
+                decisions[i] = dict(decisions[i], observation_update_probability=decisions[i]['update_probability'],
+                                    update_probability=probability, memory_update_probability_source=report['protocol'])
+            meta['assigned_identity_update'] = report
         seen, outputs, events = set(), [], []
         for i, candidate in enumerate(candidates):
             column = assigned[i]

@@ -1,0 +1,33 @@
+{
+  "status": "DEFAULT_THREE_ARM_EXACT_AND_REAL_FIT_CONDITIONAL_BOUNDARY_CHECKS_PASS",
+  "new_GPU_or_native_model_loaded": false,
+  "new_tracking_benchmark": false,
+  "default_three_arm_frozen_decision_replay": {
+    "native_mot_full1203": {
+      "frames": 1203,
+      "candidates": 13664,
+      "rejected_frames": 27
+    },
+    "before500_mot_full1203": {
+      "frames": 1203,
+      "candidates": 13664,
+      "rejected_frames": 27
+    },
+    "teacher_mot_full1203": {
+      "frames": 1203,
+      "candidates": 13664,
+      "rejected_frames": 27
+    }
+  },
+  "scripted_conditional_real_fit_execution": {
+    "frames": 48,
+    "single_frame_branches": 96,
+    "scripted_second_pass_questions": 1316,
+    "pre_write_engine_calls_checked": 150,
+    "unknown_existing_assignments_asked_per_branch": 90,
+    "training_runtime_canonical_state_question_matches": 1316,
+    "real_alias_history_crop_pixel_comparisons": 150
+  },
+  "parent_tracker_blob": "9f092b04d6743c99495b9179f8f5ef25718bcb43",
+  "limitations": "Frozen first-pass model decisions; second-pass answers are explicitly scripted 0/1 single-frame branches from the original prefix. No fresh model prediction, causal multi-frame conditional-policy rollout, model accuracy, E2E cost or trained benefit established. Parent/current final memory matches each other; visible-track lifecycle probabilities not saved in traces are not reconstructed as original full-memory truth."
+}
