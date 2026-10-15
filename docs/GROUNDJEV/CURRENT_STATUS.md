@@ -955,3 +955,36 @@ RSS, 1146511 core parameters and the frozen 248320x1024 BF16 lookup table
 native inference or an end-to-end speed result.
 Plan: configs/groundjev/paired_tracking_e2e_v1.json.
 Owner: e2e/full_compact_rmot800_v1/owner_state.json. Measurements are pending.
+
+## Matched MOT exposure and frozen affinity controls — 2026-10-15
+
+The complementary MOT400/600 controls both completed and validated all1203
+frames,13664 native candidates and27 rejected frames. Their actual example-ID
+and logged-loss prefixes equal the original MOT1200 exactly; same shared
+MOT300+seed0 semantic initialization and constant AdamW/loss.
+
+| MOT-only update count | HOTA % | IDF1 % | IDSW | FN |
+|---|---:|---:|---:|---:|
+|400|13.317|17.757|174|3483|
+|600|13.979|13.411|312|2566|
+
+At600 MOT updates, M+RMOT HOTA6.760 and M+OV21.229; at400 MOT updates,
+all-three19.312. These complement the fixed-total1200 comparison; total
+updates differ, so they do not isolate gradient interference. One video/seed,
+no model promotion or full-dataset claim. Receipt:
+outputs/groundjev/compact/mot_exposure400_600_cpu_v1/validation_and_summary.json.
+
+Registered next: configs/groundjev/fixed_affinity_controls_v1.json. Same
+frozen shared semantic checkpoint, same native visual/text inputs and shortlist,
+five learned/fixed association and auxiliary policy combinations. Complete
+DT1203, both short RMO scopes and raw/alias TAO40, CPU only, no new features.
+This is an inference intervention, not a retrained optimal conventional baseline
+or unique JEV proof; actual confidence/history changes with each policy.
+
+Actual4-frame preservation regression passes: semantic/auxiliary functions on
+the same state unchanged, JSON versus lossless binary full states and next-frame
+predictions exact. New controls retain per-frame decisions and final full binary
+state; no speed comparison to older JSON/every-frame exports. Defaults remain
+JSON/every-frame. Final full state export is now included in the pipeline timer;
+older timing receipts excluded that duplicate final export and remain historical.
+The queued fresh paired E2E runs will use the corrected boundary for both arms.

@@ -74,6 +74,8 @@ def main():
     parser.add_argument('--checkpoint', type=Path, default=ROOT / 'models/OneJev-0.8B')
     parser.add_argument('--backend', choices=['simple', 'simple_native', 'simple_temporal', 'full', 'compact'], default='full')
     parser.add_argument('--compact-device',choices=['cpu','cuda:0'],default='cuda:0',help='explicit device for trained Compact replay; report actual device, no detector E2E claim')
+    parser.add_argument('--compact-association-policy',choices=['learned','fixed_iou','fixed_iou_cosine'],default='learned')
+    parser.add_argument('--compact-auxiliary-policy',choices=['learned','fixed'],default='learned')
     parser.add_argument('--evidence-format',choices=['v1','v2_crop_motion','v3_crop_motion','v4_native_features','v5_native_features_csv','v6_native_compact_history'],default='v1')
     parser.add_argument('--native-feature-url',help='isolated official DLM visual encoder RPC; no substitute image features')
     parser.add_argument('--adaptive-context-groups',action='store_true',help='split native preflight-rejected groups, retaining all candidate rows and identity options')
@@ -100,6 +102,9 @@ def main():
     parser.add_argument('--omit-replay-feature-vectors',action='store_true',help='retain shared source reference and all boxes/decisions; avoid duplicating input feature arrays')
     parser.add_argument('--record-native-candidates', action='store_true', help='archive actual current native candidates once for subsequent matched controls')
     parser.add_argument('--native-candidate-byte-budget', type=int, default=2*2**30)
+    parser.add_argument('--memory-checkpoint-format',choices=['json','binary'],default='json')
+    parser.add_argument('--memory-export-interval',type=int,default=1,
+                        help='0 retains per-frame decisions for causal replay and writes only final full memory; default exports every frame')
     args = parser.parse_args()
     if args.out.exists() and any(args.out.iterdir()):
         parser.error('choose a fresh output directory to preserve existing experiment results')
@@ -108,6 +113,8 @@ def main():
         parser.error('requested task differs from the registered video scope')
     if args.native_rmot_membership and (args.backend != 'full' or args.task != 'rmot'):
         parser.error('native RMOT membership requires the Full OneJev backend and RMOT task')
+    if args.backend!='compact' and (args.compact_association_policy!='learned' or args.compact_auxiliary_policy!='learned'):
+        parser.error('Compact policy controls require the Compact backend')
     vocabulary = args.vocabulary or manifest['vocabulary']
     args.expression = args.expression or manifest.get('expression')
     if args.task == 'rmot' and not args.expression:
@@ -133,6 +140,11 @@ def main():
             torch.set_num_threads(4)
         from locatemot.groundjev.compact import CompactDecision
         decision=CompactDecision(args.checkpoint,device=args.compact_device,memory_feature_view=args.memory_feature_view)
+        if args.compact_association_policy!='learned' or args.compact_auxiliary_policy!='learned':
+            from locatemot.groundjev.compact import CompactAffinityControl
+            if not decision.model.semantic:
+                parser.error('matched semantic affinity control requires the trained shared semantic checkpoint')
+            decision=CompactAffinityControl(decision,args.compact_association_policy,args.compact_auxiliary_policy)
     else: decision=OneJevDecision(args.checkpoint,evidence_format=args.evidence_format,adaptive_context=args.adaptive_context_groups,
                                 rmot_membership=args.native_rmot_membership)
     if args.category_policy == 'native_hierarchical':
@@ -140,6 +152,18 @@ def main():
         engine = decision.engine if args.backend == 'full' else OneJevDecision(args.checkpoint).engine
         decision = CategorizedDecision(decision, NativeCategoryHead(engine))
     tracker = OnlineTracker(decision,lost_seconds=args.lost_seconds,memory_policy=args.memory_policy,ema_alpha=args.ema_alpha)
+    def write_memory(stem):
+        snapshot=tracker.state_dict()
+        suffix='json' if args.memory_checkpoint_format=='json' else 'pt'
+        target=args.out/(stem+'.'+suffix)
+        temporary=target.with_suffix('.tmp')
+        if args.memory_checkpoint_format=='json':
+            temporary.write_text(json.dumps(snapshot)+'\n')
+        else:
+            import torch
+            torch.save(snapshot,temporary)
+        temporary.replace(target)
+        return str(target)
     feature_client=None
     if args.native_feature_url:
         from locatemot.groundjev.feature_client import NativeFeatureClient
@@ -175,7 +199,7 @@ def main():
         if len(resumed) > len(frames):
             raise ValueError('Resume prefix is longer than the requested video')
         restore_completed_prefix(tracker, resumed, frames, fps, specification, timestamps)
-        (args.out/'resume_memory.json').write_text(json.dumps(tracker.state_dict())+'\n')
+        write_memory('resume_memory')
         print(json.dumps({'restored_completed_frames': len(resumed), 'source': str(args.resume_from),
                           'identical_native_outputs_and_state': True, 'gt_used': False}), flush=True)
     video_writer = None
@@ -246,10 +270,8 @@ def main():
                                      'outputs': outputs, 'state': state, 'perception': perception})+'\n')
                 log.flush()
                 predictions.flush()
-                if index >= len(resumed):
-                    temporary = args.out/'latest_memory.tmp'
-                    temporary.write_text(json.dumps(tracker.state_dict())+'\n')
-                    temporary.replace(args.out/'latest_identity_memory.json')
+                if index >= len(resumed) and args.memory_export_interval and (index+1)%args.memory_export_interval==0:
+                    write_memory('latest_identity_memory')
                 canvas = image.copy()
                 draw = ImageDraw.Draw(canvas)
                 for row in outputs:
@@ -290,12 +312,14 @@ def main():
             except subprocess.TimeoutExpired:
                 video_writer.kill()
                 video_writer.wait()
+    final_memory_path=write_memory('final_identity_memory')
     complete_video_wall_seconds = time.perf_counter()-video_start
     result = {'status': 'VIDEO_INFERENCE_COMPLETE_WITH_REJECTED_PERCEPTION' if rejected_frames else 'VIDEO_INFERENCE_COMPLETE',
               'invocation_utc':invocation_utc,'invocation_git_commit':invocation_git_commit,
               'task': args.task, 'backend': args.backend,
               'evidence_format':args.evidence_format,
               'native_feature_url':args.native_feature_url,
+              'compact_association_policy':args.compact_association_policy,'compact_auxiliary_policy':args.compact_auxiliary_policy,
               'adaptive_context_groups':args.adaptive_context_groups,
               'category_policy':args.category_policy,
               'scope': 'short_functional_check' if args.limit else manifest['scope'],
@@ -331,6 +355,9 @@ def main():
               'native_candidate_archive':str(args.out/'frame_candidates.jsonl') if args.record_native_candidates else None,
               'native_candidate_archive_bytes':(args.out/'frame_candidates.jsonl').stat().st_size if args.record_native_candidates else 0,
               'native_candidate_archive_budget_bytes':args.native_candidate_byte_budget if args.record_native_candidates else None}
+    result.update(memory_checkpoint_format=args.memory_checkpoint_format,memory_export_interval=args.memory_export_interval,
+                  causal_resume_source='complete frame_decisions plus retained exact native input source',
+                  final_identity_memory_path=final_memory_path,final_full_memory_export_in_pipeline_timer=True)
     result['peak_decision_process_rss_bytes'] = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss*1024
     if args.backend=='compact':
         result['trainable_compact_core_parameters'] = sum(p.numel() for p in decision.model.parameters())
@@ -345,7 +372,6 @@ def main():
         result['decision_device']=args.compact_device if args.backend=='compact' else 'cuda:0'
         result['peak_decision_gpu_memory_bytes'] = 0 if cpu_compact else torch.cuda.max_memory_allocated()
     (args.out/'result.json').write_text(json.dumps(result, indent=2)+'\n')
-    (args.out/'final_identity_memory.json').write_text(json.dumps(tracker.state_dict())+'\n')
     print(json.dumps(result), flush=True)
 
 

@@ -1,5 +1,5 @@
 {
-  "status": "mot_ovmot_tao_raw_full40_INFERENCE",
+  "status": "all_three_tao_raw_full40_INFERENCE",
   "owner_pid": 1927135,
   "device": "cpu",
   "additional_GPUs": 0,
@@ -827,6 +827,51 @@
       "all_exact_candidate_geometry_order_and_frames_retained": true,
       "correct_option_coverage": 0.21739130434782608,
       "existing_association_accuracy": 0.13043478260869565
+    },
+    "mot_ovmot_tao_raw_full40": {
+      "run": "outputs/groundjev/compact/task_subsets1200_cpu_v2_feature_sources/mot_ovmot_tao_raw_full40",
+      "decoded_frames": 40,
+      "metrics": {
+        "TETA": 12.85,
+        "LocA": 12.514,
+        "AssocA": 6.3423,
+        "ClsA": 19.695,
+        "LocRe": 83.479,
+        "LocPr": 12.99,
+        "AssocRe": 6.4891,
+        "AssocPr": 67.958,
+        "ClsRe": 33.333,
+        "ClsPr": 19.695
+      },
+      "base_novel": {
+        "base": {
+          "TETA": 14.3427,
+          "LocA": 6.193149999999999,
+          "AssocA": 7.293049999999999,
+          "ClsA": 29.542,
+          "LocRe": 85.6565,
+          "LocPr": 6.2753499999999995,
+          "AssocRe": 7.4472,
+          "AssocPr": 68.05199999999999,
+          "ClsRe": 50.0,
+          "ClsPr": 29.542
+        },
+        "novel": {
+          "TETA": 9.8659,
+          "LocA": 25.157,
+          "AssocA": 4.4409,
+          "ClsA": 0.0,
+          "LocRe": 79.125,
+          "LocPr": 26.42,
+          "AssocRe": 4.5727,
+          "AssocPr": 67.77,
+          "ClsRe": 0.0,
+          "ClsPr": 0.0
+        }
+      },
+      "all_exact_candidate_geometry_order_and_frames_retained": true,
+      "correct_option_coverage": 0.2125984251968504,
+      "existing_association_accuracy": 0.07086614173228346
     }
   },
   "failed": {},

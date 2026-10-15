@@ -1,0 +1,87 @@
+{
+  "status": "MOT400_600_EXPOSURE_MATCHED_FULL1203_CONTROLS_COMPLETE",
+  "scope": "all1203DT0004frames,13664nativecandidates,27originalrejections,one seed",
+  "same_shared_MOT300_initialization_and_seed0_heads": true,
+  "same_actual_per_task_example_and_logged_loss_prefixes": true,
+  "matched_total_1200_arms": {
+    "mot_mot_full1203": {
+      "HOTA": 0.1963864227047442,
+      "DetA": 0.4457675377808985,
+      "AssA": 0.08673625202379324,
+      "IDF1": 0.20786252354048965,
+      "IDSW": 348,
+      "FP": 1089,
+      "FN": 1765
+    },
+    "mot_rmot_mot_full1203": {
+      "HOTA": 0.06759687179809916,
+      "DetA": 0.13731988318610452,
+      "AssA": 0.03340464925988852,
+      "IDF1": 0.09884255006430277,
+      "IDSW": 80,
+      "FP": 136,
+      "FN": 3865
+    },
+    "mot_ovmot_mot_full1203": {
+      "HOTA": 0.21228453169330472,
+      "DetA": 0.453943791256767,
+      "AssA": 0.09937026572775054,
+      "IDF1": 0.2008092594335184,
+      "IDSW": 414,
+      "FP": 2461,
+      "FN": 1006
+    },
+    "all_three_mot_full1203": {
+      "HOTA": 0.193119281499306,
+      "DetA": 0.3578798916533271,
+      "AssA": 0.10432798100057517,
+      "IDF1": 0.1782674908178805,
+      "IDSW": 422,
+      "FP": 3363,
+      "FN": 1372
+    }
+  },
+  "matched_MOT_exposure_controls": {
+    "MOT400": {
+      "training": "outputs/groundjev/compact/mot_exposure400_600_cpu_v1/MOT400_training",
+      "steps": 400,
+      "parameters": 1146511,
+      "all_actual_MOT_example_prefixes_exact": true,
+      "logged_loss_prefix_max_difference": 0.0,
+      "decoded_frames": 1203,
+      "run": "outputs/groundjev/compact/mot_exposure400_600_cpu_v1/MOT400_full1203",
+      "all_native_candidates_geometry_order_retained": true,
+      "metrics": {
+        "HOTA": 0.1331725552088343,
+        "DetA": 0.19864958673802888,
+        "AssA": 0.09007124879960951,
+        "IDF1": 0.17757158854583266,
+        "IDSW": 174,
+        "FP": 562,
+        "FN": 3483
+      }
+    },
+    "MOT600": {
+      "training": "outputs/groundjev/compact/mot_exposure400_600_cpu_v1/MOT600_training",
+      "steps": 600,
+      "parameters": 1146511,
+      "all_actual_MOT_example_prefixes_exact": true,
+      "logged_loss_prefix_max_difference": 0.0,
+      "decoded_frames": 1203,
+      "run": "outputs/groundjev/compact/mot_exposure400_600_cpu_v1/MOT600_full1203",
+      "all_native_candidates_geometry_order_retained": true,
+      "metrics": {
+        "HOTA": 0.1397879189462265,
+        "DetA": 0.30552098123770316,
+        "AssA": 0.06432377115289512,
+        "IDF1": 0.13410718695974314,
+        "IDSW": 312,
+        "FP": 1492,
+        "FN": 2566
+      }
+    }
+  },
+  "comparison_limit": "MOT400/600 match per-task MOT updates of triple/pair arms but total update counts differ. Complementary control, not isolated gradient interference or full-dataset success. No accuracy selection or model promotion.",
+  "new_features_GPUs_or_E2E_claim": false,
+  "full_goal_complete": false
+}

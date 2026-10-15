@@ -1,5 +1,5 @@
 {
-  "status": "MOT600_INFERENCE",
+  "status": "MOT400_600_EXPOSURE_MATCHED_FULL1203_CONTROLS_COMPLETE",
   "owner_pid": 1957205,
   "device": "cpu",
   "additional_GPUs": 0,
@@ -22,6 +22,25 @@
         "IDSW": 174,
         "FP": 562,
         "FN": 3483
+      }
+    },
+    "MOT600": {
+      "training": "outputs/groundjev/compact/mot_exposure400_600_cpu_v1/MOT600_training",
+      "steps": 600,
+      "parameters": 1146511,
+      "all_actual_MOT_example_prefixes_exact": true,
+      "logged_loss_prefix_max_difference": 0.0,
+      "decoded_frames": 1203,
+      "run": "outputs/groundjev/compact/mot_exposure400_600_cpu_v1/MOT600_full1203",
+      "all_native_candidates_geometry_order_retained": true,
+      "metrics": {
+        "HOTA": 0.1397879189462265,
+        "DetA": 0.30552098123770316,
+        "AssA": 0.06432377115289512,
+        "IDF1": 0.13410718695974314,
+        "IDSW": 312,
+        "FP": 1492,
+        "FN": 2566
       }
     }
   },

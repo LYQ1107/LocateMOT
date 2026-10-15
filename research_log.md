@@ -2280,3 +2280,11 @@ TasksubsetDTfull1203fourarms nowcomplete HOTA/IDF1/IDSW/FN: MOT19.6386/20.7863/3
 PairedE2E canonicalcontract onactual4nativeframes/13ROIobjects passes acrossfeatures+geometrylogs; resourceprobeactualCompactCPU4frames records0GPUalloc andcorrect1146511core plus248320x1024BF16frozenCPUtable508559360nominalbytes (notresidentRSS). Newruntime peakRSS/UTC/gitcommit fields tested; no freshnativeSpeed claim fromreplayprobe. Queuedpairedowner1953808/session87824 waits priorGPU5fullRMOcomplete, ports8106/8114, onefreshserviceperarm. Optionaladditionalmetadata enrichments afterownerlaunch do notchangeinference/pairingprotocol; rawchildresultreports areauthoritativeforcomponentmemory. Legal0007v2validation800manifest checkedagainwithoutopeninglabels/images.
 
 2026-10-15：四组完整MOT评测均完成，固定总1200步下 HOTA 为19.639/6.760/21.228/19.312。M+RMOT漏检3865，不能把IDSW减少当成改善；M+OV提升HOTA但IDF1/IDSW变差。因MOT实际更新量1200/600/600/400不同，补充MOT400/600同前缀训练量对照，保持原矩阵不变。已启动单一阻塞CPU owner1957205/session71241；真实端到端同视频/同GPU对照 owner1953808/session87824 仅排队等待GPU5，不与现有任务争用。新增RSS/UTC/git记录已用真实4帧Compact重放校验；未将该重放当成E2E。
+
+研究计划：按任务书14.2，在同一已训练共享Compact、同一候选/三份native外观/几何/文本语义输入下，比较几何固定关联、几何+三记忆cos固定关联、固定关联+学习辅助头、学习关联+固定辅助头及原学习参考。所有语义分类/成员判断函数权重相同；状态由各策略自身逐帧生成，不做GT回填。固定分数明确非概率，常数沿用已有.5/.5与NEW=.3；这是一组冻结策略干预，不冒充重新训练最优传统模型或JEV独有证明。计划完整DT1203、原始/精确合并TAO40、RMO8/12，CPU、不新增feature源。已观察完成MOT耗时408.52s中350.69s、原始TAO1152.83s中773.39s在已测关联块之外，不能全部归因于状态导出。新CPU对照可选逐帧决策trace+最终无损二进制状态，保留所有状态字段，先验证序列化/下一帧一致；原默认JSON/每帧导出和已注册E2E保持不变，不比较这组存储不同的速度。
+
+MOT400/600补充对照已验证完整1203帧/13664候选/27拒绝帧：HOTA13.3173/13.9788，IDF1 17.7572/13.4107，IDSW174/312，FN3483/2566。实际样本ID及已记录loss与MOT1200前缀完全一致(delta0)，各1146511参数/三任务reload0。同MOT更新量下，M+R600为6.7597、M+OV600为21.2285、三任务400为19.3119；总更新量仍不同，不能直接归因纯任务梯度干扰。无模型提升/全数据集/E2E声明。
+
+固定关联及存储回归完成：真实4帧全预测/状态、完整序列化字段和恢复后真实第5帧一致；三个任务在同状态下语义/保留辅助输出一致，固定外观分数与现有FeatureDecision差1.11e-16。新注册五种冻结策略×完整DT1203/短RMO8与12/TAO原始及alias40的CPU序列对照；使用同一checkpoint/原始native2560三记忆/同一文本语义头，逐帧自身历史，无GT修正。所有新组都用binary-final存储且不报告跨存储速度。run_video最终完整状态导出移入pipeline计时，修正旧版重复最终导出未计时的问题；既有速度原样保留，未来配对双方均按修正口径。
+
+冻结关联对照owner1986817/session48561已启动，单一阻塞shell等待所有25个单位；所有CPU比较均新跑同设备参考。逐观察posthoc诊断各约5MB保留本地，Git发布精简统计/官方全指标/实际运行结果和代码，不复制大逐观察列表；完整逐帧trace、视频、状态仍在原输出目录。

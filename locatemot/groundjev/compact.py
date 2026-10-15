@@ -127,3 +127,61 @@ class CompactDecision:
             class_policy='OVMOT full supplied-vocabulary learned softmax; no GT-based class or box filtering')
         if self.memory_feature_view!='all':metadata['memory_feature_view']=self.memory_feature_view
         return results,life,metadata
+
+
+class CompactAffinityControl:
+    """Fixed affinity with the identical frozen visual/text semantic functions.
+
+    These are causal policy interventions, not separately trained baselines.
+    Fixed scores are never labeled native probabilities.
+    """
+    def __init__(self, learned, association='fixed_iou_cosine', auxiliary='fixed'):
+        self.learned = learned
+        self.association, self.auxiliary = association, auxiliary
+        self.model = learned.model
+        self.text_features = learned.text_features
+
+    def decide(self, image, candidates, tracks, timestamp, specification):
+        import numpy as np
+        from locatemot.groundjev.decision import overlap
+        decisions, life, metadata = self.learned.decide(image, candidates, tracks, timestamp, specification)
+        by_id = {t.track_id: t for t in tracks}
+        result = []
+        for candidate, decision in zip(candidates, decisions):
+            row = dict(decision)
+            if self.association != 'learned':
+                scores = {}
+                current = np.asarray(candidate['native_region_feature'], dtype=float)
+                for tid in decision['shortlisted_ids']:
+                    track = by_id[tid]
+                    iou = overlap(candidate['box'], track.predicted_box(timestamp))
+                    if self.association == 'fixed_iou':
+                        score = iou
+                    else:
+                        memories = [track.anchor_feature, track.recent_feature, track.long_feature]
+                        if self.learned.memory_feature_view == 'recent':
+                            memories = [track.recent_feature]*3
+                        elif self.learned.memory_feature_view == 'ema':
+                            memories = [track.long_feature]*3
+                        cosine = sum(float(current @ np.asarray(memory, dtype=float) / max(
+                            np.linalg.norm(current)*np.linalg.norm(memory), 1e-12)) for memory in memories)/3
+                        score = .5*iou+.5*max(0., cosine)
+                    scores[str(tid)] = score
+                scores.update(NEW=.3, IGNORE=0.)
+                row['probabilities'] = scores
+            if self.auxiliary == 'fixed':
+                row.update(update_probability=1., reliability=None)
+                row.pop('reliability_probabilities', None)
+            result.append(row)
+        metadata = dict(metadata, backend='frozen_compact_affinity_control',
+            association_policy=self.association, auxiliary_policy=self.auxiliary,
+            semantic_policy='same frozen Compact category/membership functions and input visual/text tensors; actual history follows this policy',
+            intervention_scope='inference policy only; not a separately retrained optimal matcher or unique JEV proof')
+        if self.association != 'learned':
+            metadata.update(native_probabilities=False, explicit_no_match=False,
+                probability_source='fixed affinity scores, not probabilities; semantic and retained auxiliary heads remain learned',
+                NEW_score=.3, IGNORE_score=0., appearance_memory='uniform anchor/recent/long cosine; positive part after mean',
+                appearance_coefficient=.5 if self.association=='fixed_iou_cosine' else 0.)
+        if self.auxiliary == 'fixed':
+            life = {}
+        return result, life, metadata

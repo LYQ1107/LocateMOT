@@ -1,0 +1,12 @@
+{
+  "status": "mot_full1203_learned_reference_INFERENCE",
+  "owner_pid": 1986817,
+  "plan": "configs/groundjev/fixed_affinity_controls_v1.json",
+  "device": "cpu",
+  "additional_GPUs": 0,
+  "new_feature_cache_files": false,
+  "completed": {},
+  "full_goal_complete": false,
+  "comparison": "Frozen inference interventions, not independently trained optimal conventional models or unique JEV proof. Same raw visual/text inputs and semantic functions; endogenous confidence/history/state differ by policy. Geometry-only describes association only, semantic heads still consume visual/text inputs. One legal video per full-video scope, one checkpoint/seed; no full-dataset claim.",
+  "memory_storage": "All new arms binary final full state with every original float64/list/image/history field; per-frame complete decisions plus exact shared native sources support causal replay. Actual4-frame outputs/states and next-frame restoration exact versus old JSON1. No replay or storage-policy speed comparison with legacy runs."
+}

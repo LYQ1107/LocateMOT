@@ -1,0 +1,51 @@
+{
+  "name": "Frozen matched-input association and auxiliary controls",
+  "hypothesis": "Separate conventional geometry/native-appearance association from learned association and update/lifecycle policies while retaining identical trained semantic functions.",
+  "checkpoint": "outputs/groundjev/compact/rmot_native72_stage_v1/broad_native_training/checkpoint.pt",
+  "regression": "outputs/groundjev/validation/fixed_affinity_storage_v1/validation.json",
+  "arms": {
+    "learned_reference": {"association": "learned", "auxiliary": "learned"},
+    "iou_fixed": {"association": "fixed_iou", "auxiliary": "fixed"},
+    "iou_cosine_fixed": {"association": "fixed_iou_cosine", "auxiliary": "fixed"},
+    "iou_cosine_learned_aux": {"association": "fixed_iou_cosine", "auxiliary": "learned"},
+    "learned_fixed_aux": {"association": "learned", "auxiliary": "fixed"}
+  },
+  "association": "Same learned 32-ID geometry shortlist and 16-candidate groups. IoU only, or .5IoU+.5max(0,mean cosine against actual raw2560 anchor/recent/long)). NEW=.3 IGNORE=0 follow existing conventional scores; fixed scores are not calibrated probabilities, have no NO_MATCH, and produce confidence=None. No tuning on evaluation GT.",
+  "auxiliary": "Fixed: update1 and no learned lifecycle. Learned: same frozen update/reliability/lifecycle functions on each policy's actual state. Shared >=.5 RMOT membership and all1203category softmax unchanged.",
+  "comparison_limit": "Frozen inference interventions, not independently trained optimal conventional models or unique JEV proof. Same raw visual/text inputs and semantic functions; endogenous confidence/history/state differ by policy. Geometry-only describes association only, semantic heads still consume visual/text inputs. One legal video per full-video scope, one checkpoint/seed; no full-dataset claim.",
+  "device": "CPU four threads per child, one serial owner, zero extra GPUs",
+  "memory_storage": "All new arms binary final full state with every original float64/list/image/history field; per-frame complete decisions plus exact shared native sources support causal replay. Actual4-frame outputs/states and next-frame restoration exact versus old JSON1. No replay or storage-policy speed comparison with legacy runs.",
+  "new_feature_cache_files": false,
+  "scopes": {
+    "mot_full1203": {
+      "manifest": "outputs/groundjev/pilot_data/dancetrack.json",
+      "candidates": "outputs/groundjev/compact/dancetrack0004_native300_v2_empty_roi_fixed/compact_distilled/frame_decisions.jsonl",
+      "frames": 1203, "candidates_count": 13664
+    },
+    "rmot_single8": {
+      "manifest": "outputs/groundjev/multitask_pilot_data/rmot_single_empty.json",
+      "candidates": "outputs/groundjev/compact/joint1200_controls_v1/rmot_single8_before/frame_decisions.jsonl",
+      "frames": 8, "candidates_count": 11
+    },
+    "rmot_multi12": {
+      "manifest": "outputs/groundjev/multitask_pilot_data/rmot_multi_empty.json",
+      "candidates": "outputs/groundjev/compact/joint1200_controls_v1/rmot_multi12_before/frame_decisions.jsonl",
+      "frames": 12, "candidates_count": 16
+    },
+    "tao_alias_full40": {
+      "manifest": "outputs/groundjev/multitask_pilot_data/ovmot_tao_base_novel63_full.json",
+      "candidates": "outputs/groundjev/multitask_runs/tao_exact_geometry_alias40_v1/frame_candidates.jsonl",
+      "frames": 40, "candidates_count": 7343,
+      "scope_limit": "Separate exact-geometry proposal/first-label policy; not pooled with raw candidate comparisons. All35228 aliases retained."
+    },
+    "tao_raw_full40": {
+      "manifest": "outputs/groundjev/multitask_pilot_data/ovmot_tao_base_novel63_full.json",
+      "candidates": "outputs/groundjev/multitask_runs/tao_base_novel63_full_v2_expression_none/native_candidates/frame_candidates.jsonl",
+      "frames": 40, "candidates_count": 35228
+    }
+  },
+  "official_metrics": "Unmodified TrackEval/TETA, all frames including empty/rejected, GT only for scorer/posthoc; never runtime state correction.",
+  "status": "registered before any full-video control inference",
+  "launch": "python3 tools/groundjev/run_fixed_affinity_controls.py --plan configs/groundjev/fixed_affinity_controls_v1.json --out outputs/groundjev/compact/fixed_affinity_controls_v1",
+  "full_goal_complete": false
+}

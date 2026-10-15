@@ -1,0 +1,14 @@
+{
+  "status": "REAL_AFFINITY_SEMANTICS_AUXILIARY_AND_LOSSLESS_MEMORY_VALIDATED",
+  "same_semantic_and_auxiliary_heads_on_same_state_all_three_tasks": {
+    "mot": true,
+    "rmot": true,
+    "ovmot": true
+  },
+  "fixed_score_not_native_probability": true,
+  "same_memory_vectors_feature_reference_max_difference": 1.1102230246251565e-16,
+  "all4_actual_frame_predictions_and_states_exact_across_storage": true,
+  "complete_serialized_state_fields_and_next_actual_frame_exact": true,
+  "GT_or_future_used": false,
+  "native_fresh_E2E_or_accuracy_claim": false
+}

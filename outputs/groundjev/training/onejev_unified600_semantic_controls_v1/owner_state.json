@@ -1,5 +1,5 @@
 {
-  "status": "teacher_tao_base4_INFERENCE",
+  "status": "WAITING_REGISTERED_NATIVE_600_CHILD_EXIT",
   "owner_pid": 1870814,
   "registered_training_children": {
     "teacher": [
@@ -395,6 +395,229 @@
         "release_box_format": "normalized top-left xywh",
         "ignore_policy": "registered expressions have empty release ignore fields",
         "official_complete_dataset_result": false
+      }
+    },
+    "teacher_tao_base4": {
+      "run": "outputs/groundjev/training/onejev_unified600_semantic_controls_v1/teacher_tao_base4",
+      "decoded_frames": 4,
+      "all_exact_native_candidates_retained": true,
+      "reused_identical_completed_MOT_control": false,
+      "official": {
+        "status": "OFFICIAL_REGISTERED_MULTITASK_SCOPE_EVALUATION_COMPLETE",
+        "task": "ovmot",
+        "dataset": "tao_amodal",
+        "sequence": "val/YFCC100M/v_25685519b728afd746dfd1b2fe77c",
+        "scope": "registered_short_functional_clip",
+        "frames": 4,
+        "all_registered_frames_included": true,
+        "GT_access": "evaluation only",
+        "official_test_labels_read": false,
+        "end_to_end_fps": null,
+        "association_replay_fps": 0.0029171793853184354,
+        "perception_rejected_frames": [
+          751,
+          781,
+          811,
+          841
+        ],
+        "evaluator": "unmodified official TETA OVMOT recipe; non-exhaustive TAO",
+        "evaluator_commit": "b498aa87b252bfb75d7cc0d8d6435c3e1e74e4de",
+        "metrics": {
+          "TETA": 52.181,
+          "LocA": 28.236,
+          "AssocA": 28.308,
+          "ClsA": 100.0,
+          "LocRe": 49.167,
+          "LocPr": 38.533,
+          "AssocRe": 31.54,
+          "AssocPr": 74.446,
+          "ClsRe": 100.0,
+          "ClsPr": 100.0
+        },
+        "base_novel": {
+          "base": {
+            "TETA": 52.181,
+            "LocA": 28.236,
+            "AssocA": 28.308,
+            "ClsA": 100.0,
+            "LocRe": 49.167,
+            "LocPr": 38.533,
+            "AssocRe": 31.54,
+            "AssocPr": 74.446,
+            "ClsRe": 100.0,
+            "ClsPr": 100.0
+          },
+          "novel": null
+        },
+        "metric_scale": "official TETA summary percent",
+        "evaluated_categories": [
+          {
+            "name": "baby",
+            "group": "base"
+          }
+        ],
+        "GT_boxes": 18,
+        "predictions": 1540,
+        "unmapped_predicted_labels": [
+          {
+            "frame": 751,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 751,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 751,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 751,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 751,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 781,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 781,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 781,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 781,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 781,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 781,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 781,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 781,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 811,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 811,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 811,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 811,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 811,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 811,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 811,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 841,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 841,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 841,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 841,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 841,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 841,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 841,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 841,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 841,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 841,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 841,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 841,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 841,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 841,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 841,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 841,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 841,
+            "label": "arctic (type of shoe)"
+          },
+          {
+            "frame": 841,
+            "label": "arctic (type of shoe)"
+          }
+        ],
+        "unmapped_policy": "retain boxes with unknown category -1; never discard predictions or GT",
+        "prediction_score": "constant unscored sentinel 1; no detector confidence and no score-based truncation",
+        "GT_policy": "all original modal xywh boxes; no clipping, visibility threshold, or category exclusion",
+        "novel_evaluation_GT_used_for_training": false,
+        "official_complete_dataset_result": false,
+        "timestamp_policy": "annotation-step units; physical source FPS unavailable; display at one step per second"
       }
     }
   },
