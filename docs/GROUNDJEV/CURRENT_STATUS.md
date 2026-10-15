@@ -345,6 +345,27 @@ no promotion. Original/Ground200nativefull9retention each targets91124released
 rows, not all30paper benchmarks; neither complete while native clients remain.
 GPU6native CUDA failure/retry evidence retained; first failing kernel unknown.
 
+Available completed full-task artifacts are now frozen independently of the
+still-running9task owners: original6/9tasks (31,986native rows), adapted2002/9
+(1,810rows). Every completed task has original=effective sample count and
+provider-policy-filtered0. These are complete individual tasks, not completion
+of either full9run or a result extrapolated from active response prefixes.
+
+|Common completed grounding task|Rows|Original F1@.5 %|Adapted200 F1@.5 %|Delta pp|Original F1mIoU %|Adapted200 F1mIoU %|
+|---|---:|---:|---:|---:|---:|---:|
+|Dense200|200|78.986|78.679|-0.307|66.644|66.054|
+|VisDrone|1610|46.125|42.145|-3.980|29.662|27.870|
+
+Dense200 recall76.086→74.350% and precision82.116→83.544%; VisDrone recall
+43.534→39.578%, precision49.044→45.068%. These measured grounding-retention
+results do not establish tracking gains or overall retention. Originalqueue32
+versus adapted-sync execution and recorded CUDA recovery prevent a bitwise/
+paired-request or exclusively weight-causal interpretation. OriginalCOCO is
+reused through its existing registered resume receipt. All original native
+files, owner/service processes and metrics remain unchanged. Receipt:
+`ground_retention/partial_completed_tasks_20261015_v1/summary.json` and the
+eight exact native metric/sample-count extracts under that directory.
+
 Localization-only200 and all96native-frame/18Full controls are complete and
 official-artifact validated. Same112rows/56pairs/200actual draws/seed42/lr2e-6
 as completedGround200, both identity coefficients0. All200logged total losses

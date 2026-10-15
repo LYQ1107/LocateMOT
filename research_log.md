@@ -2405,3 +2405,7 @@ Full fit监督实际核验：48合法fit帧/1184native候选全部Q3旧标签按
 当前native600回放准备已实现并通过真实CPU合同核验：全部48帧/1184候选、三段各16原fitframes/图像存在、600checkpoint存在、原GPU4 owner2049900/start42845776仍live、注册prior+512MiB=26,262,799,802<26,843,545,600bytes。新可选replay参数保留原模式默认行为，不请求Ground、不加feature向量/不修改原课程；按当前actor真实状态产生独立新语料。新阻塞调度只在当前Full三臂成功且owner退出后接棒GPU4，未提前启动模型或任何新训练。新增目标文档明确普通水平是最终验收，公开分数须协议匹配，旧V1 TempRMOT94.679短sanity不作为V2正式水平证据。
 
 新刷新owner2353528/start44628629/session45947已实际启动并阻塞等待原Full GPU4 owner；当前WAITING_ORIGINAL_GPU4_FULL1203_OWNER_EXIT，无新增GPU模型或训练。注册快照 `training_data/native600_fit_rollout_refresh_v1/registration.json`；原句柄70182/36847/52020及事件流58829保留，新句柄独立等待接棒。
+
+研究计划：全9任务原生保留评测仍在运行，但已有不可变完整task_results。调用原生未改summarize只读取已完成task，核对n-original=n-effective/provider-filter0，固化原始6项与adapted200两项及共同dense200/VisDrone对照；未完成任务不补分、不汇总成全9结果。明确原始queue32与适配sync执行差异及随机requestcounter不构成bitwise配对，报告实际变化，不将差异全部归因训练。继续保留原owner/服务。
+
+原生保留完整task阶段已固化：调用原scripts.evaluate.summarize不改scorer、不调用模型；原始6/9（31986完整task行）、adapted2002/9（1810行），各task n-original=effective且provider过滤0；原始COCO严格按既有resume复用，所有raw源仍本地保留。共同Dense200 F1@.5 78.986→78.679（-.307pp），F1mIoU66.644→66.054；VisDrone F1@.5 46.125→42.145（-3.980pp），F1mIoU29.662→27.870。后者precision/recall均下降，未见该两项保留能力改善，不推广视觉200为更好基础模型。原始queue32与adapted-sync、CUDA恢复及requestcounter不同均明确，不把差异独归因训练。其余full9继续原句柄，不将当前response进度前缀冒充完整task或完整9项分数。
