@@ -542,3 +542,18 @@ mot_exposure_controls_v1.json. No full goal completion or model promotion.
  30.868->30.601,0->0,0->9.945; BaseTAO TETA11.981->52.181. All1203
   categories supplied but one Base class in4frames, no Novel claim. Native600
   remains pending; no full-video transfer/promotion/E2E or unified success claim.
+
+## 2026-10-15 — Completed known task scopes and hybrid retrieval registration
+
+- task_subsets1200_v2: all16known-scope controls validated; mixed table in
+  CURRENT_STATUS. Complete DT1203/rawTAO40 and shortRMO8/12, allNovelClsA0.
+  Waiting only the full800 source controls; no overall shared-task promotion.
+- fixed_affinity_controls_v1: all5 completeMOT1203 policies validated,
+  HOTA26.316/7.488/13.311/13.009/24.283 in registered order. FP/FN tradeoff
+  and endogenous histories explicit; TAO portion remains running.
+- hybrid_shortlist32_v1: separate16geometry+16nativeappearance retrieval,
+  same32context/weights/inputfeatures. Actual251live-ID prefix differential
+  default-preservation and option-validity checks passed. CPU owner2034367
+  waits context-size owner2003663 success+exit; six new learned/fixedcos
+  DT1203/aliasTAO40/rawTAO40 runs, matched geometry32 references revalidated.
+  No GT selection, newfeatures/GPU, uniqueJEV or pending accuracy claim.

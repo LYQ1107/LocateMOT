@@ -1,0 +1,11 @@
+{
+  "status": "REAL_DENSE_TAO_HYBRID32_FUNCTIONAL_VALIDATED",
+  "frames_each": 2,
+  "actual_live_IDs_before_second_frame": 251,
+  "actual_second_frame_candidates": 230,
+  "default_geometry_all_predictions_and_states_exact_vs_prior_version": true,
+  "every_hybrid_shortlist32_unique_live_IDs_and_first16_geometry_exact": true,
+  "second_frame_candidates_with_changed_identity_set": 230,
+  "GT_or_future_used": false,
+  "official_accuracy_or_E2E_claim": false
+}

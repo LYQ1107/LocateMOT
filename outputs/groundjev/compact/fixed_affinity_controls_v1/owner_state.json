@@ -1,5 +1,5 @@
 {
-  "status": "mot_full1203_iou_cosine_learned_aux_INFERENCE",
+  "status": "tao_raw_full40_learned_reference_INFERENCE",
   "owner_pid": 1986817,
   "plan": "configs/groundjev/fixed_affinity_controls_v1.json",
   "device": "cpu",
@@ -160,6 +160,630 @@
       "base_novel": null,
       "correct_option_coverage": 0.935813953488372,
       "existing_association_accuracy": 0.13674418604651162,
+      "speed_comparison_or_E2E_claim": false
+    },
+    "mot_full1203_iou_cosine_learned_aux": {
+      "run": "outputs/groundjev/compact/fixed_affinity_controls_v1/mot_full1203_iou_cosine_learned_aux",
+      "policies": {
+        "association": "fixed_iou_cosine",
+        "auxiliary": "learned"
+      },
+      "decoded_frames": 1203,
+      "native_candidates": 13664,
+      "native_rejected_frames": [
+        21,
+        29,
+        59,
+        61,
+        63,
+        64,
+        70,
+        100,
+        236,
+        270,
+        279,
+        286,
+        381,
+        422,
+        452,
+        460,
+        482,
+        587,
+        653,
+        691,
+        716,
+        724,
+        847,
+        882,
+        1063,
+        1129,
+        1148
+      ],
+      "all_native_geometry_labels_scores_order_and_frames_retained": true,
+      "metrics": {
+        "HOTA": 0.13008798328483823,
+        "DetA": 0.2691568159294788,
+        "AssA": 0.06288666646718212,
+        "IDF1": 0.09687671232876713,
+        "IDSW": 545,
+        "FP": 9329,
+        "FN": 251
+      },
+      "base_novel": null,
+      "correct_option_coverage": 0.9348837209302325,
+      "existing_association_accuracy": 0.0786046511627907,
+      "speed_comparison_or_E2E_claim": false
+    },
+    "mot_full1203_learned_fixed_aux": {
+      "run": "outputs/groundjev/compact/fixed_affinity_controls_v1/mot_full1203_learned_fixed_aux",
+      "policies": {
+        "association": "learned",
+        "auxiliary": "fixed"
+      },
+      "decoded_frames": 1203,
+      "native_candidates": 13664,
+      "native_rejected_frames": [
+        21,
+        29,
+        59,
+        61,
+        63,
+        64,
+        70,
+        100,
+        236,
+        270,
+        279,
+        286,
+        381,
+        422,
+        452,
+        460,
+        482,
+        587,
+        653,
+        691,
+        716,
+        724,
+        847,
+        882,
+        1063,
+        1129,
+        1148
+      ],
+      "all_native_geometry_labels_scores_order_and_frames_retained": true,
+      "metrics": {
+        "HOTA": 0.24283034130042178,
+        "DetA": 0.4175018844519927,
+        "AssA": 0.14135191287617335,
+        "IDF1": 0.2976050255202199,
+        "IDSW": 155,
+        "FP": 608,
+        "FN": 2139
+      },
+      "base_novel": null,
+      "correct_option_coverage": 1.0,
+      "existing_association_accuracy": 0.22181243414120128,
+      "speed_comparison_or_E2E_claim": false
+    },
+    "rmot_single8_learned_reference": {
+      "run": "outputs/groundjev/compact/fixed_affinity_controls_v1/rmot_single8_learned_reference",
+      "policies": {
+        "association": "learned",
+        "auxiliary": "learned"
+      },
+      "decoded_frames": 8,
+      "native_candidates": 11,
+      "native_rejected_frames": [
+        152
+      ],
+      "all_native_geometry_labels_scores_order_and_frames_retained": true,
+      "metrics": {
+        "HOTA": 0.0,
+        "DetA": 0.0,
+        "AssA": 0.0,
+        "IDF1": 0.0,
+        "IDSW": 0,
+        "FP": 0,
+        "FN": 5
+      },
+      "base_novel": null,
+      "correct_option_coverage": 1.0,
+      "existing_association_accuracy": 0.0,
+      "speed_comparison_or_E2E_claim": false
+    },
+    "rmot_single8_iou_fixed": {
+      "run": "outputs/groundjev/compact/fixed_affinity_controls_v1/rmot_single8_iou_fixed",
+      "policies": {
+        "association": "fixed_iou",
+        "auxiliary": "fixed"
+      },
+      "decoded_frames": 8,
+      "native_candidates": 11,
+      "native_rejected_frames": [
+        152
+      ],
+      "all_native_geometry_labels_scores_order_and_frames_retained": true,
+      "metrics": {
+        "HOTA": 0.0,
+        "DetA": 0.0,
+        "AssA": 0.0,
+        "IDF1": 0.0,
+        "IDSW": 0,
+        "FP": 0,
+        "FN": 5
+      },
+      "base_novel": null,
+      "correct_option_coverage": 1.0,
+      "existing_association_accuracy": 0.0,
+      "speed_comparison_or_E2E_claim": false
+    },
+    "rmot_single8_iou_cosine_fixed": {
+      "run": "outputs/groundjev/compact/fixed_affinity_controls_v1/rmot_single8_iou_cosine_fixed",
+      "policies": {
+        "association": "fixed_iou_cosine",
+        "auxiliary": "fixed"
+      },
+      "decoded_frames": 8,
+      "native_candidates": 11,
+      "native_rejected_frames": [
+        152
+      ],
+      "all_native_geometry_labels_scores_order_and_frames_retained": true,
+      "metrics": {
+        "HOTA": 0.0,
+        "DetA": 0.0,
+        "AssA": 0.0,
+        "IDF1": 0.0,
+        "IDSW": 0,
+        "FP": 0,
+        "FN": 5
+      },
+      "base_novel": null,
+      "correct_option_coverage": null,
+      "existing_association_accuracy": null,
+      "speed_comparison_or_E2E_claim": false
+    },
+    "rmot_single8_iou_cosine_learned_aux": {
+      "run": "outputs/groundjev/compact/fixed_affinity_controls_v1/rmot_single8_iou_cosine_learned_aux",
+      "policies": {
+        "association": "fixed_iou_cosine",
+        "auxiliary": "learned"
+      },
+      "decoded_frames": 8,
+      "native_candidates": 11,
+      "native_rejected_frames": [
+        152
+      ],
+      "all_native_geometry_labels_scores_order_and_frames_retained": true,
+      "metrics": {
+        "HOTA": 0.10526315789473684,
+        "DetA": 0.10526315789473684,
+        "AssA": 0.10526315789473684,
+        "IDF1": 0.3333333333333333,
+        "IDSW": 0,
+        "FP": 0,
+        "FN": 4
+      },
+      "base_novel": null,
+      "correct_option_coverage": 1.0,
+      "existing_association_accuracy": 0.5,
+      "speed_comparison_or_E2E_claim": false
+    },
+    "rmot_single8_learned_fixed_aux": {
+      "run": "outputs/groundjev/compact/fixed_affinity_controls_v1/rmot_single8_learned_fixed_aux",
+      "policies": {
+        "association": "learned",
+        "auxiliary": "fixed"
+      },
+      "decoded_frames": 8,
+      "native_candidates": 11,
+      "native_rejected_frames": [
+        152
+      ],
+      "all_native_geometry_labels_scores_order_and_frames_retained": true,
+      "metrics": {
+        "HOTA": 0.0,
+        "DetA": 0.0,
+        "AssA": 0.0,
+        "IDF1": 0.0,
+        "IDSW": 0,
+        "FP": 0,
+        "FN": 5
+      },
+      "base_novel": null,
+      "correct_option_coverage": null,
+      "existing_association_accuracy": null,
+      "speed_comparison_or_E2E_claim": false
+    },
+    "rmot_multi12_learned_reference": {
+      "run": "outputs/groundjev/compact/fixed_affinity_controls_v1/rmot_multi12_learned_reference",
+      "policies": {
+        "association": "learned",
+        "auxiliary": "learned"
+      },
+      "decoded_frames": 12,
+      "native_candidates": 16,
+      "native_rejected_frames": [
+        34
+      ],
+      "all_native_geometry_labels_scores_order_and_frames_retained": true,
+      "metrics": {
+        "HOTA": 0.14845658242338686,
+        "DetA": 0.09913538038538039,
+        "AssA": 0.2332728918255234,
+        "IDF1": 0.0975609756097561,
+        "IDSW": 0,
+        "FP": 9,
+        "FN": 28
+      },
+      "base_novel": null,
+      "correct_option_coverage": 1.0,
+      "existing_association_accuracy": 1.0,
+      "speed_comparison_or_E2E_claim": false
+    },
+    "rmot_multi12_iou_fixed": {
+      "run": "outputs/groundjev/compact/fixed_affinity_controls_v1/rmot_multi12_iou_fixed",
+      "policies": {
+        "association": "fixed_iou",
+        "auxiliary": "fixed"
+      },
+      "decoded_frames": 12,
+      "native_candidates": 16,
+      "native_rejected_frames": [
+        34
+      ],
+      "all_native_geometry_labels_scores_order_and_frames_retained": true,
+      "metrics": {
+        "HOTA": 0.21390100555984115,
+        "DetA": 0.1359674015081589,
+        "AssA": 0.34312281285965496,
+        "IDF1": 0.18604651162790697,
+        "IDSW": 0,
+        "FP": 9,
+        "FN": 26
+      },
+      "base_novel": null,
+      "correct_option_coverage": 1.0,
+      "existing_association_accuracy": 0.6666666666666666,
+      "speed_comparison_or_E2E_claim": false
+    },
+    "rmot_multi12_iou_cosine_fixed": {
+      "run": "outputs/groundjev/compact/fixed_affinity_controls_v1/rmot_multi12_iou_cosine_fixed",
+      "policies": {
+        "association": "fixed_iou_cosine",
+        "auxiliary": "fixed"
+      },
+      "decoded_frames": 12,
+      "native_candidates": 16,
+      "native_rejected_frames": [
+        34
+      ],
+      "all_native_geometry_labels_scores_order_and_frames_retained": true,
+      "metrics": {
+        "HOTA": 0.17499092389966933,
+        "DetA": 0.11824137810979918,
+        "AssA": 0.26254879623300675,
+        "IDF1": 0.14285714285714285,
+        "IDSW": 0,
+        "FP": 9,
+        "FN": 27
+      },
+      "base_novel": null,
+      "correct_option_coverage": null,
+      "existing_association_accuracy": null,
+      "speed_comparison_or_E2E_claim": false
+    },
+    "rmot_multi12_iou_cosine_learned_aux": {
+      "run": "outputs/groundjev/compact/fixed_affinity_controls_v1/rmot_multi12_iou_cosine_learned_aux",
+      "policies": {
+        "association": "fixed_iou_cosine",
+        "auxiliary": "learned"
+      },
+      "decoded_frames": 12,
+      "native_candidates": 16,
+      "native_rejected_frames": [
+        34
+      ],
+      "all_native_geometry_labels_scores_order_and_frames_retained": true,
+      "metrics": {
+        "HOTA": 0.14845658242338686,
+        "DetA": 0.09913538038538039,
+        "AssA": 0.2332728918255234,
+        "IDF1": 0.0975609756097561,
+        "IDSW": 0,
+        "FP": 9,
+        "FN": 28
+      },
+      "base_novel": null,
+      "correct_option_coverage": 1.0,
+      "existing_association_accuracy": 1.0,
+      "speed_comparison_or_E2E_claim": false
+    },
+    "rmot_multi12_learned_fixed_aux": {
+      "run": "outputs/groundjev/compact/fixed_affinity_controls_v1/rmot_multi12_learned_fixed_aux",
+      "policies": {
+        "association": "learned",
+        "auxiliary": "fixed"
+      },
+      "decoded_frames": 12,
+      "native_candidates": 16,
+      "native_rejected_frames": [
+        34
+      ],
+      "all_native_geometry_labels_scores_order_and_frames_retained": true,
+      "metrics": {
+        "HOTA": 0.14845658242338686,
+        "DetA": 0.09913538038538039,
+        "AssA": 0.2332728918255234,
+        "IDF1": 0.0975609756097561,
+        "IDSW": 0,
+        "FP": 9,
+        "FN": 28
+      },
+      "base_novel": null,
+      "correct_option_coverage": null,
+      "existing_association_accuracy": null,
+      "speed_comparison_or_E2E_claim": false
+    },
+    "tao_alias_full40_learned_reference": {
+      "run": "outputs/groundjev/compact/fixed_affinity_controls_v1/tao_alias_full40_learned_reference",
+      "policies": {
+        "association": "learned",
+        "auxiliary": "learned"
+      },
+      "decoded_frames": 40,
+      "native_candidates": 7343,
+      "native_rejected_frames": [],
+      "all_native_geometry_labels_scores_order_and_frames_retained": true,
+      "metrics": {
+        "TETA": 21.773,
+        "LocA": 23.273,
+        "AssocA": 9.6266,
+        "ClsA": 32.419,
+        "LocRe": 81.042,
+        "LocPr": 24.186,
+        "AssocRe": 10.31,
+        "AssocPr": 55.418,
+        "ClsRe": 33.333,
+        "ClsPr": 32.419
+      },
+      "base_novel": {
+        "base": {
+          "TETA": 26.831,
+          "LocA": 21.6485,
+          "AssocA": 10.2147,
+          "ClsA": 48.6285,
+          "LocRe": 83.1875,
+          "LocPr": 22.227,
+          "AssocRe": 10.907,
+          "AssocPr": 57.2775,
+          "ClsRe": 50.0,
+          "ClsPr": 48.6285
+        },
+        "novel": {
+          "TETA": 11.658,
+          "LocA": 26.522,
+          "AssocA": 8.4508,
+          "ClsA": 0.0,
+          "LocRe": 76.75,
+          "LocPr": 28.105,
+          "AssocRe": 9.1162,
+          "AssocPr": 51.699,
+          "ClsRe": 0.0,
+          "ClsPr": 0.0
+        }
+      },
+      "correct_option_coverage": 0.5309734513274337,
+      "existing_association_accuracy": 0.08849557522123894,
+      "speed_comparison_or_E2E_claim": false
+    },
+    "tao_alias_full40_iou_fixed": {
+      "run": "outputs/groundjev/compact/fixed_affinity_controls_v1/tao_alias_full40_iou_fixed",
+      "policies": {
+        "association": "fixed_iou",
+        "auxiliary": "fixed"
+      },
+      "decoded_frames": 40,
+      "native_candidates": 7343,
+      "native_rejected_frames": [],
+      "all_native_geometry_labels_scores_order_and_frames_retained": true,
+      "metrics": {
+        "TETA": 26.928,
+        "LocA": 22.445,
+        "AssocA": 27.528,
+        "ClsA": 30.81,
+        "LocRe": 84.625,
+        "LocPr": 23.026,
+        "AssocRe": 27.981,
+        "AssocPr": 78.318,
+        "ClsRe": 33.333,
+        "ClsPr": 30.81
+      },
+      "base_novel": {
+        "base": {
+          "TETA": 34.017,
+          "LocA": 21.9645,
+          "AssocA": 33.8725,
+          "ClsA": 46.2145,
+          "LocRe": 85.125,
+          "LocPr": 22.506,
+          "AssocRe": 34.438,
+          "AssocPr": 77.8895,
+          "ClsRe": 50.0,
+          "ClsPr": 46.2145
+        },
+        "novel": {
+          "TETA": 12.749,
+          "LocA": 23.407,
+          "AssocA": 14.839,
+          "ClsA": 0.0,
+          "LocRe": 83.625,
+          "LocPr": 24.065,
+          "AssocRe": 15.067,
+          "AssocPr": 79.174,
+          "ClsRe": 0.0,
+          "ClsPr": 0.0
+        }
+      },
+      "correct_option_coverage": 0.5416666666666666,
+      "existing_association_accuracy": 0.31666666666666665,
+      "speed_comparison_or_E2E_claim": false
+    },
+    "tao_alias_full40_iou_cosine_fixed": {
+      "run": "outputs/groundjev/compact/fixed_affinity_controls_v1/tao_alias_full40_iou_cosine_fixed",
+      "policies": {
+        "association": "fixed_iou_cosine",
+        "auxiliary": "fixed"
+      },
+      "decoded_frames": 40,
+      "native_candidates": 7343,
+      "native_rejected_frames": [],
+      "all_native_geometry_labels_scores_order_and_frames_retained": true,
+      "metrics": {
+        "TETA": 23.913,
+        "LocA": 20.988,
+        "AssocA": 20.526,
+        "ClsA": 30.226,
+        "LocRe": 79.312,
+        "LocPr": 21.502,
+        "AssocRe": 22.915,
+        "AssocPr": 62.509,
+        "ClsRe": 33.333,
+        "ClsPr": 30.226
+      },
+      "base_novel": {
+        "base": {
+          "TETA": 29.310000000000002,
+          "LocA": 19.5465,
+          "AssocA": 23.0455,
+          "ClsA": 45.3385,
+          "LocRe": 76.2815,
+          "LocPr": 20.023,
+          "AssocRe": 26.13,
+          "AssocPr": 59.207499999999996,
+          "ClsRe": 50.0,
+          "ClsPr": 45.3385
+        },
+        "novel": {
+          "TETA": 13.12,
+          "LocA": 23.871,
+          "AssocA": 15.487,
+          "ClsA": 0.0,
+          "LocRe": 85.375,
+          "LocPr": 24.46,
+          "AssocRe": 16.484,
+          "AssocPr": 69.111,
+          "ClsRe": 0.0,
+          "ClsPr": 0.0
+        }
+      },
+      "correct_option_coverage": 0.4895833333333333,
+      "existing_association_accuracy": 0.17708333333333334,
+      "speed_comparison_or_E2E_claim": false
+    },
+    "tao_alias_full40_iou_cosine_learned_aux": {
+      "run": "outputs/groundjev/compact/fixed_affinity_controls_v1/tao_alias_full40_iou_cosine_learned_aux",
+      "policies": {
+        "association": "fixed_iou_cosine",
+        "auxiliary": "learned"
+      },
+      "decoded_frames": 40,
+      "native_candidates": 7343,
+      "native_rejected_frames": [],
+      "all_native_geometry_labels_scores_order_and_frames_retained": true,
+      "metrics": {
+        "TETA": 23.913,
+        "LocA": 20.988,
+        "AssocA": 20.526,
+        "ClsA": 30.226,
+        "LocRe": 79.312,
+        "LocPr": 21.502,
+        "AssocRe": 22.915,
+        "AssocPr": 62.509,
+        "ClsRe": 33.333,
+        "ClsPr": 30.226
+      },
+      "base_novel": {
+        "base": {
+          "TETA": 29.310000000000002,
+          "LocA": 19.5465,
+          "AssocA": 23.0455,
+          "ClsA": 45.3385,
+          "LocRe": 76.2815,
+          "LocPr": 20.023,
+          "AssocRe": 26.13,
+          "AssocPr": 59.207499999999996,
+          "ClsRe": 50.0,
+          "ClsPr": 45.3385
+        },
+        "novel": {
+          "TETA": 13.12,
+          "LocA": 23.871,
+          "AssocA": 15.487,
+          "ClsA": 0.0,
+          "LocRe": 85.375,
+          "LocPr": 24.46,
+          "AssocRe": 16.484,
+          "AssocPr": 69.111,
+          "ClsRe": 0.0,
+          "ClsPr": 0.0
+        }
+      },
+      "correct_option_coverage": 0.4895833333333333,
+      "existing_association_accuracy": 0.17708333333333334,
+      "speed_comparison_or_E2E_claim": false
+    },
+    "tao_alias_full40_learned_fixed_aux": {
+      "run": "outputs/groundjev/compact/fixed_affinity_controls_v1/tao_alias_full40_learned_fixed_aux",
+      "policies": {
+        "association": "learned",
+        "auxiliary": "fixed"
+      },
+      "decoded_frames": 40,
+      "native_candidates": 7343,
+      "native_rejected_frames": [],
+      "all_native_geometry_labels_scores_order_and_frames_retained": true,
+      "metrics": {
+        "TETA": 21.773,
+        "LocA": 23.273,
+        "AssocA": 9.6266,
+        "ClsA": 32.419,
+        "LocRe": 81.042,
+        "LocPr": 24.186,
+        "AssocRe": 10.31,
+        "AssocPr": 55.418,
+        "ClsRe": 33.333,
+        "ClsPr": 32.419
+      },
+      "base_novel": {
+        "base": {
+          "TETA": 26.831,
+          "LocA": 21.6485,
+          "AssocA": 10.2147,
+          "ClsA": 48.6285,
+          "LocRe": 83.1875,
+          "LocPr": 22.227,
+          "AssocRe": 10.907,
+          "AssocPr": 57.2775,
+          "ClsRe": 50.0,
+          "ClsPr": 48.6285
+        },
+        "novel": {
+          "TETA": 11.658,
+          "LocA": 26.522,
+          "AssocA": 8.4508,
+          "ClsA": 0.0,
+          "LocRe": 76.75,
+          "LocPr": 28.105,
+          "AssocRe": 9.1162,
+          "AssocPr": 51.699,
+          "ClsRe": 0.0,
+          "ClsPr": 0.0
+        }
+      },
+      "correct_option_coverage": 0.5309734513274337,
+      "existing_association_accuracy": 0.08849557522123894,
       "speed_comparison_or_E2E_claim": false
     }
   },

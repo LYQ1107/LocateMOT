@@ -1067,3 +1067,53 @@ success+exit before allocation. Existing600 nativeMM validation is reused;
 all three new arms retain binary final state/complete per-frame decisions
 and share the existing source, with no newfeatures or detectorE2E claim.
 These full-video fine-tuning comparisons remain pending.
+
+## Completed task-sharing matrix and matched-input MOT policies — latest
+
+All16 known-scope task-sharing controls are validated. All four models have
+the same initialization,1200updates,1146511core parameters and source pack;
+per-task exposure differs. Complete DT1203 and rawTAO40 use unchanged native
+candidates and scorers; RMO8/12 are short clips only.
+
+|Training tasks|DT1203 HOTA %|TAO40 TETA %|Single RMO8 HOTA %|Multi RMO12 HOTA %|
+|---|---:|---:|---:|---:|
+|MOT|19.639|12.421|0|4.096|
+|MOT+RMO|6.760|19.284|0|3.513|
+|MOT+OV|21.229|12.850|26.494|9.622|
+|All three|19.312|10.081|37.265|3.513|
+
+There is no universal winner. All-three single-query gain comes with poor
+multi-query results (IDF1=0,FP2,FN30) and lower rawTAO TETA. M+R's TAO
+association benefit coexists with ClsA2.475 versus MOT12.250. NovelClsA0 for
+all4arms; no Novel/general/full-dataset claim. MOT400/600 exposure controls
+remain complementary, not fixed total compute. Full800 RMO comparisons remain
+queued for the original source owner, never inferred from these short clips.
+Receipt: compact/task_subsets1200_cpu_v2_feature_sources/
+known_scopes_validation_and_summary.json under outputs/groundjev.
+
+The five frozen inference policies also completed all1203 DT frames, with
+identical13664candidates/27rejections/learned semantic functions and CPU storage:
+
+|Association / auxiliaries|HOTA %|IDF1 %|IDSW|FP|FN|
+|---|---:|---:|---:|---:|---:|
+|Learned / learned|26.316|30.633|165|579|1962|
+|IoU / fixed|7.488|2.597|775|9335|257|
+|IoU+cosine / fixed|13.311|9.841|553|9328|250|
+|IoU+cosine / learned|13.009|9.688|545|9329|251|
+|Learned / fixed|24.283|29.761|155|608|2139|
+
+Learned auxiliaries help the learned association in this video, but not the
+fixedcos association. Learned policy also rejects many native proposals, so
+the HOTA difference is not isolated identity ranking evidence. Confidence,
+lifecycle and subsequent histories follow each policy; these are frozen
+interventions, not separately trained optimal conventional matchers or unique
+JEV proof. Other registered TAO controls are still running.
+
+Next retrieval experiment: compact_hybrid_shortlist32_v1.json. Keep32 options,
+first16geometry then appearance fill from actual native anchor/recent/long
+features, noGT. Real251-ID/230candidate prefix passes: all32IDs unique/live,
+first16geometry exact, all230 candidate identity sets change; original default
+geometry predictions/states remain exact versus prior version. CPU owner
+2034367/session35730 waits current context-size owner2003663 success+exit
+before six new full-video runs, with geometry32 references reused/revalidated.
+No extraGPU or newfeature source; not yet a tracking accuracy result.

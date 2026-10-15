@@ -1,0 +1,16 @@
+{
+  "status": "WAITING_REGISTERED_AFFINITY_OWNER_EXIT",
+  "owner_pid": 2034367,
+  "plan": "configs/groundjev/compact_hybrid_shortlist32_v1.json",
+  "device": "cpu",
+  "additional_GPUs": 0,
+  "new_feature_cache_files": false,
+  "completed": {},
+  "full_goal_complete": false,
+  "comparison": "Separate proposal-to-identity retrieval protocol; same original native object proposals/model weights/input features/group16 and 32identitycontext. Selected history and future model/semantic/auxiliary outputs naturally change. Does not isolate JEV uniqueness or establish optimal retrieval. Raw/alias TAO kept separate. Old defaults unchanged, no GT correction or threshold tuning.",
+  "memory_storage": "All new arms binary final full state with every original float64/list/image/history field; per-frame complete decisions plus exact shared native sources support causal replay. Actual4-frame outputs/states and next-frame restoration exact versus old JSON1. No replay or storage-policy speed comparison with legacy runs.",
+  "upstream_owner": [
+    2003663,
+    "42653395"
+  ]
+}

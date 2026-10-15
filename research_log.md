@@ -2300,3 +2300,9 @@ Full teacher600四个同策略短测均完成：MOT HOTA30.868->30.601，单RMO0
 补齐关键完整MOT证据：此前Full微调前后只有短MOT4，不能据此替代完整视频。新注册原V1 DT1203固定候选上Full native600/before500/teacher600三组、固定顺序，各用原生Choice/Noul/Score+V3真实crop/motion、动态分组不增token上限、全部27拒绝帧保留。GPU4新owner只在原短控制owner1870814成功并退出后执行，不与其重叠；GPU5完整RMOT继续。复用已验证600真实MM加载结果，三组统一binary-final存储/共享输入feature只读/逐帧决策trace，无新features或E2E速度声明。通用控制runner流式核对源候选，避免整源重复常驻内存；默认短测行为不变。
 
 原始TAO40排名审计session86629已exit0：全35228候选/原轨迹逐帧输出和状态精确恢复，最大2670live IDs，134已有正确anchor事件，32/64/128覆盖15.672/31.343/44.776%。不把覆盖反事实当精度，也不排除已终止/从未正确初始化身份这一诊断局限。Full DT1203新owner2024544/session88330已验证等待原GPU4短测owner1870814/start41851012，未提前占卡。
+
+研究计划：原始TAO32选项覆盖15.67%，扩大128也仅44.78%（冻结轨迹诊断），已有正确anchor常被纯几何排序挤出。新增独立候选协议：保持32总选项、16候选分组/同权重/同输入，先取16几何，再按实际anchor/recent/long原生2560特征平均cos（对组内候选取最大）补足至32，稳定以lost_age和track_id解同分；不读GT，不更改身份状态或训练。旧geometry默认保持。完整DT1203与raw/aliasTAO40，学习关联及固定cos两策略，四个nativeROI输入仍共享，不新建featurefiles；CPU新owner等既有contextowner完成后串行跑。与原geometry32分别报告，非纯JEV唯一收益或最优检索声明。先检查真实251-ID片段的候选合法性与完整前缀可执行性。
+
+完成并核验任务组合16现有范围：DT1203 HOTA19.639/6.760/21.229/19.312；rawTAO40 TETA12.421/19.284/12.850/10.081；单RMO8 HOTA0/0/26.494/37.265；多RMO12 4.096/3.513/9.622/3.513。所有实际结果/官方指标/候选完整性一致、空失败表，full800仍待源。无普遍最优，三任务单query受益但多query IDF1=0/FN30且TAO退化；四组NovelClsA0。共享总1200步但每任务暴露不同，保留MOT400/600对照，不宣称纯梯度干扰。
+
+5个同输入完整MOT策略完成：learned/learned26.316，IoU/fixed7.488，cos/fixed13.311，cos/learnedaux13.009，learned/fixedaux24.283。学习辅助只在学习关联组合有增益；learned FP579/FN1962 vsfixedcos9328/250，不能将总体收益全归因身份排序。各轨迹内生不同，不是唯一JEV证明。Hybrid32真实251身份片段检查通过：几何默认与旧版全输出状态精确一致，每个新候选32个独特live IDs、前16几何一致，230候选的身份集合实际变化。新CPU owner2034367/session35730只等待已有contextowner2003663完成+退出，再跑3视频范围×2关联策略；保留原默认、不改训练、GT阈值和指标。

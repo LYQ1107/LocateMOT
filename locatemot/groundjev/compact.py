@@ -59,7 +59,7 @@ class CompactCore(nn.Module):
 
 
 class CompactDecision:
-    def __init__(self, checkpoint, device='cuda:0', batch_candidates=16, shortlist=32, memory_feature_view='all'):
+    def __init__(self, checkpoint, device='cuda:0', batch_candidates=16, shortlist=32, memory_feature_view='all', shortlist_policy='geometry'):
         from pathlib import Path
         data = torch.load(checkpoint,map_location=device,weights_only=True)
         self.model = CompactCore(data['architecture'],semantic=data.get('semantic',False)).to(device)
@@ -67,6 +67,7 @@ class CompactDecision:
         self.checkpoint = str(Path(checkpoint).resolve()); self.device = device
         self.batch_candidates,self.shortlist = batch_candidates,shortlist
         self.memory_feature_view = memory_feature_view
+        self.shortlist_policy = shortlist_policy
         if self.model.semantic:
             from locatemot.groundjev.text_features import OneJevTextFeatures
             self.text_features=OneJevTextFeatures();self.text_cache={};self.class_cache={}
@@ -75,8 +76,31 @@ class CompactDecision:
         from locatemot.groundjev.decision import overlap
         results,life = [],{}
         groups = [candidates[i:i+self.batch_candidates] for i in range(0,len(candidates),self.batch_candidates)] or [[]]
-        for group in groups:
+        similarities = None
+        if self.shortlist_policy == 'hybrid16_16' and candidates and tracks:
+            import numpy as np
+            memory = [[t.anchor_feature, t.recent_feature, t.long_feature] for t in tracks]
+            if self.memory_feature_view == 'recent':memory = [[t.recent_feature]*3 for t in tracks]
+            elif self.memory_feature_view == 'ema':memory = [[t.long_feature]*3 for t in tracks]
+            memory = np.asarray(memory, dtype=float)
+            current = np.asarray([c['native_region_feature'] for c in candidates], dtype=float)
+            memory = memory / np.maximum(np.linalg.norm(memory, axis=-1, keepdims=True), 1e-12)
+            current = current / np.maximum(np.linalg.norm(current, axis=-1, keepdims=True), 1e-12)
+            similarities = (current @ memory.reshape(-1, 2560).T).reshape(len(candidates), len(tracks), 3).mean(-1)
+        for group_index, group in enumerate(groups):
             ranked = sorted(tracks,key=lambda t:(-max((overlap(c['box'],t.predicted_box(timestamp)) for c in group),default=0.),t.lost_age,t.track_id))[:self.shortlist]
+            if similarities is not None and group:
+                begin = group_index*self.batch_candidates
+                scores = similarities[begin:begin+len(group)].max(0)
+                appearance_order = sorted(range(len(tracks)), key=lambda i: (-float(scores[i]), tracks[i].lost_age, tracks[i].track_id))
+                ranked = ranked[:16]
+                selected = {t.track_id for t in ranked}
+                for index in appearance_order:
+                    if len(ranked) == self.shortlist:break
+                    track = tracks[index]
+                    if track.track_id not in selected:
+                        ranked.append(track)
+                        selected.add(track.track_id)
             n,m = len(group),len(ranked); w,height = image.size
             if not n and not m: continue
             history = [[t.anchor_feature,t.recent_feature,t.long_feature] for t in ranked]
@@ -126,6 +150,7 @@ class CompactDecision:
             query_output_policy='RMOT learned membership>=.5; physical identity state preserved before output filtering',
             class_policy='OVMOT full supplied-vocabulary learned softmax; no GT-based class or box filtering')
         if self.memory_feature_view!='all':metadata['memory_feature_view']=self.memory_feature_view
+        if self.shortlist_policy!='geometry':metadata['shortlist_policy']=self.shortlist_policy
         return results,life,metadata
 
 

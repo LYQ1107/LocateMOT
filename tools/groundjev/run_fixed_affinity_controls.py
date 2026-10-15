@@ -23,6 +23,9 @@ def main():
     if plan.get('context_regression'):
         context = json.loads((ROOT/plan['context_regression']).read_text())
         assert context['status'] == 'REAL_DENSE_TAO_CONTEXT32_64_128_FUNCTIONAL_VALIDATED'
+    if plan.get('hybrid_regression'):
+        hybrid = json.loads((ROOT/plan['hybrid_regression']).read_text())
+        assert hybrid['status'] == 'REAL_DENSE_TAO_HYBRID32_FUNCTIONAL_VALIDATED'
     args.out.mkdir(parents=True, exist_ok=False)
     state = {'status': 'STARTING_FIXED_AFFINITY_CONTROLS', 'owner_pid': os.getpid(),
         'plan': str(args.plan), 'device': 'cpu', 'additional_GPUs': 0,
@@ -30,6 +33,9 @@ def main():
         'comparison': plan['comparison_limit'], 'memory_storage': plan['memory_storage']}
     env = os.environ.copy()
     env.update(CUDA_VISIBLE_DEVICES='', PYTHONPATH=str(ROOT/'external/OneJev'))
+    if plan.get('cpu_blas_threads'):
+        for key in ('OPENBLAS_NUM_THREADS', 'OMP_NUM_THREADS', 'MKL_NUM_THREADS'):
+            env[key] = str(plan['cpu_blas_threads'])
     python = str(ROOT/'.venv-onejev-py310/bin/python')
 
     def save():
@@ -70,8 +76,10 @@ def main():
             for arm, policies in plan['arms'].items():
                 name = scope+'_'+arm
                 reused = bool(policies.get('reference_arm'))
-                output = upstream/(scope+'_'+policies['reference_arm']) if reused else args.out/name
+                reference_root = ROOT/plan['reference_root'] if plan.get('reference_root') else upstream
+                output = reference_root/(scope+'_'+policies['reference_arm']) if reused else args.out/name
                 shortlist = policies.get('shortlist', 32)
+                shortlist_policy = policies.get('shortlist_policy', 'geometry')
                 if not reused:
                     run(name+'_INFERENCE', [python, 'tools/groundjev/run_video.py', '--task', m['task'],
                     '--video', str(manifest), '--backend', 'compact', '--compact-device', 'cpu',
@@ -79,6 +87,7 @@ def main():
                     '--compact-association-policy', policies['association'],
                     '--compact-auxiliary-policy', policies['auxiliary'], '--omit-replay-feature-vectors',
                     '--compact-shortlist', str(shortlist),
+                    '--compact-shortlist-policy', shortlist_policy,
                     '--memory-checkpoint-format', 'binary', '--memory-export-interval', '0', '--out', str(output)])
                 scorer = 'evaluate_video.py' if m['task'] == 'mot' else 'evaluate_multitask.py'
                 if not reused:
@@ -96,6 +105,7 @@ def main():
                         assert new['frame'] == old['frame'] == m['frame_numbers'][count]
                         assert new['image_path'] == old['image_path'] == m['images'][count]
                         assert new['state']['decision_metadata']['shortlist_limit'] == shortlist
+                        assert new['state']['decision_metadata'].get('shortlist_policy', 'geometry') == shortlist_policy
                         expected_rejection = bool(old['perception'].get('model_response_rejected', False))
                         assert bool(new['perception'].get('model_response_rejected', False)) == expected_rejection
                         if expected_rejection:
@@ -114,6 +124,7 @@ def main():
                 assert report['compact_association_policy'] == policies['association']
                 assert report['compact_auxiliary_policy'] == policies['auxiliary']
                 assert report.get('compact_shortlist_limit', 32) == shortlist
+                assert report.get('compact_shortlist_policy', 'geometry') == shortlist_policy
                 assert Path(report['checkpoint']).resolve() == (ROOT/plan['checkpoint']).resolve()
                 assert Path(report['final_identity_memory_path']).is_file()
                 official = json.loads((output/'official_metrics.json').read_text())
