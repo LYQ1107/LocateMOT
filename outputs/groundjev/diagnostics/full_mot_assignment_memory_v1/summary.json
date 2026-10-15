@@ -1,0 +1,197 @@
+{
+  "status": "SAVED_FULL_MOT_GLOBAL_ASSIGNMENT_MEMORY_GATE_DIAGNOSED",
+  "results": {
+    "native_mot_full1203": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_full1203_controls_v2_wait_fix/native_mot_full1203",
+      "counts": {
+        "known_conflicting_assigned": 514,
+        "known_conflicting_assigned_argmax_agrees": 80,
+        "unknown_birth_assigned": 3418,
+        "unknown_birth_assigned_argmax_agrees": 513,
+        "unmatched_assigned": 7491,
+        "unmatched_assigned_argmax_agrees": 752,
+        "known_consistent_assigned": 149,
+        "known_consistent_assigned_argmax_agrees": 26,
+        "unknown_birth_UPDATE": 2984,
+        "unknown_birth_UPDATE_argmax_agrees": 413,
+        "unknown_birth_UPDATE_argmax_disagrees": 2571,
+        "unmatched_UPDATE": 6648,
+        "unmatched_UPDATE_argmax_agrees": 637,
+        "unmatched_UPDATE_argmax_disagrees": 6011,
+        "known_conflicting_UPDATE": 465,
+        "known_conflicting_UPDATE_argmax_agrees": 66,
+        "known_conflicting_UPDATE_argmax_disagrees": 399,
+        "known_consistent_UPDATE": 136,
+        "known_consistent_UPDATE_argmax_agrees": 25,
+        "known_consistent_UPDATE_argmax_disagrees": 111
+      },
+      "saved_probability_summaries": {
+        "known_conflicting_update_probability": {
+          "count": 514,
+          "mean": 0.8493855603112841,
+          "median": 0.9377044999999999
+        },
+        "known_conflicting_assigned_identity_probability": {
+          "count": 514,
+          "mean": 0.042337505836575876,
+          "median": 0.041456
+        },
+        "known_conflicting_top_choice_probability": {
+          "count": 514,
+          "mean": 0.05245008560311284,
+          "median": 0.0527795
+        },
+        "unknown_birth_update_probability": {
+          "count": 3418,
+          "mean": 0.820954522527794,
+          "median": 0.934949
+        },
+        "unknown_birth_assigned_identity_probability": {
+          "count": 3418,
+          "mean": 0.04229557548273844,
+          "median": 0.0416325
+        },
+        "unknown_birth_top_choice_probability": {
+          "count": 3418,
+          "mean": 0.05196122557050907,
+          "median": 0.0524745
+        },
+        "unmatched_update_probability": {
+          "count": 7491,
+          "mean": 0.8354336140702175,
+          "median": 0.937616
+        },
+        "unmatched_assigned_identity_probability": {
+          "count": 7491,
+          "mean": 0.0395035154185022,
+          "median": 0.039068
+        },
+        "unmatched_top_choice_probability": {
+          "count": 7491,
+          "mean": 0.0523013299959952,
+          "median": 0.052682
+        },
+        "known_consistent_update_probability": {
+          "count": 149,
+          "mean": 0.8524169194630873,
+          "median": 0.935535
+        },
+        "known_consistent_assigned_identity_probability": {
+          "count": 149,
+          "mean": 0.04268978523489933,
+          "median": 0.042155
+        },
+        "known_consistent_top_choice_probability": {
+          "count": 149,
+          "mean": 0.05223918120805369,
+          "median": 0.052832
+        }
+      },
+      "native_Q3_AUROC_known_consistent_vs_known_conflicting_assigned_events": 0.4857480479460998,
+      "hypothetical_argmax_agreement_gate_on_fixed_existing_writes": {
+        "known_consistent_writes_held": 111,
+        "known_conflicting_writes_held": 399,
+        "known_consistent_writes_retained": 25,
+        "known_conflicting_writes_retained": 66
+      }
+    },
+    "before500_mot_full1203": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_full1203_controls_v2_wait_fix/before500_mot_full1203",
+      "counts": {
+        "unmatched_assigned": 6405,
+        "unmatched_assigned_argmax_agrees": 672,
+        "known_conflicting_assigned": 696,
+        "known_conflicting_assigned_argmax_agrees": 105,
+        "unmatched_UPDATE": 5812,
+        "unmatched_UPDATE_argmax_agrees": 586,
+        "unmatched_UPDATE_argmax_disagrees": 5226,
+        "unknown_birth_assigned": 2778,
+        "unknown_birth_assigned_argmax_agrees": 426,
+        "unknown_birth_UPDATE": 2545,
+        "unknown_birth_UPDATE_argmax_agrees": 381,
+        "unknown_birth_UPDATE_argmax_disagrees": 2164,
+        "known_conflicting_UPDATE": 594,
+        "known_conflicting_UPDATE_argmax_agrees": 76,
+        "known_conflicting_UPDATE_argmax_disagrees": 518,
+        "known_consistent_assigned": 214,
+        "known_consistent_assigned_argmax_agrees": 27,
+        "known_consistent_UPDATE": 192,
+        "known_consistent_UPDATE_argmax_agrees": 19,
+        "known_consistent_UPDATE_argmax_disagrees": 173
+      },
+      "saved_probability_summaries": {
+        "unmatched_update_probability": {
+          "count": 6405,
+          "mean": 0.7000199711163154,
+          "median": 0.754475
+        },
+        "unmatched_assigned_identity_probability": {
+          "count": 6405,
+          "mean": 0.04174888602654176,
+          "median": 0.038989
+        },
+        "unmatched_top_choice_probability": {
+          "count": 6405,
+          "mean": 0.05928859297423888,
+          "median": 0.058489
+        },
+        "known_conflicting_update_probability": {
+          "count": 696,
+          "mean": 0.6744984382183908,
+          "median": 0.752814
+        },
+        "known_conflicting_assigned_identity_probability": {
+          "count": 696,
+          "mean": 0.04739998563218391,
+          "median": 0.0425385
+        },
+        "known_conflicting_top_choice_probability": {
+          "count": 696,
+          "mean": 0.062430541666666665,
+          "median": 0.0585595
+        },
+        "unknown_birth_update_probability": {
+          "count": 2778,
+          "mean": 0.7078218246940244,
+          "median": 0.7582234999999999
+        },
+        "unknown_birth_assigned_identity_probability": {
+          "count": 2778,
+          "mean": 0.04398651907847372,
+          "median": 0.042652999999999996
+        },
+        "unknown_birth_top_choice_probability": {
+          "count": 2778,
+          "mean": 0.05882104319654428,
+          "median": 0.058526999999999996
+        },
+        "known_consistent_update_probability": {
+          "count": 214,
+          "mean": 0.697205046728972,
+          "median": 0.7506035
+        },
+        "known_consistent_assigned_identity_probability": {
+          "count": 214,
+          "mean": 0.045602042056074765,
+          "median": 0.0423105
+        },
+        "known_consistent_top_choice_probability": {
+          "count": 214,
+          "mean": 0.061101214953271026,
+          "median": 0.0585155
+        }
+      },
+      "native_Q3_AUROC_known_consistent_vs_known_conflicting_assigned_events": 0.5131760930282522,
+      "hypothetical_argmax_agreement_gate_on_fixed_existing_writes": {
+        "known_consistent_writes_held": 173,
+        "known_conflicting_writes_held": 518,
+        "known_consistent_writes_retained": 19,
+        "known_conflicting_writes_retained": 76
+      }
+    }
+  },
+  "new_model_calls_or_modified_predictions_or_states": false,
+  "GT_posthoc_only": true,
+  "new_feature_cache_bytes": 0,
+  "limits": "Two completed1203frame trajectories, one legal validation video/seed. Known birth anchors are required for consistent/conflicting labels; unknown birth and unmatched candidates remain separate. Argmax agreement only describes which already-observed writes would be held on frozen histories, not a causal rollout, trained repair, counterfactual HOTA or an accepted policy change. Global matching legitimately uses non-argmax alternatives under competition; disagreement alone does not prove the chosen identity incorrect."
+}

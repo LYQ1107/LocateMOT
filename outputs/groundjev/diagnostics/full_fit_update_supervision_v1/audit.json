@@ -1,0 +1,19 @@
+{
+  "status": "FULL_NATIVE_FIT_OBSERVATION_Q3_VERSUS_ASSIGNED_IDENTITY_AUDITED",
+  "counts": {
+    "native_candidate_Q3_labels_reproduced": 1184,
+    "NEW_initialization": 74,
+    "NEW_initialization_Q3_yes": 41,
+    "frames": 48,
+    "no_final_identity": 1110,
+    "no_final_identity_Q3_yes": 565,
+    "actual_family_matched_eligible_native_Q3_rows": 2460
+  },
+  "first_known_conflicting_positive_examples": [],
+  "all_original_Q3_labels_and_actual_family_matched_copies_reproduced": true,
+  "original_data_checkpoints_or_predictions_modified": false,
+  "new_model_calls": false,
+  "GT_access": "Registered legal fit frames only; no validation/test supervision or actor state correction.",
+  "interpretation": "Original Q3 asks whether the candidate is a reliable observation. Its labels use visibility and correct-option availability, not the identity actually assigned after global matching. The audited native actor has no existing-identity assignments, so these native fit trajectories provide no actual conflicting existing-ID write contexts. Identity/lifecycle target rows still exist; absence of actual assignments does not mean the training corpus contains no association targets. Unknown birth anchors remain unknown. This eligible corpus audit does not prove actual600-prefix exposure or a causal source of validation failure. A repair needs an explicit selected-identity question and matched training/inference, rather than silently replacing labels under the old question.",
+  "actual_existing_identity_assignments_in_original_native_actor_rollout": 0
+}

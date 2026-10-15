@@ -62,6 +62,33 @@ birth anchors and unmatched/ignore-region candidates are kept separate; they
 are not relabeled wrong identities or supervised negatives. Counts preserve
 the original analyzer, metrics and uncorrected causal tracking states.
 
+Saved-decision diagnosis of the memory gate: native Q3 is asked per candidate
+before global matching and does not name the final assigned identity. On
+known-consistent/conflicting existing-ID assignments, Q3 AUROC is0.513(MOT500)
+and0.486(native600). Native600 mean Q3 is0.852/0.849 for those two classes;
+mean probability of the actually assigned identity is0.04269/0.04234. The
+observation gate does not distinguish those identity outcomes here.
+
+Requiring assigned-ID/argmax agreement on these frozen histories would hold
+173/192correct and518/594conflicting MOT500writes, and111/136correct and399/465
+conflicting native600writes. It discards most correct writes too, so this
+heuristic is not adopted. These counts do not simulate future causal states
+or establish HOTA gains. Receipt:
+`diagnostics/full_mot_assignment_memory_v1/summary.json`.
+
+Fit-only audit reproduces all1184original native Q3 labels on48legal training
+frames and all2460eligible family-matched copies. The actual old100-step
+native actor produced74NEW and1110events with no assigned identity, with zero
+existing-ID assignments. Thus these native actor states contain no actual
+conflicting existing-ID write contexts. Association/lifecycle supervision
+targets still exist; this is not absence of association labels throughout the
+training corpus. Q3 labels express visibility/correct-option availability,
+not final assigned-ID correctness. These observations motivate refreshing
+own-history support and an explicit assignment-conditioned gate; no existing
+label, checkpoint or policy is silently changed, and no causal training-failure
+claim follows from this eligible-corpus audit alone. Receipt:
+`diagnostics/full_fit_update_supervision_v1/audit.json`.
+
 ## All12complete800frame RMOT controls
 
 Both expressions cover all frames0..799 of legal Refer-KITTI-v2 validation0007.

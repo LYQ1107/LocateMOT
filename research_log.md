@@ -2392,3 +2392,9 @@ Pilot文档核对：原FOUR_GPU_PILOT仍写2026-10-14未完成，现用真实sto
 Full1203两个已完成单元逐帧核验通过：每个1203真实decoded帧、13664原始V1候选精确一致（只剥离注册feature向量）、27拒绝帧保留、checkpoint准确、finalbinarymemory存在、无GT/future读取，官方metrics不变。MOT500 HOTA7.848/IDF5.056/IDSW3530/FP6387/FN765；追加native600 HOTA8.703/IDF5.826/IDSW3631/FP7516/FN416。只报告两个完整单元，第三teacher仍pending，非完整三臂完成和非E2E。
 
 同源候选IoU.5一对一覆盖4341/4586GT=94.658%；Full before500/native600自身existing-anchor事件4008/2912中正确选项3952/2767，最终正确关联214/149=5.339/5.117%。原始argmax正确254/178，globalmatching丢失222/145、救回182/116；identity ranking与全局竞争均有问题，不只Ground漏检，不做跨模型同事件因果比较。新增只读已存events的UPDATE拆分初次守恒失败，原因是NEW初始化的memory_action也写UPDATE，原analyzer将NEW单列；按原分支语义排除NEW后守恒通过，未改原事件/指标。before500/native600真实known-consistent更新192/136、known-conflicting594/465、GTmatched未知birth2545/2984、unmatched5812/6648，后两类不冒充错误身份或负监督。保留原权重/预测与负结果；等待teacher和自然memory完成后再据主要原因选择最小受控修复。
+
+研究假设：Full的native Q3在全局匹配前按candidate给UPDATE概率，Hungarian可能将candidate分配到非argmax身份，Q3未显式看到最终分配。先只读两个已完成完整视频的frame_decisions与原固定birth-anchor诊断，区分已知正确/已知冲突/未知birth/unmatched更新，统计原argmax一致性及真实选择概率。仅评估argmax一致性约束会拦下哪些已发生写入，不改任何状态/权重/阈值，不将冻结轨迹计数冒充因果rollout收益；据此决定是否值得后续受控修复。
+
+2026-10-15：只读Full两个完整MOT轨迹原决策，确认Q3是全局匹配前的candidate观察可靠性问题，未指明最终assignedID。已知birth正确/冲突分配上Q3 AUROC before500=.513176/native600=.485748；native600两类Q3均值.852417/.849386，assigned identity概率.042690/.042338，几乎无区分。冻结轨迹若加assignedID=argmax约束，before500会拦173/192正确及518/594冲突写入，native600拦111/136正确及399/465冲突；同样大量伤害正确写入，不采纳该规则，不以冻结计数冒充因果rollout或HOTA修复。所有原始事件与状态不改。
+
+Full fit监督实际核验：48合法fit帧/1184native候选全部Q3旧标签按visibility与correct-option availability精确重现，2460条family-matched eligible native Q3副本state/question/target与源完全一致。重要覆盖缺口：旧100步actor仅74NEW，其余1110无最终身份，0次沿用已有身份；因而该native回放没有实际wrong existing-ID memory-write上下文。训练仍有大量association/lifecycle目标，不能说完全无关联监督；也不能由eligible审计宣称实际600prefix因果已证。保留原标签与权重；后续最小可解释方向是刷新当前模型fit自身历史、显式条件于最终分配的Q3问题与监督，而不是给旧candidate问题偷换标签。此轮不增加GPU、特征缓存或新模型调用，原Fullteacher/native9/natural队列不动。
