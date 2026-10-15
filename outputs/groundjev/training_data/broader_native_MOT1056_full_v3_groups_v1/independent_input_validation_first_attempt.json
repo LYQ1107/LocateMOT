@@ -1,0 +1,7 @@
+{
+  "blocking_session": 82003,
+  "exit_code": 1,
+  "first_actionable_root_cause": "Validator reused a forward-only ReplayFrames stream across independent cases and requested frame135 twice. Source frames were intact.",
+  "fix": "Fresh source replay and tracker per independent case; no source, targets or protocol changed.",
+  "corrected_validation": "independent_native_input_validation.json"
+}

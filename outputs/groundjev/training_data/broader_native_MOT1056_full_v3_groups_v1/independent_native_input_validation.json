@@ -1,0 +1,51 @@
+{
+  "status": "NATIVE_CAUSAL_REQUEST_AND_REAL_PROCESSOR_GROUP_REFERENCES_VALIDATED",
+  "legacy_rows_unchanged": 6,
+  "cases": [
+    {
+      "row": "MOT17-02-FRCNN_136_batch0_match_0",
+      "family": "identity",
+      "causal_prefix_frames_exact": 1,
+      "native_state_question_pixels_and_processor_tensors_exact": true,
+      "tokens": 18936,
+      "processor_keys": [
+        "attention_mask",
+        "image_grid_thw",
+        "input_ids",
+        "mm_token_type_ids",
+        "pixel_values"
+      ]
+    },
+    {
+      "row": "MOT17-02-FRCNN_136_batch0_reliability_0",
+      "family": "reliability",
+      "causal_prefix_frames_exact": 1,
+      "native_state_question_pixels_and_processor_tensors_exact": true,
+      "tokens": 17994,
+      "processor_keys": [
+        "attention_mask",
+        "image_grid_thw",
+        "input_ids",
+        "mm_token_type_ids",
+        "pixel_values"
+      ]
+    },
+    {
+      "row": "MOT17-02-FRCNN_136_batch0_assigned_assigned_update_0",
+      "family": "assigned_identity_memory_update",
+      "causal_prefix_frames_exact": 1,
+      "native_state_question_pixels_and_processor_tensors_exact": true,
+      "tokens": 24661,
+      "processor_keys": [
+        "attention_mask",
+        "image_grid_thw",
+        "input_ids",
+        "mm_token_type_ids",
+        "pixel_values"
+      ]
+    }
+  ],
+  "new_model_predictions": 0,
+  "new_optimizer_updates": 0,
+  "full_goal_complete": false
+}

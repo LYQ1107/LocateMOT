@@ -1,0 +1,13 @@
+{
+  "status": "VERIFIED_OWNED_CPU_EXPORTER_STOPPED_FOR_PRODUCER_SNAPSHOT_FIX",
+  "previous_owner": [
+    3093531,
+    "47292039"
+  ],
+  "resumed_from_fully_validated_clips": 24,
+  "previous_last_status": "WAITING_MORE_COMPLETED_NATIVE_TRAIN_CLIPS",
+  "all_completed_exports_retained": true,
+  "partial_export_attempts_preserved_and_not_accepted_as_completed": true,
+  "source_GPU7_collector_or_other_jobs_stopped": false,
+  "question_target_protocol_changed": false
+}

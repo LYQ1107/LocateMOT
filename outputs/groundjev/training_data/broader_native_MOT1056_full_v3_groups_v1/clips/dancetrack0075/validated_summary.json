@@ -1,0 +1,33 @@
+{
+  "sequence": "dancetrack0075",
+  "counts": {
+    "native_pixel_groups_exact": 16,
+    "native_crop_sheets_exact": 31,
+    "request_groups": 31,
+    "rows": 535,
+    "family:identity": 121,
+    "family:memory_update": 121,
+    "family:reliability": 121,
+    "candidate_registry_rows": 121,
+    "frames": 16,
+    "candidates": 121,
+    "rejected_frames": 0,
+    "family:lifecycle": 90,
+    "existing_assignments_in_input": 90,
+    "assigned_target:yes": 82,
+    "family:assigned_identity_memory_update": 82,
+    "assigned_target:None": 8
+  },
+  "row_references": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0075/train_refs.jsonl.gz",
+  "all_actor_outputs_states_exact": true,
+  "new_OneJev_training_updates": 0,
+  "question_evidence_format": "v3_crop_motion",
+  "full_goal_complete": false,
+  "status": "REAL_CLIP_FULL_V3_GROUP_REFS_PIXELS_AND_ALL_NATIVE_CPU_ROWS_VALIDATED",
+  "max_tokens": 7422,
+  "total_planned_tokens": 2767101,
+  "dropped_rows": 0,
+  "actual_plan_epoch_seconds": 0.6145985340117477,
+  "actual_world_size": 1,
+  "hypothetical_4row_epoch_updates": 134
+}
