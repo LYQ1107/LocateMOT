@@ -1,0 +1,78 @@
+{
+  "status": "OFFICIAL_REGISTERED_MULTITASK_SCOPE_EVALUATION_COMPLETE",
+  "task": "ovmot",
+  "dataset": "tao_amodal",
+  "sequence": "val/HACS/Making_a_sandwich_v_SMk4troNhwE_scene_0_0-2482",
+  "scope": "full_legal_validation_video_annotation_frames",
+  "frames": 40,
+  "all_registered_frames_included": true,
+  "GT_access": "evaluation only",
+  "official_test_labels_read": false,
+  "end_to_end_fps": null,
+  "association_replay_fps": 0.10541658954370736,
+  "perception_rejected_frames": [],
+  "evaluator": "unmodified official TETA OVMOT recipe; non-exhaustive TAO",
+  "evaluator_commit": "b498aa87b252bfb75d7cc0d8d6435c3e1e74e4de",
+  "metrics": {
+    "TETA": 14.517,
+    "LocA": 8.088,
+    "AssocA": 5.1478,
+    "ClsA": 30.314,
+    "LocRe": 84.833,
+    "LocPr": 8.2072,
+    "AssocRe": 5.2406,
+    "AssocPr": 71.608,
+    "ClsRe": 33.333,
+    "ClsPr": 30.314
+  },
+  "base_novel": {
+    "base": {
+      "TETA": 18.93545,
+      "LocA": 5.80265,
+      "AssocA": 5.5325500000000005,
+      "ClsA": 45.471,
+      "LocRe": 84.6875,
+      "LocPr": 5.89035,
+      "AssocRe": 5.644,
+      "AssocPr": 69.38749999999999,
+      "ClsRe": 50.0,
+      "ClsPr": 45.471
+    },
+    "novel": {
+      "TETA": 5.679,
+      "LocA": 12.659,
+      "AssocA": 4.3785,
+      "ClsA": 0.0,
+      "LocRe": 85.125,
+      "LocPr": 12.841,
+      "AssocRe": 4.4338,
+      "AssocPr": 76.049,
+      "ClsRe": 0.0,
+      "ClsPr": 0.0
+    }
+  },
+  "metric_scale": "official TETA summary percent",
+  "evaluated_categories": [
+    {
+      "name": "knife",
+      "group": "base"
+    },
+    {
+      "name": "peeler_(tool_for_fruit_and_vegetables)",
+      "group": "novel"
+    },
+    {
+      "name": "baby",
+      "group": "base"
+    }
+  ],
+  "GT_boxes": 160,
+  "predictions": 30676,
+  "unmapped_predicted_labels": [],
+  "unmapped_policy": "retain boxes with unknown category -1; never discard predictions or GT",
+  "prediction_score": "constant unscored sentinel 1; no detector confidence and no score-based truncation",
+  "GT_policy": "all original modalxywh, no clipping/visibility/category exclusions",
+  "novel_evaluation_GT_used_for_training": false,
+  "official_complete_dataset_result": false,
+  "timestamp_policy": "annotation-step units; physical source FPS unavailable; display at one step per second"
+}

@@ -1,0 +1,32 @@
+{
+  "status": "WAITING_VERIFIED_SHARED600_GPU5_HANDOFF",
+  "owner_pid": 1896249,
+  "training_children": {
+    "teacher": [
+      1859211,
+      "41765980"
+    ],
+    "native": [
+      1859216,
+      "41766000"
+    ]
+  },
+  "physical_gpu": 5,
+  "completed": {},
+  "fresh_native_compact_not_replay": true,
+  "full_Goal_complete": false,
+  "total_new_feature_cache_budget_bytes": 2147483648,
+  "GT_or_future_frames_read_by_runtime": false,
+  "old_U2_queue_restarted": false,
+  "actual_native_ROI_archive_replay_regression": {
+    "status": "ACTUAL_NATIVE_ROI_ARCHIVE_REPLAY4_VALIDATED",
+    "frames": 4,
+    "actual_native_candidates": 13,
+    "native_feature_dimension": 2560,
+    "all_outputs_memory_state_geometry_exact": true,
+    "freshnativeRPC_or_E2Espeed_claim": false,
+    "GT_or_future_read": false,
+    "archive_bytes": 742680,
+    "cap_bytes": 8388608
+  }
+}

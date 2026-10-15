@@ -1,0 +1,335 @@
+{
+  "status": "RAW_NATIVE_TAO_GEOMETRY_ALIAS_AUDIT_COMPLETE_NO_PREDICTIONS_CHANGED",
+  "frames": 40,
+  "raw_candidates": 35228,
+  "exact_geometry_groups": 7343,
+  "exact_alias_observations": 27885,
+  "alias_fraction": 0.7915578517088679,
+  "max_aliases_per_box": 188,
+  "comparison": "exact Pythoncoordinate equality only, noIoUthreshold/NMS/topK/GTselection",
+  "GT_read": false,
+  "future_or_model_outputs_used_for_grouping": false,
+  "all_original_native_queries_boxes_labels_and_metrics_preserved": true,
+  "frames_detail": [
+    {
+      "frame": 1,
+      "native_candidates": 1037,
+      "exact_geometry_groups": 251,
+      "duplicate_aliases": 786,
+      "groups_with_multiple_labels": 151,
+      "max_aliases_per_box": 54
+    },
+    {
+      "frame": 30,
+      "native_candidates": 990,
+      "exact_geometry_groups": 230,
+      "duplicate_aliases": 760,
+      "groups_with_multiple_labels": 150,
+      "max_aliases_per_box": 62
+    },
+    {
+      "frame": 59,
+      "native_candidates": 802,
+      "exact_geometry_groups": 192,
+      "duplicate_aliases": 610,
+      "groups_with_multiple_labels": 113,
+      "max_aliases_per_box": 48
+    },
+    {
+      "frame": 88,
+      "native_candidates": 912,
+      "exact_geometry_groups": 232,
+      "duplicate_aliases": 680,
+      "groups_with_multiple_labels": 157,
+      "max_aliases_per_box": 52
+    },
+    {
+      "frame": 117,
+      "native_candidates": 933,
+      "exact_geometry_groups": 200,
+      "duplicate_aliases": 733,
+      "groups_with_multiple_labels": 121,
+      "max_aliases_per_box": 166
+    },
+    {
+      "frame": 146,
+      "native_candidates": 1103,
+      "exact_geometry_groups": 221,
+      "duplicate_aliases": 882,
+      "groups_with_multiple_labels": 143,
+      "max_aliases_per_box": 85
+    },
+    {
+      "frame": 175,
+      "native_candidates": 1211,
+      "exact_geometry_groups": 241,
+      "duplicate_aliases": 970,
+      "groups_with_multiple_labels": 148,
+      "max_aliases_per_box": 82
+    },
+    {
+      "frame": 204,
+      "native_candidates": 986,
+      "exact_geometry_groups": 173,
+      "duplicate_aliases": 813,
+      "groups_with_multiple_labels": 108,
+      "max_aliases_per_box": 85
+    },
+    {
+      "frame": 233,
+      "native_candidates": 929,
+      "exact_geometry_groups": 182,
+      "duplicate_aliases": 747,
+      "groups_with_multiple_labels": 128,
+      "max_aliases_per_box": 76
+    },
+    {
+      "frame": 262,
+      "native_candidates": 427,
+      "exact_geometry_groups": 82,
+      "duplicate_aliases": 345,
+      "groups_with_multiple_labels": 64,
+      "max_aliases_per_box": 64
+    },
+    {
+      "frame": 291,
+      "native_candidates": 1125,
+      "exact_geometry_groups": 257,
+      "duplicate_aliases": 868,
+      "groups_with_multiple_labels": 166,
+      "max_aliases_per_box": 82
+    },
+    {
+      "frame": 320,
+      "native_candidates": 748,
+      "exact_geometry_groups": 161,
+      "duplicate_aliases": 587,
+      "groups_with_multiple_labels": 101,
+      "max_aliases_per_box": 80
+    },
+    {
+      "frame": 349,
+      "native_candidates": 1019,
+      "exact_geometry_groups": 219,
+      "duplicate_aliases": 800,
+      "groups_with_multiple_labels": 127,
+      "max_aliases_per_box": 62
+    },
+    {
+      "frame": 378,
+      "native_candidates": 766,
+      "exact_geometry_groups": 152,
+      "duplicate_aliases": 614,
+      "groups_with_multiple_labels": 98,
+      "max_aliases_per_box": 93
+    },
+    {
+      "frame": 407,
+      "native_candidates": 745,
+      "exact_geometry_groups": 154,
+      "duplicate_aliases": 591,
+      "groups_with_multiple_labels": 103,
+      "max_aliases_per_box": 69
+    },
+    {
+      "frame": 436,
+      "native_candidates": 1013,
+      "exact_geometry_groups": 188,
+      "duplicate_aliases": 825,
+      "groups_with_multiple_labels": 118,
+      "max_aliases_per_box": 124
+    },
+    {
+      "frame": 465,
+      "native_candidates": 947,
+      "exact_geometry_groups": 229,
+      "duplicate_aliases": 718,
+      "groups_with_multiple_labels": 126,
+      "max_aliases_per_box": 73
+    },
+    {
+      "frame": 494,
+      "native_candidates": 624,
+      "exact_geometry_groups": 132,
+      "duplicate_aliases": 492,
+      "groups_with_multiple_labels": 88,
+      "max_aliases_per_box": 49
+    },
+    {
+      "frame": 523,
+      "native_candidates": 1202,
+      "exact_geometry_groups": 208,
+      "duplicate_aliases": 994,
+      "groups_with_multiple_labels": 139,
+      "max_aliases_per_box": 72
+    },
+    {
+      "frame": 552,
+      "native_candidates": 932,
+      "exact_geometry_groups": 231,
+      "duplicate_aliases": 701,
+      "groups_with_multiple_labels": 147,
+      "max_aliases_per_box": 74
+    },
+    {
+      "frame": 581,
+      "native_candidates": 704,
+      "exact_geometry_groups": 118,
+      "duplicate_aliases": 586,
+      "groups_with_multiple_labels": 77,
+      "max_aliases_per_box": 89
+    },
+    {
+      "frame": 610,
+      "native_candidates": 357,
+      "exact_geometry_groups": 53,
+      "duplicate_aliases": 304,
+      "groups_with_multiple_labels": 38,
+      "max_aliases_per_box": 49
+    },
+    {
+      "frame": 639,
+      "native_candidates": 1147,
+      "exact_geometry_groups": 194,
+      "duplicate_aliases": 953,
+      "groups_with_multiple_labels": 135,
+      "max_aliases_per_box": 188
+    },
+    {
+      "frame": 668,
+      "native_candidates": 1023,
+      "exact_geometry_groups": 226,
+      "duplicate_aliases": 797,
+      "groups_with_multiple_labels": 140,
+      "max_aliases_per_box": 64
+    },
+    {
+      "frame": 697,
+      "native_candidates": 817,
+      "exact_geometry_groups": 183,
+      "duplicate_aliases": 634,
+      "groups_with_multiple_labels": 128,
+      "max_aliases_per_box": 71
+    },
+    {
+      "frame": 726,
+      "native_candidates": 692,
+      "exact_geometry_groups": 131,
+      "duplicate_aliases": 561,
+      "groups_with_multiple_labels": 88,
+      "max_aliases_per_box": 39
+    },
+    {
+      "frame": 755,
+      "native_candidates": 760,
+      "exact_geometry_groups": 185,
+      "duplicate_aliases": 575,
+      "groups_with_multiple_labels": 129,
+      "max_aliases_per_box": 69
+    },
+    {
+      "frame": 784,
+      "native_candidates": 1204,
+      "exact_geometry_groups": 213,
+      "duplicate_aliases": 991,
+      "groups_with_multiple_labels": 139,
+      "max_aliases_per_box": 112
+    },
+    {
+      "frame": 813,
+      "native_candidates": 707,
+      "exact_geometry_groups": 177,
+      "duplicate_aliases": 530,
+      "groups_with_multiple_labels": 114,
+      "max_aliases_per_box": 66
+    },
+    {
+      "frame": 842,
+      "native_candidates": 818,
+      "exact_geometry_groups": 167,
+      "duplicate_aliases": 651,
+      "groups_with_multiple_labels": 115,
+      "max_aliases_per_box": 90
+    },
+    {
+      "frame": 871,
+      "native_candidates": 598,
+      "exact_geometry_groups": 127,
+      "duplicate_aliases": 471,
+      "groups_with_multiple_labels": 74,
+      "max_aliases_per_box": 61
+    },
+    {
+      "frame": 900,
+      "native_candidates": 888,
+      "exact_geometry_groups": 179,
+      "duplicate_aliases": 709,
+      "groups_with_multiple_labels": 127,
+      "max_aliases_per_box": 64
+    },
+    {
+      "frame": 929,
+      "native_candidates": 788,
+      "exact_geometry_groups": 160,
+      "duplicate_aliases": 628,
+      "groups_with_multiple_labels": 98,
+      "max_aliases_per_box": 58
+    },
+    {
+      "frame": 958,
+      "native_candidates": 837,
+      "exact_geometry_groups": 193,
+      "duplicate_aliases": 644,
+      "groups_with_multiple_labels": 124,
+      "max_aliases_per_box": 62
+    },
+    {
+      "frame": 987,
+      "native_candidates": 1166,
+      "exact_geometry_groups": 228,
+      "duplicate_aliases": 938,
+      "groups_with_multiple_labels": 149,
+      "max_aliases_per_box": 111
+    },
+    {
+      "frame": 1016,
+      "native_candidates": 798,
+      "exact_geometry_groups": 175,
+      "duplicate_aliases": 623,
+      "groups_with_multiple_labels": 98,
+      "max_aliases_per_box": 57
+    },
+    {
+      "frame": 1045,
+      "native_candidates": 894,
+      "exact_geometry_groups": 163,
+      "duplicate_aliases": 731,
+      "groups_with_multiple_labels": 108,
+      "max_aliases_per_box": 70
+    },
+    {
+      "frame": 1074,
+      "native_candidates": 935,
+      "exact_geometry_groups": 176,
+      "duplicate_aliases": 759,
+      "groups_with_multiple_labels": 118,
+      "max_aliases_per_box": 112
+    },
+    {
+      "frame": 1103,
+      "native_candidates": 1053,
+      "exact_geometry_groups": 206,
+      "duplicate_aliases": 847,
+      "groups_with_multiple_labels": 146,
+      "max_aliases_per_box": 65
+    },
+    {
+      "frame": 1132,
+      "native_candidates": 591,
+      "exact_geometry_groups": 154,
+      "duplicate_aliases": 437,
+      "groups_with_multiple_labels": 104,
+      "max_aliases_per_box": 38
+    }
+  ]
+}

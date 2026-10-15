@@ -1,0 +1,16 @@
+{
+  "name": "SeparateTAOproposal-policy experiment, exactcoordinate alias groups",
+  "observation": "40rawframes35228candidates,7343exactgeometrygroups,27885aliases(79.1558%),max188perbox; noGTread",
+  "hypothesis": "crossqueryduplicateboxes multiplyphysicalidentityslots; rawsharedCompactcorrectanchoroptioncoverage.1567 andAssocA5.1478 vsSimple28.618",
+  "grouping": "exactnativefourfloatxyxyequality only; noIoUthreshold/NMS/topK/confidence/GTselection; retainfirstnativebox,label,score andcheckidenticalROIarrays",
+  "preserved": "all40frames/520originalqueryoutcomes/35228aliasindiceslabelsandscores retained; originalrawmetrics/sourceunchanged",
+  "controls": "unchangedSimple andsamefrozen1.146511MsharedCompactweights/.5membership; newgroupedsource each, unmodifiedofficialTETA/posthoc",
+  "scope": "full40annotationframeoneTAOBaseNovelvideo; separateproposalprotocol, notfixedrawcandidateassociation/JEVcausality orfullTAOresult",
+  "device": "CPUonly, noadditionalGPU/detectorquery/training",
+  "new_feature_budget_bytes": 1073741824,
+  "conservative_prior_TAO_RMO_and_probe_plus_alias_cap_bytes": 21397407162,
+  "global_feature_cache_budget_bytes": 26843545600,
+  "launch": "python3 tools/groundjev/run_tao_exact_alias_control.py --out outputs/groundjev/multitask_runs/tao_exact_geometry_alias40_v1",
+  "status": "registeredbeforeexecution",
+  "full_goal_complete": false
+}

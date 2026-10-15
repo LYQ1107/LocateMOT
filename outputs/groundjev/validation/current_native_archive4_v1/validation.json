@@ -1,0 +1,11 @@
+{
+  "status": "ACTUAL_NATIVE_ROI_ARCHIVE_REPLAY4_VALIDATED",
+  "frames": 4,
+  "actual_native_candidates": 13,
+  "native_feature_dimension": 2560,
+  "all_outputs_memory_state_geometry_exact": true,
+  "freshnativeRPC_or_E2Espeed_claim": false,
+  "GT_or_future_read": false,
+  "archive_bytes": 742680,
+  "cap_bytes": 8388608
+}

@@ -1,0 +1,223 @@
+{
+  "status": "ALL40_BASE_NOVEL_NATIVE_CANDIDATE_CONTROLS_VALIDATED",
+  "scope": "onefulllegalTAOvalidationvideo/40annotationframes",
+  "native_source_queries": 520,
+  "native_scored_queries": 317,
+  "native_parser_rejected_queries": 203,
+  "all1203_input_categories_requested_each_frame": true,
+  "original_native_candidates": 35228,
+  "GT_boxes": 160,
+  "Base_classes": [
+    "baby/person.n.01",
+    "knife"
+  ],
+  "Novel_classes": [
+    "peeler_(tool_for_fruit_and_vegetables)"
+  ],
+  "same_all_native_box_score_order_and_feature_source": true,
+  "GT_and_future_only_posthoc_not_runtime": true,
+  "official_metric_source": "unmodifiedTETA b498aa87b252bfb75d7cc0d8d6435c3e1e74e4de",
+  "metric_scale": "officialTETApercent",
+  "no_full_dataset_or_unannotated_negative_claim": true,
+  "timing": "CPUreplay, Simple28frameprefixresumed; no detectorE2E/uninterruptedhardwareFPS comparison",
+  "runs": {
+    "simple": {
+      "metrics": {
+        "TETA": 18.64,
+        "LocA": 7.0114,
+        "AssocA": 28.618,
+        "ClsA": 20.29,
+        "LocRe": 89.375,
+        "LocPr": 7.0629,
+        "AssocRe": 30.888,
+        "AssocPr": 60.706,
+        "ClsRe": 20.29,
+        "ClsPr": 63.333
+      },
+      "base_novel": {
+        "base": {
+          "TETA": 23.372500000000002,
+          "LocA": 5.66265,
+          "AssocA": 34.0205,
+          "ClsA": 30.43485,
+          "LocRe": 90.125,
+          "LocPr": 5.70445,
+          "AssocRe": 35.983999999999995,
+          "AssocPr": 65.011,
+          "ClsRe": 30.43485,
+          "ClsPr": 95.0
+        },
+        "novel": {
+          "TETA": 9.1737,
+          "LocA": 9.7088,
+          "AssocA": 17.812,
+          "ClsA": 0.0,
+          "LocRe": 87.875,
+          "LocPr": 9.7799,
+          "AssocRe": 20.697,
+          "AssocPr": 52.095,
+          "ClsRe": 0.0,
+          "ClsPr": 0.0
+        }
+      },
+      "decoded_frames": 40,
+      "predictions": 35228,
+      "unmapped_native_label_count": 1883,
+      "physical_identity_posthoc": {
+        "counts": {
+          "gt_observations": 160,
+          "candidates": 35228,
+          "gt_matched_candidates": 147,
+          "unmatched_candidate_events": 35081,
+          "unmatched_candidates_ignored": 0,
+          "memory_initializations_unmatched_GT": 8197,
+          "no_surviving_correct_anchor_events": 49,
+          "memory_initializations_matched_GT": 14,
+          "memory_updates_wrong_identity_or_unmatched": 27002,
+          "model_correct_before_global_matching": 14,
+          "model_correct_to_wrong_after_global_matching": 6,
+          "model_wrong_to_correct_after_global_matching": 7,
+          "existing_identity_events": 98,
+          "correct_identity_option_present": 98,
+          "correct_existing_associations": 15,
+          "correct_to_wrong_events": 13,
+          "wrong_to_correct_events": 9,
+          "existing_identity_recreated_as_NEW": 9,
+          "memory_updates_identity_consistent": 15,
+          "recovery_identity_options_present": 9,
+          "recovery_global_assignment_same_ID": 4
+        },
+        "correct_option_coverage": 1.0,
+        "existing_association_accuracy": 0.15306122448979592,
+        "candidate_GT_recall_at_iou05": 0.91875,
+        "posthoc_NO_MATCH_matched_GT_only": {
+          "counts": {
+            "TN": 147
+          },
+          "precision": null,
+          "recall": null,
+          "gold_rule": "GT-matched valid object has a surviving correct birth anchor, but no correct identity in its actual shortlist",
+          "unmatched_or_ignore_regions_excluded": true
+        },
+        "posthoc_identity_recovery": {
+          "counts": {
+            "candidate_gap_return_events": 9,
+            "gap_1to3steps_eligible": 9,
+            "gap_1to3steps_same_correct_birth_anchor_ID": 0
+          },
+          "success_rates": {
+            "gap_le1step": null,
+            "gap_1to3steps": 0.0,
+            "gap_gt3steps": null
+          },
+          "rule": "first GT-aligned candidate after at least one missing candidate observation; same previous emitted ID with matching immutable birth anchor",
+          "scope": "natural candidate/GT gaps only; no artificial occlusion, future GT correction or recovery metric replacing TrackEval"
+        },
+        "physical_seconds_verified": false
+      },
+      "official_source": "outputs/groundjev/multitask_runs/tao_base_novel63_full_v3_empty_crop_cpu/simple/official_metrics.json",
+      "video": "outputs/groundjev/multitask_runs/tao_base_novel63_full_v3_empty_crop_cpu/simple/tracks.mp4"
+    },
+    "shared_compact": {
+      "metrics": {
+        "TETA": 14.517,
+        "LocA": 8.088,
+        "AssocA": 5.1478,
+        "ClsA": 30.314,
+        "LocRe": 84.833,
+        "LocPr": 8.2072,
+        "AssocRe": 5.2406,
+        "AssocPr": 71.608,
+        "ClsRe": 33.333,
+        "ClsPr": 30.314
+      },
+      "base_novel": {
+        "base": {
+          "TETA": 18.93545,
+          "LocA": 5.80265,
+          "AssocA": 5.5325500000000005,
+          "ClsA": 45.471,
+          "LocRe": 84.6875,
+          "LocPr": 5.89035,
+          "AssocRe": 5.644,
+          "AssocPr": 69.38749999999999,
+          "ClsRe": 50.0,
+          "ClsPr": 45.471
+        },
+        "novel": {
+          "TETA": 5.679,
+          "LocA": 12.659,
+          "AssocA": 4.3785,
+          "ClsA": 0.0,
+          "LocRe": 85.125,
+          "LocPr": 12.841,
+          "AssocRe": 4.4338,
+          "AssocPr": 76.049,
+          "ClsRe": 0.0,
+          "ClsPr": 0.0
+        }
+      },
+      "decoded_frames": 40,
+      "predictions": 30676,
+      "unmapped_native_label_count": 0,
+      "physical_identity_posthoc": {
+        "counts": {
+          "gt_observations": 160,
+          "candidates": 35228,
+          "gt_matched_candidates": 147,
+          "unmatched_candidate_events": 35081,
+          "unmatched_candidates_ignored": 1716,
+          "memory_initializations_unmatched_GT": 17941,
+          "no_surviving_correct_anchor_events": 13,
+          "memory_initializations_matched_GT": 75,
+          "memory_updates_wrong_identity_or_unmatched": 12653,
+          "model_correct_before_global_matching": 9,
+          "model_correct_to_wrong_after_global_matching": 3,
+          "model_wrong_to_correct_after_global_matching": 1,
+          "existing_identity_events": 134,
+          "correct_identity_option_present": 21,
+          "correct_existing_associations": 7,
+          "existing_identity_recreated_as_NEW": 67,
+          "correct_to_wrong_events": 14,
+          "wrong_to_correct_events": 10,
+          "recovery_identity_options_present": 0,
+          "recovery_global_assignment_same_ID": 0,
+          "memory_updates_identity_consistent": 7
+        },
+        "correct_option_coverage": 0.15671641791044777,
+        "existing_association_accuracy": 0.05223880597014925,
+        "candidate_GT_recall_at_iou05": 0.91875,
+        "posthoc_NO_MATCH_matched_GT_only": {
+          "counts": {
+            "TN": 34,
+            "FN": 100,
+            "TP": 13
+          },
+          "precision": 1.0,
+          "recall": 0.11504424778761062,
+          "gold_rule": "GT-matched valid object has a surviving correct birth anchor, but no correct identity in its actual shortlist",
+          "unmatched_or_ignore_regions_excluded": true
+        },
+        "posthoc_identity_recovery": {
+          "counts": {
+            "candidate_gap_return_events": 9,
+            "gap_1to3steps_eligible": 9,
+            "gap_1to3steps_same_correct_birth_anchor_ID": 0
+          },
+          "success_rates": {
+            "gap_le1step": null,
+            "gap_1to3steps": 0.0,
+            "gap_gt3steps": null
+          },
+          "rule": "first GT-aligned candidate after at least one missing candidate observation; same previous emitted ID with matching immutable birth anchor",
+          "scope": "natural candidate/GT gaps only; no artificial occlusion, future GT correction or recovery metric replacing TrackEval"
+        },
+        "physical_seconds_verified": false
+      },
+      "official_source": "outputs/groundjev/multitask_runs/tao_base_novel63_full_v3_empty_crop_cpu/shared_compact/official_metrics.json",
+      "video": "outputs/groundjev/multitask_runs/tao_base_novel63_full_v3_empty_crop_cpu/shared_compact/tracks.mp4"
+    }
+  },
+  "result": "SharedCompactClsA30.314>Simple20.290, butAssocA5.1478<28.618 andTETA14.517<18.640; Base andNovelTETA decline; NovelClsA0both. No unifiedsuccess/modelpromotion.",
+  "first_actionable_association_failure": "actualcorrectbirthanchor coveragein32identityshortlists only.156716Compact vs1Simple; posthocnonnormative, notGTfeedback"
+}

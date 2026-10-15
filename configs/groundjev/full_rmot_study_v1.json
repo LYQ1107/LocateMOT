@@ -1,0 +1,43 @@
+{
+  "name": "FulllegalRMOT fresh sharedCompact E2E and matchedFull semantic study",
+  "training_owner": "outputs/groundjev/training/onejev_unified600_pair_v4_detached_resume",
+  "training": {
+    "teacher": "outputs/groundjev/training/onejev_unified600_teacher_v2",
+    "native": "outputs/groundjev/training/onejev_unified600_native_v2"
+  },
+  "physical_gpu": 5,
+  "maximum_project_GPUs": 4,
+  "ground_port": 8105,
+  "feature_port": 8113,
+  "manifests": {
+    "single800": "outputs/groundjev/multitask_pilot_data/rmot_single_empty_full.json",
+    "multi800": "outputs/groundjev/multitask_pilot_data/rmot_multi_empty_full.json"
+  },
+  "compact_checkpoint": "outputs/groundjev/compact/rmot_native72_stage_v1/broad_native_training/checkpoint.pt",
+  "full_checkpoints": {
+    "pretrained": "models/OneJev-0.8B",
+    "before500": "outputs/groundjev/training/onejev_own_history_v3_exact500_replay_stateful/ckpt-step500",
+    "teacher600": "outputs/groundjev/training/onejev_unified600_teacher_v2/ckpt-step600",
+    "native600": "outputs/groundjev/training/onejev_unified600_native_v2/ckpt-step600"
+  },
+  "runtime": "Fullv3_crop_motion adaptivegroups+nativeNoulmembershipfixed.5 for allfour Fullarms; same frozen originalDLM candidates eachscope; currentsharedCompact owntrainedsemantichead/physicalidentitycore",
+  "native_source": "fresh originalGroundDLM4B official_scoring/tracking_dense, sourceimagebytes, actualDLMROI2560, noNMS/topK/GTboxchanges, parserrejectedframes emptyandretained",
+  "scope": "twoexisting registered800frame validation0007 expressions; legalv2split, nottest/fullRMOTdataset",
+  "fresh_measurement": "sharedCompact singlecausalpass includesnativeDLM+ROI RPC/queueing, Compact/memory, writes/archive/render/encode; preloadedremote service/modelstartup excludedsamepriorFullconvention",
+  "replay_measurements": "Simple/pretrained/500/teacher600/native600 use exactsamearchivedcurrentcandidates; noE2Ecomparison tofirstpass",
+  "compact_representation": "1.146511M trainedstructuredcore andfrozenoriginalOneJev tokenmeantext, notFullOneJevdecoderreasoning",
+  "new_feature_cache_budget_bytes": 2147483648,
+  "global_feature_cache_budget_bytes": 26843545600,
+  "conservative_prior_feature_and_text_bytes": 16289535076,
+  "TAO_full40_native_source_bytes": 1885903934,
+  "conservative_prior_plus_TAO_plus_new_limit_bytes": 20323665338,
+  "feature_archival": "one boundedcurrentvideo source; per-runlogs omitduplicatedROIarrays; no datasetwidecache/oldU2queue",
+  "resource_handoff": "wait exactregisteredteacher/native600child identities andvalid600/2400done states; reuseGPU5aftertrainingexits, noforeignprocessstop",
+  "native600_MMreload": "twoindependentnativeenginereloadsvs500 BF16 probes beforeGPU5native server allocation",
+  "metrics": "unchangedofficialTrackEval queryGT plusposthocphysicalID/membershipdiagnostics; all800frames/rejections/emptyGT included",
+  "model_selection_or_threshold_tuning": false,
+  "full_goal_complete": false,
+  "launch": "python3 tools/groundjev/run_full_rmot_study.py --plan configs/groundjev/full_rmot_study_v1.json --out outputs/groundjev/multitask_runs/full_rmot_shared600_v1",
+  "archive_preflight_report": "outputs/groundjev/validation/current_native_archive4_v1/validation.json",
+  "actual_archive_regression_bytes": 742680
+}

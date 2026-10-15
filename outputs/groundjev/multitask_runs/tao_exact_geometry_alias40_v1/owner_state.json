@@ -1,0 +1,28 @@
+{
+  "status": "simple_INFERENCE",
+  "owner_pid": 1901350,
+  "device": "cpu",
+  "additional_GPUs": 0,
+  "policy": {
+    "group_key": "exact unrounded native xyxy coordinate tuple",
+    "representative": "first original native candidate index; original box/label/score/feature retained",
+    "all_alias_indices_labels_and_scores_preserved": true,
+    "every_identical_box_ROI_feature_checked_exact": true,
+    "IoU_threshold_NMS_topK_or_GT_selection": false,
+    "different_proposal_protocol_from_raw_reference": true,
+    "association_only_or_JEV_causal_gain_claim": false
+  },
+  "completed": {},
+  "raw_native_source": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_runs/tao_base_novel63_full_v2_expression_none/native_candidates/frame_candidates.jsonl",
+  "raw_reference": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_runs/tao_base_novel63_full_v3_empty_crop_cpu",
+  "weights_thresholds_metrics_and_all40frames_unchanged": true,
+  "GT_used_for_grouping": false,
+  "new_feature_budget_bytes": 1073741824,
+  "source": {
+    "frames": 40,
+    "raw_native_candidates": 35228,
+    "exact_geometry_groups": 7343,
+    "alias_observations": 35228,
+    "file_bytes": 402723754
+  }
+}

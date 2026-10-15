@@ -485,3 +485,13 @@ comparisons remain required; no final research completion is asserted.
 B2 registration: configs/groundjev/u2_core300_baseline_v1.json. Same48existingnativeMOTfitframes/300updates, but different originalU2 losses, parameter count, optimizer andclip exposure versusCompact; notFLOP/parammatched. NooldU2queue/perception rerun. OriginalSharedTrackCore/assignment/state/losses unchanged; CPUFP32 bridge/core training with sameGTignore/distractorreader. ExactsameoriginalV1DTcandidate/ROIfile fornewbaseline. Scope MOTonly. Owner: baselines/u2_core300_cpu_v1.
 
 TAOBaseNovel63 Simple full40 annotationframes now complete, all35228nativeboxes/160GT preserved, officialTETA18.640 (Base23.3725/Novel9.1737). NovelClsA0; thisonevideo isnotfullTAO. SharedCompactsame-source control stillpending. Summary: metrics/tao_base_novel63_full40_simple_summary.json.
+
+
+TAO63 full40 raw-candidate controls now bothcomplete: Simple TETA18.640/
+AssocA28.618/ClsA20.290 versus sharedCompact14.517/5.1478/30.314. BaseTETA
+23.3725/18.93545 andNovel9.1737/5.679; bothNovelClsA0. No modelpromotion.
+Raw35228candidates remain. GTfreeaudit shows7343exactgeometrygroups/27885aliases;
+a separate CPU exactalias proposal-policy control is registered andrunning,
+notanassociation-only comparison. FullRMOT two800frame freshCompact/native
+andmatchedpretrained/500/teacher600/native600 controls wait verifiedGPU5handoff;
+configs/groundjev/full_rmot_study_v1.json. Fullgoalremains active.

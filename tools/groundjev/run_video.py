@@ -1,5 +1,6 @@
 """Stream real video frames through DLM + Simple/Full persistent tracking."""
 import argparse
+from contextlib import nullcontext
 import json
 from pathlib import Path
 import subprocess
@@ -93,6 +94,8 @@ def main():
     parser.add_argument('--lost-seconds',type=float,default=3.)
     parser.add_argument('--ema-alpha',type=float,default=.1)
     parser.add_argument('--omit-replay-feature-vectors',action='store_true',help='retain shared source reference and all boxes/decisions; avoid duplicating input feature arrays')
+    parser.add_argument('--record-native-candidates', action='store_true', help='archive actual current native candidates once for subsequent matched controls')
+    parser.add_argument('--native-candidate-byte-budget', type=int, default=2*2**30)
     args = parser.parse_args()
     if args.out.exists() and any(args.out.iterdir()):
         parser.error('choose a fresh output directory to preserve existing experiment results')
@@ -113,8 +116,8 @@ def main():
         parser.error('feature-view ablation requires the native-feature Compact model')
     if args.memory_policy=='ema' and (args.backend!='compact' or args.memory_feature_view!='ema'):
         parser.error('EMA baseline uses causal native feature EMA with Compact; no synthetic image EMA')
-    if args.omit_replay_feature_vectors and not args.candidate_replay:
-        parser.error('feature omission requires the retained exact shared input source')
+    if args.omit_replay_feature_vectors and not (args.candidate_replay or args.record_native_candidates):
+        parser.error('feature omission requires the retained exact shared input source or current native archive')
     args.out.mkdir(parents=True, exist_ok=True)
     frontend = GroundAnythingAdapter(args.grounding_url, parser_policy=args.grounding_parser,
         decoder_policy=args.grounding_decoder_policy, vocabulary_chunk_size=args.grounding_vocabulary_chunk_size)
@@ -156,7 +159,7 @@ def main():
             if prior_result.get('replay_feature_vectors_omitted_from_log'):
                 feature_source_path=Path(prior_result['shared_input_features_source'])
         elif args.omit_replay_feature_vectors:
-            feature_source_path=args.candidate_replay
+            feature_source_path=(args.resume_from/'frame_candidates.jsonl') if args.record_native_candidates else args.candidate_replay
         if feature_source_path:
             feature_source=ReplayFrames(feature_source_path)
             for row in resumed:
@@ -175,7 +178,8 @@ def main():
     video_start = time.perf_counter()
     initialization_seconds = video_start-invocation_start
     try:
-        with (args.out / 'predictions.txt').open('w') as predictions, (args.out / 'frame_decisions.jsonl').open('w') as log:
+        with (args.out / 'predictions.txt').open('w') as predictions, (args.out / 'frame_decisions.jsonl').open('w') as log, \
+                ((args.out/'frame_candidates.jsonl').open('w') if args.record_native_candidates else nullcontext(None)) as native_log:
             for index, (path, frame_number) in enumerate(frames):
                 start = time.perf_counter()
                 with Image.open(path) as source:
@@ -214,6 +218,13 @@ def main():
                     if feature_client:
                         candidates,feature_metadata=feature_client(image,candidates,image_path=path)
                         perception['native_feature_extraction']=feature_metadata
+                if native_log is not None:
+                    native_log.write(json.dumps({'frame': frame_number, 'image_path': path,
+                        'candidates': candidates, 'perception': perception})+'\n')
+                    native_log.flush()
+                    if native_log.tell() > args.native_candidate_byte_budget:
+                        raise RuntimeError('Registered per-study native feature budget exceeded; preserve source and do not skip candidates')
+                if index >= len(resumed):
                     print(json.dumps({'frame': frame_number, 'stage': 'association_and_memory', 'candidates': len(candidates)}), flush=True)
                     timestamp = timestamps[frame_number] if timestamps is not None else frame_number/fps
                     outputs, state = tracker.step(image, candidates, timestamp, specification)
@@ -299,7 +310,7 @@ def main():
               'model_initialization_seconds':initialization_seconds,
               'timing_scope':'all image reads, native requests including service queueing, association, memory persistence, prediction/log writes, drawing, video encoding and encoder completion; preloaded remote DLM server startup excluded',
               'successful_frame_pipeline_fps': len(frames)/sum(latencies),
-              'association_replay_fps': len(frames)/sum(latencies) if replay else None,
+              'association_replay_fps': len(frames)/sum(latencies) if replay and not resumed else None,
               'resume_source': str(args.resume_from) if args.resume_from else None,
               'resumed_completed_frames': len(resumed),
               'timing_limitations': 'resumed legacy run lacks original failed-attempt/interruption timing; no complete end-to-end FPS claim' if resumed else None,
@@ -310,7 +321,11 @@ def main():
               'memory_policy':args.memory_policy,'memory_feature_view':args.memory_feature_view,
               'lost_seconds':args.lost_seconds,'ema_alpha':args.ema_alpha,
               'replay_feature_vectors_omitted_from_log':args.omit_replay_feature_vectors,
-              'shared_input_features_source':str(args.candidate_replay) if args.omit_replay_feature_vectors else None}
+              'shared_input_features_source':str(args.out/'frame_candidates.jsonl') if args.record_native_candidates else
+                  str(args.candidate_replay) if args.omit_replay_feature_vectors else None,
+              'native_candidate_archive':str(args.out/'frame_candidates.jsonl') if args.record_native_candidates else None,
+              'native_candidate_archive_bytes':(args.out/'frame_candidates.jsonl').stat().st_size if args.record_native_candidates else 0,
+              'native_candidate_archive_budget_bytes':args.native_candidate_byte_budget if args.record_native_candidates else None}
     if args.backend in ('full','compact') or args.category_policy == 'native_hierarchical':
         import torch
         cpu_compact=args.backend=='compact' and args.compact_device=='cpu'

@@ -120,7 +120,9 @@ passes. CPU recovery replays all28 complete causal decisions and must finish
 all40 frames for both Simple and the existing shared Compact checkpoint.
 Simple now completes all40 decodedframes and unchanged official TETA18.640,
 Base23.3725/Novel9.1737, with all35228proposals and160GTboxes. NovelClsA0,
-so this is not demonstrated Novel recognition. SharedCompact remains pending.
+so this is not demonstrated Novel recognition. SharedCompact has now completed
+all40 frames too: TETA14.517,AssocA5.1478,ClsA30.314; classification improves
+overSimple while association and overall TETA regress. BothNovelClsA remain0.
 Owner: multitask_runs/tao_base_novel63_full_v3_empty_crop_cpu.
 No native perception is repeated; no CPU/replay speed is claimed as E2E.
 
@@ -743,3 +745,76 @@ raw receipts are retained, the speed claim is removed, and unchanged official
 accuracy metrics reproduce exactly. The restored198frames are rendered but
 skipcorecompute, so no uninterrupted or detector-inclusive speed is asserted.
 Evidence: baselines/u2_core300_cpu_v2_numeric_recovery/validation_and_summary.json.
+
+
+## Complete RMOT and fresh Compact end-to-end queue
+
+A new detached owner follows the exact existing teacher/native600 child
+PID/start-tick identities, waits for both to exit and validates their real600
+masters/2400examples before GPU5 reuse. It does not duplicate training or touch
+GPU4 short controls, native full9 services on6/7, or the TAO CPU control.
+The existing frozen validation0007 single/multiple expression manifests each
+contain all800frames0..799. No GT or test labels are read during inference.
+
+The first pass for each scope is a genuine fresh shared Compact pipeline:
+originalDLM4B detection, real2560ROI RPC, shared identity/semantic decisions,
+memory serialization, candidate archive, prediction writes, rendering and
+encoding. The actual wall measurement includes all of these; preloaded remote
+service/model initialization is excluded under the prior Full convention.
+Every original parser-rejected/empty frame remains in the denominator.
+The archive stores its actual native inputs once and following Simple,
+pretrainedOne,500,teacher600,native600 controls replay exactly that source.
+All four Full checkpoints use identicalv3/adaptive groups/nativeNoul.5 policy.
+Cached controls do not receive an end-to-end FPS claim.
+
+The new archive path passed an actual4frame/13nativeROI regression: all geometry,
+outputs and full memory state agree exactly after replay,2560dimensions remain,
+and replay end-to-end FPS staysnull. This is dataflow validation, not a fresh
+native RPC/speed result. Both800frame manifests pass current legal split/image
+checks without GT reads. New source features are capped at2GiB across both
+videos; repeated control logs omit copied ROI vectors. Conservative prior,
+TAO native source, newcap and742680byte probe total20,323,665,338bytes<25GiB.
+Only GPU5 is reused after training; no additional GPU or oldU2cache queue.
+No fullRMOTdataset, successful transfer, Novel result, or FullOneJev reasoning
+claim is made for the small frozen-token-mean Compact text encoder.
+
+Plan: configs/groundjev/full_rmot_study_v1.json.
+Owner: multitask_runs/full_rmot_shared600_v1/owner_state.json.
+Current status: queued; fresh full800 inference and official results pending.
+
+
+## Completed raw TAO40 controls and exact-box alias diagnosis
+
+Both raw-candidate controls are terminal and validated on all40annotationframes,
+35228same native proposals,160GTboxes and unmodified official TETA. All520native
+query outcomes/1203categories perframe are preserved, including203parser-rejected
+query responses. This is one Base/Novel video, not a fullTAObenchmark.
+
+| Method, raw native proposals | TETA | AssocA | ClsA | Base TETA | Novel TETA |
+|---|---:|---:|---:|---:|---:|
+| Simple |18.640|28.618|20.290|23.3725|9.1737|
+| Shared Compact |14.517|5.1478|30.314|18.93545|5.679|
+
+BothNovelClsA0. Compact improvesclassificationbutfailsassociation andoverall
+transfer; it is not promoted. Posthoc candidateGTrecall.91875 isidentical;
+correct birthanchor option coverage in Compact's32identityshortlist is.1567,
+versus1 forSimple. This diagnostic is not GTfeedback or an officialmetric.
+Evidence: multitask_runs/tao_base_novel63_full_v3_empty_crop_cpu/
+validation_and_summary.json.
+
+A GT-free audit finds7343exact-coordinate groups among35228nativecandidates:
+27885aliases(79.16%), up to188identicalboxes inoneframe. Rawsource andscores
+remain intact. A separately registered CPU proposal-policy study consolidates
+only exact unrounded coordinates, keeps the first native box/label/score,
+checks identical ROI features and retains every raw index/label/score asaliases.
+There is noIoUthreshold,NMS,topK orGTselection. BothunchangedSimple andshared
+Compact use the same newgroupedsource; originalrawresults remain the reference.
+This changes proposal representation andSimple's selected native label, so an
+improvement cannot be attributed solely to association or JEV reasoning.
+All40frames/originalqueryoutcomes and all35228alias observations remain.
+
+The new source cap is1GiB; priorfeatures+TAO+reserved2GiBRMOT+probe+aliascap
+remain conservatively21,397,407,162bytes<25GiB. No GPU/detector/training is added.
+Study results are pending; no observed improvement is claimed.
+Plan: configs/groundjev/tao_exact_alias_control_v1.json.
+Owner: multitask_runs/tao_exact_geometry_alias40_v1/owner_state.json.
