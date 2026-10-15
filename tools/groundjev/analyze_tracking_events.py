@@ -10,24 +10,55 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0,str(ROOT))
 
 
+def load_truth(manifest):
+    truth = defaultdict(list)
+    allowed = set(manifest['frame_numbers'])
+    query_targets = None
+    if manifest['task'] == 'mot':
+        with open(manifest['gt_path_for_evaluation_only']) as source:
+            for fields in csv.reader(source):
+                frame = int(fields[0])
+                if frame not in allowed or int(float(fields[6])) != 1 or int(float(fields[7])) != 1:
+                    continue
+                x, y, w, h = map(float, fields[2:6])
+                truth[frame].append({'identity': int(fields[1]), 'box': [x,y,x+w,y+h], 'visibility': float(fields[8])})
+    elif manifest['task'] == 'rmot':
+        from locatemot.unified.data.legal_scope import assert_legal_video, LEGAL_SPLITS
+        video = assert_legal_video(manifest['sequence'], dataset=manifest['dataset'])
+        assert video in LEGAL_SPLITS[manifest['dataset']]['validation']
+        query = json.loads(Path(manifest['expression_file_for_evaluation_only']).read_text())
+        query_targets = query['label']
+        width, height = manifest['image_size']
+        for frame in manifest['frame_numbers']:
+            path = Path(manifest['label_dir_for_evaluation_only'])/f'{frame:06d}.txt'
+            for line in path.read_text().splitlines() if path.exists() else []:
+                fields = line.split(); x, y, w, h = map(float, fields[2:6])
+                truth[frame].append({'identity': int(fields[1]),
+                    'box': [x*width,y*height,(x+w)*width,(y+h)*height], 'visibility': None})
+    else:
+        assert manifest['task'] == 'ovmot'
+        annotation = json.loads(Path(manifest['annotation_path_for_evaluation_only']).read_text())
+        image_frames = dict(zip(manifest['image_ids'], manifest['frame_numbers']))
+        for obj in annotation['annotations']:
+            if obj['image_id'] in image_frames:
+                x, y, w, h = obj['bbox']
+                truth[image_frames[obj['image_id']]].append({'identity': obj['track_id'],
+                    'box': [x,y,x+w,y+h], 'visibility': None})
+    return truth, query_targets
+
+
 def analyze(manifest, rows):
     import numpy as np
     from scipy.optimize import linear_sum_assignment
     from locatemot.groundjev.decision import overlap
-    truth = defaultdict(list)
-    allowed = set(manifest['frame_numbers'])
-    with open(manifest['gt_path_for_evaluation_only']) as source:
-        for fields in csv.reader(source):
-            frame = int(fields[0])
-            if frame not in allowed or int(float(fields[6]))!=1 or int(float(fields[7]))!=1:
-                continue
-            x,y,w,h = map(float,fields[2:6])
-            truth[frame].append({'identity':int(fields[1]),'box':[x,y,x+w,y+h],'visibility':float(fields[8])})
+    truth, query_targets = load_truth(manifest)
+    physical_clock = manifest.get('physical_video_fps_verified', True)
+    buckets = ('gap_le1s','gap_1to3s','gap_gt3s') if physical_clock else ('gap_le1step','gap_1to3steps','gap_gt3steps')
     anchors, prior_ids, last_correct = {}, set(), {}
     previous_observation, last_emitted, previous_gt_frame = {}, {}, {}
-    no_match, recovery = Counter(), Counter()
+    no_match, recovery, semantic = Counter(), Counter(), Counter()
     counts, diagnostics, correct_masses = Counter(), [], []
-    for row in rows:
+    for observation_index, row in enumerate(rows):
         gt, candidates = truth[row['frame']], row['candidates']
         pairwise = np.array([[overlap(c['box'],g['box']) for g in gt] for c in candidates])
         matched = {}
@@ -50,6 +81,10 @@ def analyze(manifest, rows):
             option_present = bool(set(shortlist)&set(existing))
             tid = event.get('track_id')
             if target:
+                if query_targets is not None and 'query_membership_probability' in d:
+                    positive = identity in set(query_targets.get(str(row['frame']), []))
+                    predicted = d['query_membership_probability'] >= .5
+                    semantic['TP' if predicted and positive else 'FP' if predicted else 'FN' if positive else 'TN'] += 1
                 available=set(shortlist)&set(existing)
                 expected_no_match=bool(existing) and not available
                 predicted_no_match=event['action']=='NO_MATCH'
@@ -63,10 +98,10 @@ def analyze(manifest, rows):
                     counts['model_correct_to_wrong_after_global_matching']+=model_correct and not assigned_correct
                     counts['model_wrong_to_correct_after_global_matching']+=not model_correct and assigned_correct
                 previous=previous_observation.get(identity)
-                if previous and row['frame']-previous['frame']>1:
+                if previous and observation_index-previous['observation_index']>1:
                     recovery['candidate_gap_return_events']+=1
                     gap=row['state']['timestamp']-previous['timestamp']
-                    bucket='gap_le1s' if gap<=1 else 'gap_1to3s' if gap<=3 else 'gap_gt3s'
+                    bucket=buckets[0] if gap<=1 else buckets[1] if gap<=3 else buckets[2]
                     old=last_emitted.get(identity)
                     if old is not None:
                         recovery[bucket+'_eligible']+=1
@@ -76,9 +111,10 @@ def analyze(manifest, rows):
                         counts['recovery_global_assignment_same_ID']+=tid==old
                     else:
                         recovery['candidate_gap_returns_without_prior_emitted_identity']+=1
-                if identity in previous_gt_frame and row['frame']-previous_gt_frame[identity]>1:
+                if identity in previous_gt_frame and observation_index-previous_gt_frame[identity]>1:
                     recovery['GT_gap_returns_with_matched_candidate']+=1
-                previous_observation[identity]={'frame':row['frame'],'timestamp':row['state']['timestamp']}
+                previous_observation[identity]={'frame':row['frame'],'timestamp':row['state']['timestamp'],
+                                              'observation_index':observation_index}
                 if tid is not None:last_emitted[identity]=tid
                 if existing:
                     counts['existing_identity_events'] += 1
@@ -105,7 +141,7 @@ def analyze(manifest, rows):
             elif event.get('memory_action')=='UPDATE':
                 identity_correct = identity is not None and before.get(tid)==identity
                 counts['memory_updates_identity_consistent' if identity_correct else 'memory_updates_wrong_identity_or_unmatched'] += 1
-                if target and target['visibility']<.6:
+                if target and target['visibility'] is not None and target['visibility']<.6:
                     counts['memory_updates_low_visibility'] += 1
             elif event.get('memory_action')=='HOLD':
                 counts['memory_holds'] += 1
@@ -115,14 +151,22 @@ def analyze(manifest, rows):
                 'association_correct_under_fixed_anchor_diagnostic':correct,
                 'memory_action':event.get('memory_action')})
         prior_ids = set(row['state']['persistent_ids'])
-        previous_gt_frame.update({g['identity']:row['frame'] for g in gt})
+        previous_gt_frame.update({g['identity']:observation_index for g in gt})
     n = counts['existing_identity_events']
     return {'scope':manifest['scope'],'frames':len(rows),'counts':dict(counts),
         'correct_option_coverage':counts['correct_identity_option_present']/n if n else None,
         'existing_association_accuracy':counts['correct_existing_associations']/n if n else None,
         'mean_native_correct_identity_option_mass':sum(correct_masses)/len(correct_masses) if correct_masses else None,
-        'candidate_GT_recall_at_iou05':counts['gt_matched_candidates']/counts['gt_observations'],
-        'diagnostic_policy':'marked pedestrian GT, one-to-one candidate IoU>=.5; immutable track-anchor ownership from birth, not GT correction',
+        'candidate_GT_recall_at_iou05':counts['gt_matched_candidates']/counts['gt_observations'] if counts['gt_observations'] else None,
+        'diagnostic_policy':'all registered physical GT (MOT marked pedestrians; RMOT all release physical objects; TAO annotated objects), one-to-one candidate IoU>=.5; immutable track-anchor ownership from birth, no GT correction',
+        'physical_identity_state_diagnostic_separate_from_query_output_filter': True,
+        'GT_annotation_scope': 'nonexhaustive TAO; unmatched objects are not universal negative truth' if manifest['task']=='ovmot' else 'registered release GT',
+        'physical_seconds_verified': physical_clock,
+        'posthoc_query_membership_matched_physical_GT_only': {'counts':dict(semantic),
+            'precision':semantic['TP']/(semantic['TP']+semantic['FP']) if semantic['TP']+semantic['FP'] else None,
+            'recall':semantic['TP']/(semantic['TP']+semantic['FN']) if semantic['TP']+semantic['FN'] else None,
+            'head_was_present':bool(semantic), 'threshold':.5,
+            'legacy_missing_head_not_interpreted_as_negative_predictions':True},
         'unmatched_candidates_note':'includes evaluator-ignore regions; these are unmatched diagnostics, not official FP/NoMatch precision',
         'explicit_NO_MATCH_decision_currently_supported':any(r['state']['decision_metadata'].get('explicit_no_match',False) for r in rows),
         'posthoc_NO_MATCH_matched_GT_only':{'counts':dict(no_match),
@@ -132,7 +176,7 @@ def analyze(manifest, rows):
             'unmatched_or_ignore_regions_excluded':True},
         'posthoc_identity_recovery':{'counts':dict(recovery),
             'success_rates':{b:recovery[b+'_same_correct_birth_anchor_ID']/recovery[b+'_eligible'] if recovery[b+'_eligible'] else None
-                             for b in ('gap_le1s','gap_1to3s','gap_gt3s')},
+                             for b in buckets},
             'rule':'first GT-aligned candidate after at least one missing candidate observation; same previous emitted ID with matching immutable birth anchor',
             'scope':'natural candidate/GT gaps only; no artificial occlusion, future GT correction or recovery metric replacing TrackEval'},
         'gt_used_posthoc_only':True,'official_metric_replacement':False,'events':diagnostics}

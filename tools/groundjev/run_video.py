@@ -68,6 +68,7 @@ def main():
     parser.add_argument('--video', type=Path, required=True, help='legal JSON video scope manifest')
     parser.add_argument('--checkpoint', type=Path, default=ROOT / 'models/OneJev-0.8B')
     parser.add_argument('--backend', choices=['simple', 'simple_native', 'simple_temporal', 'full', 'compact'], default='full')
+    parser.add_argument('--compact-device',choices=['cpu','cuda:0'],default='cuda:0',help='explicit device for trained Compact replay; report actual device, no detector E2E claim')
     parser.add_argument('--evidence-format',choices=['v1','v2_crop_motion','v3_crop_motion','v4_native_features','v5_native_features_csv','v6_native_compact_history'],default='v1')
     parser.add_argument('--native-feature-url',help='isolated official DLM visual encoder RPC; no substitute image features')
     parser.add_argument('--adaptive-context-groups',action='store_true',help='split native preflight-rejected groups, retaining all candidate rows and identity options')
@@ -120,8 +121,11 @@ def main():
     if args.backend=='simple': decision=SimpleDecision()
     elif args.backend in ('simple_native','simple_temporal'): decision=FeatureDecision(temporal=args.backend=='simple_temporal')
     elif args.backend=='compact':
+        if args.compact_device=='cpu':
+            import torch
+            torch.set_num_threads(4)
         from locatemot.groundjev.compact import CompactDecision
-        decision=CompactDecision(args.checkpoint,memory_feature_view=args.memory_feature_view)
+        decision=CompactDecision(args.checkpoint,device=args.compact_device,memory_feature_view=args.memory_feature_view)
     else: decision=OneJevDecision(args.checkpoint,evidence_format=args.evidence_format,adaptive_context=args.adaptive_context_groups,
                                 rmot_membership=args.native_rmot_membership)
     if args.category_policy == 'native_hierarchical':
@@ -309,7 +313,9 @@ def main():
               'shared_input_features_source':str(args.candidate_replay) if args.omit_replay_feature_vectors else None}
     if args.backend in ('full','compact') or args.category_policy == 'native_hierarchical':
         import torch
-        result['peak_decision_gpu_memory_bytes'] = torch.cuda.max_memory_allocated()
+        cpu_compact=args.backend=='compact' and args.compact_device=='cpu'
+        result['decision_device']=args.compact_device if args.backend=='compact' else 'cuda:0'
+        result['peak_decision_gpu_memory_bytes'] = 0 if cpu_compact else torch.cuda.max_memory_allocated()
     (args.out/'result.json').write_text(json.dumps(result, indent=2)+'\n')
     (args.out/'final_identity_memory.json').write_text(json.dumps(tracker.state_dict())+'\n')
     print(json.dumps(result), flush=True)

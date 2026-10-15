@@ -1,0 +1,10 @@
+{
+  "status": "simple_POSTHOC",
+  "owner_pid": 1864500,
+  "completed": {},
+  "native_perception_repeated": false,
+  "every_native_box_retained": true,
+  "CPU_core_not_GPU_or_E2E_speed": true,
+  "native_source": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_runs/tao_base_novel63_full_v2_expression_none/native_candidates/frame_candidates.jsonl",
+  "official_scorer_or_GT_changed": false
+}

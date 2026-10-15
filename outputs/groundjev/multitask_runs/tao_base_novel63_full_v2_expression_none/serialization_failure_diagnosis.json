@@ -1,0 +1,13 @@
+{
+  "status": "ALL_NATIVE40_FRAMES_COMPLETE_CONTROL_SERIALIZATION_FAILED",
+  "native_frames": 40,
+  "native_requests": 520,
+  "source_bytes": 1885903934,
+  "native_candidates": 35228,
+  "failed_simple_frame": 755,
+  "causal_decision_rows_in_failed_prefix": 28,
+  "cause": "nativepositivefractionalheight0.7197 rounds toempty59x0pixelcrop; PNG cannot encode zeroheight",
+  "fix": "memoryformatv3 encodes exactemptydimensions with no fabricatedpixels; preservebox/score/candidate/GT protocol",
+  "targeted_actual_frame_roundtrip": "outputs/groundjev/validation/tao_empty_native_crop755.json",
+  "recovery": "reuse all520native responses, strictreplay all28capturedcausaldecisionrows, complete40simple and sharedCompact controls onCPU"
+}

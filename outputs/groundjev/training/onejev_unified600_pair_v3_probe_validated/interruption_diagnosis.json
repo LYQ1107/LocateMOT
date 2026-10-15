@@ -1,0 +1,16 @@
+{
+  "status": "OWNED_TRAINERS_AND_PARENT_EXITED_WITHOUT_TERMINAL_RECORD",
+  "verified_absent_pids": [
+    1557613,
+    1557618,
+    1584409
+  ],
+  "teacher_valid_FP32_Adam_RNG_step": 450,
+  "teacher_last_unsaved_log_step": 475,
+  "native_valid_FP32_Adam_RNG_step": 250,
+  "captured_exception_or_exit_signal": null,
+  "server_reboot_evidence": "currentuptime417502s exceedsoldownerstart ticks, not a server reboot conclusion",
+  "root_cause": "termination origin not recorded; oldchildren inherited parent processgroup/stdoutpipe, so could not survive owner cleanup",
+  "fix": "detachedowner andeachtrainer, directpersistentchildlogFD; same nativeSFT config/sampler/loss and resume fullstate450/250",
+  "reset_optimizer_or_restart_from_BF16": false
+}

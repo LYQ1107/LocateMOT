@@ -1,4 +1,4 @@
-# Current status — 2026-10-14
+# Current status — 2026-10-15
 
 This page reports current evidence; earlier running-state snapshots are retained
 in Git history and research_log.md. The full GroundJEV research goal is active.
@@ -87,37 +87,49 @@ outputs/groundjev/compact/joint1200_dancetrack0004_v1/owner_state.json.
 
 ## Current training and services
 
-The original corrected OneJev500 trainer stopped without a terminal receipt.
-It saved BF16 weights at 250 and last logged 275, but no FP32 master weights,
-Adam state or RNG state. Its external termination cause is not established.
-The old intermediate is preserved and is not declared a completed 500-step run.
+The original500 replay and all16 short official controls are complete (see
+below). The earlier250BF16-only interruption remains preserved; it was not
+used to fabricate an exact optimizer resume.
 
-A new finite replay of the original unfinished 500-step protocol starts from
-its original valid 100-step initialization, with unchanged corpus, seed0,
-lr5e-6, 32768 context, native fork tolerance and zero dropped rows. It runs on
-physical GPU4; the latest persisted training log was step300/500, with an actual9.029GB
-FP32/Adam/scheduler/RNG/cursor state checkpoint saved. It does not
-pretend to reconstruct missing Adam state at old step250. Checkpoint handling
-now atomically saves FP32 masters, Adam, scheduler, all RNG and exact planned
-step cursor every125 steps, retaining one latest full training-state checkpoint.
-A real-native-ROI functional resume regression gives identical next-step loss
-and parameters; this small probe is not itself an actual OneJev training result.
-Actual intermediate125checkpoint contains all474weights, with millions of
-BF16-visible changes in three language probes versus initialization100. Two
-independent native multimodal reloads agree exactly(probability max delta0),
-with native fork auto-check unchanged. This establishes genuine intermediate
-checkpoint correctness, not500completion or a tracking accuracy gain.
-Config: configs/groundjev/onejev_own_history_v3_exact500_replay_stateful.json.
+Paired shared Full600 is running from actual500 FP32 masters with an explicit
+new-stage optimizer reset and matched semantic exposure. The first owner and
+children subsequently disappeared without a captured traceback or exit code.
+Saved valid cursors are450teacher/250native. Detached recovery restores the
+fullFP32/Adam/scheduler/RNG/cursor state exactly: both restore receipts report
+FP32 maximum difference0 and exact paired-index-shuffle-v1 protocol. Unsaved
+teacher475 log rows remain in the interrupted archive and are replayed from450.
+Execution-only changes detach children and write direct persistent logs.
+Current owner: training/onejev_unified600_pair_v4_detached_resume.
 
-The idle owned native visual-feature RPC onGPU5/port8111 was stopped after
-all feature consumers finished and no established clients remained. GPU5 was
-reused for the completed absence120stage and now runs isolated checkpoint
-controls; each owned replica stops at terminal.
-The native72pack and all Compact training/control/recovery owners are terminal.
-The later originalGround full-retention service now runs onGPU7; formalGround200 training has finished and its full dense/ref9 evaluation now ownsGPU6. GroundJEV does not own the fufu/UDMT/ywh jobs and has not stopped
-them. At most four physical GPUs are allowed. No old U2 queue is running.
-Temporary feature caches remain bounded to25GiB; datasets and training-state
-checkpoints are separate preserved artifacts.
+A separate blocking owner waits for the verified teacher child to exit before
+GPU4 reuse. It will validate real600 native MM reloads and score the same
+native semantic policies for before500/teacher600/native600 on four registered
+short scopes. The before500 MOT result is reused because its policy is already
+identical. RMOT uses native Noul membership with unchanged .5 threshold; OVMOT
+uses all1203 supplied categories and explicit UNKNOWN. No600 accuracy claim yet.
+Plan: configs/groundjev/onejev_unified600_controls_v1.json.
+
+TAO Base/Novel63 perception is complete: all40frames,520native queries,
+35228boxes,317scored/203parser-rejected query responses. Rejection denominators
+remain unchanged. Simple tracking failed on native frame755 when a positive
+subpixel-height box produced an actual59x0pixel PIL crop that PNG cannot encode.
+The corrected memory format preserves the exact empty dimensions without
+changing the box, score, metric or invented pixels. The real frame755 regression
+passes. CPU recovery replays all28 complete causal decisions and must finish
+all40 frames for both Simple and the existing shared Compact checkpoint.
+Owner: multitask_runs/tao_base_novel63_full_v3_empty_crop_cpu. Results pending.
+No native perception is repeated; no CPU/replay speed is claimed as E2E.
+
+The original and Ground200 native full9 client runners survived loss of their
+outer owners. A new detached blocking owner follows those exact PID/start-tick
+identities, starts no inference, and validates all native task summaries only
+after terminal. It then stops only their verified owned service groups.
+Owner: ground_retention/reattached_full9_owner_v1. Neither full9 run is claimed
+complete before all9 native summaries and all91124 released rows validate.
+Original GPU7 and Ground200 GPU6 remain separate native services; training uses
+GPU4/GPU5. Foreign jobs and the stopped oldU2 queue are untouched. At most four
+physical GPUs are allowed; temporary feature/text caches remain bounded to25GiB.
+Datasets, model weights and valid optimizer-state checkpoints are preserved.
 
 ## Completed RMOT breadth and native-history intervention
 
@@ -643,12 +655,30 @@ source frame or model changed. FutureOne metadata now also declaresGT_read.
 The firstpairedowner correctlyfailed before training on the failedprobe flag;
 its logs remain. Fixedprobe: validation/onejev500_native_rmot_probe_v2_validated.
 
-Pairedtraining owner: training/onejev_unified600_pair_v3_probe_validated.
-Teacher arm has started onGPU4 with pairedsampler and actual500masterrestore0
-verified onGPU. Nativearm waits exactliveTAOownerPID/startticks onGPU5, then
-requires empty ownedservicegroups before launch; an independentTAOmeasurement
-failure does not invalidate training once resources truly exit. Oldsource500
-state is read-only, new600statepaths distinct. ExistingGroundfull9 jobs keep
-their own owners. After600, actualnative reloads, same semantic-policy500/600
+Original paired owner v3 started both arms after verified TAO service exit,
+then disappeared. Current detached recovery v4 and exact restore receipts are
+described above. Oldsource500 state is read-only; new600 paths remain distinct. After600, actualnative reloads, same semantic-policy500/600
 tracking comparisons, completevideos and native E2E/resource measurements
 remain required. No600accuracy, Novelgain or completed unifiedgoal claim.
+
+
+## Association diagnostics and natural challenge registration
+
+Posthoc diagnostics now cover all16 original500 controls. RMOT uses all
+physical release GT for identity analysis and separately scores query membership
+only when that native head exists. TAO annotations are non-exhaustive; unmatched
+proposals are not silently treated as universal FP truth. Unknown TAO physical
+FPS uses registered observation-step buckets, never fabricated seconds. Sparse
+annotation numbering alone is not considered an occlusion gap. The complete
+DanceTrack reference diagnostics reproduce all prior counts exactly; official
+metrics and inference state are unchanged.
+
+An annotation-only audit of36 registered MOT validation sequences finds647
+natural challenges, including46 GT annotation gaps over3 and up to30seconds.
+The deterministic longest challenge selects the complete registered MOT20-05
+validation half, including a29.76second interval between reliable GT visibility
+observations. This is low visibility, not proof of candidate absence or identity
+recovery. No synthetic occlusion, proposal removal, GT feedback or visibility
+filtering of official metrics was introduced. Native challenge inference and
+long recovery evidence remain required.
+Evidence: recovery_scope_20261015/audit.json and registered_mot_challenge.json.

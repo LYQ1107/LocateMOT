@@ -52,10 +52,20 @@ def restore_state(path,model,opt,sched,args):
     parameters={k:v for k,v in model.named_parameters() if v.requires_grad}
     assert parameters.keys()==state['fp32_trainable_parameters'].keys()
     with torch.no_grad():
-        for k,v in parameters.items():v.copy_(state['fp32_trainable_parameters'][k].to(v.device))
+        for k,v in parameters.items():
+            target=state['fp32_trainable_parameters'][k].to(v.device)
+            assert v.dtype==target.dtype==torch.float32
+            v.copy_(target)
+            assert torch.equal(v,target)
     opt.load_state_dict(state['optimizer']);sched.load_state_dict(state['scheduler'])
     torch.set_rng_state(state['torch_rng']);torch.cuda.set_rng_state_all(state['cuda_rng']);random.setstate(state['python_rng'])
     n=state['numpy_rng'];np.random.set_state((n[0],np.asarray(n[1],dtype=np.uint32),n[2],n[3],n[4]))
+    receipt={'status':'FULL_FP32_ADAM_SCHEDULER_RNG_CURSOR_RESTORED','source':str(path),
+        'step':state['step'],'seen':state['seen'],'next_step_in_epoch':state['next_step_in_epoch'],
+        'FP32_master_max_difference':0.,'trainable_parameter_entries':len(parameters),
+        'protocol_exact':True,'sampling_protocol':state['protocol'].get('sampling_protocol','native-length-buckets')}
+    (Path(args.runs_dir)/args.name/'resumed_training_state_receipt.json').write_text(json.dumps(receipt,indent=2)+'\n')
+    print(json.dumps(receipt),flush=True)
     return state
 
 

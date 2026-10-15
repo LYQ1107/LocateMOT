@@ -1,5 +1,5 @@
 {
-  "status": "NATIVE_ALL_CLASS_PERCEPTION",
+  "status": "FULL_BASE_NOVEL_VIDEO_FAILED",
   "physical_gpu": 5,
   "manifest": "outputs/groundjev/multitask_pilot_data/ovmot_tao_base_novel63_full.json",
   "all40annotation_frames": true,
@@ -10,5 +10,8 @@
   "owned_service_groups": [
     1444657,
     1444658
-  ]
+  ],
+  "native_services_stopped_before_core_controls": true,
+  "error": "CalledProcessError(1, ['python3', 'tools/groundjev/run_with_resources.py', '--gpus', '5', '--', '/data2/user/LocateMOT_GroundJEV/.venv-onejev-py310/bin/python', 'tools/groundjev/run_video.py', '--task', 'ovmot', '--video', 'outputs/groundjev/multitask_pilot_data/ovmot_tao_base_novel63_full.json', '--backend', 'simple', '--candidate-replay', 'outputs/groundjev/multitask_runs/tao_base_novel63_full_v2_expression_none/native_candidates/frame_candidates.jsonl', '--checkpoint', 'outputs/groundjev/compact/rmot_native72_stage_v1/broad_native_training/checkpoint.pt', '--omit-replay-feature-vectors', '--out', 'outputs/groundjev/multitask_runs/tao_base_novel63_full_v2_expression_none/simple'])",
+  "owned_native_service_groups_stopped": true
 }

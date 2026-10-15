@@ -1,0 +1,11 @@
+{
+  "status": "FULL_FP32_ADAM_SCHEDULER_RNG_CURSOR_RESTORED",
+  "source": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_unified600_teacher_v2/latest_training_state.pt",
+  "step": 450,
+  "seen": 1800,
+  "next_step_in_epoch": 450,
+  "FP32_master_max_difference": 0.0,
+  "trainable_parameter_entries": 320,
+  "protocol_exact": true,
+  "sampling_protocol": "paired-index-shuffle-v1"
+}

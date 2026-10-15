@@ -1,5 +1,5 @@
 {
-  "status": "TEACHER_GPU4_TRAINING_NATIVE_GPU5_WAITING_OWNED_TAO",
+  "status": "BOTH_PAIRED_UNIFIED600_FULL_MODELS_TRAINING",
   "owner_pid": 1557613,
   "probe_owner": null,
   "GPU5_TAO_resource_owner": [
@@ -178,5 +178,8 @@
   },
   "registered_rationale": "MOT/RMOT pretrain versus500 results are mixed; controlled candidate-domain and explicit common semantic supervision, no promotion on short clips",
   "teacher_GPU_free_MiB_at_launch": 72945,
-  "teacher_child_pid": 1557618
+  "teacher_child_pid": 1557618,
+  "GPU5_TAO_terminal_resource_handoff_status": "FULL_BASE_NOVEL_VIDEO_FAILED",
+  "native_GPU_free_MiB_at_launch": 76729,
+  "native_child_pid": 1584409
 }

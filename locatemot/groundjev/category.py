@@ -20,6 +20,9 @@ class NativeCategoryHead:
             x, y = i%4*192, i//4*216
             draw.text((x+2, y+2), f'Object {i}', fill='black')
             crop = image.crop(tuple(candidate['box'])).convert('RGB')
+            if crop.width == 0 or crop.height == 0:
+                draw.text((x+2,y+22),'Empty crop: no pixels',fill='black')
+                continue
             # KITTI/TAO small objects need visible crop evidence; enlarge using
             # real pixels, without synthesizing content or changing boxes.
             crop = ImageOps.contain(crop, (188, 188), method=Image.Resampling.BICUBIC)

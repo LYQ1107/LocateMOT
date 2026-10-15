@@ -177,6 +177,7 @@ class OnlineTracker:
         import io
         from dataclasses import fields
         rows = []
+        empty_images = False
         native=any(t.anchor_feature is not None for t in self.tracks.values())
         native_fields={'anchor_feature','recent_feature','long_feature','anchor_temporal_feature','recent_temporal_feature',
             'long_temporal_feature','feature_history','alive_probability','identity_uncertainty','semantic_counts'}
@@ -190,6 +191,10 @@ class OnlineTracker:
                 if not native and field.name in native_fields and not (field.name == 'semantic_counts' and track.semantic_counts): continue
                 value = getattr(track, field.name)
                 if field.name.endswith('_image'):
+                    if value.width == 0 or value.height == 0:
+                        row[field.name] = {'empty_image_size': list(value.size), 'mode': value.mode}
+                        empty_images = True
+                        continue
                     cached = encoded_images.get(field.name)
                     if cached is not None and cached[0] is value:
                         value = cached[1]
@@ -205,6 +210,7 @@ class OnlineTracker:
         state = {'format': 'groundjev-causal-memory-v2-native' if native else 'groundjev-causal-memory-v1', 'tracks': rows, 'next_id': self.next_id,
                 'previous_timestamp': self.previous_timestamp, 'lost_seconds': self.lost_seconds,
                 'update_threshold': self.update_threshold}
+        if empty_images:state['format']='groundjev-causal-memory-v3-empty-images'
         if self.memory_policy!='gated':state.update(memory_policy=self.memory_policy,ema_alpha=self.ema_alpha)
         return state
 
@@ -212,12 +218,15 @@ class OnlineTracker:
         import base64
         import io
         from PIL import Image
-        if state['format'] not in ('groundjev-causal-memory-v1','groundjev-causal-memory-v2-native'):
+        if state['format'] not in ('groundjev-causal-memory-v1','groundjev-causal-memory-v2-native','groundjev-causal-memory-v3-empty-images'):
             raise ValueError('Unknown identity-memory checkpoint format')
         self.tracks = {}
         for source in state['tracks']:
             row = dict(source)
             for key in ('anchor_image', 'recent_image', 'long_image'):
+                if isinstance(row[key],dict):
+                    row[key]=Image.new(row[key]['mode'],tuple(row[key]['empty_image_size']))
+                    continue
                 with Image.open(io.BytesIO(base64.b64decode(row[key]))) as image:
                     row[key] = image.convert('RGB')
             track = Track(**row)

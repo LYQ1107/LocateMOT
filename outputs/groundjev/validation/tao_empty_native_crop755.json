@@ -1,0 +1,24 @@
+{
+  "status": "ACTUAL_FAILED_FRAME_EMPTY_CROP_MEMORY_ROUNDTRIP_PASS",
+  "frame": 755,
+  "native_boxes": [
+    [
+      92.18018018018017,
+      522.5165165165165,
+      151.0730730730731,
+      523.2362362362362
+    ]
+  ],
+  "exact_empty_image_sizes": [
+    [
+      59,
+      0
+    ]
+  ],
+  "format": "groundjev-causal-memory-v3-empty-images",
+  "native_candidate_boxes_or_scores_changed": false,
+  "candidates_or_frames_skipped": false,
+  "synthetic_pixel_evidence_added": false,
+  "GT_read": false,
+  "old_incomplete_video_preserved": true
+}

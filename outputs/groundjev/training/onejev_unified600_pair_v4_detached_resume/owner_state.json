@@ -1,0 +1,209 @@
+{
+  "status": "BOTH_PAIRED_UNIFIED600_FULL_MODELS_TRAINING",
+  "owner_pid": 1859208,
+  "probe_owner": null,
+  "GPU5_TAO_resource_owner": null,
+  "physical_gpus": {
+    "teacher": 4,
+    "native": 5
+  },
+  "registered_additional_updates_each": 600,
+  "sampler": "paired-index-shuffle-v1",
+  "actual_semantic_rows_and_question_families_per_step_identical": true,
+  "actual_prefix_rows_each": 2400,
+  "exact_old_optimizer_trajectory_resume_claim": false,
+  "new_stage_optimizer_scheduler_RNG": "explicit recipe reset from original500 FP32 masters",
+  "completed": {},
+  "new_training_started": true,
+  "resume_existing": true,
+  "original500_matched_metrics": {
+    "mot4_simple": {
+      "HOTA": 0.7488134158919785,
+      "DetA": 0.6423040599609131,
+      "AssA": 0.8951607936143764,
+      "IDF1": 0.8365019011406845,
+      "IDSW": 1,
+      "FP": 17,
+      "FN": 24
+    },
+    "mot4_pretrained": {
+      "HOTA": 0.3439443160419115,
+      "DetA": 0.5308409784551259,
+      "AssA": 0.23169428942701925,
+      "IDF1": 0.351931330472103,
+      "IDSW": 47,
+      "FP": 11,
+      "FN": 48
+    },
+    "mot4_init100": {
+      "HOTA": 0.19739548559595474,
+      "DetA": 0.15973903317095328,
+      "AssA": 0.25,
+      "IDF1": 0.30120481927710846,
+      "IDSW": 0,
+      "FP": 6,
+      "FN": 110
+    },
+    "mot4_sft500": {
+      "HOTA": 0.3086802263922558,
+      "DetA": 0.5379129890340048,
+      "AssA": 0.18500680267982458,
+      "IDF1": 0.2966101694915254,
+      "IDSW": 57,
+      "FP": 11,
+      "FN": 45
+    },
+    "rmot_single8_simple": {
+      "HOTA": 0.24228399266377812,
+      "DetA": 0.23112326270221004,
+      "AssA": 0.2581453634085213,
+      "IDF1": 0.375,
+      "IDSW": 2,
+      "FP": 7,
+      "FN": 1
+    },
+    "rmot_single8_pretrained": {
+      "HOTA": 0.0,
+      "DetA": 0.0,
+      "AssA": 0.0,
+      "IDF1": 0.0,
+      "IDSW": 0,
+      "FP": 0,
+      "FN": 5
+    },
+    "rmot_single8_init100": {
+      "HOTA": 0.0,
+      "DetA": 0.0,
+      "AssA": 0.0,
+      "IDF1": 0.0,
+      "IDSW": 0,
+      "FP": 3,
+      "FN": 5
+    },
+    "rmot_single8_sft500": {
+      "HOTA": 0.2488619985331044,
+      "DetA": 0.2351332877648667,
+      "AssA": 0.26482142857142854,
+      "IDF1": 0.375,
+      "IDSW": 1,
+      "FP": 7,
+      "FN": 1
+    },
+    "rmot_multi12_simple": {
+      "HOTA": 0.2431512222445247,
+      "DetA": 0.1439317246917687,
+      "AssA": 0.42104788486367434,
+      "IDF1": 0.21739130434782608,
+      "IDSW": 0,
+      "FP": 11,
+      "FN": 25
+    },
+    "rmot_multi12_pretrained": {
+      "HOTA": 0.22272041440942322,
+      "DetA": 0.139873897230986,
+      "AssA": 0.3634791946195455,
+      "IDF1": 0.17777777777777778,
+      "IDSW": 1,
+      "FP": 10,
+      "FN": 25
+    },
+    "rmot_multi12_init100": {
+      "HOTA": 0.0,
+      "DetA": 0.0,
+      "AssA": 0.0,
+      "IDF1": 0.0,
+      "IDSW": 0,
+      "FP": 1,
+      "FN": 30
+    },
+    "rmot_multi12_sft500": {
+      "HOTA": 0.21424610750777973,
+      "DetA": 0.15444037355881546,
+      "AssA": 0.30446138494384106,
+      "IDF1": 0.18604651162790697,
+      "IDSW": 1,
+      "FP": 8,
+      "FN": 25
+    },
+    "tao_base4_simple": {
+      "TETA": 24.171,
+      "LocA": 29.452,
+      "AssocA": 43.061,
+      "ClsA": 0.0,
+      "LocRe": 51.111,
+      "LocPr": 40.153,
+      "AssocRe": 44.918,
+      "AssocPr": 85.14,
+      "ClsRe": 0.0,
+      "ClsPr": 0.0
+    },
+    "tao_base4_pretrained": {
+      "TETA": 13.243,
+      "LocA": 16.018,
+      "AssocA": 23.711,
+      "ClsA": 0.0,
+      "LocRe": 18.611,
+      "LocPr": 50.043,
+      "AssocRe": 28.958,
+      "AssocPr": 61.69,
+      "ClsRe": 0.0,
+      "ClsPr": 0.0
+    },
+    "tao_base4_init100": {
+      "TETA": 11.732,
+      "LocA": 11.445,
+      "AssocA": 23.75,
+      "ClsA": 0.0,
+      "LocRe": 15.278,
+      "LocPr": 30.556,
+      "AssocRe": 23.75,
+      "AssocPr": 95.0,
+      "ClsRe": 0.0,
+      "ClsPr": 0.0
+    },
+    "tao_base4_sft500": {
+      "TETA": 11.981,
+      "LocA": 17.545,
+      "AssocA": 18.399,
+      "ClsA": 0.0,
+      "LocRe": 23.333,
+      "LocPr": 38.184,
+      "AssocRe": 24.702,
+      "AssocPr": 41.081,
+      "ClsRe": 0.0,
+      "ClsPr": 0.0
+    }
+  },
+  "registered_rationale": "MOT/RMOT pretrain versus500 results are mixed; controlled candidate-domain and explicit common semantic supervision, no promotion on short clips",
+  "teacher_GPU_free_MiB_at_launch": 72741,
+  "teacher_resume_checkpoint": {
+    "format": "groundjev-full-fp32-adam-rng-v1",
+    "step": 450,
+    "seen": 1800,
+    "epoch": 0,
+    "next_step_in_epoch": 450,
+    "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_unified600_teacher_v2/latest_training_state.pt",
+    "bytes": 9029140441,
+    "FP32_masters_and_Adam_moments_saved": true,
+    "scheduler_and_all_RNG_saved": true,
+    "single_latest_training_state": true,
+    "feature_cache": false
+  },
+  "teacher_child_pid": 1859211,
+  "GPU5_TAO_terminal_resource_handoff_status": "FULL_BASE_NOVEL_VIDEO_FAILED",
+  "native_GPU_free_MiB_at_launch": 81151,
+  "native_resume_checkpoint": {
+    "format": "groundjev-full-fp32-adam-rng-v1",
+    "step": 250,
+    "seen": 1000,
+    "epoch": 0,
+    "next_step_in_epoch": 250,
+    "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_unified600_native_v2/latest_training_state.pt",
+    "bytes": 9029140441,
+    "FP32_masters_and_Adam_moments_saved": true,
+    "scheduler_and_all_RNG_saved": true,
+    "single_latest_training_state": true,
+    "feature_cache": false
+  },
+  "native_child_pid": 1859216
+}

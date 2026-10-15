@@ -1,0 +1,53 @@
+{
+  "name": "Native semantic policy matched before500/teacher600/native600 controls",
+  "training_owner": "outputs/groundjev/training/onejev_unified600_pair_v4_detached_resume",
+  "physical_gpu": 4,
+  "arms": {
+    "before500": {
+      "checkpoint": "outputs/groundjev/training/onejev_own_history_v3_exact500_replay_stateful/ckpt-step500"
+    },
+    "teacher": {
+      "training": "outputs/groundjev/training/onejev_unified600_teacher_v2",
+      "checkpoint": "outputs/groundjev/training/onejev_unified600_teacher_v2/ckpt-step600"
+    },
+    "native": {
+      "training": "outputs/groundjev/training/onejev_unified600_native_v2",
+      "checkpoint": "outputs/groundjev/training/onejev_unified600_native_v2/ckpt-step600"
+    }
+  },
+  "scopes": {
+    "mot4": {
+      "manifest": "outputs/groundjev/pilot_data/mot17_first4.json",
+      "candidates": "outputs/groundjev/runs/mot17_first_native_clip_repair2/frame_decisions.jsonl",
+      "reuse_original500": "outputs/groundjev/training/onejev500_completion_controls_v1/mot4_sft500"
+    },
+    "rmot_single8": {
+      "manifest": "outputs/groundjev/multitask_pilot_data/rmot_single_empty.json",
+      "candidates": "outputs/groundjev/multitask_runs/rmot_single_empty_pretrained_v1/frame_decisions.jsonl"
+    },
+    "rmot_multi12": {
+      "manifest": "outputs/groundjev/multitask_pilot_data/rmot_multi_empty.json",
+      "candidates": "outputs/groundjev/multitask_runs/pretrained_v1_registered_v1/rmot_multi_empty/full/frame_decisions.jsonl"
+    },
+    "tao_base4": {
+      "manifest": "outputs/groundjev/multitask_pilot_data/ovmot_tao_first4.json",
+      "candidates": "outputs/groundjev/multitask_candidate_controls/tao_scored_queries_v1/frame_candidates.jsonl"
+    }
+  },
+  "policies": {
+    "mot": "Full v3_crop_motion,adaptive groups",
+    "rmot": "sameFull + native Noul membership fixed .5",
+    "ovmot": "sameFull + native_hierarchical all1203 inputcategories, explicitUNKNOWN"
+  },
+  "scope_limit": "MOT4/RMOTsingle8/RMOTmulti12/TAOBase4 functional comparison, no full dataset, no Novel support in this Base4clip",
+  "all_native_candidates_retained": true,
+  "same_alltask_checkpoint_each_arm": true,
+  "native_math_or_thresholds_changed": false,
+  "E2E_speed_claim": false,
+  "further_required_scope": [
+    "complete1203frame pairedFull MOT",
+    "fulllegalRMOT",
+    "broaderBaseNovel nativecategory controls",
+    "freshendtoend resource measurements"
+  ]
+}

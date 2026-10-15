@@ -1,0 +1,100 @@
+[
+  {
+    "pid": 1347145,
+    "start_ticks": "36827524",
+    "module": "eval.eval_runner",
+    "tasks": "gam_lvis,gam_dense200,gam_visdrone,gam_refcocog_val,gam_refcocog_test,gam_refcoco,gam_refcocog,gam_refcocoplus",
+    "port_or_url": "http://127.0.0.1:8101/v1"
+  },
+  {
+    "pid": 1347301,
+    "start_ticks": "36827678",
+    "module": "lmms_eval",
+    "tasks": "gam_lvis",
+    "port_or_url": "model_type=qwen3vl,model_version=groundinganything,min_pixels=12544,max_pixels=2007040,base_url=http://127.0.0.1:8101/v1,num_cpus=2,timeout=6000,is_qwen3_vl=True,enable_thinking=False"
+  },
+  {
+    "pid": 1348082,
+    "start_ticks": "36828471",
+    "module": "lmms_eval",
+    "tasks": "gam_refcocog_test",
+    "port_or_url": "model_type=qwen3vl,model_version=groundinganything,min_pixels=12544,max_pixels=2007040,base_url=http://127.0.0.1:8101/v1,num_cpus=2,timeout=6000,is_qwen3_vl=True,enable_thinking=False"
+  },
+  {
+    "pid": 1348403,
+    "start_ticks": "36828681",
+    "module": "lmms_eval",
+    "tasks": "gam_refcoco",
+    "port_or_url": "model_type=qwen3vl,model_version=groundinganything,min_pixels=12544,max_pixels=2007040,base_url=http://127.0.0.1:8101/v1,num_cpus=2,timeout=6000,is_qwen3_vl=True,enable_thinking=False"
+  },
+  {
+    "pid": 1348714,
+    "start_ticks": "36828881",
+    "module": "lmms_eval",
+    "tasks": "gam_refcocog",
+    "port_or_url": "model_type=qwen3vl,model_version=groundinganything,min_pixels=12544,max_pixels=2007040,base_url=http://127.0.0.1:8101/v1,num_cpus=2,timeout=6000,is_qwen3_vl=True,enable_thinking=False"
+  },
+  {
+    "pid": 1349021,
+    "start_ticks": "36829079",
+    "module": "lmms_eval",
+    "tasks": "gam_refcocoplus",
+    "port_or_url": "model_type=qwen3vl,model_version=groundinganything,min_pixels=12544,max_pixels=2007040,base_url=http://127.0.0.1:8101/v1,num_cpus=2,timeout=6000,is_qwen3_vl=True,enable_thinking=False"
+  },
+  {
+    "pid": 1451742,
+    "start_ticks": "37270487",
+    "module": "eval.eval_runner",
+    "tasks": "gam_coco,gam_lvis,gam_dense200,gam_visdrone,gam_refcocog_val,gam_refcocog_test,gam_refcoco,gam_refcocog,gam_refcocoplus",
+    "port_or_url": "http://127.0.0.1:8102/v1"
+  },
+  {
+    "pid": 1451811,
+    "start_ticks": "37270637",
+    "module": "lmms_eval",
+    "tasks": "gam_coco",
+    "port_or_url": "model_type=qwen3vl,model_version=groundinganything,min_pixels=12544,max_pixels=2007040,base_url=http://127.0.0.1:8102/v1,num_cpus=2,timeout=6000,is_qwen3_vl=True,enable_thinking=False"
+  },
+  {
+    "pid": 1451907,
+    "start_ticks": "37270834",
+    "module": "lmms_eval",
+    "tasks": "gam_lvis",
+    "port_or_url": "model_type=qwen3vl,model_version=groundinganything,min_pixels=12544,max_pixels=2007040,base_url=http://127.0.0.1:8102/v1,num_cpus=2,timeout=6000,is_qwen3_vl=True,enable_thinking=False"
+  },
+  {
+    "pid": 1452266,
+    "start_ticks": "37271438",
+    "module": "lmms_eval",
+    "tasks": "gam_refcocog_val",
+    "port_or_url": "model_type=qwen3vl,model_version=groundinganything,min_pixels=12544,max_pixels=2007040,base_url=http://127.0.0.1:8102/v1,num_cpus=2,timeout=6000,is_qwen3_vl=True,enable_thinking=False"
+  },
+  {
+    "pid": 1452419,
+    "start_ticks": "37271637",
+    "module": "lmms_eval",
+    "tasks": "gam_refcocog_test",
+    "port_or_url": "model_type=qwen3vl,model_version=groundinganything,min_pixels=12544,max_pixels=2007040,base_url=http://127.0.0.1:8102/v1,num_cpus=2,timeout=6000,is_qwen3_vl=True,enable_thinking=False"
+  },
+  {
+    "pid": 1452620,
+    "start_ticks": "37271835",
+    "module": "lmms_eval",
+    "tasks": "gam_refcoco",
+    "port_or_url": "model_type=qwen3vl,model_version=groundinganything,min_pixels=12544,max_pixels=2007040,base_url=http://127.0.0.1:8102/v1,num_cpus=2,timeout=6000,is_qwen3_vl=True,enable_thinking=False"
+  },
+  {
+    "pid": 1452705,
+    "start_ticks": "37272036",
+    "module": "lmms_eval",
+    "tasks": "gam_refcocog",
+    "port_or_url": "model_type=qwen3vl,model_version=groundinganything,min_pixels=12544,max_pixels=2007040,base_url=http://127.0.0.1:8102/v1,num_cpus=2,timeout=6000,is_qwen3_vl=True,enable_thinking=False"
+  },
+  {
+    "pid": 1452803,
+    "start_ticks": "37272236",
+    "module": "lmms_eval",
+    "tasks": "gam_refcocoplus",
+    "port_or_url": "model_type=qwen3vl,model_version=groundinganything,min_pixels=12544,max_pixels=2007040,base_url=http://127.0.0.1:8102/v1,num_cpus=2,timeout=6000,is_qwen3_vl=True,enable_thinking=False"
+  }
+]

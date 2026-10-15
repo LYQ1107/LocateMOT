@@ -21,15 +21,24 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--step', type=int, default=125)
     parser.add_argument('--checkpoint', type=Path)
+    parser.add_argument('--training-root', type=Path)
+    parser.add_argument('--reference-checkpoint', type=Path)
     args = parser.parse_args()
-    training = ROOT/'outputs/groundjev/training/onejev_own_history_v3_exact500_replay_stateful'
+    training = args.training_root or ROOT/'outputs/groundjev/training/onejev_own_history_v3_exact500_replay_stateful'
     checkpoint = args.checkpoint or training/f'ckpt-step{args.step}'
     formal = False
-    if args.step == 500:
+    if args.training_root is not None:
+        records = [json.loads(line) for line in (training/'log.jsonl').open()]
+        done = next(row for row in records if row.get('event') == 'done')
+        master = json.loads((training/'latest_training_state.json').read_text())
+        assert done['steps'] == master['step'] == args.step
+        assert all(math.isfinite(row['loss']) for row in records if 'loss' in row)
+        formal = True
+    elif args.step == 500:
         owner = json.loads((training/'owner_state.json').read_text())
         assert owner['status'] == 'STATEFUL_ONEJEV500_TRAINING_COMPLETE' and owner['done']['steps'] == 500
         formal = True
-    initial = ROOT/'outputs/groundjev/training/onejev_teacher_check_100/final'
+    initial = args.reference_checkpoint or ROOT/'outputs/groundjev/training/onejev_teacher_check_100/final'
     probes = []
     with safe_open(initial/'model.safetensors', framework='pt') as before, safe_open(checkpoint/'model.safetensors', framework='pt') as after:
         assert set(before.keys()) == set(after.keys())
@@ -69,10 +78,12 @@ def main():
         maximum = max(maximum, max(abs(value-b[label]) for label, value in a.items()))
     assert maximum <= 1e-6
     result = {'status': f'REAL_ONEJEV{args.step}_NATIVE_MM_RELOAD_VALIDATED', 'weight_entries': entries,
-        'checkpoint': str(checkpoint), 'same_BF16_precision_weight_changes_vs_initial100': probes,
+        'checkpoint': str(checkpoint), 'reference_checkpoint': str(initial),
+        'same_BF16_precision_weight_changes_vs_reference': probes,
         'repeated_reload_probability_max_difference': maximum, 'reload_tolerance': 1e-6,
         'native_fork_auto_check_unchanged': True, 'GT_read_by_inference': False,
-        'responses': responses, 'intermediate_only': not formal, 'formal500_complete': formal,
+        'responses': responses, 'intermediate_only': not formal,
+        'formal500_complete': formal and args.step == 500, 'formal_training_steps': args.step if formal else None,
         'tracking_accuracy_or_exact_FP32_training_resume_claim': False}
     (training/f'checkpoint{args.step}_validation.json').write_text(json.dumps(result, indent=2)+'\n')
     print(json.dumps({k: v for k, v in result.items() if k != 'responses'}, indent=2))

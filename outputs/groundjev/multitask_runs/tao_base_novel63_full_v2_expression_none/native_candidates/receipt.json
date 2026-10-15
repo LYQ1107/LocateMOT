@@ -1,0 +1,16 @@
+{
+  "status": "COMPLETE_LEGAL_NATIVE_VOCABULARY_AND_ROI_STREAM",
+  "manifest": "outputs/groundjev/multitask_pilot_data/ovmot_tao_base_novel63_full.json",
+  "frames": 40,
+  "native_query_requests": 520,
+  "scored_queries": 317,
+  "rejected_queries": 203,
+  "candidates": 35228,
+  "all1203classes_requested_on_every_frame": true,
+  "per_box_native_score": "absent, never fabricated",
+  "GT_or_Novel_labels_read_by_model": false,
+  "raw_images_reencoded_lossily": false,
+  "stream_wall_seconds": 10850.079269520007,
+  "end_to_end_tracking_FPS_claim": false,
+  "feature_cache_bytes": 1885903934
+}

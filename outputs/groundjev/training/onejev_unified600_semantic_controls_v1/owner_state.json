@@ -1,0 +1,21 @@
+{
+  "status": "WAITING_REGISTERED_TEACHER_600_CHILD_EXIT",
+  "owner_pid": 1870814,
+  "registered_training_children": {
+    "teacher": [
+      1859211,
+      "41765980"
+    ],
+    "native": [
+      1859216,
+      "41766000"
+    ]
+  },
+  "physical_gpu": 4,
+  "completed": {},
+  "failed": {},
+  "same_checkpoint_all_three_tasks_each_arm": true,
+  "native_semantic_policy_identical_before_after": true,
+  "E2E_FPS_claim": false,
+  "training_or_scorers_or_thresholds_changed": false
+}

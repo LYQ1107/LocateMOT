@@ -47,7 +47,8 @@
   "native_probe": "outputs/groundjev/validation/onejev500_native_rmot_probe_v2_validated/owner_state.json",
   "original500_full_matched_controls_complete": true,
   "queued_owner_output": "outputs/groundjev/training/onejev_unified600_pair_v3_probe_validated",
-  "teacher_runtime": "GPU4 process started; actual500 FP32 restore0 verified",
-  "native_runtime": "waiting verifiedTAOGPU5owner and completeownedservicegroup exit",
-  "actual_owner": "outputs/groundjev/training/onejev_unified600_pair_v3_probe_validated/owner_state.json"
+  "teacher_runtime": "GPU4 full-state exact resume from450; FP32 maxdifference0",
+  "native_runtime": "GPU5 full-state exact resume from250; FP32 maxdifference0",
+  "actual_owner": "outputs/groundjev/training/onejev_unified600_pair_v4_detached_resume/owner_state.json",
+  "same_policy_controls": "configs/groundjev/onejev_unified600_controls_v1.json"
 }

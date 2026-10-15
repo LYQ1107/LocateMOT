@@ -7,6 +7,7 @@ import subprocess
 import sys
 import threading
 import time
+import shutil
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
@@ -36,6 +37,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--out', type=Path, required=True)
     parser.add_argument('--probe-dir', type=Path, default=ROOT/'outputs/groundjev/validation/onejev500_native_rmot_probe_v2_validated')
+    parser.add_argument('--resume-existing',action='store_true')
     args = parser.parse_args(); args.out.mkdir(parents=True, exist_ok=False)
     probe_dir = args.probe_dir
     probe = json.loads((probe_dir/'owner_state.json').read_text())
@@ -65,7 +67,7 @@ def main():
         'sampler': 'paired-index-shuffle-v1', 'actual_semantic_rows_and_question_families_per_step_identical': True,
         'actual_prefix_rows_each': 2400, 'exact_old_optimizer_trajectory_resume_claim': False,
         'new_stage_optimizer_scheduler_RNG': 'explicit recipe reset from original500 FP32 masters',
-        'completed': {}, 'new_training_started': False}
+        'completed': {}, 'new_training_started': False,'resume_existing':args.resume_existing}
     def save():
         (args.out/'owner_state.json').write_text(json.dumps(state, indent=2)+'\n')
         print(json.dumps({k: v for k, v in state.items() if k not in ('completed', 'original500_matched_metrics')}), flush=True)
@@ -79,17 +81,33 @@ def main():
         state[variant+'_GPU_free_MiB_at_launch'] = int(free)
         command = ['python3', 'tools/groundjev/run_with_resources.py', '--gpus', str(state['physical_gpus'][variant]), '--',
             str(ROOT/'.venv-onejev-py310/bin/python'), 'tools/groundjev/onejev_resumable_sft.py',
-            '--config', f'configs/groundjev/onejev_unified600_{variant}_v2.json', '--paired-index-shuffle',
-            '--initial-training-state', 'outputs/groundjev/training/onejev_own_history_v3_exact500_replay_stateful/latest_training_state.pt',
-            '--expected-initial-step', '500']
+            '--config', f'configs/groundjev/onejev_unified600_{variant}_v2.json', '--paired-index-shuffle']
         training = ROOT/f'outputs/groundjev/training/onejev_unified600_{variant}_v2'
-        assert not training.exists(), 'preserve existing training state and resume its valid cursor separately'
-        child = subprocess.Popen(command, cwd=ROOT, env=env, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
+        if args.resume_existing:
+            checkpoint=json.loads((training/'latest_training_state.json').read_text())
+            assert checkpoint['step']<600 and checkpoint['FP32_masters_and_Adam_moments_saved']
+            shutil.copy2(training/'log.jsonl',args.out/(variant+'_interrupted_log.jsonl'))
+            records=[json.loads(x) for x in (training/'log.jsonl').read_text().splitlines()]
+            kept=[r for r in records if 'step' not in r or r['step']<=checkpoint['step']]
+            (training/'log.jsonl').write_text(''.join(json.dumps(r)+'\n' for r in kept))
+            state[variant+'_resume_checkpoint']=checkpoint
+            command += ['--resume-state',str(training/'latest_training_state.pt')]
+        else:
+            assert not training.exists(), 'preserve existing training state and resume its valid cursor separately'
+            command += ['--initial-training-state','outputs/groundjev/training/onejev_own_history_v3_exact500_replay_stateful/latest_training_state.pt',
+                        '--expected-initial-step','500']
+        path=args.out/(variant+'_train.log')
+        with path.open('w') as log:
+            child = subprocess.Popen(command, cwd=ROOT, env=env, stdin=subprocess.DEVNULL,
+                stdout=log, stderr=subprocess.STDOUT, text=True,start_new_session=True)
         children[variant] = child
         def forward():
-            with (args.out/(variant+'_train.log')).open('w') as log:
-                for line in child.stdout:
-                    log.write(line); log.flush(); print('['+variant+'] '+line, end='', flush=True)
+            with path.open() as log:
+                while True:
+                    line=log.readline()
+                    if line:print('['+variant+'] '+line,end='',flush=True)
+                    elif child.poll() is not None:break
+                    else:time.sleep(1)
         thread = threading.Thread(target=forward); thread.start(); threads.append(thread)
         state['new_training_started'] = True; state[variant+'_child_pid'] = child.pid; save()
     save()
