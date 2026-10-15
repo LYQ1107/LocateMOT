@@ -1,0 +1,19 @@
+{
+  "hypothesis": "The original100-step native fit actor never assigned an existing ID; refresh real uncorrected histories with the actual shared native600 checkpoint before deciding further supervision/training.",
+  "physical_gpu": 4,
+  "upstream_owner": {"identity": [2049900, "42845776"], "directory": "outputs/groundjev/training/onejev_full1203_controls_v2_wait_fix"},
+  "checkpoint": "outputs/groundjev/training/onejev_unified600_native_v2/ckpt-step600",
+  "native_candidates": "outputs/groundjev/training_data/native_ground_own_history_v1/native_rollout.jsonl",
+  "registered_frames": 48,
+  "registered_candidates": 1184,
+  "output_byte_budget": 536870912,
+  "conservative_prior_upper_bytes": 25725928890,
+  "combined_registered_upper_bytes": 26262799802,
+  "global_temporary_feature_budget_bytes": 26843545600,
+  "CPU_validation": "outputs/groundjev/validation/native600_fit_rollout_refresh_v1/validation.json",
+  "new_DLM_requests_or_native_feature_files": false,
+  "new_training_steps": 0,
+  "GT_corrects_actor_states": false,
+  "old_checkpoints_and_curricula_overwritten": false,
+  "next_training_is_not_automatic": "Review actual existing-ID/conflicting-anchor support first; observation Q3 labels remain original, assignment-conditioned questions require a distinct declared training/inference protocol."
+}

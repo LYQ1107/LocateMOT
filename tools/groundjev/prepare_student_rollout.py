@@ -17,6 +17,16 @@ ROOT=Path(__file__).resolve().parents[2]
 sys.path[:0]=[str(ROOT),str(ROOT/'external/OneJev')]
 
 
+def registered_native_candidates(path):
+    rows = {}
+    for line in Path(path).open():
+        row = json.loads(line)
+        key = row['sequence'],row['frame']
+        assert key not in rows
+        rows[key] = {k:row[k] for k in ('image_path','candidates','perception')}
+    return rows
+
+
 def main():
     import numpy as np
     from PIL import Image
@@ -30,7 +40,12 @@ def main():
     parser.add_argument('--out',type=Path,default=ROOT/'outputs/groundjev/training_data/student_v3')
     parser.add_argument('--checkpoint',type=Path,default=ROOT/'outputs/groundjev/training/onejev_teacher_check_100/final')
     parser.add_argument('--candidate-source', choices=['gt_fragments', 'native_ground'], default='gt_fragments')
+    parser.add_argument('--native-candidate-replay',type=Path)
+    parser.add_argument('--output-byte-budget',type=int)
     args=parser.parse_args()
+    if args.native_candidate_replay and args.candidate_source!='native_ground':
+        parser.error('Native replay requires the actual native-ground candidate mode')
+    replay = registered_native_candidates(args.native_candidate_replay) if args.native_candidate_replay else None
     if args.out.exists() and any(args.out.iterdir()):
         parser.error('preserve prior model rollout; choose a fresh curriculum path')
     args.out.mkdir(parents=True,exist_ok=True)
@@ -39,7 +54,7 @@ def main():
             self.captured.append((copy.deepcopy(group),[copy.copy(t) for t in ranked],timestamp,specification))
     native_ground = args.candidate_source == 'native_ground'
     model=Recorder(args.checkpoint,evidence_format='v3_crop_motion',adaptive_context=native_ground)
-    if native_ground:
+    if native_ground and replay is None:
         from locatemot.groundjev.perception import GroundAnythingAdapter, GroundingProtocolError
         frontend=GroundAnythingAdapter(parser_policy='official_scoring',decoder_policy='tracking_dense')
     builder=OneJevDecision.__new__(OneJevDecision)
@@ -52,8 +67,12 @@ def main():
             sequence=next(s for s in protocol['sequences'] if s['sequence']==name)
             frame_names={int(Path(f).stem):f for f in sequence['train_frames']}
             gt=annotations(sequence,set(frame_names))
-            score,stride,frames=mine_clips(sorted(frame_names),gt,2,16)[0]
-            if name=='dancetrack0001':
+            if replay is not None:
+                frames = [frame for sequence,frame in replay if sequence==name]
+                assert len(frames)==16 and all(frame in frame_names for frame in frames)
+            else:
+                score,stride,frames=mine_clips(sorted(frame_names),gt,2,16)[0]
+            if name=='dancetrack0001' and replay is None:
                 previous=json.loads((ROOT/'outputs/groundjev/training_data/teacher_v1/summary.json').read_text())
                 frames=next(c['frames'] for c in previous['clips'] if c['sequence']==name and c['real_reappearances_after_missing_observation']>0)
             tracker=OnlineTracker(model)
@@ -67,7 +86,14 @@ def main():
                 targets=gt[frame]
                 ordered=sorted(targets,key=lambda c:(-max((overlap(c['box'],o['box']) for o in targets if o['gt_id']!=c['gt_id']),default=0.),c['visibility'],c['gt_id']))
                 perception=None
-                if native_ground:
+                if replay is not None:
+                    saved = replay[name,frame]
+                    assert Path(saved['image_path']).resolve()==path.resolve()
+                    candidates,perception=copy.deepcopy(saved['candidates']),copy.deepcopy(saved['perception'])
+                    counts['actual_native_candidates']+=len(candidates)
+                    counts['replayed_native_frames']+=1
+                    counts['rejected_perception_frames']+=bool(perception and perception.get('model_response_rejected'))
+                elif native_ground:
                     try:
                         candidates,perception=frontend(image,'mot',['person'],image_path=path)
                     except GroundingProtocolError as error:
@@ -152,6 +178,10 @@ def main():
                     global_index+=len(group)
                 assert global_index==len(candidates), 'Every actual candidate must have one accepted actor group'
                 training.flush()
+                if args.output_byte_budget:
+                    exported_bytes = training.tell()+native.tell()+sum(p.stat().st_size for p in (args.out/'evidence').glob('*.png'))
+                    if exported_bytes>args.output_byte_budget:
+                        raise RuntimeError(f'Rollout export exceeded registered {args.output_byte_budget} byte budget; preserve completed prefix')
                 for event in state['events']:
                     if 'candidate' not in event or 'track_id' not in event: continue
                     truth=matched.get(event['candidate']);gid=truth['gt_id'] if truth else None
@@ -160,6 +190,9 @@ def main():
                 print(json.dumps({'sequence':name,'frame':frame,'tracks':len(outputs),'training_rows':total_rows}),flush=True)
             clips.append({'sequence':name,'frames':frames,'rows':clip_rows,'last_runtime_id':tracker.next_id-1,'own_model_states':True})
     summary={'status':'ACTUAL_NATIVE_GROUND_OWN_HISTORY_CURRICULUM_COMPLETE' if native_ground else 'REAL_MODEL_HISTORY_CURRICULUM_COMPLETE_NOT_GROUND_DETECTOR_ROLLOUT',
+        'native_candidate_replay':str(args.native_candidate_replay) if replay is not None else None,
+        'new_ground_requests':False if replay is not None else native_ground,
+        'registered_output_byte_budget':args.output_byte_budget,
         'rows':total_rows,'seed':0,'checkpoint':str(args.checkpoint),'clips':clips,'counts':dict(counts),
         'evidence_png_bytes':sum(p.stat().st_size for p in (args.out/'evidence').glob('*.png')),
         'actor_GT_ID_inputs':False,'actor_state_corrected_by_GT':False,'validation_or_test_supervision_used':False,

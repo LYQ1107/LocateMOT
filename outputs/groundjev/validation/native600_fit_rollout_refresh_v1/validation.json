@@ -1,0 +1,14 @@
+{
+  "status": "ACTUAL48_NATIVE_REPLAY_AND_BOUNDED_REFRESH_CONTRACT_VALIDATED",
+  "frames": 48,
+  "candidates": 1184,
+  "same_original_fit_frames_and_all_exact_native_candidates": true,
+  "upstream_owner_confirmed_live": [
+    2049900,
+    "42845776"
+  ],
+  "physical_gpu_after_release": 4,
+  "combined_registered_upper_bytes": 26262799802,
+  "new_training_steps": 0,
+  "new_DLM_requests": false
+}

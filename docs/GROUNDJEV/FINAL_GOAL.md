@@ -22,3 +22,21 @@ After the Pilot, continue Full/Compact distillation, controlled GroundAnything
 tracking adaptation, memory and multitask studies. Interactive prompting is
 secondary to the first three-task Pilot. Never claim synthetic tensors or
 perception recall as completed video tracking results.
+
+User clarification,2026-10-15: the final purpose is ordinary-model-level
+performance on MOT,RMOT andOVMOT. Completing the Pilot, measurements or negative
+diagnoses is insufficient. The goal stays active until a shared candidate
+system/checkpoint reaches the registered conventional references under matched
+evaluation protocols on all three tasks. Report identity metrics, Base/Novel
+recognition and actual end-to-end cost alongside the main accuracy metrics.
+Short clips and one-video scores cannot establish dataset-level parity.
+
+Initial references are ByteTrack forMOT,TempRMOT forRefer-KITTI-V2 andOVTrack
+forTAO open-vocabulary tracking, registered in
+`configs/groundjev/ordinary_model_targets_v1.json`. Published figures are
+directional targets until split,scope,annotations and evaluation settings
+match. Released RMOT training includes our local held-out videos, so a released
+checkpoint on those videos is a training-overlap reference, not an unbiased
+held-out baseline. Preserve existing forbidden evaluation-label boundaries;
+use compatible reference training/splits for formal comparisons. No current
+model has established the final performance target.

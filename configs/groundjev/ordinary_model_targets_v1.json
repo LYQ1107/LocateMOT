@@ -1,0 +1,38 @@
+{
+  "registered_user_clarification": "2026-10-15: reach ordinary MOT/RMOT/OVMOT model performance; Pilot execution alone is insufficient",
+  "same_shared_candidate_checkpoint_for_all_three_tasks": true,
+  "formal_acceptance": "Meet the conventional reference main tracking metrics under matched evaluation scope, split, annotation, category and expression protocols on all three tasks. Report IDF1/IDSW, Base/Novel recognition and actual pipeline speed/resources; no per-task cherry-picked unrelated models.",
+  "published_scores_are_directional_until_protocol_matched": true,
+  "references": {
+    "mot": {
+      "method": "ByteTrack",
+      "published_scope": "Complete DanceTrack validation split",
+      "published_percent": {"HOTA": 47.1, "IDF1": 51.9},
+      "source": "https://github.com/DanceTrack/DanceTrack#evaluation",
+      "same_scope_reference_status": "NOT_YET_REPRODUCED"
+    },
+    "rmot": {
+      "method": "TempRMOT",
+      "published_scope": "Refer-KITTI-V2 official evaluation",
+      "published_percent": {"HOTA": 35.04, "DetA": 22.97, "AssA": 53.58},
+      "source": "https://github.com/zyn213/TempRMOT#ref-kitti-v2",
+      "same_scope_reference_status": "REQUIRES_COMPATIBLE_TRAIN_EVALUATION_SPLIT",
+      "released_upstream_train_list_overlaps_our_validation": ["0007", "0015", "0016"],
+      "overlap_source": "/data2/user/reference_envs/temprmot/source/datasets/data_path/refer-kitti-v2.train",
+      "released_checkpoint_on_local_validation_is_not_unseen_video_evidence": true
+    },
+    "ovmot": {
+      "method": "OVTrack ResNet50, no dynamic RCNN threshold",
+      "published_scope": "TAO validation TETA and standard open-vocabulary Base/Novel protocol",
+      "published_percent": {"TETA": 34.7, "Base_TETA": 35.5, "Novel_TETA": 27.8},
+      "source": "https://github.com/SysCV/ovtrack#main-results",
+      "same_scope_reference_status": "NOT_YET_REPRODUCED",
+      "raw_native_vs_alias_grouping_must_be_declared": true,
+      "Novel_support_and_classification_must_be_measured": true
+    }
+  },
+  "current_status": "FINAL_PERFORMANCE_TARGET_NOT_ACHIEVED",
+  "existing_forbidden_evaluation_label_boundaries_unchanged": true,
+  "maximum_physical_GPUs": 4,
+  "temporary_feature_budget_bytes": 26843545600
+}

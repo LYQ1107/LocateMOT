@@ -1,0 +1,9 @@
+{
+  "status": "WAITING_ORIGINAL_GPU4_FULL1203_OWNER_EXIT",
+  "owner_pid": 2353528,
+  "starttick": "44628629",
+  "blocking_session": 45947,
+  "code_revision": "1057dded27e424527f5f40dfcc44480df192b91f",
+  "GPU_allocation_before_upstream_completion": false,
+  "global_goal_performance_target_achieved": false
+}

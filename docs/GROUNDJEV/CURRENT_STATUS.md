@@ -7,6 +7,25 @@ complete-dataset result or successful unified-model promotion is claimed.
 Earlier snapshots/failures remain in Git, `STATUS_HISTORY_20261015.md` and
 `research_log.md`. Official artifacts remain authoritative.
 
+User clarification2026-10-15: the final purpose is ordinary-model-level
+MOT/RMOT/OVMOT performance, not completion of the Pilot or experiment queue.
+That target is NOT achieved. ByteTrack,TempRMOT-v2 andOVTrack are the initial
+conventional references; see `ordinary_model_targets_v1.json` andFINAL_GOAL.
+Published figures require matching scope/splits before formal use. In
+particular, released TempRMOT training includes all three localV2validation
+videos, so its released weights cannot establish unbiased held-out parity
+there. The old TempRMOT V1 sanity report is neither a currentV2validation
+result nor proof that the new performance goal has been reached.
+
+Next bounded model experiment: refresh currentnative600 actual own-history
+rollout on the same48fit frames/all1184original DLM candidates. CPU replay/
+scope/budget checks pass. A single owner waits for the originalGPU4Full1203
+three-arm cohort to finish successfully before usingGPU4. No additional DLM
+calls or automatic further training; export cap512MiB keeps the registered
+combined upper26,262,799,802bytes below25GiB. Review actual existing-identity
+and conflicting-anchor support before changing Q3 supervision. Plan:
+`configs/groundjev/native600_fit_rollout_refresh_v1.json`.
+
 ## Complete DanceTrack video
 
 Same original V1 Ground proposals, all1203frames of validation0004,
