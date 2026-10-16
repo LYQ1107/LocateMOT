@@ -1,0 +1,17 @@
+{
+  "owner": [
+    3457625,
+    "49350320"
+  ],
+  "original_owner_session": 94290,
+  "target_step": 5,
+  "target_examples": 80,
+  "output": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/full_joint_source_epoch1_first5_observer_v1",
+  "observer_pid": 3495957,
+  "prior_registered_feature_upper_bytes": 26577937374,
+  "observer_report_cap_bytes": 1048576,
+  "combined_registered_feature_upper_bytes": 26578985950,
+  "global_temporary_feature_budget_bytes": 26843545600,
+  "no_GPU_or_training_updates_by_observer": true,
+  "full_goal_complete": false
+}

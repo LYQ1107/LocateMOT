@@ -1,0 +1,41 @@
+{
+  "status": "FULL_NATURAL_LEARNED_HYBRID32_CONTROL_COMPLETE_AND_VALIDATED",
+  "plan": "configs/groundjev/natural_hybrid32_full_control_v1.json",
+  "frames": 1657,
+  "native_candidates": 235232,
+  "all_frozen_candidate_metadata_and_timestamps_exact": true,
+  "baseline_metrics": {
+    "HOTA": 0.07431603472143987,
+    "DetA": 0.09635711272597129,
+    "AssA": 0.05741633738163849,
+    "IDF1": 0.0614735718705473,
+    "IDSW": 2060,
+    "FP": 463,
+    "FN": 286273
+  },
+  "hybrid_metrics": {
+    "HOTA": 0.0827503348854657,
+    "DetA": 0.1075907282915674,
+    "AssA": 0.06368904247031032,
+    "IDF1": 0.06668855200433217,
+    "IDSW": 2348,
+    "FP": 556,
+    "FN": 282277
+  },
+  "HOTA_change_percentage_points": 0.8434300164025826,
+  "natural_recovery_counts": {
+    "natural_candidate_returns_3to30s": 132,
+    "known_birth_anchor_eligible_returns": 12,
+    "previous_correct_ID_survives_before_return": 3,
+    "same_known_correct_birth_ID_recovered": 0,
+    "unknown_or_no_previous_correct_birth_anchor_excluded": 120
+  },
+  "new_GPU_or_optimizer_updates": 0,
+  "fixed_shared_checkpoint": true,
+  "no_runtime_GT_or_future_correction": true,
+  "isolated_speed_or_end_to_end_claim": false,
+  "three_task_or_Full_performance_claim": false,
+  "ordinary_model_performance_achieved": false,
+  "full_goal_complete": false,
+  "encoded_video_decoded_frames": 1657
+}

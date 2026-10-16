@@ -1,0 +1,12 @@
+{
+  "status": "FROZEN_SHORTLIST_AUDIT_HYBRID_CONTROL_AND_KNOWN_BIRTH_COMPONENT_RESERVED_WITHIN_CAP",
+  "prior_closed_registered_feature_upper_bytes": 26551722974,
+  "new_shortlist_audit_cap_bytes": 1048576,
+  "new_hybrid_small_reports_cap_bytes": 16777216,
+  "new_known_birth_component_cap_bytes": 8388608,
+  "combined_registered_feature_upper_bytes": 26577937374,
+  "global_temporary_feature_budget_bytes": 26843545600,
+  "remaining_upper_bound_headroom_bytes": 265608226,
+  "new_native_candidate_or_ROI_archives": 0,
+  "existing_native_sources_and_checkpoints_preserved": true
+}

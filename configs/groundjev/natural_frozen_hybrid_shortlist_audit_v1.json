@@ -1,0 +1,21 @@
+{
+  "project_root": "/data2/user/LocateMOT",
+  "manifest": "outputs/groundjev/recovery_scope_20261015/registered_mot_challenge.json",
+  "run": "outputs/groundjev/natural_memory/mot20_05_full_validation_gpu5_v1/controls/mot20_challenge_reference_gated3",
+  "source": "outputs/groundjev/natural_memory/mot20_05_full_validation_gpu5_v1/fresh_compact_gated3/frame_candidates.jsonl",
+  "output": "outputs/groundjev/diagnostics/natural_frozen_hybrid_shortlist_audit_v1",
+  "frames": 1657,
+  "candidates": 235232,
+  "group_size": 16,
+  "shortlist_size": 32,
+  "hybrid_policy": "existing Compact hybrid16_16 unchanged: first16 geometry, fill up to32 by group-max of mean anchor/recent/long native cosine",
+  "history": "exact original reference_gated3 CPU decisions; no new identity inference or GT correction",
+  "GT_access": "existing immutable completed posthoc diagnostic only; never used in retrieval or tracker inputs",
+  "report_cap_bytes": 1048576,
+  "prior_registered_feature_upper_bytes": 26551722974,
+  "combined_registered_feature_upper_bytes": 26552771550,
+  "global_temporary_feature_budget_bytes": 26843545600,
+  "new_GPU_or_native_feature_archive": false,
+  "counterfactual_tracking_metric_claim": false,
+  "full_goal_complete": false
+}

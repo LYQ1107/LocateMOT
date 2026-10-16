@@ -1,0 +1,150 @@
+{
+  "status": "KNOWN_BIRTH_RMOT_IDENTITY_AND_ASSIGNED_WRITE_NATIVE_COMPONENT_VALIDATED",
+  "source_rollouts": 18,
+  "source_physical_frames": 1814,
+  "actual_filtered_unique_media_paths": 977,
+  "selected_rows": 2882,
+  "counts": {
+    "native_candidate_registry_rows_checked": 10868,
+    "identity:EXISTING": 1428,
+    "assigned_identity_memory_update:no": 981,
+    "assigned_identity_memory_update:yes": 473,
+    "multiple_correct_input_anchors_identity_rows_not_selected": 271
+  },
+  "unit_counts": {
+    "0000_primary": {
+      "native_candidate_registry_rows_checked": 289
+    },
+    "0000_counter": {
+      "native_candidate_registry_rows_checked": 811
+    },
+    "0002_primary": {
+      "native_candidate_registry_rows_checked": 452,
+      "identity:EXISTING": 59,
+      "assigned_identity_memory_update:no": 9,
+      "assigned_identity_memory_update:yes": 14,
+      "multiple_correct_input_anchors_identity_rows_not_selected": 2
+    },
+    "0002_counter": {
+      "native_candidate_registry_rows_checked": 360,
+      "identity:EXISTING": 12,
+      "assigned_identity_memory_update:yes": 11,
+      "assigned_identity_memory_update:no": 17,
+      "multiple_correct_input_anchors_identity_rows_not_selected": 21
+    },
+    "0003_primary": {
+      "native_candidate_registry_rows_checked": 638,
+      "identity:EXISTING": 187,
+      "assigned_identity_memory_update:yes": 83,
+      "assigned_identity_memory_update:no": 58,
+      "multiple_correct_input_anchors_identity_rows_not_selected": 18
+    },
+    "0003_counter": {
+      "native_candidate_registry_rows_checked": 368,
+      "identity:EXISTING": 123,
+      "assigned_identity_memory_update:yes": 44,
+      "assigned_identity_memory_update:no": 49
+    },
+    "0006_primary": {
+      "native_candidate_registry_rows_checked": 1028,
+      "identity:EXISTING": 93,
+      "assigned_identity_memory_update:yes": 2,
+      "multiple_correct_input_anchors_identity_rows_not_selected": 3,
+      "assigned_identity_memory_update:no": 45
+    },
+    "0006_counter": {
+      "native_candidate_registry_rows_checked": 619,
+      "identity:EXISTING": 18,
+      "assigned_identity_memory_update:yes": 15,
+      "multiple_correct_input_anchors_identity_rows_not_selected": 20,
+      "assigned_identity_memory_update:no": 60
+    },
+    "0008_primary": {
+      "native_candidate_registry_rows_checked": 1346,
+      "identity:EXISTING": 84,
+      "assigned_identity_memory_update:no": 76,
+      "assigned_identity_memory_update:yes": 79,
+      "multiple_correct_input_anchors_identity_rows_not_selected": 51
+    },
+    "0008_counter": {
+      "native_candidate_registry_rows_checked": 1209,
+      "identity:EXISTING": 266,
+      "assigned_identity_memory_update:yes": 68,
+      "assigned_identity_memory_update:no": 115,
+      "multiple_correct_input_anchors_identity_rows_not_selected": 7
+    },
+    "0010_primary": {
+      "native_candidate_registry_rows_checked": 806,
+      "identity:EXISTING": 1
+    },
+    "0010_counter": {
+      "native_candidate_registry_rows_checked": 748,
+      "identity:EXISTING": 51,
+      "assigned_identity_memory_update:yes": 38,
+      "assigned_identity_memory_update:no": 37,
+      "multiple_correct_input_anchors_identity_rows_not_selected": 106
+    },
+    "0012_primary": {
+      "native_candidate_registry_rows_checked": 70
+    },
+    "0012_counter": {
+      "native_candidate_registry_rows_checked": 350,
+      "identity:EXISTING": 123,
+      "assigned_identity_memory_update:yes": 19,
+      "assigned_identity_memory_update:no": 15
+    },
+    "0014_primary": {
+      "native_candidate_registry_rows_checked": 235,
+      "identity:EXISTING": 42,
+      "assigned_identity_memory_update:no": 59,
+      "assigned_identity_memory_update:yes": 6,
+      "multiple_correct_input_anchors_identity_rows_not_selected": 7
+    },
+    "0014_counter": {
+      "native_candidate_registry_rows_checked": 452,
+      "identity:EXISTING": 109,
+      "assigned_identity_memory_update:no": 103,
+      "assigned_identity_memory_update:yes": 35,
+      "multiple_correct_input_anchors_identity_rows_not_selected": 4
+    },
+    "0017_primary": {
+      "native_candidate_registry_rows_checked": 381,
+      "identity:EXISTING": 36,
+      "multiple_correct_input_anchors_identity_rows_not_selected": 31,
+      "assigned_identity_memory_update:no": 190,
+      "assigned_identity_memory_update:yes": 21
+    },
+    "0017_counter": {
+      "native_candidate_registry_rows_checked": 706,
+      "identity:EXISTING": 224,
+      "assigned_identity_memory_update:no": 148,
+      "multiple_correct_input_anchors_identity_rows_not_selected": 1,
+      "assigned_identity_memory_update:yes": 38
+    }
+  },
+  "correct_or_assigned_anchor_age_seconds_buckets": {
+    "identity:under1s": 317,
+    "assigned_update:under1s": 281,
+    "identity:1to3s": 384,
+    "assigned_update:1to3s": 344,
+    "identity:3to10s": 513,
+    "assigned_update:3to10s": 584,
+    "assigned_update:10to30s": 235,
+    "identity:10to30s": 214,
+    "assigned_update:over30s": 10
+  },
+  "CPU_plan": {
+    "rows": 2882,
+    "dropped_rows": 0,
+    "max_tokens": 17164,
+    "planned_tokens": 13942000
+  },
+  "original_native_group_states_media_questions_and_targets_unchanged": true,
+  "source_all18_actor_state_output_and_pixel_validation_reused": true,
+  "new_Ground_or_ROI_or_GPU_or_optimizer_calls": 0,
+  "unknown_birth_and_absent_correspondence_not_fabricated_as_NEGATIVE": true,
+  "dataset_is_registered_IoU_and_birth_contract_not_exhaustive_physical_truth": true,
+  "current459027_or6000_inputs_changed": false,
+  "full_goal_complete": false,
+  "anchor_age_definition": "Registered source time since immutable actor birth; not an occlusion gap or time since last observation."
+}

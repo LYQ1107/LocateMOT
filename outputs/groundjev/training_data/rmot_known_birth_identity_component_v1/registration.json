@@ -1,0 +1,18 @@
+{
+  "project_root": "/data2/user/LocateMOT",
+  "source": "outputs/groundjev/training_data/rmot_allfit1814_query18_shared_gpu7_v2",
+  "export": "outputs/groundjev/training_data/rmot_allfit1814_query18_full_v3_groups_v2_shared_gpu7",
+  "scope": "outputs/groundjev/training_data/rmot_allfit1814_query18_scope_v1",
+  "output": "outputs/groundjev/training_data/rmot_known_birth_identity_component_v1",
+  "identity_eligibility": "Current released-GT matched candidate with exactly one correct immutable-birth identity in its actual shortlist; retain original EXISTING label. NO_MATCH requires a surviving known-birth identity outside the shortlist. Never fabricate NEW/IGNORE from absent correspondence.",
+  "assigned_update_eligibility": "Only original rows with known current GT and known assigned immutable birth; independently match original yes/no to identity consistency and original IoU quality level>=2. Unknown assignments stay in the original model input with no invented target.",
+  "ambiguity": "Multiple correct birth anchors in the actual shortlist are counted and excluded from this new identity subset; all original rows remain unchanged.",
+  "history": "Original real source trajectories; no GT correction or native feature recapture. Report actual anchor-age seconds and filtered image exposure.",
+  "new_GPU_or_optimizer_updates": 0,
+  "existing459027_or6000_inputs_changed": false,
+  "component_cap_bytes": 8388608,
+  "prior_registered_feature_upper_bytes": 26569548766,
+  "combined_registered_feature_upper_bytes": 26577937374,
+  "global_temporary_feature_budget_bytes": 26843545600,
+  "full_goal_complete": false
+}

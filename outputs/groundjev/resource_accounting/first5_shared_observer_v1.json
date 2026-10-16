@@ -1,0 +1,9 @@
+{
+  "status": "ONE_SHOT_ACTUAL_FIRST5_TRAINING_OBSERVER_RESERVED",
+  "prior_registered_feature_upper_bytes": 26577937374,
+  "observer_report_cap_bytes": 1048576,
+  "combined_registered_feature_upper_bytes": 26578985950,
+  "global_temporary_feature_budget_bytes": 26843545600,
+  "new_GPU_or_model_or_training_updates": 0,
+  "actual_first5_updates_not_assumed_before_snapshot": true
+}
