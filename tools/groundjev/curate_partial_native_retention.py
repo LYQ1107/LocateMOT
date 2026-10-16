@@ -1,4 +1,5 @@
 """Freeze completed native task artifacts while the full9 owners keep running."""
+import argparse
 import json
 from pathlib import Path
 import sys
@@ -10,9 +11,12 @@ sys.path[:0] = [str(ROOT),str(SOURCE)]
 
 def main():
     from scripts.evaluate import summarize
+    parser=argparse.ArgumentParser()
+    parser.add_argument('--out',type=Path,default=ROOT/'outputs/groundjev/ground_retention/partial_completed_tasks_20261015_v1')
+    args=parser.parse_args()
     runs = {'original':'groundjev_original_dense_ref9_queue32_v3_20261014',
         'adapted200':'groundjev_trackproj200_dense_ref9_sync_v3_20261015'}
-    output = ROOT/'outputs/groundjev/ground_retention/partial_completed_tasks_20261015_v1'
+    output = args.out
     output.mkdir(parents=True,exist_ok=False)
     variants = {}
     for name,directory in runs.items():

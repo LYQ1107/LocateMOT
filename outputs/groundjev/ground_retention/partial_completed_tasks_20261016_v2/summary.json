@@ -1,0 +1,684 @@
+{
+  "status": "AVAILABLE_COMPLETED_NATIVE_TASK_ARTIFACTS_VALIDATED_FULL9_PENDING",
+  "variants": {
+    "original": {
+      "run": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/outputs/groundjev_retention/groundjev_original_dense_ref9_queue32_v3_20261014",
+      "registered_tasks": [
+        "gam_coco",
+        "gam_lvis",
+        "gam_dense200",
+        "gam_visdrone",
+        "gam_refcocog_val",
+        "gam_refcocog_test",
+        "gam_refcoco",
+        "gam_refcocog",
+        "gam_refcocoplus"
+      ],
+      "completed": {
+        "gam_lvis": {
+          "source": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/outputs/groundjev_retention/groundjev_original_dense_ref9_queue32_v3_20261014/log_eval/groundinganything/20261014_232522_gam_lvis_results.json",
+          "snapshot": "outputs/groundjev/ground_retention/partial_completed_tasks_20261016_v2/original/gam_lvis.json",
+          "metrics": {
+            "alias": "gam_lvis",
+            "recall_iou_50,none": 0.6915779096448879,
+            "recall_iou_50_stderr,none": "N/A",
+            "recall_iou_95,none": 0.2707902222235514,
+            "recall_iou_95_stderr,none": "N/A",
+            "recall_mean_iou,none": 0.545116671173749,
+            "recall_mean_iou_stderr,none": "N/A",
+            "precision_iou_50,none": 0.47756790014042727,
+            "precision_iou_50_stderr,none": "N/A",
+            "precision_iou_95,none": 0.16800617012597052,
+            "precision_iou_95_stderr,none": "N/A",
+            "precision_mean_iou,none": 0.367274693273904,
+            "precision_mean_iou_stderr,none": "N/A",
+            "f1_iou_50,none": 0.564985833808466,
+            "f1_iou_50_stderr,none": "N/A",
+            "f1_iou_95,none": 0.20736008288373026,
+            "f1_iou_95_stderr,none": "N/A",
+            "F1mIoU,none": 0.43878639457364965,
+            "F1mIoU_stderr,none": "N/A",
+            "mae,none": [],
+            "mae_stderr,none": []
+          },
+          "n-samples": {
+            "original": 19626,
+            "effective": 19626,
+            "provider_policy_filtered": 0
+          }
+        },
+        "gam_dense200": {
+          "source": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/outputs/groundjev_retention/groundjev_original_dense_ref9_queue32_v3_20261014/log_eval/groundinganything/20261014_232524_gam_dense200_results.json",
+          "snapshot": "outputs/groundjev/ground_retention/partial_completed_tasks_20261016_v2/original/gam_dense200.json",
+          "metrics": {
+            "alias": "gam_dense200",
+            "recall_iou_50,none": 0.760863921812718,
+            "recall_iou_50_stderr,none": "N/A",
+            "recall_iou_95,none": 0.26441483357877327,
+            "recall_iou_95_stderr,none": "N/A",
+            "recall_mean_iou,none": 0.6431145901240665,
+            "recall_mean_iou_stderr,none": "N/A",
+            "precision_iou_50,none": 0.821156124154536,
+            "precision_iou_50_stderr,none": "N/A",
+            "precision_iou_95,none": 0.2761082664015343,
+            "precision_iou_95_stderr,none": "N/A",
+            "precision_mean_iou,none": 0.6915293201735705,
+            "precision_mean_iou_stderr,none": "N/A",
+            "f1_iou_50,none": 0.7898611280399461,
+            "f1_iou_50_stderr,none": "N/A",
+            "f1_iou_95,none": 0.27013506476576155,
+            "f1_iou_95_stderr,none": "N/A",
+            "F1mIoU,none": 0.6664353391740132,
+            "F1mIoU_stderr,none": "N/A",
+            "mae,none": [],
+            "mae_stderr,none": []
+          },
+          "n-samples": {
+            "original": 200,
+            "effective": 200,
+            "provider_policy_filtered": 0
+          }
+        },
+        "gam_visdrone": {
+          "source": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/outputs/groundjev_retention/groundjev_original_dense_ref9_queue32_v3_20261014/log_eval/groundinganything/20261014_232526_gam_visdrone_results.json",
+          "snapshot": "outputs/groundjev/ground_retention/partial_completed_tasks_20261016_v2/original/gam_visdrone.json",
+          "metrics": {
+            "alias": "gam_visdrone",
+            "recall_iou_50,none": 0.43533884354806224,
+            "recall_iou_50_stderr,none": "N/A",
+            "recall_iou_95,none": 0.021943107593344318,
+            "recall_iou_95_stderr,none": "N/A",
+            "recall_mean_iou,none": 0.28151242460495524,
+            "recall_mean_iou_stderr,none": "N/A",
+            "precision_iou_50,none": 0.49043747797842513,
+            "precision_iou_50_stderr,none": "N/A",
+            "precision_iou_95,none": 0.025176254640934197,
+            "precision_iou_95_stderr,none": "N/A",
+            "precision_mean_iou,none": 0.3134638808731411,
+            "precision_mean_iou_stderr,none": "N/A",
+            "f1_iou_50,none": 0.46124853170517655,
+            "f1_iou_50_stderr,none": "N/A",
+            "f1_iou_95,none": 0.02344875814051486,
+            "f1_iou_95_stderr,none": "N/A",
+            "F1mIoU,none": 0.296624168512954,
+            "F1mIoU_stderr,none": "N/A",
+            "mae,none": [],
+            "mae_stderr,none": []
+          },
+          "n-samples": {
+            "original": 1610,
+            "effective": 1610,
+            "provider_policy_filtered": 0
+          }
+        },
+        "gam_refcocog_val": {
+          "source": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/outputs/groundjev_retention/groundjev_original_dense_ref9_queue32_v3_20261014/log_eval/groundinganything/20261014_232528_gam_refcocog_val_results.json",
+          "snapshot": "outputs/groundjev/ground_retention/partial_completed_tasks_20261016_v2/original/gam_refcocog_val.json",
+          "metrics": {
+            "alias": "gam_refcocog_val",
+            "recall_iou_50,none": 0.9282061771323379,
+            "recall_iou_50_stderr,none": "N/A",
+            "recall_iou_95,none": 0.8868889343424013,
+            "recall_iou_95_stderr,none": "N/A",
+            "recall_mean_iou,none": 0.9170382491307015,
+            "recall_mean_iou_stderr,none": "N/A",
+            "precision_iou_50,none": 0.9282061771323379,
+            "precision_iou_50_stderr,none": "N/A",
+            "precision_iou_95,none": 0.8868889343424013,
+            "precision_iou_95_stderr,none": "N/A",
+            "precision_mean_iou,none": 0.9170382491307015,
+            "precision_mean_iou_stderr,none": "N/A",
+            "f1_iou_50,none": 0.9282061771323379,
+            "f1_iou_50_stderr,none": "N/A",
+            "f1_iou_95,none": 0.8868889343424012,
+            "f1_iou_95_stderr,none": "N/A",
+            "F1mIoU,none": 0.9170382491307016,
+            "F1mIoU_stderr,none": "N/A",
+            "mae,none": [],
+            "mae_stderr,none": []
+          },
+          "n-samples": {
+            "original": 4889,
+            "effective": 4889,
+            "provider_policy_filtered": 0
+          }
+        },
+        "gam_refcocog_test": {
+          "source": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/outputs/groundjev_retention/groundjev_original_dense_ref9_queue32_v3_20261014/log_eval/groundinganything/20261014_232530_gam_refcocog_test_results.json",
+          "snapshot": "outputs/groundjev/ground_retention/partial_completed_tasks_20261016_v2/original/gam_refcocog_test.json",
+          "metrics": {
+            "alias": "gam_refcocog_test",
+            "recall_iou_50,none": 0.9272214681006579,
+            "recall_iou_50_stderr,none": "N/A",
+            "recall_iou_95,none": 0.8710452124882531,
+            "recall_iou_95_stderr,none": "N/A",
+            "recall_mean_iou,none": 0.9111934843896836,
+            "recall_mean_iou_stderr,none": "N/A",
+            "precision_iou_50,none": 0.9272214681006579,
+            "precision_iou_50_stderr,none": "N/A",
+            "precision_iou_95,none": 0.8710452124882531,
+            "precision_iou_95_stderr,none": "N/A",
+            "precision_mean_iou,none": 0.9111934843896836,
+            "precision_mean_iou_stderr,none": "N/A",
+            "f1_iou_50,none": 0.9272214681006579,
+            "f1_iou_50_stderr,none": "N/A",
+            "f1_iou_95,none": 0.8710452124882531,
+            "f1_iou_95_stderr,none": "N/A",
+            "F1mIoU,none": 0.9111934843896836,
+            "F1mIoU_stderr,none": "N/A",
+            "mae,none": [],
+            "mae_stderr,none": []
+          },
+          "n-samples": {
+            "original": 9577,
+            "effective": 9577,
+            "provider_policy_filtered": 0
+          }
+        },
+        "gam_refcoco": {
+          "source": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/outputs/groundjev_retention/groundjev_original_dense_ref9_queue32_v3_20261014/log_eval/groundinganything/20261014_232532_gam_refcoco_results.json",
+          "snapshot": "outputs/groundjev/ground_retention/partial_completed_tasks_20261016_v2/original/gam_refcoco.json",
+          "metrics": {
+            "alias": "gam_refcoco",
+            "recall_iou_50,none": 0.9164673046251993,
+            "recall_iou_50_stderr,none": "N/A",
+            "recall_iou_95,none": 0.783732057416268,
+            "recall_iou_95_stderr,none": "N/A",
+            "recall_mean_iou,none": 0.8849920255183413,
+            "recall_mean_iou_stderr,none": "N/A",
+            "precision_iou_50,none": 0.9164673046251993,
+            "precision_iou_50_stderr,none": "N/A",
+            "precision_iou_95,none": 0.783732057416268,
+            "precision_iou_95_stderr,none": "N/A",
+            "precision_mean_iou,none": 0.8849920255183413,
+            "precision_mean_iou_stderr,none": "N/A",
+            "f1_iou_50,none": 0.9164673046251992,
+            "f1_iou_50_stderr,none": "N/A",
+            "f1_iou_95,none": 0.783732057416268,
+            "f1_iou_95_stderr,none": "N/A",
+            "F1mIoU,none": 0.8849920255183413,
+            "F1mIoU_stderr,none": "N/A",
+            "mae,none": [],
+            "mae_stderr,none": []
+          },
+          "n-samples": {
+            "original": 25080,
+            "effective": 25080,
+            "provider_policy_filtered": 0
+          }
+        },
+        "gam_refcocog": {
+          "source": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/outputs/groundjev_retention/groundjev_original_dense_ref9_queue32_v3_20261014/log_eval/groundinganything/20261014_232534_gam_refcocog_results.json",
+          "snapshot": "outputs/groundjev/ground_retention/partial_completed_tasks_20261016_v2/original/gam_refcocog.json",
+          "metrics": {
+            "alias": "gam_refcocog",
+            "recall_iou_50,none": 0.8799889135254989,
+            "recall_iou_50_stderr,none": "N/A",
+            "recall_iou_95,none": 0.686529933481153,
+            "recall_iou_95_stderr,none": "N/A",
+            "recall_mean_iou,none": 0.829995842572062,
+            "recall_mean_iou_stderr,none": "N/A",
+            "precision_iou_50,none": 0.8799889135254989,
+            "precision_iou_50_stderr,none": "N/A",
+            "precision_iou_95,none": 0.686529933481153,
+            "precision_iou_95_stderr,none": "N/A",
+            "precision_mean_iou,none": 0.829995842572062,
+            "precision_mean_iou_stderr,none": "N/A",
+            "f1_iou_50,none": 0.8799889135254989,
+            "f1_iou_50_stderr,none": "N/A",
+            "f1_iou_95,none": 0.686529933481153,
+            "f1_iou_95_stderr,none": "N/A",
+            "F1mIoU,none": 0.8299958425720622,
+            "F1mIoU_stderr,none": "N/A",
+            "mae,none": [],
+            "mae_stderr,none": []
+          },
+          "n-samples": {
+            "original": 14432,
+            "effective": 14432,
+            "provider_policy_filtered": 0
+          }
+        },
+        "gam_refcocoplus": {
+          "source": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/outputs/groundjev_retention/groundjev_original_dense_ref9_queue32_v3_20261014/log_eval/groundinganything/20261014_232536_gam_refcocoplus_results.json",
+          "snapshot": "outputs/groundjev/ground_retention/partial_completed_tasks_20261016_v2/original/gam_refcocoplus.json",
+          "metrics": {
+            "alias": "gam_refcocoplus",
+            "recall_iou_50,none": 0.8766499349321435,
+            "recall_iou_50_stderr,none": "N/A",
+            "recall_iou_95,none": 0.7400074363264547,
+            "recall_iou_95_stderr,none": "N/A",
+            "recall_mean_iou,none": 0.843762781186094,
+            "recall_mean_iou_stderr,none": "N/A",
+            "precision_iou_50,none": 0.8766499349321435,
+            "precision_iou_50_stderr,none": "N/A",
+            "precision_iou_95,none": 0.7400074363264547,
+            "precision_iou_95_stderr,none": "N/A",
+            "precision_mean_iou,none": 0.843762781186094,
+            "precision_mean_iou_stderr,none": "N/A",
+            "f1_iou_50,none": 0.8766499349321434,
+            "f1_iou_50_stderr,none": "N/A",
+            "f1_iou_95,none": 0.7400074363264547,
+            "f1_iou_95_stderr,none": "N/A",
+            "F1mIoU,none": 0.843762781186094,
+            "F1mIoU_stderr,none": "N/A",
+            "mae,none": [],
+            "mae_stderr,none": []
+          },
+          "n-samples": {
+            "original": 10758,
+            "effective": 10758,
+            "provider_policy_filtered": 0
+          }
+        },
+        "gam_coco": {
+          "source": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/outputs/groundjev_retention/groundjev_original_dense_ref9_queue32_v3_20261014/resumed_completed/20261014_194050_gam_coco_results.json",
+          "snapshot": "outputs/groundjev/ground_retention/partial_completed_tasks_20261016_v2/original/gam_coco.json",
+          "metrics": {
+            "alias": "gam_coco",
+            "recall_iou_50,none": 0.7443590145704103,
+            "recall_iou_50_stderr,none": "N/A",
+            "recall_iou_95,none": 0.26450308040961473,
+            "recall_iou_95_stderr,none": "N/A",
+            "recall_mean_iou,none": 0.5999254703353675,
+            "recall_mean_iou_stderr,none": "N/A",
+            "precision_iou_50,none": 0.5044490493888624,
+            "precision_iou_50_stderr,none": "N/A",
+            "precision_iou_95,none": 0.1647301091701634,
+            "precision_iou_95_stderr,none": "N/A",
+            "precision_mean_iou,none": 0.399791699211337,
+            "precision_mean_iou_stderr,none": "N/A",
+            "f1_iou_50,none": 0.6013593411842666,
+            "f1_iou_50_stderr,none": "N/A",
+            "f1_iou_95,none": 0.20302074662202715,
+            "f1_iou_95_stderr,none": "N/A",
+            "F1mIoU,none": 0.4797806560343516,
+            "F1mIoU_stderr,none": "N/A",
+            "mae,none": [],
+            "mae_stderr,none": []
+          },
+          "n-samples": {
+            "original": 4952,
+            "effective": 4952,
+            "provider_policy_filtered": 0
+          }
+        }
+      },
+      "missing_tasks": [],
+      "completed_tasks": 9,
+      "completed_native_rows": 91124,
+      "all9_complete": true
+    },
+    "adapted200": {
+      "run": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/outputs/groundjev_retention/groundjev_trackproj200_dense_ref9_sync_v3_20261015",
+      "registered_tasks": [
+        "gam_coco",
+        "gam_lvis",
+        "gam_dense200",
+        "gam_visdrone",
+        "gam_refcocog_val",
+        "gam_refcocog_test",
+        "gam_refcoco",
+        "gam_refcocog",
+        "gam_refcocoplus"
+      ],
+      "completed": {
+        "gam_coco": {
+          "source": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/outputs/groundjev_retention/groundjev_trackproj200_dense_ref9_sync_v3_20261015/log_eval/groundinganything/20261015_003912_gam_coco_results.json",
+          "snapshot": "outputs/groundjev/ground_retention/partial_completed_tasks_20261016_v2/adapted200/gam_coco.json",
+          "metrics": {
+            "alias": "gam_coco",
+            "recall_iou_50,none": 0.7303542721818005,
+            "recall_iou_50_stderr,none": "N/A",
+            "recall_iou_95,none": 0.25369110986373283,
+            "recall_iou_95_stderr,none": "N/A",
+            "recall_mean_iou,none": 0.5854117975104594,
+            "recall_mean_iou_stderr,none": "N/A",
+            "precision_iou_50,none": 0.5074080999827112,
+            "precision_iou_50_stderr,none": "N/A",
+            "precision_iou_95,none": 0.16429679072567666,
+            "precision_iou_95_stderr,none": "N/A",
+            "precision_mean_iou,none": 0.4006849560898866,
+            "precision_mean_iou_stderr,none": "N/A",
+            "f1_iou_50,none": 0.5988026165538797,
+            "f1_iou_50_stderr,none": "N/A",
+            "f1_iou_95,none": 0.19943464931626978,
+            "f1_iou_95_stderr,none": "N/A",
+            "F1mIoU,none": 0.4757129441580531,
+            "F1mIoU_stderr,none": "N/A",
+            "mae,none": [],
+            "mae_stderr,none": []
+          },
+          "n-samples": {
+            "original": 4952,
+            "effective": 4952,
+            "provider_policy_filtered": 0
+          }
+        },
+        "gam_dense200": {
+          "source": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/outputs/groundjev_retention/groundjev_trackproj200_dense_ref9_sync_v3_20261015/log_eval/groundinganything/20261015_003916_gam_dense200_results.json",
+          "snapshot": "outputs/groundjev/ground_retention/partial_completed_tasks_20261016_v2/adapted200/gam_dense200.json",
+          "metrics": {
+            "alias": "gam_dense200",
+            "recall_iou_50,none": 0.7434993896250613,
+            "recall_iou_50_stderr,none": "N/A",
+            "recall_iou_95,none": 0.253094658040174,
+            "recall_iou_95_stderr,none": "N/A",
+            "recall_mean_iou,none": 0.6261745200015411,
+            "recall_mean_iou_stderr,none": "N/A",
+            "precision_iou_50,none": 0.835444012899173,
+            "precision_iou_50_stderr,none": "N/A",
+            "precision_iou_95,none": 0.27222683240098317,
+            "precision_iou_95_stderr,none": "N/A",
+            "precision_mean_iou,none": 0.6989393155019745,
+            "precision_mean_iou_stderr,none": "N/A",
+            "f1_iou_50,none": 0.7867946535175612,
+            "f1_iou_50_stderr,none": "N/A",
+            "f1_iou_95,none": 0.2623123489504536,
+            "f1_iou_95_stderr,none": "N/A",
+            "F1mIoU,none": 0.6605397813397788,
+            "F1mIoU_stderr,none": "N/A",
+            "mae,none": [],
+            "mae_stderr,none": []
+          },
+          "n-samples": {
+            "original": 200,
+            "effective": 200,
+            "provider_policy_filtered": 0
+          }
+        },
+        "gam_visdrone": {
+          "source": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/outputs/groundjev_retention/groundjev_trackproj200_dense_ref9_sync_v3_20261015/log_eval/groundinganything/20261015_003918_gam_visdrone_results.json",
+          "snapshot": "outputs/groundjev/ground_retention/partial_completed_tasks_20261016_v2/adapted200/gam_visdrone.json",
+          "metrics": {
+            "alias": "gam_visdrone",
+            "recall_iou_50,none": 0.3957841534938565,
+            "recall_iou_50_stderr,none": "N/A",
+            "recall_iou_95,none": 0.02394218505828667,
+            "recall_iou_95_stderr,none": "N/A",
+            "recall_mean_iou,none": 0.2630283914448106,
+            "recall_mean_iou_stderr,none": "N/A",
+            "precision_iou_50,none": 0.4506789291287567,
+            "precision_iou_50_stderr,none": "N/A",
+            "precision_iou_95,none": 0.02745937035631755,
+            "precision_iou_95_stderr,none": "N/A",
+            "precision_mean_iou,none": 0.29637871424421297,
+            "precision_mean_iou_stderr,none": "N/A",
+            "f1_iou_50,none": 0.4214515248794798,
+            "f1_iou_50_stderr,none": "N/A",
+            "f1_iou_95,none": 0.02558044484654621,
+            "f1_iou_95_stderr,none": "N/A",
+            "F1mIoU,none": 0.27870401376068343,
+            "F1mIoU_stderr,none": "N/A",
+            "mae,none": [],
+            "mae_stderr,none": []
+          },
+          "n-samples": {
+            "original": 1610,
+            "effective": 1610,
+            "provider_policy_filtered": 0
+          }
+        },
+        "gam_refcocog_val": {
+          "source": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/outputs/groundjev_retention/groundjev_trackproj200_dense_ref9_sync_v3_20261015/log_eval/groundinganything/20261015_003920_gam_refcocog_val_results.json",
+          "snapshot": "outputs/groundjev/ground_retention/partial_completed_tasks_20261016_v2/adapted200/gam_refcocog_val.json",
+          "metrics": {
+            "alias": "gam_refcocog_val",
+            "recall_iou_50,none": 0.9173655144201268,
+            "recall_iou_50_stderr,none": "N/A",
+            "recall_iou_95,none": 0.8369809777050522,
+            "recall_iou_95_stderr,none": "N/A",
+            "recall_mean_iou,none": 0.8937001431785642,
+            "recall_mean_iou_stderr,none": "N/A",
+            "precision_iou_50,none": 0.9173655144201268,
+            "precision_iou_50_stderr,none": "N/A",
+            "precision_iou_95,none": 0.8369809777050522,
+            "precision_iou_95_stderr,none": "N/A",
+            "precision_mean_iou,none": 0.8937001431785642,
+            "precision_mean_iou_stderr,none": "N/A",
+            "f1_iou_50,none": 0.9173655144201268,
+            "f1_iou_50_stderr,none": "N/A",
+            "f1_iou_95,none": 0.8369809777050522,
+            "f1_iou_95_stderr,none": "N/A",
+            "F1mIoU,none": 0.893700143178564,
+            "F1mIoU_stderr,none": "N/A",
+            "mae,none": [],
+            "mae_stderr,none": []
+          },
+          "n-samples": {
+            "original": 4889,
+            "effective": 4889,
+            "provider_policy_filtered": 0
+          }
+        },
+        "gam_refcocog_test": {
+          "source": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/outputs/groundjev_retention/groundjev_trackproj200_dense_ref9_sync_v3_20261015/log_eval/groundinganything/20261015_003922_gam_refcocog_test_results.json",
+          "snapshot": "outputs/groundjev/ground_retention/partial_completed_tasks_20261016_v2/adapted200/gam_refcocog_test.json",
+          "metrics": {
+            "alias": "gam_refcocog_test",
+            "recall_iou_50,none": 0.911454526469667,
+            "recall_iou_50_stderr,none": "N/A",
+            "recall_iou_95,none": 0.8162263756917615,
+            "recall_iou_95_stderr,none": "N/A",
+            "recall_mean_iou,none": 0.8852145765897462,
+            "recall_mean_iou_stderr,none": "N/A",
+            "precision_iou_50,none": 0.911454526469667,
+            "precision_iou_50_stderr,none": "N/A",
+            "precision_iou_95,none": 0.8162263756917615,
+            "precision_iou_95_stderr,none": "N/A",
+            "precision_mean_iou,none": 0.8852145765897462,
+            "precision_mean_iou_stderr,none": "N/A",
+            "f1_iou_50,none": 0.911454526469667,
+            "f1_iou_50_stderr,none": "N/A",
+            "f1_iou_95,none": 0.8162263756917615,
+            "f1_iou_95_stderr,none": "N/A",
+            "F1mIoU,none": 0.8852145765897463,
+            "F1mIoU_stderr,none": "N/A",
+            "mae,none": [],
+            "mae_stderr,none": []
+          },
+          "n-samples": {
+            "original": 9577,
+            "effective": 9577,
+            "provider_policy_filtered": 0
+          }
+        },
+        "gam_refcocoplus": {
+          "source": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/outputs/groundjev_retention/groundjev_trackproj200_dense_ref9_sync_v3_20261015/log_eval/groundinganything/20261015_003928_gam_refcocoplus_results.json",
+          "snapshot": "outputs/groundjev/ground_retention/partial_completed_tasks_20261016_v2/adapted200/gam_refcocoplus.json",
+          "metrics": {
+            "alias": "gam_refcocoplus",
+            "recall_iou_50,none": 0.8577802565532627,
+            "recall_iou_50_stderr,none": "N/A",
+            "recall_iou_95,none": 0.6867447480944413,
+            "recall_iou_95_stderr,none": "N/A",
+            "recall_mean_iou,none": 0.8164156906488195,
+            "recall_mean_iou_stderr,none": "N/A",
+            "precision_iou_50,none": 0.8577802565532627,
+            "precision_iou_50_stderr,none": "N/A",
+            "precision_iou_95,none": 0.6867447480944413,
+            "precision_iou_95_stderr,none": "N/A",
+            "precision_mean_iou,none": 0.8164156906488195,
+            "precision_mean_iou_stderr,none": "N/A",
+            "f1_iou_50,none": 0.8577802565532627,
+            "f1_iou_50_stderr,none": "N/A",
+            "f1_iou_95,none": 0.6867447480944413,
+            "f1_iou_95_stderr,none": "N/A",
+            "F1mIoU,none": 0.8164156906488195,
+            "F1mIoU_stderr,none": "N/A",
+            "mae,none": [],
+            "mae_stderr,none": []
+          },
+          "n-samples": {
+            "original": 10758,
+            "effective": 10758,
+            "provider_policy_filtered": 0
+          }
+        }
+      },
+      "missing_tasks": [
+        "gam_lvis",
+        "gam_refcoco",
+        "gam_refcocog"
+      ],
+      "completed_tasks": 6,
+      "completed_native_rows": 31986,
+      "all9_complete": false
+    }
+  },
+  "common_completed_tasks": {
+    "gam_coco": {
+      "rows": 4952,
+      "metrics": {
+        "recall_iou_50,none": {
+          "original": 0.7443590145704103,
+          "adapted200": 0.7303542721818005,
+          "difference_percentage_points": -1.4004742388609825
+        },
+        "precision_iou_50,none": {
+          "original": 0.5044490493888624,
+          "adapted200": 0.5074080999827112,
+          "difference_percentage_points": 0.2959050593848822
+        },
+        "f1_iou_50,none": {
+          "original": 0.6013593411842666,
+          "adapted200": 0.5988026165538797,
+          "difference_percentage_points": -0.25567246303869196
+        },
+        "F1mIoU,none": {
+          "original": 0.4797806560343516,
+          "adapted200": 0.4757129441580531,
+          "difference_percentage_points": -0.40677118762985076
+        }
+      }
+    },
+    "gam_dense200": {
+      "rows": 200,
+      "metrics": {
+        "recall_iou_50,none": {
+          "original": 0.760863921812718,
+          "adapted200": 0.7434993896250613,
+          "difference_percentage_points": -1.7364532187656656
+        },
+        "precision_iou_50,none": {
+          "original": 0.821156124154536,
+          "adapted200": 0.835444012899173,
+          "difference_percentage_points": 1.4287888744637045
+        },
+        "f1_iou_50,none": {
+          "original": 0.7898611280399461,
+          "adapted200": 0.7867946535175612,
+          "difference_percentage_points": -0.30664745223849543
+        },
+        "F1mIoU,none": {
+          "original": 0.6664353391740132,
+          "adapted200": 0.6605397813397788,
+          "difference_percentage_points": -0.5895557834234455
+        }
+      }
+    },
+    "gam_refcocog_test": {
+      "rows": 9577,
+      "metrics": {
+        "recall_iou_50,none": {
+          "original": 0.9272214681006579,
+          "adapted200": 0.911454526469667,
+          "difference_percentage_points": -1.5766941630990905
+        },
+        "precision_iou_50,none": {
+          "original": 0.9272214681006579,
+          "adapted200": 0.911454526469667,
+          "difference_percentage_points": -1.5766941630990905
+        },
+        "f1_iou_50,none": {
+          "original": 0.9272214681006579,
+          "adapted200": 0.911454526469667,
+          "difference_percentage_points": -1.5766941630990905
+        },
+        "F1mIoU,none": {
+          "original": 0.9111934843896836,
+          "adapted200": 0.8852145765897463,
+          "difference_percentage_points": -2.597890779993728
+        }
+      }
+    },
+    "gam_refcocog_val": {
+      "rows": 4889,
+      "metrics": {
+        "recall_iou_50,none": {
+          "original": 0.9282061771323379,
+          "adapted200": 0.9173655144201268,
+          "difference_percentage_points": -1.0840662712211069
+        },
+        "precision_iou_50,none": {
+          "original": 0.9282061771323379,
+          "adapted200": 0.9173655144201268,
+          "difference_percentage_points": -1.0840662712211069
+        },
+        "f1_iou_50,none": {
+          "original": 0.9282061771323379,
+          "adapted200": 0.9173655144201268,
+          "difference_percentage_points": -1.0840662712211069
+        },
+        "F1mIoU,none": {
+          "original": 0.9170382491307016,
+          "adapted200": 0.893700143178564,
+          "difference_percentage_points": -2.333810595213759
+        }
+      }
+    },
+    "gam_refcocoplus": {
+      "rows": 10758,
+      "metrics": {
+        "recall_iou_50,none": {
+          "original": 0.8766499349321435,
+          "adapted200": 0.8577802565532627,
+          "difference_percentage_points": -1.886967837888076
+        },
+        "precision_iou_50,none": {
+          "original": 0.8766499349321435,
+          "adapted200": 0.8577802565532627,
+          "difference_percentage_points": -1.886967837888076
+        },
+        "f1_iou_50,none": {
+          "original": 0.8766499349321434,
+          "adapted200": 0.8577802565532627,
+          "difference_percentage_points": -1.886967837888065
+        },
+        "F1mIoU,none": {
+          "original": 0.843762781186094,
+          "adapted200": 0.8164156906488195,
+          "difference_percentage_points": -2.7347090537274577
+        }
+      }
+    },
+    "gam_visdrone": {
+      "rows": 1610,
+      "metrics": {
+        "recall_iou_50,none": {
+          "original": 0.43533884354806224,
+          "adapted200": 0.3957841534938565,
+          "difference_percentage_points": -3.9554690054205754
+        },
+        "precision_iou_50,none": {
+          "original": 0.49043747797842513,
+          "adapted200": 0.4506789291287567,
+          "difference_percentage_points": -3.975854884966845
+        },
+        "f1_iou_50,none": {
+          "original": 0.46124853170517655,
+          "adapted200": 0.4214515248794798,
+          "difference_percentage_points": -3.9797006825696757
+        },
+        "F1mIoU,none": {
+          "original": 0.296624168512954,
+          "adapted200": 0.27870401376068343,
+          "difference_percentage_points": -1.7920154752270545
+        }
+      }
+    }
+  },
+  "full_goal_complete": false,
+  "new_model_calls_or_modified_sources": false,
+  "limits": "Only completed whole tasks, not partial prefixes or an aggregate full9 result. OriginalCOCO is reused through the registered native resume receipt. Originalqueue32 and adapted-sync execution differ after recorded CUDA recovery; no bitwise or paired-stochastic-request-counter claim and no exclusive causal attribution to weights. These are grounding retention metrics, not HOTA/IDF1 or ordinary-model-level MOT/RMOT/OVMOT parity. Original owners/services continue; missing task scores are not inferred."
+}

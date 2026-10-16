@@ -1,0 +1,36 @@
+{
+  "source": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/outputs/groundjev_retention/groundjev_original_dense_ref9_queue32_v3_20261014/log_eval/groundinganything/20261014_232534_gam_refcocog_results.json",
+  "results": {
+    "gam_refcocog": {
+      "alias": "gam_refcocog",
+      "recall_iou_50,none": 0.8799889135254989,
+      "recall_iou_50_stderr,none": "N/A",
+      "recall_iou_95,none": 0.686529933481153,
+      "recall_iou_95_stderr,none": "N/A",
+      "recall_mean_iou,none": 0.829995842572062,
+      "recall_mean_iou_stderr,none": "N/A",
+      "precision_iou_50,none": 0.8799889135254989,
+      "precision_iou_50_stderr,none": "N/A",
+      "precision_iou_95,none": 0.686529933481153,
+      "precision_iou_95_stderr,none": "N/A",
+      "precision_mean_iou,none": 0.829995842572062,
+      "precision_mean_iou_stderr,none": "N/A",
+      "f1_iou_50,none": 0.8799889135254989,
+      "f1_iou_50_stderr,none": "N/A",
+      "f1_iou_95,none": 0.686529933481153,
+      "f1_iou_95_stderr,none": "N/A",
+      "F1mIoU,none": 0.8299958425720622,
+      "F1mIoU_stderr,none": "N/A",
+      "mae,none": [],
+      "mae_stderr,none": []
+    }
+  },
+  "n-samples": {
+    "gam_refcocog": {
+      "original": 14432,
+      "effective": 14432,
+      "provider_policy_filtered": 0
+    }
+  },
+  "scope": "Exact metric/sample-count fields extracted from the completed original native task result; full source artifact retained locally."
+}

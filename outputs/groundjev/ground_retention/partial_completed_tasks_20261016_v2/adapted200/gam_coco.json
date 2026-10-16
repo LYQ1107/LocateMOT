@@ -1,0 +1,36 @@
+{
+  "source": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/outputs/groundjev_retention/groundjev_trackproj200_dense_ref9_sync_v3_20261015/log_eval/groundinganything/20261015_003912_gam_coco_results.json",
+  "results": {
+    "gam_coco": {
+      "alias": "gam_coco",
+      "recall_iou_50,none": 0.7303542721818005,
+      "recall_iou_50_stderr,none": "N/A",
+      "recall_iou_95,none": 0.25369110986373283,
+      "recall_iou_95_stderr,none": "N/A",
+      "recall_mean_iou,none": 0.5854117975104594,
+      "recall_mean_iou_stderr,none": "N/A",
+      "precision_iou_50,none": 0.5074080999827112,
+      "precision_iou_50_stderr,none": "N/A",
+      "precision_iou_95,none": 0.16429679072567666,
+      "precision_iou_95_stderr,none": "N/A",
+      "precision_mean_iou,none": 0.4006849560898866,
+      "precision_mean_iou_stderr,none": "N/A",
+      "f1_iou_50,none": 0.5988026165538797,
+      "f1_iou_50_stderr,none": "N/A",
+      "f1_iou_95,none": 0.19943464931626978,
+      "f1_iou_95_stderr,none": "N/A",
+      "F1mIoU,none": 0.4757129441580531,
+      "F1mIoU_stderr,none": "N/A",
+      "mae,none": [],
+      "mae_stderr,none": []
+    }
+  },
+  "n-samples": {
+    "gam_coco": {
+      "original": 4952,
+      "effective": 4952,
+      "provider_policy_filtered": 0
+    }
+  },
+  "scope": "Exact metric/sample-count fields extracted from the completed original native task result; full source artifact retained locally."
+}

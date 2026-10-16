@@ -1,0 +1,126 @@
+{
+  "status": "ACTUAL_SHARED_TRAINING_CHECKPOINT_AND_INPUT_EXPOSURE_VERIFIED",
+  "training_directory": "/data3/user/LocateMOT-checkpoints/onejev_temporal_teacher_short6000_v2_indexed",
+  "expected_initial_step": 6000,
+  "step": 1000,
+  "actual_questions_consumed": 4000,
+  "planned_updates": 6000,
+  "saved_full_state": {
+    "format": "groundjev-full-fp32-adam-rng-v1",
+    "step": 1000,
+    "seen": 4000,
+    "epoch": 0,
+    "next_step_in_epoch": 1000,
+    "path": "/data3/user/LocateMOT-checkpoints/onejev_temporal_teacher_short6000_v2_indexed/latest_training_state.pt",
+    "bytes": 9029140889,
+    "FP32_masters_and_Adam_moments_saved": true,
+    "scheduler_and_all_RNG_saved": true,
+    "single_latest_training_state": true,
+    "feature_cache": false
+  },
+  "all320_FP32_parameters_and_both_full_Adam_moments_finite": true,
+  "FP32_parameters_checked": 752393024,
+  "Adam_moment_elements_checked": 1504786048,
+  "all320_Adam_steps_and_scheduler_equal_actual_step": true,
+  "epoch_and_cursor_exact": true,
+  "initialization": {
+    "status": "NEW_STAGE_REAL_FP32_MASTERS_INITIALIZED",
+    "source": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_broader_shared6000_fla_v2/latest_training_state.pt",
+    "source_step": 6000,
+    "FP32_parameter_entries": 320,
+    "parameters": 752393024,
+    "changed_vs_BF16_inference_export_initialization": 500854063,
+    "initialization_max_difference": 0.0,
+    "new_optimizer_scheduler_and_RNG": "explicit newrecipe reset, not originaltrajectory resume",
+    "old_training_state_or_inference_weights_modified": false
+  },
+  "protocol": {
+    "model": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_broader_shared6000_fla_v2/ckpt-step6000",
+    "train_file": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/paired_temporal_teacher24000_v2_indexed/short/train.sources.json",
+    "seed": 0,
+    "lr": 2e-06,
+    "max_steps": 6000,
+    "epochs": 1,
+    "max_len": 32768,
+    "batch_tokens": 32768,
+    "accum_rows": 4,
+    "max_rows": 1,
+    "brier_weight": 1.0,
+    "augment": true,
+    "train_vision": false,
+    "full_finetune": true,
+    "weight_decay": 0.0,
+    "warmup_frac": 0.03,
+    "sampling_protocol": "paired-index-shuffle-v1",
+    "deterministic_execution": "torch-deterministic-algorithms-cudnn-deterministic-cublas4096x8-v1",
+    "global_rng_initialization": "registered-seed-applied-to-Torch-CUDA-Python-NumPy-before-loading-v1",
+    "input_io_protocol": "gzip-jsonl-native-tracking-category-and-group-question-refs-v1",
+    "training_compute_backend": "fla0.5.2-GDN-chunk-training-only-reference-inference-v1",
+    "source_manifest_protocol": "immutable-native-explicit-row-index-sources-v1"
+  },
+  "latest_logged_update": {
+    "step": 1000,
+    "epoch": 0,
+    "examples": 4000,
+    "loss": 1.080746784240091,
+    "ce": 0.727786492124851,
+    "brier": 0.3529602927410798,
+    "slot_acc": 0.67,
+    "grad_norm": 168.70931927680968,
+    "lr": 1.9036283606085053e-06,
+    "rows_per_step": 4.0,
+    "examples_per_s": 0.6754264323144522,
+    "tokens_per_s": 3301.936936862693,
+    "sec_per_step": 5.9221845764806496,
+    "peak_mem_gb": 19.6378116607666,
+    "elapsed_s": 5938.348963969969
+  },
+  "finite_logged_update_records_checked": 45,
+  "task_counts_from_actual_index_shuffle": {
+    "mot": 1288,
+    "rmot": 1327,
+    "ovmot": 1385
+  },
+  "question_families": {
+    "mot:identity": 998,
+    "rmot:query_membership": 1106,
+    "ovmot:category_leaf": 718,
+    "ovmot:category_group": 667,
+    "rmot:empty_query_presence": 221,
+    "mot:lifecycle": 74,
+    "mot:reliability": 33,
+    "mot:assigned_identity_memory_update": 149,
+    "mot:memory_update": 34
+  },
+  "unique_consumed_source_row_IDs": {
+    "mot": 615,
+    "rmot": 1307,
+    "ovmot": 1348
+  },
+  "consumed_questions_without_source_row_ID": {
+    "mot": 673
+  },
+  "unique_original_row_IDs_without_source_row_ID": {
+    "mot": 673
+  },
+  "unique_consumed_curriculum_row_IDs": {
+    "mot": 1288,
+    "rmot": 1327,
+    "ovmot": 1385
+  },
+  "unique_consumed_first_media_source_paths": {
+    "mot": 1017,
+    "rmot": 71,
+    "ovmot": 1180
+  },
+  "exposure_scope": "Measured first-source-media paths among actual consumed rows; query repeats and question rows are not independent video frames or tracks.",
+  "full_state_retention": "Atomic latest state validated at this milestone; later saves replace latest state. The numbered BF16 checkpoint is retained.",
+  "retained_BF16_checkpoint": "/data3/user/LocateMOT-checkpoints/onejev_temporal_teacher_short6000_v2_indexed/ckpt-step1000",
+  "no_GPU_or_training_updates_by_validator": true,
+  "complete6000_training": false,
+  "new_tracking_metrics_available": false,
+  "combined_registered_feature_upper_bytes": 26829071326,
+  "global_temporary_feature_budget_bytes": 26843545600,
+  "metadata_reservation": "Small scalar proof uses existing audit/report reservation; no new image/ROI bank or model-state copy.",
+  "full_goal_complete": false
+}

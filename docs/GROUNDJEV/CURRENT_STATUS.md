@@ -1,3 +1,65 @@
+## Short native1000 validated; TAO grouping and Ground retention remain mixed — 2026-10-16
+
+The paired-short branch has an actual1000update/4000question full-state numeric
+gate, not just a log observation: all752393024FP32language parameters and
+1504786048Adam-moment elements finite;320optimizer counters, scheduler/epoch/
+cursor exact, Torch/CUDA/Python/NumPy RNG fields saved. ExactFP32initialization
+from native6000 is retained. The9,029,140,889byte atomiclatest state was inspected
+and the numberedBF16step1000 retained; later full saves replace latest. No actual
+milestone restart/newnative inference or completion of the6000short/long study.
+
+Actual seed0index-shuffle exposure:1288MOT/1327RMOT/1385OVMOTquestions.
+MOTincludes673teacher rows without an older `source_row_id`; their original rowIDs
+are explicitly counted separately from615consumed old-sourceIDs, not invented or
+folded into the old-source count. First-media paths1017MOT/71RMOT/1180OVMOT
+are current/source-media counts, not all historical frames or independent tracks;
+teacher images draw from the registered wider legal TRAIN temporal course. Vision
+frozen; longbranch still not started at this observation. Last full-source fourGPU
+log observed2350/37600questions, while its complete numeric gate remains2000.
+Evidence: `training/paired_temporal_short_actual1000_v1/validation.json`.
+
+Overlap-neighbor grouping first4scopes/all8official units are now frozen. TAO40
+TETA14.517→13.997, LocA8.088→6.6283, AssocA5.1478→10.2, ClsA30.314→25.162;
+NovelClsA0inboth. Thus higher association does not imply higher total quality.
+The unchanged shared weights/grouping intervention affects every learned head and
+later history; no mix-and-match of original category scores with new association.
+MOT20newgrouping remains with original90021owner. Evidence:
+`compact/overlap_neighbor_grouping_v1/first_four_scopes_completed.json`.
+
+Separately, the NO_MATCH feasibility owner has completed its full1657frame/
+235232candidate MOT20feasibility-only arm: HOTA7.4316→9.8980%,
+IDF16.1474→10.1300%, IDSW2060→3292, FP463→564, FN286273→267117.
+This is a completed one-arm result, not completion of the4arm factorial; the
+feasibility+timeout arm is still running under original48863. Its DT regression
+26.32→12.98prevents common policy adoption. Evidence:
+`compact/no_match_feasibility_factorial_v1/first_MOT20_feasible_unit_completed.json`.
+
+Ground200native retention now has6completed whole tasks/31986rows against the
+completed original9/91124rows, all effective counts equal original, provider
+filtering0. F1mIoU % on the six common tasks:
+
+|Native retention task|Rows|Original|Adapted200|
+|---|---:|---:|---:|
+|COCO|4952|47.9781|47.5713|
+|Dense200|200|66.6435|66.0540|
+|VisDrone|1610|29.6624|27.8704|
+|RefCOCOg val|4889|91.7038|89.3700|
+|RefCOCOg test|9577|91.1193|88.5215|
+|RefCOCOplus|10758|84.3763|81.6416|
+
+All six are lower. Preserve each completed task's exact official score/sample
+fields and the earlier partial snapshot; do not promote Ground200. LVIS, RefCOCO
+and RefCOCOg remain missing for adapted200; no full9aggregate or missing score
+inferred. Originalqueue32 and adapted-sync execution differ after recorded CUDA
+recovery, so this is not bitwise paired inference or exclusive causal attribution
+to weights. These grounding retention metrics are not tracking HOTA/ordinary
+three-task parity. Original clients/services and reattached owner remain unchanged.
+Evidence: `ground_retention/partial_completed_tasks_20261016_v2/summary.json`.
+
+All new scalar proofs reuse existing report reservations; temporary feature upper
+remains26,829,071,326bytes<25GiB. No new ROI/image bank, GPU, model-state copy or
+training update from validators. Overall research goal remains incomplete.
+
 ## Overlap-neighbor candidate context study launched — 2026-10-16
 
 The preceding TRAIN audit motivates changing which candidates share a context,

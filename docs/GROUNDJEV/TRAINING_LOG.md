@@ -1,5 +1,16 @@
 # Current shared foundation adaptation — 2026-10-16
 
+Paired-short actual1000fullstate has now been numerically inspected:752393024
+FP32parameters/1504786048Adam-moment elements finite, all320stepcounters and
+scheduler/epoch/cursor exact, RNG fields present; source6000FP32init maxdiff0.
+Actual4000questions comprise1288MOT/1327RMOT/1385OVMOT;673MOTteacher rows
+have no old-sourceID and are counted separately by their own rowIDs. First-media
+paths1017/71/1180do not count all history media or independent tracks. The
+9,029,140,889byte atomiclatest was validated at1000; numberedBF16step1000is
+retained, futurefullsaves replace latest. Longbranch0at observation; final6000
+and newtrackinggain pending. No actual1000restart/nativeinference. Evidence:
+[actualshort1000 numeric proof](../../outputs/groundjev/training/paired_temporal_short_actual1000_v1/validation.json).
+
 Frozen observed log progress: full-source actual2250updates/36000questions,
 elapsed27442.125s; paired-short actual875updates/3500questions, elapsed5187.808s.
 These exact rows supported the user-facing innovation/training scope answer,
