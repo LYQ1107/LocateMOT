@@ -1,0 +1,90 @@
+{
+  "project_root": "/data2/user/LocateMOT",
+  "name": "Canonical physical tracking with task-conditioned shared-weight semantic readout",
+  "checkpoint": "outputs/groundjev/compact/rmot_native72_stage_v1/broad_native_training/checkpoint.pt",
+  "regression": "outputs/groundjev/validation/fixed_affinity_storage_v1/validation.json",
+  "reference_root": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/canonical_task_readout_v1/reference_runs",
+  "scopes": {
+    "mot_full1203": {
+      "manifest": "outputs/groundjev/pilot_data/dancetrack.json",
+      "candidates": "outputs/groundjev/compact/dancetrack0004_native300_v2_empty_roi_fixed/compact_distilled/frame_decisions.jsonl",
+      "frames": 1203,
+      "candidates_count": 13664
+    },
+    "rmot_single800": {
+      "manifest": "outputs/groundjev/multitask_pilot_data/rmot_single_empty_full.json",
+      "candidates": "outputs/groundjev/multitask_runs/full_rmot_shared600_v1/single800_shared_compact_fresh/frame_candidates.jsonl",
+      "frames": 800,
+      "candidates_count": 1412
+    },
+    "rmot_multi800": {
+      "manifest": "outputs/groundjev/multitask_pilot_data/rmot_multi_empty_full.json",
+      "candidates": "outputs/groundjev/multitask_runs/full_rmot_shared600_v1/multi800_shared_compact_fresh/frame_candidates.jsonl",
+      "frames": 800,
+      "candidates_count": 2208
+    },
+    "tao_raw_full40": {
+      "manifest": "outputs/groundjev/multitask_pilot_data/ovmot_tao_base_novel63_full.json",
+      "candidates": "outputs/groundjev/multitask_runs/tao_base_novel63_full_v2_expression_none/native_candidates/frame_candidates.jsonl",
+      "frames": 40,
+      "candidates_count": 35228
+    },
+    "mot20_challenge": {
+      "manifest": "outputs/groundjev/recovery_scope_20261015/registered_mot_challenge.json",
+      "candidates": "outputs/groundjev/natural_memory/mot20_05_full_validation_gpu5_v1/fresh_compact_gated3/frame_candidates.jsonl",
+      "frames": 1657,
+      "candidates_count": 235232
+    }
+  },
+  "cpu_blas_threads": 4,
+  "arms": {
+    "before": {
+      "association": "learned",
+      "auxiliary": "learned",
+      "memory_policy": "gated",
+      "feature_view": "all",
+      "lost_seconds": 3.0,
+      "shortlist": 32,
+      "reference_arm": "before"
+    },
+    "canonical_untrained": {
+      "association": "learned",
+      "auxiliary": "learned",
+      "memory_policy": "gated",
+      "feature_view": "all",
+      "lost_seconds": 3.0,
+      "shortlist": 32,
+      "reference_arm": "canonical_untrained",
+      "checkpoint": "/data3/user/LocateMOT-checkpoints/compact_canonical_physical_initial_v1.pt",
+      "canonical_physical_core": true
+    },
+    "task_readout": {
+      "association": "learned",
+      "auxiliary": "learned",
+      "memory_policy": "gated",
+      "feature_view": "all",
+      "lost_seconds": 3.0,
+      "shortlist": 32,
+      "checkpoint": "/data3/user/LocateMOT-checkpoints/compact_canonical_task_readout_initial_v1.pt",
+      "canonical_physical_core": true,
+      "task_conditioned_semantic_readout": true
+    }
+  },
+  "comparison_limit": "Same frozen original shared Compact weights across all tasks. Canonical physical pass uses fixed MOT/person specification; semantic pass reuses the SAME set-core weights on same current/history tensors with actual task/query. One identity memory, no new parameters/optimizer/GT or per-task checkpoint choice. Changes semantic functions on canonical trajectories; not a synthetic mix of metric components. All5scopes/candidates/frames/clocks/scorers unchanged. Original and untrained canonical controls reused explicitly.",
+  "memory_storage": "No new ROI/image bank or N-squared candidate-feature archive. One-vs-N geometry streamed; raw decisions and identity states protected separately.",
+  "metadata_suballocation": "Small scalar registration/validation/results within existing audit/report reservation, no extra allocation. Model variant flag with unchanged weights is a protected model artifact, not feature bank.",
+  "combined_registered_feature_upper_bytes": 26829071326,
+  "global_temporary_feature_budget_bytes": 26843545600,
+  "new_GPU_or_optimizer_updates": 0,
+  "full_goal_complete": false,
+  "prior_registered_feature_upper_bytes": 26829071326,
+  "new_reservation_bytes": 0,
+  "ordinary_model_performance_achieved": false,
+  "clock_scope": "Original TTL3 in registered manifest units: physical seconds for MOT/RMOT, annotation steps for TAO (source FPS unavailable). No timestamp/threshold/runtime/metric change; earlier generic3s prose was inaccurate for TAO.",
+  "probability_source": "Same learned Compact heads, canonical physical logits and task-conditioned semantic logits; not native OneJev decoder.",
+  "actual_new_GPU_or_optimizer_updates": 0,
+  "canonical_checkpoint": "/data3/user/LocateMOT-checkpoints/compact_canonical_physical_initial_v1.pt",
+  "task_readout_checkpoint": "/data3/user/LocateMOT-checkpoints/compact_canonical_task_readout_initial_v1.pt",
+  "validation_curriculum": "outputs/groundjev/compact/native_relation_question_curriculum_v1",
+  "task_readout_regression": "outputs/groundjev/validation/canonical_task_readout_v1/validation.json"
+}

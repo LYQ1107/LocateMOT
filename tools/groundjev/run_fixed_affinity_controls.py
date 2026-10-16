@@ -41,6 +41,9 @@ def main():
     if plan.get('grouping_regression'):
         grouping=json.loads((ROOT/plan['grouping_regression']).read_text())
         assert grouping['status']=='ALL5_REAL_DEFAULT_PREFIXES_AND_OVERLAP_GROUP_ROW_ALIGNMENT_VALIDATED'
+    if plan.get('task_readout_regression'):
+        readout=json.loads((ROOT/plan['task_readout_regression']).read_text())
+        assert readout['status']=='REAL_NATIVE_CANONICAL_PHYSICAL_AND_TASK_CONDITIONED_SEMANTIC_READOUT_EXACT'
     args.out.mkdir(parents=True, exist_ok=False)
     state = {'status': 'STARTING_FIXED_AFFINITY_CONTROLS', 'owner_pid': os.getpid(),
         'plan': str(args.plan), 'device': 'cpu', 'additional_GPUs': 0,
@@ -162,6 +165,8 @@ def main():
                                 assert new['state']['decision_metadata'].get('native_relation_residual',False)==policies['native_relation_residual']
                             if 'canonical_physical_core' in policies:
                                 assert new['state']['decision_metadata'].get('canonical_physical_core',False)==policies['canonical_physical_core']
+                            if 'task_conditioned_semantic_readout' in policies:
+                                assert new['state']['decision_metadata'].get('task_conditioned_semantic_readout',False)==policies['task_conditioned_semantic_readout']
                             if policies.get('appearance_projection_checkpoint'):
                                 assert Path(new['state']['decision_metadata']['appearance_projection_checkpoint']).resolve()==(ROOT/policies['appearance_projection_checkpoint']).resolve()
                             if policies.get('appearance_ranking_temperature'):

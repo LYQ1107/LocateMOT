@@ -1,0 +1,10 @@
+{
+  "status": "ALL_ORIGINAL_PARAMETER_AND_CANONICAL_BUFFER_VALUES_RETAINED_EXACTLY",
+  "original_tensors": 66,
+  "original_elements": 1146511,
+  "added_key_only": "physical_spec_text",
+  "new_trainable_parameter_tensors": 0,
+  "task_readout_flag": true,
+  "new_optimizer_updates": 0,
+  "full_goal_complete": false
+}

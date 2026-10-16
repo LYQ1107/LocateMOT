@@ -1,3 +1,94 @@
+## Both input/constraint studies complete; task-conditioned readout running — 2026-10-16
+
+Original owners90021(grouping) and48863(NO_MATCH/lifecycle factorial) have both
+returned exit0. All5scopes/all10and20official units are frozen; no pending arm
+remains in either study. This supersedes their pending descriptions below.
+
+|Registered scope/metric|Original|Overlap-neighbor16|
+|---|---:|---:|
+|DT1203 HOTA %|26.3157|28.6921|
+|RMOT single800 HOTA %|6.0247|6.0247|
+|RMOT multi800 HOTA %|19.8019|19.8019|
+|TAO40 TETA|14.517|13.997|
+|MOT20full1657 HOTA %|7.4316|7.0507|
+
+MOT20grouping IDF16.1474→5.6306%, IDSW2060→1992, FP463→341,
+FN286273→287351. Better DT and TRAIN competitor co-exposure do not establish
+a common-model improvement. Preserve the default contiguous grouping.
+
+|Registered scope/metric|Original|Timeout only|Feasibility only|Both|
+|---|---:|---:|---:|---:|
+|DT1203 HOTA %|26.3157|26.3157|12.9762|12.9762|
+|RMOT single800 HOTA %|6.0247|6.4816|6.0247|6.4816|
+|RMOT multi800 HOTA %|19.8019|19.5578|20.6629|20.2362|
+|TAO40 TETA|14.517|14.493|14.517|14.493|
+|MOT20full1657 HOTA %|7.4316|7.6054|9.8980|9.7962|
+
+Final MOT20both arm: IDF110.0231%, IDSW3447, FP513, FN265498. Increased recall
+comes with more identity switches and the DT collapse; neither constraint policy
+is adopted across tasks. No per-task best-policy selection. Evidence:
+`compact/{overlap_neighbor_grouping_v1,no_match_feasibility_factorial_v1}/all_five_scopes_completed.json`.
+
+The next intervention separates physical and semantic contexts using the SAME
+frozen set-core weights. Completed untrained canonical controls preserve MOT,
+raise TAO LocA/AssocA to33.075/35.637, but lower ClsA to9.6637and RMOTHOTA
+to2.0050/11.7532(single/multi). Their semantic heads consumed canonical physical
+vectors. New opt-in `task_conditioned_semantic_readout` makes a second pass of
+the shared body with actual task/query on the same current/history features;
+physical association/update/reliability/lifecycle remain canonical. There is one
+identity memory, no new parameter tensor, GT input, model family or optimizer.
+
+Real61native TRAINcontexts plus6Baseobservations/402declared query interventions
+validate exact physical logits against canonical, exact category/membership logits
+against original query-coupled model on identical inputs, and all-head MOT parity.
+143238output elements checked,61groups have history;335interventions actually
+change canonical semantics. All66original tensors/1146511elements are bit-exact,
+only the previously existing canonical physical-spec buffer and a runtime flag
+distinguish model artifacts. These are conditional tensor proofs, not new scores or
+invariance across different frontend candidate sets. Evidence:
+`validation/canonical_task_readout_v1/{validation,parameter_identity_validation}.json`.
+
+CPU owner/session51823has launched all5scopes with original/canonical-untrained/
+newreadout arms:10explicit completed references and5new actual trajectories. Same
+frozen checkpoint parameters, original16grouping/shortlist32/thresholds/clocks/
+frames/candidates/scorers. Do not construct a synthetic TETA from old components
+or claim training gain. Registration: `configs/groundjev/canonical_task_readout_v1.json`
+and `compact/canonical_task_readout_v1/{registration,launch_snapshot}.json`.
+Native fourGPU/paired training untouched; no new GPU or image/ROI bank.
+
+First3scopes/all9official units have now completed and are frozen:
+
+|HOTA %|Original coupled|Canonical physical/late semantic head|Task-conditioned shared-body readout|
+|---|---:|---:|---:|
+|DT1203|26.3157|26.3157|26.3157|
+|RMOT single800|6.0247|2.0050|2.4619|
+|RMOT multi800|19.8019|11.7532|11.9169|
+
+Single newreadout FP47/FN17 versus canonical80/17 and original323/13; multi
+FP160/FN1704 versus canonical196/1703 and original619/1054. Restoring original
+semantic functions on canonical histories only slightly alleviates the RMOT loss;
+it does not fix physical coverage/association. No promotion, and no conclusion
+about pending TAO/MOT20. Evidence:
+`compact/canonical_task_readout_v1/first_three_scopes_completed.json`.
+
+The full459027row input-reuse audit also completed. Native per-row augmentation,
+all64sources/family filters, seed0shuffle and exact native global16/fourrank
+placement give97556distinct serialized-state/media contexts and24560media-recipe
+lists. Only150same-global-update repeated contexts (23same-rank) occur. Even
+overestimating each saved prefix by the entire shortest row gives2945176tokens/
+0.05222%of planned tokens globally,390967tokens/0.006933%within ranks. These are
+bounds for recognized identical metadata within an update, not runtime speed or
+all possible equivalent pixels. Whole-media-list co-occurrences do not measure
+vision compute. Across-update language activations cannot assume constant weights.
+
+Upstream shared-prefix training packs text IDs/masks without native multimodal
+tensors and is singleGPU; Qwen3.5 GDN needs branch-state isolation. Do not toggle
+this flag in current jobs. A future grouped curriculum/branch engine is a separate
+recipe, not a drop-in acceleration or completed optimization. Evidence:
+`diagnostics/full_source_context_reuse_v1/{registration,summary}.json`. Only small
+scalar reports use existing reservations; feature upper remains26,829,071,326bytes
+<25GiB. The ordinary-model-level three-task goal remains incomplete.
+
 ## Short native1000 validated; TAO grouping and Ground retention remain mixed — 2026-10-16
 
 The paired-short branch has an actual1000update/4000question full-state numeric

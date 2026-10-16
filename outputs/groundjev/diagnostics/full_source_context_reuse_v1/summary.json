@@ -1,0 +1,374 @@
+{
+  "status": "FULL459027_NATIVE_CONTEXT_REUSE_OPPORTUNITY_AUDIT_COMPLETE",
+  "plan": "configs/groundjev/full_source_context_reuse_audit_v1.json",
+  "native_length_report": "outputs/groundjev/training/full_source_parallel_cpu_plan_v1/CPU_plan_validation.json",
+  "rows": 459027,
+  "task_rows": {
+    "mot": 252258,
+    "rmot": 100813,
+    "ovmot": 105956
+  },
+  "source_files": [
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/MOT17-02-FRCNN/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "rows": 5301
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/MOT17-04-FRCNN/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "rows": 8100
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/MOT17-05-FRCNN/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "rows": 1640
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/MOT17-09-FRCNN/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "rows": 1361
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/MOT17-10-FRCNN/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "rows": 2001
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/MOT17-11-FRCNN/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "rows": 1711
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/MOT17-13-FRCNN/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "rows": 1931
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0001/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "rows": 778
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0006/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "rows": 672
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0008/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "rows": 819
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0012/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "rows": 639
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0016/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "rows": 548
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0020/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "rows": 1967
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0023/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "rows": 837
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0024/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "rows": 523
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0027/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "rows": 800
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0029/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "rows": 736
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0032/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "rows": 612
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0037/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "rows": 769
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0039/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "rows": 450
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0044/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "rows": 855
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0045/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "rows": 933
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0051/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "rows": 762
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0052/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "rows": 425
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0053/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "rows": 1176
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0055/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "rows": 869
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0057/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "rows": 877
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0062/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "rows": 508
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0066/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "rows": 713
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0068/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "rows": 407
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0069/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "rows": 504
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0074/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "rows": 583
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0075/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "rows": 535
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0080/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "rows": 880
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0082/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "rows": 1661
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0086/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "rows": 1329
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0087/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "rows": 836
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0096/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "rows": 1513
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0098/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "rows": 749
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/MOT20-01/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "rows": 5610
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/MOT20-02/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "rows": 5255
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/MOT20-03/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "rows": 79926
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/MOT20-05/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "rows": 113157
+    },
+    {
+      "path": "outputs/groundjev/training_data/rmot_query_diversity_component_v3_official_box_projection/train.jsonl.gz",
+      "bucket": "rmot",
+      "rows": 87721
+    },
+    {
+      "path": "outputs/groundjev/training_data/base175_streamed_component_v1/train.jsonl.gz",
+      "bucket": "ovmot",
+      "rows": 105956
+    },
+    {
+      "path": "outputs/groundjev/training_data/rmot_allfit1814_query18_full_v3_groups_v2_shared_gpu7/clips/0000_primary/train_refs.jsonl.gz",
+      "bucket": "rmot",
+      "rows": 289
+    },
+    {
+      "path": "outputs/groundjev/training_data/rmot_allfit1814_query18_full_v3_groups_v2_shared_gpu7/clips/0000_counter/train_refs.jsonl.gz",
+      "bucket": "rmot",
+      "rows": 811
+    },
+    {
+      "path": "outputs/groundjev/training_data/rmot_allfit1814_query18_full_v3_groups_v2_shared_gpu7/clips/0002_primary/train_refs.jsonl.gz",
+      "bucket": "rmot",
+      "rows": 457
+    },
+    {
+      "path": "outputs/groundjev/training_data/rmot_allfit1814_query18_full_v3_groups_v2_shared_gpu7/clips/0002_counter/train_refs.jsonl.gz",
+      "bucket": "rmot",
+      "rows": 372
+    },
+    {
+      "path": "outputs/groundjev/training_data/rmot_allfit1814_query18_full_v3_groups_v2_shared_gpu7/clips/0003_primary/train_refs.jsonl.gz",
+      "bucket": "rmot",
+      "rows": 638
+    },
+    {
+      "path": "outputs/groundjev/training_data/rmot_allfit1814_query18_full_v3_groups_v2_shared_gpu7/clips/0003_counter/train_refs.jsonl.gz",
+      "bucket": "rmot",
+      "rows": 368
+    },
+    {
+      "path": "outputs/groundjev/training_data/rmot_allfit1814_query18_full_v3_groups_v2_shared_gpu7/clips/0006_primary/train_refs.jsonl.gz",
+      "bucket": "rmot",
+      "rows": 1029
+    },
+    {
+      "path": "outputs/groundjev/training_data/rmot_allfit1814_query18_full_v3_groups_v2_shared_gpu7/clips/0006_counter/train_refs.jsonl.gz",
+      "bucket": "rmot",
+      "rows": 619
+    },
+    {
+      "path": "outputs/groundjev/training_data/rmot_allfit1814_query18_full_v3_groups_v2_shared_gpu7/clips/0008_primary/train_refs.jsonl.gz",
+      "bucket": "rmot",
+      "rows": 1346
+    },
+    {
+      "path": "outputs/groundjev/training_data/rmot_allfit1814_query18_full_v3_groups_v2_shared_gpu7/clips/0008_counter/train_refs.jsonl.gz",
+      "bucket": "rmot",
+      "rows": 1209
+    },
+    {
+      "path": "outputs/groundjev/training_data/rmot_allfit1814_query18_full_v3_groups_v2_shared_gpu7/clips/0010_primary/train_refs.jsonl.gz",
+      "bucket": "rmot",
+      "rows": 807
+    },
+    {
+      "path": "outputs/groundjev/training_data/rmot_allfit1814_query18_full_v3_groups_v2_shared_gpu7/clips/0010_counter/train_refs.jsonl.gz",
+      "bucket": "rmot",
+      "rows": 748
+    },
+    {
+      "path": "outputs/groundjev/training_data/rmot_allfit1814_query18_full_v3_groups_v2_shared_gpu7/clips/0012_primary/train_refs.jsonl.gz",
+      "bucket": "rmot",
+      "rows": 93
+    },
+    {
+      "path": "outputs/groundjev/training_data/rmot_allfit1814_query18_full_v3_groups_v2_shared_gpu7/clips/0012_counter/train_refs.jsonl.gz",
+      "bucket": "rmot",
+      "rows": 350
+    },
+    {
+      "path": "outputs/groundjev/training_data/rmot_allfit1814_query18_full_v3_groups_v2_shared_gpu7/clips/0014_primary/train_refs.jsonl.gz",
+      "bucket": "rmot",
+      "rows": 235
+    },
+    {
+      "path": "outputs/groundjev/training_data/rmot_allfit1814_query18_full_v3_groups_v2_shared_gpu7/clips/0014_counter/train_refs.jsonl.gz",
+      "bucket": "rmot",
+      "rows": 452
+    },
+    {
+      "path": "outputs/groundjev/training_data/rmot_allfit1814_query18_full_v3_groups_v2_shared_gpu7/clips/0017_primary/train_refs.jsonl.gz",
+      "bucket": "rmot",
+      "rows": 381
+    },
+    {
+      "path": "outputs/groundjev/training_data/rmot_allfit1814_query18_full_v3_groups_v2_shared_gpu7/clips/0017_counter/train_refs.jsonl.gz",
+      "bucket": "rmot",
+      "rows": 706
+    },
+    {
+      "path": "outputs/groundjev/training_data/rmot_class_proposals_original_query154_v1/groups/train_refs.jsonl.gz",
+      "bucket": "rmot",
+      "rows": 2182
+    }
+  ],
+  "unique_native_serialized_state_and_media_contexts": 97556,
+  "unique_media_recipe_lists": 24560,
+  "same_global_update_context_opportunities": {
+    "repeated_contexts": 150,
+    "additional_rows": 150,
+    "rows_in_repeated_contexts": 300,
+    "optimistic_full_row_token_saving_upper": 2945176,
+    "steps": 28690,
+    "full_row_token_saving_upper_fraction": 0.0005222460810129567
+  },
+  "same_rank_update_context_opportunities": {
+    "repeated_contexts": 23,
+    "additional_rows": 23,
+    "rows_in_repeated_contexts": 46,
+    "optimistic_full_row_token_saving_upper": 390967,
+    "full_row_token_saving_upper_fraction": 6.932726042701444e-05
+  },
+  "same_global_update_media_recipe_cooccurrences": {
+    "repeated_contexts": 3594,
+    "additional_rows": 3740,
+    "rows_in_repeated_contexts": 7334,
+    "optimistic_full_row_token_saving_upper": 11554741
+  },
+  "same_rank_update_media_recipe_cooccurrences": {
+    "repeated_contexts": 1047,
+    "additional_rows": 1059,
+    "rows_in_repeated_contexts": 2106,
+    "optimistic_full_row_token_saving_upper": 2571775
+  },
+  "native_global16_fourrank_dealing_and_tail_exact": true,
+  "planned_native_multimodal_tokens": 5639441074,
+  "identity_scope": "Native per-row serialized-state augmentation and identical ordered media recipes. Compact digests identify metadata equality; pixels/vision/LM activations are not computed. Does not detect distinct recipes that happen to render identical pixels.",
+  "upper_bound_scope": "For these recognized identical contexts within one optimizer update only: (duplicates-1)*minimum full-row length overestimates saved prefix tokens. Global-update figure optimistically allows cross-rank sharing. Neither is measured runtime speed or a universal bound for all possible pixel equivalences.",
+  "media_scope": "Media-only cooccurrences ignore text-state differences; full-row token quantities attached to these counts are not a bound on vision-compute savings. Frozen-vision reuse across updates would need its own bounded cache and numeric validation.",
+  "training_scope": "No row regrouping, optimizer update, weights/seed/metrics change or forward computation. Across-update language activations cannot be reused as if weights were constant; grouping future courses changes optimizer chronology.",
+  "existing_shared_entry": "Upstream shared_readout_logits packs text IDs/masks without native multimodal tensors and is single-GPU; current Qwen3.5 GDN needs branch-state handling, not only full-attention masks.",
+  "combined_registered_feature_upper_bytes": 26829071326,
+  "global_temporary_feature_budget_bytes": 26843545600,
+  "metadata_suballocation": "Scalar report\u2264128KiB from existing full-source/report reserve; no new image/ROI/native activation bank.",
+  "new_GPU_or_optimizer_updates": 0,
+  "full_goal_complete": false
+}

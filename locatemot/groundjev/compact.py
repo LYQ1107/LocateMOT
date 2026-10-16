@@ -12,7 +12,7 @@ class FeedForwardBlock(nn.Module):
 
 class CompactCore(nn.Module):
     def __init__(self, architecture='set', width=128, semantic=False, input_evidence='geometry_appearance_language',
-                 native_relation_residual=False, canonical_physical_core=False):
+                 native_relation_residual=False, canonical_physical_core=False,task_conditioned_semantic_readout=False):
         super().__init__()
         self.architecture, self.width = architecture, width
         self.input_evidence = input_evidence
@@ -31,6 +31,7 @@ class CompactCore(nn.Module):
         self.life = nn.Sequential(nn.Linear(2*width,width),nn.GELU(),nn.Linear(width,4))
         self.semantic=semantic
         self.canonical_physical_core=canonical_physical_core
+        self.task_conditioned_semantic_readout=task_conditioned_semantic_readout
         if canonical_physical_core:
             self.register_buffer('physical_spec_text',torch.zeros(1024))
         if semantic:
@@ -88,9 +89,14 @@ class CompactCore(nn.Module):
                 result['match']=result['match'].clone();result['match'][:,-1]=-1e4
         if self.semantic:
             import torch.nn.functional as F
-            result['category']=F.normalize(self.category(c),dim=-1)@F.normalize(self.text(e['class_text']),dim=-1).T*self.class_scale.exp()
+            semantic_c=c
+            if self.task_conditioned_semantic_readout:
+                semantic_tokens=self.body((torch.cat([cv+self.candidate_geo(e['candidate_geo']),
+                    hv+self.history_geo(e['history_geo'])])+specification).unsqueeze(0)).squeeze(0)
+                semantic_c=semantic_tokens[:n]
+            result['category']=F.normalize(self.category(semantic_c),dim=-1)@F.normalize(self.text(e['class_text']),dim=-1).T*self.class_scale.exp()
             s=specification.expand(n,-1)
-            result['membership']=self.membership(torch.cat([c,s,c*s],dim=-1)).squeeze(-1)
+            result['membership']=self.membership(torch.cat([semantic_c,s,semantic_c*s],dim=-1)).squeeze(-1)
         return result
 
 
@@ -101,7 +107,8 @@ class CompactDecision:
         self.model = CompactCore(data['architecture'],semantic=data.get('semantic',False),
             input_evidence=data.get('input_evidence','geometry_appearance_language'),
             native_relation_residual=data.get('native_relation_residual',False),
-            canonical_physical_core=data.get('canonical_physical_core',False)).to(device)
+            canonical_physical_core=data.get('canonical_physical_core',False),
+            task_conditioned_semantic_readout=data.get('task_conditioned_semantic_readout',False)).to(device)
         self.model.load_state_dict(data['state_dict']); self.model.eval()
         self.checkpoint = str(Path(checkpoint).resolve()); self.device = device
         self.batch_candidates,self.shortlist = batch_candidates,shortlist
@@ -214,6 +221,9 @@ class CompactDecision:
         if self.model.canonical_physical_core:
             metadata['canonical_physical_core']=True
             metadata['physical_specification']='Fixed MOT/person embedding; actual query/task retained in semantic readout. Invariance conditional on identical candidates/history.'
+        if self.model.task_conditioned_semantic_readout:
+            metadata.update(task_conditioned_semantic_readout=True,
+                semantic_readout_context='Second pass of the same frozen set-core weights with actual task/query, on the same current candidates/history. Physical decisions remain canonical; one identity memory, no new parameters or GT inputs.')
         return results,life,metadata
 
 

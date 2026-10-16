@@ -1,0 +1,17 @@
+{
+  "project_root": "/data2/user/LocateMOT_GroundJEV",
+  "name": "Actual native random-shuffle context reuse opportunities, no training change",
+  "native_length_report": "outputs/groundjev/training/full_source_parallel_cpu_plan_v1/CPU_plan_validation.json",
+  "output": "outputs/groundjev/diagnostics/full_source_context_reuse_v1",
+  "seed": 0,
+  "world_size": 4,
+  "global_rows_per_update": 16,
+  "question_scope": "All original459027 rows and64source files, unchanged family filters/source order/native row augmentation and index shuffle.",
+  "report_scope": "Same optimizer update/global and same rank; conservative identical serialized-state/media metadata keys. Optimistic full-row-token upper bound only, not measured speed or proof of a multimodal/GDN branch implementation.",
+  "registered_feature_upper_bytes": 26829071326,
+  "global_temporary_feature_budget_bytes": 26843545600,
+  "new_persistent_ROI_or_image_or_activation_bytes": 0,
+  "metadata_suballocation": "At most128KiB scalar report from existing full-source/report reserve, no additional reservation.",
+  "new_GPU_or_optimizer_updates": 0,
+  "full_goal_complete": false
+}

@@ -1,0 +1,17 @@
+{
+  "status": "CANONICAL_TASK_READOUT_CPU_CONTROL_OWNER_LIVE",
+  "owner_pid": 80082,
+  "owner_starttick": "53493219",
+  "terminal_session": 51823,
+  "command": ".venv-onejev-py310/bin/python tools/groundjev/run_fixed_affinity_controls.py --plan configs/groundjev/canonical_task_readout_v1.json --out outputs/groundjev/compact/canonical_task_readout_v1/controls ",
+  "observed_stage": "rmot_single800_task_readout_INFERENCE",
+  "completed_units": [
+    "mot_full1203_before",
+    "mot_full1203_canonical_untrained",
+    "mot_full1203_task_readout",
+    "rmot_single800_before",
+    "rmot_single800_canonical_untrained"
+  ],
+  "new_GPU_or_optimizer_updates": 0,
+  "full_goal_complete": false
+}

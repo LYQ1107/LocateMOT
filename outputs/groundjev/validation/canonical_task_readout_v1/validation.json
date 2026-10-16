@@ -1,0 +1,17 @@
+{
+  "status": "REAL_NATIVE_CANONICAL_PHYSICAL_AND_TASK_CONDITIONED_SEMANTIC_READOUT_EXACT",
+  "real_native_units": 61,
+  "actual_native_and_Base_groups": 67,
+  "groups_with_history": 61,
+  "task_interventions": 402,
+  "output_tensor_elements_checked": 143238,
+  "canonical_semantic_changed_interventions": 335,
+  "same_all_original_parameter_values_and_no_new_parameter_tensors": true,
+  "physical_outputs_equal_canonical_and_invariant_to_declared_task_queries": true,
+  "semantic_logits_equal_original_query_coupled_model_on_identical_inputs": true,
+  "all_MOT_output_tensors_equal_original": true,
+  "task_readout_checkpoint": "/data3/user/LocateMOT-checkpoints/compact_canonical_task_readout_initial_v1.pt",
+  "scope": "Identical native current features/history/geometry/class_text, task/spec_text interventions. No actor state repair, GT runtime inputs, complete video or tracking-quality claim; actual new trajectories must be evaluated.",
+  "new_GPU_or_optimizer_updates": 0,
+  "full_goal_complete": false
+}
