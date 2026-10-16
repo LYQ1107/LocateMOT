@@ -1,0 +1,31 @@
+{
+  "status": "ACTUAL_FOUR_GPU_TRAINING_STEP25_PROGRESS_RECORDED",
+  "actual_step": 25,
+  "actual_questions_consumed": 400,
+  "planned_steps": 28690,
+  "actual_logged_window": {
+    "step": 25,
+    "epoch": 0,
+    "examples": 400,
+    "loss": 2.0445122178521182,
+    "ce": 1.477311628294089,
+    "brier": 0.5672005851140784,
+    "slot_acc": 0.61875,
+    "grad_norm": 208.5390209197998,
+    "lr": 5.807200929152149e-08,
+    "rows_per_step": 16.0,
+    "examples_per_s": 1.3226021470116258,
+    "tokens_per_s": 14576.844640439745,
+    "sec_per_step": 12.097364302750794,
+    "peak_mem_gb": 17.733100414276123,
+    "elapsed_s": 315.0149956509704
+  },
+  "task_counts_from_validated_actual_sampler": {
+    "mot": 203,
+    "rmot": 98,
+    "ovmot": 99
+  },
+  "not_steady_state_or_end_to_end_inference_timing": true,
+  "complete_epoch_or_tracking_quality_claim": false,
+  "full_goal_complete": false
+}

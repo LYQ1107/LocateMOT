@@ -2,8 +2,10 @@
 
 ## Actual four-GPU shared training; final quality still pending
 
-Full-source shared OneJev training has completed its first five real updates,
-consuming80questions across all three tasks:49MOT/12RMOT/19OVMOT. The
+Full-source shared OneJev training has reached25actual updates/400questions;
+see [the recorded update](../../outputs/groundjev/training/full_joint_source_epoch1_follow_v1/step25_snapshot.json).
+Its first five real updates consumed80questions across all three tasks:
+49MOT/12RMOT/19OVMOT. The
 one-shot observer exited0 after verifying finite loss/gradients, exact native600
 FP32 initialization and live ranks on physicalGPUs4–7. The459,027-question
 epoch plans28,690updates; it is running, not complete. See

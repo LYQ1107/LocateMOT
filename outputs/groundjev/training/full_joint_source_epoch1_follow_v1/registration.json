@@ -1,0 +1,23 @@
+{
+  "status": "READ_ONLY_SINGLE_BLOCKING_FOLLOWER_ATTACHED_TO_ORIGINAL_TRAINING",
+  "original_owner_session": 94290,
+  "original_owner": [
+    3457625,
+    "49350320"
+  ],
+  "follower_session": 76060,
+  "command": [
+    "python3",
+    "-u",
+    "tools/groundjev/follow_registered_training.py",
+    "--owner",
+    "outputs/groundjev/training/full_joint_source_epoch1_owner_v1",
+    "--training",
+    "/data3/user/LocateMOT-checkpoints/onejev_full_joint_source_epoch1_v1",
+    "--after-step",
+    "5"
+  ],
+  "no_training_restart_new_optimizer_or_GPU_by_follower": true,
+  "metadata_budget": "existing16MiB future-curriculum metadata reserve",
+  "full_goal_complete": false
+}
