@@ -1,0 +1,149 @@
+{
+  "status": "ALL14_REAL_DEFAULT_ASSIGNMENTS_AND_NO_MATCH_FEASIBILITY_VALIDATED",
+  "units": {
+    "compact_original_mot_full1203": {
+      "frames": 1203,
+      "candidates": 13664,
+      "default_original_assignments_exact": true,
+      "raw_probability_values_unchanged": true,
+      "constrained_ineligible_NO_MATCH_never_selected": true,
+      "actual_masked_rows": 13664,
+      "no_mask_frames_exact": 27,
+      "same_input_shadow_changed_assignments": 10792
+    },
+    "compact_original_rmot_single800": {
+      "frames": 800,
+      "candidates": 1412,
+      "default_original_assignments_exact": true,
+      "raw_probability_values_unchanged": true,
+      "constrained_ineligible_NO_MATCH_never_selected": true,
+      "actual_masked_rows": 1412,
+      "no_mask_frames_exact": 36,
+      "same_input_shadow_changed_assignments": 1
+    },
+    "compact_original_rmot_multi800": {
+      "frames": 800,
+      "candidates": 2208,
+      "default_original_assignments_exact": true,
+      "raw_probability_values_unchanged": true,
+      "constrained_ineligible_NO_MATCH_never_selected": true,
+      "actual_masked_rows": 2208,
+      "no_mask_frames_exact": 19,
+      "same_input_shadow_changed_assignments": 1
+    },
+    "compact_original_tao_raw_full40": {
+      "frames": 40,
+      "candidates": 35228,
+      "default_original_assignments_exact": true,
+      "raw_probability_values_unchanged": true,
+      "constrained_ineligible_NO_MATCH_never_selected": true,
+      "actual_masked_rows": 1037,
+      "no_mask_frames_exact": 39,
+      "same_input_shadow_changed_assignments": 0
+    },
+    "compact_original_mot20_challenge": {
+      "frames": 1657,
+      "candidates": 235232,
+      "default_original_assignments_exact": true,
+      "raw_probability_values_unchanged": true,
+      "constrained_ineligible_NO_MATCH_never_selected": true,
+      "actual_masked_rows": 137727,
+      "no_mask_frames_exact": 728,
+      "same_input_shadow_changed_assignments": 116558
+    },
+    "native_before_mot_full1203": {
+      "frames": 1203,
+      "candidates": 13664,
+      "default_original_assignments_exact": true,
+      "raw_probability_values_unchanged": true,
+      "constrained_ineligible_NO_MATCH_never_selected": true,
+      "actual_masked_rows": 9618,
+      "no_mask_frames_exact": 374,
+      "same_input_shadow_changed_assignments": 0
+    },
+    "native_default_mot_full1203": {
+      "frames": 1203,
+      "candidates": 13664,
+      "default_original_assignments_exact": true,
+      "raw_probability_values_unchanged": true,
+      "constrained_ineligible_NO_MATCH_never_selected": true,
+      "actual_masked_rows": 13404,
+      "no_mask_frames_exact": 41,
+      "same_input_shadow_changed_assignments": 3
+    },
+    "native_assigned_identity_mot_full1203": {
+      "frames": 1203,
+      "candidates": 13664,
+      "default_original_assignments_exact": true,
+      "raw_probability_values_unchanged": true,
+      "constrained_ineligible_NO_MATCH_never_selected": true,
+      "actual_masked_rows": 13404,
+      "no_mask_frames_exact": 41,
+      "same_input_shadow_changed_assignments": 3
+    },
+    "native_before_rmot_single800": {
+      "frames": 800,
+      "candidates": 1412,
+      "default_original_assignments_exact": true,
+      "raw_probability_values_unchanged": true,
+      "constrained_ineligible_NO_MATCH_never_selected": true,
+      "actual_masked_rows": 1411,
+      "no_mask_frames_exact": 37,
+      "same_input_shadow_changed_assignments": 371
+    },
+    "native_default_rmot_single800": {
+      "frames": 800,
+      "candidates": 1412,
+      "default_original_assignments_exact": true,
+      "raw_probability_values_unchanged": true,
+      "constrained_ineligible_NO_MATCH_never_selected": true,
+      "actual_masked_rows": 1403,
+      "no_mask_frames_exact": 41,
+      "same_input_shadow_changed_assignments": 0
+    },
+    "native_assigned_identity_rmot_single800": {
+      "frames": 800,
+      "candidates": 1412,
+      "default_original_assignments_exact": true,
+      "raw_probability_values_unchanged": true,
+      "constrained_ineligible_NO_MATCH_never_selected": true,
+      "actual_masked_rows": 1401,
+      "no_mask_frames_exact": 42,
+      "same_input_shadow_changed_assignments": 0
+    },
+    "native_before_rmot_multi800": {
+      "frames": 800,
+      "candidates": 2208,
+      "default_original_assignments_exact": true,
+      "raw_probability_values_unchanged": true,
+      "constrained_ineligible_NO_MATCH_never_selected": true,
+      "actual_masked_rows": 2207,
+      "no_mask_frames_exact": 20,
+      "same_input_shadow_changed_assignments": 619
+    },
+    "native_default_rmot_multi800": {
+      "frames": 800,
+      "candidates": 2208,
+      "default_original_assignments_exact": true,
+      "raw_probability_values_unchanged": true,
+      "constrained_ineligible_NO_MATCH_never_selected": true,
+      "actual_masked_rows": 2177,
+      "no_mask_frames_exact": 29,
+      "same_input_shadow_changed_assignments": 0
+    },
+    "native_assigned_identity_rmot_multi800": {
+      "frames": 800,
+      "candidates": 2208,
+      "default_original_assignments_exact": true,
+      "raw_probability_values_unchanged": true,
+      "constrained_ineligible_NO_MATCH_never_selected": true,
+      "actual_masked_rows": 2179,
+      "no_mask_frames_exact": 28,
+      "same_input_shadow_changed_assignments": 0
+    }
+  },
+  "scope": "Same original saved model probabilities and ordered physical live pools. Default assignments match every original candidate; new feasibility only restricts private NO_MATCH costs. No model/lifecycle/semantic inference or counterfactual trajectory is reconstructed, and changed shadow assignments are not HOTA gains.",
+  "raw_probabilities_not_renormalized": true,
+  "new_GPU_or_optimizer_updates": 0,
+  "full_goal_complete": false
+}

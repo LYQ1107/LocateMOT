@@ -1,5 +1,14 @@
 # Current shared foundation adaptation — 2026-10-16
 
+Frozen observed log progress: full-source actual2250updates/36000questions,
+elapsed27442.125s; paired-short actual875updates/3500questions, elapsed5187.808s.
+These exact rows supported the user-facing innovation/training scope answer,
+not claimed to remain newest at publication. Complete full-state numeric gate
+remains2000, not2250. Paired-long was0updates at observation; final epochs and
+their controlled tracking scores remain pending. Evidence:
+[observed optimizer rows](../../outputs/groundjev/training/observed_full2250_short875_v1/snapshot.json).
+Running optimizer/data/seed/GPU assignment/protocol unchanged.
+
 Read-only lifecycle inventory now quantifies an explicit sampling difference:
 the full-source MOT component has93624lifecycle rows, ACTIVE60077/LOST12117/
 REACTIVATE16748/TERMINATE4682 (5.00085%terminate); the completedbalanced24000

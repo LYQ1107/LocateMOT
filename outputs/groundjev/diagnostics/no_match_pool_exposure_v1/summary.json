@@ -1,0 +1,721 @@
+{
+  "status": "ALL14_ORIGINAL_NO_MATCH_LIVE_POOL_EXPOSURE_AUDITED",
+  "units": {
+    "compact_original_mot_full1203": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/appearance_rank_study_v1/reference_runs/mot_full1203_before",
+      "counts": {
+        "frames": 1203,
+        "candidates": 13664,
+        "complete_pool_rows": 13664,
+        "NO_MATCH_selected": 10406,
+        "complete_pool_with_NO_MATCH_option": 13664,
+        "zero_remaining_printed_probability_mass": 0,
+        "complete_pool_NO_MATCH_selected": 10406
+      },
+      "selected_NO_MATCH_groups": {
+        "GT_matched_without_GT_verified_live_anchor": {
+          "observations": 1502,
+          "best_remaining_NEW": 414,
+          "best_remaining_EXISTING": 965,
+          "best_remaining_IGNORE": 123
+        },
+        "GT_unmatched_not_universal_negative": {
+          "observations": 8306,
+          "best_remaining_NEW": 2804,
+          "best_remaining_EXISTING": 4909,
+          "best_remaining_IGNORE": 593
+        },
+        "GT_matched_correct_live_anchor_offered": {
+          "observations": 598,
+          "best_remaining_EXISTING": 479,
+          "best_remaining_IGNORE": 15,
+          "best_remaining_NEW": 104
+        }
+      },
+      "minimum_remaining_printed_probability_mass": 0.010289706871844828,
+      "examples": [
+        {
+          "frame": 3,
+          "candidate": 0,
+          "pool_size": 1,
+          "offered_ids": 1,
+          "group": "GT_matched_without_GT_verified_live_anchor",
+          "NO_MATCH_probability": 0.6476498246192932,
+          "best_remaining_option": "NEW",
+          "best_remaining_probability": 0.20660820603370667
+        },
+        {
+          "frame": 3,
+          "candidate": 1,
+          "pool_size": 1,
+          "offered_ids": 1,
+          "group": "GT_unmatched_not_universal_negative",
+          "NO_MATCH_probability": 0.6780427098274231,
+          "best_remaining_option": "NEW",
+          "best_remaining_probability": 0.19593678414821625
+        },
+        {
+          "frame": 3,
+          "candidate": 3,
+          "pool_size": 1,
+          "offered_ids": 1,
+          "group": "GT_unmatched_not_universal_negative",
+          "NO_MATCH_probability": 0.7447609305381775,
+          "best_remaining_option": "NEW",
+          "best_remaining_probability": 0.19276346266269684
+        },
+        {
+          "frame": 3,
+          "candidate": 4,
+          "pool_size": 1,
+          "offered_ids": 1,
+          "group": "GT_matched_without_GT_verified_live_anchor",
+          "NO_MATCH_probability": 0.7071287631988525,
+          "best_remaining_option": "NEW",
+          "best_remaining_probability": 0.23616015911102295
+        },
+        {
+          "frame": 3,
+          "candidate": 5,
+          "pool_size": 1,
+          "offered_ids": 1,
+          "group": "GT_unmatched_not_universal_negative",
+          "NO_MATCH_probability": 0.7068584561347961,
+          "best_remaining_option": "NEW",
+          "best_remaining_probability": 0.2366350293159485
+        },
+        {
+          "frame": 4,
+          "candidate": 0,
+          "pool_size": 1,
+          "offered_ids": 1,
+          "group": "GT_matched_without_GT_verified_live_anchor",
+          "NO_MATCH_probability": 0.8185436725616455,
+          "best_remaining_option": "NEW",
+          "best_remaining_probability": 0.10529287159442902
+        },
+        {
+          "frame": 4,
+          "candidate": 1,
+          "pool_size": 1,
+          "offered_ids": 1,
+          "group": "GT_unmatched_not_universal_negative",
+          "NO_MATCH_probability": 0.5763630270957947,
+          "best_remaining_option": "NEW",
+          "best_remaining_probability": 0.29446691274642944
+        },
+        {
+          "frame": 4,
+          "candidate": 3,
+          "pool_size": 1,
+          "offered_ids": 1,
+          "group": "GT_unmatched_not_universal_negative",
+          "NO_MATCH_probability": 0.8424076437950134,
+          "best_remaining_option": "NEW",
+          "best_remaining_probability": 0.12320514023303986
+        }
+      ]
+    },
+    "compact_original_rmot_single800": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/appearance_rank_study_v1/reference_runs/rmot_single800_before",
+      "counts": {
+        "frames": 800,
+        "candidates": 1412,
+        "complete_pool_rows": 1412,
+        "NO_MATCH_selected": 1,
+        "complete_pool_with_NO_MATCH_option": 1412,
+        "zero_remaining_printed_probability_mass": 0,
+        "complete_pool_NO_MATCH_selected": 1
+      },
+      "selected_NO_MATCH_groups": {
+        "GT_unmatched_not_universal_negative": {
+          "observations": 1,
+          "best_remaining_IGNORE": 1
+        }
+      },
+      "minimum_remaining_printed_probability_mass": 0.6158729642629623,
+      "examples": [
+        {
+          "frame": 617,
+          "candidate": 0,
+          "pool_size": 2,
+          "offered_ids": 2,
+          "group": "GT_unmatched_not_universal_negative",
+          "NO_MATCH_probability": 0.38412702083587646,
+          "best_remaining_option": "IGNORE",
+          "best_remaining_probability": 0.2357059270143509
+        }
+      ]
+    },
+    "compact_original_rmot_multi800": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/appearance_rank_study_v1/reference_runs/rmot_multi800_before",
+      "counts": {
+        "frames": 800,
+        "candidates": 2208,
+        "complete_pool_rows": 2208,
+        "NO_MATCH_selected": 1,
+        "complete_pool_with_NO_MATCH_option": 2208,
+        "zero_remaining_printed_probability_mass": 0,
+        "complete_pool_NO_MATCH_selected": 1
+      },
+      "selected_NO_MATCH_groups": {
+        "GT_matched_correct_live_anchor_offered": {
+          "observations": 1,
+          "best_remaining_EXISTING": 1
+        }
+      },
+      "minimum_remaining_printed_probability_mass": 0.7977840891107917,
+      "examples": [
+        {
+          "frame": 398,
+          "candidate": 1,
+          "pool_size": 9,
+          "offered_ids": 9,
+          "group": "GT_matched_correct_live_anchor_offered",
+          "NO_MATCH_probability": 0.0005378434434533119,
+          "best_remaining_option": "52",
+          "best_remaining_probability": 0.9859636425971985
+        }
+      ]
+    },
+    "compact_original_tao_raw_full40": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/appearance_rank_study_v1/reference_runs/tao_raw_full40_before",
+      "counts": {
+        "frames": 40,
+        "candidates": 35228,
+        "complete_pool_rows": 1037,
+        "NO_MATCH_selected": 2832,
+        "complete_pool_with_NO_MATCH_option": 1037,
+        "zero_remaining_printed_probability_mass": 0,
+        "omitted_live_ID_rows": 34191
+      },
+      "selected_NO_MATCH_groups": {},
+      "minimum_remaining_printed_probability_mass": 0.9999999326537363,
+      "examples": []
+    },
+    "compact_original_mot20_challenge": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/appearance_rank_study_v1/reference_runs/mot20_challenge_before",
+      "counts": {
+        "frames": 1657,
+        "candidates": 235232,
+        "complete_pool_rows": 137727,
+        "NO_MATCH_selected": 182870,
+        "complete_pool_with_NO_MATCH_option": 137727,
+        "zero_remaining_printed_probability_mass": 0,
+        "omitted_live_ID_rows": 97505,
+        "complete_pool_NO_MATCH_selected": 112129
+      },
+      "selected_NO_MATCH_groups": {
+        "GT_matched_without_GT_verified_live_anchor": {
+          "observations": 102253,
+          "best_remaining_NEW": 15183,
+          "best_remaining_EXISTING": 73631,
+          "best_remaining_IGNORE": 13439
+        },
+        "GT_unmatched_not_universal_negative": {
+          "observations": 6890,
+          "best_remaining_EXISTING": 5020,
+          "best_remaining_NEW": 740,
+          "best_remaining_IGNORE": 1130
+        },
+        "GT_matched_correct_live_anchor_offered": {
+          "observations": 2986,
+          "best_remaining_EXISTING": 2350,
+          "best_remaining_IGNORE": 320,
+          "best_remaining_NEW": 316
+        }
+      },
+      "minimum_remaining_printed_probability_mass": 0.009737423775121101,
+      "examples": [
+        {
+          "frame": 1910,
+          "candidate": 0,
+          "pool_size": 32,
+          "offered_ids": 32,
+          "group": "GT_matched_without_GT_verified_live_anchor",
+          "NO_MATCH_probability": 0.8816686272621155,
+          "best_remaining_option": "NEW",
+          "best_remaining_probability": 0.02593713253736496
+        },
+        {
+          "frame": 1910,
+          "candidate": 1,
+          "pool_size": 32,
+          "offered_ids": 32,
+          "group": "GT_matched_without_GT_verified_live_anchor",
+          "NO_MATCH_probability": 0.8621175289154053,
+          "best_remaining_option": "75",
+          "best_remaining_probability": 0.06069159507751465
+        },
+        {
+          "frame": 1910,
+          "candidate": 2,
+          "pool_size": 32,
+          "offered_ids": 32,
+          "group": "GT_matched_without_GT_verified_live_anchor",
+          "NO_MATCH_probability": 0.9233917593955994,
+          "best_remaining_option": "85",
+          "best_remaining_probability": 0.011513762176036835
+        },
+        {
+          "frame": 1910,
+          "candidate": 3,
+          "pool_size": 32,
+          "offered_ids": 32,
+          "group": "GT_unmatched_not_universal_negative",
+          "NO_MATCH_probability": 0.8864533305168152,
+          "best_remaining_option": "85",
+          "best_remaining_probability": 0.022836849093437195
+        },
+        {
+          "frame": 1910,
+          "candidate": 4,
+          "pool_size": 32,
+          "offered_ids": 32,
+          "group": "GT_unmatched_not_universal_negative",
+          "NO_MATCH_probability": 0.38607364892959595,
+          "best_remaining_option": "8",
+          "best_remaining_probability": 0.36437559127807617
+        },
+        {
+          "frame": 1910,
+          "candidate": 5,
+          "pool_size": 32,
+          "offered_ids": 32,
+          "group": "GT_matched_without_GT_verified_live_anchor",
+          "NO_MATCH_probability": 0.9386518001556396,
+          "best_remaining_option": "111",
+          "best_remaining_probability": 0.012372037395834923
+        },
+        {
+          "frame": 1910,
+          "candidate": 6,
+          "pool_size": 32,
+          "offered_ids": 32,
+          "group": "GT_matched_without_GT_verified_live_anchor",
+          "NO_MATCH_probability": 0.532938539981842,
+          "best_remaining_option": "76",
+          "best_remaining_probability": 0.1535729467868805
+        },
+        {
+          "frame": 1910,
+          "candidate": 7,
+          "pool_size": 32,
+          "offered_ids": 32,
+          "group": "GT_matched_without_GT_verified_live_anchor",
+          "NO_MATCH_probability": 0.6540385484695435,
+          "best_remaining_option": "85",
+          "best_remaining_probability": 0.1490003764629364
+        }
+      ]
+    },
+    "native_before_mot_full1203": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_full1203_controls_v2_wait_fix/native_mot_full1203",
+      "counts": {
+        "frames": 1203,
+        "candidates": 13664,
+        "complete_pool_rows": 9619,
+        "NO_MATCH_selected": 1014,
+        "complete_pool_with_NO_MATCH_option": 9618,
+        "zero_remaining_printed_probability_mass": 0,
+        "omitted_live_ID_rows": 4045
+      },
+      "selected_NO_MATCH_groups": {},
+      "minimum_remaining_printed_probability_mass": 0.908752,
+      "examples": []
+    },
+    "native_default_mot_full1203": {
+      "run": "outputs/groundjev/training/broader_shared6000_fla_owner_v2/controls/default_mot_full1203",
+      "counts": {
+        "frames": 1203,
+        "candidates": 13664,
+        "complete_pool_rows": 13583,
+        "NO_MATCH_selected": 3,
+        "complete_pool_with_NO_MATCH_option": 13404,
+        "zero_remaining_printed_probability_mass": 0,
+        "complete_pool_NO_MATCH_selected": 3,
+        "omitted_live_ID_rows": 81
+      },
+      "selected_NO_MATCH_groups": {
+        "GT_unmatched_not_universal_negative": {
+          "observations": 1,
+          "best_remaining_EXISTING": 1
+        },
+        "GT_matched_without_GT_verified_live_anchor": {
+          "observations": 2,
+          "best_remaining_EXISTING": 2
+        }
+      },
+      "minimum_remaining_printed_probability_mass": 0.848666,
+      "examples": [
+        {
+          "frame": 3,
+          "candidate": 5,
+          "pool_size": 1,
+          "offered_ids": 1,
+          "group": "GT_unmatched_not_universal_negative",
+          "NO_MATCH_probability": 0.11939,
+          "best_remaining_option": "1",
+          "best_remaining_probability": 0.736517
+        },
+        {
+          "frame": 886,
+          "candidate": 6,
+          "pool_size": 2,
+          "offered_ids": 2,
+          "group": "GT_matched_without_GT_verified_live_anchor",
+          "NO_MATCH_probability": 0.087199,
+          "best_remaining_option": "361",
+          "best_remaining_probability": 0.478131
+        },
+        {
+          "frame": 890,
+          "candidate": 5,
+          "pool_size": 1,
+          "offered_ids": 1,
+          "group": "GT_matched_without_GT_verified_live_anchor",
+          "NO_MATCH_probability": 0.151335,
+          "best_remaining_option": "380",
+          "best_remaining_probability": 0.688806
+        }
+      ]
+    },
+    "native_assigned_identity_mot_full1203": {
+      "run": "outputs/groundjev/training/broader_shared6000_fla_owner_v2/controls/assigned_identity_mot_full1203",
+      "counts": {
+        "frames": 1203,
+        "candidates": 13664,
+        "complete_pool_rows": 13583,
+        "NO_MATCH_selected": 3,
+        "complete_pool_with_NO_MATCH_option": 13404,
+        "zero_remaining_printed_probability_mass": 0,
+        "complete_pool_NO_MATCH_selected": 3,
+        "omitted_live_ID_rows": 81
+      },
+      "selected_NO_MATCH_groups": {
+        "GT_unmatched_not_universal_negative": {
+          "observations": 1,
+          "best_remaining_EXISTING": 1
+        },
+        "GT_matched_without_GT_verified_live_anchor": {
+          "observations": 2,
+          "best_remaining_EXISTING": 2
+        }
+      },
+      "minimum_remaining_printed_probability_mass": 0.848666,
+      "examples": [
+        {
+          "frame": 3,
+          "candidate": 5,
+          "pool_size": 1,
+          "offered_ids": 1,
+          "group": "GT_unmatched_not_universal_negative",
+          "NO_MATCH_probability": 0.11939,
+          "best_remaining_option": "1",
+          "best_remaining_probability": 0.736517
+        },
+        {
+          "frame": 886,
+          "candidate": 6,
+          "pool_size": 2,
+          "offered_ids": 2,
+          "group": "GT_matched_without_GT_verified_live_anchor",
+          "NO_MATCH_probability": 0.087199,
+          "best_remaining_option": "361",
+          "best_remaining_probability": 0.478131
+        },
+        {
+          "frame": 890,
+          "candidate": 5,
+          "pool_size": 1,
+          "offered_ids": 1,
+          "group": "GT_matched_without_GT_verified_live_anchor",
+          "NO_MATCH_probability": 0.151335,
+          "best_remaining_option": "380",
+          "best_remaining_probability": 0.688806
+        }
+      ]
+    },
+    "native_before_rmot_single800": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_runs/full_rmot_shared600_v1/single800_native600",
+      "counts": {
+        "frames": 800,
+        "candidates": 1412,
+        "complete_pool_rows": 1412,
+        "NO_MATCH_selected": 277,
+        "complete_pool_with_NO_MATCH_option": 1411,
+        "zero_remaining_printed_probability_mass": 0,
+        "complete_pool_NO_MATCH_selected": 277
+      },
+      "selected_NO_MATCH_groups": {
+        "GT_unmatched_not_universal_negative": {
+          "observations": 239,
+          "best_remaining_EXISTING": 239
+        },
+        "GT_matched_without_GT_verified_live_anchor": {
+          "observations": 33,
+          "best_remaining_EXISTING": 33
+        },
+        "GT_matched_correct_live_anchor_offered": {
+          "observations": 5,
+          "best_remaining_EXISTING": 5
+        }
+      },
+      "minimum_remaining_printed_probability_mass": 0.836619,
+      "examples": [
+        {
+          "frame": 19,
+          "candidate": 1,
+          "pool_size": 10,
+          "offered_ids": 10,
+          "group": "GT_unmatched_not_universal_negative",
+          "NO_MATCH_probability": 0.124969,
+          "best_remaining_option": "10",
+          "best_remaining_probability": 0.167995
+        },
+        {
+          "frame": 24,
+          "candidate": 1,
+          "pool_size": 10,
+          "offered_ids": 10,
+          "group": "GT_unmatched_not_universal_negative",
+          "NO_MATCH_probability": 0.12219,
+          "best_remaining_option": "6",
+          "best_remaining_probability": 0.163004
+        },
+        {
+          "frame": 24,
+          "candidate": 2,
+          "pool_size": 10,
+          "offered_ids": 10,
+          "group": "GT_unmatched_not_universal_negative",
+          "NO_MATCH_probability": 0.118409,
+          "best_remaining_option": "6",
+          "best_remaining_probability": 0.157912
+        },
+        {
+          "frame": 24,
+          "candidate": 3,
+          "pool_size": 10,
+          "offered_ids": 10,
+          "group": "GT_unmatched_not_universal_negative",
+          "NO_MATCH_probability": 0.119272,
+          "best_remaining_option": "6",
+          "best_remaining_probability": 0.155565
+        },
+        {
+          "frame": 30,
+          "candidate": 0,
+          "pool_size": 10,
+          "offered_ids": 10,
+          "group": "GT_unmatched_not_universal_negative",
+          "NO_MATCH_probability": 0.119738,
+          "best_remaining_option": "6",
+          "best_remaining_probability": 0.149922
+        },
+        {
+          "frame": 30,
+          "candidate": 2,
+          "pool_size": 10,
+          "offered_ids": 10,
+          "group": "GT_unmatched_not_universal_negative",
+          "NO_MATCH_probability": 0.120765,
+          "best_remaining_option": "6",
+          "best_remaining_probability": 0.151626
+        },
+        {
+          "frame": 33,
+          "candidate": 1,
+          "pool_size": 10,
+          "offered_ids": 10,
+          "group": "GT_unmatched_not_universal_negative",
+          "NO_MATCH_probability": 0.119526,
+          "best_remaining_option": "12",
+          "best_remaining_probability": 0.165247
+        },
+        {
+          "frame": 38,
+          "candidate": 1,
+          "pool_size": 10,
+          "offered_ids": 10,
+          "group": "GT_unmatched_not_universal_negative",
+          "NO_MATCH_probability": 0.113483,
+          "best_remaining_option": "13",
+          "best_remaining_probability": 0.137883
+        }
+      ]
+    },
+    "native_default_rmot_single800": {
+      "run": "outputs/groundjev/training/broader_shared6000_fla_owner_v2/controls/default_rmot_single800",
+      "counts": {
+        "frames": 800,
+        "candidates": 1412,
+        "complete_pool_rows": 1412,
+        "NO_MATCH_selected": 0,
+        "complete_pool_with_NO_MATCH_option": 1403,
+        "zero_remaining_printed_probability_mass": 0
+      },
+      "selected_NO_MATCH_groups": {},
+      "minimum_remaining_printed_probability_mass": 0.936384,
+      "examples": []
+    },
+    "native_assigned_identity_rmot_single800": {
+      "run": "outputs/groundjev/training/broader_shared6000_fla_owner_v2/controls/assigned_identity_rmot_single800",
+      "counts": {
+        "frames": 800,
+        "candidates": 1412,
+        "complete_pool_rows": 1412,
+        "NO_MATCH_selected": 0,
+        "complete_pool_with_NO_MATCH_option": 1401,
+        "zero_remaining_printed_probability_mass": 0
+      },
+      "selected_NO_MATCH_groups": {},
+      "minimum_remaining_printed_probability_mass": 0.945262,
+      "examples": []
+    },
+    "native_before_rmot_multi800": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_runs/full_rmot_shared600_v1/multi800_native600",
+      "counts": {
+        "frames": 800,
+        "candidates": 2208,
+        "complete_pool_rows": 2208,
+        "NO_MATCH_selected": 381,
+        "complete_pool_with_NO_MATCH_option": 2207,
+        "zero_remaining_printed_probability_mass": 0,
+        "complete_pool_NO_MATCH_selected": 381
+      },
+      "selected_NO_MATCH_groups": {
+        "GT_matched_correct_live_anchor_offered": {
+          "observations": 149,
+          "best_remaining_NEW": 10,
+          "best_remaining_EXISTING": 139
+        },
+        "GT_unmatched_not_universal_negative": {
+          "observations": 143,
+          "best_remaining_NEW": 4,
+          "best_remaining_EXISTING": 139
+        },
+        "GT_matched_without_GT_verified_live_anchor": {
+          "observations": 89,
+          "best_remaining_EXISTING": 89
+        }
+      },
+      "minimum_remaining_printed_probability_mass": 0.8020379999999999,
+      "examples": [
+        {
+          "frame": 4,
+          "candidate": 0,
+          "pool_size": 6,
+          "offered_ids": 6,
+          "group": "GT_matched_correct_live_anchor_offered",
+          "NO_MATCH_probability": 0.186078,
+          "best_remaining_option": "NEW",
+          "best_remaining_probability": 0.16636
+        },
+        {
+          "frame": 5,
+          "candidate": 0,
+          "pool_size": 6,
+          "offered_ids": 6,
+          "group": "GT_matched_correct_live_anchor_offered",
+          "NO_MATCH_probability": 0.181744,
+          "best_remaining_option": "NEW",
+          "best_remaining_probability": 0.159179
+        },
+        {
+          "frame": 6,
+          "candidate": 0,
+          "pool_size": 6,
+          "offered_ids": 6,
+          "group": "GT_unmatched_not_universal_negative",
+          "NO_MATCH_probability": 0.18318,
+          "best_remaining_option": "NEW",
+          "best_remaining_probability": 0.158885
+        },
+        {
+          "frame": 6,
+          "candidate": 1,
+          "pool_size": 6,
+          "offered_ids": 6,
+          "group": "GT_matched_correct_live_anchor_offered",
+          "NO_MATCH_probability": 0.185284,
+          "best_remaining_option": "NEW",
+          "best_remaining_probability": 0.166534
+        },
+        {
+          "frame": 7,
+          "candidate": 0,
+          "pool_size": 6,
+          "offered_ids": 6,
+          "group": "GT_matched_correct_live_anchor_offered",
+          "NO_MATCH_probability": 0.183718,
+          "best_remaining_option": "NEW",
+          "best_remaining_probability": 0.162569
+        },
+        {
+          "frame": 8,
+          "candidate": 0,
+          "pool_size": 6,
+          "offered_ids": 6,
+          "group": "GT_matched_correct_live_anchor_offered",
+          "NO_MATCH_probability": 0.184604,
+          "best_remaining_option": "NEW",
+          "best_remaining_probability": 0.166158
+        },
+        {
+          "frame": 9,
+          "candidate": 0,
+          "pool_size": 6,
+          "offered_ids": 6,
+          "group": "GT_matched_correct_live_anchor_offered",
+          "NO_MATCH_probability": 0.187016,
+          "best_remaining_option": "NEW",
+          "best_remaining_probability": 0.169322
+        },
+        {
+          "frame": 10,
+          "candidate": 0,
+          "pool_size": 6,
+          "offered_ids": 6,
+          "group": "GT_matched_correct_live_anchor_offered",
+          "NO_MATCH_probability": 0.187862,
+          "best_remaining_option": "NEW",
+          "best_remaining_probability": 0.167777
+        }
+      ]
+    },
+    "native_default_rmot_multi800": {
+      "run": "outputs/groundjev/training/broader_shared6000_fla_owner_v2/controls/default_rmot_multi800",
+      "counts": {
+        "frames": 800,
+        "candidates": 2208,
+        "complete_pool_rows": 2208,
+        "NO_MATCH_selected": 0,
+        "complete_pool_with_NO_MATCH_option": 2177,
+        "zero_remaining_printed_probability_mass": 0
+      },
+      "selected_NO_MATCH_groups": {},
+      "minimum_remaining_printed_probability_mass": 0.926902,
+      "examples": []
+    },
+    "native_assigned_identity_rmot_multi800": {
+      "run": "outputs/groundjev/training/broader_shared6000_fla_owner_v2/controls/assigned_identity_rmot_multi800",
+      "counts": {
+        "frames": 800,
+        "candidates": 2208,
+        "complete_pool_rows": 2208,
+        "NO_MATCH_selected": 0,
+        "complete_pool_with_NO_MATCH_option": 2179,
+        "zero_remaining_printed_probability_mass": 0
+      },
+      "selected_NO_MATCH_groups": {},
+      "minimum_remaining_printed_probability_mass": 0.9274030000000001,
+      "examples": []
+    }
+  },
+  "interpretation": "Complete pool is an observable causal property, no GT required. Under the exporter active-pool contract, NO_MATCH requires an omitted live ID. Old V3prompt says previously observed without that explicit qualification; this audit diagnoses a contract discrepancy, not a proof every original NO_MATCH was impossible under old wording. Unknown births remain unknown; unmatched GT is not universal negative truth.",
+  "hypothetical_remaining_option": "Pointwise best remaining original score only; not global assignment, a new trajectory, calibrated posterior, or measured quality gain.",
+  "new_GPU_or_optimizer_updates": 0,
+  "original_predictions_or_targets_changed": false,
+  "full_goal_complete": false
+}

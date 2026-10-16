@@ -1,3 +1,72 @@
+## Complete appearance controls; NO_MATCH feasibility regresses DT — 2026-10-16
+
+This entry supersedes the pending appearance/timeout completion descriptions below.
+The original appearance-rank owner completed all20official units, temporal
+appearance1000 all20, and timeout-only all10. All-five-scope receipts recheck each
+completed unit against official score/runtime, frame/candidate/rejection counts
+and final identity state. No frames or arms removed.
+
+|Five registered scopes|DT HOTA %|RMOT single HOTA %|RMOT multi HOTA %|TAO TETA|MOT20 HOTA %|
+|---|---:|---:|---:|---:|---:|
+|Original shared Compact|26.3157|6.0247|19.8019|14.517|7.4316|
+|Timeout-only deletion|26.3157|6.4816|19.5578|14.493|7.6054|
+|Raw-appearance rank|30.2544|5.7087|18.9930|14.104|8.0009|
+|Random-projection rank|19.4111|5.8205|19.6370|14.324|7.9101|
+|Trained-projection rank|24.7555|6.1548|20.1424|14.967|8.0870|
+|Fixed fusion, raw appearance|13.3108|5.5377|16.6224|13.964|31.3078|
+|Fixed fusion, random projection|13.4881|6.6298|14.3821|14.194|31.5077|
+|Fixed fusion, trained projection|8.4607|9.2325|31.5524|14.395|31.7503|
+
+The trained projector has341184parameters/1000updates, not foundation SFT.
+Fixed fusion also changes admission/auxiliary execution relative to the original
+learned actor. Its MOT20 jump7.43→31.75 cannot be attributed to learned appearance:
+raw/random fixed-fusion controls already reach31.31/31.51. Trained fixed-fusion
+MOT20 has8689IDSW/16049FP versus2060/463original; trained rank has3317IDSW
+despite HOTA8.087. AllTAO NovelClsA remain0. Mixed outcomes and DT regressions
+prevent common-model promotion or an ordinary-model parity claim.
+
+The next intervention is an explicit active-live-pool execution contract. The
+exporter labels NO_MATCH when a correct live identity is omitted from the shortlist;
+the old native prompt says previously observed without explicitly qualifying live
+versus retired. The all14unit audit finds10406DT/112129MOT20Compact NO_MATCH
+selections with every live identity offered. Unknown birth bindings remain unknown,
+and GT-unmatched candidates are not universally negative. Opt-in `only_if_omitted`
+leaves raw probabilities/confidence/entropy/auxiliary/semantics untouched on
+identical inputs, excluding only a private NO_MATCH cost when no live ID is omitted.
+No probability renormalization, GT decision rule or proposal filtering is introduced.
+
+All339596original candidate assignments across14units reproduce exactly under the
+default extracted matcher; raw probability immutability and opt-in feasibility
+pass on those same real inputs. Actual CPU rollouts have frozen first3scopes/all12
+official units; these supersede the earlier shadow-assignment-only observation:
+
+|HOTA %|Original|Timeout only|Feasibility only|Both|
+|---|---:|---:|---:|---:|
+|DT1203|26.3157|26.3157|12.9762|12.9762|
+|RMOT single800|6.0247|6.4816|6.0247|6.4816|
+|RMOT multi800|19.8019|19.5578|20.6629|20.2362|
+
+DT feasibility FP579→3509/FN1962→1550/IDSW165→459 shows additional admission
+does not repair identity association. Preserve the failure and all4arms; no adoption
+based on small multiRMOT gains. TAO/MOT20 new-arm rollouts remain with original
+owner/session48863: all5scopes, checkpoint, timestamps, candidates and scorers
+unchanged. Two reference arms explicitly reuse completed original/timeout controls.
+
+Evidence: `compact/{appearance_rank_study_v1/owner,native_temporal_appearance1000_owner_v1,
+timeout_only_lifecycle_controls_v1}/all_five_scopes_completed.json`,
+`diagnostics/no_match_pool_exposure_v1/summary.json`,
+`validation/no_match_feasibility_v1/validation.json`,
+`compact/no_match_feasibility_factorial_v1/{registration,first_three_scopes_completed}.json`.
+New2MiB scalar/working reservation raises conservative temporary feature upper
+to26,829,071,326bytes <26,843,545,600. No new ROI/image bank, GPU or optimizer.
+
+Independent genuine752393024-parameter language adaptation has frozen observed
+log rows2250/36000questions (full source) and875/3500questions (paired short).
+These are progress, not completed epochs or another full-state numerical gate;
+last complete full-state gate remains2000. Paired-long was not started at that
+observation. Vision frozen; no Ground/One joint gradients or long-video BPTT.
+Evidence: `training/observed_full2250_short875_v1/snapshot.json`. Training unchanged.
+
 ## Shared native600 baseline now complete on all four registered scopes — 2026-10-16
 
 The original TAO40baseline has completed under the old registered GPU5owner;

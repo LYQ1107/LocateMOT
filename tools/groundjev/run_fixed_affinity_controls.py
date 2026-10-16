@@ -35,6 +35,9 @@ def main():
     if plan.get('termination_regression'):
         termination=json.loads((ROOT/plan['termination_regression']).read_text())
         assert termination['status']=='REAL_NATIVE_AND_COMPACT_DEFAULT_PREFIX_EARLY_DEFERRAL_AND_EXPIRY_VALIDATED'
+    if plan.get('no_match_regression'):
+        feasibility=json.loads((ROOT/plan['no_match_regression']).read_text())
+        assert feasibility['status']=='ALL14_REAL_DEFAULT_ASSIGNMENTS_AND_NO_MATCH_FEASIBILITY_VALIDATED'
     args.out.mkdir(parents=True, exist_ok=False)
     state = {'status': 'STARTING_FIXED_AFFINITY_CONTROLS', 'owner_pid': os.getpid(),
         'plan': str(args.plan), 'device': 'cpu', 'additional_GPUs': 0,
@@ -100,6 +103,8 @@ def main():
                         '--out', str(output)]
                     if policies.get('lifecycle_termination_policy'):
                         command+=['--lifecycle-termination-policy',policies['lifecycle_termination_policy']]
+                    if policies.get('no_match_policy'):
+                        command+=['--no-match-policy',policies['no_match_policy']]
                     if backend == 'compact':
                         command += ['--compact-device', 'cpu', '--checkpoint', str(checkpoint),
                             '--compact-association-policy', policies['association'], '--compact-auxiliary-policy', policies['auxiliary'],
@@ -115,6 +120,7 @@ def main():
                     run(name+'_EVENTS', ['python3', 'tools/groundjev/analyze_tracking_events.py',
                     '--video', str(manifest), '--run', str(output)])
                 count, candidates, rejected = 0, 0, []
+                prior_ids=[]
                 with source.open() as native, (output/'frame_decisions.jsonl').open() as predictions:
                     for old, new in zip_longest(native, predictions):
                         assert old is not None and new is not None
@@ -126,6 +132,15 @@ def main():
                         assert new['candidates'] == geometry
                         assert new['frame'] == old['frame'] == m['frame_numbers'][count]
                         assert new['image_path'] == old['image_path'] == m['images'][count]
+                        if policies.get('no_match_policy')=='only_if_omitted':
+                            meta=new['state']['decision_metadata']
+                            assert meta['no_match_policy']=='only_if_omitted' and meta['original_model_probabilities_retained']
+                            events=[e for e in new['state']['events'] if 'candidate' in e]
+                            expected=[e['candidate'] for e in events if 'NO_MATCH' in e['decision']['probabilities'] and
+                                      all(str(tid) in e['decision']['probabilities'] for tid in prior_ids)]
+                            assert meta['no_match_infeasible_candidate_indices']==expected
+                            assert all(e['action']!='NO_MATCH' for e in events if e['candidate'] in expected)
+                        prior_ids=new['state']['persistent_ids']
                         if backend == 'compact':
                             assert new['state']['decision_metadata']['shortlist_limit'] == shortlist
                             assert new['state']['decision_metadata'].get('shortlist_policy', 'geometry') == shortlist_policy
@@ -161,6 +176,7 @@ def main():
                 assert report['memory_feature_view'] == policies.get('feature_view', 'all')
                 assert report['lost_seconds'] == policies.get('lost_seconds', 3.)
                 assert report.get('lifecycle_termination_policy','learned_or_timeout')==policies.get('lifecycle_termination_policy','learned_or_timeout')
+                assert report.get('no_match_policy','learned')==policies.get('no_match_policy','learned')
                 if backend == 'compact':
                     assert report['compact_association_policy'] == policies['association']
                     assert report['compact_auxiliary_policy'] == policies['auxiliary']

@@ -1,0 +1,56 @@
+{
+  "status": "OBSERVED_ACTUAL_OPTIMIZER_PROGRESS_NOT_FINAL_CHECKPOINT_VALIDATION",
+  "records": {
+    "full_source": {
+      "training_log": "/data3/user/LocateMOT-checkpoints/onejev_full_joint_source_epoch1_v1/log.jsonl",
+      "observed_row": {
+        "step": 2250,
+        "epoch": 0,
+        "examples": 36000,
+        "loss": 1.0521526292514682,
+        "ce": 0.7361499800331512,
+        "brier": 0.31600264498383934,
+        "slot_acc": 0.745,
+        "grad_norm": 61.27424934387207,
+        "lr": 1.987731569221303e-06,
+        "rows_per_step": 16.0,
+        "examples_per_s": 1.292828984050859,
+        "tokens_per_s": 14863.21526777815,
+        "sec_per_step": 12.375960159762762,
+        "peak_mem_gb": 19.40760326385498,
+        "elapsed_s": 27442.12528360699
+      },
+      "planned_updates": 28690,
+      "epoch_or_branch_complete": false
+    },
+    "paired_short": {
+      "training_log": "/data3/user/LocateMOT-checkpoints/onejev_temporal_teacher_short6000_v2_indexed/log.jsonl",
+      "observed_row": {
+        "step": 875,
+        "epoch": 0,
+        "examples": 3500,
+        "loss": 1.240656713115659,
+        "ce": 0.8943092847176058,
+        "brier": 0.34634743069027657,
+        "slot_acc": 0.69,
+        "grad_norm": 187.3851317858696,
+        "lr": 1.930450536655441e-06,
+        "rows_per_step": 4.0,
+        "examples_per_s": 0.6994473676081537,
+        "tokens_per_s": 3307.95239141865,
+        "sec_per_step": 5.71880056347698,
+        "peak_mem_gb": 19.6378116607666,
+        "elapsed_s": 5187.808172374964
+      },
+      "planned_updates": 6000,
+      "epoch_or_branch_complete": false
+    }
+  },
+  "paired_long_updates_at_observation": 0,
+  "observation_scope": "Preserves the exact log rows used in the user status answer. Does not assert these are the newest rows at publication time. Full-state validation remains the separate actual2000 snapshot. No model/optimizer/GPU/ROI bank created.",
+  "trainable_language_parameters": 752393024,
+  "vision_frozen": true,
+  "Ground_One_joint_gradients": false,
+  "long_video_BPTT": false,
+  "full_goal_complete": false
+}

@@ -1,0 +1,96 @@
+{
+  "project_root": "/data2/user/LocateMOT",
+  "name": "Active-pool NO_MATCH feasibility and lifecycle execution factorial",
+  "checkpoint": "outputs/groundjev/compact/rmot_native72_stage_v1/broad_native_training/checkpoint.pt",
+  "regression": "outputs/groundjev/validation/fixed_affinity_storage_v1/validation.json",
+  "reference_root": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/no_match_feasibility_factorial_v1/reference_runs",
+  "scopes": {
+    "mot_full1203": {
+      "manifest": "outputs/groundjev/pilot_data/dancetrack.json",
+      "candidates": "outputs/groundjev/compact/dancetrack0004_native300_v2_empty_roi_fixed/compact_distilled/frame_decisions.jsonl",
+      "frames": 1203,
+      "candidates_count": 13664
+    },
+    "rmot_single800": {
+      "manifest": "outputs/groundjev/multitask_pilot_data/rmot_single_empty_full.json",
+      "candidates": "outputs/groundjev/multitask_runs/full_rmot_shared600_v1/single800_shared_compact_fresh/frame_candidates.jsonl",
+      "frames": 800,
+      "candidates_count": 1412
+    },
+    "rmot_multi800": {
+      "manifest": "outputs/groundjev/multitask_pilot_data/rmot_multi_empty_full.json",
+      "candidates": "outputs/groundjev/multitask_runs/full_rmot_shared600_v1/multi800_shared_compact_fresh/frame_candidates.jsonl",
+      "frames": 800,
+      "candidates_count": 2208
+    },
+    "tao_raw_full40": {
+      "manifest": "outputs/groundjev/multitask_pilot_data/ovmot_tao_base_novel63_full.json",
+      "candidates": "outputs/groundjev/multitask_runs/tao_base_novel63_full_v2_expression_none/native_candidates/frame_candidates.jsonl",
+      "frames": 40,
+      "candidates_count": 35228
+    },
+    "mot20_challenge": {
+      "manifest": "outputs/groundjev/recovery_scope_20261015/registered_mot_challenge.json",
+      "candidates": "outputs/groundjev/natural_memory/mot20_05_full_validation_gpu5_v1/fresh_compact_gated3/frame_candidates.jsonl",
+      "frames": 1657,
+      "candidates_count": 235232
+    }
+  },
+  "cpu_blas_threads": 4,
+  "arms": {
+    "before": {
+      "association": "learned",
+      "auxiliary": "learned",
+      "memory_policy": "gated",
+      "feature_view": "all",
+      "lost_seconds": 3.0,
+      "shortlist": 32,
+      "reference_arm": "before"
+    },
+    "timeout_only": {
+      "association": "learned",
+      "auxiliary": "learned",
+      "memory_policy": "gated",
+      "feature_view": "all",
+      "lost_seconds": 3.0,
+      "shortlist": 32,
+      "lifecycle_termination_policy": "timeout_only",
+      "reference_arm": "timeout_only"
+    },
+    "feasible": {
+      "association": "learned",
+      "auxiliary": "learned",
+      "memory_policy": "gated",
+      "feature_view": "all",
+      "lost_seconds": 3.0,
+      "shortlist": 32,
+      "no_match_policy": "only_if_omitted"
+    },
+    "feasible_timeout": {
+      "association": "learned",
+      "auxiliary": "learned",
+      "memory_policy": "gated",
+      "feature_view": "all",
+      "lost_seconds": 3.0,
+      "shortlist": 32,
+      "no_match_policy": "only_if_omitted",
+      "lifecycle_termination_policy": "timeout_only"
+    }
+  },
+  "comparison_limit": "Factorial original / timeout-only / active-pool NO_MATCH-feasibility / both. Same original sharedCompact checkpoint and all native candidates. Feasibility changes only private NO_MATCH cost when no live ID is omitted; raw probabilities/confidence/entropy/aux/semantics remain original on identical inputs, no renormalization or GT. Matches explicit exporter active-pool target contract; old V3prompt is less explicit. Every5scope/frame/scorer retained, no per-taskselection.",
+  "memory_storage": "No new image/ROI feature bank. Projected vectors in bounded16inputchunks; scientific decision traces and final identity state separately protected.",
+  "metadata_suballocation": "New2MiB for scalar audit/controlmetadata and boundedextra working; no new image/ROI bank. Scientific predictions/identitystates separate.",
+  "combined_registered_feature_upper_bytes": 26829071326,
+  "global_temporary_feature_budget_bytes": 26843545600,
+  "new_GPU_or_optimizer_updates": 0,
+  "full_goal_complete": false,
+  "termination_validation_output": "outputs/groundjev/validation/timeout_only_lifecycle_v1",
+  "termination_regression": "outputs/groundjev/validation/timeout_only_lifecycle_v1/validation.json",
+  "prior_registered_feature_upper_bytes": 26826974174,
+  "new_reservation_bytes": 2097152,
+  "ordinary_model_performance_achieved": false,
+  "clock_scope": "Original TTL3 in registered manifest units: physical seconds for MOT/RMOT, annotation steps for TAO (source FPS unavailable). No timestamp/threshold/runtime/metric change; earlier generic3s prose was inaccurate for TAO.",
+  "no_match_regression": "outputs/groundjev/validation/no_match_feasibility_v1/validation.json",
+  "probability_source": "Original learned Compact values; only feasible-action matching costs change. Not native OneJev decoder inference or a new calibrated conditional posterior.",
+  "actual_new_GPU_or_optimizer_updates": 0
+}

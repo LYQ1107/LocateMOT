@@ -36,38 +36,25 @@ class Track:
 
 class OnlineTracker:
     def __init__(self, decision, lost_seconds=3., update_threshold=.5, memory_policy='gated', ema_alpha=.1,
-                 lifecycle_termination_policy='learned_or_timeout'):
+                 lifecycle_termination_policy='learned_or_timeout',no_match_policy='learned'):
         self.decision = decision
         self.lost_seconds, self.update_threshold = lost_seconds, update_threshold
         self.tracks, self.next_id, self.previous_timestamp = {}, 1, None
         self.memory_policy,self.ema_alpha = memory_policy,ema_alpha
         self.lifecycle_termination_policy=lifecycle_termination_policy
+        self.no_match_policy=no_match_policy
 
     def step(self, image, candidates, timestamp, specification):
-        import numpy as np
-        from scipy.optimize import linear_sum_assignment
+        from locatemot.groundjev.assignment import assign_candidates
         if self.previous_timestamp is not None and timestamp <= self.previous_timestamp:
             raise ValueError('Video timestamps must increase; future frames cannot alter past states')
         tracks = list(self.tracks.values())
         decisions, lifecycle, meta = self.decision.decide(image, candidates, tracks, timestamp, specification)
         n, m = len(candidates), len(tracks)
-        actions = ('NEW','IGNORE','NO_MATCH') if meta.get('explicit_no_match') else ('NEW','IGNORE')
-        width = len(actions)
-        costs = np.full((n, m+width*n), 1e9)
         is_jev = meta['native_probabilities']
-        for i, d in enumerate(decisions):
-            probabilities = d['probabilities']
-            for j, t in enumerate(tracks):
-                if str(t.track_id) in probabilities:
-                    p = probabilities[str(t.track_id)]
-                    costs[i, j] = -math.log(max(p, 1e-12)) if is_jev else -p
-            for j, option in enumerate(actions):
-                if option not in probabilities:
-                    continue
-                p = probabilities[option]
-                costs[i, m+width*i+j] = -math.log(max(p, 1e-12)) if is_jev else -p
-        rows, columns = linear_sum_assignment(costs) if n else ([], [])
-        assigned = dict(zip(rows, columns))
+        assigned,actions,masked=assign_candidates(decisions,tracks,native_probabilities=is_jev,
+            explicit_no_match=meta.get('explicit_no_match',False),no_match_policy=self.no_match_policy)
+        width=len(actions)
         assigned_update = getattr(self.decision, 'decide_assigned_updates', None)
         if assigned_update is not None:
             selected_existing = {i: tracks[column].track_id for i, column in assigned.items() if column < m}
@@ -183,6 +170,10 @@ class OnlineTracker:
         if self.memory_policy!='gated':meta.update(memory_update_policy=self.memory_policy,ema_alpha=self.ema_alpha)
         if self.lifecycle_termination_policy!='learned_or_timeout':
             meta['lifecycle_termination_policy']=self.lifecycle_termination_policy
+        if self.no_match_policy!='learned':
+            meta.update(no_match_policy=self.no_match_policy,no_match_infeasible_candidate_indices=masked,
+                original_model_probabilities_retained=True,
+                no_match_execution_contract='Only an omitted live ID permits NO_MATCH; constraint uses the actual live pool/options, no GT. Raw probabilities, confidence and entropy remain original, not renormalized.')
         return outputs, {'events': events, 'decision_metadata': meta, 'persistent_ids': list(self.tracks),
                          'next_id': self.next_id, 'timestamp': timestamp,
                          'visual_memory_source': 'real_causal_crops_and_native_DLM_region_features' if native else 'real_causal_crops; native feature adapter pending'}
