@@ -1,0 +1,56 @@
+{
+  "native_candidates": 8,
+  "vocabulary_size": 1203,
+  "max_probability_or_confidence_difference": 0.0,
+  "preregistered_gate": 1e-06,
+  "choices_labels_and_all_recorded_fields_same": true,
+  "native_report": {
+    "policy": "native_hierarchical",
+    "all_vocabulary_classes_in_root": true,
+    "vocabulary_size": 1203,
+    "group_size": 128,
+    "routing": "highest-probability root then conditional leaf; explicit UNKNOWN retains box",
+    "native_detection_score_unchanged": true,
+    "batches": [
+      {
+        "offset": 0,
+        "objects": 8,
+        "root": {
+          "prompt_version": "qev-labels-v2",
+          "prompt_sha256": "60bc8954a3e4d66bd1275dc845568ad2ac228425b689ba3eaf7fdef35ea2117a",
+          "fork_mode": "batched",
+          "prefix_tokens": 506,
+          "branches": 8,
+          "timing": {
+            "render_s": 0.10223313997266814,
+            "forward_s": 2.4998621540144086,
+            "total_s": 2.6036901079351082
+          },
+          "media": {
+            "images": 1,
+            "videos": 0,
+            "load_s": 0.0005153339589014649
+          }
+        },
+        "leaf": {
+          "prompt_version": "qev-labels-v2",
+          "prompt_sha256": "66d3d2f8d0ff67cba318319f0fe0a2f6028fb9afe33433b23c198f2314617d12",
+          "fork_mode": "batched",
+          "prefix_tokens": 506,
+          "branches": 8,
+          "timing": {
+            "render_s": 0.06706956203561276,
+            "forward_s": 1.095972640963737,
+            "total_s": 1.1652964679524302
+          },
+          "media": {
+            "images": 1,
+            "videos": 0,
+            "load_s": 0.0002394999610260129
+          }
+        }
+      }
+    ]
+  },
+  "launch_free_memory_MiB": 63951
+}

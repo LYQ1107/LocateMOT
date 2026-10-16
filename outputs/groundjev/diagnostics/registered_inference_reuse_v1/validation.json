@@ -1,0 +1,53 @@
+{
+  "status": "REGISTERED_FUTURE_BINDINGS_AND_REAL_COMPLETED_NATIVE_RUN_REUSE_VALIDATED",
+  "binding_checks": [
+    {
+      "mode": "completed_identical_baseline",
+      "exact_consumer_only": true,
+      "other_checkpoint_rejected": true,
+      "effective_category_replay_flag": false
+    },
+    {
+      "mode": "same_checkpoint_current_frame_categories",
+      "exact_consumer_only": true,
+      "other_checkpoint_rejected": true,
+      "effective_category_replay_flag": true
+    }
+  ],
+  "completed_run": {
+    "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/diagnostics/registered_inference_reuse_v1/completed_native_DT1203_reuse",
+    "checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_history_refresh600_old_v1/ckpt-step600",
+    "frames": 1203,
+    "native_candidates": 13664,
+    "same_exact_all_candidates": true,
+    "parser_rejected_frame_count": 27,
+    "official_metrics": {
+      "HOTA": 0.131074920100655,
+      "DetA": 0.33411834337018353,
+      "AssA": 0.051429783009717234,
+      "IDF1": 0.13571732652192423,
+      "IDSW": 2351,
+      "FP": 4027,
+      "FN": 1454
+    },
+    "base_novel": null,
+    "GT_and_future_frames_not_read_by_runtime": true,
+    "actual_end_to_end_FPS": null
+  },
+  "reuse": {
+    "source": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_runs/full_history_refresh600_controls_v1/old_mot_full1203",
+    "native_model_calls_this_invocation": 0,
+    "immutable_large_artifacts_hardlinked": true,
+    "result_and_scorer_outputs_independent": true,
+    "source_timing_is_provenance_only": true
+  },
+  "large_artifacts_same_inodes_no_new_feature_archive": true,
+  "result_and_scorer_files_independent": true,
+  "copied_scorer_receipt_not_fresh_score": true,
+  "no_GPU_or_model_calls": true,
+  "current_training_or_evaluations_changed": false,
+  "additional_small_artifact_reserve_bytes": 524288,
+  "combined_registered_feature_upper_bytes": 26840369872,
+  "global_temporary_feature_budget_bytes": 26843545600,
+  "full_goal_complete": false
+}

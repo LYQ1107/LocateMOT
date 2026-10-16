@@ -1,0 +1,40 @@
+{
+  "enabled": true,
+  "project_root": "/data2/user/LocateMOT",
+  "validation": "outputs/groundjev/diagnostics/native_category_replay_probe_v1",
+  "scope": "Only the two exact future6000 TAO consumer outputs below; current jobs and all other commands unchanged",
+  "identity_and_memory_inference": "Always fresh for category replay; complete identical baseline reuse is separately labeled",
+  "timing_policy": "Cached/reused timings never represent fresh end-to-end performance",
+  "bindings": [
+    {
+      "mode": "completed_identical_baseline",
+      "source": "outputs/groundjev/multitask_runs/full_history_refresh600_controls_v1/before_tao_raw_full40",
+      "consumer": "outputs/groundjev/training/broader_shared6000_fla_owner_v2/controls/before_tao_raw_full40",
+      "assigned_identity_updates": false,
+      "original_owner_identity": [2467924, "45243513"],
+      "original_owner_script": "tools/groundjev/run_history_refresh_controls.py",
+      "required_options": {
+        "--task": "ovmot", "--backend": "full", "--category-policy": "native_hierarchical",
+        "--evidence-format": "v3_crop_motion",
+        "--video": "outputs/groundjev/multitask_pilot_data/ovmot_tao_base_novel63_full.json",
+        "--checkpoint": "outputs/groundjev/training/onejev_unified600_native_v2/ckpt-step600",
+        "--candidate-replay": "outputs/groundjev/multitask_runs/tao_base_novel63_full_v2_expression_none/native_candidates/frame_candidates.jsonl"
+      },
+      "required_flags": ["--adaptive-context-groups", "--omit-replay-feature-vectors"]
+    },
+    {
+      "mode": "same_checkpoint_current_frame_categories",
+      "source": "outputs/groundjev/training/broader_shared6000_fla_owner_v2/controls/default_tao_raw_full40",
+      "consumer": "outputs/groundjev/training/broader_shared6000_fla_owner_v2/controls/assigned_identity_tao_raw_full40",
+      "assigned_identity_updates": true,
+      "required_options": {
+        "--task": "ovmot", "--backend": "full", "--category-policy": "native_hierarchical",
+        "--evidence-format": "v3_crop_motion",
+        "--video": "outputs/groundjev/multitask_pilot_data/ovmot_tao_base_novel63_full.json",
+        "--checkpoint": "outputs/groundjev/training/onejev_broader_shared6000_fla_v2/ckpt-step6000",
+        "--candidate-replay": "outputs/groundjev/multitask_runs/tao_base_novel63_full_v2_expression_none/native_candidates/frame_candidates.jsonl"
+      },
+      "required_flags": ["--adaptive-context-groups", "--omit-replay-feature-vectors", "--assigned-identity-updates"]
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "status": "REGISTERED_CATEGORY_REPLAY_AND_COMPLETED_SCORE_DIAGNOSTICS_WITHIN_CAP",
+  "prior_registered_feature_upper_bytes": 26838272720,
+  "new_category_probe_cap_bytes": 524288,
+  "new_completed_scores_snapshot_cap_bytes": 1048576,
+  "new_registered_reuse_validation_cap_bytes": 524288,
+  "combined_registered_feature_upper_bytes": 26840369872,
+  "global_temporary_feature_budget_bytes": 26843545600,
+  "remaining_upper_bound_headroom_bytes": 3175728,
+  "hardlinked_existing_archives_are_same_inodes_not_new_copies": true,
+  "files_deleted": 0
+}

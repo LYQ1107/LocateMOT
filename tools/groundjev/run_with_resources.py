@@ -4,6 +4,7 @@ import json
 import os
 from pathlib import Path
 import subprocess
+import sys
 
 ROOT = Path(__file__).resolve().parents[2]
 
@@ -19,6 +20,14 @@ def main():
     if len(args.gpus) > config['max_physical_gpus'] or not set(args.gpus) <= set(config['physical_gpu_allowlist']):
         parser.error('all GroundJEV jobs combined must remain within the registered four GPUs')
     command = args.command[1:] if args.command[0] == '--' else args.command
+    sys.path.insert(0, str(ROOT))
+    from tools.groundjev.registered_inference_reuse import prepare_command, reuse_registered_baseline
+    command, reuse = prepare_command(command)
+    if reuse is not None:
+        print(json.dumps({'explicit_registered_reuse': reuse}), flush=True)
+        if reuse['binding']['mode'] == 'completed_identical_baseline':
+            reuse_registered_baseline(reuse)
+            return
     env = os.environ.copy()
     env['CUDA_VISIBLE_DEVICES'] = ','.join(map(str, args.gpus))
     env['GROUNDJEV_FEATURE_CACHE_BUDGET_BYTES'] = str(config['feature_cache_budget_bytes'])

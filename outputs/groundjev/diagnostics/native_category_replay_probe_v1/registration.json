@@ -1,0 +1,22 @@
+{
+  "project_root": "/data2/user/LocateMOT",
+  "source_run": "outputs/groundjev/multitask_runs/full_history_refresh600_controls_v1/before_tao_raw_full40",
+  "controls": "configs/groundjev/full_history_refresh600_controls_v1.json",
+  "checkpoint": "outputs/groundjev/training/onejev_unified600_native_v2/ckpt-step600",
+  "output": "outputs/groundjev/diagnostics/native_category_replay_probe_v1",
+  "physical_gpu": 4,
+  "launch_min_free_MiB": 24576,
+  "native_recomputed_candidates": 8,
+  "continuous_CPU_frames": 2,
+  "probability_max_difference_gate": 1e-06,
+  "choices_and_labels_must_match": true,
+  "source_partial_prefix_only_for_probe": true,
+  "production_requires_complete_source": true,
+  "diagnostic_reserve_bytes": 524288,
+  "prior_registered_feature_upper_bytes": 26838272720,
+  "combined_registered_feature_upper_bytes": 26838797008,
+  "global_temporary_feature_budget_bytes": 26843545600,
+  "inference_backend": "original_reference_Torch",
+  "CPU_identity": "recorded original identity decisions, explicitly not fresh identity model inference",
+  "existing_experiments_changed": false
+}

@@ -1,0 +1,7 @@
+{"physical_gpus": [4], "command": [".venv-onejev-py310/bin/python", "-u", "tools/groundjev/validate_native_category_replay.py", "--plan", "configs/groundjev/native_category_replay_probe_v1.json"]}
+WAITING_SHARED_GPU4_FREE_MEMORY_FOR_NATIVE_CATEGORY_PARITY
+Loading weights:   0%|          | 0/474 [00:00<?, ?it/s]Loading weights:   0%|          | 2/474 [00:00<00:27, 17.35it/s]Loading weights:  21%|██        | 100/474 [00:00<00:00, 546.70it/s]Loading weights:  41%|████▏     | 196/474 [00:00<00:00, 722.79it/s]Loading weights:  59%|█████▊    | 278/474 [00:00<00:00, 748.24it/s]Loading weights:  86%|████████▋ | 409/474 [00:00<00:00, 944.82it/s]Loading weights: 100%|██████████| 474/474 [00:00<00:00, 837.00it/s]
+[transformers] `causal_conv1d_fn` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+[transformers] `chunk_gated_delta_rule` is falling back to its reference PyTorch implementation because `flash-linear-attention` is not installed. This is correct but much slower; install `flash-linear-attention` for the optimized kernel.
+NATIVE_CATEGORY_PARITY_PASSED_CPU_FULL_FRAME_TRAJECTORY_STARTING
+{"status": "NATIVE_CATEGORY_AND_CONTINUOUS_FULL_FRAME_MEMORY_REPLAY_VALIDATED", "max_probability_difference": 0.0, "frames": 2, "candidates": 2027, "actual_diagnostic_bytes": 6359}

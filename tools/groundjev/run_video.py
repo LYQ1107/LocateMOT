@@ -85,6 +85,8 @@ def main():
     parser.add_argument('--native-feature-url',help='isolated official DLM visual encoder RPC; no substitute image features')
     parser.add_argument('--adaptive-context-groups',action='store_true',help='split native preflight-rejected groups, retaining all candidate rows and identity options')
     parser.add_argument('--category-policy', choices=['native_label', 'native_hierarchical'], default='native_label')
+    parser.add_argument('--category-replay', type=Path,
+                        help='explicit same-checkpoint native categories from a complete run on identical frames/candidates')
     parser.add_argument('--native-rmot-membership', action='store_true', help='Full: explicit native OneJev Noul expression decision, with fixed .5 output threshold')
     parser.add_argument('--assigned-identity-updates', action='store_true',
                         help='experimental Full v3 second native Noul pass after global matching and before memory write; needs matching question training')
@@ -124,6 +126,8 @@ def main():
         parser.error('native RMOT membership requires the Full OneJev backend and RMOT task')
     if args.assigned_identity_updates and (args.backend != 'full' or args.evidence_format != 'v3_crop_motion' or args.memory_policy != 'gated'):
         parser.error('assigned-identity updates require Full v3_crop_motion and gated memory')
+    if args.category_replay and (args.backend != 'full' or args.category_policy != 'native_hierarchical' or not args.candidate_replay):
+        parser.error('category replay requires Full native_hierarchical and fixed candidate replay')
     if args.backend!='compact' and (args.compact_association_policy!='learned' or args.compact_auxiliary_policy!='learned' or args.compact_shortlist!=32 or args.compact_shortlist_policy!='geometry'):
         parser.error('Compact policy controls require the Compact backend')
     if args.compact_shortlist_policy=='hybrid16_16' and args.compact_shortlist!=32:
@@ -165,10 +169,15 @@ def main():
             decision_type = AssignedIdentityUpdateDecision
         decision=decision_type(args.checkpoint,evidence_format=args.evidence_format,adaptive_context=args.adaptive_context_groups,
                                rmot_membership=args.native_rmot_membership)
+    category_replay = None
     if args.category_policy == 'native_hierarchical':
         from locatemot.groundjev.category import NativeCategoryHead, CategorizedDecision
         engine = decision.engine if args.backend == 'full' else OneJevDecision(args.checkpoint).engine
-        decision = CategorizedDecision(decision, NativeCategoryHead(engine))
+        head = NativeCategoryHead(engine)
+        if args.category_replay:
+            from locatemot.groundjev.category_replay import CausalNativeCategoryReplay
+            head = category_replay = CausalNativeCategoryReplay(args.category_replay, args.checkpoint, manifest)
+        decision = CategorizedDecision(decision, head)
     tracker = OnlineTracker(decision,lost_seconds=args.lost_seconds,memory_policy=args.memory_policy,ema_alpha=args.ema_alpha)
     def write_memory(stem):
         snapshot=tracker.state_dict()
@@ -280,6 +289,8 @@ def main():
                 if index >= len(resumed):
                     print(json.dumps({'frame': frame_number, 'stage': 'association_and_memory', 'candidates': len(candidates)}), flush=True)
                     timestamp = timestamps[frame_number] if timestamps is not None else frame_number/fps
+                    if category_replay is not None:
+                        category_replay.begin_frame(path, frame_number)
                     outputs, state = tracker.step(image, candidates, timestamp, specification)
                     elapsed = time.perf_counter()-start
                 latencies.append(elapsed)
@@ -323,6 +334,7 @@ def main():
         raise
     finally:
         if replay: replay.close()
+        if category_replay is not None: category_replay.close()
         if video_writer is not None and video_writer.poll() is None:
             # On perception failure ffmpeg still waits for the next raw frame.
             # Close the pipe before waiting so cleanup cannot hide the exception.
@@ -391,6 +403,9 @@ def main():
         from locatemot.groundjev.assigned_identity_update import PROTOCOL
         result.update(assigned_identity_updates=True, assigned_identity_update_protocol=PROTOCOL,
                       assigned_identity_update_training_and_accuracy='requires separately validated same-question SFT and causal evaluation')
+    if category_replay is not None:
+        result.update(category_replay=category_replay.summary(),
+            timing_limitations='category probabilities reused from identical current images/candidates/checkpoint; replay timing is not comparable to fresh native classification')
     result['peak_decision_process_rss_bytes'] = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss*1024
     if args.backend=='compact':
         result['trainable_compact_core_parameters'] = sum(p.numel() for p in decision.model.parameters())

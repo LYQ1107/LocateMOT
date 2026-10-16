@@ -1,0 +1,121 @@
+{
+  "status": "COMPLETED_OLD_FULL600_THREE_SCOPE_NATIVE_OUTPUT_AND_OFFICIAL_RECHECK",
+  "completed_scopes": {
+    "mot_full1203": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_runs/full_history_refresh600_controls_v1/old_mot_full1203",
+      "checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_history_refresh600_old_v1/ckpt-step600",
+      "frames": 1203,
+      "native_candidates": 13664,
+      "same_exact_all_candidates": true,
+      "parser_rejected_frame_count": 27,
+      "official_metrics": {
+        "HOTA": 0.131074920100655,
+        "DetA": 0.33411834337018353,
+        "AssA": 0.051429783009717234,
+        "IDF1": 0.13571732652192423,
+        "IDSW": 2351,
+        "FP": 4027,
+        "FN": 1454
+      },
+      "base_novel": null,
+      "GT_and_future_frames_not_read_by_runtime": true,
+      "actual_end_to_end_FPS": null,
+      "baseline_run": "outputs/groundjev/training/onejev_full1203_controls_v2_wait_fix/native_mot_full1203",
+      "baseline_metrics": {
+        "HOTA": 0.08702996032001276,
+        "DetA": 0.3010472804984555,
+        "AssA": 0.025168031826705423,
+        "IDF1": 0.05825958702064897,
+        "IDSW": 3631,
+        "FP": 7516,
+        "FN": 416
+      },
+      "raw_prediction_bytes_exactly_reconstructed_from_every_frame_output": true,
+      "raw_predictions_gzip_bytes": 85385,
+      "official_input_exactly_reconstructed": true,
+      "pinned_original_TrackEval_recomputed_metrics_exact": true,
+      "HOTA_change_percentage_points": 4.404495978064224
+    },
+    "rmot_single800": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_runs/full_history_refresh600_controls_v1/old_rmot_single800",
+      "checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_history_refresh600_old_v1/ckpt-step600",
+      "frames": 800,
+      "native_candidates": 1412,
+      "same_exact_all_candidates": true,
+      "parser_rejected_frame_count": 36,
+      "official_metrics": {
+        "HOTA": 0.030716831494468893,
+        "DetA": 0.019099156440457205,
+        "AssA": 0.05059271077437668,
+        "IDF1": 0.024844720496894408,
+        "IDSW": 0,
+        "FP": 141,
+        "FN": 16
+      },
+      "base_novel": null,
+      "GT_and_future_frames_not_read_by_runtime": true,
+      "actual_end_to_end_FPS": null,
+      "baseline_run": "outputs/groundjev/multitask_runs/full_rmot_shared600_v1/single800_native600",
+      "baseline_metrics": {
+        "HOTA": 0.025062491270483527,
+        "DetA": 0.013810018467220683,
+        "AssA": 0.04678362573099415,
+        "IDF1": 0.020618556701030927,
+        "IDSW": 0,
+        "FP": 78,
+        "FN": 17
+      },
+      "raw_prediction_bytes_exactly_reconstructed_from_every_frame_output": true,
+      "raw_predictions_gzip_bytes": 1974,
+      "official_input_exactly_reconstructed": true,
+      "pinned_original_TrackEval_recomputed_metrics_exact": true,
+      "HOTA_change_percentage_points": 0.5654340223985366
+    },
+    "rmot_multi800": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_runs/full_history_refresh600_controls_v1/old_rmot_multi800",
+      "checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_history_refresh600_old_v1/ckpt-step600",
+      "frames": 800,
+      "native_candidates": 2208,
+      "same_exact_all_candidates": true,
+      "parser_rejected_frame_count": 19,
+      "official_metrics": {
+        "HOTA": 0.06682521336646213,
+        "DetA": 0.11551031765273392,
+        "AssA": 0.03893476890942158,
+        "IDF1": 0.0626486915146709,
+        "IDSW": 197,
+        "FP": 131,
+        "FN": 1833
+      },
+      "base_novel": null,
+      "GT_and_future_frames_not_read_by_runtime": true,
+      "actual_end_to_end_FPS": null,
+      "baseline_run": "outputs/groundjev/multitask_runs/full_rmot_shared600_v1/multi800_native600",
+      "baseline_metrics": {
+        "HOTA": 0.06740006654792335,
+        "DetA": 0.10547747538761035,
+        "AssA": 0.04328675321004638,
+        "IDF1": 0.06693227091633466,
+        "IDSW": 185,
+        "FP": 145,
+        "FN": 1859
+      },
+      "raw_prediction_bytes_exactly_reconstructed_from_every_frame_output": true,
+      "raw_predictions_gzip_bytes": 5414,
+      "official_input_exactly_reconstructed": true,
+      "pinned_original_TrackEval_recomputed_metrics_exact": true,
+      "HOTA_change_percentage_points": -0.05748531814612212
+    }
+  },
+  "still_pending": [
+    "old_TAO40",
+    "refreshed_all_four_scopes"
+  ],
+  "same_checkpoint_all_tasks": true,
+  "full_goal_complete": false,
+  "ordinary_model_performance_achieved": false,
+  "global_all_task_improvement_proven": false,
+  "additional_diagnostic_reserve_bytes": 1048576,
+  "combined_registered_feature_upper_bytes": 26839845584,
+  "global_temporary_feature_budget_bytes": 26843545600
+}

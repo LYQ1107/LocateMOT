@@ -1,0 +1,20 @@
+Error importing BURST due to missing underlying dependency: No module named 'pycocotools'
+
+Evaluating 1 tracker(s) on 1 sequence(s) for 1 class(es) on MotChallenge2DBox dataset using the following metrics: HOTA, CLEAR, Identity, Count
+
+
+Evaluating groundjev
+
+
+Evaluating 1 tracker(s) on 1 sequence(s) for 1 class(es) on MotChallenge2DBox dataset using the following metrics: HOTA, CLEAR, Identity, Count
+
+
+Evaluating groundjev
+
+
+Evaluating 1 tracker(s) on 1 sequence(s) for 1 class(es) on MotChallenge2DBox dataset using the following metrics: HOTA, CLEAR, Identity, Count
+
+
+Evaluating groundjev
+
+{"status": "COMPLETED_OLD_FULL600_THREE_SCOPE_NATIVE_OUTPUT_AND_OFFICIAL_RECHECK", "actual_bytes": 231747, "HOTA_percent": {"mot_full1203": 13.1074920100655, "rmot_single800": 3.0716831494468892, "rmot_multi800": 6.6825213366462135}}
