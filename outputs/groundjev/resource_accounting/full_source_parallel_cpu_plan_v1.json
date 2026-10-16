@@ -1,0 +1,9 @@
+{
+  "status": "FOUR_CPU_FULL_NATIVE_PLAN_SMALL_ARRAY_AND_REPORTS_RESERVED",
+  "prior_registered_feature_upper_bytes": 26578985950,
+  "new_small_reports_cap_bytes": 4194304,
+  "combined_registered_feature_upper_bytes": 26583180254,
+  "global_temporary_feature_budget_bytes": 26843545600,
+  "new_native_candidate_or_ROI_archives": 0,
+  "existing_model_training_and_serial_plan_unchanged": true
+}

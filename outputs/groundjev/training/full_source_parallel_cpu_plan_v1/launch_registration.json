@@ -1,0 +1,30 @@
+{
+  "status": "CPU_ONLY_SERIAL_PARALLEL_GATE_THEN_FULL_NATIVE_PLAN",
+  "owner_pid": 3522736,
+  "owner_starttick": "49967650",
+  "command": [
+    "/data2/user/LocateMOT_GroundJEV/.venv-onejev-py310/bin/python",
+    "-m",
+    "torch.distributed.run",
+    "--standalone",
+    "--nproc-per-node",
+    "4",
+    "/data2/user/LocateMOT_GroundJEV/tools/groundjev/plan_full_source_cpu_distributed.py",
+    "--config",
+    "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/full_joint_source_epoch1_owner_v1/CPU_plan_config.json",
+    "--out",
+    "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/full_source_parallel_cpu_plan_v1"
+  ],
+  "actual_optimizer_updates": 0,
+  "existing_serial_owner_unchanged": true,
+  "child_pid": 3522737,
+  "original_blocking_session": 49885,
+  "source_serial_owner_session": 94290,
+  "source_serial_owner": [
+    3457625,
+    "49350320"
+  ],
+  "probe_status": "EXACT_SERIAL_FOUR_CPU_NATIVE_MM_TOKEN_LENGTH_PROBE_VALIDATED",
+  "full_plan_complete_at_registration": false,
+  "source_serial_owner_or_training_stopped": false
+}

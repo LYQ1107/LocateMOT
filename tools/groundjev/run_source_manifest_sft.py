@@ -47,6 +47,12 @@ def configure_source_manifest_sft(backend='reference'):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(add_help=False)
     parser.add_argument('--source-training-backend', choices=['reference','fla'], default='reference')
+    parser.add_argument('--validated-native-lengths', type=Path,
+        help='explicit completed native epoch-zero CPU input report; same source/seed/rendering required')
     options, remaining = parser.parse_known_args()
     sys.argv = [sys.argv[0], *remaining]
-    raise SystemExit(configure_source_manifest_sft(options.source_training_backend).main())
+    stateful = configure_source_manifest_sft(options.source_training_backend)
+    if options.validated_native_lengths:
+        from tools.groundjev.validated_native_lengths import install
+        install(options.validated_native_lengths, stateful, ROOT)
+    raise SystemExit(stateful.main())

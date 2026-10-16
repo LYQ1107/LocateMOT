@@ -1,0 +1,29 @@
+{
+  "status": "REAL_EIGHT_NATIVE_MM_ROWS_CACHED_LENGTHS_AND_FOUR_RANK_PLAN_EXACT",
+  "rows": 8,
+  "rows_per_task": {
+    "identity": 1,
+    "assigned_identity_memory_update": 1,
+    "lifecycle": 1,
+    "reliability": 1,
+    "query_membership": 2,
+    "category_group": 1,
+    "category_leaf": 1
+  },
+  "native_lengths": [
+    19423,
+    26038,
+    8124,
+    18566,
+    1061,
+    984,
+    4184,
+    1745
+  ],
+  "all_lengths_batches_and_rank_step_assignments_exact": true,
+  "changed_seed_rejected": true,
+  "actual_optimizer_updates": 0,
+  "model_loaded": false,
+  "cuda_initialized": false,
+  "full459027_check_not_claimed": true
+}

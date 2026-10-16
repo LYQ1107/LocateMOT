@@ -14,7 +14,7 @@ ROOT=Path(__file__).resolve().parents[2]
 sys.path[:0]=[str(ROOT),str(ROOT/'external/OneJev')]
 
 
-def cpu_plan(config, report):
+def cpu_plan(config, report, validated_lengths=None):
     import torch
     from tools.groundjev.run_source_manifest_sft import configure_source_manifest_sft
     from train import sft
@@ -22,6 +22,10 @@ def cpu_plan(config, report):
     stateful=configure_source_manifest_sft('fla')
     def capture(bundle, rows, args, world):
         started=time.perf_counter()
+        if validated_lengths:
+            from tools.groundjev.validated_native_lengths import measured_lengths
+            verified=measured_lengths(validated_lengths,rows,args,0,4,ROOT)
+            sft.token_lengths=lambda bundle,rows,args,epoch,rank=0,world=1: verified
         batches,dropped,lengths=sft.plan_epoch(bundle,rows,args,0,0,1)
         steps=sft.plan_steps(batches,lengths,4,args.accum_rows)
         assert world==1 and dropped==0 and len(rows)>=456062
@@ -46,6 +50,8 @@ def cpu_plan(config, report):
             media_path_counts_are_filtered_row_exposure_not_raw_scope_counts=True,
             CPU_plan_elapsed_s=time.perf_counter()-started,actual_optimizer_updates=0,
             full_goal_complete=False)
+        if validated_lengths:
+            result['explicit_completed_native_length_report']=str(validated_lengths.resolve())
         report.write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result),flush=True)
         return 0
     sft.plan_only=capture
@@ -59,8 +65,10 @@ def main():
     parser=argparse.ArgumentParser();parser.add_argument('--plan',type=Path)
     parser.add_argument('--out',type=Path);parser.add_argument('--cpu-plan',type=Path)
     parser.add_argument('--report',type=Path)
+    parser.add_argument('--validated-native-lengths',type=Path,
+        help='explicit completed full native CPU plan; validate same inputs before reuse')
     args=parser.parse_args()
-    if args.cpu_plan:return cpu_plan(args.cpu_plan,args.report)
+    if args.cpu_plan:return cpu_plan(args.cpu_plan,args.report,args.validated_native_lengths)
     plan=json.loads(args.plan.read_text());args.out=args.out.resolve();args.out.mkdir(parents=True,exist_ok=False)
     (args.out/'registration.json').write_text(json.dumps(plan,indent=2)+'\n')
     proof=json.loads((ROOT/plan['distributed_validation']/'result.json').read_text())
@@ -75,6 +83,8 @@ def main():
         owner_starttick=Path('/proc/self/stat').read_text().rsplit(')',1)[1].split()[19],
         owner_git_commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
         plan=str(args.plan),completed={},actual_training_updates=0,full_goal_complete=False)
+    if args.validated_native_lengths:
+        state['explicit_completed_native_length_report']=str(args.validated_native_lengths.resolve())
     def save():
         tmp=args.out/'owner_state.tmp';tmp.write_text(json.dumps(state,indent=2)+'\n');tmp.replace(args.out/'owner_state.json')
         print(json.dumps(dict(status=state['status'],completed=list(state['completed']))),flush=True)
@@ -107,7 +117,10 @@ def main():
         cpu_config=dict(config,device='cpu',name='full_joint_CPU_plan',runs_dir=str(args.out/'CPU_plan'))
         cpu_path=args.out/'CPU_plan_config.json';cpu_path.write_text(json.dumps(cpu_config,indent=2)+'\n')
         report_path=args.out/'CPU_plan_validation.json'
-        run('FULL_NATIVE_CPU_PLAN',[python,str(Path(__file__).resolve()),'--cpu-plan',str(cpu_path),'--report',str(report_path)])
+        cpu_command=[python,str(Path(__file__).resolve()),'--cpu-plan',str(cpu_path),'--report',str(report_path)]
+        if args.validated_native_lengths:
+            cpu_command+=['--validated-native-lengths',str(args.validated_native_lengths.resolve())]
+        run('FULL_NATIVE_CPU_PLAN' if not args.validated_native_lengths else 'REVALIDATE_COMPLETED_NATIVE_CPU_PLAN',cpu_command)
         measured=json.loads(report_path.read_text());config['max_steps']=measured['planned_updates']
         config_path=args.out/'training_config.json';config_path.write_text(json.dumps(config,indent=2)+'\n')
         state['completed']['full_CPU_plan']=measured;save()
@@ -118,11 +131,14 @@ def main():
             if min(free)>=plan['launch_min_free_MiB_each']:break
             time.sleep(20)
         state['launch_free_memory_MiB']=free
-        run('FULL_JOINT_FOUR_GPU_TRAINING',['python3','tools/groundjev/run_with_resources.py','--gpus','4','5','6','7','--',
+        training_command=['python3','tools/groundjev/run_with_resources.py','--gpus','4','5','6','7','--',
             python,'-m','torch.distributed.run','--standalone','--nproc-per-node','4',
             'tools/groundjev/run_source_manifest_sft.py','--source-training-backend','fla','--config',str(config_path),
             '--paired-index-shuffle','--distributed-sft','--deterministic-execution','--seed-global-rngs',
-            '--initial-training-state',str(ROOT/plan['initial_training_state']),'--expected-initial-step','600'])
+            '--initial-training-state',str(ROOT/plan['initial_training_state']),'--expected-initial-step','600']
+        if args.validated_native_lengths:
+            training_command+=['--validated-native-lengths',str(args.validated_native_lengths.resolve())]
+        run('FULL_JOINT_FOUR_GPU_TRAINING',training_command)
         records=[json.loads(l) for l in (training/'log.jsonl').open()]
         done=next(r for r in records if r.get('event')=='done')
         assert done['steps']==config['max_steps'] and done['examples']==manifest['rows']

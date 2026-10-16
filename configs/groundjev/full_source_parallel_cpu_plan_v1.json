@@ -1,0 +1,23 @@
+{
+  "name": "Exact four-process CPU native full-source planning",
+  "project_root": "/data2/user/LocateMOT",
+  "worktree": "/data2/user/LocateMOT_GroundJEV",
+  "source_config": "outputs/groundjev/training/full_joint_source_epoch1_owner_v1/CPU_plan_config.json",
+  "output": "outputs/groundjev/training/full_source_parallel_cpu_plan_v1",
+  "physical_gpus": [],
+  "CPU_workers": 4,
+  "CPU_threads_per_worker": 4,
+  "full_rows": 459027,
+  "seed": 0,
+  "epoch": 0,
+  "global_rows_per_update": 16,
+  "first_gate": "Compare original serial and four-rank native token_lengths exactly on first/middle/last actual multimodal rows from every immutable source; then run original native function on all rows",
+  "native_render_seed_and_media_counter_unchanged": true,
+  "all_rows_required": true,
+  "dropped_rows_required": 0,
+  "training_or_existing_serial_owner_modified": false,
+  "actual_optimizer_updates": 0,
+  "new_feature_archive_bytes": 0,
+  "small_length_array_and_reports_cap_bytes": 4194304,
+  "full_goal_complete": false
+}
