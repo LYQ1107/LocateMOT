@@ -1,3 +1,42 @@
+## Native shared6000 RMOT gains verified; DT still regresses — 2026-10-16
+
+All nine original native OneJev before/default/assigned-write controls have
+completed and passed full frame/candidate/rejection/checkpoint/video integrity
+validation on DT1203 and both RMOT800 scopes. This is genuine pretrained
+752M language-model adaptation, separate from Compact projection/rank controls.
+
+|HOTA %|Native600 before|Shared6000 default|Same6000 assigned-ID write|
+|---|---:|---:|---:|
+|DT1203|8.7030|7.8406|7.8406|
+|RMOT single800|2.5062|3.3287|3.4052|
+|RMOT multi800|6.7400|15.6144|15.8936|
+
+MultiRMOT IDF1%=6.6932→15.6747→16.7555; default→assigned FP467→457,
+FN1297→1303 and IDSW475→471 (before185). Thus recall/precision/identity
+tradeoffs remain, and improved HOTA does not imply fewer switches than before.
+SingleRMOT contains only18GTboxes and remains poor; do not generalize.
+
+The assigned-ID write mechanism has real same-causal-input threshold effects
+on RMOT:61calls/78existing assignments/5gate flips on single,620/1190/7 on
+multi. Single has4HOLD→UPDATE/1UPDATE→HOLD, multi1/6. Each compares observation
+and assigned-identity probabilities within the same assigned arm before memory
+writes, not probabilities from divergent default histories. Exported output
+frames are exact796/800(single) and388/800(multi); DT remains1203/1203exact,
+1350calls/4940assignments/0gateflips. The earlier statement of no assigned-write
+benefit applies to DT; both RMOT scopes now show small measured gains. Do not
+select different checkpoints/policies by task or promote a common model yet.
+TAO controls remain owned/pending behind their registered original baseline;
+short/long foundation stages still wait with0newupdates. Original owners,
+source input, thresholds and all failed samples are unchanged.
+
+Receipt: `training/broader_shared6000_fla_owner_v2/first_three_native_scopes_completed.json`.
+The new posthoc freezer first failed on normal lifecycle events without a
+candidate field; failed code/receipt are preserved alongside it. The corrected
+audit includes lifecycle events in signatures and limits write-probability
+comparisons to candidate events, then passes all9original units/every event.
+No model, inference output, metric or experimental acceptance rule changed.
+No full dataset or ordinary-model parity, Ground+One joint gradient or long-BPTT.
+
 ## Appearance rank controls measured; native graph candidate rejected — 2026-10-16
 
 The registered rank intervention is implemented and passed actual67group

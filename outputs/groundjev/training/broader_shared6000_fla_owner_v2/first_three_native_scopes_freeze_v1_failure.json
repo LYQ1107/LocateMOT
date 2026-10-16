@@ -1,0 +1,18 @@
+{
+  "status": "POSTHOC_FREEZE_TOOL_V1_FAILED_BEFORE_PUBLICATION",
+  "terminal_session": 90288,
+  "exit_code": 1,
+  "first_actionable_root_cause": "Audit assumed every tracker event has a candidate and decision. Normal LOST/TERMINATE lifecycle events have track_id/action/lifecycle_decision and no candidate.",
+  "first_verified_real_example": {
+    "run": "controls/assigned_identity_mot_full1203",
+    "frame": 15,
+    "track_id": 2,
+    "action": "LOST"
+  },
+  "original_inference_training_predictions_and_metrics_modified": false,
+  "new_GPU_or_optimizer_updates": 0,
+  "failed_code_snapshot": "outputs/groundjev/training/broader_shared6000_fla_owner_v2/failed_freeze_native_shared_controls_v1.py",
+  "fix": "Include candidate=None lifecycle records in event signatures; only candidate observation events participate in assigned memory-write probability audit.",
+  "retry_scope": "All original nine completed native units and every actual event; no frames, candidates, metrics or event types skipped from their respective comparisons.",
+  "full_goal_complete": false
+}

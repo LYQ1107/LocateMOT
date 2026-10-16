@@ -38,8 +38,13 @@ The balanced24k/6000-step study has separately **completed6000updates** and
 full9,029,140,633-byte FP32/Adam/RNG state and native multimodal reload passed
 validation. All752,393,024FP32 parameters and1,504,786,048Adam moment elements
 are finite, and optimizer/scheduler/cursor all match6000. Actual first-media
-coverage is1056MOT/72RMOT/3227OVMOT source paths. Tracking controls have started;
-new tracking gains remain pending. Evidence:
+coverage is1056MOT/72RMOT/3227OVMOT source paths. All9DT/RMOTbefore/default/
+assigned-write controls are now complete: HOTA% DT8.7030→7.8406→7.8406,
+singleRMOT2.5062→3.3287→3.4052, multiRMOT6.7400→15.6144→15.8936.
+RMOT assigned-write probability changes cross the original.5gate5/7times;
+DT0. These are measured gains on two registered RMOT videos with DT regression,
+not three-task ordinary-model parity. TAO remains pending. Evidence:
+[all9official units and same-state write audit](../../outputs/groundjev/training/broader_shared6000_fla_owner_v2/first_three_native_scopes_completed.json),
 [the6000 snapshot](../../outputs/groundjev/training/shared6000_actual6000_snapshot_v1/validation.json).
 
 The full-source epoch is incomplete (latest frozen observation1700updates/27200questions,

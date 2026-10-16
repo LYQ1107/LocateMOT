@@ -1,0 +1,231 @@
+{
+  "status": "NATIVE_SHARED6000_FIRST_THREE_FULL_SCOPES_ALL9_UNITS_VALIDATED",
+  "completed": {
+    "before_mot_full1203": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_full1203_controls_v2_wait_fix/native_mot_full1203",
+      "checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_unified600_native_v2/ckpt-step600",
+      "frames": 1203,
+      "native_candidates": 13664,
+      "same_exact_all_candidates": true,
+      "parser_rejected_frame_count": 27,
+      "official_metrics": {
+        "HOTA": 0.08702996032001276,
+        "DetA": 0.3010472804984555,
+        "AssA": 0.025168031826705423,
+        "IDF1": 0.05825958702064897,
+        "IDSW": 3631,
+        "FP": 7516,
+        "FN": 416
+      },
+      "base_novel": null,
+      "GT_and_future_frames_not_read_by_runtime": true,
+      "actual_end_to_end_FPS": null
+    },
+    "default_mot_full1203": {
+      "run": "outputs/groundjev/training/broader_shared6000_fla_owner_v2/controls/default_mot_full1203",
+      "checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_broader_shared6000_fla_v2/ckpt-step6000",
+      "frames": 1203,
+      "native_candidates": 13664,
+      "same_exact_all_candidates": true,
+      "parser_rejected_frame_count": 27,
+      "official_metrics": {
+        "HOTA": 0.07840637122472686,
+        "DetA": 0.535783625838064,
+        "AssA": 0.01151776289280358,
+        "IDF1": 0.035341365461847386,
+        "IDSW": 2796,
+        "FP": 1605,
+        "FN": 817
+      },
+      "base_novel": null,
+      "GT_and_future_frames_not_read_by_runtime": true,
+      "actual_end_to_end_FPS": null
+    },
+    "assigned_identity_mot_full1203": {
+      "run": "outputs/groundjev/training/broader_shared6000_fla_owner_v2/controls/assigned_identity_mot_full1203",
+      "checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_broader_shared6000_fla_v2/ckpt-step6000",
+      "frames": 1203,
+      "native_candidates": 13664,
+      "same_exact_all_candidates": true,
+      "parser_rejected_frame_count": 27,
+      "official_metrics": {
+        "HOTA": 0.07840637122472686,
+        "DetA": 0.535783625838064,
+        "AssA": 0.01151776289280358,
+        "IDF1": 0.035341365461847386,
+        "IDSW": 2796,
+        "FP": 1605,
+        "FN": 817
+      },
+      "base_novel": null,
+      "GT_and_future_frames_not_read_by_runtime": true,
+      "actual_end_to_end_FPS": null
+    },
+    "before_rmot_single800": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_runs/full_rmot_shared600_v1/single800_native600",
+      "checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_unified600_native_v2/ckpt-step600",
+      "frames": 800,
+      "native_candidates": 1412,
+      "same_exact_all_candidates": true,
+      "parser_rejected_frame_count": 36,
+      "official_metrics": {
+        "HOTA": 0.025062491270483527,
+        "DetA": 0.013810018467220683,
+        "AssA": 0.04678362573099415,
+        "IDF1": 0.020618556701030927,
+        "IDSW": 0,
+        "FP": 78,
+        "FN": 17
+      },
+      "base_novel": null,
+      "GT_and_future_frames_not_read_by_runtime": true,
+      "actual_end_to_end_FPS": null
+    },
+    "default_rmot_single800": {
+      "run": "outputs/groundjev/training/broader_shared6000_fla_owner_v2/controls/default_rmot_single800",
+      "checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_broader_shared6000_fla_v2/ckpt-step6000",
+      "frames": 800,
+      "native_candidates": 1412,
+      "same_exact_all_candidates": true,
+      "parser_rejected_frame_count": 36,
+      "official_metrics": {
+        "HOTA": 0.03328713326493031,
+        "DetA": 0.021052631578947368,
+        "AssA": 0.05263157894736842,
+        "IDF1": 0.043478260869565216,
+        "IDSW": 0,
+        "FP": 27,
+        "FN": 17
+      },
+      "base_novel": null,
+      "GT_and_future_frames_not_read_by_runtime": true,
+      "actual_end_to_end_FPS": null
+    },
+    "assigned_identity_rmot_single800": {
+      "run": "outputs/groundjev/training/broader_shared6000_fla_owner_v2/controls/assigned_identity_rmot_single800",
+      "checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_broader_shared6000_fla_v2/ckpt-step6000",
+      "frames": 800,
+      "native_candidates": 1412,
+      "same_exact_all_candidates": true,
+      "parser_rejected_frame_count": 36,
+      "official_metrics": {
+        "HOTA": 0.03405245469582266,
+        "DetA": 0.022031823745410035,
+        "AssA": 0.05263157894736842,
+        "IDF1": 0.045454545454545456,
+        "IDSW": 0,
+        "FP": 25,
+        "FN": 17
+      },
+      "base_novel": null,
+      "GT_and_future_frames_not_read_by_runtime": true,
+      "actual_end_to_end_FPS": null
+    },
+    "before_rmot_multi800": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_runs/full_rmot_shared600_v1/multi800_native600",
+      "checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_unified600_native_v2/ckpt-step600",
+      "frames": 800,
+      "native_candidates": 2208,
+      "same_exact_all_candidates": true,
+      "parser_rejected_frame_count": 19,
+      "official_metrics": {
+        "HOTA": 0.06740006654792335,
+        "DetA": 0.10547747538761035,
+        "AssA": 0.04328675321004638,
+        "IDF1": 0.06693227091633466,
+        "IDSW": 185,
+        "FP": 145,
+        "FN": 1859
+      },
+      "base_novel": null,
+      "GT_and_future_frames_not_read_by_runtime": true,
+      "actual_end_to_end_FPS": null
+    },
+    "default_rmot_multi800": {
+      "run": "outputs/groundjev/training/broader_shared6000_fla_owner_v2/controls/default_rmot_multi800",
+      "checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_broader_shared6000_fla_v2/ckpt-step6000",
+      "frames": 800,
+      "native_candidates": 2208,
+      "same_exact_all_candidates": true,
+      "parser_rejected_frame_count": 19,
+      "official_metrics": {
+        "HOTA": 0.1561436958045112,
+        "DetA": 0.2775703277107285,
+        "AssA": 0.08894789907425209,
+        "IDF1": 0.1567472009428403,
+        "IDSW": 475,
+        "FP": 467,
+        "FN": 1297
+      },
+      "base_novel": null,
+      "GT_and_future_frames_not_read_by_runtime": true,
+      "actual_end_to_end_FPS": null
+    },
+    "assigned_identity_rmot_multi800": {
+      "run": "outputs/groundjev/training/broader_shared6000_fla_owner_v2/controls/assigned_identity_rmot_multi800",
+      "checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_broader_shared6000_fla_v2/ckpt-step6000",
+      "frames": 800,
+      "native_candidates": 2208,
+      "same_exact_all_candidates": true,
+      "parser_rejected_frame_count": 19,
+      "official_metrics": {
+        "HOTA": 0.1589356910079249,
+        "DetA": 0.2762127215272112,
+        "AssA": 0.09236119719553072,
+        "IDF1": 0.167554766133807,
+        "IDSW": 471,
+        "FP": 457,
+        "FN": 1303
+      },
+      "base_novel": null,
+      "GT_and_future_frames_not_read_by_runtime": true,
+      "actual_end_to_end_FPS": null
+    }
+  },
+  "comparisons": {
+    "mot_full1203": {
+      "frames": 1203,
+      "exact_exported_output_frames": 1203,
+      "exact_event_assignment_frames": 1203,
+      "assigned_identity_calls": 1350,
+      "existing_assignments_requeried": 4940,
+      "changed_same_state_update_probabilities": 4940,
+      "update_gate_flips_at_half": 0,
+      "observation_hold_to_assigned_update": 0,
+      "observation_update_to_assigned_hold": 0,
+      "max_absolute_same_state_update_probability_change": 0.018701999999999996,
+      "paired_official_metrics_equal": true
+    },
+    "rmot_single800": {
+      "frames": 800,
+      "exact_exported_output_frames": 796,
+      "exact_event_assignment_frames": 510,
+      "assigned_identity_calls": 61,
+      "existing_assignments_requeried": 78,
+      "changed_same_state_update_probabilities": 78,
+      "update_gate_flips_at_half": 5,
+      "observation_hold_to_assigned_update": 4,
+      "observation_update_to_assigned_hold": 1,
+      "max_absolute_same_state_update_probability_change": 0.57897,
+      "paired_official_metrics_equal": false
+    },
+    "rmot_multi800": {
+      "frames": 800,
+      "exact_exported_output_frames": 388,
+      "exact_event_assignment_frames": 262,
+      "assigned_identity_calls": 620,
+      "existing_assignments_requeried": 1190,
+      "changed_same_state_update_probabilities": 1190,
+      "update_gate_flips_at_half": 7,
+      "observation_hold_to_assigned_update": 1,
+      "observation_update_to_assigned_hold": 6,
+      "max_absolute_same_state_update_probability_change": 0.50121,
+      "paired_official_metrics_equal": false
+    }
+  },
+  "same_state_update_audit": "Compare observation versus assigned-identity probability within the same assigned arm pre-write causal input; future histories may differ from default.",
+  "scope": "Original registered DT1203 and RMOTsingle800/multi800, same final6000 shared checkpoint; TAO remains pending. No task-specific checkpoint/threshold selection, no full dataset or ordinary-model parity claim.",
+  "new_GPU_or_optimizer_updates": 0,
+  "original_owners_or_protocol_changed": false,
+  "full_goal_complete": false
+}
