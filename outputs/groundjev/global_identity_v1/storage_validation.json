@@ -1,0 +1,25 @@
+{
+  "bytes": {
+    "protected_scientific_predictions_and_identity_states": 61359565170,
+    "conservative_other_metadata_media_and_logs": 12384405378,
+    "other": 7347525180,
+    "temporary_feature_arrays": 2851792014,
+    "protected_model_and_optimizer_artifacts": 237407053689
+  },
+  "files": {
+    "protected_scientific_predictions_and_identity_states": 1626,
+    "conservative_other_metadata_media_and_logs": 8216,
+    "other": 789,
+    "temporary_feature_arrays": 6527,
+    "protected_model_and_optimizer_artifacts": 625
+  },
+  "conservative_temporary_total": 22583722572,
+  "scope": "All source GroundJEV outputs counted once per inode, no symlink traversal. ALL non-protected files count conservatively, including inline candidate features, curricula, logs, images, videos and unclassified files. Scientific predictions/identity states and model/optimizer artifacts are enumerated separately, never deleted.",
+  "existing_registered_upper_bytes": 26840605662,
+  "new_stage_reservation_bytes": 2097152,
+  "combined_registered_upper_bytes": 26842702814,
+  "limit_bytes": 26843545600,
+  "old_files_deleted_or_modified": false,
+  "new_GPU_processes": 0,
+  "actual_conservative_headroom_bytes": 4259823028
+}

@@ -76,6 +76,8 @@ def main():
     parser.add_argument('--checkpoint', type=Path, default=ROOT / 'models/OneJev-0.8B')
     parser.add_argument('--backend', choices=['simple', 'simple_native', 'simple_temporal', 'full', 'compact'], default='full')
     parser.add_argument('--compact-device',choices=['cpu','cuda:0'],default='cuda:0',help='explicit device for trained Compact replay; report actual device, no detector E2E claim')
+    parser.add_argument('--global-identity',action='store_true',help='isolated Global Identity Compact checkpoint')
+    parser.add_argument('--global-memory-policy',choices=['original','always','confidence','assigned'],default='original')
     parser.add_argument('--compact-shortlist',type=int,choices=[32,64,128],default=32,
                         help='registered context-size intervention; larger values exceed the original 32-ID training context')
     parser.add_argument('--compact-shortlist-policy',choices=['geometry','hybrid16_16'],default='geometry')
@@ -165,7 +167,12 @@ def main():
             import torch
             torch.set_num_threads(4)
         from locatemot.groundjev.compact import CompactDecision
-        decision=CompactDecision(args.checkpoint,device=args.compact_device,shortlist=args.compact_shortlist,memory_feature_view=args.memory_feature_view,shortlist_policy=args.compact_shortlist_policy,candidate_grouping=args.compact_candidate_grouping)
+        if args.global_identity:
+            assert args.compact_device=='cpu' and args.compact_association_policy=='learned' and args.compact_auxiliary_policy=='learned'
+            from locatemot.groundjev.global_identity_runtime import GlobalIdentityDecision
+            decision=GlobalIdentityDecision(args.checkpoint,args.global_memory_policy)
+        else:
+            decision=CompactDecision(args.checkpoint,device=args.compact_device,shortlist=args.compact_shortlist,memory_feature_view=args.memory_feature_view,shortlist_policy=args.compact_shortlist_policy,candidate_grouping=args.compact_candidate_grouping)
         if args.compact_association_policy=='rank_appearance':
             from locatemot.groundjev.appearance_ranking import AppearanceRankDecision
             decision=AppearanceRankDecision(decision,args.appearance_projection_checkpoint,args.appearance_ranking_temperature)
@@ -191,7 +198,11 @@ def main():
             from locatemot.groundjev.category_replay import CausalNativeCategoryReplay
             head = category_replay = CausalNativeCategoryReplay(args.category_replay, args.checkpoint, manifest)
         decision = CategorizedDecision(decision, head)
-    tracker = OnlineTracker(decision,lost_seconds=args.lost_seconds,memory_policy=args.memory_policy,ema_alpha=args.ema_alpha,
+    tracker_type=OnlineTracker
+    if args.global_identity:
+        from locatemot.groundjev.global_identity_runtime import GlobalIdentityTracker
+        tracker_type=GlobalIdentityTracker
+    tracker = tracker_type(decision,lost_seconds=args.lost_seconds,memory_policy=args.memory_policy,ema_alpha=args.ema_alpha,
                             lifecycle_termination_policy=args.lifecycle_termination_policy,no_match_policy=args.no_match_policy)
     def write_memory(stem):
         snapshot=tracker.state_dict()
@@ -430,6 +441,12 @@ def main():
         result.update(category_replay=category_replay.summary(),
             timing_limitations='category probabilities reused from identical current images/candidates/checkpoint; replay timing is not comparable to fresh native classification')
     result['peak_decision_process_rss_bytes'] = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss*1024
+    if args.global_identity:
+        result.update(global_identity=True,global_memory_policy=args.global_memory_policy,
+            lifecycle_termination_policy='timeout_only',same_physical_checkpoint_for_all_tasks=True,
+            frozen_semantic_checkpoint=decision.semantic.checkpoint,
+            frozen_semantic_parameters=sum(p.numel() for p in decision.semantic.model.parameters()),
+            physical_cost_complexity='O(NM) association, O(NK) sparse competition; no NxN candidate attention bank')
     if args.backend=='compact':
         result['trainable_compact_core_parameters'] = sum(p.numel() for p in decision.model.parameters())
         if decision.model.semantic:
