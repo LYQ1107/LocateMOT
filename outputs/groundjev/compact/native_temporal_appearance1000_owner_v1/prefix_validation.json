@@ -1,0 +1,9 @@
+{
+  "status": "REAL_TEMPORAL_IDENTITY_8_VS_4_PLUS_4_RESUME_BIT_EXACT",
+  "actual_steps": 8,
+  "actual_ROI_exposures_each_branch": 202,
+  "all_model_Adam_RNG_sampler_and_exposure_counters_exact": true,
+  "full1000_training_complete": false,
+  "new_GPU_processes": 0,
+  "full_goal_complete": false
+}

@@ -1,3 +1,58 @@
+## Canonical physical stream gains on TAO40; RMOT regresses — 2026-10-16
+
+Paired physical-factorization studies completed four unchanged scopes; natural
+MOT20full1657 remains running. Same final8000 models, no task-specific choice:
+
+|Scope/metric|Original|Coupled heads8000|Canonical heads8000|Canonical untrained|
+|---|---:|---:|---:|---:|
+|DT1203 HOTA %|26.3157|26.3157|26.3157|26.3157|
+|RMOT single800 HOTA %|6.0247|0.0000|3.1383|2.0050|
+|RMOT multi800 HOTA %|19.8019|19.1420|12.0955|11.7532|
+|Raw TAO40 TETA|14.517|14.871|31.323|26.125|
+
+TAO canonical LocA8.088→33.075 and AssocA5.1478→35.637 are shared with the
+untrained canonical intervention; semantic training raises its ClsA9.6637→25.259
+(original30.314). NovelClsA remains0 in all arms; the NovelTETA gain5.679→28.637
+comes from localization/association, not Novel category recognition. This is
+an isolated registered40frame component result, not fullTAO or three-task
+ordinary-model performance. The physical intervention trades recall84.833→55.208
+for precision8.2072→45.298 and alters trajectories. RMOT regressions prevent
+promotion. Receipt: `physical_factorization_pair8000_v1/first_four_scopes_completed.json`.
+
+The native-relation residual final model also completed naturalMOT20full1657:
+HOTA7.4316→19.5518%, IDF1=6.1474→17.4310%, FP463→5592, FN286273→159383,
+IDSW2060→30874. Detection gains coexist with strong identity fragmentation;
+final residual-disabled MOT20 ablation still runs. Its DT/single-RMOT regressions
+remain. Receipt: `native_relation_head8000_owner_v1/all_five_enabled_scopes_ablation_last_pending.json`.
+
+## Cross-frame native identity representation trained; causal controls running — 2026-10-16
+
+A task/query-independent341,184parameter projection was trained on immutable
+TRAIN registry GT identities, independent of actor birth aliases/actions:
+43units/1056frames,48051raw candidates/40059matched observations,887IDs,
+873cross-frameIDs and14singletons preserved. All43units are contrastive-eligible.
+No labels, original corpus or validation samples were changed. Same-video
+supervised contrastive sampling uses up-to8IDs/up-to4distinctframes each.
+The fixed1000-step seed0 recipe consumed27797ROI exposures across all43units
+in36.587s; model/Adam finite/steps exact, export reload exact. Actual8vs4+4
+model/Adam/Torch/sampler/exposure state matches bit exactly. These are short
+TRAIN clips and small projection training, not long-BPTT or foundation SFT.
+
+On67real native-feature groups, published default affinity/semantic outputs
+remain exact;16572projected pair scores match the registered fusion formula
+exactly and semantic outputs remain unchanged. Geometry was consistently
+rescaled for this representative formula regression, not full-video parity.
+Original/native-cosine/random-initial/final1000 controls now run all five
+complete original scopes with unchanged fixedfusion/NEW/IGNORE/TTL and scorers.
+They are affinity scores, not native JEV probabilities. No tracking gain yet.
+Reference metadata104862bytes, no new persistent ROI bank or GPU. A48MiB
+reservation includes16MiBmetadata and32MiBbounded streaming buffers, raising
+feature upper to26,769,302,494<25GiB(26,843,545,600). Model/Adam/scientific final
+identity states remain separately protected. Original native750M four-GPU
+joint training, native6000controls, Ground retention and legacy workers continue.
+Evidence: `native_temporal_identity_refs_v1/summary.json` and
+`native_temporal_appearance1000_owner_v1/{prefix_validation,completed_training_summary,runtime_validation/validation}.json`.
+
 ## Paired factorization training complete; native final-ID DT control has no gain — 2026-10-16
 
 Both independently trained semantic-head-only8000-step models completed all

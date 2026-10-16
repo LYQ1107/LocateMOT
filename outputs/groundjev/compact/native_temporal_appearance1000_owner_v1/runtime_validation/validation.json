@@ -1,0 +1,15 @@
+{
+  "status": "REAL_NATIVE_TEMPORAL_APPEARANCE_CONTROL_REGRESSION_VALIDATED",
+  "observation_groups": 67,
+  "real_native_units": 61,
+  "projected_affinity_pairs_checked": 16572,
+  "all_native_default_scores_and_semantic_fields_exact": true,
+  "all_projected_semantic_fields_equal_native": true,
+  "fixed_fusion_formula_max_absolute_error": 0.0,
+  "initial_vs_trained_affinities_changed_groups": 61,
+  "geometry_scope": "Original real normalized boxes rescaled consistently to1000x1000 for formula checks; original native feature/semantic tensor inputs. Representative groups, not full causal video trajectory parity.",
+  "no_runtime_GT_or_query_input_to_projection": true,
+  "new_GPU_or_optimizer_updates": 0,
+  "official_tracking_gain_claimed": false,
+  "full_goal_complete": false
+}

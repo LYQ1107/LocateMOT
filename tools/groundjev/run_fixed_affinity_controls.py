@@ -99,6 +99,8 @@ def main():
                         command += ['--compact-device', 'cpu', '--checkpoint', str(checkpoint),
                             '--compact-association-policy', policies['association'], '--compact-auxiliary-policy', policies['auxiliary'],
                             '--compact-shortlist', str(shortlist), '--compact-shortlist-policy', shortlist_policy]
+                        if policies.get('appearance_projection_checkpoint'):
+                            command+=['--appearance-projection-checkpoint',str(ROOT/policies['appearance_projection_checkpoint'])]
                     run(name+'_INFERENCE', command)
                 scorer = 'evaluate_video.py' if m['task'] == 'mot' else 'evaluate_multitask.py'
                 if not reused:
@@ -126,6 +128,8 @@ def main():
                                 assert new['state']['decision_metadata'].get('native_relation_residual',False)==policies['native_relation_residual']
                             if 'canonical_physical_core' in policies:
                                 assert new['state']['decision_metadata'].get('canonical_physical_core',False)==policies['canonical_physical_core']
+                            if policies.get('appearance_projection_checkpoint'):
+                                assert Path(new['state']['decision_metadata']['appearance_projection_checkpoint']).resolve()==(ROOT/policies['appearance_projection_checkpoint']).resolve()
                         expected_rejection = bool(old['perception'].get('model_response_rejected', False))
                         assert bool(new['perception'].get('model_response_rejected', False)) == expected_rejection
                         if expected_rejection:

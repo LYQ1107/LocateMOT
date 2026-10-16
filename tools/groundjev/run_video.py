@@ -106,6 +106,7 @@ def main():
     parser.add_argument('--resume-from', type=Path, help='preserve source run and restore its completed causal prefix in this fresh output')
     parser.add_argument('--memory-policy',choices=['gated','always','ema','frame_only'],default='gated')
     parser.add_argument('--memory-feature-view',choices=['all','recent','ema'],default='all')
+    parser.add_argument('--appearance-projection-checkpoint',type=Path)
     parser.add_argument('--lost-seconds',type=float,default=3.)
     parser.add_argument('--ema-alpha',type=float,default=.1)
     parser.add_argument('--omit-replay-feature-vectors',action='store_true',help='retain shared source reference and all boxes/decisions; avoid duplicating input feature arrays')
@@ -117,6 +118,8 @@ def main():
     parser.add_argument('--memory-export-interval',type=int,default=1,
                         help='0 retains per-frame decisions for causal replay and writes only final full memory; default exports every frame')
     args = parser.parse_args()
+    if args.appearance_projection_checkpoint and (args.backend!='compact' or args.compact_association_policy!='fixed_iou_cosine'):
+        parser.error('appearance projection requires the registered Compact fixed IoU/cosine control')
     if args.out.exists() and any(args.out.iterdir()):
         parser.error('choose a fresh output directory to preserve existing experiment results')
     manifest = json.loads(args.video.read_text())
@@ -161,7 +164,8 @@ def main():
             from locatemot.groundjev.compact import CompactAffinityControl
             if not decision.model.semantic:
                 parser.error('matched semantic affinity control requires the trained shared semantic checkpoint')
-            decision=CompactAffinityControl(decision,args.compact_association_policy,args.compact_auxiliary_policy)
+            decision=CompactAffinityControl(decision,args.compact_association_policy,args.compact_auxiliary_policy,
+                appearance_projection_checkpoint=args.appearance_projection_checkpoint)
     else:
         decision_type = OneJevDecision
         if args.assigned_identity_updates:

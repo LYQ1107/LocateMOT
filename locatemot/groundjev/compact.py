@@ -208,24 +208,42 @@ class CompactDecision:
 
 
 class CompactAffinityControl:
-    """Fixed affinity with the identical frozen visual/text semantic functions.
+    """Affinity controls with frozen Compact semantic functions.
 
-    These are causal policy interventions, not separately trained baselines.
-    Fixed scores are never labeled native probabilities.
+    An explicit projection checkpoint selects the trained appearance control.
+    Fixed fusion scores are never labeled native probabilities.
     """
-    def __init__(self, learned, association='fixed_iou_cosine', auxiliary='fixed'):
+    def __init__(self, learned, association='fixed_iou_cosine', auxiliary='fixed',appearance_projection_checkpoint=None):
         self.learned = learned
         self.association, self.auxiliary = association, auxiliary
         self.model = learned.model
         self.text_features = learned.text_features
+        self.appearance_projector=None
+        if appearance_projection_checkpoint:
+            from locatemot.groundjev.temporal_appearance import AppearanceProjector
+            assert association=='fixed_iou_cosine'
+            self.appearance_projector=AppearanceProjector(appearance_projection_checkpoint)
 
     def decide(self, image, candidates, tracks, timestamp, specification):
         import numpy as np
         from locatemot.groundjev.decision import overlap
         decisions, life, metadata = self.learned.decide(image, candidates, tracks, timestamp, specification)
         by_id = {t.track_id: t for t in tracks}
+        projected_current=projected_memory=None
+        if self.appearance_projector is not None:
+            projected_current=self.appearance_projector([c['native_region_feature'] for c in candidates])
+            memories=[];identities=[]
+            used={identity for d in decisions for identity in d['shortlisted_ids']}
+            for track in tracks:
+                if track.track_id not in used:continue
+                view=[track.anchor_feature,track.recent_feature,track.long_feature]
+                if self.learned.memory_feature_view=='recent':view=[track.recent_feature]*3
+                elif self.learned.memory_feature_view=='ema':view=[track.long_feature]*3
+                memories.extend(view);identities.append(track.track_id)
+            vectors=self.appearance_projector(memories).reshape(len(identities),3,64)
+            projected_memory=dict(zip(identities,vectors))
         result = []
-        for candidate, decision in zip(candidates, decisions):
+        for index,(candidate, decision) in enumerate(zip(candidates, decisions)):
             row = dict(decision)
             if self.association != 'learned':
                 scores = {}
@@ -241,8 +259,11 @@ class CompactAffinityControl:
                             memories = [track.recent_feature]*3
                         elif self.learned.memory_feature_view == 'ema':
                             memories = [track.long_feature]*3
-                        cosine = sum(float(current @ np.asarray(memory, dtype=float) / max(
-                            np.linalg.norm(current)*np.linalg.norm(memory), 1e-12)) for memory in memories)/3
+                        if self.appearance_projector is not None:
+                            cosine=float((projected_memory[tid]@projected_current[index]).mean())
+                        else:
+                            cosine = sum(float(current @ np.asarray(memory, dtype=float) / max(
+                                np.linalg.norm(current)*np.linalg.norm(memory), 1e-12)) for memory in memories)/3
                         score = .5*iou+.5*max(0., cosine)
                     scores[str(tid)] = score
                 scores.update(NEW=.3, IGNORE=0.)
@@ -262,4 +283,9 @@ class CompactAffinityControl:
                 appearance_coefficient=.5 if self.association=='fixed_iou_cosine' else 0.)
         if self.auxiliary == 'fixed':
             life = {}
+        if self.appearance_projector is not None:
+            metadata.update(appearance_projection_checkpoint=self.appearance_projector.checkpoint,
+                appearance_projection_training_steps=self.appearance_projector.training_steps,appearance_coefficient=.5,
+                probability_source='Fixed IoU/projected-cosine affinity scores, not probabilities; native identity projection with frozen semantic heads.',
+                intervention_scope='Learned physical representation with fixed fusion; not native OneJev decoder probabilities or joint backbone optimization.')
         return result, life, metadata
