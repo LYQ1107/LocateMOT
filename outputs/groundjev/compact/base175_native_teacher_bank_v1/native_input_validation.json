@@ -1,0 +1,897 @@
+{
+  "status": "BASE175_REAL_NATIVE_ROI_INPUTS_AND_COMPACT_FORWARD_EXACT",
+  "unique_teacher_objects": 3649,
+  "unique_teacher_images": 3227,
+  "sampled_object_draws_preserved": 4000,
+  "supervised_Base_classes": 175,
+  "full_input_classes": 1203,
+  "counts": {
+    "exact_input_tensor_elements": 216205500,
+    "actual_teacher_objects_checked": 175
+  },
+  "representative_objects": [
+    {
+      "annotation_id": 36118,
+      "class_index": 0,
+      "feature_row": 271
+    },
+    {
+      "annotation_id": 341567,
+      "class_index": 2,
+      "feature_row": 2832
+    },
+    {
+      "annotation_id": 287406,
+      "class_index": 18,
+      "feature_row": 1933
+    },
+    {
+      "annotation_id": 295580,
+      "class_index": 31,
+      "feature_row": 2161
+    },
+    {
+      "annotation_id": 178394,
+      "class_index": 33,
+      "feature_row": 1201
+    },
+    {
+      "annotation_id": 97665,
+      "class_index": 34,
+      "feature_row": 802
+    },
+    {
+      "annotation_id": 293840,
+      "class_index": 35,
+      "feature_row": 2129
+    },
+    {
+      "annotation_id": 24791,
+      "class_index": 40,
+      "feature_row": 218
+    },
+    {
+      "annotation_id": 27467,
+      "class_index": 57,
+      "feature_row": 233
+    },
+    {
+      "annotation_id": 26941,
+      "class_index": 59,
+      "feature_row": 220
+    },
+    {
+      "annotation_id": 249814,
+      "class_index": 61,
+      "feature_row": 1668
+    },
+    {
+      "annotation_id": 292895,
+      "class_index": 76,
+      "feature_row": 2081
+    },
+    {
+      "annotation_id": 367109,
+      "class_index": 78,
+      "feature_row": 3071
+    },
+    {
+      "annotation_id": 102041,
+      "class_index": 79,
+      "feature_row": 853
+    },
+    {
+      "annotation_id": 34906,
+      "class_index": 89,
+      "feature_row": 246
+    },
+    {
+      "annotation_id": 29,
+      "class_index": 93,
+      "feature_row": 0
+    },
+    {
+      "annotation_id": 101534,
+      "class_index": 98,
+      "feature_row": 852
+    },
+    {
+      "annotation_id": 287718,
+      "class_index": 109,
+      "feature_row": 1960
+    },
+    {
+      "annotation_id": 48780,
+      "class_index": 117,
+      "feature_row": 343
+    },
+    {
+      "annotation_id": 39237,
+      "class_index": 126,
+      "feature_row": 338
+    },
+    {
+      "annotation_id": 302994,
+      "class_index": 128,
+      "feature_row": 2291
+    },
+    {
+      "annotation_id": 192,
+      "class_index": 132,
+      "feature_row": 3
+    },
+    {
+      "annotation_id": 88439,
+      "class_index": 138,
+      "feature_row": 684
+    },
+    {
+      "annotation_id": 293236,
+      "class_index": 152,
+      "feature_row": 2104
+    },
+    {
+      "annotation_id": 50134,
+      "class_index": 155,
+      "feature_row": 381
+    },
+    {
+      "annotation_id": 112123,
+      "class_index": 159,
+      "feature_row": 913
+    },
+    {
+      "annotation_id": 58746,
+      "class_index": 161,
+      "feature_row": 473
+    },
+    {
+      "annotation_id": 119840,
+      "class_index": 172,
+      "feature_row": 957
+    },
+    {
+      "annotation_id": 129963,
+      "class_index": 177,
+      "feature_row": 984
+    },
+    {
+      "annotation_id": 327486,
+      "class_index": 187,
+      "feature_row": 2720
+    },
+    {
+      "annotation_id": 7168,
+      "class_index": 188,
+      "feature_row": 50
+    },
+    {
+      "annotation_id": 19505,
+      "class_index": 191,
+      "feature_row": 143
+    },
+    {
+      "annotation_id": 198926,
+      "class_index": 193,
+      "feature_row": 1283
+    },
+    {
+      "annotation_id": 406142,
+      "class_index": 198,
+      "feature_row": 3556
+    },
+    {
+      "annotation_id": 314500,
+      "class_index": 203,
+      "feature_row": 2541
+    },
+    {
+      "annotation_id": 1302,
+      "class_index": 206,
+      "feature_row": 27
+    },
+    {
+      "annotation_id": 304801,
+      "class_index": 216,
+      "feature_row": 2330
+    },
+    {
+      "annotation_id": 27070,
+      "class_index": 219,
+      "feature_row": 226
+    },
+    {
+      "annotation_id": 19766,
+      "class_index": 224,
+      "feature_row": 171
+    },
+    {
+      "annotation_id": 90907,
+      "class_index": 229,
+      "feature_row": 723
+    },
+    {
+      "annotation_id": 86388,
+      "class_index": 231,
+      "feature_row": 656
+    },
+    {
+      "annotation_id": 234346,
+      "class_index": 240,
+      "feature_row": 1449
+    },
+    {
+      "annotation_id": 202897,
+      "class_index": 253,
+      "feature_row": 1342
+    },
+    {
+      "annotation_id": 175686,
+      "class_index": 258,
+      "feature_row": 1199
+    },
+    {
+      "annotation_id": 374417,
+      "class_index": 284,
+      "feature_row": 3206
+    },
+    {
+      "annotation_id": 309260,
+      "class_index": 285,
+      "feature_row": 2450
+    },
+    {
+      "annotation_id": 367845,
+      "class_index": 298,
+      "feature_row": 3095
+    },
+    {
+      "annotation_id": 37238,
+      "class_index": 310,
+      "feature_row": 323
+    },
+    {
+      "annotation_id": 99800,
+      "class_index": 337,
+      "feature_row": 806
+    },
+    {
+      "annotation_id": 11559,
+      "class_index": 343,
+      "feature_row": 86
+    },
+    {
+      "annotation_id": 195856,
+      "class_index": 349,
+      "feature_row": 1259
+    },
+    {
+      "annotation_id": 236528,
+      "class_index": 358,
+      "feature_row": 1512
+    },
+    {
+      "annotation_id": 379810,
+      "class_index": 368,
+      "feature_row": 3281
+    },
+    {
+      "annotation_id": 63283,
+      "class_index": 374,
+      "feature_row": 505
+    },
+    {
+      "annotation_id": 2469,
+      "class_index": 377,
+      "feature_row": 45
+    },
+    {
+      "annotation_id": 308097,
+      "class_index": 389,
+      "feature_row": 2424
+    },
+    {
+      "annotation_id": 330235,
+      "class_index": 392,
+      "feature_row": 2765
+    },
+    {
+      "annotation_id": 53649,
+      "class_index": 398,
+      "feature_row": 392
+    },
+    {
+      "annotation_id": 400914,
+      "class_index": 408,
+      "feature_row": 3520
+    },
+    {
+      "annotation_id": 7639,
+      "class_index": 414,
+      "feature_row": 53
+    },
+    {
+      "annotation_id": 367835,
+      "class_index": 420,
+      "feature_row": 3090
+    },
+    {
+      "annotation_id": 283993,
+      "class_index": 421,
+      "feature_row": 1892
+    },
+    {
+      "annotation_id": 76485,
+      "class_index": 428,
+      "feature_row": 618
+    },
+    {
+      "annotation_id": 63285,
+      "class_index": 429,
+      "feature_row": 506
+    },
+    {
+      "annotation_id": 158263,
+      "class_index": 446,
+      "feature_row": 1070
+    },
+    {
+      "annotation_id": 65599,
+      "class_index": 450,
+      "feature_row": 587
+    },
+    {
+      "annotation_id": 161113,
+      "class_index": 468,
+      "feature_row": 1081
+    },
+    {
+      "annotation_id": 76954,
+      "class_index": 493,
+      "feature_row": 629
+    },
+    {
+      "annotation_id": 232612,
+      "class_index": 495,
+      "feature_row": 1435
+    },
+    {
+      "annotation_id": 180461,
+      "class_index": 519,
+      "feature_row": 1203
+    },
+    {
+      "annotation_id": 90889,
+      "class_index": 520,
+      "feature_row": 722
+    },
+    {
+      "annotation_id": 111378,
+      "class_index": 522,
+      "feature_row": 893
+    },
+    {
+      "annotation_id": 155570,
+      "class_index": 539,
+      "feature_row": 1058
+    },
+    {
+      "annotation_id": 198,
+      "class_index": 543,
+      "feature_row": 4
+    },
+    {
+      "annotation_id": 327521,
+      "class_index": 549,
+      "feature_row": 2733
+    },
+    {
+      "annotation_id": 14739,
+      "class_index": 568,
+      "feature_row": 117
+    },
+    {
+      "annotation_id": 175683,
+      "class_index": 583,
+      "feature_row": 1198
+    },
+    {
+      "annotation_id": 288426,
+      "class_index": 588,
+      "feature_row": 1972
+    },
+    {
+      "annotation_id": 359324,
+      "class_index": 592,
+      "feature_row": 3024
+    },
+    {
+      "annotation_id": 1034,
+      "class_index": 600,
+      "feature_row": 15
+    },
+    {
+      "annotation_id": 158281,
+      "class_index": 614,
+      "feature_row": 1071
+    },
+    {
+      "annotation_id": 183636,
+      "class_index": 621,
+      "feature_row": 1207
+    },
+    {
+      "annotation_id": 288383,
+      "class_index": 625,
+      "feature_row": 1963
+    },
+    {
+      "annotation_id": 385871,
+      "class_index": 629,
+      "feature_row": 3375
+    },
+    {
+      "annotation_id": 391971,
+      "class_index": 630,
+      "feature_row": 3429
+    },
+    {
+      "annotation_id": 382472,
+      "class_index": 632,
+      "feature_row": 3339
+    },
+    {
+      "annotation_id": 112114,
+      "class_index": 640,
+      "feature_row": 911
+    },
+    {
+      "annotation_id": 245193,
+      "class_index": 648,
+      "feature_row": 1651
+    },
+    {
+      "annotation_id": 306714,
+      "class_index": 657,
+      "feature_row": 2393
+    },
+    {
+      "annotation_id": 89640,
+      "class_index": 684,
+      "feature_row": 691
+    },
+    {
+      "annotation_id": 119812,
+      "class_index": 691,
+      "feature_row": 950
+    },
+    {
+      "annotation_id": 297352,
+      "class_index": 696,
+      "feature_row": 2213
+    },
+    {
+      "annotation_id": 228320,
+      "class_index": 698,
+      "feature_row": 1430
+    },
+    {
+      "annotation_id": 144134,
+      "class_index": 700,
+      "feature_row": 1041
+    },
+    {
+      "annotation_id": 36933,
+      "class_index": 702,
+      "feature_row": 317
+    },
+    {
+      "annotation_id": 10825,
+      "class_index": 712,
+      "feature_row": 76
+    },
+    {
+      "annotation_id": 289282,
+      "class_index": 714,
+      "feature_row": 1976
+    },
+    {
+      "annotation_id": 284972,
+      "class_index": 723,
+      "feature_row": 1901
+    },
+    {
+      "annotation_id": 309275,
+      "class_index": 741,
+      "feature_row": 2455
+    },
+    {
+      "annotation_id": 1038,
+      "class_index": 744,
+      "feature_row": 16
+    },
+    {
+      "annotation_id": 307151,
+      "class_index": 756,
+      "feature_row": 2409
+    },
+    {
+      "annotation_id": 242989,
+      "class_index": 766,
+      "feature_row": 1616
+    },
+    {
+      "annotation_id": 237232,
+      "class_index": 779,
+      "feature_row": 1533
+    },
+    {
+      "annotation_id": 287417,
+      "class_index": 780,
+      "feature_row": 1935
+    },
+    {
+      "annotation_id": 2228,
+      "class_index": 792,
+      "feature_row": 44
+    },
+    {
+      "annotation_id": 272458,
+      "class_index": 797,
+      "feature_row": 1810
+    },
+    {
+      "annotation_id": 314527,
+      "class_index": 798,
+      "feature_row": 2545
+    },
+    {
+      "annotation_id": 61440,
+      "class_index": 799,
+      "feature_row": 498
+    },
+    {
+      "annotation_id": 99801,
+      "class_index": 801,
+      "feature_row": 807
+    },
+    {
+      "annotation_id": 226209,
+      "class_index": 803,
+      "feature_row": 1427
+    },
+    {
+      "annotation_id": 36119,
+      "class_index": 810,
+      "feature_row": 272
+    },
+    {
+      "annotation_id": 49461,
+      "class_index": 817,
+      "feature_row": 354
+    },
+    {
+      "annotation_id": 345884,
+      "class_index": 820,
+      "feature_row": 2884
+    },
+    {
+      "annotation_id": 297327,
+      "class_index": 834,
+      "feature_row": 2204
+    },
+    {
+      "annotation_id": 315487,
+      "class_index": 835,
+      "feature_row": 2579
+    },
+    {
+      "annotation_id": 105064,
+      "class_index": 853,
+      "feature_row": 867
+    },
+    {
+      "annotation_id": 244607,
+      "class_index": 860,
+      "feature_row": 1643
+    },
+    {
+      "annotation_id": 87180,
+      "class_index": 862,
+      "feature_row": 661
+    },
+    {
+      "annotation_id": 65278,
+      "class_index": 867,
+      "feature_row": 578
+    },
+    {
+      "annotation_id": 277793,
+      "class_index": 880,
+      "feature_row": 1840
+    },
+    {
+      "annotation_id": 236284,
+      "class_index": 881,
+      "feature_row": 1478
+    },
+    {
+      "annotation_id": 24487,
+      "class_index": 899,
+      "feature_row": 192
+    },
+    {
+      "annotation_id": 1982,
+      "class_index": 911,
+      "feature_row": 30
+    },
+    {
+      "annotation_id": 141109,
+      "class_index": 921,
+      "feature_row": 1008
+    },
+    {
+      "annotation_id": 19752,
+      "class_index": 922,
+      "feature_row": 167
+    },
+    {
+      "annotation_id": 162342,
+      "class_index": 923,
+      "feature_row": 1123
+    },
+    {
+      "annotation_id": 93868,
+      "class_index": 925,
+      "feature_row": 775
+    },
+    {
+      "annotation_id": 89617,
+      "class_index": 927,
+      "feature_row": 689
+    },
+    {
+      "annotation_id": 366853,
+      "class_index": 934,
+      "feature_row": 3049
+    },
+    {
+      "annotation_id": 257267,
+      "class_index": 942,
+      "feature_row": 1747
+    },
+    {
+      "annotation_id": 305610,
+      "class_index": 946,
+      "feature_row": 2363
+    },
+    {
+      "annotation_id": 53854,
+      "class_index": 947,
+      "feature_row": 416
+    },
+    {
+      "annotation_id": 92455,
+      "class_index": 950,
+      "feature_row": 750
+    },
+    {
+      "annotation_id": 202040,
+      "class_index": 952,
+      "feature_row": 1318
+    },
+    {
+      "annotation_id": 63585,
+      "class_index": 953,
+      "feature_row": 530
+    },
+    {
+      "annotation_id": 235782,
+      "class_index": 961,
+      "feature_row": 1472
+    },
+    {
+      "annotation_id": 13567,
+      "class_index": 963,
+      "feature_row": 87
+    },
+    {
+      "annotation_id": 13689,
+      "class_index": 966,
+      "feature_row": 105
+    },
+    {
+      "annotation_id": 115971,
+      "class_index": 969,
+      "feature_row": 924
+    },
+    {
+      "annotation_id": 50117,
+      "class_index": 972,
+      "feature_row": 377
+    },
+    {
+      "annotation_id": 366856,
+      "class_index": 978,
+      "feature_row": 3050
+    },
+    {
+      "annotation_id": 306000,
+      "class_index": 981,
+      "feature_row": 2377
+    },
+    {
+      "annotation_id": 367846,
+      "class_index": 992,
+      "feature_row": 3096
+    },
+    {
+      "annotation_id": 173286,
+      "class_index": 994,
+      "feature_row": 1156
+    },
+    {
+      "annotation_id": 42069,
+      "class_index": 998,
+      "feature_row": 339
+    },
+    {
+      "annotation_id": 310127,
+      "class_index": 999,
+      "feature_row": 2496
+    },
+    {
+      "annotation_id": 407408,
+      "class_index": 1020,
+      "feature_row": 3623
+    },
+    {
+      "annotation_id": 175107,
+      "class_index": 1025,
+      "feature_row": 1182
+    },
+    {
+      "annotation_id": 237153,
+      "class_index": 1036,
+      "feature_row": 1520
+    },
+    {
+      "annotation_id": 305598,
+      "class_index": 1041,
+      "feature_row": 2361
+    },
+    {
+      "annotation_id": 64611,
+      "class_index": 1045,
+      "feature_row": 556
+    },
+    {
+      "annotation_id": 345781,
+      "class_index": 1050,
+      "feature_row": 2869
+    },
+    {
+      "annotation_id": 406333,
+      "class_index": 1067,
+      "feature_row": 3581
+    },
+    {
+      "annotation_id": 290552,
+      "class_index": 1071,
+      "feature_row": 2009
+    },
+    {
+      "annotation_id": 379358,
+      "class_index": 1076,
+      "feature_row": 3253
+    },
+    {
+      "annotation_id": 239776,
+      "class_index": 1087,
+      "feature_row": 1584
+    },
+    {
+      "annotation_id": 293659,
+      "class_index": 1100,
+      "feature_row": 2124
+    },
+    {
+      "annotation_id": 71376,
+      "class_index": 1101,
+      "feature_row": 603
+    },
+    {
+      "annotation_id": 350535,
+      "class_index": 1102,
+      "feature_row": 2942
+    },
+    {
+      "annotation_id": 164118,
+      "class_index": 1104,
+      "feature_row": 1137
+    },
+    {
+      "annotation_id": 50401,
+      "class_index": 1107,
+      "feature_row": 388
+    },
+    {
+      "annotation_id": 164753,
+      "class_index": 1109,
+      "feature_row": 1145
+    },
+    {
+      "annotation_id": 17812,
+      "class_index": 1110,
+      "feature_row": 119
+    },
+    {
+      "annotation_id": 161106,
+      "class_index": 1116,
+      "feature_row": 1078
+    },
+    {
+      "annotation_id": 385926,
+      "class_index": 1121,
+      "feature_row": 3386
+    },
+    {
+      "annotation_id": 66981,
+      "class_index": 1122,
+      "feature_row": 601
+    },
+    {
+      "annotation_id": 350491,
+      "class_index": 1129,
+      "feature_row": 2919
+    },
+    {
+      "annotation_id": 240454,
+      "class_index": 1132,
+      "feature_row": 1588
+    },
+    {
+      "annotation_id": 312770,
+      "class_index": 1137,
+      "feature_row": 2522
+    },
+    {
+      "annotation_id": 207710,
+      "class_index": 1152,
+      "feature_row": 1386
+    },
+    {
+      "annotation_id": 279763,
+      "class_index": 1160,
+      "feature_row": 1860
+    },
+    {
+      "annotation_id": 289316,
+      "class_index": 1181,
+      "feature_row": 1986
+    },
+    {
+      "annotation_id": 290600,
+      "class_index": 1187,
+      "feature_row": 2023
+    },
+    {
+      "annotation_id": 315482,
+      "class_index": 1189,
+      "feature_row": 2577
+    },
+    {
+      "annotation_id": 283331,
+      "class_index": 1201,
+      "feature_row": 1879
+    }
+  ],
+  "all_native_forward_inputs_and_outputs_exact": true,
+  "original_GT_class_labels_boxes_and_repeat_counts_unchanged": true,
+  "no_GT_specific_class_label_in_model_inputs": true,
+  "GT_teacher_box_source_explicit": true,
+  "no_new_identity_lifecycle_or_observation_update_targets_invented": true,
+  "new_GPU_or_optimizer_updates_by_validator": 0,
+  "new_Compact_training_started": false,
+  "full_goal_complete": false
+}

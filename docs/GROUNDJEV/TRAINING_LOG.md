@@ -28,14 +28,17 @@ curriculum. The original owner reached GPU training before the completed CPU
 handoff became eligible, so the coordinator exited0 **without any handoff or
 process signal**. Original training continues under its original protocol.
 
-The balanced24k/6000-step study has separately reached at least5300updates.
-Its5000-step numbered BF16 checkpoint and full9,029,140,633-byte latest
-FP32/Adam/RNG save were observed; this latest full state will be replaced by
-subsequent saves. The4500-step full-state finite/cursor and actual exposure
-validation remains available in
-[the4500 snapshot](../../outputs/groundjev/training/shared6000_actual4500_snapshot_v1/validation.json).
+The balanced24k/6000-step study has separately **completed6000updates** and
+24000questions (8000per task) in29432.9s. Its final numbered BF16 checkpoint,
+full9,029,140,633-byte FP32/Adam/RNG state and native multimodal reload passed
+validation. All752,393,024FP32 parameters and1,504,786,048Adam moment elements
+are finite, and optimizer/scheduler/cursor all match6000. Actual first-media
+coverage is1056MOT/72RMOT/3227OVMOT source paths. Tracking controls have started;
+new tracking gains remain pending. Evidence:
+[the6000 snapshot](../../outputs/groundjev/training/shared6000_actual6000_snapshot_v1/validation.json).
 
-Neither the full-source epoch nor its final tracking controls is complete.
+The full-source epoch is incomplete (latest observed425updates/6800questions);
+final tracking controls for both studies remain incomplete.
 Five updates establish real execution, not tracking gains. Both studies
 retain their registered final shared checkpoint and unchanged task metrics,
 thresholds, candidates, empty/rejected frames and before/after controls.
@@ -477,3 +480,15 @@ native second-pass model predictions, trained improvement or new E2E measurement
 Actual matching SFT/native-MM reload/fresh three-task rollout remain pending.
 
 Evidence: `outputs/groundjev/validation/assigned_identity_runtime_v1/{owner_state,validated_summary}.json`.
+
+## Broader Compact typed-question adaptation — 2026-10-16
+
+A separate unchanged-architecture CPU Compact continuation actually passed
+100updates/300questions (100per task); final8000updates/24000questions are
+registered, followed automatically by five existing causal scopes. Current
+inputs cover1053MOT/1795RMOT/3227OVimages. Full original source/empty questions
+remain preserved and unsupported head contexts are explicit. This balanced
+question-level recipe is not an isolated data-only ablation or native
+OneJev decoder training. All selected original labels/options were checked;
+8continuous versus4+4restored real three-task updates match full model, Adam
+and RNG exactly. See `outputs/groundjev/compact/broader_question_curriculum_v1/`.

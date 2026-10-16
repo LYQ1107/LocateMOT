@@ -1,0 +1,113 @@
+{
+  "status": "ACTUAL_SHARED_TRAINING_CHECKPOINT_AND_INPUT_EXPOSURE_VERIFIED",
+  "step": 6000,
+  "actual_questions_consumed": 24000,
+  "planned_updates": 6000,
+  "saved_full_state": {
+    "format": "groundjev-full-fp32-adam-rng-v1",
+    "step": 6000,
+    "seen": 24000,
+    "epoch": 0,
+    "next_step_in_epoch": 6000,
+    "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_broader_shared6000_fla_v2/latest_training_state.pt",
+    "bytes": 9029140633,
+    "FP32_masters_and_Adam_moments_saved": true,
+    "scheduler_and_all_RNG_saved": true,
+    "single_latest_training_state": true,
+    "feature_cache": false
+  },
+  "all320_FP32_parameters_and_both_full_Adam_moments_finite": true,
+  "FP32_parameters_checked": 752393024,
+  "Adam_moment_elements_checked": 1504786048,
+  "all320_Adam_steps_and_scheduler_equal_actual_step": true,
+  "epoch_and_cursor_exact": true,
+  "initialization": {
+    "status": "NEW_STAGE_REAL_FP32_MASTERS_INITIALIZED",
+    "source": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_unified600_native_v2/latest_training_state.pt",
+    "source_step": 600,
+    "FP32_parameter_entries": 320,
+    "parameters": 752393024,
+    "changed_vs_BF16_inference_export_initialization": 500278218,
+    "initialization_max_difference": 0.0,
+    "new_optimizer_scheduler_and_RNG": "explicit newrecipe reset, not originaltrajectory resume",
+    "old_training_state_or_inference_weights_modified": false
+  },
+  "protocol": {
+    "model": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_unified600_native_v2/ckpt-step600",
+    "train_file": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_shared_onejev6000_v2_fla/train.jsonl.gz",
+    "seed": 0,
+    "lr": 2e-06,
+    "max_steps": 6000,
+    "epochs": 1,
+    "max_len": 32768,
+    "batch_tokens": 32768,
+    "accum_rows": 4,
+    "max_rows": 1,
+    "brier_weight": 1.0,
+    "augment": true,
+    "train_vision": false,
+    "full_finetune": true,
+    "weight_decay": 0.0,
+    "warmup_frac": 0.03,
+    "sampling_protocol": "paired-index-shuffle-v1",
+    "input_io_protocol": "gzip-jsonl-native-tracking-category-and-group-question-refs-v1",
+    "training_compute_backend": "fla0.5.2-GDN-chunk-training-only-reference-inference-v1"
+  },
+  "latest_logged_update": {
+    "step": 6000,
+    "epoch": 0,
+    "examples": 24000,
+    "loss": 0.7573963612459739,
+    "ce": 0.5040743712950644,
+    "brier": 0.2533219892746983,
+    "slot_acc": 0.81,
+    "grad_norm": 107.38144021630288,
+    "lr": 0.0,
+    "rows_per_step": 4.0,
+    "examples_per_s": 0.4780100333028711,
+    "tokens_per_s": 4081.7706952762137,
+    "sec_per_step": 8.368025190520566,
+    "peak_mem_gb": 18.80209970474243,
+    "elapsed_s": 29415.648738821037
+  },
+  "finite_logged_update_records_checked": 245,
+  "task_counts_from_actual_index_shuffle": {
+    "rmot": 8000,
+    "mot": 8000,
+    "ovmot": 8000
+  },
+  "question_families": {
+    "rmot:empty_query_presence": 1277,
+    "mot:assigned_identity_memory_update": 2000,
+    "mot:identity": 3997,
+    "ovmot:category_leaf": 4000,
+    "rmot:query_membership": 6723,
+    "ovmot:category_group": 4000,
+    "mot:reliability": 500,
+    "mot:lifecycle": 1000,
+    "mot:memory_update": 500,
+    "mot:empty_presence": 3
+  },
+  "unique_consumed_source_row_IDs": {
+    "rmot": 7475,
+    "mot": 8000,
+    "ovmot": 7298
+  },
+  "unique_consumed_curriculum_row_IDs": {
+    "rmot": 8000,
+    "mot": 8000,
+    "ovmot": 8000
+  },
+  "unique_consumed_first_media_source_paths": {
+    "rmot": 72,
+    "mot": 1056,
+    "ovmot": 3227
+  },
+  "exposure_scope": "Measured first-source-media paths among actual consumed rows; query repeats and question rows are not independent video frames or tracks.",
+  "full_state_retention": "Atomic latest state validated at this milestone; later saves replace latest state. The numbered BF16 checkpoint is retained.",
+  "retained_BF16_checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_broader_shared6000_fla_v2/ckpt-step6000",
+  "no_GPU_or_training_updates_by_validator": true,
+  "complete6000_training": true,
+  "new_tracking_metrics_available": false,
+  "full_goal_complete": false
+}

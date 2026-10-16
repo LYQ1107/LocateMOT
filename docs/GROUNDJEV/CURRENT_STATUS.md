@@ -1,3 +1,39 @@
+## Latest actual execution — 2026-10-16
+
+The balanced shared native OneJev study completed6000updates/24000questions
+(8000per task),29432.9s. Final full FP32/Adam/RNG state and native-MM reload
+are validated; official tracking controls are running, no new gains established.
+Evidence: `outputs/groundjev/training/shared6000_actual6000_snapshot_v1/validation.json`.
+The independent four-GPU459027-question epoch remains unfinished.
+
+Selected175Base teacher feature collection completed all3227images/3649objects
+in a single37,365,888-byte original FP32 native ROI bank. The private ROI-only
+service stopped; no DLM proposal or optimizer calls were made by collection.
+All175class representatives match original Compact inputs and frozen forward
+outputs exactly (216,205,500input tensor elements). Train-Base GT boxes are
+declared teachers; this bank is not native detector proposal recall.
+
+A fresh CPU shared Compact study is registered and launched:8000updates with
+one MOT, one RMOT and one OV typed question per update,24000total. It reuses
+existing native appearance banks and the single selectedBase bank, keeps the
+existing architecture/runtime, and selects one final checkpoint for five
+unchanged causal control scopes. Actual eligible first-media coverage is
+1053MOT/1795RMOT/3227OVimages. Original1056MOT/1814RMOT frames and unsupported
+questions remain preserved;226query-frame contexts with no selected supported
+head are explicitly inventoried. It excludes RMOT unknown-birth auxiliary
+proxies and invents no temporal labels for teacher OV objects. The balanced
+question-level recipe differs from old whole-group training, so the planned
+before/after is not an isolated data-only ablation. All24000selected source
+labels/options passed validation, and a real8update versus4+4resume prefix
+matches every model/Adam/counter/RNG value exactly. Full8000 completion and
+tracking results remain pending. Evidence under
+`outputs/groundjev/compact/broader_question_curriculum_v1/`; owner
+`outputs/groundjev/compact/broader_question_joint8000_owner_v1/`.
+
+Current registered temporary-feature upper bound is26,702,193,630bytes,
+below25GiB(26,843,545,600). No original running training/evaluation job was
+stopped, and all project GPU work remains within physical4/5/6/7.
+
 # GroundJEV-MOT current evidence — 2026-10-16
 
 ## Actual four-GPU shared training; final quality still pending

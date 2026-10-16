@@ -1,0 +1,15 @@
+{
+  "status": "INITIAL_NATIVE_OPTION_ASSUMPTION_FAILED",
+  "source_id": "MOT20-05_766_batch0_match_13",
+  "actual_native_options": [
+    "NEW",
+    "IGNORE"
+  ],
+  "initial_validator_expected": [
+    "NEW",
+    "IGNORE",
+    "NO_MATCH"
+  ],
+  "cause": "Native builder excludes NO_MATCH with zero historical identities; Compact already retains a third logit hard-masked to -10000. Encoder padded its target with zero correctly; validator incorrectly expected it as a legal native question option.",
+  "fix": "Verify exact native options with/without history, preserve zero target and existing masked logit, retain all questions. No labels, model, metric or thresholds changed."
+}

@@ -1,0 +1,1611 @@
+{
+  "status": "BROADER_COMPACT_TYPED_QUESTION_CURRICULUM_PREPARED",
+  "protocol": "native-compact-typed-question-balanced-three-task-v1",
+  "task_questions": {
+    "mot": 8000,
+    "rmot": 8000,
+    "ovmot": 8000
+  },
+  "actual_optimizer_steps": 0,
+  "source_question_inventory": {
+    "mot:identity": 48051,
+    "mot:memory_update": 48051,
+    "mot:reliability": 48051,
+    "mot:lifecycle": 93624,
+    "mot:assigned_identity_memory_update": 14478,
+    "mot:empty_presence": 3,
+    "rmot:identity": 10868,
+    "rmot:memory_update": 10868,
+    "rmot:reliability": 10868,
+    "rmot:query_membership": 10868,
+    "rmot:lifecycle": 23599,
+    "rmot:assigned_identity_memory_update": 1454,
+    "rmot:empty_query_presence": 42
+  },
+  "questions_outside_declared_head_selection": {
+    "mot:assigned_identity_memory_update": 14478,
+    "mot:empty_presence": 3,
+    "rmot:identity": 10868,
+    "rmot:memory_update": 10868,
+    "rmot:reliability": 10868,
+    "rmot:lifecycle": 23599,
+    "rmot:assigned_identity_memory_update": 1454,
+    "rmot:empty_query_presence": 42
+  },
+  "selected_families": {
+    "mot:identity": 5000,
+    "mot:lifecycle": 2000,
+    "mot:memory_update": 500,
+    "mot:reliability": 500,
+    "rmot:query_membership": 8000,
+    "ovmot:category": 8000
+  },
+  "selected_labels": {
+    "mot:identity:NEW": 1250,
+    "mot:identity:EXISTING": 1250,
+    "mot:identity:IGNORE": 1250,
+    "mot:identity:NO_MATCH": 1250,
+    "mot:lifecycle:LOST": 500,
+    "mot:lifecycle:TERMINATE": 500,
+    "mot:lifecycle:ACTIVE": 500,
+    "mot:lifecycle:REACTIVATE": 500,
+    "mot:memory_update:no": 250,
+    "mot:memory_update:yes": 250,
+    "mot:reliability:0": 125,
+    "mot:reliability:1": 125,
+    "mot:reliability:2": 125,
+    "mot:reliability:3": 125,
+    "rmot:query_membership:yes": 4000,
+    "rmot:query_membership:no": 4000,
+    "ovmot:category:337": 46,
+    "ovmot:category:76": 46,
+    "ovmot:category:862": 46,
+    "ovmot:category:712": 46,
+    "ovmot:category:35": 46,
+    "ovmot:category:198": 46,
+    "ovmot:category:1036": 46,
+    "ovmot:category:1050": 44,
+    "ovmot:category:161": 46,
+    "ovmot:category:1104": 44,
+    "ovmot:category:999": 46,
+    "ovmot:category:138": 46,
+    "ovmot:category:59": 46,
+    "ovmot:category:152": 46,
+    "ovmot:category:648": 46,
+    "ovmot:category:741": 46,
+    "ovmot:category:126": 46,
+    "ovmot:category:1067": 44,
+    "ovmot:category:700": 46,
+    "ovmot:category:1137": 44,
+    "ovmot:category:368": 46,
+    "ovmot:category:203": 46,
+    "ovmot:category:632": 46,
+    "ovmot:category:1109": 44,
+    "ovmot:category:109": 46,
+    "ovmot:category:899": 46,
+    "ovmot:category:374": 46,
+    "ovmot:category:1122": 44,
+    "ovmot:category:568": 46,
+    "ovmot:category:1102": 44,
+    "ovmot:category:398": 46,
+    "ovmot:category:159": 46,
+    "ovmot:category:714": 46,
+    "ovmot:category:1071": 44,
+    "ovmot:category:343": 46,
+    "ovmot:category:1181": 44,
+    "ovmot:category:1152": 44,
+    "ovmot:category:621": 46,
+    "ovmot:category:78": 46,
+    "ovmot:category:756": 46,
+    "ovmot:category:934": 46,
+    "ovmot:category:1132": 44,
+    "ovmot:category:33": 46,
+    "ovmot:category:421": 46,
+    "ovmot:category:468": 46,
+    "ovmot:category:1107": 44,
+    "ovmot:category:950": 46,
+    "ovmot:category:952": 46,
+    "ovmot:category:817": 46,
+    "ovmot:category:79": 46,
+    "ovmot:category:1076": 44,
+    "ovmot:category:1129": 44,
+    "ovmot:category:881": 46,
+    "ovmot:category:191": 46,
+    "ovmot:category:34": 46,
+    "ovmot:category:253": 46,
+    "ovmot:category:702": 46,
+    "ovmot:category:946": 46,
+    "ovmot:category:1100": 44,
+    "ovmot:category:177": 46,
+    "ovmot:category:408": 46,
+    "ovmot:category:298": 46,
+    "ovmot:category:640": 46,
+    "ovmot:category:691": 46,
+    "ovmot:category:2": 46,
+    "ovmot:category:801": 46,
+    "ovmot:category:1041": 46,
+    "ovmot:category:231": 46,
+    "ovmot:category:495": 46,
+    "ovmot:category:519": 46,
+    "ovmot:category:922": 46,
+    "ovmot:category:880": 46,
+    "ovmot:category:520": 46,
+    "ovmot:category:657": 46,
+    "ovmot:category:981": 46,
+    "ovmot:category:592": 46,
+    "ovmot:category:61": 46,
+    "ovmot:category:216": 46,
+    "ovmot:category:810": 46,
+    "ovmot:category:614": 46,
+    "ovmot:category:978": 46,
+    "ovmot:category:947": 46,
+    "ovmot:category:1189": 44,
+    "ovmot:category:420": 46,
+    "ovmot:category:31": 46,
+    "ovmot:category:921": 46,
+    "ovmot:category:0": 46,
+    "ovmot:category:994": 46,
+    "ovmot:category:1160": 44,
+    "ovmot:category:155": 46,
+    "ovmot:category:40": 46,
+    "ovmot:category:57": 46,
+    "ovmot:category:429": 46,
+    "ovmot:category:860": 46,
+    "ovmot:category:414": 46,
+    "ovmot:category:1187": 44,
+    "ovmot:category:224": 46,
+    "ovmot:category:723": 46,
+    "ovmot:category:780": 46,
+    "ovmot:category:942": 46,
+    "ovmot:category:792": 46,
+    "ovmot:category:600": 46,
+    "ovmot:category:172": 46,
+    "ovmot:category:522": 46,
+    "ovmot:category:193": 46,
+    "ovmot:category:744": 46,
+    "ovmot:category:867": 46,
+    "ovmot:category:803": 46,
+    "ovmot:category:961": 46,
+    "ovmot:category:992": 46,
+    "ovmot:category:188": 46,
+    "ovmot:category:630": 46,
+    "ovmot:category:625": 46,
+    "ovmot:category:1110": 44,
+    "ovmot:category:446": 46,
+    "ovmot:category:588": 46,
+    "ovmot:category:377": 46,
+    "ovmot:category:428": 46,
+    "ovmot:category:1121": 44,
+    "ovmot:category:925": 46,
+    "ovmot:category:493": 46,
+    "ovmot:category:206": 46,
+    "ovmot:category:1025": 46,
+    "ovmot:category:18": 46,
+    "ovmot:category:310": 46,
+    "ovmot:category:229": 46,
+    "ovmot:category:696": 46,
+    "ovmot:category:89": 46,
+    "ovmot:category:820": 46,
+    "ovmot:category:969": 46,
+    "ovmot:category:583": 46,
+    "ovmot:category:389": 46,
+    "ovmot:category:853": 46,
+    "ovmot:category:835": 46,
+    "ovmot:category:779": 46,
+    "ovmot:category:963": 46,
+    "ovmot:category:998": 46,
+    "ovmot:category:132": 46,
+    "ovmot:category:797": 46,
+    "ovmot:category:549": 46,
+    "ovmot:category:539": 46,
+    "ovmot:category:392": 46,
+    "ovmot:category:240": 46,
+    "ovmot:category:953": 46,
+    "ovmot:category:117": 46,
+    "ovmot:category:972": 46,
+    "ovmot:category:450": 46,
+    "ovmot:category:927": 46,
+    "ovmot:category:128": 46,
+    "ovmot:category:966": 46,
+    "ovmot:category:698": 46,
+    "ovmot:category:349": 46,
+    "ovmot:category:766": 46,
+    "ovmot:category:543": 46,
+    "ovmot:category:1116": 44,
+    "ovmot:category:219": 46,
+    "ovmot:category:1201": 44,
+    "ovmot:category:629": 46,
+    "ovmot:category:1087": 44,
+    "ovmot:category:358": 46,
+    "ovmot:category:284": 46,
+    "ovmot:category:1020": 46,
+    "ovmot:category:911": 46,
+    "ovmot:category:799": 46,
+    "ovmot:category:798": 46,
+    "ovmot:category:258": 46,
+    "ovmot:category:98": 46,
+    "ovmot:category:684": 46,
+    "ovmot:category:923": 46,
+    "ovmot:category:93": 46,
+    "ovmot:category:187": 46,
+    "ovmot:category:1045": 44,
+    "ovmot:category:834": 46,
+    "ovmot:category:285": 46,
+    "ovmot:category:1101": 44
+  },
+  "unique_original_question_IDs": {
+    "mot": 8000,
+    "rmot": 7238
+  },
+  "unique_physical_first_media_images": {
+    "mot": 1053,
+    "rmot": 1795,
+    "ovmot": 3227
+  },
+  "eligible_query_frame_contexts": 4458,
+  "contexts_without_selected_head": [
+    {
+      "unit": "mot/MOT17-10-FRCNN",
+      "frame": 149,
+      "image_path": "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-10-FRCNN/img1/000149.jpg",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "mot/dancetrack0012",
+      "frame": 594,
+      "image_path": "/data2/user/LocateMOT/data/DanceTrack/train/dancetrack0012/img1/00000594.jpg",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "mot/dancetrack0082",
+      "frame": 294,
+      "image_path": "/data2/user/LocateMOT/data/DanceTrack/train/dancetrack0082/img1/00000294.jpg",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0000_counter",
+      "frame": 27,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0000/000027.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_primary",
+      "frame": 55,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000055.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_primary",
+      "frame": 74,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000074.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_primary",
+      "frame": 75,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000075.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_primary",
+      "frame": 76,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000076.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_primary",
+      "frame": 81,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000081.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_primary",
+      "frame": 82,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000082.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_primary",
+      "frame": 84,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000084.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_primary",
+      "frame": 85,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000085.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_primary",
+      "frame": 86,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000086.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_primary",
+      "frame": 89,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000089.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_primary",
+      "frame": 92,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000092.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_primary",
+      "frame": 96,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000096.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_primary",
+      "frame": 101,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000101.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_primary",
+      "frame": 102,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000102.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_primary",
+      "frame": 109,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000109.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_primary",
+      "frame": 111,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000111.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_primary",
+      "frame": 114,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000114.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_primary",
+      "frame": 115,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000115.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_primary",
+      "frame": 119,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000119.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_primary",
+      "frame": 120,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000120.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_primary",
+      "frame": 121,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000121.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_primary",
+      "frame": 122,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000122.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_primary",
+      "frame": 123,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000123.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_primary",
+      "frame": 125,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000125.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_primary",
+      "frame": 126,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000126.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_primary",
+      "frame": 127,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000127.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_primary",
+      "frame": 129,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000129.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_primary",
+      "frame": 131,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000131.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_primary",
+      "frame": 132,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000132.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_primary",
+      "frame": 136,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000136.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_primary",
+      "frame": 140,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000140.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_primary",
+      "frame": 143,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000143.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_primary",
+      "frame": 144,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000144.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_primary",
+      "frame": 145,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000145.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_primary",
+      "frame": 146,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000146.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_primary",
+      "frame": 149,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000149.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_primary",
+      "frame": 154,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000154.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_primary",
+      "frame": 156,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000156.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_primary",
+      "frame": 161,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000161.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_primary",
+      "frame": 168,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000168.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_primary",
+      "frame": 169,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000169.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_primary",
+      "frame": 170,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000170.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_primary",
+      "frame": 171,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000171.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_primary",
+      "frame": 172,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000172.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_primary",
+      "frame": 177,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000177.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_primary",
+      "frame": 178,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000178.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_primary",
+      "frame": 179,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000179.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_primary",
+      "frame": 180,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000180.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_primary",
+      "frame": 182,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000182.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_primary",
+      "frame": 183,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000183.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_primary",
+      "frame": 184,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000184.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_primary",
+      "frame": 185,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000185.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_primary",
+      "frame": 186,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000186.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_primary",
+      "frame": 188,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000188.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_primary",
+      "frame": 189,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000189.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_primary",
+      "frame": 191,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000191.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_primary",
+      "frame": 193,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000193.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_primary",
+      "frame": 194,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000194.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_primary",
+      "frame": 195,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000195.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_primary",
+      "frame": 196,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000196.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_primary",
+      "frame": 197,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000197.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_primary",
+      "frame": 198,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000198.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_primary",
+      "frame": 201,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000201.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_primary",
+      "frame": 202,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000202.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_primary",
+      "frame": 203,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000203.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_primary",
+      "frame": 208,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000208.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_primary",
+      "frame": 209,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000209.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_primary",
+      "frame": 210,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000210.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_primary",
+      "frame": 213,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000213.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_primary",
+      "frame": 214,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000214.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_primary",
+      "frame": 217,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000217.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_primary",
+      "frame": 218,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000218.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_primary",
+      "frame": 223,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000223.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_primary",
+      "frame": 224,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000224.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_primary",
+      "frame": 226,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000226.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_primary",
+      "frame": 227,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000227.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_primary",
+      "frame": 229,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000229.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_counter",
+      "frame": 2,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000002.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_counter",
+      "frame": 3,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000003.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_counter",
+      "frame": 4,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000004.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_counter",
+      "frame": 5,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000005.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_counter",
+      "frame": 6,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000006.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_counter",
+      "frame": 7,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000007.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_counter",
+      "frame": 8,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000008.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_counter",
+      "frame": 9,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000009.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_counter",
+      "frame": 10,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000010.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_counter",
+      "frame": 11,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000011.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_counter",
+      "frame": 12,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000012.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_counter",
+      "frame": 13,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000013.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_counter",
+      "frame": 15,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000015.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_counter",
+      "frame": 39,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000039.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_counter",
+      "frame": 41,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000041.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_counter",
+      "frame": 45,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000045.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_counter",
+      "frame": 46,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000046.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_counter",
+      "frame": 49,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000049.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_counter",
+      "frame": 51,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000051.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_counter",
+      "frame": 56,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000056.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_counter",
+      "frame": 57,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000057.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_counter",
+      "frame": 58,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000058.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_counter",
+      "frame": 59,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000059.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_counter",
+      "frame": 60,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000060.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_counter",
+      "frame": 61,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000061.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_counter",
+      "frame": 62,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000062.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_counter",
+      "frame": 63,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000063.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_counter",
+      "frame": 64,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000064.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_counter",
+      "frame": 65,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000065.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_counter",
+      "frame": 76,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000076.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_counter",
+      "frame": 79,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000079.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_counter",
+      "frame": 82,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000082.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_counter",
+      "frame": 83,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000083.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_counter",
+      "frame": 85,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000085.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_counter",
+      "frame": 86,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000086.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_counter",
+      "frame": 87,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000087.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_counter",
+      "frame": 90,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000090.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_counter",
+      "frame": 91,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000091.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_counter",
+      "frame": 92,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000092.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_counter",
+      "frame": 93,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000093.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_counter",
+      "frame": 94,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000094.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_counter",
+      "frame": 95,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000095.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_counter",
+      "frame": 96,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000096.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_counter",
+      "frame": 97,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000097.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_counter",
+      "frame": 100,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000100.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_counter",
+      "frame": 101,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000101.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_counter",
+      "frame": 102,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000102.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_counter",
+      "frame": 103,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000103.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_counter",
+      "frame": 104,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000104.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_counter",
+      "frame": 105,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000105.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_counter",
+      "frame": 106,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000106.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_counter",
+      "frame": 107,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000107.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_counter",
+      "frame": 108,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000108.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_counter",
+      "frame": 109,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000109.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_counter",
+      "frame": 110,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000110.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_counter",
+      "frame": 111,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000111.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_counter",
+      "frame": 112,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000112.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_counter",
+      "frame": 116,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000116.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_counter",
+      "frame": 118,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000118.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_counter",
+      "frame": 121,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000121.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_counter",
+      "frame": 122,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000122.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_counter",
+      "frame": 124,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000124.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_counter",
+      "frame": 125,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000125.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_counter",
+      "frame": 128,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000128.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_counter",
+      "frame": 129,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000129.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_counter",
+      "frame": 130,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000130.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_counter",
+      "frame": 131,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000131.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_counter",
+      "frame": 134,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000134.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_counter",
+      "frame": 136,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000136.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_counter",
+      "frame": 137,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000137.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_counter",
+      "frame": 142,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000142.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_counter",
+      "frame": 148,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000148.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_counter",
+      "frame": 149,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000149.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_counter",
+      "frame": 174,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000174.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0002_counter",
+      "frame": 194,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0002/000194.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0003_primary",
+      "frame": 68,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0003/000068.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0003_primary",
+      "frame": 81,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0003/000081.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0003_primary",
+      "frame": 87,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0003/000087.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0003_primary",
+      "frame": 103,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0003/000103.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0003_primary",
+      "frame": 104,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0003/000104.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0003_counter",
+      "frame": 38,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0003/000038.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0003_counter",
+      "frame": 46,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0003/000046.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0003_counter",
+      "frame": 47,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0003/000047.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0003_counter",
+      "frame": 52,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0003/000052.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0006_primary",
+      "frame": 0,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0006/000000.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0006_primary",
+      "frame": 4,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0006/000004.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0006_primary",
+      "frame": 246,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0006/000246.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0006_primary",
+      "frame": 250,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0006/000250.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0006_primary",
+      "frame": 251,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0006/000251.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0006_primary",
+      "frame": 256,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0006/000256.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0006_primary",
+      "frame": 262,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0006/000262.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0006_primary",
+      "frame": 265,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0006/000265.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0006_counter",
+      "frame": 2,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0006/000002.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0006_counter",
+      "frame": 71,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0006/000071.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0006_counter",
+      "frame": 76,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0006/000076.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0006_counter",
+      "frame": 91,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0006/000091.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0006_counter",
+      "frame": 94,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0006/000094.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0006_counter",
+      "frame": 127,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0006/000127.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0006_counter",
+      "frame": 131,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0006/000131.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0006_counter",
+      "frame": 136,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0006/000136.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0006_counter",
+      "frame": 266,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0006/000266.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0008_counter",
+      "frame": 54,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0008/000054.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0008_counter",
+      "frame": 78,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0008/000078.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0010_primary",
+      "frame": 94,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0010/000094.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0010_counter",
+      "frame": 19,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0010/000019.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0012_primary",
+      "frame": 1,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0012/000001.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0012_primary",
+      "frame": 3,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0012/000003.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0012_primary",
+      "frame": 4,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0012/000004.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0012_primary",
+      "frame": 5,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0012/000005.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0012_primary",
+      "frame": 8,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0012/000008.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0012_primary",
+      "frame": 9,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0012/000009.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0012_primary",
+      "frame": 11,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0012/000011.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0012_primary",
+      "frame": 12,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0012/000012.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0012_primary",
+      "frame": 14,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0012/000014.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0012_primary",
+      "frame": 15,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0012/000015.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0012_primary",
+      "frame": 16,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0012/000016.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0012_primary",
+      "frame": 19,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0012/000019.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0012_primary",
+      "frame": 21,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0012/000021.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0012_primary",
+      "frame": 22,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0012/000022.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0012_primary",
+      "frame": 23,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0012/000023.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0012_primary",
+      "frame": 24,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0012/000024.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0012_primary",
+      "frame": 25,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0012/000025.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0012_primary",
+      "frame": 26,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0012/000026.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0012_primary",
+      "frame": 27,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0012/000027.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0012_primary",
+      "frame": 28,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0012/000028.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0012_primary",
+      "frame": 29,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0012/000029.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0012_primary",
+      "frame": 30,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0012/000030.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0012_primary",
+      "frame": 31,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0012/000031.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0012_primary",
+      "frame": 32,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0012/000032.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0012_primary",
+      "frame": 33,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0012/000033.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0012_primary",
+      "frame": 34,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0012/000034.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0012_primary",
+      "frame": 35,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0012/000035.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0012_primary",
+      "frame": 36,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0012/000036.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0012_primary",
+      "frame": 42,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0012/000042.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0012_primary",
+      "frame": 45,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0012/000045.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0012_primary",
+      "frame": 46,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0012/000046.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0012_primary",
+      "frame": 48,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0012/000048.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0012_primary",
+      "frame": 49,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0012/000049.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0012_primary",
+      "frame": 59,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0012/000059.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0012_primary",
+      "frame": 62,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0012/000062.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0012_primary",
+      "frame": 77,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0012/000077.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0012_counter",
+      "frame": 1,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0012/000001.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0012_counter",
+      "frame": 6,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0012/000006.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0017_counter",
+      "frame": 142,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0017/000142.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    },
+    {
+      "unit": "rmot/0017_counter",
+      "frame": 143,
+      "image_path": "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0017/000143.png",
+      "reason": "No original question supported by the explicitly selected task heads"
+    }
+  ],
+  "all_original_frames_and_questions_preserved": true,
+  "GT_teacher_categories_Base_only": true,
+  "OV_flat_category_twice_per_original_object_draw_explicit": true,
+  "no_invented_RMOT_identity_lifecycle_or_OV_temporal_targets": true,
+  "new_feature_vectors_copied": false,
+  "training_input_validation_and_optimizer_updates_pending": true,
+  "full_goal_complete": false
+}

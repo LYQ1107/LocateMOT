@@ -1,0 +1,39 @@
+{
+  "status": "BROADER_COMPACT_ACTUAL_FIRST100_UPDATES_VERIFIED",
+  "actual_steps": 100,
+  "actual_questions": 300,
+  "actual_questions_per_task": 100,
+  "original_training_owner": {
+    "pid": 3666512,
+    "starttick": "51020208"
+  },
+  "records": [
+    {
+      "step": 1,
+      "actual_questions": 3,
+      "weighted_task_losses": {
+        "mot": 2.852562665939331,
+        "rmot": 0.8814688324928284,
+        "ovmot": 13.50355052947998
+      },
+      "mean_loss": 5.745860675970714,
+      "unclipped_gradient_norm": 29.9115047454834,
+      "training_seconds": 0.4631648190552369
+    },
+    {
+      "step": 100,
+      "actual_questions": 300,
+      "weighted_task_losses": {
+        "mot": 0.016880692914128304,
+        "rmot": 0.12787580490112305,
+        "ovmot": 7.154759883880615
+      },
+      "mean_loss": 2.4331721272319555,
+      "unclipped_gradient_norm": 4.466521739959717,
+      "training_seconds": 14.391701706044842
+    }
+  ],
+  "full8000_training_complete": false,
+  "tracking_gain_established": false,
+  "full_goal_complete": false
+}

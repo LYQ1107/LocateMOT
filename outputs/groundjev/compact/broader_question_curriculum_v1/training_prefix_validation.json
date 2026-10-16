@@ -1,0 +1,16 @@
+{
+  "status": "REAL_THREE_TASK_COMPACT_FULL_MODEL_ADAM_RNG_RESUME_BIT_EXACT",
+  "actual_updates_per_compared_branch": 8,
+  "actual_questions_per_branch": 24,
+  "exposure": {
+    "mot:identity": 6,
+    "rmot:query_membership": 8,
+    "ovmot:category": 8,
+    "mot:reliability": 1,
+    "mot:lifecycle": 1
+  },
+  "all_model_parameters_Adam_moments_counters_and_RNG_bit_exact": true,
+  "no_GPU_used": true,
+  "full8000_training_complete": false,
+  "full_goal_complete": false
+}

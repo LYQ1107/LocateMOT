@@ -1,0 +1,33 @@
+{
+  "status": "SELECTED_BASE175_NATIVE_FP32_TEACHER_BANK_COMPLETE",
+  "selected_draws": 4000,
+  "unique_objects": 3649,
+  "unique_images": 3227,
+  "supervised_Base_classes": 175,
+  "full_input_vocabulary": 1203,
+  "shape": [
+    3649,
+    2560
+  ],
+  "dtype": "float32",
+  "bank_path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/base175_native_teacher_bank_v1/regions.npy",
+  "bank_bytes": 37365888,
+  "all_registered_images_and_observations_completed": true,
+  "all_native_values_preserved_without_quantization": true,
+  "feature_provider": {
+    "status": "NATIVE_FEATURE_RPC_READY",
+    "url": "http://127.0.0.1:8173",
+    "checkpoint": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM",
+    "native_parameters": 428482048,
+    "region_dimension": 2560,
+    "temporal_checkpoint": null,
+    "dataset_cache_created": false,
+    "request_concurrency": 1,
+    "language_decoder_loaded": false
+  },
+  "GT_scope": "registered train-Base teacher boxes; class labels never sent to native ROI service",
+  "own_service_group_stopped": true,
+  "old_training_or_evaluation_processes_stopped": false,
+  "new_DLM_or_optimizer_calls": 0,
+  "full_goal_complete": false
+}

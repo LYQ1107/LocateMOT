@@ -1,0 +1,14 @@
+{
+  "status": "SELECTED_BASE175_NATIVE_TEACHER_BANK_RESERVED",
+  "prior_registered_feature_upper_bytes": 26618307550,
+  "new_component_cap_bytes": 67108864,
+  "combined_registered_feature_upper_bytes": 26685416414,
+  "global_temporary_feature_budget_bytes": 26843545600,
+  "new_full_dataset_cache_or_image_copies": 0,
+  "shared_physical_gpu_allowlist": [
+    4,
+    5,
+    6,
+    7
+  ]
+}
