@@ -1,0 +1,24 @@
+{
+  "status": "NATIVE_TIMEOUT_ONLY_FIXED_FOUR_SCOPE_CONTROL_REGISTERED_CPU_WAIT_VERIFIED",
+  "owner_identity": [
+    4149961,
+    "52754749"
+  ],
+  "terminal_session": 90700,
+  "source_state": {
+    "status": "WAITING_ORIGINAL_NATIVE6000_ALL_CONTROLS_SUCCESS",
+    "owner_pid": 4149961,
+    "owner_starttick": "52754749",
+    "completed": {},
+    "physical_gpu": 7,
+    "new_optimizer_updates": 0,
+    "full_goal_complete": false
+  },
+  "actual_new_inference_calls": 0,
+  "new_optimizer_updates": 0,
+  "deferred_GPU7_window_and_original6000_baseline_dependency": true,
+  "original_training_or_inference_jobs_stopped": false,
+  "preexecution_v1_CPU_queue_repair_receipt": "outputs/groundjev/training/native6000_timeout_only_controls_v1/preexecution_repair_receipt.json",
+  "existing_temp_feature_upper_bytes": 26826974174,
+  "full_goal_complete": false
+}

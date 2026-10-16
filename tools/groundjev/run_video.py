@@ -106,6 +106,7 @@ def main():
     parser.add_argument('--resume-from', type=Path, help='preserve source run and restore its completed causal prefix in this fresh output')
     parser.add_argument('--memory-policy',choices=['gated','always','ema','frame_only'],default='gated')
     parser.add_argument('--memory-feature-view',choices=['all','recent','ema'],default='all')
+    parser.add_argument('--lifecycle-termination-policy',choices=['learned_or_timeout','timeout_only'],default='learned_or_timeout')
     parser.add_argument('--appearance-projection-checkpoint',type=Path)
     parser.add_argument('--appearance-ranking-temperature',type=float,default=.07)
     parser.add_argument('--lost-seconds',type=float,default=3.)
@@ -188,7 +189,8 @@ def main():
             from locatemot.groundjev.category_replay import CausalNativeCategoryReplay
             head = category_replay = CausalNativeCategoryReplay(args.category_replay, args.checkpoint, manifest)
         decision = CategorizedDecision(decision, head)
-    tracker = OnlineTracker(decision,lost_seconds=args.lost_seconds,memory_policy=args.memory_policy,ema_alpha=args.ema_alpha)
+    tracker = OnlineTracker(decision,lost_seconds=args.lost_seconds,memory_policy=args.memory_policy,ema_alpha=args.ema_alpha,
+                            lifecycle_termination_policy=args.lifecycle_termination_policy)
     def write_memory(stem):
         snapshot=tracker.state_dict()
         suffix='json' if args.memory_checkpoint_format=='json' else 'pt'
@@ -223,6 +225,8 @@ def main():
             prior_result=json.loads(prior_result_path.read_text())
             if bool(prior_result.get('assigned_identity_updates', False)) != args.assigned_identity_updates:
                 raise ValueError('Resume source uses a different observation/final-ID memory update protocol')
+            if prior_result.get('lifecycle_termination_policy','learned_or_timeout')!=args.lifecycle_termination_policy:
+                raise ValueError('Resume source uses a different lifecycle termination policy')
             if prior_result.get('replay_feature_vectors_omitted_from_log'):
                 feature_source_path=Path(prior_result['shared_input_features_source'])
         elif args.omit_replay_feature_vectors:
@@ -398,6 +402,7 @@ def main():
               'gt_read_by_runtime': False, 'future_frames_read_by_runtime': False,
               'memory_policy':args.memory_policy,'memory_feature_view':args.memory_feature_view,
               'lost_seconds':args.lost_seconds,'ema_alpha':args.ema_alpha,
+              'lifecycle_termination_policy':args.lifecycle_termination_policy,
               'replay_feature_vectors_omitted_from_log':args.omit_replay_feature_vectors,
               'shared_input_features_source':str(native_archive_path) if args.record_native_candidates else
                   str(args.candidate_replay) if args.omit_replay_feature_vectors else None,

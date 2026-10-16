@@ -70,6 +70,16 @@ proposal deletion is implied. Fresh pipeline timers include actual archive/state
 render/video-encoder completion and final export; cached association FPS is
 never called full native pipeline FPS.
 
+An opt-in `timeout_only` lifecycle execution control defers learned TERMINATE
+requests until the original3s physical expiry. It retains all typed model
+outputs and the unchanged matching/update/semantic policies; future histories
+can differ. Default `learned_or_timeout` is preserved. Real native and Compact
+prefix checks reproduce original default states and isolate actual early-ID
+deferral; full before/after controls remain required before adoption. This
+does not relabel unknown birth bindings, extend the timeout, or establish gains.
+The queued native control reuses same-checkpoint image-only categories only;
+all identity/lifecycle inference still runs and replay speed is not E2E speed.
+
 Compact geometric retrieval now computes the original scalarIoU operation
 order in FP64 batches and caches same-timestamp predicted boxes. Real dense
 1397715pairIoUs,37groups32/64/128rankings and complete decisions/lifecycle/

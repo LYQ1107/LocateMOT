@@ -1,0 +1,102 @@
+{
+  "status": "IMMUTABLE_NATIVE_LIFECYCLE_TARGET_INVENTORY_COMPLETE",
+  "sources": {
+    "full_epoch_MOT_sources": {
+      "source": "outputs/groundjev/training_data/full_joint_source_manifest_v1/train.sources.json",
+      "selected_bucket": "mot",
+      "rows": 252258,
+      "families": {
+        "identity": 48051,
+        "memory_update": 48051,
+        "reliability": 48051,
+        "lifecycle": 93624,
+        "assigned_identity_memory_update": 14478,
+        "empty_presence": 3
+      },
+      "lifecycle_targets": {
+        "ACTIVE": 60077,
+        "LOST": 12117,
+        "TERMINATE": 4682,
+        "REACTIVATE": 16748
+      },
+      "terminate_fraction": 0.05000854481756815
+    },
+    "balanced6000_24000": {
+      "source": "outputs/groundjev/training_data/broader_shared_onejev6000_v2_fla/train.jsonl.gz",
+      "selected_bucket": null,
+      "rows": 24000,
+      "families": {
+        "identity": 3997,
+        "query_membership": 6723,
+        "category_group": 4000,
+        "category_leaf": 4000,
+        "memory_update": 500,
+        "empty_query_presence": 1277,
+        "lifecycle": 1000,
+        "assigned_identity_memory_update": 2000,
+        "reliability": 500,
+        "empty_presence": 3
+      },
+      "lifecycle_targets": {
+        "TERMINATE": 250,
+        "ACTIVE": 250,
+        "REACTIVATE": 250,
+        "LOST": 250
+      },
+      "terminate_fraction": 0.25
+    },
+    "paired_short_24000": {
+      "source": "outputs/groundjev/training_data/paired_temporal_teacher24000_v2_indexed/short/train.sources.json",
+      "selected_bucket": null,
+      "rows": 24000,
+      "families": {
+        "lifecycle": 500,
+        "query_membership": 6723,
+        "category_leaf": 4000,
+        "identity": 5999,
+        "assigned_identity_memory_update": 1000,
+        "empty_query_presence": 1277,
+        "category_group": 4000,
+        "memory_update": 250,
+        "reliability": 250,
+        "empty_presence": 1
+      },
+      "lifecycle_targets": {
+        "REACTIVATE": 117,
+        "ACTIVE": 128,
+        "TERMINATE": 130,
+        "LOST": 125
+      },
+      "terminate_fraction": 0.26
+    },
+    "paired_long_24000": {
+      "source": "outputs/groundjev/training_data/paired_temporal_teacher24000_v2_indexed/long/train.sources.json",
+      "selected_bucket": null,
+      "rows": 24000,
+      "families": {
+        "lifecycle": 500,
+        "query_membership": 6723,
+        "category_leaf": 4000,
+        "identity": 5999,
+        "assigned_identity_memory_update": 1000,
+        "empty_query_presence": 1277,
+        "category_group": 4000,
+        "memory_update": 250,
+        "reliability": 250,
+        "empty_presence": 1
+      },
+      "lifecycle_targets": {
+        "REACTIVATE": 117,
+        "ACTIVE": 128,
+        "TERMINATE": 130,
+        "LOST": 125
+      },
+      "terminate_fraction": 0.26
+    }
+  },
+  "exporter_contract": "export_broader_native_full_groups.py assigns TERMINATE iff its external birth GT binding is None. That proxy is not independent evidence an object permanently left the video; unknown remains unknown. Inventory counts literal row targets, not a new per-row GT validity certification or a causal demonstration of model failure.",
+  "progress_scope": "Curriculum target inventory only. Full epoch and paired stages remain incomplete; this is not a claim every listed row has already been consumed.",
+  "original_rows_targets_or_training_jobs_changed": false,
+  "new_GPU_or_optimizer_updates": 0,
+  "full_goal_complete": false
+}

@@ -1,0 +1,421 @@
+{
+  "status": "ORIGINAL_LEARNED_EXISTING_MASS_DILUTION_POSTHOC_AUDIT_COMPLETE",
+  "scopes": {
+    "mot_full1203": {
+      "source": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/appearance_rank_study_v1/reference_runs/mot_full1203_before",
+      "counts": {
+        "frames": 1203,
+        "candidates": 13664,
+        "GT_unmatched_candidates": 9323,
+        "GT_matched_candidates": 4341,
+        "GT_matched_without_correct_shortlisted_birth_anchor": 2573,
+        "correct_birth_option_present": 1768
+      },
+      "positive_groups": {
+        "one_correct_option": {
+          "observations": 1170,
+          "original_raw_choice_is_correct_ID": 212,
+          "original_global_assignment_is_correct_ID": 190,
+          "existing_mass_exceeds_best_action": 828,
+          "all_existing_IDs_below_best_action": 397,
+          "existing_mass_diluted_below_best_action": 55,
+          "diluted_with_current_correct_existing_rank": 8,
+          "diluted_original_global_assignment_is_wrong": 55,
+          "non_diluted_existing_mass_cannot_beat_best_action": 342
+        },
+        "multiple_correct_options": {
+          "observations": 598,
+          "original_raw_choice_is_correct_ID": 439,
+          "original_global_assignment_is_correct_ID": 385,
+          "existing_mass_exceeds_best_action": 582,
+          "all_existing_IDs_below_best_action": 26,
+          "existing_mass_diluted_below_best_action": 10,
+          "diluted_with_current_correct_existing_rank": 6,
+          "diluted_original_global_assignment_is_wrong": 10,
+          "non_diluted_existing_mass_cannot_beat_best_action": 16
+        }
+      },
+      "input_probability_mass_max_error": 2.811721060425043e-07,
+      "examples": [
+        {
+          "frame": 11,
+          "candidate": 8,
+          "correct_options": [
+            "5"
+          ],
+          "existing_options": 30,
+          "existing_mass": 0.9148115663556382,
+          "max_existing": 0.043239470571279526,
+          "best_action_probability": 0.07403776794672012,
+          "raw_choice": "NO_MATCH",
+          "actual_action": "NO_MATCH",
+          "actual_assigned_id": null
+        },
+        {
+          "frame": 12,
+          "candidate": 5,
+          "correct_options": [
+            "5"
+          ],
+          "existing_options": 30,
+          "existing_mass": 0.9454682043287903,
+          "max_existing": 0.04713556170463562,
+          "best_action_probability": 0.05154109746217728,
+          "raw_choice": "NO_MATCH",
+          "actual_action": "NO_MATCH",
+          "actual_assigned_id": null
+        },
+        {
+          "frame": 17,
+          "candidate": 4,
+          "correct_options": [
+            "5"
+          ],
+          "existing_options": 30,
+          "existing_mass": 0.9572022324573481,
+          "max_existing": 0.03749638795852661,
+          "best_action_probability": 0.042644575238227844,
+          "raw_choice": "NO_MATCH",
+          "actual_action": "NO_MATCH",
+          "actual_assigned_id": null
+        },
+        {
+          "frame": 19,
+          "candidate": 4,
+          "correct_options": [
+            "5"
+          ],
+          "existing_options": 30,
+          "existing_mass": 0.8403692143037915,
+          "max_existing": 0.0638536810874939,
+          "best_action_probability": 0.15594325959682465,
+          "raw_choice": "NO_MATCH",
+          "actual_action": "NO_MATCH",
+          "actual_assigned_id": null
+        },
+        {
+          "frame": 20,
+          "candidate": 8,
+          "correct_options": [
+            "5"
+          ],
+          "existing_options": 30,
+          "existing_mass": 0.8773531853221357,
+          "max_existing": 0.06158670037984848,
+          "best_action_probability": 0.11531011760234833,
+          "raw_choice": "NO_MATCH",
+          "actual_action": "NO_MATCH",
+          "actual_assigned_id": null
+        },
+        {
+          "frame": 22,
+          "candidate": 4,
+          "correct_options": [
+            "5"
+          ],
+          "existing_options": 30,
+          "existing_mass": 0.7763766914140433,
+          "max_existing": 0.04703481122851372,
+          "best_action_probability": 0.21416544914245605,
+          "raw_choice": "NO_MATCH",
+          "actual_action": "NO_MATCH",
+          "actual_assigned_id": null
+        },
+        {
+          "frame": 23,
+          "candidate": 4,
+          "correct_options": [
+            "5"
+          ],
+          "existing_options": 30,
+          "existing_mass": 0.8483271384611726,
+          "max_existing": 0.05060308054089546,
+          "best_action_probability": 0.1470753401517868,
+          "raw_choice": "NO_MATCH",
+          "actual_action": "NO_MATCH",
+          "actual_assigned_id": null
+        },
+        {
+          "frame": 24,
+          "candidate": 6,
+          "correct_options": [
+            "5"
+          ],
+          "existing_options": 30,
+          "existing_mass": 0.8529142469633371,
+          "max_existing": 0.04911542683839798,
+          "best_action_probability": 0.13929899036884308,
+          "raw_choice": "NO_MATCH",
+          "actual_action": "NO_MATCH",
+          "actual_assigned_id": null
+        }
+      ]
+    },
+    "rmot_single800": {
+      "source": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/appearance_rank_study_v1/reference_runs/rmot_single800_before",
+      "counts": {
+        "frames": 800,
+        "candidates": 1412,
+        "GT_unmatched_candidates": 1161,
+        "GT_matched_candidates": 251,
+        "GT_matched_without_correct_shortlisted_birth_anchor": 198,
+        "correct_birth_option_present": 53
+      },
+      "positive_groups": {
+        "one_correct_option": {
+          "observations": 46,
+          "original_raw_choice_is_correct_ID": 26,
+          "original_global_assignment_is_correct_ID": 22,
+          "existing_mass_exceeds_best_action": 46,
+          "all_existing_IDs_below_best_action": 0,
+          "existing_mass_diluted_below_best_action": 0,
+          "diluted_with_current_correct_existing_rank": 0,
+          "diluted_original_global_assignment_is_wrong": 0,
+          "non_diluted_existing_mass_cannot_beat_best_action": 0
+        },
+        "multiple_correct_options": {
+          "observations": 7,
+          "original_raw_choice_is_correct_ID": 5,
+          "original_global_assignment_is_correct_ID": 5,
+          "existing_mass_exceeds_best_action": 7,
+          "all_existing_IDs_below_best_action": 0,
+          "existing_mass_diluted_below_best_action": 0,
+          "diluted_with_current_correct_existing_rank": 0,
+          "diluted_original_global_assignment_is_wrong": 0,
+          "non_diluted_existing_mass_cannot_beat_best_action": 0
+        }
+      },
+      "input_probability_mass_max_error": 3.7093917626407347e-07,
+      "examples": []
+    },
+    "rmot_multi800": {
+      "source": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/appearance_rank_study_v1/reference_runs/rmot_multi800_before",
+      "counts": {
+        "frames": 800,
+        "candidates": 2208,
+        "GT_matched_candidates": 1239,
+        "GT_matched_without_correct_shortlisted_birth_anchor": 1048,
+        "GT_unmatched_candidates": 969,
+        "correct_birth_option_present": 191
+      },
+      "positive_groups": {
+        "one_correct_option": {
+          "observations": 156,
+          "original_raw_choice_is_correct_ID": 48,
+          "original_global_assignment_is_correct_ID": 53,
+          "existing_mass_exceeds_best_action": 156,
+          "all_existing_IDs_below_best_action": 0,
+          "existing_mass_diluted_below_best_action": 0,
+          "diluted_with_current_correct_existing_rank": 0,
+          "diluted_original_global_assignment_is_wrong": 0,
+          "non_diluted_existing_mass_cannot_beat_best_action": 0
+        },
+        "multiple_correct_options": {
+          "observations": 35,
+          "original_raw_choice_is_correct_ID": 34,
+          "original_global_assignment_is_correct_ID": 32,
+          "existing_mass_exceeds_best_action": 35,
+          "all_existing_IDs_below_best_action": 0,
+          "existing_mass_diluted_below_best_action": 0,
+          "diluted_with_current_correct_existing_rank": 0,
+          "diluted_original_global_assignment_is_wrong": 0,
+          "non_diluted_existing_mass_cannot_beat_best_action": 0
+        }
+      },
+      "input_probability_mass_max_error": 3.12699285132112e-07,
+      "examples": []
+    },
+    "tao_raw_full40": {
+      "source": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/appearance_rank_study_v1/reference_runs/tao_raw_full40_before",
+      "counts": {
+        "frames": 40,
+        "candidates": 35228,
+        "GT_unmatched_candidates": 35081,
+        "GT_matched_candidates": 147,
+        "GT_matched_without_correct_shortlisted_birth_anchor": 126,
+        "correct_birth_option_present": 21
+      },
+      "positive_groups": {
+        "one_correct_option": {
+          "observations": 17,
+          "original_raw_choice_is_correct_ID": 7,
+          "original_global_assignment_is_correct_ID": 6,
+          "existing_mass_exceeds_best_action": 17,
+          "all_existing_IDs_below_best_action": 0,
+          "existing_mass_diluted_below_best_action": 0,
+          "diluted_with_current_correct_existing_rank": 0,
+          "diluted_original_global_assignment_is_wrong": 0,
+          "non_diluted_existing_mass_cannot_beat_best_action": 0
+        },
+        "multiple_correct_options": {
+          "observations": 4,
+          "original_raw_choice_is_correct_ID": 2,
+          "original_global_assignment_is_correct_ID": 1,
+          "existing_mass_exceeds_best_action": 4,
+          "all_existing_IDs_below_best_action": 0,
+          "existing_mass_diluted_below_best_action": 0,
+          "diluted_with_current_correct_existing_rank": 0,
+          "diluted_original_global_assignment_is_wrong": 0,
+          "non_diluted_existing_mass_cannot_beat_best_action": 0
+        }
+      },
+      "input_probability_mass_max_error": 2.1996311261318624e-07,
+      "examples": []
+    },
+    "mot20_challenge": {
+      "source": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/appearance_rank_study_v1/reference_runs/mot20_challenge_before",
+      "counts": {
+        "frames": 1657,
+        "candidates": 235232,
+        "GT_matched_candidates": 219060,
+        "GT_matched_without_correct_shortlisted_birth_anchor": 199865,
+        "GT_unmatched_candidates": 16172,
+        "correct_birth_option_present": 19195
+      },
+      "positive_groups": {
+        "one_correct_option": {
+          "observations": 15774,
+          "original_raw_choice_is_correct_ID": 4199,
+          "original_global_assignment_is_correct_ID": 3971,
+          "existing_mass_exceeds_best_action": 11238,
+          "all_existing_IDs_below_best_action": 7123,
+          "existing_mass_diluted_below_best_action": 2587,
+          "diluted_with_current_correct_existing_rank": 627,
+          "diluted_original_global_assignment_is_wrong": 2587,
+          "non_diluted_existing_mass_cannot_beat_best_action": 4536
+        },
+        "multiple_correct_options": {
+          "observations": 3421,
+          "original_raw_choice_is_correct_ID": 938,
+          "original_global_assignment_is_correct_ID": 782,
+          "existing_mass_exceeds_best_action": 2834,
+          "all_existing_IDs_below_best_action": 1040,
+          "existing_mass_diluted_below_best_action": 453,
+          "diluted_with_current_correct_existing_rank": 154,
+          "diluted_original_global_assignment_is_wrong": 453,
+          "non_diluted_existing_mass_cannot_beat_best_action": 587
+        }
+      },
+      "input_probability_mass_max_error": 2.6078487280756235e-07,
+      "examples": [
+        {
+          "frame": 1660,
+          "candidate": 18,
+          "correct_options": [
+            "17"
+          ],
+          "existing_options": 32,
+          "existing_mass": 0.568014490774658,
+          "max_existing": 0.35797861218452454,
+          "best_action_probability": 0.42948952317237854,
+          "raw_choice": "NO_MATCH",
+          "actual_action": "NO_MATCH",
+          "actual_assigned_id": null
+        },
+        {
+          "frame": 1660,
+          "candidate": 23,
+          "correct_options": [
+            "22"
+          ],
+          "existing_options": 32,
+          "existing_mass": 0.6694132553336658,
+          "max_existing": 0.2586478292942047,
+          "best_action_probability": 0.32871466875076294,
+          "raw_choice": "NO_MATCH",
+          "actual_action": "NO_MATCH",
+          "actual_assigned_id": null
+        },
+        {
+          "frame": 1660,
+          "candidate": 24,
+          "correct_options": [
+            "24"
+          ],
+          "existing_options": 32,
+          "existing_mass": 0.6391948597593,
+          "max_existing": 0.26310086250305176,
+          "best_action_probability": 0.3595017194747925,
+          "raw_choice": "NO_MATCH",
+          "actual_action": "NO_MATCH",
+          "actual_assigned_id": null
+        },
+        {
+          "frame": 1660,
+          "candidate": 32,
+          "correct_options": [
+            "31"
+          ],
+          "existing_options": 32,
+          "existing_mass": 0.5673331255820813,
+          "max_existing": 0.3427450358867645,
+          "best_action_probability": 0.4321305751800537,
+          "raw_choice": "NO_MATCH",
+          "actual_action": "NO_MATCH",
+          "actual_assigned_id": null
+        },
+        {
+          "frame": 1660,
+          "candidate": 37,
+          "correct_options": [
+            "36"
+          ],
+          "existing_options": 32,
+          "existing_mass": 0.5393992138415342,
+          "max_existing": 0.32870107889175415,
+          "best_action_probability": 0.4596528708934784,
+          "raw_choice": "NO_MATCH",
+          "actual_action": "NO_MATCH",
+          "actual_assigned_id": null
+        },
+        {
+          "frame": 1660,
+          "candidate": 41,
+          "correct_options": [
+            "40"
+          ],
+          "existing_options": 32,
+          "existing_mass": 0.7407758304216259,
+          "max_existing": 0.2243233472108841,
+          "best_action_probability": 0.22699503600597382,
+          "raw_choice": "NO_MATCH",
+          "actual_action": "NO_MATCH",
+          "actual_assigned_id": null
+        },
+        {
+          "frame": 1660,
+          "candidate": 45,
+          "correct_options": [
+            "44"
+          ],
+          "existing_options": 32,
+          "existing_mass": 0.5496808150492143,
+          "max_existing": 0.34239447116851807,
+          "best_action_probability": 0.44999027252197266,
+          "raw_choice": "NO_MATCH",
+          "actual_action": "NO_MATCH",
+          "actual_assigned_id": null
+        },
+        {
+          "frame": 1660,
+          "candidate": 47,
+          "correct_options": [
+            "46"
+          ],
+          "existing_options": 32,
+          "existing_mass": 0.5381983461702475,
+          "max_existing": 0.3685726523399353,
+          "best_action_probability": 0.46043261885643005,
+          "raw_choice": "NO_MATCH",
+          "actual_action": "NO_MATCH",
+          "actual_assigned_id": null
+        }
+      ]
+    }
+  },
+  "criterion": "Correct immutable birth-ID option exists in the actual shortlist; old sumP(existing)>maxP(action), but every single existing-ID probability is below that action.",
+  "scope": "All five fixed original learned trajectories. GT/birth alignment from original external diagnostic only; no GT enters inference. Potential is an oracle bound, not proof appearance selects a correct identity, global assignment recovery, HOTA improvement or calibrated posteriors.",
+  "new_GPU_or_optimizer_updates": 0,
+  "original_predictions_or_protocol_changed": false,
+  "full_goal_complete": false
+}

@@ -1,0 +1,14 @@
+{
+  "status": "WAITING_ORIGINAL_FOUR_GPU_FULL_STATE_CHECKPOINT",
+  "original_owner_pid": 3457625,
+  "original_owner_starttick": "49350320",
+  "observer_pid": 4156647,
+  "target_step": 2000,
+  "training": "/data3/user/LocateMOT-checkpoints/onejev_full_joint_source_epoch1_v1",
+  "new_GPU_or_optimizer_updates": 0,
+  "metadata_suballocation_bytes": 1048576,
+  "metadata_reservation": "Shared lifecycle/probability-audit3MiB metadata allocation; reports together remain below1MiB; no new feature allocation",
+  "combined_registered_feature_upper_bytes": 26826974174,
+  "global_temporary_feature_budget_bytes": 26843545600,
+  "full_goal_complete": false
+}

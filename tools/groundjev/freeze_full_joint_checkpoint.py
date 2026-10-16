@@ -14,7 +14,10 @@ ROOT=Path(__file__).resolve().parents[2]
 def main():
     parser=argparse.ArgumentParser();parser.add_argument('--owner',type=Path,required=True)
     parser.add_argument('--training',type=Path,required=True);parser.add_argument('--step',type=int,required=True)
-    parser.add_argument('--out',type=Path,required=True);args=parser.parse_args()
+    parser.add_argument('--out',type=Path,required=True)
+    parser.add_argument('--registered-feature-upper',type=int,default=26710582238)
+    parser.add_argument('--metadata-reservation',default='Existing8MiB native adapter/report reservation; no new feature allocation')
+    args=parser.parse_args()
     assert os.environ.get('CUDA_VISIBLE_DEVICES')==''
     owner=json.loads((args.owner/'owner_state.json').read_text());pid=owner['owner_pid']
     proc=Path('/proc')/str(pid);fields=(proc/'stat').read_text().rsplit(')',1)[1].split()
@@ -24,8 +27,8 @@ def main():
     registration=dict(status='WAITING_ORIGINAL_FOUR_GPU_FULL_STATE_CHECKPOINT',original_owner_pid=pid,
         original_owner_starttick=owner['owner_starttick'],observer_pid=os.getpid(),target_step=args.step,
         training=str(args.training),new_GPU_or_optimizer_updates=0,
-        metadata_suballocation_bytes=2**20,metadata_reservation='Existing8MiB native adapter/report reservation; no new feature allocation',
-        combined_registered_feature_upper_bytes=26710582238,global_temporary_feature_budget_bytes=26843545600,
+        metadata_suballocation_bytes=2**20,metadata_reservation=args.metadata_reservation,
+        combined_registered_feature_upper_bytes=args.registered_feature_upper,global_temporary_feature_budget_bytes=26843545600,
         full_goal_complete=False)
     (args.out/'registration.json').write_text(json.dumps(registration,indent=2)+'\n')
     print(json.dumps(registration),flush=True)

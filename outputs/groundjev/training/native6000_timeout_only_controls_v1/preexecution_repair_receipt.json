@@ -1,0 +1,25 @@
+{
+  "status": "PREEXECUTION_NATIVE_CONTROL_CPU_QUEUE_EXIT_CONFIRMED",
+  "old_identity": [
+    4147813,
+    "52745273"
+  ],
+  "old_state": {
+    "status": "WAITING_ORIGINAL_NATIVE6000_ALL_CONTROLS_SUCCESS",
+    "owner_pid": 4147813,
+    "owner_starttick": "52745273",
+    "completed": {},
+    "physical_gpu": 7,
+    "new_optimizer_updates": 0,
+    "full_goal_complete": false
+  },
+  "reason": "Queued code checked runtime.native_category_replay, but run_video exports runtime.category_replay; corrected before any native inference.",
+  "old_CPU_wait_only": true,
+  "actual_inference_calls": 0,
+  "training_or_other_worker_targeted": false,
+  "exit_confirmed_by_pidfd": true,
+  "successor_output": "outputs/groundjev/training/native6000_timeout_only_controls_v2",
+  "scientific_policy_or_inputs_changed": false,
+  "original_waiter_terminal_session": 34665,
+  "original_waiter_exit_code": 143
+}

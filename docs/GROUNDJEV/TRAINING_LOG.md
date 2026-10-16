@@ -1,5 +1,28 @@
 # Current shared foundation adaptation — 2026-10-16
 
+Read-only lifecycle inventory now quantifies an explicit sampling difference:
+the full-source MOT component has93624lifecycle rows, ACTIVE60077/LOST12117/
+REACTIVATE16748/TERMINATE4682 (5.00085%terminate); the completedbalanced24000
+course has1000lifecycle rows/250per class (25%terminate). Both unchanged paired
+24000courses have500rows:ACTIVE128/LOST125/REACTIVATE117/TERMINATE130 (26%).
+The exporter assigns TERMINATE when external birth GT binding is unknown; this
+is a proxy, not independent evidence of permanent exit. Counts are curriculum
+inventory, not proof the ongoing runs consumed allrows or that sampling caused
+the observed head behavior. Current full-source natural training and paired
+controlled mixtures remain unchanged. Native6000DT known early retirements138
+(131GTpresent) versus0before motivate separately registered timeout-only execution
+controls; no training label or loss was silently changed. Evidence:
+[literal target inventory](../../outputs/groundjev/diagnostics/lifecycle_proxy_inventory_v1/summary.json),
+[birth/survival provenance](../../outputs/groundjev/diagnostics/identity_survival_provenance_v1/summary.json).
+
+A one-shot CPU observer has completed actual four-rank2000checkpoint validation:
+32000questions consumed,17590MOT/7107RMOT/7303OVMOT,752393024FP32parameters
+and1504786048Adam-moment elements finite, all320optimizer steps/scheduler/cursor
+exact and allfourrankTorch/CUDA/Python/NumPyRNG states saved. The9,029,193,825byte
+atomic latest full state is replaced at subsequent saves; numberedBF16step2000
+is retained. No actual2000restart or newinference was performed. Evidence:
+[actual2000 full-state validation](../../outputs/groundjev/training/full_joint_source_epoch1_actual2000_snapshot_v1/validation.json).
+
 The paired temporal foundation study has now begun genuine short-branch native
 optimization: updates1..5/examples4..20, finite loss/positive finite gradients,
 752393024trainable language parameters, vision frozen; exact native6000FP32
@@ -16,10 +39,10 @@ First5peakTorchallocated16.8548GiB, not full-runpeak or steady speed. Evidence:
 [actual short-branch first5](../../outputs/groundjev/training/paired_temporal_teacher6000_owner_v3_early_window/first5_short_optimizer_snapshot.json).
 
 The original full-source four-GPU MOT/RMOT/OVMOT SFT has reached a frozen
-observation of **1700updates/27200questions**, elapsed20688.803s (5.747h).
+observation of **2000updates/32000questions**, elapsed24227.312s (6.730h).
 The epoch and final tracking evaluation remain incomplete. Evidence:
-[actual1700 log snapshot](../../outputs/groundjev/training/full_joint_source_epoch1_progress1700_snapshot_v1/snapshot.json).
-This is logged execution; the last fully inspected numerical training state is1000.
+[actual2000 full-state snapshot](../../outputs/groundjev/training/full_joint_source_epoch1_actual2000_snapshot_v1/validation.json).
+This milestone includes complete numerical state inspection, not only a log row.
 
 The earlier completed one-shot observer verified updates1–5, examples16/32/48/64/80,
 finite losses and positive finite gradients. Its first80 questions comprise
@@ -62,11 +85,11 @@ not three-task ordinary-model parity. TAO remains pending. Evidence:
 [all9official units and same-state write audit](../../outputs/groundjev/training/broader_shared6000_fla_owner_v2/first_three_native_scopes_completed.json),
 [the6000 snapshot](../../outputs/groundjev/training/shared6000_actual6000_snapshot_v1/validation.json).
 
-The independent full-source epoch is incomplete (latest frozen observation1700updates/27200questions,
-elapsed20688.803s). See
-[actual1700 log snapshot](../../outputs/groundjev/training/full_joint_source_epoch1_progress1700_snapshot_v1/snapshot.json).
-This proves logged execution, not a full1700checkpoint-state inspection; the
-last full FP32/Adam/RNG numerical inspection remains the1000save.
+The independent full-source epoch is incomplete (latest frozen observation2000updates/32000questions,
+elapsed24227.312s). See
+[actual2000 full-state snapshot](../../outputs/groundjev/training/full_joint_source_epoch1_actual2000_snapshot_v1/validation.json).
+The full FP32/Adam/all-rankRNGnumerical inspection passed at2000;
+epoch completion and final accuracy remain pending.
 Final tracking controls for both studies remain incomplete.
 Five updates establish real execution, not tracking gains. Both studies
 retain their registered final shared checkpoint and unchanged task metrics,

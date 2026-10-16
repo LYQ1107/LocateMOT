@@ -32,6 +32,9 @@ def main():
     if plan.get('input_evidence_regression'):
         evidence = json.loads((ROOT/plan['input_evidence_regression']).read_text())
         assert evidence['status'] == 'REAL_THREE_TASK_INPUT_EVIDENCE_ISOLATION_AND_DEFAULT_EXACT'
+    if plan.get('termination_regression'):
+        termination=json.loads((ROOT/plan['termination_regression']).read_text())
+        assert termination['status']=='REAL_NATIVE_AND_COMPACT_DEFAULT_PREFIX_EARLY_DEFERRAL_AND_EXPIRY_VALIDATED'
     args.out.mkdir(parents=True, exist_ok=False)
     state = {'status': 'STARTING_FIXED_AFFINITY_CONTROLS', 'owner_pid': os.getpid(),
         'plan': str(args.plan), 'device': 'cpu', 'additional_GPUs': 0,
@@ -95,6 +98,8 @@ def main():
                         '--memory-policy', policies.get('memory_policy', 'gated'), '--memory-feature-view', policies.get('feature_view', 'all'),
                         '--lost-seconds', str(policies.get('lost_seconds', 3.)), '--ema-alpha', str(policies.get('EMA_alpha', .1)),
                         '--out', str(output)]
+                    if policies.get('lifecycle_termination_policy'):
+                        command+=['--lifecycle-termination-policy',policies['lifecycle_termination_policy']]
                     if backend == 'compact':
                         command += ['--compact-device', 'cpu', '--checkpoint', str(checkpoint),
                             '--compact-association-policy', policies['association'], '--compact-auxiliary-policy', policies['auxiliary'],
@@ -155,6 +160,7 @@ def main():
                 assert report['memory_policy'] == policies.get('memory_policy', 'gated')
                 assert report['memory_feature_view'] == policies.get('feature_view', 'all')
                 assert report['lost_seconds'] == policies.get('lost_seconds', 3.)
+                assert report.get('lifecycle_termination_policy','learned_or_timeout')==policies.get('lifecycle_termination_policy','learned_or_timeout')
                 if backend == 'compact':
                     assert report['compact_association_policy'] == policies['association']
                     assert report['compact_auxiliary_policy'] == policies['auxiliary']

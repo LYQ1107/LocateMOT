@@ -1,3 +1,80 @@
+## Lifecycle provenance measured; explicit deletion controls running — 2026-10-16
+
+Two complete posthoc audits now constrain the next intervention. All five
+original learned Compact scopes/287744candidates show probability dilution
+(sum existing-ID mass beats an action but every ID individually loses) in
+65DT/0singleRMOT/0multiRMOT/0TAO/3040MOT20positive-shortlist events. This does
+not explain the missing RMOT appearance gain; the proposed conditional-mass
+policy was NOT implemented or launched. The audit is an oracle potential
+diagnostic, not tracking improvement or calibration evidence.
+
+The second audit reconstructs immutable birth bindings, survival and actual
+retirement causes on those five scopes plus nine completed native controls.
+Every reconstructed surviving correct ID matches the original frozen external
+diagnostic; all frames/candidates remain included. CompactMOT20's219060matched
+observations split into first646/neverGTboundbirth147769/allboundbirthsretired
+45599/alivebutshortlistmiss5851/correctshortlist19195. Unknown births remain
+unknown: these counts do not prove no physical identity existed or replace HOTA.
+
+Native DT600→6000 has0→138GT-bound premature learned retirements,131withGT
+still present; native multiRMOT0→55,41withGTpresent. Compact's known early
+retirements are DT0/single20/multi7/TAO0/MOT2014. These are provenance counts,
+not proof deletion alone caused accuracy changes. The source exporter labels
+unknown GT-at-birth bindings TERMINATE, a proxy that does not establish permanent
+exit. Literal lifecycle target inventory: full-sourceMOT4682/93624=5.00085%
+TERMINATE; completedbalanced24k250/1000=25%; bothpairedcourses130/500=26%.
+The running full-source natural course has not inherited balanced oversampling;
+the controlled paired courses remain unchanged. Inventory is not already-trained
+exposure or independent per-row GT certification. No current row/target/job edited.
+
+Opt-in `timeout_only` changes only physical deletion execution: learned early
+TERMINATE leaves the identity available until the original3s timeout. All model
+distributions/matching/auxiliary/semantic outputs are retained; future states
+may differ. Default `learned_or_timeout` and all registered original protocols
+remain unchanged. Real30frameCompact and19frame native prefixes reproduce default
+state/outputs exactly, retain precisely the early-deleted IDs under intervention,
+and preserve all common identity states. Original3s expiry also passes a labelled
+functional empty-observation counterfactual, which is not a scored video frame.
+
+The actual Compact all5scope control owner82298has completed first4/all8units:
+
+|HOTA %|Original|Timeout-only|
+|---|---:|---:|
+|DT1203|26.3157|26.3157|
+|RMOT single800|6.0247|6.4816|
+|RMOT multi800|19.8019|19.5578|
+
+RawTAO40TETA14.517→14.493,NovelClsA0inboth; no general recognition gain.
+
+MultiIDF1%=21.0082→21.0638,IDSW165→157,FP619→597,FN1054→1061.
+Mixed evidence, no policy promotion; finalMOT20 remains running. A genuine native
+same6000checkpoint counterpart is queued (owner4149961/start52754749,session90700)
+behind original6000all-controls completion and the current GPU7training window.
+It runs all4originalscopes, keeps3s/defaultmatching/thresholds/scorers, takes a
+serializedGPU7window, and reuses TAO native image-only category outputs only from
+the same complete checkpoint/current-image/candidate/vocabulary source. All
+identity/lifecycle inference reruns; no fresh E2E/speed claim. It has0newcalls now.
+Its v1CPUwaiter had a statically discovered category summary field-name error;
+exactCPU-only handoff/exit143/code snapshot are preserved before any inference.
+Only this new waiter was replaced; original training/inference jobs were untouched.
+
+Evidence: `diagnostics/{existing_probability_dilution_v1,identity_survival_provenance_v1,
+lifecycle_proxy_inventory_v1}/summary.json`, `validation/timeout_only_lifecycle_v1/validation.json`,
+`compact/timeout_only_lifecycle_controls_v1/first_four_scopes_completed.json`,
+`training/native6000_timeout_only_controls_v2/queued_snapshot.json`.
+Shared3MiBaudit/control reservation raises feature upper to26,826,974,174bytes
+<26,843,545,600; no new ROI/image bank or GPU. Original Full four-GPU and paired
+short/long training continue. The one-shot CPU observer49603has now completed
+and verified the actual2000save/32000questions:17590MOT/7107RMOT/7303OVMOT,
+all752393024FP32parameters and1504786048Adam-moment elements finite, exact
+optimizer/scheduler/cursor2000 and allfourrankTorch/CUDA/Python/NumPyRNG states.
+The9,029,193,825byte latest full state and numberedBF16ckpt-step2000exist;
+later full-state saves replace the atomiclatest, numberedBF16exports persist.
+This is actual checkpoint inspection, not an actual2000restart, completedepoch
+or newtrackingresult. Evidence:
+`training/full_joint_source_epoch1_actual2000_snapshot_v1/validation.json`.
+Ordinary-model parity across all three tasks is unmet.
+
 ## Paired temporal foundation study now actually optimizing — 2026-10-16
 
 The prepared short/long study no longer waits for unrelated native6000 TAO

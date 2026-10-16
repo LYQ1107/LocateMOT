@@ -35,11 +35,13 @@ class Track:
 
 
 class OnlineTracker:
-    def __init__(self, decision, lost_seconds=3., update_threshold=.5, memory_policy='gated', ema_alpha=.1):
+    def __init__(self, decision, lost_seconds=3., update_threshold=.5, memory_policy='gated', ema_alpha=.1,
+                 lifecycle_termination_policy='learned_or_timeout'):
         self.decision = decision
         self.lost_seconds, self.update_threshold = lost_seconds, update_threshold
         self.tracks, self.next_id, self.previous_timestamp = {}, 1, None
         self.memory_policy,self.ema_alpha = memory_policy,ema_alpha
+        self.lifecycle_termination_policy=lifecycle_termination_policy
 
     def step(self, image, candidates, timestamp, specification):
         import numpy as np
@@ -158,9 +160,12 @@ class OnlineTracker:
             decision = lifecycle.get(track.track_id)
             if track.anchor_feature is not None and decision:
                 track.alive_probability=1.-decision['probabilities']['TERMINATE']
-            terminate = (decision and decision['choice'] == 'TERMINATE') or self.memory_policy=='frame_only'
+            terminate = (decision and decision['choice'] == 'TERMINATE' and
+                         self.lifecycle_termination_policy=='learned_or_timeout') or self.memory_policy=='frame_only'
             track.state = 'TERMINATE' if terminate or track.lost_age > self.lost_seconds else 'LOST'
             events.append({'track_id': track.track_id, 'action': track.state, 'lifecycle_decision': decision})
+            if self.lifecycle_termination_policy=='timeout_only':
+                events[-1]['learned_termination_deferred']=bool(decision and decision['choice']=='TERMINATE' and track.state!='TERMINATE')
             if track.state == 'TERMINATE':
                 self.tracks.pop(track.track_id)
         self.previous_timestamp = timestamp
@@ -176,6 +181,8 @@ class OnlineTracker:
                 track.recent_boxes=track.recent_boxes[-1:]
         native=any(t.anchor_feature is not None for t in self.tracks.values())
         if self.memory_policy!='gated':meta.update(memory_update_policy=self.memory_policy,ema_alpha=self.ema_alpha)
+        if self.lifecycle_termination_policy!='learned_or_timeout':
+            meta['lifecycle_termination_policy']=self.lifecycle_termination_policy
         return outputs, {'events': events, 'decision_metadata': meta, 'persistent_ids': list(self.tracks),
                          'next_id': self.next_id, 'timestamp': timestamp,
                          'visual_memory_source': 'real_causal_crops_and_native_DLM_region_features' if native else 'real_causal_crops; native feature adapter pending'}

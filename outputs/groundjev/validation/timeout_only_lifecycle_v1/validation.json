@@ -1,0 +1,36 @@
+{
+  "status": "REAL_NATIVE_AND_COMPACT_DEFAULT_PREFIX_EARLY_DEFERRAL_AND_EXPIRY_VALIDATED",
+  "cases": {
+    "compact": {
+      "source": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/appearance_rank_study_v1/reference_runs/rmot_single800_before",
+      "prefix_frames": 30,
+      "first_early_frame": 29,
+      "actual_early_IDs": [
+        1
+      ],
+      "original_outputs_and_entire_prefix_state_exact": true,
+      "changed_ID_set_exactly_original_early_deletions": true,
+      "common_identity_states_exact": true,
+      "timeout_expiry_on_restored_state_verified": true,
+      "expiry_check_scope": "Functional empty-observation/forced-head counterfactual after original3s, not a measured video frame or tracking metric."
+    },
+    "native": {
+      "source": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/broader_shared6000_fla_owner_v2/controls/default_mot_full1203",
+      "prefix_frames": 19,
+      "first_early_frame": 19,
+      "actual_early_IDs": [
+        4
+      ],
+      "original_outputs_and_entire_prefix_state_exact": true,
+      "changed_ID_set_exactly_original_early_deletions": true,
+      "common_identity_states_exact": true,
+      "timeout_expiry_on_restored_state_verified": true,
+      "expiry_check_scope": "Functional empty-observation/forced-head counterfactual after original3s, not a measured video frame or tracking metric."
+    }
+  },
+  "GT_or_model_or_GPU_run": false,
+  "all_original_auxiliary_and_matching_decisions_retained": true,
+  "default_policy_unchanged": true,
+  "new_optimizer_updates": 0,
+  "full_goal_complete": false
+}

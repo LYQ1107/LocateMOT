@@ -1,0 +1,37 @@
+{
+  "project_root": "/data2/user/LocateMOT",
+  "name": "Native6000 same-checkpoint timeout-only lifecycle controls",
+  "output": "outputs/groundjev/training/native6000_timeout_only_controls_v2",
+  "dependency": {
+    "directory": "outputs/groundjev/training/broader_shared6000_fla_owner_v2",
+    "script": "tools/groundjev/run_broader_shared_onejev.py",
+    "identity": [
+      3219708,
+      "47863228"
+    ],
+    "required_terminal_status": "SHARED6000_AND_ALL_FIXED_BEFORE_DEFAULT_FINAL_ID_CONTROLS_VALIDATED"
+  },
+  "checkpoint": "outputs/groundjev/training/onejev_broader_shared6000_fla_v2/ckpt-step6000",
+  "original_control_plan": "configs/groundjev/full_history_refresh600_controls_v1.json",
+  "termination_regression": "outputs/groundjev/validation/timeout_only_lifecycle_v1/validation.json",
+  "physical_gpu": 7,
+  "minimum_free_MiB": 32768,
+  "lost_seconds": 3.0,
+  "lifecycle_termination_policy": "timeout_only",
+  "resource_policy": "Wait original6000 successful all-controls exit, then acquire exclusiveGPU7launch window inherited by own children; existing four-GPU rank permitted. No GPU while queued. No current job stopped; future GPU7inference launches serialize behind this control owner.",
+  "category_policy": "Same complete checkpoint/image/candidates/vocabulary native hierarchical root+leaf outputs reused for TAO only; categories are independent of identity/history. All actual association/lifecycle inference reruns and every original frame/scorer retained; no freshE2E/timing comparison.",
+  "inference_backend": "original_reference_Torch",
+  "cuda_graphs": false,
+  "training_or_threshold_or_seed_or_metric_changes": false,
+  "prior_registered_feature_upper_bytes": 26823828446,
+  "new_shared_diagnostic_and_control_reservation_bytes": 3145728,
+  "combined_registered_feature_upper_bytes": 26826974174,
+  "global_temporary_feature_budget_bytes": 26843545600,
+  "feature_policy": "Reuse original native images/candidates; no new ROI/image bank; scientific predictions/identity state preserved separately. Shared3MiB reservation also covers probability/provenance audits and Compact lifecycle control metadata.",
+  "source_observation": "Native6000DT138known pre-timeout retirements(131GTpresent), versus0before; multiRMOT55(41GTpresent), versus0before. Causal efficacy unproven; run all4common scopes without per-task selection.",
+  "actual_inference_calls_at_registration": 0,
+  "new_optimizer_updates": 0,
+  "ordinary_model_performance_achieved": false,
+  "full_goal_complete": false,
+  "preexecution_repair_receipt": "outputs/groundjev/training/native6000_timeout_only_controls_v1/preexecution_repair_receipt.json"
+}
