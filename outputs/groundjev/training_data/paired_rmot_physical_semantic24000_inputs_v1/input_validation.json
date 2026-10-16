@@ -1,0 +1,46 @@
+{
+  "status": "PAIRED24000_THREE_TASK_COURSES_SHARED_ROWS_AND_RENDERED_PREFIXES_VALIDATED",
+  "rows_each": 24000,
+  "common_original_rows": 21118,
+  "paired_questions_each": 2882,
+  "physical_question_families": {
+    "identity": 5425,
+    "category_group": 4000,
+    "category_leaf": 4000,
+    "memory_update": 500,
+    "lifecycle": 1000,
+    "assigned_identity_memory_update": 3454,
+    "reliability": 500,
+    "empty_presence": 3,
+    "query_membership": 4285,
+    "empty_query_presence": 833
+  },
+  "semantic_question_families": {
+    "identity": 3997,
+    "category_group": 4000,
+    "category_leaf": 4000,
+    "memory_update": 500,
+    "lifecycle": 1000,
+    "assigned_identity_memory_update": 2000,
+    "reliability": 500,
+    "empty_presence": 3,
+    "query_membership": 7167,
+    "empty_query_presence": 833
+  },
+  "task_rows_each": {
+    "mot": 8000,
+    "rmot": 8000,
+    "ovmot": 8000
+  },
+  "all_common_source_rows_order_and_IDs_retained": true,
+  "all_paired_source_questions_and_targets_retained": true,
+  "all2882_paired_state_media_and_native_rendered_prefixes_equal_at_actual_global_indices": true,
+  "same_per_update_question_position_sets": 6000,
+  "paired_questions_per_first1200_updates": 619,
+  "native_microbatch_length_order_within_updates_may_differ": true,
+  "token_or_FLOP_matched": false,
+  "initial_checkpoint_used_for_CPU_tokenizer_only": "outputs/groundjev/training/onejev_broader_shared6000_fla_v2/ckpt-step6000",
+  "original_current_training_courses_or_source_files_modified": false,
+  "new_GPU_or_optimizer_updates": 0,
+  "full_goal_complete": false
+}

@@ -1,3 +1,44 @@
+## Matched native RMOT physical-supervision foundation training started — 2026-10-16
+
+Both complete three-task24000question courses passed their real native multimodal
+CPU plans with zero drops and6000global4updates each. All8000MOT/8000OV rows
+remain exact; both arms retain the same5118oldRMOTrows and append2882paired
+actual-history questions in the same positions. Their native rendered state/media
+prefixes match at every actual global index; only the registered physical versus
+membership questions/targets differ. Native within-update length ordering may
+differ, so this is not token/FLOP matched. Maximum27480tokens in both courses;
+planned tokens202072473physical/201659237semantic. Rebuild code, manifests and
+complete CPU scalar receipts are retained. Evidence:
+`training_data/paired_rmot_physical_semantic24000_inputs_v1/completion_validation.json`.
+
+The new blocking owner starts physical then semantic native750M SFT, each an
+additional6000updates/24000questions from the identical verified native6000FP32
+masters, new Adam/scheduler/RNG and seed0. First physical optimization has begun;
+initialization maxdifference0 across752393024parameters, vision frozen. Actual
+updates1..5 consumed20questions (9MOT/6RMOT/5OVMOT), including2newRMOTidentity
+rows; losses/gradients are finite and gradients positive. First5peakTorchallocated
+17.87594GiB, not full-run peak or controlled speed. Semantic arm0at observation.
+This is neither Ground+One joint gradient nor long-video BPTT, and has no new
+tracking accuracy result yet. Evidence:
+`training/paired_rmot_physical_semantic6000_owner_v1/first5_physical_optimizer_snapshot.json`.
+Registration:
+`configs/groundjev/paired_rmot_physical_semantic6000_v1.json`.
+
+The previous GPU4native owner actually exited0 after its final TAO unit. The new
+stage uses only GPU4 alongside the unchanged four-GPU rank; launch free37341MiB
+and Torch allocator cap.33/28081638604bytes. GPUs0-3 and all older workers/course
+definitions remain untouched; there is no exclusive GPU claim. Both final models
+must use the same assigned-ID memory-update protocol across all4original scopes.
+After both trainings/reloads, the owner waits on the original native6000assigned
+baseline dependency without retaining a GPU model; no native600baseline substitute
+or per-task checkpoint selection. Numbered exports/full state and scientific
+tracking predictions are preserved separately from temporary features.
+
+New course2MiB and owner/report4MiB reservations raise the conservative combined
+feature/metadata upper to26840605662bytes<26843545600(25GiB). No new image/ROI/
+activation bank. Current four-GPU459027 and paired-short/long jobs continue their
+registered courses; the ordinary-model-level three-task goal is still unmet.
+
 ## Paired RMOT supervision inputs ready; full readout study closed — 2026-10-16
 
 The complete new actual-history paired component has2882question pairs from the

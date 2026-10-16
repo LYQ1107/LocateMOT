@@ -1,0 +1,61 @@
+{
+  "project_root": "/data2/user/LocateMOT_GroundJEV",
+  "name": "Paired native foundation6000 physical versus semantic RMOT supervision",
+  "input_plan": "configs/groundjev/paired_rmot_physical_semantic24000_inputs_v1.json",
+  "input_output": "outputs/groundjev/training_data/paired_rmot_physical_semantic24000_inputs_v1",
+  "owner_output": "outputs/groundjev/training/paired_rmot_physical_semantic6000_owner_v1",
+  "initial_checkpoint": "outputs/groundjev/training/onejev_broader_shared6000_fla_v2/ckpt-step6000",
+  "initial_training_state": "outputs/groundjev/training/onejev_broader_shared6000_fla_v2/latest_training_state.pt",
+  "initial_state_validation": "outputs/groundjev/training/shared6000_actual6000_snapshot_v1/validation.json",
+  "initial_expected_step": 6000,
+  "training_names": {
+    "physical": "onejev_rmot_physical6000_v1",
+    "semantic": "onejev_rmot_semantic6000_v1"
+  },
+  "runs_dir": "/data3/user/LocateMOT-checkpoints",
+  "steps_each": 6000,
+  "questions_each": 24000,
+  "physical_gpu": 4,
+  "minimum_launch_free_MiB": 32768,
+  "minimum_checkpoint_free_GiB": 80,
+  "torch_allocator_fraction": 0.33,
+  "GPU4_release_dependency": {
+    "directory": "outputs/groundjev/multitask_runs/full_history_refresh600_controls_v1/old_worker",
+    "identity": [
+      2467896,
+      "45243395"
+    ],
+    "script": "tools/groundjev/run_history_refresh_controls.py",
+    "required_terminal_status": "HISTORY_REFRESH_WORKER_ALL_REGISTERED_UNITS_VALIDATED"
+  },
+  "baseline_dependency": {
+    "directory": "outputs/groundjev/training/broader_shared6000_fla_owner_v2",
+    "identity": [
+      3219708,
+      "47863228"
+    ],
+    "script": "tools/groundjev/run_broader_shared_onejev.py",
+    "required_terminal_status": "SHARED6000_AND_ALL_FIXED_BEFORE_DEFAULT_FINAL_ID_CONTROLS_VALIDATED"
+  },
+  "training": "Sequential physical then semantic additional6000 updates from identical verified native6000FP32 masters; explicit new Adam/scheduler/all RNG with seed0, all752393024language parameters trainable and vision frozen. No best-checkpoint selection.",
+  "control": "Same21118original rows and2882paired state/media contexts; only registered physical versus membership questions/targets differ. Same global4 question-position sets; native within-step length order may differ. Not token/FLOP matched.",
+  "evaluation": "Both final6000checkpoints across all four original scopes with assigned-ID memory updates enabled uniformly, original candidates/empty frames/rejections/thresholds/scorers and all1203TAO input classes. Reuse same native6000assigned baseline only after its original owner completes, never substitute native600before. Training/reload finish before this CPU-only dependency wait.",
+  "resource_policy": "Only GPU4 with the existing four-GPU rank explicitly co-resident; no exclusive GPU claim, no processes stopped and GPUs0-3 untouched. Original GPU4 legacy worker is already terminal. Future planners must account for this registered owner. Allocation cap is a Torch allocator bound, not all-driver-memory guarantee.",
+  "launch_observation": {
+    "GPU4_free_MiB": 37341,
+    "GPU4_existing_rank_pid": 3539043,
+    "GPU4_existing_rank_used_MiB": 43804,
+    "checkpoint_free_bytes": 350843351040
+  },
+  "prior_registered_feature_upper_bytes": 26836411358,
+  "new_owner_log_and_report_reservation_bytes": 4194304,
+  "combined_registered_feature_upper_bytes": 26840605662,
+  "global_temporary_feature_budget_bytes": 26843545600,
+  "new_persistent_image_ROI_or_activation_bank_bytes": 0,
+  "scientific_artifacts": "Numbered BF16 exports, atomic latest FP32/Adam/RNG state, final identity memories and tracking predictions preserved separately from temporary feature cache; candidate feature vectors omitted from new control traces.",
+  "current_four_GPU_or_temporal_training_courses_changed": false,
+  "Ground_One_joint_gradients": false,
+  "long_video_BPTT": false,
+  "actual_new_optimizer_updates_at_registration": 0,
+  "full_goal_complete": false
+}

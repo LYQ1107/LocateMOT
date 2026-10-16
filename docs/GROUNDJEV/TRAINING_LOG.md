@@ -1,5 +1,24 @@
 # Current shared foundation adaptation — 2026-10-16
 
+New paired native physical-versus-semantic RMOT learning has begun on GPU4 after
+the old history-control owner actually exited0. Both complete24000input courses
+passed native MM CPU plans/zero drops: same21118common original rows,2882paired
+actual-history contexts,6000global4updates each, max27480tokens; planned token
+counts202072473physical/201659237semantic. Registered training is additional6000
+per arm from the same native6000FP32 masters, language752393024trainable/vision
+frozen/newAdam/seed0, physical then semantic. First physical initialization maxdiff0
+and actual updates1..5/20questions validated:9MOT/6RMOT/5OVMOT including2new
+RMOTidentity questions; losses/gradients finite/gradients positive. First5Torchpeak
+17.87594GiB, not all-run peak or stable speed; semantic0, no final metrics yet.
+The unchanged original four-GPU and temporal studies continue. GPU4Torch allocator
+cap.33/28081638604bytes, no exclusive GPU claim or old process stopped. Original
+assigned-ID native6000baselines remain required before all4final control scopes.
+New course2MiB plus owner4MiB reservations give26840605662bytes<25GiB, no new bank.
+Evidence: [complete paired courses](../../outputs/groundjev/training_data/paired_rmot_physical_semantic24000_inputs_v1/completion_validation.json),
+[training registration](../../configs/groundjev/paired_rmot_physical_semantic6000_v1.json).
+First real optimization proof:
+[physical first5](../../outputs/groundjev/training/paired_rmot_physical_semantic6000_owner_v1/first5_physical_optimizer_snapshot.json).
+
 The earlier native history-refresh pair has all9 before/old/refreshed DT/RMOT
 units frozen. Both arms truly completed an additional600updates/2400questions
 from identical native600FP32 masters, with400history rows changed and unequal

@@ -1,0 +1,36 @@
+{
+  "status": "BOTH_COMPLETE24000_NATIVE_MM_COURSES_VALIDATED_ZERO_DROPS_NOT_TRAINED",
+  "CPU_plans": {
+    "physical": {
+      "status": "ALL24000_NATIVE_MM_CPU_ROWS_AND6000_PAIRED_SHUFFLE_UPDATES_VALIDATED",
+      "rows": 24000,
+      "dropped_rows": 0,
+      "maximum_tokens": 27480,
+      "planned_tokens": 202072473,
+      "planned_optimizer_steps": 6000,
+      "actual_optimizer_steps": 0,
+      "world": 1,
+      "input_io_protocol": "gzip-jsonl-native-tracking-category-and-group-question-refs-v1",
+      "full_goal_complete": false
+    },
+    "semantic": {
+      "status": "ALL24000_NATIVE_MM_CPU_ROWS_AND6000_PAIRED_SHUFFLE_UPDATES_VALIDATED",
+      "rows": 24000,
+      "dropped_rows": 0,
+      "maximum_tokens": 27480,
+      "planned_tokens": 201659237,
+      "planned_optimizer_steps": 6000,
+      "actual_optimizer_steps": 0,
+      "world": 1,
+      "input_io_protocol": "gzip-jsonl-native-tracking-category-and-group-question-refs-v1",
+      "full_goal_complete": false
+    }
+  },
+  "input_validation": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/paired_rmot_physical_semantic24000_inputs_v1/input_validation.json",
+  "future_training_or_GPU_queue_launched": false,
+  "new_GPU_or_optimizer_updates": 0,
+  "combined_registered_feature_upper_bytes": 26836411358,
+  "global_temporary_feature_budget_bytes": 26843545600,
+  "new_metadata_reservation_bytes": 2097152,
+  "full_goal_complete": false
+}
