@@ -1,0 +1,121 @@
+{
+  "status": "ACTUAL_SHARED_TRAINING_CHECKPOINT_AND_INPUT_EXPOSURE_VERIFIED",
+  "step": 4500,
+  "actual_questions_consumed": 18000,
+  "planned_updates": 6000,
+  "saved_full_state": {
+    "format": "groundjev-full-fp32-adam-rng-v1",
+    "step": 4500,
+    "seen": 18000,
+    "epoch": 0,
+    "next_step_in_epoch": 4500,
+    "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_broader_shared6000_fla_v2/latest_training_state.pt",
+    "bytes": 9029140633,
+    "FP32_masters_and_Adam_moments_saved": true,
+    "scheduler_and_all_RNG_saved": true,
+    "single_latest_training_state": true,
+    "feature_cache": false
+  },
+  "all320_FP32_parameters_and_both_full_Adam_moments_finite": true,
+  "FP32_parameters_checked": 752393024,
+  "Adam_moment_elements_checked": 1504786048,
+  "all320_Adam_steps_and_scheduler_equal_actual_step": true,
+  "epoch_and_cursor_exact": true,
+  "initialization": {
+    "status": "NEW_STAGE_REAL_FP32_MASTERS_INITIALIZED",
+    "source": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_unified600_native_v2/latest_training_state.pt",
+    "source_step": 600,
+    "FP32_parameter_entries": 320,
+    "parameters": 752393024,
+    "changed_vs_BF16_inference_export_initialization": 500278218,
+    "initialization_max_difference": 0.0,
+    "new_optimizer_scheduler_and_RNG": "explicit newrecipe reset, not originaltrajectory resume",
+    "old_training_state_or_inference_weights_modified": false
+  },
+  "protocol": {
+    "model": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_unified600_native_v2/ckpt-step600",
+    "train_file": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_shared_onejev6000_v2_fla/train.jsonl.gz",
+    "seed": 0,
+    "lr": 2e-06,
+    "max_steps": 6000,
+    "epochs": 1,
+    "max_len": 32768,
+    "batch_tokens": 32768,
+    "accum_rows": 4,
+    "max_rows": 1,
+    "brier_weight": 1.0,
+    "augment": true,
+    "train_vision": false,
+    "full_finetune": true,
+    "weight_decay": 0.0,
+    "warmup_frac": 0.03,
+    "sampling_protocol": "paired-index-shuffle-v1",
+    "input_io_protocol": "gzip-jsonl-native-tracking-category-and-group-question-refs-v1",
+    "training_compute_backend": "fla0.5.2-GDN-chunk-training-only-reference-inference-v1"
+  },
+  "latest_logged_update": {
+    "step": 4500,
+    "epoch": 0,
+    "examples": 18000,
+    "loss": 0.9005669023407017,
+    "ce": 0.6366085514754332,
+    "brier": 0.2639583461625813,
+    "slot_acc": 0.81,
+    "grad_norm": 121.80612345546484,
+    "lr": 3.102762227218957e-07,
+    "rows_per_step": 4.0,
+    "examples_per_s": 1.22957547097843,
+    "tokens_per_s": 8149.982798531616,
+    "sec_per_step": 3.2531553323986007,
+    "peak_mem_gb": 18.74544620513916,
+    "elapsed_s": 20734.58229208202
+  },
+  "finite_logged_update_records_checked": 185,
+  "task_counts_from_actual_index_shuffle": {
+    "rmot": 5977,
+    "mot": 5957,
+    "ovmot": 6066
+  },
+  "question_families": {
+    "rmot:empty_query_presence": 964,
+    "mot:assigned_identity_memory_update": 1483,
+    "mot:identity": 2987,
+    "ovmot:category_leaf": 3009,
+    "rmot:query_membership": 5013,
+    "ovmot:category_group": 3057,
+    "mot:reliability": 377,
+    "mot:lifecycle": 730,
+    "mot:memory_update": 378,
+    "mot:empty_presence": 2
+  },
+  "unique_consumed_source_row_IDs": {
+    "rmot": 5677,
+    "mot": 5957,
+    "ovmot": 5624
+  },
+  "unique_consumed_first_media_source_paths": {
+    "rmot": 72,
+    "mot": 980,
+    "ovmot": 3064
+  },
+  "exposure_scope": "Measured first-source-media paths among actual consumed rows; query repeats and question rows are not independent video frames or tracks.",
+  "full_state_retention": "Atomic latest state validated at this milestone; later saves replace latest state. The numbered BF16 checkpoint is retained.",
+  "retained_BF16_checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_broader_shared6000_fla_v2/ckpt-step4500",
+  "no_GPU_or_training_updates_by_validator": true,
+  "complete6000_or_new_tracking_metrics": false,
+  "full_goal_complete": false,
+  "exposure_count_correction": {
+    "initial_metadata_error": "Initial report counted curriculum row IDs as source row IDs; curriculum IDs are unique even when original source rows repeat.",
+    "previous_misnamed_counts": {
+      "rmot": 5977,
+      "mot": 5957,
+      "ovmot": 6066
+    },
+    "corrected_using": "supervision.source_row_id in the actual frozen curriculum; no training input or checkpoint changed"
+  },
+  "unique_consumed_curriculum_row_IDs": {
+    "rmot": 5977,
+    "mot": 5957,
+    "ovmot": 6066
+  }
+}

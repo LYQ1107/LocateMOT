@@ -1,0 +1,8 @@
+{
+  "status": "ACTUAL4500_CHECKPOINT_AND_EXPOSURE_SNAPSHOT_RESERVED",
+  "prior_registered_feature_upper_bytes": 26584228830,
+  "new_small_report_cap_bytes": 524288,
+  "combined_registered_feature_upper_bytes": 26584753118,
+  "global_temporary_feature_budget_bytes": 26843545600,
+  "new_native_features_images_or_checkpoint_copies": 0
+}
