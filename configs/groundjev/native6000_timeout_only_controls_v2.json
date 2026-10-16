@@ -33,5 +33,6 @@
   "new_optimizer_updates": 0,
   "ordinary_model_performance_achieved": false,
   "full_goal_complete": false,
-  "preexecution_repair_receipt": "outputs/groundjev/training/native6000_timeout_only_controls_v1/preexecution_repair_receipt.json"
+  "preexecution_repair_receipt": "outputs/groundjev/training/native6000_timeout_only_controls_v1/preexecution_repair_receipt.json",
+  "clock_scope": "Original TTL3 in registered manifest units: physical seconds for MOT/RMOT, annotation steps for TAO (source FPS unavailable). No timestamp/threshold/runtime/metric change; earlier generic3s prose was inaccurate for TAO."
 }

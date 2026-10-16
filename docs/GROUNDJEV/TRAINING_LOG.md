@@ -13,7 +13,12 @@ controlled mixtures remain unchanged. Native6000DT known early retirements138
 (131GTpresent) versus0before motivate separately registered timeout-only execution
 controls; no training label or loss was silently changed. Evidence:
 [literal target inventory](../../outputs/groundjev/diagnostics/lifecycle_proxy_inventory_v1/summary.json),
-[birth/survival provenance](../../outputs/groundjev/diagnostics/identity_survival_provenance_v1/summary.json).
+[birth/survival provenance with explicit clock units](../../outputs/groundjev/diagnostics/identity_survival_provenance_v2_clock/summary.json).
+MOT/RMOT use physical seconds; TAO uses annotation steps with unverified source
+FPS. The unchanged legacytimeout3is3annotationsteps on TAO, not verified elapsed
+seconds. All14unit counts/causes/numericgaps match retainedv1exactly; correction
+changes descriptions/diagnostic field units only. No training/input/timestamp/
+prediction/metric or acceptance rule was changed.
 
 A one-shot CPU observer has completed actual four-rank2000checkpoint validation:
 32000questions consumed,17590MOT/7107RMOT/7303OVMOT,752393024FP32parameters
@@ -84,6 +89,14 @@ DT0. These are measured gains on two registered RMOT videos with DT regression,
 not three-task ordinary-model parity. TAO remains pending. Evidence:
 [all9official units and same-state write audit](../../outputs/groundjev/training/broader_shared6000_fla_owner_v2/first_three_native_scopes_completed.json),
 [the6000 snapshot](../../outputs/groundjev/training/shared6000_actual6000_snapshot_v1/validation.json).
+
+The original native600beforeTAO40baseline is now complete:TETA27.748,
+BaseTETA37.437,NovelTETA8.3686/NovelClsA0 on knife/baby/peeler in the single
+registeredvideo. Same600checkpoint across all4before scopes is verified.
+Native6000defaultTAO waits the current pairedGPU7window; its after-training
+score is still unknown. This completed baseline is not a6000training gain or
+full-dataset parity. Evidence:
+[all4native600baselines](../../outputs/groundjev/training/broader_shared6000_fla_owner_v2/native600_before_all_four_scopes_completed.json).
 
 The independent full-source epoch is incomplete (latest frozen observation2000updates/32000questions,
 elapsed24227.312s). See

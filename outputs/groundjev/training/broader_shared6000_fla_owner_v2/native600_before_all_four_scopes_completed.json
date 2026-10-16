@@ -1,0 +1,133 @@
+{
+  "status": "SAME_NATIVE600_CHECKPOINT_ALL_FOUR_REGISTERED_BASELINE_SCOPES_COMPLETE",
+  "checkpoint": "outputs/groundjev/training/onejev_unified600_native_v2/ckpt-step600",
+  "completed": {
+    "mot_full1203": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_full1203_controls_v2_wait_fix/native_mot_full1203",
+      "checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_unified600_native_v2/ckpt-step600",
+      "frames": 1203,
+      "native_candidates": 13664,
+      "same_exact_all_candidates": true,
+      "parser_rejected_frame_count": 27,
+      "official_metrics": {
+        "HOTA": 0.08702996032001276,
+        "DetA": 0.3010472804984555,
+        "AssA": 0.025168031826705423,
+        "IDF1": 0.05825958702064897,
+        "IDSW": 3631,
+        "FP": 7516,
+        "FN": 416
+      },
+      "base_novel": null,
+      "GT_and_future_frames_not_read_by_runtime": true,
+      "actual_end_to_end_FPS": null
+    },
+    "rmot_single800": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_runs/full_rmot_shared600_v1/single800_native600",
+      "checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_unified600_native_v2/ckpt-step600",
+      "frames": 800,
+      "native_candidates": 1412,
+      "same_exact_all_candidates": true,
+      "parser_rejected_frame_count": 36,
+      "official_metrics": {
+        "HOTA": 0.025062491270483527,
+        "DetA": 0.013810018467220683,
+        "AssA": 0.04678362573099415,
+        "IDF1": 0.020618556701030927,
+        "IDSW": 0,
+        "FP": 78,
+        "FN": 17
+      },
+      "base_novel": null,
+      "GT_and_future_frames_not_read_by_runtime": true,
+      "actual_end_to_end_FPS": null
+    },
+    "rmot_multi800": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_runs/full_rmot_shared600_v1/multi800_native600",
+      "checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_unified600_native_v2/ckpt-step600",
+      "frames": 800,
+      "native_candidates": 2208,
+      "same_exact_all_candidates": true,
+      "parser_rejected_frame_count": 19,
+      "official_metrics": {
+        "HOTA": 0.06740006654792335,
+        "DetA": 0.10547747538761035,
+        "AssA": 0.04328675321004638,
+        "IDF1": 0.06693227091633466,
+        "IDSW": 185,
+        "FP": 145,
+        "FN": 1859
+      },
+      "base_novel": null,
+      "GT_and_future_frames_not_read_by_runtime": true,
+      "actual_end_to_end_FPS": null
+    },
+    "tao_raw_full40": {
+      "run": "outputs/groundjev/training/broader_shared6000_fla_owner_v2/controls/before_tao_raw_full40",
+      "checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_unified600_native_v2/ckpt-step600",
+      "frames": 40,
+      "native_candidates": 35228,
+      "same_exact_all_candidates": true,
+      "parser_rejected_frame_count": 0,
+      "official_metrics": {
+        "TETA": 27.748,
+        "LocA": 21.573,
+        "AssocA": 2.8136,
+        "ClsA": 58.856,
+        "LocRe": 57.312,
+        "LocPr": 25.883,
+        "AssocRe": 3.1637,
+        "AssocPr": 32.655,
+        "ClsRe": 60.199,
+        "ClsPr": 65.09
+      },
+      "base_novel": {
+        "base": {
+          "TETA": 37.437,
+          "LocA": 21.08,
+          "AssocA": 2.9466,
+          "ClsA": 88.28450000000001,
+          "LocRe": 64.344,
+          "LocPr": 23.3915,
+          "AssocRe": 3.3388999999999998,
+          "AssocPr": 31.865499999999997,
+          "ClsRe": 90.29849999999999,
+          "ClsPr": 97.63499999999999
+        },
+        "novel": {
+          "TETA": 8.3686,
+          "LocA": 22.558,
+          "AssocA": 2.5476,
+          "ClsA": 0.0,
+          "LocRe": 43.25,
+          "LocPr": 30.867,
+          "AssocRe": 2.8132,
+          "AssocPr": 34.233,
+          "ClsRe": 0.0,
+          "ClsPr": 0.0
+        }
+      },
+      "GT_and_future_frames_not_read_by_runtime": true,
+      "actual_end_to_end_FPS": null
+    }
+  },
+  "TAO_evaluated_categories": [
+    {
+      "name": "knife",
+      "group": "base"
+    },
+    {
+      "name": "peeler_(tool_for_fruit_and_vegetables)",
+      "group": "novel"
+    },
+    {
+      "name": "baby",
+      "group": "base"
+    }
+  ],
+  "scope": "Four original legal video scopes, not complete validation datasets. Original owner validated every native candidate, decoded frame, rejected frame and causal state before completing each unit; this freezer rechecks runtime/official summaries. TAO source is explicit completed baseline reuse, no new inference or E2E timing claim. TAO time is annotation steps with unverified source FPS; MOT/RMOT use physical seconds.",
+  "native6000_TAO_after_training_complete": false,
+  "ordinary_model_performance_achieved": false,
+  "new_GPU_or_optimizer_updates": 0,
+  "full_goal_complete": false
+}

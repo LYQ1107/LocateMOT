@@ -71,12 +71,17 @@ render/video-encoder completion and final export; cached association FPS is
 never called full native pipeline FPS.
 
 An opt-in `timeout_only` lifecycle execution control defers learned TERMINATE
-requests until the original3s physical expiry. It retains all typed model
+requests until the originalTTL3in registered clock units: physical seconds for
+MOT/RMOT, annotationsteps for TAO(source FPS unavailable). It retains all typed model
 outputs and the unchanged matching/update/semantic policies; future histories
 can differ. Default `learned_or_timeout` is preserved. Real native and Compact
 prefix checks reproduce original default states and isolate actual early-ID
 deferral; full before/after controls remain required before adoption. This
 does not relabel unknown birth bindings, extend the timeout, or establish gains.
+The legacy parameter is named `lost_seconds`; the TAO manifest's explicit step
+clock governs its numeric value. Corrected provenance reports use a registered
+clock gap with explicit units; the retained earlier generic seconds field was
+misleading for TAO, with all counts/predictions/metrics unchanged.
 The queued native control reuses same-checkpoint image-only categories only;
 all identity/lifecycle inference still runs and replay speed is not E2E speed.
 

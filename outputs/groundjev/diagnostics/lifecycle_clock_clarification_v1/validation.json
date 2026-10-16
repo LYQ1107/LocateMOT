@@ -1,0 +1,9 @@
+{
+  "status": "CLOCK_CLARIFICATION_ALL14_NUMERIC_COUNTS_AND_GAPS_EXACT",
+  "units": 14,
+  "source_v1": "outputs/groundjev/diagnostics/identity_survival_provenance_v1/summary.json",
+  "corrected_v2": "outputs/groundjev/diagnostics/identity_survival_provenance_v2_clock/summary.json",
+  "all_counts_availability_retirement_causes_and_clock_gaps_exact": true,
+  "model_inputs_predictions_metrics_timestamps_and_timeout_unchanged": true,
+  "new_GPU_or_optimizer_updates": 0
+}

@@ -1,3 +1,34 @@
+## Shared native600 baseline now complete on all four registered scopes — 2026-10-16
+
+The original TAO40baseline has completed under the old registered GPU5owner;
+its explicit identical-baseline consumer has validated the full40frames/35228
+native candidates. All four original before scopes now use the same native600
+checkpoint: DT1203HOTA8.7030%, RMOTsingle8002.5062%, multi8006.7400%, and
+rawTAO40TETA27.748/LocA21.573/AssocA2.8136/ClsA58.856. TAOBaseTETA37.437,
+NovelTETA8.3686/NovelClsA0; its GT classes are knife/baby(Base),peeler(Novel).
+These are one-video registered controls, not full-dataset ordinary-model parity.
+TAO association remains weak despite higher Base classification than Compact;
+no new native6000after-training result or model promotion is inferred.
+
+Native6000defaultTAO has actually advanced from baseline dependency waiting to
+`WAITING_REGISTERED_GPU7_TEMPORAL_TRAINING_WINDOW`. Its future GPU7launch waits
+the current paired study's window; original four-GPU training and pairedshort
+training continue (latest observed short425steps). OriginallegacyGPU4oldcontrol
+is still in its TAO run; GPU5refreshedcontrol has moved on to its DT1203run.
+All original handles remain live, no worker restarted. No latency estimate is
+inferred from the cached consumer. Frozen completebaseline receipt:
+`training/broader_shared6000_fla_owner_v2/native600_before_all_four_scopes_completed.json`.
+
+Clock clarification: MOT/RMOT use physical seconds; TAO explicitly uses annotation
+steps because source FPS is unavailable. Its legacy `lost_seconds=3` field therefore
+means3annotationsteps. Earlier generic3s descriptions of the lifecycle control
+were inaccurate for TAO. No timestamp/timeout value, prediction, model input or
+metric changed. Clock-corrected provenancev2 preserves all14units' counts/causes/
+numeric gaps exactly against retainedv1; only unit metadata and the misleading
+`seconds_since_last_assignment` field name change. Evidence:
+`diagnostics/lifecycle_clock_clarification_v1/{clarification,validation}.json` and
+`diagnostics/identity_survival_provenance_v2_clock/summary.json`.
+
 ## Lifecycle provenance measured; explicit deletion controls running — 2026-10-16
 
 Two complete posthoc audits now constrain the next intervention. All five
@@ -28,7 +59,8 @@ the controlled paired courses remain unchanged. Inventory is not already-trained
 exposure or independent per-row GT certification. No current row/target/job edited.
 
 Opt-in `timeout_only` changes only physical deletion execution: learned early
-TERMINATE leaves the identity available until the original3s timeout. All model
+TERMINATE leaves the identity available until the originalTTL3in registered units
+(physical seconds for MOT/RMOT, annotationsteps for TAO). All model
 distributions/matching/auxiliary/semantic outputs are retained; future states
 may differ. Default `learned_or_timeout` and all registered original protocols
 remain unchanged. Real30frameCompact and19frame native prefixes reproduce default
@@ -50,7 +82,7 @@ MultiIDF1%=21.0082→21.0638,IDSW165→157,FP619→597,FN1054→1061.
 Mixed evidence, no policy promotion; finalMOT20 remains running. A genuine native
 same6000checkpoint counterpart is queued (owner4149961/start52754749,session90700)
 behind original6000all-controls completion and the current GPU7training window.
-It runs all4originalscopes, keeps3s/defaultmatching/thresholds/scorers, takes a
+It runs all4originalscopes, keepsTTL3in registeredunits/defaultmatching/thresholds/scorers, takes a
 serializedGPU7window, and reuses TAO native image-only category outputs only from
 the same complete checkpoint/current-image/candidate/vocabulary source. All
 identity/lifecycle inference reruns; no fresh E2E/speed claim. It has0newcalls now.
@@ -58,7 +90,7 @@ Its v1CPUwaiter had a statically discovered category summary field-name error;
 exactCPU-only handoff/exit143/code snapshot are preserved before any inference.
 Only this new waiter was replaced; original training/inference jobs were untouched.
 
-Evidence: `diagnostics/{existing_probability_dilution_v1,identity_survival_provenance_v1,
+Evidence: `diagnostics/{existing_probability_dilution_v1,identity_survival_provenance_v2_clock,
 lifecycle_proxy_inventory_v1}/summary.json`, `validation/timeout_only_lifecycle_v1/validation.json`,
 `compact/timeout_only_lifecycle_controls_v1/first_four_scopes_completed.json`,
 `training/native6000_timeout_only_controls_v2/queued_snapshot.json`.
@@ -149,7 +181,7 @@ frames are exact796/800(single) and388/800(multi); DT remains1203/1203exact,
 1350calls/4940assignments/0gateflips. The earlier statement of no assigned-write
 benefit applies to DT; both RMOT scopes now show small measured gains. Do not
 select different checkpoints/policies by task or promote a common model yet.
-TAO controls remain owned/pending behind their registered original baseline;
+Native6000TAO controls now wait the pairedGPU7trainingwindow after baseline completion;
 the earlier0update short/long queue is superseded by v3actual training above. Original owners,
 source input, thresholds and all failed samples are unchanged.
 

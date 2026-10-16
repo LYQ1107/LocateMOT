@@ -32,5 +32,6 @@
   "actual_inference_calls_at_registration": 0,
   "new_optimizer_updates": 0,
   "ordinary_model_performance_achieved": false,
-  "full_goal_complete": false
+  "full_goal_complete": false,
+  "clock_scope": "Original TTL3 in registered manifest units: physical seconds for MOT/RMOT, annotation steps for TAO (source FPS unavailable). No timestamp/threshold/runtime/metric change; earlier generic3s prose was inaccurate for TAO."
 }

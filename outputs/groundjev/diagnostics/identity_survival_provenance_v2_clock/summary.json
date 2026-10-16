@@ -1,0 +1,2177 @@
+{
+  "status": "FROZEN_IDENTITY_BIRTH_SURVIVAL_RETIREMENT_PROVENANCE_AUDIT_COMPLETE",
+  "units": {
+    "compact_original_mot_full1203": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/appearance_rank_study_v1/reference_runs/mot_full1203_before",
+      "clock_units": "physical_seconds",
+      "timeout_in_registered_clock_units": 3.0,
+      "counts": {
+        "frames": 1203,
+        "candidates": 13664,
+        "GT_unknown_births": 49,
+        "GT_matched_candidates": 4341,
+        "GT_bound_births": 6
+      },
+      "availability": {
+        "first_GT_matched_candidate_observation": 4,
+        "first_GT_matched_candidate_observation_action_NO_MATCH": 3,
+        "first_GT_matched_candidate_observation_action_ACTIVE": 1,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever": 450,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever_action_NO_MATCH": 339,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever_unknown_birth_tracks_alive": 450,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever_action_ACTIVE": 97,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever_action_NEW": 4,
+        "verified_correct_birth_in_actual_shortlist": 1768,
+        "verified_correct_birth_in_actual_shortlist_action_ACTIVE": 1056,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever_action_REACTIVATE": 10,
+        "verified_correct_birth_in_actual_shortlist_action_REACTIVATE": 113,
+        "verified_correct_birth_in_actual_shortlist_action_NO_MATCH": 598,
+        "retired_latest_cause_timeout_without_learned_terminate": 2119,
+        "all_previously_GT_bound_births_retired": 2119,
+        "all_previously_GT_bound_births_retired_action_NO_MATCH": 1160,
+        "all_previously_GT_bound_births_retired_unknown_birth_tracks_alive": 2119,
+        "all_previously_GT_bound_births_retired_action_REACTIVATE": 83,
+        "all_previously_GT_bound_births_retired_action_ACTIVE": 875,
+        "verified_correct_birth_in_actual_shortlist_action_NEW": 1,
+        "all_previously_GT_bound_births_retired_action_NEW": 1
+      },
+      "retirements": {
+        "GT_unknown_timeout_without_learned_terminate": 35,
+        "GT_unknown_timeout_without_learned_terminate_GT_present": 0,
+        "GT_unknown_timeout_without_learned_terminate_native_candidate_present": 0,
+        "GT_bound_timeout_without_learned_terminate": 4,
+        "GT_bound_timeout_without_learned_terminate_GT_present": 4,
+        "GT_bound_timeout_without_learned_terminate_native_candidate_present": 4
+      },
+      "examples": [
+        {
+          "frame": 4,
+          "candidate": 0,
+          "GT_identity": 2,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "NO_MATCH",
+          "latest_retirement": null
+        },
+        {
+          "frame": 4,
+          "candidate": 2,
+          "GT_identity": 3,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "ACTIVE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 4,
+          "candidate": 4,
+          "GT_identity": 1,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "NO_MATCH",
+          "latest_retirement": null
+        },
+        {
+          "frame": 5,
+          "candidate": 0,
+          "GT_identity": 2,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "NO_MATCH",
+          "latest_retirement": null
+        },
+        {
+          "frame": 5,
+          "candidate": 3,
+          "GT_identity": 3,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "ACTIVE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 5,
+          "candidate": 4,
+          "GT_identity": 1,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "NO_MATCH",
+          "latest_retirement": null
+        },
+        {
+          "frame": 6,
+          "candidate": 0,
+          "GT_identity": 2,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "NO_MATCH",
+          "latest_retirement": null
+        },
+        {
+          "frame": 6,
+          "candidate": 2,
+          "GT_identity": 3,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "NEW",
+          "latest_retirement": null
+        },
+        {
+          "frame": 6,
+          "candidate": 5,
+          "GT_identity": 1,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "NEW",
+          "latest_retirement": null
+        },
+        {
+          "frame": 7,
+          "candidate": 2,
+          "GT_identity": 2,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "NO_MATCH",
+          "latest_retirement": null
+        },
+        {
+          "frame": 8,
+          "candidate": 0,
+          "GT_identity": 2,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "REACTIVATE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 9,
+          "candidate": 0,
+          "GT_identity": 2,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "ACTIVE",
+          "latest_retirement": null
+        }
+      ]
+    },
+    "compact_original_rmot_single800": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/appearance_rank_study_v1/reference_runs/rmot_single800_before",
+      "clock_units": "physical_seconds",
+      "timeout_in_registered_clock_units": 3.0,
+      "counts": {
+        "frames": 800,
+        "candidates": 1412,
+        "GT_unknown_births": 103,
+        "GT_matched_candidates": 251,
+        "GT_bound_births": 26
+      },
+      "availability": {
+        "first_GT_matched_candidate_observation": 44,
+        "first_GT_matched_candidate_observation_action_ACTIVE": 12,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever": 137,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever_action_ACTIVE": 79,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever_unknown_birth_tracks_alive": 135,
+        "first_GT_matched_candidate_observation_action_NEW": 12,
+        "verified_correct_birth_in_actual_shortlist": 53,
+        "verified_correct_birth_in_actual_shortlist_action_ACTIVE": 19,
+        "retired_latest_cause_learned_before_timeout": 17,
+        "all_previously_GT_bound_births_retired": 17,
+        "all_previously_GT_bound_births_retired_action_NEW": 4,
+        "all_previously_GT_bound_births_retired_unknown_birth_tracks_alive": 16,
+        "all_previously_GT_bound_births_retired_action_REACTIVATE": 4,
+        "all_previously_GT_bound_births_retired_action_ACTIVE": 7,
+        "first_GT_matched_candidate_observation_action_IGNORE": 4,
+        "all_previously_GT_bound_births_retired_action_IGNORE": 2,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever_action_NEW": 8,
+        "verified_correct_birth_in_actual_shortlist_action_REACTIVATE": 32,
+        "verified_correct_birth_in_actual_shortlist_action_NEW": 2,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever_action_REACTIVATE": 41,
+        "first_GT_matched_candidate_observation_action_REACTIVATE": 16,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever_action_IGNORE": 9
+      },
+      "retirements": {
+        "GT_unknown_learned_before_timeout": 92,
+        "GT_unknown_learned_before_timeout_GT_present": 0,
+        "GT_unknown_learned_before_timeout_native_candidate_present": 0,
+        "GT_bound_learned_before_timeout": 20,
+        "GT_bound_learned_before_timeout_GT_present": 10,
+        "GT_bound_learned_before_timeout_native_candidate_present": 0,
+        "GT_bound_timeout_without_learned_terminate": 6,
+        "GT_bound_timeout_without_learned_terminate_GT_present": 0,
+        "GT_bound_timeout_without_learned_terminate_native_candidate_present": 0,
+        "GT_unknown_timeout_without_learned_terminate": 8,
+        "GT_unknown_timeout_without_learned_terminate_GT_present": 0,
+        "GT_unknown_timeout_without_learned_terminate_native_candidate_present": 0
+      },
+      "examples": [
+        {
+          "frame": 36,
+          "candidate": 0,
+          "GT_identity": 73,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "ACTIVE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 46,
+          "candidate": 0,
+          "GT_identity": 12,
+          "category": "all_previously_GT_bound_births_retired",
+          "actual_action": "NEW",
+          "latest_retirement": {
+            "frame": 44,
+            "timestamp": 4.4,
+            "track_id": 4,
+            "cause": "learned_before_timeout",
+            "registered_clock_gap_since_last_assignment": 0.10000000000000053,
+            "clock_units": "physical_seconds",
+            "GT_present": true,
+            "native_candidate_present": false
+          }
+        },
+        {
+          "frame": 47,
+          "candidate": 0,
+          "GT_identity": 73,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "ACTIVE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 52,
+          "candidate": 0,
+          "GT_identity": 12,
+          "category": "all_previously_GT_bound_births_retired",
+          "actual_action": "REACTIVATE",
+          "latest_retirement": {
+            "frame": 49,
+            "timestamp": 4.9,
+            "track_id": 5,
+            "cause": "learned_before_timeout",
+            "registered_clock_gap_since_last_assignment": 0.10000000000000053,
+            "clock_units": "physical_seconds",
+            "GT_present": true,
+            "native_candidate_present": false
+          }
+        },
+        {
+          "frame": 53,
+          "candidate": 0,
+          "GT_identity": 12,
+          "category": "all_previously_GT_bound_births_retired",
+          "actual_action": "ACTIVE",
+          "latest_retirement": {
+            "frame": 49,
+            "timestamp": 4.9,
+            "track_id": 5,
+            "cause": "learned_before_timeout",
+            "registered_clock_gap_since_last_assignment": 0.10000000000000053,
+            "clock_units": "physical_seconds",
+            "GT_present": true,
+            "native_candidate_present": false
+          }
+        },
+        {
+          "frame": 54,
+          "candidate": 0,
+          "GT_identity": 12,
+          "category": "all_previously_GT_bound_births_retired",
+          "actual_action": "ACTIVE",
+          "latest_retirement": {
+            "frame": 49,
+            "timestamp": 4.9,
+            "track_id": 5,
+            "cause": "learned_before_timeout",
+            "registered_clock_gap_since_last_assignment": 0.10000000000000053,
+            "clock_units": "physical_seconds",
+            "GT_present": true,
+            "native_candidate_present": false
+          }
+        },
+        {
+          "frame": 58,
+          "candidate": 0,
+          "GT_identity": 12,
+          "category": "all_previously_GT_bound_births_retired",
+          "actual_action": "IGNORE",
+          "latest_retirement": {
+            "frame": 49,
+            "timestamp": 4.9,
+            "track_id": 5,
+            "cause": "learned_before_timeout",
+            "registered_clock_gap_since_last_assignment": 0.10000000000000053,
+            "clock_units": "physical_seconds",
+            "GT_present": true,
+            "native_candidate_present": false
+          }
+        },
+        {
+          "frame": 59,
+          "candidate": 0,
+          "GT_identity": 12,
+          "category": "all_previously_GT_bound_births_retired",
+          "actual_action": "IGNORE",
+          "latest_retirement": {
+            "frame": 49,
+            "timestamp": 4.9,
+            "track_id": 5,
+            "cause": "learned_before_timeout",
+            "registered_clock_gap_since_last_assignment": 0.10000000000000053,
+            "clock_units": "physical_seconds",
+            "GT_present": true,
+            "native_candidate_present": false
+          }
+        },
+        {
+          "frame": 61,
+          "candidate": 0,
+          "GT_identity": 73,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "NEW",
+          "latest_retirement": null
+        },
+        {
+          "frame": 77,
+          "candidate": 2,
+          "GT_identity": 3,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "REACTIVATE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 130,
+          "candidate": 1,
+          "GT_identity": 7,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "REACTIVATE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 130,
+          "candidate": 3,
+          "GT_identity": 6,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "REACTIVATE",
+          "latest_retirement": null
+        }
+      ]
+    },
+    "compact_original_rmot_multi800": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/appearance_rank_study_v1/reference_runs/rmot_multi800_before",
+      "clock_units": "physical_seconds",
+      "timeout_in_registered_clock_units": 3.0,
+      "counts": {
+        "frames": 800,
+        "candidates": 2208,
+        "GT_matched_candidates": 1239,
+        "GT_bound_births": 18,
+        "GT_unknown_births": 74
+      },
+      "availability": {
+        "first_GT_matched_candidate_observation": 54,
+        "first_GT_matched_candidate_observation_action_NEW": 8,
+        "verified_correct_birth_in_actual_shortlist": 191,
+        "verified_correct_birth_in_actual_shortlist_action_ACTIVE": 149,
+        "first_GT_matched_candidate_observation_action_ACTIVE": 16,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever": 967,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever_action_ACTIVE": 725,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever_unknown_birth_tracks_alive": 967,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever_action_REACTIVATE": 236,
+        "verified_correct_birth_in_actual_shortlist_action_REACTIVATE": 39,
+        "retired_latest_cause_learned_before_timeout": 27,
+        "all_previously_GT_bound_births_retired": 27,
+        "all_previously_GT_bound_births_retired_action_NEW": 4,
+        "all_previously_GT_bound_births_retired_unknown_birth_tracks_alive": 27,
+        "first_GT_matched_candidate_observation_action_REACTIVATE": 29,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever_action_NEW": 4,
+        "verified_correct_birth_in_actual_shortlist_action_NEW": 2,
+        "first_GT_matched_candidate_observation_action_IGNORE": 1,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever_action_IGNORE": 2,
+        "verified_correct_birth_in_actual_shortlist_action_NO_MATCH": 1,
+        "all_previously_GT_bound_births_retired_action_ACTIVE": 23
+      },
+      "retirements": {
+        "GT_bound_learned_before_timeout": 7,
+        "GT_bound_learned_before_timeout_GT_present": 5,
+        "GT_bound_learned_before_timeout_native_candidate_present": 0,
+        "GT_unknown_learned_before_timeout": 57,
+        "GT_unknown_learned_before_timeout_GT_present": 0,
+        "GT_unknown_learned_before_timeout_native_candidate_present": 0,
+        "GT_bound_timeout_without_learned_terminate": 11,
+        "GT_bound_timeout_without_learned_terminate_GT_present": 0,
+        "GT_bound_timeout_without_learned_terminate_native_candidate_present": 0,
+        "GT_unknown_timeout_without_learned_terminate": 10,
+        "GT_unknown_timeout_without_learned_terminate_GT_present": 0,
+        "GT_unknown_timeout_without_learned_terminate_native_candidate_present": 0
+      },
+      "examples": [
+        {
+          "frame": 42,
+          "candidate": 0,
+          "GT_identity": 12,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "ACTIVE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 43,
+          "candidate": 1,
+          "GT_identity": 12,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "REACTIVATE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 44,
+          "candidate": 0,
+          "GT_identity": 12,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "ACTIVE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 46,
+          "candidate": 0,
+          "GT_identity": 12,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "ACTIVE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 47,
+          "candidate": 0,
+          "GT_identity": 12,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "ACTIVE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 48,
+          "candidate": 0,
+          "GT_identity": 12,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "ACTIVE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 48,
+          "candidate": 4,
+          "GT_identity": 73,
+          "category": "all_previously_GT_bound_births_retired",
+          "actual_action": "NEW",
+          "latest_retirement": {
+            "frame": 46,
+            "timestamp": 4.6,
+            "track_id": 25,
+            "cause": "learned_before_timeout",
+            "registered_clock_gap_since_last_assignment": 0.09999999999999964,
+            "clock_units": "physical_seconds",
+            "GT_present": true,
+            "native_candidate_present": false
+          }
+        },
+        {
+          "frame": 49,
+          "candidate": 0,
+          "GT_identity": 12,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "ACTIVE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 50,
+          "candidate": 0,
+          "GT_identity": 12,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "ACTIVE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 51,
+          "candidate": 0,
+          "GT_identity": 12,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "ACTIVE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 52,
+          "candidate": 0,
+          "GT_identity": 12,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "ACTIVE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 53,
+          "candidate": 0,
+          "GT_identity": 12,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "ACTIVE",
+          "latest_retirement": null
+        }
+      ]
+    },
+    "compact_original_tao_raw_full40": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/appearance_rank_study_v1/reference_runs/tao_raw_full40_before",
+      "clock_units": "annotation_steps",
+      "timeout_in_registered_clock_units": 3.0,
+      "counts": {
+        "frames": 40,
+        "candidates": 35228,
+        "GT_unknown_births": 17941,
+        "GT_matched_candidates": 147,
+        "GT_bound_births": 75
+      },
+      "availability": {
+        "first_GT_matched_candidate_observation": 4,
+        "first_GT_matched_candidate_observation_action_NEW": 4,
+        "verified_correct_birth_alive_but_shortlist_missing": 113,
+        "verified_correct_birth_alive_but_shortlist_missing_action_NEW": 63,
+        "verified_correct_birth_in_actual_shortlist": 21,
+        "verified_correct_birth_in_actual_shortlist_action_ACTIVE": 12,
+        "verified_correct_birth_alive_but_shortlist_missing_action_ACTIVE": 22,
+        "verified_correct_birth_alive_but_shortlist_missing_action_REACTIVATE": 11,
+        "verified_correct_birth_alive_but_shortlist_missing_action_NO_MATCH": 13,
+        "verified_correct_birth_in_actual_shortlist_action_REACTIVATE": 5,
+        "verified_correct_birth_in_actual_shortlist_action_NEW": 4,
+        "verified_correct_birth_alive_but_shortlist_missing_action_IGNORE": 4,
+        "retired_latest_cause_timeout_without_learned_terminate": 9,
+        "all_previously_GT_bound_births_retired": 9,
+        "all_previously_GT_bound_births_retired_action_ACTIVE": 2,
+        "all_previously_GT_bound_births_retired_unknown_birth_tracks_alive": 9,
+        "all_previously_GT_bound_births_retired_action_REACTIVATE": 3,
+        "all_previously_GT_bound_births_retired_action_NEW": 4
+      },
+      "retirements": {
+        "GT_unknown_learned_before_timeout": 20,
+        "GT_unknown_learned_before_timeout_GT_present": 0,
+        "GT_unknown_learned_before_timeout_native_candidate_present": 0,
+        "GT_unknown_timeout_without_learned_terminate": 15651,
+        "GT_unknown_timeout_without_learned_terminate_GT_present": 0,
+        "GT_unknown_timeout_without_learned_terminate_native_candidate_present": 0,
+        "GT_bound_timeout_without_learned_terminate": 65,
+        "GT_bound_timeout_without_learned_terminate_GT_present": 65,
+        "GT_bound_timeout_without_learned_terminate_native_candidate_present": 60
+      },
+      "examples": [
+        {
+          "frame": 494,
+          "candidate": 25,
+          "GT_identity": 401,
+          "category": "all_previously_GT_bound_births_retired",
+          "actual_action": "ACTIVE",
+          "latest_retirement": {
+            "frame": 465,
+            "timestamp": 16,
+            "track_id": 6412,
+            "cause": "timeout_without_learned_terminate",
+            "registered_clock_gap_since_last_assignment": 4,
+            "clock_units": "annotation_steps",
+            "GT_present": true,
+            "native_candidate_present": true
+          }
+        },
+        {
+          "frame": 523,
+          "candidate": 186,
+          "GT_identity": 401,
+          "category": "all_previously_GT_bound_births_retired",
+          "actual_action": "REACTIVATE",
+          "latest_retirement": {
+            "frame": 465,
+            "timestamp": 16,
+            "track_id": 6412,
+            "cause": "timeout_without_learned_terminate",
+            "registered_clock_gap_since_last_assignment": 4,
+            "clock_units": "annotation_steps",
+            "GT_present": true,
+            "native_candidate_present": true
+          }
+        },
+        {
+          "frame": 552,
+          "candidate": 120,
+          "GT_identity": 401,
+          "category": "all_previously_GT_bound_births_retired",
+          "actual_action": "REACTIVATE",
+          "latest_retirement": {
+            "frame": 465,
+            "timestamp": 16,
+            "track_id": 6412,
+            "cause": "timeout_without_learned_terminate",
+            "registered_clock_gap_since_last_assignment": 4,
+            "clock_units": "annotation_steps",
+            "GT_present": true,
+            "native_candidate_present": true
+          }
+        },
+        {
+          "frame": 639,
+          "candidate": 26,
+          "GT_identity": 401,
+          "category": "all_previously_GT_bound_births_retired",
+          "actual_action": "NEW",
+          "latest_retirement": {
+            "frame": 465,
+            "timestamp": 16,
+            "track_id": 6412,
+            "cause": "timeout_without_learned_terminate",
+            "registered_clock_gap_since_last_assignment": 4,
+            "clock_units": "annotation_steps",
+            "GT_present": true,
+            "native_candidate_present": true
+          }
+        },
+        {
+          "frame": 900,
+          "candidate": 208,
+          "GT_identity": 401,
+          "category": "all_previously_GT_bound_births_retired",
+          "actual_action": "REACTIVATE",
+          "latest_retirement": {
+            "frame": 842,
+            "timestamp": 29,
+            "track_id": 10191,
+            "cause": "timeout_without_learned_terminate",
+            "registered_clock_gap_since_last_assignment": 4,
+            "clock_units": "annotation_steps",
+            "GT_present": true,
+            "native_candidate_present": true
+          }
+        },
+        {
+          "frame": 929,
+          "candidate": 22,
+          "GT_identity": 401,
+          "category": "all_previously_GT_bound_births_retired",
+          "actual_action": "ACTIVE",
+          "latest_retirement": {
+            "frame": 842,
+            "timestamp": 29,
+            "track_id": 10191,
+            "cause": "timeout_without_learned_terminate",
+            "registered_clock_gap_since_last_assignment": 4,
+            "clock_units": "annotation_steps",
+            "GT_present": true,
+            "native_candidate_present": true
+          }
+        },
+        {
+          "frame": 958,
+          "candidate": 748,
+          "GT_identity": 401,
+          "category": "all_previously_GT_bound_births_retired",
+          "actual_action": "NEW",
+          "latest_retirement": {
+            "frame": 842,
+            "timestamp": 29,
+            "track_id": 10191,
+            "cause": "timeout_without_learned_terminate",
+            "registered_clock_gap_since_last_assignment": 4,
+            "clock_units": "annotation_steps",
+            "GT_present": true,
+            "native_candidate_present": true
+          }
+        },
+        {
+          "frame": 1074,
+          "candidate": 205,
+          "GT_identity": 403,
+          "category": "all_previously_GT_bound_births_retired",
+          "actual_action": "NEW",
+          "latest_retirement": {
+            "frame": 1045,
+            "timestamp": 36,
+            "track_id": 14647,
+            "cause": "timeout_without_learned_terminate",
+            "registered_clock_gap_since_last_assignment": 4,
+            "clock_units": "annotation_steps",
+            "GT_present": true,
+            "native_candidate_present": true
+          }
+        },
+        {
+          "frame": 1103,
+          "candidate": 693,
+          "GT_identity": 401,
+          "category": "all_previously_GT_bound_births_retired",
+          "actual_action": "NEW",
+          "latest_retirement": {
+            "frame": 1074,
+            "timestamp": 37,
+            "track_id": 15145,
+            "cause": "timeout_without_learned_terminate",
+            "registered_clock_gap_since_last_assignment": 4,
+            "clock_units": "annotation_steps",
+            "GT_present": true,
+            "native_candidate_present": true
+          }
+        }
+      ]
+    },
+    "compact_original_mot20_challenge": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/appearance_rank_study_v1/reference_runs/mot20_challenge_before",
+      "clock_units": "physical_seconds",
+      "timeout_in_registered_clock_units": 3.0,
+      "counts": {
+        "frames": 1657,
+        "candidates": 235232,
+        "GT_matched_candidates": 219060,
+        "GT_bound_births": 284,
+        "GT_unknown_births": 16
+      },
+      "availability": {
+        "first_GT_matched_candidate_observation": 646,
+        "first_GT_matched_candidate_observation_action_NEW": 156,
+        "verified_correct_birth_in_actual_shortlist": 19195,
+        "verified_correct_birth_in_actual_shortlist_action_ACTIVE": 7690,
+        "verified_correct_birth_in_actual_shortlist_action_NO_MATCH": 9776,
+        "first_GT_matched_candidate_observation_action_NO_MATCH": 335,
+        "first_GT_matched_candidate_observation_action_ACTIVE": 12,
+        "verified_correct_birth_in_actual_shortlist_action_IGNORE": 792,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever": 147769,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever_action_NO_MATCH": 118196,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever_unknown_birth_tracks_alive": 146340,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever_action_ACTIVE": 13876,
+        "verified_correct_birth_alive_but_shortlist_missing": 5851,
+        "verified_correct_birth_alive_but_shortlist_missing_action_NO_MATCH": 4823,
+        "verified_correct_birth_in_actual_shortlist_action_REACTIVATE": 867,
+        "first_GT_matched_candidate_observation_action_IGNORE": 138,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever_action_IGNORE": 13905,
+        "verified_correct_birth_alive_but_shortlist_missing_action_ACTIVE": 881,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever_action_REACTIVATE": 1752,
+        "retired_latest_cause_learned_before_timeout": 1675,
+        "all_previously_GT_bound_births_retired": 45599,
+        "all_previously_GT_bound_births_retired_action_IGNORE": 729,
+        "all_previously_GT_bound_births_retired_unknown_birth_tracks_alive": 43881,
+        "verified_correct_birth_alive_but_shortlist_missing_action_REACTIVATE": 97,
+        "verified_correct_birth_alive_but_shortlist_missing_action_IGNORE": 48,
+        "all_previously_GT_bound_births_retired_action_NO_MATCH": 38200,
+        "first_GT_matched_candidate_observation_action_REACTIVATE": 5,
+        "verified_correct_birth_in_actual_shortlist_action_NEW": 70,
+        "all_previously_GT_bound_births_retired_action_ACTIVE": 6112,
+        "retired_latest_cause_timeout_without_learned_terminate": 43924,
+        "all_previously_GT_bound_births_retired_action_REACTIVATE": 542,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever_action_NEW": 40,
+        "verified_correct_birth_alive_but_shortlist_missing_action_NEW": 2,
+        "all_previously_GT_bound_births_retired_action_NEW": 16
+      },
+      "retirements": {
+        "GT_unknown_learned_before_timeout": 2,
+        "GT_unknown_learned_before_timeout_GT_present": 0,
+        "GT_unknown_learned_before_timeout_native_candidate_present": 0,
+        "GT_bound_learned_before_timeout": 14,
+        "GT_bound_learned_before_timeout_GT_present": 9,
+        "GT_bound_learned_before_timeout_native_candidate_present": 5,
+        "GT_bound_timeout_without_learned_terminate": 242,
+        "GT_bound_timeout_without_learned_terminate_GT_present": 198,
+        "GT_bound_timeout_without_learned_terminate_native_candidate_present": 127,
+        "GT_unknown_timeout_without_learned_terminate": 10,
+        "GT_unknown_timeout_without_learned_terminate_GT_present": 0,
+        "GT_unknown_timeout_without_learned_terminate_native_candidate_present": 0
+      },
+      "examples": [
+        {
+          "frame": 1661,
+          "candidate": 2,
+          "GT_identity": 1015,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "NO_MATCH",
+          "latest_retirement": null
+        },
+        {
+          "frame": 1661,
+          "candidate": 6,
+          "GT_identity": 1006,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "NO_MATCH",
+          "latest_retirement": null
+        },
+        {
+          "frame": 1661,
+          "candidate": 27,
+          "GT_identity": 1051,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "ACTIVE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 1661,
+          "candidate": 70,
+          "GT_identity": 1094,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "ACTIVE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 1661,
+          "candidate": 77,
+          "GT_identity": 732,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "NO_MATCH",
+          "latest_retirement": null
+        },
+        {
+          "frame": 1661,
+          "candidate": 94,
+          "GT_identity": 1085,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "ACTIVE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 1661,
+          "candidate": 99,
+          "GT_identity": 1002,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "NO_MATCH",
+          "latest_retirement": null
+        },
+        {
+          "frame": 1661,
+          "candidate": 109,
+          "GT_identity": 1053,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "NO_MATCH",
+          "latest_retirement": null
+        },
+        {
+          "frame": 1661,
+          "candidate": 116,
+          "GT_identity": 978,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "ACTIVE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 1661,
+          "candidate": 123,
+          "GT_identity": 965,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "NO_MATCH",
+          "latest_retirement": null
+        },
+        {
+          "frame": 1661,
+          "candidate": 148,
+          "GT_identity": 791,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "NO_MATCH",
+          "latest_retirement": null
+        },
+        {
+          "frame": 1662,
+          "candidate": 5,
+          "GT_identity": 1006,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "NO_MATCH",
+          "latest_retirement": null
+        }
+      ]
+    },
+    "native_before_mot_full1203": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_full1203_controls_v2_wait_fix/native_mot_full1203",
+      "clock_units": "physical_seconds",
+      "timeout_in_registered_clock_units": 3.0,
+      "counts": {
+        "frames": 1203,
+        "candidates": 13664,
+        "GT_unknown_births": 95,
+        "GT_matched_candidates": 4341,
+        "GT_bound_births": 19
+      },
+      "availability": {
+        "first_GT_matched_candidate_observation": 4,
+        "first_GT_matched_candidate_observation_action_NEW": 3,
+        "verified_correct_birth_in_actual_shortlist": 2767,
+        "verified_correct_birth_in_actual_shortlist_action_NEW": 12,
+        "verified_correct_birth_in_actual_shortlist_action_ACTIVE": 1281,
+        "verified_correct_birth_in_actual_shortlist_action_REACTIVATE": 1315,
+        "verified_correct_birth_in_actual_shortlist_action_NO_MATCH": 83,
+        "first_GT_matched_candidate_observation_action_ACTIVE": 1,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever": 109,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever_action_REACTIVATE": 46,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever_unknown_birth_tracks_alive": 109,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever_action_NO_MATCH": 14,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever_action_ACTIVE": 48,
+        "retired_latest_cause_timeout_without_learned_terminate": 1316,
+        "all_previously_GT_bound_births_retired": 1316,
+        "all_previously_GT_bound_births_retired_action_REACTIVATE": 603,
+        "all_previously_GT_bound_births_retired_unknown_birth_tracks_alive": 1316,
+        "all_previously_GT_bound_births_retired_action_ACTIVE": 646,
+        "all_previously_GT_bound_births_retired_action_IGNORE": 51,
+        "verified_correct_birth_alive_but_shortlist_missing": 145,
+        "verified_correct_birth_alive_but_shortlist_missing_action_ACTIVE": 55,
+        "verified_correct_birth_alive_but_shortlist_missing_action_REACTIVATE": 86,
+        "verified_correct_birth_alive_but_shortlist_missing_action_NO_MATCH": 4,
+        "all_previously_GT_bound_births_retired_action_NO_MATCH": 13,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever_action_NEW": 1,
+        "all_previously_GT_bound_births_retired_action_NEW": 3,
+        "verified_correct_birth_in_actual_shortlist_action_IGNORE": 76
+      },
+      "retirements": {
+        "GT_unknown_timeout_without_learned_terminate": 70,
+        "GT_unknown_timeout_without_learned_terminate_GT_present": 0,
+        "GT_unknown_timeout_without_learned_terminate_native_candidate_present": 0,
+        "GT_bound_timeout_without_learned_terminate": 16,
+        "GT_bound_timeout_without_learned_terminate_GT_present": 16,
+        "GT_bound_timeout_without_learned_terminate_native_candidate_present": 16
+      },
+      "examples": [
+        {
+          "frame": 16,
+          "candidate": 3,
+          "GT_identity": 0,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "REACTIVATE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 17,
+          "candidate": 5,
+          "GT_identity": 0,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "NO_MATCH",
+          "latest_retirement": null
+        },
+        {
+          "frame": 18,
+          "candidate": 3,
+          "GT_identity": 0,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "ACTIVE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 19,
+          "candidate": 3,
+          "GT_identity": 0,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "REACTIVATE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 20,
+          "candidate": 3,
+          "GT_identity": 0,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "NO_MATCH",
+          "latest_retirement": null
+        },
+        {
+          "frame": 22,
+          "candidate": 3,
+          "GT_identity": 0,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "REACTIVATE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 24,
+          "candidate": 3,
+          "GT_identity": 0,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "ACTIVE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 26,
+          "candidate": 2,
+          "GT_identity": 0,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "ACTIVE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 27,
+          "candidate": 8,
+          "GT_identity": 0,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "REACTIVATE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 28,
+          "candidate": 3,
+          "GT_identity": 0,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "NO_MATCH",
+          "latest_retirement": null
+        },
+        {
+          "frame": 30,
+          "candidate": 2,
+          "GT_identity": 0,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "NO_MATCH",
+          "latest_retirement": null
+        },
+        {
+          "frame": 31,
+          "candidate": 2,
+          "GT_identity": 0,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "ACTIVE",
+          "latest_retirement": null
+        }
+      ]
+    },
+    "native_default_mot_full1203": {
+      "run": "outputs/groundjev/training/broader_shared6000_fla_owner_v2/controls/default_mot_full1203",
+      "clock_units": "physical_seconds",
+      "timeout_in_registered_clock_units": 3.0,
+      "counts": {
+        "frames": 1203,
+        "candidates": 13664,
+        "GT_unknown_births": 293,
+        "GT_matched_candidates": 4341,
+        "GT_bound_births": 141
+      },
+      "availability": {
+        "first_GT_matched_candidate_observation": 4,
+        "first_GT_matched_candidate_observation_action_NEW": 2,
+        "first_GT_matched_candidate_observation_action_ACTIVE": 1,
+        "verified_correct_birth_in_actual_shortlist": 2166,
+        "verified_correct_birth_in_actual_shortlist_action_ACTIVE": 1403,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever": 47,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever_action_ACTIVE": 35,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever_unknown_birth_tracks_alive": 47,
+        "verified_correct_birth_in_actual_shortlist_action_IGNORE": 610,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever_action_IGNORE": 7,
+        "first_GT_matched_candidate_observation_action_IGNORE": 1,
+        "verified_correct_birth_in_actual_shortlist_action_NEW": 47,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever_action_NEW": 2,
+        "verified_correct_birth_in_actual_shortlist_action_REACTIVATE": 106,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever_action_REACTIVATE": 3,
+        "retired_latest_cause_learned_before_timeout": 2122,
+        "all_previously_GT_bound_births_retired": 2122,
+        "all_previously_GT_bound_births_retired_action_IGNORE": 603,
+        "all_previously_GT_bound_births_retired_unknown_birth_tracks_alive": 2073,
+        "all_previously_GT_bound_births_retired_action_ACTIVE": 1331,
+        "all_previously_GT_bound_births_retired_action_REACTIVATE": 97,
+        "all_previously_GT_bound_births_retired_action_NEW": 89,
+        "verified_correct_birth_alive_but_shortlist_missing": 2,
+        "verified_correct_birth_alive_but_shortlist_missing_action_REACTIVATE": 1,
+        "verified_correct_birth_alive_but_shortlist_missing_action_NEW": 1,
+        "all_previously_GT_bound_births_retired_action_NO_MATCH": 2
+      },
+      "retirements": {
+        "GT_unknown_learned_before_timeout": 291,
+        "GT_unknown_learned_before_timeout_GT_present": 0,
+        "GT_unknown_learned_before_timeout_native_candidate_present": 0,
+        "GT_bound_learned_before_timeout": 138,
+        "GT_bound_learned_before_timeout_GT_present": 131,
+        "GT_bound_learned_before_timeout_native_candidate_present": 116
+      },
+      "examples": [
+        {
+          "frame": 4,
+          "candidate": 2,
+          "GT_identity": 3,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "ACTIVE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 5,
+          "candidate": 3,
+          "GT_identity": 3,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "ACTIVE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 6,
+          "candidate": 2,
+          "GT_identity": 3,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "ACTIVE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 7,
+          "candidate": 3,
+          "GT_identity": 3,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "ACTIVE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 8,
+          "candidate": 2,
+          "GT_identity": 3,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "ACTIVE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 9,
+          "candidate": 2,
+          "GT_identity": 3,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "ACTIVE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 10,
+          "candidate": 3,
+          "GT_identity": 3,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "ACTIVE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 11,
+          "candidate": 4,
+          "GT_identity": 3,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "IGNORE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 12,
+          "candidate": 2,
+          "GT_identity": 3,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "ACTIVE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 13,
+          "candidate": 2,
+          "GT_identity": 3,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "ACTIVE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 14,
+          "candidate": 2,
+          "GT_identity": 3,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "ACTIVE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 15,
+          "candidate": 3,
+          "GT_identity": 3,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "ACTIVE",
+          "latest_retirement": null
+        }
+      ]
+    },
+    "native_assigned_identity_mot_full1203": {
+      "run": "outputs/groundjev/training/broader_shared6000_fla_owner_v2/controls/assigned_identity_mot_full1203",
+      "clock_units": "physical_seconds",
+      "timeout_in_registered_clock_units": 3.0,
+      "counts": {
+        "frames": 1203,
+        "candidates": 13664,
+        "GT_unknown_births": 293,
+        "GT_matched_candidates": 4341,
+        "GT_bound_births": 141
+      },
+      "availability": {
+        "first_GT_matched_candidate_observation": 4,
+        "first_GT_matched_candidate_observation_action_NEW": 2,
+        "first_GT_matched_candidate_observation_action_ACTIVE": 1,
+        "verified_correct_birth_in_actual_shortlist": 2166,
+        "verified_correct_birth_in_actual_shortlist_action_ACTIVE": 1403,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever": 47,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever_action_ACTIVE": 35,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever_unknown_birth_tracks_alive": 47,
+        "verified_correct_birth_in_actual_shortlist_action_IGNORE": 610,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever_action_IGNORE": 7,
+        "first_GT_matched_candidate_observation_action_IGNORE": 1,
+        "verified_correct_birth_in_actual_shortlist_action_NEW": 47,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever_action_NEW": 2,
+        "verified_correct_birth_in_actual_shortlist_action_REACTIVATE": 106,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever_action_REACTIVATE": 3,
+        "retired_latest_cause_learned_before_timeout": 2122,
+        "all_previously_GT_bound_births_retired": 2122,
+        "all_previously_GT_bound_births_retired_action_IGNORE": 603,
+        "all_previously_GT_bound_births_retired_unknown_birth_tracks_alive": 2073,
+        "all_previously_GT_bound_births_retired_action_ACTIVE": 1331,
+        "all_previously_GT_bound_births_retired_action_REACTIVATE": 97,
+        "all_previously_GT_bound_births_retired_action_NEW": 89,
+        "verified_correct_birth_alive_but_shortlist_missing": 2,
+        "verified_correct_birth_alive_but_shortlist_missing_action_REACTIVATE": 1,
+        "verified_correct_birth_alive_but_shortlist_missing_action_NEW": 1,
+        "all_previously_GT_bound_births_retired_action_NO_MATCH": 2
+      },
+      "retirements": {
+        "GT_unknown_learned_before_timeout": 291,
+        "GT_unknown_learned_before_timeout_GT_present": 0,
+        "GT_unknown_learned_before_timeout_native_candidate_present": 0,
+        "GT_bound_learned_before_timeout": 138,
+        "GT_bound_learned_before_timeout_GT_present": 131,
+        "GT_bound_learned_before_timeout_native_candidate_present": 116
+      },
+      "examples": [
+        {
+          "frame": 4,
+          "candidate": 2,
+          "GT_identity": 3,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "ACTIVE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 5,
+          "candidate": 3,
+          "GT_identity": 3,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "ACTIVE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 6,
+          "candidate": 2,
+          "GT_identity": 3,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "ACTIVE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 7,
+          "candidate": 3,
+          "GT_identity": 3,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "ACTIVE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 8,
+          "candidate": 2,
+          "GT_identity": 3,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "ACTIVE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 9,
+          "candidate": 2,
+          "GT_identity": 3,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "ACTIVE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 10,
+          "candidate": 3,
+          "GT_identity": 3,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "ACTIVE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 11,
+          "candidate": 4,
+          "GT_identity": 3,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "IGNORE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 12,
+          "candidate": 2,
+          "GT_identity": 3,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "ACTIVE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 13,
+          "candidate": 2,
+          "GT_identity": 3,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "ACTIVE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 14,
+          "candidate": 2,
+          "GT_identity": 3,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "ACTIVE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 15,
+          "candidate": 3,
+          "GT_identity": 3,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "ACTIVE",
+          "latest_retirement": null
+        }
+      ]
+    },
+    "native_before_rmot_single800": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_runs/full_rmot_shared600_v1/single800_native600",
+      "clock_units": "physical_seconds",
+      "timeout_in_registered_clock_units": 3.0,
+      "counts": {
+        "frames": 800,
+        "candidates": 1412,
+        "GT_unknown_births": 121,
+        "GT_matched_candidates": 251,
+        "GT_bound_births": 21
+      },
+      "availability": {
+        "first_GT_matched_candidate_observation": 44,
+        "first_GT_matched_candidate_observation_action_ACTIVE": 8,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever": 126,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever_action_ACTIVE": 35,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever_unknown_birth_tracks_alive": 126,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever_action_REACTIVATE": 59,
+        "first_GT_matched_candidate_observation_action_REACTIVATE": 12,
+        "first_GT_matched_candidate_observation_action_NO_MATCH": 15,
+        "first_GT_matched_candidate_observation_action_IGNORE": 5,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever_action_IGNORE": 3,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever_action_NO_MATCH": 18,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever_action_NEW": 11,
+        "verified_correct_birth_in_actual_shortlist": 79,
+        "verified_correct_birth_in_actual_shortlist_action_REACTIVATE": 42,
+        "verified_correct_birth_in_actual_shortlist_action_NEW": 6,
+        "verified_correct_birth_in_actual_shortlist_action_ACTIVE": 26,
+        "verified_correct_birth_in_actual_shortlist_action_NO_MATCH": 5,
+        "first_GT_matched_candidate_observation_action_NEW": 4,
+        "retired_latest_cause_timeout_without_learned_terminate": 2,
+        "all_previously_GT_bound_births_retired": 2,
+        "all_previously_GT_bound_births_retired_action_REACTIVATE": 1,
+        "all_previously_GT_bound_births_retired_unknown_birth_tracks_alive": 2,
+        "all_previously_GT_bound_births_retired_action_ACTIVE": 1
+      },
+      "retirements": {
+        "GT_unknown_timeout_without_learned_terminate": 111,
+        "GT_unknown_timeout_without_learned_terminate_GT_present": 0,
+        "GT_unknown_timeout_without_learned_terminate_native_candidate_present": 0,
+        "GT_bound_timeout_without_learned_terminate": 21,
+        "GT_bound_timeout_without_learned_terminate_GT_present": 1,
+        "GT_bound_timeout_without_learned_terminate_native_candidate_present": 1
+      },
+      "examples": [
+        {
+          "frame": 36,
+          "candidate": 0,
+          "GT_identity": 73,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "ACTIVE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 43,
+          "candidate": 0,
+          "GT_identity": 12,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "ACTIVE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 46,
+          "candidate": 0,
+          "GT_identity": 12,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "REACTIVATE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 47,
+          "candidate": 0,
+          "GT_identity": 73,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "ACTIVE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 52,
+          "candidate": 0,
+          "GT_identity": 12,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "REACTIVATE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 53,
+          "candidate": 0,
+          "GT_identity": 12,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "ACTIVE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 54,
+          "candidate": 0,
+          "GT_identity": 12,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "ACTIVE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 58,
+          "candidate": 0,
+          "GT_identity": 12,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "REACTIVATE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 59,
+          "candidate": 0,
+          "GT_identity": 12,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "REACTIVATE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 61,
+          "candidate": 0,
+          "GT_identity": 73,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "ACTIVE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 63,
+          "candidate": 0,
+          "GT_identity": 73,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "REACTIVATE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 64,
+          "candidate": 1,
+          "GT_identity": 73,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "REACTIVATE",
+          "latest_retirement": null
+        }
+      ]
+    },
+    "native_default_rmot_single800": {
+      "run": "outputs/groundjev/training/broader_shared6000_fla_owner_v2/controls/default_rmot_single800",
+      "clock_units": "physical_seconds",
+      "timeout_in_registered_clock_units": 3.0,
+      "counts": {
+        "frames": 800,
+        "candidates": 1412,
+        "GT_unknown_births": 60,
+        "GT_matched_candidates": 251,
+        "GT_bound_births": 12
+      },
+      "availability": {
+        "first_GT_matched_candidate_observation": 44,
+        "first_GT_matched_candidate_observation_action_IGNORE": 38,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever": 156,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever_action_IGNORE": 113,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever_unknown_birth_tracks_alive": 147,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever_action_REACTIVATE": 22,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever_action_ACTIVE": 15,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever_action_NEW": 6,
+        "first_GT_matched_candidate_observation_action_REACTIVATE": 2,
+        "first_GT_matched_candidate_observation_action_NEW": 4,
+        "verified_correct_birth_in_actual_shortlist": 38,
+        "verified_correct_birth_in_actual_shortlist_action_IGNORE": 20,
+        "verified_correct_birth_in_actual_shortlist_action_REACTIVATE": 11,
+        "verified_correct_birth_in_actual_shortlist_action_ACTIVE": 6,
+        "retired_latest_cause_learned_before_timeout": 13,
+        "all_previously_GT_bound_births_retired": 13,
+        "all_previously_GT_bound_births_retired_action_IGNORE": 5,
+        "all_previously_GT_bound_births_retired_unknown_birth_tracks_alive": 4,
+        "all_previously_GT_bound_births_retired_action_REACTIVATE": 2,
+        "all_previously_GT_bound_births_retired_action_ACTIVE": 5,
+        "all_previously_GT_bound_births_retired_action_NEW": 1,
+        "verified_correct_birth_in_actual_shortlist_action_NEW": 1
+      },
+      "retirements": {
+        "GT_unknown_timeout_without_learned_terminate": 46,
+        "GT_unknown_timeout_without_learned_terminate_GT_present": 0,
+        "GT_unknown_timeout_without_learned_terminate_native_candidate_present": 0,
+        "GT_unknown_learned_before_timeout": 11,
+        "GT_unknown_learned_before_timeout_GT_present": 0,
+        "GT_unknown_learned_before_timeout_native_candidate_present": 0,
+        "GT_bound_timeout_without_learned_terminate": 5,
+        "GT_bound_timeout_without_learned_terminate_GT_present": 1,
+        "GT_bound_timeout_without_learned_terminate_native_candidate_present": 0,
+        "GT_bound_learned_before_timeout": 7,
+        "GT_bound_learned_before_timeout_GT_present": 4,
+        "GT_bound_learned_before_timeout_native_candidate_present": 3
+      },
+      "examples": [
+        {
+          "frame": 36,
+          "candidate": 0,
+          "GT_identity": 73,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "IGNORE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 43,
+          "candidate": 0,
+          "GT_identity": 12,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "IGNORE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 46,
+          "candidate": 0,
+          "GT_identity": 12,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "IGNORE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 47,
+          "candidate": 0,
+          "GT_identity": 73,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "IGNORE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 52,
+          "candidate": 0,
+          "GT_identity": 12,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "IGNORE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 53,
+          "candidate": 0,
+          "GT_identity": 12,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "IGNORE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 54,
+          "candidate": 0,
+          "GT_identity": 12,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "IGNORE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 58,
+          "candidate": 0,
+          "GT_identity": 12,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "IGNORE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 59,
+          "candidate": 0,
+          "GT_identity": 12,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "IGNORE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 61,
+          "candidate": 0,
+          "GT_identity": 73,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "REACTIVATE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 63,
+          "candidate": 0,
+          "GT_identity": 73,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "ACTIVE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 64,
+          "candidate": 1,
+          "GT_identity": 73,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "REACTIVATE",
+          "latest_retirement": null
+        }
+      ]
+    },
+    "native_assigned_identity_rmot_single800": {
+      "run": "outputs/groundjev/training/broader_shared6000_fla_owner_v2/controls/assigned_identity_rmot_single800",
+      "clock_units": "physical_seconds",
+      "timeout_in_registered_clock_units": 3.0,
+      "counts": {
+        "frames": 800,
+        "candidates": 1412,
+        "GT_unknown_births": 64,
+        "GT_matched_candidates": 251,
+        "GT_bound_births": 11
+      },
+      "availability": {
+        "first_GT_matched_candidate_observation": 44,
+        "first_GT_matched_candidate_observation_action_IGNORE": 39,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever": 156,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever_action_IGNORE": 115,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever_unknown_birth_tracks_alive": 147,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever_action_REACTIVATE": 23,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever_action_ACTIVE": 12,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever_action_NEW": 6,
+        "first_GT_matched_candidate_observation_action_REACTIVATE": 2,
+        "first_GT_matched_candidate_observation_action_NEW": 3,
+        "verified_correct_birth_in_actual_shortlist": 38,
+        "verified_correct_birth_in_actual_shortlist_action_IGNORE": 20,
+        "verified_correct_birth_in_actual_shortlist_action_REACTIVATE": 11,
+        "verified_correct_birth_in_actual_shortlist_action_ACTIVE": 6,
+        "retired_latest_cause_learned_before_timeout": 13,
+        "all_previously_GT_bound_births_retired": 13,
+        "all_previously_GT_bound_births_retired_action_IGNORE": 5,
+        "all_previously_GT_bound_births_retired_unknown_birth_tracks_alive": 4,
+        "all_previously_GT_bound_births_retired_action_REACTIVATE": 2,
+        "all_previously_GT_bound_births_retired_action_ACTIVE": 5,
+        "all_previously_GT_bound_births_retired_action_NEW": 1,
+        "verified_correct_birth_in_actual_shortlist_action_NEW": 1
+      },
+      "retirements": {
+        "GT_unknown_timeout_without_learned_terminate": 47,
+        "GT_unknown_timeout_without_learned_terminate_GT_present": 0,
+        "GT_unknown_timeout_without_learned_terminate_native_candidate_present": 0,
+        "GT_unknown_learned_before_timeout": 14,
+        "GT_unknown_learned_before_timeout_GT_present": 0,
+        "GT_unknown_learned_before_timeout_native_candidate_present": 0,
+        "GT_bound_timeout_without_learned_terminate": 5,
+        "GT_bound_timeout_without_learned_terminate_GT_present": 0,
+        "GT_bound_timeout_without_learned_terminate_native_candidate_present": 0,
+        "GT_bound_learned_before_timeout": 6,
+        "GT_bound_learned_before_timeout_GT_present": 4,
+        "GT_bound_learned_before_timeout_native_candidate_present": 3
+      },
+      "examples": [
+        {
+          "frame": 36,
+          "candidate": 0,
+          "GT_identity": 73,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "IGNORE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 43,
+          "candidate": 0,
+          "GT_identity": 12,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "IGNORE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 46,
+          "candidate": 0,
+          "GT_identity": 12,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "IGNORE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 47,
+          "candidate": 0,
+          "GT_identity": 73,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "IGNORE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 52,
+          "candidate": 0,
+          "GT_identity": 12,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "IGNORE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 53,
+          "candidate": 0,
+          "GT_identity": 12,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "IGNORE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 54,
+          "candidate": 0,
+          "GT_identity": 12,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "IGNORE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 58,
+          "candidate": 0,
+          "GT_identity": 12,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "IGNORE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 59,
+          "candidate": 0,
+          "GT_identity": 12,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "IGNORE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 61,
+          "candidate": 0,
+          "GT_identity": 73,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "REACTIVATE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 63,
+          "candidate": 0,
+          "GT_identity": 73,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "ACTIVE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 64,
+          "candidate": 1,
+          "GT_identity": 73,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "REACTIVATE",
+          "latest_retirement": null
+        }
+      ]
+    },
+    "native_before_rmot_multi800": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_runs/full_rmot_shared600_v1/multi800_native600",
+      "clock_units": "physical_seconds",
+      "timeout_in_registered_clock_units": 3.0,
+      "counts": {
+        "frames": 800,
+        "candidates": 2208,
+        "GT_matched_candidates": 1239,
+        "GT_bound_births": 58,
+        "GT_unknown_births": 81
+      },
+      "availability": {
+        "first_GT_matched_candidate_observation": 54,
+        "first_GT_matched_candidate_observation_action_NEW": 6,
+        "verified_correct_birth_in_actual_shortlist": 767,
+        "verified_correct_birth_in_actual_shortlist_action_NEW": 25,
+        "verified_correct_birth_in_actual_shortlist_action_NO_MATCH": 149,
+        "first_GT_matched_candidate_observation_action_REACTIVATE": 22,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever": 415,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever_action_NEW": 27,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever_unknown_birth_tracks_alive": 415,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever_action_REACTIVATE": 171,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever_action_ACTIVE": 95,
+        "first_GT_matched_candidate_observation_action_NO_MATCH": 12,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever_action_NO_MATCH": 77,
+        "verified_correct_birth_in_actual_shortlist_action_IGNORE": 51,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever_action_IGNORE": 45,
+        "verified_correct_birth_in_actual_shortlist_action_REACTIVATE": 350,
+        "first_GT_matched_candidate_observation_action_IGNORE": 9,
+        "verified_correct_birth_in_actual_shortlist_action_ACTIVE": 192,
+        "first_GT_matched_candidate_observation_action_ACTIVE": 5,
+        "retired_latest_cause_timeout_without_learned_terminate": 3,
+        "all_previously_GT_bound_births_retired": 3,
+        "all_previously_GT_bound_births_retired_action_ACTIVE": 2,
+        "all_previously_GT_bound_births_retired_unknown_birth_tracks_alive": 3,
+        "all_previously_GT_bound_births_retired_action_REACTIVATE": 1
+      },
+      "retirements": {
+        "GT_unknown_timeout_without_learned_terminate": 70,
+        "GT_unknown_timeout_without_learned_terminate_GT_present": 0,
+        "GT_unknown_timeout_without_learned_terminate_native_candidate_present": 0,
+        "GT_bound_timeout_without_learned_terminate": 58,
+        "GT_bound_timeout_without_learned_terminate_GT_present": 7,
+        "GT_bound_timeout_without_learned_terminate_native_candidate_present": 5
+      },
+      "examples": [
+        {
+          "frame": 36,
+          "candidate": 0,
+          "GT_identity": 73,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "NEW",
+          "latest_retirement": null
+        },
+        {
+          "frame": 42,
+          "candidate": 0,
+          "GT_identity": 12,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "REACTIVATE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 43,
+          "candidate": 1,
+          "GT_identity": 12,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "ACTIVE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 44,
+          "candidate": 0,
+          "GT_identity": 12,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "ACTIVE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 46,
+          "candidate": 0,
+          "GT_identity": 12,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "REACTIVATE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 47,
+          "candidate": 0,
+          "GT_identity": 12,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "ACTIVE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 48,
+          "candidate": 0,
+          "GT_identity": 12,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "REACTIVATE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 48,
+          "candidate": 1,
+          "GT_identity": 13,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "NO_MATCH",
+          "latest_retirement": null
+        },
+        {
+          "frame": 49,
+          "candidate": 0,
+          "GT_identity": 12,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "REACTIVATE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 49,
+          "candidate": 1,
+          "GT_identity": 13,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "NO_MATCH",
+          "latest_retirement": null
+        },
+        {
+          "frame": 50,
+          "candidate": 0,
+          "GT_identity": 12,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "REACTIVATE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 51,
+          "candidate": 0,
+          "GT_identity": 12,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "REACTIVATE",
+          "latest_retirement": null
+        }
+      ]
+    },
+    "native_default_rmot_multi800": {
+      "run": "outputs/groundjev/training/broader_shared6000_fla_owner_v2/controls/default_rmot_multi800",
+      "clock_units": "physical_seconds",
+      "timeout_in_registered_clock_units": 3.0,
+      "counts": {
+        "frames": 800,
+        "candidates": 2208,
+        "GT_matched_candidates": 1239,
+        "GT_bound_births": 56,
+        "GT_unknown_births": 94
+      },
+      "availability": {
+        "first_GT_matched_candidate_observation": 54,
+        "first_GT_matched_candidate_observation_action_NEW": 9,
+        "verified_correct_birth_in_actual_shortlist": 367,
+        "verified_correct_birth_in_actual_shortlist_action_NEW": 9,
+        "verified_correct_birth_in_actual_shortlist_action_ACTIVE": 266,
+        "verified_correct_birth_in_actual_shortlist_action_REACTIVATE": 39,
+        "first_GT_matched_candidate_observation_action_REACTIVATE": 5,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever": 568,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever_action_ACTIVE": 279,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever_unknown_birth_tracks_alive": 510,
+        "first_GT_matched_candidate_observation_action_ACTIVE": 8,
+        "first_GT_matched_candidate_observation_action_IGNORE": 32,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever_action_NEW": 23,
+        "retired_latest_cause_learned_before_timeout": 250,
+        "all_previously_GT_bound_births_retired": 250,
+        "all_previously_GT_bound_births_retired_action_NEW": 15,
+        "all_previously_GT_bound_births_retired_unknown_birth_tracks_alive": 211,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever_action_IGNORE": 230,
+        "verified_correct_birth_in_actual_shortlist_action_IGNORE": 53,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever_action_REACTIVATE": 36,
+        "all_previously_GT_bound_births_retired_action_ACTIVE": 188,
+        "all_previously_GT_bound_births_retired_action_IGNORE": 23,
+        "all_previously_GT_bound_births_retired_action_REACTIVATE": 24
+      },
+      "retirements": {
+        "GT_bound_learned_before_timeout": 55,
+        "GT_bound_learned_before_timeout_GT_present": 41,
+        "GT_bound_learned_before_timeout_native_candidate_present": 20,
+        "GT_unknown_learned_before_timeout": 93,
+        "GT_unknown_learned_before_timeout_GT_present": 0,
+        "GT_unknown_learned_before_timeout_native_candidate_present": 0
+      },
+      "examples": [
+        {
+          "frame": 36,
+          "candidate": 0,
+          "GT_identity": 73,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "ACTIVE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 42,
+          "candidate": 0,
+          "GT_identity": 12,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "ACTIVE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 43,
+          "candidate": 1,
+          "GT_identity": 12,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "ACTIVE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 44,
+          "candidate": 0,
+          "GT_identity": 12,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "ACTIVE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 44,
+          "candidate": 3,
+          "GT_identity": 73,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "ACTIVE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 46,
+          "candidate": 0,
+          "GT_identity": 12,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "ACTIVE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 47,
+          "candidate": 0,
+          "GT_identity": 12,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "ACTIVE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 48,
+          "candidate": 0,
+          "GT_identity": 12,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "ACTIVE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 48,
+          "candidate": 1,
+          "GT_identity": 13,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "NEW",
+          "latest_retirement": null
+        },
+        {
+          "frame": 48,
+          "candidate": 4,
+          "GT_identity": 73,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "NEW",
+          "latest_retirement": null
+        },
+        {
+          "frame": 49,
+          "candidate": 0,
+          "GT_identity": 12,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "ACTIVE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 50,
+          "candidate": 0,
+          "GT_identity": 12,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "ACTIVE",
+          "latest_retirement": null
+        }
+      ]
+    },
+    "native_assigned_identity_rmot_multi800": {
+      "run": "outputs/groundjev/training/broader_shared6000_fla_owner_v2/controls/assigned_identity_rmot_multi800",
+      "clock_units": "physical_seconds",
+      "timeout_in_registered_clock_units": 3.0,
+      "counts": {
+        "frames": 800,
+        "candidates": 2208,
+        "GT_matched_candidates": 1239,
+        "GT_bound_births": 54,
+        "GT_unknown_births": 93
+      },
+      "availability": {
+        "first_GT_matched_candidate_observation": 54,
+        "first_GT_matched_candidate_observation_action_NEW": 8,
+        "verified_correct_birth_in_actual_shortlist": 328,
+        "verified_correct_birth_in_actual_shortlist_action_NEW": 9,
+        "verified_correct_birth_in_actual_shortlist_action_ACTIVE": 235,
+        "verified_correct_birth_in_actual_shortlist_action_REACTIVATE": 32,
+        "first_GT_matched_candidate_observation_action_REACTIVATE": 5,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever": 587,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever_action_ACTIVE": 302,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever_unknown_birth_tracks_alive": 548,
+        "first_GT_matched_candidate_observation_action_ACTIVE": 8,
+        "first_GT_matched_candidate_observation_action_IGNORE": 33,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever_action_NEW": 23,
+        "retired_latest_cause_learned_before_timeout": 270,
+        "all_previously_GT_bound_births_retired": 270,
+        "all_previously_GT_bound_births_retired_action_NEW": 14,
+        "all_previously_GT_bound_births_retired_unknown_birth_tracks_alive": 250,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever_action_IGNORE": 224,
+        "verified_correct_birth_in_actual_shortlist_action_IGNORE": 52,
+        "seen_GT_candidate_before_but_no_GT_bound_birth_ever_action_REACTIVATE": 38,
+        "all_previously_GT_bound_births_retired_action_ACTIVE": 196,
+        "all_previously_GT_bound_births_retired_action_IGNORE": 31,
+        "all_previously_GT_bound_births_retired_action_REACTIVATE": 29
+      },
+      "retirements": {
+        "GT_bound_learned_before_timeout": 53,
+        "GT_bound_learned_before_timeout_GT_present": 39,
+        "GT_bound_learned_before_timeout_native_candidate_present": 17,
+        "GT_unknown_learned_before_timeout": 86,
+        "GT_unknown_learned_before_timeout_GT_present": 0,
+        "GT_unknown_learned_before_timeout_native_candidate_present": 0,
+        "GT_unknown_timeout_without_learned_terminate": 5,
+        "GT_unknown_timeout_without_learned_terminate_GT_present": 0,
+        "GT_unknown_timeout_without_learned_terminate_native_candidate_present": 0
+      },
+      "examples": [
+        {
+          "frame": 36,
+          "candidate": 0,
+          "GT_identity": 73,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "ACTIVE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 42,
+          "candidate": 0,
+          "GT_identity": 12,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "ACTIVE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 43,
+          "candidate": 1,
+          "GT_identity": 12,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "ACTIVE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 44,
+          "candidate": 0,
+          "GT_identity": 12,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "ACTIVE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 44,
+          "candidate": 3,
+          "GT_identity": 73,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "ACTIVE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 46,
+          "candidate": 0,
+          "GT_identity": 12,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "ACTIVE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 47,
+          "candidate": 0,
+          "GT_identity": 12,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "ACTIVE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 48,
+          "candidate": 0,
+          "GT_identity": 12,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "ACTIVE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 48,
+          "candidate": 1,
+          "GT_identity": 13,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "NEW",
+          "latest_retirement": null
+        },
+        {
+          "frame": 48,
+          "candidate": 4,
+          "GT_identity": 73,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "NEW",
+          "latest_retirement": null
+        },
+        {
+          "frame": 49,
+          "candidate": 0,
+          "GT_identity": 12,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "ACTIVE",
+          "latest_retirement": null
+        },
+        {
+          "frame": 50,
+          "candidate": 0,
+          "GT_identity": 12,
+          "category": "seen_GT_candidate_before_but_no_GT_bound_birth_ever",
+          "actual_action": "ACTIVE",
+          "latest_retirement": null
+        }
+      ]
+    }
+  },
+  "scope": "Five original Compact scopes and nine completed native controls. Known identities use the original immutable GT-at-birth binding; unknown births remain unknown. No GT corrects a history or prediction. Never-bound is not proof no physical identity existed. Latest retirement cause is temporal provenance, not sole causal attribution or official metric.",
+  "original_predictions_or_protocol_changed": false,
+  "new_GPU_or_optimizer_updates": 0,
+  "full_goal_complete": false
+}

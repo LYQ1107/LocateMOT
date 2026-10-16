@@ -1,6 +1,6 @@
 {
   "project_root": "/data2/user/LocateMOT",
-  "name": "Original learned versus timeout-only lifecycle execution, fixed3s physical expiry",
+  "name": "Original learned versus timeout-only lifecycle execution, fixedTTL3 in registered clock units",
   "checkpoint": "outputs/groundjev/compact/rmot_native72_stage_v1/broad_native_training/checkpoint.pt",
   "regression": "outputs/groundjev/validation/fixed_affinity_storage_v1/validation.json",
   "reference_root": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/appearance_rank_study_v1/reference_runs",
@@ -57,7 +57,7 @@
       "lifecycle_termination_policy": "timeout_only"
     }
   },
-  "comparison_limit": "Same original shared Compact checkpoint, native candidates, model outputs and3s expiry. Only early learned permanent-deletion execution deferred; no inference GT, seed/threshold/metric changes. Full same five scopes; no per-task policy selection. Before metrics remain original completed reference; full timeout-only rollouts/scorers run.",
+  "comparison_limit": "Same original shared Compact checkpoint, native candidates, model outputs and TTL3 in registered clock units. Only early learned permanent-deletion execution deferred; no inference GT, seed/threshold/metric changes. Full same five scopes; no per-task policy selection. Before metrics remain original completed reference; full timeout-only rollouts/scorers run.",
   "memory_storage": "No new image/ROI feature bank. Projected vectors in bounded16inputchunks; scientific decision traces and final identity state separately protected.",
   "metadata_suballocation": "1MiB audit +1MiB control metadata +1MiB bounded working within newly registered3MiB; scientific identity states/predictions separate.",
   "combined_registered_feature_upper_bytes": 26826974174,
@@ -68,5 +68,6 @@
   "termination_regression": "outputs/groundjev/validation/timeout_only_lifecycle_v1/validation.json",
   "prior_registered_feature_upper_bytes": 26823828446,
   "new_reservation_bytes": 3145728,
-  "ordinary_model_performance_achieved": false
+  "ordinary_model_performance_achieved": false,
+  "clock_scope": "Original TTL3 in registered manifest units: physical seconds for MOT/RMOT, annotation steps for TAO (source FPS unavailable). No timestamp/threshold/runtime/metric change; earlier generic3s prose was inaccurate for TAO."
 }

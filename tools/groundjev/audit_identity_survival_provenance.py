@@ -17,6 +17,7 @@ def audit(source,manifest):
     born,live,ever_bound,last_retirement={}, {},defaultdict(list),{}
     seen_gt=set();counts=Counter();missing=Counter();retired=Counter();examples=[]
     timeout=runtime['lost_seconds']
+    clock_units='physical_seconds' if manifest.get('physical_video_fps_verified',True) else 'annotation_steps'
     with (source/'frame_decisions.jsonl').open() as f:
         for expected,line in zip(manifest['frame_numbers'],f):
             row=json.loads(line);assert row['frame']==expected
@@ -82,7 +83,7 @@ def audit(source,manifest):
                 retired[prefix+'_'+cause+'_native_candidate_present']+=identity in supported
                 if identity is not None:
                     last_retirement[identity]=dict(frame=expected,timestamp=timestamp,track_id=tid,cause=cause,
-                        seconds_since_last_assignment=timestamp-live[tid],GT_present=identity in current_gt,
+                        registered_clock_gap_since_last_assignment=timestamp-live[tid],clock_units=clock_units,GT_present=identity in current_gt,
                         native_candidate_present=identity in supported)
                 del live[tid]
             for tid,identity in pending:
@@ -93,7 +94,8 @@ def audit(source,manifest):
     assert next(offline,None) is None
     assert counts['frames']==len(manifest['frame_numbers'])==runtime['frames']
     assert counts['candidates']==diagnostic['counts']['candidates']
-    return dict(run=str(source),counts=dict(counts),availability=dict(missing),retirements=dict(retired),examples=examples)
+    return dict(run=str(source),clock_units=clock_units,timeout_in_registered_clock_units=timeout,
+                counts=dict(counts),availability=dict(missing),retirements=dict(retired),examples=examples)
 
 
 def main():
