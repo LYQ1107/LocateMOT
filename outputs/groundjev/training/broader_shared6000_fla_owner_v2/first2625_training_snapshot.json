@@ -1,0 +1,41 @@
+{
+  "status": "SHARED6000_ACTUAL2625_UPDATES_WITH_COMPLETE_STATE_AT_OR_AFTER2500",
+  "actual_step_in_snapshot": 2625,
+  "actual_rows_seen": 10500,
+  "planned_steps": 6000,
+  "last_observed_log": {
+    "step": 2625,
+    "epoch": 0,
+    "examples": 10500,
+    "loss": 1.2518566247373384,
+    "ce": 0.8884622420294727,
+    "brier": 0.36339438377430056,
+    "slot_acc": 0.74,
+    "grad_norm": 123.72314725875854,
+    "lr": 1.2483761737412149e-06,
+    "rows_per_step": 4.0,
+    "examples_per_s": 1.1804641602898218,
+    "tokens_per_s": 8382.003816553908,
+    "sec_per_step": 3.3884976220014504,
+    "peak_mem_gb": 18.74544620513916,
+    "elapsed_s": 13536.185102207994
+  },
+  "saved_full_state": {
+    "format": "groundjev-full-fp32-adam-rng-v1",
+    "step": 2500,
+    "seen": 10000,
+    "epoch": 0,
+    "next_step_in_epoch": 2500,
+    "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_broader_shared6000_fla_v2/latest_training_state.pt",
+    "bytes": 9029140633,
+    "FP32_masters_and_Adam_moments_saved": true,
+    "scheduler_and_all_RNG_saved": true,
+    "single_latest_training_state": true,
+    "feature_cache": false
+  },
+  "physical_gpu": 7,
+  "new_RMOT18_components_not_added_to_this_running_phase": true,
+  "full_source_four_GPU_phase_separate_registered_recipe": true,
+  "tracking_metrics_pending": true,
+  "full_goal_complete": false
+}

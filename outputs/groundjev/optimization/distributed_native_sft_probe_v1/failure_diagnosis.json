@@ -1,0 +1,31 @@
+{
+  "status": "FAILED_ORIGINAL_STRICT_DISTRIBUTED_GATES_NOT_RELAXED",
+  "comparisons": {
+    "single_vs_four_continuous": {
+      "max_FP32_parameter_difference": 3.8389116525650024e-06,
+      "unequal_FP32_parameter_elements": 367317116,
+      "full_Adam_moment_relative_L2": {
+        "exp_avg": 0.005358746068365831,
+        "exp_avg_sq": 0.0017974434423022841
+      }
+    },
+    "four_continuous_vs_four_resumed": {
+      "max_FP32_parameter_difference": 3.849418135359883e-06,
+      "unequal_FP32_parameter_elements": 345580160,
+      "full_Adam_moment_relative_L2": {
+        "exp_avg": 0.005317121908667712,
+        "exp_avg_sq": 0.001960055355682398
+      }
+    }
+  },
+  "first_step_losses_equal_before_any_resume": true,
+  "first_step_gradient_norms": {
+    "single": 157.9768829345703,
+    "four_continuous": 158.0079803466797,
+    "four_partial": 158.041748046875
+  },
+  "inference": "Different backward execution is already present before resume; checkpoint correctness is not isolated by this experiment.",
+  "followup": "Same registered rows, seed, loss and numerical gates with original Torch reference training backend in v2.",
+  "current6000_training_changed": false,
+  "full_goal_complete": false
+}

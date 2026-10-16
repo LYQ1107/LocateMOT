@@ -1,0 +1,36 @@
+{"physical_gpus": [4], "command": [".venv-onejev-py310/bin/python", "-u", "tools/groundjev/check_onejev125_checkpoint.py", "--step", "2", "--checkpoint", "/data3/user/LocateMOT-checkpoints/distributed_native_sft_probe_v4_deterministic_seeded_fla/four_continuous/ckpt-step2", "--training-root", "/data3/user/LocateMOT-checkpoints/distributed_native_sft_probe_v4_deterministic_seeded_fla/four_continuous", "--reference-checkpoint", "outputs/groundjev/training/onejev_unified600_native_v2/ckpt-step600", "--validation-output", "outputs/groundjev/optimization/distributed_native_sft_probe_v4_deterministic_seeded_fla/native_MM_reload.json"]}
+Loading weights:   0%|          | 0/474 [00:00<?, ?it/s]Loading weights:   0%|          | 2/474 [00:00<00:28, 16.65it/s]Loading weights:  19%|█▉        | 92/474 [00:00<00:00, 491.59it/s]Loading weights:  36%|███▋      | 172/474 [00:00<00:00, 624.92it/s]Loading weights:  52%|█████▏    | 248/474 [00:00<00:00, 669.80it/s]Loading weights:  70%|██████▉   | 331/474 [00:00<00:00, 725.68it/s]Loading weights:  97%|█████████▋| 458/474 [00:00<00:00, 904.47it/s]Loading weights: 100%|██████████| 474/474 [00:00<00:00, 738.19it/s]
+[transformers] `causal_conv1d_fn` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+[transformers] `chunk_gated_delta_rule` is falling back to its reference PyTorch implementation because `flash-linear-attention` is not installed. This is correct but much slower; install `flash-linear-attention` for the optimized kernel.
+Loading weights:   0%|          | 0/474 [00:00<?, ?it/s]Loading weights:   0%|          | 2/474 [00:00<00:30, 15.44it/s]Loading weights:  19%|█▊        | 88/474 [00:00<00:00, 455.40it/s]Loading weights:  36%|███▋      | 172/474 [00:00<00:00, 618.30it/s]Loading weights:  53%|█████▎    | 249/474 [00:00<00:00, 670.77it/s]Loading weights:  73%|███████▎  | 346/474 [00:00<00:00, 775.14it/s]Loading weights:  98%|█████████▊| 466/474 [00:00<00:00, 913.68it/s]Loading weights: 100%|██████████| 474/474 [00:00<00:00, 744.23it/s]
+{
+  "status": "REAL_ONEJEV2_NATIVE_MM_RELOAD_VALIDATED",
+  "weight_entries": 474,
+  "checkpoint": "/data3/user/LocateMOT-checkpoints/distributed_native_sft_probe_v4_deterministic_seeded_fla/four_continuous/ckpt-step2",
+  "reference_checkpoint": "outputs/groundjev/training/onejev_unified600_native_v2/ckpt-step600",
+  "same_BF16_precision_weight_changes_vs_reference": [
+    {
+      "name": "model.language_model.layers.0.mlp.gate_proj.weight",
+      "changed_elements": 286569,
+      "max_absolute_difference": 0.000244140625
+    },
+    {
+      "name": "model.language_model.layers.16.mlp.gate_proj.weight",
+      "changed_elements": 271211,
+      "max_absolute_difference": 0.000244140625
+    },
+    {
+      "name": "model.language_model.layers.23.mlp.gate_proj.weight",
+      "changed_elements": 210795,
+      "max_absolute_difference": 0.00048828125
+    }
+  ],
+  "repeated_reload_probability_max_difference": 0.0,
+  "reload_tolerance": 1e-06,
+  "native_fork_auto_check_unchanged": true,
+  "GT_read_by_inference": false,
+  "intermediate_only": false,
+  "formal500_complete": false,
+  "formal_training_steps": 2,
+  "tracking_accuracy_or_exact_FP32_training_resume_claim": false
+}

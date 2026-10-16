@@ -1,0 +1,288 @@
+{"status": "PREPARING_REAL_MULTITASK_DISTRIBUTED_SFT_PROBE", "completed": []}
+{"status": "WAITING_FREE_MEMORY_single", "completed": []}
+{"status": "RUNNING_single", "completed": []}
+{"status": "RUNNING_single", "completed": []}
+{"physical_gpus": [4], "command": ["/data2/user/LocateMOT_GroundJEV/.venv-onejev-py310/bin/python", "tools/groundjev/probe_distributed_native_sft.py", "--config", "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/optimization/distributed_native_sft_probe_v4_deterministic_seeded_fla/single_config.json", "--receipts", "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/optimization/distributed_native_sft_probe_v4_deterministic_seeded_fla/rank_receipts", "--label", "single", "--backend", "fla", "--deterministic-execution", "--seed-global-rngs", "--initial-training-state", "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_unified600_native_v2/latest_training_state.pt"]}
+Current Python version 3.10 is below the recommended 3.11 version. It is recommended to upgrade to Python 3.11 or higher for the best experience.
+2026-10-16 09:58:49,503 INFO train.sft loaded 8 rows from /data2/user/LocateMOT_GroundJEV/outputs/groundjev/optimization/distributed_native_sft_probe_v4_deterministic_seeded_fla/train.jsonl.gz (world size 1)
+
+Loading weights:   0%|          | 0/474 [00:00<?, ?it/s]
+Loading weights:   0%|          | 1/474 [00:00<02:08,  3.67it/s]
+Loading weights:   0%|          | 2/474 [00:00<01:23,  5.66it/s]
+Loading weights:  19%|█▉        | 90/474 [00:00<00:01, 285.83it/s]
+Loading weights:  28%|██▊       | 134/474 [00:00<00:01, 328.09it/s]
+Loading weights:  38%|███▊      | 182/474 [00:00<00:00, 367.12it/s]
+Loading weights:  50%|████▉     | 235/474 [00:00<00:00, 408.99it/s]
+Loading weights:  60%|██████    | 285/474 [00:00<00:00, 432.17it/s]
+Loading weights:  72%|███████▏  | 341/474 [00:01<00:00, 468.60it/s]
+Loading weights:  89%|████████▊ | 420/474 [00:01<00:00, 558.52it/s]
+Loading weights: 100%|██████████| 474/474 [00:01<00:00, 399.34it/s]
+2026-10-16 09:58:53,245 INFO train.sft model_type=qwen3_5 template_kwargs={'enable_thinking': False}
+2026-10-16 09:58:53,246 INFO train.sft full fine-tuning: fp32 master weights, bf16 autocast forward, vision tower frozen
+{"status": "NEW_STAGE_REAL_FP32_MASTERS_INITIALIZED", "source": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_unified600_native_v2/latest_training_state.pt", "source_step": 600, "FP32_parameter_entries": 320, "parameters": 752393024, "changed_vs_BF16_inference_export_initialization": 500278218, "initialization_max_difference": 0.0, "new_optimizer_scheduler_and_RNG": "explicit newrecipe reset, not originaltrajectory resume", "old_training_state_or_inference_weights_modified": false}
+2026-10-16 09:59:01,761 INFO train.sft trainable 752.39M of 852.99M parameters (88.207%)
+2026-10-16 09:59:01,912 INFO train.sft 2 steps per epoch, 2 total steps, 1 warmup, 0 rows dropped over max-len, planned in 0s
+[transformers] `causal_conv1d_fn` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+train [###############...............] 1/2 (50.0%) loss 4.8223 ce 3.4223 brier 1.4000 slot_acc 0.250 gnorm 158.007 lr 2.00e-06 rows/s 0.30 tok/s 2725 s/step 13.3 mem 11.7G eta 0.0h
+
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]
+Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  1.01it/s]
+Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  1.01it/s]
+2026-10-16 09:59:17,605 INFO train.sft saved model to /data3/user/LocateMOT-checkpoints/distributed_native_sft_probe_v4_deterministic_seeded_fla/single/ckpt-step1
+{"format": "groundjev-full-fp32-adam-rng-v1", "step": 1, "seen": 4, "epoch": 0, "next_step_in_epoch": 1, "path": "/data3/user/LocateMOT-checkpoints/distributed_native_sft_probe_v4_deterministic_seeded_fla/single/latest_training_state.pt", "bytes": 9029140761, "FP32_masters_and_Adam_moments_saved": true, "scheduler_and_all_RNG_saved": true, "single_latest_training_state": true, "feature_cache": false}
+train [##############################] 2/2 (100.0%) loss 3.1429 ce 2.1637 brier 0.9792 slot_acc 0.500 gnorm 157.556 lr 0.00e+00 rows/s 0.15 tok/s 1634 s/step 26.9 mem 17.6G eta 0.0h
+
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]
+Writing model shards: 100%|██████████| 1/1 [00:01<00:00,  1.06s/it]
+Writing model shards: 100%|██████████| 1/1 [00:01<00:00,  1.06s/it]
+2026-10-16 09:59:44,704 INFO train.sft saved model to /data3/user/LocateMOT-checkpoints/distributed_native_sft_probe_v4_deterministic_seeded_fla/single/ckpt-step2
+{"format": "groundjev-full-fp32-adam-rng-v1", "step": 2, "seen": 8, "epoch": 0, "next_step_in_epoch": 2, "path": "/data3/user/LocateMOT-checkpoints/distributed_native_sft_probe_v4_deterministic_seeded_fla/single/latest_training_state.pt", "bytes": 9029140761, "FP32_masters_and_Adam_moments_saved": true, "scheduler_and_all_RNG_saved": true, "single_latest_training_state": true, "feature_cache": false}
+
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]
+Writing model shards: 100%|██████████| 1/1 [00:01<00:00,  1.06s/it]
+Writing model shards: 100%|██████████| 1/1 [00:01<00:00,  1.06s/it]
+2026-10-16 10:00:02,199 INFO train.sft saved final model to /data3/user/LocateMOT-checkpoints/distributed_native_sft_probe_v4_deterministic_seeded_fla/single/final
+done: 2 steps, 8 examples, 57.8s, 0.14 examples/s
+{"rank": 0, "world": 1, "steps": 2, "all_rank_max_difference": 0.0}
+{"status": "RUNNING_single", "completed": ["single"]}
+{"status": "WAITING_FREE_MEMORY_four_continuous", "completed": ["single"]}
+{"status": "RUNNING_four_continuous", "completed": ["single"]}
+{"status": "RUNNING_four_continuous", "completed": ["single"]}
+{"physical_gpus": [4, 5, 6, 7], "command": ["/data2/user/LocateMOT_GroundJEV/.venv-onejev-py310/bin/python", "-m", "torch.distributed.run", "--standalone", "--nproc-per-node", "4", "tools/groundjev/probe_distributed_native_sft.py", "--config", "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/optimization/distributed_native_sft_probe_v4_deterministic_seeded_fla/four_continuous_config.json", "--receipts", "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/optimization/distributed_native_sft_probe_v4_deterministic_seeded_fla/rank_receipts", "--label", "four_continuous", "--backend", "fla", "--deterministic-execution", "--seed-global-rngs", "--initial-training-state", "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_unified600_native_v2/latest_training_state.pt"]}
+Current Python version 3.10 is below the recommended 3.11 version. It is recommended to upgrade to Python 3.11 or higher for the best experience.
+Current Python version 3.10 is below the recommended 3.11 version. It is recommended to upgrade to Python 3.11 or higher for the best experience.
+Current Python version 3.10 is below the recommended 3.11 version. It is recommended to upgrade to Python 3.11 or higher for the best experience.
+Current Python version 3.10 is below the recommended 3.11 version. It is recommended to upgrade to Python 3.11 or higher for the best experience.
+2026-10-16 10:01:17,834 INFO train.sft loaded 8 rows from /data2/user/LocateMOT_GroundJEV/outputs/groundjev/optimization/distributed_native_sft_probe_v4_deterministic_seeded_fla/train.jsonl.gz (world size 4)
+
+Loading weights:   0%|          | 0/474 [00:00<?, ?it/s]
+Loading weights:   0%|          | 0/474 [00:00<?, ?it/s]
+Loading weights:   0%|          | 0/474 [00:00<?, ?it/s]
+Loading weights:   0%|          | 1/474 [00:00<02:44,  2.87it/s]
+Loading weights:   0%|          | 2/474 [00:00<01:39,  4.76it/s]
+Loading weights:   0%|          | 0/474 [00:00<?, ?it/s]
+Loading weights:   0%|          | 1/474 [00:00<03:19,  2.37it/s]
+Loading weights:  31%|███▏      | 149/474 [00:00<00:00, 420.71it/s]
+Loading weights:  21%|██        | 100/474 [00:00<00:01, 248.65it/s]
+Loading weights:  46%|████▌     | 216/474 [00:00<00:00, 486.61it/s]
+Loading weights:   0%|          | 1/474 [00:00<03:35,  2.19it/s]
+Loading weights:  33%|███▎      | 156/474 [00:00<00:00, 324.52it/s]
+Loading weights:   0%|          | 1/474 [00:00<02:32,  3.09it/s]
+Loading weights:  31%|███       | 146/474 [00:00<00:01, 322.96it/s]
+Loading weights:  59%|█████▉    | 282/474 [00:00<00:00, 405.88it/s]
+Loading weights:  44%|████▍     | 210/474 [00:00<00:00, 306.17it/s]
+Loading weights:   0%|          | 2/474 [00:00<01:36,  4.92it/s]
+Loading weights:  71%|███████   | 336/474 [00:00<00:00, 434.26it/s]
+Loading weights:  45%|████▍     | 211/474 [00:00<00:00, 363.60it/s]
+Loading weights:  21%|██        | 99/474 [00:00<00:01, 260.89it/s]
+Loading weights:  54%|█████▎    | 254/474 [00:00<00:00, 307.58it/s]
+Loading weights:  86%|████████▌ | 407/474 [00:01<00:00, 502.45it/s]
+Loading weights:  56%|█████▋    | 267/474 [00:00<00:00, 360.90it/s]
+Loading weights:  30%|███       | 143/474 [00:00<00:01, 304.71it/s]
+Loading weights:  62%|██████▏   | 294/474 [00:01<00:00, 319.11it/s]
+Loading weights: 100%|██████████| 474/474 [00:01<00:00, 407.96it/s]
+
+Loading weights:  79%|███████▉  | 375/474 [00:00<00:00, 524.50it/s]
+Loading weights:  43%|████▎     | 205/474 [00:00<00:00, 391.31it/s]
+Loading weights:  76%|███████▌  | 360/474 [00:01<00:00, 402.28it/s]2026-10-16 10:01:21,196 INFO train.sft model_type=qwen3_5 template_kwargs={'enable_thinking': False}
+2026-10-16 10:01:21,198 INFO train.sft full fine-tuning: fp32 master weights, bf16 autocast forward, vision tower frozen
+
+Loading weights: 100%|██████████| 474/474 [00:01<00:00, 451.09it/s]
+
+Loading weights:  55%|█████▍    | 260/474 [00:00<00:00, 432.09it/s]
+Loading weights:  94%|█████████▍| 447/474 [00:01<00:00, 521.39it/s]
+Loading weights: 100%|██████████| 474/474 [00:01<00:00, 357.63it/s]
+
+Loading weights:  67%|██████▋   | 317/474 [00:00<00:00, 469.30it/s]
+Loading weights:  90%|████████▉ | 425/474 [00:01<00:00, 635.39it/s]
+Loading weights: 100%|██████████| 474/474 [00:01<00:00, 412.24it/s]
+{"status": "NEW_STAGE_REAL_FP32_MASTERS_INITIALIZED", "source": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_unified600_native_v2/latest_training_state.pt", "source_step": 600, "FP32_parameter_entries": 320, "parameters": 752393024, "changed_vs_BF16_inference_export_initialization": 500278218, "initialization_max_difference": 0.0, "new_optimizer_scheduler_and_RNG": "explicit newrecipe reset, not originaltrajectory resume", "old_training_state_or_inference_weights_modified": false}
+{"status": "NEW_STAGE_REAL_FP32_MASTERS_INITIALIZED", "source": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_unified600_native_v2/latest_training_state.pt", "source_step": 600, "FP32_parameter_entries": 320, "parameters": 752393024, "changed_vs_BF16_inference_export_initialization": 500278218, "initialization_max_difference": 0.0, "new_optimizer_scheduler_and_RNG": "explicit newrecipe reset, not originaltrajectory resume", "old_training_state_or_inference_weights_modified": false}
+2026-10-16 10:01:29,499 INFO train.sft trainable 752.39M of 852.99M parameters (88.207%)
+{"status": "NEW_STAGE_REAL_FP32_MASTERS_INITIALIZED", "source": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_unified600_native_v2/latest_training_state.pt", "source_step": 600, "FP32_parameter_entries": 320, "parameters": 752393024, "changed_vs_BF16_inference_export_initialization": 500278218, "initialization_max_difference": 0.0, "new_optimizer_scheduler_and_RNG": "explicit newrecipe reset, not originaltrajectory resume", "old_training_state_or_inference_weights_modified": false}
+{"status": "NEW_STAGE_REAL_FP32_MASTERS_INITIALIZED", "source": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_unified600_native_v2/latest_training_state.pt", "source_step": 600, "FP32_parameter_entries": 320, "parameters": 752393024, "changed_vs_BF16_inference_export_initialization": 500278218, "initialization_max_difference": 0.0, "new_optimizer_scheduler_and_RNG": "explicit newrecipe reset, not originaltrajectory resume", "old_training_state_or_inference_weights_modified": false}
+2026-10-16 10:01:33,934 INFO train.sft 2 steps per epoch, 2 total steps, 1 warmup, 0 rows dropped over max-len, planned in 4s
+[transformers] `causal_conv1d_fn` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+[transformers] `causal_conv1d_fn` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+[transformers] `causal_conv1d_fn` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+[transformers] `causal_conv1d_fn` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+train [###############...............] 1/2 (50.0%) loss 4.8223 ce 3.4223 brier 1.4000 slot_acc 0.250 gnorm 158.007 lr 2.00e-06 rows/s 0.33 tok/s 2955 s/step 12.3 mem 14.5G eta 0.0h
+
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]
+Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  1.03it/s]
+Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  1.03it/s]
+2026-10-16 10:01:48,383 INFO train.sft saved model to /data3/user/LocateMOT-checkpoints/distributed_native_sft_probe_v4_deterministic_seeded_fla/four_continuous/ckpt-step1
+{"format": "groundjev-full-fp32-adam-rng-v1", "step": 1, "seen": 4, "epoch": 0, "next_step_in_epoch": 1, "path": "/data3/user/LocateMOT-checkpoints/distributed_native_sft_probe_v4_deterministic_seeded_fla/four_continuous/latest_training_state.pt", "bytes": 9029193761, "FP32_masters_and_Adam_moments_saved": true, "scheduler_and_all_RNG_saved": true, "single_latest_training_state": true, "feature_cache": false}
+/data2/user/LocateMOT_GroundJEV/.venv-onejev-py310/lib/python3.10/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+train [##############################] 2/2 (100.0%) loss 3.1429 ce 2.1637 brier 0.9792 slot_acc 0.500 gnorm 157.556 lr 0.00e+00 rows/s 0.20 tok/s 2235 s/step 19.6 mem 15.1G eta 0.0h
+
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]
+Writing model shards: 100%|██████████| 1/1 [00:01<00:00,  1.02s/it]
+Writing model shards: 100%|██████████| 1/1 [00:01<00:00,  1.03s/it]
+2026-10-16 10:02:08,085 INFO train.sft saved model to /data3/user/LocateMOT-checkpoints/distributed_native_sft_probe_v4_deterministic_seeded_fla/four_continuous/ckpt-step2
+{"format": "groundjev-full-fp32-adam-rng-v1", "step": 2, "seen": 8, "epoch": 0, "next_step_in_epoch": 2, "path": "/data3/user/LocateMOT-checkpoints/distributed_native_sft_probe_v4_deterministic_seeded_fla/four_continuous/latest_training_state.pt", "bytes": 9029193761, "FP32_masters_and_Adam_moments_saved": true, "scheduler_and_all_RNG_saved": true, "single_latest_training_state": true, "feature_cache": false}
+
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]
+Writing model shards: 100%|██████████| 1/1 [00:01<00:00,  1.04s/it]
+Writing model shards: 100%|██████████| 1/1 [00:01<00:00,  1.04s/it]
+2026-10-16 10:02:23,995 INFO train.sft saved final model to /data3/user/LocateMOT-checkpoints/distributed_native_sft_probe_v4_deterministic_seeded_fla/four_continuous/final
+done: 2 steps, 8 examples, 47.9s, 0.17 examples/s
+{"rank": 0, "world": 4, "steps": 2, "all_rank_max_difference": 0.0}
+{"rank": 3, "world": 4, "steps": 2, "all_rank_max_difference": 0.0}
+{"rank": 2, "world": 4, "steps": 2, "all_rank_max_difference": 0.0}
+{"rank": 1, "world": 4, "steps": 2, "all_rank_max_difference": 0.0}
+{"status": "RUNNING_four_continuous", "completed": ["single", "four_continuous"]}
+{"status": "WAITING_FREE_MEMORY_four_partial", "completed": ["single", "four_continuous"]}
+{"status": "RUNNING_four_partial", "completed": ["single", "four_continuous"]}
+{"status": "RUNNING_four_partial", "completed": ["single", "four_continuous"]}
+{"physical_gpus": [4, 5, 6, 7], "command": ["/data2/user/LocateMOT_GroundJEV/.venv-onejev-py310/bin/python", "-m", "torch.distributed.run", "--standalone", "--nproc-per-node", "4", "tools/groundjev/probe_distributed_native_sft.py", "--config", "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/optimization/distributed_native_sft_probe_v4_deterministic_seeded_fla/four_resumed_config.json", "--receipts", "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/optimization/distributed_native_sft_probe_v4_deterministic_seeded_fla/rank_receipts", "--label", "four_partial", "--backend", "fla", "--deterministic-execution", "--seed-global-rngs", "--initial-training-state", "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_unified600_native_v2/latest_training_state.pt", "--stop-after-saved-step", "1"]}
+Current Python version 3.10 is below the recommended 3.11 version. It is recommended to upgrade to Python 3.11 or higher for the best experience.
+Current Python version 3.10 is below the recommended 3.11 version. It is recommended to upgrade to Python 3.11 or higher for the best experience.
+Current Python version 3.10 is below the recommended 3.11 version. It is recommended to upgrade to Python 3.11 or higher for the best experience.
+Current Python version 3.10 is below the recommended 3.11 version. It is recommended to upgrade to Python 3.11 or higher for the best experience.
+2026-10-16 10:03:01,758 INFO train.sft loaded 8 rows from /data2/user/LocateMOT_GroundJEV/outputs/groundjev/optimization/distributed_native_sft_probe_v4_deterministic_seeded_fla/train.jsonl.gz (world size 4)
+
+Loading weights:   0%|          | 0/474 [00:00<?, ?it/s]
+Loading weights:   0%|          | 0/474 [00:00<?, ?it/s]
+Loading weights:   0%|          | 1/474 [00:00<02:08,  3.68it/s]
+Loading weights:   0%|          | 2/474 [00:00<01:30,  5.21it/s]
+Loading weights:   0%|          | 1/474 [00:00<02:16,  3.46it/s]
+Loading weights:  23%|██▎       | 107/474 [00:00<00:01, 321.20it/s]
+Loading weights:   0%|          | 2/474 [00:00<01:29,  5.27it/s]
+Loading weights:  36%|███▋      | 172/474 [00:00<00:00, 417.41it/s]
+Loading weights:  21%|██▏       | 101/474 [00:00<00:01, 303.33it/s]
+Loading weights:  51%|█████     | 240/474 [00:00<00:00, 489.86it/s]
+Loading weights:   0%|          | 0/474 [00:00<?, ?it/s]
+Loading weights:  31%|███       | 147/474 [00:00<00:00, 350.42it/s]
+Loading weights:  64%|██████▎   | 302/474 [00:00<00:00, 517.35it/s]
+Loading weights:   0%|          | 0/474 [00:00<?, ?it/s]
+Loading weights:  41%|████      | 192/474 [00:00<00:00, 379.64it/s]
+Loading weights:  84%|████████▍ | 399/474 [00:00<00:00, 645.88it/s]
+Loading weights: 100%|██████████| 474/474 [00:01<00:00, 469.03it/s]
+
+Loading weights:  50%|█████     | 237/474 [00:00<00:00, 389.66it/s]
+Loading weights:  61%|██████    | 288/474 [00:00<00:00, 423.35it/s]
+Loading weights:   0%|          | 1/474 [00:00<02:17,  3.43it/s]
+Loading weights:   0%|          | 1/474 [00:00<03:08,  2.51it/s]
+Loading weights:  73%|███████▎  | 346/474 [00:01<00:00, 459.73it/s]
+Loading weights:   0%|          | 2/474 [00:00<01:28,  5.34it/s]
+Loading weights:  38%|███▊      | 182/474 [00:00<00:00, 476.64it/s]
+Loading weights:  92%|█████████▏| 437/474 [00:01<00:00, 585.45it/s]
+Loading weights:  30%|███       | 143/474 [00:00<00:00, 430.38it/s]
+Loading weights: 100%|██████████| 474/474 [00:01<00:00, 400.22it/s]
+
+Loading weights:  61%|██████    | 287/474 [00:00<00:00, 567.26it/s]
+Loading weights:  47%|████▋     | 221/474 [00:00<00:00, 523.73it/s]
+Loading weights:  82%|████████▏ | 387/474 [00:00<00:00, 678.26it/s]
+Loading weights:  61%|██████    | 288/474 [00:00<00:00, 553.92it/s]
+Loading weights: 100%|██████████| 474/474 [00:00<00:00, 570.71it/s]
+
+Loading weights:  82%|████████▏ | 387/474 [00:00<00:00, 678.51it/s]2026-10-16 10:03:05,068 INFO train.sft model_type=qwen3_5 template_kwargs={'enable_thinking': False}
+2026-10-16 10:03:05,070 INFO train.sft full fine-tuning: fp32 master weights, bf16 autocast forward, vision tower frozen
+
+Loading weights: 100%|██████████| 474/474 [00:00<00:00, 517.21it/s]
+{"status": "NEW_STAGE_REAL_FP32_MASTERS_INITIALIZED", "source": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_unified600_native_v2/latest_training_state.pt", "source_step": 600, "FP32_parameter_entries": 320, "parameters": 752393024, "changed_vs_BF16_inference_export_initialization": 500278218, "initialization_max_difference": 0.0, "new_optimizer_scheduler_and_RNG": "explicit newrecipe reset, not originaltrajectory resume", "old_training_state_or_inference_weights_modified": false}
+{"status": "NEW_STAGE_REAL_FP32_MASTERS_INITIALIZED", "source": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_unified600_native_v2/latest_training_state.pt", "source_step": 600, "FP32_parameter_entries": 320, "parameters": 752393024, "changed_vs_BF16_inference_export_initialization": 500278218, "initialization_max_difference": 0.0, "new_optimizer_scheduler_and_RNG": "explicit newrecipe reset, not originaltrajectory resume", "old_training_state_or_inference_weights_modified": false}
+{"status": "NEW_STAGE_REAL_FP32_MASTERS_INITIALIZED", "source": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_unified600_native_v2/latest_training_state.pt", "source_step": 600, "FP32_parameter_entries": 320, "parameters": 752393024, "changed_vs_BF16_inference_export_initialization": 500278218, "initialization_max_difference": 0.0, "new_optimizer_scheduler_and_RNG": "explicit newrecipe reset, not originaltrajectory resume", "old_training_state_or_inference_weights_modified": false}
+{"status": "NEW_STAGE_REAL_FP32_MASTERS_INITIALIZED", "source": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_unified600_native_v2/latest_training_state.pt", "source_step": 600, "FP32_parameter_entries": 320, "parameters": 752393024, "changed_vs_BF16_inference_export_initialization": 500278218, "initialization_max_difference": 0.0, "new_optimizer_scheduler_and_RNG": "explicit newrecipe reset, not originaltrajectory resume", "old_training_state_or_inference_weights_modified": false}
+2026-10-16 10:03:14,749 INFO train.sft trainable 752.39M of 852.99M parameters (88.207%)
+2026-10-16 10:03:17,018 INFO train.sft 2 steps per epoch, 2 total steps, 1 warmup, 0 rows dropped over max-len, planned in 2s
+[transformers] `causal_conv1d_fn` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+[transformers] `causal_conv1d_fn` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+[transformers] `causal_conv1d_fn` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+[transformers] `causal_conv1d_fn` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+train [###############...............] 1/2 (50.0%) loss 4.8223 ce 3.4223 brier 1.4000 slot_acc 0.250 gnorm 158.007 lr 2.00e-06 rows/s 0.32 tok/s 2921 s/step 12.4 mem 14.5G eta 0.0h
+
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]
+Writing model shards: 100%|██████████| 1/1 [00:01<00:00,  1.03s/it]
+Writing model shards: 100%|██████████| 1/1 [00:01<00:00,  1.03s/it]
+2026-10-16 10:03:31,709 INFO train.sft saved model to /data3/user/LocateMOT-checkpoints/distributed_native_sft_probe_v4_deterministic_seeded_fla/four_resumed/ckpt-step1
+{"format": "groundjev-full-fp32-adam-rng-v1", "step": 1, "seen": 4, "epoch": 0, "next_step_in_epoch": 1, "path": "/data3/user/LocateMOT-checkpoints/distributed_native_sft_probe_v4_deterministic_seeded_fla/four_resumed/latest_training_state.pt", "bytes": 9029193761, "FP32_masters_and_Adam_moments_saved": true, "scheduler_and_all_RNG_saved": true, "single_latest_training_state": true, "feature_cache": false}
+/data2/user/LocateMOT_GroundJEV/.venv-onejev-py310/lib/python3.10/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+PROBE_STOP_AFTER_SAVED_STEP_NOT_TRAINING_COMPLETE 1
+{"rank": 3, "world": 4, "steps": 1, "all_rank_max_difference": 0.0}
+{"rank": 0, "world": 4, "steps": 1, "all_rank_max_difference": 0.0}
+{"rank": 1, "world": 4, "steps": 1, "all_rank_max_difference": 0.0}
+{"rank": 2, "world": 4, "steps": 1, "all_rank_max_difference": 0.0}
+{"status": "RUNNING_four_partial", "completed": ["single", "four_continuous", "four_partial"]}
+{"status": "WAITING_FREE_MEMORY_four_restore", "completed": ["single", "four_continuous", "four_partial"]}
+{"status": "RUNNING_four_restore", "completed": ["single", "four_continuous", "four_partial"]}
+{"status": "RUNNING_four_restore", "completed": ["single", "four_continuous", "four_partial"]}
+{"physical_gpus": [4, 5, 6, 7], "command": ["/data2/user/LocateMOT_GroundJEV/.venv-onejev-py310/bin/python", "-m", "torch.distributed.run", "--standalone", "--nproc-per-node", "4", "tools/groundjev/probe_distributed_native_sft.py", "--config", "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/optimization/distributed_native_sft_probe_v4_deterministic_seeded_fla/four_resumed_config.json", "--receipts", "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/optimization/distributed_native_sft_probe_v4_deterministic_seeded_fla/rank_receipts", "--label", "four_restore", "--backend", "fla", "--deterministic-execution", "--seed-global-rngs", "--resume-state", "/data3/user/LocateMOT-checkpoints/distributed_native_sft_probe_v4_deterministic_seeded_fla/four_resumed/latest_training_state.pt"]}
+Current Python version 3.10 is below the recommended 3.11 version. It is recommended to upgrade to Python 3.11 or higher for the best experience.
+Current Python version 3.10 is below the recommended 3.11 version. It is recommended to upgrade to Python 3.11 or higher for the best experience.
+Current Python version 3.10 is below the recommended 3.11 version. It is recommended to upgrade to Python 3.11 or higher for the best experience.
+Current Python version 3.10 is below the recommended 3.11 version. It is recommended to upgrade to Python 3.11 or higher for the best experience.
+2026-10-16 10:04:37,412 INFO train.sft loaded 8 rows from /data2/user/LocateMOT_GroundJEV/outputs/groundjev/optimization/distributed_native_sft_probe_v4_deterministic_seeded_fla/train.jsonl.gz (world size 4)
+
+Loading weights:   0%|          | 0/474 [00:00<?, ?it/s]
+Loading weights:   0%|          | 0/474 [00:00<?, ?it/s]
+Loading weights:   0%|          | 1/474 [00:00<02:15,  3.49it/s]
+Loading weights:   0%|          | 0/474 [00:00<?, ?it/s]
+Loading weights:   0%|          | 2/474 [00:00<01:32,  5.10it/s]
+Loading weights:  30%|███       | 143/474 [00:00<00:00, 419.59it/s]
+Loading weights:   0%|          | 1/474 [00:00<02:46,  2.84it/s]
+Loading weights:  44%|████▎     | 207/474 [00:00<00:00, 482.44it/s]
+Loading weights:   0%|          | 0/474 [00:00<?, ?it/s]
+Loading weights:  58%|█████▊    | 274/474 [00:00<00:00, 517.26it/s]
+Loading weights:   0%|          | 2/474 [00:00<02:08,  3.68it/s]
+Loading weights:   0%|          | 1/474 [00:00<03:48,  2.07it/s]
+Loading weights:  75%|███████▌  | 356/474 [00:00<00:00, 603.47it/s]
+Loading weights:  32%|███▏      | 152/474 [00:00<00:00, 353.22it/s]
+Loading weights:   0%|          | 2/474 [00:00<02:03,  3.82it/s]
+Loading weights:  99%|█████████▊| 467/474 [00:00<00:00, 722.53it/s]
+Loading weights: 100%|██████████| 474/474 [00:00<00:00, 495.65it/s]
+
+Loading weights:  50%|████▉     | 235/474 [00:00<00:00, 465.21it/s]
+Loading weights:  42%|████▏     | 200/474 [00:00<00:00, 480.10it/s]
+Loading weights:  66%|██████▌   | 313/474 [00:00<00:00, 546.05it/s]2026-10-16 10:04:40,507 INFO train.sft model_type=qwen3_5 template_kwargs={'enable_thinking': False}
+2026-10-16 10:04:40,509 INFO train.sft full fine-tuning: fp32 master weights, bf16 autocast forward, vision tower frozen
+2026-10-16 10:04:40,511 INFO train.sft trainable 752.39M of 852.99M parameters (88.207%)
+
+Loading weights:  61%|██████    | 288/474 [00:00<00:00, 519.91it/s]
+Loading weights:  99%|█████████▊| 467/474 [00:00<00:00, 777.23it/s]
+Loading weights: 100%|██████████| 474/474 [00:00<00:00, 474.62it/s]
+
+Loading weights:   0%|          | 1/474 [00:00<04:18,  1.83it/s]
+Loading weights:  83%|████████▎ | 395/474 [00:00<00:00, 653.30it/s]
+Loading weights:  25%|██▍       | 118/474 [00:00<00:01, 243.58it/s]
+Loading weights: 100%|██████████| 474/474 [00:01<00:00, 464.59it/s]
+
+Loading weights:  39%|███▉      | 187/474 [00:00<00:00, 323.26it/s]
+Loading weights:  53%|█████▎    | 249/474 [00:00<00:00, 366.55it/s]
+Loading weights:  65%|██████▍   | 306/474 [00:01<00:00, 397.80it/s]
+Loading weights:  76%|███████▌  | 360/474 [00:01<00:00, 429.73it/s]
+Loading weights:  92%|█████████▏| 435/474 [00:01<00:00, 511.90it/s]
+Loading weights: 100%|██████████| 474/474 [00:01<00:00, 368.97it/s]
+2026-10-16 10:04:42,929 INFO train.sft 2 steps per epoch, 2 total steps, 1 warmup, 0 rows dropped over max-len, planned in 2s
+{"status": "FULL_FP32_ADAM_SCHEDULER_RNG_CURSOR_RESTORED", "source": "/data3/user/LocateMOT-checkpoints/distributed_native_sft_probe_v4_deterministic_seeded_fla/four_resumed/latest_training_state.pt", "step": 1, "seen": 4, "next_step_in_epoch": 1, "FP32_master_max_difference": 0.0, "trainable_parameter_entries": 320, "protocol_exact": true, "sampling_protocol": "paired-index-shuffle-v1"}
+[transformers] `causal_conv1d_fn` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+{"status": "FULL_FP32_ADAM_SCHEDULER_RNG_CURSOR_RESTORED", "source": "/data3/user/LocateMOT-checkpoints/distributed_native_sft_probe_v4_deterministic_seeded_fla/four_resumed/latest_training_state.pt", "step": 1, "seen": 4, "next_step_in_epoch": 1, "FP32_master_max_difference": 0.0, "trainable_parameter_entries": 320, "protocol_exact": true, "sampling_protocol": "paired-index-shuffle-v1"}
+[transformers] `causal_conv1d_fn` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+{"status": "FULL_FP32_ADAM_SCHEDULER_RNG_CURSOR_RESTORED", "source": "/data3/user/LocateMOT-checkpoints/distributed_native_sft_probe_v4_deterministic_seeded_fla/four_resumed/latest_training_state.pt", "step": 1, "seen": 4, "next_step_in_epoch": 1, "FP32_master_max_difference": 0.0, "trainable_parameter_entries": 320, "protocol_exact": true, "sampling_protocol": "paired-index-shuffle-v1"}
+{"status": "FULL_FP32_ADAM_SCHEDULER_RNG_CURSOR_RESTORED", "source": "/data3/user/LocateMOT-checkpoints/distributed_native_sft_probe_v4_deterministic_seeded_fla/four_resumed/latest_training_state.pt", "step": 1, "seen": 4, "next_step_in_epoch": 1, "FP32_master_max_difference": 0.0, "trainable_parameter_entries": 320, "protocol_exact": true, "sampling_protocol": "paired-index-shuffle-v1"}
+[transformers] `causal_conv1d_fn` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+[transformers] `causal_conv1d_fn` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+train [##############################] 2/2 (100.0%) loss 3.1429 ce 2.1637 brier 0.9792 slot_acc 0.500 gnorm 157.556 lr 0.00e+00 rows/s 0.52 tok/s 5741 s/step 7.6 mem 15.1G eta 0.0h
+
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]
+Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  1.07it/s]
+Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  1.07it/s]
+2026-10-16 10:05:00,109 INFO train.sft saved model to /data3/user/LocateMOT-checkpoints/distributed_native_sft_probe_v4_deterministic_seeded_fla/four_resumed/ckpt-step2
+{"format": "groundjev-full-fp32-adam-rng-v1", "step": 2, "seen": 8, "epoch": 0, "next_step_in_epoch": 2, "path": "/data3/user/LocateMOT-checkpoints/distributed_native_sft_probe_v4_deterministic_seeded_fla/four_resumed/latest_training_state.pt", "bytes": 9029194785, "FP32_masters_and_Adam_moments_saved": true, "scheduler_and_all_RNG_saved": true, "single_latest_training_state": true, "feature_cache": false}
+/data2/user/LocateMOT_GroundJEV/.venv-onejev-py310/lib/python3.10/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]
+Writing model shards: 100%|██████████| 1/1 [00:01<00:00,  1.09s/it]
+Writing model shards: 100%|██████████| 1/1 [00:01<00:00,  1.09s/it]
+2026-10-16 10:05:17,198 INFO train.sft saved final model to /data3/user/LocateMOT-checkpoints/distributed_native_sft_probe_v4_deterministic_seeded_fla/four_resumed/final
+done: 2 steps, 8 examples, 24.6s, 0.33 examples/s
+{"rank": 0, "world": 4, "steps": 1, "all_rank_max_difference": 0.0}
+{"rank": 3, "world": 4, "steps": 1, "all_rank_max_difference": 0.0}
+{"rank": 2, "world": 4, "steps": 1, "all_rank_max_difference": 0.0}
+{"rank": 1, "world": 4, "steps": 1, "all_rank_max_difference": 0.0}
+{"status": "RUNNING_four_restore", "completed": ["single", "four_continuous", "four_partial", "four_restore"]}
+{"status": "REAL_NATIVE_ONE_AND_FOUR_GPU_GLOBAL_MEAN_FULL_STATE_AND_EXACT_RESUME_VALIDATED", "completed": ["single", "four_continuous", "four_partial", "four_restore"]}

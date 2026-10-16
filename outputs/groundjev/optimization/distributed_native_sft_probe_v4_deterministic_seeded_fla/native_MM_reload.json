@@ -1,0 +1,141 @@
+{
+  "status": "REAL_ONEJEV2_NATIVE_MM_RELOAD_VALIDATED",
+  "weight_entries": 474,
+  "checkpoint": "/data3/user/LocateMOT-checkpoints/distributed_native_sft_probe_v4_deterministic_seeded_fla/four_continuous/ckpt-step2",
+  "reference_checkpoint": "outputs/groundjev/training/onejev_unified600_native_v2/ckpt-step600",
+  "same_BF16_precision_weight_changes_vs_reference": [
+    {
+      "name": "model.language_model.layers.0.mlp.gate_proj.weight",
+      "changed_elements": 286569,
+      "max_absolute_difference": 0.000244140625
+    },
+    {
+      "name": "model.language_model.layers.16.mlp.gate_proj.weight",
+      "changed_elements": 271211,
+      "max_absolute_difference": 0.000244140625
+    },
+    {
+      "name": "model.language_model.layers.23.mlp.gate_proj.weight",
+      "changed_elements": 210795,
+      "max_absolute_difference": 0.00048828125
+    }
+  ],
+  "repeated_reload_probability_max_difference": 0.0,
+  "reload_tolerance": 1e-06,
+  "native_fork_auto_check_unchanged": true,
+  "GT_read_by_inference": false,
+  "responses": [
+    {
+      "model": "",
+      "answers": {
+        "match_0": {
+          "type": "choice",
+          "choice": "NEW",
+          "probabilities": {
+            "1": 0.022245,
+            "2": 0.003986,
+            "3": 0.008639,
+            "NEW": 0.899554,
+            "IGNORE": 0.018123,
+            "NO_MATCH": 0.047452
+          },
+          "confidence": 0.879465
+        },
+        "update_0": {
+          "type": "noul",
+          "noul": 0.047003
+        },
+        "reliability_0": {
+          "type": "score",
+          "score": 1.09159,
+          "legend": {
+            "0": "contradictory",
+            "1": "ambiguous",
+            "2": "supported",
+            "3": "strong"
+          },
+          "probabilities": {
+            "0": 0.042735,
+            "1": 0.867615,
+            "2": 0.044973,
+            "3": 0.044676
+          },
+          "confidence": 0.822939
+        },
+        "life_1": {
+          "type": "choice",
+          "choice": "REACTIVATE",
+          "probabilities": {
+            "ACTIVE": 0.417488,
+            "LOST": 0.000673,
+            "REACTIVATE": 0.577805,
+            "TERMINATE": 0.004034
+          },
+          "confidence": 0.437074
+        }
+      },
+      "usage": {
+        "input_tokens": 4031,
+        "output_tokens": 4
+      }
+    },
+    {
+      "model": "",
+      "answers": {
+        "match_0": {
+          "type": "choice",
+          "choice": "NEW",
+          "probabilities": {
+            "1": 0.022245,
+            "2": 0.003986,
+            "3": 0.008639,
+            "NEW": 0.899554,
+            "IGNORE": 0.018123,
+            "NO_MATCH": 0.047452
+          },
+          "confidence": 0.879465
+        },
+        "update_0": {
+          "type": "noul",
+          "noul": 0.047003
+        },
+        "reliability_0": {
+          "type": "score",
+          "score": 1.09159,
+          "legend": {
+            "0": "contradictory",
+            "1": "ambiguous",
+            "2": "supported",
+            "3": "strong"
+          },
+          "probabilities": {
+            "0": 0.042735,
+            "1": 0.867615,
+            "2": 0.044973,
+            "3": 0.044676
+          },
+          "confidence": 0.822939
+        },
+        "life_1": {
+          "type": "choice",
+          "choice": "REACTIVATE",
+          "probabilities": {
+            "ACTIVE": 0.417488,
+            "LOST": 0.000673,
+            "REACTIVATE": 0.577805,
+            "TERMINATE": 0.004034
+          },
+          "confidence": 0.437074
+        }
+      },
+      "usage": {
+        "input_tokens": 4031,
+        "output_tokens": 4
+      }
+    }
+  ],
+  "intermediate_only": false,
+  "formal500_complete": false,
+  "formal_training_steps": 2,
+  "tracking_accuracy_or_exact_FP32_training_resume_claim": false
+}

@@ -1,0 +1,21 @@
+{
+  "status": "REAL_NATIVE_ONE_AND_FOUR_GPU_GLOBAL_MEAN_FULL_STATE_AND_EXACT_RESUME_VALIDATED",
+  "source_plan": "configs/groundjev/distributed_native_sft_probe_v4_deterministic_seeded_fla.json",
+  "actual_unique_rows": 8,
+  "actual_updates_each": 2,
+  "FP32_parameters_compared": 752393024,
+  "all320_model_master_max_difference": 3.725290298461914e-09,
+  "full_Adam_moment_relative_L2": {
+    "exp_avg": 1.249497705115767e-08,
+    "exp_avg_sq": 2.177947355884719e-08
+  },
+  "all_four_rank_model_and_moment_difference": 0.0,
+  "continuous_vs_restored_models_moments_scheduler_all_rank_RNG_exact": true,
+  "CPU_global_row_plans_equal_no_duplicates_or_drops": true,
+  "all_three_task_rows_present": true,
+  "model_and_optimizer_checkpoints_retained_separately": "/data3/user/LocateMOT-checkpoints/distributed_native_sft_probe_v4_deterministic_seeded_fla",
+  "current_production_training_or_evaluation_changed": false,
+  "large_scale_training_started": false,
+  "speed_or_tracking_gain_claim": false,
+  "full_goal_complete": false
+}

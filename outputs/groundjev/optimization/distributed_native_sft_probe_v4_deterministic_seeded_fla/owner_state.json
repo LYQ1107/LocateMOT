@@ -1,0 +1,133 @@
+{
+  "status": "REAL_NATIVE_ONE_AND_FOUR_GPU_GLOBAL_MEAN_FULL_STATE_AND_EXACT_RESUME_VALIDATED",
+  "owner_pid": 3449707,
+  "owner_starttick": "49267782",
+  "plan": "configs/groundjev/distributed_native_sft_probe_v4_deterministic_seeded_fla.json",
+  "completed": {
+    "single": {
+      "checkpoint": {
+        "format": "groundjev-full-fp32-adam-rng-v1",
+        "step": 2,
+        "seen": 8,
+        "epoch": 0,
+        "next_step_in_epoch": 2,
+        "path": "/data3/user/LocateMOT-checkpoints/distributed_native_sft_probe_v4_deterministic_seeded_fla/single/latest_training_state.pt",
+        "bytes": 9029140761,
+        "FP32_masters_and_Adam_moments_saved": true,
+        "scheduler_and_all_RNG_saved": true,
+        "single_latest_training_state": true,
+        "feature_cache": false
+      },
+      "exit_code": 0,
+      "world": 1
+    },
+    "four_continuous": {
+      "checkpoint": {
+        "format": "groundjev-full-fp32-adam-rng-v1",
+        "step": 2,
+        "seen": 8,
+        "epoch": 0,
+        "next_step_in_epoch": 2,
+        "path": "/data3/user/LocateMOT-checkpoints/distributed_native_sft_probe_v4_deterministic_seeded_fla/four_continuous/latest_training_state.pt",
+        "bytes": 9029193761,
+        "FP32_masters_and_Adam_moments_saved": true,
+        "scheduler_and_all_RNG_saved": true,
+        "single_latest_training_state": true,
+        "feature_cache": false
+      },
+      "exit_code": 0,
+      "world": 4
+    },
+    "four_partial": {
+      "checkpoint": {
+        "format": "groundjev-full-fp32-adam-rng-v1",
+        "step": 1,
+        "seen": 4,
+        "epoch": 0,
+        "next_step_in_epoch": 1,
+        "path": "/data3/user/LocateMOT-checkpoints/distributed_native_sft_probe_v4_deterministic_seeded_fla/four_resumed/latest_training_state.pt",
+        "bytes": 9029193761,
+        "FP32_masters_and_Adam_moments_saved": true,
+        "scheduler_and_all_RNG_saved": true,
+        "single_latest_training_state": true,
+        "feature_cache": false
+      },
+      "exit_code": 0,
+      "world": 4
+    },
+    "four_restore": {
+      "checkpoint": {
+        "format": "groundjev-full-fp32-adam-rng-v1",
+        "step": 2,
+        "seen": 8,
+        "epoch": 0,
+        "next_step_in_epoch": 2,
+        "path": "/data3/user/LocateMOT-checkpoints/distributed_native_sft_probe_v4_deterministic_seeded_fla/four_resumed/latest_training_state.pt",
+        "bytes": 9029194785,
+        "FP32_masters_and_Adam_moments_saved": true,
+        "scheduler_and_all_RNG_saved": true,
+        "single_latest_training_state": true,
+        "feature_cache": false
+      },
+      "exit_code": 0,
+      "world": 4
+    }
+  },
+  "full_goal_complete": false,
+  "command": [
+    "python3",
+    "tools/groundjev/run_with_resources.py",
+    "--gpus",
+    "4",
+    "5",
+    "6",
+    "7",
+    "--",
+    "/data2/user/LocateMOT_GroundJEV/.venv-onejev-py310/bin/python",
+    "-m",
+    "torch.distributed.run",
+    "--standalone",
+    "--nproc-per-node",
+    "4",
+    "tools/groundjev/probe_distributed_native_sft.py",
+    "--config",
+    "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/optimization/distributed_native_sft_probe_v4_deterministic_seeded_fla/four_resumed_config.json",
+    "--receipts",
+    "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/optimization/distributed_native_sft_probe_v4_deterministic_seeded_fla/rank_receipts",
+    "--label",
+    "four_restore",
+    "--backend",
+    "fla",
+    "--deterministic-execution",
+    "--seed-global-rngs",
+    "--resume-state",
+    "/data3/user/LocateMOT-checkpoints/distributed_native_sft_probe_v4_deterministic_seeded_fla/four_resumed/latest_training_state.pt"
+  ],
+  "launch_free_memory_MiB": [
+    63951,
+    63953,
+    52285,
+    38990
+  ],
+  "result": {
+    "status": "REAL_NATIVE_ONE_AND_FOUR_GPU_GLOBAL_MEAN_FULL_STATE_AND_EXACT_RESUME_VALIDATED",
+    "source_plan": "configs/groundjev/distributed_native_sft_probe_v4_deterministic_seeded_fla.json",
+    "actual_unique_rows": 8,
+    "actual_updates_each": 2,
+    "FP32_parameters_compared": 752393024,
+    "all320_model_master_max_difference": 3.725290298461914e-09,
+    "full_Adam_moment_relative_L2": {
+      "exp_avg": 1.249497705115767e-08,
+      "exp_avg_sq": 2.177947355884719e-08
+    },
+    "all_four_rank_model_and_moment_difference": 0.0,
+    "continuous_vs_restored_models_moments_scheduler_all_rank_RNG_exact": true,
+    "CPU_global_row_plans_equal_no_duplicates_or_drops": true,
+    "all_three_task_rows_present": true,
+    "model_and_optimizer_checkpoints_retained_separately": "/data3/user/LocateMOT-checkpoints/distributed_native_sft_probe_v4_deterministic_seeded_fla",
+    "current_production_training_or_evaluation_changed": false,
+    "large_scale_training_started": false,
+    "speed_or_tracking_gain_claim": false,
+    "full_goal_complete": false
+  }
+}

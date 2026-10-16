@@ -1,0 +1,43 @@
+{
+  "status": "ALL_MODEL_AND_ADAM_PARITY_GATES_PASSED_BUT_GLOBAL_RNG_EQUALITY_FAILED",
+  "single_four_FP32_master_max_difference": 7.450580596923828e-09,
+  "full_Adam_moment_relative_L2": {
+    "exp_avg": 6.926497500615023e-08,
+    "exp_avg_sq": 8.121971736087861e-08
+  },
+  "continuous_restored_all320_FP32_models_and_both_Adam_moments_bit_exact": true,
+  "rank_RNG": [
+    {
+      "rank": 0,
+      "python_equal": false,
+      "numpy_equal": false,
+      "torch_equal": false,
+      "cuda_equal": false
+    },
+    {
+      "rank": 1,
+      "python_equal": false,
+      "numpy_equal": false,
+      "torch_equal": false,
+      "cuda_equal": false
+    },
+    {
+      "rank": 2,
+      "python_equal": false,
+      "numpy_equal": false,
+      "torch_equal": false,
+      "cuda_equal": false
+    },
+    {
+      "rank": 3,
+      "python_equal": false,
+      "numpy_equal": false,
+      "torch_equal": false,
+      "cuda_equal": false
+    }
+  ],
+  "strict_probe_accepted": false,
+  "registered_gates_unchanged": true,
+  "followup": "v4 applies the unchanged seed0 to global RNGs and tests deterministic FLA without changing existing production training",
+  "full_goal_complete": false
+}

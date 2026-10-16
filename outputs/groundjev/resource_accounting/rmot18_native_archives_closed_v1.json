@@ -1,0 +1,16 @@
+{
+  "status": "COMPLETE_NATIVE_RMOT18_EXACT_ARCHIVE_CAP_CLOSED_WITHOUT_DELETION",
+  "source_and_export_original_exit_codes": {
+    "17236": 0,
+    "78069": 0
+  },
+  "completion_validation": "outputs/groundjev/training_data/rmot_allfit1814_next_curriculum_v1/all18_completion_validation/validation.json",
+  "prior_registered_feature_upper_bytes": 26842692273,
+  "prior_native_archive_cap_bytes": 402653184,
+  "actual_exact_native_archives_bytes": 111683885,
+  "closed_registered_feature_upper_bytes": 26551722974,
+  "global_temporary_feature_budget_bytes": 26843545600,
+  "remaining_upper_bound_headroom_bytes": 291822626,
+  "files_deleted": 0,
+  "all_native_archives_and_model_checkpoints_retained": true
+}

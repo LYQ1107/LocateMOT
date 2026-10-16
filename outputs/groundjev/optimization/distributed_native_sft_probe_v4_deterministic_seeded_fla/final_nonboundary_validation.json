@@ -1,0 +1,13 @@
+{
+  "status": "FINAL_NONBOUNDARY_FULL_STATE_SAME_ACTUAL_MODEL_AND_MOMENTS_VALIDATED",
+  "actual_updates": 2,
+  "seen": 8,
+  "save_every": 3,
+  "periodic_save_steps_reached": 0,
+  "latest_full_state_created_at_final_step": true,
+  "all320_FP32_model_parameters_and_all_Adam_moments_equal_periodic_save_control": true,
+  "scheduler_equal": true,
+  "source_model_checkpoint": "/data3/user/LocateMOT-checkpoints/distributed_native_sft_probe_v4_deterministic_seeded_fla/final_nonboundary/final",
+  "large_training_still_not_started": true,
+  "full_goal_complete": false
+}

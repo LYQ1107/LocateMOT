@@ -1,0 +1,10 @@
+{
+  "original_blocking_session": 94290,
+  "owner_pid": 3457625,
+  "owner_starttick": "49350320",
+  "live_exact_owner_verified": true,
+  "status_at_registration": "FULL_NATIVE_CPU_PLAN",
+  "actual_optimizer_updates": 0,
+  "source_scope_coverage_is_not_actual_optimizer_exposure": true,
+  "full_goal_complete": false
+}

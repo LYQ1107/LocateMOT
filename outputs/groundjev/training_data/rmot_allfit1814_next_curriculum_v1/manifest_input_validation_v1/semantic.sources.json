@@ -1,0 +1,14 @@
+{
+  "protocol": "immutable-native-sources-family-filter-full-exposure-v1",
+  "sources": [
+    {
+      "path": "outputs/groundjev/optimization/distributed_native_sft_probe_v1/train.jsonl.gz",
+      "families": [
+        "query_membership",
+        "empty_query_presence"
+      ],
+      "rows": 2
+    }
+  ],
+  "rows": 2
+}

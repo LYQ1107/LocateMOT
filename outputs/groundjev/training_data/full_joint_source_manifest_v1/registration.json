@@ -1,0 +1,20 @@
+{
+  "project_root": "/data2/user/LocateMOT",
+  "dependency": {
+    "directory": "outputs/groundjev/training_data/rmot_allfit1814_query18_full_v3_groups_v2_shared_gpu7",
+    "identity": [
+      3320470,
+      "48408216"
+    ],
+    "script": "tools/groundjev/export_rmot_full_fit_groups.py",
+    "required_terminal_status": "ALL18_NATIVE_RMOT_QUERY_ROLLOUTS_FULL_V3_GROUPS_AND_CPU_PLANS_VALIDATED"
+  },
+  "protocol": "immutable-native-sources-family-filter-full-exposure-v1",
+  "current6000_changed": false,
+  "policy": "One pass over all retained MOT43-clips rows, original RMOT4350-expression rows and Base175 category rows; new RMOT18/class-proposal components contribute query-membership/presence only.",
+  "task_mixture": "Natural full-source row counts, explicitly differs from current balanced24k; no implicit row weighting or oversampling.",
+  "training_launch": "not launched by this preparation; requires valid distributed protocol, complete6000 checkpoint and registered larger-stage recipe",
+  "storage": "only source-list manifest and summaries; no new row, image, ROI or history archive",
+  "reserved_existing_future_curriculum_bytes": 16777216,
+  "full_goal_complete": false
+}

@@ -1,0 +1,14 @@
+{
+  "status": "FULL_NATIVE_THREE_TASK_SOURCE_EXPOSURE_MANIFEST_PREPARED_NOT_TRAINED",
+  "owner_pid": 3440901,
+  "owner_starttick": "49198902",
+  "new_GPU_or_optimizer_updates": 0,
+  "full_goal_complete": false,
+  "rows": 459027,
+  "rows_per_task": {
+    "mot": 252258,
+    "rmot": 100813,
+    "ovmot": 105956
+  },
+  "source_files": 64
+}

@@ -1,0 +1,23 @@
+{
+  "status": "TWO_FAILED_COMPLETED_DISTRIBUTED_PROBES_CLOSED_TO_ACTUAL_WITHOUT_DELETION",
+  "prior_registered_feature_upper_bytes": 26843515600,
+  "components": [
+    {
+      "component": "distributed_native_sft_probe_v1",
+      "prior_cap_bytes": 1048576,
+      "actual_completed_diagnostics_bytes": 94447,
+      "retained_bookkeeping_reserve_bytes": 16384,
+      "new_cap_bytes": 110831
+    },
+    {
+      "component": "distributed_native_sft_probe_v2_reference",
+      "prior_cap_bytes": 1048576,
+      "actual_completed_diagnostics_bytes": 98034,
+      "retained_bookkeeping_reserve_bytes": 16384,
+      "new_cap_bytes": 114418
+    }
+  ],
+  "closed_registered_feature_upper_bytes": 26841643697,
+  "files_deleted": 0,
+  "models_and_full_optimizer_proofs_retained_separately_on_data3": true
+}

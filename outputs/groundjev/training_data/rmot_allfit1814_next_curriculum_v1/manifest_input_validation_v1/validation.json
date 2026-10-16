@@ -1,0 +1,15 @@
+{
+  "status": "NATIVE_MM_SOURCE_MANIFEST_HYDRATION_AND_FAMILY_FILTER_INPUTS_VALIDATED",
+  "full_rows_exact": 8,
+  "all_original_states_media_questions_targets_and_IDs_exact": true,
+  "native_CPU_plan_rows": 8,
+  "dropped_rows": 0,
+  "max_tokens": 26038,
+  "native_token_lengths_exact": true,
+  "semantic_filter_rows_exact": 2,
+  "positive_and_negative_preserved": true,
+  "model_or_GPU_loaded": false,
+  "new_image_or_feature_archive": false,
+  "whole_future_corpus_CPU_plan_still_required": true,
+  "full_goal_complete": false
+}

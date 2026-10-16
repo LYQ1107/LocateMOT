@@ -1,0 +1,80 @@
+{"physical_gpus": [4, 5, 6, 7], "command": ["/data2/user/LocateMOT_GroundJEV/.venv-onejev-py310/bin/python", "-m", "torch.distributed.run", "--standalone", "--nproc-per-node", "4", "tools/groundjev/probe_distributed_native_sft.py", "--config", "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/optimization/distributed_native_sft_probe_v3_deterministic_reference/four_continuous_config.json", "--receipts", "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/optimization/distributed_native_sft_probe_v3_deterministic_reference/rank_receipts", "--label", "four_continuous", "--backend", "reference", "--deterministic-execution", "--initial-training-state", "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_unified600_native_v2/latest_training_state.pt"]}
+2026-10-16 09:58:18,800 INFO train.sft loaded 8 rows from /data2/user/LocateMOT_GroundJEV/outputs/groundjev/optimization/distributed_native_sft_probe_v3_deterministic_reference/train.jsonl.gz (world size 4)
+
+Loading weights:   0%|          | 0/474 [00:00<?, ?it/s]
+Loading weights:   0%|          | 0/474 [00:00<?, ?it/s]
+Loading weights:   0%|          | 0/474 [00:00<?, ?it/s]
+Loading weights:   0%|          | 1/474 [00:00<02:54,  2.71it/s]
+Loading weights:   0%|          | 2/474 [00:00<01:53,  4.15it/s]
+Loading weights:   0%|          | 1/474 [00:00<02:35,  3.04it/s]
+Loading weights:   0%|          | 1/474 [00:00<02:24,  3.27it/s]
+Loading weights:  38%|███▊      | 182/474 [00:00<00:00, 455.38it/s]
+Loading weights:  55%|█████▍    | 259/474 [00:00<00:00, 537.26it/s]
+Loading weights:   0%|          | 2/474 [00:00<01:56,  4.06it/s]
+Loading weights:  86%|████████▋ | 409/474 [00:00<00:00, 795.84it/s]
+Loading weights:  35%|███▌      | 168/474 [00:00<00:00, 419.18it/s]
+Loading weights:   0%|          | 2/474 [00:00<02:01,  3.90it/s]
+Loading weights: 100%|██████████| 474/474 [00:00<00:00, 541.09it/s]
+
+Loading weights:   0%|          | 0/474 [00:00<?, ?it/s]
+Loading weights:  55%|█████▍    | 260/474 [00:00<00:00, 549.04it/s]
+Loading weights:  35%|███▌      | 168/474 [00:00<00:00, 410.20it/s]
+Loading weights:  74%|███████▍  | 351/474 [00:00<00:00, 645.65it/s]
+Loading weights:  53%|█████▎    | 249/474 [00:00<00:00, 512.90it/s]
+Loading weights:  99%|█████████▊| 467/474 [00:00<00:00, 784.87it/s]
+Loading weights: 100%|██████████| 474/474 [00:00<00:00, 509.92it/s]
+
+Loading weights:  69%|██████▉   | 326/474 [00:00<00:00, 575.33it/s]
+Loading weights:  98%|█████████▊| 466/474 [00:00<00:00, 802.90it/s]2026-10-16 09:58:21,649 INFO train.sft model_type=qwen3_5 template_kwargs={'enable_thinking': False}
+2026-10-16 09:58:21,651 INFO train.sft full fine-tuning: fp32 master weights, bf16 autocast forward, vision tower frozen
+
+Loading weights: 100%|██████████| 474/474 [00:00<00:00, 489.86it/s]
+
+Loading weights:   0%|          | 1/474 [00:00<03:27,  2.28it/s]
+Loading weights:  22%|██▏       | 105/474 [00:00<00:01, 257.04it/s]
+Loading weights:  35%|███▌      | 167/474 [00:00<00:00, 331.82it/s]
+Loading weights:  47%|████▋     | 224/474 [00:00<00:00, 390.75it/s]
+Loading weights:  59%|█████▉    | 280/474 [00:00<00:00, 424.99it/s]
+Loading weights:  76%|███████▌  | 361/474 [00:00<00:00, 529.07it/s]
+Loading weights:  98%|█████████▊| 464/474 [00:01<00:00, 668.14it/s]
+Loading weights: 100%|██████████| 474/474 [00:01<00:00, 432.02it/s]
+{"status": "NEW_STAGE_REAL_FP32_MASTERS_INITIALIZED", "source": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_unified600_native_v2/latest_training_state.pt", "source_step": 600, "FP32_parameter_entries": 320, "parameters": 752393024, "changed_vs_BF16_inference_export_initialization": 500278218, "initialization_max_difference": 0.0, "new_optimizer_scheduler_and_RNG": "explicit newrecipe reset, not originaltrajectory resume", "old_training_state_or_inference_weights_modified": false}
+{"status": "NEW_STAGE_REAL_FP32_MASTERS_INITIALIZED", "source": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_unified600_native_v2/latest_training_state.pt", "source_step": 600, "FP32_parameter_entries": 320, "parameters": 752393024, "changed_vs_BF16_inference_export_initialization": 500278218, "initialization_max_difference": 0.0, "new_optimizer_scheduler_and_RNG": "explicit newrecipe reset, not originaltrajectory resume", "old_training_state_or_inference_weights_modified": false}
+2026-10-16 09:58:27,775 INFO train.sft trainable 752.39M of 852.99M parameters (88.207%)
+{"status": "NEW_STAGE_REAL_FP32_MASTERS_INITIALIZED", "source": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_unified600_native_v2/latest_training_state.pt", "source_step": 600, "FP32_parameter_entries": 320, "parameters": 752393024, "changed_vs_BF16_inference_export_initialization": 500278218, "initialization_max_difference": 0.0, "new_optimizer_scheduler_and_RNG": "explicit newrecipe reset, not originaltrajectory resume", "old_training_state_or_inference_weights_modified": false}
+{"status": "NEW_STAGE_REAL_FP32_MASTERS_INITIALIZED", "source": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_unified600_native_v2/latest_training_state.pt", "source_step": 600, "FP32_parameter_entries": 320, "parameters": 752393024, "changed_vs_BF16_inference_export_initialization": 500278218, "initialization_max_difference": 0.0, "new_optimizer_scheduler_and_RNG": "explicit newrecipe reset, not originaltrajectory resume", "old_training_state_or_inference_weights_modified": false}
+2026-10-16 09:58:32,593 INFO train.sft 2 steps per epoch, 2 total steps, 1 warmup, 0 rows dropped over max-len, planned in 5s
+[transformers] `causal_conv1d_fn` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+[transformers] `chunk_gated_delta_rule` is falling back to its reference PyTorch implementation because `flash-linear-attention` is not installed. This is correct but much slower; install `flash-linear-attention` for the optimized kernel.
+[transformers] `causal_conv1d_fn` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+[transformers] `chunk_gated_delta_rule` is falling back to its reference PyTorch implementation because `flash-linear-attention` is not installed. This is correct but much slower; install `flash-linear-attention` for the optimized kernel.
+[transformers] `causal_conv1d_fn` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+[transformers] `chunk_gated_delta_rule` is falling back to its reference PyTorch implementation because `flash-linear-attention` is not installed. This is correct but much slower; install `flash-linear-attention` for the optimized kernel.
+[transformers] `causal_conv1d_fn` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+[transformers] `chunk_gated_delta_rule` is falling back to its reference PyTorch implementation because `flash-linear-attention` is not installed. This is correct but much slower; install `flash-linear-attention` for the optimized kernel.
+train [###############...............] 1/2 (50.0%) loss 4.8309 ce 3.4282 brier 1.4027 slot_acc 0.250 gnorm 159.369 lr 2.00e-06 rows/s 0.06 tok/s 519 s/step 69.7 mem 14.5G eta 0.0h
+
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]
+Writing model shards: 100%|██████████| 1/1 [00:01<00:00,  1.06s/it]
+Writing model shards: 100%|██████████| 1/1 [00:01<00:00,  1.06s/it]
+2026-10-16 09:59:45,018 INFO train.sft saved model to /data3/user/LocateMOT-checkpoints/distributed_native_sft_probe_v3_deterministic_reference/four_continuous/ckpt-step1
+{"format": "groundjev-full-fp32-adam-rng-v1", "step": 1, "seen": 4, "epoch": 0, "next_step_in_epoch": 1, "path": "/data3/user/LocateMOT-checkpoints/distributed_native_sft_probe_v3_deterministic_reference/four_continuous/latest_training_state.pt", "bytes": 9029193953, "FP32_masters_and_Adam_moments_saved": true, "scheduler_and_all_RNG_saved": true, "single_latest_training_state": true, "feature_cache": false}
+/data2/user/LocateMOT_GroundJEV/.venv-onejev-py310/lib/python3.10/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+train [##############################] 2/2 (100.0%) loss 3.1430 ce 2.1638 brier 0.9791 slot_acc 0.500 gnorm 157.532 lr 0.00e+00 rows/s 0.08 tok/s 871 s/step 50.4 mem 16.9G eta 0.0h
+
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]
+Writing model shards: 100%|██████████| 1/1 [00:01<00:00,  1.24s/it]
+Writing model shards: 100%|██████████| 1/1 [00:01<00:00,  1.24s/it]
+2026-10-16 10:00:35,792 INFO train.sft saved model to /data3/user/LocateMOT-checkpoints/distributed_native_sft_probe_v3_deterministic_reference/four_continuous/ckpt-step2
+{"format": "groundjev-full-fp32-adam-rng-v1", "step": 2, "seen": 8, "epoch": 0, "next_step_in_epoch": 2, "path": "/data3/user/LocateMOT-checkpoints/distributed_native_sft_probe_v3_deterministic_reference/four_continuous/latest_training_state.pt", "bytes": 9029193953, "FP32_masters_and_Adam_moments_saved": true, "scheduler_and_all_RNG_saved": true, "single_latest_training_state": true, "feature_cache": false}
+
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]
+Writing model shards: 100%|██████████| 1/1 [00:01<00:00,  1.11s/it]
+Writing model shards: 100%|██████████| 1/1 [00:01<00:00,  1.11s/it]
+2026-10-16 10:00:53,643 INFO train.sft saved final model to /data3/user/LocateMOT-checkpoints/distributed_native_sft_probe_v3_deterministic_reference/four_continuous/final
+done: 2 steps, 8 examples, 138.4s, 0.06 examples/s
+{"rank": 2, "world": 4, "steps": 2, "all_rank_max_difference": 0.0}
+{"rank": 3, "world": 4, "steps": 2, "all_rank_max_difference": 0.0}
+{"rank": 0, "world": 4, "steps": 2, "all_rank_max_difference": 0.0}
+{"rank": 1, "world": 4, "steps": 2, "all_rank_max_difference": 0.0}

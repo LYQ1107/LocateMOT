@@ -1,0 +1,879 @@
+{
+  "protocol": "immutable-native-sources-family-filter-full-exposure-v1",
+  "sources": [
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/MOT17-02-FRCNN/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "families": null,
+      "rows": 5301,
+      "counts": {
+        "identity": 992,
+        "memory_update": 992,
+        "reliability": 992,
+        "lifecycle": 1964,
+        "assigned_identity_memory_update": 361
+      }
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/MOT17-04-FRCNN/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "families": null,
+      "rows": 8100,
+      "counts": {
+        "identity": 1404,
+        "memory_update": 1404,
+        "reliability": 1404,
+        "lifecycle": 3360,
+        "assigned_identity_memory_update": 528
+      }
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/MOT17-05-FRCNN/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "families": null,
+      "rows": 1640,
+      "counts": {
+        "identity": 384,
+        "memory_update": 384,
+        "reliability": 384,
+        "lifecycle": 372,
+        "assigned_identity_memory_update": 116
+      }
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/MOT17-09-FRCNN/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "families": null,
+      "rows": 1361,
+      "counts": {
+        "identity": 334,
+        "memory_update": 334,
+        "reliability": 334,
+        "lifecycle": 256,
+        "assigned_identity_memory_update": 103
+      }
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/MOT17-10-FRCNN/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "families": null,
+      "rows": 2001,
+      "counts": {
+        "empty_presence": 1,
+        "identity": 322,
+        "memory_update": 322,
+        "reliability": 322,
+        "lifecycle": 954,
+        "assigned_identity_memory_update": 80
+      }
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/MOT17-11-FRCNN/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "families": null,
+      "rows": 1711,
+      "counts": {
+        "identity": 384,
+        "memory_update": 384,
+        "reliability": 384,
+        "lifecycle": 342,
+        "assigned_identity_memory_update": 217
+      }
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/MOT17-13-FRCNN/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "families": null,
+      "rows": 1931,
+      "counts": {
+        "identity": 399,
+        "memory_update": 399,
+        "reliability": 399,
+        "lifecycle": 612,
+        "assigned_identity_memory_update": 122
+      }
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0001/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "families": null,
+      "rows": 778,
+      "counts": {
+        "identity": 192,
+        "memory_update": 192,
+        "reliability": 192,
+        "lifecycle": 105,
+        "assigned_identity_memory_update": 97
+      }
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0006/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "families": null,
+      "rows": 672,
+      "counts": {
+        "identity": 164,
+        "memory_update": 164,
+        "reliability": 164,
+        "lifecycle": 135,
+        "assigned_identity_memory_update": 45
+      }
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0008/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "families": null,
+      "rows": 819,
+      "counts": {
+        "identity": 171,
+        "memory_update": 171,
+        "reliability": 171,
+        "lifecycle": 256,
+        "assigned_identity_memory_update": 50
+      }
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0012/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "families": null,
+      "rows": 639,
+      "counts": {
+        "empty_presence": 1,
+        "identity": 165,
+        "memory_update": 165,
+        "reliability": 165,
+        "lifecycle": 93,
+        "assigned_identity_memory_update": 50
+      }
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0016/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "families": null,
+      "rows": 548,
+      "counts": {
+        "identity": 125,
+        "memory_update": 125,
+        "reliability": 125,
+        "lifecycle": 105,
+        "assigned_identity_memory_update": 68
+      }
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0020/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "families": null,
+      "rows": 1967,
+      "counts": {
+        "identity": 447,
+        "memory_update": 447,
+        "reliability": 447,
+        "lifecycle": 568,
+        "assigned_identity_memory_update": 58
+      }
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0023/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "families": null,
+      "rows": 837,
+      "counts": {
+        "identity": 192,
+        "memory_update": 192,
+        "reliability": 192,
+        "lifecycle": 157,
+        "assigned_identity_memory_update": 104
+      }
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0024/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "families": null,
+      "rows": 523,
+      "counts": {
+        "identity": 130,
+        "memory_update": 130,
+        "reliability": 130,
+        "lifecycle": 90,
+        "assigned_identity_memory_update": 43
+      }
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0027/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "families": null,
+      "rows": 800,
+      "counts": {
+        "identity": 176,
+        "memory_update": 176,
+        "reliability": 176,
+        "lifecycle": 180,
+        "assigned_identity_memory_update": 92
+      }
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0029/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "families": null,
+      "rows": 736,
+      "counts": {
+        "identity": 161,
+        "memory_update": 161,
+        "reliability": 161,
+        "lifecycle": 187,
+        "assigned_identity_memory_update": 66
+      }
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0032/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "families": null,
+      "rows": 612,
+      "counts": {
+        "identity": 151,
+        "memory_update": 151,
+        "reliability": 151,
+        "lifecycle": 105,
+        "assigned_identity_memory_update": 54
+      }
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0037/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "families": null,
+      "rows": 769,
+      "counts": {
+        "identity": 178,
+        "memory_update": 178,
+        "reliability": 178,
+        "lifecycle": 180,
+        "assigned_identity_memory_update": 55
+      }
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0039/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "families": null,
+      "rows": 450,
+      "counts": {
+        "identity": 109,
+        "memory_update": 109,
+        "reliability": 109,
+        "lifecycle": 75,
+        "assigned_identity_memory_update": 48
+      }
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0044/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "families": null,
+      "rows": 855,
+      "counts": {
+        "identity": 195,
+        "memory_update": 195,
+        "reliability": 195,
+        "lifecycle": 166,
+        "assigned_identity_memory_update": 104
+      }
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0045/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "families": null,
+      "rows": 933,
+      "counts": {
+        "identity": 203,
+        "memory_update": 203,
+        "reliability": 203,
+        "lifecycle": 195,
+        "assigned_identity_memory_update": 129
+      }
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0051/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "families": null,
+      "rows": 762,
+      "counts": {
+        "identity": 168,
+        "memory_update": 168,
+        "reliability": 168,
+        "lifecycle": 165,
+        "assigned_identity_memory_update": 93
+      }
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0052/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "families": null,
+      "rows": 425,
+      "counts": {
+        "identity": 100,
+        "memory_update": 100,
+        "reliability": 100,
+        "lifecycle": 90,
+        "assigned_identity_memory_update": 35
+      }
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0053/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "families": null,
+      "rows": 1176,
+      "counts": {
+        "identity": 249,
+        "memory_update": 249,
+        "reliability": 249,
+        "lifecycle": 384,
+        "assigned_identity_memory_update": 45
+      }
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0055/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "families": null,
+      "rows": 869,
+      "counts": {
+        "identity": 204,
+        "memory_update": 204,
+        "reliability": 204,
+        "lifecycle": 256,
+        "assigned_identity_memory_update": 1
+      }
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0057/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "families": null,
+      "rows": 877,
+      "counts": {
+        "identity": 205,
+        "memory_update": 205,
+        "reliability": 205,
+        "lifecycle": 204,
+        "assigned_identity_memory_update": 58
+      }
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0062/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "families": null,
+      "rows": 508,
+      "counts": {
+        "identity": 134,
+        "memory_update": 134,
+        "reliability": 134,
+        "lifecycle": 80,
+        "assigned_identity_memory_update": 26
+      }
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0066/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "families": null,
+      "rows": 713,
+      "counts": {
+        "identity": 170,
+        "memory_update": 170,
+        "reliability": 170,
+        "lifecycle": 192,
+        "assigned_identity_memory_update": 11
+      }
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0068/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "families": null,
+      "rows": 407,
+      "counts": {
+        "identity": 101,
+        "memory_update": 101,
+        "reliability": 101,
+        "lifecycle": 75,
+        "assigned_identity_memory_update": 29
+      }
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0069/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "families": null,
+      "rows": 504,
+      "counts": {
+        "identity": 114,
+        "memory_update": 114,
+        "reliability": 114,
+        "lifecycle": 90,
+        "assigned_identity_memory_update": 72
+      }
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0074/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "families": null,
+      "rows": 583,
+      "counts": {
+        "identity": 136,
+        "memory_update": 136,
+        "reliability": 136,
+        "lifecycle": 135,
+        "assigned_identity_memory_update": 40
+      }
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0075/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "families": null,
+      "rows": 535,
+      "counts": {
+        "identity": 121,
+        "memory_update": 121,
+        "reliability": 121,
+        "lifecycle": 90,
+        "assigned_identity_memory_update": 82
+      }
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0080/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "families": null,
+      "rows": 880,
+      "counts": {
+        "identity": 192,
+        "memory_update": 192,
+        "reliability": 192,
+        "lifecycle": 180,
+        "assigned_identity_memory_update": 124
+      }
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0082/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "families": null,
+      "rows": 1661,
+      "counts": {
+        "empty_presence": 1,
+        "identity": 298,
+        "memory_update": 298,
+        "reliability": 298,
+        "lifecycle": 621,
+        "assigned_identity_memory_update": 145
+      }
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0086/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "families": null,
+      "rows": 1329,
+      "counts": {
+        "identity": 267,
+        "memory_update": 267,
+        "reliability": 267,
+        "lifecycle": 425,
+        "assigned_identity_memory_update": 103
+      }
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0087/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "families": null,
+      "rows": 836,
+      "counts": {
+        "identity": 189,
+        "memory_update": 189,
+        "reliability": 189,
+        "lifecycle": 165,
+        "assigned_identity_memory_update": 104
+      }
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0096/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "families": null,
+      "rows": 1513,
+      "counts": {
+        "identity": 286,
+        "memory_update": 286,
+        "reliability": 286,
+        "lifecycle": 506,
+        "assigned_identity_memory_update": 149
+      }
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0098/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "families": null,
+      "rows": 749,
+      "counts": {
+        "identity": 167,
+        "memory_update": 167,
+        "reliability": 167,
+        "lifecycle": 192,
+        "assigned_identity_memory_update": 56
+      }
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/MOT20-01/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "families": null,
+      "rows": 5610,
+      "counts": {
+        "identity": 996,
+        "memory_update": 996,
+        "reliability": 996,
+        "lifecycle": 2100,
+        "assigned_identity_memory_update": 522
+      }
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/MOT20-02/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "families": null,
+      "rows": 5255,
+      "counts": {
+        "identity": 955,
+        "memory_update": 955,
+        "reliability": 955,
+        "lifecycle": 1953,
+        "assigned_identity_memory_update": 437
+      }
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/MOT20-03/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "families": null,
+      "rows": 79926,
+      "counts": {
+        "identity": 14784,
+        "memory_update": 14784,
+        "reliability": 14784,
+        "lifecycle": 31168,
+        "assigned_identity_memory_update": 4406
+      }
+    },
+    {
+      "path": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/MOT20-05/train_refs.jsonl.gz",
+      "bucket": "mot",
+      "families": null,
+      "rows": 113157,
+      "counts": {
+        "identity": 21237,
+        "memory_update": 21237,
+        "reliability": 21237,
+        "lifecycle": 44096,
+        "assigned_identity_memory_update": 5350
+      }
+    },
+    {
+      "path": "outputs/groundjev/training_data/rmot_query_diversity_component_v3_official_box_projection/train.jsonl.gz",
+      "bucket": "rmot",
+      "families": null,
+      "rows": 87721,
+      "counts": {
+        "query_membership": 84062,
+        "semantic_target:no": 79649,
+        "empty_query_presence": 3659,
+        "semantic_target:yes": 8072
+      }
+    },
+    {
+      "path": "outputs/groundjev/training_data/base175_streamed_component_v1/train.jsonl.gz",
+      "bucket": "ovmot",
+      "families": null,
+      "rows": 105956,
+      "counts": {
+        "category_group": 52978,
+        "category_leaf": 52978
+      }
+    },
+    {
+      "path": "outputs/groundjev/training_data/rmot_allfit1814_query18_full_v3_groups_v2_shared_gpu7/clips/0000_primary/train_refs.jsonl.gz",
+      "bucket": "rmot",
+      "families": [
+        "query_membership",
+        "empty_query_presence"
+      ],
+      "rows": 289,
+      "counts": {
+        "query_membership": 289,
+        "semantic_target:no": 289
+      }
+    },
+    {
+      "path": "outputs/groundjev/training_data/rmot_allfit1814_query18_full_v3_groups_v2_shared_gpu7/clips/0000_counter/train_refs.jsonl.gz",
+      "bucket": "rmot",
+      "families": [
+        "query_membership",
+        "empty_query_presence"
+      ],
+      "rows": 811,
+      "counts": {
+        "query_membership": 811,
+        "semantic_target:no": 642,
+        "semantic_target:yes": 169
+      }
+    },
+    {
+      "path": "outputs/groundjev/training_data/rmot_allfit1814_query18_full_v3_groups_v2_shared_gpu7/clips/0002_primary/train_refs.jsonl.gz",
+      "bucket": "rmot",
+      "families": [
+        "query_membership",
+        "empty_query_presence"
+      ],
+      "rows": 457,
+      "counts": {
+        "query_membership": 452,
+        "semantic_target:no": 321,
+        "semantic_target:yes": 136,
+        "empty_query_presence": 5
+      }
+    },
+    {
+      "path": "outputs/groundjev/training_data/rmot_allfit1814_query18_full_v3_groups_v2_shared_gpu7/clips/0002_counter/train_refs.jsonl.gz",
+      "bucket": "rmot",
+      "families": [
+        "query_membership",
+        "empty_query_presence"
+      ],
+      "rows": 372,
+      "counts": {
+        "query_membership": 360,
+        "semantic_target:yes": 22,
+        "semantic_target:no": 350,
+        "empty_query_presence": 12
+      }
+    },
+    {
+      "path": "outputs/groundjev/training_data/rmot_allfit1814_query18_full_v3_groups_v2_shared_gpu7/clips/0003_primary/train_refs.jsonl.gz",
+      "bucket": "rmot",
+      "families": [
+        "query_membership",
+        "empty_query_presence"
+      ],
+      "rows": 638,
+      "counts": {
+        "query_membership": 638,
+        "semantic_target:no": 335,
+        "semantic_target:yes": 303
+      }
+    },
+    {
+      "path": "outputs/groundjev/training_data/rmot_allfit1814_query18_full_v3_groups_v2_shared_gpu7/clips/0003_counter/train_refs.jsonl.gz",
+      "bucket": "rmot",
+      "families": [
+        "query_membership",
+        "empty_query_presence"
+      ],
+      "rows": 368,
+      "counts": {
+        "query_membership": 368,
+        "semantic_target:yes": 199,
+        "semantic_target:no": 169
+      }
+    },
+    {
+      "path": "outputs/groundjev/training_data/rmot_allfit1814_query18_full_v3_groups_v2_shared_gpu7/clips/0006_primary/train_refs.jsonl.gz",
+      "bucket": "rmot",
+      "families": [
+        "query_membership",
+        "empty_query_presence"
+      ],
+      "rows": 1029,
+      "counts": {
+        "empty_query_presence": 1,
+        "semantic_target:yes": 452,
+        "query_membership": 1028,
+        "semantic_target:no": 577
+      }
+    },
+    {
+      "path": "outputs/groundjev/training_data/rmot_allfit1814_query18_full_v3_groups_v2_shared_gpu7/clips/0006_counter/train_refs.jsonl.gz",
+      "bucket": "rmot",
+      "families": [
+        "query_membership",
+        "empty_query_presence"
+      ],
+      "rows": 619,
+      "counts": {
+        "query_membership": 619,
+        "semantic_target:no": 437,
+        "semantic_target:yes": 182
+      }
+    },
+    {
+      "path": "outputs/groundjev/training_data/rmot_allfit1814_query18_full_v3_groups_v2_shared_gpu7/clips/0008_primary/train_refs.jsonl.gz",
+      "bucket": "rmot",
+      "families": [
+        "query_membership",
+        "empty_query_presence"
+      ],
+      "rows": 1346,
+      "counts": {
+        "query_membership": 1346,
+        "semantic_target:no": 988,
+        "semantic_target:yes": 358
+      }
+    },
+    {
+      "path": "outputs/groundjev/training_data/rmot_allfit1814_query18_full_v3_groups_v2_shared_gpu7/clips/0008_counter/train_refs.jsonl.gz",
+      "bucket": "rmot",
+      "families": [
+        "query_membership",
+        "empty_query_presence"
+      ],
+      "rows": 1209,
+      "counts": {
+        "query_membership": 1209,
+        "semantic_target:no": 999,
+        "semantic_target:yes": 210
+      }
+    },
+    {
+      "path": "outputs/groundjev/training_data/rmot_allfit1814_query18_full_v3_groups_v2_shared_gpu7/clips/0010_primary/train_refs.jsonl.gz",
+      "bucket": "rmot",
+      "families": [
+        "query_membership",
+        "empty_query_presence"
+      ],
+      "rows": 807,
+      "counts": {
+        "query_membership": 806,
+        "semantic_target:no": 785,
+        "empty_query_presence": 1,
+        "semantic_target:yes": 22
+      }
+    },
+    {
+      "path": "outputs/groundjev/training_data/rmot_allfit1814_query18_full_v3_groups_v2_shared_gpu7/clips/0010_counter/train_refs.jsonl.gz",
+      "bucket": "rmot",
+      "families": [
+        "query_membership",
+        "empty_query_presence"
+      ],
+      "rows": 748,
+      "counts": {
+        "query_membership": 748,
+        "semantic_target:no": 411,
+        "semantic_target:yes": 337
+      }
+    },
+    {
+      "path": "outputs/groundjev/training_data/rmot_allfit1814_query18_full_v3_groups_v2_shared_gpu7/clips/0012_primary/train_refs.jsonl.gz",
+      "bucket": "rmot",
+      "families": [
+        "query_membership",
+        "empty_query_presence"
+      ],
+      "rows": 93,
+      "counts": {
+        "query_membership": 70,
+        "semantic_target:no": 74,
+        "empty_query_presence": 23,
+        "semantic_target:yes": 19
+      }
+    },
+    {
+      "path": "outputs/groundjev/training_data/rmot_allfit1814_query18_full_v3_groups_v2_shared_gpu7/clips/0012_counter/train_refs.jsonl.gz",
+      "bucket": "rmot",
+      "families": [
+        "query_membership",
+        "empty_query_presence"
+      ],
+      "rows": 350,
+      "counts": {
+        "query_membership": 350,
+        "semantic_target:yes": 129,
+        "semantic_target:no": 221
+      }
+    },
+    {
+      "path": "outputs/groundjev/training_data/rmot_allfit1814_query18_full_v3_groups_v2_shared_gpu7/clips/0014_primary/train_refs.jsonl.gz",
+      "bucket": "rmot",
+      "families": [
+        "query_membership",
+        "empty_query_presence"
+      ],
+      "rows": 235,
+      "counts": {
+        "query_membership": 235,
+        "semantic_target:yes": 54,
+        "semantic_target:no": 181
+      }
+    },
+    {
+      "path": "outputs/groundjev/training_data/rmot_allfit1814_query18_full_v3_groups_v2_shared_gpu7/clips/0014_counter/train_refs.jsonl.gz",
+      "bucket": "rmot",
+      "families": [
+        "query_membership",
+        "empty_query_presence"
+      ],
+      "rows": 452,
+      "counts": {
+        "query_membership": 452,
+        "semantic_target:yes": 263,
+        "semantic_target:no": 189
+      }
+    },
+    {
+      "path": "outputs/groundjev/training_data/rmot_allfit1814_query18_full_v3_groups_v2_shared_gpu7/clips/0017_primary/train_refs.jsonl.gz",
+      "bucket": "rmot",
+      "families": [
+        "query_membership",
+        "empty_query_presence"
+      ],
+      "rows": 381,
+      "counts": {
+        "query_membership": 381,
+        "semantic_target:yes": 208,
+        "semantic_target:no": 173
+      }
+    },
+    {
+      "path": "outputs/groundjev/training_data/rmot_allfit1814_query18_full_v3_groups_v2_shared_gpu7/clips/0017_counter/train_refs.jsonl.gz",
+      "bucket": "rmot",
+      "families": [
+        "query_membership",
+        "empty_query_presence"
+      ],
+      "rows": 706,
+      "counts": {
+        "query_membership": 706,
+        "semantic_target:no": 500,
+        "semantic_target:yes": 206
+      }
+    },
+    {
+      "path": "outputs/groundjev/training_data/rmot_class_proposals_original_query154_v1/groups/train_refs.jsonl.gz",
+      "bucket": "rmot",
+      "families": [
+        "query_membership",
+        "empty_query_presence"
+      ],
+      "rows": 2182,
+      "counts": {
+        "query_membership": 2182,
+        "semantic_target:no": 2164,
+        "semantic_target:yes": 18
+      }
+    }
+  ],
+  "rows": 459027,
+  "rows_per_task": {
+    "mot": 252258,
+    "rmot": 100813,
+    "ovmot": 105956
+  },
+  "coverage": {
+    "MOT_clips": 43,
+    "MOT_physical_frames": 1056,
+    "RMOT_unique_physical_frames": 1814,
+    "RMOT_expression_files": 4350,
+    "OVMOT_Base_classes": 175,
+    "OVMOT_category_annotation_rows": 105956
+  },
+  "all_source_files_immutable_completed": true,
+  "GT_only_fit_and_Base_training": true,
+  "physical_frames_not_summed_across_query_or_proposal_repeats": true,
+  "current6000_inputs_unchanged": true,
+  "new_optimizer_updates": 0,
+  "full_goal_complete": false
+}

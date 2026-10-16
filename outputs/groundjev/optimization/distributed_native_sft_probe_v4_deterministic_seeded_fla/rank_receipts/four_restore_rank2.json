@@ -1,0 +1,56 @@
+{
+  "rank": 2,
+  "world": 4,
+  "optimizer_steps_this_invocation": 1,
+  "backend": "fla",
+  "deterministic_execution": true,
+  "seed_global_rngs": true,
+  "steps": [
+    {
+      "all320_parameters_and_both_full_Adam_moments_checked": true,
+      "compared_tensors": 960,
+      "compared_elements": 2257179072,
+      "all_rank_max_difference": 0.0
+    }
+  ],
+  "plans": [
+    {
+      "global_rows": [
+        [
+          1,
+          2,
+          4,
+          5
+        ],
+        [
+          0,
+          3,
+          6,
+          7
+        ]
+      ],
+      "local_rows": [
+        [
+          4
+        ],
+        [
+          6
+        ]
+      ],
+      "lengths": [
+        19423,
+        26038,
+        8124,
+        18566,
+        1061,
+        984,
+        4184,
+        1745
+      ],
+      "world": 4
+    }
+  ],
+  "resumed": true,
+  "registered_partial_stop": false,
+  "full_goal_complete": false
+}

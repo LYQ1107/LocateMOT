@@ -1,0 +1,215 @@
+{
+  "status": "ALL1814_FIT_PHYSICAL_FRAMES_18_NATIVE_QUERY_ROLLOUTS_COMPLETE",
+  "owner_pid": 3320228,
+  "owner_starttick": "48407628",
+  "git_commit": "dc8ec4fe1f6ef777e180cd84de804feb951bb34e",
+  "physical_gpu": 7,
+  "upstream_owner_identity": null,
+  "actual_new_training_updates": 0,
+  "completed": {
+    "0000_primary": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/rmot_allfit1814_query18_shared_gpu7_v2/clips/0000_primary",
+      "manifest": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/rmot_allfit1814_query18_scope_v1/manifests/0000_primary.json",
+      "video": "0000",
+      "query_role": "primary",
+      "frames": 154,
+      "archive_bytes": 2315104,
+      "native_candidates": 289,
+      "rejected_frames": 0
+    },
+    "0000_counter": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/rmot_allfit1814_query18_shared_gpu7_v2/clips/0000_counter",
+      "manifest": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/rmot_allfit1814_query18_scope_v1/manifests/0000_counter.json",
+      "video": "0000",
+      "query_role": "counter",
+      "frames": 154,
+      "archive_bytes": 8390507,
+      "native_candidates": 811,
+      "rejected_frames": 1
+    },
+    "0002_primary": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/rmot_allfit1814_query18_shared_gpu7_v2/clips/0002_primary",
+      "manifest": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/rmot_allfit1814_query18_scope_v1/manifests/0002_primary.json",
+      "video": "0002",
+      "query_role": "primary",
+      "frames": 233,
+      "archive_bytes": 5110764,
+      "native_candidates": 452,
+      "rejected_frames": 77
+    },
+    "0002_counter": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/rmot_allfit1814_query18_shared_gpu7_v2/clips/0002_counter",
+      "manifest": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/rmot_allfit1814_query18_scope_v1/manifests/0002_counter.json",
+      "video": "0002",
+      "query_role": "counter",
+      "frames": 233,
+      "archive_bytes": 3243579,
+      "native_candidates": 360,
+      "rejected_frames": 75
+    },
+    "0003_primary": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/rmot_allfit1814_query18_shared_gpu7_v2/clips/0003_primary",
+      "manifest": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/rmot_allfit1814_query18_scope_v1/manifests/0003_primary.json",
+      "video": "0003",
+      "query_role": "primary",
+      "frames": 144,
+      "archive_bytes": 6637036,
+      "native_candidates": 638,
+      "rejected_frames": 5
+    },
+    "0003_counter": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/rmot_allfit1814_query18_shared_gpu7_v2/clips/0003_counter",
+      "manifest": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/rmot_allfit1814_query18_scope_v1/manifests/0003_counter.json",
+      "video": "0003",
+      "query_role": "counter",
+      "frames": 144,
+      "archive_bytes": 3264256,
+      "native_candidates": 368,
+      "rejected_frames": 4
+    },
+    "0006_primary": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/rmot_allfit1814_query18_shared_gpu7_v2/clips/0006_primary",
+      "manifest": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/rmot_allfit1814_query18_scope_v1/manifests/0006_primary.json",
+      "video": "0006",
+      "query_role": "primary",
+      "frames": 270,
+      "archive_bytes": 10664773,
+      "native_candidates": 1028,
+      "rejected_frames": 8
+    },
+    "0006_counter": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/rmot_allfit1814_query18_shared_gpu7_v2/clips/0006_counter",
+      "manifest": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/rmot_allfit1814_query18_scope_v1/manifests/0006_counter.json",
+      "video": "0006",
+      "query_role": "counter",
+      "frames": 270,
+      "archive_bytes": 5368429,
+      "native_candidates": 619,
+      "rejected_frames": 9
+    },
+    "0008_primary": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/rmot_allfit1814_query18_shared_gpu7_v2/clips/0008_primary",
+      "manifest": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/rmot_allfit1814_query18_scope_v1/manifests/0008_primary.json",
+      "video": "0008",
+      "query_role": "primary",
+      "frames": 390,
+      "archive_bytes": 14173284,
+      "native_candidates": 1346,
+      "rejected_frames": 0
+    },
+    "0008_counter": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/rmot_allfit1814_query18_shared_gpu7_v2/clips/0008_counter",
+      "manifest": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/rmot_allfit1814_query18_scope_v1/manifests/0008_counter.json",
+      "video": "0008",
+      "query_role": "counter",
+      "frames": 390,
+      "archive_bytes": 12978732,
+      "native_candidates": 1209,
+      "rejected_frames": 2
+    },
+    "0010_primary": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/rmot_allfit1814_query18_shared_gpu7_v2/clips/0010_primary",
+      "manifest": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/rmot_allfit1814_query18_scope_v1/manifests/0010_primary.json",
+      "video": "0010",
+      "query_role": "primary",
+      "frames": 294,
+      "archive_bytes": 8702289,
+      "native_candidates": 806,
+      "rejected_frames": 1
+    },
+    "0010_counter": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/rmot_allfit1814_query18_shared_gpu7_v2/clips/0010_counter",
+      "manifest": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/rmot_allfit1814_query18_scope_v1/manifests/0010_counter.json",
+      "video": "0010",
+      "query_role": "counter",
+      "frames": 294,
+      "archive_bytes": 7661893,
+      "native_candidates": 748,
+      "rejected_frames": 1
+    },
+    "0012_primary": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/rmot_allfit1814_query18_shared_gpu7_v2/clips/0012_primary",
+      "manifest": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/rmot_allfit1814_query18_scope_v1/manifests/0012_primary.json",
+      "video": "0012",
+      "query_role": "primary",
+      "frames": 78,
+      "archive_bytes": 797030,
+      "native_candidates": 70,
+      "rejected_frames": 36
+    },
+    "0012_counter": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/rmot_allfit1814_query18_shared_gpu7_v2/clips/0012_counter",
+      "manifest": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/rmot_allfit1814_query18_scope_v1/manifests/0012_counter.json",
+      "video": "0012",
+      "query_role": "counter",
+      "frames": 78,
+      "archive_bytes": 3638416,
+      "native_candidates": 350,
+      "rejected_frames": 2
+    },
+    "0014_primary": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/rmot_allfit1814_query18_shared_gpu7_v2/clips/0014_primary",
+      "manifest": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/rmot_allfit1814_query18_scope_v1/manifests/0014_primary.json",
+      "video": "0014",
+      "query_role": "primary",
+      "frames": 106,
+      "archive_bytes": 2591572,
+      "native_candidates": 235,
+      "rejected_frames": 0
+    },
+    "0014_counter": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/rmot_allfit1814_query18_shared_gpu7_v2/clips/0014_counter",
+      "manifest": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/rmot_allfit1814_query18_scope_v1/manifests/0014_counter.json",
+      "video": "0014",
+      "query_role": "counter",
+      "frames": 106,
+      "archive_bytes": 4711147,
+      "native_candidates": 452,
+      "rejected_frames": 0
+    },
+    "0017_primary": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/rmot_allfit1814_query18_shared_gpu7_v2/clips/0017_primary",
+      "manifest": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/rmot_allfit1814_query18_scope_v1/manifests/0017_primary.json",
+      "video": "0017",
+      "query_role": "primary",
+      "frames": 145,
+      "archive_bytes": 4130245,
+      "native_candidates": 381,
+      "rejected_frames": 0
+    },
+    "0017_counter": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/rmot_allfit1814_query18_shared_gpu7_v2/clips/0017_counter",
+      "manifest": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/rmot_allfit1814_query18_scope_v1/manifests/0017_counter.json",
+      "video": "0017",
+      "query_role": "counter",
+      "frames": 145,
+      "archive_bytes": 7304829,
+      "native_candidates": 706,
+      "rejected_frames": 2
+    }
+  },
+  "full_goal_complete": false,
+  "allocation": {
+    "status": "VERIFIED_SHARED_GPU7_ALLOCATION_WITH_EXISTING_TRAINING",
+    "physical_gpu": 7,
+    "registered_training_owner": [
+      3219708,
+      "47863228"
+    ],
+    "registered_training_child": [
+      3247243,
+      "47992048"
+    ],
+    "new_physical_GPUs": 0,
+    "ground_mem_fraction_static": 0.3,
+    "tracking_or_training_protocols_changed": false,
+    "contention_timing_declared": true
+  },
+  "launch_free_memory_MiB": 58489,
+  "owned_service_groups": [
+    3320233,
+    3320234
+  ],
+  "unique_physical_frames": 1814,
+  "combined_registered_feature_upper_bytes": 26806086506
+}

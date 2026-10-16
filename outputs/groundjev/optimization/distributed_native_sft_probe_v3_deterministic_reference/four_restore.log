@@ -1,0 +1,71 @@
+{"physical_gpus": [4, 5, 6, 7], "command": ["/data2/user/LocateMOT_GroundJEV/.venv-onejev-py310/bin/python", "-m", "torch.distributed.run", "--standalone", "--nproc-per-node", "4", "tools/groundjev/probe_distributed_native_sft.py", "--config", "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/optimization/distributed_native_sft_probe_v3_deterministic_reference/four_resumed_config.json", "--receipts", "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/optimization/distributed_native_sft_probe_v3_deterministic_reference/rank_receipts", "--label", "four_restore", "--backend", "reference", "--deterministic-execution", "--resume-state", "/data3/user/LocateMOT-checkpoints/distributed_native_sft_probe_v3_deterministic_reference/four_resumed/latest_training_state.pt"]}
+2026-10-16 10:02:51,417 INFO train.sft loaded 8 rows from /data2/user/LocateMOT_GroundJEV/outputs/groundjev/optimization/distributed_native_sft_probe_v3_deterministic_reference/train.jsonl.gz (world size 4)
+
+Loading weights:   0%|          | 0/474 [00:00<?, ?it/s]
+Loading weights:   0%|          | 0/474 [00:00<?, ?it/s]
+Loading weights:   0%|          | 0/474 [00:00<?, ?it/s]
+Loading weights:   0%|          | 1/474 [00:00<03:45,  2.09it/s]
+Loading weights:  24%|██▍       | 115/474 [00:00<00:01, 262.55it/s]
+Loading weights:   0%|          | 0/474 [00:00<?, ?it/s]
+Loading weights:  38%|███▊      | 182/474 [00:00<00:00, 358.94it/s]
+Loading weights:  52%|█████▏    | 247/474 [00:00<00:00, 433.45it/s]
+Loading weights:   0%|          | 1/474 [00:00<04:14,  1.86it/s]
+Loading weights:   0%|          | 1/474 [00:00<04:28,  1.76it/s]
+Loading weights:  66%|██████▌   | 312/474 [00:00<00:00, 467.17it/s]
+Loading weights:  36%|███▋      | 172/474 [00:00<00:00, 358.77it/s]
+Loading weights:   0%|          | 1/474 [00:00<02:38,  2.99it/s]
+Loading weights:  24%|██▍       | 115/474 [00:00<00:01, 229.04it/s]
+Loading weights:  91%|█████████ | 430/474 [00:01<00:00, 657.67it/s]
+Loading weights: 100%|██████████| 474/474 [00:01<00:00, 450.05it/s]
+
+Loading weights:  57%|█████▋    | 272/474 [00:00<00:00, 494.49it/s]
+Loading weights:   0%|          | 2/474 [00:00<01:37,  4.83it/s]
+Loading weights:  38%|███▊      | 180/474 [00:00<00:01, 282.38it/s]
+Loading weights:  81%|████████  | 382/474 [00:00<00:00, 641.22it/s]2026-10-16 10:02:54,217 INFO train.sft model_type=qwen3_5 template_kwargs={'enable_thinking': False}
+2026-10-16 10:02:54,219 INFO train.sft full fine-tuning: fp32 master weights, bf16 autocast forward, vision tower frozen
+2026-10-16 10:02:54,221 INFO train.sft trainable 752.39M of 852.99M parameters (88.207%)
+
+Loading weights:  31%|███▏      | 149/474 [00:00<00:00, 427.09it/s]
+Loading weights: 100%|██████████| 474/474 [00:00<00:00, 509.62it/s]
+
+Loading weights:  49%|████▉     | 234/474 [00:00<00:00, 322.73it/s]
+Loading weights:  47%|████▋     | 221/474 [00:00<00:00, 496.93it/s]
+Loading weights:  61%|██████    | 288/474 [00:01<00:00, 370.21it/s]
+Loading weights:  67%|██████▋   | 319/474 [00:00<00:00, 629.33it/s]
+Loading weights:  72%|███████▏  | 339/474 [00:01<00:00, 402.56it/s]
+Loading weights: 100%|██████████| 474/474 [00:00<00:00, 553.63it/s]
+
+Loading weights:  89%|████████▉ | 421/474 [00:01<00:00, 510.06it/s]
+Loading weights: 100%|██████████| 474/474 [00:01<00:00, 349.04it/s]
+2026-10-16 10:02:56,064 INFO train.sft 2 steps per epoch, 2 total steps, 1 warmup, 0 rows dropped over max-len, planned in 2s
+{"status": "FULL_FP32_ADAM_SCHEDULER_RNG_CURSOR_RESTORED", "source": "/data3/user/LocateMOT-checkpoints/distributed_native_sft_probe_v3_deterministic_reference/four_resumed/latest_training_state.pt", "step": 1, "seen": 4, "next_step_in_epoch": 1, "FP32_master_max_difference": 0.0, "trainable_parameter_entries": 320, "protocol_exact": true, "sampling_protocol": "paired-index-shuffle-v1"}
+{"status": "FULL_FP32_ADAM_SCHEDULER_RNG_CURSOR_RESTORED", "source": "/data3/user/LocateMOT-checkpoints/distributed_native_sft_probe_v3_deterministic_reference/four_resumed/latest_training_state.pt", "step": 1, "seen": 4, "next_step_in_epoch": 1, "FP32_master_max_difference": 0.0, "trainable_parameter_entries": 320, "protocol_exact": true, "sampling_protocol": "paired-index-shuffle-v1"}
+[transformers] `causal_conv1d_fn` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+[transformers] `chunk_gated_delta_rule` is falling back to its reference PyTorch implementation because `flash-linear-attention` is not installed. This is correct but much slower; install `flash-linear-attention` for the optimized kernel.
+[transformers] `causal_conv1d_fn` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+[transformers] `chunk_gated_delta_rule` is falling back to its reference PyTorch implementation because `flash-linear-attention` is not installed. This is correct but much slower; install `flash-linear-attention` for the optimized kernel.
+{"status": "FULL_FP32_ADAM_SCHEDULER_RNG_CURSOR_RESTORED", "source": "/data3/user/LocateMOT-checkpoints/distributed_native_sft_probe_v3_deterministic_reference/four_resumed/latest_training_state.pt", "step": 1, "seen": 4, "next_step_in_epoch": 1, "FP32_master_max_difference": 0.0, "trainable_parameter_entries": 320, "protocol_exact": true, "sampling_protocol": "paired-index-shuffle-v1"}
+[transformers] `causal_conv1d_fn` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+[transformers] `chunk_gated_delta_rule` is falling back to its reference PyTorch implementation because `flash-linear-attention` is not installed. This is correct but much slower; install `flash-linear-attention` for the optimized kernel.
+{"status": "FULL_FP32_ADAM_SCHEDULER_RNG_CURSOR_RESTORED", "source": "/data3/user/LocateMOT-checkpoints/distributed_native_sft_probe_v3_deterministic_reference/four_resumed/latest_training_state.pt", "step": 1, "seen": 4, "next_step_in_epoch": 1, "FP32_master_max_difference": 0.0, "trainable_parameter_entries": 320, "protocol_exact": true, "sampling_protocol": "paired-index-shuffle-v1"}
+[transformers] `causal_conv1d_fn` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+[transformers] `chunk_gated_delta_rule` is falling back to its reference PyTorch implementation because `flash-linear-attention` is not installed. This is correct but much slower; install `flash-linear-attention` for the optimized kernel.
+train [##############################] 2/2 (100.0%) loss 3.1430 ce 2.1638 brier 0.9791 slot_acc 0.500 gnorm 157.532 lr 0.00e+00 rows/s 0.09 tok/s 994 s/step 44.2 mem 16.9G eta 0.0h
+
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]
+Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  1.00it/s]
+Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  1.00it/s]
+2026-10-16 10:03:49,283 INFO train.sft saved model to /data3/user/LocateMOT-checkpoints/distributed_native_sft_probe_v3_deterministic_reference/four_resumed/ckpt-step2
+{"format": "groundjev-full-fp32-adam-rng-v1", "step": 2, "seen": 8, "epoch": 0, "next_step_in_epoch": 2, "path": "/data3/user/LocateMOT-checkpoints/distributed_native_sft_probe_v3_deterministic_reference/four_resumed/latest_training_state.pt", "bytes": 9029194849, "FP32_masters_and_Adam_moments_saved": true, "scheduler_and_all_RNG_saved": true, "single_latest_training_state": true, "feature_cache": false}
+/data2/user/LocateMOT_GroundJEV/.venv-onejev-py310/lib/python3.10/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]
+Writing model shards: 100%|██████████| 1/1 [00:01<00:00,  1.01s/it]
+Writing model shards: 100%|██████████| 1/1 [00:01<00:00,  1.01s/it]
+2026-10-16 10:04:05,811 INFO train.sft saved final model to /data3/user/LocateMOT-checkpoints/distributed_native_sft_probe_v3_deterministic_reference/four_resumed/final
+done: 2 steps, 8 examples, 61.2s, 0.13 examples/s
+{"rank": 0, "world": 4, "steps": 1, "all_rank_max_difference": 0.0}
+{"rank": 3, "world": 4, "steps": 1, "all_rank_max_difference": 0.0}
+{"rank": 1, "world": 4, "steps": 1, "all_rank_max_difference": 0.0}
+{"rank": 2, "world": 4, "steps": 1, "all_rank_max_difference": 0.0}
