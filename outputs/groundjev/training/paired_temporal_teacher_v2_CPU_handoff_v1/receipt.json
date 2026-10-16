@@ -1,0 +1,375 @@
+{
+  "status": "CPU_ONLY_WAIT_OWNER_EXIT_CONFIRMED",
+  "old_owner_directory": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/paired_temporal_teacher6000_owner_v2_indexed",
+  "old_identity": [
+    4002071,
+    "52168753"
+  ],
+  "old_state": {
+    "status": "WAITING_ORIGINAL_NATIVE6000_OWNER_SUCCESSFUL_EXIT",
+    "owner_pid": 4002071,
+    "owner_starttick": "52168753",
+    "completed": {
+      "curriculum": {
+        "status": "PAIRED_SHORT_LONG_TEMPORAL_NATIVE_TEACHER24000_CURRICULA_PREPARED_NOT_TRAINED",
+        "teacher_rows_each": 4000,
+        "total_rows_each": 24000,
+        "rows_per_task_each": {
+          "mot": 8000,
+          "rmot": 8000,
+          "ovmot": 8000
+        },
+        "source_units": 43,
+        "coverage": {
+          "mot/MOT17-02-FRCNN": {
+            "legal_train_frames": 301,
+            "selected_teacher_images": 173,
+            "original_native_clip_seconds": 1.0333333333333334,
+            "teacher_rows": 94
+          },
+          "mot/MOT17-04-FRCNN": {
+            "legal_train_frames": 526,
+            "selected_teacher_images": 224,
+            "original_native_clip_seconds": 1.0333333333333334,
+            "teacher_rows": 93
+          },
+          "mot/MOT17-05-FRCNN": {
+            "legal_train_frames": 419,
+            "selected_teacher_images": 172,
+            "original_native_clip_seconds": 2.2142857142857144,
+            "teacher_rows": 93
+          },
+          "mot/MOT17-09-FRCNN": {
+            "legal_train_frames": 263,
+            "selected_teacher_images": 162,
+            "original_native_clip_seconds": 1.0333333333333334,
+            "teacher_rows": 93
+          },
+          "mot/MOT17-10-FRCNN": {
+            "legal_train_frames": 328,
+            "selected_teacher_images": 177,
+            "original_native_clip_seconds": 1.0333333333333334,
+            "teacher_rows": 93
+          },
+          "mot/MOT17-11-FRCNN": {
+            "legal_train_frames": 451,
+            "selected_teacher_images": 187,
+            "original_native_clip_seconds": 1.0333333333333334,
+            "teacher_rows": 93
+          },
+          "mot/MOT17-13-FRCNN": {
+            "legal_train_frames": 376,
+            "selected_teacher_images": 190,
+            "original_native_clip_seconds": 1.24,
+            "teacher_rows": 93
+          },
+          "mot/dancetrack0001": {
+            "legal_train_frames": 703,
+            "selected_teacher_images": 231,
+            "original_native_clip_seconds": 0.75,
+            "teacher_rows": 93
+          },
+          "mot/dancetrack0006": {
+            "legal_train_frames": 1202,
+            "selected_teacher_images": 252,
+            "original_native_clip_seconds": 0.75,
+            "teacher_rows": 93
+          },
+          "mot/dancetrack0008": {
+            "legal_train_frames": 883,
+            "selected_teacher_images": 242,
+            "original_native_clip_seconds": 0.75,
+            "teacher_rows": 93
+          },
+          "mot/dancetrack0012": {
+            "legal_train_frames": 1203,
+            "selected_teacher_images": 253,
+            "original_native_clip_seconds": 0.75,
+            "teacher_rows": 93
+          },
+          "mot/dancetrack0016": {
+            "legal_train_frames": 2163,
+            "selected_teacher_images": 255,
+            "original_native_clip_seconds": 0.75,
+            "teacher_rows": 93
+          },
+          "mot/dancetrack0020": {
+            "legal_train_frames": 583,
+            "selected_teacher_images": 217,
+            "original_native_clip_seconds": 0.75,
+            "teacher_rows": 93
+          },
+          "mot/dancetrack0023": {
+            "legal_train_frames": 1483,
+            "selected_teacher_images": 252,
+            "original_native_clip_seconds": 0.75,
+            "teacher_rows": 93
+          },
+          "mot/dancetrack0024": {
+            "legal_train_frames": 763,
+            "selected_teacher_images": 223,
+            "original_native_clip_seconds": 0.75,
+            "teacher_rows": 93
+          },
+          "mot/dancetrack0027": {
+            "legal_train_frames": 403,
+            "selected_teacher_images": 200,
+            "original_native_clip_seconds": 0.75,
+            "teacher_rows": 93
+          },
+          "mot/dancetrack0029": {
+            "legal_train_frames": 1263,
+            "selected_teacher_images": 246,
+            "original_native_clip_seconds": 0.75,
+            "teacher_rows": 93
+          },
+          "mot/dancetrack0032": {
+            "legal_train_frames": 604,
+            "selected_teacher_images": 230,
+            "original_native_clip_seconds": 0.75,
+            "teacher_rows": 93
+          },
+          "mot/dancetrack0037": {
+            "legal_train_frames": 1203,
+            "selected_teacher_images": 249,
+            "original_native_clip_seconds": 0.75,
+            "teacher_rows": 93
+          },
+          "mot/dancetrack0039": {
+            "legal_train_frames": 1242,
+            "selected_teacher_images": 243,
+            "original_native_clip_seconds": 0.75,
+            "teacher_rows": 93
+          },
+          "mot/dancetrack0044": {
+            "legal_train_frames": 1203,
+            "selected_teacher_images": 248,
+            "original_native_clip_seconds": 0.75,
+            "teacher_rows": 93
+          },
+          "mot/dancetrack0045": {
+            "legal_train_frames": 1203,
+            "selected_teacher_images": 251,
+            "original_native_clip_seconds": 0.75,
+            "teacher_rows": 93
+          },
+          "mot/dancetrack0051": {
+            "legal_train_frames": 1203,
+            "selected_teacher_images": 244,
+            "original_native_clip_seconds": 0.75,
+            "teacher_rows": 93
+          },
+          "mot/dancetrack0052": {
+            "legal_train_frames": 1203,
+            "selected_teacher_images": 249,
+            "original_native_clip_seconds": 0.75,
+            "teacher_rows": 93
+          },
+          "mot/dancetrack0053": {
+            "legal_train_frames": 1204,
+            "selected_teacher_images": 251,
+            "original_native_clip_seconds": 0.75,
+            "teacher_rows": 93
+          },
+          "mot/dancetrack0055": {
+            "legal_train_frames": 1203,
+            "selected_teacher_images": 245,
+            "original_native_clip_seconds": 0.75,
+            "teacher_rows": 93
+          },
+          "mot/dancetrack0057": {
+            "legal_train_frames": 622,
+            "selected_teacher_images": 223,
+            "original_native_clip_seconds": 0.75,
+            "teacher_rows": 93
+          },
+          "mot/dancetrack0062": {
+            "legal_train_frames": 1203,
+            "selected_teacher_images": 237,
+            "original_native_clip_seconds": 0.75,
+            "teacher_rows": 93
+          },
+          "mot/dancetrack0066": {
+            "legal_train_frames": 1202,
+            "selected_teacher_images": 246,
+            "original_native_clip_seconds": 0.75,
+            "teacher_rows": 93
+          },
+          "mot/dancetrack0068": {
+            "legal_train_frames": 1203,
+            "selected_teacher_images": 243,
+            "original_native_clip_seconds": 0.75,
+            "teacher_rows": 93
+          },
+          "mot/dancetrack0069": {
+            "legal_train_frames": 1403,
+            "selected_teacher_images": 246,
+            "original_native_clip_seconds": 0.75,
+            "teacher_rows": 93
+          },
+          "mot/dancetrack0074": {
+            "legal_train_frames": 1203,
+            "selected_teacher_images": 244,
+            "original_native_clip_seconds": 0.75,
+            "teacher_rows": 93
+          },
+          "mot/dancetrack0075": {
+            "legal_train_frames": 803,
+            "selected_teacher_images": 239,
+            "original_native_clip_seconds": 0.75,
+            "teacher_rows": 93
+          },
+          "mot/dancetrack0080": {
+            "legal_train_frames": 1201,
+            "selected_teacher_images": 248,
+            "original_native_clip_seconds": 0.75,
+            "teacher_rows": 93
+          },
+          "mot/dancetrack0082": {
+            "legal_train_frames": 603,
+            "selected_teacher_images": 222,
+            "original_native_clip_seconds": 0.75,
+            "teacher_rows": 93
+          },
+          "mot/dancetrack0086": {
+            "legal_train_frames": 603,
+            "selected_teacher_images": 218,
+            "original_native_clip_seconds": 0.75,
+            "teacher_rows": 93
+          },
+          "mot/dancetrack0087": {
+            "legal_train_frames": 1003,
+            "selected_teacher_images": 236,
+            "original_native_clip_seconds": 0.75,
+            "teacher_rows": 93
+          },
+          "mot/dancetrack0096": {
+            "legal_train_frames": 603,
+            "selected_teacher_images": 199,
+            "original_native_clip_seconds": 0.75,
+            "teacher_rows": 93
+          },
+          "mot/dancetrack0098": {
+            "legal_train_frames": 1203,
+            "selected_teacher_images": 241,
+            "original_native_clip_seconds": 0.75,
+            "teacher_rows": 93
+          },
+          "mot/MOT20-01": {
+            "legal_train_frames": 215,
+            "selected_teacher_images": 144,
+            "original_native_clip_seconds": 1.24,
+            "teacher_rows": 93
+          },
+          "mot/MOT20-02": {
+            "legal_train_frames": 1392,
+            "selected_teacher_images": 249,
+            "original_native_clip_seconds": 1.24,
+            "teacher_rows": 93
+          },
+          "mot/MOT20-03": {
+            "legal_train_frames": 1203,
+            "selected_teacher_images": 244,
+            "original_native_clip_seconds": 5.08,
+            "teacher_rows": 93
+          },
+          "mot/MOT20-05": {
+            "legal_train_frames": 1658,
+            "selected_teacher_images": 244,
+            "original_native_clip_seconds": 5.08,
+            "teacher_rows": 93
+          }
+        },
+        "gap_quantile_levels": [
+          0,
+          0.5,
+          0.95,
+          1
+        ],
+        "gap_seconds": {
+          "short": [
+            0.03333333333333333,
+            0.5,
+            0.96,
+            1.0
+          ],
+          "long": [
+            3.0,
+            7.95,
+            38.65,
+            104.2
+          ]
+        },
+        "native_reference_pixel_sheets_exact": 172,
+        "native_request_state_question_proof_groups": 86,
+        "paired_all_current_images_boxes_aliases_questions_targets_exact": true,
+        "identical_retained_native4000_and_semantic16000_rows_order_and_hyperparameters": true,
+        "same_model_all_tasks_and_same_FP32_native6000_initialization": true,
+        "teacher_scope": "Positive identity teacher episodes with known selected anchors provided across gaps; not actual own-history online rollout, long-BPTT or implemented long-TTL archive. Existing native action/auxiliary supervision retained in declared4000rows.",
+        "new_images_or_ROI_feature_archive": false,
+        "production_optimizer_updates": 0,
+        "full_goal_complete": false,
+        "generated_metadata_bytes_before_summary": 2849670
+      },
+      "short_CPU_plan": {
+        "status": "ALL24000_NATIVE_MM_CPU_ROWS_AND6000_PAIRED_SHUFFLE_UPDATES_VALIDATED",
+        "rows": 24000,
+        "dropped_rows": 0,
+        "maximum_tokens": 27319,
+        "planned_tokens": 124050808,
+        "planned_optimizer_steps": 6000,
+        "actual_optimizer_steps": 0,
+        "world": 1,
+        "input_io_protocol": "gzip-jsonl-native-tracking-category-and-group-question-refs-v1",
+        "full_goal_complete": false
+      },
+      "long_CPU_plan": {
+        "status": "ALL24000_NATIVE_MM_CPU_ROWS_AND6000_PAIRED_SHUFFLE_UPDATES_VALIDATED",
+        "rows": 24000,
+        "dropped_rows": 0,
+        "maximum_tokens": 27319,
+        "planned_tokens": 124044895,
+        "planned_optimizer_steps": 6000,
+        "actual_optimizer_steps": 0,
+        "world": 1,
+        "input_io_protocol": "gzip-jsonl-native-tracking-category-and-group-question-refs-v1",
+        "full_goal_complete": false
+      }
+    },
+    "physical_gpu_only_after_verified_dependency": 7,
+    "actual_production_optimizer_steps": 0,
+    "full_goal_complete": false,
+    "command": [
+      "/data2/user/LocateMOT_GroundJEV/.venv-onejev-py310/bin/python",
+      "tools/groundjev/run_broader_shared_onejev.py",
+      "--cpu-plan",
+      "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/paired_temporal_teacher6000_owner_v2_indexed/long_CPU_plan_config.json",
+      "--report",
+      "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/paired_temporal_teacher6000_owner_v2_indexed/long_CPU_plan_validation.json"
+    ],
+    "last_exit_code": 0,
+    "dependency": {
+      "directory": "outputs/groundjev/training/broader_shared6000_fla_owner_v2",
+      "script": "tools/groundjev/run_broader_shared_onejev.py",
+      "identity": [
+        3219708,
+        "47863228"
+      ],
+      "required_terminal_status": "SHARED6000_AND_ALL_FIXED_BEFORE_DEFAULT_FINAL_ID_CONTROLS_VALIDATED"
+    }
+  },
+  "replacement_plan": "configs/groundjev/paired_temporal_teacher24000_v3_early_window.json",
+  "target_has_no_children_and_empty_CUDA_visibility": true,
+  "old_training_updates": 0,
+  "original_four_GPU_epoch_native6000_controls_and_other_jobs_targeted": false,
+  "all_completed_inputs_and_original_owner_state_preserved": true,
+  "full_goal_complete": false,
+  "signal": "SIGTERM",
+  "old_owner_exit_confirmed_by_pidfd": true,
+  "old_prepared_data_or_state_files_modified": false,
+  "old_wrapper_terminal_exit_code": "Record original session60582 separately; pidfd proves target exited, not wrapper code.",
+  "replacement_started": false,
+  "new_GPU_or_optimizer_updates": 0,
+  "original_wrapper_terminal_exit_code": 143,
+  "original_wrapper_session": 60582
+}

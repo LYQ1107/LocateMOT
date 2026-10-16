@@ -16,6 +16,7 @@ sys.path[:0]=[str(ROOT),str(ROOT/'external/OneJev')]
 def main():
     from tools.groundjev.run_history_refresh_controls import wait_dependency,validate_run
     parser=argparse.ArgumentParser();parser.add_argument('--plan',type=Path,required=True)
+    parser.add_argument('--reuse-prepared-from',type=Path)
     args=parser.parse_args();plan=json.loads(args.plan.read_text())
     assert os.environ.get('CUDA_VISIBLE_DEVICES')=='' and plan['physical_gpu']==7
     assert plan['combined_registered_feature_upper_bytes']<plan['global_temporary_feature_budget_bytes']
@@ -28,13 +29,15 @@ def main():
     env=dict(os.environ,CUDA_VISIBLE_DEVICES='',OMP_NUM_THREADS='4',MKL_NUM_THREADS='4',OPENBLAS_NUM_THREADS='4',
         PYTHONPATH=str(ROOT/'external/OneJev'),PYTHONUNBUFFERED='1')
     gpu=['python3','tools/groundjev/run_with_resources.py','--gpus','7','--',python]
+    window=None
     def save():
         temp=out/'owner_state.tmp';temp.write_text(json.dumps(state,indent=2)+'\n');temp.replace(out/'owner_state.json')
         print(json.dumps(dict(status=state['status'],completed=list(state['completed']),actual_production_optimizer_steps=state['actual_production_optimizer_steps'])),flush=True)
     def run(stage,command):
         state.update(status=stage,command=command);save()
         with (out/(stage+'.log')).open('w') as log:
-            child=subprocess.Popen(command,cwd=ROOT,env=env,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True)
+            descriptors=() if window is None else (window.fileno(),)
+            child=subprocess.Popen(command,cwd=ROOT,env=env,pass_fds=descriptors,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True)
             state['child_pid']=child.pid;save()
             for line in child.stdout:log.write(line);log.flush();print(line,end='',flush=True)
             code=child.wait()
@@ -48,34 +51,70 @@ def main():
             time.sleep(20)
     save()
     try:
-        run('INDEXED_SOURCE_ROW_REGRESSION',[python,'tools/groundjev/validate_indexed_native_sources.py',
-            '--out',str(out/'indexed_input_validation')])
-        run('PREPARE_PAIRED_LEGAL_TEMPORAL_TEACHERS',[python,'tools/groundjev/prepare_paired_temporal_teacher.py','--plan',str(args.plan)])
-        data=ROOT/plan['output'];summary=json.loads((data/'summary.json').read_text())
+        data=ROOT/plan['output']
+        if args.reuse_prepared_from:
+            summary=json.loads((data/'summary.json').read_text())
+            prepared=args.reuse_prepared_from
+            oldplan=json.loads((prepared/'registration.json').read_text())
+            proof=json.loads((prepared/'prepared_and_CPU_validated.json').read_text())
+            handoff=json.loads((ROOT/plan['CPU_wait_handoff_receipt']).read_text())
+            assert handoff['status']=='CPU_ONLY_WAIT_OWNER_EXIT_CONFIRMED'
+            assert Path(handoff['old_owner_directory']).resolve()==prepared.resolve()
+            assert proof['new_optimizer_updates']==0 and proof['curriculum']==summary
+            for key in ('output','initial_checkpoint','initial_training_state','initial_expected_step','training_names','seed'):
+                assert plan[key]==oldplan[key]
+            for arm in ('short','long'):
+                report=proof['cpu_plans'][arm]
+                assert report['rows']==24000 and report['dropped_rows']==0 and report['planned_optimizer_steps']==6000
+                assert report['actual_optimizer_steps']==0
+                state['completed'][arm+'_CPU_plan']=report
+            state['completed']['prepared_input_reuse']=dict(source=str(prepared),same_curriculum_and_training_configs=True,handoff=handoff)
+        else:
+            run('INDEXED_SOURCE_ROW_REGRESSION',[python,'tools/groundjev/validate_indexed_native_sources.py',
+                '--out',str(out/'indexed_input_validation')])
+            run('PREPARE_PAIRED_LEGAL_TEMPORAL_TEACHERS',[python,'tools/groundjev/prepare_paired_temporal_teacher.py','--plan',str(args.plan)])
+            summary=json.loads((data/'summary.json').read_text())
+            for arm in ('short','long'):
+                config=json.loads((data/arm/'training_config.json').read_text())
+                cpu=dict(config,name='paired_temporal_'+arm+'_CPU_plan',runs_dir=str(out/(arm+'_CPU_plan')),device='cpu')
+                path=out/(arm+'_CPU_plan_config.json');path.write_text(json.dumps(cpu,indent=2)+'\n')
+                report=out/(arm+'_CPU_plan_validation.json')
+                run(arm+'_ALL24000_NATIVE_CPU_INPUTS',[python,'tools/groundjev/run_broader_shared_onejev.py',
+                    '--cpu-plan',str(path),'--report',str(report)])
+                state['completed'][arm+'_CPU_plan']=json.loads(report.read_text());save()
         assert summary['paired_all_current_images_boxes_aliases_questions_targets_exact'] and summary['source_units']==43
         state['completed']['curriculum']=summary;save()
-        for arm in ('short','long'):
-            config=json.loads((data/arm/'training_config.json').read_text())
-            cpu=dict(config,name='paired_temporal_'+arm+'_CPU_plan',runs_dir=str(out/(arm+'_CPU_plan')),device='cpu')
-            path=out/(arm+'_CPU_plan_config.json');path.write_text(json.dumps(cpu,indent=2)+'\n')
-            report=out/(arm+'_CPU_plan_validation.json')
-            run(arm+'_ALL24000_NATIVE_CPU_INPUTS',[python,'tools/groundjev/run_broader_shared_onejev.py',
-                '--cpu-plan',str(path),'--report',str(report)])
-            state['completed'][arm+'_CPU_plan']=json.loads(report.read_text());save()
         proof=dict(status='PAIRED_SHORT_LONG_NATIVE24000_INPUTS_AND6000_UPDATES_EACH_VALIDATED_NOT_TRAINED',
             curriculum=summary,cpu_plans={a:state['completed'][a+'_CPU_plan'] for a in ('short','long')},
             new_optimizer_updates=0,dependency=plan['training_dependency'],full_goal_complete=False)
         (out/'prepared_and_CPU_validated.json').write_text(json.dumps(proof,indent=2)+'\n')
-        state.update(status='WAITING_ORIGINAL_NATIVE6000_OWNER_SUCCESSFUL_EXIT',dependency=plan['training_dependency']);save()
-        original=wait_dependency(plan['training_dependency'])
-        state['completed']['original6000_owner_success']=dict(status=original['status'],owner_exited=True);save()
+        original=None
+        if plan.get('start_from_verified6000_before_pending_TAO_controls',False):
+            assert args.reuse_prepared_from
+            source=json.loads((ROOT/plan['training_dependency']['directory']/'owner_state.json').read_text())
+            training=source['completed']['training']
+            assert training['done']['steps']==6000 and training['done']['examples']==24000
+            assert source['completed']['native_MM_reload']['status']=='REAL_ONEJEV6000_NATIVE_MM_RELOAD_VALIDATED'
+            snapshot=json.loads((ROOT/plan['initial_full_state_validation']).read_text())
+            assert snapshot['step']==6000 and snapshot['all320_FP32_parameters_and_both_full_Adam_moments_finite']
+            assert Path(training['latest_full_state']['path']).resolve()==(ROOT/plan['initial_training_state']).resolve()
+            state['completed']['verified6000_training_and_reload']=dict(training=training,native_reload_status=source['completed']['native_MM_reload']['status'])
+            from tools.groundjev.gpu7_training_window import acquire_training_window,FD_ENV
+            state.update(status='ACQUIRING_GPU7_WINDOW_FOR_EARLY_REGISTERED_TRAINING');save()
+            window=acquire_training_window();env[FD_ENV]=str(window.fileno())
+            env['PYTORCH_CUDA_ALLOC_CONF']='expandable_segments:True'
+        else:
+            state.update(status='WAITING_ORIGINAL_NATIVE6000_OWNER_SUCCESSFUL_EXIT',dependency=plan['training_dependency']);save()
+            original=wait_dependency(plan['training_dependency'])
+            state['completed']['original6000_owner_success']=dict(status=original['status'],owner_exited=True);save()
         assert shutil.disk_usage(plan['runs_dir']).free>=plan['minimum_checkpoint_free_GiB']*2**30
         configurations={};checkpoints={}
         for arm in ('short','long'):
             free=wait_memory();config=json.loads((data/arm/'training_config.json').read_text());configurations[arm]=config
             training=Path(config['runs_dir'])/config['name'];assert not training.exists()
             state['launch_free_MiB']=free;save()
-            run(arm+'_SHARED_ONEJEV6000_TRAINING',gpu+['tools/groundjev/run_source_manifest_sft.py','--source-training-backend','fla',
+            bounded=(['tools/groundjev/run_memory_bounded_native_sft.py','--memory-fraction',str(plan['new_training_torch_memory_fraction']),'--'] if window is not None else [])
+            run(arm+'_SHARED_ONEJEV6000_TRAINING',gpu+bounded+['tools/groundjev/run_source_manifest_sft.py','--source-training-backend','fla',
                 '--config',str(data/arm/'training_config.json'),'--paired-index-shuffle',
                 '--initial-training-state',str(ROOT/plan['initial_training_state']),'--expected-initial-step',str(plan['initial_expected_step']),
                 '--deterministic-execution','--seed-global-rngs'])
@@ -91,6 +130,13 @@ def main():
             run(arm+'_NATIVE_MM_RELOAD',gpu+['tools/groundjev/check_onejev125_checkpoint.py','--step','6000',
                 '--checkpoint',str(checkpoint),'--training-root',str(training),'--reference-checkpoint',config['model']])
             state['completed'][arm+'_native_reload']=json.loads((training/'checkpoint6000_validation.json').read_text());save()
+        if window is not None:
+            window.close();window=None;env.pop(FD_ENV)
+            state['completed']['GPU7_training_window_released_before_original_owner_wait']=True;save()
+        if original is None:
+            state.update(status='PAIRED_TRAINING_DONE_WAITING_ORIGINAL_NATIVE6000_CONTROLS',dependency=plan['training_dependency']);save()
+            original=wait_dependency(plan['training_dependency'])
+            state['completed']['original6000_owner_success']=dict(status=original['status'],owner_exited=True);save()
         controls=json.loads((ROOT/'configs/groundjev/full_history_refresh600_controls_v1.json').read_text())
         results=out/'controls';results.mkdir()
         for scope,job in controls['scopes'].items():
@@ -113,6 +159,9 @@ def main():
         state.update(status='PAIRED_TEMPORAL_TEACHER_SHARED_FOUNDATION_TRAINING_AND_ALL_CONTROLS_COMPLETE');save()
     except Exception as error:
         state.update(status='PAIRED_TEMPORAL_TEACHER_OWNER_FAILED',error=repr(error));save();raise
+    finally:
+        if window is not None:
+            window.close()
 
 
 if __name__=='__main__':main()

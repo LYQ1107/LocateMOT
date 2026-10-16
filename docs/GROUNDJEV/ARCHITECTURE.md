@@ -91,4 +91,11 @@ Ground native serving, Ground native projector training and OneJev have isolated
 environments. All project work uses at most physical4/5/6/7 and bounded25GiB
 temporary feature caches. GPU5serial followups begin only after verified owned
 GPU5groups release; original/adapted native retention continues independently.
+The paired temporal750Mstudy reuses prepared short/long courses and exact6000
+FP32masters under a GPU7training window. The existing four-GPU epoch remains
+co-resident; newpaired SFT has a.33Torchallocator cap. FutureGPU7resource-wrapper
+launches wait on the window; ownsequential children inherit its descriptor.
+Bothtraining/reload stages release the window before waiting original6000
+controls, preserving baseline comparisons without a circular dependency.
+This is an allocation/scheduling amendment, not a model or metric improvement.
 See `CURRENT_STATUS.md` for authoritative completed versus pending scopes.

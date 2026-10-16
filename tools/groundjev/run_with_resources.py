@@ -33,7 +33,13 @@ def main():
     env['GROUNDJEV_FEATURE_CACHE_BUDGET_BYTES'] = str(config['feature_cache_budget_bytes'])
     env['PYTHONUNBUFFERED'] = '1'
     print(json.dumps({'physical_gpus': args.gpus, 'command': command}), flush=True)
-    raise SystemExit(subprocess.call(command, cwd=ROOT, env=env))
+    from tools.groundjev.gpu7_training_window import wait_for_training_window
+    window = wait_for_training_window(args.gpus)
+    try:
+        raise SystemExit(subprocess.call(command, cwd=ROOT, env=env))
+    finally:
+        if window is not None:
+            window.close()
 
 
 if __name__ == '__main__':

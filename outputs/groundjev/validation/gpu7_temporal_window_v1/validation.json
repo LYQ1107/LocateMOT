@@ -1,0 +1,12 @@
+{
+  "status": "REAL_CPU_WRAPPER_TRAINING_WINDOW_AND_PREPARED_INPUT_REGRESSION_PASSED",
+  "inherited_owner_descriptor_enters": true,
+  "other_registered_GPU4_wrapper_not_blocked": true,
+  "future_GPU7_wrapper_blocked_while_exclusive_held": true,
+  "waiter_enters_after_release": true,
+  "actual_GPU_or_optimizer_updates": 0,
+  "prepared_curriculum_initial_state_and_training_configs_unchanged": true,
+  "CUDA_memory_cap_not_yet_exercised": true,
+  "original_running_jobs_modified": false,
+  "full_goal_complete": false
+}

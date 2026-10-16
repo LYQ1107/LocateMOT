@@ -1,5 +1,20 @@
 # Current shared foundation adaptation — 2026-10-16
 
+The paired temporal foundation study has now begun genuine short-branch native
+optimization: updates1..5/examples4..20, finite loss/positive finite gradients,
+752393024trainable language parameters, vision frozen; exact native6000FP32
+initializationmaxdiff0. Longbranch0updates, to follow shortfinal6000. This uses
+the same prevalidated43TRAINvideo/9789selectedimage short/long24000question
+courses and fixedfinal6000sharedmodels; teacheranchors are provided over gaps,
+not long-videoBPTT or runtimearchive changes. V3early GPU7window hands off only
+the0gradientCPUwaiter (actualexit143), retains allold data/state, bounds newTorch
+allocator to.33devicecapacity/28,081,638,604bytes and defersfutureGPU7launches
+until bothtraining/reload stages finish. ExistingfourGPUtraining continues.
+Releasewindow beforewaitingoriginal6000controls, then samebefore/short/long
+officialcontrols. Allocation/scheduling changed, no data/seed/loss/steps/metrics.
+First5peakTorchallocated16.8548GiB, not full-runpeak or steady speed. Evidence:
+[actual short-branch first5](../../outputs/groundjev/training/paired_temporal_teacher6000_owner_v3_early_window/first5_short_optimizer_snapshot.json).
+
 The original full-source four-GPU MOT/RMOT/OVMOT SFT has reached a frozen
 observation of **1700updates/27200questions**, elapsed20688.803s (5.747h).
 The epoch and final tracking evaluation remain incomplete. Evidence:
@@ -47,7 +62,7 @@ not three-task ordinary-model parity. TAO remains pending. Evidence:
 [all9official units and same-state write audit](../../outputs/groundjev/training/broader_shared6000_fla_owner_v2/first_three_native_scopes_completed.json),
 [the6000 snapshot](../../outputs/groundjev/training/shared6000_actual6000_snapshot_v1/validation.json).
 
-The full-source epoch is incomplete (latest frozen observation1700updates/27200questions,
+The independent full-source epoch is incomplete (latest frozen observation1700updates/27200questions,
 elapsed20688.803s). See
 [actual1700 log snapshot](../../outputs/groundjev/training/full_joint_source_epoch1_progress1700_snapshot_v1/snapshot.json).
 This proves logged execution, not a full1700checkpoint-state inspection; the

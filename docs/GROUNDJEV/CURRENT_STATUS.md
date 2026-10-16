@@ -1,3 +1,50 @@
+## Paired temporal foundation study now actually optimizing — 2026-10-16
+
+The prepared short/long study no longer waits for unrelated native6000 TAO
+controls before training. V3reuses the exact v2indexed24000question curricula
+and training configs; same native6000FP32masters, independent newAdam/RNGseed0,
+final6000steps per arm, short thenlong, same four unchanged tracking scopes.
+Only scheduling/allocation changed. All43TRAINvideos/9789selected images and
+short<=1s versus long3..104.2s teacher pairing remain unchanged. These are GT
+teacher snapshots, not native actor rollout, deployedTTL extension or long-BPTT.
+
+Real short-branch updates1..5 are verified, examples4/8/12/16/20, finite losses
+and positive finite gradients. Actual320FP32/752393024initial parameters match
+the saved native6000masters exactly (maxdiff0); vision remains frozen. The long
+branch has0updates so far. First5peakTorchallocation16.8548GiB fits the actual
+28,081,638,604byte Torch allocation cap (.33of reported device capacity); this
+is not a full-run peak/driver-memory guarantee or quality evidence. The owner
+counter increments only completed6000step stages; its native log.jsonl gives
+intermediate progress. Evidence:
+`training/paired_temporal_teacher6000_owner_v3_early_window/first5_short_optimizer_snapshot.json`.
+
+The oldCPU-only waiter4002071/start52168753had0updates/nochildren/emptyCUDA
+visibility; exactpidfd SIGTERM and originalsession60582exit143 are preserved
+in `training/paired_temporal_teacher_v2_CPU_handoff_v1/{intent,receipt}.json`.
+No training or inference worker was stopped. The newowner4118405/start52597639
+and originalblocking session65852 hold an exclusiveGPU7window across both
+training/reload stages. Own children inherit the lock descriptor; future GPU7
+resource-wrapper launches wait. The already-running four-GPU epoch remains
+permitted and untouched. Release this window BEFORE waiting original6000
+control completion, then perform the original before/short/long comparisons.
+This avoids a circular wait; existing GPU4/5TAO inference continues. No speed
+comparison is inferred under changed co-resident load. The expandable allocator
+environment persists for newowner training/reload/eval; reference arithmetic
+and native inference backend remain unchanged.
+
+RealCPUprocess wrapper regression proves ownFD entry, GPU4passthrough,
+GPU7wait/release, and unchanged course/config references:
+`validation/gpu7_temporal_window_v1/validation.json`. New4MiBscheduling metadata
+raises the bounded temporary feature upper to26,823,828,446bytes<26,843,545,600;
+no new image/ROI bank. No checkpoint/metric/seed/acceptance change or promotion.
+
+Both Compact appearance studies completed first4scopes/all16units each. TAO40
+TETA original14.517; raw/random/trained ranks14.104/14.324/14.967, fixed-affinity
+native/random/trained13.964/14.194/14.395. AllNovelClsA0, same single peeler class
+in this video; rank gain is small and does not establish general recognition.
+Final naturalMOT20controls remain running under original owners73067/68145.
+Receipts: `compact/{appearance_rank_study_v1/owner,native_temporal_appearance1000_owner_v1}/first_four_scopes_completed.json`.
+
 ## Native shared6000 RMOT gains verified; DT still regresses — 2026-10-16
 
 All nine original native OneJev before/default/assigned-write controls have
@@ -26,7 +73,7 @@ frames are exact796/800(single) and388/800(multi); DT remains1203/1203exact,
 benefit applies to DT; both RMOT scopes now show small measured gains. Do not
 select different checkpoints/policies by task or promote a common model yet.
 TAO controls remain owned/pending behind their registered original baseline;
-short/long foundation stages still wait with0newupdates. Original owners,
+the earlier0update short/long queue is superseded by v3actual training above. Original owners,
 source input, thresholds and all failed samples are unchanged.
 
 Receipt: `training/broader_shared6000_fla_owner_v2/first_three_native_scopes_completed.json`.
