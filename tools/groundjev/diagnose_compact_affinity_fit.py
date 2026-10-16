@@ -70,9 +70,16 @@ def main():
     import torch
     from tools.groundjev.compact_question_data import CompactQuestionData
     parser=argparse.ArgumentParser(); parser.add_argument('--data',type=Path,required=True)
-    parser.add_argument('--out',type=Path,required=True); args=parser.parse_args()
+    parser.add_argument('--out',type=Path,required=True)
+    parser.add_argument('--checkpoint',type=Path,help='explicit completed checkpoint, without a training wait')
+    parser.add_argument('--arm',default='after'); args=parser.parse_args()
     assert os.environ.get('CUDA_VISIBLE_DEVICES')==''
     torch.set_num_threads(4); dataset=CompactQuestionData(args.data)
+    if args.checkpoint:
+        args.out.mkdir(parents=True,exist_ok=False)
+        measure(dataset,args.checkpoint,args.out,args.arm)
+        assert not torch.cuda.is_initialized()
+        return
     plan=dataset.plan; training=Path(plan['training_output'])
     registered=json.loads((training/'owner_state.json').read_text())
     proc=Path('/proc')/str(registered['owner_pid']); descriptor=None

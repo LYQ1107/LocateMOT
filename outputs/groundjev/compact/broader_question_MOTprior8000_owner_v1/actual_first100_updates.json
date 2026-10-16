@@ -1,0 +1,31 @@
+{
+  "status": "SOURCE_PRIOR_WEIGHTED_MOT_ONLY_ACTUAL100_UPDATES_VERIFIED",
+  "actual_steps": 100,
+  "actual_questions": 100,
+  "records": [
+    {
+      "step": 1,
+      "actual_questions": 1,
+      "weighted_task_losses": {
+        "mot": 1.5323374271392822
+      },
+      "mean_loss": 0.5107791423797607,
+      "unclipped_gradient_norm": 10.52711009979248,
+      "training_seconds": 0.44637668796349317
+    },
+    {
+      "step": 100,
+      "actual_questions": 100,
+      "weighted_task_losses": {
+        "mot": 0.0019931604620069265
+      },
+      "mean_loss": 0.0006643868206689755,
+      "unclipped_gradient_norm": 0.03718162700533867,
+      "training_seconds": 11.586754774965812
+    }
+  ],
+  "owner_pid": 3746201,
+  "owner_starttick": "51330041",
+  "full8000_training_complete": false,
+  "full_goal_complete": false
+}

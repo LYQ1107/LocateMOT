@@ -1,35 +1,48 @@
-## Completed broader Compact8000: negative tracking transfer — 2026-10-16
+## Broader Compact results and controlled failure diagnosis — 2026-10-16
 
-The new shared Compact run completed8000updates/24000questions in1167.332s
-(19.46min),1,146,511parameters. Full model/Adam states are finite, the final
-export equals saved training state, and all three task reloads agree exactly.
-Independent causal controls now show negative transfer:
+Both continuations completed and passed full model/Adam/export/reload checks:
+shared8000updates/24000questions in1167.332s, and matched MOT-only8000updates/
+8000questions in944.519s. Each uses one final checkpoint across all scopes.
+Results are mixed/negative; neither checkpoint is promoted:
 
-|Scope|HOTA before %|HOTA broader %|IDF1 before %|IDF1 broader %|
-|---|---:|---:|---:|---:|
-|DanceTrack1203|26.3157|5.5800|30.6329|6.7840|
-|RMOT single800|6.0247|1.0579|2.8902|0.0000|
-|RMOT multi800|19.8019|12.5237|21.0082|13.1709|
+|Scope/metric|Original|Shared8000|MOT-only8000|
+|---|---:|---:|---:|
+|DT1203 HOTA %|26.3157|5.5800|1.6800|
+|DT1203 IDF1 %|30.6329|6.7840|0.8203|
+|RMOT single800 HOTA %|6.0247|1.0579|2.4910|
+|RMOT multi800 HOTA %|19.8019|12.5237|17.0572|
+|TAO40 TETA (0–100)|14.5170|19.2520|3.6599|
 
-All original candidates/rejected frames/metrics and thresholds are retained.
-TAO40 and natural MOT20full1657 controls continue; the negative checkpoint is
-retained and is not promoted. On1250fit existing-ID frozen questions, learned
-full-action correctness improves521→656(41.68→52.48%), while native cosine
-retrieval remains1050/1250(84%). Fit improvement does not establish tracking
-gains. Projected cosine improves82.08→84.72%, existing-only learned retrieval
-71.44→81.20%; action competition still loses many correct existing IDs.
-Evidence: `outputs/groundjev/compact/broader_question_joint8000_owner_v1/`
-`{training_validation,completed_training_summary,three_scopes_completed}.json`
-and curriculum `affinity_fit_diagnosis/{before_summary,after_summary,completed_validation}.json`.
+SharedTAO gains come fromLocA/AssocA; ClsA30.314→28.781 worsens andNovelClsA
+remains0. Natural MOT20full1657 joint inference has completed and the original
+CPU official scorer is still active; its final score and matched MOT-only
+MOT20 control remain pending. All original frames/candidates/rejections,
+thresholds, metrics and negative checkpoints are preserved.
 
-A separate matched MOT-only control has actually started (first100updates/
-100questions). It uses exactly the same8000MOT row IDs/order and original
-initialization,8000optimizer updates, LR/decay/clip and loss/3; only RMOT/OV
-losses are explicitly absent. Its8update versus4+4restored full state is
-bit exact. All three-task default weights/Adam/RNG/protocol also match the
-original real8update prefix exactly after adding this opt-in. The subset is
-not FLOP matched; its final checkpoint and all five controls remain pending.
-No additional GPU or feature bank was allocated.
+Frozen1250fit correct-existing questions improve from521/1250(41.68%) to
+656(52.48%) shared or733(58.64%) MOT-only, not held-out tracking gains. Native
+cosine top1 remains1050/1250(84%) on all three models. Removing other task
+losses does not restore DT performance, so gradient interference alone is
+insufficient. A completed DT1203 auxiliary-policy intervention (update1, no
+learned lifecycle, reliabilityNone) reaches only5.6588% shared/3.2215% MOT-only
+HOTA. It combines auxiliary changes and does not establish a lifecycle-only
+cause or a repair. Evidence: `broader_aux_policy_DT1203_v1/completed_validation.json`
+under `outputs/groundjev/compact/`.
+
+The next explicitly registered MOT-only control keeps exact question IDs/order,
+initial weights,8000optimizer updates and all hyperparameters/lossdivisor3,
+but reweights labels by original TRAIN-source frequency/selected frequency.
+Raw MOT questions have46.03%EXISTING versus25%selected; lifecycleTERMINATE
+has5.00%raw versus25%selected. This is an exploratory source-prior hypothesis,
+not a guarantee of deployment calibration. All ratios come from frozen TRAIN
+labels; no validation-label ratios or runtime thresholds are fitted. Its
+8update versus4+4restored model/Adam/RNG state is exact, and production CPU
+training has started. No new feature bank or GPU was allocated.
+
+The separate752M-parameter native OneJev balanced6000 stage is complete; its
+tracking controls continue. The independent four-GPU459027-question epoch is
+still unfinished (last verified650updates/10400questions). Full ordinary-model
+performance across MOT/RMOT/OVMOT remains unachieved.
 
 ## Earlier registration and first100 snapshot — 2026-10-16 (superseded)
 

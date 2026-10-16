@@ -64,6 +64,8 @@ def main():
                     if row['unit'].split('/')[0] not in tasks: continue
                     inputs = dataset.inputs(row); outputs = model(inputs)
                     loss = dataset.loss(outputs, row) * plan['loss_coefficients'][row['task']]
+                    if 'label_loss_weights' in plan:
+                        loss = loss * plan['label_loss_weights'][row['task']][row['label']]
                     assert torch.isfinite(loss)
                     (loss / 3).backward(); losses[row['unit'].split('/')[0]] = float(loss.detach())
                     exposure[row['unit'].split('/')[0] + ':' + row['task']] += 1

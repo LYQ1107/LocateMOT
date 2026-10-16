@@ -1,0 +1,72 @@
+{
+  "name": "Posthoc causal auxiliary-policy diagnosis of both negative DT1203 continuations",
+  "checkpoint": "outputs/groundjev/compact/rmot_native72_stage_v1/broad_native_training/checkpoint.pt",
+  "regression": "outputs/groundjev/validation/fixed_affinity_storage_v1/validation.json",
+  "reference_root": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/broader_aux_policy_DT1203_v1/references",
+  "scopes": {
+    "mot_full1203": {
+      "manifest": "outputs/groundjev/pilot_data/dancetrack.json",
+      "candidates": "outputs/groundjev/compact/dancetrack0004_native300_v2_empty_roi_fixed/compact_distilled/frame_decisions.jsonl",
+      "frames": 1203,
+      "candidates_count": 13664
+    }
+  },
+  "cpu_blas_threads": 4,
+  "arms": {
+    "original": {
+      "association": "learned",
+      "auxiliary": "learned",
+      "memory_policy": "gated",
+      "feature_view": "all",
+      "lost_seconds": 3.0,
+      "shortlist": 32,
+      "reference_arm": "original"
+    },
+    "joint_default": {
+      "association": "learned",
+      "auxiliary": "learned",
+      "memory_policy": "gated",
+      "feature_view": "all",
+      "lost_seconds": 3.0,
+      "shortlist": 32,
+      "reference_arm": "joint",
+      "checkpoint": "/data3/user/LocateMOT-checkpoints/compact_broader_question_joint8000_v1/checkpoint.pt"
+    },
+    "MOTonly_default": {
+      "association": "learned",
+      "auxiliary": "learned",
+      "memory_policy": "gated",
+      "feature_view": "all",
+      "lost_seconds": 3.0,
+      "shortlist": 32,
+      "reference_arm": "MOTonly",
+      "checkpoint": "/data3/user/LocateMOT-checkpoints/compact_broader_question_MOTonly8000_v1/checkpoint.pt"
+    },
+    "joint_fixed_aux": {
+      "association": "learned",
+      "auxiliary": "fixed",
+      "memory_policy": "gated",
+      "feature_view": "all",
+      "lost_seconds": 3.0,
+      "shortlist": 32,
+      "checkpoint": "/data3/user/LocateMOT-checkpoints/compact_broader_question_joint8000_v1/checkpoint.pt"
+    },
+    "MOTonly_fixed_aux": {
+      "association": "learned",
+      "auxiliary": "fixed",
+      "memory_policy": "gated",
+      "feature_view": "all",
+      "lost_seconds": 3.0,
+      "shortlist": 32,
+      "checkpoint": "/data3/user/LocateMOT-checkpoints/compact_broader_question_MOTonly8000_v1/checkpoint.pt"
+    }
+  },
+  "comparison_limit": "One-scope posthoc causal auxiliary-policy intervention following actual DT1203 failures; preserves each trained association and original candidates, uses update=1/reliability=None/no learned lifecycle. It combines write/lifecycle auxiliary changes, not an isolated lifecycle or update ablation. All original default negatives and pending five-scope controls retained; no threshold tuning or final-model promotion.",
+  "memory_storage": "Reuse existing immutable FP32 source; no new input feature bank; scientific full decisions and final binary identity state retained.",
+  "new_feature_cache_bytes": 0,
+  "metadata_suballocation": "Small registration/results share the existing16MiB Compact metadata reservation; no new feature allocation.",
+  "combined_registered_feature_upper_bytes": 26702193630,
+  "global_temporary_feature_budget_bytes": 26843545600,
+  "physical_GPUs": [],
+  "full_goal_complete": false
+}

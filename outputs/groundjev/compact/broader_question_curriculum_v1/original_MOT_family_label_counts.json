@@ -1,0 +1,24 @@
+{
+  "identity": {
+    "NEW": 11489,
+    "IGNORE": 7992,
+    "EXISTING": 22117,
+    "NO_MATCH": 6453
+  },
+  "memory_update": {
+    "yes": 23176,
+    "no": 24875
+  },
+  "reliability": {
+    "3": 15120,
+    "1": 16883,
+    "2": 8056,
+    "0": 7992
+  },
+  "lifecycle": {
+    "ACTIVE": 60077,
+    "LOST": 12117,
+    "TERMINATE": 4682,
+    "REACTIVATE": 16748
+  }
+}

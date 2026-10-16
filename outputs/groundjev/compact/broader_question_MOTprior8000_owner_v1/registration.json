@@ -1,0 +1,134 @@
+{
+  "project_root": "/data2/user/LocateMOT",
+  "output": "outputs/groundjev/compact/broader_question_curriculum_v1",
+  "inputs": "outputs/groundjev/compact/broader_native_reference_inputs_v1",
+  "base": "outputs/groundjev/compact/base175_native_teacher_bank_v1",
+  "initial_checkpoint": "outputs/groundjev/compact/rmot_native72_stage_v1/broad_native_training/checkpoint.pt",
+  "training_output": "/data3/user/LocateMOT-checkpoints/compact_broader_question_MOTprior8000_v1",
+  "seed": 0,
+  "task_questions": 8000,
+  "optimizer_steps": 8000,
+  "questions_per_step": 1,
+  "MOT_family_questions": {
+    "identity": 5000,
+    "lifecycle": 2000,
+    "memory_update": 500,
+    "reliability": 500
+  },
+  "RMOT_family_questions": {
+    "query_membership": 8000
+  },
+  "RMOT_yes_no_questions_each": 4000,
+  "OVMOT_sampling": "Preserve the4000 existing stratified Base175 object draws exactly twice; flat1203-way category CE each exposure, not hierarchical OneJev root/leaf CE.",
+  "source_selection": "MOT four existing heads only; RMOT membership only, no unknown-birth identity/lifecycle/update proxies; OVMOT train-Base teacher boxes only. Original unsupported questions/empty frames retained in source and coverage inventory.",
+  "image_coverage": "Include one eligible question per (unit,frame) before filling quotas; any context with no eligible head remains explicitly registered, never fabricated.",
+  "sampling": "seed0, unseen rows before repeats within each collapsed label; least-exposed labels for MOT quota fills; exactly4000yes/4000no RMOT; shuffle each task stream independently then one row per task per optimizer update.",
+  "architecture": "unchanged existing set semantic CompactCore; no new head or inference policy",
+  "lr": 0.0002,
+  "weight_decay": 0.0001,
+  "gradient_clip": 1.0,
+  "device": "cpu",
+  "cpu_threads": 4,
+  "loss_coefficients": {
+    "identity": 1.0,
+    "lifecycle": 0.3,
+    "memory_update": 0.3,
+    "reliability": 0.1,
+    "query_membership": 0.5,
+    "category": 1.0
+  },
+  "loss_aggregation": "MOT loss divided by3, same as its contribution to the registered joint run. Same8000MOT question IDs/order, initialization, optimizer steps, LR/weight decay and clipping. RMOT/OV losses explicitly absent in this separate control; not a24000-question or FLOP-matched study.",
+  "save_every": 1000,
+  "checkpoint_selection": "final8000; retain all unweighted joint/single-task negatives, no per-task checkpoint selection",
+  "evaluation": "Before original actor versus final checkpoint on unchanged registered DT1203/RMOTsingle800/RMOTmulti800/rawTAO40 and natural MOT20full1657; official metrics, all empty/rejected frames and original thresholds retained.",
+  "new_metadata_cap_bytes": 16777216,
+  "prior_registered_feature_upper_bytes": 26685416414,
+  "combined_registered_feature_upper_bytes": 26702193630,
+  "global_temporary_feature_budget_bytes": 26843545600,
+  "storage": "References and labels only; reuse original native FP32 arrays and single Base bank; model/optimizer scientific checkpoints stored separately under data3.",
+  "ground_and_OneJev_joint_gradient": false,
+  "actual_optimizer_steps_at_registration": 0,
+  "full_goal_complete": false,
+  "name": "Matched MOT-only source-question prior-weighted loss control",
+  "tasks": [
+    "mot"
+  ],
+  "training_prefix_validation": "outputs/groundjev/compact/broader_question_curriculum_v1/MOTprior_training_prefix_validation.json",
+  "total_actual_questions": 8000,
+  "source_curriculum_shared_without_duplication": true,
+  "metadata_suballocation": "Reuse the current16MiB metadata reservation; existing curriculum+fit diagnosis under2MiB, new subset registration/results under2MiB, no new features. Model/Adam retained separately on data3.",
+  "comparison_limit": "Exploratory TRAIN-source question-prior loss intervention against completed unweighted MOT-only8000; exact same8000MOT question IDs/order, initial model, optimizer steps/hyperparameters/clip and loss/3. No runtime probability, threshold or metric changes. Ratios recover original per-question risk, not guaranteed deployment priors or per-frame risk; lifecycle questions repeat across native candidate groups. Same final checkpoint across five unchanged scopes, no promotion from a single score.",
+  "label_loss_weights": {
+    "identity": {
+      "NEW": 0.9564004911448253,
+      "IGNORE": 0.665293126053568,
+      "EXISTING": 1.8411271357515973,
+      "NO_MATCH": 0.5371792470500094
+    },
+    "memory_update": {
+      "yes": 0.9646417348234168,
+      "no": 1.0353582651765831
+    },
+    "reliability": {
+      "3": 1.2586626709121558,
+      "1": 1.4054234042995983,
+      "2": 0.6706207987346777,
+      "0": 0.665293126053568
+    },
+    "lifecycle": {
+      "ACTIVE": 2.566735025207212,
+      "LOST": 0.51768777236606,
+      "TERMINATE": 0.2000341792702726,
+      "REACTIVATE": 0.7155430231564556
+    }
+  },
+  "loss_hypothesis": "Equal label sampling shifts the typed decision priors: existing46.03% to25%, lifecycleTERMINATE5.00% to25%. Reweight each selected question by original-source family label frequency divided by selected frequency; all ratios use frozen TRAIN labels only, no validation GT or threshold fitting.",
+  "original_source_family_label_counts": {
+    "identity": {
+      "NEW": 11489,
+      "IGNORE": 7992,
+      "EXISTING": 22117,
+      "NO_MATCH": 6453
+    },
+    "memory_update": {
+      "yes": 23176,
+      "no": 24875
+    },
+    "reliability": {
+      "3": 15120,
+      "1": 16883,
+      "2": 8056,
+      "0": 7992
+    },
+    "lifecycle": {
+      "ACTIVE": 60077,
+      "LOST": 12117,
+      "TERMINATE": 4682,
+      "REACTIVATE": 16748
+    }
+  },
+  "selected_family_label_counts": {
+    "identity": {
+      "NEW": 1250,
+      "IGNORE": 1250,
+      "EXISTING": 1250,
+      "NO_MATCH": 1250
+    },
+    "memory_update": {
+      "yes": 250,
+      "no": 250
+    },
+    "reliability": {
+      "3": 125,
+      "1": 125,
+      "2": 125,
+      "0": 125
+    },
+    "lifecycle": {
+      "ACTIVE": 500,
+      "LOST": 500,
+      "TERMINATE": 500,
+      "REACTIVATE": 500
+    }
+  }
+}

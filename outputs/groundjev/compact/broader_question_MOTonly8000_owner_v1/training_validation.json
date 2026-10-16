@@ -1,0 +1,18 @@
+{
+  "step": 8000,
+  "questions": 8000,
+  "exposure": {
+    "mot:identity": 5000,
+    "mot:reliability": 500,
+    "mot:lifecycle": 2000,
+    "mot:memory_update": 500
+  },
+  "full_model_and_optimizer_finite": true,
+  "final_export_equals_full_state": true,
+  "three_task_reload_max_difference": 0,
+  "checkpoint": "/data3/user/LocateMOT-checkpoints/compact_broader_question_MOTonly8000_v1/checkpoint.pt",
+  "training_seconds": 944.518964813964,
+  "source_scope": {
+    "mot": 1053
+  }
+}

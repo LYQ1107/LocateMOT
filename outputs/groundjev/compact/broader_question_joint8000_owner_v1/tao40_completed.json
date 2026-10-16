@@ -1,0 +1,125 @@
+{
+  "status": "JOINT_COMPACT_TAO40_BEFORE_AFTER_COMPLETE",
+  "completed": {
+    "tao_raw_full40_before": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/broader_question_joint8000_owner_v1/reference_runs/tao_raw_full40_before",
+      "policies": {
+        "association": "learned",
+        "auxiliary": "learned",
+        "memory_policy": "gated",
+        "feature_view": "all",
+        "lost_seconds": 3.0,
+        "shortlist": 32,
+        "reference_arm": "before"
+      },
+      "reused_validated_same_CPU_reference": true,
+      "shortlist_limit": 32,
+      "decoded_frames": 40,
+      "native_candidates": 35228,
+      "native_rejected_frames": [],
+      "all_native_geometry_labels_scores_order_and_frames_retained": true,
+      "metrics": {
+        "TETA": 14.517,
+        "LocA": 8.088,
+        "AssocA": 5.1478,
+        "ClsA": 30.314,
+        "LocRe": 84.833,
+        "LocPr": 8.2072,
+        "AssocRe": 5.2406,
+        "AssocPr": 71.608,
+        "ClsRe": 33.333,
+        "ClsPr": 30.314
+      },
+      "base_novel": {
+        "base": {
+          "TETA": 18.93545,
+          "LocA": 5.80265,
+          "AssocA": 5.5325500000000005,
+          "ClsA": 45.471,
+          "LocRe": 84.6875,
+          "LocPr": 5.89035,
+          "AssocRe": 5.644,
+          "AssocPr": 69.38749999999999,
+          "ClsRe": 50.0,
+          "ClsPr": 45.471
+        },
+        "novel": {
+          "TETA": 5.679,
+          "LocA": 12.659,
+          "AssocA": 4.3785,
+          "ClsA": 0.0,
+          "LocRe": 85.125,
+          "LocPr": 12.841,
+          "AssocRe": 4.4338,
+          "AssocPr": 76.049,
+          "ClsRe": 0.0,
+          "ClsPr": 0.0
+        }
+      },
+      "correct_option_coverage": 0.15671641791044777,
+      "existing_association_accuracy": 0.05223880597014925,
+      "speed_comparison_or_E2E_claim": false
+    },
+    "tao_raw_full40_broader": {
+      "run": "outputs/groundjev/compact/broader_question_joint8000_owner_v1/controls/tao_raw_full40_broader",
+      "policies": {
+        "association": "learned",
+        "auxiliary": "learned",
+        "memory_policy": "gated",
+        "feature_view": "all",
+        "lost_seconds": 3.0,
+        "shortlist": 32,
+        "checkpoint": "/data3/user/LocateMOT-checkpoints/compact_broader_question_joint8000_v1/checkpoint.pt"
+      },
+      "reused_validated_same_CPU_reference": false,
+      "shortlist_limit": 32,
+      "decoded_frames": 40,
+      "native_candidates": 35228,
+      "native_rejected_frames": [],
+      "all_native_geometry_labels_scores_order_and_frames_retained": true,
+      "metrics": {
+        "TETA": 19.252,
+        "LocA": 17.963,
+        "AssocA": 11.012,
+        "ClsA": 28.781,
+        "LocRe": 36.104,
+        "LocPr": 26.824,
+        "AssocRe": 13.004,
+        "AssocPr": 60.391,
+        "ClsRe": 28.781,
+        "ClsPr": 66.667
+      },
+      "base_novel": {
+        "base": {
+          "TETA": 19.5855,
+          "LocA": 9.30115,
+          "AssocA": 6.285,
+          "ClsA": 43.171,
+          "LocRe": 22.5935,
+          "LocPr": 18.6765,
+          "AssocRe": 8.134,
+          "AssocPr": 63.4035,
+          "ClsRe": 43.171,
+          "ClsPr": 100.0
+        },
+        "novel": {
+          "TETA": 18.584,
+          "LocA": 35.286,
+          "AssocA": 20.465,
+          "ClsA": 0.0,
+          "LocRe": 63.125,
+          "LocPr": 43.119,
+          "AssocRe": 22.743,
+          "AssocPr": 54.366,
+          "ClsRe": 0.0,
+          "ClsPr": 0.0
+        }
+      },
+      "correct_option_coverage": 0.36,
+      "existing_association_accuracy": 0.12,
+      "speed_comparison_or_E2E_claim": false
+    }
+  },
+  "Novel_ClsA_still_zero": true,
+  "full_goal_complete": false
+}

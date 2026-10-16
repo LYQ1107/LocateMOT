@@ -1,0 +1,52 @@
+{
+  "status": "FROZEN_FIT_NATIVE_PROJECTED_AND_LEARNED_AFFINITY_MEASURED",
+  "arm": "MOTonly",
+  "checkpoint": "/data3/user/LocateMOT-checkpoints/compact_broader_question_MOTonly8000_v1/checkpoint.pt",
+  "existing_identity_questions": 1250,
+  "methods": {
+    "native_cosine": {
+      "questions": 1250,
+      "top1_correct": 1050,
+      "top1_accuracy": 0.84,
+      "mean_target_rank": 1.3832,
+      "mean_reciprocal_rank": 0.9022552669552675,
+      "mean_uniform_chance": 0.06681096670447295
+    },
+    "projected_cosine": {
+      "questions": 1250,
+      "top1_correct": 1033,
+      "top1_accuracy": 0.8264,
+      "mean_target_rank": 1.4864,
+      "mean_reciprocal_rank": 0.890235117392641,
+      "mean_uniform_chance": 0.06681096670447295
+    },
+    "IoU": {
+      "questions": 1250,
+      "top1_correct": 986,
+      "top1_accuracy": 0.7888,
+      "mean_target_rank": 2.3464,
+      "mean_reciprocal_rank": 0.8454595942578571,
+      "mean_uniform_chance": 0.06681096670447295
+    },
+    "learned_existing_logits": {
+      "questions": 1250,
+      "top1_correct": 1018,
+      "top1_accuracy": 0.8144,
+      "mean_target_rank": 1.5288,
+      "mean_reciprocal_rank": 0.8807418359418365,
+      "mean_uniform_chance": 0.06681096670447295
+    }
+  },
+  "learned_full_action_counts": {
+    "NEW": 36,
+    "EXISTING": 803,
+    "IGNORE": 317,
+    "NO_MATCH": 94
+  },
+  "learned_full_action_correct": 733,
+  "learned_mean_correct_alias_probability": 0.553084360675009,
+  "scope": "Declared fit-source existing-identity questions on identical frozen original-actor histories; not held-out accuracy or a causal trajectory intervention.",
+  "runtime_or_training_changed": false,
+  "official_tracking_gain_claimed": false,
+  "full_goal_complete": false
+}
