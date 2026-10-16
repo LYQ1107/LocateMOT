@@ -1,0 +1,92 @@
+{
+  "status": "SAVED_NATIVE_GRAPH_ANSWERS_RUNTIME_DECISION_AUDIT_COMPLETE",
+  "cases": {
+    "sparse_MOT": {
+      "questions": 6,
+      "choice_questions": 4,
+      "noul_questions": 1,
+      "global_match_rows": 1,
+      "choice_changes": {},
+      "noul_half_threshold_changes": {},
+      "eager_assignment": {
+        "0": "IGNORE"
+      },
+      "graph_assignment": {
+        "0": "IGNORE"
+      },
+      "global_assignment_changes": {}
+    },
+    "dense_MOT20": {
+      "questions": 80,
+      "choice_questions": 48,
+      "noul_questions": 16,
+      "global_match_rows": 16,
+      "choice_changes": {},
+      "noul_half_threshold_changes": {},
+      "eager_assignment": {
+        "0": "NO_MATCH",
+        "1": "NO_MATCH",
+        "2": "NO_MATCH",
+        "3": "NO_MATCH",
+        "4": "NO_MATCH",
+        "5": "NO_MATCH",
+        "6": "NO_MATCH",
+        "7": "NO_MATCH",
+        "8": "NO_MATCH",
+        "9": "NO_MATCH",
+        "10": "NO_MATCH",
+        "11": "NO_MATCH",
+        "12": "NO_MATCH",
+        "13": "NO_MATCH",
+        "14": "NO_MATCH",
+        "15": "NO_MATCH"
+      },
+      "graph_assignment": {
+        "0": "NO_MATCH",
+        "1": "NO_MATCH",
+        "2": "NO_MATCH",
+        "3": "NO_MATCH",
+        "4": "NO_MATCH",
+        "5": "NO_MATCH",
+        "6": "NO_MATCH",
+        "7": "NO_MATCH",
+        "8": "NO_MATCH",
+        "9": "NO_MATCH",
+        "10": "NO_MATCH",
+        "11": "NO_MATCH",
+        "12": "NO_MATCH",
+        "13": "NO_MATCH",
+        "14": "NO_MATCH",
+        "15": "NO_MATCH"
+      },
+      "global_assignment_changes": {}
+    },
+    "OV1203_root": {
+      "questions": 8,
+      "choice_questions": 8,
+      "noul_questions": 0,
+      "global_match_rows": 0,
+      "choice_changes": {},
+      "noul_half_threshold_changes": {},
+      "eager_assignment": {},
+      "graph_assignment": {},
+      "global_assignment_changes": {}
+    },
+    "OV128_fixed_leaf": {
+      "questions": 8,
+      "choice_questions": 8,
+      "noul_questions": 0,
+      "global_match_rows": 0,
+      "choice_changes": {},
+      "noul_half_threshold_changes": {},
+      "eager_assignment": {},
+      "graph_assignment": {},
+      "global_assignment_changes": {}
+    }
+  },
+  "tested_decisions_equal": true,
+  "original_numerical_and_speed_rejection_retained": true,
+  "adopted": false,
+  "new_GPU_or_optimizer_updates": 0,
+  "scope": "Posthoc same four saved requests only; tracker -log probability Hungarian with private NEW/IGNORE/NO_MATCH and Noul>=.5. No RMOT membership or assigned-update requests in this probe. Score expectations remain continuous reliability outputs, not an invented argmax gate. Not full-video trajectory, future memory, hierarchical category routing or E2E parity."
+}

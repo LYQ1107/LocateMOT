@@ -1,4 +1,55 @@
-## Learned appearance helps RMOT under fixed affinity, hurts DT — 2026-10-16
+## Appearance rank controls measured; native graph candidate rejected — 2026-10-16
+
+The registered rank intervention is implemented and passed actual67group
+checks:566candidate rows/8286existing-ID options per arm, exact original action
+values/full probability multisets and auxiliary/semantic/lifecycle outputs.
+It only permutes original existing-ID values by log-prior plus mean appearance
+cosine/.07; global matching and future histories can change. These are derived
+Compact categorical values, not native OneJev decoder probabilities.
+
+The first three full scopes/all12official units have completed:
+
+|HOTA %|Original learned|Raw native ranks|Random projection ranks|Trained projection ranks|
+|---|---:|---:|---:|---:|
+|DT1203|26.3157|30.2544|19.4111|24.7555|
+|RMOT single800|6.0247|5.7087|5.8205|6.1548|
+|RMOT multi800|19.8019|18.9930|19.6370|20.1424|
+
+Raw-rank DT IDF1=30.6329→38.2885%, IDSW165→148, but FP579→720/FN1962→2156.
+This isolated gain does not select different policies per task. The trained
+projection's earlier fixed-affinity RMOT gain does not transfer at comparable
+magnitude to this rank-preserving policy; retain the representation and policy
+interaction as mixed evidence. Full TAO/MOT20 controls continue under the
+original owner, no promotion. Proofs:
+`compact/appearance_rank_study_v1/owner/regression/validation.json` and
+`compact/appearance_rank_study_v1/owner/first_three_scopes_completed.json`.
+
+The official Torch CUDA Graph component probe completed all four real requests.
+Sparse MOT/root1203/fixedleaf128 answer differences0.011445/0.013179/0.013894
+exceed the unchanged1e-3gate; measured median ratios1.044/1.057/1.061 are below
+the registered1.5gate. Dense16candidate/32history graph requests fall back to
+eager and take30.754s versus13.942s (ratio0.453); fallback is not graph success.
+The same saved-answer posthoc audit finds no changes in68literal Choice answers,
+17Noul>=.5gates or17row global Hungarian decisions. This does not prove trajectory
+or memory parity, and dense answers are from fallback. No RMOT membership or
+assigned-write questions were in this component probe. No acceptance criterion
+or original inference backend was changed. The installed Qwen3.5 multimodal
+forward contains no deepstack injection; missing deepstack is not an established
+cause. Numerical root cause remains unresolved; do not patch on speculation.
+Evidence: `optimization/native_graph_real_requests_v1/{result,eager_results,
+graphs_results,runtime_decision_audit}.json`. Shared GPU, warmup excluded,
+three repeats; no E2E/FPS claim. Upper temporary feature reservation is now
+26,819,634,142bytes<26,843,545,600bytes; no new image/ROI bank.
+
+Original four-GPU joint training has actual1700updates/27200questions logged,
+elapsed20688.803s (5.747h), while the459027question/28690update epoch remains
+incomplete. This is log evidence, not a1700checkpoint-state inspection; last
+full numerical state proof remains1000. Original owner/training, queued paired
+long/short teacher stages (0newupdates), and all pending controls remain intact.
+Evidence: `training/full_joint_source_epoch1_progress1700_snapshot_v1/snapshot.json`.
+No Ground+One joint gradient, long-BPTT, or three-task ordinary-model parity.
+
+## Earlier projection snapshot — learned appearance helps RMOT under fixed affinity, hurts DT
 
 The same temporal projection/fixed fusion recipe completed both full800-frame
 RMOT scopes. Its effect is mixed, not an overall failed representation:
@@ -18,10 +69,8 @@ checkpoint selection. DT fixed arms emit essentially every native candidate
 (NEW.3 dominates IGNORE0), FP579→9328/9329/9330; trainedAssA also decreases
 0.06641native→0.02618trained. The DT problem includes both proposal rejection
 and association; restoring rejection alone is not assumed sufficient. No promotion.
-Next controlled hypothesis: use learned appearance only to reorder existing-ID
-probability ranks while retaining the original learned NEW/IGNORE/NO_MATCH
-values and probability multiset, then evaluate all five scopes. This is planned,
-not implemented or a measured gain. TAO/MOT20 projection controls still run.
+The rank-control hypothesis in this earlier snapshot has now been implemented;
+see measured results above. TAO/MOT20 projection controls still run.
 Receipt: `native_temporal_appearance1000_owner_v1/first_three_scopes_completed.json`.
 
 ## Closed controls and paired long-history foundation inputs ready — 2026-10-16

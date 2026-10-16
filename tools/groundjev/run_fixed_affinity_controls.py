@@ -101,6 +101,8 @@ def main():
                             '--compact-shortlist', str(shortlist), '--compact-shortlist-policy', shortlist_policy]
                         if policies.get('appearance_projection_checkpoint'):
                             command+=['--appearance-projection-checkpoint',str(ROOT/policies['appearance_projection_checkpoint'])]
+                        if policies.get('appearance_ranking_temperature'):
+                            command+=['--appearance-ranking-temperature',str(policies['appearance_ranking_temperature'])]
                     run(name+'_INFERENCE', command)
                 scorer = 'evaluate_video.py' if m['task'] == 'mot' else 'evaluate_multitask.py'
                 if not reused:
@@ -130,6 +132,10 @@ def main():
                                 assert new['state']['decision_metadata'].get('canonical_physical_core',False)==policies['canonical_physical_core']
                             if policies.get('appearance_projection_checkpoint'):
                                 assert Path(new['state']['decision_metadata']['appearance_projection_checkpoint']).resolve()==(ROOT/policies['appearance_projection_checkpoint']).resolve()
+                            if policies.get('appearance_ranking_temperature'):
+                                meta=new['state']['decision_metadata']
+                                assert meta['appearance_ranking_temperature']==policies['appearance_ranking_temperature']
+                                assert meta['original_action_probabilities_and_probability_multiset_preserved']
                         expected_rejection = bool(old['perception'].get('model_response_rejected', False))
                         assert bool(new['perception'].get('model_response_rejected', False)) == expected_rejection
                         if expected_rejection:

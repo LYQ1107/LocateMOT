@@ -1,7 +1,12 @@
 # Current shared foundation adaptation — 2026-10-16
 
-The full-source four-GPU MOT/RMOT/OVMOT SFT has **actually started**. The
-completed one-shot observer verified updates1–5, examples16/32/48/64/80,
+The original full-source four-GPU MOT/RMOT/OVMOT SFT has reached a frozen
+observation of **1700updates/27200questions**, elapsed20688.803s (5.747h).
+The epoch and final tracking evaluation remain incomplete. Evidence:
+[actual1700 log snapshot](../../outputs/groundjev/training/full_joint_source_epoch1_progress1700_snapshot_v1/snapshot.json).
+This is logged execution; the last fully inspected numerical training state is1000.
+
+The earlier completed one-shot observer verified updates1–5, examples16/32/48/64/80,
 finite losses and positive finite gradients. Its first80 questions comprise
 49MOT/12RMOT/19OVMOT. The exact four live rank processes map to physical
 GPUs4/5/6/7. Evidence:
@@ -37,8 +42,12 @@ coverage is1056MOT/72RMOT/3227OVMOT source paths. Tracking controls have started
 new tracking gains remain pending. Evidence:
 [the6000 snapshot](../../outputs/groundjev/training/shared6000_actual6000_snapshot_v1/validation.json).
 
-The full-source epoch is incomplete (latest observed425updates/6800questions);
-final tracking controls for both studies remain incomplete.
+The full-source epoch is incomplete (latest frozen observation1700updates/27200questions,
+elapsed20688.803s). See
+[actual1700 log snapshot](../../outputs/groundjev/training/full_joint_source_epoch1_progress1700_snapshot_v1/snapshot.json).
+This proves logged execution, not a full1700checkpoint-state inspection; the
+last full FP32/Adam/RNG numerical inspection remains the1000save.
+Final tracking controls for both studies remain incomplete.
 Five updates establish real execution, not tracking gains. Both studies
 retain their registered final shared checkpoint and unchanged task metrics,
 thresholds, candidates, empty/rejected frames and before/after controls.

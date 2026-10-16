@@ -1,0 +1,16 @@
+{
+  "status": "TERMINAL_COMPONENT_OUTPUTS_INDEPENDENTLY_VALIDATED_REJECTED",
+  "cases": 4,
+  "timed_repeats_each": 3,
+  "all_saved_answers_finite": true,
+  "each_arm_each_case_repeated_answers_exact": true,
+  "raw_answers_medians_and_actual_graph_hit_flags_recomputed": true,
+  "numerical_tolerance": 0.001,
+  "required_speed_ratio": 1.5,
+  "candidate_accepted": false,
+  "directory_bytes_before_this_receipt": 147622,
+  "metadata_reserve_bytes": 8388608,
+  "terminal_session": "15784 exited0: diagnostic finished; rejection retained, no scientific pass",
+  "original_jobs_or_backends_changed": false,
+  "full_goal_complete": false
+}

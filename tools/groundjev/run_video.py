@@ -79,7 +79,7 @@ def main():
     parser.add_argument('--compact-shortlist',type=int,choices=[32,64,128],default=32,
                         help='registered context-size intervention; larger values exceed the original 32-ID training context')
     parser.add_argument('--compact-shortlist-policy',choices=['geometry','hybrid16_16'],default='geometry')
-    parser.add_argument('--compact-association-policy',choices=['learned','fixed_iou','fixed_iou_cosine'],default='learned')
+    parser.add_argument('--compact-association-policy',choices=['learned','fixed_iou','fixed_iou_cosine','rank_appearance'],default='learned')
     parser.add_argument('--compact-auxiliary-policy',choices=['learned','fixed'],default='learned')
     parser.add_argument('--evidence-format',choices=['v1','v2_crop_motion','v3_crop_motion','v4_native_features','v5_native_features_csv','v6_native_compact_history'],default='v1')
     parser.add_argument('--native-feature-url',help='isolated official DLM visual encoder RPC; no substitute image features')
@@ -107,6 +107,7 @@ def main():
     parser.add_argument('--memory-policy',choices=['gated','always','ema','frame_only'],default='gated')
     parser.add_argument('--memory-feature-view',choices=['all','recent','ema'],default='all')
     parser.add_argument('--appearance-projection-checkpoint',type=Path)
+    parser.add_argument('--appearance-ranking-temperature',type=float,default=.07)
     parser.add_argument('--lost-seconds',type=float,default=3.)
     parser.add_argument('--ema-alpha',type=float,default=.1)
     parser.add_argument('--omit-replay-feature-vectors',action='store_true',help='retain shared source reference and all boxes/decisions; avoid duplicating input feature arrays')
@@ -118,8 +119,10 @@ def main():
     parser.add_argument('--memory-export-interval',type=int,default=1,
                         help='0 retains per-frame decisions for causal replay and writes only final full memory; default exports every frame')
     args = parser.parse_args()
-    if args.appearance_projection_checkpoint and (args.backend!='compact' or args.compact_association_policy!='fixed_iou_cosine'):
-        parser.error('appearance projection requires the registered Compact fixed IoU/cosine control')
+    if args.appearance_projection_checkpoint and (args.backend!='compact' or args.compact_association_policy not in ('fixed_iou_cosine','rank_appearance')):
+        parser.error('appearance projection requires an explicit Compact appearance control')
+    if args.compact_association_policy=='rank_appearance' and args.compact_auxiliary_policy!='learned':
+        parser.error('registered appearance ranks retain learned auxiliary heads')
     if args.out.exists() and any(args.out.iterdir()):
         parser.error('choose a fresh output directory to preserve existing experiment results')
     manifest = json.loads(args.video.read_text())
@@ -160,7 +163,10 @@ def main():
             torch.set_num_threads(4)
         from locatemot.groundjev.compact import CompactDecision
         decision=CompactDecision(args.checkpoint,device=args.compact_device,shortlist=args.compact_shortlist,memory_feature_view=args.memory_feature_view,shortlist_policy=args.compact_shortlist_policy)
-        if args.compact_association_policy!='learned' or args.compact_auxiliary_policy!='learned':
+        if args.compact_association_policy=='rank_appearance':
+            from locatemot.groundjev.appearance_ranking import AppearanceRankDecision
+            decision=AppearanceRankDecision(decision,args.appearance_projection_checkpoint,args.appearance_ranking_temperature)
+        elif args.compact_association_policy!='learned' or args.compact_auxiliary_policy!='learned':
             from locatemot.groundjev.compact import CompactAffinityControl
             if not decision.model.semantic:
                 parser.error('matched semantic affinity control requires the trained shared semantic checkpoint')

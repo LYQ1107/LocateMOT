@@ -1,0 +1,32 @@
+{
+  "status": "ORIGINAL_FOUR_GPU_ACTUAL_STEP1700_LOG_SNAPSHOT",
+  "source": "/data3/user/LocateMOT-checkpoints/onejev_full_joint_source_epoch1_v1/log.jsonl",
+  "record": {
+    "step": 1700,
+    "epoch": 0,
+    "examples": 27200,
+    "loss": 1.0064392680718448,
+    "ce": 0.6899599975521414,
+    "brier": 0.3164792733118161,
+    "slot_acc": 0.7675,
+    "grad_norm": 54.62143562316894,
+    "lr": 1.995517980068836e-06,
+    "rows_per_step": 16.0,
+    "examples_per_s": 1.420555756965286,
+    "tokens_per_s": 17292.79812542463,
+    "sec_per_step": 11.26319746447727,
+    "peak_mem_gb": 19.40529489517212,
+    "elapsed_s": 20688.80310106493
+  },
+  "owner_directory": "outputs/groundjev/training/full_joint_source_epoch1_owner_v1",
+  "planned_updates": 28690,
+  "planned_questions": 459027,
+  "observed_complete_epoch": false,
+  "observer": "Existing read-only original-owner follower session76060; training session94290 retained",
+  "checkpoint_scope": "This snapshot proves log progress, not a full1700-state inspection; last full-state numeric inspection remains1000.",
+  "task_exposures_scope": "27200 questions total; exact per-task1000-save counts8817/3537/3646 are separately preserved. No inferred1700 counts.",
+  "new_optimizer_owner_or_GPU_job": false,
+  "Ground_One_joint_gradients": false,
+  "long_video_BPTT": false,
+  "full_goal_complete": false
+}

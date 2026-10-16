@@ -1,0 +1,44 @@
+{
+  "status": "REAL_NATIVE_GRAPH_INFERENCE_COMPONENT_PROBE_COMPLETE",
+  "cases": {
+    "sparse_MOT": {
+      "max_native_answer_absolute_difference": 0.01144500000000001,
+      "all_discrete_answers_equal": true,
+      "actual_graph_paths_used_for_every_timed_call": true,
+      "steady_component_speed_ratio": 1.0443627531084207,
+      "eager_median_seconds": 1.0606795769999735,
+      "graph_median_seconds": 1.0156237129704095
+    },
+    "dense_MOT20": {
+      "max_native_answer_absolute_difference": 0.0,
+      "all_discrete_answers_equal": true,
+      "actual_graph_paths_used_for_every_timed_call": false,
+      "steady_component_speed_ratio": 0.4533305955005588,
+      "eager_median_seconds": 13.94173816300463,
+      "graph_median_seconds": 30.75401991698891
+    },
+    "OV1203_root": {
+      "max_native_answer_absolute_difference": 0.01317899999999994,
+      "all_discrete_answers_equal": true,
+      "actual_graph_paths_used_for_every_timed_call": true,
+      "steady_component_speed_ratio": 1.0570664141357904,
+      "eager_median_seconds": 3.0656024260097183,
+      "graph_median_seconds": 2.9001038960414007
+    },
+    "OV128_fixed_leaf": {
+      "max_native_answer_absolute_difference": 0.013893999999999962,
+      "all_discrete_answers_equal": true,
+      "actual_graph_paths_used_for_every_timed_call": true,
+      "steady_component_speed_ratio": 1.0613077045195807,
+      "eager_median_seconds": 1.3693720549927093,
+      "graph_median_seconds": 1.2902686460874975
+    }
+  },
+  "numerical_and_actual_graph_path_candidate": false,
+  "measured_speed_gate_passed": false,
+  "adopted_by_original_jobs": false,
+  "official_native_Torch_graph_classes_no_vendor_or_model_edits": true,
+  "scope": "Four fixed legal real-image tracking/category requests; warmup excluded, three timed repeats, shared GPU/concurrent jobs. Not fullvideo trajectory parity, sole-cause speed, FPS or E2E performance.",
+  "new_optimizer_updates": 0,
+  "full_goal_complete": false
+}

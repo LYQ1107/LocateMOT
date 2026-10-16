@@ -1,0 +1,28 @@
+{
+  "status": "REAL_NATIVE_APPEARANCE_RANK_ACTION_VALUE_AND_SEMANTIC_CONSERVATION_VALIDATED",
+  "real_native_units": 61,
+  "observation_groups": 67,
+  "arms": {
+    "native_rank": {
+      "rows": 566,
+      "existing_ID_options": 8286,
+      "rank_changed_rows": 352
+    },
+    "random_rank": {
+      "rows": 566,
+      "existing_ID_options": 8286,
+      "rank_changed_rows": 391
+    },
+    "trained_rank": {
+      "rows": 566,
+      "existing_ID_options": 8286,
+      "rank_changed_rows": 517
+    }
+  },
+  "original_action_values_and_full_probability_multisets_exact": true,
+  "all_auxiliary_semantic_and_lifecycle_outputs_exact": true,
+  "total_probability_mass_max_absolute_error": 0.0,
+  "scope": "Representative real original model tensors and actual native ROI features; property proof on identical inputs, not a full video trajectory or fixed FP guarantee.",
+  "no_new_GPU_or_optimizer_updates": true,
+  "full_goal_complete": false
+}

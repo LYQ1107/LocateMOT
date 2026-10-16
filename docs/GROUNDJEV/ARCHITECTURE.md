@@ -76,6 +76,17 @@ order in FP64 batches and caches same-timestamp predicted boxes. Real dense
 metadata match the scalar reference exactly. This is an implementation speed
 improvement, separate from the mixed16geometry+16appearance retrieval policy.
 
+The opt-in `rank_appearance` Compact control retains learned auxiliary/semantic
+heads and the exact original NEW/IGNORE/NO_MATCH values and per-row probability
+multiset. Only existing-ID values are permuted using log original prior plus
+mean anchor/recent/long cosine divided by the existing training temperature.07.
+Native raw, random projection and trained projection share all other settings.
+These are derived Compact categorical values, not native OneJev probabilities;
+global assignment and future memories may change. Full-scope results are mixed,
+so this is not the default. Official native Torch CUDA Graph inference was
+separately measured and rejected by unchanged numerical/performance gates;
+the reference inference backend remains in use.
+
 Ground native serving, Ground native projector training and OneJev have isolated
 environments. All project work uses at most physical4/5/6/7 and bounded25GiB
 temporary feature caches. GPU5serial followups begin only after verified owned

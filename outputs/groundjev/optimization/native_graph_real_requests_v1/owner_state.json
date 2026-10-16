@@ -1,0 +1,63 @@
+{
+  "status": "REAL_NATIVE_GRAPH_INFERENCE_COMPONENT_PROBE_COMPLETE",
+  "owner_pid": 4073132,
+  "owner_starttick": "52414684",
+  "physical_gpu": 7,
+  "completed": {
+    "eager_sparse_MOT": {
+      "median_seconds": 1.0606795769999735
+    },
+    "eager_dense_MOT20": {
+      "median_seconds": 13.94173816300463
+    },
+    "eager_OV1203_root": {
+      "median_seconds": 3.0656024260097183
+    },
+    "eager_OV128_fixed_leaf": {
+      "median_seconds": 1.3693720549927093
+    },
+    "graphs_sparse_MOT": {
+      "median_seconds": 1.0156237129704095
+    },
+    "graphs_dense_MOT20": {
+      "median_seconds": 30.75401991698891
+    },
+    "graphs_OV1203_root": {
+      "median_seconds": 2.9001038960414007
+    },
+    "graphs_OV128_fixed_leaf": {
+      "median_seconds": 1.2902686460874975
+    }
+  },
+  "new_optimizer_updates": 0,
+  "old_jobs_or_backends_changed": false,
+  "full_goal_complete": false,
+  "request_cases": {
+    "sparse_MOT": {
+      "source": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/runs/mot17_first_native_clip_repair2",
+      "frame": 303,
+      "candidates": 1,
+      "history": 3
+    },
+    "dense_MOT20": {
+      "source": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/natural_memory/mot20_05_full_validation_gpu5_v1/controls/mot20_challenge_reference_gated3",
+      "frame": 1660,
+      "candidates": 16,
+      "history": 32
+    },
+    "OV1203_root": {
+      "source": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/physical_factorization_pair8000_v1/canonical_study/controls/tao_raw_full40_broader",
+      "frame": 1,
+      "objects": 8,
+      "supplied_classes": 1203
+    },
+    "OV128_fixed_leaf": {
+      "source": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/physical_factorization_pair8000_v1/canonical_study/controls/tao_raw_full40_broader",
+      "frame": 1,
+      "objects": 8,
+      "group": 0,
+      "scope": "Fixed first vocabulary group for paired numerical/compute probe; not GT selection or end-to-end hierarchical classification."
+    }
+  },
+  "launch_free_MiB": 46577
+}
