@@ -50,11 +50,30 @@
       "initialization": "Final calibrated A3",
       "labels": "V2 effective birth and separate duplicate competition",
       "config": "configs/groundjev/global_identity_own_state_v2.json",
-      "actual_updates": "Pending completion receipt; first100 actual updates observed",
+      "actual_updates": "Pending final completion receipt; first225 updates observed and real32-frame phase entered",
       "checkpoint_selection": "Fixed final32 phase, shared across all tasks",
       "temporal_BPTT": false,
       "new_GPU_processes": 0,
       "end_to_end_FPS": null
+    },
+    "A4b_mixed_own_state_v2": {
+      "status": "Blocking dependency owner registered; waits for original A4 final without changing it",
+      "initialization": "Fixed final A4 checkpoint",
+      "training_config": "configs/groundjev/global_identity_mixed_own_state_v2.json",
+      "frames_per_phase": 4684,
+      "MOT_frames_per_phase": 1056,
+      "RMOT_fit_frames_per_phase": 3628,
+      "phase_lengths": [
+        8,
+        16,
+        32
+      ],
+      "actual_updates": 0,
+      "scope": "One hypothesis-driven mixed physical identity trial; all5 fixed scopes required",
+      "model_inputs": "Actual own predicted physical histories; no GT repair or query input",
+      "new_GPU_processes": 0,
+      "new_feature_bank_bytes": 0,
+      "temporal_BPTT": false
     }
   },
   "full_goal_complete": false

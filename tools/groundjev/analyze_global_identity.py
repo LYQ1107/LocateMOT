@@ -43,7 +43,10 @@ def analyze(manifest,run):
                 if event['action']=='NEW':
                     if identity in birth_eligible and identity not in true_birth:
                         counts['NEW_known_TP']+=1;true_birth.add(identity)
-                    elif identity is not None and (existing or identity in true_birth):counts['NEW_known_FP']+=1
+                    elif identity is not None and (existing or identity in true_birth):
+                        counts['NEW_known_FP']+=1
+                        counts['existing_live_identity_wrongly_NEW']+=bool(existing)
+                        counts['same_frame_duplicate_NEW']+=identity in true_birth
                     else:counts['NEW_unknown_or_retired_reappearance']+=1
                     if identity is not None:anchors[tid]=identity;ever.add(identity)
                     else:anchors[tid]=None
@@ -57,6 +60,8 @@ def analyze(manifest,run):
                 else:
                     reason=decision.get('admission_action','REJECT')
                     counts['reject:'+reason]+=1
+                    counts['uniquely_GT_supported_entity_REJECT']+=identity is not None
+                    counts['known_existing_identity_REJECT']+=bool(existing)
                     if identity is None:counts['REJECT_annotation_unknown_not_background_truth']+=1
                 if 'memory_action' in event and event['action']!='NEW':
                     counts['assigned_existing_observations']+=1
@@ -100,7 +105,7 @@ def analyze(manifest,run):
             counts['frames']+=1;counts['candidates']+=len(row['candidates']);frames+=1;prior=set(row['state']['persistent_ids'])
     def ratio(a,b):return counts[a]/counts[b] if counts[b] else None
     def fraction(a,b):return a/b if b else None
-    result=dict(status='GLOBAL_ENTITY_AND_MEMORY_POSTHOC_DIAGNOSTICS_COMPLETE',counts=dict(counts),
+    result=dict(status='GLOBAL_ENTITY_AND_MEMORY_POSTHOC_DIAGNOSTICS_COMPLETE',diagnostic_version=2,counts=dict(counts),
         NEW_precision=fraction(counts['NEW_known_TP'],counts['NEW_known_TP']+counts['NEW_known_FP']),
         NEW_recall=fraction(counts['NEW_known_TP'],counts['NEW_known_TP']+counts['NEW_entity_FN']),
         MATCH_precision=fraction(counts['MATCH_known_TP'],counts['MATCH_known_TP']+counts['MATCH_known_FP']),

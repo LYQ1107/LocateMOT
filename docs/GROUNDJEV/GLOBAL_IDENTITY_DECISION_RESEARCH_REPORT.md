@@ -112,3 +112,24 @@ JEV superiority. Both milestone and full research goal remain incomplete.
 A1 TETA25.293/LocA13.651/AssocA31.933/ClsA30.297. A2 TETA32.306/LocA26.066/AssocA42.014/ClsA28.838. A2 improves TETA by17.789 points over coupled A0 (14.517), but only1.488 points over the existing task-conditioned canonical readout (30.818). Both contrasts matter because physical and semantic structure differ from coupled A0. A2 Base TETA39.0145/ClsA43.257; Novel TETA18.889/ClsA0. Novel classification remains unsolved. RMOT regression prevents a unified improvement claim.
 
 A0 all-five posthoc identity diagnostics are now complete and saved separately; source predictions remain read-only. For example A0 DT has1190 known wrong protected-long writes/1268 wrong recent writes, but the opportunities and trajectories differ from A1, so report counts and denominators together rather than treating count decreases alone as a causal gain.
+
+## A3 four real memory policies — DanceTrack1203 complete
+
+All four use exactly the final A3 physical parameters, identical original candidates and task, with actual online trajectories.
+
+|Policy|HOTA %|AssA %|IDF1 %|IDSW|FP|FN|UPDATE/HOLD flips vs original|
+|---|---:|---:|---:|---:|---:|---:|---:|
+|always|25.202|13.674|29.204|156|584|1894|392|
+|confidence .7|21.062|10.974|23.505|132|469|2332|1001|
+|original|24.752|13.687|29.256|197|706|1948|0|
+|assigned|25.066|13.509|30.718|227|1229|1657|2937|
+
+Assigned memory changes real decisions and adds0.314 HOTA points over original, but increases IDSW197→227 and FP706→1229, while FN1948→1657 and IDF1 improve. It does not beat always-update HOTA25.202 or A0 HOTA26.316, so this is a mixed/negative result for the proposed memory mechanism, not a tracking improvement claim. Remaining four scopes continue with the same fixed checkpoint; no task-specific selection. Exact scalar receipts and posthoc contamination/recovery diagnostics are retained.
+
+A3 DT posthoc: original→assigned known wrong long writes974/1782→221/514; wrong recent writes1170→1462; recovered previous IDs after natural candidate gaps44→63 of252returns; extra accepted duplicate identities424→754. Long-memory protection improves its local measured behavior, but observational contamination and duplicate outputs increase. These trajectory-dependent denominators accompany the official FP/IDSW regression, rather than replacing it.
+
+## Missing physical RMOT training and one registered continuation
+
+All12 A3 DT/RMOT policy units completed. Single-expression HOTA remains0 for every policy. Multi-expression HOTA% always6.088/confidence6.078/original5.685/assigned7.425; assigned IDSW18 versus original11, still far below A0 19.802HOTA. A3 reused1428RMOT ID references only as diagnostics because the A2 physical parameters were frozen. A1/A2/A4 additional physical training is MOT-only, so shared initialization alone is not evidence of new multi-task physical learning.
+
+The existing18 legal RMOT FIT source rollouts have now been audited with the original FIT exporter:3628query-frame exposures,10868candidates,4171uniquely supported/6697unknown or ambiguous and11016GT-object observations. No validation/reserved GT is opened. Register one A4b continuation from the fixed finalA4 with both43MOT and18RMOT units, complete units interleaved, same optimizer/schedule and TRAIN-derived birth weight. Each8/16/32phase processes4684frames; GT remains external and own predicted states are never repaired. RMOT write reliability uses IoU>=.6 as a spatial proxy, not measured visibility. Baseline A4 evaluation remains mandatory and unaltered; A4b is a separate model with its own fixed five-scope comparison. No outcome is claimed before actual training/evaluation.

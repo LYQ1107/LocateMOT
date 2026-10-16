@@ -1,0 +1,143 @@
+{
+  "status": "ALL18_EXISTING_RMOT_FIT_OBSERVATIONS_GLOBAL_GT_SUPPORT_AUDITED",
+  "totals": {
+    "frames": 3628,
+    "candidates": 10868,
+    "unique_GT_supported_candidates": 4171,
+    "unknown_or_ambiguous_candidates": 6697,
+    "GT_objects": 11016
+  },
+  "units": {
+    "rmot/0000_primary": {
+      "frames": 154,
+      "candidates": 289,
+      "unique_GT_supported_candidates": 5,
+      "unknown_or_ambiguous_candidates": 284,
+      "GT_objects": 264
+    },
+    "rmot/0000_counter": {
+      "frames": 154,
+      "candidates": 811,
+      "unique_GT_supported_candidates": 169,
+      "unknown_or_ambiguous_candidates": 642,
+      "GT_objects": 264
+    },
+    "rmot/0002_primary": {
+      "frames": 233,
+      "candidates": 452,
+      "unique_GT_supported_candidates": 133,
+      "unknown_or_ambiguous_candidates": 319,
+      "GT_objects": 1083
+    },
+    "rmot/0002_counter": {
+      "frames": 233,
+      "candidates": 360,
+      "unique_GT_supported_candidates": 77,
+      "unknown_or_ambiguous_candidates": 283,
+      "GT_objects": 1083
+    },
+    "rmot/0003_primary": {
+      "frames": 144,
+      "candidates": 638,
+      "unique_GT_supported_candidates": 303,
+      "unknown_or_ambiguous_candidates": 335,
+      "GT_objects": 363
+    },
+    "rmot/0003_counter": {
+      "frames": 144,
+      "candidates": 368,
+      "unique_GT_supported_candidates": 257,
+      "unknown_or_ambiguous_candidates": 111,
+      "GT_objects": 363
+    },
+    "rmot/0006_primary": {
+      "frames": 270,
+      "candidates": 1028,
+      "unique_GT_supported_candidates": 463,
+      "unknown_or_ambiguous_candidates": 565,
+      "GT_objects": 537
+    },
+    "rmot/0006_counter": {
+      "frames": 270,
+      "candidates": 619,
+      "unique_GT_supported_candidates": 192,
+      "unknown_or_ambiguous_candidates": 427,
+      "GT_objects": 537
+    },
+    "rmot/0008_primary": {
+      "frames": 390,
+      "candidates": 1346,
+      "unique_GT_supported_candidates": 474,
+      "unknown_or_ambiguous_candidates": 872,
+      "GT_objects": 1042
+    },
+    "rmot/0008_counter": {
+      "frames": 390,
+      "candidates": 1209,
+      "unique_GT_supported_candidates": 495,
+      "unknown_or_ambiguous_candidates": 714,
+      "GT_objects": 1042
+    },
+    "rmot/0010_primary": {
+      "frames": 294,
+      "candidates": 806,
+      "unique_GT_supported_candidates": 25,
+      "unknown_or_ambiguous_candidates": 781,
+      "GT_objects": 657
+    },
+    "rmot/0010_counter": {
+      "frames": 294,
+      "candidates": 748,
+      "unique_GT_supported_candidates": 469,
+      "unknown_or_ambiguous_candidates": 279,
+      "GT_objects": 657
+    },
+    "rmot/0012_primary": {
+      "frames": 78,
+      "candidates": 70,
+      "unique_GT_supported_candidates": 1,
+      "unknown_or_ambiguous_candidates": 69,
+      "GT_objects": 204
+    },
+    "rmot/0012_counter": {
+      "frames": 78,
+      "candidates": 350,
+      "unique_GT_supported_candidates": 129,
+      "unknown_or_ambiguous_candidates": 221,
+      "GT_objects": 204
+    },
+    "rmot/0014_primary": {
+      "frames": 106,
+      "candidates": 235,
+      "unique_GT_supported_candidates": 111,
+      "unknown_or_ambiguous_candidates": 124,
+      "GT_objects": 580
+    },
+    "rmot/0014_counter": {
+      "frames": 106,
+      "candidates": 452,
+      "unique_GT_supported_candidates": 261,
+      "unknown_or_ambiguous_candidates": 191,
+      "GT_objects": 580
+    },
+    "rmot/0017_primary": {
+      "frames": 145,
+      "candidates": 381,
+      "unique_GT_supported_candidates": 262,
+      "unknown_or_ambiguous_candidates": 119,
+      "GT_objects": 778
+    },
+    "rmot/0017_counter": {
+      "frames": 145,
+      "candidates": 706,
+      "unique_GT_supported_candidates": 345,
+      "unknown_or_ambiguous_candidates": 361,
+      "GT_objects": 778
+    }
+  },
+  "old_actor_histories_are_not_new_model_inputs": true,
+  "eval_or_reserved_videos_opened": false,
+  "new_feature_bank_bytes": 0,
+  "physical_optimizer_updates": 0,
+  "full_goal_complete": false
+}
