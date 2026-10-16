@@ -1,0 +1,1975 @@
+{
+  "status": "ALL43_TRAIN_GLOBAL_IGNORE_LABELS_AND_ACTUAL_GROUP_COMPETITION_AUDITED",
+  "alternative_grouping": "overlap_neighbors",
+  "index": "outputs/groundjev/compact/broader_native_reference_inputs_v1/index.json",
+  "prior_audit": "outputs/groundjev/diagnostics/native_MOT_birth_label_support_v2/summary.json",
+  "train_totals": {
+    "original_registry_binding_and_IGNORE_target_exact": 48051,
+    "matched_positive_candidates": 40059,
+    "positive_with_any_GT_supported_rival": 6754,
+    "positive_with_rival_outside_group": 5319,
+    "alternative_positive_with_rival_outside_group": 320,
+    "IGNORE_candidates": 7992,
+    "IGNORE_with_GT_IoU_at_least_half": 5832,
+    "IGNORE_with_multiple_supported_GT": 261,
+    "GT_supported_IGNORE_with_winner_inside_group": 1024,
+    "GT_supported_IGNORE_with_winner_outside_group": 4829,
+    "GT_supported_IGNORE_with_no_assigned_winner": 4,
+    "alternative_GT_supported_IGNORE_with_winner_inside_group": 5530,
+    "alternative_GT_supported_IGNORE_with_winner_outside_group": 308,
+    "alternative_GT_supported_IGNORE_with_only_outside_winners": 298,
+    "IGNORE_without_GT_IoU_at_least_half": 2160,
+    "request_groups": 3401,
+    "largest_request_candidates": 16,
+    "frames": 1056,
+    "candidates": 48051,
+    "GT_supported_IGNORE_with_only_outside_winners": 4804,
+    "single_GT_IGNORE_with_only_outside_winner": 4723
+  },
+  "units": {
+    "mot/MOT17-02-FRCNN": {
+      "sequence": "MOT17-02-FRCNN",
+      "counts": {
+        "original_registry_binding_and_IGNORE_target_exact": 992,
+        "matched_positive_candidates": 896,
+        "positive_with_any_GT_supported_rival": 168,
+        "positive_with_rival_outside_group": 4,
+        "alternative_positive_with_rival_outside_group": 0,
+        "IGNORE_candidates": 96,
+        "IGNORE_with_GT_IoU_at_least_half": 56,
+        "IGNORE_with_multiple_supported_GT": 2,
+        "GT_supported_IGNORE_with_winner_inside_group": 56,
+        "GT_supported_IGNORE_with_winner_outside_group": 1,
+        "GT_supported_IGNORE_with_no_assigned_winner": 0,
+        "alternative_GT_supported_IGNORE_with_winner_inside_group": 56,
+        "alternative_GT_supported_IGNORE_with_winner_outside_group": 0,
+        "alternative_GT_supported_IGNORE_with_only_outside_winners": 0,
+        "IGNORE_without_GT_IoU_at_least_half": 40,
+        "request_groups": 64,
+        "largest_request_candidates": 16,
+        "frames": 32,
+        "candidates": 992
+      },
+      "examples": [],
+      "empty_request_groups_without_identity_questions": 0
+    },
+    "mot/MOT17-04-FRCNN": {
+      "sequence": "MOT17-04-FRCNN",
+      "counts": {
+        "original_registry_binding_and_IGNORE_target_exact": 1404,
+        "matched_positive_candidates": 1032,
+        "positive_with_any_GT_supported_rival": 194,
+        "positive_with_rival_outside_group": 157,
+        "alternative_positive_with_rival_outside_group": 11,
+        "IGNORE_candidates": 372,
+        "IGNORE_without_GT_IoU_at_least_half": 189,
+        "IGNORE_with_GT_IoU_at_least_half": 183,
+        "IGNORE_with_multiple_supported_GT": 4,
+        "GT_supported_IGNORE_with_winner_inside_group": 4,
+        "GT_supported_IGNORE_with_winner_outside_group": 179,
+        "GT_supported_IGNORE_with_no_assigned_winner": 0,
+        "alternative_GT_supported_IGNORE_with_winner_inside_group": 171,
+        "alternative_GT_supported_IGNORE_with_winner_outside_group": 12,
+        "alternative_GT_supported_IGNORE_with_only_outside_winners": 12,
+        "request_groups": 102,
+        "largest_request_candidates": 16,
+        "frames": 32,
+        "candidates": 1404,
+        "GT_supported_IGNORE_with_only_outside_winners": 179,
+        "single_GT_IGNORE_with_only_outside_winner": 175
+      },
+      "examples": [
+        {
+          "frame": 259,
+          "candidate": 2,
+          "group": "MOT17-04-FRCNN_259_batch0",
+          "box": [
+            142.14814814814815,
+            565.961961961962,
+            226.6686686686687,
+            813.3003003003003
+          ],
+          "target": "IGNORE",
+          "original_winning_candidate": 69,
+          "winner_group": "MOT17-04-FRCNN_259_batch4",
+          "winner_box": [
+            142.14814814814815,
+            564.8818818818819,
+            232.43143143143143,
+            814.3803803803803
+          ],
+          "supported_GT_count": 1,
+          "full_frame_image_still_visible": true
+        },
+        {
+          "frame": 259,
+          "candidate": 3,
+          "group": "MOT17-04-FRCNN_259_batch0",
+          "box": [
+            203.6176176176176,
+            101.52752752752752,
+            243.95695695695696,
+            273.2602602602603
+          ],
+          "target": "IGNORE",
+          "original_winning_candidate": 70,
+          "winner_group": "MOT17-04-FRCNN_259_batch4",
+          "winner_box": [
+            203.6176176176176,
+            101.52752752752752,
+            245.87787787787786,
+            274.34034034034033
+          ],
+          "supported_GT_count": 1,
+          "full_frame_image_still_visible": true
+        },
+        {
+          "frame": 259,
+          "candidate": 5,
+          "group": "MOT17-04-FRCNN_259_batch0",
+          "box": [
+            217.06406406406407,
+            677.2102102102101,
+            305.4264264264264,
+            929.948948948949
+          ],
+          "target": "IGNORE",
+          "original_winning_candidate": 72,
+          "winner_group": "MOT17-04-FRCNN_259_batch4",
+          "winner_box": [
+            217.06406406406407,
+            677.2102102102101,
+            307.34734734734735,
+            929.948948948949
+          ],
+          "supported_GT_count": 1,
+          "full_frame_image_still_visible": true
+        }
+      ],
+      "empty_request_groups_without_identity_questions": 6
+    },
+    "mot/MOT17-05-FRCNN": {
+      "sequence": "MOT17-05-FRCNN",
+      "counts": {
+        "original_registry_binding_and_IGNORE_target_exact": 384,
+        "matched_positive_candidates": 215,
+        "positive_with_any_GT_supported_rival": 30,
+        "positive_with_rival_outside_group": 0,
+        "alternative_positive_with_rival_outside_group": 0,
+        "IGNORE_candidates": 169,
+        "IGNORE_with_GT_IoU_at_least_half": 33,
+        "IGNORE_with_multiple_supported_GT": 0,
+        "GT_supported_IGNORE_with_winner_inside_group": 33,
+        "GT_supported_IGNORE_with_winner_outside_group": 0,
+        "GT_supported_IGNORE_with_no_assigned_winner": 0,
+        "alternative_GT_supported_IGNORE_with_winner_inside_group": 33,
+        "alternative_GT_supported_IGNORE_with_winner_outside_group": 0,
+        "alternative_GT_supported_IGNORE_with_only_outside_winners": 0,
+        "IGNORE_without_GT_IoU_at_least_half": 136,
+        "request_groups": 32,
+        "largest_request_candidates": 12,
+        "frames": 32,
+        "candidates": 384
+      },
+      "examples": [],
+      "empty_request_groups_without_identity_questions": 0
+    },
+    "mot/MOT17-09-FRCNN": {
+      "sequence": "MOT17-09-FRCNN",
+      "counts": {
+        "original_registry_binding_and_IGNORE_target_exact": 334,
+        "matched_positive_candidates": 167,
+        "positive_with_any_GT_supported_rival": 33,
+        "positive_with_rival_outside_group": 0,
+        "alternative_positive_with_rival_outside_group": 0,
+        "IGNORE_candidates": 167,
+        "IGNORE_without_GT_IoU_at_least_half": 115,
+        "request_groups": 33,
+        "largest_request_candidates": 16,
+        "frames": 32,
+        "candidates": 334,
+        "IGNORE_with_GT_IoU_at_least_half": 52,
+        "IGNORE_with_multiple_supported_GT": 0,
+        "GT_supported_IGNORE_with_winner_inside_group": 51,
+        "GT_supported_IGNORE_with_winner_outside_group": 0,
+        "GT_supported_IGNORE_with_no_assigned_winner": 1,
+        "alternative_GT_supported_IGNORE_with_winner_inside_group": 51,
+        "alternative_GT_supported_IGNORE_with_winner_outside_group": 0,
+        "alternative_GT_supported_IGNORE_with_only_outside_winners": 0
+      },
+      "examples": [],
+      "empty_request_groups_without_identity_questions": 0
+    },
+    "mot/MOT17-10-FRCNN": {
+      "sequence": "MOT17-10-FRCNN",
+      "counts": {
+        "frames": 32,
+        "candidates": 322,
+        "original_registry_binding_and_IGNORE_target_exact": 322,
+        "matched_positive_candidates": 278,
+        "positive_with_any_GT_supported_rival": 31,
+        "positive_with_rival_outside_group": 15,
+        "alternative_positive_with_rival_outside_group": 1,
+        "IGNORE_candidates": 44,
+        "IGNORE_without_GT_IoU_at_least_half": 22,
+        "IGNORE_with_GT_IoU_at_least_half": 22,
+        "IGNORE_with_multiple_supported_GT": 0,
+        "GT_supported_IGNORE_with_winner_inside_group": 7,
+        "GT_supported_IGNORE_with_winner_outside_group": 15,
+        "GT_supported_IGNORE_with_no_assigned_winner": 0,
+        "alternative_GT_supported_IGNORE_with_winner_inside_group": 22,
+        "alternative_GT_supported_IGNORE_with_winner_outside_group": 0,
+        "alternative_GT_supported_IGNORE_with_only_outside_winners": 0,
+        "GT_supported_IGNORE_with_only_outside_winners": 15,
+        "single_GT_IGNORE_with_only_outside_winner": 15,
+        "request_groups": 32,
+        "largest_request_candidates": 16
+      },
+      "examples": [
+        {
+          "frame": 150,
+          "candidate": 18,
+          "group": "MOT17-10-FRCNN_150_batch1",
+          "box": [
+            0.0,
+            389.9089089089089,
+            55.70670670670671,
+            584.3233233233233
+          ],
+          "target": "IGNORE",
+          "original_winning_candidate": 0,
+          "winner_group": "MOT17-10-FRCNN_150_batch0",
+          "winner_box": [
+            0.0,
+            390.988988988989,
+            57.627627627627625,
+            585.4034034034033
+          ],
+          "supported_GT_count": 1,
+          "full_frame_image_still_visible": true
+        },
+        {
+          "frame": 150,
+          "candidate": 19,
+          "group": "MOT17-10-FRCNN_150_batch1",
+          "box": [
+            61.469469469469466,
+            354.26626626626626,
+            169.04104104104104,
+            592.963963963964
+          ],
+          "target": "IGNORE",
+          "original_winning_candidate": 1,
+          "winner_group": "MOT17-10-FRCNN_150_batch0",
+          "winner_box": [
+            59.54854854854855,
+            354.26626626626626,
+            169.04104104104104,
+            591.8838838838839
+          ],
+          "supported_GT_count": 1,
+          "full_frame_image_still_visible": true
+        },
+        {
+          "frame": 150,
+          "candidate": 20,
+          "group": "MOT17-10-FRCNN_150_batch1",
+          "box": [
+            330.3983983983984,
+            371.54754754754754,
+            378.4214214214214,
+            504.3973973973974
+          ],
+          "target": "IGNORE",
+          "original_winning_candidate": 4,
+          "winner_group": "MOT17-10-FRCNN_150_batch0",
+          "winner_box": [
+            330.3983983983984,
+            371.54754754754754,
+            380.34234234234236,
+            503.3173173173173
+          ],
+          "supported_GT_count": 1,
+          "full_frame_image_still_visible": true
+        }
+      ],
+      "empty_request_groups_without_identity_questions": 14
+    },
+    "mot/MOT17-11-FRCNN": {
+      "sequence": "MOT17-11-FRCNN",
+      "counts": {
+        "original_registry_binding_and_IGNORE_target_exact": 384,
+        "matched_positive_candidates": 310,
+        "positive_with_any_GT_supported_rival": 0,
+        "positive_with_rival_outside_group": 0,
+        "alternative_positive_with_rival_outside_group": 0,
+        "IGNORE_candidates": 74,
+        "IGNORE_without_GT_IoU_at_least_half": 74,
+        "request_groups": 32,
+        "largest_request_candidates": 12,
+        "frames": 32,
+        "candidates": 384
+      },
+      "examples": [],
+      "empty_request_groups_without_identity_questions": 0
+    },
+    "mot/MOT17-13-FRCNN": {
+      "sequence": "MOT17-13-FRCNN",
+      "counts": {
+        "original_registry_binding_and_IGNORE_target_exact": 399,
+        "matched_positive_candidates": 378,
+        "positive_with_any_GT_supported_rival": 68,
+        "positive_with_rival_outside_group": 0,
+        "alternative_positive_with_rival_outside_group": 0,
+        "IGNORE_candidates": 21,
+        "IGNORE_without_GT_IoU_at_least_half": 20,
+        "request_groups": 36,
+        "largest_request_candidates": 16,
+        "frames": 32,
+        "candidates": 399,
+        "IGNORE_with_GT_IoU_at_least_half": 1,
+        "IGNORE_with_multiple_supported_GT": 0,
+        "GT_supported_IGNORE_with_winner_inside_group": 1,
+        "GT_supported_IGNORE_with_winner_outside_group": 0,
+        "GT_supported_IGNORE_with_no_assigned_winner": 0,
+        "alternative_GT_supported_IGNORE_with_winner_inside_group": 1,
+        "alternative_GT_supported_IGNORE_with_winner_outside_group": 0,
+        "alternative_GT_supported_IGNORE_with_only_outside_winners": 0
+      },
+      "examples": [],
+      "empty_request_groups_without_identity_questions": 2
+    },
+    "mot/dancetrack0001": {
+      "sequence": "dancetrack0001",
+      "counts": {
+        "original_registry_binding_and_IGNORE_target_exact": 192,
+        "matched_positive_candidates": 112,
+        "positive_with_any_GT_supported_rival": 0,
+        "positive_with_rival_outside_group": 0,
+        "alternative_positive_with_rival_outside_group": 0,
+        "IGNORE_candidates": 80,
+        "IGNORE_without_GT_IoU_at_least_half": 80,
+        "request_groups": 16,
+        "largest_request_candidates": 12,
+        "frames": 16,
+        "candidates": 192
+      },
+      "examples": [],
+      "empty_request_groups_without_identity_questions": 0
+    },
+    "mot/dancetrack0006": {
+      "sequence": "dancetrack0006",
+      "counts": {
+        "original_registry_binding_and_IGNORE_target_exact": 164,
+        "matched_positive_candidates": 117,
+        "positive_with_any_GT_supported_rival": 47,
+        "positive_with_rival_outside_group": 0,
+        "alternative_positive_with_rival_outside_group": 0,
+        "IGNORE_candidates": 47,
+        "IGNORE_without_GT_IoU_at_least_half": 5,
+        "IGNORE_with_GT_IoU_at_least_half": 42,
+        "IGNORE_with_multiple_supported_GT": 12,
+        "GT_supported_IGNORE_with_winner_inside_group": 42,
+        "GT_supported_IGNORE_with_winner_outside_group": 0,
+        "GT_supported_IGNORE_with_no_assigned_winner": 0,
+        "alternative_GT_supported_IGNORE_with_winner_inside_group": 42,
+        "alternative_GT_supported_IGNORE_with_winner_outside_group": 0,
+        "alternative_GT_supported_IGNORE_with_only_outside_winners": 0,
+        "request_groups": 16,
+        "largest_request_candidates": 14,
+        "frames": 16,
+        "candidates": 164
+      },
+      "examples": [],
+      "empty_request_groups_without_identity_questions": 0
+    },
+    "mot/dancetrack0008": {
+      "sequence": "dancetrack0008",
+      "counts": {
+        "original_registry_binding_and_IGNORE_target_exact": 171,
+        "IGNORE_candidates": 56,
+        "IGNORE_with_GT_IoU_at_least_half": 37,
+        "IGNORE_with_multiple_supported_GT": 4,
+        "GT_supported_IGNORE_with_winner_inside_group": 37,
+        "GT_supported_IGNORE_with_winner_outside_group": 0,
+        "GT_supported_IGNORE_with_no_assigned_winner": 0,
+        "alternative_GT_supported_IGNORE_with_winner_inside_group": 37,
+        "alternative_GT_supported_IGNORE_with_winner_outside_group": 0,
+        "alternative_GT_supported_IGNORE_with_only_outside_winners": 0,
+        "matched_positive_candidates": 115,
+        "positive_with_any_GT_supported_rival": 32,
+        "positive_with_rival_outside_group": 0,
+        "alternative_positive_with_rival_outside_group": 0,
+        "IGNORE_without_GT_IoU_at_least_half": 19,
+        "request_groups": 17,
+        "largest_request_candidates": 16,
+        "frames": 16,
+        "candidates": 171
+      },
+      "examples": [],
+      "empty_request_groups_without_identity_questions": 0
+    },
+    "mot/dancetrack0012": {
+      "sequence": "dancetrack0012",
+      "counts": {
+        "frames": 16,
+        "candidates": 165,
+        "original_registry_binding_and_IGNORE_target_exact": 165,
+        "matched_positive_candidates": 104,
+        "positive_with_any_GT_supported_rival": 59,
+        "positive_with_rival_outside_group": 0,
+        "alternative_positive_with_rival_outside_group": 0,
+        "IGNORE_candidates": 61,
+        "IGNORE_with_GT_IoU_at_least_half": 61,
+        "IGNORE_with_multiple_supported_GT": 33,
+        "GT_supported_IGNORE_with_winner_inside_group": 61,
+        "GT_supported_IGNORE_with_winner_outside_group": 0,
+        "GT_supported_IGNORE_with_no_assigned_winner": 0,
+        "alternative_GT_supported_IGNORE_with_winner_inside_group": 61,
+        "alternative_GT_supported_IGNORE_with_winner_outside_group": 0,
+        "alternative_GT_supported_IGNORE_with_only_outside_winners": 0,
+        "request_groups": 15,
+        "largest_request_candidates": 12
+      },
+      "examples": [],
+      "empty_request_groups_without_identity_questions": 1
+    },
+    "mot/dancetrack0016": {
+      "sequence": "dancetrack0016",
+      "counts": {
+        "original_registry_binding_and_IGNORE_target_exact": 125,
+        "matched_positive_candidates": 96,
+        "positive_with_any_GT_supported_rival": 24,
+        "positive_with_rival_outside_group": 0,
+        "alternative_positive_with_rival_outside_group": 0,
+        "IGNORE_candidates": 29,
+        "IGNORE_with_GT_IoU_at_least_half": 29,
+        "IGNORE_with_multiple_supported_GT": 0,
+        "GT_supported_IGNORE_with_winner_inside_group": 29,
+        "GT_supported_IGNORE_with_winner_outside_group": 0,
+        "GT_supported_IGNORE_with_no_assigned_winner": 0,
+        "alternative_GT_supported_IGNORE_with_winner_inside_group": 29,
+        "alternative_GT_supported_IGNORE_with_winner_outside_group": 0,
+        "alternative_GT_supported_IGNORE_with_only_outside_winners": 0,
+        "request_groups": 16,
+        "largest_request_candidates": 14,
+        "frames": 16,
+        "candidates": 125
+      },
+      "examples": [],
+      "empty_request_groups_without_identity_questions": 0
+    },
+    "mot/dancetrack0020": {
+      "sequence": "dancetrack0020",
+      "counts": {
+        "original_registry_binding_and_IGNORE_target_exact": 447,
+        "matched_positive_candidates": 340,
+        "positive_with_any_GT_supported_rival": 59,
+        "positive_with_rival_outside_group": 3,
+        "alternative_positive_with_rival_outside_group": 0,
+        "IGNORE_candidates": 107,
+        "IGNORE_with_GT_IoU_at_least_half": 39,
+        "IGNORE_with_multiple_supported_GT": 0,
+        "GT_supported_IGNORE_with_winner_inside_group": 38,
+        "GT_supported_IGNORE_with_winner_outside_group": 1,
+        "GT_supported_IGNORE_with_no_assigned_winner": 0,
+        "alternative_GT_supported_IGNORE_with_winner_inside_group": 39,
+        "alternative_GT_supported_IGNORE_with_winner_outside_group": 0,
+        "alternative_GT_supported_IGNORE_with_only_outside_winners": 0,
+        "IGNORE_without_GT_IoU_at_least_half": 68,
+        "request_groups": 32,
+        "largest_request_candidates": 16,
+        "frames": 16,
+        "candidates": 447,
+        "GT_supported_IGNORE_with_only_outside_winners": 1,
+        "single_GT_IGNORE_with_only_outside_winner": 1
+      },
+      "examples": [
+        {
+          "frame": 290,
+          "candidate": 26,
+          "group": "dancetrack0020_290_batch1",
+          "box": [
+            589.7227227227228,
+            639.4074074074074,
+            722.2662662662663,
+            856.5035035035035
+          ],
+          "target": "IGNORE",
+          "original_winning_candidate": 6,
+          "winner_group": "dancetrack0020_290_batch0",
+          "winner_box": [
+            591.6436436436436,
+            600.5245245245245,
+            683.8478478478479,
+            856.5035035035035
+          ],
+          "supported_GT_count": 1,
+          "full_frame_image_still_visible": true
+        }
+      ],
+      "empty_request_groups_without_identity_questions": 0
+    },
+    "mot/dancetrack0023": {
+      "sequence": "dancetrack0023",
+      "counts": {
+        "original_registry_binding_and_IGNORE_target_exact": 192,
+        "matched_positive_candidates": 138,
+        "positive_with_any_GT_supported_rival": 12,
+        "positive_with_rival_outside_group": 0,
+        "alternative_positive_with_rival_outside_group": 0,
+        "IGNORE_candidates": 54,
+        "IGNORE_without_GT_IoU_at_least_half": 54,
+        "request_groups": 16,
+        "largest_request_candidates": 12,
+        "frames": 16,
+        "candidates": 192
+      },
+      "examples": [],
+      "empty_request_groups_without_identity_questions": 0
+    },
+    "mot/dancetrack0024": {
+      "sequence": "dancetrack0024",
+      "counts": {
+        "original_registry_binding_and_IGNORE_target_exact": 130,
+        "matched_positive_candidates": 96,
+        "positive_with_any_GT_supported_rival": 28,
+        "positive_with_rival_outside_group": 0,
+        "alternative_positive_with_rival_outside_group": 0,
+        "request_groups": 16,
+        "largest_request_candidates": 12,
+        "frames": 16,
+        "candidates": 130,
+        "IGNORE_candidates": 34,
+        "IGNORE_with_GT_IoU_at_least_half": 34,
+        "IGNORE_with_multiple_supported_GT": 0,
+        "GT_supported_IGNORE_with_winner_inside_group": 34,
+        "GT_supported_IGNORE_with_winner_outside_group": 0,
+        "GT_supported_IGNORE_with_no_assigned_winner": 0,
+        "alternative_GT_supported_IGNORE_with_winner_inside_group": 34,
+        "alternative_GT_supported_IGNORE_with_winner_outside_group": 0,
+        "alternative_GT_supported_IGNORE_with_only_outside_winners": 0
+      },
+      "examples": [],
+      "empty_request_groups_without_identity_questions": 0
+    },
+    "mot/dancetrack0027": {
+      "sequence": "dancetrack0027",
+      "counts": {
+        "original_registry_binding_and_IGNORE_target_exact": 176,
+        "matched_positive_candidates": 134,
+        "positive_with_any_GT_supported_rival": 29,
+        "positive_with_rival_outside_group": 0,
+        "alternative_positive_with_rival_outside_group": 0,
+        "IGNORE_candidates": 42,
+        "IGNORE_with_GT_IoU_at_least_half": 23,
+        "IGNORE_with_multiple_supported_GT": 1,
+        "GT_supported_IGNORE_with_winner_inside_group": 23,
+        "GT_supported_IGNORE_with_winner_outside_group": 0,
+        "GT_supported_IGNORE_with_no_assigned_winner": 0,
+        "alternative_GT_supported_IGNORE_with_winner_inside_group": 23,
+        "alternative_GT_supported_IGNORE_with_winner_outside_group": 0,
+        "alternative_GT_supported_IGNORE_with_only_outside_winners": 0,
+        "IGNORE_without_GT_IoU_at_least_half": 19,
+        "request_groups": 16,
+        "largest_request_candidates": 12,
+        "frames": 16,
+        "candidates": 176
+      },
+      "examples": [],
+      "empty_request_groups_without_identity_questions": 0
+    },
+    "mot/dancetrack0029": {
+      "sequence": "dancetrack0029",
+      "counts": {
+        "original_registry_binding_and_IGNORE_target_exact": 161,
+        "matched_positive_candidates": 84,
+        "positive_with_any_GT_supported_rival": 28,
+        "positive_with_rival_outside_group": 4,
+        "alternative_positive_with_rival_outside_group": 4,
+        "IGNORE_candidates": 77,
+        "IGNORE_with_GT_IoU_at_least_half": 77,
+        "IGNORE_with_multiple_supported_GT": 76,
+        "GT_supported_IGNORE_with_winner_inside_group": 50,
+        "GT_supported_IGNORE_with_winner_outside_group": 27,
+        "GT_supported_IGNORE_with_no_assigned_winner": 0,
+        "alternative_GT_supported_IGNORE_with_winner_inside_group": 50,
+        "alternative_GT_supported_IGNORE_with_winner_outside_group": 27,
+        "alternative_GT_supported_IGNORE_with_only_outside_winners": 27,
+        "request_groups": 16,
+        "largest_request_candidates": 16,
+        "frames": 16,
+        "candidates": 161,
+        "GT_supported_IGNORE_with_only_outside_winners": 27
+      },
+      "examples": [
+        {
+          "frame": 627,
+          "candidate": 16,
+          "group": "dancetrack0029_627_batch1",
+          "box": [
+            996.9579579579579,
+            452.5535535535535,
+            1331.1981981981983,
+            960.1911911911913
+          ],
+          "target": "IGNORE",
+          "original_winning_candidate": 5,
+          "winner_group": "dancetrack0029_627_batch0",
+          "winner_box": [
+            975.8278278278278,
+            452.5535535535535,
+            1331.1981981981983,
+            960.1911911911913
+          ],
+          "supported_GT_count": 2,
+          "full_frame_image_still_visible": true
+        },
+        {
+          "frame": 627,
+          "candidate": 17,
+          "group": "dancetrack0029_627_batch1",
+          "box": [
+            998.8788788788789,
+            452.5535535535535,
+            1331.1981981981983,
+            960.1911911911913
+          ],
+          "target": "IGNORE",
+          "original_winning_candidate": 5,
+          "winner_group": "dancetrack0029_627_batch0",
+          "winner_box": [
+            975.8278278278278,
+            452.5535535535535,
+            1331.1981981981983,
+            960.1911911911913
+          ],
+          "supported_GT_count": 2,
+          "full_frame_image_still_visible": true
+        },
+        {
+          "frame": 627,
+          "candidate": 18,
+          "group": "dancetrack0029_627_batch1",
+          "box": [
+            1000.7997997997999,
+            452.5535535535535,
+            1331.1981981981983,
+            960.1911911911913
+          ],
+          "target": "IGNORE",
+          "original_winning_candidate": 5,
+          "winner_group": "dancetrack0029_627_batch0",
+          "winner_box": [
+            975.8278278278278,
+            452.5535535535535,
+            1331.1981981981983,
+            960.1911911911913
+          ],
+          "supported_GT_count": 2,
+          "full_frame_image_still_visible": true
+        }
+      ],
+      "empty_request_groups_without_identity_questions": 2
+    },
+    "mot/dancetrack0032": {
+      "sequence": "dancetrack0032",
+      "counts": {
+        "original_registry_binding_and_IGNORE_target_exact": 151,
+        "IGNORE_candidates": 71,
+        "IGNORE_without_GT_IoU_at_least_half": 39,
+        "matched_positive_candidates": 80,
+        "positive_with_any_GT_supported_rival": 25,
+        "positive_with_rival_outside_group": 0,
+        "alternative_positive_with_rival_outside_group": 0,
+        "request_groups": 16,
+        "largest_request_candidates": 14,
+        "frames": 16,
+        "candidates": 151,
+        "IGNORE_with_GT_IoU_at_least_half": 32,
+        "IGNORE_with_multiple_supported_GT": 0,
+        "GT_supported_IGNORE_with_winner_inside_group": 32,
+        "GT_supported_IGNORE_with_winner_outside_group": 0,
+        "GT_supported_IGNORE_with_no_assigned_winner": 0,
+        "alternative_GT_supported_IGNORE_with_winner_inside_group": 32,
+        "alternative_GT_supported_IGNORE_with_winner_outside_group": 0,
+        "alternative_GT_supported_IGNORE_with_only_outside_winners": 0
+      },
+      "examples": [],
+      "empty_request_groups_without_identity_questions": 0
+    },
+    "mot/dancetrack0037": {
+      "sequence": "dancetrack0037",
+      "counts": {
+        "original_registry_binding_and_IGNORE_target_exact": 178,
+        "matched_positive_candidates": 112,
+        "positive_with_any_GT_supported_rival": 3,
+        "positive_with_rival_outside_group": 0,
+        "alternative_positive_with_rival_outside_group": 0,
+        "IGNORE_candidates": 66,
+        "IGNORE_with_GT_IoU_at_least_half": 15,
+        "IGNORE_with_multiple_supported_GT": 0,
+        "GT_supported_IGNORE_with_winner_inside_group": 15,
+        "GT_supported_IGNORE_with_winner_outside_group": 0,
+        "GT_supported_IGNORE_with_no_assigned_winner": 0,
+        "alternative_GT_supported_IGNORE_with_winner_inside_group": 15,
+        "alternative_GT_supported_IGNORE_with_winner_outside_group": 0,
+        "alternative_GT_supported_IGNORE_with_only_outside_winners": 0,
+        "request_groups": 16,
+        "largest_request_candidates": 12,
+        "frames": 16,
+        "candidates": 178,
+        "IGNORE_without_GT_IoU_at_least_half": 51
+      },
+      "examples": [],
+      "empty_request_groups_without_identity_questions": 0
+    },
+    "mot/dancetrack0039": {
+      "sequence": "dancetrack0039",
+      "counts": {
+        "original_registry_binding_and_IGNORE_target_exact": 109,
+        "matched_positive_candidates": 80,
+        "positive_with_any_GT_supported_rival": 24,
+        "positive_with_rival_outside_group": 0,
+        "alternative_positive_with_rival_outside_group": 0,
+        "request_groups": 16,
+        "largest_request_candidates": 12,
+        "frames": 16,
+        "candidates": 109,
+        "IGNORE_candidates": 29,
+        "IGNORE_with_GT_IoU_at_least_half": 28,
+        "IGNORE_with_multiple_supported_GT": 0,
+        "GT_supported_IGNORE_with_winner_inside_group": 28,
+        "GT_supported_IGNORE_with_winner_outside_group": 0,
+        "GT_supported_IGNORE_with_no_assigned_winner": 0,
+        "alternative_GT_supported_IGNORE_with_winner_inside_group": 28,
+        "alternative_GT_supported_IGNORE_with_winner_outside_group": 0,
+        "alternative_GT_supported_IGNORE_with_only_outside_winners": 0,
+        "IGNORE_without_GT_IoU_at_least_half": 1
+      },
+      "examples": [],
+      "empty_request_groups_without_identity_questions": 0
+    },
+    "mot/dancetrack0044": {
+      "sequence": "dancetrack0044",
+      "counts": {
+        "original_registry_binding_and_IGNORE_target_exact": 195,
+        "matched_positive_candidates": 172,
+        "positive_with_any_GT_supported_rival": 29,
+        "positive_with_rival_outside_group": 0,
+        "alternative_positive_with_rival_outside_group": 0,
+        "IGNORE_candidates": 23,
+        "IGNORE_without_GT_IoU_at_least_half": 18,
+        "request_groups": 16,
+        "largest_request_candidates": 15,
+        "frames": 16,
+        "candidates": 195,
+        "IGNORE_with_GT_IoU_at_least_half": 5,
+        "IGNORE_with_multiple_supported_GT": 0,
+        "GT_supported_IGNORE_with_winner_inside_group": 5,
+        "GT_supported_IGNORE_with_winner_outside_group": 0,
+        "GT_supported_IGNORE_with_no_assigned_winner": 0,
+        "alternative_GT_supported_IGNORE_with_winner_inside_group": 5,
+        "alternative_GT_supported_IGNORE_with_winner_outside_group": 0,
+        "alternative_GT_supported_IGNORE_with_only_outside_winners": 0
+      },
+      "examples": [],
+      "empty_request_groups_without_identity_questions": 0
+    },
+    "mot/dancetrack0045": {
+      "sequence": "dancetrack0045",
+      "counts": {
+        "original_registry_binding_and_IGNORE_target_exact": 203,
+        "matched_positive_candidates": 193,
+        "positive_with_any_GT_supported_rival": 10,
+        "positive_with_rival_outside_group": 0,
+        "alternative_positive_with_rival_outside_group": 0,
+        "request_groups": 15,
+        "largest_request_candidates": 16,
+        "frames": 16,
+        "candidates": 203,
+        "IGNORE_candidates": 10,
+        "IGNORE_with_GT_IoU_at_least_half": 10,
+        "IGNORE_with_multiple_supported_GT": 0,
+        "GT_supported_IGNORE_with_winner_inside_group": 10,
+        "GT_supported_IGNORE_with_winner_outside_group": 0,
+        "GT_supported_IGNORE_with_no_assigned_winner": 0,
+        "alternative_GT_supported_IGNORE_with_winner_inside_group": 10,
+        "alternative_GT_supported_IGNORE_with_winner_outside_group": 0,
+        "alternative_GT_supported_IGNORE_with_only_outside_winners": 0
+      },
+      "examples": [],
+      "empty_request_groups_without_identity_questions": 1
+    },
+    "mot/dancetrack0051": {
+      "sequence": "dancetrack0051",
+      "counts": {
+        "original_registry_binding_and_IGNORE_target_exact": 168,
+        "matched_positive_candidates": 132,
+        "positive_with_any_GT_supported_rival": 37,
+        "positive_with_rival_outside_group": 0,
+        "alternative_positive_with_rival_outside_group": 0,
+        "IGNORE_candidates": 36,
+        "IGNORE_without_GT_IoU_at_least_half": 10,
+        "IGNORE_with_GT_IoU_at_least_half": 26,
+        "IGNORE_with_multiple_supported_GT": 5,
+        "GT_supported_IGNORE_with_winner_inside_group": 26,
+        "GT_supported_IGNORE_with_winner_outside_group": 0,
+        "GT_supported_IGNORE_with_no_assigned_winner": 0,
+        "alternative_GT_supported_IGNORE_with_winner_inside_group": 26,
+        "alternative_GT_supported_IGNORE_with_winner_outside_group": 0,
+        "alternative_GT_supported_IGNORE_with_only_outside_winners": 0,
+        "request_groups": 16,
+        "largest_request_candidates": 12,
+        "frames": 16,
+        "candidates": 168
+      },
+      "examples": [],
+      "empty_request_groups_without_identity_questions": 0
+    },
+    "mot/dancetrack0052": {
+      "sequence": "dancetrack0052",
+      "counts": {
+        "original_registry_binding_and_IGNORE_target_exact": 100,
+        "matched_positive_candidates": 64,
+        "positive_with_any_GT_supported_rival": 2,
+        "positive_with_rival_outside_group": 0,
+        "alternative_positive_with_rival_outside_group": 0,
+        "IGNORE_candidates": 36,
+        "IGNORE_without_GT_IoU_at_least_half": 33,
+        "request_groups": 16,
+        "largest_request_candidates": 8,
+        "frames": 16,
+        "candidates": 100,
+        "IGNORE_with_GT_IoU_at_least_half": 3,
+        "IGNORE_with_multiple_supported_GT": 0,
+        "GT_supported_IGNORE_with_winner_inside_group": 3,
+        "GT_supported_IGNORE_with_winner_outside_group": 0,
+        "GT_supported_IGNORE_with_no_assigned_winner": 0,
+        "alternative_GT_supported_IGNORE_with_winner_inside_group": 3,
+        "alternative_GT_supported_IGNORE_with_winner_outside_group": 0,
+        "alternative_GT_supported_IGNORE_with_only_outside_winners": 0
+      },
+      "examples": [],
+      "empty_request_groups_without_identity_questions": 0
+    },
+    "mot/dancetrack0053": {
+      "sequence": "dancetrack0053",
+      "counts": {
+        "original_registry_binding_and_IGNORE_target_exact": 249,
+        "IGNORE_candidates": 169,
+        "IGNORE_with_GT_IoU_at_least_half": 10,
+        "IGNORE_with_multiple_supported_GT": 0,
+        "GT_supported_IGNORE_with_winner_inside_group": 4,
+        "GT_supported_IGNORE_with_winner_outside_group": 6,
+        "GT_supported_IGNORE_with_no_assigned_winner": 0,
+        "alternative_GT_supported_IGNORE_with_winner_inside_group": 10,
+        "alternative_GT_supported_IGNORE_with_winner_outside_group": 0,
+        "alternative_GT_supported_IGNORE_with_only_outside_winners": 0,
+        "GT_supported_IGNORE_with_only_outside_winners": 6,
+        "single_GT_IGNORE_with_only_outside_winner": 6,
+        "matched_positive_candidates": 80,
+        "positive_with_any_GT_supported_rival": 9,
+        "positive_with_rival_outside_group": 6,
+        "alternative_positive_with_rival_outside_group": 0,
+        "IGNORE_without_GT_IoU_at_least_half": 159,
+        "request_groups": 26,
+        "largest_request_candidates": 16,
+        "frames": 16,
+        "candidates": 249
+      },
+      "examples": [
+        {
+          "frame": 595,
+          "candidate": 1,
+          "group": "dancetrack0053_595_batch0",
+          "box": [
+            321.35035035035037,
+            271.3343343343343,
+            611.973973973974,
+            539.7897897897898
+          ],
+          "target": "IGNORE",
+          "original_winning_candidate": 16,
+          "winner_group": "dancetrack0053_595_batch1",
+          "winner_box": [
+            322.6306306306306,
+            271.3343343343343,
+            611.973973973974,
+            538.3503503503504
+          ],
+          "supported_GT_count": 1,
+          "full_frame_image_still_visible": true
+        },
+        {
+          "frame": 598,
+          "candidate": 0,
+          "group": "dancetrack0053_598_batch0",
+          "box": [
+            94.74074074074073,
+            295.0850850850851,
+            267.5785785785786,
+            488.6896896896897
+          ],
+          "target": "IGNORE",
+          "original_winning_candidate": 18,
+          "winner_group": "dancetrack0053_598_batch1",
+          "winner_box": [
+            96.02102102102103,
+            295.0850850850851,
+            267.5785785785786,
+            487.96996996997
+          ],
+          "supported_GT_count": 1,
+          "full_frame_image_still_visible": true
+        },
+        {
+          "frame": 599,
+          "candidate": 0,
+          "group": "dancetrack0053_599_batch0",
+          "box": [
+            99.86186186186187,
+            287.8878878878879,
+            261.17717717717716,
+            488.6896896896897
+          ],
+          "target": "IGNORE",
+          "original_winning_candidate": 21,
+          "winner_group": "dancetrack0053_599_batch1",
+          "winner_box": [
+            102.42242242242241,
+            289.32732732732734,
+            258.6166166166166,
+            486.5305305305305
+          ],
+          "supported_GT_count": 1,
+          "full_frame_image_still_visible": true
+        }
+      ],
+      "empty_request_groups_without_identity_questions": 0
+    },
+    "mot/dancetrack0055": {
+      "sequence": "dancetrack0055",
+      "counts": {
+        "original_registry_binding_and_IGNORE_target_exact": 204,
+        "matched_positive_candidates": 72,
+        "positive_with_any_GT_supported_rival": 27,
+        "positive_with_rival_outside_group": 1,
+        "alternative_positive_with_rival_outside_group": 2,
+        "IGNORE_candidates": 132,
+        "IGNORE_without_GT_IoU_at_least_half": 80,
+        "IGNORE_with_GT_IoU_at_least_half": 52,
+        "IGNORE_with_multiple_supported_GT": 6,
+        "GT_supported_IGNORE_with_winner_inside_group": 37,
+        "GT_supported_IGNORE_with_winner_outside_group": 15,
+        "GT_supported_IGNORE_with_no_assigned_winner": 0,
+        "alternative_GT_supported_IGNORE_with_winner_inside_group": 37,
+        "alternative_GT_supported_IGNORE_with_winner_outside_group": 15,
+        "alternative_GT_supported_IGNORE_with_only_outside_winners": 15,
+        "request_groups": 17,
+        "largest_request_candidates": 16,
+        "frames": 16,
+        "candidates": 204,
+        "GT_supported_IGNORE_with_only_outside_winners": 15,
+        "single_GT_IGNORE_with_only_outside_winner": 15
+      },
+      "examples": [
+        {
+          "frame": 609,
+          "candidate": 16,
+          "group": "dancetrack0055_609_batch1",
+          "box": [
+            588.9289289289289,
+            311.63863863863867,
+            707.994994994995,
+            680.8548548548548
+          ],
+          "target": "IGNORE",
+          "original_winning_candidate": 13,
+          "winner_group": "dancetrack0055_609_batch0",
+          "winner_box": [
+            585.088088088088,
+            311.63863863863867,
+            707.994994994995,
+            680.8548548548548
+          ],
+          "supported_GT_count": 1,
+          "full_frame_image_still_visible": true
+        },
+        {
+          "frame": 609,
+          "candidate": 17,
+          "group": "dancetrack0055_609_batch1",
+          "box": [
+            590.2092092092092,
+            311.63863863863867,
+            707.994994994995,
+            680.8548548548548
+          ],
+          "target": "IGNORE",
+          "original_winning_candidate": 13,
+          "winner_group": "dancetrack0055_609_batch0",
+          "winner_box": [
+            585.088088088088,
+            311.63863863863867,
+            707.994994994995,
+            680.8548548548548
+          ],
+          "supported_GT_count": 1,
+          "full_frame_image_still_visible": true
+        },
+        {
+          "frame": 609,
+          "candidate": 18,
+          "group": "dancetrack0055_609_batch1",
+          "box": [
+            591.4894894894895,
+            311.63863863863867,
+            707.994994994995,
+            680.8548548548548
+          ],
+          "target": "IGNORE",
+          "original_winning_candidate": 13,
+          "winner_group": "dancetrack0055_609_batch0",
+          "winner_box": [
+            585.088088088088,
+            311.63863863863867,
+            707.994994994995,
+            680.8548548548548
+          ],
+          "supported_GT_count": 1,
+          "full_frame_image_still_visible": true
+        }
+      ],
+      "empty_request_groups_without_identity_questions": 0
+    },
+    "mot/dancetrack0057": {
+      "sequence": "dancetrack0057",
+      "counts": {
+        "original_registry_binding_and_IGNORE_target_exact": 205,
+        "matched_positive_candidates": 88,
+        "positive_with_any_GT_supported_rival": 21,
+        "positive_with_rival_outside_group": 9,
+        "alternative_positive_with_rival_outside_group": 0,
+        "IGNORE_candidates": 117,
+        "IGNORE_without_GT_IoU_at_least_half": 82,
+        "request_groups": 17,
+        "largest_request_candidates": 16,
+        "frames": 16,
+        "candidates": 205,
+        "IGNORE_with_GT_IoU_at_least_half": 35,
+        "IGNORE_with_multiple_supported_GT": 0,
+        "GT_supported_IGNORE_with_winner_inside_group": 26,
+        "GT_supported_IGNORE_with_winner_outside_group": 9,
+        "GT_supported_IGNORE_with_no_assigned_winner": 0,
+        "alternative_GT_supported_IGNORE_with_winner_inside_group": 35,
+        "alternative_GT_supported_IGNORE_with_winner_outside_group": 0,
+        "alternative_GT_supported_IGNORE_with_only_outside_winners": 0,
+        "GT_supported_IGNORE_with_only_outside_winners": 9,
+        "single_GT_IGNORE_with_only_outside_winner": 9
+      },
+      "examples": [
+        {
+          "frame": 305,
+          "candidate": 0,
+          "group": "dancetrack0057_305_batch0",
+          "box": [
+            11.525525525525525,
+            427.7117117117117,
+            295.8218218218218,
+            867.3043043043043
+          ],
+          "target": "IGNORE",
+          "original_winning_candidate": 18,
+          "winner_group": "dancetrack0057_305_batch1",
+          "winner_box": [
+            11.525525525525525,
+            427.7117117117117,
+            295.8218218218218,
+            865.1441441441442
+          ],
+          "supported_GT_count": 1,
+          "full_frame_image_still_visible": true
+        },
+        {
+          "frame": 305,
+          "candidate": 1,
+          "group": "dancetrack0057_305_batch0",
+          "box": [
+            409.15615615615616,
+            451.47347347347346,
+            564.7507507507507,
+            948.3103103103102
+          ],
+          "target": "IGNORE",
+          "original_winning_candidate": 19,
+          "winner_group": "dancetrack0057_305_batch1",
+          "winner_box": [
+            411.0770770770771,
+            451.47347347347346,
+            564.7507507507507,
+            946.1501501501501
+          ],
+          "supported_GT_count": 1,
+          "full_frame_image_still_visible": true
+        },
+        {
+          "frame": 305,
+          "candidate": 2,
+          "group": "dancetrack0057_305_batch0",
+          "box": [
+            708.8198198198198,
+            444.992992992993,
+            1014.2462462462462,
+            845.7027027027027
+          ],
+          "target": "IGNORE",
+          "original_winning_candidate": 20,
+          "winner_group": "dancetrack0057_305_batch1",
+          "winner_box": [
+            710.7407407407406,
+            446.0730730730731,
+            1014.2462462462462,
+            843.5425425425426
+          ],
+          "supported_GT_count": 1,
+          "full_frame_image_still_visible": true
+        }
+      ],
+      "empty_request_groups_without_identity_questions": 1
+    },
+    "mot/dancetrack0062": {
+      "sequence": "dancetrack0062",
+      "counts": {
+        "original_registry_binding_and_IGNORE_target_exact": 134,
+        "matched_positive_candidates": 80,
+        "positive_with_any_GT_supported_rival": 24,
+        "positive_with_rival_outside_group": 1,
+        "alternative_positive_with_rival_outside_group": 0,
+        "request_groups": 17,
+        "largest_request_candidates": 16,
+        "frames": 16,
+        "candidates": 134,
+        "IGNORE_candidates": 54,
+        "IGNORE_with_GT_IoU_at_least_half": 27,
+        "IGNORE_with_multiple_supported_GT": 0,
+        "GT_supported_IGNORE_with_winner_inside_group": 26,
+        "GT_supported_IGNORE_with_winner_outside_group": 1,
+        "GT_supported_IGNORE_with_no_assigned_winner": 0,
+        "alternative_GT_supported_IGNORE_with_winner_inside_group": 27,
+        "alternative_GT_supported_IGNORE_with_winner_outside_group": 0,
+        "alternative_GT_supported_IGNORE_with_only_outside_winners": 0,
+        "IGNORE_without_GT_IoU_at_least_half": 27,
+        "GT_supported_IGNORE_with_only_outside_winners": 1,
+        "single_GT_IGNORE_with_only_outside_winner": 1
+      },
+      "examples": [
+        {
+          "frame": 609,
+          "candidate": 0,
+          "group": "dancetrack0062_609_batch0",
+          "box": [
+            167.1201201201201,
+            520.5985985985986,
+            357.29129129129126,
+            798.1791791791792
+          ],
+          "target": "IGNORE",
+          "original_winning_candidate": 22,
+          "winner_group": "dancetrack0062_609_batch1",
+          "winner_box": [
+            167.1201201201201,
+            521.6786786786787,
+            357.29129129129126,
+            798.1791791791792
+          ],
+          "supported_GT_count": 1,
+          "full_frame_image_still_visible": true
+        }
+      ],
+      "empty_request_groups_without_identity_questions": 0
+    },
+    "mot/dancetrack0066": {
+      "sequence": "dancetrack0066",
+      "counts": {
+        "original_registry_binding_and_IGNORE_target_exact": 170,
+        "matched_positive_candidates": 80,
+        "positive_with_any_GT_supported_rival": 22,
+        "positive_with_rival_outside_group": 0,
+        "alternative_positive_with_rival_outside_group": 0,
+        "IGNORE_candidates": 90,
+        "IGNORE_with_GT_IoU_at_least_half": 26,
+        "IGNORE_with_multiple_supported_GT": 0,
+        "GT_supported_IGNORE_with_winner_inside_group": 26,
+        "GT_supported_IGNORE_with_winner_outside_group": 0,
+        "GT_supported_IGNORE_with_no_assigned_winner": 0,
+        "alternative_GT_supported_IGNORE_with_winner_inside_group": 26,
+        "alternative_GT_supported_IGNORE_with_winner_outside_group": 0,
+        "alternative_GT_supported_IGNORE_with_only_outside_winners": 0,
+        "request_groups": 17,
+        "largest_request_candidates": 16,
+        "frames": 16,
+        "candidates": 170,
+        "IGNORE_without_GT_IoU_at_least_half": 64
+      },
+      "examples": [],
+      "empty_request_groups_without_identity_questions": 0
+    },
+    "mot/dancetrack0068": {
+      "sequence": "dancetrack0068",
+      "counts": {
+        "original_registry_binding_and_IGNORE_target_exact": 101,
+        "matched_positive_candidates": 80,
+        "positive_with_any_GT_supported_rival": 3,
+        "positive_with_rival_outside_group": 0,
+        "alternative_positive_with_rival_outside_group": 0,
+        "request_groups": 16,
+        "largest_request_candidates": 8,
+        "frames": 16,
+        "candidates": 101,
+        "IGNORE_candidates": 21,
+        "IGNORE_with_GT_IoU_at_least_half": 3,
+        "IGNORE_with_multiple_supported_GT": 0,
+        "GT_supported_IGNORE_with_winner_inside_group": 3,
+        "GT_supported_IGNORE_with_winner_outside_group": 0,
+        "GT_supported_IGNORE_with_no_assigned_winner": 0,
+        "alternative_GT_supported_IGNORE_with_winner_inside_group": 3,
+        "alternative_GT_supported_IGNORE_with_winner_outside_group": 0,
+        "alternative_GT_supported_IGNORE_with_only_outside_winners": 0,
+        "IGNORE_without_GT_IoU_at_least_half": 18
+      },
+      "examples": [],
+      "empty_request_groups_without_identity_questions": 0
+    },
+    "mot/dancetrack0069": {
+      "sequence": "dancetrack0069",
+      "counts": {
+        "original_registry_binding_and_IGNORE_target_exact": 114,
+        "matched_positive_candidates": 96,
+        "positive_with_any_GT_supported_rival": 19,
+        "positive_with_rival_outside_group": 0,
+        "alternative_positive_with_rival_outside_group": 0,
+        "request_groups": 16,
+        "largest_request_candidates": 12,
+        "frames": 16,
+        "candidates": 114,
+        "IGNORE_candidates": 18,
+        "IGNORE_with_GT_IoU_at_least_half": 18,
+        "IGNORE_with_multiple_supported_GT": 2,
+        "GT_supported_IGNORE_with_winner_inside_group": 18,
+        "GT_supported_IGNORE_with_winner_outside_group": 0,
+        "GT_supported_IGNORE_with_no_assigned_winner": 0,
+        "alternative_GT_supported_IGNORE_with_winner_inside_group": 18,
+        "alternative_GT_supported_IGNORE_with_winner_outside_group": 0,
+        "alternative_GT_supported_IGNORE_with_only_outside_winners": 0
+      },
+      "examples": [],
+      "empty_request_groups_without_identity_questions": 0
+    },
+    "mot/dancetrack0074": {
+      "sequence": "dancetrack0074",
+      "counts": {
+        "original_registry_binding_and_IGNORE_target_exact": 136,
+        "matched_positive_candidates": 80,
+        "positive_with_any_GT_supported_rival": 7,
+        "positive_with_rival_outside_group": 0,
+        "alternative_positive_with_rival_outside_group": 0,
+        "IGNORE_candidates": 56,
+        "IGNORE_without_GT_IoU_at_least_half": 49,
+        "request_groups": 16,
+        "largest_request_candidates": 12,
+        "frames": 16,
+        "candidates": 136,
+        "IGNORE_with_GT_IoU_at_least_half": 7,
+        "IGNORE_with_multiple_supported_GT": 0,
+        "GT_supported_IGNORE_with_winner_inside_group": 7,
+        "GT_supported_IGNORE_with_winner_outside_group": 0,
+        "GT_supported_IGNORE_with_no_assigned_winner": 0,
+        "alternative_GT_supported_IGNORE_with_winner_inside_group": 7,
+        "alternative_GT_supported_IGNORE_with_winner_outside_group": 0,
+        "alternative_GT_supported_IGNORE_with_only_outside_winners": 0
+      },
+      "examples": [],
+      "empty_request_groups_without_identity_questions": 0
+    },
+    "mot/dancetrack0075": {
+      "sequence": "dancetrack0075",
+      "counts": {
+        "original_registry_binding_and_IGNORE_target_exact": 121,
+        "matched_positive_candidates": 100,
+        "positive_with_any_GT_supported_rival": 20,
+        "positive_with_rival_outside_group": 0,
+        "alternative_positive_with_rival_outside_group": 0,
+        "request_groups": 16,
+        "largest_request_candidates": 13,
+        "frames": 16,
+        "candidates": 121,
+        "IGNORE_candidates": 21,
+        "IGNORE_with_GT_IoU_at_least_half": 21,
+        "IGNORE_with_multiple_supported_GT": 8,
+        "GT_supported_IGNORE_with_winner_inside_group": 21,
+        "GT_supported_IGNORE_with_winner_outside_group": 0,
+        "GT_supported_IGNORE_with_no_assigned_winner": 0,
+        "alternative_GT_supported_IGNORE_with_winner_inside_group": 21,
+        "alternative_GT_supported_IGNORE_with_winner_outside_group": 0,
+        "alternative_GT_supported_IGNORE_with_only_outside_winners": 0
+      },
+      "examples": [],
+      "empty_request_groups_without_identity_questions": 0
+    },
+    "mot/dancetrack0080": {
+      "sequence": "dancetrack0080",
+      "counts": {
+        "original_registry_binding_and_IGNORE_target_exact": 192,
+        "matched_positive_candidates": 176,
+        "positive_with_any_GT_supported_rival": 25,
+        "positive_with_rival_outside_group": 0,
+        "alternative_positive_with_rival_outside_group": 0,
+        "IGNORE_candidates": 16,
+        "IGNORE_without_GT_IoU_at_least_half": 9,
+        "request_groups": 16,
+        "largest_request_candidates": 12,
+        "frames": 16,
+        "candidates": 192,
+        "IGNORE_with_GT_IoU_at_least_half": 7,
+        "IGNORE_with_multiple_supported_GT": 0,
+        "GT_supported_IGNORE_with_winner_inside_group": 7,
+        "GT_supported_IGNORE_with_winner_outside_group": 0,
+        "GT_supported_IGNORE_with_no_assigned_winner": 0,
+        "alternative_GT_supported_IGNORE_with_winner_inside_group": 7,
+        "alternative_GT_supported_IGNORE_with_winner_outside_group": 0,
+        "alternative_GT_supported_IGNORE_with_only_outside_winners": 0
+      },
+      "examples": [],
+      "empty_request_groups_without_identity_questions": 0
+    },
+    "mot/dancetrack0082": {
+      "sequence": "dancetrack0082",
+      "counts": {
+        "frames": 16,
+        "candidates": 298,
+        "original_registry_binding_and_IGNORE_target_exact": 298,
+        "matched_positive_candidates": 288,
+        "positive_with_any_GT_supported_rival": 9,
+        "positive_with_rival_outside_group": 0,
+        "alternative_positive_with_rival_outside_group": 0,
+        "IGNORE_candidates": 10,
+        "IGNORE_without_GT_IoU_at_least_half": 10,
+        "request_groups": 28,
+        "largest_request_candidates": 16
+      },
+      "examples": [],
+      "empty_request_groups_without_identity_questions": 2
+    },
+    "mot/dancetrack0086": {
+      "sequence": "dancetrack0086",
+      "counts": {
+        "original_registry_binding_and_IGNORE_target_exact": 267,
+        "matched_positive_candidates": 256,
+        "positive_with_any_GT_supported_rival": 8,
+        "positive_with_rival_outside_group": 5,
+        "alternative_positive_with_rival_outside_group": 2,
+        "IGNORE_candidates": 11,
+        "IGNORE_with_GT_IoU_at_least_half": 5,
+        "IGNORE_with_multiple_supported_GT": 0,
+        "GT_supported_IGNORE_with_winner_inside_group": 0,
+        "GT_supported_IGNORE_with_winner_outside_group": 5,
+        "GT_supported_IGNORE_with_no_assigned_winner": 0,
+        "alternative_GT_supported_IGNORE_with_winner_inside_group": 3,
+        "alternative_GT_supported_IGNORE_with_winner_outside_group": 2,
+        "alternative_GT_supported_IGNORE_with_only_outside_winners": 2,
+        "GT_supported_IGNORE_with_only_outside_winners": 5,
+        "single_GT_IGNORE_with_only_outside_winner": 5,
+        "request_groups": 27,
+        "largest_request_candidates": 16,
+        "frames": 16,
+        "candidates": 267,
+        "IGNORE_without_GT_IoU_at_least_half": 6
+      },
+      "examples": [
+        {
+          "frame": 294,
+          "candidate": 16,
+          "group": "dancetrack0086_294_batch1",
+          "box": [
+            1329.2772772772773,
+            344.54554554554556,
+            1523.2902902902902,
+            631.8468468468469
+          ],
+          "target": "IGNORE",
+          "original_winning_candidate": 15,
+          "winner_group": "dancetrack0086_294_batch0",
+          "winner_box": [
+            1329.2772772772773,
+            341.3053053053053,
+            1523.2902902902902,
+            631.8468468468469
+          ],
+          "supported_GT_count": 1,
+          "full_frame_image_still_visible": true
+        },
+        {
+          "frame": 297,
+          "candidate": 16,
+          "group": "dancetrack0086_297_batch1",
+          "box": [
+            420.6816816816817,
+            279.7407407407407,
+            560.908908908909,
+            547.6006006006006
+          ],
+          "target": "IGNORE",
+          "original_winning_candidate": 3,
+          "winner_group": "dancetrack0086_297_batch0",
+          "winner_box": [
+            420.6816816816817,
+            280.8208208208208,
+            560.908908908909,
+            547.6006006006006
+          ],
+          "supported_GT_count": 1,
+          "full_frame_image_still_visible": true
+        },
+        {
+          "frame": 302,
+          "candidate": 15,
+          "group": "dancetrack0086_302_batch0",
+          "box": [
+            1375.3793793793793,
+            333.74474474474476,
+            1605.88988988989,
+            640.4874874874874
+          ],
+          "target": "IGNORE",
+          "original_winning_candidate": 16,
+          "winner_group": "dancetrack0086_302_batch1",
+          "winner_box": [
+            1375.3793793793793,
+            333.74474474474476,
+            1607.8108108108108,
+            640.4874874874874
+          ],
+          "supported_GT_count": 1,
+          "full_frame_image_still_visible": true
+        }
+      ],
+      "empty_request_groups_without_identity_questions": 0
+    },
+    "mot/dancetrack0087": {
+      "sequence": "dancetrack0087",
+      "counts": {
+        "original_registry_binding_and_IGNORE_target_exact": 189,
+        "matched_positive_candidates": 168,
+        "positive_with_any_GT_supported_rival": 11,
+        "positive_with_rival_outside_group": 0,
+        "alternative_positive_with_rival_outside_group": 0,
+        "IGNORE_candidates": 21,
+        "IGNORE_without_GT_IoU_at_least_half": 11,
+        "IGNORE_with_GT_IoU_at_least_half": 10,
+        "IGNORE_with_multiple_supported_GT": 0,
+        "GT_supported_IGNORE_with_winner_inside_group": 10,
+        "GT_supported_IGNORE_with_winner_outside_group": 0,
+        "GT_supported_IGNORE_with_no_assigned_winner": 0,
+        "alternative_GT_supported_IGNORE_with_winner_inside_group": 10,
+        "alternative_GT_supported_IGNORE_with_winner_outside_group": 0,
+        "alternative_GT_supported_IGNORE_with_only_outside_winners": 0,
+        "request_groups": 16,
+        "largest_request_candidates": 12,
+        "frames": 16,
+        "candidates": 189
+      },
+      "examples": [],
+      "empty_request_groups_without_identity_questions": 0
+    },
+    "mot/dancetrack0096": {
+      "sequence": "dancetrack0096",
+      "counts": {
+        "original_registry_binding_and_IGNORE_target_exact": 286,
+        "matched_positive_candidates": 275,
+        "positive_with_any_GT_supported_rival": 14,
+        "positive_with_rival_outside_group": 1,
+        "alternative_positive_with_rival_outside_group": 0,
+        "request_groups": 30,
+        "largest_request_candidates": 16,
+        "frames": 16,
+        "candidates": 286,
+        "IGNORE_candidates": 11,
+        "IGNORE_without_GT_IoU_at_least_half": 9,
+        "IGNORE_with_GT_IoU_at_least_half": 2,
+        "IGNORE_with_multiple_supported_GT": 0,
+        "GT_supported_IGNORE_with_winner_inside_group": 1,
+        "GT_supported_IGNORE_with_winner_outside_group": 1,
+        "GT_supported_IGNORE_with_no_assigned_winner": 0,
+        "alternative_GT_supported_IGNORE_with_winner_inside_group": 2,
+        "alternative_GT_supported_IGNORE_with_winner_outside_group": 0,
+        "alternative_GT_supported_IGNORE_with_only_outside_winners": 0,
+        "GT_supported_IGNORE_with_only_outside_winners": 1,
+        "single_GT_IGNORE_with_only_outside_winner": 1
+      },
+      "examples": [
+        {
+          "frame": 301,
+          "candidate": 1,
+          "group": "dancetrack0096_301_batch0",
+          "box": [
+            328.47747747747746,
+            547.6006006006006,
+            399.55155155155154,
+            751.7357357357357
+          ],
+          "target": "IGNORE",
+          "original_winning_candidate": 16,
+          "winner_group": "dancetrack0096_301_batch1",
+          "winner_box": [
+            328.47747747747746,
+            547.6006006006006,
+            397.6306306306306,
+            751.7357357357357
+          ],
+          "supported_GT_count": 1,
+          "full_frame_image_still_visible": true
+        }
+      ],
+      "empty_request_groups_without_identity_questions": 1
+    },
+    "mot/dancetrack0098": {
+      "sequence": "dancetrack0098",
+      "counts": {
+        "original_registry_binding_and_IGNORE_target_exact": 167,
+        "matched_positive_candidates": 108,
+        "positive_with_any_GT_supported_rival": 53,
+        "positive_with_rival_outside_group": 1,
+        "alternative_positive_with_rival_outside_group": 1,
+        "IGNORE_candidates": 59,
+        "IGNORE_with_GT_IoU_at_least_half": 59,
+        "IGNORE_with_multiple_supported_GT": 7,
+        "GT_supported_IGNORE_with_winner_inside_group": 58,
+        "GT_supported_IGNORE_with_winner_outside_group": 1,
+        "GT_supported_IGNORE_with_no_assigned_winner": 0,
+        "alternative_GT_supported_IGNORE_with_winner_inside_group": 58,
+        "alternative_GT_supported_IGNORE_with_winner_outside_group": 1,
+        "alternative_GT_supported_IGNORE_with_only_outside_winners": 1,
+        "request_groups": 17,
+        "largest_request_candidates": 16,
+        "frames": 16,
+        "candidates": 167,
+        "GT_supported_IGNORE_with_only_outside_winners": 1,
+        "single_GT_IGNORE_with_only_outside_winner": 1
+      },
+      "examples": [
+        {
+          "frame": 604,
+          "candidate": 6,
+          "group": "dancetrack0098_604_batch0",
+          "box": [
+            1010.1411411411411,
+            210.87787787787786,
+            1199.6226226226227,
+            623.9969969969969
+          ],
+          "target": "IGNORE",
+          "original_winning_candidate": 16,
+          "winner_group": "dancetrack0098_604_batch1",
+          "winner_box": [
+            1010.1411411411411,
+            210.87787787787786,
+            1197.062062062062,
+            623.2772772772773
+          ],
+          "supported_GT_count": 1,
+          "full_frame_image_still_visible": true
+        }
+      ],
+      "empty_request_groups_without_identity_questions": 0
+    },
+    "mot/MOT20-01": {
+      "sequence": "MOT20-01",
+      "counts": {
+        "original_registry_binding_and_IGNORE_target_exact": 996,
+        "matched_positive_candidates": 890,
+        "positive_with_any_GT_supported_rival": 89,
+        "positive_with_rival_outside_group": 35,
+        "alternative_positive_with_rival_outside_group": 3,
+        "IGNORE_candidates": 106,
+        "IGNORE_with_GT_IoU_at_least_half": 74,
+        "IGNORE_with_multiple_supported_GT": 28,
+        "GT_supported_IGNORE_with_winner_inside_group": 43,
+        "GT_supported_IGNORE_with_winner_outside_group": 31,
+        "GT_supported_IGNORE_with_no_assigned_winner": 0,
+        "alternative_GT_supported_IGNORE_with_winner_inside_group": 71,
+        "alternative_GT_supported_IGNORE_with_winner_outside_group": 3,
+        "alternative_GT_supported_IGNORE_with_only_outside_winners": 3,
+        "request_groups": 69,
+        "largest_request_candidates": 16,
+        "frames": 32,
+        "candidates": 996,
+        "IGNORE_without_GT_IoU_at_least_half": 32,
+        "GT_supported_IGNORE_with_only_outside_winners": 31,
+        "single_GT_IGNORE_with_only_outside_winner": 29
+      },
+      "examples": [
+        {
+          "frame": 100,
+          "candidate": 13,
+          "group": "MOT20-01_100_batch0",
+          "box": [
+            914.3583583583583,
+            527.0790790790791,
+            971.9859859859861,
+            661.009009009009
+          ],
+          "target": "IGNORE",
+          "original_winning_candidate": 27,
+          "winner_group": "MOT20-01_100_batch1",
+          "winner_box": [
+            914.3583583583583,
+            527.0790790790791,
+            971.9859859859861,
+            663.1691691691692
+          ],
+          "supported_GT_count": 1,
+          "full_frame_image_still_visible": true
+        },
+        {
+          "frame": 100,
+          "candidate": 22,
+          "group": "MOT20-01_100_batch1",
+          "box": [
+            1415.7187187187187,
+            697.7317317317317,
+            1500.2392392392394,
+            918.0680680680681
+          ],
+          "target": "IGNORE",
+          "original_winning_candidate": 32,
+          "winner_group": "MOT20-01_100_batch2",
+          "winner_box": [
+            1417.6396396396397,
+            697.7317317317317,
+            1500.2392392392394,
+            918.0680680680681
+          ],
+          "supported_GT_count": 1,
+          "full_frame_image_still_visible": true
+        },
+        {
+          "frame": 100,
+          "candidate": 24,
+          "group": "MOT20-01_100_batch1",
+          "box": [
+            1515.6066066066066,
+            535.7197197197197,
+            1569.3923923923924,
+            636.1671671671672
+          ],
+          "target": "IGNORE",
+          "original_winning_candidate": 33,
+          "winner_group": "MOT20-01_100_batch2",
+          "winner_box": [
+            1515.6066066066066,
+            535.7197197197197,
+            1571.3133133133133,
+            635.0870870870871
+          ],
+          "supported_GT_count": 1,
+          "full_frame_image_still_visible": true
+        }
+      ],
+      "empty_request_groups_without_identity_questions": 0
+    },
+    "mot/MOT20-02": {
+      "sequence": "MOT20-02",
+      "counts": {
+        "original_registry_binding_and_IGNORE_target_exact": 955,
+        "matched_positive_candidates": 841,
+        "positive_with_any_GT_supported_rival": 102,
+        "positive_with_rival_outside_group": 69,
+        "alternative_positive_with_rival_outside_group": 1,
+        "IGNORE_candidates": 114,
+        "IGNORE_without_GT_IoU_at_least_half": 38,
+        "request_groups": 64,
+        "largest_request_candidates": 16,
+        "frames": 32,
+        "candidates": 955,
+        "IGNORE_with_GT_IoU_at_least_half": 76,
+        "IGNORE_with_multiple_supported_GT": 1,
+        "GT_supported_IGNORE_with_winner_inside_group": 38,
+        "GT_supported_IGNORE_with_winner_outside_group": 37,
+        "GT_supported_IGNORE_with_no_assigned_winner": 1,
+        "alternative_GT_supported_IGNORE_with_winner_inside_group": 73,
+        "alternative_GT_supported_IGNORE_with_winner_outside_group": 2,
+        "alternative_GT_supported_IGNORE_with_only_outside_winners": 2,
+        "GT_supported_IGNORE_with_only_outside_winners": 37,
+        "single_GT_IGNORE_with_only_outside_winner": 36
+      },
+      "examples": [
+        {
+          "frame": 691,
+          "candidate": 11,
+          "group": "MOT20-02_691_batch0",
+          "box": [
+            712.6616616616617,
+            237.6176176176176,
+            774.1311311311312,
+            398.54954954954957
+          ],
+          "target": "IGNORE",
+          "original_winning_candidate": 29,
+          "winner_group": "MOT20-02_691_batch1",
+          "winner_box": [
+            712.6616616616617,
+            238.69769769769772,
+            774.1311311311312,
+            398.54954954954957
+          ],
+          "supported_GT_count": 1,
+          "full_frame_image_still_visible": true
+        },
+        {
+          "frame": 691,
+          "candidate": 26,
+          "group": "MOT20-02_691_batch1",
+          "box": [
+            290.05905905905905,
+            786.2982982982983,
+            491.75575575575573,
+            1077.91991991992
+          ],
+          "target": "IGNORE",
+          "original_winning_candidate": 2,
+          "winner_group": "MOT20-02_691_batch0",
+          "winner_box": [
+            291.97997997998,
+            786.2982982982983,
+            491.75575575575573,
+            1079.0
+          ],
+          "supported_GT_count": 1,
+          "full_frame_image_still_visible": true
+        },
+        {
+          "frame": 691,
+          "candidate": 27,
+          "group": "MOT20-02_691_batch1",
+          "box": [
+            499.43943943943947,
+            680.4504504504505,
+            587.8018018018017,
+            881.3453453453453
+          ],
+          "target": "IGNORE",
+          "original_winning_candidate": 3,
+          "winner_group": "MOT20-02_691_batch0",
+          "winner_box": [
+            499.43943943943947,
+            680.4504504504505,
+            582.039039039039,
+            879.1851851851851
+          ],
+          "supported_GT_count": 1,
+          "full_frame_image_still_visible": true
+        }
+      ],
+      "empty_request_groups_without_identity_questions": 1
+    },
+    "mot/MOT20-03": {
+      "sequence": "MOT20-03",
+      "counts": {
+        "original_registry_binding_and_IGNORE_target_exact": 14784,
+        "matched_positive_candidates": 12457,
+        "positive_with_any_GT_supported_rival": 2231,
+        "positive_with_rival_outside_group": 2118,
+        "alternative_positive_with_rival_outside_group": 118,
+        "request_groups": 973,
+        "largest_request_candidates": 16,
+        "frames": 128,
+        "candidates": 14784,
+        "IGNORE_candidates": 2327,
+        "IGNORE_without_GT_IoU_at_least_half": 210,
+        "IGNORE_with_GT_IoU_at_least_half": 2117,
+        "IGNORE_with_multiple_supported_GT": 14,
+        "GT_supported_IGNORE_with_winner_inside_group": 14,
+        "GT_supported_IGNORE_with_winner_outside_group": 2106,
+        "GT_supported_IGNORE_with_no_assigned_winner": 0,
+        "alternative_GT_supported_IGNORE_with_winner_inside_group": 2009,
+        "alternative_GT_supported_IGNORE_with_winner_outside_group": 109,
+        "alternative_GT_supported_IGNORE_with_only_outside_winners": 108,
+        "GT_supported_IGNORE_with_only_outside_winners": 2103,
+        "single_GT_IGNORE_with_only_outside_winner": 2092
+      },
+      "examples": [
+        {
+          "frame": 546,
+          "candidate": 3,
+          "group": "MOT20-03_546_batch0",
+          "box": [
+            10.558558558558559,
+            686.3063063063063,
+            57.48548548548548,
+            805.96996996997
+          ],
+          "target": "IGNORE",
+          "original_winning_candidate": 100,
+          "winner_group": "MOT20-03_546_batch6",
+          "winner_box": [
+            11.731731731731731,
+            687.1861861861862,
+            57.48548548548548,
+            806.8498498498498
+          ],
+          "supported_GT_count": 1,
+          "full_frame_image_still_visible": true
+        },
+        {
+          "frame": 546,
+          "candidate": 4,
+          "group": "MOT20-03_546_batch0",
+          "box": [
+            15.25125125125125,
+            426.74174174174175,
+            65.69769769769769,
+            534.0870870870871
+          ],
+          "target": "IGNORE",
+          "original_winning_candidate": 101,
+          "winner_group": "MOT20-03_546_batch6",
+          "winner_box": [
+            16.424424424424423,
+            426.74174174174175,
+            64.52452452452452,
+            534.966966966967
+          ],
+          "supported_GT_count": 1,
+          "full_frame_image_still_visible": true
+        },
+        {
+          "frame": 546,
+          "candidate": 17,
+          "group": "MOT20-03_546_batch1",
+          "box": [
+            252.23223223223223,
+            369.54954954954957,
+            303.85185185185185,
+            483.93393393393393
+          ],
+          "target": "IGNORE",
+          "original_winning_candidate": 107,
+          "winner_group": "MOT20-03_546_batch6",
+          "winner_box": [
+            253.40540540540542,
+            368.66966966966964,
+            303.85185185185185,
+            483.0540540540541
+          ],
+          "supported_GT_count": 1,
+          "full_frame_image_still_visible": true
+        }
+      ],
+      "empty_request_groups_without_identity_questions": 7
+    },
+    "mot/MOT20-05": {
+      "sequence": "MOT20-05",
+      "counts": {
+        "original_registry_binding_and_IGNORE_target_exact": 21237,
+        "matched_positive_candidates": 18399,
+        "positive_with_any_GT_supported_rival": 3088,
+        "positive_with_rival_outside_group": 2890,
+        "alternative_positive_with_rival_outside_group": 177,
+        "IGNORE_candidates": 2838,
+        "IGNORE_without_GT_IoU_at_least_half": 363,
+        "request_groups": 1385,
+        "largest_request_candidates": 16,
+        "frames": 128,
+        "candidates": 21237,
+        "IGNORE_with_GT_IoU_at_least_half": 2475,
+        "IGNORE_with_multiple_supported_GT": 58,
+        "GT_supported_IGNORE_with_winner_inside_group": 100,
+        "GT_supported_IGNORE_with_winner_outside_group": 2394,
+        "GT_supported_IGNORE_with_no_assigned_winner": 2,
+        "alternative_GT_supported_IGNORE_with_winner_inside_group": 2345,
+        "alternative_GT_supported_IGNORE_with_winner_outside_group": 137,
+        "alternative_GT_supported_IGNORE_with_only_outside_winners": 128,
+        "GT_supported_IGNORE_with_only_outside_winners": 2373,
+        "single_GT_IGNORE_with_only_outside_winner": 2337
+      },
+      "examples": [
+        {
+          "frame": 772,
+          "candidate": 27,
+          "group": "MOT20-05_772_batch1",
+          "box": [
+            473.2312312312312,
+            1.08008008008008,
+            524.5255255255255,
+            76.68568568568568
+          ],
+          "target": "IGNORE",
+          "original_winning_candidate": 141,
+          "winner_group": "MOT20-05_772_batch8",
+          "winner_box": [
+            473.2312312312312,
+            1.08008008008008,
+            524.5255255255255,
+            75.6056056056056
+          ],
+          "supported_GT_count": 1,
+          "full_frame_image_still_visible": true
+        },
+        {
+          "frame": 772,
+          "candidate": 29,
+          "group": "MOT20-05_772_batch1",
+          "box": [
+            481.5045045045045,
+            762.5365365365365,
+            547.6906906906908,
+            925.6286286286286
+          ],
+          "target": "IGNORE",
+          "original_winning_candidate": 142,
+          "winner_group": "MOT20-05_772_batch8",
+          "winner_box": [
+            481.5045045045045,
+            762.5365365365365,
+            547.6906906906908,
+            926.7087087087086
+          ],
+          "supported_GT_count": 1,
+          "full_frame_image_still_visible": true
+        },
+        {
+          "frame": 772,
+          "candidate": 47,
+          "group": "MOT20-05_772_batch2",
+          "box": [
+            774.3783783783783,
+            1.08008008008008,
+            827.3273273273275,
+            104.76776776776778
+          ],
+          "target": "IGNORE",
+          "original_winning_candidate": 146,
+          "winner_group": "MOT20-05_772_batch9",
+          "winner_box": [
+            774.3783783783783,
+            1.08008008008008,
+            828.981981981982,
+            105.84784784784785
+          ],
+          "supported_GT_count": 1,
+          "full_frame_image_still_visible": true
+        }
+      ],
+      "empty_request_groups_without_identity_questions": 2
+    }
+  },
+  "interpretation": "GT-supported IGNORE is a whole-frame one-to-one labeling outcome, not background truth. Outside-group means outside the explicitly enumerated candidate list; full-frame image pixels are still visible, so this is not proof labels are unobservable or training must fail. Multiple-GT overlaps remain explicitly counted. TRAIN only; no held-out threshold tuning or new causal tracking scores.",
+  "original_training_targets_inputs_or_predictions_changed": false,
+  "new_GPU_or_optimizer_updates": 0,
+  "new_ROI_or_image_bank_bytes": 0,
+  "metadata_suballocation": "At most128KiB from existing2MiB NO_MATCH audit/control reservation.",
+  "combined_registered_feature_upper_bytes": 26829071326,
+  "global_temporary_feature_budget_bytes": 26843545600,
+  "full_goal_complete": false
+}

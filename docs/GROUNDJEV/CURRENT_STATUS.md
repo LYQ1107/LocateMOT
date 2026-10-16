@@ -1,3 +1,58 @@
+## Overlap-neighbor candidate context study launched — 2026-10-16
+
+The preceding TRAIN audit motivates changing which candidates share a context,
+rather than dropping or merging proposals. New opt-in `overlap_neighbors` keeps
+capacity16. Seed the lowest remaining original index; repeatedly add the remaining
+candidate with greatest IoU to any current group member, ties by original index.
+Zero-overlap ties also retain original order. No IoU threshold, NMS, topK, class
+filter or GT decision rule. One-vs-N geometry is streamed, not an N-squared feature
+archive. Every original candidate remains exactly once; model decisions are mapped
+back to their original row indices before the unchanged global matcher.
+
+Re-auditing all43TRAIN units preserves every original count/GT binding/IGNORE
+target. Only-outside-group winners fall4804→298; GT-supported IGNORE with an
+inside-group winner rises1024→5530. Positive candidates with outside-group rivals
+fall5319→320. These are evidence co-exposure counts, not new labels or tracking
+quality. Full-frame imagery was always visible and is unchanged. Original frozen
+audits remain retained. Evidence:
+`diagnostics/candidate_group_competition_overlap_neighbors_v1/summary.json`.
+
+Real3frameprefixes on all5registeredscopes/3339candidates pass exact default
+outputs and entire states. The regrouped causal prefixes check native input feature
+ownership and association/update/query/category output alignment to original rows
+against direct regrouped neural outputs. No GPU or GT input. Evidence:
+`validation/overlap_neighbor_grouping_v1/validation.json`.
+
+Only after both gates, CPU owner/session90021 launched the registered all5scope
+before/regrouped study:5explicit completed original references plus5new rollouts.
+The same original shared Compact checkpoint, 16capacity, geometryshortlist32,
+learned heads, original lifecycle/NO_MATCH policies, clocks/frames/candidates and
+official scorers remain fixed. Input grouping can change every learned output,
+geometric shortlists, first-group lifecycle selection and later causal memory;
+this is not an isolated association-only or probability-conserving intervention.
+No new optimizer or native foundation training is claimed. One policy across all
+tasks; final full-scope scores decide whether to retain it. Registration:
+`configs/groundjev/overlap_neighbor_grouping_v1.json` and
+`compact/overlap_neighbor_grouping_v1/registration.json`.
+
+First completeDT1203official control is now frozen: HOTA26.3157→28.6921%,
+DetA45.1842→46.2724%, AssA15.3476→17.8072%, IDF130.6329→33.2758%,
+IDSW165→159, FP579→736, FN1962→1794. This is a modest positive on one
+registered scope with increased FP, not all-task or full-dataset parity. Remaining
+RMOT/TAO/MOT20 controls stay registered; no task-specific model/policy promotion.
+Evidence: `compact/overlap_neighbor_grouping_v1/first_DT_scope_completed.json`.
+
+Both registered RMOT800 scopes have also completed: single HOTA6.0247% and
+multi19.8019%, with every reported official metric exactly equal to the original
+reference. This does not assert every probability/state is identical. First3scopes/
+all6official units are frozen in `compact/overlap_neighbor_grouping_v1/first_three_scopes_completed.json`.
+TAO and MOT20 remain pending with the original owner.
+
+At most1MiB streamed grouping geometry plus256KiBreports uses the remaining
+existing2MiB audit/control reservation. Feature upper stays26,829,071,326bytes
+<25GiB, no new ROI/image bank or GPU. Native Full/paired training and original
+MOT20NO_MATCH owner48863 continue unchanged. Overall goal remains incomplete.
+
 ## TRAIN candidate-group competition audit completed — 2026-10-16
 
 The new read-only audit checks all43MOT TRAIN units/1056frames/48051candidates

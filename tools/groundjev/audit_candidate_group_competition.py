@@ -10,7 +10,7 @@ ROOT=Path(__file__).resolve().parents[2]
 sys.path.insert(0,str(ROOT))
 
 
-def audit(unit):
+def audit(unit,alternative_grouping=None):
     import numpy as np
     from scipy.optimize import linear_sum_assignment
     from locatemot.groundjev.decision import overlap
@@ -45,6 +45,13 @@ def audit(unit):
                 matched={int(i):int(j) for i,j in zip(rr,cc) if matrix[i,j]>=.5}
             winners={j:i for i,j in matched.items()}
             group_for=[registry[frame,i]['ordinary_group'] for i in range(len(candidates))]
+            alternative=None
+            if alternative_grouping:
+                from locatemot.groundjev.candidate_groups import candidate_group_indices
+                new_groups=candidate_group_indices(candidates,16,alternative_grouping)
+                assert sorted(i for group in new_groups for i in group)==list(range(len(candidates)))
+                assert all(len(group)<=16 for group in new_groups)
+                alternative={i:k for k,group in enumerate(new_groups) for i in group}
             local_offsets=Counter()
             for i,candidate in enumerate(candidates):
                 record=registry[frame,i];identifier=group_for[i];group=groups[identifier]
@@ -61,6 +68,8 @@ def audit(unit):
                     rivals=[k for k in np.flatnonzero(matrix[:,matched[i]]>=.5) if k!=i]
                     counts['positive_with_any_GT_supported_rival']+=bool(rivals)
                     counts['positive_with_rival_outside_group']+=any(group_for[k]!=identifier for k in rivals)
+                    if alternative is not None:
+                        counts['alternative_positive_with_rival_outside_group']+=any(alternative[k]!=alternative[i] for k in rivals)
                     continue
                 counts['IGNORE_candidates']+=1
                 valid=list(map(int,np.flatnonzero(matrix[i]>=.5)))
@@ -73,6 +82,12 @@ def audit(unit):
                 counts['GT_supported_IGNORE_with_winner_inside_group']+=bool(inside)
                 counts['GT_supported_IGNORE_with_winner_outside_group']+=bool(outside)
                 counts['GT_supported_IGNORE_with_no_assigned_winner']+=not inside and not outside
+                if alternative is not None:
+                    new_inside=[winners[j] for j in valid if j in winners and alternative[winners[j]]==alternative[i]]
+                    new_outside=[winners[j] for j in valid if j in winners and alternative[winners[j]]!=alternative[i]]
+                    counts['alternative_GT_supported_IGNORE_with_winner_inside_group']+=bool(new_inside)
+                    counts['alternative_GT_supported_IGNORE_with_winner_outside_group']+=bool(new_outside)
+                    counts['alternative_GT_supported_IGNORE_with_only_outside_winners']+=bool(new_outside) and not new_inside
                 if outside and not inside:
                     counts['GT_supported_IGNORE_with_only_outside_winners']+=1
                     if len(valid)==1:counts['single_GT_IGNORE_with_only_outside_winner']+=1
@@ -96,11 +111,12 @@ def audit(unit):
 def main():
     parser=argparse.ArgumentParser();parser.add_argument('--index',type=Path,required=True)
     parser.add_argument('--prior-audit',type=Path,required=True);parser.add_argument('--out',type=Path,required=True)
+    parser.add_argument('--alternative-grouping',choices=['overlap_neighbors'])
     args=parser.parse_args();args.out.mkdir(parents=True,exist_ok=False)
     index=json.loads(args.index.read_text());prior=json.loads(args.prior_audit.read_text());units={};total=Counter()
     for name,unit in index['units'].items():
         if unit['task']!='mot':continue
-        result=audit(unit);units[name]=result
+        result=audit(unit,args.alternative_grouping);units[name]=result
         largest=max(total['largest_request_candidates'],result['counts']['largest_request_candidates'])
         total.update(result['counts']);total['largest_request_candidates']=largest
     expected=prior['train_totals']
@@ -109,6 +125,7 @@ def main():
     assert total['IGNORE_candidates']==expected['unmatched_candidates']==7992
     assert total['IGNORE_with_GT_IoU_at_least_half']==expected['unmatched_with_any_GT_IoU_at_least_half']==5832
     report=dict(status='ALL43_TRAIN_GLOBAL_IGNORE_LABELS_AND_ACTUAL_GROUP_COMPETITION_AUDITED',
+        alternative_grouping=args.alternative_grouping,
         index=str(args.index),prior_audit=str(args.prior_audit),train_totals=dict(total),units=units,
         interpretation='GT-supported IGNORE is a whole-frame one-to-one labeling outcome, not background truth. Outside-group means outside the explicitly enumerated candidate list; full-frame image pixels are still visible, so this is not proof labels are unobservable or training must fail. Multiple-GT overlaps remain explicitly counted. TRAIN only; no held-out threshold tuning or new causal tracking scores.',
         original_training_targets_inputs_or_predictions_changed=False,new_GPU_or_optimizer_updates=0,

@@ -1,0 +1,16 @@
+{
+  "status": "ORIGINAL_CPU_GROUPING_CONTROL_OWNER_LIVE_AT_LAUNCH_OBSERVATION",
+  "owner_pid": 41803,
+  "owner_starttick": "53230371",
+  "command": ".venv-onejev-py310/bin/python tools/groundjev/run_fixed_affinity_controls.py --plan configs/groundjev/overlap_neighbor_grouping_v1.json --out outputs/groundjev/compact/overlap_neighbor_grouping_v1/controls ",
+  "session_id": 90021,
+  "observed_stage": "rmot_single800_overlap_neighbors_INFERENCE",
+  "completed_units": [
+    "mot_full1203_before",
+    "mot_full1203_overlap_neighbors",
+    "rmot_single800_before"
+  ],
+  "registration": "outputs/groundjev/compact/overlap_neighbor_grouping_v1/registration.json",
+  "new_GPU_or_optimizer_updates": 0,
+  "full_goal_complete": false
+}

@@ -95,7 +95,7 @@ class CompactCore(nn.Module):
 
 
 class CompactDecision:
-    def __init__(self, checkpoint, device='cuda:0', batch_candidates=16, shortlist=32, memory_feature_view='all', shortlist_policy='geometry'):
+    def __init__(self, checkpoint, device='cuda:0', batch_candidates=16, shortlist=32, memory_feature_view='all', shortlist_policy='geometry',candidate_grouping='contiguous'):
         from pathlib import Path
         data = torch.load(checkpoint,map_location=device,weights_only=True)
         self.model = CompactCore(data['architecture'],semantic=data.get('semantic',False),
@@ -107,6 +107,7 @@ class CompactDecision:
         self.batch_candidates,self.shortlist = batch_candidates,shortlist
         self.memory_feature_view = memory_feature_view
         self.shortlist_policy = shortlist_policy
+        self.candidate_grouping = candidate_grouping
         if self.model.semantic:
             from locatemot.groundjev.text_features import OneJevTextFeatures
             self.text_features=OneJevTextFeatures();self.text_cache={};self.class_cache={}
@@ -114,8 +115,10 @@ class CompactDecision:
     def decide(self,image,candidates,tracks,timestamp,specification):
         from locatemot.groundjev.decision import overlap
         from locatemot.groundjev.geometry import rank_tracks
+        from locatemot.groundjev.candidate_groups import candidate_group_indices
         results,life = [],{}
-        groups = [candidates[i:i+self.batch_candidates] for i in range(0,len(candidates),self.batch_candidates)] or [[]]
+        group_indices=candidate_group_indices(candidates,self.batch_candidates,self.candidate_grouping)
+        groups=[[candidates[i] for i in indices] for indices in group_indices]
         predicted_boxes = [t.predicted_box(timestamp) for t in tracks]
         similarities = None
         if self.shortlist_policy == 'hybrid16_16' and candidates and tracks:
@@ -131,8 +134,7 @@ class CompactDecision:
         for group_index, group in enumerate(groups):
             ranked = rank_tracks(group, tracks, predicted_boxes, self.shortlist)
             if similarities is not None and group:
-                begin = group_index*self.batch_candidates
-                scores = similarities[begin:begin+len(group)].max(0)
+                scores = similarities[group_indices[group_index]].max(0)
                 appearance_order = sorted(range(len(tracks)), key=lambda i: (-float(scores[i]), tracks[i].lost_age, tracks[i].track_id))
                 ranked = ranked[:16]
                 selected = {t.track_id for t in ranked}
@@ -186,6 +188,10 @@ class CompactDecision:
                 names_life=['ACTIVE','LOST','REACTIVATE','TERMINATE'];life.setdefault(t.track_id,
                     {'type':'choice','choice':names_life[max(range(4),key=lambda i:probabilities[i])],
                      'probabilities':dict(zip(names_life,probabilities))})
+        if self.candidate_grouping!='contiguous':
+            ordered=[None]*len(candidates)
+            for index,result in zip((i for group in group_indices for i in group),results):ordered[index]=result
+            results=ordered
         metadata={'backend':'trained_compact_'+self.model.architecture,'native_probabilities':True,
             'probability_source':'learned structured Compact distributions, not native OneJev decoder',
             'explicit_no_match':True,'checkpoint':self.checkpoint,'shortlist_limit':self.shortlist,
@@ -193,6 +199,10 @@ class CompactDecision:
         if self.model.semantic:metadata.update(shared_semantic_heads=True,
             query_output_policy='RMOT learned membership>=.5; physical identity state preserved before output filtering',
             class_policy='OVMOT full supplied-vocabulary learned softmax; no GT-based class or box filtering')
+        if self.candidate_grouping!='contiguous':
+            metadata.update(candidate_grouping=self.candidate_grouping,candidate_group_indices=group_indices,
+                candidate_group_capacity=self.batch_candidates,
+                candidate_grouping_contract='Original candidates retained once; seed lowest remaining original index, then maximum IoU to any group member, ties by original index. No threshold, filtering, merging or GT. All learned heads and geometric shortlists can change; rows restored to original candidate order.')
         if self.memory_feature_view!='all':metadata['memory_feature_view']=self.memory_feature_view
         if self.shortlist_policy!='geometry':metadata['shortlist_policy']=self.shortlist_policy
         if self.model.input_evidence!='geometry_appearance_language':

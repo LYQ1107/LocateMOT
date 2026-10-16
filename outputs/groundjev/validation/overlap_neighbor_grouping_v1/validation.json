@@ -1,0 +1,53 @@
+{
+  "status": "ALL5_REAL_DEFAULT_PREFIXES_AND_OVERLAP_GROUP_ROW_ALIGNMENT_VALIDATED",
+  "cases": {
+    "mot_full1203": {
+      "frames": 3,
+      "candidates": 8,
+      "actual_model_groups": 3,
+      "entire_default_outputs_and_states_exact": true,
+      "all_candidates_once_original_output_order": true,
+      "actual_regrouped_model_input_feature_rows_exact": true,
+      "regrouped_probabilities_updates_and_task_semantics_aligned_to_original_rows": true
+    },
+    "rmot_single800": {
+      "frames": 3,
+      "candidates": 3,
+      "actual_model_groups": 3,
+      "entire_default_outputs_and_states_exact": true,
+      "all_candidates_once_original_output_order": true,
+      "actual_regrouped_model_input_feature_rows_exact": true,
+      "regrouped_probabilities_updates_and_task_semantics_aligned_to_original_rows": true
+    },
+    "rmot_multi800": {
+      "frames": 3,
+      "candidates": 4,
+      "actual_model_groups": 3,
+      "entire_default_outputs_and_states_exact": true,
+      "all_candidates_once_original_output_order": true,
+      "actual_regrouped_model_input_feature_rows_exact": true,
+      "regrouped_probabilities_updates_and_task_semantics_aligned_to_original_rows": true
+    },
+    "tao_raw_full40": {
+      "frames": 3,
+      "candidates": 2829,
+      "actual_model_groups": 178,
+      "entire_default_outputs_and_states_exact": true,
+      "all_candidates_once_original_output_order": true,
+      "actual_regrouped_model_input_feature_rows_exact": true,
+      "regrouped_probabilities_updates_and_task_semantics_aligned_to_original_rows": true
+    },
+    "mot20_challenge": {
+      "frames": 3,
+      "candidates": 495,
+      "actual_model_groups": 32,
+      "entire_default_outputs_and_states_exact": true,
+      "all_candidates_once_original_output_order": true,
+      "actual_regrouped_model_input_feature_rows_exact": true,
+      "regrouped_probabilities_updates_and_task_semantics_aligned_to_original_rows": true
+    }
+  },
+  "scope": "Three actual causal frames per scope, frozen original checkpoint. Alternative model inputs and output row ownership checked against direct regrouped neural outputs. No GT inputs, full-video quality or speed claim.",
+  "new_GPU_or_optimizer_updates": 0,
+  "full_goal_complete": false
+}

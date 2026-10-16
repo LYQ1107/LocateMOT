@@ -38,6 +38,9 @@ def main():
     if plan.get('no_match_regression'):
         feasibility=json.loads((ROOT/plan['no_match_regression']).read_text())
         assert feasibility['status']=='ALL14_REAL_DEFAULT_ASSIGNMENTS_AND_NO_MATCH_FEASIBILITY_VALIDATED'
+    if plan.get('grouping_regression'):
+        grouping=json.loads((ROOT/plan['grouping_regression']).read_text())
+        assert grouping['status']=='ALL5_REAL_DEFAULT_PREFIXES_AND_OVERLAP_GROUP_ROW_ALIGNMENT_VALIDATED'
     args.out.mkdir(parents=True, exist_ok=False)
     state = {'status': 'STARTING_FIXED_AFFINITY_CONTROLS', 'owner_pid': os.getpid(),
         'plan': str(args.plan), 'device': 'cpu', 'additional_GPUs': 0,
@@ -105,6 +108,8 @@ def main():
                         command+=['--lifecycle-termination-policy',policies['lifecycle_termination_policy']]
                     if policies.get('no_match_policy'):
                         command+=['--no-match-policy',policies['no_match_policy']]
+                    if policies.get('candidate_grouping'):
+                        command+=['--compact-candidate-grouping',policies['candidate_grouping']]
                     if backend == 'compact':
                         command += ['--compact-device', 'cpu', '--checkpoint', str(checkpoint),
                             '--compact-association-policy', policies['association'], '--compact-auxiliary-policy', policies['auxiliary'],
@@ -141,6 +146,13 @@ def main():
                             assert meta['no_match_infeasible_candidate_indices']==expected
                             assert all(e['action']!='NO_MATCH' for e in events if e['candidate'] in expected)
                         prior_ids=new['state']['persistent_ids']
+                        if policies.get('candidate_grouping','contiguous')!='contiguous':
+                            from locatemot.groundjev.candidate_groups import candidate_group_indices
+                            meta=new['state']['decision_metadata']
+                            assert meta['candidate_grouping']==policies['candidate_grouping']
+                            expected=candidate_group_indices(geometry,16,policies['candidate_grouping'])
+                            assert meta['candidate_group_indices']==expected and meta['candidate_group_capacity']==16
+                            assert sorted(i for group in expected for i in group)==list(range(len(geometry)))
                         if backend == 'compact':
                             assert new['state']['decision_metadata']['shortlist_limit'] == shortlist
                             assert new['state']['decision_metadata'].get('shortlist_policy', 'geometry') == shortlist_policy
@@ -177,6 +189,7 @@ def main():
                 assert report['lost_seconds'] == policies.get('lost_seconds', 3.)
                 assert report.get('lifecycle_termination_policy','learned_or_timeout')==policies.get('lifecycle_termination_policy','learned_or_timeout')
                 assert report.get('no_match_policy','learned')==policies.get('no_match_policy','learned')
+                assert report.get('compact_candidate_grouping','contiguous')==policies.get('candidate_grouping','contiguous')
                 if backend == 'compact':
                     assert report['compact_association_policy'] == policies['association']
                     assert report['compact_auxiliary_policy'] == policies['auxiliary']

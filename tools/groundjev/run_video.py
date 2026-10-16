@@ -79,6 +79,7 @@ def main():
     parser.add_argument('--compact-shortlist',type=int,choices=[32,64,128],default=32,
                         help='registered context-size intervention; larger values exceed the original 32-ID training context')
     parser.add_argument('--compact-shortlist-policy',choices=['geometry','hybrid16_16'],default='geometry')
+    parser.add_argument('--compact-candidate-grouping',choices=['contiguous','overlap_neighbors'],default='contiguous')
     parser.add_argument('--compact-association-policy',choices=['learned','fixed_iou','fixed_iou_cosine','rank_appearance'],default='learned')
     parser.add_argument('--compact-auxiliary-policy',choices=['learned','fixed'],default='learned')
     parser.add_argument('--evidence-format',choices=['v1','v2_crop_motion','v3_crop_motion','v4_native_features','v5_native_features_csv','v6_native_compact_history'],default='v1')
@@ -164,7 +165,7 @@ def main():
             import torch
             torch.set_num_threads(4)
         from locatemot.groundjev.compact import CompactDecision
-        decision=CompactDecision(args.checkpoint,device=args.compact_device,shortlist=args.compact_shortlist,memory_feature_view=args.memory_feature_view,shortlist_policy=args.compact_shortlist_policy)
+        decision=CompactDecision(args.checkpoint,device=args.compact_device,shortlist=args.compact_shortlist,memory_feature_view=args.memory_feature_view,shortlist_policy=args.compact_shortlist_policy,candidate_grouping=args.compact_candidate_grouping)
         if args.compact_association_policy=='rank_appearance':
             from locatemot.groundjev.appearance_ranking import AppearanceRankDecision
             decision=AppearanceRankDecision(decision,args.appearance_projection_checkpoint,args.appearance_ranking_temperature)
@@ -230,6 +231,8 @@ def main():
                 raise ValueError('Resume source uses a different lifecycle termination policy')
             if prior_result.get('no_match_policy','learned')!=args.no_match_policy:
                 raise ValueError('Resume source uses a different NO_MATCH execution contract')
+            if prior_result.get('compact_candidate_grouping','contiguous')!=args.compact_candidate_grouping:
+                raise ValueError('Resume source uses a different candidate grouping policy')
             if prior_result.get('replay_feature_vectors_omitted_from_log'):
                 feature_source_path=Path(prior_result['shared_input_features_source'])
         elif args.omit_replay_feature_vectors:
@@ -407,6 +410,7 @@ def main():
               'lost_seconds':args.lost_seconds,'ema_alpha':args.ema_alpha,
               'lifecycle_termination_policy':args.lifecycle_termination_policy,
               'no_match_policy':args.no_match_policy,
+              'compact_candidate_grouping':args.compact_candidate_grouping,
               'replay_feature_vectors_omitted_from_log':args.omit_replay_feature_vectors,
               'shared_input_features_source':str(native_archive_path) if args.record_native_candidates else
                   str(args.candidate_replay) if args.omit_replay_feature_vectors else None,
