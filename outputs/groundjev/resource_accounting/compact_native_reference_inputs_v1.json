@@ -1,0 +1,8 @@
+{
+  "status": "COMPACT_NATIVE_INPUT_REFERENCE_METADATA_ONLY_RESERVED",
+  "prior_registered_feature_upper_bytes": 26584753118,
+  "new_metadata_cap_bytes": 33554432,
+  "combined_registered_feature_upper_bytes": 26618307550,
+  "global_temporary_feature_budget_bytes": 26843545600,
+  "new_native_candidate_or_ROI_archives": 0
+}

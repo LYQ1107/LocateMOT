@@ -1,0 +1,87 @@
+{
+  "status": "REAL_NATIVE_COMPACT_REFERENCE_INPUTS_AND_FORWARD_TENSORS_VALIDATED",
+  "source_units_prepared": 61,
+  "source_frame_contexts": 4684,
+  "unique_physical_images": {
+    "mot": 1056,
+    "rmot": 1814
+  },
+  "counts": {
+    "exact_tensor_elements": 6784728,
+    "exact_native_forward_groups": 36,
+    "groups_with_history": 22,
+    "source_frames": 9
+  },
+  "cases": [
+    {
+      "unit": "mot/MOT17-02-FRCNN",
+      "frame": 135,
+      "candidates": 31,
+      "captured_groups": 2,
+      "actual_outputs_and_state_exact": true
+    },
+    {
+      "unit": "mot/MOT17-02-FRCNN",
+      "frame": 136,
+      "candidates": 31,
+      "captured_groups": 2,
+      "actual_outputs_and_state_exact": true
+    },
+    {
+      "unit": "mot/MOT17-02-FRCNN",
+      "frame": 137,
+      "candidates": 31,
+      "captured_groups": 2,
+      "actual_outputs_and_state_exact": true
+    },
+    {
+      "unit": "mot/MOT20-05",
+      "frame": 766,
+      "candidates": 140,
+      "captured_groups": 9,
+      "actual_outputs_and_state_exact": true
+    },
+    {
+      "unit": "mot/MOT20-05",
+      "frame": 767,
+      "candidates": 140,
+      "captured_groups": 9,
+      "actual_outputs_and_state_exact": true
+    },
+    {
+      "unit": "mot/MOT20-05",
+      "frame": 768,
+      "candidates": 132,
+      "captured_groups": 9,
+      "actual_outputs_and_state_exact": true
+    },
+    {
+      "unit": "rmot/0000_primary",
+      "frame": 0,
+      "candidates": 1,
+      "captured_groups": 1,
+      "actual_outputs_and_state_exact": true
+    },
+    {
+      "unit": "rmot/0000_primary",
+      "frame": 1,
+      "candidates": 2,
+      "captured_groups": 1,
+      "actual_outputs_and_state_exact": true
+    },
+    {
+      "unit": "rmot/0000_primary",
+      "frame": 2,
+      "candidates": 1,
+      "captured_groups": 1,
+      "actual_outputs_and_state_exact": true
+    }
+  ],
+  "all_reconstructed_model_input_tensors_and_frozen_forward_outputs_exact": true,
+  "original_export_all_source_actor_and_crop_pixel_validation_reused": true,
+  "numerical_regression_scope": "First3 actual chronological frames in each of3 real sources, including dense MOT20 and referring input. Whole-source preparation preserves all61 units; this nine-frame numerical regression does not claim a retrained tracking improvement.",
+  "native_FP32_feature_vectors_copied": false,
+  "new_GPU_or_optimizer_updates": 0,
+  "complete_three_task_training_pack": false,
+  "full_goal_complete": false
+}

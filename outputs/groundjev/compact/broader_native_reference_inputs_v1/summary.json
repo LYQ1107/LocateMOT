@@ -1,0 +1,31 @@
+{
+  "status": "NATIVE_COMPACT_REFERENCE_CORPUS_PREPARED_AND_REAL_INPUT_REGRESSION_VALIDATED",
+  "units": 61,
+  "query_frame_contexts": 4684,
+  "unique_physical_images": {
+    "mot": 1056,
+    "rmot": 1814
+  },
+  "input_counts": {
+    "source_frame_contexts": 4684,
+    "source_assigned_condition_groups": 5870,
+    "ordinary_input_groups": 7071,
+    "empty_context_groups": 45,
+    "duplicate_box_reference_exact_equal_features": 8920
+  },
+  "regression": {
+    "exact_tensor_elements": 6784728,
+    "exact_native_forward_groups": 36,
+    "groups_with_history": 22,
+    "source_frames": 9
+  },
+  "metadata_bytes_before_summary": 21268734,
+  "full_metadata_cache": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/broader_native_reference_inputs_v1",
+  "published_artifacts": "Builder/reader/validator, registered sources/budget and numerical completion evidence. Full regenerable21MB metadata index and original FP32 arrays remain server-only.",
+  "native_ROI_or_image_copies": 0,
+  "new_GPU_or_optimizer_updates": 0,
+  "complete_three_task_Compact_training_pack": false,
+  "OVMOT_175_Base_feature_component": "not collected by this CPU-only component",
+  "current_Full_training_or_evaluation_modified": false,
+  "full_goal_complete": false
+}

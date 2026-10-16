@@ -1,0 +1,33 @@
+{
+  "project_root": "/data2/user/LocateMOT",
+  "output": "outputs/groundjev/compact/broader_native_reference_inputs_v1",
+  "sources": [
+    {
+      "task": "mot",
+      "source": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest",
+      "export": "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1",
+      "manifests": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/manifests"
+    },
+    {
+      "task": "rmot",
+      "source": "outputs/groundjev/training_data/rmot_allfit1814_query18_shared_gpu7_v2",
+      "export": "outputs/groundjev/training_data/rmot_allfit1814_query18_full_v3_groups_v2_shared_gpu7",
+      "manifests": "outputs/groundjev/training_data/rmot_allfit1814_query18_scope_v1/manifests"
+    }
+  ],
+  "expected_units": 61,
+  "expected_query_frame_contexts": 4684,
+  "expected_unique_physical_images": {
+    "mot": 1056,
+    "rmot": 1814
+  },
+  "actor_checkpoint": "outputs/groundjev/compact/rmot_native72_stage_v1/broad_native_training/checkpoint.pt",
+  "new_metadata_cap_bytes": 33554432,
+  "prior_registered_feature_upper_bytes": 26584753118,
+  "combined_registered_feature_upper_bytes": 26618307550,
+  "global_temporary_feature_budget_bytes": 26843545600,
+  "storage": "Only exact input geometry, source IDs and frame/candidate references to existing immutable FP32 arrays; no duplicate ROI vectors or images",
+  "scope": "Native Compact input corpus for future explicitly registered shared training; not new Compact optimizer updates, not yet a complete three-task curriculum. Original Full rows/frames including empty contexts stay preserved.",
+  "new_GPU_or_training_updates": 0,
+  "full_goal_complete": false
+}

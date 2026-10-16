@@ -38,6 +38,24 @@ known-birth RMOT identity/write rows are prepared but were not inserted into
 either frozen running curriculum. Next decisions depend on actual completed
 tracking comparisons, not training loss or input-plan size.
 
+## Broader Compact input references prepared, not a trained model
+
+The61completed native MOT/RMOT source rollouts now have a reference-only
+Compact input corpus:4,684query-frame contexts,1,056MOT/1,814RMOT unique
+images,7,071ordinary groups and5,870existing-assignment conditions. About21MB
+of geometry/reference metadata reuses the original FP32 ROI arrays without
+copying per-group history vectors or images. All45empty n=m=0contexts are
+retained; the existing Compact model does not execute a forward there, and no
+new presence head is claimed.
+
+On nine actual source frames, all36native forward groups reproduce6,784,728
+input tensor elements and every frozen forward output exactly, with the
+actual source tracking outputs/state unchanged. This numerical regression
+does not claim a newly trained tracking gain or a whole-corpus forward check.
+See [completion evidence](../../outputs/groundjev/compact/broader_native_reference_inputs_v1/summary.json).
+The175Base OV feature component and a new shared Compact training recipe
+remain unfinished; this CPU-only preparation launched no GPU or optimizer.
+
 ## Earlier source-collection snapshot — superseded
 
 The source collection described below has since completed; its former active

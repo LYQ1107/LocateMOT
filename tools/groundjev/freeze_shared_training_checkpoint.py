@@ -84,7 +84,8 @@ def main():
         full_state_retention='Atomic latest state validated at this milestone; later saves replace latest state. The numbered BF16 checkpoint is retained.',
         retained_BF16_checkpoint=str(training/f'ckpt-step{args.step}'),
         no_GPU_or_training_updates_by_validator=True,
-        complete6000_or_new_tracking_metrics=False,full_goal_complete=False)
+        complete6000_training=args.step==6000,new_tracking_metrics_available=False,
+        full_goal_complete=False)
     args.out.mkdir(parents=True,exist_ok=False)
     (args.out/'validation.json').write_text(json.dumps(result,indent=2)+'\n')
     print(json.dumps(result),flush=True)

@@ -1,0 +1,490 @@
+{
+  "mot/MOT17-02-FRCNN": {
+    "task": "mot",
+    "archive": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/MOT17-02-FRCNN/frame_candidates.jsonl",
+    "original_run": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/MOT17-02-FRCNN",
+    "manifest": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/manifests/MOT17-02-FRCNN.json",
+    "full_source_rows": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/MOT17-02-FRCNN/train_refs.jsonl.gz",
+    "frame_contexts": 32
+  },
+  "mot/MOT17-04-FRCNN": {
+    "task": "mot",
+    "archive": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/MOT17-04-FRCNN/frame_candidates.jsonl",
+    "original_run": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/MOT17-04-FRCNN",
+    "manifest": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/manifests/MOT17-04-FRCNN.json",
+    "full_source_rows": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/MOT17-04-FRCNN/train_refs.jsonl.gz",
+    "frame_contexts": 32
+  },
+  "mot/MOT17-05-FRCNN": {
+    "task": "mot",
+    "archive": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/MOT17-05-FRCNN/frame_candidates.jsonl",
+    "original_run": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/MOT17-05-FRCNN",
+    "manifest": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/manifests/MOT17-05-FRCNN.json",
+    "full_source_rows": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/MOT17-05-FRCNN/train_refs.jsonl.gz",
+    "frame_contexts": 32
+  },
+  "mot/MOT17-09-FRCNN": {
+    "task": "mot",
+    "archive": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/MOT17-09-FRCNN/frame_candidates.jsonl",
+    "original_run": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/MOT17-09-FRCNN",
+    "manifest": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/manifests/MOT17-09-FRCNN.json",
+    "full_source_rows": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/MOT17-09-FRCNN/train_refs.jsonl.gz",
+    "frame_contexts": 32
+  },
+  "mot/MOT17-10-FRCNN": {
+    "task": "mot",
+    "archive": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/MOT17-10-FRCNN/frame_candidates.jsonl",
+    "original_run": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/MOT17-10-FRCNN",
+    "manifest": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/manifests/MOT17-10-FRCNN.json",
+    "full_source_rows": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/MOT17-10-FRCNN/train_refs.jsonl.gz",
+    "frame_contexts": 32
+  },
+  "mot/MOT17-11-FRCNN": {
+    "task": "mot",
+    "archive": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/MOT17-11-FRCNN/frame_candidates.jsonl",
+    "original_run": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/MOT17-11-FRCNN",
+    "manifest": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/manifests/MOT17-11-FRCNN.json",
+    "full_source_rows": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/MOT17-11-FRCNN/train_refs.jsonl.gz",
+    "frame_contexts": 32
+  },
+  "mot/MOT17-13-FRCNN": {
+    "task": "mot",
+    "archive": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/MOT17-13-FRCNN/frame_candidates.jsonl",
+    "original_run": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/MOT17-13-FRCNN",
+    "manifest": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/manifests/MOT17-13-FRCNN.json",
+    "full_source_rows": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/MOT17-13-FRCNN/train_refs.jsonl.gz",
+    "frame_contexts": 32
+  },
+  "mot/dancetrack0001": {
+    "task": "mot",
+    "archive": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0001/frame_candidates.jsonl",
+    "original_run": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0001",
+    "manifest": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/manifests/dancetrack0001.json",
+    "full_source_rows": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0001/train_refs.jsonl.gz",
+    "frame_contexts": 16
+  },
+  "mot/dancetrack0006": {
+    "task": "mot",
+    "archive": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0006/frame_candidates.jsonl",
+    "original_run": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0006",
+    "manifest": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/manifests/dancetrack0006.json",
+    "full_source_rows": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0006/train_refs.jsonl.gz",
+    "frame_contexts": 16
+  },
+  "mot/dancetrack0008": {
+    "task": "mot",
+    "archive": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0008/frame_candidates.jsonl",
+    "original_run": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0008",
+    "manifest": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/manifests/dancetrack0008.json",
+    "full_source_rows": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0008/train_refs.jsonl.gz",
+    "frame_contexts": 16
+  },
+  "mot/dancetrack0012": {
+    "task": "mot",
+    "archive": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0012/frame_candidates.jsonl",
+    "original_run": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0012",
+    "manifest": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/manifests/dancetrack0012.json",
+    "full_source_rows": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0012/train_refs.jsonl.gz",
+    "frame_contexts": 16
+  },
+  "mot/dancetrack0016": {
+    "task": "mot",
+    "archive": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0016/frame_candidates.jsonl",
+    "original_run": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0016",
+    "manifest": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/manifests/dancetrack0016.json",
+    "full_source_rows": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0016/train_refs.jsonl.gz",
+    "frame_contexts": 16
+  },
+  "mot/dancetrack0020": {
+    "task": "mot",
+    "archive": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0020/frame_candidates.jsonl",
+    "original_run": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0020",
+    "manifest": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/manifests/dancetrack0020.json",
+    "full_source_rows": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0020/train_refs.jsonl.gz",
+    "frame_contexts": 16
+  },
+  "mot/dancetrack0023": {
+    "task": "mot",
+    "archive": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0023/frame_candidates.jsonl",
+    "original_run": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0023",
+    "manifest": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/manifests/dancetrack0023.json",
+    "full_source_rows": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0023/train_refs.jsonl.gz",
+    "frame_contexts": 16
+  },
+  "mot/dancetrack0024": {
+    "task": "mot",
+    "archive": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0024/frame_candidates.jsonl",
+    "original_run": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0024",
+    "manifest": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/manifests/dancetrack0024.json",
+    "full_source_rows": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0024/train_refs.jsonl.gz",
+    "frame_contexts": 16
+  },
+  "mot/dancetrack0027": {
+    "task": "mot",
+    "archive": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0027/frame_candidates.jsonl",
+    "original_run": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0027",
+    "manifest": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/manifests/dancetrack0027.json",
+    "full_source_rows": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0027/train_refs.jsonl.gz",
+    "frame_contexts": 16
+  },
+  "mot/dancetrack0029": {
+    "task": "mot",
+    "archive": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0029/frame_candidates.jsonl",
+    "original_run": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0029",
+    "manifest": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/manifests/dancetrack0029.json",
+    "full_source_rows": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0029/train_refs.jsonl.gz",
+    "frame_contexts": 16
+  },
+  "mot/dancetrack0032": {
+    "task": "mot",
+    "archive": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0032/frame_candidates.jsonl",
+    "original_run": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0032",
+    "manifest": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/manifests/dancetrack0032.json",
+    "full_source_rows": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0032/train_refs.jsonl.gz",
+    "frame_contexts": 16
+  },
+  "mot/dancetrack0037": {
+    "task": "mot",
+    "archive": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0037/frame_candidates.jsonl",
+    "original_run": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0037",
+    "manifest": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/manifests/dancetrack0037.json",
+    "full_source_rows": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0037/train_refs.jsonl.gz",
+    "frame_contexts": 16
+  },
+  "mot/dancetrack0039": {
+    "task": "mot",
+    "archive": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0039/frame_candidates.jsonl",
+    "original_run": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0039",
+    "manifest": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/manifests/dancetrack0039.json",
+    "full_source_rows": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0039/train_refs.jsonl.gz",
+    "frame_contexts": 16
+  },
+  "mot/dancetrack0044": {
+    "task": "mot",
+    "archive": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0044/frame_candidates.jsonl",
+    "original_run": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0044",
+    "manifest": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/manifests/dancetrack0044.json",
+    "full_source_rows": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0044/train_refs.jsonl.gz",
+    "frame_contexts": 16
+  },
+  "mot/dancetrack0045": {
+    "task": "mot",
+    "archive": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0045/frame_candidates.jsonl",
+    "original_run": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0045",
+    "manifest": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/manifests/dancetrack0045.json",
+    "full_source_rows": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0045/train_refs.jsonl.gz",
+    "frame_contexts": 16
+  },
+  "mot/dancetrack0051": {
+    "task": "mot",
+    "archive": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0051/frame_candidates.jsonl",
+    "original_run": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0051",
+    "manifest": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/manifests/dancetrack0051.json",
+    "full_source_rows": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0051/train_refs.jsonl.gz",
+    "frame_contexts": 16
+  },
+  "mot/dancetrack0052": {
+    "task": "mot",
+    "archive": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0052/frame_candidates.jsonl",
+    "original_run": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0052",
+    "manifest": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/manifests/dancetrack0052.json",
+    "full_source_rows": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0052/train_refs.jsonl.gz",
+    "frame_contexts": 16
+  },
+  "mot/dancetrack0053": {
+    "task": "mot",
+    "archive": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0053/frame_candidates.jsonl",
+    "original_run": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0053",
+    "manifest": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/manifests/dancetrack0053.json",
+    "full_source_rows": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0053/train_refs.jsonl.gz",
+    "frame_contexts": 16
+  },
+  "mot/dancetrack0055": {
+    "task": "mot",
+    "archive": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0055/frame_candidates.jsonl",
+    "original_run": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0055",
+    "manifest": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/manifests/dancetrack0055.json",
+    "full_source_rows": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0055/train_refs.jsonl.gz",
+    "frame_contexts": 16
+  },
+  "mot/dancetrack0057": {
+    "task": "mot",
+    "archive": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0057/frame_candidates.jsonl",
+    "original_run": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0057",
+    "manifest": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/manifests/dancetrack0057.json",
+    "full_source_rows": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0057/train_refs.jsonl.gz",
+    "frame_contexts": 16
+  },
+  "mot/dancetrack0062": {
+    "task": "mot",
+    "archive": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0062/frame_candidates.jsonl",
+    "original_run": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0062",
+    "manifest": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/manifests/dancetrack0062.json",
+    "full_source_rows": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0062/train_refs.jsonl.gz",
+    "frame_contexts": 16
+  },
+  "mot/dancetrack0066": {
+    "task": "mot",
+    "archive": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0066/frame_candidates.jsonl",
+    "original_run": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0066",
+    "manifest": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/manifests/dancetrack0066.json",
+    "full_source_rows": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0066/train_refs.jsonl.gz",
+    "frame_contexts": 16
+  },
+  "mot/dancetrack0068": {
+    "task": "mot",
+    "archive": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0068/frame_candidates.jsonl",
+    "original_run": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0068",
+    "manifest": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/manifests/dancetrack0068.json",
+    "full_source_rows": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0068/train_refs.jsonl.gz",
+    "frame_contexts": 16
+  },
+  "mot/dancetrack0069": {
+    "task": "mot",
+    "archive": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0069/frame_candidates.jsonl",
+    "original_run": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0069",
+    "manifest": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/manifests/dancetrack0069.json",
+    "full_source_rows": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0069/train_refs.jsonl.gz",
+    "frame_contexts": 16
+  },
+  "mot/dancetrack0074": {
+    "task": "mot",
+    "archive": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0074/frame_candidates.jsonl",
+    "original_run": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0074",
+    "manifest": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/manifests/dancetrack0074.json",
+    "full_source_rows": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0074/train_refs.jsonl.gz",
+    "frame_contexts": 16
+  },
+  "mot/dancetrack0075": {
+    "task": "mot",
+    "archive": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0075/frame_candidates.jsonl",
+    "original_run": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0075",
+    "manifest": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/manifests/dancetrack0075.json",
+    "full_source_rows": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0075/train_refs.jsonl.gz",
+    "frame_contexts": 16
+  },
+  "mot/dancetrack0080": {
+    "task": "mot",
+    "archive": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0080/frame_candidates.jsonl",
+    "original_run": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0080",
+    "manifest": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/manifests/dancetrack0080.json",
+    "full_source_rows": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0080/train_refs.jsonl.gz",
+    "frame_contexts": 16
+  },
+  "mot/dancetrack0082": {
+    "task": "mot",
+    "archive": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0082/frame_candidates.jsonl",
+    "original_run": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0082",
+    "manifest": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/manifests/dancetrack0082.json",
+    "full_source_rows": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0082/train_refs.jsonl.gz",
+    "frame_contexts": 16
+  },
+  "mot/dancetrack0086": {
+    "task": "mot",
+    "archive": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0086/frame_candidates.jsonl",
+    "original_run": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0086",
+    "manifest": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/manifests/dancetrack0086.json",
+    "full_source_rows": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0086/train_refs.jsonl.gz",
+    "frame_contexts": 16
+  },
+  "mot/dancetrack0087": {
+    "task": "mot",
+    "archive": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0087/frame_candidates.jsonl",
+    "original_run": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0087",
+    "manifest": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/manifests/dancetrack0087.json",
+    "full_source_rows": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0087/train_refs.jsonl.gz",
+    "frame_contexts": 16
+  },
+  "mot/dancetrack0096": {
+    "task": "mot",
+    "archive": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0096/frame_candidates.jsonl",
+    "original_run": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0096",
+    "manifest": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/manifests/dancetrack0096.json",
+    "full_source_rows": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0096/train_refs.jsonl.gz",
+    "frame_contexts": 16
+  },
+  "mot/dancetrack0098": {
+    "task": "mot",
+    "archive": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0098/frame_candidates.jsonl",
+    "original_run": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/dancetrack0098",
+    "manifest": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/manifests/dancetrack0098.json",
+    "full_source_rows": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0098/train_refs.jsonl.gz",
+    "frame_contexts": 16
+  },
+  "mot/MOT20-01": {
+    "task": "mot",
+    "archive": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/MOT20-01/frame_candidates.jsonl",
+    "original_run": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/MOT20-01",
+    "manifest": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/manifests/MOT20-01.json",
+    "full_source_rows": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/MOT20-01/train_refs.jsonl.gz",
+    "frame_contexts": 32
+  },
+  "mot/MOT20-02": {
+    "task": "mot",
+    "archive": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/MOT20-02/frame_candidates.jsonl",
+    "original_run": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/MOT20-02",
+    "manifest": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/manifests/MOT20-02.json",
+    "full_source_rows": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/MOT20-02/train_refs.jsonl.gz",
+    "frame_contexts": 32
+  },
+  "mot/MOT20-03": {
+    "task": "mot",
+    "archive": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/MOT20-03/frame_candidates.jsonl",
+    "original_run": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/MOT20-03",
+    "manifest": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/manifests/MOT20-03.json",
+    "full_source_rows": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/MOT20-03/train_refs.jsonl.gz",
+    "frame_contexts": 128
+  },
+  "mot/MOT20-05": {
+    "task": "mot",
+    "archive": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/MOT20-05/frame_candidates.jsonl",
+    "original_run": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/MOT20-05",
+    "manifest": "outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/manifests/MOT20-05.json",
+    "full_source_rows": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/MOT20-05/train_refs.jsonl.gz",
+    "frame_contexts": 128
+  },
+  "rmot/0000_primary": {
+    "task": "rmot",
+    "archive": "outputs/groundjev/training_data/rmot_allfit1814_query18_shared_gpu7_v2/clips/0000_primary/frame_candidates.jsonl",
+    "original_run": "outputs/groundjev/training_data/rmot_allfit1814_query18_shared_gpu7_v2/clips/0000_primary",
+    "manifest": "outputs/groundjev/training_data/rmot_allfit1814_query18_scope_v1/manifests/0000_primary.json",
+    "full_source_rows": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/rmot_allfit1814_query18_full_v3_groups_v2_shared_gpu7/clips/0000_primary/train_refs.jsonl.gz",
+    "frame_contexts": 154
+  },
+  "rmot/0000_counter": {
+    "task": "rmot",
+    "archive": "outputs/groundjev/training_data/rmot_allfit1814_query18_shared_gpu7_v2/clips/0000_counter/frame_candidates.jsonl",
+    "original_run": "outputs/groundjev/training_data/rmot_allfit1814_query18_shared_gpu7_v2/clips/0000_counter",
+    "manifest": "outputs/groundjev/training_data/rmot_allfit1814_query18_scope_v1/manifests/0000_counter.json",
+    "full_source_rows": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/rmot_allfit1814_query18_full_v3_groups_v2_shared_gpu7/clips/0000_counter/train_refs.jsonl.gz",
+    "frame_contexts": 154
+  },
+  "rmot/0002_primary": {
+    "task": "rmot",
+    "archive": "outputs/groundjev/training_data/rmot_allfit1814_query18_shared_gpu7_v2/clips/0002_primary/frame_candidates.jsonl",
+    "original_run": "outputs/groundjev/training_data/rmot_allfit1814_query18_shared_gpu7_v2/clips/0002_primary",
+    "manifest": "outputs/groundjev/training_data/rmot_allfit1814_query18_scope_v1/manifests/0002_primary.json",
+    "full_source_rows": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/rmot_allfit1814_query18_full_v3_groups_v2_shared_gpu7/clips/0002_primary/train_refs.jsonl.gz",
+    "frame_contexts": 233
+  },
+  "rmot/0002_counter": {
+    "task": "rmot",
+    "archive": "outputs/groundjev/training_data/rmot_allfit1814_query18_shared_gpu7_v2/clips/0002_counter/frame_candidates.jsonl",
+    "original_run": "outputs/groundjev/training_data/rmot_allfit1814_query18_shared_gpu7_v2/clips/0002_counter",
+    "manifest": "outputs/groundjev/training_data/rmot_allfit1814_query18_scope_v1/manifests/0002_counter.json",
+    "full_source_rows": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/rmot_allfit1814_query18_full_v3_groups_v2_shared_gpu7/clips/0002_counter/train_refs.jsonl.gz",
+    "frame_contexts": 233
+  },
+  "rmot/0003_primary": {
+    "task": "rmot",
+    "archive": "outputs/groundjev/training_data/rmot_allfit1814_query18_shared_gpu7_v2/clips/0003_primary/frame_candidates.jsonl",
+    "original_run": "outputs/groundjev/training_data/rmot_allfit1814_query18_shared_gpu7_v2/clips/0003_primary",
+    "manifest": "outputs/groundjev/training_data/rmot_allfit1814_query18_scope_v1/manifests/0003_primary.json",
+    "full_source_rows": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/rmot_allfit1814_query18_full_v3_groups_v2_shared_gpu7/clips/0003_primary/train_refs.jsonl.gz",
+    "frame_contexts": 144
+  },
+  "rmot/0003_counter": {
+    "task": "rmot",
+    "archive": "outputs/groundjev/training_data/rmot_allfit1814_query18_shared_gpu7_v2/clips/0003_counter/frame_candidates.jsonl",
+    "original_run": "outputs/groundjev/training_data/rmot_allfit1814_query18_shared_gpu7_v2/clips/0003_counter",
+    "manifest": "outputs/groundjev/training_data/rmot_allfit1814_query18_scope_v1/manifests/0003_counter.json",
+    "full_source_rows": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/rmot_allfit1814_query18_full_v3_groups_v2_shared_gpu7/clips/0003_counter/train_refs.jsonl.gz",
+    "frame_contexts": 144
+  },
+  "rmot/0006_primary": {
+    "task": "rmot",
+    "archive": "outputs/groundjev/training_data/rmot_allfit1814_query18_shared_gpu7_v2/clips/0006_primary/frame_candidates.jsonl",
+    "original_run": "outputs/groundjev/training_data/rmot_allfit1814_query18_shared_gpu7_v2/clips/0006_primary",
+    "manifest": "outputs/groundjev/training_data/rmot_allfit1814_query18_scope_v1/manifests/0006_primary.json",
+    "full_source_rows": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/rmot_allfit1814_query18_full_v3_groups_v2_shared_gpu7/clips/0006_primary/train_refs.jsonl.gz",
+    "frame_contexts": 270
+  },
+  "rmot/0006_counter": {
+    "task": "rmot",
+    "archive": "outputs/groundjev/training_data/rmot_allfit1814_query18_shared_gpu7_v2/clips/0006_counter/frame_candidates.jsonl",
+    "original_run": "outputs/groundjev/training_data/rmot_allfit1814_query18_shared_gpu7_v2/clips/0006_counter",
+    "manifest": "outputs/groundjev/training_data/rmot_allfit1814_query18_scope_v1/manifests/0006_counter.json",
+    "full_source_rows": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/rmot_allfit1814_query18_full_v3_groups_v2_shared_gpu7/clips/0006_counter/train_refs.jsonl.gz",
+    "frame_contexts": 270
+  },
+  "rmot/0008_primary": {
+    "task": "rmot",
+    "archive": "outputs/groundjev/training_data/rmot_allfit1814_query18_shared_gpu7_v2/clips/0008_primary/frame_candidates.jsonl",
+    "original_run": "outputs/groundjev/training_data/rmot_allfit1814_query18_shared_gpu7_v2/clips/0008_primary",
+    "manifest": "outputs/groundjev/training_data/rmot_allfit1814_query18_scope_v1/manifests/0008_primary.json",
+    "full_source_rows": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/rmot_allfit1814_query18_full_v3_groups_v2_shared_gpu7/clips/0008_primary/train_refs.jsonl.gz",
+    "frame_contexts": 390
+  },
+  "rmot/0008_counter": {
+    "task": "rmot",
+    "archive": "outputs/groundjev/training_data/rmot_allfit1814_query18_shared_gpu7_v2/clips/0008_counter/frame_candidates.jsonl",
+    "original_run": "outputs/groundjev/training_data/rmot_allfit1814_query18_shared_gpu7_v2/clips/0008_counter",
+    "manifest": "outputs/groundjev/training_data/rmot_allfit1814_query18_scope_v1/manifests/0008_counter.json",
+    "full_source_rows": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/rmot_allfit1814_query18_full_v3_groups_v2_shared_gpu7/clips/0008_counter/train_refs.jsonl.gz",
+    "frame_contexts": 390
+  },
+  "rmot/0010_primary": {
+    "task": "rmot",
+    "archive": "outputs/groundjev/training_data/rmot_allfit1814_query18_shared_gpu7_v2/clips/0010_primary/frame_candidates.jsonl",
+    "original_run": "outputs/groundjev/training_data/rmot_allfit1814_query18_shared_gpu7_v2/clips/0010_primary",
+    "manifest": "outputs/groundjev/training_data/rmot_allfit1814_query18_scope_v1/manifests/0010_primary.json",
+    "full_source_rows": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/rmot_allfit1814_query18_full_v3_groups_v2_shared_gpu7/clips/0010_primary/train_refs.jsonl.gz",
+    "frame_contexts": 294
+  },
+  "rmot/0010_counter": {
+    "task": "rmot",
+    "archive": "outputs/groundjev/training_data/rmot_allfit1814_query18_shared_gpu7_v2/clips/0010_counter/frame_candidates.jsonl",
+    "original_run": "outputs/groundjev/training_data/rmot_allfit1814_query18_shared_gpu7_v2/clips/0010_counter",
+    "manifest": "outputs/groundjev/training_data/rmot_allfit1814_query18_scope_v1/manifests/0010_counter.json",
+    "full_source_rows": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/rmot_allfit1814_query18_full_v3_groups_v2_shared_gpu7/clips/0010_counter/train_refs.jsonl.gz",
+    "frame_contexts": 294
+  },
+  "rmot/0012_primary": {
+    "task": "rmot",
+    "archive": "outputs/groundjev/training_data/rmot_allfit1814_query18_shared_gpu7_v2/clips/0012_primary/frame_candidates.jsonl",
+    "original_run": "outputs/groundjev/training_data/rmot_allfit1814_query18_shared_gpu7_v2/clips/0012_primary",
+    "manifest": "outputs/groundjev/training_data/rmot_allfit1814_query18_scope_v1/manifests/0012_primary.json",
+    "full_source_rows": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/rmot_allfit1814_query18_full_v3_groups_v2_shared_gpu7/clips/0012_primary/train_refs.jsonl.gz",
+    "frame_contexts": 78
+  },
+  "rmot/0012_counter": {
+    "task": "rmot",
+    "archive": "outputs/groundjev/training_data/rmot_allfit1814_query18_shared_gpu7_v2/clips/0012_counter/frame_candidates.jsonl",
+    "original_run": "outputs/groundjev/training_data/rmot_allfit1814_query18_shared_gpu7_v2/clips/0012_counter",
+    "manifest": "outputs/groundjev/training_data/rmot_allfit1814_query18_scope_v1/manifests/0012_counter.json",
+    "full_source_rows": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/rmot_allfit1814_query18_full_v3_groups_v2_shared_gpu7/clips/0012_counter/train_refs.jsonl.gz",
+    "frame_contexts": 78
+  },
+  "rmot/0014_primary": {
+    "task": "rmot",
+    "archive": "outputs/groundjev/training_data/rmot_allfit1814_query18_shared_gpu7_v2/clips/0014_primary/frame_candidates.jsonl",
+    "original_run": "outputs/groundjev/training_data/rmot_allfit1814_query18_shared_gpu7_v2/clips/0014_primary",
+    "manifest": "outputs/groundjev/training_data/rmot_allfit1814_query18_scope_v1/manifests/0014_primary.json",
+    "full_source_rows": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/rmot_allfit1814_query18_full_v3_groups_v2_shared_gpu7/clips/0014_primary/train_refs.jsonl.gz",
+    "frame_contexts": 106
+  },
+  "rmot/0014_counter": {
+    "task": "rmot",
+    "archive": "outputs/groundjev/training_data/rmot_allfit1814_query18_shared_gpu7_v2/clips/0014_counter/frame_candidates.jsonl",
+    "original_run": "outputs/groundjev/training_data/rmot_allfit1814_query18_shared_gpu7_v2/clips/0014_counter",
+    "manifest": "outputs/groundjev/training_data/rmot_allfit1814_query18_scope_v1/manifests/0014_counter.json",
+    "full_source_rows": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/rmot_allfit1814_query18_full_v3_groups_v2_shared_gpu7/clips/0014_counter/train_refs.jsonl.gz",
+    "frame_contexts": 106
+  },
+  "rmot/0017_primary": {
+    "task": "rmot",
+    "archive": "outputs/groundjev/training_data/rmot_allfit1814_query18_shared_gpu7_v2/clips/0017_primary/frame_candidates.jsonl",
+    "original_run": "outputs/groundjev/training_data/rmot_allfit1814_query18_shared_gpu7_v2/clips/0017_primary",
+    "manifest": "outputs/groundjev/training_data/rmot_allfit1814_query18_scope_v1/manifests/0017_primary.json",
+    "full_source_rows": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/rmot_allfit1814_query18_full_v3_groups_v2_shared_gpu7/clips/0017_primary/train_refs.jsonl.gz",
+    "frame_contexts": 145
+  },
+  "rmot/0017_counter": {
+    "task": "rmot",
+    "archive": "outputs/groundjev/training_data/rmot_allfit1814_query18_shared_gpu7_v2/clips/0017_counter/frame_candidates.jsonl",
+    "original_run": "outputs/groundjev/training_data/rmot_allfit1814_query18_shared_gpu7_v2/clips/0017_counter",
+    "manifest": "outputs/groundjev/training_data/rmot_allfit1814_query18_scope_v1/manifests/0017_counter.json",
+    "full_source_rows": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/rmot_allfit1814_query18_full_v3_groups_v2_shared_gpu7/clips/0017_counter/train_refs.jsonl.gz",
+    "frame_contexts": 145
+  }
+}
