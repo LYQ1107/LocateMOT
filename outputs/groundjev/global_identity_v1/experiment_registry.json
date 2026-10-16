@@ -46,18 +46,28 @@
       "end_to_end_FPS": null
     },
     "A4_own_state_v2": {
-      "status": "Real 8/16/32 detached own-state training running",
+      "status": "Actual own-state training complete; original five-scope evaluation started",
       "initialization": "Final calibrated A3",
       "labels": "V2 effective birth and separate duplicate competition",
       "config": "configs/groundjev/global_identity_own_state_v2.json",
-      "actual_updates": "Pending final completion receipt; first225 updates observed and real32-frame phase entered",
+      "actual_updates": 247,
       "checkpoint_selection": "Fixed final32 phase, shared across all tasks",
       "temporal_BPTT": false,
       "new_GPU_processes": 0,
-      "end_to_end_FPS": null
+      "end_to_end_FPS": null,
+      "frames": 3168,
+      "candidate_exposures": 144153,
+      "registered_episodes": {
+        "8": 132,
+        "16": 66,
+        "32": 49
+      },
+      "training_receipt": "training_A4.json",
+      "state_transition_receipt": "A4_own_state_continuity_validation.json",
+      "runtime_receipt": "A4_final_runtime_validation.json"
     },
     "A4b_mixed_own_state_v2": {
-      "status": "Blocking dependency owner registered; waits for original A4 final without changing it",
+      "status": "Actual mixed training started from unchanged finalA4; first50 optimizer updates observed",
       "initialization": "Fixed final A4 checkpoint",
       "training_config": "configs/groundjev/global_identity_mixed_own_state_v2.json",
       "frames_per_phase": 4684,
@@ -68,13 +78,15 @@
         16,
         32
       ],
-      "actual_updates": 0,
+      "actual_updates": "At least50; final receipt pending",
       "scope": "One hypothesis-driven mixed physical identity trial; all5 fixed scopes required",
       "model_inputs": "Actual own predicted physical histories; no GT repair or query input",
       "new_GPU_processes": 0,
       "new_feature_bank_bytes": 0,
-      "temporal_BPTT": false
+      "temporal_BPTT": false,
+      "RMOT_identity_learning": "First RMOT unit contains many correctly masked unknown frames; some early RMOT updates have competition loss only. Report actual identity-supervision counts before claiming physical identity learning."
     }
   },
-  "full_goal_complete": false
+  "full_goal_complete": false,
+  "storage_accounting_amendment": "configs/groundjev/global_identity_storage_closed_v2.json"
 }

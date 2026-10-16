@@ -1,0 +1,14 @@
+{
+  "status": "ALL3168_OWN_STATE_ID_TRANSITIONS_AND_REGISTERED_RESETS_VALIDATED",
+  "frames_per_length": {
+    "8": 1056,
+    "16": 1056,
+    "32": 1056
+  },
+  "registered_episodes": 247,
+  "actual_next_frame_predicted_ID_continuity_checks": 2921,
+  "GT_teacher_history_replacement": false,
+  "proof": "/data3/user/LocateMOT-checkpoints/global_identity_v1/A4_own_state_v2/own_state_frame_proof.jsonl.gz",
+  "scope": "Actual recorded ID state transitions and episode resets; dataflow code keeps GT outside features and predicted physical histories. This proof alone does not numerically compare every feature tensor.",
+  "full_goal_complete": false
+}

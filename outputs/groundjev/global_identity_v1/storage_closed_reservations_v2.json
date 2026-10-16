@@ -1,0 +1,58 @@
+{
+  "status": "COMPLETED_IMMUTABLE_FULL_RMOT_AND_PAIRED_E2E_CAPS_CLOSED_NO_DELETION",
+  "previous_source_registered_upper_bytes": 26840605662,
+  "closures": [
+    {
+      "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_runs/full_rmot_shared600_v1",
+      "previous_cap_bytes": 2147483648,
+      "all_files_actual_bytes": 886733321,
+      "completion_status": "FULL_TWO800_RMOT_FRESH_COMPACT_AND_ALL_MATCHED_FULL_CONTROLS_COMPLETE",
+      "producer_pid": 1896249,
+      "producer_PID_absent": true,
+      "owned_services_stopped": true,
+      "scientific_predictions_and_videos_also_counted_conservatively": true,
+      "files_deleted": 0
+    },
+    {
+      "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/e2e/full_compact_rmot800_v1",
+      "previous_cap_bytes": 1073741824,
+      "all_files_actual_bytes": 171395400,
+      "completion_status": "SAME800_SAME_GPU_FRESH_FULL_COMPACT_E2E_AND_DETECTOR_PAIRING_VALIDATED",
+      "producer_pid": 1953808,
+      "producer_PID_absent": true,
+      "owned_services_stopped": true,
+      "scientific_predictions_and_videos_also_counted_conservatively": true,
+      "files_deleted": 0
+    }
+  ],
+  "source_closed_registered_upper_bytes": 24677508911,
+  "new_global_identity_stage_cap_bytes": 2147483648,
+  "previous_stage_cap_bytes": 2097152,
+  "stage_cap_correction_reason": "Original2MiB understated rendered videos and official-scorer derived files. Actual global conservative usage remains below25GiB. Replace closed historical unused reservations, preserving all scientific files.",
+  "combined_registered_upper_bytes": 26824992559,
+  "formal_headroom_bytes": 18553041,
+  "global_limit_bytes": 26843545600,
+  "actual_source_conservative_bytes": 22584176800,
+  "actual_new_stage_conservative_bytes": 649602123,
+  "actual_combined_conservative_bytes": 23233778923,
+  "actual_global_headroom_bytes": 3609766677,
+  "new_stage_inventory": {
+    "bytes": {
+      "conservative_other_metadata_media_and_logs": 14472702,
+      "protected_scientific_predictions_and_identity_states": 7987532221,
+      "other": 635129421,
+      "protected_model_and_optimizer_artifacts": 16797
+    },
+    "files": {
+      "conservative_other_metadata_media_and_logs": 195,
+      "protected_scientific_predictions_and_identity_states": 69,
+      "other": 34,
+      "protected_model_and_optimizer_artifacts": 3
+    },
+    "conservative_temporary_total": 649602123
+  },
+  "no_source_files_or_live_owners_modified": true,
+  "files_deleted": 0,
+  "new_feature_bank_bytes": 0,
+  "full_goal_complete": false
+}

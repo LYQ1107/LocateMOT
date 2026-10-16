@@ -1,3 +1,27 @@
+## Own-state physical training completed — 2026-10-17
+
+A4 completed247real updates/3168frames/144153candidate exposures under actual
+8/16/32-frame predicted histories. Compressed ID proof checks247episode resets
+and2921next-frame continuities; no teacher history repair or BPTT. The fixed-final
+five-scope owner started; no official A4 quality gain is claimed. A3/A4 final
+four-task/query runtime interventions passed with100/120existing assignments and
+exact physical/allocation/assigned-write values on identical real inputs.
+
+One mixed own-state continuation from unchangedA4 has started on43MOT/18RMOT FIT
+units. Initial RMOT0000 includes many correctly unknown-masked frames and an early
+competition-only update; count effective identity targets before claiming learning.
+Original native Full/short/pairedRMOTphysical observed3175/2875/600updates, still
+running. New CPU work adds no GPU process or feature bank.
+
+Initial2MiB stage storage accounting was insufficient for rendered videos and
+scorer files. Close only unused historical completed FullRMOT/E2E caps to ALL
+actual bytes, preserving files and frozen live configs. Newstage2GiB plus closed
+source yields26824992559bytes<25GiB; fresh actual combined23281576828bytes. A
+single blocking read-only observer now checks the amended caps, without signals
+or deletion. Evidence: `storage_closed_reservations_v2.json`,
+`A4_own_state_continuity_validation.json`, `training_A4.json` under
+`outputs/groundjev/global_identity_v1`. Neither research goal is complete.
+
 ## Isolated global identity increment — 2026-10-16
 
 This branch adds CPU research at `/data2/user/LocateMOT_GlobalIdentity`; original

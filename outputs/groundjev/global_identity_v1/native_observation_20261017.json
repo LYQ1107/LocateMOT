@@ -1,0 +1,28 @@
+{
+  "status": "ORIGINAL_NATIVE_OWNERS_OBSERVED_LIVE_THROUGH_THEIR_ORIGINAL_HANDLES",
+  "observation_date": "2026-10-17",
+  "four_GPU_full": {
+    "last_observed_update": 3175,
+    "planned_updates": 28690,
+    "actual_question_exposures": 50800,
+    "last_window_loss": 1.0823475427045195
+  },
+  "paired_temporal": {
+    "short_last_observed_update": 2875,
+    "short_planned_updates": 6000,
+    "long_planned_updates": 6000
+  },
+  "paired_RMOT_native": {
+    "physical_last_observed_update": 600,
+    "physical_planned_updates": 6000,
+    "semantic_planned_updates": 6000
+  },
+  "history_TAO_native": {
+    "last_observed_frame": 204,
+    "status": "Running original native association and memory, no frame skipped"
+  },
+  "original_sources_configs_workers_unchanged": true,
+  "new_GPU_processes": 0,
+  "scope": "Last observations from live blocking handles, not completion or tracking accuracy evidence.",
+  "full_goal_complete": false
+}

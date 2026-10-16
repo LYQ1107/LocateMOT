@@ -1,0 +1,12 @@
+{
+  "status": "VALIDATED",
+  "actual_source_conservative_bytes": 22584187828,
+  "actual_new_stage_conservative_bytes": 697389000,
+  "actual_combined_conservative_bytes": 23281576828,
+  "remaining_stage_cap_bytes": 1450094648,
+  "remaining_global_limit_bytes": 3561968772,
+  "accounting_config": "configs/groundjev/global_identity_storage_closed_v2.json",
+  "all_four_registered_evaluation_tables_exist": false,
+  "files_deleted": 0,
+  "workers_signaled": 0
+}

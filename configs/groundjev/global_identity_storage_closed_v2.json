@@ -1,0 +1,11 @@
+{
+  "name": "Accounting-only amendment; running scientific input/config files remain immutable",
+  "supersedes_accounting_fields_only": "configs/groundjev/global_identity_v1.json",
+  "receipt": "outputs/groundjev/global_identity_v1/storage_closed_reservations_v2.json",
+  "closed_source_registered_upper_bytes": 24677508911,
+  "global_identity_stage_cap_bytes": 2147483648,
+  "combined_registered_upper_bytes": 26824992559,
+  "global_limit_bytes": 26843545600,
+  "formal_headroom_bytes": 18553041,
+  "new_feature_bank_bytes": 0
+}

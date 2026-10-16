@@ -1,0 +1,17 @@
+{
+  "status": "FINAL_SHARED_PHYSICAL_ALLOCATION_AND_ASSIGNED_WRITE_QUERY_INTERVENTIONS_VALIDATED",
+  "checkpoint": "/data3/user/LocateMOT-checkpoints/global_identity_v1/A4_own_state_v2/checkpoint.pt",
+  "real_TRAIN_unit": "mot/MOT17-02-FRCNN",
+  "frame": 136,
+  "candidates": 31,
+  "history": 31,
+  "task_query_interventions": 4,
+  "physical_logits_admission_global_assignments_and_assigned_updates_exact": true,
+  "actual_existing_assignments_checked": 120,
+  "all_weights_finite": true,
+  "reload_max_difference": 0.0,
+  "physical_parameters": 979883,
+  "new_GPU_processes": 0,
+  "scope": "One identical real causal TRAIN history across MOT/two RMOT queries/OVMOT; not a whole-video or changed-detector-candidate invariance or tracking-quality claim.",
+  "full_goal_complete": false
+}
