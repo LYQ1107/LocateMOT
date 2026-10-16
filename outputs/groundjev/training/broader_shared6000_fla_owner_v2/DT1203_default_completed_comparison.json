@@ -1,0 +1,47 @@
+{
+  "status": "NATIVE_ONEJEV6000_DEFAULT_DT1203_BEFORE_AFTER_VALIDATED",
+  "completed": {
+    "before_mot_full1203": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_full1203_controls_v2_wait_fix/native_mot_full1203",
+      "checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_unified600_native_v2/ckpt-step600",
+      "frames": 1203,
+      "native_candidates": 13664,
+      "same_exact_all_candidates": true,
+      "parser_rejected_frame_count": 27,
+      "official_metrics": {
+        "HOTA": 0.08702996032001276,
+        "DetA": 0.3010472804984555,
+        "AssA": 0.025168031826705423,
+        "IDF1": 0.05825958702064897,
+        "IDSW": 3631,
+        "FP": 7516,
+        "FN": 416
+      },
+      "base_novel": null,
+      "GT_and_future_frames_not_read_by_runtime": true,
+      "actual_end_to_end_FPS": null
+    },
+    "default_mot_full1203": {
+      "run": "outputs/groundjev/training/broader_shared6000_fla_owner_v2/controls/default_mot_full1203",
+      "checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_broader_shared6000_fla_v2/ckpt-step6000",
+      "frames": 1203,
+      "native_candidates": 13664,
+      "same_exact_all_candidates": true,
+      "parser_rejected_frame_count": 27,
+      "official_metrics": {
+        "HOTA": 0.07840637122472686,
+        "DetA": 0.535783625838064,
+        "AssA": 0.01151776289280358,
+        "IDF1": 0.035341365461847386,
+        "IDSW": 2796,
+        "FP": 1605,
+        "FN": 817
+      },
+      "base_novel": null,
+      "GT_and_future_frames_not_read_by_runtime": true,
+      "actual_end_to_end_FPS": null
+    }
+  },
+  "assigned_and_other_scopes_pending": true,
+  "full_goal_complete": false
+}

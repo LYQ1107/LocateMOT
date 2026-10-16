@@ -1,0 +1,19 @@
+{
+  "status": "ACTUAL_NATIVE_RELATION_HEAD_SAVED_STATE_AND_FROZEN_BASE_VERIFIED",
+  "step": 3000,
+  "actual_questions": 9000,
+  "exposure": {
+    "mot:identity": 3000,
+    "rmot:query_membership": 3000,
+    "ovmot:category": 3000
+  },
+  "all_fixed_original_parameters_exact": true,
+  "fixed_tensors": 59,
+  "fixed_elements": 1080589,
+  "all_saved_model_and_Adam_values_finite": true,
+  "planned_trainable_parameters": 66790,
+  "total_parameters": 1147379,
+  "no_GPU_or_training_updates_by_validator": true,
+  "final8000_and_tracking_gain_pending": true,
+  "full_goal_complete": false
+}

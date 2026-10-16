@@ -1,0 +1,22 @@
+{
+  "project_root": "/data2/user/LocateMOT",
+  "output": "outputs/groundjev/diagnostics/compact_DT1203_frozen_prefix_v1",
+  "manifest": "outputs/groundjev/pilot_data/dancetrack.json",
+  "original_run": "outputs/groundjev/compact/fixed_affinity_controls_v1/mot_full1203_learned_reference",
+  "checkpoints": {
+    "joint": "/data3/user/LocateMOT-checkpoints/compact_broader_question_joint8000_v1/checkpoint.pt",
+    "MOTonly": "/data3/user/LocateMOT-checkpoints/compact_broader_question_MOTonly8000_v1/checkpoint.pt"
+  },
+  "expected_frames": 1203,
+  "expected_candidates": 13664,
+  "device": "cpu",
+  "cpu_threads": 4,
+  "target_rule": "Same external one-to-one IoU>=.5 candidate GT matches and immutable actual old actor birth IDs; correct-existing alias set, otherwise original NEW/IGNORE/NO_MATCH contract. GT never repairs model or actor state.",
+  "comparison": "All models receive exact same original actor pre-write tensors. Compare typed identity argmax and one-step global Hungarian assignments; only original actor evolves. This is a conditional decision diagnosis, not a new continuous rollout or HOTA.",
+  "validation": "Recomputed original full outputs and state must equal every saved original frame exactly; original shadow Hungarian choices must reproduce every actual original candidate event.",
+  "storage": "Only compressed posthoc decisions and summaries, no image/ROI feature copies; 2MiB metadata suballocation within existing16MiB Compact reservation.",
+  "combined_registered_feature_upper_bytes": 26702193630,
+  "global_temporary_feature_budget_bytes": 26843545600,
+  "new_GPU_or_training_updates": 0,
+  "full_goal_complete": false
+}

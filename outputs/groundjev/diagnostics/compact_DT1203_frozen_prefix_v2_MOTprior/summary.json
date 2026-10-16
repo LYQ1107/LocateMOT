@@ -1,0 +1,236 @@
+{
+  "status": "DT1203_IDENTICAL_REAL_OLD_PREFIXES_AND_SHADOW_ASSIGNMENTS_VALIDATED",
+  "frames": 1203,
+  "candidates": 13664,
+  "original_every_output_state_and_assignment_exact": true,
+  "same_actual_native_tensor_inputs_for_all_models": false,
+  "posthoc_target_counts": {
+    "target:IGNORE": 9323,
+    "multiple_GT_consistent_aliases": 598,
+    "target:NEW": 2573,
+    "target:EXISTING": 1768
+  },
+  "counts": {
+    "original": {
+      "questions": 13664,
+      "argmax_correct": 710,
+      "shadow_assignment_correct": 635,
+      "correct_existing_option_present": 1768,
+      "argmax_existing_correct": 651,
+      "shadow_existing_correct": 575
+    },
+    "MOTprior": {
+      "questions": 13664,
+      "argmax_correct": 9014,
+      "shadow_assignment_correct": 9062,
+      "correct_existing_option_present": 1768,
+      "argmax_existing_correct": 3,
+      "shadow_existing_correct": 3
+    },
+    "MOTprior_no_age": {
+      "questions": 13664,
+      "argmax_correct": 9252,
+      "shadow_assignment_correct": 9296,
+      "correct_existing_option_present": 1768,
+      "argmax_existing_correct": 43,
+      "shadow_existing_correct": 36
+    },
+    "MOTprior_no_confidence": {
+      "questions": 13664,
+      "argmax_correct": 8960,
+      "shadow_assignment_correct": 8996,
+      "correct_existing_option_present": 1768,
+      "argmax_existing_correct": 1,
+      "shadow_existing_correct": 1
+    },
+    "MOTprior_no_four_scalars": {
+      "questions": 13664,
+      "argmax_correct": 9248,
+      "shadow_assignment_correct": 9286,
+      "correct_existing_option_present": 1768,
+      "argmax_existing_correct": 26,
+      "shadow_existing_correct": 21
+    }
+  },
+  "argmax_confusion": {
+    "original": {
+      "IGNORE->NEW": 49,
+      "IGNORE->EXISTING": 3878,
+      "NEW->NO_MATCH": 1196,
+      "IGNORE->NO_MATCH": 5341,
+      "NEW->EXISTING": 1373,
+      "NEW->NEW": 4,
+      "EXISTING->EXISTING": 1345,
+      "EXISTING->NO_MATCH": 422,
+      "IGNORE->IGNORE": 55,
+      "EXISTING->NEW": 1
+    },
+    "MOTprior": {
+      "IGNORE->NEW": 507,
+      "IGNORE->IGNORE": 8744,
+      "NEW->NEW": 267,
+      "NEW->IGNORE": 2137,
+      "IGNORE->EXISTING": 72,
+      "NEW->EXISTING": 169,
+      "EXISTING->IGNORE": 1564,
+      "EXISTING->EXISTING": 48,
+      "EXISTING->NEW": 156
+    },
+    "MOTprior_no_age": {
+      "IGNORE->NEW": 210,
+      "IGNORE->IGNORE": 9031,
+      "NEW->NEW": 178,
+      "NEW->IGNORE": 2223,
+      "IGNORE->EXISTING": 82,
+      "NEW->EXISTING": 172,
+      "EXISTING->IGNORE": 1578,
+      "EXISTING->EXISTING": 114,
+      "EXISTING->NEW": 76
+    },
+    "MOTprior_no_confidence": {
+      "IGNORE->NEW": 598,
+      "IGNORE->IGNORE": 8669,
+      "NEW->NEW": 290,
+      "NEW->IGNORE": 2168,
+      "IGNORE->EXISTING": 56,
+      "NEW->EXISTING": 115,
+      "EXISTING->IGNORE": 1570,
+      "EXISTING->EXISTING": 35,
+      "EXISTING->NEW": 163
+    },
+    "MOTprior_no_four_scalars": {
+      "IGNORE->NEW": 234,
+      "IGNORE->IGNORE": 9024,
+      "NEW->NEW": 198,
+      "NEW->IGNORE": 2249,
+      "IGNORE->EXISTING": 65,
+      "NEW->EXISTING": 126,
+      "EXISTING->IGNORE": 1592,
+      "EXISTING->EXISTING": 89,
+      "EXISTING->NEW": 87
+    }
+  },
+  "models": {
+    "MOTprior": "/data3/user/LocateMOT-checkpoints/compact_broader_question_MOTprior8000_v1/checkpoint.pt"
+  },
+  "input_interventions": {
+    "MOTprior_no_age": {
+      "model": "MOTprior",
+      "zero_history_geo_columns": [
+        4
+      ]
+    },
+    "MOTprior_no_confidence": {
+      "model": "MOTprior",
+      "zero_history_geo_columns": [
+        7
+      ]
+    },
+    "MOTprior_no_four_scalars": {
+      "model": "MOTprior",
+      "zero_history_geo_columns": [
+        4,
+        5,
+        6,
+        7
+      ]
+    }
+  },
+  "actual_old_prefix_history_scalar_domain": {
+    "observations": 9660,
+    "fields": [
+      "age/100",
+      "lost_age/3",
+      "seconds_since_reliable/3",
+      "confidence"
+    ],
+    "quantile_levels": [
+      0,
+      0.5,
+      0.95,
+      1
+    ],
+    "quantiles": [
+      [
+        0.009999999776482582,
+        0.0,
+        0.01666666753590107,
+        0.027348807081580162
+      ],
+      [
+        0.20000000298023224,
+        0.05000000074505806,
+        0.0833333358168602,
+        0.4253694713115692
+      ],
+      [
+        4.739999771118164,
+        0.8333333134651184,
+        0.8666666746139526,
+        0.8835535705089569
+      ],
+      [
+        8.460000038146973,
+        1.0,
+        1.1833332777023315,
+        0.9808297157287598
+      ]
+    ]
+  },
+  "posthoc_correct_existing_alias_scalar_domain": {
+    "observations": 2366,
+    "fields": [
+      "age/100",
+      "lost_age/3",
+      "seconds_since_reliable/3",
+      "confidence"
+    ],
+    "quantile_levels": [
+      0,
+      0.5,
+      0.95,
+      1
+    ],
+    "quantiles": [
+      [
+        0.009999999776482582,
+        0.0,
+        0.01666666753590107,
+        0.028539124876260757
+      ],
+      [
+        2.0299999713897705,
+        0.0,
+        0.01666666753590107,
+        0.6779212057590485
+      ],
+      [
+        7.307500004768372,
+        0.5666666626930237,
+        0.6000000238418579,
+        0.9127947390079498
+      ],
+      [
+        8.460000038146973,
+        1.0,
+        1.1833332777023315,
+        0.9808297157287598
+      ]
+    ]
+  },
+  "GT_used_only_by_external_posthoc_scoring": true,
+  "GT_actor_state_repair": false,
+  "original_actor_is_only_evolving_history": true,
+  "scope": "Same original actor validation prefixes, original versus completed prior-weighted checkpoint plus explicit GT-agnostic zero-age, zero-confidence, zero-four-scalar single-step interventions. Original actor alone evolves. These are conditional input interventions, not new causal HOTA, retrained models or deployed policy.",
+  "new_GPU_or_optimizer_updates": 0,
+  "official_tracking_gain_claimed": false,
+  "full_goal_complete": false,
+  "native_visual_box_pair_geometry_and_specification_inputs_identical": true,
+  "explicitly_declared_history_scalar_interventions_only": true,
+  "report_scope_correction": {
+    "original_report_field": true,
+    "corrected_report_field": false,
+    "field": "same_actual_native_tensor_inputs_for_all_models",
+    "reason": "Declared scalar input interventions change history_geo columns; only visual/box/pair/specification tensors stay identical. Metrics and model executions unchanged; correct overbroad inherited report flag."
+  }
+}

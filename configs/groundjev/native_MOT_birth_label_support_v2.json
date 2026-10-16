@@ -1,0 +1,20 @@
+{
+  "project_root": "/data2/user/LocateMOT",
+  "output": "outputs/groundjev/diagnostics/native_MOT_birth_label_support_v2",
+  "train_index": "outputs/groundjev/compact/broader_native_reference_inputs_v1/index.json",
+  "validation_manifest": "outputs/groundjev/pilot_data/dancetrack.json",
+  "validation_run": "outputs/groundjev/compact/fixed_affinity_controls_v1/mot_full1203_learned_reference",
+  "expected_train_units": 43,
+  "expected_train_frames": 1056,
+  "expected_train_candidates": 48051,
+  "expected_validation_frames": 1203,
+  "expected_validation_candidates": 13664,
+  "audit": "Read-only: compare original all-proposal Hungarian-before-threshold labels with uniquely GT-supported actual emissions. Identify isolated valid edges missed after thresholding. Separate TRAIN and validation counts; no target/state repair or runtime GT.",
+  "source_validation": "All TRAIN posthoc candidate GT identities must match the original immutable candidate registry before support analysis.",
+  "threshold": 0.5,
+  "new_feature_cache_bytes": 0,
+  "metadata_suballocation": "2MiB of existing16MiB Compact metadata reserve",
+  "combined_registered_feature_upper_bytes": 26702193630,
+  "global_temporary_feature_budget_bytes": 26843545600,
+  "full_goal_complete": false
+}

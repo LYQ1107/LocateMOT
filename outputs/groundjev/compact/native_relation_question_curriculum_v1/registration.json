@@ -1,0 +1,76 @@
+{
+  "project_root": "/data2/user/LocateMOT",
+  "output": "outputs/groundjev/compact/native_relation_question_curriculum_v1",
+  "inputs": "outputs/groundjev/compact/broader_native_reference_inputs_v1",
+  "base": "outputs/groundjev/compact/base175_native_teacher_bank_v1",
+  "initial_checkpoint": "outputs/groundjev/compact/rmot_native72_stage_v1/broad_native_training/checkpoint.pt",
+  "training_output": "/data3/user/LocateMOT-checkpoints/compact_native_relation_head8000_v1",
+  "seed": 0,
+  "task_questions": 8000,
+  "optimizer_steps": 8000,
+  "questions_per_step": 3,
+  "MOT_family_questions": {
+    "identity": 8000
+  },
+  "RMOT_family_questions": {
+    "query_membership": 8000
+  },
+  "RMOT_yes_no_questions_each": 4000,
+  "OVMOT_sampling": "Preserve the4000 existing stratified Base175 object draws exactly twice; flat1203-way category CE each exposure, not hierarchical OneJev root/leaf CE.",
+  "source_selection": "MOT original identity questions only; RMOT membership only; OV175Base same native teacher observations/flat1203-way labels. All original excluded auxiliary/presence/assigned-ID questions and empty contexts explicitly inventoried and preserved.",
+  "image_coverage": "Include one eligible question per (unit,frame) before filling quotas; any context with no eligible head remains explicitly registered, never fabricated.",
+  "sampling": "seed0, unseen rows before repeats within each collapsed label; least-exposed labels for MOT quota fills; exactly4000yes/4000no RMOT; shuffle each task stream independently then one row per task per optimizer update.",
+  "architecture": "Existing original shared Compact backbone/specification/auxiliary/association frozen exactly;225parameter pair residual and643parameter action residual zero-initialized at output; only residual/category/membership/scale heads trained.",
+  "lr": 0.0002,
+  "weight_decay": 0.0001,
+  "gradient_clip": 1.0,
+  "device": "cpu",
+  "cpu_threads": 4,
+  "loss_coefficients": {
+    "identity": 1.0,
+    "lifecycle": 0.3,
+    "memory_update": 0.3,
+    "reliability": 0.1,
+    "query_membership": 0.5,
+    "category": 1.0
+  },
+  "loss_aggregation": "Mean of one identity, one membership and one Base flat-category loss per update; existing per-head coefficients; TRAIN natural-label/selected-label importance ratios for identity/membership only. Original shared representation and auxiliary heads frozen, no shared-backbone gradient claim.",
+  "save_every": 1000,
+  "checkpoint_selection": "Same final8000 across all tasks; before original actor, trained native residual, and same-final semantic weights with residual disabled as explicit inference ablation (not separately trained).",
+  "evaluation": "Before original actor versus final checkpoint on unchanged registered DT1203/RMOTsingle800/RMOTmulti800/rawTAO40 and natural MOT20full1657; official metrics, all empty/rejected frames and original thresholds retained.",
+  "new_metadata_cap_bytes": 2097152,
+  "prior_registered_feature_upper_bytes": 26702193630,
+  "combined_registered_feature_upper_bytes": 26710582238,
+  "global_temporary_feature_budget_bytes": 26843545600,
+  "storage": "References and labels only; reuse original native FP32 arrays and single Base bank; model/optimizer scientific checkpoints stored separately under data3.",
+  "ground_and_OneJev_joint_gradient": false,
+  "actual_optimizer_steps_at_registration": 0,
+  "full_goal_complete": false,
+  "name": "Frozen-core shared semantic heads and zero-initialized native visual relation residual",
+  "training_prefix_validation": "outputs/groundjev/compact/native_relation_question_curriculum_v1/training_prefix_validation.json",
+  "native_relation_residual": true,
+  "trainable_parameter_prefixes": [
+    "native_pair.",
+    "native_actions.",
+    "category.",
+    "membership.",
+    "class_scale"
+  ],
+  "label_loss_weights": {
+    "identity": {
+      "NEW": 0.9564004911448253,
+      "IGNORE": 0.665293126053568,
+      "EXISTING": 1.8411271357515973,
+      "NO_MATCH": 0.5371792470500094
+    },
+    "query_membership": {
+      "yes": 0.5958778064041222,
+      "no": 1.4041221935958779
+    }
+  },
+  "comparison_limit": "Exploratory frozen-core adapter after failed all-parameter continuations; new identity-onlyMOT curriculum and TRAIN-only prior weights. Before/default/residual-disabled across samefive official scopes, all candidates/empty/rejected frames retained. LearnedCompact residual probabilities are not native OneJev decoder reasoning or pretrained foundation adaptation; four-GPU native OneJev study continues separately.",
+  "initial_untrained_validation": "Require actual full DT1203 original outputs/state/shadow assignments exact and zero-initialized residual outputs exactly equal original on every captured group.",
+  "new_adapter_total_metadata_reservation_bytes": 8388608,
+  "metadata_suballocation": "Reserve8MiB new metadata beyond prior ledger: at most2MiB question curriculum,2MiB initial native numerical replay,remaining4MiB small registration/results. Reuse all existing ROI banks; model/Adam/checkpoints separately on data3.",
+  "frozen_original_backbone_not_jointly_optimized": true
+}

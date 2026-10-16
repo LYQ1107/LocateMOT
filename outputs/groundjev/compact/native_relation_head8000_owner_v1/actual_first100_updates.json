@@ -1,0 +1,38 @@
+{
+  "status": "NATIVE_RELATION_FROZEN_CORE_ACTUAL100_UPDATES_VERIFIED",
+  "actual_steps": 100,
+  "actual_questions": 300,
+  "questions_each_task": 100,
+  "trainable_parameters": 66790,
+  "total_parameters": 1147379,
+  "records": [
+    {
+      "step": 1,
+      "actual_questions": 3,
+      "weighted_task_losses": {
+        "mot": 1.5323374271392822,
+        "rmot": 0.5252477526664734,
+        "ovmot": 13.50355052947998
+      },
+      "mean_loss": 5.187045236428578,
+      "unclipped_gradient_norm": 9.281527519226074,
+      "training_seconds": 0.439755633007735
+    },
+    {
+      "step": 100,
+      "actual_questions": 300,
+      "weighted_task_losses": {
+        "mot": 1.33734130859375,
+        "rmot": 0.6266219019889832,
+        "ovmot": 6.843823432922363
+      },
+      "mean_loss": 2.9359288811683655,
+      "unclipped_gradient_norm": 2.674686908721924,
+      "training_seconds": 13.209813008026686
+    }
+  ],
+  "owner_pid": 3821953,
+  "owner_starttick": "51564917",
+  "full8000_training_complete": false,
+  "full_goal_complete": false
+}

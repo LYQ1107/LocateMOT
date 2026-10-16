@@ -1,0 +1,53 @@
+{
+  "status": "ALL_SELECTED_COMPACT_LABELS_AND_NATIVE_HEAD_OPTIONS_VALIDATED",
+  "all_selected_original_labels_and_native_question_options_exact": true,
+  "original_temporal_questions_checked": 16000,
+  "questions_by_family": {
+    "zero_history_original_masked_NO_MATCH_columns": 172,
+    "mot:identity": 8000,
+    "rmot:query_membership": 8000
+  },
+  "original_OV_teacher_draws_preserved_exactly_twice": true,
+  "OV_flat_category_exposures": 8000,
+  "representative_source_questions": {
+    "identity:NO_MATCH": {
+      "unit": "mot/MOT20-05",
+      "id": "MOT20-05_887_batch8_match_14",
+      "group": "MOT20-05_887_batch8",
+      "slot": 14
+    },
+    "identity:IGNORE": {
+      "unit": "mot/MOT20-05",
+      "id": "MOT20-05_877_batch1_match_5",
+      "group": "MOT20-05_877_batch1",
+      "slot": 5
+    },
+    "identity:NEW": {
+      "unit": "mot/MOT20-05",
+      "id": "MOT20-05_879_batch6_match_14",
+      "group": "MOT20-05_879_batch6",
+      "slot": 14
+    },
+    "identity:EXISTING": {
+      "unit": "mot/MOT20-05",
+      "id": "MOT20-05_844_batch4_match_10",
+      "group": "MOT20-05_844_batch4",
+      "slot": 10
+    },
+    "query_membership:yes": {
+      "unit": "rmot/0008_primary",
+      "id": "0008_primary_299_batch0_membership_1",
+      "group": "0008_primary_299_batch0",
+      "slot": 1
+    },
+    "query_membership:no": {
+      "unit": "rmot/0008_primary",
+      "id": "0008_primary_216_batch0_membership_0",
+      "group": "0008_primary_216_batch0",
+      "slot": 0
+    }
+  },
+  "total_questions": 24000,
+  "GPU_or_optimizer_updates_by_validation": 0,
+  "full_goal_complete": false
+}

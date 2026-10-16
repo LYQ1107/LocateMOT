@@ -122,6 +122,8 @@ def main():
                             assert new['state']['decision_metadata'].get('shortlist_policy', 'geometry') == shortlist_policy
                             if policies.get('input_evidence'):
                                 assert new['state']['decision_metadata'].get('input_evidence', 'geometry_appearance_language') == policies['input_evidence']
+                            if 'native_relation_residual' in policies:
+                                assert new['state']['decision_metadata'].get('native_relation_residual',False)==policies['native_relation_residual']
                         expected_rejection = bool(old['perception'].get('model_response_rejected', False))
                         assert bool(new['perception'].get('model_response_rejected', False)) == expected_rejection
                         if expected_rejection:

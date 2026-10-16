@@ -1,0 +1,153 @@
+{
+  "status": "DT1203_IDENTICAL_REAL_OLD_PREFIXES_AND_SHADOW_ASSIGNMENTS_VALIDATED",
+  "frames": 1203,
+  "candidates": 13664,
+  "original_every_output_state_and_assignment_exact": true,
+  "same_actual_native_tensor_inputs_for_all_models": true,
+  "native_visual_box_pair_geometry_and_specification_inputs_identical": true,
+  "explicitly_declared_history_scalar_interventions_only": false,
+  "all_declared_untrained_model_output_equalities_exact": true,
+  "posthoc_target_counts": {
+    "target:IGNORE": 9323,
+    "multiple_GT_consistent_aliases": 598,
+    "target:NEW": 2573,
+    "target:EXISTING": 1768
+  },
+  "counts": {
+    "original": {
+      "questions": 13664,
+      "argmax_correct": 710,
+      "shadow_assignment_correct": 635,
+      "correct_existing_option_present": 1768,
+      "argmax_existing_correct": 651,
+      "shadow_existing_correct": 575
+    },
+    "native_relation_untrained": {
+      "questions": 13664,
+      "argmax_correct": 710,
+      "shadow_assignment_correct": 635,
+      "correct_existing_option_present": 1768,
+      "argmax_existing_correct": 651,
+      "shadow_existing_correct": 575
+    }
+  },
+  "argmax_confusion": {
+    "original": {
+      "IGNORE->NEW": 49,
+      "IGNORE->EXISTING": 3878,
+      "NEW->NO_MATCH": 1196,
+      "IGNORE->NO_MATCH": 5341,
+      "NEW->EXISTING": 1373,
+      "NEW->NEW": 4,
+      "EXISTING->EXISTING": 1345,
+      "EXISTING->NO_MATCH": 422,
+      "IGNORE->IGNORE": 55,
+      "EXISTING->NEW": 1
+    },
+    "native_relation_untrained": {
+      "IGNORE->NEW": 49,
+      "IGNORE->EXISTING": 3878,
+      "NEW->NO_MATCH": 1196,
+      "IGNORE->NO_MATCH": 5341,
+      "NEW->EXISTING": 1373,
+      "NEW->NEW": 4,
+      "EXISTING->EXISTING": 1345,
+      "EXISTING->NO_MATCH": 422,
+      "IGNORE->IGNORE": 55,
+      "EXISTING->NEW": 1
+    }
+  },
+  "models": {
+    "native_relation_untrained": "/data3/user/LocateMOT-checkpoints/compact_native_relation_initial_v1.pt"
+  },
+  "input_interventions": {},
+  "actual_old_prefix_history_scalar_domain": {
+    "observations": 9660,
+    "fields": [
+      "age/100",
+      "lost_age/3",
+      "seconds_since_reliable/3",
+      "confidence"
+    ],
+    "quantile_levels": [
+      0,
+      0.5,
+      0.95,
+      1
+    ],
+    "quantiles": [
+      [
+        0.009999999776482582,
+        0.0,
+        0.01666666753590107,
+        0.027348807081580162
+      ],
+      [
+        0.20000000298023224,
+        0.05000000074505806,
+        0.0833333358168602,
+        0.4253694713115692
+      ],
+      [
+        4.739999771118164,
+        0.8333333134651184,
+        0.8666666746139526,
+        0.8835535705089569
+      ],
+      [
+        8.460000038146973,
+        1.0,
+        1.1833332777023315,
+        0.9808297157287598
+      ]
+    ]
+  },
+  "posthoc_correct_existing_alias_scalar_domain": {
+    "observations": 2366,
+    "fields": [
+      "age/100",
+      "lost_age/3",
+      "seconds_since_reliable/3",
+      "confidence"
+    ],
+    "quantile_levels": [
+      0,
+      0.5,
+      0.95,
+      1
+    ],
+    "quantiles": [
+      [
+        0.009999999776482582,
+        0.0,
+        0.01666666753590107,
+        0.028539124876260757
+      ],
+      [
+        2.0299999713897705,
+        0.0,
+        0.01666666753590107,
+        0.6779212057590485
+      ],
+      [
+        7.307500004768372,
+        0.5666666626930237,
+        0.6000000238418579,
+        0.9127947390079498
+      ],
+      [
+        8.460000038146973,
+        1.0,
+        1.1833332777023315,
+        0.9808297157287598
+      ]
+    ]
+  },
+  "GT_used_only_by_external_posthoc_scoring": true,
+  "GT_actor_state_repair": false,
+  "original_actor_is_only_evolving_history": true,
+  "scope": "Full original DT1203 causal state/output parity and exact zero-initialized native residual outputs on all actual pre-write tensor groups; initial compatibility only, not training gain.",
+  "new_GPU_or_optimizer_updates": 0,
+  "official_tracking_gain_claimed": false,
+  "full_goal_complete": false
+}

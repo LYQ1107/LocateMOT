@@ -1,0 +1,6 @@
+{
+  "original_report_field": true,
+  "corrected_report_field": false,
+  "field": "same_actual_native_tensor_inputs_for_all_models",
+  "reason": "Declared scalar input interventions change history_geo columns; only visual/box/pair/specification tensors stay identical. Metrics and model executions unchanged; correct overbroad inherited report flag."
+}

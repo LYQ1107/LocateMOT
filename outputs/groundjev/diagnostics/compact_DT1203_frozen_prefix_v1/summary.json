@@ -1,0 +1,86 @@
+{
+  "status": "DT1203_IDENTICAL_REAL_OLD_PREFIXES_AND_SHADOW_ASSIGNMENTS_VALIDATED",
+  "frames": 1203,
+  "candidates": 13664,
+  "original_every_output_state_and_assignment_exact": true,
+  "same_actual_native_tensor_inputs_for_all_models": true,
+  "posthoc_target_counts": {
+    "target:IGNORE": 9323,
+    "multiple_GT_consistent_aliases": 598,
+    "target:NEW": 2573,
+    "target:EXISTING": 1768
+  },
+  "counts": {
+    "original": {
+      "questions": 13664,
+      "argmax_correct": 710,
+      "shadow_assignment_correct": 635,
+      "correct_existing_option_present": 1768,
+      "argmax_existing_correct": 651,
+      "shadow_existing_correct": 575
+    },
+    "joint": {
+      "questions": 13664,
+      "argmax_correct": 9069,
+      "shadow_assignment_correct": 9092,
+      "correct_existing_option_present": 1768,
+      "argmax_existing_correct": 6,
+      "shadow_existing_correct": 5
+    },
+    "MOTonly": {
+      "questions": 13664,
+      "argmax_correct": 9193,
+      "shadow_assignment_correct": 9262,
+      "correct_existing_option_present": 1768,
+      "argmax_existing_correct": 55,
+      "shadow_existing_correct": 57
+    }
+  },
+  "argmax_confusion": {
+    "original": {
+      "IGNORE->NEW": 49,
+      "IGNORE->EXISTING": 3878,
+      "NEW->NO_MATCH": 1196,
+      "IGNORE->NO_MATCH": 5341,
+      "NEW->EXISTING": 1373,
+      "NEW->NEW": 4,
+      "EXISTING->EXISTING": 1345,
+      "EXISTING->NO_MATCH": 422,
+      "IGNORE->IGNORE": 55,
+      "EXISTING->NEW": 1
+    },
+    "joint": {
+      "IGNORE->NEW": 283,
+      "IGNORE->IGNORE": 9001,
+      "NEW->NEW": 62,
+      "NEW->IGNORE": 2438,
+      "IGNORE->EXISTING": 39,
+      "NEW->EXISTING": 73,
+      "EXISTING->IGNORE": 1726,
+      "EXISTING->NEW": 33,
+      "EXISTING->EXISTING": 9
+    },
+    "MOTonly": {
+      "IGNORE->NEW": 236,
+      "IGNORE->IGNORE": 8977,
+      "NEW->NEW": 161,
+      "NEW->IGNORE": 2117,
+      "IGNORE->EXISTING": 110,
+      "NEW->EXISTING": 295,
+      "EXISTING->EXISTING": 126,
+      "EXISTING->IGNORE": 1527,
+      "EXISTING->NEW": 115
+    }
+  },
+  "models": {
+    "joint": "/data3/user/LocateMOT-checkpoints/compact_broader_question_joint8000_v1/checkpoint.pt",
+    "MOTonly": "/data3/user/LocateMOT-checkpoints/compact_broader_question_MOTonly8000_v1/checkpoint.pt"
+  },
+  "GT_used_only_by_external_posthoc_scoring": true,
+  "GT_actor_state_repair": false,
+  "original_actor_is_only_evolving_history": true,
+  "scope": "All models receive exact same original actor pre-write tensors. Compare typed identity argmax and one-step global Hungarian assignments; only original actor evolves. This is a conditional decision diagnosis, not a new continuous rollout or HOTA.",
+  "new_GPU_or_optimizer_updates": 0,
+  "official_tracking_gain_claimed": false,
+  "full_goal_complete": false
+}

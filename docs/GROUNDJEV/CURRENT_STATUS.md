@@ -1,48 +1,68 @@
-## Broader Compact results and controlled failure diagnosis — 2026-10-16
+## Completed controls, failed repair hypotheses and native-relation adapter — 2026-10-16
 
-Both continuations completed and passed full model/Adam/export/reload checks:
-shared8000updates/24000questions in1167.332s, and matched MOT-only8000updates/
-8000questions in944.519s. Each uses one final checkpoint across all scopes.
-Results are mixed/negative; neither checkpoint is promoted:
+Shared and matched MOT-only8000 studies completed all five unchanged causal
+scopes, including natural MOT20full1657. Neither is promoted:
 
-|Scope/metric|Original|Shared8000|MOT-only8000|
-|---|---:|---:|---:|
-|DT1203 HOTA %|26.3157|5.5800|1.6800|
-|DT1203 IDF1 %|30.6329|6.7840|0.8203|
-|RMOT single800 HOTA %|6.0247|1.0579|2.4910|
-|RMOT multi800 HOTA %|19.8019|12.5237|17.0572|
-|TAO40 TETA (0–100)|14.5170|19.2520|3.6599|
+|Scope/metric|Original|Shared8000|MOT-only8000|TRAIN-prior8000|
+|---|---:|---:|---:|---:|
+|DT1203 HOTA %|26.3157|5.5800|1.6800|2.5567|
+|RMOT single800 HOTA %|6.0247|1.0579|2.4910|3.5421|
+|RMOT multi800 HOTA %|19.8019|12.5237|17.0572|15.7803|
+|TAO40 TETA (0–100)|14.5170|19.2520|3.6599|6.6607|
+|MOT20full1657 HOTA %|7.4316|11.4780|5.6407|3.1083|
 
-SharedTAO gains come fromLocA/AssocA; ClsA30.314→28.781 worsens andNovelClsA
-remains0. Natural MOT20full1657 joint inference has completed and the original
-CPU official scorer is still active; its final score and matched MOT-only
-MOT20 control remain pending. All original frames/candidates/rejections,
-thresholds, metrics and negative checkpoints are preserved.
+SharedMOT20 IDF1 is7.8200%, IDSW58632 versus original2060; sharedTAO NovelClsA
+remains0. More detections/localization do not establish stable identity or
+three-task gains. TRAIN-prior8000 completed8000questions/944.302s and all five scopes; its
+naturalMOT20 score also remains below ordinary-model performance.
+The separate native OneJev6000 defaultDT1203 also regresses: HOTA8.7030→7.8406%,
+IDF15.8260→3.5341%, with all1203frames/13664candidates/27rejections retained.
+Assigned-ID and remaining task controls continue under the original owner.
 
-Frozen1250fit correct-existing questions improve from521/1250(41.68%) to
-656(52.48%) shared or733(58.64%) MOT-only, not held-out tracking gains. Native
-cosine top1 remains1050/1250(84%) on all three models. Removing other task
-losses does not restore DT performance, so gradient interference alone is
-insufficient. A completed DT1203 auxiliary-policy intervention (update1, no
-learned lifecycle, reliabilityNone) reaches only5.6588% shared/3.2215% MOT-only
-HOTA. It combines auxiliary changes and does not establish a lifecycle-only
-cause or a repair. Evidence: `broader_aux_policy_DT1203_v1/completed_validation.json`
-under `outputs/groundjev/compact/`.
+The exact-original-prefix diagnostic reproduces every original output/state
+and shadow assignment on DT1203. With1768correct-existing options, argmax
+correct is651original/6shared/55MOT-only/3prior-weighted; new models already
+reject valid existing options before their history changes. Zero-age or
+zero-confidence/four-scalar one-step interventions do not repair this
+(43/1/26correct respectively). These are conditional diagnoses, not HOTA.
+A report-scope correction explicitly marks altered scalar tensors; visual/box/
+pair/specification tensors remain identical.
 
-The next explicitly registered MOT-only control keeps exact question IDs/order,
-initial weights,8000optimizer updates and all hyperparameters/lossdivisor3,
-but reweights labels by original TRAIN-source frequency/selected frequency.
-Raw MOT questions have46.03%EXISTING versus25%selected; lifecycleTERMINATE
-has5.00%raw versus25%selected. This is an exploratory source-prior hypothesis,
-not a guarantee of deployment calibration. All ratios come from frozen TRAIN
-labels; no validation-label ratios or runtime thresholds are fitted. Its
-8update versus4+4restored model/Adam/RNG state is exact, and production CPU
-training has started. No new feature bank or GPU was allocated.
+A read-only birth-support audit matches all48051original TRAINregistry targets.
+It identifies2/844TRAIN births with uniquely GT-supported actual emissions left
+unbound, and4isolated valid edges lost by assignment-before-threshold. These
+are conservative unambiguous-case counts; remaining ambiguous births are not
+certified correct and the broader birth-label mechanism is not ruled out. No
+existing labels or running native foundation protocol were changed. Its first
+run failed only at final JSON printing; failure retained and completev2 rerun
+exited0.
 
-The separate752M-parameter native OneJev balanced6000 stage is complete; its
-tracking controls continue. The independent four-GPU459027-question epoch is
-still unfinished (last verified650updates/10400questions). Full ordinary-model
-performance across MOT/RMOT/OVMOT remains unachieved.
+A new frozen-core Compact adapter is implemented and actually training onCPU:
+1,147,379total parameters,66,790trainable, including868zero-initialized native
+ROI relation/action residual parameters plus category/membership/scale heads.
+Original backbone, text conditioning, association and auxiliary weights are
+frozen. New inputs use real anchor/recent/long cosine and existing IoU/distance,
+not GT. All24000new questions/options validated (8000identity/8000membership/
+8000Basecategory); eligible images1016MOT/1795RMOT/3227OV, unsupported263query-
+frame contexts explicitly inventoried and original sources retained. This is
+a new identity-onlyMOT recipe, not a compute-matched continuation.
+
+Zero-initialized outputs agree exactly with the original on every captured
+DT1203group, and original causal states/assignments remain exact across1203
+frames/13664candidates. Actual three-task8versus4+4resume is bit exact for
+model/Adam/RNG. Production passed at least3000updates/9000questions; its observed saved
+state verifies all59fixed tensors/1,080,589original elements exactly unchanged
+and all model/Adam values finite. Final8000 and tracking gains remain pending. The original actor, final residual-enabled model and a
+same-final-semantic-weights residual-disabled inference ablation will use all
+five existing scopes. The ablation is not separately trained. This adapter
+freezes shared representations and is not native OneJev decoder reasoning or
+joint shared-backbone fine-tuning. The independent native four-GPU459027-
+question epoch continues (last verified825updates/13200questions).
+
+No new ROI bank or GPU was allocated; an8MiBmetadata reservation raises the
+conservative temporary-feature upper bound to26,710,582,238bytes below25GiB
+(26,843,545,600). Ordinary-model performance across all three tasks remains
+unachieved.
 
 ## Earlier registration and first100 snapshot — 2026-10-16 (superseded)
 

@@ -33,8 +33,15 @@ def main():
     if not args.resume: out.mkdir(parents=True, exist_ok=False)
     checkpoint = torch.load(ROOT / plan['initial_checkpoint'], map_location='cpu', weights_only=True)
     model = CompactCore(checkpoint['architecture'], semantic=checkpoint['semantic'],
-        input_evidence=checkpoint.get('input_evidence', 'geometry_appearance_language'))
-    model.load_state_dict(checkpoint['state_dict'], strict=True)
+        input_evidence=checkpoint.get('input_evidence', 'geometry_appearance_language'),
+        native_relation_residual=plan.get('native_relation_residual',False))
+    if model.native_relation_residual:
+        missing,unexpected=model.load_state_dict(checkpoint['state_dict'],strict=False)
+        assert not unexpected and set(missing)=={k for k in model.state_dict() if k.startswith(('native_pair.','native_actions.'))}
+    else:model.load_state_dict(checkpoint['state_dict'], strict=True)
+    trainable_prefixes=plan.get('trainable_parameter_prefixes')
+    if trainable_prefixes:
+        for name,parameter in model.named_parameters():parameter.requires_grad_(name.startswith(tuple(trainable_prefixes)))
     initial = {k: v.clone() for k, v in model.state_dict().items()}
     optimizer = torch.optim.AdamW(model.parameters(), lr=plan['lr'], weight_decay=plan['weight_decay'])
     protocol = dict(plan=plan, curriculum_summary=dataset.summary, initialization=str((ROOT / plan['initial_checkpoint']).resolve()),
@@ -64,7 +71,7 @@ def main():
                     if row['unit'].split('/')[0] not in tasks: continue
                     inputs = dataset.inputs(row); outputs = model(inputs)
                     loss = dataset.loss(outputs, row) * plan['loss_coefficients'][row['task']]
-                    if 'label_loss_weights' in plan:
+                    if row['task'] in plan.get('label_loss_weights',{}):
                         loss = loss * plan['label_loss_weights'][row['task']][row['label']]
                     assert torch.isfinite(loss)
                     (loss / 3).backward(); losses[row['unit'].split('/')[0]] = float(loss.detach())
@@ -92,8 +99,9 @@ def main():
             steps=stop, seed=plan['seed'], tasks=tasks, Base_only_OV_supervision=True,
             text_features='real original OneJev frozen token mean; not language decoder reasoning',
             training_protocol='native-compact-typed-question-balanced-three-task-v1')
+        if model.native_relation_residual:result['native_relation_residual']=True
         torch.save(result, out / 'checkpoint.pt')
-        fresh = CompactCore(checkpoint['architecture'], semantic=True)
+        fresh = CompactCore(checkpoint['architecture'], semantic=True,native_relation_residual=model.native_relation_residual)
         fresh.load_state_dict(torch.load(out / 'checkpoint.pt', weights_only=True)['state_dict']); fresh.eval()
         differences = {}
         for row in dataset.rows[-3:]:
@@ -102,16 +110,21 @@ def main():
             delta = max(float((before[k]-after[k]).abs().max()) for k in before if before[k].numel())
             assert delta == 0; differences[row['unit'].split('/')[0]] = delta
         changed = {k: int((initial[k] != v).sum()) for k, v in model.state_dict().items()}
-        expected = ['visual.1.weight', 'text.1.weight']
-        if 'mot' in tasks: expected.append('pair.0.weight')
+        expected = [] if trainable_prefixes else ['visual.1.weight', 'text.1.weight']
+        if 'mot' in tasks: expected.append('native_pair.0.weight' if model.native_relation_residual else 'pair.0.weight')
+        if model.native_relation_residual:expected.append('native_actions.0.weight')
         if 'rmot' in tasks: expected.append('membership.0.weight')
         if 'ovmot' in tasks: expected.append('category.weight')
         assert all(changed[k] > 0 for k in expected)
+        if trainable_prefixes:
+            assert all(changed[k]==0 for k in changed if not k.startswith(tuple(trainable_prefixes)))
         if 'rmot' not in tasks: assert all(v==0 for k,v in changed.items() if k.startswith('membership.'))
         if 'ovmot' not in tasks: assert all(v==0 for k,v in changed.items() if k.startswith('category.'))
         assert not torch.cuda.is_initialized()
         state.update(status='BROADER_SHARED_COMPACT_TYPED_QUESTION_TRAINING_COMPLETE',
             exposure=dict(exposure), training_seconds=elapsed, parameters=sum(p.numel() for p in model.parameters()),
+            trainable_parameters=sum(p.numel() for p in model.parameters() if p.requires_grad),
+            frozen_backbone_and_original_association_unchanged=bool(trainable_prefixes),
             changed_elements=sum(changed.values()), changed_elements_by_parameter=changed,
             same_final_checkpoint_for_all_tasks=str(out / 'checkpoint.pt'),
             three_task_reload_probability_max_difference=differences, official_tracking_results='pending',

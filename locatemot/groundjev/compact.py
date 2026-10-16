@@ -11,7 +11,8 @@ class FeedForwardBlock(nn.Module):
 
 
 class CompactCore(nn.Module):
-    def __init__(self, architecture='set', width=128, semantic=False, input_evidence='geometry_appearance_language'):
+    def __init__(self, architecture='set', width=128, semantic=False, input_evidence='geometry_appearance_language',
+                 native_relation_residual=False):
         super().__init__()
         self.architecture, self.width = architecture, width
         self.input_evidence = input_evidence
@@ -34,6 +35,12 @@ class CompactCore(nn.Module):
             self.category = nn.Linear(width,width)
             self.membership = nn.Sequential(nn.Linear(3*width,width),nn.GELU(),nn.Linear(width,1))
             self.class_scale = nn.Parameter(torch.tensor(2.3025851))
+        self.native_relation_residual = native_relation_residual
+        if native_relation_residual:
+            self.native_pair = nn.Sequential(nn.Linear(5,32),nn.GELU(),nn.Linear(32,1))
+            self.native_actions = nn.Sequential(nn.Linear(16,32),nn.GELU(),nn.Linear(32,3))
+            for head in (self.native_pair,self.native_actions):
+                nn.init.zeros_(head[-1].weight);nn.init.zeros_(head[-1].bias)
 
     def forward(self, e):
         n,m = len(e['candidates']),len(e['history'])
@@ -56,6 +63,21 @@ class CompactCore(nn.Module):
             actions = actions.clone(); actions[:,-1] = -1e4
         result={'match':torch.cat([pair,actions],dim=-1),'update':self.update(c).squeeze(-1),
             'reliability':self.reliability(c),'life':self.life(torch.cat([h,context.expand(m,-1)],dim=-1))}
+        if self.native_relation_residual:
+            import math
+            import torch.nn.functional as F
+            cosine=(F.normalize(e['candidates'],dim=-1) @
+                F.normalize(e['history'],dim=-1).reshape(-1,2560).T).reshape(n,m,3)
+            relation=self.native_pair(torch.cat([cosine,e['pair_geometry']],dim=-1)).squeeze(-1)
+            summary=(torch.cat([cosine.max(1).values,cosine.mean(1),
+                e['pair_geometry'][:,:,0].max(1).values[:,None],
+                e['pair_geometry'][:,:,1].min(1).values[:,None]],dim=-1)
+                if m else e['candidates'].new_zeros(n,8))
+            features=torch.cat([result['match'].softmax(-1)[:,-3:],summary,
+                e['candidates'].new_full((n,1),math.log1p(m)),e['candidate_geo']],dim=-1)
+            result['match']=result['match']+torch.cat([relation,self.native_actions(features)],dim=-1)
+            if not m:
+                result['match']=result['match'].clone();result['match'][:,-1]=-1e4
         if self.semantic:
             import torch.nn.functional as F
             result['category']=F.normalize(self.category(c),dim=-1)@F.normalize(self.text(e['class_text']),dim=-1).T*self.class_scale.exp()
@@ -69,7 +91,8 @@ class CompactDecision:
         from pathlib import Path
         data = torch.load(checkpoint,map_location=device,weights_only=True)
         self.model = CompactCore(data['architecture'],semantic=data.get('semantic',False),
-            input_evidence=data.get('input_evidence','geometry_appearance_language')).to(device)
+            input_evidence=data.get('input_evidence','geometry_appearance_language'),
+            native_relation_residual=data.get('native_relation_residual',False)).to(device)
         self.model.load_state_dict(data['state_dict']); self.model.eval()
         self.checkpoint = str(Path(checkpoint).resolve()); self.device = device
         self.batch_candidates,self.shortlist = batch_candidates,shortlist
@@ -166,6 +189,9 @@ class CompactDecision:
         if self.model.input_evidence!='geometry_appearance_language':
             metadata['input_evidence']=self.model.input_evidence
             metadata['evidence_scope']='Shared native frontend; class-vocabulary text remains output-head-only; runtime specification conditioning disabled'
+        if self.model.native_relation_residual:
+            metadata['native_relation_residual']=True
+            metadata['native_relation_inputs']='real anchor/recent/long native ROI cosine, original IoU/distance, supplied geometry and frozen-base action distribution'
         return results,life,metadata
 
 

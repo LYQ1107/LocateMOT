@@ -1,0 +1,5 @@
+{
+  "exit_code": 1,
+  "cause": "Summary printing passed validation_counts as json.dumps keyword instead of adding it to output dictionary. All audit computations and saved summary had already completed; original data, targets, models and metrics unchanged.",
+  "fix": "Correct final dictionary construction; rerun same complete read-only audit into fresh v2 output, retaining v1 failure."
+}
