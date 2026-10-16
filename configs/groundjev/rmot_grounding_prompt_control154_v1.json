@@ -1,0 +1,53 @@
+{
+  "project_root": "/data2/user/LocateMOT",
+  "name": "All154fit-frame native grounding prompt control; original phrase versus same-target canonical and provided-class proposals",
+  "scope": "fit0000 all154physical frames; no held-out GT or positive-frame selection",
+  "source_run": "outputs/groundjev/training_data/rmot_allfit1814_query18_shared_gpu7_v2/clips/0000_primary",
+  "manifest": "outputs/groundjev/training_data/rmot_allfit1814_query18_scope_v1/manifests/0000_primary.json",
+  "label_root": "/data2/user/LocateMOT/data/refer_kitti_v2/labels_with_ids/image_02",
+  "original_expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0000/designated-path-for-people-on-foot.json",
+  "canonical_expression_file": "/data2/user/LocateMOT/data/refer_kitti_v2/expression/0000/pedestrians.json",
+  "same_target_maps_required": true,
+  "output": "outputs/groundjev/diagnostics/rmot_grounding_prompt_control154_v1",
+  "physical_gpu": 4,
+  "launch_min_free_MiB": 40960,
+  "ground_mem_fraction_static": 0.3,
+  "port": 8124,
+  "checkpoint": "models/GroundAnything-DLM",
+  "parser": "official_scoring",
+  "decoder": "tracking_dense",
+  "sampling_seed": 42,
+  "frames": 154,
+  "arms": [
+    {
+      "name": "fresh_original",
+      "task": "rmot",
+      "expression": "designated path for people on foot"
+    },
+    {
+      "name": "canonical_same_targets",
+      "task": "rmot",
+      "expression": "pedestrians"
+    },
+    {
+      "name": "provided_class_proposals",
+      "task": "mot",
+      "expression": null
+    }
+  ],
+  "vocabulary": [
+    "person",
+    "car"
+  ],
+  "metric": "posthoc query-GT box proposal recall at IoU>=.5; all-frame empty/rejected records retained; component upper-bound not tracking score",
+  "no_GT_input_to_native_model": true,
+  "no_ROI_or_new_image_archive": true,
+  "no_existing_training_or_evaluation_or_source_service_touched": true,
+  "concurrent_with_registered_gpu4_Full_worker": true,
+  "fresh_native_service_original_checkpoint_all_arms": true,
+  "diagnostic_data_budget_bytes": 16777216,
+  "prior_registered_feature_upper_bytes": 26806086506,
+  "combined_registered_feature_upper_bytes": 26822863722,
+  "global_temporary_feature_budget_bytes": 26843545600,
+  "full_goal_complete": false
+}

@@ -1,0 +1,377 @@
+{
+  "status": "PAIRED_HISTORY_REFRESH600_TRAINING_AND_MM_RELOAD_COMPLETE",
+  "owner_pid": 2448456,
+  "owner_starttick": "45150423",
+  "owner_git_commit": "d938c520b203152b9e22452a4a554eb5d10e773b",
+  "physical_gpus": [
+    4
+  ],
+  "serial_order": [
+    "old",
+    "refreshed"
+  ],
+  "new_stage_updates_each": 600,
+  "new_stage_samples_each": 2400,
+  "same_initial_FP32_state": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_unified600_native_v2/latest_training_state.pt",
+  "same_per_step_task_and_question_families": true,
+  "changed_native_history_rows_each": 400,
+  "token_or_FLOP_matched": false,
+  "completed": {
+    "old": {
+      "training": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_history_refresh600_old_v1",
+      "done": {
+        "event": "done",
+        "steps": 600,
+        "examples": 2400,
+        "elapsed_s": 15605.720414262963,
+        "examples_per_s": 0.1537897601834839
+      },
+      "initial_FP32": {
+        "status": "NEW_STAGE_REAL_FP32_MASTERS_INITIALIZED",
+        "source": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_unified600_native_v2/latest_training_state.pt",
+        "source_step": 600,
+        "FP32_parameter_entries": 320,
+        "parameters": 752393024,
+        "changed_vs_BF16_inference_export_initialization": 500278218,
+        "initialization_max_difference": 0.0,
+        "new_optimizer_scheduler_and_RNG": "explicit newrecipe reset, not originaltrajectory resume",
+        "old_training_state_or_inference_weights_modified": false
+      },
+      "latest_training_state": {
+        "format": "groundjev-full-fp32-adam-rng-v1",
+        "step": 600,
+        "seen": 2400,
+        "epoch": 0,
+        "next_step_in_epoch": 600,
+        "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_history_refresh600_old_v1/latest_training_state.pt",
+        "bytes": 9029140441,
+        "FP32_masters_and_Adam_moments_saved": true,
+        "scheduler_and_all_RNG_saved": true,
+        "single_latest_training_state": true,
+        "feature_cache": false
+      },
+      "native_MM_reload": {
+        "status": "REAL_ONEJEV600_NATIVE_MM_RELOAD_VALIDATED",
+        "weight_entries": 474,
+        "checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_history_refresh600_old_v1/ckpt-step600",
+        "reference_checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_unified600_native_v2/ckpt-step600",
+        "same_BF16_precision_weight_changes_vs_reference": [
+          {
+            "name": "model.language_model.layers.0.mlp.gate_proj.weight",
+            "changed_elements": 1798072,
+            "max_absolute_difference": 0.000244140625
+          },
+          {
+            "name": "model.language_model.layers.16.mlp.gate_proj.weight",
+            "changed_elements": 1544395,
+            "max_absolute_difference": 0.000244140625
+          },
+          {
+            "name": "model.language_model.layers.23.mlp.gate_proj.weight",
+            "changed_elements": 1291166,
+            "max_absolute_difference": 0.00048828125
+          }
+        ],
+        "repeated_reload_probability_max_difference": 0.0,
+        "reload_tolerance": 1e-06,
+        "native_fork_auto_check_unchanged": true,
+        "GT_read_by_inference": false,
+        "responses": [
+          {
+            "model": "",
+            "answers": {
+              "match_0": {
+                "type": "choice",
+                "choice": "NEW",
+                "probabilities": {
+                  "1": 0.020652,
+                  "2": 0.003559,
+                  "3": 0.010547,
+                  "NEW": 0.953161,
+                  "IGNORE": 0.004713,
+                  "NO_MATCH": 0.007367
+                },
+                "confidence": 0.943793
+              },
+              "update_0": {
+                "type": "noul",
+                "noul": 0.009732
+              },
+              "reliability_0": {
+                "type": "score",
+                "score": 1.01946,
+                "legend": {
+                  "0": "contradictory",
+                  "1": "ambiguous",
+                  "2": "supported",
+                  "3": "strong"
+                },
+                "probabilities": {
+                  "0": 0.006568,
+                  "1": 0.975443,
+                  "2": 0.009951,
+                  "3": 0.008038
+                },
+                "confidence": 0.967405
+              },
+              "life_1": {
+                "type": "choice",
+                "choice": "ACTIVE",
+                "probabilities": {
+                  "ACTIVE": 0.908828,
+                  "LOST": 0.001636,
+                  "REACTIVATE": 0.087717,
+                  "TERMINATE": 0.001819
+                },
+                "confidence": 0.878437
+              }
+            },
+            "usage": {
+              "input_tokens": 4031,
+              "output_tokens": 4
+            }
+          },
+          {
+            "model": "",
+            "answers": {
+              "match_0": {
+                "type": "choice",
+                "choice": "NEW",
+                "probabilities": {
+                  "1": 0.020652,
+                  "2": 0.003559,
+                  "3": 0.010547,
+                  "NEW": 0.953161,
+                  "IGNORE": 0.004713,
+                  "NO_MATCH": 0.007367
+                },
+                "confidence": 0.943793
+              },
+              "update_0": {
+                "type": "noul",
+                "noul": 0.009732
+              },
+              "reliability_0": {
+                "type": "score",
+                "score": 1.01946,
+                "legend": {
+                  "0": "contradictory",
+                  "1": "ambiguous",
+                  "2": "supported",
+                  "3": "strong"
+                },
+                "probabilities": {
+                  "0": 0.006568,
+                  "1": 0.975443,
+                  "2": 0.009951,
+                  "3": 0.008038
+                },
+                "confidence": 0.967405
+              },
+              "life_1": {
+                "type": "choice",
+                "choice": "ACTIVE",
+                "probabilities": {
+                  "ACTIVE": 0.908828,
+                  "LOST": 0.001636,
+                  "REACTIVATE": 0.087717,
+                  "TERMINATE": 0.001819
+                },
+                "confidence": 0.878437
+              }
+            },
+            "usage": {
+              "input_tokens": 4031,
+              "output_tokens": 4
+            }
+          }
+        ],
+        "intermediate_only": false,
+        "formal500_complete": false,
+        "formal_training_steps": 600,
+        "tracking_accuracy_or_exact_FP32_training_resume_claim": false
+      }
+    },
+    "refreshed": {
+      "training": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_history_refresh600_refreshed_v1",
+      "done": {
+        "event": "done",
+        "steps": 600,
+        "examples": 2400,
+        "elapsed_s": 17135.639905360993,
+        "examples_per_s": 0.1400589655977274
+      },
+      "initial_FP32": {
+        "status": "NEW_STAGE_REAL_FP32_MASTERS_INITIALIZED",
+        "source": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_unified600_native_v2/latest_training_state.pt",
+        "source_step": 600,
+        "FP32_parameter_entries": 320,
+        "parameters": 752393024,
+        "changed_vs_BF16_inference_export_initialization": 500278218,
+        "initialization_max_difference": 0.0,
+        "new_optimizer_scheduler_and_RNG": "explicit newrecipe reset, not originaltrajectory resume",
+        "old_training_state_or_inference_weights_modified": false
+      },
+      "latest_training_state": {
+        "format": "groundjev-full-fp32-adam-rng-v1",
+        "step": 600,
+        "seen": 2400,
+        "epoch": 0,
+        "next_step_in_epoch": 600,
+        "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_history_refresh600_refreshed_v1/latest_training_state.pt",
+        "bytes": 9029140441,
+        "FP32_masters_and_Adam_moments_saved": true,
+        "scheduler_and_all_RNG_saved": true,
+        "single_latest_training_state": true,
+        "feature_cache": false
+      },
+      "native_MM_reload": {
+        "status": "REAL_ONEJEV600_NATIVE_MM_RELOAD_VALIDATED",
+        "weight_entries": 474,
+        "checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_history_refresh600_refreshed_v1/ckpt-step600",
+        "reference_checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_unified600_native_v2/ckpt-step600",
+        "same_BF16_precision_weight_changes_vs_reference": [
+          {
+            "name": "model.language_model.layers.0.mlp.gate_proj.weight",
+            "changed_elements": 1818343,
+            "max_absolute_difference": 0.000244140625
+          },
+          {
+            "name": "model.language_model.layers.16.mlp.gate_proj.weight",
+            "changed_elements": 1593072,
+            "max_absolute_difference": 0.00048828125
+          },
+          {
+            "name": "model.language_model.layers.23.mlp.gate_proj.weight",
+            "changed_elements": 1278678,
+            "max_absolute_difference": 0.00048828125
+          }
+        ],
+        "repeated_reload_probability_max_difference": 0.0,
+        "reload_tolerance": 1e-06,
+        "native_fork_auto_check_unchanged": true,
+        "GT_read_by_inference": false,
+        "responses": [
+          {
+            "model": "",
+            "answers": {
+              "match_0": {
+                "type": "choice",
+                "choice": "NEW",
+                "probabilities": {
+                  "1": 0.196361,
+                  "2": 0.065694,
+                  "3": 0.055081,
+                  "NEW": 0.506317,
+                  "IGNORE": 0.114172,
+                  "NO_MATCH": 0.062375
+                },
+                "confidence": 0.407581
+              },
+              "update_0": {
+                "type": "noul",
+                "noul": 0.010356
+              },
+              "reliability_0": {
+                "type": "score",
+                "score": 1.05358,
+                "legend": {
+                  "0": "contradictory",
+                  "1": "ambiguous",
+                  "2": "supported",
+                  "3": "strong"
+                },
+                "probabilities": {
+                  "0": 0.012026,
+                  "1": 0.9482,
+                  "2": 0.013942,
+                  "3": 0.025832
+                },
+                "confidence": 0.922367
+              },
+              "life_1": {
+                "type": "choice",
+                "choice": "ACTIVE",
+                "probabilities": {
+                  "ACTIVE": 0.519456,
+                  "LOST": 0.044235,
+                  "REACTIVATE": 0.362638,
+                  "TERMINATE": 0.073671
+                },
+                "confidence": 0.359275
+              }
+            },
+            "usage": {
+              "input_tokens": 4031,
+              "output_tokens": 4
+            }
+          },
+          {
+            "model": "",
+            "answers": {
+              "match_0": {
+                "type": "choice",
+                "choice": "NEW",
+                "probabilities": {
+                  "1": 0.196361,
+                  "2": 0.065694,
+                  "3": 0.055081,
+                  "NEW": 0.506317,
+                  "IGNORE": 0.114172,
+                  "NO_MATCH": 0.062375
+                },
+                "confidence": 0.407581
+              },
+              "update_0": {
+                "type": "noul",
+                "noul": 0.010356
+              },
+              "reliability_0": {
+                "type": "score",
+                "score": 1.05358,
+                "legend": {
+                  "0": "contradictory",
+                  "1": "ambiguous",
+                  "2": "supported",
+                  "3": "strong"
+                },
+                "probabilities": {
+                  "0": 0.012026,
+                  "1": 0.9482,
+                  "2": 0.013942,
+                  "3": 0.025832
+                },
+                "confidence": 0.922367
+              },
+              "life_1": {
+                "type": "choice",
+                "choice": "ACTIVE",
+                "probabilities": {
+                  "ACTIVE": 0.519456,
+                  "LOST": 0.044235,
+                  "REACTIVATE": 0.362638,
+                  "TERMINATE": 0.073671
+                },
+                "confidence": 0.359275
+              }
+            },
+            "usage": {
+              "input_tokens": 4031,
+              "output_tokens": 4
+            }
+          }
+        ],
+        "intermediate_only": false,
+        "formal500_complete": false,
+        "formal_training_steps": 600,
+        "tracking_accuracy_or_exact_FP32_training_resume_claim": false
+      }
+    }
+  },
+  "new_training_started": true,
+  "official_tracking_metrics": "pending; training and reload do not establish tracking accuracy",
+  "ordinary_model_performance_achieved": false,
+  "full_goal_complete": false,
+  "GPU4_free_MiB_before_launch": 81027,
+  "last_exit_code": 0
+}

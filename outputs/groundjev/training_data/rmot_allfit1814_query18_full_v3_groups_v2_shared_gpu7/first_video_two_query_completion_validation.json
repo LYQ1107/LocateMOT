@@ -1,0 +1,122 @@
+{
+  "status": "BOTH_QUERY_ROLLOUTS_OF_FIRST_FIT_VIDEO_COMPLETE_AND_NATIVE_EXPORTS_VALIDATED",
+  "actual_unique_physical_frames": 154,
+  "actual_query_frame_observations": 308,
+  "new_physical_frames_beyond_original72": 146,
+  "total_supervised_rows": 6163,
+  "query_rollouts": {
+    "0000_primary": {
+      "export_summary": {
+        "sequence": "0000_primary",
+        "counts": {
+          "native_pixel_groups_exact": 154,
+          "native_crop_sheets_exact": 281,
+          "query_membership:no": 289,
+          "request_groups": 228,
+          "rows": 1406,
+          "family:identity": 289,
+          "family:memory_update": 289,
+          "family:reliability": 289,
+          "family:query_membership": 289,
+          "candidate_registry_rows": 289,
+          "frames": 154,
+          "candidates": 289,
+          "rejected_frames": 0,
+          "family:lifecycle": 250,
+          "existing_assignments_in_input": 102,
+          "assigned_target:None": 102
+        },
+        "row_references": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/rmot_allfit1814_query18_full_v3_groups_v2_shared_gpu7/clips/0000_primary/train_refs.jsonl.gz",
+        "all_actor_outputs_states_exact": true,
+        "new_OneJev_training_updates": 0,
+        "question_evidence_format": "v3_crop_motion",
+        "full_goal_complete": false,
+        "status": "REAL_CLIP_FULL_V3_GROUP_REFS_PIXELS_AND_ALL_NATIVE_CPU_ROWS_VALIDATED",
+        "max_tokens": 2703,
+        "total_planned_tokens": 2443040,
+        "dropped_rows": 0,
+        "actual_plan_epoch_seconds": 0.9329965129727498,
+        "actual_world_size": 1,
+        "hypothetical_4row_epoch_updates": 352,
+        "tracking_task_bucket": "rmot",
+        "query_role": "primary",
+        "video": "0000",
+        "supervision_quality": "GT matched candidate IoU proxy, not visibility or native confidence",
+        "original_expression_conditioned_rollout": true
+      },
+      "label_counts": {
+        "identity:IGNORE": 286,
+        "memory_update:no": 289,
+        "reliability:0": 286,
+        "query_membership:no": 289,
+        "lifecycle:TERMINATE": 235,
+        "identity:NEW": 3,
+        "reliability:1": 3,
+        "lifecycle:LOST": 15
+      },
+      "source_archive_bytes": 2315104,
+      "source_rejected_frames": []
+    },
+    "0000_counter": {
+      "export_summary": {
+        "sequence": "0000_counter",
+        "counts": {
+          "native_pixel_groups_exact": 154,
+          "native_crop_sheets_exact": 304,
+          "query_membership:no": 642,
+          "request_groups": 302,
+          "rows": 4757,
+          "family:identity": 811,
+          "family:memory_update": 811,
+          "family:reliability": 811,
+          "family:query_membership": 811,
+          "candidate_registry_rows": 811,
+          "frames": 154,
+          "candidates": 811,
+          "rejected_frames": 1,
+          "family:lifecycle": 1513,
+          "existing_assignments_in_input": 698,
+          "assigned_target:None": 698,
+          "query_membership:yes": 169
+        },
+        "row_references": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/rmot_allfit1814_query18_full_v3_groups_v2_shared_gpu7/clips/0000_counter/train_refs.jsonl.gz",
+        "all_actor_outputs_states_exact": true,
+        "new_OneJev_training_updates": 0,
+        "question_evidence_format": "v3_crop_motion",
+        "full_goal_complete": false,
+        "status": "REAL_CLIP_FULL_V3_GROUP_REFS_PIXELS_AND_ALL_NATIVE_CPU_ROWS_VALIDATED",
+        "max_tokens": 14075,
+        "total_planned_tokens": 33011666,
+        "dropped_rows": 0,
+        "actual_plan_epoch_seconds": 6.820837625011336,
+        "actual_world_size": 1,
+        "hypothetical_4row_epoch_updates": 1190,
+        "tracking_task_bucket": "rmot",
+        "query_role": "counter",
+        "video": "0000",
+        "supervision_quality": "GT matched candidate IoU proxy, not visibility or native confidence",
+        "original_expression_conditioned_rollout": true
+      },
+      "label_counts": {
+        "identity:IGNORE": 650,
+        "memory_update:no": 670,
+        "reliability:0": 650,
+        "query_membership:no": 642,
+        "lifecycle:TERMINATE": 1513,
+        "query_membership:yes": 169,
+        "identity:NEW": 161,
+        "memory_update:yes": 141,
+        "reliability:3": 80,
+        "reliability:2": 61,
+        "reliability:1": 20
+      },
+      "source_archive_bytes": 8390507,
+      "source_rejected_frames": [
+        27
+      ]
+    }
+  },
+  "source_and_export_owners_still_running": true,
+  "new_training_updates_from_new_component": 0,
+  "full_goal_complete": false
+}

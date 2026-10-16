@@ -1,0 +1,12 @@
+{
+  "original_blocking_session": 11590,
+  "owner_pid": 3335381,
+  "owner_starttick": "48509373",
+  "status_at_registration": "COLLECTING_fresh_original",
+  "physical_gpu": 4,
+  "owned_service_group": 3335392,
+  "launch_free_memory_MiB": 63731,
+  "new_training_updates": 0,
+  "new_ROI_or_image_archive": false,
+  "full_goal_complete": false
+}
