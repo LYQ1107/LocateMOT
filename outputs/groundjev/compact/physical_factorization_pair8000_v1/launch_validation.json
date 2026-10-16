@@ -1,0 +1,20 @@
+{
+  "status": "PAIRED_PHYSICAL_FACTORIZATION_INITIAL_PARITY_AND_RESUME_COMPLETE_TRAINING_LAUNCHED",
+  "owner_pid": 3908189,
+  "owner_starttick": "51866338",
+  "study_owner_children": {
+    "coupled": 3913160,
+    "canonical": 3913161
+  },
+  "matched_actual_prefix_questions": 16,
+  "actual_production_completion_not_claimed": true,
+  "both_model_Adam_RNG_resume_8_vs_4_plus_4_bit_exact": true,
+  "full_DT1203_canonical_initial_output_state_assignment_parity_exact": true,
+  "canonical_conditional_query_invariance_335_interventions_exact": true,
+  "source_curriculum": "outputs/groundjev/compact/native_relation_question_curriculum_v1",
+  "actual_full_source_four_GPU_training_untouched": true,
+  "new_physical_GPUs": [],
+  "registered_feature_upper_bytes": 26718970846,
+  "global_feature_budget_bytes": 26843545600,
+  "full_goal_complete": false
+}

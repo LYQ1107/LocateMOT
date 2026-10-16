@@ -1,0 +1,77 @@
+{
+  "project_root": "/data2/user/LocateMOT",
+  "output": "outputs/groundjev/compact/native_relation_question_curriculum_v1",
+  "inputs": "outputs/groundjev/compact/broader_native_reference_inputs_v1",
+  "base": "outputs/groundjev/compact/base175_native_teacher_bank_v1",
+  "initial_checkpoint": "outputs/groundjev/compact/rmot_native72_stage_v1/broad_native_training/checkpoint.pt",
+  "training_output": "/data3/user/LocateMOT-checkpoints/compact_physical_coupled_semantic8000_v1",
+  "seed": 0,
+  "task_questions": 8000,
+  "optimizer_steps": 8000,
+  "questions_per_step": 2,
+  "MOT_family_questions": {
+    "identity": 8000
+  },
+  "RMOT_family_questions": {
+    "query_membership": 8000
+  },
+  "RMOT_yes_no_questions_each": 4000,
+  "OVMOT_sampling": "Preserve the4000 existing stratified Base175 object draws exactly twice; flat1203-way category CE each exposure, not hierarchical OneJev root/leaf CE.",
+  "source_selection": "Reuse exactly the existing native-relation curriculum RMOT/OV rows and order. MOT rows remain in immutable source but are excluded by explicit tasks selection in both arms.",
+  "image_coverage": "Include one eligible question per (unit,frame) before filling quotas; any context with no eligible head remains explicitly registered, never fabricated.",
+  "sampling": "seed0, unseen rows before repeats within each collapsed label; least-exposed labels for MOT quota fills; exactly4000yes/4000no RMOT; shuffle each task stream independently then one row per task per optimizer update.",
+  "architecture": "Original shared Compact physical/semantic encoders and physical heads frozen; semantic category/membership/scale only. Paired query-coupled versus canonical MOT physical specification.",
+  "lr": 0.0002,
+  "weight_decay": 0.0001,
+  "gradient_clip": 1.0,
+  "device": "cpu",
+  "cpu_threads": 4,
+  "loss_coefficients": {
+    "identity": 1.0,
+    "lifecycle": 0.3,
+    "memory_update": 0.3,
+    "reliability": 0.1,
+    "query_membership": 0.5,
+    "category": 1.0
+  },
+  "loss_aggregation": "Same existing RMOT membership0.5/OV category1 coefficients and /3 divisor in both paired arms; identical16000semantic questions from preserved24000question stream,8000updates; no MOT gradient.",
+  "save_every": 1000,
+  "checkpoint_selection": "Same final8000checkpoint across all tasks. Query-coupled versus canonical physical core independently trained with matched semantic rows/seed/hyperparameters; original/untrained canonical controls retained.",
+  "evaluation": "Before original actor versus final checkpoint on unchanged registered DT1203/RMOTsingle800/RMOTmulti800/rawTAO40 and natural MOT20full1657; official metrics, all empty/rejected frames and original thresholds retained.",
+  "new_metadata_cap_bytes": 8388608,
+  "prior_registered_feature_upper_bytes": 26710582238,
+  "combined_registered_feature_upper_bytes": 26718970846,
+  "global_temporary_feature_budget_bytes": 26843545600,
+  "storage": "8MiB new metadata reservation across paired owners/parity/results; no new ROI/image bank. Prefix/model/Adam states on data3.",
+  "ground_and_OneJev_joint_gradient": false,
+  "actual_optimizer_steps_at_registration": 0,
+  "full_goal_complete": false,
+  "name": "Paired coupled frozen physical semantic head8000",
+  "training_prefix_validation": "outputs/groundjev/compact/physical_factorization_pair8000_v1/coupled_prefix_validation.json",
+  "trainable_parameter_prefixes": [
+    "category.",
+    "membership.",
+    "class_scale"
+  ],
+  "label_loss_weights": {
+    "query_membership": {
+      "yes": 0.5958778064041222,
+      "no": 1.4041221935958779
+    }
+  },
+  "comparison_limit": "Paired frozen-physical semantic-head-only adaptation; task/query physical coupling is the registered intervention, original physical weights fixed. Same16000RMOT/OVquestions/order/init/seed/hparams. Explicit /3 losses, no MOT/shared-backbone gradient, no native OneJev decoder or Ground+One end-to-end claim. All five original scopes and policies unchanged.",
+  "frozen_original_backbone_not_jointly_optimized": true,
+  "tasks": [
+    "rmot",
+    "ovmot"
+  ],
+  "physical_specification": {
+    "task": "mot",
+    "vocabulary": [
+      "person"
+    ],
+    "expression": null
+  },
+  "untrained_checkpoint": "/data3/user/LocateMOT-checkpoints/compact_canonical_physical_initial_v1.pt",
+  "canonical_physical_core": false
+}

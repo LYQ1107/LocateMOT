@@ -1,3 +1,55 @@
+## Paired factorization training complete; native final-ID DT control has no gain — 2026-10-16
+
+Both independently trained semantic-head-only8000-step models completed all
+16000questions (8000RMOT+8000OV): coupled115.290s, canonical116.032s. Each
+updates65,922of1,146,511parameters; all59original fixed tensors/1,080,589elements
+are exact unchanged. Full model/Adam finite, exports equal saved states and
+all three task reloads exact. This is small-head adaptation with frozen shared
+representations; the original native750M four-GPU joint training continues.
+Official full five-scope controls now run for both final checkpoints, with
+original/untrained-canonical controls. Results and promotion remain pending.
+Receipt: `outputs/groundjev/compact/physical_factorization_pair8000_v1/paired_training_validation.json`.
+
+The native OneJev6000 final-ID DT1203 control completed: HOTA7.840637%,
+IDF1=3.534137%, same as default and below native600HOTA8.702996%. There were
+1350actual second-pass native calls on4940existing assignments. All4940update
+probabilities changed, maximum absolute difference0.018702, but none crossed
+the registered0.5gate; every exported tracking output and all official metrics
+remain exact between default/assigned arms. This explains the absent measured
+DT effect without changing thresholds. Remaining RMOT/TAO scopes continue.
+Receipt: `outputs/groundjev/training/broader_shared6000_fla_owner_v2/DT1203_default_and_assigned_completed_comparison.json`.
+
+## Physical/semantic factorization paired study — 2026-10-16
+
+A new opt-in Compact physical stream uses the original fixed MOT/person
+specification, while the actual query/task remains in semantic readout.
+On67real observation groups (one from each61native units plus6Base objects),
+all335task/query interventions leave match/update/reliability/lifecycle tensors
+exactly unchanged; all335alter original coupled physical tensors. All67
+canonical MOT forwards equal the original for every output tensor, while
+membership changes with queries in all335interventions. This is conditional
+input invariance, not a tracking improvement, and does not cover changed
+frontend proposals or query-based output filtering. Complete DT1203 replay also passed: all1203frames/13664candidates retain
+every original output/state/shadow assignment exactly, and every canonical
+model output tensor equals the original. Paired real resume checks precede
+training under the single owner. Both paired8vs4+4model/Adam/RNG
+resume checks passed exactly (16real semantic questions per compared branch);
+both8000-step production studies have launched.
+The paired recipes freeze the same physical weights and train only semantic
+heads on identical16000RMOT/OV questions/order/seed/loss/hyperparameters,
+8000updates each; no MOT or shared-backbone gradient. Coupled and canonical
+final checkpoints, original and untrained-canonical controls use all five
+unchanged scopes. The original native750M four-GPU joint owner is untouched.
+Registered8MiB metadata reserve raises feature upper to26,718,970,846bytes
+<25GiB; no new ROI bank or GPU. Code/plans/initial proof live under
+`physical_factorization_pair8000_v1` and `compact_physical_*_semantic8000_v1`.
+
+Native residual TAO40 controls are now complete: TETA14.517original→14.320
+enabled versus14.646same-final semantic weights/residual disabled; NovelClsA
+remains0 in all arms. Together with DT/single-RMOT regressions this prevents
+promotion despite the isolated multi-RMOT gain. Natural MOT20 is still pending.
+Receipt: `outputs/groundjev/compact/native_relation_head8000_owner_v1/first_four_scopes_completed.json`.
+
 ## Four-GPU joint training: actual1000 full state verified — 2026-10-16
 
 The original four-GPU owner saved an actual1000-step/16000-question full

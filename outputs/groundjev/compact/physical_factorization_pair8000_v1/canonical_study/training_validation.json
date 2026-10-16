@@ -1,0 +1,17 @@
+{
+  "step": 8000,
+  "questions": 16000,
+  "exposure": {
+    "rmot:query_membership": 8000,
+    "ovmot:category": 8000
+  },
+  "full_model_and_optimizer_finite": true,
+  "final_export_equals_full_state": true,
+  "three_task_reload_max_difference": 0,
+  "checkpoint": "/data3/user/LocateMOT-checkpoints/compact_physical_canonical_semantic8000_v1/checkpoint.pt",
+  "training_seconds": 116.03170783200767,
+  "source_scope": {
+    "rmot": 1795,
+    "ovmot": 3227
+  }
+}

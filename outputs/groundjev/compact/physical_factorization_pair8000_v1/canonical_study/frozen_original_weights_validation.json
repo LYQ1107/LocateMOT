@@ -1,0 +1,10 @@
+{
+  "all_declared_fixed_weights_exact": true,
+  "fixed_parameter_tensors": 59,
+  "fixed_elements": 1080589,
+  "trainable_prefixes": [
+    "category.",
+    "membership.",
+    "class_scale"
+  ]
+}

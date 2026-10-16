@@ -59,7 +59,8 @@ def main():
         source=torch.load(path,weights_only=True,map_location='cpu')
         model=CompactCore(source['architecture'],semantic=source['semantic'],
             input_evidence=source.get('input_evidence','geometry_appearance_language'),
-            native_relation_residual=source.get('native_relation_residual',False))
+            native_relation_residual=source.get('native_relation_residual',False),
+            canonical_physical_core=source.get('canonical_physical_core',False))
         model.load_state_dict(source['state_dict']);model.eval();models[arm]=model
     for arm,condition in plan.get('input_interventions',{}).items():
         models[arm]=models[condition['model']]

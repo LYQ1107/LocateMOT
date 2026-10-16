@@ -12,7 +12,7 @@ class FeedForwardBlock(nn.Module):
 
 class CompactCore(nn.Module):
     def __init__(self, architecture='set', width=128, semantic=False, input_evidence='geometry_appearance_language',
-                 native_relation_residual=False):
+                 native_relation_residual=False, canonical_physical_core=False):
         super().__init__()
         self.architecture, self.width = architecture, width
         self.input_evidence = input_evidence
@@ -30,6 +30,9 @@ class CompactCore(nn.Module):
         self.reliability = nn.Linear(width,4)
         self.life = nn.Sequential(nn.Linear(2*width,width),nn.GELU(),nn.Linear(width,4))
         self.semantic=semantic
+        self.canonical_physical_core=canonical_physical_core
+        if canonical_physical_core:
+            self.register_buffer('physical_spec_text',torch.zeros(1024))
         if semantic:
             self.text = nn.Sequential(nn.LayerNorm(1024),nn.Linear(1024,width),nn.GELU(),nn.Linear(width,width))
             self.category = nn.Linear(width,width)
@@ -53,7 +56,12 @@ class CompactCore(nn.Module):
         specification = self.task.weight[e['task_index']]
         if self.semantic and self.input_evidence == 'geometry_appearance_language':
             specification=specification+self.text(e['spec_text'])
-        tokens = self.body((torch.cat([c,h])+specification).unsqueeze(0)).squeeze(0)
+        physical_specification=specification
+        if self.canonical_physical_core:
+            physical_specification=self.task.weight[0]
+            if self.semantic and self.input_evidence == 'geometry_appearance_language':
+                physical_specification=physical_specification+self.text(self.physical_spec_text)
+        tokens = self.body((torch.cat([c,h])+physical_specification).unsqueeze(0)).squeeze(0)
         c,h = tokens[:n],tokens[n:]
         context = tokens.mean(0,keepdim=True)
         a = c[:,None].expand(n,m,self.width); b = h[None].expand(n,m,self.width)
@@ -92,7 +100,8 @@ class CompactDecision:
         data = torch.load(checkpoint,map_location=device,weights_only=True)
         self.model = CompactCore(data['architecture'],semantic=data.get('semantic',False),
             input_evidence=data.get('input_evidence','geometry_appearance_language'),
-            native_relation_residual=data.get('native_relation_residual',False)).to(device)
+            native_relation_residual=data.get('native_relation_residual',False),
+            canonical_physical_core=data.get('canonical_physical_core',False)).to(device)
         self.model.load_state_dict(data['state_dict']); self.model.eval()
         self.checkpoint = str(Path(checkpoint).resolve()); self.device = device
         self.batch_candidates,self.shortlist = batch_candidates,shortlist
@@ -192,6 +201,9 @@ class CompactDecision:
         if self.model.native_relation_residual:
             metadata['native_relation_residual']=True
             metadata['native_relation_inputs']='real anchor/recent/long native ROI cosine, original IoU/distance, supplied geometry and frozen-base action distribution'
+        if self.model.canonical_physical_core:
+            metadata['canonical_physical_core']=True
+            metadata['physical_specification']='Fixed MOT/person embedding; actual query/task retained in semantic readout. Invariance conditional on identical candidates/history.'
         return results,life,metadata
 
 

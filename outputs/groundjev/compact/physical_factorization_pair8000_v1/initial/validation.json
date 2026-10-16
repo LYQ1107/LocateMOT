@@ -1,0 +1,70 @@
+{
+  "status": "REAL_NATIVE_CANONICAL_PHYSICAL_CORE_QUERY_INVARIANCE_AND_MOT_OUTPUT_PARITY",
+  "conditional_physical_query_invariance_exact": true,
+  "canonical_MOT_all_output_tensors_equal_original": true,
+  "actual_native_units": 61,
+  "real_observation_groups": 67,
+  "groups_with_history": 61,
+  "query_interventions": 335,
+  "canonical_MOT_output_elements_checked": 23873,
+  "original_physical_changed_interventions": 335,
+  "canonical_membership_changed_interventions": 335,
+  "condition_scope": "Identical candidates, history, geometry and class_text; only declared task/spec_text changes. Does not assert invariance when query changes frontend proposals or rendered output filtering.",
+  "physical_specification": {
+    "task": "mot",
+    "vocabulary": [
+      "person"
+    ],
+    "expression": null
+  },
+  "conditions": [
+    {
+      "task": "mot",
+      "vocabulary": [
+        "person"
+      ],
+      "expression": null
+    },
+    {
+      "task": "rmot",
+      "vocabulary": [
+        "person"
+      ],
+      "expression": "a person wearing red"
+    },
+    {
+      "task": "rmot",
+      "vocabulary": [
+        "person"
+      ],
+      "expression": "a person wearing blue"
+    },
+    {
+      "task": "rmot",
+      "vocabulary": [
+        "person"
+      ],
+      "expression": "people walking on the left"
+    },
+    {
+      "task": "ovmot",
+      "vocabulary": [
+        "person",
+        "car"
+      ],
+      "expression": null
+    },
+    {
+      "task": "ovmot",
+      "vocabulary": [
+        "car",
+        "person"
+      ],
+      "expression": null
+    }
+  ],
+  "untrained_checkpoint": "/data3/user/LocateMOT-checkpoints/compact_canonical_physical_initial_v1.pt",
+  "new_GPU_or_production_training_updates": 0,
+  "comparison": "Factorized runtime intervention; no tracking gain or unique method novelty established.",
+  "full_goal_complete": false
+}

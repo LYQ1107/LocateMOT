@@ -1,0 +1,24 @@
+{
+  "project_root": "/data2/user/LocateMOT",
+  "output": "outputs/groundjev/diagnostics/canonical_physical_initial_DT1203_v1",
+  "manifest": "outputs/groundjev/pilot_data/dancetrack.json",
+  "original_run": "outputs/groundjev/compact/fixed_affinity_controls_v1/mot_full1203_learned_reference",
+  "checkpoints": {
+    "canonical_physical_untrained": "/data3/user/LocateMOT-checkpoints/compact_canonical_physical_initial_v1.pt"
+  },
+  "expected_frames": 1203,
+  "expected_candidates": 13664,
+  "device": "cpu",
+  "cpu_threads": 4,
+  "target_rule": "Same external one-to-one IoU>=.5 candidate GT matches and immutable actual old actor birth IDs; correct-existing alias set, otherwise original NEW/IGNORE/NO_MATCH contract. GT never repairs model or actor state.",
+  "comparison": "Complete DT1203 output/state/assignment exact parity for untrained canonical physical core using original person/MOT physical specification; no gain claim.",
+  "validation": "Recomputed original full outputs and state must equal every saved original frame exactly; original shadow Hungarian choices must reproduce every actual original candidate event.",
+  "storage": "At most2MiB compressed diagnostic metadata inside new8MiB factorization reservation; no ROI/image copy.",
+  "combined_registered_feature_upper_bytes": 26718970846,
+  "global_temporary_feature_budget_bytes": 26843545600,
+  "new_GPU_or_training_updates": 0,
+  "full_goal_complete": false,
+  "expect_original_outputs_exact": [
+    "canonical_physical_untrained"
+  ]
+}

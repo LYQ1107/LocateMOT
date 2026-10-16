@@ -27,6 +27,10 @@ def main():
         initial=json.loads(args.initial_parity_proof.read_text())
         assert initial['all_declared_untrained_model_output_equalities_exact']
         assert initial['original_every_output_state_and_assignment_exact'] and initial['frames']==1203 and initial['candidates']==13664
+    if plan.get('canonical_physical_core'):
+        initial=json.loads(args.initial_parity_proof.read_text())
+        assert initial['conditional_physical_query_invariance_exact']
+        assert initial['canonical_MOT_all_output_tensors_equal_original']
     assert plan['combined_registered_feature_upper_bytes'] < plan['global_temporary_feature_budget_bytes']
     controls_source = json.loads(args.control_protocol.read_text())
     assert (ROOT/controls_source['checkpoint']).resolve() == (ROOT/plan['initial_checkpoint']).resolve()
@@ -75,6 +79,15 @@ def main():
             three_task_reload_max_difference=0,checkpoint=str(training/'checkpoint.pt'),
             training_seconds=result['training_seconds'],source_scope=result['source_scope'])
         (args.out/'training_validation.json').write_text(json.dumps(state['completed']['training'],indent=2)+'\n')
+        if plan.get('trainable_parameter_prefixes'):
+            prefixes=tuple(plan['trainable_parameter_prefixes'])
+            original=torch.load(ROOT/plan['initial_checkpoint'],map_location='cpu',weights_only=True)
+            fixed=[k for k in original['state_dict'] if not k.startswith(prefixes)]
+            assert all(torch.equal(original['state_dict'][k],checkpoint['state_dict'][k]) for k in fixed)
+            state['completed']['frozen_original_weights']=dict(all_declared_fixed_weights_exact=True,
+                fixed_parameter_tensors=len(fixed),fixed_elements=sum(original['state_dict'][k].numel() for k in fixed),
+                trainable_prefixes=prefixes)
+            (args.out/'frozen_original_weights_validation.json').write_text(json.dumps(state['completed']['frozen_original_weights'],indent=2)+'\n')
         if plan.get('native_relation_residual'):
             prefixes=tuple(plan['trainable_parameter_prefixes'])
             original=torch.load(ROOT/plan['initial_checkpoint'],map_location='cpu',weights_only=True)
@@ -104,6 +117,9 @@ def main():
         if plan.get('native_relation_residual'):
             controls['arms']['broader']['native_relation_residual']=True
             controls['arms']['residual_disabled']=dict(policy,checkpoint=str(training/'residual_disabled_checkpoint.pt'),native_relation_residual=False)
+        if plan.get('canonical_physical_core'):
+            controls['arms']['broader']['canonical_physical_core']=True
+            controls['arms']['canonical_untrained']=dict(policy,checkpoint=plan['untrained_checkpoint'],canonical_physical_core=True)
         path=args.out/'resolved_controls_plan.json'; path.write_text(json.dumps(controls,indent=2)+'\n')
         run('FIVE_SCOPE_OFFICIAL_CONTROLS',[python,'tools/groundjev/run_fixed_affinity_controls.py',
             '--plan',str(path),'--out',str(args.out/'controls')])

@@ -124,6 +124,8 @@ def main():
                                 assert new['state']['decision_metadata'].get('input_evidence', 'geometry_appearance_language') == policies['input_evidence']
                             if 'native_relation_residual' in policies:
                                 assert new['state']['decision_metadata'].get('native_relation_residual',False)==policies['native_relation_residual']
+                            if 'canonical_physical_core' in policies:
+                                assert new['state']['decision_metadata'].get('canonical_physical_core',False)==policies['canonical_physical_core']
                         expected_rejection = bool(old['perception'].get('model_response_rejected', False))
                         assert bool(new['perception'].get('model_response_rejected', False)) == expected_rejection
                         if expected_rejection:

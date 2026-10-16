@@ -34,11 +34,18 @@ def main():
     checkpoint = torch.load(ROOT / plan['initial_checkpoint'], map_location='cpu', weights_only=True)
     model = CompactCore(checkpoint['architecture'], semantic=checkpoint['semantic'],
         input_evidence=checkpoint.get('input_evidence', 'geometry_appearance_language'),
-        native_relation_residual=plan.get('native_relation_residual',False))
-    if model.native_relation_residual:
+        native_relation_residual=plan.get('native_relation_residual',False),
+        canonical_physical_core=plan.get('canonical_physical_core',False))
+    if model.native_relation_residual or model.canonical_physical_core:
         missing,unexpected=model.load_state_dict(checkpoint['state_dict'],strict=False)
-        assert not unexpected and set(missing)=={k for k in model.state_dict() if k.startswith(('native_pair.','native_actions.'))}
+        expected_missing={k for k in model.state_dict() if k.startswith(('native_pair.','native_actions.'))}
+        if model.canonical_physical_core:expected_missing.add('physical_spec_text')
+        assert not unexpected and set(missing)==expected_missing
     else:model.load_state_dict(checkpoint['state_dict'], strict=True)
+    if model.canonical_physical_core:
+        specification=plan['physical_specification']
+        assert specification==dict(task='mot',vocabulary=['person'],expression=None)
+        model.physical_spec_text.copy_(dataset.native.text.specification(specification))
     trainable_prefixes=plan.get('trainable_parameter_prefixes')
     if trainable_prefixes:
         for name,parameter in model.named_parameters():parameter.requires_grad_(name.startswith(tuple(trainable_prefixes)))
@@ -100,8 +107,10 @@ def main():
             text_features='real original OneJev frozen token mean; not language decoder reasoning',
             training_protocol='native-compact-typed-question-balanced-three-task-v1')
         if model.native_relation_residual:result['native_relation_residual']=True
+        if model.canonical_physical_core:result['canonical_physical_core']=True
         torch.save(result, out / 'checkpoint.pt')
-        fresh = CompactCore(checkpoint['architecture'], semantic=True,native_relation_residual=model.native_relation_residual)
+        fresh = CompactCore(checkpoint['architecture'], semantic=True,native_relation_residual=model.native_relation_residual,
+            canonical_physical_core=model.canonical_physical_core)
         fresh.load_state_dict(torch.load(out / 'checkpoint.pt', weights_only=True)['state_dict']); fresh.eval()
         differences = {}
         for row in dataset.rows[-3:]:

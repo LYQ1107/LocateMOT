@@ -1,0 +1,75 @@
+{
+  "status": "MATCHED_COUPLED_AND_CANONICAL_SEMANTIC8000_TRAINING_VALIDATED",
+  "arms": {
+    "coupled": {
+      "training": {
+        "step": 8000,
+        "questions": 16000,
+        "exposure": {
+          "rmot:query_membership": 8000,
+          "ovmot:category": 8000
+        },
+        "full_model_and_optimizer_finite": true,
+        "final_export_equals_full_state": true,
+        "three_task_reload_max_difference": 0,
+        "checkpoint": "/data3/user/LocateMOT-checkpoints/compact_physical_coupled_semantic8000_v1/checkpoint.pt",
+        "training_seconds": 115.28992942796322,
+        "source_scope": {
+          "rmot": 1795,
+          "ovmot": 3227
+        }
+      },
+      "frozen_original_weights": {
+        "all_declared_fixed_weights_exact": true,
+        "fixed_parameter_tensors": 59,
+        "fixed_elements": 1080589,
+        "trainable_prefixes": [
+          "category.",
+          "membership.",
+          "class_scale"
+        ]
+      },
+      "trainable_parameters": 65922,
+      "parameters": 1146511,
+      "no_MOT_or_shared_backbone_gradient": true
+    },
+    "canonical": {
+      "training": {
+        "step": 8000,
+        "questions": 16000,
+        "exposure": {
+          "rmot:query_membership": 8000,
+          "ovmot:category": 8000
+        },
+        "full_model_and_optimizer_finite": true,
+        "final_export_equals_full_state": true,
+        "three_task_reload_max_difference": 0,
+        "checkpoint": "/data3/user/LocateMOT-checkpoints/compact_physical_canonical_semantic8000_v1/checkpoint.pt",
+        "training_seconds": 116.03170783200767,
+        "source_scope": {
+          "rmot": 1795,
+          "ovmot": 3227
+        }
+      },
+      "frozen_original_weights": {
+        "all_declared_fixed_weights_exact": true,
+        "fixed_parameter_tensors": 59,
+        "fixed_elements": 1080589,
+        "trainable_prefixes": [
+          "category.",
+          "membership.",
+          "class_scale"
+        ]
+      },
+      "trainable_parameters": 65922,
+      "parameters": 1146511,
+      "no_MOT_or_shared_backbone_gradient": true
+    }
+  },
+  "identical_original_initial_weights_and16000_semantic_row_order": true,
+  "query_conditioning_of_physical_stream_is_registered_intervention": true,
+  "same_seed_hyperparameters_and_frozen_parameter_selection": true,
+  "full_five_scope_causal_controls": "Original owner children running; no tracking gain claimed",
+  "separate_native750M_four_GPU_joint_training_untouched": true,
+  "full_goal_complete": false
+}
