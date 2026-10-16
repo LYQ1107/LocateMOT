@@ -1,0 +1,12 @@
+{
+  "status": "COMPLETED_NATIVE_PROMPT_CONTROL_RESERVE_CLOSED_TO_ACTUAL_NO_DELETION",
+  "original_blocking_session": 11590,
+  "actual_exit_code": 0,
+  "prior_registered_feature_upper_bytes": 26822863722,
+  "prior_component_cap_bytes": 16777216,
+  "actual_component_data_bytes": 2826086,
+  "measurement": "All root diagnostic data, raw predictions, gzip copies, results, logs and service launch receipt; native service bundle checkpoint/tokenizer are model assets outside feature budget",
+  "closed_registered_feature_upper_bytes": 26808912592,
+  "global_temporary_feature_budget_bytes": 26843545600,
+  "files_deleted": 0
+}

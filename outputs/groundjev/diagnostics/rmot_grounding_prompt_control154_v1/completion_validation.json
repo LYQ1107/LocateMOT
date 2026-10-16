@@ -1,0 +1,21 @@
+{
+  "status": "ALL_THREE_FRESH_NATIVE_ARMS_EXIT0_RAW_PREDICTIONS_AND_RECALL_DENOMINATORS_VALIDATED",
+  "original_blocking_session": 11590,
+  "actual_exit_code": 0,
+  "all154_frames_each_arm": true,
+  "query_GT_box_occurrences_each": 21,
+  "covered_query_GT_boxes": {
+    "recorded_original": 0,
+    "fresh_original": 0,
+    "canonical_same_targets": 18,
+    "provided_class_proposals": 18
+  },
+  "source_and_fresh_original_all154_raw_wire_and_boxes_exact": true,
+  "canonical_target_map_exactly_equals_original": true,
+  "all_empty_rejected_frames_retained": true,
+  "class_arm_rejected_frames": 6,
+  "owned_native_service_stopped": true,
+  "raw_predictions_lossless_gzip_bytes": 108978,
+  "tracking_metric_or_generalization_claim": false,
+  "full_goal_complete": false
+}

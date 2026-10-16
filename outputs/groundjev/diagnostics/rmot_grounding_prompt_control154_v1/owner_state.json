@@ -1,0 +1,69 @@
+{
+  "status": "ALL154_FIT_FRAME_FRESH_NATIVE_PROMPT_CONTROLS_COMPLETE",
+  "owner_pid": 3335381,
+  "owner_starttick": "48509373",
+  "plan": "configs/groundjev/rmot_grounding_prompt_control154_v1.json",
+  "physical_gpu": 4,
+  "completed": {
+    "fresh_original": {
+      "frames": 154,
+      "candidates": 289
+    },
+    "canonical_same_targets": {
+      "frames": 154,
+      "candidates": 688
+    },
+    "provided_class_proposals": {
+      "frames": 154,
+      "candidates": 2182
+    }
+  },
+  "model_training_updates": 0,
+  "existing_jobs_or_metrics_changed": false,
+  "full_goal_complete": false,
+  "launch_free_memory_MiB": 63731,
+  "owned_service_group": 3335392,
+  "restored_completed_frames": 0,
+  "reports": {
+    "recorded_original": {
+      "frames": 154,
+      "query_GT_box_occurrences": 21,
+      "covered_query_GT_boxes": 0,
+      "query_GT_proposal_recall_IoU_half": 0.0,
+      "native_candidates": 289,
+      "rejected_frames": 0,
+      "query_positive_frames": 21,
+      "query_positive_frames_with_any_covered_target": 0
+    },
+    "fresh_original": {
+      "frames": 154,
+      "query_GT_box_occurrences": 21,
+      "covered_query_GT_boxes": 0,
+      "query_GT_proposal_recall_IoU_half": 0.0,
+      "native_candidates": 289,
+      "rejected_frames": 0,
+      "query_positive_frames": 21,
+      "query_positive_frames_with_any_covered_target": 0
+    },
+    "canonical_same_targets": {
+      "frames": 154,
+      "query_GT_box_occurrences": 21,
+      "covered_query_GT_boxes": 18,
+      "query_GT_proposal_recall_IoU_half": 0.8571428571428571,
+      "native_candidates": 688,
+      "rejected_frames": 0,
+      "query_positive_frames": 21,
+      "query_positive_frames_with_any_covered_target": 18
+    },
+    "provided_class_proposals": {
+      "frames": 154,
+      "query_GT_box_occurrences": 21,
+      "covered_query_GT_boxes": 18,
+      "query_GT_proposal_recall_IoU_half": 0.8571428571428571,
+      "native_candidates": 2182,
+      "rejected_frames": 6,
+      "query_positive_frames": 21,
+      "query_positive_frames_with_any_covered_target": 18
+    }
+  }
+}
