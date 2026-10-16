@@ -1,0 +1,51 @@
+{
+  "status": "FROZEN_FIT_NATIVE_PROJECTED_AND_LEARNED_AFFINITY_MEASURED",
+  "arm": "before",
+  "checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/compact/rmot_native72_stage_v1/broad_native_training/checkpoint.pt",
+  "existing_identity_questions": 1250,
+  "methods": {
+    "native_cosine": {
+      "questions": 1250,
+      "top1_correct": 1050,
+      "top1_accuracy": 0.84,
+      "mean_target_rank": 1.3832,
+      "mean_reciprocal_rank": 0.9022552669552675,
+      "mean_uniform_chance": 0.06681096670447295
+    },
+    "projected_cosine": {
+      "questions": 1250,
+      "top1_correct": 1026,
+      "top1_accuracy": 0.8208,
+      "mean_target_rank": 1.512,
+      "mean_reciprocal_rank": 0.8872753315793259,
+      "mean_uniform_chance": 0.06681096670447295
+    },
+    "IoU": {
+      "questions": 1250,
+      "top1_correct": 986,
+      "top1_accuracy": 0.7888,
+      "mean_target_rank": 2.3464,
+      "mean_reciprocal_rank": 0.8454595942578571,
+      "mean_uniform_chance": 0.06681096670447295
+    },
+    "learned_existing_logits": {
+      "questions": 1250,
+      "top1_correct": 893,
+      "top1_accuracy": 0.7144,
+      "mean_target_rank": 2.072,
+      "mean_reciprocal_rank": 0.8094111061192666,
+      "mean_uniform_chance": 0.06681096670447295
+    }
+  },
+  "learned_full_action_counts": {
+    "NO_MATCH": 589,
+    "EXISTING": 657,
+    "IGNORE": 4
+  },
+  "learned_full_action_correct": 521,
+  "learned_mean_correct_alias_probability": 0.35336158424880415,
+  "scope": "Declared fit-source existing-identity questions on identical frozen original-actor histories; not held-out accuracy or a causal trajectory intervention.",
+  "runtime_or_training_changed": false,
+  "official_tracking_gain_claimed": false,
+  "full_goal_complete": false
+}

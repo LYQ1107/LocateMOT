@@ -1,4 +1,37 @@
-## Latest actual execution — 2026-10-16
+## Completed broader Compact8000: negative tracking transfer — 2026-10-16
+
+The new shared Compact run completed8000updates/24000questions in1167.332s
+(19.46min),1,146,511parameters. Full model/Adam states are finite, the final
+export equals saved training state, and all three task reloads agree exactly.
+Independent causal controls now show negative transfer:
+
+|Scope|HOTA before %|HOTA broader %|IDF1 before %|IDF1 broader %|
+|---|---:|---:|---:|---:|
+|DanceTrack1203|26.3157|5.5800|30.6329|6.7840|
+|RMOT single800|6.0247|1.0579|2.8902|0.0000|
+|RMOT multi800|19.8019|12.5237|21.0082|13.1709|
+
+All original candidates/rejected frames/metrics and thresholds are retained.
+TAO40 and natural MOT20full1657 controls continue; the negative checkpoint is
+retained and is not promoted. On1250fit existing-ID frozen questions, learned
+full-action correctness improves521→656(41.68→52.48%), while native cosine
+retrieval remains1050/1250(84%). Fit improvement does not establish tracking
+gains. Projected cosine improves82.08→84.72%, existing-only learned retrieval
+71.44→81.20%; action competition still loses many correct existing IDs.
+Evidence: `outputs/groundjev/compact/broader_question_joint8000_owner_v1/`
+`{training_validation,completed_training_summary,three_scopes_completed}.json`
+and curriculum `affinity_fit_diagnosis/{before_summary,after_summary,completed_validation}.json`.
+
+A separate matched MOT-only control has actually started (first100updates/
+100questions). It uses exactly the same8000MOT row IDs/order and original
+initialization,8000optimizer updates, LR/decay/clip and loss/3; only RMOT/OV
+losses are explicitly absent. Its8update versus4+4restored full state is
+bit exact. All three-task default weights/Adam/RNG/protocol also match the
+original real8update prefix exactly after adding this opt-in. The subset is
+not FLOP matched; its final checkpoint and all five controls remain pending.
+No additional GPU or feature bank was allocated.
+
+## Earlier registration and first100 snapshot — 2026-10-16 (superseded)
 
 The balanced shared native OneJev study completed6000updates/24000questions
 (8000per task),29432.9s. Final full FP32/Adam/RNG state and native-MM reload

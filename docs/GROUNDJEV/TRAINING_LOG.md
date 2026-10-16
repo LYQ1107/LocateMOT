@@ -492,3 +492,5 @@ question-level recipe is not an isolated data-only ablation or native
 OneJev decoder training. All selected original labels/options were checked;
 8continuous versus4+4restored real three-task updates match full model, Adam
 and RNG exactly. See `outputs/groundjev/compact/broader_question_curriculum_v1/`.
+
+Broader Compact8000 has now completed24000questions/1167.332s, final full state/export and three-task reload validated. First three causal scopes all regress (DT HOTA26.3157→5.5800%, RMOTsingle6.0247→1.0579%, RMOTmulti19.8019→12.5237%). Fit existing-ID correctness improves41.68→52.48%, not held-out gain. Original negative model retained; remainingTAO/MOT20controls continue. New explicitly registered MOT-only loss intervention actually starts from the same original checkpoint and exact8000MOT row sequence, same8000optimizer steps/lossdivisor3/hyperparameters, no other task losses; first100actual updates verified. Default-three-task code trajectory remains bit-exact on original8update model/Adam/RNG/protocol after opt-in support.

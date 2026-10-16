@@ -16,6 +16,7 @@ def main():
     parser.add_argument('--out', type=Path, required=True); args = parser.parse_args()
     assert os.environ.get('CUDA_VISIBLE_DEVICES') == ''
     args.out.mkdir(parents=True, exist_ok=False)
+    plan = json.loads(args.plan.read_text()); tasks = plan.get('tasks', ['mot', 'rmot', 'ovmot'])
     env = dict(os.environ, CUDA_VISIBLE_DEVICES='', OMP_NUM_THREADS='4', MKL_NUM_THREADS='4', OPENBLAS_NUM_THREADS='4')
     for name, stop, resume in [('continuous', 8, False), ('restored', 4, False), ('restored', 8, True)]:
         command = [sys.executable, 'tools/groundjev/train_compact_questions.py', '--plan', str(args.plan),
@@ -39,13 +40,14 @@ def main():
         else: assert x == y
     for field in ('state_dict', 'optimizer', 'torch_rng', 'python_rng'): equal(a[field], b[field])
     assert not torch.cuda.is_initialized()
-    result = dict(status='REAL_THREE_TASK_COMPACT_FULL_MODEL_ADAM_RNG_RESUME_BIT_EXACT',
-        actual_updates_per_compared_branch=8, actual_questions_per_branch=24, exposure=a['exposure'],
+    result = dict(status=('REAL_THREE_TASK_COMPACT_FULL_MODEL_ADAM_RNG_RESUME_BIT_EXACT' if len(tasks)==3
+        else 'REAL_COMPACT_TASK_SUBSET_FULL_MODEL_ADAM_RNG_RESUME_BIT_EXACT'),
+        actual_updates_per_compared_branch=8, actual_questions_per_branch=8*len(tasks), exposure=a['exposure'],
         all_model_parameters_Adam_moments_counters_and_RNG_bit_exact=True,
         no_GPU_used=True, full8000_training_complete=False, full_goal_complete=False)
     (args.out / 'result.json').write_text(json.dumps(result, indent=2) + '\n')
-    plan = json.loads(args.plan.read_text())
-    (ROOT / plan['output'] / 'training_prefix_validation.json').write_text(json.dumps(result, indent=2) + '\n')
+    proof_path = ROOT / plan.get('training_prefix_validation', plan['output']+'/training_prefix_validation.json')
+    proof_path.write_text(json.dumps(result, indent=2) + '\n')
     print(json.dumps(result), flush=True)
 
 

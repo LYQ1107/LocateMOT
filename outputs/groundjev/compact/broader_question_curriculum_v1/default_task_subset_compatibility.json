@@ -1,0 +1,8 @@
+{
+  "status": "OPTIONAL_TASK_SUBSET_LEAVES_ORIGINAL_THREE_TASK_PREFIX_BIT_EXACT",
+  "actual_steps": 8,
+  "actual_questions": 24,
+  "all_model_Adam_RNG_protocol_exposure_exact": true,
+  "no_GPU_used": true,
+  "full_goal_complete": false
+}

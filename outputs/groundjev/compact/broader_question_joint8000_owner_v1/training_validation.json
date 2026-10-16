@@ -1,0 +1,22 @@
+{
+  "step": 8000,
+  "questions": 24000,
+  "exposure": {
+    "mot:identity": 5000,
+    "rmot:query_membership": 8000,
+    "ovmot:category": 8000,
+    "mot:reliability": 500,
+    "mot:lifecycle": 2000,
+    "mot:memory_update": 500
+  },
+  "full_model_and_optimizer_finite": true,
+  "final_export_equals_full_state": true,
+  "three_task_reload_max_difference": 0,
+  "checkpoint": "/data3/user/LocateMOT-checkpoints/compact_broader_question_joint8000_v1/checkpoint.pt",
+  "training_seconds": 1167.3321700350498,
+  "source_scope": {
+    "mot": 1053,
+    "rmot": 1795,
+    "ovmot": 3227
+  }
+}

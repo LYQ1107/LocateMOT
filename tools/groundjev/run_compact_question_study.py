@@ -17,8 +17,10 @@ def main():
     parser.add_argument('--control-protocol', type=Path, default=ROOT/'configs/groundjev/compact_own_history_refresh1200_pair_v1.json')
     args = parser.parse_args(); plan = json.loads(args.plan.read_text())
     assert os.environ.get('CUDA_VISIBLE_DEVICES') == ''
-    prefix = json.loads((ROOT/plan['output']/'training_prefix_validation.json').read_text())
+    prefix_path = ROOT/plan.get('training_prefix_validation',plan['output']+'/training_prefix_validation.json')
+    prefix = json.loads(prefix_path.read_text())
     assert prefix['all_model_parameters_Adam_moments_counters_and_RNG_bit_exact']
+    assert prefix['actual_questions_per_branch']==8*len(plan.get('tasks',['mot','rmot','ovmot']))
     assert plan['combined_registered_feature_upper_bytes'] < plan['global_temporary_feature_budget_bytes']
     controls_source = json.loads(args.control_protocol.read_text())
     assert (ROOT/controls_source['checkpoint']).resolve() == (ROOT/plan['initial_checkpoint']).resolve()
@@ -26,7 +28,8 @@ def main():
     (args.out/'registration.json').write_text(json.dumps(plan, indent=2)+'\n')
     state = dict(status='REGISTERED_BROADER_COMPACT_CPU_JOINT_STUDY', owner_pid=os.getpid(),
         owner_starttick=Path('/proc/self/stat').read_text().rsplit(')', 1)[1].split()[19],
-        plan=str(args.plan), physical_GPUs=[], completed={}, full_goal_complete=False)
+        plan=str(args.plan), physical_GPUs=[], selected_tasks=plan.get('tasks',['mot','rmot','ovmot']),
+        completed={}, full_goal_complete=False)
     env = dict(os.environ, CUDA_VISIBLE_DEVICES='', OMP_NUM_THREADS='4', MKL_NUM_THREADS='4', OPENBLAS_NUM_THREADS='4',
         PYTHONPATH=str(ROOT/'external/OneJev'), PYTHONUNBUFFERED='1')
     python = str(ROOT/'.venv-onejev-py310/bin/python')
@@ -49,7 +52,8 @@ def main():
         run('BROADER_SHARED8000_CPU_TRAINING',[python,'tools/groundjev/train_compact_questions.py','--plan',str(args.plan)])
         training=Path(plan['training_output']); result=json.loads((training/'owner_state.json').read_text())
         assert result['status']=='BROADER_SHARED_COMPACT_TYPED_QUESTION_TRAINING_COMPLETE'
-        assert result['step']==8000 and result['actual_questions']==24000
+        actual_questions=8000*len(plan.get('tasks',['mot','rmot','ovmot']))
+        assert result['step']==8000 and result['actual_questions']==actual_questions
         assert all(v==0 for v in result['three_task_reload_probability_max_difference'].values())
         checkpoint=torch.load(training/'checkpoint.pt',weights_only=True,map_location='cpu')
         latest=torch.load(training/'latest_training_state.pt',weights_only=False,map_location='cpu')
@@ -59,8 +63,8 @@ def main():
         for entry in latest['optimizer']['state'].values():
             assert 1<=int(entry['step'])<=8000
             assert torch.isfinite(entry['exp_avg']).all() and torch.isfinite(entry['exp_avg_sq']).all()
-        assert sum(latest['exposure'].values())==24000
-        state['completed']['training']=dict(step=8000,questions=24000,exposure=latest['exposure'],
+        assert sum(latest['exposure'].values())==actual_questions
+        state['completed']['training']=dict(step=8000,questions=actual_questions,exposure=latest['exposure'],
             full_model_and_optimizer_finite=True,final_export_equals_full_state=True,
             three_task_reload_max_difference=0,checkpoint=str(training/'checkpoint.pt'),
             training_seconds=result['training_seconds'],source_scope=result['source_scope'])
@@ -76,7 +80,7 @@ def main():
         controls=dict(regression=controls_source['control_regression'],checkpoint=plan['initial_checkpoint'],
             reference_root=str(references.resolve()),scopes=controls_source['scopes'],cpu_blas_threads=4,
             arms=dict(before=dict(policy,reference_arm='before'),broader=dict(policy,checkpoint=str(training/'checkpoint.pt'))),
-            comparison_limit='Broader supervised shared Compact versus its original frozen actor; new balanced question-level recipe, not isolated data-only or token/compute matched. Same final checkpoint and policies across five registered scopes; no full-benchmark parity or E2E speed claim.',
+            comparison_limit=plan.get('comparison_limit','Broader supervised shared Compact versus its original frozen actor; new balanced question-level recipe, not isolated data-only or token/compute matched. Same final checkpoint and policies across five registered scopes; no full-benchmark parity or E2E speed claim.'),
             memory_storage='Reuse immutable native source banks; keep scientific decision traces and final binary identity state, no new candidate feature archives.')
         path=args.out/'resolved_controls_plan.json'; path.write_text(json.dumps(controls,indent=2)+'\n')
         run('FIVE_SCOPE_OFFICIAL_CONTROLS',[python,'tools/groundjev/run_fixed_affinity_controls.py',

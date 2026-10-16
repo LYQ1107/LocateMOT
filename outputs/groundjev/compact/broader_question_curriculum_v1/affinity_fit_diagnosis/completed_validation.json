@@ -1,0 +1,17 @@
+{
+  "status": "FROZEN_FIT_AFFINITY_BEFORE_AFTER_COMPLETE",
+  "owner_pid": 3674482,
+  "owner_starttick": "51056760",
+  "original_training_PID": 3666512,
+  "original_training_starttick": "51020208",
+  "physical_GPUs": [],
+  "completed": [
+    "before",
+    "after"
+  ],
+  "full_goal_complete": false,
+  "learned_full_correct_before": 521,
+  "learned_full_correct_after": 656,
+  "frozen_native_cosine_and_geometry_identical": true,
+  "scope": "Declared fit-source existing-identity questions on identical frozen original-actor histories; not held-out accuracy or a causal trajectory intervention."
+}
