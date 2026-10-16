@@ -1,0 +1,89 @@
+{
+  "status": "ALL43_ENTITY_VS_REPRESENTATIVE_AND_EFFECTIVE_BIRTH_V2_AUDITED",
+  "totals": {
+    "NEW_first_effective_birth_proposal": 641,
+    "UNKNOWN_annotation": 6083,
+    "frames": 1056,
+    "candidates": 48051,
+    "old_duplicate_REJECT_now_valid_entity_identity": 3572,
+    "old_UNKNOWN_now_first_effective_NEW": 40,
+    "old_UNKNOWN_now_confirmed_MATCH": 1,
+    "MATCH_supported_proposal": 28507,
+    "UNKNOWN_retired_or_unbound": 12820
+  },
+  "examples": [
+    {
+      "unit": "mot/MOT17-10-FRCNN",
+      "frame": 150,
+      "candidate": 0,
+      "unique_GT": 16,
+      "old_options": [],
+      "new_options": [
+        0
+      ],
+      "source_predicted_history_unchanged": true
+    },
+    {
+      "unit": "mot/MOT17-10-FRCNN",
+      "frame": 150,
+      "candidate": 1,
+      "unique_GT": 11,
+      "old_options": [],
+      "new_options": [
+        0
+      ],
+      "source_predicted_history_unchanged": true
+    },
+    {
+      "unit": "mot/MOT17-10-FRCNN",
+      "frame": 150,
+      "candidate": 2,
+      "unique_GT": 44,
+      "old_options": [],
+      "new_options": [
+        0
+      ],
+      "source_predicted_history_unchanged": true
+    },
+    {
+      "unit": "mot/MOT17-10-FRCNN",
+      "frame": 150,
+      "candidate": 3,
+      "unique_GT": 45,
+      "old_options": [],
+      "new_options": [
+        0
+      ],
+      "source_predicted_history_unchanged": true
+    },
+    {
+      "unit": "mot/MOT17-10-FRCNN",
+      "frame": 150,
+      "candidate": 4,
+      "unique_GT": 23,
+      "old_options": [],
+      "new_options": [
+        0
+      ],
+      "source_predicted_history_unchanged": true
+    },
+    {
+      "unit": "mot/MOT17-10-FRCNN",
+      "frame": 150,
+      "candidate": 5,
+      "unique_GT": 30,
+      "old_options": [],
+      "new_options": [
+        0
+      ],
+      "source_predicted_history_unchanged": true
+    }
+  ],
+  "label_version": "entity_identity_separate_from_proposal_winner-v2",
+  "mechanism": "V1 penalizes duplicate-supported proposals as identity REJECT, while StageA should own proposal exclusivity. V1 also marks GT seen without a confirmed model birth as previously tracked. V2 supervises identity on every uniquely supported proposal; binds external birth GT for any unique-support predicted birth, not just the Hungarian winning proposal; and uses confirmed effective births rather than annotation presence. Competition ranking still selects one output entity. Unmatched/ambiguous and retired/unbound cases remain masked; no model GT repair.",
+  "original_V1_labels_checkpoints_or_predictions_modified": false,
+  "new_GPU_processes": 0,
+  "new_feature_bank_bytes": 0,
+  "V2_training_or_tracking_gain_proven": false,
+  "full_goal_complete": false
+}

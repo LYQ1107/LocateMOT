@@ -1,0 +1,42 @@
+{
+  "status": "GLOBAL_IDENTITY_FINAL_CPU_CHECKPOINTS_AND_REAL_RUNTIME_REGRESSION_VALIDATED",
+  "real_TRAIN_unit": "mot/MOT17-02-FRCNN",
+  "frame": 136,
+  "candidates": 31,
+  "history": 31,
+  "cases": {
+    "A1": {
+      "actual_updates": 4056,
+      "processed_frames": 4224,
+      "candidate_exposures": 192204,
+      "physical_parameters": 979883,
+      "all_weights_and_Adam_moments_finite": true,
+      "Adam_moment_elements_checked": 1793486,
+      "real_input_reload_max_difference": 0.0,
+      "task_query_interventions": 4,
+      "all_physical_rows_and_update_probabilities_exact": true,
+      "semantic_output_rows_present": 93,
+      "actual_existing_assignments_checked": 116,
+      "unique_existing_ID_and_predicted_duplicate_component_constraints_valid": true,
+      "original_assigned_callback_before_write_reused": true
+    },
+    "A2": {
+      "actual_updates": 4064,
+      "processed_frames": 4224,
+      "candidate_exposures": 192204,
+      "physical_parameters": 979883,
+      "all_weights_and_Adam_moments_finite": true,
+      "Adam_moment_elements_checked": 1893204,
+      "real_input_reload_max_difference": 0.0,
+      "task_query_interventions": 4,
+      "all_physical_rows_and_update_probabilities_exact": true,
+      "semantic_output_rows_present": 93,
+      "actual_existing_assignments_checked": 100,
+      "unique_existing_ID_and_predicted_duplicate_component_constraints_valid": true,
+      "original_assigned_callback_before_write_reused": true
+    }
+  },
+  "scope": "One actual causal TRAIN history with four fixed task/query interventions; not whole-video query invariance or accuracy evidence. Same parameter file per arm for all tasks. Model inputs contain only candidate/history physical evidence, no GT labels.",
+  "new_GPU_or_optimizer_updates": 0,
+  "full_goal_complete": false
+}

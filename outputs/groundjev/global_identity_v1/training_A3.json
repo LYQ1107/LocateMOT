@@ -1,0 +1,92 @@
+{
+  "status": "A3_ASSIGNED_ID_MEMORY_HEAD_AND_TRAIN_ONLY_CALIBRATION_COMPLETE",
+  "actual_updates": 3602,
+  "counts": {
+    "mot:frames": 2112,
+    "mot:masked_frame": 236,
+    "mot:questions": 24598,
+    "finite_zero_gradient_fitted_batches": 9,
+    "fitted_questions": 16576,
+    "yes": 9840,
+    "no": 6736,
+    "rmot:identity_reference": 2856,
+    "rmot:questions": 2908,
+    "rmot:paired_native_reference": 2908
+  },
+  "first5": [
+    {
+      "epoch": 0,
+      "step": 1,
+      "unit": "mot/MOT17-04-FRCNN",
+      "loss": 0.7738008499145508,
+      "gradient": 7.793006896972656,
+      "questions": 28
+    },
+    {
+      "epoch": 0,
+      "step": 2,
+      "unit": "mot/MOT17-04-FRCNN",
+      "loss": 0.4692220389842987,
+      "gradient": 5.228140830993652,
+      "questions": 26
+    },
+    {
+      "epoch": 0,
+      "step": 3,
+      "unit": "mot/MOT17-04-FRCNN",
+      "loss": 0.2817907929420471,
+      "gradient": 1.8325800895690918,
+      "questions": 26
+    },
+    {
+      "epoch": 0,
+      "step": 4,
+      "unit": "mot/MOT17-04-FRCNN",
+      "loss": 0.23758581280708313,
+      "gradient": 2.6016416549682617,
+      "questions": 23
+    },
+    {
+      "epoch": 0,
+      "step": 5,
+      "unit": "mot/MOT17-04-FRCNN",
+      "loss": 0.18827004730701447,
+      "gradient": 1.2714617252349854,
+      "questions": 20
+    }
+  ],
+  "trainable_memory_parameters": 33281,
+  "all_A2_physical_parameters_bit_exact": true,
+  "all2882_RMOT_original_inputs_and_targets_referenced": true,
+  "RMOT_identity_references_per_epoch": 1428,
+  "RMOT_assigned_write_references_per_epoch": 1454,
+  "calibration_units": [
+    "mot/MOT17-02-FRCNN",
+    "mot/MOT17-11-FRCNN",
+    "mot/MOT20-05",
+    "mot/dancetrack0016",
+    "mot/dancetrack0029",
+    "mot/dancetrack0045",
+    "mot/dancetrack0057",
+    "mot/dancetrack0074",
+    "mot/dancetrack0087",
+    "rmot/0002_counter",
+    "rmot/0006_primary",
+    "rmot/0012_counter",
+    "rmot/0017_primary"
+  ],
+  "calibration_questions": 5465,
+  "calibration_positives": 2321,
+  "calibration": {
+    "scale": 0.19791343808174133,
+    "intercept": 1.9130748510360718,
+    "before_BCE": 4.374967575073242,
+    "after_BCE": 0.6681395769119263
+  },
+  "source_actor": "Original real Shared Compact causal histories/actual final assignments, off-policy for A2; not own-state A2 rollout or BPTT.",
+  "same_final_checkpoint_for_all_tasks": "/data3/user/LocateMOT-checkpoints/global_identity_v1/A3/checkpoint.pt",
+  "new_GPU_processes": 0,
+  "new_feature_bank_bytes": 0,
+  "tracking_improvement_or_actual_write_flips": "pending full trajectory controls",
+  "full_goal_complete": false
+}

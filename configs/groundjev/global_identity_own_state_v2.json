@@ -1,0 +1,23 @@
+{
+  "name": "Detached model-in-loop8/16/32-frame physical identity and memory training",
+  "physical_plan": "configs/groundjev/global_identity_v1.json",
+  "initial_checkpoint": "/data3/user/LocateMOT-checkpoints/global_identity_v1/A3/checkpoint.pt",
+  "output": "/data3/user/LocateMOT-checkpoints/global_identity_v1/A4_own_state_v2",
+  "label_version": "entity_identity_separate_from_proposal_winner-v2",
+  "label_audit": "outputs/groundjev/global_identity_v1/effective_birth_v2_audit.json",
+  "episode_lengths": [8,16,32],
+  "learning_rate": 0.0001,
+  "weight_decay": 0.0001,
+  "gradient_clip": 1.0,
+  "birth_weight": "sqrt(TRAIN confirmed MATCH proposal count / TRAIN effective NEW proposal count), fixed from V2 source audit before this training, no held-out metric tuning",
+  "memory_loss_weight": 0.3,
+  "write_head_calibration_units": "Same sorted legal TRAIN unit index modulo5==0; withheld from own-state write-head gradients. Physical training still uses legal TRAIN labels.",
+  "algorithm": "Predict real causal states with current A3/A4 model; hold weights fixed within each8/16/32episode, accumulate detached per-frame gradients, update once at episode end. No BPTT, no teacher-state replacement, no future input or GT correction.",
+  "identity_labels": "All uniquely supported duplicate proposals share the entity ID/NEW target; sparse competition/ranking separately learns one output representative. Birth GT binds externally from unique support even if that proposal is not the original Hungarian winner. First effective confirmed birth differs from first annotation presence.",
+  "memory_labels": "Use actual final assigned own ID and its immutable external birth binding. Known wrong ID or low visibility HOLD; known correct visible ID UPDATE; unknown annotation/birth masked. Never rewrite predicted state using GT.",
+  "episode_reset": "Reset physical state at registered short-episode boundaries; all1056sourceframes processed once per length, including empty/rejected frames, no hidden sample filtering.",
+  "checkpoint_selection": "Fixed final32phase checkpoint, same one across all five tasks/scopes. Phase exports preserved, no best-metric selection.",
+  "new_GPU_processes": 0,
+  "new_feature_bank_bytes": 0,
+  "full_goal_complete": false
+}
