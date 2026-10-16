@@ -1,3 +1,19 @@
+## Completed A1 scopes and duplicate admission diagnosis — 2026-10-17
+
+A1 allfive registered subsets are validated: finalMOT20 HOTA16.1717%, IDSW5265,
+FP2897/FN181107. Against A0: +8.740HOTA points, +3205IDSW/+2434FP/-105166FN.
+DT/RMOT regress, so no shared three-task improvement. A2finalMOT20 still runs.
+
+DT posthoc confirms all1533GTcompetitor sets/all49784sameGTpairs are in the sparse
+graph, but A4 learns only9duplicatecomponents covering3completeGTsets. Frozen
+edge recomputation reproduces all1203actual A2/A4 frame components. A4 approximate
+AUROC.9862 butTP497/FN99071/FP0 at registered.5. Actual per-frame meanTRAIN positive
+prior is MOT.0275868 andRMOT.2831892, mixed.17023. This suggests a decision-prior/
+calibration problem despite strong ranking; no validation-selected threshold.
+The mixed and cost-neutral own-state models continue their original schedules;
+A4c's fixed-final five-scope evaluator is queued on its original live trainer.
+Full science evidence is in the global identity report; both goals remain active.
+
 ## Own-state physical training completed — 2026-10-17
 
 A4 completed247real updates/3168frames/144153candidate exposures under actual

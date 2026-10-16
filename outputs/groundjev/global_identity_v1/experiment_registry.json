@@ -19,7 +19,9 @@
       "labels": "V1 confirmed external birth/assignment labels",
       "optimizer": "AdamW lr1e-4 wd1e-4 clip1, 4epochs",
       "timing_seconds": 386.36626908602193,
-      "end_to_end_FPS": null
+      "end_to_end_FPS": null,
+      "all_five_official_receipt": "A1_all_five_scopes_completed.json",
+      "all_five_deltas": "A1_all_five_deltas_vs_A0.json"
     },
     "A2": {
       "report": "training_A2.json",
@@ -79,7 +81,7 @@
         16,
         32
       ],
-      "actual_updates": "At least400, with real RMOT identity-supervised positive-gradient episodes; final receipt pending",
+      "actual_updates": "At least575, real16-frame phase; final receipt pending",
       "scope": "One hypothesis-driven mixed physical identity trial; all5 fixed scopes required",
       "model_inputs": "Actual own predicted physical histories; no GT repair or query input",
       "new_GPU_processes": 0,
@@ -93,13 +95,20 @@
       "training_config": "configs/groundjev/global_identity_mixed_cost_neutral_v2.json",
       "only_scientific_factor_changed": "Birth CE cost weight6.66878541474805 versus1.0",
       "implementation_parity_receipt": "A4b_A4c_paired_training_contract.json",
-      "actual_updates": "At least5; final receipt pending",
+      "actual_updates": "At least425, real8-frame phase; final receipt pending",
       "new_GPU_processes": 0,
       "new_feature_bank_bytes": 0,
       "temporal_BPTT": false,
-      "official_metrics": "Pending samefive fixed scopes and one final model across tasks"
+      "official_metrics": "Pending samefive fixed scopes and one final model across tasks",
+      "five_scope_owner": "run_global_cost_neutral_controls.py, blocking original-training PID dependency confirmed live"
     }
   },
   "full_goal_complete": false,
-  "storage_accounting_amendment": "configs/groundjev/global_identity_storage_closed_v2.json"
+  "storage_accounting_amendment": "configs/groundjev/global_identity_storage_closed_v2.json",
+  "duplicate_failure_diagnostics": [
+    "DT_sparse_graph_vs_learned_components.json",
+    "DT_duplicate_edge_discrimination.json",
+    "DT_duplicate_probability_gap.json",
+    "TRAIN_competition_per_frame_prior.json"
+  ]
 }

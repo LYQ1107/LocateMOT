@@ -1,0 +1,33 @@
+{
+  "status": "ACTUAL_PER_FRAME_DUPLICATE_LOSS_SUPERVISION_PRIORS_AUDITED",
+  "tasks": {
+    "mot": {
+      "counts": {
+        "frames": 1056,
+        "positive_edges": 13036,
+        "known_edges": 2124208,
+        "frames_with_nonzero_duplicate_BCE_supervision": 1016,
+        "frames_with_positive_duplicate_edges": 479
+      },
+      "per_supervised_frame_mean_positive_fraction": 0.027586796229267116,
+      "micro_positive_fraction": 0.006136875484886602
+    },
+    "rmot": {
+      "counts": {
+        "frames": 3628,
+        "positive_edges": 3038,
+        "known_edges": 9782,
+        "frames_with_nonzero_duplicate_BCE_supervision": 1283,
+        "frames_with_positive_duplicate_edges": 527
+      },
+      "per_supervised_frame_mean_positive_fraction": 0.2831892018953592,
+      "micro_positive_fraction": 0.31057043549376406
+    }
+  },
+  "mixed_per_supervised_frame_prior": 0.17023050500247114,
+  "scope": "Same fixed whole-frame TRAIN proposal graphs/unique GT labels. BCE is mean over known edges in each supervised frame; this reports that normalization, not a learned or deployment posterior calibration.",
+  "new_optimizer_updates": 0,
+  "new_GPU_processes": 0,
+  "threshold_optimized": false,
+  "full_goal_complete": false
+}

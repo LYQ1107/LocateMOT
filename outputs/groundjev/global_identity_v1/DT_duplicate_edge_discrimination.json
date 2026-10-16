@@ -1,0 +1,40 @@
+{
+  "status": "FROZEN_EDGE_SCORES_AND_ALL1203_ACTUAL_COMPONENTS_REPRODUCED",
+  "arms": {
+    "A2": {
+      "counts": {
+        "frames_exact_component_replay": 1203,
+        "negative_edges": 48138,
+        "positive_edges": 99568,
+        "TP": 0,
+        "FN": 99568,
+        "FP": 0,
+        "TN": 48138
+      },
+      "mean_duplicate_probability_positive": 0.03816664520823611,
+      "mean_duplicate_probability_negative": 0.0048841213068855855,
+      "approximate_logit_histogram_AUROC": 0.953029595434645
+    },
+    "A4": {
+      "counts": {
+        "frames_exact_component_replay": 1203,
+        "negative_edges": 48138,
+        "positive_edges": 99568,
+        "TP": 497,
+        "FN": 99071,
+        "FP": 0,
+        "TN": 48138
+      },
+      "mean_duplicate_probability_positive": 0.13454803444719607,
+      "mean_duplicate_probability_negative": 0.004940778057851582,
+      "approximate_logit_histogram_AUROC": 0.9861754262689195
+    }
+  },
+  "threshold": 0.5,
+  "threshold_optimized": false,
+  "optimizer_updates": 0,
+  "new_GPU_processes": 0,
+  "new_feature_bank_bytes": 0,
+  "scope": "Original DT1203 fixed raw proposals/FP32 vectors. GT used posthoc only. AUROC uses0.1-logit bins over[-40,40] with tail clamping/ties; approximate, not an exact rank statistic.",
+  "full_goal_complete": false
+}

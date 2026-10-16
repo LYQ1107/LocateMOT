@@ -1,0 +1,137 @@
+{
+  "status": "REAL_DT_SPARSE_RETRIEVAL_VERSUS_LEARNED_COMPONENT_ADMISSION_SEPARATED",
+  "scope": "Original fixed DT1203 proposals, official GT used posthoc only, no inference/training/threshold or source mutation.",
+  "graph": {
+    "frames": 1203,
+    "candidates": 13664,
+    "same_GT_competitor_sets": 1533,
+    "sparse_graph_same_GT_induced_set_connected": 1533,
+    "same_GT_proposal_pairs": 49784,
+    "same_GT_proposal_pairs_in_sparse_graph": 49784
+  },
+  "arms": {
+    "A2": {
+      "predicted_duplicate_components": 0,
+      "explicitly_suppressed_proposals": 0,
+      "complete_GT_competitor_sets_in_one_predicted_component": 0
+    },
+    "A4": {
+      "predicted_duplicate_components": 9,
+      "explicitly_suppressed_proposals": 55,
+      "complete_GT_competitor_sets_in_one_predicted_component": 3,
+      "component_pair_same_GT": 301,
+      "component_pair_annotation_unknown": 17
+    }
+  },
+  "failure_examples": [
+    {
+      "frame": 3,
+      "GT": 2,
+      "candidates": [
+        0,
+        1
+      ],
+      "predicted_components": [
+        null,
+        null
+      ],
+      "actions": [
+        "NEW",
+        "NEW"
+      ]
+    },
+    {
+      "frame": 3,
+      "GT": 1,
+      "candidates": [
+        3,
+        4,
+        5
+      ],
+      "predicted_components": [
+        null,
+        null,
+        null
+      ],
+      "actions": [
+        "NEW",
+        "NEW",
+        "NEW"
+      ]
+    },
+    {
+      "frame": 4,
+      "GT": 2,
+      "candidates": [
+        0,
+        1
+      ],
+      "predicted_components": [
+        null,
+        null
+      ],
+      "actions": [
+        "MATCH",
+        "MATCH"
+      ]
+    },
+    {
+      "frame": 4,
+      "GT": 1,
+      "candidates": [
+        3,
+        4
+      ],
+      "predicted_components": [
+        null,
+        null
+      ],
+      "actions": [
+        "MATCH",
+        "MATCH"
+      ]
+    },
+    {
+      "frame": 5,
+      "GT": 2,
+      "candidates": [
+        0,
+        1,
+        2,
+        5
+      ],
+      "predicted_components": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "actions": [
+        "REACTIVATE",
+        "MATCH",
+        "MATCH",
+        "IGNORE"
+      ]
+    },
+    {
+      "frame": 6,
+      "GT": 2,
+      "candidates": [
+        0,
+        1
+      ],
+      "predicted_components": [
+        null,
+        null
+      ],
+      "actions": [
+        "MATCH",
+        "MATCH"
+      ]
+    }
+  ],
+  "interpretation": "Predicted component pair counts are transitive component closure relations, not logged raw edge-classifier TPR. Unknown annotations are not negatives.",
+  "new_GPU_processes": 0,
+  "new_feature_bank_bytes": 0,
+  "full_goal_complete": false
+}

@@ -1,0 +1,154 @@
+{
+  "status": "A1_ALL_FIVE_REGISTERED_SCOPES_OFFICIALLY_VALIDATED",
+  "completed": {
+    "A1_mot_full1203": {
+      "run": "/data2/user/LocateMOT_GlobalIdentity/outputs/groundjev/global_identity_v1/controls/A1_mot_full1203",
+      "checkpoint": "/data3/user/LocateMOT-checkpoints/global_identity_v1/A1/checkpoint.pt",
+      "frames": 1203,
+      "native_candidates": 13664,
+      "all_original_candidates_frames_and_rejected_frames_exact": true,
+      "unique_current_identity_allocations": true,
+      "official_metrics": {
+        "HOTA": 0.11036956246589626,
+        "DetA": 0.2756058962139402,
+        "AssA": 0.044473857854032024,
+        "IDF1": 0.11050752754927828,
+        "IDSW": 137,
+        "FP": 316,
+        "FN": 3045
+      },
+      "base_novel": null,
+      "actual_end_to_end_FPS": null,
+      "association_replay_fps": 18.88314985971227,
+      "peak_decision_gpu_memory_bytes": 0,
+      "peak_RSS_bytes": 1058447360,
+      "physical_parameters": 979883,
+      "frozen_semantic_parameters": 1146511
+    },
+    "A1_rmot_single800": {
+      "run": "/data2/user/LocateMOT_GlobalIdentity/outputs/groundjev/global_identity_v1/controls/A1_rmot_single800",
+      "checkpoint": "/data3/user/LocateMOT-checkpoints/global_identity_v1/A1/checkpoint.pt",
+      "frames": 800,
+      "native_candidates": 1412,
+      "all_original_candidates_frames_and_rejected_frames_exact": true,
+      "unique_current_identity_allocations": true,
+      "official_metrics": {
+        "HOTA": 0.0,
+        "DetA": 0.0,
+        "AssA": 0.0,
+        "IDF1": 0.0,
+        "IDSW": 0,
+        "FP": 30,
+        "FN": 18
+      },
+      "base_novel": null,
+      "actual_end_to_end_FPS": null,
+      "association_replay_fps": 38.593836428390816,
+      "peak_decision_gpu_memory_bytes": 0,
+      "peak_RSS_bytes": 1028489216,
+      "physical_parameters": 979883,
+      "frozen_semantic_parameters": 1146511
+    },
+    "A1_rmot_multi800": {
+      "run": "/data2/user/LocateMOT_GlobalIdentity/outputs/groundjev/global_identity_v1/controls/A1_rmot_multi800",
+      "checkpoint": "/data3/user/LocateMOT-checkpoints/global_identity_v1/A1/checkpoint.pt",
+      "frames": 800,
+      "native_candidates": 2208,
+      "all_original_candidates_frames_and_rejected_frames_exact": true,
+      "unique_current_identity_allocations": true,
+      "official_metrics": {
+        "HOTA": 0.0748978392278072,
+        "DetA": 0.06001249654739512,
+        "AssA": 0.0954688523419581,
+        "IDF1": 0.0807914262159934,
+        "IDSW": 20,
+        "FP": 147,
+        "FN": 1945
+      },
+      "base_novel": null,
+      "actual_end_to_end_FPS": null,
+      "association_replay_fps": 35.91752841749085,
+      "peak_decision_gpu_memory_bytes": 0,
+      "peak_RSS_bytes": 1028354048,
+      "physical_parameters": 979883,
+      "frozen_semantic_parameters": 1146511
+    },
+    "A1_tao_raw_full40": {
+      "run": "/data2/user/LocateMOT_GlobalIdentity/outputs/groundjev/global_identity_v1/controls/A1_tao_raw_full40",
+      "checkpoint": "/data3/user/LocateMOT-checkpoints/global_identity_v1/A1/checkpoint.pt",
+      "frames": 40,
+      "native_candidates": 35228,
+      "all_original_candidates_frames_and_rejected_frames_exact": true,
+      "unique_current_identity_allocations": true,
+      "official_metrics": {
+        "TETA": 25.293,
+        "LocA": 13.651,
+        "AssocA": 31.933,
+        "ClsA": 30.297,
+        "LocRe": 84.771,
+        "LocPr": 14.09,
+        "AssocRe": 42.257,
+        "AssocPr": 46.961,
+        "ClsRe": 33.333,
+        "ClsPr": 30.297
+      },
+      "base_novel": {
+        "base": {
+          "TETA": 27.567,
+          "LocA": 7.72695,
+          "AssocA": 29.53,
+          "ClsA": 45.445,
+          "LocRe": 86.719,
+          "LocPr": 7.8064,
+          "AssocRe": 41.439,
+          "AssocPr": 42.5995,
+          "ClsRe": 50.0,
+          "ClsPr": 45.445
+        },
+        "novel": {
+          "TETA": 20.745,
+          "LocA": 25.498,
+          "AssocA": 36.738,
+          "ClsA": 0.0,
+          "LocRe": 80.875,
+          "LocPr": 26.657,
+          "AssocRe": 43.894,
+          "AssocPr": 55.684,
+          "ClsRe": 0.0,
+          "ClsPr": 0.0
+        }
+      },
+      "actual_end_to_end_FPS": null,
+      "association_replay_fps": 0.07343816449769343,
+      "peak_decision_gpu_memory_bytes": 0,
+      "peak_RSS_bytes": 3932848128,
+      "physical_parameters": 979883,
+      "frozen_semantic_parameters": 1146511
+    },
+    "A1_mot20_challenge": {
+      "run": "/data2/user/LocateMOT_GlobalIdentity/outputs/groundjev/global_identity_v1/controls/A1_mot20_challenge",
+      "checkpoint": "/data3/user/LocateMOT-checkpoints/global_identity_v1/A1/checkpoint.pt",
+      "frames": 1657,
+      "native_candidates": 235232,
+      "all_original_candidates_frames_and_rejected_frames_exact": true,
+      "unique_current_identity_allocations": true,
+      "official_metrics": {
+        "HOTA": 0.1617172713618003,
+        "DetA": 0.3971798271447438,
+        "AssA": 0.06610174716184362,
+        "IDF1": 0.11716538309336093,
+        "IDSW": 5265,
+        "FP": 2897,
+        "FN": 181107
+      },
+      "base_novel": null,
+      "actual_end_to_end_FPS": null,
+      "association_replay_fps": 1.1136475488903972,
+      "peak_decision_gpu_memory_bytes": 0,
+      "peak_RSS_bytes": 1930469376,
+      "physical_parameters": 979883,
+      "frozen_semantic_parameters": 1146511
+    }
+  },
+  "full_goal_complete": false
+}

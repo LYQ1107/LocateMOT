@@ -1,0 +1,55 @@
+{
+  "status": "FIXED_REGISTERED_DECISION_POINT_AND_MEAN_PROBABILITY_GAP_MEASURED",
+  "arms": {
+    "A2": {
+      "known_duplicate_prevalence": 0.6740958390315898,
+      "mean_predicted_duplicate_probability": 0.027319732181255406,
+      "TPR_at_registered_point": 0.0,
+      "FPR_at_registered_point": 0.0,
+      "approximate_AUROC": 0.953029595434645
+    },
+    "A4": {
+      "known_duplicate_prevalence": 0.6740958390315898,
+      "mean_predicted_duplicate_probability": 0.09230849029820913,
+      "TPR_at_registered_point": 0.004991563554555681,
+      "FPR_at_registered_point": 0.0,
+      "approximate_AUROC": 0.9861754262689195
+    }
+  },
+  "threshold_optimized": false,
+  "TRAIN_priors": {
+    "status": "ACTUAL_PER_FRAME_DUPLICATE_LOSS_SUPERVISION_PRIORS_AUDITED",
+    "tasks": {
+      "mot": {
+        "counts": {
+          "frames": 1056,
+          "positive_edges": 13036,
+          "known_edges": 2124208,
+          "frames_with_nonzero_duplicate_BCE_supervision": 1016,
+          "frames_with_positive_duplicate_edges": 479
+        },
+        "per_supervised_frame_mean_positive_fraction": 0.027586796229267116,
+        "micro_positive_fraction": 0.006136875484886602
+      },
+      "rmot": {
+        "counts": {
+          "frames": 3628,
+          "positive_edges": 3038,
+          "known_edges": 9782,
+          "frames_with_nonzero_duplicate_BCE_supervision": 1283,
+          "frames_with_positive_duplicate_edges": 527
+        },
+        "per_supervised_frame_mean_positive_fraction": 0.2831892018953592,
+        "micro_positive_fraction": 0.31057043549376406
+      }
+    },
+    "mixed_per_supervised_frame_prior": 0.17023050500247114,
+    "scope": "Same fixed whole-frame TRAIN proposal graphs/unique GT labels. BCE is mean over known edges in each supervised frame; this reports that normalization, not a learned or deployment posterior calibration.",
+    "new_optimizer_updates": 0,
+    "new_GPU_processes": 0,
+    "threshold_optimized": false,
+    "full_goal_complete": false
+  },
+  "scope": "Posthoc evidence only; no validation-derived threshold or class prior is used by any model.",
+  "full_goal_complete": false
+}
