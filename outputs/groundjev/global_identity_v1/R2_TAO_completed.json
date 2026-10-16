@@ -1,0 +1,110 @@
+{
+  "status": "R2_BOTH_TAO40_OFFICIAL_UNITS_COMPLETE",
+  "completed": {
+    "A1_tao_raw_full40": {
+      "run": "/data2/user/LocateMOT_GlobalIdentity/outputs/groundjev/global_identity_v1/controls/A1_tao_raw_full40",
+      "checkpoint": "/data3/user/LocateMOT-checkpoints/global_identity_v1/A1/checkpoint.pt",
+      "frames": 40,
+      "native_candidates": 35228,
+      "all_original_candidates_frames_and_rejected_frames_exact": true,
+      "unique_current_identity_allocations": true,
+      "official_metrics": {
+        "TETA": 25.293,
+        "LocA": 13.651,
+        "AssocA": 31.933,
+        "ClsA": 30.297,
+        "LocRe": 84.771,
+        "LocPr": 14.09,
+        "AssocRe": 42.257,
+        "AssocPr": 46.961,
+        "ClsRe": 33.333,
+        "ClsPr": 30.297
+      },
+      "base_novel": {
+        "base": {
+          "TETA": 27.567,
+          "LocA": 7.72695,
+          "AssocA": 29.53,
+          "ClsA": 45.445,
+          "LocRe": 86.719,
+          "LocPr": 7.8064,
+          "AssocRe": 41.439,
+          "AssocPr": 42.5995,
+          "ClsRe": 50.0,
+          "ClsPr": 45.445
+        },
+        "novel": {
+          "TETA": 20.745,
+          "LocA": 25.498,
+          "AssocA": 36.738,
+          "ClsA": 0.0,
+          "LocRe": 80.875,
+          "LocPr": 26.657,
+          "AssocRe": 43.894,
+          "AssocPr": 55.684,
+          "ClsRe": 0.0,
+          "ClsPr": 0.0
+        }
+      },
+      "actual_end_to_end_FPS": null,
+      "association_replay_fps": 0.07343816449769343,
+      "peak_decision_gpu_memory_bytes": 0,
+      "peak_RSS_bytes": 3932848128,
+      "physical_parameters": 979883,
+      "frozen_semantic_parameters": 1146511
+    },
+    "A2_tao_raw_full40": {
+      "run": "/data2/user/LocateMOT_GlobalIdentity/outputs/groundjev/global_identity_v1/controls/A2_tao_raw_full40",
+      "checkpoint": "/data3/user/LocateMOT-checkpoints/global_identity_v1/A2/checkpoint.pt",
+      "frames": 40,
+      "native_candidates": 35228,
+      "all_original_candidates_frames_and_rejected_frames_exact": true,
+      "unique_current_identity_allocations": true,
+      "official_metrics": {
+        "TETA": 32.306,
+        "LocA": 26.066,
+        "AssocA": 42.014,
+        "ClsA": 28.838,
+        "LocRe": 80.333,
+        "LocPr": 27.138,
+        "AssocRe": 50.668,
+        "AssocPr": 57.695,
+        "ClsRe": 33.333,
+        "ClsPr": 28.838
+      },
+      "base_novel": {
+        "base": {
+          "TETA": 39.0145,
+          "LocA": 29.17155,
+          "AssocA": 44.614999999999995,
+          "ClsA": 43.257,
+          "LocRe": 80.5625,
+          "LocPr": 30.41325,
+          "AssocRe": 52.569,
+          "AssocPr": 60.238,
+          "ClsRe": 50.0,
+          "ClsPr": 43.257
+        },
+        "novel": {
+          "TETA": 18.889,
+          "LocA": 19.856,
+          "AssocA": 36.811,
+          "ClsA": 0.0,
+          "LocRe": 79.875,
+          "LocPr": 20.588,
+          "AssocRe": 46.867,
+          "AssocPr": 52.608,
+          "ClsRe": 0.0,
+          "ClsPr": 0.0
+        }
+      },
+      "actual_end_to_end_FPS": null,
+      "association_replay_fps": 0.06993266505546003,
+      "peak_decision_gpu_memory_bytes": 0,
+      "peak_RSS_bytes": 4020334592,
+      "physical_parameters": 979883,
+      "frozen_semantic_parameters": 1146511
+    }
+  },
+  "full_goal_complete": false
+}

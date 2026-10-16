@@ -2840,3 +2840,5 @@ Native relation8000 completes24000questions/1040.460s. All59fixedweight tensors 
 
 ## 2026-10-16 Global identity: completed R2 first scopes and A3, launched own-state
 A1/A2 full DT and both RMOT scopes completed with original candidates/scorers. A2 DT HOTA24.752 versus A0 26.316; both RMOT regress, single HOTA0. Retain all negative results. A3 completes3602updates, A2 physical tensors unchanged, all2882 RMOT references reused per epoch; calibration BCE4.375→0.668, no tracking gain claimed. Launch four-policy/five-scope CPU controls and real8/16/32 model-in-loop training from A3. Versioned V2 separates entity ID positives from duplicate competition and first annotation from effective birth. Original native GPU jobs and source code untouched.
+
+TAO40 A1/A2 official completed: TETA25.293/32.306, A2 only+1.488 over prior task-readout30.818, NovelClsA still0; no unified improvement because RMOT declines. A0 all5 identity/write diagnostics complete read-only; protected scientific predictions unchanged.

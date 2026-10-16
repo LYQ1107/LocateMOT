@@ -1,3 +1,17 @@
+## Isolated global identity increment — 2026-10-16
+
+This branch adds CPU research at `/data2/user/LocateMOT_GlobalIdentity`; original
+native training remains in its original worktree, without changed code or workers.
+R1 whole-frame audit complete. A1/A2 completed4056/4064updates; A3 completed3602
+memory-head updates with unchanged A2 physical tensors. Full-video A2 HOTA%:
+DanceTrack24.752, RMOT single0, multi5.685. A0 references26.316/6.025/19.802.
+These regressions are retained. All five A1/A2 scopes, four A3 memory policies and
+real own-state8/16/32-frame V2 training continue under blocking CPU owners. No new
+GPU process or feature bank. Detailed evidence and pending limitations:
+[global identity report](GLOBAL_IDENTITY_DECISION_RESEARCH_REPORT.md).
+The original status below records the source branch state at isolation, not a
+fresh observation of those native jobs. Both research goals remain incomplete.
+
 ## Matched native RMOT physical-supervision foundation training started — 2026-10-16
 
 Both complete three-task24000question courses passed their real native multimodal

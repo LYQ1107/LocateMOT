@@ -1,0 +1,61 @@
+{
+  "project": "LocateMOT / GroundJEV-MOT",
+  "source_root": "/data2/user/LocateMOT_GroundJEV",
+  "isolated_root": "/data2/user/LocateMOT_GlobalIdentity",
+  "branch": "codex/global-identity-decision-v1",
+  "implementation_local_commit": "8b25834aa39e1ef16d1d7a1ea182e492ca3b1af6",
+  "verified_remote_commit": "fa98df1485c200e60e9eefccdc47e351d5eae183",
+  "feature_source": "Existing immutable real GroundAnything candidate archives with OneJev native2560-region features; no new feature bank",
+  "evaluation_scope": "Five originally registered subsets, not full benchmark validation",
+  "candidate_protocol": "Exact original candidate order/boxes/scores/parse rejections/empty frames and source clocks; scorer unchanged",
+  "models": {
+    "A1": {
+      "report": "training_A1.json",
+      "actual_updates": 4056,
+      "checkpoint": "/data3/user/LocateMOT-checkpoints/global_identity_v1/A1/checkpoint.pt",
+      "device": "CPU",
+      "new_GPU_processes": 0,
+      "initialization": "Same source Shared Compact + seed0 new heads",
+      "labels": "V1 confirmed external birth/assignment labels",
+      "optimizer": "AdamW lr1e-4 wd1e-4 clip1, 4epochs",
+      "timing_seconds": 386.36626908602193,
+      "end_to_end_FPS": null
+    },
+    "A2": {
+      "report": "training_A2.json",
+      "actual_updates": 4064,
+      "checkpoint": "/data3/user/LocateMOT-checkpoints/global_identity_v1/A2/checkpoint.pt",
+      "device": "CPU",
+      "new_GPU_processes": 0,
+      "initialization": "Same source Shared Compact + seed0 new heads",
+      "labels": "V1 confirmed external birth/assignment labels",
+      "optimizer": "AdamW lr1e-4 wd1e-4 clip1, 4epochs",
+      "timing_seconds": 409.87025204801466,
+      "end_to_end_FPS": null
+    },
+    "A3": {
+      "report": "training_A3.json",
+      "actual_updates": 3602,
+      "checkpoint": "/data3/user/LocateMOT-checkpoints/global_identity_v1/A3/checkpoint.pt",
+      "device": "CPU",
+      "new_GPU_processes": 0,
+      "initialization": "Final A2, physical tensors frozen, seed0 write-head optimizer",
+      "labels": "V1 confirmed external birth/assignment labels",
+      "optimizer": "AdamW lr1e-3 wd1e-4 clip1, 2epochs; TRAIN-held-out positive-scale calibration",
+      "timing_seconds": null,
+      "end_to_end_FPS": null
+    },
+    "A4_own_state_v2": {
+      "status": "Real 8/16/32 detached own-state training running",
+      "initialization": "Final calibrated A3",
+      "labels": "V2 effective birth and separate duplicate competition",
+      "config": "configs/groundjev/global_identity_own_state_v2.json",
+      "actual_updates": "Pending completion receipt; first100 actual updates observed",
+      "checkpoint_selection": "Fixed final32 phase, shared across all tasks",
+      "temporal_BPTT": false,
+      "new_GPU_processes": 0,
+      "end_to_end_FPS": null
+    }
+  },
+  "full_goal_complete": false
+}

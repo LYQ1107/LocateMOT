@@ -52,7 +52,7 @@ A2 DanceTrack is 1.564 HOTA points below A0, with IDSW165→197, FP579→706,
 FN1962→1948. A1 lowers IDSW/FP but sharply increases FN. Both A1/A2 regress on
 RMOT, including zero single-expression HOTA. These are negative results; Stage A
 helps relative to A1 on DanceTrack but does not establish a cross-task benefit.
-TAO40 and MOT20 full1657 are still owned by the original uninterrupted R2 runner.
+TAO40 completed for both arms; MOT20 full1657 remains with the uninterrupted R2 runner.
 
 ## Actual training and runtime evidence
 
@@ -106,3 +106,9 @@ including Novel ClsA (currently unresolved at0). Add a parameter/input-matched n
 control and targeted Full experiments when original GPU owners finish. There is no
 claim of mature-model parity, common improvement across MOT/RMOT/OVMOT or independent
 JEV superiority. Both milestone and full research goal remain incomplete.
+
+## TAO40 completed (same original annotation-frame protocol)
+
+A1 TETA25.293/LocA13.651/AssocA31.933/ClsA30.297. A2 TETA32.306/LocA26.066/AssocA42.014/ClsA28.838. A2 improves TETA by17.789 points over coupled A0 (14.517), but only1.488 points over the existing task-conditioned canonical readout (30.818). Both contrasts matter because physical and semantic structure differ from coupled A0. A2 Base TETA39.0145/ClsA43.257; Novel TETA18.889/ClsA0. Novel classification remains unsolved. RMOT regression prevents a unified improvement claim.
+
+A0 all-five posthoc identity diagnostics are now complete and saved separately; source predictions remain read-only. For example A0 DT has1190 known wrong protected-long writes/1268 wrong recent writes, but the opportunities and trajectories differ from A1, so report counts and denominators together rather than treating count decreases alone as a causal gain.
