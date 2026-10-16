@@ -1,0 +1,12 @@
+{
+  "status": "PAIRED_MIXED_IMPLEMENTATION_EXACT_EXCEPT_REGISTERED_BIRTH_WEIGHT_AND_OUTPUT_ARM_STATUS",
+  "initial_checkpoint": "/data3/user/LocateMOT-checkpoints/global_identity_v1/A4_own_state_v2/checkpoint.pt",
+  "birth_weights": [
+    6.66878541474805,
+    1.0
+  ],
+  "same_source_observations_optimizer_seed_schedule": true,
+  "trajectories_and_actual_valid_gradient_counts_may_diverge": true,
+  "heldout_metric_threshold_search": false,
+  "full_goal_complete": false
+}

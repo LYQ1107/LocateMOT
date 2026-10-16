@@ -1,0 +1,32 @@
+{
+  "status": "FIXED_SPARSE_TRAIN_GRAPH_DUPLICATE_SUPERVISION_PRIORS_AUDITED",
+  "tasks": {
+    "mot": {
+      "counts": {
+        "frames": 1056,
+        "candidates": 48051,
+        "sparse_directed_edges": 2600231,
+        "known_duplicate_positive_edges": 13036,
+        "known_other_entity_negative_edges": 2111172,
+        "unknown_masked_edges": 476023
+      },
+      "known_duplicate_positive_fraction": 0.006136875484886602
+    },
+    "rmot": {
+      "counts": {
+        "frames": 3628,
+        "candidates": 10868,
+        "sparse_directed_edges": 37852,
+        "known_duplicate_positive_edges": 3038,
+        "known_other_entity_negative_edges": 6744,
+        "unknown_masked_edges": 28070
+      },
+      "known_duplicate_positive_fraction": 0.31057043549376406
+    }
+  },
+  "scope": "Same raw observed proposals and fixed32-neighbor union as training; GT outside model input. Measures binary edge class balance, not learned discrimination or causal proof.",
+  "loss_weights_or_running_experiments_changed": false,
+  "new_GPU_processes": 0,
+  "new_feature_bank_bytes": 0,
+  "full_goal_complete": false
+}

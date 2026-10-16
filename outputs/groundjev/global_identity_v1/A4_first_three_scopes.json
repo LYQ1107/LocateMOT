@@ -1,0 +1,78 @@
+{
+  "status": "A4_FIRST_THREE_WHOLE_SCOPES_OFFICIALLY_COMPLETE",
+  "completed": {
+    "A4_own_state_v2_mot_full1203": {
+      "run": "/data2/user/LocateMOT_GlobalIdentity/outputs/groundjev/global_identity_v1/own_state_controls/A4_own_state_v2_mot_full1203",
+      "checkpoint": "/data3/user/LocateMOT-checkpoints/global_identity_v1/A4_own_state_v2/checkpoint.pt",
+      "frames": 1203,
+      "native_candidates": 13664,
+      "all_original_candidates_frames_and_rejected_frames_exact": true,
+      "unique_current_identity_allocations": true,
+      "official_metrics": {
+        "HOTA": 0.16006787017530075,
+        "DetA": 0.31036868685036156,
+        "AssA": 0.08257168397623905,
+        "IDF1": 0.13891801862932576,
+        "IDSW": 599,
+        "FP": 7307,
+        "FN": 268
+      },
+      "base_novel": null,
+      "actual_end_to_end_FPS": null,
+      "association_replay_fps": 9.875906134238823,
+      "peak_decision_gpu_memory_bytes": 0,
+      "peak_RSS_bytes": 1125138432,
+      "physical_parameters": 979883,
+      "frozen_semantic_parameters": 1146511
+    },
+    "A4_own_state_v2_rmot_single800": {
+      "run": "/data2/user/LocateMOT_GlobalIdentity/outputs/groundjev/global_identity_v1/own_state_controls/A4_own_state_v2_rmot_single800",
+      "checkpoint": "/data3/user/LocateMOT-checkpoints/global_identity_v1/A4_own_state_v2/checkpoint.pt",
+      "frames": 800,
+      "native_candidates": 1412,
+      "all_original_candidates_frames_and_rejected_frames_exact": true,
+      "unique_current_identity_allocations": true,
+      "official_metrics": {
+        "HOTA": 0.06665787452414236,
+        "DetA": 0.032853611474839145,
+        "AssA": 0.13621910141661706,
+        "IDF1": 0.0449438202247191,
+        "IDSW": 1,
+        "FP": 155,
+        "FN": 13
+      },
+      "base_novel": null,
+      "actual_end_to_end_FPS": null,
+      "association_replay_fps": 33.56107409855831,
+      "peak_decision_gpu_memory_bytes": 0,
+      "peak_RSS_bytes": 1028325376,
+      "physical_parameters": 979883,
+      "frozen_semantic_parameters": 1146511
+    },
+    "A4_own_state_v2_rmot_multi800": {
+      "run": "/data2/user/LocateMOT_GlobalIdentity/outputs/groundjev/global_identity_v1/own_state_controls/A4_own_state_v2_rmot_multi800",
+      "checkpoint": "/data3/user/LocateMOT-checkpoints/global_identity_v1/A4_own_state_v2/checkpoint.pt",
+      "frames": 800,
+      "native_candidates": 2208,
+      "all_original_candidates_frames_and_rejected_frames_exact": true,
+      "unique_current_identity_allocations": true,
+      "official_metrics": {
+        "HOTA": 0.155676368623582,
+        "DetA": 0.2690159966744449,
+        "AssA": 0.09177255380995428,
+        "IDF1": 0.146697837521917,
+        "IDSW": 88,
+        "FP": 480,
+        "FN": 1282
+      },
+      "base_novel": null,
+      "actual_end_to_end_FPS": null,
+      "association_replay_fps": 31.41351475011214,
+      "peak_decision_gpu_memory_bytes": 0,
+      "peak_RSS_bytes": 1028796416,
+      "physical_parameters": 979883,
+      "frozen_semantic_parameters": 1146511
+    }
+  },
+  "full_goal_complete": false
+}

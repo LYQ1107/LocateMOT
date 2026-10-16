@@ -143,3 +143,21 @@ The initial2MiB stage reservation understated rendered video and official-scorer
 ## A4 own-state training completed
 
 Final A4 completes247actual updates/3168frames/144153candidate exposures. Actual episode counts8/16/32 are132/66/49. Compressed per-frame proof validates247resets and2921next-frame predicted-ID continuities, with no teacher history replacement; it does not independently verify every numeric feature value. Training includes11427predicted births and6796known wrong protected-long writes; these are training-trajectory observations, not official tracking results. Original five-scope evaluation and independent mixed continuation started automatically from the fixed finalA4. Early mixed RMOT0000 frames are mostly unknown-masked, and an early nonzero update is competition-only; actual RMOT ID-supervision evidence is still required. Do not equate3628processed FIT frames with3628valid identity labels.
+
+## A4 first three complete official scopes: adverse birth/recall tradeoff
+
+|Scope|HOTA %|DetA %|AssA %|IDF1 %|IDSW|FP|FN|
+|---|---:|---:|---:|---:|---:|---:|---:|
+|DT1203|16.007|31.037|8.257|13.892|599|7307|268|
+|RMOT single800|6.666|3.285|13.622|4.494|1|155|13|
+|RMOT multi800|15.568|26.902|9.177|14.670|88|480|1282|
+
+DT badly regresses despite fewer FN; do not hide FP7307 or IDSW599. Single RMOT exceeds A0 HOTA6.025 slightly, multi remains below A0 19.802. A4 combines own-state training, V2 identity labels and cost-sensitive birth loss, so these results do not isolate any single mechanism. TAO/MOT20 remain pending. Exact HOTA/AssA/IDF1/IDSW/FP/FN deltas against A0 are saved in A4_first_three_deltas_vs_A0.json.
+
+The paired A4c mixed continuation is now registered from exactly the same A4 model and same4684-frame/phase mixed source/seed/optimizer/8-16-32schedule as running A4b. Only birth-loss weight changes from fixed TRAIN6.6687854 to standard CE1.0; no runtime threshold, candidate, seed or scorer change. Implementation equality after removing that single factor plus output arm/status differences is checked. Own-state trajectories and effective gradients can diverge, so no FLOP/state equality claim. This is one prespecified causal control for the observed over-birth hypothesis, not a held-out threshold sweep; final five-scope quality remains required.
+
+## Refined A4 failure diagnosis
+
+DT has5979GT-supported extra duplicate proposals in every fixed-candidate arm. Accepted extra identities A2/A3-assigned/A4 are424/754/5184. Explicit learned graph duplicate rejection is0/0/55. A4 known-existing wrongly NEW is only24; much of the failure is several live IDs accepting proposals of the same entity, beyond an isolated NEW decision. Unique allocation of numeric IDs and uniqueness inside predicted graph components do not establish physical-entity exclusivity. Wrong protected-long writes become6580/8550known updates (recent wrong writes6580), against A3-assigned221/514 and1462recent wrong writes. Joint own-state training did not preserve A3's local memory protection, and its sigmoid was explicitly not re-calibrated.
+
+TRAIN graph audit: MOT13036positive duplicate edges/2111172known other-entity negatives, positive micro fraction0.006137,476023unknown masked. RMOT3038positive/6744negative, fraction0.31057,28070unknown masked. These are edge-level micro priors; losses are averaged per frame, so they are not equivalent to the optimizer's effective positive weight or proof of causation. Whole-set retrieval coverage and label audit success are distinct from learned duplicate admission quality. The cost-neutral paired control remains one isolated factor test; it may not resolve the more direct candidate-admission/global-entity exclusivity failure. Further architecture changes require its and mixed-model official evidence, rather than further arbitrary threshold sweeps.

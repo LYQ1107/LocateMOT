@@ -64,7 +64,8 @@
       },
       "training_receipt": "training_A4.json",
       "state_transition_receipt": "A4_own_state_continuity_validation.json",
-      "runtime_receipt": "A4_final_runtime_validation.json"
+      "runtime_receipt": "A4_final_runtime_validation.json",
+      "first_three_official_scopes": "A4_first_three_scopes.json"
     },
     "A4b_mixed_own_state_v2": {
       "status": "Actual mixed training started from unchanged finalA4; first50 optimizer updates observed",
@@ -78,13 +79,25 @@
         16,
         32
       ],
-      "actual_updates": "At least50; final receipt pending",
+      "actual_updates": "At least400, with real RMOT identity-supervised positive-gradient episodes; final receipt pending",
       "scope": "One hypothesis-driven mixed physical identity trial; all5 fixed scopes required",
       "model_inputs": "Actual own predicted physical histories; no GT repair or query input",
       "new_GPU_processes": 0,
       "new_feature_bank_bytes": 0,
       "temporal_BPTT": false,
       "RMOT_identity_learning": "First RMOT unit contains many correctly masked unknown frames; some early RMOT updates have competition loss only. Report actual identity-supervision counts before claiming physical identity learning."
+    },
+    "A4c_mixed_cost_neutral_v2": {
+      "status": "Actual paired standard-CE training started; first5 positive-gradient updates observed",
+      "initialization": "Fixed final A4 checkpoint",
+      "training_config": "configs/groundjev/global_identity_mixed_cost_neutral_v2.json",
+      "only_scientific_factor_changed": "Birth CE cost weight6.66878541474805 versus1.0",
+      "implementation_parity_receipt": "A4b_A4c_paired_training_contract.json",
+      "actual_updates": "At least5; final receipt pending",
+      "new_GPU_processes": 0,
+      "new_feature_bank_bytes": 0,
+      "temporal_BPTT": false,
+      "official_metrics": "Pending samefive fixed scopes and one final model across tasks"
     }
   },
   "full_goal_complete": false,
