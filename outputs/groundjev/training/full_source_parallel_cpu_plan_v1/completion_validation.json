@@ -1,0 +1,190 @@
+{
+  "status": "SERIAL_AND_FOUR_CPU_FULL459027_NATIVE_PLANS_AGREE_AND_FILTERED_EXPOSURE_VALIDATED",
+  "rows": 459027,
+  "dropped_rows": 0,
+  "maximum_tokens": 27481,
+  "planned_multimodal_tokens": 5639441074,
+  "planned_updates": 28690,
+  "global_rows_per_update": 16,
+  "world_size": 4,
+  "all_rows_once_in_same_native_index_shuffle_plan": true,
+  "tail_rank_rows": [
+    1,
+    1,
+    1,
+    0
+  ],
+  "serial_and_parallel_all_plan_summaries_exact": true,
+  "complete_int32_length_array_int64_sum_valid": true,
+  "RMOT_raw_physical_frames": 1814,
+  "RMOT_semantic_input_physical_frames": 1796,
+  "RMOT_missing_semantic_frame_paths": [
+    "/data2/user/LocateMOT/data/kitti_tracking/training/image_02/0002/000076.png",
+    "/data2/user/LocateMOT/data/kitti_tracking/training/image_02/0002/000082.png",
+    "/data2/user/LocateMOT/data/kitti_tracking/training/image_02/0002/000085.png",
+    "/data2/user/LocateMOT/data/kitti_tracking/training/image_02/0002/000086.png",
+    "/data2/user/LocateMOT/data/kitti_tracking/training/image_02/0002/000092.png",
+    "/data2/user/LocateMOT/data/kitti_tracking/training/image_02/0002/000096.png",
+    "/data2/user/LocateMOT/data/kitti_tracking/training/image_02/0002/000101.png",
+    "/data2/user/LocateMOT/data/kitti_tracking/training/image_02/0002/000102.png",
+    "/data2/user/LocateMOT/data/kitti_tracking/training/image_02/0002/000109.png",
+    "/data2/user/LocateMOT/data/kitti_tracking/training/image_02/0002/000111.png",
+    "/data2/user/LocateMOT/data/kitti_tracking/training/image_02/0002/000121.png",
+    "/data2/user/LocateMOT/data/kitti_tracking/training/image_02/0002/000122.png",
+    "/data2/user/LocateMOT/data/kitti_tracking/training/image_02/0002/000125.png",
+    "/data2/user/LocateMOT/data/kitti_tracking/training/image_02/0002/000129.png",
+    "/data2/user/LocateMOT/data/kitti_tracking/training/image_02/0002/000131.png",
+    "/data2/user/LocateMOT/data/kitti_tracking/training/image_02/0002/000136.png",
+    "/data2/user/LocateMOT/data/kitti_tracking/training/image_02/0002/000194.png",
+    "/data2/user/LocateMOT/data/kitti_tracking/training/image_02/0012/000001.png"
+  ],
+  "RMOT_missing_frame_original_family_counts": {
+    "/data2/user/LocateMOT/data/kitti_tracking/training/image_02/0002/000076.png": {
+      "lifecycle": 12
+    },
+    "/data2/user/LocateMOT/data/kitti_tracking/training/image_02/0002/000082.png": {
+      "lifecycle": 11
+    },
+    "/data2/user/LocateMOT/data/kitti_tracking/training/image_02/0002/000085.png": {
+      "lifecycle": 11
+    },
+    "/data2/user/LocateMOT/data/kitti_tracking/training/image_02/0002/000086.png": {
+      "lifecycle": 11
+    },
+    "/data2/user/LocateMOT/data/kitti_tracking/training/image_02/0002/000092.png": {
+      "lifecycle": 11
+    },
+    "/data2/user/LocateMOT/data/kitti_tracking/training/image_02/0002/000096.png": {
+      "lifecycle": 11
+    },
+    "/data2/user/LocateMOT/data/kitti_tracking/training/image_02/0002/000101.png": {
+      "lifecycle": 11
+    },
+    "/data2/user/LocateMOT/data/kitti_tracking/training/image_02/0002/000102.png": {
+      "lifecycle": 11
+    },
+    "/data2/user/LocateMOT/data/kitti_tracking/training/image_02/0002/000109.png": {
+      "lifecycle": 11
+    },
+    "/data2/user/LocateMOT/data/kitti_tracking/training/image_02/0002/000111.png": {
+      "lifecycle": 12
+    },
+    "/data2/user/LocateMOT/data/kitti_tracking/training/image_02/0002/000121.png": {
+      "lifecycle": 13
+    },
+    "/data2/user/LocateMOT/data/kitti_tracking/training/image_02/0002/000122.png": {
+      "lifecycle": 13
+    },
+    "/data2/user/LocateMOT/data/kitti_tracking/training/image_02/0002/000125.png": {
+      "lifecycle": 13
+    },
+    "/data2/user/LocateMOT/data/kitti_tracking/training/image_02/0002/000129.png": {
+      "lifecycle": 12
+    },
+    "/data2/user/LocateMOT/data/kitti_tracking/training/image_02/0002/000131.png": {
+      "lifecycle": 14
+    },
+    "/data2/user/LocateMOT/data/kitti_tracking/training/image_02/0002/000136.png": {
+      "lifecycle": 18
+    },
+    "/data2/user/LocateMOT/data/kitti_tracking/training/image_02/0002/000194.png": {
+      "lifecycle": 13
+    },
+    "/data2/user/LocateMOT/data/kitti_tracking/training/image_02/0012/000001.png": {
+      "lifecycle": 6
+    }
+  },
+  "missing_exposure_reason": "These18 images have only lifecycle questions in both retained native query histories. Registered semantic-only filtering excludes lifecycle proxies; no membership/presence row exists for these images. All raw frames and original rows remain preserved.",
+  "per_new_RMOT_unit_exposure": {
+    "0000_primary": {
+      "raw_physical_frames": 154,
+      "semantic_selected_physical_frames": 154
+    },
+    "0000_counter": {
+      "raw_physical_frames": 154,
+      "semantic_selected_physical_frames": 153
+    },
+    "0002_primary": {
+      "raw_physical_frames": 233,
+      "semantic_selected_physical_frames": 161
+    },
+    "0002_counter": {
+      "raw_physical_frames": 233,
+      "semantic_selected_physical_frames": 170
+    },
+    "0003_primary": {
+      "raw_physical_frames": 144,
+      "semantic_selected_physical_frames": 139
+    },
+    "0003_counter": {
+      "raw_physical_frames": 144,
+      "semantic_selected_physical_frames": 140
+    },
+    "0006_primary": {
+      "raw_physical_frames": 270,
+      "semantic_selected_physical_frames": 263
+    },
+    "0006_counter": {
+      "raw_physical_frames": 270,
+      "semantic_selected_physical_frames": 261
+    },
+    "0008_primary": {
+      "raw_physical_frames": 390,
+      "semantic_selected_physical_frames": 390
+    },
+    "0008_counter": {
+      "raw_physical_frames": 390,
+      "semantic_selected_physical_frames": 388
+    },
+    "0010_primary": {
+      "raw_physical_frames": 294,
+      "semantic_selected_physical_frames": 294
+    },
+    "0010_counter": {
+      "raw_physical_frames": 294,
+      "semantic_selected_physical_frames": 293
+    },
+    "0012_primary": {
+      "raw_physical_frames": 78,
+      "semantic_selected_physical_frames": 65
+    },
+    "0012_counter": {
+      "raw_physical_frames": 78,
+      "semantic_selected_physical_frames": 76
+    },
+    "0014_primary": {
+      "raw_physical_frames": 106,
+      "semantic_selected_physical_frames": 106
+    },
+    "0014_counter": {
+      "raw_physical_frames": 106,
+      "semantic_selected_physical_frames": 106
+    },
+    "0017_primary": {
+      "raw_physical_frames": 145,
+      "semantic_selected_physical_frames": 145
+    },
+    "0017_counter": {
+      "raw_physical_frames": 145,
+      "semantic_selected_physical_frames": 143
+    }
+  },
+  "planned_unique_first_media_source_paths": {
+    "mot": 1056,
+    "rmot": 1796,
+    "ovmot": 17023
+  },
+  "coordinator_terminal": {
+    "status": "ORIGINAL_ALREADY_ADVANCED_NO_HANDOFF",
+    "owner_pid": 3527956,
+    "owner_starttick": "50031763",
+    "existing_GPU_training_or_evaluators_stopped": false,
+    "actual_optimizer_updates": 0,
+    "full_goal_complete": false,
+    "original_status": "FULL_JOINT_FOUR_GPU_TRAINING"
+  },
+  "original_four_GPU_owner_retained": true,
+  "actual_optimizer_updates_not_claimed_by_input_validation": true,
+  "current_training_inputs_metrics_and_seeds_unchanged": true,
+  "full_goal_complete": false
+}

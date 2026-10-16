@@ -1,0 +1,9 @@
+{
+  "status": "ORIGINAL_ALREADY_ADVANCED_NO_HANDOFF",
+  "owner_pid": 3527956,
+  "owner_starttick": "50031763",
+  "existing_GPU_training_or_evaluators_stopped": false,
+  "actual_optimizer_updates": 0,
+  "full_goal_complete": false,
+  "original_status": "FULL_JOINT_FOUR_GPU_TRAINING"
+}

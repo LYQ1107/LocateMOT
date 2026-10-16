@@ -1,0 +1,36 @@
+{
+  "status": "FULL_SOURCE_ALL_NATIVE_MM_ROWS_AND_FOUR_RANK_GLOBAL16_PLAN_VALIDATED",
+  "rows": 459027,
+  "rows_per_task": {
+    "mot": 252258,
+    "rmot": 100813,
+    "ovmot": 105956
+  },
+  "dropped_rows": 0,
+  "maximum_tokens": 27481,
+  "planned_tokens": 5639441074,
+  "planned_updates": 28690,
+  "planned_world_size": 4,
+  "global_rows_per_update": 16,
+  "question_families": {
+    "mot:identity": 48051,
+    "mot:memory_update": 48051,
+    "mot:reliability": 48051,
+    "mot:lifecycle": 93624,
+    "mot:assigned_identity_memory_update": 14478,
+    "mot:empty_presence": 3,
+    "rmot:query_membership": 97112,
+    "rmot:empty_query_presence": 3701,
+    "ovmot:category_group": 52978,
+    "ovmot:category_leaf": 52978
+  },
+  "planned_unique_first_media_source_paths": {
+    "mot": 1056,
+    "rmot": 1796,
+    "ovmot": 17023
+  },
+  "media_path_counts_are_filtered_row_exposure_not_raw_scope_counts": true,
+  "CPU_plan_elapsed_s": 7943.002548585995,
+  "actual_optimizer_updates": 0,
+  "full_goal_complete": false
+}
