@@ -1,0 +1,12 @@
+{
+  "status": "ALL24000_NATIVE_MM_CPU_ROWS_AND6000_PAIRED_SHUFFLE_UPDATES_VALIDATED",
+  "rows": 24000,
+  "dropped_rows": 0,
+  "maximum_tokens": 27319,
+  "planned_tokens": 124044895,
+  "planned_optimizer_steps": 6000,
+  "actual_optimizer_steps": 0,
+  "world": 1,
+  "input_io_protocol": "gzip-jsonl-native-tracking-category-and-group-question-refs-v1",
+  "full_goal_complete": false
+}

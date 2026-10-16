@@ -1,0 +1,745 @@
+{
+  "scope": "First paired legal TRAIN example; metadata/crop recipes only, all images loaded natively at use time; GT targets outside model state.",
+  "examples": {
+    "short": {
+      "native_request_group": {
+        "id": "MOT17-02-FRCNN_teacher0000",
+        "state": {
+          "current_frame": "<image:1>",
+          "timestamp": 8.7,
+          "task": {
+            "task": "mot",
+            "vocabulary": [
+              "person"
+            ],
+            "expression": null
+          },
+          "candidates": [
+            {
+              "index": 0,
+              "box": [
+                407.0,
+                470.0,
+                455.0,
+                571.0
+              ],
+              "label": "person"
+            }
+          ],
+          "historical_tracks": [
+            {
+              "id": 80170,
+              "box": [
+                409.0,
+                471.0,
+                456.0,
+                571.0
+              ],
+              "predicted_box": [
+                409.0,
+                471.0,
+                456.0,
+                571.0
+              ],
+              "age": 1,
+              "lost_age": 0.9666666666666667,
+              "velocity": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "last_reliable_timestamp": 7.733333333333333,
+              "state": "LOST",
+              "confidence": null
+            },
+            {
+              "id": 84041,
+              "box": [
+                422.0,
+                465.0,
+                468.0,
+                575.0
+              ],
+              "predicted_box": [
+                422.0,
+                465.0,
+                468.0,
+                575.0
+              ],
+              "age": 1,
+              "lost_age": 0.9666666666666667,
+              "velocity": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "last_reliable_timestamp": 7.733333333333333,
+              "state": "LOST",
+              "confidence": null
+            },
+            {
+              "id": 26901,
+              "box": [
+                1117.0,
+                450.0,
+                1155.0,
+                549.0
+              ],
+              "predicted_box": [
+                1117.0,
+                450.0,
+                1155.0,
+                549.0
+              ],
+              "age": 1,
+              "lost_age": 0.9666666666666667,
+              "velocity": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "last_reliable_timestamp": 7.733333333333333,
+              "state": "LOST",
+              "confidence": null
+            },
+            {
+              "id": 72520,
+              "box": [
+                1169.0,
+                427.0,
+                1274.0,
+                741.0
+              ],
+              "predicted_box": [
+                1169.0,
+                427.0,
+                1274.0,
+                741.0
+              ],
+              "age": 1,
+              "lost_age": 0.9666666666666667,
+              "velocity": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "last_reliable_timestamp": 7.733333333333333,
+              "state": "LOST",
+              "confidence": null
+            }
+          ],
+          "current_candidate_crop_sheet": "<image:2>",
+          "geometry_columns_track_ids": [
+            80170,
+            84041,
+            26901,
+            72520
+          ],
+          "motion_iou_rows_by_candidate": [
+            [
+              0.9297,
+              0.5069,
+              0.0,
+              0.0
+            ]
+          ],
+          "center_distance_rows_by_candidate": [
+            [
+              0.0007,
+              0.0064,
+              0.3202,
+              0.36
+            ]
+          ],
+          "historical_anchor_and_recent_crops": "<image:3>"
+        },
+        "media": [
+          {
+            "type": "image",
+            "path": "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-02-FRCNN/img1/000261.jpg",
+            "w": 1920,
+            "h": 1080
+          },
+          {
+            "type": "image",
+            "path": "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-02-FRCNN/img1/000261.jpg",
+            "w": 640,
+            "h": 192,
+            "groundjev_native_tracking_candidate_boxes": [
+              [
+                407.0,
+                470.0,
+                455.0,
+                571.0
+              ]
+            ]
+          },
+          {
+            "type": "image",
+            "path": "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-02-FRCNN/img1/000261.jpg",
+            "w": 1152,
+            "h": 144,
+            "groundjev_native_tracking_history_crops": [
+              {
+                "id": 80170,
+                "anchor": {
+                  "path": "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-02-FRCNN/img1/000232.jpg",
+                  "box": [
+                    409.0,
+                    471.0,
+                    456.0,
+                    571.0
+                  ],
+                  "sequence": "MOT17-02-FRCNN",
+                  "frame": 232
+                },
+                "long": {
+                  "path": "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-02-FRCNN/img1/000232.jpg",
+                  "box": [
+                    409.0,
+                    471.0,
+                    456.0,
+                    571.0
+                  ],
+                  "sequence": "MOT17-02-FRCNN",
+                  "frame": 232
+                },
+                "recent": {
+                  "path": "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-02-FRCNN/img1/000232.jpg",
+                  "box": [
+                    409.0,
+                    471.0,
+                    456.0,
+                    571.0
+                  ],
+                  "sequence": "MOT17-02-FRCNN",
+                  "frame": 232
+                }
+              },
+              {
+                "id": 84041,
+                "anchor": {
+                  "path": "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-02-FRCNN/img1/000232.jpg",
+                  "box": [
+                    422.0,
+                    465.0,
+                    468.0,
+                    575.0
+                  ],
+                  "sequence": "MOT17-02-FRCNN",
+                  "frame": 232
+                },
+                "long": {
+                  "path": "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-02-FRCNN/img1/000232.jpg",
+                  "box": [
+                    422.0,
+                    465.0,
+                    468.0,
+                    575.0
+                  ],
+                  "sequence": "MOT17-02-FRCNN",
+                  "frame": 232
+                },
+                "recent": {
+                  "path": "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-02-FRCNN/img1/000232.jpg",
+                  "box": [
+                    422.0,
+                    465.0,
+                    468.0,
+                    575.0
+                  ],
+                  "sequence": "MOT17-02-FRCNN",
+                  "frame": 232
+                }
+              },
+              {
+                "id": 26901,
+                "anchor": {
+                  "path": "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-02-FRCNN/img1/000232.jpg",
+                  "box": [
+                    1117.0,
+                    450.0,
+                    1155.0,
+                    549.0
+                  ],
+                  "sequence": "MOT17-02-FRCNN",
+                  "frame": 232
+                },
+                "long": {
+                  "path": "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-02-FRCNN/img1/000232.jpg",
+                  "box": [
+                    1117.0,
+                    450.0,
+                    1155.0,
+                    549.0
+                  ],
+                  "sequence": "MOT17-02-FRCNN",
+                  "frame": 232
+                },
+                "recent": {
+                  "path": "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-02-FRCNN/img1/000232.jpg",
+                  "box": [
+                    1117.0,
+                    450.0,
+                    1155.0,
+                    549.0
+                  ],
+                  "sequence": "MOT17-02-FRCNN",
+                  "frame": 232
+                }
+              },
+              {
+                "id": 72520,
+                "anchor": {
+                  "path": "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-02-FRCNN/img1/000232.jpg",
+                  "box": [
+                    1169.0,
+                    427.0,
+                    1274.0,
+                    741.0
+                  ],
+                  "sequence": "MOT17-02-FRCNN",
+                  "frame": 232
+                },
+                "long": {
+                  "path": "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-02-FRCNN/img1/000232.jpg",
+                  "box": [
+                    1169.0,
+                    427.0,
+                    1274.0,
+                    741.0
+                  ],
+                  "sequence": "MOT17-02-FRCNN",
+                  "frame": 232
+                },
+                "recent": {
+                  "path": "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-02-FRCNN/img1/000232.jpg",
+                  "box": [
+                    1169.0,
+                    427.0,
+                    1274.0,
+                    741.0
+                  ],
+                  "sequence": "MOT17-02-FRCNN",
+                  "frame": 232
+                }
+              }
+            ]
+          }
+        ],
+        "questions": {
+          "match_0": {
+            "type": "choice",
+            "instructions": "Which identity owns current candidate 0? Compare visual content, history, motion and competing identities. Never use a class label alone as identity.",
+            "criteria": {
+              "80170": "Existing persistent identity 80170, evidence in history and visual crop sheet",
+              "84041": "Existing persistent identity 84041, evidence in history and visual crop sheet",
+              "26901": "Existing persistent identity 26901, evidence in history and visual crop sheet",
+              "72520": "Existing persistent identity 72520, evidence in history and visual crop sheet",
+              "NEW": "A valid newly appearing object that belongs to no existing identity",
+              "IGNORE": "Invalid/duplicate detection, do not create an identity",
+              "NO_MATCH": "This object was previously observed in the video, but no listed identity supports its match; hold the unresolved association. A genuinely new object must use NEW instead."
+            }
+          }
+        }
+      },
+      "supervised_row": {
+        "id": "MOT17-02-FRCNN_teacher0000",
+        "split": "train",
+        "source": "MOT17-02-FRCNN",
+        "task": "identity",
+        "target": {
+          "80170": 1.0
+        },
+        "groundjev_group_question_ref": {
+          "path": "outputs/groundjev/training_data/paired_temporal_teacher24000_v2_indexed/short/groups.jsonl.gz",
+          "group": "MOT17-02-FRCNN_teacher0000",
+          "question": "match_0"
+        },
+        "supervision": {
+          "tracking_task_bucket": "mot",
+          "component": "paired_GT_temporal_identity_teacher",
+          "teacher_current": 261,
+          "teacher_past": 232,
+          "history_gap_seconds": 0.9666666666666667,
+          "GT_teacher_not_actual_actor_rollout": true,
+          "GT_identity_labels_outside_model_inputs": true
+        }
+      }
+    },
+    "long": {
+      "native_request_group": {
+        "id": "MOT17-02-FRCNN_teacher0000",
+        "state": {
+          "current_frame": "<image:1>",
+          "timestamp": 8.7,
+          "task": {
+            "task": "mot",
+            "vocabulary": [
+              "person"
+            ],
+            "expression": null
+          },
+          "candidates": [
+            {
+              "index": 0,
+              "box": [
+                407.0,
+                470.0,
+                455.0,
+                571.0
+              ],
+              "label": "person"
+            }
+          ],
+          "historical_tracks": [
+            {
+              "id": 80170,
+              "box": [
+                455.0,
+                469.0,
+                498.0,
+                569.0
+              ],
+              "predicted_box": [
+                455.0,
+                469.0,
+                498.0,
+                569.0
+              ],
+              "age": 1,
+              "lost_age": 5.466666666666667,
+              "velocity": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "last_reliable_timestamp": 3.2333333333333334,
+              "state": "LOST",
+              "confidence": null
+            },
+            {
+              "id": 84041,
+              "box": [
+                511.0,
+                467.0,
+                546.0,
+                560.0
+              ],
+              "predicted_box": [
+                511.0,
+                467.0,
+                546.0,
+                560.0
+              ],
+              "age": 1,
+              "lost_age": 5.466666666666667,
+              "velocity": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "last_reliable_timestamp": 3.2333333333333334,
+              "state": "LOST",
+              "confidence": null
+            },
+            {
+              "id": 26901,
+              "box": [
+                1258.0,
+                447.0,
+                1294.0,
+                546.0
+              ],
+              "predicted_box": [
+                1258.0,
+                447.0,
+                1294.0,
+                546.0
+              ],
+              "age": 1,
+              "lost_age": 5.466666666666667,
+              "velocity": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "last_reliable_timestamp": 3.2333333333333334,
+              "state": "LOST",
+              "confidence": null
+            },
+            {
+              "id": 72520,
+              "box": [
+                730.0,
+                447.0,
+                813.0,
+                652.0
+              ],
+              "predicted_box": [
+                730.0,
+                447.0,
+                813.0,
+                652.0
+              ],
+              "age": 1,
+              "lost_age": 5.466666666666667,
+              "velocity": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "last_reliable_timestamp": 3.2333333333333334,
+              "state": "LOST",
+              "confidence": null
+            }
+          ],
+          "current_candidate_crop_sheet": "<image:2>",
+          "geometry_columns_track_ids": [
+            80170,
+            84041,
+            26901,
+            72520
+          ],
+          "motion_iou_rows_by_candidate": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "center_distance_rows_by_candidate": [
+            [
+              0.0207,
+              0.0444,
+              0.3837,
+              0.1551
+            ]
+          ],
+          "historical_anchor_and_recent_crops": "<image:3>"
+        },
+        "media": [
+          {
+            "type": "image",
+            "path": "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-02-FRCNN/img1/000261.jpg",
+            "w": 1920,
+            "h": 1080
+          },
+          {
+            "type": "image",
+            "path": "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-02-FRCNN/img1/000261.jpg",
+            "w": 640,
+            "h": 192,
+            "groundjev_native_tracking_candidate_boxes": [
+              [
+                407.0,
+                470.0,
+                455.0,
+                571.0
+              ]
+            ]
+          },
+          {
+            "type": "image",
+            "path": "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-02-FRCNN/img1/000261.jpg",
+            "w": 1152,
+            "h": 144,
+            "groundjev_native_tracking_history_crops": [
+              {
+                "id": 80170,
+                "anchor": {
+                  "path": "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-02-FRCNN/img1/000097.jpg",
+                  "box": [
+                    455.0,
+                    469.0,
+                    498.0,
+                    569.0
+                  ],
+                  "sequence": "MOT17-02-FRCNN",
+                  "frame": 97
+                },
+                "long": {
+                  "path": "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-02-FRCNN/img1/000097.jpg",
+                  "box": [
+                    455.0,
+                    469.0,
+                    498.0,
+                    569.0
+                  ],
+                  "sequence": "MOT17-02-FRCNN",
+                  "frame": 97
+                },
+                "recent": {
+                  "path": "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-02-FRCNN/img1/000097.jpg",
+                  "box": [
+                    455.0,
+                    469.0,
+                    498.0,
+                    569.0
+                  ],
+                  "sequence": "MOT17-02-FRCNN",
+                  "frame": 97
+                }
+              },
+              {
+                "id": 84041,
+                "anchor": {
+                  "path": "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-02-FRCNN/img1/000097.jpg",
+                  "box": [
+                    511.0,
+                    467.0,
+                    546.0,
+                    560.0
+                  ],
+                  "sequence": "MOT17-02-FRCNN",
+                  "frame": 97
+                },
+                "long": {
+                  "path": "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-02-FRCNN/img1/000097.jpg",
+                  "box": [
+                    511.0,
+                    467.0,
+                    546.0,
+                    560.0
+                  ],
+                  "sequence": "MOT17-02-FRCNN",
+                  "frame": 97
+                },
+                "recent": {
+                  "path": "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-02-FRCNN/img1/000097.jpg",
+                  "box": [
+                    511.0,
+                    467.0,
+                    546.0,
+                    560.0
+                  ],
+                  "sequence": "MOT17-02-FRCNN",
+                  "frame": 97
+                }
+              },
+              {
+                "id": 26901,
+                "anchor": {
+                  "path": "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-02-FRCNN/img1/000097.jpg",
+                  "box": [
+                    1258.0,
+                    447.0,
+                    1294.0,
+                    546.0
+                  ],
+                  "sequence": "MOT17-02-FRCNN",
+                  "frame": 97
+                },
+                "long": {
+                  "path": "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-02-FRCNN/img1/000097.jpg",
+                  "box": [
+                    1258.0,
+                    447.0,
+                    1294.0,
+                    546.0
+                  ],
+                  "sequence": "MOT17-02-FRCNN",
+                  "frame": 97
+                },
+                "recent": {
+                  "path": "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-02-FRCNN/img1/000097.jpg",
+                  "box": [
+                    1258.0,
+                    447.0,
+                    1294.0,
+                    546.0
+                  ],
+                  "sequence": "MOT17-02-FRCNN",
+                  "frame": 97
+                }
+              },
+              {
+                "id": 72520,
+                "anchor": {
+                  "path": "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-02-FRCNN/img1/000097.jpg",
+                  "box": [
+                    730.0,
+                    447.0,
+                    813.0,
+                    652.0
+                  ],
+                  "sequence": "MOT17-02-FRCNN",
+                  "frame": 97
+                },
+                "long": {
+                  "path": "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-02-FRCNN/img1/000097.jpg",
+                  "box": [
+                    730.0,
+                    447.0,
+                    813.0,
+                    652.0
+                  ],
+                  "sequence": "MOT17-02-FRCNN",
+                  "frame": 97
+                },
+                "recent": {
+                  "path": "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-02-FRCNN/img1/000097.jpg",
+                  "box": [
+                    730.0,
+                    447.0,
+                    813.0,
+                    652.0
+                  ],
+                  "sequence": "MOT17-02-FRCNN",
+                  "frame": 97
+                }
+              }
+            ]
+          }
+        ],
+        "questions": {
+          "match_0": {
+            "type": "choice",
+            "instructions": "Which identity owns current candidate 0? Compare visual content, history, motion and competing identities. Never use a class label alone as identity.",
+            "criteria": {
+              "80170": "Existing persistent identity 80170, evidence in history and visual crop sheet",
+              "84041": "Existing persistent identity 84041, evidence in history and visual crop sheet",
+              "26901": "Existing persistent identity 26901, evidence in history and visual crop sheet",
+              "72520": "Existing persistent identity 72520, evidence in history and visual crop sheet",
+              "NEW": "A valid newly appearing object that belongs to no existing identity",
+              "IGNORE": "Invalid/duplicate detection, do not create an identity",
+              "NO_MATCH": "This object was previously observed in the video, but no listed identity supports its match; hold the unresolved association. A genuinely new object must use NEW instead."
+            }
+          }
+        }
+      },
+      "supervised_row": {
+        "id": "MOT17-02-FRCNN_teacher0000",
+        "split": "train",
+        "source": "MOT17-02-FRCNN",
+        "task": "identity",
+        "target": {
+          "80170": 1.0
+        },
+        "groundjev_group_question_ref": {
+          "path": "outputs/groundjev/training_data/paired_temporal_teacher24000_v2_indexed/long/groups.jsonl.gz",
+          "group": "MOT17-02-FRCNN_teacher0000",
+          "question": "match_0"
+        },
+        "supervision": {
+          "tracking_task_bucket": "mot",
+          "component": "paired_GT_temporal_identity_teacher",
+          "teacher_current": 261,
+          "teacher_past": 97,
+          "history_gap_seconds": 5.466666666666667,
+          "GT_teacher_not_actual_actor_rollout": true,
+          "GT_identity_labels_outside_model_inputs": true
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "status": "REAL_NATIVE_LEGACY_AND_INDEXED_SOURCE_ROWS_EXACT",
+  "legacy_rows_exact": 8,
+  "indexed_rows_exact": 3,
+  "all_original_IDs_states_media_questions_targets_and_order_exact": true,
+  "new_GPU_or_training_updates": 0,
+  "full_goal_complete": false
+}

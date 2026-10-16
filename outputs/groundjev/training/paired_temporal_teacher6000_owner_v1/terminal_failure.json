@@ -1,0 +1,10 @@
+{
+  "status": "FAILED_FINAL_COMPONENT_METADATA_BUDGET_NOT_A_TRAINING_OR_SCIENTIFIC_METRIC_FAILURE",
+  "actual_generated_metadata_bytes": 22748803,
+  "required_component_limit_bytes": 16777216,
+  "first_actionable_root_cause": "Two complete mixtures duplicated the existing9.96MB compressed source instead of referencing selected immutable rows.",
+  "all_failed_inputs_preserved": true,
+  "new_optimizer_updates": 0,
+  "fix": "Explicit indexed source manifests reuse original rows; newv2 keeps16MiB individual budget. Reserve24MiB separately for preservedfailedinputs; global25GiBunchanged.",
+  "full_goal_complete": false
+}

@@ -18,7 +18,10 @@ def cpu_plan(config_path, report_path):
     from tools.groundjev.run_group_reference_sft import configure_group_reference_sft
     from train import sft
     torch.set_num_threads(4)
-    stateful = configure_group_reference_sft()
+    if str(json.loads(config_path.read_text())['train']).endswith('.sources.json'):
+        from tools.groundjev.run_source_manifest_sft import configure_source_manifest_sft
+        stateful=configure_source_manifest_sft()
+    else:stateful = configure_group_reference_sft()
     sft.plan_epoch = index_shuffle_plan(sft.plan_epoch)
     original, epoch = sft.plan_only, sft.plan_epoch
 

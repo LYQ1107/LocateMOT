@@ -1,0 +1,62 @@
+{
+  "project_root": "/data2/user/LocateMOT",
+  "name": "Paired short versus long legal GT anchor teacher shared OneJev adaptation",
+  "output": "outputs/groundjev/training_data/paired_temporal_teacher24000_v2_indexed",
+  "owner_output": "outputs/groundjev/training/paired_temporal_teacher6000_owner_v2_indexed",
+  "train_index": "outputs/groundjev/compact/broader_native_reference_inputs_v1/index.json",
+  "original_curriculum": "outputs/groundjev/training_data/broader_shared_onejev6000_v2_fla/train.jsonl.gz",
+  "base_training_config": "configs/groundjev/onejev_history_refresh600_refreshed_v1.json",
+  "initial_checkpoint": "outputs/groundjev/training/onejev_broader_shared6000_fla_v2/ckpt-step6000",
+  "initial_training_state": "outputs/groundjev/training/onejev_broader_shared6000_fla_v2/latest_training_state.pt",
+  "initial_expected_step": 6000,
+  "runs_dir": "/data3/user/LocateMOT-checkpoints",
+  "training_dependency": {
+    "directory": "outputs/groundjev/training/broader_shared6000_fla_owner_v2",
+    "script": "tools/groundjev/run_broader_shared_onejev.py",
+    "identity": [
+      3219708,
+      "47863228"
+    ],
+    "required_terminal_status": "SHARED6000_AND_ALL_FIXED_BEFORE_DEFAULT_FINAL_ID_CONTROLS_VALIDATED"
+  },
+  "teacher_rows": 4000,
+  "minimum_long_seconds": 3.0,
+  "maximum_short_seconds": 1.0,
+  "history_tracks": 4,
+  "seed": 0,
+  "retained_native_MOT_families": {
+    "identity_or_empty_presence": 2000,
+    "assigned_identity_memory_update": 1000,
+    "lifecycle": 500,
+    "memory_update": 250,
+    "reliability": 250
+  },
+  "exact_semantic_rows": "Reuse identical original8000RMOT/8000OV rows and order in both arms; RMOT source remains72physicalframes for this controlled experiment. Independent running459027fullsource epoch is broader and untouched.",
+  "checkpoint_selection": "Fixed final6000 for each independent short/long arm; same one across all tasks, no heldout choice or threshold tuning.",
+  "training_backend": "fla052_training_only",
+  "inference_backend": "original_reference_Torch",
+  "physical_gpu": 7,
+  "minimum_launch_free_MiB": 32768,
+  "minimum_checkpoint_free_GiB": 80,
+  "sampling": "Uniform eligible physical GT identity then legal current-frame occurrence with both earlier<=1s and >=3s observations. Same current image/box, aliased history IDs/options/targets; only past temporal evidence/geometry differ. Up to4shared identities across all3frames, random alias/order; guaranteed positive target is not a fixed option index.",
+  "teacher_limit": "GT teacher snapshot references only, not native proposal recall or actor-generated causal histories; selected teacher anchors remain provided over gaps, not proof of runtimeTTL extension or long-videoBPTT.",
+  "new_metadata_budget_bytes": 16777216,
+  "prior_registered_feature_upper_bytes": 26769302494,
+  "combined_registered_feature_upper_bytes": 26811245534,
+  "global_temporary_feature_budget_bytes": 26843545600,
+  "temporary_feature_policy": "No new candidate/image/ROI bank; native image/crop recipes rendered on demand by existing inputIO; model/Adam/scientific identity states separately protected.",
+  "original_459027_four_GPU_epoch_or_other_running_jobs_changed": false,
+  "Ground_One_joint_gradients": false,
+  "long_video_BPTT": false,
+  "actual_new_optimizer_updates_at_registration": 0,
+  "full_goal_complete": false,
+  "failed_preserved_metadata_reservation_bytes": 25165824,
+  "new_total_metadata_reservation_bytes": 41943040,
+  "mixture_input_protocol": "immutable-native-explicit-row-index-sources-v1",
+  "training_names": {
+    "short": "onejev_temporal_teacher_short6000_v2_indexed",
+    "long": "onejev_temporal_teacher_long6000_v2_indexed"
+  },
+  "preserved_failed_attempt": "outputs/groundjev/training/paired_temporal_teacher6000_owner_v1/terminal_failure.json",
+  "indexed_order_amendment": "V2preserves original row IDs and declares common20000rows followed by4000teacher refs; differs from untrainedfailedv1 literal interleaving/renamedIDs. Both paired arms have identical row order/augmentation IDs outside declared temporal history and same seed0; v1nevertrained."
+}

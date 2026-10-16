@@ -1,0 +1,12 @@
+{
+  "project_root": "/data2/user/LocateMOT",
+  "output": "outputs/groundjev/diagnostics/frozen_TAO40_category_evidence_v1",
+  "manifest": "outputs/groundjev/multitask_pilot_data/ovmot_tao_base_novel63_full.json",
+  "run": "outputs/groundjev/compact/physical_factorization_pair8000_v1/canonical_study/controls/tao_raw_full40_broader",
+  "purpose": "Distinguish raw frontend label evidence, original physical proposal selection and learned semantic readout. Same official annotation/fullLVISaliases, external posthoc IoU.5 only, no GT-informed runtime change.",
+  "metadata_suballocation": "At most2MiB within existing temporal projection16MiB metadata reserve; no new features/GPU.",
+  "combined_registered_feature_upper_bytes": 26769302494,
+  "global_temporary_feature_budget_bytes": 26843545600,
+  "labels_or_protocol_changed": false,
+  "full_goal_complete": false
+}

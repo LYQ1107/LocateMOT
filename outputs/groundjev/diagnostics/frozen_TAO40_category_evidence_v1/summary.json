@@ -1,0 +1,95 @@
+{
+  "status": "FROZEN_TAO40_NATIVE_AND_LEARNED_CATEGORY_EVIDENCE_AUDIT_COMPLETE",
+  "frames": 40,
+  "counts": {
+    "native_candidates": 35228,
+    "GT_boxes": 160,
+    "base:GT_boxes": 120,
+    "base:any_native_box_support": 110,
+    "base:any_native_box_and_label_support": 63,
+    "novel:GT_boxes": 40,
+    "novel:any_native_box_support": 37,
+    "novel:any_native_box_and_label_support": 1,
+    "base:one_to_one_GTmatched": 110,
+    "base:one_to_one_native_label_correct": 36,
+    "base:emitted_one_to_one_GTmatched": 20,
+    "base:emitted_native_label_correct": 9,
+    "base:emitted_learned_label_correct": 16,
+    "novel:one_to_one_GTmatched": 37,
+    "novel:one_to_one_native_label_correct": 0,
+    "novel:emitted_one_to_one_GTmatched": 6,
+    "novel:emitted_native_label_correct": 0,
+    "novel:emitted_learned_label_correct": 0
+  },
+  "examples": [
+    {
+      "frame": 1,
+      "candidate": 522,
+      "GT_category": "peeler_(tool_for_fruit_and_vegetables)",
+      "native_label": "garlic",
+      "learned_label": "bottle",
+      "IoU": 0.9502143622978033
+    },
+    {
+      "frame": 378,
+      "candidate": 68,
+      "GT_category": "peeler_(tool_for_fruit_and_vegetables)",
+      "native_label": "banana",
+      "learned_label": "kayak",
+      "IoU": 0.9161740908157331
+    },
+    {
+      "frame": 407,
+      "candidate": 741,
+      "GT_category": "peeler_(tool_for_fruit_and_vegetables)",
+      "native_label": "zucchini",
+      "learned_label": "kayak",
+      "IoU": 0.9169583383321503
+    },
+    {
+      "frame": 436,
+      "candidate": 132,
+      "GT_category": "peeler_(tool_for_fruit_and_vegetables)",
+      "native_label": "boiled egg",
+      "learned_label": "bottle",
+      "IoU": 0.8969188217493411
+    },
+    {
+      "frame": 465,
+      "candidate": 129,
+      "GT_category": "peeler_(tool_for_fruit_and_vegetables)",
+      "native_label": "boiled egg",
+      "learned_label": "kayak",
+      "IoU": 0.9333554169250842
+    },
+    {
+      "frame": 552,
+      "candidate": 494,
+      "GT_category": "peeler_(tool_for_fruit_and_vegetables)",
+      "native_label": "escargot",
+      "learned_label": "kayak",
+      "IoU": 0.9047897485388862
+    }
+  ],
+  "category_alias_protocol": "Exact normalize/annotation+fullLVISsynset alias construction from unchanged official TETA wrapper; no class filtering.",
+  "selected_GT_categories": [
+    {
+      "name": "knife",
+      "frequency": "f"
+    },
+    {
+      "name": "peeler_(tool_for_fruit_and_vegetables)",
+      "frequency": "r"
+    },
+    {
+      "name": "baby",
+      "frequency": "f"
+    }
+  ],
+  "scope": "External posthoc IoU>=.5 diagnostic only; same global class-agnostic one-to-one assignment as previous event diagnostics. Any-box+label support is an oracle coverage bound, not class accuracy, ClsA or tracking metrics.",
+  "GT_used_by_model_or_runtime": false,
+  "predictions_source_labels_and_metrics_changed": false,
+  "new_GPU_or_optimizer_updates": 0,
+  "metadata_suballocation": "Within existing temporal projection16MiB metadata reservation",
+  "full_goal_complete": false
+}

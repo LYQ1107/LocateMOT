@@ -1,3 +1,87 @@
+## Learned appearance helps RMOT under fixed affinity, hurts DT — 2026-10-16
+
+The same temporal projection/fixed fusion recipe completed both full800-frame
+RMOT scopes. Its effect is mixed, not an overall failed representation:
+
+|HOTA %|Original learned|Fixed native cosine|Random projection|Trained projection|
+|---|---:|---:|---:|---:|
+|DT1203|26.3157|13.3108|13.4881|8.4607|
+|RMOT single800|6.0247|5.5377|6.6298|9.2325|
+|RMOT multi800|19.8019|16.6224|14.3821|31.5524|
+
+MultiRMOT IDF1=21.0082→40.0107%, IDSW165→53 (fixednative105/random106).
+The three fixed arms share fusion/auxiliary/semantic functions and differ only
+in appearance representation; comparison to the original learned arm additionally
+changes association and auxiliary policies. These are learned-representation
+controls, not native OneJev decoder gains. No new thresholds or task-specific
+checkpoint selection. DT fixed arms emit essentially every native candidate
+(NEW.3 dominates IGNORE0), FP579→9328/9329/9330; trainedAssA also decreases
+0.06641native→0.02618trained. The DT problem includes both proposal rejection
+and association; restoring rejection alone is not assumed sufficient. No promotion.
+Next controlled hypothesis: use learned appearance only to reorder existing-ID
+probability ranks while retaining the original learned NEW/IGNORE/NO_MATCH
+values and probability multiset, then evaluate all five scopes. This is planned,
+not implemented or a measured gain. TAO/MOT20 projection controls still run.
+Receipt: `native_temporal_appearance1000_owner_v1/first_three_scopes_completed.json`.
+
+## Closed controls and paired long-history foundation inputs ready — 2026-10-16
+
+Native residual study completed all15official arms/scopes; disabledMOT20
+restores originalHOTA7.4316/IDF1=6.1474% exactly, versus enabled19.5518/17.4310%
+with30874IDSW. DT/singleRMOT regressions remain; no common model promotion.
+The paired physical/semantic study also completed all25controls. Canonical
+and coupled MOT20 remain exactly original7.4316HOTA; TAO40canonical31.323
+versus original14.517 remains isolated, with RMOT regressions. All originals,
+final checkpoints, inputs and scorers remain unchanged.
+
+The temporal appearance projection completed three full scopes/all12arms.
+DT1203 HOTA% is26.3157original /13.3108fixednative /13.4881random /8.4607trained;
+trainedIDF1=3.2767%, no promotion. Remaining TAO/MOT20 controls continue.
+
+The category-evidence audit uses the exact official annotation+fullLVISsynset
+aliases. This40frame video has3GT classes:knife/baby(Base),peeler(Novel).
+Of40NovelGTboxes,37have native box support but only1has any correct native
+box+label support. Of6one-to-one GTmatched emitted Novel boxes, neither raw
+frontend labels nor learned head is correct. These are posthoc oracle/support
+counts, not TETA/ClsA. They do not characterize allNovelclasses or justify a
+raw-label restoration policy. No labels or runtime behavior were changed.
+
+Paired native OneJev temporal-teacher curricula are now fully prepared and
+CPU input-validated:24000rows each,8000per task, including4000original native
+MOT rows and4000matched teacher positives. Same current images/boxes/aliases/
+questions/targets and16000semantic rows/order; past teacher evidence changes.
+Both cover43legalTRAINvideos with9789selectedsourceimages across current/
+short/long observations. Short gap min/median/p95/max=0.0333/0.5/0.96/1s;
+long=3/7.95/38.65/104.2s. Actual86native request proofs and172pixel sheets match
+native rendering exactly. Teacher snapshots are not actor rollout, long-BPTT,
+new runtimeTTL/archive or native detector recall; RMOT remains72physicalframes
+in this controlled pair, while the independent459027epoch is broader.
+
+All24000short/24000long native MM rows pass with0dropped,
+6000planned optimizer updates each, maximum27319/27319tokens
+and124050808/124044895plannedinputtokens. These are planned
+inputs, not trained tokens. Both stages have0new optimizer updates and are
+queued behind the verified original GPU7native6000owner; no old job restarted.
+Same native6000FP32initial weights, new optimizer/RNG seed0, all752Mlanguage
+parameters trainable, vision frozen; training-onlyFLA and originalTorch inference.
+Both final6000models will precede unchanged four-scope default comparisons.
+
+Preparationv1 failed its16MiBmetadata gate (22,748,803bytes from copied source
+mixtures). All failed inputs and exact source snapshots are preserved. V2
+reuses original selected row indices under an explicit new source protocol;
+8legacy and3indexed real rows remain exact. V2metadata is2,849,670bytes before
+summary/examples. Original row IDs and common20000+teacher4000 ordering are
+explicitly different from untrainedfailedv1, matched across paired arms. No v1
+training trajectory existed. V2keeps its16MiBcap;24MiBseparately reserves the
+failed input preservation. Conservative combined upper26,811,245,534bytes
+<25GiB(26,843,545,600); no new image/ROI feature bank or GPU allocated.
+
+Evidence: `native_relation_head8000_owner_v1/all_five_controls_completed.json`,
+`physical_factorization_pair8000_v1/all_five_paired_controls_completed.json`,
+`native_temporal_appearance1000_owner_v1/first_three_scopes_completed.json`,
+`diagnostics/frozen_TAO40_category_evidence_v1/summary.json`,
+`training/paired_temporal_teacher6000_owner_v2_indexed/prepared_and_CPU_validated.json`.
+
 ## Canonical physical stream gains on TAO40; RMOT regresses — 2026-10-16
 
 Paired physical-factorization studies completed four unchanged scopes; natural
