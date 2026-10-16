@@ -1,0 +1,24 @@
+{
+  "project_root": "/data2/user/LocateMOT",
+  "output": "outputs/groundjev/training/validated_CPU_handoff_owner_v1",
+  "parallel_plan_output": "outputs/groundjev/training/full_source_parallel_cpu_plan_v1",
+  "parallel_owner_identity": [
+    3522736,
+    "49967650"
+  ],
+  "original_owner_output": "outputs/groundjev/training/full_joint_source_epoch1_owner_v1",
+  "original_owner_identity": [
+    3457625,
+    "49350320"
+  ],
+  "replacement_owner_output": "outputs/groundjev/training/full_joint_source_epoch1_owner_v2_parallel_plan",
+  "training_output": "/data3/user/LocateMOT-checkpoints/onejev_full_joint_source_epoch1_v1",
+  "training_plan": "configs/groundjev/full_joint_source_epoch1_v1.json",
+  "first5_observer_output": "outputs/groundjev/training/full_joint_source_epoch1_first5_observer_v2",
+  "resource_registration": "outputs/groundjev/resource_accounting/validated_CPU_handoff_v1.json",
+  "preconditions": "Full459027 native CPU plan terminal0,192 serial/4CPU exact; independent all-row reuse preflight and all plan summaries exact; original owner frozen/acknowledged stillCPU,exact child command/CUDAempty,training output absent",
+  "action": "Terminate only unfinished original CPU child; allow original owner to record exit-15/assertion and retain all logs/receipts; launch same registered epoch from original native600 FP32 state using completed native lengths",
+  "if_original_has_advanced": "Retain original GPU training without signals or replacement",
+  "Ground_One_joint_gradients": false,
+  "full_goal_complete": false
+}

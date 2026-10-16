@@ -1,0 +1,11 @@
+{
+  "status": "CPU_ONLY_COMPLETED_PLAN_HANDOFF_AND_NEW_FIRST5_OBSERVER_RESERVED",
+  "prior_registered_feature_upper_bytes": 26583180254,
+  "coordinator_small_reports_cap_bytes": 524288,
+  "observer_report_cap_bytes": 524288,
+  "combined_registered_feature_upper_bytes": 26584228830,
+  "global_temporary_feature_budget_bytes": 26843545600,
+  "new_native_candidate_or_ROI_archives": 0,
+  "new_GPU_training_or_inference_jobs_beyond_registered_epoch": 0,
+  "replacement_epoch_logs_use_existing_future_curriculum_reserve": true
+}

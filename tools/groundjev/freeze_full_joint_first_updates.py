@@ -1,5 +1,6 @@
 """One blocking observer freezes actual first shared updates, without job restarts."""
 from collections import Counter
+import argparse
 import json
 import math
 import os
@@ -11,18 +12,28 @@ ROOT=Path(__file__).resolve().parents[2]
 
 
 def main():
-    owner=ROOT/'outputs/groundjev/training/full_joint_source_epoch1_owner_v1'
-    output=ROOT/'outputs/groundjev/training/full_joint_source_epoch1_first5_observer_v1'
+    parser=argparse.ArgumentParser()
+    parser.add_argument('--owner',type=Path,default=ROOT/'outputs/groundjev/training/full_joint_source_epoch1_owner_v1')
+    parser.add_argument('--out',type=Path,default=ROOT/'outputs/groundjev/training/full_joint_source_epoch1_first5_observer_v1')
+    parser.add_argument('--owner-session',type=int,default=None)
+    parser.add_argument('--resource-registration',type=Path,
+        default=ROOT/'outputs/groundjev/resource_accounting/first5_shared_observer_v1.json')
+    args=parser.parse_args()
+    owner=args.owner.resolve()
+    output=args.out.resolve()
     output.mkdir(parents=True,exist_ok=False)
     state=json.loads((owner/'owner_state.json').read_text())
     pid,tick=state['owner_pid'],state['owner_starttick']
     fields=Path(f'/proc/{pid}/stat').read_text().rsplit(')',1)[1].split()
     assert fields[0]!='Z' and fields[19]==tick and Path(f'/proc/{pid}/cwd').resolve()==ROOT
     assert 'tools/groundjev/run_full_joint_source_training.py' in Path(f'/proc/{pid}/cmdline').read_bytes().decode().split('\0')
-    registration=dict(owner=[pid,tick],original_owner_session=94290,target_step=5,target_examples=80,
+    budget=json.loads(args.resource_registration.read_text())
+    registration=dict(owner=[pid,tick],original_owner_session=args.owner_session,target_step=5,target_examples=80,
         output=str(output),observer_pid=os.getpid(),
-        prior_registered_feature_upper_bytes=26577937374,observer_report_cap_bytes=1048576,
-        combined_registered_feature_upper_bytes=26578985950,global_temporary_feature_budget_bytes=26843545600,
+        prior_registered_feature_upper_bytes=budget['prior_registered_feature_upper_bytes'],
+        observer_report_cap_bytes=budget['observer_report_cap_bytes'],
+        combined_registered_feature_upper_bytes=budget['combined_registered_feature_upper_bytes'],
+        global_temporary_feature_budget_bytes=budget['global_temporary_feature_budget_bytes'],
         no_GPU_or_training_updates_by_observer=True,full_goal_complete=False)
     (output/'registration.json').write_text(json.dumps(registration,indent=2)+'\n')
     training=Path('/data3/user/LocateMOT-checkpoints/onejev_full_joint_source_epoch1_v1')
