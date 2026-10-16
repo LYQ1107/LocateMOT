@@ -1,3 +1,35 @@
+## TRAIN candidate-group competition audit completed — 2026-10-16
+
+The new read-only audit checks all43MOT TRAIN units/1056frames/48051candidates
+against actual saved native request groups, original candidate registry and original
+identity-row targets. Every original GT binding and IGNORE/non-IGNORE target matches
+the reproduced whole-frame Hungarian-before-threshold rule. No source row changes.
+
+Of7992IGNORE candidates,5832have GT IoU≥0.5 and2160do not. Among the5832,
+4804(82.37%)have assigned winners only outside the actual explicit candidate group;
+4723of those support exactly one GT. There are1024with an inside-group winner,
+4829with an outside-group winner (categories overlap),4with no assigned winner,
+and261with multiple supported GT. Positive candidates with any supported rival:
+6754;5319have a rival outside their group. Actual3401nonempty request groups have
+at most16candidates, verified against the saved group geometry and local indices.
+
+This quantifies a mismatch between whole-frame one-to-one exclusion labels and
+group-local explicit candidate evidence. Full image pixels remain visible, so it
+does not prove labels are unobservable or explain all failure. GT-supported overlap
+also does not certify every proposal as a valid unique output. No validation data
+or threshold tuning was used. A future admission/duplicate objective should expose
+its competition evidence explicitly; do not silently reinterpret IGNORE as background
+or retarget the current full-source/paired courses. No additional experiment is
+registered from this audit alone. Evidence:
+`diagnostics/candidate_group_competition_v1/summary.json` (63350bytes), generated
+by `tools/groundjev/audit_candidate_group_competition.py`. Scalar metadata draws
+≤128KiB from the existing2MiB reservation; global feature upper remains unchanged.
+
+NO_MATCH factorial first4scopes/all16official units are now frozen. TAO feasibility
+TETA14.517 equals original; both14.493 equals timeout-only; allNovelClsA0. Final
+MOT20 arms remain with originalowner48863. Evidence:
+`compact/no_match_feasibility_factorial_v1/first_four_scopes_completed.json`.
+
 ## Complete appearance controls; NO_MATCH feasibility regresses DT — 2026-10-16
 
 This entry supersedes the pending appearance/timeout completion descriptions below.
