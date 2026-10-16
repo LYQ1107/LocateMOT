@@ -1,0 +1,27 @@
+{
+  "status": "PAIRED2882_RMOT_STATE_MEDIA_SOURCE_QUESTIONS_AND_RENDERED_PREFIXES_VALIDATED",
+  "pairs": 2882,
+  "request_groups": 2074,
+  "counts": {
+    "physical:identity": 1428,
+    "physical_identity_existing": 1428,
+    "semantic_target:yes": 2237,
+    "physical:assigned_identity_memory_update": 1454,
+    "physical_target:no": 981,
+    "physical_target:yes": 473,
+    "semantic_target:no": 645
+  },
+  "native_original_dynamic_serialization_would_differ_pairs": 698,
+  "all_original_physical_questions_and_targets_exact": true,
+  "all_original_membership_questions_and_targets_exact": true,
+  "input_state_JSON_trees_and_media_equal_original_physical_source": true,
+  "all_native_rendered_state_prefixes_equal_in_fixed_format": true,
+  "original_pair_row_order_and_IDs_shared": true,
+  "actor_histories_or_assignments_corrected_using_GT": false,
+  "new_GPU_or_optimizer_updates": 0,
+  "original_pixel_validation_reused": true,
+  "scope": "TRAIN selected known-birth subset from18actual query rollouts. Assigned control uses the physical assigned-state context with the original membership question/target. Original physical and semantic question labels unchanged; fixed pretty state strings are an explicit new paired-component formatting rule. Registered IoU/birth-label contract is not exhaustive physical truth. Not a new training experiment or native decoder evaluation.",
+  "combined_registered_feature_upper_bytes": 26833265630,
+  "global_temporary_feature_budget_bytes": 26843545600,
+  "full_goal_complete": false
+}

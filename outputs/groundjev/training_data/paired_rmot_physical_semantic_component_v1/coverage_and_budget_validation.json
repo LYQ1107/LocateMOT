@@ -1,0 +1,20 @@
+{
+  "status": "EXISTING_FULL_COURSE_AND_NEW_PAIRED_COMPONENT_COVERAGE_RECORDED",
+  "full_course_questions": 459027,
+  "registered_full_course_RMOT_question_families": {
+    "rmot:query_membership": 97112,
+    "rmot:empty_query_presence": 3701
+  },
+  "not_actual_consumed_training_counts": true,
+  "paired_questions_per_arm": 2882,
+  "physical_identity_questions": 1428,
+  "assigned_memory_write_questions": 1454,
+  "semantic_control_membership_questions": 2882,
+  "current_running_courses_modified": false,
+  "new_optimizer_updates": 0,
+  "component_bytes_at_validation": 1665559,
+  "component_cap_bytes": 4194304,
+  "combined_registered_feature_upper_bytes": 26833265630,
+  "global_temporary_feature_budget_bytes": 26843545600,
+  "full_goal_complete": false
+}

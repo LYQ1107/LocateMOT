@@ -1,0 +1,296 @@
+{
+  "status": "NATIVE_HISTORY_REFRESH_BEFORE_OLD_REFRESHED_FIRST3_ALL9_UNITS_FROZEN",
+  "completed": {
+    "before_mot_full1203": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_full1203_controls_v2_wait_fix/native_mot_full1203",
+      "checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_unified600_native_v2/ckpt-step600",
+      "frames": 1203,
+      "native_candidates": 13664,
+      "same_exact_all_candidates": true,
+      "parser_rejected_frame_count": 27,
+      "official_metrics": {
+        "HOTA": 0.08702996032001276,
+        "DetA": 0.3010472804984555,
+        "AssA": 0.025168031826705423,
+        "IDF1": 0.05825958702064897,
+        "IDSW": 3631,
+        "FP": 7516,
+        "FN": 416
+      },
+      "base_novel": null,
+      "GT_and_future_frames_not_read_by_runtime": true,
+      "actual_end_to_end_FPS": null,
+      "raw_and_official_tracker_inputs_exactly_reconstructed_from_every_output": true,
+      "original_completed_scorer_result_retained_not_recomputed": true,
+      "predictions_snapshot": "outputs/groundjev/training/full_history_refresh600_pair_first3_v1/before_mot_full1203/predictions.txt.gz"
+    },
+    "old_mot_full1203": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_runs/full_history_refresh600_controls_v1/old_mot_full1203",
+      "checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_history_refresh600_old_v1/ckpt-step600",
+      "frames": 1203,
+      "native_candidates": 13664,
+      "same_exact_all_candidates": true,
+      "parser_rejected_frame_count": 27,
+      "official_metrics": {
+        "HOTA": 0.131074920100655,
+        "DetA": 0.33411834337018353,
+        "AssA": 0.051429783009717234,
+        "IDF1": 0.13571732652192423,
+        "IDSW": 2351,
+        "FP": 4027,
+        "FN": 1454
+      },
+      "base_novel": null,
+      "GT_and_future_frames_not_read_by_runtime": true,
+      "actual_end_to_end_FPS": null,
+      "raw_and_official_tracker_inputs_exactly_reconstructed_from_every_output": true,
+      "original_completed_scorer_result_retained_not_recomputed": true,
+      "predictions_snapshot": "outputs/groundjev/training/full_history_refresh600_pair_first3_v1/old_mot_full1203/predictions.txt.gz"
+    },
+    "refreshed_mot_full1203": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_runs/full_history_refresh600_controls_v1/refreshed_mot_full1203",
+      "checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_history_refresh600_refreshed_v1/ckpt-step600",
+      "frames": 1203,
+      "native_candidates": 13664,
+      "same_exact_all_candidates": true,
+      "parser_rejected_frame_count": 27,
+      "official_metrics": {
+        "HOTA": 0.16411213233539845,
+        "DetA": 0.4365922721348069,
+        "AssA": 0.06172599095108729,
+        "IDF1": 0.14906952077909555,
+        "IDSW": 2611,
+        "FP": 2495,
+        "FN": 1296
+      },
+      "base_novel": null,
+      "GT_and_future_frames_not_read_by_runtime": true,
+      "actual_end_to_end_FPS": null,
+      "raw_and_official_tracker_inputs_exactly_reconstructed_from_every_output": true,
+      "original_completed_scorer_result_retained_not_recomputed": true,
+      "predictions_snapshot": "outputs/groundjev/training/full_history_refresh600_pair_first3_v1/refreshed_mot_full1203/predictions.txt.gz"
+    },
+    "before_rmot_single800": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_runs/full_rmot_shared600_v1/single800_native600",
+      "checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_unified600_native_v2/ckpt-step600",
+      "frames": 800,
+      "native_candidates": 1412,
+      "same_exact_all_candidates": true,
+      "parser_rejected_frame_count": 36,
+      "official_metrics": {
+        "HOTA": 0.025062491270483527,
+        "DetA": 0.013810018467220683,
+        "AssA": 0.04678362573099415,
+        "IDF1": 0.020618556701030927,
+        "IDSW": 0,
+        "FP": 78,
+        "FN": 17
+      },
+      "base_novel": null,
+      "GT_and_future_frames_not_read_by_runtime": true,
+      "actual_end_to_end_FPS": null,
+      "raw_and_official_tracker_inputs_exactly_reconstructed_from_every_output": true,
+      "original_completed_scorer_result_retained_not_recomputed": true,
+      "predictions_snapshot": "outputs/groundjev/training/full_history_refresh600_pair_first3_v1/before_rmot_single800/predictions.txt.gz"
+    },
+    "old_rmot_single800": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_runs/full_history_refresh600_controls_v1/old_rmot_single800",
+      "checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_history_refresh600_old_v1/ckpt-step600",
+      "frames": 800,
+      "native_candidates": 1412,
+      "same_exact_all_candidates": true,
+      "parser_rejected_frame_count": 36,
+      "official_metrics": {
+        "HOTA": 0.030716831494468893,
+        "DetA": 0.019099156440457205,
+        "AssA": 0.05059271077437668,
+        "IDF1": 0.024844720496894408,
+        "IDSW": 0,
+        "FP": 141,
+        "FN": 16
+      },
+      "base_novel": null,
+      "GT_and_future_frames_not_read_by_runtime": true,
+      "actual_end_to_end_FPS": null,
+      "raw_and_official_tracker_inputs_exactly_reconstructed_from_every_output": true,
+      "original_completed_scorer_result_retained_not_recomputed": true,
+      "predictions_snapshot": "outputs/groundjev/training/full_history_refresh600_pair_first3_v1/old_rmot_single800/predictions.txt.gz"
+    },
+    "refreshed_rmot_single800": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_runs/full_history_refresh600_controls_v1/refreshed_rmot_single800",
+      "checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_history_refresh600_refreshed_v1/ckpt-step600",
+      "frames": 800,
+      "native_candidates": 1412,
+      "same_exact_all_candidates": true,
+      "parser_rejected_frame_count": 36,
+      "official_metrics": {
+        "HOTA": 0.028778823722774044,
+        "DetA": 0.015802502641009908,
+        "AssA": 0.052785472453062476,
+        "IDF1": 0.012269938650306749,
+        "IDSW": 1,
+        "FP": 143,
+        "FN": 16
+      },
+      "base_novel": null,
+      "GT_and_future_frames_not_read_by_runtime": true,
+      "actual_end_to_end_FPS": null,
+      "raw_and_official_tracker_inputs_exactly_reconstructed_from_every_output": true,
+      "original_completed_scorer_result_retained_not_recomputed": true,
+      "predictions_snapshot": "outputs/groundjev/training/full_history_refresh600_pair_first3_v1/refreshed_rmot_single800/predictions.txt.gz"
+    },
+    "before_rmot_multi800": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_runs/full_rmot_shared600_v1/multi800_native600",
+      "checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_unified600_native_v2/ckpt-step600",
+      "frames": 800,
+      "native_candidates": 2208,
+      "same_exact_all_candidates": true,
+      "parser_rejected_frame_count": 19,
+      "official_metrics": {
+        "HOTA": 0.06740006654792335,
+        "DetA": 0.10547747538761035,
+        "AssA": 0.04328675321004638,
+        "IDF1": 0.06693227091633466,
+        "IDSW": 185,
+        "FP": 145,
+        "FN": 1859
+      },
+      "base_novel": null,
+      "GT_and_future_frames_not_read_by_runtime": true,
+      "actual_end_to_end_FPS": null,
+      "raw_and_official_tracker_inputs_exactly_reconstructed_from_every_output": true,
+      "original_completed_scorer_result_retained_not_recomputed": true,
+      "predictions_snapshot": "outputs/groundjev/training/full_history_refresh600_pair_first3_v1/before_rmot_multi800/predictions.txt.gz"
+    },
+    "old_rmot_multi800": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_runs/full_history_refresh600_controls_v1/old_rmot_multi800",
+      "checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_history_refresh600_old_v1/ckpt-step600",
+      "frames": 800,
+      "native_candidates": 2208,
+      "same_exact_all_candidates": true,
+      "parser_rejected_frame_count": 19,
+      "official_metrics": {
+        "HOTA": 0.06682521336646213,
+        "DetA": 0.11551031765273392,
+        "AssA": 0.03893476890942158,
+        "IDF1": 0.0626486915146709,
+        "IDSW": 197,
+        "FP": 131,
+        "FN": 1833
+      },
+      "base_novel": null,
+      "GT_and_future_frames_not_read_by_runtime": true,
+      "actual_end_to_end_FPS": null,
+      "raw_and_official_tracker_inputs_exactly_reconstructed_from_every_output": true,
+      "original_completed_scorer_result_retained_not_recomputed": true,
+      "predictions_snapshot": "outputs/groundjev/training/full_history_refresh600_pair_first3_v1/old_rmot_multi800/predictions.txt.gz"
+    },
+    "refreshed_rmot_multi800": {
+      "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_runs/full_history_refresh600_controls_v1/refreshed_rmot_multi800",
+      "checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_history_refresh600_refreshed_v1/ckpt-step600",
+      "frames": 800,
+      "native_candidates": 2208,
+      "same_exact_all_candidates": true,
+      "parser_rejected_frame_count": 19,
+      "official_metrics": {
+        "HOTA": 0.07506200424969885,
+        "DetA": 0.12801733952730157,
+        "AssA": 0.04437621655383397,
+        "IDF1": 0.07153614457831325,
+        "IDSW": 264,
+        "FP": 213,
+        "FN": 1781
+      },
+      "base_novel": null,
+      "GT_and_future_frames_not_read_by_runtime": true,
+      "actual_end_to_end_FPS": null,
+      "raw_and_official_tracker_inputs_exactly_reconstructed_from_every_output": true,
+      "original_completed_scorer_result_retained_not_recomputed": true,
+      "predictions_snapshot": "outputs/groundjev/training/full_history_refresh600_pair_first3_v1/refreshed_rmot_multi800/predictions.txt.gz"
+    }
+  },
+  "training_receipts": {
+    "old": {
+      "training": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_history_refresh600_old_v1",
+      "done": {
+        "event": "done",
+        "steps": 600,
+        "examples": 2400,
+        "elapsed_s": 15605.720414262963,
+        "examples_per_s": 0.1537897601834839
+      },
+      "initial_FP32": {
+        "status": "NEW_STAGE_REAL_FP32_MASTERS_INITIALIZED",
+        "source": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_unified600_native_v2/latest_training_state.pt",
+        "source_step": 600,
+        "FP32_parameter_entries": 320,
+        "parameters": 752393024,
+        "changed_vs_BF16_inference_export_initialization": 500278218,
+        "initialization_max_difference": 0.0,
+        "new_optimizer_scheduler_and_RNG": "explicit newrecipe reset, not originaltrajectory resume",
+        "old_training_state_or_inference_weights_modified": false
+      },
+      "native_MM_reload_status": "REAL_ONEJEV600_NATIVE_MM_RELOAD_VALIDATED",
+      "full_state_receipt": {
+        "format": "groundjev-full-fp32-adam-rng-v1",
+        "step": 600,
+        "seen": 2400,
+        "epoch": 0,
+        "next_step_in_epoch": 600,
+        "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_history_refresh600_old_v1/latest_training_state.pt",
+        "bytes": 9029140441,
+        "FP32_masters_and_Adam_moments_saved": true,
+        "scheduler_and_all_RNG_saved": true,
+        "single_latest_training_state": true,
+        "feature_cache": false
+      }
+    },
+    "refreshed": {
+      "training": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_history_refresh600_refreshed_v1",
+      "done": {
+        "event": "done",
+        "steps": 600,
+        "examples": 2400,
+        "elapsed_s": 17135.639905360993,
+        "examples_per_s": 0.1400589655977274
+      },
+      "initial_FP32": {
+        "status": "NEW_STAGE_REAL_FP32_MASTERS_INITIALIZED",
+        "source": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_unified600_native_v2/latest_training_state.pt",
+        "source_step": 600,
+        "FP32_parameter_entries": 320,
+        "parameters": 752393024,
+        "changed_vs_BF16_inference_export_initialization": 500278218,
+        "initialization_max_difference": 0.0,
+        "new_optimizer_scheduler_and_RNG": "explicit newrecipe reset, not originaltrajectory resume",
+        "old_training_state_or_inference_weights_modified": false
+      },
+      "native_MM_reload_status": "REAL_ONEJEV600_NATIVE_MM_RELOAD_VALIDATED",
+      "full_state_receipt": {
+        "format": "groundjev-full-fp32-adam-rng-v1",
+        "step": 600,
+        "seen": 2400,
+        "epoch": 0,
+        "next_step_in_epoch": 600,
+        "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_history_refresh600_refreshed_v1/latest_training_state.pt",
+        "bytes": 9029140441,
+        "FP32_masters_and_Adam_moments_saved": true,
+        "scheduler_and_all_RNG_saved": true,
+        "single_latest_training_state": true,
+        "feature_cache": false
+      }
+    }
+  },
+  "remaining_unfrozen_TAO_arms": [
+    "old",
+    "refreshed"
+  ],
+  "protocol": "Registered additional600updates/2400questions each from identical600FP32 masters; same per-step task/family order and400changed history rows, not token/FLOP matched. Each arm has one checkpoint for all tasks.",
+  "integrity": "Fresh native candidate order/geometry/labels/scores/frame/GT isolation/decoded video/final memory checks plus exact raw/official tracker-input reconstruction. Completed owner metrics compared to unchanged official result; no repeated model/scorer calls.",
+  "new_GPU_or_optimizer_updates": 0,
+  "combined_registered_feature_upper_bytes": 26834314206,
+  "global_temporary_feature_budget_bytes": 26843545600,
+  "new_metadata_reservation_bytes": 1048576,
+  "common_model_promoted": false,
+  "full_goal_complete": false
+}

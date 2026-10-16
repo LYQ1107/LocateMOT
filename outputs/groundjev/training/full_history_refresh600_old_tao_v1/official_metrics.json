@@ -1,0 +1,223 @@
+{
+  "status": "OFFICIAL_REGISTERED_MULTITASK_SCOPE_EVALUATION_COMPLETE",
+  "task": "ovmot",
+  "dataset": "tao_amodal",
+  "sequence": "val/HACS/Making_a_sandwich_v_SMk4troNhwE_scene_0_0-2482",
+  "scope": "full_legal_validation_video_annotation_frames",
+  "frames": 40,
+  "all_registered_frames_included": true,
+  "GT_access": "evaluation only",
+  "official_test_labels_read": false,
+  "end_to_end_fps": null,
+  "association_replay_fps": 0.0008199314262270379,
+  "perception_rejected_frames": [],
+  "evaluator": "unmodified official TETA OVMOT recipe; non-exhaustive TAO",
+  "evaluator_commit": "b498aa87b252bfb75d7cc0d8d6435c3e1e74e4de",
+  "metrics": {
+    "TETA": 25.161,
+    "LocA": 23.965,
+    "AssocA": 2.9972,
+    "ClsA": 48.522,
+    "LocRe": 60.75,
+    "LocPr": 28.704,
+    "AssocRe": 3.5531,
+    "AssocPr": 33.47,
+    "ClsRe": 53.899,
+    "ClsPr": 59.318
+  },
+  "base_novel": {
+    "base": {
+      "TETA": 31.9255,
+      "LocA": 19.7985,
+      "AssocA": 3.1949,
+      "ClsA": 72.7835,
+      "LocRe": 62.125,
+      "LocPr": 22.643,
+      "AssocRe": 3.8566000000000003,
+      "AssocPr": 32.063,
+      "ClsRe": 80.8495,
+      "ClsPr": 88.97749999999999
+    },
+    "novel": {
+      "TETA": 11.633,
+      "LocA": 32.297,
+      "AssocA": 2.6019,
+      "ClsA": 0.0,
+      "LocRe": 58.0,
+      "LocPr": 40.824,
+      "AssocRe": 2.9461,
+      "AssocPr": 36.285,
+      "ClsRe": 0.0,
+      "ClsPr": 0.0
+    }
+  },
+  "metric_scale": "official TETA summary percent",
+  "evaluated_categories": [
+    {
+      "name": "knife",
+      "group": "base"
+    },
+    {
+      "name": "peeler_(tool_for_fruit_and_vegetables)",
+      "group": "novel"
+    },
+    {
+      "name": "baby",
+      "group": "base"
+    }
+  ],
+  "GT_boxes": 160,
+  "predictions": 5112,
+  "unmapped_predicted_labels": [
+    {
+      "frame": 1,
+      "label": "cooker"
+    },
+    {
+      "frame": 1,
+      "label": "oven"
+    },
+    {
+      "frame": 1,
+      "label": "jar"
+    },
+    {
+      "frame": 1,
+      "label": "bread"
+    },
+    {
+      "frame": 30,
+      "label": "bread"
+    },
+    {
+      "frame": 30,
+      "label": "jar"
+    },
+    {
+      "frame": 30,
+      "label": "jar"
+    },
+    {
+      "frame": 88,
+      "label": "jar"
+    },
+    {
+      "frame": 88,
+      "label": "jar"
+    },
+    {
+      "frame": 88,
+      "label": "jar"
+    },
+    {
+      "frame": 117,
+      "label": "jar"
+    },
+    {
+      "frame": 117,
+      "label": "bread"
+    },
+    {
+      "frame": 117,
+      "label": "jar"
+    },
+    {
+      "frame": 117,
+      "label": "jar"
+    },
+    {
+      "frame": 117,
+      "label": "jar"
+    },
+    {
+      "frame": 175,
+      "label": "bread"
+    },
+    {
+      "frame": 175,
+      "label": "box"
+    },
+    {
+      "frame": 262,
+      "label": "jar"
+    },
+    {
+      "frame": 291,
+      "label": "jar"
+    },
+    {
+      "frame": 291,
+      "label": "oven"
+    },
+    {
+      "frame": 349,
+      "label": "jar"
+    },
+    {
+      "frame": 581,
+      "label": "box"
+    },
+    {
+      "frame": 639,
+      "label": "bread"
+    },
+    {
+      "frame": 784,
+      "label": "bread"
+    },
+    {
+      "frame": 842,
+      "label": "oven"
+    },
+    {
+      "frame": 871,
+      "label": "jar"
+    },
+    {
+      "frame": 871,
+      "label": "jar"
+    },
+    {
+      "frame": 871,
+      "label": "jar"
+    },
+    {
+      "frame": 929,
+      "label": "jar"
+    },
+    {
+      "frame": 929,
+      "label": "jar"
+    },
+    {
+      "frame": 929,
+      "label": "jar"
+    },
+    {
+      "frame": 929,
+      "label": "jar"
+    },
+    {
+      "frame": 987,
+      "label": "jar"
+    },
+    {
+      "frame": 987,
+      "label": "jar"
+    },
+    {
+      "frame": 1103,
+      "label": "jar"
+    },
+    {
+      "frame": 1132,
+      "label": "bread"
+    }
+  ],
+  "unmapped_policy": "retain boxes with unknown category -1; never discard predictions or GT",
+  "prediction_score": "constant unscored sentinel 1; no detector confidence and no score-based truncation",
+  "GT_policy": "all original modalxywh, no clipping/visibility/category exclusions",
+  "novel_evaluation_GT_used_for_training": false,
+  "official_complete_dataset_result": false,
+  "timestamp_policy": "annotation-step units; physical source FPS unavailable; display at one step per second"
+}

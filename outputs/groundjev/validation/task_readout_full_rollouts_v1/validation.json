@@ -1,0 +1,74 @@
+{
+  "status": "ALL5_COMPLETE_READOUT_ROLLOUTS_PHYSICAL_EVENTS_AND_FINAL_MEMORY_EXACT",
+  "cases": {
+    "mot_full1203": {
+      "frames": 1203,
+      "candidates": 13664,
+      "events": 18308,
+      "changed_category_decisions": 0,
+      "changed_query_membership_probabilities": 0,
+      "changed_emitted_output_frames": 0,
+      "all_candidate_physical_decisions_lifecycle_writes_and_IDs_exact": true,
+      "final_full_physical_memory_including_pixels_features_and_timestamps_exact": true,
+      "only_final_label_and_semantic_counts_excluded_from_memory_equality": true
+    },
+    "rmot_single800": {
+      "frames": 800,
+      "candidates": 1412,
+      "events": 2809,
+      "changed_category_decisions": 0,
+      "changed_query_membership_probabilities": 1412,
+      "changed_emitted_output_frames": 71,
+      "all_candidate_physical_decisions_lifecycle_writes_and_IDs_exact": true,
+      "final_full_physical_memory_including_pixels_features_and_timestamps_exact": true,
+      "only_final_label_and_semantic_counts_excluded_from_memory_equality": true
+    },
+    "rmot_multi800": {
+      "frames": 800,
+      "candidates": 2208,
+      "events": 3404,
+      "changed_category_decisions": 0,
+      "changed_query_membership_probabilities": 2208,
+      "changed_emitted_output_frames": 390,
+      "all_candidate_physical_decisions_lifecycle_writes_and_IDs_exact": true,
+      "final_full_physical_memory_including_pixels_features_and_timestamps_exact": true,
+      "only_final_label_and_semantic_counts_excluded_from_memory_equality": true
+    },
+    "tao_raw_full40": {
+      "frames": 40,
+      "candidates": 35228,
+      "events": 40512,
+      "changed_category_decisions": 35228,
+      "changed_query_membership_probabilities": 0,
+      "changed_emitted_output_frames": 40,
+      "all_candidate_physical_decisions_lifecycle_writes_and_IDs_exact": true,
+      "final_full_physical_memory_including_pixels_features_and_timestamps_exact": true,
+      "only_final_label_and_semantic_counts_excluded_from_memory_equality": true
+    },
+    "mot20_challenge": {
+      "frames": 1657,
+      "candidates": 235232,
+      "events": 266030,
+      "changed_category_decisions": 0,
+      "changed_query_membership_probabilities": 0,
+      "changed_emitted_output_frames": 0,
+      "all_candidate_physical_decisions_lifecycle_writes_and_IDs_exact": true,
+      "final_full_physical_memory_including_pixels_features_and_timestamps_exact": true,
+      "only_final_label_and_semantic_counts_excluded_from_memory_equality": true
+    }
+  },
+  "totals": {
+    "frames": 4500,
+    "candidates": 287744,
+    "events": 331063,
+    "changed_category_decisions": 35228,
+    "changed_query_membership_probabilities": 3620,
+    "changed_emitted_output_frames": 501
+  },
+  "source_completed_receipt": "outputs/groundjev/compact/canonical_task_readout_v1/all_five_scopes_completed.json",
+  "scope": "Complete saved canonical versus task-conditioned readout trajectories on identical original candidates. Every physical decision/event/ID and final physical memory matches; semantic label/count fields intentionally differ and query filtering may change outputs. No new model, GT analysis, decoder or scorer call.",
+  "combined_registered_feature_upper_bytes": 26834314206,
+  "global_temporary_feature_budget_bytes": 26843545600,
+  "new_GPU_or_optimizer_updates": 0,
+  "full_goal_complete": false
+}

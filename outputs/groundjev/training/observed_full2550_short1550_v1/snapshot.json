@@ -1,0 +1,57 @@
+{
+  "status": "PRESERVED_ACTUAL_LOG_OBSERVATIONS_NOT_FULL_STATE_VALIDATION",
+  "records": {
+    "full_source": {
+      "training_log": "/data3/user/LocateMOT-checkpoints/onejev_full_joint_source_epoch1_v1/log.jsonl",
+      "observed_row": {
+        "step": 2550,
+        "epoch": 0,
+        "examples": 40800,
+        "loss": 1.011089385194209,
+        "ce": 0.6856890205233686,
+        "brier": 0.3254003674399384,
+        "slot_acc": 0.7475,
+        "grad_norm": 60.51962379455566,
+        "lr": 1.9818775162898684e-06,
+        "rows_per_step": 16.0,
+        "examples_per_s": 1.1920126084530618,
+        "tokens_per_s": 14798.222647451408,
+        "sec_per_step": 13.422676812759601,
+        "peak_mem_gb": 19.40760326385498,
+        "elapsed_s": 31395.62562793697
+      },
+      "planned_updates": 28690,
+      "epoch_or_branch_complete": false
+    },
+    "paired_short": {
+      "training_log": "/data3/user/LocateMOT-checkpoints/onejev_temporal_teacher_short6000_v2_indexed/log.jsonl",
+      "observed_row": {
+        "step": 1550,
+        "epoch": 0,
+        "examples": 6200,
+        "loss": 1.3625805763405514,
+        "ce": 0.9613233128977572,
+        "brier": 0.4012572676265325,
+        "slot_acc": 0.7,
+        "grad_norm": 189.93282147362828,
+        "lr": 1.738794964740101e-06,
+        "rows_per_step": 4.0,
+        "examples_per_s": 0.6521876278449661,
+        "tokens_per_s": 3334.7396911917667,
+        "sec_per_step": 6.133204355956987,
+        "peak_mem_gb": 19.6378116607666,
+        "elapsed_s": 9330.661218337948
+      },
+      "planned_updates": 6000,
+      "epoch_or_branch_complete": false
+    }
+  },
+  "paired_long_updates_at_observation": 0,
+  "full_state_numeric_gates": {
+    "full_source": 2000,
+    "paired_short": 1000
+  },
+  "scope": "Exact complete log rows previously received from original handles76060/65852, not claimed newest at publication. No new checkpoint scan/restart/training/inference or stable-speed estimate.",
+  "new_GPU_or_optimizer_updates": 0,
+  "full_goal_complete": false
+}

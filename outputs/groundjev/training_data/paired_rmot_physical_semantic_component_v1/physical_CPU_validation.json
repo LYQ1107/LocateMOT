@@ -1,0 +1,15 @@
+{
+  "status": "ALL2882_PAIRED_RMOT_NATIVE_MM_ROWS_VALIDATED_NO_TRAINING",
+  "rows": 2882,
+  "dropped_rows": 0,
+  "max_tokens": 18096,
+  "planned_tokens": 15639410,
+  "question_families": {
+    "identity": 1428,
+    "assigned_identity_memory_update": 1454
+  },
+  "native_multimodal_inputs": true,
+  "state_format": "Fixed source-equivalent pretty JSON in both paired arms; native question option permutation retained.",
+  "actual_optimizer_updates": 0,
+  "full_goal_complete": false
+}

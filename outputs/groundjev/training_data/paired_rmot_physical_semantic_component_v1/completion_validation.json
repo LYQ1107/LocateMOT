@@ -1,0 +1,40 @@
+{
+  "status": "PAIRED2882_RMOT_SUPERVISION_COMPONENT_AND_BOTH_NATIVE_MM_CPU_PLANS_COMPLETE",
+  "input_validation": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/paired_rmot_physical_semantic_component_v1/input_validation.json",
+  "CPU_plans": {
+    "physical": {
+      "status": "ALL2882_PAIRED_RMOT_NATIVE_MM_ROWS_VALIDATED_NO_TRAINING",
+      "rows": 2882,
+      "dropped_rows": 0,
+      "max_tokens": 18096,
+      "planned_tokens": 15639410,
+      "question_families": {
+        "identity": 1428,
+        "assigned_identity_memory_update": 1454
+      },
+      "native_multimodal_inputs": true,
+      "state_format": "Fixed source-equivalent pretty JSON in both paired arms; native question option permutation retained.",
+      "actual_optimizer_updates": 0,
+      "full_goal_complete": false
+    },
+    "semantic": {
+      "status": "ALL2882_PAIRED_RMOT_NATIVE_MM_ROWS_VALIDATED_NO_TRAINING",
+      "rows": 2882,
+      "dropped_rows": 0,
+      "max_tokens": 17227,
+      "planned_tokens": 15226174,
+      "question_families": {
+        "query_membership": 2882
+      },
+      "native_multimodal_inputs": true,
+      "state_format": "Fixed source-equivalent pretty JSON in both paired arms; native question option permutation retained.",
+      "actual_optimizer_updates": 0,
+      "full_goal_complete": false
+    }
+  },
+  "source_labels_or_running_courses_modified": false,
+  "new_GPU_or_optimizer_updates": 0,
+  "new_ROI_or_image_bank_bytes": 0,
+  "combined_registered_feature_upper_bytes": 26833265630,
+  "full_goal_complete": false
+}

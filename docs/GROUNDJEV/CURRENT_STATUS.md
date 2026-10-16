@@ -1,3 +1,95 @@
+## Paired RMOT supervision inputs ready; full readout study closed — 2026-10-16
+
+The complete new actual-history paired component has2882question pairs from the
+already certified18RMOT TRAINrollouts:1428existing-identity and1454assigned-write
+questions(981no/473yes) versus the corresponding original membership questions
+(2237yes/645no). Both arms share original physical states/media and paired row
+order/IDs; semantic source questionIDs are separately recorded. Assigned-state
+controls use the original actual selected-identity context, not GT-repaired tracks.
+
+Native augmentation chooses JSON formatting after option shuffling, so different
+question option counts would produce different state formatting in698pairs despite
+the same seed. This derivative component explicitly fixes both state blocks to
+source-equivalent prettyJSONstrings; decoded original input trees/media/questions/
+targets remain exact and all2882native-rendered state prefixes match. Native
+per-question option permutation remains. This is a declared new component format,
+not an unannounced edit of the original courses. Source pixel validation is reused.
+
+Both complete2882-row native multimodal CPU plans returned0with no dropped row:
+physical maximum18096tokens/planned15639410tokens; semantic17227/15226174.
+No model forward, GPU, optimizer, new ROI/image bank or current course modification.
+The questions differ, so this is not token/FLOP matched. Files total about1.67MB
+under the new4MiB metadata reservation. Evidence:
+`training_data/paired_rmot_physical_semantic_component_v1/{registration,input_validation,
+physical_CPU_validation,semantic_CPU_validation,completion_validation,coverage_and_budget_validation}.json`.
+Rebuild code/config are published; full derivative group/row metadata stay server-side.
+
+The registered459027course has97112RMOTmembership and3701presence questions;
+it has not silently acquired this new2882physical component. This is curriculum
+inventory, not actual consumed counts or a claim that no earlier initialization
+ever received physical RMOT supervision. The prepared component enables a later
+matched learning test; no new training recipe/optimizer is launched by it.
+
+The frozen shared-body task-readout study now completed all5scopes/all15units,
+original owner51823exit0. Final official results:
+
+|Registered scope/metric|Original|Canonical/untrained|Task-conditioned readout|
+|---|---:|---:|---:|
+|DT1203 HOTA %|26.3157|26.3157|26.3157|
+|RMOT single800 HOTA %|6.0247|2.0050|2.4619|
+|RMOT multi800 HOTA %|19.8019|11.7532|11.9169|
+|TAO40 TETA|14.517|26.125|30.818|
+|MOT20full1657 HOTA %|7.4316|7.4316|7.4316|
+
+TAO newreadout LocA33.075/AssocA35.637 equal canonical; ClsA9.6637→23.743,
+still below original30.314. BaseTETA31.9085, NovelTETA28.637but NovelClsA0.
+This one-video40annotation-frame/three-GT-class scope is not full TAO or evidence
+of novel-class recognition. RMOT regressions prevent common policy promotion;
+no metric-component stitching or per-task checkpoint selection. Evidence:
+`compact/canonical_task_readout_v1/all_five_scopes_completed.json`.
+
+A separate complete trajectory check validates all4500frames/287744candidates/
+331063events: every physical candidate decision, lifecycle, memory write and ID
+matches canonical, as does final full physical memory including pixels/features/
+timestamps. Only final label/semantic-count fields are excluded from memory equality.
+All35228TAOcategory decisions and3620RMOTmembership probabilities differ;
+emitted outputs change in501frames. Thus restoring semantic context does not
+repair the canonical physical coverage loss in RMOT. No new forward/scorer/GT calls.
+Evidence: `validation/task_readout_full_rollouts_v1/validation.json`.
+
+The older native750M history-refresh comparison has all9 complete first-three-scope
+units frozen, with exact raw/official prediction reconstruction and native candidate,
+frame, video and causal-input checks. Each old/refreshed arm adds600updates/
+2400questions from the same native600FP32 masters;400history questions differ,
+so the comparison is not token/FLOP matched. It is separate from native6000.
+
+|HOTA %|Before600|Old history +600|Refreshed history +600|
+|---|---:|---:|---:|
+|DT1203|8.7030|13.1075|16.4112|
+|RMOT single800|2.5062|3.0717|2.8779|
+|RMOT multi800|6.7400|6.6825|7.5062|
+
+Refreshed history improves DT/multi relative to old history but reduces single-RMOT
+HOTA and raises DT identity switches2351→2611. No shared-model promotion.
+Evidence: `training/full_history_refresh600_pair_first3_v1/validation.json`.
+
+Original old-history worker14226 has now returned exit0 and completed its TAO40
+unit: TETA27.748before→25.161old, LocA21.573→23.965, AssocA2.8136→2.9972,
+ClsA58.856→48.522; NovelClsA remains0. All40frames/35228candidates and5112
+official predictions validate, including exact raw/official tracker-input transport
+and unmapped-category retention. Original scorer result is preserved without new
+inference or rescoring. Refreshed TAO remains running, so its comparison is pending.
+The first3 and old-TAO snapshots jointly use875796bytes of the existing1MiB
+history-report reservation. Evidence: `training/full_history_refresh600_old_tao_v1/validation.json`.
+
+Original fourGPU/source and paired-short training continue unchanged; exact observed
+log rows2750/44000questions and1950/7800questions are frozen separately. Full-state
+numeric gates remain2000/1000, not these observed rows; longbranch had not started.
+Evidence: `training/observed_full2750_short1950_v1/snapshot.json`.
+With the4MiB paired-component and1MiB native-history report reservations, current
+conservative feature/metadata upper is26,834,314,206bytes<26,843,545,600(25GiB).
+No new GPU/model-state copy/native feature bank. Overall goal remains incomplete.
+
 ## Both input/constraint studies complete; task-conditioned readout running — 2026-10-16
 
 Original owners90021(grouping) and48863(NO_MATCH/lifecycle factorial) have both

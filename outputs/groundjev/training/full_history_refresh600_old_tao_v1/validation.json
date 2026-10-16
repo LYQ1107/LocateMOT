@@ -1,0 +1,126 @@
+{
+  "status": "OLD_HISTORY_NATIVE_TAO40_COMPLETE_EXACT_RAW_AND_OFFICIAL_PREDICTIONS_FROZEN",
+  "completed": {
+    "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_runs/full_history_refresh600_controls_v1/old_tao_raw_full40",
+    "checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_history_refresh600_old_v1/ckpt-step600",
+    "frames": 40,
+    "native_candidates": 35228,
+    "same_exact_all_candidates": true,
+    "parser_rejected_frame_count": 0,
+    "official_metrics": {
+      "TETA": 25.161,
+      "LocA": 23.965,
+      "AssocA": 2.9972,
+      "ClsA": 48.522,
+      "LocRe": 60.75,
+      "LocPr": 28.704,
+      "AssocRe": 3.5531,
+      "AssocPr": 33.47,
+      "ClsRe": 53.899,
+      "ClsPr": 59.318
+    },
+    "base_novel": {
+      "base": {
+        "TETA": 31.9255,
+        "LocA": 19.7985,
+        "AssocA": 3.1949,
+        "ClsA": 72.7835,
+        "LocRe": 62.125,
+        "LocPr": 22.643,
+        "AssocRe": 3.8566000000000003,
+        "AssocPr": 32.063,
+        "ClsRe": 80.8495,
+        "ClsPr": 88.97749999999999
+      },
+      "novel": {
+        "TETA": 11.633,
+        "LocA": 32.297,
+        "AssocA": 2.6019,
+        "ClsA": 0.0,
+        "LocRe": 58.0,
+        "LocPr": 40.824,
+        "AssocRe": 2.9461,
+        "AssocPr": 36.285,
+        "ClsRe": 0.0,
+        "ClsPr": 0.0
+      }
+    },
+    "GT_and_future_frames_not_read_by_runtime": true,
+    "actual_end_to_end_FPS": null
+  },
+  "before": {
+    "run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_runs/full_history_refresh600_controls_v1/before_tao_raw_full40",
+    "checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_unified600_native_v2/ckpt-step600",
+    "frames": 40,
+    "native_candidates": 35228,
+    "same_exact_all_candidates": true,
+    "parser_rejected_frame_count": 0,
+    "official_metrics": {
+      "TETA": 27.748,
+      "LocA": 21.573,
+      "AssocA": 2.8136,
+      "ClsA": 58.856,
+      "LocRe": 57.312,
+      "LocPr": 25.883,
+      "AssocRe": 3.1637,
+      "AssocPr": 32.655,
+      "ClsRe": 60.199,
+      "ClsPr": 65.09
+    },
+    "base_novel": {
+      "base": {
+        "TETA": 37.437,
+        "LocA": 21.08,
+        "AssocA": 2.9466,
+        "ClsA": 88.28450000000001,
+        "LocRe": 64.344,
+        "LocPr": 23.3915,
+        "AssocRe": 3.3388999999999998,
+        "AssocPr": 31.865499999999997,
+        "ClsRe": 90.29849999999999,
+        "ClsPr": 97.63499999999999
+      },
+      "novel": {
+        "TETA": 8.3686,
+        "LocA": 22.558,
+        "AssocA": 2.5476,
+        "ClsA": 0.0,
+        "LocRe": 43.25,
+        "LocPr": 30.867,
+        "AssocRe": 2.8132,
+        "AssocPr": 34.233,
+        "ClsRe": 0.0,
+        "ClsPr": 0.0
+      }
+    },
+    "GT_and_future_frames_not_read_by_runtime": true,
+    "actual_end_to_end_FPS": null
+  },
+  "official_prediction_count": 5112,
+  "raw_and_official_inputs_exactly_reconstructed_from_all_outputs": true,
+  "unmapped_category_minus1_predictions_retained": true,
+  "official_evaluated_categories": [
+    {
+      "name": "knife",
+      "group": "base"
+    },
+    {
+      "name": "peeler_(tool_for_fruit_and_vegetables)",
+      "group": "novel"
+    },
+    {
+      "name": "baby",
+      "group": "base"
+    }
+  ],
+  "original_completed_scorer_result_retained_not_recomputed": true,
+  "annotation_categories_read_posthoc_only_not_new_runtime_inference": true,
+  "refreshed_TAO_complete": false,
+  "common_model_promoted": false,
+  "new_GPU_or_optimizer_updates": 0,
+  "combined_registered_feature_upper_bytes": 26834314206,
+  "global_temporary_feature_budget_bytes": 26843545600,
+  "report_reservation": "Shares the existing aggregate1MiB native history first3/report reservation.",
+  "scope": "One complete40annotation-step video, not full TAO. All1203 declared input classes; NovelClsA remains zero. No end-to-end FPS or full-dataset claim.",
+  "full_goal_complete": false
+}

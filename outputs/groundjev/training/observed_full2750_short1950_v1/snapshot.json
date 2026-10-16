@@ -1,0 +1,57 @@
+{
+  "status": "PRESERVED_ACTUAL_LOG_OBSERVATIONS_NOT_FULL_STATE_VALIDATION",
+  "records": {
+    "full_source": {
+      "training_log": "/data3/user/LocateMOT-checkpoints/onejev_full_joint_source_epoch1_v1/log.jsonl",
+      "observed_row": {
+        "step": 2750,
+        "epoch": 0,
+        "examples": 44000,
+        "loss": 0.9895621845760252,
+        "ce": 0.688661942455874,
+        "brier": 0.30090023921561276,
+        "slot_acc": 0.78,
+        "grad_norm": 49.19481376647949,
+        "lr": 1.9773487558699325e-06,
+        "rows_per_step": 16.0,
+        "examples_per_s": 1.1819665951202707,
+        "tokens_per_s": 14864.225740493794,
+        "sec_per_step": 13.536761585357599,
+        "peak_mem_gb": 19.40760326385498,
+        "elapsed_s": 34025.509372399945
+      },
+      "planned_updates": 28690,
+      "epoch_or_branch_complete": false
+    },
+    "paired_short": {
+      "training_log": "/data3/user/LocateMOT-checkpoints/onejev_temporal_teacher_short6000_v2_indexed/log.jsonl",
+      "observed_row": {
+        "step": 1950,
+        "epoch": 0,
+        "examples": 7800,
+        "loss": 1.206830092344278,
+        "ce": 0.8375703250484798,
+        "brier": 0.36925977273125876,
+        "slot_acc": 0.68,
+        "grad_norm": 224.2923967027664,
+        "lr": 1.5772553890390194e-06,
+        "rows_per_step": 4.0,
+        "examples_per_s": 0.6197974513075944,
+        "tokens_per_s": 3388.4202703495926,
+        "sec_per_step": 6.453721278719604,
+        "peak_mem_gb": 19.6378116607666,
+        "elapsed_s": 11818.924495905056
+      },
+      "planned_updates": 6000,
+      "epoch_or_branch_complete": false
+    }
+  },
+  "paired_long_updates_at_observation": 0,
+  "full_state_numeric_gates": {
+    "full_source": 2000,
+    "paired_short": 1000
+  },
+  "scope": "Exact completed log rows read once for user innovation/training scope answer and confirmed from original live blocking handles76060/65852. Historical observations, not claimed newest at publication. No new checkpoint scan/restart/training/inference or stable-speed estimate.",
+  "new_GPU_or_optimizer_updates": 0,
+  "full_goal_complete": false
+}

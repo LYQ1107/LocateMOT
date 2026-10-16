@@ -1,5 +1,35 @@
 # Current shared foundation adaptation — 2026-10-16
 
+The earlier native history-refresh pair has all9 before/old/refreshed DT/RMOT
+units frozen. Both arms truly completed an additional600updates/2400questions
+from identical native600FP32 masters, with400history rows changed and unequal
+token/FLOP counts. HOTA% before/old/refreshed: DT8.7030/13.1075/16.4112,
+singleRMOT2.5062/3.0717/2.8779, multiRMOT6.7400/6.6825/7.5062.
+Preserve the single-RMOT regression and DT ID-switch increase; this is distinct
+from the later6000study and does not establish three-task improvement.
+Evidence: [native history pair first3](../../outputs/groundjev/training/full_history_refresh600_pair_first3_v1/validation.json).
+
+Old-history native TAO now completed under the original owner/exit0: TETA25.161
+versus native600before27.748, NovelClsA0. Every40frame/35228candidate input and
+5112official predictions validate; exact raw/official prediction snapshots retain
+unknown categories and original scorer outputs. Refreshed TAO still pending.
+Both completed history snapshots share875796bytes under the existing1MiB reserve.
+Evidence: [complete old TAO](../../outputs/groundjev/training/full_history_refresh600_old_tao_v1/validation.json).
+
+Native actual-history RMOT supervision now has a matched-input component, not a
+new training run:2882physical questions (1428identity/1454assigned-write) paired
+with2882originalmembershipquestions on the same actual actor states/media. Both
+full native MM CPU plans validate every row/no drops. Explicit fixed-pretty state
+format removes698same-seed formatting confounds from differing option counts;
+source input trees/media and targets remain intact. Current459027andshort/long
+courses unchanged. Evidence:
+[paired component complete](../../outputs/groundjev/training_data/paired_rmot_physical_semantic_component_v1/completion_validation.json).
+
+Exact observed source2750/44000 and short1950/7800logrows are now frozen;
+numeric checkpoint gates remain2000/1000. These are historical observations,
+not claimed to remain latest at publication or to prove final tracking gains.
+Evidence: [observed progress](../../outputs/groundjev/training/observed_full2750_short1950_v1/snapshot.json).
+
 Paired-short actual1000fullstate has now been numerically inspected:752393024
 FP32parameters/1504786048Adam-moment elements finite, all320stepcounters and
 scheduler/epoch/cursor exact, RNG fields present; source6000FP32init maxdiff0.

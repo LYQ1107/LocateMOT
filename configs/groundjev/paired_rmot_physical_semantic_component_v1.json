@@ -1,0 +1,19 @@
+{
+  "project_root": "/data2/user/LocateMOT_GroundJEV",
+  "name": "Paired source-identical actual-history RMOT physical versus semantic supervision component",
+  "physical_source": "outputs/groundjev/training_data/rmot_known_birth_identity_component_v1",
+  "output": "outputs/groundjev/training_data/paired_rmot_physical_semantic_component_v1",
+  "pairs": 2882,
+  "physical_labels": "1428 existing-identity and1454 assigned-memory-write questions from the already validated known-birth contract; no unknown-birth negative labels invented.",
+  "semantic_control": "Original membership question/target for the same candidate, in the identical original physical state/media; assigned-state contexts are shared by both arms.",
+  "rendering": "Explicit fixed pretty JSON state strings in both arms, preserving JSON trees/media and native per-question option permutations. Prevent different question option counts from changing state serialization under the same seed.",
+  "training": "No optimizer launch or future recipe/checkpoint selection; both complete native multimodal CPU input plans required before any later training registration.",
+  "component_cap_bytes": 4194304,
+  "prior_registered_feature_upper_bytes": 26829071326,
+  "new_metadata_reservation_bytes": 4194304,
+  "combined_registered_feature_upper_bytes": 26833265630,
+  "global_temporary_feature_budget_bytes": 26843545600,
+  "new_persistent_ROI_or_image_bank_bytes": 0,
+  "current_four_GPU_or_paired_training_courses_changed": false,
+  "full_goal_complete": false
+}
