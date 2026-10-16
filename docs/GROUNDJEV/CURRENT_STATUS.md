@@ -1,6 +1,45 @@
 # GroundJEV-MOT current evidence — 2026-10-16
 
-## Native original full9 completed; GPU7 reused for broader TRAIN sources
+## Actual four-GPU shared training; final quality still pending
+
+Full-source shared OneJev training has completed its first five real updates,
+consuming80questions across all three tasks:49MOT/12RMOT/19OVMOT. The
+one-shot observer exited0 after verifying finite loss/gradients, exact native600
+FP32 initialization and live ranks on physicalGPUs4–7. The459,027-question
+epoch plans28,690updates; it is running, not complete. See
+[the immutable execution snapshot](../../outputs/groundjev/training/full_joint_source_epoch1_first5_observer_v1/snapshot.json)
+and [the current training log](TRAINING_LOG.md).
+
+Both full native CPU plans have completed: zero dropped questions, identical
+serial/four-process summaries,5,639,441,074planned multimodal input tokens.
+Filtered source images are1,056MOT/1,796RMOT/17,023OVMOT; these describe the
+whole input corpus, not the first80questions' actual image exposure. RMOT's
+raw1,814-image source includes18images whose original questions are only
+lifecycle, outside the registered semantic-only selection. The source
+frames/rows remain intact. Full proof and coverage explanation are in
+[completion_validation.json](../../outputs/groundjev/training/full_source_parallel_cpu_plan_v1/completion_validation.json).
+
+The independent balanced24k/6000-step study has reached at least5300updates;
+its complete5000-step FP32/Adam/RNG save was observed. Original Full old/
+refreshed controls and Ground adapted200 retention continue under their
+existing owners. The proposed CPU-only handoff did not signal or replace any
+job: original four-GPU training had already started. There is no Ground+One
+joint gradient or long-video BPTT. Neither a completed large epoch nor
+ordinary-model parity on MOT/RMOT/OVMOT is established.
+
+Completed old-history Full600 controls include DT1203 HOTA8.703→13.107%,
+RMOTsingle800 2.506→3.072%, and RMOTmulti800 6.740→6.683%; TAO and refreshed
+arm measurements are still pending. Compact hybrid32 improves the fixed
+MOT20 CPU control HOTA7.432→8.275% while ID switches increase2060→2348.
+These partial/mixed findings do not promote a new universal model. The2882
+known-birth RMOT identity/write rows are prepared but were not inserted into
+either frozen running curriculum. Next decisions depend on actual completed
+tracking comparisons, not training loss or input-plan size.
+
+## Earlier source-collection snapshot — superseded
+
+The source collection described below has since completed; its former active
+state is retained as history. Current execution evidence is above.
 
 All nine original GroundAnything tasks now have their full unchanged native
 summaries: 91,124 original/effective rows, zero provider-policy filtering and

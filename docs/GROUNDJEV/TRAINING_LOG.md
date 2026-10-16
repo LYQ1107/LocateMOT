@@ -1,4 +1,50 @@
-# Current training scope — 2026-10-15
+# Current shared foundation adaptation — 2026-10-16
+
+The full-source four-GPU MOT/RMOT/OVMOT SFT has **actually started**. The
+completed one-shot observer verified updates1–5, examples16/32/48/64/80,
+finite losses and positive finite gradients. Its first80 questions comprise
+49MOT/12RMOT/19OVMOT. The exact four live rank processes map to physical
+GPUs4/5/6/7. Evidence:
+[actual first-five snapshot](../../outputs/groundjev/training/full_joint_source_epoch1_first5_observer_v1/snapshot.json).
+
+The registered epoch contains459,027 questions:252,258MOT/100,813RMOT/
+105,956OVMOT, with global16questions per update and28,690planned updates.
+Both serial and four-process CPU native plans completed with zero dropped
+rows and identical summaries, maximum27,481tokens and5,639,441,074 **planned
+multimodal input tokens**, not already-trained tokens or supervised target
+positions. Filtered first-media coverage is1,056MOT/1,796RMOT/17,023OVMOT
+image paths. Raw RMOT source coverage is1,814images:18have only lifecycle
+questions, excluded by the registered semantic-only source selection.
+Every original frame and question remains preserved. See
+[complete input validation](../../outputs/groundjev/training/full_source_parallel_cpu_plan_v1/completion_validation.json).
+
+This is full language-model SFT of752,393,024parameters with frozen vision,
+seed0, deterministic execution, training-only FLA0.5.2 and original Torch
+inference. It starts from native600's exact FP32 masters, with an explicitly
+new optimizer/scheduler/RNG. It is independent of the running6000-step study,
+whose same initial masters are preserved; it does not continue that study's
+trajectory. The natural source mixture also differs from its balanced24k
+curriculum. The original owner reached GPU training before the completed CPU
+handoff became eligible, so the coordinator exited0 **without any handoff or
+process signal**. Original training continues under its original protocol.
+
+The balanced24k/6000-step study has separately reached at least5300updates.
+Its5000-step numbered BF16 checkpoint and full9,029,140,633-byte latest
+FP32/Adam/RNG save were observed; this latest full state will be replaced by
+subsequent saves. The4500-step full-state finite/cursor and actual exposure
+validation remains available in
+[the4500 snapshot](../../outputs/groundjev/training/shared6000_actual4500_snapshot_v1/validation.json).
+
+Neither the full-source epoch nor its final tracking controls is complete.
+Five updates establish real execution, not tracking gains. Both studies
+retain their registered final shared checkpoint and unchanged task metrics,
+thresholds, candidates, empty/rejected frames and before/after controls.
+GroundAnything and OneJev are still optimized separately; there is no joint
+gradient through both foundations and no long-video BPTT. This is adaptation
+of pretrained foundations, not foundation pretraining from scratch. Ordinary
+model performance across all three tasks remains unachieved.
+
+## Historical training snapshot — 2026-10-15 (superseded)
 
 Cross-task shared-model fine-tuning has run; large-scale, long-duration,
 end-to-end joint optimization of GroundAnything and OneJev has not. Ground

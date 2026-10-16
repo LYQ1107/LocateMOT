@@ -1,0 +1,191 @@
+{
+  "status": "ACTUAL_FIRST5_FOUR_GPU_SHARED_UPDATES_AND_ALL_TASK_EXPOSURE_VERIFIED",
+  "CPU_plan": {
+    "status": "FULL_SOURCE_ALL_NATIVE_MM_ROWS_AND_FOUR_RANK_GLOBAL16_PLAN_VALIDATED",
+    "rows": 459027,
+    "rows_per_task": {
+      "mot": 252258,
+      "rmot": 100813,
+      "ovmot": 105956
+    },
+    "dropped_rows": 0,
+    "maximum_tokens": 27481,
+    "planned_tokens": 5639441074,
+    "planned_updates": 28690,
+    "planned_world_size": 4,
+    "global_rows_per_update": 16,
+    "question_families": {
+      "mot:identity": 48051,
+      "mot:memory_update": 48051,
+      "mot:reliability": 48051,
+      "mot:lifecycle": 93624,
+      "mot:assigned_identity_memory_update": 14478,
+      "mot:empty_presence": 3,
+      "rmot:query_membership": 97112,
+      "rmot:empty_query_presence": 3701,
+      "ovmot:category_group": 52978,
+      "ovmot:category_leaf": 52978
+    },
+    "planned_unique_first_media_source_paths": {
+      "mot": 1056,
+      "rmot": 1796,
+      "ovmot": 17023
+    },
+    "media_path_counts_are_filtered_row_exposure_not_raw_scope_counts": true,
+    "CPU_plan_elapsed_s": 7943.002548585995,
+    "actual_optimizer_updates": 0,
+    "full_goal_complete": false
+  },
+  "actual_step_in_snapshot": 5,
+  "actual_rows_seen": 80,
+  "actual_first5_logs": [
+    {
+      "step": 1,
+      "epoch": 0,
+      "examples": 16,
+      "loss": 2.3294445431864688,
+      "ce": 1.7036719109601108,
+      "brier": 0.6257726176407159,
+      "slot_acc": 0.625,
+      "grad_norm": 50.180809020996094,
+      "lr": 2.3228803716608595e-09,
+      "rows_per_step": 16.0,
+      "examples_per_s": 1.218507900165802,
+      "tokens_per_s": 13127.061765229944,
+      "sec_per_step": 13.130813512019813,
+      "peak_mem_gb": 11.655295848846436,
+      "elapsed_s": 13.13100861897692
+    },
+    {
+      "step": 2,
+      "epoch": 0,
+      "examples": 32,
+      "loss": 2.1141341694351468,
+      "ce": 1.5146339510833968,
+      "brier": 0.5995001958010603,
+      "slot_acc": 0.625,
+      "grad_norm": 47.49011993408203,
+      "lr": 4.645760743321719e-09,
+      "rows_per_step": 16.0,
+      "examples_per_s": 1.6476740416032947,
+      "tokens_per_s": 15014.841622620423,
+      "sec_per_step": 9.710658538038842,
+      "peak_mem_gb": 16.71464443206787,
+      "elapsed_s": 22.842090069956612
+    },
+    {
+      "step": 3,
+      "epoch": 0,
+      "examples": 48,
+      "loss": 3.13987276570964,
+      "ce": 2.147915991785055,
+      "brier": 0.991956729219658,
+      "slot_acc": 0.3125,
+      "grad_norm": 117.70099639892578,
+      "lr": 6.9686411149825785e-09,
+      "rows_per_step": 16.0,
+      "examples_per_s": 0.8292808726709864,
+      "tokens_per_s": 14086.735033789335,
+      "sec_per_step": 19.29382496001199,
+      "peak_mem_gb": 17.733100414276123,
+      "elapsed_s": 42.13667465199251
+    },
+    {
+      "step": 4,
+      "epoch": 0,
+      "examples": 64,
+      "loss": 2.8648154415850513,
+      "ce": 1.9644504096104356,
+      "brier": 0.9003649872017677,
+      "slot_acc": 0.375,
+      "grad_norm": 55.31375503540039,
+      "lr": 9.291521486643438e-09,
+      "rows_per_step": 16.0,
+      "examples_per_s": 0.9868250582664255,
+      "tokens_per_s": 14107.466003278394,
+      "sec_per_step": 16.21361341199372,
+      "peak_mem_gb": 17.733100414276123,
+      "elapsed_s": 58.3507926389575
+    },
+    {
+      "step": 5,
+      "epoch": 0,
+      "examples": 80,
+      "loss": 2.2289014588610314,
+      "ce": 1.5988140960291162,
+      "brier": 0.6300873199291857,
+      "slot_acc": 0.625,
+      "grad_norm": 90.01933288574219,
+      "lr": 1.1614401858304297e-08,
+      "rows_per_step": 16.0,
+      "examples_per_s": 1.0872563077007185,
+      "tokens_per_s": 14786.753738249,
+      "sec_per_step": 14.715941297996324,
+      "peak_mem_gb": 17.733100414276123,
+      "elapsed_s": 73.06720057397615
+    }
+  ],
+  "rows_per_task_derived_from_validated_actual_sampler": {
+    "mot": 49,
+    "rmot": 12,
+    "ovmot": 19
+  },
+  "first80_source_row_counts": {
+    "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/MOT20-05/train_refs.jsonl.gz": 24,
+    "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/MOT20-03/train_refs.jsonl.gz": 15,
+    "outputs/groundjev/training_data/rmot_query_diversity_component_v3_official_box_projection/train.jsonl.gz": 10,
+    "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0074/train_refs.jsonl.gz": 1,
+    "outputs/groundjev/training_data/base175_streamed_component_v1/train.jsonl.gz": 19,
+    "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/MOT17-02-FRCNN/train_refs.jsonl.gz": 1,
+    "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0020/train_refs.jsonl.gz": 1,
+    "outputs/groundjev/training_data/rmot_allfit1814_query18_full_v3_groups_v2_shared_gpu7/clips/0010_primary/train_refs.jsonl.gz": 1,
+    "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0012/train_refs.jsonl.gz": 1,
+    "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0001/train_refs.jsonl.gz": 1,
+    "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0068/train_refs.jsonl.gz": 1,
+    "outputs/groundjev/training_data/rmot_allfit1814_query18_full_v3_groups_v2_shared_gpu7/clips/0010_counter/train_refs.jsonl.gz": 1,
+    "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/dancetrack0044/train_refs.jsonl.gz": 2,
+    "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/MOT17-04-FRCNN/train_refs.jsonl.gz": 1,
+    "outputs/groundjev/training_data/broader_native_MOT1056_full_v3_groups_v1/clips/MOT17-05-FRCNN/train_refs.jsonl.gz": 1
+  },
+  "live_exact_owned_rank_workers": [
+    {
+      "pid": 3539043,
+      "starttick": "50149458",
+      "rank": 0,
+      "physical_gpu": 4
+    },
+    {
+      "pid": 3539044,
+      "starttick": "50149458",
+      "rank": 1,
+      "physical_gpu": 5
+    },
+    {
+      "pid": 3539045,
+      "starttick": "50149458",
+      "rank": 2,
+      "physical_gpu": 6
+    },
+    {
+      "pid": 3539046,
+      "starttick": "50149458",
+      "rank": 3,
+      "physical_gpu": 7
+    }
+  ],
+  "initialization": {
+    "status": "NEW_STAGE_REAL_FP32_MASTERS_INITIALIZED",
+    "source": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_unified600_native_v2/latest_training_state.pt",
+    "source_step": 600,
+    "FP32_parameter_entries": 320,
+    "parameters": 752393024,
+    "changed_vs_BF16_inference_export_initialization": 500278218,
+    "initialization_max_difference": 0.0,
+    "new_optimizer_scheduler_and_RNG": "explicit newrecipe reset, not originaltrajectory resume",
+    "old_training_state_or_inference_weights_modified": false
+  },
+  "training_backend": "deterministic_seeded_fla052_training_only",
+  "inference_backend": "original_reference_Torch",
+  "complete_epoch_or_final_tracking_metrics": false,
+  "full_goal_complete": false
+}

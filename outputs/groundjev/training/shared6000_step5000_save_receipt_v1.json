@@ -1,0 +1,14 @@
+{
+  "format": "groundjev-full-fp32-adam-rng-v1",
+  "step": 5000,
+  "seen": 20000,
+  "epoch": 0,
+  "next_step_in_epoch": 5000,
+  "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_broader_shared6000_fla_v2/latest_training_state.pt",
+  "bytes": 9029140633,
+  "FP32_masters_and_Adam_moments_saved": true,
+  "scheduler_and_all_RNG_saved": true,
+  "single_latest_training_state": true,
+  "feature_cache": false,
+  "observation": "Existing exact save receipt and file size verified; prior4500 full finite-state check is separate. Latest full state will be atomically replaced at future saves."
+}
