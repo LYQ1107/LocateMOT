@@ -1,3 +1,39 @@
+## Four-GPU joint training: actual1000 full state verified — 2026-10-16
+
+The original four-GPU owner saved an actual1000-step/16000-question full
+training state. CPU inspection verified all320FP32 parameter tensors
+(752,393,024elements), both full Adam moments (1,504,786,048elements), exact
+optimizer/scheduler/cursor1000 and all four ranks' Torch/CUDA/Python/NumPy RNG.
+Actual consumed task questions are8817MOT/3537RMOT/3646OVMOT. The retained
+numbered BF16 export is `ckpt-step1000`; the latest full state is atomically
+replaced at later saves. This observer performed no restart or native inference.
+The original progress follower subsequently reported1125steps/18000questions,
+14248.87s elapsed. The459027-question epoch and its final tracking controls
+remain unfinished. Shared OneJev language parameters are trained; visual encoder
+is frozen, GroundAnything has no joint gradient and long-video BPTT is absent.
+Evidence: `outputs/groundjev/training/full_joint_source_actual1000_observer_v1/validation.json`.
+
+## Native-relation adapter8000 training complete; first controlled results — 2026-10-16
+
+The frozen-core adapter completed8000updates/24000questions in1040.460s
+(17.34min). All59fixed original weight tensors remain exact; full model/Adam
+are finite, final export equals saved training state and all three reloads
+agree exactly. The same-final-semantic-weights residual-disabled checkpoint
+is an inference ablation, not a separately trained model.
+
+|Scope/metric|Original|Native residual|Residual disabled|
+|---|---:|---:|---:|
+|DT1203 HOTA %|26.3157|15.3059|26.3157|
+|RMOT single800 HOTA %|6.0247|0.0000|1.6577|
+|RMOT multi800 HOTA %|19.8019|24.1906|19.1828|
+
+Multi-RMOT IDF1 improves21.0082→29.2044%, IDSW165→97. DT regression and zero
+single-query HOTA prevent promotion; TAO and natural MOT20 controls continue.
+This establishes a component gain on one registered multi-query scope, not
+ordinary-model performance or native OneJev decoder gains. Evidence:
+`outputs/groundjev/compact/native_relation_head8000_owner_v1/`
+`{training_validation,frozen_core_and_ablation_validation,first_three_scopes_completed}.json`.
+
 ## Completed controls, failed repair hypotheses and native-relation adapter — 2026-10-16
 
 Shared and matched MOT-only8000 studies completed all five unchanged causal
@@ -1127,3 +1163,8 @@ The durable original cleanup snapshots directly show14042MiB net all-device
 memory decrease; concurrent other jobs prevent exclusive U2 attribution. The
 historically reported17584MiB owned-worker inventory is kept as historical,
 not reconstructed from those per-device tables. No old model is restarted.
+
+A read-only original-owner checkpoint observer is registered at
+`outputs/groundjev/training/full_joint_source_actual1000_observer_v1/`;
+1000-step full FP32/Adam/all-rank-RNG verification remains pending until its
+actual save is available. It neither restarts training nor allocates a GPU.

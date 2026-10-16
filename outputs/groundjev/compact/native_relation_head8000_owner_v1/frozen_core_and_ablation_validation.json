@@ -1,0 +1,7 @@
+{
+  "all_declared_fixed_weights_exact": true,
+  "fixed_parameter_tensors": 59,
+  "ablation": "/data3/user/LocateMOT-checkpoints/compact_native_relation_head8000_v1/residual_disabled_checkpoint.pt",
+  "same_final_semantic_head_weights": true,
+  "separate_training": false
+}

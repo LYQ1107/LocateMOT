@@ -1,0 +1,19 @@
+{
+  "step": 8000,
+  "questions": 24000,
+  "exposure": {
+    "mot:identity": 8000,
+    "rmot:query_membership": 8000,
+    "ovmot:category": 8000
+  },
+  "full_model_and_optimizer_finite": true,
+  "final_export_equals_full_state": true,
+  "three_task_reload_max_difference": 0,
+  "checkpoint": "/data3/user/LocateMOT-checkpoints/compact_native_relation_head8000_v1/checkpoint.pt",
+  "training_seconds": 1040.4595302120433,
+  "source_scope": {
+    "mot": 1016,
+    "rmot": 1795,
+    "ovmot": 3227
+  }
+}
