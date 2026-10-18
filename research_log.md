@@ -2,6 +2,15 @@
 
 Concise experimental log (latest first).
 
+## 2026-10-18 — J1 step300 and held-out gate reattached
+
+- The live J1 three-task run reached a complete step300 checkpoint with
+  adapter weights and full FP32/Adam/RNG state. MOT20-05 remains in its
+  protected G0 export without a `result.json`; expression-conditioned RMOT has
+  not started inference and remains gated on that release.
+- The CPU-only held-out gate owner had exited while waiting, so it was
+  reattached to the live J1 PID without restarting training.
+
 ## 2026-10-18 — GPU5 G1 functional retention control
 
 - With explicit user authorization, GPU5 was shared after a memory check (about
