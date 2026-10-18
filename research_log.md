@@ -2,6 +2,64 @@
 
 Concise experimental log (latest first).
 
+## 2026-10-18 — Expanded held-out gate to all three task loops
+
+- The held-out owner now preserves DT1203 MOT and additionally schedules the
+  registered RMOT single/multi validation scopes plus TAO validation videos 4
+  and 63 with official multitask metrics. It passed a dry-run at J1 step300 and
+  was replaced as a CPU-only owner without changing training or GPU ownership.
+
+## 2026-10-18 — J1 step300 and held-out gate reattached
+
+- The live J1 three-task run reached a complete step300 checkpoint with
+  adapter weights and full FP32/Adam/RNG state. MOT20-05 remains in its
+  protected G0 export without a `result.json`; expression-conditioned RMOT has
+  not started inference and remains gated on that release.
+- The CPU-only held-out gate owner had exited while waiting, so it was
+  reattached to the live J1 PID without restarting training.
+
+## 2026-10-18 — GPU5 G1 functional retention control
+
+- With explicit user authorization, GPU5 was shared after a memory check (about
+  68.6 GiB free); the foreign TALON jobs were preserved. The corrected owner
+  completed G0/G1 MOT4, RMOT single8, and RMOT multi12 controls in the OneJev
+  checkout. HOTA changed 0.7485→0.7333, 0.2718→0.2117, and 0.2179→0.2284;
+  this is short functional evidence, not a full-dataset promotion result.
+- The G1 service was cleaned up and the evidence/documents were synchronized
+  to the GroundJEV GitHub branch. The active J1/MOT20/RMOT pipeline was not
+  interrupted.
+
+## 2026-10-18 — DeepSeek Harness handoff re-audit and active continuation
+
+- The requested GroundJEV-MOT redirection was checked against the actual
+  DeepSeek Harness SSH-job records and live child processes. Harness launcher
+  records with `exit_code=0` are not completion receipts: the detached
+  children for the three-task SFT and MOT20 export are still alive. The live
+  research checkouts remain `/data2/user/LocateMOT_OneJev_CVPR` and
+  `/data2/user/LocateMOT_GroundJEV`; this root checkout is still the required
+  project identity `/data2/user/LocateMOT`.
+- Active work: `trackjev_3task_J1_v4_birth` (PID 3029659, ranks 3029872 and
+  3029873) is a real MOT/RMOT/OVMOT run over 43,533 rows (21,168 / 16,677 /
+  5,688), using GPUs 4 and 6. The latest observed log is step 280/1,200 and
+  step 250 has a complete FP32-master/Adam/scheduler/RNG restore state; the
+  old MOT-only training has no residual process.
+- Protected export: MOT20-05 `mot20_MOT20-05_resumed_v2` (PID 3743898) is
+  still restoring the exact 1,560-frame prefix and running with the explicit
+  4 GiB native-feature budget after the earlier 2 GiB failure. It has no
+  `result.json` yet. The expression-conditioned RMOT pilot (PID 3744099)
+  remains correctly gated on that receipt and has performed zero model
+  inference or optimizer updates.
+- GPU5 is not idle: its active compute owner is another user's
+  `/data2/OCD/TALON` process. The existing GroundAnything G1 evidence already
+  contains a complete 200/200 projector adaptation and G0/G1 comparison; the
+  measured result is a retained negative detector adaptation. No foreign job
+  was stopped and no duplicate G1 run was started.
+- Next recovery point: let the protected MOT20 export and J1 checkpoint reach
+  their registered completion boundaries, then run the prepared
+  expression-conditioned RMOT pilot and an independent held-out evaluation
+  from the latest valid J1 adapter. No benchmark success or unified-goal
+  completion is claimed in this audit.
+
 ## 2026-10-01 — latest R1 restoration completed
 
 - Hypothesis: restore only the newest R1 execution boundary and its legal
@@ -952,3 +1010,108 @@ Actual epoch1 ordinary summary: BDD Top150.936574, Dance.999036, MOT17.878066, M
 - Epoch 1 foundation `1d9077ae603f40de0e955a11a88083f914f98faa967bc46cdd06bcdfb5129688` passed all seven portability streams and U1 retention: generic V1/V2 0.9918663023 / 0.9672269380; expression Top100 V1/V2 1.0 / 0.9785374828. Fixed 500-pair language audit true/shuffled AP50 0.7301285093 / 0.4067468580. Generic scope 4,201 images; expression scope 7,160 representative query frames, 7,199 target references.
 - Selection source receipts and their registered digests agree; retain epoch 1, no second adaptation epoch required. Existing recovery owner exited successfully and advanced the eight-GPU ordinary candidate cache automatically. Formal tracking scores and U3 readiness remain pending.
 - Evidence: `outputs/unified/u2/perception_adaptation/eval_epoch_1/selection.json`, seven `measurements/*.json`, and generic/expression/counterfactual `result.json`.
+
+## GroundJEV-MOT execution redirection and current handoff — 2026-10-18
+
+The active task was re-scoped to `TRACKJEV_THREE_TASK_DETECTOR_ADAPTATION_AND_TRAINING_V1` under the continuing GroundJEV unified MOT/RMOT/OVMOT goal. The required project root for this checkout is `/data2/user/LocateMOT`; the DeepSeek Harness jobs that are still running use the separate research checkout `/data2/user/LocateMOT_OneJev_CVPR` and the model/runtime checkout `/data2/user/LocateMOT_GroundJEV`. This path split is recorded explicitly; no source from the live old checkout was copied into this U2 checkout.
+
+Resource audit: GPU0–3 and GPU5 are occupied by another user's `/data2/OCD/TALON` jobs and were left untouched. GPU4 and GPU6 run the real three-task OneJev LoRA SFT; GPU7 hosts the protected GroundAnything decoder/feature services and the MOT20-05 export. There is no active pure MOT-only training process. The active SFT reads 43,533 rows (identity 21,168, RMOT 16,677, OVMOT 5,688; `native_G0` 21,168 and `GT_teacher` 22,365) and has a resumable FP32/Adam/RNG checkpoint at step 250 while the log has reached step 260/1,200. The protected MOT20-05 export has reached frame 1,558/1,658 in its resumed output; occasional decoder rejections are recorded as empty frames and do not terminate the run.
+
+GroundAnything G1 was not idle: the existing evidence shows 200/200 projector steps completed and a G0/G1 comparison. The measured G1 recall is within about 1.2 points of G0 and is mostly lower, so it is retained as a negative detector-adaptation result and will not be relaunched on another user's GPU5 allocation. The next detector-related work is expression-conditioned RMOT, because the earlier RMOT native cache used a pedestrian-only request and failed its semantic quality gate.
+
+Prepared without GPU inference: `/data2/user/LocateMOT_OneJev_CVPR/outputs/groundjev/full_data_v2/candidate_export_rmot_expression_v1/plan.json` and 24 per-query manifests cover 12 legal fit/calibration videos and 4,416 frames, exclude all held-out/evaluation videos, preserve the real expression text/files, and use `proposal_source=native_G0_expression_conditioned_pending`. The planner is `tools/groundjev/prepare_expression_rmot_pilot.py`; its manifest validation passed. Inference is intentionally deferred until the protected MOT20 export releases the shared decoder/feature service, so no existing long job is contended or restarted.
+
+The active goal remains in progress. Next recovery points are: let the current MOT20 export and three-task SFT reach their existing checkpoints; run the expression-conditioned RMOT pilot from the prepared manifests; then evaluate the latest valid OneJev checkpoint on the independent held-out scope. No benchmark success or full-goal completion is claimed here.
+
+The first expression-conditioned pilot attempt was stopped after the protected MOT20 owner was found to have exited at frame 1561 because its default 2 GiB native-feature budget was exceeded (the old prefix through frame 1560 remains intact and has no result receipt). The partial first RMOT query is also preserved as `*.failed_attempt`. The smallest recovery is now active: MOT20 resumes from that exact prefix in `mot20_MOT20-05_resumed_v2` with an explicit 4 GiB per-study budget (PID 3743898), while a single-worker RMOT queue (PID 3744099) waits for that new `result.json` before touching the shared decoder/feature endpoints. No result or protected source directory was overwritten.
+
+## 2026-10-18 21:48 CST — continuation runtime audit
+
+J1 v4 birth remains live after the step-300 checkpoint: torchrun PID 3029659 with ranks 3029872/3029873 on GPU4 and GPU6. Both ranks are still consuming compute (rank0 at full CPU and both model GPUs at 100% utilization), so the absence of a newer log line is an active long batch rather than evidence for a restart. The authoritative restore point remains `adapter-step300` plus `latest_training_state.pt`; no checkpoint or optimizer state was overwritten.
+
+MOT20-05 `resumed_v2` is also live and writing the protected output: `tracks.mp4`, `predictions.txt`, `frame_candidates.jsonl`, `frame_decisions.jsonl`, and `latest_identity_memory.json` advanced after the previous audit. Its final `result.json` is still absent, so the expression-conditioned RMOT queue correctly remains `WAITING_MOT20_RELEASE` with zero model-inference queries. The expanded CPU-only J1 held-out gate remains alive at PID 3791075 and waits for the J1 final receipt plus MOT20/RMOT release; no held-out metric is claimed yet. No process was restarted or stopped.
+## 2026-10-18 21:51 CST — MOT20 export advanced while J1 batch remained active
+
+The protected MOT20-05 `resumed_v2` owner made real progress after the previous audit: `frame_decisions.jsonl` reached 12,201,850,168 bytes, `latest_identity_memory.json` reached 300,275,019 bytes, and `predictions.txt` reached 11,269,005 bytes at the latest snapshot. The final `result.json` is still absent, so the export is not yet released to RMOT. J1 still has only the step-300 receipt, but both distributed ranks remain live and one rank is actively computing; the current evidence does not justify a restart. The held-out gate and expression-conditioned RMOT queue remain correctly waiting on their registered receipts.
+## 2026-10-18 — selective cache policy reaffirmed
+
+Newly downloaded datasets do not require whole-dataset native feature/candidate caches. The formal J1 SFT already consumes the registered 43,533-row three-task course with media on demand and `feature_cache=false`. Cache/export is limited to registered evidence scopes: the protected MOT20-05 G0 long export, the legal expression-conditioned RMOT pilot manifests after the MOT20 release, and the explicitly registered held-out MOT/RMOT/OVMOT evaluation manifests (DT1203, Refer-KITTI validation scope, and the two TAO validation videos). Other downloaded train/validation data remains distributed across the data volumes and is read on demand; no full TAO or full Refer-KITTI cache is started. The older pedestrian-only RMOT cache remains a rejected semantic attempt and is not promoted or reused as expression-conditioned evidence.
+## 2026-10-18 — G1 continuation decision and record boundary
+
+G1 is a completed detector-side adaptation, not an active optimizer: the registered legal TRAIN mix spans MOT17, MOT20, DanceTrack, and Refer-KITTI, with 200/200 projector steps, a resumable FP32/Adam/RNG state, and a materialized `GroundAnything-DLM-TrackProjG1` serving directory. The short unchanged G0/G1 controls are valid but mixed/mostly negative (MOT4 and RMOT single8 regress; RMOT multi12 is slightly higher), so G1-200 remains a preserved baseline and is not silently extended or promoted. The larger downloaded corpora are available, but a G1-extended run would be a new experiment: it must use legal TRAIN data only, keep G0/G200/G1-200 checkpoints, and rebuild any downstream OneJev rows before claiming an effect. Current long-running priority remains the protected MOT20 G0 receipt and the real J1 three-task checkpoint/held-out gate; GroundAnything server processes are inference services, not G1 fine-tuning.
+
+## 2026-10-18 22:35 CST — MOT20 G0 receipt released; expression RMOT pilot started
+
+The protected MOT20-05 resumed export produced and passed its terminal receipt: `VIDEO_INFERENCE_COMPLETE_WITH_REJECTED_PERCEPTION`, all 1,658 frames processed, 1,560-frame exact resume prefix restored, 224 decoder-rejected/strict-invalid frames retained as empty official prediction frames, 2,314,870,593-byte native candidate archive, and 4,322.94 seconds end-to-end wall time. The owner process remained alive briefly after writing the receipt while flushing its final result output, then exited without modifying the completed artifacts. The expression-conditioned RMOT queue was released only after this receipt and is now running its legal 24-query pilot; the latest owner state reports 2 completed queries, model inference started, and no failure. The J1 held-out gate remains waiting for the final step-1200 training receipt.
+
+## 2026-10-18 22:59 CST — expression RMOT pilot progress
+
+The released expression-conditioned RMOT pilot remains healthy: owner status RUNNING_EXPRESSION_RMOT_PILOT, 5 of 24 legal query manifests completed, model inference active, and failed=null. The queue is still single-worker over the shared GroundAnything services; no held-out or validation videos have been admitted.
+
+## 2026-10-18 23:38 CST — expression RMOT pilot passed midpoint
+
+The expression-conditioned RMOT pilot remains healthy at 13 of 24 legal query manifests complete. The owner is still RUNNING_EXPRESSION_RMOT_PILOT with failed=null; no held-out or validation video has entered the queue, and no optimizer update is performed by this export.
+## 2026-10-18 — GroundAnything G2-A native optimization gate passed
+
+The isolated GroundAnything G2 line was initialized from `models/GroundAnything-DLM` after auditing the pinned official source at commit `8a3b43a1b42952e117960e85d63ff173bb9fba0a`. The task text referenced `e054ab329...`, but that revision is not the checkout's actual official HEAD; the actual pinned revision and source-file hashes are recorded in the G2 audit receipts. GPU3 and GPU5 were free at the one-time resource audit; J1 on GPU4/6, protected GroundAnything services on GPU7, and the active MOT20/RMOT owners were left untouched.
+
+G2-A passed a real native DLM forward/backward/Adam-step gate on three supervision modes: dense MOT20, referring RMOT, and TAO-Amodal OVMOT. Vision and the original language weights remained frozen; the projector exposed 27,267,584 trainable parameters and Qwen3 q/k/v/o LoRA exposed 11,796,480 trainable parameters across 36 layers. The official mixed objective remains 0.5 MDM + 0.5 causal, with projector/LoRA learning rates 2e-6/7e-6 and AdamW. Losses were 1.24458, 1.39893, and 1.53041, with finite nonzero gradients in both projector and LoRA and a completed optimizer update. Peak allocation was 39,124,467,712 bytes on one 80-GB GPU. A narrow Transformers 5.17 compatibility shim for the removed `cache_position` keyword is recorded and covered by the gate. This is a preflight receipt only; formal ten-dataset G2 training has not started while dataset coverage and legal TRAIN-only row preparation are audited.
+
+
+
+## 2026-10-19 — GroundAnything G2 coverage audit, corpus, and DDP smoke
+
+The resolved TRAIN-only audit follows the distributed data layout and avoids held-out media. TAO-Amodal has all 18,274 TRAIN images available across /data0, /data1, /data2, and /data3. RMOT26 has all images referenced by its primary train annotation rows, but its download receipt still records 20 failed assets, so the source remains PARTIAL_DOWNLOADS. BURST has 500 TRAIN annotation sequences but no legal TRAIN image root in this checkout; it is excluded rather than substituting TAO test frames.
+
+The G2 row builder emitted 199,053 validated official rows with absolute image paths and bytes=null: MOT17 15,948, MOT20 8,931, DanceTrack 41,796, SportsMOT 28,574, AnimalTrack 11,543, Refer-KITTI-V2 4,333, AerialMind 45,625 dense plus 23,733 referring, RMOT26 296 referring, and TAO-Amodal 18,274. The 2,246 rejected rows are retained in a separate JSONL with source and reason; no row path is missing, no official evaluation video appears, and all rows pass the official uniform row contract. Corpus SHA is b8df7365a1b1cda47489f8044d86c030be9ab17c48724b5b5620befb5c9eb76e.
+
+A first two-rank DDP launch under system Python failed before model loading because that interpreter had no accelerate package. The failure is preserved as an environment issue. Re-running with the same project .venv-onejev-py310 used by G2-A passed one native optimizer step on physical GPU3/GPU5, including finite gradients, distributed synchronization, and atomic adapter-step000001/latest_training_state checkpoints. The cards were co-resident with pre-existing work and were not modified. Formal full-data training is now gated only by the registered long-run launch and later held-out evaluation; no G2 quality score is claimed yet.
+
+
+## 2026-10-19 — G2 formal full-data run launched
+
+After the G2-A native gate, ten-source coverage audit, row-contract/path audit, and one-step two-rank smoke all passed, formal G2 training launched with two DDP ranks on physical GPU3/GPU5 using `.venv-onejev-py310`, master port 29619, max_steps=1200, and checkpoint interval 50. The input manifest SHA remains b8df7365a1b1cda47489f8044d86c030be9ab17c48724b5b5620befb5c9eb76e. The run directory is `/data3/user/LocateMOT-runs/GroundAnythingG2/G2_PROJECTOR_QWEN3_LORA_FULLDATA/formal_g2_1200`; no held-out media or existing J1/MOT20/RMOT owner is touched. Formal completion and detector/tracking evaluation remain pending.
+
+
+## 2026-10-19 — G2 formal length-gate failure and minimal recovery
+
+The first formal two-rank run reached a valid step-1 checkpoint, then stopped at row `mot20_MOT20-05_001167_dense`: the official DLM collator measured 2,193 text tokens against the temporary 2,048 preflight bound. No data, metric, seed, or split changed; the failure receipt is retained under the formal run directory. The trainer default was corrected to the official 4,096 text / 8,192 joint limits. A targeted collator check passed the failing row at 2,193 tokens, and a two-rank resume regression from the valid step-1 checkpoint completed step 2 with finite loss 1.46757, finite gradient norm 6.09755, and an atomic step-2 checkpoint. Formal 1,200-step recovery resumes from the latest valid step-1 checkpoint with the corrected length contract.
+
+## 2026-10-19 — G2 official memory route repair and long-row regression
+
+The corrected 4,096/8,192 length run reached the first long MOT20 row but exhausted the remaining memory because the custom trainer still used the legacy padded language loop while GPU3/GPU5 each carried an unrelated 18.5-GiB resident workload. No metric or data path changed and the valid step-1 checkpoint remains the recovery point. The trainer now follows the released DLM general memory contract: padding-free packing, non-reentrant language gradient checkpointing at every packed layer, chunk linear kernel, fused LM-head when available, and no activation CPU offload.
+
+This environment does not provide the optional `flash_attn` or `fla` modules. The trainer therefore selects GroundAnything's official `cudnn_sdpa` packed clean-attention backend and its official `checkpointed_chunk` LM-head backend, respectively; the objective remains the same 0.5 MDM + 0.5 causal loss. A two-rank regression with one 2,193-token MOT20 row per rank completed one optimizer step on physical GPU3/GPU5 with finite loss 2.0606513, finite gradient norm 5.1535301, and atomic checkpoint/final receipts. A prior one-row DDP fixture was interrupted after rank imbalance was identified; it did not alter the trainer or corpus. Formal recovery from step 1 is now allowed to proceed; quality results remain pending.
+
+## 2026-10-19 — G2 formal recovery relaunched
+
+The repaired formal G2 run was relaunched from the preserved step-1 checkpoint with the unchanged 199,053-row corpus (SHA b8df7365a1b1cda47489f8044d86c030be9ab17c48724b5b5620befb5c9eb76e), max_steps=1200, save interval 50, seed 20261019, and two DDP ranks on physical GPU3/GPU5 (master port 29633). The active command uses the packed/checkpointed route and the recorded cudnn_sdpa/checkpointed_chunk fallbacks. It is still running; no G2 quality metric or completion claim is made until the terminal receipt is written.
+
+## 2026-10-19 — TrackJEV redirect state audit
+
+The protected MOT20 G0 long export is terminal and complete (`VIDEO_INFERENCE_COMPLETE_WITH_REJECTED_PERCEPTION`, all 1,658 frames, exact resume prefix retained). The expression-conditioned RMOT pilot is terminal and complete for all 24 legal query manifests with `failed=null`; its proposals are recorded as native G0 expression-conditioned evidence. The actual MOT-only queue is terminal `STOPPED_BY_USER_RESEARCH_PIVOT` with `formal_track_training_launched=false`, so no abandoned MOT-only optimizer remains to be resumed.
+
+The real OneJev three-task course is active at step 550/1200 from the registered 43,533-row manifest: identity 21,168, RMOT 16,677, and OVMOT 5,688 rows, with multimodal DDP on GPU4/GPU6, FP32/Adam/RNG checkpointing, and no feature cache. The J1 held-out gate remains `WAITING_J1_FINAL` and owns no GPU until step 1200. GroundAnything G1 is preserved separately: its apply receipt records a 200-step projector delta with five tensors replaced and byte-identical frozen vision/language weights; the GPU5 retry2 G0/G1 controls completed, while the measured G1 detector comparison is retained as a negative/mixed control rather than promoted. No held-out result or final TrackJEV claim is made before J1 reaches its terminal receipt.
+
+## 2026-10-19 — authoritative redirect continuation audit
+
+The protected MOT20-05 G0 long export is now terminal and complete: all 1,658
+legal TRAIN frames are present, the exact 1,560-frame resume prefix is retained,
+224 rejected/strict-invalid perception frames remain in the output, and runtime
+GT/future-frame access is false. The evaluation-only TRAIN-scope receipt reports
+HOTA 0.433441, DetA 0.638348, AssA 0.294655, and IDF1 0.441085; this is not an
+independent held-out result. The expression-conditioned RMOT pilot also completed
+all 24 legal query manifests with native G0 expression-conditioned proposals.
+
+The registered MOT-only queue has no live process and remains
+STOPPED_BY_USER_RESEARCH_PIVOT; no abandoned optimizer is resumed. The real J1
+three-task OneJev run is live on GPU4/GPU6 at durable step700, using 43,533 rows
+(identity 21,168, RMOT 16,677, OVMOT 5,688) with FP32/Adam/scheduler/RNG state.
+Its final receipt and independent held-out metrics are still pending.
+
+The clean G2 run remains active on GPU3/GPU5 at the latest observed step131/18227.
+The registered fresh GPU5 G1 queue is alive and correctly waiting for the clean
+G2 terminal receipt; it must not contend for GPU5 or duplicate the preserved
+negative/mixed G1-200 control. The G2 bundle exporter and J1 held-out gate remain
+dependency-gated. No unified quality improvement is claimed. The full evidence
+map is in `docs/GROUNDJEV/EXECUTION_REDIRECT_AUDIT_20261019.md`.
