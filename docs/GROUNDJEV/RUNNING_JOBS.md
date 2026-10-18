@@ -84,3 +84,9 @@ the full detector retention benchmark remains separate and G1 is not promoted.
 - The previous held-out gate owner had exited while waiting. It was reattached
   as PID 3787439 against the live J1 PID 3029659; it is CPU-only and holds no
   GPU allocation while waiting for the final receipt.
+
+The gate was then replaced by the expanded resume-safe version (PID 3791075).
+After DT1203 it will evaluate the registered RMOT single8/multi12 scopes and
+the two full 40-frame TAO validation videos (video 4 and video 63), using the
+same merged J1 checkpoint and official multitask evaluators. It remains
+CPU-only until the final checkpoint and release receipts exist.
