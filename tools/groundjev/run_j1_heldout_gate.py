@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Resume-safe gate from the J1 final checkpoint to held-out DT1203.
+"""Resume-safe gate from the J1 final checkpoint to held-out MOT/RMOT/OVMOT.
 
 This owner does not reserve a GPU while it waits.  It refuses to infer from a
 partial checkpoint, a missing MOT20 release receipt, or a failed RMOT pilot.
@@ -26,6 +26,14 @@ DEFAULT_OUT = ROOT / "outputs/groundjev/full_data_v2/post_j1_heldout_gate_v1"
 DEFAULT_MANIFEST = ROOT / "outputs/groundjev/full_data_v2/manifests/DT1203_eval_only.json"
 DEFAULT_MOT_RELEASE = ROOT / "outputs/groundjev/full_data_v2/candidate_export_v2/mot20_MOT20-05_resumed_v2/result.json"
 DEFAULT_RMOT_STATE = ROOT / "outputs/groundjev/full_data_v2/candidate_export_rmot_expression_v1/owner_state.json"
+MULTITASK_SCOPES = (
+    ("rmot_single8", "rmot", ROOT / "outputs/groundjev/multitask_pilot_data/rmot_single_empty.json", ()),
+    ("rmot_multi12", "rmot", ROOT / "outputs/groundjev/multitask_pilot_data/rmot_multi_empty.json", ()),
+    ("ovmot_video4", "ovmot", ROOT / "outputs/groundjev/multitask_pilot_data/ovmot_tao_full.json",
+     ("--grounding-vocabulary-chunk-size", "32")),
+    ("ovmot_video63", "ovmot", ROOT / "outputs/groundjev/multitask_pilot_data/ovmot_tao_base_novel63_full.json",
+     ("--grounding-vocabulary-chunk-size", "32")),
+)
 
 
 def atomic_write(path: Path, payload: dict[str, Any]) -> None:
@@ -239,7 +247,46 @@ def main() -> int:
         if metrics_proc.returncode != 0:
             return fail("held-out DT1203 evaluator failed", returncode=metrics_proc.returncode, log=str(metrics_log))
         state["completed"]["dt1203_metrics"] = {"log": str(metrics_log), "returncode": metrics_proc.returncode}
-        state["status"] = "HELDOUT_DT1203_COMPLETE"
+        multitask_root = args.out / "multitask"
+        for name, task, manifest, extra in MULTITASK_SCOPES:
+            if not manifest.is_file():
+                return fail("registered multitask manifest is missing", name=name, manifest=str(manifest))
+            eval_out = multitask_root / name
+            result_file = eval_out / "result.json"
+            metrics_file = eval_out / "official_metrics.json"
+            if eval_out.exists() and any(eval_out.iterdir()) and not result_file.is_file():
+                return fail("multitask output exists without a result receipt", name=name, output=str(eval_out))
+            if not result_file.is_file():
+                state["status"] = f"RUNNING_HELDOUT_{name.upper()}"
+                save()
+                command = [PY, str(ROOT / "tools/groundjev/run_video.py"),
+                           "--task", task, "--video", str(manifest),
+                           "--checkpoint", str(merged), "--backend", "trackjev",
+                           "--trackjev-arm", "B4", "--trackjev-device", "cuda:0",
+                           "--native-feature-url", args.feature_url,
+                           "--grounding-url", args.decoder_url,
+                           "--grounding-decoder-policy", "tracking_dense",
+                           "--perception-failure-policy", "empty_and_record",
+                           "--out", str(eval_out)] + list(extra)
+                log_path = args.out / f"{name}.log"
+                with log_path.open("a") as log:
+                    proc = subprocess.run(command, cwd=ROOT, env=env, stdout=log, stderr=subprocess.STDOUT)
+                if proc.returncode != 0 or not result_file.is_file():
+                    return fail("multitask held-out inference failed", name=name,
+                                returncode=proc.returncode, log=str(log_path))
+            if not metrics_file.is_file():
+                metrics_log = args.out / f"{name}_official_metrics.log"
+                metrics_command = [PY, str(ROOT / "tools/groundjev/evaluate_multitask.py"),
+                                   "--video", str(manifest), "--run", str(eval_out)]
+                with metrics_log.open("a") as log:
+                    metrics_proc = subprocess.run(metrics_command, cwd=ROOT, stdout=log, stderr=subprocess.STDOUT)
+                if metrics_proc.returncode != 0 or not metrics_file.is_file():
+                    return fail("multitask held-out evaluator failed", name=name,
+                                returncode=metrics_proc.returncode, log=str(metrics_log))
+            state["completed"][name] = {"run": str(eval_out), "result": str(result_file),
+                                        "official_metrics": str(metrics_file)}
+            save()
+        state["status"] = "HELDOUT_ALL_REGISTERED_TASKS_COMPLETE"
         state["full_goal_complete"] = False
         save()
         return 0
