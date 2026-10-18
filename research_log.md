@@ -2,6 +2,17 @@
 
 Concise experimental log (latest first).
 
+## 2026-10-18 — GPU5 G1 functional retention control
+
+- With explicit user authorization, GPU5 was shared after a memory check (about
+  68.6 GiB free); the foreign TALON jobs were preserved. The corrected owner
+  completed G0/G1 MOT4, RMOT single8, and RMOT multi12 controls in the OneJev
+  checkout. HOTA changed 0.7485→0.7333, 0.2718→0.2117, and 0.2179→0.2284;
+  this is short functional evidence, not a full-dataset promotion result.
+- The G1 service was cleaned up and the evidence/documents were synchronized
+  to the GroundJEV GitHub branch. The active J1/MOT20/RMOT pipeline was not
+  interrupted.
+
 ## 2026-10-18 — DeepSeek Harness handoff re-audit and active continuation
 
 - The requested GroundJEV-MOT redirection was checked against the actual
