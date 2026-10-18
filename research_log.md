@@ -1115,3 +1115,14 @@ G2 terminal receipt; it must not contend for GPU5 or duplicate the preserved
 negative/mixed G1-200 control. The G2 bundle exporter and J1 held-out gate remain
 dependency-gated. No unified quality improvement is claimed. The full evidence
 map is in `docs/GROUNDJEV/EXECUTION_REDIRECT_AUDIT_20261019.md`.
+
+## 2026-10-19 — live dependency progress revalidated
+
+The registered clean G2 owner is still alive on GPU3/GPU5 and its event log has
+advanced to optimizer step141/18227 with finite loss; no terminal receipt or
+durable step-500 checkpoint exists, so it was not restarted or altered. The J1
+three-task torchrun is also alive on GPU4/GPU6; its log has reached 720/1200,
+while `adapter-step700` remains the latest durable FP32/Adam/RNG restore point.
+The GPU5 G1 queue and clean-bundle exporter remain live dependency owners, not
+failed jobs. No MOT-only process appeared, and no held-out evaluation was
+started before the required terminal receipts.
