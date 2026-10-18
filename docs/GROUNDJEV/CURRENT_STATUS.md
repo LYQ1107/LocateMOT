@@ -2060,7 +2060,10 @@ actual save is available. It neither restarts training nor allocates a GPU.
   Adam, scheduler and RNG state are saved. This is not full-data completion.
 - **Evaluation:** the prior G0 short control timed out at frame 302 before any
   G2 comparison. MOT20-05 export and RMOT pilot receipts remain preserved;
-  independent G2/J1 evaluation waits for terminal training receipts.
+  the completed G0 MOT20-05 export now has an official scope score (HOTA
+  0.433441, DetA 0.638348, AssA 0.294655, IDF1 0.441085, IDSW 6239,
+  FP 6325, FN 98471) with 183 rejected frames retained in the denominator.
+  Independent G2/J1 evaluation still waits for terminal training receipts.
 
 The detailed clean audit, coverage contract, and J1/J2 budget are in
 `G2_DATA_LEAKAGE_AND_LABEL_AUDIT.md`, `G2_FULL_COVERAGE_V2_REPORT.md`, and
