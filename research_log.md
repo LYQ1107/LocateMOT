@@ -1051,3 +1051,7 @@ The protected MOT20-05 resumed export produced and passed its terminal receipt: 
 ## 2026-10-18 22:59 CST — expression RMOT pilot progress
 
 The released expression-conditioned RMOT pilot remains healthy: owner status RUNNING_EXPRESSION_RMOT_PILOT, 5 of 24 legal query manifests completed, model inference active, and failed=null. The queue is still single-worker over the shared GroundAnything services; no held-out or validation videos have been admitted.
+
+## 2026-10-18 23:38 CST — expression RMOT pilot passed midpoint
+
+The expression-conditioned RMOT pilot remains healthy at 13 of 24 legal query manifests complete. The owner is still RUNNING_EXPRESSION_RMOT_PILOT with failed=null; no held-out or validation video has entered the queue, and no optimizer update is performed by this export.
