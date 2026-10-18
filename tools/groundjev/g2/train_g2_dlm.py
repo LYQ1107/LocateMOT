@@ -41,6 +41,12 @@ PACKED_LM_HEAD_LOSS_BACKEND = (
     "fused" if importlib.util.find_spec("fla") is not None else "checkpointed_chunk"
 )
 
+# Event fields are part of the external training receipt.  Keep the schema
+# explicit because loss is averaged across ranks while token/sample counts are
+# global sums.  Older JSONL events predate this distinction and are audited as
+# historical, ambiguous records rather than rewritten in place.
+EVENT_SCHEMA_V2 = "g2-training-event-v2-global-accounting"
+
 from tools.groundjev.g2.compat import patch_transformers_causal_mask  # noqa: E402
 from tools.groundjev.g2.groundanything_lora import (  # noqa: E402
     adapter_state_dict,
@@ -56,6 +62,31 @@ def sha256(path: Path) -> str:
         for chunk in iter(lambda: handle.read(8 << 20), b""):
             digest.update(chunk)
     return digest.hexdigest()
+
+
+def global_event_statistics(
+    *,
+    loss_sum_across_ranks: float,
+    tokens_sum_across_ranks: float,
+    samples_sum_across_ranks: float,
+    world_size: int,
+) -> dict[str, float | int]:
+    """Convert all-reduced event counters into globally meaningful values.
+
+    The loss is a mean of the rank-local means.  Token and sample counts are
+    already sums after ``all_reduce(SUM)`` and must remain sums.  Keeping this
+    arithmetic outside the CUDA loop gives the accounting contract a small CPU
+    test surface and prevents accidental division of every field together.
+    """
+
+    if int(world_size) <= 0:
+        raise ValueError("world_size must be positive")
+    return {
+        "loss": float(loss_sum_across_ranks) / int(world_size),
+        "effective_tokens_global": float(tokens_sum_across_ranks),
+        "samples_global": float(samples_sum_across_ranks),
+        "world_size": int(world_size),
+    }
 
 
 class JsonlDataset:
@@ -658,7 +689,7 @@ def main() -> int:
     run_dir = args.run_dir
     run_dir.mkdir(parents=True, exist_ok=True)
     if rank == 0:
-        (run_dir / "trainer_contract.json").write_text(json.dumps({"status": "G2_FORMAL_TRAINING_RUNNING", "created_localtime": time.strftime("%Y-%m-%d %H:%M:%S %z"), "rows": str(args.rows), "manifest": manifest, "mask_compatibility": mask_compatibility, "trainable_audit": audit, "world_size": world_size, "requested_physical_gpus": os.environ.get("CUDA_VISIBLE_DEVICES"), "max_steps": total_steps, "save_every": args.save_every, "sampler": sampler.metadata(), "training_contract": training_contract, "official_dlm_memory_contract": {"max_length": args.max_length, "max_joint_length": args.max_joint_length, "padding_free_packing": True, "gradient_checkpointing": True, "packing_language_checkpoint_stride": 1, "packing_linear_kernel": "chunk", "packing_lm_head_loss_backend": PACKED_LM_HEAD_LOSS_BACKEND, "packing_activation_cpu_offload": False, "packed_clean_attention_backend": os.environ.get("GAM_DLM_PACKED_CLEAN_ATTENTION_BACKEND")}}, indent=2, ensure_ascii=False) + "\n")
+        (run_dir / "trainer_contract.json").write_text(json.dumps({"status": "G2_FORMAL_TRAINING_RUNNING", "created_localtime": time.strftime("%Y-%m-%d %H:%M:%S %z"), "event_schema_version": EVENT_SCHEMA_V2, "rows": str(args.rows), "manifest": manifest, "mask_compatibility": mask_compatibility, "trainable_audit": audit, "world_size": world_size, "requested_physical_gpus": os.environ.get("CUDA_VISIBLE_DEVICES"), "max_steps": total_steps, "save_every": args.save_every, "sampler": sampler.metadata(), "training_contract": training_contract, "official_dlm_memory_contract": {"max_length": args.max_length, "max_joint_length": args.max_joint_length, "padding_free_packing": True, "gradient_checkpointing": True, "packing_language_checkpoint_stride": 1, "packing_linear_kernel": "chunk", "packing_lm_head_loss_backend": PACKED_LM_HEAD_LOSS_BACKEND, "packing_activation_cpu_offload": False, "packed_clean_attention_backend": os.environ.get("GAM_DLM_PACKED_CLEAN_ATTENTION_BACKEND")}}, indent=2, ensure_ascii=False) + "\n")
     if len(sampler) % args.micro_batch_size:
         raise RuntimeError(
             "sampler length is not divisible by micro-batch size; refusing to drop rows "
@@ -738,16 +769,29 @@ def main() -> int:
             )
             if world_size > 1:
                 dist.all_reduce(aggregate, op=dist.ReduceOp.SUM)
-                aggregate /= world_size
+            event_stats = global_event_statistics(
+                loss_sum_across_ranks=float(aggregate[0].item()),
+                tokens_sum_across_ranks=float(aggregate[1].item()),
+                samples_sum_across_ranks=float(aggregate[2].item()),
+                world_size=world_size,
+            )
             event = {
+                "event_schema_version": EVENT_SCHEMA_V2,
                 "step": start_step,
                 "epoch": epoch,
                 "position": start_position,
                 "micro_batches": args.grad_accum_steps,
-                "samples_global": int(round(float(aggregate[2].item()))),
-                "effective_tokens_global": int(round(float(aggregate[1].item()))),
+                "samples_global": int(round(float(event_stats["samples_global"]))),
+                "effective_tokens_global": int(round(float(event_stats["effective_tokens_global"]))),
+                "effective_global_batch": effective_global_batch,
+                "global_accounting": {
+                    "loss": "cross_rank_mean",
+                    "effective_tokens_global": "cross_rank_sum",
+                    "samples_global": "cross_rank_sum",
+                    "world_size": world_size,
+                },
                 "token_budget_per_device": token_budget,
-                "loss": float(aggregate[0].item()),
+                "loss": float(event_stats["loss"]),
                 "gradient_norm": float(grad_norm),
                 "peak_memory_gib": peak_memory_gib,
                 "lr_projector": float(optimizer.param_groups[0]["lr"]),
@@ -808,7 +852,7 @@ def main() -> int:
     if rank == 0:
         raw_model = model.module if hasattr(model, "module") else model
         torch.save({"format": "groundanything-g2-adapter-projector-v2", "step": start_step, "state": adapter_state_dict(raw_model), "trainable_audit": audit, "manifest_sha256": manifest["rows_sha256"], "base_checkpoint": str(args.checkpoint), "training_contract": training_contract}, run_dir / "adapter_projector_final.pt")
-        (run_dir / "final_receipt.json").write_text(json.dumps({"status": "G2_EXACT_COVERAGE_TRAINING_COMPLETE" if args.coverage_mode == "exact_once" else "G2_FORMAL_TRAINING_COMPLETE", "steps": start_step, "last_events": completed[-10:], "manifest_sha256": manifest["rows_sha256"], "world_size": world_size, "coverage_mode": args.coverage_mode, "effective_global_batch": effective_global_batch, "training_contract": training_contract}, indent=2, ensure_ascii=False) + "\n")
+        (run_dir / "final_receipt.json").write_text(json.dumps({"status": "G2_EXACT_COVERAGE_TRAINING_COMPLETE" if args.coverage_mode == "exact_once" else "G2_FORMAL_TRAINING_COMPLETE", "event_schema_version": EVENT_SCHEMA_V2, "steps": start_step, "last_events": completed[-10:], "manifest_sha256": manifest["rows_sha256"], "world_size": world_size, "coverage_mode": args.coverage_mode, "effective_global_batch": effective_global_batch, "training_contract": training_contract}, indent=2, ensure_ascii=False) + "\n")
     if world_size > 1:
         dist.destroy_process_group()
     return 0

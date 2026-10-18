@@ -9,6 +9,7 @@ without deleting a partial result.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -69,22 +70,196 @@ def adapter_file(adapter: Path) -> Path:
     raise FileNotFoundError(f"No adapter weights in {adapter}")
 
 
-def final_training_receipt(training: Path) -> tuple[bool, dict[str, Any]]:
+def sha256(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(8 << 20), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def build_eval_env(gpu: int) -> dict[str, str]:
+    """Build one immutable environment for every held-out subprocess."""
+
+    return dict(
+        os.environ,
+        CUDA_VISIBLE_DEVICES=str(gpu),
+        PYTORCH_ALLOC_CONF="expandable_segments:True",
+    )
+
+
+def _resolve_training_file(training: Path, value: str) -> Path:
+    candidate = Path(value)
+    if candidate.is_absolute():
+        return candidate
+    # ``args.json`` stores paths relative to the OneJev repository, while
+    # checkpoints live on /data3.  Keep that historical launcher contract.
+    return (ROOT / candidate).resolve()
+
+
+def final_training_receipt(
+    training: Path,
+    *,
+    training_manifest: Path | None = None,
+    expected_training_manifest_sha256: str | None = None,
+    training_receipt: Path | None = None,
+) -> tuple[bool, dict[str, Any]]:
     state_path = training / "latest_training_state.json"
     if not state_path.is_file():
         return False, {"reason": "latest_training_state.json absent"}
-    state = json.loads(state_path.read_text())
+    try:
+        state = json.loads(state_path.read_text())
+    except (OSError, json.JSONDecodeError) as error:
+        return False, {"reason": "latest_training_state.json invalid", "error": str(error)}
     step = int(state.get("step", -1))
     adapter = training / "adapter-step1200"
-    if step < 1200:
-        return False, {"step": step, "reason": "final step not reached"}
+    if step != 1200:
+        return False, {"step": step, "reason": "durable final step must equal 1200"}
+    required_state = {
+        "format": "groundjev-full-fp32-adam-rng-v1",
+        "FP32_masters_and_Adam_moments_saved": True,
+        "scheduler_and_all_RNG_saved": True,
+    }
+    for key, expected in required_state.items():
+        if state.get(key) != expected:
+            return False, {"step": step, "reason": f"training state contract failed: {key}", "value": state.get(key)}
+    state_file = Path(str(state.get("path", "")))
+    if not state_file.is_file() or state_file.stat().st_size <= 0:
+        return False, {"step": step, "reason": "durable training state path missing or empty", "path": str(state_file)}
+    if int(state.get("bytes", 0)) <= 0:
+        return False, {"step": step, "reason": "durable training state byte receipt is not positive"}
     if not adapter.is_dir():
         return False, {"step": step, "reason": "adapter-step1200 absent"}
     try:
         weight = adapter_file(adapter)
     except FileNotFoundError as error:
         return False, {"step": step, "reason": str(error)}
-    return True, {"step": step, "adapter": str(adapter), "adapter_weights": str(weight), "state": str(state_path)}
+    if weight.stat().st_size <= 0:
+        return False, {"step": step, "reason": "adapter weights are empty", "adapter_weights": str(weight)}
+    config_path = adapter / "adapter_config.json"
+    try:
+        config = json.loads(config_path.read_text())
+    except (OSError, json.JSONDecodeError) as error:
+        return False, {"step": step, "reason": "adapter_config.json invalid", "error": str(error)}
+    expected_config = {
+        "r": 32,
+        "lora_alpha": 64,
+        "lora_dropout": 0.05,
+    }
+    for key, expected in expected_config.items():
+        if config.get(key) != expected:
+            return False, {"step": step, "reason": f"adapter config contract failed: {key}", "value": config.get(key)}
+    if not str(config.get("base_model_name_or_path", "")):
+        return False, {"step": step, "reason": "adapter base_model_name_or_path missing"}
+    if not isinstance(config.get("target_modules"), list) or not config["target_modules"]:
+        return False, {"step": step, "reason": "adapter target_modules missing or empty"}
+
+    args_path = training / "args.json"
+    if not args_path.is_file():
+        return False, {"step": step, "reason": "args.json absent"}
+    try:
+        training_args = json.loads(args_path.read_text())
+    except (OSError, json.JSONDecodeError) as error:
+        return False, {"step": step, "reason": "args.json invalid", "error": str(error)}
+    if int(training_args.get("max_steps", -1)) != 1200:
+        return False, {"step": step, "reason": "args.json max_steps is not 1200"}
+    resolved_manifest = training_manifest or _resolve_training_file(training, str(training_args.get("train_file", "")))
+    if not resolved_manifest.is_file() or resolved_manifest.stat().st_size <= 0:
+        return False, {"step": step, "reason": "training manifest missing or empty", "path": str(resolved_manifest)}
+    manifest_sha = sha256(resolved_manifest)
+    if expected_training_manifest_sha256 and manifest_sha != expected_training_manifest_sha256:
+        return False, {"step": step, "reason": "training manifest SHA mismatch", "path": str(resolved_manifest), "sha256": manifest_sha}
+
+    terminal = None
+    if training_receipt is not None:
+        try:
+            terminal = json.loads(training_receipt.read_text())
+        except (OSError, json.JSONDecodeError) as error:
+            return False, {"step": step, "reason": "training terminal receipt invalid", "error": str(error)}
+        if terminal.get("status") not in {"J1_TRAINING_COMPLETE", "TRAINING_COMPLETE", "COMPLETED"}:
+            return False, {"step": step, "reason": "training terminal receipt is not complete", "status": terminal.get("status")}
+        if int(terminal.get("step", 1200)) != 1200:
+            return False, {"step": step, "reason": "training terminal receipt step drift"}
+    return True, {
+        "step": step,
+        "adapter": str(adapter),
+        "adapter_weights": str(weight),
+        "state": str(state_path),
+        "state_bytes": int(state_file.stat().st_size),
+        "training_manifest": str(resolved_manifest),
+        "training_manifest_sha256": manifest_sha,
+        "adapter_config": config,
+        "training_terminal_receipt": str(training_receipt) if training_receipt else None,
+    }
+
+
+def manifest_frame_count(manifest: Path) -> int:
+    payload = json.loads(manifest.read_text())
+    images = payload.get("images")
+    frame_numbers = payload.get("frame_numbers")
+    if isinstance(images, list):
+        return len(images)
+    if isinstance(frame_numbers, list):
+        return len(frame_numbers)
+    raise ValueError(f"manifest has no images/frame_numbers list: {manifest}")
+
+
+def valid_inference_receipt(
+    result_file: Path,
+    manifest: Path,
+    *,
+    expected_task: str | None = None,
+    expected_scope: str | None = None,
+) -> tuple[bool, dict[str, Any]]:
+    try:
+        result = json.loads(result_file.read_text())
+        frame_count = manifest_frame_count(manifest)
+    except (OSError, ValueError, json.JSONDecodeError) as error:
+        return False, {"reason": "invalid inference receipt or manifest", "error": str(error)}
+    if result.get("status") not in {"VIDEO_INFERENCE_COMPLETE", "VIDEO_INFERENCE_COMPLETE_WITH_REJECTED_PERCEPTION"}:
+        return False, {"reason": "inference status is not terminal", "status": result.get("status")}
+    if expected_task is not None and result.get("task") != expected_task:
+        return False, {"reason": "inference task mismatch", "task": result.get("task")}
+    if expected_scope is not None and result.get("scope") != expected_scope:
+        return False, {"reason": "inference scope mismatch", "scope": result.get("scope")}
+    if int(result.get("frames", -1)) != frame_count:
+        return False, {"reason": "inference frame count mismatch", "frames": result.get("frames"), "manifest_frames": frame_count}
+    if result.get("all_input_frames_processed") is not True:
+        return False, {"reason": "all_input_frames_processed is not true"}
+    if result.get("gt_read_by_runtime") is True or result.get("future_frames_read_by_runtime") is True:
+        return False, {"reason": "runtime receipt indicates GT/future-frame access"}
+    rejected = result.get("perception_rejected_frames", [])
+    if not isinstance(rejected, list) or any(not isinstance(frame, int) or frame < 0 or frame >= frame_count for frame in rejected):
+        return False, {"reason": "rejected-frame receipt is malformed"}
+    latencies = result.get("latencies_seconds")
+    if isinstance(latencies, list) and len(latencies) != frame_count:
+        return False, {"reason": "latency list does not retain every input frame", "latencies": len(latencies), "frames": frame_count}
+    return True, {
+        "status": result.get("status"),
+        "task": result.get("task"),
+        "scope": result.get("scope"),
+        "frames": frame_count,
+        "rejected_frames": len(rejected),
+        "gt_read_by_runtime": False,
+        "future_frames_read_by_runtime": False,
+    }
+
+
+def valid_metrics_receipt(metrics_file: Path, manifest: Path, *, expected_task: str | None = None) -> tuple[bool, dict[str, Any]]:
+    try:
+        metrics = json.loads(metrics_file.read_text())
+        frame_count = manifest_frame_count(manifest)
+    except (OSError, ValueError, json.JSONDecodeError) as error:
+        return False, {"reason": "invalid metrics receipt or manifest", "error": str(error)}
+    if metrics.get("status") not in {"OFFICIAL_SCOPE_EVALUATION_COMPLETE", "OFFICIAL_REGISTERED_MULTITASK_SCOPE_EVALUATION_COMPLETE"}:
+        return False, {"reason": "metrics receipt is not terminal", "status": metrics.get("status")}
+    if expected_task is not None and metrics.get("task", "mot") != expected_task:
+        return False, {"reason": "metrics task mismatch", "task": metrics.get("task")}
+    if int(metrics.get("frames", -1)) != frame_count:
+        return False, {"reason": "metrics frame count mismatch", "frames": metrics.get("frames"), "manifest_frames": frame_count}
+    if not isinstance(metrics.get("metrics"), dict) or not metrics["metrics"]:
+        return False, {"reason": "metrics values missing"}
+    return True, {"status": metrics.get("status"), "task": metrics.get("task", "mot"), "frames": frame_count}
 
 
 def main() -> int:
@@ -97,6 +272,9 @@ def main() -> int:
     parser.add_argument("--manifest", type=Path, default=DEFAULT_MANIFEST)
     parser.add_argument("--out", type=Path, default=DEFAULT_OUT)
     parser.add_argument("--base", type=Path, default=ROOT / "models/OneJev-0.8B")
+    parser.add_argument("--training-manifest", type=Path, default=None)
+    parser.add_argument("--expected-training-manifest-sha256", default=None)
+    parser.add_argument("--training-receipt", type=Path, default=None)
     parser.add_argument("--decoder-url", default="http://127.0.0.1:8109/v1")
     parser.add_argument("--feature-url", default="http://127.0.0.1:8112")
     parser.add_argument("--gpu", type=int, default=4)
@@ -125,7 +303,7 @@ def main() -> int:
     }
     if state_path.is_file():
         previous = json.loads(state_path.read_text())
-        if previous.get("status") == "HELDOUT_DT1203_COMPLETE":
+        if previous.get("status") == "HELDOUT_ALL_REGISTERED_TASKS_COMPLETE":
             print(json.dumps(previous, indent=1), flush=True)
             return 0
         state["completed"] = previous.get("completed", {})
@@ -144,7 +322,12 @@ def main() -> int:
     if args.dry_run:
         state["status"] = "DRY_RUN_VALIDATED"
         state["completed"]["configuration"] = {
-            "training_final_receipt": final_training_receipt(args.training_root),
+            "training_final_receipt": final_training_receipt(
+                args.training_root,
+                training_manifest=args.training_manifest,
+                expected_training_manifest_sha256=args.expected_training_manifest_sha256,
+                training_receipt=args.training_receipt,
+            ),
             "mot_release_exists": args.mot_release.is_file(),
             "rmot_state_exists": args.rmot_state.is_file(),
             "manifest_exists": args.manifest.is_file(),
@@ -153,9 +336,17 @@ def main() -> int:
         return 0
 
     deadline = time.monotonic() + args.max_wait_hours * 3600
+    # A resumed owner may already have a DT1203 result and proceed directly to
+    # RMOT/OVMOT, so construct the shared environment before that branch.
+    env = build_eval_env(args.gpu)
     try:
         while True:
-            ready, receipt = final_training_receipt(args.training_root)
+            ready, receipt = final_training_receipt(
+                args.training_root,
+                training_manifest=args.training_manifest,
+                expected_training_manifest_sha256=args.expected_training_manifest_sha256,
+                training_receipt=args.training_receipt,
+            )
             if ready:
                 state["completed"]["j1_final"] = receipt
                 break
@@ -217,12 +408,21 @@ def main() -> int:
         state["completed"]["merge"] = receipt
 
         eval_out = args.out / "dt1203_j1_v4_birth"
-        if eval_out.exists() and any(eval_out.iterdir()) and not (eval_out / "result.json").is_file():
+        if not args.manifest.is_file():
+            return fail("held-out DT1203 manifest is missing", manifest=str(args.manifest))
+        expected_dt_scope = json.loads(args.manifest.read_text()).get("scope")
+        result_file = eval_out / "result.json"
+        if eval_out.exists() and any(eval_out.iterdir()) and not result_file.is_file():
             return fail("held-out output exists without a result receipt", output=str(eval_out))
-        if not (eval_out / "result.json").is_file():
+        if result_file.is_file():
+            valid, detail = valid_inference_receipt(
+                result_file, args.manifest, expected_task="mot", expected_scope=expected_dt_scope
+            )
+            if not valid:
+                return fail("held-out DT1203 result receipt failed validation", detail=detail)
+        else:
             state["status"] = "RUNNING_HELDOUT_DT1203"
             save()
-            env = dict(os.environ, CUDA_VISIBLE_DEVICES=str(args.gpu), PYTORCH_ALLOC_CONF="expandable_segments:True")
             command = [PY, str(ROOT / "tools/groundjev/run_video.py"),
                        "--task", "mot", "--video", str(args.manifest),
                        "--checkpoint", str(merged), "--backend", "trackjev",
@@ -235,9 +435,12 @@ def main() -> int:
             log_path = args.out / "dt1203_j1_v4_birth.log"
             with log_path.open("a") as log:
                 proc = subprocess.run(command, cwd=ROOT, env=env, stdout=log, stderr=subprocess.STDOUT)
-            if proc.returncode != 0 or not (eval_out / "result.json").is_file():
+            valid, detail = valid_inference_receipt(
+                result_file, args.manifest, expected_task="mot", expected_scope=expected_dt_scope
+            ) if result_file.is_file() else (False, {"reason": "result.json absent"})
+            if proc.returncode != 0 or not valid:
                 return fail("held-out DT1203 inference failed", returncode=proc.returncode, log=str(log_path))
-        state["completed"]["dt1203_inference"] = {"run": str(eval_out), "result": str(eval_out / "result.json")}
+        state["completed"]["dt1203_inference"] = {"run": str(eval_out), "result": str(result_file)}
 
         metrics_log = args.out / "dt1203_official_metrics.log"
         metrics_command = [PY, str(ROOT / "tools/groundjev/evaluate_video.py"),
@@ -254,9 +457,16 @@ def main() -> int:
             eval_out = multitask_root / name
             result_file = eval_out / "result.json"
             metrics_file = eval_out / "official_metrics.json"
+            expected_scope = json.loads(manifest.read_text()).get("scope")
             if eval_out.exists() and any(eval_out.iterdir()) and not result_file.is_file():
                 return fail("multitask output exists without a result receipt", name=name, output=str(eval_out))
-            if not result_file.is_file():
+            if result_file.is_file():
+                valid, detail = valid_inference_receipt(
+                    result_file, manifest, expected_task=task, expected_scope=expected_scope
+                )
+                if not valid:
+                    return fail("multitask result receipt failed validation", name=name, detail=detail)
+            else:
                 state["status"] = f"RUNNING_HELDOUT_{name.upper()}"
                 save()
                 command = [PY, str(ROOT / "tools/groundjev/run_video.py"),
@@ -271,18 +481,26 @@ def main() -> int:
                 log_path = args.out / f"{name}.log"
                 with log_path.open("a") as log:
                     proc = subprocess.run(command, cwd=ROOT, env=env, stdout=log, stderr=subprocess.STDOUT)
-                if proc.returncode != 0 or not result_file.is_file():
+                valid, detail = valid_inference_receipt(
+                    result_file, manifest, expected_task=task, expected_scope=expected_scope
+                ) if result_file.is_file() else (False, {"reason": "result.json absent"})
+                if proc.returncode != 0 or not valid:
                     return fail("multitask held-out inference failed", name=name,
-                                returncode=proc.returncode, log=str(log_path))
-            if not metrics_file.is_file():
+                                returncode=proc.returncode, log=str(log_path), detail=detail)
+            if metrics_file.is_file():
+                valid_metrics, metrics_detail = valid_metrics_receipt(metrics_file, manifest, expected_task=task)
+                if not valid_metrics:
+                    return fail("multitask official metrics receipt failed validation", name=name, detail=metrics_detail)
+            else:
                 metrics_log = args.out / f"{name}_official_metrics.log"
                 metrics_command = [PY, str(ROOT / "tools/groundjev/evaluate_multitask.py"),
                                    "--video", str(manifest), "--run", str(eval_out)]
                 with metrics_log.open("a") as log:
                     metrics_proc = subprocess.run(metrics_command, cwd=ROOT, stdout=log, stderr=subprocess.STDOUT)
-                if metrics_proc.returncode != 0 or not metrics_file.is_file():
+                valid_metrics, metrics_detail = valid_metrics_receipt(metrics_file, manifest, expected_task=task) if metrics_file.is_file() else (False, {"reason": "official_metrics.json absent"})
+                if metrics_proc.returncode != 0 or not valid_metrics:
                     return fail("multitask held-out evaluator failed", name=name,
-                                returncode=metrics_proc.returncode, log=str(metrics_log))
+                                returncode=metrics_proc.returncode, log=str(metrics_log), detail=metrics_detail)
             state["completed"][name] = {"run": str(eval_out), "result": str(result_file),
                                         "official_metrics": str(metrics_file)}
             save()

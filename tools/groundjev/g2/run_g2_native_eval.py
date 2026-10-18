@@ -21,6 +21,7 @@ from urllib.request import urlopen
 
 ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(ROOT))
+from tools.groundjev.g2.audit_clean_eval_chain import validate_bundle, validate_result
 from tools.groundjev.service_process_group import stop_owned_service
 
 
@@ -51,6 +52,7 @@ def run_logged(command: list[str], log: Path, env: dict[str, str]) -> None:
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--model", type=Path, required=True)
+    parser.add_argument("--bundle-receipt", type=Path, required=True)
     parser.add_argument("--out", type=Path, required=True)
     parser.add_argument("--reference-port", type=int, default=8101)
     parser.add_argument("--adapted-port", type=int, default=8113)
@@ -60,6 +62,7 @@ def main() -> int:
     model = args.model.resolve(strict=True)
     if not model.is_relative_to(ROOT / "models"):
         raise ValueError(f"G2 model must be under the GroundJEV model root: {model}")
+    clean_bundle = validate_bundle(model, args.bundle_receipt)
     if args.out.exists():
         raise FileExistsError(f"refusing to overwrite an existing evaluation: {args.out}")
     args.out.mkdir(parents=True)
@@ -74,6 +77,7 @@ def main() -> int:
         "reference_service": f"http://127.0.0.1:{args.reference_port}/v1",
         "adapted_service": f"http://127.0.0.1:{args.adapted_port}/v1",
         "physical_gpu": int(args.gpu),
+        "clean_bundle": clean_bundle,
         "scopes": [name for name, _, _ in SCOPES],
         "completed": {},
         "full_dataset_claim": False,
@@ -130,6 +134,10 @@ def main() -> int:
                     "--out", str(output),
                 ]
                 run_logged(command, args.out / f"{label}_{name}_inference.log", env)
+                result_path = output / "result.json"
+                if not result_path.is_file():
+                    raise RuntimeError(f"missing terminal result receipt for {label}/{name}")
+                result = validate_result(result_path, ONEJEV / manifest)
                 scorer = "tools/groundjev/evaluate_video.py" if task == "mot" else "tools/groundjev/evaluate_multitask.py"
                 run_logged([str(VENV), scorer, "--video", manifest, "--run", str(output)], args.out / f"{label}_{name}_eval.log", env)
                 expected = json.loads((ONEJEV / manifest).read_text())["frame_numbers"]
@@ -137,7 +145,7 @@ def main() -> int:
                 if observed != expected:
                     raise RuntimeError(f"frame contract drift for {label}/{name}: {len(observed)} vs {len(expected)}")
                 metrics = json.loads((output / "official_metrics.json").read_text())
-                state["completed"][f"{label}/{name}"] = metrics
+                state["completed"][f"{label}/{name}"] = {"result": result, "metrics": metrics}
                 save()
         state["status"] = "G2_NATIVE_SHORT_CONTROLS_COMPLETE"
         save()
