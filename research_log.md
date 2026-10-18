@@ -2890,3 +2890,10 @@ This environment does not provide the optional flash_attn or fla modules. The tr
 ## 2026-10-19 — G2 formal recovery relaunched
 
 The repaired formal G2 run was relaunched from the preserved step-1 checkpoint with the unchanged 199,053-row corpus (SHA b8df7365a1b1cda47489f8044d86c030be9ab17c48724b5b5620befb5c9eb76e), max_steps=1200, save interval 50, seed 20261019, and two DDP ranks on physical GPU3/GPU5 (master port 29633). The active command uses the packed/checkpointed route and the recorded cudnn_sdpa/checkpointed_chunk fallbacks. It is still running; no G2 quality metric or completion claim is made until the terminal receipt is written.
+
+
+## 2026-10-19 — TrackJEV redirect state audit
+
+The protected MOT20 G0 long export is terminal and complete (VIDEO_INFERENCE_COMPLETE_WITH_REJECTED_PERCEPTION, all 1,658 frames, exact resume prefix retained). The expression-conditioned RMOT pilot is terminal and complete for all 24 legal query manifests with failed=null; its proposals are recorded as native G0 expression-conditioned evidence. The actual MOT-only queue is terminal STOPPED_BY_USER_RESEARCH_PIVOT with formal_track_training_launched=false, so no abandoned MOT-only optimizer remains to be resumed.
+
+The real OneJev three-task course is active at step 550/1200 from the registered 43,533-row manifest: identity 21,168, RMOT 16,677, and OVMOT 5,688 rows, with multimodal DDP on GPU4/GPU6, FP32/Adam/RNG checkpointing, and no feature cache. The J1 held-out gate remains WAITING_J1_FINAL and owns no GPU until step 1200. GroundAnything G1 is preserved separately: its apply receipt records a 200-step projector delta with five tensors replaced and byte-identical frozen vision/language weights; the GPU5 retry2 G0/G1 controls completed, while the measured G1 detector comparison is retained as a negative/mixed control rather than promoted. No held-out result or final TrackJEV claim is made before J1 reaches its terminal receipt.
