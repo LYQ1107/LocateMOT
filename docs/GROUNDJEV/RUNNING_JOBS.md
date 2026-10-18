@@ -71,3 +71,16 @@ corrected owner completed all six controls and cleaned up its service:
 The completed scope is MOT4 + RMOT single8 + RMOT multi12, G0 versus G1 under
 the same scoring and association code. It is short functional evidence only;
 the full detector retention benchmark remains separate and G1 is not promoted.
+
+## 2026-10-18 21:43 CST — current continuation
+
+- J1 v4 birth is still the active two-rank GPU4+6 three-task run. It has a
+  complete resumable checkpoint at **step 300 / 1,200** (`latest_training_state.pt`
+  and `adapter-step300`); no final held-out score exists yet.
+- MOT20-05 G0 `resumed_v2` remains active with its explicit 4 GiB native
+  candidate budget and still has no `result.json`. The expression-conditioned
+  RMOT pilot remains correctly gated at `WAITING_MOT20_RELEASE` with zero model
+  inference queries.
+- The previous held-out gate owner had exited while waiting. It was reattached
+  as PID 3787439 against the live J1 PID 3029659; it is CPU-only and holds no
+  GPU allocation while waiting for the final receipt.
