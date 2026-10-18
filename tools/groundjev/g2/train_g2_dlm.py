@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import importlib.util
 import json
 import math
 import os
@@ -29,6 +30,15 @@ ROOT = Path(__file__).resolve().parents[3]
 OFFICIAL = ROOT / "external/GroundAnything"
 sys.path[:0] = [str(ROOT), str(OFFICIAL)]
 os.environ.setdefault("GAM_DLM_FLEX_CUDAGRAPHS", "0")
+# The released recipe prefers FlashAttention-2, but this environment does not
+# ship the optional ``flash_attn`` wheel.  GroundAnything provides an official
+# cuDNN varlen-SDPA fallback with the same packed stream contract; select it
+# only when FlashAttention is genuinely unavailable.
+if importlib.util.find_spec("flash_attn") is None:
+    os.environ.setdefault("GAM_DLM_PACKED_CLEAN_ATTENTION_BACKEND", "cudnn_sdpa")
+PACKED_LM_HEAD_LOSS_BACKEND = (
+    "fused" if importlib.util.find_spec("fla") is not None else "checkpointed_chunk"
+)
 
 from tools.groundjev.g2.compat import patch_transformers_causal_mask  # noqa: E402
 from tools.groundjev.g2.groundanything_lora import (  # noqa: E402
@@ -150,6 +160,25 @@ def load_model(checkpoint: Path, device: torch.device):
     model.to(device)
     model.base_model.model.visual.projector.float()
     freeze_all_except_projector_and_lora(model)
+    # Match the released DLM general recipe for the long-sequence route.  The
+    # first formal attempt used the legacy padded language loop and exhausted
+    # the remaining memory on a 2,193-token MOT20 row.  Padding-free packing
+    # and non-reentrant checkpointing bound the saved activations while keeping
+    # the official 0.5 MDM + 0.5 causal objective unchanged.
+    model.set_loss_contract(
+        casuallossenable=True,
+        mdm_loss_weight=0.5,
+        causal_loss_weight=0.5,
+    )
+    model.set_language_checkpoint_stride(0)
+    model.set_padding_free_packing(True)
+    model.set_packing_language_checkpoint_stride(1)
+    model.set_packing_linear_kernel("chunk")
+    model.set_packing_lm_head_loss(PACKED_LM_HEAD_LOSS_BACKEND, 128)
+    model.set_packing_activation_cpu_offload(False)
+    model.gradient_checkpointing_enable(
+        gradient_checkpointing_kwargs={"use_reentrant": False}
+    )
     audit = trainable_audit(model)
     if audit["vision_trainable_parameters"] != 0 or audit["original_language_base_trainable_parameters"] != 0:
         raise RuntimeError(f"frozen G2 policy failed: {audit}")
@@ -327,7 +356,7 @@ def main() -> int:
     run_dir = args.run_dir
     run_dir.mkdir(parents=True, exist_ok=True)
     if rank == 0:
-        (run_dir / "trainer_contract.json").write_text(json.dumps({"status": "G2_FORMAL_TRAINING_RUNNING", "created_localtime": time.strftime("%Y-%m-%d %H:%M:%S %z"), "rows": str(args.rows), "manifest": manifest, "mask_compatibility": mask_compatibility, "trainable_audit": audit, "world_size": world_size, "requested_physical_gpus": os.environ.get("CUDA_VISIBLE_DEVICES"), "max_steps": total_steps, "save_every": args.save_every, "sampler": sampler.metadata()}, indent=2, ensure_ascii=False) + "\n")
+        (run_dir / "trainer_contract.json").write_text(json.dumps({"status": "G2_FORMAL_TRAINING_RUNNING", "created_localtime": time.strftime("%Y-%m-%d %H:%M:%S %z"), "rows": str(args.rows), "manifest": manifest, "mask_compatibility": mask_compatibility, "trainable_audit": audit, "world_size": world_size, "requested_physical_gpus": os.environ.get("CUDA_VISIBLE_DEVICES"), "max_steps": total_steps, "save_every": args.save_every, "sampler": sampler.metadata(), "official_dlm_memory_contract": {"max_length": args.max_length, "max_joint_length": args.max_joint_length, "padding_free_packing": True, "gradient_checkpointing": True, "packing_language_checkpoint_stride": 1, "packing_linear_kernel": "chunk", "packing_lm_head_loss_backend": PACKED_LM_HEAD_LOSS_BACKEND, "packing_activation_cpu_offload": False, "packed_clean_attention_backend": os.environ.get("GAM_DLM_PACKED_CLEAN_ATTENTION_BACKEND")}}, indent=2, ensure_ascii=False) + "\n")
     for epoch in range(start_epoch, start_epoch + max(1, total_steps // max(1, len(sampler)) + 2)):
         sampler.set_epoch(epoch)
         loader = DataLoader(dataset, batch_size=1, sampler=sampler, num_workers=0, collate_fn=collator)
