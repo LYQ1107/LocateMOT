@@ -2077,3 +2077,10 @@ validity inventory, while the clean row filter excludes MOT20-05. Evidence is
 The GPU5 G1 continuation owner is registered in
 `tools/groundjev/queue_g1_gpu5_after_g2.py` and remains waiting for the clean
 G2 terminal receipt; it has produced no G1 checkpoint or quality claim yet.
+
+The clean G2 deployment handoff is registered in
+tools/groundjev/queue_g2_clean_bundle_export.py. Its single owner waits for
+the G2 exact-once receipt and G1 completion, then performs a CPU-only merge
+into models/GroundAnything-DLM-G2-CLEAN-V2; its state is
+outputs/groundjev/ground_adaptation/g2_clean_bundle_export_v1/owner_state.json.
+No bundle promotion or quality claim is made before that receipt.

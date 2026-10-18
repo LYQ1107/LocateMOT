@@ -48,3 +48,7 @@ Its `launch_contract.json`, `trainer_contract.json`, `launch.log`,
 record. At publication time the owner has passed initialization and is running;
 no detector, MOT, RMOT, or OVMOT quality result is claimed until its terminal
 receipt and independent evaluation are complete.
+
+## Deployment handoff registered 2026-10-19
+
+The CPU-only owner tools/groundjev/queue_g2_clean_bundle_export.py is registered against the exact G2 terminal receipt and the GPU5 G1 queue receipt. It waits internally, then invokes g2/export_g2_checkpoint.py to create the immutable models/GroundAnything-DLM-G2-CLEAN-V2 bundle with the 569 native tensors, the clean manifest SHA, and an export receipt. It refuses to overwrite an existing bundle and records explicit dependency failure states. This owner is running under outputs/groundjev/ground_adaptation/g2_clean_bundle_export_v1/owner_state.json; the bundle and any G2 quality claim remain pending until the terminal receipts exist.

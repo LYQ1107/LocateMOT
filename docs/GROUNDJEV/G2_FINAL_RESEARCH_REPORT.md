@@ -18,3 +18,5 @@ intersection. The raw MOT20 directory is still scanned for validity statistics,
 so the audit's raw inventory includes the excluded MOT20-05 directory; this does
 not alter the clean manifest. G1 GPU5 adaptation is registered behind the clean
 G2 terminal receipt and has not been counted as complete.
+
+The deployable clean G2 export is also registered as a dependent CPU-only handoff. It waits for both the exact G2 terminal receipt and the G1 GPU5 queue receipt, then merges the adapter into a fresh G0 copy while preserving the source bundle. Until that handoff writes G2_CLEAN_DEPLOYMENT_BUNDLE_EXPORTED, there is no promoted G2 detector and no final comparison result.
