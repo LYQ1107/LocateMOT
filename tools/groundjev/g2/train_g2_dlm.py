@@ -264,8 +264,12 @@ def main() -> int:
     parser.add_argument("--save-every", type=int, default=50)
     parser.add_argument("--seed", type=int, default=20261019)
     parser.add_argument("--resume", type=Path, default=None)
-    parser.add_argument("--max-length", type=int, default=2048)
-    parser.add_argument("--max-joint-length", type=int, default=4096)
+    # The official DLM SFT contract uses 4096 text tokens and 8192 joint
+    # tokens.  G2-A used a deliberately smaller 2048/4096 gate; formal rows
+    # include crowded MOT20 answers that legitimately exceed that preflight
+    # bound, so the formal default must match the official recipe.
+    parser.add_argument("--max-length", type=int, default=4096)
+    parser.add_argument("--max-joint-length", type=int, default=8192)
     args = parser.parse_args()
     if not torch.cuda.is_available():
         raise RuntimeError("G2 formal trainer requires CUDA")
