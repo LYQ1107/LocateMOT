@@ -20,3 +20,8 @@ The environment has neither optional flash_attn nor fla; the trainer records and
 ## 2026-10-19 — formal recovery relaunched
 
 The repaired formal run was relaunched from the preserved step-1 checkpoint with the unchanged 199,053-row manifest (SHA b8df7365a1b1cda47489f8044d86c030be9ab17c48724b5b5620befb5c9eb76e), max_steps=1200, save interval 50, seed 20261019, and two DDP ranks on physical GPU3/GPU5 (master port 29633). The packed/checkpointed route and recorded cudnn_sdpa/checkpointed_chunk fallbacks are active. The command is still running; no G2 quality metric or completion claim is made before its terminal receipt.
+
+
+## 2026-10-19 — formal recovery evidence checkpoint
+
+The repaired formal process is live and has written atomic checkpoints through step 650. Recent events remain finite (step 650 loss 1.5408508778, gradient norm 4.7876658430); the run continues toward step 1200 with the unchanged corpus and objective. This is training-progress evidence only, not a detector or tracking quality result.
