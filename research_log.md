@@ -2,6 +2,13 @@
 
 Concise experimental log (latest first).
 
+## 2026-10-18 — Expanded held-out gate to all three task loops
+
+- The held-out owner now preserves DT1203 MOT and additionally schedules the
+  registered RMOT single/multi validation scopes plus TAO validation videos 4
+  and 63 with official multitask metrics. It passed a dry-run at J1 step300 and
+  was replaced as a CPU-only owner without changing training or GPU ownership.
+
 ## 2026-10-18 — J1 step300 and held-out gate reattached
 
 - The live J1 three-task run reached a complete step300 checkpoint with
