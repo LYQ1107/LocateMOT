@@ -1176,3 +1176,6 @@ execution evidence only; no quality claim is made.
 
 
 2026-10-19 — J1 durable step1150/1200 is present with the full FP32/Adam/scheduler/RNG recovery state; the latest logged step is 1140 and finite. Clean G2 advanced to event1167 with finite loss. Final receipts are still absent, so the registered held-out, G1 GPU5, and bundle owners remain waiting; no live task was restarted or changed.
+
+
+2026-10-19 — J1 slow-batch diagnostic at log step1160: rank0 is sleeping in futex_wait_queue_me while rank1 is actively running (state R), with the torchrun parent in do_select. This confirms an active long batch/synchronization phase rather than a two-rank deadlock; the log mtime is recent and no failure receipt exists. No process or checkpoint was interrupted.
