@@ -1173,3 +1173,6 @@ execution evidence only; no quality claim is made.
 
 
 2026-10-19 — J1 durable step1100/1200 is complete with FP32/Adam/scheduler/RNG state and finite step-1100 metrics. Clean G2 crossed event1000 and is now at event1014 with finite loss. Neither terminal receipt exists; the registered held-out gate, G1 GPU5 queue, and clean bundle exporter remain dependency-gated. No live process or checkpoint was modified.
+
+
+2026-10-19 — J1 durable step1150/1200 is present with the full FP32/Adam/scheduler/RNG recovery state; the latest logged step is 1140 and finite. Clean G2 advanced to event1167 with finite loss. Final receipts are still absent, so the registered held-out, G1 GPU5, and bundle owners remain waiting; no live task was restarted or changed.
