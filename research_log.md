@@ -1149,3 +1149,6 @@ execution evidence only; no quality claim is made.
 
 
 2026-10-19 — clean G2 crossed the registered step-300 runtime milestone. The active GPU3/GPU5 torchrun is still live at event step301/18227 with finite loss 1.813610, 16842 logged effective tokens, and 17.3718 GiB latest peak memory; no terminal receipt or durable step-500 checkpoint exists. J1 remains live on GPU4/GPU6 at durable step800/1200 with no final receipt. The existing G1 GPU5 queue, clean bundle exporter, and J1 held-out gate remain dependency owners; no process or checkpoint was restarted or altered.
+
+
+2026-10-19 — read-only J1 stall diagnostic. Durable state remains step800/1200 and the final receipt is absent. The torchrun parent and both rank workers are alive; at the snapshot the parent was in do_select and both workers were sleeping in futex_wait_queue_me, with no failure/exception receipt. This is compatible with a distributed synchronization or long batch and is not evidence of a failed run, so no process, sampler, optimizer, or checkpoint was restarted.
