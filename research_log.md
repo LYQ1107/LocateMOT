@@ -2,6 +2,37 @@
 
 Concise experimental log (latest first).
 
+## 2026-10-18 — DeepSeek Harness handoff re-audit and active continuation
+
+- The requested GroundJEV-MOT redirection was checked against the actual
+  DeepSeek Harness SSH-job records and live child processes. Harness launcher
+  records with `exit_code=0` are not completion receipts: the detached
+  children for the three-task SFT and MOT20 export are still alive. The live
+  research checkouts remain `/data2/user/LocateMOT_OneJev_CVPR` and
+  `/data2/user/LocateMOT_GroundJEV`; this root checkout is still the required
+  project identity `/data2/user/LocateMOT`.
+- Active work: `trackjev_3task_J1_v4_birth` (PID 3029659, ranks 3029872 and
+  3029873) is a real MOT/RMOT/OVMOT run over 43,533 rows (21,168 / 16,677 /
+  5,688), using GPUs 4 and 6. The latest observed log is step 280/1,200 and
+  step 250 has a complete FP32-master/Adam/scheduler/RNG restore state; the
+  old MOT-only training has no residual process.
+- Protected export: MOT20-05 `mot20_MOT20-05_resumed_v2` (PID 3743898) is
+  still restoring the exact 1,560-frame prefix and running with the explicit
+  4 GiB native-feature budget after the earlier 2 GiB failure. It has no
+  `result.json` yet. The expression-conditioned RMOT pilot (PID 3744099)
+  remains correctly gated on that receipt and has performed zero model
+  inference or optimizer updates.
+- GPU5 is not idle: its active compute owner is another user's
+  `/data2/OCD/TALON` process. The existing GroundAnything G1 evidence already
+  contains a complete 200/200 projector adaptation and G0/G1 comparison; the
+  measured result is a retained negative detector adaptation. No foreign job
+  was stopped and no duplicate G1 run was started.
+- Next recovery point: let the protected MOT20 export and J1 checkpoint reach
+  their registered completion boundaries, then run the prepared
+  expression-conditioned RMOT pilot and an independent held-out evaluation
+  from the latest valid J1 adapter. No benchmark success or unified-goal
+  completion is claimed in this audit.
+
 ## 2026-10-01 — latest R1 restoration completed
 
 - Hypothesis: restore only the newest R1 execution boundary and its legal
