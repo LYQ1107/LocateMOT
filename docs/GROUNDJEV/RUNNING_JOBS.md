@@ -57,3 +57,17 @@ GPU0–3、GPU5 为其他用户作业，未停止或复用。当前没有残留�
 - GPU5 is occupied by another user's `/data2/OCD/TALON` process. Existing G1
   evidence already contains the complete 200-step adaptation and its G0/G1
   comparison; do not relaunch G1 or touch that foreign allocation.
+
+## 2026-10-18 22:xx CST — GPU5 shared G1 functional control
+
+The user explicitly allowed GPU5 when its memory fit. A short G1 retention
+control was therefore run alongside TALON without stopping or changing the
+foreign processes. The first two launches were preserved as startup failures
+(a shared-model path isolation check, then a wrong virtualenv path); the
+corrected owner completed all six controls and cleaned up its service:
+
+`outputs/groundjev/full_data_v2/g1_tracking_controls_20261018_gpu5_retry2/`
+
+The completed scope is MOT4 + RMOT single8 + RMOT multi12, G0 versus G1 under
+the same scoring and association code. It is short functional evidence only;
+the full detector retention benchmark remains separate and G1 is not promoted.
