@@ -38,3 +38,7 @@
 | expression RMOT pilot | CPU 计划已完成，24 queries / 12 legal videos / 4,416 frames；等待 MOT20 释放共享服务 |
 
 GPU0–3、GPU5 为其他用户作业，未停止或复用。当前没有残留的 MOT-only 长训练进程。
+
+## RMOT 队列续接
+
+`tools/groundjev/run_expression_rmot_pilot.py` 已作为独立 session（PID 3741385）运行，单 worker 顺序处理 24 个 expression-conditioned legal TRAIN 查询。第一个查询已经进入真实帧推理；旧的启动碰撞目录保留为 `*.failed_attempt`，队列会从无 `result.json` 的边界重试，不覆盖有效结果。
