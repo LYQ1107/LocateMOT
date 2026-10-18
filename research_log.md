@@ -2866,3 +2866,12 @@ G2-A passed a real native DLM forward/backward/Adam-step gate on three supervisi
 ## 2026-10-19 — G2 formal full-data run launched
 
 After the G2-A native gate, ten-source coverage audit, row-contract/path audit, and one-step two-rank smoke all passed, formal G2 training launched with two DDP ranks on physical GPU3/GPU5 using `.venv-onejev-py310`, master port 29619, max_steps=1200, and checkpoint interval 50. The input manifest SHA remains b8df7365a1b1cda47489f8044d86c030be9ab17c48724b5b5620befb5c9eb76e. The run directory is `/data3/user/LocateMOT-runs/GroundAnythingG2/G2_PROJECTOR_QWEN3_LORA_FULLDATA/formal_g2_1200`; no held-out media or existing J1/MOT20/RMOT owner is touched. Formal completion and detector/tracking evaluation remain pending.
+
+
+## 2026-10-19 — GroundAnything G2 coverage audit, corpus, and DDP smoke
+
+The resolved TRAIN-only audit follows the distributed data layout and avoids held-out media. TAO-Amodal has all 18,274 TRAIN images available across /data0, /data1, /data2, and /data3. RMOT26 has all images referenced by its primary train annotation rows, but its download receipt still records 20 failed assets, so the source remains PARTIAL_DOWNLOADS. BURST has 500 TRAIN annotation sequences but no legal TRAIN image root in this checkout; it is excluded rather than substituting TAO test frames.
+
+The G2 row builder emitted 199,053 validated official rows with absolute image paths and bytes=null: MOT17 15,948, MOT20 8,931, DanceTrack 41,796, SportsMOT 28,574, AnimalTrack 11,543, Refer-KITTI-V2 4,333, AerialMind 45,625 dense plus 23,733 referring, RMOT26 296 referring, and TAO-Amodal 18,274. The 2,246 rejected rows are retained in a separate JSONL with source and reason; no row path is missing, no official evaluation video appears, and all rows pass the official uniform row contract. Corpus SHA is b8df7365a1b1cda47489f8044d86c030be9ab17c48724b5b5620befb5c9eb76e.
+
+A first two-rank DDP launch under system Python failed before model loading because that interpreter had no accelerate package. The failure is preserved as an environment issue. Re-running with the same project .venv-onejev-py310 used by G2-A passed one native optimizer step on physical GPU3/GPU5, including finite gradients, distributed synchronization, and atomic adapter-step000001/latest_training_state checkpoints. The cards were co-resident with pre-existing work and were not modified. Formal full-data training is now gated only by the registered long-run launch and later held-out evaluation; no G2 quality score is claimed yet.
