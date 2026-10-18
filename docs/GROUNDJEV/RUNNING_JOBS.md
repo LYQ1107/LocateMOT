@@ -41,4 +41,4 @@ GPU0–3、GPU5 为其他用户作业，未停止或复用。当前没有残留�
 
 ## RMOT 队列续接
 
-`tools/groundjev/run_expression_rmot_pilot.py` 已作为独立 session（PID 3741385）运行，单 worker 顺序处理 24 个 expression-conditioned legal TRAIN 查询。第一个查询已经进入真实帧推理；旧的启动碰撞目录保留为 `*.failed_attempt`，队列会从无 `result.json` 的边界重试，不覆盖有效结果。
+原 MOT20-05 owner 在第 1,561 帧因默认 2 GiB native-feature budget 退出；1,560 帧前缀和失败日志保留。恢复任务 `mot20_MOT20-05_resumed_v2` 使用显式 4 GiB budget（PID 3743898）从该前缀继续。`run_expression_rmot_pilot.py` 队列（PID 3744099）只等待该恢复目录的 `result.json`，确认完整后才顺序处理 24 个 expression-conditioned 查询；RMOT 失败尝试目录保持为 `*.failed_attempt`。
