@@ -53,3 +53,11 @@ The raw MOT20 checkout still contains the MOT20-05 directory because it is the
 evaluation source tree; the clean builder excludes that sequence before row
 creation. Evidence is retained at
 `/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/g2_clean_data_contract_audit_v2.json`.
+
+## Latest submission audit
+
+A read-only audit receipt is written at
+/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/latest_submission_audit_20261019.json.
+It verifies the exact clean row SHA and base-model SHA used by the live owner,
+with no non-finite, skip, or truncation event detected in the observed G2
+events. The audit preserves the explicit BURST gap and MOT20-05 exclusion.

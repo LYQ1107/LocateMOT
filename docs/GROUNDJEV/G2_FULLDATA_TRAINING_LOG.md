@@ -53,3 +53,13 @@ the rows SHA remains
 The audit also scans the raw MOT20 directory, so its inventory lists the
 excluded MOT20-05 directory; that raw-tree observation is not a clean-row
 inclusion. No active owner or checkpoint was modified.
+
+## 2026-10-19 — latest submission audit receipt
+
+The read-only audit entrypoint tools/groundjev/audit_latest_submission.py recorded
+the live state without touching any owner. The clean G2 event log is finite at
+the observed step, and its recorded/actual manifest SHA and base-model SHA
+match. The J1 log has an observed step 680 while its durable FP32/Adam/RNG
+checkpoint is step 650; these are reported separately. The G1 continuation,
+G2 bundle export, and J1 held-out gate are still dependency waiters, so no
+quality or promotion claim is made.
