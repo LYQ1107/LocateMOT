@@ -1164,3 +1164,6 @@ execution evidence only; no quality claim is made.
 
 
 2026-10-19 — runtime milestone update: J1 now has a durable step950/1200 FP32/Adam/scheduler/RNG state (log step940, finite loss and 43.86 s/step at that record); clean G2 has advanced to event step651 with finite loss and global accounting audit still applicable. No final receipt exists for either run. The held-out gate remains WAITING_J1_FINAL, G1 remains WAITING_G2_CLEAN_SUCCESS on GPU5, and the clean bundle exporter remains WAITING_G2_AND_G1_TERMINAL; no active task was changed.
+
+
+2026-10-19 — J1 crossed the next durable boundary: latest log and FP32/Adam/scheduler/RNG state are both at step1000/1200 with finite training metrics; no final receipt exists yet. Clean G2 has advanced to event step786 with finite loss and the registered global-accounting audit unchanged. The held-out gate remains waiting on the registered J1 PID and final receipt; G1 and bundle owners remain dependency-gated. No active process or checkpoint was restarted or altered.
