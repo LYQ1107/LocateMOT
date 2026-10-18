@@ -1152,3 +1152,6 @@ execution evidence only; no quality claim is made.
 
 
 2026-10-19 — read-only J1 stall diagnostic. Durable state remains step800/1200 and the final receipt is absent. The torchrun parent and both rank workers are alive; at the snapshot the parent was in do_select and both workers were sleeping in futex_wait_queue_me, with no failure/exception receipt. This is compatible with a distributed synchronization or long batch and is not evidence of a failed run, so no process, sampler, optimizer, or checkpoint was restarted.
+
+
+2026-10-19 — J1 timing interpretation corrected from the read-only log: steps720–800 report 29.21–43.34 seconds per optimizer step, with finite losses/gradients and normal examples/tokens throughput. The absence of a newer durable state is therefore consistent with the registered long runtime (roughly hours for the remaining 400 steps), not a proven deadlock. The active process remains untouched.
