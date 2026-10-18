@@ -2854,3 +2854,10 @@ The released expression-conditioned RMOT pilot remains healthy: owner status RUN
 ## 2026-10-18 23:38 CST — expression RMOT pilot passed midpoint
 
 The expression-conditioned RMOT pilot remains healthy at 13 of 24 legal query manifests complete. The owner is still RUNNING_EXPRESSION_RMOT_PILOT with failed=null; no held-out or validation video has entered the queue, and no optimizer update is performed by this export.
+
+
+## 2026-10-18 — GroundAnything G2-A native optimization gate passed
+
+The isolated GroundAnything G2 line was initialized from `models/GroundAnything-DLM` after auditing the pinned official source at commit `8a3b43a1b42952e117960e85d63ff173bb9fba0a`. The task text referenced `e054ab329...`, but that revision is not the checkout's actual official HEAD; the actual pinned revision and source-file hashes are recorded in the G2 audit receipts. GPU3 and GPU5 were free at the one-time resource audit; J1 on GPU4/6, protected GroundAnything services on GPU7, and the active MOT20/RMOT owners were left untouched.
+
+G2-A passed a real native DLM forward/backward/Adam-step gate on three supervision modes: dense MOT20, referring RMOT, and TAO-Amodal OVMOT. Vision and the original language weights remained frozen; the projector exposed 27,267,584 trainable parameters and Qwen3 q/k/v/o LoRA exposed 11,796,480 trainable parameters across 36 layers. The official mixed objective remains 0.5 MDM + 0.5 causal, with projector/LoRA learning rates 2e-6/7e-6 and AdamW. Losses were 1.24458, 1.39893, and 1.53041, with finite nonzero gradients in both projector and LoRA and a completed optimizer update. Peak allocation was 39,124,467,712 bytes on one 80-GB GPU. A narrow Transformers 5.17 compatibility shim for the removed `cache_position` keyword is recorded and covered by the gate. This is a preflight receipt only; formal ten-dataset G2 training has not started while dataset coverage and legal TRAIN-only row preparation are audited.
