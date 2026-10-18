@@ -13,15 +13,30 @@ The formal run is launched after the above gates with two ranks on physical GPU3
 
 ## 2026-10-19 — official memory route repair
 
-The first 4,096/8,192 recovery reached mot20_MOT20-05_001167_dense but exhausted GPU memory because the custom trainer still used the legacy padded language loop while GPU3/GPU5 each had an unrelated 18.5-GiB resident workload. The valid step-1 checkpoint was preserved. The trainer now enables the official DLM general memory route: padding-free packing, non-reentrant language gradient checkpointing at every packed layer, chunk linear kernel, and no activation CPU offload.
+The first 4,096/8,192 recovery reached `mot20_MOT20-05_001167_dense` but exhausted GPU memory because the custom trainer still used the legacy padded language loop while GPU3/GPU5 each had an unrelated 18.5-GiB resident workload. The valid step-1 checkpoint was preserved. The trainer now enables the official DLM general memory route: padding-free packing, non-reentrant language gradient checkpointing at every packed layer, chunk linear kernel, and no activation CPU offload.
 
-The environment has neither optional flash_attn nor fla; the trainer records and selects GroundAnything's supported cudnn_sdpa packed clean-attention fallback and checkpointed_chunk LM-head fallback. A two-rank long-row regression with one 2,193-token MOT20 sample per rank completed one optimizer step on physical GPU3/GPU5 (loss 2.0606513, gradient norm 5.1535301) and wrote atomic checkpoint/final receipts. This is a memory/continuation gate only; no G2 quality result is claimed.
+The environment has neither optional `flash_attn` nor `fla`; the trainer records and selects GroundAnything's supported `cudnn_sdpa` packed clean-attention fallback and `checkpointed_chunk` LM-head fallback. A two-rank long-row regression with one 2,193-token MOT20 sample per rank completed one optimizer step on physical GPU3/GPU5 (loss 2.0606513, gradient norm 5.1535301) and wrote atomic checkpoint/final receipts. This is a memory/continuation gate only; no G2 quality result is claimed.
 
 ## 2026-10-19 — formal recovery relaunched
 
-The repaired formal run was relaunched from the preserved step-1 checkpoint with the unchanged 199,053-row manifest (SHA b8df7365a1b1cda47489f8044d86c030be9ab17c48724b5b5620befb5c9eb76e), max_steps=1200, save interval 50, seed 20261019, and two DDP ranks on physical GPU3/GPU5 (master port 29633). The packed/checkpointed route and recorded cudnn_sdpa/checkpointed_chunk fallbacks are active. The command is still running; no G2 quality metric or completion claim is made before its terminal receipt.
-
+The repaired formal run was relaunched from the preserved step-1 checkpoint with the unchanged 199,053-row manifest (SHA `b8df7365a1b1cda47489f8044d86c030be9ab17c48724b5b5620befb5c9eb76e`), `max_steps=1200`, save interval 50, seed `20261019`, and two DDP ranks on physical GPU3/GPU5 (master port `29633`). The packed/checkpointed route and recorded `cudnn_sdpa`/`checkpointed_chunk` fallbacks are active. The command is still running; no G2 quality metric or completion claim is made before its terminal receipt.
 
 ## 2026-10-19 — formal recovery evidence checkpoint
 
-The repaired formal process is live and has written atomic checkpoints through step 650. Recent events remain finite (step 650 loss 1.5408508778, gradient norm 4.7876658430); the run continues toward step 1200 with the unchanged corpus and objective. This is training-progress evidence only, not a detector or tracking quality result.
+The repaired formal process is live and has written atomic checkpoints through step 650. Recent events remain finite (for example step 650 loss `1.5408508778`, gradient norm `4.7876658430`); the run continues toward step 1200 with the unchanged corpus and objective. This is training-progress evidence only, not a detector or tracking quality result.
+
+## 2026-10-19 — historical G2 terminal receipt and clean V2 launch
+
+The historical `formal_g2_1200` owner completed step 1200 with finite loss
+`1.7369554043` and gradient norm `14.4138050079`. Its terminal receipt is
+`G2_FORMAL_TRAINING_COMPLETE`, but its 199,053-row manifest contains 3,317
+MOT20-05 rows. It is therefore retained as a contaminated engineering
+checkpoint, not an independent held-out result.
+
+The corrected `G2_CLEAN_FULL_COVERAGE_V2` manifest contains 583,251 unique
+rows and excludes MOT20-05, TAO Novel/sparse negatives and placeholder RMOT
+queries. A two-rank BS2/accumulation smoke and a strict step-1 resume replay
+passed. The formal clean owner starts from G0 `GroundAnything-DLM` on physical
+GPU3/GPU5 with global batch 32 and a planned 18,227 optimizer updates. It is
+running under the V2 report; no quality metric is available before its
+terminal checkpoint and independent evaluation.

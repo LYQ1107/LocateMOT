@@ -12,6 +12,7 @@ available TRAIN rows while avoiding a first-epoch dominated by MOT17.
 from __future__ import annotations
 
 import argparse
+import contextlib
 import hashlib
 import importlib.util
 import json
@@ -132,6 +133,154 @@ class BalancedSourceSampler:
         }
 
 
+class ExactCoverageSampler:
+    """Deterministic source-interleaved sampler with one-pass row coverage.
+
+    The old G2 sampler deliberately repeated short sources.  That is useful for
+    a balanced engineering probe, but it cannot support a claim that a clean
+    coverage epoch exposed every valid row.  This sampler interleaves shuffled
+    source pools until every pool is exhausted, then adds only the minimum
+    deterministic tail needed to make distributed gradient accumulation
+    batches rectangular.  The tail is recorded as padding and is never counted
+    as an independently covered training row.
+    """
+
+    def __init__(
+        self,
+        dataset: JsonlDataset,
+        *,
+        seed: int,
+        rank: int,
+        world_size: int,
+        micro_batch_size: int,
+        grad_accum_steps: int,
+    ) -> None:
+        if micro_batch_size <= 0 or grad_accum_steps <= 0:
+            raise ValueError("micro_batch_size and grad_accum_steps must be positive")
+        self.dataset = dataset
+        self.seed = int(seed)
+        self.rank = int(rank)
+        self.world_size = int(world_size)
+        self.micro_batch_size = int(micro_batch_size)
+        self.grad_accum_steps = int(grad_accum_steps)
+        self.global_batch_multiple = (
+            self.world_size * self.micro_batch_size * self.grad_accum_steps
+        )
+        source_indices: dict[str, list[int]] = defaultdict(list)
+        source_keys: list[str] = []
+        video_keys: list[str] = []
+        image_keys: list[str] = []
+        for index in range(len(dataset)):
+            row = dataset[index]
+            source = str(row.get("source", "unknown")).split(":", 1)[0]
+            source_indices[source].append(index)
+            source_keys.append(source)
+            images = row.get("images") or []
+            image_path = ""
+            if images and isinstance(images[0], dict):
+                image_path = str(images[0].get("path") or "")
+            image_keys.append(image_path or str(row.get("id", index)))
+            if image_path:
+                video_keys.append(f"{source}:{Path(image_path).parent.as_posix()}")
+            else:
+                video_keys.append(f"{source}:{str(row.get('id', index)).rsplit('_', 1)[0]}")
+        if not source_indices:
+            raise RuntimeError("exact coverage sampler received an empty dataset")
+        self.source_indices = {key: value for key, value in sorted(source_indices.items())}
+        self.sources = tuple(self.source_indices)
+        self.source_keys = tuple(source_keys)
+        self.video_keys = tuple(video_keys)
+        self.image_keys = tuple(image_keys)
+        self.epoch = 0
+        self._order: list[int] | None = None
+        self._audit: dict[str, Any] | None = None
+
+    def __len__(self) -> int:
+        total = len(self.dataset)
+        padded = (-total) % self.global_batch_multiple
+        return (total + padded) // self.world_size
+
+    def set_epoch(self, epoch: int) -> None:
+        self.epoch = int(epoch)
+        self._order = None
+        self._audit = None
+
+    def _build_order(self) -> list[int]:
+        if self._order is not None:
+            return self._order
+        rng = np.random.default_rng(self.seed + self.epoch)
+        pools: dict[str, list[int]] = {}
+        for source, values in self.source_indices.items():
+            shuffled = list(values)
+            rng.shuffle(shuffled)
+            pools[source] = shuffled
+        order: list[int] = []
+        max_rows = max(len(values) for values in pools.values())
+        for position in range(max_rows):
+            for source in self.sources:
+                values = pools[source]
+                if position < len(values):
+                    order.append(values[position])
+        real_rows = len(order)
+        padded = (-real_rows) % self.global_batch_multiple
+        if padded:
+            # Padding is deliberately copied from the beginning of this same
+            # epoch.  It is visible to the model only to keep all ranks and
+            # accumulation windows aligned and is explicitly audited below.
+            order.extend(order[:padded])
+        if len(order) % self.world_size:
+            raise RuntimeError("exact coverage order is not divisible by world size")
+        scheduled_sources = defaultdict(int)
+        scheduled_videos: set[str] = set()
+        scheduled_images: set[str] = set()
+        for index in order[:real_rows]:
+            scheduled_sources[self.source_keys[index]] += 1
+            scheduled_videos.add(self.video_keys[index])
+            scheduled_images.add(self.image_keys[index])
+        padding_sources = defaultdict(int)
+        for index in order[real_rows:]:
+            padding_sources[self.source_keys[index]] += 1
+        self._audit = {
+            "epoch": self.epoch,
+            "real_rows": real_rows,
+            "scheduled_rows_including_padding": len(order),
+            "unique_rows": len(set(order[:real_rows])),
+            "padding_rows": padded,
+            "source_rows_total": {key: len(value) for key, value in self.source_indices.items()},
+            "source_rows_scheduled": dict(sorted(scheduled_sources.items())),
+            "source_padding_rows": dict(sorted(padding_sources.items())),
+            "video_keys_total": len(set(self.video_keys)),
+            "video_keys_scheduled": len(scheduled_videos),
+            "image_keys_total": len(set(self.image_keys)),
+            "image_keys_scheduled": len(scheduled_images),
+            "world_size": self.world_size,
+            "micro_batch_size": self.micro_batch_size,
+            "grad_accum_steps": self.grad_accum_steps,
+            "effective_global_batch": self.global_batch_multiple,
+        }
+        self._order = order
+        return order
+
+    def __iter__(self) -> Iterator[int]:
+        order = self._build_order()
+        return iter(order[self.rank :: self.world_size])
+
+    def metadata(self) -> dict[str, Any]:
+        self._build_order()
+        return {
+            "algorithm": "g2-exact-source-interleave-pcg64-v2",
+            "coverage_mode": "exact_once",
+            "sources": list(self.sources),
+            "epoch": self.epoch,
+            "rank": self.rank,
+            "world_size": self.world_size,
+            "micro_batch_size": self.micro_batch_size,
+            "grad_accum_steps": self.grad_accum_steps,
+            "effective_global_batch": self.global_batch_multiple,
+            "audit": self._audit,
+        }
+
+
 def load_model(checkpoint: Path, device: torch.device):
     from accelerate import init_empty_weights
     from safetensors import safe_open
@@ -213,8 +362,64 @@ def atomic_torch_save(payload: dict[str, Any], path: Path) -> None:
     temporary = path.with_suffix(path.suffix + ".tmp")
     import torch
 
+    path.parent.mkdir(parents=True, exist_ok=True)
     torch.save(payload, temporary)
     temporary.replace(path)
+
+
+def trainable_signature(model: Any) -> dict[str, dict[str, Any]]:
+    """Return a strict name/shape/dtype contract for trainable tensors."""
+
+    raw_model = model.module if hasattr(model, "module") else model
+    return {
+        name: {
+            "shape": list(parameter.shape),
+            "dtype": str(parameter.dtype),
+            "numel": int(parameter.numel()),
+        }
+        for name, parameter in raw_model.named_parameters()
+        if parameter.requires_grad
+    }
+
+
+def save_rank_rng(run_dir: Path, *, step: int, rank: int) -> Path:
+    """Save each rank's RNG independently before rank-zero checkpointing."""
+
+    path = run_dir / "checkpoints" / "rng" / f"step{step:06d}.rank{rank:04d}.pt"
+    atomic_torch_save(
+        {
+            "format": "groundanything-g2-rank-rng-v1",
+            "step": int(step),
+            "rank": int(rank),
+            "rng_state": rng_state(),
+        },
+        path,
+    )
+    return path
+
+
+def _strict_load_trainable_state(raw_model: Any, saved: dict[str, Any]) -> None:
+    expected = {
+        name: parameter
+        for name, parameter in raw_model.named_parameters()
+        if parameter.requires_grad
+    }
+    if set(saved) != set(expected):
+        missing = sorted(set(expected) - set(saved))
+        unexpected = sorted(set(saved) - set(expected))
+        raise RuntimeError(
+            "strict G2 adapter restore key drift: "
+            f"missing={missing[:8]} unexpected={unexpected[:8]}"
+        )
+    with __import__("torch").no_grad():
+        for name, parameter in expected.items():
+            value = saved[name]
+            if list(value.shape) != list(parameter.shape):
+                raise RuntimeError(
+                    f"strict G2 adapter restore shape drift for {name}: "
+                    f"saved={tuple(value.shape)} current={tuple(parameter.shape)}"
+                )
+            parameter.copy_(value.to(device=parameter.device, dtype=parameter.dtype))
 
 
 def save_checkpoint(
@@ -231,12 +436,14 @@ def save_checkpoint(
     base_checkpoint: Path,
     audit: dict[str, Any],
     injection: Any,
+    training_contract: dict[str, Any],
+    rank_rng_paths: dict[str, Path],
 ) -> Path:
     import torch
 
     raw_model = model.module if hasattr(model, "module") else model
     state = {
-        "format": "groundanything-g2-projector-qwen3-lora-v1",
+        "format": "groundanything-g2-projector-qwen3-lora-v2-strict",
         "step": int(step),
         "epoch": int(epoch),
         "sampler_position": int(position),
@@ -248,12 +455,18 @@ def save_checkpoint(
         "trainable_audit": audit,
         "lora_injection": {"names": list(injection.names), "rank": injection.rank, "alpha": injection.alpha, "dropout": injection.dropout},
         "model_trainable_state": adapter_state_dict(raw_model),
+        "trainable_signature": trainable_signature(raw_model),
         "optimizer_state": optimizer.state_dict(),
         "scheduler_state": scheduler.state_dict(),
         "rng_state": rng_state(),
+        "rank_rng_paths": {
+            str(rank): {"path": str(path), "sha256": sha256(path)}
+            for rank, path in sorted(rank_rng_paths.items())
+        },
         "sampler": sampler.metadata(),
         "objective": {"mdm_loss_weight": 0.5, "causal_loss_weight": 0.5},
         "optimizer_contract": {"projector_lr": 2e-6, "lora_lr": 7e-6, "weight_decay": 0.1, "gradient_clip": 1.0, "scheduler": "cosine_with_min_lr", "min_lr_rate": 0.1, "warmup_ratio": 0.03},
+        "training_contract": training_contract,
     }
     checkpoints = run_dir / "checkpoints"
     checkpoints.mkdir(parents=True, exist_ok=True)
@@ -293,6 +506,21 @@ def main() -> int:
     parser.add_argument("--save-every", type=int, default=50)
     parser.add_argument("--seed", type=int, default=20261019)
     parser.add_argument("--resume", type=Path, default=None)
+    parser.add_argument(
+        "--coverage-mode",
+        choices=("balanced_round_robin", "exact_once"),
+        default="balanced_round_robin",
+        help="Use the historical repeated-source sampler or one-pass clean coverage.",
+    )
+    parser.add_argument("--micro-batch-size", type=int, default=1)
+    parser.add_argument("--grad-accum-steps", type=int, default=1)
+    parser.add_argument("--expected-global-batch", type=int, default=None)
+    parser.add_argument(
+        "--token-budget",
+        type=int,
+        default=0,
+        help="Audited per-device token envelope; 0 uses max_joint_length * micro_batch_size.",
+    )
     # The official DLM SFT contract uses 4096 text tokens and 8192 joint
     # tokens.  G2-A used a deliberately smaller 2048/4096 gate; formal rows
     # include crowded MOT20 answers that legitimately exceed that preflight
@@ -316,13 +544,40 @@ def main() -> int:
     torch.manual_seed(args.seed + rank)
     torch.cuda.manual_seed_all(args.seed + rank)
 
+    if args.micro_batch_size <= 0 or args.grad_accum_steps <= 0:
+        raise ValueError("--micro-batch-size and --grad-accum-steps must be positive")
+    effective_global_batch = world_size * args.micro_batch_size * args.grad_accum_steps
+    if args.expected_global_batch is not None and effective_global_batch != args.expected_global_batch:
+        raise RuntimeError(
+            "effective global batch contract drift: "
+            f"actual={effective_global_batch} expected={args.expected_global_batch}"
+        )
+    token_budget = int(args.token_budget or (args.max_joint_length * args.micro_batch_size))
+    if token_budget <= 0:
+        raise ValueError("token budget must be positive")
+
     manifest = json.loads(args.manifest.read_text())
     if manifest["rows_path"] != str(args.rows):
         raise RuntimeError("manifest rows path drift")
     if sha256(args.rows) != manifest["rows_sha256"]:
         raise RuntimeError("G2 rows SHA drift")
     dataset = JsonlDataset(args.rows)
-    sampler = BalancedSourceSampler(dataset, seed=args.seed, rank=rank, world_size=world_size)
+    if args.coverage_mode == "exact_once":
+        sampler = ExactCoverageSampler(
+            dataset,
+            seed=args.seed,
+            rank=rank,
+            world_size=world_size,
+            micro_batch_size=args.micro_batch_size,
+            grad_accum_steps=args.grad_accum_steps,
+        )
+    else:
+        if args.micro_batch_size != 1 or args.grad_accum_steps != 1:
+            raise RuntimeError(
+                "historical balanced_round_robin mode is only valid with its original "
+                "micro_batch=1, grad_accum=1 contract"
+            )
+        sampler = BalancedSourceSampler(dataset, seed=args.seed, rank=rank, world_size=world_size)
     model, processor, injection, audit = load_model(args.checkpoint, device)
     if world_size > 1:
         model = DistributedDataParallel(model, device_ids=[local_rank], output_device=local_rank, find_unused_parameters=False)
@@ -336,17 +591,64 @@ def main() -> int:
     total_steps = int(args.max_steps)
     warmup_steps = max(1, int(round(total_steps * 0.03)))
     scheduler = make_scheduler(optimizer, warmup_steps, total_steps)
+    optimizer_contract = {
+        "projector_lr": 2e-6,
+        "lora_lr": 7e-6,
+        "weight_decay": 0.1,
+        "gradient_clip": 1.0,
+        "scheduler": "cosine_with_min_lr",
+        "min_lr_rate": 0.1,
+        "warmup_ratio": 0.03,
+    }
+    training_contract = {
+        "coverage_mode": args.coverage_mode,
+        "micro_batch_size": args.micro_batch_size,
+        "grad_accum_steps": args.grad_accum_steps,
+        "effective_global_batch": effective_global_batch,
+        "token_budget_per_device": token_budget,
+        "max_steps": total_steps,
+        "warmup_steps": warmup_steps,
+        "max_length": args.max_length,
+        "max_joint_length": args.max_joint_length,
+        "world_size": world_size,
+        "seed": args.seed,
+        "objective": {"mdm_loss_weight": 0.5, "causal_loss_weight": 0.5},
+        "optimizer_contract": optimizer_contract,
+    }
     start_step = 0
     start_epoch = 0
     start_position = 0
     if args.resume is not None:
         state = torch.load(args.resume, map_location="cpu", weights_only=False)
+        if state.get("format") != "groundanything-g2-projector-qwen3-lora-v2-strict":
+            raise RuntimeError("strict G2 resume requires a v2 checkpoint; refusing legacy state")
         if state["manifest_sha256"] != manifest["rows_sha256"] or int(state["world_size"]) != world_size:
             raise RuntimeError("resume checkpoint manifest/world-size drift")
-        raw_model.load_state_dict(state["model_trainable_state"], strict=False)
+        expected_base_sha = sha256(args.checkpoint / "model.safetensors")
+        if state.get("base_model_safetensors_sha256") != expected_base_sha:
+            raise RuntimeError("resume checkpoint base-model SHA drift")
+        expected_injection = {"names": list(injection.names), "rank": injection.rank, "alpha": injection.alpha, "dropout": injection.dropout}
+        if state.get("lora_injection") != expected_injection:
+            raise RuntimeError("resume checkpoint LoRA module/rank/alpha/dropout drift")
+        if state.get("trainable_signature") != trainable_signature(raw_model):
+            raise RuntimeError("resume checkpoint trainable key/shape/dtype drift")
+        if state.get("training_contract") != training_contract:
+            raise RuntimeError("resume checkpoint training contract drift (including max_steps or batch size)")
+        if state.get("optimizer_contract") != optimizer_contract:
+            raise RuntimeError("resume checkpoint optimizer contract drift")
+        _strict_load_trainable_state(raw_model, state["model_trainable_state"])
         optimizer.load_state_dict(state["optimizer_state"])
         scheduler.load_state_dict(state["scheduler_state"])
-        restore_rng(state["rng_state"])
+        rank_rng = state.get("rank_rng_paths", {}).get(str(rank))
+        if not rank_rng:
+            raise RuntimeError(f"strict G2 resume has no RNG sidecar for rank {rank}")
+        rank_rng_path = Path(rank_rng["path"])
+        if not rank_rng_path.is_file() or sha256(rank_rng_path) != rank_rng["sha256"]:
+            raise RuntimeError(f"strict G2 rank RNG sidecar missing or changed: {rank_rng_path}")
+        rank_rng_payload = torch.load(rank_rng_path, map_location="cpu", weights_only=False)
+        if int(rank_rng_payload.get("rank", -1)) != rank:
+            raise RuntimeError("strict G2 rank RNG identity drift")
+        restore_rng(rank_rng_payload["rng_state"])
         start_step = int(state["step"])
         start_epoch = int(state["epoch"])
         start_position = int(state["sampler_position"])
@@ -356,45 +658,157 @@ def main() -> int:
     run_dir = args.run_dir
     run_dir.mkdir(parents=True, exist_ok=True)
     if rank == 0:
-        (run_dir / "trainer_contract.json").write_text(json.dumps({"status": "G2_FORMAL_TRAINING_RUNNING", "created_localtime": time.strftime("%Y-%m-%d %H:%M:%S %z"), "rows": str(args.rows), "manifest": manifest, "mask_compatibility": mask_compatibility, "trainable_audit": audit, "world_size": world_size, "requested_physical_gpus": os.environ.get("CUDA_VISIBLE_DEVICES"), "max_steps": total_steps, "save_every": args.save_every, "sampler": sampler.metadata(), "official_dlm_memory_contract": {"max_length": args.max_length, "max_joint_length": args.max_joint_length, "padding_free_packing": True, "gradient_checkpointing": True, "packing_language_checkpoint_stride": 1, "packing_linear_kernel": "chunk", "packing_lm_head_loss_backend": PACKED_LM_HEAD_LOSS_BACKEND, "packing_activation_cpu_offload": False, "packed_clean_attention_backend": os.environ.get("GAM_DLM_PACKED_CLEAN_ATTENTION_BACKEND")}}, indent=2, ensure_ascii=False) + "\n")
-    for epoch in range(start_epoch, start_epoch + max(1, total_steps // max(1, len(sampler)) + 2)):
+        (run_dir / "trainer_contract.json").write_text(json.dumps({"status": "G2_FORMAL_TRAINING_RUNNING", "created_localtime": time.strftime("%Y-%m-%d %H:%M:%S %z"), "rows": str(args.rows), "manifest": manifest, "mask_compatibility": mask_compatibility, "trainable_audit": audit, "world_size": world_size, "requested_physical_gpus": os.environ.get("CUDA_VISIBLE_DEVICES"), "max_steps": total_steps, "save_every": args.save_every, "sampler": sampler.metadata(), "training_contract": training_contract, "official_dlm_memory_contract": {"max_length": args.max_length, "max_joint_length": args.max_joint_length, "padding_free_packing": True, "gradient_checkpointing": True, "packing_language_checkpoint_stride": 1, "packing_linear_kernel": "chunk", "packing_lm_head_loss_backend": PACKED_LM_HEAD_LOSS_BACKEND, "packing_activation_cpu_offload": False, "packed_clean_attention_backend": os.environ.get("GAM_DLM_PACKED_CLEAN_ATTENTION_BACKEND")}}, indent=2, ensure_ascii=False) + "\n")
+    if len(sampler) % args.micro_batch_size:
+        raise RuntimeError(
+            "sampler length is not divisible by micro-batch size; refusing to drop rows "
+            f"silently: sampler={len(sampler)} micro_batch={args.micro_batch_size}"
+        )
+    local_batches_per_epoch = len(sampler) // args.micro_batch_size
+    # A clean exact-once pass needs one complete epoch.  The range also leaves
+    # room for a later hard-example epoch when max_steps exceeds the first
+    # coverage pass, without changing the deterministic sampler contract.
+    max_epochs = max(1, math.ceil(total_steps / max(1, local_batches_per_epoch // args.grad_accum_steps)) + 1)
+    trainable = [parameter for parameter in raw_model.parameters() if parameter.requires_grad]
+    micro_in_update = 0
+    accumulated_loss = 0.0
+    accumulated_tokens = 0
+    accumulated_samples = 0
+    for epoch in range(start_epoch, start_epoch + max_epochs):
         sampler.set_epoch(epoch)
-        loader = DataLoader(dataset, batch_size=1, sampler=sampler, num_workers=0, collate_fn=collator)
+        loader = DataLoader(
+            dataset,
+            batch_size=args.micro_batch_size,
+            sampler=sampler,
+            num_workers=0,
+            collate_fn=collator,
+            drop_last=False,
+        )
         for position, batch in enumerate(loader):
             if epoch == start_epoch and position < start_position:
                 continue
             if start_step >= total_steps:
                 break
-            batch = {key: value.to(device) if torch.is_tensor(value) else value for key, value in batch.items()}
-            optimizer.zero_grad(set_to_none=True)
-            with torch.autocast("cuda", dtype=torch.bfloat16):
-                output = model(**batch)
-                loss = output.loss
-            if not torch.isfinite(loss):
-                raise RuntimeError(f"non-finite G2 loss at step {start_step + 1}")
-            loss.backward()
-            trainable = [parameter for parameter in raw_model.parameters() if parameter.requires_grad]
+            if micro_in_update == 0:
+                optimizer.zero_grad(set_to_none=True)
+                torch.cuda.reset_peak_memory_stats(device)
+            batch = {
+                key: value.to(device) if torch.is_tensor(value) else value
+                for key, value in batch.items()
+            }
+            padded_tokens = int(batch["input_ids"].numel())
+            if padded_tokens > token_budget:
+                raise RuntimeError(
+                    f"dynamic token budget exceeded at epoch={epoch} batch={position}: "
+                    f"padded_tokens={padded_tokens} budget={token_budget}"
+                )
+            batch_tokens = int(batch["attention_mask"].sum().item())
+            batch_samples = int(batch["input_ids"].shape[0])
+            sync_now = micro_in_update + 1 >= args.grad_accum_steps
+            sync_context = (
+                contextlib.nullcontext()
+                if sync_now or world_size == 1
+                else model.no_sync()
+            )
+            with sync_context:
+                with torch.autocast("cuda", dtype=torch.bfloat16):
+                    output = model(**batch)
+                    raw_loss = output.loss
+                if not torch.isfinite(raw_loss):
+                    raise RuntimeError(f"non-finite G2 loss at optimizer step {start_step + 1}")
+                (raw_loss / args.grad_accum_steps).backward()
+            accumulated_loss += float(raw_loss.detach())
+            accumulated_tokens += batch_tokens
+            accumulated_samples += batch_samples
+            micro_in_update += 1
+            if not sync_now:
+                continue
             grad_norm = torch.nn.utils.clip_grad_norm_(trainable, 1.0)
             if not torch.isfinite(grad_norm):
-                raise RuntimeError(f"non-finite G2 gradient at step {start_step + 1}")
+                raise RuntimeError(f"non-finite G2 gradient at optimizer step {start_step + 1}")
             optimizer.step()
             scheduler.step()
             start_step += 1
             start_position = position + 1
-            completed.append({"step": start_step, "epoch": epoch, "position": start_position, "loss": float(loss.detach()), "gradient_norm": float(grad_norm), "lr_projector": float(optimizer.param_groups[0]["lr"]), "lr_lora": float(optimizer.param_groups[1]["lr"])})
-            if rank == 0 and (start_step == 1 or start_step % args.save_every == 0 or start_step == total_steps):
-                saved = save_checkpoint(model=model, optimizer=optimizer, scheduler=scheduler, run_dir=run_dir, step=start_step, epoch=epoch, position=start_position, sampler=sampler, manifest=manifest, base_checkpoint=args.checkpoint, audit=audit, injection=injection)
-                with (run_dir / "training_events.jsonl").open("a", encoding="utf-8") as handle:
-                    handle.write(json.dumps({**completed[-1], "checkpoint": str(saved), "time": time.strftime("%Y-%m-%d %H:%M:%S %z")}, ensure_ascii=False) + "\n")
+            peak_memory_gib = float(torch.cuda.max_memory_allocated(device) / (1024**3))
+            aggregate = torch.tensor(
+                [accumulated_loss / args.grad_accum_steps, float(accumulated_tokens), float(accumulated_samples)],
+                device=device,
+                dtype=torch.float64,
+            )
             if world_size > 1:
-                dist.barrier()
+                dist.all_reduce(aggregate, op=dist.ReduceOp.SUM)
+                aggregate /= world_size
+            event = {
+                "step": start_step,
+                "epoch": epoch,
+                "position": start_position,
+                "micro_batches": args.grad_accum_steps,
+                "samples_global": int(round(float(aggregate[2].item()))),
+                "effective_tokens_global": int(round(float(aggregate[1].item()))),
+                "token_budget_per_device": token_budget,
+                "loss": float(aggregate[0].item()),
+                "gradient_norm": float(grad_norm),
+                "peak_memory_gib": peak_memory_gib,
+                "lr_projector": float(optimizer.param_groups[0]["lr"]),
+                "lr_lora": float(optimizer.param_groups[1]["lr"]),
+            }
+            completed.append(event)
+            should_save = start_step == 1 or start_step % args.save_every == 0 or start_step == total_steps
+            saved: Path | None = None
+            if should_save:
+                local_rng_path = save_rank_rng(run_dir, step=start_step, rank=rank)
+                if world_size > 1:
+                    gathered_rng: list[str | None] = [None for _ in range(world_size)]
+                    dist.all_gather_object(gathered_rng, str(local_rng_path))
+                else:
+                    gathered_rng = [str(local_rng_path)]
+                if rank == 0:
+                    saved = save_checkpoint(
+                        model=model,
+                        optimizer=optimizer,
+                        scheduler=scheduler,
+                        run_dir=run_dir,
+                        step=start_step,
+                        epoch=epoch,
+                        position=start_position,
+                        sampler=sampler,
+                        manifest=manifest,
+                        base_checkpoint=args.checkpoint,
+                        audit=audit,
+                        injection=injection,
+                        training_contract=training_contract,
+                        rank_rng_paths={str(index): Path(path) for index, path in enumerate(gathered_rng) if path},
+                    )
+                if world_size > 1:
+                    dist.barrier()
+            if rank == 0:
+                with (run_dir / "training_events.jsonl").open("a", encoding="utf-8") as handle:
+                    handle.write(
+                        json.dumps(
+                            {**event, "checkpoint": str(saved) if saved else None, "time": time.strftime("%Y-%m-%d %H:%M:%S %z")},
+                            ensure_ascii=False,
+                        )
+                        + "\n"
+                    )
+            micro_in_update = 0
+            accumulated_loss = 0.0
+            accumulated_tokens = 0
+            accumulated_samples = 0
+            if start_step >= total_steps:
+                break
+        if micro_in_update:
+            raise RuntimeError(
+                "coverage epoch ended with an incomplete gradient accumulation window: "
+                f"micro_batches={micro_in_update} grad_accum_steps={args.grad_accum_steps}"
+            )
         if start_step >= total_steps:
             break
         start_position = 0
     if rank == 0:
         raw_model = model.module if hasattr(model, "module") else model
-        torch.save({"format": "groundanything-g2-adapter-projector-v1", "step": start_step, "state": adapter_state_dict(raw_model), "trainable_audit": audit, "manifest_sha256": manifest["rows_sha256"], "base_checkpoint": str(args.checkpoint)}, run_dir / "adapter_projector_final.pt")
-        (run_dir / "final_receipt.json").write_text(json.dumps({"status": "G2_FORMAL_TRAINING_COMPLETE", "steps": start_step, "last_events": completed[-10:], "manifest_sha256": manifest["rows_sha256"], "world_size": world_size}, indent=2, ensure_ascii=False) + "\n")
+        torch.save({"format": "groundanything-g2-adapter-projector-v2", "step": start_step, "state": adapter_state_dict(raw_model), "trainable_audit": audit, "manifest_sha256": manifest["rows_sha256"], "base_checkpoint": str(args.checkpoint), "training_contract": training_contract}, run_dir / "adapter_projector_final.pt")
+        (run_dir / "final_receipt.json").write_text(json.dumps({"status": "G2_EXACT_COVERAGE_TRAINING_COMPLETE" if args.coverage_mode == "exact_once" else "G2_FORMAL_TRAINING_COMPLETE", "steps": start_step, "last_events": completed[-10:], "manifest_sha256": manifest["rows_sha256"], "world_size": world_size, "coverage_mode": args.coverage_mode, "effective_global_batch": effective_global_batch, "training_contract": training_contract}, indent=2, ensure_ascii=False) + "\n")
     if world_size > 1:
         dist.destroy_process_group()
     return 0

@@ -1,5 +1,32 @@
 # G2 multidomain supervision and coverage
 
+## Clean V2 protocol (2026-10-19)
+
+The clean course is registered in
+`/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/g2_clean_train_manifest.json`.
+It supersedes the old row counts for new training only; the old manifest and
+checkpoint remain immutable evidence. Clean rows are TRAIN-only and use the
+following corrected coverage:
+
+| Dataset | Clean rows | Policy |
+| --- | ---: | --- |
+| Refer-KITTI-V2 | 379,341 | all legal fit labeled frames per expression |
+| AerialMind | 69,358 | existing dense/referring official adapter |
+| DanceTrack | 41,796 | TRAIN sequences |
+| TAO-Amodal Base | 30,781 | one reliable Base category per row; Novel and sparse negatives excluded |
+| SportsMOT | 28,574 | TRAIN sequences |
+| MOT17 | 15,948 | `mark==1`, `class==1` person boxes |
+| AnimalTrack | 11,543 | TRAIN videos |
+| MOT20 | 5,616 | MOT20-01/02/03 only; MOT20-05 frozen holdout |
+| RMOT26 | 294 | exact normalized source questions and initial target boxes |
+
+Total clean rows: 583,251; rejects: 2,249. BURST remains an explicit zero-row
+gap because no legal TRAIN image root is available. The clean manifest records
+source/video/image coverage and both row/reject SHA values.
+
+The previous table below describes the historical 199,053-row engineering
+corpus. It is retained for reproducibility and is not a clean held-out claim.
+
 The G2 corpus is TRAIN-only. Every emitted row has the official four-key schema `id/messages/images/source`; messages carry canonical GroundAnything prompts and answers, while the collator decodes media online from absolute paths. The row file and source counts are registered in `/data3/user/LocateMOT-runs/GroundAnythingG2/G2_PROJECTOR_QWEN3_LORA_FULLDATA/g2_train_manifest.json`.
 
 | Dataset | Supervision in current corpus | Rows | Coverage decision |
