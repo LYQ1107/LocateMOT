@@ -62,7 +62,7 @@ def main() -> int:
     manifests = sorted((args.plan / "manifests").glob("*.json"))
     assert len(manifests) == len(plan["selected_queries"]) == 24
     output_root = args.plan / "runs"
-    output_root.mkdir()
+    output_root.mkdir(exist_ok=True)
     state_path = args.plan / "owner_state.json"
     state: dict[str, Any] = {
         "status": "WAITING_MOT20_RELEASE",
