@@ -52,3 +52,14 @@ receipts, not inferred process names.
    held-out results. Until these receipts exist, no unified quality improvement
    is claimed.
 
+## Follow-up snapshot
+
+The later authoritative read recorded clean G2 event step `172/18227` and J1
+durable step `750/1200`. Both owners were still alive, with no G2 final
+receipt, no G2 step-500 durable checkpoint, and no J1 final receipt. The GPU5
+G1 queue remained `WAITING_G2_CLEAN_SUCCESS`; the clean-bundle exporter
+remained `WAITING_G2_AND_G1_TERMINAL`; and the J1 held-out owner remained
+`WAITING_J1_FINAL`. The active G2 process still uses the pre-v2 event schema,
+so `samples_global=16` remains a raw logged field and must be interpreted
+through the read-only accounting audit. No process, optimizer, sampler,
+checkpoint, service, or owner state was modified by this audit.

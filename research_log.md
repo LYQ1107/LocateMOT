@@ -1126,3 +1126,18 @@ while `adapter-step700` remains the latest durable FP32/Adam/RNG restore point.
 The GPU5 G1 queue and clean-bundle exporter remain live dependency owners, not
 failed jobs. No MOT-only process appeared, and no held-out evaluation was
 started before the required terminal receipts.
+
+## 2026-10-19 — live dependency progress revalidated (step 172 / 750)
+
+One authoritative snapshot confirms the clean G2 torchrun is still alive on
+GPU3/GPU5 at event step172/18227; its terminal receipt and durable step-500
+checkpoint are absent. The active process still reports pre-v2
+`samples_global=16`; the read-only global-accounting audit remains the only
+corrected interpretation and no process was reloaded. J1 remains alive on
+GPU4/GPU6 with durable `groundjev-full-fp32-adam-rng-v1` step750/1200 and
+complete FP32/Adam/scheduler/RNG state; its final receipt is absent. The J1
+held-out owner remains `WAITING_J1_FINAL`, the fresh GPU5 G1 owner remains
+`WAITING_G2_CLEAN_SUCCESS`, and the clean bundle exporter remains
+`WAITING_G2_AND_G1_TERMINAL`. No MOT-only process was restarted and no
+optimizer, sampler, checkpoint, service, or owner state was changed. This is
+execution evidence only; no quality claim is made.
