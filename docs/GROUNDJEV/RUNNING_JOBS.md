@@ -58,7 +58,7 @@ GPU0–3、GPU5 为其他用户作业，未停止或复用。当前没有残留�
   evidence already contains the complete 200-step adaptation and its G0/G1
   comparison; do not relaunch G1 or touch that foreign allocation.
 
-## 2026-10-18 22:xx CST — GPU5 shared G1 functional control
+## 2026-10-18 21:42 CST — GPU5 shared G1 functional control
 
 The user explicitly allowed GPU5 when its memory fit. A short G1 retention
 control was therefore run alongside TALON without stopping or changing the
