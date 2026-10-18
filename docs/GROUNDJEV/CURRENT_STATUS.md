@@ -2045,3 +2045,42 @@ A read-only original-owner checkpoint observer is registered at
 `outputs/groundjev/training/full_joint_source_actual1000_observer_v1/`;
 1000-step full FP32/Adam/all-rank-RNG verification remains pending until its
 actual save is available. It neither restarts training nor allocates a GPU.
+## GroundJEV-MOT current execution — 2026-10-19
+
+- **G2 historical:** `formal_g2_1200` completed step 1,200, but the old
+  199,053-row manifest contains 3,317 MOT20-05 rows. Preserve it as an
+  engineering checkpoint; do not call it independent held-out.
+- **G2 clean:** `G2_CLEAN_FULL_COVERAGE_V2` has 583,251 unique rows, 2,249
+  rejects, no MOT20-05, TAO Base-only labels, all legal Refer-KITTI frames,
+  and exact RMOT questions. The formal owner is running from G0 on GPU3/5
+  with micro-batch 2, accumulation 8, global batch 32, and 18,227 planned
+  optimizer updates. Smoke and strict two-rank resume gates passed.
+- **J1:** OneJev `trackjev_3task_J1_v4_birth` remains active on GPU4/6. Its
+  latest durable audit is step 650 with 10,368 rows seen from 43,533; FP32,
+  Adam, scheduler and RNG state are saved. This is not full-data completion.
+- **Evaluation:** the prior G0 short control timed out at frame 302 before any
+  G2 comparison. MOT20-05 export and RMOT pilot receipts remain preserved;
+  the completed G0 MOT20-05 export now has an official scope score (HOTA
+  0.433441, DetA 0.638348, AssA 0.294655, IDF1 0.441085, IDSW 6239,
+  FP 6325, FN 98471) with 183 rejected frames retained in the denominator.
+  Independent G2/J1 evaluation still waits for terminal training receipts.
+
+The detailed clean audit, coverage contract, and J1/J2 budget are in
+`G2_DATA_LEAKAGE_AND_LABEL_AUDIT.md`, `G2_FULL_COVERAGE_V2_REPORT.md`, and
+`J1_J2_TRAINING_BUDGET_AUDIT.md`.
+
+The clean manifest was re-audited after launch: 583,251 unique rows, zero
+MOT20-05 rows, zero RMOT placeholder rows, and no cross-source absolute media
+path intersection. The raw MOT20 directory still appears in the audit's
+validity inventory, while the clean row filter excludes MOT20-05. Evidence is
+`/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/g2_clean_data_contract_audit_v2.json`.
+The GPU5 G1 continuation owner is registered in
+`tools/groundjev/queue_g1_gpu5_after_g2.py` and remains waiting for the clean
+G2 terminal receipt; it has produced no G1 checkpoint or quality claim yet.
+
+The clean G2 deployment handoff is registered in
+tools/groundjev/queue_g2_clean_bundle_export.py. Its single owner waits for
+the G2 exact-once receipt and G1 completion, then performs a CPU-only merge
+into models/GroundAnything-DLM-G2-CLEAN-V2; its state is
+outputs/groundjev/ground_adaptation/g2_clean_bundle_export_v1/owner_state.json.
+No bundle promotion or quality claim is made before that receipt.
