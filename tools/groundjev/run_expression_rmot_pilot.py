@@ -52,6 +52,8 @@ def main() -> int:
     parser.add_argument("--plan", type=Path, default=DEFAULT_PLAN)
     parser.add_argument("--wait-pid", type=int, required=True)
     parser.add_argument("--wait-command-fragment", default="mot20_MOT20-05.json")
+    parser.add_argument("--release-result", type=Path, required=True,
+                        help="Protected upstream result.json required before this queue uses shared services")
     parser.add_argument("--decoder-url", default="http://127.0.0.1:8109/v1")
     parser.add_argument("--feature-url", default="http://127.0.0.1:8112")
     parser.add_argument("--poll-seconds", type=int, default=20)
@@ -104,6 +106,14 @@ def main() -> int:
             if not exists:
                 break
             time.sleep(args.poll_seconds)
+        if not args.release_result.is_file():
+            state["status"] = "WAITING_MOT20_REPAIR"
+            state["failed"] = {
+                "error": "protected upstream owner exited without result.json",
+                "release_result": str(args.release_result),
+            }
+            save()
+            return 2
         state["status"] = "WAITING_GROUNDANYTHING_SERVICES"
         save()
         while not (port_ready(8109) and port_ready(8112)):
