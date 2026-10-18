@@ -1146,3 +1146,6 @@ execution evidence only; no quality claim is made.
 
 
 2026-10-19 — live dependency progress revalidated (J1 step800 / G2 step298). The real OneJev three-task torchrun remains alive on GPU4/GPU6 with the durable groundjev-full-fp32-adam-rng-v1 step800 state (260255305 bytes); no step-1200 terminal receipt or independent held-out result exists. The clean G2 torchrun remains alive on GPU3/GPU5 at event step298/18227 with finite loss 1.787952 and 17.3765 GiB latest peak memory; its pre-v2 raw event still logs samples_global=16, while the read-only accounting audit remains authoritative for the corrected global batch 32 interpretation. G1 GPU5, clean bundle export, and held-out evaluation owners remain dependency-gated. No training process, optimizer, sampler, checkpoint, or service was restarted or modified.
+
+
+2026-10-19 — clean G2 crossed the registered step-300 runtime milestone. The active GPU3/GPU5 torchrun is still live at event step301/18227 with finite loss 1.813610, 16842 logged effective tokens, and 17.3718 GiB latest peak memory; no terminal receipt or durable step-500 checkpoint exists. J1 remains live on GPU4/GPU6 at durable step800/1200 with no final receipt. The existing G1 GPU5 queue, clean bundle exporter, and J1 held-out gate remain dependency owners; no process or checkpoint was restarted or altered.
