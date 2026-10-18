@@ -43,3 +43,13 @@ The G2 corpus is TRAIN-only. Every emitted row has the official four-key schema 
 | BURST | none yet | 0 | annotations exist, but no legal TRAIN image root is present; excluded to prevent TAO test leakage |
 
 The resulting corpus contains nine datasets and a transparent BURST gap. No test/validation media is substituted for BURST. The excluded rows and causes are written to `g2_train_rejects.jsonl`; source-balanced scheduling can therefore be reproduced without hiding missing data.
+
+## Post-builder contract audit
+
+The clean JSONL was re-audited after the formal owner was launched. The
+independent audit reports 583,251 unique rows, zero MOT20-05 rows, zero
+placeholder RMOT questions, and no cross-source absolute media-path overlap.
+The raw MOT20 checkout still contains the MOT20-05 directory because it is the
+evaluation source tree; the clean builder excludes that sequence before row
+creation. Evidence is retained at
+`/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/g2_clean_data_contract_audit_v2.json`.

@@ -40,3 +40,16 @@ passed. The formal clean owner starts from G0 `GroundAnything-DLM` on physical
 GPU3/GPU5 with global batch 32 and a planned 18,227 optimizer updates. It is
 running under the V2 report; no quality metric is available before its
 terminal checkpoint and independent evaluation.
+
+## 2026-10-19 — clean manifest contract re-audit
+
+The read-only contract audit completed against the exact manifest used by the
+formal owner. It found 583,251 JSONL records, 583,251 unique row IDs, zero
+MOT20-05 rows, zero `the selected target` placeholder rows, and no cross-source
+absolute media-path intersections. The audit artifact is
+`/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/g2_clean_data_contract_audit_v2.json`;
+the rows SHA remains
+`f682519a1cf9204ca76ea75a56dad36dbdeac26259f202551ab9f66fefd06e71`.
+The audit also scans the raw MOT20 directory, so its inventory lists the
+excluded MOT20-05 directory; that raw-tree observation is not a clean-row
+inclusion. No active owner or checkpoint was modified.

@@ -8,6 +8,13 @@ The 1,200-step historical G2 receipt is complete but protocol-contaminated by
 3,317 MOT20-05 rows. The clean V2 course starts from G0 rather than inheriting
 that adapter and uses a 583,251-row manifest with exact-once coverage, global
 batch 32, strict per-rank recovery, and the official mixed objective. J1 remains
-an active 1,200-step OneJev course; its observed step-600 state is not full-data
+an active 1,200-step OneJev course; its observed step-650 state is not full-data
 completion. G2/G1/J1 quality comparisons remain blocked until the clean terminal
 receipt and fixed independent evaluation scopes exist.
+
+The post-launch clean contract audit independently confirms unique row IDs,
+zero MOT20-05 rows, zero RMOT placeholder rows, and no cross-source media-path
+intersection. The raw MOT20 directory is still scanned for validity statistics,
+so the audit's raw inventory includes the excluded MOT20-05 directory; this does
+not alter the clean manifest. G1 GPU5 adaptation is registered behind the clean
+G2 terminal receipt and has not been counted as complete.
