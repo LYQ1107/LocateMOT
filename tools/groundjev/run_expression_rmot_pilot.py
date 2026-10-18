@@ -125,6 +125,13 @@ def main() -> int:
                 }
                 save()
                 continue
+            if run_dir.exists() and any(run_dir.iterdir()):
+                stale = run_dir.with_name(run_dir.name + ".failed_attempt")
+                suffix = 1
+                while stale.exists():
+                    stale = run_dir.with_name(run_dir.name + f".failed_attempt{suffix}")
+                    suffix += 1
+                run_dir.rename(stale)
             log_path = args.plan / f"{query_id}.log"
             command = [
                 PY, str(ROOT / "tools/groundjev/run_video.py"),
