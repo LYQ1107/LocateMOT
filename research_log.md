@@ -1047,3 +1047,7 @@ G1 is a completed detector-side adaptation, not an active optimizer: the registe
 ## 2026-10-18 22:35 CST — MOT20 G0 receipt released; expression RMOT pilot started
 
 The protected MOT20-05 resumed export produced and passed its terminal receipt: VIDEO_INFERENCE_COMPLETE_WITH_REJECTED_PERCEPTION, all 1,658 frames processed, 1,560-frame exact resume prefix restored, 224 decoder-rejected/strict-invalid frames retained as empty official prediction frames, 2,314,870,593-byte native candidate archive, and 4,322.94 seconds end-to-end wall time. The owner process remained alive briefly after writing the receipt while flushing its final result output, then exited without modifying the completed artifacts. The expression-conditioned RMOT queue was released only after this receipt and is now running its legal 24-query pilot; the latest owner state reports 2 completed queries, model inference started, and no failure. The J1 held-out gate remains waiting for the final step-1200 training receipt.
+
+## 2026-10-18 22:59 CST — expression RMOT pilot progress
+
+The released expression-conditioned RMOT pilot remains healthy: owner status RUNNING_EXPRESSION_RMOT_PILOT, 5 of 24 legal query manifests completed, model inference active, and failed=null. The queue is still single-worker over the shared GroundAnything services; no held-out or validation videos have been admitted.
