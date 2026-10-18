@@ -1167,3 +1167,6 @@ execution evidence only; no quality claim is made.
 
 
 2026-10-19 — J1 crossed the next durable boundary: latest log and FP32/Adam/scheduler/RNG state are both at step1000/1200 with finite training metrics; no final receipt exists yet. Clean G2 has advanced to event step786 with finite loss and the registered global-accounting audit unchanged. The held-out gate remains waiting on the registered J1 PID and final receipt; G1 and bundle owners remain dependency-gated. No active process or checkpoint was restarted or altered.
+
+
+2026-10-19 — J1 durable step1050/1200 checkpoint is now present with FP32 masters, Adam moments, scheduler and all RNG state; the latest log is step1040 with finite metrics. Clean G2 reached event step900 with finite loss and global accounting fields. Neither terminal receipt exists; held-out, G1 and bundle owners remain dependency-gated, and no active task was restarted.
