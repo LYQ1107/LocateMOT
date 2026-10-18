@@ -1161,3 +1161,6 @@ execution evidence only; no quality claim is made.
 
 
 2026-10-19 — preserved read-only submission audit at docs/GROUNDJEV/LIVE_RUNTIME_AUDIT_20261019.json. It records G2 RUNNING at event630, J1 RUNNING with durable step900, G1 and G2-export owners waiting on registered dependencies, and the held-out gate in WAITING_J1_FINAL. The audit reports no non-finite/skip/truncation anomalies and does not mutate live runtime state.
+
+
+2026-10-19 — runtime milestone update: J1 now has a durable step950/1200 FP32/Adam/scheduler/RNG state (log step940, finite loss and 43.86 s/step at that record); clean G2 has advanced to event step651 with finite loss and global accounting audit still applicable. No final receipt exists for either run. The held-out gate remains WAITING_J1_FINAL, G1 remains WAITING_G2_CLEAN_SUCCESS on GPU5, and the clean bundle exporter remains WAITING_G2_AND_G1_TERMINAL; no active task was changed.
