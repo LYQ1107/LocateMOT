@@ -12,11 +12,12 @@ The active OneJev J1 course is
 | RMOT | 16,677 |
 | OVMOT | 5,688 |
 
-The latest durable state observed before this audit is optimizer step 600,
-9,571 rows consumed, epoch 0, with FP32 masters, Adam moments, scheduler and
-all RNG state saved. Feature caching is disabled. This is a partial-read
-budget, not a claim that all 43,533 rows were trained. The registered horizon
-remains 1,200 updates; the held-out gate waits for its terminal receipt.
+The latest durable state observed at the 2026-10-19 post-launch audit is
+optimizer step 650, 10,368 rows consumed, epoch 0, with FP32 masters, Adam
+moments, scheduler and all RNG state saved. Feature caching is disabled. This
+is a partial-read budget, not a claim that all 43,533 rows were trained. The
+registered horizon remains 1,200 updates; the held-out gate waits for its
+terminal receipt.
 
 ## J2 registration rule
 
