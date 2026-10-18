@@ -1158,3 +1158,6 @@ execution evidence only; no quality claim is made.
 
 
 2026-10-19 — full runtime audit after the blocking wait shows real progress. J1 log advanced through steps880/900/920 with finite loss and gradient values; the latest durable FP32/Adam/scheduler/RNG state is step900/1200 (step920 is logged but not yet a save boundary), with 68.917 GiB peak memory and no terminal receipt. Clean G2 advanced through events588/589/590 on GPU3/GPU5 with finite losses and about 17.377 GiB peak memory; no terminal receipt or step-500-only interpretation is used because the live event stream has passed it. G1 GPU5 and clean-bundle owners remain correctly waiting for G2/G1 terminal receipts, and all known processes remain alive. No active task was restarted or modified.
+
+
+2026-10-19 — preserved read-only submission audit at docs/GROUNDJEV/LIVE_RUNTIME_AUDIT_20261019.json. It records G2 RUNNING at event630, J1 RUNNING with durable step900, G1 and G2-export owners waiting on registered dependencies, and the held-out gate in WAITING_J1_FINAL. The audit reports no non-finite/skip/truncation anomalies and does not mutate live runtime state.
