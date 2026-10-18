@@ -1141,3 +1141,5 @@ held-out owner remains `WAITING_J1_FINAL`, the fresh GPU5 G1 owner remains
 `WAITING_G2_AND_G1_TERMINAL`. No MOT-only process was restarted and no
 optimizer, sampler, checkpoint, service, or owner state was changed. This is
 execution evidence only; no quality claim is made.
+
+2026-10-19 — Read-only G2 accounting audit generated at the active formal run directory without opening the training JSONL in write mode. The audit contains 175 valid pre-v2 events, zero malformed lines, preserves raw-log SHA `752c4ebb69de0ecf6f2fd0f77d068409934a800a333d095c1f676c61d4480df3`, and reports `raw_log_unchanged=true`. Its latest event is step175: logged `samples_global=16` and `effective_tokens_global=17079`, corrected for world size 2 to 32 samples and 34158 tokens under the registered global-batch-32 interpretation. This is an accounting correction only; no trainer process was restarted and no metric claim is made.
