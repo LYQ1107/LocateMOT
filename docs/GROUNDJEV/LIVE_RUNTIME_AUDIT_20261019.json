@@ -1,0 +1,273 @@
+{
+  "format": "groundjev-latest-submission-audit-v1",
+  "generated_unix": 1792357284.0385096,
+  "generated_localtime": "2026-10-19 05:01:24 +0800",
+  "read_only": true,
+  "g2": {
+    "status": "RUNNING",
+    "contract_status": "G2_FORMAL_TRAINING_RUNNING",
+    "launch_status": "G2_CLEAN_FULL_COVERAGE_V2_LAUNCHING",
+    "terminal_receipt": null,
+    "physical_gpus": [
+      3,
+      5
+    ],
+    "world_size": 2,
+    "max_steps": 18227,
+    "latest_event": {
+      "step": 630,
+      "epoch": 0,
+      "position": 5040,
+      "micro_batches": 8,
+      "samples_global": 16,
+      "effective_tokens_global": 17348,
+      "token_budget_per_device": 16384,
+      "loss": 1.2444460317492485,
+      "gradient_norm": 1.5167220830917358,
+      "peak_memory_gib": 17.37418556213379,
+      "lr_projector": 1.9999021195290287e-06,
+      "lr_lora": 6.999657418351601e-06,
+      "checkpoint": null,
+      "time": "2026-10-19 05:01:17 +0800"
+    },
+    "event_count": 630,
+    "checkpoint_count": 2,
+    "latest_checkpoint": {
+      "path": "/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final/checkpoints/latest_training_state.pt",
+      "bytes": 469247597,
+      "sha256": "4aa9605f5fa37c54fc7ae359108e405967e4a967400744d5dafa7884e45565b4",
+      "mtime_ns": 1792355168517324006
+    },
+    "latest_named_checkpoint": {
+      "path": "/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final/checkpoints/adapter-step000500.pt",
+      "bytes": 469243990,
+      "sha256": "1a6c0681c19718398d20f1ae4c682ba7429c8685e0a6bc8b9d2647efd7dfb303",
+      "mtime_ns": 1792355167917318756
+    },
+    "manifest": {
+      "path": "/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/g2_clean_train_rows.jsonl",
+      "recorded_sha256": "f682519a1cf9204ca76ea75a56dad36dbdeac26259f202551ab9f66fefd06e71",
+      "actual_sha256": "f682519a1cf9204ca76ea75a56dad36dbdeac26259f202551ab9f66fefd06e71",
+      "row_count": 583251,
+      "reject_count": 2249,
+      "coverage_mode": "exact_once",
+      "effective_global_batch": 32,
+      "grad_accum_steps": 8,
+      "sampler_audit": {
+        "epoch": 0,
+        "real_rows": 583251,
+        "scheduled_rows_including_padding": 583264,
+        "unique_rows": 583251,
+        "padding_rows": 13,
+        "source_rows_total": {
+          "AerialMind": 69358,
+          "AnimalTrack": 11543,
+          "DanceTrack": 41796,
+          "MOT17": 15948,
+          "MOT20": 5616,
+          "RMOT26": 294,
+          "Refer-KITTI-V2": 379341,
+          "SportsMOT": 28574,
+          "TAO-Amodal": 30781
+        },
+        "source_rows_scheduled": {
+          "AerialMind": 69358,
+          "AnimalTrack": 11543,
+          "DanceTrack": 41796,
+          "MOT17": 15948,
+          "MOT20": 5616,
+          "RMOT26": 294,
+          "Refer-KITTI-V2": 379341,
+          "SportsMOT": 28574,
+          "TAO-Amodal": 30781
+        },
+        "source_padding_rows": {
+          "AerialMind": 2,
+          "AnimalTrack": 2,
+          "DanceTrack": 2,
+          "MOT17": 2,
+          "MOT20": 1,
+          "RMOT26": 1,
+          "Refer-KITTI-V2": 1,
+          "SportsMOT": 1,
+          "TAO-Amodal": 1
+        },
+        "video_keys_total": 1033,
+        "video_keys_scheduled": 1033,
+        "image_keys_total": 168065,
+        "image_keys_scheduled": 168065,
+        "world_size": 2,
+        "micro_batch_size": 2,
+        "grad_accum_steps": 8,
+        "effective_global_batch": 32
+      }
+    },
+    "base_model": {
+      "path": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM",
+      "recorded_sha256": "3cf09355cde8cf4877cdc76e0a72301d572c1d6263b2831f8a03368285bb65e2",
+      "actual_sha256": "3cf09355cde8cf4877cdc76e0a72301d572c1d6263b2831f8a03368285bb65e2"
+    },
+    "training_contract": {
+      "coverage_mode": "exact_once",
+      "micro_batch_size": 2,
+      "grad_accum_steps": 8,
+      "effective_global_batch": 32,
+      "token_budget_per_device": 16384,
+      "max_steps": 18227,
+      "warmup_steps": 547,
+      "max_length": 4096,
+      "max_joint_length": 8192,
+      "world_size": 2,
+      "seed": 20261019,
+      "objective": {
+        "mdm_loss_weight": 0.5,
+        "causal_loss_weight": 0.5
+      },
+      "optimizer_contract": {
+        "projector_lr": 2e-06,
+        "lora_lr": 7e-06,
+        "weight_decay": 0.1,
+        "gradient_clip": 1.0,
+        "scheduler": "cosine_with_min_lr",
+        "min_lr_rate": 0.1,
+        "warmup_ratio": 0.03
+      }
+    },
+    "official_dlm_memory_contract": {
+      "max_length": 4096,
+      "max_joint_length": 8192,
+      "padding_free_packing": true,
+      "gradient_checkpointing": true,
+      "packing_language_checkpoint_stride": 1,
+      "packing_linear_kernel": "chunk",
+      "packing_lm_head_loss_backend": "checkpointed_chunk",
+      "packing_activation_cpu_offload": false,
+      "packed_clean_attention_backend": "cudnn_sdpa"
+    },
+    "anomalies": []
+  },
+  "j1": {
+    "status": "RUNNING",
+    "pid": 3029659,
+    "process_alive": true,
+    "terminal_receipt": null,
+    "latest_observed_event": {
+      "step": 940,
+      "epoch": 0,
+      "examples": 14999,
+      "loss": 1.0689443672730703,
+      "ce": 0.7658335371612338,
+      "brier": 0.303110819819645,
+      "slot_acc": 0.7607142857142857,
+      "grad_norm": 5.970119965076447,
+      "lr": 1.1813682923338653e-05,
+      "rows_per_step": 15.9,
+      "examples_per_s": 0.3625364718214535,
+      "tokens_per_s": 2090.386436574299,
+      "sec_per_step": 43.85765636244905,
+      "peak_mem_gb": 68.91743421554565,
+      "elapsed_s": 44736.25312013994
+    },
+    "event_count": 52,
+    "durable_state": {
+      "step": 900,
+      "seen": 14361,
+      "epoch": 0,
+      "next_step_in_epoch": 900,
+      "format": "groundjev-full-fp32-adam-rng-v1",
+      "fp32_adam_saved": true,
+      "scheduler_rng_saved": true,
+      "feature_cache": false,
+      "checkpoint": {
+        "path": "/data3/user/LocateMOT-runs/TrackJEV_FullDataV2/trackjev_3task_J1_v4_birth/latest_training_state.pt",
+        "bytes": 260255305,
+        "sha256": "ca14a49fd322ce2bc780610ed0bd365d12c4ad01c28706583b1709e9d3e08e07",
+        "mtime_ns": 1792355601993184838
+      }
+    },
+    "anomalies": []
+  },
+  "g1_queue": {
+    "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/ground_adaptation/native_tracking200_gpu5_g1_v1/queue_owner_state.json",
+    "status": "RUNNING",
+    "owner_status": "WAITING_G2_CLEAN_SUCCESS",
+    "pid": 1820298,
+    "process_alive": true,
+    "state": {
+      "status": "WAITING_G2_CLEAN_SUCCESS",
+      "current_stage": "WAITING_G2_CLEAN_SUCCESS",
+      "owner_pid": 1820298,
+      "g2_root": "/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final",
+      "physical_gpu": 5,
+      "g1_plan": "/data2/user/LocateMOT_GroundJEV/configs/groundjev/native_ground_tracking200_20261014.json",
+      "base_model": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM",
+      "out": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/ground_adaptation/native_tracking200_gpu5_g1_v1",
+      "bundle": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM-TrackProjG1-GPU5-V2",
+      "controls": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/ground_adaptation/g1_gpu5_isolated96_v1",
+      "completed": {},
+      "failed": null,
+      "other_active_jobs_untouched": true,
+      "feature_cache": false
+    }
+  },
+  "g2_export_queue": {
+    "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/ground_adaptation/g2_clean_bundle_export_v1/owner_state.json",
+    "status": "RUNNING",
+    "owner_status": "WAITING_G2_AND_G1_TERMINAL",
+    "pid": 1826880,
+    "process_alive": true,
+    "state": {
+      "status": "WAITING_G2_AND_G1_TERMINAL",
+      "current_stage": "WAITING_G2_AND_G1_TERMINAL",
+      "owner_pid": 1826880,
+      "g2_root": "/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final",
+      "g1_state": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/ground_adaptation/native_tracking200_gpu5_g1_v1/queue_owner_state.json",
+      "out": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/ground_adaptation/g2_clean_bundle_export_v1",
+      "bundle": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM-G2-CLEAN-V2",
+      "manifest_sha256": "f682519a1cf9204ca76ea75a56dad36dbdeac26259f202551ab9f66fefd06e71",
+      "expected_g2_steps": 18227,
+      "physical_gpu": null,
+      "feature_cache": false,
+      "completed": {},
+      "failed": null,
+      "source_bundle_untouched": true
+    }
+  },
+  "j1_heldout_gate": {
+    "path": "/data2/user/LocateMOT_OneJev_CVPR/outputs/groundjev/full_data_v2/post_j1_heldout_gate_v1/owner_state.json",
+    "status": "RUNNING",
+    "owner_status": "WAITING_J1_FINAL",
+    "pid": 3791075,
+    "process_alive": true,
+    "state": {
+      "status": "WAITING_J1_FINAL",
+      "owner_pid": 3791075,
+      "wait_pid": 3029659,
+      "wait_command_fragment": "trackjev_3task_J1_v4_birth",
+      "training_root": "/data3/user/LocateMOT-runs/TrackJEV_FullDataV2/trackjev_3task_J1_v4_birth",
+      "mot_release": "/data2/user/LocateMOT_OneJev_CVPR/outputs/groundjev/full_data_v2/candidate_export_v2/mot20_MOT20-05_resumed_v2/result.json",
+      "rmot_state": "/data2/user/LocateMOT_OneJev_CVPR/outputs/groundjev/full_data_v2/candidate_export_rmot_expression_v1/owner_state.json",
+      "manifest": "/data2/user/LocateMOT_OneJev_CVPR/outputs/groundjev/full_data_v2/manifests/DT1203_eval_only.json",
+      "out": "/data2/user/LocateMOT_OneJev_CVPR/outputs/groundjev/full_data_v2/post_j1_heldout_gate_v1",
+      "gpu": 4,
+      "decoder_url": "http://127.0.0.1:8109/v1",
+      "feature_url": "http://127.0.0.1:8112",
+      "completed": {
+        "configuration": {
+          "training_final_receipt": [
+            false,
+            {
+              "step": 250,
+              "reason": "final step not reached"
+            }
+          ],
+          "mot_release_exists": false,
+          "rmot_state_exists": true,
+          "manifest_exists": true
+        }
+      },
+      "failed": null,
+      "full_goal_complete": false
+    }
+  }
+}
