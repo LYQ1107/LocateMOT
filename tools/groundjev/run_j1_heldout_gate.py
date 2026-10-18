@@ -262,6 +262,39 @@ def valid_metrics_receipt(metrics_file: Path, manifest: Path, *, expected_task: 
     return True, {"status": metrics.get("status"), "task": metrics.get("task", "mot"), "frames": frame_count}
 
 
+def inspect_eval_output(
+    eval_out: Path,
+    manifest: Path,
+    *,
+    expected_task: str,
+    expected_scope: str | None,
+) -> dict[str, Any]:
+    """Classify a resumable inference/metric directory without launching GPU.
+
+    This is shared by recovery tests and by operators auditing an interrupted
+    gate.  A non-empty directory without a valid result is explicitly partial;
+    it is never treated as a completed task.
+    """
+
+    result_file = eval_out / "result.json"
+    metrics_file = eval_out / "official_metrics.json"
+    if eval_out.exists() and any(eval_out.iterdir()) and not result_file.is_file():
+        return {"status": "INVALID_PARTIAL_OUTPUT", "reason": "output exists without result.json"}
+    if not result_file.is_file():
+        return {"status": "RUN_INFERENCE", "result": str(result_file)}
+    valid, detail = valid_inference_receipt(
+        result_file, manifest, expected_task=expected_task, expected_scope=expected_scope
+    )
+    if not valid:
+        return {"status": "INVALID_RESULT", "result": str(result_file), "detail": detail}
+    if not metrics_file.is_file():
+        return {"status": "RUN_METRICS", "result": str(result_file), "metrics": str(metrics_file), "detail": detail}
+    valid_metrics, metrics_detail = valid_metrics_receipt(metrics_file, manifest, expected_task=expected_task)
+    if not valid_metrics:
+        return {"status": "INVALID_METRICS", "result": str(result_file), "metrics": str(metrics_file), "detail": metrics_detail}
+    return {"status": "COMPLETE", "result": str(result_file), "metrics": str(metrics_file), "detail": detail, "metrics_detail": metrics_detail}
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--training-root", type=Path, default=DEFAULT_TRAINING)

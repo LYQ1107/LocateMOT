@@ -76,6 +76,9 @@ def validate_bundle(bundle: Path, receipt_path: Path, *, expected_manifest_sha25
     adapter = Path(str(receipt.get("adapter", "")))
     if not adapter.is_file() or adapter.stat().st_size <= 0:
         raise ValueError("clean G2 adapter receipt is missing or empty")
+    adapter_sha = sha256(adapter)
+    if receipt.get("adapter_sha256") != adapter_sha:
+        raise ValueError("clean G2 adapter SHA differs from export receipt")
     return {
         "status": receipt["status"],
         "bundle": str(bundle.resolve()),
@@ -84,6 +87,7 @@ def validate_bundle(bundle: Path, receipt_path: Path, *, expected_manifest_sha25
         "base_model_sha256": receipt["base_model_safetensors_sha256"],
         "manifest_sha256": receipt["manifest_sha256"],
         "adapter": str(adapter),
+        "adapter_sha256": adapter_sha,
         "native_tensor_count": receipt["native_tensor_count"],
     }
 

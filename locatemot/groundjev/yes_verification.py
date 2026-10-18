@@ -260,6 +260,88 @@ class YesNoVerifier:
                 error=repr(error),
             )
 
+    def verify_identity(
+        self,
+        *,
+        track_id: int,
+        candidate_id: int | None,
+        current_image: Any,
+        current_frame: int,
+        history_images: Sequence[Any] = (),
+        history_frame_ids: Sequence[int] = (),
+        bbox: Sequence[float] | None = None,
+        evidence_reason: str = "selective_identity_trigger",
+    ) -> YesNoResult:
+        """Verify a candidate against causal online track imagery.
+
+        The caller supplies crops already retained by the online tracker;
+        this method never accepts or serializes GT IDs or evaluation labels.
+        ``history_frame_ids`` must be strictly earlier than ``current_frame``.
+        """
+
+        prompt = build_verification_prompt(
+            task="mot",
+            expression=None,
+            bbox=bbox,
+            question_type="identity",
+        )
+        request = VerificationRequest(
+            task="mot",
+            expression=None,
+            question=prompt,
+            media=tuple(history_images) + (current_image,),
+            current_frame=int(current_frame),
+            track_id=int(track_id),
+            candidate_id=None if candidate_id is None else int(candidate_id),
+            bbox=None if bbox is None else tuple(float(value) for value in bbox),
+            history_frame_ids=tuple(int(value) for value in history_frame_ids),
+            evidence_reason=evidence_reason,
+            checkpoint_hash=self.checkpoint_hash,
+            metadata={"question_type": "identity"},
+        )
+        return self.verify(request)
+
+    def verify_semantic(
+        self,
+        *,
+        task: str,
+        expression: str,
+        current_image: Any,
+        current_frame: int,
+        track_id: int | None = None,
+        candidate_id: int | None = None,
+        history_images: Sequence[Any] = (),
+        history_frame_ids: Sequence[int] = (),
+        bbox: Sequence[float] | None = None,
+        question_type: str = "membership",
+        evidence_reason: str = "selective_semantic_trigger",
+    ) -> YesNoResult:
+        """Verify an RMOT expression or OVMOT category for a physical ID."""
+
+        if question_type not in {"membership", "ovmot_membership"}:
+            raise ValueError("semantic question_type must be membership or ovmot_membership")
+        prompt = build_verification_prompt(
+            task=task,
+            expression=expression,
+            bbox=bbox,
+            question_type=question_type,
+        )
+        request = VerificationRequest(
+            task=str(task),
+            expression=str(expression),
+            question=prompt,
+            media=tuple(history_images) + (current_image,),
+            current_frame=int(current_frame),
+            track_id=None if track_id is None else int(track_id),
+            candidate_id=None if candidate_id is None else int(candidate_id),
+            bbox=None if bbox is None else tuple(float(value) for value in bbox),
+            history_frame_ids=tuple(int(value) for value in history_frame_ids),
+            evidence_reason=evidence_reason,
+            checkpoint_hash=self.checkpoint_hash,
+            metadata={"question_type": question_type},
+        )
+        return self.verify(request)
+
 
 def causal_history_frame_ids(history: Sequence[Mapping[str, Any]], current_frame: int) -> tuple[int, ...]:
     """Return only strictly earlier evidence, preserving caller order."""

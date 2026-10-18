@@ -84,3 +84,46 @@ def test_inference_receipt_preserves_rejected_frames_and_rejects_gt_fallback(tmp
     ready, detail = gate.valid_inference_receipt(result, manifest, expected_task="mot", expected_scope="fixed")
     assert ready is False
     assert "GT" in detail["reason"]
+
+
+def _write_valid_result(path: Path, *, task="rmot", scope="fixed", frames=2):
+    path.mkdir(parents=True, exist_ok=True)
+    manifest = path.parent / "manifest.json"
+    manifest.write_text(json.dumps({"images": ["a.jpg"] * frames, "scope": scope, "task": task}))
+    (path / "result.json").write_text(json.dumps({
+        "status": "VIDEO_INFERENCE_COMPLETE",
+        "task": task,
+        "scope": scope,
+        "frames": frames,
+        "all_input_frames_processed": True,
+        "gt_read_by_runtime": False,
+        "future_frames_read_by_runtime": False,
+        "perception_rejected_frames": [],
+    }))
+    return manifest
+
+
+def test_resume_classifier_covers_unfinished_completed_and_corrupt_outputs(tmp_path):
+    gate = _load_gate()
+    manifest = tmp_path / "manifest.json"
+    manifest.write_text(json.dumps({"images": ["a.jpg"], "scope": "fixed", "task": "rmot"}))
+    unfinished = gate.inspect_eval_output(tmp_path / "missing", manifest, expected_task="rmot", expected_scope="fixed")
+    assert unfinished["status"] == "RUN_INFERENCE"
+    partial = tmp_path / "partial"
+    partial.mkdir()
+    (partial / "log.txt").write_text("partial")
+    assert gate.inspect_eval_output(partial, manifest, expected_task="rmot", expected_scope="fixed")["status"] == "INVALID_PARTIAL_OUTPUT"
+    valid_dir = tmp_path / "valid"
+    (valid_dir).mkdir()
+    (valid_dir / "result.json").write_text(json.dumps({
+        "status": "VIDEO_INFERENCE_COMPLETE", "task": "rmot", "scope": "fixed", "frames": 1,
+        "all_input_frames_processed": True, "gt_read_by_runtime": False,
+        "future_frames_read_by_runtime": False, "perception_rejected_frames": [],
+    }))
+    assert gate.inspect_eval_output(valid_dir, manifest, expected_task="rmot", expected_scope="fixed")["status"] == "RUN_METRICS"
+    (valid_dir / "official_metrics.json").write_text(json.dumps({
+        "status": "OFFICIAL_REGISTERED_MULTITASK_SCOPE_EVALUATION_COMPLETE", "task": "rmot", "frames": 1, "metrics": {"HOTA": 0.1}
+    }))
+    assert gate.inspect_eval_output(valid_dir, manifest, expected_task="rmot", expected_scope="fixed")["status"] == "COMPLETE"
+    (valid_dir / "result.json").write_text("{}")
+    assert gate.inspect_eval_output(valid_dir, manifest, expected_task="rmot", expected_scope="fixed")["status"] == "INVALID_RESULT"

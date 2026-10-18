@@ -19,6 +19,19 @@ collision is a failed audit even when the images happen to be different. A
 rejected perception frame remains a row/receipt item; it is not dropped to
 improve apparent coverage.
 
+`validate_yesno_inputs.py` is the stricter pre-render gate. It requires native
+OneJev fields, non-empty media, explicit training labels, a causal frame
+clock, `gt_used_for_prompt=false`, and a source SHA. It also rejects Novel
+OVMOT labels in train/fit/calibration splits and rejects MOT20-05 by sequence
+name. It is safe to run on a mock corpus and does not import a model or GPU.
+
+The preparers retain `proposal_source`, video/frame provenance, and the
+positive/negative target outside the question. They are intentionally
+candidate-driven; an absent candidate is recorded as coverage/quality state,
+not converted into a negative object example. Balanced training rows and the
+natural calibration/evaluation distribution must be generated as separate
+manifests before a future GPU run.
+
 The intended train/held-out boundary follows existing LocateMOT legal scopes:
 Refer-KITTI fit/native RMOT sources for preparation, base-category OVMOT only,
 and no official evaluation labels or reserved videos. Any future J2 corpus

@@ -6,6 +6,8 @@ accidentally resolve the historical OneJev checkout.  The existing G0 service
 is read through its registered API; it is never stopped or reconfigured.
 This control is intentionally limited to the established MOT4/RMOT8/RMOT12
 diagnostics and does not stand in for the later independent held-out gate.
+The adapted label is ``G2-CLEAN`` so a result cannot be confused with the
+historical, MOT20-05-contaminated ``G2-PL`` experiments.
 """
 
 from __future__ import annotations
@@ -122,7 +124,7 @@ def main() -> int:
         for name, task, manifest in SCOPES:
             state["status"] = f"RUNNING_{name}"
             save()
-            for label, port in (("G0", args.reference_port), ("G2-PL", args.adapted_port)):
+            for label, port in (("G0", args.reference_port), ("G2-CLEAN", args.adapted_port)):
                 output = args.out / label / name
                 command = [
                     str(VENV), "tools/groundjev/run_video.py",

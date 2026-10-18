@@ -35,6 +35,7 @@ def test_clean_bundle_receipt_rejects_unreceipted_historical_bundle(tmp_path):
         "base_bundle": str(base.resolve()),
         "base_model_safetensors_sha256": audit.sha256(base / "model.safetensors"),
         "adapter": str(adapter),
+        "adapter_sha256": audit.sha256(adapter),
     }))
     assert audit.validate_bundle(bundle, receipt_path, expected_manifest_sha256="clean")["native_tensor_count"] == 569
     bad = tmp_path / "formal_g2_1200"

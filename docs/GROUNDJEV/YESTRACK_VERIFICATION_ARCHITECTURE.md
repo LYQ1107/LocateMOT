@@ -21,11 +21,20 @@ the adapter normalizes all of them to `p_yes` with a tested direction.
 
 `verification_policy.py` is disabled unless the caller enables it. When
 enabled, it spends a per-frame budget only on low top-2 margin, high entropy,
-reactivation, contradiction, or query ambiguity. It fuses a verified
-probability into an existing association score without changing the physical
-candidate pool. For a candidate tentatively marked NEW, semantic No yields
-IGNORE; it never creates NEW. Global assignment remains one-to-one and is
-tested independently on CPU.
+reactivation, contradiction, or query ambiguity. It exposes separate
+`verify_identity` and `verify_semantic` request paths while sharing one
+backend. It fuses a verified probability into an existing association score
+without changing the physical candidate pool. For a candidate tentatively
+marked NEW, semantic No yields IGNORE; it never creates NEW. The optional
+`assignment.assign_candidates(..., verification_results=...)` hook applies
+the fusion to shortlisted Track/Detection pairs before the single Hungarian
+solve and returns raw/fused event evidence; it does not write memory or run a
+second assignment. Global assignment remains one-to-one and is tested on CPU.
+
+Two registered fusion modes are available: `fixed` uses the configured
+weight, while `calibrated` applies a temperature/bias fitted by
+`fit_logistic_calibrator` on a declared calibration split before the fixed
+weight is applied. No uncalibrated sum is described as a probability.
 
 `semantic_temporal_cache.py` caches only semantic probability, keyed by
 persistent track ID, task, normalized query, verifier checkpoint hash, and

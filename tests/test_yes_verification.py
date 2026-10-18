@@ -86,3 +86,51 @@ def test_timeout_and_cpu_mock_lifecycle():
     assert slow.verify(request).status == "FAILED_TIMEOUT"
     disabled = YesNoVerifier(enabled=False).verify(request)
     assert disabled.status == "DISABLED" and disabled.used is False
+
+
+def test_identity_and_semantic_adapters_share_engine_and_keep_history_causal():
+    from locatemot.groundjev.yes_verification import YesNoVerifier
+
+    seen = []
+    verifier = YesNoVerifier(backend=lambda request: seen.append(request) or {"p_yes": 0.75}, enabled=True)
+    identity = verifier.verify_identity(
+        track_id=3,
+        candidate_id=9,
+        current_image="current.jpg",
+        current_frame=5,
+        history_images=("anchor.jpg", "recent.jpg"),
+        history_frame_ids=(1, 4),
+    )
+    semantic = verifier.verify_semantic(
+        task="rmot",
+        expression="the red car",
+        current_image="current.jpg",
+        current_frame=6,
+        track_id=3,
+        history_images=("recent.jpg",),
+        history_frame_ids=(5,),
+    )
+    assert identity.p_yes == semantic.p_yes == 0.75
+    assert seen[0].history_frame_ids == (1, 4)
+    assert seen[1].history_frame_ids == (5,)
+    assert all(frame < request.current_frame for request in seen for frame in request.history_frame_ids)
+
+
+def test_calibrated_fusion_is_explicit_and_not_default():
+    from locatemot.groundjev.verification_policy import (
+        SelectiveVerificationPolicy,
+        VerificationPolicyConfig,
+        fit_logistic_calibrator,
+    )
+    from locatemot.groundjev.yes_verification import YesNoResult
+
+    temperature, bias = fit_logistic_calibrator([0.1, 0.2, 0.8, 0.9], [0, 0, 1, 1], steps=20)
+    policy = SelectiveVerificationPolicy(VerificationPolicyConfig(
+        enabled=True,
+        semantic_weight=1.0,
+        fusion_mode="calibrated",
+        calibration_temperature=temperature,
+        calibration_bias=bias,
+    ))
+    result = YesNoResult("VERIFIED", True, 0.9, "Yes", "identity", (1,), "ckpt", 1.0)
+    assert policy.fuse_association_score(0.1, result) > 0.5

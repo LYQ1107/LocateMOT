@@ -1,0 +1,29 @@
+{
+  "protocol": "groundjev-g2-clean-eval-v1",
+  "status": "PRE_REGISTERED_CPU_ONLY",
+  "model_bundle": "/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final/merged_bundle",
+  "bundle_receipt": "/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final/final_receipt.json",
+  "base_model": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM",
+  "manifest_sha256": "f682519a1cf9204ca76ea75a56dad36dbdeac26259f202551ab9f66fefd06e71",
+  "native_tensor_count": 569,
+  "scope": {
+    "mot": "MOT20-05_train_legal_frames_only",
+    "rmot": "registered_fixed_pilot_manifest",
+    "ovmot": "registered_fixed_pilot_manifest"
+  },
+  "candidate_protocol": "native_groundanything_candidates_v2",
+  "scorer": "registered_official_scorer_only",
+  "runtime_policy": {
+    "gt_fallback": false,
+    "future_frame_access": false,
+    "preserve_rejected_frames": true,
+    "compare_g0_and_g2_on_same_manifest": true
+  },
+  "historical_bundle_markers_rejected": [
+    "G2-PL",
+    "formal_g2_1200",
+    "old_g2",
+    "legacy_g2"
+  ],
+  "scientific_result": false
+}

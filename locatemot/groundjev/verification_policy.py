@@ -26,12 +26,21 @@ class VerificationPolicyConfig:
     max_verifications_per_frame: int = 8
     yes_threshold: float = 0.5
     semantic_weight: float = 0.25
+    fusion_mode: str = "fixed"
+    calibration_temperature: float = 1.0
+    calibration_bias: float = 0.0
     timeout_ms: float = 1500.0
 
     @classmethod
     def from_mapping(cls, value: Mapping[str, Any] | None) -> "VerificationPolicyConfig":
         value = value or {}
         return cls(**{key: value[key] for key in cls.__dataclass_fields__ if key in value})
+
+    def __post_init__(self) -> None:
+        if self.fusion_mode not in {"fixed", "calibrated"}:
+            raise ValueError("fusion_mode must be 'fixed' or 'calibrated'")
+        if float(self.calibration_temperature) <= 0.0:
+            raise ValueError("calibration_temperature must be positive")
 
 
 @dataclass(frozen=True)
@@ -86,8 +95,15 @@ class SelectiveVerificationPolicy:
 
         if not self.config.enabled or result is None or result.p_yes is None or not result.used:
             return float(base_score)
+        verifier_probability = float(result.p_yes)
+        if self.config.fusion_mode == "calibrated":
+            verifier_probability = calibrate_probability(
+                verifier_probability,
+                temperature=float(self.config.calibration_temperature),
+                bias=float(self.config.calibration_bias),
+            )
         weight = min(1.0, max(0.0, float(self.config.semantic_weight)))
-        return (1.0 - weight) * float(base_score) + weight * float(result.p_yes)
+        return (1.0 - weight) * float(base_score) + weight * verifier_probability
 
     def lifecycle_action(
         self,
@@ -154,11 +170,62 @@ def baseline_equivalent(config: VerificationPolicyConfig | Mapping[str, Any] | N
     return resolved.enabled is False
 
 
+def _logit(probability: float) -> float:
+    value = min(1.0 - 1e-7, max(1e-7, float(probability)))
+    return math.log(value / (1.0 - value))
+
+
+def calibrate_probability(probability: float, *, temperature: float = 1.0, bias: float = 0.0) -> float:
+    """Apply a registered one-dimensional logistic calibration transform."""
+
+    if temperature <= 0.0:
+        raise ValueError("temperature must be positive")
+    z = (_logit(probability) + float(bias)) / float(temperature)
+    return 1.0 / (1.0 + math.exp(-max(-60.0, min(60.0, z))))
+
+
+def fit_logistic_calibrator(
+    probabilities: Sequence[float],
+    labels: Sequence[int],
+    *,
+    steps: int = 200,
+    learning_rate: float = 0.05,
+) -> tuple[float, float]:
+    """Fit temperature/bias on a declared calibration split only.
+
+    This small CPU fitter is intentionally independent of the tracker and is
+    suitable for a pre-registered calibration set.  It returns
+    ``(temperature, bias)``; callers must record the split and result before
+    enabling ``fusion_mode='calibrated'``.
+    """
+
+    if len(probabilities) != len(labels) or not probabilities:
+        raise ValueError("calibrator requires equally sized non-empty inputs")
+    if any(int(label) not in (0, 1) for label in labels):
+        raise ValueError("calibration labels must be binary")
+    temperature, bias = 1.0, 0.0
+    for _ in range(max(1, int(steps))):
+        grad_temperature = 0.0
+        grad_bias = 0.0
+        for probability, label in zip(probabilities, labels):
+            x = _logit(float(probability))
+            p = calibrate_probability(float(probability), temperature=temperature, bias=bias)
+            error = p - int(label)
+            grad_temperature += error * (-x / (temperature * temperature))
+            grad_bias += error / temperature
+        scale = 1.0 / len(probabilities)
+        temperature = max(0.05, min(20.0, temperature - float(learning_rate) * grad_temperature * scale))
+        bias = max(-20.0, min(20.0, bias - float(learning_rate) * grad_bias * scale))
+    return float(temperature), float(bias)
+
+
 __all__ = [
     "CandidateEvidence",
     "SelectiveVerificationPolicy",
     "VerificationDecision",
     "VerificationPolicyConfig",
     "baseline_equivalent",
+    "calibrate_probability",
+    "fit_logistic_calibrator",
     "global_assignment",
 ]
