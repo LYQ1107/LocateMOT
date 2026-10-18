@@ -42,3 +42,18 @@ GPU0–3、GPU5 为其他用户作业，未停止或复用。当前没有残留�
 ## RMOT 队列续接
 
 原 MOT20-05 owner 在第 1,561 帧因默认 2 GiB native-feature budget 退出；1,560 帧前缀和失败日志保留。恢复任务 `mot20_MOT20-05_resumed_v2` 使用显式 4 GiB budget（PID 3743898）从该前缀继续。`run_expression_rmot_pilot.py` 队列（PID 3744099）只等待该恢复目录的 `result.json`，确认完整后才顺序处理 24 个 expression-conditioned 查询；RMOT 失败尝试目录保持为 `*.failed_attempt`。
+
+## 2026-10-18 21:25 CST — Harness re-audit
+
+- DeepSeek Harness launcher records with exit code 0 are not completion
+  receipts. The detached children are still live: J1 torchrun PID 3029659
+  (ranks 3029872/3029873), MOT20-05 PID 3743898, and the gated RMOT queue PID
+  3744099.
+- J1 has reached log step 280/1,200. The latest complete restore state is
+  step 250 (`latest_training_state.pt`, FP32 masters/Adam/scheduler/RNG).
+- MOT20-05 is still rebuilding the registered 1,560-frame prefix under the
+  4 GiB native-feature budget; its resumed-v2 `result.json` is not present
+  yet. RMOT has therefore started zero model-inference queries.
+- GPU5 is occupied by another user's `/data2/OCD/TALON` process. Existing G1
+  evidence already contains the complete 200-step adaptation and its G0/G1
+  comparison; do not relaunch G1 or touch that foreign allocation.
