@@ -1,0 +1,80 @@
+{
+  "date": "2026-10-19",
+  "status": "ACCELERATION_A_B_COMPLETE_MAIN_RUN_PROTECTED",
+  "protocol": "Real G2 trainer, exact_once manifest, same seed 20261019, world_size=2, effective global batch 32, token budget 16384; only micro-batch/accumulation partition changed in isolated controls.",
+  "controls": {
+    "micro2_acc8": {
+      "status": "G2_EXACT_COVERAGE_TRAINING_COMPLETE",
+      "steps": 4,
+      "world_size": 2,
+      "effective_global_batch": 32,
+      "micro_batch_size": 2,
+      "grad_accum_steps": 8,
+      "step_times_seconds_between_logged_steps": [
+        31.0,
+        30.0,
+        40.0
+      ],
+      "mean_step_seconds_excluding_launch": 33.666666666666664,
+      "min_step_seconds_excluding_launch": 30.0,
+      "max_step_seconds_excluding_launch": 40.0,
+      "peak_memory_gib_max": 17.431273460388184,
+      "peak_memory_gib_mean": 17.357019424438477,
+      "loss_first": 1.6563061885535717,
+      "loss_last": 1.7371192090213299,
+      "manifest_sha256": "f682519a1cf9204ca76ea75a56dad36dbdeac26259f202551ab9f66fefd06e71"
+    },
+    "micro4_acc4": {
+      "status": "G2_EXACT_COVERAGE_TRAINING_COMPLETE",
+      "steps": 4,
+      "world_size": 2,
+      "effective_global_batch": 32,
+      "micro_batch_size": 4,
+      "grad_accum_steps": 4,
+      "step_times_seconds_between_logged_steps": [
+        27.0,
+        27.0,
+        39.0
+      ],
+      "mean_step_seconds_excluding_launch": 31.0,
+      "min_step_seconds_excluding_launch": 27.0,
+      "max_step_seconds_excluding_launch": 39.0,
+      "peak_memory_gib_max": 39.62177753448486,
+      "peak_memory_gib_mean": 39.54733753204346,
+      "loss_first": 1.6144701167941093,
+      "loss_last": 1.7053779363632202,
+      "manifest_sha256": "f682519a1cf9204ca76ea75a56dad36dbdeac26259f202551ab9f66fefd06e71"
+    },
+    "formal_live_run": {
+      "status": "TRAINING_ACTIVE",
+      "latest_observed_step": 3590,
+      "max_steps": 18227,
+      "latest_event_time": "2026-10-19 17:32:43 +0800",
+      "latest_loss": 1.45757295191288,
+      "world_size": 2,
+      "physical_gpus": "3,5",
+      "micro_batch_size": 2,
+      "grad_accum_steps": 8,
+      "effective_global_batch": 32,
+      "mean_step_seconds_last500_intervals": 15.1,
+      "median_step_seconds_last500_intervals": 15.0,
+      "p95_step_seconds_last500_intervals": 16.0,
+      "corrected_global_rows_per_second_last500": 2.119205298013245,
+      "latest_peak_memory_gib": 17.37049388885498,
+      "latest_complete_checkpoint": "/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final/checkpoints/adapter-step003000.pt",
+      "four_card_test": "NOT_ATTEMPTED",
+      "four_card_blocker": "GPU5 is occupied by the protected live run; strict recovery contract requires checkpoint world_size=2 and trainer refuses world-size drift."
+    }
+  },
+  "interpretation": {
+    "micro4_acc4_step_speedup_vs_micro2_acc8": 1.086021505376344,
+    "micro4_acc4_memory_ratio_vs_micro2_acc8": 2.2730282801496773,
+    "decision": "micro4_acc4 has modest step-time improvement but requires ~39.62 GiB peak per rank versus ~17.43 GiB and is therefore not safe for the formal 3/5 job; retain micro2_acc8.",
+    "four_card_decision": "Do not migrate the protected run. A valid 4-card comparison needs a fresh world_size=4 training contract/checkpoint and free GPU5; no unsafe concurrent run was launched."
+  },
+  "integrity": {
+    "main_run_untouched": true,
+    "protocol_changed_for_main": false,
+    "main_checkpoint_resume_not_attempted": true
+  }
+}

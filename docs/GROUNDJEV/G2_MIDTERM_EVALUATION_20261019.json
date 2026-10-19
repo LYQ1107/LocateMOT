@@ -1,0 +1,184 @@
+{
+  "report": "G2_MIDTERM_EVALUATION_20261019",
+  "generated_at": "2026-10-19T17:24:44+0800",
+  "status": "MIDTERM_EVALUATED",
+  "claim_scope": "short_functional_control_only; not final heldout or paper result",
+  "g2": {
+    "checkpoint_step": 3000,
+    "latest_observed_training_step": 3557,
+    "target_steps": 18227,
+    "checkpoint": "/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final/checkpoints/adapter-step003000.pt",
+    "checkpoint_sha256": "058573235114396f59ac1de05acd3700f46f230a298e31a16b3198d42dcc590f",
+    "manifest_sha256": "f682519a1cf9204ca76ea75a56dad36dbdeac26259f202551ab9f66fefd06e71",
+    "merged_model": "/data2/user/LocateMOT_GroundJEV/models/G2_CLEAN_MIDTERM_STEP003000",
+    "merged_model_sha256": "d0d719ed31972f54b9ec295e69c4728a2101c386f7f7438e57a816b6cb650d43",
+    "training_active": true,
+    "final_receipt_exists": false,
+    "physical_gpus": [
+      3,
+      5
+    ],
+    "rows": 583251,
+    "effective_global_batch": 32,
+    "objective": {
+      "mdm_loss_weight": 0.5,
+      "causal_loss_weight": 0.5
+    }
+  },
+  "protocol": {
+    "same_parser": "official_scoring",
+    "same_decoder_policy": "tracking_dense",
+    "same_association": "simple",
+    "g0_service": "fresh original GroundAnything-DLM on GPU6/8114",
+    "g2_service": "midterm merged bundle on GPU4/8113",
+    "trackeval_commit": "12c8791b303e0a0b50f753af204249e622d0281a",
+    "g0_service_failure_preserved": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/g2_midterm_step3000_short_controls_20261019"
+  },
+  "results": {
+    "MOT17-02-FRCNN_frames_4": {
+      "dataset": "MOT17",
+      "sequence": "MOT17-02-FRCNN",
+      "frames": 4,
+      "g0": {
+        "HOTA": 0.7506873030378555,
+        "DetA": 0.6524872012044383,
+        "AssA": 0.8858282015805041,
+        "IDF1": 0.8396946564885496,
+        "IDSW": 1,
+        "FP": 16,
+        "FN": 24
+      },
+      "g2": {
+        "HOTA": 0.8619589383333888,
+        "DetA": 0.7983306585589307,
+        "AssA": 0.9346964984153964,
+        "IDF1": 0.8947368421052632,
+        "IDSW": 1,
+        "FP": 11,
+        "FN": 15
+      },
+      "delta_g2_minus_g0": {
+        "HOTA": 0.1112716352955333,
+        "DetA": 0.14584345735449245,
+        "AssA": 0.048868296834892244,
+        "IDF1": 0.05504218561671359,
+        "IDSW": 0,
+        "FP": -5,
+        "FN": -9
+      },
+      "g0_fps": 0.2516369488681288,
+      "g2_fps": 0.2613602775924386,
+      "g0_rejected_frames": [],
+      "g2_rejected_frames": []
+    },
+    "RMOT_refer_kitti_0007_single8": {
+      "frames": 8,
+      "g0": {
+        "HOTA": 0.30385299622392276,
+        "DetA": 0.26967769073032233,
+        "AssA": 0.34346491228070175,
+        "IDF1": 0.4,
+        "IDSW": 1,
+        "FP": 6,
+        "FN": 1
+      },
+      "g2": {
+        "HOTA": 0.4727021520216337,
+        "DetA": 0.2971387745381553,
+        "AssA": 0.7527151211361737,
+        "IDF1": 0.5555555555555556,
+        "IDSW": 0,
+        "FP": 8,
+        "FN": 0
+      },
+      "delta_g2_minus_g0": {
+        "HOTA": 0.16884915579771093,
+        "DetA": 0.027461083807832964,
+        "AssA": 0.4092502088554719,
+        "IDF1": 0.15555555555555556,
+        "IDSW": -1,
+        "FP": 2,
+        "FN": -1
+      },
+      "g0_fps": 0.9121519295876747,
+      "g2_fps": 0.8105949035435711,
+      "g0_rejected_frames": [
+        152
+      ],
+      "g2_rejected_frames": [],
+      "g0_posthoc_proposal_coverage": {
+        "covered": 4,
+        "GT_boxes": 5,
+        "recall": 0.8,
+        "scope": "evaluation-only target coverage; not HOTA; never used to correct runtime state"
+      },
+      "g2_posthoc_proposal_coverage": {
+        "covered": 5,
+        "GT_boxes": 5,
+        "recall": 1.0,
+        "scope": "evaluation-only target coverage; not HOTA; never used to correct runtime state"
+      }
+    },
+    "RMOT_refer_kitti_0007_multi12": {
+      "frames": 12,
+      "g0": {
+        "HOTA": 0.226642857944184,
+        "DetA": 0.12560241099599692,
+        "AssA": 0.41678279323016154,
+        "IDF1": 0.21739130434782608,
+        "IDSW": 0,
+        "FP": 11,
+        "FN": 25
+      },
+      "g2": {
+        "HOTA": 0.44800976006369536,
+        "DetA": 0.5211387789795834,
+        "AssA": 0.39830825599900027,
+        "IDF1": 0.3870967741935484,
+        "IDSW": 11,
+        "FP": 9,
+        "FN": 7
+      },
+      "delta_g2_minus_g0": {
+        "HOTA": 0.22136690211951135,
+        "DetA": 0.3955363679835865,
+        "AssA": -0.01847453723116127,
+        "IDF1": 0.1697054698457223,
+        "IDSW": 11,
+        "FP": -2,
+        "FN": -18
+      },
+      "g0_fps": 1.1243488573525093,
+      "g2_fps": 1.0771138582317372,
+      "g0_rejected_frames": [
+        34
+      ],
+      "g2_rejected_frames": [
+        32,
+        33
+      ],
+      "g0_posthoc_proposal_coverage": {
+        "covered": 5,
+        "GT_boxes": 30,
+        "recall": 0.16666666666666666,
+        "scope": "evaluation-only target coverage; not HOTA; never used to correct runtime state"
+      },
+      "g2_posthoc_proposal_coverage": {
+        "covered": 23,
+        "GT_boxes": 30,
+        "recall": 0.7666666666666667,
+        "scope": "evaluation-only target coverage; not HOTA; never used to correct runtime state"
+      }
+    }
+  },
+  "g1": {
+    "status": "MISSING_SAME_PROTOCOL_RESULT",
+    "historical_control": "G1 200-step negative evidence retained separately; not substituted into this table"
+  },
+  "limitations": [
+    "MOT scope is 4 registered frames; RMOT scopes are 8/12 registered frames",
+    "no OVMOT midterm run yet",
+    "short controls do not establish final or heldout generalization",
+    "G2 training remains active and checkpoint step3000 is not final"
+  ]
+}
