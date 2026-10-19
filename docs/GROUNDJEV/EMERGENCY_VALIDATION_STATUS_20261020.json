@@ -1,0 +1,48 @@
+{
+  "status": "EMERGENCY_VALIDATION_PARTIAL_WITH_RUNNING_G2_AND_PENDING_FULL_PHYSICAL_YESTRACK",
+  "date": "2026-10-20",
+  "integrated_branch": {
+    "name": "research/groundjev-emergency-repair-20261020",
+    "commit": "85b40c066f93dfcd9bca91a05a42d9f7b573ab5c"
+  },
+  "g2_clean": {
+    "status": "RUNNING",
+    "devices": [3, 5],
+    "step": 5117,
+    "max_steps": 18227,
+    "latest_loss": 1.312698446214199,
+    "peak_memory_gib": 17.370915412902832,
+    "latest_event": "2026-10-20 00:19:27 +0800",
+    "latest_checkpoint": "/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final/checkpoints/adapter-step005000.pt",
+    "last_1000_seconds_per_step": 16.67267267267267,
+    "linear_remaining_hours": 60.716316316316316,
+    "terminal_receipt": false,
+    "train_rows": 583251,
+    "overlap_audit": "MOT17-02 frames 302-305 exact TRAIN-scope; Refer-KITTI 0007 no exact path match"
+  },
+  "j1": {
+    "checkpoint_step": 1200,
+    "full_repair": {
+      "HOTA": 0.15856191765905614,
+      "DetA": 0.19769216142974178,
+      "AssA": 0.12724327800052548,
+      "IDF1": 0.1282768262845159,
+      "IDSW": 0,
+      "FP": 110,
+      "FN": 3560
+    },
+    "strict_ablation": "A/B/C zero; D/E nonzero",
+    "ovmot_video4": {"rejected_frames": 40, "predictions": 0, "TETA": 0.0, "LocA": 0.0, "AssocA": 0.0, "ClsA": 0.0},
+    "ovmot_video63": "blocked_before_launch_by_malformed_output_and_slow_frame_boundary"
+  },
+  "yestrack": {
+    "training_steps": 100,
+    "gpu": 7,
+    "heldout_valid": 137,
+    "heldout_dropped_over_max_len": 23,
+    "base": {"accuracy": 0.6277372262773723, "roc_auc": 0.8030982905982906, "pr_auc": 0.8224340194580906, "brier": 0.177707432949095, "ece": 0.28416743722275223, "uncertain_reject_rate": 0.30656934306569344},
+    "j1": {"accuracy": 0.5401459854014599, "roc_auc": 0.6694444444444444, "pr_auc": 0.7466460425540258, "brier": 0.27631290331507413, "ece": 0.4647613685496532, "uncertain_reject_rate": 0.17518248175182482},
+    "finetuned": {"accuracy": 0.781021897810219, "roc_auc": 0.888034188034188, "pr_auc": 0.8963125490057837, "brier": 0.1760702436063089, "ece": 0.33736426371700357, "uncertain_reject_rate": 0.0948905109489051},
+    "physical_smoke": {"frames": 4, "verifier_calls": 6, "fps": 1.379485640837756, "metrics_claimed": false}
+  }
+}
