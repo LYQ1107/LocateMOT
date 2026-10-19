@@ -36,13 +36,18 @@ class Track:
 
 class OnlineTracker:
     def __init__(self, decision, lost_seconds=3., update_threshold=.5, memory_policy='gated', ema_alpha=.1,
-                 lifecycle_termination_policy='learned_or_timeout',no_match_policy='learned'):
+                 lifecycle_termination_policy='learned_or_timeout',no_match_policy='learned',
+                 verification_backend=None, verification_policy=None):
         self.decision = decision
         self.lost_seconds, self.update_threshold = lost_seconds, update_threshold
         self.tracks, self.next_id, self.previous_timestamp = {}, 1, None
         self.memory_policy,self.ema_alpha = memory_policy,ema_alpha
         self.lifecycle_termination_policy=lifecycle_termination_policy
         self.no_match_policy=no_match_policy
+        # The verifier is deliberately opt-in.  With either argument absent,
+        # the historical assignment and memory path is unchanged.
+        self.verification_backend = verification_backend
+        self.verification_policy = verification_policy
 
     def step(self, image, candidates, timestamp, specification):
         from locatemot.groundjev.assignment import assign_candidates
@@ -52,8 +57,46 @@ class OnlineTracker:
         decisions, lifecycle, meta = self.decision.decide(image, candidates, tracks, timestamp, specification)
         n, m = len(candidates), len(tracks)
         is_jev = meta['native_probabilities']
+        verification_results = None
+        verification_audit = []
+        if self.verification_backend is not None and self.verification_policy is not None:
+            from locatemot.groundjev.verification_policy import CandidateEvidence
+            self.verification_policy.begin_frame()
+            verification_results = {}
+            for row_index, decision in enumerate(decisions):
+                for track in tracks:
+                    if str(track.track_id) not in decision.get('probabilities', {}):
+                        continue
+                    evidence = CandidateEvidence(
+                        candidate_id=row_index,
+                        association_scores=decision.get('probabilities', {}),
+                        reactivation=bool(track.lost_age),
+                        contradiction=False,
+                        query_ambiguity=False,
+                        track_state=track.state,
+                    )
+                    trigger = self.verification_policy.should_verify(evidence)
+                    if not trigger.verify:
+                        continue
+                    result = self.verification_backend(
+                        image=image, candidate=candidates[row_index], track=track,
+                        timestamp=timestamp, specification=specification,
+                        decision=decision, reason=trigger.reasons,
+                    )
+                    verification_results[(row_index, track.track_id)] = result
+                    verification_audit.append({
+                        'candidate': row_index, 'track_id': int(track.track_id),
+                        'reasons': list(trigger.reasons), 'result': result.to_record()
+                        if hasattr(result, 'to_record') else result,
+                    })
+            meta['yestrack_verification'] = {
+                'enabled': True,
+                'calls': len(verification_audit),
+                'audit': verification_audit,
+            }
         assigned,actions,masked=assign_candidates(decisions,tracks,native_probabilities=is_jev,
-            explicit_no_match=meta.get('explicit_no_match',False),no_match_policy=self.no_match_policy)
+            explicit_no_match=meta.get('explicit_no_match',False),no_match_policy=self.no_match_policy,
+            verification_results=verification_results, verification_policy=self.verification_policy)
         width=len(actions)
         assigned_update = getattr(self.decision, 'decide_assigned_updates', None)
         if assigned_update is not None:
