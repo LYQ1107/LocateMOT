@@ -1,18 +1,88 @@
 {
   "report": "LIVE_EXPERIMENT_METRICS_20261019",
   "snapshot_date": "2026-10-19",
-  "g2": {"status": "RUNNING", "devices": [3, 5], "last_confirmed_event": 3955, "max_steps": 18227, "linear_remaining_hours": 60.0},
-  "j1_training": {"status": "COMPLETE", "step": 1200, "tasks": ["identity", "rmot", "ovmot"]},
-  "j1_original_gate": {"status": "COMPLETE_IMMUTABLE", "all_registered_scopes_zero": true},
-  "j1_repaired_dt1203": {"status": "COMPLETE", "frames": 1203, "HOTA": 0.15856191765905614, "DetA": 0.19769216142974178, "AssA": 0.12724327800052548, "IDF1": 0.1282768262845159, "IDSW": 0, "FP": 110, "FN": 3560},
-  "j1_repaired_ovmot_video4": {"status": "RUNNING_PARTIAL", "official_receipt": false, "empty_candidate_frames_due_to_decoder_rejection": true},
-  "j1_repaired_ovmot_video63": {"status": "NOT_STARTED_IN_THIS_SUITE"},
-  "yestrack": {"status": "NOT_STARTED", "active_process": false},
-  "g1": {"status": "WAITING", "active_process": false},
-  "observed_errors": ["malformed coordinate token", "duplicate coordinate tuples", "missing box start token", "non-degenerate bbox violation", "duplicate phrase entry"],
+  "g2": {
+    "status": "RUNNING",
+    "devices": [
+      3,
+      5
+    ],
+    "last_confirmed_event": 4889,
+    "max_steps": 18227,
+    "latest_loss": 1.4810856850249765,
+    "latest_peak_memory_gib": 17.371644973754883,
+    "recent_seconds_per_step": 14.51,
+    "linear_remaining_hours": 53.76,
+    "terminal_receipt": false
+  },
+  "j1_training": {
+    "status": "COMPLETE",
+    "step": 1200,
+    "tasks": [
+      "identity",
+      "rmot",
+      "ovmot"
+    ]
+  },
+  "j1_original_gate": {
+    "status": "COMPLETE_IMMUTABLE",
+    "all_registered_scopes_zero": true
+  },
+  "j1_repaired_dt1203": {
+    "status": "COMPLETE",
+    "frames": 1203,
+    "HOTA": 0.15856191765905614,
+    "DetA": 0.19769216142974178,
+    "AssA": 0.12724327800052548,
+    "IDF1": 0.1282768262845159,
+    "IDSW": 0,
+    "FP": 110,
+    "FN": 3560
+  },
+  "j1_repaired_ovmot_video4": {
+    "status": "COMPLETE_WITH_REJECTED_PERCEPTION",
+    "frames": 40,
+    "perception_rejected_frames": 40,
+    "predictions": 0,
+    "GT_boxes": 146,
+    "TETA": 0.0,
+    "LocA": 0.0,
+    "AssocA": 0.0,
+    "ClsA": 0.0,
+    "official_receipt": true,
+    "end_to_end_fps": 0.0037955074495673543,
+    "evaluator_commit": "b498aa87b252bfb75d7cc0d8d6435c3e1e74e4de"
+  },
+  "j1_repaired_ovmot_video63": {
+    "status": "NOT_STARTED_AFTER_VIDEO4_BOUNDARY",
+    "official_receipt": false
+  },
+  "yestrack": {
+    "status": "NOT_STARTED",
+    "active_process": false
+  },
+  "g1": {
+    "status": "WAITING",
+    "active_process": false
+  },
+  "observed_errors": [
+    "malformed coordinate token",
+    "duplicate coordinate tuples",
+    "missing box start token",
+    "non-degenerate bbox violation",
+    "duplicate phrase entry",
+    "missing entry separator"
+  ],
   "large_artifacts_committed": false,
   "evidence_paths": {
     "j1_suite": "/data2/user/LocateMOT_OneJev_CVPR/outputs/groundjev/j1_parser_nomatch_repair_20261019/full_repaired_v3",
     "original_gate": "/data2/user/LocateMOT_OneJev_CVPR/outputs/groundjev/full_data_v2/post_j1_heldout_gate_v1"
+  },
+  "j1_repair_boundary": {
+    "status": "VERIFIED",
+    "video4_all_frames_rejected": true,
+    "video4_frame_latency_seconds": "239.58-288.17",
+    "video63_started": false,
+    "decision": "stop before indefinite invalid-output GPU consumption; preserve video4 receipt and launch a separate decoder/schema replay"
   }
 }

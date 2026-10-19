@@ -1,18 +1,64 @@
 {
   "report": "J1_ZERO_METRIC_REPAIR_REPORT_20261019",
-  "status": "IN_PROGRESS",
+  "status": "PARTIAL_WITH_VERIFIED_OVMOT_BLOCKER",
   "snapshot_date": "2026-10-19",
   "original_gate": {
     "status": "HELDOUT_ALL_REGISTERED_TASKS_COMPLETE",
-    "dt1203": {"HOTA": 0.0, "DetA": 0.0, "AssA": 0.0, "IDF1": 0.0, "IDSW": 0, "FP": 0, "FN": 4586},
-    "rmot_single8": {"HOTA": 0.0, "DetA": 0.0, "AssA": 0.0, "IDF1": 0.0, "IDSW": 0, "FP": 0, "FN": 5},
-    "rmot_multi12": {"HOTA": 0.0, "DetA": 0.0, "AssA": 0.0, "IDF1": 0.0, "IDSW": 0, "FP": 0, "FN": 30},
-    "ovmot_video4": {"predictions": 0, "all_teta_components": 0.0},
-    "ovmot_video63": {"predictions": 0, "all_teta_components": 0.0}
+    "dt1203": {
+      "HOTA": 0.0,
+      "DetA": 0.0,
+      "AssA": 0.0,
+      "IDF1": 0.0,
+      "IDSW": 0,
+      "FP": 0,
+      "FN": 4586
+    },
+    "rmot_single8": {
+      "HOTA": 0.0,
+      "DetA": 0.0,
+      "AssA": 0.0,
+      "IDF1": 0.0,
+      "IDSW": 0,
+      "FP": 0,
+      "FN": 5
+    },
+    "rmot_multi12": {
+      "HOTA": 0.0,
+      "DetA": 0.0,
+      "AssA": 0.0,
+      "IDF1": 0.0,
+      "IDSW": 0,
+      "FP": 0,
+      "FN": 30
+    },
+    "ovmot_video4": {
+      "predictions": 0,
+      "all_teta_components": 0.0
+    },
+    "ovmot_video63": {
+      "predictions": 0,
+      "all_teta_components": 0.0
+    }
   },
   "smoke_repair": {
-    "rmot_single8": {"HOTA": 0.3792207792, "DetA": 0.3792207792, "AssA": 0.3792207792, "IDF1": 0.6666666667, "IDSW": 0, "FP": 3, "FN": 1},
-    "rmot_multi12": {"HOTA": 0.1598656815, "DetA": 0.1385522930, "AssA": 0.1845665487, "IDF1": 0.1463414634, "IDSW": 0, "FP": 6, "FN": 25}
+    "rmot_single8": {
+      "HOTA": 0.3792207792,
+      "DetA": 0.3792207792,
+      "AssA": 0.3792207792,
+      "IDF1": 0.6666666667,
+      "IDSW": 0,
+      "FP": 3,
+      "FN": 1
+    },
+    "rmot_multi12": {
+      "HOTA": 0.1598656815,
+      "DetA": 0.138552293,
+      "AssA": 0.1845665487,
+      "IDF1": 0.1463414634,
+      "IDSW": 0,
+      "FP": 6,
+      "FN": 25
+    }
   },
   "full_repaired": {
     "suite": "full_repaired_v3",
@@ -28,17 +74,41 @@
       "FN": 3560,
       "perception_rejected_frames": []
     },
-    "ovmot_video4": {"status": "IN_PROGRESS", "result_receipt": false, "official_metrics": false},
-    "ovmot_video63": {"status": "NOT_STARTED_IN_THIS_SUITE", "result_receipt": false, "official_metrics": false}
+    "ovmot_video4": {
+      "status": "VIDEO_AND_OFFICIAL_EVALUATION_COMPLETE_WITH_REJECTED_PERCEPTION",
+      "frames": 40,
+      "perception_rejected_frames": 40,
+      "perception_rejection_rate": 1.0,
+      "predictions": 0,
+      "GT_boxes": 146,
+      "TETA": 0.0,
+      "LocA": 0.0,
+      "AssocA": 0.0,
+      "ClsA": 0.0,
+      "end_to_end_fps": 0.0037955074495673543,
+      "result_receipt": true,
+      "official_metrics": true,
+      "evaluator_commit": "b498aa87b252bfb75d7cc0d8d6435c3e1e74e4de"
+    },
+    "ovmot_video63": {
+      "status": "NOT_STARTED_AFTER_VIDEO4_BOUNDARY",
+      "result_receipt": false,
+      "official_metrics": false,
+      "reason": "video4 completed with 40/40 malformed decoder rejections and 250-288 s/frame; stopped before spending GPU indefinitely"
+    }
   },
   "observed_decoder_errors": [
-    "expected coordinate token at payload offset; found ', <|object_ref_s'",
+    "expected coordinate token at payload offset; found ' , <|object_ref_s'",
     "duplicate coordinate tuples are not canonical",
     "expected '<|box_start|>' at box payload start; found '<|object_ref_end'",
     "bbox must be non-degenerate",
-    "duplicate phrase entry: 'aquarium'"
+    "duplicate phrase entry: 'aquarium'",
+    "expected ' , ' entry separator"
   ],
-  "current_effect": "malformed_ovmot_wire_payloads_are_recorded_as_empty_candidates; no metric is fabricated",
-  "yestrack": {"status": "NOT_STARTED", "active_process": false},
+  "current_effect": "video4 completed with empty predictions after strict wire rejection; video63 was intentionally not started after the verified slow/malformed boundary; no metric was fabricated",
+  "yestrack": {
+    "status": "NOT_STARTED",
+    "active_process": false
+  },
   "evidence_root": "/data2/user/LocateMOT_OneJev_CVPR/outputs/groundjev/j1_parser_nomatch_repair_20261019/full_repaired_v3"
 }
