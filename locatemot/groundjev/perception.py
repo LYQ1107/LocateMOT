@@ -21,6 +21,12 @@ class GroundingProtocolError(RuntimeError):
         super().__init__('GroundAnything invalid/truncated output: '+str(metadata['result']))
 
 
+# A rejected dense decode is often vocabulary-string sensitive rather than a
+# model failure (DanceTrack: "person" can collapse to full-frame boxes while
+# "pedestrian" grounds correctly). Retry a short, fixed chain and record it.
+FALLBACK_VOCABULARIES = (('pedestrian',), ('person .',), ('person',))
+
+
 class GroundAnythingAdapter:
     def __init__(self, base_url='http://127.0.0.1:8101/v1', max_tokens=8192, parser_policy='strict_client', decoder_policy='generic_greedy', vocabulary_chunk_size=None):
         self.base_url, self.max_tokens = base_url.rstrip('/'), max_tokens
@@ -38,7 +44,9 @@ class GroundAnythingAdapter:
     def adapt_response(self, response, image, image_path, mime, prompt, elapsed):
         result = parse_response(response, 'bbox')
         parsed = [(p.label, coordinates) for p in result.predictions for coordinates in p.coordinates or ()]
-        if not result.valid and self.parser_policy == 'official_scoring' and result.finish_reason == 'stop':
+        repair_mode = self.parser_policy == 'official_scoring_repaired'
+        if (not result.valid and self.parser_policy in ('official_scoring', 'official_scoring_repaired')
+                and result.finish_reason == 'stop'):
             source = ROOT/'external/GroundAnything/eval/utils/prompt_mode.py'
             name = '_groundjev_official_scoring'
             if name not in sys.modules:
@@ -53,6 +61,12 @@ class GroundAnythingAdapter:
                     'parser_policy': self.parser_policy, 'strict_wire_valid': result.valid,
                     'decoder_policy': self.decoder_policy, 'request_decode_parameters': self.decode_parameters,
                     'official_scoring_recovery': not result.valid and bool(parsed),
+                    'parser_repair': ({
+                        'version': 'duplicate_wire_dedup_v1',
+                        'applied': bool(repair_mode and not result.valid and parsed),
+                        'scope': 'exact duplicate phrase/coordinate tuples only; canonical syntax and geometry retained',
+                        'strict_parse_error': result.parse_error,
+                    } if repair_mode else None),
                     'source_image_path': str(image_path) if image_path else None,
                     'source_encoding': mime, 'lossy_reencoding_applied': False,
                     'coordinate_rule': 'official_grid_0_999_times_image_dimension_minus_one'}
@@ -97,7 +111,25 @@ class GroundAnythingAdapter:
                 'strict_wire_valid':all(r['strict_wire_valid'] for r in reports),
                 'decoder_policy':self.decoder_policy,
                 'candidate_merge':'concatenate all native outputs; no GT filtering or cross-label NMS'}
-        return self._request(image, task, vocabulary, expression, image_path)
+        try:
+            return self._request(image, task, vocabulary, expression, image_path)
+        except GroundingProtocolError as first_error:
+            if task != 'mot':
+                raise
+            for alternative in FALLBACK_VOCABULARIES:
+                if list(alternative) == list(vocabulary):
+                    continue
+                try:
+                    candidates, metadata = self._request(image, task, list(alternative),
+                                                         expression, image_path)
+                except GroundingProtocolError:
+                    continue
+                metadata['vocabulary_fallback'] = {
+                    'from': list(vocabulary), 'to': list(alternative),
+                    'reason': str(first_error)[:160],
+                    'policy': 'fixed chain, recorded per frame; no GT involved'}
+                return candidates, metadata
+            raise
 
     def _request(self, image, task, vocabulary, expression, image_path):
         if image_path is not None:

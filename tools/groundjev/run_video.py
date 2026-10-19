@@ -74,8 +74,15 @@ def main():
     parser.add_argument('--task', choices=['mot', 'rmot', 'ovmot'], default='mot')
     parser.add_argument('--video', type=Path, required=True, help='legal JSON video scope manifest')
     parser.add_argument('--checkpoint', type=Path, default=ROOT / 'models/OneJev-0.8B')
-    parser.add_argument('--backend', choices=['simple', 'simple_native', 'simple_temporal', 'full', 'compact'], default='full')
+    parser.add_argument('--trackjev-arm', choices=['B2','B3','B4','B6'], default='B4',
+                        help='registered ablation arm for the TrackJEV backend')
+    parser.add_argument('--trackjev-shortlist', type=int, default=31)
+    parser.add_argument('--trackjev-duplicate-penalty', type=float, default=0.0)
+    parser.add_argument('--trackjev-device', default='cuda:0')
+    parser.add_argument('--backend', choices=['simple', 'simple_native', 'simple_temporal', 'full', 'compact', 'trackjev'], default='full')
     parser.add_argument('--compact-device',choices=['cpu','cuda:0'],default='cuda:0',help='explicit device for trained Compact replay; report actual device, no detector E2E claim')
+    parser.add_argument('--global-identity',action='store_true',help='isolated Global Identity Compact checkpoint')
+    parser.add_argument('--global-memory-policy',choices=['original','always','confidence','assigned'],default='original')
     parser.add_argument('--compact-shortlist',type=int,choices=[32,64,128],default=32,
                         help='registered context-size intervention; larger values exceed the original 32-ID training context')
     parser.add_argument('--compact-shortlist-policy',choices=['geometry','hybrid16_16'],default='geometry')
@@ -96,8 +103,8 @@ def main():
     parser.add_argument('--out', type=Path, required=True)
     parser.add_argument('--limit', type=int, help='explicit short functional check; never a full-video metric')
     parser.add_argument('--grounding-url', default='http://127.0.0.1:8101/v1')
-    parser.add_argument('--grounding-parser', choices=['strict_client', 'official_scoring'], default='strict_client',
-                        help='explicit candidate protocol; official scorer preserves strict wire diagnostics')
+    parser.add_argument('--grounding-parser', choices=['strict_client', 'official_scoring', 'official_scoring_repaired'], default='strict_client',
+                        help='explicit candidate protocol; repaired mode deduplicates exact duplicate wire tuples while retaining strict diagnostics')
     parser.add_argument('--grounding-decoder-policy', choices=['generic_greedy', 'tracking_dense'], default='generic_greedy')
     parser.add_argument('--grounding-vocabulary-chunk-size', type=int,
                         help='OVMOT: exhaustively request this many vocabulary classes at a time, then associate the union once')
@@ -165,7 +172,12 @@ def main():
             import torch
             torch.set_num_threads(4)
         from locatemot.groundjev.compact import CompactDecision
-        decision=CompactDecision(args.checkpoint,device=args.compact_device,shortlist=args.compact_shortlist,memory_feature_view=args.memory_feature_view,shortlist_policy=args.compact_shortlist_policy,candidate_grouping=args.compact_candidate_grouping)
+        if args.global_identity:
+            assert args.compact_device=='cpu' and args.compact_association_policy=='learned' and args.compact_auxiliary_policy=='learned'
+            from locatemot.groundjev.global_identity_runtime import GlobalIdentityDecision
+            decision=GlobalIdentityDecision(args.checkpoint,args.global_memory_policy)
+        else:
+            decision=CompactDecision(args.checkpoint,device=args.compact_device,shortlist=args.compact_shortlist,memory_feature_view=args.memory_feature_view,shortlist_policy=args.compact_shortlist_policy,candidate_grouping=args.compact_candidate_grouping)
         if args.compact_association_policy=='rank_appearance':
             from locatemot.groundjev.appearance_ranking import AppearanceRankDecision
             decision=AppearanceRankDecision(decision,args.appearance_projection_checkpoint,args.appearance_ranking_temperature)
@@ -175,6 +187,21 @@ def main():
                 parser.error('matched semantic affinity control requires the trained shared semantic checkpoint')
             decision=CompactAffinityControl(decision,args.compact_association_policy,args.compact_auxiliary_policy,
                 appearance_projection_checkpoint=args.appearance_projection_checkpoint)
+    elif args.backend=='trackjev':
+        from locatemot.groundjev.trackjev.native_onejev_adapter import NativeOneJevAdapter
+        from locatemot.groundjev.trackjev.tracker_decision import (TrackJEVTrackerDecision,
+                                                                  TrackerDecisionConfig)
+        arm = args.trackjev_arm
+        adapter = NativeOneJevAdapter(args.checkpoint, device=args.trackjev_device,
+                                      shortlist=args.trackjev_shortlist,
+                                      evidence_format='trackjev_v1',
+                                      ask_risk=(arm == 'B6'))
+        config = TrackerDecisionConfig(shortlist=args.trackjev_shortlist,
+                                       use_competition=arm in ('B3', 'B4', 'B6'),
+                                       assignment_conditioned_memory=arm in ('B4', 'B6'),
+                                       ask_risk=(arm == 'B6'),
+                                       duplicate_penalty=args.trackjev_duplicate_penalty)
+        decision = TrackJEVTrackerDecision(adapter, config)
     else:
         decision_type = OneJevDecision
         if args.assigned_identity_updates:
@@ -191,7 +218,11 @@ def main():
             from locatemot.groundjev.category_replay import CausalNativeCategoryReplay
             head = category_replay = CausalNativeCategoryReplay(args.category_replay, args.checkpoint, manifest)
         decision = CategorizedDecision(decision, head)
-    tracker = OnlineTracker(decision,lost_seconds=args.lost_seconds,memory_policy=args.memory_policy,ema_alpha=args.ema_alpha,
+    tracker_type=OnlineTracker
+    if args.global_identity:
+        from locatemot.groundjev.global_identity_runtime import GlobalIdentityTracker
+        tracker_type=GlobalIdentityTracker
+    tracker = tracker_type(decision,lost_seconds=args.lost_seconds,memory_policy=args.memory_policy,ema_alpha=args.ema_alpha,
                             lifecycle_termination_policy=args.lifecycle_termination_policy,no_match_policy=args.no_match_policy)
     def write_memory(stem):
         snapshot=tracker.state_dict()
@@ -430,6 +461,12 @@ def main():
         result.update(category_replay=category_replay.summary(),
             timing_limitations='category probabilities reused from identical current images/candidates/checkpoint; replay timing is not comparable to fresh native classification')
     result['peak_decision_process_rss_bytes'] = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss*1024
+    if args.global_identity:
+        result.update(global_identity=True,global_memory_policy=args.global_memory_policy,
+            lifecycle_termination_policy='timeout_only',same_physical_checkpoint_for_all_tasks=True,
+            frozen_semantic_checkpoint=decision.semantic.checkpoint,
+            frozen_semantic_parameters=sum(p.numel() for p in decision.semantic.model.parameters()),
+            physical_cost_complexity='O(NM) association, O(NK) sparse competition; no NxN candidate attention bank')
     if args.backend=='compact':
         result['trainable_compact_core_parameters'] = sum(p.numel() for p in decision.model.parameters())
         if decision.model.semantic:
