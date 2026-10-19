@@ -1179,3 +1179,6 @@ execution evidence only; no quality claim is made.
 
 
 2026-10-19 — J1 slow-batch diagnostic at log step1160: rank0 is sleeping in futex_wait_queue_me while rank1 is actively running (state R), with the torchrun parent in do_select. This confirms an active long batch/synchronization phase rather than a two-rank deadlock; the log mtime is recent and no failure receipt exists. No process or checkpoint was interrupted.
+
+
+2026-10-19 — J1 training reached a valid terminal boundary. The log contains event=done with steps=1200 and 19,143 examples; latest_training_state.json is step1200 with FP32 masters, Adam moments, scheduler and all RNG state; adapter-step1200 contains adapter_model.safetensors plus adapter/processor/tokenizer configuration files. The torchrun exited after the done event without a standalone final_receipt.json, but the pre-existing CPU gate validated the step/adapter evidence, recorded j1_final and the preserved MOT20 G0 release, and advanced to RUNNING_HELDOUT_DT1203. No duplicate gate or training restart was launched.
