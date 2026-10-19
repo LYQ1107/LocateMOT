@@ -1182,3 +1182,6 @@ execution evidence only; no quality claim is made.
 
 
 2026-10-19 — J1 training reached a valid terminal boundary. The log contains event=done with steps=1200 and 19,143 examples; latest_training_state.json is step1200 with FP32 masters, Adam moments, scheduler and all RNG state; adapter-step1200 contains adapter_model.safetensors plus adapter/processor/tokenizer configuration files. The torchrun exited after the done event without a standalone final_receipt.json, but the pre-existing CPU gate validated the step/adapter evidence, recorded j1_final and the preserved MOT20 G0 release, and advanced to RUNNING_HELDOUT_DT1203. No duplicate gate or training restart was launched.
+
+
+2026-10-19 — J1 held-out gate advanced beyond the dependency waits: it has recorded j1_final at step1200, the preserved MOT20 G0 release, the completed expression-conditioned RMOT pilot, and a successful 186-tensor LoRA merge with zero unmatched adapter keys. It is now running the DT1203 held-out evaluation; result.json and official metrics are not yet present, so no held-out quality claim is made. No duplicate evaluator was launched.
