@@ -1,5 +1,5 @@
-Warning: truncated output (original token count: 39152)
-Total output lines: 1247
+Warning: truncated output (original token count: 39442)
+Total output lines: 1263
 
 # LocateMOT Research Log
 
@@ -849,13 +849,7 @@ Continue from the published full MOT-half failure measurements, preserving the i
 
 ## U2 data completion and full portability launch — 2026-10-12
 
-Hypothesis: recovering the original data and measuring complete dev scopes will distinguish foundation domain failure from incomplete measurement. DanceTrack download/CRC extraction completed; preserved 32/8/25 project videos and exact 33,772/8,024/25,508 frames. TAO modal train/val and all 490,210 C-TAO training images now pass availability coverage (six available streams…9152 tokens truncated…ime retention. Keep all changes. No selected cache, real tracking benchmark, formal optimizer or U3 readiness yet.
-
-Current CPU semantic18032 exit0 confirms task-embedding gradients and unknown-row/candidate masks after preserving initialization RNG. Store CPU evidence separately as ovmot_training_contract_cpu.json, retaining the historical GPU single-frame report. Updated eight-GPU joint evidence covers BF16 gradients and exact restore with current embeddings.
-
-## U2 frozen text reuse for upcoming candidate caches — 2026-10-12
-
-Previous goal turn made progress: actual native one-file F0/core reconstruction, task-embedding isolation and real parameter-sharing/retention proofs were committed2b775b7, backed up and verified at GitHub9c12586. Project root/clean worktree verified; original F0/perception and downstream owners are live and ordinary cache is still unlaunched. Read native GroundingDINO.predict: every full LVIS frame re-encodes the same38 BERT prompts although the language backbone is frozen; native prompt/token-positive-map preprocessing is also repeated. Implement worker-local fixed-text memoization by wrapping native language forward and prompt construction, preserving all native image/backbone/encoder/decoder/NMS operations and cloning returned tensors/maps before mutable native consumers. Apply only to upcoming full selected-foundation cache workers, without changing any running full audit or perception-training process. Measure actual FP32 F0 two-frame MOT and full1203-class OVMOT candidate/selected-feature equality, mutation isolation and actual BERT-call counts/timing; no approximate precision, cap, chunk, vocabulary, seed or scope change. Keep only if bit-exact outputs hold.
+Hypothesis: recovering the original data and measuring complete dev scopes will distinguish foundation domain failure from incomplete measurement. DanceTrack download/CRC extraction completed; preserved 32/8/25 project videos and exact 33,772/8,024/25,508 frames. TAO modal train/val and all 490,210 C-TAO training images now pass availability coverage (six available streams…9442 tokens truncated…rward and prompt construction, preserving all native image/backbone/encoder/decoder/NMS operations and cloning returned tensors/maps before mutable native consumers. Apply only to upcoming full selected-foundation cache workers, without changing any running full audit or perception-training process. Measure actual FP32 F0 two-frame MOT and full1203-class OVMOT candidate/selected-feature equality, mutation isolation and actual BERT-call counts/timing; no approximate precision, cap, chunk, vocabulary, seed or scope change. Keep only if bit-exact outputs hold.
 
 Initial frozen-text38589 exit0 proves actual FP32 F0 native/cached MOT150 and complete1203-class OVMOT300 two-frame candidate/feature parity, tensor/map mutation isolation and exact method restoration. Warm OVMOT elapsed5.208873→4.619842s (1.1275x observed throughput), with two-frame BERT76→38 calls and unchanged2 backbones/76 decoder calls. Implement only in upcoming selected-foundation cache workers; record source/proof provenance in spec and actual counters in all worker/full reports. Integrated80238 exit0 reconfirms full parity and executes the actual worker/serializer on explicitly separate two-frame reference inventories for both phases: serialized FP32/BF16 fields bit-exact, semantic/decoder storage shared, zero GT labels, completed-unit resume with no inference and identical unit manifests. Final warm OVMOT5.255846→4.638013s (1.1332x), MOT.188991→.180778s (1.0454x); shared-GPU two-frame observations, not full-cache speed estimates. Keep optimization; all actual source frames, chunk/candidate limits, precision, eight-rank assignment, four-volume distribution, original gates and running full jobs are unchanged. No formal selected cache, track optimizer, benchmark tracking score or U3 readiness exists yet.
 
@@ -1152,3 +1146,19 @@ MOT result is TRAIN-scope/non-independent. The eight RMOT single and twelve
 RMOT multi Refer-KITTI 0007 frames have no exact TRAIN path matches in this
 manifest. Receipt: `docs/GROUNDJEV/G2_SHORT_CONTROL_TRAIN_OVERLAP_AUDIT_20261019.{json,md}`.
 No training row or manifest was changed.
+
+2026-10-19 — J1 strict DT1203 A–E replay ablation completed on the step1200
+merged checkpoint (model SHA 5cc64d1b...). All association runs use recorded
+candidate/native-feature archives and no GT at runtime. A original parser +
+original NO_MATCH: HOTA/IDF1=0/0, 9,755 candidates, 9,729 NO_MATCH, zero
+outputs. B repaired parser only: candidate count rises to 13,853 but learned
+NO_MATCH still suppresses every output, HOTA/IDF1=0/0. The original runtime
+already applied the legal MOT vocabulary fallback on 972 records, so C is
+explicitly non-separable from A and is reported as the same immutable receipt.
+D only `NO_MATCH=only_if_omitted` on original candidates yields HOTA=0.162326,
+DetA=0.202661, AssA=0.130116, IDF1=0.132145, IDSW=0, FP=69, FN=3520, with
+1 NEW/1133 ACTIVE/1 REACTIVATE/1 LOST events. E full repair yields
+HOTA=0.158562, DetA=0.197692, AssA=0.127243, IDF1=0.128277, IDSW=0, FP=110,
+FN=3560, with 1 NEW/1135 ACTIVE events. No threshold, seed, checkpoint or
+candidate was changed within each factor; parser repair is not claimed as an
+identity improvement. Receipt: `docs/GROUNDJEV/J1_DT1203_A_E_STRICT_ABLATION_20261019.{json,md}`.
