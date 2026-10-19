@@ -1,5 +1,5 @@
-Warning: truncated output (original token count: 39003)
-Total output lines: 1238
+Warning: truncated output (original token count: 39152)
+Total output lines: 1247
 
 # LocateMOT Research Log
 
@@ -849,7 +849,7 @@ Continue from the published full MOT-half failure measurements, preserving the i
 
 ## U2 data completion and full portability launch — 2026-10-12
 
-Hypothesis: recovering the original data and measuring complete dev scopes will distinguish foundation domain failure from incomplete measurement. DanceTrack download/CRC extraction completed; preserved 32/8/25 project videos and exact 33,772/8,024/25,508 frames. TAO modal train/val and all 490,210 C-TAO training images now pass availability coverage (six available streams…9003 tokens truncated…original seed. Final joint52310, causal/temporal/gate8930 and whole eight-rank official evaluation33800 exit0 pass. Targeted32182 recomputes actual parameter sharing after excluding shared detection/association/motion/lifecycle heads:236,751,992 shared non-head vs329,475 conservatively task-specific, fraction.9986102878>=.90. Only count metadata changed in the reference file; actual restored foundation/core tensors remain bit-exact. Formal packer recomputes original perception/MOT/joint eligibility, embeds original source/protocol/sampler/step metadata and remains pending actual selected-runtime retention. Keep all changes. No selected cache, real tracking benchmark, formal optimizer or U3 readiness yet.
+Hypothesis: recovering the original data and measuring complete dev scopes will distinguish foundation domain failure from incomplete measurement. DanceTrack download/CRC extraction completed; preserved 32/8/25 project videos and exact 33,772/8,024/25,508 frames. TAO modal train/val and all 490,210 C-TAO training images now pass availability coverage (six available streams…9152 tokens truncated…ime retention. Keep all changes. No selected cache, real tracking benchmark, formal optimizer or U3 readiness yet.
 
 Current CPU semantic18032 exit0 confirms task-embedding gradients and unknown-row/candidate masks after preserving initialization RNG. Store CPU evidence separately as ovmot_training_contract_cpu.json, retaining the historical GPU single-frame report. Updated eight-GPU joint evidence covers BF16 gradients and exact restore with current embeddings.
 
@@ -1143,3 +1143,12 @@ training remains running at event step 4889/18227, latest loss 1.4810857,
 peak memory 17.3716 GiB. The recent 500-event mean is 14.51 seconds per step,
 which gives a linear remaining estimate of 53.76 hours. No trainer, checkpoint,
 optimizer, sampler, RNG, or world size was changed.
+
+2026-10-19 — G2 short-control TRAIN overlap audit completed read-only over all
+583,251 Clean V2 rows. The 24 control frames were hashed individually and
+matched by normalized image path. All four MOT17-02-FRCNN frames 302--305 have
+exact TRAIN rows (the video also has 602 TRAIN rows in the manifest), so that
+MOT result is TRAIN-scope/non-independent. The eight RMOT single and twelve
+RMOT multi Refer-KITTI 0007 frames have no exact TRAIN path matches in this
+manifest. Receipt: `docs/GROUNDJEV/G2_SHORT_CONTROL_TRAIN_OVERLAP_AUDIT_20261019.{json,md}`.
+No training row or manifest was changed.
