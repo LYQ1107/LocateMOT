@@ -32,6 +32,10 @@ SCOPES = (
     ("refer_multi12", "rmot", "outputs/groundjev/multitask_pilot_data/rmot_multi_empty.json"),
 )
 
+# This script evaluates the Clean V2 adapter.  ``G2-PL`` is reserved for the
+# historical projector-only experiment and must not be reused for this run.
+ADAPTED_LABEL = "G2-CLEAN-V2"
+
 
 def ready(port: int) -> bool:
     try:
@@ -76,7 +80,8 @@ def main() -> int:
         env.pop(key, None)
 
     state: dict[str, object] = {
-        "status": "STARTING_G2_NATIVE_SHORT_CONTROLS",
+        "status": "STARTING_G2_CLEAN_V2_NATIVE_SHORT_CONTROLS",
+        "experiment_identity": ADAPTED_LABEL,
         "model": str(model),
         "reference_service": f"http://127.0.0.1:{args.reference_port}/v1",
         "adapted_service": f"http://127.0.0.1:{args.adapted_port}/v1",
@@ -172,7 +177,7 @@ def main() -> int:
         for name, task, manifest in SCOPES:
             state["status"] = f"RUNNING_{name}"
             save()
-            for label, port in (("G0", args.reference_port), ("G2-PL", args.adapted_port)):
+            for label, port in (("G0", args.reference_port), (ADAPTED_LABEL, args.adapted_port)):
                 output = args.out / label / name
                 command = [
                     str(VENV), "tools/groundjev/run_video.py",
@@ -193,12 +198,12 @@ def main() -> int:
                 metrics = json.loads((output / "official_metrics.json").read_text())
                 state["completed"][f"{label}/{name}"] = metrics
                 save()
-        state["status"] = "G2_NATIVE_SHORT_CONTROLS_COMPLETE"
+        state["status"] = "G2_CLEAN_V2_NATIVE_SHORT_CONTROLS_COMPLETE"
         save()
         (args.out / "comparison.json").write_text(json.dumps(state, indent=2, ensure_ascii=False) + "\n")
         return 0
     except Exception as error:
-        state.update(status="G2_NATIVE_SHORT_CONTROLS_FAILED", error=repr(error))
+        state.update(status="G2_CLEAN_V2_NATIVE_SHORT_CONTROLS_FAILED", error=repr(error))
         save()
         raise
     finally:
@@ -214,7 +219,7 @@ def main() -> int:
             save()
         if reference_log is not None:
             reference_log.close()
-        if state.get("status") == "G2_NATIVE_SHORT_CONTROLS_FAILED":
+        if state.get("status") == "G2_CLEAN_V2_NATIVE_SHORT_CONTROLS_FAILED":
             (args.out / "comparison.json").write_text(json.dumps(state, indent=2, ensure_ascii=False) + "\n")
 
 
