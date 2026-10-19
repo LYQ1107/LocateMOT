@@ -1,0 +1,238 @@
+{
+  "status": "J1_DT1203_A_E_STRICT_ABLATION_COMPLETE",
+  "generated_date": "2026-10-19",
+  "dataset": {
+    "name": "DanceTrack",
+    "sequence": "dancetrack0004",
+    "frames": 1203,
+    "manifest": "/data2/user/LocateMOT_OneJev_CVPR/outputs/groundjev/full_data_v2/manifests/DT1203_eval_only.json",
+    "scope": "registered_DT1203_evaluation_scope_eval_only_never_trained"
+  },
+  "checkpoint": {
+    "path": "/data2/user/LocateMOT_OneJev_CVPR/outputs/groundjev/full_data_v2/post_j1_heldout_gate_v1/merged_3task_J1_v4_birth",
+    "model_safetensors_sha256": "5cc64d1bcae70db4a4d8596c655bc38ce0e8c1d63cb3bd2bf14d30e9848c07a5",
+    "merge_receipt_sha256": "9ac2ce099b6fbf94652e8183744a9adfd85df83afafe5a622fce516b1385e1c1",
+    "training_step": 1200,
+    "unmatched_adapter_keys": 0
+  },
+  "same_candidate_contract": {
+    "A": "historical original gate candidate archive",
+    "B": "repaired DT1203 candidate archive",
+    "D": "historical original gate candidate archive",
+    "E": "repaired DT1203 candidate archive",
+    "candidate_replay_used": true,
+    "gt_used_by_runtime": false,
+    "same_checkpoint": true,
+    "candidate_scope_note": "B/E differ from A/D only through the recorded parser output archive; D/E differ in the NO_MATCH execution contract."
+  },
+  "ablations": {
+    "A_original_j1": {
+      "official_metrics": {
+        "HOTA": 0.0,
+        "DetA": 0.0,
+        "AssA": 0.0,
+        "IDF1": 0.0,
+        "IDSW": 0,
+        "FP": 0,
+        "FN": 4586
+      },
+      "runtime": {
+        "frames": 1203,
+        "candidate_count": 9755,
+        "output_count": 0,
+        "actions": {
+          "NO_MATCH": 9729,
+          "IGNORE": 26
+        },
+        "average_action_probabilities": {
+          "NEW": 0.01371913,
+          "NO_MATCH": 0.72833124,
+          "IGNORE": 0.25794961
+        },
+        "probability_observations": {
+          "NEW": 9755,
+          "NO_MATCH": 9755,
+          "IGNORE": 9755
+        },
+        "perception_rejected_frames": 2,
+        "strict_invalid_frame_records": 2,
+        "vocabulary_fallback_frame_records": 972,
+        "max_live_ids": 0,
+        "NEW_actions": 0
+      },
+      "result_receipt": "/data2/user/LocateMOT_OneJev_CVPR/outputs/groundjev/full_data_v2/post_j1_heldout_gate_v1/dt1203_j1_v4_birth/result.json",
+      "official_receipt": "/data2/user/LocateMOT_OneJev_CVPR/outputs/groundjev/full_data_v2/post_j1_heldout_gate_v1/dt1203_j1_v4_birth/official_metrics.json",
+      "candidate_replay": "/data2/user/LocateMOT_OneJev_CVPR/outputs/groundjev/full_data_v2/post_j1_heldout_gate_v1/dt1203_j1_v4_birth/frame_decisions.jsonl"
+    },
+    "B_parser_only": {
+      "official_metrics": {
+        "HOTA": 0.0,
+        "DetA": 0.0,
+        "AssA": 0.0,
+        "IDF1": 0.0,
+        "IDSW": 0,
+        "FP": 0,
+        "FN": 4586
+      },
+      "runtime": {
+        "frames": 1203,
+        "candidate_count": 13853,
+        "output_count": 0,
+        "actions": {
+          "NO_MATCH": 13788,
+          "IGNORE": 65
+        },
+        "average_action_probabilities": {
+          "NEW": 0.01008539,
+          "NO_MATCH": 0.68202085,
+          "IGNORE": 0.30789377
+        },
+        "probability_observations": {
+          "NEW": 13853,
+          "NO_MATCH": 13853,
+          "IGNORE": 13853
+        },
+        "perception_rejected_frames": 0,
+        "strict_invalid_frame_records": 0,
+        "vocabulary_fallback_frame_records": 0,
+        "max_live_ids": 0,
+        "NEW_actions": 0
+      },
+      "result_receipt": "/data2/user/LocateMOT_OneJev_CVPR/outputs/groundjev/j1_ablation_20261019/B_parser_only_dt1203/result.json",
+      "official_receipt": "/data2/user/LocateMOT_OneJev_CVPR/outputs/groundjev/j1_ablation_20261019/B_parser_only_dt1203/official_metrics.json",
+      "candidate_replay": "/data2/user/LocateMOT_OneJev_CVPR/outputs/groundjev/j1_ablation_20261019/B_parser_only_dt1203/frame_decisions.jsonl"
+    },
+    "D_nomatch_only": {
+      "official_metrics": {
+        "HOTA": 0.16232641296791295,
+        "DetA": 0.20266091554499824,
+        "AssA": 0.1301164317772272,
+        "IDF1": 0.13214472994231777,
+        "IDSW": 0,
+        "FP": 69,
+        "FN": 3520
+      },
+      "runtime": {
+        "frames": 1203,
+        "candidate_count": 9755,
+        "output_count": 1135,
+        "actions": {
+          "IGNORE": 8620,
+          "NEW": 1,
+          "ACTIVE": 1133,
+          "LOST": 1,
+          "REACTIVATE": 1
+        },
+        "average_action_probabilities": {
+          "NEW": 0.00198427,
+          "NO_MATCH": 0.34238423,
+          "IGNORE": 0.29421636,
+          "1": 0.39230051
+        },
+        "probability_observations": {
+          "NEW": 9755,
+          "NO_MATCH": 9755,
+          "IGNORE": 9755,
+          "1": 8987
+        },
+        "perception_rejected_frames": 2,
+        "strict_invalid_frame_records": 0,
+        "vocabulary_fallback_frame_records": 0,
+        "max_live_ids": 1,
+        "NEW_actions": 1
+      },
+      "result_receipt": "/data2/user/LocateMOT_OneJev_CVPR/outputs/groundjev/j1_ablation_20261019/D_nomatch_only_dt1203/result.json",
+      "official_receipt": "/data2/user/LocateMOT_OneJev_CVPR/outputs/groundjev/j1_ablation_20261019/D_nomatch_only_dt1203/official_metrics.json",
+      "candidate_replay": "/data2/user/LocateMOT_OneJev_CVPR/outputs/groundjev/j1_ablation_20261019/D_nomatch_only_dt1203/frame_decisions.jsonl"
+    },
+    "E_full_repair": {
+      "official_metrics": {
+        "HOTA": 0.15856191765905614,
+        "DetA": 0.19769216142974178,
+        "AssA": 0.12724327800052548,
+        "IDF1": 0.1282768262845159,
+        "IDSW": 0,
+        "FP": 110,
+        "FN": 3560
+      },
+      "runtime": {
+        "frames": 1203,
+        "candidate_count": 13853,
+        "output_count": 1136,
+        "actions": {
+          "IGNORE": 12717,
+          "NEW": 1,
+          "ACTIVE": 1135
+        },
+        "average_action_probabilities": {
+          "NEW": 0.00198516,
+          "NO_MATCH": 0.33207456,
+          "IGNORE": 0.35520086,
+          "1": 0.33447344
+        },
+        "probability_observations": {
+          "NEW": 13853,
+          "NO_MATCH": 13853,
+          "IGNORE": 13853,
+          "1": 12870
+        },
+        "perception_rejected_frames": 0,
+        "strict_invalid_frame_records": 0,
+        "vocabulary_fallback_frame_records": 0,
+        "max_live_ids": 1,
+        "NEW_actions": 1
+      },
+      "result_receipt": "/data2/user/LocateMOT_OneJev_CVPR/outputs/groundjev/j1_ablation_20261019/E_full_repair_dt1203/result.json",
+      "official_receipt": "/data2/user/LocateMOT_OneJev_CVPR/outputs/groundjev/j1_ablation_20261019/E_full_repair_dt1203/official_metrics.json",
+      "candidate_replay": "/data2/user/LocateMOT_OneJev_CVPR/outputs/groundjev/j1_ablation_20261019/E_full_repair_dt1203/frame_decisions.jsonl"
+    },
+    "C_legal_mot_vocabulary_fallback_only": {
+      "official_metrics": {
+        "HOTA": 0.0,
+        "DetA": 0.0,
+        "AssA": 0.0,
+        "IDF1": 0.0,
+        "IDSW": 0,
+        "FP": 0,
+        "FN": 4586
+      },
+      "runtime": {
+        "frames": 1203,
+        "candidate_count": 9755,
+        "output_count": 0,
+        "actions": {
+          "NO_MATCH": 9729,
+          "IGNORE": 26
+        },
+        "average_action_probabilities": {
+          "NEW": 0.01371913,
+          "NO_MATCH": 0.72833124,
+          "IGNORE": 0.25794961
+        },
+        "probability_observations": {
+          "NEW": 9755,
+          "NO_MATCH": 9755,
+          "IGNORE": 9755
+        },
+        "perception_rejected_frames": 2,
+        "strict_invalid_frame_records": 2,
+        "vocabulary_fallback_frame_records": 972,
+        "max_live_ids": 0,
+        "NEW_actions": 0
+      },
+      "result_receipt": "/data2/user/LocateMOT_OneJev_CVPR/outputs/groundjev/full_data_v2/post_j1_heldout_gate_v1/dt1203_j1_v4_birth/result.json",
+      "official_receipt": "/data2/user/LocateMOT_OneJev_CVPR/outputs/groundjev/full_data_v2/post_j1_heldout_gate_v1/dt1203_j1_v4_birth/official_metrics.json",
+      "strictly_separable": false,
+      "reason": "The original J1 runtime already applied the fixed legal MOT fallback chain; 972 fallback records are present in the immutable A receipt. A separate C run would duplicate A rather than change one factor."
+    }
+  },
+  "interpretation": {
+    "A": "all-NO_MATCH; no lifecycle births; zero official metrics.",
+    "B": "parser repair increases candidate rows but learned NO_MATCH still suppresses every output; zero metrics.",
+    "C": "legal fallback is already part of A; not independently separable from the original parser receipt.",
+    "D": "only_if_omitted on the original candidates produces nonzero tracks; this isolates the NO_MATCH contract.",
+    "E": "parser repair plus only_if_omitted reproduces the repaired full DT1203 result; parser repair changes candidate count and D/E are not a monotonic quality gain.",
+    "probabilities": "Aggregates are direct native choice probabilities recorded per candidate; no forced NEW or threshold retuning was used.",
+    "lifecycle": "NEW/ACTIVE/REACTIVATE/LOST/IGNORE counts and maximum live IDs are recorded in each runtime block."
+  }
+}
