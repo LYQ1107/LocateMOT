@@ -1,24 +1,116 @@
 {
-  "status": "EMERGENCY_VALIDATION_PARTIAL_WITH_RUNNING_G2_AND_PENDING_FULL_PHYSICAL_YESTRACK",
+  "status": "EMERGENCY_VALIDATION_PARTIAL_WITH_G2_FULL_TRAIN_SCOPE_DIAGNOSTIC_AND_PENDING_FULL_PHYSICAL_YESTRACK",
   "date": "2026-10-20",
   "integrated_branch": {
     "name": "research/groundjev-emergency-repair-20261020",
-    "commit": "85b40c066f93dfcd9bca91a05a42d9f7b573ab5c"
+    "previous_commit": "be16ed80c1a2aee32ce2aac391d9f392d6cc95d5"
   },
   "g2_clean": {
     "status": "RUNNING",
-    "devices": [3, 5],
-    "step": 5117,
+    "devices": [
+      3,
+      5
+    ],
+    "step": 5447,
     "max_steps": 18227,
-    "latest_loss": 1.312698446214199,
-    "peak_memory_gib": 17.370915412902832,
-    "latest_event": "2026-10-20 00:19:27 +0800",
+    "latest_loss": 1.422428185120225,
+    "peak_memory_gib": 17.370398521321107,
+    "latest_event": "2026-10-20 02:36:34 +0800",
     "latest_checkpoint": "/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final/checkpoints/adapter-step005000.pt",
-    "last_1000_seconds_per_step": 16.67267267267267,
-    "linear_remaining_hours": 60.716316316316316,
+    "last_1000_seconds_per_step": 20.12212212212212,
+    "linear_remaining_hours": 71.43353353353353,
     "terminal_receipt": false,
     "train_rows": 583251,
-    "overlap_audit": "MOT17-02 frames 302-305 exact TRAIN-scope; Refer-KITTI 0007 no exact path match"
+    "overlap_audit": "MOT17-02 frames 302-305 exact TRAIN-scope; same-video TRAIN rows 602; Refer-KITTI 0007 no exact path match"
+  },
+  "g2_step3000_full_mot": {
+    "status": "G2_STEP3000_FULL_MOT_COMPLETE_TRAIN_SCOPE_DIAGNOSTIC",
+    "date": "2026-10-20",
+    "scope": {
+      "dataset": "MOT17",
+      "sequence": "MOT17-02-FRCNN",
+      "frames": 600,
+      "videos": 1,
+      "split": "TRAIN-scope development"
+    },
+    "protocol": {
+      "parser": "official_scoring",
+      "decoder": "tracking_dense",
+      "association": "simple",
+      "trackeval_commit": "12c8791b303e0a0b50f753af204249e622d0281a",
+      "runtime_commit": "b4ffe840fcb42cf707d62777138a3f8f9aca859d",
+      "runtime_gt_read": false,
+      "runtime_future_frames_read": false,
+      "all_frames_processed": true
+    },
+    "model": {
+      "checkpoint_step": 3000,
+      "checkpoint_sha256": "058573235114396f59ac1de05acd3700f46f230a298e31a16b3198d42dcc590f",
+      "merged_bundle": "G2_CLEAN_MIDTERM_STEP003000",
+      "merged_model_sha256": "d0d719ed31972f54b9ec295e69c4728a2101c386f7f7438e57a816b6cb650d43",
+      "clean_train_manifest_sha256": "f682519a1cf9204ca76ea75a56dad36dbdeac26259f202551ab9f66fefd06e71"
+    },
+    "arms": {
+      "G0": {
+        "metrics": {
+          "HOTA": 0.357098299342399,
+          "DetA": 0.6677706488838266,
+          "AssA": 0.19436184980787546,
+          "IDF1": 0.33032526496303166,
+          "IDSW": 822,
+          "FP": 1621,
+          "FN": 3212
+        },
+        "rejected_frames": 48,
+        "rejection_rate": 0.08,
+        "outputs": 17121,
+        "end_to_end_fps": 0.14547469757059817,
+        "successful_frame_pipeline_fps": 0.14781406486552706,
+        "wall_seconds": 4124.428577751969,
+        "receipt_sha256": "77255e8a0307d729a5c55a69764fe8a248e67a3c2f9562499052a32b19189b89"
+      },
+      "G2_STEP3000": {
+        "metrics": {
+          "HOTA": 0.5025776509039264,
+          "DetA": 0.7165877478207665,
+          "AssA": 0.3535591933261064,
+          "IDF1": 0.49542251567441603,
+          "IDSW": 413,
+          "FP": 1664,
+          "FN": 2780
+        },
+        "rejected_frames": 63,
+        "rejection_rate": 0.105,
+        "outputs": 17524,
+        "end_to_end_fps": 0.15743480568675314,
+        "successful_frame_pipeline_fps": 0.16013759826288942,
+        "wall_seconds": 3811.101346889045,
+        "receipt_sha256": "ef5641d443ce0922a9c5b6922263e92e740e1b5f0bf9d87882f9551c114bb778"
+      }
+    },
+    "delta_g2_minus_g0": {
+      "HOTA": 0.14547935156152744,
+      "DetA": 0.0488170989369399,
+      "AssA": 0.15919734351823095,
+      "IDF1": 0.16509725036138437,
+      "IDSW": -409,
+      "FP": 43,
+      "FN": -432,
+      "rejected_frames": 15,
+      "outputs": 403,
+      "end_to_end_fps": 0.01196010811615497
+    },
+    "overlap_audit": {
+      "clean_train_rows": 583251,
+      "same_video_train_rows": 602,
+      "exact_frame_path_overlap": "MOT17-02 frames 302-305 confirmed; full video is TRAIN-scope",
+      "independent_generalization_claim": false
+    },
+    "receipts": {
+      "manifest_sha256": "bc042dac428af7aeabb4d60462070e6d9eaaa4a4bf3daf72b4fba9cf053dba07",
+      "comparison_sha256": "956279fd70840257a23b5b99c47772a9d6d17859c2fc36bf9ee026f7bc49dc39",
+      "gt_sha256": "2e3ecb488da8886d3200d402b2b08890c6d2879923839444e9b74fa43a551440"
+    }
   },
   "j1": {
     "checkpoint_step": 1200,
@@ -32,7 +124,14 @@
       "FN": 3560
     },
     "strict_ablation": "A/B/C zero; D/E nonzero",
-    "ovmot_video4": {"rejected_frames": 40, "predictions": 0, "TETA": 0.0, "LocA": 0.0, "AssocA": 0.0, "ClsA": 0.0},
+    "ovmot_video4": {
+      "rejected_frames": 40,
+      "predictions": 0,
+      "TETA": 0.0,
+      "LocA": 0.0,
+      "AssocA": 0.0,
+      "ClsA": 0.0
+    },
     "ovmot_video63": "blocked_before_launch_by_malformed_output_and_slow_frame_boundary"
   },
   "yestrack": {
@@ -40,9 +139,35 @@
     "gpu": 7,
     "heldout_valid": 137,
     "heldout_dropped_over_max_len": 23,
-    "base": {"accuracy": 0.6277372262773723, "roc_auc": 0.8030982905982906, "pr_auc": 0.8224340194580906, "brier": 0.177707432949095, "ece": 0.28416743722275223, "uncertain_reject_rate": 0.30656934306569344},
-    "j1": {"accuracy": 0.5401459854014599, "roc_auc": 0.6694444444444444, "pr_auc": 0.7466460425540258, "brier": 0.27631290331507413, "ece": 0.4647613685496532, "uncertain_reject_rate": 0.17518248175182482},
-    "finetuned": {"accuracy": 0.781021897810219, "roc_auc": 0.888034188034188, "pr_auc": 0.8963125490057837, "brier": 0.1760702436063089, "ece": 0.33736426371700357, "uncertain_reject_rate": 0.0948905109489051},
-    "physical_smoke": {"frames": 4, "verifier_calls": 6, "fps": 1.379485640837756, "metrics_claimed": false}
+    "base": {
+      "accuracy": 0.6277372262773723,
+      "roc_auc": 0.8030982905982906,
+      "pr_auc": 0.8224340194580906,
+      "brier": 0.177707432949095,
+      "ece": 0.28416743722275223,
+      "uncertain_reject_rate": 0.30656934306569344
+    },
+    "j1": {
+      "accuracy": 0.5401459854014599,
+      "roc_auc": 0.6694444444444444,
+      "pr_auc": 0.7466460425540258,
+      "brier": 0.27631290331507413,
+      "ece": 0.4647613685496532,
+      "uncertain_reject_rate": 0.17518248175182483
+    },
+    "finetuned": {
+      "accuracy": 0.781021897810219,
+      "roc_auc": 0.888034188034188,
+      "pr_auc": 0.8963125490057837,
+      "brier": 0.1760702436063089,
+      "ece": 0.33736426371700357,
+      "uncertain_reject_rate": 0.0948905109489051
+    },
+    "physical_smoke": {
+      "frames": 4,
+      "verifier_calls": 6,
+      "fps": 1.379485640837756,
+      "metrics_claimed": false
+    }
   }
 }

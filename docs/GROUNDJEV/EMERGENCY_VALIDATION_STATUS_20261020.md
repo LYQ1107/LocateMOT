@@ -1,54 +1,66 @@
 # GroundJEV emergency validation status — 2026-10-20
 
-This is the current cross-branch receipt after the latest repair pass.  It
-does not restart J1 or alter the running G2 owner.
+This receipt covers the latest repair pass without restarting J1 or altering the
+protected G2 Clean owner.
 
 ## Delivered code and audit chain
 
-- The YesTrack branch now contains the complete TrackJEV dependency tree,
+- The YesTrack branch contains the complete TrackJEV dependency tree,
   including `decision_schema.py`, `candidate_competition.py`,
-  `tracker_decision.py` and `global_identity_runtime.py`.  A clean detached
-  worktree passed `compileall`, TrackJEV imports and self-tests, and loaded a
-  real OneJev/J1 checkpoint for one real MOT17 frame.
+  `tracker_decision.py` and `global_identity_runtime.py`.
+- A clean detached worktree passed `compileall`, TrackJEV imports and self-tests,
+  and loaded a real OneJev/J1 checkpoint for one real MOT17 frame.
 - The Clean V2 evaluator labels the adapted arm `G2-CLEAN-V2`; `G2-PL` remains
   reserved for the historical projector-only result.
-- The integrated research branch is
-  `research/groundjev-emergency-repair-20261020` at commit
-  `85b40c066f93dfcd9bca91a05a42d9f7b573ab5c`.  The source YesTrack branch is
-  at `39274d25722506505d838f67c356489de40d3a3e`.
+- The integrated branch is `research/groundjev-emergency-repair-20261020`;
+  this status update is the next commit after the previously published
+  `be16ed80c1a2aee32ce2aac391d9f392d6cc95d5`.
 
 ## G2 Clean training
 
-The protected two-rank owner is still running on physical GPUs 3 and 5:
+The protected two-rank owner remains on physical GPUs 3 and 5. The latest
+accounting event is step **5447 / 18227** at `2026-10-20 02:36:34 +0800`, with
+loss `1.422428` and peak allocation `17.3704 GiB`. The latest durable checkpoint
+remains `adapter-step005000`. The last 1,000 event interval is 20.12 s/step,
+which gives a linear remainder estimate of about **71.4 hours**. This is an
+estimate, not a completion time.
 
-- step **5117 / 18227**, latest loss `1.312698`, peak allocation `17.371 GiB`;
-- latest event `2026-10-20 00:19:27 +0800`;
-- latest durable checkpoint is `adapter-step005000` with both rank RNG files;
-- the last 1,000 event interval averaged 16.67 seconds/step, giving a linear
-  remaining estimate of about **60.7 hours**.  This is an estimate, not a
-  completion time; the last 100 steps were slower because of variable load.
+The Clean TRAIN manifest has 583,251 rows. The overlap audit found exact
+TRAIN-scope overlap for MOT17-02 frames 302–305 and 602 rows from the same
+video; Refer-KITTI 0007 RMOT controls had no exact TRAIN path match.
 
-The 24 short controls were audited against all 583,251 Clean TRAIN rows.
-MOT17-02 frames 302–305 are exact TRAIN-scope overlaps and are retained only
-as diagnostics.  Refer-KITTI 0007 RMOT controls had no exact TRAIN path match.
-No independent full-video G2 metric is claimed until the clean bundle and a
-larger legal development scope are complete.
+## G2 step3000 expanded MOT result
+
+A complete 600-frame MOT17-02-FRCNN run finished for both G0 and the preserved
+G2 step3000 arm under the same parser, decoder, association, evaluator and
+input manifest. The official metrics are:
+
+| arm | HOTA | DetA | AssA | IDF1 | IDSW | FP | FN | rejected | outputs | FPS |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| G0 | 0.357098 | 0.667771 | 0.194362 | 0.330325 | 822 | 1621 | 3212 | 48/600 | 17,121 | 0.1455 |
+| G2 step3000 | **0.502578** | **0.716588** | **0.353559** | **0.495423** | **413** | **1664** | **2780** | 63/600 | 17,524 | 0.1574 |
+
+This is a positive full-video result on the registered scope, including a
+409-IDSW reduction and 432-fewer FN, but it is **not independent generalization**:
+MOT17-02 is in the Clean TRAIN scope. The detailed report and hashes are in
+`G2_FULL_MOT17_02_EVAL_20261020.{md,json}`. A video-disjoint development run is
+still required before a paper-level claim.
 
 ## J1 and OVMOT
 
-J1 step 1200 is immutable.  On the repaired DanceTrack 1203-frame scope the
-full parser plus `NO_MATCH=only_if_omitted` arm reports HOTA `0.158562`, DetA
+J1 step 1200 is immutable. On the repaired DanceTrack 1203-frame scope the full
+parser plus `NO_MATCH=only_if_omitted` arm reports HOTA `0.158562`, DetA
 `0.197692`, AssA `0.127243`, IDF1 `0.128277`, IDSW `0`, FP `110`, FN `3560`.
-The strict ablation shows A/B/C all remain zero; D/E are the only non-zero arms,
-so parser repair alone is not an identity gain.  The OVMOT video4 receipt has
-40/40 rejected frames, 0 predictions and TETA/LocA/AssocA/ClsA all zero;
-video63 remains blocked by the same malformed-output/very-slow-frame boundary.
+Strict ablation A/B/C remain zero; D/E are the only nonzero arms, so parser
+repair alone is not an identity gain. OVMOT video4 has 40/40 rejected frames,
+0 predictions and TETA/LocA/AssocA/ClsA all zero; video63 remains blocked by the
+same malformed-output/very-slow-frame boundary.
 
 ## YesTrack
 
-The real GPU7 native Yes/No run completed 100/100 steps.  The 4,516-row causal
-corpus is video-disjoint between train and validation, has no GT in prompts,
-no future evidence, no MOT20-05 and no official TEST labels.  On the same 137
+The real GPU7 native Yes/No run completed 100/100 steps. The 4,516-row causal
+corpus is video-disjoint between train and validation and has no GT in prompts,
+no future evidence, no MOT20-05 and no official TEST labels. On the same 137
 valid held-out rows (23 of 160 over the fixed 16,384-token limit):
 
 | arm | accuracy | ROC-AUC | PR-AUC | Brier | ECE | uncertain reject |
@@ -58,12 +70,9 @@ valid held-out rows (23 of 160 over the fixed 16,384-token limit):
 | YesTrack fine-tuned | **0.7810** | **0.8880** | **0.8963** | **0.1761** | 0.3374 | **0.0949** |
 
 Fine-tuning improves discrimination and reduces uncertain rejection; ECE is
-worse than base, so no calibration improvement is claimed.  The real physical
-replay hook also passed on four exact MOT frames: disabled replay was identical
-to the source, the fine-tuned arm made six real verifier calls through the same
-global solve, and ran at 1.379 frames/s.  Four frames are a wiring receipt, not
-a HOTA/IDF1/IDSW result; the complete-video comparison still requires a shared
-candidate/history/media key.
-
-The detailed receipts are `YESTRACK_REAL_GPU_VERIFICATION_20261020.*` and
-`YESTRACK_PHYSICAL_REPLAY_SMOKE_20261020.*` on the integrated branch.
+worse than base, so no calibration improvement is claimed. The real physical
+replay hook passed on four exact MOT frames: disabled replay reproduced the
+source, the fine-tuned arm made six real verifier calls through the same global
+solve, and ran at 1.379 FPS. Four frames are a wiring receipt, not a HOTA/IDF1/
+IDSW result; full physical comparison remains pending a complete causal
+candidate/history/media archive.
