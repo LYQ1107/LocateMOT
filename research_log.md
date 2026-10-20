@@ -1,5 +1,5 @@
-Warning: truncated output (original token count: 120446)
-Total output lines: 3107
+Warning: truncated output (original token count: 120580)
+Total output lines: 3116
 
 # LocateMOT Research Log
 
@@ -2192,9 +2192,7 @@ per-queryrejection contributesempty for thatquery only, concatenates remaining
 original-parserboxes, noNMS/topK/GTselection; matches existing scored-query
 control policy, not old whole-frame-rejection scores. One blocking owner waits
 currentGPU5memoryjobexit beforeowning temporaryDLM/feature services; stops
-bothcompletegroups befo…20446 tokens truncated…不新增GPU/feature/PNG，不改运行中600训练，不称actor history或运动表达可观测。64MiB导出cap，保守合计26426987277<25GiB。
-
-表达组件首次生成session35503 exit1，首个根因：0017/frame1表达individuals-donning-jeans引用ID148，但同帧release box中无148；全4350×8核验共60contexts/15表达、仅4个独立(video,frame,ID)引用缺框：0017/1/148、2/148、5/146、6/146。已有18表达/346行无此问题，不能由旧子集通过推出全表达标签可用。失败partial train.jsonl.gz与failure_audit保留，未训练/未删除任何样本。最小修正为全量target-ID/box预检前置到写行前，明确HELD并exit2，0行写入；不交集删除目标、不插值框、不偷换负标签。下一复跑只验证真实4350全量阻止无证监督，等待原始可见性/annotation合同证据后再恢复这一组件，GPU4/5/6/7队列保持。
+bothcompletegroups befo…20580 tokens truncated…onl.gz与failure_audit保留，未训练/未删除任何样本。最小修正为全量target-ID/box预检前置到写行前，明确HELD并exit2，0行写入；不交集删除目标、不插值框、不偷换负标签。下一复跑只验证真实4350全量阻止无证监督，等待原始可见性/annotation合同证据后再恢复这一组件，GPU4/5/6/7队列保持。
 
 官方TempRMOT固定commit6a65640d849fdee4a32bb055945ee34c3b0edeb1的_pre_single_frame源码证实：遍历同帧box列表，按ID是否属于expression ref_ids设is_ref；不要求expressionIDs逐个有框。实际函数回归v1因验证器只给image路径加KITTI别名、label仍本地小写路径，触发官方center而非KITTI左上角分支，exit1；这是我们的验证器路径设置错误。最小修复仅label也软链到KITTI路径，源图/label字节与官方函数完全不改，v1失败目录保留后以v2重跑60受影响contexts及旧18表达上下文。官方规则确认后才恢复新组件，且显式记录60缺框上下文，不改旧训练/评分。
 
@@ -2853,3 +2851,12 @@ accepts the preserved pre-launch WAITING_G2_AND_G1_TERMINAL state (as well as
 WAITING_G2_CLEAN_SUCCESS), refuses live duplicate owners and any partial
 bundle, and resumes without deleting the historical state. The corrected owner
 is live again in WAITING_G2_CLEAN_SUCCESS.
+
+## 2026-10-21 — native three-task owner no longer logically depends on G1
+
+The new real native MOT/RMOT/OVMOT owner was narrowed to require the native
+TAO manifest, terminal G2, independent G2 bundle and held-out receipts. G1
+GPU5 adaptation remains an optional comparison receipt; its physical GPU5
+ownership is still respected by the four-GPU resource probe. This preserves
+G1/G200/G0 controls without making the final-G2 joint route wait on a separate
+adaptation arm. The historical paused teacher-control queue was not changed.

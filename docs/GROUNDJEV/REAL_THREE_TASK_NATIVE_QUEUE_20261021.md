@@ -5,8 +5,10 @@ entrypoint for the real native three-task run. Its persistent owner is live at
 `WAITING_NATIVE_OVMOT_MANIFEST` and has not launched an optimizer. It first requires a joined manifest with
 `native_ovmot_training_rows=true`, `ovmot_training_mode=native`, a positive
 row count, and a CPU-only manifest receipt. It then waits for exact terminal
-G2 Clean, G1, deployment-bundle and independent-held-out receipts and an
-exclusive four-GPU window on physical GPUs 4/5/6/7.
+G2 Clean, the independent deployment-bundle and held-out receipts, and an
+exclusive four-GPU window on physical GPUs 4/5/6/7. The G1 GPU5 adaptation is
+recorded as an optional comparison arm and is not a logical prerequisite; the
+four-GPU resource gate still prevents physical overlap while G1 owns GPU5.
 
 The prior compact teacher-control queue remains paused at zero optimizer
 updates. This owner writes a distinct runtime config and checkpoint root, so

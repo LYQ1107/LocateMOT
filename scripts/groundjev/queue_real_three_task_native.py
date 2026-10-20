@@ -2,10 +2,12 @@
 """Launch the real native MOT/RMOT/OVMOT OneJev run after all gates.
 
 This owner is distinct from the paused teacher-control queue.  It waits for
-the CPU native-TAO join owner, the terminal G2/G1/bundle/held-out receipts and
-an idle four-GPU window, then writes a run-specific config and launches one
-distributed source-manifest SFT.  The source row count and SHA are read from
-the native manifest at runtime; no old 131,990-row teacher manifest is reused.
+the CPU native-TAO join owner, the terminal G2/bundle/held-out receipts and an
+idle four-GPU window, then writes a run-specific config and launches one
+distributed source-manifest SFT.  The GPU5 G1 adaptation is an independent
+comparison arm; its state is recorded when available but is not a logical
+dependency of the final-G2 joint run.  The source row count and SHA are read
+from the native manifest at runtime; no old 131,990-row teacher manifest is reused.
 """
 from __future__ import annotations
 
@@ -172,24 +174,26 @@ def main() -> int:
         state["rows"] = rows
         state["rows_per_task"] = manifest.get("rows_per_task")
         state["completed"]["native_manifest"] = ne["receipt"]
-        state.update(status="WAITING_G2_G1_BUNDLE_HELDOUT_AND_GPUS", current_stage="WAITING_G2_G1_BUNDLE_HELDOUT_AND_GPUS")
+        state.update(status="WAITING_G2_BUNDLE_HELDOUT_AND_GPUS", current_stage="WAITING_G2_BUNDLE_HELDOUT_AND_GPUS")
         save(owner, state)
         while True:
             g2, ge = g2_status()
-            g1, g1e = dependency(G1_STATE, {"G1_GPU5_ADAPTATION_AND_CONTROLS_COMPLETE"})
             bundle, be = dependency(BUNDLE_STATE, {"G2_CLEAN_DEPLOYMENT_BUNDLE_EXPORTED", "G2_CLEAN_BUNDLE_EXPORT_COMPLETE"})
             heldout, he = dependency(HELDOUT_STATE, {"G2_CLEAN_FULL_INDEPENDENT_HELDOUT_COMPLETE"})
-            snapshot = {"g2": g2, "g1": g1, "bundle": bundle, "heldout": heldout}
+            g1, g1e = dependency(G1_STATE, {"G1_GPU5_ADAPTATION_AND_CONTROLS_COMPLETE"})
+            snapshot = {"g2": g2, "g1_optional": g1, "bundle": bundle, "heldout": heldout}
             state["dependency_snapshot"] = snapshot
-            if any(item == "failed" for item in (g2, g1, bundle, heldout)):
+            if any(item == "failed" for item in (g2, bundle, heldout)):
                 state.update(status="NATIVE_JOINT_DEPENDENCY_FAILED", current_stage="FAILED", failed={"snapshot": snapshot, "evidence": {"g2": ge, "g1": g1e, "bundle": be, "heldout": he}})
                 save(owner, state)
                 return 3
-            if all(item == "complete" for item in (g2, g1, bundle, heldout)):
+            if all(item == "complete" for item in (g2, bundle, heldout)):
                 ready, probes = devices_ready()
                 state["resource_probe"] = probes
                 if ready:
-                    state["completed"].update({"g2": ge, "g1": g1e, "bundle": be, "heldout": he})
+                    state["completed"].update({"g2": ge, "bundle": be, "heldout": he})
+                    if g1 == "complete":
+                        state["completed"]["g1_optional"] = g1e
                     break
             save(owner, state)
             time.sleep(args.poll_seconds)
