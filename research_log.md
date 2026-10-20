@@ -1,5 +1,5 @@
-Warning: truncated output (original token count: 119246)
-Total output lines: 3045
+Warning: truncated output (original token count: 119388)
+Total output lines: 3049
 
 # LocateMOT Research Log
 
@@ -2192,7 +2192,7 @@ per-queryrejection contributesempty for thatquery only, concatenates remaining
 original-parserboxes, noNMS/topK/GTselection; matches existing scored-query
 control policy, not old whole-frame-rejection scores. One blocking owner waits
 currentGPU5memoryjobexit beforeowning temporaryDLM/feature services; stops
-bothcompletegroups befo…19246 tokens truncated…234/FN395。独立逐帧核验13664全部原V1候选（只省原feature数组）、图像/框/原perception精确相同、27拒绝帧与scorer分母相同，全部predictions.txt逐行重建等于实际frame outputs，finalKFstate保留，TrackEval原12c8791未改。高于Fullnative6008.703、低于共享Compact26.316，但CompactFP579/FN1962相较ByteTrack5234/395是不同误漏权衡，且训练/特征输入/1s vs3s记忆/KF输出有差别，不作唯一JEV或普通全pipeline水平结论，不下调最终门槛。参考解释保留；不替换运行中的Full/Compact或调验证阈值。
+bothcompletegroups befo…19388 tokens truncated…ompact或调验证阈值。
 
 扩展训练数据准备计划：当前Full类别语料64图/8video/9Base类，RMOT72物理帧/9fitvideo/18表达，不够描述长时间大规模联合训练。现有冻结MOT训练frames实际40904（MOT172664/Dance33772/MOT204468），TAO训练注释18274图/500video，额外freeform类不能冒充1203输入词表监督。实现纯CPU可用性索引：仅冻结MOT train_frames、V2全部9fit的本地图像和所有表达、TAOtrain映射Base(c/f)对象引用，所有无Base帧和缺文件记录保留，不当负标签/不读取eval或forbiddenGT。仅元数据128MiB预算，不开模型/feature缓存/新训练，不改变当前600对照。后续根据真实测评选择扩展课程和actor rollout，索引不冒充训练曝光。
 
@@ -2801,3 +2801,7 @@ Because the all-GPU snapshot was occupied by protected/foreign jobs, no native T
 Added `scripts/groundjev/merge_tao_native_shards.py` as the only promotion path after streaming. It checks every shard receipt, parent SHA, exact image order, GT-free metadata, and disjoint full coverage before producing a combined candidate archive. A preflight against the registered-but-unstreamed v2 directory rejected the missing shard receipt at shard 0, as intended; no native TRAIN rows or optimizer updates were created.
 
 The merge contract also passed a synthetic four-frame/two-shard GT-free fixture, covering the successful receipt path without touching dataset or GPU state.
+
+## 2026-10-21 — authoritative G2 refresh at step 12442
+
+The protected G2 Clean ranks remain alive on GPUs 3/5 at event step 12,442/18,227 with finite loss `0.2287370411`; the latest durable adapter is still `checkpoints/adapter-step012000.pt`, the training-state checkpoint is present, and `final_receipt.json` is absent. G1, clean-bundle, held-out and YesTrack owners remain live dependency/resource waiters; the corrected three-task owner remains paused at zero updates because native TAO TRAIN rows are not available. No protected process or protocol was changed.
