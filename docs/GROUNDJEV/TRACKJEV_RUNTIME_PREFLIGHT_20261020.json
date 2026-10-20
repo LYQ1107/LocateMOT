@@ -1,0 +1,22 @@
+{
+  "status": "TRACKJEV_RUNTIME_PREFLIGHT_PASS",
+  "timestamp": "2026-10-20T23:04:00+08:00",
+  "project_root": "/data2/user/LocateMOT",
+  "runtime_python": "/data2/user/LocateMOT_GroundJEV/.venv-onejev-py310/bin/python",
+  "pythonpath": [
+    "/data2/user/LocateMOT_GroundJEV/external/OneJev",
+    "/data2/user/LocateMOT"
+  ],
+  "gpu_allocated": false,
+  "compileall": {
+    "status": "PASS",
+    "scope": ["locatemot/groundjev", "scripts/groundjev", "tools/groundjev"]
+  },
+  "selftests": {
+    "tools/groundjev/trackjev_selftest.py": "TRACKJEV_DECISION_LAYER_SELFTEST_PASS",
+    "tools/groundjev/trackjev_model_selftest.py": "TRACKJEV_MODEL_SELFTEST_PASS",
+    "tools/groundjev/trackjev_adapter_selftest.py": "TRACKJEV_ADAPTER_SELFTEST_PASS"
+  },
+  "scope": "structured decision schema, global candidate competition, tracker decision lifecycle, native OneJev adapter",
+  "claim_boundary": "runtime and import regression only; no tracking metric claim"
+}
