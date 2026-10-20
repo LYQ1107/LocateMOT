@@ -3193,3 +3193,15 @@ join, and native three-task owners resolve `scripts/groundjev/...` or the
 registered join entrypoint from this project root. The sibling runtime checkout
 was not used to launch these owners. This closes a reproducibility ambiguity
 without changing any owner, checkpoint, or GPU allocation.
+
+
+## 2026-10-21 — G2 event-integrity audit (step 12594)
+
+The formal G2 event stream contains 12,594 optimizer events from step 1 through
+step 12,594 with no step gaps. Loss, gradient norm, memory, learning rates, and
+all other recorded numeric fields are finite across the stream. The recent
+throughput is stable at 309.8 steps/hour over 100 steps, 311.9 over 500 steps,
+and 310.9 over 1,000 steps. Checkpoint events are present at each 500-step
+boundary through `adapter-step012500.pt`; the terminal receipt remains absent.
+This supports healthy continuation and an estimated 5,633 remaining updates at
+roughly 311 steps/hour, but it is not a model-quality or generalization claim.
