@@ -1,0 +1,158 @@
+{
+  "status": "OVMOT_EVALUATOR_REPAIR_REPRODUCED",
+  "timestamp": "2026-10-21",
+  "project": "GroundJEV-MOT / LocateMOT",
+  "project_root": "/data2/user/LocateMOT",
+  "code_commit": "16e20851dfa0110a4b7f45c89abfe02a9a8194e9",
+  "evaluator": "tools/groundjev/evaluate_multitask.py",
+  "evaluator_sha256": "e750bdc972a4a4f5cb97aa8c0b298cdf5cad1a9411c7730eacf396668d716b6e",
+  "teta_commit": "b498aa87b252bfb75d7cc0d8d6435c3e1e74e4de",
+  "protocol": {
+    "official_evaluator_defaults": {
+      "OUTPUT_SUMMARY": true,
+      "OUTPUT_TEM_RAW_DATA": true,
+      "OUTPUT_PER_SEQ_RES": true
+    },
+    "historical_failures": [
+      "TETA OUTPUT_PER_SEQ_RES=False flattened all_res while summary expected COMBINED_SEQ",
+      "TETA OUTPUT_SUMMARY=False left return variable t unassigned"
+    ],
+    "GT_access": "evaluation only",
+    "official_test_labels_read": false,
+    "fresh_run_command": "python3 tools/groundjev/evaluate_multitask.py --video <manifest> --run <fresh_output>",
+    "historical_outputs_preserved": true
+  },
+  "runs": [
+    {
+      "name": "video63_simple_control",
+      "manifest": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_pilot_data/ovmot_tao_base_novel63_full.json",
+      "manifest_sha256": "31aee4281174f08bb083195f538f89af310c1e4f7c7d7715013bbc77a27dd8b0",
+      "source_inference": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_runs/tao_base_novel63_full_v3_empty_crop_cpu/simple",
+      "fresh_evaluation_output": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_runs/ovmot_evaluator_repair_v1/video63_simple_control",
+      "task": "ovmot",
+      "dataset": "tao_amodal",
+      "video_id": 63,
+      "sequence": "val/HACS/Making_a_sandwich_v_SMk4troNhwE_scene_0_0-2482",
+      "scope": "full_legal_validation_video_annotation_frames",
+      "frames": 40,
+      "result_status": "VIDEO_INFERENCE_COMPLETE",
+      "backend": "simple",
+      "checkpoint": null,
+      "predictions": 35228,
+      "GT_boxes": 160,
+      "perception_rejected_frames": [],
+      "association_replay_fps": 0.14896989940029468,
+      "metrics": {
+        "TETA": 18.64,
+        "LocA": 7.0114,
+        "AssocA": 28.618,
+        "ClsA": 20.29,
+        "LocRe": 89.375,
+        "LocPr": 7.0629,
+        "AssocRe": 30.888,
+        "AssocPr": 60.706,
+        "ClsRe": 20.29,
+        "ClsPr": 63.333
+      },
+      "base_novel": {
+        "base": {
+          "TETA": 23.372500000000002,
+          "LocA": 5.66265,
+          "AssocA": 34.0205,
+          "ClsA": 30.43485,
+          "LocRe": 90.125,
+          "LocPr": 5.70445,
+          "AssocRe": 35.983999999999995,
+          "AssocPr": 65.011,
+          "ClsRe": 30.43485,
+          "ClsPr": 95.0
+        },
+        "novel": {
+          "TETA": 9.1737,
+          "LocA": 9.7088,
+          "AssocA": 17.812,
+          "ClsA": 0.0,
+          "LocRe": 87.875,
+          "LocPr": 9.7799,
+          "AssocRe": 20.697,
+          "AssocPr": 52.095,
+          "ClsRe": 0.0,
+          "ClsPr": 0.0
+        }
+      },
+      "official_complete_dataset_result": false,
+      "evaluator_status": "OFFICIAL_REGISTERED_MULTITASK_SCOPE_EVALUATION_COMPLETE"
+    },
+    {
+      "name": "video4_native_rejected_4frame",
+      "manifest": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_pilot_data/ovmot_tao_first4.json",
+      "manifest_sha256": "e93bcae0e21ef653fc3f587017b6c207300d088c33f4f35ebb56067b48530461",
+      "source_inference": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_runs/pretrained_v1_registered_v2_evaluation_repair/ovmot_tao_first4/simple",
+      "fresh_evaluation_output": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_runs/ovmot_evaluator_repair_v1/video4_native_rejected_4frame",
+      "task": "ovmot",
+      "dataset": "tao_amodal",
+      "video_id": 4,
+      "sequence": "val/YFCC100M/v_25685519b728afd746dfd1b2fe77c",
+      "scope": "registered_short_functional_clip",
+      "frames": 4,
+      "result_status": "VIDEO_INFERENCE_COMPLETE_WITH_REJECTED_PERCEPTION",
+      "backend": "simple",
+      "checkpoint": null,
+      "predictions": 0,
+      "GT_boxes": 18,
+      "perception_rejected_frames": [
+        751,
+        781,
+        811,
+        841
+      ],
+      "association_replay_fps": 13.54344521253282,
+      "metrics": {
+        "TETA": 0.0,
+        "LocA": 0.0,
+        "AssocA": 0.0,
+        "ClsA": 0.0,
+        "LocRe": 0.0,
+        "LocPr": 0.0,
+        "AssocRe": 0.0,
+        "AssocPr": 0.0,
+        "ClsRe": 0.0,
+        "ClsPr": 0.0
+      },
+      "base_novel": {
+        "base": {
+          "TETA": 0.0,
+          "LocA": 0.0,
+          "AssocA": 0.0,
+          "ClsA": 0.0,
+          "LocRe": 0.0,
+          "LocPr": 0.0,
+          "AssocRe": 0.0,
+          "AssocPr": 0.0,
+          "ClsRe": 0.0,
+          "ClsPr": 0.0
+        },
+        "novel": null
+      },
+      "official_complete_dataset_result": false,
+      "evaluator_status": "OFFICIAL_REGISTERED_MULTITASK_SCOPE_EVALUATION_COMPLETE"
+    }
+  ],
+  "video4_full_scope_blocker": {
+    "required_manifest": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_pilot_data/ovmot_tao_full.json",
+    "required_frames": 40,
+    "available_native_artifact": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_runs/ovmot_evaluator_repair_v1/video4_native_rejected_4frame",
+    "available_scope": "registered_short_functional_clip",
+    "available_frames": 4,
+    "rejected_frames": [
+      751,
+      781,
+      811,
+      841
+    ],
+    "predictions": 0,
+    "root_cause": "OneJev native decoder output violates the strict canonical coordinate-tuple schema (duplicate or unsorted tuples); the safe parser rejects the frame instead of guessing boxes.",
+    "boundary": "No full 40-frame video4 native result is claimed. A full-scope rerun remains pending the parser/model-output repair; the four-frame receipt is diagnostic only."
+  },
+  "claims_boundary": "video63 is an independent 40-frame TAO validation control produced by the existing simple backend; it is not G2/G1/OneJev adapted-model evidence. video4 is a rejected native diagnostic."
+}

@@ -2,6 +2,74 @@
 
 Concise experimental log (latest first).
 
+## 2026-10-21 — G2 event-integrity audit through step 12650
+
+- Read the formal event log without altering the trainer. The completed audit
+  cutoff contained 12,650 unique, contiguous steps from 1 through 12,650,
+  with zero missing IDs and zero non-finite values across the recorded loss,
+  gradient, memory and learning-rate fields.
+- Twenty-six explicit checkpoint events were present through the durable
+  step-12500 checkpoint; `final_receipt.json` remained absent. The live log
+  then advanced to step 12651 with finite loss/gradient values.
+- Decision: preserve the current two-rank run and its recovery state. This is
+  numeric/resumability evidence, not a performance claim.
+- Evidence: `docs/GROUNDJEV/G2_EVENT_INTEGRITY_AUDIT_20261021_STEP12650.md`.
+
+## 2026-10-21 — downstream launch-gate audit
+
+- Read the five G2-dependent entrypoints and confirmed their exact terminal
+  contract: status `G2_EXACT_COVERAGE_TRAINING_COMPLETE`, step `18_227`, and
+  clean manifest SHA `f682519a…06e71`; the bundle exporter also requires the
+  terminal adapter file.
+- Confirmed YesTrack is intentionally independent of G2 training and remains
+  gated by real GPU7 exclusivity and its native split, so it cannot silently
+  fall back to a CPU mock.
+- No gate defect or premature launch was found. The static audit changed no
+  runtime state and no benchmark claim. Evidence:
+  `docs/GROUNDJEV/DOWNSTREAM_GATE_AUDIT_20261021.md`.
+
+## 2026-10-21 — GroundJEV G2 step-12642 progress snapshot
+
+- Evidence: the formal event log reached step `12642/18227` at
+  `2026-10-21 05:17:02 +08:00`, with finite loss `0.17345873918384314` and
+  finite gradient norm `10.642035484313965`.
+- Gate state: `final_receipt.json` is absent. G1, deployment bundle,
+  independent held-out, native TAO and YesTrack owners remain alive in their
+  registered waiting states; no downstream metric or optimizer update is
+  claimed.
+- Decision: continue protecting the two-rank G2 run on physical GPUs 3/5 and
+  preserve all checkpoints and historical G2-PL outputs.
+- Boundary: this is runtime evidence, not a MOT/RMOT/OVMOT performance result.
+  See `docs/GROUNDJEV/STATUS_SNAPSHOT_20261021_G2_STEP12642.md`.
+
+## 2026-10-21 — GroundJEV G2 step-12633 progress snapshot
+
+- Evidence: the formal event log advanced to step `12633/18227` at
+  `2026-10-21 05:15:19 +08:00`, with finite loss `0.28367656865157187`, finite
+  gradient norm `10.239775657653809`, and peak memory `12.8289 GiB`.
+- Gate state: `final_receipt.json` is still absent. G1, deployment bundle,
+  independent held-out, native TAO and YesTrack owners remain alive but in
+  their registered waiting states; no downstream optimizer update or metric is
+  claimed.
+- Decision: continue protecting the two-rank G2 run on physical GPUs 3/5 and
+  preserve all checkpoints and historical G2-PL results.
+- Boundary: this is runtime evidence, not a MOT/RMOT/OVMOT performance result.
+  See `docs/GROUNDJEV/STATUS_SNAPSHOT_20261021_G2_STEP12633.md`.
+
+## 2026-10-21 — GroundJEV G2 step-12613 progress snapshot
+
+- Hypothesis/contract: preserve the formal two-rank G2 Clean run and open all
+  dependent G1, deployment-bundle, held-out, native-TAO and YesTrack gates only
+  after the exact terminal receipt.
+- Evidence: the authoritative event log reached step `12613/18227` with
+  finite loss `0.2061017351`; `adapter-step012500.pt` and
+  `latest_training_state.pt` are present, while `final_receipt.json` is absent.
+- Decision: retain the live run and all waiting owners. No downstream optimizer,
+  evaluation, label promotion, or historical G2-PL overwrite was performed.
+- Boundary: this is a runtime progress record, not a MOT/RMOT/OVMOT metric or
+  a claim that the final G2 detector exists. See
+  `docs/GROUNDJEV/STATUS_SNAPSHOT_20261021_G2_STEP12613.md`.
+
 ## 2026-10-01 — latest R1 restoration completed
 
 - Hypothesis: restore only the newest R1 execution boundary and its legal
@@ -3003,6 +3071,323 @@ A single authoritative audit confirmed the registered MOT20-05 G0 native export 
 
 A read-only search of `/data0/user`, `/data1/user` and `/data3/user` found no complete TAO TRAIN native candidate archive. The only existing native TAO candidate archive remains a 40-frame `frames/val` stream and is ineligible for TRAIN joining. The corrected real three-task queue remains paused with zero optimizer updates; no validation archive was relabeled and no teacher-only fallback was launched. Evidence: `docs/GROUNDJEV/NATIVE_OVMOT_ARCHIVE_AUDIT_20261021.{json,md}`.
 
+## 2026-10-21 — GroundJEV joint identity corpus rebuild contract and Phase B ablations
+
+Added `tools/groundjev/coupled/build_joint_identity_corpus.py` and its focused
+contract tests. The builder normalizes registered MOT/RMOT/OVMOT rows without
+inventing boxes or targets, records candidate provenance and causal memory,
+rejects future/test evidence, and has an explicit native-only gate that rejects
+teacher crops. A real 12-row sample from the registered Phase-B corpus produced
+5 MOT, 3 RMOT and 4 OVMOT rows; 8 rows had native candidates and 4 remained
+explicit Base teacher/empty-candidate rows, so `native_ovmot_training_rows` was
+false. The existing G2 step-11000 B0/B1/B2 bounded readout receipts were
+consolidated into `docs/GROUNDJEV_COUPLED/PHASE_B_ABLATIONS_20261021.{json,md}`.
+The three 200-update arms and 8-frame causal replay are engineering evidence
+only; no official tracking metric or OVMOT native-training claim was promoted.
+
+The native-only corpus gate was then strengthened to reject rows carrying an
+explicit `gt_in_model_input`/`GT_IDs_in_model_input` flag even when their
+candidate-source string looks native. The focused contract suite now has 12
+passing checks; no source rows or training queues were changed.
+
+The Phase-B joint corpus was also audited against all 583,251 G2 Clean TRAIN
+rows. There are 678 exact image-path overlaps covering 290 images (221
+identity-pair, 119 occlusion-recovery, 338 RMOT); the 430 OVMOT teacher rows
+have no exact overlap. The audit reads no official-test labels and marks the
+joint corpus as TRAIN-scope controls only. Evidence:
+`docs/GROUNDJEV_COUPLED/DATA_OVERLAP_AUDIT_20261021.{json,md}`.
+
+## 2026-10-21 — targeted native TAO archive rescan
+
+Re-read every discovered TAO candidate archive under `/data2/user/LocateMOT_GroundJEV/outputs/groundjev`. The two small candidate controls and the 40-frame streams all resolve to `frames/val`; the larger 40-frame stream has 35,228 candidates and a native feature cache but is explicitly a validation stream. One full Base/Novel stream is empty and failed, and the registered 18,274-image/500-video TAO TRAIN manifest has `native_candidate_export_started=false` and `native_ovmot_training_rows=false`. No complete TAO TRAIN native candidate archive exists, so the corrected three-task queue remains paused at zero optimizer updates. Validation outputs were not relabeled and no teacher-only fallback was promoted. Evidence: `docs/GROUNDJEV/NATIVE_OVMOT_ARCHIVE_RESCAN_20261021.{json,md}`.
+## 2026-10-21 — single authoritative G2 progress refresh at step 12417
+
+One non-polling status read found the protected formal G2 Clean ranks alive on GPUs 3/5 at event step 12,417/18,227 with finite loss `0.1803909168`. The latest durable adapter remains `checkpoints/adapter-step012000.pt`; `checkpoints/latest_training_state.pt` is present and `final_receipt.json` is absent. G1, the deployment bundle, held-out evaluation and YesTrack remain dependency/resource waiters. The corrected three-task queue remains `PAUSED_FOR_NATIVE_OVMOT_ROWS` with zero optimizer updates. No protected process or experimental protocol was changed. Evidence is the live G2 run directory plus the refreshed matrix.
+
+## 2026-10-21 — TAO TRAIN native export shards registered
+
+Because the all-GPU snapshot was occupied by protected/foreign jobs, no native TAO export was launched. Instead, added `scripts/groundjev/prepare_tao_train_native_shards.py` and registered eight contiguous, disjoint, label-free manifests covering all 18,274 TAO TRAIN images (500 videos) with parent manifest SHA `835adaadff282088599987de4c5bc906e7d8aca826deb7426cda05598e9db3a4`. CPU coverage validation reports 18,274 covered frames, zero missing and zero duplicates. Every shard remains `native_ovmot_training_rows=false`; this only makes the future native stream resumable/parallel and does not unblock training. The first preflight exposed a slice-length assertion bug, which was fixed before accepting the v2 registration; the failed partial directory was preserved separately. Evidence: `docs/GROUNDJEV/TAO_TRAIN_NATIVE_SHARDS_20261021.{json,md}` and the external shard receipts.
+
+Added `scripts/groundjev/merge_tao_native_shards.py` as the only promotion path after streaming. It checks every shard receipt, parent SHA, exact image order, GT-free metadata, and disjoint full coverage before producing a combined candidate archive. A preflight against the registered-but-unstreamed v2 directory rejected the missing shard receipt at shard 0, as intended; no native TRAIN rows or optimizer updates were created.
+
+The merge contract also passed a synthetic four-frame/two-shard GT-free fixture, covering the successful receipt path without touching dataset or GPU state.
+
+## 2026-10-21 — resumable TAO TRAIN native owner started
+
+Added `scripts/groundjev/queue_tao_native_train_shards.py` and synchronized the runtime stream copy so shard-specific GroundAnything and native-feature ports are supported while the default validation ports remain unchanged. The owner is live in `WAITING_G2_CLEAN_SUCCESS`, restricted to physical GPUs 4/6, and treats any existing compute application as unavailable; GPUs 3/5 and 7 are excluded to protect G2/G1 and held-out/YesTrack. It will run the eight native TRAIN shards and strict merge only after the exact G2 terminal receipt. A first background launch was reaped by the terminal wrapper before writing state; the persistent-session launch wrote the waiting state and made no GPU or foreign-job change. Evidence: `docs/GROUNDJEV/TAO_TRAIN_NATIVE_QUEUE_20261021.{json,md}`.
+
+## 2026-10-21 — authoritative G2 refresh at step 12442
+
+The protected G2 Clean ranks remain alive on GPUs 3/5 at event step 12,442/18,227 with finite loss `0.2287370411`; the latest durable adapter is still `checkpoints/adapter-step012000.pt`, the training-state checkpoint is present, and `final_receipt.json` is absent. G1, clean-bundle, held-out and YesTrack owners remain live dependency/resource waiters; the corrected three-task owner remains paused at zero updates because native TAO TRAIN rows are not available. No protected process or protocol was changed.
+
+## 2026-10-21 — native TAO join owner and native three-task launch gate repaired
+
+Added a CPU-only owner for the complete native TAO TRAIN stream and a separate
+resumable owner for the future real MOT/RMOT/OVMOT OneJev run. The join owner
+waits for the strict eight-shard merge receipt, runs the checked-out
+`prepare_native_ovmot_train_join.py` and `prepare_real_three_task_joint_manifest.py`,
+and never launches a model or optimizer. Its initial state is
+`WAITING_COMPLETE_NATIVE_TAO_STREAM`. The native three-task owner is now live
+as a dependency waiter at `WAITING_NATIVE_OVMOT_MANIFEST`; it has launched no
+GPU process or optimizer and will apply the joined-manifest plus terminal
+G2/G1/bundle/held-out and exclusive-GPU gates later. The historical
+teacher-control queue remains paused at zero updates.
+
+During the audit, the join owner was corrected to resolve repository joiners
+from `/data2/user/LocateMOT` because the runtime output tree does not mirror
+those source files. The paused compact queue was also corrected to accept the
+actual bundle terminal status `G2_CLEAN_DEPLOYMENT_BUNDLE_EXPORTED` while
+retaining the historical spelling for old receipts. No data, checkpoint, or
+running process was changed. Evidence:
+`docs/GROUNDJEV/TAO_NATIVE_JOIN_QUEUE_20261021.{json,md}` and
+`docs/GROUNDJEV/REAL_THREE_TASK_NATIVE_QUEUE_20261021.{json,md}`.
+
+## 2026-10-21 — TAO native owner corrected to use a terminal G2 bundle
+
+The TAO TRAIN shard owner was audited before its first GPU launch. Its
+original model constant pointed at the published G0 bundle, which would have
+made a later native candidate archive impossible to attribute to G2. The owner
+now waits for the exact G2 receipt, merges `adapter_projector_final.pt` into
+the private `GroundAnything-DLM-G2-CLEAN-NATIVE-TAO-V1` bundle, validates the
+569-tensor/export/manifest contract, and only then starts shard services. The
+private bundle is never mixed with or written over G0, G1, or the ordinary G2
+deployment bundle. The owner process had not started a shard, so it was
+restarted with the corrected code while remaining in its G2 wait state.
+Evidence: `scripts/groundjev/queue_tao_native_train_shards.py` and
+`docs/GROUNDJEV/TAO_TRAIN_NATIVE_QUEUE_20261021.{json,md}`.
+
+## 2026-10-21 — decoupled the terminal G2 bundle from the G1 comparison arm
+
+The clean deployment owner previously waited for both the exact G2 receipt and
+G1 GPU5 completion. That ordering could block independent G2 held-out
+measurement and native G2 candidate export behind an optional comparison arm.
+The owner now waits only for the exact-once G2 terminal receipt, performs the
+same CPU-only 569-tensor merge into the separate G2-CLEAN-V2 bundle, and leaves
+G1 as an independent GPU5 adaptation/control. The existing owner was still in
+its pre-launch wait state, so no model or output was changed; it will be
+restarted with the corrected gate. Evidence: `tools/groundjev/queue_g2_clean_bundle_export.py`.
+
+The owner restart also exposed a resumability defect: its old waiting directory
+was treated as an existing export and refused to start. The restart guard now
+accepts the preserved pre-launch WAITING_G2_AND_G1_TERMINAL state (as well as
+WAITING_G2_CLEAN_SUCCESS), refuses live duplicate owners and any partial
+bundle, and resumes without deleting the historical state. The corrected owner
+is live again in WAITING_G2_CLEAN_SUCCESS.
+
+## 2026-10-21 — native three-task owner no longer logically depends on G1
+
+The new real native MOT/RMOT/OVMOT owner was narrowed to require the native
+TAO manifest, terminal G2, independent G2 bundle and held-out receipts. G1
+GPU5 adaptation remains an optional comparison receipt; its physical GPU5
+ownership is still respected by the four-GPU resource probe. This preserves
+G1/G200/G0 controls without making the final-G2 joint route wait on a separate
+adaptation arm. The historical paused teacher-control queue was not changed.
+
+## 2026-10-21 — G1 GPU5 waiting owner made resumable
+
+The G1 GPU5 owner had the same pre-launch recovery defect: after a process
+restart, its preserved WAITING_G2_CLEAN_SUCCESS directory was treated as an
+existing artifact and the owner could not be resumed. The startup guard now
+rejects a live duplicate owner and any partial output, but accepts the empty
+preserved waiting directory and records `resumed_wait_owner`. The old waiting
+owner was stopped and restarted with the registered
+`GroundAnything-DLM-TrackProjG1-GPU5-V2` bundle path. It remains at
+`WAITING_G2_CLEAN_SUCCESS`; no G1 optimizer or GPU process has started.
+
+## 2026-10-21 — native three-task owner made resumable
+
+The real native MOT/RMOT/OVMOT owner had a weaker restart boundary: a dead
+waiting process could rewrite its queue directory without distinguishing a
+clean wait from partial training output. Startup now accepts only the known
+pre-launch waiting states, preserves the optional runtime config when it was
+already created, rejects unexpected files, refuses live duplicates, and records
+`resumed_wait_owner`. The existing owner is being restarted only in its
+CPU-only `WAITING_NATIVE_OVMOT_MANIFEST` state; no optimizer or GPU process is
+started.
+
+## 2026-10-21 — YesTrack waiting owner made resumable
+
+The native YesTrack v2 owner was still waiting for an exclusive GPU7 and had
+no optimizer or evaluation artifacts. Its startup guard now resumes only the
+known empty `WAITING_GPU7_EXCLUSIVE` queue (and the pre-created `args.json`),
+rejects partial queue/training outputs, refuses live duplicates, and records
+`resumed_wait_owner`. The waiting owner is restarted without allocating GPU7;
+the independent YesTrack run remains pending.
+
+## 2026-10-21 — held-out owner made resumable
+
+The GPU7 G0/G2 independent held-out owner was still CPU-only in
+`WAITING_G2_CLEAN_BUNDLE_AND_GPU7`; its directory contained only the current
+wait receipt and the preserved historical pre-MOT receipt. Startup now accepts
+that exact clean wait state, preserves the historical receipt, rejects any
+unexpected partial evaluation outputs, refuses live duplicates, and records
+`resumed_wait_owner`. The owner is restarted without allocating GPU7.
+## 2026-10-21 — G2 progress evidence refreshed
+
+The protected formal G2 Clean owner remains live on physical GPUs 3/5. The
+latest observed training event is step 12,567/18,227 with finite loss
+0.3145263; `adapter-step012500.pt` and `latest_training_state.pt` load with
+the registered clean manifest SHA. No terminal receipt or final adapter exists
+yet, so no downstream bundle, held-out metric, G1 update, or joint optimizer
+update is claimed. The waiting owners remain untouched and recoverable.
+
+## 2026-10-21 — G2 progress evidence refreshed (step 12578)
+
+An authoritative event read at 05:04:48 +0800 records the protected formal G2
+Clean run at step 12,578/18,227 with finite loss 0.24055790062993765. The two
+distributed ranks are still the only active optimizer in this route on physical
+GPUs 3/5. The latest durable checkpoint remains `adapter-step012500.pt` with
+`latest_training_state.pt`; `final_receipt.json` and a terminal adapter are
+still absent. No G1, bundle export, held-out metric, YesTrack update, or native
+three-task update is claimed before that terminal receipt. This is evidence of
+continued healthy progress only; the prior historical result boundaries remain.
+
+## 2026-10-21 — GroundJEV coupled regression refreshed
+
+The bounded coupled-core regression was rerun after the queue-owner changes: 13
+unittests covering joint identity corpus, Phase A core, memory-conditioned input,
+fixed-candidate contract, and causal-memory prefill all passed. The registered
+G1/G2-bundle/TAO/native-joint/YesTrack queue entrypoints also passed `py_compile`,
+and the coupled plus TrackJEV packages passed `compileall`. This verifies the
+recoverable launch surface only; it does not promote any model or imply a
+tracking metric while G2 lacks its terminal receipt.
+
+## 2026-10-21 — waiting-owner source resolution audit
+
+A read-only `/proc` audit of the seven registered waiting owners confirmed that
+all commands run with cwd `/data2/user/LocateMOT`: the G1 and G2-bundle owners
+resolve `tools/groundjev/...`, while the TAO-shard, held-out, YesTrack, native
+join, and native three-task owners resolve `scripts/groundjev/...` or the
+registered join entrypoint from this project root. The sibling runtime checkout
+was not used to launch these owners. This closes a reproducibility ambiguity
+without changing any owner, checkpoint, or GPU allocation.
+
+
+## 2026-10-21 — G2 event-integrity audit (step 12594)
+
+The formal G2 event stream contains 12,594 optimizer events from step 1 through
+step 12,594 with no step gaps. Loss, gradient norm, memory, learning rates, and
+all other recorded numeric fields are finite across the stream. The recent
+throughput is stable at 309.8 steps/hour over 100 steps, 311.9 over 500 steps,
+and 310.9 over 1,000 steps. Checkpoint events are present at each 500-step
+boundary through `adapter-step012500.pt`; the terminal receipt remains absent.
+This supports healthy continuation and an estimated 5,633 remaining updates at
+roughly 311 steps/hour, but it is not a model-quality or generalization claim.
+
+## 2026-10-21 — tightened G1 post-G2 terminal gate
+
+The resumable GPU5 G1 owner previously accepted a G2 receipt with steps at or
+above the registered budget and did not explicitly require the terminal adapter
+file. Its post-G2 gate now requires status
+`G2_EXACT_COVERAGE_TRAINING_COMPLETE`, exactly 18,227 steps, the registered clean
+manifest SHA, and `adapter_projector_final.pt`. A temporary-receipt regression
+confirmed that missing adapter and wrong-step receipts are rejected while the
+complete contract is accepted. The live waiting owner was not restarted or
+modified; this patch protects future recovery and launch paths.
+
+
+## 2026-10-21 — G2 progress snapshot (step 12610)
+
+The protected G2 Clean run reached step 12,610/18,227 at 05:10:55 +0800 with
+finite loss 0.2049703631. The three expected training processes remain live and
+`final_receipt.json` is still absent. This snapshot changes only progress
+evidence; no downstream model, held-out metric, or generalization claim is
+made.
+
+## 2026-10-21 — coupled runtime lifecycle execution repair
+
+Phase-A review found that the single-backbone runtime decoded lifecycle logits
+but ignored them: every assigned track was forced to `ACTIVE`, every absent
+track only accumulated `LOST`, and an assignment-conditioned memory write could
+reactivate a track whose lifecycle decision was `LOST`.  The smallest aligned
+fix now executes `ACTIVE/REACTIVATE/LOST` decisions, treats `TERMINATE` on a
+matched observation as recoverable `ACTIVE`, blocks memory writes for
+`LOST/TERMINATE`, and applies a registered timeout before irreversible
+termination of an unmatched track.  A controlled causal replay verified one
+birth, a matched `LOST` decision with a held memory write, and timeout
+termination; the one-feature-forward and memory-causality regressions still
+pass.  This is a runtime correctness repair, not a tracking-performance claim.
+
+## 2026-10-21 — GPU gate for the next real pilot
+
+The single resource audit found all eight A800 GPUs occupied.  Physical GPUs
+3/5 remain the protected G2 ranks, GPU7 retains an unrelated compute owner, and
+the remaining cards also have active compute workloads; no card has an
+exclusive launch window for the Phase-B real-G2 pilot.  The latest durable G2
+adapter remains `checkpoints/adapter-step012500.pt` with
+`latest_training_state.pt`; the terminal receipt is still not present.  The
+pilot was therefore not started on a shared card, and no process was killed or
+reused.  This preserves the registered training contract while the existing
+G2 completion waiter remains the only long-running observer.
+
+## 2026-10-21 — corrected G0/G2 evidence boundary for early coupled pilots
+
+An audit of the historical Phase-A smoke and Phase-B readout pilot found that
+their `checkpoint` was the unadapted `GroundAnything-DLM` bundle and neither
+receipt recorded a G2 adapter.  The metrics and loss values are preserved as
+G0 native-visual controls only; they are not G2 Clean evidence and are not used
+for a G2 performance claim.  The future Phase-A and Phase-B entrypoints now
+require both an explicit adapter and the native clean-DLM loader, and record
+the adapter/runtime provenance.  This fixes a provenance error without
+overwriting the historical control artifacts.
+
+## 2026-10-21 — protected G2 progress snapshot (step 12701)
+
+The authoritative event stream now contains contiguous rows through step
+12,701/18,227; the latest row at 05:28:19 +0800 has finite loss
+0.2224419505.  The durable checkpoint set still ends at
+`checkpoints/adapter-step012500.pt` with
+`checkpoints/latest_training_state.pt`, while `final_receipt.json` is absent
+and `trainer_contract.json` remains `G2_FORMAL_TRAINING_RUNNING`.  The launcher
+is still live.  This is only a healthy-progress record; it does not promote a
+checkpoint or claim a tracking metric.
+
+## 2026-10-21 — native three-task training step-contract audit
+
+The registered `queue_real_three_task_native.py` writes `epochs=1` and
+`max_steps=0` into its generated config.  The pinned `train/sft.py` contract
+interprets a falsy `max_steps` as the full planned epoch
+(`steps_per_epoch * epochs`), rather than a zero-step plan.  The queue then
+requires the terminal `done` record to report `examples == native manifest
+rows` and a non-missing terminal record before declaring completion.  This
+keeps the real MOT/RMOT/native-OVMOT run from being mistaken for a CPU-only or
+empty optimizer launch.
+
+## 2026-10-21 — G1 GPU5 plan provenance repair
+
+The G1 queue is explicitly bound to physical GPU5, but the older
+`native_ground_tracking200_20261014.json` retained a historical
+`physical_training_GPU: 7` field.  That plan is preserved unchanged; the G1
+queue now references a versioned GPU5 plan with matching physical-device
+metadata and an explicit queue-owner provenance note.  The corrected plan will
+be read only when its exact G2 terminal gate opens.
+
+The already-running wait-only owner had loaded the old plan path in memory, so
+it was safely replaced before any GPU work began (old PID 516321 exited; new
+wait owner PID 579251 is `WAITING_G2_CLEAN_SUCCESS`).  Its output directory,
+bundle, controls and historical state were preserved; the new owner records
+`native_ground_tracking200_gpu5_20261021.json` and still owns no GPU.
+
+## 2026-10-21 — protected G2 throughput snapshot (step 12731)
+
+The formal G2 event stream is contiguous through step 12,731/18,227 with no
+non-finite loss, gradient, memory or learning-rate fields.  The measured rates
+are 313.73, 312.31 and 311.00 steps/hour over the last 100, 500 and 1,000
+steps, respectively.  This leaves 5,496 updates and a linear estimate of
+about 17.5–17.7 hours.  `final_receipt.json` and the terminal adapter remain
+absent, so this is a throughput/progress record only and does not open any
+downstream performance claim.
+
+## 2026-10-21 — G2 durable checkpoint contract audit
+
+The latest durable G2 recovery pair remains intact: `adapter-step012500.pt`
+and `latest_training_state.pt` are present at 469,243,990 and 469,247,597
+bytes.  The loaded state reports step 12,500, format
+`groundanything-g2-projector-qwen3-lora-v2-strict`, the registered manifest
+SHA, world size 2, optimizer and scheduler state, both rank RNG paths, sampler
+state, and the full training contract.  This validates recoverability only;
+the formal run is still not terminal and no downstream model claim is made.
+
 ## 2026-10-21 — historical G2 midterm scope audit
 
 Indexed the Clean V2 TRAIN manifest (583,251 rows; SHA-256 `f682519a1cf9204ca76ea75a56dad36dbdeac26259f202551ab9f66fefd06e71`) against all 24 historical step-3000 G2-PL input frames. All 4 MOT17-02-FRCNN frames are TRAIN-scope; the 8-frame and 12-frame Refer-KITTI-0007 RMOT clips have zero exact image-path overlap with the Clean fit index. Every frame path and content SHA-256 is recorded. The short clips remain diagnostics and do not permit an independent generalization claim. Evidence: `docs/GROUNDJEV/G2_MIDTERM_SCOPE_AUDIT_20261021.{json,md}`.
@@ -3010,3 +3395,7 @@ Indexed the Clean V2 TRAIN manifest (583,251 rows; SHA-256 `f682519a1cf9204ca76e
 ## 2026-10-21 — J1 terminal checkpoint correction
 
 The historical `trackjev_3task_J1_v4_birth` course is terminal at 1,200/1,200 updates, not active: 19,143 rows were consumed, the final adapter and full FP32/Adam/scheduler/RNG state are present, and no J1 optimizer is live. The earlier budget note had only observed step 650 and is corrected without restarting the run. Evidence: `docs/GROUNDJEV/J1_TERMINAL_RECEIPT_20261021.json` and the updated `J1_J2_TRAINING_BUDGET_AUDIT.md`.
+
+## 2026-10-21 — OVMOT evaluator repair reproduced on fresh copies
+
+The official TETA evaluator was rerun on fresh copies of the existing video-63 control and video-4 native diagnostic. The current configuration keeps `OUTPUT_SUMMARY=True`, `OUTPUT_TEM_RAW_DATA=True`, and `OUTPUT_PER_SEQ_RES=True`, which fixes the two previously recorded evaluator failures without changing GT or predictions. Video 63 completed its independent 40-frame TAO validation scope with TETA 18.640, LocA 7.0114, AssocA 28.618, and 35,228 predictions; it is a simple-backend control, not G2/G1/OneJev adaptation evidence. Video 4 remains only a four-frame native diagnostic: all four frames were safely rejected for duplicate/unsorted canonical coordinate tuples and produced zero predictions. The full 40-frame video-4 native evaluation is not claimed until that parser/output blocker is repaired. Receipt: `docs/GROUNDJEV/OVMOT_EVALUATOR_REPAIR_20261021.{json,md}`.
