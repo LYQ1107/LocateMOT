@@ -1,0 +1,46 @@
+{
+  "status": "FIXED_CANDIDATE_REPAIR_TRAIN_AND_DEV_COMPLETE",
+  "task": "MOT",
+  "dataset": "MOT20",
+  "sequence": "MOT20-03",
+  "scope": "registered_train_only_temporal_holdout_not_benchmark_evaluation",
+  "frames": 128,
+  "train_frames": 64,
+  "temporal_dev_frames": 64,
+  "candidate_count": 14784,
+  "candidate_manifest_sha256": "0a6f31fd0075f30909bdcc5d4ef7a22730c88c8aa25e4eec7e6331a149b9ada1",
+  "backbone_model_sha256": "3cf09355cde8cf4877cdc76e0a72301d572c1d6263b2831f8a03368285bb65e2",
+  "repair_checkpoint_sha256": "6477e56e2c8b753ea469d7cad23549707ff1d65c0fe6c6d9b22b27f53dc27bee",
+  "optimizer_steps": 180,
+  "identity_weighting": "inverse training-half class frequency capped at 4x; split and cap fixed before optimization",
+  "classification_before": {
+    "train_identity_accuracy": 0.0500065283,
+    "temporal_dev_identity_accuracy": 0.0157192982,
+    "temporal_dev_admit_accuracy": 0.0940350877
+  },
+  "classification_after": {
+    "train_identity_accuracy": 0.7593680637,
+    "temporal_dev_identity_accuracy": 0.8717192982,
+    "temporal_dev_admit_accuracy": 0.9038596491
+  },
+  "runtime_replay": {
+    "HOTA": 0.3028147960,
+    "DetA": 0.2358611057,
+    "AssA": 0.3888857642,
+    "IDF1": 0.2577286731,
+    "IDSW": 18,
+    "FP": 3,
+    "FN": 5634,
+    "predictions": 1891,
+    "frames_with_predictions": 61,
+    "feature_forwards": 64
+  },
+  "second_vlm_loaded": false,
+  "single_backbone": true,
+  "teacher_forced_training_memory": true,
+  "teacher_forced_temporal_dev_classification": true,
+  "predicted_memory_runtime_replay": true,
+  "independent_generalization_claim": false,
+  "scientific_claim": "bounded TRAIN-scope repair diagnostic; not an independent G2 Clean or benchmark result",
+  "interpretation": "The earlier 192-step MOT17 readout rejected 77.54% of this MOT20 candidate pool. Training on the fixed first-half MOT20 proposal distribution removes most of that action-distribution failure in the later temporal suffix, but the split remains within a registered TRAIN video and must not be used as cross-domain evidence."
+}

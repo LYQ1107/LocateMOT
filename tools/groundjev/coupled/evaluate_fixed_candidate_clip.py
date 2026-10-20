@@ -78,10 +78,11 @@ def load_model(checkpoint: Path, device: torch.device) -> GroundJEVModel:
     model = GroundJEVModel(2560, hidden_dim=256).to(device)
     missing, unexpected = model.load_state_dict(state, strict=False)
     # The 192-step checkpoint predates the optional language-context
-    # projection.  Context is absent in this cached replay, so this single
-    # missing parameter is safe and explicit; every readout parameter must
-    # still load exactly.
-    if unexpected or set(missing) != {"context_projector.weight"}:
+    # projection.  Context is absent in that cached replay, so the single
+    # missing parameter is safe and explicit.  A newer repair checkpoint may
+    # contain the projection, in which case no parameter is missing; every
+    # other schema mismatch remains an error.
+    if unexpected or set(missing) not in (set(), {"context_projector.weight"}):
         raise RuntimeError(f"unexpected coupled checkpoint schema: missing={missing}, unexpected={unexpected}")
     model.eval()
     return model
