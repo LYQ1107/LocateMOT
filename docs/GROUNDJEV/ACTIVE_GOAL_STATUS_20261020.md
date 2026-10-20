@@ -6,7 +6,7 @@ labels alone.
 ## Protected and queued work
 
 - **G2 Clean:** live two-rank torchrun on physical GPUs 3 and 5, event step
-  `10726 / 18227` at `2026-10-20 23:02:05 +0800`; the final receipt does not
+  `10746 / 18227` at `2026-10-20 23:05:55 +0800`; the final receipt does not
   exist yet. The latest durable adapter remains `adapter-step010500`. The
   original optimizer, sampler, RNG, world size, and checkpoint contract are
   unchanged. A read-only load of `checkpoints/latest_training_state.pt`
