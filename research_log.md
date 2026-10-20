@@ -3341,3 +3341,14 @@ The authoritative event stream now contains contiguous rows through step
 and `trainer_contract.json` remains `G2_FORMAL_TRAINING_RUNNING`.  The launcher
 is still live.  This is only a healthy-progress record; it does not promote a
 checkpoint or claim a tracking metric.
+
+## 2026-10-21 — native three-task training step-contract audit
+
+The registered `queue_real_three_task_native.py` writes `epochs=1` and
+`max_steps=0` into its generated config.  The pinned `train/sft.py` contract
+interprets a falsy `max_steps` as the full planned epoch
+(`steps_per_epoch * epochs`), rather than a zero-step plan.  The queue then
+requires the terminal `done` record to report `examples == native manifest
+rows` and a non-missing terminal record before declaring completion.  This
+keeps the real MOT/RMOT/native-OVMOT run from being mistaken for a CPU-only or
+empty optimizer launch.
