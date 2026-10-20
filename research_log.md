@@ -3021,3 +3021,10 @@ The native-only corpus gate was then strengthened to reject rows carrying an
 explicit `gt_in_model_input`/`GT_IDs_in_model_input` flag even when their
 candidate-source string looks native. The focused contract suite now has 12
 passing checks; no source rows or training queues were changed.
+
+The Phase-B joint corpus was also audited against all 583,251 G2 Clean TRAIN
+rows. There are 678 exact image-path overlaps covering 290 images (221
+identity-pair, 119 occlusion-recovery, 338 RMOT); the 430 OVMOT teacher rows
+have no exact overlap. The audit reads no official-test labels and marks the
+joint corpus as TRAIN-scope controls only. Evidence:
+`docs/GROUNDJEV_COUPLED/DATA_OVERLAP_AUDIT_20261021.{json,md}`.
