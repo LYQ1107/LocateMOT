@@ -2,6 +2,20 @@
 
 Concise experimental log (latest first).
 
+## 2026-10-21 — GroundJEV G2 step-12633 progress snapshot
+
+- Evidence: the formal event log advanced to step `12633/18227` at
+  `2026-10-21 05:15:19 +08:00`, with finite loss `0.28367656865157187`, finite
+  gradient norm `10.239775657653809`, and peak memory `12.8289 GiB`.
+- Gate state: `final_receipt.json` is still absent. G1, deployment bundle,
+  independent held-out, native TAO and YesTrack owners remain alive but in
+  their registered waiting states; no downstream optimizer update or metric is
+  claimed.
+- Decision: continue protecting the two-rank G2 run on physical GPUs 3/5 and
+  preserve all checkpoints and historical G2-PL results.
+- Boundary: this is runtime evidence, not a MOT/RMOT/OVMOT performance result.
+  See `docs/GROUNDJEV/STATUS_SNAPSHOT_20261021_G2_STEP12633.md`.
+
 ## 2026-10-21 — GroundJEV G2 step-12613 progress snapshot
 
 - Hypothesis/contract: preserve the formal two-rank G2 Clean run and open all
