@@ -1,13 +1,19 @@
 {
   "project_root": "/data2/user/LocateMOT",
-  "timestamp": "2026-10-20T22:45:28+08:00",
+  "timestamp": "2026-10-20T22:48:18+08:00",
   "g2": {
     "status": "G2_FORMAL_TRAINING_RUNNING",
-    "event_step": 10639,
+    "event_step": 10654,
     "target_steps": 18227,
     "physical_gpus": [3, 5],
     "latest_durable_checkpoint": "adapter-step010500",
-    "final_receipt": false
+    "final_receipt": false,
+    "recent_sec_per_step": {
+      "last_500": 11.4389,
+      "last_1000": 11.5335,
+      "last_2000": 11.8819
+    },
+    "remaining_hours_estimate": [24.1, 25.0]
   },
   "g0_mot20_05": {
     "status": "COMPLETE_REGISTERED_VALIDATION_HALF",
