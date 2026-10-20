@@ -1,0 +1,63 @@
+{
+  "project_root": "/data2/user/LocateMOT",
+    "timestamp": "2026-10-20T22:52:17+08:00",
+  "g2": {
+    "status": "G2_FORMAL_TRAINING_RUNNING",
+    "event_step": 10675,
+    "target_steps": 18227,
+    "physical_gpus": [3, 5],
+    "latest_durable_checkpoint": "adapter-step010500",
+    "final_receipt": false,
+    "durable_state_contract": {
+      "path": "/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final/checkpoints/latest_training_state.pt",
+      "step": 10500,
+      "manifest_sha256": "f682519a1cf9204ca76ea75a56dad36dbdeac26259f202551ab9f66fefd06e71",
+      "world_size": 2,
+      "optimizer_scheduler_sampler_rng_present": true
+    },
+    "recent_sec_per_step": {
+      "last_500": 11.4389,
+      "last_1000": 11.5335,
+      "last_2000": 11.8819
+    },
+    "remaining_hours_estimate": [24.0, 24.8]
+  },
+  "g0_mot20_05": {
+    "status": "COMPLETE_REGISTERED_VALIDATION_HALF",
+    "frames": 1657,
+    "full_mot20_test_claim": false
+  },
+  "g1_gpu5_queue": {
+    "status": "WAITING_G2_CLEAN_SUCCESS",
+    "physical_gpu": 5
+  },
+  "onejev_full_source": {
+    "historical_last_log_step": 3525,
+    "last_atomic_resume_step": 3000,
+    "target_steps": 28690,
+    "resume_remaining_steps": 25690,
+    "historical_sec_per_step_window": 13.4,
+    "resume_compute_hours_estimate": [95, 100],
+    "resume_queue_status": "WAITING_G2_G1_AND_EXCLUSIVE_GPU_SET",
+    "heldout_gate": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g2_clean_independent_gpu7_v1/owner_state.json",
+    "physical_gpus": [4, 5, 6, 7]
+  },
+  "j1_heldout": {
+    "status": "HELDOUT_ALL_REGISTERED_TASKS_COMPLETE",
+    "performance_claim": false
+  },
+  "g2_independent_heldout_queue": {
+    "status": "WAITING_G2_CLEAN_BUNDLE_AND_GPU7",
+    "physical_gpu": 7,
+    "scopes": ["mot20_05_validation1657", "rmot_single0007", "rmot_multi0007", "ovmot_tao105"],
+    "exact_image_overlap": {
+      "mot20_05_validation1657": 0,
+      "rmot_single0007": 0,
+      "rmot_multi0007": 0,
+      "ovmot_tao105": 0
+    },
+    "final_metrics_claimed": false
+  },
+  "mot_only_live_process": false,
+  "overall_goal_complete": false
+}
