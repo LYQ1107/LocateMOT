@@ -7,6 +7,13 @@
   "physical_gpu": 7,
   "scopes": [
     {
+      "name": "mot20_05_validation1657",
+      "task": "mot",
+      "frames": 1657,
+      "manifest": "/data3/user/LocateMOT-runs/GroundJEV/g2_step3000_full_eval_mot20_05/mot20_05_validation_half.json",
+      "exact_train_image_overlap": 0
+    },
+    {
       "name": "rmot_single0007",
       "task": "rmot",
       "frames": 800,
