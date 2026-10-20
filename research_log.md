@@ -3488,3 +3488,15 @@ allocated memory 12.8289 GiB. Recent 100/500/1000-step rates are
 latest_training_state.pt remain the durable recovery pair. This is a training
 health snapshot only, not a tracking result. Evidence:
 `docs/GROUNDJEV/G2_PROGRESS_SNAPSHOT_20261021_STEP12938.{json,md}`.
+
+## 2026-10-21 — corrected G2 native evaluation identity and runtime paths
+
+The short-control entrypoint still hard-coded its adapted arm as `G2-PL` and
+resolved future inference/scoring scripts from the historical OneJev checkout.
+It now derives the Clean arm as `G2-CLEAN-V2`, validates the terminal adapter
+step 18227, Clean TRAIN manifest SHA, merged model SHA and export receipt before
+launch, and executes from `/data2/user/LocateMOT_GroundJEV`. The historical
+`GroundAnything-DLM-G2-PL` path deliberately keeps the `G2-PL` label and is not
+reclassified. The code was compiled and the historical identity path was
+smoke-tested; no service or GPU was started. Evidence:
+`docs/GROUNDJEV/G2_NATIVE_EVAL_IDENTITY_REPAIR_20261021.{json,md}`.
