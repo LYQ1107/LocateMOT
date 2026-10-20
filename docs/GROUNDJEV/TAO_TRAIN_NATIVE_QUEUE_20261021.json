@@ -1,0 +1,21 @@
+{
+  "report": "tao_train_native_queue",
+  "date": "2026-10-21",
+  "project_root": "/data2/user/LocateMOT",
+  "entrypoint": "scripts/groundjev/queue_tao_native_train_shards.py",
+  "shard_root": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/tao_native_ovmot_train_shards_v2",
+  "parent_manifest_sha256": "835adaadff282088599987de4c5bc906e7d8aca826deb7426cda05598e9db3a4",
+  "physical_gpus": [4, 6],
+  "resource_policy": "launch only when nvidia-smi reports no compute apps and at least 32768 MiB free; GPU3/5 and GPU7 are excluded",
+  "g2_gate": {
+    "steps": 18227,
+    "manifest_sha256": "f682519a1cf9204ca76ea75a56dad36dbdeac26259f202551ab9f66fefd06e71",
+    "required_status": "G2_EXACT_COVERAGE_TRAINING_COMPLETE"
+  },
+  "queue_status_at_registration": "WAITING_G2_CLEAN_SUCCESS",
+  "queue_started": true,
+  "native_candidate_export_started": false,
+  "native_ovmot_training_rows": false,
+  "foreign_jobs_touched": false,
+  "terminal_action": "after all eight terminal shard receipts, invoke merge_tao_native_shards.py; no validation or partial stream is promoted"
+}
