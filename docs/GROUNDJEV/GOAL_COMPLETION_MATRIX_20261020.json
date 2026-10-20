@@ -1,0 +1,87 @@
+{
+  "status": "GROUNDJEV_GOAL_COMPLETION_MATRIX_CURRENT",
+  "timestamp": "2026-10-20T23:15:18.801909+08:00",
+  "overall_goal_complete": false,
+  "items": [
+    {
+      "id": "g0_mot20_long_export",
+      "status": "COMPLETE",
+      "evidence": "G0 registered MOT20-05 validation-half 1657-frame export and official receipt",
+      "metrics_claim_boundary": "validation-half only; not full MOT20 TEST"
+    },
+    {
+      "id": "mot_only_long_training",
+      "status": "COMPLETE_SAFE_NO_LIVE_OWNER",
+      "evidence": "no live independent MOT-only optimizer process in active GroundJEV scope",
+      "metrics_claim_boundary": "historical outputs retained"
+    },
+    {
+      "id": "g2_clean_training",
+      "status": "RUNNING",
+      "evidence": "/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final/training_events.jsonl",
+      "step": 10794,
+      "target_steps": 18227,
+      "metrics_claim_boundary": "no final metric until terminal receipt and fixed held-out evaluation"
+    },
+    {
+      "id": "g1_gpu5_adaptation",
+      "status": "WAITING_G2_CLEAN_SUCCESS",
+      "evidence": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/ground_adaptation/native_tracking200_gpu5_g1_v1/queue_owner_state.json",
+      "metrics_claim_boundary": "CPU input preflight passed; real GPU adaptation pending"
+    },
+    {
+      "id": "g2_clean_bundle_export",
+      "status": "WAITING_G2_AND_G1_TERMINAL",
+      "evidence": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/ground_adaptation/g2_clean_bundle_export_v1/owner_state.json",
+      "metrics_claim_boundary": "deployable bundle pending terminal G2/G1"
+    },
+    {
+      "id": "independent_heldout",
+      "status": "WAITING_G2_CLEAN_BUNDLE_AND_GPU7",
+      "evidence": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g2_clean_independent_gpu7_v1/owner_state.json",
+      "metrics_claim_boundary": "four manifests preflighted; official metrics pending"
+    },
+    {
+      "id": "onejev_joint_mot_rmot_ovmot",
+      "status": "WAITING_G2_G1_AND_EXCLUSIVE_GPU_SET",
+      "resume_step": 3000,
+      "evidence": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/full_joint_source_epoch1_resume_queue_v2/owner_state.json",
+      "metrics_claim_boundary": "459027-row/28690-update CPU plan validated; real optimizer resume pending"
+    },
+    {
+      "id": "trackjev_code_and_real_input",
+      "status": "COMPLETE_PRELIMINARY",
+      "evidence": "TrackJEV self-tests plus real OneJev/MOT input receipts",
+      "metrics_claim_boundary": "plumbing only; no full tracking claim"
+    },
+    {
+      "id": "github_evidence_sync",
+      "status": "COMPLETE",
+      "evidence": "codex/groundjev-independent-heldout-complete-20261020"
+    }
+  ],
+  "active_g2_event": {
+    "step": 10794,
+    "epoch": 0,
+    "position": 86352,
+    "micro_batches": 8,
+    "samples_global": 16,
+    "effective_tokens_global": 10903,
+    "token_budget_per_device": 16384,
+    "loss": 0.3641428353730589,
+    "gradient_norm": 8.071331977844238,
+    "peak_memory_gib": 12.828795433044434,
+    "lr_projector": 8.773255431511024e-07,
+    "lr_lora": 3.0706394010288584e-06,
+    "checkpoint": null,
+    "time": "2026-10-20 23:15:12 +0800"
+  },
+  "next_terminal_dependencies": [
+    "G2 final receipt",
+    "G1 GPU5 adaptation and controls",
+    "G2 deployment bundle",
+    "independent heldout official metrics",
+    "OneJev full source joint terminal receipt"
+  ],
+  "g2_contract_status": "G2_FORMAL_TRAINING_RUNNING"
+}
