@@ -2897,7 +2897,8 @@ validation rows (train SHA
 `065337d2fedca2377d02b94e57c9eb3778aeca09aeb1a8b9463429fa15bbee66`, validation
 SHA `d63a9fb0d54b8a1dc5d12b0960a48cb75c56ab786671f955fb317e196b3033d8`). The
 CPU rendering plan passed with zero rows over 32,768 tokens (max 26,159; 91
-planned optimizer steps). Added a real GPU owner that waits for GPU7 to have no
+planned optimizer steps per epoch, 273 over three epochs). Added a real GPU
+owner that waits for GPU7 to have no
 compute PID and at least 32 GiB free, trains native multimodal LoRA for three
 epochs, then evaluates frozen base and tuned adapter on identical held-out rows
 using AUROC, PR-AUC, accuracy, Brier, ECE, false rejection and false

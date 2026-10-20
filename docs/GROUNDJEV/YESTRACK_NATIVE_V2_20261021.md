@@ -21,7 +21,8 @@ or reading official test labels.
 
 The CPU plan completed before queue registration: p50/p90/p99/max rendered
 lengths were 1,133/10,000/25,429/26,159, with zero rows over the 32,768-token
-limit and 91 planned optimizer steps for the registered single-GPU recipe.
+limit and 91 planned optimizer steps per epoch (273 over three epochs) for the
+registered single-GPU recipe.
 
 ## Resource and execution contract
 
@@ -47,4 +48,3 @@ metrics require the adapter to be connected to a valid physical tracking
 baseline on an independent held-out sequence. The queue therefore records the
 base-versus-adapter probability metrics first and leaves the tracking claim
 open until that later fixed-candidate evaluation is complete.
-

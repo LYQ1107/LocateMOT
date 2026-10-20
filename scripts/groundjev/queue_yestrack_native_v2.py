@@ -32,6 +32,9 @@ VAL_ROWS = RUNTIME_ROOT / "outputs/groundjev/coupled/native_yesno_v2_phaseb_val.
 GPU = 7
 EXPECTED_TRAIN_ROWS = 726
 EXPECTED_VAL_ROWS = 390
+EXPECTED_EPOCHS = 3
+EXPECTED_TOTAL_STEPS = 273
+EXPECTED_TRAIN_EXAMPLES = EXPECTED_TRAIN_ROWS * EXPECTED_EPOCHS
 EXPECTED_TRAIN_SHA = "065337d2fedca2377d02b94e57c9eb3778aeca09aeb1a8b9463429fa15bbee66"
 EXPECTED_VAL_SHA = "d63a9fb0d54b8a1dc5d12b0960a48cb75c56ab786671f955fb317e196b3033d8"
 VENV_PYTHON = RUNTIME_ROOT / ".venv-onejev-py310/bin/python"
@@ -167,6 +170,8 @@ def main() -> int:
         "train_rows": str(TRAIN_ROWS), "validation_rows": str(VAL_ROWS),
         "training_root": str(TRAIN_ROOT), "adapter": str(ADAPTER),
         "expected_train_rows": EXPECTED_TRAIN_ROWS, "expected_validation_rows": EXPECTED_VAL_ROWS,
+        "epochs": EXPECTED_EPOCHS, "expected_total_steps": EXPECTED_TOTAL_STEPS,
+        "expected_terminal_examples": EXPECTED_TRAIN_EXAMPLES,
         "inputs": inputs, "completed": {}, "failed": None,
         "other_active_jobs_untouched": True, "real_gpu_training_required": True,
     }
@@ -198,10 +203,13 @@ def main() -> int:
         records = records_from_log()
         done = next((row for row in reversed(records) if row.get("event") == "done"), None)
         state["training_terminal_record"] = done
-        if train_exit != 0 or done is None or int(done.get("examples", -1)) != EXPECTED_TRAIN_ROWS:
+        if (train_exit != 0 or done is None
+                or int(done.get("examples", -1)) != EXPECTED_TRAIN_EXAMPLES
+                or int(done.get("steps", -1)) != EXPECTED_TOTAL_STEPS):
             state.update(status="REAL_YESTRACK_TRAINING_FAILED", current_stage="FAILED",
                          failed={"reason": "training_nonzero_or_incomplete",
-                                 "expected_examples": EXPECTED_TRAIN_ROWS})
+                                 "expected_examples": EXPECTED_TRAIN_EXAMPLES,
+                                 "expected_steps": EXPECTED_TOTAL_STEPS})
             atomic_save(owner, state)
             return train_exit or 3
         if not ADAPTER.is_dir() or not (ADAPTER / "adapter_model.safetensors").is_file():
