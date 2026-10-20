@@ -1,0 +1,49 @@
+{
+  "run_root": "/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final",
+  "observed_at": "2026-10-21 06:56:12 +0800",
+  "step": 13158,
+  "max_steps": 18227,
+  "latest_event": {
+    "loss": 0.14896394236711785,
+    "gradient_norm": 10.217227935791016,
+    "peak_memory_gib": 12.828881263513184,
+    "finite": true
+  },
+  "throughput_steps_per_minute": {
+    "last_100": 5.222,
+    "last_500": 5.204,
+    "last_1000": 5.201
+  },
+  "estimated_hours_remaining": {
+    "last_100": 16.18,
+    "last_500": 16.23,
+    "last_1000": 16.24
+  },
+  "process": {
+    "parent_pid": 1799359,
+    "rank_pids": [
+      1799468,
+      1799469
+    ],
+    "physical_gpus": [
+      3,
+      5
+    ],
+    "world_size": 2
+  },
+  "checkpoints": {
+    "adapter_step_13000_sha256": "08cf28930eced61b2086785494728221e113ac75cd7dc6aefe02ab1bc2ebfe59",
+    "latest_training_state_sha256": "4a79cbf3e64e69ffc56aaf964754d0209382b87c2124d46f13506325ca52fd22"
+  },
+  "final_receipt_present": false,
+  "downstream": {
+    "g1_gpu5": "WAITING_G2_CLEAN_SUCCESS",
+    "g2_bundle_export": "WAITING_G2_CLEAN_SUCCESS",
+    "tao_native_shards": "WAITING_G2_CLEAN_SUCCESS",
+    "native_ovmot_join": "WAITING_COMPLETE_NATIVE_TAO_STREAM",
+    "three_task_onejev": "WAITING_NATIVE_OVMOT_MANIFEST",
+    "ystrack": "WAITING_GPU7_EXCLUSIVE",
+    "heldout": "WAITING_G2_CLEAN_BUNDLE_AND_GPU7"
+  },
+  "scientific_boundary": "training-health only; no G2 performance claim"
+}
