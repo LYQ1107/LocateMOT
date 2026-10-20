@@ -3619,3 +3619,8 @@ The execution matrix was refreshed from the current G2 event stream and downstre
 ## 2026-10-21 — G2 Clean live progress at step 13158
 
 The protected two-rank G2 Clean event stream advanced to 13,158/18,227 at 06:56:12 +0800. The latest loss, gradient norm and peak event memory are finite (`0.1489639424`, `10.2172279`, `12.828881 GiB`). Measured throughput over the last 100/500/1,000 steps is 5.222/5.204/5.201 steps per minute, giving a linear operational estimate of 16.18–16.24 hours remaining. The durable step-13,000 adapter and full recovery state remain present with the registered SHA-256 values; `final_receipt.json` is absent. All G1, native TAO/OVMOT, three-task OneJev, held-out and YesTrack owners remain dependency-gated. This is training-health evidence only and makes no G2 metric claim. Evidence: `docs/GROUNDJEV/G2_PROGRESS_LIVE_20261021_STEP13158.{json,md}`.
+
+
+## 2026-10-21 — downstream owner heartbeat at G2 step 13163
+
+At 06:57:09 +0800 the protected G2 stream was at 13,163/18,227 with no terminal receipt. Every registered dependency owner remained live: G1 GPU5 (PID 642505), G2 bundle export (634486), native TAO shards (634487), native OVMOT join (500654), three-task OneJev (521109) and YesTrack (522307). Their states remain the exact waiting gates; held-out remains `WAITING_G2_CLEAN_BUNDLE_AND_GPU7`. No downstream optimizer or GPU launch was claimed and G2 was untouched. Evidence: `docs/GROUNDJEV/DOWNSTREAM_OWNER_HEARTBEAT_20261021_STEP13163.{json,md}`.
