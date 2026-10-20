@@ -26,6 +26,8 @@ G2_ROOT = Path(
 )
 G1_STATE = RUNTIME_ROOT / "outputs/groundjev/ground_adaptation/" \
     "native_tracking200_gpu5_g1_v1/queue_owner_state.json"
+HELDOUT_STATE = RUNTIME_ROOT / "outputs/groundjev/heldout/" \
+    "g2_clean_independent_gpu7_v1/owner_state.json"
 QUEUE_ROOT = RUNTIME_ROOT / "outputs/groundjev/training/" \
     "full_joint_source_epoch1_resume_queue_v2"
 TRAIN_ROOT = Path(
@@ -80,6 +82,24 @@ def g1_status() -> tuple[str, dict | None]:
     if status == "G1_GPU5_ADAPTATION_AND_CONTROLS_COMPLETE":
         return "complete", state
     if status == "G1_GPU5_QUEUE_FAILED" or status == "G1_GPU5_NOT_STARTED_G2_DEPENDENCY_FAILED":
+        return "failed", state
+    return "waiting", state
+
+
+def heldout_status() -> tuple[str, dict | None]:
+    """Serialize the four-GPU resume behind the independent G2 held-out gate.
+
+    The held-out owner uses GPU7 and must get a chance to run before the
+    four-rank OneJev job claims GPUs 4--7.  A terminal held-out failure is
+    retained as evidence but does not deadlock the main training objective.
+    """
+    state = read_json(HELDOUT_STATE)
+    if state is None:
+        return "waiting", None
+    status = str(state.get("status", ""))
+    if status == "G2_CLEAN_FULL_INDEPENDENT_HELDOUT_COMPLETE":
+        return "complete", state
+    if status == "G2_CLEAN_FULL_INDEPENDENT_HELDOUT_FAILED" or status.endswith("DEPENDENCY_FAILED"):
         return "failed", state
     return "waiting", state
 
@@ -141,6 +161,7 @@ def main() -> int:
         "runtime_root": str(RUNTIME_ROOT),
         "g2_root": str(G2_ROOT),
         "g1_state": str(G1_STATE),
+        "heldout_state": str(HELDOUT_STATE),
         "physical_gpus": list(GPUS),
         "historical_training_root": str(TRAIN_ROOT),
         "resume_state": str(RESUME_STATE),
@@ -174,6 +195,17 @@ def main() -> int:
                 state["completed"]["g1"] = {
                     "status": g1_evidence.get("status"),
                     "current_stage": g1_evidence.get("current_stage"),
+                }
+                heldout, heldout_evidence = heldout_status()
+                if heldout == "waiting":
+                    state["heldout_gate"] = "WAITING_INDEPENDENT_G2_HELDOUT_TERMINAL"
+                    state["heldout_gate_evidence"] = heldout_evidence
+                    atomic_save(owner, state)
+                    time.sleep(args.poll_seconds)
+                    continue
+                state["completed"]["heldout_gate"] = {
+                    "status": heldout,
+                    "evidence": heldout_evidence,
                 }
                 try:
                     ready, evidence = devices_ready()
