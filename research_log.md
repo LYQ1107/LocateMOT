@@ -1435,3 +1435,10 @@ are kept; unrelated GroundJEV worktree changes were not staged or overwritten.
 - Failure/recovery: the first one-GPU G2 attempt completed G0 and preserved a 91-frame G2 prefix before interruption after runtime overrun. `run_video.py --resume-from` restored the exact causal prefix and completed all 1,657 G2 frames in a separate output; the initial partial output is preserved. G2 successful frame-pipeline FPS 0.043444; no complete end-to-end FPS claim because interruption timing is excluded. A temporary cleanup import-path warning was handled by explicit process-group termination; it did not affect metrics.
 - Interpretation: this is the first video-disjoint registered validation-half positive result, but it remains a validation-half and does not isolate JEV identity decisions from perception. Keep the claim as front-end/general pipeline validation; do not call it full MOT20 TEST or a pure JEV gain.
 - Receipt: `docs/GROUNDJEV/G2_MOT20_05_INDEPENDENT_VALIDATION_20261020.md` and `.json`; server comparison is `/data3/user/LocateMOT-runs/GroundJEV/g2_step3000_full_eval_mot20_05/comparison.json`.
+
+
+## 2026-10-20 — G2 Clean training progress after independent validation
+
+- Protected owner remains active on physical GPUs 3/5 with the original two-rank contract, max_steps 18,227, micro-batch 2, grad accumulation 8, global batch 32, token budget 16,384 and seed 20261019. No world-size or optimizer change was made.
+- Latest event: step 10,540/18,227 at 2026-10-20 22:26:42 +0800, loss 0.334050, peak 12.8289 GiB. Latest durable checkpoint is `adapter-step010500`; the active torchrun process is present.
+- Throughput recalculation from event timestamps: last 500 steps 11.46 s/step, last 1,000 11.69 s/step, last 2,000 12.06 s/step. Linear remainder is approximately 24.5–25.7 hours depending on window; report 24.5–25.0 hours from the recent windows. This is an estimate, not a completion claim.
