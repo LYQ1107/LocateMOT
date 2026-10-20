@@ -1,3 +1,17 @@
+## Live GroundJEV execution boundary — 2026-10-21
+
+The protected formal G2 Clean run is still active at event step `12638/18227`
+(latest event `2026-10-21 05:16:16 +08:00`, finite loss `0.19229372497648`).
+`final_receipt.json` is absent, so the exact G2 terminal gate remains closed.
+The two ranks remain on physical GPUs 3/5. G1 GPU5 adaptation, the G2
+deployment bundle, independent held-out evaluation, native TAO export/join,
+native three-task OneJev and YesTrack remain registered waiting owners; no
+downstream optimizer update or benchmark result is claimed. The MOT-only owner
+has been safely retired and G0 MOT20-05 remains the registered validation-half
+control. See the step-specific snapshots in
+`docs/GROUNDJEV/STATUS_SNAPSHOT_20261021_G2_STEP12633.md` and the completion
+matrix for the full gate table.
+
 ## Matched native RMOT physical-supervision foundation training started — 2026-10-16
 
 Both complete three-task24000question courses passed their real native multimodal
