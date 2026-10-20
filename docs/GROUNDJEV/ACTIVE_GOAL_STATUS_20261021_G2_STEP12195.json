@@ -46,8 +46,8 @@
     "status": "NATURAL_MOT20_SCOPE_AND_FROZEN_MEMORY_CONTROLS_COMPLETE",
     "sequence": "MOT20-05",
     "scope": "complete registered validation-half natural-visibility scope",
-    "frames": null,
-    "native_candidates": null,
+    "frames": 1657,
+    "native_candidates": 235232,
     "official_metrics": {
       "HOTA": 0.07334696070115383,
       "DetA": 0.09026982781621751,
@@ -58,7 +58,7 @@
       "FN": 288297
     },
     "metrics_scope": "complete_registered_validation_scope_natural_visibility_challenge",
-    "fps": null,
+    "fps": 0.061369784416757965,
     "full_test_claim": false
   },
   "owners": {
