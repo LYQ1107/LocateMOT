@@ -1,5 +1,5 @@
-Warning: truncated output (original token count: 118686)
-Total output lines: 3034
+Warning: truncated output (original token count: 118861)
+Total output lines: 3037
 
 # LocateMOT Research Log
 
@@ -2192,9 +2192,7 @@ per-queryrejection contributesempty for thatquery only, concatenates remaining
 original-parserboxes, noNMS/topK/GTselection; matches existing scored-query
 control policy, not old whole-frame-rejection scores. One blocking owner waits
 currentGPU5memoryjobexit beforeowning temporaryDLM/feature services; stops
-bothcompletegroups befo…18686 tokens truncated…r与输出阈值不变。
-
-两个后续控制worker实际启动，仅CPU pidfd等待、new_model_calls_started=false/emptycompleted。登记 [{"worker": "old", "pid": 2467896, "starttick": "45243395", "blocking_session": 14226, "status": "WAITING_PAIRED_TRAINING_AND_BOTH_NATIVE_MM_RELOADS", "physical_gpu_only_after_dependencies": 4}, {"worker": "refreshed", "pid": 2467924, "starttick": "45243513", "blocking_session": 46228, "status": "WAITING_ORIGINAL_GPU5_NATURAL_OWNER_EXIT", "physical_gpu_only_after_dependencies": 5}]。原训练21963/GPU5原队列36847/native保留52020/observer58829均继续，未提前占GPU；各新worker配置与source核验均在任何新score之前固定，后续每个训练checkpoint覆盖同四scope。
+bothcompletegroups befo…18861 tokens truncated…个训练checkpoint覆盖同四scope。
 
 常规关联基线计划：同一DLM候选的Simple不足以代表常规跟踪器，下载官方FoundationVision/ByteTrack源码commit d1bf0191adff59bc8fcfeaa0b33d3d1642552a99（直接无代理成功），只跑CPU官方BYTETracker，不下载检测器或改现有Foundation环境。固定官方CLI track_thresh.6/buffer30/match.9/mot20false；原候选无置信度，显式constant1全框输入，低分支无候选，不伪称完整ByteTrack/论文成绩。官方KF输出框与默认约1s丢失buffer保留，不按验证分数调参或附加输出面积/宽高过滤。完整DT1203/13664/27拒绝帧原官方TrackEval打分，先隔离CPU依赖，再一次完整阻塞运行。
 
@@ -2798,3 +2796,6 @@ joint corpus as TRAIN-scope controls only. Evidence:
 ## 2026-10-21 — targeted native TAO archive rescan
 
 Re-read every discovered TAO candidate archive under `/data2/user/LocateMOT_GroundJEV/outputs/groundjev`. The two small candidate controls and the 40-frame streams all resolve to `frames/val`; the larger 40-frame stream has 35,228 candidates and a native feature cache but is explicitly a validation stream. One full Base/Novel stream is empty and failed, and the registered 18,274-image/500-video TAO TRAIN manifest has `native_candidate_export_started=false` and `native_ovmot_training_rows=false`. No complete TAO TRAIN native candidate archive exists, so the corrected three-task queue remains paused at zero optimizer updates. Validation outputs were not relabeled and no teacher-only fallback was promoted. Evidence: `docs/GROUNDJEV/NATIVE_OVMOT_ARCHIVE_RESCAN_20261021.{json,md}`.
+## 2026-10-21 — single authoritative G2 progress refresh at step 12417
+
+One non-polling status read found the protected formal G2 Clean ranks alive on GPUs 3/5 at event step 12,417/18,227 with finite loss `0.1803909168`. The latest durable adapter remains `checkpoints/adapter-step012000.pt`; `checkpoints/latest_training_state.pt` is present and `final_receipt.json` is absent. G1, the deployment bundle, held-out evaluation and YesTrack remain dependency/resource waiters. The corrected three-task queue remains `PAUSED_FOR_NATIVE_OVMOT_ROWS` with zero optimizer updates. No protected process or experimental protocol was changed. Evidence is the live G2 run directory plus the refreshed matrix.
