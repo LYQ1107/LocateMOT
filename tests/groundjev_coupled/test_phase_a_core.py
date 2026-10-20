@@ -6,7 +6,7 @@ from locatemot.groundjev.coupled.groundjev_model import GroundJEVModel
 from locatemot.groundjev.coupled.g2_feature_bridge import G2FeatureBridge
 from locatemot.groundjev.coupled.g2_shared_runtime import CoupledGroundJEVRuntime
 from locatemot.groundjev.coupled.identity_memory import IdentityMemoryState
-from locatemot.groundjev.coupled.lifecycle_controller import LifecycleController
+from locatemot.groundjev.coupled.lifecycle_controller import LifecycleConfig, LifecycleController
 from locatemot.groundjev.coupled.losses import structured_groundjev_losses
 
 
@@ -67,3 +67,49 @@ def test_runtime_uses_one_feature_forward_and_causal_memory():
     assert provider.calls == 1
     assert runtime.memory.timestamp == 0
     assert len(set(result["assignments"].values())) == len(result["assignments"])
+
+
+def test_runtime_executes_lifecycle_and_timeout_without_memory_reactivation():
+    class ControlledModel:
+        def __call__(self, state, memory, slots):
+            count = int(state.vision_tokens.shape[0])
+            option_count = len(slots.tokens)
+            identity = torch.full((count, option_count), -8.0)
+            lifecycle = torch.full((count, 4), -8.0)
+            if count:
+                # With no history the first slot is NEW; after birth the first
+                # slot is the existing persistent id.
+                identity[:, 0] = 8.0
+                lifecycle[:, 1 if memory.tracks else 0] = 8.0  # LOST / ACTIVE
+            return {
+                "candidate_hidden": state.vision_tokens,
+                "slot_hidden": state.vision_tokens.new_empty((option_count, 16)),
+                "identity_logits": identity,
+                "admit_logits": torch.full((count,), 8.0),
+                "yesno_logits": torch.zeros(count),
+                "lifecycle_logits": lifecycle,
+                "memory_logits": torch.full((count,), 8.0),
+            }
+
+    provider = FakeG2Provider()
+    bridge = G2FeatureBridge(provider, model_sha256="fixture", device="cpu")
+    runtime = CoupledGroundJEVRuntime(
+        bridge, ControlledModel(),
+        lifecycle=LifecycleController(LifecycleConfig(
+            terminate_after_lost=2, terminate_probability=0.95
+        )),
+    )
+    first = runtime.step(object(), [(0, 0, 2, 2)], ["person"],
+                         frame_id=0, image_key="fixture/0.jpg")
+    track_id = first["assignments"][0]
+    second = runtime.step(object(), [(0, 0, 2, 2)], ["person"],
+                          frame_id=1, image_key="fixture/1.jpg")
+    track = runtime.memory.tracks[track_id]
+    assert second["lifecycle_actions"][track_id] == "LOST"
+    assert track.state == "LOST"
+    assert track.memory_update_status == "HOLD"
+    assert second["memory_report"]["skipped"] == 1
+
+    third = runtime.step(object(), [], [], frame_id=2, image_key="fixture/2.jpg")
+    assert track_id in third["terminated_track_ids"]
+    assert runtime.memory.tracks[track_id].state == "TERMINATED"

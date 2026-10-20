@@ -29,6 +29,14 @@ class LifecycleController:
             track.lost_duration = max(track.lost_duration + 1, int(timestamp) - track.last_seen_timestamp)
             return track.state
         if action == "TERMINATE":
+            # A matched observation is evidence that the identity is alive.  A
+            # TERMINATE suggestion on that observation is therefore treated as
+            # a recoverable ACTIVE transition instead of deleting a track.
+            if matched:
+                track.state = "ACTIVE"
+                track.lost_duration = 0
+                track.last_seen_timestamp = int(timestamp)
+                return track.state
             # A single bad lifecycle logit cannot destroy a recoverable track.
             if (track.lost_duration < self.config.terminate_after_lost or
                     float(confidence) < self.config.terminate_probability):
@@ -37,4 +45,12 @@ class LifecycleController:
             else:
                 track.state = "TERMINATED"
             return track.state
+        return track.state
+
+    def advance_unmatched(self, track: TrackMemory, *, timestamp: int) -> str:
+        """Advance an absent track, terminating only after the registered timeout."""
+        self.apply(track, "LOST", timestamp=timestamp, matched=False)
+        if track.lost_duration >= self.config.terminate_after_lost:
+            self.apply(track, "TERMINATE", timestamp=timestamp,
+                       confidence=1.0, matched=False)
         return track.state

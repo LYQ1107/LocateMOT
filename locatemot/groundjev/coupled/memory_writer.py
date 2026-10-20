@@ -15,15 +15,21 @@ class MemoryWriter:
 
     def write(self, memory: IdentityMemoryState, candidates: Sequence[SharedCandidate],
               assignments: Mapping[int, int], update_probabilities: Mapping[int, float],
-              *, timestamp: int, labels: Sequence[str] | None = None) -> dict[str, int]:
+              *, timestamp: int, labels: Sequence[str] | None = None,
+              blocked_track_ids: set[int] | None = None) -> dict[str, int]:
         if int(timestamp) <= memory.timestamp:
             raise ValueError("memory writes must advance causally")
-        writes = holds = 0
+        writes = holds = skipped = 0
+        blocked = {int(value) for value in (blocked_track_ids or set())}
         for candidate_index, track_id in assignments.items():
             candidate = candidates[int(candidate_index)]
             probability = float(update_probabilities.get(int(candidate_index), 0.0))
             track = memory.tracks.get(int(track_id))
             if track is None:
+                continue
+            if int(track_id) in blocked or track.state == "TERMINATED":
+                track.memory_update_status = "HOLD"
+                skipped += 1
                 continue
             if probability < self.threshold:
                 track.memory_update_status = "HOLD"
@@ -45,4 +51,5 @@ class MemoryWriter:
                 track.semantic_evidence = str(labels[int(candidate_index)])
             writes += 1
         memory.timestamp = int(timestamp)
-        return {"writes": writes, "holds": holds, "assigned": len(assignments)}
+        return {"writes": writes, "holds": holds, "skipped": skipped,
+                "assigned": len(assignments)}

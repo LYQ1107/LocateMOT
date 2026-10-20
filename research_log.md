@@ -3293,3 +3293,17 @@ finite loss 0.2049703631. The three expected training processes remain live and
 `final_receipt.json` is still absent. This snapshot changes only progress
 evidence; no downstream model, held-out metric, or generalization claim is
 made.
+
+## 2026-10-21 — coupled runtime lifecycle execution repair
+
+Phase-A review found that the single-backbone runtime decoded lifecycle logits
+but ignored them: every assigned track was forced to `ACTIVE`, every absent
+track only accumulated `LOST`, and an assignment-conditioned memory write could
+reactivate a track whose lifecycle decision was `LOST`.  The smallest aligned
+fix now executes `ACTIVE/REACTIVATE/LOST` decisions, treats `TERMINATE` on a
+matched observation as recoverable `ACTIVE`, blocks memory writes for
+`LOST/TERMINATE`, and applies a registered timeout before irreversible
+termination of an unmatched track.  A controlled causal replay verified one
+birth, a matched `LOST` decision with a held memory write, and timeout
+termination; the one-feature-forward and memory-causality regressions still
+pass.  This is a runtime correctness repair, not a tracking-performance claim.

@@ -84,17 +84,38 @@ class CoupledGroundJEVRuntime:
                                            semantic_evidence=labels[i])
                 assignments[i] = track.persistent_track_id
         matched_ids = set(assignments.values())
+        blocked_memory_ids: set[int] = set()
+        lifecycle_actions: dict[int, str] = {}
         for track in self.memory.ordered():
             if track.persistent_track_id in matched_ids:
-                self.lifecycle.apply(track, "ACTIVE", timestamp=frame_id, matched=True)
+                candidate_index = next(
+                    (index for index, assigned_id in assignments.items()
+                     if int(assigned_id) == track.persistent_track_id),
+                    None,
+                )
+                decision = None if candidate_index is None else decisions[candidate_index]
+                action = str((decision or {}).get("lifecycle", "ACTIVE")).upper()
+                lifecycle_actions[track.persistent_track_id] = action
+                life_probs = (decision or {}).get("lifecycle_probabilities", {})
+                confidence = float((life_probs or {}).get(action, 0.0))
+                self.lifecycle.apply(track, action, timestamp=frame_id,
+                                     confidence=confidence, matched=True)
+                if action in {"LOST", "TERMINATE"}:
+                    blocked_memory_ids.add(track.persistent_track_id)
             elif track.state != "TERMINATED":
-                self.lifecycle.apply(track, "LOST", timestamp=frame_id, matched=False)
+                self.lifecycle.advance_unmatched(track, timestamp=frame_id)
         updates = {int(d["candidate_index"]): float(d["memory_update_probability"]) for d in decisions}
         report = self.memory_writer.write(self.memory, state.candidates, assignments, updates,
-                                          timestamp=frame_id, labels=labels)
+                                          timestamp=frame_id, labels=labels,
+                                          blocked_track_ids=blocked_memory_ids)
         return {
             "state": state, "slots": slots, "decisions": decisions,
             "assignments": assignments, "memory_report": report,
+            "lifecycle_actions": lifecycle_actions,
+            "terminated_track_ids": [
+                track.persistent_track_id for track in self.memory.ordered()
+                if track.state == "TERMINATED"
+            ],
             "assignment_solver": assignment_solver,
             "bridge_forward_count": self.bridge.forward_count,
             "single_backbone": True,
