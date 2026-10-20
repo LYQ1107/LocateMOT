@@ -1,0 +1,77 @@
+{
+  "status": "G2_FORMAL_TRAINING_RUNNING",
+  "generated_at": "2026-10-21 06:01:24 +0800",
+  "project_root": "/data2/user/LocateMOT",
+  "run_root": "/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final",
+  "manifest_sha256": "f682519a1cf9204ca76ea75a56dad36dbdeac26259f202551ab9f66fefd06e71",
+  "step": 12873,
+  "target_steps": 18227,
+  "remaining_steps": 5354,
+  "last_event": {
+    "step": 12873,
+    "epoch": 0,
+    "position": 102984,
+    "samples_global": 16,
+    "effective_tokens_global": 10886,
+    "loss": 0.272433674428612,
+    "gradient_norm": 11.859651565551758,
+    "peak_memory_gib": 12.82888126373291,
+    "lr_projector": 5.77483075760432e-07,
+    "lr_lora": 2.021190765161512e-06,
+    "time": "2026-10-21 06:01:24 +0800",
+    "checkpoint": null
+  },
+  "throughput": {
+    "100": {
+      "steps_per_hour": 310.88082901554407,
+      "remaining_hours": 17.222033333333332
+    },
+    "500": {
+      "steps_per_hour": 312.22896790980053,
+      "remaining_hours": 17.147672222222223
+    },
+    "1000": {
+      "steps_per_hour": 311.52647975077883,
+      "remaining_hours": 17.186339999999998
+    },
+    "2000": {
+      "steps_per_hour": 306.98388334612434,
+      "remaining_hours": 17.440655
+    },
+    "median_recent": {
+      "100": {
+        "seconds_per_step": 12.0,
+        "steps_per_hour": 300.0,
+        "remaining_hours": 17.846666666666668
+      },
+      "500": {
+        "seconds_per_step": 11.0,
+        "steps_per_hour": 327.27272727272725,
+        "remaining_hours": 16.359444444444446
+      },
+      "1000": {
+        "seconds_per_step": 12.0,
+        "steps_per_hour": 300.0,
+        "remaining_hours": 17.846666666666668
+      }
+    }
+  },
+  "linear_eta_from_1000_step_window": "2026-10-21T23:12:34.824000+08:00",
+  "durable_checkpoint": {
+    "adapter": "/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final/checkpoints/adapter-step012500.pt",
+    "adapter_size_bytes": 469243990,
+    "training_state": "/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final/checkpoints/latest_training_state.pt",
+    "training_state_size_bytes": 469247597
+  },
+  "final_receipt_exists": false,
+  "downstream_gate_states": {
+    "g1": "WAITING_G2_CLEAN_SUCCESS",
+    "bundle": "WAITING_G2_CLEAN_SUCCESS",
+    "heldout": "WAITING_G2_CLEAN_BUNDLE_AND_GPU7",
+    "native_tao_shards": "WAITING_G2_CLEAN_SUCCESS",
+    "native_join": "WAITING_COMPLETE_NATIVE_TAO_STREAM",
+    "three_task_joint": "WAITING_NATIVE_OVMOT_MANIFEST",
+    "yestrack": "WAITING_GPU7_EXCLUSIVE"
+  },
+  "claim_boundary": "This is a training-progress and recoverability receipt only. It is not a tracking or detector-quality result."
+}
