@@ -8,17 +8,19 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path[:0] = [str(ROOT), str(ROOT/'external/OneJev')]
 PROTOCOL = 'immutable-native-sources-family-filter-full-exposure-v1'
 INDEXED_PROTOCOL = 'immutable-native-explicit-row-index-sources-v1'
+COMPACT_PROTOCOL = 'immutable-native-sources-family-filter-full-exposure-v2'
 
 
 def install_source_manifest_rows():
     from train import common
+    from tools.groundjev.compact_state import transform_row
     native_load = common.load_rows
 
     def load(path, limit=None, split=None):
         if not str(path).endswith('.sources.json'):
             return native_load(path, limit=limit, split=split)
         manifest = json.loads(Path(path).read_text())
-        assert manifest['protocol'] in (PROTOCOL,INDEXED_PROTOCOL)
+        assert manifest['protocol'] in (PROTOCOL, COMPACT_PROTOCOL, INDEXED_PROTOCOL)
         rows = []
         for source in manifest['sources']:
             eligible = [r for r in native_load(ROOT/source['path'], split=split)
@@ -29,7 +31,8 @@ def install_source_manifest_rows():
                 assert len(set(indices))==len(indices) and all(0<=i<len(eligible) for i in indices)
                 eligible=[eligible[i] for i in indices]
             assert len(eligible) == source['rows'], source['path']
-            rows.extend(eligible)
+            transform = source.get('state_transform')
+            rows.extend(transform_row(row, transform) for row in eligible)
         assert len(rows) == manifest['rows']
         return rows if limit is None else rows[:limit]
     common.load_rows = load
