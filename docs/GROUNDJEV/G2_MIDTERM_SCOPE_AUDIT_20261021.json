@@ -1,0 +1,259 @@
+{
+  "status": "G2_MIDTERM_TRAIN_SCOPE_AUDIT_COMPLETE",
+  "historical_result_label": "G2-PL",
+  "historical_result_unchanged": true,
+  "g2_train_manifest": "/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/g2_clean_train_rows.jsonl",
+  "g2_train_row_count": 583251,
+  "g2_train_manifest_sha256": "f682519a1cf9204ca76ea75a56dad36dbdeac26259f202551ab9f66fefd06e71",
+  "total_frames": 24,
+  "overlap_frames": 4,
+  "independent_frames": 20,
+  "independent_generalization_claim_allowed": false,
+  "claim_boundary": "MOT4 is TRAIN-scope; both RMOT clips are independent of this G2 Clean image-path index but remain short diagnostic clips, not full validation results.",
+  "scopes": [
+    {
+      "scope": "MOT17-02-FRCNN",
+      "historical_model_label": "G2-PL",
+      "manifest": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/pilot_data/mot17_first4.json",
+      "dataset": "mot17",
+      "sequence": "MOT17-02-FRCNN",
+      "frames": 4,
+      "overlap_frames": 4,
+      "overlap_images": [
+        "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-02-FRCNN/img1/000302.jpg",
+        "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-02-FRCNN/img1/000303.jpg",
+        "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-02-FRCNN/img1/000304.jpg",
+        "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-02-FRCNN/img1/000305.jpg"
+      ],
+      "same_video_or_sequence_in_g2_train": true,
+      "frames_detail": [
+        {
+          "frame": 302,
+          "image": "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-02-FRCNN/img1/000302.jpg",
+          "exists": true,
+          "sha256": "894e3f15192cd59d0e80b426e067acdadfde7095dfab767e76073cff93601828",
+          "g2_train_overlap": true,
+          "g2_train_sources": [
+            "MOT17:train:clean_v2"
+          ]
+        },
+        {
+          "frame": 303,
+          "image": "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-02-FRCNN/img1/000303.jpg",
+          "exists": true,
+          "sha256": "94a4f5e36e72c1233ca67499f43636a25af403cfe635425a29f851383250bf6f",
+          "g2_train_overlap": true,
+          "g2_train_sources": [
+            "MOT17:train:clean_v2"
+          ]
+        },
+        {
+          "frame": 304,
+          "image": "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-02-FRCNN/img1/000304.jpg",
+          "exists": true,
+          "sha256": "fd1aa1a338b6d8451427181e105f67d727d47ba4f00b5f74ee6265ad1be1011d",
+          "g2_train_overlap": true,
+          "g2_train_sources": [
+            "MOT17:train:clean_v2"
+          ]
+        },
+        {
+          "frame": 305,
+          "image": "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-02-FRCNN/img1/000305.jpg",
+          "exists": true,
+          "sha256": "8859877ac910f1b788d92768d7e493ccf40541fa20b6631e849d3e5d9d8f1554",
+          "g2_train_overlap": true,
+          "g2_train_sources": [
+            "MOT17:train:clean_v2"
+          ]
+        }
+      ]
+    },
+    {
+      "scope": "Refer-KITTI-0007-single",
+      "historical_model_label": "G2-PL",
+      "manifest": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_pilot_data/rmot_single_empty.json",
+      "dataset": "refer_kitti_v2",
+      "sequence": "0007",
+      "frames": 8,
+      "overlap_frames": 0,
+      "overlap_images": [],
+      "same_video_or_sequence_in_g2_train": false,
+      "frames_detail": [
+        {
+          "frame": 150,
+          "image": "/data2/user/LocateMOT/data/kitti_tracking/training/image_02/0007/000150.png",
+          "exists": true,
+          "sha256": "afffc5f655c1e1bf636bb24040f502cae256e3d3b5701740385f821837216b0a",
+          "g2_train_overlap": false,
+          "g2_train_sources": []
+        },
+        {
+          "frame": 151,
+          "image": "/data2/user/LocateMOT/data/kitti_tracking/training/image_02/0007/000151.png",
+          "exists": true,
+          "sha256": "05a9390813481cbe75a37b302820d553960219443443345a443c543a5256ef60",
+          "g2_train_overlap": false,
+          "g2_train_sources": []
+        },
+        {
+          "frame": 152,
+          "image": "/data2/user/LocateMOT/data/kitti_tracking/training/image_02/0007/000152.png",
+          "exists": true,
+          "sha256": "f4ed7ccbc6ad34289acfd4209b773c244db170c22406abc76f39966d0d1598ec",
+          "g2_train_overlap": false,
+          "g2_train_sources": []
+        },
+        {
+          "frame": 153,
+          "image": "/data2/user/LocateMOT/data/kitti_tracking/training/image_02/0007/000153.png",
+          "exists": true,
+          "sha256": "8bbc48c1058c552ca5a4f31d45063cb2a0d7b07d1c5251807989abfd1c8b306a",
+          "g2_train_overlap": false,
+          "g2_train_sources": []
+        },
+        {
+          "frame": 154,
+          "image": "/data2/user/LocateMOT/data/kitti_tracking/training/image_02/0007/000154.png",
+          "exists": true,
+          "sha256": "db0ed2af2be4f73e868d4f214a4eceb9e6481768008685e48f1025408de37fda",
+          "g2_train_overlap": false,
+          "g2_train_sources": []
+        },
+        {
+          "frame": 155,
+          "image": "/data2/user/LocateMOT/data/kitti_tracking/training/image_02/0007/000155.png",
+          "exists": true,
+          "sha256": "33aeab6cfb8dd9cb59c204c2c4863c94d5e2837ff6f16958d095a9ade2404d3f",
+          "g2_train_overlap": false,
+          "g2_train_sources": []
+        },
+        {
+          "frame": 156,
+          "image": "/data2/user/LocateMOT/data/kitti_tracking/training/image_02/0007/000156.png",
+          "exists": true,
+          "sha256": "88c3b8d1da85790f9bdbd3d3c663ad0fa66743e6a13be64a9964118118e2385d",
+          "g2_train_overlap": false,
+          "g2_train_sources": []
+        },
+        {
+          "frame": 157,
+          "image": "/data2/user/LocateMOT/data/kitti_tracking/training/image_02/0007/000157.png",
+          "exists": true,
+          "sha256": "5e557d04bca31c236de1c5f56a3202876cf63fc8ca9b02db6897a5083deefdf1",
+          "g2_train_overlap": false,
+          "g2_train_sources": []
+        }
+      ]
+    },
+    {
+      "scope": "Refer-KITTI-0007-multi",
+      "historical_model_label": "G2-PL",
+      "manifest": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_pilot_data/rmot_multi_empty.json",
+      "dataset": "refer_kitti_v2",
+      "sequence": "0007",
+      "frames": 12,
+      "overlap_frames": 0,
+      "overlap_images": [],
+      "same_video_or_sequence_in_g2_train": false,
+      "frames_detail": [
+        {
+          "frame": 32,
+          "image": "/data2/user/LocateMOT/data/kitti_tracking/training/image_02/0007/000032.png",
+          "exists": true,
+          "sha256": "7a7a88e9bdb5029a5884e4876bee6bde279eb6ec9ad841dba7a52569e3a13725",
+          "g2_train_overlap": false,
+          "g2_train_sources": []
+        },
+        {
+          "frame": 33,
+          "image": "/data2/user/LocateMOT/data/kitti_tracking/training/image_02/0007/000033.png",
+          "exists": true,
+          "sha256": "51e354fe7fc3350f3c59d749ec45041d1166499e956030e72848c48a14044e26",
+          "g2_train_overlap": false,
+          "g2_train_sources": []
+        },
+        {
+          "frame": 34,
+          "image": "/data2/user/LocateMOT/data/kitti_tracking/training/image_02/0007/000034.png",
+          "exists": true,
+          "sha256": "28b8a8bcf764c861004f037b9f3983ed0b28557522c1946274720af876d94d6f",
+          "g2_train_overlap": false,
+          "g2_train_sources": []
+        },
+        {
+          "frame": 35,
+          "image": "/data2/user/LocateMOT/data/kitti_tracking/training/image_02/0007/000035.png",
+          "exists": true,
+          "sha256": "57ae3337f26f87731f20d81ea32e93d3086306fa34b18ace86815d9f646e78ac",
+          "g2_train_overlap": false,
+          "g2_train_sources": []
+        },
+        {
+          "frame": 36,
+          "image": "/data2/user/LocateMOT/data/kitti_tracking/training/image_02/0007/000036.png",
+          "exists": true,
+          "sha256": "736be7f8a17ca46f79b5eb1bb41e2376be19ed73e98a271c64f1ad9a2622e3b4",
+          "g2_train_overlap": false,
+          "g2_train_sources": []
+        },
+        {
+          "frame": 37,
+          "image": "/data2/user/LocateMOT/data/kitti_tracking/training/image_02/0007/000037.png",
+          "exists": true,
+          "sha256": "f551130ae0c9f539c040b59faa3084a3388f3a041eaa78baa0710fb153be7ae4",
+          "g2_train_overlap": false,
+          "g2_train_sources": []
+        },
+        {
+          "frame": 38,
+          "image": "/data2/user/LocateMOT/data/kitti_tracking/training/image_02/0007/000038.png",
+          "exists": true,
+          "sha256": "68ace6a0a8a89e9d3fd505b6681a6da283502a346bbf477d2b37ea1bdef7b4f1",
+          "g2_train_overlap": false,
+          "g2_train_sources": []
+        },
+        {
+          "frame": 39,
+          "image": "/data2/user/LocateMOT/data/kitti_tracking/training/image_02/0007/000039.png",
+          "exists": true,
+          "sha256": "755eead73c6a124e2f545f83e3af709b2bc9fb225742d8be3c49326fadd3ff86",
+          "g2_train_overlap": false,
+          "g2_train_sources": []
+        },
+        {
+          "frame": 40,
+          "image": "/data2/user/LocateMOT/data/kitti_tracking/training/image_02/0007/000040.png",
+          "exists": true,
+          "sha256": "6480ef7dd74eb5565c414ed0b9fd75ce47373eb882e12e81ada3ebc5c966b0b0",
+          "g2_train_overlap": false,
+          "g2_train_sources": []
+        },
+        {
+          "frame": 41,
+          "image": "/data2/user/LocateMOT/data/kitti_tracking/training/image_02/0007/000041.png",
+          "exists": true,
+          "sha256": "600bd52168490c6b31b7ce103627cc5cf91064146bd8e3462cd732a7709fdf5f",
+          "g2_train_overlap": false,
+          "g2_train_sources": []
+        },
+        {
+          "frame": 42,
+          "image": "/data2/user/LocateMOT/data/kitti_tracking/training/image_02/0007/000042.png",
+          "exists": true,
+          "sha256": "2194a3ac969276af25d38824c0e766c706c634baeaf6d380aabbcec3fb1f2510",
+          "g2_train_overlap": false,
+          "g2_train_sources": []
+        },
+        {
+          "frame": 43,
+          "image": "/data2/user/LocateMOT/data/kitti_tracking/training/image_02/0007/000043.png",
+          "exists": true,
+          "sha256": "bea08653cd8768ed7af673e385dc7383f521d415b9bca62e8fc44bbd8dc798a0",
+          "g2_train_overlap": false,
+          "g2_train_sources": []
+        }
+      ]
+    }
+  ]
+}
