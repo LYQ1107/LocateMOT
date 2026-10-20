@@ -183,6 +183,7 @@
     "full_goal_complete": false,
     "original_status": "FULL_JOINT_FOUR_GPU_TRAINING"
   },
+  "parallel_terminal_receipt": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/full_source_parallel_cpu_plan_v1_owner.json",
   "original_four_GPU_owner_retained": true,
   "actual_optimizer_updates_not_claimed_by_input_validation": true,
   "current_training_inputs_metrics_and_seeds_unchanged": true,
