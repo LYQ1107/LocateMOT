@@ -5,3 +5,6 @@
 - The complete recovery branch is based on the real GroundJEV/TrackJEV source line and includes the verified TrackJEV decision, competition, assignment, model, native OneJev adapter, global identity runtime, G2/G1 training tools, and independent held-out queue contracts. It does not use the unrelated TTA-RMOT branch.
 - `compileall` passed. TrackJEV decision, model, and adapter self-tests passed under the registered OneJev runtime venv with the external OneJev source path. The system Python failure due to missing `qev/pydantic` is an environment boundary, not a changed metric or training result.
 - The protected G2 owner remains active at event step 10,680/18,227; G1, bundle, held-out, and resumed OneJev owners remain dependency-gated with no terminal failure.
+
+
+2026-10-20 22:59 +0800 — The protected G2 Clean owner remains live on physical GPUs 3/5 and advanced to event step 10,710/18,227. The final receipt is still absent, the four dependency queues remain live and waiting, and the measured linear remainder is approximately 23.9–24.8 hours.
