@@ -159,6 +159,23 @@ def main() -> int:
         raise FileExistsError(f"terminal YesTrack queue already exists: {owner}")
     if old and old.get("owner_pid") and Path(f"/proc/{old['owner_pid']}").exists():
         raise FileExistsError(f"YesTrack queue owner is already live: {old['owner_pid']}")
+    if args.queue_root.exists():
+        if not old or str(old.get("status", "")) != "WAITING_GPU7_EXCLUSIVE":
+            raise FileExistsError(f"refusing to overwrite an existing YesTrack queue: {args.queue_root}")
+        unexpected_queue = [
+            child.name for child in args.queue_root.iterdir()
+            if child.name not in {"owner_state.json", "OWNER.log"}
+        ]
+        if unexpected_queue:
+            raise FileExistsError(
+                f"refusing to resume a partial YesTrack queue; unexpected={unexpected_queue}"
+            )
+    if TRAIN_ROOT.exists():
+        unexpected_train = [child.name for child in TRAIN_ROOT.iterdir() if child.name != "args.json"]
+        if unexpected_train:
+            raise FileExistsError(
+                f"refusing to overwrite YesTrack training artifacts; unexpected={unexpected_train}"
+            )
 
     inputs = validate_inputs()
     state = {
@@ -174,6 +191,7 @@ def main() -> int:
         "expected_terminal_examples": EXPECTED_TRAIN_EXAMPLES,
         "inputs": inputs, "completed": {}, "failed": None,
         "other_active_jobs_untouched": True, "real_gpu_training_required": True,
+        "resumed_wait_owner": bool(old),
     }
     atomic_save(owner, state)
     try:

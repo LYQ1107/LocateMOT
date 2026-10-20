@@ -3136,3 +3136,12 @@ already created, rejects unexpected files, refuses live duplicates, and records
 `resumed_wait_owner`. The existing owner is being restarted only in its
 CPU-only `WAITING_NATIVE_OVMOT_MANIFEST` state; no optimizer or GPU process is
 started.
+
+## 2026-10-21 — YesTrack waiting owner made resumable
+
+The native YesTrack v2 owner was still waiting for an exclusive GPU7 and had
+no optimizer or evaluation artifacts. Its startup guard now resumes only the
+known empty `WAITING_GPU7_EXCLUSIVE` queue (and the pre-created `args.json`),
+rejects partial queue/training outputs, refuses live duplicates, and records
+`resumed_wait_owner`. The waiting owner is restarted without allocating GPU7;
+the independent YesTrack run remains pending.
