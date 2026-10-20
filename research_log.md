@@ -1442,3 +1442,11 @@ are kept; unrelated GroundJEV worktree changes were not staged or overwritten.
 - Protected owner remains active on physical GPUs 3/5 with the original two-rank contract, max_steps 18,227, micro-batch 2, grad accumulation 8, global batch 32, token budget 16,384 and seed 20261019. No world-size or optimizer change was made.
 - Latest event: step 10,540/18,227 at 2026-10-20 22:26:42 +0800, loss 0.334050, peak 12.8289 GiB. Latest durable checkpoint is `adapter-step010500`; the active torchrun process is present.
 - Throughput recalculation from event timestamps: last 500 steps 11.46 s/step, last 1,000 11.69 s/step, last 2,000 12.06 s/step. Linear remainder is approximately 24.5–25.7 hours depending on window; report 24.5–25.0 hours from the recent windows. This is an estimate, not a completion claim.
+
+
+## 2026-10-20 — OneJev full-source joint resume repair and dependency queue
+
+- Authoritative source manifest: 459,027 immutable rows (MOT 252,258, RMOT 100,813, OVMOT 105,956), zero dropped rows in the native CPU plan, and 28,690 planned global-16 updates.
+- The historical four-GPU run was real and reached log step 3,525, but its owner process is gone, it has no terminal `done` record, and its last atomic FP32/Adam/scheduler/all-rank-RNG state is step 3,000. Step 3,525 is retained as non-durable evidence; the recovery point is step 3,000.
+- Added `scripts/groundjev/queue_onejev_full_joint_resume.py`. It waits for a valid G2 final receipt, successful GPU5 G1 adaptation/controls, and exclusive free GPUs 4/5/6/7 before resuming the exact four-rank protocol. It never overwrites the historical run and records missing receipts or nonzero exits as failures. No feature cache is created.
+- This queue is not a performance claim; final training and held-out MOT/RMOT/OVMOT receipts remain required.
