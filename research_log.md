@@ -2,6 +2,10 @@
 
 Concise experimental log (latest first).
 
+## 2026-10-21 — G2 Clean live progress at step 13361
+
+The protected two-rank G2 Clean event stream advanced to `13,361/18,227` at `2026-10-21 07:35:07 +0800`. The latest loss (`0.2484929720`), gradient norm (`11.54479408`) and peak event memory (`12.828843 GiB`) are finite; the known parent PID remains live on GPUs 3/5. `final_receipt.json` and `adapter_projector_final.pt` are still absent, so G1, native TAO/OVMOT joining, three-task OneJev optimization and independent held-out evaluation remain gated. This is training-health evidence only and makes no G2 metric claim. Evidence: `docs/GROUNDJEV/G2_PROGRESS_LIVE_20261021_STEP13361.{json,md}`.
+
 ## 2026-10-21 — G2 event-integrity audit through step 12650
 
 - Read the formal event log without altering the trainer. The completed audit
