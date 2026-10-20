@@ -1,0 +1,112 @@
+{
+  "status": "COMPLETE_VIDEO_DISJOINT_VALIDATION_G0_G2_STEP3000",
+  "created_utc": "2026-10-20T14:23:55.176182+00:00",
+  "dataset": "MOT20",
+  "sequence": "MOT20-05",
+  "scope": "complete_registered_validation_scope_natural_visibility_challenge",
+  "frames": 1657,
+  "frame_numbers": [
+    1659,
+    3315
+  ],
+  "training_on_this_scope": false,
+  "official_test_labels_read": false,
+  "video_disjoint_from_clean_train": true,
+  "clean_train_overlap_audit": {
+    "clean_train_rows": 583251,
+    "clean_mot20_sequences": [
+      "MOT20-01",
+      "MOT20-02",
+      "MOT20-03"
+    ],
+    "exact_path_or_frame_overlap_rows": 0,
+    "same_video_overlap": 0,
+    "basis": "Clean TRAIN manifest contains no MOT20-05 rows; validation-half manifest is registered and no runtime GT was read."
+  },
+  "protocol": {
+    "parser": "official_scoring",
+    "decoder": "tracking_dense",
+    "association": "simple",
+    "failure_policy": "empty_and_record",
+    "trackeval_commit": "12c8791b303e0a0b50f753af204249e622d0281a",
+    "runtime_commit": "b4ffe840fcb42cf707d62777138a3f8f9aca859d",
+    "g0_model": "GroundAnything-DLM",
+    "g2_model": "G2_CLEAN_MIDTERM_STEP003000",
+    "g2_checkpoint_sha256": "058573235114396f59ac1de05acd3700f46f230a298e31a16b3198d42dcc590f",
+    "g2_merged_bundle_sha256": "d0d719ed31972f54b9ec295e69c4728a2101c386f7f7438e57a816b6cb650d43"
+  },
+  "arms": {
+    "G0": {
+      "metrics": {
+        "HOTA": 0.33202124623913226,
+        "DetA": 0.6173957380874172,
+        "AssA": 0.17887255759341206,
+        "IDF1": 0.29238609458913206,
+        "IDSW": 11289,
+        "FP": 16056,
+        "FN": 100036
+      },
+      "rejected_frames": 117,
+      "rejection_rate": 0.07060953530476766,
+      "frame_decisions": 1657,
+      "prediction_rows": 235232,
+      "end_to_end_fps": 0.05489121982809899,
+      "wall_seconds": 30186.977173930034,
+      "result_sha256": "7be7a3a6cda1afafa2de44eaed450417494c80b027260b155a4bacaf73236f40",
+      "metrics_sha256": "555140785e997c8bafa825cbbaae854c50c1d9d88cf807e6bd211da49ac58ced"
+    },
+    "G2_STEP3000": {
+      "metrics": {
+        "HOTA": 0.47844892902057745,
+        "DetA": 0.7970461119435525,
+        "AssA": 0.28771311178823716,
+        "IDF1": 0.4207425633480827,
+        "IDSW": 11117,
+        "FP": 20737,
+        "FN": 28100
+      },
+      "rejected_frames": 66,
+      "rejection_rate": 0.039831019915509955,
+      "frame_decisions": 1657,
+      "prediction_rows": 311886,
+      "end_to_end_fps": null,
+      "successful_frame_pipeline_fps": 0.04344401745984914,
+      "wall_seconds": 37925.67378097796,
+      "resumed_completed_frames": 91,
+      "timing_limitation": "resumed legacy run lacks original failed-attempt/interruption timing; no complete end-to-end FPS claim",
+      "result_sha256": "ae06f718a3eaac82275d56ec44af2b76fea5af3fe3cce869b43182538c78d472",
+      "metrics_sha256": "f09a892e2206c59e1421aabbd76f24a811f1505dc12376bc90693078f2b9f97a"
+    }
+  },
+  "delta": {
+    "HOTA": 0.1464276827814452,
+    "DetA": 0.17965037385613525,
+    "AssA": 0.1088405541948251,
+    "IDF1": 0.12835646875895063,
+    "IDSW": -172,
+    "FP": 4681,
+    "FN": -71936
+  },
+  "initial_attempt": {
+    "status": "ABORTED_AFTER_G0_AND_G2_PREFIX",
+    "g2_prefix_frames": 91,
+    "stop_reason": "manual interruption after projected runtime overrun; no metric used from partial prefix",
+    "partial_output_preserved": "G2_STEP3000"
+  },
+  "final_resume": {
+    "source": "G2_STEP3000",
+    "resumed_completed_frames": 91,
+    "output": "G2_STEP3000_RESUMED",
+    "all_input_frames_processed": true,
+    "official_evaluation": "OFFICIAL_SCOPE_EVALUATION_COMPLETE",
+    "service_cleanup": "wrapper cleanup hook had import-path warning; process group was explicitly terminated after completion"
+  },
+  "receipt_hashes": {
+    "manifest_sha256": "2be2233c2e66323b22ccdb1b9b386646c6b792d9de5e77554cc1143b80ba42a6",
+    "g0_metrics_sha256": "555140785e997c8bafa825cbbaae854c50c1d9d88cf807e6bd211da49ac58ced",
+    "g2_metrics_sha256": "f09a892e2206c59e1421aabbd76f24a811f1505dc12376bc90693078f2b9f97a",
+    "g0_result_sha256": "7be7a3a6cda1afafa2de44eaed450417494c80b027260b155a4bacaf73236f40",
+    "g2_result_sha256": "ae06f718a3eaac82275d56ec44af2b76fea5af3fe3cce869b43182538c78d472"
+  },
+  "interpretation": "This is a video-disjoint registered validation-half result, not a full MOT20 TEST result and not an isolation of the JEV identity decision. G2 improves DetA/AssA/HOTA/IDF1 and reduces FN/IDSW while increasing FP. G2 full end-to-end FPS is intentionally not claimed because the completed run restored a causal prefix after an interrupted attempt."
+}

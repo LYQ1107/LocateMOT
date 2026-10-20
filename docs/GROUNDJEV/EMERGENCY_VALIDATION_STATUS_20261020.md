@@ -43,8 +43,8 @@ input manifest. The official metrics are:
 This is a positive full-video result on the registered scope, including a
 409-IDSW reduction and 432-fewer FN, but it is **not independent generalization**:
 MOT17-02 is in the Clean TRAIN scope. The detailed report and hashes are in
-`G2_FULL_MOT17_02_EVAL_20261020.{md,json}`. A video-disjoint development run is
-still required before a paper-level claim.
+`G2_FULL_MOT17_02_EVAL_20261020.{md,json}`. The video-disjoint registered validation-half result is reported below; it remains
+a validation-half and is not a full MOT20 TEST or paper-level test claim.
 
 ## J1 and OVMOT
 
@@ -76,3 +76,10 @@ source, the fine-tuned arm made six real verifier calls through the same global
 solve, and ran at 1.379 FPS. Four frames are a wiring receipt, not a HOTA/IDF1/
 IDSW result; full physical comparison remains pending a complete causal
 candidate/history/media archive.
+
+
+## G2 step3000 video-disjoint MOT20-05 validation half
+
+The registered MOT20-05 validation half completed for both G0 and G2: 1,657 continuous frames (1659–3315), video-disjoint from Clean TRAIN. Official metrics are HOTA/DetA/AssA/IDF1 `G0=0.332021/0.617396/0.178873/0.292386`, `G2=0.478449/0.797046/0.287713/0.420743`; IDSW `11289 -> 11117`, FP `16056 -> 20737`, FN `100036 -> 28100`. Rejection was `117/1657` for G0 and `66/1657` for G2. G0 end-to-end FPS was `0.054891`; G2 resumed successful frame-pipeline FPS was `0.043444`, and a full end-to-end FPS is intentionally not claimed because the run restored a 91-frame causal prefix after an interrupted first attempt.
+
+This is a registered validation-half result, not full MOT20 TEST and not an isolated JEV identity claim. The detailed receipt is `G2_MOT20_05_INDEPENDENT_VALIDATION_20261020.{md,json}`; raw results remain under `/data3/user/LocateMOT-runs/GroundJEV/g2_step3000_full_eval_mot20_05`.

@@ -1300,3 +1300,138 @@ HOTA=0.158562, DetA=0.197692, AssA=0.127243, IDF1=0.128277, IDSW=0, FP=110,
 FN=3560, with 1 NEW/1135 ACTIVE events. No threshold, seed, checkpoint or
 candidate was changed within each factor; parser repair is not claimed as an
 identity improvement. Receipt: `docs/GROUNDJEV/J1_DT1203_A_E_STRICT_ABLATION_20261019.{json,md}`.
+
+2026-10-20 — AerialMind full-release acquisition and audit. The official
+Hugging Face release was downloaded under `data/downloads/AerialMind` and
+passed CRC tests for `expression.zip` (50,089,761 bytes),
+`labels_with_ids.zip` (53,789,787 bytes), and `image_02.zip`
+(24,425,047,497 bytes). The complete release was extracted to
+`data/AerialMind`; the audit reports 93 videos, 24,617 expression JSON files,
+45,630 image frames, 45,612 label frames, 8,479,541 expression-frame
+references, and 46,135,642 target references. All referenced image and label
+files exist, both official 17-video VisDrone and 13-video UAVDT test
+partitions are present, and no JSON/label format errors were found. The 18
+image frames without standalone label files are not referenced by an
+expression; persistent target IDs absent from individual frames are treated
+as normal occlusion/out-of-view state, not fabricated GT. Receipt:
+`results/audits/aerialmind_dataset_audit.json`.
+
+2026-10-20 — AerialMind manifest/evaluator adaptation. The runtime now uses
+the official expression filename as query text, while retaining the existing
+KITTI `sentence` behavior by configuration. Evaluation manifests record
+`xywh_topleft` for VisDrone, `cxcywh` for UAVDT, and zero frame offset because
+AerialMind filenames are 1-based. Predictions and GT were both verified on
+the same frame convention. A direct TrackEval adapter was added to supply
+explicit sequence lengths and avoid the pinned TempRMOT MOT wrapper's stale
+hard-coded KITTI image path. The Transformers 5 tokenizer API difference was
+bridged narrowly with a `batch_encode_plus` compatibility alias; the source
+model remains frozen and checkpoint loading still reports zero missing or
+unexpected model keys.
+
+2026-10-20 — complete-data AerialMind single-card experiments on physical
+GPU 2 (A800 80GB, 0 compute processes, CUDA UUID
+`GPU-c2484ded-5f87-237c-bbf0-d23fcb74fdb2`). Two complete episodes were run:
+VisDrone `uav0000009_03358_v` (219 frames) and UAVDT `M0203` (1,007 frames),
+1,226 frame queries total, with no GT or future frames available to the
+runner. The formal QCS suite (`FROZEN`, `PROBE_CACHE`, `QCS_TTA`, `NO_STATE`)
+completed at 9.70 FPS shared-source throughput and 3.21 GB peak allocated
+memory, but all methods selected zero rows and HOTA/DetA/AssA/IDF1 were 0.
+The diagnostic `referring_threshold=0.2` run also selected zero rows. A
+separate all-thresholds-zero candidate lower bound emitted 1,775 rows and
+obtained combined HOTA 2.7327, DetA 1.0171, AssA 7.3499, IDF1 0.0; QCS was
+identical to FROZEN with zero optimizer steps. The lower-bound per-episode
+result was M0203 HOTA 4.4524 / DetA 2.6987 / AssA 7.3499 and VisDrone HOTA
+0.0. These results show the data/GT/evaluator path is functional but the
+Refer-KITTI-V2 checkpoint is not a viable AerialMind source model: its
+absolute referring scores collapse on VisDrone and its first UAVDT frame has
+no valid tracked candidates. Changing only the TTA residual structure cannot
+repair missing source detector/tracker calibration; a target-domain source
+training checkpoint or a separately trained domain-robust candidate source is
+required before claiming AerialMind QCS gains. The full official AerialMind
+training claim is intentionally not started on one card because the official
+repository reports about 110 hours on eight GPUs; the supervised training
+path remains the next experiment, with the current zero-shot runs preserved
+as negative controls.
+
+2026-10-20 — AerialMind relative-rank structure change and complete-episode
+retest. The absolute referring gate was insufficient under the measured
+target-domain calibration shift, so the runner now has an explicit
+`relative_margin` mode: after admitting valid frozen tracks with zero
+objectness/area gates, it keeps the set of candidates within a fixed 0.75
+logit margin of the best current-frame referring score and caps the set at 16;
+it never reads GT, future frames, or forces a top-1 decision. The original
+absolute mode is unchanged and a CPU unit test covers both paths. On the same
+complete VisDrone episode (219 frames) and UAVDT episode (1,007 frames), the
+relative run completed all 1,226 queries at 9.35 shared-source FPS and 3.21 GB
+peak allocated memory, emitted 1,344 rows, and sealed TrackEval for all four
+methods. Combined FROZEN/PROBE_CACHE/QCS_TTA/NO_STATE each reported HOTA 3.0240,
+DetA 1.2719, AssA 7.1964, DetRe 5.0987, DetPr 1.4568, and IDF1 0.0; the
+previous all-thresholds-zero lower bound was HOTA 2.7327 / DetA 1.0171 /
+AssA 7.3499 / IDF1 0.0. QCS still made zero optimizer updates and all four
+methods were identical, so the change recovers candidate visibility but does
+not establish referring adaptation or a useful source-free AerialMind result.
+The complete official 30-video test manifest was also generated with 5,125,243
+runtime rows and 5,125,243 evaluation rows; runtime contains no GT fields.
+Receipts: `results/runs/aerialmind_two_episode_relative_rank/`,
+`results/manifests/aerialmind_test_{runtime,evaluation}_manifest.jsonl`, and
+`results/manifests/aerialmind_test_manifest_metadata.json`.
+
+2026-10-20 — AerialMind supervised-training boundary audit. The official
+`refer-uav.train` list maps 27,044 image rows to 63 training videos and 16,216
+expression files; every listed image and label exists, every training video
+has an expression directory, all query JSONs are valid, and the training
+videos have zero overlap with the 30-video official test partition. Receipt:
+`results/audits/aerialmind_training_split_audit.json`. This makes a future
+target-domain supervised checkpoint path reproducible, but it is deliberately
+not used by the source-free QCS experiments; the official repository's roughly
+110-hour/8-GPU training claim is not replaced by a one-card partial run.
+
+2026-10-20 — Refer-BDD complete-data audit and manifest preparation. The
+official EchoTrack seqmap and Google Drive archives were downloaded to
+`/data2/user/LocateMOT/data/downloads`, checksum/unzip validated, and the
+complete selected split was extracted under `data/ReferBDD`. The audit found
+8 videos, 673 expressions, 1,619 images, 1,610 label files, 74,924
+expression-frame references, and 216,613 target-object references. A
+label-free runtime manifest and a separate evaluator-only manifest were
+created; no raw data or checkpoint is intended for publication.
+
+2026-10-20 — Refer-KITTI-V2 → Refer-BDD source-free online experiment.
+Hypothesis: frozen-query probes plus external causal residual adaptation could
+recover source referring decisions under BDD domain shift without target
+labels. The full six-method suite (`FROZEN`, `ENTROPY_HEAD`, `PROBE_ST`,
+`PROBE_CACHE`, `QCS_TTA`, `NO_STATE`) ran on physical GPU 6 using the complete
+673-episode/136,188-frame-query manifest. The runner used no GT, future frame,
+expression label map, or evaluator; GT was materialized only after prediction
+completion. The run completed in 32,513 seconds at 4.191 shared-source FPS,
+with 8.44 GB peak allocated memory.
+
+2026-10-20 — Refer-BDD experiment diagnosis and retained result. The first
+smoke exposed an environment ABI mismatch and an evaluator +1 frame-offset
+mistake; both were fixed and replayed before the full run. The full sealed
+result is complete for all 8 videos and 673 expressions. FROZEN obtained
+HOTA/IDF1 2.9788/0.89107. ENTROPY_HEAD made 31,656 real online optimizer
+updates and degraded to 1.5842/0.28707. Probe/QCS/NO_STATE made 17,616 shared
+probe calls but zero supported optimizer updates and remained identical to
+FROZEN. Offline candidate analysis found approximately 26.4% IoU-0.5 recall
+before gates, 19.8% after objectness/area, and 0.7% after the fixed 0.4
+referring gate; source-score p95 was 0.3088. This is retained as a valid
+negative cross-domain result; no BDD supervised training, threshold tuning,
+GT-assisted structure change, or zero-gate result was substituted.
+
+2026-10-20 — Result-accounting repair. The runner was corrected to accumulate
+optimizer/probe counters across episode resets. The existing sealed output was
+repaired transparently from `update_trace.jsonl`; the previous last-episode
+values (50 entropy steps and 36 probe calls) are preserved in the metadata's
+`counter_correction` field, while the published summaries report the complete
+suite totals. The BDD asset audit, diagnostics, metrics CSVs, and final report
+are kept; unrelated GroundJEV worktree changes were not staged or overwritten.
+
+
+## 2026-10-20 Emergency validation — video-disjoint G2 MOT20-05
+
+- Hypothesis: the positive G2 step3000 front-end result should hold on a registered MOT video absent from Clean TRAIN under identical G0/G2 input, parser, decoder, association and TrackEval contracts.
+- Protocol: MOT20-05 registered validation half, 1,657 continuous frames (1659–3315), `official_scoring`, `tracking_dense`, Simple, `empty_and_record`; runtime did not read GT/future frames. Clean TRAIN audit found 583,251 rows, MOT20 only 01/02/03, and zero MOT20-05 overlap.
+- Result: G0 HOTA/DetA/AssA/IDF1 = 0.332021/0.617396/0.178873/0.292386, IDSW 11289, FP 16056, FN 100036; G2 step3000 = 0.478449/0.797046/0.287713/0.420743, IDSW 11117, FP 20737, FN 28100. Delta HOTA +0.146428, DetA +0.179650, AssA +0.108841, IDF1 +0.128356, IDSW -172, FP +4681, FN -71936. Rejection 117/1657 -> 66/1657.
+- Failure/recovery: the first one-GPU G2 attempt completed G0 and preserved a 91-frame G2 prefix before interruption after runtime overrun. `run_video.py --resume-from` restored the exact causal prefix and completed all 1,657 G2 frames in a separate output; the initial partial output is preserved. G2 successful frame-pipeline FPS 0.043444; no complete end-to-end FPS claim because interruption timing is excluded. A temporary cleanup import-path warning was handled by explicit process-group termination; it did not affect metrics.
+- Interpretation: this is the first video-disjoint registered validation-half positive result, but it remains a validation-half and does not isolate JEV identity decisions from perception. Keep the claim as front-end/general pipeline validation; do not call it full MOT20 TEST or a pure JEV gain.
+- Receipt: `docs/GROUNDJEV/G2_MOT20_05_INDEPENDENT_VALIDATION_20261020.md` and `.json`; server comparison is `/data3/user/LocateMOT-runs/GroundJEV/g2_step3000_full_eval_mot20_05/comparison.json`.
