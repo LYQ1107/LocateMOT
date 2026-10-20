@@ -3173,3 +3173,13 @@ GPUs 3/5. The latest durable checkpoint remains `adapter-step012500.pt` with
 still absent. No G1, bundle export, held-out metric, YesTrack update, or native
 three-task update is claimed before that terminal receipt. This is evidence of
 continued healthy progress only; the prior historical result boundaries remain.
+
+## 2026-10-21 — GroundJEV coupled regression refreshed
+
+The bounded coupled-core regression was rerun after the queue-owner changes: 13
+unittests covering joint identity corpus, Phase A core, memory-conditioned input,
+fixed-candidate contract, and causal-memory prefill all passed. The registered
+G1/G2-bundle/TAO/native-joint/YesTrack queue entrypoints also passed `py_compile`,
+and the coupled plus TrackJEV packages passed `compileall`. This verifies the
+recoverable launch surface only; it does not promote any model or imply a
+tracking metric while G2 lacks its terminal receipt.
