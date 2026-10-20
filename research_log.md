@@ -3594,3 +3594,8 @@ sampler position, Python/NumPy/Torch/CUDA RNG state, the training contract and
 trainable audit. The adapter-step012500 file is also present. No GPU was touched
 and no metric claim is made. Evidence:
 `docs/GROUNDJEV/G2_CHECKPOINT_RECOVERY_AUDIT_20261021.{json,md}`.
+
+
+## 2026-10-21 — G2 Clean live progress at step 13065
+
+The protected two-rank G2 Clean run advanced to step 13065/18227 while both ranks remained live on GPUs 3/5. The event stream remains finite with finite loss and gradient norm; no final receipt exists yet, so downstream G1, native TAO/OVMOT joining, three-task OneJev optimization and independent held-out evaluation remain gated. This receipt records training health only and makes no scientific metric claim. Evidence: `docs/GROUNDJEV/G2_PROGRESS_LIVE_20261021_STEP13065.{json,md}`.
