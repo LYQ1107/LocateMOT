@@ -18,7 +18,7 @@ import time
 
 ROOT = Path(__file__).resolve().parents[2]
 G2_DEFAULT = Path("/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final")
-G1_PLAN = ROOT / "configs/groundjev/native_ground_tracking200_20261014.json"
+G1_PLAN = ROOT / "configs/groundjev/native_ground_tracking200_gpu5_20261021.json"
 G1_BASE = ROOT / "models/GroundAnything-DLM"
 G1_OUT = ROOT / "outputs/groundjev/ground_adaptation/native_tracking200_gpu5_g1_v1"
 G1_BUNDLE = ROOT / "models/GroundAnything-DLM-TrackProjG1-GPU5-V2"

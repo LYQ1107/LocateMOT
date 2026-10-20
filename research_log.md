@@ -3352,3 +3352,13 @@ requires the terminal `done` record to report `examples == native manifest
 rows` and a non-missing terminal record before declaring completion.  This
 keeps the real MOT/RMOT/native-OVMOT run from being mistaken for a CPU-only or
 empty optimizer launch.
+
+## 2026-10-21 — G1 GPU5 plan provenance repair
+
+The G1 queue is explicitly bound to physical GPU5, but the older
+`native_ground_tracking200_20261014.json` retained a historical
+`physical_training_GPU: 7` field.  That plan is preserved unchanged; the G1
+queue now references a versioned GPU5 plan with matching physical-device
+metadata and an explicit queue-owner provenance note.  The waiting G1 process
+was not restarted, and the corrected plan will be read only when its exact G2
+terminal gate opens.
