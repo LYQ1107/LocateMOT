@@ -3125,3 +3125,14 @@ preserved waiting directory and records `resumed_wait_owner`. The old waiting
 owner was stopped and restarted with the registered
 `GroundAnything-DLM-TrackProjG1-GPU5-V2` bundle path. It remains at
 `WAITING_G2_CLEAN_SUCCESS`; no G1 optimizer or GPU process has started.
+
+## 2026-10-21 — native three-task owner made resumable
+
+The real native MOT/RMOT/OVMOT owner had a weaker restart boundary: a dead
+waiting process could rewrite its queue directory without distinguishing a
+clean wait from partial training output. Startup now accepts only the known
+pre-launch waiting states, preserves the optional runtime config when it was
+already created, rejects unexpected files, refuses live duplicates, and records
+`resumed_wait_owner`. The existing owner is being restarted only in its
+CPU-only `WAITING_NATIVE_OVMOT_MANIFEST` state; no optimizer or GPU process is
+started.

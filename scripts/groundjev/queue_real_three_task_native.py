@@ -134,6 +134,22 @@ def main() -> int:
         raise FileExistsError(f"terminal native joint owner already exists: {owner}")
     if old and old.get("owner_pid") and Path(f"/proc/{old['owner_pid']}").exists():
         raise FileExistsError(f"native joint owner already live: {old['owner_pid']}")
+    if args.queue_root.exists():
+        resumable_statuses = {
+            "WAITING_NATIVE_OVMOT_MANIFEST",
+            "WAITING_G2_BUNDLE_HELDOUT_AND_GPUS",
+            "WAITING_G2_G1_BUNDLE_HELDOUT_AND_GPUS",
+        }
+        if not old or str(old.get("status", "")) not in resumable_statuses:
+            raise FileExistsError(f"refusing to overwrite an existing native joint queue: {args.queue_root}")
+        allowed = {"owner_state.json"}
+        if str(old.get("status", "")) == "WAITING_G2_BUNDLE_HELDOUT_AND_GPUS":
+            allowed.add("native_runtime.json")
+        unexpected = [child.name for child in args.queue_root.iterdir() if child.name not in allowed]
+        if unexpected:
+            raise FileExistsError(
+                f"refusing to resume a partial native joint queue; unexpected={unexpected}"
+            )
     state = {
         "status": "WAITING_NATIVE_OVMOT_MANIFEST",
         "current_stage": "WAITING_NATIVE_OVMOT_MANIFEST",
@@ -148,6 +164,7 @@ def main() -> int:
         "old_teacher_queue_preserved": True,
         "completed": {},
         "failed": None,
+        "resumed_wait_owner": bool(old),
     }
     save(owner, state)
     try:
