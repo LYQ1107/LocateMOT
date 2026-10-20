@@ -212,6 +212,12 @@ def main() -> int:
                 except Exception as error:
                     ready, evidence = False, {"error": repr(error)}
                 state["resource_probe"] = evidence
+                state["resource_gate"] = {
+                    "ready": ready,
+                    "rule": "no compute PIDs and at least 32768 MiB free on every requested GPU",
+                    "shared_memory_mode": False,
+                }
+                atomic_save(owner, state)
                 if ready:
                     break
             time.sleep(args.poll_seconds)
