@@ -12,11 +12,12 @@ OneJev epoch from the registered native step-600 checkpoint in the dedicated
 `.venv-onejev-py310` environment. Its OVMOT component is explicitly the legal
 Base teacher-control (215 group + 215 leaf rows); the native TAO archive is
 not mislabeled as training data. A CPU preflight found 2,099 rows above the
-registered 32,768-token limit (maximum 96,734). The first bounded course
-therefore expects 129,891 exposed rows and records the 2,099 overlength rows
-explicitly; its terminal receipt cannot be reported as full-source exposure.
-A separate compacting or long-row course is required before making a
-full-source training claim.
+registered 32,768-token limit (maximum 96,734).
+That v1 owner was superseded before any GPU launch. The v2 owner,
+`scripts/groundjev/queue_real_three_task_joint_v2_compact.py`, uses the
+explicit `compact_competition_v1` loader transform and passed a new zero-drop
+preflight: all 131,990 rows are exposed, maximum 28,156 tokens. The immutable
+native JSONL and v1 manifest remain available for replay.
 
 The queue is a reproducible comparison run, not the final online GroundJEV
 architecture. Its state records `full_goal_complete=false` until the coupled

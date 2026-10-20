@@ -35,3 +35,10 @@ The runtime loader was then exercised in the registered
 the five task-family counts exactly. The system Python environment lacks the
 OneJev `pydantic` dependency and is therefore not a valid training runtime;
 the recorded launch contract uses the dedicated environment.
+The zero-drop v2 registration is separate and immutable at
+`/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/real_three_task_joint_v2_compact/`.
+It applies `compact_competition_v1` at load time, preserves the native source
+and all row labels/media/candidate geometry, and has manifest SHA
+`cbdafce9e5a587c00b053ee58ea6435db4221d38036ee7574fe8a3f0f854e54c`. Its
+CPU plan reports 0 over-length rows at 32,768 tokens; it has not launched an
+optimizer.
