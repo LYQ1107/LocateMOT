@@ -3216,3 +3216,12 @@ manifest SHA, and `adapter_projector_final.pt`. A temporary-receipt regression
 confirmed that missing adapter and wrong-step receipts are rejected while the
 complete contract is accepted. The live waiting owner was not restarted or
 modified; this patch protects future recovery and launch paths.
+
+
+## 2026-10-21 — G2 progress snapshot (step 12610)
+
+The protected G2 Clean run reached step 12,610/18,227 at 05:10:55 +0800 with
+finite loss 0.2049703631. The three expected training processes remain live and
+`final_receipt.json` is still absent. This snapshot changes only progress
+evidence; no downstream model, held-out metric, or generalization claim is
+made.
