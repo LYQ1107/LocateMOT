@@ -1,5 +1,5 @@
-Warning: truncated output (original token count: 120160)
-Total output lines: 3089
+Warning: truncated output (original token count: 120446)
+Total output lines: 3107
 
 # LocateMOT Research Log
 
@@ -2192,9 +2192,7 @@ per-queryrejection contributesempty for thatquery only, concatenates remaining
 original-parserboxes, noNMS/topK/GTselection; matches existing scored-query
 control policy, not old whole-frame-rejection scores. One blocking owner waits
 currentGPU5memoryjobexit beforeowning temporaryDLM/feature services; stops
-bothcompletegroups befo…20160 tokens truncated…annotation集合。官方CPUplan0丢弃、max4238、总315781843计数tokens，26489步只是4row下假想全类别epoch，不是训练。Textrows仍一次载RAM，CPU峰3746652160bytes；原cached native reporter打印1s只含复用后的报告时间，绝不当tokenize全程速度。新独立IO入口仅进程内gzip与cropSheet读取、checkpoint协议记版本，现有200/600对照正常/FP32完整保存、其他队列未动；此组件将供未来三任务平衡课程，未发新GPU训练、不称大规模联合训练完成。
-
-2026-10-16表达覆盖扩展计划：4350合法fit表达投影现有72真实原生帧，2213条至少有一个正目标、2137条没有；34800 contexts中15446正/19354空。直接平铺重复存在语言/正负覆盖偏斜，不能称图像规模扩大。复用原OneJev瞬时membership/empty-presence问题和既有裁剪PNG，扩展表达文本与严格train GT IoU>=.5标签，全部表达/空帧/原8拒绝帧保留；逐表达写覆盖供未来平衡课程。先与真实native build_request的所有72帧输入/裁剪像素一致，再逐条复现旧346监督行，完成后全量CPU token规划。不新增GPU/feature/PNG，不改运行中600训练，不称actor history或运动表达可观测。64MiB导出cap，保守合计26426987277<25GiB。
+bothcompletegroups befo…20446 tokens truncated…不新增GPU/feature/PNG，不改运行中600训练，不称actor history或运动表达可观测。64MiB导出cap，保守合计26426987277<25GiB。
 
 表达组件首次生成session35503 exit1，首个根因：0017/frame1表达individuals-donning-jeans引用ID148，但同帧release box中无148；全4350×8核验共60contexts/15表达、仅4个独立(video,frame,ID)引用缺框：0017/1/148、2/148、5/146、6/146。已有18表达/346行无此问题，不能由旧子集通过推出全表达标签可用。失败partial train.jsonl.gz与failure_audit保留，未训练/未删除任何样本。最小修正为全量target-ID/box预检前置到写行前，明确HELD并exit2，0行写入；不交集删除目标、不插值框、不偷换负标签。下一复跑只验证真实4350全量阻止无证监督，等待原始可见性/annotation合同证据后再恢复这一组件，GPU4/5/6/7队列保持。
 
@@ -2837,3 +2835,21 @@ deployment bundle. The owner process had not started a shard, so it was
 restarted with the corrected code while remaining in its G2 wait state.
 Evidence: `scripts/groundjev/queue_tao_native_train_shards.py` and
 `docs/GROUNDJEV/TAO_TRAIN_NATIVE_QUEUE_20261021.{json,md}`.
+
+## 2026-10-21 — decoupled the terminal G2 bundle from the G1 comparison arm
+
+The clean deployment owner previously waited for both the exact G2 receipt and
+G1 GPU5 completion. That ordering could block independent G2 held-out
+measurement and native G2 candidate export behind an optional comparison arm.
+The owner now waits only for the exact-once G2 terminal receipt, performs the
+same CPU-only 569-tensor merge into the separate G2-CLEAN-V2 bundle, and leaves
+G1 as an independent GPU5 adaptation/control. The existing owner was still in
+its pre-launch wait state, so no model or output was changed; it will be
+restarted with the corrected gate. Evidence: `tools/groundjev/queue_g2_clean_bundle_export.py`.
+
+The owner restart also exposed a resumability defect: its old waiting directory
+was treated as an existing export and refused to start. The restart guard now
+accepts the preserved pre-launch WAITING_G2_AND_G1_TERMINAL state (as well as
+WAITING_G2_CLEAN_SUCCESS), refuses live duplicate owners and any partial
+bundle, and resumes without deleting the historical state. The corrected owner
+is live again in WAITING_G2_CLEAN_SUCCESS.
