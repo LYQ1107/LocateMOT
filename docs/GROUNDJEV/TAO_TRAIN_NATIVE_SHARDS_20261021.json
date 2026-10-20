@@ -29,5 +29,6 @@
   "gpu_launched": false,
   "merge_entrypoint": "scripts/groundjev/merge_tao_native_shards.py",
   "merge_preflight": "rejected because shard_00_of_08/receipt.json is absent; no unstreamed shard was promoted",
+  "merge_contract_fixture_test": "synthetic 4-frame/2-shard GT-free fixture merged successfully",
   "next_step": "Stream every shard, verify each receipt, concatenate in shard order, then run the strict native TRAIN annotation join."
 }
