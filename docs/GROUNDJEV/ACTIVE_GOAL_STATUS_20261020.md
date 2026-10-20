@@ -6,7 +6,7 @@ labels alone.
 ## Protected and queued work
 
 - **G2 Clean:** live two-rank torchrun on physical GPUs 3 and 5, event step
-  `10588 / 18227` at `2026-10-20 22:35:47 +0800`; the final receipt does not
+  `10639 / 18227` at `2026-10-20 22:45:28 +0800`; the final receipt does not
   exist yet. The latest durable adapter remains `adapter-step010500`. The
   original optimizer, sampler, RNG, world size, and checkpoint contract are
   unchanged.
@@ -19,7 +19,14 @@ labels alone.
   FP32/Adam/scheduler/all-rank-RNG state is step `3000`. The new queue owner
   `full_joint_source_epoch1_resume_queue_v2` is live and waiting for valid G2,
   successful G1, and exclusive physical GPUs 4/5/6/7. It will resume from
-  step3000 and never overwrite the historical output.
+  step3000 and never overwrite the historical output. Its new owner also
+  waits for the independent G2 held-out queue to reach a terminal state before
+  claiming GPUs 4/5/6/7.
+
+- **Independent G2 held-out queue:** live on GPU7, with a completed exact
+  image-path overlap audit (0 overlaps for both RMOT scopes and independent
+  TAO video105). It is waiting for the terminal G2 Clean deployment bundle;
+  no final held-out metric is claimed yet.
 
 ## Completed evidence
 
@@ -40,4 +47,4 @@ labels alone.
 
 The audit does not claim that the overall research goal is complete. A valid
 final G2 receipt, fresh G1 receipt, resumed full-source OneJev terminal
-receipt, and independent held-out comparisons are still required.
+receipt, and official independent held-out comparisons are still required.
