@@ -33,8 +33,9 @@
   "g2_independent_heldout_queue": {
     "status": "WAITING_G2_CLEAN_BUNDLE_AND_GPU7",
     "physical_gpu": 7,
-    "scopes": ["rmot_single0007", "rmot_multi0007", "ovmot_tao105"],
+    "scopes": ["mot20_05_validation1657", "rmot_single0007", "rmot_multi0007", "ovmot_tao105"],
     "exact_image_overlap": {
+      "mot20_05_validation1657": 0,
       "rmot_single0007": 0,
       "rmot_multi0007": 0,
       "ovmot_tao105": 0
