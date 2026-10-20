@@ -3307,3 +3307,15 @@ termination of an unmatched track.  A controlled causal replay verified one
 birth, a matched `LOST` decision with a held memory write, and timeout
 termination; the one-feature-forward and memory-causality regressions still
 pass.  This is a runtime correctness repair, not a tracking-performance claim.
+
+## 2026-10-21 — GPU gate for the next real pilot
+
+The single resource audit found all eight A800 GPUs occupied.  Physical GPUs
+3/5 remain the protected G2 ranks, GPU7 retains an unrelated compute owner, and
+the remaining cards also have active compute workloads; no card has an
+exclusive launch window for the Phase-B real-G2 pilot.  The latest durable G2
+adapter remains `checkpoints/adapter-step012500.pt` with
+`latest_training_state.pt`; the terminal receipt is still not present.  The
+pilot was therefore not started on a shared card, and no process was killed or
+reused.  This preserves the registered training contract while the existing
+G2 completion waiter remains the only long-running observer.
