@@ -52,14 +52,16 @@ def save(path: Path, state: dict) -> None:
     print(json.dumps({k: state.get(k) for k in ("status", "current_stage", "failed", "last_exit_code")}, ensure_ascii=False), flush=True)
 
 
-def terminal_state(path: Path, complete_status: str, failed_suffix: str) -> tuple[str, dict | None]:
+def terminal_state(path: Path, complete_status: str | set[str], failed_suffix: str | set[str]) -> tuple[str, dict | None]:
     state = read_json(path)
     if state is None:
         return "waiting", None
     status = str(state.get("status", ""))
-    if status == complete_status:
+    complete_statuses = {complete_status} if isinstance(complete_status, str) else complete_status
+    failed_statuses = {failed_suffix} if isinstance(failed_suffix, str) else failed_suffix
+    if status in complete_statuses:
         return "complete", state
-    if status == failed_suffix or status.endswith("_FAILED") or status.endswith("DEPENDENCY_FAILED"):
+    if status in failed_statuses or status.endswith("_FAILED") or status.endswith("DEPENDENCY_FAILED"):
         return "failed", state
     return "waiting", state
 
@@ -169,7 +171,11 @@ def main() -> int:
                 state.update(status="REAL_THREE_TASK_JOINT_G2_DEPENDENCY_FAILED", current_stage="G2_DEPENDENCY_FAILED", failed={"dependency": "G2", "evidence": ge})
                 save(owner, state); return 2
             g1, g1e = terminal_state(G1_STATE, "G1_GPU5_ADAPTATION_AND_CONTROLS_COMPLETE", "G1_GPU5_QUEUE_FAILED")
-            bundle, be = terminal_state(BUNDLE_STATE, "G2_CLEAN_BUNDLE_EXPORT_COMPLETE", "G2_CLEAN_BUNDLE_EXPORT_FAILED")
+            bundle, be = terminal_state(
+                BUNDLE_STATE,
+                {"G2_CLEAN_BUNDLE_EXPORT_COMPLETE", "G2_CLEAN_DEPLOYMENT_BUNDLE_EXPORTED"},
+                "G2_CLEAN_BUNDLE_EXPORT_FAILED",
+            )
             heldout, he = terminal_state(HELDOUT_STATE, "G2_CLEAN_FULL_INDEPENDENT_HELDOUT_COMPLETE", "G2_CLEAN_FULL_INDEPENDENT_HELDOUT_FAILED")
             if g1 == "failed" or bundle == "failed":
                 state.update(status="REAL_THREE_TASK_JOINT_DEPENDENCY_FAILED", current_stage="DEPENDENCY_FAILED",

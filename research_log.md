@@ -1,5 +1,5 @@
-Warning: truncated output (original token count: 119599)
-Total output lines: 3053
+Warning: truncated output (original token count: 119917)
+Total output lines: 3074
 
 # LocateMOT Research Log
 
@@ -2192,9 +2192,7 @@ per-queryrejection contributesempty for thatquery only, concatenates remaining
 original-parserboxes, noNMS/topK/GTselection; matches existing scored-query
 control policy, not old whole-frame-rejection scores. One blocking owner waits
 currentGPU5memoryjobexit beforeowning temporaryDLM/feature services; stops
-bothcompletegroups befo…19599 tokens truncated…1814本地图像/全部9fit/4350表达文件，TAO18274训练图/500video/175Baseclasses/52978eligible targets；当前旧类别SFT仅9类/64图，规模缺口有实际可用数据支撑。所有index图像is_file true，RMOT所有positive表达frame都有本地图像；MOT唯一dataset/sequence/frame40904，9fit集合精确；逐一52978target核验源imageid/annoID与frozen vocab synset/frequency一致，52978+6172nonBase+50outsidevoc=59200守恒。175类别coverage sum同52978；1251零eligibleBase帧全部保留，不给Novel/unknown负标签。不称外部完整RMOT序列长度证明/实际训练曝光/联合梯度训练。原始indices约33.85MB本地保存，发布可复现builder/sourceplan与summary/coverage/validation，未创建任何feature缓存或新GPU。原训练150/600真实loss/grad有限，ckpt150和完整FP32/Adam/RNG已保存，继续原队列。
-
-175Base语料组件实现计划：现有原生NativeCategoryHead.crop_sheet可直接按原图/精确GT框惰性生成768宽、216/432高实际像素；根/条件leaf问题原样沿用。全部52978训练Base对象构成105956问题，保留1203输入词表、1251零Base帧登记，不加Novel/unknown负标签。压缩JSONL+media裁剪recipe避免约GB的重复文本/PNG落盘；新独立训练入口仅进程内扩展gzip/load_media IO并将IO版本写入恢复协议，现有对照入口不改。先真实旧215对象像素/问题对齐及175新类代表图、CPU processor张量和官方全量token计划核验。仅准备未来平衡三任务混合的类别组件，不启动类别单任务optimizer；256MiB导出cap、合计26359878413<25GiB。
+bothcompletegroups befo…19917 tokens truncated…练入口仅进程内扩展gzip/load_media IO并将IO版本写入恢复协议，现有对照入口不改。先真实旧215对象像素/问题对齐及175新类代表图、CPU processor张量和官方全量token计划核验。仅准备未来平衡三任务混合的类别组件，不启动类别单任务optimizer；256MiB导出cap、合计26359878413<25GiB。
 
 2026-10-16：175Base类别组件已实际生成并完成CPU原生全量规划session25047 exit0，52978对象/105956Root+Leaf问题、500trainvideo，1203输入类保留。gzip文本25820145bytes对比展开1005240705，17375按需裁剪recipe无PNG/ROI档案；18274图含1251零Base完整登记不造负标签。实际215旧对象/62原PNG像素完全相同，175新类代表问题/像素等同原NativeCategoryHead；768x216/432×Root/Leaf四例input_ids/mask/mmtypes/pixel_values/grid全torch.equal且实际计数token一致。全量105956target逐一对应源GT图像/类别/ROI且两种family各52978，同annotation集合。官方CPUplan0丢弃、max4238、总315781843计数tokens，26489步只是4row下假想全类别epoch，不是训练。Textrows仍一次载RAM，CPU峰3746652160bytes；原cached native reporter打印1s只含复用后的报告时间，绝不当tokenize全程速度。新独立IO入口仅进程内gzip与cropSheet读取、checkpoint协议记版本，现有200/600对照正常/FP32完整保存、其他队列未动；此组件将供未来三任务平衡课程，未发新GPU训练、不称大规模联合训练完成。
 
@@ -2805,3 +2803,24 @@ Added `scripts/groundjev/queue_tao_native_train_shards.py` and synchronized the 
 ## 2026-10-21 — authoritative G2 refresh at step 12442
 
 The protected G2 Clean ranks remain alive on GPUs 3/5 at event step 12,442/18,227 with finite loss `0.2287370411`; the latest durable adapter is still `checkpoints/adapter-step012000.pt`, the training-state checkpoint is present, and `final_receipt.json` is absent. G1, clean-bundle, held-out and YesTrack owners remain live dependency/resource waiters; the corrected three-task owner remains paused at zero updates because native TAO TRAIN rows are not available. No protected process or protocol was changed.
+
+## 2026-10-21 — native TAO join owner and native three-task launch gate repaired
+
+Added a CPU-only owner for the complete native TAO TRAIN stream and a separate
+resumable owner for the future real MOT/RMOT/OVMOT OneJev run. The join owner
+waits for the strict eight-shard merge receipt, runs the checked-out
+`prepare_native_ovmot_train_join.py` and `prepare_real_three_task_joint_manifest.py`,
+and never launches a model or optimizer. Its initial state is
+`WAITING_COMPLETE_NATIVE_TAO_STREAM`. The native three-task owner will not be
+started until the joined manifest is present and the terminal G2/G1/bundle/
+held-out plus exclusive-GPU gates pass; the historical teacher-control queue
+remains paused at zero updates.
+
+During the audit, the join owner was corrected to resolve repository joiners
+from `/data2/user/LocateMOT` because the runtime output tree does not mirror
+those source files. The paused compact queue was also corrected to accept the
+actual bundle terminal status `G2_CLEAN_DEPLOYMENT_BUNDLE_EXPORTED` while
+retaining the historical spelling for old receipts. No data, checkpoint, or
+running process was changed. Evidence:
+`docs/GROUNDJEV/TAO_NATIVE_JOIN_QUEUE_20261021.{json,md}` and
+`docs/GROUNDJEV/REAL_THREE_TASK_NATIVE_QUEUE_20261021.{json,md}`.

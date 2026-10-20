@@ -1,0 +1,14 @@
+{
+  "report": "tao_native_ovmot_join_queue",
+  "date": "2026-10-21",
+  "project_root": "/data2/user/LocateMOT",
+  "owner_script": "scripts/groundjev/queue_native_ovmot_join.py",
+  "owner_state": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/native_ovmot_join_queue_v1/owner_state.json",
+  "status_at_registration": "WAITING_COMPLETE_NATIVE_TAO_STREAM",
+  "gpu_launched": false,
+  "optimizer_updates": 0,
+  "merged_input": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/tao_native_ovmot_train_merged_v1/receipt.json",
+  "join_output": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/tao_native_ovmot_train_join_v1",
+  "native_joint_output": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/real_three_task_joint_native_v1",
+  "contract": "Only a complete eight-shard TRAIN candidate stream can unblock the CPU join; validation candidates and teacher rows are rejected."
+}
