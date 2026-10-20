@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-10-21T07:35:07+08:00",
+  "run_name": "G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final",
+  "run_root": "/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final",
+  "step": 13361,
+  "max_steps": 18227,
+  "latest_event": {
+    "loss": 0.2484929719939828,
+    "gradient_norm": 11.544794082641602,
+    "peak_memory_gib": 12.828843116760254,
+    "epoch": 0,
+    "position": 106888,
+    "micro_batches": 8,
+    "samples_global": 16,
+    "effective_tokens_global": 10912,
+    "lr_projector": 5.159833288140714e-7,
+    "lr_lora": 0.0000018059416508492499
+  },
+  "parent_pid": 1799359,
+  "parent_alive_at_audit": true,
+  "world_size": 2,
+  "physical_gpus": [
+    "3",
+    "5"
+  ],
+  "coverage_mode": "exact_once",
+  "clean_train_manifest_sha256": "f682519a1cf9204ca76ea75a56dad36dbdeac26259f202551ab9f66fefd06e71",
+  "durable_checkpoint": {
+    "adapter": {
+      "path": "checkpoints/adapter-step013000.pt",
+      "sha256": "08cf28930eced61b2086785494728221e113ac75cd7dc6aefe02ab1bc2ebfe59",
+      "bytes": 469243990
+    },
+    "recovery_state": {
+      "path": "checkpoints/latest_training_state.pt",
+      "sha256": "4a79cb3f64e69ffc56aaf964754d0209382b87c2124d46f13506325ca52fd22",
+      "bytes": 469247597
+    }
+  },
+  "terminal_receipt_exists": false,
+  "terminal_adapter_exists": false,
+  "downstream_gate": "G2_EXACT_COVERAGE_TRAINING_COMPLETE receipt and terminal adapter required",
+  "scientific_metric_claim": false
+}
