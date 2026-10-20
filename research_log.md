@@ -3614,3 +3614,8 @@ The protected G2 Clean run advanced to event step 13076/18227 and produced the d
 ## 2026-10-21 — live goal-completion matrix at G2 step 13116
 
 The execution matrix was refreshed from the current G2 event stream and downstream owner states. G0 MOT20 long export remains complete in legal TRAIN scope and MOT-only training remains safely closed; G2 is still running at step 13116/18227, while G1, native TAO/OVMOT joining, three-task OneJev, YesTrack and held-out evaluation remain gated. This is an execution audit and makes no scientific metric claim. Evidence: `docs/GROUNDJEV/GOAL_COMPLETION_MATRIX_LIVE_20261021_STEP13116.{json,md}`.
+
+
+## 2026-10-21 — G2 Clean live progress at step 13158
+
+The protected two-rank G2 Clean event stream advanced to 13,158/18,227 at 06:56:12 +0800. The latest loss, gradient norm and peak event memory are finite (`0.1489639424`, `10.2172279`, `12.828881 GiB`). Measured throughput over the last 100/500/1,000 steps is 5.222/5.204/5.201 steps per minute, giving a linear operational estimate of 16.18–16.24 hours remaining. The durable step-13,000 adapter and full recovery state remain present with the registered SHA-256 values; `final_receipt.json` is absent. All G1, native TAO/OVMOT, three-task OneJev, held-out and YesTrack owners remain dependency-gated. This is training-health evidence only and makes no G2 metric claim. Evidence: `docs/GROUNDJEV/G2_PROGRESS_LIVE_20261021_STEP13158.{json,md}`.
