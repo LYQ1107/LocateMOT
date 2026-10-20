@@ -13,7 +13,7 @@ approximation of the G2 prompt. Batched memory tokens are shape-checked and
 cast to the prompt device/dtype; empty memory is a no-op. No future labels or
 future frame features can enter this helper.
 
-The focused CPU contract suite passed eight tests, including projector
+The focused CPU contract suite passed three test methods covering eight assertions, including projector
 gradient flow, insertion order, mask length, and disabled-path identity. This
 is an engineering/input-contract receipt only. It is not yet a GroundAnything
 decoder run, box-recall result, HOTA/IDF1 result, or evidence that memory
