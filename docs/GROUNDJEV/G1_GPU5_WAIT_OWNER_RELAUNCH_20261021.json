@@ -1,0 +1,26 @@
+{
+  "receipt_type": "G1_GPU5_WAIT_OWNER_RELAUNCH",
+  "date": "2026-10-21",
+  "queue": "tools/groundjev/queue_g1_gpu5_after_g2.py",
+  "old_pid": 631075,
+  "old_state": "WAITING_G2_CLEAN_SUCCESS",
+  "old_optimizer_updates": 0,
+  "old_gpu_launch": false,
+  "old_log": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/ground_adaptation/g1_gpu5_queue_restart.log",
+  "new_pid": 642505,
+  "new_state": "WAITING_G2_CLEAN_SUCCESS",
+  "physical_gpu": 5,
+  "runtime_root": "/data2/user/LocateMOT_GroundJEV",
+  "base_model": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM",
+  "out": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/ground_adaptation/native_tracking200_gpu5_g1_v1",
+  "bundle": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM-TrackProjG1-GPU5-V2",
+  "new_log": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/ground_adaptation/g1_gpu5_queue_relaunch_20261021.log",
+  "validation": {
+    "new_owner_alive_after_start": true,
+    "g2_process_touched": false,
+    "training_artifacts_created_before_relaunch": false,
+    "optimizer_updates_before_relaunch": 0,
+    "gpu5_training_started": false
+  },
+  "claim_boundary": "This restores the dependency waiter only; it is not a G1 adaptation or metric result."
+}

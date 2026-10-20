@@ -3500,3 +3500,13 @@ launch, and executes from `/data2/user/LocateMOT_GroundJEV`. The historical
 reclassified. The code was compiled and the historical identity path was
 smoke-tested; no service or GPU was started. Evidence:
 `docs/GROUNDJEV/G2_NATIVE_EVAL_IDENTITY_REPAIR_20261021.{json,md}`.
+
+## 2026-10-21 — relaunched exited G1 GPU5 wait owner
+
+The G1 dependency owner had exited with only its initial
+`WAITING_G2_CLEAN_SUCCESS` state; no training output, optimizer update or GPU5
+launch existed. After verifying that the registered output directory still
+contained only the owner state, relaunched it with the same G2 root, runtime
+GroundAnything base, output, bundle and control paths. New PID 642505 is live
+and waiting; protected G2 was untouched. Evidence:
+`docs/GROUNDJEV/G1_GPU5_WAIT_OWNER_RELAUNCH_20261021.{json,md}`.
