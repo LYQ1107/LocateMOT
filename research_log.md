@@ -1,5 +1,5 @@
-Warning: truncated output (original token count: 118861)
-Total output lines: 3037
+Warning: truncated output (original token count: 119098)
+Total output lines: 3041
 
 # LocateMOT Research Log
 
@@ -2192,11 +2192,7 @@ per-queryrejection contributesempty for thatquery only, concatenates remaining
 original-parserboxes, noNMS/topK/GTselection; matches existing scored-query
 control policy, not old whole-frame-rejection scores. One blocking owner waits
 currentGPU5memoryjobexit beforeowning temporaryDLM/feature services; stops
-bothcompletegroups befo…18861 tokens truncated…个训练checkpoint覆盖同四scope。
-
-常规关联基线计划：同一DLM候选的Simple不足以代表常规跟踪器，下载官方FoundationVision/ByteTrack源码commit d1bf0191adff59bc8fcfeaa0b33d3d1642552a99（直接无代理成功），只跑CPU官方BYTETracker，不下载检测器或改现有Foundation环境。固定官方CLI track_thresh.6/buffer30/match.9/mot20false；原候选无置信度，显式constant1全框输入，低分支无候选，不伪称完整ByteTrack/论文成绩。官方KF输出框与默认约1s丢失buffer保留，不按验证分数调参或附加输出面积/宽高过滤。完整DT1203/13664/27拒绝帧原官方TrackEval打分，先隔离CPU依赖，再一次完整阻塞运行。
-
-官方ByteTrack CPU参考环境已直接无代理安装到独立reference_envs/bytetrack/site-packages，固定NumPy1.23.5兼容原np.float、SciPy1.10.1/lap0.5.12/cython-bbox.1.5/OpenCV4.10，不修改Foundation环境。只用官方tracker包、跳过无关YOLOX root初始化、上游源码不改；Torch库只读复用但不加载任何权重/不初始化CUDA。真实前21帧/266原候选含拒绝空帧21处理通过，输入boxes和unit scores完全不变、frame counter21。下一同计划完整1203帧一次运行+原TrackEval，默认KF/1s lostbuffer及constant1低分支空输入限制全部明示，不按验证分数调参。主训练50步真实FP32/Adam/scheduler/RNG已保存，原队列不变。
+bothcompletegroups befo…19098 tokens truncated…官方tracker包、跳过无关YOLOX root初始化、上游源码不改；Torch库只读复用但不加载任何权重/不初始化CUDA。真实前21帧/266原候选含拒绝空帧21处理通过，输入boxes和unit scores完全不变、frame counter21。下一同计划完整1203帧一次运行+原TrackEval，默认KF/1s lostbuffer及constant1低分支空输入限制全部明示，不按验证分数调参。主训练50步真实FP32/Adam/scheduler/RNG已保存，原队列不变。
 
 ByteTrack完整阻塞75056实际exit0：原官方CPU跟踪器1203帧HOTA16.4734/IDF13.9034/IDSW367/FP5234/FN395。独立逐帧核验13664全部原V1候选（只省原feature数组）、图像/框/原perception精确相同、27拒绝帧与scorer分母相同，全部predictions.txt逐行重建等于实际frame outputs，finalKFstate保留，TrackEval原12c8791未改。高于Fullnative6008.703、低于共享Compact26.316，但CompactFP579/FN1962相较ByteTrack5234/395是不同误漏权衡，且训练/特征输入/1s vs3s记忆/KF输出有差别，不作唯一JEV或普通全pipeline水平结论，不下调最终门槛。参考解释保留；不替换运行中的Full/Compact或调验证阈值。
 
@@ -2799,3 +2795,7 @@ Re-read every discovered TAO candidate archive under `/data2/user/LocateMOT_Grou
 ## 2026-10-21 — single authoritative G2 progress refresh at step 12417
 
 One non-polling status read found the protected formal G2 Clean ranks alive on GPUs 3/5 at event step 12,417/18,227 with finite loss `0.1803909168`. The latest durable adapter remains `checkpoints/adapter-step012000.pt`; `checkpoints/latest_training_state.pt` is present and `final_receipt.json` is absent. G1, the deployment bundle, held-out evaluation and YesTrack remain dependency/resource waiters. The corrected three-task queue remains `PAUSED_FOR_NATIVE_OVMOT_ROWS` with zero optimizer updates. No protected process or experimental protocol was changed. Evidence is the live G2 run directory plus the refreshed matrix.
+
+## 2026-10-21 — TAO TRAIN native export shards registered
+
+Because the all-GPU snapshot was occupied by protected/foreign jobs, no native TAO export was launched. Instead, added `scripts/groundjev/prepare_tao_train_native_shards.py` and registered eight contiguous, disjoint, label-free manifests covering all 18,274 TAO TRAIN images (500 videos) with parent manifest SHA `835adaadff282088599987de4c5bc906e7d8aca826deb7426cda05598e9db3a4`. CPU coverage validation reports 18,274 covered frames, zero missing and zero duplicates. Every shard remains `native_ovmot_training_rows=false`; this only makes the future native stream resumable/parallel and does not unblock training. The first preflight exposed a slice-length assertion bug, which was fixed before accepting the v2 registration; the failed partial directory was preserved separately. Evidence: `docs/GROUNDJEV/TAO_TRAIN_NATIVE_SHARDS_20261021.{json,md}` and the external shard receipts.
