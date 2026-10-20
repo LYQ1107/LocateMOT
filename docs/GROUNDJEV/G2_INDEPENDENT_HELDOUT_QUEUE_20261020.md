@@ -15,6 +15,7 @@ input or memory state of one another.
 
 The registered scopes are:
 
+- MOT20-05 complete registered validation-half scope: 1,657 frames.
 - Refer-KITTI v2 sequence `0007`, single expression: 800 frames.
 - Refer-KITTI v2 sequence `0007`, multi-instance expression: 800 frames.
 - TAO-Amodal validation video `105` (`Making_a_sandwich...`): 40 annotation
@@ -38,4 +39,4 @@ HOTA/DetA/AssA/IDF1/TETA metrics, rejected frames, output counts, and FPS for
 both model identities.
 
 No final held-out metric is claimed until the owner writes
-`G2_CLEAN_FULL_INDEPENDENT_HELDOUT_COMPLETE` and its `comparison.json`.
+  `G2_CLEAN_FULL_INDEPENDENT_HELDOUT_COMPLETE` and its `comparison.json`.
