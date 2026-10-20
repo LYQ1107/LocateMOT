@@ -2889,3 +2889,20 @@ The registered OneJev CPU plan rendered all 131,990 rows in 267 seconds. At the 
 
 ## 2026-10-21 — compact zero-drop three-task source v2
 The v1 native MOT/RMOT/OVMOT source plan was valid but excluded 2,099 high-candidate MOT identity rows over the 32,768-token limit. The cause was repeated dense N×N IoU and center-distance CSV matrices in every MOT row, not missing media or a changed candidate source. Added the explicit `compact_competition_v1` manifest transform: native JSONL remains immutable; exact row IDs, targets, media paths and candidate boxes are preserved; all positive-IoU edges retain native rounded IoU and center distance; zero-IoU geometry is derivable from the retained boxes. The v2 CPU plan rendered all 131,990 rows with zero drops (p50/p90/p99/max 7,939/12,173/16,050/28,156 tokens; 8,250 world-4 steps), with no GPU or optimizer updates. The old v1 waiting owner was superseded before any training; a separate v2 owner is waiting on G2/G1/bundle/held-out gates and exclusive GPUs. Native TAO category rows remain pending, so this is still a registered Base teacher-control course rather than a final OVMOT claim.
+
+## 2026-10-21 — native YesTrack v2 queued behind an exclusive GPU7 gate
+
+Registered the real native YesTrack corpus with 726 train rows and 390 fixed
+validation rows (train SHA
+`065337d2fedca2377d02b94e57c9eb3778aeca09aeb1a8b9463429fa15bbee66`, validation
+SHA `d63a9fb0d54b8a1dc5d12b0960a48cb75c56ab786671f955fb317e196b3033d8`). The
+CPU rendering plan passed with zero rows over 32,768 tokens (max 26,159; 91
+planned optimizer steps). Added a real GPU owner that waits for GPU7 to have no
+compute PID and at least 32 GiB free, trains native multimodal LoRA for three
+epochs, then evaluates frozen base and tuned adapter on identical held-out rows
+using AUROC, PR-AUC, accuracy, Brier, ECE, false rejection and false
+acceptance. The owner does not stop other users and writes terminal receipts
+only after training and both evaluations succeed. At registration GPU7 was
+occupied, so no YesTrack metric is claimed; prior 24-row readout controls remain
+engineering evidence only. Tracking HOTA/AssA/IDF1/IDSW still requires a later
+fixed-candidate physical-baseline integration.

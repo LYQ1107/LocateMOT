@@ -1,0 +1,18 @@
+{
+  "status": "REAL_YESTRACK_TRAINING_QUEUED_GPU7",
+  "train_rows": 726,
+  "validation_rows": 390,
+  "train_sha256": "065337d2fedca2377d02b94e57c9eb3778aeca09aeb1a8b9463429fa15bbee66",
+  "validation_sha256": "d63a9fb0d54b8a1dc5d12b0960a48cb75c56ab786671f955fb317e196b3033d8",
+  "base_checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_unified600_native_v2/ckpt-step600",
+  "physical_gpu": 7,
+  "planned_optimizer_steps": 91,
+  "max_len": 32768,
+  "cpu_plan_overlength_rows": 0,
+  "gt_used_for_prompt": false,
+  "official_test_labels_read": false,
+  "future_evidence": false,
+  "owner_script": "scripts/groundjev/queue_yestrack_native_v2.py",
+  "metrics_pending_until_terminal_receipt": true,
+  "tracking_metrics_pending": true
+}
