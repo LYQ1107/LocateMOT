@@ -141,8 +141,25 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--queue-root", type=Path, default=QUEUE_ROOT)
     parser.add_argument("--poll-seconds", type=int, default=60)
+    parser.add_argument(
+        "--resume-paused",
+        action="store_true",
+        help="Explicitly clear the GroundJEV redirection pause marker and re-register this historical comparison.",
+    )
     args = parser.parse_args()
     owner = args.queue_root / "owner_state.json"
+    pause_marker = args.queue_root / "PAUSED_FOR_GROUNDJEV_SINGLE_BACKBONE"
+    if pause_marker.exists() and not args.resume_paused:
+        paused = read_json(owner) or {}
+        print(json.dumps({
+            "status": paused.get("status", "PAUSED_FOR_GROUNDJEV_SINGLE_BACKBONE"),
+            "queue_root": str(args.queue_root),
+            "resume_step": paused.get("resume_step", HISTORICAL_DURABLE_STEP),
+            "message": "historical independent OneJev queue is paused; pass --resume-paused only for an explicit comparison run",
+        }, ensure_ascii=False), flush=True)
+        return 0
+    if args.resume_paused:
+        pause_marker.unlink(missing_ok=True)
     if args.queue_root.exists():
         old = read_json(owner)
         if old and old.get("status") in {

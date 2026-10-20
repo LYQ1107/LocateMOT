@@ -1,0 +1,18 @@
+{
+  "timestamp": "2026-10-21T02:25:00+08:00",
+  "project_root": "/data2/user/LocateMOT",
+  "queue_root": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/full_joint_source_epoch1_resume_queue_v2",
+  "status": "PAUSED_FOR_GROUNDJEV_SINGLE_BACKBONE",
+  "previous_status": "WAITING_G2_G1_AND_EXCLUSIVE_GPU_SET",
+  "owner_pid": 3994216,
+  "owner_alive_after": false,
+  "resume_step": 3000,
+  "historical_resume_state": "/data3/user/LocateMOT-checkpoints/onejev_full_joint_source_epoch1_v1/latest_training_state.pt",
+  "expected_total_steps": 28690,
+  "historical_non_durable_last_observed_step": 3525,
+  "checkpoint_contract": "latest_training_state.pt includes FP32 masters, Adam moments, scheduler, sampler cursor and all RNG state",
+  "reason": "Redirected to GroundJEV single-backbone coupled research; old independent OneJev long resume must not auto-claim GPUs 4-7.",
+  "auto_start_guard": "queue PAUSED_FOR_GROUNDJEV_SINGLE_BACKBONE marker plus --resume-paused opt-in",
+  "mainline": "GroundJEV single-backbone coupled research",
+  "historical_outputs_preserved": true
+}

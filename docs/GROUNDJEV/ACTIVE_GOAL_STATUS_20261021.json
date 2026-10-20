@@ -1,0 +1,66 @@
+{
+  "timestamp": "2026-10-21T02:22:04+08:00",
+  "project_root": "/data2/user/LocateMOT",
+  "branch": "codex/groundjev-full-evidence-20261020",
+  "g2": {
+    "status": "G2_FORMAL_TRAINING_RUNNING",
+    "event_step": 11735,
+    "target_steps": 18227,
+    "latest_durable_step": 11500,
+    "latest_event_time": "2026-10-21 02:21:54 +0800",
+    "recent_sec_per_step_500": 11.617234468937875,
+    "remaining_hours_at_recent_rate": 20.949746158984635,
+    "physical_gpus": [
+      3,
+      5
+    ],
+    "peak_memory_gib": 12.82892894744873,
+    "loss": 0.21024689846672118,
+    "manifest_sha256": "f682519a1cf9204ca76ea75a56dad36dbdeac26259f202551ab9f66fefd06e71",
+    "final_receipt": false
+  },
+  "g0_mot20_05": {
+    "status": "NATURAL_MOT20_SCOPE_AND_FROZEN_MEMORY_CONTROLS_COMPLETE",
+    "decoded_frames": 1657,
+    "native_candidates": 235232,
+    "fresh_source_metrics": {
+      "HOTA": 0.07334696070115383,
+      "DetA": 0.09026982781621751,
+      "AssA": 0.05967427073481851,
+      "IDF1": 0.059598451365333885,
+      "IDSW": 1933,
+      "FP": 417,
+      "FN": 288297
+    },
+    "official_scope_claim": "1657-frame registered validation-half only; no full TEST claim"
+  },
+  "g1_gpu5": {
+    "status": "WAITING_G2_CLEAN_SUCCESS",
+    "physical_gpu": 5,
+    "real_gpu_updates": false
+  },
+  "g2_bundle_export": {
+    "status": "WAITING_G2_AND_G1_TERMINAL",
+    "real_export": false
+  },
+  "independent_heldout": {
+    "status": "WAITING_G2_CLEAN_BUNDLE_AND_GPU7",
+    "scopes": [
+      "mot20_05_validation1657",
+      "rmot_single0007",
+      "rmot_multi0007",
+      "ovmot_tao105"
+    ],
+    "official_metrics": false
+  },
+  "old_onejev_queue": {
+    "status": "PAUSED_FOR_GROUNDJEV_SINGLE_BACKBONE",
+    "resume_step": 3000,
+    "historical_checkpoint": "/data3/user/LocateMOT-checkpoints/onejev_full_joint_source_epoch1_v1/latest_training_state.pt",
+    "auto_start_blocked": true,
+    "mainline": "GroundJEV single-backbone path"
+  },
+  "mot_only_live_process": false,
+  "coupled_phase_a_b": "completed in isolated branch; engineering/learnability receipts exist, no full MOT/RMOT/OVMOT metric claim",
+  "overall_goal_complete": false
+}
