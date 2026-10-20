@@ -55,3 +55,8 @@ receipt, and official independent held-out comparisons are still required.
 The recent G2 event windows measure 11.44–11.88 seconds per step, leaving
 approximately 24.1–25.0 hours of training from step 10654. This estimate
 excludes the queued G1, bundle export, and held-out stages.
+
+The historical four-GPU OneJev log measured about 13.4 seconds per step around
+steps 3300–3500. From the durable resume point step 3000, the remaining 25,690
+updates therefore require roughly 95–100 hours of compute, excluding startup,
+checkpoint overhead, and final held-out evaluation.
