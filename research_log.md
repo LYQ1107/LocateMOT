@@ -3205,3 +3205,14 @@ and 310.9 over 1,000 steps. Checkpoint events are present at each 500-step
 boundary through `adapter-step012500.pt`; the terminal receipt remains absent.
 This supports healthy continuation and an estimated 5,633 remaining updates at
 roughly 311 steps/hour, but it is not a model-quality or generalization claim.
+
+## 2026-10-21 — tightened G1 post-G2 terminal gate
+
+The resumable GPU5 G1 owner previously accepted a G2 receipt with steps at or
+above the registered budget and did not explicitly require the terminal adapter
+file. Its post-G2 gate now requires status
+`G2_EXACT_COVERAGE_TRAINING_COMPLETE`, exactly 18,227 steps, the registered clean
+manifest SHA, and `adapter_projector_final.pt`. A temporary-receipt regression
+confirmed that missing adapter and wrong-step receipts are rejected while the
+complete contract is accepted. The live waiting owner was not restarted or
+modified; this patch protects future recovery and launch paths.

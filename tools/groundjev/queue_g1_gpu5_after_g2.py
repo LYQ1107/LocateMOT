@@ -45,9 +45,13 @@ def successful_g2(g2: Path) -> tuple[bool, dict | None, str | None]:
     receipt_path = g2 / "final_receipt.json"
     if receipt_path.is_file():
         receipt = json.loads(receipt_path.read_text())
-        if receipt.get("status") == "G2_EXACT_COVERAGE_TRAINING_COMPLETE" and int(receipt.get("steps", -1)) >= 18227:
-            if receipt.get("manifest_sha256") == "f682519a1cf9204ca76ea75a56dad36dbdeac26259f202551ab9f66fefd06e71":
-                return True, receipt, None
+        if (
+            receipt.get("status") == "G2_EXACT_COVERAGE_TRAINING_COMPLETE"
+            and int(receipt.get("steps", -1)) == 18227
+            and receipt.get("manifest_sha256") == "f682519a1cf9204ca76ea75a56dad36dbdeac26259f202551ab9f66fefd06e71"
+            and (g2 / "adapter_projector_final.pt").is_file()
+        ):
+            return True, receipt, None
         return False, receipt, "G2 final receipt exists but failed the clean-contract gate"
     contract_path = g2 / "trainer_contract.json"
     if contract_path.is_file():
