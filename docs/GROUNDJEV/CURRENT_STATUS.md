@@ -2084,3 +2084,19 @@ the G2 exact-once receipt, independently of G1, then performs a CPU-only merge
 into models/GroundAnything-DLM-G2-CLEAN-V2; its state is
 outputs/groundjev/ground_adaptation/g2_clean_bundle_export_v1/owner_state.json.
 No bundle promotion or quality claim is made before that receipt.
+
+## GroundJEV coupled execution update — 2026-10-21
+
+The protected G2 Clean run is still the only active optimizer in this route:
+its two ranks remain on physical GPUs 3/5 and its latest durable training event
+is step 12,532/18,227 with finite loss 0.2126985. `adapter-step012500.pt` and
+`latest_training_state.pt` are present; `final_receipt.json` is not present, so
+no terminal model or metric claim is made.
+
+The G1 GPU5 waiting owner was made resumable and restarted after a safe stop of
+the old waiting process. It is live at `WAITING_G2_CLEAN_SUCCESS` with
+`resumed_wait_owner=true`, no optimizer updates, and no GPU child. The G2 clean
+bundle owner is independently waiting on the exact terminal G2 receipt, and
+the native three-task owner remains CPU-only at
+`WAITING_NATIVE_OVMOT_MANIFEST`; it treats G1 as optional evidence while still
+respecting GPU5 ownership. These owners do not alter the protected G2 run.
