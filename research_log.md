@@ -3162,3 +3162,14 @@ latest observed training event is step 12,567/18,227 with finite loss
 the registered clean manifest SHA. No terminal receipt or final adapter exists
 yet, so no downstream bundle, held-out metric, G1 update, or joint optimizer
 update is claimed. The waiting owners remain untouched and recoverable.
+
+## 2026-10-21 — G2 progress evidence refreshed (step 12578)
+
+An authoritative event read at 05:04:48 +0800 records the protected formal G2
+Clean run at step 12,578/18,227 with finite loss 0.24055790062993765. The two
+distributed ranks are still the only active optimizer in this route on physical
+GPUs 3/5. The latest durable checkpoint remains `adapter-step012500.pt` with
+`latest_training_state.pt`; `final_receipt.json` and a terminal adapter are
+still absent. No G1, bundle export, held-out metric, YesTrack update, or native
+three-task update is claimed before that terminal receipt. This is evidence of
+continued healthy progress only; the prior historical result boundaries remain.
