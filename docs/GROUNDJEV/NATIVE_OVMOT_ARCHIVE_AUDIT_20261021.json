@@ -1,0 +1,27 @@
+{
+  "status": "NATIVE_TAO_TRAIN_ARCHIVE_NOT_FOUND_CROSS_DISK_AUDIT",
+  "timestamp": "2026-10-21 04:19:58 +0800",
+  "project_root": "/data2/user/LocateMOT",
+  "searched_roots": ["/data0/user", "/data1/user", "/data3/user"],
+  "search_contract": "read-only search for frame_candidates.jsonl and TAO/OVMOT candidate archives under registered data roots",
+  "native_tao_train_archive_found": false,
+  "annotation_files_found": [
+    "/data1/user/TAO-Amodal/annotations/train.json",
+    "/data1/user/TAO-Amodal/annotations/validation_with_freeform.json",
+    "/data3/user/TAO-Amodal/example_output/modal_prediction.json"
+  ],
+  "existing_native_archive": {
+    "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_runs/tao_base_novel63_full_v2_expression_none/native_candidates/frame_candidates.jsonl",
+    "frames": 40,
+    "split": "validation",
+    "eligible_for_train_join": false
+  },
+  "three_task_queue": {
+    "status": "PAUSED_FOR_NATIVE_OVMOT_ROWS",
+    "optimizer_updates": 0,
+    "teacher_only_fallback_used": false
+  },
+  "g2_step_at_audit": 12345,
+  "action": "preserve queue gate; do not relabel validation archive or launch teacher-only training",
+  "scientific_boundary": "No native TAO TRAIN OVMOT training claim is available from the current filesystem."
+}
