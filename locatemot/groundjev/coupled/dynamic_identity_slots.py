@@ -40,20 +40,31 @@ def build_dynamic_slots(
     allow_reject: bool = True,
 ) -> DynamicIdentitySlots:
     """Build options from current causal tracker state, never from GT."""
+    def track_id(track: object) -> int:
+        value = getattr(track, "track_id", None)
+        if value is None:
+            value = getattr(track, "persistent_track_id")
+        return int(value)
+
+    def lost_age(track: object) -> int:
+        value = getattr(track, "lost_age", None)
+        if value is None:
+            value = getattr(track, "lost_duration", 0)
+        return int(value or 0)
+
     def key(track: object):
-        return (int(getattr(track, "lost_age", 0) or 0) > 0,
-                int(getattr(track, "lost_age", 0) or 0),
-                int(getattr(track, "track_id")))
+        age = lost_age(track)
+        return (age > 0, age, track_id(track))
     slots: list[IdentitySlot] = []
     seen: set[int] = set()
     for track in sorted(list(tracks), key=key)[: int(max_existing)]:
-        track_id = int(getattr(track, "track_id"))
-        if track_id in seen:
+        current_id = track_id(track)
+        if current_id in seen:
             continue
-        seen.add(track_id)
-        lost_age = int(getattr(track, "lost_age", 0) or 0)
-        slots.append(IdentitySlot(str(track_id), track_id, lost_age,
-                                  "reactivate" if lost_age > 0 else "existing"))
+        seen.add(current_id)
+        age = lost_age(track)
+        slots.append(IdentitySlot(str(current_id), current_id, age,
+                                  "reactivate" if age > 0 else "existing"))
     if allow_new:
         slots.append(IdentitySlot(NEW_TOKEN, None, 0, "new"))
     if allow_no_match:
