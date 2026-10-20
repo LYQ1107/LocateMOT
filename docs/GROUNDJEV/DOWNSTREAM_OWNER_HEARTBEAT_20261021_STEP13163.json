@@ -1,0 +1,36 @@
+{
+  "observed_at": "2026-10-21 06:57:09 +0800",
+  "g2_step": 13163,
+  "g2_max_steps": 18227,
+  "final_receipt_present": false,
+  "live_owners": {
+    "g1_gpu5": {
+      "pid": 642505,
+      "status": "WAITING_G2_CLEAN_SUCCESS"
+    },
+    "g2_bundle_export": {
+      "pid": 634486,
+      "status": "WAITING_G2_CLEAN_SUCCESS"
+    },
+    "tao_native_shards": {
+      "pid": 634487,
+      "status": "WAITING_G2_CLEAN_SUCCESS"
+    },
+    "native_ovmot_join": {
+      "pid": 500654,
+      "status": "WAITING_COMPLETE_NATIVE_TAO_STREAM"
+    },
+    "three_task_onejev": {
+      "pid": 521109,
+      "status": "WAITING_NATIVE_OVMOT_MANIFEST"
+    },
+    "yestrack": {
+      "pid": 522307,
+      "status": "WAITING_GPU7_EXCLUSIVE"
+    },
+    "heldout": {
+      "status": "WAITING_G2_CLEAN_BUNDLE_AND_GPU7"
+    }
+  },
+  "policy": "No downstream optimizer or GPU launch is claimed before its exact dependency receipt; protected G2 is untouched."
+}
