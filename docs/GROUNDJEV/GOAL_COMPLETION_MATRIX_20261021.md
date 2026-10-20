@@ -4,7 +4,7 @@
 |---|---|---|
 | G0 MOT20-05 long export | Complete registered validation-half | 1,657 decoded frames; fresh native-source control retained. This is not a full MOT20 TEST claim. |
 | Independent MOT-only long training | Safely complete/no live owner | No live GroundJEV MOT-only optimizer process. Historical outputs remain preserved. |
-| Formal G2 Clean | Running | Latest authoritative event step 12,417/18,227, finite loss 0.1803909; `checkpoints/adapter-step012000.pt` and `checkpoints/latest_training_state.pt` are present; final receipt absent; GPUs 3/5 protected; linear remainder about 18.7 h from the latest measured rate. |
+| Formal G2 Clean | Running | Latest authoritative event step 12,442/18,227, finite loss 0.2287370; `checkpoints/adapter-step012000.pt` and `checkpoints/latest_training_state.pt` are present; final receipt absent; GPUs 3/5 protected; G1/bundle/held-out/YesTrack owners remain waiting. |
 | G1 GPU5 adaptation | Waiting | Registered owner waits for exact G2 terminal receipt; no real G1 optimizer update yet. |
 | G2 clean deployment bundle | Waiting | Registered CPU owner waits for terminal G2 and G1 receipts; no overwrite/export yet. |
 | Independent held-out MOT/RMOT/OVMOT | Waiting | MOT20-05, RMOT single/multi and TAO manifests preflighted; official metrics pending. |
