@@ -3521,3 +3521,13 @@ gradient norm 13.7076988 and peak memory 12.8289 GiB. Recent throughput is
 linear ETA around 23:09–23:11. No terminal receipt exists and no metric claim
 is made. Evidence:
 `docs/GROUNDJEV/G2_PROGRESS_SNAPSHOT_20261021_STEP12964.{json,md}`.
+
+## 2026-10-21 — downstream pre-launch contract preflight
+
+While G2 remained non-terminal at step 12970, imported every registered G1,
+G2 bundle, held-out, TAO, native join, three-task and YesTrack queue module;
+all targeted Python compilation checks passed. The dedicated runtime Python
+environments, GroundAnything base, service interpreter, exporter, video runner
+and Clean TRAIN manifest were present. No GPU, optimizer or model service was
+started. Evidence:
+`docs/GROUNDJEV/DOWNSTREAM_PRELAUNCH_PREFLIGHT_20261021.{json,md}`.
