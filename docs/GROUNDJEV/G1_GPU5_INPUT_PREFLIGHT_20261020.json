@@ -1,0 +1,23 @@
+{
+  "status": "G1_GPU5_TRACKING200_INPUT_AND_SCHEDULE_PREFLIGHT_PASS",
+  "timestamp": "2026-10-20T23:13:00+08:00",
+  "runtime_root": "/data2/user/LocateMOT_GroundJEV",
+  "physical_training_GPU": 7,
+  "corpus": {
+    "rows": 112,
+    "dense_rows": 32,
+    "referring_rows": 80,
+    "negative_referring_rows": 0,
+    "native_proposals": 884,
+    "native_aligned_regions": 628,
+    "pairs": 56,
+    "unique_images": 72,
+    "native_pair_contrastive_support": 24
+  },
+  "same_registered_pairs_as_gpu6_reference": true,
+  "same_schedule_as_gpu6_reference": true,
+  "identity_loss_coefficients": [0.1, 0.1],
+  "optimizer_updates": 0,
+  "metric_claim": false,
+  "scope": "CPU input and schedule contract only; no G1 optimizer launch or tracking result"
+}
