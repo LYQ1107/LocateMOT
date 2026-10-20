@@ -41,7 +41,11 @@ GROUND_SERVICE = RUNTIME_ROOT / "tools/groundjev/serve_groundanything.py"
 FEATURE_SERVICE = RUNTIME_ROOT / "tools/groundjev/serve_native_features.py"
 STREAM_SCRIPT = RUNTIME_ROOT / "tools/groundjev/stream_tao_native_candidates.py"
 MERGE_SCRIPT = PROJECT_ROOT / "scripts/groundjev/merge_tao_native_shards.py"
-MODEL = RUNTIME_ROOT / "models/GroundAnything-DLM"
+G2_EXPORT_SCRIPT = PROJECT_ROOT / "tools/groundjev/g2/export_g2_checkpoint.py"
+G2_NATIVE_MODEL = RUNTIME_ROOT / "models/GroundAnything-DLM-G2-CLEAN-NATIVE-TAO-V1"
+MODEL = G2_NATIVE_MODEL
+G2_NATIVE_EXPORT_RECEIPT = SHARD_ROOT / "g2_native_bundle_export_receipt.json"
+G2_ADAPTER = G2_ROOT / "adapter_projector_final.pt"
 BASE_PORT = 8300
 STATE_LOCK = threading.Lock()
 
@@ -201,6 +205,60 @@ def completed_shards(count: int) -> dict[str, dict]:
     return result
 
 
+def prepare_g2_native_bundle(state: dict, owner: Path) -> dict:
+    """Materialize a private G2 terminal bundle before any TAO inference.
+
+    The formal G2 trainer stores only the trainable adapter.  The TAO stream
+    therefore needs a merged deployment copy; using the published G0 bundle
+    here would make the resulting candidates impossible to attribute to G2.
+    This copy is separate from both the G2 clean deployment owner and the G1
+    bundle, and the source model is never overwritten.
+    """
+    existing = read_json(G2_NATIVE_EXPORT_RECEIPT)
+    if existing is not None:
+        if (existing.get("status") != "G2_NATIVE_MERGED_BUNDLE_EXPORTED"
+                or int(existing.get("step", -1)) != G2_STEPS
+                or existing.get("manifest_sha256") != G2_MANIFEST_SHA
+                or existing.get("output_bundle") != str(G2_NATIVE_MODEL.resolve())
+                or existing.get("native_tensor_count") != 569
+                or existing.get("source_bundle_overwritten")):
+            raise RuntimeError("existing G2 native TAO export receipt failed its contract")
+        if not (G2_NATIVE_MODEL / "model.safetensors").is_file():
+            raise RuntimeError("G2 native TAO receipt exists but its model bundle is missing")
+        state["g2_native_bundle"] = existing
+        save(owner, state)
+        return existing
+    if G2_NATIVE_MODEL.exists():
+        raise FileExistsError(f"refusing to overwrite partial G2 native TAO bundle: {G2_NATIVE_MODEL}")
+    if not G2_ADAPTER.is_file():
+        raise FileNotFoundError(f"G2 terminal adapter missing: {G2_ADAPTER}")
+    state.update(status="EXPORTING_G2_NATIVE_TAO_BUNDLE", current_stage="EXPORTING_G2_NATIVE_TAO_BUNDLE")
+    save(owner, state)
+    export_log = SHARD_ROOT / "G2_NATIVE_BUNDLE_EXPORT.log"
+    command = [
+        "python3", str(G2_EXPORT_SCRIPT),
+        "--adapter", str(G2_ADAPTER),
+        "--out", str(G2_NATIVE_MODEL),
+        "--receipt", str(G2_NATIVE_EXPORT_RECEIPT),
+        "--step", str(G2_STEPS),
+        "--manifest-sha256", G2_MANIFEST_SHA,
+    ]
+    with export_log.open("w", encoding="utf-8") as log:
+        result = subprocess.run(command, cwd=PROJECT_ROOT, stdout=log, stderr=subprocess.STDOUT, check=False)
+    if result.returncode != 0:
+        raise RuntimeError(f"G2 native TAO bundle export exited {result.returncode}; see {export_log}")
+    exported = read_json(G2_NATIVE_EXPORT_RECEIPT)
+    if (exported is None or exported.get("status") != "G2_NATIVE_MERGED_BUNDLE_EXPORTED"
+            or int(exported.get("step", -1)) != G2_STEPS
+            or exported.get("manifest_sha256") != G2_MANIFEST_SHA
+            or exported.get("native_tensor_count") != 569
+            or exported.get("source_bundle_overwritten")):
+        raise RuntimeError("G2 native TAO bundle export did not pass its terminal contract")
+    state["g2_native_bundle"] = exported
+    save(owner, state)
+    return exported
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--poll-seconds", type=int, default=60)
@@ -234,6 +292,8 @@ def main() -> int:
         "failed": None,
         "other_active_jobs_untouched": True,
         "native_ovmot_training_rows": False,
+        "model": str(G2_NATIVE_MODEL),
+        "g2_native_bundle_receipt": str(G2_NATIVE_EXPORT_RECEIPT),
     }
     save(owner, state)
     active: dict[int, tuple[int, Future]] = {}
@@ -261,6 +321,8 @@ def main() -> int:
             state["completed_shards"] = done
             if g2 != "complete":
                 state.update(status="WAITING_G2_CLEAN_SUCCESS", current_stage="WAITING_G2_CLEAN_SUCCESS")
+            elif g2 == "complete" and "g2_native_bundle" not in state:
+                prepare_g2_native_bundle(state, owner)
             elif len(done) == count and not active:
                 state.update(status="MERGING_TAO_NATIVE_SHARDS", current_stage="MERGING_TAO_NATIVE_SHARDS")
                 save(owner, state)

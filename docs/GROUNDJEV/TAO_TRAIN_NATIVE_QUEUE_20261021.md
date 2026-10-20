@@ -2,7 +2,17 @@
 
 The resumable owner `scripts/groundjev/queue_tao_native_train_shards.py` is now running in `WAITING_G2_CLEAN_SUCCESS`. It will not start until the exact G2 Clean terminal receipt exists and it sees an idle physical GPU. It is restricted to GPU4 and GPU6; GPU3/5 remain reserved for G2/G1 and GPU7 remains reserved for held-out/YesTrack. A GPU with any compute application is treated as unavailable, so existing foreign jobs are preserved.
 
-For each of the eight registered shards, the owner starts an isolated GroundAnything service pair with unique local ports, streams all 1,203 vocabulary classes with the explicit TRAIN gate, records a terminal receipt, and stops the owned services. After all eight receipts pass, it invokes the strict merge gate. The owner never relabels validation data and never sets `native_ovmot_training_rows=true` before the complete native stream and offline TAO TRAIN join exist.
+After the exact G2 terminal receipt, the owner first merges the terminal G2
+adapter into the private bundle
+`models/GroundAnything-DLM-G2-CLEAN-NATIVE-TAO-V1`. This bundle is separate
+from G0, the G1 bundle and the ordinary G2 deployment bundle; the published
+G0 weights are never used to label this stream. For each of the eight
+registered shards, the owner then starts an isolated GroundAnything service
+pair with unique local ports, streams all 1,203 vocabulary classes with the
+explicit TRAIN gate, records a terminal receipt, and stops the owned services.
+After all eight receipts pass, it invokes the strict merge gate. The owner
+never relabels validation data and never sets `native_ovmot_training_rows=true`
+before the complete native stream and offline TAO TRAIN join exist.
 
 The stream entrypoint now accepts `--grounding-url` and `--native-feature-url`, while retaining the old 8104/8112 defaults for existing validation controls. The corresponding runtime copy under `/data2/user/LocateMOT_GroundJEV` was synchronized so the queued services and stream use the same TRAIN contract.
 

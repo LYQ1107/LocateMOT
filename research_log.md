@@ -1,5 +1,5 @@
-Warning: truncated output (original token count: 119939)
-Total output lines: 3075
+Warning: truncated output (original token count: 120160)
+Total output lines: 3089
 
 # LocateMOT Research Log
 
@@ -2192,9 +2192,7 @@ per-queryrejection contributesempty for thatquery only, concatenates remaining
 original-parserboxes, noNMS/topK/GTselection; matches existing scored-query
 control policy, not old whole-frame-rejection scores. One blocking owner waits
 currentGPU5memoryjobexit beforeowning temporaryDLM/feature services; stops
-bothcompletegroups befo…19939 tokens truncated…照入口不改。先真实旧215对象像素/问题对齐及175新类代表图、CPU processor张量和官方全量token计划核验。仅准备未来平衡三任务混合的类别组件，不启动类别单任务optimizer；256MiB导出cap、合计26359878413<25GiB。
-
-2026-10-16：175Base类别组件已实际生成并完成CPU原生全量规划session25047 exit0，52978对象/105956Root+Leaf问题、500trainvideo，1203输入类保留。gzip文本25820145bytes对比展开1005240705，17375按需裁剪recipe无PNG/ROI档案；18274图含1251零Base完整登记不造负标签。实际215旧对象/62原PNG像素完全相同，175新类代表问题/像素等同原NativeCategoryHead；768x216/432×Root/Leaf四例input_ids/mask/mmtypes/pixel_values/grid全torch.equal且实际计数token一致。全量105956target逐一对应源GT图像/类别/ROI且两种family各52978，同annotation集合。官方CPUplan0丢弃、max4238、总315781843计数tokens，26489步只是4row下假想全类别epoch，不是训练。Textrows仍一次载RAM，CPU峰3746652160bytes；原cached native reporter打印1s只含复用后的报告时间，绝不当tokenize全程速度。新独立IO入口仅进程内gzip与cropSheet读取、checkpoint协议记版本，现有200/600对照正常/FP32完整保存、其他队列未动；此组件将供未来三任务平衡课程，未发新GPU训练、不称大规模联合训练完成。
+bothcompletegroups befo…20160 tokens truncated…annotation集合。官方CPUplan0丢弃、max4238、总315781843计数tokens，26489步只是4row下假想全类别epoch，不是训练。Textrows仍一次载RAM，CPU峰3746652160bytes；原cached native reporter打印1s只含复用后的报告时间，绝不当tokenize全程速度。新独立IO入口仅进程内gzip与cropSheet读取、checkpoint协议记版本，现有200/600对照正常/FP32完整保存、其他队列未动；此组件将供未来三任务平衡课程，未发新GPU训练、不称大规模联合训练完成。
 
 2026-10-16表达覆盖扩展计划：4350合法fit表达投影现有72真实原生帧，2213条至少有一个正目标、2137条没有；34800 contexts中15446正/19354空。直接平铺重复存在语言/正负覆盖偏斜，不能称图像规模扩大。复用原OneJev瞬时membership/empty-presence问题和既有裁剪PNG，扩展表达文本与严格train GT IoU>=.5标签，全部表达/空帧/原8拒绝帧保留；逐表达写覆盖供未来平衡课程。先与真实native build_request的所有72帧输入/裁剪像素一致，再逐条复现旧346监督行，完成后全量CPU token规划。不新增GPU/feature/PNG，不改运行中600训练，不称actor history或运动表达可观测。64MiB导出cap，保守合计26426987277<25GiB。
 
@@ -2825,3 +2823,17 @@ retaining the historical spelling for old receipts. No data, checkpoint, or
 running process was changed. Evidence:
 `docs/GROUNDJEV/TAO_NATIVE_JOIN_QUEUE_20261021.{json,md}` and
 `docs/GROUNDJEV/REAL_THREE_TASK_NATIVE_QUEUE_20261021.{json,md}`.
+
+## 2026-10-21 — TAO native owner corrected to use a terminal G2 bundle
+
+The TAO TRAIN shard owner was audited before its first GPU launch. Its
+original model constant pointed at the published G0 bundle, which would have
+made a later native candidate archive impossible to attribute to G2. The owner
+now waits for the exact G2 receipt, merges `adapter_projector_final.pt` into
+the private `GroundAnything-DLM-G2-CLEAN-NATIVE-TAO-V1` bundle, validates the
+569-tensor/export/manifest contract, and only then starts shard services. The
+private bundle is never mixed with or written over G0, G1, or the ordinary G2
+deployment bundle. The owner process had not started a shard, so it was
+restarted with the corrected code while remaining in its G2 wait state.
+Evidence: `scripts/groundjev/queue_tao_native_train_shards.py` and
+`docs/GROUNDJEV/TAO_TRAIN_NATIVE_QUEUE_20261021.{json,md}`.
