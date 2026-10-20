@@ -1,0 +1,31 @@
+{
+  "status": "G2_LIVE_EVENT_SANITY_PASS",
+  "run_root": "/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final",
+  "event_count": 10746,
+  "first_step": 1,
+  "last_step": 10746,
+  "target_steps": 18227,
+  "strictly_increasing_steps": true,
+  "finite_loss_gradient_memory_learning_rates": true,
+  "micro_batches_all_events": 8,
+  "samples_global_all_events": 16,
+  "nonfinite_records": 0,
+  "latest_event": {
+    "step": 10746,
+    "epoch": 0,
+    "position": 85968,
+    "micro_batches": 8,
+    "samples_global": 16,
+    "effective_tokens_global": 10916,
+    "token_budget_per_device": 16384,
+    "loss": 0.2536031506024301,
+    "gradient_norm": 8.119701385498047,
+    "peak_memory_gib": 12.828890800476074,
+    "lr_projector": 8.847711811805481e-07,
+    "lr_lora": 3.096699134131918e-06,
+    "checkpoint": null,
+    "time": "2026-10-20 23:05:55 +0800"
+  },
+  "final_receipt_present": false,
+  "claim_boundary": "live training integrity only; no evaluation metric claim"
+}
