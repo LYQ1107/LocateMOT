@@ -4,6 +4,7 @@ import unittest
 from pathlib import Path
 
 from tools.groundjev.coupled.build_joint_identity_corpus import build, normalize_row
+from tools.groundjev.coupled.audit_joint_corpus_overlap import audit
 
 
 class JointIdentityCorpusContract(unittest.TestCase):
@@ -76,6 +77,24 @@ class JointIdentityCorpusContract(unittest.TestCase):
             self.assertFalse(receipt["native_ovmot_training_rows"])
             self.assertEqual(json.loads(output.read_text())["task"], "ovmot")
             self.assertTrue(output.with_suffix(".jsonl.manifest.json").is_file())
+
+    def test_overlap_audit_marks_train_scope(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            joint = root / "joint.jsonl"
+            g2 = root / "g2.jsonl"
+            row = self._row()
+            row["video_id"] = "MOT17-02-FRCNN"
+            joint.write_text(json.dumps({
+                "id": "j1", "task": "mot", "current_image": "/tmp/frame.jpg"
+            }) + "\n")
+            g2.write_text(json.dumps({
+                "source": "MOT17:train:clean_v2",
+                "media": [{"path": "/tmp/frame.jpg"}],
+            }) + "\n")
+            receipt = audit(joint, g2)
+            self.assertEqual(receipt["exact_image_overlap_rows"], 1)
+            self.assertFalse(receipt["independent_generalization_claim_allowed"])
 
 
 if __name__ == "__main__":
