@@ -3629,3 +3629,8 @@ At 06:57:09 +0800 the protected G2 stream was at 13,163/18,227 with no terminal 
 ## 2026-10-21 — G2 terminal finalization contract audit
 
 At event step 13,167/18,227, the trainer and bundle owner were statically audited. The trainer writes `adapter_projector_final.pt` and `final_receipt.json` only after the terminal step; the receipt must carry status `G2_EXACT_COVERAGE_TRAINING_COMPLETE`, step 18,227 and the registered Clean TRAIN manifest SHA. The bundle owner rejects every missing or mismatched terminal condition and refuses to overwrite the source bundle. The runtime remains `G2_FORMAL_TRAINING_RUNNING` with no receipt; no GPU, checkpoint or model was modified. Evidence: `docs/GROUNDJEV/G2_FINALIZATION_CONTRACT_AUDIT_20261021.{json,md}`.
+
+
+## 2026-10-21 — G2 Clean progress at step 13228
+
+The protected G2 event stream advanced to 13,228/18,227 at 07:09:38 +0800 while the single blocking observer waited. The latest loss (`0.1146453447`), gradient norm (`9.1259632`) and peak memory (`12.828900 GiB`) are finite. The trainer remains live; the final receipt and terminal adapter are absent. This confirms the quiet wait was not a stalled run. At the measured ~5.2 steps/minute, the operational remainder is about 16 hours; this is not a performance claim. Evidence: `docs/GROUNDJEV/G2_PROGRESS_LIVE_20261021_STEP13228.{json,md}`.
