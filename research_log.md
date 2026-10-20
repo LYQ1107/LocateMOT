@@ -1450,3 +1450,11 @@ are kept; unrelated GroundJEV worktree changes were not staged or overwritten.
 - The historical four-GPU run was real and reached log step 3,525, but its owner process is gone, it has no terminal `done` record, and its last atomic FP32/Adam/scheduler/all-rank-RNG state is step 3,000. Step 3,525 is retained as non-durable evidence; the recovery point is step 3,000.
 - Added `scripts/groundjev/queue_onejev_full_joint_resume.py`. It waits for a valid G2 final receipt, successful GPU5 G1 adaptation/controls, and exclusive free GPUs 4/5/6/7 before resuming the exact four-rank protocol. It never overwrites the historical run and records missing receipts or nonzero exits as failures. No feature cache is created.
 - This queue is not a performance claim; final training and held-out MOT/RMOT/OVMOT receipts remain required.
+
+
+## 2026-10-20 — active execution audit after OneJev recovery queue
+
+- Live handles confirm G2 Clean remains on the protected two-rank GPU3/GPU5 contract at event step 10588/18227; no final receipt exists yet.
+- The GPU5 G1 queue remains `WAITING_G2_CLEAN_SUCCESS`. The full-source OneJev recovery queue remains live at `WAITING_G2_G1_AND_EXCLUSIVE_GPU_SET`, with the durable resume point fixed at step3000.
+- G0 MOT20-05 export is complete; J1's registered held-out gate is complete but its zero/empty and decoder-rejection outputs remain failure evidence.
+- No live independent MOT-only optimizer process is present. Added `docs/GROUNDJEV/ACTIVE_GOAL_STATUS_20261020.{md,json}` to make these boundaries explicit; overall completion is not claimed.
