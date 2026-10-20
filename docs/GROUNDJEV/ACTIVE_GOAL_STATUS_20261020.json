@@ -1,9 +1,9 @@
 {
   "project_root": "/data2/user/LocateMOT",
-  "timestamp": "2026-10-20T23:02:05+08:00",
+  "timestamp": "2026-10-20T23:05:55+08:00",
   "g2": {
     "status": "G2_FORMAL_TRAINING_RUNNING",
-    "event_step": 10726,
+    "event_step": 10746,
     "target_steps": 18227,
     "physical_gpus": [
       3,
