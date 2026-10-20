@@ -17,6 +17,8 @@ sys.path.insert(0,str(ROOT))
 def main():
     parser=argparse.ArgumentParser();parser.add_argument('--manifest',type=Path,required=True)
     parser.add_argument('--out',type=Path,required=True)
+    parser.add_argument('--grounding-url',default='http://127.0.0.1:8104/v1')
+    parser.add_argument('--native-feature-url',default='http://127.0.0.1:8112')
     parser.add_argument('--allow-training-scope',action='store_true',
                         help='required when the manifest explicitly registers TAO TRAIN export')
     args=parser.parse_args()
@@ -31,8 +33,8 @@ def main():
     from PIL import Image
     from locatemot.groundjev.perception import GroundAnythingAdapter, GroundingProtocolError
     from locatemot.groundjev.feature_client import NativeFeatureClient
-    frontend=GroundAnythingAdapter('http://127.0.0.1:8104/v1',parser_policy='official_scoring',decoder_policy='tracking_dense')
-    features=NativeFeatureClient('http://127.0.0.1:8112')
+    frontend=GroundAnythingAdapter(args.grounding_url,parser_policy='official_scoring',decoder_policy='tracking_dense')
+    features=NativeFeatureClient(args.native_feature_url)
     start=time.perf_counter();counts={'frames':0,'native_query_requests':0,'scored_queries':0,'rejected_queries':0,'candidates':0}
     with (args.out/'frame_candidates.jsonl').open('w') as log:
         for frame,path in zip(manifest['frame_numbers'],manifest['images']):
