@@ -2,10 +2,11 @@
 """Queue a corrected MOT/RMOT/OVMOT OneJev comparison after protected gates.
 
 This is a new run and never resumes or overwrites the paused historical
-four-GPU source course.  It uses the audited 131,990-row manifest and keeps
-the OVMOT Base teacher-control boundary explicit.  The owner waits for the
-terminal G2/G1/bundle/held-out gates and an exclusive four-GPU window before
-launching one registered distributed epoch.
+four-GPU source course.  It uses the audited 131,990-row manifest, but will
+not launch an optimizer while the manifest contains only OVMOT Base
+teacher-control rows.  The owner waits for native OVMOT training rows in
+addition to the terminal G2/G1/bundle/held-out gates and an exclusive
+four-GPU window before launching one registered distributed epoch.
 """
 from __future__ import annotations
 
@@ -82,13 +83,22 @@ def manifest_status() -> tuple[str, dict | None]:
     manifest = read_json(MANIFEST)
     if receipt is None or manifest is None:
         return "failed", {"reason": "missing_corrected_manifest"}
+    native_rows = bool(manifest.get("native_ovmot_training_rows"))
+    provenance = manifest.get("candidate_provenance") or {}
+    native_rows = native_rows or bool(provenance.get("native_ovmot_training_rows"))
     if (receipt.get("status") != "REAL_THREE_TASK_COMPACT_SOURCE_MANIFEST_PREPARED_NOT_TRAINED"
             or receipt.get("manifest_sha256") != MANIFEST_SHA
             or int(receipt.get("rows", -1)) != ROWS
             or int(receipt.get("optimizer_updates", -1)) != 0
-            or receipt.get("gpu_launched") is not False
-            or manifest.get("native_ovmot_training_rows") is True):
+            or receipt.get("gpu_launched") is not False):
         return "failed", {"reason": "manifest_receipt_contract_mismatch", "receipt": receipt}
+    if (not native_rows) or manifest.get("ovmot_training_mode") != "native":
+        return "waiting_native_ovmot", {
+            "reason": "native_ovmot_rows_required_before_optimizer_launch",
+            "ovmot_training_mode": manifest.get("ovmot_training_mode"),
+            "native_ovmot_rows_pending": manifest.get("native_ovmot_rows_pending"),
+            "candidate_provenance_native_ovmot_training_rows": provenance.get("native_ovmot_training_rows"),
+        }
     return "complete", receipt
 
 
@@ -141,6 +151,16 @@ def main() -> int:
     try:
         while True:
             m, me = manifest_status()
+            if m == "waiting_native_ovmot":
+                state.update(
+                    status="WAITING_NATIVE_OVMOT_ROWS",
+                    current_stage="WAITING_NATIVE_OVMOT_ROWS",
+                    native_ovmot_rows_pending=True,
+                    manifest_gate=me,
+                )
+                save(owner, state)
+                time.sleep(args.poll_seconds)
+                continue
             if m == "failed":
                 state.update(status="REAL_THREE_TASK_JOINT_MANIFEST_FAILED", current_stage="FAILED", failed=me)
                 save(owner, state); return 2

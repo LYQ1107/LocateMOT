@@ -1,0 +1,24 @@
+{
+  "status": "REAL_THREE_TASK_QUEUE_PAUSED_NATIVE_OVMOT_REQUIRED",
+  "project_root": "/data2/user/LocateMOT",
+  "manifest": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/real_three_task_joint_v2_compact/train.sources.json",
+  "manifest_sha256": "cbdafce9e5a587c00b053ee58ea6435db4221d38036ee7574fe8a3f0f854e54c",
+  "registered_rows": 131990,
+  "registered_task_rows": {
+    "mot_identity": 131214,
+    "rmot_query_membership": 330,
+    "rmot_empty_query_presence": 16,
+    "ovmot_category_group_teacher_control": 215,
+    "ovmot_category_leaf_teacher_control": 215
+  },
+  "native_ovmot_training_rows": false,
+  "ovmot_training_mode": "base_teacher_control",
+  "queue_state": "PAUSED_FOR_NATIVE_OVMOT_ROWS",
+  "queue_optimizer_updates": 0,
+  "queue_gpu_launch": false,
+  "old_queue_preserved": true,
+  "pause_reason": "The registered OVMOT rows use the Base category teacher-control crop source. The native TAO candidate archive is validation-only and contains no category labels, so it cannot be promoted to native OVMOT training without a legal TAO TRAIN candidate export and annotation join.",
+  "guard": "queue_real_three_task_joint_v2_compact.manifest_status returns waiting_native_ovmot and refuses optimizer launch unless the manifest declares native_ovmot_training_rows=true and ovmot_training_mode=native",
+  "resume_entrypoint": "scripts/groundjev/queue_real_three_task_joint_v2_compact.py",
+  "scientific_boundary": "No three-task optimizer result is claimed; MOT/RMOT registration is retained, OVMOT native training remains pending."
+}
