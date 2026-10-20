@@ -1,0 +1,63 @@
+{
+  "schema": "groundjev_status_snapshot_v1",
+  "observed_at_utc": "2026-10-20T15:27:19.900919+00:00",
+  "project_root": "/data2/user/LocateMOT",
+  "local_branch": "codex/groundjev-full-evidence-20261020",
+  "scope": "GroundJEV/TrackJEV only; external TTA/shift-RMOT processes excluded",
+  "goal_status": "active",
+  "g0_mot20_05": {
+    "status": "OFFICIAL_SCOPE_EVALUATION_COMPLETE",
+    "frames": 1657,
+    "metrics": {
+      "HOTA": 0.07334696070115383,
+      "DetA": 0.09026982781621751,
+      "AssA": 0.05967427073481851,
+      "IDF1": 0.059598451365333885,
+      "IDSW": 1933,
+      "FP": 417,
+      "FN": 288297
+    },
+    "end_to_end_fps": 0.061369784416757965,
+    "receipt": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/natural_memory/mot20_05_full_validation_gpu5_v1/fresh_compact_gated3/official_metrics.json",
+    "interpretation": "G0 control scope; not a G2 Clean held-out claim"
+  },
+  "g2_clean": {
+    "status": "G2_FORMAL_TRAINING_RUNNING",
+    "final_receipt_present": false,
+    "durable_checkpoint_step": 10500,
+    "durable_checkpoint": "/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final/checkpoints/latest_training_state.pt",
+    "target_steps": 18227
+  },
+  "downstream_queues": {
+    "g1_gpu5_adaptation": {
+      "status": "WAITING_G2_CLEAN_SUCCESS",
+      "failed": null
+    },
+    "g2_bundle_export": {
+      "status": "WAITING_G2_AND_G1_TERMINAL",
+      "failed": null
+    },
+    "independent_heldout": {
+      "status": "WAITING_G2_CLEAN_BUNDLE_AND_GPU7",
+      "failed": null
+    },
+    "onejev_joint": {
+      "status": "WAITING_G2_G1_AND_EXCLUSIVE_GPU_SET",
+      "resume_step": 3000,
+      "failed": null
+    }
+  },
+  "heldout_preflight": "passed; metrics not yet produced",
+  "trackjev_runtime_preflight": "passed; compileall and self-tests passed; not a tracking quality claim",
+  "github_evidence_branch": "codex/groundjev-independent-heldout-complete-20261020",
+  "completion_audit": {
+    "g0_long_export": "complete",
+    "mot_only_long_training": "safe_no_live_owner",
+    "g2_clean_training": "incomplete_running",
+    "g1_gpu5": "waiting",
+    "g2_bundle": "waiting",
+    "independent_heldout": "waiting",
+    "onejev_joint": "waiting",
+    "overall_goal_complete": false
+  }
+}
