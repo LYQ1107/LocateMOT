@@ -1,0 +1,79 @@
+{
+  "status": "GROUNDJEV_RESOURCE_GATE_AUDIT_COMPLETE",
+  "timestamp": "2026-10-20T23:10:00+08:00",
+  "protected_g2_physical_gpus": [
+    3,
+    5
+  ],
+  "onejev_requested_physical_gpus": [
+    4,
+    5,
+    6,
+    7
+  ],
+  "onejev_exclusive_gate_passed": false,
+  "gate_rule": "no compute PIDs and at least 32768 MiB free on every requested GPU",
+  "requested_gpu_snapshot": [
+    {
+      "physical_gpu": 4,
+      "memory_free_MiB": 58549,
+      "memory_total_MiB": 81920,
+      "compute_pids": [
+        {
+          "pid": 2594782,
+          "process_name": ".venv/bin/python",
+          "user": "ljh",
+          "used_gpu_memory_MiB": 22596
+        }
+      ]
+    },
+    {
+      "physical_gpu": 5,
+      "memory_free_MiB": 61833,
+      "memory_total_MiB": 81920,
+      "compute_pids": [
+        {
+          "pid": 1799469,
+          "process_name": "/data2/user/LocateMOT_GroundJEV/.venv-onejev-py310/bin/python",
+          "user": "lyq",
+          "used_gpu_memory_MiB": 19312
+        }
+      ]
+    },
+    {
+      "physical_gpu": 6,
+      "memory_free_MiB": 64919,
+      "memory_total_MiB": 81920,
+      "compute_pids": [
+        {
+          "pid": 4004560,
+          "process_name": "python",
+          "user": "ljh",
+          "used_gpu_memory_MiB": 16226
+        }
+      ]
+    },
+    {
+      "physical_gpu": 7,
+      "memory_free_MiB": 59370,
+      "memory_total_MiB": 81920,
+      "compute_pids": [
+        {
+          "pid": 4008192,
+          "process_name": "python",
+          "user": "ljh",
+          "used_gpu_memory_MiB": 16124
+        },
+        {
+          "pid": 4058728,
+          "process_name": "python3",
+          "user": "lyq",
+          "used_gpu_memory_MiB": 5646
+        }
+      ]
+    }
+  ],
+  "action_taken": "none; all existing jobs preserved",
+  "foreign_jobs_stopped": false,
+  "claim_boundary": "resource snapshot only; no training or metric claim"
+}
