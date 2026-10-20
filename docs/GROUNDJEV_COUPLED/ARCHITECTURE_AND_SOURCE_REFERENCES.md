@@ -16,10 +16,14 @@ actions. `CoupledGroundJEVRuntime` performs one-to-one assignment, safe
 lifecycle transitions and assignment-conditioned memory writes. There is no
 second VLM instance in this path.
 
-The current Phase A bridge has real G2 visual/region evidence but does not yet
-return the native DLM language hidden state or inject memory tokens into the
-GroundAnything decoder. Those are explicit next gates, not silently inferred
-from the visual smoke.
+The bridge now also has a native clean-DLM provider path.  The bounded Phase-C
+smoke loaded a protected G2 Clean adapter, ran one clean visual-plus-language
+forward, returned both pooled region tokens and same-frame clean context, and
+fed that context to the typed readout without a second VLM.  The opt-in causal
+memory input contract is implemented and has baseline-equivalence and
+gradient-path tests.  Full SGLang integration and a trained decoder that uses
+memory before GroundAnything bbox generation remain explicit next gates; they
+are not inferred from the native context smoke.
 
 ## Sources actually inspected
 
