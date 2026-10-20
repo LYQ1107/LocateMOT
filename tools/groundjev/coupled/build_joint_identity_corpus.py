@@ -183,6 +183,13 @@ def _is_teacher_source(source: str) -> bool:
     return any(token in lower for token in ("teacher", "gt_", "ground_truth", "crop"))
 
 
+def _is_native_candidate_row(row: Mapping[str, Any]) -> bool:
+    provenance = row.get("source_provenance") if isinstance(row.get("source_provenance"), Mapping) else {}
+    return bool(row.get("native_candidates")) and not _is_teacher_source(str(row["proposal_source"])) and not bool(
+        provenance.get("gt_in_model_input", False)
+    )
+
+
 def build(input_paths: Iterable[Path], *, output: Path, limit_per_source: int | None = None,
           require_native_candidates: bool = False) -> dict[str, Any]:
     input_paths = [Path(path).resolve() for path in input_paths]
@@ -195,7 +202,7 @@ def build(input_paths: Iterable[Path], *, output: Path, limit_per_source: int | 
                 break
             normalized = normalize_row(raw, source_path=path, source_row=line_number)
             source = str(normalized["proposal_source"])
-            if require_native_candidates and (not normalized["native_candidates"] or _is_teacher_source(source)):
+            if require_native_candidates and not _is_native_candidate_row(normalized):
                 raise ValueError(
                     f"{path}:{line_number}: row is not a native candidate row ({source})"
                 )
@@ -210,8 +217,7 @@ def build(input_paths: Iterable[Path], *, output: Path, limit_per_source: int | 
             handle.write(json.dumps(row, ensure_ascii=False, separators=(",", ":")) + "\n")
     tasks = Counter(row["task"] for row in all_rows)
     sources = Counter(row["proposal_source"] for row in all_rows)
-    native_rows = sum(bool(row["native_candidates"]) and not _is_teacher_source(row["proposal_source"])
-                      for row in all_rows)
+    native_rows = sum(_is_native_candidate_row(row) for row in all_rows)
     receipt = {
         "schema_version": SCHEMA_VERSION,
         "output": str(output.resolve()),
@@ -224,7 +230,7 @@ def build(input_paths: Iterable[Path], *, output: Path, limit_per_source: int | 
         "native_ovmot_training_rows": bool(
             tasks.get("ovmot", 0)
             and all(row["task"] != "ovmot" or (
-                bool(row["native_candidates"]) and not _is_teacher_source(row["proposal_source"])
+                _is_native_candidate_row(row)
             ) for row in all_rows)
         ),
         "input_files": input_receipts,
