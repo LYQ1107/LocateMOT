@@ -9,7 +9,7 @@ This bounded pilot used the G2 base checkpoint with model SHA `3cf09355cde8cf487
 | Train admit accuracy | 0.1022 | 0.9247 |
 | Temporal-dev admit accuracy | 0.1331 | 0.9153 |
 
-The real replay used the trained readout without teacher memory on the eight development frames, made one-to-one assignments and retained three predicted memory tracks. The replay is recorded in the JSON receipt. It is a causal engineering replay only: there is no HOTA/IDF1 claim, no independent-video claim, and no claim that language hidden-state coupling or identity-conditioned Grounding has been solved.
+The saved readout checkpoint is `adapter-step000192.pt` (SHA256 `c96f27c9c8de5a01a36036c78c4e4a36c467bb96a0ca5f7d0eee27d93e32c904`). The real replay used the trained readout without teacher memory on the eight development frames, made one-to-one assignments and retained three predicted memory tracks. The replay is recorded in the JSON receipt. It is a causal engineering replay only: there is no HOTA/IDF1 claim, no independent-video claim, and no claim that language hidden-state coupling or identity-conditioned Grounding has been solved.
 
 Training labels used legal MOT GT only for causal supervision; previous-frame region tokens formed teacher-forced memory slots. This teacher-forced condition is explicit and must be removed or compared against learned memory in the next experiment. The proposal source was native GroundAnything output, so this pilot did not replace GroundAnything candidates with all-GT boxes.
 

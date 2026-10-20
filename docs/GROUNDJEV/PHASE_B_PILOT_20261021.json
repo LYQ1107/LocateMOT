@@ -143,5 +143,7 @@
     ]
   },
   "elapsed_seconds": 29.464746707002632,
-  "scientific_claim": "bounded training/development control; no independent generalization or HOTA claim"
+  "scientific_claim": "bounded training/development control; no independent generalization or HOTA claim",
+  "pilot_checkpoint": "/data2/user/LocateMOT/outputs/groundjev/coupled/phase_b_choice_yes_pilot_20261021/adapter-step000192.pt",
+  "pilot_checkpoint_sha256": "c96f27c9c8de5a01a36036c78c4e4a36c467bb96a0ca5f7d0eee27d93e32c904"
 }
