@@ -1,0 +1,41 @@
+{
+  "status": "QUEUED_WAITING_G2_CLEAN_BUNDLE_AND_GPU7",
+  "owner_state": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g2_clean_independent_gpu7_v1/owner_state.json",
+  "owner_script": "scripts/groundjev/queue_g2_independent_heldout_eval.py",
+  "scope_registration_script": "scripts/groundjev/prepare_independent_ovmot_scope.py",
+  "same_input_parser_decoder_tracker_scorer": true,
+  "physical_gpu": 7,
+  "scopes": [
+    {
+      "name": "rmot_single0007",
+      "task": "rmot",
+      "frames": 800,
+      "manifest": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_pilot_data/rmot_single_empty_full.json",
+      "exact_train_image_overlap": 0
+    },
+    {
+      "name": "rmot_multi0007",
+      "task": "rmot",
+      "frames": 800,
+      "manifest": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_pilot_data/rmot_multi_empty_full.json",
+      "exact_train_image_overlap": 0
+    },
+    {
+      "name": "ovmot_tao105",
+      "task": "ovmot",
+      "frames": 40,
+      "video_id": 105,
+      "sequence": "val/HACS/Making_a_sandwich_v_6RjriKVIkR4_scene_0_0-4638",
+      "manifest": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_pilot_data/ovmot_tao_independent105_full.json",
+      "base_categories": ["baby", "bowl", "bun"],
+      "novel_categories": ["shaker"],
+      "exact_train_image_overlap": 0
+    }
+  ],
+  "g2_dependency": {
+    "train_steps": 18227,
+    "manifest_sha256": "f682519a1cf9204ca76ea75a56dad36dbdeac26259f202551ab9f66fefd06e71"
+  },
+  "onejev_resume_gate": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/full_joint_source_epoch1_resume_queue_v2/owner_state.json",
+  "final_metrics_claimed": false
+}
