@@ -1,0 +1,35 @@
+{
+  "schema": "groundjev.g2.throughput_estimate.v1",
+  "observed_at": "2026-10-21T06:39:56.369618+08:00",
+  "run_identity": "G2-CLEAN-V2",
+  "status": "RUNNING",
+  "step": 13072,
+  "max_steps": 18227,
+  "event_time": "2026-10-21T06:39:45+08:00",
+  "windows": {
+    "100": {
+      "start_step": 12973,
+      "end_step": 13072,
+      "elapsed_minutes": 19.15,
+      "steps_per_minute": 5.169712793733682,
+      "remaining_hours": 16.619234006734004
+    },
+    "500": {
+      "start_step": 12573,
+      "end_step": 13072,
+      "elapsed_minutes": 95.9,
+      "steps_per_minute": 5.203336809176225,
+      "remaining_hours": 16.511840347361392
+    },
+    "1000": {
+      "start_step": 12073,
+      "end_step": 13072,
+      "elapsed_minutes": 192.11666666666667,
+      "steps_per_minute": 5.199965298863537,
+      "remaining_hours": 16.522546157268383
+    }
+  },
+  "estimate_boundary": "Operational completion estimate from recent training event cadence; no metric or model-quality claim.",
+  "protected_run": true,
+  "downstream_gate": "G1, TAO/OVMOT, three-task OneJev and independent held-out evaluation remain gated on final G2 receipt."
+}
