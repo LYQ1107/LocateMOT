@@ -3604,3 +3604,8 @@ The protected two-rank G2 Clean run advanced to step 13065/18227 while both rank
 ## 2026-10-21 — G2 throughput estimate at step 13072
 
 Using actual event timestamps from the protected two-rank G2 Clean run, the recent 100/500/1000-event windows give approximately 5.20 steps/min and 16.52 hours to step 18227. This is an operational ETA only; it is not a metric or quality claim. Evidence: `docs/GROUNDJEV/G2_THROUGHPUT_ESTIMATE_20261021_STEP13072.{json,md}`.
+
+
+## 2026-10-21 — G2 adapter checkpoint step 13000 audited at event step 13076
+
+The protected G2 Clean run advanced to event step 13076/18227 and produced the durable `adapter-step013000.pt` checkpoint. Its SHA-256 is `08cf28930eced61b2086785494728221e113ac75cd7dc6aefe02ab1bc2ebfe59`; the latest full recovery state remains step 13000 with SHA-256 `4a79cbf3e64e69ffc56aaf964754d0209382b87c2124d46f13506325ca52fd22`. The final receipt is absent, so downstream gates remain closed. This is checkpoint and training-health evidence only. Evidence: `docs/GROUNDJEV/G2_CHECKPOINT_PROGRESS_20261021_STEP13076.{json,md}`.
