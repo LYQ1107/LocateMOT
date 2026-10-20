@@ -1,0 +1,62 @@
+{
+  "schema": "groundjev_status_snapshot_v1",
+  "observed_at_utc": "2026-10-20T15:28:26.737292+00:00",
+  "scope": "GroundJEV/TrackJEV only; external TTA/shift-RMOT processes excluded",
+  "g2_clean": {
+    "status": "G2_FORMAL_TRAINING_RUNNING",
+    "target_steps": 18227,
+    "latest_event": {
+      "step": 10862,
+      "epoch": 0,
+      "position": 86896,
+      "micro_batches": 8,
+      "samples_global": 16,
+      "effective_tokens_global": 10970,
+      "token_budget_per_device": 16384,
+      "loss": 0.19961432670243084,
+      "gradient_norm": 6.5368757247924805,
+      "peak_memory_gib": 12.828871726989746,
+      "lr_projector": 8.668054138449117e-07,
+      "lr_lora": 3.033818948457191e-06,
+      "checkpoint": null,
+      "time": "2026-10-20 23:28:21 +0800"
+    },
+    "final_receipt_present": false,
+    "latest_durable_checkpoint_step": 10500
+  },
+  "g0_mot20_05_control": {
+    "frames": 1657,
+    "metrics": {
+      "HOTA": 0.07334696070115383,
+      "DetA": 0.09026982781621751,
+      "AssA": 0.05967427073481851,
+      "IDF1": 0.059598451365333885,
+      "IDSW": 1933,
+      "FP": 417,
+      "FN": 288297
+    },
+    "end_to_end_fps": 0.061369784416757965,
+    "interpretation": "G0 control, not G2 held-out"
+  },
+  "downstream_queues": {
+    "g1_gpu5_adaptation": {
+      "status": "WAITING_G2_CLEAN_SUCCESS",
+      "failed": null
+    },
+    "g2_bundle_export": {
+      "status": "WAITING_G2_AND_G1_TERMINAL",
+      "failed": null
+    },
+    "independent_heldout": {
+      "status": "WAITING_G2_CLEAN_BUNDLE_AND_GPU7",
+      "failed": null
+    },
+    "onejev_joint": {
+      "status": "WAITING_G2_G1_AND_EXCLUSIVE_GPU_SET",
+      "resume_step": 3000,
+      "failed": null
+    }
+  },
+  "overall_goal_complete": false,
+  "github_evidence_branch": "codex/groundjev-independent-heldout-complete-20261020"
+}
