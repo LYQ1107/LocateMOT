@@ -3362,3 +3362,9 @@ queue now references a versioned GPU5 plan with matching physical-device
 metadata and an explicit queue-owner provenance note.  The waiting G1 process
 was not restarted, and the corrected plan will be read only when its exact G2
 terminal gate opens.
+
+The already-running wait-only owner had loaded the old plan path in memory, so
+it was safely replaced before any GPU work began (old PID 516321 exited; new
+wait owner PID 579251 is `WAITING_G2_CLEAN_SUCCESS`).  Its output directory,
+bundle, controls and historical state were preserved; the new owner records
+`native_ground_tracking200_gpu5_20261021.json` and still owns no GPU.
