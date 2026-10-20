@@ -3377,3 +3377,13 @@ steps, respectively.  This leaves 5,496 updates and a linear estimate of
 about 17.5–17.7 hours.  `final_receipt.json` and the terminal adapter remain
 absent, so this is a throughput/progress record only and does not open any
 downstream performance claim.
+
+## 2026-10-21 — G2 durable checkpoint contract audit
+
+The latest durable G2 recovery pair remains intact: `adapter-step012500.pt`
+and `latest_training_state.pt` are present at 469,243,990 and 469,247,597
+bytes.  The loaded state reports step 12,500, format
+`groundanything-g2-projector-qwen3-lora-v2-strict`, the registered manifest
+SHA, world size 2, optimizer and scheduler state, both rank RNG paths, sampler
+state, and the full training contract.  This validates recoverability only;
+the formal run is still not terminal and no downstream model claim is made.
