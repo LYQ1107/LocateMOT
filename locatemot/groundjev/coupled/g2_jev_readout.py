@@ -1,7 +1,7 @@
 """Typed JEV-style readouts over shared GroundAnything tokens."""
 from __future__ import annotations
 
-from typing import Sequence
+from typing import Optional, Sequence
 
 import torch
 from torch import nn
@@ -52,8 +52,13 @@ class G2JEVReadout(nn.Module):
         return torch.cat(pieces, dim=0) if pieces else memory_tokens.new_empty((0, self.hidden_dim))
 
     def forward(self, region_tokens: torch.Tensor, slot_tokens: torch.Tensor,
-                *, action_start: int = 0) -> dict[str, torch.Tensor | int]:
+                *, action_start: int = 0,
+                context_bias: Optional[torch.Tensor] = None) -> dict[str, torch.Tensor | int]:
         candidate = self.encode_candidates(region_tokens)
+        if context_bias is not None:
+            if context_bias.ndim != 1 or context_bias.shape[0] != self.hidden_dim:
+                raise ValueError("context_bias must be a [hidden_dim] vector")
+            candidate = candidate + context_bias.to(device=candidate.device, dtype=candidate.dtype)
         if slot_tokens.ndim != 2 or slot_tokens.shape[-1] != self.hidden_dim:
             raise ValueError("slot_tokens must be [options, hidden_dim]")
         q = self.query(candidate)

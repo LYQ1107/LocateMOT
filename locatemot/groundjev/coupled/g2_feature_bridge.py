@@ -34,6 +34,36 @@ class G2FeatureBridge:
         return cls(NativeGroundFeatures(checkpoint=checkpoint, device=device),
                    model_sha256=model_sha256, device=device)
 
+    @classmethod
+    def from_native_clean_dlm(
+        cls,
+        checkpoint: str | Path,
+        adapter: str | Path,
+        *,
+        runtime_root: str | Path,
+        device: str = "cuda:0",
+        model_sha256: str,
+        task_query: str = "person",
+    ) -> "G2FeatureBridge":
+        """Build a bridge from one native G2 clean DLM forward.
+
+        Unlike the visual-only bridge, this provider obtains the pooled region
+        tokens and contextual clean-language tokens from the same DLM call.
+        The full model is frozen; only the downstream GroundJEV readout is
+        trainable.  The adapter is restored in memory and the protected G2 run
+        directory is never written.
+        """
+        from .native_g2_clean import NativeG2CleanDLMProvider
+
+        provider = NativeG2CleanDLMProvider(
+            checkpoint=checkpoint,
+            adapter=adapter,
+            runtime_root=runtime_root,
+            device=device,
+            task_query=task_query,
+        )
+        return cls(provider, model_sha256=model_sha256, device=device)
+
     def encode(
         self,
         image: Any,
@@ -48,7 +78,12 @@ class G2FeatureBridge:
     ) -> SharedGroundState:
         if self.last_frame_id is not None and int(frame_id) <= self.last_frame_id:
             raise ValueError("frame_id must increase monotonically for a causal bridge")
-        result = self.provider(image, boxes)
+        if hasattr(self.provider, "encode_frame"):
+            result = self.provider.encode_frame(
+                image, boxes, image_key=image_key, task_query=task_query,
+            )
+        else:
+            result = self.provider(image, boxes)
         contextual = None
         if isinstance(result, dict):
             pooled, local = result["region_tokens"], result.get("local_tokens")

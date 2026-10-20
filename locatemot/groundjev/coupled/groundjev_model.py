@@ -26,6 +26,7 @@ class GroundJEVModel(nn.Module):
         self.hidden_dim = int(hidden_dim)
         self.readout = G2JEVReadout(region_dim, hidden_dim)
         self.memory_projector = MemoryTokenProjector(region_dim, hidden_dim)
+        self.context_projector = nn.Linear(region_dim, hidden_dim, bias=False)
 
     def forward(self, state: SharedGroundState, memory: IdentityMemoryState,
                 slots: DynamicIdentitySlots) -> dict[str, Any]:
@@ -56,9 +57,20 @@ class GroundJEVModel(nn.Module):
             projected = torch.stack(vectors) if vectors else state.vision_tokens.new_empty((0, self.hidden_dim), dtype=torch.float32)
         action_tokens = [slot.token for slot in slots.slots if slot.track_id is None]
         slot_tokens = self.readout.make_slot_tokens(projected, action_tokens)
+        context_bias = None
+        if state.contextual_tokens is not None:
+            context = state.contextual_tokens
+            if context.ndim == 1:
+                context = context.unsqueeze(0)
+            if context.ndim != 2 or context.shape[-1] != self.region_dim:
+                raise ValueError("contextual_tokens must have shape [M, region_dim]")
+            context_bias = self.context_projector(
+                context.to(device=state.vision_tokens.device, dtype=state.vision_tokens.dtype)
+            ).mean(dim=0)
         outputs = self.readout(state.vision_tokens, slot_tokens,
-                               action_start=len(existing_ids))
+                               action_start=len(existing_ids), context_bias=context_bias)
         outputs.update({"option_tokens": slots.tokens, "model_sha256": state.model_sha256,
                         "frame_id": state.frame_id, "image_key": state.image_key,
-                        "single_backbone": True})
+                        "single_backbone": True,
+                        "contextual_tokens_used": int(state.contextual_tokens is not None)})
         return outputs

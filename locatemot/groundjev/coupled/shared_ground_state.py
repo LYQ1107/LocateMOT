@@ -56,6 +56,13 @@ class SharedGroundState:
             raise ValueError("labels and boxes have different lengths")
         if self.vision_tokens.ndim != 2 or self.vision_tokens.shape[0] != self.boxes.shape[0]:
             raise ValueError("vision_tokens must be one region token per candidate")
+        if self.contextual_tokens is not None:
+            if self.contextual_tokens.ndim == 1:
+                self.contextual_tokens = self.contextual_tokens.unsqueeze(0)
+            if self.contextual_tokens.ndim != 2:
+                raise ValueError("contextual_tokens must have shape [M, feature_dim]")
+            if self.contextual_tokens.shape[-1] != self.vision_tokens.shape[-1]:
+                raise ValueError("contextual token dimension disagrees with region tokens")
         if len(self.candidates) != self.boxes.shape[0]:
             raise ValueError("candidates and boxes have different lengths")
         for i, candidate in enumerate(self.candidates):
