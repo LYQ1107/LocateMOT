@@ -1458,3 +1458,9 @@ are kept; unrelated GroundJEV worktree changes were not staged or overwritten.
 - The GPU5 G1 queue remains `WAITING_G2_CLEAN_SUCCESS`. The full-source OneJev recovery queue remains live at `WAITING_G2_G1_AND_EXCLUSIVE_GPU_SET`, with the durable resume point fixed at step3000.
 - G0 MOT20-05 export is complete; J1's registered held-out gate is complete but its zero/empty and decoder-rejection outputs remain failure evidence.
 - No live independent MOT-only optimizer process is present. Added `docs/GROUNDJEV/ACTIVE_GOAL_STATUS_20261020.{md,json}` to make these boundaries explicit; overall completion is not claimed.
+
+- A read-only `torch.load` audit of the durable G2 recovery state passed:
+  `latest_training_state.pt` is step 10,500, retains optimizer, scheduler,
+  sampler and all-rank RNG state, records `world_size=2`, and carries the
+  registered clean-manifest SHA. The active trainer remains beyond this
+  checkpoint and was not interrupted.
