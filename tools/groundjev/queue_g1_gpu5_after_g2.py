@@ -66,9 +66,17 @@ def main() -> int:
     parser.add_argument("--controls", type=Path, default=G1_CONTROLS)
     parser.add_argument("--poll-seconds", type=int, default=60)
     args = parser.parse_args()
-    if args.out.exists() or args.bundle.exists() or args.controls.exists():
-        raise FileExistsError("refusing to overwrite an existing G1 GPU5 artifact")
     owner = args.out / "queue_owner_state.json"
+    previous = json.loads(owner.read_text()) if owner.is_file() else None
+    if previous and previous.get("owner_pid") and Path(f"/proc/{previous['owner_pid']}").exists():
+        raise FileExistsError(f"G1 GPU5 owner is already live: {previous['owner_pid']}")
+    if args.bundle.exists() or args.controls.exists():
+        raise FileExistsError("refusing to overwrite an existing G1 GPU5 artifact")
+    if args.out.exists():
+        unfinished = previous and str(previous.get("status", "")) == "WAITING_G2_CLEAN_SUCCESS"
+        unexpected = [child for child in args.out.iterdir() if child.name != "queue_owner_state.json"]
+        if not unfinished or unexpected:
+            raise FileExistsError("refusing to overwrite an existing or partial G1 GPU5 artifact")
     state = {
         "status": "WAITING_G2_CLEAN_SUCCESS",
         "current_stage": "WAITING_G2_CLEAN_SUCCESS",
@@ -84,6 +92,7 @@ def main() -> int:
         "failed": None,
         "other_active_jobs_untouched": True,
         "feature_cache": False,
+        "resumed_wait_owner": bool(previous),
     }
     save(owner, state)
     try:
