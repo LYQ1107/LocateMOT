@@ -17,12 +17,14 @@ import subprocess
 import time
 
 ROOT = Path(__file__).resolve().parents[2]
+RUNTIME_ROOT = Path("/data2/user/LocateMOT_GroundJEV")
 G2_DEFAULT = Path("/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final")
-G1_PLAN = ROOT / "configs/groundjev/native_ground_tracking200_20261014.json"
-G1_BASE = ROOT / "models/GroundAnything-DLM"
+G1_PLAN = ROOT / "configs/groundjev/native_ground_tracking200_gpu5_20261021.json"
+G1_BASE = RUNTIME_ROOT / "models/GroundAnything-DLM"
 G1_OUT = ROOT / "outputs/groundjev/ground_adaptation/native_tracking200_gpu5_g1_v1"
-G1_BUNDLE = ROOT / "models/GroundAnything-DLM-TrackProjG1-GPU5-V2"
-G1_CONTROLS = ROOT / "outputs/groundjev/ground_adaptation/g1_gpu5_isolated96_v1"
+G1_BUNDLE = RUNTIME_ROOT / "models/GroundAnything-DLM-TrackProjG1-GPU5-V2"
+G1_CONTROLS = RUNTIME_ROOT / "outputs/groundjev/ground_adaptation/g1_gpu5_isolated96_v1"
+GROUND_TRAIN_PYTHON = RUNTIME_ROOT / ".venv-ground-train-py312/bin/python"
 
 
 def save(path: Path, state: dict) -> None:
@@ -33,7 +35,7 @@ def save(path: Path, state: dict) -> None:
     print(json.dumps({k: state.get(k) for k in ("status", "current_stage", "completed", "failed")}, ensure_ascii=False), flush=True)
 
 
-def run(command: list[str], log: Path, *, cwd: Path = ROOT) -> None:
+def run(command: list[str], log: Path, *, cwd: Path = RUNTIME_ROOT) -> None:
     log.parent.mkdir(parents=True, exist_ok=True)
     with log.open("w") as handle:
         proc = subprocess.run(command, cwd=cwd, stdout=handle, stderr=subprocess.STDOUT)
@@ -45,9 +47,13 @@ def successful_g2(g2: Path) -> tuple[bool, dict | None, str | None]:
     receipt_path = g2 / "final_receipt.json"
     if receipt_path.is_file():
         receipt = json.loads(receipt_path.read_text())
-        if receipt.get("status") == "G2_EXACT_COVERAGE_TRAINING_COMPLETE" and int(receipt.get("steps", -1)) >= 18227:
-            if receipt.get("manifest_sha256") == "f682519a1cf9204ca76ea75a56dad36dbdeac26259f202551ab9f66fefd06e71":
-                return True, receipt, None
+        if (
+            receipt.get("status") == "G2_EXACT_COVERAGE_TRAINING_COMPLETE"
+            and int(receipt.get("steps", -1)) == 18227
+            and receipt.get("manifest_sha256") == "f682519a1cf9204ca76ea75a56dad36dbdeac26259f202551ab9f66fefd06e71"
+            and (g2 / "adapter_projector_final.pt").is_file()
+        ):
+            return True, receipt, None
         return False, receipt, "G2 final receipt exists but failed the clean-contract gate"
     contract_path = g2 / "trainer_contract.json"
     if contract_path.is_file():
@@ -66,9 +72,17 @@ def main() -> int:
     parser.add_argument("--controls", type=Path, default=G1_CONTROLS)
     parser.add_argument("--poll-seconds", type=int, default=60)
     args = parser.parse_args()
-    if args.out.exists() or args.bundle.exists() or args.controls.exists():
-        raise FileExistsError("refusing to overwrite an existing G1 GPU5 artifact")
     owner = args.out / "queue_owner_state.json"
+    previous = json.loads(owner.read_text()) if owner.is_file() else None
+    if previous and previous.get("owner_pid") and Path(f"/proc/{previous['owner_pid']}").exists():
+        raise FileExistsError(f"G1 GPU5 owner is already live: {previous['owner_pid']}")
+    if args.bundle.exists() or args.controls.exists():
+        raise FileExistsError("refusing to overwrite an existing G1 GPU5 artifact")
+    if args.out.exists():
+        unfinished = previous and str(previous.get("status", "")) == "WAITING_G2_CLEAN_SUCCESS"
+        unexpected = [child for child in args.out.iterdir() if child.name != "queue_owner_state.json"]
+        if not unfinished or unexpected:
+            raise FileExistsError("refusing to overwrite an existing or partial G1 GPU5 artifact")
     state = {
         "status": "WAITING_G2_CLEAN_SUCCESS",
         "current_stage": "WAITING_G2_CLEAN_SUCCESS",
@@ -84,6 +98,7 @@ def main() -> int:
         "failed": None,
         "other_active_jobs_untouched": True,
         "feature_cache": False,
+        "resumed_wait_owner": bool(previous),
     }
     save(owner, state)
     try:
@@ -106,9 +121,9 @@ def main() -> int:
         args.out.mkdir(parents=True, exist_ok=True)
         train_out = args.out / "training"
         run([
-            "python3", "tools/groundjev/run_with_resources.py", "--gpus", "5", "--",
-            str(ROOT / ".venv-ground-train-py312/bin/python"),
-            "tools/groundjev/train_native_ground_tracking200.py",
+            str(GROUND_TRAIN_PYTHON), str(RUNTIME_ROOT / "tools/groundjev/run_with_resources.py"),
+            "--gpus", "5", "--", str(GROUND_TRAIN_PYTHON),
+            str(RUNTIME_ROOT / "tools/groundjev/train_native_ground_tracking200.py"),
             "--plan", str(G1_PLAN), "--out", str(train_out),
             "--static-flex-shapes", "--debug-kernel-sync", "--checkpoint-every", "25",
         ], args.out / "G1_GPU5_TRAINING.log")
@@ -128,8 +143,8 @@ def main() -> int:
         save(owner, state)
         receipt = args.out / "export_receipt.json"
         run([
-            str(ROOT / ".venv-ground-train-py312/bin/python"),
-            "tools/groundjev/export_native_projector_delta.py",
+            str(GROUND_TRAIN_PYTHON),
+            str(RUNTIME_ROOT / "tools/groundjev/export_native_projector_delta.py"),
             "--delta", str(train_out / "projector_delta.pt"),
             "--out", str(args.bundle), "--receipt", str(receipt),
         ], args.out / "G1_GPU5_EXPORT.log")
@@ -166,7 +181,7 @@ def main() -> int:
         plan_path = args.controls.parent / "g1_gpu5_controls_plan.json"
         plan_path.parent.mkdir(parents=True, exist_ok=True)
         plan_path.write_text(json.dumps(plan, indent=2, ensure_ascii=False) + "\n")
-        run(["python3", "tools/groundjev/compare_ground_checkpoints_isolated.py",
+        run([str(GROUND_TRAIN_PYTHON), str(RUNTIME_ROOT / "tools/groundjev/compare_ground_checkpoints_isolated.py"),
              "--plan", str(plan_path), "--out", str(args.controls)], args.out / "G1_GPU5_CONTROLS.log")
         controls = json.loads((args.controls / "owner_state.json").read_text())
         if controls.get("status") != "ISOLATED_ORDERED_GROUND_CONTROLS_COMPLETE":

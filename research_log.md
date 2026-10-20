@@ -1,5 +1,5 @@
-Warning: truncated output (original token count: 125975)
-Total output lines: 3453
+Warning: truncated output (original token count: 126156)
+Total output lines: 3465
 
 # LocateMOT Research Log
 
@@ -629,7 +629,297 @@ Concise experimental log (latest first).
   and no official-test labels or screening ground truth were read.
 - Interpretation: prompt/category assignment and top-k selection are concrete
   repair directions, but the proposal gate remains below the stage criterion.
-  No…105975 tokens truncated…y control only: no HOTA/IDF1, independent-video or final tracking claim. The first attempt completed the loop but failed at receipt writing because the output directory was absent; the directory fix was the only rerun change and the failed attempt is excluded. Evidence: `docs/GROUNDJEV_COUPLED/PHASE_C_NATIVE_CONTEXT_PILOT_20261021.{json,md}`.
+  No semantic-head/tracking training bank was created and no training was
+  launched. The next experiment must keep this split/checkpoint fixed while
+  inspecting prompt tokenization, category assignment and box decoding.
+- Verification: unified modules/tools compile; CPU skeleton smoke is finite;
+  parameter-sharing audit remains skeleton-only with non-head fraction
+  `0.9998259786`; legal guard accepts V1 `0004` and rejects reserved `0013`.
+
+## LocateMOT-U U0R/U1R measurement-contract repair — 2026-10-01
+
+- Scope: resumed from `014b8a5ec81bb83c5993b56da171089f8a440a11` on
+  `codex/u0r-u1r-foundation-repair-20261001`; no U2 work and no training was
+  launched. The project root was verified as `/data2/user/LocateMOT`.
+- Reproducibility hypothesis: a fresh checkout should import the unified data
+  package using tracked source only. The first clone failed because the broad
+  `data/` ignore rule also hid `locatemot/unified/data/`. Added a narrow ignore
+  exception, committed the package source, pushed it, and re-cloned the remote
+  branch at `26f9c989c8b13773d681bbe6962b77e73a0026bd`. Imports, skeleton smoke,
+  and foundation smoke passed in the clone. Decision: keep the repair and mark
+  U0 legal-scope reproducibility PASS.
+- Checkpoint hypothesis: the MMDetection Swin-B conversion must have only
+  documented non-core load mismatches. `tools/unified/audit_foundation_checkpoint.py`
+  now requires the exact one training-only missing key
+  `dn_query_generator.label_embedding.weight`, the exact three BERT metadata
+  unexpected keys, and zero backbone/encoder/decoder/bbox-head/language-fusion
+  missing keys. Audit result: `PASS_CONDITIONAL_TRAINING_ONLY_MISSING`.
+- Preprocessing hypothesis: the formal runtime must be equivalent to the
+  official MMDetection path. Ten deterministic legal images were compared with
+  the same fixed generic vocabulary; all produced 300 finite predictions,
+  maximum box difference `0.0`, and maximum score difference `0.0`. Decision:
+  preprocessing contract PASS; the prior hand-built tensor smoke is not formal
+  evidence.
+- Split hypothesis: a deterministic video-disjoint split balancing expression
+  volume, physical-target volume, and motion proxy is adequate before formal
+  evaluation. `tools/unified/build_legal_split.py` froze v2 with seed `20261001`
+  and split SHA
+  `8ee806048ccbb227919f27edf68cf0bebc1fa50f824a8108878fc5f39fc6e1c0`.
+  V1 fit/calibration/validation are `9/3/3` videos and V2 are `9/3/3`; V2
+  source-target-ID-missing references remain `157` (fit only in this split),
+  with no replacement or silent drop. Decision: freeze this split before any
+  U1 adaptation or formal gate.
+- Hardware/wall time: one CUDA device (A800-equivalent) was used for the
+  checkpoint audit, smoke, and equivalence check; these short checks completed
+  in under a minute each. Official-test labels and screening ground truth were
+  not opened. External baseline execution remains incomplete and is the next
+  blocking U0 task.
+
+## LocateMOT-U U0R — TempRMOT legal-development execution — 2026-10-01
+
+- Hypothesis: at least one published external RMOT method can be executed on a
+  frozen legal-development subset without reading official-test labels or
+  mixing its environment into LocateMOT-U.
+- Protocol: copied TempRMOT at commit
+  `6a65640d849fdee4a32bb055945ee34c3b0edeb1` into the isolated environment
+  `/data2/user/reference_envs/temprmot`, loaded the released checkpoint
+  `checkpoint_rk.pth` (SHA-256
+  `55e9b2cecbc1590aface4c9d8639008e694e8c4556d1d3c27bf90549f408c7e8`), and
+  ran the adapter on V1 validation videos `0012` and `0014`, one legal
+  expression per video. TrackEval then evaluated the two generated sequences
+  with HOTA, CLEAR, and Identity.
+- Result: prediction and evaluation completed with 94 prediction rows and 93
+  ground-truth rows. Combined HOTA was `94.679`, MOTA `98.925`, and IDF1
+  `99.465`. Official-test labels, screening ground truth, and training were not
+  used. The raw outputs and environment remain outside the repository;
+  `outputs/unified/external_baselines/temprmot_legal_v1.json` records the
+  reproducible metadata and `reports/unified/EXTERNAL_BASELINE_LEGAL_DEV.md`
+  records the bounded scope.
+- Compatibility work was confined to the isolated copy: a torchtext shim,
+  current PyTorch `torch.load` behavior, disabling a redundant pretrained
+  download, a CUDA scalar-type API update, and NumPy aliases in TrackEval.
+  These changes do not alter the LocateMOT-U model or the frozen split.
+- Decision: keep the TempRMOT run as real external-baseline evidence, while
+  retaining `U0_EXTERNAL_BASELINE=INCOMPLETE` until a second independent
+  method also produces predictions and evaluation. DKGTrack and FlexHook
+  remain pending because their published weight links are not yet available
+  through the isolated download path.
+
+## LocateMOT-U U1R — formal generic and expression measurements — 2026-10-01
+
+- Measurement contract: the frozen split SHA is
+  `8ee806048ccbb227919f27edf68cf0bebc1fa50f824a8108878fc5f39fc6e1c0`; the
+  foundation checkpoint SHA is
+  `55949c9c0f46339a73b415334765615d491ee6ed739ed3f568142b7fc5581143`; every
+  forward used `LoadImageFromFile`, `FixScaleResize(800,1333)`,
+  `PackDetInputs`, and `DetDataPreprocessor` with BGR-to-RGB conversion.
+- Generic protocol: one fixed query-independent vocabulary, all legal
+  calibration/validation frames with materialized labels, physical units
+  `(dataset, video, frame, track_id)`, Top100/150/300/900 diagnostics, and
+  small/medium/large height strata. The run covered 4,201 unique images,
+  33,526 physical GT units, and 5,992 unique physical objects. Top150 recall
+  was V1 `0.0803` and V2 `0.0669` at IoU 0.50 (V1/V2 IoU .25: `.5309/.4940`,
+  IoU .75: `.0045/.0062`). Decision: formal generic gate FAIL; this is below
+  the `.80` adaptation early-pass, so a detection adaptation probe is required
+  before any grounding adaptation.
+- Expression protocol: every legal calibration/validation query contributed
+  one deterministic middle labeled frame and, when available, one first empty
+  target frame. Units were `(dataset, video, query_id, frame, target_id)`;
+  source-missing references stayed in the source denominator. The run covered
+  7,160 query-frame rows and 7,199 valid target units with zero source-missing
+  units in this calibration/validation sample. Top1 IoU .50 recall was V1
+  `0.0030` and V2 `0.0028`; AP50 and empty-frame FP/query are recorded in
+  `reports/unified/U1_EXPRESSION_GROUNDING_GATE.md`. Decision: formal
+  expression gate FAIL; no expression adaptation has started.
+- No official-test labels or screening ground truth were read. No U2 or
+  universal track core work was started. The external-baseline state remains
+  incomplete because only TempRMOT has real predictions/evaluation; DKGTrack
+  and FlexHook public Baidu links require an authenticated download path.
+
+## LocateMOT-U U1-A — protocol correction, valid adaptation, and stop — 2026-10-01
+
+- The first eight-process launch was invalid because MMEngine's default
+  `--launcher none` left the processes outside DDP; it was stopped before any
+  formal evidence. A later exploratory FP32 run also used `frozen_stages=1`.
+  MMDetection's Swin implementation shows that value freezes patch embedding
+  and stage0 only, while the registered contract requires stages 0 and 1.
+  Those exploratory metrics are excluded from the final record.
+- Corrected hypothesis/protocol: a fixed legal-fit generic stream can repair
+  the foundation proposal localization while freezing Swin stages 0/1 and
+  BERT. The legal-fit stream has 3,606 rows and fixed `label 0 -> car`; the
+  split, vocabulary, official `FixScaleResize(800,1333)` pipeline, and all
+  denominators stayed unchanged. The valid run used
+  `frozen_stages=2`, BF16 AMP, eight-GPU PyTorch DDP, batch 2/GPU, and no
+  accumulation (global batch 16). The logged peak was 5,945 MB/GPU. A two-step
+  smoke passed before the full run.
+- A batch-2/two-step-accumulation attempt passed a one-step smoke but failed in
+  the full run with PyTorch's `expect_autograd_hooks_` DDP reducer assertion.
+  The smallest working fix was accumulation 1; this kept the recommended
+  microbatch 2 and did not alter the official input resolution. This failure
+  and the corrected smoke are retained in the adaptation report.
+- The valid schedule completed epochs 1, 2, 4, and 6, each formally evaluated
+  on the unchanged 4,201-image, 33,526-physical-unit scope. Top150
+  Recall@IoU0.50 (V1/V2) was foundation `0.0803/0.0669`, then
+  `0.8729/0.8515` (epoch1), `0.8873/0.8766` (epoch2),
+  `0.8945/0.8843` (epoch4), and `0.8938/0.8815` (epoch6). IoU0.25 reached
+  about `.99` in both domains, while epoch-6 IoU0.75 was `0.7215/0.6119`.
+  Size-stratum IoU0.50 was small `0.9136`, medium `0.9445`, and large
+  `0.7085`.
+- Training logs contain occasional `grad_norm: nan` values, but loss values
+  remained finite, all six checkpoints were written, and every formal shard
+  produced finite predictions. This telemetry is reported rather than
+  filtered. The final epoch-6 checkpoint SHA-256 is
+  `a1ff39f9c0bd59a5fd2b14968a528fc11e882b8fa6a3e85a9b64253a1cdc5ccc`.
+- Decision: the valid V1/V2 generic gate did not reach `.90/.90` after the
+  registered six-epoch maximum. Expression adaptation was not started because
+  it is downstream of the generic gate. Added the corrected adaptation report,
+  failure decomposition, and four valid formal JSONs. Final status is
+  `LOCATEMOT_U_BLOCKED_GENERIC_GATE_AFTER_MAX_ADAPTATION` with
+  `STOPPED_PENDING_SUPERVISOR_REVIEW`; U2 was not launched.
+
+## LocateMOT-U U1R2 — measurement repair, class-aware refinement, and foundation completion — 2026-10-01
+
+- Contract hypothesis: the remaining U1 failures were caused by a measurement/data contract mismatch rather than a need to replace the MM-GroundingDINO-B foundation. The source `labels_with_ids` fields are normalized top-left `xywh`; the repaired formal gates preserve source extents and use Top150 IoU.50 for generic proposals and Top100 IoU.50 target coverage for expressions. The previous U1-A-v1 files remain preserved as historical artifacts and were not overwritten.
+- Coordinate/source audit: legal calibration/validation contains 33,526 physical GT boxes. 195 V1 boxes extend below the image at `y1>height` (166 large, 27 medium, 2 small); no x-side overflow exists. Same-frame geometry matching to official KITTI labels gives mean IoU `0.7414883`; Refer and official track IDs are separate namespaces. Decision: retain source extents and recover classes by geometry; do not clip evaluation GT.
+- Data hypothesis: a class-aware physical-frame union can repair localization while removing V1/V2 duplicate training. The fit stream contains 2,545 images and 10,502 boxes; 3,424 V1/V2 overlaps were removed, 580 conflicting boxes and 21 missing class matches were recorded, and observed classes are car 6,787, pedestrian 3,700, cyclist 13, van 2. Decision: retain the stream with fixed class policy and explicit low-confidence audit.
+- Numerical stability: the prior BF16 log has three finite-loss `grad_norm:nan` records (epoch/iter 1/50, 3/100, 6/100). A fresh FP32 one-step audit from epoch4 found 981 trainable parameters, total loss `40.27210998535156`, zero nonfinite gradients, and zero no-gradient parameters. Decision: R2 uses FP32/TF32, no AMP/BF16.
+- Generic refinement: one bounded FP32 epoch from the frozen epoch4 checkpoint passed the corrected gate: V1/V2 Top150 IoU.50 `0.982716/0.971837`; small/medium/large `0.937467/0.989984/0.997825`. Decision: freeze the R2 epoch1 generic checkpoint and skip epoch2/mixed fallback.
+- Expression hypothesis: whole-expression positive spans with all referred boxes, legal empty frames, and preserved V2 missing-target references can add language-conditioned candidate coverage without erasing generic proposals. One FP32 epoch completed from the selected generic checkpoint. Expression Top100 IoU.50 is V1/V2 `1.000000/0.961367`; the same checkpoint's generic regression is V1/V2 Top150 IoU.50 `0.986592/0.958739`.
+- Language audit: on exactly 500 legal validation same-image pairs with a same-video sentence from a different target set, true versus shuffled Top10 recall is `0.959333/0.871133` and AP50 is `0.736901/0.491159`. Both strict comparisons pass, so language conditioning is measurable rather than generic-box-only behavior.
+- External evaluator: synthetic perfect/empty/ID-switch and cross-evaluator arrays pass with maximum difference `0.0`. TempRMOT evaluated videos 0012/0014 occur in its declared training pool; its HOTA 94.679 is reclassified as `PIPELINE_SANITY_ONLY_TRAINING_OVERLAP`.
+- Decision: the final shared expression checkpoint satisfies all U1 hard gates. `official_test_labels_read=false`, `screening_gt_used=false`, V2 source-target-ID-missing references remain explicit (157, silently dropped=false), and no U2/U3/U4 work started. Set `LOCATEMOT_U_READY_FOR_U2` and stop pending supervisor review.
+
+## LocateMOT-U U2 — shared persistent track core and portability stop — 2026-10-02
+
+- Provenance: working branch `codex/u2-shared-persistent-track-core-20261001`,
+  authoritative local base `56507f4aa9a12e76d6f9f6702f0f0b38163666ec`, and
+  immutable U1 foundation SHA
+  `4efc35ce70be5cddf2c4d9a0f91bc4edef3e9ec5277a819211ba4ac42e0d7d26`.
+- Implementation: replaced the U0 tracking placeholders with one shared U2
+  core (`PerceptionBridge`, independent identity/semantic candidate encoders,
+  `UnifiedTrackState`, four-layer identity set interaction, GRU identity
+  memory/anchor/EMA, association/new/no-match, lifecycle, motion, Hungarian
+  rollout, and bounded OVMOT residual). The runtime is
+  `locatemot/unified/runtime/u2_online_tracker.py`; no RMOT or prompt tracking
+  was launched.
+- Contract evidence: `tools/unified/u2_causal_contract.py` passed birth,
+  occlusion, no-future, MOT specification invariance, OVMOT isolation, and
+  online-state save/reload. Actual-model sharing audit passed with
+  `shared_non_head_fraction=0.9378111093950003`.
+- U2-P data manifest SHA-256 is
+  `575bd349e00bab23634c6929c04513149afec838de419bb3f1a53469fafc7fda`.
+  KITTI legal development portability passes (V1/V2 Top150 @.50
+  `0.986592/0.958739`), while BDD100K, DanceTrack, MOT17, MOT20, TAO, and
+  C-TAO are missing locally. Candidate-cache SHA is `not built`.
+- Training command: not launched; GPU count `0`, optimizer steps `0`, wall
+  clock training runtime `0`. Simple MOT, MOT-only, and joint OVMOT metrics
+  are intentionally `null` because the registered portability protocol is
+  incomplete.
+- Decision: `LOCATEMOT_U_BLOCKED_U2_PERCEPTION_PORTABILITY`; stop pending local
+  acquisition/audit of the missing streams. Official test labels and
+  Refer-KITTI official evaluation labels remain unread.
+- Validation note: the 2-process CUDA forward/backward smoke passed with the
+  same MOT task on both ranks. An 8-process smoke could not initialize because
+  all eight A800 devices were occupied by an unrelated process; it was
+  terminated before any training step and is not counted as a pass.
+
+## LocateMOT-U U2 — acquisition recovery — 2026-10-11
+
+- Revalidated local descendant `666ab44` and the actual U1R2 checkpoint SHA
+  `4efc35ce70be5cddf2c4d9a0f91bc4edef3e9ec5277a819211ba4ac42e0d7d26`.
+  U1 references and the checkpoint remain unchanged.
+- Observed MOT17/MOT20 extraction counts of 33,810/13,430 files, with nested
+  release roots. TAO's four volume roots exist but contain zero files; no
+  training or download worker was live. The old download module spawned
+  workers while being imported by each child, recursively launching itself.
+- Replaced that launcher with one guarded entry point and four thread workers
+  running bounded download clients. Keep the registered four-volume assignment,
+  prioritize modal train/validation inputs, validate downloaded sizes, and
+  record actual per-file SHA-256 for source provenance. A fresh direct-network
+  README transfer passed:…98156 tokens truncated…elds are retained, and final receipt remains absent. Receipt: docs/GROUNDJEV/G2_DURABLE_CHECKPOINT_PROTECTION_20261020.{json,md}.
+
+2026-10-20 — Generated current GroundJEV goal completion matrix from live receipts/owner states. It explicitly leaves G2 terminal training, G1 GPU5 adaptation, bundle export, independent held-out metrics, and full-source OneJev terminal receipt incomplete; no preliminary result was promoted. Receipt: docs/GROUNDJEV/GOAL_COMPLETION_MATRIX_20261020.{json,md}.
+
+2026-10-21 — GroundJEV redirection checkpoint: verified project root `/data2/user/LocateMOT` and protected formal G2 Clean. The live two-rank G2 owner reached event step 11735/18227 with finite loss 0.210247, gradient norm 9.833711, peak 12.828929 GiB; latest durable checkpoint remains step11500 and the 500-step window is 11.617 s/step (linear remainder about 20.9 h). G0 MOT20-05 registered 1657-frame validation-half export remains terminal; its fresh native-source control is retained without a full TEST claim. No live independent MOT-only optimizer process exists. The historical four-GPU independent OneJev resume was waiting before launch at durable step3000, so it was safely paused and its checkpoint/optimizer/RNG/config/logs preserved; a code-level pause marker guard now blocks accidental auto-start unless `--resume-paused` is explicitly supplied. G1 GPU5, clean bundle export, and independent held-out remain waiting on their registered dependencies. No formal G2/G1/held-out performance claim was made. Evidence: `docs/GROUNDJEV/ACTIVE_GOAL_STATUS_20261021.{json,md}` and the queue owner state.
+
+## 2026-10-21 — corrected real three-task OneJev source registration
+
+The historical full-source manifest was rejected for the independent comparison because its source inventory included MOT20-05 rows. I streamed and audited a replacement manifest at `/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/real_three_task_joint_v1/`: 131,214 native MOT identity rows, 346 native RMOT membership/presence rows, and 430 registered OVMOT Base teacher-control rows (131,990 total). Duplicate IDs, train split, family filters, row counts, media paths, forbidden MOT20-05/test markers, and source SHA-256 values passed. The registered TAO native archive (40 frames/35,228 candidates) has no category supervision, so native OVMOT training rows remain pending and no relabeling or optimizer launch was performed. The old independent four-GPU OneJev queue remains paused.
+
+## 2026-10-21 — Phase C causal memory input contract
+
+In the isolated `research/groundjev-coupled-single-backbone-20261021` worktree, added an opt-in `inject_identity_memory` contract. It inserts projected causal identity tokens before the registered current-answer index, preserves the original prompt tensors exactly when disabled, and returns the offset needed to shift DLM labels. Eight focused CPU contract tests passed, including projector gradient flow and insertion order. This is an engineering input contract only; the GroundAnything decoder hook, real GPU C0/C1/C2 replay, generated-box recall, and HOTA/IDF1 effects remain unmeasured.
+
+## 2026-10-21 — corrected three-task OneJev owner registered
+
+The historical independent four-GPU resume remains paused. A separate owner `real_three_task_joint_v1_queue` was registered and started in a waiting state. It uses the audited 131,990-row manifest, a new run directory, and the dedicated OneJev environment; it will not claim GPUs 4/5/6/7 until G2 Clean, G1 GPU5 adaptation, bundle export, held-out evaluation, and an exclusive resource window are terminal. The run is explicitly a Base OVMOT teacher-control comparison while native TAO category rows remain pending; it cannot be reported as the final single-backbone GroundJEV result.
+
+## 2026-10-21 — joint queue configuration regression fixed
+
+The dedicated OneJev parser rejected four audit-only keys accidentally placed in the runtime training JSON. I removed those keys from `real_three_task_joint_v1_runtime.json` and kept the same provenance in the queue state and research records. The registered `.venv-onejev-py310` parser now accepts the config and resolves the corrected source manifest, one epoch, and global 16-row accumulation.
+
+## 2026-10-21 — three-task CPU preflight found explicit overlength rows
+
+The registered OneJev CPU plan rendered all 131,990 rows in 267 seconds. At the 32,768-token training contract, 129,891 rows are trainable and 2,099 high-candidate MOT identity rows exceed the limit (p50 12,720; p90 25,689; p99 47,023; maximum 96,734). The new queue records this exclusion explicitly and cannot report full-source exposure. A separate compacting/long-row course remains required.
+
+## 2026-10-21 — compact zero-drop three-task source v2
+The v1 native MOT/RMOT/OVMOT source plan was valid but excluded 2,099 high-candidate MOT identity rows over the 32,768-token limit. The cause was repeated dense N×N IoU and center-distance CSV matrices in every MOT row, not missing media or a changed candidate source. Added the explicit `compact_competition_v1` manifest transform: native JSONL remains immutable; exact row IDs, targets, media paths and candidate boxes are preserved; all positive-IoU edges retain native rounded IoU and center distance; zero-IoU geometry is derivable from the retained boxes. The v2 CPU plan rendered all 131,990 rows with zero drops (p50/p90/p99/max 7,939/12,173/16,050/28,156 tokens; 8,250 world-4 steps), with no GPU or optimizer updates. The old v1 waiting owner was superseded before any training; a separate v2 owner is waiting on G2/G1/bundle/held-out gates and exclusive GPUs. Native TAO category rows remain pending, so this is still a registered Base teacher-control course rather than a final OVMOT claim.
+
+## 2026-10-21 — native YesTrack v2 queued behind an exclusive GPU7 gate
+
+Registered the real native YesTrack corpus with 726 train rows and 390 fixed
+validation rows (train SHA
+`065337d2fedca2377d02b94e57c9eb3778aeca09aeb1a8b9463429fa15bbee66`, validation
+SHA `d63a9fb0d54b8a1dc5d12b0960a48cb75c56ab786671f955fb317e196b3033d8`). The
+CPU rendering plan passed with zero rows over 32,768 tokens (max 26,159; 91
+planned optimizer steps per epoch, 273 over three epochs). Added a real GPU
+owner that waits for GPU7 to have no
+compute PID and at least 32 GiB free, trains native multimodal LoRA for three
+epochs, then evaluates frozen base and tuned adapter on identical held-out rows
+using AUROC, PR-AUC, accuracy, Brier, ECE, false rejection and false
+acceptance. The owner does not stop other users and writes terminal receipts
+only after training and both evaluations succeed. At registration GPU7 was
+occupied, so no YesTrack metric is claimed; prior 24-row readout controls remain
+engineering evidence only. Tracking HOTA/AssA/IDF1/IDSW still requires a later
+fixed-candidate physical-baseline integration.
+
+## 2026-10-21 — live G2 Clean checkpoint refresh at step 12002
+
+A single authoritative read of the formal event log found G2 Clean at event step 12002/18227, with finite loss 0.298694, gradient norm 10.215737, peak memory 12.829 GiB, and the registered 8-micro-batch/16-sample contract. The periodic adapter checkpoint is `adapter-step012000.pt` and `checkpoints/latest_training_state.pt` is present; the terminal receipt is still absent. The recent 500-step rate is 11.615 s/step, a linear remainder of approximately 20.1 hours. G1, bundle, held-out, YesTrack, and zero-drop three-task v2 remain waiting owners; no metric claim was promoted and no protected process was modified. Evidence: `docs/GROUNDJEV/STATUS_SNAPSHOT_20261021_G2_STEP12002.{json,md}`.
+
+## 2026-10-21 — process-scope audit confirms no live MOT-only/J1 optimizer
+
+A fresh process-table audit found G2 Clean as the only active GroundJEV optimizer (event step 12012/18227 on GPUs 3/5). G1 GPU5, deployment bundle, independent held-out, YesTrack and zero-drop three-task v2 are live dependency/resource waiters. No independent MOT-only or legacy J1 OneJev optimizer is live; historical checkpoints and logs remain preserved. Foreign PRISM jobs were untouched and no process was stopped. Evidence: `docs/GROUNDJEV/PROCESS_AUDIT_20261021.{json,md}`.
+
+## 2026-10-21 — G2 step-12000 recovery checkpoint validated
+
+Read the protected G2 `latest_training_state.pt` and `adapter-step012000.pt` with the registered local trainer environment. Both load successfully and carry format `groundanything-g2-projector-qwen3-lora-v2-strict`, step 12000, manifest SHA `f682519a…06e71`, 293 trainable tensors/signature entries, optimizer and scheduler state, RNG state, two rank RNG paths, sampler position 96000 and world size 2. The terminal receipt is still absent, so this proves recoverability only and no performance claim. PyTorch 2.6's default weights-only reader rejects the stored NumPy RNG object; the controlled audit used trusted `weights_only=False` and did not modify files. Evidence: `docs/GROUNDJEV/G2_CHECKPOINT_VALIDATION_20261021.{json,md}`.
+
+## 2026-10-21 — G2 Clean dataset scope audited
+
+The protected G2 Clean manifest contains 583,251 TRAIN rows from AerialMind (69,358), AnimalTrack (11,543), DanceTrack (41,796), MOT17 (15,948), MOT20 (5,616), RMOT26 (294), Refer-KITTI-V2 (379,341), SportsMOT (28,574) and TAO-Amodal (30,781). It is GroundAnything perception adaptation (projector + Qwen3 LoRA), not J1/OneJev identity training. MOT20-05 is explicitly held out; BURST is excluded for lack of a legal TRAIN image root; TAO novel annotations are excluded. Manifest SHA is `f682519a1cf9204ca76ea75a56dad36dbdeac26259f202551ab9f66fefd06e71`. Evidence: `docs/GROUNDJEV/G2_CLEAN_DATASET_SCOPE_20261021.{json,md}`.
+
+## 2026-10-21 — GroundJEV Phase A real G2 single-backbone smoke
+
+Implemented the isolated `locatemot/groundjev/coupled` path: frame/model-provenance checked shared state, G2 feature bridge, typed dynamic identity slots, dot-product JEV readouts, explicit Yes/No/admit/lifecycle/memory heads, causal identity memory, safe lifecycle control, assignment-conditioned memory writes and a one-to-one runtime. CPU backward and causal runtime tests passed. A real GPU smoke loaded the official GroundAnything visual module from the registered G2 base checkpoint (`3cf09355cde8cf4877cdc76e0a72301d572c1d6263b2831f8a03368285bb65e2`), encoded one MOT17 image once, pooled two real boxes into 2x2560 region tokens, and completed finite typed loss/backward/optimizer-step: total loss 4.179936, 3.07 GiB peak allocated, 14.43 s, bridge forward count 1, independent VLM instances 0. This is engineering evidence only; no tracking or scientific gain is claimed, and contextual language-state return plus identity-conditioned grounding remain pending. The first py310 attempt failed before model construction because `pybase64` is absent; the successful run used the existing GroundAnything serving environment and the same immutable checkpoint. Evidence: `docs/GROUNDJEV/PHASE_A_REAL_SMOKE_20261021.{json,md}`.
+
+## 2026-10-21 — GroundJEV Phase B choice/Yes-No pilot completed
+
+A bounded real pilot reused 32 MOT17-02-FRCNN TRAIN frames and 992 prior native GroundAnything proposal boxes, re-pooled once per frame with the G2 base visual checkpoint SHA `3cf09355cde8cf4877cdc76e0a72301d572c1d6263b2831f8a03368285bb65e2`. The frozen G2 evidence fed typed Identity Choice, Admit, Yes/No, Lifecycle and Memory readouts; 24 frames received 192 optimizer updates and the final 8 frames were a same-video temporal development holdout. Identity accuracy changed train 0.0618->0.6720 and temporal-dev 0.0363->0.6492; admit accuracy changed train 0.1022->0.9247 and temporal-dev 0.1331->0.9153. An actual eight-frame replay without teacher memory produced three persistent predicted tracks with one cached G2 feature forward per frame. This is a teacher-forced engineering control, not an independent HOTA/generalization result; language hidden-state coupling and identity-conditioned grounding remain unmeasured. The first replay failed on the legacy/new memory field mismatch and was fixed without changing data or budget. Evidence: `docs/GROUNDJEV/PHASE_B_PILOT_20261021.{json,md}`.
+
+Checkpoint receipt finalized for the Phase B pilot: `adapter-step000192.pt`, SHA256 `c96f27c9c8de5a01a36036c78c4e4a36c467bb96a0ca5f7d0eee27d93e32c904`; the binary remains local under the registered output directory and is not pushed to GitHub.
+
+## 2026-10-21 — native G2 Clean hidden-state probe completed
+
+The protected G2 Clean base plus `adapter-step012000.pt` (adapter SHA `f0dfe4f5efd6bd2f0e8ebe8f224ae060e8b0422b36571697fb4fa9efa6d85ae2`, step 12000, manifest SHA `f682519a…06e71`) completed the native GroundAnything DLM clean path on real row `mot17_MOT17-02-DPM_000001_dense_clean_v2` from MOT17 TRAIN. The real image was encoded once; the clean embedding and hybrid-language hidden state were both `[1, 1152, 2560]`, with 1,008 image-pad hidden vectors. No independent VLM instance was created. The probe used the formal BF16 autocast boundary and the existing process-local Transformers 5.17 `cache_position` compatibility shim. The first dtype and API failures were preserved and fixed at the probe boundary. This establishes native hidden-state availability for the shared-backbone work only; it is not a tracking metric, identity gain, grounding improvement, or generalization result. Evidence: `docs/GROUNDJEV_COUPLED/PHASE_A_NATIVE_HIDDEN_PROBE_20261021.{json,md}`.
+
+## 2026-10-21 — native G2 clean DLM coupled Phase C smoke completed
+
+The new `NativeG2CleanDLMProvider` restores the protected G2 step-12000 adapter in memory, renders one real MOT17 TRAIN row, and uses one native clean DLM forward to produce both 1,008 image hidden tokens and a `[1, 2560]` non-image contextual token. The same-backbone bridge pooled two real candidate boxes, fused the contextual token into the typed GroundJEV readout, and completed a finite GPU backward plus optimizer step: total loss 5.533803, clipped gradient norm 73.300224, 12.059 GiB peak allocation, 16.91 s, bridge/native forward counts both 1, independent VLM instances 0. This proves the visual+clean-language coupling interface runs on a real checkpoint; it is still an engineering smoke with no HOTA/IDF1, grounding recall, identity gain or generalization claim. PyTorch emitted a BF16/FP32 RMSNorm fallback warning in the frozen language path; it did not produce a non-finite value and remains recorded in the receipt. The formal G2 run directory was untouched. Evidence: `docs/GROUNDJEV_COUPLED/PHASE_C_NATIVE_DLM_COUPLED_SMOKE_20261021.{json,md}`.
+
+## 2026-10-21 — native G2 context readout C1 pilot completed
+
+A bounded eight-frame MOT17-02-FRCNN pilot used G2 step 12000 with the official DLM frozen. Each of 8 real frames had one native DLM forward; the downstream GroundJEV typed readout received the pooled image regions plus same-frame clean-language context. Four frames were train and four same-video temporal development, with previous-frame GT-matched region tokens as explicit teacher-forced causal slots. Twelve readout updates changed identity accuracy train 0.032258→0.725806 and temporal-dev 0.032258→0.403226; admit accuracy changed train 0.911290→0.911290 and temporal-dev 0.790323→0.911290. This is a bounded learnability control only: no HOTA/IDF1, independent-video or final tracking claim. The first attempt completed the loop but failed at receipt writing because the output directory was absent; the directory fix was the only rerun change and the failed attempt is excluded. Evidence: `docs/GROUNDJEV_COUPLED/PHASE_C_NATIVE_CONTEXT_PILOT_20261021.{json,md}`.
 
 ## 2026-10-21 — active goal snapshot at G2 step 12153
 
@@ -1068,3 +1358,15 @@ ETA around 23:10–23:13 Asia/Shanghai. The durable recovery pair remains
 `checkpoints/adapter-step012500.pt` and `checkpoints/latest_training_state.pt`;
 there is no final receipt. All downstream owners remain gated. Evidence:
 `docs/GROUNDJEV/G2_PROGRESS_SNAPSHOT_20261021_STEP12907.{json,md}`.
+
+## 2026-10-21 — repaired G1 GPU5 waiter runtime paths
+
+The G1 waiter was correctly idle but its future command resolved the model,
+GroundAnything source and ground-train Python environment under the code
+checkout, where they do not exist. Updated the queue to run training, export
+and controls from `/data2/user/LocateMOT_GroundJEV` while preserving the code
+checkout for the registered plan and data/protocol files. Verified the runtime
+paths, terminated only the old wait-only owner PID 579251, and started PID
+631075 with status `WAITING_G2_CLEAN_SUCCESS`, zero optimizer updates and no
+GPU launch. G2 and historical artifacts were untouched. Evidence:
+`docs/GROUNDJEV/G1_GPU5_RUNTIME_PATH_REPAIR_20261021.{json,md}`.
