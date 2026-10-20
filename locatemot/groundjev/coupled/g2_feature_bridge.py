@@ -49,10 +49,17 @@ class G2FeatureBridge:
         if self.last_frame_id is not None and int(frame_id) <= self.last_frame_id:
             raise ValueError("frame_id must increase monotonically for a causal bridge")
         result = self.provider(image, boxes)
-        if not isinstance(result, tuple) or len(result) < 2:
-            raise TypeError("feature provider must return (pooled_tokens, local_tokens, metadata)")
-        pooled, local = result[0], result[1]
-        provider_metadata = dict(result[2] if len(result) > 2 and result[2] else {})
+        contextual = None
+        if isinstance(result, dict):
+            pooled, local = result["region_tokens"], result.get("local_tokens")
+            contextual = result.get("contextual_tokens")
+            provider_metadata = dict(result.get("metadata") or {})
+        elif isinstance(result, tuple) and len(result) >= 2:
+            pooled, local = result[0], result[1]
+            provider_metadata = dict(result[2] if len(result) > 2 and result[2] else {})
+            contextual = result[3] if len(result) > 3 else None
+        else:
+            raise TypeError("feature provider must return a dict or (pooled_tokens, local_tokens, metadata)")
         self.forward_count += 1
         self.last_frame_id = int(frame_id)
         state_metadata = {**provider_metadata, **dict(metadata or {})}
@@ -62,6 +69,7 @@ class G2FeatureBridge:
         return SharedGroundState.from_region_tokens(
             frame_id=frame_id, image_key=image_key, model_sha256=self.model_sha256,
             boxes=boxes, labels=labels, region_tokens=pooled, local_tokens=local,
+            contextual_tokens=contextual,
             image_grid_thw=None, spatial_layout={"provider": provider_metadata.get("merged_grid")},
             task_query=task_query, scores=scores, metadata=state_metadata,
         )

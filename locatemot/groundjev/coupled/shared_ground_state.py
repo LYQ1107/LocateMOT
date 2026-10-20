@@ -85,6 +85,7 @@ class SharedGroundState:
         labels: Sequence[str],
         region_tokens: torch.Tensor,
         local_tokens: Optional[torch.Tensor] = None,
+        contextual_tokens: Optional[torch.Tensor] = None,
         image_grid_thw: Optional[torch.Tensor] = None,
         spatial_layout: Optional[dict[str, Any]] = None,
         task_query: Optional[str] = None,
@@ -111,7 +112,7 @@ class SharedGroundState:
         state = cls(
             frame_id=int(frame_id), image_key=str(image_key), model_sha256=str(model_sha256),
             boxes=box_tensor, labels=[str(x) for x in labels], vision_tokens=region_tokens,
-            contextual_tokens=None, image_grid_thw=image_grid_thw,
+            contextual_tokens=contextual_tokens, image_grid_thw=image_grid_thw,
             spatial_layout=dict(spatial_layout or {}), task_query=task_query,
             metadata=dict(metadata or {}), candidates=candidates,
         )
