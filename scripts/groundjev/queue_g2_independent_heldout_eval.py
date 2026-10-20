@@ -278,6 +278,12 @@ def main() -> int:
                 except Exception as probe_error:
                     free, resource = False, {"error": repr(probe_error)}
                 state["resource_probe"] = resource
+                state["resource_gate"] = {
+                    "ready": free,
+                    "rule": "no compute PIDs and at least 32768 MiB free on physical GPU7",
+                    "shared_memory_mode": False,
+                }
+                save(owner, state)
                 if free:
                     break
             time.sleep(args.poll_seconds)
