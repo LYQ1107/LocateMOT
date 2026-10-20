@@ -8,3 +8,6 @@
 
 
 2026-10-20 22:59 +0800 — The protected G2 Clean owner remains live on physical GPUs 3/5 and advanced to event step 10,710/18,227. The final receipt is still absent, the four dependency queues remain live and waiting, and the measured linear remainder is approximately 23.9–24.8 hours.
+
+
+2026-10-20 — GroundJEV dependency preflight passed without allocating a GPU or starting a process. The G1 plan/trainer, G2 bundle queue, independent held-out queue, OneJev recovery queue, registered model/checkpoint/manifest paths and external OneJev source all exist. All four owner states parse and report waiting states with `failed=null`. Receipt: `docs/GROUNDJEV/DEPENDENCY_PREFLIGHT_20261020.{json,md}`.
