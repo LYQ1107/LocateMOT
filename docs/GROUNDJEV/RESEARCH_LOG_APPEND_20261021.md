@@ -1,0 +1,3 @@
+# Research log append — 2026-10-21
+
+The formal G2 Clean owner is still protected and live. The event log reached step 11732/18227, with durable state at step 11500 and finite loss/gradient/memory values. G0 MOT20-05 remains a terminal 1,657-frame validation-half control. No independent MOT-only optimizer is live. The old four-GPU OneJev resume was waiting before launch and is now paused at durable step 3000; its full state and logs remain available, and a code guard blocks accidental restart. G1 GPU5, G2 bundle export and independent held-out evaluation remain registered waiters. The single-backbone GroundJEV Phase A/B receipts remain preliminary engineering/learnability evidence, not benchmark gains.
