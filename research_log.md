@@ -2,6 +2,20 @@
 
 Concise experimental log (latest first).
 
+## 2026-10-21 — GroundJEV G2 step-12613 progress snapshot
+
+- Hypothesis/contract: preserve the formal two-rank G2 Clean run and open all
+  dependent G1, deployment-bundle, held-out, native-TAO and YesTrack gates only
+  after the exact terminal receipt.
+- Evidence: the authoritative event log reached step `12613/18227` with
+  finite loss `0.2061017351`; `adapter-step012500.pt` and
+  `latest_training_state.pt` are present, while `final_receipt.json` is absent.
+- Decision: retain the live run and all waiting owners. No downstream optimizer,
+  evaluation, label promotion, or historical G2-PL overwrite was performed.
+- Boundary: this is a runtime progress record, not a MOT/RMOT/OVMOT metric or
+  a claim that the final G2 detector exists. See
+  `docs/GROUNDJEV/STATUS_SNAPSHOT_20261021_G2_STEP12613.md`.
+
 ## 2026-10-01 — latest R1 restoration completed
 
 - Hypothesis: restore only the newest R1 execution boundary and its legal
