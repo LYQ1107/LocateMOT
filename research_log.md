@@ -1,5 +1,5 @@
-Warning: truncated output (original token count: 125670)
-Total output lines: 3432
+Warning: truncated output (original token count: 125812)
+Total output lines: 3442
 
 # LocateMOT Research Log
 
@@ -859,9 +859,7 @@ Continue from the published full MOT-half failure measurements, preserving the i
 
 ## U2 data completion and full portability launch — 2026-10-12
 
-Hypothesis: recovering the original data and measur…95670 tokens truncated…ows and unique IDs, zero MOT20-05 rows, zero RMOT placeholder questions, and no cross-source absolute media-path overlap. Its raw MOT20 validity inventory still names the excluded MOT20-05 directory because the audit scans the source tree; the clean row filter remains MOT20-01/02/03 only. Evidence: `/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/g2_clean_data_contract_audit_v2.json`. No active process or checkpoint was modified.
-
-2026-10-19 — Clean G2 deployment export handoff registered: queue_g2_clean_bundle_export.py is the sole CPU-only downstream owner. It waits for the exact clean G2 terminal receipt and the GPU5 G1 queue receipt, then exports a fresh 569-tensor GroundAnything-DLM-G2-CLEAN-V2 bundle with the manifest SHA and immutable source check. It refuses overwrite and records explicit dependency failure states; no detector or evaluation claim is made before G2_CLEAN_DEPLOYMENT_BUNDLE_EXPORTED.
+Hypothesis: recovering the original data and measur…95812 tokens truncated…nly downstream owner. It waits for the exact clean G2 terminal receipt and the GPU5 G1 queue receipt, then exports a fresh 569-tensor GroundAnything-DLM-G2-CLEAN-V2 bundle with the manifest SHA and immutable source check. It refuses overwrite and records explicit dependency failure states; no detector or evaluation claim is made before G2_CLEAN_DEPLOYMENT_BUNDLE_EXPORTED.
 - 2026-10-20 — GroundJEV dependency preflight passed without allocating a GPU or
   starting a process. The G1 plan/trainer, G2 bundle queue, independent held-out
   queue, OneJev recovery queue, registered model/checkpoint/manifest paths and
@@ -1387,3 +1385,13 @@ same-frame context consumed by the typed readout. Updated the audit to state
 that native context is complete while SGLang integration and trained
 pre-grounding memory feedback remain open gates. No metric or model claim was
 changed.
+
+## 2026-10-21 — opened C2 prefill training gradient path
+
+The causal memory prefill adapter previously wrapped every call in
+`torch.inference_mode`, which was correct for deployment but would silently
+block gradients for a memory-conditioned training run. Added an explicit
+`inference_mode` switch that preserves default inference behavior and allows
+training callers to pass `False`. A new backward test confirms the inserted
+memory token receives finite gradient through the prefill and readout. This
+is an interface correction, not a tracking or grounding gain.

@@ -70,6 +70,22 @@ class CausalMemoryPrefillContract(unittest.TestCase):
         self.assertTrue(conditioned["single_backbone"])
         self.assertFalse(conditioned["second_vlm_loaded"])
 
+    def test_training_mode_preserves_memory_gradient(self):
+        prompt = torch.zeros(1, 2, 4)
+        mask = torch.ones(1, 2, dtype=torch.long)
+        positions = torch.arange(2, dtype=torch.long).view(1, 1, 2)
+        memory = torch.full((1, 1, 4), 5.0, requires_grad=True)
+        language_model = FakeLanguageModel()
+        lm_head = torch.nn.Linear(4, 1, bias=False)
+        result = causal_prefill_with_memory(
+            language_model, lm_head, prompt, mask, positions,
+            memory, enabled=True, inference_mode=False,
+        )
+        result["logits"].square().mean().backward()
+        self.assertIsNotNone(memory.grad)
+        self.assertTrue(torch.isfinite(memory.grad).all())
+        self.assertFalse(result["inference_mode"])
+
 
 if __name__ == "__main__":
     unittest.main()

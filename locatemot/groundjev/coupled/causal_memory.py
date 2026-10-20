@@ -10,6 +10,7 @@ does not run a second visual encoder.
 from __future__ import annotations
 
 from dataclasses import dataclass
+from contextlib import nullcontext
 from typing import Any, Callable
 
 import torch
@@ -120,7 +121,6 @@ def build_causal_memory_input(
     )
 
 
-@torch.inference_mode()
 def causal_prefill_with_memory(
     language_model: Any,
     lm_head: Callable[[torch.Tensor], torch.Tensor],
@@ -131,12 +131,18 @@ def causal_prefill_with_memory(
     *,
     native_position_ids: Callable[[torch.Tensor], torch.Tensor] | None = None,
     enabled: bool = True,
+    inference_mode: bool = True,
 ) -> dict[str, Any]:
     """Run exactly one causal prefill and expose next-token logits.
 
     ``language_model`` is the already-loaded GroundAnything language tower.
     The function is deliberately a prefill boundary rather than a new decoder:
     callers can continue with the model's existing KV-cache generation loop.
+
+    Inference is the default because this adapter is primarily used by the
+    online runtime.  Training callers must pass ``inference_mode=False``;
+    otherwise PyTorch's inference context would cut the gradient from the
+    inserted identity tokens and their projector into the readout.
     """
     prepared = build_causal_memory_input(
         inputs_embeds,
@@ -145,25 +151,27 @@ def causal_prefill_with_memory(
         memory_tokens,
         enabled=enabled,
     )
-    native_positions = (native_position_ids or (lambda value: value))(prepared.position_ids)
-    cache_position = torch.arange(
-        prepared.inputs_embeds.shape[1],
-        device=prepared.inputs_embeds.device,
-        dtype=torch.long,
-    )
-    outputs = language_model(
-        input_ids=None,
-        inputs_embeds=prepared.inputs_embeds,
-        position_ids=native_positions,
-        attention_mask=prepared.attention_mask,
-        past_key_values=None,
-        use_cache=True,
-        cache_position=cache_position,
-        return_dict=True,
-    )
-    if not hasattr(outputs, "last_hidden_state"):
-        raise TypeError("language_model prefill must return last_hidden_state")
-    logits = lm_head(outputs.last_hidden_state[:, -1])
+    context = torch.inference_mode() if inference_mode else nullcontext()
+    with context:
+        native_positions = (native_position_ids or (lambda value: value))(prepared.position_ids)
+        cache_position = torch.arange(
+            prepared.inputs_embeds.shape[1],
+            device=prepared.inputs_embeds.device,
+            dtype=torch.long,
+        )
+        outputs = language_model(
+            input_ids=None,
+            inputs_embeds=prepared.inputs_embeds,
+            position_ids=native_positions,
+            attention_mask=prepared.attention_mask,
+            past_key_values=None,
+            use_cache=True,
+            cache_position=cache_position,
+            return_dict=True,
+        )
+        if not hasattr(outputs, "last_hidden_state"):
+            raise TypeError("language_model prefill must return last_hidden_state")
+        logits = lm_head(outputs.last_hidden_state[:, -1])
     return {
         "logits": logits,
         "outputs": outputs,
@@ -171,4 +179,5 @@ def causal_prefill_with_memory(
         "prefill_calls": 1,
         "single_backbone": True,
         "second_vlm_loaded": False,
+        "inference_mode": bool(inference_mode),
     }
