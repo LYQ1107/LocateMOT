@@ -54,6 +54,16 @@ class JointIdentityCorpusContract(unittest.TestCase):
             with self.assertRaises(ValueError):
                 build([source], output=output, require_native_candidates=True)
 
+    def test_native_gate_rejects_explicit_gt_injection(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            source = Path(tmp) / "source.jsonl"
+            output = Path(tmp) / "out.jsonl"
+            row = self._row()
+            row["supervision"]["GT_IDs_in_model_input"] = True
+            source.write_text(json.dumps(row) + "\n")
+            with self.assertRaises(ValueError):
+                build([source], output=output, require_native_candidates=True)
+
     def test_build_writes_manifest_with_explicit_teacher_boundary(self):
         with tempfile.TemporaryDirectory() as tmp:
             source = Path(tmp) / "source.jsonl"
