@@ -2,6 +2,19 @@
 
 Concise experimental log (latest first).
 
+## 2026-10-21 — G2 event-integrity audit through step 12650
+
+- Read the formal event log without altering the trainer. The completed audit
+  cutoff contained 12,650 unique, contiguous steps from 1 through 12,650,
+  with zero missing IDs and zero non-finite values across the recorded loss,
+  gradient, memory and learning-rate fields.
+- Twenty-six explicit checkpoint events were present through the durable
+  step-12500 checkpoint; `final_receipt.json` remained absent. The live log
+  then advanced to step 12651 with finite loss/gradient values.
+- Decision: preserve the current two-rank run and its recovery state. This is
+  numeric/resumability evidence, not a performance claim.
+- Evidence: `docs/GROUNDJEV/G2_EVENT_INTEGRITY_AUDIT_20261021_STEP12650.md`.
+
 ## 2026-10-21 — downstream launch-gate audit
 
 - Read the five G2-dependent entrypoints and confirmed their exact terminal
