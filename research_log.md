@@ -3016,3 +3016,8 @@ false. The existing G2 step-11000 B0/B1/B2 bounded readout receipts were
 consolidated into `docs/GROUNDJEV_COUPLED/PHASE_B_ABLATIONS_20261021.{json,md}`.
 The three 200-update arms and 8-frame causal replay are engineering evidence
 only; no official tracking metric or OVMOT native-training claim was promoted.
+
+The native-only corpus gate was then strengthened to reject rows carrying an
+explicit `gt_in_model_input`/`GT_IDs_in_model_input` flag even when their
+candidate-source string looks native. The focused contract suite now has 12
+passing checks; no source rows or training queues were changed.
