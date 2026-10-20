@@ -18,3 +18,5 @@ The CPU registration proves exact coverage of all 18,274 parent frames with zero
 The first preflight caught and repaired a local slice-length assertion bug before any valid shard was accepted. The failed partial directory was retained under the external output root with a `failed_preflight` suffix; the valid registration is `tao_native_ovmot_train_shards_v2`.
 
 `scripts/groundjev/merge_tao_native_shards.py` is the required completion step. It refuses a missing/nonterminal shard receipt, parent-SHA mismatch, wrong frame order, validation-split row, GT-bearing metadata, or duplicate/incomplete coverage. A preflight against the unstreamed v2 directory failed at the first missing `receipt.json`, as intended; no partial stream was promoted.
+
+A synthetic four-frame/two-shard GT-free fixture passed the successful merge path, including receipt creation and exact four-frame coverage.
