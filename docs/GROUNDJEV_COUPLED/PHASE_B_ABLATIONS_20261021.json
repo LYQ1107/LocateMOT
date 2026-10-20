@@ -1,0 +1,69 @@
+{
+  "status": "PHASE_B_REAL_NATIVE_G2_ABLATIONS_COMPLETE",
+  "backbone": "GroundAnything G2 step11000 projector visual path",
+  "g2_adapter": "/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final/checkpoints/adapter-step011000.pt",
+  "g2_adapter_sha256": "f2b7199f57dae156a05e1efcadfa04b275a7f0399187b264e0b21ddc1b58409b",
+  "corpus": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/coupled/joint_identity_v1_phaseb.jsonl",
+  "corpus_sha256": "20ca7512edcb139b1ad4eabfde38f38c2ac6f6254be898775b80e19ba4c51ac0",
+  "corpus_rows": 1116,
+  "corpus_task_counts": {
+    "ovmot": 430,
+    "rmot": 346,
+    "occlusion_recovery": 119,
+    "identity_pair": 221
+  },
+  "corpus_proposal_sources": {
+    "tao_base_train_category_candidate": 430,
+    "native_rmot_candidate_export": 346,
+    "groundanything_native_lifecycle_candidate": 119,
+    "groundanything_native_identity_candidate": 221
+  },
+  "corpus_video_count": 34,
+  "visual_forward_calls": 24,
+  "official_test_labels_read": false,
+  "future_evidence_in_model_input": false,
+  "groundtruth_teacher_injection": false,
+  "typed_readout_parameters": 1980682,
+  "arms": {
+    "B0_choice_only": {
+      "steps": 200,
+      "final_total_loss": 2.4738862514,
+      "final_identity_choice_loss": 2.4738862514,
+      "checkpoint_sha256": "4ef6c8b95710b39379584795f3ec3156db1dd972bc1d864f072292d5f76ac042"
+    },
+    "B1_choice_yesno": {
+      "steps": 200,
+      "final_total_loss": 2.5620224476,
+      "final_identity_choice_loss": 2.4790320396,
+      "final_yesno_loss": 0.0829904307,
+      "checkpoint_sha256": "b327afff956da914cf44c8947ad6da3900397ec590bc64f4bd3f6f5eabf51d7b"
+    },
+    "B2_choice_yesno_lifecycle": {
+      "steps": 200,
+      "final_total_loss": 2.6426239014,
+      "final_identity_choice_loss": 2.4800300598,
+      "final_yesno_loss": 0.0812297016,
+      "final_lifecycle_loss": 0.0000751239,
+      "checkpoint_sha256": "dfcfc1d5ea998564fd9098959689d2eab4a1fd87e2f1ec9f2858237408de4f2e"
+    }
+  },
+  "causal_replay": {
+    "video": "MOT20-03 TRAIN engineering window",
+    "frames": [83, 84, 85, 86, 87, 88, 89, 90],
+    "candidate_source": "GT_teacher_candidate_engineering_gate",
+    "official_metric": false,
+    "visual_forward_calls_per_arm": 8,
+    "assignment_counts": {
+      "B0_choice_only": {"REJECT": 11, "NEW": 1, "NO_MATCH": 6, "1": 6},
+      "B1_choice_yesno": {"NO_MATCH": 9, "NEW": 3, "1": 7, "2": 5},
+      "B2_choice_yesno_lifecycle": {"REJECT": 15, "NEW": 2, "1": 4, "2": 3}
+    },
+    "final_track_count": {
+      "B0_choice_only": 1,
+      "B1_choice_yesno": 3,
+      "B2_choice_yesno_lifecycle": 2
+    }
+  },
+  "scientific_claim": "bounded train-scope readout ablation and causal replay only; no independent MOT/RMOT/OVMOT metric or generalization claim",
+  "native_ovmot_training_rows": false
+}
