@@ -2,12 +2,26 @@
 from collections import Counter,defaultdict
 import gzip
 import json
+import os
 from pathlib import Path
 import random
 import sys
 
 ROOT=Path(__file__).resolve().parents[2]
+RUNTIME_ROOT=Path(os.environ.get('GROUNDJEV_RUNTIME_ROOT','/data2/user/LocateMOT_GroundJEV'))
 sys.path[:0]=[str(ROOT),str(ROOT/'external/OneJev')]
+
+
+def resolve_runtime_path(value):
+    """Resolve manifest-relative artifacts from project or registered runtime tree."""
+    path=Path(value)
+    if path.is_absolute():
+        return path
+    for base in (ROOT,RUNTIME_ROOT):
+        candidate=base/path
+        if candidate.exists():
+            return candidate
+    return ROOT/path
 
 
 def read(path):
@@ -23,7 +37,15 @@ def main():
     serial_root=ROOT/'outputs/groundjev/training/full_joint_source_epoch1_owner_v1'
     parallel=json.loads((out/'CPU_plan_validation.json').read_text())
     serial=json.loads((serial_root/'CPU_plan_validation.json').read_text())
-    terminal=json.loads(out.with_name(out.name+'_owner.json').read_text())
+    terminal_candidates = [
+        out.with_name(out.name+'_owner.json'),
+        RUNTIME_ROOT/'outputs/groundjev/training/full_source_parallel_cpu_plan_v1_owner.json',
+    ]
+    terminal_path = next((path for path in terminal_candidates if path.is_file()), None)
+    if terminal_path is None:
+        raise FileNotFoundError('full_source_parallel_cpu_plan_v1_owner.json; checked: '
+                                + ', '.join(str(path) for path in terminal_candidates))
+    terminal=json.loads(terminal_path.read_text())
     assert terminal['status']=='FULL_NATIVE_PARALLEL_CPU_PLAN_COMPLETE' and terminal['exit_code']==0
     for key in serial:
         if key!='CPU_plan_elapsed_s':assert serial[key]==parallel[key],key
@@ -32,7 +54,7 @@ def main():
     assert parallel['rows']==459027 and parallel['dropped_rows']==0
     for source,saved in zip(manifest['sources'],parallel['source_files']):
         assert all(source[k]==saved[k] for k in ('path','rows','families'))
-        stat=(ROOT/source['path']).stat()
+        stat=resolve_runtime_path(source['path']).stat()
         assert stat.st_size==saved['bytes'] and stat.st_mtime_ns==saved['mtime_ns']
     lengths=np.load(parallel['length_array'],allow_pickle=False)
     assert lengths.dtype==np.int32 and lengths.shape==(459027,)
@@ -43,11 +65,11 @@ def main():
     assert len(steps)==serial['planned_updates']==28690
     assert sorted(i for step in steps for per in step for batch in per for i in batch)==list(range(len(lengths)))
     assert [sum(len(b) for b in rank) for rank in steps[-1]]==[1,1,1,0]
-    scope=ROOT/'outputs/groundjev/training_data/rmot_allfit1814_query18_scope_v1/manifests'
+    scope=resolve_runtime_path('outputs/groundjev/training_data/rmot_allfit1814_query18_scope_v1/manifests')
     all_rmot=set();eligible_rmot=set();families_by_image=defaultdict(Counter);unit_counts={}
     for source in manifest['sources']:
         if source['bucket']!='rmot':continue
-        path=ROOT/source['path'];groups={}
+        path=resolve_runtime_path(source['path']);groups={}
         is_new='rmot_allfit1814_query18_full_v3_groups_v2_shared_gpu7' in source['path']
         if source['families'] is not None:
             for group in read(path.parent/'groups.jsonl.gz'):
@@ -82,7 +104,10 @@ def main():
         missing_exposure_reason='These18 images have only lifecycle questions in both retained native query histories. Registered semantic-only filtering excludes lifecycle proxies; no membership/presence row exists for these images. All raw frames and original rows remain preserved.',
         per_new_RMOT_unit_exposure=unit_counts,
         planned_unique_first_media_source_paths=parallel['planned_unique_first_media_source_paths'],
-        coordinator_terminal=json.loads((ROOT/'outputs/groundjev/training/validated_CPU_handoff_owner_v1/owner_state.json').read_text()),
+        coordinator_terminal=json.loads(resolve_runtime_path(
+            'outputs/groundjev/training/validated_CPU_handoff_owner_v1/owner_state.json'
+        ).read_text()),
+        parallel_terminal_receipt=str(terminal_path),
         original_four_GPU_owner_retained=True,actual_optimizer_updates_not_claimed_by_input_validation=True,
         current_training_inputs_metrics_and_seeds_unchanged=True,full_goal_complete=False)
     (out/'completion_validation.json').write_text(json.dumps(result,indent=2)+'\n')
