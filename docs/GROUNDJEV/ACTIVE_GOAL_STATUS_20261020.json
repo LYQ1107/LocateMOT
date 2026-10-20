@@ -8,6 +8,13 @@
     "physical_gpus": [3, 5],
     "latest_durable_checkpoint": "adapter-step010500",
     "final_receipt": false,
+    "durable_state_contract": {
+      "path": "/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final/checkpoints/latest_training_state.pt",
+      "step": 10500,
+      "manifest_sha256": "f682519a1cf9204ca76ea75a56dad36dbdeac26259f202551ab9f66fefd06e71",
+      "world_size": 2,
+      "optimizer_scheduler_sampler_rng_present": true
+    },
     "recent_sec_per_step": {
       "last_500": 11.4389,
       "last_1000": 11.5335,
