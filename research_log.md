@@ -3002,3 +3002,17 @@ A single authoritative audit confirmed the registered MOT20-05 G0 native export 
 ## 2026-10-21 — cross-disk native OVMOT archive audit at G2 step 12345
 
 A read-only search of `/data0/user`, `/data1/user` and `/data3/user` found no complete TAO TRAIN native candidate archive. The only existing native TAO candidate archive remains a 40-frame `frames/val` stream and is ineligible for TRAIN joining. The corrected real three-task queue remains paused with zero optimizer updates; no validation archive was relabeled and no teacher-only fallback was launched. Evidence: `docs/GROUNDJEV/NATIVE_OVMOT_ARCHIVE_AUDIT_20261021.{json,md}`.
+
+## 2026-10-21 — GroundJEV joint identity corpus rebuild contract and Phase B ablations
+
+Added `tools/groundjev/coupled/build_joint_identity_corpus.py` and its focused
+contract tests. The builder normalizes registered MOT/RMOT/OVMOT rows without
+inventing boxes or targets, records candidate provenance and causal memory,
+rejects future/test evidence, and has an explicit native-only gate that rejects
+teacher crops. A real 12-row sample from the registered Phase-B corpus produced
+5 MOT, 3 RMOT and 4 OVMOT rows; 8 rows had native candidates and 4 remained
+explicit Base teacher/empty-candidate rows, so `native_ovmot_training_rows` was
+false. The existing G2 step-11000 B0/B1/B2 bounded readout receipts were
+consolidated into `docs/GROUNDJEV_COUPLED/PHASE_B_ABLATIONS_20261021.{json,md}`.
+The three 200-update arms and 8-frame causal replay are engineering evidence
+only; no official tracking metric or OVMOT native-training claim was promoted.
