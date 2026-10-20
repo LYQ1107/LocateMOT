@@ -3546,3 +3546,12 @@ latest_training_state.pt remain the durable recovery pair. Downstream owners are
 still dependency-gated and have no optimizer updates. This is a training-health
 snapshot only and makes no tracking or benchmark claim. Evidence:
 `docs/GROUNDJEV/G2_PROGRESS_LIVE_20261021_STEP12980.{json,md}`.
+
+## 2026-10-21 — YesTrack GPU7 resource gate confirmed
+
+The live YesTrack owner remains `WAITING_GPU7_EXCLUSIVE` because physical GPU7
+has an unrelated process (PID 4008192, user `ljh`, PRISM/CUB training) using about
+16.2 GiB at 100% utilization. The queue's rule is no compute PIDs and at least
+32768 MiB free; the external process was left untouched. This is an observed
+resource gate, not a training or metric result. Evidence:
+`docs/GROUNDJEV/YESTRACK_GPU7_RESOURCE_GATE_20261021.{json,md}`.
