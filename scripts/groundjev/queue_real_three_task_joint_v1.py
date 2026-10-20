@@ -32,6 +32,8 @@ GPUS = (4, 5, 6, 7)
 G2_STEPS = 18227
 MANIFEST_SHA = "4194af34b07161ef217336701f9ca37ee029b0256cb50276f29e5b01028bc8c7"
 ROWS = 131990
+TRAINABLE_ROWS = 129891
+OVERLENGTH_ROWS = 2099
 
 
 def read_json(path: Path) -> dict | None:
@@ -131,7 +133,9 @@ def main() -> int:
         "heldout_state": str(HELDOUT_STATE), "manifest": str(MANIFEST), "manifest_sha256": MANIFEST_SHA,
         "physical_gpus": list(GPUS), "training_root": str(TRAIN_ROOT), "config": str(CONFIG),
         "rows": ROWS, "ovmot_training_mode": "base_teacher_control", "native_ovmot_rows_pending": True,
-        "optimizer_updates": 0, "completed": {}, "failed": None, "old_queue_restarted": False,
+        "planned_trainable_rows": TRAINABLE_ROWS, "overlength_rows_excluded": OVERLENGTH_ROWS,
+        "max_len": 32768, "full_source_exposure": False, "optimizer_updates": 0,
+        "completed": {}, "failed": None, "old_queue_restarted": False,
     }
     save(owner, state)
     try:
@@ -182,12 +186,14 @@ def main() -> int:
                 except json.JSONDecodeError: pass
         done = next((row for row in reversed(records) if row.get("event") == "done"), None)
         state["terminal_record"] = done
-        if result.returncode != 0 or not done or int(done.get("examples", -1)) != ROWS:
+        if result.returncode != 0 or not done or int(done.get("examples", -1)) != TRAINABLE_ROWS:
             state.update(status="REAL_THREE_TASK_JOINT_TRAINING_FAILED", current_stage="FAILED",
-                         failed={"reason": "nonzero_or_incomplete_terminal_receipt", "expected_rows": ROWS})
+                         failed={"reason": "nonzero_or_incomplete_terminal_receipt", "expected_trainable_rows": TRAINABLE_ROWS,
+                                 "source_rows": ROWS, "overlength_rows_excluded": OVERLENGTH_ROWS})
             save(owner, state); return result.returncode or 3
-        state.update(status="REAL_THREE_TASK_JOINT_TRAINING_COMPLETE", current_stage="COMPLETE",
-                     completed={"training": done}, optimizer_updates=int(done.get("steps", 0)), full_goal_complete=False)
+        state.update(status="REAL_THREE_TASK_JOINT_TRAINING_COMPLETE_WITH_EXPLICIT_OVERLENGTH_EXCLUSIONS", current_stage="COMPLETE",
+                     completed={"training": done}, optimizer_updates=int(done.get("steps", 0)), full_goal_complete=False,
+                     source_exposure="129891/131990 rows; 2099 overlength rows retained for a separate compacting course")
         save(owner, state); return 0
     except Exception as error:
         state.update(status="REAL_THREE_TASK_JOINT_TRAINING_FAILED", current_stage="FAILED", failed={"error": repr(error)})
