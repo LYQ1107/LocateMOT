@@ -10,7 +10,10 @@ import sys
 import time
 
 ROOT=Path(__file__).resolve().parents[2]
-SOURCE=ROOT/'external/GroundAnything'
+# The formal G2 runtime is kept in an isolated worktree.  The environment
+# override lets a clean LocateMOT checkout use that immutable upstream mirror
+# without copying the full GroundAnything source tree into this repository.
+SOURCE=Path(os.environ.get('LOCATEMOT_GROUNDANYTHING_ROOT', ROOT/'external/GroundAnything')).resolve()
 
 
 class NativeGroundFeatures:
