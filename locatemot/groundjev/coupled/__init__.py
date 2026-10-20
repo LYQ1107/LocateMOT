@@ -11,9 +11,11 @@ from .dynamic_identity_slots import DynamicIdentitySlots, IdentitySlot, build_dy
 from .g2_jev_readout import G2JEVReadout
 from .groundjev_model import GroundJEVModel
 from .g2_shared_runtime import CoupledGroundJEVRuntime
+from .causal_memory import CausalMemoryInput, build_causal_memory_input, causal_prefill_with_memory
 
 __all__ = [
     "SharedCandidate", "SharedGroundState", "TrackMemory", "IdentityMemoryState",
     "IdentitySlot", "DynamicIdentitySlots", "build_dynamic_slots", "G2JEVReadout",
     "GroundJEVModel", "CoupledGroundJEVRuntime",
+    "CausalMemoryInput", "build_causal_memory_input", "causal_prefill_with_memory",
 ]

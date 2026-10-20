@@ -1,0 +1,32 @@
+{
+  "status": "PHASE_C_CAUSAL_MEMORY_PREFILL_CONTRACT_COMPLETE_REAL_G2_PREFILL_PENDING",
+  "implementation": "locatemot/groundjev/coupled/causal_memory.py",
+  "insertion_boundary": "terminal prompt immediately before bbox generation",
+  "input_contract": {
+    "inputs_embeds": "[batch, sequence, hidden]",
+    "attention_mask": "[batch, sequence]",
+    "position_ids": "[batch, sequence] or [axes, batch, sequence]",
+    "memory_tokens": "[memory, hidden] or [batch, memory, hidden]"
+  },
+  "disabled_path": "returns original embeddings, mask and positions by identity",
+  "prefill_calls": 1,
+  "second_vlm_loaded": false,
+  "tests": {
+    "count": 7,
+    "status": "PASS",
+    "coverage": [
+      "terminal memory insertion and position extension",
+      "disabled baseline tensor identity",
+      "next-token logits change under memory",
+      "shared GroundJEV Phase-A contracts",
+      "cached fixed-candidate geometry contract"
+    ]
+  },
+  "real_g2_gpu_prefill": {
+    "status": "PENDING_EXCLUSIVE_GPU",
+    "reason": "GPU3/5 are occupied by protected G2 Clean and remaining devices have foreign compute owners; no foreign process was touched",
+    "required_checkpoint": "G2 Clean adapter step 12000 or later with verified SHA",
+    "required_evidence": "same image/prompt, memory disabled vs correct memory vs shuffled memory, next-token bbox probabilities and generated boxes"
+  },
+  "scientific_claim": "input and causal-prefill contract only; no identity-conditioned grounding or tracking gain claimed"
+}
