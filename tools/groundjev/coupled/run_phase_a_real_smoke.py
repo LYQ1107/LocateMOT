@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Real one-frame GroundJEV Phase-A smoke using the protected G2 visual path.
+"""Real one-frame GroundJEV Phase-A smoke using the native G2 clean path.
 
 This is deliberately bounded: one real image, two native GroundAnything
 regions, one typed readout backward, and one causal runtime step.  It does not
@@ -25,7 +25,12 @@ from locatemot.groundjev.coupled.losses import structured_groundjev_losses
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--checkpoint", required=True)
+    parser.add_argument("--checkpoint", required=True,
+                        help="immutable GroundAnything base bundle used with the G2 adapter")
+    parser.add_argument("--adapter", required=True,
+                        help="G2 adapter checkpoint; prevents silently using G0 visual weights")
+    parser.add_argument("--runtime-root", required=True,
+                        help="GroundJEV runtime checkout containing the native DLM loader")
     parser.add_argument("--image", required=True)
     parser.add_argument("--device", default="cuda:0")
     parser.add_argument("--source-root", required=True)
@@ -41,8 +46,10 @@ def main() -> int:
     boxes = [(218, 425, 238, 503), (230, 413, 285, 675)]
     labels = ["person", "person"]
     start = time.perf_counter()
-    bridge = G2FeatureBridge.from_checkpoint(args.checkpoint, device=args.device,
-                                             model_sha256=args.model_sha256)
+    bridge = G2FeatureBridge.from_native_clean_dlm(
+        args.checkpoint, args.adapter, runtime_root=args.runtime_root,
+        device=args.device, model_sha256=args.model_sha256, task_query="person",
+    )
     state = bridge.encode(image, boxes, labels, frame_id=0, image_key=str(args.image),
                           task_query="person")
     model = GroundJEVModel(state.feature_dim, hidden_dim=256).to(torch_device)
@@ -69,14 +76,17 @@ def main() -> int:
     elapsed = time.perf_counter() - start
     peak = int(torch.cuda.max_memory_allocated(torch_device)) if torch_device.type == "cuda" else 0
     receipt = {
-        "status": "PHASE_A_REAL_G2_FORWARD_BACKWARD_PASS",
+        "status": "PHASE_A_REAL_G2_NATIVE_DLM_FORWARD_BACKWARD_PASS",
         "project_root": "/data2/user/LocateMOT",
         "checkpoint": str(Path(args.checkpoint).resolve()),
+        "adapter": str(Path(args.adapter).resolve()),
+        "runtime_root": str(Path(args.runtime_root).resolve()),
         "model_sha256": args.model_sha256,
         "image": str(Path(args.image).resolve()),
         "candidate_count": len(boxes),
         "feature_dim": state.feature_dim,
         "bridge_forward_count": bridge.forward_count,
+        "native_dlm_forward_count": bridge.provider.forward_count,
         "single_backbone": True,
         "independent_vlm_instances": 0,
         "losses": {k: None if v is None else float(v.detach().cpu()) for k, v in losses.items()},

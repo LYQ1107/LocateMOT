@@ -3319,3 +3319,25 @@ adapter remains `checkpoints/adapter-step012500.pt` with
 pilot was therefore not started on a shared card, and no process was killed or
 reused.  This preserves the registered training contract while the existing
 G2 completion waiter remains the only long-running observer.
+
+## 2026-10-21 — corrected G0/G2 evidence boundary for early coupled pilots
+
+An audit of the historical Phase-A smoke and Phase-B readout pilot found that
+their `checkpoint` was the unadapted `GroundAnything-DLM` bundle and neither
+receipt recorded a G2 adapter.  The metrics and loss values are preserved as
+G0 native-visual controls only; they are not G2 Clean evidence and are not used
+for a G2 performance claim.  The future Phase-A and Phase-B entrypoints now
+require both an explicit adapter and the native clean-DLM loader, and record
+the adapter/runtime provenance.  This fixes a provenance error without
+overwriting the historical control artifacts.
+
+## 2026-10-21 — protected G2 progress snapshot (step 12701)
+
+The authoritative event stream now contains contiguous rows through step
+12,701/18,227; the latest row at 05:28:19 +0800 has finite loss
+0.2224419505.  The durable checkpoint set still ends at
+`checkpoints/adapter-step012500.pt` with
+`checkpoints/latest_training_state.pt`, while `final_receipt.json` is absent
+and `trainer_contract.json` remains `G2_FORMAL_TRAINING_RUNNING`.  The launcher
+is still live.  This is only a healthy-progress record; it does not promote a
+checkpoint or claim a tracking metric.

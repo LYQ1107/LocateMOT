@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Bounded Phase-B pilot on real GroundAnything candidates and G2 features.
+"""Bounded Phase-B pilot on real GroundAnything candidates and native G2 features.
 
 The proposal boxes come from a prior native GroundAnything candidate export;
 the G2 checkpoint is used again to pool the shared visual evidence.  MOT GT
@@ -213,7 +213,12 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--candidate-manifest", required=True)
     parser.add_argument("--gt", required=True)
-    parser.add_argument("--checkpoint", required=True)
+    parser.add_argument("--checkpoint", required=True,
+                        help="immutable GroundAnything base bundle used with the G2 adapter")
+    parser.add_argument("--adapter", required=True,
+                        help="G2 adapter checkpoint; prevents silently using G0 visual weights")
+    parser.add_argument("--runtime-root", required=True,
+                        help="GroundJEV runtime checkout containing the native DLM loader")
     parser.add_argument("--source-root", required=True)
     parser.add_argument("--model-sha256", required=True)
     parser.add_argument("--device", default="cuda:0")
@@ -229,8 +234,10 @@ def main():
     rows = load_candidate_rows(Path(args.candidate_manifest), args.max_frames)
     gt_by_frame = load_gt(Path(args.gt))
     start = time.perf_counter()
-    bridge = G2FeatureBridge.from_checkpoint(args.checkpoint, device=args.device,
-                                             model_sha256=args.model_sha256)
+    bridge = G2FeatureBridge.from_native_clean_dlm(
+        args.checkpoint, args.adapter, runtime_root=args.runtime_root,
+        device=args.device, model_sha256=args.model_sha256, task_query="person",
+    )
     examples = build_examples(rows, bridge, gt_by_frame, device, args.train_frames)
     model = GroundJEVModel(examples[0].features.shape[-1], hidden_dim=256).to(device)
     train_examples = examples[:args.train_frames]
@@ -267,7 +274,10 @@ def main():
                 "teacher_forced_causal_memory": True}, output / f"adapter-step{step:06d}.pt")
     receipt = {
         "status": "PHASE_B_REAL_G2_FEATURE_READOUT_PILOT_COMPLETE",
-        "checkpoint": str(Path(args.checkpoint).resolve()), "model_sha256": args.model_sha256,
+        "checkpoint": str(Path(args.checkpoint).resolve()),
+        "adapter": str(Path(args.adapter).resolve()),
+        "runtime_root": str(Path(args.runtime_root).resolve()),
+        "model_sha256": args.model_sha256,
         "candidate_manifest": str(Path(args.candidate_manifest).resolve()),
         "gt_manifest": str(Path(args.gt).resolve()), "frames": len(examples),
         "train_frames": len(train_examples), "temporal_dev_frames": len(dev_examples),
@@ -275,6 +285,7 @@ def main():
         "proposal_source": "prior_native_GroundAnything_candidates_repo_external_to_G2",
         "teacher_forced_causal_memory": True,
         "g2_forward_count": bridge.forward_count,
+        "native_dlm_forward_count": bridge.provider.forward_count,
         "pilot_optimizer_steps": step, "before": before, "after": after,
         "replay": {"frames": len(replay_rows), "feature_forwards": replay_forwards,
                     "rows": replay_rows},
