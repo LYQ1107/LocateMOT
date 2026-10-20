@@ -1,5 +1,5 @@
-Warning: truncated output (original token count: 119388)
-Total output lines: 3049
+Warning: truncated output (original token count: 119599)
+Total output lines: 3053
 
 # LocateMOT Research Log
 
@@ -2192,11 +2192,7 @@ per-queryrejection contributesempty for thatquery only, concatenates remaining
 original-parserboxes, noNMS/topK/GTselection; matches existing scored-query
 control policy, not old whole-frame-rejection scores. One blocking owner waits
 currentGPU5memoryjobexit beforeowning temporaryDLM/feature services; stops
-bothcompletegroups befo…19388 tokens truncated…ompact或调验证阈值。
-
-扩展训练数据准备计划：当前Full类别语料64图/8video/9Base类，RMOT72物理帧/9fitvideo/18表达，不够描述长时间大规模联合训练。现有冻结MOT训练frames实际40904（MOT172664/Dance33772/MOT204468），TAO训练注释18274图/500video，额外freeform类不能冒充1203输入词表监督。实现纯CPU可用性索引：仅冻结MOT train_frames、V2全部9fit的本地图像和所有表达、TAOtrain映射Base(c/f)对象引用，所有无Base帧和缺文件记录保留，不当负标签/不读取eval或forbiddenGT。仅元数据128MiB预算，不开模型/feature缓存/新训练，不改变当前600对照。后续根据真实测评选择扩展课程和actor rollout，索引不冒充训练曝光。
-
-扩大训练数据索引实际完成：MOT40904训练帧/43video，RMOT1814本地图像/全部9fit/4350表达文件，TAO18274训练图/500video/175Baseclasses/52978eligible targets；当前旧类别SFT仅9类/64图，规模缺口有实际可用数据支撑。所有index图像is_file true，RMOT所有positive表达frame都有本地图像；MOT唯一dataset/sequence/frame40904，9fit集合精确；逐一52978target核验源imageid/annoID与frozen vocab synset/frequency一致，52978+6172nonBase+50outsidevoc=59200守恒。175类别coverage sum同52978；1251零eligibleBase帧全部保留，不给Novel/unknown负标签。不称外部完整RMOT序列长度证明/实际训练曝光/联合梯度训练。原始indices约33.85MB本地保存，发布可复现builder/sourceplan与summary/coverage/validation，未创建任何feature缓存或新GPU。原训练150/600真实loss/grad有限，ckpt150和完整FP32/Adam/RNG已保存，继续原队列。
+bothcompletegroups befo…19599 tokens truncated…1814本地图像/全部9fit/4350表达文件，TAO18274训练图/500video/175Baseclasses/52978eligible targets；当前旧类别SFT仅9类/64图，规模缺口有实际可用数据支撑。所有index图像is_file true，RMOT所有positive表达frame都有本地图像；MOT唯一dataset/sequence/frame40904，9fit集合精确；逐一52978target核验源imageid/annoID与frozen vocab synset/frequency一致，52978+6172nonBase+50outsidevoc=59200守恒。175类别coverage sum同52978；1251零eligibleBase帧全部保留，不给Novel/unknown负标签。不称外部完整RMOT序列长度证明/实际训练曝光/联合梯度训练。原始indices约33.85MB本地保存，发布可复现builder/sourceplan与summary/coverage/validation，未创建任何feature缓存或新GPU。原训练150/600真实loss/grad有限，ckpt150和完整FP32/Adam/RNG已保存，继续原队列。
 
 175Base语料组件实现计划：现有原生NativeCategoryHead.crop_sheet可直接按原图/精确GT框惰性生成768宽、216/432高实际像素；根/条件leaf问题原样沿用。全部52978训练Base对象构成105956问题，保留1203输入词表、1251零Base帧登记，不加Novel/unknown负标签。压缩JSONL+media裁剪recipe避免约GB的重复文本/PNG落盘；新独立训练入口仅进程内扩展gzip/load_media IO并将IO版本写入恢复协议，现有对照入口不改。先真实旧215对象像素/问题对齐及175新类代表图、CPU processor张量和官方全量token计划核验。仅准备未来平衡三任务混合的类别组件，不启动类别单任务optimizer；256MiB导出cap、合计26359878413<25GiB。
 
@@ -2801,6 +2797,10 @@ Because the all-GPU snapshot was occupied by protected/foreign jobs, no native T
 Added `scripts/groundjev/merge_tao_native_shards.py` as the only promotion path after streaming. It checks every shard receipt, parent SHA, exact image order, GT-free metadata, and disjoint full coverage before producing a combined candidate archive. A preflight against the registered-but-unstreamed v2 directory rejected the missing shard receipt at shard 0, as intended; no native TRAIN rows or optimizer updates were created.
 
 The merge contract also passed a synthetic four-frame/two-shard GT-free fixture, covering the successful receipt path without touching dataset or GPU state.
+
+## 2026-10-21 — resumable TAO TRAIN native owner started
+
+Added `scripts/groundjev/queue_tao_native_train_shards.py` and synchronized the runtime stream copy so shard-specific GroundAnything and native-feature ports are supported while the default validation ports remain unchanged. The owner is live in `WAITING_G2_CLEAN_SUCCESS`, restricted to physical GPUs 4/6, and treats any existing compute application as unavailable; GPUs 3/5 and 7 are excluded to protect G2/G1 and held-out/YesTrack. It will run the eight native TRAIN shards and strict merge only after the exact G2 terminal receipt. A first background launch was reaped by the terminal wrapper before writing state; the persistent-session launch wrote the waiting state and made no GPU or foreign-job change. Evidence: `docs/GROUNDJEV/TAO_TRAIN_NATIVE_QUEUE_20261021.{json,md}`.
 
 ## 2026-10-21 — authoritative G2 refresh at step 12442
 
