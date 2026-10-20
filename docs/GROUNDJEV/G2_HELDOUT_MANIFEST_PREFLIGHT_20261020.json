@@ -1,0 +1,56 @@
+{
+  "status": "G2_INDEPENDENT_HELDOUT_MANIFEST_PREFLIGHT_PASS",
+  "timestamp": "2026-10-20T23:06:00+08:00",
+  "scopes": [
+    {
+      "name": "mot20_05_validation1657",
+      "task": "mot",
+      "manifest": "/data3/user/LocateMOT-runs/GroundJEV/g2_step3000_full_eval_mot20_05/mot20_05_validation_half.json",
+      "sha256": "2be2233c2e66323b22ccdb1b9b386646c6b792d9de5e77554cc1143b80ba42a6",
+      "frames": 1657,
+      "first_frame": 1659,
+      "last_frame": 3315,
+      "missing_images": 0,
+      "sequence": "MOT20-05",
+      "video_id": null
+    },
+    {
+      "name": "rmot_single0007",
+      "task": "rmot",
+      "manifest": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_pilot_data/rmot_single_empty_full.json",
+      "sha256": "79e4286fc904209df00a54a5ccc58171e4f267d915a2256e80e5c3db5df5d32c",
+      "frames": 800,
+      "first_frame": 0,
+      "last_frame": 799,
+      "missing_images": 0,
+      "sequence": "0007",
+      "video_id": null
+    },
+    {
+      "name": "rmot_multi0007",
+      "task": "rmot",
+      "manifest": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_pilot_data/rmot_multi_empty_full.json",
+      "sha256": "fc09932ae678be52e6091178a08b565e41a7895d5ff76192d50b89caa27e5e14",
+      "frames": 800,
+      "first_frame": 0,
+      "last_frame": 799,
+      "missing_images": 0,
+      "sequence": "0007",
+      "video_id": null
+    },
+    {
+      "name": "ovmot_tao105",
+      "task": "ovmot",
+      "manifest": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_pilot_data/ovmot_tao_independent105_full.json",
+      "sha256": "522cde4bfc776b7b8a18807a5caee30330c322eb9dd8df86fc472d150db9e261",
+      "frames": 40,
+      "first_frame": 1,
+      "last_frame": 1171,
+      "missing_images": 0,
+      "sequence": "val/HACS/Making_a_sandwich_v_6RjriKVIkR4_scene_0_0-4638",
+      "video_id": 105
+    }
+  ],
+  "overlap_audit_reference": "queue owner performs exact normalized image-path audit against G2 Clean TRAIN before launch",
+  "claim_boundary": "input contract only; no model inference or metric claim"
+}
