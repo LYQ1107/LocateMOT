@@ -3154,3 +3154,11 @@ wait receipt and the preserved historical pre-MOT receipt. Startup now accepts
 that exact clean wait state, preserves the historical receipt, rejects any
 unexpected partial evaluation outputs, refuses live duplicates, and records
 `resumed_wait_owner`. The owner is restarted without allocating GPU7.
+## 2026-10-21 — G2 progress evidence refreshed
+
+The protected formal G2 Clean owner remains live on physical GPUs 3/5. The
+latest observed training event is step 12,567/18,227 with finite loss
+0.3145263; `adapter-step012500.pt` and `latest_training_state.pt` load with
+the registered clean manifest SHA. No terminal receipt or final adapter exists
+yet, so no downstream bundle, held-out metric, G1 update, or joint optimizer
+update is claimed. The waiting owners remain untouched and recoverable.

@@ -2089,7 +2089,7 @@ No bundle promotion or quality claim is made before that receipt.
 
 The protected G2 Clean run is still the only active optimizer in this route:
 its two ranks remain on physical GPUs 3/5 and its latest durable training event
-is step 12,532/18,227 with finite loss 0.2126985. `adapter-step012500.pt` and
+is step 12,567/18,227 with finite loss 0.3145263. `adapter-step012500.pt` and
 `latest_training_state.pt` are present; `final_receipt.json` is not present, so
 no terminal model or metric claim is made.
 
