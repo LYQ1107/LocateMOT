@@ -1,0 +1,75 @@
+{
+  "schema": "groundjev_g2_durable_checkpoint_receipt_v1",
+  "observed_at_utc": "2026-10-20T15:57:29.745392+00:00",
+  "checkpoint_step": 11000,
+  "latest_event": {
+    "step": 11003,
+    "epoch": 0,
+    "position": 88024,
+    "micro_batches": 8,
+    "samples_global": 16,
+    "effective_tokens_global": 10890,
+    "token_budget_per_device": 16384,
+    "loss": 0.24494200921617448,
+    "gradient_norm": 8.540129661560059,
+    "peak_memory_gib": 12.828852653503418,
+    "lr_projector": 8.451018504374474e-07,
+    "lr_lora": 2.957856476531066e-06,
+    "checkpoint": null,
+    "time": "2026-10-20 23:57:13 +0800"
+  },
+  "adapter_path": "/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final/checkpoints/adapter-step011000.pt",
+  "adapter_sha256": "f2b7199f57dae156a05e1efcadfa04b275a7f0399187b264e0b21ddc1b58409b",
+  "state_path": "/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final/checkpoints/latest_training_state.pt",
+  "state_sha256": "796a37c74ee75ebf646100fd3f8e1f28f68b3631ec458d0719fa3b1cbbaac5f0",
+  "manifest_path": "/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/g2_clean_train_rows.jsonl",
+  "manifest_sha256": "f682519a1cf9204ca76ea75a56dad36dbdeac26259f202551ab9f66fefd06e71",
+  "manifest_matches_state": true,
+  "world_size": 2,
+  "training_contract": {
+    "coverage_mode": "exact_once",
+    "micro_batch_size": 2,
+    "grad_accum_steps": 8,
+    "effective_global_batch": 32,
+    "token_budget_per_device": 16384,
+    "max_steps": 18227,
+    "warmup_steps": 547,
+    "max_length": 4096,
+    "max_joint_length": 8192,
+    "world_size": 2,
+    "seed": 20261019,
+    "objective": {
+      "mdm_loss_weight": 0.5,
+      "causal_loss_weight": 0.5
+    },
+    "optimizer_contract": {
+      "projector_lr": 2e-06,
+      "lora_lr": 7e-06,
+      "weight_decay": 0.1,
+      "gradient_clip": 1.0,
+      "scheduler": "cosine_with_min_lr",
+      "min_lr_rate": 0.1,
+      "warmup_ratio": 0.03
+    }
+  },
+  "optimizer_present": true,
+  "scheduler_present": true,
+  "sampler_present": true,
+  "rng_present": true,
+  "rank_rng": {
+    "0": {
+      "path": "/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final/checkpoints/rng/step011000.rank0000.pt",
+      "exists": true,
+      "sha256": "d5735a45a9be7978b80e642f2f2f690882785ee55745e937633748dbe1e1184e",
+      "matches_record": true
+    },
+    "1": {
+      "path": "/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final/checkpoints/rng/step011000.rank0001.pt",
+      "exists": true,
+      "sha256": "c1989e0b12bbd18c4150bc1269712f9f44a09035141de1f6af8b9d463a596bbe",
+      "matches_record": true
+    }
+  },
+  "final_receipt_present": false,
+  "scope": "GroundJEV G2 Clean; external TTA/shift-RMOT excluded"
+}
