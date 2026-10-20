@@ -39,3 +39,9 @@ The required full legal video-4 scope has 40 registered frames, but only the exi
 ## Video 63 boundary
 
 The 40-frame video-63 run is an independent TAO validation control and has a valid official TETA receipt. It uses the existing simple backend, not a G2/G1/OneJev adapted model, so it cannot support a GroundJEV adaptation claim.
+
+## Conservative native-parser repair
+
+`locatemot/groundjev/native_output_repair.py` now provides `complete_pair_salvage_v1`, selected by `official_scoring_repaired`. It retains only complete `object_ref` + `box` pairs with four in-range, non-degenerate coordinates, drops malformed/nested fragments, and records every drop. It never fills a missing coordinate and never reorders a tuple. A targeted self-test passed. Applying it offline to the four preserved raw video-4 responses recovered 104, 129, 133 and 98 complete pairs respectively, with the strict errors and dropped-fragment counts retained in the JSON receipt; this is parser preflight, not a new model evaluation.
+
+A fresh live video-4 rerun using the repaired policy was attempted, but the GroundAnything service timed out before frame 751 completed. It produced no new native candidates or metric, so the full video-4 scope remains pending service recovery.

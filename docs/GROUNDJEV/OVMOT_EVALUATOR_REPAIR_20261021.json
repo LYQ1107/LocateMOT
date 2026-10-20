@@ -154,5 +154,77 @@
     "root_cause": "OneJev native decoder output violates the strict canonical coordinate-tuple schema (duplicate or unsorted tuples); the safe parser rejects the frame instead of guessing boxes.",
     "boundary": "No full 40-frame video4 native result is claimed. A full-scope rerun remains pending the parser/model-output repair; the four-frame receipt is diagnostic only."
   },
-  "claims_boundary": "video63 is an independent 40-frame TAO validation control produced by the existing simple backend; it is not G2/G1/OneJev adapted-model evidence. video4 is a rejected native diagnostic."
+  "claims_boundary": "video63 is an independent 40-frame TAO validation control produced by the existing simple backend; it is not G2/G1/OneJev adapted-model evidence. video4 is a rejected native diagnostic.",
+  "parser_repair_implementation": {
+    "module": "locatemot/groundjev/native_output_repair.py",
+    "version": "complete_pair_salvage_v1",
+    "entrypoint": "GroundAnythingAdapter(parser_policy=official_scoring_repaired)",
+    "policy": "retain complete object_ref/box pairs; drop malformed or nested fragments; preserve raw coordinate order and values",
+    "missing_coordinates_filled": false,
+    "coordinates_reordered": false,
+    "targeted_selftest": "NATIVE_OUTPUT_REPAIR_SELFTEST_PASS",
+    "raw_native_preflight_source": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_runs/pretrained_v1_registered_v2_evaluation_repair/ovmot_tao_first4/full/frame_decisions.jsonl",
+    "raw_native_preflight": [
+      {
+        "frame": 751,
+        "strict_parse_error": "duplicate coordinate tuples are not canonical",
+        "raw_output_sha256": "14b08e2f82f15a437abfd3f5a14b6c2c010a914556b02bbc2d80db8b19176ab4",
+        "recovered_complete_pairs": 104,
+        "duplicate_count": 11,
+        "dropped_fragment_count": 2,
+        "dropped_reasons": {
+          "unexpected_separator": 2
+        },
+        "missing_coordinates_filled": false,
+        "coordinates_reordered": false
+      },
+      {
+        "frame": 781,
+        "strict_parse_error": "coordinate tuples are not in canonical sorted order",
+        "raw_output_sha256": "301084aa9ca89f6ae414a78a115a95c9bdcd89924c9adda83156d33eff131ea7",
+        "recovered_complete_pairs": 129,
+        "duplicate_count": 5,
+        "dropped_fragment_count": 0,
+        "dropped_reasons": {},
+        "missing_coordinates_filled": false,
+        "coordinates_reordered": false
+      },
+      {
+        "frame": 811,
+        "strict_parse_error": "duplicate coordinate tuples are not canonical",
+        "raw_output_sha256": "e726be2224643757f7f36cf35bc205b1192d82b12d29f4628c14bdacc57e5363",
+        "recovered_complete_pairs": 133,
+        "duplicate_count": 17,
+        "dropped_fragment_count": 1,
+        "dropped_reasons": {
+          "nested_object_before_box_end": 1
+        },
+        "missing_coordinates_filled": false,
+        "coordinates_reordered": false
+      },
+      {
+        "frame": 841,
+        "strict_parse_error": "duplicate coordinate tuples are not canonical",
+        "raw_output_sha256": "ec8cd9c4012fae0b042aa2d7db74311e657839aa663f8871c0d45d76edfba400",
+        "recovered_complete_pairs": 98,
+        "duplicate_count": 17,
+        "dropped_fragment_count": 1,
+        "dropped_reasons": {
+          "unexpected_separator": 1
+        },
+        "missing_coordinates_filled": false,
+        "coordinates_reordered": false
+      }
+    ],
+    "implementation_commit": "7d78264"
+  },
+  "live_repair_attempt": {
+    "status": "FAILED_BEFORE_PARSER_AT_FRAME_751",
+    "output_root": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_runs/ovmot_video4_repaired_native_v1",
+    "command_parser_policy": "official_scoring_repaired",
+    "error": "TimeoutError: timed out while waiting for the GroundAnything service response",
+    "service": "http://127.0.0.1:8101/v1",
+    "frames_completed": 0,
+    "interpretation": "No new native output or metric is claimed; the full video-4 repair remains blocked by service availability/latency after the conservative parser fix was installed."
+  }
 }
