@@ -3359,12 +3359,21 @@ The G1 queue is explicitly bound to physical GPU5, but the older
 `native_ground_tracking200_20261014.json` retained a historical
 `physical_training_GPU: 7` field.  That plan is preserved unchanged; the G1
 queue now references a versioned GPU5 plan with matching physical-device
-metadata and an explicit queue-owner provenance note.  The waiting G1 process
-was not restarted, and the corrected plan will be read only when its exact G2
-terminal gate opens.
+metadata and an explicit queue-owner provenance note.  The corrected plan will
+be read only when its exact G2 terminal gate opens.
 
 The already-running wait-only owner had loaded the old plan path in memory, so
 it was safely replaced before any GPU work began (old PID 516321 exited; new
 wait owner PID 579251 is `WAITING_G2_CLEAN_SUCCESS`).  Its output directory,
 bundle, controls and historical state were preserved; the new owner records
 `native_ground_tracking200_gpu5_20261021.json` and still owns no GPU.
+
+## 2026-10-21 — protected G2 throughput snapshot (step 12731)
+
+The formal G2 event stream is contiguous through step 12,731/18,227 with no
+non-finite loss, gradient, memory or learning-rate fields.  The measured rates
+are 313.73, 312.31 and 311.00 steps/hour over the last 100, 500 and 1,000
+steps, respectively.  This leaves 5,496 updates and a linear estimate of
+about 17.5–17.7 hours.  `final_receipt.json` and the terminal adapter remain
+absent, so this is a throughput/progress record only and does not open any
+downstream performance claim.
