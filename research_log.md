@@ -1464,3 +1464,9 @@ are kept; unrelated GroundJEV worktree changes were not staged or overwritten.
   sampler and all-rank RNG state, records `world_size=2`, and carries the
   registered clean-manifest SHA. The active trainer remains beyond this
   checkpoint and was not interrupted.
+
+- A static timing audit of the historical full-source OneJev log found about
+  13.4 seconds per step around steps 3300–3500. The durable resume point is
+  step 3000, leaving 25,690 updates and roughly 95–100 compute hours before
+  checkpoint/final-evaluation overhead. This is a planning estimate only; the
+  resumed owner remains dependency-gated and was not started by this audit.
