@@ -1,0 +1,31 @@
+{
+  "report": "tao_train_native_shards",
+  "date": "2026-10-21",
+  "project_root": "/data2/user/LocateMOT",
+  "parent_manifest": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/tao_native_ovmot_train_scope_v1/manifest.json",
+  "parent_manifest_sha256": "835adaadff282088599987de4c5bc906e7d8aca826deb7426cda05598e9db3a4",
+  "output_root": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/tao_native_ovmot_train_shards_v2",
+  "num_shards": 8,
+  "parent_frames": 18274,
+  "parent_videos": 500,
+  "coverage": {
+    "disjoint_contiguous_slices": true,
+    "covered_frames": 18274,
+    "missing_frames": 0,
+    "duplicate_frames": 0
+  },
+  "shards": [
+    {"shard_index": 0, "start_index": 0, "end_index_exclusive": 2284, "frames": 2284, "videos": 60},
+    {"shard_index": 1, "start_index": 2284, "end_index_exclusive": 4568, "frames": 2284, "videos": 59},
+    {"shard_index": 2, "start_index": 4568, "end_index_exclusive": 6852, "frames": 2284, "videos": 59},
+    {"shard_index": 3, "start_index": 6852, "end_index_exclusive": 9137, "frames": 2285, "videos": 69},
+    {"shard_index": 4, "start_index": 9137, "end_index_exclusive": 11421, "frames": 2284, "videos": 59},
+    {"shard_index": 5, "start_index": 11421, "end_index_exclusive": 13705, "frames": 2284, "videos": 60},
+    {"shard_index": 6, "start_index": 13705, "end_index_exclusive": 15989, "frames": 2284, "videos": 64},
+    {"shard_index": 7, "start_index": 15989, "end_index_exclusive": 18274, "frames": 2285, "videos": 77}
+  ],
+  "native_candidate_export_started": false,
+  "native_ovmot_training_rows": false,
+  "gpu_launched": false,
+  "next_step": "Stream every shard, verify each receipt, concatenate in shard order, then run the strict native TRAIN annotation join."
+}
