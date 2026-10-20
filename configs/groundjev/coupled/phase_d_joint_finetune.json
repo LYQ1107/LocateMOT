@@ -1,0 +1,9 @@
+{
+  "phase": "D",
+  "init": "terminal_G2_clean_bundle",
+  "freeze_visual_encoder": true,
+  "trainable": ["typed_readout", "memory_token_projection", "qwen3_lora"],
+  "grounding_retention": "registered_train_only_rows",
+  "formal_test_tuning": false,
+  "quality_claim": false
+}

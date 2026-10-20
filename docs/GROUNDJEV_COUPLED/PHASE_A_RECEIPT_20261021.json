@@ -1,0 +1,258 @@
+{
+  "status": "PHASE_A_REAL_G2_VISUAL_TYPED_READOUT_FORWARD_BACKWARD_COMPLETE",
+  "project": "LocateMOT/GroundJEV",
+  "single_backbone": true,
+  "second_vlm_loaded": false,
+  "g2_base_bundle": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM",
+  "g2_base_model_safetensors_sha256": "3cf09355cde8cf4877cdc76e0a72301d572c1d6263b2831f8a03368285bb65e2",
+  "g2_adapter": "/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final/checkpoints/adapter-step011000.pt",
+  "g2_adapter_sha256": "f2b7199f57dae156a05e1efcadfa04b275a7f0399187b264e0b21ddc1b58409b",
+  "g2_adapter_step": 11000,
+  "image": "/data2/user/LocateMOT/data/MOT20/MOT20/train/MOT20-03/img1/000083.jpg",
+  "image_sha256": "7d60d2fa1f46ceb281c06d9190cde630463e68b263450eee1934e181552e086d",
+  "dataset_scope": "MOT20 TRAIN frame 83; engineering gate only",
+  "boxes": [
+    [
+      475.0,
+      858.0,
+      501.0,
+      881.0
+    ],
+    [
+      900.0,
+      620.0,
+      970.0,
+      760.0
+    ]
+  ],
+  "state": {
+    "frame_id": 83,
+    "image_key": "/data2/user/LocateMOT/data/MOT20/MOT20/train/MOT20-03/img1/000083.jpg",
+    "model_sha256": "99af1df181742349113e2348ae5de429a110cc15ae2fd4010558c0a9b2fdb183",
+    "num_boxes": 2,
+    "feature_dim": 2560,
+    "vision_tokens_shape": [
+      1,
+      2560,
+      27,
+      36
+    ],
+    "region_tokens_shape": [
+      2,
+      2560
+    ],
+    "contextual_tokens_shape": null,
+    "image_grid_thw": [
+      1,
+      54,
+      72
+    ],
+    "spatial_layout": [
+      27,
+      36
+    ],
+    "image_size": [
+      1173,
+      880
+    ],
+    "task_query": "person",
+    "metadata": {
+      "feature_source": "official_DLM_native_MoonViT_and_trained_projector",
+      "checkpoint": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM",
+      "weight_prefix": "base_model.model.visual.",
+      "model_sha256": "99af1df181742349113e2348ae5de429a110cc15ae2fd4010558c0a9b2fdb183",
+      "g2_adapter": {
+        "path": "/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final/checkpoints/adapter-step011000.pt",
+        "step": 11000,
+        "format": "groundanything-g2-projector-qwen3-lora-v2-strict",
+        "projector_tensors_replaced": 5,
+        "language_lora_loaded_in_visual_bridge": false
+      },
+      "native_parameters": 428482048,
+      "native_weight_entries": 170,
+      "image_size": [
+        1173,
+        880
+      ],
+      "grid_thw": [
+        1,
+        54,
+        72
+      ],
+      "merged_grid": [
+        27,
+        36
+      ],
+      "resize_and_padding": {
+        "num_tokens": 972,
+        "new_width": 1008,
+        "new_height": 756,
+        "pad_width": 0,
+        "pad_height": 0,
+        "sampled_nframes": 1
+      },
+      "feature_dimension": 2560,
+      "attention": "official eager",
+      "seconds": 1.7571488739922643,
+      "dataset": "MOT20",
+      "split": "TRAIN",
+      "bridge": "G2FeatureBridge",
+      "visual_forward_calls_for_frame": 1,
+      "bridge_total_forward_calls": 1,
+      "bridge_total_pool_calls": 1,
+      "language_context_source": "caller_optional_contextual_tokens",
+      "second_visual_encoder": false
+    }
+  },
+  "typed_decisions": {
+    "frame_id": 83,
+    "image_key": "/data2/user/LocateMOT/data/MOT20/MOT20/train/MOT20-03/img1/000083.jpg",
+    "model_sha256": "99af1df181742349113e2348ae5de429a110cc15ae2fd4010558c0a9b2fdb183",
+    "visual_forward_calls": 1,
+    "decisions": [
+      {
+        "candidate_index": 0,
+        "slots": [
+          {
+            "token": "NEW",
+            "kind": "new",
+            "track_id": null,
+            "lost_age": 0,
+            "state": "ACTIVE",
+            "text": "NEW physical entity",
+            "retrieval_rank": null
+          },
+          {
+            "token": "NO_MATCH",
+            "kind": "no_match",
+            "track_id": null,
+            "lost_age": 0,
+            "state": "ACTIVE",
+            "text": "valid entity, no supported shortlist identity",
+            "retrieval_rank": null
+          },
+          {
+            "token": "REJECT",
+            "kind": "reject",
+            "track_id": null,
+            "lost_age": 0,
+            "state": "ACTIVE",
+            "text": "invalid or duplicate proposal",
+            "retrieval_rank": null
+          }
+        ],
+        "identity_logits": [
+          -0.0077509768307209015,
+          0.021138256415724754,
+          0.01809743419289589
+        ],
+        "identity_probabilities": {
+          "NEW": 0.32727909088134766,
+          "NO_MATCH": 0.336871862411499,
+          "REJECT": 0.3358490467071533
+        },
+        "chosen_token": "NO_MATCH",
+        "chosen_probability": 0.336871862411499,
+        "decision": "NO_MATCH",
+        "track_id": null,
+        "admission_probability": 0.5315626263618469,
+        "lifecycle_probabilities": {
+          "ACTIVE": 0.17715001106262207,
+          "LOST": 0.4252856969833374,
+          "REACTIVATE": 0.1685304492712021,
+          "TERMINATE": 0.22903387248516083
+        },
+        "memory_update_probability": 0.6083701252937317,
+        "metadata": {
+          "memory_enabled": true,
+          "typed_readout": "G2JEVReadout",
+          "second_vlm_loaded": false
+        }
+      },
+      {
+        "candidate_index": 1,
+        "slots": [
+          {
+            "token": "NEW",
+            "kind": "new",
+            "track_id": null,
+            "lost_age": 0,
+            "state": "ACTIVE",
+            "text": "NEW physical entity",
+            "retrieval_rank": null
+          },
+          {
+            "token": "NO_MATCH",
+            "kind": "no_match",
+            "track_id": null,
+            "lost_age": 0,
+            "state": "ACTIVE",
+            "text": "valid entity, no supported shortlist identity",
+            "retrieval_rank": null
+          },
+          {
+            "token": "REJECT",
+            "kind": "reject",
+            "track_id": null,
+            "lost_age": 0,
+            "state": "ACTIVE",
+            "text": "invalid or duplicate proposal",
+            "retrieval_rank": null
+          }
+        ],
+        "identity_logits": [
+          0.050545584410429,
+          0.01487962156534195,
+          0.0012396452948451042
+        ],
+        "identity_probabilities": {
+          "NEW": 0.34283530712127686,
+          "NO_MATCH": 0.33082324266433716,
+          "REJECT": 0.3263414204120636
+        },
+        "chosen_token": "NEW",
+        "chosen_probability": 0.34283530712127686,
+        "decision": "NEW",
+        "track_id": null,
+        "admission_probability": 0.44815096259117126,
+        "lifecycle_probabilities": {
+          "ACTIVE": 0.2084243893623352,
+          "LOST": 0.2755536437034607,
+          "REACTIVATE": 0.21706163883209229,
+          "TERMINATE": 0.2989603579044342
+        },
+        "memory_update_probability": 0.5865384936332703,
+        "metadata": {
+          "memory_enabled": true,
+          "typed_readout": "G2JEVReadout",
+          "second_vlm_loaded": false
+        }
+      }
+    ],
+    "assignment": {},
+    "metadata": {
+      "memory_enabled": true,
+      "single_backbone": true,
+      "second_vlm_loaded": false,
+      "contextual_tokens_present": false
+    }
+  },
+  "losses": {
+    "grounding": null,
+    "identity_choice": 1.0937235355377197,
+    "admit": 0.7172796726226807,
+    "birth": 0.6247543096542358,
+    "lifecycle": null,
+    "memory": null,
+    "yesno": null,
+    "total": 1.5854206085205078
+  },
+  "typed_readout_trainable_parameters": 1980425,
+  "typed_readout_gradient_norm": 15.877484321594238,
+  "visual_forward_calls": 1,
+  "elapsed_seconds": 25.65873762499541,
+  "peak_memory_allocated_bytes": 2930523648,
+  "peak_memory_reserved_bytes": 3523215360,
+  "quality_claim": false,
+  "note": "Real G2 visual projector state and real MOT20 pixels; Phase-A engineering evidence, not a benchmark."
+}

@@ -1,0 +1,27 @@
+{
+  "status": "NATIVE_YESTRACK_CORPUS_AUDIT_PASS",
+  "format": "locatemot-native-yesno-v1",
+  "rows": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/coupled/native_yesno_v2_smoke.jsonl",
+  "rows_sha256": "6316cae8bb0fa991b118ffa927d5040aad85806b7230af3b5e857dec821209f4",
+  "row_count": 793,
+  "counts": {
+    "train|identity_pair|no": 7,
+    "train|identity_pair|yes": 3,
+    "train|ovmot|no": 142,
+    "train|ovmot|yes": 142,
+    "train|rmot|no": 192,
+    "train|rmot|yes": 50,
+    "val|identity_pair|no": 6,
+    "val|identity_pair|yes": 1,
+    "val|ovmot|no": 73,
+    "val|ovmot|yes": 73,
+    "val|rmot|no": 82,
+    "val|rmot|yes": 22
+  },
+  "source_split_leakage": {},
+  "errors": [],
+  "gt_in_model_input": false,
+  "future_evidence": false,
+  "official_test_labels_read": false,
+  "MOT20-05_included": false
+}

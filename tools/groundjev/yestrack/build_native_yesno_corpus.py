@@ -93,7 +93,7 @@ def _row(*, identifier: str, split: str, source: str, task: str,
          yes: bool, proposal_source: str, source_ref: str, family: str,
          extra: dict[str, Any] | None = None) -> dict[str, Any]:
     supervision = {
-        "yestrack_version": "native-yesno-v1",
+        "yestrack_version": "native-yesno-v2-stable-sha-seed",
         "proposal_source": proposal_source,
         "source_reference": source_ref,
         "family": family,
@@ -189,7 +189,10 @@ def _clip_identity_rows(clip: Path, split: str, max_rows: int,
     # Keep the two MOT verifier families represented even when a clip has many
     # identity candidates.  In particular, do not let identity rows consume the
     # quota before the occlusion/recovery labels are read.
-    rng = random.Random(seed + hash(clip.name) % 1000003)
+    # Python's built-in hash is process-randomized.  v2 derives the clip seed
+    # from a stable digest; existing v1 artifacts remain immutable.
+    stable_clip_seed = int.from_bytes(hashlib.sha256(clip.name.encode("utf-8")).digest()[:8], "big")
+    rng = random.Random(seed + stable_clip_seed % 1000003)
     rng.shuffle(identity_rows)
     identity_rows = identity_rows[: max(1, (2 * max_rows) // 3)]
 
@@ -356,8 +359,8 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
             f.write(json.dumps(row, ensure_ascii=False) + "\n")
     counts = Counter((r["split"], r["task"], next(iter(r["target"]))) for r in rows)
     manifest = {
-        "format": "locatemot-native-yesno-v1",
-        "status": "LEGAL_CAUSAL_NATIVE_YESNO_CORPUS_READY",
+        "format": "locatemot-native-yesno-v2",
+        "status": "LEGAL_CAUSAL_NATIVE_YESNO_CORPUS_V2_STABLE_SEED_READY",
         "rows": str(out.resolve()),
         "rows_sha256": _digest(out),
         "row_count": len(rows),

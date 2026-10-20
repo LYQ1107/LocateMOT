@@ -1,0 +1,201 @@
+{
+  "status": "PHASE_B_REAL_NATIVE_G2_ABLATIONS_COMPLETE",
+  "backbone": "GroundAnything G2 step11000 projector visual path",
+  "g2_adapter": "/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final/checkpoints/adapter-step011000.pt",
+  "g2_adapter_sha256": "f2b7199f57dae156a05e1efcadfa04b275a7f0399187b264e0b21ddc1b58409b",
+  "corpus": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/coupled/joint_identity_v1_phaseb.jsonl",
+  "corpus_sha256": "20ca7512edcb139b1ad4eabfde38f38c2ac6f6254be898775b80e19ba4c51ac0",
+  "train_split_only": true,
+  "examples": 24,
+  "source_rows": [
+    "joint_yesno_1064_yes_MOT17-09-FRCNN_124_batch0_match_7_17015_yes",
+    "joint_yesno_1075_yes_dancetrack0057_307_batch0_match_0_44463_yes",
+    "joint_yesno_1079_yes_dancetrack0057_319_batch0_match_3_29150_yes",
+    "joint_yesno_1088_yes_MOT17-13-FRCNN_193_batch0_match_5_2414_yes",
+    "joint_yesno_1090_yes_MOT17-13-FRCNN_193_batch0_match_4_59320_yes",
+    "joint_yesno_1091_yes_dancetrack0074_595_batch0_match_2_34208_yes",
+    "joint_yesno_1102_yes_dancetrack0001_359_batch0_match_1_76124_yes",
+    "joint_yesno_1103_yes_MOT17-13-FRCNN_180_batch0_match_10_9499_yes",
+    "joint_yesno_1106_yes_MOT17-02-FRCNN_157_batch1_match_10_35683_yes",
+    "joint_yesno_129_yes_dancetrack0024_378_batch0_match_5_29683_yes",
+    "joint_yesno_13_yes_dancetrack0080_599_batch0_match_9_45433_yes",
+    "joint_yesno_159_yes_dancetrack0001_354_batch0_match_2_32452_yes",
+    "joint_yesno_174_yes_MOT17-09-FRCNN_141_batch0_match_4_17015_yes",
+    "joint_yesno_177_yes_MOT17-13-FRCNN_187_batch0_match_11_47622_yes",
+    "joint_yesno_180_yes_dancetrack0024_379_batch0_match_10_29683_yes",
+    "joint_yesno_190_yes_dancetrack0057_315_batch0_match_11_59807_yes",
+    "joint_yesno_199_yes_MOT17-13-FRCNN_192_batch0_match_7_37056_yes",
+    "joint_yesno_202_yes_dancetrack0057_307_batch1_match_2_12360_yes",
+    "joint_yesno_254_yes_dancetrack0024_380_batch0_match_0_14018_yes",
+    "joint_yesno_269_yes_dancetrack0074_601_batch0_match_1_55547_yes",
+    "joint_yesno_324_yes_MOT17-02-FRCNN_143_batch0_match_15_14860_yes",
+    "joint_yesno_332_yes_MOT17-13-FRCNN_198_batch0_match_6_2414_yes",
+    "joint_yesno_371_yes_dancetrack0074_603_batch0_match_6_1001_yes",
+    "joint_yesno_375_yes_dancetrack0024_380_batch0_match_5_29683_yes"
+  ],
+  "families": [
+    "groundanything_native_identity_candidate",
+    "groundanything_native_identity_candidate",
+    "groundanything_native_identity_candidate",
+    "groundanything_native_identity_candidate",
+    "groundanything_native_identity_candidate",
+    "groundanything_native_identity_candidate",
+    "groundanything_native_identity_candidate",
+    "groundanything_native_identity_candidate",
+    "groundanything_native_identity_candidate",
+    "groundanything_native_identity_candidate",
+    "groundanything_native_identity_candidate",
+    "groundanything_native_identity_candidate",
+    "groundanything_native_identity_candidate",
+    "groundanything_native_identity_candidate",
+    "groundanything_native_identity_candidate",
+    "groundanything_native_identity_candidate",
+    "groundanything_native_identity_candidate",
+    "groundanything_native_identity_candidate",
+    "groundanything_native_identity_candidate",
+    "groundanything_native_identity_candidate",
+    "groundanything_native_identity_candidate",
+    "groundanything_native_identity_candidate",
+    "groundanything_native_identity_candidate",
+    "groundanything_native_identity_candidate"
+  ],
+  "images": [
+    "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-09-FRCNN/img1/000124.jpg",
+    "/data2/user/LocateMOT/data/DanceTrack/train/dancetrack0057/img1/00000307.jpg",
+    "/data2/user/LocateMOT/data/DanceTrack/train/dancetrack0057/img1/00000319.jpg",
+    "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-13-FRCNN/img1/000193.jpg",
+    "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-13-FRCNN/img1/000193.jpg",
+    "/data2/user/LocateMOT/data/DanceTrack/train/dancetrack0074/img1/00000595.jpg",
+    "/data2/user/LocateMOT/data/DanceTrack/train/dancetrack0001/img1/00000359.jpg",
+    "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-13-FRCNN/img1/000180.jpg",
+    "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-02-FRCNN/img1/000157.jpg",
+    "/data2/user/LocateMOT/data/DanceTrack/train/dancetrack0024/img1/00000378.jpg",
+    "/data2/user/LocateMOT/data/DanceTrack/train/dancetrack0080/img1/00000599.jpg",
+    "/data2/user/LocateMOT/data/DanceTrack/train/dancetrack0001/img1/00000354.jpg",
+    "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-09-FRCNN/img1/000141.jpg",
+    "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-13-FRCNN/img1/000187.jpg",
+    "/data2/user/LocateMOT/data/DanceTrack/train/dancetrack0024/img1/00000379.jpg",
+    "/data2/user/LocateMOT/data/DanceTrack/train/dancetrack0057/img1/00000315.jpg",
+    "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-13-FRCNN/img1/000192.jpg",
+    "/data2/user/LocateMOT/data/DanceTrack/train/dancetrack0057/img1/00000307.jpg",
+    "/data2/user/LocateMOT/data/DanceTrack/train/dancetrack0024/img1/00000380.jpg",
+    "/data2/user/LocateMOT/data/DanceTrack/train/dancetrack0074/img1/00000601.jpg",
+    "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-02-FRCNN/img1/000143.jpg",
+    "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-13-FRCNN/img1/000198.jpg",
+    "/data2/user/LocateMOT/data/DanceTrack/train/dancetrack0074/img1/00000603.jpg",
+    "/data2/user/LocateMOT/data/DanceTrack/train/dancetrack0024/img1/00000380.jpg"
+  ],
+  "visual_forward_calls": 24,
+  "arms": [
+    {
+      "mode": "B0_choice_only",
+      "examples": 24,
+      "steps": 200,
+      "logs": [
+        {
+          "step": 1,
+          "loss": 2.6640512943267822,
+          "identity_choice": 2.6640512943267822,
+          "yesno": 0.4758884310722351,
+          "lifecycle": null,
+          "gradient_norm": 1.984472632408142
+        },
+        {
+          "step": 100,
+          "loss": 2.452808141708374,
+          "identity_choice": 2.452808141708374,
+          "yesno": 0.6302799582481384,
+          "lifecycle": null,
+          "gradient_norm": 0.07656287401914597
+        },
+        {
+          "step": 200,
+          "loss": 2.445474147796631,
+          "identity_choice": 2.445474147796631,
+          "yesno": 0.6317132711410522,
+          "lifecycle": null,
+          "gradient_norm": 0.07418463379144669
+        }
+      ],
+      "checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/coupled/phase_b_ablations_v1/B0_choice_only/readout_step_final.pt",
+      "checkpoint_sha256": "52c44a58f175f7d6083605a12b719c5ae812337af343c907d95150f54ab82002",
+      "elapsed_seconds": 364.9076398969628,
+      "typed_readout_parameters": 1980682
+    },
+    {
+      "mode": "B1_choice_yesno",
+      "examples": 24,
+      "steps": 200,
+      "logs": [
+        {
+          "step": 1,
+          "loss": 3.438223123550415,
+          "identity_choice": 2.673623561859131,
+          "yesno": 0.7645995616912842,
+          "lifecycle": null,
+          "gradient_norm": 30.93482780456543
+        },
+        {
+          "step": 100,
+          "loss": 2.4528651237487793,
+          "identity_choice": 2.4528234004974365,
+          "yesno": 4.166656799498014e-05,
+          "lifecycle": null,
+          "gradient_norm": 0.07666079699993134
+        },
+        {
+          "step": 200,
+          "loss": 2.4454519748687744,
+          "identity_choice": 2.445435047149658,
+          "yesno": 1.6974763639154844e-05,
+          "lifecycle": null,
+          "gradient_norm": 0.07416737824678421
+        }
+      ],
+      "checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/coupled/phase_b_ablations_v1/B1_choice_yesno/readout_step_final.pt",
+      "checkpoint_sha256": "b963e06355baf0cc6c8213c3859661ede853006bc145f52e353fc84034a93cb8",
+      "elapsed_seconds": 355.9226142540574,
+      "typed_readout_parameters": 1980682
+    },
+    {
+      "mode": "B2_choice_yesno_lifecycle",
+      "examples": 24,
+      "steps": 200,
+      "logs": [
+        {
+          "step": 1,
+          "loss": 3.747422695159912,
+          "identity_choice": 2.679582118988037,
+          "yesno": 0.5723103284835815,
+          "lifecycle": null,
+          "gradient_norm": 29.68168067932129
+        },
+        {
+          "step": 100,
+          "loss": 2.4531776905059814,
+          "identity_choice": 2.453000545501709,
+          "yesno": 8.786765101831406e-05,
+          "lifecycle": null,
+          "gradient_norm": 0.07673671096563339
+        },
+        {
+          "step": 200,
+          "loss": 2.4456703662872314,
+          "identity_choice": 2.4455981254577637,
+          "yesno": 3.50953996530734e-05,
+          "lifecycle": null,
+          "gradient_norm": 0.07425406575202942
+        }
+      ],
+      "checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/coupled/phase_b_ablations_v1/B2_choice_yesno_lifecycle/readout_step_final.pt",
+      "checkpoint_sha256": "53738a64f8c3499ffd04a95aaa7fa27bdd2fd2f9c79c160c1d54ebca9daecb9b",
+      "elapsed_seconds": 387.31599339691456,
+      "typed_readout_parameters": 1980682
+    }
+  ],
+  "quality_claim": false,
+  "official_test_labels_read": false,
+  "future_evidence_in_model_input": false,
+  "groundtruth_teacher_injection": false,
+  "note": "Fixed native TRAIN candidates; bounded readout ablations, not a MOT/RMOT/OVMOT benchmark."
+}

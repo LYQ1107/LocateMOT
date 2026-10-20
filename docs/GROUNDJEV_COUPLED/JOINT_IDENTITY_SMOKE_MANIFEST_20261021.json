@@ -1,0 +1,18 @@
+{
+  "format": "groundjev-coupled-corpus-v1",
+  "status": "COUPLED_INTERNAL_CORPUS_BUILT",
+  "rows": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/coupled/joint_identity_v1_smoke.jsonl",
+  "rows_sha256": "57178a35952315db0b02429531cc863aaaf6cf95035596a3772744bbe3e099b7",
+  "row_count": 100,
+  "counts": {
+    "yesno": 100
+  },
+  "yesno_source": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/coupled/native_yesno_v2_smoke.jsonl",
+  "yesno_source_sha256": "6316cae8bb0fa991b118ffa927d5040aad85806b7230af3b5e857dec821209f4",
+  "choice_source": null,
+  "choice_source_sha256": null,
+  "official_test_labels_read": false,
+  "future_evidence_in_model_input": false,
+  "groundtruth_teacher_injection": false,
+  "stable_seed_source_version": "native-yesno-v2-stable-sha-seed"
+}

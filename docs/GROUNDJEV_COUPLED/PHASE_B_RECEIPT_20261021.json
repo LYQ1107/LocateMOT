@@ -1,0 +1,177 @@
+{
+  "status": "PHASE_B_REAL_NATIVE_G2_READOUT_PILOT_COMPLETE",
+  "backbone": "GroundAnything G2 step11000 projector visual path",
+  "g2_adapter": "/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final/checkpoints/adapter-step011000.pt",
+  "g2_adapter_sha256": "f2b7199f57dae156a05e1efcadfa04b275a7f0399187b264e0b21ddc1b58409b",
+  "corpus": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/coupled/joint_identity_v1_smoke.jsonl",
+  "corpus_sha256": "57178a35952315db0b02429531cc863aaaf6cf95035596a3772744bbe3e099b7",
+  "train_split_only": true,
+  "examples": 6,
+  "source_rows": [
+    "joint_yesno_0_yes_rmot_native_rmot_0008_3_q1_batch0_membership_7",
+    "joint_yesno_2_yes_rmot_native_rmot_0008_2_q0_batch0_membership_3",
+    "joint_yesno_4_yes_dancetrack0024_387_batch0_match_4_29683_no",
+    "joint_yesno_10_yes_rmot_native_rmot_0008_6_q0_batch0_membership_4",
+    "joint_yesno_13_yes_rmot_native_rmot_0003_6_q1_batch0_membership_3",
+    "joint_yesno_16_yes_rmot_native_rmot_0003_6_q0_batch0_membership_4"
+  ],
+  "images": [
+    "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0008/000003.png",
+    "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0008/000002.png",
+    "/data2/user/LocateMOT/data/DanceTrack/train/dancetrack0024/img1/00000387.jpg",
+    "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0008/000006.png",
+    "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0003/000006.png",
+    "/data2/user/LocateMOT/data/kitti_tracking_training/image_02/0003/000006.png"
+  ],
+  "visual_forward_calls": 6,
+  "typed_readout_parameters": 1980682,
+  "steps": 20,
+  "logs": [
+    {
+      "step": 1,
+      "loss": 3.173184394836426,
+      "identity_choice": 2.231440544128418,
+      "yesno": 0.9417437314987183,
+      "gradient_norm": 25.92681884765625
+    },
+    {
+      "step": 2,
+      "loss": 3.2631702423095703,
+      "identity_choice": 2.146770715713501,
+      "yesno": 1.1163994073867798,
+      "gradient_norm": 4.144062519073486
+    },
+    {
+      "step": 3,
+      "loss": 2.8004815578460693,
+      "identity_choice": 2.039283275604248,
+      "yesno": 0.7611982822418213,
+      "gradient_norm": 3.359389305114746
+    },
+    {
+      "step": 4,
+      "loss": 2.5047101974487305,
+      "identity_choice": 1.989127516746521,
+      "yesno": 0.515582799911499,
+      "gradient_norm": 2.327852487564087
+    },
+    {
+      "step": 5,
+      "loss": 2.3754453659057617,
+      "identity_choice": 1.9669220447540283,
+      "yesno": 0.40852341055870056,
+      "gradient_norm": 0.7758334875106812
+    },
+    {
+      "step": 6,
+      "loss": 2.363104820251465,
+      "identity_choice": 1.9496567249298096,
+      "yesno": 0.41344818472862244,
+      "gradient_norm": 1.4064610004425049
+    },
+    {
+      "step": 7,
+      "loss": 2.3437507152557373,
+      "identity_choice": 1.9349806308746338,
+      "yesno": 0.40877005457878113,
+      "gradient_norm": 1.6862568855285645
+    },
+    {
+      "step": 8,
+      "loss": 2.3041844367980957,
+      "identity_choice": 1.9251590967178345,
+      "yesno": 0.3790254592895508,
+      "gradient_norm": 1.1679232120513916
+    },
+    {
+      "step": 9,
+      "loss": 2.269500255584717,
+      "identity_choice": 1.9190447330474854,
+      "yesno": 0.35045552253723145,
+      "gradient_norm": 0.45472216606140137
+    },
+    {
+      "step": 10,
+      "loss": 2.255241870880127,
+      "identity_choice": 1.9153544902801514,
+      "yesno": 0.3398873209953308,
+      "gradient_norm": 0.642116904258728
+    },
+    {
+      "step": 11,
+      "loss": 2.24699330329895,
+      "identity_choice": 1.912076711654663,
+      "yesno": 0.3349166810512543,
+      "gradient_norm": 0.9019343256950378
+    },
+    {
+      "step": 12,
+      "loss": 2.2309985160827637,
+      "identity_choice": 1.9080870151519775,
+      "yesno": 0.3229115903377533,
+      "gradient_norm": 0.8744811415672302
+    },
+    {
+      "step": 13,
+      "loss": 2.208791732788086,
+      "identity_choice": 1.9034748077392578,
+      "yesno": 0.3053169250488281,
+      "gradient_norm": 0.6147480607032776
+    },
+    {
+      "step": 14,
+      "loss": 2.190056562423706,
+      "identity_choice": 1.8988062143325806,
+      "yesno": 0.29125040769577026,
+      "gradient_norm": 0.3606431186199188
+    },
+    {
+      "step": 15,
+      "loss": 2.180262565612793,
+      "identity_choice": 1.8945436477661133,
+      "yesno": 0.2857188880443573,
+      "gradient_norm": 0.587593674659729
+    },
+    {
+      "step": 16,
+      "loss": 2.17368483543396,
+      "identity_choice": 1.8909389972686768,
+      "yesno": 0.282745897769928,
+      "gradient_norm": 0.8162278532981873
+    },
+    {
+      "step": 17,
+      "loss": 2.163478374481201,
+      "identity_choice": 1.8881016969680786,
+      "yesno": 0.2753767669200897,
+      "gradient_norm": 0.7974576950073242
+    },
+    {
+      "step": 18,
+      "loss": 2.1504409313201904,
+      "identity_choice": 1.8860605955123901,
+      "yesno": 0.2643803358078003,
+      "gradient_norm": 0.5831943154335022
+    },
+    {
+      "step": 19,
+      "loss": 2.139427900314331,
+      "identity_choice": 1.8845818042755127,
+      "yesno": 0.25484615564346313,
+      "gradient_norm": 0.32281339168548584
+    },
+    {
+      "step": 20,
+      "loss": 2.1330864429473877,
+      "identity_choice": 1.8834044933319092,
+      "yesno": 0.2496819943189621,
+      "gradient_norm": 0.2682034969329834
+    }
+  ],
+  "checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/coupled/phase_b_yesno_pilot_v4/readout_step_final.pt",
+  "checkpoint_sha256": "4707d52812cc8ce5d3ebecd35049b161a81726686456c9c2a940330e8336b101",
+  "elapsed_seconds": 5.087495330022648,
+  "peak_memory_allocated_bytes": 3072477696,
+  "quality_claim": false,
+  "note": "Frozen G2 visual evidence and native TRAIN candidates; bounded learnability pilot, not a MOT/RMOT/OVMOT benchmark."
+}

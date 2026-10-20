@@ -1,0 +1,65 @@
+{
+  "status": "PHASE_B_TRAINED_READOUT_CAUSAL_REPLAY_COMPLETE",
+  "video": "MOT20-03 TRAIN engineering window",
+  "frames": [
+    83,
+    84,
+    85,
+    86,
+    87,
+    88,
+    89,
+    90
+  ],
+  "candidate_source": "GT_teacher_candidate_engineering_gate",
+  "official_metric": false,
+  "single_backbone": true,
+  "visual_forward_calls": 8,
+  "checkpoint_info": {
+    "B0_choice_only": {
+      "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/coupled/phase_b_ablations_v3/B0_choice_only/readout_step_final.pt",
+      "sha256": "4ef6c8b95710b39379584795f3ec3156db1dd972bc1d864f072292d5f76ac042"
+    },
+    "B1_choice_yesno": {
+      "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/coupled/phase_b_ablations_v3/B1_choice_yesno/readout_step_final.pt",
+      "sha256": "b327afff956da914cf44c8947ad6da3900397ec590bc64f4bd3f6f5eabf51d7b"
+    },
+    "B2_choice_yesno_lifecycle": {
+      "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/coupled/phase_b_ablations_v3/B2_choice_yesno_lifecycle/readout_step_final.pt",
+      "sha256": "dfcfc1d5ea998564fd9098959689d2eab4a1fd87e2f1ec9f2858237408de4f2e"
+    }
+  },
+  "quality_claim": false,
+  "arms": {
+    "B0_choice_only": {
+      "assignment_counts": {
+        "REJECT": 11,
+        "NEW": 1,
+        "NO_MATCH": 6,
+        "1": 6
+      },
+      "memory_assigned": 7,
+      "final_track_count": 1
+    },
+    "B1_choice_yesno": {
+      "assignment_counts": {
+        "NO_MATCH": 9,
+        "NEW": 3,
+        "1": 7,
+        "2": 5
+      },
+      "memory_assigned": 15,
+      "final_track_count": 3
+    },
+    "B2_choice_yesno_lifecycle": {
+      "assignment_counts": {
+        "REJECT": 15,
+        "NEW": 2,
+        "1": 4,
+        "2": 3
+      },
+      "memory_assigned": 9,
+      "final_track_count": 2
+    }
+  }
+}
