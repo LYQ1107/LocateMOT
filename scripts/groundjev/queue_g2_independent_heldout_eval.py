@@ -239,6 +239,14 @@ def main() -> int:
             raise FileExistsError(f"terminal held-out queue already exists: {owner}")
         if old and old.get("owner_pid") and Path(f"/proc/{old['owner_pid']}").exists():
             raise FileExistsError(f"held-out queue owner is already live: {old['owner_pid']}")
+        if not old or str(old.get("status", "")) != "WAITING_G2_CLEAN_BUNDLE_AND_GPU7":
+            raise FileExistsError(f"refusing to overwrite an existing held-out queue: {args.out}")
+        allowed = {"owner_state.json", "owner_state_pre_mot_scope_20261020.json"}
+        unexpected = [child.name for child in args.out.iterdir() if child.name not in allowed]
+        if unexpected:
+            raise FileExistsError(
+                f"refusing to resume a partial held-out queue; unexpected={unexpected}"
+            )
     args.out.mkdir(parents=True, exist_ok=True)
     state = {
         "status": "WAITING_G2_CLEAN_BUNDLE_AND_GPU7",
@@ -256,6 +264,7 @@ def main() -> int:
         "same_input_parser_decoder_tracker_scorer": True,
         "feature_cache": False,
         "heldout_claim": "pending until exact overlap audit and official metrics complete",
+        "resumed_wait_owner": bool(old) if args.out.exists() else False,
     }
     save(owner, state)
     service = None

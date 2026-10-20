@@ -3145,3 +3145,12 @@ known empty `WAITING_GPU7_EXCLUSIVE` queue (and the pre-created `args.json`),
 rejects partial queue/training outputs, refuses live duplicates, and records
 `resumed_wait_owner`. The waiting owner is restarted without allocating GPU7;
 the independent YesTrack run remains pending.
+
+## 2026-10-21 — held-out owner made resumable
+
+The GPU7 G0/G2 independent held-out owner was still CPU-only in
+`WAITING_G2_CLEAN_BUNDLE_AND_GPU7`; its directory contained only the current
+wait receipt and the preserved historical pre-MOT receipt. Startup now accepts
+that exact clean wait state, preserves the historical receipt, rejects any
+unexpected partial evaluation outputs, refuses live duplicates, and records
+`resumed_wait_owner`. The owner is restarted without allocating GPU7.
