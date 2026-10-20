@@ -3510,3 +3510,14 @@ contained only the owner state, relaunched it with the same G2 root, runtime
 GroundAnything base, output, bundle and control paths. New PID 642505 is live
 and waiting; protected G2 was untouched. Evidence:
 `docs/GROUNDJEV/G1_GPU5_WAIT_OWNER_RELAUNCH_20261021.{json,md}`.
+
+## 2026-10-21 — G2 Clean live health snapshot at step 12964
+
+The protected two-rank G2 process remains running on physical GPUs 3/5; both
+ranks are in the compute loop with about 19.3 GiB allocated each. The event
+stream is contiguous through 12964/18227, with finite loss 0.3086177218,
+gradient norm 13.7076988 and peak memory 12.8289 GiB. Recent throughput is
+312.500/312.067/311.850 steps per hour over 100/500/1000 updates, giving a
+linear ETA around 23:09–23:11. No terminal receipt exists and no metric claim
+is made. Evidence:
+`docs/GROUNDJEV/G2_PROGRESS_SNAPSHOT_20261021_STEP12964.{json,md}`.
