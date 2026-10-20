@@ -9,7 +9,10 @@ labels alone.
   `10654 / 18227` at `2026-10-20 22:48:18 +0800`; the final receipt does not
   exist yet. The latest durable adapter remains `adapter-step010500`. The
   original optimizer, sampler, RNG, world size, and checkpoint contract are
-  unchanged.
+  unchanged. A read-only load of `checkpoints/latest_training_state.pt`
+  confirms durable step `10500`, manifest SHA
+  `f682519a...efd06e71`, and retained optimizer/scheduler/sampler/RNG state
+  with `world_size=2`.
 - **GPU5 G1:** `queue_g1_gpu5_after_g2.py` is live with state
   `WAITING_G2_CLEAN_SUCCESS`. It will train the registered fresh 200-step G1
   projector only after the protected G2 receipt, then export and run isolated
