@@ -1,5 +1,5 @@
-Warning: truncated output (original token count: 119917)
-Total output lines: 3074
+Warning: truncated output (original token count: 119939)
+Total output lines: 3075
 
 # LocateMOT Research Log
 
@@ -2192,7 +2192,7 @@ per-queryrejection contributesempty for thatquery only, concatenates remaining
 original-parserboxes, noNMS/topK/GTselection; matches existing scored-query
 control policy, not old whole-frame-rejection scores. One blocking owner waits
 currentGPU5memoryjobexit beforeowning temporaryDLM/feature services; stops
-bothcompletegroups befo…19917 tokens truncated…练入口仅进程内扩展gzip/load_media IO并将IO版本写入恢复协议，现有对照入口不改。先真实旧215对象像素/问题对齐及175新类代表图、CPU processor张量和官方全量token计划核验。仅准备未来平衡三任务混合的类别组件，不启动类别单任务optimizer；256MiB导出cap、合计26359878413<25GiB。
+bothcompletegroups befo…19939 tokens truncated…照入口不改。先真实旧215对象像素/问题对齐及175新类代表图、CPU processor张量和官方全量token计划核验。仅准备未来平衡三任务混合的类别组件，不启动类别单任务optimizer；256MiB导出cap、合计26359878413<25GiB。
 
 2026-10-16：175Base类别组件已实际生成并完成CPU原生全量规划session25047 exit0，52978对象/105956Root+Leaf问题、500trainvideo，1203输入类保留。gzip文本25820145bytes对比展开1005240705，17375按需裁剪recipe无PNG/ROI档案；18274图含1251零Base完整登记不造负标签。实际215旧对象/62原PNG像素完全相同，175新类代表问题/像素等同原NativeCategoryHead；768x216/432×Root/Leaf四例input_ids/mask/mmtypes/pixel_values/grid全torch.equal且实际计数token一致。全量105956target逐一对应源GT图像/类别/ROI且两种family各52978，同annotation集合。官方CPUplan0丢弃、max4238、总315781843计数tokens，26489步只是4row下假想全类别epoch，不是训练。Textrows仍一次载RAM，CPU峰3746652160bytes；原cached native reporter打印1s只含复用后的报告时间，绝不当tokenize全程速度。新独立IO入口仅进程内gzip与cropSheet读取、checkpoint协议记版本，现有200/600对照正常/FP32完整保存、其他队列未动；此组件将供未来三任务平衡课程，未发新GPU训练、不称大规模联合训练完成。
 
@@ -2811,10 +2811,11 @@ resumable owner for the future real MOT/RMOT/OVMOT OneJev run. The join owner
 waits for the strict eight-shard merge receipt, runs the checked-out
 `prepare_native_ovmot_train_join.py` and `prepare_real_three_task_joint_manifest.py`,
 and never launches a model or optimizer. Its initial state is
-`WAITING_COMPLETE_NATIVE_TAO_STREAM`. The native three-task owner will not be
-started until the joined manifest is present and the terminal G2/G1/bundle/
-held-out plus exclusive-GPU gates pass; the historical teacher-control queue
-remains paused at zero updates.
+`WAITING_COMPLETE_NATIVE_TAO_STREAM`. The native three-task owner is now live
+as a dependency waiter at `WAITING_NATIVE_OVMOT_MANIFEST`; it has launched no
+GPU process or optimizer and will apply the joined-manifest plus terminal
+G2/G1/bundle/held-out and exclusive-GPU gates later. The historical
+teacher-control queue remains paused at zero updates.
 
 During the audit, the join owner was corrected to resolve repository joiners
 from `/data2/user/LocateMOT` because the runtime output tree does not mirror
