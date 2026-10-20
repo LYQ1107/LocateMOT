@@ -2,6 +2,19 @@
 
 Concise experimental log (latest first).
 
+## 2026-10-21 — downstream launch-gate audit
+
+- Read the five G2-dependent entrypoints and confirmed their exact terminal
+  contract: status `G2_EXACT_COVERAGE_TRAINING_COMPLETE`, step `18_227`, and
+  clean manifest SHA `f682519a…06e71`; the bundle exporter also requires the
+  terminal adapter file.
+- Confirmed YesTrack is intentionally independent of G2 training and remains
+  gated by real GPU7 exclusivity and its native split, so it cannot silently
+  fall back to a CPU mock.
+- No gate defect or premature launch was found. The static audit changed no
+  runtime state and no benchmark claim. Evidence:
+  `docs/GROUNDJEV/DOWNSTREAM_GATE_AUDIT_20261021.md`.
+
 ## 2026-10-21 — GroundJEV G2 step-12642 progress snapshot
 
 - Evidence: the formal event log reached step `12642/18227` at
