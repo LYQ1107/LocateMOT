@@ -18,12 +18,14 @@ protected G2 Clean owner.
 
 ## G2 Clean training
 
-The protected two-rank owner remains on physical GPUs 3 and 5. The latest
-accounting event is step **5447 / 18227** at `2026-10-20 02:36:34 +0800`, with
-loss `1.422428` and peak allocation `17.3704 GiB`. The latest durable checkpoint
-remains `adapter-step005000`. The last 1,000 event interval is 20.12 s/step,
-which gives a linear remainder estimate of about **71.4 hours**. This is an
-estimate, not a completion time.
+The protected two-rank owner remains on physical GPUs 3 and 5 and is still
+running. The latest accounting event is step **10540 / 18227** at
+`2026-10-20 22:26:42 +0800`, with loss `0.334050` and peak allocation
+`12.8289 GiB`; the latest durable checkpoint is `adapter-step010500`. The last
+500 events average `11.46 s/step` (last 1,000: `11.69 s/step`), giving a linear
+remainder estimate of about **24.5–25.0 hours**. This is an estimate, not a
+completion time; the active process and checkpoint cadence were verified after
+the independent evaluation.
 
 The Clean TRAIN manifest has 583,251 rows. The overlap audit found exact
 TRAIN-scope overlap for MOT17-02 frames 302–305 and 602 rows from the same
