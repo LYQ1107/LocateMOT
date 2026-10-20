@@ -6,7 +6,7 @@ labels alone.
 ## Protected and queued work
 
 - **G2 Clean:** live two-rank torchrun on physical GPUs 3 and 5, event step
-  `10639 / 18227` at `2026-10-20 22:45:28 +0800`; the final receipt does not
+  `10654 / 18227` at `2026-10-20 22:48:18 +0800`; the final receipt does not
   exist yet. The latest durable adapter remains `adapter-step010500`. The
   original optimizer, sampler, RNG, world size, and checkpoint contract are
   unchanged.
@@ -48,3 +48,7 @@ labels alone.
 The audit does not claim that the overall research goal is complete. A valid
 final G2 receipt, fresh G1 receipt, resumed full-source OneJev terminal
 receipt, and official independent held-out comparisons are still required.
+
+The recent G2 event windows measure 11.44–11.88 seconds per step, leaving
+approximately 24.1–25.0 hours of training from step 10654. This estimate
+excludes the queued G1, bundle export, and held-out stages.
