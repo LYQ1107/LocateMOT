@@ -1,0 +1,25 @@
+{
+  "status": "JOINT_CORPUS_G2_TRAIN_OVERLAP_AUDITED",
+  "joint_corpus": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/coupled/joint_identity_v1_phaseb.jsonl",
+  "joint_rows": 1116,
+  "joint_unique_images": 355,
+  "g2_rows": 583251,
+  "g2_manifest_sha256": "f682519a1cf9204ca76ea75a56dad36dbdeac26259f202551ab9f66fefd06e71",
+  "g2_unique_media_paths": 168065,
+  "exact_image_overlap_rows": 678,
+  "exact_image_overlap_unique_images": 290,
+  "overlap_by_joint_task": {
+    "identity_pair": 221,
+    "occlusion_recovery": 119,
+    "rmot": 338
+  },
+  "overlap_by_g2_source": {
+    "DanceTrack:train:clean_v2": 220,
+    "MOT17:train:clean_v2": 120,
+    "Refer-KITTI-V2:train:expression_clean_v2": 338
+  },
+  "ovmot_exact_overlap_rows": 0,
+  "official_test_labels_read": false,
+  "independent_generalization_claim_allowed": false,
+  "scope_statement": "Joint rows with exact image overlap are TRAIN-scope controls; they cannot support an independent G2 generalization claim."
+}
