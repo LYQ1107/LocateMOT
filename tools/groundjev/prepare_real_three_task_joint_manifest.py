@@ -4,8 +4,9 @@
 This preparation deliberately does not launch an optimizer.  It replaces the
 historical full-source manifest whose MOT20-05 rows overlap the independent
 held-out scope.  MOT and RMOT rows come from the registered native candidate
-inventories; OVMOT Base rows remain an explicit teacher-control until native
-TAO category rows are materialized from the existing native candidate archive.
+inventories. OVMOT Base rows remain an explicit teacher-control by default;
+a complete native TAO TRAIN join manifest can be supplied explicitly once its
+candidate stream has been exported.
 """
 from __future__ import annotations
 
@@ -93,16 +94,37 @@ def main() -> int:
         "--out", type=Path,
         default=RUNTIME / "outputs/groundjev/training_data/real_three_task_joint_v1",
     )
+    parser.add_argument(
+        "--ovmot-native-manifest", type=Path, default=None,
+        help="manifest.json emitted by prepare_native_ovmot_train_join.py; must cover all TAO TRAIN images",
+    )
     args = parser.parse_args()
     out = args.out.resolve()
     if out.exists():
         raise FileExistsError(f"refusing to overwrite {out}")
     out.mkdir(parents=True)
 
+    native_ovmot_manifest = None
+    native_ovmot_rows = False
+    if args.ovmot_native_manifest is not None:
+        native_ovmot_manifest = json.loads(args.ovmot_native_manifest.read_text())
+        if (native_ovmot_manifest.get("native_ovmot_training_rows") is not True
+                or native_ovmot_manifest.get("ovmot_training_mode") != "native"
+                or native_ovmot_manifest.get("scope", {}).get("full_train_image_scope") is not True):
+            raise ValueError("native OVMOT manifest is not a complete native TRAIN join")
+        native_rows_path = Path(native_ovmot_manifest["train_rows"])
+        if not native_rows_path.is_file():
+            raise FileNotFoundError(native_rows_path)
+        native_ovmot_rows = True
+        ovmot_source = (native_rows_path, {"category_group", "category_leaf"},
+                        int(native_ovmot_manifest["rows"]), "ovmot_native")
+    else:
+        ovmot_source = (OVMOT, {"category_group", "category_leaf"}, 430,
+                        "ovmot_base_teacher_control")
     sources = [
         (MOT, {"identity"}, 131214, "mot_native"),
         (RMOT, {"query_membership", "empty_query_presence"}, 346, "rmot_native"),
-        (OVMOT, {"category_group", "category_leaf"}, 430, "ovmot_base_teacher_control"),
+        ovmot_source,
     ]
     audits = [audit_source(path, families=families, expected_rows=rows, source_name=name)
               for path, families, rows, name in sources]
@@ -111,11 +133,18 @@ def main() -> int:
          "source_name": name, "source_sha256": item["sha256"]}
         for (path, _families, _rows, name), item in zip(sources, audits)
     ]
-    native_receipt = json.loads(OVMOT_NATIVE_RECEIPT.read_text())
-    if native_receipt.get("status") != "COMPLETE_LEGAL_NATIVE_VOCABULARY_AND_ROI_STREAM":
-        raise ValueError(f"unexpected native OVMOT receipt: {native_receipt.get('status')}")
-    if native_receipt.get("frames") != 40 or native_receipt.get("candidates") != 35228:
-        raise ValueError("native OVMOT archive receipt does not match registered 40-frame/35228-candidate scope")
+    if native_ovmot_manifest is None:
+        native_receipt = json.loads(OVMOT_NATIVE_RECEIPT.read_text())
+        if native_receipt.get("status") != "COMPLETE_LEGAL_NATIVE_VOCABULARY_AND_ROI_STREAM":
+            raise ValueError(f"unexpected native OVMOT receipt: {native_receipt.get('status')}")
+        if native_receipt.get("frames") != 40 or native_receipt.get("candidates") != 35228:
+            raise ValueError("native OVMOT archive receipt does not match registered 40-frame/35228-candidate scope")
+    else:
+        native_receipt = {
+            "status": "NATIVE_TRAIN_JOIN_MANIFEST",
+            "manifest": str(args.ovmot_native_manifest),
+            "manifest_sha256": sha256(args.ovmot_native_manifest),
+        }
 
     total = sum(x["rows"] for x in audits)
     task_counts = Counter()
@@ -123,10 +152,12 @@ def main() -> int:
         task_counts.update(item["task_counts"])
     manifest = {
         "protocol": PROTOCOL,
-        "manifest_version": "real-three-task-joint-v1",
+        "manifest_version": "real-three-task-joint-v1-native-ovmot" if native_ovmot_rows else "real-three-task-joint-v1",
         "rows": total,
         "sources": manifest_sources,
         "rows_per_task": dict(sorted(task_counts.items())),
+        "native_ovmot_training_rows": native_ovmot_rows,
+        "ovmot_training_mode": "native" if native_ovmot_rows else "base_teacher_control",
         "heldout_exclusion": {
             "MOT20-05": "excluded; no source contains MOT20-05",
             "official_eval_labels": "not read by this preparation",
@@ -134,11 +165,12 @@ def main() -> int:
         "candidate_provenance": {
             "mot": "actual native GroundAnything candidate rows; 7 MOT17 TRAIN sequences",
             "rmot": "actual native GroundAnything candidates; 9 Refer-KITTI fit videos / 72 frames",
-            "ovmot": "Base category teacher-control rows; native TAO archive registered separately",
+            "ovmot": "native TAO TRAIN candidate/annotation join rows" if native_ovmot_rows else "Base category teacher-control rows; native TAO archive registered separately",
             "ovmot_native_archive": str(OVMOT_NATIVE_ARCHIVE),
             "ovmot_native_archive_sha256": sha256(OVMOT_NATIVE_ARCHIVE),
             "ovmot_native_receipt": native_receipt,
-            "native_ovmot_training_rows": False,
+            "native_ovmot_training_rows": native_ovmot_rows,
+            "native_ovmot_join_manifest": str(args.ovmot_native_manifest) if native_ovmot_manifest is not None else None,
         },
         "optimizer_updates": 0,
         "gpu_launched": False,
@@ -152,7 +184,7 @@ def main() -> int:
         "source_audits": audits,
         "rows": total,
         "rows_per_task": dict(sorted(task_counts.items())),
-        "native_ovmot_rows_pending": True,
+        "native_ovmot_rows_pending": not native_ovmot_rows,
         "optimizer_updates": 0,
         "gpu_launched": False,
         "heldout_overlap_audit": "MOT20-05 absent by streamed row scan; official eval labels not read",
