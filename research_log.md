@@ -1470,3 +1470,9 @@ are kept; unrelated GroundJEV worktree changes were not staged or overwritten.
   step 3000, leaving 25,690 updates and roughly 95–100 compute hours before
   checkpoint/final-evaluation overhead. This is a planning estimate only; the
   resumed owner remains dependency-gated and was not started by this audit.
+
+- The protected G2 Clean owner remains live on GPUs 3/5 and advanced to event
+  step 10,675/18,227 at 22:52:17 +0800. No final receipt or trainer error is
+  present; the four dependent owners remain in their registered waiting
+  states. The linear remainder from the measured event window is about
+  24.0–24.8 hours.
