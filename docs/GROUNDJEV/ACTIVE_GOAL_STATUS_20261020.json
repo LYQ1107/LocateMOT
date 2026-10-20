@@ -35,6 +35,9 @@
     "historical_last_log_step": 3525,
     "last_atomic_resume_step": 3000,
     "target_steps": 28690,
+    "resume_remaining_steps": 25690,
+    "historical_sec_per_step_window": 13.4,
+    "resume_compute_hours_estimate": [95, 100],
     "resume_queue_status": "WAITING_G2_G1_AND_EXCLUSIVE_GPU_SET",
     "heldout_gate": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g2_clean_independent_gpu7_v1/owner_state.json",
     "physical_gpus": [4, 5, 6, 7]
