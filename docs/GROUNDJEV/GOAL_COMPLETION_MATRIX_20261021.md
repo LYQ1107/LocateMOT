@@ -11,6 +11,7 @@
 | Legacy independent OneJev resume | Paused | Waiting owner stopped before GPU launch at durable step 3,000; checkpoint, optimizer, scheduler, sampler and RNG preserved. |
 | Corrected MOT/RMOT/OVMOT source registration | v2 prepared, zero-drop course queued, not trained | v2 manifest SHA `cbdafce9…e54c`; all 131,990 rows render under 32,768 (max 28,156); compact competition transform is explicit and native OVMOT category rows remain pending. |
 | GroundJEV single-backbone Phase A/B | Preliminary complete in isolated branch | Real G2 forward/backward and bounded choice/Yes/No/lifecycle pilots passed engineering gates; no full benchmark gain claim. |
+| GroundJEV fixed-candidate video replay | Complete diagnostic / failed quality gate | MOT20-03 TRAIN frames 538–665: HOTA 0.027901, IDF1 0.005261, FN 14,524; same-input compact control HOTA 0.336515. The coupled readout requires admission/identity repair before expansion. |
 | Phase C memory-conditioned Grounding input | Contract prepared, decoder/eval pending | Opt-in causal memory-token insertion and exact disabled baseline passed 8 focused tests; no generated-box recall or tracking metric claim yet. |
 | YesTrack native v2 | Queued on GPU7, not trained | Native 726-row train / 390-row held-out split, zero-drop CPU plan, base-vs-LoRA evaluator and resource-gated owner registered; GPU7 was occupied at registration, so AUROC/PR-AUC and tracking metrics are pending. |
 | Overall goal | Incomplete | Must wait for terminal G2, G1, held-out receipts and valid independent metrics. |
