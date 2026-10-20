@@ -3531,3 +3531,18 @@ environments, GroundAnything base, service interpreter, exporter, video runner
 and Clean TRAIN manifest were present. No GPU, optimizer or model service was
 started. Evidence:
 `docs/GROUNDJEV/DOWNSTREAM_PRELAUNCH_PREFLIGHT_20261021.{json,md}`.
+
+## 2026-10-21 — G2 Clean live progress snapshot at step 12980
+
+The protected two-rank G2 Clean process remains alive and its event stream is
+finite and contiguous through 12980/18227. The latest event at
+2026-10-21 06:21:56 +0800 has loss 0.2029841521, gradient norm
+11.7594414, and peak event memory 12.8288527 GiB.
+The measured 100/500/1000-step rates are
+312.5/312.012/311.877
+steps per hour, giving a linear estimate of about 16.817 hours from the
+500-step window. The final receipt is still absent; adapter-step012500 and
+latest_training_state.pt remain the durable recovery pair. Downstream owners are
+still dependency-gated and have no optimizer updates. This is a training-health
+snapshot only and makes no tracking or benchmark claim. Evidence:
+`docs/GROUNDJEV/G2_PROGRESS_LIVE_20261021_STEP12980.{json,md}`.

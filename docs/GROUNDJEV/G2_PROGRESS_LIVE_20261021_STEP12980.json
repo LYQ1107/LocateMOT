@@ -1,0 +1,83 @@
+{
+  "schema_version": "groundjev.g2.live_progress.v1",
+  "generated_at": "2026-10-21T06:22:05.664629+08:00",
+  "project_root": "/data2/user/LocateMOT",
+  "run_root": "/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final",
+  "run_identity": "G2-CLEAN-V2",
+  "status": "G2_FORMAL_TRAINING_RUNNING",
+  "protected_training": true,
+  "current_step": 12980,
+  "max_steps": 18227,
+  "remaining_steps": 5247,
+  "latest_event": {
+    "step": 12980,
+    "epoch": 0,
+    "position": 103840,
+    "micro_batches": 8,
+    "samples_global": 16,
+    "effective_tokens_global": 10912,
+    "token_budget_per_device": 16384,
+    "loss": 0.20298415212891996,
+    "gradient_norm": 11.759441375732422,
+    "peak_memory_gib": 12.828852653503418,
+    "lr_projector": 5.636458624223151e-07,
+    "lr_lora": 1.9727605184781028e-06,
+    "checkpoint": null,
+    "time": "2026-10-21 06:21:56 +0800"
+  },
+  "throughput": {
+    "last_100_steps_per_hour": 312.5,
+    "last_500_steps_per_hour": 312.012,
+    "last_1000_steps_per_hour": 311.877
+  },
+  "linear_eta_hours_from_last_500": 16.817,
+  "linear_eta_local_from_last_500": "2026-10-21T23:11:06+08:00",
+  "checkpoint_recovery": {
+    "latest_training_state": "/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final/checkpoints/latest_training_state.pt",
+    "latest_adapter_step": "012500",
+    "latest_adapter_path": "/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final/checkpoints/adapter-step012500.pt",
+    "final_receipt_present": false
+  },
+  "manifest_sha256": "f682519a1cf9204ca76ea75a56dad36dbdeac26259f202551ab9f66fefd06e71",
+  "process_snapshot": [
+    "500654    3015 Ss+     01:37:41 python3 scripts/groundjev/queue_native_ovmot_join.py --poll-seconds 60",
+    "521109    3015 Ss+     01:23:53 python3 -u scripts/groundjev/queue_real_three_task_native.py --poll-seconds 60",
+    "522307    3015 Ss+     01:23:09 python3 -u scripts/groundjev/queue_yestrack_native_v2.py --poll-seconds 60",
+    "634486       1 Ss         09:31 python3 tools/groundjev/queue_g2_clean_bundle_export.py --g2-root /data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final --g1-state /data2/user/LocateMOT_GroundJEV/outputs/groundjev/ground_adaptation/native_tracking200_gpu5_g1_v1/queue_owner_state.json --out /data2/user/LocateMOT_GroundJEV/outputs/groundjev/ground_adaptation/g2_clean_bundle_export_v1 --bundle /data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM-G2-CLEAN-V2 --poll-seconds 60",
+    "634487       1 Ss         09:31 python3 -u scripts/groundjev/queue_tao_native_train_shards.py --poll-seconds 60",
+    "642505       1 Ss         04:04 python3 tools/groundjev/queue_g1_gpu5_after_g2.py --g2-root /data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final --out /data2/user/LocateMOT_GroundJEV/outputs/groundjev/ground_adaptation/native_tracking200_gpu5_g1_v1 --bundle /data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM-TrackProjG1-GPU5-V2 --controls /data2/user/LocateMOT_GroundJEV/outputs/groundjev/ground_adaptation/g1_gpu5_isolated96_v1 --poll-seconds 60",
+    "648119    3015 Ss         00:00 /bin/bash -c python3 - <<'PY' import json, os, subprocess, hashlib from datetime import datetime from pathlib import Path from zoneinfo import ZoneInfo run=Path('/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final') events=run/'training_events.jsonl' rows=[json.loads(x) for x in events.read_text().splitlines() if x.strip()] last=rows[-1] now=datetime.now(ZoneInfo('Asia/Shanghai')) # Compute rates from exact event timestamps over recent windows. def parse(t): return datetime.strptime(t,'%Y-%m-%d %H:%M:%S %z') rates={} for n in (100,500,1000):     if len(rows)>n:         a,b=rows[-n-1],rows[-1]         dt=(parse(b['time'])-parse(a['time'])).total_seconds()/3600         rates[f'last_{n}_steps_per_hour']=round((b['step']-a['step'])/dt,3) if dt>0 else None remaining=18227-int(last['step']) rate=rates.get('last_500_steps_per_hour') or rates.get('last_1000_steps_per_hour') eta_hours=round(remaining/rate,3) if rate else None # Process snapshot limited to registered training and owners. ps=subprocess.run(['ps','-eo','pid=,ppid=,stat=,etime=,cmd='],text=True,capture_output=True,check=True).stdout.splitlines() selected=[] for line in ps:     if any(x in line for x in ['train_g2_dlm.py','queue_g1_gpu5_after_g2.py','queue_g2_clean_bundle_export.py','queue_independent_heldout','queue_tao_native_train_shards.py','queue_native_ovmot_join.py','queue_real_three_task_native.py','queue_yestrack_native_v2.py']):         selected.append(line.strip()) owner_paths={ 'g1_gpu5':'/data2/user/LocateMOT_GroundJEV/outputs/groundjev/ground_adaptation/native_tracking200_gpu5_g1_v1/queue_owner_state.json', 'g2_bundle':'/data2/user/LocateMOT_GroundJEV/outputs/groundjev/ground_adaptation/g2_clean_bundle_export_v1/owner_state.json', 'heldout':'/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g2_clean_independent_gpu7_v1/owner_state.json', 'tao_shards':'/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/tao_native_ovmot_train_shards_v2/queue_owner_state.json', 'ovmot_join':'/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/native_ovmot_join_queue_v1/owner_state.json', 'three_task':'/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/real_three_task_joint_native_v1_queue/owner_state.json', 'yestrack':'/data2/user/LocateMOT_GroundJEV/outputs/groundjev/coupled/yestrack_native_v2_queue/owner_state.json',} owners={} for name,p in owner_paths.items():     try:         d=json.loads(Path(p).read_text())         owners[name]={k:d.get(k) for k in ['status','pid','gpu_launched','optimizer_updates','reason','exit_code'] if k in d}     except Exception as e: owners[name]={'error':repr(e)} receipt={ 'schema_version':'groundjev.g2.live_progress.v1', 'generated_at':now.isoformat(), 'project_root':'/data2/user/LocateMOT', 'run_root':str(run), 'run_identity':'G2-CLEAN-V2', 'status':'G2_FORMAL_TRAINING_RUNNING', 'protected_training':True, 'current_step':int(last['step']), 'max_steps':18227, 'remaining_steps':remaining, 'latest_event':last, 'throughput':rates, 'linear_eta_hours_from_last_500':eta_hours, 'linear_eta_local_from_last_500': (now.replace(microsecond=0).isoformat() if eta_hours is None else datetime.fromtimestamp(now.timestamp()+eta_hours*3600,ZoneInfo('Asia/Shanghai')).replace(microsecond=0).isoformat()), 'checkpoint_recovery':{ 'latest_training_state':str(run/'checkpoints/latest_training_state.pt'), 'latest_adapter_step':'012500', 'latest_adapter_path':str(run/'checkpoints/adapter-step012500.pt'), 'final_receipt_present':(run/'final_receipt.json').exists(), }, 'manifest_sha256':'f682519a1cf9204ca76ea75a56dad36dbdeac26259f202551ab9f66fefd06e71', 'process_snapshot':selected, 'downstream_owner_states':owners, 'interpretation':'Training-health evidence only; no MOT/RMOT/OVMOT/OVMOT or tracking metric claim is made by this receipt.', } json_path=Path('/data2/user/LocateMOT/docs/GROUNDJEV/G2_PROGRESS_LIVE_20261021_STEP12978.json') md_path=Path('/data2/user/LocateMOT/docs/GROUNDJEV/G2_PROGRESS_LIVE_20261021_STEP12978.md') json_path.write_text(json.dumps(receipt,ensure_ascii=False,indent=2)+'\\n') md=f'''# G2 Clean live progress — step {last['step']}/18227\\n\\n- Generated: `{now.isoformat()}`\\n- Identity: `G2-CLEAN-V2`\\n- Status: `G2_FORMAL_TRAINING_RUNNING`\\n- Latest event: step `{last['step']}`, loss `{last['loss']:.10f}`, gradient norm `{last['gradient_norm']:.7f}`, peak event memory `{last['peak_memory_gib']:.7f} GiB`, timestamp `{last['time']}`.\\n- Remaining: `{remaining}` optimizer steps.\\n- Recent throughput: `{rates.get('last_100_steps_per_hour')}` / `{rates.get('last_500_steps_per_hour')}` / `{rates.get('last_1000_steps_per_hour')}` steps/hour over 100/500/1000 steps.\\n- Linear estimate from the 500-step window: about `{eta_hours}` hours, approximately `{receipt['linear_eta_local_from_last_500']}` local time.\\n- Durable recovery: `adapter-step012500.pt` and `latest_training_state.pt`; `final_receipt.json` is not present.\\n- Downstream queues remain gated; no downstream optimizer update or GPU launch is claimed by this snapshot.\\n\\nThis is a training-health receipt only. It does not report an MOT, RMOT, OVMOT, TETA, HOTA, IDF1, IDSW, recall, rejection-rate, or FPS result.\\n''' md_path.write_text(md) log=Path('/data2/user/LocateMOT/research_log.md') with log.open('a') as f:     f.write(f'''\\n## 2026-10-21 — G2 Clean live progress snapshot at step {last['step']}\\n\\nThe protected two-rank G2 Clean process remains alive and its event stream is\\nfinite and contiguous through {last['step']}/18227. The latest event at\\n{last['time']} has loss {last['loss']:.10f}, gradient norm\\n{last['gradient_norm']:.7f}, and peak event memory {last['peak_memory_gib']:.7f} GiB.\\nThe measured 100/500/1000-step rates are\\n{rates.get('last_100_steps_per_hour')}/{rates.get('last_500_steps_per_hour')}/{rates.get('last_1000_steps_per_hour')}\\nsteps per hour, giving a linear estimate of about {eta_hours} hours from the\\n500-step window. The final receipt is still absent; adapter-step012500 and\\nlatest_training_state.pt remain the durable recovery pair. Downstream owners are\\nstill dependency-gated and have no optimizer updates. This is a training-health\\nsnapshot only and makes no tracking or benchmark claim. Evidence:\\n`docs/GROUNDJEV/G2_PROGRESS_LIVE_20261021_STEP12978.{{json,md}}`.\\n''') print(json_path) print(md_path) print('step',last['step'],'rates',rates,'eta_hours',eta_hours,'eta_local',receipt['linear_eta_local_from_last_500']) PY  git status --short",
+    "1799359       1 Ssl   2-04:21:05 /data2/user/LocateMOT_GroundJEV/.venv-onejev-py310/bin/python -m torch.distributed.run --standalone --nproc_per_node=2 --master_port=29608 /data2/user/LocateMOT_GroundJEV/tools/groundjev/g2/train_g2_dlm.py --rows /data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/g2_clean_train_rows.jsonl --manifest /data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/g2_clean_train_manifest.json --checkpoint /data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM --run-dir /data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final --coverage-mode exact_once --micro-batch-size 2 --grad-accum-steps 8 --expected-global-batch 32 --token-budget 16384 --max-steps 18227 --save-every 500 --seed 20261019",
+    "1799468 1799359 Ssl   2-04:21:02 /data2/user/LocateMOT_GroundJEV/.venv-onejev-py310/bin/python -u /data2/user/LocateMOT_GroundJEV/tools/groundjev/g2/train_g2_dlm.py --rows /data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/g2_clean_train_rows.jsonl --manifest /data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/g2_clean_train_manifest.json --checkpoint /data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM --run-dir /data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final --coverage-mode exact_once --micro-batch-size 2 --grad-accum-steps 8 --expected-global-batch 32 --token-budget 16384 --max-steps 18227 --save-every 500 --seed 20261019",
+    "1799469 1799359 Rsl   2-04:21:02 /data2/user/LocateMOT_GroundJEV/.venv-onejev-py310/bin/python -u /data2/user/LocateMOT_GroundJEV/tools/groundjev/g2/train_g2_dlm.py --rows /data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/g2_clean_train_rows.jsonl --manifest /data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/g2_clean_train_manifest.json --checkpoint /data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM --run-dir /data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final --coverage-mode exact_once --micro-batch-size 2 --grad-accum-steps 8 --expected-global-batch 32 --token-budget 16384 --max-steps 18227 --save-every 500 --seed 20261019",
+    "2337767    3015 Ss    1-15:06:19 /bin/bash -c python3 - <<'PY' import json, os, time, subprocess receipt='/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final/final_receipt.json' while True:     if os.path.exists(receipt):         try:             with open(receipt) as f:d=json.load(f)         except Exception as e:d={'_error':repr(e)}         print(json.dumps({'terminal':'receipt','receipt':d},ensure_ascii=False),flush=True)         break     ps=subprocess.run(\"pgrep -f 'tools/groundjev/g2/train_g2_dlm.py'\",shell=True,stdout=subprocess.PIPE,stderr=subprocess.DEVNULL,text=True)     if not ps.stdout.strip():         print(json.dumps({'terminal':'process_missing','receipt_exists':False},ensure_ascii=False),flush=True)         break     time.sleep(60) PY"
+  ],
+  "downstream_owner_states": {
+    "g1_gpu5": {
+      "status": "WAITING_G2_CLEAN_SUCCESS"
+    },
+    "g2_bundle": {
+      "status": "WAITING_G2_CLEAN_SUCCESS"
+    },
+    "heldout": {
+      "status": "WAITING_G2_CLEAN_BUNDLE_AND_GPU7"
+    },
+    "tao_shards": {
+      "status": "WAITING_G2_CLEAN_SUCCESS"
+    },
+    "ovmot_join": {
+      "status": "WAITING_COMPLETE_NATIVE_TAO_STREAM",
+      "gpu_launched": false,
+      "optimizer_updates": 0
+    },
+    "three_task": {
+      "status": "WAITING_NATIVE_OVMOT_MANIFEST",
+      "gpu_launched": false,
+      "optimizer_updates": 0
+    },
+    "yestrack": {
+      "status": "WAITING_GPU7_EXCLUSIVE"
+    }
+  },
+  "interpretation": "Training-health evidence only; no MOT/RMOT/OVMOT/OVMOT or tracking metric claim is made by this receipt."
+}
