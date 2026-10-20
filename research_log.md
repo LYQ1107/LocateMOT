@@ -3183,3 +3183,13 @@ G1/G2-bundle/TAO/native-joint/YesTrack queue entrypoints also passed `py_compile
 and the coupled plus TrackJEV packages passed `compileall`. This verifies the
 recoverable launch surface only; it does not promote any model or imply a
 tracking metric while G2 lacks its terminal receipt.
+
+## 2026-10-21 — waiting-owner source resolution audit
+
+A read-only `/proc` audit of the seven registered waiting owners confirmed that
+all commands run with cwd `/data2/user/LocateMOT`: the G1 and G2-bundle owners
+resolve `tools/groundjev/...`, while the TAO-shard, held-out, YesTrack, native
+join, and native three-task owners resolve `scripts/groundjev/...` or the
+registered join entrypoint from this project root. The sibling runtime checkout
+was not used to launch these owners. This closes a reproducibility ambiguity
+without changing any owner, checkpoint, or GPU allocation.
