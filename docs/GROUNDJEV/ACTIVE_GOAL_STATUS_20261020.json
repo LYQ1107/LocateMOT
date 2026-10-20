@@ -1,9 +1,9 @@
 {
   "project_root": "/data2/user/LocateMOT",
-  "timestamp": "2026-10-20T22:35:47+08:00",
+  "timestamp": "2026-10-20T22:45:28+08:00",
   "g2": {
     "status": "G2_FORMAL_TRAINING_RUNNING",
-    "event_step": 10588,
+    "event_step": 10639,
     "target_steps": 18227,
     "physical_gpus": [3, 5],
     "latest_durable_checkpoint": "adapter-step010500",
@@ -23,11 +23,23 @@
     "last_atomic_resume_step": 3000,
     "target_steps": 28690,
     "resume_queue_status": "WAITING_G2_G1_AND_EXCLUSIVE_GPU_SET",
+    "heldout_gate": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g2_clean_independent_gpu7_v1/owner_state.json",
     "physical_gpus": [4, 5, 6, 7]
   },
   "j1_heldout": {
     "status": "HELDOUT_ALL_REGISTERED_TASKS_COMPLETE",
     "performance_claim": false
+  },
+  "g2_independent_heldout_queue": {
+    "status": "WAITING_G2_CLEAN_BUNDLE_AND_GPU7",
+    "physical_gpu": 7,
+    "scopes": ["rmot_single0007", "rmot_multi0007", "ovmot_tao105"],
+    "exact_image_overlap": {
+      "rmot_single0007": 0,
+      "rmot_multi0007": 0,
+      "ovmot_tao105": 0
+    },
+    "final_metrics_claimed": false
   },
   "mot_only_live_process": false,
   "overall_goal_complete": false
