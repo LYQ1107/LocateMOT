@@ -52,9 +52,10 @@ The replay produced the following raw assignment counts:
 | B2 | 15 | 0 | 2 | 7 | 2 |
 
 These counts show that the trained heads execute the complete NEW/MATCH/
-NO_MATCH/REJECT and memory loop, but they are not accuracy measures. In
-particular, B1's all-REJECT replay exposes the still-untrained/admission
-calibration problem; it must not be presented as a tracking improvement.
+NO_MATCH/REJECT and memory loop, but they are not accuracy measures. The
+different B1/B2 admission and lifecycle distributions expose remaining
+calibration and supervision problems; they must not be presented as a
+tracking improvement.
 The full raw replay is retained outside GitHub at
 `/data2/user/LocateMOT_GroundJEV/outputs/groundjev/coupled/phase_b_replay_v2/phase_b_replay_receipt.json`;
 the compact receipt is `PHASE_B_REPLAY_SUMMARY_20261021.json`.
