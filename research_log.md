@@ -3555,3 +3555,12 @@ has an unrelated process (PID 4008192, user `ljh`, PRISM/CUB training) using abo
 32768 MiB free; the external process was left untouched. This is an observed
 resource gate, not a training or metric result. Evidence:
 `docs/GROUNDJEV/YESTRACK_GPU7_RESOURCE_GATE_20261021.{json,md}`.
+
+## 2026-10-21 — MOT-only long-training safe-close audit
+
+A process-name audit over all `lyq` Python/torch/train/eval/service processes
+found no residual MOT-only or old OneJev long optimizer. The only project
+optimizer is the protected G2 Clean two-rank run at step 12991/18227
+on physical GPUs 3/5. Dependency queues and the GroundAnything service remain
+registered; no legacy MOT-only process was restarted. Evidence:
+`docs/GROUNDJEV/MOT_ONLY_SAFE_CLOSE_AUDIT_20261021.{json,md}`.
