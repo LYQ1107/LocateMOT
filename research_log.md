@@ -3575,3 +3575,12 @@ G0 TRAIN/validation-scope reference only; it is not MOT20 TEST and is not an
 independent G2 held-out claim. The older 1,657-frame diagnostic artifact is
 kept separate. Evidence:
 `docs/GROUNDJEV/G0_MOT20_LONG_EXPORT_AUDIT_20261021.{json,md}`.
+
+## 2026-10-21 — live completion matrix refreshed at G2 step 12997
+
+The previous matrix was stale at step12002. A new execution-state matrix records
+G0 MOT20-05 long export complete in its legal TRAIN scope, MOT-only safely closed,
+G2 running at 12997/18227 on GPUs3/5, and all downstream G1/TAO/held-out/
+three-task/YesTrack gates with their current statuses. Scientific gain remains
+unproven and independent metrics remain pending. Evidence:
+`docs/GROUNDJEV/GOAL_COMPLETION_MATRIX_LIVE_20261021_STEP12997.{json,md}`.
