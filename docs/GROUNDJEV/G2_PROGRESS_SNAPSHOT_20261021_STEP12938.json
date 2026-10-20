@@ -1,0 +1,46 @@
+{
+  "receipt_type": "G2_CLEAN_PROGRESS_SNAPSHOT",
+  "timestamp": "2026-10-21T06:13:50+08:00",
+  "project_root": "/data2/user/LocateMOT",
+  "run_root": "/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final",
+  "manifest_sha256": "f682519a1cf9204ca76ea75a56dad36dbdeac26259f202551ab9f66fefd06e71",
+  "status": "G2_FORMAL_TRAINING_RUNNING",
+  "step": 12938,
+  "target_steps": 18227,
+  "remaining_steps": 5289,
+  "latest_event": {
+    "loss": 0.19186725979670882,
+    "gradient_norm": 10.079959869384766,
+    "peak_memory_gib": 12.828852653503418,
+    "time": "2026-10-21 06:13:50 +0800"
+  },
+  "throughput_steps_per_hour": {
+    "last_100": 313.316,
+    "last_500": 312.283,
+    "last_1000": 311.85
+  },
+  "linear_eta": {
+    "last_100": "2026-10-21T23:06:40.610000+08:00",
+    "last_500": "2026-10-21T23:10:01.592000+08:00",
+    "last_1000": "2026-10-21T23:11:26.216000+08:00"
+  },
+  "durable_recovery": {
+    "adapter": "checkpoints/adapter-step012500.pt",
+    "training_state": "checkpoints/latest_training_state.pt",
+    "final_receipt_present": false
+  },
+  "downstream_gate": {
+    "g1_gpu5": "WAITING_G2_CLEAN_SUCCESS",
+    "g2_bundle": "WAITING_G2_CLEAN_SUCCESS",
+    "heldout_gpu7": "WAITING_G2_CLEAN_BUNDLE_AND_GPU7",
+    "native_tao_shards": "WAITING_G2_CLEAN_SUCCESS",
+    "native_ovmot_join": "WAITING_COMPLETE_NATIVE_TAO_STREAM",
+    "native_three_task": "WAITING_NATIVE_OVMOT_MANIFEST",
+    "yestrack": "WAITING_GPU7_EXCLUSIVE"
+  },
+  "claims": {
+    "training_health_only": true,
+    "tracking_metric_claim": false,
+    "g2_terminal": false
+  }
+}

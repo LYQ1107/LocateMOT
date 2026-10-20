@@ -3477,3 +3477,14 @@ touching G2: bundle PID 634486 and TAO PID 634487 are both still gated at
 `WAITING_G2_CLEAN_SUCCESS`, with no optimizer updates or GPU allocation.
 `py_compile` and a runtime Torch import passed. Evidence:
 `docs/GROUNDJEV/G2_BUNDLE_RUNTIME_PATH_REPAIR_20261021.{json,md}`.
+
+## 2026-10-21 — G2 Clean progress snapshot at step 12938
+
+The protected event stream advanced to 12938/18227. The latest finite event at
+06:13:50 +0800 has loss 0.1918672598, gradient norm 10.0799599, and peak
+allocated memory 12.8289 GiB. Recent 100/500/1000-step rates are
+313.316/312.283/311.850 steps per hour, giving a linear ETA around
+23:06–23:11 Asia/Shanghai. The final receipt is absent; adapter-step012500 and
+latest_training_state.pt remain the durable recovery pair. This is a training
+health snapshot only, not a tracking result. Evidence:
+`docs/GROUNDJEV/G2_PROGRESS_SNAPSHOT_20261021_STEP12938.{json,md}`.
