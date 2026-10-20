@@ -25,7 +25,8 @@ RUNTIME_ROOT = Path("/data2/user/LocateMOT_GroundJEV")
 VENV = RUNTIME_ROOT / ".venv-onejev-py310/bin/python"
 SERVE_PY = RUNTIME_ROOT / "tools/groundjev/serve_groundanything.py"
 RUN_VIDEO = RUNTIME_ROOT / "tools/groundjev/run_video.py"
-SCORER = RUNTIME_ROOT / "tools/groundjev/evaluate_multitask.py"
+MULTITASK_SCORER = RUNTIME_ROOT / "tools/groundjev/evaluate_multitask.py"
+MOT_SCORER = RUNTIME_ROOT / "tools/groundjev/evaluate_video.py"
 BASE_MODEL = RUNTIME_ROOT / "models/GroundAnything-DLM"
 G2_BUNDLE = RUNTIME_ROOT / "models/GroundAnything-DLM-G2-CLEAN-V2"
 G2_ROOT = Path(
@@ -49,6 +50,7 @@ G2_TRAIN_STATUS = "G2_EXACT_COVERAGE_TRAINING_COMPLETE"
 MANIFEST_SHA = "f682519a1cf9204ca76ea75a56dad36dbdeac26259f202551ab9f66fefd06e71"
 DEFAULT_OUT = RUNTIME_ROOT / "outputs/groundjev/heldout/g2_clean_independent_gpu7_v1"
 SCOPES = (
+    ("mot20_05_validation1657", "mot", Path("/data3/user/LocateMOT-runs/GroundJEV/g2_step3000_full_eval_mot20_05/mot20_05_validation_half.json")),
     ("rmot_single0007", "rmot", RUNTIME_ROOT / "outputs/groundjev/multitask_pilot_data/rmot_single_empty_full.json"),
     ("rmot_multi0007", "rmot", RUNTIME_ROOT / "outputs/groundjev/multitask_pilot_data/rmot_multi_empty_full.json"),
     ("ovmot_tao105", "ovmot", RUNTIME_ROOT / "outputs/groundjev/multitask_pilot_data/ovmot_tao_independent105_full.json"),
@@ -316,7 +318,8 @@ def main() -> int:
                 state.update(status=f"RUNNING_{label.replace('-', '_')}_{name}", current_stage=f"RUNNING_{label.replace('-', '_')}_{name}", current_scope=name)
                 save(owner, state)
                 run_logged(command, RUNTIME_ROOT, env, args.out / f"{label.replace('-', '_')}_{name}_inference.log")
-                scorer_command = [str(VENV), str(SCORER), "--video", str(manifest), "--run", str(output)]
+                scorer = MOT_SCORER if task == "mot" else MULTITASK_SCORER
+                scorer_command = [str(VENV), str(scorer), "--video", str(manifest), "--run", str(output)]
                 run_logged(scorer_command, RUNTIME_ROOT, env, args.out / f"{label.replace('-', '_')}_{name}_eval.log")
                 result = read_json(output / "result.json")
                 metrics = read_json(output / "official_metrics.json")
