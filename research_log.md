@@ -3584,3 +3584,13 @@ G2 running at 12997/18227 on GPUs3/5, and all downstream G1/TAO/held-out/
 three-task/YesTrack gates with their current statuses. Scientific gain remains
 unproven and independent metrics remain pending. Evidence:
 `docs/GROUNDJEV/GOAL_COMPLETION_MATRIX_LIVE_20261021_STEP12997.{json,md}`.
+
+## 2026-10-21 — G2 recovery checkpoint validated on CPU
+
+While the protected G2 run continued, the latest durable training checkpoint
+was loaded with the CPU-only runtime. It is step 13000 at world size
+2, and contains model trainable state, optimizer, scheduler,
+sampler position, Python/NumPy/Torch/CUDA RNG state, the training contract and
+trainable audit. The adapter-step012500 file is also present. No GPU was touched
+and no metric claim is made. Evidence:
+`docs/GROUNDJEV/G2_CHECKPOINT_RECOVERY_AUDIT_20261021.{json,md}`.
