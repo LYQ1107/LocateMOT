@@ -1,0 +1,23 @@
+{
+  "status": "TAO_TRAIN_NATIVE_OVMOT_SCOPE_REGISTERED_NOT_STREAMED",
+  "project_root": "/data2/user/LocateMOT",
+  "manifest": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/tao_native_ovmot_train_scope_v1/manifest.json",
+  "manifest_sha256": "835adaadff282088599987de4c5bc906e7d8aca826deb7426cda05598e9db3a4",
+  "scope_receipt": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/tao_native_ovmot_train_scope_v1/scope_receipt.json",
+  "frames": 18274,
+  "videos": 500,
+  "resolved_images": 18274,
+  "runtime_GT_fields": false,
+  "official_test_labels_read": false,
+  "native_candidate_export_started": false,
+  "native_ovmot_training_rows": false,
+  "stream_script": "/data2/user/LocateMOT/tools/groundjev/stream_tao_native_candidates.py",
+  "stream_script_sha256": "f256bbbe91f8d48c959c7e5eb3eae5dc8595e60da6f73e9cb9fab88553cf64c4",
+  "scope_script": "/data2/user/LocateMOT/scripts/groundjev/prepare_tao_train_native_scope.py",
+  "scope_script_sha256": "c471ae7370a51aae96685ab92962bbfe288e739dbca8ecd8f49d754034f23793",
+  "required_invocation": "tools/groundjev/stream_tao_native_candidates.py --manifest <manifest.json> --out <new_dir> --allow-training-scope",
+  "next_join": "tools/groundjev/prepare_native_ovmot_train_join.py",
+  "gpu_calls": 0,
+  "optimizer_updates": 0,
+  "queue_boundary": "The compact three-task queue remains paused until native TRAIN candidate rows are joined and a new full manifest passes the native gate."
+}
