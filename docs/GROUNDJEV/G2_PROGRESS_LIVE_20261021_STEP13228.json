@@ -1,0 +1,16 @@
+{
+  "observed_at": "2026-10-21 07:09:38 +0800",
+  "run_root": "/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final",
+  "step": 13228,
+  "max_steps": 18227,
+  "latest_event": {
+    "loss": 0.11464534467086196,
+    "gradient_norm": 9.12596321105957,
+    "peak_memory_gib": 12.828900337219238,
+    "finite": true
+  },
+  "terminal_receipt_present": false,
+  "final_adapter_present": false,
+  "process_state": "two-rank G2 trainer live; event stream advanced during blocking wait",
+  "operational_eta": "approximately 16 hours at the measured ~5.2 steps/minute; not a metric claim"
+}
