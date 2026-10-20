@@ -1,0 +1,27 @@
+{
+  "status": "TRACKJEV_REAL_INPUT_EVIDENCE_REGISTERED",
+  "timestamp": "2026-10-20T23:14:00+08:00",
+  "pretrained_onejev_single_frame": {
+    "receipt": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/model_setup/onejev_real_frame.json",
+    "status": "REAL_PRETRAINED_MODEL_FRAME_DECISION_COMPLETE_NOT_TRACKING_BENCHMARK",
+    "checkpoint": "/data2/user/LocateMOT_GroundJEV/models/OneJev-0.8B",
+    "mot_image": "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-02-FRCNN/img1/000302.jpg",
+    "physical_gpu": 6,
+    "load_seconds": 9.24577409500489,
+    "decision_seconds": 0.28673735295888075,
+    "peak_memory_bytes": 3119928832,
+    "official_test_labels_read": false
+  },
+  "four_frame_native_clip": {
+    "receipt": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/validation/first_native_clip_integrity.json",
+    "status": "REAL_DLM_ONEJEV_FOUR_FRAME_OUTPUTS_VERIFIED",
+    "frames": [302, 303, 304, 305],
+    "candidates": [31, 31, 31, 35],
+    "tracks": [30, 31, 31, 35],
+    "one_to_one_per_frame": true,
+    "native_detection_scores_absent_not_fabricated": true,
+    "strict_wire_error_frame305_preserved": true,
+    "gt_read_by_runtime": false
+  },
+  "claim_boundary": "real model/input plumbing evidence only; not a full tracking benchmark or G1/G2 metric result"
+}
