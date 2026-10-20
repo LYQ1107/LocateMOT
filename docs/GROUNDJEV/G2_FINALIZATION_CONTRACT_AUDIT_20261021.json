@@ -1,0 +1,21 @@
+{
+  "observed_at": "2026-10-21 06:57:55 +0800",
+  "g2_run": "/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final",
+  "observed_step": 13167,
+  "expected_terminal_step": 18227,
+  "source_checks": {
+    "trainer": "tools/groundjev/g2/train_g2_dlm.py",
+    "final_adapter": "adapter_projector_final.pt",
+    "final_receipt": "final_receipt.json",
+    "terminal_status": "G2_EXACT_COVERAGE_TRAINING_COMPLETE",
+    "manifest_sha256": "f682519a1cf9204ca76ea75a56dad36dbdeac26259f202551ab9f66fefd06e71"
+  },
+  "verified_behavior": [
+    "The trainer writes adapter_projector_final.pt only on rank 0 after reaching the registered total step.",
+    "The trainer writes final_receipt.json with terminal status, terminal step, manifest SHA, world size, coverage mode and training contract.",
+    "The G2 bundle owner rejects missing receipt, wrong terminal status, wrong step, wrong manifest SHA or missing final adapter.",
+    "No source model overwrite is permitted by the bundle owner."
+  ],
+  "current_gate": "G2_FORMAL_TRAINING_RUNNING; terminal receipt absent",
+  "result": "PASS_STATIC_CONTRACT_AUDIT_NO_RUNTIME_CHANGE"
+}
