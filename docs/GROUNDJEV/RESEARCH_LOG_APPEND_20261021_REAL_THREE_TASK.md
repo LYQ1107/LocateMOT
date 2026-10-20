@@ -11,3 +11,8 @@ and source SHA-256 values passed. The registered TAO native archive contains
 40 frames and 35,228 candidates but no category supervision, so native OVMOT
 training rows remain pending. No optimizer update or GPU launch was performed;
 the old independent four-GPU OneJev queue remains paused.
+
+The registered `.venv-onejev-py310` loader subsequently loaded all 131,990
+manifest rows and reproduced the five task-family counts exactly. System
+Python was rejected as a training runtime because it lacks the OneJev
+`pydantic` dependency.

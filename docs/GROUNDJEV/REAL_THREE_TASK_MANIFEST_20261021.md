@@ -29,3 +29,9 @@ four-GPU resume queue remains paused and was not restarted against this
 manifest. A future optimizer launch must first materialize native TAO
 train-split category rows, validate the runtime OneJev environment, and create
 a new run directory/checkpoint lineage.
+
+The runtime loader was then exercised in the registered
+`.venv-onejev-py310` environment: it loaded all 131,990 rows and reproduced
+the five task-family counts exactly. The system Python environment lacks the
+OneJev `pydantic` dependency and is therefore not a valid training runtime;
+the recorded launch contract uses the dedicated environment.
