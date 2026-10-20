@@ -25,9 +25,5 @@
   "log_every": 25,
   "save_every": 500,
   "gradient_checkpointing": true,
-  "lora_autocast": true,
-  "full_goal_complete": false,
-  "ovmot_training_mode": "base_teacher_control",
-  "native_ovmot_rows_pending": true,
-  "optimizer_updates_at_registration": 0
+  "lora_autocast": true
 }
