@@ -3624,3 +3624,8 @@ The protected two-rank G2 Clean event stream advanced to 13,158/18,227 at 06:56:
 ## 2026-10-21 — downstream owner heartbeat at G2 step 13163
 
 At 06:57:09 +0800 the protected G2 stream was at 13,163/18,227 with no terminal receipt. Every registered dependency owner remained live: G1 GPU5 (PID 642505), G2 bundle export (634486), native TAO shards (634487), native OVMOT join (500654), three-task OneJev (521109) and YesTrack (522307). Their states remain the exact waiting gates; held-out remains `WAITING_G2_CLEAN_BUNDLE_AND_GPU7`. No downstream optimizer or GPU launch was claimed and G2 was untouched. Evidence: `docs/GROUNDJEV/DOWNSTREAM_OWNER_HEARTBEAT_20261021_STEP13163.{json,md}`.
+
+
+## 2026-10-21 — G2 terminal finalization contract audit
+
+At event step 13,167/18,227, the trainer and bundle owner were statically audited. The trainer writes `adapter_projector_final.pt` and `final_receipt.json` only after the terminal step; the receipt must carry status `G2_EXACT_COVERAGE_TRAINING_COMPLETE`, step 18,227 and the registered Clean TRAIN manifest SHA. The bundle owner rejects every missing or mismatched terminal condition and refuses to overwrite the source bundle. The runtime remains `G2_FORMAL_TRAINING_RUNNING` with no receipt; no GPU, checkpoint or model was modified. Evidence: `docs/GROUNDJEV/G2_FINALIZATION_CONTRACT_AUDIT_20261021.{json,md}`.
