@@ -1,0 +1,22 @@
+{
+  "receipt_type": "GROUNDJEV_G0_MOT20_LONG_EXPORT_AUDIT",
+  "generated_at": "2026-10-21T06:24:49.194408+08:00",
+  "run_receipt": "/data2/user/LocateMOT_OneJev_CVPR/outputs/groundjev/full_data_v2/candidate_export_v2/mot20_MOT20-05_resumed_v2/official_metrics.json",
+  "status": "OFFICIAL_SCOPE_EVALUATION_COMPLETE",
+  "dataset": "mot20",
+  "sequence": "MOT20-05",
+  "scope": "legal_TRAIN_frames_from_frozen_U2_protocol",
+  "frames": 1658,
+  "metrics": {
+    "HOTA": 0.4334411867648454,
+    "DetA": 0.6383477111664836,
+    "AssA": 0.2946547751450596,
+    "IDF1": 0.4410847447983528,
+    "IDSW": 6239,
+    "FP": 6325,
+    "FN": 98471
+  },
+  "rejected_perception_frames": 183,
+  "claim_boundary": "Frozen G0 reference on legal MOT20 TRAIN frames; not MOT20 TEST and not an independent G2 held-out result.",
+  "historical_1657_diagnostic_separate": true
+}

@@ -3564,3 +3564,14 @@ optimizer is the protected G2 Clean two-rank run at step 12991/18227
 on physical GPUs 3/5. Dependency queues and the GroundAnything service remain
 registered; no legacy MOT-only process was restarted. Evidence:
 `docs/GROUNDJEV/MOT_ONLY_SAFE_CLOSE_AUDIT_20261021.{json,md}`.
+
+## 2026-10-21 — G0 MOT20 long export terminal receipt audited
+
+The frozen G0 long export has an authoritative official-scope receipt for
+MOT20-05: 1658 legal TRAIN frames, HOTA 0.433441,
+DetA 0.638348, AssA 0.294655, IDF1
+0.441085, IDSW 6239. The receipt is a
+G0 TRAIN/validation-scope reference only; it is not MOT20 TEST and is not an
+independent G2 held-out claim. The older 1,657-frame diagnostic artifact is
+kept separate. Evidence:
+`docs/GROUNDJEV/G0_MOT20_LONG_EXPORT_AUDIT_20261021.{json,md}`.
