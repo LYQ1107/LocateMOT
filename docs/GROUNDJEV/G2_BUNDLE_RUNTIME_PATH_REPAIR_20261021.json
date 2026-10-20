@@ -1,0 +1,29 @@
+{
+  "receipt_type": "G2_DOWNSTREAM_RUNTIME_PATH_REPAIR",
+  "date": "2026-10-21",
+  "project_root": "/data2/user/LocateMOT",
+  "runtime_root": "/data2/user/LocateMOT_GroundJEV",
+  "problem": "The wait-only G2 bundle owner used the source checkout for the GroundAnything model, exporter, and training Python environment. The source checkout intentionally has no models/GroundAnything-DLM bundle.",
+  "repair": {
+    "source_owner": "tools/groundjev/queue_g2_clean_bundle_export.py",
+    "runtime_model_root": "/data2/user/LocateMOT_GroundJEV/models",
+    "runtime_bundle_output": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM-G2-CLEAN-V2",
+    "runtime_python": "/data2/user/LocateMOT_GroundJEV/.venv-ground-train-py312/bin/python",
+    "runtime_exporter": "/data2/user/LocateMOT_GroundJEV/tools/groundjev/g2/export_g2_checkpoint.py",
+    "runtime_cwd": "/data2/user/LocateMOT_GroundJEV"
+  },
+  "verification": {
+    "py_compile": true,
+    "runtime_python_torch_import": "2.10.0+cu128",
+    "runtime_exporter_exists": true,
+    "runtime_base_bundle_exists": true,
+    "source_base_bundle_exists": false,
+    "old_wait_owner_pid": 511425,
+    "new_wait_owner_pid": 634486,
+    "new_status": "WAITING_G2_CLEAN_SUCCESS",
+    "physical_gpu": null,
+    "optimizer_updates": 0,
+    "g2_process_touched": false
+  },
+  "claim_boundary": "This repairs a future export path and does not claim G2 completion or tracking performance."
+}

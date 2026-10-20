@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""Export the clean G2 adapter into a deployable bundle after its owners finish.
+"""Export the clean G2 adapter into a deployable bundle after G2 finishes.
 
 The formal G2 trainer intentionally keeps a strict FP32/Adam/RNG recovery
-checkpoint and only writes ``adapter_projector_final.pt`` at the terminal step.
+checkpoint and only writes adapter_projector_final.pt at the terminal step.
 This owner converts that state into a versioned GroundAnything bundle without
-touching the source model or allocating a GPU.  It waits for the registered
-GPU5 G1 continuation as well so the large CPU merge cannot overlap the G1
-GPU5/control window.
+touching the source model or allocating a GPU.  The G2 bundle is deliberately
+independent of the optional GPU5 G1 continuation, so held-out G2 evaluation
+and native G2 data export cannot be blocked by a comparison arm.
 """
 
 from __future__ import annotations
@@ -20,13 +20,16 @@ import time
 
 
 ROOT = Path(__file__).resolve().parents[2]
+RUNTIME_ROOT = Path("/data2/user/LocateMOT_GroundJEV")
 G2_DEFAULT = Path(
     "/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/"
     "formal_clean_coverage_v2_final"
 )
-G1_DEFAULT = ROOT / "outputs/groundjev/ground_adaptation/native_tracking200_gpu5_g1_v1/queue_owner_state.json"
-OUT_DEFAULT = ROOT / "outputs/groundjev/ground_adaptation/g2_clean_bundle_export_v1"
-BUNDLE_DEFAULT = ROOT / "models/GroundAnything-DLM-G2-CLEAN-V2"
+G1_DEFAULT = RUNTIME_ROOT / "outputs/groundjev/ground_adaptation/native_tracking200_gpu5_g1_v1/queue_owner_state.json"
+OUT_DEFAULT = RUNTIME_ROOT / "outputs/groundjev/ground_adaptation/g2_clean_bundle_export_v1"
+BUNDLE_DEFAULT = RUNTIME_ROOT / "models/GroundAnything-DLM-G2-CLEAN-V2"
+GROUND_TRAIN_PYTHON = RUNTIME_ROOT / ".venv-ground-train-py312/bin/python"
+EXPORT_SCRIPT = RUNTIME_ROOT / "tools/groundjev/g2/export_g2_checkpoint.py"
 MANIFEST_SHA = "f682519a1cf9204ca76ea75a56dad36dbdeac26259f202551ab9f66fefd06e71"
 G2_STEPS = 18_227
 
@@ -99,13 +102,21 @@ def main() -> int:
     parser.add_argument("--bundle", type=Path, default=BUNDLE_DEFAULT)
     parser.add_argument("--poll-seconds", type=int, default=60)
     args = parser.parse_args()
-    if args.out.exists() or args.bundle.exists():
-        raise FileExistsError("refusing to overwrite an existing G2 clean export")
-
     owner_path = args.out / "owner_state.json"
+    previous = read(owner_path) if owner_path.is_file() else None
+    if previous and previous.get("owner_pid") and Path(f"/proc/{previous['owner_pid']}").exists():
+        raise FileExistsError(f"G2 bundle owner is already live: {previous['owner_pid']}")
+    if args.bundle.exists():
+        raise FileExistsError("refusing to overwrite an existing G2 clean bundle")
+    if args.out.exists():
+        unfinished_statuses = {"WAITING_G2_CLEAN_SUCCESS", "WAITING_G2_AND_G1_TERMINAL"}
+        unfinished = previous and str(previous.get("status", "")) in unfinished_statuses
+        unexpected = [child for child in args.out.iterdir() if child.name != "owner_state.json"]
+        if not unfinished or unexpected:
+            raise FileExistsError("refusing to overwrite an existing or partial G2 clean export")
     state = {
-        "status": "WAITING_G2_AND_G1_TERMINAL",
-        "current_stage": "WAITING_G2_AND_G1_TERMINAL",
+        "status": "WAITING_G2_CLEAN_SUCCESS",
+        "current_stage": "WAITING_G2_CLEAN_SUCCESS",
         "owner_pid": os.getpid(),
         "g2_root": str(args.g2_root),
         "g1_state": str(args.g1_state),
@@ -118,6 +129,7 @@ def main() -> int:
         "completed": {},
         "failed": None,
         "source_bundle_untouched": True,
+        "resumed_wait_owner": bool(previous),
     }
     save(owner_path, state)
     try:
@@ -131,23 +143,11 @@ def main() -> int:
                 )
                 save(owner_path, state)
                 return 2
-            g1_ok, g1, g1_error = g1_terminal(args.g1_state)
-            if g1_error:
-                state.update(
-                    status="G2_CLEAN_BUNDLE_WAIT_REFUSED_G1_FAILED",
-                    current_stage="G1_DEPENDENCY_FAILED",
-                    failed={"reason": g1_error, "evidence": g1},
-                )
-                save(owner_path, state)
-                return 2
-            if g2_ok and g1_ok:
+            if g2_ok:
                 state["completed"]["g2_training"] = g2
-                state["completed"]["g1_gpu5"] = {
-                    "status": g1.get("status"),
-                    "bundle": g1.get("bundle"),
-                    "controls": g1.get("controls"),
-                }
                 break
+            state.update(status="WAITING_G2_CLEAN_SUCCESS", current_stage="WAITING_G2_CLEAN_SUCCESS")
+            save(owner_path, state)
             time.sleep(args.poll_seconds)
 
         state.update(status="EXPORTING_G2_CLEAN_DEPLOYMENT_BUNDLE", current_stage="EXPORTING_G2_CLEAN_DEPLOYMENT_BUNDLE")
@@ -156,8 +156,8 @@ def main() -> int:
         receipt = args.out / "export_receipt.json"
         args.out.mkdir(parents=True, exist_ok=True)
         command = [
-            "python3",
-            "tools/groundjev/g2/export_g2_checkpoint.py",
+            str(GROUND_TRAIN_PYTHON),
+            str(EXPORT_SCRIPT),
             "--adapter",
             str(adapter),
             "--out",
@@ -170,7 +170,7 @@ def main() -> int:
             MANIFEST_SHA,
         ]
         with (args.out / "G2_EXPORT.log").open("w") as log:
-            result = subprocess.run(command, cwd=ROOT, stdout=log, stderr=subprocess.STDOUT)
+            result = subprocess.run(command, cwd=RUNTIME_ROOT, stdout=log, stderr=subprocess.STDOUT)
         if result.returncode:
             raise RuntimeError(f"G2 exporter exited {result.returncode}")
         exported = read(receipt)
