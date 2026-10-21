@@ -1,0 +1,28 @@
+{
+  "status": "REGISTERED_WAIT_OWNER",
+  "old_owner": {
+    "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/real_three_task_joint_native_v1_queue",
+    "status": "PAUSED_FOR_GROUNDJEV_SINGLE_BACKBONE",
+    "optimizer_updates": 0,
+    "gpu_launched": false
+  },
+  "new_owner": {
+    "script": "scripts/groundjev/queue_groundjev_native_three_task.py",
+    "queue_root": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/groundjev_native_three_task_v1_queue",
+    "physical_gpu": 4,
+    "rows_per_task": 24,
+    "steps": 240,
+    "g2_dependency": "G2_EXACT_COVERAGE_TRAINING_COMPLETE",
+    "native_ovmot_required": true,
+    "independent_onejev": false,
+    "independent_yestrack": false
+  },
+  "validation": {
+    "compileall": true,
+    "loader_mot_rmot_ovmot": true,
+    "synthetic_backward": true,
+    "coupling_tests": 11,
+    "gpu_training_started": false
+  },
+  "scientific_boundary": "queue and code evidence only until the real GPU receipt is written"
+}
