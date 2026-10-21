@@ -3833,3 +3833,13 @@ change.
 状态均存在，adapter 浮点参数全部有限。终态 receipt 仍未生成，训练进程
 未修改。证据：`docs/GROUNDJEV/G2_CHECKPOINT_PROGRESS_20261021_STEP17500.{json,md}`。
 
+
+## 2026-10-21 — post-G2 downstream queue contract audit
+
+在正式 G2 仍运行期间，对终态后自动执行的 G2 bundle、GPU5 G1、native
+OVMOT join、native MOT/RMOT/OVMOT 三任务和独立 held-out 五个入口执行只读
+合同审计。五个脚本均通过注册 Python 环境的 `py_compile`；终态 G2
+status/step/manifest 校验、bundle receipt、native OVMOT manifest gate、
+held-out scope gate 和资源等待条件均存在，未启动任何 GPU 或 optimizer。
+这是终态前置审计，不代表下游已完成。
+
