@@ -170,6 +170,83 @@ def _generate(model: Any, prepared: dict[str, Any], memory: torch.Tensor, *, ena
             "grammar_forced_box_end": forced_box_end}
 
 
+def _generate_multi_box(model: Any, prepared: dict[str, Any], memory: torch.Tensor, *, enabled: bool,
+                        max_new_tokens: int, stop_ids: set[int], structural: dict[str, int],
+                        coordinate_range: tuple[int, int]) -> dict[str, Any]:
+    """Decode a native dense answer containing comma-separated boxes.
+
+    The earlier Phase-C helper intentionally stopped after one box for a
+    referring-target diagnostic.  Dense G2 rows use one object label followed
+    by an arbitrary number of four-coordinate tuples, so stopping on the first
+    ``box_end`` silently changed the training contract.  This decoder keeps
+    the official coordinate/box-end constraints for every tuple and stops only
+    at the caller's terminal token (normally ``<|im_end|>``).
+    """
+    with torch.autocast("cuda", dtype=torch.bfloat16):
+        prefill = causal_prefill_with_memory(
+            model.language_model, model.lm_head,
+            prepared["embeds"], prepared["mask"], prepared["positions"], memory,
+            native_position_ids=model._native_position_ids,
+            enabled=enabled, inference_mode=True,
+        )
+    outputs = prefill["outputs"]
+    cache = outputs.past_key_values
+    if cache is None:
+        raise RuntimeError("real G2 multi-box prefill did not return a KV cache")
+    logits = model.lm_head(outputs.last_hidden_state[:, -1])
+    generated: list[int] = []
+    open_box_coordinates: int | None = None
+    closed_boxes = 0
+    forced_box_end = 0
+    axes = int(prefill["prepared"].position_ids.shape[0])
+    batch_size = int(prefill["prepared"].inputs_embeds.shape[0])
+    rope_deltas = getattr(model.multimodal_model, "rope_deltas", None)
+    if rope_deltas is not None:
+        rope_deltas = rope_deltas.detach().clone()
+    for _ in range(max_new_tokens):
+        if open_box_coordinates is not None:
+            if open_box_coordinates >= 4:
+                token = torch.full((logits.shape[0], 1), structural["box_end"],
+                                   dtype=torch.long, device=logits.device)
+                forced_box_end += 1
+            else:
+                constrained = logits.clone()
+                lo, hi = coordinate_range
+                constrained[:, :lo] = -torch.inf
+                constrained[:, hi + 1:] = -torch.inf
+                token = constrained.argmax(dim=-1, keepdim=True)
+        else:
+            token = logits.argmax(dim=-1, keepdim=True)
+        value = int(token[0, 0])
+        generated.append(value)
+        if open_box_coordinates is None and value == structural["box_start"]:
+            open_box_coordinates = 0
+        elif open_box_coordinates is not None and value == structural["box_end"]:
+            open_box_coordinates = None
+            closed_boxes += 1
+        elif open_box_coordinates is not None and coordinate_range[0] <= value <= coordinate_range[1]:
+            open_box_coordinates += 1
+        if value in stop_ids:
+            break
+        position = int(cache.get_seq_length())
+        positions = model._generation_position_ids(
+            torch.tensor([position], device=token.device, dtype=torch.long),
+            axes, batch_size, rope_deltas,
+        )
+        with torch.inference_mode(), torch.autocast("cuda", dtype=torch.bfloat16):
+            outputs = model.language_model(
+                input_ids=token, attention_mask=None,
+                position_ids=model._native_position_ids(positions),
+                past_key_values=cache, use_cache=True,
+                cache_position=torch.tensor([position], device=token.device, dtype=torch.long),
+                return_dict=True,
+            )
+            logits = model.lm_head(outputs.last_hidden_state[:, -1])
+        cache = outputs.past_key_values
+    return {"token_ids": generated, "prefill": prefill, "cache_tokens": int(cache.get_seq_length()),
+            "grammar_forced_box_end": forced_box_end, "closed_boxes": closed_boxes}
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--runtime-root", required=True)
