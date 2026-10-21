@@ -1,0 +1,23 @@
+{
+  "timestamp": "2026-10-21T19:10:55+08:00",
+  "run": "/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final",
+  "live_event_step": 17003,
+  "checkpoint_step": 17000,
+  "world_size": 2,
+  "physical_gpus": [3, 5],
+  "adapter_checkpoint": "checkpoints/adapter-step017000.pt",
+  "recovery_checkpoint": "checkpoints/latest_training_state.pt",
+  "manifest_sha256": "f682519a1cf9204ca76ea75a56dad36dbdeac26259f202551ab9f66fefd06e71",
+  "cpu_load": {
+    "weights_only": false,
+    "adapter_loaded": true,
+    "recovery_loaded": true,
+    "optimizer_state_present": true,
+    "scheduler_state_present": true,
+    "sampler_state_present": true,
+    "rng_state_present": true
+  },
+  "final_receipt_present": false,
+  "terminal_adapter_present": false,
+  "claim_boundary": "Checkpoint/recovery evidence only; no tracking metric claim."
+}
