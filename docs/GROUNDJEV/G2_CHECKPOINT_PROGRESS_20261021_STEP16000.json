@@ -1,0 +1,63 @@
+{
+  "schema": "groundjev-g2-checkpoint-recovery-v1",
+  "date": "2026-10-21",
+  "project_root": "/data2/user/LocateMOT",
+  "run_root": "/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final",
+  "latest_event": {
+    "step": 16014,
+    "epoch": 0,
+    "position": 128112,
+    "samples_global": 16,
+    "effective_tokens_global": 10891,
+    "token_budget_per_device": 16384,
+    "loss": 0.14327701507136226,
+    "gradient_norm": 10.117892265319824,
+    "peak_memory_gib": 12.828871726989746,
+    "lr_projector": 2.686921381801292e-07,
+    "lr_lora": 9.404224836304522e-07,
+    "time": "2026-10-21 16:00:52 +0800"
+  },
+  "checkpoint_contract": {
+    "step": 16000,
+    "max_steps": 18227,
+    "world_size": 2,
+    "physical_gpus": [3, 5],
+    "coverage_mode": "exact_once",
+    "micro_batch_size": 2,
+    "grad_accum_steps": 8,
+    "expected_global_batch": 32,
+    "token_budget": 16384,
+    "seed": 20261019,
+    "manifest_sha256": "f682519a1cf9204ca76ea75a56dad36dbdeac26259f202551ab9f66fefd06e71",
+    "format": "groundanything-g2-projector-qwen3-lora-v2-strict"
+  },
+  "checkpoint_files": {
+    "adapter": {
+      "path": "/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final/checkpoints/adapter-step016000.pt",
+      "bytes": 469243990,
+      "sha256": "f473d5dc0d108576264f944cca26a3cbc64834774025646695183ae13bc97ed5"
+    },
+    "latest_training_state": {
+      "path": "/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final/checkpoints/latest_training_state.pt",
+      "bytes": 469247597,
+      "sha256": "560c314569d8e087cd7d53443ea2d886d56ee77381bf3c2719c874f88ac28e71"
+    }
+  },
+  "loaded_cpu_with_weights_only_false": true,
+  "optimizer_scheduler_rng_present": true,
+  "terminal_receipt_present": false,
+  "owners": {
+    "g2_bundle": {"status": "WAITING_G2_CLEAN_SUCCESS"},
+    "g1_gpu5": {"status": "WAITING_G2_CLEAN_SUCCESS"},
+    "tao_export": {"status": "WAITING_G2_CLEAN_SUCCESS"},
+    "tao_join": {"status": "WAITING_COMPLETE_NATIVE_TAO_STREAM", "optimizer_updates": 0, "gpu_launched": false},
+    "three_task": {"status": "WAITING_NATIVE_OVMOT_MANIFEST", "optimizer_updates": 0, "gpu_launched": false},
+    "heldout": {"status": "WAITING_G2_CLEAN_BUNDLE_AND_GPU7"},
+    "yestrack": {"status": "WAITING_GPU7_EXCLUSIVE"}
+  },
+  "claims_boundary": [
+    "checkpoint recovery and training health only",
+    "no G2 MOT/RMOT/OVMOT metric",
+    "no coupled OneJev optimizer update"
+  ]
+}
