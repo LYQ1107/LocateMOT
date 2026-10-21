@@ -329,23 +329,39 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
         frame_scope.close()
 
     full_scope = args.max_frames is None and len(seen_keys) == len(image_by_key)
-    if args.max_frames is None and not full_scope:
-        raise ValueError(f"native candidate stream is incomplete: {len(seen_keys)} / {len(image_by_key)} TRAIN images")
+    registered_subset = bool(args.registered_train_subset)
+    subset_scope = (
+        registered_subset
+        and args.max_frames is not None
+        and len(seen_keys) == int(args.max_frames)
+    )
+    if not full_scope and not subset_scope:
+        if args.max_frames is None:
+            raise ValueError(f"native candidate stream is incomplete: {len(seen_keys)} / {len(image_by_key)} TRAIN images")
+        raise ValueError(
+            "a partial native stream requires --registered-train-subset and an "
+            f"exactly complete registered subset ({len(seen_keys)} / {args.max_frames} frames)"
+        )
     if not counts["matched_objects"]:
         raise ValueError("no native candidate was joined to a Base TAO TRAIN annotation")
     rows_path = args.out / "train.jsonl.gz"
     manifest = {
         "protocol": "native-ovmot-train-candidate-annotation-join-v1",
-        "manifest_version": "native-ovmot-train-v1" if full_scope else "native-ovmot-preflight-v1",
+        "manifest_version": (
+            "native-ovmot-train-v1" if full_scope
+            else "native-ovmot-train-registered-subset-v1" if subset_scope
+            else "native-ovmot-preflight-v1"
+        ),
         "split": "train",
         "rows": counts["rows"],
         "rows_per_task": {key: counts[key] for key in ("category_group", "category_leaf")},
         "train_rows": str(rows_path),
         "frame_scope": str(args.out / "frame_scope.jsonl"),
-        "native_ovmot_training_rows": full_scope,
-        "ovmot_training_mode": "native" if full_scope else "preflight",
+        "native_ovmot_training_rows": full_scope or subset_scope,
+        "ovmot_training_mode": "native" if (full_scope or subset_scope) else "preflight",
         "candidate_provenance": {
-            "native_ovmot_training_rows": full_scope,
+            "native_ovmot_training_rows": full_scope or subset_scope,
+            "registered_train_subset": subset_scope,
             "candidate_archive": str(candidate_path),
             "candidate_archive_sha256": sha256(candidate_path),
             "tao_train_annotation": str(annotation_path),
@@ -359,7 +375,10 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
         },
         "scope": {
             "frames_seen": counts["frames"], "tao_train_images": len(image_by_key),
-            "full_train_image_scope": full_scope, "missing_categories_without_vocabulary_index": missing_categories,
+            "full_train_image_scope": full_scope,
+            "registered_train_subset": subset_scope,
+            "registered_subset_frames": counts["frames"] if subset_scope else None,
+            "missing_categories_without_vocabulary_index": missing_categories,
         },
         "counts": dict(counts),
         "optimizer_updates": 0,
@@ -377,7 +396,11 @@ def main() -> int:
     parser.add_argument("--annotation", type=Path, default=DEFAULT_ANNOTATION)
     parser.add_argument("--vocabulary", type=Path, default=DEFAULT_VOCABULARY)
     parser.add_argument("--minimum-iou", type=float, default=0.5)
-    parser.add_argument("--max-frames", type=int, default=None, help="preflight only; output cannot pass the native training gate")
+    parser.add_argument("--max-frames", type=int, default=None, help="limit to an exact registered subset when paired with --registered-train-subset")
+    parser.add_argument(
+        "--registered-train-subset", action="store_true",
+        help="promote an exactly complete, explicitly registered TAO TRAIN subset to native training scope",
+    )
     args = parser.parse_args()
     if not (0.0 < args.minimum_iou <= 1.0):
         parser.error("--minimum-iou must be in (0, 1]")
