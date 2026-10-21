@@ -1,5 +1,5 @@
-Warning: truncated output (original token count: 140920)
-Total output lines: 4195
+Warning: truncated output (original token count: 141033)
+Total output lines: 4201
 
 ## 2026-10-21 — 双序列耦合训练 step48 审计：JEV 学会但 C2 坐标未学会
 
@@ -2163,9 +2163,7 @@ finite loss3.8286855,lifegradient12.4010; no droppedemptyframe rule needed.
 ### Original Ground dense/referring retention data preparation
 
 Original nine dense/referring benchmark inputs are absent locally. Official
-GroundAnything README links Skywalker0410…40920 tokens truncated…51722974<26843545600、余291822626bytes，零删除/零新feature archive。
-
-完整源清单原84666真实exit0：64个immutable源文件、459027问题=252258 MOT/100813 RMOT/105956 OVMOT，未复制原native特征/图片。新四卡大epoch owner94290（3457625/start49350320）已实际启动且live exact identity验证，进入FULL_NATIVE_CPU_PLAN，仍0optimizer；须全部实际native MM行/四rank global16计划0drop后才能启动四卡FA。同原6000一样从native600完整FP32 masters起点、独立新optimizer/scheduler/RNG，1整epoch/seed0/lr2e-6/vision frozen/global16/同一个final模型测全部任务，明确新自然源比例而非原24k均衡recipe，不声称只隔离了规模因果。保留/data3模型/checkpoints，训练前需150GiB空间及4/5/6/7各free32GiB，和所有既有任务共享总共四卡；无Ground-One端到端梯度或长视频BPTT。actual filtered-media曝光须CPU报告实测，不用raw1814源帧替代optimizer曝光。终评仍同4固定scope、原scorers/阈值/全empty-reject，TAO第二策略显式同ckpt类别复用。原主6000冻结2625updates/10500已消费问题、至少2500完整state已保存，输入未改；全部tracking/普通水平目标仍未完成。
+GroundAnything README links Skywalker0410…41033 tokens truncated…同原6000一样从native600完整FP32 masters起点、独立新optimizer/scheduler/RNG，1整epoch/seed0/lr2e-6/vision frozen/global16/同一个final模型测全部任务，明确新自然源比例而非原24k均衡recipe，不声称只隔离了规模因果。保留/data3模型/checkpoints，训练前需150GiB空间及4/5/6/7各free32GiB，和所有既有任务共享总共四卡；无Ground-One端到端梯度或长视频BPTT。actual filtered-media曝光须CPU报告实测，不用raw1814源帧替代optimizer曝光。终评仍同4固定scope、原scorers/阈值/全empty-reject，TAO第二策略显式同ckpt类别复用。原主6000冻结2625updates/10500已消费问题、至少2500完整state已保存，输入未改；全部tracking/普通水平目标仍未完成。
 
 2026-10-16下一瓶颈诊断计划：上一goal turn是真实progress（四卡严格数学/完整恢复/native inference通过、18-query全部完成、459027大epoch已注册CPU检查并发布15a02bb），原94290/64133/14226/46228/52020 handles本轮均确认live；当前大epoch仍FULL_NATIVE_CPU_PLAN，主6000已2825。读实际Full shortlist和tracker：Full身份选项纯几何top32；Compact已有固定hybrid16_16，尚只有2-frame功能证明；lifecycle即便选择LOST仍在lost_age>3s硬删除。新CPU诊断只对已完成MOT20自然1657frames/235232candidates固定reference_gated3轨迹，使用同一已留FP32候选、保存decisions逐frame因果恢复，比较geometry32与已有固定hybrid16geometry+16appearance的正确surviving birth-anchor覆盖。appearance严格复用原Compact公式（三份native memory cosine均值、组内max），不读取GT来选候选，不改变原轨迹/seed/指标/TTL，不把coverage当HOTA或新模型收益。仅posthoc读取原完整association diagnostic；保留空/拒绝帧，0GPU/0新feature archive；新report预留1MiB使feature upper26552771550<26843545600。先用覆盖差识别检索是否是真实瓶颈，再决定后续长history训练组件，不盲改当前459027或6000课程。
 
@@ -3548,3 +3546,9 @@ OneJev 训练仍在运行；G1 GPU5 适配保持终态 `G1_GPU5_ADAPTATION_AND_C
 真正进入同一 MOT20-05 manifest 的 native inference（frame 1676），两者均为
 `failed=null`，尚无 official metrics。GPU5 外部 PRISM 仍在运行，所以 G2-only
 吞吐低于 GPU3；保留该并行 owner 作为独立证据，不把部分帧数当成评测结果。
+
+GPU5 共享运行受外部 PRISM 负载影响较大，故在 GPU6 即时探测到约 64.8 GiB free、
+utilization=0% 且仅有 16.4 GiB 外部进程后，又启动独立 G2-only owner
+`g2_clean_independent_gpu6_v1`（端口 8225）。该 owner 同样通过 bundle/overlap
+审计并进入 MOT20-05 native inference（frame 1662），GPU3/GPU5/GPU6 三个输出
+目录互不覆盖，外部 PID 均保留；最终只采纳产生完整 receipt 的运行。
