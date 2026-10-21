@@ -1,0 +1,919 @@
+{
+  "status": "PHASE_C_REAL_G2_COUPLED_MEMORY_JEV_TRAINING_COMPLETE",
+  "project_root": "/data2/user/LocateMOT",
+  "sequence": "MOT20-03",
+  "frames": [
+    82,
+    83,
+    84,
+    85,
+    86
+  ],
+  "train_frames": [
+    83,
+    84,
+    85
+  ],
+  "heldout_frame": 86,
+  "target_id": 27,
+  "checkpoint": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM",
+  "adapter": "/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final/checkpoints/adapter-step017000.pt",
+  "adapter_step": 17000,
+  "base_model_sha256": "3cf09355cde8cf4877cdc76e0a72301d572c1d6263b2831f8a03368285bb65e2",
+  "g2_frozen": true,
+  "visual_embed_calls": 5,
+  "one_visual_encode_per_frame": true,
+  "independent_vlm_instances": 0,
+  "trainable_components": [
+    "IdentityMemoryTokenProjector (G2 input-space causal memory)",
+    "MemoryTokenProjector (typed JEV identity slots)",
+    "G2JEVReadout (dynamic MATCH/NEW/NO_MATCH/REJECT + Yes/No + lifecycle + memory)"
+  ],
+  "trainable_parameter_count": 4075271,
+  "loss_weights": {
+    "grounding_teacher_forced": 1.0,
+    "jev_structured": 1.0
+  },
+  "causal_teacher_forcing": true,
+  "before_jev": {
+    "identity": 4,
+    "identity_correct": 4,
+    "admit": 4,
+    "admit_correct": 4,
+    "yesno": 4,
+    "yesno_correct": 0,
+    "lifecycle": 4,
+    "lifecycle_correct": 4,
+    "identity_accuracy": 1.0,
+    "admit_accuracy": 1.0,
+    "yesno_accuracy": 0.0,
+    "lifecycle_accuracy": 1.0
+  },
+  "after_jev": {
+    "identity": 4,
+    "identity_correct": 4,
+    "admit": 4,
+    "admit_correct": 4,
+    "yesno": 4,
+    "yesno_correct": 4,
+    "lifecycle": 4,
+    "lifecycle_correct": 4,
+    "identity_accuracy": 1.0,
+    "admit_accuracy": 1.0,
+    "yesno_accuracy": 1.0,
+    "lifecycle_accuracy": 1.0
+  },
+  "history": [
+    {
+      "step": 1,
+      "grounding_loss": 4.670031865437825,
+      "jev_loss": 4.107667128245036,
+      "total_loss": 8.777698993682861,
+      "gradient_norm": 68.11089324951172
+    },
+    {
+      "step": 2,
+      "grounding_loss": 3.8740665117899575,
+      "jev_loss": 1.163954734802246,
+      "total_loss": 5.038021246592203,
+      "gradient_norm": 57.12152862548828
+    },
+    {
+      "step": 3,
+      "grounding_loss": 4.784700234731038,
+      "jev_loss": 0.18337813019752502,
+      "total_loss": 4.968078364928563,
+      "gradient_norm": 1.8097003698349
+    },
+    {
+      "step": 4,
+      "grounding_loss": 4.714165369669597,
+      "jev_loss": 0.114055169125398,
+      "total_loss": 4.828220538794994,
+      "gradient_norm": 1.2669516801834106
+    },
+    {
+      "step": 5,
+      "grounding_loss": 4.508561929066976,
+      "jev_loss": 0.08154692004124324,
+      "total_loss": 4.590108849108219,
+      "gradient_norm": 9.416096687316895
+    },
+    {
+      "step": 6,
+      "grounding_loss": 2.9336953163146973,
+      "jev_loss": 0.06283900886774063,
+      "total_loss": 2.996534325182438,
+      "gradient_norm": 5.642570495605469
+    },
+    {
+      "step": 7,
+      "grounding_loss": 2.3061158657073975,
+      "jev_loss": 0.0513753741979599,
+      "total_loss": 2.3574912399053574,
+      "gradient_norm": 3.5216948986053467
+    },
+    {
+      "step": 8,
+      "grounding_loss": 1.8141294320424397,
+      "jev_loss": 0.04289923111597697,
+      "total_loss": 1.8570286631584167,
+      "gradient_norm": 3.4788858890533447
+    },
+    {
+      "step": 9,
+      "grounding_loss": 1.6709595918655396,
+      "jev_loss": 0.03548562402526537,
+      "total_loss": 1.706445215890805,
+      "gradient_norm": 1.9193556308746338
+    },
+    {
+      "step": 10,
+      "grounding_loss": 1.5866886377334595,
+      "jev_loss": 0.029228438933690388,
+      "total_loss": 1.6159170766671498,
+      "gradient_norm": 2.290607213973999
+    },
+    {
+      "step": 11,
+      "grounding_loss": 1.5061338345209758,
+      "jev_loss": 0.024692524845401447,
+      "total_loss": 1.5308263593663773,
+      "gradient_norm": 0.7561156153678894
+    },
+    {
+      "step": 12,
+      "grounding_loss": 1.426125963528951,
+      "jev_loss": 0.02069116880496343,
+      "total_loss": 1.4468171323339143,
+      "gradient_norm": 0.8935185074806213
+    },
+    {
+      "step": 13,
+      "grounding_loss": 1.257004698117574,
+      "jev_loss": 0.017058688526352245,
+      "total_loss": 1.2740633866439262,
+      "gradient_norm": 1.5242111682891846
+    },
+    {
+      "step": 14,
+      "grounding_loss": 1.0659852425257366,
+      "jev_loss": 0.014272578991949558,
+      "total_loss": 1.0802578215176861,
+      "gradient_norm": 1.1966798305511475
+    },
+    {
+      "step": 15,
+      "grounding_loss": 0.8939796686172485,
+      "jev_loss": 0.01207075547426939,
+      "total_loss": 0.9060504240915179,
+      "gradient_norm": 1.3236280679702759
+    },
+    {
+      "step": 16,
+      "grounding_loss": 0.6967244744300842,
+      "jev_loss": 0.01028374737749497,
+      "total_loss": 0.7070082218075792,
+      "gradient_norm": 1.0852934122085571
+    },
+    {
+      "step": 17,
+      "grounding_loss": 0.6142918070157369,
+      "jev_loss": 0.008799120473364988,
+      "total_loss": 0.6230909274891019,
+      "gradient_norm": 1.2706056833267212
+    },
+    {
+      "step": 18,
+      "grounding_loss": 0.48837759097417194,
+      "jev_loss": 0.007574127366145452,
+      "total_loss": 0.49595171834031737,
+      "gradient_norm": 0.8403436541557312
+    },
+    {
+      "step": 19,
+      "grounding_loss": 0.41227919856707257,
+      "jev_loss": 0.006558753550052643,
+      "total_loss": 0.4188379521171252,
+      "gradient_norm": 0.5297806262969971
+    },
+    {
+      "step": 20,
+      "grounding_loss": 0.37254492441813153,
+      "jev_loss": 0.005722129562248786,
+      "total_loss": 0.3782670539803803,
+      "gradient_norm": 0.6583430171012878
+    },
+    {
+      "step": 21,
+      "grounding_loss": 0.31259257594744366,
+      "jev_loss": 0.005020584911108017,
+      "total_loss": 0.3176131608585517,
+      "gradient_norm": 0.6201822757720947
+    },
+    {
+      "step": 22,
+      "grounding_loss": 0.25419269502162933,
+      "jev_loss": 0.004423962129900853,
+      "total_loss": 0.2586166571515302,
+      "gradient_norm": 0.5349886417388916
+    },
+    {
+      "step": 23,
+      "grounding_loss": 0.19663852453231812,
+      "jev_loss": 0.003916183797021707,
+      "total_loss": 0.20055470832933983,
+      "gradient_norm": 0.45784589648246765
+    },
+    {
+      "step": 24,
+      "grounding_loss": 0.16916398704051971,
+      "jev_loss": 0.0034864405170083046,
+      "total_loss": 0.17265042755752802,
+      "gradient_norm": 0.35717639327049255
+    }
+  ],
+  "before_grounding": {
+    "rows": [
+      {
+        "frame": 82,
+        "target_box_0_999": [
+          214,
+          563,
+          260,
+          700
+        ],
+        "conditions": {
+          "C0_disabled": {
+            "memory_enabled": false,
+            "memory_token_count": 0,
+            "generated_text": "<|object_ref_start|>person<|object_ref_end|><|box_start|><1><430><38><558><|box_end|>",
+            "recovered_pairs": [
+              [
+                "person",
+                [
+                  1,
+                  430,
+                  38,
+                  558
+                ]
+              ]
+            ],
+            "iou_vs_target": 0.0,
+            "repair_report": {
+              "version": "complete_pair_salvage_v1",
+              "status": "RECOVERED",
+              "input_sha256": "21eb8e93cb432f7f466ebb0cefa36dfabd5c7831b2d55b1d4a62e93c6299e20e",
+              "candidate_count": 1,
+              "duplicate_count": 0,
+              "dropped_fragment_count": 0,
+              "dropped_reasons": {},
+              "dropped_fragments": [],
+              "coordinates_reordered": false,
+              "missing_coordinates_filled": false
+            },
+            "grammar_forced_box_end": 1
+          }
+        }
+      },
+      {
+        "frame": 83,
+        "target_box_0_999": [
+          214,
+          561,
+          260,
+          698
+        ],
+        "conditions": {
+          "C0_disabled": {
+            "memory_enabled": false,
+            "memory_token_count": 0,
+            "generated_text": "<|object_ref_start|>person<|object_ref_end|><|box_start|><1><428><40><556><|box_end|>",
+            "recovered_pairs": [
+              [
+                "person",
+                [
+                  1,
+                  428,
+                  40,
+                  556
+                ]
+              ]
+            ],
+            "iou_vs_target": 0.0,
+            "repair_report": {
+              "version": "complete_pair_salvage_v1",
+              "status": "RECOVERED",
+              "input_sha256": "121a1e27a9921e18e33e9e9b27eb2959f2ce3bf5f972d22835b291835e689349",
+              "candidate_count": 1,
+              "duplicate_count": 0,
+              "dropped_fragment_count": 0,
+              "dropped_reasons": {},
+              "dropped_fragments": [],
+              "coordinates_reordered": false,
+              "missing_coordinates_filled": false
+            },
+            "grammar_forced_box_end": 1
+          },
+          "C2_previous_frame_memory": {
+            "memory_enabled": true,
+            "memory_token_count": 1,
+            "generated_text": " person<|object_ref_end|><|box_start|><1><428><40><556><|box_end|>",
+            "recovered_pairs": [],
+            "iou_vs_target": 0.0,
+            "repair_report": {
+              "version": "complete_pair_salvage_v1",
+              "status": "NO_COMPLETE_PAIR",
+              "input_sha256": "08e139da6db070a7322ed67a3c01cfb3c0a57898f507b8db4b90e9ff24b98c75",
+              "candidate_count": 0,
+              "duplicate_count": 0,
+              "dropped_fragment_count": 1,
+              "dropped_reasons": {
+                "unparsed_trailing_fragment": 1
+              },
+              "dropped_fragments": [
+                {
+                  "reason": "unparsed_trailing_fragment",
+                  "start": 0,
+                  "end": 66,
+                  "label_prefix": ""
+                }
+              ],
+              "coordinates_reordered": false,
+              "missing_coordinates_filled": false
+            },
+            "grammar_forced_box_end": 1
+          }
+        }
+      },
+      {
+        "frame": 84,
+        "target_box_0_999": [
+          214,
+          560,
+          260,
+          697
+        ],
+        "conditions": {
+          "C0_disabled": {
+            "memory_enabled": false,
+            "memory_token_count": 0,
+            "generated_text": "<|object_ref_start|>person<|object_ref_end|><|box_start|><1><427><42><556><|box_end|>",
+            "recovered_pairs": [
+              [
+                "person",
+                [
+                  1,
+                  427,
+                  42,
+                  556
+                ]
+              ]
+            ],
+            "iou_vs_target": 0.0,
+            "repair_report": {
+              "version": "complete_pair_salvage_v1",
+              "status": "RECOVERED",
+              "input_sha256": "9f6667ac1e5ec48516d3bc8ac53ee5824c654a8b5734ce66391af90cde90d4fe",
+              "candidate_count": 1,
+              "duplicate_count": 0,
+              "dropped_fragment_count": 0,
+              "dropped_reasons": {},
+              "dropped_fragments": [],
+              "coordinates_reordered": false,
+              "missing_coordinates_filled": false
+            },
+            "grammar_forced_box_end": 1
+          },
+          "C2_previous_frame_memory": {
+            "memory_enabled": true,
+            "memory_token_count": 1,
+            "generated_text": " person<|object_ref_end|><|box_start|><1><427><42><556><|box_end|>",
+            "recovered_pairs": [],
+            "iou_vs_target": 0.0,
+            "repair_report": {
+              "version": "complete_pair_salvage_v1",
+              "status": "NO_COMPLETE_PAIR",
+              "input_sha256": "cc63c2e0db3f6801d3c34e041976aab90afd843830a15ef185fcbb7bd850ed89",
+              "candidate_count": 0,
+              "duplicate_count": 0,
+              "dropped_fragment_count": 1,
+              "dropped_reasons": {
+                "unparsed_trailing_fragment": 1
+              },
+              "dropped_fragments": [
+                {
+                  "reason": "unparsed_trailing_fragment",
+                  "start": 0,
+                  "end": 66,
+                  "label_prefix": ""
+                }
+              ],
+              "coordinates_reordered": false,
+              "missing_coordinates_filled": false
+            },
+            "grammar_forced_box_end": 1
+          }
+        }
+      },
+      {
+        "frame": 85,
+        "target_box_0_999": [
+          214,
+          557,
+          260,
+          695
+        ],
+        "conditions": {
+          "C0_disabled": {
+            "memory_enabled": false,
+            "memory_token_count": 0,
+            "generated_text": "<|object_ref_start|>person<|object_ref_end|><|box_start|><2><427><43><556><|box_end|>",
+            "recovered_pairs": [
+              [
+                "person",
+                [
+                  2,
+                  427,
+                  43,
+                  556
+                ]
+              ]
+            ],
+            "iou_vs_target": 0.0,
+            "repair_report": {
+              "version": "complete_pair_salvage_v1",
+              "status": "RECOVERED",
+              "input_sha256": "a17e67b4907f9f6b437f5f969de302f6493036d627edaae5533b8e5ed0b95942",
+              "candidate_count": 1,
+              "duplicate_count": 0,
+              "dropped_fragment_count": 0,
+              "dropped_reasons": {},
+              "dropped_fragments": [],
+              "coordinates_reordered": false,
+              "missing_coordinates_filled": false
+            },
+            "grammar_forced_box_end": 1
+          },
+          "C2_previous_frame_memory": {
+            "memory_enabled": true,
+            "memory_token_count": 1,
+            "generated_text": " person<|object_ref_end|><|box_start|><2><427><43><556><|box_end|>",
+            "recovered_pairs": [],
+            "iou_vs_target": 0.0,
+            "repair_report": {
+              "version": "complete_pair_salvage_v1",
+              "status": "NO_COMPLETE_PAIR",
+              "input_sha256": "b4b4bcfdf3a9e6c50265dc52024118bc369c58973b3411544e598af5fe5a9e41",
+              "candidate_count": 0,
+              "duplicate_count": 0,
+              "dropped_fragment_count": 1,
+              "dropped_reasons": {
+                "unparsed_trailing_fragment": 1
+              },
+              "dropped_fragments": [
+                {
+                  "reason": "unparsed_trailing_fragment",
+                  "start": 0,
+                  "end": 66,
+                  "label_prefix": ""
+                }
+              ],
+              "coordinates_reordered": false,
+              "missing_coordinates_filled": false
+            },
+            "grammar_forced_box_end": 1
+          }
+        }
+      },
+      {
+        "frame": 86,
+        "target_box_0_999": [
+          214,
+          556,
+          260,
+          692
+        ],
+        "conditions": {
+          "C0_disabled": {
+            "memory_enabled": false,
+            "memory_token_count": 0,
+            "generated_text": "<|object_ref_start|>person<|object_ref_end|><|box_start|><2><426><44><552><|box_end|>",
+            "recovered_pairs": [
+              [
+                "person",
+                [
+                  2,
+                  426,
+                  44,
+                  552
+                ]
+              ]
+            ],
+            "iou_vs_target": 0.0,
+            "repair_report": {
+              "version": "complete_pair_salvage_v1",
+              "status": "RECOVERED",
+              "input_sha256": "ad0accef2b7d18fd72026612703454a7c515c02ee01a14083061671bf1284f9b",
+              "candidate_count": 1,
+              "duplicate_count": 0,
+              "dropped_fragment_count": 0,
+              "dropped_reasons": {},
+              "dropped_fragments": [],
+              "coordinates_reordered": false,
+              "missing_coordinates_filled": false
+            },
+            "grammar_forced_box_end": 1
+          },
+          "C2_previous_frame_memory": {
+            "memory_enabled": true,
+            "memory_token_count": 1,
+            "generated_text": " person<|object_ref_end|><|box_start|><2><427><44><555><|box_end|>",
+            "recovered_pairs": [],
+            "iou_vs_target": 0.0,
+            "repair_report": {
+              "version": "complete_pair_salvage_v1",
+              "status": "NO_COMPLETE_PAIR",
+              "input_sha256": "76755e8901c4df4429d52b2d0d6eaf6f101385920eddd131eaa4aa84065bb898",
+              "candidate_count": 0,
+              "duplicate_count": 0,
+              "dropped_fragment_count": 1,
+              "dropped_reasons": {
+                "unparsed_trailing_fragment": 1
+              },
+              "dropped_fragments": [
+                {
+                  "reason": "unparsed_trailing_fragment",
+                  "start": 0,
+                  "end": 66,
+                  "label_prefix": ""
+                }
+              ],
+              "coordinates_reordered": false,
+              "missing_coordinates_filled": false
+            },
+            "grammar_forced_box_end": 1
+          }
+        }
+      }
+    ],
+    "mean_iou_by_condition": {
+      "C0_disabled": 0.0,
+      "C2_previous_frame_memory": 0.0
+    }
+  },
+  "after_grounding": {
+    "rows": [
+      {
+        "frame": 82,
+        "target_box_0_999": [
+          214,
+          563,
+          260,
+          700
+        ],
+        "conditions": {
+          "C0_disabled": {
+            "memory_enabled": false,
+            "memory_token_count": 0,
+            "generated_text": "<|object_ref_start|>person<|object_ref_end|><|box_start|><1><430><38><558><|box_end|>",
+            "recovered_pairs": [
+              [
+                "person",
+                [
+                  1,
+                  430,
+                  38,
+                  558
+                ]
+              ]
+            ],
+            "iou_vs_target": 0.0,
+            "repair_report": {
+              "version": "complete_pair_salvage_v1",
+              "status": "RECOVERED",
+              "input_sha256": "21eb8e93cb432f7f466ebb0cefa36dfabd5c7831b2d55b1d4a62e93c6299e20e",
+              "candidate_count": 1,
+              "duplicate_count": 0,
+              "dropped_fragment_count": 0,
+              "dropped_reasons": {},
+              "dropped_fragments": [],
+              "coordinates_reordered": false,
+              "missing_coordinates_filled": false
+            },
+            "grammar_forced_box_end": 1
+          }
+        }
+      },
+      {
+        "frame": 83,
+        "target_box_0_999": [
+          214,
+          561,
+          260,
+          698
+        ],
+        "conditions": {
+          "C0_disabled": {
+            "memory_enabled": false,
+            "memory_token_count": 0,
+            "generated_text": "<|object_ref_start|>person<|object_ref_end|><|box_start|><1><428><40><556><|box_end|>",
+            "recovered_pairs": [
+              [
+                "person",
+                [
+                  1,
+                  428,
+                  40,
+                  556
+                ]
+              ]
+            ],
+            "iou_vs_target": 0.0,
+            "repair_report": {
+              "version": "complete_pair_salvage_v1",
+              "status": "RECOVERED",
+              "input_sha256": "121a1e27a9921e18e33e9e9b27eb2959f2ce3bf5f972d22835b291835e689349",
+              "candidate_count": 1,
+              "duplicate_count": 0,
+              "dropped_fragment_count": 0,
+              "dropped_reasons": {},
+              "dropped_fragments": [],
+              "coordinates_reordered": false,
+              "missing_coordinates_filled": false
+            },
+            "grammar_forced_box_end": 1
+          },
+          "C2_previous_frame_memory": {
+            "memory_enabled": true,
+            "memory_token_count": 1,
+            "generated_text": "<|object_ref_start|>person<|object_ref_end|><|box_start|><214><561><260><698><|box_end|>",
+            "recovered_pairs": [
+              [
+                "person",
+                [
+                  214,
+                  561,
+                  260,
+                  698
+                ]
+              ]
+            ],
+            "iou_vs_target": 1.0,
+            "repair_report": {
+              "version": "complete_pair_salvage_v1",
+              "status": "RECOVERED",
+              "input_sha256": "e3595d78dae5f3890c55a6004cbc4b1ef9effe4f0642c6059452726ae5f84b0a",
+              "candidate_count": 1,
+              "duplicate_count": 0,
+              "dropped_fragment_count": 0,
+              "dropped_reasons": {},
+              "dropped_fragments": [],
+              "coordinates_reordered": false,
+              "missing_coordinates_filled": false
+            },
+            "grammar_forced_box_end": 1
+          }
+        }
+      },
+      {
+        "frame": 84,
+        "target_box_0_999": [
+          214,
+          560,
+          260,
+          697
+        ],
+        "conditions": {
+          "C0_disabled": {
+            "memory_enabled": false,
+            "memory_token_count": 0,
+            "generated_text": "<|object_ref_start|>person<|object_ref_end|><|box_start|><1><427><42><556><|box_end|>",
+            "recovered_pairs": [
+              [
+                "person",
+                [
+                  1,
+                  427,
+                  42,
+                  556
+                ]
+              ]
+            ],
+            "iou_vs_target": 0.0,
+            "repair_report": {
+              "version": "complete_pair_salvage_v1",
+              "status": "RECOVERED",
+              "input_sha256": "9f6667ac1e5ec48516d3bc8ac53ee5824c654a8b5734ce66391af90cde90d4fe",
+              "candidate_count": 1,
+              "duplicate_count": 0,
+              "dropped_fragment_count": 0,
+              "dropped_reasons": {},
+              "dropped_fragments": [],
+              "coordinates_reordered": false,
+              "missing_coordinates_filled": false
+            },
+            "grammar_forced_box_end": 1
+          },
+          "C2_previous_frame_memory": {
+            "memory_enabled": true,
+            "memory_token_count": 1,
+            "generated_text": "<|object_ref_start|>person<|object_ref_end|><|box_start|><214><560><260><697><|box_end|>",
+            "recovered_pairs": [
+              [
+                "person",
+                [
+                  214,
+                  560,
+                  260,
+                  697
+                ]
+              ]
+            ],
+            "iou_vs_target": 1.0,
+            "repair_report": {
+              "version": "complete_pair_salvage_v1",
+              "status": "RECOVERED",
+              "input_sha256": "1f36d984f2c1a512d2255c11caaca63ec05fd674d592cbb6a7205b41bdfc5fa3",
+              "candidate_count": 1,
+              "duplicate_count": 0,
+              "dropped_fragment_count": 0,
+              "dropped_reasons": {},
+              "dropped_fragments": [],
+              "coordinates_reordered": false,
+              "missing_coordinates_filled": false
+            },
+            "grammar_forced_box_end": 1
+          }
+        }
+      },
+      {
+        "frame": 85,
+        "target_box_0_999": [
+          214,
+          557,
+          260,
+          695
+        ],
+        "conditions": {
+          "C0_disabled": {
+            "memory_enabled": false,
+            "memory_token_count": 0,
+            "generated_text": "<|object_ref_start|>person<|object_ref_end|><|box_start|><2><427><43><556><|box_end|>",
+            "recovered_pairs": [
+              [
+                "person",
+                [
+                  2,
+                  427,
+                  43,
+                  556
+                ]
+              ]
+            ],
+            "iou_vs_target": 0.0,
+            "repair_report": {
+              "version": "complete_pair_salvage_v1",
+              "status": "RECOVERED",
+              "input_sha256": "a17e67b4907f9f6b437f5f969de302f6493036d627edaae5533b8e5ed0b95942",
+              "candidate_count": 1,
+              "duplicate_count": 0,
+              "dropped_fragment_count": 0,
+              "dropped_reasons": {},
+              "dropped_fragments": [],
+              "coordinates_reordered": false,
+              "missing_coordinates_filled": false
+            },
+            "grammar_forced_box_end": 1
+          },
+          "C2_previous_frame_memory": {
+            "memory_enabled": true,
+            "memory_token_count": 1,
+            "generated_text": "<|object_ref_start|>person<|object_ref_end|><|box_start|><214><557><260><694><|box_end|>",
+            "recovered_pairs": [
+              [
+                "person",
+                [
+                  214,
+                  557,
+                  260,
+                  694
+                ]
+              ]
+            ],
+            "iou_vs_target": 0.9927536231884058,
+            "repair_report": {
+              "version": "complete_pair_salvage_v1",
+              "status": "RECOVERED",
+              "input_sha256": "5e1ac1236feab8e162ecbd6e85a561dc9270d5d50aeeed59b5507a9056bddde0",
+              "candidate_count": 1,
+              "duplicate_count": 0,
+              "dropped_fragment_count": 0,
+              "dropped_reasons": {},
+              "dropped_fragments": [],
+              "coordinates_reordered": false,
+              "missing_coordinates_filled": false
+            },
+            "grammar_forced_box_end": 1
+          }
+        }
+      },
+      {
+        "frame": 86,
+        "target_box_0_999": [
+          214,
+          556,
+          260,
+          692
+        ],
+        "conditions": {
+          "C0_disabled": {
+            "memory_enabled": false,
+            "memory_token_count": 0,
+            "generated_text": "<|object_ref_start|>person<|object_ref_end|><|box_start|><2><426><44><552><|box_end|>",
+            "recovered_pairs": [
+              [
+                "person",
+                [
+                  2,
+                  426,
+                  44,
+                  552
+                ]
+              ]
+            ],
+            "iou_vs_target": 0.0,
+            "repair_report": {
+              "version": "complete_pair_salvage_v1",
+              "status": "RECOVERED",
+              "input_sha256": "ad0accef2b7d18fd72026612703454a7c515c02ee01a14083061671bf1284f9b",
+              "candidate_count": 1,
+              "duplicate_count": 0,
+              "dropped_fragment_count": 0,
+              "dropped_reasons": {},
+              "dropped_fragments": [],
+              "coordinates_reordered": false,
+              "missing_coordinates_filled": false
+            },
+            "grammar_forced_box_end": 1
+          },
+          "C2_previous_frame_memory": {
+            "memory_enabled": true,
+            "memory_token_count": 1,
+            "generated_text": "<|object_ref_start|>person<|object_ref_end|><|box_start|><214><556><260><693><|box_end|>",
+            "recovered_pairs": [
+              [
+                "person",
+                [
+                  214,
+                  556,
+                  260,
+                  693
+                ]
+              ]
+            ],
+            "iou_vs_target": 0.9927007299270073,
+            "repair_report": {
+              "version": "complete_pair_salvage_v1",
+              "status": "RECOVERED",
+              "input_sha256": "3185b5ca8112da1d1489193aeb71a8f2b9fd339fc6efb9ceb48078ae32d41740",
+              "candidate_count": 1,
+              "duplicate_count": 0,
+              "dropped_fragment_count": 0,
+              "dropped_reasons": {},
+              "dropped_fragments": [],
+              "coordinates_reordered": false,
+              "missing_coordinates_filled": false
+            },
+            "grammar_forced_box_end": 1
+          }
+        }
+      }
+    ],
+    "mean_iou_by_condition": {
+      "C0_disabled": 0.0,
+      "C2_previous_frame_memory": 0.9963635882788533
+    }
+  },
+  "native_g2_dlm_forward_count": 5,
+  "peak_memory_allocated_bytes": 28011032064,
+  "elapsed_seconds": 159.53877332806587,
+  "formal_g2_run_untouched": true,
+  "scientific_claim": "bounded real GPU coupled training and causal-output evidence; no independent MOT/RMOT/OVMOT metric claim",
+  "training_checkpoint_sha256": "61a9645886ac1f1ceb51f30c2b82a89893edaafbff4587129f932c22ef819c68",
+  "runtime_receipt": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/coupled/phase_c_real_coupled_memory_jev_step17000_v1/receipt.json",
+  "coupling_boundary_audit": {
+    "prompt_answer_boundary_excluded_from_prefill": true,
+    "answer_tokens_used_only_as_teacher_forcing_targets": true,
+    "current_frame_gt_not_used_to_construct_memory": true,
+    "previous_frame_memory_source": "previous real G2 image-token whole-image summary",
+    "second_visual_model_loaded": false,
+    "g2_backbone_parameter_updates": 0
+  },
+  "scientific_limitations": [
+    "24 updates over three transitions from MOT20-03 TRAIN; this is a bounded pilot.",
+    "frame 86 is a same-video temporal holdout, not an independent sequence or benchmark split.",
+    "one target identity and whole-image summaries do not test multi-identity competition or wrong-identity memory.",
+    "no MOT/RMOT/OVMOT HOTA, IDF1, IDSW or TETA claim is made."
+  ]
+}

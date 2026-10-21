@@ -1,0 +1,22 @@
+{
+  "status": "PHASE_C_REAL_G2_STATE_CONDITIONED_COUPLING_COMPLETE",
+  "g2_adapter_step": 17000,
+  "base_model_sha256": "3cf09355cde8cf4877cdc76e0a72301d572c1d6263b2831f8a03368285bb65e2",
+  "resume_from_step": 60,
+  "optimizer_steps": 12,
+  "coordinate_loss_weight": 5.0,
+  "visual_embed_calls": 10,
+  "independent_vlm_instances": 0,
+  "g2_frozen": true,
+  "formal_g2_run_untouched": true,
+  "trainable_components": ["IdentityBoxStateTokenProjector", "MemoryTokenProjector", "G2JEVReadout"],
+  "trainable_parameter_count": 4075271,
+  "checkpoint_sha256": "72595d566a460fe9c595cfe8751249b2ddd5ffd61633c1b4fbfef004237229c1",
+  "final_grounding_loss": 1.7003909349441528,
+  "c2_mean_iou": {"MOT20-03": 0.0, "MOT20-05": 0.0},
+  "jev_accuracy": {
+    "MOT20-03": {"identity": 1.0, "admit": 1.0, "yesno": 1.0, "lifecycle": 1.0},
+    "MOT20-05": {"identity": 1.0, "admit": 1.0, "yesno": 1.0, "lifecycle": 1.0}
+  },
+  "scientific_claim": "bounded shared-backbone state-conditioned coupling negative result; no official MOT/RMOT/OVMOT metric claim"
+}

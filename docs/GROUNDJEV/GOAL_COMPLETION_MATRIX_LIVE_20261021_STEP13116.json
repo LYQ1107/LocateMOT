@@ -1,0 +1,59 @@
+{
+  "schema": "groundjev.goal_completion_matrix.live.v2",
+  "observed_at": "2026-10-21T06:48:19.656846+08:00",
+  "objective": "GroundJEV-MOT / TrackJEV redirected execution",
+  "g0_mot20_long_export": {
+    "status": "COMPLETE",
+    "scope": "MOT20-05 legal TRAIN scope",
+    "evidence": "docs/GROUNDJEV/G0_MOT20_LONG_EXPORT_AUDIT_20261021.{json,md}"
+  },
+  "mot_only_long_training": {
+    "status": "SAFE_CLOSED",
+    "evidence": "docs/GROUNDJEV/MOT_ONLY_SAFE_CLOSE_AUDIT_20261021.{json,md}"
+  },
+  "g2_clean": {
+    "status": "RUNNING",
+    "step": 13116,
+    "max_steps": 18227,
+    "event_time": "2026-10-21 06:48:10 +0800",
+    "final_receipt_exists": false,
+    "evidence": "docs/GROUNDJEV/G2_PROGRESS_LIVE_20261021_STEP13065.{json,md}"
+  },
+  "downstream": {
+    "g1_gpu5": {
+      "status": "WAITING_G2_CLEAN_SUCCESS"
+    },
+    "g2_bundle": {
+      "status": "WAITING_G2_CLEAN_SUCCESS"
+    },
+    "heldout": {
+      "status": "WAITING_G2_CLEAN_BUNDLE_AND_GPU7"
+    },
+    "tao_shards": {
+      "status": "WAITING_G2_CLEAN_SUCCESS"
+    },
+    "ovmot_join": {
+      "status": "WAITING_COMPLETE_NATIVE_TAO_STREAM",
+      "optimizer_updates": 0,
+      "gpu_launched": false
+    },
+    "three_task": {
+      "status": "WAITING_NATIVE_OVMOT_MANIFEST",
+      "optimizer_updates": 0,
+      "gpu_launched": false
+    },
+    "yestrack": {
+      "status": "WAITING_GPU7_EXCLUSIVE"
+    }
+  },
+  "requirements": {
+    "protect_and_complete_g2": "IN_PROGRESS",
+    "real_g1_gpu5_adaptation": "WAITING_G2_CLEAN_SUCCESS",
+    "native_tao_ovmot_data_and_join": "WAITING_G2_CLEAN_SUCCESS",
+    "real_three_task_onejev_optimization": "WAITING_NATIVE_OVMOT_MANIFEST",
+    "independent_heldout_evaluation": "WAITING_G2_CLEAN_BUNDLE_AND_GPU7",
+    "yestrack_real_gpu_validation": "WAITING_GPU7_EXCLUSIVE",
+    "github_evidence_sync": "ACTIVE"
+  },
+  "claim_boundary": "This matrix is an execution-state audit. It does not claim downstream metrics or scientific improvement before independent evaluation."
+}

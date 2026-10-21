@@ -228,21 +228,36 @@ def close_service(process: subprocess.Popen | None) -> None:
 
 
 def main() -> int:
+    global GPU, PORT
     parser = argparse.ArgumentParser()
     parser.add_argument("--out", type=Path, default=DEFAULT_OUT)
     parser.add_argument("--poll-seconds", type=int, default=60)
+    parser.add_argument("--gpu", type=int, default=GPU,
+                        help="physical GPU for the exclusive held-out service")
+    parser.add_argument("--port", type=int, default=PORT,
+                        help="local service port for this owner")
     args = parser.parse_args()
+    GPU = int(args.gpu)
+    PORT = int(args.port)
     owner = args.out / "owner_state.json"
-    if args.out.exists():
-        old = read_json(owner)
+    old = read_json(owner) if owner.is_file() else None
+    if args.out.exists() and any(args.out.iterdir()):
         if old and old.get("status", "").endswith(("COMPLETE", "FAILED")):
             raise FileExistsError(f"terminal held-out queue already exists: {owner}")
         if old and old.get("owner_pid") and Path(f"/proc/{old['owner_pid']}").exists():
             raise FileExistsError(f"held-out queue owner is already live: {old['owner_pid']}")
+        if not old or str(old.get("status", "")) != "WAITING_G2_CLEAN_BUNDLE_AND_GPU7":
+            raise FileExistsError(f"refusing to overwrite an existing held-out queue: {args.out}")
+        allowed = {"owner_state.json", "owner_state_pre_mot_scope_20261020.json"}
+        unexpected = [child.name for child in args.out.iterdir() if child.name not in allowed]
+        if unexpected:
+            raise FileExistsError(
+                f"refusing to resume a partial held-out queue; unexpected={unexpected}"
+            )
     args.out.mkdir(parents=True, exist_ok=True)
     state = {
-        "status": "WAITING_G2_CLEAN_BUNDLE_AND_GPU7",
-        "current_stage": "WAITING_G2_CLEAN_BUNDLE_AND_GPU7",
+        "status": f"WAITING_G2_CLEAN_BUNDLE_AND_GPU{GPU}",
+        "current_stage": f"WAITING_G2_CLEAN_BUNDLE_AND_GPU{GPU}",
         "owner_pid": os.getpid(),
         "project_root": str(PROJECT_ROOT),
         "runtime_root": str(RUNTIME_ROOT),
@@ -256,6 +271,7 @@ def main() -> int:
         "same_input_parser_decoder_tracker_scorer": True,
         "feature_cache": False,
         "heldout_claim": "pending until exact overlap audit and official metrics complete",
+        "resumed_wait_owner": bool(old) if args.out.exists() else False,
     }
     save(owner, state)
     service = None
@@ -280,7 +296,7 @@ def main() -> int:
                 state["resource_probe"] = resource
                 state["resource_gate"] = {
                     "ready": free,
-                    "rule": "no compute PIDs and at least 32768 MiB free on physical GPU7",
+                    "rule": f"no compute PIDs and at least 32768 MiB free on physical GPU{GPU}",
                     "shared_memory_mode": False,
                 }
                 save(owner, state)

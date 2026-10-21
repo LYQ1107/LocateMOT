@@ -1,0 +1,152 @@
+{
+  "status": "GROUNDJEV_ACTIVE_GOAL_SNAPSHOT_G2_STEP12195",
+  "project_root": "/data2/user/LocateMOT",
+  "captured_at": "2026-10-21 03:51:03 +0800",
+  "g2": {
+    "event_step": 12195,
+    "max_steps": 18227,
+    "latest_checkpoint": "adapter-step012000.pt",
+    "latest_checkpoint_path": "/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final/checkpoints/adapter-step012000.pt",
+    "latest_checkpoint_mtime": "2026-10-21 03:13:36 +0800",
+    "latest_training_state_present": true,
+    "last_event": {
+      "step": 12195,
+      "epoch": 0,
+      "position": 97560,
+      "micro_batches": 8,
+      "samples_global": 16,
+      "effective_tokens_global": 10902,
+      "token_budget_per_device": 16384,
+      "loss": 0.22593094897456467,
+      "gradient_norm": 9.566365242004395,
+      "peak_memory_gib": 12.828852653503418,
+      "lr_projector": 6.693395878088422e-07,
+      "lr_lora": 2.3426885573309476e-06,
+      "checkpoint": null,
+      "time": "2026-10-21 03:51:03 +0800"
+    },
+    "recent_window_steps": 500,
+    "seconds_per_step": 11.618,
+    "remaining_steps": 6032,
+    "linear_remaining_hours": 19.4666,
+    "process_pids": [
+      1799359,
+      1799468,
+      1799469
+    ],
+    "physical_gpus": [
+      3,
+      5
+    ],
+    "manifest_sha256": "f682519a1cf9204ca76ea75a56dad36dbdeac26259f202551ab9f66fefd06e71",
+    "manifest_rows": 583251,
+    "final_receipt_present": false
+  },
+  "g0_mot20": {
+    "status": "NATURAL_MOT20_SCOPE_AND_FROZEN_MEMORY_CONTROLS_COMPLETE",
+    "sequence": "MOT20-05",
+    "scope": "complete registered validation-half natural-visibility scope",
+    "frames": 1657,
+    "native_candidates": 235232,
+    "official_metrics": {
+      "HOTA": 0.07334696070115383,
+      "DetA": 0.09026982781621751,
+      "AssA": 0.05967427073481851,
+      "IDF1": 0.059598451365333885,
+      "IDSW": 1933,
+      "FP": 417,
+      "FN": 288297
+    },
+    "metrics_scope": "complete_registered_validation_scope_natural_visibility_challenge",
+    "fps": 0.061369784416757965,
+    "full_test_claim": false
+  },
+  "owners": {
+    "g1_gpu5": {
+      "owner_pid": 1820298,
+      "status": "WAITING_G2_CLEAN_SUCCESS",
+      "failed": null,
+      "optimizer_updates": null,
+      "planned_trainable_rows": null,
+      "physical_gpus": null,
+      "resource_gate": null
+    },
+    "g2_bundle": {
+      "owner_pid": 1826880,
+      "status": "WAITING_G2_AND_G1_TERMINAL",
+      "failed": null,
+      "optimizer_updates": null,
+      "planned_trainable_rows": null,
+      "physical_gpus": null,
+      "resource_gate": null
+    },
+    "independent_heldout_gpu7": {
+      "owner_pid": 3998877,
+      "status": "WAITING_G2_CLEAN_BUNDLE_AND_GPU7",
+      "failed": null,
+      "optimizer_updates": null,
+      "planned_trainable_rows": null,
+      "physical_gpus": null,
+      "resource_gate": null
+    },
+    "yestrack_native_v2": {
+      "owner_pid": 286855,
+      "status": "WAITING_GPU7_EXCLUSIVE",
+      "failed": null,
+      "optimizer_updates": null,
+      "planned_trainable_rows": null,
+      "physical_gpus": null,
+      "resource_gate": {
+        "ready": false,
+        "checked_at_epoch_s": 1792525837.8631535,
+        "rule": "GPU7 has no compute PIDs and >=32768 MiB free"
+      }
+    },
+    "three_task_joint_v2_compact": {
+      "owner_pid": null,
+      "status": "PAUSED_FOR_NATIVE_OVMOT_ROWS",
+      "failed": null,
+      "optimizer_updates": 0,
+      "planned_trainable_rows": 131990,
+      "physical_gpus": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "resource_gate": null,
+      "native_ovmot_rows_pending": true,
+      "ovmot_training_mode": "base_teacher_control",
+      "pause_reason": "v2 manifest contains OVMOT base teacher-control rows; native OVMOT training rows are required before any optimizer launch"
+    },
+    "three_task_joint_v1": {
+      "owner_pid": 256155,
+      "status": "SUPERSEDED_BY_COMPACT_MANIFEST_V2",
+      "failed": null,
+      "optimizer_updates": 0,
+      "planned_trainable_rows": 129891,
+      "physical_gpus": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "resource_gate": null
+    }
+  },
+  "joint_gate": {
+    "native_ovmot_rows_required": true,
+    "current_manifest_native_ovmot_training_rows": false,
+    "current_manifest_ovmot_training_mode": null,
+    "manifest_sha256": "cbdafce9e5a587c00b053ee58ea6435db4221d38036ee7574fe8a3f0f854e54c",
+    "queue_status": "PAUSED_FOR_NATIVE_OVMOT_ROWS",
+    "queue_optimizer_updates": 0,
+    "optimizer_launch_allowed": false
+  },
+  "prior_process_audit": {
+    "mot_only_optimizer_process": "NONE_FOUND_IN_AUTHORITATIVE_PROCESS_AUDIT",
+    "audit_receipt": "docs/GROUNDJEV/PROCESS_AUDIT_20261021.{json,md}",
+    "not_repeated_in_this_snapshot": true
+  },
+  "scientific_boundary": "G2 is still training; G0 is a validation-half control; the three-task queue is paused before optimizer launch because native OVMOT TRAIN rows are absent; no G1/held-out/OneJev/YesTrack final metric is promoted."
+}

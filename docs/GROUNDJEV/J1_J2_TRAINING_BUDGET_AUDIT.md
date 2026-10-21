@@ -1,9 +1,9 @@
 # J1/J2 training budget audit
 
-## J1 current course
+## J1 terminal state
 
-The active OneJev J1 course is
-`trackjev_3task_J1_v4_birth` on physical GPU4/GPU6. It uses the real
+The historical OneJev J1 course
+`trackjev_3task_J1_v4_birth` used the real
 43,533-row three-task multimodal corpus:
 
 | Task family | Rows |
@@ -12,12 +12,14 @@ The active OneJev J1 course is
 | RMOT | 16,677 |
 | OVMOT | 5,688 |
 
-The latest durable state observed at the 2026-10-19 post-launch audit is
-optimizer step 650, 10,368 rows consumed, epoch 0, with FP32 masters, Adam
-moments, scheduler and all RNG state saved. Feature caching is disabled. This
-is a partial-read budget, not a claim that all 43,533 rows were trained. The
-registered horizon remains 1,200 updates; the held-out gate waits for its
-terminal receipt.
+The run reached its registered terminal horizon of **1,200/1,200 optimizer
+steps** on 2026-10-19, consumed 19,143 rows, and wrote the final adapter plus
+the FP32/Adam/scheduler/RNG recovery state. Feature caching was disabled. The
+terminal checkpoint is preserved at
+`/data3/user/LocateMOT-runs/TrackJEV_FullDataV2/trackjev_3task_J1_v4_birth/adapter`
+and its adapter SHA-256 is recorded in
+`docs/GROUNDJEV/J1_TERMINAL_RECEIPT_20261021.json`. No J1 optimizer is
+currently running, and this correction does not restart or retrain it.
 
 ## J2 registration rule
 

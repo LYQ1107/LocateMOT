@@ -1,0 +1,90 @@
+{
+  "status": "GROUNDJEV_GOAL_COMPLETION_MATRIX_LIVE",
+  "generated_at": "2026-10-21T06:25:16.661669+08:00",
+  "overall_goal_complete": false,
+  "items": [
+    {
+      "id": "g0_mot20_long_export",
+      "status": "COMPLETE_REGISTERED_TRAIN_SCOPE",
+      "sequence": "MOT20-05",
+      "frames": 1658,
+      "metrics_receipt": "/data2/user/LocateMOT_OneJev_CVPR/outputs/groundjev/full_data_v2/candidate_export_v2/mot20_MOT20-05_resumed_v2/official_metrics.json",
+      "claim_boundary": "not MOT20 TEST"
+    },
+    {
+      "id": "mot_only_long_training",
+      "status": "COMPLETE_SAFE_NO_LIVE_OWNER",
+      "audit": "docs/GROUNDJEV/MOT_ONLY_SAFE_CLOSE_AUDIT_20261021.json"
+    },
+    {
+      "id": "g2_clean_training",
+      "status": "RUNNING",
+      "event_step": 12997,
+      "target_steps": 18227,
+      "latest_event_time": "2026-10-21 06:25:10 +0800",
+      "physical_gpus": [
+        3,
+        5
+      ],
+      "final_receipt": false
+    },
+    {
+      "id": "g1_gpu5_adaptation",
+      "status": "WAITING_G2_CLEAN_SUCCESS",
+      "real_optimizer_updates": false,
+      "physical_gpu": 5
+    },
+    {
+      "id": "g2_clean_bundle_export",
+      "status": "WAITING_G2_CLEAN_SUCCESS",
+      "exported": false,
+      "physical_gpu": null
+    },
+    {
+      "id": "independent_heldout",
+      "status": "WAITING_G2_CLEAN_BUNDLE_AND_GPU7",
+      "official_metrics": false,
+      "physical_gpu": 7
+    },
+    {
+      "id": "tao_native_ovmot_shards",
+      "status": "WAITING_G2_CLEAN_SUCCESS",
+      "optimizer_updates": 0,
+      "physical_gpus": [
+        4,
+        6
+      ]
+    },
+    {
+      "id": "native_ovmot_join",
+      "status": "WAITING_COMPLETE_NATIVE_TAO_STREAM",
+      "optimizer_updates": 0
+    },
+    {
+      "id": "real_three_task_native",
+      "status": "WAITING_NATIVE_OVMOT_MANIFEST",
+      "optimizer_updates": 0,
+      "datasets": [
+        "MOT",
+        "RMOT",
+        "OVMOT"
+      ],
+      "native_ovmot_manifest": false
+    },
+    {
+      "id": "yestrack_native_v2",
+      "status": "WAITING_GPU7_EXCLUSIVE_EXTERNAL_PID_4008192",
+      "real_training_started": false,
+      "external_gpu7_pid": 4008192
+    }
+  ],
+  "scientific_gain": "UNPROVEN",
+  "next_terminal_dependencies": [
+    "G2 final receipt",
+    "G1 GPU5 adaptation receipt",
+    "G2 clean bundle export",
+    "native TAO/OVMOT manifest",
+    "independent held-out official metrics"
+  ],
+  "claim_boundary": "This matrix is an execution-state receipt; it makes no unverified performance claim."
+}

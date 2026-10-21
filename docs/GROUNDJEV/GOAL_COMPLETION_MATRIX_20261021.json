@@ -1,0 +1,73 @@
+{
+  "status": "GROUNDJEV_GOAL_COMPLETION_MATRIX_CURRENT",
+  "timestamp": "2026-10-21T03:14:15.367180+08:00",
+  "overall_goal_complete": false,
+  "items": [
+    {
+      "id": "g0_mot20_long_export",
+      "status": "COMPLETE_REGISTERED_VALIDATION_HALF",
+      "frames": 1657,
+      "metric_claim_boundary": "not full MOT20 TEST"
+    },
+    {
+      "id": "mot_only_long_training",
+      "status": "COMPLETE_SAFE_NO_LIVE_OWNER"
+    },
+    {
+      "id": "g2_clean_training",
+      "status": "RUNNING",
+      "event_step": 12002,
+      "target_steps": 18227,
+      "latest_durable_step": 12000,
+      "physical_gpus": [
+        3,
+        5
+      ],
+      "final_receipt": false
+    },
+    {
+      "id": "g1_gpu5_adaptation",
+      "status": "WAITING_G2_CLEAN_SUCCESS",
+      "real_optimizer_updates": false
+    },
+    {
+      "id": "g2_clean_bundle_export",
+      "status": "WAITING_G2_AND_G1_TERMINAL",
+      "exported": false
+    },
+    {
+      "id": "independent_heldout",
+      "status": "WAITING_G2_CLEAN_BUNDLE_AND_GPU7",
+      "official_metrics": false
+    },
+    {
+      "id": "legacy_onejev_full_source_resume",
+      "status": "PAUSED_FOR_GROUNDJEV_SINGLE_BACKBONE",
+      "resume_step": 3000,
+      "automatic_start_blocked": true
+    },
+    {
+      "id": "groundjev_single_backbone_phase_a_b",
+      "status": "PRELIMINARY_ENGINEERING_AND_LEARNABILITY_COMPLETE",
+      "full_metrics": false
+    },
+    {
+      "id": "corrected_three_task_source_v2",
+      "status": "PREPARED_ZERO_DROP_QUEUED_NOT_TRAINED",
+      "manifest_sha256": "cbdafce9e5a587c00b053ee58ea6435db4221d38036ee7574fe8a3f0f854e54c",
+      "rows": 131990,
+      "overlength_rows": 0,
+      "max_tokens": 28156,
+      "transform": "compact_competition_v1",
+      "native_ovmot_training_rows": false,
+      "optimizer_updates": 0
+    }
+  ],
+  "scientific_gain": "UNPROVEN",
+  "next_terminal_dependencies": [
+    "G2 final receipt",
+    "G1 GPU5 adaptation receipt",
+    "G2 bundle export receipt",
+    "independent held-out official metrics"
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "status": "PHASE_A_REAL_G2_FORWARD_BACKWARD_PASS",
+  "evidence_classification": "G0_NATIVE_VISUAL_CONTROL_NOT_G2",
+  "g2_clean_evidence": false,
+  "classification_note": "Historical smoke used GroundAnything-DLM without a G2 adapter. Preserve it as a G0 control; it is not evidence from G2 Clean.",
+  "project_root": "/data2/user/LocateMOT",
+  "checkpoint": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM",
+  "model_sha256": "3cf09355cde8cf4877cdc76e0a72301d572c1d6263b2831f8a03368285bb65e2",
+  "image": "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-02-DPM/img1/000001.jpg",
+  "candidate_count": 2,
+  "feature_dim": 2560,
+  "bridge_forward_count": 1,
+  "single_backbone": true,
+  "independent_vlm_instances": 0,
+  "losses": {
+    "identity_choice": 1.0974774360656738,
+    "identity_brier": 0.6659053564071655,
+    "admit": 0.2629281282424927,
+    "yesno": 0.7438966035842896,
+    "memory": 0.6761890649795532,
+    "lifecycle": 1.3994449377059937,
+    "total": 4.179936408996582
+  },
+  "gradient_norm_clipped": 33.65583419799805,
+  "elapsed_seconds": 14.425997075042687,
+  "peak_memory_allocated_bytes": 3071779328,
+  "memory_enabled": false,
+  "scientific_claim": "engineering smoke only; no tracking metric",
+  "runtime_note": "The official GroundAnything serving environment was used because the registered py310 training environment lacks pybase64; the py310 failure was preserved in the research log."
+}

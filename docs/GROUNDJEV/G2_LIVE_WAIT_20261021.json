@@ -1,0 +1,21 @@
+{
+  "receipt_type": "GROUNDJEV_G2_LIVE_WAIT",
+  "observed_date": "2026-10-21",
+  "project_root": "/data2/user/LocateMOT",
+  "g2_root": "/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final",
+  "launcher_pid": 1799359,
+  "launcher_proc_exists": true,
+  "terminal_receipt_exists": false,
+  "final_adapter_exists": false,
+  "latest_periodic_adapter": "checkpoints/adapter-step017500.pt",
+  "latest_recovery_state": "checkpoints/latest_training_state.pt",
+  "downstream_owner_states": {
+    "g1_gpu5": "WAITING_G2_CLEAN_SUCCESS",
+    "g2_bundle": "WAITING_G2_CLEAN_SUCCESS",
+    "independent_heldout": "WAITING_G2_CLEAN_BUNDLE_AND_GPU7",
+    "tao_native_shards": "WAITING_G2_CLEAN_SUCCESS",
+    "native_three_task_onejev": "WAITING_NATIVE_OVMOT_MANIFEST"
+  },
+  "optimizer_updates_in_downstream_three_task_owner": 0,
+  "action": "Keep the protected G2 owner running; do not restart or promote a nonterminal checkpoint. Registered downstream waiters remain recoverable and will re-check the exact terminal receipt."
+}

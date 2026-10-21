@@ -1,0 +1,19 @@
+{
+  "timestamp": "2026-10-21T19:11:00+08:00",
+  "status": "REAL_YESTRACK_TRAINING_INTERRUPTED_FOR_COUPLING_PRIORITY",
+  "reason": "Prioritize the latest GroundJEV single-backbone coupling mainline",
+  "physical_gpu": 7,
+  "observed_training_steps": 20,
+  "observed_training_examples": 160,
+  "planned_training_steps": 273,
+  "planned_training_examples": 2178,
+  "partial_artifacts_preserved": true,
+  "validation_receipt_present": false,
+  "metric_claim": false,
+  "mainline": [
+    "G2 Clean terminal completion",
+    "GPU5 GroundAnything G1 adaptation and controls",
+    "native MOT/RMOT/OVMOT three-task OneJev joint optimization",
+    "independent held-out evaluation"
+  ]
+}

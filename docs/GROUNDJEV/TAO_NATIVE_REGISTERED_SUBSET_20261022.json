@@ -1,0 +1,22 @@
+{
+  "status": "REGISTERED_NATIVE_TAO_TRAIN_SUBSET_SCOPE",
+  "parent_manifest": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/tao_native_ovmot_train_scope_v1/manifest.json",
+  "parent_manifest_sha256": "835adaadff282088599987de4c5bc906e7d8aca826deb7426cda05598e9db3a4",
+  "parent_frames": 18274,
+  "parent_videos": 500,
+  "subset_root": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/tao_native_ovmot_train_subset64_v1",
+  "subset_manifest_sha256": "40cec39bbc8606195628eee4d724ee33a1152ab43bc73f59008943a4bfd0bb51",
+  "subset_frames": 64,
+  "subset_videos": 64,
+  "shards": 4,
+  "selection": "one eligible annotated frame from 64 evenly spaced TAO TRAIN videos",
+  "registered_train_subset": true,
+  "full_train_image_scope": false,
+  "official_test_labels_read": false,
+  "native_vocabulary_size": 1203,
+  "physical_gpus": [4, 5, 6, 7],
+  "g2_steps": 18227,
+  "g2_manifest_sha256": "f682519a1cf9204ca76ea75a56dad36dbdeac26259f202551ab9f66fefd06e71",
+  "full_scope_action": "aborted_before_terminal_candidate_receipt; source manifest and partial service logs preserved",
+  "performance_claim": "subset training-source evidence only; no full-TAO benchmark claim"
+}

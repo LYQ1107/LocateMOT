@@ -1,0 +1,48 @@
+{
+  "project_root": "/data2/user/LocateMOT",
+  "name": "Real MOT/RMOT/OVMOT OneJev compact competition source manifest v2",
+  "source_manifest": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/real_three_task_joint_v2_compact/train.sources.json",
+  "manifest_receipt": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/real_three_task_joint_v2_compact/manifest_receipt.json",
+  "manifest_protocol": "immutable-native-sources-family-filter-full-exposure-v2",
+  "row_counts": {
+    "identity": 131214,
+    "query_membership": 330,
+    "empty_query_presence": 16,
+    "category_group_teacher_control": 215,
+    "category_leaf_teacher_control": 215,
+    "total": 131990
+  },
+  "sources": {
+    "mot": {
+      "path": "/data2/user/LocateMOT_OneJev_CVPR/outputs/groundjev/full_data_v2/trackjev_sft_v1/rows.jsonl",
+      "sha256": "b60d029b28a1d5bb101361ea548cf07e48b41033ccbe20d78f32cc7f0ba7b4",
+      "provenance": "native GroundAnything candidates; 7 MOT17 TRAIN sequences"
+    },
+    "rmot": {
+      "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/onejev_native_rmot_membership_v2_registered_release_root/train.jsonl",
+      "sha256": "cdb1e38342f2bf467c0d288e532b840964328447020911043ded36968381e4a1",
+      "provenance": "native GroundAnything candidates; 9 Refer-KITTI fit videos / 72 frames"
+    },
+    "ovmot": {
+      "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/onejev_base_categories_v1/train.jsonl",
+      "sha256": "48269098ac2a8ebafb5d0c50a7de9852e10bf50d37e087f71db6c6f74ecfd95b",
+      "provenance": "registered train-Base GT teacher crops; native category rows are not yet materialized"
+    }
+  },
+  "native_ovmot_archive": {
+    "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_runs/tao_base_novel63_full_v2_expression_none/native_candidates/frame_candidates.jsonl",
+    "receipt_status": "COMPLETE_LEGAL_NATIVE_VOCABULARY_AND_ROI_STREAM",
+    "frames": 40,
+    "candidates": 35228,
+    "training_rows_available": false,
+    "reason": "archive is a registered validation/native replay and contains no category supervision; it cannot be relabeled as training data"
+  },
+  "heldout_boundary": "MOT20-05 is excluded from every source; official evaluation labels were not read",
+  "optimizer_updates": 0,
+  "gpu_launched": false,
+  "training_status": "REGISTERED_SOURCE_MANIFEST_ONLY_NATIVE_OVMOT_ROWS_PENDING",
+  "full_goal_complete": false,
+  "manifest_sha256": "cbdafce9e5a587c00b053ee58ea6435db4221d38036ee7574fe8a3f0f854e54c",
+  "manifest_version": "real-three-task-joint-v2-compact-competition-v1",
+  "transform_contract": "compact_competition_v1 on native MOT identity rows"
+}

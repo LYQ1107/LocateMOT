@@ -1,95 +1,57 @@
-"""Joint GroundJEV losses with explicit validity masks."""
+"""Joint typed losses with explicit validity masks."""
 from __future__ import annotations
 
-from dataclasses import dataclass
-from typing import Any, Iterable, Optional, Sequence
+from typing import Any, Mapping, Sequence
 
 import torch
 import torch.nn.functional as F
 
 
-@dataclass(frozen=True)
-class JointLossWeights:
-    grounding: float = 1.0
-    identity_choice: float = 1.0
-    yesno: float = 0.5
-    birth: float = 0.5
-    lifecycle: float = 0.25
-    memory: float = 0.25
-
-    def to_dict(self) -> dict[str, float]:
-        return dict(self.__dict__)
-
-
-def _masked_bce(logits: torch.Tensor, targets: torch.Tensor,
-                valid: torch.Tensor) -> Optional[torch.Tensor]:
-    if not bool(valid.any()):
+def _masked_bce(logits: torch.Tensor, targets: Sequence[float], valid: Sequence[bool]) -> torch.Tensor | None:
+    indices = [i for i, ok in enumerate(valid) if ok]
+    if not indices:
         return None
-    return F.binary_cross_entropy_with_logits(logits[valid], targets[valid].float())
+    y = torch.tensor([float(targets[i]) for i in indices], device=logits.device)
+    return F.binary_cross_entropy_with_logits(logits[indices].reshape(-1), y)
 
 
-def identity_choice_loss(logits: Sequence[torch.Tensor], targets: Sequence[Optional[int]]) -> Optional[torch.Tensor]:
-    values = []
-    for row, target in zip(logits, targets):
-        if target is None:
+def structured_groundjev_losses(outputs: Mapping[str, Any], *, identity_targets: Sequence[int | None],
+                                identity_valid: Sequence[bool], admit_targets: Sequence[float] | None = None,
+                                admit_valid: Sequence[bool] | None = None,
+                                yesno_targets: Sequence[float] | None = None,
+                                yesno_valid: Sequence[bool] | None = None,
+                                lifecycle_targets: Sequence[int | None] | None = None,
+                                lifecycle_valid: Sequence[bool] | None = None,
+                                memory_targets: Sequence[float] | None = None,
+                                memory_valid: Sequence[bool] | None = None,
+                                weights: Mapping[str, float] | None = None) -> dict[str, torch.Tensor | None]:
+    weights = dict(weights or {})
+    result: dict[str, torch.Tensor | None] = {}
+    valid_ids = [i for i, ok in enumerate(identity_valid) if ok and identity_targets[i] is not None]
+    if valid_ids:
+        logits = outputs["identity_logits"][valid_ids]
+        target = torch.tensor([int(identity_targets[i]) for i in valid_ids], device=logits.device)
+        result["identity_choice"] = F.cross_entropy(logits, target)
+        result["identity_brier"] = ((torch.softmax(logits, -1) - F.one_hot(target, logits.shape[-1]).float()) ** 2).sum(-1).mean()
+    for name, key, targets, valid in (
+        ("admit", "admit_logits", admit_targets, admit_valid),
+        ("yesno", "yesno_logits", yesno_targets, yesno_valid),
+        ("memory", "memory_logits", memory_targets, memory_valid),
+    ):
+        if targets is not None and valid is not None:
+            value = _masked_bce(outputs[key], targets, valid)
+            if value is not None:
+                result[name] = value
+    if lifecycle_targets is not None and lifecycle_valid is not None:
+        indices = [i for i, ok in enumerate(lifecycle_valid) if ok and lifecycle_targets[i] is not None]
+        if indices:
+            logits = outputs["lifecycle_logits"][indices]
+            target = torch.tensor([int(lifecycle_targets[i]) for i in indices], device=logits.device)
+            result["lifecycle"] = F.cross_entropy(logits, target)
+    total: torch.Tensor | None = None
+    for name, value in result.items():
+        if value is None or name.endswith("brier"):
             continue
-        if row.ndim != 1 or not 0 <= int(target) < row.numel():
-            raise ValueError("identity target is outside its dynamic slot list")
-        values.append(F.cross_entropy(row.unsqueeze(0), torch.tensor([int(target)], device=row.device)))
-    return torch.stack(values).mean() if values else None
-
-
-def joint_losses(*, identity_logits: Sequence[torch.Tensor], identity_targets: Sequence[Optional[int]],
-                 admit_logits: Optional[torch.Tensor] = None,
-                 admit_targets: Optional[torch.Tensor] = None,
-                 admit_valid: Optional[torch.Tensor] = None,
-                 birth_logits: Optional[torch.Tensor] = None,
-                 birth_targets: Optional[torch.Tensor] = None,
-                 birth_valid: Optional[torch.Tensor] = None,
-                 lifecycle_logits: Optional[torch.Tensor] = None,
-                 lifecycle_targets: Optional[torch.Tensor] = None,
-                 lifecycle_valid: Optional[torch.Tensor] = None,
-                 memory_logits: Optional[torch.Tensor] = None,
-                 memory_targets: Optional[torch.Tensor] = None,
-                 memory_valid: Optional[torch.Tensor] = None,
-                 yesno_logits: Optional[torch.Tensor] = None,
-                 yesno_targets: Optional[torch.Tensor] = None,
-                 yesno_valid: Optional[torch.Tensor] = None,
-                 grounding_loss: Optional[torch.Tensor] = None,
-                 weights: JointLossWeights = JointLossWeights()) -> dict[str, torch.Tensor | None]:
-    """Return every component separately and the weighted total.
-
-    ``identity_logits`` are a list because every candidate can have a distinct
-    dynamic shortlist.  All dense auxiliary heads require an explicit validity
-    tensor; unknown/partial annotations contribute no loss.
-    """
-    losses: dict[str, torch.Tensor | None] = {}
-    losses["grounding"] = grounding_loss
-    losses["identity_choice"] = identity_choice_loss(identity_logits, identity_targets)
-    losses["admit"] = (_masked_bce(admit_logits.reshape(-1), admit_targets.reshape(-1), admit_valid.reshape(-1))
-                       if admit_logits is not None and admit_targets is not None and admit_valid is not None else None)
-    losses["birth"] = (_masked_bce(birth_logits.reshape(-1), birth_targets.reshape(-1), birth_valid.reshape(-1))
-                       if birth_logits is not None and birth_targets is not None and birth_valid is not None else None)
-    losses["lifecycle"] = (F.cross_entropy(lifecycle_logits[lifecycle_valid], lifecycle_targets[lifecycle_valid])
-                           if lifecycle_logits is not None and lifecycle_targets is not None and lifecycle_valid is not None
-                           and bool(lifecycle_valid.any()) else None)
-    losses["memory"] = (_masked_bce(memory_logits[..., 1], memory_targets, memory_valid)
-                        if memory_logits is not None and memory_targets is not None and memory_valid is not None else None)
-    losses["yesno"] = (_masked_bce(yesno_logits.reshape(-1), yesno_targets.reshape(-1), yesno_valid.reshape(-1))
-                       if yesno_logits is not None and yesno_targets is not None and yesno_valid is not None else None)
-    total = None
-    scale = {
-        "grounding": weights.grounding,
-        "identity_choice": weights.identity_choice,
-        "yesno": weights.yesno,
-        "birth": weights.birth,
-        "lifecycle": weights.lifecycle,
-        "memory": weights.memory,
-        "admit": weights.yesno,
-    }
-    for name, value in losses.items():
-        if value is None:
-            continue
-        total = value * float(scale.get(name, 1.0)) if total is None else total + value * float(scale.get(name, 1.0))
-    losses["total"] = total
-    return losses
+        total = value * float(weights.get(name, 1.0)) if total is None else total + value * float(weights.get(name, 1.0))
+    result["total"] = total
+    return result

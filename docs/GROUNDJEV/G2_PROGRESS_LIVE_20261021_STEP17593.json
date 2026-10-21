@@ -1,0 +1,35 @@
+{
+  "receipt_type": "GROUNDJEV_G2_PROGRESS_LIVE",
+  "generated_at": "2026-10-21T21:05:49+08:00",
+  "project_root": "/data2/user/LocateMOT",
+  "run_root": "/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final",
+  "event_step": 17593,
+  "target_steps": 18227,
+  "remaining_steps": 634,
+  "last_event": {
+    "time": "2026-10-21 21:05:49 +0800",
+    "loss": 0.17138287925627083,
+    "gradient_norm": 10.132396697998047,
+    "peak_memory_gib": 12.828959465026855,
+    "samples_global": 16,
+    "effective_tokens_global": 10930,
+    "micro_batches": 8
+  },
+  "throughput": {
+    "window_steps": 500,
+    "steps_per_hour": 307.062,
+    "linear_eta_hours": 2.065
+  },
+  "checkpoint_state": {
+    "latest_periodic_adapter": "checkpoints/adapter-step017500.pt",
+    "latest_recovery_state": "checkpoints/latest_training_state.pt",
+    "terminal_receipt_exists": false,
+    "final_adapter_exists": false
+  },
+  "protected_process": {
+    "launcher_pid": 1799359,
+    "launcher_proc_exists": true,
+    "physical_gpus": [3, 5]
+  },
+  "claim_boundary": "Training-health and recoverability evidence only; no G2 benchmark or coupled performance claim."
+}

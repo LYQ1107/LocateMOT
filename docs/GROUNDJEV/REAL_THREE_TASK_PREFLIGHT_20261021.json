@@ -1,0 +1,23 @@
+{
+  "status": "REAL_THREE_TASK_CPU_PLAN_COMPLETE_WITH_EXPLICIT_OVERLENGTH_ROWS",
+  "manifest_sha256": "4194af34b07161ef217336701f9ca37ee029b0256cb50276f29e5b01028bc8c7",
+  "source_rows": 131990,
+  "max_len": 32768,
+  "trainable_rows": 129891,
+  "overlength_rows": 2099,
+  "token_lengths": {
+    "p50": 12720,
+    "p90": 25689,
+    "p99": 47023,
+    "max": 96734
+  },
+  "micro_batches": 129891,
+  "planned_steps_world_size_4": 8119,
+  "total_tokens": 1957608791,
+  "dropped_rows_are_not_silent": true,
+  "full_source_exposure": false,
+  "optimizer_updates": 0,
+  "gpu_launched": false,
+  "measurement": "registered .venv-onejev-py310 run_source_manifest_sft.py --plan-only --device cpu",
+  "next_required_work": "compact or separately expose the 2,099 high-candidate MOT identity rows before claiming full-source training"
+}

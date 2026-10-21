@@ -1,0 +1,15 @@
+{
+  "status": "PHASE_C_REAL_G2_DENSE_MULTIBOX_CONTRACT_COMPLETE",
+  "g2_adapter_step": 17000,
+  "base_model_sha256": "3cf09355cde8cf4877cdc76e0a72301d572c1d6263b2831f8a03368285bb65e2",
+  "frames_per_sequence": 3,
+  "sequences": ["MOT20-03", "MOT20-05"],
+  "visual_embed_calls": 6,
+  "independent_vlm_instances": 0,
+  "parameter_updates": 0,
+  "g2_frozen": true,
+  "formal_g2_run_untouched": true,
+  "mean_recall_at_iou_0_5": {"MOT20-03": 0.0103450745, "MOT20-05": 0.0040377434},
+  "decoder": "multi-box causal; coordinate slots constrained; stop only at im_end",
+  "scientific_claim": "corrected dense G2 baseline only; no tracking or coupling gain claim"
+}

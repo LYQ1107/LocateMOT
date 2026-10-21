@@ -1,0 +1,350 @@
+{
+  "status": "PHASE_C_REAL_G2_COUPLED_CROSS_SEQUENCE_DIAGNOSTIC_COMPLETE",
+  "project_root": "/data2/user/LocateMOT",
+  "sequence": "MOT20-05",
+  "frames": [
+    13,
+    14,
+    15,
+    16,
+    17
+  ],
+  "target_id": 17,
+  "scope": "MOT20 TRAIN cross-sequence diagnostic relative to MOT20-03 coupling pilot; not official independent benchmark",
+  "g2_checkpoint": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM",
+  "g2_adapter": "/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final/checkpoints/adapter-step017000.pt",
+  "g2_adapter_step": 17000,
+  "coupled_checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/coupled/phase_c_real_coupled_memory_jev_step17000_v1/coupled-adapter-step000024.pt",
+  "coupled_training_scope": "MOT20-03 frames 82-85; frame 86 same-video temporal holdout",
+  "base_model_sha256": "3cf09355cde8cf4877cdc76e0a72301d572c1d6263b2831f8a03368285bb65e2",
+  "visual_embed_calls": 5,
+  "one_visual_encode_per_frame": true,
+  "independent_vlm_instances": 0,
+  "rows": [
+    {
+      "frame": 13,
+      "target_box_0_999": [
+        339,
+        957,
+        382,
+        999
+      ],
+      "conditions": {
+        "C0_disabled": {
+          "memory_enabled": false,
+          "memory_token_count": 0,
+          "generated_text": "<|object_ref_start|>person<|object_ref_end|><|box_start|><1><120><31><260><|box_end|>",
+          "recovered_pairs": [
+            [
+              "person",
+              [
+                1,
+                120,
+                31,
+                260
+              ]
+            ]
+          ],
+          "iou_vs_target": 0.0,
+          "repair_status": "RECOVERED",
+          "grammar_forced_box_end": 1
+        }
+      },
+      "jev": null
+    },
+    {
+      "frame": 14,
+      "target_box_0_999": [
+        339,
+        953,
+        382,
+        999
+      ],
+      "conditions": {
+        "C0_disabled": {
+          "memory_enabled": false,
+          "memory_token_count": 0,
+          "generated_text": "<|object_ref_start|>person<|object_ref_end|><|box_start|><1><69><4><222><|box_end|>",
+          "recovered_pairs": [
+            [
+              "person",
+              [
+                1,
+                69,
+                4,
+                222
+              ]
+            ]
+          ],
+          "iou_vs_target": 0.0,
+          "repair_status": "RECOVERED",
+          "grammar_forced_box_end": 1
+        },
+        "C2_previous_frame_memory": {
+          "memory_enabled": true,
+          "memory_token_count": 1,
+          "generated_text": "<|object_ref_start|>person<|object_ref_end|><|box_start|><1><229><30><370><|box_end|>",
+          "recovered_pairs": [
+            [
+              "person",
+              [
+                1,
+                229,
+                30,
+                370
+              ]
+            ]
+          ],
+          "iou_vs_target": 0.0,
+          "repair_status": "RECOVERED",
+          "grammar_forced_box_end": 1
+        }
+      },
+      "jev": {
+        "identity_options": [
+          "17",
+          "NEW",
+          "NO_MATCH",
+          "REJECT"
+        ],
+        "identity_probabilities": [
+          1.0,
+          9.866958688832072e-16,
+          9.411024146731132e-16,
+          1.049619299556769e-15
+        ],
+        "predicted_option": 0,
+        "yes_probability": 0.9995357990264893,
+        "admit_probability": 0.9982174038887024,
+        "lifecycle_option": 0
+      }
+    },
+    {
+      "frame": 15,
+      "target_box_0_999": [
+        338,
+        949,
+        383,
+        999
+      ],
+      "conditions": {
+        "C0_disabled": {
+          "memory_enabled": false,
+          "memory_token_count": 0,
+          "generated_text": "<|object_ref_start|>person<|object_ref_end|><|box_start|><1><68><5><198><|box_end|>",
+          "recovered_pairs": [
+            [
+              "person",
+              [
+                1,
+                68,
+                5,
+                198
+              ]
+            ]
+          ],
+          "iou_vs_target": 0.0,
+          "repair_status": "RECOVERED",
+          "grammar_forced_box_end": 1
+        },
+        "C2_previous_frame_memory": {
+          "memory_enabled": true,
+          "memory_token_count": 1,
+          "generated_text": "<|object_ref_start|>person<|object_ref_end|><|box_start|><1><224><28><365><|box_end|>",
+          "recovered_pairs": [
+            [
+              "person",
+              [
+                1,
+                224,
+                28,
+                365
+              ]
+            ]
+          ],
+          "iou_vs_target": 0.0,
+          "repair_status": "RECOVERED",
+          "grammar_forced_box_end": 1
+        }
+      },
+      "jev": {
+        "identity_options": [
+          "17",
+          "NEW",
+          "NO_MATCH",
+          "REJECT"
+        ],
+        "identity_probabilities": [
+          1.0,
+          9.870384937103716e-16,
+          9.414364632916866e-16,
+          1.0499958057018236e-15
+        ],
+        "predicted_option": 0,
+        "yes_probability": 0.9995357990264893,
+        "admit_probability": 0.9982174038887024,
+        "lifecycle_option": 0
+      }
+    },
+    {
+      "frame": 16,
+      "target_box_0_999": [
+        338,
+        944,
+        384,
+        999
+      ],
+      "conditions": {
+        "C0_disabled": {
+          "memory_enabled": false,
+          "memory_token_count": 0,
+          "generated_text": "<|object_ref_start|>person<|object_ref_end|><|box_start|><1><79><8><220><|box_end|>",
+          "recovered_pairs": [
+            [
+              "person",
+              [
+                1,
+                79,
+                8,
+                220
+              ]
+            ]
+          ],
+          "iou_vs_target": 0.0,
+          "repair_status": "RECOVERED",
+          "grammar_forced_box_end": 1
+        },
+        "C2_previous_frame_memory": {
+          "memory_enabled": true,
+          "memory_token_count": 1,
+          "generated_text": "<|object_ref_start|>person<|object_ref_end|><|box_start|><1><126><7><270><|box_end|>",
+          "recovered_pairs": [
+            [
+              "person",
+              [
+                1,
+                126,
+                7,
+                270
+              ]
+            ]
+          ],
+          "iou_vs_target": 0.0,
+          "repair_status": "RECOVERED",
+          "grammar_forced_box_end": 1
+        }
+      },
+      "jev": {
+        "identity_options": [
+          "17",
+          "NEW",
+          "NO_MATCH",
+          "REJECT"
+        ],
+        "identity_probabilities": [
+          1.0,
+          9.872267467828989e-16,
+          9.416159283973861e-16,
+          1.0501880821808503e-15
+        ],
+        "predicted_option": 0,
+        "yes_probability": 0.9995357990264893,
+        "admit_probability": 0.9982176423072815,
+        "lifecycle_option": 0
+      }
+    },
+    {
+      "frame": 17,
+      "target_box_0_999": [
+        337,
+        941,
+        384,
+        999
+      ],
+      "conditions": {
+        "C0_disabled": {
+          "memory_enabled": false,
+          "memory_token_count": 0,
+          "generated_text": "<|object_ref_start|>person<|object_ref_end|><|box_start|><1><76><7><219><|box_end|>",
+          "recovered_pairs": [
+            [
+              "person",
+              [
+                1,
+                76,
+                7,
+                219
+              ]
+            ]
+          ],
+          "iou_vs_target": 0.0,
+          "repair_status": "RECOVERED",
+          "grammar_forced_box_end": 1
+        },
+        "C2_previous_frame_memory": {
+          "memory_enabled": true,
+          "memory_token_count": 1,
+          "generated_text": "<|object_ref_start|>person<|object_ref_end|><|box_start|><1><224><24><362><|box_end|>",
+          "recovered_pairs": [
+            [
+              "person",
+              [
+                1,
+                224,
+                24,
+                362
+              ]
+            ]
+          ],
+          "iou_vs_target": 0.0,
+          "repair_status": "RECOVERED",
+          "grammar_forced_box_end": 1
+        }
+      },
+      "jev": {
+        "identity_options": [
+          "17",
+          "NEW",
+          "NO_MATCH",
+          "REJECT"
+        ],
+        "identity_probabilities": [
+          1.0,
+          9.872455932659753e-16,
+          9.416375277375411e-16,
+          1.0502121167407286e-15
+        ],
+        "predicted_option": 0,
+        "yes_probability": 0.9995356798171997,
+        "admit_probability": 0.9982172846794128,
+        "lifecycle_option": 0
+      }
+    }
+  ],
+  "mean_iou_by_condition": {
+    "C0_disabled": 0.0,
+    "C2_previous_frame_memory": 0.0
+  },
+  "formal_g2_run_untouched": true,
+  "scientific_claim": "cross-sequence coupled-memory/JEV diagnostic only; no official MOT metric or generalization claim",
+  "elapsed_seconds": 14.360970863956027,
+  "g2_trainable_parameters": null,
+  "runtime_receipt": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/coupled/phase_c_cross_sequence_mot20_05_step17000_v1/receipt.json",
+  "coupling_generalization_audit": {
+    "training_sequence": "MOT20-03",
+    "evaluation_sequence": "MOT20-05",
+    "same_coupled_parameters": true,
+    "parameter_updates_during_eval": 0,
+    "c2_mean_iou": 0.0,
+    "c0_mean_iou": 0.0,
+    "jev_match_confidence_summary": {
+      "mean_yes_probability": 0.9995357692241669,
+      "mean_id_probability": 1.0
+    }
+  },
+  "scientific_limitations": [
+    "MOT20-05 is a cross-sequence diagnostic relative to the coupling pilot, not a final independent benchmark claim.",
+    "The trained memory projector yields zero IoU on all five frames despite near-one JEV MATCH/Yes probabilities; this is an overconfident wrong-association/geometry failure.",
+    "No multi-identity, wrong-memory, calibration, HOTA, IDF1, IDSW or TETA claim is made."
+  ]
+}

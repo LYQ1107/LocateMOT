@@ -1,0 +1,92 @@
+{
+  "report": "native_ovmot_archive_rescan",
+  "date": "2026-10-21",
+  "project_root": "/data2/user/LocateMOT",
+  "searched_root": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev",
+  "purpose": "Re-audit every discovered TAO candidate archive before unblocking the corrected MOT/RMOT/OVMOT joint-training queue.",
+  "native_tao_train_archive_found": false,
+  "legal_joint_training_ready": false,
+  "queue_state": "PAUSED_FOR_NATIVE_OVMOT_ROWS",
+  "inventory": [
+    {
+      "path": "multitask_candidate_controls/tao_exact_geometry_v1",
+      "frame_candidates_rows": 4,
+      "image_split": "val",
+      "status": "EXACT_NATIVE_GEOMETRY_GROUPING_VALIDATED",
+      "native_candidate_state": "geometry/grouping control only; native hidden features were not exported",
+      "per_box_native_score": "absent",
+      "training_eligible": false
+    },
+    {
+      "path": "multitask_candidate_controls/tao_scored_queries_v1",
+      "frame_candidates_rows": 4,
+      "retained_candidates": 1773,
+      "image_split": "val",
+      "status": "GT_FREE_NATIVE_QUERY_CONTROL_MATERIALIZED",
+      "native_candidate_state": "query-control output; native per-box feature/score fields were not exported",
+      "raw_gt_read": false,
+      "training_eligible": false
+    },
+    {
+      "path": "multitask_runs/tao_base_novel63_full_v1/native_candidates",
+      "frame_candidates_rows": 0,
+      "image_split": "unknown",
+      "status": "FULL_BASE_NOVEL_VIDEO_FAILED",
+      "failure": "native candidate stream terminated with CalledProcessError",
+      "training_eligible": false
+    },
+    {
+      "path": "multitask_runs/tao_base_novel63_full_v2_expression_none/native_candidates",
+      "frame_candidates_rows": 40,
+      "image_split": "val",
+      "status": "COMPLETE_LEGAL_NATIVE_VOCABULARY_AND_ROI_STREAM",
+      "candidate_count": 35228,
+      "native_query_requests": 520,
+      "scored_queries": 317,
+      "rejected_queries": 203,
+      "feature_cache_bytes": 1885903934,
+      "stream_wall_seconds": 10850.079269520007,
+      "per_box_native_score": "absent; never fabricated",
+      "gt_or_novel_labels_read_by_model": false,
+      "training_eligible": false
+    },
+    {
+      "path": "multitask_runs/tao_exact_geometry_alias40_v1",
+      "frame_candidates_rows": 40,
+      "image_split": "val",
+      "status": "FULL40_EXACT_GEOMETRY_ALIAS_PROPOSAL_POLICY_CONTROLS_COMPLETE",
+      "training_eligible": false
+    },
+    {
+      "path": "multitask_runs/tao_base_novel63_full_v3_empty_crop_cpu",
+      "frame_candidates_rows": 0,
+      "image_split": "val",
+      "status": "FULL40_BASE_NOVEL_NATIVE_SOURCE_CONTROLS_COMPLETE",
+      "scope": "one full legal TAO validation video / 40 annotation frames",
+      "training_eligible": false
+    },
+    {
+      "path": "training_data/tao_native_ovmot_train_scope_v1",
+      "frame_candidates_rows": 0,
+      "image_split": "train",
+      "status": "TAO_TRAIN_NATIVE_OVMOT_SCOPE_REGISTERED_NOT_STREAMED",
+      "frames": 18274,
+      "videos": 500,
+      "resolved_images": 18274,
+      "native_candidate_export_started": false,
+      "native_ovmot_training_rows": false,
+      "training_eligible": false
+    }
+  ],
+  "decision": {
+    "do_not_relabel_validation_as_train": true,
+    "do_not_use_teacher_or_empty_candidate_rows_as_native_training": true,
+    "do_not_unblock_three_task_queue": true,
+    "next_valid_step": "Run the native TAO TRAIN candidate exporter only when an exclusive GPU window is available, then pass its rows through the strict native-only join gate."
+  },
+  "related_evidence": [
+    "docs/GROUNDJEV/NATIVE_OVMOT_ARCHIVE_AUDIT_20261021.{json,md}",
+    "docs/GROUNDJEV/TAO_TRAIN_NATIVE_SCOPE_20261021.{json,md}",
+    "docs/GROUNDJEV_COUPLED/DATA_OVERLAP_AUDIT_20261021.{json,md}"
+  ]
+}

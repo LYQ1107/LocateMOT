@@ -1,0 +1,230 @@
+{
+  "schema": "groundjev-post-g2-downstream-preflight-v1",
+  "date": "2026-10-21",
+  "project_root": "/data2/user/LocateMOT",
+  "g2_terminal_required": true,
+  "g2_terminal_present": false,
+  "required_paths_missing": [],
+  "registered_tao_shards": {
+    "status": "TAO_TRAIN_NATIVE_SHARDS_REGISTERED_NOT_STREAMED",
+    "parent_manifest": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/tao_native_ovmot_train_scope_v1/manifest.json",
+    "parent_manifest_sha256": "835adaadff282088599987de4c5bc906e7d8aca826deb7426cda05598e9db3a4",
+    "num_shards": 8,
+    "parent_frames": 18274,
+    "parent_videos": 500,
+    "shards": [
+      {
+        "status": "TAO_TRAIN_NATIVE_SHARD_SCOPE_REGISTERED_NOT_STREAMED",
+        "manifest": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/tao_native_ovmot_train_shards_v2/shard_00_of_08/manifest.json",
+        "manifest_sha256": "c66dbf85a4b39ff29cc70cecddf239b1ba9129c0d09be5690fecff8c4b4dfde2",
+        "parent_manifest": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/tao_native_ovmot_train_scope_v1/manifest.json",
+        "parent_manifest_sha256": "835adaadff282088599987de4c5bc906e7d8aca826deb7426cda05598e9db3a4",
+        "shard_index": 0,
+        "num_shards": 8,
+        "start_index": 0,
+        "end_index_exclusive": 2284,
+        "frames": 2284,
+        "videos": 60,
+        "native_candidate_export_started": false,
+        "native_ovmot_training_rows": false,
+        "required_stream_command": "tools/groundjev/stream_tao_native_candidates.py --allow-training-scope"
+      },
+      {
+        "status": "TAO_TRAIN_NATIVE_SHARD_SCOPE_REGISTERED_NOT_STREAMED",
+        "manifest": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/tao_native_ovmot_train_shards_v2/shard_01_of_08/manifest.json",
+        "manifest_sha256": "fd03ae54869e4212cf3df1a21d9e26009d057e9b36cfec619f10a5b892cecf7a",
+        "parent_manifest": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/tao_native_ovmot_train_scope_v1/manifest.json",
+        "parent_manifest_sha256": "835adaadff282088599987de4c5bc906e7d8aca826deb7426cda05598e9db3a4",
+        "shard_index": 1,
+        "num_shards": 8,
+        "start_index": 2284,
+        "end_index_exclusive": 4568,
+        "frames": 2284,
+        "videos": 59,
+        "native_candidate_export_started": false,
+        "native_ovmot_training_rows": false,
+        "required_stream_command": "tools/groundjev/stream_tao_native_candidates.py --allow-training-scope"
+      },
+      {
+        "status": "TAO_TRAIN_NATIVE_SHARD_SCOPE_REGISTERED_NOT_STREAMED",
+        "manifest": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/tao_native_ovmot_train_shards_v2/shard_02_of_08/manifest.json",
+        "manifest_sha256": "31228098a2cabfce4f12822c853888bad25a2d23c915fe9d633d757f269b6757",
+        "parent_manifest": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/tao_native_ovmot_train_scope_v1/manifest.json",
+        "parent_manifest_sha256": "835adaadff282088599987de4c5bc906e7d8aca826deb7426cda05598e9db3a4",
+        "shard_index": 2,
+        "num_shards": 8,
+        "start_index": 4568,
+        "end_index_exclusive": 6852,
+        "frames": 2284,
+        "videos": 59,
+        "native_candidate_export_started": false,
+        "native_ovmot_training_rows": false,
+        "required_stream_command": "tools/groundjev/stream_tao_native_candidates.py --allow-training-scope"
+      },
+      {
+        "status": "TAO_TRAIN_NATIVE_SHARD_SCOPE_REGISTERED_NOT_STREAMED",
+        "manifest": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/tao_native_ovmot_train_shards_v2/shard_03_of_08/manifest.json",
+        "manifest_sha256": "8ad2a229b8c6cde3dff9d9c5af8f2f569885becd674b23e7e79a0ca8a552df6c",
+        "parent_manifest": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/tao_native_ovmot_train_scope_v1/manifest.json",
+        "parent_manifest_sha256": "835adaadff282088599987de4c5bc906e7d8aca826deb7426cda05598e9db3a4",
+        "shard_index": 3,
+        "num_shards": 8,
+        "start_index": 6852,
+        "end_index_exclusive": 9137,
+        "frames": 2285,
+        "videos": 69,
+        "native_candidate_export_started": false,
+        "native_ovmot_training_rows": false,
+        "required_stream_command": "tools/groundjev/stream_tao_native_candidates.py --allow-training-scope"
+      },
+      {
+        "status": "TAO_TRAIN_NATIVE_SHARD_SCOPE_REGISTERED_NOT_STREAMED",
+        "manifest": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/tao_native_ovmot_train_shards_v2/shard_04_of_08/manifest.json",
+        "manifest_sha256": "0418544006ae729b7d0314a62773d3d4f3dc874bb5c6228f4763a03fe635bb2a",
+        "parent_manifest": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/tao_native_ovmot_train_scope_v1/manifest.json",
+        "parent_manifest_sha256": "835adaadff282088599987de4c5bc906e7d8aca826deb7426cda05598e9db3a4",
+        "shard_index": 4,
+        "num_shards": 8,
+        "start_index": 9137,
+        "end_index_exclusive": 11421,
+        "frames": 2284,
+        "videos": 59,
+        "native_candidate_export_started": false,
+        "native_ovmot_training_rows": false,
+        "required_stream_command": "tools/groundjev/stream_tao_native_candidates.py --allow-training-scope"
+      },
+      {
+        "status": "TAO_TRAIN_NATIVE_SHARD_SCOPE_REGISTERED_NOT_STREAMED",
+        "manifest": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/tao_native_ovmot_train_shards_v2/shard_05_of_08/manifest.json",
+        "manifest_sha256": "65d36a88e2cf31eb2d77c3ebc1bc1ad741fd289de923ccd75d11989289f267a8",
+        "parent_manifest": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/tao_native_ovmot_train_scope_v1/manifest.json",
+        "parent_manifest_sha256": "835adaadff282088599987de4c5bc906e7d8aca826deb7426cda05598e9db3a4",
+        "shard_index": 5,
+        "num_shards": 8,
+        "start_index": 11421,
+        "end_index_exclusive": 13705,
+        "frames": 2284,
+        "videos": 60,
+        "native_candidate_export_started": false,
+        "native_ovmot_training_rows": false,
+        "required_stream_command": "tools/groundjev/stream_tao_native_candidates.py --allow-training-scope"
+      },
+      {
+        "status": "TAO_TRAIN_NATIVE_SHARD_SCOPE_REGISTERED_NOT_STREAMED",
+        "manifest": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/tao_native_ovmot_train_shards_v2/shard_06_of_08/manifest.json",
+        "manifest_sha256": "6f791272b4ee7d5f012c619f92874d333c414dbb6d872b99e6ad93fe815c53b8",
+        "parent_manifest": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/tao_native_ovmot_train_scope_v1/manifest.json",
+        "parent_manifest_sha256": "835adaadff282088599987de4c5bc906e7d8aca826deb7426cda05598e9db3a4",
+        "shard_index": 6,
+        "num_shards": 8,
+        "start_index": 13705,
+        "end_index_exclusive": 15989,
+        "frames": 2284,
+        "videos": 64,
+        "native_candidate_export_started": false,
+        "native_ovmot_training_rows": false,
+        "required_stream_command": "tools/groundjev/stream_tao_native_candidates.py --allow-training-scope"
+      },
+      {
+        "status": "TAO_TRAIN_NATIVE_SHARD_SCOPE_REGISTERED_NOT_STREAMED",
+        "manifest": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/tao_native_ovmot_train_shards_v2/shard_07_of_08/manifest.json",
+        "manifest_sha256": "ce9d6bffc2d4fb6b1be0e04831c69aaa5b87a788fdc15c513cd708778b1a678e",
+        "parent_manifest": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/tao_native_ovmot_train_scope_v1/manifest.json",
+        "parent_manifest_sha256": "835adaadff282088599987de4c5bc906e7d8aca826deb7426cda05598e9db3a4",
+        "shard_index": 7,
+        "num_shards": 8,
+        "start_index": 15989,
+        "end_index_exclusive": 18274,
+        "frames": 2285,
+        "videos": 77,
+        "native_candidate_export_started": false,
+        "native_ovmot_training_rows": false,
+        "required_stream_command": "tools/groundjev/stream_tao_native_candidates.py --allow-training-scope"
+      }
+    ],
+    "coverage": {
+      "disjoint_contiguous_slices": true,
+      "covered_frames": 18274,
+      "missing_frames": 0,
+      "duplicate_frames": 0
+    },
+    "native_candidate_export_started": false,
+    "native_ovmot_training_rows": false,
+    "next_step": "Stream every shard, verify each receipt, concatenate in shard order, then run prepare_native_ovmot_train_join.py on the complete stream."
+  },
+  "shards": [
+    {
+      "index": 0,
+      "exists": true,
+      "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/tao_native_ovmot_train_shards_v2/shard_00_of_08/manifest.json"
+    },
+    {
+      "index": 1,
+      "exists": true,
+      "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/tao_native_ovmot_train_shards_v2/shard_01_of_08/manifest.json"
+    },
+    {
+      "index": 2,
+      "exists": true,
+      "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/tao_native_ovmot_train_shards_v2/shard_02_of_08/manifest.json"
+    },
+    {
+      "index": 3,
+      "exists": true,
+      "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/tao_native_ovmot_train_shards_v2/shard_03_of_08/manifest.json"
+    },
+    {
+      "index": 4,
+      "exists": true,
+      "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/tao_native_ovmot_train_shards_v2/shard_04_of_08/manifest.json"
+    },
+    {
+      "index": 5,
+      "exists": true,
+      "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/tao_native_ovmot_train_shards_v2/shard_05_of_08/manifest.json"
+    },
+    {
+      "index": 6,
+      "exists": true,
+      "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/tao_native_ovmot_train_shards_v2/shard_06_of_08/manifest.json"
+    },
+    {
+      "index": 7,
+      "exists": true,
+      "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/tao_native_ovmot_train_shards_v2/shard_07_of_08/manifest.json"
+    }
+  ],
+  "owner_summary": {
+    "g2_bundle": {
+      "status": "WAITING_G2_CLEAN_SUCCESS",
+      "owner_pid": 634486,
+      "owner_live": true
+    },
+    "g1_gpu5": {
+      "status": "WAITING_G2_CLEAN_SUCCESS",
+      "owner_pid": 642505,
+      "owner_live": true
+    },
+    "tao_export": {
+      "status": "WAITING_G2_CLEAN_SUCCESS",
+      "owner_pid": 634487,
+      "owner_live": true
+    },
+    "tao_join": {
+      "status": "WAITING_COMPLETE_NATIVE_TAO_STREAM",
+      "owner_pid": 500654,
+      "owner_live": true
+    },
+    "three_task": {
+      "status": "WAITING_NATIVE_OVMOT_MANIFEST",
+      "owner_pid": 521109,
+      "owner_live": true
+    }
+  },
+  "compileall": {
+    "returncode": 0,
+    "stderr": ""
+  },
+  "gpu_or_optimizer_started_by_this_audit": false,
+  "decision": "READY_FOR_POST_G2_GATES"
+}

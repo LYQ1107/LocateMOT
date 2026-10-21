@@ -1,0 +1,42 @@
+{
+  "status": "G2_CLEAN_TRAIN_DATASET_SCOPE",
+  "training_role": "GroundAnything perception adaptation (projector + Qwen3 LoRA); not J1/OneJev identity training",
+  "manifest_path": "/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/g2_clean_train_manifest.json",
+  "manifest_sha256": "f682519a1cf9204ca76ea75a56dad36dbdeac26259f202551ab9f66fefd06e71",
+  "row_count": 583251,
+  "split_policy": "TRAIN only; MOT20-05 excluded; Refer-KITTI-V2 fit only; TAO Base-only; no evaluation labels",
+  "datasets_in_rows": [
+    "AerialMind",
+    "AnimalTrack",
+    "DanceTrack",
+    "MOT17",
+    "MOT20",
+    "RMOT26",
+    "Refer-KITTI-V2",
+    "SportsMOT",
+    "TAO-Amodal"
+  ],
+  "actual_row_counts": {
+    "AerialMind": 69358,
+    "AnimalTrack": 11543,
+    "DanceTrack": 41796,
+    "MOT17": 15948,
+    "MOT20": 5616,
+    "RMOT26": 294,
+    "Refer-KITTI-V2": 379341,
+    "SportsMOT": 28574,
+    "TAO-Amodal": 30781
+  },
+  "excluded_or_missing": {
+    "BURST": "TRAIN annotations exist but no legal TRAIN image root; excluded",
+    "MOT20-05": "frozen held-out MOT20 long-export sequence; excluded from all clean sources including RMOT26 copies"
+  },
+  "supervision_policy": {
+    "MOT": "mark==1, class==1, positive boxes; ignored/distractor classes are not person positives",
+    "TAO-Amodal": "frequency!=r Base categories only, one row per annotated category, no sparse negative labels",
+    "Refer-KITTI-V2": "legal fit videos, one row per valid labeled frame per expression",
+    "RMOT26": "normalized exact source question and all initial target boxes; no placeholder phrase"
+  },
+  "base_model_safetensors_sha256": "3cf09355cde8cf4877cdc76e0a72301d572c1d6263b2831f8a03368285bb65e2",
+  "coverage_epoch": "g2-clean-coverage-v2-20261019"
+}

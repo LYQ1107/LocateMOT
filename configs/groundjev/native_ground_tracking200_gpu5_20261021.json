@@ -1,0 +1,95 @@
+{
+  "name": "Native Ground DLM tracking adaptation200 GPU5, dense/referring/identity",
+  "initialization": "models/GroundAnything-DLM, complete original569tensors",
+  "seed": 42,
+  "steps": 200,
+  "lr": 2e-06,
+  "weight_decay": 0.01,
+  "trainable_policy": "native multimodal projector FP32 masters only; native vision and language frozen",
+  "native_loss": "official GAMQwen3DLM MDM.5+causal.5, block32, unchanged masks",
+  "auxiliary_losses": {
+    "teacher_GT_same_ID_cross_frame_contrastive": 0.1,
+    "actual_native_proposal_same_ID_cross_frame_contrastive": 0.1,
+    "temperature": 0.07,
+    "support_policy": "<=1 common identity yields zero contrastive signal, recorded; every image still receives native DLM supervision"
+  },
+  "dense_clips": [
+    {
+      "protocol": "mot17_half.json",
+      "sequence": "MOT17-02-FRCNN",
+      "frames": [
+        209,
+        210,
+        211,
+        212,
+        213,
+        214,
+        215,
+        216,
+        217,
+        218,
+        219,
+        220,
+        221,
+        222,
+        223,
+        224
+      ]
+    },
+    {
+      "protocol": "dancetrack.json",
+      "sequence": "dancetrack0001",
+      "frames": [
+        129,
+        130,
+        131,
+        132,
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144
+      ]
+    }
+  ],
+  "referring_fit_videos": [
+    "0002",
+    "0008",
+    "0010",
+    "0012",
+    "0014"
+  ],
+  "referring_clips_source": "configs/groundjev/rmot_native72_20261014.json, both fixed primary/counter expressions on all8frames",
+  "unique_images": 72,
+  "native_SFT_rows": 112,
+  "two_image_pairs": 56,
+  "task_sampling": "alternate dense/referring; shuffled cyclic family indices, visit every registered pair; seed42",
+  "labels": "all selected GT target boxes exactly mapped to native0..999 grid with no clipping; canonical None for absent referring targets",
+  "scope_reason": "preflight finds69out-of-grid MOT20targets and out-of-grid targets in other4fit windows; these are not in this new explicit native-token SFT registration and remain unchanged in evaluation/other corpora",
+  "native_proposal_source": [
+    "outputs/groundjev/training_data/native_ground_own_history_v1/native_rollout.jsonl",
+    "outputs/groundjev/compact/rmot_native72_v1/native_rollout.jsonl"
+  ],
+  "native_proposal_policy": "reuse actual original decoder outputs, IoU.5 training-label alignment only; no GT proposal substitution or corrected actor state; adapted decoder online rollout not claimed",
+  "gradient_validation": "separate actual native dense/referring and teacher/native temporal gradient probes, finite updates, frozen-parameter gradients absent",
+  "checkpoint_policy": "atomic latest projector FP32+Adam+Torch/CUDA/Python/NumPy RNG+exact planned step every25; separate model delta export at200",
+  "physical_training_GPU": 5,
+  "original_OneJev_training_GPU": 4,
+  "existing_ROI_GPU": 5,
+  "maximum_project_GPUs": 4,
+  "feature_cache_limit_bytes": 26843545600,
+  "no_large_feature_cache": "stream images/native ROI with real differentiable projector; no full-dataset features",
+  "before_after": "unchanged original dense/ref9 full canonical benchmarks and existing legal MOT/RMOT native decoding controls; no retention gain claim before actual scoring",
+  "original_dense_ref_benchmark_GT_for_training": false,
+  "formal_adaptation_complete_before_evaluation": false,
+  "full_goal_complete": false,
+  "queue_owner": "native_tracking200_gpu5_g1_v1",
+  "provenance_note": "This registered G1 comparison arm is scheduled only on physical GPU5 after exact G2 terminal success; the 20261014 plan is preserved unchanged."
+}

@@ -1,0 +1,54 @@
+{
+  "status": "G2_DURABLE_CHECKPOINT_STEP12000_VALIDATED",
+  "generated_at": "2026-10-21T03:18:41.435695+08:00",
+  "final_receipt_exists": false,
+  "expected_manifest_sha256": "f682519a1cf9204ca76ea75a56dad36dbdeac26259f202551ab9f66fefd06e71",
+  "checkpoints": {
+    "full_state": {
+      "path": "/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final/checkpoints/latest_training_state.pt",
+      "exists": true,
+      "bytes": 469247597,
+      "sha256": "dae4d8b0583a2e01f0ed729b9a934d1b048c159c84f0aa91b730234cfa415deb",
+      "format": "groundanything-g2-projector-qwen3-lora-v2-strict",
+      "step": 12000,
+      "manifest_sha256": "f682519a1cf9204ca76ea75a56dad36dbdeac26259f202551ab9f66fefd06e71",
+      "base_checkpoint": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM",
+      "base_model_safetensors_sha256": "3cf09355cde8cf4877cdc76e0a72301d572c1d6263b2831f8a03368285bb65e2",
+      "model_trainable_tensor_count": 293,
+      "optimizer_state_present": true,
+      "scheduler_state_present": true,
+      "rng_state_present": true,
+      "rank_rng_paths": [
+        "0",
+        "1"
+      ],
+      "sampler_position": 96000,
+      "world_size": 2,
+      "trainable_signature_count": 293
+    },
+    "periodic_adapter": {
+      "path": "/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final/checkpoints/adapter-step012000.pt",
+      "exists": true,
+      "bytes": 469243990,
+      "sha256": "f0dfe4f5efd6bd2f0e8ebe8f224ae060e8b0422b36571697fb4fa9efa6d85ae2",
+      "format": "groundanything-g2-projector-qwen3-lora-v2-strict",
+      "step": 12000,
+      "manifest_sha256": "f682519a1cf9204ca76ea75a56dad36dbdeac26259f202551ab9f66fefd06e71",
+      "base_checkpoint": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM",
+      "base_model_safetensors_sha256": "3cf09355cde8cf4877cdc76e0a72301d572c1d6263b2831f8a03368285bb65e2",
+      "model_trainable_tensor_count": 293,
+      "optimizer_state_present": true,
+      "scheduler_state_present": true,
+      "rng_state_present": true,
+      "rank_rng_paths": [
+        "0",
+        "1"
+      ],
+      "sampler_position": 96000,
+      "world_size": 2,
+      "trainable_signature_count": 293
+    }
+  },
+  "trusted_local_load": "weights_only_false used only for this controlled local checkpoint audit because PyTorch 2.6 rejects the recorded NumPy RNG object under its default weights-only unpickler",
+  "training_modified": false
+}

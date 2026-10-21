@@ -1,0 +1,166 @@
+{
+  "status": "GROUNDJEV_PROCESS_AND_OWNER_AUDIT_G2_STEP12233",
+  "project_root": "/data2/user/LocateMOT",
+  "captured_at": "2026-10-21 03:58:47 +0800",
+  "g2": {
+    "event_step": 12235,
+    "target_steps": 18227,
+    "last_event": {
+      "step": 12235,
+      "epoch": 0,
+      "position": 97880,
+      "micro_batches": 8,
+      "samples_global": 16,
+      "effective_tokens_global": 10868,
+      "token_budget_per_device": 16384,
+      "loss": 0.15472628641873598,
+      "gradient_norm": 12.010993003845215,
+      "peak_memory_gib": 12.828843116760254,
+      "lr_projector": 6.637335082711824e-07,
+      "lr_lora": 2.3230672789491385e-06,
+      "checkpoint": null,
+      "time": "2026-10-21 03:58:47 +0800"
+    },
+    "final_receipt_exists": false,
+    "latest_checkpoint": "adapter-step012000.pt",
+    "training_pids": [
+      1799359,
+      1799468,
+      1799469
+    ],
+    "physical_gpus": [
+      3,
+      5
+    ]
+  },
+  "groundjev_processes_seen": [
+    {
+      "pid": 1799359,
+      "role": "G2 torch.distributed parent",
+      "state": "alive"
+    },
+    {
+      "pid": 1799468,
+      "role": "G2 rank0",
+      "state": "alive"
+    },
+    {
+      "pid": 1799469,
+      "role": "G2 rank1",
+      "state": "alive"
+    },
+    {
+      "pid": 1820298,
+      "role": "G1 GPU5 dependency waiter",
+      "state": "alive"
+    },
+    {
+      "pid": 1826880,
+      "role": "G2 bundle dependency waiter",
+      "state": "alive"
+    },
+    {
+      "pid": 286855,
+      "role": "YesTrack GPU7 resource waiter",
+      "state": "alive"
+    }
+  ],
+  "owner_states": {
+    "g1": {
+      "status": "WAITING_G2_CLEAN_SUCCESS",
+      "owner_pid": 1820298,
+      "failed": null,
+      "current_stage": "WAITING_G2_CLEAN_SUCCESS",
+      "optimizer_updates": null,
+      "native_ovmot_rows_pending": null
+    },
+    "bundle": {
+      "status": "WAITING_G2_AND_G1_TERMINAL",
+      "owner_pid": 1826880,
+      "failed": null,
+      "current_stage": "WAITING_G2_AND_G1_TERMINAL",
+      "optimizer_updates": null,
+      "native_ovmot_rows_pending": null
+    },
+    "heldout": {
+      "status": "WAITING_G2_CLEAN_BUNDLE_AND_GPU7",
+      "owner_pid": 3998877,
+      "failed": null,
+      "current_stage": "WAITING_G2_CLEAN_BUNDLE_AND_GPU7",
+      "optimizer_updates": null,
+      "native_ovmot_rows_pending": null
+    },
+    "yestrack": {
+      "status": "WAITING_GPU7_EXCLUSIVE",
+      "owner_pid": 286855,
+      "failed": null,
+      "current_stage": "WAITING_GPU7_EXCLUSIVE",
+      "optimizer_updates": null,
+      "native_ovmot_rows_pending": null
+    },
+    "joint_v2": {
+      "status": "PAUSED_FOR_NATIVE_OVMOT_ROWS",
+      "owner_pid": null,
+      "failed": null,
+      "current_stage": "PAUSED_FOR_NATIVE_OVMOT_ROWS",
+      "optimizer_updates": 0,
+      "native_ovmot_rows_pending": true
+    }
+  },
+  "mot_only_or_legacy_onejev_optimizer_live": false,
+  "process_audit_rule": "No command matching the registered MOT-only/J1 optimizer entrypoints was present in the corrected process-table scan.",
+  "g0_long_export_preserved": true,
+  "gpu_snapshot": [
+    {
+      "index": 0,
+      "memory_used_mib": 16463,
+      "memory_free_mib": 64691,
+      "utilization_percent": 100
+    },
+    {
+      "index": 1,
+      "memory_used_mib": 16385,
+      "memory_free_mib": 64769,
+      "utilization_percent": 99
+    },
+    {
+      "index": 2,
+      "memory_used_mib": 16481,
+      "memory_free_mib": 64673,
+      "utilization_percent": 100
+    },
+    {
+      "index": 3,
+      "memory_used_mib": 19293,
+      "memory_free_mib": 61861,
+      "utilization_percent": 0
+    },
+    {
+      "index": 4,
+      "memory_used_mib": 22605,
+      "memory_free_mib": 58549,
+      "utilization_percent": 62
+    },
+    {
+      "index": 5,
+      "memory_used_mib": 19321,
+      "memory_free_mib": 61833,
+      "utilization_percent": 31
+    },
+    {
+      "index": 6,
+      "memory_used_mib": 16371,
+      "memory_free_mib": 64783,
+      "utilization_percent": 98
+    },
+    {
+      "index": 7,
+      "memory_used_mib": 16225,
+      "memory_free_mib": 64929,
+      "utilization_percent": 100
+    }
+  ],
+  "foreign_jobs_preserved": true,
+  "protected_processes_not_stopped": true,
+  "scientific_boundary": "This is an execution-scope audit. It promotes no G2/G1/OneJev/YesTrack/OVMOT metric."
+}

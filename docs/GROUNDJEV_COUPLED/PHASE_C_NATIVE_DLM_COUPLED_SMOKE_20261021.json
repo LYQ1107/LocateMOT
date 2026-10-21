@@ -1,0 +1,63 @@
+{
+  "status": "PHASE_C_NATIVE_G2_DLM_COUPLED_FORWARD_BACKWARD_PASS",
+  "project_root": "/data2/user/LocateMOT",
+  "checkpoint": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM",
+  "adapter": "/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final/checkpoints/adapter-step012000.pt",
+  "image": "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-02-DPM/img1/000001.jpg",
+  "candidate_count": 2,
+  "feature_dim": 2560,
+  "contextual_tokens_shape": [
+    1,
+    2560
+  ],
+  "contextual_tokens_used": 1,
+  "bridge_forward_count": 1,
+  "native_dlm_forward_count": 1,
+  "single_backbone": true,
+  "independent_vlm_instances": 0,
+  "provider_metadata": {
+    "feature_source": "official_G2_native_clean_DLM_hidden",
+    "adapter_step": 12000,
+    "native_dlm_forward_count": 1,
+    "image_hidden_token_count": 1008,
+    "context_hidden_token_count": 44,
+    "image_grid_thw": [
+      1,
+      48,
+      84
+    ],
+    "merged_grid": [
+      24,
+      42
+    ],
+    "mask_compatibility": {
+      "patched": true,
+      "reason": "drop cache_position for Transformers runtime without that keyword; no-cache DLM path",
+      "original_signature": "(config: transformers.configuration_utils.PreTrainedConfig, inputs_embeds: torch.Tensor, attention_mask: torch.Tensor | None, past_key_values: transformers.cache_utils.Cache | None, position_ids: torch.Tensor | None = None, or_mask_function: collections.abc.Callable | None = None, and_mask_function: collections.abc.Callable | None = None, block_sequence_ids: torch.Tensor | None = None, layer_idx: int | None = None, allow_is_causal_skip: bool = True) -> torch.Tensor | torch.nn.attention.flex_attention.BlockMask | None"
+    },
+    "single_backbone": true,
+    "bridge_forward_count": 1,
+    "feature_provider": "NativeG2CleanDLMProvider"
+  },
+  "losses": {
+    "identity_choice": 1.0953247547149658,
+    "identity_brier": 0.664473295211792,
+    "admit": 1.2561264038085938,
+    "yesno": 0.7086319327354431,
+    "memory": 0.7340299487113953,
+    "lifecycle": 1.7396893501281738,
+    "total": 5.533802509307861
+  },
+  "gradient_norm_clipped": 73.30022430419922,
+  "elapsed_seconds": 16.91199119098019,
+  "peak_memory_allocated_bytes": 12058940928,
+  "scientific_claim": "native G2 visual plus clean-language coupling evidence only; no tracking metric",
+  "base_model_sha256": "3cf09355cde8cf4877cdc76e0a72301d572c1d6263b2831f8a03368285bb65e2",
+  "adapter_sha256": "f0dfe4f5efd6bd2f0e8ebe8f224ae060e8b0422b36571697fb4fa9efa6d85ae2",
+  "manifest_sha256": "f682519a1cf9204ca76ea75a56dad36dbdeac26259f202551ab9f66fefd06e71",
+  "manifest_rows": 583251,
+  "runtime_root": "/data2/user/LocateMOT_GroundJEV",
+  "runtime_environment": "/data2/user/LocateMOT_GroundJEV/.venv-onejev-py310",
+  "formal_run_untouched": true,
+  "warning_boundary": "PyTorch emitted a BF16/FP32 RMSNorm fallback warning in the frozen native language path; the finite forward/backward completed and the warning is retained as runtime evidence, not hidden."
+}

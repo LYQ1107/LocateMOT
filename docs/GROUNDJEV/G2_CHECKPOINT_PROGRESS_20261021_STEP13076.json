@@ -1,0 +1,18 @@
+{
+  "schema": "groundjev.g2.checkpoint_progress.v1",
+  "observed_at": "2026-10-21T06:40:39.346423+08:00",
+  "run_identity": "G2-CLEAN-V2",
+  "status": "RUNNING",
+  "event_step": 13076,
+  "max_steps": 18227,
+  "event_time": "2026-10-21 06:40:32 +0800",
+  "adapter_checkpoint": "/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final/checkpoints/adapter-step013000.pt",
+  "adapter_checkpoint_bytes": 469243990,
+  "adapter_checkpoint_sha256": "08cf28930eced61b2086785494728221e113ac75cd7dc6aefe02ab1bc2ebfe59",
+  "latest_training_state": "/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final/checkpoints/latest_training_state.pt",
+  "latest_training_state_bytes": 469247597,
+  "latest_training_state_sha256": "4a79cbf3e64e69ffc56aaf964754d0209382b87c2124d46f13506325ca52fd22",
+  "latest_training_state_checkpoint_step": 13000,
+  "final_receipt_exists": false,
+  "claim_boundary": "Checkpoint hash and training-health evidence only; no metric or generalization claim."
+}

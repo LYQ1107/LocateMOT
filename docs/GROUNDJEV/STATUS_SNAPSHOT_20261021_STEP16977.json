@@ -1,0 +1,42 @@
+{
+  "timestamp": "2026-10-21T19:05:46+08:00",
+  "g2": {
+    "root": "/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final",
+    "step": 16977,
+    "max_steps": 18227,
+    "parent_pid": 1799359,
+    "physical_gpus": [3, 5],
+    "loss": 0.17804536712355912,
+    "gradient_norm": 10.149040222167969,
+    "final_receipt_present": false,
+    "terminal_adapter_present": false
+  },
+  "native_three_task_owner": {
+    "status": "WAITING_NATIVE_OVMOT_MANIFEST",
+    "optimizer_updates": 0,
+    "gpu_launched": false
+  },
+  "native_ovmot_join_owner": {
+    "status": "WAITING_COMPLETE_NATIVE_TAO_STREAM",
+    "optimizer_updates": 0,
+    "gpu_launched": false
+  },
+  "tao_eight_shard_owner": {
+    "status": "WAITING_G2_CLEAN_SUCCESS",
+    "physical_gpus": [4, 6],
+    "completed_shards": 0
+  },
+  "g1_gpu5_owner": {
+    "status": "WAITING_G2_CLEAN_SUCCESS",
+    "physical_gpu": 5,
+    "optimizer_updates": 0
+  },
+  "yestrack_retry_owner": {
+    "status": "WAITING_GPU7_EXCLUSIVE",
+    "owner_pid": 1857673,
+    "physical_gpu": 7,
+    "blocking_compute_pid": 1839747,
+    "foreign_process_touched": false
+  },
+  "claim_boundary": "Execution state only; no coupled or benchmark metric claim."
+}

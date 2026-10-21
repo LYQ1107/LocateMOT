@@ -1,0 +1,31 @@
+{
+  "status": "G2_CLEAN_TRAINING_LIVE",
+  "project_root": "/data2/user/LocateMOT",
+  "g2_root": "/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final",
+  "event_count": 17488,
+  "optimizer_step": 17488,
+  "target_steps": 18227,
+  "latest_event_time": "2026-10-21 20:45:17 +0800",
+  "latest_loss": 0.15232137474231422,
+  "latest_gradient_norm": 8.394974708557129,
+  "latest_peak_memory_gib": 12.828824043273926,
+  "throughput_steps_per_hour": {
+    "100": 310.18276762402087,
+    "500": 307.91909496057593,
+    "1000": 311.0265502032344
+  },
+  "linear_eta_hours_from_500_window": 2.3999810732576266,
+  "durable_recovery_state": "checkpoints/latest_training_state.pt",
+  "durable_adapter": "checkpoints/adapter-step017000.pt",
+  "final_receipt_present": false,
+  "formal_g2_process_preserved": true,
+  "downstream_gate_state": {
+    "g2_clean_bundle_export": "WAITING_G2_CLEAN_SUCCESS",
+    "g1_gpu5_adaptation": "WAITING_G2_CLEAN_SUCCESS",
+    "native_ovmot_join": "WAITING_COMPLETE_NATIVE_TAO_STREAM",
+    "three_task_native_queue": "WAITING_NATIVE_OVMOT_MANIFEST",
+    "independent_heldout": "WAITING_G2_CLEAN_BUNDLE_AND_GPU7",
+    "yestrack": "REAL_YESTRACK_TRAINING_INTERRUPTED_FOR_COUPLING_PRIORITY"
+  },
+  "scientific_claim": "training-health and recoverability snapshot only; no G2 or GroundJEV tracking gain claim"
+}

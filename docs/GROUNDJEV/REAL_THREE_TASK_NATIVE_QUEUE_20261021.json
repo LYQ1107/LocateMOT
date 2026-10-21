@@ -1,0 +1,13 @@
+{
+  "report": "real_native_three_task_queue",
+  "date": "2026-10-21",
+  "project_root": "/data2/user/LocateMOT",
+  "owner_script": "scripts/groundjev/queue_real_three_task_native.py",
+  "native_manifest": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/real_three_task_joint_native_v1/train.sources.json",
+  "training_root": "/data3/user/LocateMOT-checkpoints/onejev_real_three_task_joint_native_v1",
+  "physical_gpus": [4, 5, 6, 7],
+  "optimizer_updates_at_registration": 0,
+  "gpu_launched_at_registration": false,
+  "launch_gate": "native OVMOT manifest plus terminal G2/bundle/held-out receipts plus exclusive GPU window; G1 is optional evidence and GPU5 resource ownership is still respected",
+  "historical_queue_preserved": true
+}

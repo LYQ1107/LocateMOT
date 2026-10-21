@@ -1,0 +1,66 @@
+{
+  "status": "ACTIVE_GROUNDJEV_MOT_REDIRECT_PROGRESS_AUDIT",
+  "timestamp": "2026-10-21 04:16:17 +0800",
+  "project_root": "/data2/user/LocateMOT",
+  "g0_mot20": {
+    "status": "NATURAL_MOT20_SCOPE_AND_FROZEN_MEMORY_CONTROLS_COMPLETE",
+    "scope": "MOT20-05 registered validation-half",
+    "decoded_frames": 1657,
+    "native_candidates": 235232,
+    "HOTA": 0.07334696070115383,
+    "DetA": 0.09026982781621751,
+    "AssA": 0.05967427073481851,
+    "IDF1": 0.059598451365333885,
+    "IDSW": 1933,
+    "native_pipeline_FPS": 0.061369784416757965,
+    "independent_test_claim": false
+  },
+  "mot_only_long_training": {
+    "live_groundjev_mot_only_optimizer_processes": [],
+    "historical_outputs_preserved": true,
+    "action": "no process stopped; no new MOT-only optimizer launched"
+  },
+  "g2_clean": {
+    "status": "RUNNING",
+    "step": 12326,
+    "target_steps": 18227,
+    "remaining_steps": 5901,
+    "seconds_per_step_last500": 11.6,
+    "linear_remaining_hours": 19.0143,
+    "gpus": [3, 5],
+    "parent_pid": 1799359,
+    "rank_pids": [1799468, 1799469],
+    "latest_durable_checkpoint": "checkpoints/adapter-step012000.pt",
+    "final_receipt": false,
+    "formal_run_untouched": true
+  },
+  "g1_gpu5": {
+    "status": "WAITING_G2_CLEAN_SUCCESS",
+    "owner_pid": 1820298,
+    "optimizer_updates": 0,
+    "launch_allowed": false
+  },
+  "g2_bundle": {
+    "status": "WAITING_G2_AND_G1_TERMINAL",
+    "owner_pid": 1826880,
+    "exported": false
+  },
+  "independent_heldout": {
+    "status": "WAITING_G2_CLEAN_BUNDLE_AND_GPU7",
+    "owner_pid": 3998877,
+    "official_metrics": false
+  },
+  "onejev_real_three_task": {
+    "status": "PAUSED_FOR_NATIVE_OVMOT_ROWS",
+    "optimizer_updates": 0,
+    "planned_rows": 131990,
+    "native_ovmot_training_rows": false,
+    "teacher_only_launch": false
+  },
+  "yestrack_native_v2": {
+    "status": "WAITING_GPU7_EXCLUSIVE",
+    "owner_pid": 286855,
+    "optimizer_updates": 0
+  },
+  "claim_boundary": "G0 is a registered validation-half control; G2 is unfinished; G1, independent held-out and real three-task OneJev metrics are not available. No scientific completion claim is promoted."
+}

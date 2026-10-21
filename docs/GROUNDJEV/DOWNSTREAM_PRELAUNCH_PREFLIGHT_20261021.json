@@ -1,0 +1,29 @@
+{
+  "receipt_type": "GROUNDJEV_DOWNSTREAM_PRELAUNCH_PREFLIGHT",
+  "date": "2026-10-21",
+  "g2_status_at_check": "G2_FORMAL_TRAINING_RUNNING",
+  "g2_step_at_check": 12970,
+  "final_receipt_present": false,
+  "queue_modules_imported": [
+    "tools/groundjev/queue_g1_gpu5_after_g2.py",
+    "tools/groundjev/queue_g2_clean_bundle_export.py",
+    "scripts/groundjev/queue_g2_independent_heldout_eval.py",
+    "scripts/groundjev/queue_tao_native_train_shards.py",
+    "scripts/groundjev/queue_native_ovmot_join.py",
+    "scripts/groundjev/queue_real_three_task_native.py",
+    "scripts/groundjev/queue_yestrack_native_v2.py"
+  ],
+  "compileall_targeted": true,
+  "runtime_paths_verified": {
+    "ground_train_python": true,
+    "onejev_python": true,
+    "groundanything_base_model": true,
+    "groundanything_serve_python": true,
+    "g2_exporter": true,
+    "run_video": true,
+    "clean_train_manifest": true
+  },
+  "gpu_launched_by_preflight": false,
+  "optimizer_updates_by_preflight": 0,
+  "claim_boundary": "This is a launch-contract/readiness check only; it contains no detector, tracking or training-quality claim."
+}

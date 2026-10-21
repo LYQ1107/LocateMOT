@@ -1,0 +1,20 @@
+{
+  "receipt_type": "GROUNDJEV_YESTRACK_GPU7_RESOURCE_GATE",
+  "generated_at": "2026-10-21T06:23:23.820164+08:00",
+  "queue_owner": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/coupled/yestrack_native_v2_queue/owner_state.json",
+  "queue_status": "WAITING_GPU7_EXCLUSIVE",
+  "physical_gpu": 7,
+  "gpu_query": "7, NVIDIA A800-SXM4-80GB, 81920, 16225, 64929, 0",
+  "compute_apps_query": "4008192, python, 16216",
+  "blocking_external_process": {
+    "pid": 4008192,
+    "uid": "ljh",
+    "command": "python -u train.py --method PRISM --dataset_name cub --backbone clip --device cuda:0 --seed 2026 --warmup_epochs 100 --epochs 150 --lr_schedule_epochs 150 --prism_sim_known_fraction 0.8 --prism_sim_support_fraction 0.8 --prism_warmup_validation_source sim_known_query --prism_warmup_selection ncm --prism_warmup_lr_scale 1.0 --meta_lr 3e-6 --meta_lr_schedule constant --test_lr 1e-5 --memory_per_class 4 --prism_support_replay_weight 1.0 --prism_support_replay_batch_size 32 --train_batch_size 128 --eval_batch_size 64 --num_workers 8 --save_dir cub_clip_gpu0_default_seed2026_20261020_225235 ",
+    "ps": "UID          PID    PPID  C STIME TTY          TIME CMD\nljh      4008192       1 99 Oct20 ?        1-07:02:39 python -u train.py --method PRISM --dataset_name cub --backbone clip --device cuda:0 --seed 2026 --warmup_epochs 100 --epochs 150 --lr_schedule_epochs 150 --prism_sim_known_fraction 0.8 --prism_sim_support_fraction 0.8 --prism_warmup_validation_source sim_known_query --prism_warmup_selection ncm --prism_warmup_lr_scale 1.0 --meta_lr 3e-6 --meta_lr_schedule constant --test_lr 1e-5 --memory_per_class 4 --prism_support_replay_weight 1.0 --prism_support_replay_batch_size 32 --train_batch_size 128 --eval_batch_size 64 --num_workers 8 --save_dir cub_clip_gpu0_default_seed2026_20261020_225235",
+    "owned_by_project": false,
+    "action": "left_untouched"
+  },
+  "gate_rule": "no compute PIDs and at least 32768 MiB free",
+  "gate_result": false,
+  "interpretation": "This is a resource-gate receipt, not a YesTrack training or metric result."
+}

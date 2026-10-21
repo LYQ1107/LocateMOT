@@ -1,28 +1,21 @@
-"""Single-backbone GroundJEV coupling primitives.
+"""Single-backbone GroundJEV components.
 
-The coupled path keeps GroundAnything as the only visual backbone.  It exposes
-the shared visual state explicitly so the typed identity readout, lifecycle
-controller, and causal memory writer can be audited independently of the
-GroundAnything training service.
+The coupled path keeps GroundAnything's visual evidence as the only expensive
+per-frame encoder.  Typed identity decisions, lifecycle control and memory
+updates consume the resulting state; they do not load a second VLM.
 """
 
-from .shared_ground_state import SharedGroundState
-from .dynamic_identity_slots import IdentitySlot, build_dynamic_slots
-from .typed_decisions import TypedDecision, TypedDecisionBatch
-from .identity_memory import IdentityMemory, IdentityMemoryStore
-from .memory_tokens import IdentityMemoryTokenProjector
-from .groundjev_model import GroundJEVCoupledModel
-from .g2_feature_bridge import G2FeatureBridge
+from .shared_ground_state import SharedCandidate, SharedGroundState
+from .identity_memory import IdentityMemoryState, TrackMemory
+from .dynamic_identity_slots import DynamicIdentitySlots, IdentitySlot, build_dynamic_slots
+from .g2_jev_readout import G2JEVReadout
+from .groundjev_model import GroundJEVModel
+from .g2_shared_runtime import CoupledGroundJEVRuntime
+from .causal_memory import CausalMemoryInput, build_causal_memory_input, causal_prefill_with_memory
 
 __all__ = [
-    "SharedGroundState",
-    "IdentitySlot",
-    "build_dynamic_slots",
-    "TypedDecision",
-    "TypedDecisionBatch",
-    "IdentityMemory",
-    "IdentityMemoryStore",
-    "IdentityMemoryTokenProjector",
-    "GroundJEVCoupledModel",
-    "G2FeatureBridge",
+    "SharedCandidate", "SharedGroundState", "TrackMemory", "IdentityMemoryState",
+    "IdentitySlot", "DynamicIdentitySlots", "build_dynamic_slots", "G2JEVReadout",
+    "GroundJEVModel", "CoupledGroundJEVRuntime",
+    "CausalMemoryInput", "build_causal_memory_input", "causal_prefill_with_memory",
 ]

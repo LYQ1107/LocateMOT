@@ -1,105 +1,131 @@
-"""Auditable state shared by GroundAnything and the structured JEV readout.
+"""Causal state produced by one GroundAnything frame encoding.
 
-The state is deliberately a value object.  It binds every region token to one
-image/frame and one model identity; consumers cannot silently mix features
-from another frame or checkpoint.  ``contextual_tokens`` is optional because
-the first Phase-A bridge can expose native GroundAnything visual tokens before
-the full DLM language hidden-state hook is enabled.
+The state is deliberately explicit about frame and model provenance.  A
+region feature from another frame or checkpoint must fail validation instead
+of silently entering identity matching.
 """
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from typing import Any, Mapping, Optional, Sequence
+from typing import Any, Optional, Sequence
 
 import torch
 
 
-@dataclass(frozen=True)
-class SharedGroundState:
-    """One causal GroundAnything forward and its spatial evidence."""
+@dataclass
+class SharedCandidate:
+    index: int
+    box: tuple[float, float, float, float]
+    label: str
+    region_token: torch.Tensor
+    local_token: Optional[torch.Tensor] = None
+    score: Optional[float] = None
+    metadata: dict[str, Any] = field(default_factory=dict)
 
-    frame_id: int | str
-    image_key: str
-    model_sha256: str
-    boxes: tuple[tuple[float, float, float, float], ...]
-    vision_tokens: torch.Tensor
-    region_tokens: torch.Tensor
-    image_grid_thw: tuple[int, int, int]
-    spatial_layout: tuple[int, int]
-    image_size: tuple[int, int]
-    task_query: str = ""
-    contextual_tokens: Optional[torch.Tensor] = None
-    metadata: Mapping[str, Any] = field(default_factory=dict)
-
-    def __post_init__(self) -> None:
-        if not self.image_key:
-            raise ValueError("image_key must identify the current frame")
-        if not self.model_sha256:
-            raise ValueError("model_sha256 is required to bind shared evidence")
-        if self.vision_tokens.ndim not in (2, 3, 4):
-            raise ValueError("vision_tokens must be token or spatial tensor")
-        if self.region_tokens.ndim != 2:
-            raise ValueError("region_tokens must have shape [num_boxes, hidden]")
-        if self.region_tokens.shape[0] != len(self.boxes):
-            raise ValueError("region token count does not match boxes")
-        if self.contextual_tokens is not None and self.contextual_tokens.ndim not in (2, 3):
-            raise ValueError("contextual_tokens must have shape [tokens, hidden]")
-        for name, tensor in (("vision_tokens", self.vision_tokens),
-                             ("region_tokens", self.region_tokens),
-                             ("contextual_tokens", self.contextual_tokens)):
-            if tensor is not None and not torch.isfinite(tensor.detach()).all():
-                raise ValueError(f"{name} contains non-finite values")
-        width, height = self.image_size
-        if width <= 0 or height <= 0:
-            raise ValueError("image_size must be positive")
-        gh, gw = self.spatial_layout
-        if gh <= 0 or gw <= 0:
-            raise ValueError("spatial_layout must be positive")
-
-    @property
-    def feature_dim(self) -> int:
-        return int(self.region_tokens.shape[-1])
-
-    @property
-    def num_boxes(self) -> int:
-        return len(self.boxes)
-
-    @property
-    def has_language_context(self) -> bool:
-        return self.contextual_tokens is not None
-
-    def detached(self) -> "SharedGroundState":
-        """Return a serializable inference copy without breaking provenance."""
-        return SharedGroundState(
-            frame_id=self.frame_id,
-            image_key=self.image_key,
-            model_sha256=self.model_sha256,
-            boxes=self.boxes,
-            vision_tokens=self.vision_tokens.detach(),
-            region_tokens=self.region_tokens.detach(),
-            image_grid_thw=self.image_grid_thw,
-            spatial_layout=self.spatial_layout,
-            image_size=self.image_size,
-            task_query=self.task_query,
-            contextual_tokens=(self.contextual_tokens.detach()
-                               if self.contextual_tokens is not None else None),
+    def detached(self) -> "SharedCandidate":
+        return SharedCandidate(
+            index=self.index,
+            box=tuple(float(v) for v in self.box),
+            label=self.label,
+            region_token=self.region_token.detach().to("cpu").clone(),
+            local_token=None if self.local_token is None else self.local_token.detach().to("cpu").clone(),
+            score=self.score,
             metadata=dict(self.metadata),
         )
 
-    def audit_dict(self) -> dict[str, Any]:
-        return {
-            "frame_id": self.frame_id,
-            "image_key": self.image_key,
-            "model_sha256": self.model_sha256,
-            "num_boxes": self.num_boxes,
-            "feature_dim": self.feature_dim,
-            "vision_tokens_shape": list(self.vision_tokens.shape),
-            "region_tokens_shape": list(self.region_tokens.shape),
-            "contextual_tokens_shape": (list(self.contextual_tokens.shape)
-                                        if self.contextual_tokens is not None else None),
-            "image_grid_thw": list(self.image_grid_thw),
-            "spatial_layout": list(self.spatial_layout),
-            "image_size": list(self.image_size),
-            "task_query": self.task_query,
-            "metadata": dict(self.metadata),
-        }
+
+@dataclass
+class SharedGroundState:
+    frame_id: int
+    image_key: str
+    model_sha256: str
+    boxes: torch.Tensor
+    labels: list[str]
+    vision_tokens: torch.Tensor
+    contextual_tokens: Optional[torch.Tensor]
+    image_grid_thw: Optional[torch.Tensor]
+    spatial_layout: dict[str, Any]
+    task_query: Optional[str]
+    metadata: dict[str, Any] = field(default_factory=dict)
+    candidates: list[SharedCandidate] = field(default_factory=list)
+
+    def validate(self) -> None:
+        if self.boxes.ndim != 2 or self.boxes.shape[-1] != 4:
+            raise ValueError(f"boxes must have shape [N,4], got {tuple(self.boxes.shape)}")
+        if len(self.labels) != self.boxes.shape[0]:
+            raise ValueError("labels and boxes have different lengths")
+        if self.vision_tokens.ndim != 2 or self.vision_tokens.shape[0] != self.boxes.shape[0]:
+            raise ValueError("vision_tokens must be one region token per candidate")
+        if self.contextual_tokens is not None:
+            if self.contextual_tokens.ndim == 1:
+                self.contextual_tokens = self.contextual_tokens.unsqueeze(0)
+            if self.contextual_tokens.ndim != 2:
+                raise ValueError("contextual_tokens must have shape [M, feature_dim]")
+            if self.contextual_tokens.shape[-1] != self.vision_tokens.shape[-1]:
+                raise ValueError("contextual token dimension disagrees with region tokens")
+        if len(self.candidates) != self.boxes.shape[0]:
+            raise ValueError("candidates and boxes have different lengths")
+        for i, candidate in enumerate(self.candidates):
+            if candidate.index != i:
+                raise ValueError("candidate indices must be contiguous and frame-local")
+            if candidate.region_token.ndim != 1:
+                raise ValueError("candidate region tokens must be vectors")
+            if candidate.region_token.shape[0] != self.vision_tokens.shape[1]:
+                raise ValueError("candidate region token dimension disagrees with state")
+            if candidate.metadata.get("frame_id", self.frame_id) != self.frame_id:
+                raise ValueError("cross-frame candidate feature mixed into state")
+            if candidate.metadata.get("model_sha256", self.model_sha256) != self.model_sha256:
+                raise ValueError("candidate feature came from another model checkpoint")
+
+    @property
+    def feature_dim(self) -> int:
+        return int(self.vision_tokens.shape[-1])
+
+    @classmethod
+    def from_region_tokens(
+        cls,
+        *,
+        frame_id: int,
+        image_key: str,
+        model_sha256: str,
+        boxes: Sequence[Sequence[float]],
+        labels: Sequence[str],
+        region_tokens: torch.Tensor,
+        local_tokens: Optional[torch.Tensor] = None,
+        contextual_tokens: Optional[torch.Tensor] = None,
+        image_grid_thw: Optional[torch.Tensor] = None,
+        spatial_layout: Optional[dict[str, Any]] = None,
+        task_query: Optional[str] = None,
+        scores: Optional[Sequence[float]] = None,
+        metadata: Optional[dict[str, Any]] = None,
+    ) -> "SharedGroundState":
+        box_tensor = torch.as_tensor(boxes, dtype=torch.float32, device=region_tokens.device)
+        if box_tensor.numel() == 0:
+            box_tensor = box_tensor.reshape(0, 4)
+        if region_tokens.ndim != 2 or region_tokens.shape[0] != box_tensor.shape[0]:
+            raise ValueError("region_tokens must have shape [number_of_boxes, feature_dim]")
+        local = None if local_tokens is None else local_tokens
+        candidates: list[SharedCandidate] = []
+        for i, (box, label) in enumerate(zip(box_tensor.detach().cpu().tolist(), labels)):
+            candidates.append(SharedCandidate(
+                index=i,
+                box=tuple(float(v) for v in box),
+                label=str(label),
+                region_token=region_tokens[i],
+                local_token=None if local is None else local[i],
+                score=None if scores is None else float(scores[i]),
+                metadata={"frame_id": int(frame_id), "model_sha256": str(model_sha256)},
+            ))
+        state = cls(
+            frame_id=int(frame_id), image_key=str(image_key), model_sha256=str(model_sha256),
+            boxes=box_tensor, labels=[str(x) for x in labels], vision_tokens=region_tokens,
+            contextual_tokens=contextual_tokens, image_grid_thw=image_grid_thw,
+            spatial_layout=dict(spatial_layout or {}), task_query=task_query,
+            metadata=dict(metadata or {}), candidates=candidates,
+        )
+        state.validate()
+        return state
+
+    def memory_snapshot(self) -> list[SharedCandidate]:
+        """Return detached finite state suitable for persistent memory."""
+        return [candidate.detached() for candidate in self.candidates]

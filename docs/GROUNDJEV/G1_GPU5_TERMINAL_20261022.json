@@ -1,0 +1,38 @@
+{
+  "status": "G1_GPU5_ADAPTATION_AND_CONTROLS_COMPLETE",
+  "physical_gpu": 5,
+  "plan": "/data2/user/LocateMOT/configs/groundjev/native_ground_tracking200_gpu5_20261021.json",
+  "training": {
+    "status": "NATIVE_GROUND_TRACKING200_TRAINING_COMPLETE",
+    "steps": 200,
+    "trainable_parameters": 27267584,
+    "changed_bf16_elements": 16211750,
+    "checkpoint_reload_max_difference": 0.0,
+    "all_registered_pairs_visited": true,
+    "projector_delta": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/ground_adaptation/native_tracking200_gpu5_g1_v1/training/projector_delta.pt",
+    "projector_delta_sha256": "e65020bfc62dc4440edb3138b74e53b18c0d36283ef1fd4f0a25dbb45a337ed1",
+    "latest_training_state": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/ground_adaptation/native_tracking200_gpu5_g1_v1/training/latest_training_state.pt",
+    "latest_training_state_sha256": "60c41cfb46f36d20d49512e90dd4c7764ab614e4e1870604d98bc4f61be38808"
+  },
+  "export": {
+    "status": "COMPLETE_NATIVE_DLM_PROJECTOR_DELTA_BUNDLE_EXPORTED",
+    "bundle": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM-TrackProjG1-GPU5-V2",
+    "native_tensor_count": 569,
+    "bundle_sha256": "0efd9d7ddb241d588be85cb6b08853de5dfd18011aa477932c0580bab3265a25",
+    "all_other_native_tensors_unmodified": true,
+    "source_bundle_overwritten": false,
+    "benchmark_improvement_claim": false
+  },
+  "isolated_controls": {
+    "status": "ISOLATED_ORDERED_GROUND_CONTROLS_COMPLETE",
+    "completed_units": 12,
+    "frames": 96,
+    "scopes": {
+      "dense_mot4": {"frames": 4, "same_raw_wire_candidates_and_outputs": true},
+      "refer_single8": {"frames": 8, "same_raw_wire_candidates_and_outputs": true},
+      "refer_multi12": {"frames": 12, "same_raw_wire_candidates_and_outputs": true}
+    },
+    "scope_note": "96 registered native frames; not a full-dataset benchmark"
+  },
+  "export_receipt_sha256": "3344fc561dc88d921683774bc36163e922847d5c9d32d6940a25df982853c375"
+}

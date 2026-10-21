@@ -5,6 +5,7 @@ import unittest
 import torch
 
 from locatemot.groundjev.coupled.memory_tokens import (
+    IdentityBoxStateTokenProjector,
     IdentityMemoryTokenProjector,
     inject_identity_memory,
 )
@@ -45,6 +46,15 @@ class MemoryConditionedInput(unittest.TestCase):
         assert result.inserted_tokens == 2
         assert result.inputs_embeds.shape == (1, 7, 8)
         assert torch.allclose(result.inputs_embeds[0, 4:6], tokens)
+
+    def test_box_state_projector_preserves_registered_order_and_gradients(self):
+        projector = IdentityBoxStateTokenProjector(4, 8, hidden_dim=6)
+        memories = {2: torch.randn(4), 7: torch.randn(4)}
+        states = {2: torch.tensor([0.1, 0.2, 0.3, 0.4]), 7: torch.tensor([0.5, 0.6, 0.7, 0.8])}
+        tokens = projector(memories, states, ordered_ids=[7, 2])
+        assert tokens.shape == (2, 8)
+        tokens.square().mean().backward()
+        assert all(parameter.grad is not None for parameter in projector.parameters())
 
 
 if __name__ == "__main__":

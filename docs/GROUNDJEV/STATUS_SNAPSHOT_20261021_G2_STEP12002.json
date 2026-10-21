@@ -1,0 +1,59 @@
+{
+  "status": "GROUNDJEV_LIVE_STATUS_SNAPSHOT",
+  "generated_at": "2026-10-21T03:14:07.455844+08:00",
+  "project_root": "/data2/user/LocateMOT",
+  "g2": {
+    "status": "G2_FORMAL_TRAINING_RUNNING",
+    "event_step": 12002,
+    "target_steps": 18227,
+    "latest_event_time": "2026-10-21 03:14:00 +0800",
+    "latest_event_loss": 0.29869398404844105,
+    "latest_gradient_norm": 10.215737342834473,
+    "latest_peak_memory_gib": 12.828852653503418,
+    "latest_event_checkpoint": null,
+    "latest_periodic_adapter_checkpoint": "/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final/checkpoints/adapter-step012000.pt",
+    "latest_periodic_checkpoint_step": 12000,
+    "latest_training_state": "/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final/checkpoints/latest_training_state.pt",
+    "latest_training_state_exists": true,
+    "recent_500_step_seconds": 11.615230460921843,
+    "linear_hours_remaining": 20.08466933867735,
+    "physical_gpus": [
+      3,
+      5
+    ],
+    "final_receipt_exists": false,
+    "manifest_sha256": "f682519a1cf9204ca76ea75a56dad36dbdeac26259f202551ab9f66fefd06e71"
+  },
+  "g0": {
+    "status": "COMPLETE_REGISTERED_VALIDATION_HALF",
+    "frames": 1657,
+    "full_test_claim": false
+  },
+  "g1": {
+    "status": "WAITING_G2_CLEAN_SUCCESS",
+    "real_optimizer_updates": false
+  },
+  "bundle": {
+    "status": "WAITING_G2_AND_G1_TERMINAL",
+    "exported": false
+  },
+  "heldout": {
+    "status": "WAITING_G2_CLEAN_BUNDLE_AND_GPU7",
+    "official_metrics": false
+  },
+  "yestrack": {
+    "status": "WAITING_GPU7_EXCLUSIVE",
+    "train_rows": 726,
+    "validation_rows": 390,
+    "metrics_available": false
+  },
+  "joint_v2": {
+    "status": "WAITING_G2_G1_BUNDLE_HELDOUT_AND_EXCLUSIVE_GPUS",
+    "rows": 131990,
+    "optimizer_updates": 0
+  },
+  "mot_only": {
+    "status": "COMPLETE_SAFE_NO_LIVE_OWNER"
+  },
+  "overall_goal_complete": false
+}

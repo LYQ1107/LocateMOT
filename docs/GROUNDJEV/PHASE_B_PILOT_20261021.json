@@ -1,0 +1,152 @@
+{
+  "status": "PHASE_B_REAL_G2_FEATURE_READOUT_PILOT_COMPLETE",
+  "evidence_classification": "G0_NATIVE_VISUAL_CONTROL_NOT_G2",
+  "g2_clean_evidence": false,
+  "classification_note": "Historical pilot used GroundAnything-DLM without a G2 adapter. Preserve metrics as a G0 visual control; rerun with the native G2 adapter before making any G2 claim.",
+  "checkpoint": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM",
+  "model_sha256": "3cf09355cde8cf4877cdc76e0a72301d572c1d6263b2831f8a03368285bb65e2",
+  "candidate_manifest": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/MOT17-02-FRCNN/frame_candidates.jsonl",
+  "gt_manifest": "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-02-FRCNN/gt/gt.txt",
+  "frames": 32,
+  "train_frames": 24,
+  "temporal_dev_frames": 8,
+  "candidate_count": 992,
+  "proposal_source": "prior_native_GroundAnything_candidates_repo_external_to_G2",
+  "teacher_forced_causal_memory": true,
+  "g2_forward_count": 32,
+  "pilot_optimizer_steps": 192,
+  "before": {
+    "train": {
+      "identity": 744,
+      "identity_correct": 46,
+      "admit": 744,
+      "admit_correct": 76,
+      "new_targets": 32,
+      "reject_targets": 77,
+      "identity_accuracy": 0.06182795698924731,
+      "admit_accuracy": 0.10215053763440861
+    },
+    "dev_temporal_holdout": {
+      "identity": 248,
+      "identity_correct": 9,
+      "admit": 248,
+      "admit_correct": 33,
+      "new_targets": 0,
+      "reject_targets": 27,
+      "identity_accuracy": 0.036290322580645164,
+      "admit_accuracy": 0.13306451612903225
+    }
+  },
+  "after": {
+    "train": {
+      "identity": 744,
+      "identity_correct": 500,
+      "admit": 744,
+      "admit_correct": 688,
+      "new_targets": 32,
+      "reject_targets": 77,
+      "identity_accuracy": 0.6720430107526881,
+      "admit_accuracy": 0.9247311827956989
+    },
+    "dev_temporal_holdout": {
+      "identity": 248,
+      "identity_correct": 161,
+      "admit": 248,
+      "admit_correct": 227,
+      "new_targets": 0,
+      "reject_targets": 27,
+      "identity_accuracy": 0.6491935483870968,
+      "admit_accuracy": 0.9153225806451613
+    }
+  },
+  "replay": {
+    "frames": 8,
+    "feature_forwards": 8,
+    "rows": [
+      {
+        "frame": 159,
+        "assignments": {
+          "1": 1,
+          "2": 2,
+          "3": 3
+        },
+        "decision_count": 31,
+        "memory_tracks": 3
+      },
+      {
+        "frame": 160,
+        "assignments": {
+          "2": 1,
+          "7": 3,
+          "27": 2
+        },
+        "decision_count": 31,
+        "memory_tracks": 3
+      },
+      {
+        "frame": 161,
+        "assignments": {
+          "2": 1,
+          "7": 3,
+          "26": 2
+        },
+        "decision_count": 31,
+        "memory_tracks": 3
+      },
+      {
+        "frame": 162,
+        "assignments": {
+          "1": 1,
+          "6": 3,
+          "24": 2
+        },
+        "decision_count": 31,
+        "memory_tracks": 3
+      },
+      {
+        "frame": 163,
+        "assignments": {
+          "1": 1,
+          "6": 3,
+          "23": 2
+        },
+        "decision_count": 31,
+        "memory_tracks": 3
+      },
+      {
+        "frame": 164,
+        "assignments": {
+          "2": 1,
+          "7": 3,
+          "24": 2
+        },
+        "decision_count": 31,
+        "memory_tracks": 3
+      },
+      {
+        "frame": 165,
+        "assignments": {
+          "1": 1,
+          "6": 3,
+          "24": 2
+        },
+        "decision_count": 31,
+        "memory_tracks": 3
+      },
+      {
+        "frame": 166,
+        "assignments": {
+          "1": 1,
+          "5": 3,
+          "25": 2
+        },
+        "decision_count": 31,
+        "memory_tracks": 3
+      }
+    ]
+  },
+  "elapsed_seconds": 29.464746707002632,
+  "scientific_claim": "bounded training/development control; no independent generalization or HOTA claim",
+  "pilot_checkpoint": "/data2/user/LocateMOT/outputs/groundjev/coupled/phase_b_choice_yes_pilot_20261021/adapter-step000192.pt",
+  "pilot_checkpoint_sha256": "c96f27c9c8de5a01a36036c78c4e4a36c467bb96a0ca5f7d0eee27d93e32c904"
+}

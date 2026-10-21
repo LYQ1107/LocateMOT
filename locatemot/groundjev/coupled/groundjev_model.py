@@ -1,67 +1,76 @@
-"""Unified GroundJEV model shell around one shared GroundAnything state."""
+"""GroundJEV single-backbone model wrapper."""
 from __future__ import annotations
 
-from typing import Mapping, Optional, Sequence
+from typing import Any
 
 import torch
 from torch import nn
 
-from .dynamic_identity_slots import IdentitySlot
+from .dynamic_identity_slots import DynamicIdentitySlots
 from .g2_jev_readout import G2JEVReadout
-from .identity_memory import IdentityMemory
+from .identity_memory import IdentityMemoryState
+from .memory_tokens import MemoryTokenProjector
 from .shared_ground_state import SharedGroundState
-from .typed_decisions import TypedDecision, TypedDecisionBatch
 
 
-class GroundJEVCoupledModel(nn.Module):
-    """Typed JEV decisions from a single GroundAnything feature computation.
+class GroundJEVModel(nn.Module):
+    """Typed JEV readout attached to one shared G2 state.
 
-    The class intentionally accepts a ``SharedGroundState`` rather than an
-    image.  Image encoding belongs to :class:`G2FeatureBridge`, ensuring that
-    the runtime cannot accidentally encode the same frame a second time for
-    identity matching.
+    The `backbone` is external and supplies `SharedGroundState`; this module
+    never instantiates a second visual or language model.
     """
 
-    def __init__(self, input_dim: int, *, hidden_dim: int = 512,
-                 contextual_dim: Optional[int] = None) -> None:
+    def __init__(self, region_dim: int, hidden_dim: int = 256):
         super().__init__()
-        self.readout = G2JEVReadout(input_dim, hidden_dim=hidden_dim,
-                                    contextual_dim=contextual_dim)
+        self.region_dim = int(region_dim)
+        self.hidden_dim = int(hidden_dim)
+        self.readout = G2JEVReadout(region_dim, hidden_dim)
+        self.memory_projector = MemoryTokenProjector(region_dim, hidden_dim)
+        self.context_projector = nn.Linear(region_dim, hidden_dim, bias=False)
 
-    @staticmethod
-    def memory_features(memories: Mapping[int, IdentityMemory], *,
-                        device: torch.device, dtype: torch.dtype) -> dict[int, torch.Tensor]:
-        features = {}
-        for track_id, memory in memories.items():
-            feature = memory.feature(device=device, dtype=dtype)
-            if feature is not None:
-                features[int(track_id)] = feature
-        return features
-
-    def forward(self, state: SharedGroundState,
-                slots_per_candidate: Sequence[Sequence[IdentitySlot]], *,
-                memories: Optional[Mapping[int, IdentityMemory]] = None,
-                memory_enabled: bool = True,
-                candidate_indices: Optional[Sequence[int]] = None) -> TypedDecisionBatch:
-        memories = memories or {}
-        features = self.memory_features(memories, device=state.region_tokens.device,
-                                        dtype=state.region_tokens.dtype)
-        decisions = self.readout(
-            state.region_tokens,
-            slots_per_candidate,
-            contextual_tokens=state.contextual_tokens,
-            memory_features=features,
-            memory_enabled=memory_enabled,
-            candidate_indices=candidate_indices,
-        )
-        return TypedDecisionBatch(
-            decisions=decisions,
-            frame_id=state.frame_id,
-            image_key=state.image_key,
-            model_sha256=state.model_sha256,
-            visual_forward_calls=int(state.metadata.get("visual_forward_calls_for_frame", 1)),
-            metadata={"memory_enabled": bool(memory_enabled),
-                      "single_backbone": True,
-                      "second_vlm_loaded": False,
-                      "contextual_tokens_present": state.has_language_context},
-        )
+    def forward(self, state: SharedGroundState, memory: IdentityMemoryState,
+                slots: DynamicIdentitySlots) -> dict[str, Any]:
+        state.validate()
+        if state.feature_dim != self.region_dim:
+            raise ValueError("G2 state feature dimension disagrees with coupled model")
+        track_tokens = [track.token().to(state.vision_tokens.device) for track in memory.ordered()
+                        if track.state != "TERMINATED"]
+        if track_tokens:
+            raw = torch.stack(track_tokens, dim=0)
+            projected = self.memory_projector(raw)
+        else:
+            projected = state.vision_tokens.new_empty((0, self.hidden_dim), dtype=torch.float32)
+        existing_ids = [slot.track_id for slot in slots.slots if slot.track_id is not None]
+        if len(existing_ids) != projected.shape[0]:
+            # A track can be omitted from the shortlist.  Keep option order
+            # explicit and represent omitted tokens by a zero vector; this is
+            # visible to the evaluator and never turns a retrieval miss into NEW.
+            by_id = {track.persistent_track_id: track for track in memory.ordered()
+                     if track.state != "TERMINATED"}
+            vectors = []
+            for track_id in existing_ids:
+                track = by_id.get(int(track_id))
+                if track is None:
+                    vectors.append(state.vision_tokens.new_zeros((self.hidden_dim,), dtype=torch.float32))
+                else:
+                    vectors.append(self.memory_projector(track.token().to(state.vision_tokens.device).unsqueeze(0))[0])
+            projected = torch.stack(vectors) if vectors else state.vision_tokens.new_empty((0, self.hidden_dim), dtype=torch.float32)
+        action_tokens = [slot.token for slot in slots.slots if slot.track_id is None]
+        slot_tokens = self.readout.make_slot_tokens(projected, action_tokens)
+        context_bias = None
+        if state.contextual_tokens is not None:
+            context = state.contextual_tokens
+            if context.ndim == 1:
+                context = context.unsqueeze(0)
+            if context.ndim != 2 or context.shape[-1] != self.region_dim:
+                raise ValueError("contextual_tokens must have shape [M, region_dim]")
+            context_bias = self.context_projector(
+                context.to(device=state.vision_tokens.device, dtype=state.vision_tokens.dtype)
+            ).mean(dim=0)
+        outputs = self.readout(state.vision_tokens, slot_tokens,
+                               action_start=len(existing_ids), context_bias=context_bias)
+        outputs.update({"option_tokens": slots.tokens, "model_sha256": state.model_sha256,
+                        "frame_id": state.frame_id, "image_key": state.image_key,
+                        "single_backbone": True,
+                        "contextual_tokens_used": int(state.contextual_tokens is not None)})
+        return outputs

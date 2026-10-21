@@ -1,0 +1,51 @@
+{
+  "receipt_type": "G2_CLEAN_PROGRESS_SNAPSHOT",
+  "timestamp": "2026-10-21T06:18:52+08:00",
+  "run_root": "/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final",
+  "manifest_sha256": "f682519a1cf9204ca76ea75a56dad36dbdeac26259f202551ab9f66fefd06e71",
+  "status": "G2_FORMAL_TRAINING_RUNNING",
+  "step": 12964,
+  "target_steps": 18227,
+  "remaining_steps": 5263,
+  "latest_event": {
+    "loss": 0.3086177217774093,
+    "gradient_norm": 13.707698822021484,
+    "peak_memory_gib": 12.828852653503418,
+    "time": "2026-10-21 06:18:52 +0800"
+  },
+  "throughput_steps_per_hour": {
+    "last_100": 312.5,
+    "last_500": 312.067,
+    "last_1000": 311.85
+  },
+  "linear_eta": {
+    "last_100": "2026-10-21T23:09:21.760000+08:00",
+    "last_500": "2026-10-21T23:10:45.968000+08:00",
+    "last_1000": "2026-10-21T23:11:28.072000+08:00"
+  },
+  "durable_recovery": {
+    "adapter": "checkpoints/adapter-step012500.pt",
+    "training_state": "checkpoints/latest_training_state.pt",
+    "final_receipt_present": false
+  },
+  "resource_health": {
+    "world_size": 2,
+    "physical_gpus": [3, 5],
+    "rank_processes_running": true,
+    "rank_gpu_memory_mib": {"rank0": 19284, "rank1": 19312}
+  },
+  "downstream_gate": {
+    "g1_gpu5": "WAITING_G2_CLEAN_SUCCESS",
+    "g2_bundle": "WAITING_G2_CLEAN_SUCCESS",
+    "heldout_gpu7": "WAITING_G2_CLEAN_BUNDLE_AND_GPU7",
+    "native_tao_shards": "WAITING_G2_CLEAN_SUCCESS",
+    "native_ovmot_join": "WAITING_COMPLETE_NATIVE_TAO_STREAM",
+    "native_three_task": "WAITING_NATIVE_OVMOT_MANIFEST",
+    "yestrack": "WAITING_GPU7_EXCLUSIVE"
+  },
+  "claims": {
+    "training_health_only": true,
+    "tracking_metric_claim": false,
+    "g2_terminal": false
+  }
+}

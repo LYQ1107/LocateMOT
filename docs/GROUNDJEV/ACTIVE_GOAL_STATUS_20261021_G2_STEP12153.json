@@ -1,0 +1,103 @@
+{
+  "status": "GROUNDJEV_ACTIVE_GOAL_SNAPSHOT_G2_STEP12153",
+  "project_root": "/data2/user/LocateMOT",
+  "captured_at": "2026-10-21 03:42:58 +0800",
+  "g2": {
+    "event_step": 12153,
+    "max_steps": 18227,
+    "latest_checkpoint": "adapter-step012000.pt",
+    "latest_checkpoint_mtime": "2026-10-21 03:13 +0800",
+    "last_event": {
+      "step": 12153,
+      "epoch": 0,
+      "position": 97224,
+      "micro_batches": 8,
+      "samples_global": 16,
+      "effective_tokens_global": 10910,
+      "token_budget_per_device": 16384,
+      "loss": 0.22656052047386765,
+      "gradient_norm": 9.799253463745117,
+      "peak_memory_gib": 12.828852653503418,
+      "lr_projector": 6.752493816235189e-07,
+      "lr_lora": 2.3633728356823163e-06,
+      "checkpoint": null,
+      "time": "2026-10-21 03:42:58 +0800"
+    },
+    "recent_window_steps": 500,
+    "seconds_per_step": 11.614,
+    "remaining_steps": 6074,
+    "linear_remaining_hours": 19.59539888888889,
+    "process_pids": [
+      1799359,
+      1799468,
+      1799469
+    ],
+    "physical_gpus": [
+      3,
+      5
+    ],
+    "manifest_sha256": "f682519a1cf9204ca76ea75a56dad36dbdeac26259f202551ab9f66fefd06e71",
+    "manifest_rows": 583251,
+    "final_receipt_present": false
+  },
+  "g0_mot20": {
+    "status": "NATURAL_MOT20_SCOPE_AND_FROZEN_MEMORY_CONTROLS_COMPLETE",
+    "sequence": "MOT20-05",
+    "scope": "complete registered validation-half natural-visibility scope",
+    "frames": 1657,
+    "official_metrics": {
+      "HOTA": 0.07334696070115383,
+      "DetA": 0.09026982781621751,
+      "AssA": 0.05967427073481851,
+      "IDF1": 0.059598451365333885,
+      "IDSW": 1933,
+      "FP": 417,
+      "FN": 288297
+    },
+    "metrics_scope": "complete_registered_validation_scope_natural_visibility_challenge",
+    "fps": 0.061369784416757965,
+    "full_test_claim": false
+  },
+  "owners": {
+    "g1_gpu5": {
+      "pid": 1820298,
+      "status": "WAITING_G2_CLEAN_SUCCESS",
+      "failed": null
+    },
+    "g2_bundle": {
+      "pid": 1826880,
+      "status": "WAITING_G2_AND_G1_TERMINAL",
+      "failed": null
+    },
+    "independent_heldout_gpu7": {
+      "pid": 3998877,
+      "status": "WAITING_G2_CLEAN_BUNDLE_AND_GPU7",
+      "failed": null
+    },
+    "yestrack_native_v2": {
+      "pid": 286855,
+      "status": "WAITING_GPU7_EXCLUSIVE",
+      "failed": null,
+      "resource_gate": {
+        "ready": false,
+        "checked_at_epoch_s": 1792525356.2944696,
+        "rule": "GPU7 has no compute PIDs and >=32768 MiB free"
+      }
+    },
+    "three_task_joint_v2_compact": {
+      "pid": 287796,
+      "status": "WAITING_G2_G1_BUNDLE_HELDOUT_AND_EXCLUSIVE_GPUS",
+      "failed": null,
+      "optimizer_updates": 0,
+      "planned_trainable_rows": 131990,
+      "physical_gpus": [
+        4,
+        5,
+        6,
+        7
+      ]
+    }
+  },
+  "mot_only_optimizer_process": "NONE_FOUND_IN_AUTHORITATIVE_PROCESS_AUDIT",
+  "scientific_boundary": "G2 is still training; G0 is a validation-half control; no G1/held-out/OneJev/YesTrack final metric is promoted."
+}

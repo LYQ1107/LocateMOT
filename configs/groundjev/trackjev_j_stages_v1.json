@@ -1,0 +1,67 @@
+{
+ "name": "TrackJEV J-stage training registry (pretrained OneJev-0.8B)",
+ "base_model": "/data2/user/LocateMOT_GroundJEV/models/OneJev-0.8B",
+ "trainer": "tools/groundjev/onejev_resumable_sft.py (full FP32 masters + Adam + scheduler + all RNG)",
+ "upstream": "external/OneJev/train/sft.py",
+ "data": {
+  "rows": "outputs/groundjev/full_data_v2/trackjev_sft_v1/rows.jsonl",
+  "curriculum": "configs/groundjev/trackjev_curriculum_v1.json",
+  "row_provenance_required": [
+   "supervision.candidate_source",
+   "supervision.shortlist_policy"
+  ]
+ },
+ "stages": {
+  "J0_frozen": {
+   "purpose": "zero-shot pretrained OneJev baseline: no parameter update at all",
+   "flags": {
+    "multimodal": true,
+    "training": false
+   },
+   "trainable": "nothing (inference-only reference)",
+   "note": "the upstream trainer has exactly two modes (LoRA adapter or --full-finetune); it has no frozen-body-plus-new-head mode, because this schema adds no new parameters. The honest frozen arm is therefore the pretrained model evaluated as-is.",
+   "expected": "reference floor for B2-B6"
+  },
+  "J1_lora": {
+   "purpose": "does a small parameter budget suffice for identity decisions?",
+   "flags": {
+    "multimodal": true,
+    "lora_r": 32,
+    "lora_alpha": 64,
+    "lora_dropout": 0.05
+   },
+   "trainable": "LoRA adapters on the language/decision projections + new heads",
+   "lr": 0.0001,
+   "report": [
+    "lora_rank",
+    "target_modules",
+    "trainable_parameters",
+    "peak_memory",
+    "HOTA"
+   ]
+  },
+  "J2_full_language": {
+   "purpose": "main experiment: full language/decision fine-tune with the vision tower frozen",
+   "flags": {
+    "multimodal": true,
+    "full_finetune": true,
+    "train_vision": false,
+    "gradient_checkpointing": true
+   },
+   "trainable": "language/decision body + new heads; vision tower frozen",
+   "lr": 5e-05,
+   "report": [
+    "trainable_parameters",
+    "peak_memory",
+    "tokens_seen",
+    "HOTA"
+   ]
+  }
+ },
+ "hard_rules": [
+  "no stage starts unless the row file and curriculum exist",
+  "row provenance must cite a candidate source and the causal shortlist policy",
+  "a stage never resumes an optimizer from a different loss/label definition",
+  "each stage gets its own runs dir, checkpoint dir and port"
+ ]
+}

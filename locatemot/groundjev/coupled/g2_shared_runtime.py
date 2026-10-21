@@ -1,144 +1,130 @@
-"""Online one-forward GroundJEV runtime and assignment replay."""
+"""Causal single-backbone GroundJEV video runtime."""
 from __future__ import annotations
 
-import math
-from dataclasses import dataclass
-from typing import Any, Mapping, Optional, Sequence
+from typing import Any, Sequence
 
 import torch
 
-from .dynamic_identity_slots import IdentitySlot, build_dynamic_slots
+from .dynamic_identity_slots import DynamicIdentitySlots, build_dynamic_slots
 from .g2_feature_bridge import G2FeatureBridge
-from .groundjev_model import GroundJEVCoupledModel
-from .identity_memory import IdentityMemoryStore
+from .groundjev_model import GroundJEVModel
+from .identity_memory import IdentityMemoryState
 from .lifecycle_controller import LifecycleController
 from .memory_writer import MemoryWriter
-from .shared_ground_state import SharedGroundState
-from .typed_decisions import TypedDecisionBatch
+from .typed_decisions import decode_typed_decisions
 
 
-@dataclass
-class RuntimeConfig:
-    memory_enabled: bool = True
-    admission_threshold: float = 0.5
-    max_history: int = 31
-    memory_update_threshold: float = 0.5
+def _global_one_to_one(scores: torch.Tensor) -> list[tuple[int, int]]:
+    """Solve a rectangular candidate/track assignment globally."""
+    if scores.numel() == 0:
+        return []
+    try:
+        from scipy.optimize import linear_sum_assignment
+        rows, cols = linear_sum_assignment((-scores.detach().cpu()).numpy())
+        return [(int(r), int(c)) for r, c in zip(rows, cols)]
+    except Exception:
+        # This fallback is only for minimal environments; it remains one-to-one
+        # and is recorded by the caller when SciPy is unavailable.
+        pairs = sorted(((float(scores[i, j]), i, j)
+                        for i in range(scores.shape[0]) for j in range(scores.shape[1])), reverse=True)
+        used_i: set[int] = set(); used_j: set[int] = set(); result = []
+        for _, i, j in pairs:
+            if i not in used_i and j not in used_j:
+                used_i.add(i); used_j.add(j); result.append((i, j))
+        return result
 
 
-def global_one_to_one_assignment(decisions: TypedDecisionBatch, *,
-                                 config: RuntimeConfig) -> dict[int, str]:
-    """Solve a global assignment using the raw dynamic-slot probabilities."""
-    from scipy.optimize import linear_sum_assignment
+class CoupledGroundJEVRuntime:
+    """One G2 feature forward, typed decision, assignment, then memory write."""
 
-    rows = decisions.decisions
-    if not rows:
-        return {}
-    existing = sorted({slot.token for row in rows for slot in row.slots if slot.is_existing},
-                      key=lambda token: int(token))
-    # NEW/NO_MATCH/REJECT are candidate-local actions.  Keeping one column per
-    # candidate allows two legitimate births in the same frame while existing
-    # identities remain globally one-to-one.
-    action_columns = [(action, row) for row in range(len(rows))
-                      for action in ("NEW", "NO_MATCH", "REJECT")]
-    columns = existing + action_columns
-    costs = torch.full((len(rows), len(columns)), 1e6, dtype=torch.float64)
-    for i, row in enumerate(rows):
-        probs = row.probability_dict()
-        if row.admission_probability < config.admission_threshold:
-            probs["REJECT"] = max(probs.get("REJECT", 0.0), 1.0 - row.admission_probability)
-        for j, column in enumerate(columns):
-            if isinstance(column, tuple):
-                token, owner = column
-                if owner != i:
-                    continue
-            else:
-                token = column
-            if token in probs:
-                costs[i, j] = -math.log(max(float(probs[token]), 1e-12))
-    row_ids, col_ids = linear_sum_assignment(costs.numpy())
-    assignment = {}
-    for row, column in zip(row_ids, col_ids):
-        selected = columns[int(column)]
-        assignment[int(row)] = selected[0] if isinstance(selected, tuple) else selected
-    for index, row in enumerate(rows):
-        if index not in assignment:
-            assignment[index] = "REJECT"
-    # A model's NO_MATCH is never silently converted to NEW.  Conversely, an
-    # empty history keeps NEW feasible for every admitted candidate.
-    return assignment
-
-
-class G2SharedRuntime:
-    """Encode -> typed decisions -> global assignment -> causal memory."""
-
-    def __init__(self, bridge: G2FeatureBridge, model: GroundJEVCoupledModel,
-                 *, store: Optional[IdentityMemoryStore] = None,
-                 config: Optional[RuntimeConfig] = None) -> None:
+    def __init__(self, bridge: G2FeatureBridge, model: GroundJEVModel,
+                 *, memory: IdentityMemoryState | None = None,
+                 lifecycle: LifecycleController | None = None,
+                 memory_writer: MemoryWriter | None = None,
+                 admit_threshold: float = 0.5):
         self.bridge = bridge
         self.model = model
-        self.store = store or IdentityMemoryStore()
-        self.config = config or RuntimeConfig()
-        self.lifecycle = LifecycleController(self.store)
-        self.writer = MemoryWriter(self.store)
+        self.memory = memory or IdentityMemoryState()
+        self.lifecycle = lifecycle or LifecycleController()
+        self.memory_writer = memory_writer or MemoryWriter()
+        self.admit_threshold = float(admit_threshold)
 
-    def _memory_views(self) -> dict[int, Any]:
-        return {int(track_id): memory for track_id, memory in self.store.tracks.items()
-                if memory.state != "TERMINATE"}
-
-    def step(self, *, image: Any, boxes: Sequence[Sequence[float]],
-             timestamp: float, frame_id: int | str, image_key: str,
-             task_query: str = "", contextual_tokens: Optional[torch.Tensor] = None,
-             metadata: Optional[dict[str, Any]] = None) -> dict[str, Any]:
-        if self.store.last_timestamp is not None and float(timestamp) <= self.store.last_timestamp:
-            raise ValueError("runtime timestamps must strictly increase")
-        state = self.bridge.encode(
-            image, boxes, frame_id=frame_id, image_key=image_key,
-            task_query=task_query, contextual_tokens=contextual_tokens,
-            metadata=metadata,
-        )
-        return self.step_from_state(state, timestamp=timestamp)
-
-    def step_from_state(self, state: SharedGroundState, *, timestamp: float) -> dict[str, Any]:
-        """Run decisions and causal memory updates from one encoded frame.
-
-        This is the explicit shared-feature path used by ablation replays: a
-        frame can be compared across readouts without silently running the G2
-        visual encoder once per arm.
-        """
-        if self.store.last_timestamp is not None and float(timestamp) <= self.store.last_timestamp:
-            raise ValueError("runtime timestamps must strictly increase")
-        boxes = state.boxes
-        memories = self._memory_views()
-        slots = build_dynamic_slots(list(memories.values()), max_history=self.config.max_history)
-        slots_per_candidate = [list(slots) for _ in boxes]
-        batch = self.model(state, slots_per_candidate, memories=memories,
-                           memory_enabled=self.config.memory_enabled)
-        assignment = global_one_to_one_assignment(batch, config=self.config)
-        self.lifecycle.validate_assignment(assignment, num_candidates=len(boxes))
-        update_probabilities = {row.candidate_index: row.memory_update_probability
-                                for row in batch.decisions}
-        confidence = {row.candidate_index: row.chosen_probability for row in batch.decisions}
-        memory_report = self.writer.apply(
-            assignments=assignment,
-            candidate_tokens=state.region_tokens,
-            boxes=[list(map(float, box)) for box in boxes],
-            timestamp=float(timestamp),
-            update_probabilities=update_probabilities,
-            confidences=confidence,
-        )
-        seen_ids = [int(token) for token in assignment.values() if token.isdigit()]
-        seen_ids.extend(int(value) for value in memory_report.get("new_assignments", {}).values())
-        lifecycle_report = self.lifecycle.apply_unseen(
-            seen_ids=seen_ids, timestamp=float(timestamp), lifecycle_outputs=None)
-        batch.assignment = assignment
-        batch.metadata.update({
-            "memory_report": memory_report,
-            "lifecycle_report": lifecycle_report,
-            "visual_forward_calls_for_frame": state.metadata.get("visual_forward_calls_for_frame", 1),
-            "bridge_forward_calls_total": self.bridge.forward_calls,
+    @torch.no_grad()
+    def step(self, image: Any, boxes: Sequence[Sequence[float]], labels: Sequence[str], *,
+             frame_id: int, image_key: str, task_query: str | None = None,
+             scores: Sequence[float] | None = None) -> dict[str, Any]:
+        self.memory.assert_causal(frame_id)
+        state = self.bridge.encode(image, boxes, labels, frame_id=frame_id,
+                                   image_key=image_key, task_query=task_query, scores=scores)
+        slots = build_dynamic_slots(self.memory.ordered())
+        outputs = self.model(state, self.memory, slots)
+        decisions = decode_typed_decisions(outputs, slots.tokens)
+        existing_slots = [slot for slot in slots.slots if slot.track_id is not None]
+        assignments: dict[int, int] = {}
+        assignment_solver = "none"
+        if existing_slots:
+            index = [slots.tokens.index(slot.token) for slot in existing_slots]
+            probabilities = torch.softmax(outputs["identity_logits"], dim=-1)
+            scores_matrix = probabilities[:, index]
+            for candidate_index, track_index in _global_one_to_one(scores_matrix):
+                decision = decisions[candidate_index]
+                track_id = existing_slots[track_index].track_id
+                if (track_id is not None and decision["identity"] == str(track_id) and
+                        decision["admit_probability"] >= self.admit_threshold):
+                    assignments[candidate_index] = int(track_id)
+            assignment_solver = "hungarian" if _has_scipy() else "one_to_one_fallback"
+        # Explicit NEW is the only route to a birth.  NO_MATCH never becomes NEW.
+        for decision in decisions:
+            i = int(decision["candidate_index"])
+            if i in assignments or decision["admit_probability"] < self.admit_threshold:
+                continue
+            if decision["identity"] == "NEW":
+                track = self.memory.create(state.candidates[i].region_token, state.candidates[i].box,
+                                           timestamp=frame_id, confidence=decision["identity_probability"],
+                                           semantic_evidence=labels[i])
+                assignments[i] = track.persistent_track_id
+        matched_ids = set(assignments.values())
+        blocked_memory_ids: set[int] = set()
+        lifecycle_actions: dict[int, str] = {}
+        for track in self.memory.ordered():
+            if track.persistent_track_id in matched_ids:
+                candidate_index = next(
+                    (index for index, assigned_id in assignments.items()
+                     if int(assigned_id) == track.persistent_track_id),
+                    None,
+                )
+                decision = None if candidate_index is None else decisions[candidate_index]
+                action = str((decision or {}).get("lifecycle", "ACTIVE")).upper()
+                lifecycle_actions[track.persistent_track_id] = action
+                life_probs = (decision or {}).get("lifecycle_probabilities", {})
+                confidence = float((life_probs or {}).get(action, 0.0))
+                self.lifecycle.apply(track, action, timestamp=frame_id,
+                                     confidence=confidence, matched=True)
+                if action in {"LOST", "TERMINATE"}:
+                    blocked_memory_ids.add(track.persistent_track_id)
+            elif track.state != "TERMINATED":
+                self.lifecycle.advance_unmatched(track, timestamp=frame_id)
+        updates = {int(d["candidate_index"]): float(d["memory_update_probability"]) for d in decisions}
+        report = self.memory_writer.write(self.memory, state.candidates, assignments, updates,
+                                          timestamp=frame_id, labels=labels,
+                                          blocked_track_ids=blocked_memory_ids)
+        return {
+            "state": state, "slots": slots, "decisions": decisions,
+            "assignments": assignments, "memory_report": report,
+            "lifecycle_actions": lifecycle_actions,
+            "terminated_track_ids": [
+                track.persistent_track_id for track in self.memory.ordered()
+                if track.state == "TERMINATED"
+            ],
+            "assignment_solver": assignment_solver,
+            "bridge_forward_count": self.bridge.forward_count,
             "single_backbone": True,
-            "second_vlm_loaded": False,
-        })
-        return {"state": state, "decisions": batch, "assignment": assignment,
-                "memory": memory_report, "lifecycle": lifecycle_report,
-                "persistent_state": self.store.state_dict()}
+        }
+
+
+def _has_scipy() -> bool:
+    try:
+        import scipy  # noqa: F401
+        return True
+    except Exception:
+        return False

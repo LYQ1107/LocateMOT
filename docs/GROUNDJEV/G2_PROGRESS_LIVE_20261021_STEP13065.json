@@ -1,0 +1,42 @@
+{
+  "schema": "groundjev.g2.live_progress.v1",
+  "observed_at": "2026-10-21T06:38:27.069757+08:00",
+  "run_dir": "/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final",
+  "status": "RUNNING",
+  "step": 13065,
+  "max_steps": 18227,
+  "latest_event": {
+    "step": 13065,
+    "epoch": 0,
+    "position": 104520,
+    "micro_batches": 8,
+    "samples_global": 16,
+    "effective_tokens_global": 10902,
+    "token_budget_per_device": 16384,
+    "loss": 0.2548696502344683,
+    "gradient_norm": 9.990986824035645,
+    "peak_memory_gib": 12.828814506530762,
+    "lr_projector": 5.527916276130004e-07,
+    "lr_lora": 1.934770696645502e-06,
+    "checkpoint": null,
+    "time": "2026-10-21 06:38:25 +0800"
+  },
+  "event_file": "/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final/training_events.jsonl",
+  "final_receipt": "/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final/final_receipt.json",
+  "final_receipt_exists": false,
+  "latest_training_state": "/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final/checkpoints/latest_training_state.pt",
+  "latest_training_state_exists": true,
+  "latest_training_state_sha256": "4a79cbf3e64e69ffc56aaf964754d0209382b87c2124d46f13506325ca52fd22",
+  "manifest_sha256": null,
+  "rank_process_snapshot": [
+    "1799359       1 Ssl   0.2  2-04:37:28 /data2/user/LocateMOT_GroundJEV/.venv-onejev-py310/bin/python -m torch.distributed.run --standalone --nproc_per_node=2 --master_port=29608 /data2/user/LocateMOT_GroundJEV/tools/groundjev/g2/train_g2_dlm.py --rows /data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/g2_clean_train_rows.jsonl --manifest /data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/g2_clean_train_manifest.json --checkpoint /data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM --run-dir /data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final --coverage-mode exact_once --micro-batch-size 2 --grad-accum-steps 8 --expected-global-batch 32 --token-budget 16384 --max-steps 18227 --save-every 500 --seed 20261019",
+    "1799468 1799359 Ssl   100  2-04:37:25 /data2/user/LocateMOT_GroundJEV/.venv-onejev-py310/bin/python -u /data2/user/LocateMOT_GroundJEV/tools/groundjev/g2/train_g2_dlm.py --rows /data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/g2_clean_train_rows.jsonl --manifest /data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/g2_clean_train_manifest.json --checkpoint /data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM --run-dir /data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final --coverage-mode exact_once --micro-batch-size 2 --grad-accum-steps 8 --expected-global-batch 32 --token-budget 16384 --max-steps 18227 --save-every 500 --seed 20261019",
+    "1799469 1799359 Ssl   100  2-04:37:25 /data2/user/LocateMOT_GroundJEV/.venv-onejev-py310/bin/python -u /data2/user/LocateMOT_GroundJEV/tools/groundjev/g2/train_g2_dlm.py --rows /data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/g2_clean_train_rows.jsonl --manifest /data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/g2_clean_train_manifest.json --checkpoint /data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM --run-dir /data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final --coverage-mode exact_once --micro-batch-size 2 --grad-accum-steps 8 --expected-global-batch 32 --token-budget 16384 --max-steps 18227 --save-every 500 --seed 20261019"
+  ],
+  "gpu_snapshot": [
+    "3, 45, 19293, 81920",
+    "5, 54, 19321, 81920"
+  ],
+  "downstream_policy": "G1, TAO/OVMOT join, native three-task OneJev and held-out evaluation remain gated on G2 final receipt; no downstream optimizer was started.",
+  "scientific_claim": "training-health evidence only; no independent metric or generalization claim."
+}

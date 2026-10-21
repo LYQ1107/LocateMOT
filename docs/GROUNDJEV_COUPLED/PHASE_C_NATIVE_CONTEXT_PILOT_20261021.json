@@ -1,0 +1,131 @@
+{
+  "status": "PHASE_C_NATIVE_G2_CONTEXT_READOUT_PILOT_COMPLETE",
+  "checkpoint": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM",
+  "adapter": "/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final/checkpoints/adapter-step012000.pt",
+  "model_sha256": "3cf09355cde8cf4877cdc76e0a72301d572c1d6263b2831f8a03368285bb65e2",
+  "candidate_manifest": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/broader_native_MOT1056_gpu7_v3_complete_manifest/clips/MOT17-02-FRCNN/frame_candidates.jsonl",
+  "gt_manifest": "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-02-FRCNN/gt/gt.txt",
+  "frames": 8,
+  "train_frames": 4,
+  "temporal_dev_frames": 4,
+  "candidate_count": 248,
+  "teacher_forced_causal_memory": true,
+  "frozen_native_g2": true,
+  "native_dlm_forward_count": 8,
+  "bridge_forward_count": 8,
+  "before": {
+    "train": {
+      "identity": 124,
+      "identity_correct": 4,
+      "admit": 124,
+      "admit_correct": 113,
+      "identity_accuracy": 0.03225806451612903,
+      "admit_accuracy": 0.9112903225806451
+    },
+    "temporal_dev": {
+      "identity": 124,
+      "identity_correct": 4,
+      "admit": 124,
+      "admit_correct": 98,
+      "identity_accuracy": 0.03225806451612903,
+      "admit_accuracy": 0.7903225806451613
+    }
+  },
+  "after": {
+    "train": {
+      "identity": 124,
+      "identity_correct": 90,
+      "admit": 124,
+      "admit_correct": 113,
+      "identity_accuracy": 0.7258064516129032,
+      "admit_accuracy": 0.9112903225806451
+    },
+    "temporal_dev": {
+      "identity": 124,
+      "identity_correct": 50,
+      "admit": 124,
+      "admit_correct": 113,
+      "identity_accuracy": 0.4032258064516129,
+      "admit_accuracy": 0.9112903225806451
+    }
+  },
+  "optimizer_steps": 12,
+  "history": [
+    {
+      "step": 1,
+      "epoch": 1,
+      "loss": 2.8496062755584717
+    },
+    {
+      "step": 2,
+      "epoch": 1,
+      "loss": 8.859270095825195
+    },
+    {
+      "step": 3,
+      "epoch": 1,
+      "loss": 6.80724573135376
+    },
+    {
+      "step": 4,
+      "epoch": 1,
+      "loss": 4.521481513977051
+    },
+    {
+      "step": 5,
+      "epoch": 2,
+      "loss": 5.462981700897217
+    },
+    {
+      "step": 6,
+      "epoch": 2,
+      "loss": 4.910493850708008
+    },
+    {
+      "step": 7,
+      "epoch": 2,
+      "loss": 3.7831881046295166
+    },
+    {
+      "step": 8,
+      "epoch": 2,
+      "loss": 3.1242806911468506
+    },
+    {
+      "step": 9,
+      "epoch": 3,
+      "loss": 5.072512149810791
+    },
+    {
+      "step": 10,
+      "epoch": 3,
+      "loss": 2.8110644817352295
+    },
+    {
+      "step": 11,
+      "epoch": 3,
+      "loss": 2.512802839279175
+    },
+    {
+      "step": 12,
+      "epoch": 3,
+      "loss": 2.3600664138793945
+    }
+  ],
+  "elapsed_seconds": 26.200358244939707,
+  "single_backbone": true,
+  "scientific_claim": "bounded native context readout learnability control; no tracking metric or generalization claim",
+  "base_model_sha256": "3cf09355cde8cf4877cdc76e0a72301d572c1d6263b2831f8a03368285bb65e2",
+  "adapter_sha256": "f0dfe4f5efd6bd2f0e8ebe8f224ae060e8b0422b36571697fb4fa9efa6d85ae2",
+  "manifest_sha256": "f682519a1cf9204ca76ea75a56dad36dbdeac26259f202551ab9f66fefd06e71",
+  "manifest_rows": 583251,
+  "runtime_root": "/data2/user/LocateMOT_GroundJEV",
+  "runtime_environment": "/data2/user/LocateMOT_GroundJEV/.venv-onejev-py310",
+  "failed_attempt": {
+    "status": "script_finalization_failure",
+    "error": "Output directory was not created before writing receipt.json.",
+    "fix": "Create the requested output directory before writing the receipt; data, split, epochs and optimizer protocol were unchanged.",
+    "scientific_result_used": false
+  },
+  "scientific_boundary": "Same-video causal teacher-memory readout control only; no tracking metric or independent generalization claim."
+}

@@ -1,126 +1,110 @@
-"""One-call GroundAnything visual bridge for the coupled runtime."""
+"""Adapter from the official GroundAnything visual forward to shared state."""
 from __future__ import annotations
 
-import hashlib
 from pathlib import Path
-from typing import Any, Optional, Sequence
+from typing import Any, Sequence
 
-import torch
-
-from ..native_features import NativeGroundFeatures
-from .region_tokens import pool_region_tokens
 from .shared_ground_state import SharedGroundState
 
 
 class G2FeatureBridge:
-    """Encode one image once and expose shared visual evidence.
+    """Call one GroundAnything feature provider per frame.
 
-    The bridge can load the formal G2 projector from an adapter-only checkpoint
-    while the full DLM bundle is still training.  This is a visual-state Phase
-    A path; it records that language LoRA is not loaded into the visual bridge
-    and therefore cannot be mistaken for a complete G2 DLM forward.
+    The provider is injected so tests can use a deterministic fixture while
+    the real runner uses :class:`NativeGroundFeatures` loaded from G2.
     """
 
-    def __init__(self, *, checkpoint: str | Path,
-                 device: str = "cuda:0",
-                 g2_adapter_checkpoint: str | Path | None = None,
-                 local_source_root: str | Path | None = None) -> None:
-        checkpoint = Path(checkpoint).resolve()
-        if not checkpoint.exists():
-            raise FileNotFoundError(checkpoint)
-        self.checkpoint = checkpoint
+    def __init__(self, provider: Any, *, model_sha256: str, device: str | None = None):
+        self.provider = provider
+        self.model_sha256 = str(model_sha256)
         self.device = device
-        self.local_source_root = Path(local_source_root).resolve() if local_source_root else None
-        self.extractor = NativeGroundFeatures(
-            checkpoint=checkpoint,
-            device=device,
-            adapter_checkpoint=g2_adapter_checkpoint,
-            source_root=self.local_source_root,
-        )
-        self.forward_calls = 0
-        self.pool_calls = 0
+        self.forward_count = 0
+        self.last_frame_id: int | None = None
 
-    @property
-    def model_sha256(self) -> str:
-        return self.extractor.model_sha256
+    @classmethod
+    def from_checkpoint(cls, checkpoint: str | Path, *, device: str = "cuda:0",
+                         model_sha256: str | None = None) -> "G2FeatureBridge":
+        checkpoint = Path(checkpoint).resolve()
+        # The manifest's base-model digest is passed explicitly.  Hashing a
+        # multi-gigabyte safetensors file during every smoke launch would make
+        # provenance checks needlessly expensive.
+        if not model_sha256:
+            model_sha256 = f"unregistered:{checkpoint.name}:{(checkpoint / 'model.safetensors').stat().st_size}"
+        from ..native_features import NativeGroundFeatures
+        return cls(NativeGroundFeatures(checkpoint=checkpoint, device=device),
+                   model_sha256=model_sha256, device=device)
 
-    @property
-    def feature_dimension(self) -> int:
-        return int(self.extractor.feature_dimension)
+    @classmethod
+    def from_native_clean_dlm(
+        cls,
+        checkpoint: str | Path,
+        adapter: str | Path,
+        *,
+        runtime_root: str | Path,
+        device: str = "cuda:0",
+        model_sha256: str,
+        task_query: str = "person",
+    ) -> "G2FeatureBridge":
+        """Build a bridge from one native G2 clean DLM forward.
 
-    def encode(self, image: Any, boxes: Sequence[Sequence[float]], *,
-               frame_id: int | str, image_key: str,
-               task_query: str = "", contextual_tokens: Optional[torch.Tensor] = None,
-               metadata: Optional[dict[str, Any]] = None) -> SharedGroundState:
-        """Run exactly one native visual encoder call for this frame."""
-        if not image_key:
-            raise ValueError("image_key is required for causal feature provenance")
-        spatial, native_metadata = self.extractor.encode(image)
-        self.forward_calls += 1
-        self.pool_calls += 1
-        pooled, _ = self.extractor.pool(spatial, native_metadata, boxes)
-        t, h, w = (int(v) for v in native_metadata["grid_thw"])
-        gh, gw = (int(v) for v in native_metadata["merged_grid"])
-        all_metadata = dict(native_metadata)
-        all_metadata.update(metadata or {})
-        all_metadata.update({
-            "bridge": "G2FeatureBridge",
-            "visual_forward_calls_for_frame": 1,
-            "bridge_total_forward_calls": self.forward_calls,
-            "bridge_total_pool_calls": self.pool_calls,
-            "language_context_source": "caller_optional_contextual_tokens",
-            "second_visual_encoder": False,
-        })
-        # NativeGroundFeatures returns [1,C,H,W].  Keep the spatial map as the
-        # shared visual token tensor and the region rows in candidate order.
-        boxes_tuple = tuple(tuple(float(v) for v in box) for box in boxes)
-        return SharedGroundState(
-            frame_id=frame_id,
-            image_key=image_key,
-            model_sha256=self.model_sha256,
-            boxes=boxes_tuple,
-            vision_tokens=spatial,
-            region_tokens=pooled,
-            image_grid_thw=(t, h, w),
-            spatial_layout=(gh, gw),
-            image_size=(int(native_metadata["image_size"][0]),
-                        int(native_metadata["image_size"][1])),
-            task_query=task_query,
-            contextual_tokens=contextual_tokens,
-            metadata=all_metadata,
-        )
-
-    def encode_from_spatial(self, *, spatial: torch.Tensor,
-                            image_size: tuple[int, int],
-                            boxes: Sequence[Sequence[float]],
-                            frame_id: int | str, image_key: str,
-                            image_grid_thw: tuple[int, int, int] = (1, 0, 0),
-                            task_query: str = "", contextual_tokens: Optional[torch.Tensor] = None,
-                            metadata: Optional[dict[str, Any]] = None) -> SharedGroundState:
-        """Build a state from an already-produced spatial map for CPU tests.
-
-        This method never calls a visual encoder and is useful for checking the
-        readout/lifecycle contract independently.  Callers must label the
-        provenance in ``metadata`` when using synthetic features.
+        Unlike the visual-only bridge, this provider obtains the pooled region
+        tokens and contextual clean-language tokens from the same DLM call.
+        The full model is frozen; only the downstream GroundJEV readout is
+        trainable.  The adapter is restored in memory and the protected G2 run
+        directory is never written.
         """
-        spatial = spatial if spatial.ndim == 4 else spatial.unsqueeze(0)
-        if spatial.shape[0] != 1:
-            raise ValueError("encode_from_spatial expects one frame")
-        pooled, _ = pool_region_tokens(spatial, boxes, image_size=image_size)
-        gh, gw = int(spatial.shape[-2]), int(spatial.shape[-1])
-        return SharedGroundState(
-            frame_id=frame_id,
-            image_key=image_key,
-            model_sha256=self.model_sha256,
-            boxes=tuple(tuple(float(v) for v in box) for box in boxes),
-            vision_tokens=spatial,
-            region_tokens=pooled,
-            image_grid_thw=image_grid_thw,
-            spatial_layout=(gh, gw),
-            image_size=image_size,
+        from .native_g2_clean import NativeG2CleanDLMProvider
+
+        provider = NativeG2CleanDLMProvider(
+            checkpoint=checkpoint,
+            adapter=adapter,
+            runtime_root=runtime_root,
+            device=device,
             task_query=task_query,
-            contextual_tokens=contextual_tokens,
-            metadata={"bridge": "G2FeatureBridge.encode_from_spatial",
-                      "visual_forward_calls_for_frame": 0,
-                      "second_visual_encoder": False, **(metadata or {})},
+        )
+        return cls(provider, model_sha256=model_sha256, device=device)
+
+    def encode(
+        self,
+        image: Any,
+        boxes: Sequence[Sequence[float]],
+        labels: Sequence[str],
+        *,
+        frame_id: int,
+        image_key: str,
+        task_query: str | None = None,
+        scores: Sequence[float] | None = None,
+        metadata: dict[str, Any] | None = None,
+    ) -> SharedGroundState:
+        if self.last_frame_id is not None and int(frame_id) <= self.last_frame_id:
+            raise ValueError("frame_id must increase monotonically for a causal bridge")
+        if hasattr(self.provider, "encode_frame"):
+            result = self.provider.encode_frame(
+                image, boxes, image_key=image_key, task_query=task_query,
+            )
+        else:
+            result = self.provider(image, boxes)
+        contextual = None
+        if isinstance(result, dict):
+            pooled, local = result["region_tokens"], result.get("local_tokens")
+            contextual = result.get("contextual_tokens")
+            provider_metadata = dict(result.get("metadata") or {})
+        elif isinstance(result, tuple) and len(result) >= 2:
+            pooled, local = result[0], result[1]
+            provider_metadata = dict(result[2] if len(result) > 2 and result[2] else {})
+            contextual = result[3] if len(result) > 3 else None
+        else:
+            raise TypeError("feature provider must return a dict or (pooled_tokens, local_tokens, metadata)")
+        self.forward_count += 1
+        self.last_frame_id = int(frame_id)
+        state_metadata = {**provider_metadata, **dict(metadata or {})}
+        state_metadata.update({"bridge_forward_count": self.forward_count,
+                               "single_backbone": True,
+                               "feature_provider": type(self.provider).__name__})
+        return SharedGroundState.from_region_tokens(
+            frame_id=frame_id, image_key=image_key, model_sha256=self.model_sha256,
+            boxes=boxes, labels=labels, region_tokens=pooled, local_tokens=local,
+            contextual_tokens=contextual,
+            image_grid_thw=None, spatial_layout={"provider": provider_metadata.get("merged_grid")},
+            task_query=task_query, scores=scores, metadata=state_metadata,
         )

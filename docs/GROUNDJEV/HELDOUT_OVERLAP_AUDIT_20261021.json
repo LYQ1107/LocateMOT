@@ -1,0 +1,27 @@
+{
+  "receipt_type": "GROUNDJEV_HELDOUT_SCOPE_OVERLAP_AUDIT",
+  "generated_at": "2026-10-21T21:12:00+08:00",
+  "project_root": "/data2/user/LocateMOT",
+  "status": "HELDOUT_SCOPE_OVERLAP_AUDIT_COMPLETE",
+  "train_manifest_sha256": "4a8e39d29a30fe1ef7df10484be57a10ab5f0baff0638130ff93fa9c1181ab6a",
+  "independent": {
+    "mot20_05_validation1657": true,
+    "rmot_single0007": true,
+    "rmot_multi0007": true,
+    "ovmot_tao105": true
+  },
+  "exact_image_overlap_counts": {
+    "mot20_05_validation1657": 0,
+    "rmot_single0007": 0,
+    "rmot_multi0007": 0,
+    "ovmot_tao105": 0
+  },
+  "scope_frames": {
+    "mot20_05_validation1657": 1657,
+    "rmot_single0007": 800,
+    "rmot_multi0007": 800,
+    "ovmot_tao105": 40
+  },
+  "protocol": "CPU-only reuse of queue_g2_independent_heldout_eval.overlap_audit; no model inference or GPU allocation",
+  "claim_boundary": "This proves image-disjoint scope registration only; it is not a detector, tracking, or TETA result."
+}

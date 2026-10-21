@@ -1,0 +1,43 @@
+{
+  "receipt_type": "GROUNDJEV_PHASE_C_REAL_G2_DENSE_COUPLING_STEP17500",
+  "generated_at": "2026-10-21T21:45:00+08:00",
+  "project_root": "/data2/user/LocateMOT",
+  "g2_adapter_step": 17500,
+  "coupled_step": 2,
+  "g2_frozen": true,
+  "formal_g2_run_untouched": true,
+  "device": "cuda:4",
+  "sequences": [
+    {"name": "DanceTrack-0001", "frames": [1, 2, 3], "boxes_per_frame": 7, "image_size": [1280, 720]},
+    {"name": "DanceTrack-0016", "frames": [1, 2, 3], "boxes_per_frame": 6, "image_size": [1920, 1080]}
+  ],
+  "visual_embed_calls": 12,
+  "independent_vlm_instances": 0,
+  "trainable_components": [
+    "IdentityBoxStateTokenProjector",
+    "MemoryTokenProjector",
+    "G2JEVReadout"
+  ],
+  "training": {
+    "train_transitions": 2,
+    "grounding_loss": [1.8689634799957275, 1.825197696685791],
+    "jev_loss": [4.367146730422974, 1.0920671820640564],
+    "total_loss": [6.236110210418701, 2.9172648787498474]
+  },
+  "official_decoder_evaluation": {
+    "receipt": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/coupled/phase_c_real_g2_official_dlm_dense_coupled_dance_step17500_v1/receipt.json",
+    "decoder": "infer.dlm.DLMInferenceEngine hierarchy_dynamic",
+    "transitions": [
+      {"sequence": "DanceTrack-0001", "transition": "1->2", "C0_recall_at_iou_0_5": 0.14285714285714285, "C2_recall_at_iou_0_5": 0.2857142857142857},
+      {"sequence": "DanceTrack-0001", "transition": "2->3", "C0_recall_at_iou_0_5": 0.14285714285714285, "C2_recall_at_iou_0_5": 0.2857142857142857},
+      {"sequence": "DanceTrack-0016", "transition": "1->2", "C0_recall_at_iou_0_5": 0.16666666666666666, "C2_recall_at_iou_0_5": 0.3333333333333333},
+      {"sequence": "DanceTrack-0016", "transition": "2->3", "C0_recall_at_iou_0_5": 0.16666666666666666, "C2_recall_at_iou_0_5": 0.3333333333333333}
+    ]
+  },
+  "repair": {
+    "file": "tools/groundjev/coupled/evaluate_real_g2_official_dlm_dense_coupled.py",
+    "change": "DanceTrack-0016 dimensions corrected from 1280x720 to 1920x1080 according to seqinfo.ini",
+    "regression": "py_compile and official evaluator completed"
+  },
+  "claim_boundary": "Bounded two-sequence development evidence only; no official MOT/RMOT/OVMOT HOTA, IDF1, TETA, or independent generalization claim."
+}

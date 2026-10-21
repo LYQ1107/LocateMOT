@@ -1,0 +1,107 @@
+{
+  "receipt_type": "GROUNDJEV_G0_G200_G1_COMPARISON_MATRIX",
+  "schema_version": 1,
+  "generated_at": "2026-10-21T21:10:00+08:00",
+  "project_root": "/data2/user/LocateMOT",
+  "mainline": "GroundJEV single-backbone coupling",
+  "claim_policy": "G0/G200 are preserved controls; G1 has not started; bounded coupling runs are engineering evidence only until independent held-out evaluation.",
+  "arms": [
+    {
+      "id": "G0",
+      "artifact": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM",
+      "status": "COMPLETE_REFERENCE",
+      "scope": "MOT20-05 legal TRAIN frames",
+      "frames": 1658,
+      "metrics": {
+        "HOTA": 0.4334411868448454,
+        "DetA": 0.6383477111664836,
+        "AssA": 0.2946547751450596,
+        "IDF1": 0.4410847447983528,
+        "IDSW": 6239,
+        "FP": 6325,
+        "FN": 98471
+      },
+      "evidence": "docs/GROUNDJEV/G0_MOT20_LONG_EXPORT_AUDIT_20261021.{json,md}",
+      "claim_boundary": "Frozen G0 reference only; not MOT20 TEST and not an independent G2 result."
+    },
+    {
+      "id": "G200",
+      "artifact": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM-LocProj200-GPU5",
+      "source_run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/ground_adaptation/localization200_control_gpu5_v1",
+      "status": "COMPLETE_CONTROL_ONLY",
+      "training": {
+        "steps": 200,
+        "physical_gpu": 5,
+        "trainable_parameters": 27267584,
+        "objective": "native dense/referring localization control",
+        "identity_loss_coefficients": {"teacher": 0.0, "native_proposals": 0.0}
+      },
+      "registered_controls": {
+        "MOT17-02-FRCNN_first4": {
+          "HOTA": 0.8409871137499395,
+          "DetA": 0.7847289159025048,
+          "AssA": 0.9186247889704194,
+          "IDF1": 0.9498069498069498,
+          "IDSW": 0,
+          "FP": 1,
+          "FN": 12,
+          "frames": 4
+        },
+        "RMOT_single8": {
+          "HOTA": 0.1877613930639993,
+          "DetA": 0.1876424658932399,
+          "AssA": 0.19270676691729327,
+          "IDF1": 0.1111111111111111,
+          "IDSW": 1,
+          "FP": 11,
+          "FN": 3,
+          "frames": 8
+        },
+        "RMOT_multi12": {
+          "HOTA": 0.2335478457286567,
+          "DetA": 0.19689523584432106,
+          "AssA": 0.28294845911073985,
+          "IDF1": 0.23529411764705882,
+          "IDSW": 4,
+          "FP": 11,
+          "FN": 20,
+          "frames": 12
+        }
+      },
+      "evidence": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/ground_adaptation/localization200_control_gpu5_v1/{owner_state.json,native_frontends}",
+      "claim_boundary": "Short registered functional controls for the historical isolated G200/localization arm; not a full-video result, not independent held-out evidence, and not the coupled GroundJEV model."
+    },
+    {
+      "id": "G1",
+      "artifact": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM-TrackProjG1-GPU5-V2",
+      "source_run": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/ground_adaptation/native_tracking200_gpu5_g1_v1",
+      "status": "WAITING_G2_CLEAN_SUCCESS",
+      "physical_gpu": 5,
+      "optimizer_updates": 0,
+      "gpu_training_started": false,
+      "evidence": "docs/GROUNDJEV/G1_GPU5_WAIT_OWNER_RELAUNCH_20261021.{json,md}",
+      "claim_boundary": "The registered waiter is live; no G1 checkpoint, control metric, or adaptation claim exists yet."
+    }
+  ],
+  "coupled_groundjev": {
+    "status": "BOUNDED_ENGINEERING_EVIDENCE",
+    "implemented_components": [
+      "official DLM dense multi-box decoder",
+      "typed JEV identity decision and lifecycle readout",
+      "identity/box-state memory token projector",
+      "fixed-candidate single-backbone video replay"
+    ],
+    "bounded_training_receipt": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/coupled/phase_c_real_g2_dense_coupling_dance_step17000_v1/receipt.json",
+    "bounded_cross_sequence_receipt": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/coupled/fixed_candidate_repair_mot20_05_cross_sequence_v1",
+    "latest_bounded_training_receipt": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/coupled/phase_c_real_g2_dense_coupling_dance_step17500_v1/receipt.json",
+    "latest_official_decoder_receipt": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/coupled/phase_c_real_g2_official_dlm_dense_coupled_dance_step17500_v1/receipt.json",
+    "claim_boundary": "The bounded runs prove the coupling path is executable but do not establish MOT/RMOT/OVMOT improvement or generalization."
+  },
+  "next_gates": [
+    "G2 Clean terminal receipt",
+    "GPU5 G1 adaptation and fixed controls",
+    "fresh G2 deployment bundle",
+    "video-disjoint held-out MOT/RMOT/OVMOT metrics",
+    "full GroundJEV coupled training and independent evaluation"
+  ]
+}

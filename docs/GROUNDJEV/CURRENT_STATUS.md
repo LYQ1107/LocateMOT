@@ -1,3 +1,17 @@
+## Live GroundJEV execution boundary — 2026-10-21
+
+The protected formal G2 Clean run is still active at event step `12638/18227`
+(latest event `2026-10-21 05:16:16 +08:00`, finite loss `0.19229372497648`).
+`final_receipt.json` is absent, so the exact G2 terminal gate remains closed.
+The two ranks remain on physical GPUs 3/5. G1 GPU5 adaptation, the G2
+deployment bundle, independent held-out evaluation, native TAO export/join,
+native three-task OneJev and YesTrack remain registered waiting owners; no
+downstream optimizer update or benchmark result is claimed. The MOT-only owner
+has been safely retired and G0 MOT20-05 remains the registered validation-half
+control. See the step-specific snapshots in
+`docs/GROUNDJEV/STATUS_SNAPSHOT_20261021_G2_STEP12633.md` and the completion
+matrix for the full gate table.
+
 ## Matched native RMOT physical-supervision foundation training started — 2026-10-16
 
 Both complete three-task24000question courses passed their real native multimodal
@@ -2080,7 +2094,23 @@ G2 terminal receipt; it has produced no G1 checkpoint or quality claim yet.
 
 The clean G2 deployment handoff is registered in
 tools/groundjev/queue_g2_clean_bundle_export.py. Its single owner waits for
-the G2 exact-once receipt and G1 completion, then performs a CPU-only merge
+the G2 exact-once receipt, independently of G1, then performs a CPU-only merge
 into models/GroundAnything-DLM-G2-CLEAN-V2; its state is
 outputs/groundjev/ground_adaptation/g2_clean_bundle_export_v1/owner_state.json.
 No bundle promotion or quality claim is made before that receipt.
+
+## GroundJEV coupled execution update — 2026-10-21
+
+The protected G2 Clean run is still the only active optimizer in this route:
+its two ranks remain on physical GPUs 3/5 and its latest observed training event
+is step 12,610/18,227 with finite loss 0.2049704. `adapter-step012500.pt` and
+`latest_training_state.pt` are present; `final_receipt.json` is not present, so
+no terminal model or metric claim is made.
+
+The G1 GPU5 waiting owner was made resumable and restarted after a safe stop of
+the old waiting process. It is live at `WAITING_G2_CLEAN_SUCCESS` with
+`resumed_wait_owner=true`, no optimizer updates, and no GPU child. The G2 clean
+bundle owner is independently waiting on the exact terminal G2 receipt, and
+the native three-task owner remains CPU-only at
+`WAITING_NATIVE_OVMOT_MANIFEST`; it treats G1 as optional evidence while still
+respecting GPU5 ownership. These owners do not alter the protected G2 run.

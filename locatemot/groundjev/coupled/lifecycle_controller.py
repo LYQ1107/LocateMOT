@@ -1,76 +1,56 @@
-"""Safe execution of model lifecycle suggestions."""
+"""Safe, reversible lifecycle state transitions."""
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Any, Iterable, Optional
 
-from .identity_memory import IdentityMemory, IdentityMemoryStore
+from .identity_memory import TrackMemory
 
 
-@dataclass(frozen=True)
+@dataclass
 class LifecycleConfig:
-    max_lost_seconds: float = 3.0
-    terminate_confidence: float = 0.8
-    terminate_after_lost_seconds: float = 30.0
+    terminate_after_lost: int = 30
+    terminate_probability: float = 0.95
 
 
 class LifecycleController:
-    """Separate model suggestions from state transitions and enforce safety."""
-
-    def __init__(self, store: IdentityMemoryStore, config: Optional[LifecycleConfig] = None) -> None:
-        self.store = store
+    def __init__(self, config: LifecycleConfig | None = None):
         self.config = config or LifecycleConfig()
 
-    def suggest(self, track: IdentityMemory, model_choice: str, *,
-                model_probability: float) -> str:
-        choice = str(model_choice).upper()
-        if choice not in {"ACTIVE", "LOST", "REACTIVATE", "TERMINATE"}:
-            choice = "LOST"
-        # A model TERMINATE is reversible until explicit evidence/timeout.  It
-        # cannot permanently delete an identity on one uncertain frame.
-        if choice == "TERMINATE":
-            if (model_probability < self.config.terminate_confidence and
-                    track.lost_duration < self.config.terminate_after_lost_seconds):
-                return "LOST"
-        if choice == "REACTIVATE" and track.state != "LOST":
-            return "ACTIVE"
-        return choice
-
-    def apply_unseen(self, *, seen_ids: Iterable[int], timestamp: float,
-                     lifecycle_outputs: Optional[dict[int, dict[str, Any]]] = None) -> list[dict[str, Any]]:
-        outputs = []
-        seen = {int(item) for item in seen_ids}
-        lifecycle_outputs = lifecycle_outputs or {}
-        self.store.mark_unseen(seen, timestamp)
-        for track_id, track in list(self.store.tracks.items()):
-            if track_id in seen:
-                continue
-            raw = lifecycle_outputs.get(track_id, {})
-            proposed = raw.get("choice", "LOST")
-            probability = float(raw.get("probability", 0.0))
-            choice = self.suggest(track, proposed, model_probability=probability)
-            if choice == "TERMINATE":
-                track.state = "TERMINATE"
-                # Keep the event in the serialized report before removal; the
-                # store deletes only after the safe timeout/threshold gate.
-                self.store.tracks.pop(track_id, None)
+    def apply(self, track: TrackMemory, action: str, *, timestamp: int,
+              confidence: float = 0.0, matched: bool = False) -> str:
+        action = str(action).upper()
+        if matched and action in {"ACTIVE", "REACTIVATE"}:
+            track.state = "ACTIVE"
+            track.lost_duration = 0
+            track.last_seen_timestamp = int(timestamp)
+            return track.state
+        if action == "LOST" or (not matched and action in {"ACTIVE", "REACTIVATE"}):
+            track.state = "LOST"
+            track.lost_duration = max(track.lost_duration + 1, int(timestamp) - track.last_seen_timestamp)
+            return track.state
+        if action == "TERMINATE":
+            # A matched observation is evidence that the identity is alive.  A
+            # TERMINATE suggestion on that observation is therefore treated as
+            # a recoverable ACTIVE transition instead of deleting a track.
+            if matched:
+                track.state = "ACTIVE"
+                track.lost_duration = 0
+                track.last_seen_timestamp = int(timestamp)
+                return track.state
+            # A single bad lifecycle logit cannot destroy a recoverable track.
+            if (track.lost_duration < self.config.terminate_after_lost or
+                    float(confidence) < self.config.terminate_probability):
+                track.state = "LOST"
+                track.lost_duration = max(track.lost_duration + 1, int(timestamp) - track.last_seen_timestamp)
             else:
-                track.state = choice
-            outputs.append({"track_id": track_id, "proposed": proposed,
-                            "applied": choice, "probability": probability})
-        return outputs
+                track.state = "TERMINATED"
+            return track.state
+        return track.state
 
-    def validate_assignment(self, assignment: dict[int, str], *, num_candidates: int) -> None:
-        used = set()
-        for candidate, token in assignment.items():
-            if int(candidate) < 0 or int(candidate) >= int(num_candidates):
-                raise ValueError("assignment candidate index out of range")
-            if token.isdigit():
-                track_id = int(token)
-                if track_id in used:
-                    raise ValueError("one persistent identity assigned twice in one frame")
-                if track_id not in self.store.tracks:
-                    raise ValueError("assignment references an unknown persistent identity")
-                used.add(track_id)
-            elif token not in {"NEW", "NO_MATCH", "REJECT"}:
-                raise ValueError(f"unsupported assignment action {token!r}")
+    def advance_unmatched(self, track: TrackMemory, *, timestamp: int) -> str:
+        """Advance an absent track, terminating only after the registered timeout."""
+        self.apply(track, "LOST", timestamp=timestamp, matched=False)
+        if track.lost_duration >= self.config.terminate_after_lost:
+            self.apply(track, "TERMINATE", timestamp=timestamp,
+                       confidence=1.0, matched=False)
+        return track.state

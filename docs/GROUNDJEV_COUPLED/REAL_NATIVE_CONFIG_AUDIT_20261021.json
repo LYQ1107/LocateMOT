@@ -1,0 +1,38 @@
+{
+  "receipt_type": "real_native_joint_config_audit",
+  "timestamp": "2026-10-21T06:04:15+08:00",
+  "queue": "scripts/groundjev/queue_real_three_task_native.py",
+  "base_config": "configs/groundjev/real_three_task_joint_v2_compact_runtime.json",
+  "issue_found": {
+    "severity": "launch_blocking",
+    "description": "The queue injected native_manifest_rows into the generated OneJev config, but train.sft rejects unknown config keys.",
+    "affected_stage": "post-G2 native three-task launch",
+    "training_started": false
+  },
+  "repair": {
+    "description": "Removed the audit-only key from the generated argparse config. The native manifest row count remains in owner_state.json and the terminal receipt contract.",
+    "file": "scripts/groundjev/queue_real_three_task_native.py"
+  },
+  "config_contract": {
+    "normalized_keys_checked_against": "OneJev train.sft.build_parser",
+    "unknown_keys_after_repair": [],
+    "max_rows": 1,
+    "max_rows_semantics": "per_microbatch hard cap",
+    "accum_rows": 16,
+    "max_rows_does_not_cap_epoch_rows": true,
+    "epochs": 1,
+    "max_steps": 0,
+    "max_steps_semantics": "full planned epoch"
+  },
+  "validation": {
+    "queue_py_compile": true,
+    "onejev_config_key_validation": true,
+    "coupled_compileall": true,
+    "coupled_import_smoke": true
+  },
+  "g2_protection": {
+    "formal_g2_run_modified": false,
+    "formal_g2_process_terminated": false,
+    "g2_dependency_gate_unchanged": true
+  }
+}

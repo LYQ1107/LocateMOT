@@ -1,0 +1,21 @@
+{
+  "status": "REAL_THREE_TASK_COMPACT_CPU_PLAN_COMPLETE_ZERO_DROP",
+  "manifest": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/real_three_task_joint_v2_compact/train.sources.json",
+  "manifest_sha256": "cbdafce9e5a587c00b053ee58ea6435db4221d38036ee7574fe8a3f0f854e54c",
+  "source_rows": 131990,
+  "max_len": 32768,
+  "trainable_rows": 131990,
+  "overlength_rows": 0,
+  "token_lengths": {"p50": 7939, "p90": 12173, "p99": 16050, "max": 28156},
+  "micro_batches": 131990,
+  "planned_steps_world_size_4": 8250,
+  "total_tokens": 1059541548,
+  "full_source_exposure": true,
+  "optimizer_updates": 0,
+  "gpu_launched": false,
+  "measurement": "registered .venv-onejev-py310 run_source_manifest_sft.py --source-training-backend fla --config real_three_task_joint_v2_compact_runtime.json --plan-only --device cpu",
+  "transform": "compact_competition_v1",
+  "v1_overlength_rows": 2099,
+  "native_ovmot_training_rows": false,
+  "metric_claim": false
+}

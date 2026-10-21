@@ -1,0 +1,61 @@
+{
+  "status": "NATIVE_OVMOT_TRAIN_JOIN_PIPELINE_READY_NATIVE_TRAIN_ARCHIVE_PENDING",
+  "project_root": "/data2/user/LocateMOT",
+  "script": "/data2/user/LocateMOT/tools/groundjev/prepare_native_ovmot_train_join.py",
+  "script_sha256": "85d8319d00acb27e18f2944c84972a21b162c3ee94b2eb0508f53371b18cb352",
+  "tao_train_annotation": "/data1/user/TAO-Amodal/annotations/train.json",
+  "tao_train_annotation_sha256": "7eb551fdeeeebc76b876ae255f91dc5662c7270a125955c5f1be2d9bd30921d0",
+  "registered_input_vocabulary": "/data2/user/LocateMOT/outputs/unified/u2/protocol/lvis_v1_vocabulary.json",
+  "registered_input_vocabulary_sha256": "85e8cd97f7009882e4e6d41b187d85eafdeab3dbe62835dfa35c4ce7bff1f68b",
+  "tao_train_scope": {
+    "images": 18274,
+    "videos": 500,
+    "annotations": 54639,
+    "base_categories": 776,
+    "base_categories_mapped_to_1203": 765,
+    "base_categories_without_vocab": [
+      62,
+      153,
+      176,
+      248,
+      355,
+      662,
+      668,
+      939,
+      950,
+      1036,
+      1161
+    ],
+    "eligible_base_annotations": 52978
+  },
+  "join_contract": {
+    "candidate_boxes_unchanged": true,
+    "official_labels_read_offline_only": true,
+    "matching": "deterministic greedy one-to-one IoU >= 0.5",
+    "native_region_feature_required": true,
+    "query_label_not_used_as_training_target": true,
+    "evaluation_labels_read": false,
+    "validation_or_test_candidate_paths_rejected": true,
+    "crop_cache_written": false,
+    "output_io": "gzip JSONL with groundjev_native_category_crops recipes"
+  },
+  "existing_native_archive": {
+    "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_runs/tao_base_novel63_full_v2_expression_none/native_candidates/frame_candidates.jsonl",
+    "exists": true,
+    "scope": "TAO validation only; 40 frames/35228 candidates; cannot pass the TRAIN gate"
+  },
+  "native_train_candidate_archive": {
+    "exists": false,
+    "required_scope": "all 18,274 TAO TRAIN images",
+    "required_before_optimizer": true
+  },
+  "verification": {
+    "py_compile": "pass",
+    "synthetic_one_frame_preflight": "pass; 1 native candidate matched, 2 category rows, native_ovmot_training_rows=false",
+    "validation_archive_scope_rejection": "pass",
+    "gpu_calls": 0,
+    "optimizer_updates": 0
+  },
+  "queue_boundary": "The real_three_task_joint_v2_compact queue remains PAUSED_FOR_NATIVE_OVMOT_ROWS; this preparation does not change its state.",
+  "integration_entrypoint": "tools/groundjev/prepare_real_three_task_joint_manifest.py --ovmot-native-manifest <manifest.json>"
+}

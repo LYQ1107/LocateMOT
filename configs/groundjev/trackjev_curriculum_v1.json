@@ -1,0 +1,165 @@
+{
+ "name": "TrackJEV joint curriculum v1 (pretrained OneJev, full legal TRAIN coverage)",
+ "index_root": "/data2/user/LocateMOT_OneJev_CVPR/outputs/groundjev/full_data_v2/legal_index_v1",
+ "task_ratio": {
+  "mot": 0.6,
+  "rmot": 0.25,
+  "ovmot": 0.15
+ },
+ "rows_per_unit": {
+  "mot_frame": 1,
+  "rmot_query": 3,
+  "ovmot_image": 2
+ },
+ "physical_units": {
+  "mot17": {
+   "task": "mot",
+   "frames": 2664,
+   "videos": 7,
+   "missing_images": 0
+  },
+  "mot20": {
+   "task": "mot",
+   "frames": 4468,
+   "videos": 4,
+   "missing_images": 0
+  },
+  "dancetrack": {
+   "task": "mot",
+   "frames": 33772,
+   "videos": 32,
+   "missing_images": 0
+  },
+  "refer_kitti_v2": {
+   "task": "rmot",
+   "queries": 6043,
+   "videos": 12,
+   "positive_identity_frames": 812764
+  },
+  "rmot26": {
+   "task": "rmot",
+   "queries": 1294,
+   "with_identity_supervision": 234,
+   "videos": 87,
+   "held_out_samples_dropped": 342
+  },
+  "aerialmind": {
+   "task": "rmot",
+   "queries": 24617,
+   "status": "READY"
+  },
+  "tao_amodal": {
+   "task": "ovmot",
+   "images": 18274,
+   "videos": 500,
+   "missing_images": 0
+  },
+  "animaltrack": {
+   "task": "mot",
+   "videos": 32,
+   "frames": 11543,
+   "status": "READY",
+   "note": "official TRAIN 32 / TEST 26 split registered; only TRAIN videos enter the curriculum"
+  },
+  "sportsmot": {
+   "task": "mot",
+   "videos": 45,
+   "frames": 57148
+  },
+  "burst": {
+   "task": "ovmot",
+   "status": "PENDING_EXTRACTION",
+   "note": "shares videos with TAO; mask-derived supervision only"
+  }
+ },
+ "ready_datasets": [
+  "aerialmind",
+  "animaltrack",
+  "dancetrack",
+  "mot17",
+  "mot20",
+  "refer_kitti_v2",
+  "rmot26",
+  "sportsmot",
+  "tao_amodal"
+ ],
+ "pending_datasets": [
+  "burst"
+ ],
+ "coverage_complete": false,
+ "planned_rows_by_task": {
+  "mot": 145203,
+  "rmot": 60501,
+  "ovmot": 36301
+ },
+ "planned_rows_total": 242005,
+ "dataset_plan": {
+  "mot17": {
+   "task": "mot",
+   "physical_units": 2664,
+   "share_in_task": 0.024308,
+   "planned_rows": 3530
+  },
+  "mot20": {
+   "task": "mot",
+   "physical_units": 4468,
+   "share_in_task": 0.040768,
+   "planned_rows": 5920
+  },
+  "dancetrack": {
+   "task": "mot",
+   "physical_units": 33772,
+   "share_in_task": 0.308153,
+   "planned_rows": 44745
+  },
+  "animaltrack": {
+   "task": "mot",
+   "physical_units": 11543,
+   "share_in_task": 0.105324,
+   "planned_rows": 15293
+  },
+  "sportsmot": {
+   "task": "mot",
+   "physical_units": 57148,
+   "share_in_task": 0.521447,
+   "planned_rows": 75716
+  },
+  "refer_kitti_v2": {
+   "task": "rmot",
+   "physical_units": 6043,
+   "share_in_task": 0.189116,
+   "planned_rows": 11442
+  },
+  "rmot26": {
+   "task": "rmot",
+   "physical_units": 1294,
+   "share_in_task": 0.040496,
+   "planned_rows": 2450
+  },
+  "aerialmind": {
+   "task": "rmot",
+   "physical_units": 24617,
+   "share_in_task": 0.770389,
+   "planned_rows": 46609
+  },
+  "tao_amodal": {
+   "task": "ovmot",
+   "physical_units": 18274,
+   "share_in_task": 1.0,
+   "planned_rows": 36301
+  }
+ },
+ "invariants": {
+  "no_held_out_video_in_training": true,
+  "rmot26_held_out_samples_dropped": 342,
+  "mot17_detector_copies_deduplicated": true,
+  "burst_videos_not_counted_as_new": true,
+  "unknown_is_not_reject": true,
+  "no_label_without_validity_flag": true
+ },
+ "notes": [
+  "exposure is planned over physical units, not over repeated question rows",
+  "a missing dataset keeps coverage_complete=false and is listed in pending_datasets",
+  "identity-level rows are produced by the native export pass, which must cite this config"
+ ]
+}

@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-10-21T09:40:51+08:00",
+  "run_name": "G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final",
+  "step": 14000,
+  "observed_event_step": 14021,
+  "max_steps": 18227,
+  "world_size": 2,
+  "physical_gpus": ["3", "5"],
+  "coverage_mode": "exact_once",
+  "manifest_sha256": "f682519a1cf9204ca76ea75a56dad36dbdeac26259f202551ab9f66fefd06e71",
+  "format": "groundanything-g2-projector-qwen3-lora-v2-strict",
+  "checkpoint": {
+    "path": "checkpoints/adapter-step014000.pt",
+    "bytes": 469243990,
+    "sha256": "0cbf160b57a4feccb11a77f602cd8ebd39e79d93d79453cb78316a1d3ef6371e"
+  },
+  "recovery_state": {
+    "path": "checkpoints/latest_training_state.pt",
+    "bytes": 469247597,
+    "sha256": "d7bbdfdecfeba789ff022d31800e1cd7d1fedb465e34e325ed738f33f66bae78"
+  },
+  "cpu_validation": {
+    "status": "PASS",
+    "torch_load_weights_only_false": true,
+    "checkpoint_step": 14000,
+    "recovery_step": 14000,
+    "manifest_matches_registered": true,
+    "contract_matches": true,
+    "optimizer_state_present": true,
+    "scheduler_state_present": true,
+    "rng_state_present": true
+  },
+  "latest_event": {
+    "step": 14021,
+    "loss": 0.05729211581638083,
+    "gradient_norm": 6.249002456665039,
+    "peak_memory_gib": 12.828890800476074,
+    "time": "2026-10-21 09:40:51 +0800"
+  },
+  "terminal_receipt_exists": false,
+  "terminal_adapter_exists": false,
+  "parent_pid": 1799359,
+  "parent_alive_at_audit": true,
+  "scientific_metric_claim": false
+}

@@ -1,0 +1,31 @@
+{
+  "receipt_type": "G2_NATIVE_EVAL_IDENTITY_REPAIR",
+  "date": "2026-10-21",
+  "entrypoint": "tools/groundjev/g2/run_g2_native_eval.py",
+  "problem": "The adapted short-control label was hard-coded to G2-PL, and its future commands resolved scripts from the historical OneJev checkout.",
+  "repair": {
+    "clean_label": "G2-CLEAN-V2",
+    "historical_label_preserved": "G2-PL",
+    "runtime_root": "/data2/user/LocateMOT_GroundJEV",
+    "runtime_scripts": [
+      "tools/groundjev/run_video.py",
+      "tools/groundjev/evaluate_video.py",
+      "tools/groundjev/evaluate_multitask.py"
+    ],
+    "provenance_gate": [
+      "G2 export receipt status",
+      "terminal adapter step 18227",
+      "Clean TRAIN manifest SHA f682519a1cf9204ca76ea75a56dad36dbdeac26259f202551ab9f66fefd06e71",
+      "merged model.safetensors SHA",
+      "adapter metadata step and manifest SHA"
+    ]
+  },
+  "validation": {
+    "py_compile": true,
+    "historical_g2_pl_identity": "G2-PL",
+    "clean_bundle_execution": "pending terminal G2 export",
+    "historical_results_overwritten": false,
+    "gpu_process_started": false
+  },
+  "claim_boundary": "This changes a future evaluation entrypoint and does not create a metric or reclassify historical G2-PL outputs."
+}

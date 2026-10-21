@@ -1,0 +1,31 @@
+{
+  "status": "J1_TERMINAL_CHECKPOINT_VALIDATED",
+  "project_root": "/data2/user/LocateMOT",
+  "run_name": "trackjev_3task_J1_v4_birth",
+  "run_root": "/data3/user/LocateMOT-runs/TrackJEV_FullDataV2/trackjev_3task_J1_v4_birth",
+  "training_manifest": "outputs/groundjev/full_data_v2/three_task_sft_v2b/rows.jsonl",
+  "registered_manifest_rows": 43533,
+  "task_rows": {
+    "identity_mot": 21168,
+    "rmot": 16677,
+    "ovmot": 5688
+  },
+  "terminal_step": 1200,
+  "target_steps": 1200,
+  "seen_rows": 19143,
+  "world_size": 2,
+  "checkpoint": "/data3/user/LocateMOT-runs/TrackJEV_FullDataV2/trackjev_3task_J1_v4_birth/adapter",
+  "checkpoint_adapter_model_bytes": 86637160,
+  "checkpoint_adapter_model_sha256": "386f1a48729a050793053b5d970938b1c657d0a175081e2ea32040f97e360437",
+  "latest_training_state": "/data3/user/LocateMOT-runs/TrackJEV_FullDataV2/trackjev_3task_J1_v4_birth/latest_training_state.pt",
+  "latest_training_state_bytes": 260255305,
+  "latest_training_state_sha256": "38078b12f7ef1682a559b489814a9121a1f8638ff4ab08138a58b73bb9a86cd4",
+  "recovery_contract": {
+    "fp32_masters_and_adam_moments_saved": true,
+    "scheduler_and_all_rng_saved": true,
+    "feature_cache": false
+  },
+  "terminal_log_line": "2026-10-19 08:01:01.263 final adapter written; done: 1200 steps, 19143 examples, 55787.6s",
+  "optimizer_live_at_audit": false,
+  "scientific_boundary": "Checkpoint completion is validated; no J1 benchmark or causal ablation claim is promoted by this receipt."
+}

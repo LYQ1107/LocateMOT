@@ -1,0 +1,38 @@
+{
+  "receipt_type": "G1_GPU5_WAIT_OWNER_RUNTIME_PATH_REPAIR",
+  "timestamp": "2026-10-21T06:10:00+08:00",
+  "queue": "tools/groundjev/queue_g1_gpu5_after_g2.py",
+  "project_root": "/data2/user/LocateMOT",
+  "runtime_root": "/data2/user/LocateMOT_GroundJEV",
+  "problem": {
+    "description": "The waiting owner was launched from the code checkout, while G1 model weights, GroundAnything sources and the ground-train Python 3.12 environment are in the runtime checkout.",
+    "old_base_model_path": "/data2/user/LocateMOT/models/GroundAnything-DLM",
+    "old_environment_path": "/data2/user/LocateMOT/.venv-ground-train-py312",
+    "old_paths_exist": false,
+    "training_had_started": false
+  },
+  "repair": {
+    "runtime_model": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM",
+    "runtime_environment": "/data2/user/LocateMOT_GroundJEV/.venv-ground-train-py312/bin/python",
+    "runtime_groundanything": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything",
+    "runtime_scripts": true,
+    "data_and_protocol_checkout_preserved": "/data2/user/LocateMOT"
+  },
+  "owner_replacement": {
+    "old_pid": 579251,
+    "old_status": "WAITING_G2_CLEAN_SUCCESS",
+    "new_pid": 631075,
+    "new_status": "WAITING_G2_CLEAN_SUCCESS",
+    "physical_gpu": 5,
+    "gpu_launched": false,
+    "optimizer_updates": 0
+  },
+  "validation": {
+    "queue_py_compile": true,
+    "runtime_model_exists": true,
+    "runtime_python_exists": true,
+    "runtime_groundanything_exists": true,
+    "g2_process_touched": false,
+    "historical_g1_artifacts_overwritten": false
+  }
+}

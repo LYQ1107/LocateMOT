@@ -44,7 +44,7 @@ class GroundAnythingAdapter:
     def adapt_response(self, response, image, image_path, mime, prompt, elapsed):
         result = parse_response(response, 'bbox')
         parsed = [(p.label, coordinates) for p in result.predictions for coordinates in p.coordinates or ()]
-        repair_mode = self.parser_policy == 'official_scoring_repaired'
+        repair_report = None
         if (not result.valid and self.parser_policy in ('official_scoring', 'official_scoring_repaired')
                 and result.finish_reason == 'stop'):
             source = ROOT/'external/GroundAnything/eval/utils/prompt_mode.py'
@@ -54,19 +54,31 @@ class GroundAnythingAdapter:
                 module = importlib.util.module_from_spec(spec)
                 sys.modules[name] = module
                 spec.loader.exec_module(module)
-            # Use the pinned official evaluator's native spatial scoring parser
-            # unchanged. Keep strict wire-format diagnostics independently.
-            parsed = sys.modules[name]._parse_gam_predictions_deduplicated(result.raw_output, 'bbox')
+            if self.parser_policy == 'official_scoring_repaired':
+                # Preserve every complete, independently valid pair while
+                # dropping malformed fragments. This never fills coordinates
+                # or reorders tuples; strict validity remains recorded below.
+                from locatemot.groundjev.native_output_repair import repair_gam_bbox_output
+                parsed, repair_report = repair_gam_bbox_output(
+                    result.raw_output,
+                    label_validator=sys.modules[name].canonicalize_phrase,
+                )
+            else:
+                # Use the pinned official evaluator's native spatial scoring
+                # parser unchanged. Keep strict wire-format diagnostics
+                # independently.
+                parsed = sys.modules[name]._parse_gam_predictions_deduplicated(result.raw_output, 'bbox')
         metadata = {'seconds': elapsed, 'prompt': prompt, 'result': result.to_dict(),
                     'parser_policy': self.parser_policy, 'strict_wire_valid': result.valid,
                     'decoder_policy': self.decoder_policy, 'request_decode_parameters': self.decode_parameters,
                     'official_scoring_recovery': not result.valid and bool(parsed),
                     'parser_repair': ({
-                        'version': 'duplicate_wire_dedup_v1',
-                        'applied': bool(repair_mode and not result.valid and parsed),
-                        'scope': 'exact duplicate phrase/coordinate tuples only; canonical syntax and geometry retained',
+                        'version': 'complete_pair_salvage_v1',
+                        'applied': bool(repair_report and parsed),
+                        'scope': 'complete object_ref/box pairs only; malformed fragments dropped; coordinates never filled or reordered',
                         'strict_parse_error': result.parse_error,
-                    } if repair_mode else None),
+                        **repair_report,
+                    } if repair_report is not None else None),
                     'source_image_path': str(image_path) if image_path else None,
                     'source_encoding': mime, 'lossy_reencoding_applied': False,
                     'coordinate_rule': 'official_grid_0_999_times_image_dimension_minus_one'}

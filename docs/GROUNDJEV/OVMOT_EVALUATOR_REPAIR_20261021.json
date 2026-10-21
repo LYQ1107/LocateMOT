@@ -1,0 +1,230 @@
+{
+  "status": "OVMOT_EVALUATOR_REPAIR_REPRODUCED",
+  "timestamp": "2026-10-21",
+  "project": "GroundJEV-MOT / LocateMOT",
+  "project_root": "/data2/user/LocateMOT",
+  "code_commit": "16e20851dfa0110a4b7f45c89abfe02a9a8194e9",
+  "evaluator": "tools/groundjev/evaluate_multitask.py",
+  "evaluator_sha256": "e750bdc972a4a4f5cb97aa8c0b298cdf5cad1a9411c7730eacf396668d716b6e",
+  "teta_commit": "b498aa87b252bfb75d7cc0d8d6435c3e1e74e4de",
+  "protocol": {
+    "official_evaluator_defaults": {
+      "OUTPUT_SUMMARY": true,
+      "OUTPUT_TEM_RAW_DATA": true,
+      "OUTPUT_PER_SEQ_RES": true
+    },
+    "historical_failures": [
+      "TETA OUTPUT_PER_SEQ_RES=False flattened all_res while summary expected COMBINED_SEQ",
+      "TETA OUTPUT_SUMMARY=False left return variable t unassigned"
+    ],
+    "GT_access": "evaluation only",
+    "official_test_labels_read": false,
+    "fresh_run_command": "python3 tools/groundjev/evaluate_multitask.py --video <manifest> --run <fresh_output>",
+    "historical_outputs_preserved": true
+  },
+  "runs": [
+    {
+      "name": "video63_simple_control",
+      "manifest": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_pilot_data/ovmot_tao_base_novel63_full.json",
+      "manifest_sha256": "31aee4281174f08bb083195f538f89af310c1e4f7c7d7715013bbc77a27dd8b0",
+      "source_inference": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_runs/tao_base_novel63_full_v3_empty_crop_cpu/simple",
+      "fresh_evaluation_output": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_runs/ovmot_evaluator_repair_v1/video63_simple_control",
+      "task": "ovmot",
+      "dataset": "tao_amodal",
+      "video_id": 63,
+      "sequence": "val/HACS/Making_a_sandwich_v_SMk4troNhwE_scene_0_0-2482",
+      "scope": "full_legal_validation_video_annotation_frames",
+      "frames": 40,
+      "result_status": "VIDEO_INFERENCE_COMPLETE",
+      "backend": "simple",
+      "checkpoint": null,
+      "predictions": 35228,
+      "GT_boxes": 160,
+      "perception_rejected_frames": [],
+      "association_replay_fps": 0.14896989940029468,
+      "metrics": {
+        "TETA": 18.64,
+        "LocA": 7.0114,
+        "AssocA": 28.618,
+        "ClsA": 20.29,
+        "LocRe": 89.375,
+        "LocPr": 7.0629,
+        "AssocRe": 30.888,
+        "AssocPr": 60.706,
+        "ClsRe": 20.29,
+        "ClsPr": 63.333
+      },
+      "base_novel": {
+        "base": {
+          "TETA": 23.372500000000002,
+          "LocA": 5.66265,
+          "AssocA": 34.0205,
+          "ClsA": 30.43485,
+          "LocRe": 90.125,
+          "LocPr": 5.70445,
+          "AssocRe": 35.983999999999995,
+          "AssocPr": 65.011,
+          "ClsRe": 30.43485,
+          "ClsPr": 95.0
+        },
+        "novel": {
+          "TETA": 9.1737,
+          "LocA": 9.7088,
+          "AssocA": 17.812,
+          "ClsA": 0.0,
+          "LocRe": 87.875,
+          "LocPr": 9.7799,
+          "AssocRe": 20.697,
+          "AssocPr": 52.095,
+          "ClsRe": 0.0,
+          "ClsPr": 0.0
+        }
+      },
+      "official_complete_dataset_result": false,
+      "evaluator_status": "OFFICIAL_REGISTERED_MULTITASK_SCOPE_EVALUATION_COMPLETE"
+    },
+    {
+      "name": "video4_native_rejected_4frame",
+      "manifest": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_pilot_data/ovmot_tao_first4.json",
+      "manifest_sha256": "e93bcae0e21ef653fc3f587017b6c207300d088c33f4f35ebb56067b48530461",
+      "source_inference": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_runs/pretrained_v1_registered_v2_evaluation_repair/ovmot_tao_first4/simple",
+      "fresh_evaluation_output": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_runs/ovmot_evaluator_repair_v1/video4_native_rejected_4frame",
+      "task": "ovmot",
+      "dataset": "tao_amodal",
+      "video_id": 4,
+      "sequence": "val/YFCC100M/v_25685519b728afd746dfd1b2fe77c",
+      "scope": "registered_short_functional_clip",
+      "frames": 4,
+      "result_status": "VIDEO_INFERENCE_COMPLETE_WITH_REJECTED_PERCEPTION",
+      "backend": "simple",
+      "checkpoint": null,
+      "predictions": 0,
+      "GT_boxes": 18,
+      "perception_rejected_frames": [
+        751,
+        781,
+        811,
+        841
+      ],
+      "association_replay_fps": 13.54344521253282,
+      "metrics": {
+        "TETA": 0.0,
+        "LocA": 0.0,
+        "AssocA": 0.0,
+        "ClsA": 0.0,
+        "LocRe": 0.0,
+        "LocPr": 0.0,
+        "AssocRe": 0.0,
+        "AssocPr": 0.0,
+        "ClsRe": 0.0,
+        "ClsPr": 0.0
+      },
+      "base_novel": {
+        "base": {
+          "TETA": 0.0,
+          "LocA": 0.0,
+          "AssocA": 0.0,
+          "ClsA": 0.0,
+          "LocRe": 0.0,
+          "LocPr": 0.0,
+          "AssocRe": 0.0,
+          "AssocPr": 0.0,
+          "ClsRe": 0.0,
+          "ClsPr": 0.0
+        },
+        "novel": null
+      },
+      "official_complete_dataset_result": false,
+      "evaluator_status": "OFFICIAL_REGISTERED_MULTITASK_SCOPE_EVALUATION_COMPLETE"
+    }
+  ],
+  "video4_full_scope_blocker": {
+    "required_manifest": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_pilot_data/ovmot_tao_full.json",
+    "required_frames": 40,
+    "available_native_artifact": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_runs/ovmot_evaluator_repair_v1/video4_native_rejected_4frame",
+    "available_scope": "registered_short_functional_clip",
+    "available_frames": 4,
+    "rejected_frames": [
+      751,
+      781,
+      811,
+      841
+    ],
+    "predictions": 0,
+    "root_cause": "OneJev native decoder output violates the strict canonical coordinate-tuple schema (duplicate or unsorted tuples); the safe parser rejects the frame instead of guessing boxes.",
+    "boundary": "No full 40-frame video4 native result is claimed. A full-scope rerun remains pending the parser/model-output repair; the four-frame receipt is diagnostic only."
+  },
+  "claims_boundary": "video63 is an independent 40-frame TAO validation control produced by the existing simple backend; it is not G2/G1/OneJev adapted-model evidence. video4 is a rejected native diagnostic.",
+  "parser_repair_implementation": {
+    "module": "locatemot/groundjev/native_output_repair.py",
+    "version": "complete_pair_salvage_v1",
+    "entrypoint": "GroundAnythingAdapter(parser_policy=official_scoring_repaired)",
+    "policy": "retain complete object_ref/box pairs; drop malformed or nested fragments; preserve raw coordinate order and values",
+    "missing_coordinates_filled": false,
+    "coordinates_reordered": false,
+    "targeted_selftest": "NATIVE_OUTPUT_REPAIR_SELFTEST_PASS",
+    "raw_native_preflight_source": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_runs/pretrained_v1_registered_v2_evaluation_repair/ovmot_tao_first4/full/frame_decisions.jsonl",
+    "raw_native_preflight": [
+      {
+        "frame": 751,
+        "strict_parse_error": "duplicate coordinate tuples are not canonical",
+        "raw_output_sha256": "14b08e2f82f15a437abfd3f5a14b6c2c010a914556b02bbc2d80db8b19176ab4",
+        "recovered_complete_pairs": 104,
+        "duplicate_count": 11,
+        "dropped_fragment_count": 2,
+        "dropped_reasons": {
+          "unexpected_separator": 2
+        },
+        "missing_coordinates_filled": false,
+        "coordinates_reordered": false
+      },
+      {
+        "frame": 781,
+        "strict_parse_error": "coordinate tuples are not in canonical sorted order",
+        "raw_output_sha256": "301084aa9ca89f6ae414a78a115a95c9bdcd89924c9adda83156d33eff131ea7",
+        "recovered_complete_pairs": 129,
+        "duplicate_count": 5,
+        "dropped_fragment_count": 0,
+        "dropped_reasons": {},
+        "missing_coordinates_filled": false,
+        "coordinates_reordered": false
+      },
+      {
+        "frame": 811,
+        "strict_parse_error": "duplicate coordinate tuples are not canonical",
+        "raw_output_sha256": "e726be2224643757f7f36cf35bc205b1192d82b12d29f4628c14bdacc57e5363",
+        "recovered_complete_pairs": 133,
+        "duplicate_count": 17,
+        "dropped_fragment_count": 1,
+        "dropped_reasons": {
+          "nested_object_before_box_end": 1
+        },
+        "missing_coordinates_filled": false,
+        "coordinates_reordered": false
+      },
+      {
+        "frame": 841,
+        "strict_parse_error": "duplicate coordinate tuples are not canonical",
+        "raw_output_sha256": "ec8cd9c4012fae0b042aa2d7db74311e657839aa663f8871c0d45d76edfba400",
+        "recovered_complete_pairs": 98,
+        "duplicate_count": 17,
+        "dropped_fragment_count": 1,
+        "dropped_reasons": {
+          "unexpected_separator": 1
+        },
+        "missing_coordinates_filled": false,
+        "coordinates_reordered": false
+      }
+    ],
+    "implementation_commit": "7d78264"
+  },
+  "live_repair_attempt": {
+    "status": "FAILED_BEFORE_PARSER_AT_FRAME_751",
+    "output_root": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_runs/ovmot_video4_repaired_native_v1",
+    "command_parser_policy": "official_scoring_repaired",
+    "error": "TimeoutError: timed out while waiting for the GroundAnything service response",
+    "service": "http://127.0.0.1:8101/v1",
+    "frames_completed": 0,
+    "interpretation": "No new native output or metric is claimed; the full video-4 repair remains blocked by service availability/latency after the conservative parser fix was installed."
+  }
+}

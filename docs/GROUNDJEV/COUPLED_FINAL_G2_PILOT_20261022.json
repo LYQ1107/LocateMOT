@@ -1,0 +1,43 @@
+{
+  "status": "GROUNDJEV_FINAL_G2_COUPLED_PILOT_AND_FIXED_VIDEO_DIAGNOSTIC",
+  "g2_training": {
+    "status": "G2_EXACT_COVERAGE_TRAINING_COMPLETE",
+    "step": 18227,
+    "manifest_sha256": "f682519a1cf9204ca76ea75a56dad36dbdeac26259f202551ab9f66fefd06e71",
+    "adapter_sha256": "cf1b5a6f626810ead94eb4e16adaf3feb6c6da3f99ca5023b6b5c234726f5742",
+    "base_model_sha256": "3cf09355cde8cf4877cdc76e0a72301d572c1d6263b2831f8a03368285bb65e2"
+  },
+  "coupled_pilot": {
+    "checkpoint": "/data3/user/LocateMOT-checkpoints/groundjev_native_three_task_v1/groundjev-native-three-task-step000240.pt",
+    "checkpoint_sha256": "94479584761abe287e5e13f5eb11151246c033897e8bbb5c7b61a77bf44378aa",
+    "receipt": "/data3/user/LocateMOT-checkpoints/groundjev_native_three_task_v1/receipt.json",
+    "manifest_sha256": "cc632115aa2b87161dc7b8413d08c3c471e1225179559a76509e7366190764c1",
+    "gpu": 3,
+    "rows": 72,
+    "task_rows": {"mot": 24, "rmot": 24, "ovmot": 24},
+    "updates_by_task": {"mot": 72, "rmot": 72, "ovmot": 72},
+    "unique_visual_inputs": 67,
+    "independent_vlm_instances": 0,
+    "peak_memory_bytes": 10043785728,
+    "elapsed_seconds": 74.163,
+    "training_sample_readout_accuracy_after": {"mot": 1.0, "rmot": 0.875, "ovmot": 0.7083333333333334},
+    "scientific_claim": "bounded coupled readout feasibility only; no benchmark generalization claim"
+  },
+  "fixed_candidate_video": {
+    "sequence": "MOT20-03",
+    "frames": 128,
+    "frame_start": 538,
+    "frame_end": 665,
+    "candidate_count": 14784,
+    "metrics": {"HOTA": 0.015177418048175517, "DetA": 0.020226474149652188, "AssA": 0.011422095799948176, "IDF1": 0.01600640256102441, "IDSW": 182},
+    "replay_fps": 13.265358590406048,
+    "receipt": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/coupled/fixed_candidate_mot20_03_final_g2_readout_v1/official_metrics.json",
+    "scope": "registered_train_only_native_source_not_benchmark_evaluation"
+  },
+  "independent_heldout": {
+    "gpu7_owner": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g2_clean_independent_gpu7_v1/owner_state.json",
+    "gpu3_owner": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g2_clean_independent_gpu3_v1/owner_state.json",
+    "status": "RUNNING_G0_MOT20_05_VALIDATION",
+    "claim": "pending terminal official receipts"
+  }
+}

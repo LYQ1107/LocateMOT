@@ -1,0 +1,62 @@
+{
+  "status": "G2_NATIVE_CLEAN_HIDDEN_STATE_PROBE_COMPLETE",
+  "checkpoint": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM",
+  "adapter": "/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final/checkpoints/adapter-step012000.pt",
+  "adapter_step": 12000,
+  "manifest_row_index": 0,
+  "row_id": "mot17_MOT17-02-DPM_000001_dense_clean_v2",
+  "image": "/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-02-DPM/img1/000001.jpg",
+  "input_token_count": 1152,
+  "image_pad_token_count": 1008,
+  "clean_embed_shape": [
+    1,
+    1152,
+    2560
+  ],
+  "clean_hidden_shape": [
+    1,
+    1152,
+    2560
+  ],
+  "image_hidden_shape": [
+    1008,
+    2560
+  ],
+  "model_trainable_parameters": null,
+  "mask_compatibility": {
+    "patched": true,
+    "reason": "drop cache_position for Transformers runtime without that keyword; no-cache DLM path",
+    "original_signature": "(config: transformers.configuration_utils.PreTrainedConfig, inputs_embeds: torch.Tensor, attention_mask: torch.Tensor | None, past_key_values: transformers.cache_utils.Cache | None, position_ids: torch.Tensor | None = None, or_mask_function: collections.abc.Callable | None = None, and_mask_function: collections.abc.Callable | None = None, block_sequence_ids: torch.Tensor | None = None, layer_idx: int | None = None, allow_is_causal_skip: bool = True) -> torch.Tensor | torch.nn.attention.flex_attention.BlockMask | None"
+  },
+  "elapsed_seconds": 25.210644299048,
+  "single_dlm_visual_forward": true,
+  "independent_vlm_instances": 0,
+  "scientific_claim": "native hidden-state alignment evidence only; no tracking metric",
+  "project_root": "/data2/user/LocateMOT",
+  "runtime_root": "/data2/user/LocateMOT_GroundJEV",
+  "base_model_sha256": "3cf09355cde8cf4877cdc76e0a72301d572c1d6263b2831f8a03368285bb65e2",
+  "adapter_sha256": "f0dfe4f5efd6bd2f0e8ebe8f224ae060e8b0422b36571697fb4fa9efa6d85ae2",
+  "manifest_sha256": "f682519a1cf9204ca76ea75a56dad36dbdeac26259f202551ab9f66fefd06e71",
+  "manifest_rows": 583251,
+  "runtime_environment": "/data2/user/LocateMOT_GroundJEV/.venv-onejev-py310",
+  "attempts": [
+    {
+      "stage": "native_visual_projector",
+      "status": "failed_then_fixed",
+      "error": "Projector pre_norm received FP32 vision features while its BF16 LayerNorm parameters expected BF16.",
+      "fix": "Matched the formal trainer with a BF16 autocast boundary around the native DLM path."
+    },
+    {
+      "stage": "hybrid_language_mask",
+      "status": "failed_then_fixed",
+      "error": "Transformers 5.17 create_causal_mask has no cache_position keyword used by the pinned GroundAnything source.",
+      "fix": "Applied the existing process-local GroundJEV compatibility shim that drops cache_position only for this no-cache call."
+    },
+    {
+      "stage": "complete",
+      "status": "passed",
+      "note": "Real image, visual tokens, clean stream and native hybrid language hidden state completed."
+    }
+  ],
+  "scientific_boundary": "Engineering evidence of native G2 hidden-state availability only; no tracking metric, no identity gain, no generalization claim."
+}
