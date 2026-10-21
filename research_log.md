@@ -1,3 +1,15 @@
+## 2026-10-21 — YesTrack entered real GPU training after permission repair
+
+The detached retry owner passed the GPU7 exclusivity gate and entered real
+native YesTrack LoRA training using the OneJev step-600 checkpoint. The 726-row
+train and 390-row validation manifests match their registered SHA-256 values;
+the run is scheduled for 273 optimizer steps and had reached step 10 with finite
+loss, slot accuracy and memory. This is training-start evidence only. The
+terminal adapter, frozen-base/fine-tuned validation and YesTrack metrics are
+still pending, and the formal three-task G2/OneJev optimizer remains at zero
+updates. Evidence:
+`docs/GROUNDJEV/YESTRACK_TRAINING_STARTED_20261021_STEP10.{md,json}`.
+
 ## 2026-10-21 — G2 step 16977 snapshot and YesTrack owner recovery
 
 The protected G2 Clean trainer remains live at step 16,977/18,227 on GPUs 3/5
