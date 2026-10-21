@@ -1,0 +1,14 @@
+{
+  "status": "G2_FORMAL_TRAINING_RUNNING",
+  "run_root": "/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final",
+  "step": 17750,
+  "max_steps": 18227,
+  "latest_event_time": "2026-10-21 21:40:20 +0800",
+  "loss": 0.09420972131192684,
+  "gradient_norm": 7.79793643951416,
+  "final_receipt_present": false,
+  "final_adapter_present": false,
+  "durable_adapter": "/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final/checkpoints/adapter-step017500.pt",
+  "durable_recovery_state": "/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final/checkpoints/latest_training_state.pt",
+  "scientific_boundary": "training-health evidence only; no MOT/RMOT/OVMOT metric claim"
+}
