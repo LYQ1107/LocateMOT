@@ -3921,3 +3921,16 @@ YesTrack 的 Yes/No 数据组织和概率读取只作为共享 GroundAnything �
 与离线参考对照；保留既有历史结果，不启动新的独立 YesTrack 长训练。正式主线仍是
 GroundAnything hidden states + typed JEV choice/NEW/NO_MATCH + persistent identity
 memory + one-to-one assignment。
+
+## 2026-10-21 — independent native OneJev owner paused and coupled replacement registered
+
+审计发现 `real_three_task_joint_native_v1_queue` 虽然尚未启动 GPU，但终态后会调用
+独立 `run_source_manifest_sft.py`，与新的单主干 GroundJEV 路线冲突。该 owner 已安全
+停在 `PAUSED_FOR_GROUNDJEV_SINGLE_BACKBONE`，原 manifest/config 和 owner 状态保留，
+没有任何 optimizer update。新增 `queue_groundjev_native_three_task.py` 与
+`train_native_three_task.py`：依赖精确 G2 Clean 终态和 native TAO 三任务 manifest，
+在 GPU4 上只加载一个 G2 主干，按 MOT/RMOT/OVMOT 均衡样本提取一次视觉 hidden state，
+训练共享 typed JEV、因果 memory projector 和小型 OVMOT category readout；不启动
+独立 OneJev/YesTrack。CPU loader、loss/backward synthetic regression、compileall 和
+11 个既有 coupling tests 均通过，尚未启动 GPU 训练，待 native manifest 与 G2 终态门
+打开后自动恢复。
