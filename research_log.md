@@ -1,3 +1,13 @@
+## 2026-10-21 — YesTrack paused to restore coupling priority
+
+The latest direction is the GroundJEV single-backbone coupling experiment, so
+the auxiliary YesTrack verifier was stopped cleanly after real GPU training
+step 20/273 (160/2178 examples). Its partial log and queue state are preserved;
+no adapter, validation receipt or metric was promoted. GPU7 is kept available
+for the independent held-out gate after G2 terminal completion. G2, G0/G200/G1
+artifacts and the native three-task queue were not modified. Evidence:
+`docs/GROUNDJEV/YESTRACK_INTERRUPTED_FOR_COUPLING_PRIORITY_20261021.{md,json}`.
+
 ## 2026-10-21 — YesTrack entered real GPU training after permission repair
 
 The detached retry owner passed the GPU7 exclusivity gate and entered real
