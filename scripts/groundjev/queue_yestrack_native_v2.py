@@ -139,7 +139,11 @@ def records_from_log() -> list[dict]:
 
 
 def run_wrapped(command: list[str], log_path: Path) -> int:
-    wrapped = [str(RUNTIME_ROOT / "tools/groundjev/run_with_resources.py"),
+    # The runtime wrapper is intentionally stored as a non-executable source
+    # file on this host. Invoke it through the pinned environment instead of
+    # relying on its mode bits, which otherwise raises PermissionError before
+    # the actual training process is created.
+    wrapped = [str(VENV_PYTHON), str(RUNTIME_ROOT / "tools/groundjev/run_with_resources.py"),
                "--gpus", str(GPU), "--", *command]
     log_path.parent.mkdir(parents=True, exist_ok=True)
     with log_path.open("w") as log:
