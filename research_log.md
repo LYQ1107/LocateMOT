@@ -3785,3 +3785,16 @@ The protected two-rank G2 Clean run advanced to event step 16501/18227 on physic
 ## 2026-10-21 — corrected dense G2 contract exposes one-box baseline
 
 审计发现此前 target-only 耦合 pilot 将 `Locate all persons` 与单目标 answer 混用，不能据此解释 G2 坐标头。新增多框 causal decoder：每个框的四个坐标受官方 token 范围约束，只在 `<|im_end|>` 停止，并在 MOT20-03/05 各 3 个真实帧保留全部 GT person boxes。冻结 G2 step17000、6 次视觉编码、无参数更新时，模型仍在每帧只输出一个合法框；IoU0.5 召回均值 MOT20-03=`0.010345`、MOT20-05=`0.004038`。结论：这是 G2 dense 前端的真实基线；后续耦合训练必须使用完整多框合同或合法 referring/visual-prompt 合同，之前 target-only IoU 结果降级为协议不匹配的接口诊断。证据：`docs/GROUNDJEV_COUPLED/PHASE_C_REAL_G2_DENSE_MULTIBOX_STEP17000_20261021.{json,md}`。
+
+## 2026-10-21 — G2 Clean live progress at step 17488
+
+The protected two-rank G2 Clean run remains live at `17488/18227` on GPUs 3/5.
+The latest event is finite (loss `0.1523213747`, gradient norm `8.3949747`, peak
+`12.828824 GiB`); recent 500-step throughput is `307.919 steps/hour`, giving a
+linear remainder estimate of about `2.40 h`. The durable recovery state and
+`adapter-step017000.pt` are present, while the terminal receipt is absent.
+G1, bundle export, native OVMOT joining, three-task optimization and held-out
+evaluation remain gated; no independent OneJev/YesTrack optimizer was started.
+This is a training-health/recoverability record only. Evidence:
+`docs/GROUNDJEV/G2_PROGRESS_LIVE_20261021_STEP17488.{json,md}`.
+
