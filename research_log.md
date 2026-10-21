@@ -3823,3 +3823,13 @@ a second VLM or relabel cached features as terminal G2 Clean output. The new
 entrypoint passes `py_compile` and `--help`; no GPU job was launched by this
 change.
 
+
+## 2026-10-21 — G2 Clean step 17500 checkpoint recovery audit
+
+在受保护的两卡 G2 训练继续运行期间，用注册 CPU 环境只读加载
+`adapter-step017500.pt` 和 `latest_training_state.pt`。两者均报告 step
+17500、world size 2、严格 G2 格式和一致的 Clean manifest SHA；adapter 与
+完整 state 各有 293 个 trainable tensors，optimizer/scheduler/sampler/RNG
+状态均存在，adapter 浮点参数全部有限。终态 receipt 仍未生成，训练进程
+未修改。证据：`docs/GROUNDJEV/G2_CHECKPOINT_PROGRESS_20261021_STEP17500.{json,md}`。
+
