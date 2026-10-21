@@ -2,8 +2,8 @@
 """Resumable native TAO TRAIN export owner.
 
 The owner waits for the protected G2 Clean terminal receipt, then uses the
-registered fallback physical GPUs 1 and 3.  Each GPU must retain at least
-48 GiB free before a service is started.  The owner may co-reside with an
+registered fallback physical GPUs 4 and 7.  Each GPU must retain at least
+32 GiB free before a service is started.  The owner may co-reside with an
 existing foreign process when that memory contract is satisfied, but it never
 terminates or modifies a foreign process.  It starts an owned GroundAnything
 service pair per shard, streams the shard with the GT-free TRAIN contract,
@@ -35,10 +35,10 @@ PARENT_MANIFEST = RUNTIME_ROOT / "outputs/groundjev/training_data/tao_native_ovm
 MERGED_OUT = RUNTIME_ROOT / "outputs/groundjev/training_data/tao_native_ovmot_train_merged_v1"
 G2_MANIFEST_SHA = "f682519a1cf9204ca76ea75a56dad36dbdeac26259f202551ab9f66fefd06e71"
 G2_STEPS = 18227
-# GPU4/6 are occupied by unrelated jobs.  GPU1/3 are the registered fallback
-# pair; the runtime probe below enforces a 48 GiB free-memory floor before any
-# owned service is launched.
-GPU_POOL = (1, 3)
+# GPU4/6 are occupied by unrelated jobs.  GPU4/7 remain in the registered
+# GroundJEV allowlist and have enough free memory for the owned service pair;
+# the runtime probe below enforces a 32 GiB free-memory floor.
+GPU_POOL = (4, 7)
 GROUND_PYTHON = RUNTIME_ROOT / "external/GroundAnything/.venv-serve/bin/python"
 STREAM_PYTHON = RUNTIME_ROOT / ".venv-onejev-py310/bin/python"
 GROUND_SERVICE = RUNTIME_ROOT / "tools/groundjev/serve_groundanything.py"
@@ -93,7 +93,7 @@ def gpu_probe(gpu: int) -> dict:
     ).stdout.strip().splitlines()[0])
     pids = [line.strip() for line in apps.splitlines() if line.strip()]
     return {"gpu": gpu, "compute_apps": pids, "free_memory_MiB": free,
-            "ready": free >= 49152,
+            "ready": free >= 32768,
             "co_resident_foreign_apps": bool(pids)}
 
 
@@ -298,7 +298,7 @@ def main() -> int:
         "failed": None,
         "other_active_jobs_untouched": True,
         "shared_memory_mode": True,
-        "resource_rule": "launch only when each selected GPU has at least 49152 MiB free; foreign processes are never terminated",
+        "resource_rule": "launch only when each selected GPU has at least 32768 MiB free and is in the GroundJEV allowlist; foreign processes are never terminated",
         "native_ovmot_training_rows": False,
         "model": str(G2_NATIVE_MODEL),
         "g2_native_bundle_receipt": str(G2_NATIVE_EXPORT_RECEIPT),
