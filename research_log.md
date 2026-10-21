@@ -3812,3 +3812,14 @@ IDSW=`18`，跨视频明显退化，说明当前 fixed-candidate readout 尚未�
 最终 GroundJEV 增益。证据：
 `docs/GROUNDJEV_COUPLED/PHASE_B_FIXED_CANDIDATE_CROSS_SEQUENCE_MOT20_05_20261021.{json,md}`。
 
+
+## 2026-10-21 — registered GroundJEV coupled video entrypoint
+
+Added `tools/groundjev/coupled/run_coupled_video.py` as the clean-checkout
+entrypoint for the already-tested fixed-candidate GroundJEV video evaluator.
+It forwards the real clip/checkpoint/output/device arguments to the existing
+single-backbone runtime, keeps the TrackEval scope explicit, and does not start
+a second VLM or relabel cached features as terminal G2 Clean output. The new
+entrypoint passes `py_compile` and `--help`; no GPU job was launched by this
+change.
+
