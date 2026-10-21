@@ -70,7 +70,9 @@ def _mean_token(tokens: torch.Tensor) -> torch.Tensor:
     return tokens.float().mean(dim=0)
 
 
-def _teacher_forced_loss(model: Any, prepared: dict[str, Any], memory: torch.Tensor) -> torch.Tensor:
+def _teacher_forced_loss(model: Any, prepared: dict[str, Any], memory: torch.Tensor,
+                         *, coordinate_token_ids: set[int] | None = None,
+                         coordinate_loss_weight: float = 1.0) -> torch.Tensor:
     """Differentiate the causal answer likelihood into the memory projector."""
     target = prepared["answer_tokens"].to(device=prepared["embeds"].device)
     if target.numel() == 0:
@@ -89,6 +91,7 @@ def _teacher_forced_loss(model: Any, prepared: dict[str, Any], memory: torch.Ten
             raise RuntimeError("training prefill did not return a KV cache")
         logits = prefill["logits"]
         losses = [F.cross_entropy(logits, target[:1])]
+        weights = [coordinate_loss_weight if int(target[0]) in (coordinate_token_ids or set()) else 1.0]
         axes = int(prefill["prepared"].position_ids.shape[0])
         batch_size = int(prefill["prepared"].inputs_embeds.shape[0])
         rope_deltas = getattr(model.multimodal_model, "rope_deltas", None)
@@ -112,8 +115,14 @@ def _teacher_forced_loss(model: Any, prepared: dict[str, Any], memory: torch.Ten
             )
             logits = model.lm_head(outputs.last_hidden_state[:, -1])
             losses.append(F.cross_entropy(logits, target[token_index + 1:token_index + 2]))
+            weights.append(
+                coordinate_loss_weight
+                if int(target[token_index + 1]) in (coordinate_token_ids or set()) else 1.0
+            )
             cache = outputs.past_key_values
-    return torch.stack(losses).mean()
+    loss_tensor = torch.stack(losses)
+    weight_tensor = torch.tensor(weights, device=loss_tensor.device, dtype=loss_tensor.dtype)
+    return (loss_tensor * weight_tensor).sum() / weight_tensor.sum().clamp_min(1.0)
 
 
 def _jev_forward(readout: G2JEVReadout, memory_projector: MemoryTokenProjector,
