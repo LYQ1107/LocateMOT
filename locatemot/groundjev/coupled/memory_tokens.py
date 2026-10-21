@@ -96,6 +96,48 @@ class IdentityMemoryTokenProjector(nn.Module):
         return self.project(torch.stack(values).to(parameter.device, parameter.dtype))
 
 
+class IdentityBoxStateTokenProjector(nn.Module):
+    """Project an identity summary together with its persistent box state.
+
+    The four state values are the previous legal GroundAnything box
+    coordinates normalized to ``[0, 1]``.  This remains a small interface
+    inside the shared G2 backbone: it carries causal tracker state into the
+    existing prompt path and does not score candidates or implement matching.
+    """
+
+    def __init__(self, input_dim: int, g2_embedding_dim: int, *, hidden_dim: int = 512,
+                 state_dim: int = 4) -> None:
+        super().__init__()
+        self.input_dim = int(input_dim)
+        self.g2_embedding_dim = int(g2_embedding_dim)
+        self.state_dim = int(state_dim)
+        self.project = nn.Sequential(
+            nn.LayerNorm(self.input_dim + self.state_dim),
+            nn.Linear(self.input_dim + self.state_dim, hidden_dim),
+            nn.GELU(),
+            nn.Linear(hidden_dim, self.g2_embedding_dim),
+        )
+
+    def forward(self, memories: Mapping[int, torch.Tensor], states: Mapping[int, torch.Tensor], *,
+                ordered_ids: Optional[list[int]] = None) -> torch.Tensor:
+        ids = ordered_ids if ordered_ids is not None else sorted(memories)
+        if not ids:
+            parameter = next(self.parameters())
+            return torch.empty((0, self.g2_embedding_dim), device=parameter.device,
+                               dtype=parameter.dtype)
+        values = []
+        for track_id in ids:
+            value = memories[int(track_id)]
+            state = states[int(track_id)]
+            if value.ndim != 1 or value.shape[0] != self.input_dim:
+                raise ValueError(f"memory {track_id} has invalid shape {tuple(value.shape)}")
+            if state.ndim != 1 or state.shape[0] != self.state_dim:
+                raise ValueError(f"box state {track_id} has invalid shape {tuple(state.shape)}")
+            values.append(torch.cat((value.float(), state.float()), dim=0))
+        parameter = next(self.parameters())
+        return self.project(torch.stack(values).to(parameter.device, parameter.dtype))
+
+
 def inject_identity_memory(
     inputs_embeds: torch.Tensor,
     attention_mask: torch.Tensor,
