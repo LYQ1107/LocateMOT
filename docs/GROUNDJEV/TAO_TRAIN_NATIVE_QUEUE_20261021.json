@@ -5,8 +5,8 @@
   "entrypoint": "scripts/groundjev/queue_tao_native_train_shards.py",
   "shard_root": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/tao_native_ovmot_train_shards_v2",
   "parent_manifest_sha256": "835adaadff282088599987de4c5bc906e7d8aca826deb7426cda05598e9db3a4",
-  "physical_gpus": [1, 3],
-  "resource_policy": "launch only when each selected GPU reports at least 49152 MiB free; foreign compute apps are recorded but never terminated",
+  "physical_gpus": [4, 7],
+  "resource_policy": "launch only when each selected GPU is in the GroundJEV allowlist and reports at least 32768 MiB free; foreign compute apps are recorded but never terminated",
   "g2_gate": {
     "steps": 18227,
     "manifest_sha256": "f682519a1cf9204ca76ea75a56dad36dbdeac26259f202551ab9f66fefd06e71",
@@ -20,8 +20,10 @@
   "native_candidate_export_started": false,
   "resource_reallocation": {
     "from": [4, 6],
-    "to": [1, 3],
-    "reason": "GPU4/6 stayed occupied by unrelated jobs; GPU1/3 each had at least 48 GiB free at the repair",
+    "trial": [1, 3],
+    "to": [4, 7],
+    "reason": "GPU4/6 stayed occupied; GPU1/3 had memory but failed the registered physical-GPU allowlist; GPU4/7 are legal and retain at least 32 GiB free",
+    "failed_trial_state": "queue_owner_state_failed_gpu1_gpu3_allowlist.json",
     "foreign_jobs_touched": false,
     "owner_resumed": true
   },
