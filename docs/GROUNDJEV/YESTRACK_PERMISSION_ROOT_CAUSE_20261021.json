@@ -1,0 +1,35 @@
+{
+  "date": "2026-10-21",
+  "project": "LocateMOT / GroundJEV",
+  "original_queue": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/coupled/yestrack_native_v2_queue",
+  "original_status": "REAL_YESTRACK_TRAINING_FAILED",
+  "original_training_started": false,
+  "original_optimizer_updates": 0,
+  "failure": {
+    "type": "PermissionError",
+    "errno": 13,
+    "message": "Permission denied",
+    "stage": "before_training_process_creation",
+    "cause": "run_with_resources.py was directly exec-ed although its mode is 0666"
+  },
+  "fix": {
+    "file": "scripts/groundjev/queue_yestrack_native_v2.py",
+    "change": "invoke run_with_resources.py through the pinned venv Python",
+    "validation": ["py_compile", "queue --help"]
+  },
+  "retry_queue": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/coupled/yestrack_native_v2_queue_retry_permission_fix",
+  "retry_status": "WAITING_GPU7_EXCLUSIVE",
+  "gpu7_gate": {
+    "foreign_compute_pid": 1839747,
+    "foreign_process_user": "szgx",
+    "foreign_used_memory_MiB": 10196,
+    "required_rule": "no compute PIDs and at least 32768 MiB free",
+    "foreign_process_touched": false
+  },
+  "g2_coupled_optimizer": {
+    "started": false,
+    "optimizer_updates": 0,
+    "gate": "WAITING_G2_CLEAN_SUCCESS"
+  },
+  "claim_boundary": "No YesTrack metric and no coupled OneJev metric is claimed by this record."
+}
