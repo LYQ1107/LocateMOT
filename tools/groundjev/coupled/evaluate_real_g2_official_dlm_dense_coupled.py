@@ -97,7 +97,7 @@ def main() -> int:
             "name": "DanceTrack-0016",
             "root": Path("/data2/user/LocateMOT/data/DanceTrack/train/dancetrack0016"),
             "gt": Path("/data2/user/LocateMOT/data/DanceTrack/train/dancetrack0016/gt/gt.txt"),
-            "width": 1280, "height": 720, "target_id": 1,
+            "width": 1920, "height": 1080, "target_id": 1,
         },
     ]
     results: dict[str, Any] = {}
