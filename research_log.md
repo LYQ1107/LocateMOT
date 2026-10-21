@@ -3895,6 +3895,14 @@ TAO OVMOT 40 帧逐项比对 G2 Clean TRAIN rows；四个范围 exact image over
 推理或 GPU 分配；该结果只清除独立性门槛，不代表任何性能指标。证据：
 `docs/GROUNDJEV/HELDOUT_OVERLAP_AUDIT_20261021.{json,md}`。
 
+## 2026-10-21 — independent held-out input preflight passed
+
+对注册的四个独立 held-out manifest 做 CPU-only 文件检查：MOT20-05 validation
+1,657 帧、RMOT single 800 帧、RMOT multi 800 帧和 TAO OVMOT 40 帧图片路径全部
+存在（missing=0），且均声明 `training_on_this_scope=false`。没有 GPU 推理或
+指标计算；这只保证终态 G2 bundle 生成后 held-out owner 不会因输入路径缺失
+失败。证据：`docs/GROUNDJEV/HELDOUT_INPUT_PREFLIGHT_20261021.{json,md}`。
+
 ## 2026-10-21 — G0/G200/G1 comparison matrix aligned with the coupled mainline
 
 按最新 GroundJEV 单主干耦合方向重新核对并登记三组对照：G0 的 MOT20-05
