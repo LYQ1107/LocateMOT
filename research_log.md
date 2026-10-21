@@ -1,3 +1,15 @@
+## 2026-10-21 — G2 step 16977 snapshot and YesTrack owner recovery
+
+The protected G2 Clean trainer remains live at step 16,977/18,227 on GPUs 3/5
+with finite loss and gradient norm; its terminal receipt and terminal adapter are
+still absent. The native TAO eight-shard owner, CPU OVMOT joiner, and native
+three-task OneJev owner remain live under their explicit gates, with zero joint
+optimizer updates. The GPU5 G1 owner is also waiting for the G2 terminal receipt.
+The repaired YesTrack retry owner had exited without a failure receipt, so it was
+resumed in a detached session and is now live at the GPU7 exclusivity gate. The
+unrelated GPU7 compute process remains untouched. Evidence:
+`docs/GROUNDJEV/STATUS_SNAPSHOT_20261021_STEP16977.{md,json}`.
+
 ## 2026-10-21 — YesTrack permission failure repaired; coupled optimizer still gated
 
 The first real YesTrack GPU7 owner reached its resource gate but failed before
