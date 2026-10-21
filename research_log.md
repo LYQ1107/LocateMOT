@@ -3876,6 +3876,15 @@ memory=`12.829 GiB`，最近 500 步吞吐约 `307.1 steps/hour`，线性剩余�
 conditioned input、Phase-A core），结果全部通过。没有启动 GPU、修改 G2 或
 改变下游等待条件；该验证只证明代码入口可重建，不构成性能结果。
 
+## 2026-10-21 — G2 latest recovery state CPU integrity recheck
+
+在正式 G2 仍运行到 event step17615、终态 receipt 尚缺失期间，用 registered
+ground-train Python 环境只读加载 `checkpoints/latest_training_state.pt`。
+state 报告 durable step17500、world size2、293 个 trainable tensors，
+optimizer/scheduler、sampler position、四类 RNG 和训练合同字段均存在；所有
+浮点 trainable tensors 有限，文件 SHA=`9aad3f6bd6b4bfcab386d1ec1e39ea03420fc0a202df0d67a447e158f4e66139`。
+未改写 checkpoint、未启动 GPU，确认正式 G2 仍可安全恢复。
+
 ## 2026-10-21 — G0/G200/G1 comparison matrix aligned with the coupled mainline
 
 按最新 GroundJEV 单主干耦合方向重新核对并登记三组对照：G0 的 MOT20-05
