@@ -1,0 +1,20 @@
+{
+  "timestamp": "2026-10-21T19:08:32+08:00",
+  "status": "REAL_YESTRACK_TRAINING_RUNNING",
+  "physical_gpu": 7,
+  "base_checkpoint": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/onejev_unified600_native_v2/ckpt-step600",
+  "train_rows": 726,
+  "train_sha256": "065337d2fedca2377d02b94e57c9eb3778aeca09aeb1a8b9463429fa15bbee66",
+  "validation_rows": 390,
+  "validation_sha256": "d63a9fb0d54b8a1dc5d12b0960a48cb75c56ab786671f955fb317e196b3033d8",
+  "planned_steps": 273,
+  "planned_examples": 2178,
+  "epochs": 3,
+  "observed_step": 10,
+  "observed_examples": 80,
+  "observed_loss": 1.3658664280083033,
+  "observed_slot_accuracy": 0.725,
+  "observed_peak_memory_gib": 7.2649993896484375,
+  "training_log": "/data3/user/LocateMOT-checkpoints/yestrack_native_v2_lora/log.jsonl",
+  "claim_boundary": "Training started only; no YesTrack metric or coupled OneJev metric is claimed."
+}
