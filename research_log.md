@@ -1,5 +1,5 @@
-Warning: truncated output (original token count: 139996)
-Total output lines: 4139
+Warning: truncated output (original token count: 140191)
+Total output lines: 4150
 
 ## 2026-10-21 — 双序列耦合训练 step48 审计：JEV 学会但 C2 坐标未学会
 
@@ -2163,7 +2163,7 @@ finite loss3.8286855,lifegradient12.4010; no droppedemptyframe rule needed.
 ### Original Ground dense/referring retention data preparation
 
 Original nine dense/referring benchmark inputs are absent locally. Official
-GroundAnything README links Skywalker0410…39996 tokens truncated… immutable单位）：2676query观测/1485unique物理帧、7926候选、50545全监督行；membership2040yes/5886no，加19条empty-presence为7945条可入下一语义课程。14042个TERMINATE标签中至少12105条可由registry证实birthGT未知；4399个unknown-birth既有assignment全部正确无强造assigned-update target，其中1251个当前候选已与released GT匹配。未知出生不等价永久离场，故不把整50545行盲加loss，先只使用query membership/presence，其余原标签完整保留作后续受控研究；不修改原正运行6000。新增source-list训练入口只读取immutable原gzip/group refs，不复制feature/图像/历史；真实8个MM问题all state/media/question/target/ID逐字段相等、原native token长度相等，实际CPUplan0drop/max26038，semantic filter2行正负均保留，原80140 exit0。
+GroundAnything README links Skywalker0410…40191 tokens truncated…际CPUplan0drop/max26038，semantic filter2行正负均保留，原80140 exit0。
 
 已启动唯一CPU full-source准备owner84666，等待原exporter3320470/start48408216完整18单位真实exit成功，随后冻结全部MOT252258行、原RMO87721行、全部Base175 category105956行、新18段语义行及原query class补充2182语义行的source-list。当前已验证first11支持的合计下界456062问题，不把等待/manifest准备称训练或完整corpus0drop证明；未来自然源比例明确不同于当前24k均衡课程。仅使用此前已预留16MiB未来课程budget，0新GPU/0optimizer；下一大训练仍需通过分布式数值/恢复验证和全实际输入计划，未自动启动未验证方法。
 
@@ -3500,3 +3500,14 @@ tracker 和 scorer 的独立留出链，先跑 G0 控制再跑 G2 与 RMOT/OVMOT
 处理入口，尚未生成官方 receipt），因此暂不报告任何 G2 独立泛化指标。held-out
 完成后由同一 owner 触发隔离的 3000-step 三任务耦合恢复队列；不重启已经完成的 G2，
 不把小样本 240-step pilot 或缓存 replay 诊断写成视频级性能提升。
+
+## 2026-10-22 — Held-out owner remains live after G2 completion
+
+复用同一 GPU3 held-out owner 等待了一个完整阻塞窗口并重新核验：owner
+`g2_clean_independent_gpu3_v1` 仍为 `RUNNING_G0_mot20_05_validation1657`，
+`failed=null`，G0 服务和视频推理进程均存活；日志已推进到 frame 2015 的
+`native_perception` 入口。MOT20-05 validation manifest 的完整范围仍为 1657 帧，
+尚未产生官方 G0 receipt，因此没有把当前帧数写成 HOTA/IDF1 结果。资源快照显示
+GPU3 的 GroundAnything 服务约占 18 GiB；GPU4/6/7 均有外部计算，未启动并行副本、
+未终止共存任务。G0 完成后 owner 仍会按注册顺序运行 G2、RMOT 和 OVMOT，之后才
+触发隔离的 3000-step 三任务耦合恢复。
