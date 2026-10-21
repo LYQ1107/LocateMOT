@@ -1,0 +1,31 @@
+{
+  "report": "tao_train_native_queue",
+  "date": "2026-10-21",
+  "project_root": "/data2/user/LocateMOT",
+  "entrypoint": "scripts/groundjev/queue_tao_native_train_shards.py",
+  "shard_root": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/tao_native_ovmot_train_shards_v2",
+  "parent_manifest_sha256": "835adaadff282088599987de4c5bc906e7d8aca826deb7426cda05598e9db3a4",
+  "physical_gpus": [1, 3],
+  "resource_policy": "launch only when each selected GPU reports at least 49152 MiB free; foreign compute apps are recorded but never terminated",
+  "g2_gate": {
+    "steps": 18227,
+    "manifest_sha256": "f682519a1cf9204ca76ea75a56dad36dbdeac26259f202551ab9f66fefd06e71",
+    "required_status": "G2_EXACT_COVERAGE_TRAINING_COMPLETE"
+  },
+  "queue_status_at_registration": "WAITING_G2_CLEAN_SUCCESS",
+  "queue_started": true,
+  "g2_native_model_bundle": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM-G2-CLEAN-NATIVE-TAO-V1",
+  "g2_native_bundle_receipt": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/tao_native_ovmot_train_shards_v2/g2_native_bundle_export_receipt.json",
+  "g2_bundle_export": "runs only after exact G2 terminal receipt; source G0 bundle is never used for native TAO candidates",
+  "native_candidate_export_started": false,
+  "resource_reallocation": {
+    "from": [4, 6],
+    "to": [1, 3],
+    "reason": "GPU4/6 stayed occupied by unrelated jobs; GPU1/3 each had at least 48 GiB free at the repair",
+    "foreign_jobs_touched": false,
+    "owner_resumed": true
+  },
+  "native_ovmot_training_rows": false,
+  "foreign_jobs_touched": false,
+  "terminal_action": "after all eight terminal shard receipts, invoke merge_tao_native_shards.py; no validation or partial stream is promoted"
+}
