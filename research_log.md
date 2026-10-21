@@ -1,3 +1,17 @@
+## 2026-10-21 — YesTrack permission failure repaired; coupled optimizer still gated
+
+The first real YesTrack GPU7 owner reached its resource gate but failed before
+creating the training process with `PermissionError(13, 'Permission denied')`.
+The actionable cause was direct execution of the mode-0666 source wrapper
+`run_with_resources.py`; the queue now invokes that wrapper through the pinned
+OneJev Python environment. Compilation and the queue entrypoint check pass. The
+terminal failed queue is preserved, and a new retry owner is waiting under a
+separate queue root for GPU7 exclusivity because an unrelated `szgx` process
+currently occupies GPU7. No process was stopped and no YesTrack metric is
+claimed. The real G2/OneJev three-task coupled optimizer remains at zero updates
+until the protected G2 Clean terminal receipt exists. Evidence:
+`docs/GROUNDJEV/YESTRACK_PERMISSION_ROOT_CAUSE_20261021.{md,json}`.
+
 ## 2026-10-21 — G2 adapter checkpoint step 16500 audited at event step 16501
 
 The protected two-rank G2 Clean run advanced to event step 16501/18227 on physical GPUs 3 and 5 and produced the durable adapter-step016500 checkpoint. The adapter and latest full recovery state both loaded on CPU with `weights_only=False`; optimizer, scheduler, sampler and RNG state are present and the registered Clean manifest SHA matches. The terminal receipt is still absent, so G2-dependent bundle export, G1, native TAO/OVMOT joining, three-task OneJev optimization and held-out/YesTrack evaluation remain gated. This is checkpoint and training-health evidence only; it does not establish a coupled JEV metric improvement. Evidence: `docs/GROUNDJEV/G2_CHECKPOINT_PROGRESS_20261021_STEP16500.{json,md}`.
