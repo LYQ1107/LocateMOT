@@ -1,3 +1,7 @@
+## 2026-10-21 — G2 adapter checkpoint step 15500 audited at event step 15737
+
+The protected two-rank G2 Clean run advanced to event step 15737/18227 on physical GPUs 3 and 5 and produced the durable adapter-step015500 checkpoint. The adapter and latest full recovery state both loaded on CPU with `weights_only=False`; optimizer, scheduler, sampler and RNG state are present. The terminal receipt is still absent, so G2-dependent bundle export, G1, native TAO/OVMOT joining, three-task OneJev optimization and held-out/YesTrack evaluation remain gated. This is checkpoint and training-health evidence only; it does not establish a coupled JEV metric improvement. Evidence: `docs/GROUNDJEV/G2_CHECKPOINT_PROGRESS_20261021_STEP15500.{json,md}`.
+
 ## 2026-10-21 — G2 Clean checkpoint step 15000 audited on CPU
 
 The protected exact-once two-rank G2 run wrote and successfully reloaded `adapter-step015000.pt` and `latest_training_state.pt` on CPU with explicit `weights_only=False`. Both report step 15,000, world size 2, the registered Clean TRAIN manifest SHA, optimizer/scheduler/RNG state and the strict G2 format. The latest event is step 15,002 with finite loss, gradient norm and memory; `final_receipt.json` is absent, so TAO/G1/held-out/three-task OneJev remain gated. This is checkpoint/recovery evidence only, not a metric claim. Evidence: `docs/GROUNDJEV/G2_CHECKPOINT_PROGRESS_20261021_STEP15000.{json,md}`.
