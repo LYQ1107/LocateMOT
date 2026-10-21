@@ -1,0 +1,24 @@
+{
+  "status": "G2_FORMAL_TRAINING_RUNNING",
+  "run_root": "/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final",
+  "step": 17728,
+  "max_steps": 18227,
+  "latest_event_time": "2026-10-21 21:33:28 +0800",
+  "loss": 0.11148384673288092,
+  "gradient_norm": 10.351326942443848,
+  "final_receipt_present": false,
+  "final_adapter_present": false,
+  "durable_adapter": "/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final/checkpoints/adapter-step017500.pt",
+  "durable_recovery_state": "/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final/checkpoints/latest_training_state.pt",
+  "throughput_steps_per_hour": {
+    "100_event_window": 286.73,
+    "500_event_window": 303.04,
+    "1000_event_window": 307.59
+  },
+  "linear_eta_hours": {
+    "100_event_window": 1.74,
+    "500_event_window": 1.647,
+    "1000_event_window": 1.622
+  },
+  "scientific_boundary": "training-health and ETA evidence only; no MOT/RMOT/OVMOT metric claim"
+}
