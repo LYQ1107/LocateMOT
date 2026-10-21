@@ -3867,6 +3867,15 @@ memory=`12.829 GiB`，最近 500 步吞吐约 `307.1 steps/hour`，线性剩余�
 所以没有启动或改写任何下游 owner。证据：
 `docs/GROUNDJEV/G2_PROGRESS_LIVE_20261021_STEP17593.{json,md}`。
 
+## 2026-10-21 — downstream coupling regression remains green during G2 wait
+
+在正式 G2 继续占用 GPU3/5、终态 receipt 尚未生成期间，对
+`locatemot/groundjev/coupled`、`tools/groundjev/coupled` 和
+`scripts/groundjev` 执行 registered Python 环境的 `compileall`；随后运行
+11 个核心 coupling 单元测试（official DLM memory、causal prefill、memory
+conditioned input、Phase-A core），结果全部通过。没有启动 GPU、修改 G2 或
+改变下游等待条件；该验证只证明代码入口可重建，不构成性能结果。
+
 ## 2026-10-21 — G0/G200/G1 comparison matrix aligned with the coupled mainline
 
 按最新 GroundJEV 单主干耦合方向重新核对并登记三组对照：G0 的 MOT20-05
