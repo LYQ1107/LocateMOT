@@ -3,11 +3,14 @@
 The resumable owner `scripts/groundjev/queue_tao_native_train_shards.py` is now
 running in `WAITING_G2_CLEAN_SUCCESS` after a resource-gate repair. The first
 owner was restricted to GPU4/6, but both remained occupied by unrelated
-processes, so it could never launch. The resumed owner uses the registered
-fallback pair GPU1/3 and launches only when each selected GPU reports at least
-48 GiB free. Existing foreign processes may remain resident under that memory
-floor; they are recorded and never terminated or modified. GPU5 remains
-reserved for G1 and GPU7 for held-out evaluation.
+processes, so it could never launch. A trial using GPU1/3 was rejected by the
+GroundJEV service's physical-GPU allowlist before any model process started;
+that failed state is preserved as
+`queue_owner_state_failed_gpu1_gpu3_allowlist.json`. The current resumed owner
+uses the legal fallback pair GPU4/7 and launches only when each selected GPU
+reports at least 32 GiB free. Existing foreign processes may remain resident
+under that memory floor; they are recorded and never terminated or modified.
+GPU5 remains reserved for G1.
 
 After the exact G2 terminal receipt, the owner first merges the terminal G2
 adapter into the private bundle
