@@ -1,5 +1,5 @@
-Warning: truncated output (original token count: 140191)
-Total output lines: 4150
+Warning: truncated output (original token count: 140328)
+Total output lines: 4159
 
 ## 2026-10-21 — 双序列耦合训练 step48 审计：JEV 学会但 C2 坐标未学会
 
@@ -2163,9 +2163,7 @@ finite loss3.8286855,lifegradient12.4010; no droppedemptyframe rule needed.
 ### Original Ground dense/referring retention data preparation
 
 Original nine dense/referring benchmark inputs are absent locally. Official
-GroundAnything README links Skywalker0410…40191 tokens truncated…际CPUplan0drop/max26038，semantic filter2行正负均保留，原80140 exit0。
-
-已启动唯一CPU full-source准备owner84666，等待原exporter3320470/start48408216完整18单位真实exit成功，随后冻结全部MOT252258行、原RMO87721行、全部Base175 category105956行、新18段语义行及原query class补充2182语义行的source-list。当前已验证first11支持的合计下界456062问题，不把等待/manifest准备称训练或完整corpus0drop证明；未来自然源比例明确不同于当前24k均衡课程。仅使用此前已预留16MiB未来课程budget，0新GPU/0optimizer；下一大训练仍需通过分布式数值/恢复验证和全实际输入计划，未自动启动未验证方法。
+GroundAnything README links Skywalker0410…40328 tokens truncated…此前已预留16MiB未来课程budget，0新GPU/0optimizer；下一大训练仍需通过分布式数值/恢复验证和全实际输入计划，未自动启动未验证方法。
 
 确定性控制v3原46094最终真实exit1，仅剩全局RNG equality：全部模型/Adam恢复逐值相等，single/four全FP32 max7.45e-9、两Adam moment relativeL2 6.93e-8/8.12e-8均过原门槛；4rank初始Python/NumPy/Torch/CUDA RNG各与独立fresh连续run不同，符合原full-finetune未统一全局seed的源码发现。v4原51437真实exit0，显式同seed0/确定性FLA：全部752393024 FP32参数single/four max3.7252903e-9，两完整Adam moment relativeL2 1.24950e-8/2.17795e-8，全4rank全模型及两Adam逐值差0；continuous/restored全部模型、moments、scheduler和所有rank RNG逐值相等，8真实MM rows/native token lengths/全局步骤完全匹配。没有放宽任何原gate，前3份失败记录/全部model和state保留。原45393真实exit0：四卡训练BF16导出由原Torch MMengine两次独立加载，474weights/原fork auto-check不变，重复概率差0；实际2updates不冒称foundation大训练或tracking收益。
 
@@ -3511,3 +3509,12 @@ tracker 和 scorer 的独立留出链，先跑 G0 控制再跑 G2 与 RMOT/OVMOT
 GPU3 的 GroundAnything 服务约占 18 GiB；GPU4/6/7 均有外部计算，未启动并行副本、
 未终止共存任务。G0 完成后 owner 仍会按注册顺序运行 G2、RMOT 和 OVMOT，之后才
 触发隔离的 3000-step 三任务耦合恢复。
+
+## 2026-10-22 — Held-out G0 control still progressing
+
+同一 owner 再次经过阻塞等待后仍然存活，状态保持
+`RUNNING_G0_mot20_05_validation1657`、`current_model=G0`、`failed=null`；
+日志已推进至 frame 2036 的 native perception（frame 2035 已完成 association，
+单帧记录约 12.98 s）。没有生成官方 metrics/receipt，也没有提前切换模型或修改
+评测范围。该进度是 G0 控制的运行证据，不是 G2 性能结果；G2/RMOT/OVMOT 和后续
+耦合训练仍由同一 owner 按顺序执行。
