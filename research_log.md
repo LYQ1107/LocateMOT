@@ -1,3 +1,14 @@
+## 2026-10-21 — G2 Clean step 17000 checkpoint audited on CPU
+
+The protected exact-once G2 run wrote adapter-step017000 and the full latest
+recovery state. Both load on CPU with explicit `weights_only=False`, report
+world size 2, the registered Clean TRAIN manifest SHA, strict training contract,
+optimizer/scheduler/sampler state and all Python/NumPy/Torch/CUDA RNG state.
+The live event stream is at step 17003/18227; the terminal receipt and terminal
+adapter remain absent, so G1, TAO, native OVMOT, joint OneJev and held-out gates
+remain closed. This is recovery evidence only. Evidence:
+`docs/GROUNDJEV/G2_CHECKPOINT_PROGRESS_20261021_STEP17000.{md,json}`.
+
 ## 2026-10-21 — YesTrack paused to restore coupling priority
 
 The latest direction is the GroundJEV single-backbone coupling experiment, so
