@@ -1,0 +1,89 @@
+{
+  "schema": "groundjev-g2-live-progress-v1",
+  "date": "2026-10-21",
+  "project_root": "/data2/user/LocateMOT",
+  "run_root": "/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final",
+  "training_contract": {
+    "step": 14331,
+    "max_steps": 18227,
+    "world_size": 2,
+    "physical_gpus": [
+      3,
+      5
+    ],
+    "coverage_mode": "exact_once",
+    "micro_batch_size": 2,
+    "grad_accum_steps": 8,
+    "expected_global_batch": 32,
+    "token_budget": 16384,
+    "seed": 20261019,
+    "manifest_sha256": "f682519a1cf9204ca76ea75a56dad36dbdeac26259f202551ab9f66fefd06e71"
+  },
+  "latest_event": {
+    "step": 14331,
+    "epoch": 0,
+    "position": 114648,
+    "micro_batches": 8,
+    "samples_global": 16,
+    "effective_tokens_global": 10933,
+    "token_budget_per_device": 16384,
+    "loss": 0.16526275919750333,
+    "gradient_norm": 9.687554359436035,
+    "peak_memory_gib": 12.828871726989746,
+    "lr_projector": 4.071909366151852e-07,
+    "lr_lora": 1.4251682781531483e-06,
+    "checkpoint": null,
+    "time": "2026-10-21 10:39:32 +0800"
+  },
+  "latest_durable_checkpoint": {
+    "adapter": "/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final/checkpoints/adapter-step014000.pt",
+    "adapter_bytes": 469243990,
+    "adapter_sha256": "0cbf160b57a4feccb11a77f602cd8ebd39e79d93d79453cb78316a1d3ef6371e",
+    "training_state": "/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final/checkpoints/latest_training_state.pt",
+    "training_state_bytes": 469247597,
+    "training_state_sha256": "d7bbdfdecfeba789ff022d31800e1cd7d1fedb465e34e325ed738f33f66bae78",
+    "checkpoint_step": 14000
+  },
+  "terminal": {
+    "final_receipt_exists": false,
+    "adapter_projector_final_exists": false
+  },
+  "g2_processes": [
+    "1799359 /data2/user/LocateMOT_GroundJEV/.venv-onejev-py310/bin/python -m torch.distributed.run --standalone --nproc_per_node=2 --master_port=29608 /data2/user/LocateMOT_GroundJEV/tools/groundjev/g2/train_g2_dlm.py --rows /data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/g2_clean_train_rows.jsonl --manifest /data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/g2_clean_train_manifest.json --checkpoint /data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM --run-dir /data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final --coverage-mode exact_once --micro-batch-size 2 --grad-accum-steps 8 --expected-global-batch 32 --token-budget 16384 --max-steps 18227 --save-every 500 --seed 20261019",
+    "1799468 /data2/user/LocateMOT_GroundJEV/.venv-onejev-py310/bin/python -u /data2/user/LocateMOT_GroundJEV/tools/groundjev/g2/train_g2_dlm.py --rows /data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/g2_clean_train_rows.jsonl --manifest /data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/g2_clean_train_manifest.json --checkpoint /data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM --run-dir /data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final --coverage-mode exact_once --micro-batch-size 2 --grad-accum-steps 8 --expected-global-batch 32 --token-budget 16384 --max-steps 18227 --save-every 500 --seed 20261019",
+    "1799469 /data2/user/LocateMOT_GroundJEV/.venv-onejev-py310/bin/python -u /data2/user/LocateMOT_GroundJEV/tools/groundjev/g2/train_g2_dlm.py --rows /data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/g2_clean_train_rows.jsonl --manifest /data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/g2_clean_train_manifest.json --checkpoint /data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM --run-dir /data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final --coverage-mode exact_once --micro-batch-size 2 --grad-accum-steps 8 --expected-global-batch 32 --token-budget 16384 --max-steps 18227 --save-every 500 --seed 20261019",
+    "2337767 /bin/bash -c python3 - <<'PY' import json, os, time, subprocess receipt='/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final/final_receipt.json' while True:     if os.path.exists(receipt):         try:             with open(receipt) as f:d=json.load(f)         except Exception as e:d={'_error':repr(e)}         print(json.dumps({'terminal':'receipt','receipt':d},ensure_ascii=False),flush=True)         break     ps=subprocess.run(\"pgrep -f 'tools/groundjev/g2/train_g2_dlm.py'\",shell=True,stdout=subprocess.PIPE,stderr=subprocess.DEVNULL,text=True)     if not ps.stdout.strip():         print(json.dumps({'terminal':'process_missing','receipt_exists':False},ensure_ascii=False),flush=True)         break     time.sleep(60) PY"
+  ],
+  "downstream": {
+    "native_ovmot_join": {
+      "status": "WAITING_COMPLETE_NATIVE_TAO_STREAM",
+      "optimizer_updates": 0,
+      "gpu_launched": false
+    },
+    "three_task": {
+      "status": "WAITING_NATIVE_OVMOT_MANIFEST",
+      "optimizer_updates": 0,
+      "gpu_launched": false
+    },
+    "g2_bundle": {
+      "status": "WAITING_G2_CLEAN_SUCCESS",
+      "optimizer_updates": null,
+      "gpu_launched": null
+    },
+    "g1_gpu5": {
+      "status": "WAITING_G2_CLEAN_SUCCESS",
+      "optimizer_updates": null,
+      "gpu_launched": null
+    },
+    "yestrack": {
+      "status": "WAITING_GPU7_EXCLUSIVE",
+      "optimizer_updates": null,
+      "gpu_launched": null
+    }
+  },
+  "claims_boundary": [
+    "training-health only",
+    "no G2 MOT/RMOT/OVMOT metric",
+    "no coupled OneJev optimizer update yet"
+  ]
+}
