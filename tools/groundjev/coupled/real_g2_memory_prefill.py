@@ -76,6 +76,8 @@ def _prepare(model: Any, collator: Any, row: dict[str, Any], device: torch.devic
     prompt_embeds = embeds[:, :answer_start]
     prompt_mask = tensor_batch["attention_mask"][:, :answer_start]
     prompt_positions = positions[..., :answer_start]
+    answer_mask = tensor_batch["attention_mask"][0, answer_start:].bool()
+    answer_tokens = tensor_batch["input_ids"][0, answer_start:][answer_mask].detach().clone()
     return {
         "embeds": prompt_embeds,
         "mask": prompt_mask,
@@ -84,6 +86,7 @@ def _prepare(model: Any, collator: Any, row: dict[str, Any], device: torch.devic
         "answer_start": answer_start,
         "input_tokens": int(tensor_batch["input_ids"].shape[-1]),
         "image_tokens_count": int(image_tokens.shape[0]),
+        "answer_tokens": answer_tokens,
     }
 
 
