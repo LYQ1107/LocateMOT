@@ -3774,3 +3774,6 @@ The protected two-rank G2 Clean run advanced to event step 16501/18227 on physic
 ## 2026-10-21 — identity + previous-box state projector 双序列耦合失败边界
 
 新增小型 `IdentityBoxStateTokenProjector`，将上一帧共享视觉摘要和持久框坐标一起插入 G2 causal prompt；冻结 G2 step17000，MOT20-03/05 共 6 个 transition，真实 GPU 更新 12 步。Grounding loss 降至 1.70039，typed JEV MATCH/ADMIT/Yes-No/ACTIVE 在两序列均为 1.0，但 C2 greedy 框 IoU 仍为 0，首坐标仍输出 `<1>`/`<0>`。结论：只加入数值框状态仍不足以控制 G2 坐标头，下一步需要合法的 coordinate-output adaptation/候选条件训练，而不是盲目增加 JEV 步数。证据：`docs/GROUNDJEV_COUPLED/PHASE_C_STATE_CONDITIONED_MEMORY_STEP17000_20261021.{json,md}`。
+## 2026-10-21 — corrected dense G2 contract exposes one-box baseline
+
+审计发现此前 target-only 耦合 pilot 将 `Locate all persons` 与单目标 answer 混用，不能据此解释 G2 坐标头。新增多框 causal decoder：每个框的四个坐标受官方 token 范围约束，只在 `<|im_end|>` 停止，并在 MOT20-03/05 各 3 个真实帧保留全部 GT person boxes。冻结 G2 step17000、6 次视觉编码、无参数更新时，模型仍在每帧只输出一个合法框；IoU0.5 召回均值 MOT20-03=`0.010345`、MOT20-05=`0.004038`。结论：这是 G2 dense 前端的真实基线；后续耦合训练必须使用完整多框合同或合法 referring/visual-prompt 合同，之前 target-only IoU 结果降级为协议不匹配的接口诊断。证据：`docs/GROUNDJEV_COUPLED/PHASE_C_REAL_G2_DENSE_MULTIBOX_STEP17000_20261021.{json,md}`。
