@@ -1,3 +1,7 @@
+## 2026-10-21 — single-backbone native G2 context pilot at adapter step 17000
+
+Following the new GroundJEV single-backbone direction, I ran a bounded native G2 context readout pilot on physical GPU7 without touching the protected G2 Clean two-rank run. The official GroundAnything DLM was restored with the step-17000 G2 adapter and encoded 16 MOT17-02-FRCNN TRAIN frames exactly once per frame (16 native DLM/bridge forwards). Eight frames were used for training and eight for a same-video temporal development split; the frozen G2 outputs and teacher-forced previous-frame GT-matched region tokens fed the typed GroundJEV readout. Eighty optimizer updates reduced identity accuracy from 0.052419 to 0.750000 on the train prefix and from 0.032258 to 0.536290 on the temporal development split; admit accuracy changed from 0.653225 to 0.927419 and 0.596774 to 0.915322. These are bounded learnability controls only: no HOTA/IDF1/IDSW, independent-video, or learned identity-conditioned box claim is made, and teacher-forced causal memory remains a limitation. Evidence: `docs/GROUNDJEV_COUPLED/PHASE_C_NATIVE_CONTEXT_PILOT_STEP17000_20261021.{json,md}`.
+
 ## 2026-10-21 — G2 Clean step 17000 checkpoint audited on CPU
 
 The protected exact-once G2 run wrote adapter-step017000 and the full latest
