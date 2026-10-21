@@ -1,3 +1,6 @@
+Warning: truncated output (original token count: 135078)
+Total output lines: 3850
+
 ## 2026-10-21 — 双序列耦合训练 step48 审计：JEV 学会但 C2 坐标未学会
 
 MOT20-03 与 MOT20-05 各 5 帧、6 个 transition，共恢复到 step48；冻结 G2 step17000，10 帧各一次视觉编码。teacher-forced Grounding loss 从 4.6592 降至 1.1808，两个序列的 typed JEV MATCH/ADMIT/Yes-No/ACTIVE 达到 1.0，但实际 greedy C2 框在两个序列平均 IoU 仍为 0.0000，C0 也为 0.0。部分 C2 输出合法但坐标接近冻结基线，部分出现前缀/解析失败。结论：离散 JEV 监督已可学习，单 token memory 到 G2 坐标生成的优化尚未打通；停止无界加步，转向 coordinate-token 级诊断/目标、wrong-memory 与多身份竞争。证据：`docs/GROUNDJEV_COUPLED/PHASE_C_REAL_G2_COUPLED_MULTISEQUENCE_STEP17000_20261021.{json,md}`。
@@ -2475,190 +2478,7 @@ B2actual300trainingcomplete17.325s CPU,5942795params/4361991changed elements/nat
 
 B2v2full1203terminalvalidated: all1203decodedframes/same13664nativecandidates/all27rejectedframes; originalTrackEvalHOTA.0124341105732 IDF1.00625459896983 IDSW250 FP455 FN4191. Completegeometry/order/imageframeagreement andperframeIDuniqueness checked. Strongnegativebaseline(majorGTmisses), noIDSWorJEVcausalitysuccessclaim. Actual17.325secondtraining/5942795params/4361991updates/reload0 retained. Resumed198prefix bypassescorecompute; removedinvalid standaloneassociationFPS metadata (raw26.915 retainedasresumedscopeencodingtimingonly), preservedrawreceipts andreranunmodifiedofficialscorer: allaccuracymetricsexact. NoE2Espeedclaim. Naturalchallenge manifest nowlinksitsalreadyregisteredMOT20protocol forunchangedofficialevaluation; images/GT/scopeunchanged.
 
-Researchplan fullRMOT: twoexistinglegal0007full800frame expression scopes, firstgenuinefreshsharedCompactsinglepass throughoriginalDLM+actualROI+memory+video; include sidearchivewrites inactualE2Etime, remoteinitializationexcludedasinpriorFull. Newoptional run_video currentnativearchive preservesfeaturesonce andallowsgeometryonlylogs; olddefault/replayprotocolunchanged. Exactsame archived candidates thenSimple/pretrainedOne/500/teacher600/native600 nativeNoul.5/v3controls, officialqueryTrackEval andphysicalIDposthoc. SingleGPU5owner waits bothverified600childrenexit+valid600master/done beforeallocation, independentGPU4shortcontrols/nativefull9 unaffected. Budgetnew2GiB acrossbothsources, conservativeprior16.289GB+TAO1.886GB+new2.147GB=20.323GB<25GiB; no duplicatedfeaturesincontrol logs/datasetcache/oldU2queue. Actualnative archive/replay/cropmemory roundtrip targetedregression onrealDT4frameROI source beforequeue. No fullRMOTdataset/CompactFullreasoning/standalonereplayE2Eclaims.
-
-Currentnativearchive regressionpassedactualDT4frames/13nativeROI2560candidates/742680bytes: botharchival and replay geometry/output/fullmemory states exactlyequal, GT/futurereadfalse, replayE2EFPS correctlynull. BothregisteredfullRMOT0007single/multi manifests validateall800images0..799/currentlegalv2validation withoutopeningGT. NewfullRMOTowner preconditionbindsthisactualreport; featurebudgetwithprobe20323665338bytes<25GiB. QueuewaitsGPU5traininghandoff, nochangescurrenttraining/nativefull9/TAOCPU owners.
-
-RawTAO40bothcontrolscomplete: SimpleTETA18.640/AssocA28.618/ClsA20.290 vs sharedCompact14.517/5.1478/30.314. BothNovelClsA0; CompactBaseTETA18.93545/Novel5.679 <Simple23.3725/9.1737. CandidateGTrecall.91875 both, butcorrectphysicalanchor32optioncoverage.156716 (Simple1). No promotion. GTfreeexactcoordinateaudit:35228rawnativecandidates but7343uniquegeometry,27885aliasobservations(79.1558%),max188samebox; actualduplication isactionableroot. Preregister separateproposalpolicycontrol: exactxyxyequality, preserveall35228aliasindices/labels/scores andall520queries/40frames, representativefirstnativeboxwithidenticalROIsasserted; originalrawsource/resultsunchanged. SameSimple/CompactCPUweights/officialTETA, noIoUthreshold/topK/NMS/GTselection andnoassociation-only/JEVcausalclaim. Newrawsourcecap1GiB alongside2GiBRMO sources; cumulativeconservative21397407162bytes<25GiB. NoextraGPU/training/perception.
-
-Researchplan tocompleteexplicit14.5task-sharingmatrix: foursemanticCompactarms MOT/MOT+RMO/MOT+OV/allthree, sameMOT-onlynative300initialstem andseed0newsemanticheads (notjointpretrained), sameexistingbroadnative536pack, same1200CPUFP32updates/loss/optimizer/params. Optionaltrainerdevice/tasks/per-task-stream flags leaveolddefaults unchanged. Independenttaskseed0+index samplers makecommonselectedexample-IDprefixes identical; exposure1200MOTvs600pairs/400triple andtokensdiffer, sofixedbudget comparisonnotisolatednegativeinterference. Existingolderactorhistoriesexplicitlyoffpolicy; no newfeaturecache/GPU/GTvaltraining/NovelGT. PlannedofficialcompleteDT1203/rawTAO40+shortRMO8/12, thencomplete800RMOafterexistingfreshsourcesready; preserveoriginalrawcandidateprotocol, notaliasconfound. CPUfullstate/Adam/RNG/sampler100step snapshots forunfinished-unitresume.
-
-Actualsubsetpackpreflight536groups (MOT149/RMO325/OV62),142actualnativeRMOgroups,1203classes. Fourarms readoneexactsemanticinitialization checkpoint constructedfromMOT300+seed0heads, eliminatingpriorjointtraining. Separateper-task drawprefixes verifiedfromactualsampleIDs aftertraining. Evaluateall1203DT/all40rawTAO +RMO8/12 beforeblockingforfresh800sources; latterwaitscompleteactualsource, notcompletionofslowerGPUFullcomparators. No sourcefeaturefilescopied; onlysmallmodel/Adam/RNGcheckpoints added.
-
-Tasksubsetallfouractual1200CPUtrainingscompleted/1146511params each/three-taskcheckpointreload0; actualsampleprefixesMOT400/RMO400/OV400exact, same sharedMOT300+seed0semantic initialization. FirstMOTonlyfull1203officialHOTA.1963864227 IDF1.2078625235 IDSW348 FP1089 FN1765; othercohortarms stillpending, notcomparedtolegacy2400budget26.316. Configurationerror discoveredbeforeunfinishedshortRMO scoring: v1pointedoldFullrawlogswithoutnativeROI. Existingjoint1200beforelogs haveexactsame8/12frames11/16boxes/labels/scores andreal2560ROIs; targetedall-rowmappingpasses. Preservev1badplan/oldmanagerstate, SIGTERMonlyverifiedCPUmanager1915707, leaveactualMOTinference1925936+ffmpeg1926238alivewithsameoutputs; newv2manager waitsoldgroupfinish andusesallfourcompletedcheckpoints/completedunits, no trainingorvalidinference restart. Sourcecontractproof saved.
-
-ExactaliasTAO40bothcontrolscomplete: SimpleTETA22.556/LocA22.871/AssocA26.472/ClsA18.325; sharedCompact21.773/23.273/9.6266/32.419 vsraw14.517/8.088/5.1478/30.314. Compactcorrectbirthanchoroptioncoverage.156716->.530973, existingaccuracy.052239->.088496; stillunderSimpleTETA22.556/AssocA26.472. BothNovelClsA0; no promotion. Rawvs7343exactgroups physicalproposalIoU.5 one-to-one recallboth147/160=.91875 (GTposthocaftergrouping), allboxsetsequal; source402723754bytes withall35228aliases. Separateproposal/representativelabelpolicy, notpureJEVassociationclaim. Nextscientificgaps retain: conventionalmatchedvisual/semanticinformation baseline, Compact32optionretrieval/contextscaling underactualmissing-option failure, samevideo/hardware genuineFull-vs-CompactE2E, Groundvisual-only/jointtracking-aware factorial andnativefull9retention, furtherown-historymultiTaskresearch. Do notdeclarefullgoalcomplete.
-
-SharedFullteacher600trainingterminalverified byexistingGPU4controlowner:600retainedupdates/2400examples, latest9,029,141,401byteFP32AdamRNGstate. Actualrestored450mastersdifference0; newtail150updates/600examples took3595.081s. Nativeforkdonecounterdividescumulative2400bytailtime(.66758) so notvalidtail/whole-stageFPS; curateactualtail.166895examples/s, nofull-stagewallclaim. Original475logloss1.404405526 vsreplayed4751.402670712 delta.001734814,slotaccsame.78/gradnormdelta.226344; restorestateexact doesnotprovebitwiseCUDAtrajectory. Causeunestablished; source deterministicrowseededrender/sampler andkernels/tolerances unchanged, no masking/reset/retraining. Original25unretainedloggedupdates replayed,totalobservedwork>=625updates; rawlogs preserved. Newcompletionvalidator recordslimitations. Native600arm andthree-taskofficial600scores pending. Same-policybefore500RMO8/12bothHOTA0 duetoexplicitnativequerygate, notcomparabletolegacyungated24.886/21.425.
-
-E2Eresearchplan addressesactualmissingcomparison: run Fullnative600 andcurrent sharedCompact onexact samelegalRMO0007single800frames/GPU5, freshisolatedoriginalDLMserviceforeach andsingleclientrequestcounterreset (priorisolated96repeatvalidated). FullactualV3crops vsCompactactualnativeROI path, notcached/syntheticlatencies; timeallIO/nativeDLM/ROI/memory/sourcearchive/render/encode excludespreloadedmodel/serviceinitializationboth. Strictactualdetectorbox/label/score/parserstatuspairingguard, every800frame included; ifdifferent preservefailure/nopairclaim. FixedFullthenCompactorder/singlerepetition/concurrentotherwork limitations explicit. Wait completeoldfullRMOowner exit+ownedservicegroups empty, no overlapGPU5/newtraining. Newsourcecap1GiB, cumulativeconservative22471148986<25GiB; sampledownedtotalVRAM/coreallocatorpeak/processRSS andfrozenOneCPUtable footprint included.
-
-TasksubsetDTfull1203fourarms nowcomplete HOTA/IDF1/IDSW/FN: MOT19.6386/20.7863/348/1765; M+R6.7597/9.8843/80/3865; M+OV21.2285/20.0809/414/1006; triple19.3119/17.8267/422/1372. Mixedoutcome, M+Rmisscollapse butMOTexposure600vs1200confoundsinterference. PreregistercomplementaryMOT400/600CPUcontrols sameactualsharedinitialization/source/per-taskrng/constantoptimizer/loss, assertactualsampleIDs+loggedloss exactprefixofMOT1200; thenfull1203fixednativeTrackEval. MatchMOTexposureofpairs/triple whiletotalupdatesdifferent, keeporiginalfixedtotal-budgetmatrixunchanged. No newGPU/queries/featurefiles; reportallfixedbudgets notselectbest.
-
-PairedE2E canonicalcontract onactual4nativeframes/13ROIobjects passes acrossfeatures+geometrylogs; resourceprobeactualCompactCPU4frames records0GPUalloc andcorrect1146511core plus248320x1024BF16frozenCPUtable508559360nominalbytes (notresidentRSS). Newruntime peakRSS/UTC/gitcommit fields tested; no freshnativeSpeed claim fromreplayprobe. Queuedpairedowner1953808/session87824 waits priorGPU5fullRMOcomplete, ports8106/8114, onefreshserviceperarm. Optionaladditionalmetadata enrichments afterownerlaunch do notchangeinference/pairingprotocol; rawchildresultreports areauthoritativeforcomponentmemory. Legal0007v2validation800manifest checkedagainwithoutopeninglabels/images.
-
-2026-10-15：四组完整MOT评测均完成，固定总1200步下 HOTA 为19.639/6.760/21.228/19.312。M+RMOT漏检3865，不能把IDSW减少当成改善；M+OV提升HOTA但IDF1/IDSW变差。因MOT实际更新量1200/600/600/400不同，补充MOT400/600同前缀训练量对照，保持原矩阵不变。已启动单一阻塞CPU owner1957205/session71241；真实端到端同视频/同GPU对照 owner1953808/session87824 仅排队等待GPU5，不与现有任务争用。新增RSS/UTC/git记录已用真实4帧Compact重放校验；未将该重放当成E2E。
-
-研究计划：按任务书14.2，在同一已训练共享Compact、同一候选/三份native外观/几何/文本语义输入下，比较几何固定关联、几何+三记忆cos固定关联、固定关联+学习辅助头、学习关联+固定辅助头及原学习参考。所有语义分类/成员判断函数权重相同；状态由各策略自身逐帧生成，不做GT回填。固定分数明确非概率，常数沿用已有.5/.5与NEW=.3；这是一组冻结策略干预，不冒充重新训练最优传统模型或JEV独有证明。计划完整DT1203、原始/精确合并TAO40、RMO8/12，CPU、不新增feature源。已观察完成MOT耗时408.52s中350.69s、原始TAO1152.83s中773.39s在已测关联块之外，不能全部归因于状态导出。新CPU对照可选逐帧决策trace+最终无损二进制状态，保留所有状态字段，先验证序列化/下一帧一致；原默认JSON/每帧导出和已注册E2E保持不变，不比较这组存储不同的速度。
-
-MOT400/600补充对照已验证完整1203帧/13664候选/27拒绝帧：HOTA13.3173/13.9788，IDF1 17.7572/13.4107，IDSW174/312，FN3483/2566。实际样本ID及已记录loss与MOT1200前缀完全一致(delta0)，各1146511参数/三任务reload0。同MOT更新量下，M+R600为6.7597、M+OV600为21.2285、三任务400为19.3119；总更新量仍不同，不能直接归因纯任务梯度干扰。无模型提升/全数据集/E2E声明。
-
-固定关联及存储回归完成：真实4帧全预测/状态、完整序列化字段和恢复后真实第5帧一致；三个任务在同状态下语义/保留辅助输出一致，固定外观分数与现有FeatureDecision差1.11e-16。新注册五种冻结策略×完整DT1203/短RMO8与12/TAO原始及alias40的CPU序列对照；使用同一checkpoint/原始native2560三记忆/同一文本语义头，逐帧自身历史，无GT修正。所有新组都用binary-final存储且不报告跨存储速度。run_video最终完整状态导出移入pipeline计时，修正旧版重复最终导出未计时的问题；既有速度原样保留，未来配对双方均按修正口径。
-
-冻结关联对照owner1986817/session48561已启动，单一阻塞shell等待所有25个单位；所有CPU比较均新跑同设备参考。逐观察posthoc诊断各约5MB保留本地，Git发布精简统计/官方全指标/实际运行结果和代码，不复制大逐观察列表；完整逐帧trace、视频、状态仍在原输出目录。
-
-研究计划：针对Compact32身份短名单遗漏，先在原始/alias TAO40已完成轨迹上真实因果重放，核对全部原始输出/状态和32-ID排序一致，再做同一轨迹的32/64/128排序覆盖诊断；GT只读取已完成posthoc birth-anchor归属，绝不输入tracker修正历史。覆盖上限不冒充更大context实际精度。后续固定同checkpoint/16候选组，预注册32/64/128实际完整DT与aliasTAO对照；上下文增大超出原训练32选项分布，会改变softmax/语义/状态，必须如实报告。
-
-已验证aliasTAO40因果重放全部7343候选/原始输出/状态，113个已有正确birth-anchor事件下32/64/128覆盖53.097/60.177/74.336%，最大420活跃身份、正确最小rank最大395。说明128也非完整覆盖，不能用覆盖率当精度；原始TAO排名审计owner2000016/session86629仍按原单一阻塞命令运行。真实2帧高密度检查：第2帧前251live IDs，64/128各候选选项数量正确，默认32与显式32全预测/状态一致。后续完整DT1203与aliasTAO40、学习/固定cos两策略×64/128共8新单位，CPU owner2003663/session5404等待当前affinity全部完成并退出，复用并重新核验32参考，不新增feature/GPU。
-
-Full teacher600四个同策略短测均完成：MOT HOTA30.868->30.601，单RMO0->0，多RMO0->9.945，BaseTAO TETA11.981->52.181/AssocA18.399->28.308/ClsA0->100。四个before与四个after都保留原候选/帧并完整decode，RMO双方native Noul.5一致；TAO都输入1203类但4帧只有Base person/baby，不作Novel/广泛分类结论。实际native600训练/后续控制仍待完成，教师600恢复非bitwise限制未更改，无整体成功/模型提升/E2E声明。
-
-原paired600阻塞训练句柄68568已exit0，teacher/native均600更新/2400例，两个最新FP32/Adam/scheduler/RNG文件均9029141401bytes。两个600真实nativeMM重复加载均delta0/474entries；native从250完整state精确恢复，后350更新1400例耗8767.184s，尾段.159686例/s，不能使用累计2400除尾段耗时的.273748当全程速度。native无250之后旧日志重叠，无法证明bitwise重放；teacher475已有差异仍保留。GPU4原owner继续native600评测；GPU5原fullRMOTowner已完成训练交接，实际状态single800_FRESH_COMPACT_NATIVE800，禁止重复启动。后续pairedE2E仍等待其全部结束。
-
-补齐关键完整MOT证据：此前Full微调前后只有短MOT4，不能据此替代完整视频。新注册原V1 DT1203固定候选上Full native600/before500/teacher600三组、固定顺序，各用原生Choice/Noul/Score+V3真实crop/motion、动态分组不增token上限、全部27拒绝帧保留。GPU4新owner只在原短控制owner1870814成功并退出后执行，不与其重叠；GPU5完整RMOT继续。复用已验证600真实MM加载结果，三组统一binary-final存储/共享输入feature只读/逐帧决策trace，无新features或E2E速度声明。通用控制runner流式核对源候选，避免整源重复常驻内存；默认短测行为不变。
-
-原始TAO40排名审计session86629已exit0：全35228候选/原轨迹逐帧输出和状态精确恢复，最大2670live IDs，134已有正确anchor事件，32/64/128覆盖15.672/31.343/44.776%。不把覆盖反事实当精度，也不排除已终止/从未正确初始化身份这一诊断局限。Full DT1203新owner2024544/session88330已验证等待原GPU4短测owner1870814/start41851012，未提前占卡。
-
-研究计划：原始TAO32选项覆盖15.67%，扩大128也仅44.78%（冻结轨迹诊断），已有正确anchor常被纯几何排序挤出。新增独立候选协议：保持32总选项、16候选分组/同权重/同输入，先取16几何，再按实际anchor/recent/long原生2560特征平均cos（对组内候选取最大）补足至32，稳定以lost_age和track_id解同分；不读GT，不更改身份状态或训练。旧geometry默认保持。完整DT1203与raw/aliasTAO40，学习关联及固定cos两策略，四个nativeROI输入仍共享，不新建featurefiles；CPU新owner等既有contextowner完成后串行跑。与原geometry32分别报告，非纯JEV唯一收益或最优检索声明。先检查真实251-ID片段的候选合法性与完整前缀可执行性。
-
-完成并核验任务组合16现有范围：DT1203 HOTA19.639/6.760/21.229/19.312；rawTAO40 TETA12.421/19.284/12.850/10.081；单RMO8 HOTA0/0/26.494/37.265；多RMO12 4.096/3.513/9.622/3.513。所有实际结果/官方指标/候选完整性一致、空失败表，full800仍待源。无普遍最优，三任务单query受益但多query IDF1=0/FN30且TAO退化；四组NovelClsA0。共享总1200步但每任务暴露不同，保留MOT400/600对照，不宣称纯梯度干扰。
-
-5个同输入完整MOT策略完成：learned/learned26.316，IoU/fixed7.488，cos/fixed13.311，cos/learnedaux13.009，learned/fixedaux24.283。学习辅助只在学习关联组合有增益；learned FP579/FN1962 vsfixedcos9328/250，不能将总体收益全归因身份排序。各轨迹内生不同，不是唯一JEV证明。Hybrid32真实251身份片段检查通过：几何默认与旧版全输出状态精确一致，每个新候选32个独特live IDs、前16几何一致，230候选的身份集合实际变化。新CPU owner2034367/session35730只等待已有contextowner2003663完成+退出，再跑3视频范围×2关联策略；保留原默认、不改训练、GT阈值和指标。
-
-研究计划（补齐任务书14.4必需控制）：原Ground200含native MDM/AR+.1GT身份+.1decoded-proposal身份，缺少只视觉定位对照。新localization200从原569张量初始化，同72图/112native行/56pair、seed42/200步/AdamWlr2e-6、相同采样/参数27M，只将两个身份loss系数置0，仍记录非加权分量，不改变native算子/掩码/GT。原track200有中断恢复，声明相同注册配方/采样，不声称bitwise轨迹配对。先CPU比较全部样本payload与schedule，GPU6 owner仅等已有adapted200 full9客户全部结束、该服务组已被原owner释放后才训练，不要求GPU7也结束。随后导出新bundle，并用同GPU6/私有新service/requestcounter同序列比较原始/只定位/跟踪视觉适配；同各自原生候选再比较原始One与native600，组成受控视觉×JEV组合，不称端到端联合梯度训练。无新featurecache，保留全部原测评。
-
-localization CPU预检v1失败：比较最终Ground200 checkpoint与最初GPU7登记的整个protocol，实际差异仅GPU6、step1保存和execution_variant。全部200采样索引已匹配，loss/data/seed/lr未改变。改以实际完成的native_ground_tracking200_gpu6_20261014.json为参考，仍要求实际protocol精确相同及全部112行/200索引相同，fresh v2重跑；保留v1诊断，不放宽数值标准。
-
-发现并修复Full1203排队driver句柄变量遮蔽：upstream registered list/None覆盖teacher/native dict。原等待owner2024544在短测owner1870814正常exit0交接时已实际报TypeError退出（88330 exit1），completed={}，未启动GPU模型；试图替换前的状态断言阻止了任何误杀。修复为独立upstream_registered。真实已完成owner+两份实际600记录的CPU调度回归通过，不启动推理、不冒充评测。原failure保留，fresh v2同1203协议恢复，无已有训练/有效推理重跑。
-
-Full三分支12同策略短测已终端验证：before500/teacher600/native600 MOT HOTA30.868/30.601/32.236、单RMO全0、多RMO0/9.945/11.214、Base4 TETA11.981/52.181/47.682。native多RMO IDF10.256/IDSW1/FP6/FN27，Base4ClsA100只涵盖person/baby单一Basecanonical类，不泛化Novel。native历史效果混合、不晋升模型。Full1203 freshv2 owner2049900/session70182实际进入native_mot_full1203_INFERENCE，原v1错误/无模型执行事实保留。
-
-localization200实际CPU预检v2通过112行图像bytes/prompt/targets/nativealign及与完成checkpoint全部200draw完全相同，72图/56pairs、884nativeproposals/628alignedregions/24支持身份pairs；只定位两个身份coeff0，原图像标签和native核不变。新owner2052936/session76692已等待GPU6 native200 full9真实clients+服务组释放，不中止其原测评；随后200步训练+导出+原始/只定位/跟踪视觉三前端及localization repeat共96帧，再与pretrainedOne/native600组合18短测，明确非联合梯度训练，不新增featurefiles。
-
-真实完整RMO初次完成1600帧：single800 Compact HOTA6.0247/IDF2.8902/FP323/FN13，samecandidateSimple4.9658/1.2587/FP1402/FN8；multi800Compact19.8019/21.0082/IDSW165/FP619/FN1054。fresh E2E .678005/.882942含真实DLM+ROI+state/archive/video，不能与cachedSimple或旧不同视频Full测速算加速比。single仅18GT/782空目标帧，不能只报宏指标；官方empty_target_frame_predictions是检测条数，新增posthoc另算空帧告警率。
-
-训练监督审计假设：现prepare_rmot_native72 update_target仅quality>=.7且目标不是NO_MATCH，没有检查实际Hungarian所选身份是否与该候选一致。完整RMO后验中大量memory_updates_wrong_identity_or_unmatched不等同普遍错误真值，但提示此代理目标可能教会错误写入。先只在原72合法fit帧审计，按原GT对齐和不可修改birth-anchor归属复算原142native组标签；不改原包/模型/评测，候选无实际写入时不臆造条件标签。之后自身历史训练应使用当前权重逐帧状态并以真实所选身份监督更新，保留待验证假设。
-
-训练更新标签审计结论修正：原72fit/165候选、128非空primary/counter组的原proxy更新标签全部精确复现；28个正标签中16个已知一致、12个出生GT归属未知，0个正标签同时存在两个已知冲突身份。不能把未知锚点判成错误；v1把未知proposed_target置0的诊断建议无效、从未用于训练，v2/v3改为None/mask，保留解释限制。已知跨两个标注身份写入仅1例，原标签已是0，说明不能据此宣称正标签导致全视频失败。优先补当前权重逐帧actor状态训练/硬错误覆盖，不改未知样本为负、不改原包/权重/评测。
-
-完整multi800的Simple基线在原GPU5队列中排在慢Full对照之后；为及时完成必要固定候选比较，独立CPU目录按原800/2208候选/19拒绝帧/Simple/JSON每帧原参数执行，不中断原GPU5 owner或已有推理、不新建features。原owner若日后重复生成其计划基线，保留两份并明确是同输入重复、不是新seed或额外独立样本，不做FPS加速比。
-
-任务范围澄清：任务书16要求teacher-forcing后增加自身预测历史且逐帧状态真实影响未来；现有One100实际rollout→500SFT，以及Compactjoint1200实际72帧rollout→native1200，已提供离线迭代的自身状态训练证据，不能称为每个梯度更新都重新采样的on-policy训练。进一步逐梯度当前权重rollout是改进方向，不擅自把它增设为用户原任务的额外完成门槛；保留离线历史、模型版本和无GT修正限制的明确表述。
-
-完整800输出核验通过：native档案与全部1600输出geometry/labels/scores/order/ROI2560/时钟一致，1412/2208候选、36/19解析拒绝帧、197218901总档案bytes<2GiB。真实完整wall1179.932/906.062s、FPS.678005/.882942，init5.232/5.362s及服务预加载除外，含最终状态存盘。single空帧200/782告警=25.575%（318检测），multi143/247=57.895%（185检测）；别混淆检测数量与帧告警率。核心GPU allocator14970368/14855168bytes、RSS1.467/1.478GB不含外部DLM/ROI或整pipelineVRAM；不与cachedSimple或其他视频Full算速比。新CPU multiSimple owner2079614/session84279不改变老GPU5队列。
-
-multi800早期Simple CPU控制exit0并验证全部800帧/2208候选/19拒绝：HOTA31.8769/IDF37.6852/IDSW99/FP1076/FN980，vs共享Compact19.8019/21.0082/165/619/1054。身份关联退化不能被较少FP掩盖，不晋升。为回答语言筛选与学习关联的贡献，将现有5个冻结策略原样扩展到两段full800，另跑CPU学习参考、同语义权重/输入/32选项，全部binary-final存储、不测E2E，不读GT改状态、不新建features、不增加GPU。独立CPU4线程并行，不修改原GPU5Full队列或原25个范围协议。
-
-文档整理：CURRENT_STATUS改为当前证据快照，集中完整MOT/RMO/TAO表、真实FPS/资源口径、训练/监督限制和GPU/CPU待完成清单；原逐次追加全文原样保存STATUS_HISTORY_20261015.md及Git历史，未删除失败/旧结果。
-
-fullRMO现有5策略×2完整800已全部exit0/验证，CPUlearned参考的全部官方accuracy与freshGPU5精确一致。singleHOTA6.025/7.766/5.538/6.009/6.636；multiHOTA19.802/32.813/16.622/22.035/19.558，IDF21.008/41.432/14.009/23.803/21.064，IDSW165/79/105/119/157（注册顺序）。固定IoU+同冻结语义函数优于当前学习关联，nativeappearancecos反而恶化纯IoU。此对照否定本场景学习关联优势，不以MOT正结果掩盖；非最优重训baseline/唯一JEV证明，保留语义状态内生差异与actionprior差异。全部800/36或19拒绝/相同1412或2208候选，binary-final同存储、不测E2E，不改模型默认。
-
-研究计划：补齐已登记自然MOT20-05完整validation半段1657帧（1659..3315,25Hz），比较原Simple/共享Compact的3s/30s及已有memory干预；固定同一真实原DLM候选/ROI，无人工遮挡/丢框/GT修正/可见度过滤。GT身份854的29.76s只是低可见度间隔且743中间帧仍有标注，不预称真实候选缺失或成功重识别。GPU7队列只在原nativefull9客户结束且原owner释放服务后启动，GPU6适配队列互不干扰。新archive最多3GiB，既有保守资源上界22471148986+3221225472=25692374458<26843545600（25GiB）。为避免denseROI JSON膨胀，保存原始FP32ROI为逐帧无损npz、JSON索引留全部框/标签/分数/metadata，读回float数值必须精确，非FP16/量化，不新增独立候选。默认老JSON格式不变，先用真实帧验证序列及下一帧恢复一致；所有新存储/IO均计入真实pipeline时钟，重放不声明E2E。
-
-2026-10-15：完成后统一整理25冻结策略、24任务组合和12context单位，逐项将owner指标/解码计数与实际official_metrics/result对齐，核对完整帧、无GT/未来读取及最终状态存在。整理脚本初次遇到旧JSON result无final_identity_memory_path元数据；实际final_identity_memory.json存在，按旧格式真实路径读取修复，未重跑或改指标。三组摘要均通过。TAOalias学习32/64/128 TETA21.773/23.100/24.749、固定cos23.913/26.099/29.062；DT学习均26.316，固定cos13.311/13.289/12.491。完整single800任务三组0、三任务7.860；multi800为7.673/18.255/15.794/18.674，均低于Simple31.877。保留负结果，不调验证集阈值。
-
-真实21帧packed原生FP32存储/空拒绝帧/下一帧恢复精确通过，15.0MB到3.4MB；两臂实际scheduler及实际single800自然gap后验功能检查通过。自然MOT20单owner2126039等待GPU7原native retention释放，未提前占卡；登记低可见度29.76s不等于真实候选缺失。缓存上界含3GiB新源及32MiB回归余量25725928890<25GiB；原默认JSON不变。
-
-Full single800 pretrained/500/teacher600/native600实际完成HOTA16.119/0/6.847/2.506%，FN16/18/14/17（GT18），训练不改善该scope；pretrained只有2TP，不能只看较高HOTA宣称成功。Full multi800/DT1203、原生retention、localization和pairedE2E仍按原owner继续。
-
-研究计划（任务14.2输入证据控制）：冻结策略干预不等价输入消融。新增geometry_motion（屏蔽rawROI投影与spec条件）、geometry_appearance（保留rawROI，屏蔽spec条件）、geometry_appearance_language（原完整输入）三组同Set结构/1146511resident参数。所有组几何/运动保持，类别词汇只在输出分类头保留，原DLM感知自带语义不消除，不能称全系统无语言。复用已完成all_three1200完整组，仅新增两组相同MOT300+seed0语义初始化/1200步/逐项相同样本ID/原GT与native softteacher/同536组既有actor历史；teacher视觉知识本身保持，非从零纯单模态监督。共享原生候选，完整DT1203/rawTAO40/单多RMO800各3组，binary-final同存储，无GT回填/新增feature/GPU/E2E速度声明。Full真实image原生JEV已有独立完整控制继续，但架构/预算不同，不能将其与Compact差异解释为JEV唯一收益。
-
-输入数值回归通过：三个任务真实pack的同初始权重默认全输出与原e9111b5精确一致；屏蔽spec后更换实际spec不影响任何输出；屏蔽外观后置换真实外观不影响输出、视觉分支无梯度；仍用外观组match真实改变。两模式各2步实际训练保存/三任务reload差0，随后真实21帧scheduler/packed原生源/266候选/真实拒绝空帧和官方scorer均通过，仅功能回归不当精度结果。正式owner等hybrid CPU owner退出再串行，不挤占现有Full/native/GPU队列。
-
-Full原生性能诊断用已完成四组single800实际日志，不新增模型调用：全部3200请求fork_mode=batched。pretrained/500/teacher600/native600平均prefix1347/3987/8235/5474tokens、branches7.93/14.20/24.38/17.72，native forward总142.531/344.670/787.309/481.178s，render28.226/89.389/247.319/135.818s。较长内生历史/更多分支与更高耗时并存，不归因未控制的并发差异；日志没有全程sequentialfallback证据。原引擎已有prefix共享与末token logits，不盲改原fork阈值/算子/上下文或删候选。
-
-Input-evidence正式单一阻塞owner2137548/session36336已启动，实际等待hybrid owner2034367/start42762109；日志/tmp/groundjev_input_evidence1200_v1.log。未启动额外GPU/model服务、不重复既有Full/native实验；预计正式CPU工作仅在原hybrid成功退出后开始。
-
-2026-10-15：Full预训练multi800已完成并验证800解码/2208相同候选/19拒绝帧/官方指标：HOTA8.6210、IDF7.6347、IDSW215、FP214、FN1766（2112GT）。低于同源Compact19.8019/21.0082和Simple31.8769/37.6852，不能将低FP当成功。按任务18要求只分析实际已完成失败，不增加实验范围：直接交叉原GT后验对齐与真实保存的每候选action/member/output，未重跑模型/修改阈值/预测或状态。1132个对齐query-positive candidates，Full=105无物理assignment+687有assignment但member拒绝+340实际输出；Compact=4+71+1057。全部2208候选的输出ID/box逐帧能由真实action与原member>=.5精确重建，head混淆计数与原association_events完全相同。Full成员召回31.625% vsCompact93.728%，已有正确birth-anchor选项覆盖99.149%但对应关联准确率10.207%，说明本scope语义拒绝与决策排序均有问题，不优先盲增短名单。两模型内生已有身份事件集合不同，不作严格相同事件因果对照；上述funnel不是HOTA各阈值下官方FN的可加分解、未对未知candidate贴负标签。先等待已注册teacher/native600完整对照，再决定训练改进，不新增训练量或调验证阈值。
-
-2026-10-15：原hybrid阻塞句柄35730返回exit0，六新轨迹+六已验证geometry参考共12单位全部官方artifact核验通过。原始TAO学习TETA14.517→15.178、fixedcos13.964→15.652；alias学习21.773→21.466、fixedcos23.913→24.435；DT学习26.316不变、fixedcos13.311→12.811。混合检索非普遍收益，不更改默认geometry，不宣称Novel/唯一JEV或速度提升。后续输入对照owner2137548原依赖成功解除，沿既有CPU队列自动衔接，不重启。
-
-Full MOT500 multi800完整退化核验：HOTA0/IDF0/FP11/FN2112，原2208候选/19拒绝/800decoded全部保留。加入同源后验funnel：1132query-positive候选全被member<.5拒绝，其中263无物理assignment、869已有assignment但被过滤。原始真实输出逐帧精确重构及混淆计数一致，不修改阈值/状态；不要错误归因869候选均未获物理身份。仅MOT训练对RMOT不迁移，等原注册共享teacher/native600结果，不加验证阈值搜索或额外训练。
-
-输入对照队列已实际自动衔接：两新模式均完成1200步，每个实际sample ID与完整输入all_three1200相同，初始tensor由owner精确核验；三任务reload全0、GPU allocator0。原owner已进入ALL_THREE_INPUT_EVIDENCE_FULL_VIDEO_CONTROLS，无重启。报告澄清同1146511为resident参数；geometry_motion屏蔽visual/history_merge输出，382208参数无梯度，不宣称相同有效容量或唯一JEV证明。输出类别prototype文本/原DLM语义/native软教师知识均保留，完整视频结果仍待完成。
-
-研究计划：已完成rawTAO真实final state/同一实际图像前16候选的CPU profile（2365live IDs）定位geometry shortlist耗时，sorted累计.2116s、38352overlap累计.1311s、40432predicted_box累计.0518s，NN module累计.0095s；hybrid native array转换另.5039s、初次1203类别文本冷缓存.2639s，不能把单次cold profile当整视频FPS。只优化Compact几何IoU排序为FP64批量计算并每次decide缓存同timestamp预测框；候选/轨迹/几何公式/tie order/分组/权重/metadata不变。先核对真实高密度全部pair IoU和各16候选组shortlist精确一致，再比较真实dense state的完整模型输出；不改运行中任务、不新训练或重跑官方评测。
-
-几何批量优化真实回归通过：591实际候选×2365live tracks=1397715个FP64IoU逐值与原scalar完全相同；37实际16候选组的32/64/128顺序及空组/空history相同。普通geometry和hybrid16_16各自dense32候选/空观测/无history的全部决策概率、生命周期及metadata与ba94b94原实现精确一致。完整scalar IoU矩阵2.1921s→.03212s；16候选暖缓存3次中位geometry .14708→.05111s、hybrid .78482→.67581s（native数组转换仍占用），不是整视频或E2E速度结论。保留优化，原权重/候选/tie order/状态算法不变；已有进程继续旧import，之后新进程按actualgit记录新实现，历史FPS不改写。不重复已有全部官方测评。
-
-2026-10-15：input owner2137548/session36336及FullRMOT owner1896249/session16294均实际exit0。输入三模式×4完整scope共12正式控制全部官方/帧数/最终状态核验通过，完整输入四scope的官方metrics与原all_three1200精确一致。geometry-motion/appearance/appearance+spec：DT HOTA9.144/26.061/19.312，rawTAO TETA13.568/11.444/10.081，single800 HOTA0/2.491/7.860，multi80014.462/12.900/18.674。外观改善MOT，spec改善RMOT但损害MOT/TAO，NovelClsA均0，multi仍低于Simple31.877；不作普遍多模态或JEV唯一收益结论。保留三个已训练模型和全部负结果，不按验证阈值调参。
-
-完整FullRMOT全部12arm正式artifact核验通过：pretrained/MOT500/teacher600追加/native600追加，multi HOTA8.621/0/4.578/6.740，IDF7.635/0/4.228/6.693，FN1766/2112/1963/1859。teacher/native部分救回MOT500崩塌但不及pretrained；不将短12帧改善外推到完整800。新curator初次错误假设result包含native_rmot_membership布尔字段；实际语义存在逐帧decision_metadata及原posthoc报告，改读真实原policy和head标志/原.5阈值，不改原输出/标准。候选funnel扩到全部四Full加Compact：teacher544无assignment+445assigned/member拒绝+143输出；native330+555+247。原owner已释放服务，原配对E2E owner1953808实际进入full_native600_ACTUAL_FRESH800，未重复启动。
-
-执行计划：两个后续owner经实际PID/starttick/空children/空completed核验仍仅CPU等待（2052936、2126039），GPU6/7的原生保留评测与它们科学上独立。将未开始的localization200和自然MOT20改为GPU5配对E2E成功结束并实际释放全部owned groups后串行执行，仍只使用物理4/5/6/7。克隆新计划，明确训练参考GPU6与执行GPU5（型号均NVIDIA A800-SXM4-80GB），保留112行/200采样/seed/loss/算子、96原生帧/18组合、1657自然帧/8控制和25GiB缓存界。先CPU核对新旧样本/训练计划与仅硬件元数据差异，再对两个尚未启动实验的等待owner做记录化交接；不停止任何正在训练、推理或原生评测的进程，不改指标/门槛，不声称跨GPU bitwise轨迹。
-
-GPU5后续调度预检实际通过：新旧定位计划除明确硬件/说明元数据外所有字段相同；再次与实际完成track200 checkpoint核验112真实行bytes/prompt/answers/nativealign、全部200pairdraw、seed42/AdamW/lr/原native损失。GPU5/6/7均NVIDIA A800-SXM4-80GB；96前端帧/18组合/1657自然帧/8memory控制和25GiB预算均原样保留。真实已完成FullRMOT GPU5 owner/group release检查通过，无新增GPU模型或feature文件。
-
-两个旧等待owner2052936/start42864217、2126039/start43333839经冻结PID身份、空children、空completed和无currentchild再次确认后仅SIGTERM这两个CPU等待进程，manager_handoff.json及旧日志保留，state明确UNSTARTED_CPU_WAITER_SUPERSEDED_WITHOUT_GPU_JOB。旧loc shell76692返回241（有意SIGTERM的parent退出码），不是实验失败或完成；所有native retention/Full/E2E模型进程未动。新单一阻塞owner2207841/start43963616/session36847实际WAITING_ORIGINAL_PAIRED_E2E_GPU5_RELEASE，精确登记1953808/start42350971；成功结束并验证ownedgroups全退出后串行localization200→自然MOT20，参考训练GPU6与执行5差异明确、不声称bitwise跨卡轨迹。此改动只缩短独立任务的排队依赖，不减少原生保留评测或改变指标/种子。
-
-2026-10-15：原配对E2E阻塞87824实际exit0。fresh Fullnative600与Compact各完整800/1412完全一致native候选/36解析拒绝，canonical所有frame/image/box/label/native_score/score_kind精确一致，两个官方accuracy与旧同候选reference精确一致。实际pipeline FPS.4959138201/.6870989019、wall1613.1835/1164.3156s，观察速度比1.3855208、wall减少27.825%。五秒采样ownedGPU峰37052/19626MiB，lowerbound非瞬时精确max，减少47.031%。Full/Compact HOTA2.506/6.025、FN17/13（GT18），空帧告警67/782 vs200/782，较少漏检以更多误报为代价；两者非实时且召回差，不能推广多目标或全数据集。服务startup26.052/26.046和coreinit8.010/5.004s单列除外，实际pipeline包含image/native/ROIwhereused/association/state/档案/绘图/编码等候退出/最终存盘。固定Full先Compact后、单seed、并发背景负载不控制；不称统计或反平衡速度收益。
-
-已逐项核验真实run/official/owner/严格候选stream、完整800frame/video/finalstate和原GT口径；per-frame inference延迟Full p50/p951.810/2.930s、Compact1.202/2.136s不含后续逐帧video/state写入，fullwall包含，明确分开。Full core allocator8.426GB/RSS3.305GB，Compact.01497GB/1.466GB不含外部服务，不能用1.146M核心冒充全部模型成本。新增curator和rawresults/official/resources保存，不重跑推理或评测。
-
-GPU5新串行队列已真正接棒：原owner1953808结束且五组2173897/2174768/2197749/2197750/2198799全部退出，release receipt真实free81151MiB；owner2207841进入LOCALIZATION200、child2213633/start44011696。实际trainer state physical5/seed42/native_dense_referring_localization_only/target200/identity coeff0，训练正在进行，未宣称200完成或新指标。旧保留6/7及Full4未动，仍四卡；下一阶段96native/18factorial之后原自然1657/8controls。
-
-Pilot文档核对：原FOUR_GPU_PILOT仍写2026-10-14未完成，现用真实stop/cache receipts、originalOneFull1203run、实际500updates/2000examples/state/checkpoint、RMOT/TAO正式结果、paired800实际FPS/资源及已验证GitHub树逐项核对用户§17十二项执行交付。新增evidence_audit，限定注册开发范围，不等于模型晋升/Novel成功/全数据集或完整goal完成。资源口径澄清：持久化before/after全设备表可重算净减少14042MiB，非全归因U2；17584MiB为历史compute-app观测，不能从这两个device表独立复算，不伪造更精确归因。清理4748分片/42831618048allocatedbytes及1.909GB保留checkpoint实际存在。同步将ARCHITECTURE中的已过时“nativefeature/Compact待实现”改为实际实现及范围限制。剩余Full1203/native9/localization/natural继续原队列，无新增模型运行或评测。
-
-执行改进计划：现有阻塞wrapper将研究owner的stdout写文件，所以工具句柄只在最终退出时返回、真实阶段变化未向终端转发。增加一个只读Linux inotify+pidfd事件转发器：单一阻塞命令监听已注册owner状态及定位训练/前端/自然子阶段，状态改变/进程退出时输出真实摘要，不做周期ps/tail/wc/nvidia-smi/模型级poll，不启动或修改任何实验。保留原owner命令和退出码作为最终完成/失败权威，事件仅用于及时取得已完成子单元和训练阶段。
-
-2026-10-15：定位对照200实际完成，27,267,584参数、identity系数0、200真实pair_indices与完成tracking200相同，全部total_loss=native_loss且有限；16,164,180BF16元素改变，reload0。导出569张量其余不变。96native帧/18Full组合完成并核验真实官方artifact、完整帧、GT/future不读、相同前端候选在两个One中逐项精确保留；定位重复raw wire/候选/输出一致。native MOT4 HOTA原始75.069→定位84.099/跟踪83.467，single8原始30.385→18.776/24.876，multi12仅22.664→23.355/23.675；Full Single8六组合均0且FN5，multi12非普遍提升。保留负结果，不将4/8/12短片外推完整视频，不称联合梯度训练或模型晋升，reference训练GPU6/controlGPU5区别明确。parent正常接入自然MOT20，无重新启动推理。
-
-只读事件转发器实际注册Full/GPU5queue/native-retention三个PID/starttick并输出九个状态路径已有快照，原阻塞session70182/36847/52020保持权威；新observer session58829只inotify/pidfd阻塞等候，不周期检查实验进度、不开新模型或改实验。注册证据单独固定保存，持续events.jsonl本地增长不作为冻结完成结果发布。
-
-研究计划：先固化Full1203三臂中已完成的两个不可变单元，逐帧核对注册V1候选（仅按原计划剥离feature向量）、官方metrics、完整1203帧视频、checkpoint和最终memory；第三teacher臂未完成即明确pending。补齐same-source Full对Simple/Compact的正式表，不新增模型推理或更改科学协议。然后沿原三个阻塞句柄等待剩余Full/native9/natural完成。
-
-Full1203两个已完成单元逐帧核验通过：每个1203真实decoded帧、13664原始V1候选精确一致（只剥离注册feature向量）、27拒绝帧保留、checkpoint准确、finalbinarymemory存在、无GT/future读取，官方metrics不变。MOT500 HOTA7.848/IDF5.056/IDSW3530/FP6387/FN765；追加native600 HOTA8.703/IDF5.826/IDSW3631/FP7516/FN416。只报告两个完整单元，第三teacher仍pending，非完整三臂完成和非E2E。
-
-同源候选IoU.5一对一覆盖4341/4586GT=94.658%；Full before500/native600自身existing-anchor事件4008/2912中正确选项3952/2767，最终正确关联214/149=5.339/5.117%。原始argmax正确254/178，globalmatching丢失222/145、救回182/116；identity ranking与全局竞争均有问题，不只Ground漏检，不做跨模型同事件因果比较。新增只读已存events的UPDATE拆分初次守恒失败，原因是NEW初始化的memory_action也写UPDATE，原analyzer将NEW单列；按原分支语义排除NEW后守恒通过，未改原事件/指标。before500/native600真实known-consistent更新192/136、known-conflicting594/465、GTmatched未知birth2545/2984、unmatched5812/6648，后两类不冒充错误身份或负监督。保留原权重/预测与负结果；等待teacher和自然memory完成后再据主要原因选择最小受控修复。
-
-研究假设：Full的native Q3在全局匹配前按candidate给UPDATE概率，Hungarian可能将candidate分配到非argmax身份，Q3未显式看到最终分配。先只读两个已完成完整视频的frame_decisions与原固定birth-anchor诊断，区分已知正确/已知冲突/未知birth/unmatched更新，统计原argmax一致性及真实选择概率。仅评估argmax一致性约束会拦下哪些已发生写入，不改任何状态/权重/阈值，不将冻结轨迹计数冒充因果rollout收益；据此决定是否值得后续受控修复。
-
-2026-10-15：只读Full两个完整MOT轨迹原决策，确认Q3是全局匹配前的candidate观察可靠性问题，未指明最终assignedID。已知birth正确/冲突分配上Q3 AUROC before500=.513176/native600=.485748；native600两类Q3均值.852417/.849386，assigned identity概率.042690/.042338，几乎无区分。冻结轨迹若加assignedID=argmax约束，before500会拦173/192正确及518/594冲突写入，native600拦111/136正确及399/465冲突；同样大量伤害正确写入，不采纳该规则，不以冻结计数冒充因果rollout或HOTA修复。所有原始事件与状态不改。
-
-Full fit监督实际核验：48合法fit帧/1184native候选全部Q3旧标签按visibility与correct-option availability精确重现，2460条family-matched eligible native Q3副本state/question/target与源完全一致。重要覆盖缺口：旧100步actor仅74NEW，其余1110无最终身份，0次沿用已有身份；因而该native回放没有实际wrong existing-ID memory-write上下文。训练仍有大量association/lifecycle目标，不能说完全无关联监督；也不能由eligible审计宣称实际600prefix因果已证。保留原标签与权重；后续最小可解释方向是刷新当前模型fit自身历史、显式条件于最终分配的Q3问题与监督，而不是给旧candidate问题偷换标签。此轮不增加GPU、特征缓存或新模型调用，原Fullteacher/native9/natural队列不动。
-
-2026-10-15用户明确最终目的为达到MOT/RMOT/OVMOT常规模型水平。更新最终验收：Pilot/测评跑通/负结果审计不是最终完成；三个任务需同协议常规参照并实测缩小差距，统一同一checkpoint，不用短片/跨划分分数或三任务各挑一模型替代。公开ByteTrack/TempRMOT-v2/OVTrack为参照；实际查到TempRMOT公开train-list覆盖本地V2 validation0007/0015/0016，发布权重不能充当未见视频公平基线，公开分数只作方向参考。
-执行研究计划：针对已证原生48帧旧actor0次existing assignment的支持缺口，复用全部原始1184真实DLM候选，从已完成native600权重刷新同48fit帧的真实自身历史；不发新Ground请求、不用GT纠正actor、不立即盲目延长训练。CPU先核对回放合同与预算，单一阻塞owner仅等当前GPU4 Full1203三臂成功结束后接棒一张GPU4，新增导出上限512MiB并维持全局25GiB；根据真实新rollout是否提供已有身份/冲突支持再决定下一小步监督适配。现有4/5/6/7任务不停止。
-
-当前native600回放准备已实现并通过真实CPU合同核验：全部48帧/1184候选、三段各16原fitframes/图像存在、600checkpoint存在、原GPU4 owner2049900/start42845776仍live、注册prior+512MiB=26,262,799,802<26,843,545,600bytes。新可选replay参数保留原模式默认行为，不请求Ground、不加feature向量/不修改原课程；按当前actor真实状态产生独立新语料。新阻塞调度只在当前Full三臂成功且owner退出后接棒GPU4，未提前启动模型或任何新训练。新增目标文档明确普通水平是最终验收，公开分数须协议匹配，旧V1 TempRMOT94.679短sanity不作为V2正式水平证据。
-
-新刷新owner2353528/start44628629/session45947已实际启动并阻塞等待原Full GPU4 owner；当前WAITING_ORIGINAL_GPU4_FULL1203_OWNER_EXIT，无新增GPU模型或训练。注册快照 `training_data/native600_fit_rollout_refresh_v1/registration.json`；原句柄70182/36847/52020及事件流58829保留，新句柄独立等待接棒。
-
-研究计划：全9任务原生保留评测仍在运行，但已有不可变完整task_results。调用原生未改summarize只读取已完成task，核对n-original=n-effective/provider-filter0，固化原始6项与adapted200两项及共同dense200/VisDrone对照；未完成任务不补分、不汇总成全9结果。明确原始queue32与适配sync执行差异及随机requestcounter不构成bitwise配对，报告实际变化，不将差异全部归因训练。继续保留原owner/服务。
-
-原生保留完整task阶段已固化：调用原scripts.evaluate.summarize不改scorer、不调用模型；原始6/9（31986完整task行）、adapted2002/9（1810行），各task n-original=effective且provider过滤0；原始COCO严格按既有resume复用，所有raw源仍本地保留。共同Dense200 F1@.5 78.986→78.679（-.307pp），F1mIoU66.644→66.054；VisDrone F1@.5 46.125→42.145（-3.980pp），F1mIoU29.662→27.870。后者precision/recall均下降，未见该两项保留能力改善，不推广视觉200为更好基础模型。原始queue32与adapted-sync、CUDA恢复及requestcounter不同均明确，不把差异独归因训练。其余full9继续原句柄，不将当前response进度前缀冒充完整task或完整9项分数。
-
-2026-10-15训练规模与创新声明纠正：TRAINING_LOG顶部仍是旧500步运行状态，现以两个实际600追加阶段的完成校验、Compact训练配置及Ground200/320记录更新，保留旧快照为历史。明确仅做过共享多任务微调和分开基础模型适配，没有Ground+One端到端联合梯度训练；3595/8767秒仅150/350步恢复尾段，重复语料行不等于独立视频帧。方法设计仍待收益证据，未证明独立JEV创新或达到三任务普通模型水平。下一步仍按已登记GPU4依赖刷新48fit帧/1184原生候选，先看实际existing-ID/冲突支持再决定训练；本次不新增GPU任务、缓存或测评。原五个阻塞句柄均实际返回still-running，继续保留原owner，不因观察等待重启。
-
-2026-10-15：原Full1203阻塞句柄70182实际exit0，第三teacher600完成官方与events，原回放owner45947自动接棒GPU4，开始48fit真实历史，不新增Ground调用。完成curator验证全部三组1203decoded帧/13664逐帧相同V1候选/27拒绝帧/checkpoint/finalmemory/官方指标，failed和pending均空。teacher追加600 HOTA7.5766/IDF5.0149/IDSW3839/FP7683/FN384，低于MOT5007.8485/5.0561；native6008.7030/5.8260亦没有稳定跨任务收益。不采用模型晋升或根据验证阈值调参。teacher已知existing-anchor1833中正确选项1588、实际正确82（4.474%），argmax77、matching丢69救74；已知一致UPDATE56、已知冲突152、未知birth2962、unmatched4977，未知不当负标签，所有候选与指标不改。保留负权重和轨迹，等待当前actor刷新真实关联/冲突支持再定下一受控训练。curator增加完整三臂终态声明并修正追加600不等于完整训练lineage的表述。
-
-2026-10-15当前native600刷新原阻塞session45947实际exit0：三段48fit帧/1184原始DLM候选和perception逐帧精确一致，5741监督行，165806581导出bytes<512MiB，无新Ground请求/feature或GT纠正。审计CLI支持独立source/out，旧默认48/1184/2460和0existing全部计数精确回归；刷新全部Q3旧观察语义target逐条重现。实际658existing=45known正确+568known冲突+15未知birth+30unmatched；82NEW+444无最终identity守恒1184。实际UPDATE正确12/冲突41/未知12/unmatched20；300known冲突的原candidate观察Q3 target为yes，这不是selectedID正确性标签，不给旧问题偷换标签。证明可训练错误历史支持缺口已补，不证明精度提升；下一受控改动优先刷新历史并匹配多任务/问题family采样，保留RMOT/OVMOT和原runtime，用实测检验identity ranking，显式assigned-ID Q3另作独立协议。原GPU5自然和6/7保留队列继续，GPU4刷新结束，无新SFT启动。
-
-研究计划2026-10-15：当前native600fit48已出现658真实existing关联/568已知冲突，旧actor为0。检验仅刷新MOT原生actor历史能否改善identity ranking，同时不重复仅MOT训练导致RMOT崩塌。准备两组各600追加updates/2400样本，三任务各800、相同任务/问题family逐位置配对，MOT保持400同一teacher行+400同family native行，RMOT/OVMOT逐位置内容相同。控制组旧native历史，干预组当前600新历史；两组从同一真实600 FP32 masters、seed0/lr2e-6/原loss/四行梯度累计，单GPU4串行。数据准备和CPU真实token规划先验证无超长/漏行及新导出预算，之后才启动训练。新增语料只采样引用既有图像，保持完整原始语料/权重；不是大规模unique-frame或Ground+One联合梯度训练，不改验证阈值、指标与测试GT边界。
-
-600历史配对语料准备完成：每组2400行、800/800/800任务曝光，MOT400teacher完全同内容+400same-family native替换，实际新history400unique行覆盖48fitframes，RMOT346与OVMOT430所有源行均出现；新增48712542bytes，保守总25957225229<26843545600。官方CPU两组max25998/27960tokens且0超长/丢行。首次post-plan比较失败，根因官方plan_steps按长度重排step内部四个microbatch，raw列表顺序不相同；逐row核验所属step/index/bucket/family完全相同。修正核验为原样保持官方内部顺序、比较精确row-to-step membership，复用两个完成CPU计划；v1失败receipt/log保留，v2全部通过、958真实media路径存在、不称token/FLOP匹配。下一执行：同一GPU4顺序old/refreshed两个实际600step full SFT，均从原native600精确FP32 master初始化，原生loss/seed/clip/阈值不改，每50步原子FP32+Adam/RNG保存；每组完成后实际两次MMreload，再做同协议tracking。不是最终质量完成或大规模联合训练。
-
-首次配对训练owner在模型启动前exit1，原因是官方CPUplan-only在正式name下预先创建args.json目录，not-exists启动检查因此停止；实际两个目录仅args.json，plan_only=true，无训练log/ckpt/模型，0新增训练。保留失败owner为full_history_refresh600_pair_v1，将两份参数目录精确归档到preflight_v2/plan_only_run_dirs，不删任何结果。未来CPU命令显式使用独立_token_plan名称；数据/种子/loss/600步预算全部不改，以新v2 owner启动同一尚未开始的实验。
-
-配对600真实owner2448456/start45150423/session21963现运行old_FULL600_TRAINING，launch commit d938c520。GPU4启动前81027MiB空闲；真实752393024language参数/320FP32tensors从原600master精确初始化差0（相对BF16初始500278218元素改变），官方实际600步/0丢行。新phase种子0/loss/4行累计不改，控制组结束并实际MM两次reload后自动接refreshed组，原GPU5自然与6/7保留队列继续。GitHub MCP持续transport failure，最新代码/config/审计均本地提交并登记待发布，不伪称已远端同步。
-
-后续测评预注册计划：在训练分数未知时固定same-checkpoint四scope：原V1 DT1203/ReferKITTIv2两表达各800/原始TAO BaseNovel视频40标注帧1203输入类。前模型MOT/RMOT已完整核验则仅复用，补齐原native600的完整TAO Full native-hierarchical对照；两新checkpoint各完整四scope，不按任务选权重。GPU4等当前配对训练及真实MMreload全部成功后测old；GPU5等原自然队列真正退出后先测before TAO，再等训练测refreshed。无新DLM/ROI档案，原候选及所有空/拒绝帧完整保留，所有评分用原官方程序，TAO标注时钟不称真实秒。该范围仍是注册开发视频而非全数据集普通模型目标完成。
-
-四scope队列CPU来源核验通过：1203/800/800/40帧、13664/1412/2208/35228候选，27/36/19/0原拒绝帧，真实图像存在，TAO1203输入类/expressionNone。旧native600基线checkpoint/source/official指标一致；新worker验证函数对已有完整三scope实际逐帧候选/原拒绝列表/官方指标/final memory/video解码1203/800/800回归通过，终态pidfd依赖读取在已完成Full三臂真实owner通过。旧训练25步日志有限，未改变运行。下一步仅启动两个CPU pidfd等待worker，不提前用GPU4/5；后续同一checkpoint四scope、原scorer与输出阈值不变。
-
-两个后续控制worker实际启动，仅CPU pidfd等待、new_model_calls_started=false/emptycompleted。登记 [{"worker": "old", "pid": 2467896, "starttick": "45243395", "blocking_session": 14226, "status": "WAITING_PAIRED_TRAINING_AND_BOTH_NATIVE_MM_RELOADS", "physical_gpu_only_after_dependencies": 4}, {"worker": "refreshed", "pid": 2467924, "starttick": "45243513", "blocking_session": 46228, "status": "WAITING_ORIGINAL_GPU5_NATURAL_OWNER_EXIT", "physical_gpu_only_after_dependencies": 5}]。原训练21963/GPU5原队列36847/native保留52020/observer58829均继续，未提前占GPU；各新worker配置与source核验均在任何新score之前固定，后续每个训练checkpoint覆盖同四scope。
-
-常规关联基线计划：同一DLM候选的Simple不足以代表常规跟踪器，下载官方FoundationVision/ByteTrack源码commit d1bf0191adff59bc8fcfeaa0b33d3d1642552a99（直接无代理成功），只跑CPU官方BYTETracker，不下载检测器或改现有Foundation环境。固定官方CLI track_thresh.6/buffer30/match.9/mot20false；原候选无置信度，显式constant1全框输入，低分支无候选，不伪称完整ByteTrack/论文成绩。官方KF输出框与默认约1s丢失buffer保留，不按验证分数调参或附加输出面积/宽高过滤。完整DT1203/13664/27拒绝帧原官方TrackEval打分，先隔离CPU依赖，再一次完整阻塞运行。
-
-官方ByteTrack CPU参考环境已直接无代理安装到独立reference_envs/bytetrack/site-packages，固定NumPy1.23.5兼容原np.float、SciPy1.10.1/lap0.5.12/cython-bbox.1.5/OpenCV4.10，不修改Foundation环境。只用官方tracker包、跳过无关YOLOX root初始化、上游源码不改；Torch库只读复用但不加载任何权重/不初始化CUDA。真实前21帧/266原候选含拒绝空帧21处理通过，输入boxes和unit scores完全不变、frame counter21。下一同计划完整1203帧一次运行+原TrackEval，默认KF/1s lostbuffer及constant1低分支空输入限制全部明示，不按验证分数调参。主训练50步真实FP32/Adam/scheduler/RNG已保存，原队列不变。
-
-ByteTrack完整阻塞75056实际exit0：原官方CPU跟踪器1203帧HOTA16.4734/IDF13.9034/IDSW367/FP5234/FN395。独立逐帧核验13664全部原V1候选（只省原feature数组）、图像/框/原perception精确相同、27拒绝帧与scorer分母相同，全部predictions.txt逐行重建等于实际frame outputs，finalKFstate保留，TrackEval原12c8791未改。高于Fullnative6008.703、低于共享Compact26.316，但CompactFP579/FN1962相较ByteTrack5234/395是不同误漏权衡，且训练/特征输入/1s vs3s记忆/KF输出有差别，不作唯一JEV或普通全pipeline水平结论，不下调最终门槛。参考解释保留；不替换运行中的Full/Compact或调验证阈值。
-
-扩展训练数据准备计划：当前Full类别语料64图/8video/9Base类，RMOT72物理帧/9fitvideo/18表达，不够描述长时间大规模联合训练。现有冻结MOT训练frames实际40904（MOT172664/Dance33772/MOT204468），TAO训练注释18274图/500video，额外freeform类不能冒充1203输入词表监督。实现纯CPU可用性索引：仅冻结MOT train_frames、V2全部9fit的本地图像和所有表达、TAOtrain映射Base(c/f)对象引用，所有无Base帧和缺文件记录保留，不当负标签/不读取eval或forbiddenGT。仅元数据128MiB预算，不开模型/feature缓存/新训练，不改变当前600对照。后续根据真实测评选择扩展课程和actor rollout，索引不冒充训练曝光。
-
-扩大训练数据索引实际完成：MOT40904训练帧/43video，RMOT1814本地图像/全部9fit/4350表达文件，TAO18274训练图/500video/175Baseclasses/52978eligible targets；当前旧类别SFT仅9类/64图，规模缺口有实际可用数据支撑。所有index图像is_file true，RMOT所有positive表达frame都有本地图像；MOT唯一dataset/sequence/frame40904，9fit集合精确；逐一52978target核验源imageid/annoID与frozen vocab synset/frequency一致，52978+6172nonBase+50outsidevoc=59200守恒。175类别coverage sum同52978；1251零eligibleBase帧全部保留，不给Novel/unknown负标签。不称外部完整RMOT序列长度证明/实际训练曝光/联合梯度训练。原始indices约33.85MB本地保存，发布可复现builder/sourceplan与summary/coverage/validation，未创建任何feature缓存或新GPU。原训练150/600真实loss/grad有限，ckpt150和完整FP32/Adam/RNG已保存，继续原队列。
-
-175Base语料组件实现计划：现有原生NativeCategoryHead.crop_sheet可直接按原图/精确GT框惰性生成768宽、216/432高实际像素；根/条件leaf问题原样沿用。全部52978训练Base对象构成105956问题，保留1203输入词表、1251零Base帧登记，不加Novel/unknown负标签。压缩JSONL+media裁剪recipe避免约GB的重复文本/PNG落盘；新独立训练入口仅进程内扩展gzip/load_media IO并将IO版本写入恢复协议，现有对照入口不改。先真实旧215对象像素/问题对齐及175新类代表图、CPU processor张量和官方全量token计划核验。仅准备未来平衡三任务混合的类别组件，不启动类别单任务optimizer；256MiB导出cap、合计26359878413<25GiB。
+Researchplan fullRMOT: twoexistinglegal0007full800frame expression scopes, firstgenuinefreshsharedCompactsinglepass throughoriginalDLM+actualROI+memory+video; include sidearchivewrites inactualE2Etime, remoteinitializationexcludedasinpriorFull. Newoptional run_video currentnativearchive preservesfeaturesonce andallowsgeometryonlylogs; olddefault/replayprotocolunchanged. Exactsame archived candidates thenSimple/pretrainedOne/500/teacher600/native600 nativeNoul.5/v3controls, officialqueryTrackEval andphysicalIDposthoc. SingleGPU5owner waits bothverified600childrenexit+valid600master/done beforeallocation, independentGPU4shortcontrols/nativefull9 unaffected. Budgetnew2GiB acrossbothsources, conservativeprior16.289GB+TAO1.886GB+new2.147GB=20.323GB<25GiB; no duplicatedfeaturesincontrol logs/datasetcache/oldU2queue. Actualnative…15078 tokens truncated…旧215对象像素/问题对齐及175新类代表图、CPU processor张量和官方全量token计划核验。仅准备未来平衡三任务混合的类别组件，不启动类别单任务optimizer；256MiB导出cap、合计26359878413<25GiB。
 
 2026-10-16：175Base类别组件已实际生成并完成CPU原生全量规划session25047 exit0，52978对象/105956Root+Leaf问题、500trainvideo，1203输入类保留。gzip文本25820145bytes对比展开1005240705，17375按需裁剪recipe无PNG/ROI档案；18274图含1251零Base完整登记不造负标签。实际215旧对象/62原PNG像素完全相同，175新类代表问题/像素等同原NativeCategoryHead；768x216/432×Root/Leaf四例input_ids/mask/mmtypes/pixel_values/grid全torch.equal且实际计数token一致。全量105956target逐一对应源GT图像/类别/ROI且两种family各52978，同annotation集合。官方CPUplan0丢弃、max4238、总315781843计数tokens，26489步只是4row下假想全类别epoch，不是训练。Textrows仍一次载RAM，CPU峰3746652160bytes；原cached native reporter打印1s只含复用后的报告时间，绝不当tokenize全程速度。新独立IO入口仅进程内gzip与cropSheet读取、checkpoint协议记版本，现有200/600对照正常/FP32完整保存、其他队列未动；此组件将供未来三任务平衡课程，未发新GPU训练、不称大规模联合训练完成。
 
@@ -3798,7 +3618,6 @@ evaluation remain gated; no independent OneJev/YesTrack optimizer was started.
 This is a training-health/recoverability record only. Evidence:
 `docs/GROUNDJEV/G2_PROGRESS_LIVE_20261021_STEP17488.{json,md}`.
 
-
 ## 2026-10-21 — GroundJEV fixed-candidate cross-sequence diagnostic on MOT20-05
 
 冻结在 MOT20-03 TRAIN repair split 上训练的 180-step readout，在不同的
@@ -3812,7 +3631,6 @@ IDSW=`18`，跨视频明显退化，说明当前 fixed-candidate readout 尚未�
 最终 GroundJEV 增益。证据：
 `docs/GROUNDJEV_COUPLED/PHASE_B_FIXED_CANDIDATE_CROSS_SEQUENCE_MOT20_05_20261021.{json,md}`。
 
-
 ## 2026-10-21 — registered GroundJEV coupled video entrypoint
 
 Added `tools/groundjev/coupled/run_coupled_video.py` as the clean-checkout
@@ -3823,7 +3641,6 @@ a second VLM or relabel cached features as terminal G2 Clean output. The new
 entrypoint passes `py_compile` and `--help`; no GPU job was launched by this
 change.
 
-
 ## 2026-10-21 — G2 Clean step 17500 checkpoint recovery audit
 
 在受保护的两卡 G2 训练继续运行期间，用注册 CPU 环境只读加载
@@ -3833,7 +3650,6 @@ change.
 状态均存在，adapter 浮点参数全部有限。终态 receipt 仍未生成，训练进程
 未修改。证据：`docs/GROUNDJEV/G2_CHECKPOINT_PROGRESS_20261021_STEP17500.{json,md}`。
 
-
 ## 2026-10-21 — post-G2 downstream queue contract audit
 
 在正式 G2 仍运行期间，对终态后自动执行的 G2 bundle、GPU5 G1、native
@@ -3841,5 +3657,14 @@ OVMOT join、native MOT/RMOT/OVMOT 三任务和独立 held-out 五个入口执�
 合同审计。五个脚本均通过注册 Python 环境的 `py_compile`；终态 G2
 status/step/manifest 校验、bundle receipt、native OVMOT manifest gate、
 held-out scope gate 和资源等待条件均存在，未启动任何 GPU 或 optimizer。
-这是终态前置审计，不代表下游已完成。
+这是终态前置审计，不代表下游已完成。 
 
+## 2026-10-21 — G0/G200/G1 comparison matrix aligned with the coupled mainline
+
+按最新 GroundJEV 单主干耦合方向重新核对并登记三组对照：G0 的 MOT20-05
+1,658 帧合法 TRAIN 长导出已完成；G200 是物理 GPU5 上完成的 200 步隔离定位
+控制，保留 MOT17-02 四帧、RMOT single8/multi12 的短功能 receipt；新 G1
+GPU5 owner 仍为 `WAITING_G2_CLEAN_SUCCESS`，optimizer updates 为 0，未启动
+训练。耦合实现（官方 dense 多框解码、typed JEV、身份/框状态 memory、固定候选
+视频回放）已有受限真实数据证据，但没有把短片或跨序列诊断升级为独立性能提升。
+证据：`docs/GROUNDJEV/G0_G200_G1_COMPARISON_MATRIX_20261021.{json,md}`。
