@@ -96,7 +96,7 @@ def main() -> int:
     )
     parser.add_argument(
         "--ovmot-native-manifest", type=Path, default=None,
-        help="manifest.json emitted by prepare_native_ovmot_train_join.py; must cover all TAO TRAIN images",
+        help="manifest.json emitted by prepare_native_ovmot_train_join.py; must cover full TAO TRAIN or a registered native TRAIN subset",
     )
     args = parser.parse_args()
     out = args.out.resolve()
@@ -108,10 +108,12 @@ def main() -> int:
     native_ovmot_rows = False
     if args.ovmot_native_manifest is not None:
         native_ovmot_manifest = json.loads(args.ovmot_native_manifest.read_text())
+        native_scope = native_ovmot_manifest.get("scope", {})
         if (native_ovmot_manifest.get("native_ovmot_training_rows") is not True
                 or native_ovmot_manifest.get("ovmot_training_mode") != "native"
-                or native_ovmot_manifest.get("scope", {}).get("full_train_image_scope") is not True):
-            raise ValueError("native OVMOT manifest is not a complete native TRAIN join")
+                or not (native_scope.get("full_train_image_scope") is True
+                        or native_scope.get("registered_train_subset") is True)):
+            raise ValueError("native OVMOT manifest is neither a complete nor a registered-subset native TRAIN join")
         native_rows_path = Path(native_ovmot_manifest["train_rows"])
         if not native_rows_path.is_file():
             raise FileNotFoundError(native_rows_path)
