@@ -3966,3 +3966,19 @@ AssA=0.05967427、IDF1=0.05959845、IDSW=1933、FP=417、FN=288297）。该 G0 �
 近 500/1000 事件吞吐约 `0.0792/0.0825 steps/s`，线性剩余约 `1.31/1.26 h`。
 `final_receipt.json` 与 `adapter_projector_final.pt` 尚未出现；下游 G1、TAO native、
 held-out 和共享三任务 owner 仍处于依赖等待，未启动重复训练或独立 YesTrack。
+
+
+## 2026-10-21 — G2 Clean exact-coverage training terminal
+
+受保护的 G2 Clean exact-coverage 训练已到达终态 `18227/18227`，正式 receipt
+为 `G2_EXACT_COVERAGE_TRAINING_COMPLETE`。训练合同为 world size 2、effective
+global batch 32、exact-once coverage；manifest SHA256 为
+`f682519a1cf9204ca76ea75a56dad36dbdeac26259f202551ab9f66fefd06e71`。终态
+adapter SHA256 为
+`cf1b5a6f626810ead94eb4e16adaf3feb6c6da3f99ca5023b6b5c234726f5742`，恢复
+state SHA256 为
+`cab791def46c264393636c5697f452ec81dd0a242cfd9408644490b92cf643dd`。最后
+训练事件 loss=`0.6241224888`、gradient norm=`6.61599`、peak memory
+`17.374252 GiB` 均有限；这只是训练终态与可恢复性证据，不宣称任何
+MOT/RMOT/OVMOT 性能提升。G2 bundle 已完成，TAO native 导出和 GPU5 G1
+启动由持久 owner 自动推进；共享三任务训练仍等待原生 manifest，未手动重复启动。
