@@ -129,6 +129,14 @@ remain closed. This is recovery evidence only. Evidence:
 
 Concise experimental log (latest first).
 
+## 2026-10-21 — dense-answer G2/JEV coupling completed and official decoder checked
+
+在冻结 G2 step17000 上新增合法 dense-answer 耦合训练：DanceTrack-0001/0016 各 3 帧，每个 row 保留该帧全部 person boxes（7/6 个），训练 2 个 transition、2 optimizer steps；只训练 `IdentityBoxStateTokenProjector`、JEV memory projector 和 typed readout，共 4,077,327 参数，G2 视觉每帧一次。Grounding teacher-forcing loss 3.83649→3.83393，JEV structured loss 4.11511→1.14514。随后接入官方 `DLMInferenceEngine`：0001 的训练转移 recall@0.5 从 C0=0.1429 到 C2=0.2857（1→2 对比），但 0001 development 2→3 及 0016 两个转移 C2 输出均 malformed/0；因此这是共享主干接口和小样本可学习性证据，不是跟踪增益或泛化结论。MOT20 高密度 dense teacher forcing 曾在 GPU7 约 63.8 GiB 达到 OOM，已保留失败边界并改用低密度合法 clip 验证，未改 target-only 合同。证据：`docs/GROUNDJEV_COUPLED/PHASE_C_REAL_G2_DENSE_COUPLING_DANCE_STEP17000_20261021.md`，两个 receipt 位于 `/data2/user/LocateMOT_GroundJEV/outputs/groundjev/coupled/phase_c_real_g2_dense_coupling_dance_step17000_v1/receipt.json` 与 `/data2/user/LocateMOT_GroundJEV/outputs/groundjev/coupled/phase_c_real_g2_official_dlm_dense_coupled_dance_step17000_v1/receipt.json`。
+
+## 2026-10-21 — official G2 DLM dense contract confirms one-box baseline before coupling
+
+用冻结 G2 step17000 在 GPU4 通过 GroundAnything 官方 `DLMInferenceEngine` 的 `hierarchy_dynamic` 路径重跑真实 dense 解码；结构化终止开启且 `structured_max_coordinate_groups=0`，没有强制 single-box。MOT20-03/82（96 个 TRAIN person boxes）和 MOT20-05/13（247 个）各编码一次，官方 parser 均恢复 1 个合法框，但 IoU0.5 召回均为 0。模型在第一个 `<|box_end|>` 结束，说明先前 causal 单框现象也存在于官方混合 DLM 路径；这不是耦合收益，也不是 tracking 指标。下一步把持久身份状态插入同一官方 DLM prompt/clean stream，并在完整 GroundAnything answer 合同下训练和评测。证据：`docs/GROUNDJEV_COUPLED/PHASE_C_REAL_G2_OFFICIAL_DLM_DENSE_STEP17000_20261021.md`，receipt 位于 `/data2/user/LocateMOT_GroundJEV/outputs/groundjev/coupled/phase_c_real_g2_official_dlm_dense_step17000_v1/receipt.json`。
+
 
 
 
