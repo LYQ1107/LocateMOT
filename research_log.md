@@ -3885,6 +3885,16 @@ optimizer/scheduler、sampler position、四类 RNG 和训练合同字段均存�
 浮点 trainable tensors 有限，文件 SHA=`9aad3f6bd6b4bfcab386d1ec1e39ea03420fc0a202df0d67a447e158f4e66139`。
 未改写 checkpoint、未启动 GPU，确认正式 G2 仍可安全恢复。
 
+## 2026-10-21 — independent held-out image-overlap gate cleared
+
+在 G2 终态前用 CPU-only 直接调用注册的 held-out `overlap_audit()`，对
+MOT20-05 validation-half 1,657 帧、RMOT single 800 帧、RMOT multi 800 帧和
+TAO OVMOT 40 帧逐项比对 G2 Clean TRAIN rows；四个范围 exact image overlap
+均为 0，TRAIN manifest SHA 为
+`4a8e39d29a30fe1ef7df10484be57a10ab5f0baff0638130ff93fa9c1181ab6a`。没有模型
+推理或 GPU 分配；该结果只清除独立性门槛，不代表任何性能指标。证据：
+`docs/GROUNDJEV/HELDOUT_OVERLAP_AUDIT_20261021.{json,md}`。
+
 ## 2026-10-21 — G0/G200/G1 comparison matrix aligned with the coupled mainline
 
 按最新 GroundJEV 单主干耦合方向重新核对并登记三组对照：G0 的 MOT20-05
