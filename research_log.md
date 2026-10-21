@@ -3950,3 +3950,19 @@ GPU，也没有重复启动旧 OneJev；G2 Clean 终态和 native TAO 三任务 
 ## 2026-10-21 — G2 Clean live progress at step 17750
 
 event stream 已到 17750/18227（2026-10-21 21:40:20 +0800），最新 loss=0.0942097213、gradient norm=7.7979364，均有限。终态 receipt 和终态 adapter 尚未生成，持久恢复对仍为 adapter-step017500.pt 与 checkpoints/latest_training_state.pt；G1、TAO native、held-out 和共享三任务 owner 继续受依赖门保护。这是训练健康证据，不是 MOT/RMOT/OVMOT 指标结果。证据：docs/GROUNDJEV/G2_PROGRESS_LIVE_20261021_STEP17750.{json,md}。
+
+
+## 2026-10-21 — G0 MOT20-05 长时导出终态复核
+
+重新读取 G0 权威 owner 与完成 receipt：`mot20_05_full_validation_gpu5_v1` 为
+`NATURAL_MOT20_SCOPE_AND_FROZEN_MEMORY_CONTROLS_COMPLETE`，fresh source 输出覆盖
+1657 帧，官方指标 receipt 完整且归档校验通过（HOTA=0.07334696、DetA=0.09026983、
+AssA=0.05967427、IDF1=0.05959845、IDSW=1933、FP=417、FN=288297）。该 G0 结果
+保留作为对照，不被新的 GroundJEV 单主干耦合训练覆盖。
+
+## 2026-10-21 — G2 Clean live progress at step 17854
+
+同一受保护 G2 Clean 句柄推进至 `17854/18227`（`2026-10-21 22:04:25 +0800`），
+近 500/1000 事件吞吐约 `0.0792/0.0825 steps/s`，线性剩余约 `1.31/1.26 h`。
+`final_receipt.json` 与 `adapter_projector_final.pt` 尚未出现；下游 G1、TAO native、
+held-out 和共享三任务 owner 仍处于依赖等待，未启动重复训练或独立 YesTrack。
