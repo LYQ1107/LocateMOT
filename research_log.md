@@ -1,5 +1,5 @@
-Warning: truncated output (original token count: 138150)
-Total output lines: 4037
+Warning: truncated output (original token count: 138360)
+Total output lines: 4048
 
 ## 2026-10-21 — 双序列耦合训练 step48 审计：JEV 学会但 C2 坐标未学会
 
@@ -1123,7 +1123,483 @@ Existing historical two-GPU smoke had only one backward, while the requested two
 
 Selected-core entry48760 exit0 now passes four actual native F0 MOT frames and unchanged reference-core weights:150 births/repeat matches, one-frame occlusion/recovery, future-state independence, arbitrary MOT text invariance, raw OVMOT/fixed-pair GRU isolation and bit-exact state resume for both tasks on one core object. Readiness69971 exit0 tests the independent complete requirement set/material failure cases and the actual CLI returns2 HELD with missing full cache/simple measurements. Actual selected-audit CLI75746 exit0 proof rejects a reference-only random pack before cache read. Review found old small generic retention used only car rather than U1 original10-entity vocabulary; use original VOCABULARY in final audit and require that exact vocabulary in readiness. Full-vocabulary native/reference-pack96632 exit0 is bit-exact on both V1/V2; all original full U1 references are unchanged, and historical reference metadata now names the restricted car-only scope. Missing actual selected audits never become readiness evidence. Keep all repairs/entries.
 
-Launched one blocking finalization owner with OMP_NUM_THREADS=2 TOKENIZERS_PARALLELISM=false .venv/bin/python -u tools/unified/queue_u2_finalize.py --wait-joint-pid 883611. ActualPID89665…78150 tokens truncated…97066exit0: candidate-groupauditall43TRAIN/1056frames/48051candidates, everyoriginalregistryGTbindingandIGNORE/nonIGNOREtargetexact; matchespriorbirthaudit7992IGNORE/5832GT-supported. 4804/5832=82.37%GT-supportedIGNORE haveonlyoutsidegroupassignedwinners (4723singleGT),1024inside/4829outside(overlap)/4noassignedwinner/261multiGT. Actual3401nonemptygroups/max16, geometry/localindicesexact. Positives6754withrivals/5319outside. Fullimagepixelsstillvisible; notprooflabels mathematicallyunobservable, notcausaltrackinggain oruniquevalidproposalcertification. Readonly63350bytereportwithinexisting128KiBsuballocation/noextrareserve/features/GPU. Currentcourses/labelsuntouched; nextadmissionresearchmustexplicitlyprovidecompetition, ratherthansilentlyturningIGNOREintobackground. Original48863TAO completed, freezeall16first4units: feasibilityTAOTETA14.517exactoriginal; both14.493exacttimeout,allNovelClsA0; finalMOT20sameownerpending. Publishedprior18filesverifiedremote3f18440/tree1c9d8a3, thenrecordnewaudit/TAOreceipt separately. Goalnotcomplete.
+Launched one blocking finalization owner with OMP_NUM_THREADS=2 TOKENIZERS_PARALLELISM=false .venv/bin/python -u tools/unified/queue_u2_finalize.py --wait-joint-pid 883611. ActualPID896659/session18355 confirms WAITING_ORIGINAL_JOINT_OWNER, pack_started=False, ready_for_u3=False. It waits real original completion, recomputes current full selection, packs actual frozen U2-B tensors, runs original-vocabulary retention and unmodified selected-core audits, then verifies every final gate against bound artifacts. Completed units resume by actual checkpoint receipt; reference fixtures and conditional U2-C cannot substitute for selected U2-B. No original owner was restarted, no additional formal optimizer launched and no U3 readiness claimed.
+
+## U2 native image-batch admissibility probe — 2026-10-12
+
+Previous goal turn made progress: selected-artifact finalization and bound real-audit/readiness entries were committed4102740, backed up and verified at GitHub592d097. Current worktree/project are correct/clean; original full TAO parent63615 is confirmed live through its existing blocking handle, and finalization waits original883611. No actual formal baseline/cache is ready. Read native inference_detector and fusion attention before considering future throughput: list-image API still loops singleton test_step, whereas the multimodal fusion uses a scalar max over the full batch. Probe actual FP32 native batch2 versus singleton on the two fixed original MOT17 frames, plus a second-image perturbation while keeping the first fixed. This is a small admissibility measurement, not a new formal audit or source/model change. Reject batching if candidate parity or first-frame independence fails; keep running jobs, candidate policy and original native singleton protocol unchanged.
+
+Native image-batch probe10904 exit0 yields a genuine negative optimization result: same native preprocessing shape on two fixed MOT17 frames, but batch2 boxes/scores differ from singleton on both. Max same-rank score differences.000565775/.002606869; large coordinate differences1033.97/1865.55 reflect changed sorted proposal alignment and are not a matched-box localization error measurement. All labels remain equal. Actual six fusion stable_softmax_2d flags are False; the suspected scalar max is inactive, and changing only second-image pixels leaves the first batch output bit-exact in this probe. Reject native batch2 on candidate parity; no full OVMOT batch or semantic-feature integration is attempted, no TF32/precision tolerance or candidate policy is changed. Keep native singleton plus already proven fixed-text reuse. Original full TAO/perception/baseline/finalization jobs remain under their original blocking owners and gates; no tracking benchmark or U3 readiness is claimed.
+
+## U2 upcoming perception-audit fixed-text reuse — 2026-10-12
+
+Previous goal turn made progress: actual FP32 native image-batch parity failure was measured and committed24be26a/published64cb0ff; retain native singleton. Current project/worktree are correct/clean, and existing full TAO63615 blocking handle is confirmed live. Read current full TAO worker and bounded adapted-checkpoint evaluation caller. The already bit-exact fixed native text reuse can reduce repeated38-caption BERT work in upcoming adapted TAO/C-TAO audits too. Add an explicit optional CLI flag with unchanged default F0 behavior; only future adapted-checkpoint evaluator requests it. Keep identical singleton/native NMS, protocols, GT denominators, checkpoint/source fingerprints, resume rows and gates. Validate actual unchanged two-source smoke rows/recall counts with and without the flag before retaining this integration. Do not modify or restart the current loaded F0 workers.
+
+Actual paired portability-worker37402 exit0 confirms optional text reuse: original two-source smoke metadata/rows identical,300 proposals each, TAO2base/1novel GT and C-TAO10base GT hit counts unchanged, one backbone/image, BERT38calls/38hits across two complete1203-class passes. Native/reuse elapsed11.545474/10.907659s are limited two-image cold/warm observations, not full throughput. Flag defaultFalse preserves F0 metadata/commands and resumable exact frame prefixes; only future adapted-checkpoint evaluation explicitly passes it to new workers. Keep this verified integration; all original full processes, protocols, GT denominators, weights, budgets, seeds and acceptance criteria remain unchanged. Actual adapted full audit and all tracking results remain unmeasured.
+
+## U2 full F0 completion and native checkpoint load repair — 2026-10-12
+
+Original blocking TAO audit63615 returned exit0/COMPLETE: all36,375 TAO validation and17,131 C-TAO original training frames measured. TAO base105,408/110,055=.957775658, novel2,777/3,057=.908406935; C-TAO base50,975/53,263=.957043351, novel inapplicable. Both OV portability streams pass; BDD/MOT17/MOT20 ordinary F0 gates still fail, so bounded U2-P is required. Its original owner11636 genuinely terminated at native MMEngine checkpoint loading before any optimization, because PyTorch's default weights_only=True rejects the original checkpoint's HistoryBuffer. Plan: retain original full measurements and exact eight-GPU replay/protocol; apply the existing U1 process-local TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD convention, verify the actual native loader on immutable U1R2, then resume the unfinished epoch and terminal downstream queues with updated owner PIDs. No metric, seed, budget or acceptance change.
+
+Targeted regression94105 exit0: all six terminal shards exactly cover53,506 unique registered frames, every frame has one backbone call and300 native proposals, both source GT denominators and measurement totals match. The native MMEngine loader now loads the immutable SHA-verified actual U1R2 state_dict1,069 tensors plus HistoryBuffer/optimizer; full unchanged preflight is READY. No epoch checkpoint or first optimization update existed at failure. All four original downstream handles returned terminal HELD states; recover their owners only after this evidence. Keep the localized compatibility fix.
+
+Recovery blocking supervisor23776 launched genuine new owners after all old handles terminated: perception1054069, ordinary1054070, MOT-only1054071, joint1054072, finalization1054074. Original failed states preserved in outputs/unified/u2/recovery_20261012/*.original; original training log retained. The single supervisor waits these exact processes; downstream unchanged gates prevent cache or tracking launch before a fully selected passing foundation. Full budget remains1,250 steps/epoch, at most2epochs, followed by6,000 MOT-only and eligible4,000 joint steps. Actual selected pack and U3 readiness remain unproven.
+
+## U2-P epoch1 complete; adapted audit worker argument repair —2026-10-12
+
+Recovery23776 returned genuine terminal exit1 after epoch1 completed all1,250 updates and saved epoch_1.pth (SHA1d9077ae603f40de0e955a11a88083f914f98faa967bc46cdd06bcdfb5129688). Actual checkpoint contract PASS compares265 immutable BERT/Swin0/1 tensors bit-exactly with original U1R2. First actionable evaluation failure: all ordinary workers exit2 before inference because the parent omits --measurements-dir, so their adapted-checkpoint parser sees the default F0 directory. The TAO parent has the same omission and would fail at its next stage. Plan: propagate the already explicitly supplied independent directory in both existing worker commands; verify actual adapted native smoke workers through both parent launchers, preserving guards and scopes; resume unfinished full evaluation from the completed epoch1 checkpoint, never rerun epoch1 optimization. All recovery downstream owners are terminal HELD, and will be restored behind the new perception owner.
+
+Storage rebalance requested by user —2026-10-12: move only11 completed/CRC-extracted TAO archives from /data0/user (87.981GiB,49.54% of prior usage) and /data1/user (85.328GiB,48.72%) to matching /data3/user/TAO-Amodal/frames paths. Destination has789GiB free; extracted train/val/test image paths and scientific protocols remain unchanged. Two parallel volume transfers verify each destination against its existing download SHA before atomically replacing the original archive with a symlink; no source data is removed before verified copying. Plan recorded in outputs/unified/u2/storage_rebalance_20261012/plan.json.
+
+User superseded archive relocation: original transfer69601 stopped with exit143; deleted all21 CRC-extracted completed TAO archives across allfour volumes (345.674GiB) plus cancelled relocation temporary copies (68.760GiB). New plan migrates approximately half of cleaned /data0/user and /data1/user image storage, using only test/validation directories; train directories remain in place. rsync validates transferred data, then a dry-run checks complete matching trees; Linux renameat2 exchange atomically replaces each original directory with a target symlink before removing its verified redundant original copy. Scientific image paths, original source annotations and all protocols stay valid. New explicit plan: outputs/unified/u2/storage_rebalance_20261012/image_migration_plan.json.
+
+Post-cleanup image migration completed:95 directory units, /data0/user44.814GiB and /data1/user44.907GiB relocated to /data3/user, each49.999% of cleaned initial occupancy. rsync full-tree parity passed before atomic symlink exchange; all original image paths remain resolvable, only test/validation storage moved, train paths and experimental contracts unchanged. Final actual directory sizes and df recorded in outputs/unified/u2/storage_rebalance_20261012/image_migration_result.json.
+
+Adapted launcher regression96599 exit0: through the actual ordinary and TAO parent launchers, each actual child receives the separate measurements directory and real epoch1 checkpoint SHA; one original legal KITTI frame and original two-source TAO/C-TAO smoke frames execute native inference successfully. Test-only smoke injection and collector do not produce formal measurements or weaken aggregate completeness; report is explicitly reference_only. Full recovery supervisor95952 resumes epoch1 evaluation from existing epoch_1.pth, new perception1089957/ordinary1089958/MOT-only1089959/joint1089960/finalization1089961 owners retain unchanged budgets and gates. All previous owners returned terminal, their failure states retained. Full U1 retention and adapted portability remain pending; no tracking or U3 claim.
+
+User-requested inference sharding throughput plan —2026-10-12: full audits already use8 physical GPU shards, while native full1203-class TAO performs38 multimodal transformer passes per image. User asks to shorten runtime. Temporarily SIGSTOP exact evaluator1090197 and its existing TAO parent1238269/workers1238270..1238277, retaining all completed ordinary measurements and existing TAO exact frame prefixes; no original source inference re-started. Measure1/2/4 independent singleton processes on GPU1, real adapted epoch1 SHA1d9077a, identical12 reference frames spanning original TAO source domains, full vocabulary/native FP32/static text reuse and exact boxes/scores/classes parity. This is a bounded throughput probe, not a metric or scope change. Adopt higher concurrency only if actual throughput improves with unchanged outputs; otherwise retain the fastest measured concurrency and resume the existing owner. Probe shell60967; hold receipt outputs/unified/u2/perception_adaptation/throughput_probe_hold.json.
+
+Same-GPU probe60967 completes: identical12 actual native full-vocabulary reference frames take158.996s with1 process,251.286s with2 and220.054s with4; all proposal boxes/scores/classes are bit-exact. Reject extra processes: single worker per GPU is fastest on this sample. Initial default-device memory counters were on GPU0 instead of model GPU1; omit those zero counters from published aggregate, retaining actual wall-clock/parity evidence.
+
+Native metadata optimization85924 completes: explicit target CUDA binding plus one bulk integer-label copy for native label_names construction reduces the same12-frame sample to103.870s (observed1.531x), boxes/scores/classes bit-exact for all12, native full label_names identical on the first full-vocabulary frame; native methods restored. Actual model GPU1 peak allocation1,664,202,752bytes. This comparison includes CUDA binding and changed background load (seven formal audit workers resumed), so it is not an isolated causal label-copy benchmark or a full-run speed guarantee. Keep integer-only optimization provisionally; verify actual two-source native worker rows before resuming formal prefixes with it. Vocabulary1203, chunks32/38, NMS.8, Top300, precision/weights/protocol/GT denominators remain unchanged.
+
+Actual bulk native worker63758 exit0: unchanged two-source smoke rows/GT hit counts and resume metadata are exact,300 candidates per frame, one backbone per frame,76 head calls/68,400 integer class labels; native/bulk CLI wall68.842/51.966s includes initialization and two frames, not formal throughput. After verified controlled interruption,95952 returned terminal exit1 (expected interrupted TAO command) and all four gated followers returned HELD without tracking launch. Every existing exact TAO prefix parsed successfully:440 completed frames preserved across initialized shards; shard1 had not yet written metadata or rows. All76,068 ordinary frames and epoch1 original1,250 updates retained. New supervisor57530 launches perception1313649/ordinary1313650/MOT-only1313651/joint1313652/finalization1313653. Full evaluation skips complete ordinary measurements and resumes unchanged eight TAO partitions with explicit GPU binding plus bulk integer metadata; labels alone temporarily use CPU for native name construction and return to the original device before NMS. Both flags preserve full1,203 vocabulary,38 native chunks, FP32, backbone counts, GT scope and all gates.
+
+Actual epoch1 ordinary summary: BDD Top150.936574, Dance.999036, MOT17.878066, MOT20 Top150.819136/Top300.973281, original legal KITTI.946394. All five full ordinary streams are measured; MOT20 satisfies the registered Top300 crowded threshold but formal registration/selection still waits complete TAO and U1 retention. No selected foundation, candidate cache, tracking benchmark or U3 readiness is claimed.
+
+### 2026-10-13 — U2 perception epoch 1 selected
+
+- Completed the unchanged full TAO/CTAO portability audit: 36,375 / 17,131 images, Top300 base recall 0.9742855845 / 0.9729080225; TAO novel recall 0.9460255152 (2,892 / 3,057). Unmapped TAO GT retained separately (305 / 314 hits).
+- Epoch 1 foundation `1d9077ae603f40de0e955a11a88083f914f98faa967bc46cdd06bcdfb5129688` passed all seven portability streams and U1 retention: generic V1/V2 0.9918663023 / 0.9672269380; expression Top100 V1/V2 1.0 / 0.9785374828. Fixed 500-pair language audit true/shuffled AP50 0.7301285093 / 0.4067468580. Generic scope 4,201 images; expression scope 7,160 representative query frames, 7,199 target references.
+- Selection source receipts and their registered digests agree; retain epoch 1, no second adaptation epoch required. Existing recovery owner exited successfully and advanced the eight-GPU ordinary candidate cache automatically. Formal tracking scores and U3 readiness remain pending.
+- Evidence: `outputs/unified/u2/perception_adaptation/eval_epoch_1/selection.json`, seven `measurements/*.json`, and generic/expression/counterfactual `result.json`.
+
+### 2026-10-13 — user-directed GroundJEV research pivot
+
+- User terminated full U2 candidate caching and authorized GroundAnything DLM + pretrained OneJev tracking research on at most four GPUs. Goal changed; this is not algorithm failure/NO_GO.
+- Verified /proc ancestry/start ticks and stopped 13 old U2 processes with SIGTERM; no old queue/cache worker remains. Other project GPU jobs preserved. Removed 4,748 verified feature shards (39.89 GiB allocated), retaining manifests/data/results and loadable epoch-1 checkpoint SHA 1d9077ae… (1,909,880,505 bytes).
+- New worktree /data2/user/LocateMOT_GroundJEV and branch codex/groundjev-4gpu-20261013 inherit freshly fetched remote 51614cb. Official GroundAnything/OneJev code cloned directly without proxy; isolated environments/weights setup started. No new training or tracking metric claimed.
+- Correct inherited status terminology: generic .9787925789 is Top150 recall IoU .5, not AP; expression Top100 V1/V2 recall 1/.9785374828, while .7237566558/.6556441180 are query AP diagnostics. Raw receipts unchanged.
+- Next: real DLM/OneJev loading, own-state short clip → full legal MOT video, fixed-candidate Simple/Full comparison, tracking-SFT and shared RMOT/OVMOT evaluation. Keep evidence-based failure repair and finite training budgets.
+
+### 2026-10-13 — GroundJEV legal inputs and initial online interfaces
+
+- Verified real legal MOT17-02 dev299, DanceTrack0004 full-val1203, MOT20-01 dev214 frames. No new data download or test-GT access needed for first video work.
+- Implemented official-grid DLM HTTP candidates with missing native confidence explicitly preserved, pretrained OneJev batched Choice/Noul/Score identity and lifecycle adapter, Hungarian global competition, reliable long-memory updates and causal save/restore. Real crop evidence is explicitly distinct from pending native GroundAnything features. Replay control preserves identical candidates and reports no end-to-end FPS for cached perception.
+- A two-frame real annotated CPU fixture passes identity persistence, exact resumed state and rejected past timestamps; GT is used only in this explicit fixture, not as a claimed runtime/benchmark result. Real model integration remains pending dependencies and weights.
+- Installed independent Python3.12.15. Separate OneJev/SGLang installs active. PyYAML shared uv lock failure fixed by dedicated setup cache. Direct model transport hit aria2 TLS and curl HTTP2 cancellation; retained byte prefixes. Eight concurrent official1MiB ranges complete in7.397s (1.134MB/s aggregate); adopt sixteen8MiB ranges/large model on HTTP1.1 with official final weight digests. No proxy, no GPU usage yet.
+
+### 2026-10-13 — official video evaluation and runtime setup progress
+
+- Added complete-scope ordinary MOT export using unchanged TrackEval12c8791; all299 legal MOT17-02 dev frames in a labeled GT oracle fixture yield expected perfect metrics/zero IDSW/FP/FN. This validates format/scope handling, not GroundJEV performance. Runtime replay now checks actual physical image paths.
+- To avoid repeated multi-GB dependency transfers, copied matching CPython3.10 installed framework files into an independent OneJev environment, excluding old Transformers/MMDetection and source console scripts. First copy attempt used the assumed venv package directory and copied zero files; corrected to actual distribution roots, then recorded nonzero distributions. Source environment untouched, no shared symlinks. Torch2.10+cu128/vision0.25 imports and CUDA availability on GPU6 pass; OneJev/Transformers5.5.4 installed and all69 package requirements compatible.
+- Prefetched official pinned large PyPI wheels via verified byte ranges. Exact-version py3-none NVIDIA dependencies reused for GroundAnything's separate Python3.12/Torch2.9.1 setup. Controlled package transport interruptions preserve caches/bootstrap/custom vendor source; remaining official installation/ABI check continues. Universal flashinfer-cubin wheel was initially excluded by the platform selector; corrected from actual PyPI filename and completed the missing wheel.
+- One blocking readiness queue owns the actual pretrained MOT-frame check, gated on full official OneJev weight receipt. Models still downloading; no real-model tracking or training result claimed. Optimizer steps zero, at most four physical GPUs enforced by common launcher; other projects preserved.
+
+### 2026-10-14 — first actual OneJev frame and checkpoint-version repair
+
+- Official OneJev weights complete and LFS digest matches: model.safetensors2,214,590,296bytes SHA cb4b7456703baa26a0cfacf177067200b50021df5a6ba2a2cd1e6f6c868f2244. No weight/model substitution.
+- FirstGPU load reads474 weight entries but default official fork self-check fails (.0857 rounded probability difference > .05). Initial OneJev5.5.4 pin incorrectly reused GroundAnything's requirement; actual checkpoint config declaresTransformers5.17.0. Update only isolated OneJev to5.17.0/tokenizers.23.3, keep all official checks and .05 tolerance; same pretrained weights then pass auto validation and use batched mode.
+- Real MOT17-02 frame000302 processed on GPU6 with Choice/Noul/Score: NEW.36689/IGNORE.63311, visible people.978877, quality expected level.919935. Preserve the negative generic choice; this is a load/interface check, not association accuracy. Actual three-question request.286737s, allocator peak3,119,928,832bytes, steps0.
+- GroundAnything's independent Python3.12/Torch2.9.1/Transformers5.5.4 custom serve environment completes and official ABI check reports only its expected cuDNN9.16 metadata override, no unexpected conflicts. Single DLM owner waits for verified bundle and available GPU6 memory before starting official denoising with static memory fraction.4. GroundAnything download remains active. No full online video or fine-tuning claimed yet.
+
+## 2026-10-14 — official DLM service and GPU ownership
+
+GroundAnything DLM download completed at the pinned official revision with
+its 9,687,419,736-byte weight matching the official LFS SHA256. The single
+service owner launched official custom SGLang denoising on physical GPU6
+(static memory fraction .4); the model endpoint responds. A single blocking
+clip owner starts four real MOT17 dev frames using native DLM candidates,
+pretrained OneJev, global assignment and its own causal identity memory.
+Completion, output validity and tracking quality are still pending.
+
+The user asked why physical4/5/6/7 still showed processes. A one-time GPU
+process/cwd/argv audit identified UDMT training/inference on4/5/7, the two
+GroundJEV model processes on6, and an unrelated user process on6. This is
+not four-GPU GroundJEV usage and not old U2 caching. Other project processes
+were preserved. Keep the explicit project device allowlist and ownership
+attribution; no metric, seed or protocol changed.
+
+## 2026-10-14 — tracking SFT teacher curriculum hypothesis
+
+Hypothesis: the pretrained generic decision model needs explicit tracking
+identity, lifecycle and memory-update supervision before own-state rollout.
+Prepare real 16-observation legal training clips from MOT17-02, DanceTrack0001
+and MOT20-01, mined for overlap, low visibility and missing observations.
+Use a single shared runtime question/state builder and randomized persistent
+identity aliases per clip. Teacher GT proposals/history are allowed only in
+this initial curriculum; they are not GroundAnything output or benchmark
+predictions. Missing shortlist identity and withheld correct-option rows are
+explicit NO_MATCH supervision, never mislabeled as NEW. Full completion also
+requires verified false-candidate supervision and actual model-state rollout.
+
+Start with official multimodal language-model full SFT, frozen vision,
+100 optimizer steps, one-row microbatches and four-row accumulation. Retain
+the original seed0 and5e-6 recipe, verify all rows fit the token plan, save
+every25steps, inspect real gradients/loss and reload the checkpoint. The
+subsequent finite first training budget remains500–1000steps including
+model rollout; this100-step check does not satisfy formal training completion.
+The first native online clip is unexpectedly slow, so profile that exact live
+process once before proposing a speed change.
+
+## 2026-10-14 — native video failure, official parsing and resume
+
+The native DLM + OneJev loop completed real frames302–304:31 candidates
+each,30/31/31 output tracks,18.194/19.647/19.763s per frame. OneJev
+created51 persistent IDs by the third frame, evidence of unadapted identity
+fragmentation, not tracking success. The fourth frame failed the strict
+client parser with non-canonical coordinate ordering/repeated phrase blocks.
+The runner then deadlocked during cleanup: its parent waited for ffmpeg while
+ffmpeg waited for an unclosed raw-frame pipe. A one-time targeted process
+diagnosis identified this, the exact owned encoder received SIGTERM and
+then SIGKILL after its verified10s timeout; no model/other-project process
+was signalled. The original traceback returned and is preserved.
+
+Repeating the exact frame/request three times yielded the same strict parse
+error (17.009s total); resampling is not a fix and default inference still
+uses one request per frame with unchanged model/decoder/sampling parameters.
+The pinned official evaluation scoring parser preserves35 geometrically
+valid boxes in this response. Add an explicit official_scoring adapter policy
+using that unmodified function, retaining strict_wire_valid=false, raw output
+and error. A regression on the observed failure matches every label/coordinate
+with the official scorer and still rejects truncated generations. Client
+strict mode remains selectable; no GT, coordinate repair or metric change.
+
+Fix encoder cleanup by closing stdin before waiting, persist the first
+failure, and reconstruct completed causal identity states from saved native
+Choice/Noul/Score decisions. Real prefix reconstruction reproduced all three
+frames' outputs/events/state exactly without GT or further model calls.
+A refactoring mistake (len(questions) after moving request construction)
+caused the first resumed attempt to fail at frame305; use len(request.questions)
+and retain that failed attempt. The second resume starts from the same three
+verified completed frames. Resumed legacy timing cannot account for the
+original failed request/interruption, so no complete end-to-end FPS is claimed.
+
+Teacher curriculum:18 legal16-observation clips,8964rows,59,665,520 history
+PNG bytes,3 real reappearance observations in DanceTrack. All8964 official
+question/target schemas verified;1728 Noul targets corrected from true/false
+to the official yes/no labels before any training. No development/test GT
+used. Official plan-only: p50/p90/p99/max5553/7201/7637/7858tokens,0 rows
+dropped at16384, maximum18options (actual API limit255). Full pretrained
+language-model100-step check launched on physicalGPU4 with frozen vision;
+GroundJEV now uses two physical cards4and6, other jobs preserved. The training
+owner is unique and blocking. This teacher phase still lacks complete false
+candidate/termination/long-gap/model-rollout coverage, explicitly pending
+for the next curriculum and formal500–1000step budget.
+
+## 2026-10-14 — first native online output and negative association control
+
+Four native MOT17 frames completed and passed prediction/one-to-one/memory
+and ffprobe integrity checks:31/31/31/35 candidates,30/31/31/35 tracks,62
+persistent IDs,next_id63. Official same-candidate4-frame TrackEval: Full
+HOTA.421629,DetA.650042,AssA.281686,IDF1.427481,60IDSW,16FP,24FN; Simple
+HOTA.748813,DetA.642304,AssA.895161,IDF1.836502,1IDSW,17FP,24FN. Retain
+this negative generic-pretraining result; it supports tracking adaptation,
+not a full-video/paper claim or global NO_GO. The resumed Full invocation
+allocator peak8,350,338,048bytes covers that invocation only. Complete
+end-to-end FPS remains null because the legacy interrupted run lacks failed
+attempt timing; Simple10.8387FPS is association replay only.
+
+The actual100-step SFT check is running: all474weights loaded,752.39M/852.99M
+parameters trainable, first5 losses finite and nonzero gnorm, peak15.1GiB.
+A separate single blocking owner starts all1,203DanceTrack0004 validation
+frames with native DLM + pretrained Full, then same-candidate Simple and
+unchanged TrackEval. Internal GPU monitoring excludes foreign jobs.
+GroundJEV uses physical4and6 only; no queue/task was restarted implicitly.
+
+## 2026-10-14 — complete-video generic decoder failure and official dense repair
+
+DanceTrack native attempt completed20frames then failed frame21. The raw
+output repeats the same box and ends with a trailing separator; even the
+unmodified official scorer returns no valid predictions. Preserve all20
+real frames, the valid latest memory, failure JSON and internally recorded
+resource peaks. Encoder cleanup now returns the real failure promptly.
+No frame is skipped or accepted as a valid prediction.
+
+Root cause hypothesis: generic client uses greedy inner/outer sampling rather
+than the officially documented dense request profile. The running server
+YAML fixes sampling_seed42; retain42. Probe the same frame with official
+DecodeV4 shared fields plus dense temperature.1/top_p.95/max8192 in both
+outer sampling and nested gam_dlm_decode. Actual probe3.345s produces5
+official-scoring-valid boxes; strict duplicate-coordinate error still logged.
+Do not relax geometry/truncation/metric validation or switch DLM to VLM/AR.
+Run a distinct, explicitly registered dense_v2 full video from its first
+frame because request numerics changed; the old20frames remain a separate
+negative attempt. This repair is retained pending full-video evidence.
+
+SFT owner remains live and has reached observed step40 with finite losses,
+nonzero gradients and15.2GiB allocator peak. Full ckpt-step25 is saved; no
+completed100-step or reload result yet. Disk check:365GiB free on/data2,
+enough for the finite model saves; feature-cache budget unchanged.
+
+## 2026-10-14 — checkpoint validation and same-candidate SFT check plan
+
+Previous goal turn made concrete progress: native model tracking, official
+four-frame baseline metrics, actual SFT and verified GitHub publication.
+Current single training handle is live at observed step80; dense full-video
+owner is live at observed frame14. Continue those exact owners.
+
+After the100-step owner exits, validate its done record and finite losses/
+gradients; compare saved language-weight probes against the original at the
+same BF16 precision, then load the checkpoint twice and check the same real
+tracking Choice/Noul/Score probability distributions. Follow with the exact
+four-frame candidate replay before/after control and unchanged TrackEval.
+No evaluation GT enters inference and no full-video result is inferred from
+this short scope. Then create real legal-train detector/model-history rollout
+supervision for the finite formal adaptation budget; teacher-only training
+does not complete the target.
+
+## 2026-10-14 —100-step negative result and complete-frame scoring policy
+
+Official SFT completed100steps/400examples in1509.262s. All474weight names
+retained; three BF16-aligned language MLP probes changed1.882M/1.623M/1.083M
+elements. Two reloads yield identical real tracking probabilities (maxdiff0),
+unchanged official fork auto check passes. Four same-candidate official
+metrics worsen: HOTA.328338,AssA.172383,IDF1.311787,75IDSW,17FP,24FN vs
+pretrained HOTA.421629,60IDSW. Keep the100-step negative checkpoint; do not
+claim completed formal adaptation or improvement from a falling training loss.
+
+Dense request full-video attempt also stops at frame21 with repeated/malformed
+wrappers, despite the isolated frame21 probe passing earlier. The request
+contract repair does not guarantee valid output and must not be described
+as a complete fix. Preserve both failures and20 valid native states.
+
+For complete-video measurement, register explicit empty_and_record policy:
+the same unchanged official scorer rejects malformed/truncated output; use
+its empty prediction set, record raw error and latency, and run the actual
+causal tracker on zero candidates. Every image remains in the official
+metric denominator. Mark completion WITH_REJECTED_PERCEPTION, never all-valid
+model success. Only GroundingProtocolError is handled; file/service/runtime
+failures still stop. Reuse the verified20-frame prefix under unchanged
+model/request/core settings; no skipped sample or reconstructed fake box.
+This is an explicit measurement policy, not a GroundAnything quality fix.
+Analyze correct-option coverage, selected identity and memory contamination
+to determine why GT-teacher SFT is not sufficient before formal rollout SFT.
+
+## 2026-10-14 — identity error diagnosis and evidence-format controlled repair
+
+Post-hoc fixed-anchor diagnostics on the same four frames show correct-option
+coverage100% for both pretrain and SFT100. Existing identity accuracy falls
+from14/78(17.95%) to6/74(8.11%); native correct-option mass.09925 to.04026.
+Candidate GT recall is the same111/135(.82222) for all three controls. The
+shortlist is not the immediate cause on this scope. SFT100 holds all93
+existing memory observations, while pretrain has7 wrong/unmatched memory
+updates and only1 identity-consistent update. Preserve diagnostics as
+post-hoc analysis, not official metric replacements or inference GT input.
+
+Two concrete exposure mismatches need repair: inference candidates have no
+explicit crop identifiers, relying on pixel-coordinate arithmetic in the
+full image; teacher rows use6candidates/16historical options vs16/32 at
+runtime, and miss wrong detections/model histories. Preregister optional
+v2_crop_motion evidence: current candidate crop sheet plus immutable
+anchor/long/recent history sheet, explicit causal IoU/center-distance
+matrices as features, and a genuine NO_MATCH option. Hungarian still uses
+native OneJev probabilities. Keep v1 unchanged for the ongoing full-video
+baseline. Run pretrain and SFT100 with identical v2 evidence/candidate lists
+as a controlled diagnosis before forming the new own-history curriculum.
+
+Evidence v2 pretrain produced no tracks: all128 candidate actions were
+NO_MATCH, including the first frame with no past identity. The new criterion
+was semantically overlapping with NEW. Retain that version/results and finish
+the matched SFT100 control. Register v3 as a minimum semantic repair: NO_MATCH
+requires a previously observed object and is not offered with empty history.
+Current crop/motion evidence otherwise identical. Do not silently overwrite
+v2 or alter its model scores.
+
+Evidence v2 pretrain and SFT100 both collapse to NO_MATCH on all128
+candidates (HOTA0,FN135); retain this actual semantic-error result.
+V3 removes NO_MATCH from empty history and distinguishes previously observed
+objects from NEW. Pretrain produces10/29/24/35tracks,HOTA.343944,47IDSW,48FN.
+SFT100 produces31/0/0/0tracks,HOTA.197395,0IDSW,110FN: zeroIDSW here reflects
+missing outputs, not good association. No improvement or full-video claim.
+The initial16-option teacher curriculum never exposes production35-option
+questions; together with teacher-only states/absent wrong detections this
+requires a matched-density own-state curriculum.
+
+Start actual checkpoint100 V3 rollouts on three legal16-observation train
+clips,32GT proposals plus two explicitly synthetic box-fragment negatives
+per dense frame, actual model states/decisions and no GT state correction.
+Reuse the observed real DanceTrack reappearance clip. Export supervised
+requests with correctly permuted IDs and crop-sheet labels,35-option
+exposure where actual memory permits, false-candidate IGNORE and real
+wrong-history/lifecycle/memory labels. This isolates decision learning;
+GT proposals are declared, not mislabeled as GroundAnything detections.
+Actual DLM-proposal training rollout remains a further required stage.
+
+The actual SFT100 V3 student rollout completed48legal observations and
+6792supervised rows,38,165,373bytes crop evidence,max35options. It has96
+IGNORE negatives,139NEW labels,87withheld-option NO_MATCH cases,206
+TERMINATE and2620REACTIVATE supervision. Actor after the first frame chooses
+NO_MATCH and keeps lost memory, so this branch does not supply enough wrong
+identity updates. Preserve that collapsed real rollout, then generate the
+same registered clips with the real pretrained V3 actor to obtain diverse
+wrong association/memory states. Both branches use GT proposals plus explicitly
+synthetic fragments, with GT labels only in the post-hoc supervisor.
+Formal adaptation will mix both branches and increase identity row weight
+4x (explicit repeat sampling) because the initial curriculum overweights
+lifecycle relative to association. Keep seed0,optimizer/lr and all registered
+frames; do not claim a completed formal500-step run until it actually ends.
+
+Pretrained V3 rollout completed6709rows/48observations/44,023,768bytes
+and526 contaminated history observations. Combined with the6792-row SFT100
+rollout gives13,501unique rows,20,881 after explicit4x identity repeats.
+Official complete plan: max22817/p50 15520/p90 22158/p99 22544,0 dropped
+at32768 context; actual35-option exposure. Finite500-step official full
+language-model SFT began from checkpoint100 with a deliberate new curriculum
+optimizer, seed0/lr5e-6 unchanged. First two losses3.2479/8.0658 and nonzero
+gradients299.979/513.188; peak18.1GiB,75.8/76.2s per step. Formal completion
+and before/after remain pending. Source proposals remain declared GT plus
+synthetic fragments; no claim of completed GroundAnything-proposal rollout.
+
+## 2026-10-14 — proposal-aware lifecycle label regression and resume
+
+A targeted audit found203 wrong ACTIVE/REACTIVATE lifecycle targets:164/3015
+student100 and39/2936pretrain rows label visibility despite no matching
+current proposal. Lifecycle requires association, so these targets are LOST.
+Signal only the verified exact500-step trainer (PID3993066, own cwd/config,
+SIGTERM), preserve its first5logged steps and alloriginal artifacts. No
+checkpoint was saved in this aborted stage; resume from validated100-step
+weights, seed0 unchanged. Old owner state STOPPED_FOR_VERIFIED_LABEL_REPAIR.
+
+The repair initially parsed life_357 as _357; fix the delimiter, preserve
+the partial derived repair, and regenerate from original real actor traces.
+The prematurely started repaired preflight correctly refused incomplete
+corpora and did not train. Source corpora, allstates/media, identity aliases
+and non-lifecycle targets stay identical. Assert all5951 lifecycle targets
+consistent with supplied current proposals and exactly164+39labelchanges.
+A new corrected500-step owner starts with unchanged weights/lr/seed/context/
+identity-repeat budget. The stopped run is not declared formal completion
+or silently combined into an improved result.
+
+## 2026-10-14 — native DLM visual feature adapter plan
+
+Previous goal turn made verified progress: real SFT/reload/negative controls,
+real actor histories, lifecycle label repair/regression, resumed finite500
+training and exact GitHub publication. Continue existing live owners, not
+new copies. Add a native visual adapter using DLM checkpoint visual/projector
+weights and the unmodified official eager MoonViT/K3 preprocessing path.
+Compare the official reference visual module with the SGLang visual adapter
+on the same real image, preserve feature-grid geometry through resize/padding,
+then ROI pool candidates. Only this small validation uses physicalGPU5,
+within the project allowlist/4card ceiling; live training4 and video6 unchanged.
+This provides genuine native features for temporal adaptation/Compact, not
+a substituted crop encoder or a full-dataset cache.
+
+
+## 2026-10-14 — Native feature adaptation and legal task loops
+
+Plan after source inspection: verify the actual DLM visual/projector output,
+train a finite frozen-backbone temporal adapter, wire these features into
+causal memory, then run legal Refer-KITTI/TAO loops with the existing OneJev
+checkpoint and exact-candidate Simple controls. Keep formal SFT500 and the
+full DanceTrack owner unchanged; use physical5 for new checks within4/5/6/7.
+
+Native DLM:428,482,048 visual parameters/170weights; real MOT regions31x2560
+and local tokens31x2560x3x3. Official serving visual function and immutable
+checkpoint reference both match exactly; independent ROI mapping differs
+9.54e-7. Initial config.hidden_size lookup failed after real forward; fixed
+only the adapter to use vision_config.out_hidden_size and retained failure.
+
+Temporal adapter:200steps, seed0,693,632 changed parameters, loss4.2086 to
+…58360 tokens truncated…th-support audit counts only provably unique GT-supported emitted cases. Remaining ambiguous original unbound births are not certified correct, so the broader binding-label mechanism is not ruled out. Keep original data and report uncertainty. Shared/MOT-only8000 full five-scope controls completed; sharedMOT20 improvesHOTA7.4316→11.4780% butIDSW2060→58632, Monly5.6407%; no model promotion.
+
+Native-relation production has actually passed100updates/300questions (100per task); intermediate saved-state validation compares every frozen original weight exactly and checks all model/Adam values finite. Initial parity and prefix restore are execution evidence only; no new tracking gain yet.
+
+TRAIN-prior8000 also completed allfive causal scopes; naturalMOT20 HOTA3.10833553628264%, IDF11.890913979096887%, IDSW30884. Frozen-core native-relation actual saved state observedat3000updates/9000questions: all59original fixed tensors/1080589elements exact, allmodel/Adamfinite. This verifies execution/frozen-boundary only, not gain.
+
+Registered one blocking CPU observer for original full-source four-GPU1000step save; original ownerPID/starttick/cwd confirmed, no processes signaled/restarted. It waits for the actual full-state receipt, then checks all752393024FP32masters/1504786048Adam elements,320counters/scheduler/cursor,all4rankRNG payloads and actual sampler task exposure. It performs no optimizer updates, GPU allocation or actual1000step restart; report pending. Small report reuses1MiB of the already registered8MiB adapter/report reserve.
+
+Native relation8000 completes24000questions/1040.460s. All59fixedweight tensors exact, final full state/export/reload pass. Residual-disabled inference restores originalDT HOTA26.3157% exactly; trained residualDT15.3059%, singleRMO0%, multiRMO24.1906% (disabled19.1828,original19.8019), multiIDF129.2044% andIDSW97 versusoriginal21.0082/165. Positive isolated multi-query component effect but overall regression remains; retain both same-final variants and finish registeredTAO/MOT20 scopes, no promotion.
+
+2026-10-16 — Evidence milestone, not efficacy: original four-GPU459027-question joint training actual1000/16000 save passed full752393024FP32/1504786048Adam-moment finite/cursor/RNG inspection. Task exposures8817/3537/3646; subsequent1125/18000 logged. Preserve training and checkpoints; no Ground+One joint gradient/long-BPTT claim or quality promotion.
+
+2026-10-16 — Next hypothesis/registered implementation plan: actual old Compact uses task/query embedding inside the physical association transformer; semantic-only RMOT/OV supervision can therefore leave physical decisions on a poorly supervised task-conditioned branch. Implement an opt-in canonical MOT physical stream (same original person/MOT text and weights), retaining the true query/task only at semantic readout. On identical candidates/history, physical logits/update/reliability/lifecycle must be query invariant and MOT outputs must remain exact before any training. Then run paired frozen-physical semantic-head-only8000-step studies, identical16000RMOT/OV questions/order/seed/loss/hyperparameters, query-coupled versus canonical physical branch; include untrained canonical arm to separate runtime intervention from semantic training. All5 registered complete scopes and scorers, same final checkpoint across tasks, no residual or threshold changes. No new ROI bank/GPU; reserve8MiB metadata beyond26710582238→26718970846bytes<25GiB. This is a factorization experiment alongside the original running750M joint training, not proof of shared-backbone or Ground+One end-to-end gains.
+
+2026-10-16 — Factorization initial evidence:67real groups/61native units+6Base,335conditional task/query interventions; physical outputs exact invariant, original physical outputs change335/335, membership changes335/335. Every canonical MOT output exact original. Full1203rollout/prefix/training remain owned and pending. Native residual TAO40 all3arms officialvalidated: TETA14.517→14.320, disabled14.646; allNovelClsA0. Preserve mixed result; no promotion.
+
+2026-10-16 — Factorization full MOT numerical regression complete:1203frames/13664candidates, every original causal state/output/shadow Hungarian assignment exact, every untrained canonical output tensor exact original on actual pre-write inputs. No metric improvement inferred. Paired semantic-only resume checks now run under original newCPU owner3908189.
+
+2026-10-16 — Both matched frozen-physical semantic-head studies passed actual8continuous versus4+4restored model/Adam/RNG equality (16questions each), then owner3908189 launched registeredcoupled/canonical studies3913160/3913161. Physical-weight preservation and allfive officialcontrols remain required. Native750M joint training continues independently.
+
+2026-10-16 — Native750M shared6000 final-ID DT1203 complete: official HOTA7.840637%/IDF1=3.534137%, exactly same as same-checkpoint default (original600 HOTA8.702996%). Real assigned-ID second passes1350, existing assignments4940, changed update probabilities4940, registered.5gate flips0; all1203exported outputs exact=True. Second-pass execution verified, no DT gain; RMOT/TAO controls continue under originalowner.
+
+2026-10-16 — Actual matched head-only8000training completed botharms:16000semanticquestions each,115.290/116.032s,65922trainable/1146511totalparameters. All59fixedoriginaltensors1080589elements exact; fullmodel/Adamfinite andexport/reloadexact. Preservefinalbothmodels; fullfive-scopecontrols nowrunning, no effectivenessclaim. This pairedphysical-queryintervention is distinct from ongoingnative750Msharedtraining.
+
+2026-10-16 — Next physical learning hypothesis: native OneJev6000 DT association remains weak and final-ID secondpass makes no gate changes; frozen physical/query factorization alone preserves MOT but does not restore single-RMOT. Train a task/query-independent native appearance projection with supervised cross-frame contrastive identities directly from immutable TRAIN candidate registry GT matches, bypassing actor birth-alias/action labels. Use all43TRAIN units/1056frames; keep original labels/sources, explicitly inventory singleton/noncontrastive identities. Same-video8identities×up-to4distinctframes,1000fixedsteps/seed0, original2560D ROI vectors by reference only. Evaluate native cosine, random initial projection, final learned projection under identical existing.5IoU+.5positive-cosine fusion/NEW.3/IGNORE0, fixed auxiliaries/gated3s, original semantic heads and all5official scopes. This representation-learning control is not native JEV probability, end-to-end Ground+One training or long-video BPTT. Reserve48MiB (16MiBmetadata+32MiBbounded streaming working buffers) beyond26718970846→26769302494<25GiB; model/Adam underdata3, no new ROI/image bank or GPU. First validate actual8vs4+4checkpoint resume, then train/fullcontrols; final1000 selected regardless heldout metrics, no threshold tuning.
+
+2026-10-16 — Physical-factorization first4officialscopes complete:DT HOTA26.3157exactallarms; coupled/canonical singleRMOT0/3.1383vsoriginal6.0247, multi19.1420/12.0955vs19.8019. TAO40coupled14.871/canonical31.323vsoriginal14.517/untrainedcanonical26.125; canonicalLocA33.075/AssocA35.637samebeforeandaftersemantictraining, ClsA9.6637→25.259(stillbeloworiginal30.314), NovelClsA0. Keep isolatedOVassociationgain, rejectthree-taskpromotion. Newcross-frameprojection1000complete341184params/27797exposures/36.587s, all43units;887TRAINIDs/873crossframe,14singletonspreserved; actualresumeallstatebitexact and67group16572affinityformula/defaultsemanticregressionexact. All5fullcontrolsrun unchanged. Native residualMOT20HOTA19.5518/IDF1=17.4310%, IDs30874vs2060; all5enabledscopescomplete,lastdisabledablationpending.
+
+2026-10-16 — Completed original native residual15/15officialcontrols, finaldisabledMOT20 restores original metrics exactly; preserve allcompletedproof. Next narrow causal audit: external frozenTAO40 native-versus-learned category evidence using exact official annotation+fullLVISsynsetaliases; distinguish any-box/class oracle support from class-agnostic one-to-one emitted support. An initial ad hoc print used annotation-onlyaliases and is not accepted as equivalent to official mapping; complete registered audit uses both dictionaries without changing predictions or metrics. No native-label restore is deployed before this evidence.
+
+2026-10-16 — Native temporal projection DT1203 official4arms: originalHOTA26.3157%; fixednativecos13.3108%, randomprojection13.4881%, trainedprojection8.4607% (IDF1=3.2767%). No promotion, remaining4scopes continue. Frozen category audit with exact officialaliases: Novelboxsupport37/40 but nativecorrectlabel+boxsupport1/40; emittedGTmatchedNovel6 and0native/learnedcorrect labels. Restoring rawnative labels alone is unsupported. New foundation hypothesis/plan: many original43MOT train clips cover~0.75–2s (MOT20 up to5.08s); longer supervision may reduce appearance shortcuts, but causation is not established. Build paired short-versus-long GT teacher identity episodes from all legal frozen train_frames only, same current image/box, same randomly aliased history identities/options/targets and other24000-mixture rows; past observation interval changes.4000positive identity teacher rows +4000originalnativeMOT rows +same8000RMOT/8000OV rows perarm. Teacher snapshots remain provided across gaps; not realactor rollout, long-BPTT or a deployedTTL/archive change. Actual native request/crop recipes/CPU plans required, then independent shared750M new stages from same native6000 FP32 checkpoint onGPU7 only after original6000owner exits successfully. Matched final6000steps/default4scopecontrols perarm; no old job restart or protocol change. Reserve16MiB reference/plan metadata:26769302494→26786079710<25GiB; no new images/ROI bank, model/Adam separatelydata3.
+
+2026-10-16 — Paired temporal teacher preparationv1 failed its final16MiBmetadata cap:22,748,803bytes, dominated by two10.14MB copies of the immutable9.96MB source mixture. No GPU/newoptimizer update started. Preserve failedinputs/code/terminalreceipt. Smallest fix: add explicit indexed-source manifest protocol and reference originalselected20000rows instead of copying bodies; newteacher4000refs remain. V2 keeps individual16MiBcap, separately reserves24MiB for failedinputpreservation; globalupper26769302494+40MiB=26811245534<25GiB. No samples/targets/seeds/scorerschanged.
+
+2026-10-16 — Indexedv2 ordering/provenance amendment: original row IDs are preserved;20000common native/semantic rows precede4000matchedteacher refs, then native seed0indexshuffle. This differs from failed/untrainedv1 interleaving/renamedIDs and is explicitly registered; botharmssameorder/augmentationIDs. No v1gradient trajectory existed. Mandatory regression checks actual8legacyrows and3indexedrows exact before complete native24000CPU plans.
+
+2026-10-16 — V2pairedtemporalteacher prepared/fullyCPUvalidated:43TRAINvideos/9789selectedimages,4000matchedpositivesperarm+4000oldnativeMOT+16000fixedsemanticrows. Shortgaps[.0333,.5,.96,1]s; long[3,7.95,38.65,104.2]s.86nativegroupstates/questions/172pixelsheetsexact; all24000rows/0drop/max27319,27319/6000plannedupdateseach.0newgradsteps, originaloneblockingownerwaitingnative6000GPU7success. Preservev1failedcopiedmixtures22.75MB andcode; indexedv2actual2.85MBwithin16MiB, separate24MiBfailedpreservation, global26811245534<25GiB. Native residual15/15andfactorization25/25officialcontrolscomplete; no common3taskpromotion. CategoryauditpeeleronlyNovel:37/40boxsupport,1/40box+label,0correctof6emittedGTmatches; externaloraclecountsnotClsA, no native-labelrestore. ReID12armsfirst3scopescomplete; trainedDT8.4607HOTA<13.3108nativefixed<26.3157original, no promotion.
+
+2026-10-16 — Correct mixed projection evidence after fullRMOTcontrols: singleHOTA9.2325vsoriginal6.0247/nativefixed5.5377/random6.6298; multi31.5524vs19.8019/16.6224/14.3821, IDF1=40.0107vs21.0082%, IDSW53vs165. Keep representation as a candidate, no promotion dueDT8.4607. FixedaffinityactionNEW.3>IGNORE0forcesemissionofallrawproposals(FP9330vs579); trainedAssAalsofalls(native.06641→trained.02618). Next planned implementation: appearance-informed permutation of existing-ID probability ranks, exact original action probabilities/probability multiset and auxiliaryheads retained on identical inputs; allfive scopes, native/random/trained contrast controls, no heldout temperature tuning(use originalcontrastive.07). Not yet implemented/measured.
+
+2026-10-16 — Implement next preregistered physical control: trained appearance helped bothRMOTscopes but fixedNEW.3/IGNORE0forcesallproposalemission andDTassociationalsoregresses. Preserve the original trained Compact action probabilities, complete probability multiset, all auxiliary/semantic outputs and policies on identical inputs. Reorder only existing-ID probability ranks by log(originalIDprob)+mean(anchor/recent/long cosine)/.07; .07 is the existing contrastive training temperature, not heldout tuned. Compare original versus native/raw, random projection and trained projection rank controls on all5unchanged scopes, same originalsharedcheckpoint and finalprojection1000. Per-row maximum-existing/action odds and entropy are preserved; global matching/closed-loop histories can still change, so no fixedFP/trajectory guarantee. No new optimizer/GPU/ROIbank; metadata suballocation within existing projection16MiB reservation, streaming buffers within existing32MiB reserve. This is an explicit Compact probability reranking control, not native OneJev decoder or calibrated contrastive posterior.
+
+2026-10-16 — Native inference throughput hypothesis: officialMMDecisionEngine already provides DecoderGraphs/ForkGraphs but defaults are disabled; stock graph limits32rows/512suffix tokens do not cover dense tracking or1203category root requests. Probe official Torch graph implementations configured128rows/8192suffix/32768prefix/max1cached prefix, attached after identical stock eager auto-fork calibration. No vendor/kernel/model changes or FLAinference. Same native6000checkpoint and real legal sparseMOT/denseMOT20/categoryroot+fixedleaf requests; sameimages/state/questions, eager versusgraphs, warmup excluded/3timedrepeats. Preserve existing1e-3probability gate, exactdiscretechoices, finiteoutputs, realgraph-hit evidence and >=1.5component ratio; failure remains rejected, no oldjob/backend switched. PhysicalGPU7only with>=32GiBfree, bothenginevariants sequential, allprojectworkstill4/5/6/7. Reserve8MiBsmallprobe/inputmetadata beyond26811245534→26819634142<25GiB; no new persistentROI/imagebank. This is a component probe, not tracking accuracy or E2E speed.
+
+2026-10-16 — Appearance-rank conservation passed67realgroups/566rows/8286IDoptions perarm, actionvalues/fullprobabilitymultisets/auxsemanticlife exact. First12officialcontrols: DT HOTA% original26.3157/rawrank30.2544/random19.4111/trained24.7555; singleRMO6.0247/5.7087/5.8205/6.1548; multi19.8019/18.9930/19.6370/20.1424. RawrankDT IDF1=38.2885 vs30.6329, IDs148vs165, butFP720vs579/FN2156vs1962. Preserveisolatedgain andrepresentation/policyinteraction; no per-taskselection or commonpromotion. OriginalTAO/MOT20ownerscontinue.
+
+2026-10-16 — Graph probe terminal0/completed but scientifically rejected: sparse/root/leaf maxnativeanswerdiff .011445/.013179/.013894 exceeds1e-3; ratios1.044/1.057/1.061 below1.5. Dense16/32graph callsfall back,30.754svseager13.942s/.453ratio; no actualgraphsuccess. Smallest next diagnostic uses savedanswers only (0GPU):68literalChoices,17Noul>=.5gates and17Hungarianrowsall unchanged; no RMOTmembership/final-ID questions, no futuretrajectoryguarantee. InstalledQwen3.5forward has no deepstackinjection, so do not claim missingdeepstackrootcause. Numericalcause unresolved; no vendorpatch/protocolweakening/backendadoption. Save allrawanswers/timings/hits/terminalreceipt, retain failure and stop this unpromising speed path. Metadata remainswithin existing8MiBreserve/global26819634142<25GiB.
+
+2026-10-16 — Previous status-only turn was a verified wait via original follower76060: originalfourGPU logged1700updates/27200questions,20688.803s/5.747h. Freeze exacthistorical1700row without polling/restarting training; log progress differsfromlastfullyinspected1000state. Update stale425doc snapshot. Original6000controls/pairedlongteacherCPUwait/retention and Full training remain original owners; no completion/three-taskqualityclaim. Publish this measuredrank/code/graphfailure evidence, excluding liveGroundownerstate.
+
+2026-10-16 — Original64133handle confirms native6000 allDT/singleRMO/multiRMO before/default/assigned controls terminal-complete and parentlive waitingregisteredTAObaseline. New actualnative multiRMOHOTA%6.7400→15.6144(default)→15.8936(assigned), DT8.7030→7.8406 unchangedassigned. Next boundedCPUproof: revalidate each completed originalunit with originalvalidate_run(fullframes/candidates/rejections/checkpoint/nativequestions/video), freeze9unitmetrics, audit actualsecondpass call/existingassignment/gateflipcounts against sameassigned causalstate observationprobabilities, and compare fullpairedoutputs. No newGPU/model/threshold/data/cachebank; smallreceipt stayswithin original6000ownerreport reservation. Do not mistake cross-trajectory update differences for same-input counterfactuals or these registered videos for ordinary-model parity.
+
+2026-10-16 — Posthoc freezer90288 failedexit1 beforepublication: firstDT lifecycleevent(frame15track2LOST) has no candidate/decision, normal tracker schema overlooked by newaudit. Original3DTunits alreadyvalidated, no inference/training failure. Preservefailedscript+receipt. Smallestfix: event signatures include candidate=None lifecycle records, memory-write probability audit explicitly considers candidateevents only; all lifecycleevents retained in assignmentcomparison. Rerun full9registeredunits/everyevent as targeted real-dataregression, unchangedmodel/metrics/frames, noGPU.
+
+2026-10-16 — Correctedfreezer41575actualexit0, all9native units/fullvideos/originalcandidateinputs/GTisolation/checkpoints/rejections andeveryevent validated. HOTA% before600/default6000/assigned6000 DT8.7030/7.8406/7.8406, singleRMO2.5062/3.3287/3.4052, multi6.7400/15.6144/15.8936. MultiIDF1%6.6932/15.6747/16.7555; default→assignedFP467→457/FN1297→1303/IDs475→471(before185). Nativefoundationadaptation helpsregisteredRMOTbutnotDT. Sameassignedcausalstate updateaudit: single61calls/78assignments/5gateflips(4hold→update/1update→hold), multi620/1190/7(1/6), DT1350/4940/0. Originalalloutputframes exactdefaultvsassigned DT1203/1203,single796/800,multi388/800; RMOdoeschangefuturehistories. EarliernoassignedbenefitclaimwasDT-only, nowpositivebutsmallRMOeffect. Preservefixedcommoncheckpoint/policies, TAOpending, no ordinary-level/full-datasetpromotion. No newGPU/optimizer or featurebank; originalownerreports budget covers smallreceipts andfailedauditcode.
+
+2026-10-16 — Previous goal turn is progress: actualnative9unit/RMOwriteaudit completed and verified GitHub2da51d6; this turn originalrank73067/projection68145/follower76060 live, Full1775/28400logged. Bothsmallappearance studies now allTAO4armscomplete (rankTETA14.517/14.104raw/14.324random/14.967trained; fixed14.517/13.964/14.194/14.395), allNovelClsA0. FinalMOT20controls stillrunning; no promotion.
+
+2026-10-16 — Scheduling amendment plan for genuine paired temporal foundation training: prepared48krowCPUplans and immutable native6000fullFP32/Adam/RNG+nativeMMreload already validated; original60582v2owner does0GPU/0grad while waiting the unrelated slowTAOcontrol dependency. One resource snapshot showsGPU7free46653MiB with only originalfourGPUrank34488MiB, while4/5/6free18512/24756/20685MiB. Start bothpre-registered6000short/long stages earlier from exactlysame6000state/data/configs, keeping allmetrics/seed/steps/finalcheckpoint and deferredoriginalbaselinecomparisons unchanged. Only actualCPUwaitingv2owner may be handed off after exactPID/starttick/cwd/command/nochildren/0updates verification; preserveitsstateandhandoffreceipt. OriginalfourGPUepoch/native6000controls/otherGPUjobs neverstop. NewGPU7Torchallocatorcap.33of80GiB(~26.4GiB)+expandable_segments accounts for originalrankobservedup-to~43GiBreservation; not a full driver-memoryguarantee. FutureGPU7resource-wrapper launches take sharedflock, newpairedowner holds exclusivewindow (ownsequentialchildren inheritFD); oldalready-runningfourGPUrank explicitlypermitted. Releasewindow afterbothtraining/reloadBEFORE waiting originalcontrolowner, avoidingdependencycycle. First run realCPUprocess lock/bypass/regression; onlythenhandoff/launch andverify actualoptimizerupdates. This changesexecutionorder/allocator only, not scientificcurricula/acceptance. New4MiBmetadata reservation raisesglobal26819634142→26823828446<26843545600; noROI/imagebank. CapOOM must retainfailure/checkpoint, notskiprows orweakenprotocol. No claimedlongtraining/quality untilactualrecords.
+
+2026-10-16 — ActualCPUwrapper regressionpassed: owninheritedexclusiveFDenters, GPU4normalwrapperenters, futureGPU7wrapperblocksandreleasesafterclose;0GPUupdates. Exactpreparedcourse/config/initreferencesunchanged. Verified4002071/start52168753WAITONLY/nochildren/emptyCUDA/0updates, sentSIGTERM viaexactpidfd only;60582actualexit143, oldstate/data preserved andhandoffintent/receipt saved. Replacementowner4118405/start52597639/session65852 nowholdsGPU7window, launchedshortSFT fromsameindexedv2configs. Nativeactual320FP32/752393024initialparameters maxdiff0 vsnative6000latestfullstate; 474weightsloaded, visionfrozen. ActualTorchcap28081638604bytes(.33devicecapacity) set; expandableallocator envpersists fornewownertraining/reload/eval (memoryonly, no comparablespeedclaim). Productionoptimizerupdatesstillunproven atlaunchsnapshot; waitactualrecords, notmodel-loadingclaim. OldFull/legacyinferencejobsnotstopped; onlyfutureGPU7launchesdeferreduntilwindowrelease.
+
+2026-10-16 — Freeze bothappearance first4fullscopes/all16units each fromoriginalcompletedownerreceipts plusfreshofficial/runtime/frame/candidate/rejection/state checks, notrepeatvideo decode alreadydone byoriginalowner. Firstprojectionfreezer invocation mistakenly passedtrainingplanwithoutscopes (KeyErrorbeforeanyoutput); correctedtoownerrecordedresolved_controls_plan.json, sameoriginalcourse. RankTAOtrainedTETA14.967>14.517original butallNovelClsA0; fixedtrained14.395<14.517. Preserveallarms/no commonpromotion, finalMOT20stillrunning. No inference/metricchange or newGPU.
+
+2026-10-16 — V3early study actualfirst5shortoptimizer verified: steps1..5/seen4..20, allfinite loss/CE/Brier/gradandpositivegrad,320FP32/752393024native6000initialmastersmaxdiff0. ActualTorchcap28081638604bytes applied; first5peak16.8548GiB, no capfit/steadyFPS/fullrunmemoryclaim beyondtheseupdates. Longbranchstill0, no trackinggainclaim. Source24000 nativeplan0drop/6000updates, rebuiltbyoriginaltrainer29s (not extra saved CPU plan speedclaim). ExistingFull4GPUepoch notstopped; old0gradientwaiterhandoff143only. Freezefirst5prooffromactual log/nativeinitial receipt andexactownerPIDtick, publishcode/plan/CPUlockproof/handoff/launch/first5 plus bothfirst4scopeappearanceproofs. Goal remainsactive, ordinary3taskqualitystillunmet.
+
+2026-10-16 — Previous goal turn is progress: pairedtemporalshortactualoptimizerstarted, boundedwindow/CPUhandoff/first5proven and verified GitHubb09b07b; current original65852/68145/73067/76060handlesalllive, short50logged and Full1875/30000logged. Next physical hypothesis derivesfromcompletedcontrols: fixed-affinitytrainedprojection improvesmultiRMOT19.80→31.55butDTFP9330; probability-rankconservation controlsrejectproposalsbutlosetheRMOTgain. Before anotherintervention, auditall5originallearnedbeforetrajectories for existing-ID probability dilution: matchedGTwithcorrectsurvivingoption, sumP(existing)>maxP(action) butmaxP(existingID)<maxP(action). This is a same-state oracle potential/diagnostic only, not newprediction/HOTA or a metricreplacement. Streamoriginalscalarprobabilities and frozenbirthGTdiagnostics, noROI/image/model/GPU; keep no-correct-anchor/unmatched groups separate. If supported, test factorizedconditionalappearance P'(id)=oldexistingmass*softmax(logoldP(id)+cos/.07), keeping exactoriginalNEW/IGNORE/NO_MATCH and totalexistingmass plus learnedaux/semantics; probabilitymultiset/maxexistingodds intentionallychange. Same3native/random/trainedcontrols/all5scopes/fixedfinalprojection, original.07temperature, noheldouttuning. Register3MiBtotalforaudit1MiB/conditionalmetadata1MiB/boundedprojectedworking1MiB, raises26823828446→26826974174<26843545600; no newROI/imagebank, originalGPUtraining/measurementprotocolunchanged. Do not implementbasedon imagineddilution; inspectactualauditfirst.
+
+2026-10-16 — Originalprobabilitydilutionaudit24041actualexit0/all5fullscopes287744candidates: positivecorrect-shortlist eventsDT1768/single53/multi191/TAO21/MOT2019195; diluted65/0/0/0/3040. Single-correctsubsetDT55/1170,MOT202587/15774; not a supported explanation oflostRMOTprojectiongain, so do NOT launch conditionalmasspolicy now. MOT20GTmatched219060 minuscorrectoption19195 leaves199865withoutverifiedcorrectshortlistedbirth; this is not automatically trueidentityabsence because birthGTunknown andshortlistmiss canconfound. Next scalarCPUcausal provenance audit distinguishes firstobservation/noGTboundbirthyet, allknownbirthsretired, aliveknownbirthomittedfromshortlist; replay lifecycledeathcauses (learnedterminate before3s vs timeout vsboth), bound/unbound births, and candidate-supportedGT atdeath. Auditall5originalCompactreferences plus9alreadycompletednative600controls; verify reconstructedbirth/survival againstfrozenexternaldiagnostic, keepGTstrictlyposthoc, noGTrepair/runtimechange. Repurposeplannedconditionalmetadata/working withinsame3MiBreserve, do notincreasecachebudget or modifyrunningcourses. Only thenchoose smallest justifiedmemory/birth intervention.
+
+2026-10-16 — Provenanceaudit87987actualexit0/all14units: CompactMOT20positive219060 =first646/neverGTboundbirth147769/allboundbirthsretired45599/alivebutshortlistmiss5851/correctshortlist19195. Do not infer a physicalIDabsent fromunknownbirth binding. NativeDT600→6000knownbirths19→141 and learnedpre-timeoutdeaths0→138(131GTstillpresent); native multiRMO0→55(41GTpresent), despitebetterHOTA. CompactearlyknownGTdeaths DT0/single20/multi7/TAO0/MOT2014. Sourcecodeexport_broader_native_full_groups.py labels unknownbirth lifecycleTERMINATE, an alreadyknown exporterproxy ratherthanproofpermanentexit; this plusobservedheadbehavior motivates anexplicitcontrol, not acausalproof or alteringcurrenttraining. Registeropt-in timeout_onlydeletion: retainlearnedprobabilities/auxiliary/semantic outputs andsame3sTTL, deferonly learnedearlytermination. Defaultlearned_or_timeout andallrunningprotocolsunmodified. Validateactualnative+Compactprefix/defaultparity/realearly-deletiondeferral/unchangedexpiry, thenall5Compactfullscopecontrols againstsameoriginalcheckpoint. Native6000 counterpart willuseoriginal4scopes afterexistingGPU7window/baselinecompletion, exactsamecheckpoint/categoriesreusedonlywherehistory-independent anddeclared; noheldoutthresholdtuning or newROI/imagebank. Allmetadata stayswithinprevious3MiBreserve/global26826974174<25GiB; no newGPU now. Negativeoutcomesmustremainvisible, no policyadoptionbeforecontrols.
+
+2026-10-16 — Actualterminationfunctional11397exit0: Compact30-frameprefix/firstearlyframe29ID1, native19-frameprefix/firstearlyframe19ID4; originalfullprefixstate/outputsexact, interventionretains exactlyearly-deletedIDs/allcommonstatesexact, original3sexpiryverified withlabelledfunctionalempty-observationcounterfactual (not scored frame). CPUall5study82298started, noGPU. Nativequeuedowner34665v1waitsonoriginal6000success and0inference. Staticreviewcaught summary key native_category_replay, actualrun_video exports category_replay. FixonefieldbeforeanyGPUwork; preservequeuedv1code/state andhand offonlythisnewCPUwaiter to v2. No experimentfailed orsamplesrerun yet; do not let a known latevalidationbug remain queued. Originaltraining/controls neverstop.
+
+2026-10-16 — Nativev1newCPUqueue4147813/start52745273exactverified/nochildren/emptyCUDA/0inference, pidfdSIGTERM/34665actualexit143 preserved; correctedv2owner4149961/start52754749/session90700waitingoriginal6000terminalsuccess, noGPU. It takesexclusiveGPU7windowonlyafterdependencycompletion, rerunsall4nativeidentity/lifecycle/scorers atsame6000weights/3s; same-image-onlyTAOcategoriesreplayedexplicitlyfromcompletedoriginal6000source, noE2Eclaim. No originaljobterminated. Compactfirst3fullscopes/all6units frozen: HOTA%DT26.3157exact,single6.0247→6.4816,multi19.8019→19.5578; multiIDF1=21.0082→21.0638/IDs165→157/FP619→597/FN1054→1061. Mixed,noadoption; remainingTAO/MOT20continue.
+
+2026-10-16 — Literal lifecycleinventory12901actualexit0: full-sourceMOT252258rows/lifecycle93624:ACTIVE60077,LOST12117,REACTIVATE16748,TERMINATE4682(5.00085%). Balancedcompleted24k:1000life/250each(25%TERMINATE); pairedshort/longsame500life128ACTIVE/125LOST/117REACTIVATE/130TERMINATE(26%). Thus currentnaturalFullcoursehasnot inheritedbalancedoversampling; do notstoporretargetongoingoriginaltrainingbasedon anunprovenproxycausalityclaim. All data/targets preserved. Sourcecontractunknownbirth→TERMINATEisnotindependentpermanentexitevidence. OriginalFourGPU2kstateobserver49603registeredwaitingcheckpoint, boundoriginal3457625/start49350320, fullFP32/Adam/allrankRNGgateunchanged; latestglobalfeatureupper26826974174 passedasmetadataoverride insteadofstalehistoricalupper. Lastcompletednumericmilestoneremains1000untilactual2kproof, nonewGPU.
+
+2026-10-16 — Actualobserver49603exit0/2000fullstate validated:32000questions17590MOT/7107RMO/7303OV; all752393024FP32/1504786048Adammomentsfinite,all320Adamsteps/scheduler/cursor2000exact,fourrankTorch/CUDA/Python/NumPyRNGsaved. Atomiclatest9029193825bytes andnumberedBF16ckpt-step2000present; futurelatestreplaced, numberedexportretained. No actualmilestonerestart/newinference orcompleteepochclaim. Lateststep2000loss1.10098/grad51.8833/elapsed24227.312s isobservedconcurrenttraining, not controlledspeed. Originaltrainingunchanged. CPUtimeoutTAOcompleteTETA14.517→14.493/NovelClsA0; first4all8unitsfrozen, finalMOT20continues. Preservemixedfailure-to-improve, no promotion. Publishsourceaudits/default-prefixproof/optinpolicy/queuednativecontrol/preexecutionfixreceipts/actual2000proof; allreportswithinshared3MiBmetadatareservation, noROIbank/GPUincrease. Goalremainsactive.
+
+2026-10-16 — Originalhandles52020/14226/46228/64133/65852allconfirmedlive. Native600TAO40beforebaselinejustcompletedandconsumer64133validated35228candidates/all40frames; native6000defaultTAO nowactuallywaitsregisteredGPU7trainingwindow. Sameoriginal600checkpointall4beforebaselines frozen:fndDT HOTA8.7030%,singleRMO2.5062,multi6.7400,rawTAOTETA27.748/LocA21.573/AssocA2.8136/ClsA58.856; BaseTETA37.437/Novel8.3686/NovelClsA0(onlyknife/baby/peelerGT). NativebaseclassificationstrongerthanCompactbutassociationweak; do notmixcomponentmetrics/predictsyntheticTETA orclaimcompleteTAOdatasets/ordinaryparity. Baselinecompletionisnotnative6000aftertraininggain. OriginalGPU5refreshedworkerhasadvancedDT(frame168latest),GPU4oldTAO(frame987started)stilllive; Groundretentionquietlive. Shortpairedtraining425logged, no newcheckpointclaim. Recheckonlycompletedbaselineownerreceipts/official/runtime metadata, preserveinputorder/GTisolation andallrawresults, no newGPU/ROIfeature or inference.
+
+2026-10-16 — Time-description correction: sourceTAOmanifest explicitly physical_video_fps_verified=False/fps1/timestamps0..39/annotation-stepunits. Earlier lifecyclecontrolprose3seconds and provenancefield seconds_since_last_assignment were misleadingforTAO; MOT/RMOTphysicalsecondsremainvalid. Numericruntimehasalwaysusedoriginalmanifeststeps, not3physicalsecondsforTAO; do notinventFPS/changecontrols. Clarifyconfigs/docs andwritev2clock provenance: explicitphysical_seconds/annotation_steps andregistered_clock_gap_since_last_assignment. Real32945exit0, all14oldvsnewcounts/availability/retirementcauses/numericgaps exactlyequal. Retainv1, originalregistrations andalltrajectories/scores; addclockclarificationreceipt. This isdescription/schema correctiononly, notnewinference/input/timeouts/protocol/numericalchange. Shared3MiBreportreservationstillcoversallartifacts. FreezecompleteNative600before4scopebaseline withclockqualification; no qualitypromotion.
+
+2026-10-16 — Previous goal turn is progress: lifecycleprovenance/defaultprefix/controlimplementation, actual2000fourGPUfullstate and completefour-scope native600baseline published and verified4288d02; clockclarificationretainsallnumbers. Current65852short600logged, original73067rankfinalMOT20events/68145projectionfinalMOT20training stilllive; original82298timeoutCPUowner actualexit0/all10controls complete. Validate/freeze all5 before new work, no commonpromotionfrompartialresults.
+
+2026-10-16 — Next birth-admission hypothesis from actual API/exporter code: exporter targetsNO_MATCH only when a correct birth anchor is in the live pool but omitted from shortlist; NEW when no recoverable live correct anchor exists. V3prompt says previously observed but does not explicitly qualify live/retired, and both Compact/Full omit totalpool/omittedcount from decision inputs. Auditall14frozenunits for actualNO_MATCH with complete live-pool exposure, including GTmatched never-bound/retired/correct-option and GTunknown groups; do not declare unknownbirths physicallyabsent or change oldsemanticlabels. If supported, test explicit active-pool execution contract: leave all original model probabilities/aux/semantics untouched, forbid only the privateNO_MATCHcost when every live ID is offered. No probability renormalization or learned thresholds; global assignment/futurehistories can change. Factorial all5Compact scopes: original and completedtimeout references, feasibility-only and feasibility+timeout, samecheckpoint/candidates/scorers/no per-taskselection. Defaultpolicy and all live GPUcourses unchanged. This is a declared contract/intervention consistent with exporter labels, not proof original vagueprompt was impossible or a native calibrated posterior improvement. New2MiB audit/controlmetadata+boundedworking raises26826974174→26829071326<26843545600; no newROI/imagebank or GPU. Auditbeforeimplementation.
+
+2026-10-16 — Exposureaudit66807actualexit0/all14: CompactDTall13664rows exposecompletepool yet10406NO_MATCH selections (GTmatched2100,GTunmatched8306); completeMOT20pool137727rows/112129NO_MATCH (GTmatched105239,GTunmatched6890). Correctknownliveanchor actuallyoffered in598DT/2986MOT20selectedNO_MATCH cases; unknownbirthgroupnotphysicalabsenceproof. CompactRMOonly1each, TAO0completepoolNO_MATCH. Native6000DTonly3completepoolNO_MATCH/RMO0each; primarynative6kregressionisnotassumedsameasCompact. No remainingprintedmasszero inauditedcompletepoolrows. This supports actualCompactactive-pool feasibilitycontrol; do notaddanotherGPUstudy to currentnativequeue. Implementmatchingconstraintonly, preserveall originalrawprobabilities/confidence/entropy and allmodelaux/semantics onidenticalinput; notconditionalrenormalization. ExtractexistingHungarianhelper withoutchangingdefault arithmetic and verifyall14originalassignments/339596candidates plusconstrainedroweligibility/probabilityimmutability beforefullfactorialrollouts. Allcontrols4arms×5scopes, original/timeoutreusedexplicitlyandonly2newarmsinfer. No GTdecisionrule or input/proposalfilter.
+
+2026-10-16 — Realfeasibilityvalidation18145actualexit0: all14/339596originaldefaultassignments exact, originalprobabilitydicts unchanged, forbiddenprivateNO_MATCHneverchosenundernewactive-poolmode, frameswithoutmaskentireassignmentsexact. Same-inputshadowassignmentchangesDT10792/MOT20116558/single1/multi1/TAO0; these are not rollout/HOTA gains. LargeDTGTunmatched8306NO_MATCHcaseswarnofpotentialfalsebirth/duplicateproblem; do notguaranteeimprovementorhideworsening. FactorialCPUowner started afterproof, all4×5originalscopes, twooriginalcompletedreferencearms/twonewactualarms, samebasecheckpoint/noGPU/newfeaturebank. Modelrawdistributions andconfidence/entropyremainunchangedonidenticalinput, costconstraintonly; originalprompt/exporter-semanticdiscrepancydeclared. Existingnative750Mshort/long/Fulltrainingandqueuedlifecyclecontrol remain unchanged.
+
+2026-10-16 — Previous user-question turn was a status explanation, no research-state change. Resume with concrete evidence: original48863confirmedlive through its existing blocking handle, first12factorial units actually completed; freeze their official/runtime/frame/candidate/rejection/finalstate receipts. Feasibility-only DT HOTA26.3157→12.9762,IDF130.6329→9.1995,FP579→3509,FN1962→1550,IDs165→459; bothsameDT. Singlefeasibilityunchanged6.0247; timeout/both6.4816. Multi19.8019→20.6629feasible/20.2362both, timeout19.5578. Additional admission cannot be adopted as general association repair; preserve negatives, no commonpromotion. TAO/MOT20sameoriginalowner continue, no task-specific selection/newGPU or proposalchange.
+
+2026-10-16 — Originalrank/projection/timeoutstudies allclosed:20+20+10officialunits and all5scope receipts retained. FinalMOT20original/rawrank/randomrank/trainedrankHOTA7.4316/8.0009/7.9101/8.0870; trainedrankIDs3317>2060original. Fixedraw/random/trained31.3078/31.5077/31.7503, trainedIDs8689/FP16049 versus2060/463original. Largefixedfusiongainisnotlearnedprojectiongain because raw/randomcontrols already31.3/31.5; trainedprojectionDT8.46bad andallTAONovelClsA0. TimeoutMOT20HOTA7.6054/IDF16.3199 versus7.4316/6.1474, smallmixedacrossscopes. No modelpromotion. Exactobservedfull2250/36000 andshort875/3500logrows frozen for truthfultraininganswer; no newfullstate gate beyond2000, noGround-Onejointgradients/longBPTT. Docs updatedwithallresults/limitations. Allnewmetadataunderexisting2MiBreservation/global26829071326<25GiB; no ROI/imagebank or newtraining.
+
+2026-10-16 — Next targeted TRAIN-only hypothesis after feasibilityDTfailure: originalbirthaudit already finds5832/7992IGNORE proposals with someGTIoU≥0.5, but doesnot showwhether the globallychosen competitor is inside the actual16-candidate request. Readexporter: one Hungarian overwholeframe determines IGNORE, then inputs aregrouped; fullimage remainsvisible. Auditall43/1056TRAINframes/48051candidates usingactualsavedgroups/rowtargets/registry, distinguishbackgroundvsGT-supportedIGNORE and competitorsinside/outsideactualgroup. ReproducealloriginalGTbindings andexactIGNOREtargets beforecounts; leaveambiguousmultitargetcasesexplicit. No claiming mathematicallyunobservable labels because modelseesfullimage, no NMS/trainingrecipe/proposal/metricchange. Small scalarreport≤128KiBfromalreadyreserved2MiB/global26829071326; no newROI/imagebank/GPU/optimizer. Do notretargetongoing459kcourse fromaudit alone.
+
+2026-10-16 — Actual97066exit0: candidate-groupauditall43TRAIN/1056frames/48051candidates, everyoriginalregistryGTbindingandIGNORE/nonIGNOREtargetexact; matchespriorbirthaudit7992IGNORE/5832GT-supported. 4804/5832=82.37%GT-supportedIGNORE haveonlyoutsidegroupassignedwinners (4723singleGT),1024inside/4829outside(overlap)/4noassignedwinner/261multiGT. Actual3401nonemptygroups/max16, geometry/localindicesexact. Positives6754withrivals/5319outside. Fullimagepixelsstillvisible; notprooflabels mathematicallyunobservable, notcausaltrackinggain oruniquevalidproposalcertification. Readonly63350bytereportwithinexisting128KiBsuballocation/noextrareserve/features/GPU. Currentcourses/labelsuntouched; nextadmissionresearchmustexplicitlyprovidecompetition, ratherthansilentlyturningIGNOREintobackground. Original48863TAO completed, freezeall16first4units: feasibilityTAOTETA14.517exactoriginal; both14.493exacttimeout,allNovelClsA0; finalMOT20sameownerpending. Publishedprior18filesverifiedremote3f18440/tree1c9d8a3, thenrecordnewaudit/TAOreceipt separately. Goalnotcomplete.
 
 2026-10-16 — Previousgoalturnprogress: actual43TRAINgroupcompetitionaudit/first16factorialunits and code/results verifiedGitHubafa32bd. Currentoriginal48863confirmedlive/MOT20feasibleinference, no restart. Smallest nextintervention frommeasured4804outside-onlyIGNOREcompetitors: opt-in overlap-neighbor candidate grouping with unchanged16capacity. Seedlowestremainingoriginalindex, repeatedlyaddmaximumIoU-to-groupremainingcandidate, originalindex tiebreak; no IoUthreshold/NMS/topK/GT/classrule orcandidate removal. Stream one-vs-Ngeometry(noN²featurematrix), preserve originaldecision/outputroworder aftergroup modelcalls. ExactsamefrozenCompactweights/shortlist32/learnedheads/defaultlife+NO_MATCH/registeredclocks; groupingcanchangealllearnedoutputs, shortlists/life-first-group/futurestates, explicitlynot pureassociation-only or probabilityconservation. All5scopes before/newgrouping, completedbefore references explicit, no newGPU/optimizer/bank. Validateactualall5defaultprefix states/outputs exact and alternativegroup feature/index coverage beforelaunch; quantifyTRAINcompetitor co-exposure usingactualreferencegroups, notqualitymetric. Workinggeometry≤1MiB plusreport≤256KiBwithinremaining existing2MiBaudit/controlreserve; featureupper26829071326unchanged. NativeFull/pairedcourses unchanged; no future trainingrecipepromotedwithoutheldoutrollouts.
 
@@ -2159,6 +2635,17 @@ manifest；当前没有提前宣称三任务指标。
 `[PREFILL]` 请求，说明 TAO shard 0/1 已进入模型推理，而非仅创建等待进程。
 两份 `native_stream.log` 尚未写入终态 receipt，故当前仍不合并 native manifest，
 也不启动三任务 optimizer update。
+
+## 2026-10-22 — Replace infeasible full TAO stream with registered native subset
+
+权威 parent manifest 审计显示全量 TAO TRAIN 为 18274 帧、500 个视频、1203
+类别；全量 stream 在产生终态候选前已安全中止，owned 服务和进程快照保留，
+source manifest 未修改。为符合“不默认导出全部缓存”的执行约束，新增明确注册的
+64 帧/64 视频 TRAIN 子集：每个均匀抽样视频选择一个有 eligible TRAIN annotation
+的帧，仍对每帧请求全部 1203 类别，分为四个 16 帧 shard。join contract 允许且
+明确标记 `registered_train_subset=true`、`full_train_image_scope=false`；这只能
+作为三任务联合训练 source，不作全量 TAO 性能结论。新的 owner 使用合法 GPU4/5/6/7
+并记录显存与共存进程，G2/G1/checkpoint 不变。
 
 ## 2026-10-22 — G1 GPU5 adaptation and controls terminal
 
