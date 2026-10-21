@@ -1,0 +1,35 @@
+{
+  "status": "G2_EXACT_COVERAGE_TRAINING_COMPLETE",
+  "root": "/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final",
+  "steps": 18227,
+  "world_size": 2,
+  "coverage_mode": "exact_once",
+  "effective_global_batch": 32,
+  "manifest_sha256": "f682519a1cf9204ca76ea75a56dad36dbdeac26259f202551ab9f66fefd06e71",
+  "adapter_projector_final": {
+    "path": "adapter_projector_final.pt",
+    "sha256": "cf1b5a6f626810ead94eb4e16adaf3feb6c6da3f99ca5023b6b5c234726f5742",
+    "bytes": 156389221
+  },
+  "recovery_state": {
+    "path": "checkpoints/latest_training_state.pt",
+    "sha256": "cab791def46c264393636c5697f452ec81dd0a242cfd9408644490b92cf643dd",
+    "bytes": 469247597
+  },
+  "final_receipt_sha256": "285f88b1d6258c5ee9bc9ad2117361ad8a0e0047245fb5b0810926ad3d50d1b4",
+  "last_event": {
+    "step": 18227,
+    "loss": 0.6241224888,
+    "gradient_norm": 6.61599,
+    "peak_memory_gib": 17.374252,
+    "timestamp": "2026-10-21 23:46:41 +0800"
+  },
+  "performance_claim": "training-terminal evidence only; no MOT/RMOT/OVMOT metric claim",
+  "downstream": {
+    "g2_bundle": "G2_CLEAN_DEPLOYMENT_BUNDLE_EXPORTED",
+    "tao_native_export": "EXPORTING_G2_NATIVE_TAO_BUNDLE",
+    "g1_gpu5": "STARTING_G1_GPU5_TRAINING",
+    "coupled_three_task": "WAITING_G2_NATIVE_MANIFEST",
+    "heldout": "WAITING_G2_CLEAN_BUNDLE_AND_GPU7"
+  }
+}
