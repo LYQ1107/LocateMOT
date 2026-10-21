@@ -93,6 +93,8 @@
     ],
     "bounded_training_receipt": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/coupled/phase_c_real_g2_dense_coupling_dance_step17000_v1/receipt.json",
     "bounded_cross_sequence_receipt": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/coupled/fixed_candidate_repair_mot20_05_cross_sequence_v1",
+    "latest_bounded_training_receipt": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/coupled/phase_c_real_g2_dense_coupling_dance_step17500_v1/receipt.json",
+    "latest_official_decoder_receipt": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/coupled/phase_c_real_g2_official_dlm_dense_coupled_dance_step17500_v1/receipt.json",
     "claim_boundary": "The bounded runs prove the coupling path is executable but do not establish MOT/RMOT/OVMOT improvement or generalization."
   },
   "next_gates": [
