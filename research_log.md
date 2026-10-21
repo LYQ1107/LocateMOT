@@ -3767,3 +3767,10 @@ The protected two-rank G2 Clean run advanced to event step 16501/18227 on physic
 ## 2026-10-21 — 坐标加权耦合 step60 仍未恢复真实框
 
 在冻结 G2 step17000 的前提下，从双序列耦合 step48 恢复到 step60，使用坐标 token 权重 5.0，MOT20-03/05 共 6 个 transition、10 次视觉编码，正式 G2 未改动。Grounding teacher-forcing loss 末步为 2.09848，JEV structured loss 为 0.000779；两个序列的 MATCH/ADMIT/Yes-No/ACTIVE 仍为 1.0，但 C2 greedy 框平均 IoU 仍为 0。对 step60 做无更新 token trace，C2 坐标均值损失降到 2.5554/2.5421，却仍无法贪心生成首个坐标 `<214>`/`<339>`（分别输出 `<1>`/`<|box_start|>`）。结论：耦合链路真实训练有效影响 token 概率，但输出坐标接口/课程仍未打通，停止盲目加步，下一步改坐标输出目标或显式候选框条件并重新做独立视频验证；不宣称 MOT/RMOT/OVMOT 提升。证据：`docs/GROUNDJEV_COUPLED/PHASE_C_REAL_G2_COUPLED_COORDINATE_WEIGHT_STEP17000_20261021.{json,md}`。
+## 2026-10-21 — native visual-prompt memory also leaves G2 geometry unchanged
+
+用 GroundAnything 官方 `build_visual_prompt` 把上一帧合法框作为当前帧 visual reference，MOT20-03/05 各 5 帧共 10 次视觉编码，G2 step17000 冻结、无参数更新、无第二个 VLM。所有 C2 输出都能被官方 parser 恢复为合法框，但两序列 C2 平均 IoU 均为 0；首个坐标仍接近冻结 G2 错误基线。结论：原生 reference-box 接口本身不能修复当前坐标头，不能把该诊断称为跟踪收益。证据：`docs/GROUNDJEV_COUPLED/PHASE_C_VISUAL_PROMPT_MEMORY_STEP17000_20261021.{json,md}`。
+
+## 2026-10-21 — identity + previous-box state projector 双序列耦合失败边界
+
+新增小型 `IdentityBoxStateTokenProjector`，将上一帧共享视觉摘要和持久框坐标一起插入 G2 causal prompt；冻结 G2 step17000，MOT20-03/05 共 6 个 transition，真实 GPU 更新 12 步。Grounding loss 降至 1.70039，typed JEV MATCH/ADMIT/Yes-No/ACTIVE 在两序列均为 1.0，但 C2 greedy 框 IoU 仍为 0，首坐标仍输出 `<1>`/`<0>`。结论：只加入数值框状态仍不足以控制 G2 坐标头，下一步需要合法的 coordinate-output adaptation/候选条件训练，而不是盲目增加 JEV 步数。证据：`docs/GROUNDJEV_COUPLED/PHASE_C_STATE_CONDITIONED_MEMORY_STEP17000_20261021.{json,md}`。
