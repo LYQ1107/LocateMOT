@@ -1,5 +1,5 @@
-Warning: truncated output (original token count: 140328)
-Total output lines: 4159
+Warning: truncated output (original token count: 140446)
+Total output lines: 4167
 
 ## 2026-10-21 — 双序列耦合训练 step48 审计：JEV 学会但 C2 坐标未学会
 
@@ -2163,9 +2163,7 @@ finite loss3.8286855,lifegradient12.4010; no droppedemptyframe rule needed.
 ### Original Ground dense/referring retention data preparation
 
 Original nine dense/referring benchmark inputs are absent locally. Official
-GroundAnything README links Skywalker0410…40328 tokens truncated…此前已预留16MiB未来课程budget，0新GPU/0optimizer；下一大训练仍需通过分布式数值/恢复验证和全实际输入计划，未自动启动未验证方法。
-
-确定性控制v3原46094最终真实exit1，仅剩全局RNG equality：全部模型/Adam恢复逐值相等，single/four全FP32 max7.45e-9、两Adam moment relativeL2 6.93e-8/8.12e-8均过原门槛；4rank初始Python/NumPy/Torch/CUDA RNG各与独立fresh连续run不同，符合原full-finetune未统一全局seed的源码发现。v4原51437真实exit0，显式同seed0/确定性FLA：全部752393024 FP32参数single/four max3.7252903e-9，两完整Adam moment relativeL2 1.24950e-8/2.17795e-8，全4rank全模型及两Adam逐值差0；continuous/restored全部模型、moments、scheduler和所有rank RNG逐值相等，8真实MM rows/native token lengths/全局步骤完全匹配。没有放宽任何原gate，前3份失败记录/全部model和state保留。原45393真实exit0：四卡训练BF16导出由原Torch MMengine两次独立加载，474weights/原fork auto-check不变，重复概率差0；实际2updates不冒称foundation大训练或tracking收益。
+GroundAnything README links Skywalker0410…40446 tokens truncated…netune未统一全局seed的源码发现。v4原51437真实exit0，显式同seed0/确定性FLA：全部752393024 FP32参数single/four max3.7252903e-9，两完整Adam moment relativeL2 1.24950e-8/2.17795e-8，全4rank全模型及两Adam逐值差0；continuous/restored全部模型、moments、scheduler和所有rank RNG逐值相等，8真实MM rows/native token lengths/全局步骤完全匹配。没有放宽任何原gate，前3份失败记录/全部model和state保留。原45393真实exit0：四卡训练BF16导出由原Torch MMengine两次独立加载，474weights/原fork auto-check不变，重复概率差0；实际2updates不冒称foundation大训练或tracking收益。
 
 修正真实大epoch最后一步不一定落在save_every边界的完整state保存：仅显式distributed协议，在最后非定期保存步所有rank收集自己的RNG、rank0原子保存最新FP32/Adam/scheduler/cursor；原普通world1路径不变。原13813真实exit0，真实相同8rows/2updates而save_every3从未触发periodic，仍保存final2/seen8/next2完整状态；原49373 CPU实际读取该9GB state，与v4原single的全部320 FP32 master及所有Adam moments/scheduler逐值相等。此控制不是额外训练预算或性能提升。
 
@@ -3518,3 +3516,11 @@ GPU3 的 GroundAnything 服务约占 18 GiB；GPU4/6/7 均有外部计算，未�
 单帧记录约 12.98 s）。没有生成官方 metrics/receipt，也没有提前切换模型或修改
 评测范围。该进度是 G0 控制的运行证据，不是 G2 性能结果；G2/RMOT/OVMOT 和后续
 耦合训练仍由同一 owner 按顺序执行。
+
+## 2026-10-22 — Held-out G0 owner remains healthy
+
+再次等待并核验同一进程后，GPU3 owner 仍处于
+`RUNNING_G0_mot20_05_validation1657`，`current_model=G0`、`failed=null`；日志
+已推进到 frame 2052（frame 2051 完成 association，记录耗时 11.33 s）。当前仍
+没有官方 G0/G2 receipt 或指标文件，故不提前报告独立性能。进程句柄和服务保持原样，
+后续 G2/RMOT/OVMOT 及 3000-step 耦合恢复队列不变。
