@@ -1,0 +1,13 @@
+{
+  "status": "PHASE_C_REAL_G2_VISUAL_PROMPT_MEMORY_COMPLETE",
+  "g2_adapter_step": 17000,
+  "base_model_sha256": "3cf09355cde8cf4877cdc76e0a72301d572c1d6263b2831f8a03368285bb65e2",
+  "visual_embed_calls": 10,
+  "independent_vlm_instances": 0,
+  "parameter_updates": 0,
+  "g2_frozen": true,
+  "formal_g2_run_untouched": true,
+  "native_visual_prompt_protocol": "GroundAnything build_visual_prompt with previous legal box",
+  "c2_mean_iou": {"MOT20-03": 0.0, "MOT20-05": 0.0},
+  "scientific_claim": "bounded native visual-prompt memory diagnostic; no official MOT/RMOT/OVMOT metric claim"
+}
