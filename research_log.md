@@ -1,5 +1,5 @@
-Warning: truncated output (original token count: 140811)
-Total output lines: 4188
+Warning: truncated output (original token count: 140920)
+Total output lines: 4195
 
 ## 2026-10-21 — 双序列耦合训练 step48 审计：JEV 学会但 C2 坐标未学会
 
@@ -2163,7 +2163,7 @@ finite loss3.8286855,lifegradient12.4010; no droppedemptyframe rule needed.
 ### Original Ground dense/referring retention data preparation
 
 Original nine dense/referring benchmark inputs are absent locally. Official
-GroundAnything README links Skywalker0410…40811 tokens truncated…exit0：18视频ffprobe共3628帧，逐帧原始精确F32候选对齐、所有empty/parser拒绝保留、全部raw predictions逐字重建并无损gzip，实际archive bytes111683885一致；unique1814物理帧覆盖旧72并新增1742。当前下一课程只取其中10910语义问题，辅助unknown-birth proxies未盲入loss。384MiB source archive cap在真实source退出并验证后关闭到111683885bytes，feature保守上界26551722974<26843545600、余291822626bytes，零删除/零新feature archive。
+GroundAnything README links Skywalker0410…40920 tokens truncated…51722974<26843545600、余291822626bytes，零删除/零新feature archive。
 
 完整源清单原84666真实exit0：64个immutable源文件、459027问题=252258 MOT/100813 RMOT/105956 OVMOT，未复制原native特征/图片。新四卡大epoch owner94290（3457625/start49350320）已实际启动且live exact identity验证，进入FULL_NATIVE_CPU_PLAN，仍0optimizer；须全部实际native MM行/四rank global16计划0drop后才能启动四卡FA。同原6000一样从native600完整FP32 masters起点、独立新optimizer/scheduler/RNG，1整epoch/seed0/lr2e-6/vision frozen/global16/同一个final模型测全部任务，明确新自然源比例而非原24k均衡recipe，不声称只隔离了规模因果。保留/data3模型/checkpoints，训练前需150GiB空间及4/5/6/7各free32GiB，和所有既有任务共享总共四卡；无Ground-One端到端梯度或长视频BPTT。actual filtered-media曝光须CPU报告实测，不用raw1814源帧替代optimizer曝光。终评仍同4固定scope、原scorers/阈值/全empty-reject，TAO第二策略显式同ckpt类别复用。原主6000冻结2625updates/10500已消费问题、至少2500完整state已保存，输入未改；全部tracking/普通水平目标仍未完成。
 
@@ -3541,3 +3541,10 @@ OneJev 训练仍在运行；G1 GPU5 适配保持终态 `G1_GPU5_ADAPTATION_AND_C
 已推进到 frame 2052（frame 2051 完成 association，记录耗时 11.33 s）。当前仍
 没有官方 G0/G2 receipt 或指标文件，故不提前报告独立性能。进程句柄和服务保持原样，
 后续 G2/RMOT/OVMOT 及 3000-step 耦合恢复队列不变。
+
+## 2026-10-22 — Parallel G2 owner entered real inference
+
+阻塞等待后重新核验：GPU3 G0 owner 已推进到 frame 2159，GPU5 G2-only owner 已
+真正进入同一 MOT20-05 manifest 的 native inference（frame 1676），两者均为
+`failed=null`，尚无 official metrics。GPU5 外部 PRISM 仍在运行，所以 G2-only
+吞吐低于 GPU3；保留该并行 owner 作为独立证据，不把部分帧数当成评测结果。
