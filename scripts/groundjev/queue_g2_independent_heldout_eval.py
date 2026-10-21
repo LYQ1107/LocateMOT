@@ -101,7 +101,7 @@ def bundle_ready() -> tuple[bool, dict | None, str | None]:
     return True, {"export": state, "export_receipt": receipt, "training": train}, None
 
 
-def gpu_ready() -> tuple[bool, dict]:
+def gpu_ready(allow_shared: bool = False) -> tuple[bool, dict]:
     apps = subprocess.run(
         ["nvidia-smi", "-i", str(GPU), "--query-compute-apps=pid,used_gpu_memory",
          "--format=csv,noheader,nounits"], capture_output=True, text=True, check=True,
@@ -112,7 +112,10 @@ def gpu_ready() -> tuple[bool, dict]:
     ).stdout.strip()
     free = int(memory.splitlines()[0].strip())
     pids = [line.strip() for line in apps.splitlines() if line.strip()]
-    return (not pids and free >= 32768), {"compute_apps": pids, "free_memory_MiB": free}
+    return ((allow_shared or not pids) and free >= 32768), {
+        "compute_apps": pids, "free_memory_MiB": free,
+        "shared_memory_mode": bool(allow_shared),
+    }
 
 
 def normalized_paths(path: str) -> set[str]:
@@ -236,9 +239,16 @@ def main() -> int:
                         help="physical GPU for the exclusive held-out service")
     parser.add_argument("--port", type=int, default=PORT,
                         help="local service port for this owner")
+    parser.add_argument("--models", nargs="+", choices=("G0", "G2-CLEAN-V2"),
+                        default=["G0", "G2-CLEAN-V2"],
+                        help="models to evaluate in order; use G2-CLEAN-V2 for a parallel G2-only owner")
+    parser.add_argument("--allow-shared-gpu", action="store_true",
+                        help="allow a co-resident GPU process when at least 32768 MiB remains free")
     args = parser.parse_args()
     GPU = int(args.gpu)
     PORT = int(args.port)
+    model_paths = {"G0": BASE_MODEL, "G2-CLEAN-V2": G2_BUNDLE}
+    model_plan = [(label, model_paths[label]) for label in args.models]
     owner = args.out / "owner_state.json"
     old = read_json(owner) if owner.is_file() else None
     if args.out.exists() and any(args.out.iterdir()):
@@ -272,6 +282,8 @@ def main() -> int:
         "feature_cache": False,
         "heldout_claim": "pending until exact overlap audit and official metrics complete",
         "resumed_wait_owner": bool(old) if args.out.exists() else False,
+        "requested_models": list(args.models),
+        "allow_shared_gpu": bool(args.allow_shared_gpu),
     }
     save(owner, state)
     service = None
@@ -290,14 +302,14 @@ def main() -> int:
             if ok:
                 state["completed"]["g2_dependency"] = evidence
                 try:
-                    free, resource = gpu_ready()
+                    free, resource = gpu_ready(args.allow_shared_gpu)
                 except Exception as probe_error:
                     free, resource = False, {"error": repr(probe_error)}
                 state["resource_probe"] = resource
                 state["resource_gate"] = {
                     "ready": free,
-                    "rule": f"no compute PIDs and at least 32768 MiB free on physical GPU{GPU}",
-                    "shared_memory_mode": False,
+                    "rule": f"{'co-resident allowed and ' if args.allow_shared_gpu else 'no compute PIDs and '}at least 32768 MiB free on physical GPU{GPU}",
+                    "shared_memory_mode": bool(args.allow_shared_gpu),
                 }
                 save(owner, state)
                 if free:
@@ -308,9 +320,10 @@ def main() -> int:
         env["CUDA_VISIBLE_DEVICES"] = ""
         for key in ("HTTP_PROXY", "HTTPS_PROXY", "ALL_PROXY", "http_proxy", "https_proxy", "all_proxy"):
             env.pop(key, None)
-        state.update(status="RUNNING_G0_G2_INDEPENDENT_HELDOUT", current_stage="RUNNING_G0_G2_INDEPENDENT_HELDOUT")
+        model_tag = "_".join(label.replace("-", "_") for label, _ in model_plan)
+        state.update(status=f"RUNNING_{model_tag}_INDEPENDENT_HELDOUT", current_stage=f"RUNNING_{model_tag}_INDEPENDENT_HELDOUT")
         save(owner, state)
-        for label, model in (("G0", BASE_MODEL), ("G2-CLEAN-V2", G2_BUNDLE)):
+        for label, model in model_plan:
             if not (model / "model.safetensors").is_file():
                 raise FileNotFoundError(model / "model.safetensors")
             state["current_model"] = label
