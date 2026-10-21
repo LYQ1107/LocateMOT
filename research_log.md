@@ -3858,6 +3858,15 @@ G2 step17500 保持冻结，在两个真实 DanceTrack 序列各训练一个 tra
 状态，三任务 owner optimizer updates 为 0。没有重启、覆盖或提前晋升非终态
 checkpoint。证据：`docs/GROUNDJEV/G2_LIVE_WAIT_20261021.{json,md}`。
 
+## 2026-10-21 — formal G2 event step 17593 live progress
+
+重新读取同一个正式 event stream，确认 G2 已从 step17500 继续推进到
+`17593/18227`；最后事件 loss=`0.171383`、gradient norm=`10.1324`、peak
+memory=`12.829 GiB`，最近 500 步吞吐约 `307.1 steps/hour`，线性剩余约
+`2.1 h`。launcher PID `1799359` 仍存活，终态 receipt/final adapter 仍缺失，
+所以没有启动或改写任何下游 owner。证据：
+`docs/GROUNDJEV/G2_PROGRESS_LIVE_20261021_STEP17593.{json,md}`。
+
 ## 2026-10-21 — G0/G200/G1 comparison matrix aligned with the coupled mainline
 
 按最新 GroundJEV 单主干耦合方向重新核对并登记三组对照：G0 的 MOT20-05
