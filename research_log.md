@@ -3934,3 +3934,10 @@ memory + one-to-one assignment。
 独立 OneJev/YesTrack。CPU loader、loss/backward synthetic regression、compileall 和
 11 个既有 coupling tests 均通过，尚未启动 GPU 训练，待 native manifest 与 G2 终态门
 打开后自动恢复。
+
+## 2026-10-21 — coupled three-task owner confirmed at dependency gate
+
+新的 `queue_groundjev_native_three_task.py` 已在独立 owner 会话中运行，当前状态为
+`WAITING_G2_NATIVE_MANIFEST`，`optimizer_updates=0`、`gpu_launched=false`。它没有占用
+GPU，也没有重复启动旧 OneJev；G2 Clean 终态和 native TAO 三任务 manifest 仍是唯一
+启动条件。该等待是可恢复的真实 owner 状态，不是训练结果或指标。
