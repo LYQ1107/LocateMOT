@@ -3849,6 +3849,15 @@ G2 step17500 保持冻结，在两个真实 DanceTrack 序列各训练一个 tra
 没有触碰正式 G2。未报告 HOTA/IDF1/TETA 或独立泛化提升。证据：
 `docs/GROUNDJEV_COUPLED/PHASE_C_REAL_G2_DENSE_COUPLING_STEP17500_20261021.{json,md}`。
 
+## 2026-10-21 — formal G2 remains live; no downstream restart
+
+单次权威状态检查确认正式 G2 launcher PID `1799359` 仍存在；终态 receipt 与
+`adapter_projector_final.pt` 尚未生成，最新可用周期 adapter 仍为
+`adapter-step017500.pt`，完整 recovery state 保留。G1 GPU5、G2 bundle、GPU7
+独立 held-out、TAO native shards 和 native 三任务 owner 分别仍处于注册的等待
+状态，三任务 owner optimizer updates 为 0。没有重启、覆盖或提前晋升非终态
+checkpoint。证据：`docs/GROUNDJEV/G2_LIVE_WAIT_20261021.{json,md}`。
+
 ## 2026-10-21 — G0/G200/G1 comparison matrix aligned with the coupled mainline
 
 按最新 GroundJEV 单主干耦合方向重新核对并登记三组对照：G0 的 MOT20-05
