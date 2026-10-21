@@ -3798,3 +3798,17 @@ evaluation remain gated; no independent OneJev/YesTrack optimizer was started.
 This is a training-health/recoverability record only. Evidence:
 `docs/GROUNDJEV/G2_PROGRESS_LIVE_20261021_STEP17488.{json,md}`.
 
+
+## 2026-10-21 — GroundJEV fixed-candidate cross-sequence diagnostic on MOT20-05
+
+冻结在 MOT20-03 TRAIN repair split 上训练的 180-step readout，在不同的
+MOT20-05 TRAIN 视频帧 766–893（128 帧）上零更新运行；仍使用同一注册的
+native candidate/region cache 合同和单主干缓存回放。TrackEval 得到
+HOTA=`0.115666`、DetA=`0.147839`、AssA=`0.090593`、IDF1=`0.071458`、
+IDSW=`341`、FP=`19`、FN=`21407`，126 帧有输出，关联回放约 `9.06 FPS`。
+相比 MOT20-03 同视频 temporal repair 的 HOTA=`0.302815`、IDF1=`0.257729`、
+IDSW=`18`，跨视频明显退化，说明当前 fixed-candidate readout 尚未泛化。
+两个范围均为 TRAIN，缓存早于 G2 Clean 终点，不能当作 G2 Clean、TEST 或
+最终 GroundJEV 增益。证据：
+`docs/GROUNDJEV_COUPLED/PHASE_B_FIXED_CANDIDATE_CROSS_SEQUENCE_MOT20_05_20261021.{json,md}`。
+
