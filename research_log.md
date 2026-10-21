@@ -1,5 +1,5 @@
-Warning: truncated output (original token count: 140446)
-Total output lines: 4167
+Warning: truncated output (original token count: 140594)
+Total output lines: 4176
 
 ## 2026-10-21 — 双序列耦合训练 step48 审计：JEV 学会但 C2 坐标未学会
 
@@ -2163,7 +2163,7 @@ finite loss3.8286855,lifegradient12.4010; no droppedemptyframe rule needed.
 ### Original Ground dense/referring retention data preparation
 
 Original nine dense/referring benchmark inputs are absent locally. Official
-GroundAnything README links Skywalker0410…40446 tokens truncated…netune未统一全局seed的源码发现。v4原51437真实exit0，显式同seed0/确定性FLA：全部752393024 FP32参数single/four max3.7252903e-9，两完整Adam moment relativeL2 1.24950e-8/2.17795e-8，全4rank全模型及两Adam逐值差0；continuous/restored全部模型、moments、scheduler和所有rank RNG逐值相等，8真实MM rows/native token lengths/全局步骤完全匹配。没有放宽任何原gate，前3份失败记录/全部model和state保留。原45393真实exit0：四卡训练BF16导出由原Torch MMengine两次独立加载，474weights/原fork auto-check不变，重复概率差0；实际2updates不冒称foundation大训练或tracking收益。
+GroundAnything README links Skywalker0410…40594 tokens truncated…，重复概率差0；实际2updates不冒称foundation大训练或tracking收益。
 
 修正真实大epoch最后一步不一定落在save_every边界的完整state保存：仅显式distributed协议，在最后非定期保存步所有rank收集自己的RNG、rank0原子保存最新FP32/Adam/scheduler/cursor；原普通world1路径不变。原13813真实exit0，真实相同8rows/2updates而save_every3从未触发periodic，仍保存final2/seen8/next2完整状态；原49373 CPU实际读取该9GB state，与v4原single的全部320 FP32 master及所有Adam moments/scheduler逐值相等。此控制不是额外训练预算或性能提升。
 
@@ -3516,6 +3516,15 @@ GPU3 的 GroundAnything 服务约占 18 GiB；GPU4/6/7 均有外部计算，未�
 单帧记录约 12.98 s）。没有生成官方 metrics/receipt，也没有提前切换模型或修改
 评测范围。该进度是 G0 控制的运行证据，不是 G2 性能结果；G2/RMOT/OVMOT 和后续
 耦合训练仍由同一 owner 按顺序执行。
+
+## 2026-10-22 — Legacy owner audit while held-out runs
+
+只读核验 G0/G200/G1、旧 OneJev/MOT-only 和此前三任务尝试的 owner PID：所有
+终态、失败或暂停 owner 的记录 PID 均已不存在，未发现旧 MOT-only 长训练或独立
+OneJev 训练仍在运行；G1 GPU5 适配保持终态 `G1_GPU5_ADAPTATION_AND_CONTROLS_COMPLETE`，
+旧 `real_three_task_joint_native_v1_queue` 仍为 `PAUSED_FOR_GROUNDJEV_SINGLE_BACKBONE`。
+当前唯一 GroundJEV 主线运行者仍是 GPU3 的独立 G0/G2 held-out owner，故没有清理
+历史 checkpoint 或覆盖对照结果。
 
 ## 2026-10-22 — Held-out G0 owner remains healthy
 
