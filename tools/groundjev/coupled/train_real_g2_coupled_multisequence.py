@@ -83,6 +83,8 @@ def main() -> int:
     parser.add_argument("--output", required=True)
     parser.add_argument("--device", default="cuda:0")
     parser.add_argument("--steps", type=int, default=12)
+    parser.add_argument("--coordinate-loss-weight", type=float, default=1.0,
+                        help="teacher-forced weight for official <0>..<999> coordinate tokens")
     parser.add_argument("--resume-coupled-checkpoint", default=None,
                         help="optional coupled checkpoint produced by this script")
     parser.add_argument("--train-count", type=int, default=3,
@@ -104,6 +106,8 @@ def main() -> int:
     args = parser.parse_args()
     if args.steps < 1 or args.train_count < 1:
         raise ValueError("steps and train-count must be positive")
+    if args.coordinate_loss_weight < 1.0:
+        raise ValueError("coordinate-loss-weight must be at least 1")
 
     runtime_root = Path(args.runtime_root).resolve()
     source_root = Path(args.source_root).resolve()
@@ -141,6 +145,11 @@ def main() -> int:
     for sequence in sequences:
         if any(int(item["image_tokens"].shape[-1]) != input_dim for item in sequence["prepared"]):
             raise RuntimeError("G2 feature dimension changed between sequences")
+    tokenizer = processor.tokenizer
+    coordinate_ids = set(range(
+        int(tokenizer.convert_tokens_to_ids("<0>")),
+        int(tokenizer.convert_tokens_to_ids("<999>")) + 1,
+    ))
 
     prompt_projector = IdentityMemoryTokenProjector(input_dim, hidden, hidden_dim=512).to(device)
     jev_memory_projector = MemoryTokenProjector(input_dim, 256).to(device)
@@ -179,7 +188,11 @@ def main() -> int:
                 {sequence["target_id"]: sequence["summaries"][frame_index - 1]},
                 ordered_ids=[sequence["target_id"]],
             )
-            grounding = _teacher_forced_loss(model, sequence["prepared"][frame_index], memory)
+            grounding = _teacher_forced_loss(
+                model, sequence["prepared"][frame_index], memory,
+                coordinate_token_ids=coordinate_ids,
+                coordinate_loss_weight=args.coordinate_loss_weight,
+            )
             jev_output = _jev_forward(
                 readout, jev_memory_projector,
                 sequence["summaries"][frame_index - 1], sequence["summaries"][frame_index],
@@ -231,6 +244,7 @@ def main() -> int:
         int(tokenizer.convert_tokens_to_ids("<0>")),
         int(tokenizer.convert_tokens_to_ids("<999>")),
     )
+    coordinate_ids = set(range(coordinate_range[0], coordinate_range[1] + 1))
     stop_ids = {structural["box_end"], int(tokenizer.convert_tokens_to_ids("<|im_end|>"))}
     before_projector = IdentityMemoryTokenProjector(input_dim, hidden, hidden_dim=512).to(device)
     before_grounding = {}
@@ -286,6 +300,7 @@ def main() -> int:
             for parameter in module.parameters()
         ),
         "loss_weights": {"grounding_teacher_forced": 1.0, "jev_structured": 1.0},
+        "coordinate_loss_weight": args.coordinate_loss_weight,
         "causal_teacher_forcing": True,
         "train_transition_count": len(train_pairs),
         "optimizer_steps_this_run": args.steps,
