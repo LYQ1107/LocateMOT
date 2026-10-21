@@ -3941,3 +3941,8 @@ memory + one-to-one assignment。
 `WAITING_G2_NATIVE_MANIFEST`，`optimizer_updates=0`、`gpu_launched=false`。它没有占用
 GPU，也没有重复启动旧 OneJev；G2 Clean 终态和 native TAO 三任务 manifest 仍是唯一
 启动条件。该等待是可恢复的真实 owner 状态，不是训练结果或指标。
+
+## 2026-10-21 — G2 Clean live progress at step 17728
+
+同一个受保护 G2 Clean 训练句柄仍在推进，event stream 已到 17728/18227（2026-10-21 21:33:28 +0800），loss=0.1114838467、gradient norm=10.3513269。最近 100/500/1000 事件吞吐约为 286.73/303.04/307.59 steps/hour，线性剩余约 1.74/1.647/1.622 h。
+终态 receipt 和终态 adapter 尚未出现，持久恢复对仍为 adapter-step017500.pt 与 checkpoints/latest_training_state.pt；没有启动或改写任何下游 owner。这是训练健康/ETA 证据，不是 MOT/RMOT/OVMOT 指标结果。证据：docs/GROUNDJEV/G2_PROGRESS_LIVE_20261021_STEP17728.{json,md}。
