@@ -1,0 +1,14 @@
+{
+  "receipt_type": "GROUNDJEV_HELDOUT_INPUT_PREFLIGHT",
+  "generated_at": "2026-10-21T21:12:30+08:00",
+  "status": "HELDOUT_INPUT_PREFLIGHT_PASS",
+  "protocol": "CPU-only manifest/resource existence check using the registered held-out scope list",
+  "scopes": {
+    "mot20_05_validation1657": {"task": "mot", "frames": 1657, "missing_images": 0, "training_on_this_scope": false},
+    "rmot_single0007": {"task": "rmot", "frames": 800, "missing_images": 0, "training_on_this_scope": false},
+    "rmot_multi0007": {"task": "rmot", "frames": 800, "missing_images": 0, "training_on_this_scope": false},
+    "ovmot_tao105": {"task": "ovmot", "frames": 40, "missing_images": 0, "training_on_this_scope": false}
+  },
+  "gpu_allocated": false,
+  "claim_boundary": "Input paths and scope flags only; no model inference or metric result."
+}
