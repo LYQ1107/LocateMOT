@@ -3912,3 +3912,12 @@ GPU5 owner 仍为 `WAITING_G2_CLEAN_SUCCESS`，optimizer updates 为 0，未启�
 训练。耦合实现（官方 dense 多框解码、typed JEV、身份/框状态 memory、固定候选
 视频回放）已有受限真实数据证据，但没有把短片或跨序列诊断升级为独立性能提升。
 证据：`docs/GROUNDJEV/G0_G200_G1_COMPARISON_MATRIX_20261021.{json,md}`。
+
+## 2026-10-21 — YesTrack route corrected to auxiliary offline reference
+
+按新的 GroundJEV 单主干耦合任务重新校正执行路线：独立 YesTrack/OneJev
+不再作为在线主模型，也不应阻塞 G2、JEV 结构化决策或持续身份记忆的耦合训练。
+YesTrack 的 Yes/No 数据组织和概率读取只作为共享 GroundAnything 主干上的辅助监督
+与离线参考对照；保留既有历史结果，不启动新的独立 YesTrack 长训练。正式主线仍是
+GroundAnything hidden states + typed JEV choice/NEW/NO_MATCH + persistent identity
+memory + one-to-one assignment。
