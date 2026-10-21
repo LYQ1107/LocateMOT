@@ -1,0 +1,36 @@
+{
+  "status": "PHASE_C_REAL_G2_COUPLED_COORDINATE_WEIGHT_COMPLETE",
+  "project_root": "/data2/user/LocateMOT",
+  "g2_adapter_step": 17000,
+  "base_model_sha256": "3cf09355cde8cf4877cdc76e0a72301d572c1d6263b2831f8a03368285bb65e2",
+  "resume_from_step": 48,
+  "optimizer_step_end": 60,
+  "coordinate_loss_weight": 5.0,
+  "jev_loss_weight": 1.0,
+  "sequences": [
+    {"name": "MOT20-03", "frames": [82, 83, 84, 85, 86], "train_frames": [83, 84, 85], "heldout_frame": 86, "target_id": 27},
+    {"name": "MOT20-05", "frames": [13, 14, 15, 16, 17], "train_frames": [14, 15, 16], "heldout_frame": 17, "target_id": 17}
+  ],
+  "train_transition_count": 6,
+  "visual_embed_calls": 10,
+  "independent_vlm_instances": 0,
+  "g2_frozen": true,
+  "formal_g2_run_untouched": true,
+  "trainable_parameter_count": 4075271,
+  "checkpoint_sha256": "e24e96396e9a4ce7fc3be55de5737bd50f8fa0b6108dccd74f8411d0b8a64578",
+  "grounding_loss_final": 2.098481555779775,
+  "jev_loss_final": 0.0007789338609048476,
+  "c2_mean_iou": {"MOT20-03": 0.0, "MOT20-05": 0.0},
+  "jev_accuracy": {
+    "MOT20-03": {"identity": 1.0, "admit": 1.0, "yesno": 1.0, "lifecycle": 1.0},
+    "MOT20-05": {"identity": 1.0, "admit": 1.0, "yesno": 1.0, "lifecycle": 1.0}
+  },
+  "token_diagnostic": {
+    "checkpoint": "coupled-multisequence-step000060.pt",
+    "visual_embed_calls": 4,
+    "parameter_updates": 0,
+    "c2_coordinate_mean_loss": {"MOT20-03": 2.5554331243, "MOT20-05": 2.5421313820},
+    "first_coordinate_greedy": {"MOT20-03": "<1>", "MOT20-05": "<|box_start|>"}
+  },
+  "scientific_claim": "bounded real two-sequence coupling and coordinate-token diagnosis; no official MOT/RMOT/OVMOT metric claim"
+}
