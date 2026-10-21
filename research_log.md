@@ -1,5 +1,5 @@
-Warning: truncated output (original token count: 138360)
-Total output lines: 4048
+Warning: truncated output (original token count: 138444)
+Total output lines: 4053
 
 ## 2026-10-21 — 双序列耦合训练 step48 审计：JEV 学会但 C2 坐标未学会
 
@@ -1501,7 +1501,400 @@ checkpoint reference both match exactly; independent ROI mapping differs
 only the adapter to use vision_config.out_hidden_size and retained failure.
 
 Temporal adapter:200steps, seed0,693,632 changed parameters, loss4.2086 to
-…58360 tokens truncated…th-support audit counts only provably unique GT-supported emitted cases. Remaining ambiguous original unbound births are not certified correct, so the broader binding-label mechanism is not ruled out. Keep original data and report uncertainty. Shared/MOT-only8000 full five-scope controls completed; sharedMOT20 improvesHOTA7.4316→11.4780% butIDSW2060→58632, Monly5.6407%; no model promotion.
+.09104, nonzero finite gradients; exact reload difference0. Frozen native
+backbone and decoder unchanged. Independent TRAIN calibration retrieval
+131/134=.977612, identical to unadapted features (random adapter130/134).
+No tracking-improvement or decoder-fine-tuning claim. Features are transient;
+training-device/CPU-training regions11,612,160bytes each, calibration1,464,320.
+Checkpoint receipt records absolute path,8,331,829bytes and SHA256.
+
+RMOT:legal current v2 validation0007, single+empty8frames and multi+empty
+12frames, GT-free inference/shared V1 core. Single Full HOTA0/IDF1=0/FN5;
+Simple HOTA.084894/FP11/FN5/IDF1=0. Multi Full HOTA.072117/FP16/FN30; Simple
+HOTA.081860/FP16/FN30; both IDF1=0. Proposal target coverage at IoU.5 is0/5
+and0/30. First bottleneck is referring proposals, not evidence of an identity
+head improvement. All rejected/empty frames remain in denominators. Multi
+full video-processing FPS.579804 including serialization/encoding; preloaded
+remote DLM initialization excluded. Single legacy frame-compute FPS.627761
+is explicitly not complete end-to-end speed. Exact fixed-candidate controls
+never claim detector FPS.
+
+Evaluation first failed on GT_LOC_FORMAT, then on omitted YOLO files in empty
+query frames. Set the correct path format, and look up boxes only when the
+release expression has targets; nonempty targets still require real labels.
+Original failures and predictions remain; completed multi Full/Simple units
+were reused by a new evaluation owner. No GT boxes, thresholds or scopes altered.
+
+TAO:registered first video40annotation frames and4frame functional scope,
+all1203fixed LVIS-v1 names in96-class native requests. Failure in any chunk
+rejects the whole frame explicitly; no class or sample silently dropped.
+Source physical FPS unavailable, so this functional scope declares annotation
+step time and does not claim a verified physical video clock. Full TETA with
+all original modal GT/category/frequency metadata is required; currently pending.
+
+Memory:real native proposals/features on2frames pass exact serialization,
+anchor immutability, held-long-feature consistency and past-time rejection,
+with10,682,927byte memory. V1 crops-only state remains backward compatible.
+New memory adds actual region/temporal anchors, recent/reliable-long features,
+16-observation feature history, native lifecycle survival probability, identity
+entropy and semantic observation counts. These are used only with native input.
+V4 JEV native-matrix request failed at56,426tokens on frame303; preserve it.
+V5 explicitly changes numeric evidence to CSV milli-units, retaining every
+candidate/identity pair and the original32768limit. Its real4frame test is
+running; no performance gain claimed. Compact/full-task and retention studies
+remain required. Previous goal work is progress, not goal completion.
+
+
+### Completed native-feature control and measured limitations
+
+V5 still exceeded context at34313tokens. V6 compresses native-history rows
+in addition to all-pair similarity matrices; frame304 then reached34419tokens.
+The smallest further fix is context-adaptive candidate grouping only when the
+unchanged official native preflight rejects a group before inference. Every
+proposal and up-to32 shortlisted identity options remains. The two valid
+V6 prefix frames restore exact native outputs/state; resume completes304/305.
+Original V4/V5/V6 failed artifacts remain, no sample skipped, no token-limit
+relaxation and no retraining/checkpoint change.
+
+MOT17 same128native candidates,4frames, unchanged TrackEval:
+
+| Decision | HOTA | IDF1 | IDSW | FP | FN |
+|---|---:|---:|---:|---:|---:|
+| Simple IoU | .748813 | .836502 | 1 | 17 | 24 |
+| Fixed IoU + native2560cosine | .738898 | .813688 | 4 | 17 | 24 |
+| Fixed IoU + trained temporal128cosine | .746248 | .828897 | 2 | 17 | 24 |
+| Pretrained OneJev V6 native/crop/motion | .359328 | .330709 | 61 | 17 | 33 |
+
+Native/temporal fixed controls use exactly the exported features, coefficients
+.5/.5, NEWscore.3,32-identity geometry shortlist and16-candidate groups. They
+are untrained association controls, not JEV/Compact. Temporal-vs-native is
+also a dimensionality change; random128 and larger video controls remain
+required before attributing the difference solely to training. Native-feature
+OneJev still underperforms Simple; no isolated feature or foundation gain
+claim. Existing-ID diagnostic accuracy9/75=.12, option coverage72/75=.96,
+mean correct native mass.062495; candidate GT coverage remains111/135.
+Its8,504,115,712byte allocator peak and.042028association replay FPS exclude
+live detection; resumed timing does not support an end-to-end speed claim.
+
+TAO first4frames have zero predictions and TETA/LocA/AssocA/ClsA0 under the
+unmodified official source b498aa87b252bfb75d7cc0d8d6435c3e1e74e4de. There
+are18GT boxes, source canonical class baby/person.n.01, Base. Novel is null
+because this scope has no Novel GT; never report it as a Novel benchmark.
+Two evaluator formatting configuration errors were repaired by restoring
+its official defaults OUTPUT_PER_SEQ_RES=True and OUTPUT_SUMMARY=True;
+metrics/source/GT/predictions unchanged, failures retained.
+
+The first vocabulary run registered1203classes but stopped on a rejected
+96-class chunk:192/192/192/288classes actually requested across the4frames.
+This is recorded in vocabulary_coverage.json, not claimed as exhaustive
+1203-class inference. A new finite owner requests ALL13chunks on every frame,
+records every native outcome, and only then applies the same explicitly
+registered whole-frame-rejection policy. It is active at publication.
+First-prefix run processing FPS.020682 is not full-vocabulary inference FPS.
+Original raw failures show many class-conditioned hallucinated boxes. The
+next grounding research must address proposal quality and negative classes
+through the official spatial/DLM training route, with dense/referring retention.
+
+Visualization integrity verified8/12/4frames; KITTI display edge padded from
+1242x375 to1242x376, predictions/GT coordinates unchanged. Formal500-step
+SFT and fullDanceTrack original blocking owners continue. Pilot and final
+unified research goal remain incomplete.
+
+
+## Pre-publication RMOT GT-contract repair (authoritative results)
+
+The new RMOT evaluator incorrectly read release top-left x/y as centers.
+This was found before updating GitHub's branch. Existing established
+read_gt in tools/unified/u1_formal_expression_gate.py defines normalized
+top-left xywh. Corrected transport agrees for all70target box comparisons
+to5.68e-14pixels. Predictions, target sets, frames, source extents, seeds,
+metrics and thresholds unchanged. Original metric receipts are preserved
+as invalid_center_format_metrics.json and explicitly marked invalid;
+local invalid GT views remain but raw GT is excluded from GitHub.
+
+Authoritative corrected results:
+
+| RMOT scope / backend | HOTA | IDF1 | IDSW | FP | FN | Proposal target recall IoU.5 |
+|---|---:|---:|---:|---:|---:|---:|
+| Single/empty8frames Full | 0 | 0 | 0 | 0 | 5 | 4/5 |
+| Exact candidates Simple | .242284 | .375000 | 2 | 7 | 1 | 4/5 |
+| Multi/empty12frames Full | .194792 | .217391 | 0 | 11 | 25 | 5/30 |
+| Exact candidates Simple | .243151 | .217391 | 0 | 11 | 25 | 5/30 |
+
+The earlier zero-proposal-coverage diagnosis is invalid. On the single
+query, four correct observations are present but V1 OneJev suppresses them
+as IGNORE; association/birth/input evidence is the first failure. On the
+multiple-target query, proposal coverage5/30 still limits every tracker.
+Next controlled check should compare V1 against current-crop V3 on the
+same RMOT proposals, while preserving the DLM multi-target recall deficit.
+Dense/referring adaptation and original retention remain required, but
+not every RMOT failure can be attributed to the perception front end.
+
+The new all-class TAO owner remains active. A800-SXM4-80GB hardware was
+verified for4/5/6; foreign UDMT processes are unchanged. Original OneJev
+500step and fullDanceTrack owners remain responsible for their jobs.
+
+
+## Exhaustive TAO functional control completed
+
+All52native requests completed:13chunks and1203fixed categories for each
+of4registered annotation frames. Unchanged TETA yields0TETA/LocA/AssocA/
+ClsA and0predictions under the recorded whole-frame-rejection policy; Base0,
+Novelnull because this video's GT contains no Novel class. No full-video
+or complete-dataset result is claimed. Actual complete processing
+FPS.0037577955 includes all calls, association, file/video writes and writer
+completion; preloaded remote DLM startup and9s-class OneJev loading excluded.
+
+Rejected/scored chunks per frame:11/2,10/3,7/6,10/3. Independently scored
+chunks contain201/441/777/354boxes. Evaluation-only class-agnostic target
+coverage is10/18 atIoU.5 before whole-frame rejection. This is a localization
+diagnostic, not TETA or classification correctness. Whole-frame rejection
+discards useful native outputs; retain this negative control and preregister
+a query-level empty-prediction control that retains independently scored
+chunks, all class requests, all GT and frames. Never label invalid chunks
+valid or change the official parser/metrics. Raw native responses remain local.
+
+At this completion check, the original blocking SFT500 owner is live, last
+reported50steps/loss2.8577/20.6GiB allocator; original fullDanceTrack owner
+is live, completed769of1203frames. Dataset physical clocks independently
+agree with seqinfo:MOT17=30Hz,DanceTrack=20Hz,MOT20=25Hz. TAO sourceFPS
+remains unavailable and annotation-step units explicitly declared.
+The69-file native-feature/GT-contract stage was verified on GitHub at
+1724df9de3465fce5fd1de96ccf81510029cd7f1 with exact local tree equality.
+No Pilot or final-goal completion claim.
+
+
+## 2026-10-14 — Next controlled task decisions
+
+Previous goal turn:progress, with real native adaptation/task controls and
+verified GitHub publication. Current project is the authorized independent
+GroundJEV worktree. Plan after code inspection:fix proposals/checkpoints/data
+scope, compare RMOT V1 vs V3 current-crop evidence for pretrained/SFT100;
+then retain independent scored TAO chunks, keeping failed chunks empty and
+all1203classes/every GT/frame. Preserve whole-frame rejection as a separate
+negative control. No official parser/metric or seed changes. Reconstruct
+only already-recorded native responses, with no GT access or new detector
+requests; all resulting timings are association replay, not end-to-end.
+A single blocking owner executes registered finite controls on physical5;
+original SFT4/DanceTrack6 owners continue. Peak monitoring stays internal.
+
+
+## 2026-10-14 — Registered task and inference controls
+
+All six controls completed on A800 GPU5 with original OneJev weights or
+actual SFT100. Predictions use exactly the same saved native candidates;
+GT uses verified top-left Refer-KITTI release coordinates and unchanged TETA.
+Official scopes remain8/12RMOT frames and4TAO annotation frames.
+
+| RMOT / V3 | HOTA (fraction) | IDF1 | FP | FN |
+|---|---:|---:|---:|---:|
+| Single pretrained | 0 | 0 | 0 | 5 |
+| Single SFT100 | 0 | 0 | 3 | 5 |
+| Multi pretrained | .222720 | .177778 | 10 | 25 |
+| Multi SFT100 | 0 | 0 | 1 | 30 |
+
+Current crops alone do not fix cold IGNORE. MOT-only SFT100 has negative
+transfer; it is not evidence of useful RMOT fine-tuning. Original finite
+MOT SFT500 continues, and mixed-task/actual-proposal training remains needed.
+
+| TAO scored-query retention | TETA (%) | LocA | AssocA | ClsA |
+|---|---:|---:|---:|---:|
+| Fixed native candidates Simple | 24.171 | 29.452 | 43.061 | 0 |
+| Same native candidates OneJev Full | 16.815 | 27.459 | 22.987 | 0 |
+
+Failed query chunks remain empty; independently scored chunks retained,
+without re-running the detector, filtering classes/GT, repairing invalid
+syntax, altering metrics or dropping frames. This is a registered combiner
+control, not an output-format pass. Full remains slower and less accurate.
+Both classification terms0 expose missing/wrong class decisions; the native
+shared JEV class head is still required. Novel is null in this Base-only scope.
+No detector-inclusive or full-dataset speed claim:replay FPS.838284Simple
+and.00352281Full, with all1773label/box rows kept.
+
+Exact-coordinate object-hypothesis grouping preserves every distinct native
+box and all label alternatives:201/441/777/354rows become54/58/109/85.
+No overlap threshold/NMS/topK/GT filtering. Independent Simple/Full controls
+are active; first native label remains an explicitly unlearned class baseline.
+A future genuine typed classification head must use the full dynamic vocabulary.
+
+Isolated FLA0.5.2 + einops0.8.2 addon (original environments untouched):
+GDN kernels2.29/3.24/8.43x faster at257/1024/4096tokens after both sides'
+warmup, maxoutput difference.0004883, finite gradients. First import lacked
+einops and was fixed only in the addon. First unbalanced warmup is preserved
+and does not support63x speed. Actual3multimodal OneJev requests differ up
+to.021211 in typed answers, exceeding the preregistered.001. Choices unchanged
+but probabilities/material memory gates can change. Accelerator rejected;
+original automatic fork check/.05 tolerance remains unchanged, training
+and original video owners stay on the reference backend. No end-to-end gain.
+
+Native DLM training preparation reconstructs the actual official
+GAMQwen3DLM wrapper, MDM.5+causal.5/block32, with all569tensor keys/shapes
+matched. The released JSON has152670AR rows; real checkpoint/tokenizer have
+152671including MASK152670. Native reconstruction uses real header size; no
+weight is added or randomized, no new AR download required. Initial mismatch
+retained. This is a key audit, not gradient proof.
+
+A finite3step native projector-only gradient check on legalMOT17TRAIN209/210
+combines original DLM spatial loss and same-ID contrastive ROI loss. Language/
+ViT frozen, projectorFP32masters, seed42, all32targets each frame with no
+clipping or dropping. It is a custom native-adapter policy, not the stock full
+language SFT recipe or completed adaptation. Meta nonpersistent rotary buffers
+initially caused allocation failure; native Accelerate initialization fixes
+that without creating learned values. The strict native cached-image schema
+then rejected a path-only dict; real original bytes/path are now supplied.
+Both failed units preserved, new real-gradient check active onGPU7. Four
+physical GPUs4/5/6/7max; foreign UDMT jobs untouched. Dense/referring retention,
+exported bundle inference and formal adaptation remain required.
+
+
+Exact-geometry controls completed:Simple TETA33.042/LocA48.539/AssocA50.587,
+Full23.320/49.095/20.866, both ClsA0. Simple replay9.8226FPS, Full.0197772,
+about5.6x the ungrouped Full. No detector-inclusive speed claim, no learned
+category assignment and no Full advantage. Native geometry set/all label
+alternatives retained; every original GT and frame evaluated.
+
+Native3-step adaptation then exposed projector output as a per-image tensor
+list, which was corrected using native concatenation. The first native
+backward hit CUDA-graph lifetime replay; first failed units remain unchanged.
+The next unit compiles the identical native FlexAttention operator without
+CUDA graphs and probes native spatial-loss and temporal-loss gradients
+independently before optimizer updates. Seed, block masks/loss weights/GT
+and all target instances unchanged. PreserveFP32nonpersistent RoPE buffers.
+No native decoder/localization adaptation success is claimed until actual
+finite loss/gradients, changed BF16weights and checkpoint reload are verified.
+
+
+### Actual native DLM spatial and temporal gradient proof
+
+Final v6 native training unit completed3optimizer steps on legalMOT17TRAIN
+209/210, all32targets each frame and32same-ID positives. Official native
+GAMQwen3DLM MDM.5+causal.5/block32 retained, with.1identity ROI contrastive
+loss. Language and native ViT frozen;27,267,584native projector parameters
+useFP32masters. Independent dense-gradient norm8.75947 and temporal-gradient
+norm2.13338, finite combined norms8.77141/9.25557/9.02194. Native losses
+1.61708/1.66780/1.65477 include different sampled noise; do not claim training
+improvement from this warmup.26,766,531FP32elements and1,968,676BF16elements
+changed. Delta reload weight difference0,327,218,423bytes, SHA256
+bf8537a97675e465d80dfb08cb5b21454ee37711f622510fe8181b86370e2b3e,
+peak18,455,674,368GPUbytes. This proves actual localization and identity
+gradients, not formal adaptation or tracking gain.
+
+Checkpoint:/data2/user/LocateMOT_GroundJEV/outputs/groundjev/ground_adaptation/
+native_tracking_grad3_v6_native_runtime_flags/projector_delta.pt. Frozen
+nonpersistent rotary buffers remainFP32. Native official CUDA-graph flag0
+and task-local donated_buffer=False accommodate checkpointed backward and
+independent gradient probes; math/masks/loss weights/seed42unchanged.
+Failed meta-buffer/image-schema/list-output/CUDAgraph/donation units retained.
+
+Exported complete DLM variant models/GroundAnything-DLM-TrackProj3 replaces
+only5native projector tensors, retaining all569keys and every other native
+weight/tokenizer/code/config unchanged.9,687,419,704bytes, SHA256
+a626aad29c5bbc17e3a465a519e93681aaedacd81cbb21805cce40b7122777e9.
+Original model/server untouched. A distinct GPU7replica/8102 and launch bundle
+are used for48same-profile native frames:4dense+8single-ref+12multi-ref,
+original/updated, fixed Simple association. Requesteddecoderseed42, same
+unchanged official parsers and evaluator. These functional retention probes
+do not stand in for the full original GroundAnything benchmark suite.
+The one blocking owner stops only its owned adapted replica on completion.
+
+
+Adapted replica first launch passed real weight loading butKV profiling at
+mem-fraction-static.25produced a negative cache budget. Owned replica
+was stopped and failed launch preserved. New isolated replica uses.4(the
+original service's working fraction), same checkpoint/decoder/seed/scopes.
+No other process stopped and no GPU beyond4/5/6/7.
+
+
+### Verified native projector retention controls (2026-10-14)
+
+All six fresh inference and official evaluation units passed scope and encoded
+video frame checks:48frames total, no runtime GT or future access, every
+rejected/empty frame retained. Original versus projector3 HOTA/IDF1 fractions:
+
+| Scope | Original HOTA | Projector3 HOTA | Original IDF1 | Projector3 IDF1 | IDSW before/after |
+|---|---:|---:|---:|---:|---:|
+| MOT17 4frames | .745083 | .755029 | .824427 | .847328 | 3/1 |
+| Single RMOT 8frames | .299355 | .303853 | .375000 | .400000 | 1/1 |
+| Multi RMOT 12frames | .229517 | .227592 | .222222 | .212766 | 0/1 |
+
+Both single variants reject frame152; both multi variants reject frame34.
+These frames remain in official denominators. Decoder tracking_dense,
+requested seed42, official_scoring parser, unchanged geometry Simple and
+legal validation scopes are identical. Short dense and single controls
+improve slightly, multi-referring declines. This is not formal adaptation,
+full original grounding/referring benchmark retention or a broad gain claim.
+Actual detector-inclusive FPS are in aggregate_results.json; concurrent
+workloads and original GPU6 versus replica GPU7 preclude an isolated speed
+comparison. The first replica failed KV allocation at mem-fraction.25;
+its failure is retained. The completed replica used.4 and stopped its own
+process group. Original server/model and foreign UDMT are unchanged.
+
+Authoritative receipt:
+outputs/groundjev/ground_adaptation/projector3_retention_v2_memory_budget/aggregate_results.json.
+OneJev formal500step owner remains live, latest returned report100/500;
+full1203frame DanceTrack owner remains live, latest returned frame1183.
+No completion claim for either. Current persistent feature service on5
+uses about4GiB; no GroundJEV process remains on7 after replica cleanup.
+Next research hypothesis: exact object geometry grouping improves localization,
+but copying a native query label…48444 tokens truncated…；完整latest4500已验证但未来5000会原子替换，编号BF16权重保留。
+
+全量CPU completion核验计划：原94290已先通过serial full plan并进入FULL_JOINT_FOUR_GPU_TRAINING，原17189实际返回同阶段等待更新；并行49885后完成actual exit0，coordinator2858 actual exit0/status ORIGINAL_ALREADY_ADVANCED_NO_HANDOFF，无任何signal/重启。比较两份completed native plan全部summary（除不同计时定义），核验int32 459027长度及int64总和/原生global16同seed0计划全行守恒和tail3；读取原RMOT source refs/group first-media，追溯raw1814与semantic1796实际曝光差18，保留全部raw/原行，不更改正在训练数据。报告与已完成lengtharray沿原4MiB报告预留，不新增GPU/feature档案；实测CPU计划tokens5639441074/28690updates是计划，不是已消费tokens/训练结果。
+
+原35297 actual exit0：serial与4CPU全部完整数值summary相同，459027长度array int32/全int64总5639441074核验，原生index-shuffle/global16恰28690updates、末step rank行数1/1/1/0，全部行一次不漏不重。native allreduce_grads原实现为无本地梯度参数补零再SUM，末rank空不丢样本。实际输入首媒体MOT1056/RMO1796/OV17023；RMO raw1814的18张差额在两query原保留监督中都仅有lifecycle，登记semantic-only不选这些proxy，原始帧/row完整保留，不造新presence标签、不改当前数据。原serial CPU计时7943.0s仅capture后全plan；4CPU2415.9s含加载及192probe，不作严格受控速度基准。原四卡owner94290仍保留，原17189已实证阶段切换但首5实际optimizer仍待观测；无handoff/重启/信号，三任务普通水平未证明。
+
+原17189 actual exit0：first5四卡真实训练已验证，actual step1..5/seen16,32,48,64,80，MOT49/RMO12/OV19；5条loss/CE/Brier/gradient全finite且gradient>0，原生600初始化320FP32/752393024参数maxdiff0，exact4rank分别在物理4/5/6/7，原owner94290未重启。新phase28690步/459027问题/vision frozen/seed0/确定性FA，非running6000续训、非Ground-One联合梯度、非长视频BPTT；首5仅启动证明不是完整epoch/跟踪收益。前5实际global输入吞吐约13.1k..15.0k tokens/s、每步9.7..19.3秒，仅极短早期/同GPU共用记录，不作稳定速度或结束时间预测。原6000另已至少5300updates，5000完整9029140633byte恢复state/save receipt与编号BF16存在已核验；不重复4500已完成的全部数值扫描。更新TRAINING_LOG/CURRENT_STATUS顶部，旧active状态标历史，保存first5实际args和5000save小receipt；沿原observer1MiB及既有future-curriculum metadata预留，0新feature/model/optimizer。所有tracking终评与ordinary-level目标仍未完成。
+
+连续观测计划：原四卡训练实际first5已完成并发布，但94290原shell句柄不转发逐步stdout，实际日志在training/log.jsonl。新增单一blocking只读跟随器，核对原owner PID/starttick/cwd后用pidfd内部等待，持续转发新完整JSON日志/phase变化并检查loss/gradient finite；从已证明step5之后接续，不重启训练、不写新feature或模型、不进行agent-level ps/tail轮询。优化器done仅表示训练步骤结束，最终reload/跟踪指标仍交原owner校验。
+
+原76060单一blocking follower实际接上原94290的同一训练，立即转发实际step25/400rows，loss2.044512/grad208.539均finite，最近窗口12.097s/update、14576.845global planned-input tokens/s；原样记录共用GPU的极早期样本，不当稳定速度/结束时间/推理E2E或质量收益。原日志原样读不改，first400实际seed0 sampler task counts={"mot": 203, "rmot": 98, "ovmot": 99}；注册follower句柄供后续直接write_stdin，直到optimizer done交原parent完成reload/scorers，0新增模型/feature/optimizer。
+
+6000完成核验准备：复用已实际验证4500的CPU完整状态/曝光freezer，仅将结果字段拆为complete6000_training与new_tracking_metrics_available，避免6000实际结束时仍把二者合并标false；不改验证门槛、训练、采样或metric。原owner负责保存全部6000 FP32/Adam/RNG、final BF16与native-MM reload后固定四scope对照。待原阻塞训练输出完成/阶段事件后才运行CPU验证，不重复扫描仍在进行的5500状态。
+
+Compact扩展最小计划：现有共享Compact只有48MOT/72RMO/64OV小pack，而已有43MOT1056帧+18RMO3628query观察的真实Compact actor原生Full-v3导出，输入内含确切pre-write geometry与anchor/recent/long像素来源。做只读FP32引用loader：按source archive(frame,candidate)重建当前与三份历史2560向量，保存小geometry和reference元数据，不重复保存每group约1MB历史向量；原监督行独立保留，assignment/opaque alias只作真实输入条件不引入GT。先CPU检验与原Compact.forward实际输入逐tensor相等、source outputs/states一致；保留全部空/拒绝帧，空n0/m0明确原Compact不调用forward，不能伪称新增presence head。此为未来三任务Compact扩展输入组件，175类ROI与新train recipe尚未准备/启动；0GPU/optimizer、仅32MiB metadata预留，feature upper26618307550<25GiB。当前两轮OneJev训练及测评不变。
+
+Compact input组件原35764 actual exit0：全部61unit/4684query-frame contexts、7071ordinary输入group与5870真实assigned条件，45空n0m0group保留；MOT1056/RMO1814unique物理图。仅21265696byte metadata，FP32 arrays全部引用原归档不复制；8920次重复box引用在真实数据中逐值确认原F32向量相同，未猜测匹配。原85147 actual exit0：3真实source各前3帧、36实际forward groups/22带历史、6784728输入tensor元素torch.equal，所有native模型forward/actual source outputs-state完全相同，0GT修正/0GPU/optimizer。全61数据准备与九帧数值regression范围分开记录，仍不是完成三任务Compact训练pack，OV175native features未采集、新model训练未启动；后续共享训练需补齐该组件及独立登记recipe。完整21MB可再生metadata cache server-only，发布loader/builder/validator/config/完成证据，不把缓存当tracking结果。原两个OneJev训练和所有评测继续，goal未完成。
+
+Compact OV175补齐计划：仅复用原正跑24k课程中已登记4000个root对象draw及其leaf对应，不另选GT难度/类别或读eval/Novel标签。CPU逐一核对train-Base annoID/vocab index/image/GT bbox与原crop recipe；去重观察向量按annotationID索引，保留rare-class原draw重复。新私有GPU4 ROI-only视觉服务与现有任务共用4/5/6/7总4卡，不停止任何既有进程，原生MoonViT/projector无语言解码/新DLM请求，RPC只给原图+框。单一FP32memmap bank约36MiB及逐图完成记录支持未完成单位恢复，无新PNG/整集缓存。64MiB预留使upper26685416414<25GiB；此组件不启动Compactoptimizer，头/采样recipe另登记。
+
+## 2026-10-16 — shared6000 completion and joint-training scope
+
+Balanced shared OneJev MOT/RMOT/OVMOT training completed6000updates/24000questions (8000per task),29432.9s. Final full FP32/Adam/RNG state validates all752393024parameters and1504786048moment elements finite, all320Adam counters/scheduler/cursor6000; native multimodal repeated reload probability difference0. Retain final and numbered checkpoint; downstream controls have started and tracking gains remain pending. Actual first-media paths:1056MOT/72RMOT/3227OVMOT, distinct from question counts. Independent four-GPU full-source epoch latest observed425/28690updates,6800questions,finite loss/gradient. Ground and OneJev are separately optimized; no end-to-end joint foundation gradient or long-video BPTT. Evidence: outputs/groundjev/training/shared6000_actual6000_snapshot_v1/validation.json.
+
+## 2026-10-16 — broader native Compact supervised adaptation plan
+
+Hypothesis: the previous Compact corpus (48MOT/72RMOT/64OV images) limits transfer; first isolate broader data with the unchanged semantic Compact architecture and existing runtime. Build a fresh explicitly registered question-level curriculum from43MOT native units,18RMOT native query units and the selected175Base native teacher ROI bank. Route only supported original heads (identity/observation-update/reliability/lifecycle/Membership/flat category); inventory unsupported presence and final-ID questions rather than relabeling them. No RMOT unknown-birth auxiliary labels or OV teacher identity/update targets are invented. Train one common final checkpoint on CPU, retain original actor as before control, and run unchanged causal evaluation before judging gains. This is supervised Compact adaptation, not native OneJev decoder reasoning or a completed large-scale epoch.
+
+Compact curriculum first target validation failed onMOT20-05_766_batch0_match_13: no-history native questions have onlyNEW/IGNORE, while existing Compact keeps a third hard-maskedNO_MATCH logit. Encoded target already correctly padded zero; fixed only the validator legal-option expectation, preserving all source labels/questions and the existing model. Failure receipt retained. Base175 native-input validation meanwhile passed all175class representatives/216205500tensor elements with exact inputs and forward outputs.
+
+Broader Compact curriculum now concretely prepared and all24000selected labels checked against original native questions/option order. Balanced MOT8000 (5000identity/2000life/500observation-update/500reliability), native RMOT8000membership (4000yes/4000no), OV8000flat-class exposures preserve the4000originalBase draws twice. Actual eligible first-media coverage1053MOT/1795RMOT/3227OVimages; all226query-frame contexts without a selected supported head explicitly inventoried, original1056/1814source frames preserved. This new question-level balanced recipe also changes sampling/loss aggregation, so resulting comparison is not an isolated data-only ablation. Real three-task8-update continuous versus4+4restored CPU trajectories match every model/Adam/counter/RNG value exactly. Registered8000updates/24000questions unchanged-architecture training and subsequent five unchanged causal controls launched onCPU, no additional GPU. Native OneJev large epoch and6000model controls continue separately.
+
+Broader Compact actual first100updates/300questions verified from its complete log and live PID/starttick, all first logged losses/gradients finite; this is real training, not only registration. Single Base bank component42,597,901bytes<64MiB and curriculum metadata547,051bytes<16MiB; registered caps retained conservatively. CPU before/after scope protocol uses nonoverlapping MOT20train766–893 versus validation1659–3315. Final8000 and five-scope scores pending; no training-gain claim.
+
+Frozen fit affinity diagnosis (1250selected unique correct-existing questions) completed before training: native2560cosine retrieves correct listed identity1050/1250=84.00%, projected128cosine1026/1250=82.08%, IoU986/1250=78.88%, learned existing-only logits893/1250=71.44%; adding existing action competition leaves521/1250=41.68% full correct decisions, with589NO_MATCH choices despite a correct existing option. Thus this fit evidence points more strongly to association/action learning than a wholesale loss of appearance in compression. It is neither held-out accuracy nor causal tracking gain. A read-only owner waits on the verified original Compact trainer PIDfd, then repeats the identical frozen cases using its final checkpoint; no running recipe/runtime changed.
+
+Shared Compact8000 completed24000questions/1167.332s (19.46min),1,146,511parameters,1,139,601changed elements. Full model/Adam finite and export exact; three-task reload exact. Fit1250 existing-ID full correct521→656 (41.68→52.48%), but first held-out DT1203 control strongly regresses: HOTA26.3157→5.5800%, IDF130.6329→6.7840%, IDSW165→488,FP579→1511,FN1962→3637. Preserve negative model; no promotion. Remaining four scopes continue unchanged. Register a separate matched MOT-only8000 update control with the exact original MOT row sequence, sameinitial/Adam/LR/weightdecay/clip and loss/3, excluding only RMOT/OV losses by explicit opt-in. This separates task-gradient interference from the changed data/sampling recipe, without claiming FLOP matching. No new features/GPUs.
+
+Remaining first-three-scope results: RMOTsingle800 HOTA6.0247→1.0579%, IDF12.8902→0%; RMOTmulti800 HOTA19.8019→12.5237%, IDF121.0082→13.1709%. All are negative; retain completed joint8000 model and all five registered controls. The separately declaredMOT-only8000 control has actually passed100updates/100questions; its8versus4+4 full model/Adam/RNG restore is exact. Optional task-subset implementation preserves the original three-task8update model/Adam/RNG/protocol/exposure bit for bit.
+
+MatchedMOT-only8000 completed8000questions/944.519s, full-state finite/export/reload exact; zero category/membership head changes verified. It also strongly regresses DT1203: HOTA26.3157→1.67995%, IDF130.6329→0.82034%, IDSW165→1303; singleRMO HOTA6.0247→2.49096%. Fit correct-existing733/1250=58.64% remains better than original41.68% but does not transfer. Cross-task gradient interference alone cannot explain failure. Registered targeted DT1203 causal intervention for both trained checkpoints: association unchanged, fixed auxiliary policy (write1/reliabilityNone/no learned lifecycle), retain all default negatives and entire pending five-scope studies. This diagnoses the combined auxiliary policy, not a lifecycle-only ablation or successful replacement model. JointTAO40 separately improves TETA14.517→19.252 viaLocA8.088→17.963 andAssocA5.1478→11.012, whileClsA30.314→28.781 worsens andNovelClsA stays0.
+
+Posthoc DT1203 auxiliary-policy intervention completed5arms: joint fixed-auxHOTA5.6588% versus5.5800default;MOT-onlyfixed-aux3.2215% versus1.67995default, both far below original26.3157%. Combined auxiliary replacement alone does not repair association. Original43-sourceMOT labels measured: EXISTING22117/48051(46.03%), NEW11489,IGNORE7992,NO_MATCH6453; lifecycleACTIVE60077/93624,TERMINATE4682/93624(5.00%),LOST12117,REACTIVATE16748. Selected uniform label quotas impose25% each. Register an exact-row/initial/optimizer-matched MOT-only8000 loss-weight control using TRAIN source-frequency/selected-frequency ratios, loss/3 and all existing policies/metrics unchanged. This is an exploratory source-prior hypothesis, not guaranteed deployment calibration; no validation label ratios used.
+
+TRAIN-source prior-weightedMOT-only control actually passed100updates/100questions, finite loss/gradient, exact8vs4+4model/Adam/RNGprefix validation passed. JointMOT20full1657 inference finished; a single resource diagnosis confirms original official evaluator actively running onCPU (491CPU seconds/~60.3GiBRSS at observation), not a stopped model job. Keep original scorer and all frames unchanged; no finalMOT20metric yet.
+
+Next focused diagnosis: replay all1203DTvalidation original CPU actor frames exactly and evaluate original/joint/MOT-only checkpoints on identical captured pre-write input tensors. Score identity argmax and a shadow single-step global assignment using external GT/immutable old birth IDs only after inputs are fixed. Exact original outputs/states and shadow-choice parity required on every frame; no new causal score, training or feature pack claimed. This separates conditional decision failure from changed closed-loop history without GT state repair.
+
+DT1203 frozen-prefix diagnosis completed1203frames/13664candidates; every original output/state and shadow global assignment exact. On1768correct-existing options, original argmax correct651, joint6, MOT-only55; joint predictsIGNORE on1726/1768, MOT-only1527/1768. Thus severe conditional rejection exists before any new-policy history change; exposure bias alone is insufficient. Overall argmax accuracy is dominated by IGNORE and is not a tracking metric. Audit TRAIN and validation birth-label support separately: determine whether all-proposal Hungarian matching leaves actual unique GT-supported emissions unbound, and count isolated valid IoU edges lost by assignment-before-threshold. Do not relabel or alter any running study during this diagnostic.
+
+Birth support auditv1 finished all43train clips and DT1203 validation computations, then exited1 because final json.dumps call used an unsupported keyword. Saved computations and failure receipt retained. Fixed only final summary dictionary construction and rerun the identical read-only audit into freshv2; no labels, frames or acceptance criteria changed.
+
+Birth supportauditv2 exits0: only2/844TRAINbirths have unbound, uniquely supported actual emissions; assignment-before-threshold loses4isolatedvalidTRAINedges. These rare verified cases cannot explain the broad collapse, so do not relabel corpus or interrupt original four-GPU training. SharedFullOneJev6000 defaultDT1203 also regresses HOTA8.7030→7.8406%, IDF15.8260→3.5341%, IDSW3631→2796; assigned-ID samecheckpoint comparison continues. TRAIN-prior-weightedCompact8000 completes8000questions/944.302s, DT HOTA2.5567%, singleRMO3.5421%, multiRMO15.7803%; prior correction alone does not repair. Measured selectedMOT source mix5934MOT20/779MOT17/1287DT, but correct-existing questions496/255/499. Selected correct-history age/100 median.06,max1.23 andconfidence median.592. Register frozen old-prefix weighted-model plus GT-agnostic zeroage/zeroconfidence/zero4scalar interventions and actual input-domain quantiles; no continuous tracking gain or changed default protocol.
+
+Scalar interventions fail to restore conditional identity decisions: weighted model correct3/1768, noage43, noconfidence1, no4scalars26 versus original651. Real correct-alias age/100 median2.03,max8.46 exceeds selectedTRAINmedian.06,max1.23, but erasing scalars alone is insufficient. Corrected an inherited report flag that had claimed all tensors identical despite explicitly declared scalar interventions; source plans/metrics/decisions unchanged, original flag retained in scope-correction receipt. Next implementation: frozen-core multitask adapter with zero-initialized learned native ROI cosine/IoU/distance residual for matching/actions; train only small residual and category/membership heads, preserving original backbone, text-conditioning and auxiliary/association weights exactly. Use identity-onlyMOT plus nativeRMOTmembership/BaseOVcategory, same one final model and an inference residual-disabled ablation. This is a new Compact adapter study, not a native OneJev decoder or trainable shared-backbone claim.
+
+Frozen-core native-relation adapter now concrete: total1,147,379parameters,66,790trainable (868native pair/action residual plus category/membership/scale). New output layers are exactzero; wholeDT1203/13664native candidates reproduce every original output/state/shadow assignment and every untrained model tensor output exactly. New24000-question corpus labels/options validated (8000identity/8000membership/8000Basecategory), all263unsupported query-frame contexts explicitly retained in source inventory; actualeligible images1016MOT/1795RMOT/3227OV. Real three-task8continuous versus4+4restored full model/Adam/RNG is bitexact. CPU8000update production and same-final residual-disabled inference ablation/five-scope controls launched; original backbone/text/association/auxiliary weights frozen, no newshared-backbone or OneJev decoder-gradient claim. New8MiBmetadata reservation raisesconservative temporary upper26710582238<26843545600; no newROI features or GPU.
+
+Clarification: birth-support audit counts only provably unique GT-supported emitted cases. Remaining ambiguous original unbound births are not certified correct, so the broader binding-label mechanism is not ruled out. Keep original data and report uncertainty. Shared/MOT-only8000 full five-scope controls completed; sharedMOT20 improvesHOTA7.4316→11.4780% butIDSW2060→58632, Monly5.6407%; no model promotion.
 
 Native-relation production has actually passed100updates/300questions (100per task); intermediate saved-state validation compares every frozen original weight exactly and checks all model/Adam values finite. Initial parity and prefix restore are execution evidence only; no new tracking gain yet.
 
@@ -2657,3 +3050,8 @@ tensors 到 `GroundAnything-DLM-TrackProjG1-GPU5-V2`；source bundle 未覆盖�
 MOT dense4、RMOT refer-single8 和 RMOT refer-multi12，三者重复运行均保持同一
 raw wire candidates 和 outputs。该终态证明 G1 适配和控制一致性，不宣称全数据集
 benchmark 提升；TAO native shard 推理和三任务耦合训练仍在继续。
+
+注册子集 owner 已进入实际推理阶段：4 个 stream 进程分别使用合法 GPU4/5/6/7，
+对应 GroundAnything 服务日志已出现数百至上千次 `[PREFILL]` 请求。四个 shard
+仍未产生终态 receipt，故三任务 owner 继续等待 native manifest；没有把服务启动
+或部分请求计作训练指标。
