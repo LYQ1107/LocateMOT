@@ -1,8 +1,8 @@
 {
   "schema": "groundjev.active_goal.live.v1",
   "project_root": "/data2/user/LocateMOT",
-  "generated_at_utc": "2026-10-22T02:35:07.511563+00:00",
-  "git_commit": "afd634b68fdcc56264ae9ac1602e14e6a4e9e583",
+  "generated_at_utc": "2026-10-22T02:35:37.854496+00:00",
+  "git_commit": "5f95976ede1f149f0e2f326e6ecaf912fa29c85f",
   "owners": {
     "G0": {
       "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g2_clean_independent_gpu3_v1/owner_state.json",
@@ -106,17 +106,17 @@
     }
   },
   "frame_progress_rows": {
-    "G0_RMOT": 702,
+    "G0_RMOT": 718,
     "G2_MOT_GPU5": 704,
     "G2_MOT_GPU6": 404,
-    "G2_DANCE": 822,
+    "G2_DANCE": 828,
     "G2_ANIMAL": 306,
     "G2_TAO": 4,
-    "G1_DANCE": 403,
-    "G1_ANIMAL": 76,
-    "G200_DANCE": 105,
-    "RMOT_SINGLE": 554,
-    "RMOT_MULTI": 738
+    "G1_DANCE": 411,
+    "G1_ANIMAL": 79,
+    "G200_DANCE": 112,
+    "RMOT_SINGLE": 567,
+    "RMOT_MULTI": 754
   },
   "official_metrics": {
     "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g2_domain_animaltrack_gpu6_v1/G2_CLEAN_V2/animaltrack_chicken1_test306/official_metrics.json": {
