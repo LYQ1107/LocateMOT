@@ -45,6 +45,6 @@
       "resume_source": null
     }
   ],
-  "diagnosis": "Both owners and services are live and advancing. Recent per-frame latency is approximately 27–35 seconds; no process failure is observed.",
+  "diagnosis": "Both owners and services are live and advancing. Recent per-frame medians are approximately 43.5 seconds (G1) and 28.9 seconds (G200); no process failure is observed.",
   "action": "Preserve both runs; no restart or partial metric promotion."
 }
