@@ -29,7 +29,7 @@ def main():
     seq = manifest['sequence']
     protocol = json.loads(Path(manifest['protocol']).read_text())
     dataset = protocol['dataset']
-    if dataset not in ('mot17','mot20','dancetrack') or result['task'] != 'mot':
+    if dataset not in ('mot17','mot20','dancetrack','animaltrack') or result['task'] != 'mot':
         parser.error('this entrypoint is ordinary MOT; RMOT/OVMOT require their own official evaluator')
     source = verify_trackeval_source()
     key = f'{dataset}/dev/{seq}'
