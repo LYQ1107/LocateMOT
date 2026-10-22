@@ -1,8 +1,8 @@
 {
   "schema": "groundjev.active_goal.live.v1",
   "project_root": "/data2/user/LocateMOT",
-  "generated_at_utc": "2026-10-22T02:52:59.860466+00:00",
-  "git_commit": "74451937994886c7307df7a4fba295c7854700a2",
+  "generated_at_utc": "2026-10-22T02:56:10.571752+00:00",
+  "git_commit": "d207fd70097a413a8666e08948d6e9357c409edf",
   "owners": {
     "G0": {
       "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g2_clean_independent_gpu3_v1/owner_state.json",
@@ -28,9 +28,13 @@
     },
     "G2_GPU6": {
       "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g2_clean_independent_gpu6_v1/owner_state.json",
-      "status": "RUNNING_G2_CLEAN_V2_mot20_05_validation1657",
-      "current_stage": "RUNNING_G2_CLEAN_V2_mot20_05_validation1657",
-      "failed": null,
+      "status": "G2_CLEAN_FULL_INDEPENDENT_HELDOUT_FAILED",
+      "current_stage": "RESOURCE_RECLAIMED",
+      "failed": {
+        "error": "duplicate_mot20_scope_superseded_by_gpu5_owner_for_resource_cap",
+        "partial_output_preserved": true,
+        "formal_metric_claim": false
+      },
       "completed": [
         "g2_dependency"
       ],
@@ -80,17 +84,24 @@
     },
     "G2_TAO": {
       "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g2_parallel_ovmot_gpu5_v1/owner_state.json",
-      "status": "RUNNING_G2_CLEAN_V2_tao_video105_independent40",
-      "current_stage": "INFERENCE",
-      "failed": null,
+      "status": "G2_PARALLEL_SCOPE_FAILED",
+      "current_stage": "RESOURCE_RECLAIMED",
+      "failed": {
+        "error": "superseded_by_repaired_ovmot_gpu7_v1_for_resource_cap",
+        "partial_output_preserved": true,
+        "formal_metric_claim": false
+      },
       "completed": [],
       "physical_gpu": 5
     },
     "G2_TAO_FAST": {
       "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g2_parallel_ovmot_gpu7_fast_v1/owner_state.json",
-      "status": "RUNNING_G2_CLEAN_V2_tao_video105_independent40",
-      "current_stage": "INFERENCE",
-      "failed": null,
+      "status": "G2_PARALLEL_SCOPE_FAILED",
+      "current_stage": "SUPERSEDED_BY_REPAIRED_OVMOT_PARSER",
+      "failed": {
+        "error": "strict diagnostic run superseded before completion by official_scoring_repaired OVMOT run",
+        "preserved_partial_output": true
+      },
       "completed": [],
       "physical_gpu": 7
     },
@@ -168,17 +179,17 @@
   },
   "frame_progress_rows": {
     "G0_RMOT": 800,
-    "G2_MOT_GPU5": 725,
-    "G2_MOT_GPU6": 418,
-    "G2_DANCE": 1030,
+    "G2_MOT_GPU5": 730,
+    "G2_MOT_GPU6": 420,
+    "G2_DANCE": 1069,
     "G2_ANIMAL": 306,
     "G2_TAO": 7,
     "G2_TAO_FAST": 3,
     "G2_TAO63": 0,
     "G2_TAO63_REPAIRED": 0,
-    "G1_DANCE": 638,
-    "G1_ANIMAL": 174,
-    "G200_DANCE": 326,
+    "G1_DANCE": 672,
+    "G1_ANIMAL": 187,
+    "G200_DANCE": 360,
     "RMOT_SINGLE": 800,
     "RMOT_MULTI": 800
   },
@@ -2501,8 +2512,8 @@
     },
     {
       "index": 1,
-      "memory_used_MiB": 67596,
-      "memory_free_MiB": 13558,
+      "memory_used_MiB": 43119,
+      "memory_free_MiB": 38036,
       "utilization_percent": 100
     },
     {
@@ -2513,32 +2524,32 @@
     },
     {
       "index": 3,
-      "memory_used_MiB": 78006,
-      "memory_free_MiB": 3148,
+      "memory_used_MiB": 53629,
+      "memory_free_MiB": 27526,
       "utilization_percent": 100
     },
     {
       "index": 4,
-      "memory_used_MiB": 72838,
-      "memory_free_MiB": 8316,
+      "memory_used_MiB": 48461,
+      "memory_free_MiB": 32694,
       "utilization_percent": 100
     },
     {
       "index": 5,
-      "memory_used_MiB": 56089,
-      "memory_free_MiB": 25066,
+      "memory_used_MiB": 36436,
+      "memory_free_MiB": 44718,
       "utilization_percent": 100
     },
     {
       "index": 6,
-      "memory_used_MiB": 76653,
-      "memory_free_MiB": 4501,
+      "memory_used_MiB": 34140,
+      "memory_free_MiB": 47015,
       "utilization_percent": 100
     },
     {
       "index": 7,
-      "memory_used_MiB": 57586,
-      "memory_free_MiB": 23569,
+      "memory_used_MiB": 57570,
+      "memory_free_MiB": 23585,
       "utilization_percent": 100
     }
   ],
