@@ -40,6 +40,7 @@ OWNER_DIRS = (
     RUNTIME / "outputs/groundjev/heldout/g2_domain_dancetrack_gpu5_v1",
     RUNTIME / "outputs/groundjev/heldout/g2_domain_animaltrack_gpu6_v1",
     RUNTIME / "outputs/groundjev/heldout/g2_parallel_ovmot_gpu5_v1",
+    RUNTIME / "outputs/groundjev/heldout/g2_parallel_ovmot_gpu7_fast_v1",
     RUNTIME / "outputs/groundjev/heldout/g2_parallel_ovmot_gpu7_video63_v1",
     RUNTIME / "outputs/groundjev/heldout/g1_dancetrack_gpu3_v1",
     RUNTIME / "outputs/groundjev/heldout/g1_animaltrack_gpu6_v1",
