@@ -25,9 +25,9 @@ MANIFEST = RUNTIME_ROOT / "outputs/groundjev/training_data/real_three_task_joint
 CHECKPOINT = RUNTIME_ROOT / "models/GroundAnything-DLM"
 ADAPTER = Path("/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final/adapter_projector_final.pt")
 SOURCE_ROOT = RUNTIME_ROOT / "external/GroundAnything"
-OUTPUT = Path("/data3/user/LocateMOT-checkpoints/groundjev_native_three_task_expansion_gpu7_v2")
-OWNER = RUNTIME_ROOT / "outputs/groundjev/training/groundjev_native_three_task_expansion_gpu7_v2/owner_state.json"
-LOG = RUNTIME_ROOT / "outputs/groundjev/training/groundjev_native_three_task_expansion_gpu7_v2/TRAINING.log"
+OUTPUT = Path("/data3/user/LocateMOT-checkpoints/groundjev_native_three_task_expansion_gpu7_v3")
+OWNER = RUNTIME_ROOT / "outputs/groundjev/training/groundjev_native_three_task_expansion_gpu7_v3/owner_state.json"
+LOG = RUNTIME_ROOT / "outputs/groundjev/training/groundjev_native_three_task_expansion_gpu7_v3/TRAINING.log"
 MANIFEST_SHA = "cc632115aa2b87161dc7b8413d08c3c471e1225179559a76509e7366190764c1"
 MODEL_SHA = "3cf09355cde8cf4877cdc76e0a72301d572c1d6263b2831f8a03368285bb65e2"
 ROWS_PER_TASK = 72
@@ -97,6 +97,7 @@ def main() -> int:
         "g2_frozen": True,
         "single_backbone": True,
         "old_pilot_preserved": "/data3/user/LocateMOT-checkpoints/groundjev_native_three_task_v1/receipt.json",
+        "previous_failed_attempt": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/groundjev_native_three_task_expansion_gpu7_v2/owner_state.json",
         "command": command,
         "optimizer_updates": 0,
         "gpu_launched": False,
@@ -105,10 +106,15 @@ def main() -> int:
     save(state)
     try:
         LOG.parent.mkdir(parents=True, exist_ok=True)
+        env = os.environ.copy()
+        env["CUDA_LAUNCH_BLOCKING"] = "1"
+        env["GAM_DLM_FLEX_CUDAGRAPHS"] = "0"
+        env["GAM_DLM_STABLE_BLOCK_MASK"] = "1"
+        env["PYTHONPATH"] = str(PROJECT_ROOT)
         with LOG.open("w", encoding="utf-8") as stream:
             state.update(current_stage="TRAINING", gpu_launched=True)
             save(state)
-            result = subprocess.run(command, cwd=PROJECT_ROOT, stdout=stream, stderr=subprocess.STDOUT, check=False)
+            result = subprocess.run(command, cwd=PROJECT_ROOT, env=env, stdout=stream, stderr=subprocess.STDOUT, check=False)
         receipt = read_json(OUTPUT / "receipt.json")
         if result.returncode != 0 or not receipt or receipt.get("status") != "GROUNDJEV_NATIVE_THREE_TASK_COUPLED_READOUT_COMPLETE":
             state.update(status="GPU7_NATIVE_THREE_TASK_EXPANSION_FAILED", current_stage="FAILED", failed={"returncode": result.returncode, "receipt": receipt})
