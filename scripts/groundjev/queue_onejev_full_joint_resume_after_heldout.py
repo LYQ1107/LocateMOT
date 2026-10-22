@@ -29,7 +29,11 @@ FINALIZER = RUNTIME / "outputs/groundjev/heldout/groundjev_heldout_g200_finaliza
 QUEUE_ROOT = RUNTIME / "outputs/groundjev/training/full_joint_source_epoch1_resume_after_heldout_v1"
 TRAIN_NAME = "onejev_full_joint_source_epoch1_after_heldout_v1"
 TRAIN_ROOT = Path("/data3/user/LocateMOT-checkpoints") / TRAIN_NAME
-GPUS = (3, 5, 6, 7)
+# Keep the resumable queue aligned with the registered four-GPU training
+# contract in configs/groundjev/full_joint_source_epoch1_v1.json and the
+# historical command receipt.  GPU3 was an older temporary substitution and
+# is not part of this training contract.
+GPUS = (4, 5, 6, 7)
 EXPECTED_RESUME_STEP = 3000
 EXPECTED_TOTAL_STEPS = 28690
 
@@ -130,6 +134,11 @@ def main() -> int:
         "other_active_jobs_untouched": True,
         "failed": None,
     }
+    previous_gpus = state.get("physical_gpus")
+    if previous_gpus != list(GPUS):
+        state["previous_physical_gpus"] = previous_gpus
+        state["physical_gpus"] = list(GPUS)
+        state["gpu_contract_revision"] = "registered_source_epoch1_v1"
     state["owner_pid"] = os.getpid()
     save(state)
     try:
