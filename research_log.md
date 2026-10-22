@@ -4362,3 +4362,27 @@ DanceTrack 独立 scope，形成 G0/G200/G1/G2 同输入比较。启动前资源
 `g200_dancetrack_gpu3_v1` 在服务启动前安全失败（optimizer/inference updates=0），
 没有触碰 G0/G1 运行，也没有把失败尝试当成指标。G200 已有的 48 帧官方控制 receipt
 和 bundle 保留作为现有对照证据；不在当前四卡窗口继续强行加服务。
+
+## 2026-10-22 — G0 MOT20-05 independent official result
+
+G0 owner `g2_clean_independent_gpu3_v1` 已完成与 G2 相同输入合同的 MOT20-05
+validation-half 独立评测：1657/1657 帧、MOT20-05 单视频、运行时未读取官方 TEST
+标签。官方 scorer receipt 给出 HOTA `0.3426154581`、DetA `0.6661209465`、AssA
+`0.1765665945`、IDF1 `0.2905332410`、IDSW `13712`、FP `19290`、FN `79814`，
+端到端 FPS `0.0488079`，感知拒绝率 `0.0054315`（9 帧，且计入官方分母）。这是
+独立 G0 控制结果，不是 G2 提升结论；同一 owner 已按注册顺序进入 RMOT single
+0007，G2 GPU5/GPU6 MOT20 和其它域 owner 未被改动。
+
+## 2026-10-22 — GPU7 shared-G2 three-task readout terminal
+
+GPU7 的真实单主干联合 readout 已完成请求的 1200 optimizer steps，receipt
+`GROUNDJEV_NATIVE_THREE_TASK_COUPLED_READOUT_COMPLETE`。它冻结最终 G2 adapter
+step `18227`，使用同一 native manifest（SHA256
+`cc632115aa2b87161dc7b8413d08c3c471e1225179559a76509e7366190764c1`）、单一 G2
+视觉主干（`independent_vlm_instances=0`），178 个 unique visual inputs 只编码一次，
+共 202 行：MOT 72、RMOT 72、OVMOT 58；任务更新计数为 330/432/331，102 个 identity
+target 合法 mask。checkpoint 为
+`/data3/user/LocateMOT-checkpoints/groundjev_native_three_task_expansion_gpu7_v3/groundjev-native-three-task-step001200.pt`
+（SHA256 `fc7f0de761aeb3ede3be77babe92f82c6c47764b44d1c0c05b7d21a45650e209`）。这证明
+真实 GPU 三任务共享-G2 readout 训练和可恢复 checkpoint 已完成；receipt 明确不作
+视频级 HOTA/TETA 泛化或独立 OneJev 模型性能结论。
