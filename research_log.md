@@ -4396,3 +4396,8 @@ GPU7 在三任务 readout 完成后释放；为不等待 GPU5/GPU6 的 MOT20 长
 decoder、simple tracker 和 multitask scorer，输出目录互相独立；GPU3/5/6 的既有
 owner 未修改。新增 `queue_groundjev_heldout_finalize_all.py`，把这两路加入全量
 held-out 收口，原有五路/七路 finalizer 产物仍保留。
+
+随后尝试在 GPU7 两路 RMOT 服务共存时再启动同一 TAO video105 OVMOT scope，资源
+门检测到仅剩 29,109 MiB free，低于 32,768 MiB 门槛；该尝试在服务启动前安全
+失败，未影响两路 RMOT。TAO OVMOT 仍由 GPU5 的独立 owner 运行，不把资源拒绝当作
+评测结果。
