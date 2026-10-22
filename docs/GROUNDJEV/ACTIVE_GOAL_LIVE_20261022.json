@@ -1,8 +1,8 @@
 {
   "schema": "groundjev.active_goal.live.v1",
   "project_root": "/data2/user/LocateMOT",
-  "generated_at_utc": "2026-10-22T03:08:49.249635+00:00",
-  "git_commit": "848d0cd42a6f17f37cd493a60d0a02dba793d261",
+  "generated_at_utc": "2026-10-22T03:11:58.716739+00:00",
+  "git_commit": "24fcceccbffff59764a0ce60cf7fbd68042f3ca3",
   "owners": {
     "G0": {
       "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g2_clean_independent_gpu3_v1/owner_state.json",
@@ -111,9 +111,11 @@
     },
     "G2_TAO105_REPAIRED": {
       "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g2_parallel_ovmot_gpu7_repaired_v1/owner_state.json",
-      "status": "RUNNING_G2_CLEAN_V2_tao_video105_independent40_repaired",
-      "current_stage": "INFERENCE",
-      "failed": null,
+      "status": "G2_PARALLEL_SCOPE_FAILED",
+      "current_stage": "FAILED",
+      "failed": {
+        "error": "RuntimeError('command failed (-15); see /data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g2_parallel_ovmot_gpu7_repaired_v1/G2_CLEAN_V2_inference.log')"
+      },
       "completed": [],
       "physical_gpu": 7
     },
@@ -160,11 +162,29 @@
     },
     "G200_DANCE": {
       "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g200_dancetrack_gpu3_v2/owner_state.json",
-      "status": "RUNNING_G200_TRACKING200_dancetrack0004_val1203",
-      "current_stage": "INFERENCE",
-      "failed": null,
+      "status": "G2_PARALLEL_SCOPE_FAILED",
+      "current_stage": "FAILED",
+      "failed": {
+        "error": "RuntimeError('command failed (-15); see /data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g200_dancetrack_gpu3_v2/G2_CLEAN_V2_inference.log')"
+      },
       "completed": [],
       "physical_gpu": 3
+    },
+    "G200_DANCE_SERIAL": {
+      "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g200_dancetrack_gpu3_serial_v1/owner_state.json",
+      "status": "MISSING",
+      "current_stage": null,
+      "failed": null,
+      "completed": [],
+      "physical_gpu": null
+    },
+    "G2_TAO105_SERIAL": {
+      "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g2_parallel_ovmot_gpu7_video105_serial_v1/owner_state.json",
+      "status": "MISSING",
+      "current_stage": null,
+      "failed": null,
+      "completed": [],
+      "physical_gpu": null
     },
     "RMOT_SINGLE": {
       "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g2_parallel_rmot_single_gpu7_v1/owner_state.json",
@@ -197,18 +217,20 @@
   },
   "frame_progress_rows": {
     "G0_RMOT": 800,
-    "G2_MOT_GPU5": 754,
+    "G2_MOT_GPU5": 762,
     "G2_MOT_GPU6": 420,
     "G2_DANCE": 1203,
     "G2_ANIMAL": 306,
     "G2_TAO": 7,
     "G2_TAO_FAST": 3,
-    "G2_TAO105_REPAIRED": 2,
+    "G2_TAO105_REPAIRED": 3,
     "G2_TAO63": 0,
     "G2_TAO63_REPAIRED": 2,
-    "G1_DANCE": 842,
+    "G1_DANCE": 903,
     "G1_ANIMAL": 306,
-    "G200_DANCE": 528,
+    "G200_DANCE": 578,
+    "G200_DANCE_SERIAL": 0,
+    "G2_TAO105_SERIAL": 0,
     "RMOT_SINGLE": 800,
     "RMOT_MULTI": 800
   },
@@ -4213,9 +4235,9 @@
     },
     {
       "index": 3,
-      "memory_used_MiB": 35396,
-      "memory_free_MiB": 45758,
-      "utilization_percent": 100
+      "memory_used_MiB": 18204,
+      "memory_free_MiB": 62951,
+      "utilization_percent": 50
     },
     {
       "index": 4,
@@ -4227,19 +4249,19 @@
       "index": 5,
       "memory_used_MiB": 18236,
       "memory_free_MiB": 62919,
-      "utilization_percent": 64
+      "utilization_percent": 61
     },
     {
       "index": 6,
       "memory_used_MiB": 16371,
       "memory_free_MiB": 64783,
-      "utilization_percent": 0
+      "utilization_percent": 54
     },
     {
       "index": 7,
-      "memory_used_MiB": 60638,
-      "memory_free_MiB": 20517,
-      "utilization_percent": 100
+      "memory_used_MiB": 40750,
+      "memory_free_MiB": 40405,
+      "utilization_percent": 99
     }
   ],
   "joint_checkpoint": "/data3/user/LocateMOT-checkpoints/groundjev_native_three_task_expansion_gpu7_v3/groundjev-native-three-task-step001200.pt",

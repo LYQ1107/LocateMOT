@@ -1,4562 +1,383 @@
-## 2026-10-21 â€” åŒåºåˆ—è€¦åˆè®­ç»ƒ step48 å®¡è®¡ï¼šJEV å­¦ä¼šä½† C2 åæ ‡æœªå­¦ä¼š
-
-MOT20-03 ä¸Ž MOT20-05 å„ 5 å¸§ã€6 ä¸ª transitionï¼Œå…±æ¢å¤åˆ° step48ï¼›å†»ç»“ G2 step17000ï¼Œ10 å¸§å„ä¸€æ¬¡è§†è§‰ç¼–ç ã€‚teacher-forced Grounding loss ä»Ž 4.6592 é™è‡³ 1.1808ï¼Œä¸¤ä¸ªåºåˆ—çš„ typed JEV MATCH/ADMIT/Yes-No/ACTIVE è¾¾åˆ° 1.0ï¼Œä½†å®žé™… greedy C2 æ¡†åœ¨ä¸¤ä¸ªåºåˆ—å¹³å‡ IoU ä»ä¸º 0.0000ï¼ŒC0 ä¹Ÿä¸º 0.0ã€‚éƒ¨åˆ† C2 è¾“å‡ºåˆæ³•ä½†åæ ‡æŽ¥è¿‘å†»ç»“åŸºçº¿ï¼Œéƒ¨åˆ†å‡ºçŽ°å‰ç¼€/è§£æžå¤±è´¥ã€‚ç»“è®ºï¼šç¦»æ•£ JEV ç›‘ç£å·²å¯å­¦ä¹ ï¼Œå• token memory åˆ° G2 åæ ‡ç”Ÿæˆçš„ä¼˜åŒ–å°šæœªæ‰“é€šï¼›åœæ­¢æ— ç•ŒåŠ æ­¥ï¼Œè½¬å‘ coordinate-token çº§è¯Šæ–­/ç›®æ ‡ã€wrong-memory ä¸Žå¤šèº«ä»½ç«žäº‰ã€‚è¯æ®ï¼š`docs/GROUNDJEV_COUPLED/PHASE_C_REAL_G2_COUPLED_MULTISEQUENCE_STEP17000_20261021.{json,md}`ã€‚
-
-## 2026-10-21 â€” G2 è€¦åˆæ¨¡å—è·¨åºåˆ—è¯Šæ–­å¤±è´¥ï¼ˆMOT20-05ï¼‰
-
-å°† MOT20-03 å¸§ 82â€“85 ä¸Šè®­ç»ƒçš„è€¦åˆ checkpoint åŽŸæ ·ç”¨äºŽ MOT20-05 å¸§ 13â€“17ï¼Œ5 å¸§å„ä¸€æ¬¡ G2 è§†è§‰ç¼–ç ï¼Œè¯„æµ‹æœŸé—´æ— å‚æ•°æ›´æ–°ã€‚C0/C2 å¹³å‡ IoU éƒ½æ˜¯ 0.0000ï¼›ä½† JEV ä»ç»™å‡ºè¿‘ä¹Žæ»¡ç½®ä¿¡çš„ MATCH/Yesï¼ˆP(ID) çº¦ 1.0ï¼ŒP(Yes) çº¦ 0.9995ï¼‰ã€‚è¿™å®šä½ä¸ºå•è§†é¢‘è®°å¿†/å‡ ä½•è¿‡æ‹Ÿåˆå’Œæ¦‚çŽ‡è¿‡åº¦è‡ªä¿¡ï¼Œå¦å®šè·¨åºåˆ—æ³›åŒ–ä¸»å¼ ã€‚ä¿ç•™ä¸ºè´Ÿè¯æ®ï¼Œä¸‹ä¸€æ­¥æ‰©å¤§å¤šè§†é¢‘è®­ç»ƒå¹¶åŠ å…¥é”™è¯¯ memoryã€å¤šèº«ä»½ç«žäº‰å’Œæ ¡å‡†ã€‚è¯æ®ï¼š`docs/GROUNDJEV_COUPLED/PHASE_C_REAL_G2_COUPLED_CROSS_SEQUENCE_MOT20_05_STEP17000_20261021.{json,md}`ã€‚
-
-## 2026-10-21 â€” çœŸå®ž G2 å•ä¸»å¹²è€¦åˆ memory/JEV pilotï¼ˆstep 17000ï¼‰
-
-åœ¨å†»ç»“ G2 step17000 ä¸»å¹²çš„æ¡ä»¶ä¸‹å®Œæˆ 24 æ­¥çœŸå®ž GPU æ›´æ–°ï¼Œåªè®­ç»ƒ G2 è¾“å…¥ç©ºé—´è®°å¿† token æŠ•å½±ã€JEV èº«ä»½æ§½æŠ•å½±å’Œç»“æž„åŒ– typed readoutï¼ˆ4,075,271 å‚æ•°ï¼‰ï¼›5 ä¸ª MOT20-03 TRAIN å¸§å„åªåšä¸€æ¬¡ G2 è§†è§‰ç¼–ç ã€‚causal Grounding teacher-forcing loss ä»Ž 4.6700318654 é™è‡³ 0.1691639870ï¼ŒJEV Yes/No ä»Ž 0/4 åˆ° 4/4ã€‚è®­ç»ƒåŽ C0 æ— è®°å¿†å¹³å‡æ¡† IoU ä¸º 0ï¼ŒC2 ä¸Šä¸€å¸§è®°å¿†å¹³å‡ IoU ä¸º 0.99636ï¼ŒåŒè§†é¢‘æ—¶åºç•™å‡ºå¸§ 86 çš„ C2 IoU ä¸º 0.99270ã€‚è¯¥ç»“æžœè¯æ˜Žè®°å¿† token å·²å½±å“çœŸå®ž G2 ç”Ÿæˆå‰è·¯å¾„ï¼Œä½†åªè¦†ç›–å•è§†é¢‘ã€å•èº«ä»½ã€24 æ­¥ï¼Œä¸èƒ½ä½œä¸ºç‹¬ç«‹ MOT/RMOT/OVMOT æ³›åŒ–æˆ– HOTA æå‡ï¼›åŽç»­å¿…é¡»åšå¤šè§†é¢‘ã€é”™è¯¯ memory å’Œæ­£å¼è§†é¢‘çº§è¯„æµ‹ã€‚è¯æ®ï¼š`docs/GROUNDJEV_COUPLED/PHASE_C_REAL_COUPLED_MEMORY_JEV_TRAINING_STEP17000_20261021.{json,md}`ã€‚
-
-## 2026-10-21 â€” G2 çœŸå®žå››å¸§ causal memory replayï¼ˆstep 17000ï¼‰
-
-å‡è®¾ï¼šå•ä¸»å¹² GroundJEV å¯ä»¥åœ¨ä¸åŠ è½½ç¬¬äºŒä¸ªè§†è§‰æ¨¡åž‹çš„æƒ…å†µä¸‹ï¼Œå°†ä¸Šä¸€å¸§çŠ¶æ€æ’å…¥ä¸‹ä¸€å¸§ G2 causal prefillã€‚ä½¿ç”¨ MOT20-03 TRAIN å¸§ 82â€“85 å’Œç›®æ ‡ ID 27ï¼Œæ¯å¸§åªåšä¸€æ¬¡ G2 è§†è§‰ç¼–ç ï¼›ç¬¬ 83â€“85 å¸§å¯¹æ¯” C0 æ— è®°å¿†ä¸Ž C2 ä¸Šä¸€å¸§è®°å¿†ã€‚ç»“æžœï¼š4 æ¬¡è§†è§‰ç¼–ç ã€3 ä¸ªè·¨å¸§è®°å¿† prefill å‡å®Œæˆï¼Œå®˜æ–¹å•æ¡†ç»“æž„ç»ˆæ­¢å’Œ parser å‡æˆåŠŸï¼›æœªè®­ç»ƒçš„ `IdentityMemoryTokenProjector` æ²¡æœ‰æ”¹å˜ä»»ä½•æ¢å¤æ¡†ï¼ŒC0/C2 çš„å¹³å‡æ ‡æ³¨ IoU å‡ä¸º 0.0000ã€‚è¯¥ç»“æžœä¿ç•™ä¸ºçœŸå®žè€¦åˆè¾¹ç•Œçš„è´Ÿè¯æ®ï¼Œä¸èƒ½è¡¨è¿°ä¸º tracking/grounding æå‡ï¼›ä¸‹ä¸€æ­¥éœ€è¦è®­ç»ƒ memory/projector ä¸Žç»“æž„åŒ– JEV å†³ç­–ã€‚è¯æ®ï¼š`docs/GROUNDJEV_COUPLED/PHASE_C_REAL_MULTIFRAME_REPLAY_STEP17000_20261021.{json,md}`ã€‚
-
-## 2026-10-21 â€” real G2 causal memory prefill and structured-output repair
-
-A real GPU7 Phase-C comparison loaded the protected G2 Clean adapter at step
-17000 and encoded MOT20-03 TRAIN frames 82 and 83 once each. The current-frame
-visual embedding was reused for memory-disabled, correct-previous-memory and
-shuffled-memory language prefills; each condition used one causal prefill and no
-independent VLM. The first attempt exposed a real dtype boundary failure: BF16
-embeddings reached a restored FP32 LoRA projection outside the formal G2
-autocast context. The smallest fix wrapped only the real G2 prefill in the same
-CUDA BF16 autocast boundary. The next attempt showed unconstrained greedy
-decoding could run past four coordinates without `<|box_end|>`; the runner now
-uses the official single-box structural termination rule, constraining only
-coordinate slots and emitting the boundary without synthesizing or reordering
-coordinates. The repaired C0/C2 outputs all yielded one complete legal pair;
-C0 and both C2 boxes were identical in this untrained-memory control. This is
-real prefill/parser evidence and a neutral result, not identity-conditioned
-grounding or tracking improvement. Evidence:
-`docs/GROUNDJEV_COUPLED/PHASE_C_REAL_MEMORY_PREFILL_STEP17000_20261021.{json,md}`.
-
-## 2026-10-21 â€” single-backbone native G2 context pilot at adapter step 17000
-
-Following the new GroundJEV single-backbone direction, I ran a bounded native
-G2 context readout pilot on physical GPU7 without touching the protected G2
-Clean two-rank run. The official GroundAnything DLM was restored with the
-step-17000 G2 adapter and encoded 16 MOT17-02-FRCNN TRAIN frames exactly once
-per frame (16 native DLM/bridge forwards). Eight frames were used for training
-and eight for a same-video temporal development split; the frozen G2 outputs
-and teacher-forced previous-frame GT-matched region tokens fed the typed
-GroundJEV readout. Eighty optimizer updates reduced identity accuracy from
-0.052419 to 0.750000 on the train prefix and from 0.032258 to 0.536290 on the
-temporal development split; admit accuracy changed from 0.653225 to 0.927419
-and 0.596774 to 0.915322. These are bounded learnability controls only: no
-HOTA/IDF1/IDSW, independent-video, or learned identity-conditioned box claim
-is made, and teacher-forced causal memory remains a limitation. Evidence:
-`docs/GROUNDJEV_COUPLED/PHASE_C_NATIVE_CONTEXT_PILOT_STEP17000_20261021.{json,md}`.
-
-## 2026-10-21 â€” G2 Clean checkpoint step 15000 audited on CPU
-
-The protected exact-once two-rank G2 run wrote and successfully reloaded `adapter-step015000.pt` and `latest_training_state.pt` on CPU with explicit `weights_only=False`. Both report step 15,000, world size 2, the registered Clean TRAIN manifest SHA, optimizer/scheduler/RNG state and the strict G2 format. The latest event is step 15002 with finite loss, gradient norm and memory; `final_receipt.json` is absent, so TAO/G1/held-out/three-task OneJev remain gated. This is checkpoint/recovery evidence only, not a metric claim. Evidence: `docs/GROUNDJEV/G2_CHECKPOINT_PROGRESS_20261021_STEP15000.{json,md}`.
-
-## 2026-10-21 â€” G2 Clean checkpoint step 14500 audited on CPU
-
-The protected exact-once two-rank G2 run wrote and successfully reloaded `adapter-step014500.pt` and `latest_training_state.pt` on CPU with explicit `weights_only=False`. Both report step 14,500, world size 2, the registered Clean TRAIN manifest SHA, optimizer/scheduler/RNG state and the strict G2 format. The latest event is step 14512 with finite loss, gradient norm and memory; `final_receipt.json` is absent, so TAO/G1/held-out/three-task OneJev remain gated. This is checkpoint/recovery evidence only, not a metric claim. Evidence: `docs/GROUNDJEV/G2_CHECKPOINT_PROGRESS_20261021_STEP14500.{json,md}`.
-
-## 2026-10-21 â€” post-G2 downstream preflight
-
-A read-only launch audit verified the registered TAO TRAIN eight-shard scope, runtime GroundAnything exporter/streamer, native OVMOT joiner, native three-task OneJev owner, G2 bundle owner, and G1 GPU5 owner. All required paths were present, the registered entrypoints compiled, and the wait owners were live. The formal G2 terminal receipt is still absent, so no TAO shard, optimizer, model service, or GPU was started. Evidence: `docs/GROUNDJEV/POST_G2_DOWNSTREAM_PREFLIGHT_20261021.{json,md}`.
-
-## 2026-10-21 â€” G2 Clean live progress at step 14331
-
-The protected two-rank G2 Clean run is still active on physical GPUs 3/5 and has a contiguous event stream through `14331/18,227`. The latest event at `2026-10-21 10:39:32 +0800` has finite loss `0.165262759198`, gradient norm `9.687554359436`, and peak event memory `12.828872 GiB`. The durable recovery pair remains `adapter-step014000.pt` and `latest_training_state.pt`; `final_receipt.json` and `adapter_projector_final.pt` are absent. Native TAO/OVMOT joining, three-task OneJev optimization, G1, and YesTrack still report zero optimizer updates under their dependency/resource gates. This is training-health evidence only and makes no coupled or tracking metric claim. Evidence: `docs/GROUNDJEV/G2_CHECKPOINT_PROGRESS_20261021_STEP14331.{json,md}`.
-
-## 2026-10-21 â€” YesTrack permission failure repaired; coupled optimizer still gated
-
-The first real YesTrack GPU7 owner reached its resource gate but failed before
-creating the training process with `PermissionError(13, 'Permission denied')`.
-The actionable cause was direct execution of the mode-0666 source wrapper
-`run_with_resources.py`; the queue now invokes that wrapper through the pinned
-OneJev Python environment. Compilation and the queue entrypoint check pass. The
-terminal failed queue is preserved, and a new retry owner is waiting under a
-separate queue root for GPU7 exclusivity because an unrelated `szgx` process
-currently occupies GPU7. No process was stopped and no YesTrack metric is
-claimed. The real G2/OneJev three-task coupled optimizer remains at zero updates
-until the protected G2 Clean terminal receipt exists. Evidence:
-`docs/GROUNDJEV/YESTRACK_PERMISSION_ROOT_CAUSE_20261021.{md,json}`.
-
-## 2026-10-21 â€” G2 step 16977 snapshot and YesTrack owner recovery
-
-The protected G2 Clean trainer remains live at step 16,977/18,227 on GPUs 3/5
-with finite loss and gradient norm; its terminal receipt and terminal adapter are
-still absent. The native TAO eight-shard owner, CPU OVMOT joiner, and native
-three-task OneJev owner remain live under their explicit gates, with zero joint
-optimizer updates. The GPU5 G1 owner is also waiting for the G2 terminal receipt.
-The repaired YesTrack retry owner had exited without a failure receipt, so it was
-resumed in a detached session and is now live at the GPU7 exclusivity gate. The
-unrelated GPU7 compute process remains untouched. Evidence:
-`docs/GROUNDJEV/STATUS_SNAPSHOT_20261021_STEP16977.{md,json}`.
-
-## 2026-10-21 â€” YesTrack entered real GPU training after permission repair
-
-The detached retry owner passed the GPU7 exclusivity gate and entered real
-native YesTrack LoRA training using the OneJev step-600 checkpoint. The 726-row
-train and 390-row validation manifests match their registered SHA-256 values;
-the run is scheduled for 273 optimizer steps and had reached step 10 with finite
-loss, slot accuracy and memory. This is training-start evidence only. The
-terminal adapter, frozen-base/fine-tuned validation and YesTrack metrics are
-still pending, and the formal three-task G2/OneJev optimizer remains at zero
-updates. Evidence:
-`docs/GROUNDJEV/YESTRACK_TRAINING_STARTED_20261021_STEP10.{md,json}`.
-
-## 2026-10-21 â€” YesTrack paused to restore coupling priority
-
-The latest direction is the GroundJEV single-backbone coupling experiment, so
-the auxiliary YesTrack verifier was stopped cleanly after real GPU training
-step 20/273 (160/2178 examples). Its partial log and queue state are preserved;
-no adapter, validation receipt or metric was promoted. GPU7 is kept available
-for the independent held-out gate after G2 terminal completion. G2, G0/G200/G1
-artifacts and the native three-task queue were not modified. Evidence:
-`docs/GROUNDJEV/YESTRACK_INTERRUPTED_FOR_COUPLING_PRIORITY_20261021.{md,json}`.
-
-## 2026-10-21 â€” G2 Clean step 17000 checkpoint audited on CPU
-
-The protected exact-once G2 run wrote adapter-step017000 and the full latest
-recovery state. Both load on CPU with explicit `weights_only=False`, report
-world size 2, the registered Clean TRAIN manifest SHA, strict training contract,
-optimizer/scheduler/sampler state and all Python/NumPy/Torch/CUDA RNG state.
-The live event stream is at step 17003/18227; the terminal receipt and terminal
-adapter remain absent, so G1, TAO, native OVMOT, joint OneJev and held-out gates
-remain closed. This is recovery evidence only. Evidence:
-`docs/GROUNDJEV/G2_CHECKPOINT_PROGRESS_20261021_STEP17000.{md,json}`.
-
-# LocateMOT Research Log
-
-Concise experimental log (latest first).
-
-## 2026-10-21 â€” dense-answer G2/JEV coupling completed and official decoder checked
-
-åœ¨å†»ç»“ G2 step17000 ä¸Šæ–°å¢žåˆæ³• dense-answer è€¦åˆè®­ç»ƒï¼šDanceTrack-0001/0016 å„ 3 å¸§ï¼Œæ¯ä¸ª row ä¿ç•™è¯¥å¸§å…¨éƒ¨ person boxesï¼ˆ7/6 ä¸ªï¼‰ï¼Œè®­ç»ƒ 2 ä¸ª transitionã€2 optimizer stepsï¼›åªè®­ç»ƒ `IdentityBoxStateTokenProjector`ã€JEV memory projector å’Œ typed readoutï¼Œå…± 4,077,327 å‚æ•°ï¼ŒG2 è§†è§‰æ¯å¸§ä¸€æ¬¡ã€‚Grounding teacher-forcing loss 3.83649â†’3.83393ï¼ŒJEV structured loss 4.11511â†’1.14514ã€‚éšåŽæŽ¥å…¥å®˜æ–¹ `DLMInferenceEngine`ï¼š0001 çš„è®­ç»ƒè½¬ç§» recall@0.5 ä»Ž C0=0.1429 åˆ° C2=0.2857ï¼ˆ1â†’2 å¯¹æ¯”ï¼‰ï¼Œä½† 0001 development 2â†’3 åŠ 0016 ä¸¤ä¸ªè½¬ç§» C2 è¾“å‡ºå‡ malformed/0ï¼›å› æ­¤è¿™æ˜¯å…±äº«ä¸»å¹²æŽ¥å£å’Œå°æ ·æœ¬å¯å­¦ä¹ æ€§è¯æ®ï¼Œä¸æ˜¯è·Ÿè¸ªå¢žç›Šæˆ–æ³›åŒ–ç»“è®ºã€‚MOT20 é«˜å¯†åº¦ dense teacher forcing æ›¾åœ¨ GPU7 çº¦ 63.8 GiB è¾¾åˆ° OOMï¼Œå·²ä¿ç•™å¤±è´¥è¾¹ç•Œå¹¶æ”¹ç”¨ä½Žå¯†åº¦åˆæ³• clip éªŒè¯ï¼Œæœªæ”¹ target-only åˆåŒã€‚è¯æ®ï¼š`docs/GROUNDJEV_COUPLED/PHASE_C_REAL_G2_DENSE_COUPLING_DANCE_STEP17000_20261021.md`ï¼Œä¸¤ä¸ª receipt ä½äºŽ `/data2/user/LocateMOT_GroundJEV/outputs/groundjev/coupled/phase_c_real_g2_dense_coupling_dance_step17000_v1/receipt.json` ä¸Ž `/data2/user/LocateMOT_GroundJEV/outputs/groundjev/coupled/phase_c_real_g2_official_dlm_dense_coupled_dance_step17000_v1/receipt.json`ã€‚
-
-## 2026-10-21 â€” official G2 DLM dense contract confirms one-box baseline before coupling
-
-ç”¨å†»ç»“ G2 step17000 åœ¨ GPU4 é€šè¿‡ GroundAnything å®˜æ–¹ `DLMInferenceEngine` çš„ `hierarchy_dynamic` è·¯å¾„é‡è·‘çœŸå®ž dense è§£ç ï¼›ç»“æž„åŒ–ç»ˆæ­¢å¼€å¯ä¸” `structured_max_coordinate_groups=0`ï¼Œæ²¡æœ‰å¼ºåˆ¶ single-boxã€‚MOT20-03/82ï¼ˆ96 ä¸ª TRAIN person boxesï¼‰å’Œ MOT20-05/13ï¼ˆ247 ä¸ªï¼‰å„ç¼–ç ä¸€æ¬¡ï¼Œå®˜æ–¹ parser å‡æ¢å¤ 1 ä¸ªåˆæ³•æ¡†ï¼Œä½† IoU0.5 å¬å›žå‡ä¸º 0ã€‚æ¨¡åž‹åœ¨ç¬¬ä¸€ä¸ª `<|box_end|>` ç»“æŸï¼Œè¯´æ˜Žå…ˆå‰ causal å•æ¡†çŽ°è±¡ä¹Ÿå­˜åœ¨äºŽå®˜æ–¹æ··åˆ DLM è·¯å¾„ï¼›è¿™ä¸æ˜¯è€¦åˆæ”¶ç›Šï¼Œä¹Ÿä¸æ˜¯ tracking æŒ‡æ ‡ã€‚ä¸‹ä¸€æ­¥æŠŠæŒä¹…èº«ä»½çŠ¶æ€æ’å…¥åŒä¸€å®˜æ–¹ DLM prompt/clean streamï¼Œå¹¶åœ¨å®Œæ•´ GroundAnything answer åˆåŒä¸‹è®­ç»ƒå’Œè¯„æµ‹ã€‚è¯æ®ï¼š`docs/GROUNDJEV_COUPLED/PHASE_C_REAL_G2_OFFICIAL_DLM_DENSE_STEP17000_20261021.md`ï¼Œreceipt ä½äºŽ `/data2/user/LocateMOT_GroundJEV/outputs/groundjev/coupled/phase_c_real_g2_official_dlm_dense_step17000_v1/receipt.json`ã€‚
-
-
-
-
-## 2026-10-21 â€” G2 Clean checkpoint step 14000 audited on CPU
-
-The protected exact-once two-rank G2 run wrote `adapter-step014000.pt` (SHA-256 `0cbf160b57a4feccb11a77f602cd8ebd39e79d93d79453cb78316a1d3ef6371e`) and `latest_training_state.pt` (SHA-256 `d7bbdfdecfeba789ff022d31800e1cd7d1fedb465e34e325ed738f33f66bae78`). Both load on CPU with explicit `weights_only=False`, report step 14,000, world size 2, exact-once contract, registered manifest SHA, optimizer/scheduler/RNG state and seed 20261019. The event stream is at step 14,021 with finite loss/gradient/memory; final receipt and terminal adapter remain absent, so dependent queues stay gated. This is checkpoint/recovery and training-health evidence only. Evidence: `docs/GROUNDJEV/G2_CHECKPOINT_PROGRESS_20261021_STEP14000.{json,md}`.
-
-## 2026-10-21 â€” G2 Clean checkpoint step 13500 audited on CPU
-
-The protected exact-once two-rank G2 run reached step `13,500/18,227` and wrote `adapter-step013500.pt` (SHA-256 `84a7e84a391d375cfeb3c74dea59bdb36f9a608fdf523132f0c6c9f6e1273c70`) plus `latest_training_state.pt` (SHA-256 `3a3a9a51d6f1e6b8f3e4a7d1ad399bd4864805c50dd0eab2eeb19c6def85626c`). Both were loaded successfully on CPU with explicit trusted-checkpoint `weights_only=False`; the initial PyTorch 2.6 default `weights_only=True` refusal was a validation-tool issue, not a checkpoint failure. Step, world size, exact-once contract and Clean TRAIN manifest SHA match. The final receipt and terminal adapter remain absent, so downstream gates stay closed. This is checkpoint/recovery evidence only, not a metric claim. Evidence: `docs/GROUNDJEV/G2_CHECKPOINT_PROGRESS_20261021_STEP13500.{json,md}`.
-
-## 2026-10-21 â€” G2 Clean live progress at step 13361
-
-The protected two-rank G2 Clean event stream advanced to `13,361/18,227` at `2026-10-21 07:35:07 +0800`. The latest loss (`0.2484929720`), gradient norm (`11.54479408`) and peak event memory (`12.828843 GiB`) are finite; the known parent PID remains live on GPUs 3/5. `final_receipt.json` and `adapter_projector_final.pt` are still absent, so G1, native TAO/OVMOT joining, three-task OneJev optimization and independent held-out evaluation remain gated. This is training-health evidence only and makes no G2 metric claim. Evidence: `docs/GROUNDJEV/G2_PROGRESS_LIVE_20261021_STEP13361.{json,md}`.
-
-## 2026-10-21 â€” G2 event-integrity audit through step 12650
-
-- Read the formal event log without altering the trainer. The completed audit
-  cutoff contained 12,650 unique, contiguous steps from 1 through 12,650,
-  with zero missing IDs and zero non-finite values across the recorded loss,
-  gradient, memory and learning-rate fields.
-- Twenty-six explicit checkpoint events were present through the durable
-  step-12500 checkpoint; `final_receipt.json` remained absent. The live log
-  then advanced to step 12651 with finite loss/gradient values.
-- Decision: preserve the current two-rank run and its recovery state. This is
-  numeric/resumability evidence, not a performance claim.
-- Evidence: `docs/GROUNDJEV/G2_EVENT_INTEGRITY_AUDIT_20261021_STEP12650.md`.
-
-## 2026-10-21 â€” downstream launch-gate audit
-
-- Read the five G2-dependent entrypoints and confirmed their exact terminal
-  contract: status `G2_EXACT_COVERAGE_TRAINING_COMPLETE`, step `18_227`, and
-  clean manifest SHA `f682519aâ€¦06e71`; the bundle exporter also requires the
-  terminal adapter file.
-- Confirmed YesTrack is intentionally independent of G2 training and remains
-  gated by real GPU7 exclusivity and its native split, so it cannot silently
-  fall back to a CPU mock.
-- No gate defect or premature launch was found. The static audit changed no
-  runtime state and no benchmark claim. Evidence:
-  `docs/GROUNDJEV/DOWNSTREAM_GATE_AUDIT_20261021.md`.
-
-## 2026-10-21 â€” GroundJEV G2 step-12642 progress snapshot
-
-- Evidence: the formal event log reached step `12642/18227` at
-  `2026-10-21 05:17:02 +08:00`, with finite loss `0.17345873918384314` and
-  finite gradient norm `10.642035484313965`.
-- Gate state: `final_receipt.json` is absent. G1, deployment bundle,
-  independent held-out, native TAO and YesTrack owners remain alive in their
-  registered waiting states; no downstream metric or optimizer update is
-  claimed.
-- Decision: continue protecting the two-rank G2 run on physical GPUs 3/5 and
-  preserve all checkpoints and historical G2-PL outputs.
-- Boundary: this is runtime evidence, not a MOT/RMOT/OVMOT performance result.
-  See `docs/GROUNDJEV/STATUS_SNAPSHOT_20261021_G2_STEP12642.md`.
-
-## 2026-10-21 â€” GroundJEV G2 step-12633 progress snapshot
-
-- Evidence: the formal event log advanced to step `12633/18227` at
-  `2026-10-21 05:15:19 +08:00`, with finite loss `0.28367656865157187`, finite
-  gradient norm `10.239775657653809`, and peak memory `12.8289 GiB`.
-- Gate state: `final_receipt.json` is still absent. G1, deployment bundle,
-  independent held-out, native TAO and YesTrack owners remain alive but in
-  their registered waiting states; no downstream optimizer update or metric is
-  claimed.
-- Decision: continue protecting the two-rank G2 run on physical GPUs 3/5 and
-  preserve all checkpoints and historical G2-PL results.
-- Boundary: this is runtime evidence, not a MOT/RMOT/OVMOT performance result.
-  See `docs/GROUNDJEV/STATUS_SNAPSHOT_20261021_G2_STEP12633.md`.
-
-## 2026-10-21 â€” GroundJEV G2 step-12613 progress snapshot
-
-- Hypothesis/contract: preserve the formal two-rank G2 Clean run and open all
-  dependent G1, deployment-bundle, held-out, native-TAO and YesTrack gates only
-  after the exact terminal receipt.
-- Evidence: the authoritative event log reached step `12613/18227` with
-  finite loss `0.2061017351`; `adapter-step012500.pt` and
-  `latest_training_state.pt` are present, while `final_receipt.json` is absent.
-- Decision: retain the live run and all waiting owners. No downstream optimizer,
-  evaluation, label promotion, or historical G2-PL overwrite was performed.
-- Boundary: this is a runtime progress record, not a MOT/RMOT/OVMOT metric or
-  a claim that the final G2 detector exists. See
-  `docs/GROUNDJEV/STATUS_SNAPSHOT_20261021_G2_STEP12613.md`.
-
-## 2026-10-01 â€” latest R1 restoration completed
-
-- Hypothesis: restore only the newest R1 execution boundary and its legal
-  public-data/runtime inputs on `/data2/user/LocateMOT`; do not pretend that
-  unavailable L69/L89E/R1 payloads were reproduced.
-- Restored: official KITTI training images, Refer-KITTI V1, Refer-KITTI V2,
-  MMDetection 3.3.0/GroundingDINO, BERT, and the direct R1 source dependency
-  modules. V1 audit is complete. V2 has 157 legal expression-frame target
-  references (11 repeated physical video/frame/ID pairs) pointing to IDs
-  absent from corrected labels; missing frames are zero, and the anomaly is
-  retained for the next adapter instead of silently filtered. The new public
-  query manifest records every affected row.
-- Runtime evidence: GroundingDINO loads the SHA-verified official checkpoint
-  with 172,977,693 frozen parameters; one real KITTI frame/expression GPU
-  inference returned 300 finite candidate boxes and finite scores. R1 imports
-  and compile checks pass after path migration. The safe source loader also
-  reads all 8,397 legal V1/V2 expression records from the restored
-  per-expression layout without opening official-evaluation videos.
-- Failure/limit: historical R1 checkpoints, L69 bank, dense indexes,
-  language/visual/aligned caches and fixed manifest are unavailable. No old
-  HOTA or score is claimed as reproduced; the old R1 sidecar is not extended
-  with threshold/layer/learning-rate sweeps.
-- Next action: construct a new legal public-data manifest/index and then a
-  freshly generated candidate bank before any new correspondence training.
-  The manifest is now complete. A 40-row midpoint-frame GroundingDINO probe
-  found mean best IoU `.3188`, IoU@.25 `.6585`, IoU@.50 `.1463`, and mean best
-  score `.0107` over 123 target boxes; the frame-zero attempt is preserved as
-  a separate artifact. This supports a new bank audit but is not an RMOT
-  score. Official-evaluation videos remain unread.
-
-## 2026-08-19 Stage L11 â€” OVMOT temporal pseudo-track + KITTI front-end
-
-- Hypothesis: unmatched DLA detections on expanded TAO-train OVMOT
-  stream must receive high-precision temporal pseudo-track supervision
-  instead of "every detection is NEW"; KITTI RMOT DetPr ~1% is a
-  candidate front-end problem, fixable with category whitelist + NMS +
-  query-conditioned CLIP top-k.
-- Implementation:
-  - Pseudo-track generator (forward + backward cycle consistency,
-    appearance/motion/category filters, confidence gating) for all 500
-    TAO train videos; sidecars in `outputs/l11/data/pseudo_tracks`.
-  - Class-A GT upgraded from C-TAO base @0.5 IoU to base_and_novel
-    @0.3 IoU (~10% -> ~28% coverage).
-  - Trainer: no_unmatched_new, confidence-weighted identity/relevance
-    losses, pseudo ids in the same slot/lifecycle machinery.
-  - KITTI: whitelist + cross-NMS + top-30 -> ~15.3 cands/frame (was 50);
-    CLIP top-12 calibration: query precision 10.2%, target recall 65%.
-- Quality: pseudo same-ID precision 99.26% (8-video audit, target 90%);
-  cycle pass 0.997; NEW rate 0.110 vs L10 collapse ~1.0.
-- Running: 4-GPU repair training (from L9-ovmot, ~6-8 s/step),
-  repaired-KITTI eval (L9-ovmot ckpt), 10-video OVMOT over-birth
-  baseline: unique/rows 0.211 (L9), reused IDs 467.
-- Pending: step-7000 OVMOT quick eval, full TAO TETA, KITTI TrackEval,
-  L12 prompt seeding.
-
-## 2026-08-20 continued
-
-- Low-LR continuation (10000->11000, LR~6e-6): RMOT-Dance 32.49 ->
-  34.05 HOTA; ordinary Macro 0.4855 -> 0.4924.  OVMOT full TETA on
-  s11k running.
-- Fresh-optimizer balance run (p_rmot 0.45/p_ovmot 0.20) REJECTED at
-  step 1000 (RMOT 32.06 / ordinary 0.4663).
-- L12 frozen prompt-seeded (DAVIS 2017, 10 multi-object videos):
-  mask/point > box for identity robustness; joint fine-tune not
-  launched (mixed signal).  Infrastructure complete.
-
-## 2026-09-04 Stage L88 â€” RMOT-aware GroundingDINO LoRA adaptation
-
-- Hypothesis: a zero-initialized rank-16/alpha-32 LoRA on the final two
-  GroundingDINO fusion layers and decoder layer 0, with the frozen L86/L87
-  sidecar and causal history, would improve held-out target-bag and
-  expression-to-candidate correspondence without changing the L69 bank.
-- Contract: label-free, distributed, and temporal regressions passed; full
-  V1/V2 fit used seed `20260829`, 40 epochs, 2,640 optimizer steps, world 4,
-  effective group batch 8, and 20 even checkpoints. Local MMCV required FP32
-  rather than the registered BF16 autocast. Candidate deletion/truncation was
-  false and all frozen-base/LoRA gradient and reload checks passed.
-- Dev: all 20 checkpoints were scored on 138 video-disjoint groups; the fixed
-  selection chose epoch20/Rule B before fixed validation. Checkpoint SHA is
-  `7012706140cfa94278ce15bb8da3e2318eb3efcfb8d26d3b1dbc5206f1145538`.
-- Fixed semantic validation: immutable L29 was
-  `recall=.7333333, precision=.0830189, FP/frame=10.125,
-  pred/positive=8.8333, hard=.9166667, multi=.8194444`. L88 candidate-only
-  was `recall=.4193548, precision=.1830986, FP/frame=2.4167,
-  pred/positive=2.2903, hard=.8461538, multi=.3333333`; final Rule B was
-  `recall=.1935484, precision=.1363636, FP/frame=1.5833,
-  pred/positive=1.4194, hard=.8461538, multi=.1666667`, with empty rate
-  `.5416667` and inactive false acceptance `.5`. The semantic gate failed on
-  recall and multi-positive preservation; the lower volume is not a fix.
-- Internal TrackEval: selected Rule B produced HOTA `26.0914` (V1) and
-  `20.2386` (V2), below L86 `29.1663/21.6467` and L87-A
-  `28.5752/22.1300`. No screening or official-test labels were read.
-- Preserved failures/fixes: first formal causal-key drift, sparse seqinfo,
-  merge, device, and score-shape retries remain in new directories with their
-  provenance; no old bank/checkpoint/production entrypoint was overwritten.
-- Status: `STOPPED_PENDING_SUPERVISOR_REVIEW`; no L88 long continuation,
-  screening, official test, TrackEval beyond internal validation, or
-  ordinary MOT/OVMOT change is authorized. Unique next action is supervisor
-  review of one new RMOT correspondence/proposal design.
-
-## 2026-09-05 Stage L88C â€” corrected candidate-vs-NULL replay
-
-- Hypothesis: the prior L88 semantic failure may include an implementation
-  error in the candidate-vs-NULL gate. Corrected emission is
-  `candidate_energy >= candidate_threshold` AND
-  `candidate_energy-null_logit >= null_margin` AND
-  `presence_logit >= presence_threshold`; candidate-only uses only the first
-  condition. No training, backward, optimizer, checkpoint update, bank
-  change, top-k/NMS or NULL suppression was performed.
-- Implementation: refit all 20 even checkpoints on the registered B/R/P
-  grids, replayed the corrected shortlist (epochs 8/20/40/30/4) over complete
-  V1/V2 dev video, ran the corrected internal TrackEval matrix, froze epoch
-  30 Rule B before fixed validation, and ran the fixed 16-calibration/
-  24-validation replay. A first TrackEval provenance alias failure was
-  preserved; the minimal `scope_key/full_video` alias fix was pushed in
-  `c5a6685` and the corrected matrix is attempt2.
-- Result: L88C corrected final on validation was
-  `recall=.354839, precision=.207547, FP/frame=1.75,
-  pred/positive=1.7097, hard=.846154, multi=.305556,
-  empty=.375, inactive-FA=.666667`. Immutable L29 remains
-  `.733333/.083019/10.125/8.8333/.916667/.819444` for
-  recall/precision/FP/pred-positive/hard/multi. Candidate-only recall was
-  `.419355`; the corrected NULL comparison removed additional positives.
-- Internal dev TrackEval for the frozen epoch30/Rule B was V1
-  HOTA/DetA/AssA `.296615/.216472/.408302` and V2
-  `.265682/.156622/.451938`; these are dev-only, not screening or official
-  results. The semantic gate failed on recall and multi-positive recall.
-- Root cause: existing candidate scores have useful average pairwise ranking,
-  but the lowest-scoring positives in multi-target bags do not survive the
-  fixed emission boundary; V2 is worse. This is a correspondence and
-  multi-positive recall failure, not a universal NULL-acceptance,
-  coverage, finite/reload, or implementation-smoke failure.
-- Preserved outputs: corrected replay, two TrackEval attempts, frozen
-  selection, fixed semantic JSON/gate, and offline Aâ€“I diagnosis under
-  `outputs/l88c/`. Code was pushed to branch
-  `codex/l88c-candidate-null-corrected-replay-20260905` at `e8f5f62`.
-- Status: `STOPPED_PENDING_SUPERVISOR_REVIEW`. No screening/official-test
-  labels, HOTA claim beyond internal dev TrackEval, ordinary MOT/OVMOT/TAO
-  change, or new L88C training was run. The only next action is the single
-  supervisor approval request in `reports/l88c/NEXT_TEST_APPROVAL_REQUEST.md`.
-
-## 2026-09-06 â€” L88C recoverable storage cleanup
-
-- While the authorized zero-training L88C final-internal replay was running,
-  its open paths were checked. Three superseded L1 intermediate LoRA
-  checkpoint directories (`outputs/l1_c/checkpoints/lora/checkpoint-100/200/300`,
-  about 8.0G each) were not open by any process and were moved, not deleted,
-  to `/data2/usr_for_deadline/locatemot_cleanup_20260906/`.
-- Frozen banks, formal reports, current L88 epoch30 checkpoint/cache, and all
-  ordinary MOT/OVMOT assets were left in place. `/data1` free space increased
-  from about 76G to 114G. The recoverable inventory is documented in
-  `reports/l88c/L88C_RESOURCE_CLEANUP_20260906.md`.
-
-## 2026-09-07 Stage L89 â€” query-conditioned set correspondence decoder
-
-- Hypothesis: a fresh QSC-D head over the frozen L84/L87-A Z1 candidate states,
-  with candidate self-attention followed by cross-attention to pure frozen
-  GroundingDINO/BERT language tokens, could improve same-frame correspondence
-  without changing the bank, detector, tracker, or ordinary MOT/OVMOT.
-- Implementation: isolated worktree at
-  `/data1/LWR/vranlee/SERVER_ONLY/avis/LocateMOT_L89`, base
-  `ece9fc5549a9210424eb127fb10430c3fed7b7ba`; two set layers, eight heads,
-  FFN 1024, hidden 256, history 8, 4,169,829 trainable parameters. Pure
-  language cache has 3,418 label-free entries. Contract smoke passed after
-  preserving two package/field failures. No token/span or static/motion
-  supervision is verified (`UNALIGNED`).
-- Fit: seed `20260829`, one GPU, BF16, 40 epochs/2,640 optimizer steps,
-  finite loss and nonzero gradients, all 20 even checkpoints plus final.
-  Only L49 fit supervision was used; no screening or official-test labels.
-- Dev/selection: 20 checkpoints scored over 138 legal dev groups; five-item
-  shortlist and full-video B/R/P matrix selected epoch 4, Rule R before fixed
-  validation. Checkpoint SHA is
-  `5ab3cb344b73b320b34de7b4bb41622ce665ecb17c4d90c1999640a318e69aa8`.
-- Fixed semantic: authoritative retry4 failed. L29 was
-  `recall=.7333333, precision=.0830189, FP/frame=10.125,
-  pred/positive=8.8333, hard=.9166667, multi=.8194444`; L89 was
-  `recall=.8709677, precision=.0794118, FP/frame=13.0417,
-  pred/positive=10.9677, hard=.6923077, multi=.9027778`, with inactive
-  false acceptance `1.0`. Hard-negative ranking moved, but deployable volume,
-  precision, and no-match behavior failed.
-- Internal TrackEval: frozen epoch4/Rule R on V1 validation (86 sequences)
-  gave HOTA `2.2906`, V2 validation (537 sequences) HOTA `0.5894`, versus
-  L87-A `28.5752/22.1300`. Full-video post-hoc target-row recall was only
-  `.0131/.0026` and inactive acceptance was `1.0`. This is internal
-  validation TrackEval evidence, not screening or official-test evidence.
-- Root cause judgment: query-conditioned set representation gave limited
-  frame-level ranking signal but failed calibrated persistent emission and
-  absence handling. The branch is stopped pending supervisor review; no L89
-  continuation, screening, official test, or ordinary MOT/OVMOT change is
-  authorized. All L89 outputs are preserved under `outputs/l89/` and the new
-  source/reports are on branch `codex/l89-query-conditioned-set-correspondence-20260907`.
-
-## 2026-09-08 Stage L89C â€” corrected candidate-vs-NULL replay
-
-- Hypothesis/repair: L89 training and the registered loss use `candidate_energy`
-  against `null_logit`, but the old L89 evaluation/deployment path emitted
-  using `presence_logit - null_logit`. L89C changed only the evaluation,
-  selection, inference, and TrackEval contract to the shared
-  `corrected_emission_mask`: candidate threshold, candidate-minus-NULL margin,
-  and presence threshold. No training, scorer forward, bank/cache rebuild, or
-  model/ordinary-MOT change was made.
-- Inputs/selection: immutable L89 raw dev records (9,960; SHA recorded in
-  `outputs/l89c/dev/corrected_shortlist_attempt1/`), 20 existing checkpoints,
-  and the fixed manifest SHA
-  `06da458b09aa3e61ce30a4f8b58a85ac31ef1a5a10d269abd64ae41cffd127fa`.
-  Corrected dev TrackEval evaluated 5 checkpoints Ã— B/R/P (15 results), then
-  froze epoch 2 / Rule R, checkpoint SHA
-  `f8b175597ece8aad1f0ec3ae9d05c70e0759a0f7480dff9af6ea2619a2e3f08b`, with
-  candidate/presence/NULL thresholds `-0.75/-1.0/0.0` before fixed validation.
-- Fixed semantic evidence: authoritative retry2 has 40 ordered records (16
-  calibration, 24 validation), with preselection forbidden-label fields
-  absent. Validation is recall `.8387097`, precision `.0869565`, FP/frame
-  `11.375`, predictions/positive `9.6452`, hard violation `.6923077`,
-  multi-positive recall `.8333333`, inactive false acceptance `1.0`.
-  The gate is `semantic_gate_fail`: hard/recall/precision/multi floors pass,
-  but volume and inactive/no-match conditions fail.
-- Internal evidence: frozen epoch-2/Rule-R full-video inference covered V1
-  `0004,0018` (86 sequences) and V2 `0016,0017,0020` (537 sequences).
-  Corrected TrackEval HOTA is V1 `2.244718%`, V2 `0.583059%`; no screening or
-  official-test labels were read. These are internal validation-scope metrics,
-  not a final RMOT result. Historical buggy L89 was `2.2906%/0.5894%` and
-  L87-A was `28.5752%/22.1300%` on V1/V2.
-- First actionable root cause: corrected candidate-vs-NULL accounting still
-  leaves no-match acceptance universal and output volume too high. All rows,
-  keys, finite checks, and frozen boundaries passed; the initial GPU OOM is
-  preserved as an implementation/resource attempt and the exact CPU retry
-  completed. Unique next action: supervisor review and authorization of one
-  new RMOT branch explicitly addressing absence/volume calibration with
-  candidate correspondence. Do not extend L89/L89C or tune thresholds.
-- Status: `STOPPED_PENDING_SUPERVISOR_REVIEW`; `zero_training=true`,
-  `screening_gt_used=false`, `official_test_labels_read=false`,
-  `ordinary_mot_ovmot_touched=false`.
-
-## 2026-09-08 Stage L89D â€” true full-video timeline repair
-
-- Hypothesis/scope: repair only the L89C sparse-prediction versus dense-GT
-  timeline mismatch. No training, model, loss, bank, tracker, threshold, or
-  ordinary MOT/OVMOT change was made. New code is confined to `tools/l89d_*`
-  and new evidence is under `reports/l89d/` and `outputs/l89d/`.
-- Contract repair: native L69 `frame_ids` and frame pointers now drive every
-  video timeline; all query/frame pairs and all candidate rows are scored.
-  The multi-video query-map overwrite was fixed and covered by a targeted
-  regression. Dev inference attempt3 covers 1,152,690/1,152,690 candidate
-  pairs across 2,385 frame groups; internal attempt1 covers
-  243,550/243,550 pairs across 1,844 frame groups. Both passed full-video and
-  pair-completeness checks. The dev and internal dense Z1 supplements were
-  built from frozen query-independent caches and finalized with no labels.
-- Dev evidence: the valid 5-checkpoint Ã— B/R/P TrackEval matrix selected
-  epoch 8 / Rule P on the preregistered dev tuple. The frozen checkpoint is
-  `/data1/LWR/vranlee/SERVER_ONLY/avis/LocateMOT_L89/outputs/l89/train/joint40/checkpoint_l89_epoch008.pt`,
-  SHA256 `28d4c35a189474d446a26fc096bbafbad77e1298429674383ce7ce8b14677d99`.
-  The fixed 16-calibration/24-validation semantic replay then failed: recall
-  `.5483871`, precision `.1517857`, FP/frame `3.9583333`,
-  predictions/positive `3.6129032`, hard violation `.6923077`,
-  multi-positive recall `.4861111`, inactive false acceptance `.6666667`.
-  Recall and multi-positive floors failed; no screening/test labels were read.
-- Internal evidence: fixed epoch 8 / Rule P true full-video TrackEval gives
-  combined HOTA `23.8586078862%`, DetA `15.1294290119%`, AssA
-  `37.9461647913%`, DetRe `57.2559333985%`, DetPr `16.9954368707%`, IDF1
-  `18.6931722536%`, and IDSW `6337.5`; V1 HOTA `25.0798607896%`, V2 HOTA
-  `22.6373549828%`. These are internal validation-scope TrackEval results,
-  not screening, official-test, or final ordinary-RMOT evidence.
-- Attempts preserved: dev ENOSPC, internal exit-137/OOM retries, the expected
-  smoke full-video rejection, the selector directory-argument error, and the
-  earlier multi-video GT-map mismatch. The final boundary guard passed after
-  the path contract correction. The fixed manifest SHA remained
-  `06da458b09aa3e61ce30a4f8b58a85ac31ef1a5a10d269abd64ae41cffd127fa`.
-- Status: `L89D_COMPLETE_ZERO_TRAINING_TRUE_FULLVIDEO_REPAIR /
-  semantic_gate_fail / STOPPED_PENDING_SUPERVISOR_REVIEW`.
-  Flags: `zero_training=true`, `screening_gt_used=false`,
-  `official_test_labels_read=false`, `ordinary_mot_ovmot_touched=false`.
-  Unique next action: supervisor review and authorization of one separate
-  absence/volume-calibration study; do not extend L89/L89C or alter the
-  production MOT/OVMOT paths.
-
-## 2026-09-09 Stage L89E â€” phase-consistent temporal/history replay
-
-- Hypothesis/scope: L89D evaluated every checkpoint with temporal history
-  enabled even though L89 training used Stage-S epochs 1â€“8 with temporal off
-  and zero history. L89E changed only this replay contract: S epochs 2/4/6/8
-  use `temporal_enabled=false` and zero history; T epochs 10â€“20 and J epochs
-  22â€“40 use causal last-four history. No training, model, loss, bank, tracker,
-  threshold science, UIDM, ordinary MOT or OVMOT source was changed.
-- Implementation: isolated branch/worktree based on L89D commit
-  `d0960e1d1679414765f79203bef444f0f9968928`; phase policy and wrappers are
-  in `tools/l89e_*`. The required CPU equality check passed for S and T
-  `L86ClipStore` history construction. The first replay failure was a
-  `FrameExample`/`_clip_history` interface mismatch; the minimal adapter fix
-  passed a targeted S/T causality regression. A subsequent historical-score
-  merge check found that the immutable sparse file contains S+T/J rows; the
-  wrapper now filters only the historical T/J epochs and preserves their
-  values. Launch-path and shortlist argument mistakes were preserved as
-  `INCOMPLETE`/operator evidence; no affected model run was treated as data.
-- Stage-S evidence: fresh phase-correct replay of epochs 2/4/6/8 completed
-  `4 x 498 = 1,992` records, all finite, complete and zero-history. Merged
-  phase-consistent fit/dev pool contains 20 epochs and 9,960 records. The
-  registered maximum-five fit/dev shortlist was frozen at epochs
-  `8(S),20(T),40(J),32(J),4(S)`.
-- Dev selection: full native dev replay retained `11,003,527/11,003,527`
-  candidate rows for all five shortlist candidates. The 15-result TrackEval
-  matrix selected epoch 4 / phase S / Rule B by the registered tuple; dev
-  HOTA was `0.296512` (internal fit/dev selection evidence only).
-- Fixed semantic evidence: the new 16-calibration/24-validation replay used
-  the frozen epoch-4/S zero-history policy and Rule B. Immutable L29 remains
-  recall/precision/FP-frame/pred-positive/hard/multi
-  `.7333333/.0830189/10.125/8.8333/.9166667/.8194444`. L89E validation is
-  recall/precision/FP-frame/pred-positive/hard/multi
-  `.4516129/.1458333/3.4166667/3.0967742/.7692308/.3611111`, with inactive
-  false acceptance `.8333333` and empty rate `.2083333`. The semantic gate
-  fails recall and multi-positive floors despite lower volume and higher
-  precision; no threshold rescue was performed.
-- Internal TrackEval: after the frozen selection, exact internal timeline
-  replay covered `243,550/243,550` pairs for V1 0004/0018 and V2 0016/0017/0020.
-  Phase-consistent HOTA/DetA/AssA/DetRe/DetPr were V1
-  `28.7628/18.7680/44.3927/80.3045/19.5312%` and V2
-  `21.8385/13.3358/35.9990/45.1160/15.8179%`; IDSW was 1,997 and 9,915.
-  These are internal validation-scope TrackEval results, not screening or
-  official-test results.
-- Root cause: correcting S-phase temporal/history evaluation does not
-  restore expression correspondence; the fixed emission remains recall- and
-  multi-positive-limited, with substantial inactive acceptance. Status is
-  `L89E_COMPLETE_ZERO_TRAINING_PHASE_CONSISTENT_REPLAY /
-  semantic_gate_fail / STOPPED_PENDING_SUPERVISOR_REVIEW`.
-- Preserved outputs: Stage-S attempts 1â€“4, merge attempts 1â€“2, shortlist
-  attempts 1â€“4, dev/internal full-video and TrackEval outputs, fixed semantic
-  output, and all reports under `reports/l89e/` and `outputs/l89e/`. The fixed
-  manifest SHA remains
-  `06da458b09aa3e61ce30a4f8b58a85ac31ef1a5a10d269abd64ae41cffd127fa`.
-  Flags remain `zero_training=true`, `screening_gt_used=false`,
-  `official_test_labels_read=false`, `ordinary_mot_ovmot_touched=false`.
-- The only next action is supervisor review of a separately authorized
-  absence/volume-calibration study. Do not extend L89/L89C/L89E, alter the
-  bank, or touch production MOT/OVMOT.
-
-## R0A â€” safe target contract, dense native indexes, and implementation smoke â€” 2026-09-09
-
-- Hypothesis: isolate only allowlisted V1/V2 target records, repair the
-  frame-specific target contract, and construct native-frame R0 data without
-  parsing forbidden official-eval payloads.
-- Safe-source retry3 passed: lexical monolithic-JSON isolation deserialized
-  only allowlisted video values and recorded
-  `forbidden_payload_deserialized=false` and
-  `official_test_labels_read=false`.  The exact 5,314 sparse fit rows matched
-  the authoritative frame map with zero sentence/target/missing-query/invalid-
-  frame mismatches.
-- Dense native-frame index retry2 and its contract audit passed for V1/V2;
-  all L69 rows and duplicate candidate indices were retained.  The geometry
-  `image_hw` and visual-cache dataset/group-key contracts were corrected in
-  R0-only files.  Retry1 dense/smoke failures remain preserved with their
-  first trace; retry2 is authoritative.
-- Real R0 contract smoke retry2 passed on one V1 fit frame: loss
-  `3.555824041366577`, 108/108 finite nonzero trainable gradients, frozen
-  GroundingDINO, no tracker optimizer parameters, strict reload max diff `0`,
-  and temporary visual item removed.  This is implementation evidence only;
-  no semantic, screening, official-test, HOTA, or production MOT/OVMOT result.
-- Next action: commit/freeze the R0A safe code and construct the registered
-  query-independent visual cache on `/data2`; no old asset or production
-  entrypoint is modified.
-
-## R0B â€” grouped DDP driver repair and formal legal evidence â€” 2026-09-09
-
-- Hypothesis: the old Q1 query-at-a-time driver was the actionable R0 training
-  contract bottleneck. A frame-centric grouped driver with complete candidate
-  sets, Q=8, deterministic strata, and DDP accumulation should make the
-  registered R0 experiment executable without changing the frozen bank,
-  tracker, detector, or ordinary MOT/OVMOT.
-- Preserved/disqualified Q1: PID 39571 was stopped gracefully; the old partial
-  `outputs/r0/train/v1_formal_retry1/` remains historical and is not
-  selection-eligible.
-- Repairs: grouped Q8 schedule, video-local tiles, world4 DDP, accumulation 4,
-  frozen detector/language inputs, complete candidate rows, present-uncovered
-  masking, and resumable `locatemot-r0-tcgh-checkpoint-v2`. The legal GT
-  materialization gap was repaired only in the R0 wrapper by recording and
-  skipping missing annotation rows; frozen GT was not edited.
-- Formal training: V1 completed 12 epochs/3,058 optimizer steps and V2
-  completed 12 epochs/3,046 steps. Both were finite with nonzero gradients,
-  strict reload, all four strata and both domains. Checkpoints 2/4/6/8/10/12
-  are retained. Formal jobs used the free physical GPUs 4â€“7; physical GPUs
-  0â€“3, which had unrelated processes, were not touched.
-- Legal dev selection: V1 shortlist epochs 12/6 and V2 12/10; full dev
-  TrackEval selected epoch12 for both. Dev HOTA was V1 22.8681% and V2
-  19.5801% for the selected checkpoints.
-- Internal validation-scope TrackEval: V1 0004/0018 HOTA 26.4582%, V2
-  0016/0017/0020 HOTA 15.6097%. These are not screening or official-test
-  results. No screening/official labels were read, and ordinary MOT/OVMOT,
-  UIDM, L69 and production entrypoints were untouched.
-- Outputs: training remains under `outputs/r0/`; large dev/inference/TrackEval
-  products are under `/data2/usr_for_deadline/locatemot_r0b_*` because `/data1`
-  was nearly full. No raw/dense debug cache or detector copy was created.
-- Status: `STOPPED_PENDING_SUPERVISOR_REVIEW`. This is valid grouped R0
-  implementation plus legal dev/internal TrackEval evidence, not final
-  ordinary-RMOT completion. The only next action is supervisor review and a
-  separately authorized follow-up.
-
-## R1 â€” aligned track conditioning legal-dev contract â€” 2026-09-10
-
-- Hypothesis/scope: test a zero-initialized RMOT-only residual conditioned on
-  aligned frozen L89E Stage-S Z0/Z1/Z4 states and causal observation history;
-  the anchor, L69 bank, ordinary MOT/OVMOT, UIDM and all production paths stay
-  frozen. This is not final RMOT completion.
-- Read-only legal-dev audit: frozen epoch-004 Rule-B anchor selection was
-  rechecked. The epoch-004 presence-only miss is `3/400=.0075`, below the
-  preregistered `.05` activation threshold, so the formal R1 config freezes
-  `presence_residual=false`. Existing full-video artifacts have no candidate
-  score arrays for a valid EXACT_INDEX_DEDUP replay; the conservative RAW
-  policy is therefore frozen without claiming a dedup comparison.
-- Preserved evidence: `outputs/r1/audit/legal_dev_selection_attempt1/` and
-  `reports/r1/R1_LEGAL_DEV_SELECTION.md`; no training or new checkpoint was
-  created by the audit. The next action is the bounded wiring/reload smoke;
-  formal fit remains conditional on that implementation gate.
-
-## R1 â€” formal fit and legal-development replay â€” 2026-09-12
-
-- Hypothesis/scope: a zero-initialized aligned track-conditioning residual
-  over frozen L89E stage states, causal observation history, language-directed
-  R0 detail and complete L69 candidate sets could improve expression-to-track
-  correspondence without changing the anchor, bank, tracker or ordinary
-  MOT/OVMOT paths.
-- Formal fit completed in isolated worktree
-  `/data1/LWR/vranlee/SERVER_ONLY/avis/LocateMOT_R1`: six epochs, 2,250
-  optimizer steps, all finite with nonzero gradients, strict reload for eight
-  V1/V2 checkpoints, frozen anchor, and no persistent raw/dense debug cache.
-- Prediction-only replays for legal-dev V1 videos `0008/0010/0020` and V2
-  videos `0000/0008/0009` completed before legal GT was opened. The aggregate
-  contains 2,385 groups and eight internal TrackEval results. Registered
-  selection chose epoch 4 separately for V1 and V2. Selected HOTA was
-  `24.2345%` (V1) and `23.6542%` (V2), versus the L89E anchor's `28.7628%`
-  and `21.8385%`; this is not a stable breakthrough and remains legal-dev
-  evidence only.
-- Fixed 16-calibration/24-validation diagnostic retained all 2,435 L69 rows
-  and 40 keys. R1 candidate-only recall/precision/FP-frame/pred-positive/
-  hard/multi were `0.1000/0.1842/0.7750/0.5429/0.7727/0.1818`; the frozen
-  Rule-B replay emitted zero rows for both anchor and R1 on this slice. The
-  lower volume is a recall/multi-positive collapse, not a semantic repair;
-  no threshold or NULL rescue was attempted.
-- Status: `R1_NO_BREAKTHROUGH / STOPPED_PENDING_SUPERVISOR_REVIEW`.
-  Outputs and failed technical attempts are preserved under `outputs/r1/`
-  and `reports/r1/`. Flags remain
-  `screening_gt_used=false`, `official_test_labels_read=false`, and
-  `ordinary_mot_ovmot_touched=false`. The only next action is supervisor
-  review and explicit authorization of one separate follow-up; no automatic
-  continuation, screening, official test, or production merge is allowed.
-
-## R1 â€” fixed semantic diagnostic closeout â€” 2026-09-12
-
-- The fixed-slice evaluator used the native L62 order and attached labels only
-  after row/feature construction and scoring. It used the frozen Rule-B values
-  `candidate_threshold=1.0`, `presence_threshold=0.5`, `null_margin=0.0` and
-  did not fit or tune a new threshold.
-- This is a diagnostic, not a preregistered semantic gate and not HOTA. The
-  authoritative files are in `outputs/r1/eval/fixed_semantic_attempt1/`; the
-  corresponding report is `reports/r1/R1_FIXED_SEMANTIC_DIAGNOSTIC.md`.
-# 2026-10-01 â€” new-server restoration started
-
-- Hypothesis: restoring public V1/V2 data and exact base inference dependencies enables a new, attributable correspondence experiment; extending the failed R1 sidecar is unjustified.
-- Evidence: fetched all remote branches; latest remains R1 `99090c8`. Read chronological historical endings and R1 reports: V1 legal-dev regression, limited V2 gain, fixed-slice score mismatch/output collapse. Old trained checkpoints are unavailable.
-- Changes: started resumable official KITTI S3 **direct** download (15,813,146,295 bytes); downloaded and CRC-validated V1 expression/labels archives; isolated local data-tools environment. Full inventory/short plan: `reports/RESTORE_STATUS_20261001.md`.
-- Failure/repair: shell sandbox lacks bubblewrap; execution requires tool escalation. Standard venv lacks ensurepip; local virtualenv bootstrap succeeded. Neither is a scientific result.
-- Results: public V1 annotations recovered; KITTI/V2/runtime/project-generated assets pending. No historical checkpoint/bank reproduction claimed. Keep recovery scripts and new provenance; preserve migration AGENTS.md edit.
-
-## LocateMOT-U U0 â€” unified specification and reference audit â€” 2026-10-01
-
-- Hypothesis: a single specification-conditioned foundation can absorb the
-  reusable persistent-query, temporal-language, open-vocabulary and reliability
-  ideas from the ten requested repositories, provided the legal video boundary
-  and one-checkpoint/shared-state contract are frozen before training.
-- Code: cloned and shallow-audited MOTR, TransRMOT, TempRMOT, DKGTrack,
-  FlexHook, iKUN, OVTR, COVTrack, ReferDINO and Open-GroundingDino; created
-  `UnifiedSpecTrack` U0 shape skeleton, shared legal-scope guards, task/sample
-  contracts, loss/runtime interfaces, parameter-sharing audit and reproducible
-  audit/sanity tools. Exact source recipes and commit IDs are in
-  `reports/unified/OPEN_SOURCE_TRAINING_AUDIT.md` and
-  `outputs/unified/open_source_audit.json`.
-- Data/protocol: froze V1/V2 fit/calibration/validation splits and reserved
-  V1 `0005,0011,0013` plus V2 `0005,0011,0013,0019`; retained all 157 V2
-  source target-ID-missing rows as unlabeled records. No official-test labels
-  or screening ground truth were opened.
-- Checkpoint/GPU: no LocateMOT-U checkpoint and no training run yet; GPU
-  allocation was zero. External sanity was compile/help only (about 23 s wall
-  time): 10/10 selected source files compiled, 1/10 entrypoints reached help,
-  and the nine remaining failures are recorded dependency/version findings.
-- Results: skeleton CPU forward finite with score shape `[1,100]`; legal guard
-  smoke passed; skeleton non-head parameter fraction `0.9998259786` (not a
-  final-model claim). No benchmark metric was produced. U0 scope/audit/sanity
-  passed; U1 MM-GroundingDINO-B acquisition and proposal/expression gates are
-  next.
-
-## LocateMOT-U U1 â€” Swin-B foundation acquisition and adapter smoke â€” 2026-10-01
-
-- Hypothesis: the audited GroundingDINO Swin-B CogCoOR weights can serve as the
-  shared visual/specification foundation after selecting the checkpoint format
-  compatible with the local MMDetection GroundingDINO implementation.
-- Assets: acquired and hashed both the original release
-  (`46270f7a822e6906b655b729c90613e48929d0f2bb8b9b76fd10a856f3ac6ab7`,
-  938,057,991 bytes) and the OpenMMLab conversion
-  (`55949c9c0f46339a73b415334765615d491ee6ed739ed3f568142b7fc5581143`,
-  935,971,702 bytes). The MMDetection asset is the runtime candidate because
-  its key layout matches the adapter; provenance is in
-  `outputs/unified/protocol/foundation_asset.json`.
-- Code/smoke: built the local Swin-B model (232,996,763 parameters), loaded the
-  converted checkpoint with 8 expected initialization keys and 3 BERT metadata
-  keys reported as non-fatal mismatch, then ran one CUDA label-free forward on
-  legal V1 video `0004` frame `000063.png` using `car . pedestrian . cyclist .`.
-- Results: 300 finite predictions, finite boxes and finite scores;
-  `outputs/unified/u1_foundation_smoke.json` records the exact config,
-  checkpoint hash, device and legal frame. This is a compatibility smoke only;
-  no proposal recall, expression grounding metric or tracking result is
-  claimed. Official-test labels and screening ground truth remain unread.
-- Checkpoint/GPU/walltime: no LocateMOT-U checkpoint; one A800-equivalent GPU;
-  model build/forward about 9 s. Next gate is label-free proposal and
-  expression grounding on legal development frames.
-
-## LocateMOT-U U1 â€” proposal gate diagnostic â€” 2026-10-01
-
-- Hypothesis: the loaded Swin-B foundation would provide sufficiently localized
-  open-vocabulary candidates for the shared semantic/tracking path on a fixed
-  legal development slice.
-- Protocol: 16 V1/V2 calibration/validation expression-frame rows, 50 target
-  boxes, 300 candidates per row; model inference completed before each
-  corresponding label file was opened. No threshold fitting, training,
-  official-test labels or screening ground truth.
-- Result after correcting the MMDetection BGR input contract: best-IoU
-  `>=0.25` was `0.5400`, best-IoU `>=0.50` was `0.0400`, mean best IoU
-  `0.2756`, and mean score at best IoU `0.01312`. Boxes and scores were finite.
-  This remains below a usable proposal gate, so semantic-head/tracking training
-  from this stream is disallowed. The initial RGB/BGR-swapped diagnostic was
-  discarded and is not used as evidence.
-- Diagnosis/next change: inspect prompt tokenization/category assignment, box
-  decoding and proposal selection on this same legal slice. Preserve the split,
-  rows, checkpoint and labels; do not tune a threshold or delete hard cases.
-  Authoritative output: `outputs/unified/u1_proposal_gate.json` and
-  `reports/unified/U1_PROPOSAL_GATE.md`.
-- Selection-only check: retaining all 900 decoder queries raised IoU@0.50 to
-  `0.1000` and mean best IoU to `0.3341`, so top-k selection contributes but
-  does not repair localization. The top-900 output is retained separately and
-  is not used as a training bank.
-- A fixed class prompt (`car . pedestrian . cyclist .`) with all 900 queries
-  reached IoU@0.25 `0.9000`, IoU@0.50 `0.1800`, mean best IoU `0.3635`; this is
-  a useful direction for the repair but still below the stage gate and remains
-  excluded from training. Output:
-  `outputs/unified/u1_proposal_gate_generic_classes_top900.json`.
-
-## LocateMOT-U U1.3 â€” proposal-selection repair diagnostics finalized â€” 2026-10-01
-
-- Change: made the canonical 300-query output reproducible with explicit
-  `max_per_img` and prompt metadata, and synchronized the report/status values
-  with the corrected BGR run. Re-ran the 300-query baseline, the 900-query
-  selection diagnostic, and the fixed class prompt (`car . pedestrian .
-  cyclist .`) diagnostic on the identical legal 16-row slice.
-- Results: the baseline stayed at IoU@0.25 `0.5400`, IoU@0.50 `0.0400`, and
-  mean best IoU `0.2756`; retaining 900 queries reached `0.1000` at IoU@0.50;
-  the fixed class prompt with 900 queries reached `0.1800` at IoU@0.50 and
-  `0.9000` at IoU@0.25. All boxes/scores were finite, no rows were skipped,
-  and no official-test labels or screening ground truth were read.
-- Interpretation: prompt/category assignment and top-k selection are concrete
-  repair directions, but the proposal gate remains below the stage criterion.
-  No semantic-head/tracking training bank was created and no training was
-  launched. The next experiment must keep this split/checkpoint fixed while
-  inspecting prompt tokenization, category assignment and box decoding.
-- Verification: unified modules/tools compile; CPU skeleton smoke is finite;
-  parameter-sharing audit remains skeleton-only with non-head fraction
-  `0.9998259786`; legal guard accepts V1 `0004` and rejects reserved `0013`.
-
-## LocateMOT-U U0R/U1R measurement-contract repair â€” 2026-10-01
-
-- Scope: resumed from `014b8a5ec81bb83c5993b56da171089f8a440a11` on
-  `codex/u0r-u1r-foundation-repair-20261001`; no U2 work and no training was
-  launched. The project root was verified as `/data2/user/LocateMOT`.
-- Reproducibility hypothesis: a fresh checkout should import the unified data
-  package using tracked source only. The first clone failed because the broad
-  `data/` ignore rule also hid `locatemot/unified/data/`. Added a narrow ignore
-  exception, committed the package source, pushed it, and re-cloned the remote
-  branch at `26f9c989c8b13773d681bbe6962b77e73a0026bd`. Imports, skeleton smoke,
-  and foundation smoke passed in the clone. Decision: keep the repair and mark
-  U0 legal-scope reproducibility PASS.
-- Checkpoint hypothesis: the MMDetection Swin-B conversion must have only
-  documented non-core load mismatches. `tools/unified/audit_foundation_checkpoint.py`
-  now requires the exact one training-only missing key
-  `dn_query_generator.label_embedding.weight`, the exact three BERT metadata
-  unexpected keys, and zero backbone/encoder/decoder/bbox-head/language-fusion
-  missing keys. Audit result: `PASS_CONDITIONAL_TRAINING_ONLY_MISSING`.
-- Preprocessing hypothesis: the formal runtime must be equivalent to the
-  official MMDetection path. Ten deterministic legal images were compared with
-  the same fixed generic vocabulary; all produced 300 finite predictions,
-  maximum box difference `0.0`, and maximum score difference `0.0`. Decision:
-  preprocessing contract PASS; the prior hand-built tensor smoke is not formal
-  evidence.
-- Split hypothesis: a deterministic video-disjoint split balancing expression
-  volume, physical-target volume, and motion proxy is adequate before formal
-  evaluation. `tools/unified/build_legal_split.py` froze v2 with seed `20261001`
-  and split SHA
-  `8ee806048ccbb227919f27edf68cf0bebc1fa50f824a8108878fc5f39fc6e1c0`.
-  V1 fit/calibration/validation are `9/3/3` videos and V2 are `9/3/3`; V2
-  source-target-ID-missing references remain `157` (fit only in this split),
-  with no replacement or silent drop. Decision: freeze this split before any
-  U1 adaptation or formal gate.
-- Hardware/wall time: one CUDA device (A800-equivalent) was used for the
-  checkpoint audit, smoke, and equivalence check; these short checks completed
-  in under a minute each. Official-test labels and screening ground truth were
-  not opened. External baseline execution remains incomplete and is the next
-  blocking U0 task.
-
-## LocateMOT-U U0R â€” TempRMOT legal-development execution â€” 2026-10-01
-
-- Hypothesis: at least one published external RMOT method can be executed on a
-  frozen legal-development subset without reading official-test labels or
-  mixing its environment into LocateMOT-U.
-- Protocol: copied TempRMOT at commit
-  `6a65640d849fdee4a32bb055945ee34c3b0edeb1` into the isolated environment
-  `/data2/user/reference_envs/temprmot`, loaded the released checkpoint
-  `checkpoint_rk.pth` (SHA-256
-  `55e9b2cecbc1590aface4c9d8639008e694e8c4556d1d3c27bf90549f408c7e8`), and
-  ran the adapter on V1 validation videos `0012` and `0014`, one legal
-  expression per video. TrackEval then evaluated the two generated sequences
-  with HOTA, CLEAR, and Identity.
-- Result: prediction and evaluation completed with 94 prediction rows and 93
-  ground-truth rows. Combined HOTA was `94.679`, MOTA `98.925`, and IDF1
-  `99.465`. Official-test labels, screening ground truth, and training were not
-  used. The raw outputs and environment remain outside the repository;
-  `outputs/unified/external_baselines/temprmot_legal_v1.json` records the
-  reproducible metadata and `reports/unified/EXTERNAL_BASELINE_LEGAL_DEV.md`
-  records the bounded scope.
-- Compatibility work was confined to the isolated copy: a torchtext shim,
-  current PyTorch `torch.load` behavior, disabling a redundant pretrained
-  download, a CUDA scalar-type API update, and NumPy aliases in TrackEval.
-  These changes do not alter the LocateMOT-U model or the frozen split.
-- Decision: keep the TempRMOT run as real external-baseline evidence, while
-  retaining `U0_EXTERNAL_BASELINE=INCOMPLETE` until a second independent
-  method also produces predictions and evaluation. DKGTrack and FlexHook
-  remain pending because their published weight links are not yet available
-  through the isolated download path.
-
-## LocateMOT-U U1R â€” formal generic and expression measurements â€” 2026-10-01
-
-- Measurement contract: the frozen split SHA is
-  `8ee806048ccbb227919f27edf68cf0bebc1fa50f824a8108878fc5f39fc6e1c0`; the
-  foundation checkpoint SHA is
-  `55949c9c0f46339a73b415334765615d491ee6ed739ed3f568142b7fc5581143`; every
-  forward used `LoadImageFromFile`, `FixScaleResize(800,1333)`,
-  `PackDetInputs`, and `DetDataPreprocessor` with BGR-to-RGB conversion.
-- Generic protocol: one fixed query-independent vocabulary, all legal
-  calibration/validation frames with materialized labels, physical units
-  `(dataset, video, frame, track_id)`, Top100/150/300/900 diagnostics, and
-  small/medium/large height strata. The run covered 4,201 unique images,
-  33,526 physical GT units, and 5,992 unique physical objects. Top150 recall
-  was V1 `0.0803` and V2 `0.0669` at IoU 0.50 (V1/V2 IoU .25: `.5309/.4940`,
-  IoU .75: `.0045/.0062`). Decision: formal generic gate FAIL; this is below
-  the `.80` adaptation early-pass, so a detection adaptation probe is required
-  before any grounding adaptation.
-- Expression protocol: every legal calibration/validation query contributed
-  one deterministic middle labeled frame and, when available, one first empty
-  target frame. Units were `(dataset, video, query_id, frame, target_id)`;
-  source-missing references stayed in the source denominator. The run covered
-  7,160 query-frame rows and 7,199 valid target units with zero source-missing
-  units in this calibration/validation sample. Top1 IoU .50 recall was V1
-  `0.0030` and V2 `0.0028`; AP50 and empty-frame FP/query are recorded in
-  `reports/unified/U1_EXPRESSION_GROUNDING_GATE.md`. Decision: formal
-  expression gate FAIL; no expression adaptation has started.
-- No official-test labels or screening ground truth were read. No U2 or
-  universal track core work was started. The external-baseline state remains
-  incomplete because only TempRMOT has real predictions/evaluation; DKGTrack
-  and FlexHook public Baidu links require an authenticated download path.
-
-## LocateMOT-U U1-A â€” protocol correction, valid adaptation, and stop â€” 2026-10-01
-
-- The first eight-process launch was invalid because MMEngine's default
-  `--launcher none` left the processes outside DDP; it was stopped before any
-  formal evidence. A later exploratory FP32 run also used `frozen_stages=1`.
-  MMDetection's Swin implementation shows that value freezes patch embedding
-  and stage0 only, while the registered contract requires stages 0 and 1.
-  Those exploratory metrics are excluded from the final record.
-- Corrected hypothesis/protocol: a fixed legal-fit generic stream can repair
-  the foundation proposal localization while freezing Swin stages 0/1 and
-  BERT. The legal-fit stream has 3,606 rows and fixed `label 0 -> car`; the
-  split, vocabulary, official `FixScaleResize(800,1333)` pipeline, and all
-  denominators stayed unchanged. The valid run used
-  `frozen_stages=2`, BF16 AMP, eight-GPU PyTorch DDP, batch 2/GPU, and no
-  accumulation (global batch 16). The logged peak was 5,945 MB/GPU. A two-step
-  smoke passed before the full run.
-- A batch-2/two-step-accumulation attempt passed a one-step smoke but failed in
-  the full run with PyTorch's `expect_autograd_hooks_` DDP reducer assertion.
-  The smallest working fix was accumulation 1; this kept the recommended
-  microbatch 2 and did not alter the official input resolution. This failure
-  and the corrected smoke are retained in the adaptation report.
-- The valid schedule completed epochs 1, 2, 4, and 6, each formally evaluated
-  on the unchanged 4,201-image, 33,526-physical-unit scope. Top150
-  Recall@IoU0.50 (V1/V2) was foundation `0.0803/0.0669`, then
-  `0.8729/0.8515` (epoch1), `0.8873/0.8766` (epoch2),
-  `0.8945/0.8843` (epoch4), and `0.8938/0.8815` (epoch6). IoU0.25 reached
-  about `.99` in both domains, while epoch-6 IoU0.75 was `0.7215/0.6119`.
-  Size-stratum IoU0.50 was small `0.9136`, medium `0.9445`, and large
-  `0.7085`.
-- Training logs contain occasional `grad_norm: nan` values, but loss values
-  remained finite, all six checkpoints were written, and every formal shard
-  produced finite predictions. This telemetry is reported rather than
-  filtered. The final epoch-6 checkpoint SHA-256 is
-  `a1ff39f9c0bd59a5fd2b14968a528fc11e882b8fa6a3e85a9b64253a1cdc5ccc`.
-- Decision: the valid V1/V2 generic gate did not reach `.90/.90` after the
-  registered six-epoch maximum. Expression adaptation was not started because
-  it is downstream of the generic gate. Added the corrected adaptation report,
-  failure decomposition, and four valid formal JSONs. Final status is
-  `LOCATEMOT_U_BLOCKED_GENERIC_GATE_AFTER_MAX_ADAPTATION` with
-  `STOPPED_PENDING_SUPERVISOR_REVIEW`; U2 was not launched.
-
-## LocateMOT-U U1R2 â€” measurement repair, class-aware refinement, and foundation completion â€” 2026-10-01
-
-- Contract hypothesis: the remaining U1 failures were caused by a measurement/data contract mismatch rather than a need to replace the MM-GroundingDINO-B foundation. The source `labels_with_ids` fields are normalized top-left `xywh`; the repaired formal gates preserve source extents and use Top150 IoU.50 for generic proposals and Top100 IoU.50 target coverage for expressions. The previous U1-A-v1 files remain preserved as historical artifacts and were not overwritten.
-- Coordinate/source audit: legal calibration/validation contains 33,526 physical GT boxes. 195 V1 boxes extend below the image at `y1>height` (166 large, 27 medium, 2 small); no x-side overflow exists. Same-frame geometry matching to official KITTI labels gives mean IoU `0.7414883`; Refer and official track IDs are separate namespaces. Decision: retain source extents and recover classes by geometry; do not clip evaluation GT.
-- Data hypothesis: a class-aware physical-frame union can repair localization while removing V1/V2 duplicate training. The fit stream contains 2,545 images and 10,502 boxes; 3,424 V1/V2 overlaps were removed, 580 conflicting boxes and 21 missing class matches were recorded, and observed classes are car 6,787, pedestrian 3,700, cyclist 13, van 2. Decision: retain the stream with fixed class policy and explicit low-confidence audit.
-- Numerical stability: the prior BF16 log has three finite-loss `grad_norm:nan` records (epoch/iter 1/50, 3/100, 6/100). A fresh FP32 one-step audit from epoch4 found 981 trainable parameters, total loss `40.27210998535156`, zero nonfinite gradients, and zero no-gradient parameters. Decision: R2 uses FP32/TF32, no AMP/BF16.
-- Generic refinement: one bounded FP32 epoch from the frozen epoch4 checkpoint passed the corrected gate: V1/V2 Top150 IoU.50 `0.982716/0.971837`; small/medium/large `0.937467/0.989984/0.997825`. Decision: freeze the R2 epoch1 generic checkpoint and skip epoch2/mixed fallback.
-- Expression hypothesis: whole-expression positive spans with all referred boxes, legal empty frames, and preserved V2 missing-target references can add language-conditioned candidate coverage without erasing generic proposals. One FP32 epoch completed from the selected generic checkpoint. Expression Top100 IoU.50 is V1/V2 `1.000000/0.961367`; the same checkpoint's generic regression is V1/V2 Top150 IoU.50 `0.986592/0.958739`.
-- Language audit: on exactly 500 legal validation same-image pairs with a same-video sentence from a different target set, true versus shuffled Top10 recall is `0.959333/0.871133` and AP50 is `0.736901/0.491159`. Both strict comparisons pass, so language conditioning is measurable rather than generic-box-only behavior.
-- External evaluator: synthetic perfect/empty/ID-switch and cross-evaluator arrays pass with maximum difference `0.0`. TempRMOT evaluated videos 0012/0014 occur in its declared training pool; its HOTA 94.679 is reclassified as `PIPELINE_SANITY_ONLY_TRAINING_OVERLAP`.
-- Decision: the final shared expression checkpoint satisfies all U1 hard gates. `official_test_labels_read=false`, `screening_gt_used=false`, V2 source-target-ID-missing references remain explicit (157, silently dropped=false), and no U2/U3/U4 work started. Set `LOCATEMOT_U_READY_FOR_U2` and stop pending supervisor review.
-
-## LocateMOT-U U2 â€” shared persistent track core and portability stop â€” 2026-10-02
-
-- Provenance: working branch `codex/u2-shared-persistent-track-core-20261001`,
-  authoritative local base `56507f4aa9a12e76d6f9f6702f0f0b38163666ec`, and
-  immutable U1 foundation SHA
-  `4efc35ce70be5cddf2c4d9a0f91bc4edef3e9ec5277a819211ba4ac42e0d7d26`.
-- Implementation: replaced the U0 tracking placeholders with one shared U2
-  core (`PerceptionBridge`, independent identity/semantic candidate encoders,
-  `UnifiedTrackState`, four-layer identity set interaction, GRU identity
-  memory/anchor/EMA, association/new/no-match, lifecycle, motion, Hungarian
-  rollout, and bounded OVMOT residual). The runtime is
-  `locatemot/unified/runtime/u2_online_tracker.py`; no RMOT or prompt tracking
-  was launched.
-- Contract evidence: `tools/unified/u2_causal_contract.py` passed birth,
-  occlusion, no-future, MOT specification invariance, OVMOT isolation, and
-  online-state save/reload. Actual-model sharing audit passed with
-  `shared_non_head_fraction=0.9378111093950003`.
-- U2-P data manifest SHA-256 is
-  `575bd349e00bab23634c6929c04513149afec838de419bb3f1a53469fafc7fda`.
-  KITTI legal development portability passes (V1/V2 Top150 @.50
-  `0.986592/0.958739`), while BDD100K, DanceTrack, MOT17, MOT20, TAO, and
-  C-TAO are missing locally. Candidate-cache SHA is `not built`.
-- Training command: not launched; GPU count `0`, optimizer steps `0`, wall
-  clock training runtime `0`. Simple MOT, MOT-only, and joint OVMOT metrics
-  are intentionally `null` because the registered portability protocol is
-  incomplete.
-- Decision: `LOCATEMOT_U_BLOCKED_U2_PERCEPTION_PORTABILITY`; stop pending local
-  acquisition/audit of the missing streams. Official test labels and
-  Refer-KITTI official evaluation labels remain unread.
-- Validation note: the 2-process CUDA forward/backward smoke passed with the
-  same MOT task on both ranks. An 8-process smoke could not initialize because
-  all eight A800 devices were occupied by an unrelated process; it was
-  terminated before any training step and is not counted as a pass.
-
-## LocateMOT-U U2 â€” acquisition recovery â€” 2026-10-11
-
-- Revalidated local descendant `666ab44` and the actual U1R2 checkpoint SHA
-  `4efc35ce70be5cddf2c4d9a0f91bc4edef3e9ec5277a819211ba4ac42e0d7d26`.
-  U1 references and the checkpoint remain unchanged.
-- Observed MOT17/MOT20 extraction counts of 33,810/13,430 files, with nested
-  release roots. TAO's four volume roots exist but contain zero files; no
-  training or download worker was live. The old download module spawned
-  workers while being imported by each child, recursively launching itself.
-- Replaced that launcher with one guarded entry point and four thread workers
-  running bounded download clients. Keep the registered four-volume assignment,
-  prioritize modal train/validation inputs, validate downloaded sizes, and
-  record actual per-file SHA-256 for source provenance. A fresh direct-network
-  README transfer passed: 9,189/9,189 bytes, so existing Baidu authentication is
-  usable. This does not imply that the dataset or portability gate is complete.
-- Identified a separate eligibility bug: the old portability artifact could
-  return PASS solely from directory availability while all new-domain metrics
-  were null. Correct the audit and eligibility calculation before any training;
-  metric definitions, split rules, thresholds, and seeds remain unchanged.
-
-## U2 frozen-foundation MOT portability â€” 2026-10-11
-
-Hypothesis: the selected U1R2 foundation may need bounded adaptation on crowded/non-road pedestrian domains. Registered ByteTrack inclusive train-half ranges, FRCNN physical-video deduplication, `person .`, positive mark-1/class-1 GT and unmodified source box geometry before measurement. The loaded checkpoint SHA matched the immutable U1R2 reference, with no missing/unexpected weights.
-
-Ran all 7,115 dev frames on GPUs 1â€“7 in one parent launch/wait command, leaving an externally occupied GPU 0 alone. MOT17: 2,652 images / 53,890 GT; Top150 0.787233, Top300 0.806253. MOT20: 4,463 images / 615,137 GT; Top150 0.731010, Top300 0.884673. Exact coverage and monotonic count checks passed; partial measurements are rejected. MOT17-02/04 and crowded MOT20-03/05 dominate the shortfall. Retain the measured failure; do not alter visibility filtering, vocabulary, frame scope or gates to improve the reported values.
-
-Track training is held. At most two epochs of mixed U2-P perception adaptation are justified after the missing domains/protocols are ready, with U1 replay and full retention gates. MOT20 Top300 has not met the preferred 0.90 or been accepted as a runtime override. TAO four-volume acquisition/extraction continues. Cloud BDD resources are static detection rather than MOT 2020. Started official DanceTrack train/val and C-TAO base-only acquisition, pinning release revisions; aria2 TLS failed, curl direct HTTP-206 probe succeeded and curl replaces it. No tracker or RMOT/prompt training was launched.
-
-U2-P follow-up: C-TAO base-only source downloaded and inspected: 490,210 train images, 1,489,637 base-category boxes, 500 videos; supervision frequencies f/c only and no validation paths. LVIS v1 full vocabulary frozen (1,203 names; 866 f/c base, 337 rare novel). Native MMDetection chunking passed a real TAO-image smoke with 38 chunks and exactly one backbone call, followed by class-agnostic IoU-0.8 merge and global Top300. This is runtime evidence, not a substitute for full TAO coverage. Original modal TAO validation has 36,375 images / 113,112 boxes; 314 boxes lack a LVIS-v1 synset mapping, so the benchmark conversion/audit must explicitly account for them. Original BDD MOT 2020 image host dl.yf.io is live; started eight train/val archives (38,886,924,336 bytes) with original published MD5 checks, four bounded workers and eight connections/file. Official 2021 tracking-label S3 URL returns 404; keep BDD labels missing while locating a valid original release.
-
-## U2 TAO/C-TAO portability registration â€” 2026-10-12
-
-Continue from the published full MOT-half failure measurements, preserving the immutable U1R2 checkpoint. Plan: freeze all official TAO validation images plus every original annotated C-TAO training-audit frame; preserve the full dense C-TAO set for later identity training. Use all 1,203 LVIS-v1 names, the already verified 32-name chunks, one image backbone extraction, class-agnostic IoU-0.8 merge and global Top300. Count all original modal TAO GT including the 314 annotations without a v1 synset mapping; report those separately with source-frequency grouping rather than dropping them. Wait for CRC-completed source archives internally in the single evaluation launcher while downloads/extraction continue. In parallel, finish Dance extraction and locate original BDD tracking labels. No track training is eligible yet.
-
-## U2 data completion and full portability launch â€” 2026-10-12
-
-Hypothesis: recovering the original data and measuring complete dev scopes will distinguish foundation domain failure from incomplete measurement. DanceTrack download/CRC extraction completed; preserved 32/8/25 project videos and exact 33,772/8,024/25,508 frames. TAO modal train/val and all 490,210 C-TAO training images now pass availability coverage (six available streams, BDD pending). Frozen full TAO validation (36,375 images, 110,055 base / 3,057 novel GT) and original C-TAO train audit (17,131 images, 53,263 base GT); retain all 314 unmapped original TAO GT units. Immutable-foundation real smokes passed in both chunked domains and DanceTrack; full audits run on GPUs 1â€“6 and 7 respectively. No partial recall promoted; MOT gates still fail and track training remains held.
-
-BDD root cause: old official annotation URLs are dead and the user cloud BDD folder is static detection. Found a pinned HF archive whose directory contains all 1,400/200 raw tracking JSON videos and validation images. Download/hash/selected-member CRC extraction is active; source labels have not yet established availability. Added original toolkit category/ignored/crowd and inclusive Box2D handling; raw-label full-scope validation will precede BDD measurement. Original seven train-image archives continue downloading, with an internal blocking extractor. Keep these recovery changes; no learned model, seeds or gates changed.
-
-## U2 BDD raw tracking recovery validated â€” 2026-10-12
-
-Recovered and SHA/CRC-validated the pinned mirror: all 1,400 train and 200 val raw JSON videos; every 39,973 validation image matches the original release ZIP member size/CRC. Frozen 278,079 train / 39,973 val frames and the fixed eight-category vocabulary before inference. Full official-reference comparison covers all validation objects: 442,814 positive boxes, 18,625 crowd and 4,073 official ignored-category objects. First strict comparison exposed a 2.84e-14 rounding difference from direct x2+1; changed arithmetic to the official xywh reconstruction order, then every positive box/category/ID matched exactly (no tolerance relaxation). Keep the correction. Full BDD portability is queued after the DanceTrack worker on GPU 7 with a real-image smoke first. The first original train-image archive is CRC-extracted (200 videos, 39,418 frames); remaining train-image downloads/extraction continue. Numerical MOT gate failures and track-training hold remain unchanged.
-
-## U2-P bounded perception adaptation preparation â€” 2026-10-12
-
-Plan before any adaptation result: use a fixed 20,000-anchor replay epoch, maximum two epochs, seed 20261012. U1 generic/V1-expression/V2-expression proportions 0.10/0.15/0.25; BDD/Dance/MOT17/MOT20/TAO base detection each 0.10. Stratified video sampling covers every training video where the allocated budget permits; cycle deterministically when replay pools are smaller than their allocations. Preserve original U1 replay boxes/phrases; use only official train or registered MOT-half train frames. TAO class supervision uses mapped LVIS-v1 f/c categories only, with novel/unmapped annotations excluded from class and identity supervision. Encode detection classes as positive phrase spans through the existing native ODVG grounding path. Empty positives retain a fixed absent base-class caption. Keep FP32, decoder/multimodal LR 1e-5, Swin stages 2/3 LR 1e-6, BERT and Swin stages 0/1 frozen. Do not start optimization until all source images and full F0 domain audits are complete. Any adapted checkpoint must pass the unchanged U1 retention and complete portability gates; no tracker/cache before that.
-
-Implemented the fixed replay preparator, checkpoint-compatible frozen-BERT model, guarded eight-GPU trainer, explicit candidate-SHA evaluation, crowded-K registration, and full-audit checkpoint selection. Config parsing exposed an inherited-variable NameError; use MMEngine's `_base_.train_pipeline`. Disabled aspect-ratio buckets because odd bucket tails can add singleton steps; ordinary batching preserves exactly 1,250 steps/epoch at global batch 16. Actual immutable checkpoint CPU loading matches every state key, BERT stays eval/frozen, Swin stages 0/1 stay frozen and stages 2/3 train. Native ODVG packing passed on eight real training-stream images and one empty-positive image; first check assumed a box wrapper but the native pipeline returns tensors, so corrected that check and reran. Reaggregated all 7,115 original MOT frames: every result remains identical. Mixed-checkpoint measurement/worker aggregation is rejected; F0 MOT20 Top300 0.8846728452 correctly fails the mandatory 0.90 override threshold. Original generic/expression/500-pair full U1 reference scopes and shard provenance validate. Keep these changes. Replay preparation session 81929 waits internally for actual BDD extractor PID 686873; training preflight reports incomplete BDD images, incomplete full F0 audits and pending full replay. No perception optimizer, track training, or candidate cache launched.
-
-Scientific source backups use `/data2/user/locatemot_git_backups/u2_latest.bundle`; the adjacent `u2_latest.commit` records the exact original local HEAD preserved in each updated bundle. Original U1R2 history and the BDD recovery commits remain in this history.
-
-Scope correction before any optimization: an epoch-1 retention failure rejects that checkpoint for tracking, but the specification still permits the second bounded perception epoch. Allow that optimizer continuation after all epoch-1 audits complete; both retention and portability acceptance thresholds remain unchanged, and no rejected candidate becomes track-eligible. The two-epoch/2,500-step cap remains fixed.
-
-## U2 DanceTrack full measurement and bounded continuation â€” 2026-10-12
-
-DanceTrack's original blocking audit completed: all 25,508 dev images, 225,148 positive source GT; Top150 224,318/225,148 = 0.996313536, Top300 224,627/225,148 = 0.997685967. Full frame coverage, registered GT count and immutable foundation provenance pass. Keep the complete measurement; it shows that the current foundation's failure is not universal across ordinary MOT domains. BDD's queued real-image check passed and its complete 39,973-frame audit began on GPU 7; the second original training-image archive completed CRC extraction (200 videos, 39,990 frames). No partial BDD/TAO values are promoted.
-
-Plan: connect the already registered two-epoch trainer to complete ordinary/TAO portability, original eight-shard U1 generic/expression and fixed 500-pair audits, conditional MOT20 K300 registration, and checkpoint selection. One blocking controller will wait for the existing F0 audit/data-preparation parents, train only after all prerequisites hold, pause at each saved epoch for full audits, and stop after selection or the absolute two-epoch cap. Preserve exact worker partitions and resume only unfinished units; no metric, seed, frame scope or acceptance threshold changes.
-
-All original BDD train-image extraction and replay preparation completed successfully during this stage. Required data availability is now 7/7; 1,400 train videos and every 278,079 training annotation frame have an image. The fixed replay is complete (SHA `1be4a6e2d03fd3f59aeeca8b931c3f638a2ca1db015ea7d54afa2ca725970947`), all 1,400 BDD and 500 TAO train videos represented; actual prompts use at most 21 tokens. Native eight-rank Gloo verification used the real 20,000-row ODVG dataset and actual configured sampler/batching: 2,500 rows and 1,250 batch-2 steps per rank, globally no duplicate/omitted row, all 300,070 positive boxes retained, 1,385 empty-positive rows retained, zero native box-filter removals. No GPU model or optimizer was created by that check. The first launch exposed a missing `.venv/bin/torchrun` entry point; use the same virtual-environment Python's `torch.distributed.run` module, rerun the targeted eight-rank check, and apply the identical launcher fix to the continuous trainer. Keep this fix; no package, seed, precision, LR or budget changes. FP32 training keeps the already registered U1 TF32 flags. All original eight-shard U1 scopes validate, and the original U1 checkpoint is correctly rejected as a completed 1,250-step U2-P candidate. Only incomplete full F0 BDD/TAO audits now hold optimization. The controller validates each existing parent's full artifact as it exits, then owns training and all audits; it never terminates unrelated jobs or advances through a failed/incomplete measurement.
-
-Scientific source commit `cf41d7312e7046c10ebc802aa624d1be81e1a021` is backed up in the latest local bundle. Launched the continuous command with `CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 OMP_NUM_THREADS=2 TOKENIZERS_PARALLELISM=false .venv/bin/python -u tools/unified/run_u2_perception_adaptation.py --tao-audit-pid 670232 --bdd-audit-pid 781721 --replay-pid 816267 --extraction-pid 625610`. Controller PID 854970 / exec session 11636 is confirmed live and has already validated the completed replay parent; it still waits for the two original full F0 audit parents. GPU count 8; optimizer steps 0; candidate cache not built. Clarified the existing native resume semantics after reading installed MMEngine: optimizer, scheduler and sampler epoch resume, while separately launched epochs use the same fixed base seed 20261012; worker RNG streams are not restored. This documents the configured epoch-boundary behavior, without changing seeds or training implementation. End-to-end training wall time is pending the blocking controller's completion.
-
-## U2 real feature bridge and eight-GPU temporal validation â€” 2026-10-12
-
-Hypothesis: attaching final-decoder query provenance before native chunk concatenation/NMS and sampling pre-text neck maps can supply correctly aligned identity/semantic features without changing the frozen detector's candidate distribution. Implemented `runtime/u2_grounding_candidates.py`: original boxes remain original-coordinate xyxy; identity sampling scales them into resized/padded image coordinates, preserving preprocessor padding rather than normalizing against only original image extent. The extractor reads no annotations and stores no GT identities. Actual checkpoint-backed GPU-0 validation (`CUDA_VISIBLE_DEVICES=0 OMP_NUM_THREADS=2 TOKENIZERS_PARALLELISM=false .venv/bin/python -u tools/unified/validate_u2_candidate_features.py --device cuda:0`, terminal session 84086, exit 0) passed native box/score/class bit-exact parity for MOT17-02 frame 000302 Top150 and one TAO validation frame under the complete 1,203-category/38-chunk Top300 protocol. Selected decoder features remain bit-exact after cross-chunk NMS; backbone executes once; fixed-box identity features remain bit-exact after changing vocabulary. Scope is an alignment contract, not a replacement for full-dataset recall. Keep the bridge; full cache awaits passing U2-P selection.
-
-The eight-GPU temporal contract (`CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 OMP_NUM_THREADS=2 .venv/bin/python -m torch.distributed.run --standalone --nproc-per-node=8 tools/unified/u2_ddp_temporal_contract.py`, terminal session 18873, exit 0) passed both MOT and OVMOT. Two four-frame clips/rank (global 16) retain temporal gradients; identity GRU, set interaction and association gradients are nonzero, with semantic GRU/text gradients also nonzero on OVMOT. Parameters remain bit-exact across all eight distinct GPU ranks after scratch updates. This synthetic probe does not modify the foundation or constitute a formal association run; no tracking metrics are claimed. Keep the full-clip-in-one-DDP-forward contract for the eventual trainer. Evidence: `eval/ddp_eight_rank_core.json` and `eval/real_candidate_feature_contract.json`.
-
-Confirmed GitHub publication of original source `0b6f1d4e20faed17bc105b67aef4505bcdc87ea2` at remote `5d79bfcc0b0b3f58594817dc727d5707bb1d6331` (verified branch and commit tree through the connected app). Corrected stale final-status fields that still called BDD missing and Dance unmeasured: all seven sources are available, Dance complete, BDD/TAO full audits remain pending. The existing blocking continuous controller remains live; no gates, seeds, candidates or active audit jobs were changed.
-
-## U2 candidate-cache and ordinary-baseline execution plan â€” 2026-10-12
-
-Read the real candidate bridge, frozen ordinary/TAO protocols, KITTI legal scope and TrackEval readers. The TempRMOT fork changes MOT file loading into expression-specific prediction paths; do not use that reader for ordinary MOT evaluation. Original KITTI tracking labels already exist under `/data2/user/reference_envs/kitti_tracking_labels_20261001/training/label_02`; no extra dataset download is required. Plan: pin an unmodified upstream TrackEval, freeze KITTI V2 legal fit/calibration/validation frame lists with original tracking IDs, implement a label-free video-sharded cache that requires the existing complete perception selection, and implement the IoU/motion/visual-cosine simple baseline with fixed parameters before any benchmark results. Keep supervision in separate source adapters, preserve all existing gates and running full F0 jobs, and test only the contracts needed for valid tracking/evaluation.
-
-Pinned direct upstream TrackEval at `12c8791b303e0a0b50f753af204249e622d0281a`, verified unmodified, and recorded its six relevant readers/metrics. Frozen original KITTI V2 legal fit/calibration/validation covers 15 videos, 1,814/2,087/1,385 frames; never opened the four reserved video labels. Original KITTI and Refer tracking namespaces differ, so the earlier U1 generic result alone was incomplete evidence for ordinary tracking GT. Added the missing full original-GT portability audit over 3,472 dev images / 15,875 eligible car/pedestrian units with unchanged pinned TrackEval occlusion/truncation handling. Existing U1 references, all old domain scopes, .85/.90/.80 ordinary thresholds, .70/.60 OVMOT thresholds and the two-epoch cap remain intact. Actual F0 KITTI image smoke passed (session 37939 exit 0, native state keys all matched). Launched the full original-KITTI F0 audit on GPU 0: `OMP_NUM_THREADS=2 TOKENIZERS_PARALLELISM=false .venv/bin/python -u tools/unified/u2_mot_portability.py --protocol outputs/unified/u2/protocol/kitti_ordinary_portability.json --out outputs/unified/u2/perception/kitti_original_gt_f0_full --gpus 0`; parent 864092, worker 864093, blocking session 95238. The old full BDD/TAO jobs remain untouched. U2-P candidate evaluation now includes 76,068 ordinary images, plus all original 53,506 TAO/C-TAO and U1 scopes.
-
-Implemented full label-free cache inventory and selected-checkpoint-gated 64-frame video shards. C-TAO dense and modal TAO train union contains 491,353 unique train images (including 1,143 modal images outside the C-TAO set), plus 36,375 TAO dev images. OVMOT storage assignment balances four volumes at 131,934/131,931/131,931/131,932 frames. Ordinary train/dev cache covers 396,865 images. Actual inventory verification (session 32148 exit 0) proves all 3,182 groups and all 924,593 physical images occur exactly once, with no train/dev image overlap and exact eight-worker group coverage. Cache generation remains conditional on recomputing the original complete selection; features are BF16, original boxes/scores FP32, semantic/decoder storage is shared, and supervision stays separate with no automatic novel labels.
-
-Implemented the frozen simple baseline and official full-sequence metric/export path. Registered parameters before benchmark results: IoU/motion-IoU/id-cosine .25/.35/.40, margin .45, distance 2, birth .10, appearance EMA .90, max_age 30. All input candidates participate in matching, low scores can recover IDs, and no motion-only box is emitted. Synthetic causal/export/metric validation (session 40233 exit 0) passed all five upstream readers: perfect HOTA/DetA/AssA/IDF1 1 and IDSW 0, while swapped MOT17 identities give DetA 1, AssA .4, IDF1 2/3, IDSW 2. BDD inclusive extents/aliases/ignored attributes and KITTI DontCare/MOT distractors are honored. No benchmark metric is claimed. The optional unrelated BURST import warns about missing tabulate; all required ordinary readers and metrics execute successfully, so no unrelated package repair is needed. Keep the cache and simple pipeline.
-
-Launched one blocking follow-on queue: `OMP_NUM_THREADS=2 TOKENIZERS_PARALLELISM=false .venv/bin/python -u tools/unified/queue_u2_ordinary_baseline.py --wait-perception-pid 854970 --kitti-audit-pid 864092 --extraction-pid 625610`, controller 864319 / session 35256. It waits for genuine completion of the original-KITTI audit and the existing bounded perception owner, then builds the selected ordinary cache and measures all five simple-baseline dev sets. If the existing owner genuinely terminates at preflight before any optimizer because the newly supplied KITTI audit was still incomplete, the queue resumes only after that audit completes and the full unchanged preflight is READY. No live job is restarted on an observation timeout. Formal cache and formal track training are still unlaunched; the research goal remains active.
-
-## U2-A temporal supervision implementation plan â€” 2026-10-12
-
-The complete original-KITTI F0 audit terminated successfully (session 95238 exit 0): 3,472 images, 15,875 source GT units, Top150/Top300 recall .928503937/.940535433. The original perception owner and ordinary follow-on queue are confirmed live. Read the U2 temporal curriculum/teacher forcing/loss specification and actual core: query drop/injection is currently diagnostic-only, and motion/lifecycle assume consecutive processed frames despite required stride 1â€“4. Implement real training-state augmentation from past unmatched candidates, current-frame Hungarian GT targets and scheduled model-in-loop state assignment, the six registered identity/motion/lifecycle losses with explicit false-birth suppression, and physical frame-gap-aware state propagation. Use the same shared core, keep GT bookkeeping outside its runtime state, retain original gates and do not launch formal association optimization before selected caches and simple metrics exist. Validate crossing/occlusion, negative proposals, mixed teacher/model rollouts, connected temporal gradients, causality and task isolation before the 6,000-step run.
-
-Implemented actual query-state drop and previous-frame hard-negative injection; external first-identity bookkeeping does not hide model switches or duplicate births. Registered six losses include positive column CE plus NEW reject BCE so false proposals (including the first frame) are not blindly taught births. Current-frame positive/distractor Hungarian and separate crowd IoA/min-height rules preserve official ignore semantics. Physical source-frame gaps drive motion, lifecycle and memory decay; expired IDs are retired before current matching. Batched association data transfers, GRU/birth updates and switch margins avoid per-track GPU/CPU synchronization without changing core parameters. Crossing/occlusion, false-birth/ignore gradients, mixed teacher/model rollout and connected temporal gradients pass; all existing causal/isolation/save-load checks pass.
-
-Actual eight-GPU BF16 registered-loss proof initially failed at the Hungarian NumPy conversion (`TypeError: unsupported ScalarType BFloat16`, session 51784 exit 1; reproduced single GPU session 68632). Smallest fix: cast detached logits to FP32 only at the CPU assignment boundary. Single-GPU regression session 30093 and eight-GPU session 2469 passed: global16 clips, finite/nonzero candidate projection/identity GRU/pair/set/motion/alive/birth gradients, identical post-update rank parameters. Subsequent batched-transition/expiry edits trigger fresh targeted and dual-task/eight-GPU checks before publication. The first original-GT oracle check (53170 exit1) compared MOT reader XYWH to core XYXY; verified native source/reader format and fixed the oracle only. Session 16135 passed every positive box on five complete actual train videos: BDD203/1126 units, Dance703/4912, MOT17 301/8701, MOT20 215/9060, KITTI154/234. Scope is these five videos, not all train labels or benchmark results.
-
-Added frozen-cache causal clip sampling, 6,000-step eight-GPU MOT-only entry, registered curriculum/teacher probabilities/seed20261012/dataset probabilities, full all-five dev evaluations at1000/2500/4000/6000, 500-step resume snapshots with optimizer and per-rank CPU/CUDA RNG, unchanged identity-benefit/HOTA gates and four-level checkpoint selection. Synthetic sampler/resume/selection proof passes: next stochastic update bit-exact after restore, train-only rank/step sampling, >2-point individual HOTA regressions rejected. Preflight (55952 exit2) correctly holds without the complete selected cache and all-five simple metrics; zero formal track updates. Launched one blocking follow-on queue: `OMP_NUM_THREADS=2 TOKENIZERS_PARALLELISM=false .venv/bin/python -u tools/unified/queue_u2_mot_only.py --wait-ordinary-pid 864319`; actual PID870157/session38396 waits for original ordinary owner, then launches exactly 6,000 MOT-only steps when prerequisites pass, without OVMOT. Original full F0/perception owners remain live and untouched. Keep implementation; U2/U3 and all trained metrics remain unproven.
-
-The fresh batched-transition eight-GPU command (76774 exit1) passed both MOT/OVMOT temporal tasks first, then exposed a BF16 vector-index assignment mismatch: GRU output BF16 into FP32 persistent memory. Added explicit differentiable casts to destination identity/semantic memory dtype; no loss or parameter change. Run the actual single-GPU BF16 backward/active-state inference regression, then the full eight-GPU registered-loss proof again before publishing. The failure is explicitly recorded; old PASS artifacts do not certify the new code until the fresh proof succeeds.
-
-Final current-source targeted regressions completed: session21978 exit0 (six-loss crossing/expiry, five actual-video GT comparison, sampler/RNG/selection), session1677 exit0 (post-dtype-fix temporal/causal/save-load and resume/selection), session87550 exit0 (fresh actual eight-GPU BF16 registered losses, all necessary gradients nonzero, both updates identical across ranks). The preceding dual-task eight-GPU FP32 phase of76774 passed for MOT and OVMOT; only its BF16 phase failed and was repaired. Single-GPU session57241 exit0 proves batched BF16 backward and nonempty-state causal inference. Keep these final implementations and proofs. No formal feature cache, learned MOT baseline or joint benchmark is claimed; the research goal remains active.
-
-During verified publication/follow-on waits, original perception owner11636 reported BDD audit completion. The original BDD blocking session36974 terminated exit0; strict full measurement validation confirms all39,973 images,442,814 GT, coverage/protocol/F0 SHA. Hits363,947 Top150 (.8218958750175017),377,519 Top300 (.8525453124788286). BDD fails .85 minimum but exceeds .80 hard stop; no BDD K300 exception is allowed. All five ordinary F0 audits are now measured; bounded U2-P still waits for original full TAO/C-TAO audit. Updated canonical portability/status/reports and retain the same registered 2-epoch repair and six-thousand-step downstream gates. No formal track optimizer launched; keep result and publish this new full measurement.
-
-## U2-B supervision/semantic/evaluation implementation plan â€” 2026-10-12
-
-Previous goal turn made concrete progress: complete original KITTI/BDD F0 measurements, actual temporal supervision plus gated 6k MOT-only implementation, current eight-GPU BF16/causal/GT/resume proofs, source commits/backups and verified GitHub publications. Current source30c7a56 is clean; original bounded perception owner11636 and MOT follow-on38396 are confirmed live. Read OVMOT adapter, shared language bridge and U2 sections66â€“82. The OVMOT report incorrectly says TAO/C-TAO absent; all assets are present. Raw C-TAO interpolation resets frame_index (e.g. original frame0176=175, interpolated frame0177=1), and C-TAO/TAO numeric IDs occupy different source namespaces; physical filename chronology and original annotation UUID alignment are required. Plan: audit all dense/base supervision with no automatic rare/unmapped class or identity labels; implement shared-U1 BERT/projected full-vocabulary class features, semantic classification/consistency/gate losses and same-core OVMOT temporal rollout; pin official upstream TETA and implement complete original validation export/overall/base/novel reporting with explicit category mapping counts. Keep all ordinary loss weights and gates. Formal joint optimization requires selected MOT-only eligibility and is not authorized by contract fixtures or incomplete measurements; do not launch it now.
-
-Full compiler failures were diagnosed sequentially without dropping units: camera timestamps require original index anchors (66320 exit1), LaSOT uses numeric filenames (second command terminal exit1), dense ArgoVerse frame_id compresses missing-image gaps (22205 exit1; 17/37 camera videos have nonconstant anchor offsets), and official dense annotations include nine zero-area boxes (97023 exit1). Retain source geometry/counts, use numbered filenames or timestamp interpolation between original TAO anchors, and leave zero-area GT at zero IoU. Final compiler29355 exit0 covers all500 train videos/491,353 images/1,489,990 unique base units; 52,911 base units deduplicate across sources, 353 modal-only base units remain. Novel/unmapped modal1,156/219 units never provide class/identity labels. The initial assumption of differing overlapping numeric IDs was not observed: all shared UUIDs have equal numeric IDs. Keep UUID alignment with original IDs retained separately. No validation/test labels enter training.
-
-Actual F0 shared text extraction63671 exit0 yields1203x256 features,866 base/337 novel,38 native BERT chunks/max104 tokens/backbone0; F0 remains reference-only, not selected for formal training. Implemented existing-parameter semantic classification, final pair supervision, persistent-memory classification, consistency and gate regularization, with unknown candidate/row/contrast labels masked and certified negatives retained. Single80792 exit0 and actual eight-GPU7759 exit0 prove BF16 connected identity/semantic gradients, unknown birth-label exclusion, ordinary text isolation, full novel inference vocabulary and identical post-update ranks. This is one scratch update on synthetic track candidates with actual text features, not joint training. Ordinary temporal regression20603 and32602 exit0 passes unchanged six-loss values. Actual AVA/ArgoVerse/LaSOT full-video loaders67140 exit0 cover976/451/1169 frames and4074/1372/1169 units, all base-only/strictly increasing time. Deterministic joint task draws give6518 MOT/3482 OVMOT in10,000 steps; registered probabilities remain.65/.35.
-
-Pinned unchanged official TETA b498aa87 and prepared complete LVIS-v1 TAO validation10545 exit0: all36,375 images/988 videos;112,798/113,112 original GT units and5473/5485 tracks map to v1;314 units/12 tracks explicitly unmapped by the official OVTrack synset conversion. Original v0.5 full-localization scope remains unchanged. TETA fixture22487 failed because OUTPUT_SUMMARY=False leaves upstream returned threshold uninitialized; use the official default summary=True with no source/metric modification. Fixture67046 exposed our bit-packed export IDs allocating huge dense upstream ID maps; stopped that owned synthetic command (exit143), removed the packing, and let official TAO resolve video-local IDs. Final61184 exit0 passes perfect100, wrong-class localization/association separation, identity-switch sensitivity and non-exhaustive unlabeled-object neutrality, with empty frames retained. No benchmark TETA/ordinary tracking score claimed, no formal joint optimizer or U3 launch. Keep all changes; original perception and downstream queues continue under unchanged gates.
-
-Fresh ordinary eight-GPU BF16 regression71729 exit0 after the OVMOT changes again confirms all six registered loss gradients and identical rank parameters. Existing gate recipes, candidate caps, seeds, metrics and training scopes stay unchanged.
-
-Current-source causal/state save-reload regression58539 exit0 passes on nonempty states, including ordinary text invariance and OVMOT raw identity/GRU isolation. No full candidate cache, simple tracking metric, learned MOT checkpoint or joint benchmark yet; continue the active U2 goal after publishing this completed source/supervision/semantic/TETA stage.
-
-## U2-B gated joint execution plan â€” 2026-10-12
-
-Previous goal turn made progress: full base-only dense supervision, actual shared F0 class features, same-core semantic/partial-label losses, official TETA validation conversion/export and actual eight-GPU proofs were committed3d2a9ec and published/verified as aff3b00. Current project identity/worktree are correct/clean; perception854970, ordinary864319 and MOT-only870157 are confirmed live. Read current baseline trainer/evaluator, both cache phases and U2 sections64â€“85. Implement exact4,000-step joint entry initialized with every selected MOT-only core tensor; global task.65/.35, all8 ranks/two8-frame clips, frozen foundation/BERT and separate5e-5/1e-4 core/adapter groups. At each1,000-step boundary evaluate every ordinary dev sequence plus all TAO validation through official TETA; reject any individual HOTA or AssA loss>.01 and enforce TETA34/AssocA37. Add exact RNG/optimizer resume and one blocking downstream owner that waits for real MOT-only completion/eligibility before OV feature-cache/class-text construction and joint launch. Actual semantic fixtures do not authorize a formal run. The full rank-zero metrics can exceed default NCCL collective timeout; extend only the collective wait timeout, with no change to data/metrics/optimizer/evaluation boundaries. Validate gate rejection, checkpoint initialization/resume and alternating-task eight-GPU execution before queuing.
-
-Implemented the complete4,000-step joint trainer/evaluator and gated downstream owner. Registration/preflight55888 and29449 correctly return exit2 HELD with zero formal updates while selected caches/MOT-only are absent. Joint boundary85960 exit1 exposed .59-.60 floating comparison falsely rejecting the inclusive1pt threshold; MOT boundary4594 exit1 also exposed .4+.03 rejecting exact3pt gain. Compare the recorded decimal scores at the same literal.01/.02/.03 thresholds, with no epsilon/extra rounding tolerance or gate weakening. Final joint62479 and ordinary22178 exit0 pass inclusive boundaries, individual HOTA/AssA rejection, both OVMOT gates, refinement conditions and four-checkpoint selection. Original ordinary14478 regression also passed before this targeted numeric fix.
-
-Actual eight-GPU BF16 alternating-task/init/optimizer proof14038 exit0 passed; strengthened1629 exit0 additionally restores the real scheduled teacher Bernoulli RNG for a bit-exact next update after actual joint checkpoint save/load. Both use all256-D core tensors,16 global clips/eight frames, actual reference-only F0 class text and synthetic tracking candidates; no formal optimizer exists. First whole eight-rank joint-evaluation fixture84831 exit1 failed at BDD predicted category person: the fixture incorrectly used the raw GT alias as detector vocabulary. Correct only the fixture to the existing registered pedestrian vocabulary; keep the actual BDD normalization, official reader, metrics and original scope unchanged. Run the whole entry again before queuing/publication.
-
-Final whole joint-evaluation proof99228 exit0 executes the actual eight-rank entry, all five official ordinary readers, both base/novel TAO fixture videos and official TETA with8 CPU workers. Simulated interruption after completed video units resumes with zero core forward calls and identical full metrics. These scores are explicitly synthetic and are not benchmark evidence; no real tracking/foundation optimization or U3 readiness is claimed. Keep exact whole-entry implementation and all gates. The current source stage now has a single blocking joint downstream owner waiting for genuine completion of MOT-only870157; only a recomputed eligible selected reference permits full balanced OVMOT feature caching, selected actual class text, and the4k joint run. No live source jobs were restarted.
-
-Launched that single blocking owner: `OMP_NUM_THREADS=2 TOKENIZERS_PARALLELISM=false .venv/bin/python -u tools/unified/queue_u2_joint.py --wait-mot-only-pid 870157`, actualPID883611/session32672. State confirmedWAITING_ELIGIBLE_MOT_ONLY; fullOVcache_started=False and formal_joint_training_launched=False. Keep all new implementations/proofs and publish the completed joint execution stage; the full U2 goal remains active with actual perception/cache/simple/learned/joint measurements unproven.
-
-## U2 self-contained native checkpoint implementation plan â€” 2026-10-12
-
-Previous goal turn made progress: scientific355c152 and exact eight-GPU joint execution/resume/evaluation proofs were committed, backed up and verified at GitHub c16cd98. Project root is correct and original perception/cache/baseline/joint owners are confirmed live. Read actual native runtime, U2 core and specification sections83â€“86. Final format must embed actual MM-GroundingDINO/shared BERT, tokenizer/config, every persistent core/head and task embeddings; the shape-only fallback is insufficient. Current core has no task embedding tensor. Add zero-initialized task embeddings only to the bounded semantic gate input; ordinary MOT gate remains exactly zero and raw identity/GRU remains task isolated. No formal track optimization has begun, so register this missing required component before selected caches/checkpoints. Implement native model reconstruction from embedded BERT architecture/tokenizer and strict embedded weights, with no external checkpoint/HF pretrained load. Validate actual F0 candidate/class-text bit-exact reload, causal state resume and same-core parameter sharing with a clearly reference-only random core pack; never treat it as a selected final checkpoint or U3 readiness. Actual final packing must recompute joint and perception eligibility and retain all original metadata/scopes.
-
-Native reference-pack32496 exit1 exposed bbox-head constructor-derived fields saved after native configuration mutation;64857 exit1 then exposed the analogous denoising-query fields. Remove only those six constructor-derived entries before serialization; native construction recreates them.41966 exit1 passed strict complete foundation/core tensor reload but failed shared-BERT feature equality. Targeted31560 exit0 proves native from_pretrained uses SDPA while bare embedded BERT construction uses eager: max feature discrepancy1.144409e-5; current native output remains bit-exact with the immutable F0 text cache. Store and restore the actual native attention implementation rather than weaken comparison tolerance. Task-embedding joint eight-GPU60299 exit0 retains bit-exact next stochastic optimizer update, nonzero embedding gradient and ordinary adapter gradNone.35642 exit0 passes causal/temporal and CPU semantic regressions; strengthened38946 exit0 explicitly perturbs task embeddings and proves ordinary MOT unchanged/raw OVMOT identity isolation plus unchanged eligibility/initialization checks. No formal optimizer, reference, live owner, seed or gate was changed.
-
-Attention attempt51064 exit1 still used eager because HF BertConfig.from_dict mutates the supplied dictionary and overwrites attn_implementation from kwargs;15925 verifies the actual packed class remained BertSelfAttention vs native BertSdpaSelfAttention. Pass a copied config plus explicit attention kwarg. Final native19361 exit0 proves all actual F0 foundation/core tensors,1203 class features, native MOT150/OVMOT300 candidate features and nonempty online state reload bit-exact, with external tensor/config/pretrained-HF calls prohibited. V1/V2 small deterministic generic/expression/true/shuffled integration outputs and metrics are bit-exact; this is a reference-only random core pack, not a selected final artifact or tracking benchmark. Task embeddings now use supplied zero weights without consuming RNG, preserving all subsequent shared-core initialization draws at the original seed. Final joint52310, causal/temporal/gate8930 and whole eight-rank official evaluation33800 exit0 pass. Targeted32182 recomputes actual parameter sharing after excluding shared detection/association/motion/lifecycle heads:236,751,992 shared non-head vs329,475 conservatively task-specific, fraction.9986102878>=.90. Only count metadata changed in the reference file; actual restored foundation/core tensors remain bit-exact. Formal packer recomputes original perception/MOT/joint eligibility, embeds original source/protocol/sampler/step metadata and remains pending actual selected-runtime retention. Keep all changes. No selected cache, real tracking benchmark, formal optimizer or U3 readiness yet.
-
-Current CPU semantic18032 exit0 confirms task-embedding gradients and unknown-row/candidate masks after preserving initialization RNG. Store CPU evidence separately as ovmot_training_contract_cpu.json, retaining the historical GPU single-frame report. Updated eight-GPU joint evidence covers BF16 gradients and exact restore with current embeddings.
-
-## U2 frozen text reuse for upcoming candidate caches â€” 2026-10-12
-
-Previous goal turn made progress: actual native one-file F0/core reconstruction, task-embedding isolation and real parameter-sharing/retention proofs were committed2b775b7, backed up and verified at GitHub9c12586. Project root/clean worktree verified; original F0/perception and downstream owners are live and ordinary cache is still unlaunched. Read native GroundingDINO.predict: every full LVIS frame re-encodes the same38 BERT prompts although the language backbone is frozen; native prompt/token-positive-map preprocessing is also repeated. Implement worker-local fixed-text memoization by wrapping native language forward and prompt construction, preserving all native image/backbone/encoder/decoder/NMS operations and cloning returned tensors/maps before mutable native consumers. Apply only to upcoming full selected-foundation cache workers, without changing any running full audit or perception-training process. Measure actual FP32 F0 two-frame MOT and full1203-class OVMOT candidate/selected-feature equality, mutation isolation and actual BERT-call counts/timing; no approximate precision, cap, chunk, vocabulary, seed or scope change. Keep only if bit-exact outputs hold.
-
-Initial frozen-text38589 exit0 proves actual FP32 F0 native/cached MOT150 and complete1203-class OVMOT300 two-frame candidate/feature parity, tensor/map mutation isolation and exact method restoration. Warm OVMOT elapsed5.208873â†’4.619842s (1.1275x observed throughput), with two-frame BERT76â†’38 calls and unchanged2 backbones/76 decoder calls. Implement only in upcoming selected-foundation cache workers; record source/proof provenance in spec and actual counters in all worker/full reports. Integrated80238 exit0 reconfirms full parity and executes the actual worker/serializer on explicitly separate two-frame reference inventories for both phases: serialized FP32/BF16 fields bit-exact, semantic/decoder storage shared, zero GT labels, completed-unit resume with no inference and identical unit manifests. Final warm OVMOT5.255846â†’4.638013s (1.1332x), MOT.188991â†’.180778s (1.0454x); shared-GPU two-frame observations, not full-cache speed estimates. Keep optimization; all actual source frames, chunk/candidate limits, precision, eight-rank assignment, four-volume distribution, original gates and running full jobs are unchanged. No formal selected cache, track optimizer, benchmark tracking score or U3 readiness exists yet.
-
-## U2 selected-artifact finalization execution plan â€” 2026-10-12
-
-Previous goal turn made progress: bit-exact real F0 fixed-text reuse and actual cache-worker serialization/resume were committed1ad7563, backed up and verified at GitHub4306013. Current project/worktree are correct/clean. Original joint blocking handle32672 is confirmed live and waits eligible MOT-only; no formal OV cache/joint has begun. Read U2 sections83â€“89/98, actual packer, small retention audit and joint owner. Implement a separate single blocking finalization owner waiting original883611 completion, then recompute full perception/MOT/joint eligibility, package the actual selected U2-B foundation/core, audit actual packed retention and unmodified selected-core causal/isolation/save-load behavior, and generate final readiness solely from current full artifacts/provenance. Reference-only F0 packs and scratch proofs cannot fulfill selected-artifact gates. Reject or retain exact held/blocked status when earlier gates fail; conditional U2-C remains a separate bounded task if eligible, never substitute a U2-B pack. Preserve all running owners and budgets. Use deterministic real candidate probes for actual learned heads; never modify selected weights to make runtime contract checks pass.
-
-Existing historical two-GPU smoke had only one backward, while the requested two-step contract was missing. Updated the existing joint proof entry to accept expected world size2 or8 without changing its default eight-rank behavior; actual CUDA0/7 two-rank26053 exit0 now covers MOT/OVMOT updates and exact stochastic next-update checkpoint/RNG/optimizer restore. Fresh single-GPU8844 exit0 includes nonzero current task-embedding gradient and unchanged BF16 identity/semantic loss values; existing current-eight-GPU evidence stays intact. Reference selected-core-audit entry99248 exit1 exposed native candidate metadata strings being cloned as tensors; clone only tensor fields and retain metadata unchanged, then rerun targeted entry. This is an audit-interface repair, not a selected-weight, seed, gate or training-protocol change.
-
-Selected-core entry48760 exit0 now passes four actual native F0 MOT frames and unchanged reference-core weights:150 births/repeat matches, one-frame occlusion/recovery, future-state independence, arbitrary MOT text invariance, raw OVMOT/fixed-pair GRU isolation and bit-exact state resume for both tasks on one core object. Readiness69971 exit0 tests the independent complete requirement set/material failure cases and the actual CLI returns2 HELD with missing full cache/simple measurements. Actual selected-audit CLI75746 exit0 proof rejects a reference-only random pack before cache read. Review found old small generic retention used only car rather than U1 original10-entity vocabulary; use original VOCABULARY in final audit and require that exact vocabulary in readiness. Full-vocabulary native/reference-pack96632 exit0 is bit-exact on both V1/V2; all original full U1 references are unchanged, and historical reference metadata now names the restricted car-only scope. Missing actual selected audits never become readiness evidence. Keep all repairs/entries.
-
-Launched one blocking finalization owner with OMP_NUM_THREADS=2 TOKENIZERS_PARALLELISM=false .venv/bin/python -u tools/unified/queue_u2_finalize.py --wait-joint-pid 883611. ActualPID896659/session18355 confirms WAITING_ORIGINAL_JOINT_OWNER, pack_started=False, ready_for_u3=False. It waits real original completion, recomputes current full selection, packs actual frozen U2-B tensors, runs original-vocabulary retention and unmodified selected-core audits, then verifies every final gate against bound artifacts. Completed units resume by actual checkpoint receipt; reference fixtures and conditional U2-C cannot substitute for selected U2-B. No original owner was restarted, no additional formal optimizer launched and no U3 readiness claimed.
-
-## U2 native image-batch admissibility probe â€” 2026-10-12
-
-Previous goal turn made progress: selected-artifact finalization and bound real-audit/readiness entries were committed4102740, backed up and verified at GitHub592d097. Current worktree/project are correct/clean; original full TAO parent63615 is confirmed live through its existing blocking handle, and finalization waits original883611. No actual formal baseline/cache is ready. Read native inference_detector and fusion attention before considering future throughput: list-image API still loops singleton test_step, whereas the multimodal fusion uses a scalar max over the full batch. Probe actual FP32 native batch2 versus singleton on the two fixed original MOT17 frames, plus a second-image perturbation while keeping the first fixed. This is a small admissibility measurement, not a new formal audit or source/model change. Reject batching if candidate parity or first-frame independence fails; keep running jobs, candidate policy and original native singleton protocol unchanged.
-
-Native image-batch probe10904 exit0 yields a genuine negative optimization result: same native preprocessing shape on two fixed MOT17 frames, but batch2 boxes/scores differ from singleton on both. Max same-rank score differences.000565775/.002606869; large coordinate differences1033.97/1865.55 reflect changed sorted proposal alignment and are not a matched-box localization error measurement. All labels remain equal. Actual six fusion stable_softmax_2d flags are False; the suspected scalar max is inactive, and changing only second-image pixels leaves the first batch output bit-exact in this probe. Reject native batch2 on candidate parity; no full OVMOT batch or semantic-feature integration is attempted, no TF32/precision tolerance or candidate policy is changed. Keep native singleton plus already proven fixed-text reuse. Original full TAO/perception/baseline/finalization jobs remain under their original blocking owners and gates; no tracking benchmark or U3 readiness is claimed.
-
-## U2 upcoming perception-audit fixed-text reuse â€” 2026-10-12
-
-Previous goal turn made progress: actual FP32 native image-batch parity failure was measured and committed24be26a/published64cb0ff; retain native singleton. Current project/worktree are correct/clean, and existing full TAO63615 blocking handle is confirmed live. Read current full TAO worker and bounded adapted-checkpoint evaluation caller. The already bit-exact fixed native text reuse can reduce repeated38-caption BERT work in upcoming adapted TAO/C-TAO audits too. Add an explicit optional CLI flag with unchanged default F0 behavior; only future adapted-checkpoint evaluator requests it. Keep identical singleton/native NMS, protocols, GT denominators, checkpoint/source fingerprints, resume rows and gates. Validate actual unchanged two-source smoke rows/recall counts with and without the flag before retaining this integration. Do not modify or restart the current loaded F0 workers.
-
-Actual paired portability-worker37402 exit0 confirms optional text reuse: original two-source smoke metadata/rows identical,300 proposals each, TAO2base/1novel GT and C-TAO10base GT hit counts unchanged, one backbone/image, BERT38calls/38hits across two complete1203-class passes. Native/reuse elapsed11.545474/10.907659s are limited two-image cold/warm observations, not full throughput. Flag defaultFalse preserves F0 metadata/commands and resumable exact frame prefixes; only future adapted-checkpoint evaluation explicitly passes it to new workers. Keep this verified integration; all original full processes, protocols, GT denominators, weights, budgets, seeds and acceptance criteria remain unchanged. Actual adapted full audit and all tracking results remain unmeasured.
-
-## U2 full F0 completion and native checkpoint load repair â€” 2026-10-12
-
-Original blocking TAO audit63615 returned exit0/COMPLETE: all36,375 TAO validation and17,131 C-TAO original training frames measured. TAO base105,408/110,055=.957775658, novel2,777/3,057=.908406935; C-TAO base50,975/53,263=.957043351, novel inapplicable. Both OV portability streams pass; BDD/MOT17/MOT20 ordinary F0 gates still fail, so bounded U2-P is required. Its original owner11636 genuinely terminated at native MMEngine checkpoint loading before any optimization, because PyTorch's default weights_only=True rejects the original checkpoint's HistoryBuffer. Plan: retain original full measurements and exact eight-GPU replay/protocol; apply the existing U1 process-local TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD convention, verify the actual native loader on immutable U1R2, then resume the unfinished epoch and terminal downstream queues with updated owner PIDs. No metric, seed, budget or acceptance change.
-
-Targeted regression94105 exit0: all six terminal shards exactly cover53,506 unique registered frames, every frame has one backbone call and300 native proposals, both source GT denominators and measurement totals match. The native MMEngine loader now loads the immutable SHA-verified actual U1R2 state_dict1,069 tensors plus HistoryBuffer/optimizer; full unchanged preflight is READY. No epoch checkpoint or first optimization update existed at failure. All four original downstream handles returned terminal HELD states; recover their owners only after this evidence. Keep the localized compatibility fix.
-
-Recovery blocking supervisor23776 launched genuine new owners after all old handles terminated: perception1054069, ordinary1054070, MOT-only1054071, joint1054072, finalization1054074. Original failed states preserved in outputs/unified/u2/recovery_20261012/*.original; original training log retained. The single supervisor waits these exact processes; downstream unchanged gates prevent cache or tracking launch before a fully selected passing foundation. Full budget remains1,250 steps/epoch, at most2epochs, followed by6,000 MOT-only and eligible4,000 joint steps. Actual selected pack and U3 readiness remain unproven.
-
-## U2-P epoch1 complete; adapted audit worker argument repair â€”2026-10-12
-
-Recovery23776 returned genuine terminal exit1 after epoch1 completed all1,250 updates and saved epoch_1.pth (SHA1d9077ae603f40de0e955a11a88083f914f98faa967bc46cdd06bcdfb5129688). Actual checkpoint contract PASS compares265 immutable BERT/Swin0/1 tensors bit-exactly with original U1R2. First actionable evaluation failure: all ordinary workers exit2 before inference because the parent omits --measurements-dir, so their adapted-checkpoint parser sees the default F0 directory. The TAO parent has the same omission and would fail at its next stage. Plan: propagate the already explicitly supplied independent directory in both existing worker commands; verify actual adapted native smoke workers through both parent launchers, preserving guards and scopes; resume unfinished full evaluation from the completed epoch1 checkpoint, never rerun epoch1 optimization. All recovery downstream owners are terminal HELD, and will be restored behind the new perception owner.
-
-Storage rebalance requested by user â€”2026-10-12: move only11 completed/CRC-extracted TAO archives from /data0/user (87.981GiB,49.54% of prior usage) and /data1/user (85.328GiB,48.72%) to matching /data3/user/TAO-Amodal/frames paths. Destination has789GiB free; extracted train/val/test image paths and scientific protocols remain unchanged. Two parallel volume transfers verify each destination against its existing download SHA before atomically replacing the original archive with a symlink; no source data is removed before verified copying. Plan recorded in outputs/unified/u2/storage_rebalance_20261012/plan.json.
-
-User superseded archive relocation: original transfer69601 stopped with exit143; deleted all21 CRC-extracted completed TAO archives across allfour volumes (345.674GiB) plus cancelled relocation temporary copies (68.760GiB). New plan migrates approximately half of cleaned /data0/user and /data1/user image storage, using only test/validation directories; train directories remain in place. rsync validates transferred data, then a dry-run checks complete matching trees; Linux renameat2 exchange atomically replaces each original directory with a target symlink before removing its verified redundant original copy. Scientific image paths, original source annotations and all protocols stay valid. New explicit plan: outputs/unified/u2/storage_rebalance_20261012/image_migration_plan.json.
-
-Post-cleanup image migration completed:95 directory units, /data0/user44.814GiB and /data1/user44.907GiB relocated to /data3/user, each49.999% of cleaned initial occupancy. rsync full-tree parity passed before atomic symlink exchange; all original image paths remain resolvable, only test/validation storage moved, train paths and experimental contracts unchanged. Final actual directory sizes and df recorded in outputs/unified/u2/storage_rebalance_20261012/image_migration_result.json.
-
-Adapted launcher regression96599 exit0: through the actual ordinary and TAO parent launchers, each actual child receives the separate measurements directory and real epoch1 checkpoint SHA; one original legal KITTI frame and original two-source TAO/C-TAO smoke frames execute native inference successfully. Test-only smoke injection and collector do not produce formal measurements or weaken aggregate completeness; report is explicitly reference_only. Full recovery supervisor95952 resumes epoch1 evaluation from existing epoch_1.pth, new perception1089957/ordinary1089958/MOT-only1089959/joint1089960/finalization1089961 owners retain unchanged budgets and gates. All previous owners returned terminal, their failure states retained. Full U1 retention and adapted portability remain pending; no tracking or U3 claim.
-
-User-requested inference sharding throughput plan â€”2026-10-12: full audits already use8 physical GPU shards, while native full1203-class TAO performs38 multimodal transformer passes per image. User asks to shorten runtime. Temporarily SIGSTOP exact evaluator1090197 and its existing TAO parent1238269/workers1238270..1238277, retaining all completed ordinary measurements and existing TAO exact frame prefixes; no original source inference re-started. Measure1/2/4 independent singleton processes on GPU1, real adapted epoch1 SHA1d9077a, identical12 reference frames spanning original TAO source domains, full vocabulary/native FP32/static text reuse and exact boxes/scores/classes parity. This is a bounded throughput probe, not a metric or scope change. Adopt higher concurrency only if actual throughput improves with unchanged outputs; otherwise retain the fastest measured concurrency and resume the existing owner. Probe shell60967; hold receipt outputs/unified/u2/perception_adaptation/throughput_probe_hold.json.
-
-Same-GPU probe60967 completes: identical12 actual native full-vocabulary reference frames take158.996s with1 process,251.286s with2 and220.054s with4; all proposal boxes/scores/classes are bit-exact. Reject extra processes: single worker per GPU is fastest on this sample. Initial default-device memory counters were on GPU0 instead of model GPU1; omit those zero counters from published aggregate, retaining actual wall-clock/parity evidence.
-
-Native metadata optimization85924 completes: explicit target CUDA binding plus one bulk integer-label copy for native label_names construction reduces the same12-frame sample to103.870s (observed1.531x), boxes/scores/classes bit-exact for all12, native full label_names identical on the first full-vocabulary frame; native methods restored. Actual model GPU1 peak allocation1,664,202,752bytes. This comparison includes CUDA binding and changed background load (seven formal audit workers resumed), so it is not an isolated causal label-copy benchmark or a full-run speed guarantee. Keep integer-only optimization provisionally; verify actual two-source native worker rows before resuming formal prefixes with it. Vocabulary1203, chunks32/38, NMS.8, Top300, precision/weights/protocol/GT denominators remain unchanged.
-
-Actual bulk native worker63758 exit0: unchanged two-source smoke rows/GT hit counts and resume metadata are exact,300 candidates per frame, one backbone per frame,76 head calls/68,400 integer class labels; native/bulk CLI wall68.842/51.966s includes initialization and two frames, not formal throughput. After verified controlled interruption,95952 returned terminal exit1 (expected interrupted TAO command) and all four gated followers returned HELD without tracking launch. Every existing exact TAO prefix parsed successfully:440 completed frames preserved across initialized shards; shard1 had not yet written metadata or rows. All76,068 ordinary frames and epoch1 original1,250 updates retained. New supervisor57530 launches perception1313649/ordinary1313650/MOT-only1313651/joint1313652/finalization1313653. Full evaluation skips complete ordinary measurements and resumes unchanged eight TAO partitions with explicit GPU binding plus bulk integer metadata; labels alone temporarily use CPU for native name construction and return to the original device before NMS. Both flags preserve full1,203 vocabulary,38 native chunks, FP32, backbone counts, GT scope and all gates.
-
-Actual epoch1 ordinary summary: BDD Top150.936574, Dance.999036, MOT17.878066, MOT20 Top150.819136/Top300.973281, original legal KITTI.946394. All five full ordinary streams are measured; MOT20 satisfies the registered Top300 crowded threshold but formal registration/selection still waits complete TAO and U1 retention. No selected foundation, candidate cache, tracking benchmark or U3 readiness is claimed.
-
-### 2026-10-13 â€” U2 perception epoch 1 selected
-
-- Completed the unchanged full TAO/CTAO portability audit: 36,375 / 17,131 images, Top300 base recall 0.9742855845 / 0.9729080225; TAO novel recall 0.9460255152 (2,892 / 3,057). Unmapped TAO GT retained separately (305 / 314 hits).
-- Epoch 1 foundation `1d9077ae603f40de0e955a11a88083f914f98faa967bc46cdd06bcdfb5129688` passed all seven portability streams and U1 retention: generic V1/V2 0.9918663023 / 0.9672269380; expression Top100 V1/V2 1.0 / 0.9785374828. Fixed 500-pair language audit true/shuffled AP50 0.7301285093 / 0.4067468580. Generic scope 4,201 images; expression scope 7,160 representative query frames, 7,199 target references.
-- Selection source receipts and their registered digests agree; retain epoch 1, no second adaptation epoch required. Existing recovery owner exited successfully and advanced the eight-GPU ordinary candidate cache automatically. Formal tracking scores and U3 readiness remain pending.
-- Evidence: `outputs/unified/u2/perception_adaptation/eval_epoch_1/selection.json`, seven `measurements/*.json`, and generic/expression/counterfactual `result.json`.
-
-### 2026-10-13 â€” user-directed GroundJEV research pivot
-
-- User terminated full U2 candidate caching and authorized GroundAnything DLM + pretrained OneJev tracking research on at most four GPUs. Goal changed; this is not algorithm failure/NO_GO.
-- Verified /proc ancestry/start ticks and stopped 13 old U2 processes with SIGTERM; no old queue/cache worker remains. Other project GPU jobs preserved. Removed 4,748 verified feature shards (39.89 GiB allocated), retaining manifests/data/results and loadable epoch-1 checkpoint SHA 1d9077aeâ€¦ (1,909,880,505 bytes).
-- New worktree /data2/user/LocateMOT_GroundJEV and branch codex/groundjev-4gpu-20261013 inherit freshly fetched remote 51614cb. Official GroundAnything/OneJev code cloned directly without proxy; isolated environments/weights setup started. No new training or tracking metric claimed.
-- Correct inherited status terminology: generic .9787925789 is Top150 recall IoU .5, not AP; expression Top100 V1/V2 recall 1/.9785374828, while .7237566558/.6556441180 are query AP diagnostics. Raw receipts unchanged.
-- Next: real DLM/OneJev loading, own-state short clip â†’ full legal MOT video, fixed-candidate Simple/Full comparison, tracking-SFT and shared RMOT/OVMOT evaluation. Keep evidence-based failure repair and finite training budgets.
-
-### 2026-10-13 â€” GroundJEV legal inputs and initial online interfaces
-
-- Verified real legal MOT17-02 dev299, DanceTrack0004 full-val1203, MOT20-01 dev214 frames. No new data download or test-GT access needed for first video work.
-- Implemented official-grid DLM HTTP candidates with missing native confidence explicitly preserved, pretrained OneJev batched Choice/Noul/Score identity and lifecycle adapter, Hungarian global competition, reliable long-memory updates and causal save/restore. Real crop evidence is explicitly distinct from pending native GroundAnything features. Replay control preserves identical candidates and reports no end-to-end FPS for cached perception.
-- A two-frame real annotated CPU fixture passes identity persistence, exact resumed state and rejected past timestamps; GT is used only in this explicit fixture, not as a claimed runtime/benchmark result. Real model integration remains pending dependencies and weights.
-- Installed independent Python3.12.15. Separate OneJev/SGLang installs active. PyYAML shared uv lock failure fixed by dedicated setup cache. Direct model transport hit aria2 TLS and curl HTTP2 cancellation; retained byte prefixes. Eight concurrent official1MiB ranges complete in7.397s (1.134MB/s aggregate); adopt sixteen8MiB ranges/large model on HTTP1.1 with official final weight digests. No proxy, no GPU usage yet.
-
-### 2026-10-13 â€” official video evaluation and runtime setup progress
-
-- Added complete-scope ordinary MOT export using unchanged TrackEval12c8791; all299 legal MOT17-02 dev frames in a labeled GT oracle fixture yield expected perfect metrics/zero IDSW/FP/FN. This validates format/scope handling, not GroundJEV performance. Runtime replay now checks actual physical image paths.
-- To avoid repeated multi-GB dependency transfers, copied matching CPython3.10 installed framework files into an independent OneJev environment, excluding old Transformers/MMDetection and source console scripts. First copy attempt used the assumed venv package directory and copied zero files; corrected to actual distribution roots, then recorded nonzero distributions. Source environment untouched, no shared symlinks. Torch2.10+cu128/vision0.25 imports and CUDA availability on GPU6 pass; OneJev/Transformers5.5.4 installed and all69 package requirements compatible.
-- Prefetched official pinned large PyPI wheels via verified byte ranges. Exact-version py3-none NVIDIA dependencies reused for GroundAnything's separate Python3.12/Torch2.9.1 setup. Controlled package transport interruptions preserve caches/bootstrap/custom vendor source; remaining official installation/ABI check continues. Universal flashinfer-cubin wheel was initially excluded by the platform selector; corrected from actual PyPI filename and completed the missing wheel.
-- One blocking readiness queue owns the actual pretrained MOT-frame check, gated on full official OneJev weight receipt. Models still downloading; no real-model tracking or training result claimed. Optimizer steps zero, at most four physical GPUs enforced by common launcher; other projects preserved.
-
-### 2026-10-14 â€” first actual OneJev frame and checkpoint-version repair
-
-- Official OneJev weights complete and LFS digest matches: model.safetensors2,214,590,296bytes SHA cb4b7456703baa26a0cfacf177067200b50021df5a6ba2a2cd1e6f6c868f2244. No weight/model substitution.
-- FirstGPU load reads474 weight entries but default official fork self-check fails (.0857 rounded probability difference > .05). Initial OneJev5.5.4 pin incorrectly reused GroundAnything's requirement; actual checkpoint config declaresTransformers5.17.0. Update only isolated OneJev to5.17.0/tokenizers.23.3, keep all official checks and .05 tolerance; same pretrained weights then pass auto validation and use batched mode.
-- Real MOT17-02 frame000302 processed on GPU6 with Choice/Noul/Score: NEW.36689/IGNORE.63311, visible people.978877, quality expected level.919935. Preserve the negative generic choice; this is a load/interface check, not association accuracy. Actual three-question request.286737s, allocator peak3,119,928,832bytes, steps0.
-- GroundAnything's independent Python3.12/Torch2.9.1/Transformers5.5.4 custom serve environment completes and official ABI check reports only its expected cuDNN9.16 metadata override, no unexpected conflicts. Single DLM owner waits for verified bundle and available GPU6 memory before starting official denoising with static memory fraction.4. GroundAnything download remains active. No full online video or fine-tuning claimed yet.
-
-## 2026-10-14 â€” official DLM service and GPU ownership
-
-GroundAnything DLM download completed at the pinned official revision with
-its 9,687,419,736-byte weight matching the official LFS SHA256. The single
-service owner launched official custom SGLang denoising on physical GPU6
-(static memory fraction .4); the model endpoint responds. A single blocking
-clip owner starts four real MOT17 dev frames using native DLM candidates,
-pretrained OneJev, global assignment and its own causal identity memory.
-Completion, output validity and tracking quality are still pending.
-
-The user asked why physical4/5/6/7 still showed processes. A one-time GPU
-process/cwd/argv audit identified UDMT training/inference on4/5/7, the two
-GroundJEV model processes on6, and an unrelated user process on6. This is
-not four-GPU GroundJEV usage and not old U2 caching. Other project processes
-were preserved. Keep the explicit project device allowlist and ownership
-attribution; no metric, seed or protocol changed.
-
-## 2026-10-14 â€” tracking SFT teacher curriculum hypothesis
-
-Hypothesis: the pretrained generic decision model needs explicit tracking
-identity, lifecycle and memory-update supervision before own-state rollout.
-Prepare real 16-observation legal training clips from MOT17-02, DanceTrack0001
-and MOT20-01, mined for overlap, low visibility and missing observations.
-Use a single shared runtime question/state builder and randomized persistent
-identity aliases per clip. Teacher GT proposals/history are allowed only in
-this initial curriculum; they are not GroundAnything output or benchmark
-predictions. Missing shortlist identity and withheld correct-option rows are
-explicit NO_MATCH supervision, never mislabeled as NEW. Full completion also
-requires verified false-candidate supervision and actual model-state rollout.
-
-Start with official multimodal language-model full SFT, frozen vision,
-100 optimizer steps, one-row microbatches and four-row accumulation. Retain
-the original seed0 and5e-6 recipe, verify all rows fit the token plan, save
-every25steps, inspect real gradients/loss and reload the checkpoint. The
-subsequent finite first training budget remains500â€“1000steps including
-model rollout; this100-step check does not satisfy formal training completion.
-The first native online clip is unexpectedly slow, so profile that exact live
-process once before proposing a speed change.
-
-## 2026-10-14 â€” native video failure, official parsing and resume
-
-The native DLM + OneJev loop completed real frames302â€“304:31 candidates
-each,30/31/31 output tracks,18.194/19.647/19.763s per frame. OneJev
-created51 persistent IDs by the third frame, evidence of unadapted identity
-fragmentation, not tracking success. The fourth frame failed the strict
-client parser with non-canonical coordinate ordering/repeated phrase blocks.
-The runner then deadlocked during cleanup: its parent waited for ffmpeg while
-ffmpeg waited for an unclosed raw-frame pipe. A one-time targeted process
-diagnosis identified this, the exact owned encoder received SIGTERM and
-then SIGKILL after its verified10s timeout; no model/other-project process
-was signalled. The original traceback returned and is preserved.
-
-Repeating the exact frame/request three times yielded the same strict parse
-error (17.009s total); resampling is not a fix and default inference still
-uses one request per frame with unchanged model/decoder/sampling parameters.
-The pinned official evaluation scoring parser preserves35 geometrically
-valid boxes in this response. Add an explicit official_scoring adapter policy
-using that unmodified function, retaining strict_wire_valid=false, raw output
-and error. A regression on the observed failure matches every label/coordinate
-with the official scorer and still rejects truncated generations. Client
-strict mode remains selectable; no GT, coordinate repair or metric change.
-
-Fix encoder cleanup by closing stdin before waiting, persist the first
-failure, and reconstruct completed causal identity states from saved native
-Choice/Noul/Score decisions. Real prefix reconstruction reproduced all three
-frames' outputs/events/state exactly without GT or further model calls.
-A refactoring mistake (len(questions) after moving request construction)
-caused the first resumed attempt to fail at frame305; use len(request.questions)
-and retain that failed attempt. The second resume starts from the same three
-verified completed frames. Resumed legacy timing cannot account for the
-original failed request/interruption, so no complete end-to-end FPS is claimed.
-
-Teacher curriculum:18 legal16-observation clips,8964rows,59,665,520 history
-PNG bytes,3 real reappearance observations in DanceTrack. All8964 official
-question/target schemas verified;1728 Noul targets corrected from true/false
-to the official yes/no labels before any training. No development/test GT
-used. Official plan-only: p50/p90/p99/max5553/7201/7637/7858tokens,0 rows
-dropped at16384, maximum18options (actual API limit255). Full pretrained
-language-model100-step check launched on physicalGPU4 with frozen vision;
-GroundJEV now uses two physical cards4and6, other jobs preserved. The training
-owner is unique and blocking. This teacher phase still lacks complete false
-candidate/termination/long-gap/model-rollout coverage, explicitly pending
-for the next curriculum and formal500â€“1000step budget.
-
-## 2026-10-14 â€” first native online output and negative association control
-
-Four native MOT17 frames completed and passed prediction/one-to-one/memory
-and ffprobe integrity checks:31/31/31/35 candidates,30/31/31/35 tracks,62
-persistent IDs,next_id63. Official same-candidate4-frame TrackEval: Full
-HOTA.421629,DetA.650042,AssA.281686,IDF1.427481,60IDSW,16FP,24FN; Simple
-HOTA.748813,DetA.642304,AssA.895161,IDF1.836502,1IDSW,17FP,24FN. Retain
-this negative generic-pretraining result; it supports tracking adaptation,
-not a full-video/paper claim or global NO_GO. The resumed Full invocation
-allocator peak8,350,338,048bytes covers that invocation only. Complete
-end-to-end FPS remains null because the legacy interrupted run lacks failed
-attempt timing; Simple10.8387FPS is association replay only.
-
-The actual100-step SFT check is running: all474weights loaded,752.39M/852.99M
-parameters trainable, first5 losses finite and nonzero gnorm, peak15.1GiB.
-A separate single blocking owner starts all1,203DanceTrack0004 validation
-frames with native DLM + pretrained Full, then same-candidate Simple and
-unchanged TrackEval. Internal GPU monitoring excludes foreign jobs.
-GroundJEV uses physical4and6 only; no queue/task was restarted implicitly.
-
-## 2026-10-14 â€” complete-video generic decoder failure and official dense repair
-
-DanceTrack native attempt completed20frames then failed frame21. The raw
-output repeats the same box and ends with a trailing separator; even the
-unmodified official scorer returns no valid predictions. Preserve all20
-real frames, the valid latest memory, failure JSON and internally recorded
-resource peaks. Encoder cleanup now returns the real failure promptly.
-No frame is skipped or accepted as a valid prediction.
-
-Root cause hypothesis: generic client uses greedy inner/outer sampling rather
-than the officially documented dense request profile. The running server
-YAML fixes sampling_seed42; retain42. Probe the same frame with official
-DecodeV4 shared fields plus dense temperature.1/top_p.95/max8192 in both
-outer sampling and nested gam_dlm_decode. Actual probe3.345s produces5
-official-scoring-valid boxes; strict duplicate-coordinate error still logged.
-Do not relax geometry/truncation/metric validation or switch DLM to VLM/AR.
-Run a distinct, explicitly registered dense_v2 full video from its first
-frame because request numerics changed; the old20frames remain a separate
-negative attempt. This repair is retained pending full-video evidence.
-
-SFT owner remains live and has reached observed step40 with finite losses,
-nonzero gradients and15.2GiB allocator peak. Full ckpt-step25 is saved; no
-completed100-step or reload result yet. Disk check:365GiB free on/data2,
-enough for the finite model saves; feature-cache budget unchanged.
-
-## 2026-10-14 â€” checkpoint validation and same-candidate SFT check plan
-
-Previous goal turn made concrete progress: native model tracking, official
-four-frame baseline metrics, actual SFT and verified GitHub publication.
-Current single training handle is live at observed step80; dense full-video
-owner is live at observed frame14. Continue those exact owners.
-
-After the100-step owner exits, validate its done record and finite losses/
-gradients; compare saved language-weight probes against the original at the
-same BF16 precision, then load the checkpoint twice and check the same real
-tracking Choice/Noul/Score probability distributions. Follow with the exact
-four-frame candidate replay before/after control and unchanged TrackEval.
-No evaluation GT enters inference and no full-video result is inferred from
-this short scope. Then create real legal-train detector/model-history rollout
-supervision for the finite formal adaptation budget; teacher-only training
-does not complete the target.
-
-## 2026-10-14 â€”100-step negative result and complete-frame scoring policy
-
-Official SFT completed100steps/400examples in1509.262s. All474weight names
-retained; three BF16-aligned language MLP probes changed1.882M/1.623M/1.083M
-elements. Two reloads yield identical real tracking probabilities (maxdiff0),
-unchanged official fork auto check passes. Four same-candidate official
-metrics worsen: HOTA.328338,AssA.172383,IDF1.311787,75IDSW,17FP,24FN vs
-pretrained HOTA.421629,60IDSW. Keep the100-step negative checkpoint; do not
-claim completed formal adaptation or improvement from a falling training loss.
-
-Dense request full-video attempt also stops at frame21 with repeated/malformed
-wrappers, despite the isolated frame21 probe passing earlier. The request
-contract repair does not guarantee valid output and must not be described
-as a complete fix. Preserve both failures and20 valid native states.
-
-For complete-video measurement, register explicit empty_and_record policy:
-the same unchanged official scorer rejects malformed/truncated output; use
-its empty prediction set, record raw error and latency, and run the actual
-causal tracker on zero candidates. Every image remains in the official
-metric denominator. Mark completion WITH_REJECTED_PERCEPTION, never all-valid
-model success. Only GroundingProtocolError is handled; file/service/runtime
-failures still stop. Reuse the verified20-frame prefix under unchanged
-model/request/core settings; no skipped sample or reconstructed fake box.
-This is an explicit measurement policy, not a GroundAnything quality fix.
-Analyze correct-option coverage, selected identity and memory contamination
-to determine why GT-teacher SFT is not sufficient before formal rollout SFT.
-
-## 2026-10-14 â€” identity error diagnosis and evidence-format controlled repair
-
-Post-hoc fixed-anchor diagnostics on the same four frames show correct-option
-coverage100% for both pretrain and SFT100. Existing identity accuracy falls
-from14/78(17.95%) to6/74(8.11%); native correct-option mass.09925 to.04026.
-Candidate GT recall is the same111/135(.82222) for all three controls. The
-shortlist is not the immediate cause on this scope. SFT100 holds all93
-existing memory observations, while pretrain has7 wrong/unmatched memory
-updates and only1 identity-consistent update. Preserve diagnostics as
-post-hoc analysis, not official metric replacements or inference GT input.
-
-Two concrete exposure mismatches need repair: inference candidates have no
-explicit crop identifiers, relying on pixel-coordinate arithmetic in the
-full image; teacher rows use6candidates/16historical options vs16/32 at
-runtime, and miss wrong detections/model histories. Preregister optional
-v2_crop_motion evidence: current candidate crop sheet plus immutable
-anchor/long/recent history sheet, explicit causal IoU/center-distance
-matrices as features, and a genuine NO_MATCH option. Hungarian still uses
-native OneJev probabilities. Keep v1 unchanged for the ongoing full-video
-baseline. Run pretrain and SFT100 with identical v2 evidence/candidate lists
-as a controlled diagnosis before forming the new own-history curriculum.
-
-Evidence v2 pretrain produced no tracks: all128 candidate actions were
-NO_MATCH, including the first frame with no past identity. The new criterion
-was semantically overlapping with NEW. Retain that version/results and finish
-the matched SFT100 control. Register v3 as a minimum semantic repair: NO_MATCH
-requires a previously observed object and is not offered with empty history.
-Current crop/motion evidence otherwise identical. Do not silently overwrite
-v2 or alter its model scores.
-
-Evidence v2 pretrain and SFT100 both collapse to NO_MATCH on all128
-candidates (HOTA0,FN135); retain this actual semantic-error result.
-V3 removes NO_MATCH from empty history and distinguishes previously observed
-objects from NEW. Pretrain produces10/29/24/35tracks,HOTA.343944,47IDSW,48FN.
-SFT100 produces31/0/0/0tracks,HOTA.197395,0IDSW,110FN: zeroIDSW here reflects
-missing outputs, not good association. No improvement or full-video claim.
-The initial16-option teacher curriculum never exposes production35-option
-questions; together with teacher-only states/absent wrong detections this
-requires a matched-density own-state curriculum.
-
-Start actual checkpoint100 V3 rollouts on three legal16-observation train
-clips,32GT proposals plus two explicitly synthetic box-fragment negatives
-per dense frame, actual model states/decisions and no GT state correction.
-Reuse the observed real DanceTrack reappearance clip. Export supervised
-requests with correctly permuted IDs and crop-sheet labels,35-option
-exposure where actual memory permits, false-candidate IGNORE and real
-wrong-history/lifecycle/memory labels. This isolates decision learning;
-GT proposals are declared, not mislabeled as GroundAnything detections.
-Actual DLM-proposal training rollout remains a further required stage.
-
-The actual SFT100 V3 student rollout completed48legal observations and
-6792supervised rows,38,165,373bytes crop evidence,max35options. It has96
-IGNORE negatives,139NEW labels,87withheld-option NO_MATCH cases,206
-TERMINATE and2620REACTIVATE supervision. Actor after the first frame chooses
-NO_MATCH and keeps lost memory, so this branch does not supply enough wrong
-identity updates. Preserve that collapsed real rollout, then generate the
-same registered clips with the real pretrained V3 actor to obtain diverse
-wrong association/memory states. Both branches use GT proposals plus explicitly
-synthetic fragments, with GT labels only in the post-hoc supervisor.
-Formal adaptation will mix both branches and increase identity row weight
-4x (explicit repeat sampling) because the initial curriculum overweights
-lifecycle relative to association. Keep seed0,optimizer/lr and all registered
-frames; do not claim a completed formal500-step run until it actually ends.
-
-Pretrained V3 rollout completed6709rows/48observations/44,023,768bytes
-and526 contaminated history observations. Combined with the6792-row SFT100
-rollout gives13,501unique rows,20,881 after explicit4x identity repeats.
-Official complete plan: max22817/p50 15520/p90 22158/p99 22544,0 dropped
-at32768 context; actual35-option exposure. Finite500-step official full
-language-model SFT began from checkpoint100 with a deliberate new curriculum
-optimizer, seed0/lr5e-6 unchanged. First two losses3.2479/8.0658 and nonzero
-gradients299.979/513.188; peak18.1GiB,75.8/76.2s per step. Formal completion
-and before/after remain pending. Source proposals remain declared GT plus
-synthetic fragments; no claim of completed GroundAnything-proposal rollout.
-
-## 2026-10-14 â€” proposal-aware lifecycle label regression and resume
-
-A targeted audit found203 wrong ACTIVE/REACTIVATE lifecycle targets:164/3015
-student100 and39/2936pretrain rows label visibility despite no matching
-current proposal. Lifecycle requires association, so these targets are LOST.
-Signal only the verified exact500-step trainer (PID3993066, own cwd/config,
-SIGTERM), preserve its first5logged steps and alloriginal artifacts. No
-checkpoint was saved in this aborted stage; resume from validated100-step
-weights, seed0 unchanged. Old owner state STOPPED_FOR_VERIFIED_LABEL_REPAIR.
-
-The repair initially parsed life_357 as _357; fix the delimiter, preserve
-the partial derived repair, and regenerate from original real actor traces.
-The prematurely started repaired preflight correctly refused incomplete
-corpora and did not train. Source corpora, allstates/media, identity aliases
-and non-lifecycle targets stay identical. Assert all5951 lifecycle targets
-consistent with supplied current proposals and exactly164+39labelchanges.
-A new corrected500-step owner starts with unchanged weights/lr/seed/context/
-identity-repeat budget. The stopped run is not declared formal completion
-or silently combined into an improved result.
-
-## 2026-10-14 â€” native DLM visual feature adapter plan
-
-Previous goal turn made verified progress: real SFT/reload/negative controls,
-real actor histories, lifecycle label repair/regression, resumed finite500
-training and exact GitHub publication. Continue existing live owners, not
-new copies. Add a native visual adapter using DLM checkpoint visual/projector
-weights and the unmodified official eager MoonViT/K3 preprocessing path.
-Compare the official reference visual module with the SGLang visual adapter
-on the same real image, preserve feature-grid geometry through resize/padding,
-then ROI pool candidates. Only this small validation uses physicalGPU5,
-within the project allowlist/4card ceiling; live training4 and video6 unchanged.
-This provides genuine native features for temporal adaptation/Compact, not
-a substituted crop encoder or a full-dataset cache.
-
-
-## 2026-10-14 â€” Native feature adaptation and legal task loops
-
-Plan after source inspection: verify the actual DLM visual/projector output,
-train a finite frozen-backbone temporal adapter, wire these features into
-causal memory, then run legal Refer-KITTI/TAO loops with the existing OneJev
-checkpoint and exact-candidate Simple controls. Keep formal SFT500 and the
-full DanceTrack owner unchanged; use physical5 for new checks within4/5/6/7.
-
-Native DLM:428,482,048 visual parameters/170weights; real MOT regions31x2560
-and local tokens31x2560x3x3. Official serving visual function and immutable
-checkpoint reference both match exactly; independent ROI mapping differs
-9.54e-7. Initial config.hidden_size lookup failed after real forward; fixed
-only the adapter to use vision_config.out_hidden_size and retained failure.
-
-Temporal adapter:200steps, seed0,693,632 changed parameters, loss4.2086 to
-.09104, nonzero finite gradients; exact reload difference0. Frozen native
-backbone and decoder unchanged. Independent TRAIN calibration retrieval
-131/134=.977612, identical to unadapted features (random adapter130/134).
-No tracking-improvement or decoder-fine-tuning claim. Features are transient;
-training-device/CPU-training regions11,612,160bytes each, calibration1,464,320.
-Checkpoint receipt records absolute path,8,331,829bytes and SHA256.
-
-RMOT:legal current v2 validation0007, single+empty8frames and multi+empty
-12frames, GT-free inference/shared V1 core. Single Full HOTA0/IDF1=0/FN5;
-Simple HOTA.084894/FP11/FN5/IDF1=0. Multi Full HOTA.072117/FP16/FN30; Simple
-HOTA.081860/FP16/FN30; both IDF1=0. Proposal target coverage at IoU.5 is0/5
-and0/30. First bottleneck is referring proposals, not evidence of an identity
-head improvement. All rejected/empty frames remain in denominators. Multi
-full video-processing FPS.579804 including serialization/encoding; preloaded
-remote DLM initialization excluded. Single legacy frame-compute FPS.627761
-is explicitly not complete end-to-end speed. Exact fixed-candidate controls
-never claim detector FPS.
-
-Evaluation first failed on GT_LOC_FORMAT, then on omitted YOLO files in empty
-query frames. Set the correct path format, and look up boxes only when the
-release expression has targets; nonempty targets still require real labels.
-Original failures and predictions remain; completed multi Full/Simple units
-were reused by a new evaluation owner. No GT boxes, thresholds or scopes altered.
-
-TAO:registered first video40annotation frames and4frame functional scope,
-all1203fixed LVIS-v1 names in96-class native requests. Failure in any chunk
-rejects the whole frame explicitly; no class or sample silently dropped.
-Source physical FPS unavailable, so this functional scope declares annotation
-step time and does not claim a verified physical video clock. Full TETA with
-all original modal GT/category/frequency metadata is required; currently pending.
-
-Memory:real native proposals/features on2frames pass exact serialization,
-anchor immutability, held-long-feature consistency and past-time rejection,
-with10,682,927byte memory. V1 crops-only state remains backward compatible.
-New memory adds actual region/temporal anchors, recent/reliable-long features,
-16-observation feature history, native lifecycle survival probability, identity
-entropy and semantic observation counts. These are used only with native input.
-V4 JEV native-matrix request failed at56,426tokens on frame303; preserve it.
-V5 explicitly changes numeric evidence to CSV milli-units, retaining every
-candidate/identity pair and the original32768limit. Its real4frame test is
-running; no performance gain claimed. Compact/full-task and retention studies
-remain required. Previous goal work is progress, not goal completion.
-
-
-### Completed native-feature control and measured limitations
-
-V5 still exceeded context at34313tokens. V6 compresses native-history rows
-in addition to all-pair similarity matrices; frame304 then reached34419tokens.
-The smallest further fix is context-adaptive candidate grouping only when the
-unchanged official native preflight rejects a group before inference. Every
-proposal and up-to32 shortlisted identity options remains. The two valid
-V6 prefix frames restore exact native outputs/state; resume completes304/305.
-Original V4/V5/V6 failed artifacts remain, no sample skipped, no token-limit
-relaxation and no retraining/checkpoint change.
-
-MOT17 same128native candidates,4frames, unchanged TrackEval:
-
-| Decision | HOTA | IDF1 | IDSW | FP | FN |
-|---|---:|---:|---:|---:|---:|
-| Simple IoU | .748813 | .836502 | 1 | 17 | 24 |
-| Fixed IoU + native2560cosine | .738898 | .813688 | 4 | 17 | 24 |
-| Fixed IoU + trained temporal128cosine | .746248 | .828897 | 2 | 17 | 24 |
-| Pretrained OneJev V6 native/crop/motion | .359328 | .330709 | 61 | 17 | 33 |
-
-Native/temporal fixed controls use exactly the exported features, coefficients
-.5/.5, NEWscore.3,32-identity geometry shortlist and16-candidate groups. They
-are untrained association controls, not JEV/Compact. Temporal-vs-native is
-also a dimensionality change; random128 and larger video controls remain
-required before attributing the difference solely to training. Native-feature
-OneJev still underperforms Simple; no isolated feature or foundation gain
-claim. Existing-ID diagnostic accuracy9/75=.12, option coverage72/75=.96,
-mean correct native mass.062495; candidate GT coverage remains111/135.
-Its8,504,115,712byte allocator peak and.042028association replay FPS exclude
-live detection; resumed timing does not support an end-to-end speed claim.
-
-TAO first4frames have zero predictions and TETA/LocA/AssocA/ClsA0 under the
-unmodified official source b498aa87b252bfb75d7cc0d8d6435c3e1e74e4de. There
-are18GT boxes, source canonical class baby/person.n.01, Base. Novel is null
-because this scope has no Novel GT; never report it as a Novel benchmark.
-Two evaluator formatting configuration errors were repaired by restoring
-its official defaults OUTPUT_PER_SEQ_RES=True and OUTPUT_SUMMARY=True;
-metrics/source/GT/predictions unchanged, failures retained.
-
-The first vocabulary run registered1203classes but stopped on a rejected
-96-class chunk:192/192/192/288classes actually requested across the4frames.
-This is recorded in vocabulary_coverage.json, not claimed as exhaustive
-1203-class inference. A new finite owner requests ALL13chunks on every frame,
-records every native outcome, and only then applies the same explicitly
-registered whole-frame-rejection policy. It is active at publication.
-First-prefix run processing FPS.020682 is not full-vocabulary inference FPS.
-Original raw failures show many class-conditioned hallucinated boxes. The
-next grounding research must address proposal quality and negative classes
-through the official spatial/DLM training route, with dense/referring retention.
-
-Visualization integrity verified8/12/4frames; KITTI display edge padded from
-1242x375 to1242x376, predictions/GT coordinates unchanged. Formal500-step
-SFT and fullDanceTrack original blocking owners continue. Pilot and final
-unified research goal remain incomplete.
-
-
-## Pre-publication RMOT GT-contract repair (authoritative results)
-
-The new RMOT evaluator incorrectly read release top-left x/y as centers.
-This was found before updating GitHub's branch. Existing established
-read_gt in tools/unified/u1_formal_expression_gate.py defines normalized
-top-left xywh. Corrected transport agrees for all70target box comparisons
-to5.68e-14pixels. Predictions, target sets, frames, source extents, seeds,
-metrics and thresholds unchanged. Original metric receipts are preserved
-as invalid_center_format_metrics.json and explicitly marked invalid;
-local invalid GT views remain but raw GT is excluded from GitHub.
-
-Authoritative corrected results:
-
-| RMOT scope / backend | HOTA | IDF1 | IDSW | FP | FN | Proposal target recall IoU.5 |
-|---|---:|---:|---:|---:|---:|---:|
-| Single/empty8frames Full | 0 | 0 | 0 | 0 | 5 | 4/5 |
-| Exact candidates Simple | .242284 | .375000 | 2 | 7 | 1 | 4/5 |
-| Multi/empty12frames Full | .194792 | .217391 | 0 | 11 | 25 | 5/30 |
-| Exact candidates Simple | .243151 | .217391 | 0 | 11 | 25 | 5/30 |
-
-The earlier zero-proposal-coverage diagnosis is invalid. On the single
-query, four correct observations are present but V1 OneJev suppresses them
-as IGNORE; association/birth/input evidence is the first failure. On the
-multiple-target query, proposal coverage5/30 still limits every tracker.
-Next controlled check should compare V1 against current-crop V3 on the
-same RMOT proposals, while preserving the DLM multi-target recall deficit.
-Dense/referring adaptation and original retention remain required, but
-not every RMOT failure can be attributed to the perception front end.
-
-The new all-class TAO owner remains active. A800-SXM4-80GB hardware was
-verified for4/5/6; foreign UDMT processes are unchanged. Original OneJev
-500step and fullDanceTrack owners remain responsible for their jobs.
-
-
-## Exhaustive TAO functional control completed
-
-All52native requests completed:13chunks and1203fixed categories for each
-of4registered annotation frames. Unchanged TETA yields0TETA/LocA/AssocA/
-ClsA and0predictions under the recorded whole-frame-rejection policy; Base0,
-Novelnull because this video's GT contains no Novel class. No full-video
-or complete-dataset result is claimed. Actual complete processing
-FPS.0037577955 includes all calls, association, file/video writes and writer
-completion; preloaded remote DLM startup and9s-class OneJev loading excluded.
-
-Rejected/scored chunks per frame:11/2,10/3,7/6,10/3. Independently scored
-chunks contain201/441/777/354boxes. Evaluation-only class-agnostic target
-coverage is10/18 atIoU.5 before whole-frame rejection. This is a localization
-diagnostic, not TETA or classification correctness. Whole-frame rejection
-discards useful native outputs; retain this negative control and preregister
-a query-level empty-prediction control that retains independently scored
-chunks, all class requests, all GT and frames. Never label invalid chunks
-valid or change the official parser/metrics. Raw native responses remain local.
-
-At this completion check, the original blocking SFT500 owner is live, last
-reported50steps/loss2.8577/20.6GiB allocator; original fullDanceTrack owner
-is live, completed769of1203frames. Dataset physical clocks independently
-agree with seqinfo:MOT17=30Hz,DanceTrack=20Hz,MOT20=25Hz. TAO sourceFPS
-remains unavailable and annotation-step units explicitly declared.
-The69-file native-feature/GT-contract stage was verified on GitHub at
-1724df9de3465fce5fd1de96ccf81510029cd7f1 with exact local tree equality.
-No Pilot or final-goal completion claim.
-
-
-## 2026-10-14 â€” Next controlled task decisions
-
-Previous goal turn:progress, with real native adaptation/task controls and
-verified GitHub publication. Current project is the authorized independent
-GroundJEV worktree. Plan after code inspection:fix proposals/checkpoints/data
-scope, compare RMOT V1 vs V3 current-crop evidence for pretrained/SFT100;
-then retain independent scored TAO chunks, keeping failed chunks empty and
-all1203classes/every GT/frame. Preserve whole-frame rejection as a separate
-negative control. No official parser/metric or seed changes. Reconstruct
-only already-recorded native responses, with no GT access or new detector
-requests; all resulting timings are association replay, not end-to-end.
-A single blocking owner executes registered finite controls on physical5;
-original SFT4/DanceTrack6 owners continue. Peak monitoring stays internal.
-
-
-## 2026-10-14 â€” Registered task and inference controls
-
-All six controls completed on A800 GPU5 with original OneJev weights or
-actual SFT100. Predictions use exactly the same saved native candidates;
-GT uses verified top-left Refer-KITTI release coordinates and unchanged TETA.
-Official scopes remain8/12RMOT frames and4TAO annotation frames.
-
-| RMOT / V3 | HOTA (fraction) | IDF1 | FP | FN |
-|---|---:|---:|---:|---:|
-| Single pretrained | 0 | 0 | 0 | 5 |
-| Single SFT100 | 0 | 0 | 3 | 5 |
-| Multi pretrained | .222720 | .177778 | 10 | 25 |
-| Multi SFT100 | 0 | 0 | 1 | 30 |
-
-Current crops alone do not fix cold IGNORE. MOT-only SFT100 has negative
-transfer; it is not evidence of useful RMOT fine-tuning. Original finite
-MOT SFT500 continues, and mixed-task/actual-proposal training remains needed.
-
-| TAO scored-query retention | TETA (%) | LocA | AssocA | ClsA |
-|---|---:|---:|---:|---:|
-| Fixed native candidates Simple | 24.171 | 29.452 | 43.061 | 0 |
-| Same native candidates OneJev Full | 16.815 | 27.459 | 22.987 | 0 |
-
-Failed query chunks remain empty; independently scored chunks retained,
-without re-running the detector, filtering classes/GT, repairing invalid
-syntax, altering metrics or dropping frames. This is a registered combiner
-control, not an output-format pass. Full remains slower and less accurate.
-Both classification terms0 expose missing/wrong class decisions; the native
-shared JEV class head is still required. Novel is null in this Base-only scope.
-No detector-inclusive or full-dataset speed claim:replay FPS.838284Simple
-and.00352281Full, with all1773label/box rows kept.
-
-Exact-coordinate object-hypothesis grouping preserves every distinct native
-box and all label alternatives:201/441/777/354rows become54/58/109/85.
-No overlap threshold/NMS/topK/GT filtering. Independent Simple/Full controls
-are active; first native label remains an explicitly unlearned class baseline.
-A future genuine typed classification head must use the full dynamic vocabulary.
-
-Isolated FLA0.5.2 + einops0.8.2 addon (original environments untouched):
-GDN kernels2.29/3.24/8.43x faster at257/1024/4096tokens after both sides'
-warmup, maxoutput difference.0004883, finite gradients. First import lacked
-einops and was fixed only in the addon. First unbalanced warmup is preserved
-and does not support63x speed. Actual3multimodal OneJev requests differ up
-to.021211 in typed answers, exceeding the preregistered.001. Choices unchanged
-but probabilities/material memory gates can change. Accelerator rejected;
-original automatic fork check/.05 tolerance remains unchanged, training
-and original video owners stay on the reference backend. No end-to-end gain.
-
-Native DLM training preparation reconstructs the actual official
-GAMQwen3DLM wrapper, MDM.5+causal.5/block32, with all569tensor keys/shapes
-matched. The released JSON has152670AR rows; real checkpoint/tokenizer have
-152671including MASK152670. Native reconstruction uses real header size; no
-weight is added or randomized, no new AR download required. Initial mismatch
-retained. This is a key audit, not gradient proof.
-
-A finite3step native projector-only gradient check on legalMOT17TRAIN209/210
-combines original DLM spatial loss and same-ID contrastive ROI loss. Language/
-ViT frozen, projectorFP32masters, seed42, all32targets each frame with no
-clipping or dropping. It is a custom native-adapter policy, not the stock full
-language SFT recipe or completed adaptation. Meta nonpersistent rotary buffers
-initially caused allocation failure; native Accelerate initialization fixes
-that without creating learned values. The strict native cached-image schema
-then rejected a path-only dict; real original bytes/path are now supplied.
-Both failed units preserved, new real-gradient check active onGPU7. Four
-physical GPUs4/5/6/7max; foreign UDMT jobs untouched. Dense/referring retention,
-exported bundle inference and formal adaptation remain required.
-
-
-Exact-geometry controls completed:Simple TETA33.042/LocA48.539/AssocA50.587,
-Full23.320/49.095/20.866, both ClsA0. Simple replay9.8226FPS, Full.0197772,
-about5.6x the ungrouped Full. No detector-inclusive speed claim, no learned
-category assignment and no Full advantage. Native geometry set/all label
-alternatives retained; every original GT and frame evaluated.
-
-Native3-step adaptation then exposed projector output as a per-image tensor
-list, which was corrected using native concatenation. The first native
-backward hit CUDA-graph lifetime replay; first failed units remain unchanged.
-The next unit compiles the identical native FlexAttention operator without
-CUDA graphs and probes native spatial-loss and temporal-loss gradients
-independently before optimizer updates. Seed, block masks/loss weights/GT
-and all target instances unchanged. PreserveFP32nonpersistent RoPE buffers.
-No native decoder/localization adaptation success is claimed until actual
-finite loss/gradients, changed BF16weights and checkpoint reload are verified.
-
-
-### Actual native DLM spatial and temporal gradient proof
-
-Final v6 native training unit completed3optimizer steps on legalMOT17TRAIN
-209/210, all32targets each frame and32same-ID positives. Official native
-GAMQwen3DLM MDM.5+causal.5/block32 retained, with.1identity ROI contrastive
-loss. Language and native ViT frozen;27,267,584native projector parameters
-useFP32masters. Independent dense-gradient norm8.75947 and temporal-gradient
-norm2.13338, finite combined norms8.77141/9.25557/9.02194. Native losses
-1.61708/1.66780/1.65477 include different sampled noise; do not claim training
-improvement from this warmup.26,766,531FP32elements and1,968,676BF16elements
-changed. Delta reload weight difference0,327,218,423bytes, SHA256
-bf8537a97675e465d80dfb08cb5b21454ee37711f622510fe8181b86370e2b3e,
-peak18,455,674,368GPUbytes. This proves actual localization and identity
-gradients, not formal adaptation or tracking gain.
-
-Checkpoint:/data2/user/LocateMOT_GroundJEV/outputs/groundjev/ground_adaptation/
-native_tracking_grad3_v6_native_runtime_flags/projector_delta.pt. Frozen
-nonpersistent rotary buffers remainFP32. Native official CUDA-graph flag0
-and task-local donated_buffer=False accommodate checkpointed backward and
-independent gradient probes; math/masks/loss weights/seed42unchanged.
-Failed meta-buffer/image-schema/list-output/CUDAgraph/donation units retained.
-
-Exported complete DLM variant models/GroundAnything-DLM-TrackProj3 replaces
-only5native projector tensors, retaining all569keys and every other native
-weight/tokenizer/code/config unchanged.9,687,419,704bytes, SHA256
-a626aad29c5bbc17e3a465a519e93681aaedacd81cbb21805cce40b7122777e9.
-Original model/server untouched. A distinct GPU7replica/8102 and launch bundle
-are used for48same-profile native frames:4dense+8single-ref+12multi-ref,
-original/updated, fixed Simple association. Requesteddecoderseed42, same
-unchanged official parsers and evaluator. These functional retention probes
-do not stand in for the full original GroundAnything benchmark suite.
-The one blocking owner stops only its owned adapted replica on completion.
-
-
-Adapted replica first launch passed real weight loading butKV profiling at
-mem-fraction-static.25produced a negative cache budget. Owned replica
-was stopped and failed launch preserved. New isolated replica uses.4(the
-original service's working fraction), same checkpoint/decoder/seed/scopes.
-No other process stopped and no GPU beyond4/5/6/7.
-
-
-### Verified native projector retention controls (2026-10-14)
-
-All six fresh inference and official evaluation units passed scope and encoded
-video frame checks:48frames total, no runtime GT or future access, every
-rejected/empty frame retained. Original versus projector3 HOTA/IDF1 fractions:
-
-| Scope | Original HOTA | Projector3 HOTA | Original IDF1 | Projector3 IDF1 | IDSW before/after |
-|---|---:|---:|---:|---:|---:|
-| MOT17 4frames | .745083 | .755029 | .824427 | .847328 | 3/1 |
-| Single RMOT 8frames | .299355 | .303853 | .375000 | .400000 | 1/1 |
-| Multi RMOT 12frames | .229517 | .227592 | .222222 | .212766 | 0/1 |
-
-Both single variants reject frame152; both multi variants reject frame34.
-These frames remain in official denominators. Decoder tracking_dense,
-requested seed42, official_scoring parser, unchanged geometry Simple and
-legal validation scopes are identical. Short dense and single controls
-improve slightly, multi-referring declines. This is not formal adaptation,
-full original grounding/referring benchmark retention or a broad gain claim.
-Actual detector-inclusive FPS are in aggregate_results.json; concurrent
-workloads and original GPU6 versus replica GPU7 preclude an isolated speed
-comparison. The first replica failed KV allocation at mem-fraction.25;
-its failure is retained. The completed replica used.4 and stopped its own
-process group. Original server/model and foreign UDMT are unchanged.
-
-Authoritative receipt:
-outputs/groundjev/ground_adaptation/projector3_retention_v2_memory_budget/aggregate_results.json.
-OneJev formal500step owner remains live, latest returned report100/500;
-full1203frame DanceTrack owner remains live, latest returned frame1183.
-No completion claim for either. Current persistent feature service on5
-uses about4GiB; no GroundJEV process remains on7 after replica cleanup.
-Next research hypothesis: exact object geometry grouping improves localization,
-but copying a native query label leaves ClsA0. A real typed OneJev category
-head using every supplied vocabulary class, separate from identity and absent
-detection confidence, is required. It must preserve all candidates and GT.
-
-
-### Native shared JEV category hypothesis (registered before execution)
-
-Exact-geometry Simple/Full ClsA0 exposes first-label copying. Add an opt-in
-native typed category head on the same OneJev parameters, with all1203input
-labels represented in deterministic128class root groups, selected conditional
-leaf and explicitUNKNOWN. Hierarchical routing is approximate, not a flat
-1203class probability distribution. Preserve all306geometries and unknown
-predictions; no GT/class/box filtering or metric changes. First run fixes
-Simple identity to isolate semantics, then same-policy Full uses the same
-engine for identity/category. Keep class confidence separate from identity
-and missing detector confidence. Plan:configs/groundjev/native_category_control_20261014.json.
-
-
-### Actual GroundAnything proposal own-history rollout
-
-The current500step training corpus uses GT proposals and declared synthetic
-fragments. To close that gap, register48legal training frames from the same
-three MOT sources, original DLM candidates with no topK/NMS/GT substitution,
-and the valid100step OneJev actor. Ground failures remain empty frames.
-Record only successful context groups, retain every native candidate, keep
-GT matching/aliases outside uncorrected actor state, and supervise lifecycle
-from targets matched to current actual proposals. This creates training
-supervision, not validation predictions or a new500step result.
-Plan:configs/groundjev/native_candidate_rollout_20261014.json.
-
-
-### Real-video memory export performance repair
-
-Native Full1203predictions completed, but Simple control spends seconds per
-frame re-encoding unchanged historical images. Actual155track profile:3.283s
-state serialization,3.256s inside465PNG saves. Cache at most one exact PNG
-encoding per live track/image field, keyed by image object identity. Native
-tracking replaces images rather than mutating saved crops. Encodings remain
-byte-equivalent and are released with each track; no persistent feature cache.
-Verify actual32frame decision replay, cold/warm/full-state reload equality,
-then preserve complete Full and the interrupted valid Simple prefix in a
-fresh owner. No detector rerun, new seed, metric/filter/state change or E2E
-speed claim. Source failure/controlled interruption remains recorded.
-
-
-### Native class decisions, actual detector rollout, and serialization repair
-
-Opt-in native_hierarchical category inference now shares the actual OneJev
-engine/parameters with Full identity decisions. All1203input categories are
-represented in128class root groups; selected-group leaf and explicit UNKNOWN.
-This is approximate hierarchical routing, not a flat global MAP classifier.
-Native path probability remains separate from identity probability and absent
-native detector confidence. Every306exact native geometry is retained.
-
-Completed Simple/Full TAO controls:33.042/23.320TETA, bothClsA0, unchanged
-localization/association compared to native-label controls.299/306objects
-choose rootUNKNOWN; seven receive vehicle labels. Full and Simple category
-decisions are exactly equal; all identity probability differences are0.
-Actual four-frame videos, six-decimal probability rounding, all candidates,
-GT/empty/rejected frames and unmodified TETA verified. Native category
-inference is implemented but does not solve classification; it remains
-opt-in. No OVMOT gain or Novel result claim. Next step is legal category
-supervision and targeted visual/group-routing diagnosis, not GT relabeling.
-Receipt:outputs/groundjev/task_controls/native_category_v1/aggregate_results.json.
-
-Actual GroundAnything proposals now feed a finite48frame legal own-history
-training exporter on physical7, original DLM service6. Actor is the valid
-OneJev100step checkpoint, V3 crops/motion. No GT proposal substitution,
-synthetic fragments, topK/NMS or corrected actor state. Independent GT
-matching supplies training targets only; lifecycle labels use targets matched
-to actual current proposals. Record only accepted context groups and retain
-all candidates including empty/rejected native frames. This closes a genuine
-training-data gap; corpus owner remains active, not completed training.
-Plan:configs/groundjev/native_candidate_rollout_20261014.json.
-
-Full native DanceTrack0004 predictions completed1203frames,27rejected frames
-(2.244%) retained. Original20frame resume means end_to_end_fps remains null.
-Official full-video metrics remain pending the exact-candidate Simple control.
-Simple recompressed all historical PNG crops every frame:actual155track
-profile3.283s,3.256s in465PNG saves. Exact per-field cached encoding retains
-at most3encodings per live track and releases them with the track. Actual
-223track snapshot:4.487s cold/.003874s unchanged warm call;20,884,556cached
-encoded bytes.32frame recorded causal replay, cold/warm payload and fresh
-reload are exact. These are serializer timings, not whole-video speed gains.
-
-Only verified owned Simple child4127910 was interrupted after its valid
-200frame prefix; original failed owner and interruption receipt preserved.
-Fresh owner reuses all complete native Full outputs and restores the entire
-unchanged Simple prefix. First reuse preflight wrongly expected the newer
-multitask specification field in the older ordinary-MOT receipt; retained
-failure and fixed using actual registered paths/frame numbers/native prompts,
-not synthesized metadata. v5 owner is active with cached PNG export, no new
-native detector calls or changed experimental protocol.
-Full/Compact/matched trained controls, mixed task supervision, full original
-GroundAnything retention and formal500step checkpoint remain required.
-
-
-### Fresh full-video V3 evidence measurement
-
-Full V1 actual1203frames:HOTA.0214546,IDF1.00482694,IDSW3792; identical
-Simple:.0852976,.0395616,746. Native candidate recall4341/4586=.946577,
-Full existing-identity accuracy234/4330=.054042 and option coverage.847113.
-Retain this negative baseline. Register a fresh complete1203frame V3 run:
-real current/history crops and geometry, native NO_MATCH, all proposals,
-unchanged native decoder/official metrics, adaptive context groups without
-option/candidate removal. Use verified cached PNG persistence; no resumption
-or candidate replay in Full, so a complete E2E record can finally be measured.
-Still pretraining baseline, not trained500checkpoint or a completed Pilot.
-Plan:configs/groundjev/dancetrack_fresh_v3_20261014.json.
-
-
-### Full DanceTrack0004 baseline is now official and validated
-
-Both1203frame video artifacts and exact candidate equality passed. Native
-Full V1 HOTA.0214546/IDF1.00482694/IDSW3792/FP9300/FN241; same-candidate
-Simple HOTA.0852976/IDF1.0395616/IDSW746/FP9334/FN256.27native rejected
-frames (2.244%) stay in every official denominator. GT4586observations,
-native13664candidates, one-to-one IoU.5 coverage4341/4586=.946577.
-Full correct surviving identity associations234/4330=.054042; correct
-option coverage3668/4330=.847113.9323unmatched candidate diagnostics
-include official ignore regions and are not themselves official FP labels.
-These negative results show both excessive candidate output and weak
-pretrained identity decisions; detection recall alone is insufficient.
-
-The complete200frame Simple prefix matches its preserved source row for row.
-Original Full20frame resumption and Simple200frame resumption preclude a
-continuous E2E claim. Simple32.62198replayFPS excludes native detection and
-full persistence/rendering costs. Scalar diagnostics never modify output.
-Receipt:outputs/groundjev/pilot_runs/dancetrack0004_pretrained_dense_v5_cached_memory_control/aggregate_results.json.
-
-A fresh complete1203frame V3 native run is now active on physical6. Same
-pretrained OneJev/original DLM, decoder and official evaluator, real current
-candidate/history crops and motion evidence, explicitNO_MATCH, no resumed
-prefix or Full candidate replay. Native context splitting retains all boxes
-and up-to32identity options. Exact cached PNG export preserves checkpoint
-payloads. Completion will measure actual complete pipeline E2E speed; no
-performance or full-goal completion claim while active. Formal500step
-training remains the original live owner; no restart or shortened protocol.
-
-
-### Actual native detector own-history corpus completed and validated
-
-48declared legal training frames,1184actual native proposals,5661supervised
-rows:1184identity,1184update,1184reliability,69withheldNO_MATCH,2040lifecycle.
-All typed targets/options/media and training split membership validated,
-no GT IDs in model state, no GT state correction or synthetic fragments.
-Native GT matches:474/526MOT17,110/110DanceTrack,496/806MOT20. Uncovered
-GT remains explicitly counted; never invented as native proposals. This is
-decision supervision, not localization supervision for missing boxes.
-Actor outputs only74across48frames (31/12/31first-frame births, subsequent
-collapse), exposing the valid100step actor's negative transfer rather than
-hiding it. All raw own histories are retained.31,045,329bytes of crop evidence,
-no full source-dataset feature cache. Corpus completion is not weight update
-or formal training completion. Receipt:
-outputs/groundjev/training_data/native_ground_own_history_v1/corpus_validation.json.
-
-
-### Compact native evidence/distillation study (registered)
-
-Full baseline is weak: use actual recorded OneJev100 distributions as a
-.2auxiliary term with GT supervision dominant. Pack all48legal train frames
-using native frozen DLM ROI features and the actual actor anchor/recent/long
-events, without correcting its state. Compare structured set Compact, the
-identical architecture with GT-only supervision, and a parameter-matched
-feedforward control with the same heads/evidence/distillation. Keep dynamic
-IDs, NEW/IGNORE/NO_MATCH, memory update, reliability and lifecycle. Declared
-option-withholding moves removed native teacher mass toNO_MATCH; it is an
-augmentation, not a new native teacher request. InitialMOT-only stage, not
-full unified-task or long-memory proof. Plan:configs/groundjev/compact_native_20261014.json.
-
-
-### Actual trained Compact and matched baselines (2026-10-14)
-
-All48legal native detector/OneJev100own-history train frames are packed as
-80base groups plus69declared option-withholding augmentations,149examples.
-Native DLM ROI2560and uncorrected anchor/recent/long feature history; noGT
-state correction. The removed teacher identity mass is projected toNO_MATCH
-only in the declared training augmentation. Native pack131,123,485bytes,
-not a whole-source-dataset feature cache.
-
-Three actual300step/seed0 models completed with finite nonzero gradients,
-changed weights, exact checkpoint reloads. Compact distilled and GT-only
-set control each930,829parameters; feedforward distilled control929,805,
-ratio1.001101. Two set blocks provide interactions; feedforward control has
-no set attention but shares mean context, evidence and structured heads.
-All support dynamic identities/NEW/IGNORE/NO_MATCH, update, reliability and
-lifecycle. They are trained structured decision heads, not direct pretrained
-OneJev decoding. GT supervision plus.2native recorded Full teacher loss;
-identical set GT-only control omits only that loss. Auxiliary visual backbone
-remains original frozen DLM. Parameters for all models changed, reload0,
-candidate/history permutation error<=7.63e-6. Allocation peaks about40.5MB
-are core-only, excluding CUDA runtime and shared native visual/DLM services.
-Initial Compact training is MOT-only: task-index conditioning exists, but
-joint expression/class training and full unified-task/long-memory proof remain
-required. Never present natural set capabilities as JEV-exclusive novelty.
-
-Same real128native proposals/ROIs,4MOT17development frames and unchanged
-TrackEval, actual4frame videos validated:
-
-| Core | HOTA fraction | IDF1 | IDSW | FP | FN |
-|---|---:|---:|---:|---:|---:|
-| Compact distilled set | .669111 | .738197 | 1 | 9 | 46 |
-| Same set, GT-only | .576415 | .638889 | 8 | 3 | 57 |
-| Matched distilled feedforward | .634360 | .703196 | 3 | 3 | 54 |
-| Existing plain Simple reference | .748813 | .836502 | 1 | 17 | 24 |
-
-Distillation helps the same architecture in this tiny single-seed control;
-Compact still trails Simple and has more missed targets. ReplayFPS4.358/
-3.959/4.512exclude detector/native feature extraction and full export costs;
-no E2E or full-video accuracy claim. Receipts in
-outputs/groundjev/compact/native300_controls_v1/aggregate_results.json;
-trained checkpoints and SHA receipts in outputs/groundjev/compact/native300_v1.
-
-Registered full1203frame DanceTrack0004 Compact and two controls reuse every
-original native detector candidate, unchanged official GT and scorer. Stream
-ROI once through physical5native feature service; controls reuse identical
-ROI values on physical7. Source frames are read progressively rather than
-loading the complete replay into memory; actual4/1203row equivalence passed.
-These are candidate/feature replay controls, not detector-inclusive E2E.
-First run failed at actual empty-proposal frame21: empty ROI pool returned
-BF16 whereas nonempty interpolation and optional temporal layer useFP32.
-Preserved20complete frames and failure; fixed only empty output dtype.
-Only verified owned native feature service4043767 was restarted on5. A
-real frame21 empty RPC/lifecycle probe passes and real frame20nonempty ROI
-max difference after restart is0. A probe initially used the wrong timestamp
-constant; it was corrected to the registered20Hz clock, with no data/clock
-protocol changes. Fresh v2 owner restores all20native prediction/state rows
-and resumes frame21, without dropping it. Original OneJev500/Ground/freshV3
-and foreign UDMT remain untouched. Full metrics are pending its terminal
-owner. First model frame latency includes ROI RPC; later controls read fixed
-ROIs, so do not claim a direct comparable speed ranking across those latencies.
-
-
-### Shared semantic Compact adaptation (registered)
-
-MOT-only Compact cannot establish task transfer or category accuracy. Keep
-all native MOT149groups, add48frozen-fitKITTI teacher-GT-proposal frames
-with expression membership targets and64TAOtrain Base-only GT-region frames
-with category targets. Clearly separate teacher proposals/history from native
-MOT rollout; never present GT boxes as evaluation predictions. No NovelGT
-supervision and no non-exhaustive TAO unmatched-as-negative labeling.
-Use original real OneJev frozen token embedding means for text; add shared
-learned expression/category heads to the same visual/identity/set core.
-All1203classes remain available at inference. Balanced1200step seeded joint
-stage; unchanged evaluation scopes/metrics and before-after native proposals.
-Plan:configs/groundjev/compact_joint_semantics_20261014.json.
-
-
-### Lost original trainer and exact-protocol recovery
-
-Authoritative/proc audit finds no original trainer or model services. FullV3
-and Compact full-video owners have terminal success receipts. Original
-OneJev500has only275last log,250BF16weight checkpoint, no final/done or
-optimizer/FP32master/RNG state. External termination cause is not established.
-Do not call this complete or silently reset Adam from250. Preserve that
-intermediate; replay the unfinished original500step unit from its original
-100step initialization with unchanged seed/corpus/lr/schedule/steps. A small
-wrapper extends official checkpoint handling only: atomic FP32masters,
-Adam moments, scheduler, RNG and exact planned-step cursor. Single latest
-training state is a checkpoint, not a feature cache. Original loss/rendering/
-row plans/native fork checks remain unchanged. New config:
-configs/groundjev/onejev_own_history_v3_exact500_replay_stateful.json.
-
-### Completed joint semantic controls and full-video evidence
-
-Joint1200 truly trained1,146,511 shared parameters with exact3task reload.
-Pack149nativeMOT+45RMOT+62TAO teacher groups,112declaredteacherframes,
-5emptyframeswithoutregionexamples. TeacherGT/idealupdate proxies remain
-explicit. Same candidates/nativeROI and decodedframes validated for all four
-short scopes. MOT HOTA66.911->71.556%, butIDSW1->3. SingleRMOT8.932->0%,
-multi0->0%; TAOBaseTETA14.013->39.272%,ClsA0->58.286%,AssocA21.350->17.971%.
-Reject a unified-success claim. Posthoc evaluation finds all6single/all8multi
-GT-covered candidate observations have membership below.008 and no emitted
-coveredboxes. Keep threshold.5, allGT/frames/negative results unchanged.
-Hypothesis: limited-fit teacher region supervision and frozen token means do
-not transfer expression membership to native validation proposals; covered
-regions show semantic suppression, not an absence of proposals. Preserve
-stage as an ablation, not production promotion. Next training must use broader
-legal fit/native proposal supervision and verified query sensitivity.
-
-Full1203DanceTrack Compact300/setGT/MLP and freshFullV3 controls are terminal
-and validated. Original same-candidate HOTA20.157/5.977/11.197% vsSimple8.530%
-andFullV1 2.145%; single-video/seed only. FreshV3 HOTA2.389% vs its exactSimple
-8.257%, detector-inclusive uninterrupted E2EFPS.118560 excluding model/server
-initialization; do not compare fresh responses toV1 as identical candidates.
-Register/execute joint1200 retention on all1203sameCompact300candidate+ROI
-rows, unchangedGT/TrackEval and rejectiondenominator, onefiniteowner GPU7.
-
-Stateful original500protocol replay latest returned50/500 onGPU4, not old250
-exactAdam resumption. Resume-state functional probe nextloss/params difference0.
-Old250/last275/interruption retained; completion and modelgain remain unproved.
-
-Training-fit membership96/96correct(45positive/51negative). Swapping other
-fitexpression vectors changes probability mean.10595/max.99159; this is
-input sensitivity only, not a semantic correctness score. Native validation
-covered positives remain suppressed. Hypothesis strengthened: limited-fit
-teacher/domain/query generalization rather than failure to update head weights.
-
-Joint1200full1203retention terminal and validated: HOTA.22103185,IDF1.21413276,
-IDSW346,FP1653,FN1485 vsCompact300.20156623/.17140097/588/2129/951.
-All1203candidate+ROIrows match, video1203decoded, all27rejectedframes kept.
-No GT/parser/metric/candidate changes. Keep as positive complete-video MOT
-retention plus negative RMOT/OVassociation ablation; not unified-success.
-GPU7owner exited. ReplayFPS22.747excludes detector/ROI costs.
-
-### RMOT fit breadth and native own-history intervention (registered)
-
-Current membership fits96teacher regions but suppresses every covered native
-validation target. Register72frames from all9fit-v2 videos, exact18primary/
-counter expressions. Compare broader teacher curriculum with same broadened
-teacher+actual nativeGroundproposals/uncorrectedCompact ownhistory; original
-MOT/OVgroups, initialization,seed,optimizer,1200steps and allvalidation protocols
-remain fixed. Alternate-expression supervised snapshots add query contrast;
-no alternate detector request or actor update is claimed. AllGT mappings and
-quality proxies remain outside model inputs. Never replace a rejected native
-proposal frame byGT. Plan:configs/groundjev/rmot_native72_20261014.json.
-
-Native72owner has confirmed owned original Ground API readiness onGPU6
-and is building72fit frames through actualCompact own histories onGPU7.
-Existing conservative feature/crop/readable-result bytes6,288,115,739(5.856GiB),
-models/optimizer/videos excluded; newtensorserialization checkedbeforewrite.
-Empty-candidate lifecycle check fromactualnative train history31slots passes
-finite loss3.8286855,lifegradient12.4010; no droppedemptyframe rule needed.
-
-### Original Ground dense/referring retention data preparation
-
-Original nine dense/referring benchmark inputs are absent locally. Official
-GroundAnything README links Skywalker0410/Grounding-EvalData. Direct no-proxy
-HF API succeeds; pin772e34bb1505053ed4857bba4405ee7b308bbfb6. Fetch only
-complete archives/annotations needed by4dense+5referring task entries, not
-GUI/OCR/etc. Rawdata/model checkpoints are outside25GiBfeaturebudget.
-Parallel3downloads, noGPU. Original full30helper requires allotherdata, so
-reuse its verified unmodified archive extraction/path functions and explicitly
-label this a nine-task data subset. No evaluation/retention score is claimed
-until original unmodified scorer runs on all declared examples.
-
-### Broad fit/native own-history outcomes and CUDA recovery
-
-Both1200additional-step models genuinely trained fromjoint1200, all3task
-reload differences0. Same params/initialization/seed/lr/taskcycle; not equal
-training-budget/parameter comparison againstoldCompact300. Broadteacher:
-MOT4HOTA71.359%,singleRMO20.921%,multi17.740%,TAOBaseTETA46.279/ClsA67.0%.
-Matched teacher+native:63.077/0/14.846/56.733/100.0%. Allpairedcandidates/ROIs
-and videos validated. Native data165candidates/49GTaligned,8rejectedframes,
-all72retained;28contaminatedactorhistoryobservations; noGTstate repair.
-Native mixture restores6/6covered singlequeryprobabilities below.5(.362-.498),
-versusteacher2/6. Keep threshold.5. Hypothesis: weak native proposal support
-and negative-heavy own-history/counter samples shift query decisions; mixing
-not universally beneficial. Preserve bothmethods/negative transfer, no promotion.
-
-Full1203GT/candidate/ROI/video controls: teacherHOTA.2040093/IDF.2383171,
-IDSW151/FP615/FN2276;nativeHOTA.2631573/IDF.3063294,165/579/1962.
-Native run failedCUDAunspecifiedlaunch at799, preserved798rows/memory39.9.
-NVMLECC0/recoveryNone; privilegedkernel unavailable, externalcauseunknown.
-FreshsameGPU7 actual799probe finite; CPU/GPUprob delta.000115(referenceonly).
-No reset ormodelmath/data change. Strictsource798prefixreplayexact, resume799,
-all1203candidate/ROIrows anddecodedvideoframes validated,all27rejections kept.
-Originalfailureowner retained; separateterminalrecoveryreceipt. E2Enull.
-
-Native Ground original retentioninputs direct3parallel downloads complete:
-6.929GB archives, all4dense+5ref canonicaltasks, 91,124rows. Officialhelper
-hash/extraction unchanged. Originalevaluator full/limitnull dry-run reports
-no missinginputs. Initialrecipe-path resolution and Pythonvenv-symlink mistakes
-fixed locally; no metric/source modifications. Benchmark scores still pending.
-
-OneJevstatefuloriginal500replay reached125/500 with500examples, actualcomplete
-FP32/Adam/scheduler/RNG/cursor checkpoint9,029,140,249bytes. Genuineintermediate
-125BF16MMcheckpoint reload is executing onGPU7; notformal500completion.
-
-ActualOne125MMreload terminal:474weights, BF16changed2,306,395/2,035,222/
-1,627,638elements in threeMLPprobes vsinit100; independent nativeMMreload
-probabilitydifference0(autoFork unchanged). Onlyintermediatecorrectness, no
-formal500or trackinggain/exactFullFP32nextstep claim. GPU7probe exited.
-
-### Native Ground formal200 tracking adaptation (registered)
-
-Advance3step projector proof to200seed42steps on32dense train images plus
-40fit-v2KITTIimages with2expressions each (112native SFT rows/56pairs).
-Alternate dense/ref; allpairs visited. Preflight proves entireselected target
-sets grid-representable, not clipped: MOT20window has69out-of-grid targets
-and4otherKITTIwindows haveviolations, so theyareoutside thisnewregistered
-native-token corpus, not droppedfromoldprotocols/evaluation. Frozen native
-vision/language, trainoriginal27Mprojector FP32; officialMDM.5/causal.5 plus
-.1GTidentity/.1actualnative-proposalidentity contrastive. Native boxes come
-fromcompletedoriginal decoderrollouts, GTonlylabelalignment; adaptedlive
-decoderrollout notclaimed. CompleteAdam/RNG/cursorcheckpoint every25steps.
-Fulloriginaldense/ref9 inputs are ready; adaptation benefit remains unproved
-until original unmodified before/after scoring. Newplan native_ground_tracking200_20261014.json.
-
-Native200v1all112rows/56pairs fit native collator; actual0negative ref rows
-(so absent-target supervision remains a later required stage). Firststep1
-completed nativeMLM+teacher/native temporal gradients,27,267,584parameters;
-step2cleanBF16attention cuBLAS internal failure onGPU7 before next update.
-No validoptimizer/RNG checkpoint yet. Preserve v1failure/step1log. New GPU6
-executionvariant holds actualdata/seed42/200steps/loss/optimizer unchanged,
-adds checkpoint atstep1 toexisting25interval. SameA800architecture, noGPU
-reset orforeignjob mutation. Externalrootcause notestablished; verify actual
-secondbatch in freshGPU6context while replayingunfinished initialunit.
-
-GPU6same protocol progressed3steps then failedcuBLAS;1fullstate saved.
-Sync nativeFlexAttention beforecleanattention diagnostic resumedexact1state,
-reached20steps then exposedillegalmemoryaccess immediatelyafterNoisyFlex
-(step21), so clean cuBLAS was downstream/asynchronous symptom. NoGPUreset,
-no samples/masks/seeds/loss changes. Native trainingprofile pinsTorch2.10,
-whereassmoke usedServeTorch2.9.1. PrepareindependentPy312Torch2.10cu128
-(A800/driver570-compatible CUDA family) /nativeTF5.7/Triton3.6; no serving/
-One env edits. Resume native200 fromvalid1withall optimizer/RNG/cursor.
-Any runtime numerical differences are to be recorded, not silently ignored.
-
-NativeCPUevalenvironment officialsetup completed (Torch2.5.1CPU, shipped
-lmms snapshot; serving/training environments unchanged). Startoneowned
-originalGroundservice GPU7 + originalfull9canonicalbenchmark evaluator
-CPU-only, limitnull,91,124declaredrows. No8sample-smoke orretentiongain claim.
-Nativeevalresponsecache is originalscorer output, not U2candidatefeatures.
-
-Originalfull9preflight/service ready; all9clients failedbeforefirstinference
-while constructingHTTPproxy mappings in SDK/httpx0.23. Task-inherited proxy
-configuration conflictswithlocalAPIclient; cleartasklocalHTTP/HTTPS/ALLproxy
-vars only, preserveglobalenv/source/metric. Fresh v2runid retainsold9failure
-logs/caches; all9unfinishedcanonicaltasks re-executed, no sample/seed changes.
-
-IsolatedTorch2.10cu128/TF5.7/Triton3.6 installed; missingSciPy preflight
-fixed withoutchangingdata. Actualstate1 resumed, validthrough57 with55full
-state. Earlierbad-runtimegradientnorm at20=387471 vsnew=13.49, numerical
-unsafe-runtimebehavior retained, notclaimed equivalent. StillillegalnoisyFlex
-access at58, so runtimeupgrade alone is insufficient. Concrete-shape compile
-specializes SAMEoriginalnative_flex_attention_kernel/masks/GQA; no score/
-loss/model changes, no dense-reference fallback. Resume55in freshv6out.
-Recompileguards raisedonlyforthefinite declaredvariable-shape corpus.
-
-### Native Ground200 concrete-shape failure and targeted diagnosis
-
-Concrete-shape v6 completed185updates and saved full FP32/Adam/allRNG/cursor185, then failed before186update with CUDA illegal access. Static shapes alone are insufficient; no metrics or samples are changed. Previous output handle is absent and owner terminal. Next action: replay from185 with CUDA_LAUNCH_BLOCKING and a persisted Q/K/V boundary plus full traceback, same operator/masks/data/seed/loss. This localizes the actual first failing kernel before choosing a repair; failing attempts remain preserved. Full original dense/ref9 baseline handle73408 was confirmed live, so it is not restarted.
-
-### Native Ground200 resumed completion and full original-protocol retention
-
-v7 synchronous replay from185 completed186â€“200, keeping exact native operator,
-masks, seed42, data/loss/optimizer/schedule. Asynchronous kernel root cause is
-still unestablished; all v1â€“v6 failures remain. Complete checkpoint chain:
-v2step1, v5steps2â€“55, v6steps56â€“185, v7steps186â€“200. All200loss/gradient rows
-finite;100dense+100ref, all56pairs visited. Native200reload maximum delta0;
-27,267,353FP32 and16,204,590BF16 elements changed. Exported complete569tensor
-9,687,419,704byte model; only five projector tensors replaced. These are
-training/execution results, not benchmark or tracking accuracy improvements.
-
-Original full9baseline handle73408 remains live. New adapted full9owner uses
-GPU6/API8102 and separate execution rendezvous ports22345+, preserving all
-canonical tasks, full rows, original scoring and native decode profiles. No
-benchmark GT training or limit reductions. Four project GPUs maximum; other
-projects are untouched. Real absent-target40rows remain a separate next stage.
-
-Fresh nativeGround200 MOT4/RMOTsingle8/RMOTmulti12 before/after controls also launched through the two existing owned retention services, same Simple associator/parser/tracking_dense/seed42, no new GPU service or benchmark-limit changes. This48frame functional comparison is separate from original full91,124-row dense/ref9 scoring. All registered empty/rejected frames remain.
-
-### Ground200 short-control negative transfer and registered absence120
-
-All48frames and six rendered videos validated. Same fresh Simple associator:
-MOT4 HOTA75.2498->84.5532%, IDSW2->0,FP16->2,FN24->13.
-RMO single8 HOTA26.8665->25.2769%, empty-frame outputs3->8; multi12
-HOTA24.7800->23.9589%, IDSW0->2. All empty/rejected frames retained, official
-GT/scorers unchanged. These are single-seed short scopes, not full datasets.
-Hypothesis: missing absent-target supervision contributes to referring false
-positives; not established as the sole cause. Keep original200 and bothfull9
-retention owners unchanged. Register a separate additional120step curriculum:
-initialize exactFP32 projector200, explicitlyresetAdamW/lr1e-6, seed42;
-all112existing rows+40previouslyregistered actualfit absences=152rows/76pairs,
-all76visited. Same native loss/teacher and native identity losses. No synthetic
-emptyimages, no evaluation labels in training. Verify first real native noisy
-attention forward/QKV gradients for dense, positive referring and absence
-against PyTorch eager mathematical reference; diagnostics consume no RNG.
-Idle ownedROIservice5 stopped after no established clients; all consumers were
-terminal. GPU5 is reused for this declared training, no other project stopped.
-
-Absence120v1 preflight verifies152rows/76pairs/40realabsences, but stops beforefirstupdate: detached reference-probe backward inherits native activation-checkpoint saved-tensor hooks and recursively re-enters itself (_StopRecomputationError). This is a diagnostic integration failure, not a measured attention discrepancy. Small repair: isolate only detached diagnostic saved tensors with identity pack/unpack hooks; production model checkpointing and forward remain unchanged. Preserve failedv1. Freshv2 replays unfinished stage from exactTrackProj200, identical seed/data/loss/criterion.
-
-Actual v2 native attention reference checks pass for first real dense/positive-ref/absent-ref layer: maxBF16 output delta.005859/.003906/.005859; Q-gradient relativeL2.043767/.033754/.036040, K/V below.007. Criteriaunchanged(output rtol/atol.02; QKVrelativeL2<.05), no diagnosticRNG consumption. This targeted check covers three real input types, not every layer/step. Training remains owned by the same v2blocking command.
-
-### Real absence120 completion and unchanged native200/320 tracking comparison
-
-Additional120 completed: all76pairs/152rows visited, including20actualabsent
-pairs/40fit-negative rows; finite losses/gradients, FP32changed27,266,797,
-BF16changed8,256,449 versus initialization200, native reload delta0, peak
-allocated18,414,616,064bytes. Complete200model/full9owners retained.
-Export full569tensor model320 (explicit200+120; five projector tensors only).
-Next test: fresh200-versus320 native MOT4/RMO8/RMO12, same Simple associator,
-parser/tracking_dense/seed42/GT/empty+rejected frames. New ownedGPU5/API8103
-service only, auto-clean at terminal; existing200/API8102 onGPU6 untouched.
-Short-scope result is not fulloriginal9retention or a completeRMOTclaim.
-
-### Absence320 short negative result and native sampling-counter confound
-
-Fresh shared200vs320 controls finish48frames/sixvideos. MOT HOTA83.737->83.402,
-RMO single18.406->20.046, multi23.496->24.817%. Empty outputs unchanged7and3;
-IDSWsingle1->2/multi2->4. No successful absence correction is established.
-Originalnativecode inspection finds sampling seed depends on monotonically
-incremented request_index, not just suppliedsampling_seed42. Shared full9
-service consumes many intervening requests, so preliminary checkpoint
-comparisons do not pair effective stochastic seeds. Preserve their real scores,
-but do not attribute small changes solely to adaptation. New explicitly
-registered control: all original/200/200repeat/320 on fresh isolatedGPU5
-services, identical ordered24requests each, native source/math/seed42/scorers
-unchanged. Require repeated200raw wire/candidates/outputs identical. Keep
-both originalfull9owners unaffected. This is a small controlled protocol
-verification, not a repetition of full91k benchmarks or threshold tuning.
-
-Registered one finite blocking OneJev500completion owner: wait exactlive originaltrainer and verify terminal500receipt, actual474weight nativeMM2reload, then same candidate/GT/core4way Simple/pretrained/init100/500 controls acrossMOT/RMOT/TAOBase. GPU4 reused only after originaltraining exits. No original500restart or math/seed/corpus change. No detector E2E or Novelclaim from replay/Base-only clip. Fullvideo500before/after remains subsequent required work.
-
-Isolated96v1 original24frame unit completed, then next immediate replica bind failedEADDRINUSE after ownedserverparentexit. Later targetedlistener/bind check shows portfree; sourceparentwait does not guarantee immediate TCPport reuse. Small execution fix: SO_REUSEADDR probe plus internal30second port-release wait, no model/math/seed changes or other process signals. Preserve originalfailedowner; newv2reuses complete original24rows/metrics and resumes only200/200repeat/320fresh replicas.
-
-### Isolated native96 completed: confirmed positiveMOT/negativeRMOT transfer
-
-All96frames/12videos validated;200repeat rawwire/candidates/causaloutputs
-identical on24frames. Original/200/320 HOTA: MOT75.0687/83.4673/83.4016,
-single30.3853/24.8762/20.0457, multi22.6643/23.6754/24.8173%. Singleempty
-outputs3/7/7; multiple2/3/3. MultiIDSW0/2/4 and AssocA41.678/33.457/30.669.
-Keep adaptedcheckpoints as research controls, do not promote320as unified
-foundation. No successful absencecorrection. FixedSimple means observedMOT
-benefit is front-end adaptation, not a claimedJEVassociation gain. Shared
-service metrics remain preserved but not causal checkpoint evidence. Both
-full9owners unaffected; isolatedservices all stopped. Next major stage is
-actual500nativeMMreload and exact-proposal Fullbefore/after/multitask controls;
-completion owner already waits verifiedcurrenttrainer, no restart/sample skip.
-
-Originalfull9 v2terminalpartial: COCO allcanonical rows completed; other8clients HTTP503 queuefull. Native service defaultsmaxrunning1/maxqueued2 versus9clients*concurrency2. Small execution repair: task-local boundedqueue32, unchangedsource/scorers/data/limits/concurrency/genprofiles/seed42. Actual18parallel HTTPregression in a separate ownedservice, then freshoriginalresume. NativeCLIrejectsreusedoutput; wrapper invokes same nativefunctions in a freshresultroot, copies all-sample completedCOCO result and SQLitebackup partialcaches, spawns onlyunfinished8tasks. Preserve originalfailure/results; no exact stochasticcounter-resume or causalretentiongain claim.
-
-Confirmed sameHTTP503 failure in8of9adapted200tasklogs. Verified nativeevaluator1053747 command/cwd and requested its supported cooperativeSIGTERM; originalowner97074 then failedterminal and stopped only its ownedservice. Preserve allpartialcaches/failedlogs/nativecancelledsummary; resumeall9unfinished after queue32regression, same200checkpoint/parser/scorer/data/seed42. No unrelatedprocess signals. Avoid waitinghours for a doomedpartialnine-task unit.
-
-Queue32regressionv1timeout: newserverlog actuallyEADDRINUSE, while HTTPmodelsprobe accepted oldorphanAPI775339/1051641 after their launchers exited. Verified commands/cwd/model and originalisolatedPGIDs775337/1051638; priorTERM/grace hadfailed, targetedSIGKILLonlytheseownedgroups. Rootcleanupbug: waitlauncher returns before orphanAPI exits. Newhelper verifies/waits allownedPGIDmembers, forcekillsafter20secondfailedTERM, checksnonealive; add portbindguard to regression and recordgroupPID. Preserve oldfailedregression and recoverygate; rerun same18client queuecriterion in freshv2, no nativebenchmark protocol changes.
-
-Freshclean-port queue32v2 actual18parallel callbacks allHTTP200; fullownedgroup1339199 verifiedemptyaftercleanup, old775337/1051638 verifiedempty. Recoveryv2 hadlocalargparseNamespace overwrittenbyprocargvlist beforeanychildrenlaunch; repairloopvariablename, preservefailure, v3runs samevalidregression gate/no retest or changedcriterion.
-
-Queue32v2passed all18HTTP200; verifiedfullgroupcleanup and currentoldAPIports released. Full9recoveryv3startsoriginal8remaining plusadapted200all9 with validatedCOCO4952/4952reuse andSQLitecache backups through unchangednativefunctions/scorers. Keep allfailedstates/cache prefixes; no samples skipped/metric changes/base seed changes or exactstochasticcontinuation claim.
-
-### Fixed-checkpoint full-video memory intervention (registered)
-
-Read actualCompact/tracker: neuralhistory merges immutableanchor/recent/long
-native2560features, learnedupdate>=.5, 3secondlifespan with learnedtermination.
-Hypotheses: persistentanchors/gating improve naturalgap recovery, while always
-updates can contaminate;30secondretention may recover longer gaps but increase
-competition. Keep exactbroadnative1200checkpoint/1203originalV1candidates/
-realnativeROIs/GT/scorer/thresholds. Six frozenmodel inferenceinterventions:
-referenceanchor+gated3s, immediatepreviousframe noLostmemory/recentinput,
-latest-observationinput withnormal3sretention, unconditionalEMA(.1)input,
-anchor+alwaysreplace3s, anchor+gated30s. EMA is a convex mixture of realfeatures,
-not a synthetic image encoder; lastreliabletimestamp still uses learnedreliability.
-These are input/policy interventions, not independently retrained competitors.
-No nativeDLMquery/newcache; reuse790,667,425byte sharedfullvideo featurelog.
-Only featurearrays omitted from new logs, retain source reference/allboxes/
-labels/scores/decisions; actualNNinputs unchanged. Evaluate allframes/rejected
-frames with originalTrackEval and posthocfixed-birth-anchor recovery/NoMatch
-counts (never inputGT/replaceofficialmetrics). Actualnativefeature2frame EMA
-memorysave/load regression precedes fullruns; defaultprediction retention also
-checked against preserved existing baseline, recording any numerical variance.
-
-Actualnative two-frame EMAprobe passed:2560wide features, one matchedpriortrack expectedconvexupdate, originalanchor unchanged, forcedwrites leave lastreliabletime honest, restorednextoutputs/state exact. Sixfull1203frame memoryowner42123launchedGPU5; featurearrays omitted only in duplicatedlogs, exactsharedsource retained for inference/rehydration. Originalfull9owner39013 and One500/500completion owners remain active without restart.
-
-Prior fullvideo posthoc: GTobservations4586/nativeone-to-one matches4341,
-existingbirth-anchor associations575/1768, modelcorrectbeforematching651,
-globalcompetition changes94correct->wrong and18wrong->correct. MatchedGT
-NO_MATCH2100predictions with0option-missinggoldpositives under declared
-birth-anchor rule; this diagnostic excludesunmatched/ignoredregions and is
-notofficialNoMatchtruth beyond its rule. Candidate-gap returns194, â‰¤1s recovery
-9/177,1â€“3s0/4, >3ssupport0/null. This video cannot establish long>3srecovery;
-keep30sintervention asretention/competition sensitivity, not invented support.
-
-Novel evaluation breadth: select lowestexistingcompletevalidationvideo with
-bothofficialBase andNovel: TAOvideo63,40annotationframes/160GTboxes (Base120,
-Novel40peeler), allpresentwithcorrectimagegeometry. Fullfixed1203vocabulary
-unchanged, GTonlyscopeinventory/evaluation, noNoveltraininglabels. Register
-40fullannotation-frame online nativeDLM520classqueries plus realnativeROIs,
-then fixedproposalSimple/sharedCompact controls with unmodifiedTETA. Explicit
-per-queryrejection contributesempty for thatquery only, concatenates remaining
-original-parserboxes, noNMS/topK/GTselection; matches existing scored-query
-control policy, not old whole-frame-rejection scores. One blocking owner waits
-currentGPU5memoryjobexit beforeowning temporaryDLM/feature services; stops
-bothcompletegroups beforecorecontrols. Timestampannotationsteps, notphysical
-seconds/FPS. No rawdatasets/modelweights uploaded or all-datasetfeaturecache.
-
-Prepare explicit nativeOne200curriculum for proposal-domain mismatch: retainall20881existingteacher-weighted rows; native5661unique realDLM/uncorrectedown-history rows identityweight4=>9213, deterministiccyclicexpand to20881, total41762equal-source rows. No eval/Novellabels, no state correction or omittednativeunit. Register matchedteacher-only200 andnative-mixture200 fromsame eventualOne500FP32 initialization, same lr2e-6/seed0/budget/officialloss. These are additional200 stages, not changes to current500. Run officialCPUplan-only with existing100tokenizer/config (same released tokenizer/visiongeometry) before anytraining; reject anydroppedrow. Stage launch requires actual500completion/evaluation and correctFP32 initialization.
-
-Beforetraining, strengthen domaincomparison: preparedv1eligible familyratios differed. Preserveunusedv1; v2pairs eachteacherrow withnative row ofidenticalquestionfamily (9840identity/2460update/2460reliability/5951lifecycle/170withheld per source), equal50/50sources41762rows andall5661unique native rows. No label/dataframe or metricchange. Preflightv1stilldiagnoses allunique originals, newv2willget its own officialplan preflight; current500untouched.
-
-Realfull375stage initialization probe passed: all320trainableparameter tensors/752393024parameters copiedfromactualFP32trainingstate withmaxdelta0;498430914elements differfromBF16inference-export-derived initialization. CPUonly, no old375weights/state/live500modification. Newstageinitializerexplicitreset is distinctfrom exactresume. v1officialplan-only41762rows max26028/cap32768, zero drops; exactfamilymatchedv2officialpreflight nowrunning separately. Stage200launch remains pending real500completion/controlreview, no blind extra training started.
-
-### Full7218frame memory interventions complete
-
-Allsix1203frame traces/videos/GT/scorers/samecandidate+ROI sources validated;
-all27native rejectionframes eachretain denominator. Freshdefault matches
-preservedGPU7/resumed baseline exactly, maxprobdelta0. OfficialHOTA/IDF1:
-referencegated3=26.3157/30.6329%; frameonly11.4408/8.4615;
-recentobs3=16.3943/18.2023; EMAalways3=14.6426/16.8764;
-anchoralways3=24.2449/29.8179; anchorgated30=18.5523/19.8490.
-ReferenceIDSW165 vsalways154, but referenceFN1962 vs2143 andFP579vs604;
-no claim that gating improves everymetric. Keep default3s; longerretention
-worsens thisvideo and haszero >3snaturalrecovery support, so do not claim
-long-term recovery. Anchor/update evidence is frozenmodel interventions only,
-not optimalEMA/newarchitecture superiority. MatchedGTNoMatch excessive;
-nextnativeOne data-domain intervention remains pendingreal500results.
-
-Selectedv2family-matched native mixture officialCPUpreflight passed41762rows, max26028/cap32768, zero drops andPLAN_OK,119seconds,723724879tokens. Alloriginalunique native rows retained. RealFP32stage initialization proved on375fullmodel; no additional200training started before500result review.
-
-TAO63v1 failedbeforefirstnativequery: stream call omitted requiredexpression parameter (OVMOTNone). Bothownedservicegroups stoppedverified. SmallfixexplicitNone; preservev1empty prefix/failure; v2replays entireunfinished40frame unit withidenticalvocab/parser/scorer/seed/scope, actualfirstquery is targeted regression beforeremaining519requests.
-
-Adapted200full9 child terminal separately: schedulerGPUlaunchfailure at00:04:41 inrawforward end sync, all9clientconnection failures downstream. Queue32isnotcurrentroot. No completedtask metrics; caches/logspreserved. Firstactionablediagnostic: task-localCUDA_LAUNCH_BLOCKING1 in freshGPU6service, resume9fromlatestv2responsecaches withsameoperator/model/data/seed/scorers/concurrency/queue. RootGPUkernel stillunknown, no reset/driver/globalenv/foreignprocess changes. Originalnative8taskowner and parent39013 remain live; newadaptedrecovery has its ownowner without duplicateoldservice.
-
-2026-10-15 publication: all39files for completed six full1203 memory interventions, official metrics, predictions, SVG and matched real-native One continuation preparation remotely verified: GitHub085125569af96d47b89f2fd269c6501f02b0b28f tree3ffa25f12188b6190992de0baad740735fc9c43c matcheslocal034bc056e812d45f66eea34d54b1ca70cdb817e8. Existingblockinghandles confirmedOne500450/500, TAOBaseNovel63v2live, adapted200syncv3live. Retain failedadaptedv2 and originalfull9owner; no additional200launch or globalGPUreset.
-
-Hypothesis before CPU RMOT diagnostic: validation membership failures may reflect weak expression response or proposal/history domain mismatch despite fitted training examples. Keep three existing semantic checkpoints, exact20registerednative validationframes/realROI vectors and unchanged0.5threshold; causal primary-query actor, compare None/counter expression only on captured same core input, allGT posthoc. Quantify fit membership and real validation query response plus inverse-aligned candidate/history permutations. No new training, synthetic features, altered official metrics or GPU consumption.
-
-CPU real-query diagnostic complete on3existing semantic Compact checkpoints,20registerednativevalidationframes/27actualcandidateobservations. AllCPU replay boxes/IDs identical to recordedGPU outputs afterexcluding floatingprobabilities; maxmembershipGPUCPUdelta7.152557373046875e-5. Within captured candidategroups/shortlists inverse-aligned6headpermutationerror<=6.556510925292969e-7, not fullpipelinecrossgroupproof. Broadnative redcoatwoman6primary-onlyGTcovered observations havecorrectquerymean.432221 vs arrangingautomobilescounter.772220,0/6correctabove.5 vs6/6wrongcounterabove.5. Broadteacher same6wrongcounteralso6/6; language response is present butwronglydirected, not just orderbias. Fitoriginaljoint45positive/51negative perfect; broadnative282/316positive and460/588negative correct atunchangedhalf. No thresholdtuning/GTfeedback/officialmetricreplacement. FirstCPUv1diagnostic compared floatingqueryprobability in outputgeometry; v2 excludes both association/queryprobabilities and separately reports numericaldelta, preservesv1.
-
-ActualOne SFTscope audit: original50020881rows andpreparednative41762rows ALLstate.task=mot,personvocabulary,noexpressions. Familymix is not tracking-taskmix. Preserveoriginal500 and matchedMOT-domaincontinuationcontrol, but these cannot prove unifiedFullsemantic adaptation. Nextimplementation: opt-in genuine nativeOneJev Noul query membership, defaultbehavior unchanged; export allactualDLM candidates for144primary/counterquery contexts across72legalfitRMOTframes withrealcropmedia, GTonlyoutsideinput and instantaneousquerysupervisionexplicit. Run officialCPU plan-only before anynewtrain; actualnativekernelruntime/semantictraining remainsrequired.
-
-Fullsemantic preparation retained: genuineOneJev Noul membership opt-in implemented; all346nativefitRMOTrows officialCPUplanOK,max2293,0drops,457637tokens. v1data-rootfailure beforefirstrow preserved; v2usesregisteredreleasepath, all72frames/144contexts/all165nativecandidates twice/58positivemember targets retained plus16presencequestions on8empty/rejectedframes. Basecategory430questions from215GTteacher crops/64registeredtrainframes/9Baseclasses, all1203vocabchoices retained, noNovelGT orunknownnegativesupervision, explicitconditionalrootteacherforcing; officialCPUplanOK,max4233,0drops,1283259tokens. Sharedcategorybuilders actualsix-object root/leafrequest+mediapixels exactlyequalto8b880source undercapture-onlyrouting, notnativeinference. One blockingnativeOne500Noul4frameprobe owner waitsverifiedexistingcontrollerPID1209639/startticks thenrequiresitscomplete500controlsreceipt beforeGPU4reuse; session50119. No additionaltraining launched; actualOnekernelprobe/multitaskSFT and completevalidation remainrequired.
-
-Plan for genuine sharedFull semantic adaptation: preserve original500MOTstage and existingMOT-only200study as separate protocols, neither is unifiedSFT. Prepare explicitadditional600matched arms from actual500FP32masters: teacher-onlyMOT vs50/50teacher/nativeMOT, identical common346nativefitRMOTmembership/presence and430trainBasecategoryroot/leafrows. EqualeligibleMOT/RMOT/OVMOTbucket counts bydeclaredcycling, everyexistingeligibleMOTrow andsemanticrow retained; exactMOTquestionfamilycounts matched. Sameofficialsampler/loss/seed0/lr2e-6/4rowsperstep/frozenvision/752393024trainablelanguage params/32768context; budgetmatchedoptimizersteps, notidenticaltokenFLOPsexposures. NativeRMOinstantaneous(noOne500historyclaim) andBaseGTcropteacherstage explicit; noNovel/validationGTtraining. Computeconservative25GiBfeaturebudget beforegeneration, officialCPUplan-only all125286rowsperarm; actualtraining launch awaits500matchedcontrolsreview and nativeNoulprobe. New600stage is registeredresearch, not silent alteration of existing500/200protocol.
-
-Unified600v1 bothofficialplans completed125286each,zeroDropped,max22817teacher/26028native. Actual600prefixes2400rows haveMOT842/847,RMO799/801,OV759/752; only686/1558teachersemanticrepetitionIDs shared. Native length sort changes actualsemantic exposure despiteequaleligiblebuckets. Beforeanytraining registerv2: adjacentteacherMOTduplication aligns everyMOTquestionfamily withnative mixture; explicitpaired-index-shuffle-v1 underseed0 makes botharms selectidenticalrowindices/stepsemanticquestions/families, retainsallrows/nativebatchmax1/native4rowstep/loss/AMP. Optionalnew-stageflag only; defaultold500/200sampler and checkpointprotocol unchanged. V2checkpointprotocol recordssampler onresume. Preservev1data/plans; count bothversions conservativelyunder25GiB.
-
-ActualOne500complete at2026-10-15 01:30:56:500updates/2000examples/33469.233s, valid9,029,140,249byte fullFP32AdamRNGcursor state. RealnativeMMtworeloads maxprobabilitydelta0, all474exportentries retained. CompleteCPU500masterinit320/752393024 restored0,498431025F32elements retainedvsBF16init; originaldefaults checkpointprotocol exactlycompatible. Fullfrozenvisual153tensors unchanged;BF16uniquechanged333632768afterdeduplicatingtiedembedding+lmhead (254279680duplicatedexportelements). Actualunique0.852985920Bparams incl0.100592896Bfrozenvision,0.752393024Blanguage. Matched16controller stillfinishingTAOunits; completeMOT/RMO review mixed:pretrained/100/500MOT HOTA.343944/.197395/.308680 vsSimple.748813,IDSW47/0/57 vs1;singleRMOp500.248862 vsoriginal0/Simple.242284;multi.214246 vsoriginal.222720/Simple.243151. No promotedmodel ormultiTaskSuccessclaim.
-
-Unified600v2all125286rowsperarm passnativeCPUplan,0dropped,max22817teacher/26028native. Bothactual600prefixes2400rows exactly811MOT/749RMO/840OV; allper-stepquestionfamilies and1589semanticrepetitionIDs exact. DirectactualJSONpayloadcomparison all83524eligiblecommonsemanticrows (1589selected) byte-identical inclstate/question/media/target/provenance. Prefixtrainingtokens15774003teacher vs17216498native, notFLOPmatched. Conservativeexisting+newv2text/features16,289,535,076bytes<25GiB, v1data/failedcomparisonproofretained. Registeredfinitepaired600owner waits verifiednativeNoulprobe/500controls then startsGP4teacher;GP5native onlyafterexactownedTAOparentexit+emptyservicegroups, independentTAOfailuredoesnotglobalNoGo. Bothreadimmutable500masters/newstatepaths; streamactualchildlogs; nativeofficialcontrolsvs500andcompletevideoE2E remainrequiredaftertraining.
-
-NativeOne500Noulprobe actualfourframescompleted (150..153, candidatecounts3/1/0/2) andsixactualprobabilities.172542..176372; ownerfailedonlyKeyErrorGT_read becausevalidatorlookedinsideOneJevmetadata ratherthanexistingrun-levelgt_read_by_runtime=False/future_frames_read_by_runtime=False. Preservev1nativeoutputs/failure and prelaunchpairedownerv2whichcorrectlyfailedbeforeanytraining. Fixvalidatorfieldlocation, add futuremetadataGT_read consistency, freshv2validation reusesentirecompleted4frame run withoutnewinference/skippedframes orweakenedcriteria; no accuracyclaim.
-
-Original500matchedcontroller nowterminal0, all16officialcontrols/112decodedframes validated. TAOBase4pretrained13.243/10011.732/50011.981TETA, allClsA0 underlegacylabelpolicy; no consistentfoundationgain. NativeNoulv2validated all4actualcompletedframes/6probabilities via correctrun-levelGT/futureflags, no inference rerun or criterionweakening. Resource/GTvalidator firstGPU-memoryfield lookup assumedSimple hadlearnedGPUallocation; fixedSimpleunmeasured value=null, not0, targetedall16videos rerunpasses. Pairedownerv3actualteacherprocess launchedGPU4 (72945MiBfree atlaunch), actual500FP32copy320/752393024 difference0 andpaired_index_shuffle=True inrealargs.json. Native5arm waits exactliveTAOowner1444656/start37238782 andemptyownedgroups. Blockingpairedowner session33936; no newtrainingpoll oroldU2queue. Cumulativebudget andper-taskofficialbefore/afterevaluation remainpending.
-
-Research plan: current3legalReferKITTIvalidation label scopes0007/0015/0016 have0naturalGTidentitygap>3s; do not infer longrecovery support from this. Audit onlyregisteredMOTvalidation frames for naturalannotationgaps/lowvisibility intervals, nevermaskpredictions/createocclusion. Extendposthoc physicalidentity/memory/NoMatchdiagnostics toRMO(allreleasephysicalGT, querylabels separate) andTAO(nonexhaustiveoriginalGT, unknownFPSannotationunits explicit). RuncompletedrealOne500all16scopes onCPU withoutGTfeedback/officialmetricreplacement; preserveoldMOTdefinitions. Thenregistersame-native-candidate native-semantic500/600 evaluation owner afterpairedtraining ratherthanmixlegacydefault andsemanticflags.
-
-2026-10-15 13:05audit: oldpairedowner1557613 andchildren1557618/1584409 all/procabsent; unifiedhandlesmissing. No capturedPython/math/CUDAexception, logsabruptlystopteacher475(native250). ValidfullAdam/FP32/RNGcursors teacher450/native250 retained. Terminationsignal/origin notrecorded; uptime disproves assumingnewboot. OldchildPopeninheritedownerPGID/stdoutpipe; modifyexecutiononlydetachedsessions/directfilelogs tosurviveownercleanup. Freshdetachedresumeowner preserves originalunsaved475log beforetrimmingmainlogto450, restoresfull450/250 state andsampler unchanged, nooptimizerreset orBF16restart.
-
-NativeTAO63streamcompletedall40frames/520requests:317scored/203originalparserrejectedqueries,35228boxes,1885903934bytes,10850.079sperception+ROI(noE2Eclaim). SimplecontrolfailedstatePNGserializationframe755 after28completecausaldecisionlogrows/27encodedframes. Actualnativebox[92.18018,522.51652,151.07307,523.23624] yields59x0PILcrop fromsubpixelheight. PreserveboxinclFP/noNMS/noGTclipping. Newmemoryv3sentinelexactemptydimensions/mode andloadroundtrip, noinventedpixels; nativecategorysheetmarksno-pixelsforactualemptycrop. Actualframe755probe passes unchangedbox/output count. FreshCPUcontrolowner resumes28validdecisions, all40frames required; sharedCompact CPU sameweights/ROI/source withdevice explicit, noGPU/E2Espeedclaim.
-
-Registered same-semantic-policy before500/teacher600/native600 evaluation on GPU4 after verifiedteacherchildexit. Exact existing MOT4/SingleRMO8/MultiRMO12/TAOBase4 native candidate and frame sequences preflightpassed; unchangedMOT500 reused, newnativeNoul.5 andhierarchical1203category policy applied tobothbefore/after. Actual600MMreload comparesBF16exports against500 and repeatsnativeMMtwice withunchanged1e-6criterion. This12unitshortcomparison doesnotclaimNovel orfullvideos/E2E. Naturalvalidationaudit completed36sequences/647annotation-definedchallenges; selectedcompleteMOT20-05registeredhalfvalidation1659..3315 includes29.76s lowvisibilityinterval, notactualcandidateabsence/recoveryproof. No artificialocclusion, candidatefilter, testGT orofficialmetricchange.
-
-B2 research plan: run originalU2SharedTrackCore unchanged with newlearned2560to256GroundROIbridge on same48legalnativeMOTtrainingframes, originalsixlosses/GTforcing/queryaugmentation andoriginalGTignoreloader. Newseed0training300updates; no existingtrainedU2trackingcheckpoint. CPUonly/noextraGPU/nofeaturecache/newperception/oldU2queue. ExactsameV1DTnativecandidates for4framefunctional memory roundtrip thenfull1203officialTrackEval. Same300updates asCompact butdifferentparams/losses/optimizer/frameexposure/maxage, thereforearchitecturebaseline notisolatedJEVeffect orparameter/FLOPmatch. MOTonly; nofabricatedRMOT/OVMOTcapability.
-
-TAOCPUrecovery Simpleterminalvalidated:40decodedframes/35228nativepredictions/160GT; officialTETA18.640 Base23.3725 Novel9.1737 NovelClsA0. Alloriginal520queryoutcomes preserved. SharedCompactsamecandidateCPUcontrol active; noveldetection/localizationdoesnotmeanNovelrecognition. B2preflightreconstructedexactnativeboxes/features onall48frames, three16frame sequences,45adjacentobservationpairs (includingactualsourcegaps); noallocatedfeaturecache. DetachedB2ownerlaunched withall300updates/fourframefunctional/full1203officialcontrol inoneshellwait.
-
-B2actual300trainingcomplete17.325s CPU,5942795params/4361991changed elements/nativecheckpointreload0. Fourframevideo/eval/memoryroundtrippassed. Fullvideo failed199 after198validframes: actualfinite retainedtrackcoordinates~7.6e19 andvelocity145.9 cause FP32norms inf/inf incenter-distance; allmodelweights/currentfeatures/statevaluesfinite. NotGPUbackend/GT/NaNfeature. Firstcandidatefix alloverflowingnorms altered previouslydefinedframe198pairlogits by.12063676 andwasREJECTED beforevideoresume. Smallacceptedfix recomputesonlyundefinedcenter-distance ratios inFP64, leaves everydefinedFP32distanceexact. Full198frame replay reproducesallpair/new/noMatch/alive logits andIDs exactly(maxdelta0), actual199passesfinite. Savevalidatedstate198; freshv2owner reusesreal300checkpoint/completedfunctional4 andstrictall198sourceprefix, resumes199..1203, no retraining/weight/seed/candidate/threshold/memory-lifetimechange. Originalfailure/rejectedregression retained; no shortened metric scope.
-
-B2v2full1203terminalvalidated: all1203decodedframes/same13664nativecandidates/all27rejectedframes; originalTrackEvalHOTA.0124341105732 IDF1.00625459896983 IDSW250 FP455 FN4191. Completegeometry/order/imageframeagreement andperframeIDuniqueness checked. Strongnegativebaseline(majorGTmisses), noIDSWorJEVcausalitysuccessclaim. Actual17.325secondtraining/5942795params/4361991updates/reload0 retained. Resumed198prefix bypassescorecompute; removedinvalid standaloneassociationFPS metadata (raw26.915 retainedasresumedscopeencodingtimingonly), preservedrawreceipts andreranunmodifiedofficialscorer: allaccuracymetricsexact. NoE2Espeedclaim. Naturalchallenge manifest nowlinksitsalreadyregisteredMOT20protocol forunchangedofficialevaluation; images/GT/scopeunchanged.
-
-Researchplan fullRMOT: twoexistinglegal0007full800frame expression scopes, firstgenuinefreshsharedCompactsinglepass throughoriginalDLM+actualROI+memory+video; include sidearchivewrites inactualE2Etime, remoteinitializationexcludedasinpriorFull. Newoptional run_video currentnativearchive preservesfeaturesonce andallowsgeometryonlylogs; olddefault/replayprotocolunchanged. Exactsame archived candidates thenSimple/pretrainedOne/500/teacher600/native600 nativeNoul.5/v3controls, officialqueryTrackEval andphysicalIDposthoc. SingleGPU5owner waits bothverified600childrenexit+valid600master/done beforeallocation, independentGPU4shortcontrols/nativefull9 unaffected. Budgetnew2GiB acrossbothsources, conservativeprior16.289GB+TAO1.886GB+new2.147GB=20.323GB<25GiB; no duplicatedfeaturesincontrol logs/datasetcache/oldU2queue. Actualnative archive/replay/cropmemory roundtrip targetedregression onrealDT4frameROI source beforequeue. No fullRMOTdataset/CompactFullreasoning/standalonereplayE2Eclaims.
-
-Currentnativearchive regressionpassedactualDT4frames/13nativeROI2560candidates/742680bytes: botharchival and replay geometry/output/fullmemory states exactlyequal, GT/futurereadfalse, replayE2EFPS correctlynull. BothregisteredfullRMOT0007single/multi manifests validateall800images0..799/currentlegalv2validation withoutopeningGT. NewfullRMOTowner preconditionbindsthisactualreport; featurebudgetwithprobe20323665338bytes<25GiB. QueuewaitsGPU5traininghandoff, nochangescurrenttraining/nativefull9/TAOCPU owners.
-
-RawTAO40bothcontrolscomplete: SimpleTETA18.640/AssocA28.618/ClsA20.290 vs sharedCompact14.517/5.1478/30.314. BothNovelClsA0; CompactBaseTETA18.93545/Novel5.679 <Simple23.3725/9.1737. CandidateGTrecall.91875 both, butcorrectphysicalanchor32optioncoverage.156716 (Simple1). No promotion. GTfreeexactcoordinateaudit:35228rawnativecandidates but7343uniquegeometry,27885aliasobservations(79.1558%),max188samebox; actualduplication isactionableroot. Preregister separateproposalpolicycontrol: exactxyxyequality, preserveall35228aliasindices/labels/scores andall520queries/40frames, representativefirstnativeboxwithidenticalROIsasserted; originalrawsource/resultsunchanged. SameSimple/CompactCPUweights/officialTETA, noIoUthreshold/topK/NMS/GTselection andnoassociation-only/JEVcausalclaim. Newrawsourcecap1GiB alongside2GiBRMO sources; cumulativeconservative21397407162bytes<25GiB. NoextraGPU/training/perception.
-
-Researchplan tocompleteexplicit14.5task-sharingmatrix: foursemanticCompactarms MOT/MOT+RMO/MOT+OV/allthree, sameMOT-onlynative300initialstem andseed0newsemanticheads (notjointpretrained), sameexistingbroadnative536pack, same1200CPUFP32updates/loss/optimizer/params. Optionaltrainerdevice/tasks/per-task-stream flags leaveolddefaults unchanged. Independenttaskseed0+index samplers makecommonselectedexample-IDprefixes identical; exposure1200MOTvs600pairs/400triple andtokensdiffer, sofixedbudget comparisonnotisolatednegativeinterference. Existingolderactorhistoriesexplicitlyoffpolicy; no newfeaturecache/GPU/GTvaltraining/NovelGT. PlannedofficialcompleteDT1203/rawTAO40+shortRMO8/12, thencomplete800RMOafterexistingfreshsourcesready; preserveoriginalrawcandidateprotocol, notaliasconfound. CPUfullstate/Adam/RNG/sampler100step snapshots forunfinished-unitresume.
-
-Actualsubsetpackpreflight536groups (MOT149/RMO325/OV62),142actualnativeRMOgroups,1203classes. Fourarms readoneexactsemanticinitialization checkpoint constructedfromMOT300+seed0heads, eliminatingpriorjointtraining. Separateper-task drawprefixes verifiedfromactualsampleIDs aftertraining. Evaluateall1203DT/all40rawTAO +RMO8/12 beforeblockingforfresh800sources; latterwaitscompleteactualsource, notcompletionofslowerGPUFullcomparators. No sourcefeaturefilescopied; onlysmallmodel/Adam/RNGcheckpoints added.
-
-Tasksubsetallfouractual1200CPUtrainingscompleted/1146511params each/three-taskcheckpointreload0; actualsampleprefixesMOT400/RMO400/OV400exact, same sharedMOT300+seed0semantic initialization. FirstMOTonlyfull1203officialHOTA.1963864227 IDF1.2078625235 IDSW348 FP1089 FN1765; othercohortarms stillpending, notcomparedtolegacy2400budget26.316. Configurationerror discoveredbeforeunfinishedshortRMO scoring: v1pointedoldFullrawlogswithoutnativeROI. Existingjoint1200beforelogs haveexactsame8/12frames11/16boxes/labels/scores andreal2560ROIs; targetedall-rowmappingpasses. Preservev1badplan/oldmanagerstate, SIGTERMonlyverifiedCPUmanager1915707, leaveactualMOTinference1925936+ffmpeg1926238alivewithsameoutputs; newv2manager waitsoldgroupfinish andusesallfourcompletedcheckpoints/completedunits, no trainingorvalidinference restart. Sourcecontractproof saved.
-
-ExactaliasTAO40bothcontrolscomplete: SimpleTETA22.556/LocA22.871/AssocA26.472/ClsA18.325; sharedCompact21.773/23.273/9.6266/32.419 vsraw14.517/8.088/5.1478/30.314. Compactcorrectbirthanchoroptioncoverage.156716->.530973, existingaccuracy.052239->.088496; stillunderSimpleTETA22.556/AssocA26.472. BothNovelClsA0; no promotion. Rawvs7343exactgroups physicalproposalIoU.5 one-to-one recallboth147/160=.91875 (GTposthocaftergrouping), allboxsetsequal; source402723754bytes withall35228aliases. Separateproposal/representativelabelpolicy, notpureJEVassociationclaim. Nextscientificgaps retain: conventionalmatchedvisual/semanticinformation baseline, Compact32optionretrieval/contextscaling underactualmissing-option failure, samevideo/hardware genuineFull-vs-CompactE2E, Groundvisual-only/jointtracking-aware factorial andnativefull9retention, furtherown-historymultiTaskresearch. Do notdeclarefullgoalcomplete.
-
-SharedFullteacher600trainingterminalverified byexistingGPU4controlowner:600retainedupdates/2400examples, latest9,029,141,401byteFP32AdamRNGstate. Actualrestored450mastersdifference0; newtail150updates/600examples took3595.081s. Nativeforkdonecounterdividescumulative2400bytailtime(.66758) so notvalidtail/whole-stageFPS; curateactualtail.166895examples/s, nofull-stagewallclaim. Original475logloss1.404405526 vsreplayed4751.402670712 delta.001734814,slotaccsame.78/gradnormdelta.226344; restorestateexact doesnotprovebitwiseCUDAtrajectory. Causeunestablished; source deterministicrowseededrender/sampler andkernels/tolerances unchanged, no masking/reset/retraining. Original25unretainedloggedupdates replayed,totalobservedwork>=625updates; rawlogs preserved. Newcompletionvalidator recordslimitations. Native600arm andthree-taskofficial600scores pending. Same-policybefore500RMO8/12bothHOTA0 duetoexplicitnativequerygate, notcomparabletolegacyungated24.886/21.425.
-
-E2Eresearchplan addressesactualmissingcomparison: run Fullnative600 andcurrent sharedCompact onexact samelegalRMO0007single800frames/GPU5, freshisolatedoriginalDLMserviceforeach andsingleclientrequestcounterreset (priorisolated96repeatvalidated). FullactualV3crops vsCompactactualnativeROI path, notcached/syntheticlatencies; timeallIO/nativeDLM/ROI/memory/sourcearchive/render/encode excludespreloadedmodel/serviceinitializationboth. Strictactualdetectorbox/label/score/parserstatuspairingguard, every800frame included; ifdifferent preservefailure/nopairclaim. FixedFullthenCompactorder/singlerepetition/concurrentotherwork limitations explicit. Wait completeoldfullRMOowner exit+ownedservicegroups empty, no overlapGPU5/newtraining. Newsourcecap1GiB, cumulativeconservative22471148986<25GiB; sampledownedtotalVRAM/coreallocatorpeak/processRSS andfrozenOneCPUtable footprint included.
-
-TasksubsetDTfull1203fourarms nowcomplete HOTA/IDF1/IDSW/FN: MOT19.6386/20.7863/348/1765; M+R6.7597/9.8843/80/3865; M+OV21.2285/20.0809/414/1006; triple19.3119/17.8267/422/1372. Mixedoutcome, M+Rmisscollapse butMOTexposure600vs1200confoundsinterference. PreregistercomplementaryMOT400/600CPUcontrols sameactualsharedinitialization/source/per-taskrng/constantoptimizer/loss, assertactualsampleIDs+loggedloss exactprefixofMOT1200; thenfull1203fixednativeTrackEval. MatchMOTexposureofpairs/triple whiletotalupdatesdifferent, keeporiginalfixedtotal-budgetmatrixunchanged. No newGPU/queries/featurefiles; reportallfixedbudgets notselectbest.
-
-PairedE2E canonicalcontract onactual4nativeframes/13ROIobjects passes acrossfeatures+geometrylogs; resourceprobeactualCompactCPU4frames records0GPUalloc andcorrect1146511core plus248320x1024BF16frozenCPUtable508559360nominalbytes (notresidentRSS). Newruntime peakRSS/UTC/gitcommit fields tested; no freshnativeSpeed claim fromreplayprobe. Queuedpairedowner1953808/session87824 waits priorGPU5fullRMOcomplete, ports8106/8114, onefreshserviceperarm. Optionaladditionalmetadata enrichments afterownerlaunch do notchangeinference/pairingprotocol; rawchildresultreports areauthoritativeforcomponentmemory. Legal0007v2validation800manifest checkedagainwithoutopeninglabels/images.
-
-2026-10-15ï¼šå››ç»„å®Œæ•´MOTè¯„æµ‹å‡å®Œæˆï¼Œå›ºå®šæ€»1200æ­¥ä¸‹ HOTA ä¸º19.639/6.760/21.228/19.312ã€‚M+RMOTæ¼æ£€3865ï¼Œä¸èƒ½æŠŠIDSWå‡å°‘å½“æˆæ”¹å–„ï¼›M+OVæå‡HOTAä½†IDF1/IDSWå˜å·®ã€‚å› MOTå®žé™…æ›´æ–°é‡1200/600/600/400ä¸åŒï¼Œè¡¥å……MOT400/600åŒå‰ç¼€è®­ç»ƒé‡å¯¹ç…§ï¼Œä¿æŒåŽŸçŸ©é˜µä¸å˜ã€‚å·²å¯åŠ¨å•ä¸€é˜»å¡žCPU owner1957205/session71241ï¼›çœŸå®žç«¯åˆ°ç«¯åŒè§†é¢‘/åŒGPUå¯¹ç…§ owner1953808/session87824 ä»…æŽ’é˜Ÿç­‰å¾…GPU5ï¼Œä¸ä¸ŽçŽ°æœ‰ä»»åŠ¡äº‰ç”¨ã€‚æ–°å¢žRSS/UTC/gitè®°å½•å·²ç”¨çœŸå®ž4å¸§Compacté‡æ”¾æ ¡éªŒï¼›æœªå°†è¯¥é‡æ”¾å½“æˆE2Eã€‚
-
-ç ”ç©¶è®¡åˆ’ï¼šæŒ‰ä»»åŠ¡ä¹¦14.2ï¼Œåœ¨åŒä¸€å·²è®­ç»ƒå…±äº«Compactã€åŒä¸€å€™é€‰/ä¸‰ä»½nativeå¤–è§‚/å‡ ä½•/æ–‡æœ¬è¯­ä¹‰è¾“å…¥ä¸‹ï¼Œæ¯”è¾ƒå‡ ä½•å›ºå®šå…³è”ã€å‡ ä½•+ä¸‰è®°å¿†coså›ºå®šå…³è”ã€å›ºå®šå…³è”+å­¦ä¹ è¾…åŠ©å¤´ã€å­¦ä¹ å…³è”+å›ºå®šè¾…åŠ©å¤´åŠåŽŸå­¦ä¹ å‚è€ƒã€‚æ‰€æœ‰è¯­ä¹‰åˆ†ç±»/æˆå‘˜åˆ¤æ–­å‡½æ•°æƒé‡ç›¸åŒï¼›çŠ¶æ€ç”±å„ç­–ç•¥è‡ªèº«é€å¸§ç”Ÿæˆï¼Œä¸åšGTå›žå¡«ã€‚å›ºå®šåˆ†æ•°æ˜Žç¡®éžæ¦‚çŽ‡ï¼Œå¸¸æ•°æ²¿ç”¨å·²æœ‰.5/.5ä¸ŽNEW=.3ï¼›è¿™æ˜¯ä¸€ç»„å†»ç»“ç­–ç•¥å¹²é¢„ï¼Œä¸å†’å……é‡æ–°è®­ç»ƒæœ€ä¼˜ä¼ ç»Ÿæ¨¡åž‹æˆ–JEVç‹¬æœ‰è¯æ˜Žã€‚è®¡åˆ’å®Œæ•´DT1203ã€åŽŸå§‹/ç²¾ç¡®åˆå¹¶TAO40ã€RMO8/12ï¼ŒCPUã€ä¸æ–°å¢žfeatureæºã€‚å·²è§‚å¯Ÿå®ŒæˆMOTè€—æ—¶408.52sä¸­350.69sã€åŽŸå§‹TAO1152.83sä¸­773.39såœ¨å·²æµ‹å…³è”å—ä¹‹å¤–ï¼Œä¸èƒ½å…¨éƒ¨å½’å› äºŽçŠ¶æ€å¯¼å‡ºã€‚æ–°CPUå¯¹ç…§å¯é€‰é€å¸§å†³ç­–trace+æœ€ç»ˆæ— æŸäºŒè¿›åˆ¶çŠ¶æ€ï¼Œä¿ç•™æ‰€æœ‰çŠ¶æ€å­—æ®µï¼Œå…ˆéªŒè¯åºåˆ—åŒ–/ä¸‹ä¸€å¸§ä¸€è‡´ï¼›åŽŸé»˜è®¤JSON/æ¯å¸§å¯¼å‡ºå’Œå·²æ³¨å†ŒE2Eä¿æŒä¸å˜ï¼Œä¸æ¯”è¾ƒè¿™ç»„å­˜å‚¨ä¸åŒçš„é€Ÿåº¦ã€‚
-
-MOT400/600è¡¥å……å¯¹ç…§å·²éªŒè¯å®Œæ•´1203å¸§/13664å€™é€‰/27æ‹’ç»å¸§ï¼šHOTA13.3173/13.9788ï¼ŒIDF1 17.7572/13.4107ï¼ŒIDSW174/312ï¼ŒFN3483/2566ã€‚å®žé™…æ ·æœ¬IDåŠå·²è®°å½•lossä¸ŽMOT1200å‰ç¼€å®Œå…¨ä¸€è‡´(delta0)ï¼Œå„1146511å‚æ•°/ä¸‰ä»»åŠ¡reload0ã€‚åŒMOTæ›´æ–°é‡ä¸‹ï¼ŒM+R600ä¸º6.7597ã€M+OV600ä¸º21.2285ã€ä¸‰ä»»åŠ¡400ä¸º19.3119ï¼›æ€»æ›´æ–°é‡ä»ä¸åŒï¼Œä¸èƒ½ç›´æŽ¥å½’å› çº¯ä»»åŠ¡æ¢¯åº¦å¹²æ‰°ã€‚æ— æ¨¡åž‹æå‡/å…¨æ•°æ®é›†/E2Eå£°æ˜Žã€‚
-
-å›ºå®šå…³è”åŠå­˜å‚¨å›žå½’å®Œæˆï¼šçœŸå®ž4å¸§å…¨é¢„æµ‹/çŠ¶æ€ã€å®Œæ•´åºåˆ—åŒ–å­—æ®µå’Œæ¢å¤åŽçœŸå®žç¬¬5å¸§ä¸€è‡´ï¼›ä¸‰ä¸ªä»»åŠ¡åœ¨åŒçŠ¶æ€ä¸‹è¯­ä¹‰/ä¿ç•™è¾…åŠ©è¾“å‡ºä¸€è‡´ï¼Œå›ºå®šå¤–è§‚åˆ†æ•°ä¸ŽçŽ°æœ‰FeatureDecisionå·®1.11e-16ã€‚æ–°æ³¨å†Œäº”ç§å†»ç»“ç­–ç•¥Ã—å®Œæ•´DT1203/çŸ­RMO8ä¸Ž12/TAOåŽŸå§‹åŠalias40çš„CPUåºåˆ—å¯¹ç…§ï¼›ä½¿ç”¨åŒä¸€checkpoint/åŽŸå§‹native2560ä¸‰è®°å¿†/åŒä¸€æ–‡æœ¬è¯­ä¹‰å¤´ï¼Œé€å¸§è‡ªèº«åŽ†å²ï¼Œæ— GTä¿®æ­£ã€‚æ‰€æœ‰æ–°ç»„éƒ½ç”¨binary-finalå­˜å‚¨ä¸”ä¸æŠ¥å‘Šè·¨å­˜å‚¨é€Ÿåº¦ã€‚run_videoæœ€ç»ˆå®Œæ•´çŠ¶æ€å¯¼å‡ºç§»å…¥pipelineè®¡æ—¶ï¼Œä¿®æ­£æ—§ç‰ˆé‡å¤æœ€ç»ˆå¯¼å‡ºæœªè®¡æ—¶çš„é—®é¢˜ï¼›æ—¢æœ‰é€Ÿåº¦åŽŸæ ·ä¿ç•™ï¼Œæœªæ¥é…å¯¹åŒæ–¹å‡æŒ‰ä¿®æ­£å£å¾„ã€‚
-
-å†»ç»“å…³è”å¯¹ç…§owner1986817/session48561å·²å¯åŠ¨ï¼Œå•ä¸€é˜»å¡žshellç­‰å¾…æ‰€æœ‰25ä¸ªå•ä½ï¼›æ‰€æœ‰CPUæ¯”è¾ƒå‡æ–°è·‘åŒè®¾å¤‡å‚è€ƒã€‚é€è§‚å¯Ÿposthocè¯Šæ–­å„çº¦5MBä¿ç•™æœ¬åœ°ï¼ŒGitå‘å¸ƒç²¾ç®€ç»Ÿè®¡/å®˜æ–¹å…¨æŒ‡æ ‡/å®žé™…è¿è¡Œç»“æžœå’Œä»£ç ï¼Œä¸å¤åˆ¶å¤§é€è§‚å¯Ÿåˆ—è¡¨ï¼›å®Œæ•´é€å¸§traceã€è§†é¢‘ã€çŠ¶æ€ä»åœ¨åŽŸè¾“å‡ºç›®å½•ã€‚
-
-ç ”ç©¶è®¡åˆ’ï¼šé’ˆå¯¹Compact32èº«ä»½çŸ­åå•é—æ¼ï¼Œå…ˆåœ¨åŽŸå§‹/alias TAO40å·²å®Œæˆè½¨è¿¹ä¸ŠçœŸå®žå› æžœé‡æ”¾ï¼Œæ ¸å¯¹å…¨éƒ¨åŽŸå§‹è¾“å‡º/çŠ¶æ€å’Œ32-IDæŽ’åºä¸€è‡´ï¼Œå†åšåŒä¸€è½¨è¿¹çš„32/64/128æŽ’åºè¦†ç›–è¯Šæ–­ï¼›GTåªè¯»å–å·²å®Œæˆposthoc birth-anchorå½’å±žï¼Œç»ä¸è¾“å…¥trackerä¿®æ­£åŽ†å²ã€‚è¦†ç›–ä¸Šé™ä¸å†’å……æ›´å¤§contextå®žé™…ç²¾åº¦ã€‚åŽç»­å›ºå®šåŒcheckpoint/16å€™é€‰ç»„ï¼Œé¢„æ³¨å†Œ32/64/128å®žé™…å®Œæ•´DTä¸ŽaliasTAOå¯¹ç…§ï¼›ä¸Šä¸‹æ–‡å¢žå¤§è¶…å‡ºåŽŸè®­ç»ƒ32é€‰é¡¹åˆ†å¸ƒï¼Œä¼šæ”¹å˜softmax/è¯­ä¹‰/çŠ¶æ€ï¼Œå¿…é¡»å¦‚å®žæŠ¥å‘Šã€‚
-
-å·²éªŒè¯aliasTAO40å› æžœé‡æ”¾å…¨éƒ¨7343å€™é€‰/åŽŸå§‹è¾“å‡º/çŠ¶æ€ï¼Œ113ä¸ªå·²æœ‰æ­£ç¡®birth-anchoräº‹ä»¶ä¸‹32/64/128è¦†ç›–53.097/60.177/74.336%ï¼Œæœ€å¤§420æ´»è·ƒèº«ä»½ã€æ­£ç¡®æœ€å°rankæœ€å¤§395ã€‚è¯´æ˜Ž128ä¹Ÿéžå®Œæ•´è¦†ç›–ï¼Œä¸èƒ½ç”¨è¦†ç›–çŽ‡å½“ç²¾åº¦ï¼›åŽŸå§‹TAOæŽ’åå®¡è®¡owner2000016/session86629ä»æŒ‰åŽŸå•ä¸€é˜»å¡žå‘½ä»¤è¿è¡Œã€‚çœŸå®ž2å¸§é«˜å¯†åº¦æ£€æŸ¥ï¼šç¬¬2å¸§å‰251live IDsï¼Œ64/128å„å€™é€‰é€‰é¡¹æ•°é‡æ­£ç¡®ï¼Œé»˜è®¤32ä¸Žæ˜¾å¼32å…¨é¢„æµ‹/çŠ¶æ€ä¸€è‡´ã€‚åŽç»­å®Œæ•´DT1203ä¸ŽaliasTAO40ã€å­¦ä¹ /å›ºå®šcosä¸¤ç­–ç•¥Ã—64/128å…±8æ–°å•ä½ï¼ŒCPU owner2003663/session5404ç­‰å¾…å½“å‰affinityå…¨éƒ¨å®Œæˆå¹¶é€€å‡ºï¼Œå¤ç”¨å¹¶é‡æ–°æ ¸éªŒ32å‚è€ƒï¼Œä¸æ–°å¢žfeature/GPUã€‚
-
-Full teacher600å››ä¸ªåŒç­–ç•¥çŸ­æµ‹å‡å®Œæˆï¼šMOT HOTA30.868->30.601ï¼Œå•RMO0->0ï¼Œå¤šRMO0->9.945ï¼ŒBaseTAO TETA11.981->52.181/AssocA18.399->28.308/ClsA0->100ã€‚å››ä¸ªbeforeä¸Žå››ä¸ªafteréƒ½ä¿ç•™åŽŸå€™é€‰/å¸§å¹¶å®Œæ•´decodeï¼ŒRMOåŒæ–¹native Noul.5ä¸€è‡´ï¼›TAOéƒ½è¾“å…¥1203ç±»ä½†4å¸§åªæœ‰Base person/babyï¼Œä¸ä½œNovel/å¹¿æ³›åˆ†ç±»ç»“è®ºã€‚å®žé™…native600è®­ç»ƒ/åŽç»­æŽ§åˆ¶ä»å¾…å®Œæˆï¼Œæ•™å¸ˆ600æ¢å¤éžbitwiseé™åˆ¶æœªæ›´æ”¹ï¼Œæ— æ•´ä½“æˆåŠŸ/æ¨¡åž‹æå‡/E2Eå£°æ˜Žã€‚
-
-åŽŸpaired600é˜»å¡žè®­ç»ƒå¥æŸ„68568å·²exit0ï¼Œteacher/nativeå‡600æ›´æ–°/2400ä¾‹ï¼Œä¸¤ä¸ªæœ€æ–°FP32/Adam/scheduler/RNGæ–‡ä»¶å‡9029141401bytesã€‚ä¸¤ä¸ª600çœŸå®žnativeMMé‡å¤åŠ è½½å‡delta0/474entriesï¼›nativeä»Ž250å®Œæ•´stateç²¾ç¡®æ¢å¤ï¼ŒåŽ350æ›´æ–°1400ä¾‹è€—8767.184sï¼Œå°¾æ®µ.159686ä¾‹/sï¼Œä¸èƒ½ä½¿ç”¨ç´¯è®¡2400é™¤å°¾æ®µè€—æ—¶çš„.273748å½“å…¨ç¨‹é€Ÿåº¦ã€‚nativeæ— 250ä¹‹åŽæ—§æ—¥å¿—é‡å ï¼Œæ— æ³•è¯æ˜Žbitwiseé‡æ”¾ï¼›teacher475å·²æœ‰å·®å¼‚ä»ä¿ç•™ã€‚GPU4åŽŸownerç»§ç»­native600è¯„æµ‹ï¼›GPU5åŽŸfullRMOTownerå·²å®Œæˆè®­ç»ƒäº¤æŽ¥ï¼Œå®žé™…çŠ¶æ€single800_FRESH_COMPACT_NATIVE800ï¼Œç¦æ­¢é‡å¤å¯åŠ¨ã€‚åŽç»­pairedE2Eä»ç­‰å¾…å…¶å…¨éƒ¨ç»“æŸã€‚
-
-è¡¥é½å…³é”®å®Œæ•´MOTè¯æ®ï¼šæ­¤å‰Fullå¾®è°ƒå‰åŽåªæœ‰çŸ­MOT4ï¼Œä¸èƒ½æ®æ­¤æ›¿ä»£å®Œæ•´è§†é¢‘ã€‚æ–°æ³¨å†ŒåŽŸV1 DT1203å›ºå®šå€™é€‰ä¸ŠFull native600/before500/teacher600ä¸‰ç»„ã€å›ºå®šé¡ºåºï¼Œå„ç”¨åŽŸç”ŸChoice/Noul/Score+V3çœŸå®žcrop/motionã€åŠ¨æ€åˆ†ç»„ä¸å¢žtokenä¸Šé™ã€å…¨éƒ¨27æ‹’ç»å¸§ä¿ç•™ã€‚GPU4æ–°owneråªåœ¨åŽŸçŸ­æŽ§åˆ¶owner1870814æˆåŠŸå¹¶é€€å‡ºåŽæ‰§è¡Œï¼Œä¸ä¸Žå…¶é‡å ï¼›GPU5å®Œæ•´RMOTç»§ç»­ã€‚å¤ç”¨å·²éªŒè¯600çœŸå®žMMåŠ è½½ç»“æžœï¼Œä¸‰ç»„ç»Ÿä¸€binary-finalå­˜å‚¨/å…±äº«è¾“å…¥featureåªè¯»/é€å¸§å†³ç­–traceï¼Œæ— æ–°featuresæˆ–E2Eé€Ÿåº¦å£°æ˜Žã€‚é€šç”¨æŽ§åˆ¶runneræµå¼æ ¸å¯¹æºå€™é€‰ï¼Œé¿å…æ•´æºé‡å¤å¸¸é©»å†…å­˜ï¼›é»˜è®¤çŸ­æµ‹è¡Œä¸ºä¸å˜ã€‚
-
-åŽŸå§‹TAO40æŽ’åå®¡è®¡session86629å·²exit0ï¼šå…¨35228å€™é€‰/åŽŸè½¨è¿¹é€å¸§è¾“å‡ºå’ŒçŠ¶æ€ç²¾ç¡®æ¢å¤ï¼Œæœ€å¤§2670live IDsï¼Œ134å·²æœ‰æ­£ç¡®anchoräº‹ä»¶ï¼Œ32/64/128è¦†ç›–15.672/31.343/44.776%ã€‚ä¸æŠŠè¦†ç›–åäº‹å®žå½“ç²¾åº¦ï¼Œä¹Ÿä¸æŽ’é™¤å·²ç»ˆæ­¢/ä»Žæœªæ­£ç¡®åˆå§‹åŒ–èº«ä»½è¿™ä¸€è¯Šæ–­å±€é™ã€‚Full DT1203æ–°owner2024544/session88330å·²éªŒè¯ç­‰å¾…åŽŸGPU4çŸ­æµ‹owner1870814/start41851012ï¼Œæœªæå‰å å¡ã€‚
-
-ç ”ç©¶è®¡åˆ’ï¼šåŽŸå§‹TAO32é€‰é¡¹è¦†ç›–15.67%ï¼Œæ‰©å¤§128ä¹Ÿä»…44.78%ï¼ˆå†»ç»“è½¨è¿¹è¯Šæ–­ï¼‰ï¼Œå·²æœ‰æ­£ç¡®anchorå¸¸è¢«çº¯å‡ ä½•æŽ’åºæŒ¤å‡ºã€‚æ–°å¢žç‹¬ç«‹å€™é€‰åè®®ï¼šä¿æŒ32æ€»é€‰é¡¹ã€16å€™é€‰åˆ†ç»„/åŒæƒé‡/åŒè¾“å…¥ï¼Œå…ˆå–16å‡ ä½•ï¼Œå†æŒ‰å®žé™…anchor/recent/longåŽŸç”Ÿ2560ç‰¹å¾å¹³å‡cosï¼ˆå¯¹ç»„å†…å€™é€‰å–æœ€å¤§ï¼‰è¡¥è¶³è‡³32ï¼Œç¨³å®šä»¥lost_ageå’Œtrack_idè§£åŒåˆ†ï¼›ä¸è¯»GTï¼Œä¸æ›´æ”¹èº«ä»½çŠ¶æ€æˆ–è®­ç»ƒã€‚æ—§geometryé»˜è®¤ä¿æŒã€‚å®Œæ•´DT1203ä¸Žraw/aliasTAO40ï¼Œå­¦ä¹ å…³è”åŠå›ºå®šcosä¸¤ç­–ç•¥ï¼Œå››ä¸ªnativeROIè¾“å…¥ä»å…±äº«ï¼Œä¸æ–°å»ºfeaturefilesï¼›CPUæ–°ownerç­‰æ—¢æœ‰contextownerå®ŒæˆåŽä¸²è¡Œè·‘ã€‚ä¸ŽåŽŸgeometry32åˆ†åˆ«æŠ¥å‘Šï¼Œéžçº¯JEVå”¯ä¸€æ”¶ç›Šæˆ–æœ€ä¼˜æ£€ç´¢å£°æ˜Žã€‚å…ˆæ£€æŸ¥çœŸå®ž251-IDç‰‡æ®µçš„å€™é€‰åˆæ³•æ€§ä¸Žå®Œæ•´å‰ç¼€å¯æ‰§è¡Œæ€§ã€‚
-
-å®Œæˆå¹¶æ ¸éªŒä»»åŠ¡ç»„åˆ16çŽ°æœ‰èŒƒå›´ï¼šDT1203 HOTA19.639/6.760/21.229/19.312ï¼›rawTAO40 TETA12.421/19.284/12.850/10.081ï¼›å•RMO8 HOTA0/0/26.494/37.265ï¼›å¤šRMO12 4.096/3.513/9.622/3.513ã€‚æ‰€æœ‰å®žé™…ç»“æžœ/å®˜æ–¹æŒ‡æ ‡/å€™é€‰å®Œæ•´æ€§ä¸€è‡´ã€ç©ºå¤±è´¥è¡¨ï¼Œfull800ä»å¾…æºã€‚æ— æ™®éæœ€ä¼˜ï¼Œä¸‰ä»»åŠ¡å•queryå—ç›Šä½†å¤šquery IDF1=0/FN30ä¸”TAOé€€åŒ–ï¼›å››ç»„NovelClsA0ã€‚å…±äº«æ€»1200æ­¥ä½†æ¯ä»»åŠ¡æš´éœ²ä¸åŒï¼Œä¿ç•™MOT400/600å¯¹ç…§ï¼Œä¸å®£ç§°çº¯æ¢¯åº¦å¹²æ‰°ã€‚
-
-5ä¸ªåŒè¾“å…¥å®Œæ•´MOTç­–ç•¥å®Œæˆï¼šlearned/learned26.316ï¼ŒIoU/fixed7.488ï¼Œcos/fixed13.311ï¼Œcos/learnedaux13.009ï¼Œlearned/fixedaux24.283ã€‚å­¦ä¹ è¾…åŠ©åªåœ¨å­¦ä¹ å…³è”ç»„åˆæœ‰å¢žç›Šï¼›learned FP579/FN1962 vsfixedcos9328/250ï¼Œä¸èƒ½å°†æ€»ä½“æ”¶ç›Šå…¨å½’å› èº«ä»½æŽ’åºã€‚å„è½¨è¿¹å†…ç”Ÿä¸åŒï¼Œä¸æ˜¯å”¯ä¸€JEVè¯æ˜Žã€‚Hybrid32çœŸå®ž251èº«ä»½ç‰‡æ®µæ£€æŸ¥é€šè¿‡ï¼šå‡ ä½•é»˜è®¤ä¸Žæ—§ç‰ˆå…¨è¾“å‡ºçŠ¶æ€ç²¾ç¡®ä¸€è‡´ï¼Œæ¯ä¸ªæ–°å€™é€‰32ä¸ªç‹¬ç‰¹live IDsã€å‰16å‡ ä½•ä¸€è‡´ï¼Œ230å€™é€‰çš„èº«ä»½é›†åˆå®žé™…å˜åŒ–ã€‚æ–°CPU owner2034367/session35730åªç­‰å¾…å·²æœ‰contextowner2003663å®Œæˆ+é€€å‡ºï¼Œå†è·‘3è§†é¢‘èŒƒå›´Ã—2å…³è”ç­–ç•¥ï¼›ä¿ç•™åŽŸé»˜è®¤ã€ä¸æ”¹è®­ç»ƒã€GTé˜ˆå€¼å’ŒæŒ‡æ ‡ã€‚
-
-ç ”ç©¶è®¡åˆ’ï¼ˆè¡¥é½ä»»åŠ¡ä¹¦14.4å¿…éœ€æŽ§åˆ¶ï¼‰ï¼šåŽŸGround200å«native MDM/AR+.1GTèº«ä»½+.1decoded-proposalèº«ä»½ï¼Œç¼ºå°‘åªè§†è§‰å®šä½å¯¹ç…§ã€‚æ–°localization200ä»ŽåŽŸ569å¼ é‡åˆå§‹åŒ–ï¼ŒåŒ72å›¾/112nativeè¡Œ/56pairã€seed42/200æ­¥/AdamWlr2e-6ã€ç›¸åŒé‡‡æ ·/å‚æ•°27Mï¼Œåªå°†ä¸¤ä¸ªèº«ä»½lossç³»æ•°ç½®0ï¼Œä»è®°å½•éžåŠ æƒåˆ†é‡ï¼Œä¸æ”¹å˜nativeç®—å­/æŽ©ç /GTã€‚åŽŸtrack200æœ‰ä¸­æ–­æ¢å¤ï¼Œå£°æ˜Žç›¸åŒæ³¨å†Œé…æ–¹/é‡‡æ ·ï¼Œä¸å£°ç§°bitwiseè½¨è¿¹é…å¯¹ã€‚å…ˆCPUæ¯”è¾ƒå…¨éƒ¨æ ·æœ¬payloadä¸Žscheduleï¼ŒGPU6 ownerä»…ç­‰å·²æœ‰adapted200 full9å®¢æˆ·å…¨éƒ¨ç»“æŸã€è¯¥æœåŠ¡ç»„å·²è¢«åŽŸowneré‡Šæ”¾åŽæ‰è®­ç»ƒï¼Œä¸è¦æ±‚GPU7ä¹Ÿç»“æŸã€‚éšåŽå¯¼å‡ºæ–°bundleï¼Œå¹¶ç”¨åŒGPU6/ç§æœ‰æ–°service/requestcounteråŒåºåˆ—æ¯”è¾ƒåŽŸå§‹/åªå®šä½/è·Ÿè¸ªè§†è§‰é€‚é…ï¼›åŒå„è‡ªåŽŸç”Ÿå€™é€‰å†æ¯”è¾ƒåŽŸå§‹Oneä¸Žnative600ï¼Œç»„æˆå—æŽ§è§†è§‰Ã—JEVç»„åˆï¼Œä¸ç§°ç«¯åˆ°ç«¯è”åˆæ¢¯åº¦è®­ç»ƒã€‚æ— æ–°featurecacheï¼Œä¿ç•™å…¨éƒ¨åŽŸæµ‹è¯„ã€‚
-
-localization CPUé¢„æ£€v1å¤±è´¥ï¼šæ¯”è¾ƒæœ€ç»ˆGround200 checkpointä¸Žæœ€åˆGPU7ç™»è®°çš„æ•´ä¸ªprotocolï¼Œå®žé™…å·®å¼‚ä»…GPU6ã€step1ä¿å­˜å’Œexecution_variantã€‚å…¨éƒ¨200é‡‡æ ·ç´¢å¼•å·²åŒ¹é…ï¼Œloss/data/seed/lræœªæ”¹å˜ã€‚æ”¹ä»¥å®žé™…å®Œæˆçš„native_ground_tracking200_gpu6_20261014.jsonä¸ºå‚è€ƒï¼Œä»è¦æ±‚å®žé™…protocolç²¾ç¡®ç›¸åŒåŠå…¨éƒ¨112è¡Œ/200ç´¢å¼•ç›¸åŒï¼Œfresh v2é‡è·‘ï¼›ä¿ç•™v1è¯Šæ–­ï¼Œä¸æ”¾å®½æ•°å€¼æ ‡å‡†ã€‚
-
-å‘çŽ°å¹¶ä¿®å¤Full1203æŽ’é˜Ÿdriverå¥æŸ„å˜é‡é®è”½ï¼šupstream registered list/Noneè¦†ç›–teacher/native dictã€‚åŽŸç­‰å¾…owner2024544åœ¨çŸ­æµ‹owner1870814æ­£å¸¸exit0äº¤æŽ¥æ—¶å·²å®žé™…æŠ¥TypeErroré€€å‡ºï¼ˆ88330 exit1ï¼‰ï¼Œcompleted={}ï¼Œæœªå¯åŠ¨GPUæ¨¡åž‹ï¼›è¯•å›¾æ›¿æ¢å‰çš„çŠ¶æ€æ–­è¨€é˜»æ­¢äº†ä»»ä½•è¯¯æ€ã€‚ä¿®å¤ä¸ºç‹¬ç«‹upstream_registeredã€‚çœŸå®žå·²å®Œæˆowner+ä¸¤ä»½å®žé™…600è®°å½•çš„CPUè°ƒåº¦å›žå½’é€šè¿‡ï¼Œä¸å¯åŠ¨æŽ¨ç†ã€ä¸å†’å……è¯„æµ‹ã€‚åŽŸfailureä¿ç•™ï¼Œfresh v2åŒ1203åè®®æ¢å¤ï¼Œæ— å·²æœ‰è®­ç»ƒ/æœ‰æ•ˆæŽ¨ç†é‡è·‘ã€‚
-
-Fullä¸‰åˆ†æ”¯12åŒç­–ç•¥çŸ­æµ‹å·²ç»ˆç«¯éªŒè¯ï¼šbefore500/teacher600/native600 MOT HOTA30.868/30.601/32.236ã€å•RMOå…¨0ã€å¤šRMO0/9.945/11.214ã€Base4 TETA11.981/52.181/47.682ã€‚nativeå¤šRMO IDF10.256/IDSW1/FP6/FN27ï¼ŒBase4ClsA100åªæ¶µç›–person/babyå•ä¸€Basecanonicalç±»ï¼Œä¸æ³›åŒ–Novelã€‚nativeåŽ†å²æ•ˆæžœæ··åˆã€ä¸æ™‹å‡æ¨¡åž‹ã€‚Full1203 freshv2 owner2049900/session70182å®žé™…è¿›å…¥native_mot_full1203_INFERENCEï¼ŒåŽŸv1é”™è¯¯/æ— æ¨¡åž‹æ‰§è¡Œäº‹å®žä¿ç•™ã€‚
-
-localization200å®žé™…CPUé¢„æ£€v2é€šè¿‡112è¡Œå›¾åƒbytes/prompt/targets/nativealignåŠä¸Žå®Œæˆcheckpointå…¨éƒ¨200drawå®Œå…¨ç›¸åŒï¼Œ72å›¾/56pairsã€884nativeproposals/628alignedregions/24æ”¯æŒèº«ä»½pairsï¼›åªå®šä½ä¸¤ä¸ªèº«ä»½coeff0ï¼ŒåŽŸå›¾åƒæ ‡ç­¾å’Œnativeæ ¸ä¸å˜ã€‚æ–°owner2052936/session76692å·²ç­‰å¾…GPU6 native200 full9çœŸå®žclients+æœåŠ¡ç»„é‡Šæ”¾ï¼Œä¸ä¸­æ­¢å…¶åŽŸæµ‹è¯„ï¼›éšåŽ200æ­¥è®­ç»ƒ+å¯¼å‡º+åŽŸå§‹/åªå®šä½/è·Ÿè¸ªè§†è§‰ä¸‰å‰ç«¯åŠlocalization repeatå…±96å¸§ï¼Œå†ä¸ŽpretrainedOne/native600ç»„åˆ18çŸ­æµ‹ï¼Œæ˜Žç¡®éžè”åˆæ¢¯åº¦è®­ç»ƒï¼Œä¸æ–°å¢žfeaturefilesã€‚
-
-çœŸå®žå®Œæ•´RMOåˆæ¬¡å®Œæˆ1600å¸§ï¼šsingle800 Compact HOTA6.0247/IDF2.8902/FP323/FN13ï¼ŒsamecandidateSimple4.9658/1.2587/FP1402/FN8ï¼›multi800Compact19.8019/21.0082/IDSW165/FP619/FN1054ã€‚fresh E2E .678005/.882942å«çœŸå®žDLM+ROI+state/archive/videoï¼Œä¸èƒ½ä¸ŽcachedSimpleæˆ–æ—§ä¸åŒè§†é¢‘Fullæµ‹é€Ÿç®—åŠ é€Ÿæ¯”ã€‚singleä»…18GT/782ç©ºç›®æ ‡å¸§ï¼Œä¸èƒ½åªæŠ¥å®æŒ‡æ ‡ï¼›å®˜æ–¹empty_target_frame_predictionsæ˜¯æ£€æµ‹æ¡æ•°ï¼Œæ–°å¢žposthocå¦ç®—ç©ºå¸§å‘Šè­¦çŽ‡ã€‚
-
-è®­ç»ƒç›‘ç£å®¡è®¡å‡è®¾ï¼šçŽ°prepare_rmot_native72 update_targetä»…quality>=.7ä¸”ç›®æ ‡ä¸æ˜¯NO_MATCHï¼Œæ²¡æœ‰æ£€æŸ¥å®žé™…Hungarianæ‰€é€‰èº«ä»½æ˜¯å¦ä¸Žè¯¥å€™é€‰ä¸€è‡´ã€‚å®Œæ•´RMOåŽéªŒä¸­å¤§é‡memory_updates_wrong_identity_or_unmatchedä¸ç­‰åŒæ™®éé”™è¯¯çœŸå€¼ï¼Œä½†æç¤ºæ­¤ä»£ç†ç›®æ ‡å¯èƒ½æ•™ä¼šé”™è¯¯å†™å…¥ã€‚å…ˆåªåœ¨åŽŸ72åˆæ³•fitå¸§å®¡è®¡ï¼ŒæŒ‰åŽŸGTå¯¹é½å’Œä¸å¯ä¿®æ”¹birth-anchorå½’å±žå¤ç®—åŽŸ142nativeç»„æ ‡ç­¾ï¼›ä¸æ”¹åŽŸåŒ…/æ¨¡åž‹/è¯„æµ‹ï¼Œå€™é€‰æ— å®žé™…å†™å…¥æ—¶ä¸è‡†é€ æ¡ä»¶æ ‡ç­¾ã€‚ä¹‹åŽè‡ªèº«åŽ†å²è®­ç»ƒåº”ä½¿ç”¨å½“å‰æƒé‡é€å¸§çŠ¶æ€å¹¶ä»¥çœŸå®žæ‰€é€‰èº«ä»½ç›‘ç£æ›´æ–°ï¼Œä¿ç•™å¾…éªŒè¯å‡è®¾ã€‚
-
-è®­ç»ƒæ›´æ–°æ ‡ç­¾å®¡è®¡ç»“è®ºä¿®æ­£ï¼šåŽŸ72fit/165å€™é€‰ã€128éžç©ºprimary/counterç»„çš„åŽŸproxyæ›´æ–°æ ‡ç­¾å…¨éƒ¨ç²¾ç¡®å¤çŽ°ï¼›28ä¸ªæ­£æ ‡ç­¾ä¸­16ä¸ªå·²çŸ¥ä¸€è‡´ã€12ä¸ªå‡ºç”ŸGTå½’å±žæœªçŸ¥ï¼Œ0ä¸ªæ­£æ ‡ç­¾åŒæ—¶å­˜åœ¨ä¸¤ä¸ªå·²çŸ¥å†²çªèº«ä»½ã€‚ä¸èƒ½æŠŠæœªçŸ¥é”šç‚¹åˆ¤æˆé”™è¯¯ï¼›v1æŠŠæœªçŸ¥proposed_targetç½®0çš„è¯Šæ–­å»ºè®®æ— æ•ˆã€ä»Žæœªç”¨äºŽè®­ç»ƒï¼Œv2/v3æ”¹ä¸ºNone/maskï¼Œä¿ç•™è§£é‡Šé™åˆ¶ã€‚å·²çŸ¥è·¨ä¸¤ä¸ªæ ‡æ³¨èº«ä»½å†™å…¥ä»…1ä¾‹ï¼ŒåŽŸæ ‡ç­¾å·²æ˜¯0ï¼Œè¯´æ˜Žä¸èƒ½æ®æ­¤å®£ç§°æ­£æ ‡ç­¾å¯¼è‡´å…¨è§†é¢‘å¤±è´¥ã€‚ä¼˜å…ˆè¡¥å½“å‰æƒé‡é€å¸§actorçŠ¶æ€è®­ç»ƒ/ç¡¬é”™è¯¯è¦†ç›–ï¼Œä¸æ”¹æœªçŸ¥æ ·æœ¬ä¸ºè´Ÿã€ä¸æ”¹åŽŸåŒ…/æƒé‡/è¯„æµ‹ã€‚
-
-å®Œæ•´multi800çš„SimpleåŸºçº¿åœ¨åŽŸGPU5é˜Ÿåˆ—ä¸­æŽ’åœ¨æ…¢Fullå¯¹ç…§ä¹‹åŽï¼›ä¸ºåŠæ—¶å®Œæˆå¿…è¦å›ºå®šå€™é€‰æ¯”è¾ƒï¼Œç‹¬ç«‹CPUç›®å½•æŒ‰åŽŸ800/2208å€™é€‰/19æ‹’ç»å¸§/Simple/JSONæ¯å¸§åŽŸå‚æ•°æ‰§è¡Œï¼Œä¸ä¸­æ–­åŽŸGPU5 owneræˆ–å·²æœ‰æŽ¨ç†ã€ä¸æ–°å»ºfeaturesã€‚åŽŸownerè‹¥æ—¥åŽé‡å¤ç”Ÿæˆå…¶è®¡åˆ’åŸºçº¿ï¼Œä¿ç•™ä¸¤ä»½å¹¶æ˜Žç¡®æ˜¯åŒè¾“å…¥é‡å¤ã€ä¸æ˜¯æ–°seedæˆ–é¢å¤–ç‹¬ç«‹æ ·æœ¬ï¼Œä¸åšFPSåŠ é€Ÿæ¯”ã€‚
-
-ä»»åŠ¡èŒƒå›´æ¾„æ¸…ï¼šä»»åŠ¡ä¹¦16è¦æ±‚teacher-forcingåŽå¢žåŠ è‡ªèº«é¢„æµ‹åŽ†å²ä¸”é€å¸§çŠ¶æ€çœŸå®žå½±å“æœªæ¥ï¼›çŽ°æœ‰One100å®žé™…rolloutâ†’500SFTï¼Œä»¥åŠCompactjoint1200å®žé™…72å¸§rolloutâ†’native1200ï¼Œå·²æä¾›ç¦»çº¿è¿­ä»£çš„è‡ªèº«çŠ¶æ€è®­ç»ƒè¯æ®ï¼Œä¸èƒ½ç§°ä¸ºæ¯ä¸ªæ¢¯åº¦æ›´æ–°éƒ½é‡æ–°é‡‡æ ·çš„on-policyè®­ç»ƒã€‚è¿›ä¸€æ­¥é€æ¢¯åº¦å½“å‰æƒé‡rolloutæ˜¯æ”¹è¿›æ–¹å‘ï¼Œä¸æ“…è‡ªæŠŠå®ƒå¢žè®¾ä¸ºç”¨æˆ·åŽŸä»»åŠ¡çš„é¢å¤–å®Œæˆé—¨æ§›ï¼›ä¿ç•™ç¦»çº¿åŽ†å²ã€æ¨¡åž‹ç‰ˆæœ¬å’Œæ— GTä¿®æ­£é™åˆ¶çš„æ˜Žç¡®è¡¨è¿°ã€‚
-
-å®Œæ•´800è¾“å‡ºæ ¸éªŒé€šè¿‡ï¼šnativeæ¡£æ¡ˆä¸Žå…¨éƒ¨1600è¾“å‡ºgeometry/labels/scores/order/ROI2560/æ—¶é’Ÿä¸€è‡´ï¼Œ1412/2208å€™é€‰ã€36/19è§£æžæ‹’ç»å¸§ã€197218901æ€»æ¡£æ¡ˆbytes<2GiBã€‚çœŸå®žå®Œæ•´wall1179.932/906.062sã€FPS.678005/.882942ï¼Œinit5.232/5.362såŠæœåŠ¡é¢„åŠ è½½é™¤å¤–ï¼Œå«æœ€ç»ˆçŠ¶æ€å­˜ç›˜ã€‚singleç©ºå¸§200/782å‘Šè­¦=25.575%ï¼ˆ318æ£€æµ‹ï¼‰ï¼Œmulti143/247=57.895%ï¼ˆ185æ£€æµ‹ï¼‰ï¼›åˆ«æ··æ·†æ£€æµ‹æ•°é‡ä¸Žå¸§å‘Šè­¦çŽ‡ã€‚æ ¸å¿ƒGPU allocator14970368/14855168bytesã€RSS1.467/1.478GBä¸å«å¤–éƒ¨DLM/ROIæˆ–æ•´pipelineVRAMï¼›ä¸ä¸ŽcachedSimpleæˆ–å…¶ä»–è§†é¢‘Fullç®—é€Ÿæ¯”ã€‚æ–°CPU multiSimple owner2079614/session84279ä¸æ”¹å˜è€GPU5é˜Ÿåˆ—ã€‚
-
-multi800æ—©æœŸSimple CPUæŽ§åˆ¶exit0å¹¶éªŒè¯å…¨éƒ¨800å¸§/2208å€™é€‰/19æ‹’ç»ï¼šHOTA31.8769/IDF37.6852/IDSW99/FP1076/FN980ï¼Œvså…±äº«Compact19.8019/21.0082/165/619/1054ã€‚èº«ä»½å…³è”é€€åŒ–ä¸èƒ½è¢«è¾ƒå°‘FPæŽ©ç›–ï¼Œä¸æ™‹å‡ã€‚ä¸ºå›žç­”è¯­è¨€ç­›é€‰ä¸Žå­¦ä¹ å…³è”çš„è´¡çŒ®ï¼Œå°†çŽ°æœ‰5ä¸ªå†»ç»“ç­–ç•¥åŽŸæ ·æ‰©å±•åˆ°ä¸¤æ®µfull800ï¼Œå¦è·‘CPUå­¦ä¹ å‚è€ƒã€åŒè¯­ä¹‰æƒé‡/è¾“å…¥/32é€‰é¡¹ï¼Œå…¨éƒ¨binary-finalå­˜å‚¨ã€ä¸æµ‹E2Eï¼Œä¸è¯»GTæ”¹çŠ¶æ€ã€ä¸æ–°å»ºfeaturesã€ä¸å¢žåŠ GPUã€‚ç‹¬ç«‹CPU4çº¿ç¨‹å¹¶è¡Œï¼Œä¸ä¿®æ”¹åŽŸGPU5Fullé˜Ÿåˆ—æˆ–åŽŸ25ä¸ªèŒƒå›´åè®®ã€‚
-
-æ–‡æ¡£æ•´ç†ï¼šCURRENT_STATUSæ”¹ä¸ºå½“å‰è¯æ®å¿«ç…§ï¼Œé›†ä¸­å®Œæ•´MOT/RMO/TAOè¡¨ã€çœŸå®žFPS/èµ„æºå£å¾„ã€è®­ç»ƒ/ç›‘ç£é™åˆ¶å’ŒGPU/CPUå¾…å®Œæˆæ¸…å•ï¼›åŽŸé€æ¬¡è¿½åŠ å…¨æ–‡åŽŸæ ·ä¿å­˜STATUS_HISTORY_20261015.mdåŠGitåŽ†å²ï¼Œæœªåˆ é™¤å¤±è´¥/æ—§ç»“æžœã€‚
-
-fullRMOçŽ°æœ‰5ç­–ç•¥Ã—2å®Œæ•´800å·²å…¨éƒ¨exit0/éªŒè¯ï¼ŒCPUlearnedå‚è€ƒçš„å…¨éƒ¨å®˜æ–¹accuracyä¸ŽfreshGPU5ç²¾ç¡®ä¸€è‡´ã€‚singleHOTA6.025/7.766/5.538/6.009/6.636ï¼›multiHOTA19.802/32.813/16.622/22.035/19.558ï¼ŒIDF21.008/41.432/14.009/23.803/21.064ï¼ŒIDSW165/79/105/119/157ï¼ˆæ³¨å†Œé¡ºåºï¼‰ã€‚å›ºå®šIoU+åŒå†»ç»“è¯­ä¹‰å‡½æ•°ä¼˜äºŽå½“å‰å­¦ä¹ å…³è”ï¼Œnativeappearancecosåè€Œæ¶åŒ–çº¯IoUã€‚æ­¤å¯¹ç…§å¦å®šæœ¬åœºæ™¯å­¦ä¹ å…³è”ä¼˜åŠ¿ï¼Œä¸ä»¥MOTæ­£ç»“æžœæŽ©ç›–ï¼›éžæœ€ä¼˜é‡è®­baseline/å”¯ä¸€JEVè¯æ˜Žï¼Œä¿ç•™è¯­ä¹‰çŠ¶æ€å†…ç”Ÿå·®å¼‚ä¸Žactionpriorå·®å¼‚ã€‚å…¨éƒ¨800/36æˆ–19æ‹’ç»/ç›¸åŒ1412æˆ–2208å€™é€‰ï¼Œbinary-finalåŒå­˜å‚¨ã€ä¸æµ‹E2Eï¼Œä¸æ”¹æ¨¡åž‹é»˜è®¤ã€‚
-
-ç ”ç©¶è®¡åˆ’ï¼šè¡¥é½å·²ç™»è®°è‡ªç„¶MOT20-05å®Œæ•´validationåŠæ®µ1657å¸§ï¼ˆ1659..3315,25Hzï¼‰ï¼Œæ¯”è¾ƒåŽŸSimple/å…±äº«Compactçš„3s/30såŠå·²æœ‰memoryå¹²é¢„ï¼›å›ºå®šåŒä¸€çœŸå®žåŽŸDLMå€™é€‰/ROIï¼Œæ— äººå·¥é®æŒ¡/ä¸¢æ¡†/GTä¿®æ­£/å¯è§åº¦è¿‡æ»¤ã€‚GTèº«ä»½854çš„29.76såªæ˜¯ä½Žå¯è§åº¦é—´éš”ä¸”743ä¸­é—´å¸§ä»æœ‰æ ‡æ³¨ï¼Œä¸é¢„ç§°çœŸå®žå€™é€‰ç¼ºå¤±æˆ–æˆåŠŸé‡è¯†åˆ«ã€‚GPU7é˜Ÿåˆ—åªåœ¨åŽŸnativefull9å®¢æˆ·ç»“æŸä¸”åŽŸowneré‡Šæ”¾æœåŠ¡åŽå¯åŠ¨ï¼ŒGPU6é€‚é…é˜Ÿåˆ—äº’ä¸å¹²æ‰°ã€‚æ–°archiveæœ€å¤š3GiBï¼Œæ—¢æœ‰ä¿å®ˆèµ„æºä¸Šç•Œ22471148986+3221225472=25692374458<26843545600ï¼ˆ25GiBï¼‰ã€‚ä¸ºé¿å…denseROI JSONè†¨èƒ€ï¼Œä¿å­˜åŽŸå§‹FP32ROIä¸ºé€å¸§æ— æŸnpzã€JSONç´¢å¼•ç•™å…¨éƒ¨æ¡†/æ ‡ç­¾/åˆ†æ•°/metadataï¼Œè¯»å›žfloatæ•°å€¼å¿…é¡»ç²¾ç¡®ï¼ŒéžFP16/é‡åŒ–ï¼Œä¸æ–°å¢žç‹¬ç«‹å€™é€‰ã€‚é»˜è®¤è€JSONæ ¼å¼ä¸å˜ï¼Œå…ˆç”¨çœŸå®žå¸§éªŒè¯åºåˆ—åŠä¸‹ä¸€å¸§æ¢å¤ä¸€è‡´ï¼›æ‰€æœ‰æ–°å­˜å‚¨/IOå‡è®¡å…¥çœŸå®žpipelineæ—¶é’Ÿï¼Œé‡æ”¾ä¸å£°æ˜ŽE2Eã€‚
-
-2026-10-15ï¼šå®ŒæˆåŽç»Ÿä¸€æ•´ç†25å†»ç»“ç­–ç•¥ã€24ä»»åŠ¡ç»„åˆå’Œ12contextå•ä½ï¼Œé€é¡¹å°†owneræŒ‡æ ‡/è§£ç è®¡æ•°ä¸Žå®žé™…official_metrics/resultå¯¹é½ï¼Œæ ¸å¯¹å®Œæ•´å¸§ã€æ— GT/æœªæ¥è¯»å–åŠæœ€ç»ˆçŠ¶æ€å­˜åœ¨ã€‚æ•´ç†è„šæœ¬åˆæ¬¡é‡åˆ°æ—§JSON resultæ— final_identity_memory_pathå…ƒæ•°æ®ï¼›å®žé™…final_identity_memory.jsonå­˜åœ¨ï¼ŒæŒ‰æ—§æ ¼å¼çœŸå®žè·¯å¾„è¯»å–ä¿®å¤ï¼Œæœªé‡è·‘æˆ–æ”¹æŒ‡æ ‡ã€‚ä¸‰ç»„æ‘˜è¦å‡é€šè¿‡ã€‚TAOaliaså­¦ä¹ 32/64/128 TETA21.773/23.100/24.749ã€å›ºå®šcos23.913/26.099/29.062ï¼›DTå­¦ä¹ å‡26.316ï¼Œå›ºå®šcos13.311/13.289/12.491ã€‚å®Œæ•´single800ä»»åŠ¡ä¸‰ç»„0ã€ä¸‰ä»»åŠ¡7.860ï¼›multi800ä¸º7.673/18.255/15.794/18.674ï¼Œå‡ä½ŽäºŽSimple31.877ã€‚ä¿ç•™è´Ÿç»“æžœï¼Œä¸è°ƒéªŒè¯é›†é˜ˆå€¼ã€‚
-
-çœŸå®ž21å¸§packedåŽŸç”ŸFP32å­˜å‚¨/ç©ºæ‹’ç»å¸§/ä¸‹ä¸€å¸§æ¢å¤ç²¾ç¡®é€šè¿‡ï¼Œ15.0MBåˆ°3.4MBï¼›ä¸¤è‡‚å®žé™…scheduleråŠå®žé™…single800è‡ªç„¶gapåŽéªŒåŠŸèƒ½æ£€æŸ¥é€šè¿‡ã€‚è‡ªç„¶MOT20å•owner2126039ç­‰å¾…GPU7åŽŸnative retentioné‡Šæ”¾ï¼Œæœªæå‰å å¡ï¼›ç™»è®°ä½Žå¯è§åº¦29.76sä¸ç­‰äºŽçœŸå®žå€™é€‰ç¼ºå¤±ã€‚ç¼“å­˜ä¸Šç•Œå«3GiBæ–°æºåŠ32MiBå›žå½’ä½™é‡25725928890<25GiBï¼›åŽŸé»˜è®¤JSONä¸å˜ã€‚
-
-Full single800 pretrained/500/teacher600/native600å®žé™…å®ŒæˆHOTA16.119/0/6.847/2.506%ï¼ŒFN16/18/14/17ï¼ˆGT18ï¼‰ï¼Œè®­ç»ƒä¸æ”¹å–„è¯¥scopeï¼›pretrainedåªæœ‰2TPï¼Œä¸èƒ½åªçœ‹è¾ƒé«˜HOTAå®£ç§°æˆåŠŸã€‚Full multi800/DT1203ã€åŽŸç”Ÿretentionã€localizationå’ŒpairedE2Eä»æŒ‰åŽŸownerç»§ç»­ã€‚
-
-ç ”ç©¶è®¡åˆ’ï¼ˆä»»åŠ¡14.2è¾“å…¥è¯æ®æŽ§åˆ¶ï¼‰ï¼šå†»ç»“ç­–ç•¥å¹²é¢„ä¸ç­‰ä»·è¾“å…¥æ¶ˆèžã€‚æ–°å¢žgeometry_motionï¼ˆå±è”½rawROIæŠ•å½±ä¸Žspecæ¡ä»¶ï¼‰ã€geometry_appearanceï¼ˆä¿ç•™rawROIï¼Œå±è”½specæ¡ä»¶ï¼‰ã€geometry_appearance_languageï¼ˆåŽŸå®Œæ•´è¾“å…¥ï¼‰ä¸‰ç»„åŒSetç»“æž„/1146511residentå‚æ•°ã€‚æ‰€æœ‰ç»„å‡ ä½•/è¿åŠ¨ä¿æŒï¼Œç±»åˆ«è¯æ±‡åªåœ¨è¾“å‡ºåˆ†ç±»å¤´ä¿ç•™ï¼ŒåŽŸDLMæ„ŸçŸ¥è‡ªå¸¦è¯­ä¹‰ä¸æ¶ˆé™¤ï¼Œä¸èƒ½ç§°å…¨ç³»ç»Ÿæ— è¯­è¨€ã€‚å¤ç”¨å·²å®Œæˆall_three1200å®Œæ•´ç»„ï¼Œä»…æ–°å¢žä¸¤ç»„ç›¸åŒMOT300+seed0è¯­ä¹‰åˆå§‹åŒ–/1200æ­¥/é€é¡¹ç›¸åŒæ ·æœ¬ID/åŽŸGTä¸Žnative softteacher/åŒ536ç»„æ—¢æœ‰actoråŽ†å²ï¼›teacherè§†è§‰çŸ¥è¯†æœ¬èº«ä¿æŒï¼Œéžä»Žé›¶çº¯å•æ¨¡æ€ç›‘ç£ã€‚å…±äº«åŽŸç”Ÿå€™é€‰ï¼Œå®Œæ•´DT1203/rawTAO40/å•å¤šRMO800å„3ç»„ï¼Œbinary-finalåŒå­˜å‚¨ï¼Œæ— GTå›žå¡«/æ–°å¢žfeature/GPU/E2Eé€Ÿåº¦å£°æ˜Žã€‚FullçœŸå®žimageåŽŸç”ŸJEVå·²æœ‰ç‹¬ç«‹å®Œæ•´æŽ§åˆ¶ç»§ç»­ï¼Œä½†æž¶æž„/é¢„ç®—ä¸åŒï¼Œä¸èƒ½å°†å…¶ä¸ŽCompactå·®å¼‚è§£é‡Šä¸ºJEVå”¯ä¸€æ”¶ç›Šã€‚
-
-è¾“å…¥æ•°å€¼å›žå½’é€šè¿‡ï¼šä¸‰ä¸ªä»»åŠ¡çœŸå®žpackçš„åŒåˆå§‹æƒé‡é»˜è®¤å…¨è¾“å‡ºä¸ŽåŽŸe9111b5ç²¾ç¡®ä¸€è‡´ï¼›å±è”½specåŽæ›´æ¢å®žé™…specä¸å½±å“ä»»ä½•è¾“å‡ºï¼›å±è”½å¤–è§‚åŽç½®æ¢çœŸå®žå¤–è§‚ä¸å½±å“è¾“å‡ºã€è§†è§‰åˆ†æ”¯æ— æ¢¯åº¦ï¼›ä»ç”¨å¤–è§‚ç»„matchçœŸå®žæ”¹å˜ã€‚ä¸¤æ¨¡å¼å„2æ­¥å®žé™…è®­ç»ƒä¿å­˜/ä¸‰ä»»åŠ¡reloadå·®0ï¼ŒéšåŽçœŸå®ž21å¸§scheduler/packedåŽŸç”Ÿæº/266å€™é€‰/çœŸå®žæ‹’ç»ç©ºå¸§å’Œå®˜æ–¹scorerå‡é€šè¿‡ï¼Œä»…åŠŸèƒ½å›žå½’ä¸å½“ç²¾åº¦ç»“æžœã€‚æ­£å¼ownerç­‰hybrid CPU owneré€€å‡ºå†ä¸²è¡Œï¼Œä¸æŒ¤å çŽ°æœ‰Full/native/GPUé˜Ÿåˆ—ã€‚
-
-FullåŽŸç”Ÿæ€§èƒ½è¯Šæ–­ç”¨å·²å®Œæˆå››ç»„single800å®žé™…æ—¥å¿—ï¼Œä¸æ–°å¢žæ¨¡åž‹è°ƒç”¨ï¼šå…¨éƒ¨3200è¯·æ±‚fork_mode=batchedã€‚pretrained/500/teacher600/native600å¹³å‡prefix1347/3987/8235/5474tokensã€branches7.93/14.20/24.38/17.72ï¼Œnative forwardæ€»142.531/344.670/787.309/481.178sï¼Œrender28.226/89.389/247.319/135.818sã€‚è¾ƒé•¿å†…ç”ŸåŽ†å²/æ›´å¤šåˆ†æ”¯ä¸Žæ›´é«˜è€—æ—¶å¹¶å­˜ï¼Œä¸å½’å› æœªæŽ§åˆ¶çš„å¹¶å‘å·®å¼‚ï¼›æ—¥å¿—æ²¡æœ‰å…¨ç¨‹sequentialfallbackè¯æ®ã€‚åŽŸå¼•æ“Žå·²æœ‰prefixå…±äº«ä¸Žæœ«token logitsï¼Œä¸ç›²æ”¹åŽŸforké˜ˆå€¼/ç®—å­/ä¸Šä¸‹æ–‡æˆ–åˆ å€™é€‰ã€‚
-
-Input-evidenceæ­£å¼å•ä¸€é˜»å¡žowner2137548/session36336å·²å¯åŠ¨ï¼Œå®žé™…ç­‰å¾…hybrid owner2034367/start42762109ï¼›æ—¥å¿—/tmp/groundjev_input_evidence1200_v1.logã€‚æœªå¯åŠ¨é¢å¤–GPU/modelæœåŠ¡ã€ä¸é‡å¤æ—¢æœ‰Full/nativeå®žéªŒï¼›é¢„è®¡æ­£å¼CPUå·¥ä½œä»…åœ¨åŽŸhybridæˆåŠŸé€€å‡ºåŽå¼€å§‹ã€‚
-
-2026-10-15ï¼šFullé¢„è®­ç»ƒmulti800å·²å®Œæˆå¹¶éªŒè¯800è§£ç /2208ç›¸åŒå€™é€‰/19æ‹’ç»å¸§/å®˜æ–¹æŒ‡æ ‡ï¼šHOTA8.6210ã€IDF7.6347ã€IDSW215ã€FP214ã€FN1766ï¼ˆ2112GTï¼‰ã€‚ä½ŽäºŽåŒæºCompact19.8019/21.0082å’ŒSimple31.8769/37.6852ï¼Œä¸èƒ½å°†ä½ŽFPå½“æˆåŠŸã€‚æŒ‰ä»»åŠ¡18è¦æ±‚åªåˆ†æžå®žé™…å·²å®Œæˆå¤±è´¥ï¼Œä¸å¢žåŠ å®žéªŒèŒƒå›´ï¼šç›´æŽ¥äº¤å‰åŽŸGTåŽéªŒå¯¹é½ä¸ŽçœŸå®žä¿å­˜çš„æ¯å€™é€‰action/member/outputï¼Œæœªé‡è·‘æ¨¡åž‹/ä¿®æ”¹é˜ˆå€¼/é¢„æµ‹æˆ–çŠ¶æ€ã€‚1132ä¸ªå¯¹é½query-positive candidatesï¼ŒFull=105æ— ç‰©ç†assignment+687æœ‰assignmentä½†memberæ‹’ç»+340å®žé™…è¾“å‡ºï¼›Compact=4+71+1057ã€‚å…¨éƒ¨2208å€™é€‰çš„è¾“å‡ºID/boxé€å¸§èƒ½ç”±çœŸå®žactionä¸ŽåŽŸmember>=.5ç²¾ç¡®é‡å»ºï¼Œheadæ··æ·†è®¡æ•°ä¸ŽåŽŸassociation_eventså®Œå…¨ç›¸åŒã€‚Fullæˆå‘˜å¬å›ž31.625% vsCompact93.728%ï¼Œå·²æœ‰æ­£ç¡®birth-anchoré€‰é¡¹è¦†ç›–99.149%ä½†å¯¹åº”å…³è”å‡†ç¡®çŽ‡10.207%ï¼Œè¯´æ˜Žæœ¬scopeè¯­ä¹‰æ‹’ç»ä¸Žå†³ç­–æŽ’åºå‡æœ‰é—®é¢˜ï¼Œä¸ä¼˜å…ˆç›²å¢žçŸ­åå•ã€‚ä¸¤æ¨¡åž‹å†…ç”Ÿå·²æœ‰èº«ä»½äº‹ä»¶é›†åˆä¸åŒï¼Œä¸ä½œä¸¥æ ¼ç›¸åŒäº‹ä»¶å› æžœå¯¹ç…§ï¼›ä¸Šè¿°funnelä¸æ˜¯HOTAå„é˜ˆå€¼ä¸‹å®˜æ–¹FNçš„å¯åŠ åˆ†è§£ã€æœªå¯¹æœªçŸ¥candidateè´´è´Ÿæ ‡ç­¾ã€‚å…ˆç­‰å¾…å·²æ³¨å†Œteacher/native600å®Œæ•´å¯¹ç…§ï¼Œå†å†³å®šè®­ç»ƒæ”¹è¿›ï¼Œä¸æ–°å¢žè®­ç»ƒé‡æˆ–è°ƒéªŒè¯é˜ˆå€¼ã€‚
-
-2026-10-15ï¼šåŽŸhybridé˜»å¡žå¥æŸ„35730è¿”å›žexit0ï¼Œå…­æ–°è½¨è¿¹+å…­å·²éªŒè¯geometryå‚è€ƒå…±12å•ä½å…¨éƒ¨å®˜æ–¹artifactæ ¸éªŒé€šè¿‡ã€‚åŽŸå§‹TAOå­¦ä¹ TETA14.517â†’15.178ã€fixedcos13.964â†’15.652ï¼›aliaså­¦ä¹ 21.773â†’21.466ã€fixedcos23.913â†’24.435ï¼›DTå­¦ä¹ 26.316ä¸å˜ã€fixedcos13.311â†’12.811ã€‚æ··åˆæ£€ç´¢éžæ™®éæ”¶ç›Šï¼Œä¸æ›´æ”¹é»˜è®¤geometryï¼Œä¸å®£ç§°Novel/å”¯ä¸€JEVæˆ–é€Ÿåº¦æå‡ã€‚åŽç»­è¾“å…¥å¯¹ç…§owner2137548åŽŸä¾èµ–æˆåŠŸè§£é™¤ï¼Œæ²¿æ—¢æœ‰CPUé˜Ÿåˆ—è‡ªåŠ¨è¡”æŽ¥ï¼Œä¸é‡å¯ã€‚
-
-Full MOT500 multi800å®Œæ•´é€€åŒ–æ ¸éªŒï¼šHOTA0/IDF0/FP11/FN2112ï¼ŒåŽŸ2208å€™é€‰/19æ‹’ç»/800decodedå…¨éƒ¨ä¿ç•™ã€‚åŠ å…¥åŒæºåŽéªŒfunnelï¼š1132query-positiveå€™é€‰å…¨è¢«member<.5æ‹’ç»ï¼Œå…¶ä¸­263æ— ç‰©ç†assignmentã€869å·²æœ‰assignmentä½†è¢«è¿‡æ»¤ã€‚åŽŸå§‹çœŸå®žè¾“å‡ºé€å¸§ç²¾ç¡®é‡æž„åŠæ··æ·†è®¡æ•°ä¸€è‡´ï¼Œä¸ä¿®æ”¹é˜ˆå€¼/çŠ¶æ€ï¼›ä¸è¦é”™è¯¯å½’å› 869å€™é€‰å‡æœªèŽ·ç‰©ç†èº«ä»½ã€‚ä»…MOTè®­ç»ƒå¯¹RMOTä¸è¿ç§»ï¼Œç­‰åŽŸæ³¨å†Œå…±äº«teacher/native600ç»“æžœï¼Œä¸åŠ éªŒè¯é˜ˆå€¼æœç´¢æˆ–é¢å¤–è®­ç»ƒã€‚
-
-è¾“å…¥å¯¹ç…§é˜Ÿåˆ—å·²å®žé™…è‡ªåŠ¨è¡”æŽ¥ï¼šä¸¤æ–°æ¨¡å¼å‡å®Œæˆ1200æ­¥ï¼Œæ¯ä¸ªå®žé™…sample IDä¸Žå®Œæ•´è¾“å…¥all_three1200ç›¸åŒï¼Œåˆå§‹tensorç”±ownerç²¾ç¡®æ ¸éªŒï¼›ä¸‰ä»»åŠ¡reloadå…¨0ã€GPU allocator0ã€‚åŽŸownerå·²è¿›å…¥ALL_THREE_INPUT_EVIDENCE_FULL_VIDEO_CONTROLSï¼Œæ— é‡å¯ã€‚æŠ¥å‘Šæ¾„æ¸…åŒ1146511ä¸ºresidentå‚æ•°ï¼›geometry_motionå±è”½visual/history_mergeè¾“å‡ºï¼Œ382208å‚æ•°æ— æ¢¯åº¦ï¼Œä¸å®£ç§°ç›¸åŒæœ‰æ•ˆå®¹é‡æˆ–å”¯ä¸€JEVè¯æ˜Žã€‚è¾“å‡ºç±»åˆ«prototypeæ–‡æœ¬/åŽŸDLMè¯­ä¹‰/nativeè½¯æ•™å¸ˆçŸ¥è¯†å‡ä¿ç•™ï¼Œå®Œæ•´è§†é¢‘ç»“æžœä»å¾…å®Œæˆã€‚
-
-ç ”ç©¶è®¡åˆ’ï¼šå·²å®ŒæˆrawTAOçœŸå®žfinal state/åŒä¸€å®žé™…å›¾åƒå‰16å€™é€‰çš„CPU profileï¼ˆ2365live IDsï¼‰å®šä½geometry shortlistè€—æ—¶ï¼Œsortedç´¯è®¡.2116sã€38352overlapç´¯è®¡.1311sã€40432predicted_boxç´¯è®¡.0518sï¼ŒNN moduleç´¯è®¡.0095sï¼›hybrid native arrayè½¬æ¢å¦.5039sã€åˆæ¬¡1203ç±»åˆ«æ–‡æœ¬å†·ç¼“å­˜.2639sï¼Œä¸èƒ½æŠŠå•æ¬¡cold profileå½“æ•´è§†é¢‘FPSã€‚åªä¼˜åŒ–Compactå‡ ä½•IoUæŽ’åºä¸ºFP64æ‰¹é‡è®¡ç®—å¹¶æ¯æ¬¡decideç¼“å­˜åŒtimestampé¢„æµ‹æ¡†ï¼›å€™é€‰/è½¨è¿¹/å‡ ä½•å…¬å¼/tie order/åˆ†ç»„/æƒé‡/metadataä¸å˜ã€‚å…ˆæ ¸å¯¹çœŸå®žé«˜å¯†åº¦å…¨éƒ¨pair IoUå’Œå„16å€™é€‰ç»„shortlistç²¾ç¡®ä¸€è‡´ï¼Œå†æ¯”è¾ƒçœŸå®ždense stateçš„å®Œæ•´æ¨¡åž‹è¾“å‡ºï¼›ä¸æ”¹è¿è¡Œä¸­ä»»åŠ¡ã€ä¸æ–°è®­ç»ƒæˆ–é‡è·‘å®˜æ–¹è¯„æµ‹ã€‚
-
-å‡ ä½•æ‰¹é‡ä¼˜åŒ–çœŸå®žå›žå½’é€šè¿‡ï¼š591å®žé™…å€™é€‰Ã—2365live tracks=1397715ä¸ªFP64IoUé€å€¼ä¸ŽåŽŸscalarå®Œå…¨ç›¸åŒï¼›37å®žé™…16å€™é€‰ç»„çš„32/64/128é¡ºåºåŠç©ºç»„/ç©ºhistoryç›¸åŒã€‚æ™®é€šgeometryå’Œhybrid16_16å„è‡ªdense32å€™é€‰/ç©ºè§‚æµ‹/æ— historyçš„å…¨éƒ¨å†³ç­–æ¦‚çŽ‡ã€ç”Ÿå‘½å‘¨æœŸåŠmetadataä¸Žba94b94åŽŸå®žçŽ°ç²¾ç¡®ä¸€è‡´ã€‚å®Œæ•´scalar IoUçŸ©é˜µ2.1921sâ†’.03212sï¼›16å€™é€‰æš–ç¼“å­˜3æ¬¡ä¸­ä½geometry .14708â†’.05111sã€hybrid .78482â†’.67581sï¼ˆnativeæ•°ç»„è½¬æ¢ä»å ç”¨ï¼‰ï¼Œä¸æ˜¯æ•´è§†é¢‘æˆ–E2Eé€Ÿåº¦ç»“è®ºã€‚ä¿ç•™ä¼˜åŒ–ï¼ŒåŽŸæƒé‡/å€™é€‰/tie order/çŠ¶æ€ç®—æ³•ä¸å˜ï¼›å·²æœ‰è¿›ç¨‹ç»§ç»­æ—§importï¼Œä¹‹åŽæ–°è¿›ç¨‹æŒ‰actualgitè®°å½•æ–°å®žçŽ°ï¼ŒåŽ†å²FPSä¸æ”¹å†™ã€‚ä¸é‡å¤å·²æœ‰å…¨éƒ¨å®˜æ–¹æµ‹è¯„ã€‚
-
-2026-10-15ï¼šinput owner2137548/session36336åŠFullRMOT owner1896249/session16294å‡å®žé™…exit0ã€‚è¾“å…¥ä¸‰æ¨¡å¼Ã—4å®Œæ•´scopeå…±12æ­£å¼æŽ§åˆ¶å…¨éƒ¨å®˜æ–¹/å¸§æ•°/æœ€ç»ˆçŠ¶æ€æ ¸éªŒé€šè¿‡ï¼Œå®Œæ•´è¾“å…¥å››scopeçš„å®˜æ–¹metricsä¸ŽåŽŸall_three1200ç²¾ç¡®ä¸€è‡´ã€‚geometry-motion/appearance/appearance+specï¼šDT HOTA9.144/26.061/19.312ï¼ŒrawTAO TETA13.568/11.444/10.081ï¼Œsingle800 HOTA0/2.491/7.860ï¼Œmulti80014.462/12.900/18.674ã€‚å¤–è§‚æ”¹å–„MOTï¼Œspecæ”¹å–„RMOTä½†æŸå®³MOT/TAOï¼ŒNovelClsAå‡0ï¼Œmultiä»ä½ŽäºŽSimple31.877ï¼›ä¸ä½œæ™®éå¤šæ¨¡æ€æˆ–JEVå”¯ä¸€æ”¶ç›Šç»“è®ºã€‚ä¿ç•™ä¸‰ä¸ªå·²è®­ç»ƒæ¨¡åž‹å’Œå…¨éƒ¨è´Ÿç»“æžœï¼Œä¸æŒ‰éªŒè¯é˜ˆå€¼è°ƒå‚ã€‚
-
-å®Œæ•´FullRMOTå…¨éƒ¨12armæ­£å¼artifactæ ¸éªŒé€šè¿‡ï¼špretrained/MOT500/teacher600è¿½åŠ /native600è¿½åŠ ï¼Œmulti HOTA8.621/0/4.578/6.740ï¼ŒIDF7.635/0/4.228/6.693ï¼ŒFN1766/2112/1963/1859ã€‚teacher/nativeéƒ¨åˆ†æ•‘å›žMOT500å´©å¡Œä½†ä¸åŠpretrainedï¼›ä¸å°†çŸ­12å¸§æ”¹å–„å¤–æŽ¨åˆ°å®Œæ•´800ã€‚æ–°curatoråˆæ¬¡é”™è¯¯å‡è®¾resultåŒ…å«native_rmot_membershipå¸ƒå°”å­—æ®µï¼›å®žé™…è¯­ä¹‰å­˜åœ¨é€å¸§decision_metadataåŠåŽŸposthocæŠ¥å‘Šï¼Œæ”¹è¯»çœŸå®žåŽŸpolicyå’Œheadæ ‡å¿—/åŽŸ.5é˜ˆå€¼ï¼Œä¸æ”¹åŽŸè¾“å‡º/æ ‡å‡†ã€‚å€™é€‰funnelæ‰©åˆ°å…¨éƒ¨å››FullåŠ Compactï¼šteacher544æ— assignment+445assigned/memberæ‹’ç»+143è¾“å‡ºï¼›native330+555+247ã€‚åŽŸownerå·²é‡Šæ”¾æœåŠ¡ï¼ŒåŽŸé…å¯¹E2E owner1953808å®žé™…è¿›å…¥full_native600_ACTUAL_FRESH800ï¼Œæœªé‡å¤å¯åŠ¨ã€‚
-
-æ‰§è¡Œè®¡åˆ’ï¼šä¸¤ä¸ªåŽç»­ownerç»å®žé™…PID/starttick/ç©ºchildren/ç©ºcompletedæ ¸éªŒä»ä»…CPUç­‰å¾…ï¼ˆ2052936ã€2126039ï¼‰ï¼ŒGPU6/7çš„åŽŸç”Ÿä¿ç•™è¯„æµ‹ä¸Žå®ƒä»¬ç§‘å­¦ä¸Šç‹¬ç«‹ã€‚å°†æœªå¼€å§‹çš„localization200å’Œè‡ªç„¶MOT20æ”¹ä¸ºGPU5é…å¯¹E2EæˆåŠŸç»“æŸå¹¶å®žé™…é‡Šæ”¾å…¨éƒ¨owned groupsåŽä¸²è¡Œæ‰§è¡Œï¼Œä»åªä½¿ç”¨ç‰©ç†4/5/6/7ã€‚å…‹éš†æ–°è®¡åˆ’ï¼Œæ˜Žç¡®è®­ç»ƒå‚è€ƒGPU6ä¸Žæ‰§è¡ŒGPU5ï¼ˆåž‹å·å‡NVIDIA A800-SXM4-80GBï¼‰ï¼Œä¿ç•™112è¡Œ/200é‡‡æ ·/seed/loss/ç®—å­ã€96åŽŸç”Ÿå¸§/18ç»„åˆã€1657è‡ªç„¶å¸§/8æŽ§åˆ¶å’Œ25GiBç¼“å­˜ç•Œã€‚å…ˆCPUæ ¸å¯¹æ–°æ—§æ ·æœ¬/è®­ç»ƒè®¡åˆ’ä¸Žä»…ç¡¬ä»¶å…ƒæ•°æ®å·®å¼‚ï¼Œå†å¯¹ä¸¤ä¸ªå°šæœªå¯åŠ¨å®žéªŒçš„ç­‰å¾…owneråšè®°å½•åŒ–äº¤æŽ¥ï¼›ä¸åœæ­¢ä»»ä½•æ­£åœ¨è®­ç»ƒã€æŽ¨ç†æˆ–åŽŸç”Ÿè¯„æµ‹çš„è¿›ç¨‹ï¼Œä¸æ”¹æŒ‡æ ‡/é—¨æ§›ï¼Œä¸å£°ç§°è·¨GPU bitwiseè½¨è¿¹ã€‚
-
-GPU5åŽç»­è°ƒåº¦é¢„æ£€å®žé™…é€šè¿‡ï¼šæ–°æ—§å®šä½è®¡åˆ’é™¤æ˜Žç¡®ç¡¬ä»¶/è¯´æ˜Žå…ƒæ•°æ®å¤–æ‰€æœ‰å­—æ®µç›¸åŒï¼›å†æ¬¡ä¸Žå®žé™…å®Œæˆtrack200 checkpointæ ¸éªŒ112çœŸå®žè¡Œbytes/prompt/answers/nativealignã€å…¨éƒ¨200pairdrawã€seed42/AdamW/lr/åŽŸnativeæŸå¤±ã€‚GPU5/6/7å‡NVIDIA A800-SXM4-80GBï¼›96å‰ç«¯å¸§/18ç»„åˆ/1657è‡ªç„¶å¸§/8memoryæŽ§åˆ¶å’Œ25GiBé¢„ç®—å‡åŽŸæ ·ä¿ç•™ã€‚çœŸå®žå·²å®ŒæˆFullRMOT GPU5 owner/group releaseæ£€æŸ¥é€šè¿‡ï¼Œæ— æ–°å¢žGPUæ¨¡åž‹æˆ–featureæ–‡ä»¶ã€‚
-
-ä¸¤ä¸ªæ—§ç­‰å¾…owner2052936/start42864217ã€2126039/start43333839ç»å†»ç»“PIDèº«ä»½ã€ç©ºchildrenã€ç©ºcompletedå’Œæ— currentchildå†æ¬¡ç¡®è®¤åŽä»…SIGTERMè¿™ä¸¤ä¸ªCPUç­‰å¾…è¿›ç¨‹ï¼Œmanager_handoff.jsonåŠæ—§æ—¥å¿—ä¿ç•™ï¼Œstateæ˜Žç¡®UNSTARTED_CPU_WAITER_SUPERSEDED_WITHOUT_GPU_JOBã€‚æ—§loc shell76692è¿”å›ž241ï¼ˆæœ‰æ„SIGTERMçš„parenté€€å‡ºç ï¼‰ï¼Œä¸æ˜¯å®žéªŒå¤±è´¥æˆ–å®Œæˆï¼›æ‰€æœ‰native retention/Full/E2Eæ¨¡åž‹è¿›ç¨‹æœªåŠ¨ã€‚æ–°å•ä¸€é˜»å¡žowner2207841/start43963616/session36847å®žé™…WAITING_ORIGINAL_PAIRED_E2E_GPU5_RELEASEï¼Œç²¾ç¡®ç™»è®°1953808/start42350971ï¼›æˆåŠŸç»“æŸå¹¶éªŒè¯ownedgroupså…¨é€€å‡ºåŽä¸²è¡Œlocalization200â†’è‡ªç„¶MOT20ï¼Œå‚è€ƒè®­ç»ƒGPU6ä¸Žæ‰§è¡Œ5å·®å¼‚æ˜Žç¡®ã€ä¸å£°ç§°bitwiseè·¨å¡è½¨è¿¹ã€‚æ­¤æ”¹åŠ¨åªç¼©çŸ­ç‹¬ç«‹ä»»åŠ¡çš„æŽ’é˜Ÿä¾èµ–ï¼Œä¸å‡å°‘åŽŸç”Ÿä¿ç•™è¯„æµ‹æˆ–æ”¹å˜æŒ‡æ ‡/ç§å­ã€‚
-
-2026-10-15ï¼šåŽŸé…å¯¹E2Eé˜»å¡ž87824å®žé™…exit0ã€‚fresh Fullnative600ä¸ŽCompactå„å®Œæ•´800/1412å®Œå…¨ä¸€è‡´nativeå€™é€‰/36è§£æžæ‹’ç»ï¼Œcanonicalæ‰€æœ‰frame/image/box/label/native_score/score_kindç²¾ç¡®ä¸€è‡´ï¼Œä¸¤ä¸ªå®˜æ–¹accuracyä¸Žæ—§åŒå€™é€‰referenceç²¾ç¡®ä¸€è‡´ã€‚å®žé™…pipeline FPS.4959138201/.6870989019ã€wall1613.1835/1164.3156sï¼Œè§‚å¯Ÿé€Ÿåº¦æ¯”1.3855208ã€wallå‡å°‘27.825%ã€‚äº”ç§’é‡‡æ ·ownedGPUå³°37052/19626MiBï¼Œlowerboundéžçž¬æ—¶ç²¾ç¡®maxï¼Œå‡å°‘47.031%ã€‚Full/Compact HOTA2.506/6.025ã€FN17/13ï¼ˆGT18ï¼‰ï¼Œç©ºå¸§å‘Šè­¦67/782 vs200/782ï¼Œè¾ƒå°‘æ¼æ£€ä»¥æ›´å¤šè¯¯æŠ¥ä¸ºä»£ä»·ï¼›ä¸¤è€…éžå®žæ—¶ä¸”å¬å›žå·®ï¼Œä¸èƒ½æŽ¨å¹¿å¤šç›®æ ‡æˆ–å…¨æ•°æ®é›†ã€‚æœåŠ¡startup26.052/26.046å’Œcoreinit8.010/5.004så•åˆ—é™¤å¤–ï¼Œå®žé™…pipelineåŒ…å«image/native/ROIwhereused/association/state/æ¡£æ¡ˆ/ç»˜å›¾/ç¼–ç ç­‰å€™é€€å‡º/æœ€ç»ˆå­˜ç›˜ã€‚å›ºå®šFullå…ˆCompactåŽã€å•seedã€å¹¶å‘èƒŒæ™¯è´Ÿè½½ä¸æŽ§åˆ¶ï¼›ä¸ç§°ç»Ÿè®¡æˆ–åå¹³è¡¡é€Ÿåº¦æ”¶ç›Šã€‚
-
-å·²é€é¡¹æ ¸éªŒçœŸå®žrun/official/owner/ä¸¥æ ¼å€™é€‰streamã€å®Œæ•´800frame/video/finalstateå’ŒåŽŸGTå£å¾„ï¼›per-frame inferenceå»¶è¿ŸFull p50/p951.810/2.930sã€Compact1.202/2.136sä¸å«åŽç»­é€å¸§video/stateå†™å…¥ï¼ŒfullwallåŒ…å«ï¼Œæ˜Žç¡®åˆ†å¼€ã€‚Full core allocator8.426GB/RSS3.305GBï¼ŒCompact.01497GB/1.466GBä¸å«å¤–éƒ¨æœåŠ¡ï¼Œä¸èƒ½ç”¨1.146Mæ ¸å¿ƒå†’å……å…¨éƒ¨æ¨¡åž‹æˆæœ¬ã€‚æ–°å¢žcuratorå’Œrawresults/official/resourcesä¿å­˜ï¼Œä¸é‡è·‘æŽ¨ç†æˆ–è¯„æµ‹ã€‚
-
-GPU5æ–°ä¸²è¡Œé˜Ÿåˆ—å·²çœŸæ­£æŽ¥æ£’ï¼šåŽŸowner1953808ç»“æŸä¸”äº”ç»„2173897/2174768/2197749/2197750/2198799å…¨éƒ¨é€€å‡ºï¼Œrelease receiptçœŸå®žfree81151MiBï¼›owner2207841è¿›å…¥LOCALIZATION200ã€child2213633/start44011696ã€‚å®žé™…trainer state physical5/seed42/native_dense_referring_localization_only/target200/identity coeff0ï¼Œè®­ç»ƒæ­£åœ¨è¿›è¡Œï¼Œæœªå®£ç§°200å®Œæˆæˆ–æ–°æŒ‡æ ‡ã€‚æ—§ä¿ç•™6/7åŠFull4æœªåŠ¨ï¼Œä»å››å¡ï¼›ä¸‹ä¸€é˜¶æ®µ96native/18factorialä¹‹åŽåŽŸè‡ªç„¶1657/8controlsã€‚
-
-Pilotæ–‡æ¡£æ ¸å¯¹ï¼šåŽŸFOUR_GPU_PILOTä»å†™2026-10-14æœªå®Œæˆï¼ŒçŽ°ç”¨çœŸå®žstop/cache receiptsã€originalOneFull1203runã€å®žé™…500updates/2000examples/state/checkpointã€RMOT/TAOæ­£å¼ç»“æžœã€paired800å®žé™…FPS/èµ„æºåŠå·²éªŒè¯GitHubæ ‘é€é¡¹æ ¸å¯¹ç”¨æˆ·Â§17åäºŒé¡¹æ‰§è¡Œäº¤ä»˜ã€‚æ–°å¢ževidence_auditï¼Œé™å®šæ³¨å†Œå¼€å‘èŒƒå›´ï¼Œä¸ç­‰äºŽæ¨¡åž‹æ™‹å‡/NovelæˆåŠŸ/å…¨æ•°æ®é›†æˆ–å®Œæ•´goalå®Œæˆã€‚èµ„æºå£å¾„æ¾„æ¸…ï¼šæŒä¹…åŒ–before/afterå…¨è®¾å¤‡è¡¨å¯é‡ç®—å‡€å‡å°‘14042MiBï¼Œéžå…¨å½’å› U2ï¼›17584MiBä¸ºåŽ†å²compute-appè§‚æµ‹ï¼Œä¸èƒ½ä»Žè¿™ä¸¤ä¸ªdeviceè¡¨ç‹¬ç«‹å¤ç®—ï¼Œä¸ä¼ªé€ æ›´ç²¾ç¡®å½’å› ã€‚æ¸…ç†4748åˆ†ç‰‡/42831618048allocatedbytesåŠ1.909GBä¿ç•™checkpointå®žé™…å­˜åœ¨ã€‚åŒæ­¥å°†ARCHITECTUREä¸­çš„å·²è¿‡æ—¶â€œnativefeature/Compactå¾…å®žçŽ°â€æ”¹ä¸ºå®žé™…å®žçŽ°åŠèŒƒå›´é™åˆ¶ã€‚å‰©ä½™Full1203/native9/localization/naturalç»§ç»­åŽŸé˜Ÿåˆ—ï¼Œæ— æ–°å¢žæ¨¡åž‹è¿è¡Œæˆ–è¯„æµ‹ã€‚
-
-æ‰§è¡Œæ”¹è¿›è®¡åˆ’ï¼šçŽ°æœ‰é˜»å¡žwrapperå°†ç ”ç©¶ownerçš„stdoutå†™æ–‡ä»¶ï¼Œæ‰€ä»¥å·¥å…·å¥æŸ„åªåœ¨æœ€ç»ˆé€€å‡ºæ—¶è¿”å›žã€çœŸå®žé˜¶æ®µå˜åŒ–æœªå‘ç»ˆç«¯è½¬å‘ã€‚å¢žåŠ ä¸€ä¸ªåªè¯»Linux inotify+pidfdäº‹ä»¶è½¬å‘å™¨ï¼šå•ä¸€é˜»å¡žå‘½ä»¤ç›‘å¬å·²æ³¨å†ŒownerçŠ¶æ€åŠå®šä½è®­ç»ƒ/å‰ç«¯/è‡ªç„¶å­é˜¶æ®µï¼ŒçŠ¶æ€æ”¹å˜/è¿›ç¨‹é€€å‡ºæ—¶è¾“å‡ºçœŸå®žæ‘˜è¦ï¼Œä¸åšå‘¨æœŸps/tail/wc/nvidia-smi/æ¨¡åž‹çº§pollï¼Œä¸å¯åŠ¨æˆ–ä¿®æ”¹ä»»ä½•å®žéªŒã€‚ä¿ç•™åŽŸownerå‘½ä»¤å’Œé€€å‡ºç ä½œä¸ºæœ€ç»ˆå®Œæˆ/å¤±è´¥æƒå¨ï¼Œäº‹ä»¶ä»…ç”¨äºŽåŠæ—¶å–å¾—å·²å®Œæˆå­å•å…ƒå’Œè®­ç»ƒé˜¶æ®µã€‚
-
-2026-10-15ï¼šå®šä½å¯¹ç…§200å®žé™…å®Œæˆï¼Œ27,267,584å‚æ•°ã€identityç³»æ•°0ã€200çœŸå®žpair_indicesä¸Žå®Œæˆtracking200ç›¸åŒï¼Œå…¨éƒ¨total_loss=native_lossä¸”æœ‰é™ï¼›16,164,180BF16å…ƒç´ æ”¹å˜ï¼Œreload0ã€‚å¯¼å‡º569å¼ é‡å…¶ä½™ä¸å˜ã€‚96nativeå¸§/18Fullç»„åˆå®Œæˆå¹¶æ ¸éªŒçœŸå®žå®˜æ–¹artifactã€å®Œæ•´å¸§ã€GT/futureä¸è¯»ã€ç›¸åŒå‰ç«¯å€™é€‰åœ¨ä¸¤ä¸ªOneä¸­é€é¡¹ç²¾ç¡®ä¿ç•™ï¼›å®šä½é‡å¤raw wire/å€™é€‰/è¾“å‡ºä¸€è‡´ã€‚native MOT4 HOTAåŽŸå§‹75.069â†’å®šä½84.099/è·Ÿè¸ª83.467ï¼Œsingle8åŽŸå§‹30.385â†’18.776/24.876ï¼Œmulti12ä»…22.664â†’23.355/23.675ï¼›Full Single8å…­ç»„åˆå‡0ä¸”FN5ï¼Œmulti12éžæ™®éæå‡ã€‚ä¿ç•™è´Ÿç»“æžœï¼Œä¸å°†4/8/12çŸ­ç‰‡å¤–æŽ¨å®Œæ•´è§†é¢‘ï¼Œä¸ç§°è”åˆæ¢¯åº¦è®­ç»ƒæˆ–æ¨¡åž‹æ™‹å‡ï¼Œreferenceè®­ç»ƒGPU6/controlGPU5åŒºåˆ«æ˜Žç¡®ã€‚parentæ­£å¸¸æŽ¥å…¥è‡ªç„¶MOT20ï¼Œæ— é‡æ–°å¯åŠ¨æŽ¨ç†ã€‚
-
-åªè¯»äº‹ä»¶è½¬å‘å™¨å®žé™…æ³¨å†ŒFull/GPU5queue/native-retentionä¸‰ä¸ªPID/starttickå¹¶è¾“å‡ºä¹ä¸ªçŠ¶æ€è·¯å¾„å·²æœ‰å¿«ç…§ï¼ŒåŽŸé˜»å¡žsession70182/36847/52020ä¿æŒæƒå¨ï¼›æ–°observer session58829åªinotify/pidfdé˜»å¡žç­‰å€™ï¼Œä¸å‘¨æœŸæ£€æŸ¥å®žéªŒè¿›åº¦ã€ä¸å¼€æ–°æ¨¡åž‹æˆ–æ”¹å®žéªŒã€‚æ³¨å†Œè¯æ®å•ç‹¬å›ºå®šä¿å­˜ï¼ŒæŒç»­events.jsonlæœ¬åœ°å¢žé•¿ä¸ä½œä¸ºå†»ç»“å®Œæˆç»“æžœå‘å¸ƒã€‚
-
-ç ”ç©¶è®¡åˆ’ï¼šå…ˆå›ºåŒ–Full1203ä¸‰è‡‚ä¸­å·²å®Œæˆçš„ä¸¤ä¸ªä¸å¯å˜å•å…ƒï¼Œé€å¸§æ ¸å¯¹æ³¨å†ŒV1å€™é€‰ï¼ˆä»…æŒ‰åŽŸè®¡åˆ’å‰¥ç¦»featureå‘é‡ï¼‰ã€å®˜æ–¹metricsã€å®Œæ•´1203å¸§è§†é¢‘ã€checkpointå’Œæœ€ç»ˆmemoryï¼›ç¬¬ä¸‰teacherè‡‚æœªå®Œæˆå³æ˜Žç¡®pendingã€‚è¡¥é½same-source Fullå¯¹Simple/Compactçš„æ­£å¼è¡¨ï¼Œä¸æ–°å¢žæ¨¡åž‹æŽ¨ç†æˆ–æ›´æ”¹ç§‘å­¦åè®®ã€‚ç„¶åŽæ²¿åŽŸä¸‰ä¸ªé˜»å¡žå¥æŸ„ç­‰å¾…å‰©ä½™Full/native9/naturalå®Œæˆã€‚
-
-Full1203ä¸¤ä¸ªå·²å®Œæˆå•å…ƒé€å¸§æ ¸éªŒé€šè¿‡ï¼šæ¯ä¸ª1203çœŸå®ždecodedå¸§ã€13664åŽŸå§‹V1å€™é€‰ç²¾ç¡®ä¸€è‡´ï¼ˆåªå‰¥ç¦»æ³¨å†Œfeatureå‘é‡ï¼‰ã€27æ‹’ç»å¸§ä¿ç•™ã€checkpointå‡†ç¡®ã€finalbinarymemoryå­˜åœ¨ã€æ— GT/futureè¯»å–ï¼Œå®˜æ–¹metricsä¸å˜ã€‚MOT500 HOTA7.848/IDF5.056/IDSW3530/FP6387/FN765ï¼›è¿½åŠ native600 HOTA8.703/IDF5.826/IDSW3631/FP7516/FN416ã€‚åªæŠ¥å‘Šä¸¤ä¸ªå®Œæ•´å•å…ƒï¼Œç¬¬ä¸‰teacherä»pendingï¼Œéžå®Œæ•´ä¸‰è‡‚å®Œæˆå’ŒéžE2Eã€‚
-
-åŒæºå€™é€‰IoU.5ä¸€å¯¹ä¸€è¦†ç›–4341/4586GT=94.658%ï¼›Full before500/native600è‡ªèº«existing-anchoräº‹ä»¶4008/2912ä¸­æ­£ç¡®é€‰é¡¹3952/2767ï¼Œæœ€ç»ˆæ­£ç¡®å…³è”214/149=5.339/5.117%ã€‚åŽŸå§‹argmaxæ­£ç¡®254/178ï¼Œglobalmatchingä¸¢å¤±222/145ã€æ•‘å›ž182/116ï¼›identity rankingä¸Žå…¨å±€ç«žäº‰å‡æœ‰é—®é¢˜ï¼Œä¸åªGroundæ¼æ£€ï¼Œä¸åšè·¨æ¨¡åž‹åŒäº‹ä»¶å› æžœæ¯”è¾ƒã€‚æ–°å¢žåªè¯»å·²å­˜eventsçš„UPDATEæ‹†åˆ†åˆæ¬¡å®ˆæ’å¤±è´¥ï¼ŒåŽŸå› æ˜¯NEWåˆå§‹åŒ–çš„memory_actionä¹Ÿå†™UPDATEï¼ŒåŽŸanalyzerå°†NEWå•åˆ—ï¼›æŒ‰åŽŸåˆ†æ”¯è¯­ä¹‰æŽ’é™¤NEWåŽå®ˆæ’é€šè¿‡ï¼Œæœªæ”¹åŽŸäº‹ä»¶/æŒ‡æ ‡ã€‚before500/native600çœŸå®žknown-consistentæ›´æ–°192/136ã€known-conflicting594/465ã€GTmatchedæœªçŸ¥birth2545/2984ã€unmatched5812/6648ï¼ŒåŽä¸¤ç±»ä¸å†’å……é”™è¯¯èº«ä»½æˆ–è´Ÿç›‘ç£ã€‚ä¿ç•™åŽŸæƒé‡/é¢„æµ‹ä¸Žè´Ÿç»“æžœï¼›ç­‰å¾…teacherå’Œè‡ªç„¶memoryå®ŒæˆåŽå†æ®ä¸»è¦åŽŸå› é€‰æ‹©æœ€å°å—æŽ§ä¿®å¤ã€‚
-
-ç ”ç©¶å‡è®¾ï¼šFullçš„native Q3åœ¨å…¨å±€åŒ¹é…å‰æŒ‰candidateç»™UPDATEæ¦‚çŽ‡ï¼ŒHungarianå¯èƒ½å°†candidateåˆ†é…åˆ°éžargmaxèº«ä»½ï¼ŒQ3æœªæ˜¾å¼çœ‹åˆ°æœ€ç»ˆåˆ†é…ã€‚å…ˆåªè¯»ä¸¤ä¸ªå·²å®Œæˆå®Œæ•´è§†é¢‘çš„frame_decisionsä¸ŽåŽŸå›ºå®šbirth-anchorè¯Šæ–­ï¼ŒåŒºåˆ†å·²çŸ¥æ­£ç¡®/å·²çŸ¥å†²çª/æœªçŸ¥birth/unmatchedæ›´æ–°ï¼Œç»Ÿè®¡åŽŸargmaxä¸€è‡´æ€§åŠçœŸå®žé€‰æ‹©æ¦‚çŽ‡ã€‚ä»…è¯„ä¼°argmaxä¸€è‡´æ€§çº¦æŸä¼šæ‹¦ä¸‹å“ªäº›å·²å‘ç”Ÿå†™å…¥ï¼Œä¸æ”¹ä»»ä½•çŠ¶æ€/æƒé‡/é˜ˆå€¼ï¼Œä¸å°†å†»ç»“è½¨è¿¹è®¡æ•°å†’å……å› æžœrolloutæ”¶ç›Šï¼›æ®æ­¤å†³å®šæ˜¯å¦å€¼å¾—åŽç»­å—æŽ§ä¿®å¤ã€‚
-
-2026-10-15ï¼šåªè¯»Fullä¸¤ä¸ªå®Œæ•´MOTè½¨è¿¹åŽŸå†³ç­–ï¼Œç¡®è®¤Q3æ˜¯å…¨å±€åŒ¹é…å‰çš„candidateè§‚å¯Ÿå¯é æ€§é—®é¢˜ï¼ŒæœªæŒ‡æ˜Žæœ€ç»ˆassignedIDã€‚å·²çŸ¥birthæ­£ç¡®/å†²çªåˆ†é…ä¸ŠQ3 AUROC before500=.513176/native600=.485748ï¼›native600ä¸¤ç±»Q3å‡å€¼.852417/.849386ï¼Œassigned identityæ¦‚çŽ‡.042690/.042338ï¼Œå‡ ä¹Žæ— åŒºåˆ†ã€‚å†»ç»“è½¨è¿¹è‹¥åŠ assignedID=argmaxçº¦æŸï¼Œbefore500ä¼šæ‹¦173/192æ­£ç¡®åŠ518/594å†²çªå†™å…¥ï¼Œnative600æ‹¦111/136æ­£ç¡®åŠ399/465å†²çªï¼›åŒæ ·å¤§é‡ä¼¤å®³æ­£ç¡®å†™å…¥ï¼Œä¸é‡‡çº³è¯¥è§„åˆ™ï¼Œä¸ä»¥å†»ç»“è®¡æ•°å†’å……å› æžœrolloutæˆ–HOTAä¿®å¤ã€‚æ‰€æœ‰åŽŸå§‹äº‹ä»¶ä¸ŽçŠ¶æ€ä¸æ”¹ã€‚
-
-Full fitç›‘ç£å®žé™…æ ¸éªŒï¼š48åˆæ³•fitå¸§/1184nativeå€™é€‰å…¨éƒ¨Q3æ—§æ ‡ç­¾æŒ‰visibilityä¸Žcorrect-option availabilityç²¾ç¡®é‡çŽ°ï¼Œ2460æ¡family-matched eligible native Q3å‰¯æœ¬state/question/targetä¸Žæºå®Œå…¨ä¸€è‡´ã€‚é‡è¦è¦†ç›–ç¼ºå£ï¼šæ—§100æ­¥actorä»…74NEWï¼Œå…¶ä½™1110æ— æœ€ç»ˆèº«ä»½ï¼Œ0æ¬¡æ²¿ç”¨å·²æœ‰èº«ä»½ï¼›å› è€Œè¯¥nativeå›žæ”¾æ²¡æœ‰å®žé™…wrong existing-ID memory-writeä¸Šä¸‹æ–‡ã€‚è®­ç»ƒä»æœ‰å¤§é‡association/lifecycleç›®æ ‡ï¼Œä¸èƒ½è¯´å®Œå…¨æ— å…³è”ç›‘ç£ï¼›ä¹Ÿä¸èƒ½ç”±eligibleå®¡è®¡å®£ç§°å®žé™…600prefixå› æžœå·²è¯ã€‚ä¿ç•™åŽŸæ ‡ç­¾ä¸Žæƒé‡ï¼›åŽç»­æœ€å°å¯è§£é‡Šæ–¹å‘æ˜¯åˆ·æ–°å½“å‰æ¨¡åž‹fitè‡ªèº«åŽ†å²ã€æ˜¾å¼æ¡ä»¶äºŽæœ€ç»ˆåˆ†é…çš„Q3é—®é¢˜ä¸Žç›‘ç£ï¼Œè€Œä¸æ˜¯ç»™æ—§candidateé—®é¢˜å·æ¢æ ‡ç­¾ã€‚æ­¤è½®ä¸å¢žåŠ GPUã€ç‰¹å¾ç¼“å­˜æˆ–æ–°æ¨¡åž‹è°ƒç”¨ï¼ŒåŽŸFullteacher/native9/naturalé˜Ÿåˆ—ä¸åŠ¨ã€‚
-
-2026-10-15ç”¨æˆ·æ˜Žç¡®æœ€ç»ˆç›®çš„ä¸ºè¾¾åˆ°MOT/RMOT/OVMOTå¸¸è§„æ¨¡åž‹æ°´å¹³ã€‚æ›´æ–°æœ€ç»ˆéªŒæ”¶ï¼šPilot/æµ‹è¯„è·‘é€š/è´Ÿç»“æžœå®¡è®¡ä¸æ˜¯æœ€ç»ˆå®Œæˆï¼›ä¸‰ä¸ªä»»åŠ¡éœ€åŒåè®®å¸¸è§„å‚ç…§å¹¶å®žæµ‹ç¼©å°å·®è·ï¼Œç»Ÿä¸€åŒä¸€checkpointï¼Œä¸ç”¨çŸ­ç‰‡/è·¨åˆ’åˆ†åˆ†æ•°æˆ–ä¸‰ä»»åŠ¡å„æŒ‘ä¸€æ¨¡åž‹æ›¿ä»£ã€‚å…¬å¼€ByteTrack/TempRMOT-v2/OVTrackä¸ºå‚ç…§ï¼›å®žé™…æŸ¥åˆ°TempRMOTå…¬å¼€train-listè¦†ç›–æœ¬åœ°V2 validation0007/0015/0016ï¼Œå‘å¸ƒæƒé‡ä¸èƒ½å……å½“æœªè§è§†é¢‘å…¬å¹³åŸºçº¿ï¼Œå…¬å¼€åˆ†æ•°åªä½œæ–¹å‘å‚è€ƒã€‚
-æ‰§è¡Œç ”ç©¶è®¡åˆ’ï¼šé’ˆå¯¹å·²è¯åŽŸç”Ÿ48å¸§æ—§actor0æ¬¡existing assignmentçš„æ”¯æŒç¼ºå£ï¼Œå¤ç”¨å…¨éƒ¨åŽŸå§‹1184çœŸå®žDLMå€™é€‰ï¼Œä»Žå·²å®Œæˆnative600æƒé‡åˆ·æ–°åŒ48fitå¸§çš„çœŸå®žè‡ªèº«åŽ†å²ï¼›ä¸å‘æ–°Groundè¯·æ±‚ã€ä¸ç”¨GTçº æ­£actorã€ä¸ç«‹å³ç›²ç›®å»¶é•¿è®­ç»ƒã€‚CPUå…ˆæ ¸å¯¹å›žæ”¾åˆåŒä¸Žé¢„ç®—ï¼Œå•ä¸€é˜»å¡žownerä»…ç­‰å½“å‰GPU4 Full1203ä¸‰è‡‚æˆåŠŸç»“æŸåŽæŽ¥æ£’ä¸€å¼ GPU4ï¼Œæ–°å¢žå¯¼å‡ºä¸Šé™512MiBå¹¶ç»´æŒå…¨å±€25GiBï¼›æ ¹æ®çœŸå®žæ–°rolloutæ˜¯å¦æä¾›å·²æœ‰èº«ä»½/å†²çªæ”¯æŒå†å†³å®šä¸‹ä¸€å°æ­¥ç›‘ç£é€‚é…ã€‚çŽ°æœ‰4/5/6/7ä»»åŠ¡ä¸åœæ­¢ã€‚
-
-å½“å‰native600å›žæ”¾å‡†å¤‡å·²å®žçŽ°å¹¶é€šè¿‡çœŸå®žCPUåˆåŒæ ¸éªŒï¼šå…¨éƒ¨48å¸§/1184å€™é€‰ã€ä¸‰æ®µå„16åŽŸfitframes/å›¾åƒå­˜åœ¨ã€600checkpointå­˜åœ¨ã€åŽŸGPU4 owner2049900/start42845776ä»liveã€æ³¨å†Œprior+512MiB=26,262,799,802<26,843,545,600bytesã€‚æ–°å¯é€‰replayå‚æ•°ä¿ç•™åŽŸæ¨¡å¼é»˜è®¤è¡Œä¸ºï¼Œä¸è¯·æ±‚Groundã€ä¸åŠ featureå‘é‡/ä¸ä¿®æ”¹åŽŸè¯¾ç¨‹ï¼›æŒ‰å½“å‰actorçœŸå®žçŠ¶æ€äº§ç”Ÿç‹¬ç«‹æ–°è¯­æ–™ã€‚æ–°é˜»å¡žè°ƒåº¦åªåœ¨å½“å‰Fullä¸‰è‡‚æˆåŠŸä¸”owneré€€å‡ºåŽæŽ¥æ£’GPU4ï¼Œæœªæå‰å¯åŠ¨æ¨¡åž‹æˆ–ä»»ä½•æ–°è®­ç»ƒã€‚æ–°å¢žç›®æ ‡æ–‡æ¡£æ˜Žç¡®æ™®é€šæ°´å¹³æ˜¯æœ€ç»ˆéªŒæ”¶ï¼Œå…¬å¼€åˆ†æ•°é¡»åè®®åŒ¹é…ï¼Œæ—§V1 TempRMOT94.679çŸ­sanityä¸ä½œä¸ºV2æ­£å¼æ°´å¹³è¯æ®ã€‚
-
-æ–°åˆ·æ–°owner2353528/start44628629/session45947å·²å®žé™…å¯åŠ¨å¹¶é˜»å¡žç­‰å¾…åŽŸFull GPU4 ownerï¼›å½“å‰WAITING_ORIGINAL_GPU4_FULL1203_OWNER_EXITï¼Œæ— æ–°å¢žGPUæ¨¡åž‹æˆ–è®­ç»ƒã€‚æ³¨å†Œå¿«ç…§ `training_data/native600_fit_rollout_refresh_v1/registration.json`ï¼›åŽŸå¥æŸ„70182/36847/52020åŠäº‹ä»¶æµ58829ä¿ç•™ï¼Œæ–°å¥æŸ„ç‹¬ç«‹ç­‰å¾…æŽ¥æ£’ã€‚
-
-ç ”ç©¶è®¡åˆ’ï¼šå…¨9ä»»åŠ¡åŽŸç”Ÿä¿ç•™è¯„æµ‹ä»åœ¨è¿è¡Œï¼Œä½†å·²æœ‰ä¸å¯å˜å®Œæ•´task_resultsã€‚è°ƒç”¨åŽŸç”Ÿæœªæ”¹summarizeåªè¯»å–å·²å®Œæˆtaskï¼Œæ ¸å¯¹n-original=n-effective/provider-filter0ï¼Œå›ºåŒ–åŽŸå§‹6é¡¹ä¸Žadapted200ä¸¤é¡¹åŠå…±åŒdense200/VisDroneå¯¹ç…§ï¼›æœªå®Œæˆä»»åŠ¡ä¸è¡¥åˆ†ã€ä¸æ±‡æ€»æˆå…¨9ç»“æžœã€‚æ˜Žç¡®åŽŸå§‹queue32ä¸Žé€‚é…syncæ‰§è¡Œå·®å¼‚åŠéšæœºrequestcounterä¸æž„æˆbitwiseé…å¯¹ï¼ŒæŠ¥å‘Šå®žé™…å˜åŒ–ï¼Œä¸å°†å·®å¼‚å…¨éƒ¨å½’å› è®­ç»ƒã€‚ç»§ç»­ä¿ç•™åŽŸowner/æœåŠ¡ã€‚
-
-åŽŸç”Ÿä¿ç•™å®Œæ•´taské˜¶æ®µå·²å›ºåŒ–ï¼šè°ƒç”¨åŽŸscripts.evaluate.summarizeä¸æ”¹scorerã€ä¸è°ƒç”¨æ¨¡åž‹ï¼›åŽŸå§‹6/9ï¼ˆ31986å®Œæ•´taskè¡Œï¼‰ã€adapted2002/9ï¼ˆ1810è¡Œï¼‰ï¼Œå„task n-original=effectiveä¸”providerè¿‡æ»¤0ï¼›åŽŸå§‹COCOä¸¥æ ¼æŒ‰æ—¢æœ‰resumeå¤ç”¨ï¼Œæ‰€æœ‰rawæºä»æœ¬åœ°ä¿ç•™ã€‚å…±åŒDense200 F1@.5 78.986â†’78.679ï¼ˆ-.307ppï¼‰ï¼ŒF1mIoU66.644â†’66.054ï¼›VisDrone F1@.5 46.125â†’42.145ï¼ˆ-3.980ppï¼‰ï¼ŒF1mIoU29.662â†’27.870ã€‚åŽè€…precision/recallå‡ä¸‹é™ï¼Œæœªè§è¯¥ä¸¤é¡¹ä¿ç•™èƒ½åŠ›æ”¹å–„ï¼Œä¸æŽ¨å¹¿è§†è§‰200ä¸ºæ›´å¥½åŸºç¡€æ¨¡åž‹ã€‚åŽŸå§‹queue32ä¸Žadapted-syncã€CUDAæ¢å¤åŠrequestcounterä¸åŒå‡æ˜Žç¡®ï¼Œä¸æŠŠå·®å¼‚ç‹¬å½’å› è®­ç»ƒã€‚å…¶ä½™full9ç»§ç»­åŽŸå¥æŸ„ï¼Œä¸å°†å½“å‰responseè¿›åº¦å‰ç¼€å†’å……å®Œæ•´taskæˆ–å®Œæ•´9é¡¹åˆ†æ•°ã€‚
-
-2026-10-15è®­ç»ƒè§„æ¨¡ä¸Žåˆ›æ–°å£°æ˜Žçº æ­£ï¼šTRAINING_LOGé¡¶éƒ¨ä»æ˜¯æ—§500æ­¥è¿è¡ŒçŠ¶æ€ï¼ŒçŽ°ä»¥ä¸¤ä¸ªå®žé™…600è¿½åŠ é˜¶æ®µçš„å®Œæˆæ ¡éªŒã€Compactè®­ç»ƒé…ç½®åŠGround200/320è®°å½•æ›´æ–°ï¼Œä¿ç•™æ—§å¿«ç…§ä¸ºåŽ†å²ã€‚æ˜Žç¡®ä»…åšè¿‡å…±äº«å¤šä»»åŠ¡å¾®è°ƒå’Œåˆ†å¼€åŸºç¡€æ¨¡åž‹é€‚é…ï¼Œæ²¡æœ‰Ground+Oneç«¯åˆ°ç«¯è”åˆæ¢¯åº¦è®­ç»ƒï¼›3595/8767ç§’ä»…150/350æ­¥æ¢å¤å°¾æ®µï¼Œé‡å¤è¯­æ–™è¡Œä¸ç­‰äºŽç‹¬ç«‹è§†é¢‘å¸§ã€‚æ–¹æ³•è®¾è®¡ä»å¾…æ”¶ç›Šè¯æ®ï¼Œæœªè¯æ˜Žç‹¬ç«‹JEVåˆ›æ–°æˆ–è¾¾åˆ°ä¸‰ä»»åŠ¡æ™®é€šæ¨¡åž‹æ°´å¹³ã€‚ä¸‹ä¸€æ­¥ä»æŒ‰å·²ç™»è®°GPU4ä¾èµ–åˆ·æ–°48fitå¸§/1184åŽŸç”Ÿå€™é€‰ï¼Œå…ˆçœ‹å®žé™…existing-ID/å†²çªæ”¯æŒå†å†³å®šè®­ç»ƒï¼›æœ¬æ¬¡ä¸æ–°å¢žGPUä»»åŠ¡ã€ç¼“å­˜æˆ–æµ‹è¯„ã€‚åŽŸäº”ä¸ªé˜»å¡žå¥æŸ„å‡å®žé™…è¿”å›žstill-runningï¼Œç»§ç»­ä¿ç•™åŽŸownerï¼Œä¸å› è§‚å¯Ÿç­‰å¾…é‡å¯ã€‚
-
-2026-10-15ï¼šåŽŸFull1203é˜»å¡žå¥æŸ„70182å®žé™…exit0ï¼Œç¬¬ä¸‰teacher600å®Œæˆå®˜æ–¹ä¸Ževentsï¼ŒåŽŸå›žæ”¾owner45947è‡ªåŠ¨æŽ¥æ£’GPU4ï¼Œå¼€å§‹48fitçœŸå®žåŽ†å²ï¼Œä¸æ–°å¢žGroundè°ƒç”¨ã€‚å®ŒæˆcuratoréªŒè¯å…¨éƒ¨ä¸‰ç»„1203decodedå¸§/13664é€å¸§ç›¸åŒV1å€™é€‰/27æ‹’ç»å¸§/checkpoint/finalmemory/å®˜æ–¹æŒ‡æ ‡ï¼Œfailedå’Œpendingå‡ç©ºã€‚teacherè¿½åŠ 600 HOTA7.5766/IDF5.0149/IDSW3839/FP7683/FN384ï¼Œä½ŽäºŽMOT5007.8485/5.0561ï¼›native6008.7030/5.8260äº¦æ²¡æœ‰ç¨³å®šè·¨ä»»åŠ¡æ”¶ç›Šã€‚ä¸é‡‡ç”¨æ¨¡åž‹æ™‹å‡æˆ–æ ¹æ®éªŒè¯é˜ˆå€¼è°ƒå‚ã€‚teacherå·²çŸ¥existing-anchor1833ä¸­æ­£ç¡®é€‰é¡¹1588ã€å®žé™…æ­£ç¡®82ï¼ˆ4.474%ï¼‰ï¼Œargmax77ã€matchingä¸¢69æ•‘74ï¼›å·²çŸ¥ä¸€è‡´UPDATE56ã€å·²çŸ¥å†²çª152ã€æœªçŸ¥birth2962ã€unmatched4977ï¼ŒæœªçŸ¥ä¸å½“è´Ÿæ ‡ç­¾ï¼Œæ‰€æœ‰å€™é€‰ä¸ŽæŒ‡æ ‡ä¸æ”¹ã€‚ä¿ç•™è´Ÿæƒé‡å’Œè½¨è¿¹ï¼Œç­‰å¾…å½“å‰actoråˆ·æ–°çœŸå®žå…³è”/å†²çªæ”¯æŒå†å®šä¸‹ä¸€å—æŽ§è®­ç»ƒã€‚curatorå¢žåŠ å®Œæ•´ä¸‰è‡‚ç»ˆæ€å£°æ˜Žå¹¶ä¿®æ­£è¿½åŠ 600ä¸ç­‰äºŽå®Œæ•´è®­ç»ƒlineageçš„è¡¨è¿°ã€‚
-
-2026-10-15å½“å‰native600åˆ·æ–°åŽŸé˜»å¡žsession45947å®žé™…exit0ï¼šä¸‰æ®µ48fitå¸§/1184åŽŸå§‹DLMå€™é€‰å’Œperceptioné€å¸§ç²¾ç¡®ä¸€è‡´ï¼Œ5741ç›‘ç£è¡Œï¼Œ165806581å¯¼å‡ºbytes<512MiBï¼Œæ— æ–°Groundè¯·æ±‚/featureæˆ–GTçº æ­£ã€‚å®¡è®¡CLIæ”¯æŒç‹¬ç«‹source/outï¼Œæ—§é»˜è®¤48/1184/2460å’Œ0existingå…¨éƒ¨è®¡æ•°ç²¾ç¡®å›žå½’ï¼›åˆ·æ–°å…¨éƒ¨Q3æ—§è§‚å¯Ÿè¯­ä¹‰targeté€æ¡é‡çŽ°ã€‚å®žé™…658existing=45knownæ­£ç¡®+568knownå†²çª+15æœªçŸ¥birth+30unmatchedï¼›82NEW+444æ— æœ€ç»ˆidentityå®ˆæ’1184ã€‚å®žé™…UPDATEæ­£ç¡®12/å†²çª41/æœªçŸ¥12/unmatched20ï¼›300knownå†²çªçš„åŽŸcandidateè§‚å¯ŸQ3 targetä¸ºyesï¼Œè¿™ä¸æ˜¯selectedIDæ­£ç¡®æ€§æ ‡ç­¾ï¼Œä¸ç»™æ—§é—®é¢˜å·æ¢æ ‡ç­¾ã€‚è¯æ˜Žå¯è®­ç»ƒé”™è¯¯åŽ†å²æ”¯æŒç¼ºå£å·²è¡¥ï¼Œä¸è¯æ˜Žç²¾åº¦æå‡ï¼›ä¸‹ä¸€å—æŽ§æ”¹åŠ¨ä¼˜å…ˆåˆ·æ–°åŽ†å²å¹¶åŒ¹é…å¤šä»»åŠ¡/é—®é¢˜familyé‡‡æ ·ï¼Œä¿ç•™RMOT/OVMOTå’ŒåŽŸruntimeï¼Œç”¨å®žæµ‹æ£€éªŒidentity rankingï¼Œæ˜¾å¼assigned-ID Q3å¦ä½œç‹¬ç«‹åè®®ã€‚åŽŸGPU5è‡ªç„¶å’Œ6/7ä¿ç•™é˜Ÿåˆ—ç»§ç»­ï¼ŒGPU4åˆ·æ–°ç»“æŸï¼Œæ— æ–°SFTå¯åŠ¨ã€‚
-
-ç ”ç©¶è®¡åˆ’2026-10-15ï¼šå½“å‰native600fit48å·²å‡ºçŽ°658çœŸå®žexistingå…³è”/568å·²çŸ¥å†²çªï¼Œæ—§actorä¸º0ã€‚æ£€éªŒä»…åˆ·æ–°MOTåŽŸç”ŸactoråŽ†å²èƒ½å¦æ”¹å–„identity rankingï¼ŒåŒæ—¶ä¸é‡å¤ä»…MOTè®­ç»ƒå¯¼è‡´RMOTå´©å¡Œã€‚å‡†å¤‡ä¸¤ç»„å„600è¿½åŠ updates/2400æ ·æœ¬ï¼Œä¸‰ä»»åŠ¡å„800ã€ç›¸åŒä»»åŠ¡/é—®é¢˜familyé€ä½ç½®é…å¯¹ï¼ŒMOTä¿æŒ400åŒä¸€teacherè¡Œ+400åŒfamily nativeè¡Œï¼ŒRMOT/OVMOTé€ä½ç½®å†…å®¹ç›¸åŒã€‚æŽ§åˆ¶ç»„æ—§nativeåŽ†å²ï¼Œå¹²é¢„ç»„å½“å‰600æ–°åŽ†å²ï¼›ä¸¤ç»„ä»ŽåŒä¸€çœŸå®ž600 FP32 mastersã€seed0/lr2e-6/åŽŸloss/å››è¡Œæ¢¯åº¦ç´¯è®¡ï¼Œå•GPU4ä¸²è¡Œã€‚æ•°æ®å‡†å¤‡å’ŒCPUçœŸå®žtokenè§„åˆ’å…ˆéªŒè¯æ— è¶…é•¿/æ¼è¡ŒåŠæ–°å¯¼å‡ºé¢„ç®—ï¼Œä¹‹åŽæ‰å¯åŠ¨è®­ç»ƒã€‚æ–°å¢žè¯­æ–™åªé‡‡æ ·å¼•ç”¨æ—¢æœ‰å›¾åƒï¼Œä¿æŒå®Œæ•´åŽŸå§‹è¯­æ–™/æƒé‡ï¼›ä¸æ˜¯å¤§è§„æ¨¡unique-frameæˆ–Ground+Oneè”åˆæ¢¯åº¦è®­ç»ƒï¼Œä¸æ”¹éªŒè¯é˜ˆå€¼ã€æŒ‡æ ‡ä¸Žæµ‹è¯•GTè¾¹ç•Œã€‚
-
-600åŽ†å²é…å¯¹è¯­æ–™å‡†å¤‡å®Œæˆï¼šæ¯ç»„2400è¡Œã€800/800/800ä»»åŠ¡æ›å…‰ï¼ŒMOT400teacherå®Œå…¨åŒå†…å®¹+400same-family nativeæ›¿æ¢ï¼Œå®žé™…æ–°history400uniqueè¡Œè¦†ç›–48fitframesï¼ŒRMOT346ä¸ŽOVMOT430æ‰€æœ‰æºè¡Œå‡å‡ºçŽ°ï¼›æ–°å¢ž48712542bytesï¼Œä¿å®ˆæ€»25957225229<26843545600ã€‚å®˜æ–¹CPUä¸¤ç»„max25998/27960tokensä¸”0è¶…é•¿/ä¸¢è¡Œã€‚é¦–æ¬¡post-planæ¯”è¾ƒå¤±è´¥ï¼Œæ ¹å› å®˜æ–¹plan_stepsæŒ‰é•¿åº¦é‡æŽ’stepå†…éƒ¨å››ä¸ªmicrobatchï¼Œrawåˆ—è¡¨é¡ºåºä¸ç›¸åŒï¼›é€rowæ ¸éªŒæ‰€å±žstep/index/bucket/familyå®Œå…¨ç›¸åŒã€‚ä¿®æ­£æ ¸éªŒä¸ºåŽŸæ ·ä¿æŒå®˜æ–¹å†…éƒ¨é¡ºåºã€æ¯”è¾ƒç²¾ç¡®row-to-step membershipï¼Œå¤ç”¨ä¸¤ä¸ªå®ŒæˆCPUè®¡åˆ’ï¼›v1å¤±è´¥receipt/logä¿ç•™ï¼Œv2å…¨éƒ¨é€šè¿‡ã€958çœŸå®žmediaè·¯å¾„å­˜åœ¨ã€ä¸ç§°token/FLOPåŒ¹é…ã€‚ä¸‹ä¸€æ‰§è¡Œï¼šåŒä¸€GPU4é¡ºåºold/refreshedä¸¤ä¸ªå®žé™…600step full SFTï¼Œå‡ä»ŽåŽŸnative600ç²¾ç¡®FP32 masteråˆå§‹åŒ–ï¼ŒåŽŸç”Ÿloss/seed/clip/é˜ˆå€¼ä¸æ”¹ï¼Œæ¯50æ­¥åŽŸå­FP32+Adam/RNGä¿å­˜ï¼›æ¯ç»„å®ŒæˆåŽå®žé™…ä¸¤æ¬¡MMreloadï¼Œå†åšåŒåè®®trackingã€‚ä¸æ˜¯æœ€ç»ˆè´¨é‡å®Œæˆæˆ–å¤§è§„æ¨¡è”åˆè®­ç»ƒã€‚
-
-é¦–æ¬¡é…å¯¹è®­ç»ƒowneråœ¨æ¨¡åž‹å¯åŠ¨å‰exit1ï¼ŒåŽŸå› æ˜¯å®˜æ–¹CPUplan-onlyåœ¨æ­£å¼nameä¸‹é¢„å…ˆåˆ›å»ºargs.jsonç›®å½•ï¼Œnot-existså¯åŠ¨æ£€æŸ¥å› æ­¤åœæ­¢ï¼›å®žé™…ä¸¤ä¸ªç›®å½•ä»…args.jsonï¼Œplan_only=trueï¼Œæ— è®­ç»ƒlog/ckpt/æ¨¡åž‹ï¼Œ0æ–°å¢žè®­ç»ƒã€‚ä¿ç•™å¤±è´¥ownerä¸ºfull_history_refresh600_pair_v1ï¼Œå°†ä¸¤ä»½å‚æ•°ç›®å½•ç²¾ç¡®å½’æ¡£åˆ°preflight_v2/plan_only_run_dirsï¼Œä¸åˆ ä»»ä½•ç»“æžœã€‚æœªæ¥CPUå‘½ä»¤æ˜¾å¼ä½¿ç”¨ç‹¬ç«‹_token_planåç§°ï¼›æ•°æ®/ç§å­/loss/600æ­¥é¢„ç®—å…¨éƒ¨ä¸æ”¹ï¼Œä»¥æ–°v2 ownerå¯åŠ¨åŒä¸€å°šæœªå¼€å§‹çš„å®žéªŒã€‚
-
-é…å¯¹600çœŸå®žowner2448456/start45150423/session21963çŽ°è¿è¡Œold_FULL600_TRAININGï¼Œlaunch commit d938c520ã€‚GPU4å¯åŠ¨å‰81027MiBç©ºé—²ï¼›çœŸå®ž752393024languageå‚æ•°/320FP32tensorsä»ŽåŽŸ600masterç²¾ç¡®åˆå§‹åŒ–å·®0ï¼ˆç›¸å¯¹BF16åˆå§‹500278218å…ƒç´ æ”¹å˜ï¼‰ï¼Œå®˜æ–¹å®žé™…600æ­¥/0ä¸¢è¡Œã€‚æ–°phaseç§å­0/loss/4è¡Œç´¯è®¡ä¸æ”¹ï¼ŒæŽ§åˆ¶ç»„ç»“æŸå¹¶å®žé™…MMä¸¤æ¬¡reloadåŽè‡ªåŠ¨æŽ¥refreshedç»„ï¼ŒåŽŸGPU5è‡ªç„¶ä¸Ž6/7ä¿ç•™é˜Ÿåˆ—ç»§ç»­ã€‚GitHub MCPæŒç»­transport failureï¼Œæœ€æ–°ä»£ç /config/å®¡è®¡å‡æœ¬åœ°æäº¤å¹¶ç™»è®°å¾…å‘å¸ƒï¼Œä¸ä¼ªç§°å·²è¿œç«¯åŒæ­¥ã€‚
-
-åŽç»­æµ‹è¯„é¢„æ³¨å†Œè®¡åˆ’ï¼šåœ¨è®­ç»ƒåˆ†æ•°æœªçŸ¥æ—¶å›ºå®šsame-checkpointå››scopeï¼šåŽŸV1 DT1203/ReferKITTIv2ä¸¤è¡¨è¾¾å„800/åŽŸå§‹TAO BaseNovelè§†é¢‘40æ ‡æ³¨å¸§1203è¾“å…¥ç±»ã€‚å‰æ¨¡åž‹MOT/RMOTå·²å®Œæ•´æ ¸éªŒåˆ™ä»…å¤ç”¨ï¼Œè¡¥é½åŽŸnative600çš„å®Œæ•´TAO Full native-hierarchicalå¯¹ç…§ï¼›ä¸¤æ–°checkpointå„å®Œæ•´å››scopeï¼Œä¸æŒ‰ä»»åŠ¡é€‰æƒé‡ã€‚GPU4ç­‰å½“å‰é…å¯¹è®­ç»ƒåŠçœŸå®žMMreloadå…¨éƒ¨æˆåŠŸåŽæµ‹oldï¼›GPU5ç­‰åŽŸè‡ªç„¶é˜Ÿåˆ—çœŸæ­£é€€å‡ºåŽå…ˆæµ‹before TAOï¼Œå†ç­‰è®­ç»ƒæµ‹refreshedã€‚æ— æ–°DLM/ROIæ¡£æ¡ˆï¼ŒåŽŸå€™é€‰åŠæ‰€æœ‰ç©º/æ‹’ç»å¸§å®Œæ•´ä¿ç•™ï¼Œæ‰€æœ‰è¯„åˆ†ç”¨åŽŸå®˜æ–¹ç¨‹åºï¼ŒTAOæ ‡æ³¨æ—¶é’Ÿä¸ç§°çœŸå®žç§’ã€‚è¯¥èŒƒå›´ä»æ˜¯æ³¨å†Œå¼€å‘è§†é¢‘è€Œéžå…¨æ•°æ®é›†æ™®é€šæ¨¡åž‹ç›®æ ‡å®Œæˆã€‚
-
-å››scopeé˜Ÿåˆ—CPUæ¥æºæ ¸éªŒé€šè¿‡ï¼š1203/800/800/40å¸§ã€13664/1412/2208/35228å€™é€‰ï¼Œ27/36/19/0åŽŸæ‹’ç»å¸§ï¼ŒçœŸå®žå›¾åƒå­˜åœ¨ï¼ŒTAO1203è¾“å…¥ç±»/expressionNoneã€‚æ—§native600åŸºçº¿checkpoint/source/officialæŒ‡æ ‡ä¸€è‡´ï¼›æ–°workeréªŒè¯å‡½æ•°å¯¹å·²æœ‰å®Œæ•´ä¸‰scopeå®žé™…é€å¸§å€™é€‰/åŽŸæ‹’ç»åˆ—è¡¨/å®˜æ–¹æŒ‡æ ‡/final memory/videoè§£ç 1203/800/800å›žå½’é€šè¿‡ï¼Œç»ˆæ€pidfdä¾èµ–è¯»å–åœ¨å·²å®ŒæˆFullä¸‰è‡‚çœŸå®žowneré€šè¿‡ã€‚æ—§è®­ç»ƒ25æ­¥æ—¥å¿—æœ‰é™ï¼Œæœªæ”¹å˜è¿è¡Œã€‚ä¸‹ä¸€æ­¥ä»…å¯åŠ¨ä¸¤ä¸ªCPU pidfdç­‰å¾…workerï¼Œä¸æå‰ç”¨GPU4/5ï¼›åŽç»­åŒä¸€checkpointå››scopeã€åŽŸscorerä¸Žè¾“å‡ºé˜ˆå€¼ä¸å˜ã€‚
-
-ä¸¤ä¸ªåŽç»­æŽ§åˆ¶workerå®žé™…å¯åŠ¨ï¼Œä»…CPU pidfdç­‰å¾…ã€new_model_calls_started=false/emptycompletedã€‚ç™»è®° [{"worker": "old", "pid": 2467896, "starttick": "45243395", "blocking_session": 14226, "status": "WAITING_PAIRED_TRAINING_AND_BOTH_NATIVE_MM_RELOADS", "physical_gpu_only_after_dependencies": 4}, {"worker": "refreshed", "pid": 2467924, "starttick": "45243513", "blocking_session": 46228, "status": "WAITING_ORIGINAL_GPU5_NATURAL_OWNER_EXIT", "physical_gpu_only_after_dependencies": 5}]ã€‚åŽŸè®­ç»ƒ21963/GPU5åŽŸé˜Ÿåˆ—36847/nativeä¿ç•™52020/observer58829å‡ç»§ç»­ï¼Œæœªæå‰å GPUï¼›å„æ–°workeré…ç½®ä¸Žsourceæ ¸éªŒå‡åœ¨ä»»ä½•æ–°scoreä¹‹å‰å›ºå®šï¼ŒåŽç»­æ¯ä¸ªè®­ç»ƒcheckpointè¦†ç›–åŒå››scopeã€‚
-
-å¸¸è§„å…³è”åŸºçº¿è®¡åˆ’ï¼šåŒä¸€DLMå€™é€‰çš„Simpleä¸è¶³ä»¥ä»£è¡¨å¸¸è§„è·Ÿè¸ªå™¨ï¼Œä¸‹è½½å®˜æ–¹FoundationVision/ByteTrackæºç commit d1bf0191adff59bc8fcfeaa0b33d3d1642552a99ï¼ˆç›´æŽ¥æ— ä»£ç†æˆåŠŸï¼‰ï¼Œåªè·‘CPUå®˜æ–¹BYTETrackerï¼Œä¸ä¸‹è½½æ£€æµ‹å™¨æˆ–æ”¹çŽ°æœ‰FoundationçŽ¯å¢ƒã€‚å›ºå®šå®˜æ–¹CLI track_thresh.6/buffer30/match.9/mot20falseï¼›åŽŸå€™é€‰æ— ç½®ä¿¡åº¦ï¼Œæ˜¾å¼constant1å…¨æ¡†è¾“å…¥ï¼Œä½Žåˆ†æ”¯æ— å€™é€‰ï¼Œä¸ä¼ªç§°å®Œæ•´ByteTrack/è®ºæ–‡æˆç»©ã€‚å®˜æ–¹KFè¾“å‡ºæ¡†ä¸Žé»˜è®¤çº¦1sä¸¢å¤±bufferä¿ç•™ï¼Œä¸æŒ‰éªŒè¯åˆ†æ•°è°ƒå‚æˆ–é™„åŠ è¾“å‡ºé¢ç§¯/å®½é«˜è¿‡æ»¤ã€‚å®Œæ•´DT1203/13664/27æ‹’ç»å¸§åŽŸå®˜æ–¹TrackEvalæ‰“åˆ†ï¼Œå…ˆéš”ç¦»CPUä¾èµ–ï¼Œå†ä¸€æ¬¡å®Œæ•´é˜»å¡žè¿è¡Œã€‚
-
-å®˜æ–¹ByteTrack CPUå‚è€ƒçŽ¯å¢ƒå·²ç›´æŽ¥æ— ä»£ç†å®‰è£…åˆ°ç‹¬ç«‹reference_envs/bytetrack/site-packagesï¼Œå›ºå®šNumPy1.23.5å…¼å®¹åŽŸnp.floatã€SciPy1.10.1/lap0.5.12/cython-bbox.1.5/OpenCV4.10ï¼Œä¸ä¿®æ”¹FoundationçŽ¯å¢ƒã€‚åªç”¨å®˜æ–¹trackeråŒ…ã€è·³è¿‡æ— å…³YOLOX rootåˆå§‹åŒ–ã€ä¸Šæ¸¸æºç ä¸æ”¹ï¼›Torchåº“åªè¯»å¤ç”¨ä½†ä¸åŠ è½½ä»»ä½•æƒé‡/ä¸åˆå§‹åŒ–CUDAã€‚çœŸå®žå‰21å¸§/266åŽŸå€™é€‰å«æ‹’ç»ç©ºå¸§21å¤„ç†é€šè¿‡ï¼Œè¾“å…¥boxeså’Œunit scoreså®Œå…¨ä¸å˜ã€frame counter21ã€‚ä¸‹ä¸€åŒè®¡åˆ’å®Œæ•´1203å¸§ä¸€æ¬¡è¿è¡Œ+åŽŸTrackEvalï¼Œé»˜è®¤KF/1s lostbufferåŠconstant1ä½Žåˆ†æ”¯ç©ºè¾“å…¥é™åˆ¶å…¨éƒ¨æ˜Žç¤ºï¼Œä¸æŒ‰éªŒè¯åˆ†æ•°è°ƒå‚ã€‚ä¸»è®­ç»ƒ50æ­¥çœŸå®žFP32/Adam/scheduler/RNGå·²ä¿å­˜ï¼ŒåŽŸé˜Ÿåˆ—ä¸å˜ã€‚
-
-ByteTrackå®Œæ•´é˜»å¡ž75056å®žé™…exit0ï¼šåŽŸå®˜æ–¹CPUè·Ÿè¸ªå™¨1203å¸§HOTA16.4734/IDF13.9034/IDSW367/FP5234/FN395ã€‚ç‹¬ç«‹é€å¸§æ ¸éªŒ13664å…¨éƒ¨åŽŸV1å€™é€‰ï¼ˆåªçœåŽŸfeatureæ•°ç»„ï¼‰ã€å›¾åƒ/æ¡†/åŽŸperceptionç²¾ç¡®ç›¸åŒã€27æ‹’ç»å¸§ä¸Žscoreråˆ†æ¯ç›¸åŒï¼Œå…¨éƒ¨predictions.txté€è¡Œé‡å»ºç­‰äºŽå®žé™…frame outputsï¼ŒfinalKFstateä¿ç•™ï¼ŒTrackEvalåŽŸ12c8791æœªæ”¹ã€‚é«˜äºŽFullnative6008.703ã€ä½ŽäºŽå…±äº«Compact26.316ï¼Œä½†CompactFP579/FN1962ç›¸è¾ƒByteTrack5234/395æ˜¯ä¸åŒè¯¯æ¼æƒè¡¡ï¼Œä¸”è®­ç»ƒ/ç‰¹å¾è¾“å…¥/1s vs3sè®°å¿†/KFè¾“å‡ºæœ‰å·®åˆ«ï¼Œä¸ä½œå”¯ä¸€JEVæˆ–æ™®é€šå…¨pipelineæ°´å¹³ç»“è®ºï¼Œä¸ä¸‹è°ƒæœ€ç»ˆé—¨æ§›ã€‚å‚è€ƒè§£é‡Šä¿ç•™ï¼›ä¸æ›¿æ¢è¿è¡Œä¸­çš„Full/Compactæˆ–è°ƒéªŒè¯é˜ˆå€¼ã€‚
-
-æ‰©å±•è®­ç»ƒæ•°æ®å‡†å¤‡è®¡åˆ’ï¼šå½“å‰Fullç±»åˆ«è¯­æ–™64å›¾/8video/9Baseç±»ï¼ŒRMOT72ç‰©ç†å¸§/9fitvideo/18è¡¨è¾¾ï¼Œä¸å¤Ÿæè¿°é•¿æ—¶é—´å¤§è§„æ¨¡è”åˆè®­ç»ƒã€‚çŽ°æœ‰å†»ç»“MOTè®­ç»ƒframeså®žé™…40904ï¼ˆMOT172664/Dance33772/MOT204468ï¼‰ï¼ŒTAOè®­ç»ƒæ³¨é‡Š18274å›¾/500videoï¼Œé¢å¤–freeformç±»ä¸èƒ½å†’å……1203è¾“å…¥è¯è¡¨ç›‘ç£ã€‚å®žçŽ°çº¯CPUå¯ç”¨æ€§ç´¢å¼•ï¼šä»…å†»ç»“MOT train_framesã€V2å…¨éƒ¨9fitçš„æœ¬åœ°å›¾åƒå’Œæ‰€æœ‰è¡¨è¾¾ã€TAOtrainæ˜ å°„Base(c/f)å¯¹è±¡å¼•ç”¨ï¼Œæ‰€æœ‰æ— Baseå¸§å’Œç¼ºæ–‡ä»¶è®°å½•ä¿ç•™ï¼Œä¸å½“è´Ÿæ ‡ç­¾/ä¸è¯»å–evalæˆ–forbiddenGTã€‚ä»…å…ƒæ•°æ®128MiBé¢„ç®—ï¼Œä¸å¼€æ¨¡åž‹/featureç¼“å­˜/æ–°è®­ç»ƒï¼Œä¸æ”¹å˜å½“å‰600å¯¹ç…§ã€‚åŽç»­æ ¹æ®çœŸå®žæµ‹è¯„é€‰æ‹©æ‰©å±•è¯¾ç¨‹å’Œactor rolloutï¼Œç´¢å¼•ä¸å†’å……è®­ç»ƒæ›å…‰ã€‚
-
-æ‰©å¤§è®­ç»ƒæ•°æ®ç´¢å¼•å®žé™…å®Œæˆï¼šMOT40904è®­ç»ƒå¸§/43videoï¼ŒRMOT1814æœ¬åœ°å›¾åƒ/å…¨éƒ¨9fit/4350è¡¨è¾¾æ–‡ä»¶ï¼ŒTAO18274è®­ç»ƒå›¾/500video/175Baseclasses/52978eligible targetsï¼›å½“å‰æ—§ç±»åˆ«SFTä»…9ç±»/64å›¾ï¼Œè§„æ¨¡ç¼ºå£æœ‰å®žé™…å¯ç”¨æ•°æ®æ”¯æ’‘ã€‚æ‰€æœ‰indexå›¾åƒis_file trueï¼ŒRMOTæ‰€æœ‰positiveè¡¨è¾¾frameéƒ½æœ‰æœ¬åœ°å›¾åƒï¼›MOTå”¯ä¸€dataset/sequence/frame40904ï¼Œ9fité›†åˆç²¾ç¡®ï¼›é€ä¸€52978targetæ ¸éªŒæºimageid/annoIDä¸Žfrozen vocab synset/frequencyä¸€è‡´ï¼Œ52978+6172nonBase+50outsidevoc=59200å®ˆæ’ã€‚175ç±»åˆ«coverage sumåŒ52978ï¼›1251é›¶eligibleBaseå¸§å…¨éƒ¨ä¿ç•™ï¼Œä¸ç»™Novel/unknownè´Ÿæ ‡ç­¾ã€‚ä¸ç§°å¤–éƒ¨å®Œæ•´RMOTåºåˆ—é•¿åº¦è¯æ˜Ž/å®žé™…è®­ç»ƒæ›å…‰/è”åˆæ¢¯åº¦è®­ç»ƒã€‚åŽŸå§‹indicesçº¦33.85MBæœ¬åœ°ä¿å­˜ï¼Œå‘å¸ƒå¯å¤çŽ°builder/sourceplanä¸Žsummary/coverage/validationï¼Œæœªåˆ›å»ºä»»ä½•featureç¼“å­˜æˆ–æ–°GPUã€‚åŽŸè®­ç»ƒ150/600çœŸå®žloss/gradæœ‰é™ï¼Œckpt150å’Œå®Œæ•´FP32/Adam/RNGå·²ä¿å­˜ï¼Œç»§ç»­åŽŸé˜Ÿåˆ—ã€‚
-
-175Baseè¯­æ–™ç»„ä»¶å®žçŽ°è®¡åˆ’ï¼šçŽ°æœ‰åŽŸç”ŸNativeCategoryHead.crop_sheetå¯ç›´æŽ¥æŒ‰åŽŸå›¾/ç²¾ç¡®GTæ¡†æƒ°æ€§ç”Ÿæˆ768å®½ã€216/432é«˜å®žé™…åƒç´ ï¼›æ ¹/æ¡ä»¶leafé—®é¢˜åŽŸæ ·æ²¿ç”¨ã€‚å…¨éƒ¨52978è®­ç»ƒBaseå¯¹è±¡æž„æˆ105956é—®é¢˜ï¼Œä¿ç•™1203è¾“å…¥è¯è¡¨ã€1251é›¶Baseå¸§ç™»è®°ï¼Œä¸åŠ Novel/unknownè´Ÿæ ‡ç­¾ã€‚åŽ‹ç¼©JSONL+mediaè£å‰ªrecipeé¿å…çº¦GBçš„é‡å¤æ–‡æœ¬/PNGè½ç›˜ï¼›æ–°ç‹¬ç«‹è®­ç»ƒå…¥å£ä»…è¿›ç¨‹å†…æ‰©å±•gzip/load_media IOå¹¶å°†IOç‰ˆæœ¬å†™å…¥æ¢å¤åè®®ï¼ŒçŽ°æœ‰å¯¹ç…§å…¥å£ä¸æ”¹ã€‚å…ˆçœŸå®žæ—§215å¯¹è±¡åƒç´ /é—®é¢˜å¯¹é½åŠ175æ–°ç±»ä»£è¡¨å›¾ã€CPU processorå¼ é‡å’Œå®˜æ–¹å…¨é‡tokenè®¡åˆ’æ ¸éªŒã€‚ä»…å‡†å¤‡æœªæ¥å¹³è¡¡ä¸‰ä»»åŠ¡æ··åˆçš„ç±»åˆ«ç»„ä»¶ï¼Œä¸å¯åŠ¨ç±»åˆ«å•ä»»åŠ¡optimizerï¼›256MiBå¯¼å‡ºcapã€åˆè®¡26359878413<25GiBã€‚
-
-2026-10-16ï¼š175Baseç±»åˆ«ç»„ä»¶å·²å®žé™…ç”Ÿæˆå¹¶å®ŒæˆCPUåŽŸç”Ÿå…¨é‡è§„åˆ’session25047 exit0ï¼Œ52978å¯¹è±¡/105956Root+Leafé—®é¢˜ã€500trainvideoï¼Œ1203è¾“å…¥ç±»ä¿ç•™ã€‚gzipæ–‡æœ¬25820145byteså¯¹æ¯”å±•å¼€1005240705ï¼Œ17375æŒ‰éœ€è£å‰ªrecipeæ— PNG/ROIæ¡£æ¡ˆï¼›18274å›¾å«1251é›¶Baseå®Œæ•´ç™»è®°ä¸é€ è´Ÿæ ‡ç­¾ã€‚å®žé™…215æ—§å¯¹è±¡/62åŽŸPNGåƒç´ å®Œå…¨ç›¸åŒï¼Œ175æ–°ç±»ä»£è¡¨é—®é¢˜/åƒç´ ç­‰åŒåŽŸNativeCategoryHeadï¼›768x216/432Ã—Root/Leafå››ä¾‹input_ids/mask/mmtypes/pixel_values/gridå…¨torch.equalä¸”å®žé™…è®¡æ•°tokenä¸€è‡´ã€‚å…¨é‡105956targeté€ä¸€å¯¹åº”æºGTå›¾åƒ/ç±»åˆ«/ROIä¸”ä¸¤ç§familyå„52978ï¼ŒåŒannotationé›†åˆã€‚å®˜æ–¹CPUplan0ä¸¢å¼ƒã€max4238ã€æ€»315781843è®¡æ•°tokensï¼Œ26489æ­¥åªæ˜¯4rowä¸‹å‡æƒ³å…¨ç±»åˆ«epochï¼Œä¸æ˜¯è®­ç»ƒã€‚Textrowsä»ä¸€æ¬¡è½½RAMï¼ŒCPUå³°3746652160bytesï¼›åŽŸcached native reporteræ‰“å°1såªå«å¤ç”¨åŽçš„æŠ¥å‘Šæ—¶é—´ï¼Œç»ä¸å½“tokenizeå…¨ç¨‹é€Ÿåº¦ã€‚æ–°ç‹¬ç«‹IOå…¥å£ä»…è¿›ç¨‹å†…gzipä¸ŽcropSheetè¯»å–ã€checkpointåè®®è®°ç‰ˆæœ¬ï¼ŒçŽ°æœ‰200/600å¯¹ç…§æ­£å¸¸/FP32å®Œæ•´ä¿å­˜ã€å…¶ä»–é˜Ÿåˆ—æœªåŠ¨ï¼›æ­¤ç»„ä»¶å°†ä¾›æœªæ¥ä¸‰ä»»åŠ¡å¹³è¡¡è¯¾ç¨‹ï¼Œæœªå‘æ–°GPUè®­ç»ƒã€ä¸ç§°å¤§è§„æ¨¡è”åˆè®­ç»ƒå®Œæˆã€‚
-
-2026-10-16è¡¨è¾¾è¦†ç›–æ‰©å±•è®¡åˆ’ï¼š4350åˆæ³•fitè¡¨è¾¾æŠ•å½±çŽ°æœ‰72çœŸå®žåŽŸç”Ÿå¸§ï¼Œ2213æ¡è‡³å°‘æœ‰ä¸€ä¸ªæ­£ç›®æ ‡ã€2137æ¡æ²¡æœ‰ï¼›34800 contextsä¸­15446æ­£/19354ç©ºã€‚ç›´æŽ¥å¹³é“ºé‡å¤å­˜åœ¨è¯­è¨€/æ­£è´Ÿè¦†ç›–åæ–œï¼Œä¸èƒ½ç§°å›¾åƒè§„æ¨¡æ‰©å¤§ã€‚å¤ç”¨åŽŸOneJevçž¬æ—¶membership/empty-presenceé—®é¢˜å’Œæ—¢æœ‰è£å‰ªPNGï¼Œæ‰©å±•è¡¨è¾¾æ–‡æœ¬ä¸Žä¸¥æ ¼train GT IoU>=.5æ ‡ç­¾ï¼Œå…¨éƒ¨è¡¨è¾¾/ç©ºå¸§/åŽŸ8æ‹’ç»å¸§ä¿ç•™ï¼›é€è¡¨è¾¾å†™è¦†ç›–ä¾›æœªæ¥å¹³è¡¡è¯¾ç¨‹ã€‚å…ˆä¸ŽçœŸå®žnative build_requestçš„æ‰€æœ‰72å¸§è¾“å…¥/è£å‰ªåƒç´ ä¸€è‡´ï¼Œå†é€æ¡å¤çŽ°æ—§346ç›‘ç£è¡Œï¼Œå®ŒæˆåŽå…¨é‡CPU tokenè§„åˆ’ã€‚ä¸æ–°å¢žGPU/feature/PNGï¼Œä¸æ”¹è¿è¡Œä¸­600è®­ç»ƒï¼Œä¸ç§°actor historyæˆ–è¿åŠ¨è¡¨è¾¾å¯è§‚æµ‹ã€‚64MiBå¯¼å‡ºcapï¼Œä¿å®ˆåˆè®¡26426987277<25GiBã€‚
-
-è¡¨è¾¾ç»„ä»¶é¦–æ¬¡ç”Ÿæˆsession35503 exit1ï¼Œé¦–ä¸ªæ ¹å› ï¼š0017/frame1è¡¨è¾¾individuals-donning-jeanså¼•ç”¨ID148ï¼Œä½†åŒå¸§release boxä¸­æ— 148ï¼›å…¨4350Ã—8æ ¸éªŒå…±60contexts/15è¡¨è¾¾ã€ä»…4ä¸ªç‹¬ç«‹(video,frame,ID)å¼•ç”¨ç¼ºæ¡†ï¼š0017/1/148ã€2/148ã€5/146ã€6/146ã€‚å·²æœ‰18è¡¨è¾¾/346è¡Œæ— æ­¤é—®é¢˜ï¼Œä¸èƒ½ç”±æ—§å­é›†é€šè¿‡æŽ¨å‡ºå…¨è¡¨è¾¾æ ‡ç­¾å¯ç”¨ã€‚å¤±è´¥partial train.jsonl.gzä¸Žfailure_auditä¿ç•™ï¼Œæœªè®­ç»ƒ/æœªåˆ é™¤ä»»ä½•æ ·æœ¬ã€‚æœ€å°ä¿®æ­£ä¸ºå…¨é‡target-ID/boxé¢„æ£€å‰ç½®åˆ°å†™è¡Œå‰ï¼Œæ˜Žç¡®HELDå¹¶exit2ï¼Œ0è¡Œå†™å…¥ï¼›ä¸äº¤é›†åˆ é™¤ç›®æ ‡ã€ä¸æ’å€¼æ¡†ã€ä¸å·æ¢è´Ÿæ ‡ç­¾ã€‚ä¸‹ä¸€å¤è·‘åªéªŒè¯çœŸå®ž4350å…¨é‡é˜»æ­¢æ— è¯ç›‘ç£ï¼Œç­‰å¾…åŽŸå§‹å¯è§æ€§/annotationåˆåŒè¯æ®åŽå†æ¢å¤è¿™ä¸€ç»„ä»¶ï¼ŒGPU4/5/6/7é˜Ÿåˆ—ä¿æŒã€‚
-
-å®˜æ–¹TempRMOTå›ºå®šcommit6a65640d849fdee4a32bb055945ee34c3b0edeb1çš„_pre_single_frameæºç è¯å®žï¼šéåŽ†åŒå¸§boxåˆ—è¡¨ï¼ŒæŒ‰IDæ˜¯å¦å±žäºŽexpression ref_idsè®¾is_refï¼›ä¸è¦æ±‚expressionIDsé€ä¸ªæœ‰æ¡†ã€‚å®žé™…å‡½æ•°å›žå½’v1å› éªŒè¯å™¨åªç»™imageè·¯å¾„åŠ KITTIåˆ«åã€labelä»æœ¬åœ°å°å†™è·¯å¾„ï¼Œè§¦å‘å®˜æ–¹centerè€ŒéžKITTIå·¦ä¸Šè§’åˆ†æ”¯ï¼Œexit1ï¼›è¿™æ˜¯æˆ‘ä»¬çš„éªŒè¯å™¨è·¯å¾„è®¾ç½®é”™è¯¯ã€‚æœ€å°ä¿®å¤ä»…labelä¹Ÿè½¯é“¾åˆ°KITTIè·¯å¾„ï¼Œæºå›¾/labelå­—èŠ‚ä¸Žå®˜æ–¹å‡½æ•°å®Œå…¨ä¸æ”¹ï¼Œv1å¤±è´¥ç›®å½•ä¿ç•™åŽä»¥v2é‡è·‘60å—å½±å“contextsåŠæ—§18è¡¨è¾¾ä¸Šä¸‹æ–‡ã€‚å®˜æ–¹è§„åˆ™ç¡®è®¤åŽæ‰æ¢å¤æ–°ç»„ä»¶ï¼Œä¸”æ˜¾å¼è®°å½•60ç¼ºæ¡†ä¸Šä¸‹æ–‡ï¼Œä¸æ”¹æ—§è®­ç»ƒ/è¯„åˆ†ã€‚
-
-å›ºå®šå®˜æ–¹å‡½æ•°å®žé™…198casesé€šè¿‡ï¼ŒåŒ…æ‹¬å…¨éƒ¨60ç¼ºæ¡†contextsä¸Žæ—§18è¡¨è¾¾ï¼›6æ—§ç©ºå¸§æ— labelæ–‡ä»¶æŒ‰æ—§åè®®ç™»è®°ï¼Œæœªä¼ªé€ æ–‡ä»¶ã€‚å®˜æ–¹æ–¹æ³•åªç»™å·²æœ‰boxèµ‹is_refï¼Œä¸ç”Ÿæˆæœªæœ‰æ¡†IDï¼Œæ‰€æœ‰60contextsä»æœ‰å…¶ä»–åŒè¡¨è¾¾æ­£ç›®æ ‡ï¼Œæ‰€ä»¥raw presenceä¸Žæœ‰æ¡†target presenceé€ä¸€ç›¸åŒï¼›è¿™ä¸æ˜¯ç‰©ç†ä¸å¯è§æ€§ç»“è®ºã€‚æ–°ç»„ä»¶æ˜¾å¼é‡‡ç”¨è¯¥å®˜æ–¹released-box projectionï¼Œè¦æ±‚å›ºå®šéªŒè¯receiptã€è®°å½•å…¨éƒ¨ç¼ºæ¡†å¼•ç”¨ï¼Œæ‰€æœ‰34800contexts/4350è¡¨è¾¾ä¿ç•™ï¼ŒåŽŸ346çš„state/question/target/taskå¿…é¡»ç²¾ç¡®å¤çŽ°ï¼Œq1å®žé™…PNGä¹Ÿé€ä¸ªæ¯”å¯¹ã€‚æ­¤ä¿®æ­£ä»…é€‚ç”¨äºŽå°šæœªè®­ç»ƒçš„æ–°ç»„ä»¶ï¼›æ—§è®­ç»ƒã€è¯„æµ‹GTã€losså’Œé˜ˆå€¼å‡ä¸å˜ã€‚å¤±è´¥v1/v2ä¿ç•™ï¼Œæ–°v3ç”±åŽŸæ•°æ®é‡å»ºã€‚
-
-2026-10-16è¡¨è¾¾ç»„ä»¶æœ€ç»ˆç”Ÿæˆsession50809 exit0ï¼š87721é—®é¢˜/4350è¡¨è¾¾/34800contextsï¼Œ72åŽŸç”Ÿå¸§165å€™é€‰/8æ‹’ç»å…¨éƒ¨ä¿ç•™ï¼›6873candidate yeså¯¹77189noï¼Œpresence1199yes/2460noï¼Œ2213è¡¨è¾¾æœ‰sample positive/2137æ— ã€‚æ‰€æœ‰60ç¼ºæ¡†ä¸Šä¸‹æ–‡æŒ‰å›ºå®šå®˜æ–¹box projectionä¿ç•™å¹¶é€æ¡è®°å½•ï¼Œä¸è¯»evalã€ä¸æ’å€¼GTï¼›æ—§346æ ·æœ¬state/question/target/taskç²¾ç¡®ï¼Œ136native mediaä¸Ž200q0/q1åƒç´ å¯¹é€šè¿‡ã€‚è¯¥è¯­æ–™æ˜¯åŽŸprimary-expression DLMå€™é€‰çš„counterfactual membershipï¼Œä¸æ˜¯æ–°è¡¨è¾¾é‡æ–°æ£€æµ‹ï¼Œä¸ç§°ç‰©ç†å¸§/actor historyæ‰©å¤§ã€‚å…¨é‡CPUplan session48280 exit0ï¼Œ87721/0drop/max2301/120061085tokensï¼›actual plan_epoch111.924ç§’ï¼ŒCPUå³°2068492288bytesï¼Œæ— CUDA/optimizerã€‚ä¸Šæ¸¸cached reporter0s/é»˜è®¤4ranksä¸ç­‰äºŽå…¨tokenizationé€Ÿåº¦æˆ–4GPUï¼Œargså®žé™…CPUworld1ï¼›åŽç»­ä»…æ˜Žç¡®PLAN_WORLD=worldã€‚21931æ˜¯4rowå‡æƒ³epochä¸æ˜¯å·²è®­ç»ƒæ­¥æ•°ã€‚åŽ‹ç¼©3156280bytesï¼Œcoverageé›¶è®¡æ•°æ˜¾å¼å¡«0ï¼›å…¨éƒ¨ç”Ÿæˆå’Œå¤±è´¥çœŸå®žæ–‡ä»¶7974645bytes<64MiBï¼Œä¿å®ˆåˆè®¡26426987277<25GiBã€‚ä¿ç•™è¯¥å·²éªŒè¯æœªè®­ç»ƒç»„ä»¶ï¼Œä¸‹ä¸€è¯¾ç¨‹é¡»å¤„ç†æ­£è´Ÿ/è¡¨è¾¾åˆ†å¸ƒå¹¶è¡¥çœŸå®žå¸§è¦†ç›–ï¼›ä¸æ”¹å˜å½“å‰600ä¸¤ç»„/å››scopeé˜Ÿåˆ—ã€‚
-
-2026-10-16ä¸‰è‡‚è®°å¿†è¯Šæ–­è¡¥é½è®¡åˆ’ï¼šä¹‹å‰full_mot_assignment_memory_v1åªå«MOT500/native600ï¼Œä¸¤ç»„AUROCè¿‘éšæœºï¼›teacher600çŽ°åœ¨å…¨1203å®Œæˆï¼Œè¡¥é½åŒä¸€åªè¯»è„šæœ¬çš„ç¬¬ä¸‰è‡‚ï¼Œä¿ç•™æ—§v1ç»“æžœã€‚è¯»å–åŽŸå§‹æœ€ç»ˆassignmentä¸ŽQ3å€¼é€äº‹ä»¶æ ¸å¯¹0.5åŽŸé˜ˆå€¼å®žé™…UPDATEï¼ŒæŠ¥å‘Šknown-birthä¸€è‡´/å†²çªåˆ†åˆ«çš„å†™å…¥çŽ‡ã€Q3/assignedæ¦‚çŽ‡/argmaxä¸€è‡´AUROCï¼›unknownä¸Žunmatchedä»å•ç‹¬åˆ—å‡ºï¼Œä¸èƒ½ç®—è´Ÿç±»ã€‚æ—§ä¸¤ç»„é‡ç®—æ‰€æœ‰å·²æœ‰ç»Ÿè®¡ç²¾ç¡®å¤çŽ°ï¼Œæ–°çš„teacherä¸Žå…¶åŽŸeventè®¡æ•°ä¸€è‡´æ‰ä¿ç•™ã€‚åªåšå·²å®Œæˆè½¨è¿¹çš„posthocè¯Šæ–­ï¼Œä¸æ”¹ä»»ä½•é¢„æµ‹ã€æŒ‡æ ‡ã€é˜ˆå€¼æˆ–è¿è¡Œä¸­è®­ç»ƒï¼Œä¸ç§°å› æžœåäº‹å®žrolloutæˆ–è®­ç»ƒä¿®å¤ã€‚
-
-2026-10-16ä¸‰è‡‚è®°å¿†è¯Šæ–­session80514å®žé™…exit0ï¼Œ40992åŽŸå§‹candidate eventsé€ä¸€reconcileæœ€ç»ˆID/action/UPDATEä¸”0.5å®žé™…gateå®Œå…¨åŒ¹é…ï¼›æ—§v1ä¸¤ç»„æ‰€æœ‰å­—æ®µé€é¡¹ç²¾ç¡®å¤çŽ°ã€‚æ–°å¢žteacher Q3 AUROC.499661ï¼Œknownæ­£ç¡®å†™56/82=.682927ï¼Œknownå†²çª152/216=.703704ï¼›assignedæ¦‚çŽ‡AUROC.467395ï¼Œargmaxä¸€è‡´.479336ã€‚å†»ç»“teacherè‹¥åŠ argmaxçº¦æŸä¼šæ‹¦51/56æ­£ç¡®åŠ127/152å†²çªï¼Œåªç•™5æ­£ç¡®/25å†²çªï¼Œä¸é‡‡çº³ã€‚ä¸‰ç»„å…±åŒæŒ‡å‘å€™é€‰è§‚å¯ŸQ3å¹¶æœªåŒºåˆ†æœ€ç»ˆidentityä¸€è‡´æ€§ï¼Œæ”¯æŒæœªæ¥æ˜¾å¼final-IDæ¡ä»¶é—®é¢˜åŠåŒ¹é…ç›‘ç£çš„ç ”ç©¶å¿…è¦æ€§ï¼Œä¸è¯æ˜Žä¿®å¤æ”¶ç›Šã€‚unknown/unmatchedä¸å½“è´Ÿç±»ï¼Œå„æ¨¡åž‹å†…ç”Ÿäº‹ä»¶é›†åˆä¸ç§°ä¸¥æ ¼åŒäº‹ä»¶å› æžœæ¯”è¾ƒï¼›æ— æ–°score/GPU/ç¼“å­˜/æŽ¨ç†ï¼Œå½“å‰åŽ†å²é…å¯¹è®­ç»ƒä¸Žå››scopeé˜Ÿåˆ—åŽŸæ ·ç»§ç»­ã€‚ä¿ç•™æ–°v2è¯Šæ–­åŠä»£ç ï¼Œæ—§v1ä¸è¦†ç›–ã€‚
-
-2026-10-16ä¸‹ä¸€ç›‘ç£è¯­ä¹‰å‡†å¤‡è®¡åˆ’ï¼šä¸‰è‡‚æœ€ç»ˆassignmenté—¨æŽ§AUROCè¿‘éšæœºï¼Œå½“å‰Q3æœªæŒ‡æ˜Žæœ€ç»ˆIDã€‚åªæž„é€ æ–°çš„final-assigned-existing-IDæ¡ä»¶Noulä»»åŠ¡ï¼ŒåŽŸå§‹state/çœŸå®žcropä¸æ”¹ï¼Œé™„åŠ ç”±å®žé™…å…¨å±€åŒ¹é…å¾—åˆ°çš„å…¨éƒ¨existing assignmentsï¼ˆåŒ…å«45æœªçŸ¥/æœªåŒ¹é…ï¼Œä¸èƒ½ç”¨GTç­›é€‰è¾“å…¥ï¼‰ã€‚æŒ‰åŽŸshortlistä¸Žä¿å­˜çš„åŽ†å²åˆ«åä¸€ä¸€å¯¹åº”æ¢å¤IDå‘½åï¼ŒGTä»…å¤–éƒ¨æ ‡ç­¾ï¼šknown birthåŒIDä¸”visibility>=åŽŸ.6ä¸ºyesï¼Œknownå†²çªæˆ–knownåŒIDä½Žå¯è§ä¸ºnoï¼›unknown/unmatchedç™»è®°target nullä¸é€ è´Ÿç±»ã€‚å…¨éƒ¨48fitå¸§1184åŽŸå€™é€‰ç™»è®°ï¼›613å·²çŸ¥ç›‘ç£é¢„è®¡29yes/584noï¼Œ45existingæ— ç›‘ç£ã€‚ç‹¬ç«‹å…±äº«question builderä¾›æœªæ¥post-global-matching/pre-write runtimeï¼Œå½“å‰trackerå’Œä¸¤ç»„600è®­ç»ƒä¸å¯ç”¨ã€‚çœŸå®žå…¨é‡CPUè§„åˆ’åŽæ‰ç§°è¾“å…¥å‡†å¤‡å®Œæˆï¼Œä¸ç§°åŒ¹é…runtimeå·²è½åœ°æˆ–ç²¾åº¦æå‡ï¼›16MiBå¯¼å‡ºä¸Šé™ï¼Œä¿å®ˆåˆè®¡26443764493<25GiBã€‚
-
-2026-10-16final-IDç»„ä»¶session66147 exit0ï¼šæ–°çš„çº¯question builderæœªæŽ¥å…¥å½“å‰trackerã€‚å®žé™…48fit/1184candidateså…¨éƒ¨ç™»è®°ï¼Œ658existing assignmentså…¨å…¥å¯¹åº”groupè¾“å…¥å«45æœªçŸ¥/æœªåŒ¹é…ï¼Œä¸æŒ‰GTç­›inputï¼›613knownæ ‡ç­¾29yes/584noï¼Œ300åŽŸQ3yesåœ¨æ˜Žç¡®æ–°é—®é¢˜ä¸‹noã€‚ç”¨å®žé™…event shortlistå¯¹saved state/crop aliasesé€ä¸€æ¢å¤å‘½åä¸”è·¨å¸§ä¸€è‡´ï¼Œæ— GTçº æ­£ã€‚ç‹¬ç«‹æ ¸éªŒ613æ–°stateåŽ»æŽ‰final_assignmentåŽå®Œå…¨ç­‰äºŽæ—§stateã€mediaç²¾ç¡®ã€questionæ¯æ¡å‘½åå®žé™…aliasï¼›12ä¸ªæ—§ç‹¬ç«‹auditå†²çªä¾‹é€å­—æ®µé‡çŽ°ï¼Œ45unknownå‡target nullä¸”ä¿ç•™åœ¨requestï¼Œä¸é€ è´Ÿç±»ã€‚å®Œæ•´native CPUplan0drop/max27234/13305265tokensï¼Œ17.393ç§’ï¼Œ154ä»…å‡æƒ³4row epochã€‚å½“å‰ä¸¤ä¸ª600è®­ç»ƒ/å››scopeé˜Ÿåˆ—æœªæ”¹ï¼Œæ— æ–°optimizer/GPU/å›¾ç‰‡featureï¼›å®žé™…ç»„ä»¶çº¦0.89MB<16MiBï¼Œä¿å®ˆåˆè®¡26443764493<25GiBã€‚ä¿ç•™è¯¥æœªè®­ç»ƒæœªå¯ç”¨ç»„ä»¶ï¼›åŽç»­é¡»å¹³è¡¡æ­£è´Ÿå¹¶å®žçŽ°åŒbuilderçš„çœŸå®žglobal-matchingåŽ/æ‰€æœ‰memory-writeå‰runtimeä¸Žå› æžœä¸‰ä»»åŠ¡æµ‹è¯„ï¼Œä¸èƒ½æ®æ­¤å£°ç§°ä¿®å¤æ”¶ç›Šæˆ–å¤§è§„æ¨¡è”åˆè®­ç»ƒã€‚
-
-2026-10-16æ¡ä»¶å†™å…¥runtimeå®žçŽ°è®¡åˆ’ï¼šæ–°å¢žç‹¬ç«‹AssignedIdentityUpdateDecisionï¼Œé»˜è®¤OneJevDecisionè·¯å¾„ä¸æ”¹ã€‚åœ¨accepted native groupsä¿å­˜pre-write state/mediaï¼›OnlineTrackerå…¨å±€åŒ¹é…åŽã€ä»»ä¸€track/box/imageå†™å…¥å‰ï¼Œå°†å…¨éƒ¨actual existing assignmentsä¼ ç»™åŒä¸€final-IDé—®é¢˜builderï¼ŒåŽŸç”ŸengineäºŒæ¬¡Noulè¦†ç›–existing updateæ¦‚çŽ‡ï¼Œå…³è”/ç”Ÿå‘½å‘¨æœŸ/NEWç­–ç•¥ä¸Ž.5é˜ˆå€¼ä¸å˜ã€‚ç±»åˆ«wrapperåªå¯¹æ–°backendè½¬äº¤callbackï¼ŒRMOTä¿ç•™åŽŸè¾“å‡ºmembershipã€‚æ˜¾å¼--assigned-identity-updatesé™Full v3/gatedï¼Œé»˜è®¤offï¼Œresumeæ ¸å¯¹åŒä¸€protocolï¼›å½“å‰è®­ç»ƒ/workeræœªä¼ flagã€‚å¿…è¦éªŒè¯ï¼šåŽŸparentä¸Žæ–°defaultåœ¨ä¸‰ç»„å®Œæ•´1203å¸§å†»ç»“æ¨¡åž‹å†³ç­–ã€ç›¸åŒåŽŸnativefeatures/å›¾åƒä¸Šè¾“å‡º/stateç²¾ç¡®ï¼›æ–°phaseåœ¨çœŸå®žfit48è½¨è¿¹çš„ç‹¬ç«‹å•å¸§åˆ†æ”¯éªŒè¯pre-writeè¾¹ç•Œã€å…¨éƒ¨658existingå«45æœªçŸ¥è¿›å…¥é—®é¢˜ã€è®­ç»ƒ/è¿è¡Œstateç»åˆæ³•IDåˆ«åå¯¹åº”ç›¸åŒã€‚ç¬¬äºŒé˜¶æ®µç”¨æ˜Žç¡®è„šæœ¬ç­”æ¡ˆåªæµ‹æ‰§è¡Œé€»è¾‘ï¼Œä¸ç§°æ–°æ¨¡åž‹é¢„æµ‹/benchmark/ä¿®å¤æ”¶ç›Šï¼Œä¸é¢å¤–å GPUã€‚
-
-2026-10-16æ¡ä»¶runtime CPUéªŒè¯session64482å®žé™…exit0ï¼šæ–°å¢žç‹¬ç«‹native second-pass backendï¼Œtrackeråœ¨å…¨å±€åŒ¹é…åŽ/ä»»ä½•trackä¿®æ”¹å‰è°ƒç”¨ï¼ŒåŒä¸€final-ID builderï¼›ç±»åˆ«wrapperè½¬äº¤ï¼ŒCLIæ˜¾å¼Full v3/gated flagé»˜è®¤offï¼ŒåŽŸ0.5/association/lifecycle/NEWä¸æ”¹ï¼Œä¿ç•™è§‚å¯ŸQ3ï¼Œresumeè¦æ±‚åŒprotocolã€‚ä¸‰ç»„å®Œæ•´Fullé»˜è®¤å›žæ”¾å„1203/13664/27æ‹’ç»å¸§ï¼Œparent blob9f092b04ä¸Žæ–°defaulté€å¸§outputs/stateåŠæœ€ç»ˆmemoryç²¾ç¡®ä¸€è‡´ï¼Œå¹¶é‡çŽ°åŽŸè¾“å‡ºï¼›æœªæ¢å¤traceæœªä¿å­˜çš„visible lifeæ¦‚çŽ‡ä¸ºåŽŸå§‹full-memoryçœŸå€¼ã€‚çœŸå®žfit48çš„96ç‹¬ç«‹å•å¸§åˆ†æ”¯ç”¨æ˜Žç¡®è„šæœ¬0/1Noulï¼š1316questions/150pre-write callsï¼Œæ‰€æœ‰658existingæ¯è½®å«45unknownï¼Œ1316canonical state/questionä¸Ž150alias-history cropåƒç´ ç²¾ç¡®ï¼›é•¿memory/å¯é æ—¶é—´æŒ‰script hold/updateï¼Œè¾“å‡ºID/æ¡†ä¸€è‡´ã€category forwardingé€šè¿‡ã€‚ä¸æ˜¯æ–°æ¨¡åž‹æŽ¨ç†ã€è¿žç»­åäº‹å®žrolloutã€è®­ç»ƒæ”¶ç›Šæˆ–æ–°HOTAï¼›æœªå‘GPU/featureå·¥ä½œï¼ŒåŽŸä¸¤ä¸ª600åŠå››scopeä¸å¯ç”¨flagã€‚å°ç»“æžœå½’æ—¢æœ‰16MiB reserveï¼Œæ€»26443764493<25GiBï¼›ä¿ç•™æ–°è·¯å¾„ï¼Œé¡»å…ˆåŒ¹é…SFT/é‡è½½å’Œè¿žç»­ä¸‰ä»»åŠ¡æµ‹è¯„æ‰åˆ¤æ–­æ”¶ç›Šã€‚
-
-2026-10-16åŽ†å²åˆ·æ–°å¯¹ç…§é¦–è‡‚å®žé™…å®Œæˆï¼šåŽŸsession21963è¾“å‡ºold600/600ï¼Œ2400æ ·æœ¬/ä¸‰ä»»åŠ¡å„800ï¼Œå…¨ç¨‹15605.720ç§’ï¼Œä¸æ˜¯æ¢å¤å°¾æ®µï¼›æœ€åŽloss1.020472/grad52.478677æœ‰é™ï¼Œå³°21.618GiBã€‚checkpoint600ä¸Žfinalå¯¼å‡ºã€9029140441byteå®Œæ•´FP32/Adam/RNGçŠ¶æ€å·²ä¿å­˜ã€‚åŽŸownerä¸¤æ¬¡çœŸå®žnative-MMreload474weightsã€æ¦‚çŽ‡å·®0é€šè¿‡ï¼Œè‡ªåŠ¨å¯åŠ¨refreshedè‡‚ï¼Œä»ä»ŽåŒnative600FP32åˆå§‹åŒ–å·®0ã€600planned/0dropã€‚å¦CPU mmapå®Œæ•´çŠ¶æ€æ£€æŸ¥session94584 exit0ï¼š320FP32å‚æ•°/752393024å…ƒç´ ã€å…¨éƒ¨Adamä¸€äºŒé˜¶çŸ©æœ‰é™ï¼Œ320Adamæ­¥æ•°å‡600ï¼Œprotocolä¸Žå®žé™…argsä¸€è‡´ã€scheduler/allRNG/cursoré½å…¨ï¼›ä¸ç§°å®žé™…é‡å¯è½¨è¿¹å·²éªŒè¯ã€‚2400æºè¡ŒæŒ‰åŽŸsourceæ ¸éªŒ800/800/800ï¼Œä¿ç•™å®Œæ•´29æ¡è®­ç»ƒæ•°å€¼è®°å½•ä¸Ždoneï¼Œcurated completion_validation.jsonã€‚åªæ›´æ–°å®Œæˆè¯æ®å’Œç ”ç©¶è®°å½•ï¼Œä¸æ”¹ä¸¤è‡‚é—®é¢˜/loss/é˜ˆå€¼/ç§å­/å››scopeä¾èµ–ï¼Œä¸å¯ç”¨æ–°assigned-IDflagï¼Œä¸æ–°å¢žGPUæˆ–featureï¼›å½“å‰æ²¡æœ‰æ–°trackingæŒ‡æ ‡æˆ–æ”¶ç›Šè¯æ˜Žï¼Œå®Œæ•´æ™®é€šæ°´å¹³ç›®æ ‡ç»§ç»­ã€‚
-
-2026-10-16ç ”ç©¶è®¡åˆ’ï¼šçŽ°æœ‰final-IDç›‘ç£ä»…29yes/584noï¼Œå…ˆæ£€æŸ¥å·²æœ‰å…±äº«Compactèƒ½å¦åœ¨åŒ48åˆæ³•fitå¸§æä¾›æ›´å……åˆ†çš„çœŸå®žæ­£ç¡®existingå…³è”ï¼Œå†å†³å®šæ˜¯å¦æž„é€ æ˜Žç¡®çš„è·¨actoråŽ†å²ç›‘ç£ã€‚å›ºå®šçŽ°æœ‰broad_native_training checkpointï¼Œä¸ç”¨fitç»“æžœé€‰æ¨¡åž‹ï¼›CPU2threadsã€åŽŸgated.5/3s/group16/shortlist32ï¼Œé€å¸§å¤ç”¨å…¨éƒ¨1184åŽŸç”Ÿå€™é€‰/å›¾åƒï¼ŒçœŸå®žCompactè‡ªèº«çŠ¶æ€è¿žç»­æŽ¨è¿›ï¼ŒGTä»…å¤–éƒ¨posthocä¸€å¯¹ä¸€IoU>=.5åŠimmutable birthæ ‡ç­¾ï¼Œä¸ä¿®æ­£actorã€‚åªè¯Šæ–­known-consistent/conflicting/unknown/unmatchedä»¥åŠå¯ç›‘ç£yes/noæ”¯æŒï¼Œä¸ç”Ÿæˆè®­ç»ƒæ•°æ®/PNG/featureï¼Œä¸ç§°Fullè‡ªèº«åŽ†å²ã€æ³›åŒ–æˆ–trackingæ”¶ç›Šã€‚æ–°å¢ž16MiBå°ç»“æžœé¢„ç®—ï¼Œä¿å®ˆåˆè®¡26460541709<26843545600ï¼›ä¸æ”¹å½“å‰GPU4ä¸¤è‡‚è®­ç»ƒ/4scopeä¸ŽåŽŸGPU5/6/7é˜Ÿåˆ—ã€‚
-
-CPUfitæ”¯æŒè¯Šæ–­é¦–è½®session23118 exit1ï¼Œé¦–ä¸ªåŠ¨ä½œæ ¹å› æ˜¯Full nativeå›žæ”¾æ²¡æœ‰native_region_featureï¼Œå°šæœªäº§ç”Ÿä»»ä½•frameé¢„æµ‹ã€‚ä¿ç•™v1 ownerå¤±è´¥è®°å½•ã€‚å·²æœ‰native_pack_v1/examples.ptç”±åŽŸNativeFeatureClientå¯¹å®Œå…¨ç›¸åŒ48å¸§1184å€™é€‰æå–çœŸå®žROIï¼›æœ€å°ä¿®å¤åªæŒ‰sequence/frame/batchå’Œå…¨éƒ¨å€™é€‰boxç²¾ç¡®å¯¹åº”ï¼Œå¤ç”¨åŽŸfloat32å€™é€‰ç‰¹å¾ã€‚åªæŽ’é™¤é‡å¤option-withholdingå¢žå¼ºpackæ¡ç›®ï¼Œä¸æŽ’é™¤ä»»ä½•ç‰©ç†å€™é€‰/å¸§ï¼›å…¨éƒ¨1184å¯¹é½ã€ç»´åº¦/æœ‰é™å€¼æ ¸éªŒæ˜¯æœ¬æ¬¡é’ˆå¯¹æ€§å›žå½’ï¼ŒéšåŽv2åŒCPU/æƒé‡/ç­–ç•¥å®Œæ•´é‡è·‘ã€‚æ²¡æœ‰è¡¥é€ ç‰¹å¾ã€æ–°GPUæˆ–æ–°ROIæ¡£æ¡ˆï¼Œå¤±è´¥/ä¿®å¤å‡ä¿å­˜ã€‚
-
-2026-10-16CPU Compactæ”¯æŒè¯Šæ–­v2 session34284 exit0ï¼šå…¨éƒ¨48åˆæ³•fitå¸§1184ç‰©ç†å€™é€‰ä¸Žå·²æœ‰çœŸå®žROIç²¾ç¡®å¯¹åº”ï¼ŒåŽŸgated.5/3s/group16/shortlist32ã€å…±äº«Compactå›ºå®šæƒé‡/CPUFP32è‡ªèº«åŽ†å²ï¼Œæ— GTçŠ¶æ€çº æ­£ã€‚å®žé™…728existing=620knownä¸€è‡´+102å†²çª+2unknown birth+4unmatchedï¼›82NEW+374æ— æœ€ç»ˆIDå®ˆæ’1184ã€‚æŒ‰åŽŸvisibility>=.6æ–°é—®é¢˜å¯ç›‘ç£377yes/345noï¼Œ6unknownä¸é€ è´Ÿç±»ï¼›å¯¹æ¯”åŽŸFullç»„ä»¶29yes/584noè¯´æ˜Žå¯è¡¥æ­£ä¾‹æ”¯æŒï¼Œä½†ä¸åŒactorå†…ç”ŸçŠ¶æ€ä¸æ˜¯åŒäº‹ä»¶å› æžœæ”¹å–„æˆ–held-outç²¾åº¦ã€‚ç‹¬ç«‹é€å¸§é‡ç®—å…¨éƒ¨IoUåŒ¹é…/birth/eligibility/targetsä¸Ževentsè¾“å‡ºæ¡†æ ‡ç­¾ï¼Œæœ‰é™æ¦‚çŽ‡ã€countså…¨å¤çŽ°ï¼Œvalidation.jsonå®Œæˆã€‚2.33MBè¯Šæ–­åŽŸå§‹trace/æ ‡ç­¾+æ±‡æ€»ä¿ç•™ï¼Œæ–°å¢ž16MiB reserveæ€»26460541709<26843545600ã€‚ä¿ç•™è¯¥CPUè¯æ®ï¼Œä¸‹ä¸€æ­¥è€ƒè™‘æ˜Žç¡®è·¨actor final-IDç»„ä»¶ä¸ŽåŽŸFullç¡¬è´Ÿä¾‹å…±åŒé‡‡æ ·ï¼Œå°šæœªå¯¼å‡º/è®­ç»ƒï¼›ç‰©ç†å¸§è§„æ¨¡ä»ä»…48ã€ä¸æ”¹å˜å½“å‰ä¸¤è‡‚è®­ç»ƒå’ŒåŽŸæµ‹è¯„é˜Ÿåˆ—ã€‚
-
-2026-10-16ä¸‹ä¸€æ‰§è¡Œè®¡åˆ’ï¼šå®žé™…Compact CPUfit48è¯Šæ–­å·²è¯æ˜Ž377yes/345noæ”¯æŒã€‚æž„é€ æ˜Žç¡®cross-actor final-IDç»„ä»¶722knownè¡Œï¼Œä¿ç•™å…¨éƒ¨1184å€™é€‰registry/728existingè¾“å…¥å«6unknownæ— targetï¼›åŒåŽŸfinal-ID question builderï¼Œè¾“å…¥æ˜¯CompactçœŸå®žpre-writeåŽ†å²ç»Full v3 builderå‘ˆçŽ°ï¼Œä¸ç§°Fullè‡ªèº«actorã€‚ä¸è¯»æ–°GTï¼Œä»…å¼•ç”¨å·²ç‹¬ç«‹æ ¸éªŒå¤–éƒ¨targetsï¼›åŒCPU2threads/å›ºå®šæƒé‡/åŽŸå€™é€‰ROI/ç­–ç•¥å®Œæ•´å†æ»šåŠ¨å¹¶é€å¸§ç²¾ç¡®é‡çŽ°å·²ä¿å­˜outputs/stateï¼Œæ‰å¯¼å‡ºã€‚è®°å½•æ¯ä¸ªå®žé™…anchor/long/recentçš„åŽŸå›¾+æ¡†æ¥æºï¼Œç”¨æ–°ç‹¬ç«‹æŒ‰éœ€readeré‡å»ºnativeå€™é€‰/åŽ†å²cropSheetï¼Œæ¯ç»„ä¸ŽåŽŸç”Ÿbuilderåƒç´ å¯¹ç…§ï¼Œé¿å…PNGå’Œfeatureæ¡£æ¡ˆã€‚ç‹¬ç«‹å…¥å£è®°å½•æ–°input IO protocolï¼ŒåŽŸcategory readerå’Œå½“å‰è®­ç»ƒ/æµ‹è¯„å‡ä¸å˜ï¼›å®Œæ•´å®˜æ–¹CPU tokenè§„åˆ’åŽæ‰ç§°è¾“å…¥å¯è®­ç»ƒï¼Œä»0optimizer/GPUã€‚æ–°å¢ž16MiBé¢„ç®—åˆè®¡26477318925<26843545600ï¼Œæœªæ¥é¡»ä¸ŽFullç¡¬è´Ÿä¾‹å¹³è¡¡å¹¶åšå®žé™…SFT/è¿žç»­ä¸‰ä»»åŠ¡æµ‹è¯„ï¼Œä¸æ®æ­¤å®£ç§°æ‰©å¤§ç‰©ç†å¸§æˆ–è”åˆå¤§è®­ç»ƒå®Œæˆã€‚
-
-2026-10-16cross-actor final-IDè¾“å…¥ç»„ä»¶å®žé™…å®Œæˆï¼šCPUåŽŸsession63984 exit0ï¼ŒCompactå…¨éƒ¨48å¸§outputs/stateä¸Žå·²å®Œæˆè¯Šæ–­é€å¸§ç²¾ç¡®ï¼›722knowné—®é¢˜377yes/345noï¼Œ1184candidate registry/728actualexistingè¾“å…¥å«6unknownæ— targetã€‚80group/155nativeå€™é€‰å’ŒåŽ†å²sheetåƒç´ ç²¾ç¡®ï¼Œ2ä¸ª31/32åŽ†å²å®žé™…processorå…¨éƒ¨tensors exactï¼›ç‹¬ç«‹60712 exit0é‡å»ºå…¨éƒ¨722question/target/alias/order/å½“å‰è¿‡åŽ»crop provenanceï¼Œ4ä¸ªåŽŸordinary/category passthroughçœŸå®žåƒç´ ä¸å˜ã€‚æ–°å¢žç‹¬ç«‹tracking recipe readerä»¥åŽŸå›¾+çœŸå®žcropæ¥æºæŒ‰éœ€é‡å»ºï¼Œ8raw/192cropæœ‰é™CPUcacheï¼Œç‹¬ç«‹SFTå…¥å£input_io_protocolæ˜Žç¡®ã€æ—§å…¥å£ä¸Žè¿è¡Œé˜Ÿåˆ—ä¸åŠ¨ï¼›æ— PNG/ROIæ¡£æ¡ˆã€‚å…¨é‡CPU plan722/0drop/max26614/14664308tokensï¼Œactual plan_epoch2.535831sã€world1ï¼›181ä»…å‡æƒ³epochä¸æ˜¯è®­ç»ƒã€‚gzip3482066bytesï¼ŒåŽŸå§‹è¯­æ–™/registryä¿ç•™serverï¼Œgenerator/plan/receiptå¯é‡çŽ°ï¼›æ€»reserve26477318925<26843545600ã€‚ä¿ç•™ä¸ºæœªæ¥ä¸ŽFullç¡¬è´Ÿä¾‹å¹³è¡¡çš„æ˜Žç¡®è·¨actorç»„ä»¶ï¼Œä¸èƒ½ç§°æ‰©å¤§ç‰©ç†å¸§/Full actor/å®žé™…SFTæˆ–ç²¾åº¦æå‡ã€‚
-
-2026-10-16åŽŸGPU5è‡ªç„¶MOT20 freshå­å•å…ƒå®Œæˆå¹¶è½¬CPU8controlsï¼šå…¨éƒ¨1657å¸§(1659..3315)/235232åŽŸç”Ÿå€™é€‰ï¼Œ117åŽŸparseræ‹’ç»æŒ‰ç™»è®°ç©ºå¸§ä¿ç•™ï¼›å®˜æ–¹TrackEval HOTA 7.334696% / IDF1 5.959845%/IDSW1933/FP417/FN288297ã€‚ç‹¬ç«‹81592 exit0é€è¡Œé‡å»º31185predictionsï¼Œframe/image/event/å®˜æ–¹è®°å½•å®ˆæ’ï¼›1657FP32npzå®žé™…archive2311933077bytes<3GiBï¼ŒåŽŸownerå·²é€å¸§archive/è§†é¢‘decode1657æ ¸éªŒã€‚çœŸå®žnativeå…¨pipeline27000.258ç§’/.0613698FPSï¼Œå«DLM/ROI/IO/archive/çŠ¶æ€/ç”»å›¾/ç¼–ç å®Œæ•´ç»“æŸï¼Œä¸å«é¢„åŠ è½½æœåŠ¡å¯åŠ¨ï¼›5ç§’é‡‡æ ·ownedGPU5å³°22812MiBä¸ºçž¬æ—¶å³°ä¸‹ç•Œã€‚posthocå€™é€‰ç‰©ç†GT recall219060/319062=.686575ï¼›åŠ¨ä½œNO_MATCH185585ï¼ŒåŒ¹é…GTä¸­169106ä¸ç¬¦æ—¢å®šmissing-optionè§„åˆ™ï¼Œprecision.0271648ï¼›158687æ˜¯æ— å­˜æ´»æ­£ç¡®birthé”šç‚¹è€Œé¢„æµ‹NO_MATCHï¼Œ194026æ­¤ç±»è§‚å¯Ÿä»…212NEWï¼Œæç¤ºä¸¥é‡NEW/NO_MATCHåŠåˆå§‹åŒ–å­¦ä¹ å¤±è´¥ï¼Œé—¨æŽ§ä¿®å¤ä¸èƒ½å•ç‹¬è§£å†³ï¼Œä¸æ®éªŒè¯é›†æ”¹é˜ˆå€¼ã€‚132ä¸ª3..30sè¿”å›žä¸­20known eligibleï¼Œ3ä»å­˜æ´»/0æ¢å¤ï¼›112unknownå•ç‹¬æŽ’é™¤ä¸é€ è´Ÿç±»ã€‚ä¿ç•™ä½Žåˆ†ï¼ŒåŽŸ8CPUè®°å¿†å¯¹ç…§ç»§ç»­ï¼Œæœªæ¥fitç›‘ç£åº”è¡¥æ›´å¹¿çœŸå®žNEW/NO_MATCHåœºæ™¯ã€‚å½“å‰åˆ·æ–°åŽ†å²è®­ç»ƒåŽŸ21963å·²50/600ï¼Œå®Œæ•´FP32/Adam/RNG cursor50/200ä¿å­˜ã€loss/gradæœ‰é™ï¼›æ‰€æœ‰GPU/ç§å­/metric/scorer/åŽŸé˜Ÿåˆ—ä¸å˜ï¼Œæ™®é€šä¸‰ä»»åŠ¡æ°´å¹³ä»æœªè¾¾ã€‚
-
-2026-10-16ç ”ç©¶è®¡åˆ’ï¼šMOT20å®žé™…NO_MATCHæŠ‘åˆ¶ä¸¥é‡ï¼Œå…ˆè¯»åŽŸ536groupæœ€ç»ˆè®­ç»ƒpackå‘çŽ°MOT eligible2204å€™é€‰ä¸­69NO_MATCHï¼ˆ69æ¡å‡withholdingå¢žå¼ºæ¥æºï¼‰ã€1704existing/229NEW/202IGNOREï¼Œä¸èƒ½æŠŠeligibleæ¯”ä¾‹å†’å……æœªä¿å­˜çš„å®žé™…æŠ½æ ·æ›å…‰ã€‚ä¸‹ä¸€CPUè¯Šæ–­å›ºå®šå·²è®­ç»ƒcheckpointï¼Œè®¡ç®—å…¨éƒ¨536åŽŸè®­ç»ƒè¾“å…¥ä¸Šçš„argmax confusion/CEï¼ŒæŒ‰åŽŸhistory_geoå››æ ‡é‡é‡å»ºå·²å®Œæˆ1657å¸§å®žé™…pre-writeè¾“å…¥èŒƒå›´ï¼Œç»ˆæ€age/lost/reliable/confä¸Žä¿å­˜binarymemoryæ ¸å¯¹ï¼Œå®šä½æ—¶é—´é•¿åº¦ç­‰åˆ†å¸ƒå·®å¼‚ã€‚ä¸æ”¹è¾“å…¥/æŽ¨ç†/é˜ˆå€¼/labels/å½“å‰GPUé˜Ÿåˆ—ï¼Œä¸æ®èŒƒå›´ç›´æŽ¥å½’å› æˆ–å®£ç§°æ€§èƒ½ä¿®å¤ï¼›ä»…8MiBå°è¯æ®reserveï¼Œæ€»26485707533<26843545600ã€‚åŽŸè‡ªç„¶CPU referenceå·²å®ŒæˆHOTA7.431603%/IDF1 6.147357%ï¼Œä¸åŒäºŽfreshGPU HOTA7.334696%/IDF1 5.959845%ï¼Œéœ€æŒ‰åŒCPU referenceæ¯”è¾ƒåŽç»­CPUå˜ä½“ï¼Œä¸å·æ¢åŸºçº¿æˆ–ç§°CPU/GPUé—­çŽ¯ç²¾ç¡®ç­‰ä»·ï¼›å·®å¼‚åŽŸå› æœªéš”ç¦»ã€‚
-
-2026-10-16å®žé™…æ—¶é—´åŸŸå®¡è®¡52639 exit0ï¼šåŽŸeligible MOTåŽ†å²å¹´é¾„å…¨éƒ¨1/100=.01ï¼Œconfidence .991545.. .999416ï¼›è”åˆæ‰€æœ‰ä»»åŠ¡å¹´é¾„æœ€å¤§7æ¬¡ã€‚å®Œæ•´MOT20æºé‡å»º15391å€™é€‰group/410796historyè¡Œï¼Œ95.752%å¹´é¾„é«˜äºŽæœ€ç»ˆé˜¶æ®µå…¨éƒ¨eligibleä¸Šç•Œï¼Œå¹´é¾„max909/ä¸­ä½121ã€confidenceä¸­ä½.429819ï¼Œ20.551%è·å¯é å†™å…¥æ—¶é—´è¶…eligibleæœ€å¤§ï¼›final survivingæ‰€æœ‰age/lost/reliable/timestamp/confä¸Žä¿å­˜äºŒè¿›åˆ¶memoryé€å€¼å®Œå…¨ç›¸ç­‰ã€‚å†»ç»“åŽŸ536è®­ç»ƒinputä¸ŠMOT exact ID/action accuracy.698276ï¼Œexisting->NO_MATCH380ä¸ŽNEW->NO_MATCH71ï¼ˆä»…fit probeéžæ³›åŒ–ï¼‰ã€‚æ–°ç ”ç©¶è®¡åˆ’ï¼šå›ºå®šå½“å‰å…±äº«Compact checkpointåšä¸¤ç»„CPU4å„1200æ­¥/æ¯ä»»åŠ¡400æ­¥ç»§ç»­è®­ç»ƒï¼Œoldç‰©ç†80 MOT groupså¯¹çœŸå®žCompactè‡ªèº«80groupsï¼Œå…¶ä½™RMO325/OV62å…¨åŒã€‚åŒæ–¹æ˜Žç¡®åŽ»é™¤69ä¸ªderived-withholdingå¢žå¼ºï¼ˆå…¨éƒ¨1184çœŸå®žå€™é€‰/48å¸§ä¿ç•™ï¼‰å’ŒMOTæ•™å¸ˆè’¸é¦0.2é¡¹ï¼Œæ¯”è¾ƒçœŸå®žåŽ†å²åˆ·æ–°æ•´ä½“æ•ˆåº”ï¼Œä¸èƒ½å•å½’å› å¹´é¾„æˆ–confidenceã€‚æ–°actoræ•°æ®ç›´æŽ¥æ•èŽ·åŽŸCompactå‰å‘è¾“å…¥å¼ é‡ï¼ŒGTä»…å¤–éƒ¨targetæŒ‰åŽŸè§„åˆ™ï¼Œè¿žç»­48frameè¾“å‡ºéœ€ç²¾ç¡®é‡çŽ°æ­¤å‰CPUè¯Šæ–­ï¼›ä¸é€ çŠ¶æ€ã€ä¸æ‰©å¤§ç‰©ç†å¸§ã€‚ç‹¬ç«‹per-task samplerä½¿æ¯ä¸€æ­¥ä¾‹IDå’Œè¯­ä¹‰æ›å…‰é…å¯¹ï¼Œç›¸åŒinit/lr/seed/æ¢¯åº¦/å¤´/å‚æ•°æ•°ï¼Œlength/FLOPså¯ä¸åŒã€‚é¢„ç™»è®°final1200åŒä¸€checkpointå®Œæ•´5scopesï¼ˆDT1203/RMO800x2/rawTAO40/æ–°MOT201657ï¼‰ï¼Œå¤ç”¨å·²å®Œæˆä¸¥æ ¼åŒCPUåŸºçº¿ï¼ŒåŽŸofficial scorerã€é˜ˆå€¼/æ‹’ç»å¸§å…¨ä¿ç•™ã€‚æ–°å¢žä¸¤ä»½packæ€»256MiBä¸Šé™ï¼Œåˆè®¡26754142989<26843545600ï¼Œé›¶æ–°GPU/DLM/ROIï¼Œä¸æ”¹å½“å‰GPU4/5/6/7åŽŸå®žéªŒï¼›å®Œæ•´æ™®é€šæ°´å¹³ç›®æ ‡ç»§ç»­ã€‚
-
-2026-10-16åŽŸGroundä¹é¡¹å®ŒæˆåŠGPU7æŽ¥æ£’ï¼šåŽŸnative unchanged summaryå…¨éƒ¨9tasks/91124åŽŸå§‹=effective/provider-filter0ï¼Œé€task raw results/metrics/countså®Œå…¨å¯¹åº”ï¼Œæ³¨å†ŒåŽŸ8101 clientså…¨éƒ¨exitï¼Œowned service group1345024 goneï¼›parentless runnerå®žé™…exitcodeæœªçŸ¥ä¿æŒæœªçŸ¥ï¼Œå¤–å±‚reattachä»ç­‰adapted200 GPU6ã€‚ç”Ÿæˆoriginal_completion_validationä¸Žoriginal_gpu7_releaseï¼ŒGPU7å®žæµ‹free70229MiBï¼ŒæœªåŠ¨ä»»ä½•å…¶å®ƒownerã€‚å·²å…³é—­ä¸å¯å†å†™çš„åŽŸMOT20 packedarchive cap3GiBåˆ°å®žé™…2311933077bytesã€å®Œæˆçš„ä¸¤ä»½Compact packs cap256MiBåˆ°å®žé™…223700168bytesï¼Œæ‰€æœ‰æ–‡ä»¶åŽŸæ ·ä¿ç•™ã€ä»…é‡Šæ”¾æœªä½¿ç”¨é¢„ç•™ï¼›ä¿å®ˆæ€»ä»Ž26754142989é™ä¸º25800115306ã€‚ä¸‹ä¸€çœŸå®žæ•°æ®é‡‡é›†è®¡åˆ’ï¼šGPU7åŽŸGround+ROIã€å•å®¢æˆ·ç«¯å›ºå®šæ—¢æœ‰CompactCPU4 actorï¼Œ43ä¸ªå†»ç»“MOT trainè§†é¢‘ä¸­ç‚¹è¿žç»­ç‰‡æ®µï¼Œå…±1056çœŸå®žå¸§ï¼ˆMOT17 7x32/Dance32x16/MOT20ä¸¤æ®µ32+ä¸¤æ®µ128ï¼‰ï¼Œä¸è¯»GTé€‰å¸§/ä¸çº æ­£actorï¼Œæ‰€æœ‰ç©º/æ‹’ç»/å€™é€‰ä¿ç•™ã€‚æŒ‰clip exactFP32 packed ROIæ€»ä¸Šé™768MiBã€åŽç»­grouprequest/mixture refså„64MiBé¢„ç•™ï¼Œå…¨å±€26739639402<26843545600ï¼›ä¸é‡å¯U2å…¨ç¼“å­˜ã€ä¸ä¸‹è½½æ–°æ•°æ®ã€ä¸å¯åŠ¨æœªéªŒè¯Oneè®­ç»ƒã€‚å•é˜»å¡žowneræŽ¥æ£’å·²å®ŒæˆåŽŸGPU7æœåŠ¡ï¼ŒåŽç»­æ›´å¹¿ç‰©ç†æ”¯æŒä¸Žæ—¢æœ‰Base175/RMO4350ç”¨äºŽå…±äº«SFTï¼Œä¸èƒ½æŠŠé‡‡é›†/é¢„ç•™ç§°å®žé™…å¤§è§„æ¨¡è”åˆè®­ç»ƒã€‚
-
-åŽŸGPU7æ‰©å±•æºé¦–æ¬¡CPU preflightåœ¨å¯åŠ¨ä»»ä½•æ¨¡åž‹/æœåŠ¡å‰exit1ï¼šç›´æŽ¥éåŽ†äº†åè®®ä¸­çš„held-out-onlyåºåˆ—ï¼Œå…¶train_frames=[]ï¼Œä¸å±žäºŽåŽŸ43ä¸ªTRAINvideoè®¡åˆ’ï¼Œè§¦å‘lengthæ–­è¨€ï¼›å·²å†™å°‘é‡manifestå’Œownerå¤±è´¥è®°å½•åŽŸæ ·ä¿ç•™v1ã€‚æœ€å°ä¿®å¤æŒ‰å†»ç»“train_frameséžç©ºé€‰æ‹©è®­ç»ƒåºåˆ—ï¼Œå®Œå…¨ä¸æ”¹å˜43è§†é¢‘/1056è®­ç»ƒå¸§/é¢„ç®—/GTè¾¹ç•Œï¼Œä¸é—æ¼ä»»ä½•è®¡åˆ’è®­ç»ƒæ ·æœ¬ã€‚v2è¾“å‡ºæ–°ç›®å½•ï¼Œé€ä¸€å…¨éƒ¨imageå­˜åœ¨å’Œ43/1056è®¡æ•°é€šè¿‡åŽæ‰å‡†å¯åŠ¨GPU7æœåŠ¡ï¼›ä¿ç•™åŽŸæ³¨å†Œæ–‡ä»¶æ¥æºã€‚
-
-GPU7é‡‡é›†v2åŽŸé˜»å¡ž75766å®žé™…exit1ï¼šé¦–ä¸ªrun_videoè¯»å–manifestæ—¶KeyError vocabularyï¼Œ0frame/0æ–°å¢žå€™é€‰ï¼›collector finallyå·²åœæ­¢å…¶ä¸¤ä¸ªæ‰€å±žæœåŠ¡ç»„ï¼Œmembersé€ç»„ç¡®è®¤ä¸ºç©ºï¼Œå¤±è´¥manifest/log/owneråŠcleanup receiptåŽŸæ ·ä¿ç•™ã€‚æœ€å°ä¿®å¤manifestæ˜¾å¼vocabulary=[person]/expression=Noneï¼ŒæŒ‰æ—¢æœ‰MOTå…¥å£åˆåŒè¡¥é½ï¼Œ43trainè§†é¢‘/1056framesã€å€™é€‰/ç§å­/decoder/é¢„ç®—ä¸å˜ï¼›v3ä½¿ç”¨æ–°ç›®å½•å¹¶é‡æ–°å®Œæ•´é¢„æ£€åŽå¯åŠ¨ï¼Œæœªé‡è·‘ä»»ä½•å·²æœ‰è®­ç»ƒ/æµ‹è¯„ã€‚Compactè®­ç»ƒå®Œæˆæ ¡éªŒ56311å•ç‹¬exit1çš„ç¬¬ä¸€å¤„å®žé™…æ–­è¨€æ˜¯Torch sampler int keysç›´æŽ¥æ¯”è¾ƒJSON str keysï¼›ç»47784å®žé™…è¯»å–å½’ä¸€é”®åŽå€¼å®Œå…¨ç›¸ç­‰ï¼ŒåŽŸå§‹å¤±è´¥è®°å½•å¦å­˜ã€‚å¦å®žæµ‹åŽŸç”ŸAdamæŒ‰æ¡ä»¶åˆ†æ”¯å‚æ•°è®¡æ­¥profileä¸º56å‚æ•°1200/6å‚æ•°1181/4å‚æ•°1067ï¼Œä¸¤ç»„å®Œå…¨ç›¸åŒï¼Œä¸èƒ½è¦æ±‚æœªæ”¶åˆ°æ¢¯åº¦çš„å¤´ä¹Ÿç­‰äºŽglobal1200ï¼›æ ¡éªŒè®°å½•çœŸå®žè®¡æ­¥ã€ä¸æ”¹optimizerã€‚è®­ç»ƒä¸¤ç»„å‡å·²æ­£å¸¸å®Œæˆï¼Œsaved model/stateã€æ¯æ­¥samplerä¸Žå…¨éƒ¨RNGæ­£ç¡®ï¼Œæ ¡éªŒä¿®æ­£ä¸æ”¹å˜ä»»ä½•è®­ç»ƒæ•°å­¦ã€‚
-
-2026-10-16Compactä¸¤ç»„çœŸæ­£ç»§ç»­è®­ç»ƒå®Œæˆå¹¶æ ¡éªŒï¼š70970 ownerä¸¤ç»„å„1200/æ¯ä»»åŠ¡400ï¼Œé€æ­¥sample IDså®Œå…¨é…å¯¹ï¼›60698éªŒè¯saved finalæ¨¡åž‹ç­‰äºŽcheckpointã€æœ‰é™ã€å®Œæ•´é‡‡æ ·RNG/protocolï¼ŒåŽŸç”ŸAdam profile56x1200/6x1181/4x1067ç›¸åŒã€ä¸‰ä»»åŠ¡reloadå·®0ã€‚è®­ç»ƒloop25.313669/25.500670sï¼ˆ1.146511Må°æ¨¡åž‹ï¼Œä¸ç§°foundationè®­ç»ƒï¼‰ã€‚æ•°æ®ä¸¤packå®žé™…223700168bytesï¼Œrefreshedç›‘ç£941existing/126NEW/104IGNORE/13NO_MATCHï¼ŒçœŸå®žæ–°history ageæœ€é«˜15/confä¸­ä½.669ï¼›ä¸¤ç»„å…±åŒåŽ»69withholdaug/ç¦.2teacherlossï¼Œæ¯”è¾ƒç»¼åˆåŽ†å²åˆ·æ–°éžå•scalarå› æžœã€‚åŽŸownerå·²éªŒè¯11/15ï¼šDT HOTA26.3157->old9.6125/ref12.2511æ˜Žæ˜¾é€€åŒ–ï¼ŒRMOsingle6.0247->7.6779/10.0489ï¼Œmulti19.8019->20.6855/22.0629ï¼ŒTAOold14.517->10.426ï¼›TAOrefåŠMOT20ä¸‰å•å…ƒä»å¾…ï¼Œä¸åšæ¨¡åž‹æ™‹å‡/æŒ‰ä»»åŠ¡æŒ‘æƒé‡ã€‚GPU7é‡‡é›†v3åŽŸ84427å·²å®žé™…å®Œæˆé¦–ä¸ªMOT17-02 32å¸§/992å€™é€‰/9818682 exactFP32bytesï¼Œæ‰€æœ‰43/1056 manifestå’Œvocabulary/GTfreeçœŸå®žå…¥å£æ ¡éªŒregistrationé€šè¿‡ï¼Œç»§ç»­åŽç»­clipsï¼›ä¸æ˜¯æŠŠå‡†å¤‡å½“å·²è®­ç»ƒã€‚åŽŸFullGPU4å·²125/600 finiteï¼Œæ—¢æœ‰æ‰€æœ‰é˜Ÿåˆ—æŒç»­ã€‚
-
-2026-10-16æ‰©å±•sourceè½¬çœŸå®žSFTè®¡åˆ’ï¼šåŽŸGPU7 sourceä»å•ä¸€84427è¿è¡Œï¼›æ–°å¢žç‹¬ç«‹CPU watcheråªè¯»å–collectorå£°æ˜Žå®Œæˆçš„ä¸å¯å˜clipï¼Œä½¿ç”¨åŒå·²å›ºå®šCompact/CPU4ä¸ŽexactF32å½’æ¡£é‡æ–°è¿žç»­æ»šåŠ¨ï¼Œå…¨éƒ¨outputs/stateå¿…é¡»é€å¸§ç­‰äºŽçœŸå®žæºå†æŽ¥å—ã€‚ç”¨ç›¸åŒFull v3 builderæŠ•å½±å…¶pre-writeè‡ªèº«åŽ†å²ï¼›æŒ‰åŽŸåˆæ³•GT IoU/birthè§„åˆ™ç”Ÿæˆidentity/lifecycle/reliability/è§‚å¯ŸQ3ï¼ŒåŠ ç‹¬ç«‹finalID Noulï¼ˆunknownæ— targetä¸”å…¨éƒ¨assignedä»åœ¨inputï¼‰ã€‚æ–°groupref IOåªåœ¨ç‹¬ç«‹SFTå…¥å£å®‰è£…ï¼Œä¸€ä¸ªç»„å…±äº«state/media/questionsï¼Œé€é—®é¢˜refs targetså¤–ç½®ï¼›ä¸é‡å¤å¤§çŠ¶æ€/ä¸å†™PNG/ROIï¼Œä¸ŽçŽ°æœ‰category/trackingrecipe readerç»„åˆå¹¶è®°å½•æ–°resumeåè®®ã€‚æ¯ä¸ªclipå…¨éƒ¨cropåƒç´ ã€question targetåˆæ³•æ€§åŠå®˜æ–¹å…¨é‡CPU token planå¿…é¡»é€šè¿‡ï¼Œç©º/æ‹’ç»å¸§å…¨éƒ¨ä¿ç•™ï¼Œ64MiBæ—¢æœ‰exporté¢„ç•™å†…ï¼Œæ— æ–°GPUæˆ–optimizerï¼Œä¸å®£ç§°Full actor/æ‰©å¤§è¯­æ–™å·²ç»è®­ç»ƒã€‚å…ˆå®Œæˆå¯è®­ç»ƒè¾“å…¥ï¼Œæ—¢æœ‰Full175/600/Compact5scope/åŽŸnatural8/nativeadapted9ä¿æŒåŽŸé˜Ÿåˆ—ã€‚
-
-æ‰©å±•Fullå¯¼å‡ºCPU92510å·²çœŸå®žå®Œæˆ19clip/416frames/31745rows/allCPUplan0dropï¼Œå‘çŽ°producerå¿«ç…§æ˜¯åœ¨å¯èƒ½è€—æ—¶çš„clipå¯¼å‡ºå‰è¯»å–ï¼Œsourceç»“æŸæ—¶åº”å…ˆé‡è¯»terminal receiptå†åˆ¤æ–­pidå­˜æ´»ã€‚æå‰æœ€å°ä¿®æ­£è¯¥å¹¶å‘äº¤æŽ¥é€»è¾‘ï¼Œå¢žåŠ --resumeæŒ‰éªŒè¯å®ŒæˆclipæŽ¥ç»­ï¼›å®Œæ•´native CPU planè¾“å‡ºé‡å®šå‘æ¯clipæ—¥å¿—ä¿ç•™ï¼Œé¿å…æ¨¡åž‹ä¾§è¢«worst-rowåˆ—è¡¨æ·¹æ²¡ã€‚å·²æŒ‰PID/cwd/script/starttickç²¾ç¡®åœæ­¢ä»…æ­¤CPUexporterï¼Œæ‰€æœ‰å·²éªŒè¯clipåŽŸæ ·å¤ç”¨ï¼Œè‹¥æœ‰åŠå†™attemptä¿ç•™å¦èµ·è¯¥æœªå®Œæˆclipç›®å½•ï¼Œä¸åŠ¨GPU7é‡‡é›†ä¸Žå…¶å®ƒä½œä¸šã€ä¸æ”¹ä»»ä½•é—®é¢˜/GTè§„åˆ™/32768é™åˆ¶/æ ·æœ¬ã€‚åŽŸ92510çš„SIGTERMä¸ºæ˜Žç¡®æ‰§è¡Œä¿®æ­£ï¼Œä¸æ˜¯è§‚å¯Ÿè¶…æ—¶é‡å¯ï¼›æ–°å•é˜»å¡žCPU ownerç»§ç»­å‰©ä½™clipsã€‚
-
-2026-10-16æ–°grouprefç‹¬ç«‹åŽŸç”Ÿè¾“å…¥éªŒè¯72956 exit0ï¼šChoice/Score/final-ID Noulä¸‰ç±»çœŸå®žæœ‰åŽ†å²é—®é¢˜ï¼Œé‡æ–°ä»ŽåŽŸsourceèµ·ç‚¹æŒ‰ä¿å­˜å†³ç­–è¿žç»­æ¢å¤å„è‡ªå‰ç¼€ï¼Œstate/questioné€å­—æ®µã€æ‰€æœ‰native crop pixelså’Œå®žé™…processorå…¨éƒ¨tensor/attentioné•¿åº¦ç²¾ç¡®ä¸€è‡´ï¼›6æ¡æ—§ordinary/category/trackingrecipeè¯»å…¥ä¸å˜ï¼Œç¬¬ä¸€clip5301æ¡å®˜æ–¹CPUplan0dropã€‚é¦–æ¬¡82003éªŒè¯å¤±è´¥æ ¹å› ä¸ºå¤ç”¨forward-only ReplayFramesåŽé‡å¤è¯·æ±‚135ï¼›å¤±è´¥å¦å­˜ã€æ¯caseé‡å»ºreplayå³é€šè¿‡ï¼Œæ— æºæ ·æœ¬/æ ‡ç­¾/æ•°å­¦æ”¹å˜ã€‚æ— æ–°GPUã€æ¨¡åž‹å‰å‘æˆ–optimizerã€‚
-
-2026-10-16åŽŸCompact70970å®žé™…exit0ï¼Œå…¨éƒ¨15/15äº”scopeå®Œæˆï¼›75404ç‹¬ç«‹é€å¸§é‡å»ºå…¨éƒ¨raw prediction textä¸Žofficialæ–‡ä»¶/ç»Ÿä¸€checkpointæ ¸éªŒé€šè¿‡ã€‚MOT20 HOTA before7.4316/old18.5218/ref17.6317ï¼ŒIDF1 before6.1474/old13.9389/ref14.2613ï¼›DTä»26.3157/9.6125/12.2511ï¼ŒRMOTsingle6.0247/7.6779/10.0489ã€multi19.8019/20.6855/22.0629ï¼ŒTAOä»é€€åŒ–ã€‚ä¸æŒ‰ä»»åŠ¡æŒ‘æƒé‡ã€ä¸æŽ¨å¹¿ä¸¤æ–°armï¼Œä¸æŠŠRMOTå’ŒMOT20æå‡è¯´æˆä¸‰ä»»åŠ¡æ™®éæ”¶ç›Šï¼›æ–°ä¸‰å•å…ƒåŽŸå§‹é¢„æµ‹é¢å¤–æ— æŸgzip4,423,714bytesä¾›GitHubå‘å¸ƒï¼ŒæœåŠ¡å™¨æ‰€æœ‰åŽŸæ–‡ä»¶ä¿ç•™ã€‚
-
-ä¸‹ä¸€ç ”ç©¶æ‰§è¡Œè®¡åˆ’ï¼šå›ºå®šæ›´å¹¿43trainvideo/1056å¸§çš„çœŸå®žCompactè‡ªèº«åŽ†å²Full-v3æŠ•å½±ï¼ŒåŠ å…¨éƒ¨4350åˆæ³•RMOTè¡¨è¾¾ï¼ˆä»72ç‰©ç†å¸§ï¼‰ä¸Ž175Baseç±»åˆ«teacher-cropï¼Œç»„è£…24000è¡Œ/ä¸‰ä»»åŠ¡å„8000ã€å•å…±äº«OneJev6000æ›´æ–°ã€‚æ‰€æœ‰MOT1056å¸§è‡³å°‘å‡ºçŽ°ä¸€æ¬¡ï¼›identity4000ã€final-ID2000ã€life1000ã€è§‚å¯ŸQ3/reliabilityå„500ï¼›RMOTè®­ç»ƒæ ‡ç­¾yes/noå„4000ä¸”æ¯è¡¨è¾¾è‡³å°‘ä¸€æ¡ï¼›OV4000æŒ‰175ç±»åˆ†å±‚å¯¹è±¡æˆå¯¹root/leafã€‚ä»…trainç›®æ ‡å†³å®šæŠ½æ ·ï¼Œå°‘æ•°ç±»é‡å¤éœ€æŠ¥å‘Šï¼Œä¸ä½¿ç”¨evalåˆ†æ•°é€‰æ ·ã€‚å®Œæ•´CPUplan0dropå’ŒåŽŸç”Ÿè¾“å…¥ç­‰ä»·å·²è¯åŽï¼ŒGPU7å¿…é¡»ç­‰åŽŸcollectoråŠå…¶æœåŠ¡çœŸæ­£é€€å‡ºæ‰æŽ¥æ£’ï¼›ä»Žå›ºå®šnative600ç²¾ç¡®FP32 mastersæ–°phaseï¼ŒåŽŸTorchå‚è€ƒbackend/loss/seed/lrã€å†»ç»“visionä¸å˜ï¼Œä¸ä½¿ç”¨å·²æ‹’ç»çš„FLAæ›¿ä»£ã€‚6000æ­¥æ˜¯è®¡åˆ’å°šæœªæ‰§è¡Œï¼Œä¸ç§°Ground+Oneç«¯åˆ°ç«¯æ¢¯åº¦ã€‚æœ€ç»ˆåŒä¸€checkpointæŒ‰å›ºå®šå››scopeåšbefore/default/final-IDå¯¹ç…§ï¼Œä¸æŒ‰ä»»åŠ¡é€‰æƒé‡æˆ–æ›´æ”¹thresholdã€‚åŽŸ600å¯¹ç…§ä¸Žè‡ªç„¶/ä¿ç•™é˜Ÿåˆ—ä¸åŠ¨ã€‚
-
-2026-10-16æ–°å…±äº«6000 ownerå®žé™…å¯åŠ¨session36231ï¼Œå½“å‰ä»…CPU pidfdç­‰åŽŸgroup exporter/source collectorï¼Œ0æ–°optimizer/GPUï¼›æŽ¥æ£’éœ€43/1056å…¨å®Œæˆä¸”åŽŸownedæœåŠ¡ç»„æ¶ˆå¤±ã€‚æ–°phaseæ¯500æ­¥æ¨¡åž‹ä¸Žå®Œæ•´FP32/Adam/RNGç»­è®­çŠ¶æ€ä¿å­˜ï¼Œé¢„ç•™40GiBæ£€æŸ¥ç‚¹ç©ºé—´ï¼›ä¸åˆ é™¤çŽ°æœ‰checkpointsã€‚æœ€ç»ˆCompactä¸‰æ–°å•å…ƒé€å€™é€‰eventsæ•°ç™¾ä¸‡è¡Œä¿ç•™æœåŠ¡å™¨ï¼ŒGitHubä»…å‘å¸ƒèšåˆè¯Šæ–­ã€officialåˆ†æ•°å’Œæ— æŸåŽ‹ç¼©å…¨éƒ¨rawé¢„æµ‹ï¼Œé¿å…è¯¯ä¼ å·¨å¤§é‡å¤äº‹ä»¶JSONã€‚
-
-2026-10-16å…±äº«6000è¯¾ç¨‹æ‰§è¡Œå‰å®¡é˜…å‘çŽ°ï¼šMOT mandatoryæ¯å¸§ä¸€æ¡åŠ å…¥åŽï¼Œbalancedè¡¥è¶³æ± æœªæŽ’é™¤å·²é€‰IDï¼Œå¯èƒ½åœ¨åŒæ ‡ç­¾å…¶ä½™é—®é¢˜æœªç”¨å®Œå‰é‡å¤ï¼Œè¿èƒŒå·²ç™»è®°ä»…æ± è€—å°½åŽé‡å¤çš„è§„åˆ™ã€‚æœ€å°ä¿®æ­£æ˜¯æ¯æ ‡ç­¾å…ˆéåŽ†æœªé€‰IDã€è€—å°½åŽå†å¾ªçŽ¯å…¨æ± ï¼Œseed/ç›®æ ‡/6000steps/å„familyé…é¢å‡ä¸å˜ï¼›æ·»åŠ å®žé™…æœ€ç»ˆMOTå¸§é›†åˆä¸Žå®Œæ•´1056æºå¸§ç›¸ç­‰æ£€æŸ¥ï¼ŒæŠ¥å‘ŠèšåˆEXISTINGè®¡æ•°åŠç”Ÿæˆæ—¶çœŸå®žcommitã€‚åŽŸowner36231ä»ä»…ç­‰åŽŸsourceï¼Œæœªç”Ÿæˆè¯¾ç¨‹/è®­ç»ƒï¼Œæ•…ä¸æ”¹ä»»ä½•å·²æœ‰ä¼˜åŒ–è½¨è¿¹æˆ–ç»“æžœï¼›åŽç»­å…¨é‡CPUè®¡åˆ’ä»å¿…é¡»0dropã€‚
-
-å®žé™…41clipé‡‡æ ·å›žå½’å‘çŽ°ç¬¬äºŒä¸ªå®žè´¨é—®é¢˜ï¼šåŽŸ800ç‰©ç†å¸§ä¸­identity/presenceä»…è¦†ç›–772ï¼Œ28ç©ºå€™é€‰ä½†ä»æœ‰åŽ†å²çš„native builderåªç”Ÿæˆlifeé—®é¢˜ï¼›åŽŸè¯¾ç¨‹assert1056ä¼šæå‰å¤±è´¥ï¼Œä¸èƒ½æ®772eligibleå¸§å®£ç§°å…¨800è¦†ç›–ã€‚ä¿ç•™ç¬¬ä¸€å›žå½’receiptå¹¶æ ‡æ˜ŽèŒƒå›´ã€‚æœ€å°ä¿®æ­£æ˜¯æ¯ç‰©ç†å¸§ä¼˜å…ˆåŽŸidentity/presenceï¼Œå¦åˆ™å¿…é€‰åŽŸlifeé—®é¢˜ï¼›è¿™äº›lifeå¿…é€‰è¡Œè®¡å…¥åŽŸ1000lifeé…é¢ï¼Œ4000identity/presenceåŠå…¶ä½™familyé…é¢ä¸å˜ï¼Œä¸ç¼–é€ æ–°emptyé—®é¢˜ã€ä¸æ”¹æ¨¡åž‹/æ ‡ç­¾/seed/æ­¥æ•°ã€‚é…ç½®æ–‡å­—æ˜Žç¡®nativeé—®é¢˜è¯­ä¹‰ä¾‹å¤–ï¼ŒåŽŸsource/exportæ— ä¿®æ”¹ï¼Œ6000é˜Ÿåˆ—ä»åœ¨ç­‰å¾…ã€‚
-
-ä¸Šè¿°ä¿®æ­£å·²åœ¨çœŸå®žå†»ç»“41clipsçš„å…¨éƒ¨800ç‰©ç†å¸§ä¸Šæ‰§è¡Œselect_motå›žå½’ï¼šå®žé™…é€‰å‡º8000è¡Œ/7020uniqueè¡Œï¼Œ3997identity+3emptyPresenceã€2000final-IDã€1000lifeã€500åŽŸQ3ã€500reliabilityé…é¢ç²¾ç¡®ï¼Œ28ä¸ªlife-onlyå¸§å…¨éƒ¨ä¿ç•™ã€‚å”¯ä¸€å‘ç”Ÿé‡å¤çš„identity/NO_MATCHæ± ç¡®å®žä»…19æ¡ï¼Œé¦–æ¬¡é‡å¤å‰19æ¡å…¨éƒ¨å·²å‡ºçŽ°ï¼›å…±980é‡å¤æ˜Žç¡®å¯è¿½è¸ªï¼ŒæœªæŠŠæ ·æœ¬æ•°å½“uniqueè¦†ç›–ã€‚æ‰€æœ‰åŽŸtarget/refsä¸æ”¹ã€‚å®Œæ•´43clips/1056å¸§æ¥æºä»ç”±åŽŸé˜Ÿåˆ—é‡‡é›†ï¼Œå¿…é¡»å†å…¨24000è¡ŒCPUplanåŽæ‰è®­ç»ƒï¼›æ²¡æœ‰å¢žåŠ æ­¥æ•°æˆ–ä¿®æ”¹lossã€‚
-
-2026-10-16ä¸‹ä¸€æœ€å°å®žè¯å¯¹ç…§ï¼šæ­¤å‰old/refreshedä¸¤ç»„å…±åŒç§»é™¤69withholdingå’Œ.2MOTè’¸é¦ï¼Œä¸èƒ½å°†DT/TAOé€€åŒ–ä»…å½’å› åŽ†å²åˆ·æ–°ã€‚å›ºå®šåŒä¸€beforeå…±äº«Compact checkpointï¼Œç›´æŽ¥å¤ç”¨åŽŸ536group packï¼ˆ149MOTå«69derivedã€325RMOã€62OVï¼‰ä¸ŽåŽŸnative_teacher flagsï¼ŒCPU4æ–°phase1200æ­¥ã€æ¯ä»»åŠ¡400ã€åŽŸlr2e-4/loss/seed0ã€‚ç”¨åŒç‹¬ç«‹task RNGä¸Žå·²å®Œæˆpairä¿æŒRMOT/OVMOTé€æ­¥sample IDsç²¾ç¡®ï¼ŒMOT149vs80æ± å·®å¼‚æ˜Žç¡®ï¼›æ–°Adam/RNGé‡ç½®ä¸Žæ­¤å‰pairä¸€è‡´ï¼ŒéžåŽŸoptimizer trajectory resumeã€‚æœ€ç»ˆå•checkpointè·‘åŒ5scopeä¸ŽåŽŸå®˜æ–¹metricã€é˜ˆå€¼ã€å…¨éƒ¨ç©º/æ‹’ç»å¸§ï¼Œbeforeå¤ç”¨åŒCPUæ¥æºã€‚è¯¥å¯¹ç…§æ£€éªŒç»§ç»­åŽŸrecipeæ˜¯å¦ä¹Ÿé€€åŒ–ï¼›ä¸å°†withholdingä¸Ždistillä¸¤å› ç´ åˆ†ç¦»å½’å› ã€ä¸æŒ‰éªŒè¯åˆ†æ•°è°ƒå‚ã€ä¸åšæ–°cache/GPUæˆ–æ›¿æ¢æ­£å¼æ¨¡åž‹ã€‚å®Œæ•´Full6000/åŽŸé‡‡é›†é˜Ÿåˆ—ä¸å˜ã€‚
-
-åŽŸrecipeå¯¹ç…§ownerå®žé™…å¯åŠ¨session76373ï¼Œå·²å®ŒæˆCPU1200/æ¯ä»»åŠ¡400ï¼›RMOT/OVMOTé€æ­¥sample IDsä¸Žå·²å®Œæˆhistory pairç²¾ç¡®ç›¸ç­‰ï¼Œä¸‰ä»»åŠ¡çœŸå®žreloadå·®0ï¼Œå®Œæ•´FP32/Adam/RNGçŠ¶æ€å¯¹åº”æœ€ç»ˆcheckpointä¸”å…¨éƒ¨æœ‰é™ã€‚åŽŸ536pack/69withholding/native_teacher flagsä¿ç•™ï¼Œæ— æ–°GPU/featureæ–‡ä»¶ã€‚äº”scopeè¿žç»­å®˜æ–¹å¯¹ç…§æ­£åœ¨åŒä¸€åŽŸé˜»å¡žownerä¸­è¿è¡Œï¼Œåˆ†æ•°æœªå®Œæˆä¸å®£ç§°æ”¶ç›Šã€‚
-
-åŽŸrecipeç»­è®­å½“å‰å·²é—­åˆDT/RMOsingle/RMOmulti/TAOå››scopeï¼Œå‡åŒä¸€final1200 checkpointã€‚HOTAåˆ†åˆ«DT22.7949ï¼ˆbefore26.3157ã€åŽ»è’¸é¦/å¢žå¼ºold9.6125ï¼‰ï¼ŒRMOsingle9.6612ï¼ˆbefore6.0247ï¼‰ã€multi23.2670ï¼ˆbefore19.8019ï¼‰ï¼›TAO TETA10.490ï¼ˆbefore14.517ï¼ŒBase12.1679/Novel7.1325ä¸”Novel ClsAä»0ï¼‰ã€‚åŽŸrecipeå»¶é•¿ä¹Ÿä¸èƒ½ç»´æŒæ‰€æœ‰ä»»åŠ¡ï¼ŒDTé€€åŒ–å°äºŽæ”¹recipeä½†TAOä»æ˜Žæ˜¾é€€åŒ–ï¼›ä¸èƒ½ç”±æ­¤å•ç‹¬å½’å› teacheræˆ–withholdingï¼Œä¸æŽ¨å¹¿ä»»ä½•æ–°checkpointã€‚æœ€åŽMOT20ä»åœ¨åŽŸ76373 ownerä¸­è¿è¡Œï¼›ä»…å†»ç»“å·²å®Œæ•´å•å…ƒçš„partial snapshotï¼Œä¸å®£ç§°å…¨éƒ¨äº”scopeå®Œæˆã€‚æ±‡æ€»å·¥å…·æ–°å¢žoriginal_recipeæ¨¡å¼ï¼Œåœ¨å®žé™…owner exit0åŽéªŒè¯å…¨éƒ¨raw prediction textã€åŒcheckpointåŠä¸Žå·²å®Œæˆhistory pairçš„å››è‡‚åˆ†æ•°ã€‚
-
-2026-10-16è®­ç»ƒåŠ é€Ÿç‹¬ç«‹æŽ¢é’ˆè®¡åˆ’ï¼šå·²æœ‰FLAæŽ¨ç†drop-inæ¦‚çŽ‡å·®.021211>.001çš„æ‹’ç»ç»“è®ºåŠé˜ˆå€¼ä¸å˜ã€‚æ–°è¯•éªŒä»…æ¯”è¾ƒnative600åŒä¸€çœŸå®žFP32åˆå§‹åŒ–çš„è®­ç»ƒè®¡ç®—ï¼š5ä¸ªå·²éªŒè¯çœŸå®žMMé—®é¢˜ï¼ˆæœ‰åŽ†å²identity Choice/reliability Score/final-ID Noulï¼ŒåŠ RMOT yeså’Œ175Base leafï¼‰æ¯æ­¥å„1ï¼ŒåŽŸç”Ÿloss/seed0ï¼Œnativeä¸Žæ˜¾å¼FLA chunkå„4æ›´æ–°/20è¡Œï¼›å®žé™…CPUè¾“å…¥/paired indexæŽ’åˆ—ä¸€è‡´ï¼Œç¬¬ä¸€æ¬¡320ä¸ªå®Œæ•´gradé¡»æœ‰é™ï¼Œå‡åŒ€é‡‡æ ·æ¯å‚æ•°æœ€å¤š4096å€¼ç”¨äºŽæ–¹å‘æ¯”è¾ƒå¹¶è®°å½•å®Œæ•´grad normsã€‚äº‹å‰gate sampled cosine>=.99ã€relativeL2<=.1ã€fullnormrelative<=.1ï¼›é€Ÿåº¦ä»¥steps2..4ä¸­ä½æ•°æ¯”>=1.5ä»…ä½œè®­ç»ƒbackendå€™é€‰ï¼Œä¸è¯æ˜ŽæŽ¨ç†ç­‰ä»·æˆ–trackingæ”¶ç›Šï¼Œä¸è‡ªåŠ¨ä¿®æ”¹å·²æœ‰600/6000é˜Ÿåˆ—ã€‚GPU5å¯åŠ¨å®žæµ‹free70274MiBï¼Œç‹¬ç«‹jobéœ€>=40GiBï¼›ä»åªç‰©ç†4/5/6/7ï¼Œä¸åœå…¶å®ƒownerã€‚ä¸¤ä»½å°gradient diagnosticsé¢å¤–32MiBä¿å®ˆreserveä½¿æ€»26773193834<26843545600ï¼›æ— æ–°å›¾åƒ/ROIæ¡£æ¡ˆï¼Œè¾“å‡ºBF16æƒé‡å±žcheckpointä¿ç•™ã€‚
-
-FLAè®­ç»ƒæŽ¢é’ˆv1åŽŸ34386å®žé™…exit1ï¼Œé¦–ä¸ªreferenceå•ä½åœ¨è°ƒç”¨stateful.main(argv)æ—¶TypeErrorï¼šè¯¥å…¥å£æ— ä½ç½®å‚æ•°ã€ä»Žsys.argvè¯»å–ã€‚æœªè¿›å…¥æ¨¡åž‹åŠ è½½/SFTï¼Œ0optimizerï¼ŒåŽŸFullé˜Ÿåˆ—ä¸å—å½±å“ã€‚æœ€å°ä¿®æ­£ä¸ºå†™åŽŸç”ŸCLI argvå†æ— å‚è°ƒç”¨ï¼›ä¿ç•™v1ç›®å½•/log/å¤±è´¥receiptï¼Œv2æ–°ç›®å½•æ‰§è¡ŒåŒä¸€ä¸ªå°šæœªå¼€å§‹çš„referenceå•ä½ï¼Œå…¨éƒ¨20è¡Œ/seed/loss/gradientä¸Žé€Ÿåº¦gateä¸å˜ã€‚
-
-åŽŸrecipe76373å®žé™…exit0ï¼Œå…¨éƒ¨äº”scope/10unitsé—­åˆï¼›79832å®žé™…exit0ï¼Œå…¨éƒ¨raw prediction textã€æ¯å¸§/å€™é€‰è®¡æ•°ã€officialæ–‡ä»¶ä¸ŽåŒcheckpointéªŒè¯é€šè¿‡ï¼Œæ–°äº”å•å…ƒå®Œæ•´é¢„æµ‹æ— æŸgzipå…±654414bytesã€‚å››è‡‚HOTA before/old/ref/originalRecipeï¼šDT26.3157/9.6125/12.2511/22.7949ï¼ŒRMO single6.0247/7.6779/10.0489/9.6612ï¼Œmulti19.8019/20.6855/22.0629/23.2670ï¼ŒMOT20 7.4316/18.5218/17.6317/8.5511ï¼›TAO TETA14.517/10.426/11.997/10.490ã€‚å„ç»­è®­checkpointå­˜åœ¨ä¸åŒé€€åŒ–ï¼Œå‡ä¸æŽ¨å¹¿ï¼›originalRecipe vs oldä¸èƒ½å•ç‹¬åˆ†ç¦»distill/withholdingå› æžœï¼Œä¹Ÿéžå…¨æ•°æ®é›†æ™®é€šæ°´å¹³å®Œæˆã€‚æ›´å¹¿MOT20-03å®žé™…128frame/14784å€™é€‰ï¼ˆ7åŽŸæ‹’ç»ï¼‰79926è¡ŒallCPU0drop/max26742/çœŸå®žCPUplan323.406sï¼›1,718,206,706ä»…å…¨éƒ¨æºè¡Œè§„åˆ’tokenä¸æ˜¯è®­ç»ƒtokenã€‚çœŸå®židentity target NEW3384/existing6724/NO_MATCH2349/IGNORE2327ï¼Œè¡¥ä¸Šå¤§é‡çœŸå®žmissing-shortlistæ”¯æŒï¼›åŽŸ42clipsåˆè®¡928frame/139101è¡Œï¼Œæœ€åŽsourceä»è¿è¡Œï¼Œä¸ç§°1056å·²å…¨å®Œæˆæˆ–å·²è®­ç»ƒã€‚
-
-2026-10-16è®­ç»ƒFLA v2åŽŸ59743å®žé™…exit0ï¼šnativeä¸ŽFLAå„4çœŸå®žæ›´æ–°/20è¡Œï¼ˆä»…5uniqueé—®é¢˜é‡å¤4æ¬¡ï¼Œä¸ç§°å¤§è®­ç»ƒï¼‰ï¼›åŒæºFP32 initå·®0ï¼Œ320å…¨æ¢¯åº¦å‡finiteã€‚å‡åŒ€é‡‡æ ·æ¢¯åº¦cos.99954999/relativeL2 .03000655ï¼Œå®Œæ•´norm72.596613/72.614843 relative.00025112ï¼Œæ»¡è¶³äº‹å‰.99/.1/.1 gateï¼›steps2..4 medianæ¯”6.0483ï¼Œå¾ªçŽ¯å«é¦–æ­¥native691.5s vsFLA218.0sï¼Œç»„ä»¶å¹¶å‘æ¡ä»¶ä¸‹æ³¢åŠ¨å¤§ï¼Œä¸å¤–æŽ¨å›ºå®šæ•´æ¬¡åŠ é€Ÿå€æ•°ã€‚66703å®žé™…exit0ï¼šFLAè®­ç»ƒåŽBF16checkpointåœ¨åŽŸreference MMengineä¸¤æ¬¡çœŸå®žé‡è½½æ¦‚çŽ‡å·®0ã€åŽŸfork checkä¸å˜ï¼›49469ç”Ÿäº§å…¥å£ä¸€æ¬¡5è¡ŒtargetedSFTçœŸå®žexit0ï¼Œé¦–æ­¥loss2.9994280758182867ä¸Žprobeå®Œå…¨ç›¸ç­‰ï¼Œ86576ä»…CPUåè®®æ ¡éªŒç¡®è®¤inputIO/pairedShuffle/æ˜¾å¼training_compute_backendå­—æ®µã€‚æ–°å¢žcheckpointè¾“å‡ºå‚æ•°é»˜è®¤ä¸å˜ï¼Œä¸æ”¹æ—§500ç›®å½•æˆ–ä»»ä½•å½“å‰è®­ç»ƒã€‚è®¡åˆ’åœ¨åŽŸ6000ä»0æ­¥ã€ç­‰å¾…sourceçš„å‰æä¸‹ä»¥æ˜¾å¼v2åŽç«¯æŽ¥æ£’è¯¥æœªå¼€å§‹phaseï¼Œä¿ç•™v1è®¡åˆ’/owneråŠäº¤æŽ¥receiptï¼›æ•°æ®è¯¾ç¨‹/seed/loss/6000steps/.5é˜ˆå€¼/åŽŸnativeæŽ¨ç†/å®˜æ–¹metricså‡ä¸æ”¹ã€‚è‹¥åŽŸ6000å·²å¯åŠ¨æ¨¡åž‹åˆ™ä¸åœæ­¢å®ƒï¼›ä¸å¾—ç”¨é‡‡æ ·æ¢¯åº¦è¿‘ä¼¼å†’å……å®Œæ•´å‘é‡æˆ–æŽ¨ç†ç­‰ä»·ã€‚
-
-6000åŽç«¯äº¤æŽ¥å·²å®žé™…æ‰§è¡Œï¼šæ ¸å¯¹åŽŸ3136429/start47470137ä»ä»…pidfd CPUç­‰å¾…ã€æ— child/è¯¾ç¨‹ç›®å½•/è®­ç»ƒç›®å½•ã€0æ›´æ–°åŽï¼ŒåªSIGTERMè¯¥waiterï¼›åŽŸ36231å®žé™…exit143ã€‚åŽŸcollector84427ã€exporter55994ã€GPU4/5/6æ—¢æœ‰å®žéªŒå‡æœªåœæ­¢ã€‚v1åŽŸè®¡åˆ’ã€pre-handoff ownerçŠ¶æ€ã€intentå’Œå¸¦çœŸå®žé€€å‡ºç çš„handoffå…¨éƒ¨ä¿ç•™ï¼Œæ˜Žç¡®æ–°v2compute protocoléžåŽŸä¼˜åŒ–è½¨è¿¹æ¢å¤ï¼›åŒä¸€å°šæœªå¼€å§‹6000phaseæ”¹ç”¨å·²éªŒè¯FLAè®­ç»ƒï¼Œæ•°æ®/ç§å­/æ­¥éª¤/åŽŸç”ŸæŽ¨ç†åŠå®˜æ–¹è¯„åˆ†ä¸æ”¹ï¼Œæ²¡æœ‰å–æ¶ˆä»»ä½•å·²å¼€å§‹è®­ç»ƒã€‚
-
-2026-10-16åŽŸè‡ªç„¶é˜Ÿåˆ—36847å®žé™…exit0ï¼Œå…¨éƒ¨8memory controlså’Œlocalizationé˜¶æ®µç»“æŸï¼›åŽŸGPU5 Full worker46228è‡ªåŠ¨æŽ¥æ£’beforeTAO native600ï¼Œæ— éœ€æ”¹è°ƒåº¦ã€‚66881å®žé™…exit0ç‹¬ç«‹é‡å»º8x1657frames/235232candidates/117rejectså…¨éƒ¨raw prediction textï¼Œå…¨éƒ¨officialä¸€è‡´ï¼Œ8ä»½åŽŸé¢„æµ‹æ— æŸgzipå…±6958227bytesã€‚CPU HOTA gated3 7.4316/frameOnly7.7886/recent8.3869/EMA7.5374/anchorAlways8.4831/anchorGated30 6.8545/Simple3 33.2021/Simple30 33.1562ï¼›Simple IDF1 29.2386/29.2325ï¼ŒIDSW11289/11266ã€‚ä»…å»¶é•¿TTLæœªæé«˜å…¨å±€HOTAï¼Œä½†>3s candidate-gapåŒbirth IDæ¢å¤ç”±3/133åˆ°5/133ï¼ŒçŸ­gapæ¢å¤ä¸‹é™ï¼›ä¸èƒ½è¯´æ‰€æœ‰è®°å¿†æŒ‡æ ‡éƒ½æ— æ”¶ç›Šï¼Œä¹Ÿä¸æ··åŒæ—¢æœ‰ä¸¥æ ¼3..30sè‡ªç„¶visibility-gapåˆ†æ¯ã€‚Simpleä¸æ˜¯learned/JEVæ¨¡åž‹ï¼Œä¸ç”¨33.2å†’å……ç»Ÿä¸€foundationæ™®é€šæ°´å¹³ã€‚æ—§GPUfresh7.3347ä¸ŽCPU7.4316é—­çŽ¯ä¸åŒï¼Œå§‹ç»ˆä»¥åŒCPU referenceæ¯”è¾ƒCPUå˜ä½“ã€‚
-
-åŽŸcollector84427å®žé™…exit0ï¼š43train clips/1056ç‰©ç†å¸§å…¨éƒ¨å®Œæˆï¼Œæ‰€æœ‰åŽŸç©º/æ‹’ç»å¸§ä¿ç•™ï¼ŒpackedF32 archive474314908bytes<805306368capï¼Œæ‰€å±žGround/ROI finallyå‡åœ¨çœŸå®žexitå‰å…³é—­ã€‚æœ€åŽMOT20-05 groupå¯¼å‡º/å®Œæ•´CPUplanä»åœ¨åŽŸ55994è¿è¡Œï¼Œæœªç§°å…¨è¯­æ–™å¯è®­ç»ƒå·²é—­åˆã€‚å·²å¯åŠ¨æ–°6000è®­ç»ƒowner64133ï¼ˆ3219708/start47863228ï¼‰ï¼Œä»…CPUç­‰å¾…åŽŸexporter/sourceæˆåŠŸï¼Œæ˜¾å¼fla052_training_only/referenceInferenceï¼›å°šæœªå¼€å§‹å¤§phase optimizerã€‚åŽŸ600æ­¥åˆ·æ–°å·²425/600 finiteã€åŽŸFullTAO/é€‚é…Ground9é¡¹é˜Ÿåˆ—ç»§ç»­ã€‚
-
-å…±äº«å¤§phaseå®žé™…å¼€å§‹ï¼šåŽŸexport55994 exit0ï¼Œå…¨éƒ¨43clips/1056frames/252258ç›‘ç£è¡Œçš„çœŸå®žCPUplan0dropä¸”å…¨éƒ¨state/output/pixelsç›¸ç­‰ï¼›64133è‡ªåŠ¨å®Œæˆè¯¾ç¨‹24000è¡Œï¼ˆMTO/RMO/OVå„8000ï¼‰ï¼Œmax27346tokensã€å…¨190139221è®¡åˆ’tokensã€world1/6000updates/0dropï¼Œç„¶åŽåœ¨GPU7åŠ è½½çœŸå®ž752393024è¯­è¨€å‚æ•°ï¼ˆè§†è§‰å†»ç»“ï¼‰ï¼Œnative600 FP32åˆå§‹åŒ–å·®0ã€‚çŽ°å†»ç»“actual75steps/300rowsé¦–æ®µï¼ˆè®°å½•å®žé™…ä»»åŠ¡ä¸Žå›¾åƒ/ç±»åˆ«æ›å…‰ï¼Œä¸æŠŠå…¨è¯¾ç¨‹è¦†ç›–å½“å·²è®­ç»ƒæ›å…‰ï¼‰ï¼›é¦–æ®µloss/gradientæœ‰é™ï¼Œå·²åˆ°LR warmupã€‚è¯¾ç¨‹ç‹¬ç«‹sourceè¡Œ8000/7475/7298ï¼ŒOVå®žé™…3649objects/3227images/175Baseï¼Œä¸æŠŠ4000drawsæˆ–å…¨éƒ¨500sourcevideoså†’å……ç‹¬ç«‹æ›å…‰ï¼›RMO4350è¡¨è¾¾ä»72ç‰©ç†å¸§ã€‚FLAè®­ç»ƒbackendæ˜¾å¼è¿›ç»­è®­protocolï¼Œè¯„åˆ†/inferenceèµ°åŽŸTorchã€‚6000å¹¶æœªå®Œæˆã€ä»æ— æ–°trackingè´¨é‡ç»“è®ºï¼Œ500æ­¥æ‰ç¬¬ä¸€æ¬¡å®Œæ•´FP32/Adam/RNGåŽŸå­ä¿å­˜ï¼›æ—§Fullåˆ·æ–°å·²450å¹¶ç»§ç»­ã€‚
-
-2026-10-16ç ”ç©¶è®¡åˆ’ï¼šå½“å‰æ­£å¼6000æ··åˆSFTå·²å®žé™…725æ­¥/2900è¡Œä¸”500æ­¥å®Œæ•´çŠ¶æ€å·²ä¿å­˜ï¼Œä¿æŒåŽŸè¯¾ç¨‹/seed/loss/åŽŸç”ŸæŽ¨ç†åŠå››scopeç»ˆè¯„ä¸å˜ã€‚ä¸‹ä¸€ç‹¬ç«‹æ•°æ®ç»„ä»¶æ‰©å±•RMOTç‰©ç†æ—¶é—´æ”¯æŒï¼šå›ºå®šæ—¢æœ‰9ä¸ªfitè§†é¢‘ä¸Žæ¯è§†é¢‘åŽŸprimary/counterä¸¤æ¡è¡¨è¾¾ï¼ŒéåŽ†æœ¬åœ°å…¨éƒ¨1814å¸§ï¼ˆ1742å¸§è¶…å‡ºæ—§72ï¼‰ï¼Œæ¯è¡¨è¾¾ç‹¬ç«‹çœŸå®žGround+Compactå› æžœrolloutï¼Œå…±18æ¡è¿žç»­queryè§†é¢‘/3628 query-frameè§‚æµ‹ï¼›ä¸èƒ½æŠŠä¸¤queryç®—3628ç‰©ç†å¸§ã€‚å¸§é€‰æ‹©ä¸è¯»GTã€ä¸æŒ‘å¯è§æ€§/æ­£ä¾‹ï¼›å…¨éƒ¨ç©º/æ‹’ç»ä¿ç•™ï¼ŒGTä»…åŽç»­ç›‘ç£ã€‚å·²åªè¯»å®¡è®¡168ä¸ªæ— labelæ–‡ä»¶å¸§åœ¨ä¸¤è¡¨è¾¾å‡æ— rawç›®æ ‡ã€0ä¸ªunboxed contextï¼›ä¸‹ä¸€æ‰§è¡ŒåŽŸå›ºå®šTempRMOT readeré€frame/queryéªŒè¯ç›’ä¸ŽmembershipæŠ•å½±ã€‚å…ˆå°†å·²å®Œæˆä¸”ä¸å¯å†å†™çš„MOTæº/å¯¼å‡º/è¯¾ç¨‹/FLAæŽ¢é’ˆé¢„ç®—ç”±capå…³é—­åˆ°å®žå ï¼ˆä¸åˆ æ–‡ä»¶ï¼‰ï¼Œå†é¢„ç•™384MiB exactROI+48MiB group+16MiBåŽç»­è¯¾ç¨‹refsï¼›åªCPUå‡†å¤‡å¹¶ç™»è®°å”¯ä¸€é˜»å¡žownerç­‰å¾…åŽŸGPU6 Groundå…¨ä¹é¡¹å…¨éƒ¨å®Œæˆå’Œæ‰€å±žæœåŠ¡ç»„é‡Šæ”¾åŽæŽ¥æ£’ï¼Œä¸å€Ÿç”¨è¿è¡ŒæœåŠ¡ã€ä¸åœæ­¢ä»»ä½•çŽ°æœ‰è®­ç»ƒ/æµ‹è¯„ã€‚å½“å‰å‡†å¤‡/æŽ’é˜Ÿä¸ç§°æ–°é‡‡é›†ã€è”åˆè®­ç»ƒæˆ–æ•ˆæžœæå‡ã€‚
-
-RMOTå…¨fitå‡†å¤‡å·²å®žé™…å®Œæˆï¼šå”¯ä¸€CPU47888 exit0ï¼Œ1814ç‰©ç†å¸§/1742æ–°å¢žã€18ç‹¬ç«‹query scope/3628ä¸Šä¸‹æ–‡ã€‚æ‰§è¡Œå›ºå®šTempRMOTæœªä¿®æ”¹reader3292æ¬¡ï¼Œæ‰€æœ‰box/ID/query maskä¸Žæœ¬åœ°æ ‡ç­¾è§£æžä¸€è‡´ï¼›å¦å¤–336queryä¸Šä¸‹æ–‡å¯¹åº”168ä¸ªåŽŸç¼ºlabelä¸”ä¸¤è¡¨è¾¾å‡æ— ç›®æ ‡çš„ç‰©ç†å¸§ï¼Œå®Œæ•´ç™»è®°ä¿ç•™ã€ä¸é€ labelæ–‡ä»¶ã€ä¸é™¤åŽ»å¸§ã€‚æ— unboxedç›®æ ‡ã€0GPU/æ¨¡åž‹è°ƒç”¨/æ–°è®­ç»ƒã€‚å·²å…³é—­MOTæºROI/å…¨groups/ä¸å†ä¿®æ”¹çš„6000è¯¾ç¨‹/è®­ç»ƒbackendè¯Šæ–­å››ä»½capåˆ°å®žé™…ï¼Œæ–‡ä»¶é›¶åˆ é™¤ï¼Œå…³é—­åŽ26336324458bytesï¼›æ–°å¢ž384+48+16MiBé¢„ç•™åŽ26806086506<26843545600ï¼ˆ37459094ä½™é‡ï¼‰ã€‚åŽŸ6000è¾“å…¥/ä¼˜åŒ–å™¨ä¸åŠ¨ã€‚æ–°collectorä»…ç­‰å¾…åŽŸ1865651/start41803969å®Œæ•´ä¹é¡¹ä¸Ž1450601æœåŠ¡ç»„é‡Šæ”¾ï¼ŒéšåŽæœ€å¤šåŽŸGPU6ä¸€ä¸ªDLM+ROIï¼Œå›ºå®šCPU actorå¯¹ä¸¤è¡¨è¾¾åˆ†åˆ«ä»ŽçœŸå®žè¿žç»­èµ·ç‚¹è¿è¡Œï¼›ä¸å…±ç”¨åŽŸä¿ç•™è¯„æµ‹æœåŠ¡ã€ä¸è¯»å–GTæˆ–æœªæ¥å¸§ã€‚
-
-æ–°RMOT collector19338å·²å®žé™…å¯åŠ¨ä¸”CPU pidfdç­‰å¾…åŽŸGPU6 ownerï¼Œ0æ–°queryå¸§/0æ–°GPUæ¨¡åž‹è°ƒç”¨ï¼Œregistrationå†»ç»“è®°å½•ä¸Žå®žé™…è¿›ç¨‹starttickä¸€è‡´ï¼›åŽŸ52020ä»liveç­‰å¾…åŽŸadapted200ä¹é¡¹ã€‚æ­£å¼6000åŽŸ64133æœ€æ–°å®žé™…800æ­¥/3200è¡Œï¼Œfiniteï¼Œ500æ­¥BF16æ¨¡åž‹åŠ9029140633byteså®Œæ•´FP32/Adam/RNGå·²åŽŸå­ä¿å­˜ï¼›å†»ç»“first800 snapshotï¼Œä¸ç”¨æ•°æ®è¯¾ç¨‹æ€»è¦†ç›–å†’å……å·²æ¶ˆè´¹æ›å…‰ã€‚æ—§Fullåˆ·æ–°åŽŸ21963å·²550/600ï¼ŒåŽŸGPU5 TAOå››scopeé˜Ÿåˆ—ç»§ç»­ï¼Œå…¨éƒ¨ä»»åŠ¡ä»æœªèŽ·å¾—æ™®é€šæ°´å¹³ç¨³å®šç»“è®ºã€‚
-
-2026-10-16ä¸‹ä¸€å®žçŽ°è®¡åˆ’ï¼šåœ¨åŽŸå·²å®ŒæˆMOT exporterçš„å¯å¤ç”¨é€å¸§å¯¼å‡ºå‡½æ•°ä¸­å¢žåŠ æ˜¾å¼RMOT contextï¼ˆé»˜è®¤MOTè·¯å¾„/æ ‡ç­¾ä¸å˜ï¼‰ï¼Œæ–°ç‹¬ç«‹CPU ownerç­‰å¾…18ä¸ªå®žé™…query rolloutï¼ŒæŒ‰å›ºå®šCompactçœŸå®žè¾“å‡ºé€å¸§å¤çŽ°å¹¶ç”ŸæˆFull-v3èº«ä»½/ç”Ÿå‘½å‘¨æœŸ/å¯é æ€§/æœ€ç»ˆIDå†™å…¥åŠåŽŸç”Ÿmembershipé—®é¢˜ã€‚RMOTç‰©ç†GTä¸Žquery maskåˆ†å¼€ï¼šidentityç”¨å®Œæ•´released same-frame boxesçš„ä¸€å¯¹ä¸€IoU>=.5ä¸Žä¸å¯å˜birthé”šç‚¹ï¼›membershipç”¨å€™é€‰å¯¹query GTä»»æ„IoU>=.5ï¼›æ— å¯è§æ€§æ ‡æ³¨ï¼Œå¯é æ€§/å†™å…¥ä½¿ç”¨æ˜Žç¡®IoUè´¨é‡ä»£ç†ï¼ˆ.7ã€åˆ†çº§.5/.7/.85ï¼‰ï¼Œä¸å†’ç§°visibilityã€‚å…¨éƒ¨åŽŸå€™é€‰ã€ç©º/æ‹’ç»å¸§ã€unknown assignedè¾“å…¥ä¿ç•™ï¼Œunknownæ— å¼ºé€ targetã€‚éªŒè¯åªåšçœŸå®žMOT17-02æ•´clipé»˜è®¤è·¯å¾„ä¸ŽåŽŸå¯¼å‡ºç²¾ç¡®å¯¹æ¯”ï¼Œä»¥åŠå·²é‡‡é›†åˆæ³•RMOTå€™é€‰çš„8å¸§CPU replayéªŒè¯æ–°åˆ†æ”¯ï¼Œæ‰€æœ‰æ–°å°fixture/groups/refsåœ¨å·²é¢„ç•™48MiB scope+exporté¢„ç®—å†…ã€‚æ–°18è§†é¢‘exportä»…CPUï¼Œä¸æ”¹åŽŸ6000æˆ–ä»»ä½•è¯„æµ‹ã€‚
-
-RMOT exportå›žå½’é¦–ä¸ª4404å®žé™…exit1ï¼Œ0è¡Œå†™å‡º/0æ¨¡åž‹è®­ç»ƒï¼švalidatorç›´æŽ¥æŠŠç›¸å¯¹--outä¼ å…¥è¦æ±‚ç»å¯¹ROOTå­è·¯å¾„çš„export_clipï¼Œrelative_to(ROOT)å¤±è´¥ï¼›åŽŸç”Ÿäº§è°ƒç”¨ä¸€ç›´ä¸ºç»å¯¹è·¯å¾„ã€æº/æ ‡ç­¾æœªæ”¹ã€‚æœ€å°ä¿®å¤ä»…validator args.out.resolve()ï¼Œv1å¤±è´¥ç›®å½•ä¿ç•™ï¼›v2é‡æ–°æ‰§è¡Œå°šæœªå®Œæˆçš„ç¬¬ä¸€ä¸ªMOTå•å…ƒï¼ŒåŽŸseed/loss/GT/é˜ˆå€¼å‡ä¸æ”¹ã€‚
-
-å®žé™…RMOTå¯¼å‡ºtargetedå›žå½’v2åŽŸ43891 exit0ï¼šMOT17-02-FRCNNæ•´32å¸§/992å€™é€‰ï¼Œ126ä¸ªnative groupã€5301å…¨éƒ¨targets/refsä¸Žregistryåœ¨å¿½ç•¥å”¯ä¸€æ–°æ–‡ä»¶å¼•ç”¨è·¯å¾„åŽé€å­—æ®µç­‰äºŽå·²å®Œæˆæ—§å¯¼å‡ºï¼ŒCPUplanæ‰€æœ‰counts/max/tokens/0dropç²¾ç¡®ã€‚RMOTç”¨æ—¢æœ‰0003 primaryçœŸå®žGroundå€™é€‰8å¸§/36å€™é€‰ï¼Œåœ¨å›ºå®šå½“å‰CPU actorç‹¬ç«‹replayï¼ˆä¸æ˜¯æ–°Groundé‡‡é›†/æ–°å¢žç‰©ç†å¸§ï¼‰åŽï¼Œ195ç›‘ç£è¡Œå…¨native CPUplan0dropï¼›æ‰€æœ‰å®žé™…actor outputs/state/native crop pixelsç²¾ç¡®ã€‚ç”¨å…¨1814é¢„æ£€æ‰§è¡ŒåŽŸå®˜æ–¹readerçš„query maskç‹¬ç«‹æ ¸å¯¹membership17yes/19noï¼›å¦ç‹¬ç«‹IoU+physical Hungarianæ£€æŸ¥å…¨éƒ¨36reliabilityï¼ˆ0/1/2/3=20/5/2/9ï¼‰ã€‚æ˜Žç¡®RMOå¯é æ€§åˆ†çº§ä»…IoUï¼ŒNO_MATCHä¸å¼ºé™reliabilityç­‰çº§ï¼›å†™å…¥ä»é¡»IoU>=.7ä¸”éžNO_MATCHã€‚source scope+å…¨éƒ¨å›žå½’å®žé™…6444542<50331648bytesï¼Œæœªæ–°å¢žGPU/æ¨¡åž‹è®­ç»ƒï¼›ç»™æ–°18rollout exporteræ·»åŠ è¯¥çœŸå®žè¾“å…¥éªŒè¯å‰ç½®ï¼Œå†ä»…CPUç­‰å¾…å®žé™…æºï¼Œæ‰€æœ‰18æ•´clipä»é¡»å†æ¬¡å®žé™…native CPUplan0dropåŽæ‰èƒ½è¿›åŽç»­SFTã€‚
-
-æ–°18-queryåŽŸç”ŸFull-v3å¯¼å‡ºowner40644å®žé™…å¯åŠ¨ï¼ŒCPU-onlyçœŸå®žloadæ—¢æœ‰actoråŽç­‰å¾…æº19338ï¼Œæ— æ–°å¢žGPUæˆ–queryå¸§ï¼›æ‰€æœ‰çœŸå®ž18æ®µä»å¾…é‡‡é›†ã€é€æ®µé‡å»º/0dropåŽæ–¹å¯å…¥è®­ç»ƒã€‚åŽŸæ­£å¼64133æœ€æ–°950/6000æœ‰é™ã€åŽŸFullåˆ·æ–°21963å·²575/600ï¼ŒåŽŸGPU5 nativeTAOå½“å‰ç¬¬117å¸§é˜¶æ®µã€åŽŸGroundå…¨ä¹é¡¹åŠGPU6 sourceé˜Ÿåˆ—ç»§ç»­ï¼›ä¸æ®æ–°ç»„ä»¶è¾“å…¥æ­£ç¡®æ€§å®£ç§°trackingæå‡ã€‚
-
-æ–°å¢žå®žæµ‹èµ„æºé€‰æ‹©ï¼šGPU7ä¸€æ¬¡launchå‰æŸ¥è¯¢81920MiB total/22665used/58489freeï¼ŒçŽ°æœ‰FAè®­ç»ƒå®žé™…å³°18.7GiBï¼Œè¶³å¤ŸåŒå¡ç‹¬ç«‹nativeDLM .3 static+ROIå¹¶ä¿ç•™é¢å¤–40GiBå¯åŠ¨é—¨æ§›ã€‚ä¸å¢žåŠ ç¬¬äº”å¡ï¼Œä¸å€Ÿç”¨GPU6 retentionæœåŠ¡ã€ä¸å˜åŽŸ6000æ•°æ®/ä¼˜åŒ–å™¨/ä»»ä½•æ—¢æœ‰æµ‹è¯„ã€‚å·²æ ¸å®žæ—§RMOT source19338åŠexport40644ä»ä»…CPUç­‰å¾…ã€0å·²é‡‡queryå¸§/0owned GPUæœåŠ¡/æ— childï¼ŒæŒ‰ç²¾ç¡®pid/starttick/cwd/scriptä»…SIGTERMè¿™ä¸¤ä¸ªå°šæœªå¼€å§‹çš„æ•°æ®waiterï¼Œå…ˆexportåŽsourceï¼›v1è®¡åˆ’/çŠ¶æ€/æ³¨å†Œå’Œhandoff intentå…¨éƒ¨ä¿ç•™ã€‚ä¸‹ä¸€æ˜¾å¼v2åŒæ•°æ®/actor/parser/decoder/é¢„ç®—æ–°ç›®å½•åœ¨GPU7 co-locationï¼Œèµ„æºç«žäº‰å¯¼è‡´çš„é€Ÿåº¦ä¸å¯ä¸Žæ— ç«žäº‰å®žéªŒç›´æŽ¥ç›¸æ¯”ã€‚
-
-SharedGPU7 launchå‰è¯»å›ºå®švendor SGLang model_runneræºç ç¡®è®¤ï¼šprofile_max_num_tokençš„total_gpu_memoryå®žå‚æ¥è‡ªinit_torch_distributedçš„å¯åŠ¨æ—¶available GPU memoryï¼Œå¹¶éžæ•´å¡ç‰©ç†å®¹é‡ï¼›rest=å½“å‰free-å¯åŠ¨free*(1-.3)ï¼Œæ‰€ä»¥.3åˆ†é…æ˜¯å‰©ä½™å¯ç”¨å†…å­˜çš„ä¸€éƒ¨åˆ†ï¼Œä¸Žexisting SFTå…±å­˜ä»æœ‰KVç©ºé—´ã€‚ä¿ç•™.3ã€å¯åŠ¨free>=40GiBã€åŽŸmodel/decoder/maxrunning1è®¾ç½®ï¼Œæœªè¿è¡Œå¤±è´¥è¯•æŽ¢ä¹Ÿæœªæ”¹ç¬¬ä¸‰æ–¹æºç ã€‚æ–°collectoræ˜¾å¼æ£€æŸ¥åŽŸ3219708/start47863228 owneråŠå…¶GPU7 training wrapperå‘½ä»¤å­˜æ´»åŽæ–¹å¯å¯åŠ¨ï¼›åŽŸä¸¤ä¸ªé›¶æ•°æ®CPUwaiterçœŸå®žexitå‡143ï¼Œæ—§çŠ¶æ€/æ„å›¾/å®Œæˆäº¤æŽ¥è®°å½•ä¿ç•™ã€‚
-
-SharedGPU7æŽ¥æ£’å®žé™…æˆåŠŸï¼šsourceåŽŸ17236è¿›å…¥çœŸå®ž0000_primary native Ground+ROI+å›ºå®šCPUactorï¼ŒexportåŽŸ78069ä»…CPUç­‰å¾…å®Œæ•´queryæ®µã€‚å†»ç»“å‰16å¸§0..15ï¼ˆ16queryè§‚æµ‹/16ç‰©ç†å¸§ï¼Œ8å¸§è¶…æ—§72èŒƒå›´ï¼‰ï¼Œå€™é€‰/ç²¾ç¡®FP32archiveæ–‡ä»¶é€å¸§å­˜åœ¨ã€æ‰€æœ‰runtime GT_read=Falseï¼›ä¸æ˜¯ä»…æ¨¡åž‹åŠ è½½/æŽ’é˜Ÿï¼Œå®Œæ•´18æ®µå°šæœªå®Œæˆã€‚æ–°çš„DLM/ROIæœåŠ¡å‡åªGPU7ï¼Œ.3åŽŸç”ŸKVåˆ†é…ï¼ŒåŽŸ6000æœªåœæ­¢ä¸”æœ€æ–°1050/6000ï¼Œ1000æ­¥9029140633byteså®Œæ•´çŠ¶æ€å·²ä¿å­˜ï¼›å„åŽŸGPU4/5/6è®­ç»ƒä¸Žæµ‹è¯„ä¸åŠ¨ã€‚æ–°æ•°æ®collectionå¹¶å‘è®¡æ—¶ä¸ä½œä¸ºæ— ç«žäº‰tracker FPSï¼›æ–°RMOTç›‘ç£å°šæœªè¿›ä»»ä½•optimizerã€‚
-
-2026-10-16åŽŸFull pair21963å®žé™…exit0ï¼Œä¸¤armå„600æ›´æ–°/2400è¡Œå¹¶å®Œæˆå„ä¸¤æ¬¡åŽŸç”ŸMMé‡è½½æ¦‚çŽ‡å·®0ï¼›GPU4æ—§armå››scope worker14226å·²è‡ªåŠ¨æŽ¥æ£’ï¼ŒGPU5åŽŸbeforeTAOç»§ç»­ã€‚ä¸‹ä¸€åªCPUè¯»å–æ–°refreshedå®Œæ•´FP32/Adam/RNGçŠ¶æ€ï¼Œæ ¸éªŒå®žé™…cursor/å…¨éƒ¨masterså’Œmomentsæœ‰é™ã€600 optimizer stepsã€BF16 inferenceå¯¼å‡ºä¸Žmastersé€å‚æ•°å¯¹åº”ï¼›æ—§armå·²æœ‰å®Œæ•´CPUéªŒè¯ä¸é‡å¤9GBæ‰«æã€‚æŒ‰çœŸå®žä¸¤ä»½2400è¡Œä¸Žä¿å­˜paired-indexåè®®éªŒè¯æ¯ä»»åŠ¡800ã€ç›¸åŒID/familyæµå’Œ400ä¸ªnative-historyæ›¿æ¢ï¼›ä¸å°†å¯é‡è½½/finiteä¸Žæ•°æ®æ›å…‰å†’å……æ•ˆæžœã€‚
-
-2026-10-16é¦–ä¸ªæ–°RMOTå…¨æ®µå·²å®žé—­åˆï¼š0000_primary154å¸§/289å€™é€‰/0parseræ‹’ç»ï¼ŒåŽŸsource archive2315104bytesï¼›Full-v3å¯¼å‡º1406è¡ŒallCPU0drop/max2703/2443040è®¡åˆ’tokensï¼Œå…¨éƒ¨actor state/outputå’Œ281crop sheetsç²¾ç¡®ã€‚è®­ç»ƒæ ‡ç­¾membership0yes/289noï¼Œidentity286IGNORE/3NEWï¼Œå…¨éƒ¨102existing assignmentsæ— known GT targetï¼Œä¸èƒ½æŠŠæ–°å¢ž146ç‰©ç†å¸§è¯´æˆæ­£ä¾‹è¦†ç›–æˆ–æ•ˆæžœæå‡ã€‚å®žé™…åŽŸå¥designated path for people on footçš„raw_sentence=pedestrainï¼ŒåŒç›®æ ‡mapæœ‰pedestrians/peopleç­‰ï¼›åŽŸDLMè¾“å‡ºå¤šä¸ºå·¦ä¾§è·¯é¢/é€šé“æ¡†ï¼Œå½“å‰åŽŸè¡¨è¾¾queryGTå€™é€‰recall=0ã€‚æ–°ç‹¬ç«‹ç»„ä»¶è®¡åˆ’ï¼šå›ºå®šå…¨éƒ¨154fitå¸§ï¼ˆå«è´Ÿ/ç©ºå¸§ï¼‰å’ŒåŽŸGT mapï¼ŒGPU4ç‹¬ç«‹freshåŽŸDLMæœåŠ¡.3ï¼Œä¸Žå·²è¿è¡ŒFull workeråŒå¡ä½†ä¸å…±ç”¨å…¶æœåŠ¡æˆ–æ”¹å˜æƒé‡/æºã€‚3armså„154ï¼šåŽŸè¡¨è¾¾freshå¤è·‘ã€åŒGT mapè§„èŒƒpedestriansã€æ˜¾å¼åŽŸprovided person/carç±»åˆ«å€™é€‰ã€‚ä¿æŒå®˜æ–¹parser/dense decoder/seed42/å…¨å¸§ï¼Œç”¨posthoc queryGT IoU>=.5 proposal recallå®šä½æŽªè¾ž/å‰ç«¯è¦†ç›–ï¼ŒéžHOTA/TETAæˆ–å®Œæ•´trackeræ”¶ç›Šï¼›baselineåŽŸsourceä¿æŒåŽŸæ ·ã€‚åªbbox/rawwireè¯Šæ–­ã€0ROI/å›¾åƒ/è®­ç»ƒï¼Œé¢å¤–16MiB reserveä½¿global26822863722<26843545600ï¼›æ‰€æœ‰åŽŸè®­ç»ƒ/è¯„æµ‹/æ–°18queryé‡‡é›†ç»§ç»­ã€‚
-
-é¦–ä¸ªfit0000ä¸¤queryå‡å·²å®žé™…é—­åˆï¼šsourceåŽŸ17236ç»§ç»­ä¸‹ä¸€è§†é¢‘ï¼Œexport78069å·²å®Œæˆ2rollouts/308queryå¸§ä½†ä»…154uniqueç‰©ç†å¸§ï¼Œåˆè®¡6163è¡Œï¼Œä¸¤ä¸ªæ•´clipåŽŸç”ŸCPUplanå‡0drop/actor state-outputåŠpixelsç²¾ç¡®ï¼›counteråŽŸparseræ‹’ç»ä¿ç•™åœ¨åŽŸä½ç½®ï¼Œä¸èƒ½ä¸¢æŽ‰æˆ–ç”¨GTè¡¥å€™é€‰ã€‚æ–°ç»„ä»¶å°šæœªè¿›å…¥optimizerã€‚ç‹¬ç«‹ä¸‰arm GroundæŽªè¾žprobeåŽŸ11590å·²å¯åŠ¨è‡ªæœ‰GPU4æœåŠ¡å¹¶å®žé™…å®Œæˆfresh_originalå‰50å¸§ï¼Œä¸å€Ÿç”¨source/retentionæœåŠ¡ï¼Œseed42/åŒä¸€åŽŸcheckpoint/parser/denseè®¾ç½®ï¼ŒGTä»ä»…åŽç½®å®¡è®¡ï¼›ç»“æžœæœªå®Œæˆï¼Œä¸å…ˆè®¤å®šè§„èŒƒåŒ–æœ‰æ•ˆã€‚
-
-åŽŸç‹¬ç«‹Ground prompt control11590å®žé™…exit0ï¼Œä¸‰ä¸ªfresh armså„å®Œæ•´154framesã€0è®­ç»ƒ/GTå€™é€‰æ³¨å…¥ï¼ŒownedGPU4æœåŠ¡groupå·²ç©ºã€‚åŽŸsource/freshåŽŸè¡¨è¾¾154/154 rawwireåŠbox-label-scoreé€å¸§å®Œå…¨ç›¸åŒï¼ŒéªŒè¯ä¸æ˜¯æœåŠ¡/GPUå˜åŒ–åˆ¶é€ çš„æ”¶ç›Šï¼›åŒGT mapè§„èŒƒpedestrianså€™é€‰è¦†ç›–18/21=.8571429ï¼Œå¯¹åŽŸ0/21ï¼Œprovided person/carä¹Ÿ18/21ä½†2182å€™é€‰ã€6åŽŸparseræ‹’ç»å¸§ä¿ç•™ï¼ˆè§„èŒƒ688å€™é€‰/0æ‹’ç»ï¼ŒåŽŸ289/0ï¼‰ã€‚è¿™æ˜¯fit154å¸§proposal recallç»„ä»¶ï¼Œä¸æ˜¯HOTA/TETA/held-outæ³›åŒ–æˆ–æœ€ç»ˆç³»ç»Ÿæå‡ï¼ŒåŽŸå…¨éƒ¨18queryé‡‡é›†å’Œ6000phaseå‡æœªæ”¹ã€‚ä¸‰ä»½å…¨rawé¢„æµ‹å·²æ— æŸgzipå¹¶é€å­—éªŒè¯ï¼Œå…¨éƒ¨åŽŸraw/ç»“æžœä¿ç•™ï¼›16MiB probe reserveåœ¨é€€å‡ºåŽæŒ‰å®žé™…data/log/ç»“æžœå…³é—­ï¼ŒæœåŠ¡æ¨¡åž‹bundleä¸å±žfeatureé¢„ç®—ã€‚ä¸‹ä¸€æœ€å°æ•°æ®ä¿®å¤æ˜¯å¤ç”¨å·²å®Œæˆclasså€™é€‰ã€ä¿ç•™åŽŸqueryä¼ ç»™actor/JEVï¼Œè¡¥å……å½“å‰åŽŸè¡¨è¾¾ç¼ºå¤±çš„æ­£è§†è§‰è¯æ®ï¼›ä¸æŠŠGTè§„èŒƒè¡¨è¾¾å½“æŽ¨ç†å¯ç”¨æ ‡ç­¾ï¼Œä¸ä¿®æ”¹åŽŸå€™é€‰æºæˆ–æ­£åœ¨è®­ç»ƒçš„æ•°æ®ã€‚
-
-ä¸‹ä¸€å·²ç™»è®°æœ€å°æ•°æ®ä¿®å¤ï¼šå¤ç”¨ä¸‰arm probeå·²å®Œæˆçš„2182ä¸ªprovided person/caråŽŸç”Ÿæ¡†ï¼Œå…¨éƒ¨154åŽŸå¸§/6åŽŸæ‹’ç»ä¿ç•™ï¼Œä¼ ç»™åŒä¸€ä¸ªå›ºå®šCPUCompact actorçš„ä»ä¸ºdesignated path for people on footï¼Œä¸ç”¨GTè§„èŒƒè¡¨è¾¾æ›¿æ¢ç”¨æˆ·è¾“å…¥ï¼›æ–°ç‹¬ç«‹GPU4 nativeROI-onlyæœåŠ¡ï¼Œ0æ–°DLMè¯·æ±‚/0GTæ¡†æ³¨å…¥ã€‚æŒ‰å®žé™…nativeF32å€™é€‰+çœŸå®žè‡ªèº«åŽ†å²å¯¼å‡ºç›¸åŒFull-v3èº«ä»½/ç”Ÿå‘½å‘¨æœŸ/åŽŸæŸ¥è¯¢membershipï¼Œå…¨éƒ¨çŠ¶æ€/outputs/crop pixelsä¸ŽnativeCPUplan0dropå¿…é¡»é€šè¿‡ï¼Œä½œä¸ºæœªæ¥è¯¾ç¨‹ç»„ä»¶ä¸åŠ å…¥æ­£è¿è¡Œ6000ã€‚åŽŸGround probeå·²å…³é—­å®žé™…2826086bytesï¼Œå…³é—­åŽ26808912592ï¼›æ–°24MiB archive+4MiB groupä½¿26838272720<26843545600ï¼Œä½™5272880bytesã€‚åŽŸå…¨éƒ¨æ¨¡åž‹/è¯„æµ‹/18queryåŽŸé‡‡é›†ä¸æ”¹ï¼Œé¢„ç•™ä¸ç­‰äºŽå·²é‡‡é›†/å·²è®­ç»ƒã€‚
-
-åŽŸclass-proposalè¡¥å……owner13102å®žé™…exit0ï¼Œ154ç›¸åŒç‰©ç†å¸§/2182åŽŸnativeå€™é€‰/6åŽŸæ‹’ç»å¸§ä¿ç•™ï¼Œ0æ–°DLM/0GTæ¡†/0queryé‡å†™/0optimizerï¼›åŒåŽŸå¥è¾“å…¥çš„å›ºå®šCPUactorå®Œæ•´çœŸå®žè½¨è¿¹å·²ç”¨NativeFull-v3å¯¼å‡º14141è¡Œï¼Œæ‰€æœ‰actor state-outputåŠcrop pixelsç›¸ç­‰ä¸”å…¨é‡CPUplan0dropã€‚ç²¾ç¡®FP32archive21837488<25165824ã€groups2426218<4194304ï¼ŒownedROIæœåŠ¡å·²åœã€‚è¡¥å……å®žé™…positive membershipè€Œéžé æ¢æŽ‰åŽŸæŸ¥è¯¢è¾¾åˆ°æ•°æ®ä¿®å¤ï¼ŒåŽŸå„æ•°æ®æºå’Œæ­£è·‘6000å®Œå…¨æœªæ”¹ï¼Œæ‰€æœ‰åŽŸRaw/æ¨¡åž‹æ£€æŸ¥ç‚¹ä¿ç•™ã€‚è¯¥ç»„ä»¶åªå¢žåŠ ç›¸åŒå›¾åƒçš„åŽŸç”Ÿå€™é€‰è¯æ®ï¼Œä¸å¢žåŠ uniqueç‰©ç†å¸§æˆ–å®£ç§°held-outè·Ÿè¸ªæå‡ï¼›ç•™ä½œä¸‹ä¸€é˜¶æ®µå…±åŒè¯¾ç¨‹ã€‚
-
-å½“å‰ä¸»6000å®žé™…1575æ­¥/6300è¡Œã€1500æ­¥å®Œæ•´FP32/Adam/RNG9029140633byteså·²åŽŸå­ä¿å­˜ï¼Œlog finiteï¼›æ–°sourceåŽŸ17236/export78069å·²6rollouts=1062query-frameä½†ä»…531uniqueç‰©ç†å¸§ï¼ˆç›¸å¯¹æ—§72æ–°å¢ž507ï¼‰ï¼Œ17640ç›‘ç£è¡Œå…¨nativeCPU0dropï¼›å…¶ä½™12rolloutsç»§ç»­ï¼Œä¸æ··è®¡é‡å¤queryæˆ–classç»„ä»¶ç›¸åŒ154å›¾åƒã€‚æ–°classç»„ä»¶ä¸‹ä¸€è½®å…ˆåˆ—2182æ¡åŽŸquery membershipï¼ˆ18yes/2164noï¼‰ä¾›è¯­ä¹‰mixï¼Œæ‰€æœ‰è¾…åŠ©IoU/birthä»£ç†æ ‡ç­¾ä»å®Œæ•´ä¿ç•™ä½œè¯Šæ–­ï¼Œä¸å°†unmatched released GTç­‰åŒå®Œæ•´ç‰©ç†æ— æ•ˆè¯æ®ï¼Œä¸è‡ªåŠ¨æŠŠ14141è¡Œå…¨éƒ¨æ³¨å…¥lossï¼›å½“å‰6000è¾“å…¥ä»Žå§‹è‡³ç»ˆæœªä¿®æ”¹ã€‚
-
-2026-10-16OVè¾“å…¥æ”¯æŒå®¡è®¡ï¼šè¯»å®žé™…Base175ç”Ÿæˆå™¨åŠ24kè¯¾ç¨‹ï¼ŒåŽŸ105956è¡Œgalleryäººæ•°1..8å…¨è¦†ç›–ï¼›å½“å‰8000 OVè¡Œä½ç½®0..7åˆ†åˆ«1846/2476/1958/1004/384/158/84/90ï¼Œgallery8ä¸º336è¡Œï¼Œå…¶ä½™1..7ä¸º462/1474/2308/1714/998/506/202ã€‚æ²¡æœ‰â€œåªè®­ç»ƒobject0â€çš„é—®é¢˜ï¼Œä¸å› å‡è®¾æ”¹æ•°æ®ï¼›åŽŸç”Ÿå¸ƒå±€å®šä¹‰/åƒç´ readerä¸ŽruntimeåŒä¸€NativeCategoryHeadã€‚åŽŸold Full600è¿žç»­3scopeå·²å®Œæˆï¼šDT HOTA before.08702996->old.13107492ï¼Œsingle.02506249->.03071683ï¼Œmulti.06740007->.06682521ï¼ŒTAOåŠrefreshedæœªå®Œæˆï¼Œä¸å®£ç§°ä¸‰ä»»åŠ¡æ™®éæ”¶ç›Šã€‚ä¸‹ä¸€æ•ˆçŽ‡ä¿®å¤ï¼šNativeCategoryHeadä»…ä¾èµ–å½“å‰image/candidates/vocabularyï¼Œä¸Žèº«ä»½/è®°å¿†ç­–ç•¥æ— å…³ï¼›æ–°å¢žæ˜¾å¼ã€é»˜è®¤å…³é—­çš„é€å¸§åŽŸç”Ÿcategory replayï¼Œè¯»å–åŒä¸€checkpointå®Œæ•´é»˜è®¤runä¸­çš„æ¯å€™é€‰root/leafå…¨æ¦‚çŽ‡ï¼Œä¸é‡æ–°åˆ†ç±»/ä¸å¤åˆ¶feature archive/ä¸è¯»æœªæ¥è¡Œæˆ–èº«ä»½çŠ¶æ€ã€‚å…ˆåœ¨å®žé™…beforeTAOå‰8å€™é€‰ç”¨åŽŸTorchå‚è€ƒMMæ¨¡åž‹å¤ç®—å…¨1203å±‚çº§ç»“æžœï¼Œgateé€‰æ‹©ä¸€è‡´ã€æ¦‚çŽ‡å·®<=1e-6ï¼›å†ç”¨å®žé™…è¿žç»­2å¸§å®Œæ•´å€™é€‰å’Œä¿å­˜çš„åŽŸç”Ÿidentityå†³å®šéªŒè¯è¾“å‡º/äº‹ä»¶/å®Œæ•´memoryé€å€¼ä¸å˜ï¼Œä»…åˆ†ç±»è®¡æ—¶ä¸Žæ¥æºå…ƒæ•°æ®ä¸åŒã€‚é€šè¿‡å‰ä¸å¯ç”¨åˆ°ä»»ä½•æ—¢æœ‰æµ‹è¯„ï¼Œè®­ç»ƒ/GT/é˜ˆå€¼/seedä¸æ”¹ã€‚
-
-2026-10-16åŽŸcategory probe69622å®žé™…exit0ï¼šnative600åŽŸTorch/MMåœ¨GPU4é‡ç®—é¦–å¸§8ä¸ªåŽŸå§‹å€™é€‰ï¼Œå…¨1203 rootåŠæ‰€é€‰conditional leafçš„å…¨éƒ¨è¾“å‡ºå­—æ®µï¼ˆåŒ…æ‹¬æ¦‚çŽ‡ï¼‰ä¸ŽåŽŸsourceå®Œå…¨ç›¸ç­‰ï¼Œmaxdifference0<=äº‹å‰1e-6ã€‚è¿žç»­TAOä¸¤å¸§1/30ã€1037+990=2027å€™é€‰ä»¥ç‹¬ç«‹CPU trackerã€åŽŸnativeF32è¾“å…¥åŠä¿å­˜identity tapeå›žæ”¾ï¼Œå…¨éƒ¨è¾“å‡º/events/IDså’Œå®Œæ•´state_dictæ•°å€¼/feature/å›¾åƒé€å€¼ç›¸ç­‰ï¼›category replayæœ¬èº«åªæå–å½“å‰å¸§ç±»åˆ«ï¼Œä¸å–source identity/historyï¼Œ0native category callsã€‚CPU identityæ˜Žç¡®ä¸ºåŽŸå†³å®štapeï¼Œä¸å†’ç§°å®Œæ•´ä¸¤å¸§fresh GPUé‡è·‘ï¼›åªåœ¨probeå…è®¸æœªå®Œæˆsourceçš„å·²å®Œæˆprefixï¼Œæ­£å¼CLIä»è¦æ±‚sourceå®Œæ•´ã€‚åŒckpt native categorieså¯å¤ç”¨ï¼Œä¸èƒ½è·¨æƒé‡ï¼Œä¿ç•™æ‰€æœ‰åŽŸrootå’Œconditional leafåˆ†å¸ƒè€Œéžå®£ç§°å®Œæ•´flat1203æ¦‚çŽ‡ã€‚
-
-åŽŸFullä¸‰scopeç‹¬ç«‹å†»ç»“42493å®žé™…exit0ï¼šé€frameå¯¹åŽŸè¾“å…¥/å…¨éƒ¨empty-reject/countsã€ffprobeå®Œæ•´å¸§æ•°åŠraw predictionsé€å­—é‡å»ºï¼›åŽŸç‰ˆpinned TrackEvalé‡æ–°è®¡ç®—å…¨éƒ¨3å•å…ƒçš„HOTA/DetA/AssA/IDF1/IDSW/FP/FNï¼Œé€æ•°å€¼ç­‰äºŽåŽŸofficialç»“æžœã€‚DT HOTA8.702996->13.107492%ã€IDF15.825959->13.571733%ï¼›RMO single HOTA2.506249->3.071683%ï¼Œmulti6.740007->6.682521%ã€‚å®Œæ•´æ–°ä¸‰ä»½predictionsæ— æŸgzipã€å„result/officialåŠéªŒè¯å¿«ç…§å†»ç»“ï¼Œä¸å‘å¸ƒlive workerçŠ¶æ€ï¼›TAOå’Œrefreshedä»pendingï¼Œæ™®é€šæ¨¡åž‹æ°´å¹³/å…¨ä»»åŠ¡æ”¶ç›Šæœªè¾¾æˆã€‚
-
-æœªæ¥6000æ˜¾å¼æ•ˆçŽ‡åè®®å·²ç™»è®°ï¼šlauncherå¯¹ä¸¤æ¡ç²¾ç¡®consumerè¾“å‡ºç»‘å®šç”Ÿæ•ˆï¼Œæ‰€æœ‰å…¶å®ƒå‘½ä»¤åŠå½“å‰å·²è¿è¡Œè¿›ç¨‹ä¸å˜ã€‚final6000 defaultTAOä»freshè®¡ç®—è‡ªèº«æ‰€æœ‰ç±»åˆ«ï¼›assignedTAOä½¿ç”¨ç›¸åŒcheckpoint/manifest/candidatesçš„å·²å®Œæ•´defaulté€å¸§ç±»åˆ«ï¼Œèº«ä»½/è®°å¿†ä»freshæŽ¨ç†ï¼Œå®žé™…CLIè¿½åŠ --category-replayå¹¶æ‰“å°æ³¨å†Œæ¥æºã€‚æœªæ¥beforeTAOè‹¥åŽŸGPU5 baselineå°šæœªç»“æŸï¼Œç”±å•ä¸€blocking wrapperç­‰åŽŸowner2467924/start45243513å®ŒæˆåŽå¤ç”¨å®Œæ•´ç›¸åŒrunï¼Œé¿å…å¦ç®—35228å€™é€‰ï¼›ä»…å¤§immutable trace/predictions/video/finalmemoryä½¿ç”¨ç›¸åŒinodeï¼Œmutable resultä¸ŽåŽç»­scorerç‹¬ç«‹ï¼Œparentç…§åŽŸåè®®é‡æ–°officialè¯„åˆ†ã€‚åŽŸ19428å®žé™…exit0ï¼šç²¾ç¡®bindingé€‰ä¸­ã€å…¶å®ƒconsumerä¸å˜ã€ä¸åŒcheckpointæ‹’ç»ï¼›çœŸå®žå®ŒæˆDT1203/13664å€™é€‰å¤ç”¨åŽé€šè¿‡åŽŸvalidate_runï¼ŒåŽŸå›¾/featureé›¶æ–°å¢žã€æºresult/scorerä¸Žå¤ç”¨å‰¯æœ¬inodeä¸åŒã€‚æ‰€æœ‰ç¼“å­˜è®¡æ—¶åªä½œsource provenanceï¼Œä¸æŠ¥å‘Šfresh E2EåŠ é€Ÿæˆ–ç²¾åº¦æ”¶ç›Šã€‚ä¸Šè¿°3ä»½æ–°å°è¯Šæ–­capå…±2MiBï¼Œä¿å®ˆfeatureä¸Šç•Œ26840369872<26843545600ï¼Œå‰©3175728bytesï¼›åŽŸæ¨¡åž‹/æ•°æ®/æ£€æŸ¥ç‚¹é›¶åˆ é™¤ã€‚
-
-ä¸»6000å†»ç»“å®žé™…2100updates/8400å·²æ¶ˆè´¹é—®é¢˜ï¼Œå·²åŽŸå­ä¿å­˜è‡³å°‘2000æ­¥å®Œæ•´FP32/Adam/RNGï¼›loss/gradient finiteã€‚æ–°RMOTå†»ç»“å‰10å·²å®Œæˆquery rolloutsã€2382queryè§‚æµ‹ä½†1191uniqueç‰©ç†å¸§ï¼Œç›¸å¯¹æ—§72æ–°å¢ž1151ç‰©ç†å¸§ï¼Œ46658ç›‘ç£è¡Œå…¨nativeCPUplan0dropä¸”actor state/output/pixels exactã€‚ä¸¤æ¡è¡¨è¾¾ä¸é‡å¤ç®—ç‰©ç†å¸§ï¼Œå…¨éƒ¨æ–°RMOTç»„ä»¶ä»æœªåŠ å…¥æ­£è¿è¡Œ6000ï¼Œä¸å°†æ•°æ®å‡†å¤‡ç®—è®­ç»ƒæ›å…‰æˆ–è·Ÿè¸ªæ”¶ç›Šï¼›åŽŸå”¯ä¸€è®­ç»ƒ/é‡‡é›†/è¯„æµ‹handlesä¿æŒè¿è¡Œï¼Œæ•´ä¸ªç ”ç©¶goalæœªå®Œæˆã€‚
-
-2026-10-16æ‰©å¤§è”åˆè®­ç»ƒçš„æœ€å°ç ”ç©¶è®¡åˆ’ï¼šçŽ°æœ‰statefulä¸Žpaired samplerå…¥å£å®žé™…ç¡¬é™world1ï¼Œä¸èƒ½å°†åŽŸç”ŸSFTçš„åˆ†å¸ƒå¼ä»£ç å­˜åœ¨å†’å……å·²å…·å¤‡å››å¡å®Œæ•´æ¢å¤èƒ½åŠ›ã€‚æœ¬è½®å¢žåŠ æ˜¾å¼--distributed-sftï¼Œæ²¿ç”¨ä¸Šæ¸¸æ¯rowå…¨å±€å‡å€¼lossä¸ŽFP32æ¢¯åº¦SUMï¼Œä¸æ”¹åŽŸworld1åè®®ï¼›ä¿å­˜4rankå„è‡ªTorch/å½“å‰CUDA/Python/NumPy RNGï¼Œrank0å†™å®Œæ•´æ¨¡åž‹/Adam/scheduler/cursorï¼Œæ‰€æœ‰rankåœ¨ä¿å­˜å¤„åŒæ­¥ã€‚ç”¨åŒä¸€8ä¸ªçœŸå®žå¤šä»»åŠ¡MMé—®é¢˜ã€ä¸¤æ¬¡global4-rowæ›´æ–°ï¼Œåˆ†åˆ«å®žé™…æ‰§è¡Œå•å¡è¿žç»­ã€å››å¡è¿žç»­ã€å››å¡step1å®Œæ•´ä¿å­˜åŽé€€å‡ºå¹¶æ¢å¤step2ï¼›ä¸æŠŠçŸ­probeå½“å¤§è§„æ¨¡è®­ç»ƒã€‚äº‹å‰gateï¼šå•å¡/å››å¡å…¨éƒ¨FP32 master maxdiff<=1e-6ï¼Œå®Œæ•´ä¸¤Adam momentå‘é‡relative L2å„<=1e-4ï¼›å››å¡å…¨éƒ¨rankæ¨¡åž‹/momentsé€å€¼ç›¸ç­‰ã€è¿žç»­/æ¢å¤å®Œæ•´stateé€å€¼ç›¸ç­‰ï¼ŒCPUå®žé™…è¾“å…¥è®¡åˆ’0drop/åŒglobal rowæ¬¡åºã€‚ä»…ç‰©ç†4/5/6/7 co-locationï¼Œå¯åŠ¨å‰å„free>=32GiBï¼Œä¸åœæ­¢çŽ°æœ‰ä»»åŠ¡ï¼›æ¨¡åž‹/ä¼˜åŒ–å™¨proofä¿ç•™åœ¨/data3/user/LocateMOT-checkpointsï¼Œdiagnosticå¦é¢„ç•™1MiBä½¿ä¿å®ˆfeature upper26841418448<26843545600ã€‚å½“å‰6000å’Œæ‰€æœ‰æ—¢æœ‰è¯„æµ‹å‡ä¸å¯ç”¨æ–°åˆ†å¸ƒå¼flagï¼›probeé€šè¿‡å‰ä¸å‘å¸ƒå¤§åž‹å››å¡è®­ç»ƒå·²å¯åŠ¨æˆ–æ”¶ç›Šã€‚
-
-å››å¡probe v1åŽŸ36204çœŸå®žexit1ï¼šå•å¡2æ­¥ã€å››å¡è¿žç»­2æ­¥ã€å››å¡step1å®Œæ•´ä¿å­˜é€€å‡ºåŠrestore step2å››ä¸ªå­å•ä½å‡çœŸå®žexit0ï¼›æ¯ä¸€æ­¥æ‰€æœ‰4rankçš„320æ¨¡åž‹tensorä¸Žä¸¤ä»½å®Œæ•´Adam momentså…±2257179072å…ƒç´ broadcasté€å€¼æ£€æŸ¥maxdiff0ï¼Œå®žé™…global8rows/2stepså’Œå…¨éƒ¨tokené•¿åº¦ä¸€è‡´ã€‚ä½†æœ€ç»ˆä¸¥æ ¼æ¢å¤æ¯”è¾ƒå¤±è´¥ï¼Œæœªé€šè¿‡ï¼šsingle/fourå…¨éƒ¨FP32 master maxdiff3.8389e-6ã€å®Œæ•´Adam m/v relativeL2 .00535875/.00179744ï¼›continuous/restored maxdiff3.8494e-6ã€m/v .00531712/.00196006ã€‚ä¸‰æ¬¡freshé¦–æ­¥losså®Œå…¨ç›¸åŒï¼Œä½†æ¢¯åº¦norm157.9769/158.0080/158.0417å·²ä¸åŒï¼Œå·®å¼‚å…ˆäºŽä»»ä½•restoreï¼Œä¸èƒ½å½’å› äºŽcheckpointæˆ–å•ç‹¬è®¤å®šFLAã€‚v2åŽŸ92390æ”¹ç”¨åŽŸTorchå‚è€ƒè®­ç»ƒï¼ŒåŒ8rows/seed/loss/gatesï¼Œå››å­å•ä½ä»å„exit0ä¸”å…¨rankçŠ¶æ€ç›¸åŒï¼ŒåŽŸowneræœ€ç»ˆä¹Ÿexit1äºŽæ¢å¤æ¨¡åž‹é€å€¼æ¯”è¾ƒï¼›freshé¦–æ­¥ç›¸åŒloss4.830878è€Œnorm159.4287/159.3847/159.4403ï¼Œè¿›ä¸€æ­¥æŽ’é™¤FLAä¸“å±žåŽŸå› ã€‚æ‰€æœ‰å¤±è´¥æ¨¡åž‹/å®Œæ•´state/æ—¥å¿—å’ŒåŽŸgateä¿ç•™ï¼ŒæœªæŽ¨å¹¿ã€‚
-
-ä¸‹ä¸€é’ˆå¯¹æ€§æ‰§è¡ŒæŽ§åˆ¶ï¼šv3æ˜¾å¼Torch deterministic algorithms/cuDNN deterministic/CUBLAS4096x8å‚è€ƒåŽç«¯ï¼ŒåŽŸ46094è¿è¡Œï¼›v4åŽŸ51437è¿›ä¸€æ­¥éªŒè¯å¸¦åŒæ ·ç¡®å®šæ€§è®¾ç½®çš„FLAï¼Œå¹¶æ˜¾å¼æŠŠå·²ç™»è®°seed0åº”ç”¨åˆ°Torch/CUDA/Python/NumPyå…¨éƒ¨å…¨å±€RNGã€‚æºç ç¡®è®¤åŽŸç”Ÿfull_finetuneä»…å¯¹æ¯è¡Œrenderingä½¿ç”¨seedï¼Œtorch.manual_seedåŽŸä»…åœ¨LoRAåˆ†æ”¯ï¼›è·¨freshè¿›ç¨‹åˆå§‹å…¨å±€RNGå¹¶ä¸ç›¸åŒï¼Œå¿…é¡»åœ¨æ¯”è¾ƒç‹¬ç«‹continuous/restoreè½¨è¿¹å‰ç»Ÿä¸€ï¼Œä¸æ”¹å˜ç™»è®°seed0æˆ–æ ·æœ¬/é˜ˆå€¼ã€‚æ‰€æœ‰æ–°flagé»˜è®¤Falseï¼ŒåŽŸæ­£è¿è¡Œ6000åŠå…¶å®ƒrecipeä¸å˜ã€‚v1/v2å·²ç»terminalçš„diagnosticsæŒ‰å®žé™…94447/98034byteså„åŠ 16KiB bookkeepingå…³é—­1MiB capï¼Œé›¶åˆ é™¤ï¼›é¢å¤–v4ä¸€ä»½1MiBåŽä¿å®ˆfeature upper26842692273<26843545600ã€‚
-
-æ–°RMOTç›‘ç£å®¡è®¡å·²å®žé™…CPUå®Œæˆï¼ˆfirst11 immutableå•ä½ï¼‰ï¼š2676queryè§‚æµ‹/1485uniqueç‰©ç†å¸§ã€7926å€™é€‰ã€50545å…¨ç›‘ç£è¡Œï¼›membership2040yes/5886noï¼ŒåŠ 19æ¡empty-presenceä¸º7945æ¡å¯å…¥ä¸‹ä¸€è¯­ä¹‰è¯¾ç¨‹ã€‚14042ä¸ªTERMINATEæ ‡ç­¾ä¸­è‡³å°‘12105æ¡å¯ç”±registryè¯å®žbirthGTæœªçŸ¥ï¼›4399ä¸ªunknown-birthæ—¢æœ‰assignmentå…¨éƒ¨æ­£ç¡®æ— å¼ºé€ assigned-update targetï¼Œå…¶ä¸­1251ä¸ªå½“å‰å€™é€‰å·²ä¸Žreleased GTåŒ¹é…ã€‚æœªçŸ¥å‡ºç”Ÿä¸ç­‰ä»·æ°¸ä¹…ç¦»åœºï¼Œæ•…ä¸æŠŠæ•´50545è¡Œç›²åŠ lossï¼Œå…ˆåªä½¿ç”¨query membership/presenceï¼Œå…¶ä½™åŽŸæ ‡ç­¾å®Œæ•´ä¿ç•™ä½œåŽç»­å—æŽ§ç ”ç©¶ï¼›ä¸ä¿®æ”¹åŽŸæ­£è¿è¡Œ6000ã€‚æ–°å¢žsource-listè®­ç»ƒå…¥å£åªè¯»å–immutableåŽŸgzip/group refsï¼Œä¸å¤åˆ¶feature/å›¾åƒ/åŽ†å²ï¼›çœŸå®ž8ä¸ªMMé—®é¢˜all state/media/question/target/IDé€å­—æ®µç›¸ç­‰ã€åŽŸnative tokené•¿åº¦ç›¸ç­‰ï¼Œå®žé™…CPUplan0drop/max26038ï¼Œsemantic filter2è¡Œæ­£è´Ÿå‡ä¿ç•™ï¼ŒåŽŸ80140 exit0ã€‚
-
-å·²å¯åŠ¨å”¯ä¸€CPU full-sourceå‡†å¤‡owner84666ï¼Œç­‰å¾…åŽŸexporter3320470/start48408216å®Œæ•´18å•ä½çœŸå®žexitæˆåŠŸï¼ŒéšåŽå†»ç»“å…¨éƒ¨MOT252258è¡Œã€åŽŸRMO87721è¡Œã€å…¨éƒ¨Base175 category105956è¡Œã€æ–°18æ®µè¯­ä¹‰è¡ŒåŠåŽŸquery classè¡¥å……2182è¯­ä¹‰è¡Œçš„source-listã€‚å½“å‰å·²éªŒè¯first11æ”¯æŒçš„åˆè®¡ä¸‹ç•Œ456062é—®é¢˜ï¼Œä¸æŠŠç­‰å¾…/manifestå‡†å¤‡ç§°è®­ç»ƒæˆ–å®Œæ•´corpus0dropè¯æ˜Žï¼›æœªæ¥è‡ªç„¶æºæ¯”ä¾‹æ˜Žç¡®ä¸åŒäºŽå½“å‰24kå‡è¡¡è¯¾ç¨‹ã€‚ä»…ä½¿ç”¨æ­¤å‰å·²é¢„ç•™16MiBæœªæ¥è¯¾ç¨‹budgetï¼Œ0æ–°GPU/0optimizerï¼›ä¸‹ä¸€å¤§è®­ç»ƒä»éœ€é€šè¿‡åˆ†å¸ƒå¼æ•°å€¼/æ¢å¤éªŒè¯å’Œå…¨å®žé™…è¾“å…¥è®¡åˆ’ï¼Œæœªè‡ªåŠ¨å¯åŠ¨æœªéªŒè¯æ–¹æ³•ã€‚
-
-ç¡®å®šæ€§æŽ§åˆ¶v3åŽŸ46094æœ€ç»ˆçœŸå®žexit1ï¼Œä»…å‰©å…¨å±€RNG equalityï¼šå…¨éƒ¨æ¨¡åž‹/Adamæ¢å¤é€å€¼ç›¸ç­‰ï¼Œsingle/fourå…¨FP32 max7.45e-9ã€ä¸¤Adam moment relativeL2 6.93e-8/8.12e-8å‡è¿‡åŽŸé—¨æ§›ï¼›4rankåˆå§‹Python/NumPy/Torch/CUDA RNGå„ä¸Žç‹¬ç«‹freshè¿žç»­runä¸åŒï¼Œç¬¦åˆåŽŸfull-finetuneæœªç»Ÿä¸€å…¨å±€seedçš„æºç å‘çŽ°ã€‚v4åŽŸ51437çœŸå®žexit0ï¼Œæ˜¾å¼åŒseed0/ç¡®å®šæ€§FLAï¼šå…¨éƒ¨752393024 FP32å‚æ•°single/four max3.7252903e-9ï¼Œä¸¤å®Œæ•´Adam moment relativeL2 1.24950e-8/2.17795e-8ï¼Œå…¨4rankå…¨æ¨¡åž‹åŠä¸¤Adamé€å€¼å·®0ï¼›continuous/restoredå…¨éƒ¨æ¨¡åž‹ã€momentsã€schedulerå’Œæ‰€æœ‰rank RNGé€å€¼ç›¸ç­‰ï¼Œ8çœŸå®žMM rows/native token lengths/å…¨å±€æ­¥éª¤å®Œå…¨åŒ¹é…ã€‚æ²¡æœ‰æ”¾å®½ä»»ä½•åŽŸgateï¼Œå‰3ä»½å¤±è´¥è®°å½•/å…¨éƒ¨modelå’Œstateä¿ç•™ã€‚åŽŸ45393çœŸå®žexit0ï¼šå››å¡è®­ç»ƒBF16å¯¼å‡ºç”±åŽŸTorch MMengineä¸¤æ¬¡ç‹¬ç«‹åŠ è½½ï¼Œ474weights/åŽŸfork auto-checkä¸å˜ï¼Œé‡å¤æ¦‚çŽ‡å·®0ï¼›å®žé™…2updatesä¸å†’ç§°foundationå¤§è®­ç»ƒæˆ–trackingæ”¶ç›Šã€‚
-
-ä¿®æ­£çœŸå®žå¤§epochæœ€åŽä¸€æ­¥ä¸ä¸€å®šè½åœ¨save_everyè¾¹ç•Œçš„å®Œæ•´stateä¿å­˜ï¼šä»…æ˜¾å¼distributedåè®®ï¼Œåœ¨æœ€åŽéžå®šæœŸä¿å­˜æ­¥æ‰€æœ‰rankæ”¶é›†è‡ªå·±çš„RNGã€rank0åŽŸå­ä¿å­˜æœ€æ–°FP32/Adam/scheduler/cursorï¼›åŽŸæ™®é€šworld1è·¯å¾„ä¸å˜ã€‚åŽŸ13813çœŸå®žexit0ï¼ŒçœŸå®žç›¸åŒ8rows/2updatesè€Œsave_every3ä»Žæœªè§¦å‘periodicï¼Œä»ä¿å­˜final2/seen8/next2å®Œæ•´çŠ¶æ€ï¼›åŽŸ49373 CPUå®žé™…è¯»å–è¯¥9GB stateï¼Œä¸Žv4åŽŸsingleçš„å…¨éƒ¨320 FP32 masteråŠæ‰€æœ‰Adam moments/scheduleré€å€¼ç›¸ç­‰ã€‚æ­¤æŽ§åˆ¶ä¸æ˜¯é¢å¤–è®­ç»ƒé¢„ç®—æˆ–æ€§èƒ½æå‡ã€‚
-
-å®žé™…18-queryå…¨éƒ¨é—­åˆï¼šåŽŸsource17236ã€export78069å‡exit0ï¼ŒåŽŸè‡ªæœ‰DLM/ROI groups3320233/3320234å…¨ç©ºï¼›68567ç›‘ç£è¡Œé€æ®µnative CPUplan0dropï¼Œæ‰€æœ‰actor state/output/pixels exactã€‚åŽŸ69340ç‹¬ç«‹å…¨é‡éªŒè¯exit0ï¼š18è§†é¢‘ffprobeå…±3628å¸§ï¼Œé€å¸§åŽŸå§‹ç²¾ç¡®F32å€™é€‰å¯¹é½ã€æ‰€æœ‰empty/parseræ‹’ç»ä¿ç•™ã€å…¨éƒ¨raw predictionsé€å­—é‡å»ºå¹¶æ— æŸgzipï¼Œå®žé™…archive bytes111683885ä¸€è‡´ï¼›unique1814ç‰©ç†å¸§è¦†ç›–æ—§72å¹¶æ–°å¢ž1742ã€‚å½“å‰ä¸‹ä¸€è¯¾ç¨‹åªå–å…¶ä¸­10910è¯­ä¹‰é—®é¢˜ï¼Œè¾…åŠ©unknown-birth proxiesæœªç›²å…¥lossã€‚384MiB source archive capåœ¨çœŸå®žsourceé€€å‡ºå¹¶éªŒè¯åŽå…³é—­åˆ°111683885bytesï¼Œfeatureä¿å®ˆä¸Šç•Œ26551722974<26843545600ã€ä½™291822626bytesï¼Œé›¶åˆ é™¤/é›¶æ–°feature archiveã€‚
-
-å®Œæ•´æºæ¸…å•åŽŸ84666çœŸå®žexit0ï¼š64ä¸ªimmutableæºæ–‡ä»¶ã€459027é—®é¢˜=252258 MOT/100813 RMOT/105956 OVMOTï¼Œæœªå¤åˆ¶åŽŸnativeç‰¹å¾/å›¾ç‰‡ã€‚æ–°å››å¡å¤§epoch owner94290ï¼ˆ3457625/start49350320ï¼‰å·²å®žé™…å¯åŠ¨ä¸”live exact identityéªŒè¯ï¼Œè¿›å…¥FULL_NATIVE_CPU_PLANï¼Œä»0optimizerï¼›é¡»å…¨éƒ¨å®žé™…native MMè¡Œ/å››rank global16è®¡åˆ’0dropåŽæ‰èƒ½å¯åŠ¨å››å¡FAã€‚åŒåŽŸ6000ä¸€æ ·ä»Žnative600å®Œæ•´FP32 mastersèµ·ç‚¹ã€ç‹¬ç«‹æ–°optimizer/scheduler/RNGï¼Œ1æ•´epoch/seed0/lr2e-6/vision frozen/global16/åŒä¸€ä¸ªfinalæ¨¡åž‹æµ‹å…¨éƒ¨ä»»åŠ¡ï¼Œæ˜Žç¡®æ–°è‡ªç„¶æºæ¯”ä¾‹è€ŒéžåŽŸ24kå‡è¡¡recipeï¼Œä¸å£°ç§°åªéš”ç¦»äº†è§„æ¨¡å› æžœã€‚ä¿ç•™/data3æ¨¡åž‹/checkpointsï¼Œè®­ç»ƒå‰éœ€150GiBç©ºé—´åŠ4/5/6/7å„free32GiBï¼Œå’Œæ‰€æœ‰æ—¢æœ‰ä»»åŠ¡å…±äº«æ€»å…±å››å¡ï¼›æ— Ground-Oneç«¯åˆ°ç«¯æ¢¯åº¦æˆ–é•¿è§†é¢‘BPTTã€‚actual filtered-mediaæ›å…‰é¡»CPUæŠ¥å‘Šå®žæµ‹ï¼Œä¸ç”¨raw1814æºå¸§æ›¿ä»£optimizeræ›å…‰ã€‚ç»ˆè¯„ä»åŒ4å›ºå®šscopeã€åŽŸscorers/é˜ˆå€¼/å…¨empty-rejectï¼ŒTAOç¬¬äºŒç­–ç•¥æ˜¾å¼åŒckptç±»åˆ«å¤ç”¨ã€‚åŽŸä¸»6000å†»ç»“2625updates/10500å·²æ¶ˆè´¹é—®é¢˜ã€è‡³å°‘2500å®Œæ•´stateå·²ä¿å­˜ï¼Œè¾“å…¥æœªæ”¹ï¼›å…¨éƒ¨tracking/æ™®é€šæ°´å¹³ç›®æ ‡ä»æœªå®Œæˆã€‚
-
-2026-10-16ä¸‹ä¸€ç“¶é¢ˆè¯Šæ–­è®¡åˆ’ï¼šä¸Šä¸€goal turnæ˜¯çœŸå®žprogressï¼ˆå››å¡ä¸¥æ ¼æ•°å­¦/å®Œæ•´æ¢å¤/native inferenceé€šè¿‡ã€18-queryå…¨éƒ¨å®Œæˆã€459027å¤§epochå·²æ³¨å†ŒCPUæ£€æŸ¥å¹¶å‘å¸ƒ15a02bbï¼‰ï¼ŒåŽŸ94290/64133/14226/46228/52020 handlesæœ¬è½®å‡ç¡®è®¤liveï¼›å½“å‰å¤§epochä»FULL_NATIVE_CPU_PLANï¼Œä¸»6000å·²2825ã€‚è¯»å®žé™…Full shortlistå’Œtrackerï¼šFullèº«ä»½é€‰é¡¹çº¯å‡ ä½•top32ï¼›Compactå·²æœ‰å›ºå®šhybrid16_16ï¼Œå°šåªæœ‰2-frameåŠŸèƒ½è¯æ˜Žï¼›lifecycleå³ä¾¿é€‰æ‹©LOSTä»åœ¨lost_age>3sç¡¬åˆ é™¤ã€‚æ–°CPUè¯Šæ–­åªå¯¹å·²å®ŒæˆMOT20è‡ªç„¶1657frames/235232candidateså›ºå®šreference_gated3è½¨è¿¹ï¼Œä½¿ç”¨åŒä¸€å·²ç•™FP32å€™é€‰ã€ä¿å­˜decisionsé€frameå› æžœæ¢å¤ï¼Œæ¯”è¾ƒgeometry32ä¸Žå·²æœ‰å›ºå®šhybrid16geometry+16appearanceçš„æ­£ç¡®surviving birth-anchorè¦†ç›–ã€‚appearanceä¸¥æ ¼å¤ç”¨åŽŸCompactå…¬å¼ï¼ˆä¸‰ä»½native memory cosineå‡å€¼ã€ç»„å†…maxï¼‰ï¼Œä¸è¯»å–GTæ¥é€‰å€™é€‰ï¼Œä¸æ”¹å˜åŽŸè½¨è¿¹/seed/æŒ‡æ ‡/TTLï¼Œä¸æŠŠcoverageå½“HOTAæˆ–æ–°æ¨¡åž‹æ”¶ç›Šã€‚ä»…posthocè¯»å–åŽŸå®Œæ•´association diagnosticï¼›ä¿ç•™ç©º/æ‹’ç»å¸§ï¼Œ0GPU/0æ–°feature archiveï¼›æ–°reporté¢„ç•™1MiBä½¿feature upper26552771550<26843545600ã€‚å…ˆç”¨è¦†ç›–å·®è¯†åˆ«æ£€ç´¢æ˜¯å¦æ˜¯çœŸå®žç“¶é¢ˆï¼Œå†å†³å®šåŽç»­é•¿historyè®­ç»ƒç»„ä»¶ï¼Œä¸ç›²æ”¹å½“å‰459027æˆ–6000è¯¾ç¨‹ã€‚
-
-åŽŸ40304å®žé™…exit0ï¼šå®Œæ•´1657frames/235232candidates/117åŽŸæ‹’ç»å¸§ï¼Œæ¯ä¸€æ­¥åŽŸè¾“å‡º/events/stateç²¾ç¡®å› æžœæ¢å¤ã€‚25046ä¸ªå­˜åœ¨known surviving birth anchorçš„å€™é€‰ï¼Œgeometry32æ­£ç¡®IDè¦†ç›–19195=.76638984ï¼Œå›ºå®šhybrid32è¦†ç›–23213=.92681466ï¼Œå¢žåŠ 4292ã€ä¸¢å¤±274ï¼›age1..31 8574/12080->11188/12080ï¼Œage32..127 6644/8936->8021/8936ï¼Œage128+3977/4030->4004/4030ã€‚ä»…å›ºå®šè½¨è¿¹candidate-option oracleï¼Œä¸æ˜¯counterfactualå‡†ç¡®çŽ‡ï¼›å·²åˆ é™¤IDä¸åœ¨åˆ†æ¯ã€‚æŒ‰å·²æœ‰å›ºå®š16/16å®šä¹‰å¯åŠ¨åŽŸ73681å”¯ä¸€å®Œæ•´CPU tracking controlï¼Œ1657å…¨å¸§/åŒ235232å€™é€‰ã€åŒcheckpoint/åŽŸgated-all/lost3s/åŽŸofficial scorerï¼Œä¸æ”¹TTLã€ä¸è°ƒé˜ˆå€¼ã€ä¸æ–°å¢žGPU/åŽŸç”Ÿç‰¹å¾æ¡£æ¡ˆã€‚å¦é¢„ç•™16MiBå°æŠ¥å‘Š/æ— æŸé¢„æµ‹åŒ…ï¼Œfeature upper26569548766<26843545600ï¼Œå®Œæ•´è¾“å‡ºå’Œå”¯ä¸€final identity memoryå±žç§‘å­¦ç»“æžœ/çŠ¶æ€æ£€æŸ¥ç‚¹ï¼Œé€å¸§ä¸å¤åˆ¶åŽŸfeature vectorsã€‚
-
-åŒæ—¶è¯»å·²å®ŒæˆFull3scopeï¼šoldDTæ­£ç¡®èº«ä»½é€‰é¡¹3934/3934=100%ï¼Œä½†å®žé™…fixed-birthæ­£ç¡®å…³è”407/3934ï¼›single67/67ã€multi534/534ä¹Ÿå…¨è¦†ç›–ä½†æ­£ç¡®6/67ã€68/534ã€‚DTå€™é€‰GTcoverage4341/4586=.9466ï¼ŒRMOåŽŸquery coverage10/18å’Œ1133/2112ï¼Œä¸èƒ½æŠŠMOT20æ£€ç´¢ä¸è¶³å½“æˆæ‰€æœ‰Fullä½Žåˆ†çš„å”¯ä¸€åŽŸå› ã€‚old multiå·²åŒ¹é…ç‰©ç†GTä¸Šçš„membership TP277/FN855/FP58/TN49ï¼Œrecall.2447ï¼›è¿™äº›æ˜¯posthocç»„ä»¶æŒ‡æ ‡ï¼ŒéžHOTAæ›¿ä»£ã€‚
-
-ä¸‹ä¸€é›¶GPUæ•°æ®ä¿®å¤è®¡åˆ’å·²ç™»è®°å¹¶å¯åŠ¨åŽŸ56683ï¼šåˆ©ç”¨å·²å®Œæˆ18æ®µçš„68567åŽŸç”ŸFull-v3 rows/çœŸå®žsource historiesï¼Œä¸ºåŽç»­è¯¾ç¨‹æŒ‘é€‰å·²çŸ¥ä¸å¯å˜birthçš„RMO identityåŠfinal-ID writeç›‘ç£ã€‚åªä¿ç•™å½“å‰GTå¯¹åº”ä¸”actual shortlistä¸­å”¯ä¸€æ­£ç¡®birth anchorçš„åŽŸEXISTING labelï¼›NO_MATCHé¡»è¯å®žæœ‰survivingæ­£ç¡®anchorè€ŒéžçŸ­åå•å†…ï¼›multiple-correct ambiguityå•ç‹¬è®¡æ•°ä¸ç›²ç”¨éšæœºaliasä¸‹ä¸å¯åŒºåˆ†çš„canonicalç¡¬æ ‡ç­¾ã€‚Q4é¡»currentGTä¸Žè¢«åˆ†é…birthéƒ½knownï¼Œå¹¶ç‹¬ç«‹ç”±åŽŸreliabilityç­‰çº§>=2ï¼ˆIoU.7ä»£ç†ï¼‰å’ŒGTä¸€è‡´æ€§æ ¸å¯¹åŽŸtargetï¼›unknown assignmentä¿æŒinputä¸”ä¸é€ negativeã€‚state/media/questions/targetså…¨éƒ¨ä»å¼•ç”¨åŽŸgroupï¼Œæ¥æºbirthåªä½œç¦»çº¿certificationï¼Œä¸è¿›å…¥æ¨¡åž‹inputï¼›æŠ¥å‘Šå®žé™…filteredåª’ä½“/anchorè·¨åº¦ï¼Œæœ€åŽæ‰€æœ‰å…¥é€‰rowsåšåŽŸç”ŸCPUè®¡åˆ’0dropã€‚è¯¥æ–°ç»„ä»¶ä¸åŠ å…¥å·²å†»ç»“459027æˆ–æ­£è·‘6000ï¼Œ0æ–°Ground/ROI/åŽŸç”Ÿfeature/optimizerï¼›8MiBé¢„ç•™ä½¿upper26577937374<26843545600ã€‚å…ˆæŸ¥çœ‹çœŸå®žåˆæ ¼æ•°æ®æ”¯æŒï¼Œå†å†³å®šä¸‹ä¸€è®­ç»ƒï¼Œä¸å…ˆå®£ç§°é•¿æ—¶èº«ä»½èƒ½åŠ›æˆ–æ¨¡åž‹æ”¶ç›Šã€‚
-
-åŽŸ73681å®Œæ•´CPU hybrid controlå®žé™…exit0ï¼šåŒ1657å¸§/235232ç²¾ç¡®åŽŸå€™é€‰ã€æ¯å¸§metadata/timestampå®Œå…¨ç›¸åŒã€åŽŸ117rejectä¿ç•™ã€åŒcheckpointã€‚åŽŸç‰ˆofficial TrackEval HOTA7.431603->8.275033%ã€DetA9.635711->10.759073%ã€AssA5.741634->6.368904%ã€IDF16.147357->6.668855%ï¼›IDSW2060->2348ã€FP463->556ã€FN286273->282277ã€‚HOTA+0.84343ppä½†IDSWæ¶åŒ–ï¼Œnative candidate-gap3..30s known-birth12ä¾‹ä»0æ¢å¤ï¼Œä¸èƒ½è¯´æ£€ç´¢è§£å†³å…¨éƒ¨é—®é¢˜æˆ–æ™®é€šæ¨¡åž‹æ°´å¹³å·²è¾¾åˆ°ã€‚æ–°è½¨è¿¹æ”¹å˜birth/åˆ†æ¯ï¼Œä¸èƒ½æŠŠå›ºå®šè½¨è¿¹25046è¦†ç›–çŽ‡ç›´æŽ¥ç­‰åŒå®žé™…counterfactual HOTAå› æžœã€‚ä¿ç•™å®Œæ•´ç§‘å­¦è¾“å‡ºã€posthocæ¢å¤å’ŒåŽŸå§‹é¢„æµ‹æ— æŸåŒ…ï¼Œ0GPU/0optimizerï¼›æœªè‡ªåŠ¨æŽ¨å¹¿Fullæˆ–å˜ä»»ä½•çŽ°æœ‰é˜Ÿåˆ—ã€‚
-
-åŽŸ56683 actual exit0ï¼šé€candidateæ ¸å¯¹åŽŸ18æ®µ10868ä¸ªregistry/current GTã€source actual shortlist/çœŸå®žbirthframeä¸Žnative crop provenanceã€å·²çŸ¥assigned identityï¼›é€‰å‡º1428æ¡å”¯ä¸€æ­£ç¡®EXISTINGï¼ˆå¦271æ¡multiple-correct ambiguityä¸çº³å…¥æœ¬æ–°subsetï¼Œæ‰€æœ‰æ—§rowå®Œæ•´ä¿ç•™ï¼‰+473yes/981noå·²çŸ¥birthçš„Q4ï¼Œå…±2882rows/977å®žé™…filteredåª’ä½“è·¯å¾„ã€‚åŽŸç”Ÿå…¨éƒ¨CPUplan0drop/max17164ã€13942000è®¡åˆ’tokensï¼Œä»0optimizerã€‚anchorè·¨åº¦identity<1s317/1..3s384/3..10s513/10..30s214ï¼›Q4<1s281/1..3s344/3..10s584/10..30s235/>30s10ã€‚state/media/question/targetä¿æŒåŽŸå§‹refsï¼Œå¤ç”¨åŽŸ18æ®µå…¨éƒ¨native pixels/çœŸå®žactorè½¨è¿¹éªŒè¯ï¼Œä¸å°†metadata GTè¯æ®åŠ å…¥æ¨¡åž‹stateã€‚æ­¤æ•°æ®è¡¥å……RMOä»»åŠ¡çš„å·²çŸ¥èº«ä»½å…³è”/å†™å…¥ï¼Œè€Œå½“å‰459027å†…æ–°RMOä»…è¯­ä¹‰familyï¼›æœªæ”¹å˜æ­£åœ¨è¿›è¡Œçš„ä¸¤è½®è®­ç»ƒï¼ŒåŽç»­é¡»ç»“åˆ6000å®žé™…æµ‹è¯„å†å†³å®šå—æŽ§ç»­è®­ã€‚
-
-2026-10-16å…¨é‡CPUè§„åˆ’æ•ˆçŽ‡ä¿®å¤è®¡åˆ’ï¼šå·²è¯»åŽŸfull-source ownerï¼Œ459027æ¡åŽŸç”ŸMMé•¿åº¦æ£€æŸ¥å›ºå®šworld1ï¼Œè¾“å…¥ä»åœ¨æ£€æŸ¥è€Œéžå·²å¼€å§‹å››å¡optimizerã€‚æ–°å¢žç‹¬ç«‹CPU-only Gloo4å…¥å£ï¼Œè°ƒç”¨å®Œå…¨ç›¸åŒtrain.sft.token_lengths/åŽŸrender seed/media counter/paired index shuffleå’Œglobal16 planï¼›å…ˆå¯¹64ä¸ªimmutable sourceå„é¦–/ä¸­/æœ«å®žé™…è¡Œåšserial-vs4é•¿åº¦é€å€¼ç›¸ç­‰gateï¼Œå†å¯¹å…¨éƒ¨è¡ŒåŽŸç”Ÿè§„åˆ’ä¸”0dropï¼Œä¿å­˜int32é•¿åº¦çº¦1.84MBä¾›åŽç»­æ˜¾å¼å¤ç”¨ç ”ç©¶ã€‚å…¨é‡æ£€æŸ¥é€šè¿‡å‰ä¸åˆ‡æ¢åŽŸownerï¼›åŽŸGPUè®­ç»ƒ/æµ‹è¯„ã€åŽŸserialæ£€æŸ¥å‡ç»§ç»­ï¼Œ0æ–°GPUæˆ–æ¨¡åž‹æƒé‡ã€‚å°æŠ¥å‘Šä¸Žé•¿åº¦å¦é¢„ç•™4MiBï¼Œæ€»featureä¸Šç•Œ26583180254<26843545600ï¼›ä¸å°†CPUè®¡åˆ’/çŸ­probeå½“å¤§è§„æ¨¡è”åˆè®­ç»ƒæˆ–é•¿è§†é¢‘BPTTã€‚
-
-å››CPUåŽŸ192æ¡native MMæ•°å€¼gateå·²å®žé™…é€šè¿‡ï¼šè¦†ç›–64æºå„é¦–/ä¸­/æœ«ï¼Œæ‰€æœ‰tokené•¿åº¦serialä¸ŽGloo4é€å€¼ç›¸åŒï¼Œå…¨459027æ£€æŸ¥ä»è¿è¡Œã€‚æ–°å¢žæ˜¾å¼--validated-native-lengthså…¥å£ï¼šåªå…è®¸åŒsource manifest/immutableæºæ–‡ä»¶ã€tokenizer checkpointã€seed/epoch0ã€augmentation/media/lengthä¸Žglobal batché…ç½®ï¼ŒåŽŸç”Ÿbatch/index shuffle/rank dealä¿ç•™ï¼›é»˜è®¤å…¥å£ä¸å˜ã€‚ç‹¬ç«‹çœŸå®ž8æ¡MM regressionå®žé™…exit0ï¼Œæ‰€æœ‰é•¿åº¦/å¾®æ‰¹/å››rank stepåˆ†é…å®Œå…¨ç›¸åŒï¼Œæ”¹seedæ‹’ç»ï¼›0model/GPU/optimizerã€‚full-source owneræ–°å¢žå¯é€‰å·²å®Œæˆplané‡éªŒè¯è·¯å¾„ï¼Œå°šæœªåˆ‡æ¢åŽŸowneræˆ–å®£ç§°full passã€‚æŠ¥å‘Š/æ–°probeæ²¿æœ¬è½®4MiBé¢„ç•™ï¼ŒåŽŸ6000æœ€æ–°4225æ­£å¸¸ã€‚
-
-ä¸‹ä¸€è‡ªåŠ¨æŽ¥ç»­è®¡åˆ’ï¼šæ–°å¢žå•ä¸€blocking coordinatorï¼Œç­‰å¾…åŽŸ49885å®žé™…exit0/full459027åŽŸç”Ÿé•¿åº¦å®Œæˆï¼Œå¤ç”¨å…¥å£å¦åšå…¨é‡CPUé‡éªŒè¯å¹¶è¦æ±‚æ‰€æœ‰summaryå®Œå…¨ç›¸åŒï¼›ä»…åŽŸownerä»åœ¨CPUä¸”GPUè®­ç»ƒè·¯å¾„ä¸å­˜åœ¨æ—¶ï¼Œå…ˆå†»ç»“å¹¶ç¡®è®¤åŽŸparentçŠ¶æ€Tï¼Œå†ç¡®è®¤å…¶exact CPU child/CUDAä¸ºç©ºï¼Œä¿ç•™handoff intentå’Œå…¨éƒ¨æ—§æ—¥å¿—ï¼Œç»ˆæ­¢å°šæœªå®ŒæˆCPUå­å•å…ƒã€‚åŽŸparentè®°å½•çœŸå®ž-15/assertioné€€å‡ºä¸ä¼ªé€ æˆåŠŸï¼›åŒåŽŸ459027/seed0/global16/åŽŸç”Ÿ600FP32åˆå§‹åŒ–/è¯„æµ‹åè®®çš„æ–°owneræŽ¥ç»­ï¼ŒçœåŽ»é‡å¤tokenizeï¼ŒåŽŸGPUè®­ç»ƒä¸Žæµ‹è¯„ä¸åœæ­¢ã€‚è‹¥åŽŸownerå·²è¿›å…¥GPUåˆ™ä¸åˆ‡æ¢ã€‚æ–°ç‹¬ç«‹first5 observeræ˜¾å¼ç»‘å®šæ–°owner/configï¼Œæ—§observerä¿ç•™åŽŸç»ˆæ­¢è¯æ®ã€‚é¢å¤–å…ƒæ•°æ®+observerå…±1MiBï¼Œfeature upper26584228830<25GiBï¼›ä¸æ”¹å˜æ ·æœ¬/metric/seed/é—¨æ§›ï¼Œä¸å°†ç­‰å¾…/æ•°æ®è®¡åˆ’å½“è®­ç»ƒå®Œæˆã€‚
-
-4500å®žé™…é‡Œç¨‹ç¢‘æ ¸éªŒè®¡åˆ’ï¼šåŽŸ64133å·²è¾“å‡º4500/18000åŠ9029140633byteså®Œæ•´FP32/Adam/RNGä¿å­˜ã€‚ä»…CPUè¯»å–åŒä¸€ä¸ªatomic latest stateï¼ˆä¸å¤åˆ¶9GBï¼‰ï¼Œæ ¸éªŒ320 FP32 masters/ä¸¤Adamå…¨å‘é‡finiteåŠå…¨éƒ¨moment step/scheduler/cursor4500ï¼Œè¯»å–å†»ç»“24kè¯­æ–™æŒ‰åŽŸseed0 index-shuffleè®¡ç®—çœŸå®žå·²æ¶ˆè´¹ä»»åŠ¡/unique source row/é¦–åª’ä½“è·¯å¾„æ›å…‰ï¼Œæ˜Žç¡®é‡å¤é—®é¢˜ä¸ç­‰äºŽç‹¬ç«‹å¸§ï¼Œä»æ— 6000ç»ˆè¯„ã€‚å°æŠ¥å‘Šå¦é¢„ç•™512KiBä½¿feature upper26584753118<25GiBï¼›åŽŸå…¨éƒ¨è®­ç»ƒ/æµ‹è¯„/CPUé˜Ÿåˆ—ç»§ç»­ã€‚
-
-4500 checkpoint CPUå®Œæ•´æ ¸éªŒåŽŸ78686 actual exit0ï¼šå…¨éƒ¨752393024 FP32å‚æ•°ã€1504786048 Adam momentå…ƒç´ finiteï¼Œ320optimizer step/scheduler/cursor4500ä¸Žseen18000ä¸€è‡´ï¼›185æ¡å®žé™…æ—¥å¿—loss/grad finiteã€‚çœŸå®žsampleræ¶ˆè´¹MOT5957/RMOT5977/OV6066é—®é¢˜ï¼Œå®žé™…é¦–åª’ä½“è·¯å¾„MOT980/RMO72/OV3064ã€‚é¦–ç‰ˆæ›å…‰metadataæŠŠè¯¾ç¨‹é‡æ–°ç¼–å·IDå½“source IDï¼ŒåŽŸè®°å½•é”™è¯¯è®¡æ•°ä¿ç•™åœ¨exposure_count_correctionï¼›å·²æ”¹ç”¨supervision.source_row_idå•ç‹¬é‡ç®—ï¼ˆä¸é‡å¤æ‰«æ9GBçŠ¶æ€ã€ä¸æ”¹è®­ç»ƒï¼‰ï¼Œè¯¾ç¨‹IDä¸Žsource IDåˆ†åˆ—ã€‚å®žé™…unique source rowsä¸º{"rmot": 5677, "mot": 5957, "ovmot": 5624}ã€‚ä¸ç§°ç‹¬ç«‹è½¨è¿¹æ•°é‡æˆ–6000å®Œæˆ/è·Ÿè¸ªå¢žç›Šï¼›å®Œæ•´latest4500å·²éªŒè¯ä½†æœªæ¥5000ä¼šåŽŸå­æ›¿æ¢ï¼Œç¼–å·BF16æƒé‡ä¿ç•™ã€‚
-
-å…¨é‡CPU completionæ ¸éªŒè®¡åˆ’ï¼šåŽŸ94290å·²å…ˆé€šè¿‡serial full planå¹¶è¿›å…¥FULL_JOINT_FOUR_GPU_TRAININGï¼ŒåŽŸ17189å®žé™…è¿”å›žåŒé˜¶æ®µç­‰å¾…æ›´æ–°ï¼›å¹¶è¡Œ49885åŽå®Œæˆactual exit0ï¼Œcoordinator2858 actual exit0/status ORIGINAL_ALREADY_ADVANCED_NO_HANDOFFï¼Œæ— ä»»ä½•signal/é‡å¯ã€‚æ¯”è¾ƒä¸¤ä»½completed native planå…¨éƒ¨summaryï¼ˆé™¤ä¸åŒè®¡æ—¶å®šä¹‰ï¼‰ï¼Œæ ¸éªŒint32 459027é•¿åº¦åŠint64æ€»å’Œ/åŽŸç”Ÿglobal16åŒseed0è®¡åˆ’å…¨è¡Œå®ˆæ’å’Œtail3ï¼›è¯»å–åŽŸRMOT source refs/group first-mediaï¼Œè¿½æº¯raw1814ä¸Žsemantic1796å®žé™…æ›å…‰å·®18ï¼Œä¿ç•™å…¨éƒ¨raw/åŽŸè¡Œï¼Œä¸æ›´æ”¹æ­£åœ¨è®­ç»ƒæ•°æ®ã€‚æŠ¥å‘Šä¸Žå·²å®Œæˆlengtharrayæ²¿åŽŸ4MiBæŠ¥å‘Šé¢„ç•™ï¼Œä¸æ–°å¢žGPU/featureæ¡£æ¡ˆï¼›å®žæµ‹CPUè®¡åˆ’tokens5639441074/28690updatesæ˜¯è®¡åˆ’ï¼Œä¸æ˜¯å·²æ¶ˆè´¹tokens/è®­ç»ƒç»“æžœã€‚
-
-åŽŸ35297 actual exit0ï¼šserialä¸Ž4CPUå…¨éƒ¨å®Œæ•´æ•°å€¼summaryç›¸åŒï¼Œ459027é•¿åº¦array int32/å…¨int64æ€»5639441074æ ¸éªŒï¼ŒåŽŸç”Ÿindex-shuffle/global16æ°28690updatesã€æœ«step rankè¡Œæ•°1/1/1/0ï¼Œå…¨éƒ¨è¡Œä¸€æ¬¡ä¸æ¼ä¸é‡ã€‚native allreduce_gradsåŽŸå®žçŽ°ä¸ºæ— æœ¬åœ°æ¢¯åº¦å‚æ•°è¡¥é›¶å†SUMï¼Œæœ«rankç©ºä¸ä¸¢æ ·æœ¬ã€‚å®žé™…è¾“å…¥é¦–åª’ä½“MOT1056/RMO1796/OV17023ï¼›RMO raw1814çš„18å¼ å·®é¢åœ¨ä¸¤queryåŽŸä¿ç•™ç›‘ç£ä¸­éƒ½ä»…æœ‰lifecycleï¼Œç™»è®°semantic-onlyä¸é€‰è¿™äº›proxyï¼ŒåŽŸå§‹å¸§/rowå®Œæ•´ä¿ç•™ï¼Œä¸é€ æ–°presenceæ ‡ç­¾ã€ä¸æ”¹å½“å‰æ•°æ®ã€‚åŽŸserial CPUè®¡æ—¶7943.0sä»…captureåŽå…¨planï¼›4CPU2415.9så«åŠ è½½åŠ192probeï¼Œä¸ä½œä¸¥æ ¼å—æŽ§é€Ÿåº¦åŸºå‡†ã€‚åŽŸå››å¡owner94290ä»ä¿ç•™ï¼ŒåŽŸ17189å·²å®žè¯é˜¶æ®µåˆ‡æ¢ä½†é¦–5å®žé™…optimizerä»å¾…è§‚æµ‹ï¼›æ— handoff/é‡å¯/ä¿¡å·ï¼Œä¸‰ä»»åŠ¡æ™®é€šæ°´å¹³æœªè¯æ˜Žã€‚
-
-åŽŸ17189 actual exit0ï¼šfirst5å››å¡çœŸå®žè®­ç»ƒå·²éªŒè¯ï¼Œactual step1..5/seen16,32,48,64,80ï¼ŒMOT49/RMO12/OV19ï¼›5æ¡loss/CE/Brier/gradientå…¨finiteä¸”gradient>0ï¼ŒåŽŸç”Ÿ600åˆå§‹åŒ–320FP32/752393024å‚æ•°maxdiff0ï¼Œexact4rankåˆ†åˆ«åœ¨ç‰©ç†4/5/6/7ï¼ŒåŽŸowner94290æœªé‡å¯ã€‚æ–°phase28690æ­¥/459027é—®é¢˜/vision frozen/seed0/ç¡®å®šæ€§FAï¼Œéžrunning6000ç»­è®­ã€éžGround-Oneè”åˆæ¢¯åº¦ã€éžé•¿è§†é¢‘BPTTï¼›é¦–5ä»…å¯åŠ¨è¯æ˜Žä¸æ˜¯å®Œæ•´epoch/è·Ÿè¸ªæ”¶ç›Šã€‚å‰5å®žé™…globalè¾“å…¥åžåçº¦13.1k..15.0k tokens/sã€æ¯æ­¥9.7..19.3ç§’ï¼Œä»…æžçŸ­æ—©æœŸ/åŒGPUå…±ç”¨è®°å½•ï¼Œä¸ä½œç¨³å®šé€Ÿåº¦æˆ–ç»“æŸæ—¶é—´é¢„æµ‹ã€‚åŽŸ6000å¦å·²è‡³å°‘5300updatesï¼Œ5000å®Œæ•´9029140633byteæ¢å¤state/save receiptä¸Žç¼–å·BF16å­˜åœ¨å·²æ ¸éªŒï¼›ä¸é‡å¤4500å·²å®Œæˆçš„å…¨éƒ¨æ•°å€¼æ‰«æã€‚æ›´æ–°TRAINING_LOG/CURRENT_STATUSé¡¶éƒ¨ï¼Œæ—§activeçŠ¶æ€æ ‡åŽ†å²ï¼Œä¿å­˜first5å®žé™…argså’Œ5000saveå°receiptï¼›æ²¿åŽŸobserver1MiBåŠæ—¢æœ‰future-curriculum metadataé¢„ç•™ï¼Œ0æ–°feature/model/optimizerã€‚æ‰€æœ‰trackingç»ˆè¯„ä¸Žordinary-levelç›®æ ‡ä»æœªå®Œæˆã€‚
-
-è¿žç»­è§‚æµ‹è®¡åˆ’ï¼šåŽŸå››å¡è®­ç»ƒå®žé™…first5å·²å®Œæˆå¹¶å‘å¸ƒï¼Œä½†94290åŽŸshellå¥æŸ„ä¸è½¬å‘é€æ­¥stdoutï¼Œå®žé™…æ—¥å¿—åœ¨training/log.jsonlã€‚æ–°å¢žå•ä¸€blockingåªè¯»è·Ÿéšå™¨ï¼Œæ ¸å¯¹åŽŸowner PID/starttick/cwdåŽç”¨pidfdå†…éƒ¨ç­‰å¾…ï¼ŒæŒç»­è½¬å‘æ–°å®Œæ•´JSONæ—¥å¿—/phaseå˜åŒ–å¹¶æ£€æŸ¥loss/gradient finiteï¼›ä»Žå·²è¯æ˜Žstep5ä¹‹åŽæŽ¥ç»­ï¼Œä¸é‡å¯è®­ç»ƒã€ä¸å†™æ–°featureæˆ–æ¨¡åž‹ã€ä¸è¿›è¡Œagent-level ps/tailè½®è¯¢ã€‚ä¼˜åŒ–å™¨doneä»…è¡¨ç¤ºè®­ç»ƒæ­¥éª¤ç»“æŸï¼Œæœ€ç»ˆreload/è·Ÿè¸ªæŒ‡æ ‡ä»äº¤åŽŸowneræ ¡éªŒã€‚
-
-åŽŸ76060å•ä¸€blocking followerå®žé™…æŽ¥ä¸ŠåŽŸ94290çš„åŒä¸€è®­ç»ƒï¼Œç«‹å³è½¬å‘å®žé™…step25/400rowsï¼Œloss2.044512/grad208.539å‡finiteï¼Œæœ€è¿‘çª—å£12.097s/updateã€14576.845global planned-input tokens/sï¼›åŽŸæ ·è®°å½•å…±ç”¨GPUçš„æžæ—©æœŸæ ·æœ¬ï¼Œä¸å½“ç¨³å®šé€Ÿåº¦/ç»“æŸæ—¶é—´/æŽ¨ç†E2Eæˆ–è´¨é‡æ”¶ç›Šã€‚åŽŸæ—¥å¿—åŽŸæ ·è¯»ä¸æ”¹ï¼Œfirst400å®žé™…seed0 sampler task counts={"mot": 203, "rmot": 98, "ovmot": 99}ï¼›æ³¨å†Œfollowerå¥æŸ„ä¾›åŽç»­ç›´æŽ¥write_stdinï¼Œç›´åˆ°optimizer doneäº¤åŽŸparentå®Œæˆreload/scorersï¼Œ0æ–°å¢žæ¨¡åž‹/feature/optimizerã€‚
-
-6000å®Œæˆæ ¸éªŒå‡†å¤‡ï¼šå¤ç”¨å·²å®žé™…éªŒè¯4500çš„CPUå®Œæ•´çŠ¶æ€/æ›å…‰freezerï¼Œä»…å°†ç»“æžœå­—æ®µæ‹†ä¸ºcomplete6000_trainingä¸Žnew_tracking_metrics_availableï¼Œé¿å…6000å®žé™…ç»“æŸæ—¶ä»æŠŠäºŒè€…åˆå¹¶æ ‡falseï¼›ä¸æ”¹éªŒè¯é—¨æ§›ã€è®­ç»ƒã€é‡‡æ ·æˆ–metricã€‚åŽŸownerè´Ÿè´£ä¿å­˜å…¨éƒ¨6000 FP32/Adam/RNGã€final BF16ä¸Žnative-MM reloadåŽå›ºå®šå››scopeå¯¹ç…§ã€‚å¾…åŽŸé˜»å¡žè®­ç»ƒè¾“å‡ºå®Œæˆ/é˜¶æ®µäº‹ä»¶åŽæ‰è¿è¡ŒCPUéªŒè¯ï¼Œä¸é‡å¤æ‰«æä»åœ¨è¿›è¡Œçš„5500çŠ¶æ€ã€‚
-
-Compactæ‰©å±•æœ€å°è®¡åˆ’ï¼šçŽ°æœ‰å…±äº«Compactåªæœ‰48MOT/72RMO/64OVå°packï¼Œè€Œå·²æœ‰43MOT1056å¸§+18RMO3628queryè§‚å¯Ÿçš„çœŸå®žCompact actoråŽŸç”ŸFull-v3å¯¼å‡ºï¼Œè¾“å…¥å†…å«ç¡®åˆ‡pre-write geometryä¸Žanchor/recent/longåƒç´ æ¥æºã€‚åšåªè¯»FP32å¼•ç”¨loaderï¼šæŒ‰source archive(frame,candidate)é‡å»ºå½“å‰ä¸Žä¸‰ä»½åŽ†å²2560å‘é‡ï¼Œä¿å­˜å°geometryå’Œreferenceå…ƒæ•°æ®ï¼Œä¸é‡å¤ä¿å­˜æ¯groupçº¦1MBåŽ†å²å‘é‡ï¼›åŽŸç›‘ç£è¡Œç‹¬ç«‹ä¿ç•™ï¼Œassignment/opaque aliasåªä½œçœŸå®žè¾“å…¥æ¡ä»¶ä¸å¼•å…¥GTã€‚å…ˆCPUæ£€éªŒä¸ŽåŽŸCompact.forwardå®žé™…è¾“å…¥é€tensorç›¸ç­‰ã€source outputs/statesä¸€è‡´ï¼›ä¿ç•™å…¨éƒ¨ç©º/æ‹’ç»å¸§ï¼Œç©ºn0/m0æ˜Žç¡®åŽŸCompactä¸è°ƒç”¨forwardï¼Œä¸èƒ½ä¼ªç§°æ–°å¢žpresence headã€‚æ­¤ä¸ºæœªæ¥ä¸‰ä»»åŠ¡Compactæ‰©å±•è¾“å…¥ç»„ä»¶ï¼Œ175ç±»ROIä¸Žæ–°train recipeå°šæœªå‡†å¤‡/å¯åŠ¨ï¼›0GPU/optimizerã€ä»…32MiB metadataé¢„ç•™ï¼Œfeature upper26618307550<25GiBã€‚å½“å‰ä¸¤è½®OneJevè®­ç»ƒåŠæµ‹è¯„ä¸å˜ã€‚
-
-Compact inputç»„ä»¶åŽŸ35764 actual exit0ï¼šå…¨éƒ¨61unit/4684query-frame contextsã€7071ordinaryè¾“å…¥groupä¸Ž5870çœŸå®žassignedæ¡ä»¶ï¼Œ45ç©ºn0m0groupä¿ç•™ï¼›MOT1056/RMO1814uniqueç‰©ç†å›¾ã€‚ä»…21265696byte metadataï¼ŒFP32 arrayså…¨éƒ¨å¼•ç”¨åŽŸå½’æ¡£ä¸å¤åˆ¶ï¼›8920æ¬¡é‡å¤boxå¼•ç”¨åœ¨çœŸå®žæ•°æ®ä¸­é€å€¼ç¡®è®¤åŽŸF32å‘é‡ç›¸åŒï¼ŒæœªçŒœæµ‹åŒ¹é…ã€‚åŽŸ85147 actual exit0ï¼š3çœŸå®žsourceå„å‰3å¸§ã€36å®žé™…forward groups/22å¸¦åŽ†å²ã€6784728è¾“å…¥tensorå…ƒç´ torch.equalï¼Œæ‰€æœ‰nativeæ¨¡åž‹forward/actual source outputs-stateå®Œå…¨ç›¸åŒï¼Œ0GTä¿®æ­£/0GPU/optimizerã€‚å…¨61æ•°æ®å‡†å¤‡ä¸Žä¹å¸§æ•°å€¼regressionèŒƒå›´åˆ†å¼€è®°å½•ï¼Œä»ä¸æ˜¯å®Œæˆä¸‰ä»»åŠ¡Compactè®­ç»ƒpackï¼ŒOV175native featuresæœªé‡‡é›†ã€æ–°modelè®­ç»ƒæœªå¯åŠ¨ï¼›åŽç»­å…±äº«è®­ç»ƒéœ€è¡¥é½è¯¥ç»„ä»¶åŠç‹¬ç«‹ç™»è®°recipeã€‚å®Œæ•´21MBå¯å†ç”Ÿmetadata cache server-onlyï¼Œå‘å¸ƒloader/builder/validator/config/å®Œæˆè¯æ®ï¼Œä¸æŠŠç¼“å­˜å½“trackingç»“æžœã€‚åŽŸä¸¤ä¸ªOneJevè®­ç»ƒå’Œæ‰€æœ‰è¯„æµ‹ç»§ç»­ï¼Œgoalæœªå®Œæˆã€‚
-
-Compact OV175è¡¥é½è®¡åˆ’ï¼šä»…å¤ç”¨åŽŸæ­£è·‘24kè¯¾ç¨‹ä¸­å·²ç™»è®°4000ä¸ªrootå¯¹è±¡drawåŠå…¶leafå¯¹åº”ï¼Œä¸å¦é€‰GTéš¾åº¦/ç±»åˆ«æˆ–è¯»eval/Novelæ ‡ç­¾ã€‚CPUé€ä¸€æ ¸å¯¹train-Base annoID/vocab index/image/GT bboxä¸ŽåŽŸcrop recipeï¼›åŽ»é‡è§‚å¯Ÿå‘é‡æŒ‰annotationIDç´¢å¼•ï¼Œä¿ç•™rare-classåŽŸdrawé‡å¤ã€‚æ–°ç§æœ‰GPU4 ROI-onlyè§†è§‰æœåŠ¡ä¸ŽçŽ°æœ‰ä»»åŠ¡å…±ç”¨4/5/6/7æ€»4å¡ï¼Œä¸åœæ­¢ä»»ä½•æ—¢æœ‰è¿›ç¨‹ï¼ŒåŽŸç”ŸMoonViT/projectoræ— è¯­è¨€è§£ç /æ–°DLMè¯·æ±‚ï¼ŒRPCåªç»™åŽŸå›¾+æ¡†ã€‚å•ä¸€FP32memmap bankçº¦36MiBåŠé€å›¾å®Œæˆè®°å½•æ”¯æŒæœªå®Œæˆå•ä½æ¢å¤ï¼Œæ— æ–°PNG/æ•´é›†ç¼“å­˜ã€‚64MiBé¢„ç•™ä½¿upper26685416414<25GiBï¼›æ­¤ç»„ä»¶ä¸å¯åŠ¨Compactoptimizerï¼Œå¤´/é‡‡æ ·recipeå¦ç™»è®°ã€‚
-
-## 2026-10-16 â€” shared6000 completion and joint-training scope
-
-Balanced shared OneJev MOT/RMOT/OVMOT training completed6000updates/24000questions (8000per task),29432.9s. Final full FP32/Adam/RNG state validates all752393024parameters and1504786048moment elements finite, all320Adam counters/scheduler/cursor6000; native multimodal repeated reload probability difference0. Retain final and numbered checkpoint; downstream controls have started and tracking gains remain pending. Actual first-media paths:1056MOT/72RMOT/3227OVMOT, distinct from question counts. Independent four-GPU full-source epoch latest observed425/28690updates,6800questions,finite loss/gradient. Ground and OneJev are separately optimized; no end-to-end joint foundation gradient or long-video BPTT. Evidence: outputs/groundjev/training/shared6000_actual6000_snapshot_v1/validation.json.
-
-## 2026-10-16 â€” broader native Compact supervised adaptation plan
-
-Hypothesis: the previous Compact corpus (48MOT/72RMOT/64OV images) limits transfer; first isolate broader data with the unchanged semantic Compact architecture and existing runtime. Build a fresh explicitly registered question-level curriculum from43MOT native units,18RMOT native query units and the selected175Base native teacher ROI bank. Route only supported original heads (identity/observation-update/reliability/lifecycle/Membership/flat category); inventory unsupported presence and final-ID questions rather than relabeling them. No RMOT unknown-birth auxiliary labels or OV teacher identity/update targets are invented. Train one common final checkpoint on CPU, retain original actor as before control, and run unchanged causal evaluation before judging gains. This is supervised Compact adaptation, not native OneJev decoder reasoning or a completed large-scale epoch.
-
-Compact curriculum first target validation failed onMOT20-05_766_batch0_match_13: no-history native questions have onlyNEW/IGNORE, while existing Compact keeps a third hard-maskedNO_MATCH logit. Encoded target already correctly padded zero; fixed only the validator legal-option expectation, preserving all source labels/questions and the existing model. Failure receipt retained. Base175 native-input validation meanwhile passed all175class representatives/216205500tensor elements with exact inputs and forward outputs.
-
-Broader Compact curriculum now concretely prepared and all24000selected labels checked against original native questions/option order. Balanced MOT8000 (5000identity/2000life/500observation-update/500reliability), native RMOT8000membership (4000yes/4000no), OV8000flat-class exposures preserve the4000originalBase draws twice. Actual eligible first-media coverage1053MOT/1795RMOT/3227OVimages; all226query-frame contexts without a selected supported head explicitly inventoried, original1056/1814source frames preserved. This new question-level balanced recipe also changes sampling/loss aggregation, so resulting comparison is not an isolated data-only ablation. Real three-task8-update continuous versus4+4restored CPU trajectories match every model/Adam/counter/RNG value exactly. Registered8000updates/24000questions unchanged-architecture training and subsequent five unchanged causal controls launched onCPU, no additional GPU. Native OneJev large epoch and6000model controls continue separately.
-
-Broader Compact actual first100updates/300questions verified from its complete log and live PID/starttick, all first logged losses/gradients finite; this is real training, not only registration. Single Base bank component42,597,901bytes<64MiB and curriculum metadata547,051bytes<16MiB; registered caps retained conservatively. CPU before/after scope protocol uses nonoverlapping MOT20train766â€“893 versus validation1659â€“3315. Final8000 and five-scope scores pending; no training-gain claim.
-
-Frozen fit affinity diagnosis (1250selected unique correct-existing questions) completed before training: native2560cosine retrieves correct listed identity1050/1250=84.00%, projected128cosine1026/1250=82.08%, IoU986/1250=78.88%, learned existing-only logits893/1250=71.44%; adding existing action competition leaves521/1250=41.68% full correct decisions, with589NO_MATCH choices despite a correct existing option. Thus this fit evidence points more strongly to association/action learning than a wholesale loss of appearance in compression. It is neither held-out accuracy nor causal tracking gain. A read-only owner waits on the verified original Compact trainer PIDfd, then repeats the identical frozen cases using its final checkpoint; no running recipe/runtime changed.
-
-Shared Compact8000 completed24000questions/1167.332s (19.46min),1,146,511parameters,1,139,601changed elements. Full model/Adam finite and export exact; three-task reload exact. Fit1250 existing-ID full correct521â†’656 (41.68â†’52.48%), but first held-out DT1203 control strongly regresses: HOTA26.3157â†’5.5800%, IDF130.6329â†’6.7840%, IDSW165â†’488,FP579â†’1511,FN1962â†’3637. Preserve negative model; no promotion. Remaining four scopes continue unchanged. Register a separate matched MOT-only8000 update control with the exact original MOT row sequence, sameinitial/Adam/LR/weightdecay/clip and loss/3, excluding only RMOT/OV losses by explicit opt-in. This separates task-gradient interference from the changed data/sampling recipe, without claiming FLOP matching. No new features/GPUs.
-
-Remaining first-three-scope results: RMOTsingle800 HOTA6.0247â†’1.0579%, IDF12.8902â†’0%; RMOTmulti800 HOTA19.8019â†’12.5237%, IDF121.0082â†’13.1709%. All are negative; retain completed joint8000 model and all five registered controls. The separately declaredMOT-only8000 control has actually passed100updates/100questions; its8versus4+4 full model/Adam/RNG restore is exact. Optional task-subset implementation preserves the original three-task8update model/Adam/RNG/protocol/exposure bit for bit.
-
-MatchedMOT-only8000 completed8000questions/944.519s, full-state finite/export/reload exact; zero category/membership head changes verified. It also strongly regresses DT1203: HOTA26.3157â†’1.67995%, IDF130.6329â†’0.82034%, IDSW165â†’1303; singleRMO HOTA6.0247â†’2.49096%. Fit correct-existing733/1250=58.64% remains better than original41.68% but does not transfer. Cross-task gradient interference alone cannot explain failure. Registered targeted DT1203 causal intervention for both trained checkpoints: association unchanged, fixed auxiliary policy (write1/reliabilityNone/no learned lifecycle), retain all default negatives and entire pending five-scope studies. This diagnoses the combined auxiliary policy, not a lifecycle-only ablation or successful replacement model. JointTAO40 separately improves TETA14.517â†’19.252 viaLocA8.088â†’17.963 andAssocA5.1478â†’11.012, whileClsA30.314â†’28.781 worsens andNovelClsA stays0.
-
-Posthoc DT1203 auxiliary-policy intervention completed5arms: joint fixed-auxHOTA5.6588% versus5.5800default;MOT-onlyfixed-aux3.2215% versus1.67995default, both far below original26.3157%. Combined auxiliary replacement alone does not repair association. Original43-sourceMOT labels measured: EXISTING22117/48051(46.03%), NEW11489,IGNORE7992,NO_MATCH6453; lifecycleACTIVE60077/93624,TERMINATE4682/93624(5.00%),LOST12117,REACTIVATE16748. Selected uniform label quotas impose25% each. Register an exact-row/initial/optimizer-matched MOT-only8000 loss-weight control using TRAIN source-frequency/selected-frequency ratios, loss/3 and all existing policies/metrics unchanged. This is an exploratory source-prior hypothesis, not guaranteed deployment calibration; no validation label ratios used.
-
-TRAIN-source prior-weightedMOT-only control actually passed100updates/100questions, finite loss/gradient, exact8vs4+4model/Adam/RNGprefix validation passed. JointMOT20full1657 inference finished; a single resource diagnosis confirms original official evaluator actively running onCPU (491CPU seconds/~60.3GiBRSS at observation), not a stopped model job. Keep original scorer and all frames unchanged; no finalMOT20metric yet.
-
-Next focused diagnosis: replay all1203DTvalidation original CPU actor frames exactly and evaluate original/joint/MOT-only checkpoints on identical captured pre-write input tensors. Score identity argmax and a shadow single-step global assignment using external GT/immutable old birth IDs only after inputs are fixed. Exact original outputs/states and shadow-choice parity required on every frame; no new causal score, training or feature pack claimed. This separates conditional decision failure from changed closed-loop history without GT state repair.
-
-DT1203 frozen-prefix diagnosis completed1203frames/13664candidates; every original output/state and shadow global assignment exact. On1768correct-existing options, original argmax correct651, joint6, MOT-only55; joint predictsIGNORE on1726/1768, MOT-only1527/1768. Thus severe conditional rejection exists before any new-policy history change; exposure bias alone is insufficient. Overall argmax accuracy is dominated by IGNORE and is not a tracking metric. Audit TRAIN and validation birth-label support separately: determine whether all-proposal Hungarian matching leaves actual unique GT-supported emissions unbound, and count isolated valid IoU edges lost by assignment-before-threshold. Do not relabel or alter any running study during this diagnostic.
-
-Birth support auditv1 finished all43train clips and DT1203 validation computations, then exited1 because final json.dumps call used an unsupported keyword. Saved computations and failure receipt retained. Fixed only final summary dictionary construction and rerun the identical read-only audit into freshv2; no labels, frames or acceptance criteria changed.
-
-Birth supportauditv2 exits0: only2/844TRAINbirths have unbound, uniquely supported actual emissions; assignment-before-threshold loses4isolatedvalidTRAINedges. These rare verified cases cannot explain the broad collapse, so do not relabel corpus or interrupt original four-GPU training. SharedFullOneJev6000 defaultDT1203 also regresses HOTA8.7030â†’7.8406%, IDF15.8260â†’3.5341%, IDSW3631â†’2796; assigned-ID samecheckpoint comparison continues. TRAIN-prior-weightedCompact8000 completes8000questions/944.302s, DT HOTA2.5567%, singleRMO3.5421%, multiRMO15.7803%; prior correction alone does not repair. Measured selectedMOT source mix5934MOT20/779MOT17/1287DT, but correct-existing questions496/255/499. Selected correct-history age/100 median.06,max1.23 andconfidence median.592. Register frozen old-prefix weighted-model plus GT-agnostic zeroage/zeroconfidence/zero4scalar interventions and actual input-domain quantiles; no continuous tracking gain or changed default protocol.
-
-Scalar interventions fail to restore conditional identity decisions: weighted model correct3/1768, noage43, noconfidence1, no4scalars26 versus original651. Real correct-alias age/100 median2.03,max8.46 exceeds selectedTRAINmedian.06,max1.23, but erasing scalars alone is insufficient. Corrected an inherited report flag that had claimed all tensors identical despite explicitly declared scalar interventions; source plans/metrics/decisions unchanged, original flag retained in scope-correction receipt. Next implementation: frozen-core multitask adapter with zero-initialized learned native ROI cosine/IoU/distance residual for matching/actions; train only small residual and category/membership heads, preserving original backbone, text-conditioning and auxiliary/association weights exactly. Use identity-onlyMOT plus nativeRMOTmembership/BaseOVcategory, same one final model and an inference residual-disabled ablation. This is a new Compact adapter study, not a native OneJev decoder or trainable shared-backbone claim.
-
-Frozen-core native-relation adapter now concrete: total1,147,379parameters,66,790trainable (868native pair/action residual plus category/membership/scale). New output layers are exactzero; wholeDT1203/13664native candidates reproduce every original output/state/shadow assignment and every untrained model tensor output exactly. New24000-question corpus labels/options validated (8000identity/8000membership/8000Basecategory), all263unsupported query-frame contexts explicitly retained in source inventory; actualeligible images1016MOT/1795RMOT/3227OV. Real three-task8continuous versus4+4restored full model/Adam/RNG is bitexact. CPU8000update production and same-final residual-disabled inference ablation/five-scope controls launched; original backbone/text/association/auxiliary weights frozen, no newshared-backbone or OneJev decoder-gradient claim. New8MiBmetadata reservation raisesconservative temporary upper26710582238<26843545600; no newROI features or GPU.
-
-Clarification: birth-support audit counts only provably unique GT-supported emitted cases. Remaining ambiguous original unbound births are not certified correct, so the broader binding-label mechanism is not ruled out. Keep original data and report uncertainty. Shared/MOT-only8000 full five-scope controls completed; sharedMOT20 improvesHOTA7.4316â†’11.4780% butIDSW2060â†’58632, Monly5.6407%; no model promotion.
-
-Native-relation production has actually passed100updates/300questions (100per task); intermediate saved-state validation compares every frozen original weight exactly and checks all model/Adam values finite. Initial parity and prefix restore are execution evidence only; no new tracking gain yet.
-
-TRAIN-prior8000 also completed allfive causal scopes; naturalMOT20 HOTA3.10833553628264%, IDF11.890913979096887%, IDSW30884. Frozen-core native-relation actual saved state observedat3000updates/9000questions: all59original fixed tensors/1080589elements exact, allmodel/Adamfinite. This verifies execution/frozen-boundary only, not gain.
-
-Registered one blocking CPU observer for original full-source four-GPU1000step save; original ownerPID/starttick/cwd confirmed, no processes signaled/restarted. It waits for the actual full-state receipt, then checks all752393024FP32masters/1504786048Adam elements,320counters/scheduler/cursor,all4rankRNG payloads and actual sampler task exposure. It performs no optimizer updates, GPU allocation or actual1000step restart; report pending. Small report reuses1MiB of the already registered8MiB adapter/report reserve.
-
-Native relation8000 completes24000questions/1040.460s. All59fixedweight tensors exact, final full state/export/reload pass. Residual-disabled inference restores originalDT HOTA26.3157% exactly; trained residualDT15.3059%, singleRMO0%, multiRMO24.1906% (disabled19.1828,original19.8019), multiIDF129.2044% andIDSW97 versusoriginal21.0082/165. Positive isolated multi-query component effect but overall regression remains; retain both same-final variants and finish registeredTAO/MOT20 scopes, no promotion.
-
-2026-10-16 â€” Evidence milestone, not efficacy: original four-GPU459027-question joint training actual1000/16000 save passed full752393024FP32/1504786048Adam-moment finite/cursor/RNG inspection. Task exposures8817/3537/3646; subsequent1125/18000 logged. Preserve training and checkpoints; no Ground+One joint gradient/long-BPTT claim or quality promotion.
-
-2026-10-16 â€” Next hypothesis/registered implementation plan: actual old Compact uses task/query embedding inside the physical association transformer; semantic-only RMOT/OV supervision can therefore leave physical decisions on a poorly supervised task-conditioned branch. Implement an opt-in canonical MOT physical stream (same original person/MOT text and weights), retaining the true query/task only at semantic readout. On identical candidates/history, physical logits/update/reliability/lifecycle must be query invariant and MOT outputs must remain exact before any training. Then run paired frozen-physical semantic-head-only8000-step studies, identical16000RMOT/OV questions/order/seed/loss/hyperparameters, query-coupled versus canonical physical branch; include untrained canonical arm to separate runtime intervention from semantic training. All5 registered complete scopes and scorers, same final checkpoint across tasks, no residual or threshold changes. No new ROI bank/GPU; reserve8MiB metadata beyond26710582238â†’26718970846bytes<25GiB. This is a factorization experiment alongside the original running750M joint training, not proof of shared-backbone or Ground+One end-to-end gains.
-
-2026-10-16 â€” Factorization initial evidence:67real groups/61native units+6Base,335conditional task/query interventions; physical outputs exact invariant, original physical outputs change335/335, membership changes335/335. Every canonical MOT output exact original. Full1203rollout/prefix/training remain owned and pending. Native residual TAO40 all3arms officialvalidated: TETA14.517â†’14.320, disabled14.646; allNovelClsA0. Preserve mixed result; no promotion.
-
-2026-10-16 â€” Factorization full MOT numerical regression complete:1203frames/13664candidates, every original causal state/output/shadow Hungarian assignment exact, every untrained canonical output tensor exact original on actual pre-write inputs. No metric improvement inferred. Paired semantic-only resume checks now run under original newCPU owner3908189.
-
-2026-10-16 â€” Both matched frozen-physical semantic-head studies passed actual8continuous versus4+4restored model/Adam/RNG equality (16questions each), then owner3908189 launched registeredcoupled/canonical studies3913160/3913161. Physical-weight preservation and allfive officialcontrols remain required. Native750M joint training continues independently.
-
-2026-10-16 â€” Native750M shared6000 final-ID DT1203 complete: official HOTA7.840637%/IDF1=3.534137%, exactly same as same-checkpoint default (original600 HOTA8.702996%). Real assigned-ID second passes1350, existing assignments4940, changed update probabilities4940, registered.5gate flips0; all1203exported outputs exact=True. Second-pass execution verified, no DT gain; RMOT/TAO controls continue under originalowner.
-
-2026-10-16 â€” Actual matched head-only8000training completed botharms:16000semanticquestions each,115.290/116.032s,65922trainable/1146511totalparameters. All59fixedoriginaltensors1080589elements exact; fullmodel/Adamfinite andexport/reloadexact. Preservefinalbothmodels; fullfive-scopecontrols nowrunning, no effectivenessclaim. This pairedphysical-queryintervention is distinct from ongoingnative750Msharedtraining.
-
-2026-10-16 â€” Next physical learning hypothesis: native OneJev6000 DT association remains weak and final-ID secondpass makes no gate changes; frozen physical/query factorization alone preserves MOT but does not restore single-RMOT. Train a task/query-independent native appearance projection with supervised cross-frame contrastive identities directly from immutable TRAIN candidate registry GT matches, bypassing actor birth-alias/action labels. Use all43TRAIN units/1056frames; keep original labels/sources, explicitly inventory singleton/noncontrastive identities. Same-video8identitiesÃ—up-to4distinctframes,1000fixedsteps/seed0, original2560D ROI vectors by reference only. Evaluate native cosine, random initial projection, final learned projection under identical existing.5IoU+.5positive-cosine fusion/NEW.3/IGNORE0, fixed auxiliaries/gated3s, original semantic heads and all5official scopes. This representation-learning control is not native JEV probability, end-to-end Ground+One training or long-video BPTT. Reserve48MiB (16MiBmetadata+32MiBbounded streaming working buffers) beyond26718970846â†’26769302494<25GiB; model/Adam underdata3, no new ROI/image bank or GPU. First validate actual8vs4+4checkpoint resume, then train/fullcontrols; final1000 selected regardless heldout metrics, no threshold tuning.
-
-2026-10-16 â€” Physical-factorization first4officialscopes complete:DT HOTA26.3157exactallarms; coupled/canonical singleRMOT0/3.1383vsoriginal6.0247, multi19.1420/12.0955vs19.8019. TAO40coupled14.871/canonical31.323vsoriginal14.517/untrainedcanonical26.125; canonicalLocA33.075/AssocA35.637samebeforeandaftersemantictraining, ClsA9.6637â†’25.259(stillbeloworiginal30.314), NovelClsA0. Keep isolatedOVassociationgain, rejectthree-taskpromotion. Newcross-frameprojection1000complete341184params/27797exposures/36.587s, all43units;887TRAINIDs/873crossframe,14singletonspreserved; actualresumeallstatebitexact and67group16572affinityformula/defaultsemanticregressionexact. All5fullcontrolsrun unchanged. Native residualMOT20HOTA19.5518/IDF1=17.4310%, IDs30874vs2060; all5enabledscopescomplete,lastdisabledablationpending.
-
-2026-10-16 â€” Completed original native residual15/15officialcontrols, finaldisabledMOT20 restores original metrics exactly; preserve allcompletedproof. Next narrow causal audit: external frozenTAO40 native-versus-learned category evidence using exact official annotation+fullLVISsynsetaliases; distinguish any-box/class oracle support from class-agnostic one-to-one emitted support. An initial ad hoc print used annotation-onlyaliases and is not accepted as equivalent to official mapping; complete registered audit uses both dictionaries without changing predictions or metrics. No native-label restore is deployed before this evidence.
-
-2026-10-16 â€” Native temporal projection DT1203 official4arms: originalHOTA26.3157%; fixednativecos13.3108%, randomprojection13.4881%, trainedprojection8.4607% (IDF1=3.2767%). No promotion, remaining4scopes continue. Frozen category audit with exact officialaliases: Novelboxsupport37/40 but nativecorrectlabel+boxsupport1/40; emittedGTmatchedNovel6 and0native/learnedcorrect labels. Restoring rawnative labels alone is unsupported. New foundation hypothesis/plan: many original43MOT train clips cover~0.75â€“2s (MOT20 up to5.08s); longer supervision may reduce appearance shortcuts, but causation is not established. Build paired short-versus-long GT teacher identity episodes from all legal frozen train_frames only, same current image/box, same randomly aliased history identities/options/targets and other24000-mixture rows; past observation interval changes.4000positive identity teacher rows +4000originalnativeMOT rows +same8000RMOT/8000OV rows perarm. Teacher snapshots remain provided across gaps; not realactor rollout, long-BPTT or a deployedTTL/archive change. Actual native request/crop recipes/CPU plans required, then independent shared750M new stages from same native6000 FP32 checkpoint onGPU7 only after original6000owner exits successfully. Matched final6000steps/default4scopecontrols perarm; no old job restart or protocol change. Reserve16MiB reference/plan metadata:26769302494â†’26786079710<25GiB; no new images/ROI bank, model/Adam separatelydata3.
-
-2026-10-16 â€” Paired temporal teacher preparationv1 failed its final16MiBmetadata cap:22,748,803bytes, dominated by two10.14MB copies of the immutable9.96MB source mixture. No GPU/newoptimizer update started. Preserve failedinputs/code/terminalreceipt. Smallest fix: add explicit indexed-source manifest protocol and reference originalselected20000rows instead of copying bodies; newteacher4000refs remain. V2 keeps individual16MiBcap, separately reserves24MiB for failedinputpreservation; globalupper26769302494+40MiB=26811245534<25GiB. No samples/targets/seeds/scorerschanged.
-
-2026-10-16 â€” Indexedv2 ordering/provenance amendment: original row IDs are preserved;20000common native/semantic rows precede4000matchedteacher refs, then native seed0indexshuffle. This differs from failed/untrainedv1 interleaving/renamedIDs and is explicitly registered; botharmssameorder/augmentationIDs. No v1gradient trajectory existed. Mandatory regression checks actual8legacyrows and3indexedrows exact before complete native24000CPU plans.
-
-2026-10-16 â€” V2pairedtemporalteacher prepared/fullyCPUvalidated:43TRAINvideos/9789selectedimages,4000matchedpositivesperarm+4000oldnativeMOT+16000fixedsemanticrows. Shortgaps[.0333,.5,.96,1]s; long[3,7.95,38.65,104.2]s.86nativegroupstates/questions/172pixelsheetsexact; all24000rows/0drop/max27319,27319/6000plannedupdateseach.0newgradsteps, originaloneblockingownerwaitingnative6000GPU7success. Preservev1failedcopiedmixtures22.75MB andcode; indexedv2actual2.85MBwithin16MiB, separate24MiBfailedpreservation, global26811245534<25GiB. Native residual15/15andfactorization25/25officialcontrolscomplete; no common3taskpromotion. CategoryauditpeeleronlyNovel:37/40boxsupport,1/40box+label,0correctof6emittedGTmatches; externaloraclecountsnotClsA, no native-labelrestore. ReID12armsfirst3scopescomplete; trainedDT8.4607HOTA<13.3108nativefixed<26.3157original, no promotion.
-
-2026-10-16 â€” Correct mixed projection evidence after fullRMOTcontrols: singleHOTA9.2325vsoriginal6.0247/nativefixed5.5377/random6.6298; multi31.5524vs19.8019/16.6224/14.3821, IDF1=40.0107vs21.0082%, IDSW53vs165. Keep representation as a candidate, no promotion dueDT8.4607. FixedaffinityactionNEW.3>IGNORE0forcesemissionofallrawproposals(FP9330vs579); trainedAssAalsofalls(native.06641â†’trained.02618). Next planned implementation: appearance-informed permutation of existing-ID probability ranks, exact original action probabilities/probability multiset and auxiliaryheads retained on identical inputs; allfive scopes, native/random/trained contrast controls, no heldout temperature tuning(use originalcontrastive.07). Not yet implemented/measured.
-
-2026-10-16 â€” Implement next preregistered physical control: trained appearance helped bothRMOTscopes but fixedNEW.3/IGNORE0forcesallproposalemission andDTassociationalsoregresses. Preserve the original trained Compact action probabilities, complete probability multiset, all auxiliary/semantic outputs and policies on identical inputs. Reorder only existing-ID probability ranks by log(originalIDprob)+mean(anchor/recent/long cosine)/.07; .07 is the existing contrastive training temperature, not heldout tuned. Compare original versus native/raw, random projection and trained projection rank controls on all5unchanged scopes, same originalsharedcheckpoint and finalprojection1000. Per-row maximum-existing/action odds and entropy are preserved; global matching/closed-loop histories can still change, so no fixedFP/trajectory guarantee. No new optimizer/GPU/ROIbank; metadata suballocation within existing projection16MiB reservation, streaming buffers within existing32MiB reserve. This is an explicit Compact probability reranking control, not native OneJev decoder or calibrated contrastive posterior.
-
-2026-10-16 â€” Native inference throughput hypothesis: officialMMDecisionEngine already provides DecoderGraphs/ForkGraphs but defaults are disabled; stock graph limits32rows/512suffix tokens do not cover dense tracking or1203category root requests. Probe official Torch graph implementations configured128rows/8192suffix/32768prefix/max1cached prefix, attached after identical stock eager auto-fork calibration. No vendor/kernel/model changes or FLAinference. Same native6000checkpoint and real legal sparseMOT/denseMOT20/categoryroot+fixedleaf requests; sameimages/state/questions, eager versusgraphs, warmup excluded/3timedrepeats. Preserve existing1e-3probability gate, exactdiscretechoices, finiteoutputs, realgraph-hit evidence and >=1.5component ratio; failure remains rejected, no oldjob/backend switched. PhysicalGPU7only with>=32GiBfree, bothenginevariants sequential, allprojectworkstill4/5/6/7. Reserve8MiBsmallprobe/inputmetadata beyond26811245534â†’26819634142<25GiB; no new persistentROI/imagebank. This is a component probe, not tracking accuracy or E2E speed.
-
-2026-10-16 â€” Appearance-rank conservation passed67realgroups/566rows/8286IDoptions perarm, actionvalues/fullprobabilitymultisets/auxsemanticlife exact. First12officialcontrols: DT HOTA% original26.3157/rawrank30.2544/random19.4111/trained24.7555; singleRMO6.0247/5.7087/5.8205/6.1548; multi19.8019/18.9930/19.6370/20.1424. RawrankDT IDF1=38.2885 vs30.6329, IDs148vs165, butFP720vs579/FN2156vs1962. Preserveisolatedgain andrepresentation/policyinteraction; no per-taskselection or commonpromotion. OriginalTAO/MOT20ownerscontinue.
-
-2026-10-16 â€” Graph probe terminal0/completed but scientifically rejected: sparse/root/leaf maxnativeanswerdiff .011445/.013179/.013894 exceeds1e-3; ratios1.044/1.057/1.061 below1.5. Dense16/32graph callsfall back,30.754svseager13.942s/.453ratio; no actualgraphsuccess. Smallest next diagnostic uses savedanswers only (0GPU):68literalChoices,17Noul>=.5gates and17Hungarianrowsall unchanged; no RMOTmembership/final-ID questions, no futuretrajectoryguarantee. InstalledQwen3.5forward has no deepstackinjection, so do not claim missingdeepstackrootcause. Numericalcause unresolved; no vendorpatch/protocolweakening/backendadoption. Save allrawanswers/timings/hits/terminalreceipt, retain failure and stop this unpromising speed path. Metadata remainswithin existing8MiBreserve/global26819634142<25GiB.
-
-2026-10-16 â€” Previous status-only turn was a verified wait via original follower76060: originalfourGPU logged1700updates/27200questions,20688.803s/5.747h. Freeze exacthistorical1700row without polling/restarting training; log progress differsfromlastfullyinspected1000state. Update stale425doc snapshot. Original6000controls/pairedlongteacherCPUwait/retention and Full training remain original owners; no completion/three-taskqualityclaim. Publish this measuredrank/code/graphfailure evidence, excluding liveGroundownerstate.
-
-2026-10-16 â€” Original64133handle confirms native6000 allDT/singleRMO/multiRMO before/default/assigned controls terminal-complete and parentlive waitingregisteredTAObaseline. New actualnative multiRMOHOTA%6.7400â†’15.6144(default)â†’15.8936(assigned), DT8.7030â†’7.8406 unchangedassigned. Next boundedCPUproof: revalidate each completed originalunit with originalvalidate_run(fullframes/candidates/rejections/checkpoint/nativequestions/video), freeze9unitmetrics, audit actualsecondpass call/existingassignment/gateflipcounts against sameassigned causalstate observationprobabilities, and compare fullpairedoutputs. No newGPU/model/threshold/data/cachebank; smallreceipt stayswithin original6000ownerreport reservation. Do not mistake cross-trajectory update differences for same-input counterfactuals or these registered videos for ordinary-model parity.
-
-2026-10-16 â€” Posthoc freezer90288 failedexit1 beforepublication: firstDT lifecycleevent(frame15track2LOST) has no candidate/decision, normal tracker schema overlooked by newaudit. Original3DTunits alreadyvalidated, no inference/training failure. Preservefailedscript+receipt. Smallestfix: event signatures include candidate=None lifecycle records, memory-write probability audit explicitly considers candidateevents only; all lifecycleevents retained in assignmentcomparison. Rerun full9registeredunits/everyevent as targeted real-dataregression, unchangedmodel/metrics/frames, noGPU.
-
-2026-10-16 â€” Correctedfreezer41575actualexit0, all9native units/fullvideos/originalcandidateinputs/GTisolation/checkpoints/rejections andeveryevent validated. HOTA% before600/default6000/assigned6000 DT8.7030/7.8406/7.8406, singleRMO2.5062/3.3287/3.4052, multi6.7400/15.6144/15.8936. MultiIDF1%6.6932/15.6747/16.7555; defaultâ†’assignedFP467â†’457/FN1297â†’1303/IDs475â†’471(before185). Nativefoundationadaptation helpsregisteredRMOTbutnotDT. Sameassignedcausalstate updateaudit: single61calls/78assignments/5gateflips(4holdâ†’update/1updateâ†’hold), multi620/1190/7(1/6), DT1350/4940/0. Originalalloutputframes exactdefaultvsassigned DT1203/1203,single796/800,multi388/800; RMOdoeschangefuturehistories. EarliernoassignedbenefitclaimwasDT-only, nowpositivebutsmallRMOeffect. Preservefixedcommoncheckpoint/policies, TAOpending, no ordinary-level/full-datasetpromotion. No newGPU/optimizer or featurebank; originalownerreports budget covers smallreceipts andfailedauditcode.
-
-2026-10-16 â€” Previous goal turn is progress: actualnative9unit/RMOwriteaudit completed and verified GitHub2da51d6; this turn originalrank73067/projection68145/follower76060 live, Full1775/28400logged. Bothsmallappearance studies now allTAO4armscomplete (rankTETA14.517/14.104raw/14.324random/14.967trained; fixed14.517/13.964/14.194/14.395), allNovelClsA0. FinalMOT20controls stillrunning; no promotion.
-
-2026-10-16 â€” Scheduling amendment plan for genuine paired temporal foundation training: prepared48krowCPUplans and immutable native6000fullFP32/Adam/RNG+nativeMMreload already validated; original60582v2owner does0GPU/0grad while waiting the unrelated slowTAOcontrol dependency. One resource snapshot showsGPU7free46653MiB with only originalfourGPUrank34488MiB, while4/5/6free18512/24756/20685MiB. Start bothpre-registered6000short/long stages earlier from exactlysame6000state/data/configs, keeping allmetrics/seed/steps/finalcheckpoint and deferredoriginalbaselinecomparisons unchanged. Only actualCPUwaitingv2owner may be handed off after exactPID/starttick/cwd/command/nochildren/0updates verification; preserveitsstateandhandoffreceipt. OriginalfourGPUepoch/native6000controls/otherGPUjobs neverstop. NewGPU7Torchallocatorcap.33of80GiB(~26.4GiB)+expandable_segments accounts for originalrankobservedup-to~43GiBreservation; not a full driver-memoryguarantee. FutureGPU7resource-wrapper launches take sharedflock, newpairedowner holds exclusivewindow (ownsequentialchildren inheritFD); oldalready-runningfourGPUrank explicitlypermitted. Releasewindow afterbothtraining/reloadBEFORE waiting originalcontrolowner, avoidingdependencycycle. First run realCPUprocess lock/bypass/regression; onlythenhandoff/launch andverify actualoptimizerupdates. This changesexecutionorder/allocator only, not scientificcurricula/acceptance. New4MiBmetadata reservation raisesglobal26819634142â†’26823828446<26843545600; noROI/imagebank. CapOOM must retainfailure/checkpoint, notskiprows orweakenprotocol. No claimedlongtraining/quality untilactualrecords.
-
-2026-10-16 â€” ActualCPUwrapper regressionpassed: owninheritedexclusiveFDenters, GPU4normalwrapperenters, futureGPU7wrapperblocksandreleasesafterclose;0GPUupdates. Exactpreparedcourse/config/initreferencesunchanged. Verified4002071/start52168753WAITONLY/nochildren/emptyCUDA/0updates, sentSIGTERM viaexactpidfd only;60582actualexit143, oldstate/data preserved andhandoffintent/receipt saved. Replacementowner4118405/start52597639/session65852 nowholdsGPU7window, launchedshortSFT fromsameindexedv2configs. Nativeactual320FP32/752393024initialparameters maxdiff0 vsnative6000latestfullstate; 474weightsloaded, visionfrozen. ActualTorchcap28081638604bytes(.33devicecapacity) set; expandableallocator envpersists fornewownertraining/reload/eval (memoryonly, no comparablespeedclaim). Productionoptimizerupdatesstillunproven atlaunchsnapshot; waitactualrecords, notmodel-loadingclaim. OldFull/legacyinferencejobsnotstopped; onlyfutureGPU7launchesdeferreduntilwindowrelease.
-
-2026-10-16 â€” Freeze bothappearance first4fullscopes/all16units each fromoriginalcompletedownerreceipts plusfreshofficial/runtime/frame/candidate/rejection/state checks, notrepeatvideo decode alreadydone byoriginalowner. Firstprojectionfreezer invocation mistakenly passedtrainingplanwithoutscopes (KeyErrorbeforeanyoutput); correctedtoownerrecordedresolved_controls_plan.json, sameoriginalcourse. RankTAOtrainedTETA14.967>14.517original butallNovelClsA0; fixedtrained14.395<14.517. Preserveallarms/no commonpromotion, finalMOT20stillrunning. No inference/metricchange or newGPU.
-
-2026-10-16 â€” V3early study actualfirst5shortoptimizer verified: steps1..5/seen4..20, allfinite loss/CE/Brier/gradandpositivegrad,320FP32/752393024native6000initialmastersmaxdiff0. ActualTorchcap28081638604bytes applied; first5peak16.8548GiB, no capfit/steadyFPS/fullrunmemoryclaim beyondtheseupdates. Longbranchstill0, no trackinggainclaim. Source24000 nativeplan0drop/6000updates, rebuiltbyoriginaltrainer29s (not extra saved CPU plan speedclaim). ExistingFull4GPUepoch notstopped; old0gradientwaiterhandoff143only. Freezefirst5prooffromactual log/nativeinitial receipt andexactownerPIDtick, publishcode/plan/CPUlockproof/handoff/launch/first5 plus bothfirst4scopeappearanceproofs. Goal remainsactive, ordinary3taskqualitystillunmet.
-
-2026-10-16 â€” Previous goal turn is progress: pairedtemporalshortactualoptimizerstarted, boundedwindow/CPUhandoff/first5proven and verified GitHubb09b07b; current original65852/68145/73067/76060handlesalllive, short50logged and Full1875/30000logged. Next physical hypothesis derivesfromcompletedcontrols: fixed-affinitytrainedprojection improvesmultiRMOT19.80â†’31.55butDTFP9330; probability-rankconservation controlsrejectproposalsbutlosetheRMOTgain. Before anotherintervention, auditall5originallearnedbeforetrajectories for existing-ID probability dilution: matchedGTwithcorrectsurvivingoption, sumP(existing)>maxP(action) butmaxP(existingID)<maxP(action). This is a same-state oracle potential/diagnostic only, not newprediction/HOTA or a metricreplacement. Streamoriginalscalarprobabilities and frozenbirthGTdiagnostics, noROI/image/model/GPU; keep no-correct-anchor/unmatched groups separate. If supported, test factorizedconditionalappearance P'(id)=oldexistingmass*softmax(logoldP(id)+cos/.07), keeping exactoriginalNEW/IGNORE/NO_MATCH and totalexistingmass plus learnedaux/semantics; probabilitymultiset/maxexistingodds intentionallychange. Same3native/random/trainedcontrols/all5scopes/fixedfinalprojection, original.07temperature, noheldouttuning. Register3MiBtotalforaudit1MiB/conditionalmetadata1MiB/boundedprojectedworking1MiB, raises26823828446â†’26826974174<26843545600; no newROI/imagebank, originalGPUtraining/measurementprotocolunchanged. Do not implementbasedon imagineddilution; inspectactualauditfirst.
-
-2026-10-16 â€” Originalprobabilitydilutionaudit24041actualexit0/all5fullscopes287744candidates: positivecorrect-shortlist eventsDT1768/single53/multi191/TAO21/MOT2019195; diluted65/0/0/0/3040. Single-correctsubsetDT55/1170,MOT202587/15774; not a supported explanation oflostRMOTprojectiongain, so do NOT launch conditionalmasspolicy now. MOT20GTmatched219060 minuscorrectoption19195 leaves199865withoutverifiedcorrectshortlistedbirth; this is not automatically trueidentityabsence because birthGTunknown andshortlistmiss canconfound. Next scalarCPUcausal provenance audit distinguishes firstobservation/noGTboundbirthyet, allknownbirthsretired, aliveknownbirthomittedfromshortlist; replay lifecycledeathcauses (learnedterminate before3s vs timeout vsboth), bound/unbound births, and candidate-supportedGT atdeath. Auditall5originalCompactreferences plus9alreadycompletednative600controls; verify reconstructedbirth/survival againstfrozenexternaldiagnostic, keepGTstrictlyposthoc, noGTrepair/runtimechange. Repurposeplannedconditionalmetadata/working withinsame3MiBreserve, do notincreasecachebudget or modifyrunningcourses. Only thenchoose smallest justifiedmemory/birth intervention.
-
-2026-10-16 â€” Provenanceaudit87987actualexit0/all14units: CompactMOT20positive219060 =first646/neverGTboundbirth147769/allboundbirthsretired45599/alivebutshortlistmiss5851/correctshortlist19195. Do not infer a physicalIDabsent fromunknownbirth binding. NativeDT600â†’6000knownbirths19â†’141 and learnedpre-timeoutdeaths0â†’138(131GTstillpresent); native multiRMO0â†’55(41GTpresent), despitebetterHOTA. CompactearlyknownGTdeaths DT0/single20/multi7/TAO0/MOT2014. Sourcecodeexport_broader_native_full_groups.py labels unknownbirth lifecycleTERMINATE, an alreadyknown exporterproxy ratherthanproofpermanentexit; this plusobservedheadbehavior motivates anexplicitcontrol, not acausalproof or alteringcurrenttraining. Registeropt-in timeout_onlydeletion: retainlearnedprobabilities/auxiliary/semantic outputs andsame3sTTL, deferonly learnedearlytermination. Defaultlearned_or_timeout andallrunningprotocolsunmodified. Validateactualnative+Compactprefix/defaultparity/realearly-deletiondeferral/unchangedexpiry, thenall5Compactfullscopecontrols againstsameoriginalcheckpoint. Native6000 counterpart willuseoriginal4scopes afterexistingGPU7window/baselinecompletion, exactsamecheckpoint/categoriesreusedonlywherehistory-independent anddeclared; noheldoutthresholdtuning or newROI/imagebank. Allmetadata stayswithinprevious3MiBreserve/global26826974174<25GiB; no newGPU now. Negativeoutcomesmustremainvisible, no policyadoptionbeforecontrols.
-
-2026-10-16 â€” Actualterminationfunctional11397exit0: Compact30-frameprefix/firstearlyframe29ID1, native19-frameprefix/firstearlyframe19ID4; originalfullprefixstate/outputsexact, interventionretains exactlyearly-deletedIDs/allcommonstatesexact, original3sexpiryverified withlabelledfunctionalempty-observationcounterfactual (not scored frame). CPUall5study82298started, noGPU. Nativequeuedowner34665v1waitsonoriginal6000success and0inference. Staticreviewcaught summary key native_category_replay, actualrun_video exports category_replay. FixonefieldbeforeanyGPUwork; preservequeuedv1code/state andhand offonlythisnewCPUwaiter to v2. No experimentfailed orsamplesrerun yet; do not let a known latevalidationbug remain queued. Originaltraining/controls neverstop.
-
-2026-10-16 â€” Nativev1newCPUqueue4147813/start52745273exactverified/nochildren/emptyCUDA/0inference, pidfdSIGTERM/34665actualexit143 preserved; correctedv2owner4149961/start52754749/session90700waitingoriginal6000terminalsuccess, noGPU. It takesexclusiveGPU7windowonlyafterdependencycompletion, rerunsall4nativeidentity/lifecycle/scorers atsame6000weights/3s; same-image-onlyTAOcategoriesreplayedexplicitlyfromcompletedoriginal6000source, noE2Eclaim. No originaljobterminated. Compactfirst3fullscopes/all6units frozen: HOTA%DT26.3157exact,single6.0247â†’6.4816,multi19.8019â†’19.5578; multiIDF1=21.0082â†’21.0638/IDs165â†’157/FP619â†’597/FN1054â†’1061. Mixed,noadoption; remainingTAO/MOT20continue.
-
-2026-10-16 â€” Literal lifecycleinventory12901actualexit0: full-sourceMOT252258rows/lifecycle93624:ACTIVE60077,LOST12117,REACTIVATE16748,TERMINATE4682(5.00085%). Balancedcompleted24k:1000life/250each(25%TERMINATE); pairedshort/longsame500life128ACTIVE/125LOST/117REACTIVATE/130TERMINATE(26%). Thus currentnaturalFullcoursehasnot inheritedbalancedoversampling; do notstoporretargetongoingoriginaltrainingbasedon anunprovenproxycausalityclaim. All data/targets preserved. Sourcecontractunknownbirthâ†’TERMINATEisnotindependentpermanentexitevidence. OriginalFourGPU2kstateobserver49603registeredwaitingcheckpoint, boundoriginal3457625/start49350320, fullFP32/Adam/allrankRNGgateunchanged; latestglobalfeatureupper26826974174 passedasmetadataoverride insteadofstalehistoricalupper. Lastcompletednumericmilestoneremains1000untilactual2kproof, nonewGPU.
-
-2026-10-16 â€” Actualobserver49603exit0/2000fullstate validated:32000questions17590MOT/7107RMO/7303OV; all752393024FP32/1504786048Adammomentsfinite,all320Adamsteps/scheduler/cursor2000exact,fourrankTorch/CUDA/Python/NumPyRNGsaved. Atomiclatest9029193825bytes andnumberedBF16ckpt-step2000present; futurelatestreplaced, numberedexportretained. No actualmilestonerestart/newinference orcompleteepochclaim. Lateststep2000loss1.10098/grad51.8833/elapsed24227.312s isobservedconcurrenttraining, not controlledspeed. Originaltrainingunchanged. CPUtimeoutTAOcompleteTETA14.517â†’14.493/NovelClsA0; first4all8unitsfrozen, finalMOT20continues. Preservemixedfailure-to-improve, no promotion. Publishsourceaudits/default-prefixproof/optinpolicy/queuednativecontrol/preexecutionfixreceipts/actual2000proof; allreportswithinshared3MiBmetadatareservation, noROIbank/GPUincrease. Goalremainsactive.
-
-2026-10-16 â€” Originalhandles52020/14226/46228/64133/65852allconfirmedlive. Native600TAO40beforebaselinejustcompletedandconsumer64133validated35228candidates/all40frames; native6000defaultTAO nowactuallywaitsregisteredGPU7trainingwindow. Sameoriginal600checkpointall4beforebaselines frozen:fndDT HOTA8.7030%,singleRMO2.5062,multi6.7400,rawTAOTETA27.748/LocA21.573/AssocA2.8136/ClsA58.856; BaseTETA37.437/Novel8.3686/NovelClsA0(onlyknife/baby/peelerGT). NativebaseclassificationstrongerthanCompactbutassociationweak; do notmixcomponentmetrics/predictsyntheticTETA orclaimcompleteTAOdatasets/ordinaryparity. Baselinecompletionisnotnative6000aftertraininggain. OriginalGPU5refreshedworkerhasadvancedDT(frame168latest),GPU4oldTAO(frame987started)stilllive; Groundretentionquietlive. Shortpairedtraining425logged, no newcheckpointclaim. Recheckonlycompletedbaselineownerreceipts/official/runtime metadata, preserveinputorder/GTisolation andallrawresults, no newGPU/ROIfeature or inference.
-
-2026-10-16 â€” Time-description correction: sourceTAOmanifest explicitly physical_video_fps_verified=False/fps1/timestamps0..39/annotation-stepunits. Earlier lifecyclecontrolprose3seconds and provenancefield seconds_since_last_assignment were misleadingforTAO; MOT/RMOTphysicalsecondsremainvalid. Numericruntimehasalwaysusedoriginalmanifeststeps, not3physicalsecondsforTAO; do notinventFPS/changecontrols. Clarifyconfigs/docs andwritev2clock provenance: explicitphysical_seconds/annotation_steps andregistered_clock_gap_since_last_assignment. Real32945exit0, all14oldvsnewcounts/availability/retirementcauses/numericgaps exactlyequal. Retainv1, originalregistrations andalltrajectories/scores; addclockclarificationreceipt. This isdescription/schema correctiononly, notnewinference/input/timeouts/protocol/numericalchange. Shared3MiBreportreservationstillcoversallartifacts. FreezecompleteNative600before4scopebaseline withclockqualification; no qualitypromotion.
-
-2026-10-16 â€” Previous goal turn is progress: lifecycleprovenance/defaultprefix/controlimplementation, actual2000fourGPUfullstate and completefour-scope native600baseline published and verified4288d02; clockclarificationretainsallnumbers. Current65852short600logged, original73067rankfinalMOT20events/68145projectionfinalMOT20training stilllive; original82298timeoutCPUowner actualexit0/all10controls complete. Validate/freeze all5 before new work, no commonpromotionfrompartialresults.
-
-2026-10-16 â€” Next birth-admission hypothesis from actual API/exporter code: exporter targetsNO_MATCH only when a correct birth anchor is in the live pool but omitted from shortlist; NEW when no recoverable live correct anchor exists. V3prompt says previously observed but does not explicitly qualify live/retired, and both Compact/Full omit totalpool/omittedcount from decision inputs. Auditall14frozenunits for actualNO_MATCH with complete live-pool exposure, including GTmatched never-bound/retired/correct-option and GTunknown groups; do not declare unknownbirths physicallyabsent or change oldsemanticlabels. If supported, test explicit active-pool execution contract: leave all original model probabilities/aux/semantics untouched, forbid only the privateNO_MATCHcost when every live ID is offered. No probability renormalization or learned thresholds; global assignment/futurehistories can change. Factorial all5Compact scopes: original and completedtimeout references, feasibility-only and feasibility+timeout, samecheckpoint/candidates/scorers/no per-taskselection. Defaultpolicy and all live GPUcourses unchanged. This is a declared contract/intervention consistent with exporter labels, not proof original vagueprompt was impossible or a native calibrated posterior improvement. New2MiB audit/controlmetadata+boundedworking raises26826974174â†’26829071326<26843545600; no newROI/imagebank or GPU. Auditbeforeimplementation.
-
-2026-10-16 â€” Exposureaudit66807actualexit0/all14: CompactDTall13664rows exposecompletepool yet10406NO_MATCH selections (GTmatched2100,GTunmatched8306); completeMOT20pool137727rows/112129NO_MATCH (GTmatched105239,GTunmatched6890). Correctknownliveanchor actuallyoffered in598DT/2986MOT20selectedNO_MATCH cases; unknownbirthgroupnotphysicalabsenceproof. CompactRMOonly1each, TAO0completepoolNO_MATCH. Native6000DTonly3completepoolNO_MATCH/RMO0each; primarynative6kregressionisnotassumedsameasCompact. No remainingprintedmasszero inauditedcompletepoolrows. This supports actualCompactactive-pool feasibilitycontrol; do notaddanotherGPUstudy to currentnativequeue. Implementmatchingconstraintonly, preserveall originalrawprobabilities/confidence/entropy and allmodelaux/semantics onidenticalinput; notconditionalrenormalization. ExtractexistingHungarianhelper withoutchangingdefault arithmetic and verifyall14originalassignments/339596candidates plusconstrainedroweligibility/probabilityimmutability beforefullfactorialrollouts. Allcontrols4armsÃ—5scopes, original/timeoutreusedexplicitlyandonly2newarmsinfer. No GTdecisionrule or input/proposalfilter.
-
-2026-10-16 â€” Realfeasibilityvalidation18145actualexit0: all14/339596originaldefaultassignments exact, originalprobabilitydicts unchanged, forbiddenprivateNO_MATCHneverchosenundernewactive-poolmode, frameswithoutmaskentireassignmentsexact. Same-inputshadowassignmentchangesDT10792/MOT20116558/single1/multi1/TAO0; these are not rollout/HOTA gains. LargeDTGTunmatched8306NO_MATCHcaseswarnofpotentialfalsebirth/duplicateproblem; do notguaranteeimprovementorhideworsening. FactorialCPUowner started afterproof, all4Ã—5originalscopes, twooriginalcompletedreferencearms/twonewactualarms, samebasecheckpoint/noGPU/newfeaturebank. Modelrawdistributions andconfidence/entropyremainunchangedonidenticalinput, costconstraintonly; originalprompt/exporter-semanticdiscrepancydeclared. Existingnative750Mshort/long/Fulltrainingandqueuedlifecyclecontrol remain unchanged.
-
-2026-10-16 â€” Previous user-question turn was a status explanation, no research-state change. Resume with concrete evidence: original48863confirmedlive through its existing blocking handle, first12factorial units actually completed; freeze their official/runtime/frame/candidate/rejection/finalstate receipts. Feasibility-only DT HOTA26.3157â†’12.9762,IDF130.6329â†’9.1995,FP579â†’3509,FN1962â†’1550,IDs165â†’459; bothsameDT. Singlefeasibilityunchanged6.0247; timeout/both6.4816. Multi19.8019â†’20.6629feasible/20.2362both, timeout19.5578. Additional admission cannot be adopted as general association repair; preserve negatives, no commonpromotion. TAO/MOT20sameoriginalowner continue, no task-specific selection/newGPU or proposalchange.
-
-2026-10-16 â€” Originalrank/projection/timeoutstudies allclosed:20+20+10officialunits and all5scope receipts retained. FinalMOT20original/rawrank/randomrank/trainedrankHOTA7.4316/8.0009/7.9101/8.0870; trainedrankIDs3317>2060original. Fixedraw/random/trained31.3078/31.5077/31.7503, trainedIDs8689/FP16049 versus2060/463original. Largefixedfusiongainisnotlearnedprojectiongain because raw/randomcontrols already31.3/31.5; trainedprojectionDT8.46bad andallTAONovelClsA0. TimeoutMOT20HOTA7.6054/IDF16.3199 versus7.4316/6.1474, smallmixedacrossscopes. No modelpromotion. Exactobservedfull2250/36000 andshort875/3500logrows frozen for truthfultraininganswer; no newfullstate gate beyond2000, noGround-Onejointgradients/longBPTT. Docs updatedwithallresults/limitations. Allnewmetadataunderexisting2MiBreservation/global26829071326<25GiB; no ROI/imagebank or newtraining.
-
-2026-10-16 â€” Next targeted TRAIN-only hypothesis after feasibilityDTfailure: originalbirthaudit already finds5832/7992IGNORE proposals with someGTIoUâ‰¥0.5, but doesnot showwhether the globallychosen competitor is inside the actual16-candidate request. Readexporter: one Hungarian overwholeframe determines IGNORE, then inputs aregrouped; fullimage remainsvisible. Auditall43/1056TRAINframes/48051candidates usingactualsavedgroups/rowtargets/registry, distinguishbackgroundvsGT-supportedIGNORE and competitorsinside/outsideactualgroup. ReproducealloriginalGTbindings andexactIGNOREtargets beforecounts; leaveambiguousmultitargetcasesexplicit. No claiming mathematicallyunobservable labels because modelseesfullimage, no NMS/trainingrecipe/proposal/metricchange. Small scalarreportâ‰¤128KiBfromalreadyreserved2MiB/global26829071326; no newROI/imagebank/GPU/optimizer. Do notretargetongoing459kcourse fromaudit alone.
-
-2026-10-16 â€” Actual97066exit0: candidate-groupauditall43TRAIN/1056frames/48051candidates, everyoriginalregistryGTbindingandIGNORE/nonIGNOREtargetexact; matchespriorbirthaudit7992IGNORE/5832GT-supported. 4804/5832=82.37%GT-supportedIGNORE haveonlyoutsidegroupassignedwinners (4723singleGT),1024inside/4829outside(overlap)/4noassignedwinner/261multiGT. Actual3401nonemptygroups/max16, geometry/localindicesexact. Positives6754withrivals/5319outside. Fullimagepixelsstillvisible; notprooflabels mathematicallyunobservable, notcausaltrackinggain oruniquevalidproposalcertification. Readonly63350bytereportwithinexisting128KiBsuballocation/noextrareserve/features/GPU. Currentcourses/labelsuntouched; nextadmissionresearchmustexplicitlyprovidecompetition, ratherthansilentlyturningIGNOREintobackground. Original48863TAO completed, freezeall16first4units: feasibilityTAOTETA14.517exactoriginal; both14.493exacttimeout,allNovelClsA0; finalMOT20sameownerpending. Publishedprior18filesverifiedremote3f18440/tree1c9d8a3, thenrecordnewaudit/TAOreceipt separately. Goalnotcomplete.
-
-2026-10-16 â€” Previousgoalturnprogress: actual43TRAINgroupcompetitionaudit/first16factorialunits and code/results verifiedGitHubafa32bd. Currentoriginal48863confirmedlive/MOT20feasibleinference, no restart. Smallest nextintervention frommeasured4804outside-onlyIGNOREcompetitors: opt-in overlap-neighbor candidate grouping with unchanged16capacity. Seedlowestremainingoriginalindex, repeatedlyaddmaximumIoU-to-groupremainingcandidate, originalindex tiebreak; no IoUthreshold/NMS/topK/GT/classrule orcandidate removal. Stream one-vs-Ngeometry(noNÂ²featurematrix), preserve originaldecision/outputroworder aftergroup modelcalls. ExactsamefrozenCompactweights/shortlist32/learnedheads/defaultlife+NO_MATCH/registeredclocks; groupingcanchangealllearnedoutputs, shortlists/life-first-group/futurestates, explicitlynot pureassociation-only or probabilityconservation. All5scopes before/newgrouping, completedbefore references explicit, no newGPU/optimizer/bank. Validateactualall5defaultprefix states/outputs exact and alternativegroup feature/index coverage beforelaunch; quantifyTRAINcompetitor co-exposure usingactualreferencegroups, notqualitymetric. Workinggeometryâ‰¤1MiB plusreportâ‰¤256KiBwithinremaining existing2MiBaudit/controlreserve; featureupper26829071326unchanged. NativeFull/pairedcourses unchanged; no future trainingrecipepromotedwithoutheldoutrollouts.
-
-2026-10-16 â€” Actual36906exit0/newall43groupaudit reproduces everypriorTRAINcount/GTbinding/IGNOREtarget; overlapneighbors only-outsidewinner4804â†’298, inside1024â†’5530, positiveswithoutsiderivals5319â†’320. This isnotnewlabel/qualitygain. Actual23522exit0/15realframes/3339candidates acrossall5scopes: full defaultoutputs/stateexact, alternativecausalinputfeatureownership andprobability/update/query/classrows correctlyrestoredtooriginalcandidateindices. Afterbothgates, originalnewCPUowner90021 launchedbefore/regroupedall5Ã—2, samefrozenmodel/16capacity/shortlist32/noGPU/newoptimizer; referencesexplicit, allnewcandidaterowscheckedasfullpermutation. No NMS/threshold/GT/classfilter; alllearnedheads/shortlists/life-first-group/futurehistories maychange. Do notclaimassociation-only/constantprobabilities/futuretraininggain. OriginalFull/paired/NO_MATCHjobs untouched; Groundretention original52020confirmedlive. Newgeometry/reportworkingwithinremainingexisting2MiBreservation/global26829071326; noROI/imagebank. Goalactive.
-
-2026-10-16 â€” Newgroupingoriginalowner41803/start53230371/session90021verifiedlive; firstDTfull1203 actuallycompletedandfrozen2officialunits. Samefrozenmodel groupingonly: HOTA26.3157â†’28.6921,DetA45.1842â†’46.2724,AssA15.3476â†’17.8072,IDF130.6329â†’33.2758,IDs165â†’159,FP579â†’736,FN1962â†’1794. ModestpositiveDT withFPcost, notuniformmetricimprovement orproven5scopebenefit. KeepallremainingRMO/TAO/MOT20controls; do notpromoteper-taskcheckpoint/policy. Registration/launchsnapshot retained; newsource/runtimegroupscheckedpercandidate byoriginalowner. NoGPU/optimizer/featuresadded.
-
-2026-10-16 â€” Original90021completedbothRMO800scopes, freezeall6first3officialunits: singleHOTA6.0247%,multi19.8019%, everyreportedofficialmetric exactlyoriginal. Do notinferallprobability/stateequality fromunchangedmetrics. GroupingpositiveDTdoesnotyetconstituteall-taskbenefit; TAO/MOT20pending unchangedoriginalowner. PreserveearlyDTreceiptalonglaterfirst3receipt, publishimplementation/audit/defaultprefix+rowownershipproof/registration/actualownerlaunch/first3metrics. NoGPU/optimizer/newROIfeatures.
-
-2026-10-16 â€” Previousgoalturnprogress: overlap-neighborimplementation/defaultprefix+rowalignmentproof/all43TRAINcoexposure/first6officialunits publishedandverified93fb5fa. Currentoriginal90021TAOrunning and48863MOT20feasibleofficialâ†’events, confirmedlivebyexistinghandles; no restart. Original76060follower reportsFull2350/37600,65852short1100 andreal1000fullstate9029140889bytes saved. Reuseexisting shared-checkpointfreezer with explicittrainingpath/expectedinitial6000 and indexedsourceIO; preserveitsdefaultoldbalanced600-initializationbehavior. Validateall320masters/Adam/scheduler/cursor/RNGpresence andactualseed0index exposures once onshort1000state. Teacherrows genuinelylacksource_row_id; inventorytheiroriginalrowIDsseparately, do notinventolder-sourceIDs or inflateframecounts. No trainingchange/restart/newGPU/bank/checkpointcopy, smallscalarproof withinexistingreportsreservation/global26829071326. Trackinggainremainsunprovenfornewshortbranch.
-
-2026-10-16 â€” NewcompletedGround200artifactsnow6tasks visible (COCO,dense200,VisDrone,RefCOCOgval/test,RefCOCOplus) whileoriginalfull9ownerstillwaitingremainingclients. Existingpartialfreezerhardcodesold2-taskoutput; addonlyexplicit--out(defaultoldunchanged) tofreezecurrentcompletedwholetasks withunchangedofficialsummarizer andexactoriginal/effective/providerfilteredcounts. Do notclaimfull9, infermissingtasks, launchnewclients, stopservices orattributeallweightcausality: originalqueue32/adapted-syncpost-recoveryexecutiondiffers. Newsmallscalarresultssuballocateexistingreportsreserve, nobank/GPU/checkpointcopy. This iscompletionevidence forrequiredcontrolledGroundadaptation, separatefromtrackingHOTA/ordinaryparity.
-
-2026-10-16 â€” Actual79475exit0/short1000fullstate9029140889bytes:752393024FP32/1504786048Adammomentsallfinite,320steps/scheduler/epoch/cursorexact,RNGfields saved;initial6000FP32maxdiff0. Actual4000seed0questionsMOT1288/RMO1327/OV1385;673teacherMOTrowswithoutoldsourceIDcountedseparately,615providedoldMOTIDs; firstmedia1017/71/1180 includeswiderlegalteacherTRAINimages, notallhistoryframes/independenttracks.45loggedrowsfinite. No1000restart/newnativeinference orshort6000/longcompletion. Existinggenericfreezerparameterizedonlypath/initialstep/source-manifestloader/missing-sourceIDinventory; legacydefaults retained, currentnewrealcheckpointprovidestargetedregression. No broadrepeatold6000state scan.
-
-2026-10-16 â€” Original90021completedTAOall40; freezefirst4/all8officialunits: groupingTETA14.517â†’13.997,LocA8.088â†’6.6283,AssocA5.1478â†’10.2,ClsA30.314â†’25.162,NovelClsA0. Associationupwhileothercomponentsdown; no syntheticcombinedscore/categoryreplay orpromotion. Original48863MOT20feasible-onlycompletedall1657/235232: HOTA7.4316â†’9.8980,IDF16.1474â†’10.1300,IDs2060â†’3292,FP463â†’564,FN286273â†’267117. Freshofficial/runtime/frame/candidate/isolation/finalstate checks retainoriginalfullsourcechecks; freezeonecompletedunit. Combinedfeasible-timeoutstillrunning; DTcollapse remainsfailure/nonewpolicyadoption.
-
-2026-10-16 â€” Groundpartialfreezeractualexit0/original9tasks91124rows/adapted200six31986rows, alloriginal=effective/providerfiltered0. CompletedcommonF1mIoU%origâ†’adapted COCO47.9781â†’47.5713,Dense66.6435â†’66.0540,VisDrone29.6624â†’27.8704,RefCOCOgval91.7038â†’89.3700,test91.1193â†’88.5215,RefCOCOplus84.3763â†’81.6416. Allsixnegative; preservewholeofficialresultcounts, no Ground200promotion. PendingLVIS/RefCOCO/RefCOCOg notinferfull9; queue32originalvsadapted-syncafterCUDArecoverymeansnotexclusiveweightcausality/bitwisepairedclaim. No trackinggaininferred. Existingcurator--outonlyparameterization preservesold2tasksnapshotandallsources, no newmodelclients orservicestops. Allnewproofswithinalreadyreservedscalarreports/global26829071326; noGPU/optimizer/bank/checkpointcopy. Goalactive.
-
-2026-10-16 â€” Previousgoalturnprogress: actualshort1000all752M/Adam/cursor/sourceexposurevalidation, first4groupingcontrols/MOT20feasibleunit andsixwholeGroundretentiontasks publishedandverifiedc962b4b. Current90021/48863originalhandlesconfirmedlive/finalMOT20arms. Next compute question-context reuse opportunity in actual full459027seed0/global16/fourrank index-shuffle. ReadnativeSFT/shared: existing share-prefix supports oneGPU text-packedbranch masks; groupforward doesnotuse multimodal mm_inputs, and Qwen3.5 GDN recurrentstate needs branch-aware handling. Cannotjustenableflag orreuse languageactivationsacrossoptimizerupdates. Auditall64originalsources usingnative per-row rendering toidentifyidenticalserializedstate+mediarecipes; reusealreadyvalidatedint32lengths andnativeplan_steps placement, noMMtensor/model/inference/GPU. Compute sameglobalstep andsamerank co-occurrences plusoptimisticfull-rowtokensavingupperbound fortheconservativeexact-metadata cachekey. Epoch repeatedcontexts alone arenotavailableacrosschangingweights; notgeneralboundoverallpossiblepixel-equivalences oractualthroughput. Allrows/familyfilters/order/seeds unchanged. Persist onlyâ‰¤128KiBscalarreportfromexistingfullsource/reportreservation, no native feature/activation bank or newoverallcacheallocation. This audit decideswhether a future exact branching implementation merits priority forcurrentrecipe; donotretargetrunningtraining.
-
-2026-10-16 â€” BothoriginalCPUstudies90021/48863actualexit0/all5closedandfreshreceipts10+20units. GroupingMOT20HOTA7.4316â†’7.0507,IDF16.1474â†’5.6306,IDs2060â†’1992,FP463â†’341,FN286273â†’287351; NO_MATCHbothMOT20HOTA9.7962/IDF110.0231/IDs3447/FP513/FN265498 versusorig7.4316/6.1474/2060/463/286273. Keepallnegativecrossscoperesults, neitheradopted. Defaultmodel/policies unchanged.
-
-2026-10-16 â€” Nextshared-core hypothesis fromcompletedcanonical controls andactualcode: frozenuntrainedcanonicalphyscore keepsMOTexact, TAOphysicalLocA33.075/AssocA35.637 vsorig8.088/5.1478, butclass9.6637vs30.314 andRMOHOTA2.005/11.753vs6.025/19.802. Existingcanonical routessemanticheadfromcanonicalcandidatevectors; actualspec onlyentersmembershiplate. Addopt-in secondpass ofthe SAMEfrozenTransformer/task/text/semanticweights forsemanticreadout, conditionedonactualtask/query; physicalmatch/update/reliability/life remaincanonical. Oneidentitymemory andonecommoncheckpoint, noGTstate repair/newparams/training. Onidenticalnativeinputs validatephys==canonical, semantic==originalquery-coupled, MOTalloutputs==original; all61actualTRAINcontextgroupsplusBaseobservations/declaredqueryvariants. Then before/canonical-untrained/newtask-readout all5fixedscopes, oldtwoarms explicitcompletedreferences, no per-taskcheckpointselection. NotpredictingcombinedTETAfromoldcomponents: newtrajectory/officialmetrics required. Existingfull/pairednative trainingunchanged. Onlysmallscalarproofs/modelvariantflag fromsameweights, no bank/GPU/featureallocation; global26829071326 retained. Categorysingleton idea deferred: original64frameOVcourse includescausalteacherhistory whereasnewBase175supplementisn1/m0, so do notclaimbaselinealreadytrainedexclusivelyon singletoncontext.
-
-2026-10-16 â€” Actual41236exit0/contextauditall64sources459027rows/nativeaugmentation/seed0/native16x4dealing/tail1,1,1,0 exactlypreserved;97556serializedstate+media contexts/24560medialists. Sameglobalupdate150repeatedcontexts/150extrarows: full-rowtokensavingupper2945176/5639441074=0.0522246%; same-rank23/23,390967=0.00693273%. Theseconservativeexact-metadata-key bounds arenotactualspeed/allpixel-equivalencebounds; media-onlycooccurrences don'tmeasurevisioncost. No forward/GPU/optimizer/bank. Currentrandomshuffleofferslittle exactwithin-stepbranchreuse; do NOT switchofficialtextsharedprefixentry orreordercurrenttraining. Futuregroupedrecipe+multimodal/GDNbranchstateimplementation wouldneedseparatevalidation.
-
-2026-10-16 â€” Actual79437exit0/newtaskconditionedreadout67realgroups(61withhistory)/402specinterventions/143238outputelements: phys==canonicalandqueryinvariant; category/membership==originalquerycoupled onidenticalinputs; MOTallheadsexactoriginal.335canonicalsemanticinterventionschanged. Separateactualweightcomparisonall66oldstate_tensors/1146511elements bit-exact acrossold/canonical/new; no newparamtensors, samecanonicalbuffer. Noqualityclaimfromthesetensorchecks. NewCPUowner51823launchedall5/3arms afterproofs,10completedreferences+5actualtrajectories, originalallscopes/16groups/shortlist32/TTLclocks/heads/thresholds/scorers unchanged. Singlememory andsinglecommonparamset acrossalltasks; semanticbranchactualtask/query contextonly. OriginalFull/pairednative traininguntouched, no GPU/newfeaturebank; scalarproofs/modelvariantwithinexistingreserves, global26829071326. Goalactive; defaults remainoriginalcoupled/noncanonical.
-
-2026-10-16 â€” New51823actualfirst3/all9officialunitscompletedandfrozen. HOTA% original/canonical/newtaskreadout DT26.3157/26.3157/26.3157, singleRMO6.0247/2.0050/2.4619,multi19.8019/11.7532/11.9169. NewsingleFP47/FN17 vscanonical80/17/orig323/13; newmultiFP160/FN1704 vs196/1703/orig619/1054. Restoredsameweightsquery-conditionedsemanticsreducesFPslightlybutdoesnotrepaircanonicalphysicalmisses/association; no defaultpromotion or claimnewunifiedimprovement. RemainingTAO/MOT20originalsameowner, no threshold/seed/framechanges orsyntheticcomponentmix. Nextlearningworkmustaddressphysicaltransfer, notassumereadoutalonefixesalltasks. Publishcode/plan/tensor+parameterproofs/launch/first3metrics/all5previouscontrolclosures/full459kcontextaudit. AllrunningnativeGPUjobsuntouched.
-
-2026-10-16 â€” Previousgoalturnprogress: full459kcontextaudit andboth5scopecontrolclosures/newtaskreadoutimplementation+exacttensorproof/first9metrics publishedverified4ad1839. Current51823TAOofficialâ†’events confirmedlive; original65852short1550/76060Full2550logsfinite. ReadpreparedknownbirthRMO2882component andfullsourcecurriculum: new18rollout RMO component selectedmembership/presenceonly, notthese1428identity+1454assignedwrite rows. This iscurrent-curriculumcoverage, notproofnoearlierRMOTphysicaltraining orthatgapalonecausesfailure.
-
-2026-10-16 â€” Prepare matched native input component (no newGPUtraining): reuseall2882certifiedknown-birth physical questions/targets andtheircorrespondingoriginalquery-membership question/target fromsamecandidate. Botharms sameoriginalactualactorstate/media; assigned-write control gets samealready-selected-identity state asphysical, not GT-repairedhistory. Keep originalroworder/pairIDs, sourcequestionprovenance separate. Native rowaugmentation shufflesdifferentnumberofoptionsbeforechoosingJSONstyle, so same seed canotherwisegive differentprefixformats. Explicitnewpairedcomponent fixesbothstates to source-equivalent prettyJSONstring; keepnative per-questionoptionpermutation, then verifyall2882native renderedstateprefixes equal. This isdeclaredderivativeinputformat, notunchangedoldtrainingrecipe. Originalinputtrees/questions/media/labels retained, unknownbirth/missing-match notinventednegative. Runbothcomplete2882-row nativeMMCPUplans zero-drop beforefuturetrainingrecipe; nooptimizer launched/queuedbycomponent. New4MiBscalar/groupmetadatareservation raises26829071326â†’26833265630<26843545600; noROI/image/activationbank, no currentfull/pairedcourse edits. Source18rollout1814physicalframes/977filteredmedia; anchorage isnotocclusiongap.
-
-2026-10-16 â€” Actual43883exit0/newpairednativecomponent2882pairs/2074groups prepared; originalnative rowstylewoulddiffer698pairsunderthesameseed dueoption-count-dependentRNG. Fixedsource-equivalentprettystrings eliminateallrenderedstateprefixdifferences whileoriginalquestion/target/media/JSONtree/order provenanceexact. Physical1428identity+1454assignedwrite(981no/473yes), semantic2237yes/645no. Bothall2882nativeMMCPUplanszero-drop: physicalmax18096/tokens15639410, semanticmax17227/tokens15226174, noforward/optimizer/GPU. Totalcomponent1665559bytesbeforecoverageproof<4MiB; newglobal26833265630. SourcefullcurriculumRMO97112membership+3701presence only (plannedinventorynotactualconsumedcounts); noneof2882newphysicalrows silentlyinserted.
-
-2026-10-16 â€” Original51823actualexit0/all15newreadoutofficialunitsfrozen. TAOTETAoriginal14.517/canonical26.125/new30.818; newLocA33.075/AssocA35.637unchangedcanonical, ClsA9.6637â†’23.743 stillbeloworiginal30.314; BaseTETA31.9085,NovelTETA28.637butNovelClsA0(threeGTclasses/oneNovelpeeler/40annotationframes). NotfullTAOparity orNovelrecognitionclaim. MOT20allmetrics exactlyoriginalHOTA7.4316/IDF16.1474; RMOsingle2.4619/multi11.9169 stillbeloworiginal6.0247/19.8019. No defaultpromotion orper-taskmix. Ordinary3taskgoalunmet.
-
-2026-10-16 â€” Legacyoriginalhandles14226/46228confirmedlive; oldnativeTAOnowlastframe1132, refreshedcompletedallDT/RMOfirst3andstarteditsTAO. Actual750Mhistory-refreshstage additional600/2400eachfromsame600FP32initial, sameperstepfamily/tasks/400historyrowschanged, nottoken/FLOPmatched: DT old13.1075â†’refreshed16.4112 vsbefore8.7030; singleRMO3.0717â†’2.8779 vsbefore2.5062; multi6.6825â†’7.5062 vsbefore6.7400. Freezecompletedbefore/old/refreshedfirst3wholeunits withoriginalowner/official/runtime/sourcegeometry/video/rawofficial-input checks; no rescore/newnativeforward, no fullTAOconclusion. New1MiBnativehistoryscalar/prediction-report reserve raises26833265630â†’26834314206<26843545600; originalworkers/services untouched. Keepmatchednegative singleRMO outcomevisible.
-
-2026-10-16 â€” Actual8215exit0 freezes all9 native history first3 units and their exact compressed raw predictions/original official scores;734102bytes within the1MiB reserve. Actual23170exit0 proves canonical versus task-readout physical trajectories across all4500frames/287744candidates/331063events plus final physical memories exact; semantic labels/counts only excluded. Restoring task semantics alone fails to recover RMOT physical coverage. Neither study changes the default model.
-
-2026-10-16 â€” Previous user-question turn only explained scope and observed logs; no research-state change. Resume concrete work: original14226 now actualexit0/HISTORY_REFRESH_WORKER_ALL_REGISTERED_UNITS_VALIDATED. Old-history TAO completed TETA25.161 versus native600before27.748, NovelClsA0; refreshed46228 confirmed live at frame88. Original65852/76060 confirmed live, short1950/7800 andFull2750/44000 observed, not new numeric checkpoint gates. Freeze the newly complete old TAO unit with source/decoded-frame/GT isolation and exact official prediction transport checks, within the existing aggregate1MiB history-report reservation if it fits; no rescoring or GPU. Publish paired-input rebuild code/proofs, all5 readout closure, complete physical-rollout proof and native history results. Current courses and original workers untouched; ordinary three-task goal remains unmet.
-
-2026-10-16 â€” Actual99790exit0/old TAO native40 source+geometry+decodedvideo+GT isolation verified, exact raw and official JSON tracker inputs reconstructed from every output including unknown-category -1. Original TETA27.748â†’25.161, LocA21.573â†’23.965/AssocA2.8136â†’2.9972/ClsA58.856â†’48.522, NovelClsA0. All5112official predictions preserved; no rescoring/inference/GPU. First3 plus old-TAO artifacts aggregate875796bytes<existing1MiB; global26834314206 unchanged. Refreshed TAO still original46228live, no inferred score. Observed2750/44000 and short1950/7800 exact rows frozen for prior user scope answer; numeric gates remain2000/1000, long0at observation.
-
-2026-10-16 â€” Publication53ce5ed verified:53files/treefd210563 including complete readout/control proofs/native predictions and paired2882rebuild inputs, no weights/banks/live Groundowner. Next actual learning prerequisite: construct two complete24000three-task courses using all old8000MOT/8000OV plus last5118oldRMOT rows and all2882paired questions. Same21118common rows/order/IDs and same pairedphysical states/media at actual native global indices; only registered question/target families differ. Both use same future native6000FP32 initialization, seed0/nativeglobal4/indexshuffle,6000full-course updates per arm if separately launched; no GPU queue/optimizer here. Native per-step length ordering can differ, not token/FLOP matched. Run both complete native MM CPU plans, zero-drop required. New2MiB manifests/configs/log reservation raises26834314206â†’26836411358<26843545600; no new pixel/ROI/activationbank or edits to active Full/temporal courses. This tests physical-supervision transfer, not another semantic-head-only repair.
-
-2026-10-16 â€” Actual56390exit0/both complete24000native MM CPU plans zero drops, max27480tokens; physical202072473plannedtokens versus semantic201659237, both6000nativeglobal4updates. All2882paired prefixes exact at actual21118+indices; common21118old rows unchanged. Metadata257474bytes<new2MiB reservation, global26836411358. Register actual additional6000native750M/24000 per-arm physical-versus-semantic learning study from identical verified6000FP32; physical then semantic, same seed0/newAdam, fixedfinalsharedmodel and assigned-ID write protocol across original4scopes. Both training+reload stages precede CPU-only wait for original6000assigned TAO baseline; no substituted600baseline or per-task selection. OldGPU4owner actualexit0 releases native slot; one launch observation GPU4free37341MiB/existingfullrank43804MiB, checkpointdisk350843351040bytesfree. Use GPU4only, existingfourGPUrank untouched, Torch.33cap28GB/expandable allocator; extend existing allocation wrapper with explicit--physical-gpu4 while default7 unchanged. No exclusive resource claim or process stops. New4MiBowner/report reservation raises26836411358â†’26840605662<26843545600; no native feature bank, originalcourses unchanged. First real optimizer updates/native initialization evidence required before claiming launched training.
-
-2026-10-16 â€” Actual newowner34237 running /paired_rmot_physical_semantic6000_owner_v1 from committed d28e15b; native GPU4.33cap28081638604bytes, exact6000FP32initmaxdiff0/752393024language parameters. Original blocking handle emitted updates1..5, losses/positivegradients finite,20questions. Immutable first5validator73855actualexit0 confirms owner PID/starttick/cwd/script and exact rows4/8/12/16/20; native seed0 source exposures9MOT/6RMOT/5OV including2newRMOTidentity rows. First5Torchpeak17.87594GiB, not full-run peak/stable speed or quality gain. Semantic0at snapshot, bothfull6000andfour-scope assigned-ID controls pending. This is the real GPU4 allocation-wrapper regression; defaultGPU7 CLI retained and originalFull/temporal workers untouched. No new native feature bank, currentglobal26840605662<25GiB. Preserve failed results and full goal active.
-
-2026-10-19 â€” G2 protocol repair and clean coverage launch: read-only audit confirmed the historical 199053-row G2 manifest contains 3317 MOT20-05 rows, so formal_g2_1200/G2-PL remain engineering evidence rather than independent held-out evidence. Built immutable G2_CLEAN_FULL_COVERAGE_V2 (583251 unique rows, 2249 rejects, MOT20-05 absent, TAO Novel/sparse negatives excluded, all legal Refer-KITTI frames, exact RMOT questions, BURST gap explicit; rows SHA f682519a1cf9204ca76ea75a56dad36dbdeac26259f202551ab9f66fefd06e71). Added exact-once source/video/image coverage accounting, global-batch gradient accumulation with DDP no_sync, token-budget checks, per-step token/gradient/peak-memory logs, and strict base/manifest/LoRA/optimizer/scheduler/per-rank-RNG resume validation. GPU3/GPU5 BS2 smoke and two-rank step-1 resume replay passed; BS8 resource probe failed with a real vision OOM and is retained. Formal clean owner is running from G0 with micro-batch2, accumulation8, global batch32 and 18227 planned optimizer updates. J1 remains active at durable step600/9571 seen rows; no quality metric is claimed before terminal receipts and fixed independent evaluation.
-
-2026-10-19 â€” G0 MOT20-05 official scope evaluation completed from the preserved 1658-frame export. TrackEval receipt reports HOTA 0.433441, DetA 0.638348, AssA 0.294655, IDF1 0.441085, IDSW 6239, FP 6325, FN 98471; 183 rejected-perception frames remain in the official denominator, evaluation-only TRAIN GT was used, and official test labels were not read. This is a G0 reference scope, not a clean G2 held-out result because MOT20-05 is excluded from G2_CLEAN_FULL_COVERAGE_V2.
-
-2026-10-19 â€” Post-launch runtime snapshot after the G0 scorer: the clean G2 owner remains RUNNING at optimizer step 24/18227, with 16 global samples, 17610 effective global tokens, finite loss 1.7098015, gradient norm 2.69265 and 17.3715 GiB peak device memory in its latest event. J1 remains RUNNING on GPU4/GPU6 at durable step 650/1200 with 10368 rows seen; no terminal receipt or quality claim is made for either course. The G2 and J1 owners were not restarted or modified.
-
-2026-10-19 â€” J2 candidate-source audit corrected the training entrypoint: the balanced onejev_unified_matched600_v2/native manifest is preserved but rejected for candidate-driven J2 because its MOT rows use legal TRAIN GT proposals plus explicit synthetic fragments and its OVMOT rows use registered train-Base teacher crops; only its repeated 346-row RMOT component is native GroundAnything. SHA 136d029d212d831e1c72cf7c7fe538dc9b246e8edc0febb9bb14ac1abf662156, 125286 rows. A separate streaming inventory records the usable sources: 131214 native MOT rows from 7 MOT17 sequences (SHA b60d029b28a1d5bb101361ea548cf07e48b41033ccfcbe20d78f32cc7f0ba7b4), 346 native RMOT rows from 72 fit frames (SHA cdb1e38342f2bf467c0d288e532b840964328447020911043ded36968381e4a1), and 430 OVMOT teacher-control rows (SHA 48269098ac2a8ebafb5d0c50a7de9852e10bf50d37e087f71db6c6f74ecfd95b). No J2 optimizer was launched; native OVMOT candidates and broader legal coverage remain required after G1/G2 detector export.
-
-2026-10-19 â€” Registered and started a GPU5 G1 continuation owner behind the active clean G2 run. Owner session 68355 is waiting on the authoritative G2 terminal receipt; it refuses to launch if G2 fails, trains a fresh 200-step projector from G0 only after GPU5 release, exports a new G1-GPU5 bundle without touching G1/G200, then runs fixed 96-frame G0/G200/G1 native controls. This is a queued executable owner, not a claim that G1 has completed.
-
-2026-10-19 â€” Re-audited the exact clean G2 manifest after launch. The read-only audit found 583,251 rows and unique IDs, zero MOT20-05 rows, zero RMOT placeholder questions, and no cross-source absolute media-path overlap. Its raw MOT20 validity inventory still names the excluded MOT20-05 directory because the audit scans the source tree; the clean row filter remains MOT20-01/02/03 only. Evidence: `/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/g2_clean_data_contract_audit_v2.json`. No active process or checkpoint was modified.
-
-2026-10-19 â€” Clean G2 deployment export handoff registered: queue_g2_clean_bundle_export.py is the sole CPU-only downstream owner. It waits for the exact clean G2 terminal receipt and the GPU5 G1 queue receipt, then exports a fresh 569-tensor GroundAnything-DLM-G2-CLEAN-V2 bundle with the manifest SHA and immutable source check. It refuses overwrite and records explicit dependency failure states; no detector or evaluation claim is made before G2_CLEAN_DEPLOYMENT_BUNDLE_EXPORTED.
-- 2026-10-20 â€” GroundJEV dependency preflight passed without allocating a GPU or
-  starting a process. The G1 plan/trainer, G2 bundle queue, independent held-out
-  queue, OneJev recovery queue, registered model/checkpoint/manifest paths and
-  external OneJev source all exist. All four owner states parse and report
-  waiting states with `failed=null`. Receipt:
-  `docs/GROUNDJEV/DEPENDENCY_PREFLIGHT_20261020.{json,md}`.
-- 2026-10-20 22:59 +0800: the protected G2 Clean owner remains live on
-  physical GPUs 3/5 and advanced to event step 10,710/18,227. The final
-  receipt is still absent, the four dependency queues remain live and waiting,
-  and the measured linear remainder is approximately 23.9â€“24.8 hours.
-
-2026-10-20 23:02 +0800 â€” GroundJEV status refresh: protected G2 Clean torchrun remains live on physical GPUs 3/5 and reached event step 10726/18227 with finite loss 0.224377 and 12.829 GiB peak memory; final receipt absent and latest durable checkpoint remains adapter-step010500/step10500. G1, G2 bundle export, independent GPU7 held-out, and full-source OneJev resume owners remain live with failed=null and waiting states. No active MOT-only optimizer process is present. This is a runtime evidence refresh; no metric claim or protocol change.
-2026-10-20 23:04 +0800 â€” GroundJEV TrackJEV runtime preflight completed in the registered OneJev Python 3.10 environment: compileall passed for GroundJEV code/scripts, and decision-layer, model, and native adapter self-tests all returned PASS. No GPU was allocated and no tracking metric claim was made; receipt is docs/GROUNDJEV/TRACKJEV_RUNTIME_PREFLIGHT_20261020.{json,md}. The protected G2 owner remained untouched.
-
-2026-10-20 23:05 +0800 â€” Read-only G2 Clean live-event sanity passed through step 10746/18227: 10746 events strictly increasing, all loss/gradient/memory/LR values finite, and every event retained the registered 8 micro-batch / 16 global-sample contract. Final receipt remains absent; no metric claim. Receipt: docs/GROUNDJEV/G2_LIVE_EVENT_SANITY_20261020.{json,md}.
-
-2026-10-20 23:06 +0800 â€” Independent G2 held-out manifest preflight passed for MOT20-05 validation-half (1657), RMOT single0007 (800), RMOT multi0007 (800), and TAO OVMOT video105 (40): task flags, frame contracts, monotonic unique frame numbers, and all local image paths verified. Queue still performs exact TRAIN overlap audit before inference; no metric claim. Receipt: docs/GROUNDJEV/G2_HELDOUT_MANIFEST_PREFLIGHT_20261020.{json,md}.
-2026-10-20 â€” Fixed `tools/groundjev/validate_full_source_cpu_completion.py` runtime portability: registered CPU-plan receipts and source manifests live under `/data2/user/LocateMOT_GroundJEV` while the project worktree is `/data2/user/LocateMOT`. The validator now resolves project/runtime artifacts deterministically and reports the terminal receipt path. Targeted rerun passed: 459027 rows, zero drops, 28690 planned updates, world size 4, exact serial/parallel plans, and RMOT exposure audit retained; actual optimizer updates remain 0 for this CPU validation.
-
-2026-10-20 23:10 +0800 â€” Read-only resource gate audit: registered OneJev resume requires exclusive GPUs 4/5/6/7; the gate is not satisfied because existing compute PIDs remain on requested devices (GPU5 also hosts protected G2). Free memory is above 32 GiB but sharing was not enabled; no foreign or GroundJEV process was stopped. Receipt: docs/GROUNDJEV/RESOURCE_GATE_AUDIT_20261020.{json,md}.
-2026-10-20 â€” Improved GroundJEV waiting-owner observability without changing the exclusive GPU contract: the GPU7 independent held-out queue and four-GPU OneJev resume queue now persist every resource probe and an explicit `resource_gate` record (`ready`, rule, `shared_memory_mode=false`) before sleeping. Both scripts passed py_compile and git diff --check; active owner processes were not restarted.
-2026-10-20 23:13 +0800 â€” G1 GPU5 tracking200 input/schedule preflight passed in the registered GroundJEV runtime without GPU allocation: 112 rows, 56 pairs, 72 unique images, 884 native proposals, 628 aligned regions; the GPU5 plan exactly matches the preserved GPU6 reference schedule and retains identity-loss coefficients 0.1/0.1. No optimizer update or metric claim. Receipt: docs/GROUNDJEV/G1_GPU5_INPUT_PREFLIGHT_20261020.{json,md}.
-2026-10-20 23:14 +0800 â€” Registered existing real-input evidence: OneJev-0.8B loaded on a real MOT17 frame (GPU6, 9.25 s load, 0.287 s decision, 3.12 GB peak) and the preserved native DLM/OneJev four-frame MOT17-02 functional receipt covers frames 302â€“305 with strict wire-error and no-fabricated-score guards. These are plumbing checks only, not tracking or G1/G2 metric claims. Receipt: docs/GROUNDJEV/TRACKJEV_REAL_INPUT_EVIDENCE_20261020.{json,md}.
-
-2026-10-20 23:15 +0800 â€” Read-only G2 durable checkpoint protection passed at step 10500: latest_training_state.pt and adapter-step010500.pt are present, manifest SHA matches f682519aâ€¦, optimizer/scheduler/sampler/per-rank RNG fields are retained, and final receipt remains absent. Receipt: docs/GROUNDJEV/G2_DURABLE_CHECKPOINT_PROTECTION_20261020.{json,md}.
-
-2026-10-20 â€” Generated current GroundJEV goal completion matrix from live receipts/owner states. It explicitly leaves G2 terminal training, G1 GPU5 adaptation, bundle export, independent held-out metrics, and full-source OneJev terminal receipt incomplete; no preliminary result was promoted. Receipt: docs/GROUNDJEV/GOAL_COMPLETION_MATRIX_20261020.{json,md}.
-
-2026-10-21 â€” GroundJEV redirection checkpoint: verified project root `/data2/user/LocateMOT` and protected formal G2 Clean. The live two-rank G2 owner reached event step 11735/18227 with finite loss 0.210247, gradient norm 9.833711, peak 12.828929 GiB; latest durable checkpoint remains step11500 and the 500-step window is 11.617 s/step (linear remainder about 20.9 h). G0 MOT20-05 registered 1657-frame validation-half export remains terminal; its fresh native-source control is retained without a full TEST claim. No live independent MOT-only optimizer process exists. The historical four-GPU independent OneJev resume was waiting before launch at durable step3000, so it was safely paused and its checkpoint/optimizer/RNG/config/logs preserved; a code-level pause marker guard now blocks accidental auto-start unless `--resume-paused` is explicitly supplied. G1 GPU5, clean bundle export, and independent held-out remain waiting on their registered dependencies. No formal G2/G1/held-out performance claim was made. Evidence: `docs/GROUNDJEV/ACTIVE_GOAL_STATUS_20261021.{json,md}` and the queue owner state.
-
-## 2026-10-21 â€” corrected real three-task OneJev source registration
-
-The historical full-source manifest was rejected for the independent comparison because its source inventory included MOT20-05 rows. I streamed and audited a replacement manifest at `/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/real_three_task_joint_v1/`: 131,214 native MOT identity rows, 346 native RMOT membership/presence rows, and 430 registered OVMOT Base teacher-control rows (131,990 total). Duplicate IDs, train split, family filters, row counts, media paths, forbidden MOT20-05/test markers, and source SHA-256 values passed. The registered TAO native archive (40 frames/35,228 candidates) has no category supervision, so native OVMOT training rows remain pending and no relabeling or optimizer launch was performed. The old independent four-GPU OneJev queue remains paused.
-
-## 2026-10-21 â€” Phase C causal memory input contract
-
-In the isolated `research/groundjev-coupled-single-backbone-20261021` worktree, added an opt-in `inject_identity_memory` contract. It inserts projected causal identity tokens before the registered current-answer index, preserves the original prompt tensors exactly when disabled, and returns the offset needed to shift DLM labels. Eight focused CPU contract tests passed, including projector gradient flow and insertion order. This is an engineering input contract only; the GroundAnything decoder hook, real GPU C0/C1/C2 replay, generated-box recall, and HOTA/IDF1 effects remain unmeasured.
-
-## 2026-10-21 â€” corrected three-task OneJev owner registered
-
-The historical independent four-GPU resume remains paused. A separate owner `real_three_task_joint_v1_queue` was registered and started in a waiting state. It uses the audited 131,990-row manifest, a new run directory, and the dedicated OneJev environment; it will not claim GPUs 4/5/6/7 until G2 Clean, G1 GPU5 adaptation, bundle export, held-out evaluation, and an exclusive resource window are terminal. The run is explicitly a Base OVMOT teacher-control comparison while native TAO category rows remain pending; it cannot be reported as the final single-backbone GroundJEV result.
-
-## 2026-10-21 â€” joint queue configuration regression fixed
-
-The dedicated OneJev parser rejected four audit-only keys accidentally placed in the runtime training JSON. I removed those keys from `real_three_task_joint_v1_runtime.json` and kept the same provenance in the queue state and research records. The registered `.venv-onejev-py310` parser now accepts the config and resolves the corrected source manifest, one epoch, and global 16-row accumulation.
-
-## 2026-10-21 â€” three-task CPU preflight found explicit overlength rows
-
-The registered OneJev CPU plan rendered all 131,990 rows in 267 seconds. At the 32,768-token training contract, 129,891 rows are trainable and 2,099 high-candidate MOT identity rows exceed the limit (p50 12,720; p90 25,689; p99 47,023; maximum 96,734). The new queue records this exclusion explicitly and cannot report full-source exposure. A separate compacting/long-row course remains required.
-
-## 2026-10-21 â€” compact zero-drop three-task source v2
-The v1 native MOT/RMOT/OVMOT source plan was valid but excluded 2,099 high-candidate MOT identity rows over the 32,768-token limit. The cause was repeated dense NÃ—N IoU and center-distance CSV matrices in every MOT row, not missing media or a changed candidate source. Added the explicit `compact_competition_v1` manifest transform: native JSONL remains immutable; exact row IDs, targets, media paths and candidate boxes are preserved; all positive-IoU edges retain native rounded IoU and center distance; zero-IoU geometry is derivable from the retained boxes. The v2 CPU plan rendered all 131,990 rows with zero drops (p50/p90/p99/max 7,939/12,173/16,050/28,156 tokens; 8,250 world-4 steps), with no GPU or optimizer updates. The old v1 waiting owner was superseded before any training; a separate v2 owner is waiting on G2/G1/bundle/held-out gates and exclusive GPUs. Native TAO category rows remain pending, so this is still a registered Base teacher-control course rather than a final OVMOT claim.
-
-## 2026-10-21 â€” native YesTrack v2 queued behind an exclusive GPU7 gate
-
-Registered the real native YesTrack corpus with 726 train rows and 390 fixed
-validation rows (train SHA
-`065337d2fedca2377d02b94e57c9eb3778aeca09aeb1a8b9463429fa15bbee66`, validation
-SHA `d63a9fb0d54b8a1dc5d12b0960a48cb75c56ab786671f955fb317e196b3033d8`). The
-CPU rendering plan passed with zero rows over 32,768 tokens (max 26,159; 91
-planned optimizer steps per epoch, 273 over three epochs). Added a real GPU
-owner that waits for GPU7 to have no
-compute PID and at least 32 GiB free, trains native multimodal LoRA for three
-epochs, then evaluates frozen base and tuned adapter on identical held-out rows
-using AUROC, PR-AUC, accuracy, Brier, ECE, false rejection and false
-acceptance. The owner does not stop other users and writes terminal receipts
-only after training and both evaluations succeed. At registration GPU7 was
-occupied, so no YesTrack metric is claimed; prior 24-row readout controls remain
-engineering evidence only. Tracking HOTA/AssA/IDF1/IDSW still requires a later
-fixed-candidate physical-baseline integration.
-
-## 2026-10-21 â€” live G2 Clean checkpoint refresh at step 12002
-
-A single authoritative read of the formal event log found G2 Clean at event step 12002/18227, with finite loss 0.298694, gradient norm 10.215737, peak memory 12.829 GiB, and the registered 8-micro-batch/16-sample contract. The periodic adapter checkpoint is `adapter-step012000.pt` and `checkpoints/latest_training_state.pt` is present; the terminal receipt is still absent. The recent 500-step rate is 11.615 s/step, a linear remainder of approximately 20.1 hours. G1, bundle, held-out, YesTrack, and zero-drop three-task v2 remain waiting owners; no metric claim was promoted and no protected process was modified. Evidence: `docs/GROUNDJEV/STATUS_SNAPSHOT_20261021_G2_STEP12002.{json,md}`.
-
-## 2026-10-21 â€” process-scope audit confirms no live MOT-only/J1 optimizer
-
-A fresh process-table audit found G2 Clean as the only active GroundJEV optimizer (event step 12012/18227 on GPUs 3/5). G1 GPU5, deployment bundle, independent held-out, YesTrack and zero-drop three-task v2 are live dependency/resource waiters. No independent MOT-only or legacy J1 OneJev optimizer is live; historical checkpoints and logs remain preserved. Foreign PRISM jobs were untouched and no process was stopped. Evidence: `docs/GROUNDJEV/PROCESS_AUDIT_20261021.{json,md}`.
-
-## 2026-10-21 â€” G2 step-12000 recovery checkpoint validated
-
-Read the protected G2 `latest_training_state.pt` and `adapter-step012000.pt` with the registered local trainer environment. Both load successfully and carry format `groundanything-g2-projector-qwen3-lora-v2-strict`, step 12000, manifest SHA `f682519aâ€¦06e71`, 293 trainable tensors/signature entries, optimizer and scheduler state, RNG state, two rank RNG paths, sampler position 96000 and world size 2. The terminal receipt is still absent, so this proves recoverability only and no performance claim. PyTorch 2.6's default weights-only reader rejects the stored NumPy RNG object; the controlled audit used trusted `weights_only=False` and did not modify files. Evidence: `docs/GROUNDJEV/G2_CHECKPOINT_VALIDATION_20261021.{json,md}`.
-
-## 2026-10-21 â€” G2 Clean dataset scope audited
-
-The protected G2 Clean manifest contains 583,251 TRAIN rows from AerialMind (69,358), AnimalTrack (11,543), DanceTrack (41,796), MOT17 (15,948), MOT20 (5,616), RMOT26 (294), Refer-KITTI-V2 (379,341), SportsMOT (28,574) and TAO-Amodal (30,781). It is GroundAnything perception adaptation (projector + Qwen3 LoRA), not J1/OneJev identity training. MOT20-05 is explicitly held out; BURST is excluded for lack of a legal TRAIN image root; TAO novel annotations are excluded. Manifest SHA is `f682519a1cf9204ca76ea75a56dad36dbdeac26259f202551ab9f66fefd06e71`. Evidence: `docs/GROUNDJEV/G2_CLEAN_DATASET_SCOPE_20261021.{json,md}`.
-
-## 2026-10-21 â€” GroundJEV Phase A real G2 single-backbone smoke
-
-Implemented the isolated `locatemot/groundjev/coupled` path: frame/model-provenance checked shared state, G2 feature bridge, typed dynamic identity slots, dot-product JEV readouts, explicit Yes/No/admit/lifecycle/memory heads, causal identity memory, safe lifecycle control, assignment-conditioned memory writes and a one-to-one runtime. CPU backward and causal runtime tests passed. A real GPU smoke loaded the official GroundAnything visual module from the registered G2 base checkpoint (`3cf09355cde8cf4877cdc76e0a72301d572c1d6263b2831f8a03368285bb65e2`), encoded one MOT17 image once, pooled two real boxes into 2x2560 region tokens, and completed finite typed loss/backward/optimizer-step: total loss 4.179936, 3.07 GiB peak allocated, 14.43 s, bridge forward count 1, independent VLM instances 0. This is engineering evidence only; no tracking or scientific gain is claimed, and contextual language-state return plus identity-conditioned grounding remain pending. The first py310 attempt failed before model construction because `pybase64` is absent; the successful run used the existing GroundAnything serving environment and the same immutable checkpoint. Evidence: `docs/GROUNDJEV/PHASE_A_REAL_SMOKE_20261021.{json,md}`.
-
-## 2026-10-21 â€” GroundJEV Phase B choice/Yes-No pilot completed
-
-A bounded real pilot reused 32 MOT17-02-FRCNN TRAIN frames and 992 prior native GroundAnything proposal boxes, re-pooled once per frame with the G2 base visual checkpoint SHA `3cf09355cde8cf4877cdc76e0a72301d572c1d6263b2831f8a03368285bb65e2`. The frozen G2 evidence fed typed Identity Choice, Admit, Yes/No, Lifecycle and Memory readouts; 24 frames received 192 optimizer updates and the final 8 frames were a same-video temporal development holdout. Identity accuracy changed train 0.0618->0.6720 and temporal-dev 0.0363->0.6492; admit accuracy changed train 0.1022->0.9247 and temporal-dev 0.1331->0.9153. An actual eight-frame replay without teacher memory produced three persistent predicted tracks with one cached G2 feature forward per frame. This is a teacher-forced engineering control, not an independent HOTA/generalization result; language hidden-state coupling and identity-conditioned grounding remain unmeasured. The first replay failed on the legacy/new memory field mismatch and was fixed without changing data or budget. Evidence: `docs/GROUNDJEV/PHASE_B_PILOT_20261021.{json,md}`.
-
-Checkpoint receipt finalized for the Phase B pilot: `adapter-step000192.pt`, SHA256 `c96f27c9c8de5a01a36036c78c4e4a36c467bb96a0ca5f7d0eee27d93e32c904`; the binary remains local under the registered output directory and is not pushed to GitHub.
-
-## 2026-10-21 â€” native G2 Clean hidden-state probe completed
-
-The protected G2 Clean base plus `adapter-step012000.pt` (adapter SHA `f0dfe4f5efd6bd2f0e8ebe8f224ae060e8b0422b36571697fb4fa9efa6d85ae2`, step 12000, manifest SHA `f682519aâ€¦06e71`) completed the native GroundAnything DLM clean path on real row `mot17_MOT17-02-DPM_000001_dense_clean_v2` from MOT17 TRAIN. The real image was encoded once; the clean embedding and hybrid-language hidden state were both `[1, 1152, 2560]`, with 1,008 image-pad hidden vectors. No independent VLM instance was created. The probe used the formal BF16 autocast boundary and the existing process-local Transformers 5.17 `cache_position` compatibility shim. The first dtype and API failures were preserved and fixed at the probe boundary. This establishes native hidden-state availability for the shared-backbone work only; it is not a tracking metric, identity gain, grounding improvement, or generalization result. Evidence: `docs/GROUNDJEV_COUPLED/PHASE_A_NATIVE_HIDDEN_PROBE_20261021.{json,md}`.
-
-## 2026-10-21 â€” native G2 clean DLM coupled Phase C smoke completed
-
-The new `NativeG2CleanDLMProvider` restores the protected G2 step-12000 adapter in memory, renders one real MOT17 TRAIN row, and uses one native clean DLM forward to produce both 1,008 image hidden tokens and a `[1, 2560]` non-image contextual token. The same-backbone bridge pooled two real candidate boxes, fused the contextual token into the typed GroundJEV readout, and completed a finite GPU backward plus optimizer step: total loss 5.533803, clipped gradient norm 73.300224, 12.059 GiB peak allocation, 16.91 s, bridge/native forward counts both 1, independent VLM instances 0. This proves the visual+clean-language coupling interface runs on a real checkpoint; it is still an engineering smoke with no HOTA/IDF1, grounding recall, identity gain or generalization claim. PyTorch emitted a BF16/FP32 RMSNorm fallback warning in the frozen language path; it did not produce a non-finite value and remains recorded in the receipt. The formal G2 run directory was untouched. Evidence: `docs/GROUNDJEV_COUPLED/PHASE_C_NATIVE_DLM_COUPLED_SMOKE_20261021.{json,md}`.
-
-## 2026-10-21 â€” native G2 context readout C1 pilot completed
-
-A bounded eight-frame MOT17-02-FRCNN pilot used G2 step 12000 with the official DLM frozen. Each of 8 real frames had one native DLM forward; the downstream GroundJEV typed readout received the pooled image regions plus same-frame clean-language context. Four frames were train and four same-video temporal development, with previous-frame GT-matched region tokens as explicit teacher-forced causal slots. Twelve readout updates changed identity accuracy train 0.032258â†’0.725806 and temporal-dev 0.032258â†’0.403226; admit accuracy changed train 0.911290â†’0.911290 and temporal-dev 0.790323â†’0.911290. This is a bounded learnability control only: no HOTA/IDF1, independent-video or final tracking claim. The first attempt completed the loop but failed at receipt writing because the output directory was absent; the directory fix was the only rerun change and the failed attempt is excluded. Evidence: `docs/GROUNDJEV_COUPLED/PHASE_C_NATIVE_CONTEXT_PILOT_20261021.{json,md}`.
-
-## 2026-10-21 â€” active goal snapshot at G2 step 12153
-
-The protected formal G2 Clean owner is alive on GPUs 3/5 at event step 12153/18227; recent event rate is 11.614 s/step and the linear remaining estimate is 19.6 h. The latest durable checkpoint is `adapter-step012000.pt`, with no terminal receipt. G0 MOT20-05 validation-half export is terminal for 1,657 frames (HOTA 0.073346961, IDF1 0.059598451, IDSW 1933); this remains a validation-half control rather than a full TEST claim. G1, bundle, held-out, YesTrack and compact three-task OneJev owners are alive and waiting on their registered dependencies/resource gates with no recorded failure; compact OneJev optimizer updates remain 0. The process audit found no live MOT-only optimizer. Evidence: `docs/GROUNDJEV/ACTIVE_GOAL_STATUS_20261021_G2_STEP12153.{json,md}`.
-
-## 2026-10-21 â€” merged Phase C causal memory input contract
-
-Merged the isolated single-backbone memory-input implementation into the GroundJEV evidence branch. `MemoryTokenProjector` used by the typed readout remains compatible; the new `IdentityMemoryTokenProjector` and `inject_identity_memory` insert only causal identity tokens before the registered answer index, return the insertion offset for label shifting, and leave the disabled path tensor-identical to the G2 baseline. The focused contract tests passed in the serving PyTorch environment (3 tests) and the existing Phase A core functions passed (3 checks); coupled sources compile. This is an input-contract result only: the official DLM decoder hook, generated-box recall and C0/C1/C2 HOTA/IDF1 evaluation remain pending.
-
-## 2026-10-21 â€” blocked accidental teacher-only OVMOT launch
-
-The registered real three-task v2 manifest contains 131,214 native MOT rows, 346 native RMOT rows, and 430 OVMOT Base teacher-control rows; its 40-frame native TAO archive has no category labels and is validation-only. The waiting four-GPU OneJev owner had zero optimizer updates. I stopped that waiting owner before any launch, preserved its state snapshot, and marked it `PAUSED_FOR_NATIVE_OVMOT_ROWS`. The queue gate now requires an explicit native OVMOT TRAIN candidate/annotation join (`native_ovmot_training_rows=true`, `ovmot_training_mode=native`) and returns `WAITING_NATIVE_OVMOT_ROWS` otherwise. No three-task training or OVMOT gain is claimed; the historical source course remains preserved.
-
-## 2026-10-21 â€” active goal snapshot at G2 step 12195
-
-A single authoritative read of the protected G2 event log found event step 12195/18227 with finite loss 0.225930949, gradient norm 9.566365, peak memory 12.828853 GiB, and a 500-step rate of 11.618 s/step (linear remainder about 19.5 h). The latest durable checkpoint remains adapter-step012000.pt and the terminal receipt is absent. G0 MOT20-05 remains a complete 1657-frame validation-half natural-visibility control with HOTA 0.073346961 and IDF1 0.059598451; it is not a full TEST claim. The compact three-task queue is paused before optimizer launch because native OVMOT TRAIN rows are missing; its optimizer update count remains zero and the guard requires native OVMOT provenance/mode. No final G1/held-out/OneJev/YesTrack result was promoted. Evidence: docs/GROUNDJEV/ACTIVE_GOAL_STATUS_20261021_G2_STEP12195.{json,md}.
-
-## 2026-10-21 â€” native OVMOT TRAIN join pipeline prepared
-
-Added `tools/groundjev/prepare_native_ovmot_train_join.py`, a CPU-only joiner for a future complete native GroundAnything TAO TRAIN stream. It validates `/frames/train/` provenance, requires native region features and GT-free model metadata, preserves candidate boxes, assigns official Base category targets only through deterministic one-to-one IoU >=0.5 matching to TAO TRAIN annotations, and emits the existing hierarchical category questions with on-demand real-image crop recipes. The registered TAO TRAIN source contains 18274 images, 54639 annotations and 765 Base categories mapped to the 1203-class vocabulary; 11 categories are explicitly unmapped. The current 40-frame/35228-candidate native TAO archive is validation-only and is rejected by the TRAIN path guard. `py_compile`, one-frame synthetic preflight, and validation-scope rejection passed; no GPU or optimizer update occurred. The compact three-task owner remains paused pending a complete native OVMOT TRAIN archive. Evidence: docs/GROUNDJEV/NATIVE_OVMOT_TRAIN_JOIN_20261021.{json,md}.
-
-## 2026-10-21 â€” TAO TRAIN native OVMOT scope registered
-
-Registered a CPU-only scope manifest for all 18274 TAO TRAIN images across 500 videos. The runtime manifest contains only absolute image paths and the fixed 1203-category query vocabulary; it carries `training_on_this_scope=true` for an explicit export gate but no GT fields, labels or evaluation data. `stream_tao_native_candidates.py` now requires `--allow-training-scope` for this manifest and rejects validation manifests with that flag; the scope gate was tested without importing the model service. The exporter was not launched because current GPUs remain occupied, so native candidate rows and optimizer updates are still zero. Evidence: docs/GROUNDJEV/TAO_TRAIN_NATIVE_SCOPE_20261021.{json,md}.
-
-## 2026-10-21 â€” corrected process audit at G2 step 12235
-
-A corrected process-table audit (the first username-filtered attempt was invalid because the account is `lyq`) found the protected G2 parent/ranks alive at 12235/18227 on GPUs 3/5, G1/bundle/YesTrack waiters alive, and no registered MOT-only or legacy J1 OneJev optimizer command. The compact three-task owner remains paused before optimizer updates because native OVMOT TRAIN rows are absent. Foreign GPU jobs were not touched. Evidence: docs/GROUNDJEV/PROCESS_AUDIT_20261021_G2_STEP12233.{json,md}.
-
-## 2026-10-21 â€” active goal snapshot at G2 step 12241
-
-The protected G2 Clean event log reached 12241/18227 with finite loss 0.195041649; the last 500-step rate is 11.626 s/step and the linear remainder is about 19.3 h. The durable checkpoint remains step12000 and no final receipt exists. G0 remains a 1657-frame MOT20-05 validation-half control (HOTA 0.073346961, IDF1 0.059598451); the compact three-task queue remains paused with zero optimizer updates pending native OVMOT TRAIN rows. Evidence: docs/GROUNDJEV/ACTIVE_GOAL_STATUS_20261021_G2_STEP12241.{json,md}.
-
-## 2026-10-21 â€” GroundJEV fixed-candidate MOT20-03 replay establishes failure boundary
-
-Added a reproducible CPU evaluator for the immutable native GroundAnything candidate/region cache. The current 192-step coupled readout replayed all 128 registered MOT20-03 TRAIN frames (14,784 candidates, 128 cached feature calls) without a second VLM and generated 152 predictions on 76 frames. TrackEval returned HOTA 0.0279006409, DetA 0.0099894107, AssA 0.0779470005, IDF1 0.0052606731, IDSW 1, FP 1, FN 14,524; 11,462 candidates were explicit REJECT. The cache predates the current G2 Clean terminal checkpoint and overlaps TRAIN scope, so this is a fixed-candidate association/runtime diagnostic, not independent G2 or end-to-end evidence. The first evaluator attempts exposed only direct-entry `sys.path` and NumPy-2/old-TrackEval compatibility issues; both were fixed locally without changing metric code or inputs. Evidence: `docs/GROUNDJEV_COUPLED/PHASE_B_FIXED_CANDIDATE_EVAL_20261021.{json,md}` and the registered output receipt.
-
-The same-input historical compact control (checkpoint `rmot_native72_stage_v1/broad_native_training/checkpoint.pt`) returned HOTA 0.336514881, DetA 0.309884333, AssA 0.365702041, IDF1 0.359321689, IDSW 159, FP 119 and FN 9,832. It is an offline multi-component reference, not a single-backbone result. The gap confirms that the coupled readout's 0.027900641 HOTA is a real association/admission failure and should trigger a bounded repair study rather than a long joint finetune.
-
-## 2026-10-21 â€” Phase C causal memory prefill contract
-
-Added `locatemot/groundjev/coupled/causal_memory.py`, which inserts causal identity tokens only at the terminal prompt boundary used by GroundAnything causal bbox generation, extends attention/position/cache inputs, and preserves the disabled path by tensor identity. A seven-test CPU contract suite passed; a fake language tower showed a changed next-token logit after memory insertion with exactly one prefill call and no second VLM. Real G2 GPU prefill, correct-versus-shuffled memory box generation, and HOTA/IDF1 effects remain pending because GPUs 3/5 are protected by formal G2 and the other devices have foreign compute owners. Evidence: `docs/GROUNDJEV_COUPLED/PHASE_C_MEMORY_PREFILL_CONTRACT_20261021.{json,md}`.
-
-## 2026-10-21 â€” authoritative G2 progress refresh at step 12294
-
-A single non-polling audit found the protected formal G2 Clean parent/ranks alive on GPUs 3/5 at event step 12294/18227. The event is finite (loss 0.205467, gradient norm 9.551106, peak memory 12.828834 GiB); `adapter-step012000.pt` and `latest_training_state.pt` remain the latest durable checkpoints and `final_receipt.json` is absent. G1, bundle, held-out, YesTrack and compact three-task owners remain dependency/resource waiters. No protected process or experimental protocol was changed. The causal-memory prefill contract remains engineering-only pending an exclusive GPU window for real generated-box comparison.
-
-## 2026-10-21 â€” fixed-candidate action-distribution repair completed
-
-The first MOT20-03 fixed-candidate replay showed a candidate pool with 86.85% GT-box coverage at IoU >= 0.5, but the short MOT17-trained readout selected `REJECT` for 77.54% of 14,784 candidates and created only two births. A bounded repair trained only on the first 64 frames of the registered MOT20-03 TRAIN clip, weighted identity-choice classes from that training half with an inverse-frequency cap of 4x, and froze the final 64 frames before optimization. After 180 CPU updates, temporal-dev readout identity accuracy was 0.871720 and admit accuracy 0.903860; predicted-memory runtime replay returned HOTA 0.302815, DetA 0.235861, AssA 0.388886, IDF1 0.257729, IDSW 18, FP 3, FN 5,634 on 1,891 predictions across 61 frames. The 64 feature calls used the cached single-backbone state and no second VLM. This is a TRAIN-scope mechanism repair, not an independent benchmark or G2 Clean result; its scope and teacher-forced classification boundary are explicit in `docs/GROUNDJEV_COUPLED/PHASE_B_FIXED_CANDIDATE_REPAIR_20261021.{json,md}`.
-## 2026-10-21 â€” redirect goal audit at G2 step 12326
-
-A single authoritative audit confirmed the registered MOT20-05 G0 native export is terminal for 1,657 validation-half frames (HOTA 0.073347, IDF1 0.059598) and found no live GroundJEV MOT-only optimizer; no historical process was stopped or overwritten. Formal G2 Clean remains alive on GPUs 3/5 at step 12326/18227, with a 500-step rate of 11.6 seconds per step and a linear remainder of about 19.0 hours. The latest durable checkpoint is `checkpoints/adapter-step012000.pt`, and the final receipt is absent. G1 GPU5, bundle, held-out and YesTrack owners remain waiting; the corrected real three-task OneJev owner remains paused at zero optimizer updates because native TAO TRAIN OVMOT rows are not present. Evidence: `docs/GROUNDJEV/ACTIVE_GOAL_STATUS_20261021_G2_STEP12326.{json,md}`.
-
-## 2026-10-21 â€” cross-disk native OVMOT archive audit at G2 step 12345
-
-A read-only search of `/data0/user`, `/data1/user` and `/data3/user` found no complete TAO TRAIN native candidate archive. The only existing native TAO candidate archive remains a 40-frame `frames/val` stream and is ineligible for TRAIN joining. The corrected real three-task queue remains paused with zero optimizer updates; no validation archive was relabeled and no teacher-only fallback was launched. Evidence: `docs/GROUNDJEV/NATIVE_OVMOT_ARCHIVE_AUDIT_20261021.{json,md}`.
-
-## 2026-10-21 â€” GroundJEV joint identity corpus rebuild contract and Phase B ablations
-
-Added `tools/groundjev/coupled/build_joint_identity_corpus.py` and its focused
-contract tests. The builder normalizes registered MOT/RMOT/OVMOT rows without
-inventing boxes or targets, records candidate provenance and causal memory,
-rejects future/test evidence, and has an explicit native-only gate that rejects
-teacher crops. A real 12-row sample from the registered Phase-B corpus produced
-5 MOT, 3 RMOT and 4 OVMOT rows; 8 rows had native candidates and 4 remained
-explicit Base teacher/empty-candidate rows, so `native_ovmot_training_rows` was
-false. The existing G2 step-11000 B0/B1/B2 bounded readout receipts were
-consolidated into `docs/GROUNDJEV_COUPLED/PHASE_B_ABLATIONS_20261021.{json,md}`.
-The three 200-update arms and 8-frame causal replay are engineering evidence
-only; no official tracking metric or OVMOT native-training claim was promoted.
-
-The native-only corpus gate was then strengthened to reject rows carrying an
-explicit `gt_in_model_input`/`GT_IDs_in_model_input` flag even when their
-candidate-source string looks native. The focused contract suite now has 12
-passing checks; no source rows or training queues were changed.
-
-The Phase-B joint corpus was also audited against all 583,251 G2 Clean TRAIN
-rows. There are 678 exact image-path overlaps covering 290 images (221
-identity-pair, 119 occlusion-recovery, 338 RMOT); the 430 OVMOT teacher rows
-have no exact overlap. The audit reads no official-test labels and marks the
-joint corpus as TRAIN-scope controls only. Evidence:
-`docs/GROUNDJEV_COUPLED/DATA_OVERLAP_AUDIT_20261021.{json,md}`.
-
-## 2026-10-21 â€” targeted native TAO archive rescan
-
-Re-read every discovered TAO candidate archive under `/data2/user/LocateMOT_GroundJEV/outputs/groundjev`. The two small candidate controls and the 40-frame streams all resolve to `frames/val`; the larger 40-frame stream has 35,228 candidates and a native feature cache but is explicitly a validation stream. One full Base/Novel stream is empty and failed, and the registered 18,274-image/500-video TAO TRAIN manifest has `native_candidate_export_started=false` and `native_ovmot_training_rows=false`. No complete TAO TRAIN native candidate archive exists, so the corrected three-task queue remains paused at zero optimizer updates. Validation outputs were not relabeled and no teacher-only fallback was promoted. Evidence: `docs/GROUNDJEV/NATIVE_OVMOT_ARCHIVE_RESCAN_20261021.{json,md}`.
-## 2026-10-21 â€” single authoritative G2 progress refresh at step 12417
-
-One non-polling status read found the protected formal G2 Clean ranks alive on GPUs 3/5 at event step 12,417/18,227 with finite loss `0.1803909168`. The latest durable adapter remains `checkpoints/adapter-step012000.pt`; `checkpoints/latest_training_state.pt` is present and `final_receipt.json` is absent. G1, the deployment bundle, held-out evaluation and YesTrack remain dependency/resource waiters. The corrected three-task queue remains `PAUSED_FOR_NATIVE_OVMOT_ROWS` with zero optimizer updates. No protected process or experimental protocol was changed. Evidence is the live G2 run directory plus the refreshed matrix.
-
-## 2026-10-21 â€” TAO TRAIN native export shards registered
-
-Because the all-GPU snapshot was occupied by protected/foreign jobs, no native TAO export was launched. Instead, added `scripts/groundjev/prepare_tao_train_native_shards.py` and registered eight contiguous, disjoint, label-free manifests covering all 18,274 TAO TRAIN images (500 videos) with parent manifest SHA `835adaadff282088599987de4c5bc906e7d8aca826deb7426cda05598e9db3a4`. CPU coverage validation reports 18,274 covered frames, zero missing and zero duplicates. Every shard remains `native_ovmot_training_rows=false`; this only makes the future native stream resumable/parallel and does not unblock training. The first preflight exposed a slice-length assertion bug, which was fixed before accepting the v2 registration; the failed partial directory was preserved separately. Evidence: `docs/GROUNDJEV/TAO_TRAIN_NATIVE_SHARDS_20261021.{json,md}` and the external shard receipts.
-
-Added `scripts/groundjev/merge_tao_native_shards.py` as the only promotion path after streaming. It checks every shard receipt, parent SHA, exact image order, GT-free metadata, and disjoint full coverage before producing a combined candidate archive. A preflight against the registered-but-unstreamed v2 directory rejected the missing shard receipt at shard 0, as intended; no native TRAIN rows or optimizer updates were created.
-
-The merge contract also passed a synthetic four-frame/two-shard GT-free fixture, covering the successful receipt path without touching dataset or GPU state.
-
-## 2026-10-21 â€” resumable TAO TRAIN native owner started
-
-Added `scripts/groundjev/queue_tao_native_train_shards.py` and synchronized the runtime stream copy so shard-specific GroundAnything and native-feature ports are supported while the default validation ports remain unchanged. The owner is live in `WAITING_G2_CLEAN_SUCCESS`, restricted to physical GPUs 4/6, and treats any existing compute application as unavailable; GPUs 3/5 and 7 are excluded to protect G2/G1 and held-out/YesTrack. It will run the eight native TRAIN shards and strict merge only after the exact G2 terminal receipt. A first background launch was reaped by the terminal wrapper before writing state; the persistent-session launch wrote the waiting state and made no GPU or foreign-job change. Evidence: `docs/GROUNDJEV/TAO_TRAIN_NATIVE_QUEUE_20261021.{json,md}`.
-
-## 2026-10-21 â€” authoritative G2 refresh at step 12442
-
-The protected G2 Clean ranks remain alive on GPUs 3/5 at event step 12,442/18,227 with finite loss `0.2287370411`; the latest durable adapter is still `checkpoints/adapter-step012000.pt`, the training-state checkpoint is present, and `final_receipt.json` is absent. G1, clean-bundle, held-out and YesTrack owners remain live dependency/resource waiters; the corrected three-task owner remains paused at zero updates because native TAO TRAIN rows are not available. No protected process or protocol was changed.
-
-## 2026-10-21 â€” native TAO join owner and native three-task launch gate repaired
-
-Added a CPU-only owner for the complete native TAO TRAIN stream and a separate
-resumable owner for the future real MOT/RMOT/OVMOT OneJev run. The join owner
-waits for the strict eight-shard merge receipt, runs the checked-out
-`prepare_native_ovmot_train_join.py` and `prepare_real_three_task_joint_manifest.py`,
-and never launches a model or optimizer. Its initial state is
-`WAITING_COMPLETE_NATIVE_TAO_STREAM`. The native three-task owner is now live
-as a dependency waiter at `WAITING_NATIVE_OVMOT_MANIFEST`; it has launched no
-GPU process or optimizer and will apply the joined-manifest plus terminal
-G2/G1/bundle/held-out and exclusive-GPU gates later. The historical
-teacher-control queue remains paused at zero updates.
-
-During the audit, the join owner was corrected to resolve repository joiners
-from `/data2/user/LocateMOT` because the runtime output tree does not mirror
-those source files. The paused compact queue was also corrected to accept the
-actual bundle terminal status `G2_CLEAN_DEPLOYMENT_BUNDLE_EXPORTED` while
-retaining the historical spelling for old receipts. No data, checkpoint, or
-running process was changed. Evidence:
-`docs/GROUNDJEV/TAO_NATIVE_JOIN_QUEUE_20261021.{json,md}` and
-`docs/GROUNDJEV/REAL_THREE_TASK_NATIVE_QUEUE_20261021.{json,md}`.
-
-## 2026-10-21 â€” TAO native owner corrected to use a terminal G2 bundle
-
-The TAO TRAIN shard owner was audited before its first GPU launch. Its
-original model constant pointed at the published G0 bundle, which would have
-made a later native candidate archive impossible to attribute to G2. The owner
-now waits for the exact G2 receipt, merges `adapter_projector_final.pt` into
-the private `GroundAnything-DLM-G2-CLEAN-NATIVE-TAO-V1` bundle, validates the
-569-tensor/export/manifest contract, and only then starts shard services. The
-private bundle is never mixed with or written over G0, G1, or the ordinary G2
-deployment bundle. The owner process had not started a shard, so it was
-restarted with the corrected code while remaining in its G2 wait state.
-Evidence: `scripts/groundjev/queue_tao_native_train_shards.py` and
-`docs/GROUNDJEV/TAO_TRAIN_NATIVE_QUEUE_20261021.{json,md}`.
-
-## 2026-10-21 â€” decoupled the terminal G2 bundle from the G1 comparison arm
-
-The clean deployment owner previously waited for both the exact G2 receipt and
-G1 GPU5 completion. That ordering could block independent G2 held-out
-measurement and native G2 candidate export behind an optional comparison arm.
-The owner now waits only for the exact-once G2 terminal receipt, performs the
-same CPU-only 569-tensor merge into the separate G2-CLEAN-V2 bundle, and leaves
-G1 as an independent GPU5 adaptation/control. The existing owner was still in
-its pre-launch wait state, so no model or output was changed; it will be
-restarted with the corrected gate. Evidence: `tools/groundjev/queue_g2_clean_bundle_export.py`.
-
-The owner restart also exposed a resumability defect: its old waiting directory
-was treated as an existing export and refused to start. The restart guard now
-accepts the preserved pre-launch WAITING_G2_AND_G1_TERMINAL state (as well as
-WAITING_G2_CLEAN_SUCCESS), refuses live duplicate owners and any partial
-bundle, and resumes without deleting the historical state. The corrected owner
-is live again in WAITING_G2_CLEAN_SUCCESS.
-
-## 2026-10-21 â€” native three-task owner no longer logically depends on G1
-
-The new real native MOT/RMOT/OVMOT owner was narrowed to require the native
-TAO manifest, terminal G2, independent G2 bundle and held-out receipts. G1
-GPU5 adaptation remains an optional comparison receipt; its physical GPU5
-ownership is still respected by the four-GPU resource probe. This preserves
-G1/G200/G0 controls without making the final-G2 joint route wait on a separate
-adaptation arm. The historical paused teacher-control queue was not changed.
-
-## 2026-10-21 â€” G1 GPU5 waiting owner made resumable
-
-The G1 GPU5 owner had the same pre-launch recovery defect: after a process
-restart, its preserved WAITING_G2_CLEAN_SUCCESS directory was treated as an
-existing artifact and the owner could not be resumed. The startup guard now
-rejects a live duplicate owner and any partial output, but accepts the empty
-preserved waiting directory and records `resumed_wait_owner`. The old waiting
-owner was stopped and restarted with the registered
-`GroundAnything-DLM-TrackProjG1-GPU5-V2` bundle path. It remains at
-`WAITING_G2_CLEAN_SUCCESS`; no G1 optimizer or GPU process has started.
-
-## 2026-10-21 â€” native three-task owner made resumable
-
-The real native MOT/RMOT/OVMOT owner had a weaker restart boundary: a dead
-waiting process could rewrite its queue directory without distinguishing a
-clean wait from partial training output. Startup now accepts only the known
-pre-launch waiting states, preserves the optional runtime config when it was
-already created, rejects unexpected files, refuses live duplicates, and records
-`resumed_wait_owner`. The existing owner is being restarted only in its
-CPU-only `WAITING_NATIVE_OVMOT_MANIFEST` state; no optimizer or GPU process is
-started.
-
-## 2026-10-21 â€” YesTrack waiting owner made resumable
-
-The native YesTrack v2 owner was still waiting for an exclusive GPU7 and had
-no optimizer or evaluation artifacts. Its startup guard now resumes only the
-known empty `WAITING_GPU7_EXCLUSIVE` queue (and the pre-created `args.json`),
-rejects partial queue/training outputs, refuses live duplicates, and records
-`resumed_wait_owner`. The waiting owner is restarted without allocating GPU7;
-the independent YesTrack run remains pending.
-
-## 2026-10-21 â€” held-out owner made resumable
-
-The GPU7 G0/G2 independent held-out owner was still CPU-only in
-`WAITING_G2_CLEAN_BUNDLE_AND_GPU7`; its directory contained only the current
-wait receipt and the preserved historical pre-MOT receipt. Startup now accepts
-that exact clean wait state, preserves the historical receipt, rejects any
-unexpected partial evaluation outputs, refuses live duplicates, and records
-`resumed_wait_owner`. The owner is restarted without allocating GPU7.
-## 2026-10-21 â€” G2 progress evidence refreshed
-
-The protected formal G2 Clean owner remains live on physical GPUs 3/5. The
-latest observed training event is step 12,567/18,227 with finite loss
-0.3145263; `adapter-step012500.pt` and `latest_training_state.pt` load with
-the registered clean manifest SHA. No terminal receipt or final adapter exists
-yet, so no downstream bundle, held-out metric, G1 update, or joint optimizer
-update is claimed. The waiting owners remain untouched and recoverable.
-
-## 2026-10-21 â€” G2 progress evidence refreshed (step 12578)
-
-An authoritative event read at 05:04:48 +0800 records the protected formal G2
-Clean run at step 12,578/18,227 with finite loss 0.24055790062993765. The two
-distributed ranks are still the only active optimizer in this route on physical
-GPUs 3/5. The latest durable checkpoint remains `adapter-step012500.pt` with
-`latest_training_state.pt`; `final_receipt.json` and a terminal adapter are
-still absent. No G1, bundle export, held-out metric, YesTrack update, or native
-three-task update is claimed before that terminal receipt. This is evidence of
-continued healthy progress only; the prior historical result boundaries remain.
-
-## 2026-10-21 â€” GroundJEV coupled regression refreshed
-
-The bounded coupled-core regression was rerun after the queue-owner changes: 13
-unittests covering joint identity corpus, Phase A core, memory-conditioned input,
-fixed-candidate contract, and causal-memory prefill all passed. The registered
-G1/G2-bundle/TAO/native-joint/YesTrack queue entrypoints also passed `py_compile`,
-and the coupled plus TrackJEV packages passed `compileall`. This verifies the
-recoverable launch surface only; it does not promote any model or imply a
-tracking metric while G2 lacks its terminal receipt.
-
-## 2026-10-21 â€” waiting-owner source resolution audit
-
-A read-only `/proc` audit of the seven registered waiting owners confirmed that
-all commands run with cwd `/data2/user/LocateMOT`: the G1 and G2-bundle owners
-resolve `tools/groundjev/...`, while the TAO-shard, held-out, YesTrack, native
-join, and native three-task owners resolve `scripts/groundjev/...` or the
-registered join entrypoint from this project root. The sibling runtime checkout
-was not used to launch these owners. This closes a reproducibility ambiguity
-without changing any owner, checkpoint, or GPU allocation.
-
-
-## 2026-10-21 â€” G2 event-integrity audit (step 12594)
-
-The formal G2 event stream contains 12,594 optimizer events from step 1 through
-step 12,594 with no step gaps. Loss, gradient norm, memory, learning rates, and
-all other recorded numeric fields are finite across the stream. The recent
-throughput is stable at 309.8 steps/hour over 100 steps, 311.9 over 500 steps,
-and 310.9 over 1,000 steps. Checkpoint events are present at each 500-step
-boundary through `adapter-step012500.pt`; the terminal receipt remains absent.
-This supports healthy continuation and an estimated 5,633 remaining updates at
-roughly 311 steps/hour, but it is not a model-quality or generalization claim.
-
-## 2026-10-21 â€” tightened G1 post-G2 terminal gate
-
-The resumable GPU5 G1 owner previously accepted a G2 receipt with steps at or
-above the registered budget and did not explicitly require the terminal adapter
-file. Its post-G2 gate now requires status
-`G2_EXACT_COVERAGE_TRAINING_COMPLETE`, exactly 18,227 steps, the registered clean
-manifest SHA, and `adapter_projector_final.pt`. A temporary-receipt regression
-confirmed that missing adapter and wrong-step receipts are rejected while the
-complete contract is accepted. The live waiting owner was not restarted or
-modified; this patch protects future recovery and launch paths.
-
-
-## 2026-10-21 â€” G2 progress snapshot (step 12610)
-
-The protected G2 Clean run reached step 12,610/18,227 at 05:10:55 +0800 with
-finite loss 0.2049703631. The three expected training processes remain live and
-`final_receipt.json` is still absent. This snapshot changes only progress
-evidence; no downstream model, held-out metric, or generalization claim is
-made.
-
-## 2026-10-21 â€” coupled runtime lifecycle execution repair
-
-Phase-A review found that the single-backbone runtime decoded lifecycle logits
-but ignored them: every assigned track was forced to `ACTIVE`, every absent
-track only accumulated `LOST`, and an assignment-conditioned memory write could
-reactivate a track whose lifecycle decision was `LOST`.  The smallest aligned
-fix now executes `ACTIVE/REACTIVATE/LOST` decisions, treats `TERMINATE` on a
-matched observation as recoverable `ACTIVE`, blocks memory writes for
-`LOST/TERMINATE`, and applies a registered timeout before irreversible
-termination of an unmatched track.  A controlled causal replay verified one
-birth, a matched `LOST` decision with a held memory write, and timeout
-termination; the one-feature-forward and memory-causality regressions still
-pass.  This is a runtime correctness repair, not a tracking-performance claim.
-
-## 2026-10-21 â€” GPU gate for the next real pilot
-
-The single resource audit found all eight A800 GPUs occupied.  Physical GPUs
-3/5 remain the protected G2 ranks, GPU7 retains an unrelated compute owner, and
-the remaining cards also have active compute workloads; no card has an
-exclusive launch window for the Phase-B real-G2 pilot.  The latest durable G2
-adapter remains `checkpoints/adapter-step012500.pt` with
-`latest_training_state.pt`; the terminal receipt is still not present.  The
-pilot was therefore not started on a shared card, and no process was killed or
-reused.  This preserves the registered training contract while the existing
-G2 completion waiter remains the only long-running observer.
-
-## 2026-10-21 â€” corrected G0/G2 evidence boundary for early coupled pilots
-
-An audit of the historical Phase-A smoke and Phase-B readout pilot found that
-their `checkpoint` was the unadapted `GroundAnything-DLM` bundle and neither
-receipt recorded a G2 adapter.  The metrics and loss values are preserved as
-G0 native-visual controls only; they are not G2 Clean evidence and are not used
-for a G2 performance claim.  The future Phase-A and Phase-B entrypoints now
-require both an explicit adapter and the native clean-DLM loader, and record
-the adapter/runtime provenance.  This fixes a provenance error without
-overwriting the historical control artifacts.
-
-## 2026-10-21 â€” protected G2 progress snapshot (step 12701)
-
-The authoritative event stream now contains contiguous rows through step
-12,701/18,227; the latest row at 05:28:19 +0800 has finite loss
-0.2224419505.  The durable checkpoint set still ends at
-`checkpoints/adapter-step012500.pt` with
-`checkpoints/latest_training_state.pt`, while `final_receipt.json` is absent
-and `trainer_contract.json` remains `G2_FORMAL_TRAINING_RUNNING`.  The launcher
-is still live.  This is only a healthy-progress record; it does not promote a
-checkpoint or claim a tracking metric.
-
-## 2026-10-21 â€” native three-task training step-contract audit
-
-The registered `queue_real_three_task_native.py` writes `epochs=1` and
-`max_steps=0` into its generated config.  The pinned `train/sft.py` contract
-interprets a falsy `max_steps` as the full planned epoch
-(`steps_per_epoch * epochs`), rather than a zero-step plan.  The queue then
-requires the terminal `done` record to report `examples == native manifest
-rows` and a non-missing terminal record before declaring completion.  This
-keeps the real MOT/RMOT/native-OVMOT run from being mistaken for a CPU-only or
-empty optimizer launch.
-
-## 2026-10-21 â€” G1 GPU5 plan provenance repair
-
-The G1 queue is explicitly bound to physical GPU5, but the older
-`native_ground_tracking200_20261014.json` retained a historical
-`physical_training_GPU: 7` field.  That plan is preserved unchanged; the G1
-queue now references a versioned GPU5 plan with matching physical-device
-metadata and an explicit queue-owner provenance note.  The corrected plan will
-be read only when its exact G2 terminal gate opens.
-
-The already-running wait-only owner had loaded the old plan path in memory, so
-it was safely replaced before any GPU work began (old PID 516321 exited; new
-wait owner PID 579251 is `WAITING_G2_CLEAN_SUCCESS`).  Its output directory,
-bundle, controls and historical state were preserved; the new owner records
-`native_ground_tracking200_gpu5_20261021.json` and still owns no GPU.
-
-## 2026-10-21 â€” protected G2 throughput snapshot (step 12731)
-
-The formal G2 event stream is contiguous through step 12,731/18,227 with no
-non-finite loss, gradient, memory or learning-rate fields.  The measured rates
-are 313.73, 312.31 and 311.00 steps/hour over the last 100, 500 and 1,000
-steps, respectively.  This leaves 5,496 updates and a linear estimate of
-about 17.5â€“17.7 hours.  `final_receipt.json` and the terminal adapter remain
-absent, so this is a throughput/progress record only and does not open any
-downstream performance claim.
-
-## 2026-10-21 â€” G2 durable checkpoint contract audit
-
-The latest durable G2 recovery pair remains intact: `adapter-step012500.pt`
-and `latest_training_state.pt` are present at 469,243,990 and 469,247,597
-bytes.  The loaded state reports step 12,500, format
-`groundanything-g2-projector-qwen3-lora-v2-strict`, the registered manifest
-SHA, world size 2, optimizer and scheduler state, both rank RNG paths, sampler
-state, and the full training contract.  This validates recoverability only;
-the formal run is still not terminal and no downstream model claim is made.
-
-## 2026-10-21 â€” historical G2 midterm scope audit
-
-Indexed the Clean V2 TRAIN manifest (583,251 rows; SHA-256 `f682519a1cf9204ca76ea75a56dad36dbdeac26259f202551ab9f66fefd06e71`) against all 24 historical step-3000 G2-PL input frames. All 4 MOT17-02-FRCNN frames are TRAIN-scope; the 8-frame and 12-frame Refer-KITTI-0007 RMOT clips have zero exact image-path overlap with the Clean fit index. Every frame path and content SHA-256 is recorded. The short clips remain diagnostics and do not permit an independent generalization claim. Evidence: `docs/GROUNDJEV/G2_MIDTERM_SCOPE_AUDIT_20261021.{json,md}`.
-
-## 2026-10-21 â€” J1 terminal checkpoint correction
-
-The historical `trackjev_3task_J1_v4_birth` course is terminal at 1,200/1,200 updates, not active: 19,143 rows were consumed, the final adapter and full FP32/Adam/scheduler/RNG state are present, and no J1 optimizer is live. The earlier budget note had only observed step 650 and is corrected without restarting the run. Evidence: `docs/GROUNDJEV/J1_TERMINAL_RECEIPT_20261021.json` and the updated `J1_J2_TRAINING_BUDGET_AUDIT.md`.
-
-## 2026-10-21 â€” OVMOT evaluator repair reproduced on fresh copies
-
-The official TETA evaluator was rerun on fresh copies of the existing video-63 control and video-4 native diagnostic. The current configuration keeps `OUTPUT_SUMMARY=True`, `OUTPUT_TEM_RAW_DATA=True`, and `OUTPUT_PER_SEQ_RES=True`, which fixes the two previously recorded evaluator failures without changing GT or predictions. Video 63 completed its independent 40-frame TAO validation scope with TETA 18.640, LocA 7.0114, AssocA 28.618, and 35,228 predictions; it is a simple-backend control, not G2/G1/OneJev adaptation evidence. Video 4 remains only a four-frame native diagnostic: all four frames were safely rejected for duplicate/unsorted canonical coordinate tuples and produced zero predictions. The full 40-frame video-4 native evaluation is not claimed until that parser/output blocker is repaired. Receipt: `docs/GROUNDJEV/OVMOT_EVALUATOR_REPAIR_20261021.{json,md}`.
-
-## 2026-10-21 â€” conservative OVMOT native-output parser repair
-
-The strict native parser rejects video-4 because otherwise complete GroundAnything responses contain duplicate/unsorted output plus malformed fragments (dangling box tokens and nested object references). Added `locatemot/groundjev/native_output_repair.py` and the `official_scoring_repaired` adapter policy. The repair keeps only complete object-ref/box pairs with valid four-coordinate geometry, drops and records malformed fragments, and never fills or reorders coordinates. A targeted self-test passed; offline preflight of the four preserved raw responses recovered 104/129/133/98 complete pairs. A fresh live retry timed out at the GroundAnything service before frame 751, so no new native metric is claimed and video-4 remains pending service recovery. Evidence is in `docs/GROUNDJEV/OVMOT_EVALUATOR_REPAIR_20261021.{json,md}`.
-
-## 2026-10-21 â€” G2 Clean progress snapshot at step 12873
-
-The formal G2 Clean event stream advanced to 12873/18,227 during the audit; the latest event at 2026-10-21 06:01:24 +0800 has finite loss 0.272433674, gradient norm 11.859652, and peak memory 12.828881 GiB. The last 100/500/1,000-update windows measure 310.88/312.23/311.53 steps/hour, giving a linear ETA near 2026-10-21T23:12:34.824000+08:00. The durable adapter/state pair remains at adapter-step012500.pt plus `latest_training_state.pt`; no terminal receipt exists and all downstream queues remain correctly gated. Evidence: `docs/GROUNDJEV/G2_PROGRESS_SNAPSHOT_20261021_STEP12873.{json,md}`.
-
-## 2026-10-21 â€” native joint queue config contract repair
-
-The post-G2 native three-task owner was found to inject the audit-only
-`native_manifest_rows` field into its generated OneJev config. The pinned
-`train.sft` parser rejects unknown keys, so this would have failed before the
-first model load when all dependency gates opened. Removed that field from the
-generated config; the native manifest row count remains in the owner state and
-is checked against the terminal `done.examples` receipt. Validated the
-normalized config against `train.sft.build_parser`, confirmed `max_rows=1` is
-only a per-microbatch cap with `accum_rows=16`, and ran compile/import smokes.
-No G2 state or process was changed. Receipt:
-`docs/GROUNDJEV_COUPLED/REAL_NATIVE_CONFIG_AUDIT_20261021.{json,md}`.
-
-## 2026-10-21 â€” corrected coupled architecture boundary
-
-The architecture/source audit had stale wording that described the bridge as
-visual-only. The current code includes `NativeG2CleanDLMProvider`, and the
-Phase-C receipt records one real G2 clean visual-plus-language forward with
-same-frame context consumed by the typed readout. Updated the audit to state
-that native context is complete while SGLang integration and trained
-pre-grounding memory feedback remain open gates. No metric or model claim was
-changed.
-
-## 2026-10-21 â€” opened C2 prefill training gradient path
-
-The causal memory prefill adapter previously wrapped every call in
-`torch.inference_mode`, which was correct for deployment but would silently
-block gradients for a memory-conditioned training run. Added an explicit
-`inference_mode` switch that preserves default inference behavior and allows
-training callers to pass `False`. A new backward test confirms the inserted
-memory token receives finite gradient through the prefill and readout. This
-is an interface correction, not a tracking or grounding gain.
-
-## 2026-10-21 â€” G2 Clean progress snapshot at step 12907
-
-The protected G2 event stream is contiguous through 12,907/18,227. The latest
-event at 06:07:55 +0800 has finite loss 0.1906903072, gradient norm 9.2506351,
-and peak memory 12.8288 GiB. Last-100/500/1,000-step throughput is
-312.084/312.309/311.484 steps per hour, leaving 5,320 updates and a linear
-ETA around 23:10â€“23:13 Asia/Shanghai. The durable recovery pair remains
-`checkpoints/adapter-step012500.pt` and `checkpoints/latest_training_state.pt`;
-there is no final receipt. All downstream owners remain gated. Evidence:
-`docs/GROUNDJEV/G2_PROGRESS_SNAPSHOT_20261021_STEP12907.{json,md}`.
-
-## 2026-10-21 â€” repaired G1 GPU5 waiter runtime paths
-
-The G1 waiter was correctly idle but its future command resolved the model,
-GroundAnything source and ground-train Python environment under the code
-checkout, where they do not exist. Updated the queue to run training, export
-and controls from `/data2/user/LocateMOT_GroundJEV` while preserving the code
-checkout for the registered plan and data/protocol files. Verified the runtime
-paths, terminated only the old wait-only owner PID 579251, and started PID
-631075 with status `WAITING_G2_CLEAN_SUCCESS`, zero optimizer updates and no
-GPU launch. G2 and historical artifacts were untouched. Evidence:
-`docs/GROUNDJEV/G1_GPU5_RUNTIME_PATH_REPAIR_20261021.{json,md}`.
-
-## 2026-10-21 â€” repaired G2 bundle and TAO exporter runtime paths
-
-The G2 deployment-bundle owner and the native TAO shard owner were waiting on
-the formal G2 receipt, but both future export calls resolved the base model and
-exporter under the source checkout. That checkout intentionally has no
-`models/GroundAnything-DLM`; the dedicated GroundJEV runtime does. Both queues
-now invoke the runtime GroundAnything Python and runtime exporter from
-`/data2/user/LocateMOT_GroundJEV`, while the source checkout remains the code
-and manifest authority. The two wait-only owners were replaced without
-touching G2: bundle PID 634486 and TAO PID 634487 are both still gated at
-`WAITING_G2_CLEAN_SUCCESS`, with no optimizer updates or GPU allocation.
-`py_compile` and a runtime Torch import passed. Evidence:
-`docs/GROUNDJEV/G2_BUNDLE_RUNTIME_PATH_REPAIR_20261021.{json,md}`.
-
-## 2026-10-21 â€” G2 Clean progress snapshot at step 12938
-
-The protected event stream advanced to 12938/18227. The latest finite event at
-06:13:50 +0800 has loss 0.1918672598, gradient norm 10.0799599, and peak
-allocated memory 12.8289 GiB. Recent 100/500/1000-step rates are
-313.316/312.283/311.850 steps per hour, giving a linear ETA around
-23:06â€“23:11 Asia/Shanghai. The final receipt is absent; adapter-step012500 and
-latest_training_state.pt remain the durable recovery pair. This is a training
-health snapshot only, not a tracking result. Evidence:
-`docs/GROUNDJEV/G2_PROGRESS_SNAPSHOT_20261021_STEP12938.{json,md}`.
-
-## 2026-10-21 â€” corrected G2 native evaluation identity and runtime paths
-
-The short-control entrypoint still hard-coded its adapted arm as `G2-PL` and
-resolved future inference/scoring scripts from the historical OneJev checkout.
-It now derives the Clean arm as `G2-CLEAN-V2`, validates the terminal adapter
-step 18227, Clean TRAIN manifest SHA, merged model SHA and export receipt before
-launch, and executes from `/data2/user/LocateMOT_GroundJEV`. The historical
-`GroundAnything-DLM-G2-PL` path deliberately keeps the `G2-PL` label and is not
-reclassified. The code was compiled and the historical identity path was
-smoke-tested; no service or GPU was started. Evidence:
-`docs/GROUNDJEV/G2_NATIVE_EVAL_IDENTITY_REPAIR_20261021.{json,md}`.
-
-## 2026-10-21 â€” relaunched exited G1 GPU5 wait owner
-
-The G1 dependency owner had exited with only its initial
-`WAITING_G2_CLEAN_SUCCESS` state; no training output, optimizer update or GPU5
-launch existed. After verifying that the registered output directory still
-contained only the owner state, relaunched it with the same G2 root, runtime
-GroundAnything base, output, bundle and control paths. New PID 642505 is live
-and waiting; protected G2 was untouched. Evidence:
-`docs/GROUNDJEV/G1_GPU5_WAIT_OWNER_RELAUNCH_20261021.{json,md}`.
-
-## 2026-10-21 â€” G2 Clean live health snapshot at step 12964
-
-The protected two-rank G2 process remains running on physical GPUs 3/5; both
-ranks are in the compute loop with about 19.3 GiB allocated each. The event
-stream is contiguous through 12964/18227, with finite loss 0.3086177218,
-gradient norm 13.7076988 and peak memory 12.8289 GiB. Recent throughput is
-312.500/312.067/311.850 steps per hour over 100/500/1000 updates, giving a
-linear ETA around 23:09â€“23:11. No terminal receipt exists and no metric claim
-is made. Evidence:
-`docs/GROUNDJEV/G2_PROGRESS_SNAPSHOT_20261021_STEP12964.{json,md}`.
-
-## 2026-10-21 â€” downstream pre-launch contract preflight
-
-While G2 remained non-terminal at step 12970, imported every registered G1,
-G2 bundle, held-out, TAO, native join, three-task and YesTrack queue module;
-all targeted Python compilation checks passed. The dedicated runtime Python
-environments, GroundAnything base, service interpreter, exporter, video runner
-and Clean TRAIN manifest were present. No GPU, optimizer or model service was
-started. Evidence:
-`docs/GROUNDJEV/DOWNSTREAM_PRELAUNCH_PREFLIGHT_20261021.{json,md}`.
-
-## 2026-10-21 â€” G2 Clean live progress snapshot at step 12980
-
-The protected two-rank G2 Clean process remains alive and its event stream is
-finite and contiguous through 12980/18227. The latest event at
-2026-10-21 06:21:56 +0800 has loss 0.2029841521, gradient norm
-11.7594414, and peak event memory 12.8288527 GiB.
-The measured 100/500/1000-step rates are
-312.5/312.012/311.877
-steps per hour, giving a linear estimate of about 16.817 hours from the
-500-step window. The final receipt is still absent; adapter-step012500 and
-latest_training_state.pt remain the durable recovery pair. Downstream owners are
-still dependency-gated and have no optimizer updates. This is a training-health
-snapshot only and makes no tracking or benchmark claim. Evidence:
-`docs/GROUNDJEV/G2_PROGRESS_LIVE_20261021_STEP12980.{json,md}`.
-
-## 2026-10-21 â€” YesTrack GPU7 resource gate confirmed
-
-The live YesTrack owner remains `WAITING_GPU7_EXCLUSIVE` because physical GPU7
-has an unrelated process (PID 4008192, user `ljh`, PRISM/CUB training) using about
-16.2 GiB at 100% utilization. The queue's rule is no compute PIDs and at least
-32768 MiB free; the external process was left untouched. This is an observed
-resource gate, not a training or metric result. Evidence:
-`docs/GROUNDJEV/YESTRACK_GPU7_RESOURCE_GATE_20261021.{json,md}`.
-
-## 2026-10-21 â€” MOT-only long-training safe-close audit
-
-A process-name audit over all `lyq` Python/torch/train/eval/service processes
-found no residual MOT-only or old OneJev long optimizer. The only project
-optimizer is the protected G2 Clean two-rank run at step 12991/18227
-on physical GPUs 3/5. Dependency queues and the GroundAnything service remain
-registered; no legacy MOT-only process was restarted. Evidence:
-`docs/GROUNDJEV/MOT_ONLY_SAFE_CLOSE_AUDIT_20261021.{json,md}`.
-
-## 2026-10-21 â€” G0 MOT20 long export terminal receipt audited
-
-The frozen G0 long export has an authoritative official-scope receipt for
-MOT20-05: 1658 legal TRAIN frames, HOTA 0.433441,
-DetA 0.638348, AssA 0.294655, IDF1
-0.441085, IDSW 6239. The receipt is a
-G0 TRAIN/validation-scope reference only; it is not MOT20 TEST and is not an
-independent G2 held-out claim. The older 1,657-frame diagnostic artifact is
-kept separate. Evidence:
-`docs/GROUNDJEV/G0_MOT20_LONG_EXPORT_AUDIT_20261021.{json,md}`.
-
-## 2026-10-21 â€” live completion matrix refreshed at G2 step 12997
-
-The previous matrix was stale at step12002. A new execution-state matrix records
-G0 MOT20-05 long export complete in its legal TRAIN scope, MOT-only safely closed,
-G2 running at 12997/18227 on GPUs3/5, and all downstream G1/TAO/held-out/
-three-task/YesTrack gates with their current statuses. Scientific gain remains
-unproven and independent metrics remain pending. Evidence:
-`docs/GROUNDJEV/GOAL_COMPLETION_MATRIX_LIVE_20261021_STEP12997.{json,md}`.
-
-## 2026-10-21 â€” G2 recovery checkpoint validated on CPU
-
-While the protected G2 run continued, the latest durable training checkpoint
-was loaded with the CPU-only runtime. It is step 13000 at world size
-2, and contains model trainable state, optimizer, scheduler,
-sampler position, Python/NumPy/Torch/CUDA RNG state, the training contract and
-trainable audit. The adapter-step012500 file is also present. No GPU was touched
-and no metric claim is made. Evidence:
-`docs/GROUNDJEV/G2_CHECKPOINT_RECOVERY_AUDIT_20261021.{json,md}`.
-
-## 2026-10-21 â€” G2 Clean live progress at step 13065
-
-The protected two-rank G2 Clean run advanced to step 13065/18227 while both ranks remained live on GPUs 3/5. The event stream remains finite with finite loss and gradient norm; no final receipt exists yet, so downstream G1, native TAO/OVMOT joining, three-task OneJev optimization and independent held-out evaluation remain gated. This receipt records training health only and makes no scientific metric claim. Evidence: `docs/GROUNDJEV/G2_PROGRESS_LIVE_20261021_STEP13065.{json,md}`.
-
-## 2026-10-21 â€” G2 throughput estimate at step 13072
-
-Using actual event timestamps from the protected two-rank G2 Clean run, the recent 100/500/1000-event windows give approximately 5.20 steps/min and 16.52 hours to step 18227. This is an operational ETA only; it is not a metric or quality claim. Evidence: `docs/GROUNDJEV/G2_THROUGHPUT_ESTIMATE_20261021_STEP13072.{json,md}`.
-
-## 2026-10-21 â€” G2 adapter checkpoint step 13000 audited at event step 13076
-
-The protected G2 Clean run advanced to event step 13076/18227 and produced the durable `adapter-step013000.pt` checkpoint. Its SHA-256 is `08cf28930eced61b2086785494728221e113ac75cd7dc6aefe02ab1bc2ebfe59`; the latest full recovery state remains step 13000 with SHA-256 `4a79cbf3e64e69ffc56aaf964754d0209382b87c2124d46f13506325ca52fd22`. The final receipt is absent, so downstream gates remain closed. This is checkpoint and training-health evidence only. Evidence: `docs/GROUNDJEV/G2_CHECKPOINT_PROGRESS_20261021_STEP13076.{json,md}`.
-
-## 2026-10-21 â€” live goal-completion matrix at G2 step 13116
-
-The execution matrix was refreshed from the current G2 event stream and downstream owner states. G0 MOT20 long export remains complete in legal TRAIN scope and MOT-only training remains safely closed; G2 is still running at step 13116/18227, while G1, native TAO/OVMOT joining, three-task OneJev, YesTrack and held-out evaluation remain gated. This is an execution audit and makes no scientific metric claim. Evidence: `docs/GROUNDJEV/GOAL_COMPLETION_MATRIX_LIVE_20261021_STEP13116.{json,md}`.
-
-## 2026-10-21 â€” G2 adapter checkpoint step 15500 audited at event step 15737
-
-The protected two-rank G2 Clean run advanced to event step 15737/18227 on physical GPUs 3 and 5 and produced the durable adapter-step015500 checkpoint. The adapter and latest full recovery state both loaded on CPU with `weights_only=False`; optimizer, scheduler, sampler and RNG state are present. The terminal receipt is still absent, so G2-dependent bundle export, G1, native TAO/OVMOT joining, three-task OneJev optimization and held-out/YesTrack evaluation remain gated. This is checkpoint and training-health evidence only; it does not establish a coupled JEV metric improvement. Evidence: `docs/GROUNDJEV/G2_CHECKPOINT_PROGRESS_20261021_STEP15500.{json,md}`.
-
-## 2026-10-21 â€” G2 adapter checkpoint step 16000 audited at event step 16014
-
-The protected two-rank G2 Clean run advanced to event step 16014/18227 on physical GPUs 3 and 5 and produced the durable adapter-step016000 checkpoint. The adapter and latest full recovery state both loaded on CPU with `weights_only=False`; optimizer, scheduler, sampler and RNG state are present and the registered Clean manifest SHA matches. The terminal receipt is still absent, so G2-dependent bundle export, G1, native TAO/OVMOT joining, three-task OneJev optimization and held-out/YesTrack evaluation remain gated. This is checkpoint and training-health evidence only; it does not establish a coupled JEV metric improvement. Evidence: `docs/GROUNDJEV/G2_CHECKPOINT_PROGRESS_20261021_STEP16000.{json,md}`.
-
-## 2026-10-21 â€” G2 adapter checkpoint step 16500 audited at event step 16501
-
-The protected two-rank G2 Clean run advanced to event step 16501/18227 on physical GPUs 3 and 5 and produced the durable adapter-step016500 checkpoint. The adapter and latest full recovery state both loaded on CPU with `weights_only=False`; optimizer, scheduler, sampler and RNG state are present and the registered Clean manifest SHA matches. The terminal receipt is still absent, so G2-dependent bundle export, G1, native TAO/OVMOT joining, three-task OneJev optimization and held-out/YesTrack evaluation remain gated. This is checkpoint and training-health evidence only; it does not establish a coupled JEV metric improvement. Evidence: `docs/GROUNDJEV/G2_CHECKPOINT_PROGRESS_20261021_STEP16500.{json,md}`.
-## 2026-10-21 â€” åæ ‡åŠ æƒè€¦åˆ step60 ä»æœªæ¢å¤çœŸå®žæ¡†
-
-åœ¨å†»ç»“ G2 step17000 çš„å‰æä¸‹ï¼Œä»ŽåŒåºåˆ—è€¦åˆ step48 æ¢å¤åˆ° step60ï¼Œä½¿ç”¨åæ ‡ token æƒé‡ 5.0ï¼ŒMOT20-03/05 å…± 6 ä¸ª transitionã€10 æ¬¡è§†è§‰ç¼–ç ï¼Œæ­£å¼ G2 æœªæ”¹åŠ¨ã€‚Grounding teacher-forcing loss æœ«æ­¥ä¸º 2.09848ï¼ŒJEV structured loss ä¸º 0.000779ï¼›ä¸¤ä¸ªåºåˆ—çš„ MATCH/ADMIT/Yes-No/ACTIVE ä»ä¸º 1.0ï¼Œä½† C2 greedy æ¡†å¹³å‡ IoU ä»ä¸º 0ã€‚å¯¹ step60 åšæ— æ›´æ–° token traceï¼ŒC2 åæ ‡å‡å€¼æŸå¤±é™åˆ° 2.5554/2.5421ï¼Œå´ä»æ— æ³•è´ªå¿ƒç”Ÿæˆé¦–ä¸ªåæ ‡ `<214>`/`<339>`ï¼ˆåˆ†åˆ«è¾“å‡º `<1>`/`<|box_start|>`ï¼‰ã€‚ç»“è®ºï¼šè€¦åˆé“¾è·¯çœŸå®žè®­ç»ƒæœ‰æ•ˆå½±å“ token æ¦‚çŽ‡ï¼Œä½†è¾“å‡ºåæ ‡æŽ¥å£/è¯¾ç¨‹ä»æœªæ‰“é€šï¼Œåœæ­¢ç›²ç›®åŠ æ­¥ï¼Œä¸‹ä¸€æ­¥æ”¹åæ ‡è¾“å‡ºç›®æ ‡æˆ–æ˜¾å¼å€™é€‰æ¡†æ¡ä»¶å¹¶é‡æ–°åšç‹¬ç«‹è§†é¢‘éªŒè¯ï¼›ä¸å®£ç§° MOT/RMOT/OVMOT æå‡ã€‚è¯æ®ï¼š`docs/GROUNDJEV_COUPLED/PHASE_C_REAL_G2_COUPLED_COORDINATE_WEIGHT_STEP17000_20261021.{json,md}`ã€‚
-## 2026-10-21 â€” native visual-prompt memory also leaves G2 geometry unchanged
-
-ç”¨ GroundAnything å®˜æ–¹ `build_visual_prompt` æŠŠä¸Šä¸€å¸§åˆæ³•æ¡†ä½œä¸ºå½“å‰å¸§ visual referenceï¼ŒMOT20-03/05 å„ 5 å¸§å…± 10 æ¬¡è§†è§‰ç¼–ç ï¼ŒG2 step17000 å†»ç»“ã€æ— å‚æ•°æ›´æ–°ã€æ— ç¬¬äºŒä¸ª VLMã€‚æ‰€æœ‰ C2 è¾“å‡ºéƒ½èƒ½è¢«å®˜æ–¹ parser æ¢å¤ä¸ºåˆæ³•æ¡†ï¼Œä½†ä¸¤åºåˆ— C2 å¹³å‡ IoU å‡ä¸º 0ï¼›é¦–ä¸ªåæ ‡ä»æŽ¥è¿‘å†»ç»“ G2 é”™è¯¯åŸºçº¿ã€‚ç»“è®ºï¼šåŽŸç”Ÿ reference-box æŽ¥å£æœ¬èº«ä¸èƒ½ä¿®å¤å½“å‰åæ ‡å¤´ï¼Œä¸èƒ½æŠŠè¯¥è¯Šæ–­ç§°ä¸ºè·Ÿè¸ªæ”¶ç›Šã€‚è¯æ®ï¼š`docs/GROUNDJEV_COUPLED/PHASE_C_VISUAL_PROMPT_MEMORY_STEP17000_20261021.{json,md}`ã€‚
-
-## 2026-10-21 â€” identity + previous-box state projector åŒåºåˆ—è€¦åˆå¤±è´¥è¾¹ç•Œ
-
-æ–°å¢žå°åž‹ `IdentityBoxStateTokenProjector`ï¼Œå°†ä¸Šä¸€å¸§å…±äº«è§†è§‰æ‘˜è¦å’ŒæŒä¹…æ¡†åæ ‡ä¸€èµ·æ’å…¥ G2 causal promptï¼›å†»ç»“ G2 step17000ï¼ŒMOT20-03/05 å…± 6 ä¸ª transitionï¼ŒçœŸå®ž GPU æ›´æ–° 12 æ­¥ã€‚Grounding loss é™è‡³ 1.70039ï¼Œtyped JEV MATCH/ADMIT/Yes-No/ACTIVE åœ¨ä¸¤åºåˆ—å‡ä¸º 1.0ï¼Œä½† C2 greedy æ¡† IoU ä»ä¸º 0ï¼Œé¦–åæ ‡ä»è¾“å‡º `<1>`/`<0>`ã€‚ç»“è®ºï¼šåªåŠ å…¥æ•°å€¼æ¡†çŠ¶æ€ä»ä¸è¶³ä»¥æŽ§åˆ¶ G2 åæ ‡å¤´ï¼Œä¸‹ä¸€æ­¥éœ€è¦åˆæ³•çš„ coordinate-output adaptation/å€™é€‰æ¡ä»¶è®­ç»ƒï¼Œè€Œä¸æ˜¯ç›²ç›®å¢žåŠ  JEV æ­¥æ•°ã€‚è¯æ®ï¼š`docs/GROUNDJEV_COUPLED/PHASE_C_STATE_CONDITIONED_MEMORY_STEP17000_20261021.{json,md}`ã€‚
-## 2026-10-21 â€” corrected dense G2 contract exposes one-box baseline
-
-å®¡è®¡å‘çŽ°æ­¤å‰ target-only è€¦åˆ pilot å°† `Locate all persons` ä¸Žå•ç›®æ ‡ answer æ··ç”¨ï¼Œä¸èƒ½æ®æ­¤è§£é‡Š G2 åæ ‡å¤´ã€‚æ–°å¢žå¤šæ¡† causal decoderï¼šæ¯ä¸ªæ¡†çš„å››ä¸ªåæ ‡å—å®˜æ–¹ token èŒƒå›´çº¦æŸï¼Œåªåœ¨ `<|im_end|>` åœæ­¢ï¼Œå¹¶åœ¨ MOT20-03/05 å„ 3 ä¸ªçœŸå®žå¸§ä¿ç•™å…¨éƒ¨ GT person boxesã€‚å†»ç»“ G2 step17000ã€6 æ¬¡è§†è§‰ç¼–ç ã€æ— å‚æ•°æ›´æ–°æ—¶ï¼Œæ¨¡åž‹ä»åœ¨æ¯å¸§åªè¾“å‡ºä¸€ä¸ªåˆæ³•æ¡†ï¼›IoU0.5 å¬å›žå‡å€¼ MOT20-03=`0.010345`ã€MOT20-05=`0.004038`ã€‚ç»“è®ºï¼šè¿™æ˜¯ G2 dense å‰ç«¯çš„çœŸå®žåŸºçº¿ï¼›åŽç»­è€¦åˆè®­ç»ƒå¿…é¡»ä½¿ç”¨å®Œæ•´å¤šæ¡†åˆåŒæˆ–åˆæ³• referring/visual-prompt åˆåŒï¼Œä¹‹å‰ target-only IoU ç»“æžœé™çº§ä¸ºåè®®ä¸åŒ¹é…çš„æŽ¥å£è¯Šæ–­ã€‚è¯æ®ï¼š`docs/GROUNDJEV_COUPLED/PHASE_C_REAL_G2_DENSE_MULTIBOX_STEP17000_20261021.{json,md}`ã€‚
-
-## 2026-10-21 â€” G2 Clean live progress at step 17488
-
-The protected two-rank G2 Clean run remains live at `17488/18227` on GPUs 3/5.
-The latest event is finite (loss `0.1523213747`, gradient norm `8.3949747`, peak
-`12.828824 GiB`); recent 500-step throughput is `307.919 steps/hour`, giving a
-linear remainder estimate of about `2.40 h`. The durable recovery state and
-`adapter-step017000.pt` are present, while the terminal receipt is absent.
-G1, bundle export, native OVMOT joining, three-task optimization and held-out
-evaluation remain gated; no independent OneJev/YesTrack optimizer was started.
-This is a training-health/recoverability record only. Evidence:
-`docs/GROUNDJEV/G2_PROGRESS_LIVE_20261021_STEP17488.{json,md}`.
-
-## 2026-10-21 â€” GroundJEV fixed-candidate cross-sequence diagnostic on MOT20-05
-
-å†»ç»“åœ¨ MOT20-03 TRAIN repair split ä¸Šè®­ç»ƒçš„ 180-step readoutï¼Œåœ¨ä¸åŒçš„
-MOT20-05 TRAIN è§†é¢‘å¸§ 766â€“893ï¼ˆ128 å¸§ï¼‰ä¸Šé›¶æ›´æ–°è¿è¡Œï¼›ä»ä½¿ç”¨åŒä¸€æ³¨å†Œçš„
-native candidate/region cache åˆåŒå’Œå•ä¸»å¹²ç¼“å­˜å›žæ”¾ã€‚TrackEval å¾—åˆ°
-HOTA=`0.115666`ã€DetA=`0.147839`ã€AssA=`0.090593`ã€IDF1=`0.071458`ã€
-IDSW=`341`ã€FP=`19`ã€FN=`21407`ï¼Œ126 å¸§æœ‰è¾“å‡ºï¼Œå…³è”å›žæ”¾çº¦ `9.06 FPS`ã€‚
-ç›¸æ¯” MOT20-03 åŒè§†é¢‘ temporal repair çš„ HOTA=`0.302815`ã€IDF1=`0.257729`ã€
-IDSW=`18`ï¼Œè·¨è§†é¢‘æ˜Žæ˜¾é€€åŒ–ï¼Œè¯´æ˜Žå½“å‰ fixed-candidate readout å°šæœªæ³›åŒ–ã€‚
-ä¸¤ä¸ªèŒƒå›´å‡ä¸º TRAINï¼Œç¼“å­˜æ—©äºŽ G2 Clean ç»ˆç‚¹ï¼Œä¸èƒ½å½“ä½œ G2 Cleanã€TEST æˆ–
-æœ€ç»ˆ GroundJEV å¢žç›Šã€‚è¯æ®ï¼š
-`docs/GROUNDJEV_COUPLED/PHASE_B_FIXED_CANDIDATE_CROSS_SEQUENCE_MOT20_05_20261021.{json,md}`ã€‚
-
-## 2026-10-21 â€” registered GroundJEV coupled video entrypoint
-
-Added `tools/groundjev/coupled/run_coupled_video.py` as the clean-checkout
-entrypoint for the already-tested fixed-candidate GroundJEV video evaluator.
-It forwards the real clip/checkpoint/output/device arguments to the existing
-single-backbone runtime, keeps the TrackEval scope explicit, and does not start
-a second VLM or relabel cached features as terminal G2 Clean output. The new
-entrypoint passes `py_compile` and `--help`; no GPU job was launched by this
-change.
-
-## 2026-10-21 â€” G2 Clean step 17500 checkpoint recovery audit
-
-åœ¨å—ä¿æŠ¤çš„ä¸¤å¡ G2 è®­ç»ƒç»§ç»­è¿è¡ŒæœŸé—´ï¼Œç”¨æ³¨å†Œ CPU çŽ¯å¢ƒåªè¯»åŠ è½½
-`adapter-step017500.pt` å’Œ `latest_training_state.pt`ã€‚ä¸¤è€…å‡æŠ¥å‘Š step
-17500ã€world size 2ã€ä¸¥æ ¼ G2 æ ¼å¼å’Œä¸€è‡´çš„ Clean manifest SHAï¼›adapter ä¸Ž
-å®Œæ•´ state å„æœ‰ 293 ä¸ª trainable tensorsï¼Œoptimizer/scheduler/sampler/RNG
-çŠ¶æ€å‡å­˜åœ¨ï¼Œadapter æµ®ç‚¹å‚æ•°å…¨éƒ¨æœ‰é™ã€‚ç»ˆæ€ receipt ä»æœªç”Ÿæˆï¼Œè®­ç»ƒè¿›ç¨‹
-æœªä¿®æ”¹ã€‚è¯æ®ï¼š`docs/GROUNDJEV/G2_CHECKPOINT_PROGRESS_20261021_STEP17500.{json,md}`ã€‚
-
-## 2026-10-21 â€” post-G2 downstream queue contract audit
-
-åœ¨æ­£å¼ G2 ä»è¿è¡ŒæœŸé—´ï¼Œå¯¹ç»ˆæ€åŽè‡ªåŠ¨æ‰§è¡Œçš„ G2 bundleã€GPU5 G1ã€native
-OVMOT joinã€native MOT/RMOT/OVMOT ä¸‰ä»»åŠ¡å’Œç‹¬ç«‹ held-out äº”ä¸ªå…¥å£æ‰§è¡Œåªè¯»
-åˆåŒå®¡è®¡ã€‚äº”ä¸ªè„šæœ¬å‡é€šè¿‡æ³¨å†Œ Python çŽ¯å¢ƒçš„ `py_compile`ï¼›ç»ˆæ€ G2
-status/step/manifest æ ¡éªŒã€bundle receiptã€native OVMOT manifest gateã€
-held-out scope gate å’Œèµ„æºç­‰å¾…æ¡ä»¶å‡å­˜åœ¨ï¼Œæœªå¯åŠ¨ä»»ä½• GPU æˆ– optimizerã€‚
-è¿™æ˜¯ç»ˆæ€å‰ç½®å®¡è®¡ï¼Œä¸ä»£è¡¨ä¸‹æ¸¸å·²å®Œæˆã€‚ 
-
-## 2026-10-21 â€” step17500 coupled decoder regression and DanceTrack dimension repair
-
-G2 step17500 ä¿æŒå†»ç»“ï¼Œåœ¨ä¸¤ä¸ªçœŸå®ž DanceTrack åºåˆ—å„è®­ç»ƒä¸€ä¸ª transitionã€å…± 2
-ä¸ª optimizer stepsï¼›å®˜æ–¹ `hierarchy_dynamic` è§£ç åœ¨ 4 ä¸ª transition ä¸Šå‡è¿”å›ž
-åˆæ³•æ¡†ã€‚C0/C2 recall@IoU0.5 åˆ†åˆ«ä¸º 1/7â†’2/7ï¼ˆ0001ï¼‰å’Œ 1/6â†’2/6ï¼ˆ0016ï¼‰ï¼Œ
-åªä½œä¸ºå—é™è€¦åˆå¼€å‘è¯æ®ã€‚å›žå½’å‘çŽ°å®˜æ–¹ evaluator æŠŠ DanceTrack-0016 å†™æˆ
-1280Ã—720ï¼Œå®žé™… `seqinfo.ini` æ˜¯ 1920Ã—1080ï¼›å·²ä¿®æ­£å¹¶ç”¨åŒä¸€ checkpoint é‡è·‘ï¼Œ
-æ²¡æœ‰è§¦ç¢°æ­£å¼ G2ã€‚æœªæŠ¥å‘Š HOTA/IDF1/TETA æˆ–ç‹¬ç«‹æ³›åŒ–æå‡ã€‚è¯æ®ï¼š
-`docs/GROUNDJEV_COUPLED/PHASE_C_REAL_G2_DENSE_COUPLING_STEP17500_20261021.{json,md}`ã€‚
-
-## 2026-10-21 â€” formal G2 remains live; no downstream restart
-
-å•æ¬¡æƒå¨çŠ¶æ€æ£€æŸ¥ç¡®è®¤æ­£å¼ G2 launcher PID `1799359` ä»å­˜åœ¨ï¼›ç»ˆæ€ receipt ä¸Ž
-`adapter_projector_final.pt` å°šæœªç”Ÿæˆï¼Œæœ€æ–°å¯ç”¨å‘¨æœŸ adapter ä»ä¸º
-`adapter-step017500.pt`ï¼Œå®Œæ•´ recovery state ä¿ç•™ã€‚G1 GPU5ã€G2 bundleã€GPU7
-ç‹¬ç«‹ held-outã€TAO native shards å’Œ native ä¸‰ä»»åŠ¡ owner åˆ†åˆ«ä»å¤„äºŽæ³¨å†Œçš„ç­‰å¾…
-çŠ¶æ€ï¼Œä¸‰ä»»åŠ¡ owner optimizer updates ä¸º 0ã€‚æ²¡æœ‰é‡å¯ã€è¦†ç›–æˆ–æå‰æ™‹å‡éžç»ˆæ€
-checkpointã€‚è¯æ®ï¼š`docs/GROUNDJEV/G2_LIVE_WAIT_20261021.{json,md}`ã€‚
-
-## 2026-10-21 â€” formal G2 event step 17593 live progress
-
-é‡æ–°è¯»å–åŒä¸€ä¸ªæ­£å¼ event streamï¼Œç¡®è®¤ G2 å·²ä»Ž step17500 ç»§ç»­æŽ¨è¿›åˆ°
-`17593/18227`ï¼›æœ€åŽäº‹ä»¶ loss=`0.171383`ã€gradient norm=`10.1324`ã€peak
-memory=`12.829 GiB`ï¼Œæœ€è¿‘ 500 æ­¥åžåçº¦ `307.1 steps/hour`ï¼Œçº¿æ€§å‰©ä½™çº¦
-`2.1 h`ã€‚launcher PID `1799359` ä»å­˜æ´»ï¼Œç»ˆæ€ receipt/final adapter ä»ç¼ºå¤±ï¼Œ
-æ‰€ä»¥æ²¡æœ‰å¯åŠ¨æˆ–æ”¹å†™ä»»ä½•ä¸‹æ¸¸ ownerã€‚è¯æ®ï¼š
-`docs/GROUNDJEV/G2_PROGRESS_LIVE_20261021_STEP17593.{json,md}`ã€‚
-
-## 2026-10-21 â€” downstream coupling regression remains green during G2 wait
-
-åœ¨æ­£å¼ G2 ç»§ç»­å ç”¨ GPU3/5ã€ç»ˆæ€ receipt å°šæœªç”ŸæˆæœŸé—´ï¼Œå¯¹
-`locatemot/groundjev/coupled`ã€`tools/groundjev/coupled` å’Œ
-`scripts/groundjev` æ‰§è¡Œ registered Python çŽ¯å¢ƒçš„ `compileall`ï¼›éšåŽè¿è¡Œ
-11 ä¸ªæ ¸å¿ƒ coupling å•å…ƒæµ‹è¯•ï¼ˆofficial DLM memoryã€causal prefillã€memory
-conditioned inputã€Phase-A coreï¼‰ï¼Œç»“æžœå…¨éƒ¨é€šè¿‡ã€‚æ²¡æœ‰å¯åŠ¨ GPUã€ä¿®æ”¹ G2 æˆ–
-æ”¹å˜ä¸‹æ¸¸ç­‰å¾…æ¡ä»¶ï¼›è¯¥éªŒè¯åªè¯æ˜Žä»£ç å…¥å£å¯é‡å»ºï¼Œä¸æž„æˆæ€§èƒ½ç»“æžœã€‚
-
-## 2026-10-21 â€” G2 latest recovery state CPU integrity recheck
-
-åœ¨æ­£å¼ G2 ä»è¿è¡Œåˆ° event step17615ã€ç»ˆæ€ receipt å°šç¼ºå¤±æœŸé—´ï¼Œç”¨ registered
-ground-train Python çŽ¯å¢ƒåªè¯»åŠ è½½ `checkpoints/latest_training_state.pt`ã€‚
-state æŠ¥å‘Š durable step17500ã€world size2ã€293 ä¸ª trainable tensorsï¼Œ
-optimizer/schedulerã€sampler positionã€å››ç±» RNG å’Œè®­ç»ƒåˆåŒå­—æ®µå‡å­˜åœ¨ï¼›æ‰€æœ‰
-æµ®ç‚¹ trainable tensors æœ‰é™ï¼Œæ–‡ä»¶ SHA=`9aad3f6bd6b4bfcab386d1ec1e39ea03420fc0a202df0d67a447e158f4e66139`ã€‚
-æœªæ”¹å†™ checkpointã€æœªå¯åŠ¨ GPUï¼Œç¡®è®¤æ­£å¼ G2 ä»å¯å®‰å…¨æ¢å¤ã€‚
-
-## 2026-10-21 â€” independent held-out image-overlap gate cleared
-
-åœ¨ G2 ç»ˆæ€å‰ç”¨ CPU-only ç›´æŽ¥è°ƒç”¨æ³¨å†Œçš„ held-out `overlap_audit()`ï¼Œå¯¹
-MOT20-05 validation-half 1,657 å¸§ã€RMOT single 800 å¸§ã€RMOT multi 800 å¸§å’Œ
-TAO OVMOT 40 å¸§é€é¡¹æ¯”å¯¹ G2 Clean TRAIN rowsï¼›å››ä¸ªèŒƒå›´ exact image overlap
-å‡ä¸º 0ï¼ŒTRAIN manifest SHA ä¸º
-`4a8e39d29a30fe1ef7df10484be57a10ab5f0baff0638130ff93fa9c1181ab6a`ã€‚æ²¡æœ‰æ¨¡åž‹
-æŽ¨ç†æˆ– GPU åˆ†é…ï¼›è¯¥ç»“æžœåªæ¸…é™¤ç‹¬ç«‹æ€§é—¨æ§›ï¼Œä¸ä»£è¡¨ä»»ä½•æ€§èƒ½æŒ‡æ ‡ã€‚è¯æ®ï¼š
-`docs/GROUNDJEV/HELDOUT_OVERLAP_AUDIT_20261021.{json,md}`ã€‚
-
-## 2026-10-21 â€” independent held-out input preflight passed
-
-å¯¹æ³¨å†Œçš„å››ä¸ªç‹¬ç«‹ held-out manifest åš CPU-only æ–‡ä»¶æ£€æŸ¥ï¼šMOT20-05 validation
-1,657 å¸§ã€RMOT single 800 å¸§ã€RMOT multi 800 å¸§å’Œ TAO OVMOT 40 å¸§å›¾ç‰‡è·¯å¾„å…¨éƒ¨
-å­˜åœ¨ï¼ˆmissing=0ï¼‰ï¼Œä¸”å‡å£°æ˜Ž `training_on_this_scope=false`ã€‚æ²¡æœ‰ GPU æŽ¨ç†æˆ–
-æŒ‡æ ‡è®¡ç®—ï¼›è¿™åªä¿è¯ç»ˆæ€ G2 bundle ç”ŸæˆåŽ held-out owner ä¸ä¼šå› è¾“å…¥è·¯å¾„ç¼ºå¤±
-å¤±è´¥ã€‚è¯æ®ï¼š`docs/GROUNDJEV/HELDOUT_INPUT_PREFLIGHT_20261021.{json,md}`ã€‚
-
-## 2026-10-21 â€” G0/G200/G1 comparison matrix aligned with the coupled mainline
-
-æŒ‰æœ€æ–° GroundJEV å•ä¸»å¹²è€¦åˆæ–¹å‘é‡æ–°æ ¸å¯¹å¹¶ç™»è®°ä¸‰ç»„å¯¹ç…§ï¼šG0 çš„ MOT20-05
-1,658 å¸§åˆæ³• TRAIN é•¿å¯¼å‡ºå·²å®Œæˆï¼›G200 æ˜¯ç‰©ç† GPU5 ä¸Šå®Œæˆçš„ 200 æ­¥éš”ç¦»å®šä½
-æŽ§åˆ¶ï¼Œä¿ç•™ MOT17-02 å››å¸§ã€RMOT single8/multi12 çš„çŸ­åŠŸèƒ½ receiptï¼›æ–° G1
-GPU5 owner ä»ä¸º `WAITING_G2_CLEAN_SUCCESS`ï¼Œoptimizer updates ä¸º 0ï¼Œæœªå¯åŠ¨
-è®­ç»ƒã€‚è€¦åˆå®žçŽ°ï¼ˆå®˜æ–¹ dense å¤šæ¡†è§£ç ã€typed JEVã€èº«ä»½/æ¡†çŠ¶æ€ memoryã€å›ºå®šå€™é€‰
-è§†é¢‘å›žæ”¾ï¼‰å·²æœ‰å—é™çœŸå®žæ•°æ®è¯æ®ï¼Œä½†æ²¡æœ‰æŠŠçŸ­ç‰‡æˆ–è·¨åºåˆ—è¯Šæ–­å‡çº§ä¸ºç‹¬ç«‹æ€§èƒ½æå‡ã€‚
-è¯æ®ï¼š`docs/GROUNDJEV/G0_G200_G1_COMPARISON_MATRIX_20261021.{json,md}`ã€‚
-
-## 2026-10-21 â€” YesTrack route corrected to auxiliary offline reference
-
-æŒ‰æ–°çš„ GroundJEV å•ä¸»å¹²è€¦åˆä»»åŠ¡é‡æ–°æ ¡æ­£æ‰§è¡Œè·¯çº¿ï¼šç‹¬ç«‹ YesTrack/OneJev
-ä¸å†ä½œä¸ºåœ¨çº¿ä¸»æ¨¡åž‹ï¼Œä¹Ÿä¸åº”é˜»å¡ž G2ã€JEV ç»“æž„åŒ–å†³ç­–æˆ–æŒç»­èº«ä»½è®°å¿†çš„è€¦åˆè®­ç»ƒã€‚
-YesTrack çš„ Yes/No æ•°æ®ç»„ç»‡å’Œæ¦‚çŽ‡è¯»å–åªä½œä¸ºå…±äº« GroundAnything ä¸»å¹²ä¸Šçš„è¾…åŠ©ç›‘ç£
-ä¸Žç¦»çº¿å‚è€ƒå¯¹ç…§ï¼›ä¿ç•™æ—¢æœ‰åŽ†å²ç»“æžœï¼Œä¸å¯åŠ¨æ–°çš„ç‹¬ç«‹ YesTrack é•¿è®­ç»ƒã€‚æ­£å¼ä¸»çº¿ä»æ˜¯
-GroundAnything hidden states + typed JEV choice/NEW/NO_MATCH + persistent identity
-memory + one-to-one assignmentã€‚
-
-## 2026-10-21 â€” independent native OneJev owner paused and coupled replacement registered
-
-å®¡è®¡å‘çŽ° `real_three_task_joint_native_v1_queue` è™½ç„¶å°šæœªå¯åŠ¨ GPUï¼Œä½†ç»ˆæ€åŽä¼šè°ƒç”¨
-ç‹¬ç«‹ `run_source_manifest_sft.py`ï¼Œä¸Žæ–°çš„å•ä¸»å¹² GroundJEV è·¯çº¿å†²çªã€‚è¯¥ owner å·²å®‰å…¨
-åœåœ¨ `PAUSED_FOR_GROUNDJEV_SINGLE_BACKBONE`ï¼ŒåŽŸ manifest/config å’Œ owner çŠ¶æ€ä¿ç•™ï¼Œ
-æ²¡æœ‰ä»»ä½• optimizer updateã€‚æ–°å¢ž `queue_groundjev_native_three_task.py` ä¸Ž
-`train_native_three_task.py`ï¼šä¾èµ–ç²¾ç¡® G2 Clean ç»ˆæ€å’Œ native TAO ä¸‰ä»»åŠ¡ manifestï¼Œ
-åœ¨ GPU4 ä¸ŠåªåŠ è½½ä¸€ä¸ª G2 ä¸»å¹²ï¼ŒæŒ‰ MOT/RMOT/OVMOT å‡è¡¡æ ·æœ¬æå–ä¸€æ¬¡è§†è§‰ hidden stateï¼Œ
-è®­ç»ƒå…±äº« typed JEVã€å› æžœ memory projector å’Œå°åž‹ OVMOT category readoutï¼›ä¸å¯åŠ¨
-ç‹¬ç«‹ OneJev/YesTrackã€‚CPU loaderã€loss/backward synthetic regressionã€compileall å’Œ
-11 ä¸ªæ—¢æœ‰ coupling tests å‡é€šè¿‡ï¼Œå°šæœªå¯åŠ¨ GPU è®­ç»ƒï¼Œå¾… native manifest ä¸Ž G2 ç»ˆæ€é—¨
-æ‰“å¼€åŽè‡ªåŠ¨æ¢å¤ã€‚
-
-## 2026-10-21 â€” coupled three-task owner confirmed at dependency gate
-
-æ–°çš„ `queue_groundjev_native_three_task.py` å·²åœ¨ç‹¬ç«‹ owner ä¼šè¯ä¸­è¿è¡Œï¼Œå½“å‰çŠ¶æ€ä¸º
-`WAITING_G2_NATIVE_MANIFEST`ï¼Œ`optimizer_updates=0`ã€`gpu_launched=false`ã€‚å®ƒæ²¡æœ‰å ç”¨
-GPUï¼Œä¹Ÿæ²¡æœ‰é‡å¤å¯åŠ¨æ—§ OneJevï¼›G2 Clean ç»ˆæ€å’Œ native TAO ä¸‰ä»»åŠ¡ manifest ä»æ˜¯å”¯ä¸€
-å¯åŠ¨æ¡ä»¶ã€‚è¯¥ç­‰å¾…æ˜¯å¯æ¢å¤çš„çœŸå®ž owner çŠ¶æ€ï¼Œä¸æ˜¯è®­ç»ƒç»“æžœæˆ–æŒ‡æ ‡ã€‚
-
-## 2026-10-21 â€” G2 Clean live progress at step 17728
-
-åŒä¸€ä¸ªå—ä¿æŠ¤ G2 Clean è®­ç»ƒå¥æŸ„ä»åœ¨æŽ¨è¿›ï¼Œevent stream å·²åˆ°
-`17728/18227`ï¼ˆ`2026-10-21 21:33:28 +0800`ï¼‰ï¼Œloss=`0.1114838467`ã€
-gradient norm=`10.3513269`ã€‚æœ€è¿‘ 100/500/1000 äº‹ä»¶åžåçº¦ä¸º
-`286.73/303.04/307.59 steps/hour`ï¼Œçº¿æ€§å‰©ä½™çº¦ `1.74/1.647/1.622 h`ã€‚
-ç»ˆæ€ receipt å’Œç»ˆæ€ adapter å°šæœªå‡ºçŽ°ï¼ŒæŒä¹…æ¢å¤å¯¹ä»ä¸º
-`adapter-step017500.pt` ä¸Ž `checkpoints/latest_training_state.pt`ï¼›æ²¡æœ‰å¯åŠ¨æˆ–
-æ”¹å†™ä»»ä½•ä¸‹æ¸¸ ownerã€‚è¿™æ˜¯è®­ç»ƒå¥åº·/ETA è¯æ®ï¼Œä¸æ˜¯ MOT/RMOT/OVMOT æŒ‡æ ‡ç»“æžœã€‚
-è¯æ®ï¼š`docs/GROUNDJEV/G2_PROGRESS_LIVE_20261021_STEP17728.{json,md}`ã€‚
-
-## 2026-10-21 â€” G2 Clean live progress at step 17750
-
-event stream å·²åˆ° `17750/18227`ï¼ˆ`2026-10-21 21:40:20 +0800`ï¼‰ï¼Œæœ€æ–°
-loss=`0.0942097213`ã€gradient norm=`7.7979364`ï¼Œå‡æœ‰é™ã€‚ç»ˆæ€ receipt å’Œ
-ç»ˆæ€ adapter å°šæœªç”Ÿæˆï¼ŒæŒä¹…æ¢å¤å¯¹ä»ä¸º `adapter-step017500.pt` ä¸Ž
-`checkpoints/latest_training_state.pt`ï¼›G1ã€TAO nativeã€held-out å’Œå…±äº«ä¸‰ä»»åŠ¡
-owner ç»§ç»­å—ä¾èµ–é—¨ä¿æŠ¤ã€‚è¿™æ˜¯è®­ç»ƒå¥åº·è¯æ®ï¼Œä¸æ˜¯ MOT/RMOT/OVMOT æŒ‡æ ‡ç»“æžœã€‚
-è¯æ®ï¼š`docs/GROUNDJEV/G2_PROGRESS_LIVE_20261021_STEP17750.{json,md}`ã€‚
-
-## 2026-10-21 â€” G0 MOT20-05 é•¿æ—¶å¯¼å‡ºç»ˆæ€å¤æ ¸
-
-é‡æ–°è¯»å– G0 æƒå¨ owner ä¸Žå®Œæˆ receiptï¼š`mot20_05_full_validation_gpu5_v1` ä¸º
-`NATURAL_MOT20_SCOPE_AND_FROZEN_MEMORY_CONTROLS_COMPLETE`ï¼Œfresh source è¾“å‡ºè¦†ç›–
-1657 å¸§ï¼Œå®˜æ–¹æŒ‡æ ‡ receipt å®Œæ•´ä¸”å½’æ¡£æ ¡éªŒé€šè¿‡ï¼ˆHOTA=0.07334696ã€DetA=0.09026983ã€
-AssA=0.05967427ã€IDF1=0.05959845ã€IDSW=1933ã€FP=417ã€FN=288297ï¼‰ã€‚è¯¥ G0 ç»“æžœ
-ä¿ç•™ä½œä¸ºå¯¹ç…§ï¼Œä¸è¢«æ–°çš„ GroundJEV å•ä¸»å¹²è€¦åˆè®­ç»ƒè¦†ç›–ã€‚
-
-## 2026-10-21 â€” G2 Clean live progress at step 17854
-
-åŒä¸€å—ä¿æŠ¤ G2 Clean å¥æŸ„æŽ¨è¿›è‡³ `17854/18227`ï¼ˆ`2026-10-21 22:04:25 +0800`ï¼‰ï¼Œ
-è¿‘ 500/1000 äº‹ä»¶åžåçº¦ `0.0792/0.0825 steps/s`ï¼Œçº¿æ€§å‰©ä½™çº¦ `1.31/1.26 h`ã€‚
-`final_receipt.json` ä¸Ž `adapter_projector_final.pt` å°šæœªå‡ºçŽ°ï¼›ä¸‹æ¸¸ G1ã€TAO nativeã€
-held-out å’Œå…±äº«ä¸‰ä»»åŠ¡ owner ä»å¤„äºŽä¾èµ–ç­‰å¾…ï¼Œæœªå¯åŠ¨é‡å¤è®­ç»ƒæˆ–ç‹¬ç«‹ YesTrackã€‚
-
-## 2026-10-21 â€” G2 Clean exact-coverage training terminal
-
-å—ä¿æŠ¤çš„ G2 Clean exact-coverage è®­ç»ƒå·²åˆ°è¾¾ç»ˆæ€ `18227/18227`ï¼Œæ­£å¼ receipt
-ä¸º `G2_EXACT_COVERAGE_TRAINING_COMPLETE`ã€‚è®­ç»ƒåˆåŒä¸º world size 2ã€effective
-global batch 32ã€exact-once coverageï¼›manifest SHA256 ä¸º
-`f682519a1cf9204ca76ea75a56dad36dbdeac26259f202551ab9f66fefd06e71`ã€‚ç»ˆæ€
-adapter SHA256 ä¸º
-`cf1b5a6f626810ead94eb4e16adaf3feb6c6da3f99ca5023b6b5c234726f5742`ï¼Œæ¢å¤
-state SHA256 ä¸º
-`cab791def46c264393636c5697f452ec81dd0a242cfd9408644490b92cf643dd`ã€‚æœ€åŽ
-è®­ç»ƒäº‹ä»¶ loss=`0.6241224888`ã€gradient norm=`6.61599`ã€peak memory
-`17.374252 GiB` å‡æœ‰é™ï¼›è¿™åªæ˜¯è®­ç»ƒç»ˆæ€ä¸Žå¯æ¢å¤æ€§è¯æ®ï¼Œä¸å®£ç§°ä»»ä½•
-MOT/RMOT/OVMOT æ€§èƒ½æå‡ã€‚G2 bundle å·²å®Œæˆï¼ŒTAO native å¯¼å‡ºå’Œ GPU5 G1
-å¯åŠ¨ç”±æŒä¹… owner è‡ªåŠ¨æŽ¨è¿›ï¼›å…±äº«ä¸‰ä»»åŠ¡è®­ç»ƒä»ç­‰å¾…åŽŸç”Ÿ manifestï¼Œæœªæ‰‹åŠ¨é‡å¤å¯åŠ¨ã€‚
-
-## 2026-10-21 â€” TAO native export resource-gate repair
-
-TAO native OVMOT çš„å…«ä¸ªè¾“å…¥ shard manifest å’Œ G2 native merged bundle å·²ç»
-å­˜åœ¨ï¼Œä½†åŽŸæ³¨å†Œ owner å›ºå®šç­‰å¾… GPU4/6ï¼›è¿™ä¸¤å¼ å¡æŒç»­è¢«å¤–éƒ¨ PRISM/ShiftRMOT
-ä½œä¸šå ç”¨ï¼Œå› æ­¤æ²¡æœ‰äº§ç”Ÿ native candidateã€‚æœªç»ˆæ­¢æˆ–ä¿®æ”¹è¿™äº›å¤–éƒ¨ä½œä¸šã€‚æŒ‰å½“å‰
-æ˜¾å­˜å®žæµ‹ï¼Œå°† owner å®‰å…¨åœæ­¢å¹¶ä»Žæœªå®Œæˆçš„ shard è¾¹ç•Œæ¢å¤åˆ° GPU1/3ï¼›æ–°çš„èµ„æº
-åˆåŒè¦æ±‚æ¯å¼ é€‰å®šå¡è‡³å°‘ä¿ç•™ 49152 MiB freeï¼Œå…è®¸è®°å½•å…±å­˜è¿›ç¨‹ä½†ä¸ç»“æŸå®ƒä»¬ã€‚
-G2 checkpoint æœªé‡è®­ï¼Œä¸‰ä»»åŠ¡ owner ä»åªç­‰å¾…åˆå¹¶åŽçš„ native manifestï¼›è¿™æ˜¯
-èµ„æºé—¨ä¿®å¤ï¼Œä¸æ˜¯æ¨¡åž‹æŒ‡æ ‡ç»“æžœã€‚
-
-åŒä¸€æ¢å¤è¿‡ç¨‹ä¸­ï¼Œç¬¬ä¸€æ¬¡ä»Žäº¤äº’ shell åŽå°å¯åŠ¨çš„ owner åœ¨ shell ç»“æŸæ—¶è¢«
-SIGHUP æ”¶å°¾ï¼Œç•™ä¸‹äº†éžç»ˆæ€çš„æ—§çŠ¶æ€æ–‡ä»¶ä½†æ²¡æœ‰æ”¹åŠ¨ä»»ä½• shardã€‚å·²è¯†åˆ«è¯¥é¦–ä¸ª
-å¯æ“ä½œåŽŸå› ï¼Œå¹¶ç”¨ `nohup setsid` é‡æ–°æŒ‚èµ·åŒä¸€ä¸ª ownerï¼›å½“å‰æ¢å¤ä»ä»Žå·²æœ‰
-manifest/shard è¾¹ç•Œå¼€å§‹ï¼Œä¸é‡è®­ G2ã€ä¸è¦†ç›–éƒ¨åˆ†è¾“å‡ºã€‚
-
-æ¢å¤åŽçš„ TAO owner å·²é€šè¿‡ G2 native bundle gateï¼Œè¿›å…¥ `STREAMING_TAO_NATIVE_TRAIN_SHARDS`ï¼›
-GPU1/3 çš„èµ„æºæŽ¢é’ˆåˆ†åˆ«è®°å½• 52804/74757 MiB freeï¼Œå¹¶è¡Œå¤„ç† shard 0/1ï¼Œæœªç»ˆæ­¢
-å…±å­˜çš„å¤–éƒ¨è¿›ç¨‹ã€‚G1 GPU5 owner å·²è¿›å…¥ `RUNNING_G1_GPU5_ISOLATED_CONTROLS`ã€‚
-ä¸‰ä»»åŠ¡è€¦åˆ owner ä»ä¿æŒ `optimizer_updates=0`ï¼Œç­‰å¾…å…«ä¸ª shard åˆå¹¶åŽçš„ native
-manifestï¼›å½“å‰æ²¡æœ‰æå‰å®£ç§°ä¸‰ä»»åŠ¡æŒ‡æ ‡ã€‚
-
-éšåŽéªŒè¯åˆ° GPU1/3 ä¸å±žäºŽ GroundJEV çš„åˆæ³•ç‰©ç† GPU allowlist `[4,5,6,7]`ï¼›
-ä¸¤ä»½æœåŠ¡åœ¨ readiness å‰ç”± `serve_groundanything.py` æ‹’ç»ï¼Œé¦–ä¸ªå¯æ“ä½œé”™è¯¯ä¸º
-`DLM TP=1 launch requires exactly one registered physical GPU`ã€‚å¤±è´¥çŠ¶æ€å·²ä¿å­˜ä¸º
-`queue_owner_state_failed_gpu1_gpu3_allowlist.json`ï¼Œæ²¡æœ‰äº§ç”Ÿå€™é€‰æˆ–è¦†ç›–è¾“å‡ºã€‚å·²
-æ¢å¤åˆ°åˆæ³• GPU4/7ï¼Œå¹¶å°†èµ„æºé—¨è®¾ä¸ºæ¯å¡è‡³å°‘ 32768 MiB freeï¼›G1 ç»§ç»­ä¿ç•™ GPU5ï¼Œ
-å¤–éƒ¨è¿›ç¨‹ä¸è¢«ç»ˆæ­¢ã€‚
-
-åˆæ³•æ¢å¤åŽçš„ `services_gpu4` ä¸Ž `services_gpu7` å·²é€šè¿‡å¯åŠ¨æ£€æŸ¥ï¼Œæ—¥å¿—å‡ºçŽ°çœŸå®ž
-`[PREFILL]` è¯·æ±‚ï¼Œè¯´æ˜Ž TAO shard 0/1 å·²è¿›å…¥æ¨¡åž‹æŽ¨ç†ï¼Œè€Œéžä»…åˆ›å»ºç­‰å¾…è¿›ç¨‹ã€‚
-ä¸¤ä»½ `native_stream.log` å°šæœªå†™å…¥ç»ˆæ€ receiptï¼Œæ•…å½“å‰ä»ä¸åˆå¹¶ native manifestï¼Œ
-ä¹Ÿä¸å¯åŠ¨ä¸‰ä»»åŠ¡ optimizer updateã€‚
-
-## 2026-10-22 â€” Replace infeasible full TAO stream with registered native subset
-
-æƒå¨ parent manifest å®¡è®¡æ˜¾ç¤ºå…¨é‡ TAO TRAIN ä¸º 18274 å¸§ã€500 ä¸ªè§†é¢‘ã€1203
-ç±»åˆ«ï¼›å…¨é‡ stream åœ¨äº§ç”Ÿç»ˆæ€å€™é€‰å‰å·²å®‰å…¨ä¸­æ­¢ï¼Œowned æœåŠ¡å’Œè¿›ç¨‹å¿«ç…§ä¿ç•™ï¼Œ
-source manifest æœªä¿®æ”¹ã€‚ä¸ºç¬¦åˆâ€œä¸é»˜è®¤å¯¼å‡ºå…¨éƒ¨ç¼“å­˜â€çš„æ‰§è¡Œçº¦æŸï¼Œæ–°å¢žæ˜Žç¡®æ³¨å†Œçš„
-64 å¸§/64 è§†é¢‘ TRAIN å­é›†ï¼šæ¯ä¸ªå‡åŒ€æŠ½æ ·è§†é¢‘é€‰æ‹©ä¸€ä¸ªæœ‰ eligible TRAIN annotation
-çš„å¸§ï¼Œä»å¯¹æ¯å¸§è¯·æ±‚å…¨éƒ¨ 1203 ç±»åˆ«ï¼Œåˆ†ä¸ºå››ä¸ª 16 å¸§ shardã€‚join contract å…è®¸ä¸”
-æ˜Žç¡®æ ‡è®° `registered_train_subset=true`ã€`full_train_image_scope=false`ï¼›è¿™åªèƒ½
-ä½œä¸ºä¸‰ä»»åŠ¡è”åˆè®­ç»ƒ sourceï¼Œä¸ä½œå…¨é‡ TAO æ€§èƒ½ç»“è®ºã€‚æ–°çš„ owner ä½¿ç”¨åˆæ³• GPU4/5/6/7
-å¹¶è®°å½•æ˜¾å­˜ä¸Žå…±å­˜è¿›ç¨‹ï¼ŒG2/G1/checkpoint ä¸å˜ã€‚
-
-## 2026-10-22 â€” G1 GPU5 adaptation and controls terminal
-
-G1 GPU5 owner å·²å®Œæˆ `NATIVE_GROUND_TRACKING200_TRAINING_COMPLETE`ï¼Œå…± 200
-stepsï¼Œå…¨éƒ¨ registered training pairs visitedï¼Œcheckpoint reload æœ€å¤§å·®å¼‚ä¸º
-0.0ã€‚projector delta æ”¹å˜ 16211750 ä¸ª BF16 å…ƒç´ ï¼Œå¯¼å‡º 569 ä¸ª native projector
-tensors åˆ° `GroundAnything-DLM-TrackProjG1-GPU5-V2`ï¼›source bundle æœªè¦†ç›–ã€‚
-éšåŽå®Œæˆ 12 ä¸ª isolated control unitsã€å…± 96 ä¸ª registered native framesï¼Œè¦†ç›–
-MOT dense4ã€RMOT refer-single8 å’Œ RMOT refer-multi12ï¼Œä¸‰è€…é‡å¤è¿è¡Œå‡ä¿æŒåŒä¸€
-raw wire candidates å’Œ outputsã€‚è¯¥ç»ˆæ€è¯æ˜Ž G1 é€‚é…å’ŒæŽ§åˆ¶ä¸€è‡´æ€§ï¼Œä¸å®£ç§°å…¨æ•°æ®é›†
-benchmark æå‡ï¼›TAO native shard æŽ¨ç†å’Œä¸‰ä»»åŠ¡è€¦åˆè®­ç»ƒä»åœ¨ç»§ç»­ã€‚
-
-æ³¨å†Œå­é›† owner å·²è¿›å…¥å®žé™…æŽ¨ç†é˜¶æ®µï¼š4 ä¸ª stream è¿›ç¨‹åˆ†åˆ«ä½¿ç”¨åˆæ³• GPU4/5/6/7ï¼Œ
-å¯¹åº” GroundAnything æœåŠ¡æ—¥å¿—å·²å‡ºçŽ°æ•°ç™¾è‡³ä¸Šåƒæ¬¡ `[PREFILL]` è¯·æ±‚ã€‚å››ä¸ª shard
-ä»æœªäº§ç”Ÿç»ˆæ€ receiptï¼Œæ•…ä¸‰ä»»åŠ¡ owner ç»§ç»­ç­‰å¾… native manifestï¼›æ²¡æœ‰æŠŠæœåŠ¡å¯åŠ¨
-æˆ–éƒ¨åˆ†è¯·æ±‚è®¡ä½œè®­ç»ƒæŒ‡æ ‡ã€‚
-
-## 2026-10-22 â€” G2 terminal basis and bounded native OVMOT promotion
-
-æŒ‰æœ€æ–° GroundJEV å•ä¸»å¹²ä»»åŠ¡ä¹¦é‡æ–°æ ¸å¯¹ï¼šG2 Clean å·²ç»ˆæ€ï¼Œä¸å†ç»§ç»­ G2 æ­£å¼è®­ç»ƒã€‚
-åŽŸ 64 å¸§ TAO æ³¨å†Œå­é›†å¯¼å‡ºåœ¨ 8 ä¸ªå®Œæ•´å¸§è®°å½•åŽå®‰å…¨æ”¶å°¾ï¼Œå››ä¸ª shard çš„éƒ¨åˆ†è¾“å‡ºå’Œ
-æœåŠ¡æ—¥å¿—å‡ä¿ç•™åœ¨ `tao_native_ovmot_train_subset64_v1`ã€‚æ–°å¢ž
-`promote_completed_tao_subset.py` åªéªŒè¯å¹¶æå‡å·²ç» flush çš„ 8 å¸§/8 è§†é¢‘ï¼Œæœªå¡«å……
-ç¼ºå¤±å¸§ã€æœªè¯»å–æµ‹è¯•æ ‡ç­¾ã€æœªæ”¹åŠ¨å€™é€‰æ¡†ï¼›äº§ç‰©æ˜Žç¡®æ ‡è®°
-`registered_train_subset=true`ã€`full_train_image_scope=false`ï¼Œä¸ä½œå…¨é‡ OVMOT ç»“è®ºã€‚
-è¯¥å­é›†ç»å®˜æ–¹ TRAIN annotation ç¦»çº¿ä¸€å¯¹ä¸€ IoU join å¾—åˆ° 58 è¡Œ native OVMOT ç›‘ç£
-ï¼ˆ29 groupã€29 leafï¼‰ï¼Œä¸Ž 131214 MOTã€346 RMOT è¡Œç»„æˆè”åˆ manifestï¼›manifest SHA256
-ä¸º `cc632115aa2b87161dc7b8413d08c3c471e1225179559a76509e7366190764c1`ã€‚
-
-## 2026-10-22 â€” GroundJEV final-G2 coupled readout pilot
-
-ä½¿ç”¨æœ€ç»ˆ G2 adapter step 18227ï¼ˆadapter SHA256
-`cf1b5a6f626810ead94eb4e16adaf3feb6c6da3f99ca5023b6b5c234726f5742`ï¼Œbase model
-SHA256 `3cf09355cde8cf4877cdc76e0a72301d572c1d6263b2831f8a03368285bb65e2`ï¼‰ï¼Œåœ¨
-GPU3 ä»¥å•ä¸»å¹² native DLM forward è¿è¡Œæœ‰ç•Œ 240-step pilotã€‚è®­ç»ƒåªæ›´æ–°å…±äº« JEV
-readoutã€Yes/Noã€ç”Ÿå‘½å‘¨æœŸ/è®°å¿†æŠ•å½±å’Œ OVMOT category headsï¼ŒG2 backbone å†»ç»“ï¼›
-æ²¡æœ‰åŠ è½½ç‹¬ç«‹ OneJev æˆ– YesTrackã€‚ç”±äºŽ MOT è¡Œæœ€å¤šå« 80 ä¸ªå€™é€‰ï¼Œnative DLM è¾“å…¥
-é‡‡ç”¨æœ‰å®¡è®¡çš„ 16 æ¡†ç«žäº‰çª—å£ï¼Œå§‹ç»ˆä¿ç•™ç›®æ ‡å€™é€‰ï¼›19 è¡Œå‘ç”Ÿè£å‰ªï¼ŒåŽŸå§‹è¡Œå’Œç­–ç•¥å‡
-ä¿ç•™åœ¨ receiptã€‚
-
-ç»ˆæ€ ownerï¼š`groundjev_native_three_task_v1_retry_v6_gpu3`ï¼ŒçŠ¶æ€
-`GROUNDJEV_NATIVE_THREE_TASK_TRAINING_COMPLETE`ï¼›å®žé™…æœ‰æ•ˆæ›´æ–° MOT/RMOT/OVMOT
-å„ 72 æ¬¡ï¼ˆè¯·æ±‚ 240 æ­¥ï¼Œå…¶ä¸­ 24 ä¸ª identity target å› åŽ†å² slot ç¼ºå¤±è€Œåˆæ³• maskï¼‰ï¼Œ
-unique visual inputs=67ã€native visual forwards=67ã€peak allocated memory
-çº¦ 9.35 GiBã€è€—æ—¶ 74.16 sã€‚checkpoint ä¸º
-`/data3/user/LocateMOT-checkpoints/groundjev_native_three_task_v1/groundjev-native-three-task-step000240.pt`ã€‚
-before/after åªæ˜¯åœ¨åŒä¸€ 72-row sampled pilot ä¸Šçš„ readout accuracyï¼šMOT
-0.4444â†’1.0ã€RMOT 0.6667â†’0.875ã€OVMOT 0.0417â†’0.7083ï¼›è¿™äº›æ˜¯è®­ç»ƒé›†å°æ ·æœ¬æ‹Ÿåˆ
-è¯æ®ï¼Œç»ä¸æ˜¯è§†é¢‘çº§ HOTA/TETA æˆ–æ³›åŒ–ç»“è®ºã€‚ä¸‹ä¸€æ­¥å¿…é¡»ä½¿ç”¨è¯¥ checkpoint åšå›ºå®šå€™é€‰
-è§†é¢‘ replay å’Œç‹¬ç«‹ held-out è¯„æµ‹ã€‚
-
-## 2026-10-22 â€” Coupled pilot launch repairs
-
-è®°å½•å¹¶ä¿ç•™ä¸‰æ¬¡æœªæ›´æ–°å¤±è´¥ï¼šé¦–æ¬¡å›  `run_with_resources.py` ç¼ºå°‘ executable bitï¼Œ
-éšåŽå› ç»ˆæ€ G2 adapter ä½¿ç”¨ `state` è€Œæ—§ loader åªè¯»å–
-`model_trainable_state`ï¼Œå†éšåŽå› å…¨é‡ MOT å€™é€‰ä¸²å…¥ native DLM è§¦å‘ CUDA illegal
-memory accessã€‚æœ€å°ä¿®å¤åˆ†åˆ«ä¸ºæ˜¾å¼ Python è°ƒç”¨èµ„æº runnerã€ä¸¥æ ¼å…¼å®¹ä¸¤ç§å·²ç™»è®° adapter
-æ ¼å¼ã€ä»¥åŠè®°å½•å¹¶é™åˆ¶ native DLM æ¯æ¬¡æœ€å¤š 16 ä¸ªç«žäº‰æ¡†ï¼›G2 æ­£å¼ç›®å½•å’ŒåŽ†å²ç»“æžœæœªæ”¹åŠ¨ã€‚
-
-## 2026-10-22 â€” Final-G2 coupled video diagnostic and independent queue
-
-ä¸ºä½¿ç»ˆæ€è€¦åˆ checkpoint èƒ½è¿›å…¥å·²æœ‰è§†é¢‘çº§å…¥å£ï¼Œä¿®å¤å›ºå®šå€™é€‰è¯„æµ‹å™¨åŒæ—¶è¯»å–åŽ†å²
-`model_state` å’Œæœ¬è½® `groundjev_model` checkpoint schemaï¼Œå¹¶ä¿ç•™ OVMOT heads ä¸Žå•
-ä¸»å¹²çº¦æŸã€‚æœ€ç»ˆ G2 step18227 çš„ coupled readout åœ¨ MOT20-03 çš„ä¸å¯å˜ 128 å¸§ç¼“å­˜ä¸Š
-å®Œæˆ TrackEvalï¼šHOTA=0.015177ã€DetA=0.020226ã€AssA=0.011422ã€IDF1=0.016006ã€
-IDSW=182ï¼Œå›ºå®šå€™é€‰å›žæ”¾ 13.265 FPSã€‚è¯¥ç¼“å­˜å±žäºŽæ³¨å†Œ TRAIN scope ä¸”æ—©äºŽç»ˆæ€ G2ï¼Œ
-å› æ­¤åªç™»è®°ä¸ºå…³è”/runtime è¯Šæ–­ï¼Œä¸ä½œ G2 ç‹¬ç«‹æ³›åŒ–æå‡ã€‚
-
-GPU7 çš„ç‹¬ç«‹ç•™å‡º owner ä»è¢«å¤–éƒ¨ä½œä¸šå ç”¨ï¼›åœ¨ä¸ç»ˆæ­¢å¤–éƒ¨è¿›ç¨‹çš„å‰æä¸‹ï¼Œæ–°å¢ž GPU3
-owner `g2_clean_independent_gpu3_v1`ï¼Œè¿è¡Œç›¸åŒ G0/G2ã€MOT/RMOT/OVMOTã€è§£æžå™¨ã€
-decoderã€tracker å’Œ scorerã€‚owner å·²è¿›å…¥ G0 MOT20-05 å®Œæ•´éªŒè¯ï¼Œç»ˆæ€å®˜æ–¹æŒ‡æ ‡å°šæœª
-ç”Ÿæˆï¼›åœ¨ receipt ä¹‹å‰ä¸å®£ç§° held-out ç»“æžœã€‚
-
-## 2026-10-22 â€” Longer coupled run GPU5 failure and bounded retry
-
-ä¸ºé¿å…æŠŠ 240 æ­¥å¯è¡Œæ€§ pilot å½“æˆè”åˆè®­ç»ƒå®Œæˆï¼Œå¯åŠ¨ç‹¬ç«‹çš„ 3000 æ­¥ã€æ¯ä»»åŠ¡ 192
-è¡Œã€åŒä¸€ 16 æ¡†ä¸Šé™çš„ G2 ä¸‰ä»»åŠ¡è€¦åˆ runã€‚GPU5 owner åœ¨ native DLM é¢„ç¼–ç é˜¶æ®µ
-`optimizer_updates=0`ï¼Œé¦–ä¸ªå¯æ“ä½œé”™è¯¯æ˜¯ Qwen3 MLP å†…çš„ `CUDA illegal memory access`ï¼›
-æ—¥å¿—è®°å½• GPU5 å½“æ—¶å­˜åœ¨å¤–éƒ¨ PRISM è®¡ç®— PIDã€ä½†æ˜¾å­˜ä»æœ‰ 65029 MiBã€‚æ²¡æœ‰ checkpoint
-æˆ–æŒ‡æ ‡ç”Ÿæˆï¼Œå¤±è´¥ç›®å½•å’Œå®Œæ•´æ—¥å¿—ä¿ç•™ï¼Œæœªé‡è¯• G2ã€‚
-
-åœ¨ GPU6 ä¸Šå¯¹åŒä¸€ 442 ä¸ªå®žé™…é€‰ä¸­è¾“å…¥åšå¸¦è¡Œå·çš„å‰å‘è¯Šæ–­ï¼Œå‰ 147 ä¸ªè¾“å…¥è¿žç»­å®Œæˆï¼Œ
-æœªå‘çŽ°æŸä¸ªå€™é€‰æ¡†æˆ–å›¾åƒæ ¼å¼çš„ç«‹å³é”™è¯¯ï¼›è¯Šæ–­å— 600 ç§’ä¸Šé™æ”¶å°¾ï¼Œä¸èƒ½ä½œä¸ºæ€§èƒ½ç»“æžœã€‚
-éšåŽæŒ‰ç›¸åŒ manifestã€seedã€rowsã€stepsã€å€™é€‰ä¸Šé™å’Œ optimizer åˆåŒå°† 3000 æ­¥ run
-è¿ç§»è‡³ GPU6ï¼Œè¾“å‡ºä¸Ž GPU5 å®Œå…¨åˆ†ç¦»ï¼Œå½“å‰ç­‰å¾…ç»ˆæ€ receiptã€‚
-
-GPU6 çš„æœªåˆ†å—å’Œâ€œæ¯ 64 ä¸ªè¾“å…¥é‡å»º provider + CUDA åŒæ­¥â€ä¸¤æ¬¡é‡è¯•éƒ½åœ¨ native
-é¢„ç¼–ç é˜¶æ®µã€optimizer_updates=0 å¤„è§¦å‘åŒç±» illegal accessï¼›æ²¡æœ‰äº§ç”Ÿ checkpointã€‚
-å› æ­¤ 3000 æ­¥ run æš‚ä¸ä½œä¸ºç»“æžœï¼Œåˆ†å—å®žçŽ°å’Œä¸‰ä»½å¤±è´¥ receipt/log å‡ä¿ç•™ã€‚å½“å‰æœ‰æ•ˆ
-è¯æ®ä»æ˜¯ GPU3 æ— å¤–éƒ¨è®¡ç®—æ—¶å®Œæˆçš„ 240 æ­¥ pilotï¼›åŽç»­é•¿ run ç­‰ç‹¬ç«‹ GPU3 ç•™å‡º owner
-ç»ˆæ€åŽå†åœ¨åŒä¸€ç©ºé—²å¡æ¢å¤ï¼Œé¿å…ç»§ç»­åœ¨å…±å­˜ GPU ä¸Šæ¶ˆè€—å¤±è´¥å®žéªŒã€‚
-
-## 2026-10-22 â€” G2 terminal state and current independent held-out run
-
-æŒ‰å•ä¸»å¹² GroundJEV ä»»åŠ¡ä¹¦é‡æ–°å¯¹é½åŽï¼ŒG2 Clean å·²åœ¨ step 18227 ç»ˆæ€å®Œæˆå¹¶å®Œæˆ
-ç‹¬ç«‹ merged bundle å¯¼å‡ºï¼›ä¸å†ä¿®æ”¹ G2 optimizerã€schedulerã€samplerã€RNG æˆ–åŽ†å²
-æƒé‡ã€‚å½“å‰ GPU3 owner `g2_clean_independent_gpu3_v1` ç»§ç»­æ‰§è¡Œå›ºå®š parserã€decoderã€
-tracker å’Œ scorer çš„ç‹¬ç«‹ç•™å‡ºé“¾ï¼Œå…ˆè·‘ G0 æŽ§åˆ¶å†è·‘ G2 ä¸Ž RMOT/OVMOT scopeã€‚æœ€è¿‘æ ¸éªŒæ—¶
-`mot20_05_validation1657` ä»å¤„äºŽ G0 native perceptionï¼ˆæ—¥å¿—å·²åˆ° frame 1997 çš„
-å¤„ç†å…¥å£ï¼Œå°šæœªç”Ÿæˆå®˜æ–¹ receiptï¼‰ï¼Œå› æ­¤æš‚ä¸æŠ¥å‘Šä»»ä½• G2 ç‹¬ç«‹æ³›åŒ–æŒ‡æ ‡ã€‚held-out
-å®ŒæˆåŽç”±åŒä¸€ owner è§¦å‘éš”ç¦»çš„ 3000-step ä¸‰ä»»åŠ¡è€¦åˆæ¢å¤é˜Ÿåˆ—ï¼›ä¸é‡å¯å·²ç»å®Œæˆçš„ G2ï¼Œ
-ä¸æŠŠå°æ ·æœ¬ 240-step pilot æˆ–ç¼“å­˜ replay è¯Šæ–­å†™æˆè§†é¢‘çº§æ€§èƒ½æå‡ã€‚
-
-## 2026-10-22 â€” Held-out owner remains live after G2 completion
-
-å¤ç”¨åŒä¸€ GPU3 held-out owner ç­‰å¾…äº†ä¸€ä¸ªå®Œæ•´é˜»å¡žçª—å£å¹¶é‡æ–°æ ¸éªŒï¼šowner
-`g2_clean_independent_gpu3_v1` ä»ä¸º `RUNNING_G0_mot20_05_validation1657`ï¼Œ
-`failed=null`ï¼ŒG0 æœåŠ¡å’Œè§†é¢‘æŽ¨ç†è¿›ç¨‹å‡å­˜æ´»ï¼›æ—¥å¿—å·²æŽ¨è¿›åˆ° frame 2015 çš„
-`native_perception` å…¥å£ã€‚MOT20-05 validation manifest çš„å®Œæ•´èŒƒå›´ä»ä¸º 1657 å¸§ï¼Œ
-å°šæœªäº§ç”Ÿå®˜æ–¹ G0 receiptï¼Œå› æ­¤æ²¡æœ‰æŠŠå½“å‰å¸§æ•°å†™æˆ HOTA/IDF1 ç»“æžœã€‚èµ„æºå¿«ç…§æ˜¾ç¤º
-GPU3 çš„ GroundAnything æœåŠ¡çº¦å  18 GiBï¼›GPU4/6/7 å‡æœ‰å¤–éƒ¨è®¡ç®—ï¼Œæœªå¯åŠ¨å¹¶è¡Œå‰¯æœ¬ã€
-æœªç»ˆæ­¢å…±å­˜ä»»åŠ¡ã€‚G0 å®ŒæˆåŽ owner ä»ä¼šæŒ‰æ³¨å†Œé¡ºåºè¿è¡Œ G2ã€RMOT å’Œ OVMOTï¼Œä¹‹åŽæ‰
-è§¦å‘éš”ç¦»çš„ 3000-step ä¸‰ä»»åŠ¡è€¦åˆæ¢å¤ã€‚
-
-## 2026-10-22 â€” Held-out G0 control still progressing
-
-åŒä¸€ owner å†æ¬¡ç»è¿‡é˜»å¡žç­‰å¾…åŽä»ç„¶å­˜æ´»ï¼ŒçŠ¶æ€ä¿æŒ
-`RUNNING_G0_mot20_05_validation1657`ã€`current_model=G0`ã€`failed=null`ï¼›
-æ—¥å¿—å·²æŽ¨è¿›è‡³ frame 2036 çš„ native perceptionï¼ˆframe 2035 å·²å®Œæˆ associationï¼Œ
-å•å¸§è®°å½•çº¦ 12.98 sï¼‰ã€‚æ²¡æœ‰ç”Ÿæˆå®˜æ–¹ metrics/receiptï¼Œä¹Ÿæ²¡æœ‰æå‰åˆ‡æ¢æ¨¡åž‹æˆ–ä¿®æ”¹
-è¯„æµ‹èŒƒå›´ã€‚è¯¥è¿›åº¦æ˜¯ G0 æŽ§åˆ¶çš„è¿è¡Œè¯æ®ï¼Œä¸æ˜¯ G2 æ€§èƒ½ç»“æžœï¼›G2/RMOT/OVMOT å’ŒåŽç»­
-è€¦åˆè®­ç»ƒä»ç”±åŒä¸€ owner æŒ‰é¡ºåºæ‰§è¡Œã€‚
-
-## 2026-10-22 â€” Parallel G2-only held-out owner launched on GPU5
-
-G0/MOT20-05 GPU3 ç•™å‡ºä»åœ¨é•¿æ—¶è¿è¡Œï¼ˆä¸é‡å¯ã€ä¸æ”¹åè®®ï¼‰ã€‚ä¸ºç¼©çŸ­ç»ˆæ€æ¯”è¾ƒç­‰å¾…ï¼Œ
-æ–°å¢ž `--models` ä¸Žæ˜¾å¼ `--allow-shared-gpu` å…¥å£ï¼Œä¿ç•™ç›¸åŒ held-out overlap auditã€
-official parser/decoder/tracker/scorer å’Œé€å¸§åˆåŒï¼›åœ¨ç‹¬ç«‹è¾“å‡ºç›®å½•
-`g2_clean_independent_gpu5_v1`ã€ç«¯å£ 8224 å¯åŠ¨åªè¯„æµ‹ç»ˆæ€
-`GroundAnything-DLM-G2-CLEAN-V2` çš„ ownerã€‚GPU5 å¯åŠ¨å¿«ç…§ä¸º 65029 MiB freeï¼Œå¤–éƒ¨
-PRISM PID 3199661 å  16116 MiBï¼›å…±äº«æ¨¡å¼åªåœ¨ä»æœ‰è‡³å°‘ 32768 MiB ç©ºé—²æ—¶æ”¾è¡Œï¼Œæœª
-ç»ˆæ­¢å¤–éƒ¨ä½œä¸šã€‚owner å·²é€šè¿‡ G2 terminal bundle gateï¼ŒçŠ¶æ€è¿›å…¥
-`RUNNING_G2_CLEAN_V2_mot20_05_validation1657`ï¼›G0 owner å’ŒåŽ†å² G2/G1 checkpoint
-ä¿æŒä¸å˜ã€‚è¯¥å¹¶è¡Œè¾“å‡ºå°†åœ¨ç‹¬ç«‹ receipt äº§ç”ŸåŽä¸Ž G0 ç»“æžœæŒ‰ç›¸åŒè¾“å…¥èŒƒå›´æ¯”è¾ƒã€‚
-
-## 2026-10-22 â€” Legacy owner audit while held-out runs
-
-åªè¯»æ ¸éªŒ G0/G200/G1ã€æ—§ OneJev/MOT-only å’Œæ­¤å‰ä¸‰ä»»åŠ¡å°è¯•çš„ owner PIDï¼šæ‰€æœ‰
-ç»ˆæ€ã€å¤±è´¥æˆ–æš‚åœ owner çš„è®°å½• PID å‡å·²ä¸å­˜åœ¨ï¼Œæœªå‘çŽ°æ—§ MOT-only é•¿è®­ç»ƒæˆ–ç‹¬ç«‹
-OneJev è®­ç»ƒä»åœ¨è¿è¡Œï¼›G1 GPU5 é€‚é…ä¿æŒç»ˆæ€ `G1_GPU5_ADAPTATION_AND_CONTROLS_COMPLETE`ï¼Œ
-æ—§ `real_three_task_joint_native_v1_queue` ä»ä¸º `PAUSED_FOR_GROUNDJEV_SINGLE_BACKBONE`ã€‚
-å½“å‰å”¯ä¸€ GroundJEV ä¸»çº¿è¿è¡Œè€…ä»æ˜¯ GPU3 çš„ç‹¬ç«‹ G0/G2 held-out ownerï¼Œæ•…æ²¡æœ‰æ¸…ç†
-åŽ†å² checkpoint æˆ–è¦†ç›–å¯¹ç…§ç»“æžœã€‚
-
-## 2026-10-22 â€” Held-out G0 owner remains healthy
-
-å†æ¬¡ç­‰å¾…å¹¶æ ¸éªŒåŒä¸€è¿›ç¨‹åŽï¼ŒGPU3 owner ä»å¤„äºŽ
-`RUNNING_G0_mot20_05_validation1657`ï¼Œ`current_model=G0`ã€`failed=null`ï¼›æ—¥å¿—
-å·²æŽ¨è¿›åˆ° frame 2052ï¼ˆframe 2051 å®Œæˆ associationï¼Œè®°å½•è€—æ—¶ 11.33 sï¼‰ã€‚å½“å‰ä»
-æ²¡æœ‰å®˜æ–¹ G0/G2 receipt æˆ–æŒ‡æ ‡æ–‡ä»¶ï¼Œæ•…ä¸æå‰æŠ¥å‘Šç‹¬ç«‹æ€§èƒ½ã€‚è¿›ç¨‹å¥æŸ„å’ŒæœåŠ¡ä¿æŒåŽŸæ ·ï¼Œ
-åŽç»­ G2/RMOT/OVMOT åŠ 3000-step è€¦åˆæ¢å¤é˜Ÿåˆ—ä¸å˜ã€‚
-
-## 2026-10-22 â€” Held-out throughput decomposition
-
-åªè¯»æ€§èƒ½åˆ†è§£æ˜¾ç¤ºå½“å‰æ…¢ç‚¹æ¥è‡ª G2 native DLM æŽ¨ç†è€Œéžè§†é¢‘ç¼–ç ï¼šæˆªè‡³æœ¬æ¬¡æ£€æŸ¥ï¼Œ
-G0 video pipeline ä¸­ä½å•å¸§çº¦ 17.14 sï¼ˆ605 å¸§ï¼‰ï¼ŒGPU5 G2-only çº¦ 41.48 sï¼ˆ64 å¸§ï¼‰ï¼Œ
-GPU6 G2-only çº¦ 49.03 sï¼ˆ32 å¸§ï¼‰ï¼›æœåŠ¡ç«¯ PREFILL æœ¬èº«ä»…çº¦ 20--38 msï¼Œé•¿è€—æ—¶æ¥è‡ª
-å®˜æ–¹è§£ç /å€™é€‰ç”Ÿæˆå’Œé€å¸§åè®®ã€‚æœªé™ä½Ž token/å€™é€‰åˆåŒæˆ–æŠŠéƒ¨åˆ†å¸§å‡çº§ä¸ºæ­£å¼æŒ‡æ ‡ï¼Œä¸‰è·¯
-owner ç»§ç»­ä¿ç•™å®Œæ•´è¾“å‡ºã€‚
-
-## 2026-10-22 â€” Parallel G2 owner entered real inference
-
-é˜»å¡žç­‰å¾…åŽé‡æ–°æ ¸éªŒï¼šGPU3 G0 owner å·²æŽ¨è¿›åˆ° frame 2159ï¼ŒGPU5 G2-only owner å·²
-çœŸæ­£è¿›å…¥åŒä¸€ MOT20-05 manifest çš„ native inferenceï¼ˆframe 1676ï¼‰ï¼Œä¸¤è€…å‡ä¸º
-`failed=null`ï¼Œå°šæ—  official metricsã€‚GPU5 å¤–éƒ¨ PRISM ä»åœ¨è¿è¡Œï¼Œæ‰€ä»¥ G2-only
-åžåä½ŽäºŽ GPU3ï¼›ä¿ç•™è¯¥å¹¶è¡Œ owner ä½œä¸ºç‹¬ç«‹è¯æ®ï¼Œä¸æŠŠéƒ¨åˆ†å¸§æ•°å½“æˆè¯„æµ‹ç»“æžœã€‚
-
-GPU5 å…±äº«è¿è¡Œå—å¤–éƒ¨ PRISM è´Ÿè½½å½±å“è¾ƒå¤§ï¼Œæ•…åœ¨ GPU6 å³æ—¶æŽ¢æµ‹åˆ°çº¦ 64.8 GiB freeã€
-utilization=0% ä¸”ä»…æœ‰ 16.4 GiB å¤–éƒ¨è¿›ç¨‹åŽï¼Œåˆå¯åŠ¨ç‹¬ç«‹ G2-only owner
-`g2_clean_independent_gpu6_v1`ï¼ˆç«¯å£ 8225ï¼‰ã€‚è¯¥ owner åŒæ ·é€šè¿‡ bundle/overlap
-å®¡è®¡å¹¶è¿›å…¥ MOT20-05 native inferenceï¼ˆframe 1662ï¼‰ï¼ŒGPU3/GPU5/GPU6 ä¸‰ä¸ªè¾“å‡º
-ç›®å½•äº’ä¸è¦†ç›–ï¼Œå¤–éƒ¨ PID å‡ä¿ç•™ï¼›æœ€ç»ˆåªé‡‡çº³äº§ç”Ÿå®Œæ•´ receipt çš„è¿è¡Œã€‚
-
-## 2026-10-22 â€” G2 Clean held-out queue scope audit
-
-å¤æ ¸ `queue_g2_independent_heldout_eval.py` åŽç¡®è®¤ï¼ŒGPU5/GPU6 çš„ G2 Clean owner
-åœ¨ MOT20-05 å®ŒæˆåŽä¼šåœ¨å„è‡ª GPU ä¸Šç»§ç»­æ‰§è¡ŒåŒä¸€å¥—å›ºå®šåè®®çš„ RMOT singleã€RMOT
-multi ä¸Ž OVMOT TAO scopeï¼›ä¸¤ä¸ª owner å½¼æ­¤å¹¶è¡Œï¼Œè¾“å‡ºç›®å½•å’Œ receipt åˆ†ç¦»ã€‚å½“å‰
-RMOT scope å„ä¸º 800 å¸§ï¼ŒOVMOT TAO video 105 ä¸º 40 ä¸ªæ ‡æ³¨å¸§ï¼Œä¸‰ä»½ manifest å‡ä¸º
-ç‹¬ç«‹éªŒè¯èŒƒå›´ä¸” `training_on_this_scope=false`ã€‚å› æ­¤ä¸å†é‡å¤å¯åŠ¨é¢å¤–è¿›ç¨‹ï¼Œä¹Ÿä¸
-æå‰æŠŠéƒ¨åˆ†å¸§æ•°å†™æˆæŒ‡æ ‡ï¼›å®ŒæˆåŽä»…é‡‡çº³æœ‰å®Œæ•´ inferenceã€scorerã€frame-contract
-å’Œ official-metrics receipt çš„ç»“æžœã€‚
-
-G2 Clean çš„ 583,251 è¡Œ TRAIN manifest è¿˜åŒ…å« AerialMindã€AnimalTrackã€DanceTrackã€
-MOT17ã€MOT20ã€RMOT26ã€Refer-KITTI-V2ã€SportsMOT å’Œ TAO-Amodal Baseã€‚å½“å‰æ³¨å†Œçš„
-å…¶å®ƒåŸŸå¤šæ•°åªæœ‰ TRAIN åª’ä½“æˆ–æ ‡ç­¾ï¼›ä¾‹å¦‚ MOT17-02-FRCNN ä¸Ž G2 TRAIN æœ‰ 600/600
-å¼ ç²¾ç¡®å›¾åƒé‡å ï¼Œä¸èƒ½æŠŠå®ƒå½“æˆç‹¬ç«‹æµ‹è¯•ã€‚å› æ­¤æœ¬è½®åªæŠŠå·²å®Œæˆ overlap å®¡è®¡çš„
-MOT20-05ã€Refer-KITTI-V2 RMOT 0007 ä¸¤ä¸ªè¡¨è¾¾å¼å’Œ TAO video 105 çº³å…¥ç‹¬ç«‹é˜Ÿåˆ—ï¼Œ
-å…¶å®ƒåŸŸå¾…æœ‰åˆæ³• held-out split å’Œè¯„æµ‹æ ‡ç­¾åŽå†åŠ å…¥ã€‚
-
-## 2026-10-22 â€” Domain-held-out continuation owners registered
-
-ä¸ºè¦†ç›– G2 Clean çš„å…¶å®ƒåˆæ³•éªŒè¯åŸŸï¼Œæ–°å¢žå¹¶å®¡è®¡ä¸¤ä¸ªç‹¬ç«‹ scopeï¼šå®Œæ•´
-DanceTrack validation `dancetrack0004`ï¼ˆ1203 å¸§ï¼‰å’Œ AnimalTrack å®˜æ–¹ test
-`chicken_1`ï¼ˆ306 å¸§ï¼‰ã€‚ä¸¤è€…å¯¹ G2 TRAIN åšäº†ç²¾ç¡® image-path ä¸Ž video-level
-å®¡è®¡ï¼Œå‡æ— é‡å ã€‚GPU5 continuation owner `g2_domain_dancetrack_gpu5_v1` å’Œ
-GPU6 continuation owner `g2_domain_animaltrack_gpu6_v1` å·²ä»¥ç‹¬ç«‹è¿›ç¨‹æ³¨å†Œï¼Œå½“å‰
-ç­‰å¾…å¯¹åº” MOT20/RMOT/OVMOT owner ç»ˆæ€ï¼›ç»ˆæ€åŽå„è‡ªå¯åŠ¨ G2 Clean æœåŠ¡ã€å®Œæ•´è§†é¢‘
-æŽ¨ç†å’Œå®˜æ–¹ TrackEvalï¼Œè¾“å‡ºä¸è¦†ç›–å·²æœ‰ç»“æžœã€‚
-
-å¯¹ runtime `evaluate_video.py` åšäº† 1 å¸§ AnimalTrack scorer å›žå½’ï¼šä½¿ç”¨çœŸå®ž
-`chicken_1` GTã€ç©ºé¢„æµ‹å’Œ `animaltrack` protocolï¼ŒTrackEval æ­£å¸¸ç”Ÿæˆ
-`OFFICIAL_SCOPE_EVALUATION_COMPLETE`ï¼ˆFN=20ï¼ŒHOTA/IDF1=0 ä»…ä¸ºæ ¼å¼å›žå½’ï¼Œä¸èƒ½
-è§£é‡Šä¸ºæ¨¡åž‹æ€§èƒ½ï¼‰ã€‚å› æ­¤æŽ¥åŠ› owner çš„å®Œæ•´ 306 å¸§ scorer è·¯å¾„å·²å…·å¤‡å¯è¿è¡ŒåˆåŒã€‚
-
-æ–°å¢ž `collect_g2_heldout_receipts.py` å¹¶è¿è¡Œä¸€æ¬¡å½“å‰çŠ¶æ€æ±‡æ€»ï¼šG0/G2 MOT20
-owners å‡ä»ä¸º RUNNINGï¼Œä¸¤ä¸ªåŸŸæ‰©å±• owner å‡ä¸ºç­‰å¾…å¯¹åº” owner ç»ˆæ€ï¼Œå½“å‰
-`accepted_scope_count=0`ã€‚æ±‡æ€»å™¨è®°å½•äº† G2 bundle SHA å’Œ TRAIN manifest SHAï¼Œ
-åªæŽ¥å—å®Œæ•´ official receiptï¼Œä¸å°†è¿è¡Œä¸­å¸§æ•°å‡çº§ä¸ºæŒ‡æ ‡ã€‚
-
-æ–°å¢žå¹¶å¯åŠ¨ `queue_g2_heldout_finalize.py` ä½œä¸ºä¸€æ¬¡æ€§ç»ˆæ€æ”¶å£ ownerã€‚å®ƒå†…éƒ¨
-ç­‰å¾… G0ã€ä¸¤è·¯ G2 Clean å’Œä¸¤ä¸ªåŸŸæ‰©å±• owner å…¨éƒ¨è¿›å…¥ COMPLETE/FAILEDï¼Œå†è¿è¡Œ
-receipt collector å†™å‡ºæœ€ç»ˆæ±‡æ€»ï¼›å½“å‰ä¸ä¼šæ”¹å˜ä»»ä½• GPU ä»»åŠ¡æˆ–æŽ¨ç†åè®®ã€‚
-
-## 2026-10-22 â€” Immediate co-resident domain validation start
-
-ç”¨æˆ·è¦æ±‚ä¸ç­‰å¾… MOT20 owner ç»“æŸï¼Œç«‹å³å¹¶è¡ŒéªŒè¯å…¶å®ƒ G2 åŸŸã€‚ä¸€æ¬¡æ€§èµ„æºæŽ¢æµ‹æ˜¾ç¤º
-GPU5 ç©ºé—² 62,919/81,920 MiBã€GPU6 ç©ºé—² 46,551/81,920 MiBï¼Œå‡é«˜äºŽåŸŸéªŒè¯é˜Ÿåˆ—çš„
-32,768 MiB é—¨æ§›ï¼›çŽ°æœ‰ GPU5/GPU6 MOT20 owner åŠå…¶æœåŠ¡æœªåœæ­¢ã€æœªè¦†ç›–ã€‚æ¸…ç†äº†ä»…
-å¤„äºŽ WAITING çŠ¶æ€çš„æ—§åŸŸæŽ¥åŠ›è¿›ç¨‹ï¼Œå¹¶æŠŠ `queue_g2_domain_heldout_after_existing.py`
-å¢žåŠ ä¸º `--start-now` æ¨¡å¼ï¼šä¿ç•™å½“å‰ owner è¯æ®ï¼Œè®°å½• `parallel_started=true`ï¼Œ
-ä½¿ç”¨ç‹¬ç«‹ç«¯å£ 8230/8231 å’Œç‹¬ç«‹è¾“å‡ºç›®å½•ç«‹å³å¯åŠ¨ DanceTrack `dancetrack0004`
-ï¼ˆGPU5ï¼‰åŠ AnimalTrack `chicken_1`ï¼ˆGPU6ï¼‰ã€‚ä¸¤è·¯ owner å·²è¿›å…¥
-`WAITING_G2_CLEAN_V2_SERVICE_GPU5/6` çš„æœåŠ¡å¯åŠ¨é˜¶æ®µï¼Œå½“å‰ MOT20 è¾“å‡ºä»å—ä¿æŠ¤ï¼›
-æœ€ç»ˆåªé‡‡çº³å®Œæ•´ inferenceã€scorerã€frame-contract å’Œ official-metrics receiptã€‚
-
-å¯åŠ¨åŽå›žå½’æ ¸éªŒï¼šä¸¤è·¯ `serve_groundanything.py` å‡å·²å­˜æ´»å¹¶å‡ºçŽ°çœŸå®ž `[PREFILL]`
-è¯·æ±‚ï¼Œowner å·²åˆ†åˆ«è¿›å…¥ `RUNNING_G2_CLEAN_V2_dancetrack0004_val1203`ï¼ˆGPU5ï¼Œ
-service PID 110861ï¼‰å’Œ `RUNNING_G2_CLEAN_V2_animaltrack_chicken1_test306`
-ï¼ˆGPU6ï¼Œservice PID 110862ï¼‰ï¼Œ`failed=null`ã€‚è¿™åªè¯æ˜Žå¹¶è¡ŒæŽ¨ç†å·²å¼€å§‹ï¼Œä¸æŠŠä¸­é—´å¸§
-æˆ–æœåŠ¡æ—¥å¿—å½“æˆæ­£å¼æŒ‡æ ‡ï¼›å¾…å®Œæ•´é€å¸§æŽ¨ç†ä¸Žå®˜æ–¹ scorer receipt ç»“æŸåŽå†æ”¶å½•ç»“æžœã€‚
-
-## 2026-10-22 â€” GPU7 native three-task expansion
-
-GPU7 ä¸€æ¬¡æ€§èµ„æºæŽ¢æµ‹ä¸º 79,599/81,920 MiB freeï¼Œåªæœ‰çº¦ 1.5 GiB å¤–éƒ¨è®¡ç®—å ç”¨ã€‚
-åŽŸå…ˆä»åœåœ¨ `WAITING_G2_CLEAN_BUNDLE_AND_GPU7` çš„æ—§ held-out ç­‰å¾… owner æ²¡æœ‰å¯åŠ¨
-æœåŠ¡ï¼›å·²å…ˆä¿å­˜ä¸º `owner_state_pre_gpu7_native_expansion.json`ï¼Œå†å°†å…¶å®‰å…¨æš‚åœï¼Œ
-é¿å…å®ƒåœ¨ GPU7 ä¸Šä¸Žæ–°å®žéªŒç«žäº‰ã€‚éšåŽå¯åŠ¨ç‹¬ç«‹çš„å•å¡çœŸå®ž GroundJEV ä¸‰ä»»åŠ¡æ‰©å±•
-`groundjev_native_three_task_expansion_gpu7_v2`ï¼šä½¿ç”¨æœ€ç»ˆ G2 adapter step 18227ã€
-åŒä¸€ native MOT/RMOT/OVMOT manifestï¼ˆSHA256
-`cc632115aa2b87161dc7b8413d08c3c471e1225179559a76509e7366190764c1`ï¼‰ï¼Œæ¯ä»»åŠ¡é‡‡æ ·
-72 è¡Œã€1200 ä¸ª optimizer stepsã€16 æ¡†ç«žäº‰çª—å£ã€å•ä¸€å†»ç»“ G2 ä¸»å¹²ã€‚ç¬¬ä¸€æ¬¡å°è¯•åœ¨
-å¯åŠ¨ `run_with_resources.py` æ—¶å› è„šæœ¬ç¼ºå°‘ executable bit ç«‹å³å¤±è´¥ï¼ˆoptimizer_updates=0ï¼Œ
-æœªç”Ÿæˆ checkpointï¼‰ï¼›å·²æŒ‰é¦–ä¸ªå¯æ“ä½œåŽŸå› æ”¹ä¸ºæ˜¾å¼ Python è°ƒç”¨å¹¶ä»¥å…¨æ–° v2 è¾“å‡ºç›®å½•
-æ¢å¤ã€‚v2 owner å·²è¿›å…¥ `GPU7_NATIVE_THREE_TASK_EXPANSION_RUNNING/ TRAINING`ï¼Œä¸æ”¹åŠ¨
-GPU3/5/6 çš„ç‹¬ç«‹ held-out è¾“å‡ºï¼›å®ŒæˆåŽåªæŽ¥å—åŒ…å« MOTã€RMOTã€OVMOT ä¸‰ç±»æ›´æ–°å’Œ
-å®Œæ•´ receipt çš„ checkpointã€‚
-
-## 2026-10-22 â€” GPU7 native expansion illegal-access repair and v3 restart
-
-GPU7 v2 é¦–æ¬¡çœŸå®ž 1200-step æ‰©å±•åœ¨ native feature encoding çš„ç¬¬ 34 ä¸ª unique è¾“å…¥
-è§¦å‘ CUDA illegal memory accessï¼›é€è¾“å…¥ä¸Šä¸‹æ–‡å®šä½åˆ°
-`native_rmot_0008_3_q1_batch0_membership_2`ã€MOT/RMOT/OVMOT native manifestï¼Œé”™è¯¯
-æ ˆè½åœ¨ä¸Šæ¸¸ DLM `create_block_mask` çš„åŠ¨æ€ Inductor/Triton kernelï¼Œè€Œä¸æ˜¯ JEV
-optimizerã€‚å•å¸§ GPU7 forward/backward å›žå½’é€šè¿‡ï¼Œè¯æ˜Ž checkpointã€adapter å’Œè®¾å¤‡
-æœ¬èº«å¯ç”¨ï¼›4 è¡Œ/ä»»åŠ¡ã€12 steps çš„ chunk=64 å›žå½’ä¹Ÿé€šè¿‡ï¼Œä½†æš´éœ²äº† receipt ä¸­å·²åˆ é™¤
-`bridge` çš„ NameErrorï¼Œå·²æ”¹ä¸ºè¯»å– `feature_audit.adapter_step`ã€‚
-
-æŒ‰ä¸Šæ¸¸ `hybrid.py` å·²æä¾›çš„ç¨³å®šè·¯å¾„ï¼Œnative provider çŽ°åœ¨é»˜è®¤è®¾ç½®
-`GAM_DLM_STABLE_BLOCK_MASK=1`ï¼Œå¹¶è®© GPU7 owner åŒæ—¶å¯ç”¨
-`CUDA_LAUNCH_BLOCKING=1`ã€‚ä¿®å¤åŽçš„ 24 è¡Œ/ä»»åŠ¡ã€240 steps å›žå½’åœ¨ GPU7 å®Œæ•´é€šè¿‡ï¼š
-71 ä¸ªçœŸå®žè§†è§‰è¾“å…¥ã€MOT/RMOT/OVMOT å„ 24 è¡Œï¼Œoptimizer updates åˆ†åˆ«ä¸º
-68/72/72ï¼Œcheckpoint ä¸º
-`/data3/user/LocateMOT-checkpoints/groundjev_native_three_task_regression_gpu7_rows24_stable/groundjev-native-three-task-step000240.pt`ã€‚
-è¿™åªæ˜¯ç¨³å®šæ€§ä¸Žè”åˆæ›´æ–°å›žå½’ï¼Œä¸ä½œç‹¬ç«‹æ€§èƒ½ç»“è®ºã€‚éšåŽä»¥ç›¸åŒ manifestã€G2 step18227ã€
-72 è¡Œ/ä»»åŠ¡å’Œ 1200 steps å¯åŠ¨ç‹¬ç«‹ `groundjev_native_three_task_expansion_gpu7_v3`ï¼Œ
-å½“å‰å·²è¿›å…¥ `TRAINING`ï¼›v2 å¤±è´¥ç›®å½•ã€æ—¥å¿—å’Œ receipt ç¼ºå¤±äº‹å®žå‡ä¿ç•™ã€‚
-
-ä¿®å¤åŽçš„ä¸€æ¬¡çŠ¶æ€è¯»å–æ˜¾ç¤º G0 MOT20-05 å·²å†™å…¥ 1633/1657 å¸§ï¼ŒG2 GPU5/GPU6 åˆ†åˆ«
-å†™å…¥ 656/375 å¸§ï¼ŒDanceTrack/AnimalTrack åŸŸæ‰©å±•åˆ†åˆ«å†™å…¥ 368/147 å¸§ï¼›äº”ä¸ª held-out
-owner ä»ä¸º `failed=null`ï¼ŒGPU7 v3 ä»åœ¨ TRAININGï¼Œå°šæœªç”Ÿæˆæœ€ç»ˆå®˜æ–¹æŒ‡æ ‡æˆ–ä¸‰ä»»åŠ¡
-æ‰©å±• receiptã€‚
-
-## 2026-10-22 â€” Held-out owners continue after stable-mask repair
-
-ä»Žå„ `frame_decisions.jsonl` æ–‡ä»¶å°¾éƒ¨è¯»å–çš„æœ€æ–°å·²æäº¤å¸§å·ä¸ºï¼šG0 MOT20-05
-`3296`ï¼ŒG2 GPU5 `2317`ï¼ŒG2 GPU6 `2034`ï¼ŒDanceTrack `390`ï¼ŒAnimalTrack `156`ã€‚
-äº”ä¸ª owner ä»ä¸ºè¿è¡Œæ€ä¸” `failed=null`ï¼›è¿™äº›æ˜¯é€å¸§è¿›åº¦å’Œåžåè¯æ®ï¼Œå°šæœªå‡çº§ä¸º
-HOTA/IDF1 æˆ–å…¶å®ƒæ­£å¼æŒ‡æ ‡ã€‚
-
-## 2026-10-22 â€” Held-out pipelines advancing without terminal receipts
-
-ä¸€æ¬¡æ€§è¯»å–å½“å‰é€å¸§è¾“å‡ºï¼ˆåªè®°å½•å·²å†™å…¥è¡Œï¼Œä¸å‡çº§ä¸ºæŒ‡æ ‡ï¼‰ï¼šG0 MOT20-05 å·²å†™å…¥
-1592/1657 å¸§ï¼›G2 GPU5 å·²å†™å…¥ 625 å¸§ã€GPU6 å·²å†™å…¥ 363 å¸§ï¼›DanceTrack åŸŸæ‰©å±•å·²
-å†™å…¥ 100/1203 å¸§ï¼›AnimalTrack åŸŸæ‰©å±•å·²å†™å…¥ 43/306 å¸§ã€‚äº”ä¸ª owner å‡ä»ä¸º
-`failed=null`ï¼Œå®˜æ–¹ `official_metrics.json` å’Œæœ€ç»ˆæ”¶å£ receipt å°šæœªç”Ÿæˆã€‚G0/G2
-é€å¸§åˆåŒç»§ç»­ä¿ç•™ï¼Œå½“å‰éƒ¨åˆ†è¾“å‡ºä»…ä½œä¸ºè¿è¡Œè¿›åº¦è¯æ®ã€‚
-
-## 2026-10-22 â€” Immediate parallel TAO OVMOT scope
-
-ç”¨æˆ·è¦æ±‚ä¸ç­‰å¾…é•¿ MOT20 é˜Ÿåˆ—ï¼Œç»§ç»­å¹¶è¡Œæµ‹è¯•å·²ç»å®Œæˆå¾®è°ƒçš„ G2 Cleanã€‚GPU5 çš„ä¸€æ¬¡æ€§
-èµ„æºè¯»å–æ˜¾ç¤ºçº¦ 44.7 GiB freeï¼ˆå·²æœ‰ä¸¤ä¸ª 18.2 GiB å·¦å³çš„ G2 æœåŠ¡ï¼‰ï¼Œå› æ­¤æ–°å¢žç‹¬ç«‹
-æ—è·¯ owner `g2_parallel_ovmot_gpu5_v1`ï¼Œä½¿ç”¨ç«¯å£ 8232 å’Œ `ovmot_tao_independent105_full.json`
-çš„ TAO video 105 / 40 å¸§ scopeã€‚è¯¥ manifest å·²ç™»è®° `training_on_this_scope=false`ï¼Œ
-å¹¶ä¸”ç‹¬ç«‹å®¡è®¡ä¸º 0 ä¸ªç²¾ç¡®å›¾åƒé‡å ï¼›è¿è¡Œå…¥å£å›ºå®šä¸º G2 Clean V2ã€official_scoring
-parserã€tracking_dense decoderã€native_label category policy å’Œå®˜æ–¹ multitask scorerã€‚
-æ–°å¢žè„šæœ¬ `scripts/groundjev/run_g2_parallel_scope.py` åªè´Ÿè´£è¿™ä¸€ scopeï¼Œå†™å‡ºç‹¬ç«‹
-owner stateã€é€å¸§åˆåŒå’Œ receiptï¼Œä¸è¦†ç›–çŽ°æœ‰ MOT20ã€DanceTrackã€AnimalTrack è¾“å‡ºã€‚
-GPU6 å½“æ—¶ä»…çº¦ 28.3 GiB freeï¼Œæœªå†åŠ æœåŠ¡ï¼Œé¿å…ä¸ŽçŽ°æœ‰ G2/AnimalTrack owner äº‰ç”¨æ˜¾å­˜ã€‚
-
-## 2026-10-22 â€” G1 GPU5 adaptation held-out control started
-
-ä¸ºå½¢æˆ G0/G2/G1 çš„åŒè¾“å…¥åŸŸå¯¹ç…§ï¼Œå¤ç”¨å·²ç»å®¡è®¡ä¸ºç‹¬ç«‹çš„ DanceTrack
-`dancetrack0004_val1203` 1203 å¸§ manifestï¼Œåœ¨ GPU3 çš„å‰©ä½™æ˜¾å­˜ä¸Šå¯åŠ¨ G1 GPU5
-é€‚é… bundle `GroundAnything-DLM-TrackProjG1-GPU5-V2`ï¼Œç«¯å£ 8233ï¼Œè¾“å‡ºç›®å½•
-`g1_dancetrack_gpu3_v1`ã€‚G0 MOT20 owner æœªåœæ­¢ï¼ŒG2 DanceTrack owner æœªè¦†ç›–ï¼›æ–°
-owner ä»ä½¿ç”¨ç›¸åŒ run_videoã€official_scoring parserã€tracking_dense decoderã€
-empty_and_record failure policy å’Œå®˜æ–¹ MOT scorerã€‚è¯¥è¿è¡Œç”¨äºŽåŒèŒƒå›´æŽ§åˆ¶æ¯”è¾ƒï¼Œ
-åœ¨å®Œæ•´ scorer receipt ç”Ÿæˆå‰ä¸å®£ç§° G1 æŒ‡æ ‡ã€‚
-
-## 2026-10-22 â€” Extended held-out finalizer registered
-
-åŽŸæœ‰ G2 finalizer åªè¦†ç›–äº”ä¸ªæ—©å…ˆæ³¨å†Œçš„ G0/G2/domain ownerã€‚ä¸ºé¿å…æ–°å¯åŠ¨çš„ TAO
-OVMOT æ—è·¯å’Œ G1 åŒåŸŸæŽ§åˆ¶è¢«é—æ¼ï¼Œæ–°å¢žå¹¶å¯åŠ¨
-`queue_groundjev_heldout_finalize_extended.py`ï¼Œç­‰å¾…ä¸ƒä¸ª ownerï¼ˆG0 MOT20ã€ä¸¤è·¯
-G2 MOT20ã€G2 DanceTrackã€G2 AnimalTrackã€G2 TAO OVMOT video105ã€G1 DanceTrackï¼‰
-åˆ†åˆ«è¿›å…¥ COMPLETE/FAILED åŽï¼Œè°ƒç”¨åŒä¸€ä¸¥æ ¼ receipt collector å†™å‡ºç‹¬ç«‹ extended
-collection/finalization receiptï¼›åŽŸæœ‰äº” owner finalizer å’ŒåŽ†å²ç»“æžœä¿æŒä¸å˜ã€‚
-
-## 2026-10-22 â€” G200 same-domain control resource gate
-
-å°è¯•åœ¨ GPU3 çš„ G0/G1 å…±å­˜çª—å£å¯åŠ¨ `GroundAnything-DLM-TrackProj200` çš„åŒä¸€
-DanceTrack ç‹¬ç«‹ scopeï¼Œå½¢æˆ G0/G200/G1/G2 åŒè¾“å…¥æ¯”è¾ƒã€‚å¯åŠ¨å‰èµ„æºé—¨æ£€æµ‹åˆ° GPU3
-ä»…å‰© 17,949 MiB freeï¼Œä½ŽäºŽ 32,768 MiB çš„æœåŠ¡å¯åŠ¨é—¨æ§›ï¼Œå› æ­¤ owner
-`g200_dancetrack_gpu3_v1` åœ¨æœåŠ¡å¯åŠ¨å‰å®‰å…¨å¤±è´¥ï¼ˆoptimizer/inference updates=0ï¼‰ï¼Œ
-æ²¡æœ‰è§¦ç¢° G0/G1 è¿è¡Œï¼Œä¹Ÿæ²¡æœ‰æŠŠå¤±è´¥å°è¯•å½“æˆæŒ‡æ ‡ã€‚G200 å·²æœ‰çš„ 48 å¸§å®˜æ–¹æŽ§åˆ¶ receipt
-å’Œ bundle ä¿ç•™ä½œä¸ºçŽ°æœ‰å¯¹ç…§è¯æ®ï¼›ä¸åœ¨å½“å‰å››å¡çª—å£ç»§ç»­å¼ºè¡ŒåŠ æœåŠ¡ã€‚
-
-## 2026-10-22 â€” G0 MOT20-05 independent official result
-
-G0 owner `g2_clean_independent_gpu3_v1` å·²å®Œæˆä¸Ž G2 ç›¸åŒè¾“å…¥åˆåŒçš„ MOT20-05
-validation-half ç‹¬ç«‹è¯„æµ‹ï¼š1657/1657 å¸§ã€MOT20-05 å•è§†é¢‘ã€è¿è¡Œæ—¶æœªè¯»å–å®˜æ–¹ TEST
-æ ‡ç­¾ã€‚å®˜æ–¹ scorer receipt ç»™å‡º HOTA `0.3426154581`ã€DetA `0.6661209465`ã€AssA
-`0.1765665945`ã€IDF1 `0.2905332410`ã€IDSW `13712`ã€FP `19290`ã€FN `79814`ï¼Œ
-ç«¯åˆ°ç«¯ FPS `0.0488079`ï¼Œæ„ŸçŸ¥æ‹’ç»çŽ‡ `0.0054315`ï¼ˆ9 å¸§ï¼Œä¸”è®¡å…¥å®˜æ–¹åˆ†æ¯ï¼‰ã€‚è¿™æ˜¯
-ç‹¬ç«‹ G0 æŽ§åˆ¶ç»“æžœï¼Œä¸æ˜¯ G2 æå‡ç»“è®ºï¼›åŒä¸€ owner å·²æŒ‰æ³¨å†Œé¡ºåºè¿›å…¥ RMOT single
-0007ï¼ŒG2 GPU5/GPU6 MOT20 å’Œå…¶å®ƒåŸŸ owner æœªè¢«æ”¹åŠ¨ã€‚
-
-## 2026-10-22 â€” GPU7 shared-G2 three-task readout terminal
-
-GPU7 çš„çœŸå®žå•ä¸»å¹²è”åˆ readout å·²å®Œæˆè¯·æ±‚çš„ 1200 optimizer stepsï¼Œreceipt
-`GROUNDJEV_NATIVE_THREE_TASK_COUPLED_READOUT_COMPLETE`ã€‚å®ƒå†»ç»“æœ€ç»ˆ G2 adapter
-step `18227`ï¼Œä½¿ç”¨åŒä¸€ native manifestï¼ˆSHA256
-`cc632115aa2b87161dc7b8413d08c3c471e1225179559a76509e7366190764c1`ï¼‰ã€å•ä¸€ G2
-è§†è§‰ä¸»å¹²ï¼ˆ`independent_vlm_instances=0`ï¼‰ï¼Œ178 ä¸ª unique visual inputs åªç¼–ç ä¸€æ¬¡ï¼Œ
-å…± 202 è¡Œï¼šMOT 72ã€RMOT 72ã€OVMOT 58ï¼›ä»»åŠ¡æ›´æ–°è®¡æ•°ä¸º 330/432/331ï¼Œ102 ä¸ª identity
-target åˆæ³• maskã€‚checkpoint ä¸º
-`/data3/user/LocateMOT-checkpoints/groundjev_native_three_task_expansion_gpu7_v3/groundjev-native-three-task-step001200.pt`
-ï¼ˆSHA256 `fc7f0de761aeb3ede3be77babe92f82c6c47764b44d1c0c05b7d21a45650e209`ï¼‰ã€‚è¿™è¯æ˜Ž
-çœŸå®ž GPU ä¸‰ä»»åŠ¡å…±äº«-G2 readout è®­ç»ƒå’Œå¯æ¢å¤ checkpoint å·²å®Œæˆï¼›receipt æ˜Žç¡®ä¸ä½œ
-è§†é¢‘çº§ HOTA/TETA æ³›åŒ–æˆ–ç‹¬ç«‹ OneJev æ¨¡åž‹æ€§èƒ½ç»“è®ºã€‚
-
-éšåŽä»¥ `weights_only=False` åœ¨ CPU é‡æ–°åŠ è½½è¯¥ checkpointï¼š`step=1200`ã€manifest/model
-SHA ä¸Ž receipt ä¸€è‡´ï¼Œ`groundjev_model` å« 19 ä¸ª tensorã€2,100,999 ä¸ªå‚æ•°å…ƒç´ ï¼Œæœªå‘çŽ°
-éžæœ‰é™å€¼ï¼›å› æ­¤è¯¥æ–‡ä»¶æ˜¯å¯æ¢å¤ checkpointï¼Œè€Œä¸æ˜¯åªå­˜åœ¨æ–‡ä»¶åçš„è®­ç»ƒæ ‡è®°ã€‚
-
-## 2026-10-22 â€” GPU7 immediate independent RMOT expansion
-
-GPU7 åœ¨ä¸‰ä»»åŠ¡ readout å®ŒæˆåŽé‡Šæ”¾ï¼›ä¸ºä¸ç­‰å¾… GPU5/GPU6 çš„ MOT20 é•¿åºåˆ—ï¼Œç«‹å³å¯åŠ¨
-ä¸¤ä¸ª G2 Clean ç‹¬ç«‹ RMOT ownerï¼šRefer-KITTI v2 sequence 0007 çš„ single expression
-800 å¸§ï¼ˆç«¯å£ 8235ï¼‰å’Œ multi expression 800 å¸§ï¼ˆç«¯å£ 8236ï¼‰ã€‚ä¸¤è€…ä½¿ç”¨å·²ç™»è®°
-`training_on_this_scope=false` manifestã€ç›¸åŒ official_scoring parserã€tracking_dense
-decoderã€simple tracker å’Œ multitask scorerï¼Œè¾“å‡ºç›®å½•äº’ç›¸ç‹¬ç«‹ï¼›GPU3/5/6 çš„æ—¢æœ‰
-owner æœªä¿®æ”¹ã€‚æ–°å¢ž `queue_groundjev_heldout_finalize_all.py`ï¼ŒæŠŠè¿™ä¸¤è·¯åŠ å…¥å…¨é‡
-held-out æ”¶å£ï¼ŒåŽŸæœ‰äº”è·¯/ä¸ƒè·¯ finalizer äº§ç‰©ä»ä¿ç•™ã€‚
-
-éšåŽå°è¯•åœ¨ GPU7 ä¸¤è·¯ RMOT æœåŠ¡å…±å­˜æ—¶å†å¯åŠ¨åŒä¸€ TAO video105 OVMOT scopeï¼Œèµ„æº
-é—¨æ£€æµ‹åˆ°ä»…å‰© 29,109 MiB freeï¼Œä½ŽäºŽ 32,768 MiB é—¨æ§›ï¼›è¯¥å°è¯•åœ¨æœåŠ¡å¯åŠ¨å‰å®‰å…¨
-å¤±è´¥ï¼Œæœªå½±å“ä¸¤è·¯ RMOTã€‚TAO OVMOT ä»ç”± GPU5 çš„ç‹¬ç«‹ owner è¿è¡Œï¼Œä¸æŠŠèµ„æºæ‹’ç»å½“ä½œ
-è¯„æµ‹ç»“æžœã€‚
-
-ä¸ºç¼©çŸ­ TAO OVMOT çš„è¯è¡¨è¯·æ±‚å¼€é”€ï¼Œæ–°å¢ž `queue_g2_ovmot_after_gpu7.py`ï¼šå®ƒåœ¨å½“å‰
-ä¸¤è·¯ RMOT owner é‡Šæ”¾è‡³å°‘ 32,768 MiB åŽè‡ªåŠ¨å¯åŠ¨ç‹¬ç«‹ GPU7 OVMOT ownerï¼Œä¿æŒç›¸åŒ
-G2/parser/decoder/scorer åˆåŒï¼Œä»…æŠŠå·²ç™»è®°çš„ vocabulary chunk ä»Ž 96 è°ƒåˆ° 192ï¼›
-å½“å‰é˜Ÿåˆ—å·²ç¡®è®¤å¤„äºŽ `WAITING_GPU7_FAST_OVMOT_MEMORY`ï¼ˆGPU7 free 29,109 MiBï¼‰ï¼Œä¸
-æŠ¢å  RMOTï¼Œä¹Ÿä¸è¦†ç›– GPU5 çš„ 96-class OVMOT è¯æ®ã€‚
-
-ç”Ÿæˆå¹¶ä¿ç•™ `docs/GROUNDJEV/ACTIVE_GOAL_LIVE_20261022.json` åŠå…¶å¯é‡è·‘å…¥å£
-`scripts/groundjev/write_live_goal_status.py`ã€‚è¯¥å¿«ç…§è®°å½•ä¹ä¸ª held-out owner çš„
-çŠ¶æ€ã€é€å¸§è¡Œæ•°ã€GPU æ˜¾å­˜å’Œå½“å‰å”¯ä¸€å®Œæ•´ official metricsï¼›æ˜Žç¡®æŠŠè¿è¡Œä¸­å¸§æ•°å’Œ
- æœåŠ¡çŠ¶æ€æ ‡ä¸º progress evidenceï¼Œä¸å‡çº§ä¸ºæŒ‡æ ‡ã€‚
-
-## 2026-10-22 â€” G2 AnimalTrack independent official result
-
-G2 Clean GPU6 AnimalTrack owner å·²å®Œæˆç‹¬ç«‹ `chicken_1` test scope çš„å…¨éƒ¨ 306/306
-å¸§ï¼Œowner çŠ¶æ€ä¸º `G2_DOMAIN_HELDOUT_COMPLETE`ï¼Œframe contract ä¸Ž manifest çš„
-1..306 å®Œå…¨ä¸€è‡´ã€‚å®˜æ–¹ receipt ç»™å‡º HOTA `0.4014759675`ã€DetA `0.4986915750`ã€
-AssA `0.3363050521`ã€IDF1 `0.4335730657`ã€IDSW `144`ã€FP `1231`ã€FN `2040`ï¼Œ
-ç«¯åˆ°ç«¯ FPS `0.1212373`ã€‚è¿™æ˜¯ G2 Clean çš„ç‹¬ç«‹åŠ¨ç‰©åŸŸç»“æžœï¼Œä¸ä¸Ž G0/G1 æˆ–å…¶å®ƒåŸŸ
-æ··åˆå½’å› ï¼›live receipt collector å½“å‰æŽ¥å—çš„å®Œæ•´ scope æ•°ä¸º 2ï¼ˆG0 MOT20 ä¸Žè¯¥
-AnimalTrackï¼‰ï¼Œå…¶ä½™ owner ä»æŒ‰å„è‡ªåè®®è¿è¡Œã€‚
-
-## 2026-10-22 â€” G1 AnimalTrack multi-domain control started
-
-G2 AnimalTrack 306 å¸§ç‹¬ç«‹ scope å®Œæˆå¹¶é‡Šæ”¾ GPU6 æœåŠ¡åŽï¼Œç«‹å³åœ¨åŒä¸€ scope å¯åŠ¨
-G1 GPU5 é€‚é… bundle `GroundAnything-DLM-TrackProjG1-GPU5-V2`ï¼ˆç«¯å£ 8239ï¼Œè¾“å‡º
-`g1_animaltrack_gpu6_v1`ï¼‰ã€‚å®ƒæ²¿ç”¨ä¸Ž G2 AnimalTrack å®Œå…¨ç›¸åŒçš„ manifestã€parserã€
-decoderã€tracker å’Œ official MOT scorerï¼Œä¸Žå·²è¿è¡Œçš„ G1 DanceTrack ç»„æˆå¤šåŸŸæŽ§åˆ¶ï¼›
-GPU6 çš„ G2 MOT20 owner æœªåœæ­¢ï¼ŒG1 owner åœ¨å®Œæ•´ receipt å‰ä¸ä½œæŒ‡æ ‡ç»“è®ºã€‚
-
-ä¸ºç¡®ä¿æ–°å¢ž G1 AnimalTrack scope ä¸è¢«æ—©å…ˆä¹-owner finalizer é—æ¼ï¼Œæ–°å¢žå¹¶å¯åŠ¨
-`queue_groundjev_heldout_finalize_multidomain.py`ï¼Œç­‰å¾…åä¸ª G0/G2/G1/RMOT/TAO
-owner å…¨éƒ¨è¿›å…¥ COMPLETE/FAILED åŽï¼Œç”¨åŒä¸€ receipt collector å†™å‡ºç‹¬ç«‹çš„
-multidomain finalization artifactï¼›æ—§çš„äº”è·¯ã€ä¸ƒè·¯ã€ä¹è·¯æ”¶å£æ–‡ä»¶ä¸è¦†ç›–ã€‚
-
-## 2026-10-22 â€” four-GPU parallel validation live snapshot
-
-æœ¬æ¬¡è½»é‡æ”¶å£ç¡®è®¤å››å¼ ç ”ç©¶å¡ä»æŒ‰æ—¢å®šåè®®å¹¶è¡Œï¼šGPU3 çš„ G0 RMOT single ä¸Ž G1
-DanceTrackï¼ŒGPU5 çš„ G2 MOT20ã€G2 DanceTrackã€G2 TAO OVMOTï¼ŒGPU6 çš„ G2 MOT20
-ä¸Ž G1 AnimalTrackï¼ŒGPU7 çš„ G2 RMOT single/multiã€‚å½“å‰é€å¸§è¿›åº¦ä¸º G1 AnimalTrack
-15/306ã€G1 DanceTrack 245/1203ã€G2 MOT20 GPU5 690/1657ã€GPU6 395/1657ã€G2
-DanceTrack 691/1203ã€TAO 2/40ã€RMOT single 302/800ã€RMOT multi 395/800ï¼›è¿™äº›
-æ•°å­—ä»…æ˜¯è¿è¡Œè¯æ®ï¼Œæœªå‡çº§ä¸ºæŒ‡æ ‡ã€‚GPU5/6 ç©ºé—²æ˜¾å­˜çº¦ 24.5/28.1 GiBï¼Œä½ŽäºŽ runner
-çš„ 32 GiB å¯åŠ¨é—¨æ§›ï¼Œå› æ­¤æ²¡æœ‰å¼ºè¡Œå†å¼€æœåŠ¡ï¼›GPU7 çš„å¿«é€Ÿ OVMOT é˜Ÿåˆ—ç»§ç»­ç­‰å¾…ä¸¤è·¯
-RMOT é‡Šæ”¾æ˜¾å­˜ã€‚live receipt collector å½“å‰åŒ…å« 10 ä¸ª ownerï¼Œä»åªæœ‰å·²å®Œæˆçš„
-G0 MOT20 ä¸Ž G2 AnimalTrack ä¸¤ä¸ª official scopeï¼ˆaccepted_scope_count=2ï¼‰ã€‚
-
-## 2026-10-22 â€” G200 DanceTrack control resumed on released GPU3 capacity
-
-GPU3 åŽç»­é‡Šæ”¾è‡³çº¦ 44.7 GiB freeï¼Œæ»¡è¶³åŒä¸€ runner çš„ 32 GiB resource gateï¼›å› æ­¤
-åœ¨ä¸å¢žåŠ  GPU æ•°é‡ã€ä¸è§¦ç¢° G0/G1 æ—¢æœ‰æœåŠ¡çš„å‰æä¸‹ï¼Œå¯åŠ¨ç‹¬ç«‹ G200 DanceTrack
-owner `g200_dancetrack_gpu3_v2`ï¼ˆç«¯å£ 8240ï¼Œmodel label
-`G200_TRACKING200`ï¼‰ã€‚åŽŸ `g200_dancetrack_gpu3_v1` çš„ 17,949 MiB èµ„æºæ‹’ç»ä»
-ä¿ç•™ä¸ºå¤±è´¥è®°å½•ï¼Œä¸è¦†ç›–ï¼›æ–°å¢ž G200 owner çº³å…¥ç‹¬ç«‹åä¸€-owner finalizerï¼Œåªæœ‰å®Œæ•´
-official receipt æ‰ä¼šè¿›å…¥ accepted collectionã€‚
-
-## 2026-10-22 â€” TAO OVMOT slow-path diagnosis
-
-GPU5 çš„ G2 TAO OVMOT owner ä»åœ¨æ­£å¸¸è¿è¡Œï¼›ç‹¬ç«‹ manifest çš„ 40 å¸§æ˜¯
-`1,31,61,...,1171` çš„ç¨€ç–å¸§ï¼Œå› æ­¤å½“å‰ `frame_decisions.jsonl` çš„ 3 è¡Œå¯¹åº”å·²å®Œæˆ
-çš„å‰ä¸‰ä¸ª manifest å¸§ï¼Œè€Œä¸æ˜¯ 3/1203 çš„æ¼å¸§ã€‚æ¯ä¸ª 1203-class è¯·æ±‚çº¦è€—æ—¶ 400 ç§’ï¼Œ
-ä¸»è¦å¼€é”€æ¥è‡ªè¯è¡¨åˆ†å—ã€‚æ¨¡åž‹è¾“å‡ºå¤šæ¬¡åŒ…å«é‡å¤åæ ‡ tupleï¼Œ`official_scoring` parser
-æŒ‰æ—¢å®š strict wire contract æ‹’ç»æ•´å¸§å¹¶ä¿ç•™åŽŸå§‹è¾“å‡ºï¼›æ²¡æœ‰æŠŠæ‹’ç»ç»“æžœçŒœæµ‹ä¸ºåˆæ³•æ¡†ã€‚
-GPU7 çš„ 192-class chunk ç‹¬ç«‹é˜Ÿåˆ—ç»§ç»­ç­‰å¾…å®‰å…¨æ˜¾å­˜çª—å£ï¼Œç”¨äºŽæ¯”è¾ƒè¯è¡¨åˆ†å—åžåï¼Œä¸èƒ½
-è¦†ç›–å½“å‰ 96-class è¯æ®ã€‚
-
-## 2026-10-22 â€” resumable OneJev three-task continuation registered
-
-å½“å‰è¿›ç¨‹è¡¨æ²¡æœ‰ `run_source_manifest_sft.py`ã€MOT-only æˆ–æ—§ J1 optimizerï¼›åŽ†å²
-`onejev_full_joint_source_epoch1_v1` åœ¨éžç»ˆæ€ step 3500 é™„è¿‘é€€å‡ºï¼Œä½† step3000 çš„
-å®Œæ•´ FP32/Adam/RNG çŠ¶æ€å’Œ `latest_training_state.json` å·²éªŒè¯å­˜åœ¨ï¼ˆ9,029,193,825
-bytesï¼Œstep=3000ï¼‰ã€‚å› æ­¤æ²¡æœ‰é‡å¯åŽ†å²ç›®å½•ï¼Œä¹Ÿæ²¡æœ‰æŠŠä¸­æ–­è¯¯æŠ¥æˆå®Œæˆã€‚
-
-æ–°å¢žå¹¶å¯åŠ¨ `queue_onejev_full_joint_resume_after_heldout.py`ï¼šå®ƒç­‰å¾…å½“å‰åä¸€æ¡
-held-out owner å’Œ G200 finalizer è¿›å…¥ç»ˆæ€ï¼Œç¡®è®¤ GPU3/5/6/7 æ— è®¡ç®—è¿›ç¨‹ä¸”æ¯å¡è‡³å°‘
-32 GiB free åŽï¼Œä»Žè¯¥ step3000 çŠ¶æ€æ¢å¤çœŸå®ž MOT/RMOT/OVMOT source-manifest è”åˆ
-è®­ç»ƒï¼Œè¾“å‡ºåˆ°æ–°çš„ `/data3/user/LocateMOT-checkpoints/onejev_full_joint_source_epoch1_after_heldout_v1`ã€‚
-åŽ†å²ç›®å½•ä¿æŒåªè¯»è¯æ®ï¼Œé˜Ÿåˆ—å½“å‰å¤„äºŽ `WAITING_HELDOUT_TERMINAL_AND_EXCLUSIVE_GPU_SET`ã€‚
-
-## 2026-10-22 â€” RMOT multi official receipt and fast TAO OVMOT launch
-
-G2 Clean RMOT multi `0007` reached its complete 800/800-frame contract. The official
-receipt reports HOTA `0.5028468967`, DetA `0.4257416214`, AssA `0.5942019821`, IDF1
-`0.5618408437`, IDSW `108`, FP `1450`, FN `459`; the receipt also records the official
-end-to-end timing. The first live collection omitted this valid result because the generic
-runner stores one completed block directly at owner level while the collector only handled
-the older scope-nested shape. The collector now normalizes both shapes; accepted scope
-count rose from 2 to 3 without changing any result or score.
-
-RMOT multi released GPU7 capacity. The waiting TAO OVMOT control crossed the 32 GiB gate
-(observed 42,827 MiB free) and started on GPU7 with vocabulary chunk size 192, while the
-original GPU5 96-class run remains untouched. A new twelve-owner finalizer and live
-snapshot include this fast OVMOT control; it is a throughput comparison, not a replacement
-for the original protocol.
-
-## 2026-10-22 â€” G0 RMOT single official receipt and G0 multi continuation
-
-G0 owner `g2_clean_independent_gpu3_v1` completed RMOT single `0007` with the full
-800-frame contract and immediately advanced to the registered G0 RMOT multi scope. The
-official single receipt reports HOTA `0.0531207079`, DetA `0.0073404994`, AssA
-`0.3847650569`, IDF1 `0.0143884892`, IDSW `2`, FP `1361`, FN `7`; the owner now has two
-accepted official scopes (MOT20 and RMOT single) and is not being restarted.
-
-The live collection therefore contains four accepted scopes: G0 MOT20, G0 RMOT single,
-G2 AnimalTrack, and G2 RMOT multi. The GPU7 chunk-192 TAO OVMOT owner has entered
-`INFERENCE` after the RMOT multi service released memory; it has no accepted metric yet.
-
-## 2026-10-22 02:44 UTC â€” user-directed parallel held-out evaluation remains active
-- Action: kept the permitted research set on GPUs 3/5/6/7 and continued independent G0/G1/G2/G200/OVMOT scopes in parallel. GPU5 and GPU6 already have active G2 services plus domain/MOT runs; free memory was about 24.5 GiB and 28.1 GiB, below the 32 GiB new-server gate, so no unsafe extra model server was added.
-- Current scopes: G0 RMOT-multi continuation; G2 MOT20 on GPUs 5/6; G2 DanceTrack and TAO OVMOT on GPU5; G2 AnimalTrack complete; G1 DanceTrack/AnimalTrack; G200 DanceTrack; RMOT single and fast TAO OVMOT on GPU7.
-- The two independent G2 queues are already configured to proceed from MOT20 to RMOT single, RMOT multi, and independent TAO OVMOT using the same service contract after each scope. This is a progress record only; no incomplete frame count is treated as a metric.
-
-## 2026-10-22 10:48 Asia/Shanghai â€” G2 Clean TAO Base/Novel video63 added in parallel
-- Action: GPU7 had 39,397 MiB free while the fast TAO control was active, so a second `.30` GroundAnything G2 Clean service was started on port 8241 for the registered TAO video63 Base/Novel manifest (`ovmot_tao_base_novel63_full.json`, 40 annotation frames, 160 evaluation-only GT boxes). The run uses the same official parser, tracking_dense decoder, Simple associator, native-label policy and vocabulary chunk size 192.
-- The held-out G200 finalizer, fast-OVMOT finalizer, and OneJev resume queue were restarted with the new video63 owner included in their terminal gates. Existing model/evaluation processes were left untouched.
-- Scope is still running; no partial frame count is promoted to a metric. This closes the earlier gap where only TAO video105 was active for the current G2 Clean OVMOT sweep.
-
-## 2026-10-22 10:55 Asia/Shanghai â€” receipt hash enrichment
-- The held-out collector now resolves bundle directories to `model.safetensors` before hashing and records model/manifest SHA-256 per accepted scope. This fixes the prior directory-hash omission without changing inference or scoring.
-
-## 2026-10-22 11:00 Asia/Shanghai â€” G1 adaptation evidence registered in live snapshot
-- The completed GPU5 GroundAnything G1 adaptation owner is now included in the live evidence snapshot alongside its held-out DanceTrack/AnimalTrack inference owners. Its receipt records 200 native Tracking200 training steps, exported bundle SHA-256 `0efd9d7ddb241d588be85cb6b08853de5dfd18011aa477932c0580bab3265a25`, and 12 isolated control units over 96 registered frames; those controls are not promoted as full-dataset performance.
-
-## 2026-10-22 11:05 Asia/Shanghai â€” held-out gate corrected for both TAO controls
-- The primary G200 finalizer and OneJev resume gate now require both TAO OVMOT owners: the original chunk-96 video105 run, the fast chunk-192 video105 control, and the newly launched Base/Novel video63 run. This prevents the joint resume from starting while a parallel TAO control remains incomplete.
-
-## 2026-10-22 11:15 Asia/Shanghai â€” OVMOT duplicate-coordinate root cause and repaired rerun
-- Diagnosis: TAO video105 frame31 returned 100 complete pairs plus two exact duplicate coordinate tuples, but also a malformed concatenated label fragment. The strict protocol raised `duplicate coordinate tuples are not canonical`; the pinned scoring parser then recovered no safe complete sequence, so the whole chunk became an empty/rejected frame.
-- Independent parser check on the saved raw response recovered 100 complete label/box pairs, removed only 2 exact duplicates, dropped 0 fragments, and filled/reordered no coordinates.
-- Change: new OVMOT invocations now use `official_scoring_repaired`, which preserves strict diagnostics while retaining only complete canonical pairs. The unfinished strict TAO video63 diagnostic was preserved and marked superseded; a fresh repaired video63 owner was launched with a separate output directory. Existing strict video105 remains a diagnostic control.
-
-## 2026-10-22 Asia/Shanghai â€” SGLang resource reduction
-- Resource action: released three owned process groups to avoid occupying shared GPU capacity: the superseded strict TAO video105 run on GPU5 (`g2_parallel_ovmot_gpu5_v1`), the duplicate full MOT20 run on GPU6 (`g2_clean_independent_gpu6_v1`, same input as the retained GPU5 run), and the orphaned historical service on port 8101 whose scheduler was already defunct.
-- Partial outputs were preserved. The two interrupted owners were marked `FAILED/RESOURCE_RECLAIMED` with `heldout_claim=false`; neither partial output is used as a metric.
-- The active SGLang scheduler count dropped from 10 live schedulers plus one zombie to 8 live schedulers. Remaining services are G0, G1, G2, G200, and repaired TAO scopes; no new server will be added to GPU6 until a queued scope needs it.
-
-## 2026-10-22 Asia/Shanghai â€” stale native-training waiters retired
-- Two historical shell waiters were still alive: one waiting on a failed native-three-task owner and one scheduled to launch `queue_groundjev_native_three_task.py` after G0 became terminal. They were not part of the current OneJev full-joint queue and would have competed for GPU resources after the held-out gate.
-- Both process groups were terminated without touching active inference owners. Existing native-training failure receipts remain unchanged; the recoverable training entry is now the explicit `queue_onejev_full_joint_resume_after_heldout.py` path.
-
-## 2026-10-22 Asia/Shanghai â€” G0 RMOT multi receipt recovered
-- The G0 owner produced a complete official RMOT multi `0007` receipt with all 800 registered frames. Metrics are HOTA `0.3148685730`, DetA `0.3013681168`, AssA `0.3327250738`, IDF1 `0.3742232451`, IDSW `123`, FP `1100`, FN `979`.
-- A partial held-out collection was generated at `/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/groundjev_heldout_partial_collection_20261022.json`; it validates four complete scopes (G0 MOT20, G0 RMOT single, G0 RMOT multi, G2 AnimalTrack). Running and resource-reclaimed owners remain status evidence only.
-
-## 2026-10-22 Asia/Shanghai â€” G2 DanceTrack held-out receipt
-- G2 Clean DanceTrack `dancetrack0004_val1203` completed all 1203 frames with official HOTA `0.1202769124`, DetA `0.5240129428`, AssA `0.0277880198`, IDF1 `0.0528881911`, IDSW `574`, FP `3025`, FN `96`.
-- The refreshed partial collection `groundjev_heldout_partial_collection_20261022_v2.json` validates five complete scopes: G0 MOT20, G0 RMOT single/multi, G2 DanceTrack, and G2 AnimalTrack. TAO, G1, G200, and the G0 TAO control remain pending and are excluded from the accepted count.
-
-## 2026-10-22 Asia/Shanghai â€” superseded strict G0 TAO control safely closed
-- The legacy G0 owner had advanced to `ovmot_tao105` with the pre-repair strict parser and vocabulary chunk size 96. Its G0 MOT20/RMOT receipts were already complete, while this extra control would have held the OneJev terminal gate for hours and was not the repaired OVMOT evidence.
-- Only the G0 TAO `run_video.py` child was terminated. The owner wrote `G2_CLEAN_FULL_INDEPENDENT_HELDOUT_FAILED` with the command failure and preserved partial output; existing G0 MOT20/RMOT receipts remain accepted. The repaired G2 TAO video63/video105 owners were left untouched.
-
-## 2026-10-22 Asia/Shanghai â€” G1 AnimalTrack held-out receipt
-- The GPU6 GroundAnything G1 adapter owner completed the independent AnimalTrack chicken_1 test scope with all 306 frames. Official metrics: HOTA `0.4661208959`, DetA `0.5490949528`, AssA `0.4067583015`, IDF1 `0.4992391856`, IDSW `145`, FP `1639`, FN `1300`.
-- This is a detector-adaptation held-out result under the G1 bundle and the same parser/decoder/tracker/scorer contract; G1 DanceTrack remains pending, so no multi-domain aggregate claim is made.
+YªçŠx-®éÜj×¢ëiºÚ+Š§j[h‘éÜ¢éí×ß6ÛTèµ©hºÚn¶X§zÍHÈÈŒ‹LLLŒH8 %9cã9n£ùb%ú )¹d":+«yîàÈÝ\9k¨z+¨{ï&’‘Uˆ9ki¹/&¹/aˆÌˆ9gd9¨!ù§*¹ki¹/&‚‚“SÕŒLÈ9.#ˆSÕŒLH9d!H9n)øà Mˆ9.*ˆ˜[œÚ][Û»ï#9aly h¹i#yb,Ý\;ï&ùa®ùîäÈÌˆÝ\MÌ;ï#L9n)ùd!9. 9«(z)áº)âyï%¹è xà XXÚ\‹Y›Ü˜ÙYÜ›Ý[™[™ÈÜÜÈ9.ãˆNLˆ:fcz!ìÈKŒN;ï#9.)9.*¹n£ùb%ùæ¡\Y‘UˆPUÒÐQRUÖY\ËS›ËÐPÕU‘H:/¯¹b,KŒ;ï#9/a¹k§ºfaHÜ™YYHÌˆ9¨a¹g*9.)9.*¹n£ùb%ùnlùgaÈ[ÕH9.ãy..ˆŒ;ï#Ì9.gù..ˆŒ8à º`ê9b!ˆÌˆ:/¤ùaî¹d"9¬åy/a¹gd9¨!ù£©z/äya®ùîäùgî¹î¯ûï#:`ê9b!¹aî¹ã¬9bcyï ú)èù§¤9i,z-)xà ¹îäú+®»ï&¹é®ù¥hÈ‘Uˆ9æäyçhùmì¹cëùki¹.h;ï#9ceHÚÙ[ˆY[[ÜžH9b,Ìˆ9gd9¨!ùå'ù¢$9æ¡9/&9c%¹l&¹§*¹¢dú`&»ï&ù`g9«h¹¥è9åc9b¨9«i{ï#:/k9d$HÛÛÜ™[˜]K]ÚÙ[ˆ9î©ú+â¹¥«Kùæë¹¨!øà ]Ü›Û™Ë[Y[[ÜžH9.#¹i&º.ªù.ïyêç¹.¢xà º+ày£k»ï&˜ØÜËÑÔ“ÕS‘‘U—ÐÓÕTQÔTÑWÐ×Ô‘PSÑÌ—ÐÓÕTQÓUSTÑTUQSÑWÔÕTMÌÌŒŒLŒKžÚœÛÛ‹YX8à ‚‚ˆÈÈŒ‹LLLŒH8 %Ìˆ: )¹d"9ª(ygeú-ê9n£ùb%ú+â¹¥«yi,z-){ï"SÕŒL{ï"B‚¹l!ˆSÕŒLÈ9n)È¸ $ÎH9."º+«yîàùæ¡: )¹d"ÚXÚÜÚ[9c§ù¨-ùå*9.£ˆSÕŒLH9n)ÈLø $ÌMûï#H9n)ùd!9. 9«(HÌˆ:)áº)âyï%¹è {ï#:+á9­bù§'úeí9¥è9cà¹¥l9¦í9¥¬8à ÌÐÌˆ9nlùgaÈ[ÕH:`ïy¦+ÈŒ;ï&ù/aˆ‘Uˆ9.ãyîæyaîº/äy.c¹®èyïk¹/èyæ¡PUÒÖY\ûï"
+Q
+H9î©ˆKŒ;ï#
+Y\ÊH9î©ˆŽNNM{ï"xà º/æyk¦¹/cy..¹cez)áºh¤z+¬9oá‹ùaè9/ez/áù¢çùd"9d£9© ¹ã¡ú/áùn©º!ê¹/è{ï#9d)¹k¦º-ê9n£ùb%ù¬æùc%¹..ùo(8à ¹/çyåfy..º-'ú+ày£k»ï#9."ù. 9«iy¢jyi)ùi&º)áºh¤z+«yîàùnm¹b¨9aize&z+ëÈY[[Üžxà yi&º.ªù.ïyêç¹.¢yd£9¨(yaá¸à º+ày£k»ï&˜ØÜËÑÔ“ÕS‘‘U—ÐÓÕTQÔTÑWÐ×Ô‘PSÑÌ—ÐÓÕTQÐÔ“ÔÔ×ÔÑTUQSÑWÓSÕŒÌWÔÕTMÌÌŒŒLŒKžÚœÛÛ‹YX8à ‚‚ˆÈÈŒ‹LLLŒH8 %9ç'ùk§ˆÌˆ9cey..ùnlº )¹d"Y[[ÜžKÒ‘Uˆ[Ý;ï"Ý\MÌ;ï"B‚¹g*9a®ùîäÈÌˆÝ\MÌ9..ùnl¹æ¡9§hy.í¹."ùk£9¢$9«iyç'ùk§ˆÔH9¦í9¥¬;ï#9cêº+«yîàÈÌˆ:/¤ùaiyênºeí:+¬9oáˆÚÙ[ˆ9¢¥yolxà R‘Uˆ:.ªù.ïy©ïy¢¥yolyd£9îäù§¡9c%ˆ\Y™XYÝ];ï"ÍKÌH9cà¹¥l;ï"{ï&ÍH9.*ˆSÕŒLÈRSˆ9n)ùd!9cê¹`f¹. 9«(HÌˆ:)áº)âyï%¹è xà ˜Ø]\Ø[Ü›Ý[™[™ÈXXÚ\‹Y›Ü˜Ú[™ÈÜÜÈ9.ãˆÌÌNM:fcz!ìÈŒMŽLMŒÎNÌ;ï#‘UˆY\ËÓ›È9.ãˆÍ9b,Í8à º+«yîàùd#ˆÌ9¥è:+¬9oá¹nlùgaù¨aˆ[ÕH9..ˆ;ï#Ìˆ9."¹. 9n)ú+¬9oá¹nlùgaÈ[ÕH9..ˆŽNMŒÍ»ï#9d#:)áºh¤y¥í¹n£ùåfyaî¹n)Èˆ9æ¡Ìˆ[ÕH9..ˆŽNLÌ8à º+éyîäù§§:+ày¦#º+¬9oáˆÚÙ[ˆ9mì¹olydãyç'ùk§ˆÌˆ9å'ù¢$9bcz-ëùo¡;ï#9/a¹cêº)¡¹æå¹cez)áºh¤xà ycez.ªù.ïxà L9«i{ï#9.#z ïy/g9..¹âë9êâÈSÕÔ“SÕÓÕ“SÕ9¬æùc%¹¢%ˆÕH9£ä9caûï&ùd#¹îëyoázhnù`f¹i&º)áºh¤xà ze&z+ëÈY[[ÜžH9d£9«hùo#ú)áºh¤yî©ú+á9­bøà º+ày£k»ï&˜ØÜËÑÔ“ÕS‘‘U—ÐÓÕTQÔTÑWÐ×Ô‘PSÐÓÕTQÓQSSÔ–WÒ‘U—ÕRS’S‘×ÔÕTMÌÌŒŒLŒKžÚœÛÛ‹YX8à ‚‚ˆÈÈŒ‹LLLŒH8 %Ìˆ9ç'ùk§¹fæùn)ÈØ]\Ø[Y[[ÜžH™\^{ï"Ý\MÌ;ï"B‚¹`aú+¯»ï&¹cey..ùnlˆÜ›Ý[™‘Uˆ9cëù.éyg*9.#yb¨:/oyë+9.£9.*º)áº)âyª(yg¢ùæ¡9 áya­y."ûï#9l!¹."¹. 9n)ùâ­¹  y£ä¹aiy."ù. 9n)ÈÌˆØ]\Ø[™Yš[8à ¹/oùå*SÕŒLÈRSˆ9n)È¸ $ÎH9d£9æë¹¨!ÈQûï#9«ãùn)ùcê¹`f¹. 9«(HÌˆ:)áº)âyï%¹è {ï&ùë+ø $ÎH9n)ùkîy«åÌ9¥è:+¬9oá¹.#ˆÌˆ9."¹. 9n)ú+¬9oá¸à ¹îäù§§;ï&9«(z)áº)âyï%¹è xà LÈ9.*º-ê9n)ú+¬9oáˆ™Yš[9gaùk£9¢$;ï#9k¦9¥®ycey¨a¹îäù§¡9îâ9«h¹d£\œÙ\ˆ9gaù¢$9b§ûï&ù§*º+«yîàùæ¡Y[]SY[[ÜžUÚÙ[”›Ú™XÝÜ˜9¬¨y§"y¥.ycæ9.îù/ey h¹i#y¨a»ï#ÌÐÌˆ9æ¡9nlùgaù¨!ù¬ê[ÕH9gaù..ˆŒ8à º+éyîäù§§9/çyåfy..¹ç'ùk§º )¹d":/®yåc9æ¡:-'ú+ày£k»ï#9.#z ïz(j:/ì9..ˆ˜XÚÚ[™ËÙÜ›Ý[™[™È9£ä9caûï&ù."ù. 9«izg :) z+«yîàÈY[[ÜžKÜ›Ú™XÝÜˆ9.#¹îäù§¡9c%ˆ‘Uˆ9a¬ùëe¸à º+ày£k»ï&˜ØÜËÑÔ“ÕS‘‘U—ÐÓÕTQÔTÑWÐ×Ô‘PSÓUSQ”SQWÔ‘TVWÔÕTMÌÌŒŒLŒKžÚœÛÛ‹YX8à ‚‚ˆÈÈŒ‹LLLŒH8 %™X[ÌˆØ]\Ø[Y[[ÜžH™Yš[[™ÝXÝ\™Y[Ý]]™\Z\‚‚H™X[ÔMÈ\ÙKPÈÛÛ\\š\ÛÛˆØYYH›ÝXÝYÌˆÛX[ˆY\\ˆ]Ý\ŒMÌ[™[˜ÛÙYSÕŒLÈRSˆœ˜[Y\Èˆ[™ÈÛ˜ÙHXXÚˆHÝ\œ™[Yœ˜[YBš\ÝX[[X™Y[™ÈØ\È™]\ÙY›ÜˆY[[ÜžKY\ØX›YÛÜœ™XÝ\™]š[Ý\Ë[Y[[ÜžH[™œÚY™›Y[Y[[ÜžH[™ÝXYÙH™Yš[ÎÈXXÚÛÛ™][Ûˆ\ÙYÛ™HØ]\Ø[™Yš[[™›Âš[™\[™[“KˆHš\œÝ][\^ÜÙYH™X[\H›Ý[™\žH˜Z[\™Nˆ‘ŒM‚™[X™Y[™ÜÈ™XXÚYH™\ÝÜ™Y”ÌˆÔH›Ú™XÝ[ÛˆÝ]ÚYHH›Ü›X[Ì‚˜]]ØØ\ÝÛÛ^ˆHÛX[\Ýš^Ü˜\YÛ›HH™X[Ìˆ™Yš[[ˆHØ[YBÕQH‘ŒMˆ]]ØØ\Ý›Ý[™\žKˆH™^][\ÚÝÙY[˜ÛÛœÝ˜Z[™YÜ™YYB™XÛÙ[™ÈÛÝ[[ˆ\Ý›Ý\ˆÛÛÜ™[˜]\ÈÚ]Ý]›ÞÙ[™˜ÈH[›™\ˆ›ÝÂ\Ù\ÈHÙ™šXÚX[Ú[™ÛKX›ÞÝXÝ\˜[\›Z[˜][Ûˆ[KÛÛœÝ˜Z[š[™ÈÛ›B˜ÛÛÜ™[˜]HÛÝÈ[™[Z][™ÈH›Ý[™\žHÚ]Ý]Þ[\Ú^š[™ÈÜˆ™[Ü™\š[™Â˜ÛÛÜ™[˜]\ËˆH™\Z\™YÌÐÌˆÝ]]È[ZY[YÛ™HÛÛ\]HYØ[Z\ŽÂÌ[™›ÝÌˆ›Þ\ÈÙ\™HY[XØ[[ˆ\È[˜Z[™Y[Y[[ÜžHÛÛ›Ûˆ\È\Âœ™X[™Yš[Ü\œÙ\ˆ]šY[˜ÙH[™H™]]˜[™\Ý[›ÝY[]KXÛÛ™][Û™Y™Ü›Ý[™[™ÈÜˆ˜XÚÚ[™È[\›Ý™[Y[ˆ]šY[˜ÙN‚˜ØÜËÑÔ“ÕS‘‘U—ÐÓÕTQÔTÑWÐ×Ô‘PSÓQSSÔ–WÔ‘Q’SÔÕTMÌÌŒŒLŒKžÚœÛÛ‹YX‚‚ˆÈÈŒ‹LLLŒH8 %Ú[™ÛKX˜XÚØ›Û™H˜]]™HÌˆÛÛ^[Ý]Y\\ˆÝ\MÌ‚‘›ÛÝÚ[™ÈH™]ÈÜ›Ý[™‘UˆÚ[™ÛKX˜XÚØ›Û™H\™XÝ[Û‹H˜[ˆH›Ý[™Y˜]]™B‘ÌˆÛÛ^™XYÝ][ÝÛˆ\ÚXØ[ÔMÈÚ]Ý]ÝXÚ[™ÈH›ÝXÝYÌ‚ÛX[ˆÛË\˜[šÈ[‹ˆHÙ™šXÚX[Ü›Ý[™[ž][™ÈHØ\È™\ÝÜ™YÚ]BœÝ\LMÌÌˆY\\ˆ[™[˜ÛÙYMˆSÕMËL‹Q”Ó“ˆRSˆœ˜[Y\È^XÝHÛ˜ÙBœ\ˆœ˜[YH
+Mˆ˜]]™HKØœšYÙH›ÜØ\™ÊKˆZYÚœ˜[Y\ÈÙ\™H\ÙY›Üˆ˜Z[š[™Â˜[™ZYÚ›ÜˆHØ[YK]šY[È[\Ü˜[]™[ÜY[Ü]ÈHœ›Þ™[ˆÌˆÝ]]Â˜[™XXÚ\‹Y›Ü˜ÙY™]š[Ý\ËYœ˜[YHÕ[X]ÚY™YÚ[ÛˆÚÙ[œÈ™YH\Y‘Ü›Ý[™‘Uˆ™XYÝ]ˆZYÚHÜ[Z^™\ˆ\]\È™YXÙYY[]HXØÝ\˜XÞHœ›ÛBŒŒLNHÈÍLÛˆH˜Z[ˆ™Yš^[™œ›ÛHŒÌŒNÈLÍŒŽLÛˆB[\Ü˜[]™[ÜY[Ü]ÈYZ]XØÝ\˜XÞHÚ[™ÙYœ›ÛHLÌŒHÈŽLÍNB˜[™NMÍÍÈŽLMLÌŒ‹ˆ\ÙH\™H›Ý[™YX\›˜Xš[]HÛÛ›ÛÈÛ›Nˆ›Â’ÕKÒQŒKÒQÕË[™\[™[]šY[ËÜˆX\›™YY[]KXÛÛ™][Û™Y›ÞÛZ[Bš\ÈXYK[™XXÚ\‹Y›Ü˜ÙYØ]\Ø[Y[[ÜžH™[XZ[œÈH[Z]][Û‹ˆ]šY[˜ÙN‚˜ØÜËÑÔ“ÕS‘‘U—ÐÓÕTQÔTÑWÐ×ÓUU‘WÐÓÓ•VÔSÕÔÕTMÌÌŒŒLŒKžÚœÛÛ‹YX‚‚ˆÈÈŒ‹LLLŒH8 %ÌˆÛX[ˆÚXÚÜÚ[Ý\ML]Y]YÛˆÔB‚•H›ÝXÝY^XÝ[Û˜ÙHÛË\˜[šÈÌˆ[ˆÜ›ÝH[™ÝXØÙ\ÜÙ[H™[ØYYY\\‹\Ý\MLœ[™]\ÝÝ˜Z[š[™×ÜÝ]KœÛˆÔHÚ]^XÚ]ÙZYÚ×ÛÛ›OQ˜[ÙXˆ›Ý™\ÜÝ\MKÛÜ›Ú^™H‹H™YÚ\Ý\™YÛX[ˆRSˆX[šY™\ÝÒKÜ[Z^™\‹ÜØÚY[\‹Ô“‘ÈÝ]H[™HÝšXÝÌˆ›Ü›X]ˆH]\Ý]™[\ÈÝ\MLˆÚ]š[š]HÜÜËÜ˜YY[›Ü›H[™Y[[ÜžNÈš[˜[Ü™XÙZ\šœÛÛ˜\ÈXœÙ[ÛÈSËÑÌKÚ[[Ý]Ý™YK]\ÚÈÛ™R™]ˆ™[XZ[ˆØ]Yˆ\È\ÈÚXÚÜÚ[Ü™XÛÝ™\žH]šY[˜ÙHÛ›K›ÝHY]šXÈÛZ[Kˆ]šY[˜ÙNˆØÜËÑÔ“ÕS‘‘U‹ÑÌ—ÐÒPÒÔÒS•Ô“ÑÔ‘TÔ×ÌŒŒLŒWÔÕTMLžÚœÛÛ‹YX‚‚ˆÈÈŒ‹LLLŒH8 %ÌˆÛX[ˆÚXÚÜÚ[Ý\ML]Y]YÛˆÔB‚•H›ÝXÝY^XÝ[Û˜ÙHÛË\˜[šÈÌˆ[ˆÜ›ÝH[™ÝXØÙ\ÜÙ[H™[ØYYY\\‹\Ý\MLœ[™]\ÝÝ˜Z[š[™×ÜÝ]KœÛˆÔHÚ]^XÚ]ÙZYÚ×ÛÛ›OQ˜[ÙXˆ›Ý™\ÜÝ\MLÛÜ›Ú^™H‹H™YÚ\Ý\™YÛX[ˆRSˆX[šY™\ÝÒKÜ[Z^™\‹ÜØÚY[\‹Ô“‘ÈÝ]H[™HÝšXÝÌˆ›Ü›X]ˆH]\Ý]™[\ÈÝ\MLLˆÚ]š[š]HÜÜËÜ˜YY[›Ü›H[™Y[[ÜžNÈš[˜[Ü™XÙZ\šœÛÛ˜\ÈXœÙ[ÛÈSËÑÌKÚ[[Ý]Ý™YK]\ÚÈÛ™R™]ˆ™[XZ[ˆØ]Yˆ\È\ÈÚXÚÜÚ[Ü™XÛÝ™\žH]šY[˜ÙHÛ›K›ÝHY]šXÈÛZ[Kˆ]šY[˜ÙNˆØÜËÑÔ“ÕS‘‘U‹ÑÌ—ÐÒPÒÔÒS•Ô“ÑÔ‘TÔ×ÌŒŒLŒWÔÕTMLžÚœÛÛ‹YX‚‚ˆÈÈŒ‹LLLŒH8 %ÜÝQÌˆÝÛœÝ™X[H™Y›YÚ‚H™XY[Û›H][˜Ú]Y]™\šYšYYH™YÚ\Ý\™YSÈRSˆZYÚ\Ú\™ØÛÜK[[YHÜ›Ý[™[ž][™È^Ü\‹ÜÝ™X[Y\‹˜]]™HÕ“SÕ›Ú[™\‹˜]]™H™YK]\ÚÈÛ™R™]ˆÝÛ™\‹Ìˆ[™HÝÛ™\‹[™ÌHÔMHÝÛ™\‹ˆ[™\]Z\™Y]ÈÙ\™H™\Ù[H™YÚ\Ý\™Y[ž\Ú[ÈÛÛ\[Y[™HØZ]ÝÛ™\œÈÙ\™H]™KˆH›Ü›X[Ìˆ\›Z[˜[™XÙZ\\ÈÝ[XœÙ[ÛÈ›ÈSÈÚ\™Ü[Z^™\‹[Ù[Ù\šXÙKÜˆÔHØ\ÈÝ\Yˆ]šY[˜ÙNˆØÜËÑÔ“ÕS‘‘U‹ÔÔÕÑÌ—ÑÕÓ”Õ‘PSWÔ‘Q“QÒÌŒŒLŒKžÚœÛÛ‹YX‚‚ˆÈÈŒ‹LLLŒH8 %ÌˆÛX[ˆ]™H›ÙÜ™\ÜÈ]Ý\MÌÌB‚•H›ÝXÝYÛË\˜[šÈÌˆÛX[ˆ[ˆ\ÈÝ[XÝ]™HÛˆ\ÚXØ[Ô\ÈËÍH[™\ÈHÛÛYÝ[Ý\È]™[Ý™X[H›ÝYÚMÌÌKÌNŒØˆH]\Ý]™[]Œ‹LLLŒHLŒÎNŒÌˆ
+Ì\Èš[š]HÜÜÈŒMLŒÍNLNNÜ˜YY[›Ü›HKŽÍMMÍNMÍ˜[™XZÈ]™[Y[[ÜžHL‹ŽŽÌˆÚP˜ˆH\˜X›H™XÛÝ™\žHZ\ˆ™[XZ[œÈY\\‹\Ý\Mœ[™]\ÝÝ˜Z[š[™×ÜÝ]KœÈš[˜[Ü™XÙZ\šœÛÛ˜[™Y\\—Ü›Ú™XÝÜ—Ùš[˜[œ\™HXœÙ[ˆ˜]]™HSËÓÕ“SÕ›Ú[š[™Ë™YK]\ÚÈÛ™R™]ˆÜ[Z^˜][Û‹ÌK[™Y\Õ˜XÚÈÝ[™\Ü™\›ÈÜ[Z^™\ˆ\]\È[™\ˆZ\ˆ\[™[˜ÞKÜ™\ÛÝ\˜ÙHØ]\Ëˆ\È\È˜Z[š[™ËZX[]šY[˜ÙHÛ›H[™XZÙ\È›ÈÛÝ\YÜˆ˜XÚÚ[™ÈY]šXÈÛZ[Kˆ]šY[˜ÙNˆØÜËÑÔ“ÕS‘‘U‹ÑÌ—ÐÒPÒÔÒS•Ô“ÑÔ‘TÔ×ÌŒŒLŒWÔÕTMÌÌKžÚœÛÛ‹YX‚‚ˆÈÈŒ‹LLLŒH8 %Y\Õ˜XÚÈ\›Z\ÜÚ[Ûˆ˜Z[\™H™\Z\™YÈÛÝ\YÜ[Z^™\ˆÝ[Ø]Y‚•Hš\œÝ™X[Y\Õ˜XÚÈÔMÈÝÛ™\ˆ™XXÚY]È™\ÛÝ\˜ÙHØ]H]˜Z[Y™Y›Ü™B˜Ü™X][™ÈH˜Z[š[™È›ØÙ\ÜÈÚ]\›Z\ÜÚ[Û‘\œ›ÜŠLË	Ô\›Z\ÜÚ[Ûˆ[šYY	ÊX‚•HXÝ[Û˜X›HØ]\ÙHØ\È\™XÝ^XÝ][ÛˆÙˆH[ÙKLˆÛÝ\˜ÙHÜ˜\\‚˜[—ÝÚ]Ü™\ÛÝ\˜Ù\ËœXÈH]Y]YH›ÝÈ[›ÚÙ\È]Ü˜\\ˆ›ÝYÚH[›™Y“Û™R™]ˆ]Ûˆ[š\›Û›Y[ˆÛÛ\[][Ûˆ[™H]Y]YH[ž\Ú[ÚXÚÈ\ÜËˆB\›Z[˜[˜Z[Y]Y]YH\È™\Ù\™Y[™H™]È™]žHÝÛ™\ˆ\ÈØZ][™È[™\ˆBœÙ\\˜]H]Y]YH›ÛÝ›ÜˆÔMÈ^Û\Ú]š]H™XØ]\ÙH[ˆ[œ™[]YÞ™Þ›ØÙ\ÜÂ˜Ý\œ™[HØØÝ\Y\ÈÔMËˆ›È›ØÙ\ÜÈØ\ÈÝÜY[™›ÈY\Õ˜XÚÈY]šXÈ\Â˜ÛZ[YYˆH™X[Ì‹ÓÛ™R™]ˆ™YK]\ÚÈÛÝ\YÜ[Z^™\ˆ™[XZ[œÈ]™\›È\]\Â[[H›ÝXÝYÌˆÛX[ˆ\›Z[˜[™XÙZ\^\ÝËˆ]šY[˜ÙN‚˜ØÜËÑÔ“ÕS‘‘U‹ÖQTÕPÒ×ÔT“RTÔÒSÓ—Ô“ÓÕÐÐUTÑWÌŒŒLŒKžÛYœÛÛŸX‚‚ˆÈÈŒ‹LLLŒH8 %ÌˆÝ\MŽMÍÈÛ˜\ÚÝ[™Y\Õ˜XÚÈÝÛ™\ˆ™XÛÝ™\žB‚•H›ÝXÝYÌˆÛX[ˆ˜Z[™\ˆ™[XZ[œÈ]™H]Ý\M‹MÍËÌNŒÈÛˆÔ\ÈËÍBÚ]š[š]HÜÜÈ[™Ü˜YY[›Ü›NÈ]È\›Z[˜[™XÙZ\[™\›Z[˜[Y\\ˆ\™BœÝ[XœÙ[ˆH˜]]™HSÈZYÚ\Ú\™ÝÛ™\‹ÔHÕ“SÕ›Ú[™\‹[™˜]]™B™YK]\ÚÈÛ™R™]ˆÝÛ™\ˆ™[XZ[ˆ]™H[™\ˆZ\ˆ^XÚ]Ø]\ËÚ]™\›È›Ú[›Ü[Z^™\ˆ\]\ËˆHÔMHÌHÝÛ™\ˆ\È[ÛÈØZ][™È›ÜˆHÌˆ\›Z[˜[™XÙZ\‚•H™\Z\™YY\Õ˜XÚÈ™]žHÝÛ™\ˆY^]YÚ]Ý]H˜Z[\™H™XÙZ\ÛÈ]Ø\Âœ™\Ý[YY[ˆH]XÚYÙ\ÜÚ[Ûˆ[™\È›ÝÈ]™H]HÔMÈ^Û\Ú]š]HØ]KˆB[œ™[]YÔMÈÛÛ\]H›ØÙ\ÜÈ™[XZ[œÈ[ÝXÚYˆ]šY[˜ÙN‚˜ØÜËÑÔ“ÕS‘‘U‹ÔÕUT×ÔÓTÒÕÌŒŒLŒWÔÕTMŽMÍËžÛYœÛÛŸX‚‚ˆÈÈŒ‹LLLŒH8 %Y\Õ˜XÚÈ[\™Y™X[ÔH˜Z[š[™ÈY\ˆ\›Z\ÜÚ[Ûˆ™\Z\‚‚•H]XÚY™]žHÝÛ™\ˆ\ÜÙYHÔMÈ^Û\Ú]š]HØ]H[™[\™Y™X[›˜]]™HY\Õ˜XÚÈÔH˜Z[š[™È\Ú[™ÈHÛ™R™]ˆÝ\MŒÚXÚÜÚ[ˆHÌ‹\›ÝÂ˜Z[ˆ[™ÎL\›ÝÈ˜[Y][ÛˆX[šY™\ÝÈX]ÚZ\ˆ™YÚ\Ý\™YÒKLMˆ˜[Y\ÎÂH[ˆ\ÈØÚY[Y›ÜˆÌÈÜ[Z^™\ˆÝ\È[™Y™XXÚYÝ\LÚ]š[š]B›ÜÜËÛÝXØÝ\˜XÞH[™Y[[ÜžKˆ\È\È˜Z[š[™Ë\Ý\]šY[˜ÙHÛ›KˆB\›Z[˜[Y\\‹œ›Þ™[‹X˜\ÙKÙš[™K][™Y˜[Y][Ûˆ[™Y\Õ˜XÚÈY]šXÜÈ\™BœÝ[[™[™Ë[™H›Ü›X[™YK]\ÚÈÌ‹ÓÛ™R™]ˆÜ[Z^™\ˆ™[XZ[œÈ]™\›Â\]\Ëˆ]šY[˜ÙN‚˜ØÜËÑÔ“ÕS‘‘U‹ÖQTÕPÒ×ÕRS’S‘×ÔÕT•QÌŒŒLŒWÔÕTLžÛYœÛÛŸX‚‚ˆÈÈŒ‹LLLŒH8 %Y\Õ˜XÚÈ]\ÙYÈ™\ÝÜ™HÛÝ\[™Èš[Üš]B‚•H]\Ý\™XÝ[Ûˆ\ÈHÜ›Ý[™‘UˆÚ[™ÛKX˜XÚØ›Û™HÛÝ\[™È^\š[Y[ÛÂH]^[X\žHY\Õ˜XÚÈ™\šYšY\ˆØ\ÈÝÜYÛX[›HY\ˆ™X[ÔH˜Z[š[™ÂœÝ\ŒÌÌÈ
+MŒÌŒMÎ^[\\ÊKˆ]È\X[ÙÈ[™]Y]YHÝ]H\™H™\Ù\™YÂ››ÈY\\‹˜[Y][Ûˆ™XÙZ\ÜˆY]šXÈØ\È›Û[ÝYˆÔMÈ\ÈÙ\]˜Z[X›B™›ÜˆH[™\[™[[[Ý]Ø]HY\ˆÌˆ\›Z[˜[ÛÛ\][Û‹ˆÌ‹ÌÑÌŒÑÌB˜\Y˜XÝÈ[™H˜]]™H™YK]\ÚÈ]Y]YHÙ\™H›Ý[ÙYšYYˆ]šY[˜ÙN‚˜ØÜËÑÔ“ÕS‘‘U‹ÖQTÕPÒ×ÒS•T”•TQÑ“Ô—ÐÓÕTS‘×Ô’SÔ’UWÌŒŒLŒKžÛYœÛÛŸX‚‚ˆÈÈŒ‹LLLŒH8 %ÌˆÛX[ˆÝ\MÌÚXÚÜÚ[]Y]YÛˆÔB‚•H›ÝXÝY^XÝ[Û˜ÙHÌˆ[ˆÜ›ÝHY\\‹\Ý\MÌ[™H[]\Ýœ™XÛÝ™\žHÝ]Kˆ›ÝØYÛˆÔHÚ]^XÚ]ÙZYÚ×ÛÛ›OQ˜[ÙX™\ÜÛÜ›Ú^™H‹H™YÚ\Ý\™YÛX[ˆRSˆX[šY™\ÝÒKÝšXÝ˜Z[š[™ÈÛÛ˜XÝ›Ü[Z^™\‹ÜØÚY[\‹ÜØ[\\ˆÝ]H[™[]Û‹Ó[TKÕÜ˜ÚÐÕQH“‘ÈÝ]K‚•H]™H]™[Ý™X[H\È]Ý\MÌËÌNŒÎÈH\›Z[˜[™XÙZ\[™\›Z[˜[˜Y\\ˆ™[XZ[ˆXœÙ[ÛÈÌKSË˜]]™HÕ“SÕ›Ú[Û™R™]ˆ[™[[Ý]Ø]\Âœ™[XZ[ˆÛÜÙYˆ\È\È™XÛÝ™\žH]šY[˜ÙHÛ›Kˆ]šY[˜ÙN‚˜ØÜËÑÔ“ÕS‘‘U‹ÑÌ—ÐÒPÒÔÒS•Ô“ÑÔ‘TÔ×ÌŒŒLŒWÔÕTMÌžÛYœÛÛŸX‚‚ˆÈØØ]SSÕ™\ÙX\˜ÚÙÂ‚ÛÛ˜Ú\ÙH^\š[Y[[ÙÈ
+]\Ýš\œÝ
+K‚‚ˆÈÈŒ‹LLLŒH8 %[œÙKX[œÝÙ\ˆÌ‹Ò‘UˆÛÝ\[™ÈÛÛ\]Y[™Ù™šXÚX[XÛÙ\ˆÚXÚÙY‚¹g*9a®ùîäÈÌˆÝ\MÌ9."¹¥¬9h§¹d"9¬åH[œÙKX[œÝÙ\ˆ: )¹d":+«yîàûï&‘[˜ÙU˜XÚËLKÌMˆ9d!È9n)ûï#9«ãù.*ˆ›ÝÈ9/çyåfz+éyn)ùaj:`ê\œÛÛˆ›Þ\ûï"ËÍˆ9.*»ï"{ï#:+«yîàÈˆ9.*ˆ˜[œÚ][Û¸à LˆÜ[Z^™\ˆÝ\ûï&ùcêº+«yîàÈY[]P›ÞÝ]UÚÙ[”›Ú™XÝÜ˜8à R‘UˆY[[ÜžH›Ú™XÝÜˆ9d£\Y™XYÝ];ï#9alHÍËÌÈ9cà¹¥l;ï#Ìˆ:)áº)ây«ãùn)ù. 9«(xà ‘Ü›Ý[™[™ÈXXÚ\‹Y›Ü˜Ú[™ÈÜÜÈËŽÍx¡¤ŒËŽÌÎLûï#‘UˆÝXÝ\™YÜÜÈŒLMLLx¡¤ŒKŒMLM8à ºf£ùd#¹£©yaiyk¦9¥®HR[™™\™[˜ÙQ[™Ú[™X;ï&ŒH9æ¡:+«yîàú/k9éîÈ™XØ[H9.ãˆÌLŒMŽH9b,ÌLŒŽMûï"x¡¤Œˆ9kîy«å;ï"{ï#9/aˆH]™[ÜY[¸¡¤ŒÈ9câˆMˆ9.)9.*º/k9éîÈÌˆ:/¤ùaî¹gaÈX[›Ü›YYÌ;ï&ùfè9«i:/æy¦+ùaly.ªù..ùnl¹£©ycèùd£9l#ù¨-ù§+9cëùki¹.h9 )ú+ày£k»ï#9.#y¦+ú-çú.*¹h§¹æâ¹¢%¹¬æùc%¹îäú+®¸à “SÕŒ:jæ9ká¹n©ˆ[œÙHXXÚ\ˆ›Ü˜Ú[™È9¦ï¹g*ÔMÈ9î©ˆŒËŽÚPˆ:/¯¹b,ÓÓ{ï#9mì¹/çyåfyi,z-)z/®yåc9nm¹¥.yå*9/c¹ká¹n©¹d"9¬åHÛ\:j£:+à{ï#9§*¹¥.H\™Ù][Û›H9d"9d#8à º+ày£k»ï&˜ØÜËÑÔ“ÕS‘‘U—ÐÓÕTQÔTÑWÐ×Ô‘PSÑÌ—ÑS”ÑWÐÓÕTS‘×ÑSÑWÔÕTMÌÌŒŒLŒK›Y;ï#9.)9.*ˆ™XÙZ\9/cy.£ˆÙ]L‹Ý\Ù\‹ÓØØ]SSÕÑÜ›Ý[™‘U‹ÛÝ]]ËÙÜ›Ý[™™]‹ØÛÝ\YÜ\ÙWØ×Ü™X[ÙÌ—Ù[œÙWØÛÝ\[™×Ù[˜ÙWÜÝ\MÌÝŒKÜ™XÙZ\šœÛÛ˜9.#ˆÙ]L‹Ý\Ù\‹ÓØØ]SSÕÑÜ›Ý[™‘U‹ÛÝ]]ËÙÜ›Ý[™™]‹ØÛÝ\YÜ\ÙWØ×Ü™X[ÙÌ—ÛÙ™šXÚX[ÙWÙ[œÙWØÛÝ\YÙ[˜ÙWÜÝ\MÌÝŒKÜ™XÙZ\šœÛÛ˜8à ‚‚ˆÈÈŒ‹LLLŒH8 %Ù™šXÚX[ÌˆH[œÙHÛÛ˜XÝÛÛ™š\›\ÈÛ™KX›Þ˜\Ù[[™H™Y›Ü™HÛÝ\[™Â‚¹å*9a®ùîäÈÌˆÝ\MÌ9g*ÔM:`&º/áÈÜ›Ý[™[ž][™È9k¦9¥®HR[™™\™[˜ÙQ[™Ú[™X9æ¡Y\˜\˜ÚWÙ[˜[ZXØ:-ëùo¡:aãz-äyç'ùk§ˆ[œÙH:)èùè {ï&ùîäù§¡9c%¹îâ9«h¹o 9d+ù.%ÝXÝ\™YÛX^ØÛÛÜ™[˜]WÙÜ›Ý\ÏL;ï#9¬¨y§"yo.¹b-ˆÚ[™ÛKX›Þ8à “SÕŒLËÎ»ï"Mˆ9.*ˆRSˆ\œÛÛˆ›Þ\ûï"yd£SÕŒLKÌLûï"È9.*»ï"yd!9ï%¹è y. 9«({ï#9k¦9¥®H\œÙ\ˆ9gaù h¹i#HH9.*¹d"9¬åy¨a»ï#9/aˆ[ÕLH9cë9fç¹gaù..ˆ8à ¹ª(yg¢ùg*9ë+9. 9.*ˆ›ÞÙ[™˜9îäù§gûï#:+í9¦#¹ab9bcHØ]\Ø[9cey¨a¹ã¬:,hy.gùkf9g*9.£¹k¦9¥®y­íùd"H:-ëùo¡;ï&ú/æy.#y¦+ú )¹d"9¥-¹æâ»ï#9.gù.#y¦+È˜XÚÚ[™È9£!ù¨!øà ¹."ù. 9«iy¢¢¹£ y.az.ªù.ïyâ­¹  y£ä¹aiyd#9. 9k¦9¥®HH›Û\ØÛX[ˆÝ™X[{ï#9nm¹g*9k£9¥mÜ›Ý[™[ž][™È[œÝÙ\ˆ9d"9d#9."ú+«yîàùd£:+á9­bøà º+ày£k»ï&˜ØÜËÑÔ“ÕS‘‘U—ÐÓÕTQÔTÑWÐ×Ô‘PSÑÌ—ÓÑ‘’PÒPSÑWÑS”ÑWÔÕTMÌÌŒŒLŒK›Y;ï#™XÙZ\9/cy.£ˆÙ]L‹Ý\Ù\‹ÓØØ]SSÕÑÜ›Ý[™‘U‹ÛÝ]]ËÙÜ›Ý[™™]‹ØÛÝ\YÜ\ÙWØ×Ü™X[ÙÌ—ÛÙ™šXÚX[ÙWÙ[œÙWÜÝ\MÌÝŒKÜ™XÙZ\šœÛÛ˜8à ‚‚‚‚‚ˆÈÈŒ‹LLLŒH8 %ÌˆÛX[ˆÚXÚÜÚ[Ý\M]Y]YÛˆÔB‚•H›ÝXÝY^XÝ[Û˜ÙHÛË\˜[šÈÌˆ[ˆÜ›ÝHY\\‹\Ý\Mœ
+ÒKLMˆØ™ŒMŒMØM™XØØŒLXMÍÙŒ˜ÙX™ÎYMÎYLÙÎMLØØÎÌM˜LYÙYŒÍÌYX
+H[™]\ÝÝ˜Z[š[™×ÜÝ]Kœ
+ÒKLMˆØ˜™™XÙ™X˜MÎY™ŒŒ™ÌNLXÙÙY™YYLÍLÌYYÌÎŒÌÙ˜˜YMÎ
+Kˆ›ÝØYÛˆÔHÚ]^XÚ]ÙZYÚ×ÛÛ›OQ˜[ÙX™\ÜÝ\MÛÜ›Ú^™H‹^XÝ[Û˜ÙHÛÛ˜XÝ™YÚ\Ý\™YX[šY™\ÝÒKÜ[Z^™\‹ÜØÚY[\‹Ô“‘ÈÝ]H[™ÙYYŒŒLNKˆH]™[Ý™X[H\È]Ý\MŒHÚ]š[š]HÜÜËÙÜ˜YY[ÛY[[ÜžNÈš[˜[™XÙZ\[™\›Z[˜[Y\\ˆ™[XZ[ˆXœÙ[ÛÈ\[™[]Y]Y\ÈÝ^HØ]Yˆ\È\ÈÚXÚÜÚ[Ü™XÛÝ™\žH[™˜Z[š[™ËZX[]šY[˜ÙHÛ›Kˆ]šY[˜ÙNˆØÜËÑÔ“ÕS‘‘U‹ÑÌ—ÐÒPÒÔÒS•Ô“ÑÔ‘TÔ×ÌŒŒLŒWÔÕTMžÚœÛÛ‹YX‚‚ˆÈÈŒ‹LLLŒH8 %ÌˆÛX[ˆÚXÚÜÚ[Ý\LÍL]Y]YÛˆÔB‚•H›ÝXÝY^XÝ[Û˜ÙHÛË\˜[šÈÌˆ[ˆ™XXÚYÝ\LËLÌNŒØ[™Ü›ÝHY\\‹\Ý\LÍLœ
+ÒKLMˆMÙNLÎLYÍÍXÙ™XŒØÍÍXMNX™ŒÍ™ŽXMŒ™LŒÌLÌ™ŒÍ˜ÎY™LLÌØÍÌ
+H\È]\ÝÝ˜Z[š[™×ÜÝ]Kœ
+ÒKLMˆØLØNXMLY™ŒYM˜ŽŒÙMMÙXYÎNX™XÍLXXŒ™YXŒNXÍ™YŽMŒ˜Ø
+Kˆ›ÝÙ\™HØYYÝXØÙ\ÜÙ[HÛˆÔHÚ]^XÚ]\ÝYXÚXÚÜÚ[ÙZYÚ×ÛÛ›OQ˜[ÙXÈH[š]X[UÜ˜Ú‹ˆY˜][ÙZYÚ×ÛÛ›OUYX™Y\Ø[Ø\ÈH˜[Y][Û‹]ÛÛ\ÜÝYK›ÝHÚXÚÜÚ[˜Z[\™KˆÝ\ÛÜ›Ú^™K^XÝ[Û˜ÙHÛÛ˜XÝ[™ÛX[ˆRSˆX[šY™\ÝÒHX]ÚˆHš[˜[™XÙZ\[™\›Z[˜[Y\\ˆ™[XZ[ˆXœÙ[ÛÈÝÛœÝ™X[HØ]\ÈÝ^HÛÜÙYˆ\È\ÈÚXÚÜÚ[Ü™XÛÝ™\žH]šY[˜ÙHÛ›K›ÝHY]šXÈÛZ[Kˆ]šY[˜ÙNˆØÜËÑÔ“ÕS‘‘U‹ÑÌ—ÐÒPÒÔÒS•Ô“ÑÔ‘TÔ×ÌŒŒLŒWÔÕTLÍLžÚœÛÛ‹YX‚‚ˆÈÈŒ‹LLLŒH8 %ÌˆÛX[ˆ]™H›ÙÜ™\ÜÈ]Ý\LÌÍŒB‚•H›ÝXÝYÛË\˜[šÈÌˆÛX[ˆ]™[Ý™X[HY˜[˜ÙYÈLËÍŒKÌNŒØ]Œ‹LLLŒHÎŒÍNŒÈ
+ÌˆH]\ÝÜÜÈ
+ŒLŽMÌŒ
+KÜ˜YY[›Ü›H
+LKMÎM
+H[™XZÈ]™[Y[[ÜžH
+L‹ŽŽÈÚP˜
+H\™Hš[š]NÈHÛ›ÝÛˆ\™[Q™[XZ[œÈ]™HÛˆÔ\ÈËÍKˆš[˜[Ü™XÙZ\šœÛÛ˜[™Y\\—Ü›Ú™XÝÜ—Ùš[˜[œ\™HÝ[XœÙ[ÛÈÌK˜]]™HSËÓÕ“SÕ›Ú[š[™Ë™YK]\ÚÈÛ™R™]ˆÜ[Z^˜][Ûˆ[™[™\[™[[[Ý]]˜[X][Ûˆ™[XZ[ˆØ]Yˆ\È\È˜Z[š[™ËZX[]šY[˜ÙHÛ›H[™XZÙ\È›ÈÌˆY]šXÈÛZ[Kˆ]šY[˜ÙNˆØÜËÑÔ“ÕS‘‘U‹ÑÌ—Ô“ÑÔ‘TÔ×ÓU‘WÌŒŒLŒWÔÕTLÌÍŒKžÚœÛÛ‹YX‚‚ˆÈÈŒ‹LLLŒH8 %Ìˆ]™[Z[YÜš]H]Y]›ÝYÚÝ\LL‚‹H™XYH›Ü›X[]™[ÙÈÚ]Ý][\š[™ÈH˜Z[™\‹ˆHÛÛ\]Y]Y]ˆÝ]Ù™ˆÛÛZ[™YL‹L[š\]YKÛÛYÝ[Ý\ÈÝ\Èœ›ÛHH›ÝYÚL‹LˆÚ]™\›ÈZ\ÜÚ[™ÈQÈ[™™\›È›Û‹Yš[š]H˜[Y\ÈXÜ›ÜÜÈH™XÛÜ™YÜÜËˆÜ˜YY[Y[[ÜžH[™X\›š[™Ë\˜]HšY[Ë‚‹HÙ[K\Ú^^XÚ]ÚXÚÜÚ[]™[ÈÙ\™H™\Ù[›ÝYÚH\˜X›BˆÝ\LLLÚXÚÜÚ[Èš[˜[Ü™XÙZ\šœÛÛ˜™[XZ[™YXœÙ[ˆH]™HÙÂˆ[ˆY˜[˜ÙYÈÝ\LLHÚ]š[š]HÜÜËÙÜ˜YY[˜[Y\Ë‚‹HXÚ\Ú[ÛŽˆ™\Ù\™HHÝ\œ™[ÛË\˜[šÈ[ˆ[™]È™XÛÝ™\žHÝ]Kˆ\È\Âˆ[Y\šXËÜ™\Ý[XXš[]H]šY[˜ÙK›ÝH\™›Ü›X[˜ÙHÛZ[K‚‹H]šY[˜ÙNˆØÜËÑÔ“ÕS‘‘U‹ÑÌ—ÑU‘S•ÒS•QÔ’UWÐUQUÌŒŒLŒWÔÕTLL›Y‚‚ˆÈÈŒ‹LLLŒH8 %ÝÛœÝ™X[H][˜ÚYØ]H]Y]‚‹H™XYHš]™HÌ‹Y\[™[[ž\Ú[È[™ÛÛ™š\›YYZ\ˆ^XÝ\›Z[˜[ˆÛÛ˜XÝˆÝ]\ÈÌ—ÑVPÕÐÓÕ‘TQÑWÕRS’S‘×ÐÓÓTUXÝ\NÌŒØ[™ˆÛX[ˆX[šY™\ÝÒHŽLNXx )Œ™MÌXÈH[™H^Ü\ˆ[ÛÈ™\]Z\™\ÈBˆ\›Z[˜[Y\\ˆš[K‚‹HÛÛ™š\›YYY\Õ˜XÚÈ\È[[[Û˜[H[™\[™[ÙˆÌˆ˜Z[š[™È[™™[XZ[œÂˆØ]YžH™X[ÔMÈ^Û\Ú]š]H[™]È˜]]™HÜ]ÛÈ]Ø[››ÝÚ[[Bˆ˜[˜XÚÈÈHÔH[ØÚË‚‹H›ÈØ]HY™XÝÜˆ™[X]\™H][˜ÚØ\È›Ý[™ˆHÝ]XÈ]Y]Ú[™ÙY›Âˆ[[YHÝ]H[™›È™[˜ÚX\šÈÛZ[Kˆ]šY[˜ÙN‚ˆØÜËÑÔ“ÕS‘‘U‹ÑÕÓ”Õ‘PSWÑÐUWÐUQUÌŒŒLŒK›Y‚‚ˆÈÈŒ‹LLLŒH8 %Ü›Ý[™‘UˆÌˆÝ\LLˆ›ÙÜ™\ÜÈÛ˜\ÚÝ‚‹H]šY[˜ÙNˆH›Ü›X[]™[ÙÈ™XXÚYÝ\L‹ÌNŒØ]ˆŒ‹LLLŒHNŒMÎŒˆ
+ÌŒÚ]š[š]HÜÜÈŒMÌÍNÌÎLNÎÌM[™ˆš[š]HÜ˜YY[›Ü›HLŒÍMÌLÎMX‚‹HØ]HÝ]Nˆš[˜[Ü™XÙZ\šœÛÛ˜\ÈXœÙ[ˆÌK\Þ[Y[[™Kˆ[™\[™[[[Ý]˜]]™HSÈ[™Y\Õ˜XÚÈÝÛ™\œÈ™[XZ[ˆ[]™H[ˆZ\‚ˆ™YÚ\Ý\™YØZ][™ÈÝ]\ÎÈ›ÈÝÛœÝ™X[HY]šXÈÜˆÜ[Z^™\ˆ\]H\ÂˆÛZ[YY‚‹HXÚ\Ú[ÛŽˆÛÛ[YH›ÝXÝ[™ÈHÛË\˜[šÈÌˆ[ˆÛˆ\ÚXØ[Ô\ÈËÍH[™ˆ™\Ù\™H[ÚXÚÜÚ[È[™\ÝÜšXØ[Ì‹TÝ]]Ë‚‹H›Ý[™\žNˆ\È\È[[YH]šY[˜ÙK›ÝHSÕÔ“SÕÓÕ“SÕ\™›Ü›X[˜ÙH™\Ý[‚ˆÙYHØÜËÑÔ“ÕS‘‘U‹ÔÕUT×ÔÓTÒÕÌŒŒLŒWÑÌ—ÔÕTL‹›Y‚‚ˆÈÈŒ‹LLLŒH8 %Ü›Ý[™‘UˆÌˆÝ\LLŒÌÈ›ÙÜ™\ÜÈÛ˜\ÚÝ‚‹H]šY[˜ÙNˆH›Ü›X[]™[ÙÈY˜[˜ÙYÈÝ\LŒÌËÌNŒØ]ˆŒ‹LLLŒHNŒMNŒNH
+ÌŒÚ]š[š]HÜÜÈŒŽÍÍMŽLMMÌNØš[š]BˆÜ˜YY[›Ü›HLŒŒÎMÍÍMMÍLÎX[™XZÈY[[ÜžHL‹ŽŽHÚP˜‚‹HØ]HÝ]Nˆš[˜[Ü™XÙZ\šœÛÛ˜\ÈÝ[XœÙ[ˆÌK\Þ[Y[[™Kˆ[™\[™[[[Ý]˜]]™HSÈ[™Y\Õ˜XÚÈÝÛ™\œÈ™[XZ[ˆ[]™H][‚ˆZ\ˆ™YÚ\Ý\™YØZ][™ÈÝ]\ÎÈ›ÈÝÛœÝ™X[HÜ[Z^™\ˆ\]HÜˆY]šXÈ\ÂˆÛZ[YY‚‹HXÚ\Ú[ÛŽˆÛÛ[YH›ÝXÝ[™ÈHÛË\˜[šÈÌˆ[ˆÛˆ\ÚXØ[Ô\ÈËÍH[™ˆ™\Ù\™H[ÚXÚÜÚ[È[™\ÝÜšXØ[Ì‹T™\Ý[Ë‚‹H›Ý[™\žNˆ\È\È[[YH]šY[˜ÙK›ÝHSÕÔ“SÕÓÕ“SÕ\™›Ü›X[˜ÙH™\Ý[‚ˆÙYHØÜËÑÔ“ÕS‘‘U‹ÔÕUT×ÔÓTÒÕÌŒŒLŒWÑÌ—ÔÕTLŒÌË›Y‚‚ˆÈÈŒ‹LLLŒH8 %Ü›Ý[™‘UˆÌˆÝ\LLŒLÈ›ÙÜ™\ÜÈÛ˜\ÚÝ‚‹H\Ý\Ú\ËØÛÛ˜XÝˆ™\Ù\™HH›Ü›X[ÛË\˜[šÈÌˆÛX[ˆ[ˆ[™Ü[ˆ[ˆ\[™[ÌK\Þ[Y[X[™K[[Ý]˜]]™KUSÈ[™Y\Õ˜XÚÈØ]\ÈÛ›BˆY\ˆH^XÝ\›Z[˜[™XÙZ\‚‹H]šY[˜ÙNˆH]]Üš]]]™H]™[ÙÈ™XXÚYÝ\LŒLËÌNŒØÚ]ˆš[š]HÜÜÈŒŒŒLMÌÍLXÈY\\‹\Ý\LLœ[™ˆ]\ÝÝ˜Z[š[™×ÜÝ]Kœ\™H™\Ù[Ú[Hš[˜[Ü™XÙZ\šœÛÛ˜\ÈXœÙ[‚‹HXÚ\Ú[ÛŽˆ™]Z[ˆH]™H[ˆ[™[ØZ][™ÈÝÛ™\œËˆ›ÈÝÛœÝ™X[HÜ[Z^™\‹ˆ]˜[X][Û‹X™[›Û[Ý[Û‹Üˆ\ÝÜšXØ[Ì‹TÝ™\Üš]HØ\È\™›Ü›YY‚‹H›Ý[™\žNˆ\È\ÈH[[YH›ÙÜ™\ÜÈ™XÛÜ™›ÝHSÕÔ“SÕÓÕ“SÕY]šXÈÜ‚ˆHÛZ[H]Hš[˜[Ìˆ]XÝÜˆ^\ÝËˆÙYBˆØÜËÑÔ“ÕS‘‘U‹ÔÕUT×ÔÓTÒÕÌŒŒLŒWÑÌ—ÔÕTLŒLË›Y‚‚ˆÈÈŒ‹LLLH8 %]\ÝŒH™\ÝÜ˜][ÛˆÛÛ\]Y‚‹H\Ý\Ú\Îˆ™\ÝÜ™HÛ›HH™]Ù\ÝŒH^XÝ][Ûˆ›Ý[™\žH[™]ÈYØ[ˆX›XËY]KÜ[[YH[œ]ÈÛˆÙ]L‹Ý\Ù\‹ÓØØ]SSÕÈÈ›Ý™][™]ˆ[˜]˜Z[X›HŽKÓQKÔŒH^[ØYÈÙ\™H™\›ÙXÙY‚‹H™\ÝÜ™YˆÙ™šXÚX[ÒUH˜Z[š[™È[XYÙ\Ë™Y™\‹RÒUHŒK™Y™\‹RÒUHŒ‹ˆSQ]XÝ[ÛˆËŒËŒÑÜ›Ý[™[™ÑS“Ë‘T•[™H\™XÝŒHÛÝ\˜ÙH\[™[˜ÞBˆ[Ù[\ËˆŒH]Y]\ÈÛÛ\]KˆŒˆ\ÈMMÈYØ[^™\ÜÚ[Û‹Yœ˜[YH\™Ù]ˆ™Y™\™[˜Ù\È
+LH™\X]Y\ÚXØ[šY[ËÙœ˜[YKÒQZ\œÊHÚ[[™ÈÈQÂˆXœÙ[œ›ÛHÛÜœ™XÝYX™[ÎÈZ\ÜÚ[™Èœ˜[Y\È\™H™\›Ë[™H[›ÛX[H\Âˆ™]Z[™Y›ÜˆH™^Y\\ˆ[œÝXYÙˆÚ[[Hš[\™YˆH™]ÈX›XÂˆ]Y\žHX[šY™\Ý™XÛÜ™È]™\žHY™™XÝY›ÝË‚‹H[[YH]šY[˜ÙNˆÜ›Ý[™[™ÑS“ÈØYÈHÒK]™\šYšYYÙ™šXÚX[ÚXÚÜÚ[ˆÚ]MÌ‹MÍËŽLÈœ›Þ™[ˆ\˜[Y]\œÎÈÛ™H™X[ÒUHœ˜[YKÙ^™\ÜÚ[ÛˆÔBˆ[™™\™[˜ÙH™]\›™YÌš[š]HØ[™Y]H›Þ\È[™š[š]HØÛÜ™\ËˆŒH[\ÜÂˆ[™ÛÛ\[HÚXÚÜÈ\ÜÈY\ˆ]ZYÜ˜][Û‹ˆHØY™HÛÝ\˜ÙHØY\ˆ[ÛÂˆ™XYÈ[ÎMÈYØ[ŒKÕŒˆ^™\ÜÚ[Ûˆ™XÛÜ™Èœ›ÛHH™\ÝÜ™Yˆ\‹Y^™\ÜÚ[Ûˆ^[Ý]Ú]Ý]Ü[š[™ÈÙ™šXÚX[Y]˜[X][ÛˆšY[ÜË‚‹H˜Z[\™KÛ[Z]ˆ\ÝÜšXØ[ŒHÚXÚÜÚ[ËŽH˜[šË[œÙH[™^\Ëˆ[™ÝXYÙKÝš\ÝX[Ø[YÛ™YØXÚ\È[™š^YX[šY™\Ý\™H[˜]˜Z[X›Kˆ›ÈÛˆÕHÜˆØÛÜ™H\ÈÛZ[YY\È™\›ÙXÙYÈHÛŒHÚYXØ\ˆ\È›Ý^[™YˆÚ]™\ÚÛÛ^Y\‹ÛX\›š[™Ë\˜]HÝÙY\Ë‚‹H™^XÝ[ÛŽˆÛÛœÝXÝH™]ÈYØ[X›XËY]HX[šY™\ÝÚ[™^[™[ˆBˆœ™\ÚHÙ[™\˜]YØ[™Y]H˜[šÈ™Y›Ü™H[žH™]ÈÛÜœ™\ÜÛ™[˜ÙH˜Z[š[™Ë‚ˆHX[šY™\Ý\È›ÝÈÛÛ\]KˆH\›ÝÈZYÚ[Yœ˜[YHÜ›Ý[™[™ÑS“È›Ø™Bˆ›Ý[™YX[ˆ™\Ý[ÕHŒÌN[ÕPŒHNX[ÕPLŒMŒØ[™YX[ˆ™\ÝˆØÛÜ™HŒLØÝ™\ˆLŒÈ\™Ù]›Þ\ÎÈHœ˜[YK^™\›È][\\È™\Ù\™Y\ÂˆHÙ\\˜]H\Y˜XÝˆ\ÈÝ\ÜÈH™]È˜[šÈ]Y]]\È›Ý[ˆ“SÕˆØÛÜ™KˆÙ™šXÚX[Y]˜[X][ÛˆšY[ÜÈ™[XZ[ˆ[œ™XY‚‚ˆÈÈŒ‹LLNHÝYÙHLH8 %Õ“SÕ[\Ü˜[Ù]YË]˜XÚÈ
+ÈÒUHœ›ÛY[™‚‹H\Ý\Ú\Îˆ[›X]ÚYH]XÝ[ÛœÈÛˆ^[™YSË]˜Z[ˆÕ“SÕˆÝ™X[H]\Ý™XÙZ]™HYÚ\™XÚ\Ú[Ûˆ[\Ü˜[Ù]YË]˜XÚÈÝ\\š\Ú[Û‚ˆ[œÝXYÙˆ™]™\žH]XÝ[Ûˆ\È‘UÈŽÈÒUH“SÕ]ˆŒIH\ÈBˆØ[™Y]Hœ›ÛY[™›Ø›[Kš^X›HÚ]Ø]YÛÜžHÚ][\Ý
+È“TÈ
+Âˆ]Y\žKXÛÛ™][Û™YÓTÜZË‚‹H[\[Y[][ÛŽ‚ˆHÙ]YË]˜XÚÈÙ[™\˜]Üˆ
+›ÜØ\™
+È˜XÚÝØ\™ÞXÛHÛÛœÚ\Ý[˜ÞKˆ\X\˜[˜ÙKÛ[Ý[Û‹ØØ]YÛÜžHš[\œËÛÛ™šY[˜ÙHØ][™ÊH›Üˆ[LˆSÈ˜Z[ˆšY[ÜÎÈÚYXØ\œÈ[ˆÝ]]ËÛLKÙ]KÜÙ]Y×Ý˜XÚÜØ‚ˆHÛ\ÜËPHÕ\Ü˜YYœ›ÛHËUSÈ˜\ÙHH[ÕHÈ˜\ÙWØ[™Û›Ý™[ˆŒÈ[ÕH
+ŒL	HOˆŒŽ	HÛÝ™\˜YÙJK‚ˆH˜Z[™\Žˆ›×Ý[›X]ÚYÛ™]ËÛÛ™šY[˜ÙK]ÙZYÚYY[]KÜ™[]˜[˜ÙBˆÜÜÙ\ËÙ]YÈYÈ[ˆHØ[YHÛÝÛY™XÞXÛHXXÚ[™\žK‚ˆHÒUNˆÚ][\Ý
+ÈÜ›ÜÜËS“TÈ
+ÈÜLÌOˆŒMKŒÈØ[™ËÙœ˜[YH
+Ø\ÈL
+NÂˆÓTÜLLˆØ[Xœ˜][ÛŽˆ]Y\žH™XÚ\Ú[ÛˆLŒ‰K\™Ù]™XØ[IK‚‹H]X[]NˆÙ]YÈØ[YKRQ™XÚ\Ú[ÛˆNKŒ‰H
+]šY[È]Y]\™Ù]L	JNÂˆÞXÛH\ÜÈŽNMÎÈ‘UÈ˜]HŒLLœÈLÛÛ\ÙHŒKŒ‚‹H[›š[™ÎˆQÔH™\Z\ˆ˜Z[š[™È
+œ›ÛHK[Ý›[Ý‹NËÜÝ\
+Kˆ™\Z\™YRÒUH]˜[
+K[Ý›[ÝÚÜ
+KL]šY[ÈÕ“SÕÝ™\‹Xš\ˆ˜\Ù[[™Nˆ[š\]YKÜ›ÝÜÈŒŒLH
+JK™]\ÙYQÈË‚‹H[™[™ÎˆÝ\MÌÕ“SÕ]ZXÚÈ]˜[[SÈUKÒUH˜XÚÑ]˜[ˆLˆ›Û\ÙYY[™Ë‚‚ˆÈÈŒ‹LLŒÛÛ[YY‚‹HÝËSˆÛÛ[X][Ûˆ
+LOŒLLŸ™KMŠNˆ“SÕQ[˜ÙHÌ‹HO‚ˆÍŒHÕNÈÜ™[˜\žHXXÜ›ÈMHOˆLˆÕ“SÕ[UHÛ‚ˆÌLZÈ[›š[™Ë‚‹Hœ™\Ú[Ü[Z^™\ˆ˜[[˜ÙH[ˆ
+Ü›[ÝKÜÛÝ›[ÝŒŒ
+H‘R‘PÕQ]ˆÝ\L
+“SÕÌ‹ŒˆÈÜ™[˜\žHŒÊK‚‹HLˆœ›Þ™[ˆ›Û\\ÙYYY
+U’TÈŒMËL][K[Øš™XÝšY[ÜÊN‚ˆX\ÚËÜÚ[ˆ›Þ›ÜˆY[]H›Ø\Ý™\ÜÎÈ›Ú[š[™K][™H›Ýˆ][˜ÚY
+Z^YÚYÛ˜[
+Kˆ[™œ˜\ÝXÝ\™HÛÛ\]K‚‚ˆÈÈŒ‹LKLÝYÙH8 %“SÕX]Ø\™HÜ›Ý[™[™ÑS“ÈÔHY\][Û‚‚‹H\Ý\Ú\ÎˆH™\›ËZ[š]X[^™Y˜[šËLM‹Ø[KLÌˆÔHÛˆHš[˜[ÛÂˆÜ›Ý[™[™ÑS“È\Ú[Ûˆ^Y\œÈ[™XÛÙ\ˆ^Y\ˆÚ]Hœ›Þ™[ˆ‹ÓÂˆÚYXØ\ˆ[™Ø]\Ø[\ÝÜžKÛÝ[[\›Ý™H[[Ý]\™Ù]X˜YÈ[™ˆ^™\ÜÚ[Û‹]ËXØ[™Y]HÛÜœ™\ÜÛ™[˜ÙHÚ]Ý]Ú[™Ú[™ÈHŽH˜[šË‚‹HÛÛ˜XÝˆX™[Yœ™YK\ÝšX]Y[™[\Ü˜[™YÜ™\ÜÚ[ÛœÈ\ÜÙYÈ[ˆŒKÕŒˆš]\ÙYÙYYŒŒŽX\ØÚË‹Ü[Z^™\ˆÝ\ËÛÜ›ˆY™™XÝ]™HÜ›Ý\˜]Ú[™Œ]™[ˆÚXÚÜÚ[ËˆØØ[SPÕˆ™\]Z\™Y”Ì‚ˆ˜]\ˆ[ˆH™YÚ\Ý\™Y‘ŒMˆ]]ØØ\ÝˆØ[™Y]H[][Û‹Ý[˜Ø][ÛˆØ\Âˆ˜[ÙH[™[œ›Þ™[‹X˜\ÙKÓÔHÜ˜YY[[™™[ØYÚXÚÜÈ\ÜÙY‚‹H]Žˆ[ŒÚXÚÜÚ[ÈÙ\™HØÛÜ™YÛˆLÎšY[ËY\Ú›Ú[Ü›Ý\ÎÈHš^YˆÙ[XÝ[ÛˆÚÜÙH\ØÚŒÔ[Hˆ™Y›Ü™Hš^Y˜[Y][Û‹ˆÚXÚÜÚ[ÒH\ÂˆÌLÌŒMÙ˜NMÎÙLMX˜ŽLÙLŒÌNXŒÙY˜Ù˜Ž™ØŒY˜ÍLŒ™ŒLMMLÎ‚‹Hš^YÙ[X[XÈ˜[Y][ÛŽˆ[[]]X›HŽHØ\Âˆ™XØ[KÌÌÌÌÌÌË™XÚ\Ú[ÛKŒÌNK”Ùœ˜[YOLLŒLKˆ™YÜÜÚ]]™ONŽÌÌË\™KŽLMË][OKŽNMˆØ[™Y]K[Û›BˆØ\È™XØ[KNLÍM™XÚ\Ú[ÛKŒNÌN‹”Ùœ˜[YOL‹MËˆ™YÜÜÚ]]™OL‹ŒŽLË\™KŽŒMLÎ][OKŒÌÌÌÌÌÌØÈš[˜[[HˆØ\Âˆ™XØ[KŒNLÍM™XÚ\Ú[ÛKŒLÍŒÍŒÍ‹”Ùœ˜[YOLKNÌËˆ™YÜÜÚ]]™OLKNM\™KŽŒMLÎ][OKŒMØÚ][\H˜]BˆMMØ[™[˜XÝ]™H˜[ÙHXØÙ\[˜ÙHXˆHÙ[X[XÈØ]H˜Z[YÛ‚ˆ™XØ[[™][K\ÜÚ]]™H™\Ù\˜][ÛŽÈHÝÙ\ˆ›Û[YH\È›ÝHš^‚‹H[\›˜[˜XÚÑ]˜[ˆÙ[XÝY[Hˆ›ÙXÙYÕH‹ŒLM
+ŒJH[™ˆŒŒŒÎ˜
+ŒŠK™[ÝÈˆŽKŒMŒËÌŒKØ[™ËPBˆŽMÍL‹ÌŒ‹ŒLÌˆ›ÈØÜ™Y[š[™ÈÜˆÙ™šXÚX[]\ÝX™[ÈÙ\™H™XY‚‹H™\Ù\™Y˜Z[\™\ËÙš^\Îˆš\œÝ›Ü›X[Ø]\Ø[ZÙ^HšYÜ\œÙHÙ\Z[™›ËˆY\™ÙK]šXÙK[™ØÛÜ™K\Ú\H™]šY\È™[XZ[ˆ[ˆ™]È\™XÝÜšY\ÈÚ]Z\‚ˆ›Ý™[˜[˜ÙNÈ›ÈÛ˜[šËØÚXÚÜÚ[Ü›ÙXÝ[Ûˆ[ž\Ú[Ø\ÈÝ™\Üš][‹‚‹HÝ]\ÎˆÕÔQÔS‘S‘×ÔÕTT•’TÓÔ—Ô‘U’QUØÈ›ÈÛ™ÈÛÛ[X][Û‹ˆØÜ™Y[š[™ËÙ™šXÚX[\Ý˜XÚÑ]˜[™^[Û™[\›˜[˜[Y][Û‹Ü‚ˆÜ™[˜\žHSÕÓÕ“SÕÚ[™ÙH\È]]Üš^™Yˆ[š\]YH™^XÝ[Ûˆ\ÈÝ\\š\ÛÜ‚ˆ™]šY]ÈÙˆÛ™H™]È“SÕÛÜœ™\ÜÛ™[˜ÙKÜ›ÜÜØ[\ÚYÛ‹‚‚ˆÈÈŒ‹LKLHÝYÙHÈ8 %ÛÜœ™XÝYØ[™Y]K]œËS•S™\^B‚‹H\Ý\Ú\ÎˆHš[ÜˆÙ[X[XÈ˜Z[\™HX^H[˜ÛYH[ˆ[\[Y[][Û‚ˆ\œ›Üˆ[ˆHØ[™Y]K]œËS•SØ]KˆÛÜœ™XÝY[Z\ÜÚ[Ûˆ\ÂˆØ[™Y]WÙ[™\™ÞHHØ[™Y]WÝ™\ÚÛS‘ˆØ[™Y]WÙ[™\™ÞK[[ÛÙÚ]H[ÛX\™Ú[˜S‘ˆ™\Ù[˜ÙWÛÙÚ]H™\Ù[˜ÙWÝ™\ÚÛÈØ[™Y]K[Û›H\Ù\ÈÛ›HHš\œÝˆÛÛ™][Û‹ˆ›È˜Z[š[™Ë˜XÚÝØ\™Ü[Z^™\‹ÚXÚÜÚ[\]K˜[šÂˆÚ[™ÙKÜZËÓ“TÈÜˆ•SÝ\™\ÜÚ[ÛˆØ\È\™›Ü›YY‚‹H[\[Y[][ÛŽˆ™Yš][Œ]™[ˆÚXÚÜÚ[ÈÛˆH™YÚ\Ý\™Y‹Ô‹ÔˆÜšYË™\^YYHÛÜœ™XÝYÚÜ\Ý
+\ØÚÈÌŒÍÌÌÍ
+HÝ™\ˆÛÛ\]BˆŒKÕŒˆ]ˆšY[Ë˜[ˆHÛÜœ™XÝY[\›˜[˜XÚÑ]˜[X]š^œ›Þ™H\ØÚˆÌ[Hˆ™Y›Ü™Hš^Y˜[Y][Û‹[™˜[ˆHš^YM‹XØ[Xœ˜][Û‹Âˆ]˜[Y][Ûˆ™\^KˆHš\œÝ˜XÚÑ]˜[›Ý™[˜[˜ÙH[X\È˜Z[\™HØ\Âˆ™\Ù\™YÈHZ[š[X[ØÛÜWÚÙ^KÙ[ÝšY[Ø[X\Èš^Ø\È\ÚY[‚ˆÍXMŽX[™HÛÜœ™XÝYX]š^\È][\‹‚‹H™\Ý[ˆÈÛÜœ™XÝYš[˜[Ûˆ˜[Y][ÛˆØ\Âˆ™XØ[KŒÍMÎK™XÚ\Ú[ÛKŒŒÍMË”Ùœ˜[YOLKÍKˆ™YÜÜÚ]]™OLKÌMË\™KŽŒMM][OKŒÌMMM‹ˆ[\OKŒÍÍK[˜XÝ]™KQOKØˆ[[]]X›HŽH™[XZ[œÂˆÌÌÌÌÌËËŒÌNKÌLŒLKÎŽÌÌËËŽLMËËŽNM›Ü‚ˆ™XØ[Ü™XÚ\Ú[Û‹Ñ”Ü™Y\ÜÚ]]™KÚ\™Û][KˆØ[™Y]K[Û›H™XØ[Ø\ÂˆNLÍMXÈHÛÜœ™XÝY•SÛÛ\\š\ÛÛˆ™[[Ý™YY][Û˜[ÜÚ]]™\Ë‚‹H[\›˜[]ˆ˜XÚÑ]˜[›ÜˆHœ›Þ™[ˆ\ØÚÌÔ[HˆØ\ÈŒBˆÕKÑ]KÐ\ÜÐHŒŽMŒMKËŒŒMÌ‹ËÌ˜[™Œ‚ˆŒMŽ‹ËŒMMŒŒ‹ËLNLÎÈ\ÙH\™H]‹[Û›K›ÝØÜ™Y[š[™ÈÜˆÙ™šXÚX[ˆ™\Ý[ËˆHÙ[X[XÈØ]H˜Z[YÛˆ™XØ[[™][K\ÜÚ]]™H™XØ[‚‹H›ÛÝØ]\ÙNˆ^\Ý[™ÈØ[™Y]HØÛÜ™\È]™H\ÙY[]™\˜YÙHZ\Ú\ÙH˜[šÚ[™Ëˆ]HÝÙ\Ý\ØÛÜš[™ÈÜÚ]]™\È[ˆ][K]\™Ù]˜YÜÈÈ›ÝÝ\š]™HBˆš^Y[Z\ÜÚ[Ûˆ›Ý[™\žNÈŒˆ\ÈÛÜœÙKˆ\È\ÈHÛÜœ™\ÜÛ™[˜ÙH[™ˆ][K\ÜÚ]]™H™XØ[˜Z[\™K›ÝH[š]™\œØ[•SXXØÙ\[˜ÙKˆÛÝ™\˜YÙKš[š]KÜ™[ØYÜˆ[\[Y[][Û‹\Û[ÚÙH˜Z[\™K‚‹H™\Ù\™YÝ]]ÎˆÛÜœ™XÝY™\^KÛÈ˜XÚÑ]˜[][\Ëœ›Þ™[‚ˆÙ[XÝ[Û‹š^YÙ[X[XÈ”ÓÓ‹ÙØ]K[™Ù™›[™Hx $ÒHXYÛ›ÜÚ\È[™\‚ˆÝ]]ËÛËØˆÛÙHØ\È\ÚYÈœ˜[˜ÚˆÛÙ^ÛËXØ[™Y]K[[XÛÜœ™XÝY\™\^KLŒŒLX]NYŒ˜‚‹HÝ]\ÎˆÕÔQÔS‘S‘×ÔÕTT•’TÓÔ—Ô‘U’QUØˆ›ÈØÜ™Y[š[™ËÛÙ™šXÚX[]\ÝˆX™[ËÕHÛZ[H™^[Û™[\›˜[]ˆ˜XÚÑ]˜[Ü™[˜\žHSÕÓÕ“SÕÕSÂˆÚ[™ÙKÜˆ™]ÈÈ˜Z[š[™ÈØ\È[‹ˆHÛ›H™^XÝ[Ûˆ\ÈHÚ[™ÛBˆÝ\\š\ÛÜˆ\›Ý˜[™\]Y\Ý[ˆ™\ÜËÛËÓ‘VÕTÕÐT“ÕSÔ‘TUQTÕ›Y‚‚ˆÈÈŒ‹LKLˆ8 %È™XÛÝ™\˜X›HÝÜ˜YÙHÛX[\‚‹HÚ[HH]]Üš^™Y™\›Ë]˜Z[š[™ÈÈš[˜[Z[\›˜[™\^HØ\È[›š[™Ëˆ]ÈÜ[ˆ]ÈÙ\™HÚXÚÙYˆ™YHÝ\\œÙYYH[\›YYX]HÔBˆÚXÚÜÚ[\™XÝÜšY\È
+Ý]]ËÛWØËØÚXÚÜÚ[ËÛÜ˜KØÚXÚÜÚ[LLÌŒÌÌˆX›Ý]ŒÈXXÚ
+HÙ\™H›ÝÜ[ˆžH[žH›ØÙ\ÜÈ[™Ù\™H[Ý™Y›Ý[]YˆÈÙ]L‹Ý\Ü—Ù›Ü—ÙXY[™KÛØØ][[ÝØÛX[\ÌŒŒL‹Ø‚‹Hœ›Þ™[ˆ˜[šÜË›Ü›X[™\ÜËÝ\œ™[\ØÚÌÚXÚÜÚ[ØØXÚK[™[ˆÜ™[˜\žHSÕÓÕ“SÕ\ÜÙ]ÈÙ\™HY[ˆXÙKˆÙ]LXœ™YHÜXÙH[˜Ü™X\ÙYˆœ›ÛHX›Ý]Í‘ÈÈLMËˆH™XÛÝ™\˜X›H[™[ÜžH\ÈØÝ[Y[Y[‚ˆ™\ÜËÛËÓ×Ô‘TÓÕTÑWÐÓPS•TÌŒŒL‹›Y‚‚ˆÈÈŒ‹LKLÈÝYÙHH8 %]Y\žKXÛÛ™][Û™YÙ]ÛÜœ™\ÜÛ™[˜ÙHXÛÙ\‚‚‹H\Ý\Ú\ÎˆHœ™\ÚTÐËQXYÝ™\ˆHœ›Þ™[ˆÓËPHŒHØ[™Y]HÝ]\ËˆÚ]Ø[™Y]HÙ[‹X][[Ûˆ›ÛÝÙYžHÜ›ÜÜËX][[ÛˆÈ\™Hœ›Þ™[‚ˆÜ›Ý[™[™ÑS“ËÐ‘T•[™ÝXYÙHÚÙ[œËÛÝ[[\›Ý™HØ[YKYœ˜[YHÛÜœ™\ÜÛ™[˜ÙBˆÚ]Ý]Ú[™Ú[™ÈH˜[šË]XÝÜ‹˜XÚÙ\‹ÜˆÜ™[˜\žHSÕÓÕ“SÕ‚‹H[\[Y[][ÛŽˆ\ÛÛ]YÛÜšÝ™YH]ˆÙ]LKÓÔ‹Ýœ˜[›YKÔÑT•‘T—ÓÓ“KØ]š\ËÓØØ]SSÕÓX˜\ÙBˆXÙNY˜ÍMMXNLŒLXŒLÙ˜ŒLÌÌÙ™YØØ˜XÈÛÈÙ]^Y\œËZYÚXYËˆ‘“ˆLY[ˆM‹\ÝÜžHMŽKŽH˜Z[˜X›H\˜[Y]\œËˆ\™Bˆ[™ÝXYÙHØXÚH\ÈËNX™[Yœ™YH[šY\ËˆÛÛ˜XÝÛ[ÚÙH\ÜÙYY\‚ˆ™\Ù\š[™ÈÛÈXÚØYÙKÙšY[˜Z[\™\Ëˆ›ÈÚÙ[‹ÜÜ[ˆÜˆÝ]XËÛ[Ý[Û‚ˆÝ\\š\Ú[Ûˆ\È™\šYšYY
+SSQÓ‘Q
+K‚‹Hš]ˆÙYYŒŒŽXÛ™HÔK‘ŒM‹\ØÚËÌ‹Ü[Z^™\ˆÝ\Ëˆš[š]HÜÜÈ[™›Ûž™\›ÈÜ˜YY[Ë[Œ]™[ˆÚXÚÜÚ[È\Èš[˜[‚ˆÛ›HHš]Ý\\š\Ú[ÛˆØ\È\ÙYÈ›ÈØÜ™Y[š[™ÈÜˆÙ™šXÚX[]\ÝX™[Ë‚‹H]‹ÜÙ[XÝ[ÛŽˆŒÚXÚÜÚ[ÈØÛÜ™YÝ™\ˆLÎYØ[]ˆÜ›Ý\ÎÈš]™KZ][BˆÚÜ\Ý[™[]šY[È‹Ô‹ÔX]š^Ù[XÝY\ØÚ[Hˆ™Y›Ü™Hš^Yˆ˜[Y][Û‹ˆÚXÚÜÚ[ÒH\ÂˆXXŒØØŒÍÌØŒÌŒŒÍMØ˜MŒŒ˜ÙMYXØŒMØÍLÌNNNMLÌNMŽXXN‚‹Hš^YÙ[X[XÎˆ]]Üš]]]™H™]žM˜Z[YˆŽHØ\Âˆ™XØ[KÌÌÌÌÌÌË™XÚ\Ú[ÛKŒÌNK”Ùœ˜[YOLLŒLKˆ™YÜÜÚ]]™ONŽÌÌË\™KŽLMË][OKŽNMÈHØ\Âˆ™XØ[KŽÌMÍË™XÚ\Ú[ÛKŒÎMLN”Ùœ˜[YOLLËŒMËˆ™YÜÜÚ]]™OLLŽMÍË\™KŽLŒÌÍË][OKŽLÍÍÎÚ][˜XÝ]™Bˆ˜[ÙHXØÙ\[˜ÙHKŒˆ\™[™YØ]]™H˜[šÚ[™È[Ý™Y]\ÞXX›H›Û[YKˆ™XÚ\Ú[Û‹[™›Ë[X]Ú™Z]š[Üˆ˜Z[Y‚‹H[\›˜[˜XÚÑ]˜[ˆœ›Þ™[ˆ\ØÚÔ[HˆÛˆŒH˜[Y][Ûˆ
+ˆÙ\]Y[˜Ù\ÊBˆØ]™HÕH‹ŒŽL˜Œˆ˜[Y][Ûˆ
+LÍÈÙ\]Y[˜Ù\ÊHÕHNM™\œÝ\ÂˆËPHŽMÍL‹ÌŒ‹ŒLÌˆ[]šY[ÈÜÝZØÈ\™Ù]\›ÝÈ™XØ[Ø\ÈÛ›BˆŒLÌKËŒ˜[™[˜XÝ]™HXØÙ\[˜ÙHØ\ÈKŒˆ\È\È[\›˜[ˆ˜[Y][Ûˆ˜XÚÑ]˜[]šY[˜ÙK›ÝØÜ™Y[š[™ÈÜˆÙ™šXÚX[]\Ý]šY[˜ÙK‚‹H›ÛÝØ]\ÙHYÛY[ˆ]Y\žKXÛÛ™][Û™YÙ]™\™\Ù[][ÛˆØ]™H[Z]Yˆœ˜[YK[]™[˜[šÚ[™ÈÚYÛ˜[]˜Z[YØ[Xœ˜]Y\œÚ\Ý[[Z\ÜÚ[Ûˆ[™ˆXœÙ[˜ÙH[™[™ËˆHœ˜[˜Ú\ÈÝÜY[™[™ÈÝ\\š\ÛÜˆ™]šY]ÎÈ›ÈBˆÛÛ[X][Û‹ØÜ™Y[š[™ËÙ™šXÚX[\ÝÜˆÜ™[˜\žHSÕÓÕ“SÕÚ[™ÙH\Âˆ]]Üš^™Yˆ[HÝ]]È\™H™\Ù\™Y[™\ˆÝ]]ËÛKØ[™H™]ÂˆÛÝ\˜ÙKÜ™\ÜÈ\™HÛˆœ˜[˜ÚÛÙ^ÛK\]Y\žKXÛÛ™][Û™Y\Ù]XÛÜœ™\ÜÛ™[˜ÙKLŒŒLØ‚‚ˆÈÈŒ‹LKLÝYÙHPÈ8 %ÛÜœ™XÝYØ[™Y]K]œËS•S™\^B‚‹H\Ý\Ú\ËÜ™\Z\ŽˆH˜Z[š[™È[™H™YÚ\Ý\™YÜÜÈ\ÙHØ[™Y]WÙ[™\™ÞXˆYØZ[œÝ[ÛÙÚ]]HÛH]˜[X][Û‹Ù\Þ[Y[][Z]Yˆ\Ú[™È™\Ù[˜ÙWÛÙÚ]H[ÛÙÚ]ˆPÈÚ[™ÙYÛ›HH]˜[X][Û‹ˆÙ[XÝ[Û‹[™™\™[˜ÙK[™˜XÚÑ]˜[ÛÛ˜XÝÈHÚ\™YˆÛÜœ™XÝYÙ[Z\ÜÚ[Û—ÛX\ÚØˆØ[™Y]H™\ÚÛØ[™Y]K[Z[\ËS•SX\™Ú[‹ˆ[™™\Ù[˜ÙH™\ÚÛˆ›È˜Z[š[™ËØÛÜ™\ˆ›ÜØ\™˜[šËØØXÚH™XZ[Ü‚ˆ[Ù[ÛÜ™[˜\žKSSÕÚ[™ÙHØ\ÈXYK‚‹H[œ]ËÜÙ[XÝ[ÛŽˆ[[]]X›HH˜]È]ˆ™XÛÜ™È
+KMŒÈÒH™XÛÜ™Y[‚ˆÝ]]ËÛXËÙ]‹ØÛÜœ™XÝYÜÚÜ\ÝØ][\KØ
+KŒ^\Ý[™ÈÚXÚÜÚ[Ëˆ[™Hš^YX[šY™\ÝÒBˆ™MNŒXXLÙMŒXÙLÌMŽNNXXÌÌYYŒXMXLLŽXX™YMXÙ™™LÙ˜X‚ˆÛÜœ™XÝY]ˆ˜XÚÑ]˜[]˜[X]YHÚXÚÜÚ[È0åÈ‹Ô‹Ô
+MH™\Ý[ÊK[‚ˆœ›Þ™H\ØÚˆÈ[H‹ÚXÚÜÚ[ÒBˆŽŒMÍMNMÙXÙNXYYŒXÌØYNYXÍÌLÍNXLÍ™ŽXY™XLŒNXL™LÙŒ˜Ú]ˆØ[™Y]KÜ™\Ù[˜ÙKÓ•S™\ÚÛÈLÍKËLKŒÌŒ™Y›Ü™Hš^Y˜[Y][Û‹‚‹Hš^YÙ[X[XÈ]šY[˜ÙNˆ]]Üš]]]™H™]žLˆ\ÈÜ™\™Y™XÛÜ™È
+M‚ˆØ[Xœ˜][Û‹˜[Y][ÛŠKÚ]™\Ù[XÝ[Ûˆ›Ü˜šY[‹[X™[šY[ÂˆXœÙ[ˆ˜[Y][Ûˆ\È™XØ[ŽÎÌMØ™XÚ\Ú[ÛˆŒŽMMX”Ùœ˜[YBˆLKŒÍÍX™YXÝ[ÛœËÜÜÚ]]™HKL˜\™š[Û][ÛˆŽLŒÌÍØˆ][K\ÜÚ]]™H™XØ[ŽÌÌÌÌÌØ[˜XÝ]™H˜[ÙHXØÙ\[˜ÙHKŒ‚ˆHØ]H\ÈÙ[X[X×ÙØ]WÙ˜Z[ˆ\™Ü™XØ[Ü™XÚ\Ú[Û‹Û][H›ÛÜœÈ\ÜËˆ]›Û[YH[™[˜XÝ]™KÛ›Ë[X]ÚÛÛ™][ÛœÈ˜Z[‚‹H[\›˜[]šY[˜ÙNˆœ›Þ™[ˆ\ØÚL‹Ô[KTˆ[]šY[È[™™\™[˜ÙHÛÝ™\™YŒBˆN
+ˆÙ\]Y[˜Ù\ÊH[™ŒˆM‹MËŒ
+LÍÈÙ\]Y[˜Ù\ÊK‚ˆÛÜœ™XÝY˜XÚÑ]˜[ÕH\ÈŒH‹ŒÌN	XŒˆNÌNIXÈ›ÈØÜ™Y[š[™ÈÜ‚ˆÙ™šXÚX[]\ÝX™[ÈÙ\™H™XYˆ\ÙH\™H[\›˜[˜[Y][Û‹\ØÛÜHY]šXÜËˆ›ÝHš[˜[“SÕ™\Ý[ˆ\ÝÜšXØ[YÙÞHHØ\È‹ŒŽL‰KÌNM	X[™ˆËPHØ\ÈŽMÍL‰KÌŒ‹ŒLÌ	XÛˆŒKÕŒ‹‚‹Hš\œÝXÝ[Û˜X›H›ÛÝØ]\ÙNˆÛÜœ™XÝYØ[™Y]K]œËS•SXØÛÝ[[™ÈÝ[ˆX]™\È›Ë[X]ÚXØÙ\[˜ÙH[š]™\œØ[[™Ý]]›Û[YHÛÈYÚˆ[›ÝÜËˆÙ^\Ëš[š]HÚXÚÜË[™œ›Þ™[ˆ›Ý[™\šY\È\ÜÙYÈH[š]X[ÔHÓÓH\Âˆ™\Ù\™Y\È[ˆ[\[Y[][Û‹Ü™\ÛÝ\˜ÙH][\[™H^XÝÔH™]žBˆÛÛ\]Yˆ[š\]YH™^XÝ[ÛŽˆÝ\\š\ÛÜˆ™]šY]È[™]]Üš^˜][ÛˆÙˆÛ™Bˆ™]È“SÕœ˜[˜Ú^XÚ]HY™\ÜÚ[™ÈXœÙ[˜ÙKÝ›Û[YHØ[Xœ˜][ÛˆÚ]ˆØ[™Y]HÛÜœ™\ÜÛ™[˜ÙKˆÈ›Ý^[™KÓPÈÜˆ[™H™\ÚÛË‚‹HÝ]\ÎˆÕÔQÔS‘S‘×ÔÕTT•’TÓÔ—Ô‘U’QUØÈ™\›×Ý˜Z[š[™Ï]YXˆØÜ™Y[š[™×ÙÝÝ\ÙYY˜[ÙXÙ™šXÚX[Ý\ÝÛX™[×Ü™XYY˜[ÙXˆÜ™[˜\žWÛ[ÝÛÝ›[ÝÝÝXÚYY˜[ÙX‚‚ˆÈÈŒ‹LKLÝYÙHQ8 %YH[]šY[È[Y[[™H™\Z\‚‚‹H\Ý\Ú\ËÜØÛÜNˆ™\Z\ˆÛ›HHPÈÜ\œÙK\™YXÝ[Ûˆ™\œÝ\È[œÙKQÕˆ[Y[[™HZ\ÛX]Úˆ›È˜Z[š[™Ë[Ù[ÜÜË˜[šË˜XÚÙ\‹™\ÚÛÜ‚ˆÜ™[˜\žHSÕÓÕ“SÕÚ[™ÙHØ\ÈXYKˆ™]ÈÛÙH\ÈÛÛ™š[™YÈÛÛËÛYÊ˜ˆ[™™]È]šY[˜ÙH\È[™\ˆ™\ÜËÛYØ[™Ý]]ËÛYØ‚‹HÛÛ˜XÝ™\Z\Žˆ˜]]™HŽHœ˜[YWÚYØ[™œ˜[YHÚ[\œÈ›ÝÈš]™H]™\žBˆšY[È[Y[[™NÈ[]Y\žKÙœ˜[YHZ\œÈ[™[Ø[™Y]H›ÝÜÈ\™HØÛÜ™Y‚ˆH][K]šY[È]Y\žK[X\Ý™\Üš]HØ\Èš^Y[™ÛÝ™\™YžHH\™Ù]Yˆ™YÜ™\ÜÚ[Û‹ˆ]ˆ[™™\™[˜ÙH][\ÈÛÝ™\œÈKML‹ŽLÌKML‹ŽLØ[™Y]BˆZ\œÈXÜ›ÜÜÈ‹ÎHœ˜[YHÜ›Ý\ÎÈ[\›˜[][\HÛÝ™\œÂˆËMLÌËMLZ\œÈXÜ›ÜÜÈKœ˜[YHÜ›Ý\Ëˆ›Ý\ÜÙY[]šY[È[™ˆZ\‹XÛÛ\][™\ÜÈÚXÚÜËˆH]ˆ[™[\›˜[[œÙHŒHÝ\[Y[ÈÙ\™BˆZ[œ›ÛHœ›Þ™[ˆ]Y\žKZ[™\[™[ØXÚ\È[™š[˜[^™YÚ]›ÈX™[Ë‚‹H]ˆ]šY[˜ÙNˆH˜[YKXÚXÚÜÚ[0åÈ‹Ô‹Ô˜XÚÑ]˜[X]š^Ù[XÝYˆ\ØÚÈ[HÛˆH™\™YÚ\Ý\™Y]ˆ\KˆHœ›Þ™[ˆÚXÚÜÚ[\ÂˆÙ]LKÓÔ‹Ýœ˜[›YKÔÑT•‘T—ÓÓ“KØ]š\ËÓØØ]SSÕÓKÛÝ]]ËÛKÝ˜Z[‹Ú›Ú[ØÚXÚÜÚ[ÛWÙ\ØÚœˆÒLMˆŽÌÍXLNMÍ˜L™˜ÌM˜˜˜Y˜˜YÍÙLLŽNŽMÍÎØÙMØÙNŒMÍÙNX‚ˆHš^YM‹XØ[Xœ˜][Û‹Ì]˜[Y][ÛˆÙ[X[XÈ™\^H[ˆ˜Z[Yˆ™XØ[ˆMÎÌX™XÚ\Ú[ÛˆŒMLMÎMØ”Ùœ˜[YHËŽMNÌÌÌØˆ™YXÝ[ÛœËÜÜÚ]]™HËŒLŽLÌ˜\™š[Û][ÛˆŽLŒÌÍØˆ][K\ÜÚ]]™H™XØ[ŒLLLX[˜XÝ]™H˜[ÙHXØÙ\[˜ÙHØ‚ˆ™XØ[[™][K\ÜÚ]]™H›ÛÜœÈ˜Z[YÈ›ÈØÜ™Y[š[™ËÝ\ÝX™[ÈÙ\™H™XY‚‹H[\›˜[]šY[˜ÙNˆš^Y\ØÚÈ[HYH[]šY[È˜XÚÑ]˜[Ú]™\ÂˆÛÛXš[™YÕHŒËŽNŒÎŒ‰X]HMKŒLŽMŽLLNIX\ÜÐBˆÍËŽMŒMÎLLÉX]™HMËŒMNLÌÌÎNIX]ˆM‹ŽNMMÍŽÌÉXQŒBˆNŽLÌMÌŒLÍ‰X[™QÕÈŒÌÍËXÈŒHÕHKŒÎNŒÎM‰XŒˆÕBˆŒ‹ŒÍÌÍMNŽ	Xˆ\ÙH\™H[\›˜[˜[Y][Û‹\ØÛÜH˜XÚÑ]˜[™\Ý[Ëˆ›ÝØÜ™Y[š[™ËÙ™šXÚX[]\ÝÜˆš[˜[Ü™[˜\žKT“SÕ]šY[˜ÙK‚‹H][\È™\Ù\™Yˆ]ˆS“ÔÔË[\›˜[^]LLÍËÓÓÓH™]šY\ËH^XÝYˆÛ[ÚÙH[]šY[È™Z™XÝ[Û‹HÙ[XÝÜˆ\™XÝÜžKX\™Ý[Y[\œ›Ü‹[™BˆX\›Y\ˆ][K]šY[ÈÕ[X\Z\ÛX]ÚˆHš[˜[›Ý[™\žHÝX\™\ÜÙYY\‚ˆH]ÛÛ˜XÝÛÜœ™XÝ[Û‹ˆHš^YX[šY™\ÝÒH™[XZ[™Yˆ™MNŒXXLÙMŒXÙLÌMŽNNXXÌÌYYŒXMXLLŽXX™YMXÙ™™LÙ˜X‚‹HÝ]\ÎˆQÐÓÓTUWÖ‘T“×ÕRS’S‘×Õ•QWÑ•S’QS×Ô‘TRTˆÂˆÙ[X[X×ÙØ]WÙ˜Z[ÈÕÔQÔS‘S‘×ÔÕTT•’TÓÔ—Ô‘U’QUØ‚ˆ›YÜÎˆ™\›×Ý˜Z[š[™Ï]YXØÜ™Y[š[™×ÙÝÝ\ÙYY˜[ÙXˆÙ™šXÚX[Ý\ÝÛX™[×Ü™XYY˜[ÙXÜ™[˜\žWÛ[ÝÛÝ›[ÝÝÝXÚYY˜[ÙX‚ˆ[š\]YH™^XÝ[ÛŽˆÝ\\š\ÛÜˆ™]šY]È[™]]Üš^˜][ÛˆÙˆÛ™HÙ\\˜]BˆXœÙ[˜ÙKÝ›Û[YKXØ[Xœ˜][ÛˆÝYNÈÈ›Ý^[™KÓPÈÜˆ[\ˆBˆ›ÙXÝ[ÛˆSÕÓÕ“SÕ]Ë‚‚ˆÈÈŒ‹LKLHÝYÙHQH8 %\ÙKXÛÛœÚ\Ý[[\Ü˜[Ú\ÝÜžH™\^B‚‹H\Ý\Ú\ËÜØÛÜNˆQ]˜[X]Y]™\žHÚXÚÜÚ[Ú][\Ü˜[\ÝÜžBˆ[˜X›Y]™[ˆÝYÚH˜Z[š[™È\ÙYÝYÙKTÈ\ØÚÈx $ÎÚ][\Ü˜[Ù™‚ˆ[™™\›È\ÝÜžKˆQHÚ[™ÙYÛ›H\È™\^HÛÛ˜XÝˆÈ\ØÚÈ‹ÍÍ‹Îˆ\ÙH[\Ü˜[Ù[˜X›YY˜[ÙX[™™\›È\ÝÜžNÈ\ØÚÈL8 $ÌŒ[™ˆ\ØÚÂˆŒ¸ $Í\ÙHØ]\Ø[\ÝY›Ý\ˆ\ÝÜžKˆ›È˜Z[š[™Ë[Ù[ÜÜË˜[šË˜XÚÙ\‹ˆ™\ÚÛØÚY[˜ÙKRQKÜ™[˜\žHSÕÜˆÕ“SÕÛÝ\˜ÙHØ\ÈÚ[™ÙY‚‹H[\[Y[][ÛŽˆ\ÛÛ]Yœ˜[˜ÚÝÛÜšÝ™YH˜\ÙYÛˆQÛÛ[Z]ˆMŒLYMÎMMÍYÎLŒØ™YŒŽNMŽLŽÈ\ÙHÛXÞH[™Ü˜\\œÈ\™Bˆ[ˆÛÛËÛYWÊ˜ˆH™\]Z\™YÔH\]X[]HÚXÚÈ\ÜÙY›ÜˆÈ[™ˆÛ\ÝÜ™X\ÝÜžHÛÛœÝXÝ[Û‹ˆHš\œÝ™\^H˜Z[\™HØ\ÈBˆœ˜[YQ^[\XØØÛ\Ú\ÝÜžX[\™˜XÙHZ\ÛX]ÚÈHZ[š[X[Y\\ˆš^ˆ\ÜÙYH\™Ù]YËÕØ]\Ø[]H™YÜ™\ÜÚ[Û‹ˆHÝXœÙ\]Y[\ÝÜšXØ[\ØÛÜ™BˆY\™ÙHÚXÚÈ›Ý[™]H[[]]X›HÜ\œÙHš[HÛÛZ[œÈÊÕÒˆ›ÝÜÎÈBˆÜ˜\\ˆ›ÝÈš[\œÈÛ›HH\ÝÜšXØ[Òˆ\ØÚÈ[™™\Ù\™\ÈZ\‚ˆ˜[Y\Ëˆ][˜Ú\][™ÚÜ\Ý\™Ý[Y[Z\ÝZÙ\ÈÙ\™H™\Ù\™Y\ÂˆSÓÓTUXÛÜ\˜]Üˆ]šY[˜ÙNÈ›ÈY™™XÝY[Ù[[ˆØ\È™X]Y\È]K‚‹HÝYÙKTÈ]šY[˜ÙNˆœ™\Ú\ÙKXÛÜœ™XÝ™\^HÙˆ\ØÚÈ‹ÍÍ‹ÎÛÛ\]YˆNHKNL˜™XÛÜ™Ë[š[š]KÛÛ\]H[™™\›ËZ\ÝÜžKˆY\™ÙYˆ\ÙKXÛÛœÚ\Ý[š]Ù]ˆÛÛÛÛZ[œÈŒ\ØÚÈ[™KMŒ™XÛÜ™ËˆBˆ™YÚ\Ý\™YX^[][KYš]™Hš]Ù]ˆÚÜ\ÝØ\Èœ›Þ™[ˆ]\ØÚÂˆ
+ÊKŒ
+
+K
+ŠKÌŠŠK
+ÊX‚‹H]ˆÙ[XÝ[ÛŽˆ[˜]]™H]ˆ™\^H™]Z[™YLKËLËÌLKËLØˆØ[™Y]H›ÝÜÈ›Üˆ[š]™HÚÜ\ÝØ[™Y]\ËˆHMK\™\Ý[˜XÚÑ]˜[ˆX]š^Ù[XÝY\ØÚÈ\ÙHÈÈ[HˆžHH™YÚ\Ý\™Y\NÈ]‚ˆÕHØ\ÈŒŽMLL˜
+[\›˜[š]Ù]ˆÙ[XÝ[Ûˆ]šY[˜ÙHÛ›JK‚‹Hš^YÙ[X[XÈ]šY[˜ÙNˆH™]ÈM‹XØ[Xœ˜][Û‹Ì]˜[Y][Ûˆ™\^H\ÙYˆHœ›Þ™[ˆ\ØÚMÔÈ™\›ËZ\ÝÜžHÛXÞH[™[H‹ˆ[[]]X›HŽH™[XZ[œÂˆ™XØ[Ü™XÚ\Ú[Û‹Ñ”Yœ˜[YKÜ™Y\ÜÚ]]™KÚ\™Û][BˆÌÌÌÌÌÌËËŒÌNKÌLŒLKÎŽÌÌËËŽLMËËŽNMˆQH˜[Y][Ûˆ\Âˆ™XØ[Ü™XÚ\Ú[Û‹Ñ”Yœ˜[YKÜ™Y\ÜÚ]]™KÚ\™Û][BˆLMŒLŽKËŒMNÌÌËÌËMËÌËŒMÍÍ‹ËÍŽLŒÌËŒÍŒLLLLXÚ][˜XÝ]™Bˆ˜[ÙHXØÙ\[˜ÙHŽÌÌÌÌÌØ[™[\H˜]HŒŒÌÌÌØˆHÙ[X[XÈØ]Bˆ˜Z[È™XØ[[™][K\ÜÚ]]™H›ÛÜœÈ\Ü]HÝÙ\ˆ›Û[YH[™YÚ\‚ˆ™XÚ\Ú[ÛŽÈ›È™\ÚÛ™\ØÝYHØ\È\™›Ü›YY‚‹H[\›˜[˜XÚÑ]˜[ˆY\ˆHœ›Þ™[ˆÙ[XÝ[Û‹^XÝ[\›˜[[Y[[™Bˆ™\^HÛÝ™\™YËMLÌËMLZ\œÈ›ÜˆŒHÌN[™ŒˆM‹ÌMËÌŒ‚ˆ\ÙKXÛÛœÚ\Ý[ÕKÑ]KÐ\ÜÐKÑ]™KÑ]ˆÙ\™HŒBˆŽÍŒŽÌNÍŽÍŒÎLËÎŒÌKÌNKLÌL‰X[™Œ‚ˆŒKŽÎKÌLËŒÌÍNÌÍKŽNNLÍKŒLMŒÌMKŽMÎIXÈQÕÈØ\ÈKNMÈ[™KLMK‚ˆ\ÙH\™H[\›˜[˜[Y][Û‹\ØÛÜH˜XÚÑ]˜[™\Ý[Ë›ÝØÜ™Y[š[™ÈÜ‚ˆÙ™šXÚX[]\Ý™\Ý[Ë‚‹H›ÛÝØ]\ÙNˆÛÜœ™XÝ[™ÈË\\ÙH[\Ü˜[Ú\ÝÜžH]˜[X][ÛˆÙ\È›Ýˆ™\ÝÜ™H^™\ÜÚ[ÛˆÛÜœ™\ÜÛ™[˜ÙNÈHš^Y[Z\ÜÚ[Ûˆ™[XZ[œÈ™XØ[H[™ˆ][K\ÜÚ]]™K[[Z]YÚ]ÝXœÝ[X[[˜XÝ]™HXØÙ\[˜ÙKˆÝ]\È\ÂˆQWÐÓÓTUWÖ‘T“×ÕRS’S‘×ÔTÑWÐÓÓ”ÒTÕS•Ô‘TVHÂˆÙ[X[X×ÙØ]WÙ˜Z[ÈÕÔQÔS‘S‘×ÔÕTT•’TÓÔ—Ô‘U’QUØ‚‹H™\Ù\™YÝ]]ÎˆÝYÙKTÈ][\Èx $ÍY\™ÙH][\Èx $Ì‹ÚÜ\Ýˆ][\Èx $Í]‹Ú[\›˜[[]šY[È[™˜XÚÑ]˜[Ý]]Ëš^YÙ[X[XÂˆÝ]][™[™\ÜÈ[™\ˆ™\ÜËÛYKØ[™Ý]]ËÛYKØˆHš^YˆX[šY™\ÝÒH™[XZ[œÂˆ™MNŒXXLÙMŒXÙLÌMŽNNXXÌÌYYŒXMXLLŽXX™YMXÙ™™LÙ˜X‚ˆ›YÜÈ™[XZ[ˆ™\›×Ý˜Z[š[™Ï]YXØÜ™Y[š[™×ÙÝÝ\ÙYY˜[ÙXˆÙ™šXÚX[Ý\ÝÛX™[×Ü™XYY˜[ÙXÜ™[˜\žWÛ[ÝÛÝ›[ÝÝÝXÚYY˜[ÙX‚‹HHÛ›H™^XÝ[Ûˆ\ÈÝ\\š\ÛÜˆ™]šY]ÈÙˆHÙ\\˜][H]]Üš^™YˆXœÙ[˜ÙKÝ›Û[YKXØ[Xœ˜][ÛˆÝYKˆÈ›Ý^[™KÓPËÓQK[\ˆBˆ˜[šËÜˆÝXÚ›ÙXÝ[ÛˆSÕÓÕ“SÕ‚‚ˆÈÈŒH8 %ØY™H\™Ù]ÛÛ˜XÝ[œÙH˜]]™H[™^\Ë[™[\[Y[][ÛˆÛ[ÚÙH8 %Œ‹LKLB‚‹H\Ý\Ú\Îˆ\ÛÛ]HÛ›H[ÝÛ\ÝYŒKÕŒˆ\™Ù]™XÛÜ™Ë™\Z\ˆBˆœ˜[YK\ÜXÚYšXÈ\™Ù]ÛÛ˜XÝ[™ÛÛœÝXÝ˜]]™KYœ˜[YHŒ]HÚ]Ý]ˆ\œÚ[™È›Ü˜šY[ˆÙ™šXÚX[Y]˜[^[ØYË‚‹HØY™K\ÛÝ\˜ÙH™]žLÈ\ÜÙYˆ^XØ[[Û›Û]XËR”ÓÓˆ\ÛÛ][Ûˆ\Ù\šX[^™YˆÛ›H[ÝÛ\ÝYšY[È˜[Y\È[™™XÛÜ™Yˆ›Ü˜šY[—Ü^[ØYÙ\Ù\šX[^™YY˜[ÙX[™ˆÙ™šXÚX[Ý\ÝÛX™[×Ü™XYY˜[ÙXˆH^XÝKÌMÜ\œÙHš]›ÝÜÈX]ÚYˆH]]Üš]]]™Hœ˜[YHX\Ú]™\›ÈÙ[[˜ÙKÝ\™Ù]ÛZ\ÜÚ[™Ë\]Y\žKÚ[˜[YBˆœ˜[YHZ\ÛX]Ú\Ë‚‹H[œÙH˜]]™KYœ˜[YH[™^™]žLˆ[™]ÈÛÛ˜XÝ]Y]\ÜÙY›ÜˆŒKÕŒŽÂˆ[ŽH›ÝÜÈ[™\XØ]HØ[™Y]H[™XÙ\ÈÙ\™H™]Z[™YˆHÙ[ÛY]žBˆ[XYÙWÚØ[™š\ÝX[XØXÚH]\Ù]ÙÜ›Ý\ZÙ^HÛÛ˜XÝÈÙ\™HÛÜœ™XÝY[‚ˆŒ[Û›Hš[\Ëˆ™]žLH[œÙKÜÛ[ÚÙH˜Z[\™\È™[XZ[ˆ™\Ù\™YÚ]Z\‚ˆš\œÝ˜XÙNÈ™]žLˆ\È]]Üš]]]™K‚‹H™X[ŒÛÛ˜XÝÛ[ÚÙH™]žLˆ\ÜÙYÛˆÛ™HŒHš]œ˜[YNˆÜÜÂˆËMMNLÍMÍØLÌLš[š]H›Ûž™\›È˜Z[˜X›HÜ˜YY[Ëœ›Þ™[‚ˆÜ›Ý[™[™ÑS“Ë›È˜XÚÙ\ˆÜ[Z^™\ˆ\˜[Y]\œËÝšXÝ™[ØYX^Y™ˆˆ[™[\Ü˜\žHš\ÝX[][H™[[Ý™Yˆ\È\È[\[Y[][Ûˆ]šY[˜ÙHÛ›NÂˆ›ÈÙ[X[XËØÜ™Y[š[™ËÙ™šXÚX[]\ÝÕKÜˆ›ÙXÝ[ÛˆSÕÓÕ“SÕ™\Ý[‚‹H™^XÝ[ÛŽˆÛÛ[Z]Ùœ™Y^™HHŒHØY™HÛÙH[™ÛÛœÝXÝH™YÚ\Ý\™Yˆ]Y\žKZ[™\[™[š\ÝX[ØXÚHÛˆÙ]L˜È›ÈÛ\ÜÙ]Üˆ›ÙXÝ[Û‚ˆ[ž\Ú[\È[ÙYšYY‚‚ˆÈÈŒˆ8 %Ü›Ý\Yš]™\ˆ™\Z\ˆ[™›Ü›X[YØ[]šY[˜ÙH8 %Œ‹LKLB‚‹H\Ý\Ú\ÎˆHÛLH]Y\žKX]XK][YHš]™\ˆØ\ÈHXÝ[Û˜X›HŒ˜Z[š[™ÂˆÛÛ˜XÝ›Ý[™XÚËˆHœ˜[YKXÙ[šXÈÜ›Ý\Yš]™\ˆÚ]ÛÛ\]HØ[™Y]BˆÙ]ËON]\›Z[š\ÝXÈÝ˜]K[™XØÝ[][][ÛˆÚÝ[XZÙHBˆ™YÚ\Ý\™YŒ^\š[Y[^XÝ]X›HÚ]Ý]Ú[™Ú[™ÈHœ›Þ™[ˆ˜[šËˆ˜XÚÙ\‹]XÝÜ‹ÜˆÜ™[˜\žHSÕÓÕ“SÕ‚‹H™\Ù\™YÙ\Ü]X[YšYYLNˆQÎMMÌHØ\ÈÝÜYÜ˜XÙY[NÈHÛ\X[ˆÝ]]ËÜŒÝ˜Z[‹ÝŒWÙ›Ü›X[Ü™]žLKØ™[XZ[œÈ\ÝÜšXØ[[™\È›ÝˆÙ[XÝ[Û‹Y[YÚX›K‚‹H™\Z\œÎˆÜ›Ý\YNØÚY[KšY[Ë[ØØ[[\ËÛÜ›XØÝ[][][Ûˆˆœ›Þ™[ˆ]XÝÜ‹Û[™ÝXYÙH[œ]ËÛÛ\]HØ[™Y]H›ÝÜË™\Ù[][˜ÛÝ™\™YˆX\ÚÚ[™Ë[™™\Ý[XX›HØØ][[Ý\Œ]ÙÚXÚXÚÜÚ[]Œ˜ˆHYØ[ÕˆX]\šX[^˜][ÛˆØ\Ø\È™\Z\™YÛ›H[ˆHŒÜ˜\\ˆžH™XÛÜ™[™È[™ˆÚÚ\[™ÈZ\ÜÚ[™È[››Ý][Ûˆ›ÝÜÎÈœ›Þ™[ˆÕØ\È›ÝY]Y‚‹H›Ü›X[˜Z[š[™ÎˆŒHÛÛ\]YLˆ\ØÚËÌËNÜ[Z^™\ˆÝ\È[™Œ‚ˆÛÛ\]YLˆ\ØÚËÌËˆÝ\Ëˆ›ÝÙ\™Hš[š]HÚ]›Ûž™\›ÈÜ˜YY[ËˆÝšXÝ™[ØY[›Ý\ˆÝ˜]H[™›ÝÛXZ[œËˆÚXÚÜÚ[È‹ÍÍ‹ÎÌLÌL‚ˆ\™H™]Z[™Yˆ›Ü›X[›ØœÈ\ÙYHœ™YH\ÚXØ[Ô\È8 $ÍÎÈ\ÚXØ[Ô\Âˆ8 $ÌËÚXÚY[œ™[]Y›ØÙ\ÜÙ\ËÙ\™H›ÝÝXÚY‚‹HYØ[]ˆÙ[XÝ[ÛŽˆŒHÚÜ\Ý\ØÚÈL‹Íˆ[™ŒˆL‹ÌLÈ[]‚ˆ˜XÚÑ]˜[Ù[XÝY\ØÚLˆ›Üˆ›Ýˆ]ˆÕHØ\ÈŒHŒ‹ŽŽIH[™Œ‚ˆNKNIH›ÜˆHÙ[XÝYÚXÚÜÚ[Ë‚‹H[\›˜[˜[Y][Û‹\ØÛÜH˜XÚÑ]˜[ˆŒHÌNÕH‹N‰KŒ‚ˆM‹ÌMËÌŒÕHMKŒMÉKˆ\ÙH\™H›ÝØÜ™Y[š[™ÈÜˆÙ™šXÚX[]\Ýˆ™\Ý[Ëˆ›ÈØÜ™Y[š[™ËÛÙ™šXÚX[X™[ÈÙ\™H™XY[™Ü™[˜\žHSÕÓÕ“SÕˆRQKŽH[™›ÙXÝ[Ûˆ[ž\Ú[ÈÙ\™H[ÝXÚY‚‹HÝ]]Îˆ˜Z[š[™È™[XZ[œÈ[™\ˆÝ]]ËÜŒØÈ\™ÙH]‹Ú[™™\™[˜ÙKÕ˜XÚÑ]˜[ˆ›ÙXÝÈ\™H[™\ˆÙ]L‹Ý\Ü—Ù›Ü—ÙXY[™KÛØØ][[ÝÜŒ—Ê˜™XØ]\ÙHÙ]LXˆØ\È™X\›H[ˆ›È˜]ËÙ[œÙHXYÈØXÚHÜˆ]XÝÜˆÛÜHØ\ÈÜ™X]Y‚‹HÝ]\ÎˆÕÔQÔS‘S‘×ÔÕTT•’TÓÔ—Ô‘U’QUØˆ\È\È˜[YÜ›Ý\YŒˆ[\[Y[][Ûˆ\ÈYØ[]‹Ú[\›˜[˜XÚÑ]˜[]šY[˜ÙK›Ýš[˜[ˆÜ™[˜\žKT“SÕÛÛ\][Û‹ˆHÛ›H™^XÝ[Ûˆ\ÈÝ\\š\ÛÜˆ™]šY]È[™BˆÙ\\˜][H]]Üš^™Y›ÛÝË]\‚‚ˆÈÈŒH8 %[YÛ™Y˜XÚÈÛÛ™][Ûš[™ÈYØ[Y]ˆÛÛ˜XÝ8 %Œ‹LKLL‚‹H\Ý\Ú\ËÜØÛÜNˆ\ÝH™\›ËZ[š]X[^™Y“SÕ[Û›H™\ÚYX[ÛÛ™][Û™YÛ‚ˆ[YÛ™Yœ›Þ™[ˆQHÝYÙKTÈŒÖŒKÖÝ]\È[™Ø]\Ø[ØœÙ\˜][Ûˆ\ÝÜžNÂˆH[˜ÚÜ‹ŽH˜[šËÜ™[˜\žHSÕÓÕ“SÕRQH[™[›ÙXÝ[Ûˆ]ÈÝ^Bˆœ›Þ™[‹ˆ\È\È›Ýš[˜[“SÕÛÛ\][Û‹‚‹H™XY[Û›HYØ[Y]ˆ]Y]ˆœ›Þ™[ˆ\ØÚL[KPˆ[˜ÚÜˆÙ[XÝ[ÛˆØ\Âˆ™XÚXÚÙYˆH\ØÚL™\Ù[˜ÙK[Û›HZ\ÜÈ\ÈËÍKŒÍX™[ÝÈBˆ™\™YÚ\Ý\™YŒXXÝ]˜][Ûˆ™\ÚÛÛÈH›Ü›X[ŒHÛÛ™šYÈœ™Y^™\Âˆ™\Ù[˜ÙWÜ™\ÚYX[Y˜[ÙXˆ^\Ý[™È[]šY[È\Y˜XÝÈ]™H›ÈØ[™Y]BˆØÛÜ™H\œ˜^\È›ÜˆH˜[YVPÕÒS‘VÑQT™\^NÈHÛÛœÙ\˜]]™HUÂˆÛXÞH\È\™Y›Ü™Hœ›Þ™[ˆÚ]Ý]ÛZ[Z[™ÈHY\ÛÛ\\š\ÛÛ‹‚‹H™\Ù\™Y]šY[˜ÙNˆÝ]]ËÜŒKØ]Y]ÛYØ[Ù]—ÜÙ[XÝ[Û—Ø][\KØ[™ˆ™\ÜËÜŒKÔŒWÓQÐSÑU—ÔÑSPÕSÓ‹›YÈ›È˜Z[š[™ÈÜˆ™]ÈÚXÚÜÚ[Ø\ÂˆÜ™X]YžHH]Y]ˆH™^XÝ[Ûˆ\ÈH›Ý[™YÚ\š[™ËÜ™[ØYÛ[ÚÙNÂˆ›Ü›X[š]™[XZ[œÈÛÛ™][Û˜[Ûˆ][\[Y[][ÛˆØ]K‚‚ˆÈÈŒH8 %›Ü›X[š][™YØ[Y]™[ÜY[™\^H8 %Œ‹LKLL‚‚‹H\Ý\Ú\ËÜØÛÜNˆH™\›ËZ[š]X[^™Y[YÛ™Y˜XÚËXÛÛ™][Ûš[™È™\ÚYX[ˆÝ™\ˆœ›Þ™[ˆQHÝYÙHÝ]\ËØ]\Ø[ØœÙ\˜][Ûˆ\ÝÜžK[™ÝXYÙKY\™XÝYˆŒ]Z[[™ÛÛ\]HŽHØ[™Y]HÙ]ÈÛÝ[[\›Ý™H^™\ÜÚ[Û‹]Ë]˜XÚÂˆÛÜœ™\ÜÛ™[˜ÙHÚ]Ý]Ú[™Ú[™ÈH[˜ÚÜ‹˜[šË˜XÚÙ\ˆÜˆÜ™[˜\žBˆSÕÓÕ“SÕ]Ë‚‹H›Ü›X[š]ÛÛ\]Y[ˆ\ÛÛ]YÛÜšÝ™YBˆÙ]LKÓÔ‹Ýœ˜[›YKÔÑT•‘T—ÓÓ“KØ]š\ËÓØØ]SSÕÔŒXˆÚ^\ØÚË‹LˆÜ[Z^™\ˆÝ\Ë[š[š]HÚ]›Ûž™\›ÈÜ˜YY[ËÝšXÝ™[ØY›ÜˆZYÚˆŒKÕŒˆÚXÚÜÚ[Ëœ›Þ™[ˆ[˜ÚÜ‹[™›È\œÚ\Ý[˜]ËÙ[œÙHXYÈØXÚK‚‹H™YXÝ[Û‹[Û›H™\^\È›ÜˆYØ[Y]ˆŒHšY[ÜÈÌLÌŒ[™Œ‚ˆšY[ÜÈÌÌXÛÛ\]Y™Y›Ü™HYØ[ÕØ\ÈÜ[™YˆHYÙÜ™YØ]BˆÛÛZ[œÈ‹ÎHÜ›Ý\È[™ZYÚ[\›˜[˜XÚÑ]˜[™\Ý[Ëˆ™YÚ\Ý\™YˆÙ[XÝ[ÛˆÚÜÙH\ØÚÙ\\˜][H›ÜˆŒH[™Œ‹ˆÙ[XÝYÕHØ\ÂˆŒŒÍIX
+ŒJH[™ŒËM‰X
+ŒŠK™\œÝ\ÈHQH[˜ÚÜ‰ÜÈŽÍŒŽ	Xˆ[™ŒKŽÎIXÈ\È\È›ÝHÝX›Hœ™XZÝ›ÝYÚ[™™[XZ[œÈYØ[Y]‚ˆ]šY[˜ÙHÛ›K‚‹Hš^YM‹XØ[Xœ˜][Û‹Ì]˜[Y][ÛˆXYÛ›ÜÝXÈ™]Z[™Y[‹ÍHŽH›ÝÜÂˆ[™Ù^\ËˆŒHØ[™Y]K[Û›H™XØ[Ü™XÚ\Ú[Û‹Ñ”Yœ˜[YKÜ™Y\ÜÚ]]™KÂˆ\™Û][HÙ\™HŒLÌŒN‹ÌÍÍLÌMŽKÌÍÌËÌŒNNÈHœ›Þ™[‚ˆ[KPˆ™\^H[Z]Y™\›È›ÝÜÈ›Üˆ›Ý[˜ÚÜˆ[™ŒHÛˆ\ÈÛXÙKˆBˆÝÙ\ˆ›Û[YH\ÈH™XØ[Û][K\ÜÚ]]™HÛÛ\ÙK›ÝHÙ[X[XÈ™\Z\ŽÂˆ›È™\ÚÛÜˆ•S™\ØÝYHØ\È][\Y‚‹HÝ]\ÎˆŒWÓ“×Ð”‘PRÕ“ÕQÒÈÕÔQÔS‘S‘×ÔÕTT•’TÓÔ—Ô‘U’QUØ‚ˆÝ]]È[™˜Z[YXÚšXØ[][\È\™H™\Ù\™Y[™\ˆÝ]]ËÜŒKØˆ[™™\ÜËÜŒKØˆ›YÜÈ™[XZ[‚ˆØÜ™Y[š[™×ÙÝÝ\ÙYY˜[ÙXÙ™šXÚX[Ý\ÝÛX™[×Ü™XYY˜[ÙX[™ˆÜ™[˜\žWÛ[ÝÛÝ›[ÝÝÝXÚYY˜[ÙXˆHÛ›H™^XÝ[Ûˆ\ÈÝ\\š\ÛÜ‚ˆ™]šY]È[™^XÚ]]]Üš^˜][ÛˆÙˆÛ™HÙ\\˜]H›ÛÝË]\È›È]]ÛX]XÂˆÛÛ[X][Û‹ØÜ™Y[š[™ËÙ™šXÚX[\ÝÜˆ›ÙXÝ[ÛˆY\™ÙH\È[ÝÙY‚‚ˆÈÈŒH8 %š^YÙ[X[XÈXYÛ›ÜÝXÈÛÜÙ[Ý]8 %Œ‹LKLL‚‚‹HHš^Y\ÛXÙH]˜[X]Üˆ\ÙYH˜]]™HŒˆÜ™\ˆ[™]XÚYX™[ÈÛ›BˆY\ˆ›ÝËÙ™X]\™HÛÛœÝXÝ[Ûˆ[™ØÛÜš[™Ëˆ]\ÙYHœ›Þ™[ˆ[KPˆ˜[Y\ÂˆØ[™Y]WÝ™\ÚÛLKŒ™\Ù[˜ÙWÝ™\ÚÛLX[ÛX\™Ú[LŒ[™ˆY›Ýš]Üˆ[™HH™]È™\ÚÛ‚‹H\È\ÈHXYÛ›ÜÝXË›ÝH™\™YÚ\Ý\™YÙ[X[XÈØ]H[™›ÝÕKˆBˆ]]Üš]]]™Hš[\È\™H[ˆÝ]]ËÜŒKÙ]˜[Ùš^YÜÙ[X[X×Ø][\KØÈBˆÛÜœ™\ÜÛ™[™È™\Ü\È™\ÜËÜŒKÔŒWÑ’VQÔÑSPS•P×ÑPQÓ“ÔÕPË›Y‚ˆÈŒ‹LLLH8 %™]Ë\Ù\™\ˆ™\ÝÜ˜][ÛˆÝ\Y‚‹H\Ý\Ú\Îˆ™\ÝÜš[™ÈX›XÈŒKÕŒˆ]H[™^XÝ˜\ÙH[™™\™[˜ÙH\[™[˜ÚY\È[˜X›\ÈH™]Ë]šX]X›HÛÜœ™\ÜÛ™[˜ÙH^\š[Y[È^[™[™ÈH˜Z[YŒHÚYXØ\ˆ\È[š\ÝYšYY‚‹H]šY[˜ÙNˆ™]ÚY[™[[ÝHœ˜[˜Ú\ÎÈ]\Ý™[XZ[œÈŒHNLLÎˆ™XYÚ›Û›ÛÙÚXØ[\ÝÜšXØ[[™[™ÜÈ[™ŒH™\ÜÎˆŒHYØ[Y]ˆ™YÜ™\ÜÚ[Û‹[Z]YŒˆØZ[‹š^Y\ÛXÙHØÛÜ™HZ\ÛX]ÚÛÝ]]ÛÛ\ÙKˆÛ˜Z[™YÚXÚÜÚ[È\™H[˜]˜Z[X›K‚‹HÚ[™Ù\ÎˆÝ\Y™\Ý[XX›HÙ™šXÚX[ÒUHÌÈ
+Š™\™XÝ
+ŠˆÝÛ›ØY
+MKLËM‹ŽMHž]\ÊNÈÝÛ›ØYY[™ÔË]˜[Y]YŒH^™\ÜÚ[Û‹ÛX™[È\˜Ú]™\ÎÈ\ÛÛ]YØØ[]K]ÛÛÈ[š\›Û›Y[ˆ[[™[ÜžKÜÚÜ[Žˆ™\ÜËÔ‘TÕÔ‘WÔÕUT×ÌŒŒLK›Y‚‹H˜Z[\™KÜ™\Z\ŽˆÚ[Ø[™›ÞXÚÜÈX˜›]Ü˜\È^XÝ][Ûˆ™\]Z\™\ÈÛÛ\ØØ[][Û‹ˆÝ[™\™™[ˆXÚÜÈ[œÝ\™\\ÈØØ[š\X[[ˆ›ÛÝÝ˜\ÝXØÙYYYˆ™Z]\ˆ\ÈHØÚY[YšXÈ™\Ý[‚‹H™\Ý[ÎˆX›XÈŒH[››Ý][ÛœÈ™XÛÝ™\™YÈÒUKÕŒ‹Ü[[YKÜ›Ú™XÝYÙ[™\˜]Y\ÜÙ]È[™[™Ëˆ›È\ÝÜšXØ[ÚXÚÜÚ[Ø˜[šÈ™\›ÙXÝ[ÛˆÛZ[YYˆÙY\™XÛÝ™\žHØÜš\È[™™]È›Ý™[˜[˜ÙNÈ™\Ù\™HZYÜ˜][ÛˆQÑS•Ë›YY]‚‚ˆÈÈØØ]SSÕUHL8 %[šYšYYÜXÚYšXØ][Ûˆ[™™Y™\™[˜ÙH]Y]8 %Œ‹LLLB‚‹H\Ý\Ú\ÎˆHÚ[™ÛHÜXÚYšXØ][Û‹XÛÛ™][Û™Y›Ý[™][ÛˆØ[ˆXœÛÜ˜ˆBˆ™]\ØX›H\œÚ\Ý[\]Y\žK[\Ü˜[[[™ÝXYÙKÜ[‹]›ØØX[\žH[™™[XXš[]BˆYX\Èœ›ÛHH[ˆ™\]Y\ÝY™\ÜÚ]ÜšY\Ë›ÝšYYHYØ[šY[È›Ý[™\žBˆ[™Û™KXÚXÚÜÚ[ÜÚ\™Y\Ý]HÛÛ˜XÝ\™Hœ›Þ™[ˆ™Y›Ü™H˜Z[š[™Ë‚‹HÛÙNˆÛÛ™Y[™Ú[ÝËX]Y]YSÕ‹˜[œÔ“SÕ[\“SÕÑÕ˜XÚËˆ›^ÛÚËRÕS‹Õ•‹ÓÕ•˜XÚË™Y™\‘S“È[™Ü[‹QÜ›Ý[™[™Ñ[›ÎÈÜ™X]Yˆ[šYšYYÜXÕ˜XÚØLÚ\HÚÙ[]Û‹Ú\™YYØ[\ØÛÜHÝX\™Ë\ÚËÜØ[\BˆÛÛ˜XÝËÜÜËÜ[[YH[\™˜XÙ\Ë\˜[Y]\‹\Ú\š[™È]Y][™™\›ÙXÚX›Bˆ]Y]ÜØ[š]HÛÛËˆ^XÝÛÝ\˜ÙH™XÚ\\È[™ÛÛ[Z]QÈ\™H[‚ˆ™\ÜËÝ[šYšYYÓÔS—ÔÓÕTÑWÕRS’S‘×ÐUQU›Y[™ˆÝ]]ËÝ[šYšYYÛÜ[—ÜÛÝ\˜ÙWØ]Y]šœÛÛ˜‚‹H]KÜ›ÝØÛÛˆœ›Þ™HŒKÕŒˆš]ØØ[Xœ˜][Û‹Ý˜[Y][ÛˆÜ]È[™™\Ù\™YˆŒHKLKLØ\ÈŒˆKLKLËNXÈ™]Z[™Y[MMÈŒ‚ˆÛÝ\˜ÙH\™Ù]RQ[Z\ÜÚ[™È›ÝÜÈ\È[›X™[Y™XÛÜ™Ëˆ›ÈÙ™šXÚX[]\ÝX™[ÂˆÜˆØÜ™Y[š[™ÈÜ›Ý[™]Ù\™HÜ[™Y‚‹HÚXÚÜÚ[ÑÔNˆ›ÈØØ]SSÕUHÚXÚÜÚ[[™›È˜Z[š[™È[ˆY]ÈÔBˆ[ØØ][ÛˆØ\È™\›Ëˆ^\›˜[Ø[š]HØ\ÈÛÛ\[KÚ[Û›H
+X›Ý]ŒÈÈØ[ˆ[YJNˆLÌLÙ[XÝYÛÝ\˜ÙHš[\ÈÛÛ\[YKÌL[ž\Ú[È™XXÚY[ˆ[™Hš[™H™[XZ[š[™È˜Z[\™\È\™H™XÛÜ™Y\[™[˜ÞKÝ™\œÚ[Ûˆš[™[™ÜË‚‹H™\Ý[ÎˆÚÙ[]ÛˆÔH›ÜØ\™š[š]HÚ]ØÛÜ™HÚ\HÌKLXÈYØ[ÝX\™ˆÛ[ÚÙH\ÜÙYÈÚÙ[]Ûˆ›Û‹ZXY\˜[Y]\ˆœ˜XÝ[ÛˆŽNNNNMÎ˜
+›ÝBˆš[˜[[[Ù[ÛZ[JKˆ›È™[˜ÚX\šÈY]šXÈØ\È›ÙXÙYˆLØÛÜKØ]Y]ÜØ[š]Bˆ\ÜÙYÈLHSKQÜ›Ý[™[™ÑS“ËPˆXÜ]Z\Ú][Ûˆ[™›ÜÜØ[Ù^™\ÜÚ[ÛˆØ]\È\™Bˆ™^‚‚ˆÈÈØØ]SSÕUHLH8 %ÝÚ[‹Pˆ›Ý[™][ÛˆXÜ]Z\Ú][Ûˆ[™Y\\ˆÛ[ÚÙH8 %Œ‹LLLB‚‹H\Ý\Ú\ÎˆH]Y]YÜ›Ý[™[™ÑS“ÈÝÚ[‹PˆÛÙÐÛÓÔˆÙZYÚÈØ[ˆÙ\™H\ÈBˆÚ\™Yš\ÝX[ÜÜXÚYšXØ][Ûˆ›Ý[™][ÛˆY\ˆÙ[XÝ[™ÈHÚXÚÜÚ[›Ü›X]ˆÛÛ\]X›HÚ]HØØ[SQ]XÝ[ÛˆÜ›Ý[™[™ÑS“È[\[Y[][Û‹‚‹H\ÜÙ]ÎˆXÜ]Z\™Y[™\ÚY›ÝHÜšYÚ[˜[™[X\ÙBˆ
+ŒÌØNŒ™MŽL˜MXÌŽXÎLŒLÙMLŽYŒ˜˜ŽŽXÍ™™LNM™ŒØXÍ˜XØˆLÎMËNLHž]\ÊH[™HÜ[“SSXˆÛÛ™\œÚ[Û‚ˆ
+MNMXÎXÌŒÌÎXMÌØMLÌÍÍMŒMYLYYM™YÌÎYYÙMŽM˜Ù˜ÍMNLMØˆLÍKMÌKÌˆž]\ÊKˆHSQ]XÝ[Ûˆ\ÜÙ]\ÈH[[YHØ[™Y]H™XØ]\ÙBˆ]ÈÙ^H^[Ý]X]Ú\ÈHY\\ŽÈ›Ý™[˜[˜ÙH\È[‚ˆÝ]]ËÝ[šYšYYÜ›ÝØÛÛÙ›Ý[™][Û—Ø\ÜÙ]šœÛÛ˜‚‹HÛÙKÜÛ[ÚÙNˆZ[HØØ[ÝÚ[‹Pˆ[Ù[
+ŒÌ‹NM‹ÍŒÈ\˜[Y]\œÊKØYYBˆÛÛ™\YÚXÚÜÚ[Ú]^XÝY[š]X[^˜][ÛˆÙ^\È[™È‘T•Y]Y]BˆÙ^\È™\ÜY\È›Û‹Y˜][Z\ÛX]Ú[ˆ˜[ˆÛ™HÕQHX™[Yœ™YH›ÜØ\™Û‚ˆYØ[ŒHšY[Èœ˜[YHŒËœ™Ø\Ú[™ÈØ\ˆˆY\ÝšX[ˆˆÞXÛ\Ý˜‚‹H™\Ý[ÎˆÌš[š]H™YXÝ[ÛœËš[š]H›Þ\È[™š[š]HØÛÜ™\ÎÂˆÝ]]ËÝ[šYšYYÝLWÙ›Ý[™][Û—ÜÛ[ÚÙKšœÛÛ˜™XÛÜ™ÈH^XÝÛÛ™šYËˆÚXÚÜÚ[\Ú]šXÙH[™YØ[œ˜[YKˆ\È\ÈHÛÛ\]Xš[]HÛ[ÚÙHÛ›NÂˆ›È›ÜÜØ[™XØ[^™\ÜÚ[ÛˆÜ›Ý[™[™ÈY]šXÈÜˆ˜XÚÚ[™È™\Ý[\ÂˆÛZ[YYˆÙ™šXÚX[]\ÝX™[È[™ØÜ™Y[š[™ÈÜ›Ý[™]™[XZ[ˆ[œ™XY‚‹HÚXÚÜÚ[ÑÔKÝØ[[YNˆ›ÈØØ]SSÕUHÚXÚÜÚ[ÈÛ™HNY\]Z]˜[[ÔNÂˆ[Ù[Z[Ù›ÜØ\™X›Ý]HËˆ™^Ø]H\ÈX™[Yœ™YH›ÜÜØ[[™ˆ^™\ÜÚ[ÛˆÜ›Ý[™[™ÈÛˆYØ[]™[ÜY[œ˜[Y\Ë‚‚ˆÈÈØØ]SSÕUHLH8 %›ÜÜØ[Ø]HXYÛ›ÜÝXÈ8 %Œ‹LLLB‚‹H\Ý\Ú\ÎˆHØYYÝÚ[‹Pˆ›Ý[™][ÛˆÛÝ[›ÝšYHÝY™šXÚY[HØØ[^™YˆÜ[‹]›ØØX[\žHØ[™Y]\È›ÜˆHÚ\™YÙ[X[XËÝ˜XÚÚ[™È]ÛˆHš^YˆYØ[]™[ÜY[ÛXÙK‚‹H›ÝØÛÛˆMˆŒKÕŒˆØ[Xœ˜][Û‹Ý˜[Y][Ûˆ^™\ÜÚ[Û‹Yœ˜[YH›ÝÜËL\™Ù]ˆ›Þ\ËÌØ[™Y]\È\ˆ›ÝÎÈ[Ù[[™™\™[˜ÙHÛÛ\]Y™Y›Ü™HXXÚˆÛÜœ™\ÜÛ™[™ÈX™[š[HØ\ÈÜ[™Yˆ›È™\ÚÛš][™Ë˜Z[š[™ËˆÙ™šXÚX[]\ÝX™[ÈÜˆØÜ™Y[š[™ÈÜ›Ý[™]‚‹H™\Ý[Y\ˆÛÜœ™XÝ[™ÈHSQ]XÝ[Ûˆ‘Ôˆ[œ]ÛÛ˜XÝˆ™\ÝR[ÕBˆLŒXØ\ÈM™\ÝR[ÕHLLØ\ÈŒYX[ˆ™\Ý[ÕBˆŒÍM˜[™YX[ˆØÛÜ™H]™\Ý[ÕHŒLÌL˜ˆ›Þ\È[™ØÛÜ™\ÈÙ\™Hš[š]K‚ˆ\È™[XZ[œÈ™[ÝÈH\ØX›H›ÜÜØ[Ø]KÛÈÙ[X[XËZXYÝ˜XÚÚ[™È˜Z[š[™Âˆœ›ÛH\ÈÝ™X[H\È\Ø[ÝÙYˆH[š]X[‘Ð‹Ð‘Ô‹\ÝØ\YXYÛ›ÜÝXÈØ\Âˆ\ØØ\™Y[™\È›Ý\ÙY\È]šY[˜ÙK‚‹HXYÛ›ÜÚ\ËÛ™^Ú[™ÙNˆ[œÜXÝ›Û\ÚÙ[š^˜][Û‹ØØ]YÛÜžH\ÜÚYÛ›Y[›ÞˆXÛÙ[™È[™›ÜÜØ[Ù[XÝ[ÛˆÛˆ\ÈØ[YHYØ[ÛXÙKˆ™\Ù\™HHÜ]ˆ›ÝÜËÚXÚÜÚ[[™X™[ÎÈÈ›Ý[™HH™\ÚÛÜˆ[]H\™Ø\Ù\Ë‚ˆ]]Üš]]]™HÝ]]ˆÝ]]ËÝ[šYšYYÝLWÜ›ÜÜØ[ÙØ]KšœÛÛ˜[™ˆ™\ÜËÝ[šYšYYÕLWÔ“ÔÔÐSÑÐUK›Y‚‹HÙ[XÝ[Û‹[Û›HÚXÚÎˆ™]Z[š[™È[LXÛÙ\ˆ]Y\šY\È˜Z\ÙY[ÕPLÂˆŒL[™YX[ˆ™\Ý[ÕHÈŒÌÍXÛÈÜZÈÙ[XÝ[ÛˆÛÛšX]\È]ˆÙ\È›Ý™\Z\ˆØØ[^˜][Û‹ˆHÜNLÝ]]\È™]Z[™YÙ\\˜][H[™ˆ\È›Ý\ÙY\ÈH˜Z[š[™È˜[šË‚‹HHš^YÛ\ÜÈ›Û\
+Ø\ˆˆY\ÝšX[ˆˆÞXÛ\Ý˜
+HÚ][L]Y\šY\Âˆ™XXÚY[ÕPŒHŽL[ÕPLŒNYX[ˆ™\Ý[ÕHŒÍŒÍXÈ\È\ÂˆH\ÙY[\™XÝ[Ûˆ›ÜˆH™\Z\ˆ]Ý[™[ÝÈHÝYÙHØ]H[™™[XZ[œÂˆ^ÛYYœ›ÛH˜Z[š[™ËˆÝ]]‚ˆÝ]]ËÝ[šYšYYÝLWÜ›ÜÜØ[ÙØ]WÙÙ[™\šX×ØÛ\ÜÙ\×ÝÜLšœÛÛ˜‚‚ˆÈÈØØ]SSÕUHLKŒÈ8 %›ÜÜØ[\Ù[XÝ[Ûˆ™\Z\ˆXYÛ›ÜÝXÜÈš[˜[^™Y8 %Œ‹LLLB‚‹HÚ[™ÙNˆXYHHØ[›ÛšXØ[Ì\]Y\žHÝ]]™\›ÙXÚX›HÚ]^XÚ]ˆX^Ü\—Ú[YØ[™›Û\Y]Y]K[™Þ[˜Ú›Ûš^™YH™\ÜÜÝ]\È˜[Y\ÂˆÚ]HÛÜœ™XÝY‘Ôˆ[‹ˆ™K\˜[ˆHÌ\]Y\žH˜\Ù[[™KHL\]Y\žBˆÙ[XÝ[ÛˆXYÛ›ÜÝXË[™Hš^YÛ\ÜÈ›Û\
+Ø\ˆˆY\ÝšX[ˆ‚ˆÞXÛ\Ý˜
+HXYÛ›ÜÝXÈÛˆHY[XØ[YØ[M‹\›ÝÈÛXÙK‚‹H™\Ý[ÎˆH˜\Ù[[™HÝ^YY][ÕPŒHM[ÕPLŒ[™ˆYX[ˆ™\Ý[ÕHŒÍM˜È™]Z[š[™ÈL]Y\šY\È™XXÚYŒL][ÕPLÂˆHš^YÛ\ÜÈ›Û\Ú]L]Y\šY\È™XXÚYŒN][ÕPL[™ˆŽL][ÕPŒKˆ[›Þ\ËÜØÛÜ™\ÈÙ\™Hš[š]K›È›ÝÜÈÙ\™HÚÚ\Yˆ[™›ÈÙ™šXÚX[]\ÝX™[ÈÜˆØÜ™Y[š[™ÈÜ›Ý[™]Ù\™H™XY‚‹H[\œ™]][ÛŽˆ›Û\ØØ]YÛÜžH\ÜÚYÛ›Y[[™ÜZÈÙ[XÝ[Ûˆ\™HÛÛ˜Ü™]Bˆ™\Z\ˆ\™XÝ[ÛœË]H›ÜÜØ[Ø]H™[XZ[œÈ™[ÝÈHÝYÙHÜš]\š[Û‹‚ˆ›ÈÙ[X[XËZXYÝ˜XÚÚ[™È˜Z[š[™È˜[šÈØ\ÈÜ™X]Y[™›È˜Z[š[™ÈØ\Âˆ][˜ÚYˆH™^^\š[Y[]\ÝÙY\\ÈÜ]ØÚXÚÜÚ[š^YÚ[Bˆ[œÜXÝ[™È›Û\ÚÙ[š^˜][Û‹Ø]YÛÜžH\ÜÚYÛ›Y[[™›ÞXÛÙ[™Ë‚‹H™\šYšXØ][ÛŽˆ[šYšYY[Ù[\ËÝÛÛÈÛÛ\[NÈÔHÚÙ[]ÛˆÛ[ÚÙH\Èš[š]NÂˆ\˜[Y]\‹\Ú\š[™È]Y]™[XZ[œÈÚÙ[]Û‹[Û›HÚ]›Û‹ZXYœ˜XÝ[Û‚ˆŽNNNNMÎ˜ÈYØ[ÝX\™XØÙ\ÈŒH[™™Z™XÝÈ™\Ù\™YLØ‚‚ˆÈÈØØ]SSÕUHL‹ÕLTˆYX\Ý\™[Y[XÛÛ˜XÝ™\Z\ˆ8 %Œ‹LLLB‚‹HØÛÜNˆ™\Ý[YYœ›ÛHMŽMYXÎX˜ŽØÍNNLØM™LMÌLYŽMLLXÛ‚ˆÛÙ^ÝL‹]L\‹Y›Ý[™][Û‹\™\Z\‹LŒŒLXÈ›ÈLˆÛÜšÈ[™›È˜Z[š[™ÈØ\Âˆ][˜ÚYˆH›Ú™XÝ›ÛÝØ\È™\šYšYY\ÈÙ]L‹Ý\Ù\‹ÓØØ]SSÕ‚‹H™\›ÙXÚXš[]H\Ý\Ú\ÎˆHœ™\ÚÚXÚÛÝ]ÚÝ[[\ÜH[šYšYY]BˆXÚØYÙH\Ú[™È˜XÚÙYÛÝ\˜ÙHÛ›KˆHš\œÝÛÛ™H˜Z[Y™XØ]\ÙHHœ›ØYˆ]KØYÛ›Ü™H[H[ÛÈYØØ][[ÝÝ[šYšYYÙ]KØˆYYH˜\œ›ÝÈYÛ›Ü™Bˆ^Ù\[Û‹ÛÛ[Z]YHXÚØYÙHÛÝ\˜ÙK\ÚY][™™KXÛÛ™YH™[[ÝBˆœ˜[˜Ú]™ŽXÎNXÎŒLÍÍÌÙŽX˜™MŽMŒ˜ÍÙMÌØL˜™ˆ[\ÜËÚÙ[]ÛˆÛ[ÚÙKˆ[™›Ý[™][ÛˆÛ[ÚÙH\ÜÙY[ˆHÛÛ™KˆXÚ\Ú[ÛŽˆÙY\H™\Z\ˆ[™X\šÂˆLYØ[\ØÛÜH™\›ÙXÚXš[]HTÔË‚‹HÚXÚÜÚ[\Ý\Ú\ÎˆHSQ]XÝ[ÛˆÝÚ[‹PˆÛÛ™\œÚ[Ûˆ]\Ý]™HÛ›BˆØÝ[Y[Y›Û‹XÛÜ™HØYZ\ÛX]Ú\ËˆÛÛËÝ[šYšYYØ]Y]Ù›Ý[™][Û—ØÚXÚÜÚ[œXˆ›ÝÈ™\]Z\™\ÈH^XÝÛ™H˜Z[š[™Ë[Û›HZ\ÜÚ[™ÈÙ^Bˆ—Ü]Y\žWÙÙ[™\˜]Ü‹›X™[Ù[X™Y[™ËÙZYÚH^XÝ™YH‘T•Y]Y]Bˆ[™^XÝYÙ^\Ë[™™\›È˜XÚØ›Û™KÙ[˜ÛÙ\‹ÙXÛÙ\‹Ø˜›ÞZXYÛ[™ÝXYÙKY\Ú[Û‚ˆZ\ÜÚ[™ÈÙ^\Ëˆ]Y]™\Ý[ˆTÔ×ÐÓÓ‘USÓSÕRS’S‘×ÓÓ“WÓRTÔÒS‘Ø‚‹H™\›ØÙ\ÜÚ[™È\Ý\Ú\ÎˆH›Ü›X[[[YH]\Ý™H\]Z]˜[[ÈBˆÙ™šXÚX[SQ]XÝ[Ûˆ]ˆ[ˆ]\›Z[š\ÝXÈYØ[[XYÙ\ÈÙ\™HÛÛ\\™YÚ]ˆHØ[YHš^YÙ[™\šXÈ›ØØX[\žNÈ[›ÙXÙYÌš[š]H™YXÝ[ÛœËˆX^[][H›ÞY™™\™[˜ÙHŒ[™X^[][HØÛÜ™HY™™\™[˜ÙHŒˆXÚ\Ú[ÛŽ‚ˆ™\›ØÙ\ÜÚ[™ÈÛÛ˜XÝTÔÎÈHš[Üˆ[™XZ[[œÛÜˆÛ[ÚÙH\È›Ý›Ü›X[ˆ]šY[˜ÙK‚‹HÜ]\Ý\Ú\ÎˆH]\›Z[š\ÝXÈšY[ËY\Ú›Ú[Ü]˜[[˜Ú[™È^™\ÜÚ[Û‚ˆ›Û[YK\ÚXØ[]\™Ù]›Û[YK[™[Ý[Ûˆ›ÞH\ÈY\]X]H™Y›Ü™H›Ü›X[ˆ]˜[X][Û‹ˆÛÛËÝ[šYšYYØZ[ÛYØ[ÜÜ]œXœ›Þ™HŒˆÚ]ÙYYŒŒLXˆ[™Ü]ÒBˆYNŒØØ˜ŒŒÎLNYŒÙYŽÙŒ™X˜ÌY˜MLŽNLÎ˜ÍYŒÎY˜Í™LXÌ‚ˆŒHš]ØØ[Xœ˜][Û‹Ý˜[Y][Ûˆ\™HKÌËÌØšY[ÜÈ[™Œˆ\™HKÌËÌØÈŒ‚ˆÛÝ\˜ÙK]\™Ù]RQ[Z\ÜÚ[™È™Y™\™[˜Ù\È™[XZ[ˆMMØ
+š]Û›H[ˆ\ÈÜ]
+KˆÚ]›È™\XÙ[Y[ÜˆÚ[[›ÜˆXÚ\Ú[ÛŽˆœ™Y^™H\ÈÜ]™Y›Ü™H[žBˆLHY\][ÛˆÜˆ›Ü›X[Ø]K‚‹H\™Ø\™KÝØ[[YNˆÛ™HÕQH]šXÙH
+NY\]Z]˜[[
+HØ\È\ÙY›ÜˆBˆÚXÚÜÚ[]Y]Û[ÚÙK[™\]Z]˜[[˜ÙHÚXÚÎÈ\ÙHÚÜÚXÚÜÈÛÛ\]Yˆ[ˆ[™\ˆHZ[]HXXÚˆÙ™šXÚX[]\ÝX™[È[™ØÜ™Y[š[™ÈÜ›Ý[™]Ù\™Bˆ›ÝÜ[™Yˆ^\›˜[˜\Ù[[™H^XÝ][Ûˆ™[XZ[œÈ[˜ÛÛ\]H[™\ÈH™^ˆ›ØÚÚ[™ÈL\ÚË‚‚ˆÈÈØØ]SSÕUHLˆ8 %[\“SÕYØ[Y]™[ÜY[^XÝ][Ûˆ8 %Œ‹LLLB‚‹H\Ý\Ú\Îˆ]X\ÝÛ™HX›\ÚY^\›˜[“SÕY]ÙØ[ˆ™H^XÝ]YÛˆBˆœ›Þ™[ˆYØ[Y]™[ÜY[ÝXœÙ]Ú]Ý]™XY[™ÈÙ™šXÚX[]\ÝX™[ÈÜ‚ˆZ^[™È]È[š\›Û›Y[[ÈØØ]SSÕUK‚‹H›ÝØÛÛˆÛÜYY[\“SÕ]ÛÛ[Z]ˆ˜MMY™YMLÌ˜˜ŒMNMYYLÍÌØŒYXŒX[ÈH\ÛÛ]Y[š\›Û›Y[ˆÙ]L‹Ý\Ù\‹Ü™Y™\™[˜ÙWÙ[œËÝ[\›[ÝØYYH™[X\ÙYÚXÚÜÚ[ˆÚXÚÜÚ[ÜšËœ
+ÒKLM‚ˆMYNXŒ˜ÙXØ˜ÌMNLY˜XÙMÎYŒÎLMŽMNÍMM™YØÌØ™ŽLMYÍÙN
+K[™ˆ˜[ˆHY\\ˆÛˆŒH˜[Y][ÛˆšY[ÜÈL˜[™MÛ™HYØ[ˆ^™\ÜÚ[Ûˆ\ˆšY[Ëˆ˜XÚÑ]˜[[ˆ]˜[X]YHÛÈÙ[™\˜]YÙ\]Y[˜Ù\ÂˆÚ]ÕKÓPT‹[™Y[]K‚‹H™\Ý[ˆ™YXÝ[Ûˆ[™]˜[X][ÛˆÛÛ\]YÚ]M™YXÝ[Ûˆ›ÝÜÈ[™LÂˆÜ›Ý[™]]›ÝÜËˆÛÛXš[™YÕHØ\ÈMÎXSÕHNŽLX[™QŒBˆNKXˆÙ™šXÚX[]\ÝX™[ËØÜ™Y[š[™ÈÜ›Ý[™][™˜Z[š[™ÈÙ\™H›Ýˆ\ÙYˆH˜]ÈÝ]]È[™[š\›Û›Y[™[XZ[ˆÝ]ÚYHH™\ÜÚ]ÜžNÂˆÝ]]ËÝ[šYšYYÙ^\›˜[Ø˜\Ù[[™\ËÝ[\›[ÝÛYØ[ÝŒKšœÛÛ˜™XÛÜ™ÈBˆ™\›ÙXÚX›HY]Y]H[™™\ÜËÝ[šYšYYÑVT“SÐTÑSS‘WÓQÐSÑU‹›Yˆ™XÛÜ™ÈH›Ý[™YØÛÜK‚‹HÛÛ\]Xš[]HÛÜšÈØ\ÈÛÛ™š[™YÈH\ÛÛ]YÛÜNˆHÜ˜Ú^Ú[KˆÝ\œ™[UÜ˜ÚÜ˜Ú›ØY™Z]š[Ü‹\ØX›[™ÈH™Y[™[™]˜Z[™YˆÝÛ›ØYHÕQHØØ[\‹]\HTH\]K[™[TH[X\Ù\È[ˆ˜XÚÑ]˜[‚ˆ\ÙHÚ[™Ù\ÈÈ›Ý[\ˆHØØ]SSÕUH[Ù[ÜˆHœ›Þ™[ˆÜ]‚‹HXÚ\Ú[ÛŽˆÙY\H[\“SÕ[ˆ\È™X[^\›˜[X˜\Ù[[™H]šY[˜ÙKÚ[Bˆ™]Z[š[™ÈLÑVT“SÐTÑSS‘ORSÓÓTUX[[HÙXÛÛ™[™\[™[ˆY]Ù[ÛÈ›ÙXÙ\È™YXÝ[ÛœÈ[™]˜[X][Û‹ˆÑÕ˜XÚÈ[™›^ÛÚÂˆ™[XZ[ˆ[™[™È™XØ]\ÙHZ\ˆX›\ÚYÙZYÚ[šÜÈ\™H›ÝY]]˜Z[X›Bˆ›ÝYÚH\ÛÛ]YÝÛ›ØY]‚‚ˆÈÈØØ]SSÕUHLTˆ8 %›Ü›X[Ù[™\šXÈ[™^™\ÜÚ[ÛˆYX\Ý\™[Y[È8 %Œ‹LLLB‚‹HYX\Ý\™[Y[ÛÛ˜XÝˆHœ›Þ™[ˆÜ]ÒH\ÂˆYNŒØØ˜ŒŒÎLNYŒÙYŽÙŒ™X˜ÌY˜MLŽNLÎ˜ÍYŒÎY˜Í™LXÌÈBˆ›Ý[™][ÛˆÚXÚÜÚ[ÒH\ÂˆMNMXÎXÌŒÌÎXMÌØMLÌÍÍMŒMYLYYM™YÌÎYYÙMŽM˜Ù˜ÍMNLMØÈ]™\žBˆ›ÜØ\™\ÙYØY[XYÙQœ›ÛQš[Xš^ØØ[T™\Ú^™JLÌÌÊXˆXÚÑ][œ]Ø[™]]T™\›ØÙ\ÜÛÜ˜Ú]‘Ô‹]ËT‘ÐˆÛÛ™\œÚ[Û‹‚‹HÙ[™\šXÈ›ÝØÛÛˆÛ™Hš^Y]Y\žKZ[™\[™[›ØØX[\žK[YØ[ˆØ[Xœ˜][Û‹Ý˜[Y][Ûˆœ˜[Y\ÈÚ]X]\šX[^™YX™[Ë\ÚXØ[[š]Âˆ
+]\Ù]šY[Ëœ˜[YK˜XÚ×ÚY
+XÜLÌMLÌÌÎLXYÛ›ÜÝXÜË[™ˆÛX[ÛYY][KÛ\™ÙHZYÚÝ˜]KˆH[ˆÛÝ™\™YŒH[š\]YH[XYÙ\ËˆÌËLˆ\ÚXØ[Õ[š]Ë[™KNLˆ[š\]YH\ÚXØ[Øš™XÝËˆÜML™XØ[ˆØ\ÈŒHŒØ[™ŒˆŒŽX][ÕHL
+ŒKÕŒˆ[ÕHŒNˆLÌKËMˆ[ÕHÍNˆŒKËŒŒ˜
+KˆXÚ\Ú[ÛŽˆ›Ü›X[Ù[™\šXÈØ]HRSÈ\È\È™[ÝÂˆHŽY\][ÛˆX\›K\\ÜËÛÈH]XÝ[ÛˆY\][Ûˆ›Ø™H\È™\]Z\™Yˆ™Y›Ü™H[žHÜ›Ý[™[™ÈY\][Û‹‚‹H^™\ÜÚ[Ûˆ›ÝØÛÛˆ]™\žHYØ[Ø[Xœ˜][Û‹Ý˜[Y][Ûˆ]Y\žHÛÛšX]YˆÛ™H]\›Z[š\ÝXÈZYHX™[Yœ˜[YH[™Ú[ˆ]˜Z[X›KÛ™Hš\œÝ[\Bˆ\™Ù]œ˜[YKˆ[š]ÈÙ\™H
+]\Ù]šY[Ë]Y\žWÚYœ˜[YK\™Ù]ÚY
+XÂˆÛÝ\˜ÙK[Z\ÜÚ[™È™Y™\™[˜Ù\ÈÝ^YY[ˆHÛÝ\˜ÙH[›ÛZ[˜]Ü‹ˆH[ˆÛÝ™\™YˆËMŒ]Y\žKYœ˜[YH›ÝÜÈ[™ËNNH˜[Y\™Ù][š]ÈÚ]™\›ÈÛÝ\˜ÙK[Z\ÜÚ[™Âˆ[š]È[ˆ\ÈØ[Xœ˜][Û‹Ý˜[Y][ÛˆØ[\KˆÜH[ÕHL™XØ[Ø\ÈŒBˆŒÌ[™ŒˆŒŽÈTL[™[\KYœ˜[YH”Ü]Y\žH\™H™XÛÜ™Y[‚ˆ™\ÜËÝ[šYšYYÕLWÑV‘TÔÒSÓ—ÑÔ“ÕS‘S‘×ÑÐUK›YˆXÚ\Ú[ÛŽˆ›Ü›X[ˆ^™\ÜÚ[ÛˆØ]HRSÈ›È^™\ÜÚ[ÛˆY\][Ûˆ\ÈÝ\Y‚‹H›ÈÙ™šXÚX[]\ÝX™[ÈÜˆØÜ™Y[š[™ÈÜ›Ý[™]Ù\™H™XYˆ›ÈLˆÜ‚ˆ[š]™\œØ[˜XÚÈÛÜ™HÛÜšÈØ\ÈÝ\YˆH^\›˜[X˜\Ù[[™HÝ]H™[XZ[œÂˆ[˜ÛÛ\]H™XØ]\ÙHÛ›H[\“SÕ\È™X[™YXÝ[ÛœËÙ]˜[X][ÛŽÈÑÕ˜XÚÂˆ[™›^ÛÚÈX›XÈ˜ZYH[šÜÈ™\]Z\™H[ˆ]][XØ]YÝÛ›ØY]‚‚ˆÈÈØØ]SSÕUHLKPH8 %›ÝØÛÛÛÜœ™XÝ[Û‹˜[YY\][Û‹[™ÝÜ8 %Œ‹LLLB‚‹HHš\œÝZYÚ\›ØÙ\ÜÈ][˜ÚØ\È[˜[Y™XØ]\ÙHSQ[™Ú[™IÜÈY˜][ˆK[][˜Ú\ˆ›Û™XYH›ØÙ\ÜÙ\ÈÝ]ÚYHÈ]Ø\ÈÝÜY™Y›Ü™H[žBˆ›Ü›X[]šY[˜ÙKˆH]\ˆ^Ü˜]ÜžH”Ìˆ[ˆ[ÛÈ\ÙYœ›Þ™[—ÜÝYÙ\ÏLX‚ˆSQ]XÝ[Û‰ÜÈÝÚ[ˆ[\[Y[][ÛˆÚÝÜÈ]˜[YHœ™Y^™\È]Ú[X™Y[™Âˆ[™ÝYÙLÛ›KÚ[HH™YÚ\Ý\™YÛÛ˜XÝ™\]Z\™\ÈÝYÙ\È[™K‚ˆÜÙH^Ü˜]ÜžHY]šXÜÈ\™H^ÛYYœ›ÛHHš[˜[™XÛÜ™‚‹HÛÜœ™XÝY\Ý\Ú\ËÜ›ÝØÛÛˆHš^YYØ[Yš]Ù[™\šXÈÝ™X[HØ[ˆ™\Z\‚ˆH›Ý[™][Ûˆ›ÜÜØ[ØØ[^˜][ÛˆÚ[Hœ™Y^š[™ÈÝÚ[ˆÝYÙ\ÈÌH[™ˆ‘T•ˆHYØ[Yš]Ý™X[H\ÈËŒˆ›ÝÜÈ[™š^YX™[OˆØ\˜ÈBˆÜ]›ØØX[\žKÙ™šXÚX[š^ØØ[T™\Ú^™JLÌÌÊX\[[™K[™[ˆ[›ÛZ[˜]ÜœÈÝ^YY[˜Ú[™ÙYˆH˜[Y[ˆ\ÙYˆœ›Þ™[—ÜÝYÙ\ÏL˜‘ŒMˆSTZYÚQÔHUÜ˜Ú˜]Ú‹ÑÔK[™›ÂˆXØÝ[][][Ûˆ
+ÛØ˜[˜]ÚMŠKˆHÙÙÙYXZÈØ\ÈKMHP‹ÑÔKˆHÛË\Ý\ˆÛ[ÚÙH\ÜÙY™Y›Ü™HH[[‹‚‹HH˜]ÚL‹ÝÛË\Ý\XXØÝ[][][Ûˆ][\\ÜÙYHÛ™K\Ý\Û[ÚÙH]˜Z[Y[‚ˆH[[ˆÚ]UÜ˜Ú	ÜÈ^XÝØ]]ÙÜ˜YÚÛÚÜ×Ø™YXÙ\ˆ\ÜÙ\[Û‹‚ˆHÛX[\ÝÛÜšÚ[™Èš^Ø\ÈXØÝ[][][ÛˆNÈ\ÈÙ\H™XÛÛ[Y[™YˆZXÜ›Ø˜]Úˆ[™Y›Ý[\ˆHÙ™šXÚX[[œ]™\ÛÛ][Û‹ˆ\È˜Z[\™Bˆ[™HÛÜœ™XÝYÛ[ÚÙH\™H™]Z[™Y[ˆHY\][Ûˆ™\Ü‚‹HH˜[YØÚY[HÛÛ\]Y\ØÚÈK‹[™‹XXÚ›Ü›X[H]˜[X]YˆÛˆH[˜Ú[™ÙYŒKZ[XYÙKÌËL‹\\ÚXØ[][š]ØÛÜKˆÜMLˆ™XØ[[ÕLL
+ŒKÕŒŠHØ\È›Ý[™][ÛˆŒËÌŒŽX[‚ˆŽÌŽKÌŽLMX
+\ØÚJKŽÌËÌŽÍ˜
+\ØÚŠKˆŽMKÌŽØ
+\ØÚ
+K[™ŽLÎÌŽMX
+\ØÚŠKˆ[ÕLŒH™XXÚYˆX›Ý]ŽNX[ˆ›ÝÛXZ[œËÚ[H\ØÚMˆ[ÕLÍHØ\ÈÌŒMKÌŒLNX‚ˆÚ^™K\Ý˜][H[ÕLLØ\ÈÛX[ŽLLÍ˜YY][HŽMX[™\™ÙBˆÌX‚‹H˜Z[š[™ÈÙÜÈÛÛZ[ˆØØØ\Ú[Û˜[Ü˜YÛ›Ü›Nˆ˜[˜˜[Y\Ë]ÜÜÈ˜[Y\Âˆ™[XZ[™Yš[š]K[Ú^ÚXÚÜÚ[ÈÙ\™HÜš][‹[™]™\žH›Ü›X[Ú\™ˆ›ÙXÙYš[š]H™YXÝ[ÛœËˆ\È[[Y]žH\È™\ÜY˜]\ˆ[‚ˆš[\™YˆHš[˜[\ØÚMˆÚXÚÜÚ[ÒKLMˆ\ÂˆLY™ŒÎYŽXÌ™NXMY™˜ŒMMŽMLŽ˜ÌLYN˜Ž˜M˜LÙNXNXLØLXÙÍXØØØ‚‹HXÚ\Ú[ÛŽˆH˜[YŒKÕŒˆÙ[™\šXÈØ]HY›Ý™XXÚŽLËŽLY\ˆBˆ™YÚ\Ý\™YÚ^Y\ØÚX^[][Kˆ^™\ÜÚ[ÛˆY\][ÛˆØ\È›ÝÝ\Y™XØ]\ÙBˆ]\ÈÝÛœÝ™X[HÙˆHÙ[™\šXÈØ]KˆYYHÛÜœ™XÝYY\][Ûˆ™\Üˆ˜Z[\™HXÛÛ\ÜÚ][Û‹[™›Ý\ˆ˜[Y›Ü›X[”ÓÓœËˆš[˜[Ý]\È\ÂˆÐÐUSSÕÕWÐ“ÐÒÑQÑÑS‘T’P×ÑÐUWÐQ•T—ÓPVÐQTUSÓ˜Ú]ˆÕÔQÔS‘S‘×ÔÕTT•’TÓÔ—Ô‘U’QUØÈLˆØ\È›Ý][˜ÚY‚‚ˆÈÈØØ]SSÕUHLTŒˆ8 %YX\Ý\™[Y[™\Z\‹Û\ÜËX]Ø\™H™Yš[™[Y[[™›Ý[™][ÛˆÛÛ\][Ûˆ8 %Œ‹LLLB‚‹HÛÛ˜XÝ\Ý\Ú\ÎˆH™[XZ[š[™ÈLH˜Z[\™\ÈÙ\™HØ]\ÙYžHHYX\Ý\™[Y[Ù]HÛÛ˜XÝZ\ÛX]Ú˜]\ˆ[ˆH™YYÈ™\XÙHHSKQÜ›Ý[™[™ÑS“ËPˆ›Ý[™][Û‹ˆHÛÝ\˜ÙHX™[×ÝÚ]ÚYØšY[È\™H›Ü›X[^™YÜ[Y]ÚÈH™\Z\™Y›Ü›X[Ø]\È™\Ù\™HÛÝ\˜ÙH^[È[™\ÙHÜML[ÕKL›ÜˆÙ[™\šXÈ›ÜÜØ[È[™ÜL[ÕKL\™Ù]ÛÝ™\˜YÙH›Üˆ^™\ÜÚ[ÛœËˆH™]š[Ý\ÈLKPK]ŒHš[\È™[XZ[ˆ™\Ù\™Y\È\ÝÜšXØ[\Y˜XÝÈ[™Ù\™H›ÝÝ™\Üš][‹‚‹HÛÛÜ™[˜]KÜÛÝ\˜ÙH]Y]ˆYØ[Ø[Xœ˜][Û‹Ý˜[Y][ÛˆÛÛZ[œÈÌËLˆ\ÚXØ[Õ›Þ\ËˆNMHŒH›Þ\È^[™™[ÝÈH[XYÙH]LOšZYÚ
+Mˆ\™ÙKÈYY][KˆÛX[
+NÈ›È\ÚYHÝ™\™›ÝÈ^\ÝËˆØ[YKYœ˜[YHÙ[ÛY]žHX]Ú[™ÈÈÙ™šXÚX[ÒUHX™[ÈÚ]™\ÈYX[ˆ[ÕHÍMØÈ™Y™\ˆ[™Ù™šXÚX[˜XÚÈQÈ\™HÙ\\˜]H˜[Y\ÜXÙ\ËˆXÚ\Ú[ÛŽˆ™]Z[ˆÛÝ\˜ÙH^[È[™™XÛÝ™\ˆÛ\ÜÙ\ÈžHÙ[ÛY]žNÈÈ›ÝÛ\]˜[X][ÛˆÕ‚‹H]H\Ý\Ú\ÎˆHÛ\ÜËX]Ø\™H\ÚXØ[Yœ˜[YH[š[ÛˆØ[ˆ™\Z\ˆØØ[^˜][ÛˆÚ[H™[[Ýš[™ÈŒKÕŒˆ\XØ]H˜Z[š[™ËˆHš]Ý™X[HÛÛZ[œÈ‹MH[XYÙ\È[™LLˆ›Þ\ÎÈËŒKÕŒˆÝ™\›\ÈÙ\™H™[[Ý™YNÛÛ™›XÝ[™È›Þ\È[™ŒHZ\ÜÚ[™ÈÛ\ÜÈX]Ú\ÈÙ\™H™XÛÜ™Y[™ØœÙ\™YÛ\ÜÙ\È\™HØ\ˆ‹ÎËY\ÝšX[ˆËÌÞXÛ\ÝLË˜[ˆ‹ˆXÚ\Ú[ÛŽˆ™]Z[ˆHÝ™X[HÚ]š^YÛ\ÜÈÛXÞH[™^XÚ]ÝËXÛÛ™šY[˜ÙH]Y]‚‹H[Y\šXØ[ÝXš[]NˆHš[Üˆ‘ŒMˆÙÈ\È™YHš[š]K[ÜÜÈÜ˜YÛ›Ü›N›˜[˜™XÛÜ™È
+\ØÚÚ]\ˆKÍLËÌL‹ÌL
+KˆHœ™\Ú”ÌˆÛ™K\Ý\]Y]œ›ÛH\ØÚ›Ý[™NH˜Z[˜X›H\˜[Y]\œËÝ[ÜÜÈŒÌŒLNNLÍLMM˜™\›È›Û™š[š]HÜ˜YY[Ë[™™\›È›ËYÜ˜YY[\˜[Y]\œËˆXÚ\Ú[ÛŽˆŒˆ\Ù\È”Ì‹ÕŒÌ‹›ÈSTÐ‘ŒM‹‚‹HÙ[™\šXÈ™Yš[™[Y[ˆÛ™H›Ý[™Y”Ìˆ\ØÚœ›ÛHHœ›Þ™[ˆ\ØÚÚXÚÜÚ[\ÜÙYHÛÜœ™XÝYØ]NˆŒKÕŒˆÜML[ÕKLŽNÌM‹ÌŽMÌNÍØÈÛX[ÛYY][KÛ\™ÙHŽLÍÍËÌŽNNNÌŽNMÎXˆXÚ\Ú[ÛŽˆœ™Y^™HHŒˆ\ØÚHÙ[™\šXÈÚXÚÜÚ[[™ÚÚ\\ØÚ‹ÛZ^Y˜[˜XÚË‚‹H^™\ÜÚ[Ûˆ\Ý\Ú\ÎˆÚÛKY^™\ÜÚ[ÛˆÜÚ]]™HÜ[œÈÚ][™Y™\œ™Y›Þ\ËYØ[[\Hœ˜[Y\Ë[™™\Ù\™YŒˆZ\ÜÚ[™Ë]\™Ù]™Y™\™[˜Ù\ÈØ[ˆY[™ÝXYÙKXÛÛ™][Û™YØ[™Y]HÛÝ™\˜YÙHÚ]Ý]\˜\Ú[™ÈÙ[™\šXÈ›ÜÜØ[ËˆÛ™H”Ìˆ\ØÚÛÛ\]Yœ›ÛHHÙ[XÝYÙ[™\šXÈÚXÚÜÚ[ˆ^™\ÜÚ[ÛˆÜL[ÕKL\ÈŒKÕŒˆKŒÌŽMŒLÍØÈHØ[YHÚXÚÜÚ[	ÜÈÙ[™\šXÈ™YÜ™\ÜÚ[Ûˆ\ÈŒKÕŒˆÜML[ÕKLŽNNL‹ÌŽMNÌÎX‚‹H[™ÝXYÙH]Y]ˆÛˆ^XÝHLYØ[˜[Y][ÛˆØ[YKZ[XYÙHZ\œÈÚ]HØ[YK]šY[ÈÙ[[˜ÙHœ›ÛHHY™™\™[\™Ù]Ù]YH™\œÝ\ÈÚY™›YÜL™XØ[\ÈŽMNLÌÌËÌŽÌLLÌØ[™TL\ÈÌÍŽLKÌLLMNXˆ›ÝÝšXÝÛÛ\\š\ÛÛœÈ\ÜËÛÈ[™ÝXYÙHÛÛ™][Ûš[™È\ÈYX\Ý\˜X›H˜]\ˆ[ˆÙ[™\šXËX›Þ[Û›H™Z]š[Ü‹‚‹H^\›˜[]˜[X]ÜŽˆÞ[]XÈ\™™XÝÙ[\KÒQ\ÝÚ]Ú[™Ü›ÜÜËY]˜[X]Üˆ\œ˜^\È\ÜÈÚ]X^[][HY™™\™[˜ÙHŒˆ[\“SÕ]˜[X]YšY[ÜÈL‹ÌMØØÝ\ˆ[ˆ]ÈXÛ\™Y˜Z[š[™ÈÛÛÈ]ÈÕHMÎH\È™XÛ\ÜÚYšYY\ÈTSS‘WÔÐS’UWÓÓ“WÕRS’S‘×ÓÕ‘T“T‚‹HXÚ\Ú[ÛŽˆHš[˜[Ú\™Y^™\ÜÚ[ÛˆÚXÚÜÚ[Ø]\ÙšY\È[LH\™Ø]\ËˆÙ™šXÚX[Ý\ÝÛX™[×Ü™XYY˜[ÙXØÜ™Y[š[™×ÙÝÝ\ÙYY˜[ÙXŒˆÛÝ\˜ÙK]\™Ù]RQ[Z\ÜÚ[™È™Y™\™[˜Ù\È™[XZ[ˆ^XÚ]
+MMËÚ[[H›ÜYY˜[ÙJK[™›ÈL‹ÕLËÕMÛÜšÈÝ\YˆÙ]ÐÐUSSÕÕWÔ‘PQWÑ“Ô—ÕL˜[™ÝÜ[™[™ÈÝ\\š\ÛÜˆ™]šY]Ë‚‚ˆÈÈØØ]SSÕUHLˆ8 %Ú\™Y\œÚ\Ý[˜XÚÈÛÜ™H[™ÜXš[]HÝÜ8 %Œ‹LLL‚‚‹H›Ý™[˜[˜ÙNˆÛÜšÚ[™Èœ˜[˜ÚÛÙ^ÝL‹\Ú\™Y\\œÚ\Ý[]˜XÚËXÛÜ™KLŒŒLXˆ]]Üš]]]™HØØ[˜\ÙHMLÙXNXLL™MÍ™™ŽYÌ™ŒŒŒÎMŒÍ™XØ[™ˆ[[]]X›HLH›Ý[™][ÛˆÒBˆY˜ÌÍXÙMÌ™MXÙŒ˜ÍXLŽLX˜ÍYYŒÙNYXÍLÍØNNLŒLX˜MXÍ™LÙ˜‚‹H[\[Y[][ÛŽˆ™\XÙYHL˜XÚÚ[™ÈXÙZÛ\œÈÚ]Û™HÚ\™YL‚ˆÛÜ™H
+\˜Ù\[ÛœšYÙX[™\[™[Y[]KÜÙ[X[XÈØ[™Y]H[˜ÛÙ\œËˆ[šYšYY˜XÚÔÝ]X›Ý\‹[^Y\ˆY[]HÙ][\˜XÝ[Û‹Ô•HY[]BˆY[[ÜžKØ[˜ÚÜ‹ÑSPK\ÜÛØÚX][Û‹Û™]ËÛ›Ë[X]ÚY™XÞXÛK[Ý[Û‹[™Ø\šX[‚ˆ›ÛÝ][™›Ý[™YÕ“SÕ™\ÚYX[
+KˆH[[YH\ÂˆØØ][[ÝÝ[šYšYYÜ[[YKÝL—ÛÛ›[™WÝ˜XÚÙ\‹œXÈ›È“SÕÜˆ›Û\˜XÚÚ[™ÂˆØ\È][˜ÚY‚‹HÛÛ˜XÝ]šY[˜ÙNˆÛÛËÝ[šYšYYÝL—ØØ]\Ø[ØÛÛ˜XÝœX\ÜÙYš\ˆØØÛ\Ú[Û‹›ËY]\™KSÕÜXÚYšXØ][Ûˆ[˜\šX[˜ÙKÕ“SÕ\ÛÛ][Û‹[™ˆÛ›[™K\Ý]HØ]™KÜ™[ØYˆXÝX[[[Ù[Ú\š[™È]Y]\ÜÙYÚ]ˆÚ\™YÛ›Û—ÚXYÙœ˜XÝ[ÛLŽLÍÎLLLLÎMLØ‚‹HL‹T]HX[šY™\ÝÒKLMˆ\ÂˆMÍX™ÍYL˜XŒŒÍŒÍÍŽLŽXÌLLÌMXY™XÎÎMNX˜ŒÙŒXMLÍŽY˜Y˜ÍÙ™X‚ˆÒUHYØ[]™[ÜY[ÜXš[]H\ÜÙ\È
+ŒKÕŒˆÜMLLˆŽNNL‹ÌŽMNÌÎX
+KÚ[H‘LË[˜ÙU˜XÚËSÕMËSÕŒSË[™ˆËUSÈ\™HZ\ÜÚ[™ÈØØ[KˆØ[™Y]KXØXÚHÒH\È›ÝZ[‚‹H˜Z[š[™ÈÛÛ[X[™ˆ›Ý][˜ÚYÈÔHÛÝ[Ü[Z^™\ˆÝ\ÈØ[ˆÛØÚÈ˜Z[š[™È[[YHˆÚ[\HSÕSÕ[Û›K[™›Ú[Õ“SÕY]šXÜÂˆ\™H[[[Û˜[H[™XØ]\ÙHH™YÚ\Ý\™YÜXš[]H›ÝØÛÛ\Âˆ[˜ÛÛ\]K‚‹HXÚ\Ú[ÛŽˆÐÐUSSÕÕWÐ“ÐÒÑQÕL—ÔTÑTSÓ—ÔÔ•P’SUXÈÝÜ[™[™ÈØØ[ˆXÜ]Z\Ú][Û‹Ø]Y]ÙˆHZ\ÜÚ[™ÈÝ™X[\ËˆÙ™šXÚX[\ÝX™[È[™ˆ™Y™\‹RÒUHÙ™šXÚX[]˜[X][ÛˆX™[È™[XZ[ˆ[œ™XY‚‹H˜[Y][Ûˆ›ÝNˆH‹\›ØÙ\ÜÈÕQH›ÜØ\™Ø˜XÚÝØ\™Û[ÚÙH\ÜÙYÚ]BˆØ[YHSÕ\ÚÈÛˆ›Ý˜[šÜËˆ[ˆ\›ØÙ\ÜÈÛ[ÚÙHÛÝ[›Ý[š]X[^™H™XØ]\ÙBˆ[ZYÚN]šXÙ\ÈÙ\™HØØÝ\YYžH[ˆ[œ™[]Y›ØÙ\ÜÎÈ]Ø\Âˆ\›Z[˜]Y™Y›Ü™H[žH˜Z[š[™ÈÝ\[™\È›ÝÛÝ[Y\ÈH\ÜË‚‚ˆÈÈØØ]SSÕUHLˆ8 %XÜ]Z\Ú][Ûˆ™XÛÝ™\žH8 %Œ‹LLLLB‚‹H™]˜[Y]YØØ[\ØÙ[™[˜X[™HXÝX[LTŒˆÚXÚÜÚ[ÒBˆY˜ÌÍXÙMÌ™MXÙŒ˜ÍXLŽLX˜ÍYYŒÙNYXÍLÍØNNLŒLX˜MXÍ™LÙ˜‚ˆLH™Y™\™[˜Ù\È[™HÚXÚÜÚ[™[XZ[ˆ[˜Ú[™ÙY‚‹HØœÙ\™YSÕMËÓSÕŒ^˜XÝ[ÛˆÛÝ[ÈÙˆÌËLÌLËÌš[\ËÚ]™\ÝYˆ™[X\ÙH›ÛÝËˆSÉÜÈ›Ý\ˆ›Û[YH›ÛÝÈ^\Ý]ÛÛZ[ˆ™\›Èš[\ÎÈ›Âˆ˜Z[š[™ÈÜˆÝÛ›ØYÛÜšÙ\ˆØ\È]™KˆHÛÝÛ›ØY[Ù[HÜ]Û™YˆÛÜšÙ\œÈÚ[H™Z[™È[\ÜYžHXXÚÚ[™XÝ\œÚ]™[H][˜Ú[™È]Ù[‹‚‹H™\XÙY]][˜Ú\ˆÚ]Û™HÝX\™Y[žHÚ[[™›Ý\ˆ™XYÛÜšÙ\œÂˆ[›š[™È›Ý[™YÝÛ›ØYÛY[ËˆÙY\H™YÚ\Ý\™Y›Ý\‹]›Û[YH\ÜÚYÛ›Y[ˆš[Üš]^™H[Ù[˜Z[‹Ý˜[Y][Ûˆ[œ]Ë˜[Y]HÝÛ›ØYYÚ^™\Ë[™ˆ™XÛÜ™XÝX[\‹Yš[HÒKLMˆ›ÜˆÛÝ\˜ÙH›Ý™[˜[˜ÙKˆHœ™\Ú\™XÝ[™]ÛÜšÂˆ‘PQQH˜[œÙ™\ˆ\ÜÙYˆKNKÎKNHž]\ËÛÈ^\Ý[™È˜ZYH]][XØ][Ûˆ\Âˆ\ØX›Kˆ\ÈÙ\È›Ý[\H]H]\Ù]ÜˆÜXš[]HØ]H\ÈÛÛ\]K‚‹HY[YšYYHÙ\\˜]H[YÚXš[]HYÎˆHÛÜXš[]H\Y˜XÝÛÝ[ˆ™]\›ˆTÔÈÛÛ[Hœ›ÛH\™XÝÜžH]˜Z[Xš[]HÚ[H[™]ËYÛXZ[ˆY]šXÜÂˆÙ\™H[ˆÛÜœ™XÝH]Y][™[YÚXš[]HØ[Ý[][Ûˆ™Y›Ü™H[žH˜Z[š[™ÎÂˆY]šXÈYš[š][ÛœËÜ][\Ë™\ÚÛË[™ÙYYÈ™[XZ[ˆ[˜Ú[™ÙY‚‚ˆÈÈLˆœ›Þ™[‹Y›Ý[™][ÛˆSÕÜXš[]H8 %Œ‹LLLLB‚’\Ý\Ú\ÎˆHÙ[XÝYLTŒˆ›Ý[™][ÛˆX^H™YY›Ý[™YY\][ÛˆÛˆÜ›ÝÙYÛ›Û‹\›ØYY\ÝšX[ˆÛXZ[œËˆ™YÚ\Ý\™Yž]U˜XÚÈ[˜Û\Ú]™H˜Z[‹Z[ˆ˜[™Ù\Ë”Ó“ˆ\ÚXØ[]šY[ÈY\XØ][Û‹\œÛÛˆ˜ÜÚ]]™HX\šËLKØÛ\ÜËLHÕ[™[›[ÙYšYYÛÝ\˜ÙH›ÞÙ[ÛY]žH™Y›Ü™HYX\Ý\™[Y[ˆHØYYÚXÚÜÚ[ÒHX]ÚYH[[]]X›HLTŒˆ™Y™\™[˜ÙKÚ]›ÈZ\ÜÚ[™ËÝ[™^XÝYÙZYÚË‚‚”˜[ˆ[ËLMH]ˆœ˜[Y\ÈÛˆÔ\Èx $ÍÈ[ˆÛ™H\™[][˜ÚÝØZ]ÛÛ[X[™X]š[™È[ˆ^\›˜[HØØÝ\YYÔH[Û™KˆSÕMÎˆ‹Lˆ[XYÙ\ÈÈLËLÕÈÜMLÎÌŒÌËÜÌŽŒLËˆSÕŒˆŒÈ[XYÙ\ÈÈŒMKLÍÈÕÈÜMLÌÌLLÜÌŽÌËˆ^XÝÛÝ™\˜YÙH[™[Û›ÝÛšXÈÛÝ[ÚXÚÜÈ\ÜÙYÈ\X[YX\Ý\™[Y[È\™H™Z™XÝYˆSÕMËL‹Ì[™Ü›ÝÙYSÕŒLËÌHÛZ[˜]HHÚÜ˜[ˆ™]Z[ˆHYX\Ý\™Y˜Z[\™NÈÈ›Ý[\ˆš\ÚXš[]Hš[\š[™Ë›ØØX[\žKœ˜[YHØÛÜHÜˆØ]\ÈÈ[\›Ý™HH™\ÜY˜[Y\Ë‚‚•˜XÚÈ˜Z[š[™È\È[ˆ][ÜÝÛÈ\ØÚÈÙˆZ^YL‹T\˜Ù\[ÛˆY\][Ûˆ\™H\ÝYšYYY\ˆHZ\ÜÚ[™ÈÛXZ[œËÜ›ÝØÛÛÈ\™H™XYKÚ]LH™\^H[™[™][[ÛˆØ]\ËˆSÕŒÜÌ\È›ÝY]H™Y™\œ™YŽLÜˆ™Y[ˆXØÙ\Y\ÈH[[YHÝ™\œšYKˆSÈ›Ý\‹]›Û[YHXÜ]Z\Ú][Û‹Ù^˜XÝ[ÛˆÛÛ[Y\ËˆÛÝY‘™\ÛÝ\˜Ù\È\™HÝ]XÈ]XÝ[Ûˆ˜]\ˆ[ˆSÕŒŒˆÝ\YÙ™šXÚX[[˜ÙU˜XÚÈ˜Z[‹Ý˜[[™ËUSÈ˜\ÙK[Û›HXÜ]Z\Ú][Û‹[›š[™È™[X\ÙH™]š\Ú[ÛœÎÈ\šXLˆÈ˜Z[YÝ\›\™XÝLŒˆ›Ø™HÝXØÙYYY[™Ý\›™\XÙ\È]ˆ›È˜XÚÙ\ˆÜˆ“SÕÜ›Û\˜Z[š[™ÈØ\È][˜ÚY‚‚•L‹T›ÛÝË]\ˆËUSÈ˜\ÙK[Û›HÛÝ\˜ÙHÝÛ›ØYY[™[œÜXÝYˆLŒL˜Z[ˆ[XYÙ\ËKKŒÍÈ˜\ÙKXØ]YÛÜžH›Þ\ËLšY[ÜÎÈÝ\\š\Ú[Ûˆœ™\]Y[˜ÚY\È‹ØÈÛ›H[™›È˜[Y][Ûˆ]Ëˆ’TÈŒH[›ØØX[\žHœ›Þ™[ˆ
+KŒÈ˜[Y\ÎÈˆ‹ØÈ˜\ÙKÌÍÈ˜\™H›Ý™[
+Kˆ˜]]™HSQ]XÝ[ÛˆÚ[šÚ[™È\ÜÙYH™X[SËZ[XYÙHÛ[ÚÙHÚ]ÎÚ[šÜÈ[™^XÝHÛ™H˜XÚØ›Û™HØ[›ÛÝÙYžHÛ\ÜËXYÛ›ÜÝXÈ[ÕKLŽY\™ÙH[™ÛØ˜[ÜÌˆ\È\È[[YH]šY[˜ÙK›ÝHÝXœÝ]]H›Üˆ[SÈÛÝ™\˜YÙKˆÜšYÚ[˜[[Ù[SÈ˜[Y][Ûˆ\ÈÍ‹ÍÍH[XYÙ\ÈÈLLËLLˆ›Þ\ÎÈÌM›Þ\ÈXÚÈH’TË]ŒHÞ[œÙ]X\[™ËÛÈH™[˜ÚX\šÈÛÛ™\œÚ[Û‹Ø]Y]]\Ý^XÚ]HXØÛÝ[›Üˆ[KˆÜšYÚ[˜[‘SÕŒŒ[XYÙHÜÝžY‹š[È\È]™NÈÝ\YZYÚ˜Z[‹Ý˜[\˜Ú]™\È
+Î‹LÌÍˆž]\ÊHÚ]ÜšYÚ[˜[X›\ÚYQHÚXÚÜË›Ý\ˆ›Ý[™YÛÜšÙ\œÈ[™ZYÚÛÛ›™XÝ[ÛœËÙš[KˆÙ™šXÚX[ŒŒH˜XÚÚ[™Ë[X™[ÌÈT“™]\›œÈÈÙY\‘X™[ÈZ\ÜÚ[™ÈÚ[HØØ][™ÈH˜[YÜšYÚ[˜[™[X\ÙK‚‚ˆÈÈLˆSËÐËUSÈÜXš[]H™YÚ\Ý˜][Ûˆ8 %Œ‹LLLL‚‚ÛÛ[YHœ›ÛHHX›\ÚY[SÕZ[ˆ˜Z[\™HYX\Ý\™[Y[Ë™\Ù\š[™ÈH[[]]X›HLTŒˆÚXÚÜÚ[ˆ[Žˆœ™Y^™H[Ù™šXÚX[SÈ˜[Y][Ûˆ[XYÙ\È\È]™\žHÜšYÚ[˜[[››Ý]YËUSÈ˜Z[š[™ËX]Y]œ˜[YNÈ™\Ù\™HH[[œÙHËUSÈÙ]›Üˆ]\ˆY[]H˜Z[š[™Ëˆ\ÙH[KŒÈ’TË]ŒH˜[Y\ËH[™XYH™\šYšYYÌ‹[˜[YHÚ[šÜËÛ™H[XYÙH˜XÚØ›Û™H^˜XÝ[Û‹Û\ÜËXYÛ›ÜÝXÈ[ÕKLŽY\™ÙH[™ÛØ˜[ÜÌˆÛÝ[[ÜšYÚ[˜[[Ù[SÈÕ[˜ÛY[™ÈHÌM[››Ý][ÛœÈÚ]Ý]HŒHÞ[œÙ]X\[™ÎÈ™\ÜÜÙHÙ\\˜][HÚ]ÛÝ\˜ÙKYœ™\]Y[˜ÞHÜ›Ý\[™È˜]\ˆ[ˆ›Ü[™È[KˆØZ]›ÜˆÔËXÛÛ\]YÛÝ\˜ÙH\˜Ú]™\È[\›˜[H[ˆHÚ[™ÛH]˜[X][Ûˆ][˜Ú\ˆÚ[HÝÛ›ØYËÙ^˜XÝ[ÛˆÛÛ[YKˆ[ˆ\˜[[š[š\Ú[˜ÙH^˜XÝ[Ûˆ[™ØØ]HÜšYÚ[˜[‘˜XÚÚ[™ÈX™[Ëˆ›È˜XÚÈ˜Z[š[™È\È[YÚX›HY]‚‚ˆÈÈLˆ]HÛÛ\][Ûˆ[™[ÜXš[]H][˜Ú8 %Œ‹LLLL‚‚’\Ý\Ú\Îˆ™XÛÝ™\š[™ÈHÜšYÚ[˜[]H[™YX\Ý\š[™ÈÛÛ\]H]ˆØÛÜ\ÈÚ[\Ý[™ÝZ\Ú›Ý[™][ÛˆÛXZ[ˆ˜Z[\™Hœ›ÛH[˜ÛÛ\]HYX\Ý\™[Y[ˆ[˜ÙU˜XÚÈÝÛ›ØYÐÔÈ^˜XÝ[ÛˆÛÛ\]YÈ™\Ù\™YÌ‹ÎÌH›Ú™XÝšY[ÜÈ[™^XÝÌËÍÌ‹ÎÌKLœ˜[Y\ËˆSÈ[Ù[˜Z[‹Ý˜[[™[LŒLËUSÈ˜Z[š[™È[XYÙ\È›ÝÈ\ÜÈ]˜Z[Xš[]HÛÝ™\˜YÙH
+Ú^]˜Z[X›HÝ™X[\Ë‘[™[™ÊKˆœ›Þ™[ˆ[SÈ˜[Y][Ûˆ
+Í‹ÍÍH[XYÙ\ËLLMH˜\ÙHÈËMÈ›Ý™[Õ
+H[™ÜšYÚ[˜[ËUSÈ˜Z[ˆ]Y]
+MËLÌH[XYÙ\ËLËŒÈ˜\ÙHÕ
+NÈ™]Z[ˆ[ÌM[›X\YÜšYÚ[˜[SÈÕ[š]Ëˆ[[]]X›KY›Ý[™][Ûˆ™X[Û[ÚÙ\È\ÜÙY[ˆ›ÝÚ[šÙYÛXZ[œÈ[™[˜ÙU˜XÚÎÈ[]Y]È[ˆÛˆÔ\Èx $Íˆ[™È™\ÜXÝ]™[Kˆ›È\X[™XØ[›Û[ÝYÈSÕØ]\ÈÝ[˜Z[[™˜XÚÈ˜Z[š[™È™[XZ[œÈ[‚‚‘›ÛÝØ]\ÙNˆÛÙ™šXÚX[[››Ý][ÛˆT“È\™HXY[™H\Ù\ˆÛÝY‘›Û\ˆ\ÈÝ]XÈ]XÝ[Û‹ˆ›Ý[™H[›™Yˆ\˜Ú]™HÚÜÙH\™XÝÜžHÛÛZ[œÈ[KÌŒ˜]È˜XÚÚ[™È”ÓÓˆšY[ÜÈ[™˜[Y][Ûˆ[XYÙ\ËˆÝÛ›ØYÚ\ÚÜÙ[XÝY[Y[X™\ˆÔÈ^˜XÝ[Ûˆ\ÈXÝ]™NÈÛÝ\˜ÙHX™[È]™H›ÝY]\ÝX›\ÚY]˜Z[Xš[]KˆYYÜšYÚ[˜[ÛÛÚ]Ø]YÛÜžKÚYÛ›Ü™YØÜ›ÝÙ[™[˜Û\Ú]™H›Þ‘[™[™ÎÈ˜]Ë[X™[[\ØÛÜH˜[Y][ÛˆÚ[™XÙYH‘YX\Ý\™[Y[ˆÜšYÚ[˜[Ù]™[ˆ˜Z[‹Z[XYÙH\˜Ú]™\ÈÛÛ[YHÝÛ›ØY[™ËÚ][ˆ[\›˜[›ØÚÚ[™È^˜XÝÜ‹ˆÙY\\ÙH™XÛÝ™\žHÚ[™Ù\ÎÈ›ÈX\›™Y[Ù[ÙYYÈÜˆØ]\ÈÚ[™ÙY‚‚ˆÈÈLˆ‘˜]È˜XÚÚ[™È™XÛÝ™\žH˜[Y]Y8 %Œ‹LLLL‚‚”™XÛÝ™\™Y[™ÒKÐÔË]˜[Y]YH[›™YZ\œ›ÜŽˆ[K˜Z[ˆ[™Œ˜[˜]È”ÓÓˆšY[ÜÎÈ]™\žHÎKMÌÈ˜[Y][Ûˆ[XYÙHX]Ú\ÈHÜšYÚ[˜[™[X\ÙH’TY[X™\ˆÚ^™KÐÔËˆœ›Þ™[ˆÎÎH˜Z[ˆÈÎKMÌÈ˜[œ˜[Y\È[™Hš^YZYÚXØ]YÛÜžH›ØØX[\žH™Y›Ü™H[™™\™[˜ÙKˆ[Ù™šXÚX[\™Y™\™[˜ÙHÛÛ\\š\ÛÛˆÛÝ™\œÈ[˜[Y][ÛˆØš™XÝÎˆ‹MÜÚ]]™H›Þ\ËNŒHÜ›ÝÙ[™ÌÈÙ™šXÚX[YÛ›Ü™YXØ]YÛÜžHØš™XÝËˆš\œÝÝšXÝÛÛ\\š\ÛÛˆ^ÜÙYH‹ŽKLM›Ý[™[™ÈY™™\™[˜ÙHœ›ÛH\™XÝŠÌNÈÚ[™ÙY\š]Y]XÈÈHÙ™šXÚX[]Ú™XÛÛœÝXÝ[ÛˆÜ™\‹[ˆ]™\žHÜÚ]]™H›ÞØØ]YÛÜžKÒQX]ÚY^XÝH
+›ÈÛ\˜[˜ÙH™[^][ÛŠKˆÙY\HÛÜœ™XÝ[Û‹ˆ[‘ÜXš[]H\È]Y]YYY\ˆH[˜ÙU˜XÚÈÛÜšÙ\ˆÛˆÔHÈÚ]H™X[Z[XYÙHÛ[ÚÙHš\œÝˆHš\œÝÜšYÚ[˜[˜Z[‹Z[XYÙH\˜Ú]™H\ÈÔËY^˜XÝY
+ŒšY[ÜËÎKNœ˜[Y\ÊNÈ™[XZ[š[™È˜Z[‹Z[XYÙHÝÛ›ØYËÙ^˜XÝ[ÛˆÛÛ[YKˆ[Y\šXØ[SÕØ]H˜Z[\™\È[™˜XÚË]˜Z[š[™ÈÛ™[XZ[ˆ[˜Ú[™ÙY‚‚ˆÈÈL‹T›Ý[™Y\˜Ù\[ÛˆY\][Ûˆ™\\˜][Ûˆ8 %Œ‹LLLL‚‚”[ˆ™Y›Ü™H[žHY\][Ûˆ™\Ý[ˆ\ÙHHš^YŒX[˜ÚÜˆ™\^H\ØÚX^[][HÛÈ\ØÚËÙYYŒŒLL‹ˆLHÙ[™\šXËÕŒKY^™\ÜÚ[Û‹ÕŒ‹Y^™\ÜÚ[Ûˆ›ÜÜ[ÛœÈŒLÌŒMKÌŒNÈ‘Ñ[˜ÙKÓSÕMËÓSÕŒÕSÈ˜\ÙH]XÝ[ÛˆXXÚŒLˆÝ˜]YšYYšY[ÈØ[\[™ÈÛÝ™\œÈ]™\žH˜Z[š[™ÈšY[ÈÚ\™HH[ØØ]YYÙ]\›Z]ÎÈÞXÛH]\›Z[š\ÝXØ[HÚ[ˆ™\^HÛÛÈ\™HÛX[\ˆ[ˆZ\ˆ[ØØ][ÛœËˆ™\Ù\™HÜšYÚ[˜[LH™\^H›Þ\ËÜ˜\Ù\ÎÈ\ÙHÛ›HÙ™šXÚX[˜Z[ˆÜˆ™YÚ\Ý\™YSÕZ[ˆ˜Z[ˆœ˜[Y\ËˆSÈÛ\ÜÈÝ\\š\Ú[Ûˆ\Ù\ÈX\Y’TË]ŒH‹ØÈØ]YÛÜšY\ÈÛ›KÚ]›Ý™[Ý[›X\Y[››Ý][ÛœÈ^ÛYYœ›ÛHÛ\ÜÈ[™Y[]HÝ\\š\Ú[Û‹ˆ[˜ÛÙH]XÝ[ÛˆÛ\ÜÙ\È\ÈÜÚ]]™H˜\ÙHÜ[œÈ›ÝYÚH^\Ý[™È˜]]™HÑ‘ÈÜ›Ý[™[™È]ˆ[\HÜÚ]]™\È™]Z[ˆHš^YXœÙ[˜\ÙKXÛ\ÜÈØ\[Û‹ˆÙY\”Ì‹XÛÙ\‹Û][[[Ù[ˆYKMKÝÚ[ˆÝYÙ\È‹ÌÈˆYKM‹‘T•[™ÝÚ[ˆÝYÙ\ÈÌHœ›Þ™[‹ˆÈ›ÝÝ\Ü[Z^˜][Ûˆ[[[ÛÝ\˜ÙH[XYÙ\È[™[ŒÛXZ[ˆ]Y]È\™HÛÛ\]Kˆ[žHY\YÚXÚÜÚ[]\Ý\ÜÈH[˜Ú[™ÙYLH™][[Ûˆ[™ÛÛ\]HÜXš[]HØ]\ÎÈ›È˜XÚÙ\‹ØØXÚH™Y›Ü™H]‚‚’[\[Y[YHš^Y™\^H™\\˜]Ü‹ÚXÚÜÚ[XÛÛ\]X›Hœ›Þ™[‹P‘T•[Ù[ÝX\™YZYÚQÔH˜Z[™\‹^XÚ]Ø[™Y]KTÒH]˜[X][Û‹Ü›ÝÙYRÈ™YÚ\Ý˜][Û‹[™[X]Y]ÚXÚÜÚ[Ù[XÝ[Û‹ˆÛÛ™šYÈ\œÚ[™È^ÜÙY[ˆ[š\š]Y]˜\šXX›H˜[YQ\œ›ÜŽÈ\ÙHSQ[™Ú[™IÜÈØ˜\ÙWË˜Z[—Ü\[[™Xˆ\ØX›Y\ÜXÝ\˜][ÈXÚÙ]È™XØ]\ÙHÙXÚÙ]Z[ÈØ[ˆYÚ[™Û]ÛˆÝ\ÎÈÜ™[˜\žH˜]Ú[™È™\Ù\™\È^XÝHKLÝ\ËÙ\ØÚ]ÛØ˜[˜]ÚM‹ˆXÝX[[[]]X›HÚXÚÜÚ[ÔHØY[™ÈX]Ú\È]™\žHÝ]HÙ^K‘T•Ý^\È]˜[Ùœ›Þ™[‹ÝÚ[ˆÝYÙ\ÈÌHÝ^Hœ›Þ™[ˆ[™ÝYÙ\È‹ÌÈ˜Z[‹ˆ˜]]™HÑ‘ÈXÚÚ[™È\ÜÙYÛˆZYÚ™X[˜Z[š[™Ë\Ý™X[H[XYÙ\È[™Û™H[\K\ÜÚ]]™H[XYÙNÈš\œÝÚXÚÈ\ÜÝ[YYH›ÞÜ˜\\ˆ]H˜]]™H\[[™H™]\›œÈ[œÛÜœËÛÈÛÜœ™XÝY]ÚXÚÈ[™™\˜[‹ˆ™XYÙÜ™YØ]Y[ËLMHÜšYÚ[˜[SÕœ˜[Y\Îˆ]™\žH™\Ý[™[XZ[œÈY[XØ[ˆZ^YXÚXÚÜÚ[YX\Ý\™[Y[ÝÛÜšÙ\ˆYÙÜ™YØ][Ûˆ\È™Z™XÝYÈŒSÕŒÜÌŽÌŽLˆÛÜœ™XÝH˜Z[ÈHX[™]ÜžHŽLÝ™\œšYH™\ÚÛˆÜšYÚ[˜[Ù[™\šXËÙ^™\ÜÚ[Û‹ÍL\Z\ˆ[LH™Y™\™[˜ÙHØÛÜ\È[™Ú\™›Ý™[˜[˜ÙH˜[Y]KˆÙY\\ÙHÚ[™Ù\Ëˆ™\^H™\\˜][ÛˆÙ\ÜÚ[ÛˆNLŽHØZ]È[\›˜[H›ÜˆXÝX[‘^˜XÝÜˆQŽŽÌÎÈ˜Z[š[™È™Y›YÚ™\ÜÈ[˜ÛÛ\]H‘[XYÙ\Ë[˜ÛÛ\]H[Œ]Y]È[™[™[™È[™\^Kˆ›È\˜Ù\[ÛˆÜ[Z^™\‹˜XÚÈ˜Z[š[™ËÜˆØ[™Y]HØXÚH][˜ÚY‚‚”ØÚY[YšXÈÛÝ\˜ÙH˜XÚÝ\È\ÙHÙ]L‹Ý\Ù\‹ÛØØ][[ÝÙÚ]Ø˜XÚÝ\ËÝL—Û]\Ý˜[™XÈHY˜XÙ[L—Û]\Ý˜ÛÛ[Z]™XÛÜ™ÈH^XÝÜšYÚ[˜[ØØ[PQ™\Ù\™Y[ˆXXÚ\]Y[™KˆÜšYÚ[˜[LTŒˆ\ÝÜžH[™H‘™XÛÝ™\žHÛÛ[Z]È™[XZ[ˆ[ˆ\È\ÝÜžK‚‚”ØÛÜHÛÜœ™XÝ[Ûˆ™Y›Ü™H[žHÜ[Z^˜][ÛŽˆ[ˆ\ØÚLH™][[Ûˆ˜Z[\™H™Z™XÝÈ]ÚXÚÜÚ[›Üˆ˜XÚÚ[™Ë]HÜXÚYšXØ][ÛˆÝ[\›Z]ÈHÙXÛÛ™›Ý[™Y\˜Ù\[Ûˆ\ØÚˆ[ÝÈ]Ü[Z^™\ˆÛÛ[X][ÛˆY\ˆ[\ØÚLH]Y]ÈÛÛ\]NÈ›Ý™][[Ûˆ[™ÜXš[]HXØÙ\[˜ÙH™\ÚÛÈ™[XZ[ˆ[˜Ú[™ÙY[™›È™Z™XÝYØ[™Y]H™XÛÛY\È˜XÚËY[YÚX›KˆHÛËY\ØÚÌ‹L\Ý\Ø\™[XZ[œÈš^Y‚‚ˆÈÈLˆ[˜ÙU˜XÚÈ[YX\Ý\™[Y[[™›Ý[™YÛÛ[X][Ûˆ8 %Œ‹LLLL‚‚‘[˜ÙU˜XÚÉÜÈÜšYÚ[˜[›ØÚÚ[™È]Y]ÛÛ\]Yˆ[KL]ˆ[XYÙ\ËŒKMÜÚ]]™HÛÝ\˜ÙHÕÈÜMLŒÌNÌŒKMHŽNMŒÌLÍLÍ‹ÜÌŒŒËÌŒKMHŽNMÍŽNMËˆ[œ˜[YHÛÝ™\˜YÙK™YÚ\Ý\™YÕÛÝ[[™[[]]X›H›Ý[™][Ûˆ›Ý™[˜[˜ÙH\ÜËˆÙY\HÛÛ\]HYX\Ý\™[Y[È]ÚÝÜÈ]HÝ\œ™[›Ý[™][Û‰ÜÈ˜Z[\™H\È›Ý[š]™\œØ[XÜ›ÜÜÈÜ™[˜\žHSÕÛXZ[œËˆ‘	ÜÈ]Y]YY™X[Z[XYÙHÚXÚÈ\ÜÙY[™]ÈÛÛ\]HÎKMÌËYœ˜[YH]Y]™YØ[ˆÛˆÔHÎÈHÙXÛÛ™ÜšYÚ[˜[˜Z[š[™ËZ[XYÙH\˜Ú]™HÛÛ\]YÔÈ^˜XÝ[Ûˆ
+ŒšY[ÜËÎKNLœ˜[Y\ÊKˆ›È\X[‘ÕSÈ˜[Y\È\™H›Û[ÝY‚‚”[ŽˆÛÛ›™XÝH[™XYH™YÚ\Ý\™YÛËY\ØÚ˜Z[™\ˆÈÛÛ\]HÜ™[˜\žKÕSÈÜXš[]KÜšYÚ[˜[ZYÚ\Ú\™LHÙ[™\šXËÙ^™\ÜÚ[Ûˆ[™š^YL\Z\ˆ]Y]ËÛÛ™][Û˜[SÕŒÌÌ™YÚ\Ý˜][Û‹[™ÚXÚÜÚ[Ù[XÝ[Û‹ˆÛ™H›ØÚÚ[™ÈÛÛ›Û\ˆÚ[ØZ]›ÜˆH^\Ý[™ÈŒ]Y]Ù]K\™\\˜][Ûˆ\™[Ë˜Z[ˆÛ›HY\ˆ[™\™\]Z\Ú]\ÈÛ]\ÙH]XXÚØ]™Y\ØÚ›Üˆ[]Y]Ë[™ÝÜY\ˆÙ[XÝ[ÛˆÜˆHXœÛÛ]HÛËY\ØÚØ\ˆ™\Ù\™H^XÝÛÜšÙ\ˆ\][ÛœÈ[™™\Ý[YHÛ›H[™š[š\ÚY[š]ÎÈ›ÈY]šXËÙYYœ˜[YHØÛÜHÜˆXØÙ\[˜ÙH™\ÚÛÚ[™Ù\Ë‚‚[ÜšYÚ[˜[‘˜Z[‹Z[XYÙH^˜XÝ[Ûˆ[™™\^H™\\˜][ÛˆÛÛ\]YÝXØÙ\ÜÙ[H\š[™È\ÈÝYÙKˆ™\]Z\™Y]H]˜Z[Xš[]H\È›ÝÈËÍÎÈK˜Z[ˆšY[ÜÈ[™]™\žHÎÎH˜Z[š[™È[››Ý][Ûˆœ˜[YH]™H[ˆ[XYÙKˆHš^Y™\^H\ÈÛÛ\]H
+ÒHX™MM™L™Ù™ÙNXYYXØNŽLÌXÌÙŒÎL˜ØLYŒMYXMÙMY˜L˜ØMÌNMÌMØ
+K[K‘[™LSÈ˜Z[ˆšY[ÜÈ™\™\Ù[YÈXÝX[›Û\È\ÙH][ÜÝŒHÚÙ[œËˆ˜]]™HZYÚ\˜[šÈÛÛÈ™\šYšXØ][Ûˆ\ÙYH™X[Œ\›ÝÈÑ‘È]\Ù][™XÝX[ÛÛ™šYÝ\™YØ[\\‹Ø˜]Ú[™Îˆ‹L›ÝÜÈ[™KL˜]ÚLˆÝ\È\ˆ˜[šËÛØ˜[H›È\XØ]KÛÛZ]Y›ÝË[ÌÌÜÚ]]™H›Þ\È™]Z[™YKÎH[\K\ÜÚ]]™H›ÝÜÈ™]Z[™Y™\›È˜]]™H›ÞYš[\ˆ™[[Ý˜[Ëˆ›ÈÔH[Ù[ÜˆÜ[Z^™\ˆØ\ÈÜ™X]YžH]ÚXÚËˆHš\œÝ][˜Ú^ÜÙYHZ\ÜÚ[™È™[‹Øš[‹ÝÜ˜Ú[˜[žHÚ[È\ÙHHØ[YHš\X[Y[š\›Û›Y[]Û‰ÜÈÜ˜Ú™\ÝšX]Yœ[˜[Ù[K™\[ˆH\™Ù]YZYÚ\˜[šÈÚXÚË[™\HHY[XØ[][˜Ú\ˆš^ÈHÛÛ[[Ý\È˜Z[™\‹ˆÙY\\Èš^È›ÈXÚØYÙKÙYY™XÚ\Ú[Û‹ˆÜˆYÙ]Ú[™Ù\Ëˆ”Ìˆ˜Z[š[™ÈÙY\ÈH[™XYH™YÚ\Ý\™YLHŒÌˆ›YÜËˆ[ÜšYÚ[˜[ZYÚ\Ú\™LHØÛÜ\È˜[Y]K[™HÜšYÚ[˜[LHÚXÚÜÚ[\ÈÛÜœ™XÝH™Z™XÝY\ÈHÛÛ\]YKL\Ý\L‹TØ[™Y]KˆÛ›H[˜ÛÛ\]H[Œ‘ÕSÈ]Y]È›ÝÈÛÜ[Z^˜][Û‹ˆHÛÛ›Û\ˆ˜[Y]\ÈXXÚ^\Ý[™È\™[	ÜÈ[\Y˜XÝ\È]^]Ë[ˆÝÛœÈ˜Z[š[™È[™[]Y]ÎÈ]™]™\ˆ\›Z[˜]\È[œ™[]Y›ØœÈÜˆY˜[˜Ù\È›ÝYÚH˜Z[YÚ[˜ÛÛ\]HYX\Ý\™[Y[‚‚”ØÚY[YšXÈÛÝ\˜ÙHÛÛ[Z]ÙYÌÌL™MÌ˜ÌLX˜Î˜XMŒX™NYLXLŒX\È˜XÚÙY\[ˆH]\ÝØØ[[™Kˆ][˜ÚYHÛÛ[[Ý\ÈÛÛ[X[™Ú]ÕQWÕ’TÒP“WÑU’PÑTÏLK‹ËK‹ÈÓTÓ•SWÕ‘PQÏLˆÒÑS’V‘T”×ÔTSSTÓOY˜[ÙH™[‹Øš[‹Ü]Ûˆ]HÛÛËÝ[šYšYYÜ[—ÝL—Ü\˜Ù\[Û—ØY\][Û‹œHK][ËX]Y]\YÌŒÌˆKX™X]Y]\YÎMÌŒHK\™\^K\YMŒÈKY^˜XÝ[Û‹\YŒMŒLˆÛÛ›Û\ˆQMMÌÈ^XÈÙ\ÜÚ[ÛˆLMŒÍˆ\ÈÛÛ™š\›YY]™H[™\È[™XYH˜[Y]YHÛÛ\]Y™\^H\™[È]Ý[ØZ]È›ÜˆHÛÈÜšYÚ[˜[[Œ]Y]\™[ËˆÔHÛÝ[ÈÜ[Z^™\ˆÝ\ÈÈØ[™Y]HØXÚH›ÝZ[ˆÛ\šYšYYH^\Ý[™È˜]]™H™\Ý[YHÙ[X[XÜÈY\ˆ™XY[™È[œÝ[YSQ[™Ú[™NˆÜ[Z^™\‹ØÚY[\ˆ[™Ø[\\ˆ\ØÚ™\Ý[YKÚ[HÙ\\˜][H][˜ÚY\ØÚÈ\ÙHHØ[YHš^Y˜\ÙHÙYYŒŒLLŽÈÛÜšÙ\ˆ“‘ÈÝ™X[\È\™H›Ý™\ÝÜ™Yˆ\ÈØÝ[Y[ÈHÛÛ™šYÝ\™Y\ØÚX›Ý[™\žH™Z]š[Ü‹Ú]Ý]Ú[™Ú[™ÈÙYYÈÜˆ˜Z[š[™È[\[Y[][Û‹ˆ[™]ËY[™˜Z[š[™ÈØ[[YH\È[™[™ÈH›ØÚÚ[™ÈÛÛ›Û\‰ÜÈÛÛ\][Û‹‚‚ˆÈÈLˆ™X[™X]\™HœšYÙH[™ZYÚQÔH[\Ü˜[˜[Y][Ûˆ8 %Œ‹LLLL‚‚’\Ý\Ú\Îˆ]XÚ[™Èš[˜[YXÛÙ\ˆ]Y\žH›Ý™[˜[˜ÙH™Y›Ü™H˜]]™HÚ[šÈÛÛ˜Ø][˜][Û‹Ó“TÈ[™Ø[\[™È™K]^™XÚÈX\ÈØ[ˆÝ\HÛÜœ™XÝH[YÛ™YY[]KÜÙ[X[XÈ™X]\™\ÈÚ]Ý]Ú[™Ú[™ÈHœ›Þ™[ˆ]XÝÜ‰ÜÈØ[™Y]H\ÝšX][Û‹ˆ[\[Y[Y[[YKÝL—ÙÜ›Ý[™[™×ØØ[™Y]\ËœXˆÜšYÚ[˜[›Þ\È™[XZ[ˆÜšYÚ[˜[XÛÛÜ™[˜]H^NÈY[]HØ[\[™ÈØØ[\È[H[È™\Ú^™YÜYY[XYÙHÛÛÜ™[˜]\Ë™\Ù\š[™È™\›ØÙ\ÜÛÜˆY[™È˜]\ˆ[ˆ›Ü›X[^š[™ÈYØZ[œÝÛ›HÜšYÚ[˜[[XYÙH^[ˆH^˜XÝÜˆ™XYÈ›È[››Ý][ÛœÈ[™ÝÜ™\È›ÈÕY[]Y\ËˆXÝX[ÚXÚÜÚ[X˜XÚÙYÔKL˜[Y][Ûˆ
+ÕQWÕ’TÒP“WÑU’PÑTÏLÓTÓ•SWÕ‘PQÏLˆÒÑS’V‘T”×ÔTSSTÓOY˜[ÙH™[‹Øš[‹Ü]Ûˆ]HÛÛËÝ[šYšYYÝ˜[Y]WÝL—ØØ[™Y]WÙ™X]\™\ËœHKY]šXÙHÝYNŒ\›Z[˜[Ù\ÜÚ[Ûˆ‹^]
+H\ÜÙY˜]]™H›ÞÜØÛÜ™KØÛ\ÜÈš]Y^XÝ\š]H›ÜˆSÕMËLˆœ˜[YHÌˆÜML[™Û™HSÈ˜[Y][Ûˆœ˜[YH[™\ˆHÛÛ\]HKŒËXØ]YÛÜžKÌÎXÚ[šÈÜÌ›ÝØÛÛˆÙ[XÝYXÛÙ\ˆ™X]\™\È™[XZ[ˆš]Y^XÝY\ˆÜ›ÜÜËXÚ[šÈ“TÎÈ˜XÚØ›Û™H^XÝ]\ÈÛ˜ÙNÈš^YX›ÞY[]H™X]\™\È™[XZ[ˆš]Y^XÝY\ˆÚ[™Ú[™È›ØØX[\žKˆØÛÜH\È[ˆ[YÛ›Y[ÛÛ˜XÝ›ÝH™\XÙ[Y[›Üˆ[Y]\Ù]™XØ[ˆÙY\HœšYÙNÈ[ØXÚH]ØZ]È\ÜÚ[™ÈL‹TÙ[XÝ[Û‹‚‚•HZYÚQÔH[\Ü˜[ÛÛ˜XÝ
+ÕQWÕ’TÒP“WÑU’PÑTÏLK‹ËK‹ÈÓTÓ•SWÕ‘PQÏLˆ™[‹Øš[‹Ü]Ûˆ[HÜ˜Ú™\ÝšX]Yœ[ˆK\Ý[™[Û™HK[œ›ØË\\‹[›ÙONÛÛËÝ[šYšYYÝL—ÙÝ[\Ü˜[ØÛÛ˜XÝœX\›Z[˜[Ù\ÜÚ[ÛˆNÌË^]
+H\ÜÙY›ÝSÕ[™Õ“SÕˆÛÈ›Ý\‹Yœ˜[YHÛ\ËÜ˜[šÈ
+ÛØ˜[MŠH™]Z[ˆ[\Ü˜[Ü˜YY[ÎÈY[]HÔ•KÙ][\˜XÝ[Ûˆ[™\ÜÛØÚX][ÛˆÜ˜YY[È\™H›Ûž™\›ËÚ]Ù[X[XÈÔ•KÝ^Ü˜YY[È[ÛÈ›Ûž™\›ÈÛˆÕ“SÕˆ\˜[Y]\œÈ™[XZ[ˆš]Y^XÝXÜ›ÜÜÈ[ZYÚ\Ý[˜ÝÔH˜[šÜÈY\ˆØÜ˜]Ú\]\Ëˆ\ÈÞ[]XÈ›Ø™HÙ\È›Ý[ÙYžHH›Ý[™][ÛˆÜˆÛÛœÝ]]HH›Ü›X[\ÜÛØÚX][Ûˆ[ŽÈ›È˜XÚÚ[™ÈY]šXÜÈ\™HÛZ[YYˆÙY\H[XÛ\Z[‹[Û™KQY›ÜØ\™ÛÛ˜XÝ›ÜˆH]™[X[˜Z[™\‹ˆ]šY[˜ÙNˆ]˜[ÙÙZYÚÜ˜[š×ØÛÜ™KšœÛÛ˜[™]˜[Ü™X[ØØ[™Y]WÙ™X]\™WØÛÛ˜XÝšœÛÛ˜‚‚ÛÛ™š\›YYÚ]XˆX›XØ][ÛˆÙˆÜšYÚ[˜[ÛÝ\˜ÙH™ŒYLŒ˜YYMØ˜ÌLXØYYLX˜ÙÎÙXL˜]™[[ÝHYÎX™˜ØÌŒŒÙNNMMÙÍÌÙMÌØ˜ŒYŒÌÌX
+™\šYšYYœ˜[˜Ú[™ÛÛ[Z]™YH›ÝYÚHÛÛ›™XÝY\
+KˆÛÜœ™XÝYÝ[Hš[˜[\Ý]\ÈšY[È]Ý[Ø[Y‘Z\ÜÚ[™È[™[˜ÙH[›YX\Ý\™Yˆ[Ù]™[ˆÛÝ\˜Ù\È\™H]˜Z[X›K[˜ÙHÛÛ\]K‘ÕSÈ[]Y]È™[XZ[ˆ[™[™ËˆH^\Ý[™È›ØÚÚ[™ÈÛÛ[[Ý\ÈÛÛ›Û\ˆ™[XZ[œÈ]™NÈ›ÈØ]\ËÙYYËØ[™Y]\ÈÜˆXÝ]™H]Y]›ØœÈÙ\™HÚ[™ÙY‚‚ˆÈÈLˆØ[™Y]KXØXÚH[™Ü™[˜\žKX˜\Ù[[™H^XÝ][Ûˆ[ˆ8 %Œ‹LLLL‚‚”™XYH™X[Ø[™Y]HœšYÙKœ›Þ™[ˆÜ™[˜\žKÕSÈ›ÝØÛÛËÒUHYØ[ØÛÜH[™˜XÚÑ]˜[™XY\œËˆH[\“SÕ›ÜšÈÚ[™Ù\ÈSÕš[HØY[™È[È^™\ÜÚ[Û‹\ÜXÚYšXÈ™YXÝ[Ûˆ]ÎÈÈ›Ý\ÙH]™XY\ˆ›ÜˆÜ™[˜\žHSÕ]˜[X][Û‹ˆÜšYÚ[˜[ÒUH˜XÚÚ[™ÈX™[È[™XYH^\Ý[™\ˆÙ]L‹Ý\Ù\‹Ü™Y™\™[˜ÙWÙ[œËÚÚ]WÝ˜XÚÚ[™×ÛX™[×ÌŒŒLKÝ˜Z[š[™ËÛX™[Ì˜È›È^˜H]\Ù]ÝÛ›ØY\È™\]Z\™Yˆ[Žˆ[ˆ[ˆ[›[ÙYšYY\Ý™X[H˜XÚÑ]˜[œ™Y^™HÒUHŒˆYØ[š]ØØ[Xœ˜][Û‹Ý˜[Y][Ûˆœ˜[YH\ÝÈÚ]ÜšYÚ[˜[˜XÚÚ[™ÈQË[\[Y[HX™[Yœ™YHšY[Ë\Ú\™YØXÚH]™\]Z\™\ÈH^\Ý[™ÈÛÛ\]H\˜Ù\[ÛˆÙ[XÝ[Û‹[™[\[Y[H[ÕKÛ[Ý[Û‹Ýš\ÝX[XÛÜÚ[™HÚ[\H˜\Ù[[™HÚ]š^Y\˜[Y]\œÈ™Y›Ü™H[žH™[˜ÚX\šÈ™\Ý[ËˆÙY\Ý\\š\Ú[Ûˆ[ˆÙ\\˜]HÛÝ\˜ÙHY\\œË™\Ù\™H[^\Ý[™ÈØ]\È[™[›š[™È[Œ›ØœË[™\ÝÛ›HHÛÛ˜XÝÈ™YYY›Üˆ˜[Y˜XÚÚ[™ËÙ]˜[X][Û‹‚‚”[›™Y\™XÝ\Ý™X[H˜XÚÑ]˜[]L˜ÎÎLXŒÌÙLLLÍLØYŒŒYMŒŒ™ŽXX™\šYšYY[›[ÙYšYY[™™XÛÜ™Y]ÈÚ^™[]˜[™XY\œËÛY]šXÜËˆœ›Þ™[ˆÜšYÚ[˜[ÒUHŒˆYØ[š]ØØ[Xœ˜][Û‹Ý˜[Y][ÛˆÛÝ™\œÈMHšY[ÜËKMÌ‹ËÌKÎHœ˜[Y\ÎÈ™]™\ˆÜ[™YH›Ý\ˆ™\Ù\™YšY[ÈX™[ËˆÜšYÚ[˜[ÒUH[™™Y™\ˆ˜XÚÚ[™È˜[Y\ÜXÙ\ÈY™™\‹ÛÈHX\›Y\ˆLHÙ[™\šXÈ™\Ý[[Û™HØ\È[˜ÛÛ\]H]šY[˜ÙH›ÜˆÜ™[˜\žH˜XÚÚ[™ÈÕˆYYHZ\ÜÚ[™È[ÜšYÚ[˜[QÕÜXš[]H]Y]Ý™\ˆËÌˆ]ˆ[XYÙ\ÈÈMKÍH[YÚX›HØ\‹ÜY\ÝšX[ˆ[š]ÈÚ][˜Ú[™ÙY[›™Y˜XÚÑ]˜[ØØÛ\Ú[Û‹Ý[˜Ø][Ûˆ[™[™Ëˆ^\Ý[™ÈLH™Y™\™[˜Ù\Ë[ÛÛXZ[ˆØÛÜ\ËŽKËŽLËŽÜ™[˜\žH™\ÚÛËÌËŒÕ“SÕ™\ÚÛÈ[™HÛËY\ØÚØ\™[XZ[ˆ[XÝˆXÝX[ŒÒUH[XYÙHÛ[ÚÙH\ÜÙY
+Ù\ÜÚ[ÛˆÍÎLÎH^]˜]]™HÝ]HÙ^\È[X]ÚY
+Kˆ][˜ÚYH[ÜšYÚ[˜[RÒUHŒ]Y]ÛˆÔHˆÓTÓ•SWÕ‘PQÏLˆÒÑS’V‘T”×ÔTSSTÓOY˜[ÙH™[‹Øš[‹Ü]Ûˆ]HÛÛËÝ[šYšYYÝL—Û[ÝÜÜXš[]KœHK\›ÝØÛÛÝ]]ËÝ[šYšYYÝL‹Ü›ÝØÛÛÚÚ]WÛÜ™[˜\žWÜÜXš[]KšœÛÛˆK[Ý]Ý]]ËÝ[šYšYYÝL‹Ü\˜Ù\[Û‹ÚÚ]WÛÜšYÚ[˜[ÙÝÙŒÙ[KYÜ\ÈÈ\™[L‹ÛÜšÙ\ˆLË›ØÚÚ[™ÈÙ\ÜÚ[ÛˆMLŒÎˆHÛ[‘ÕSÈ›ØœÈ™[XZ[ˆ[ÝXÚYˆL‹TØ[™Y]H]˜[X][Ûˆ›ÝÈ[˜ÛY\ÈÍ‹ŽÜ™[˜\žH[XYÙ\Ë\È[ÜšYÚ[˜[LËLˆSËÐËUSÈ[™LHØÛÜ\Ë‚‚’[\[Y[Y[X™[Yœ™YHØXÚH[™[ÜžH[™Ù[XÝYXÚXÚÜÚ[YØ]YYœ˜[YHšY[ÈÚ\™ËˆËUSÈ[œÙH[™[Ù[SÈ˜Z[ˆ[š[ÛˆÛÛZ[œÈLKÍLÈ[š\]YH˜Z[ˆ[XYÙ\È
+[˜ÛY[™ÈKMÈ[Ù[[XYÙ\ÈÝ]ÚYHHËUSÈÙ]
+K\ÈÍ‹ÍÍHSÈ]ˆ[XYÙ\ËˆÕ“SÕÝÜ˜YÙH\ÜÚYÛ›Y[˜[[˜Ù\È›Ý\ˆ›Û[Y\È]LÌKLÍÌLÌKLÌKÌLÌKLÌKÌLÌKLÌˆœ˜[Y\ËˆÜ™[˜\žH˜Z[‹Ù]ˆØXÚHÛÝ™\œÈÎM‹H[XYÙ\ËˆXÝX[[™[ÜžH™\šYšXØ][Ûˆ
+Ù\ÜÚ[ÛˆÌŒM^]
+H›Ý™\È[ËNˆÜ›Ý\È[™[LNLÈ\ÚXØ[[XYÙ\ÈØØÝ\ˆ^XÝHÛ˜ÙKÚ]›È˜Z[‹Ù]ˆ[XYÙHÝ™\›\[™^XÝZYÚ]ÛÜšÙ\ˆÜ›Ý\ÛÝ™\˜YÙKˆØXÚHÙ[™\˜][Ûˆ™[XZ[œÈÛÛ™][Û˜[Ûˆ™XÛÛ\][™ÈHÜšYÚ[˜[ÛÛ\]HÙ[XÝ[ÛŽÈ™X]\™\È\™H‘ŒM‹ÜšYÚ[˜[›Þ\ËÜØÛÜ™\È”Ì‹Ù[X[XËÙXÛÙ\ˆÝÜ˜YÙH\ÈÚ\™Y[™Ý\\š\Ú[ÛˆÝ^\ÈÙ\\˜]HÚ]›È]]ÛX]XÈ›Ý™[X™[Ë‚‚’[\[Y[YHœ›Þ™[ˆÚ[\H˜\Ù[[™H[™Ù™šXÚX[[\Ù\]Y[˜ÙHY]šXËÙ^Ü]ˆ™YÚ\Ý\™Y\˜[Y]\œÈ™Y›Ü™H™[˜ÚX\šÈ™\Ý[Îˆ[ÕKÛ[Ý[Û‹R[ÕKÚYXÛÜÚ[™HŒKËŒÍKËX\™Ú[ˆK\Ý[˜ÙH‹š\ŒL\X\˜[˜ÙHSPHŽLX^ØYÙHÌˆ[[œ]Ø[™Y]\È\XÚ\]H[ˆX]Ú[™ËÝÈØÛÜ™\ÈØ[ˆ™XÛÝ™\ˆQË[™›È[Ý[Û‹[Û›H›Þ\È[Z]YˆÞ[]XÈØ]\Ø[Ù^ÜÛY]šXÈ˜[Y][Ûˆ
+Ù\ÜÚ[ÛˆŒÌÈ^]
+H\ÜÙY[š]™H\Ý™X[H™XY\œÎˆ\™™XÝÕKÑ]KÐ\ÜÐKÒQŒHH[™QÕÈÚ[HÝØ\YSÕMÈY[]Y\ÈÚ]™H]HK\ÜÐHQŒH‹ÌËQÕÈ‹ˆ‘[˜Û\Ú]™H^[ËØ[X\Ù\ËÚYÛ›Ü™Y]šX]\È[™ÒUHÛØ\™KÓSÕ\Ý˜XÝÜœÈ\™HÛ›Ü™Yˆ›È™[˜ÚX\šÈY]šXÈ\ÈÛZ[YYˆHÜ[Û˜[[œ™[]Y•T”Õ[\ÜØ\›œÈX›Ý]Z\ÜÚ[™ÈX[]NÈ[™\]Z\™YÜ™[˜\žH™XY\œÈ[™Y]šXÜÈ^XÝ]HÝXØÙ\ÜÙ[KÛÈ›È[œ™[]YXÚØYÙH™\Z\ˆ\È™YYYˆÙY\HØXÚH[™Ú[\H\[[™K‚‚“][˜ÚYÛ™H›ØÚÚ[™È›ÛÝË[Ûˆ]Y]YNˆÓTÓ•SWÕ‘PQÏLˆÒÑS’V‘T”×ÔTSSTÓOY˜[ÙH™[‹Øš[‹Ü]Ûˆ]HÛÛËÝ[šYšYYÜ]Y]YWÝL—ÛÜ™[˜\žWØ˜\Ù[[™KœHK]ØZ]\\˜Ù\[Û‹\YMMÌKZÚ]KX]Y]\YLˆKY^˜XÝ[Û‹\YŒMŒLÛÛ›Û\ˆÌNHÈÙ\ÜÚ[ÛˆÍLM‹ˆ]ØZ]È›ÜˆÙ[Z[™HÛÛ\][ÛˆÙˆHÜšYÚ[˜[RÒUH]Y][™H^\Ý[™È›Ý[™Y\˜Ù\[ÛˆÝÛ™\‹[ˆZ[ÈHÙ[XÝYÜ™[˜\žHØXÚH[™YX\Ý\™\È[š]™HÚ[\KX˜\Ù[[™H]ˆÙ]ËˆYˆH^\Ý[™ÈÝÛ™\ˆÙ[Z[™[H\›Z[˜]\È]™Y›YÚ™Y›Ü™H[žHÜ[Z^™\ˆ™XØ]\ÙHH™]ÛHÝ\YYÒUH]Y]Ø\ÈÝ[[˜ÛÛ\]KH]Y]YH™\Ý[Y\ÈÛ›HY\ˆ]]Y]ÛÛ\]\È[™H[[˜Ú[™ÙY™Y›YÚ\È‘PQKˆ›È]™H›Øˆ\È™\Ý\YÛˆ[ˆØœÙ\˜][Ûˆ[Y[Ý]ˆ›Ü›X[ØXÚH[™›Ü›X[˜XÚÈ˜Z[š[™È\™HÝ[[›][˜ÚYÈH™\ÙX\˜ÚÛØ[™[XZ[œÈXÝ]™K‚‚ˆÈÈL‹PH[\Ü˜[Ý\\š\Ú[Ûˆ[\[Y[][Ûˆ[ˆ8 %Œ‹LLLL‚‚•HÛÛ\]HÜšYÚ[˜[RÒUHŒ]Y]\›Z[˜]YÝXØÙ\ÜÙ[H
+Ù\ÜÚ[ÛˆMLŒÎ^]
+NˆËÌˆ[XYÙ\ËMKÍHÛÝ\˜ÙHÕ[š]ËÜMLÕÜÌ™XØ[ŽLŽLÎLÍËËŽMLÍMÌËˆHÜšYÚ[˜[\˜Ù\[ÛˆÝÛ™\ˆ[™Ü™[˜\žH›ÛÝË[Ûˆ]Y]YH\™HÛÛ™š\›YY]™Kˆ™XYHLˆ[\Ü˜[Ý\œšXÝ[[KÝXXÚ\ˆ›Ü˜Ú[™ËÛÜÜÈÜXÚYšXØ][Ûˆ[™XÝX[ÛÜ™Nˆ]Y\žH›ÜÚ[š™XÝ[Ûˆ\ÈÝ\œ™[HXYÛ›ÜÝXË[Û›K[™[Ý[Û‹ÛY™XÞXÛH\ÜÝ[YHÛÛœÙXÝ]]™H›ØÙ\ÜÙYœ˜[Y\È\Ü]H™\]Z\™YÝšYHx $Íˆ[\[Y[™X[˜Z[š[™Ë\Ý]H]YÛY[][Ûˆœ›ÛH\Ý[›X]ÚYØ[™Y]\ËÝ\œ™[Yœ˜[YH[™Ø\šX[ˆÕ\™Ù]È[™ØÚY[Y[Ù[Z[‹[ÛÜÝ]H\ÜÚYÛ›Y[HÚ^™YÚ\Ý\™YY[]KÛ[Ý[Û‹ÛY™XÞXÛHÜÜÙ\ÈÚ]^XÚ]˜[ÙKXš\Ý\™\ÜÚ[Û‹[™\ÚXØ[œ˜[YKYØ\X]Ø\™HÝ]H›ÜYØ][Û‹ˆ\ÙHHØ[YHÚ\™YÛÜ™KÙY\Õ›ÛÚÚÙY\[™ÈÝ]ÚYH]È[[YHÝ]K™]Z[ˆÜšYÚ[˜[Ø]\È[™È›Ý][˜Ú›Ü›X[\ÜÛØÚX][ÛˆÜ[Z^˜][Ûˆ™Y›Ü™HÙ[XÝYØXÚ\È[™Ú[\HY]šXÜÈ^\Ýˆ˜[Y]HÜ›ÜÜÚ[™ËÛØØÛ\Ú[Û‹™YØ]]™H›ÜÜØ[ËZ^YXXÚ\‹Û[Ù[›ÛÝ]ËÛÛ›™XÝY[\Ü˜[Ü˜YY[ËØ]\Ø[]H[™\ÚÈ\ÛÛ][Ûˆ™Y›Ü™HH‹\Ý\[‹‚‚’[\[Y[YXÝX[]Y\žK\Ý]H›Ü[™™]š[Ý\ËYœ˜[YH\™[™YØ]]™H[š™XÝ[ÛŽÈ^\›˜[š\œÝZY[]H›ÛÚÚÙY\[™ÈÙ\È›ÝYH[Ù[ÝÚ]Ú\ÈÜˆ\XØ]Hš\Ëˆ™YÚ\Ý\™YÚ^ÜÜÙ\È[˜ÛYHÜÚ]]™HÛÛ[[ˆÑH\È‘UÈ™Z™XÝÑHÛÈ˜[ÙH›ÜÜØ[È
+[˜ÛY[™ÈHš\œÝœ˜[YJH\™H›Ý›[™H]YÚš\ËˆÝ\œ™[Yœ˜[YHÜÚ]]™KÙ\Ý˜XÝÜˆ[™Ø\šX[ˆ[™Ù\\˜]HÜ›ÝÙ[ÐKÛZ[‹ZZYÚ[\È™\Ù\™HÙ™šXÚX[YÛ›Ü™HÙ[X[XÜËˆ\ÚXØ[ÛÝ\˜ÙKYœ˜[YHØ\Èš]™H[Ý[Û‹Y™XÞXÛH[™Y[[ÜžHXØ^NÈ^\™YQÈ\™H™]\™Y™Y›Ü™HÝ\œ™[X]Ú[™Ëˆ˜]ÚY\ÜÛØÚX][Ûˆ]H˜[œÙ™\œËÔ•KØš\\]\È[™ÝÚ]ÚX\™Ú[œÈ]›ÚY\‹]˜XÚÈÔKÐÔHÞ[˜Ú›Ûš^˜][ÛˆÚ]Ý]Ú[™Ú[™ÈÛÜ™H\˜[Y]\œËˆÜ›ÜÜÚ[™ËÛØØÛ\Ú[Û‹˜[ÙKXš\ÚYÛ›Ü™HÜ˜YY[ËZ^YXXÚ\‹Û[Ù[›ÛÝ][™ÛÛ›™XÝY[\Ü˜[Ü˜YY[È\ÜÎÈ[^\Ý[™ÈØ]\Ø[Ú\ÛÛ][Û‹ÜØ]™K[ØYÚXÚÜÈ\ÜË‚‚XÝX[ZYÚQÔH‘ŒMˆ™YÚ\Ý\™Y[ÜÜÈ›ÛÙˆ[š]X[H˜Z[Y]H[™Ø\šX[ˆ[THÛÛ™\œÚ[Ûˆ
+\Q\œ›ÜŽˆ[œÝ\ÜYØØ[\•\H‘›Ø]M˜Ù\ÜÚ[ÛˆLMÎ^]NÈ™\›ÙXÙYÚ[™ÛHÔHÙ\ÜÚ[ÛˆŽŒÌŠKˆÛX[\Ýš^ˆØ\Ý]XÚYÙÚ]ÈÈ”ÌˆÛ›H]HÔH\ÜÚYÛ›Y[›Ý[™\žKˆÚ[™ÛKQÔH™YÜ™\ÜÚ[ÛˆÙ\ÜÚ[ÛˆÌLÈ[™ZYÚQÔHÙ\ÜÚ[ÛˆŽH\ÜÙYˆÛØ˜[MˆÛ\Ëš[š]KÛ›Ûž™\›ÈØ[™Y]H›Ú™XÝ[Û‹ÚY[]HÔ•KÜZ\‹ÜÙ]Û[Ý[Û‹Ø[]™KØš\Ü˜YY[ËY[XØ[ÜÝ]\]H˜[šÈ\˜[Y]\œËˆÝXœÙ\]Y[˜]ÚY]˜[œÚ][Û‹Ù^\žHY]ÈšYÙÙ\ˆœ™\Ú\™Ù]Y[™X[]\ÚËÙZYÚQÔHÚXÚÜÈ™Y›Ü™HX›XØ][Û‹ˆHš\œÝÜšYÚ[˜[QÕÜ˜XÛHÚXÚÈ
+LÌMÌ^]JHÛÛ\\™YSÕ™XY\ˆUÒÈÛÜ™HVNÈ™\šYšYY˜]]™HÛÝ\˜ÙKÜ™XY\ˆ›Ü›X][™š^YHÜ˜XÛHÛ›KˆÙ\ÜÚ[ÛˆMŒLÍH\ÜÙY]™\žHÜÚ]]™H›ÞÛˆš]™HÛÛ\]HXÝX[˜Z[ˆšY[ÜÎˆ‘ŒËÌLLˆ[š]Ë[˜ÙMÌËÍLL‹SÕMÈÌKÎÌKSÕŒŒMKÎLŒÒULMMÌŒÍˆØÛÜH\È\ÙHš]™HšY[ÜË›Ý[˜Z[ˆX™[ÈÜˆ™[˜ÚX\šÈ™\Ý[Ë‚‚YYœ›Þ™[‹XØXÚHØ]\Ø[Û\Ø[\[™Ë‹\Ý\ZYÚQÔHSÕ[Û›H[žK™YÚ\Ý\™YÝ\œšXÝ[[KÝXXÚ\ˆ›Ø˜Xš[]Y\ËÜÙYYŒŒLL‹Ù]\Ù]›Ø˜Xš[]Y\Ë[[Yš]™H]ˆ]˜[X][ÛœÈ]LÌLÍÍŒL\Ý\™\Ý[YHÛ˜\ÚÝÈÚ]Ü[Z^™\ˆ[™\‹\˜[šÈÔKÐÕQH“‘Ë[˜Ú[™ÙYY[]KX™[™Yš]ÒÕHØ]\È[™›Ý\‹[]™[ÚXÚÜÚ[Ù[XÝ[Û‹ˆÞ[]XÈØ[\\‹Ü™\Ý[YKÜÙ[XÝ[Ûˆ›ÛÙˆ\ÜÙ\Îˆ™^ÝØÚ\ÝXÈ\]Hš]Y^XÝY\ˆ™\ÝÜ™K˜Z[‹[Û›H˜[šËÜÝ\Ø[\[™ËŒ‹\Ú[[™]šYX[ÕH™YÜ™\ÜÚ[ÛœÈ™Z™XÝYˆ™Y›YÚ
+MNMLˆ^]ŠHÛÜœ™XÝHÛÈÚ]Ý]HÛÛ\]HÙ[XÝYØXÚH[™[Yš]™HÚ[\HY]šXÜÎÈ™\›È›Ü›X[˜XÚÈ\]\Ëˆ][˜ÚYÛ™H›ØÚÚ[™È›ÛÝË[Ûˆ]Y]YNˆÓTÓ•SWÕ‘PQÏLˆÒÑS’V‘T”×ÔTSSTÓOY˜[ÙH™[‹Øš[‹Ü]Ûˆ]HÛÛËÝ[šYšYYÜ]Y]YWÝL—Û[ÝÛÛ›KœHK]ØZ][Ü™[˜\žK\YÌNXÈXÝX[QÌMMËÜÙ\ÜÚ[ÛŒÎÎMˆØZ]È›ÜˆÜšYÚ[˜[Ü™[˜\žHÝÛ™\‹[ˆ][˜Ú\È^XÝH‹SÕ[Û›HÝ\ÈÚ[ˆ™\™\]Z\Ú]\È\ÜËÚ]Ý]Õ“SÕˆÜšYÚ[˜[[ŒÜ\˜Ù\[ÛˆÝÛ™\œÈ™[XZ[ˆ]™H[™[ÝXÚYˆÙY\[\[Y[][ÛŽÈL‹ÕLÈ[™[˜Z[™YY]šXÜÈ™[XZ[ˆ[œ›Ý™[‹‚‚•Hœ™\Ú˜]ÚY]˜[œÚ][ÛˆZYÚQÔHÛÛ[X[™
+ÍÍÍ^]JH\ÜÙY›ÝSÕÓÕ“SÕ[\Ü˜[\ÚÜÈš\œÝ[ˆ^ÜÙYH‘ŒMˆ™XÝÜ‹Z[™^\ÜÚYÛ›Y[Z\ÛX]ÚˆÔ•HÝ]]‘ŒMˆ[È”Ìˆ\œÚ\Ý[Y[[ÜžKˆYY^XÚ]Y™™\™[XX›HØ\ÝÈÈ\Ý[˜][ÛˆY[]KÜÙ[X[XÈY[[ÜžH\NÈ›ÈÜÜÈÜˆ\˜[Y]\ˆÚ[™ÙKˆ[ˆHXÝX[Ú[™ÛKQÔH‘ŒMˆ˜XÚÝØ\™ØXÝ]™K\Ý]H[™™\™[˜ÙH™YÜ™\ÜÚ[Û‹[ˆH[ZYÚQÔH™YÚ\Ý\™Y[ÜÜÈ›ÛÙˆYØZ[ˆ™Y›Ü™HX›\Ú[™ËˆH˜Z[\™H\È^XÚ]H™XÛÜ™YÈÛTÔÈ\Y˜XÝÈÈ›ÝÙ\YžHH™]ÈÛÙH[[Hœ™\Ú›ÛÙˆÝXØÙYYË‚‚‘š[˜[Ý\œ™[\ÛÝ\˜ÙH\™Ù]Y™YÜ™\ÜÚ[ÛœÈÛÛ\]YˆÙ\ÜÚ[ÛŒŒNMÎ^]
+Ú^[ÜÜÈÜ›ÜÜÚ[™ËÙ^\žKš]™HXÝX[]šY[ÈÕÛÛ\\š\ÛÛ‹Ø[\\‹Ô“‘ËÜÙ[XÝ[ÛŠKÙ\ÜÚ[ÛŒMÍÈ^]
+ÜÝY\KYš^[\Ü˜[ØØ]\Ø[ÜØ]™K[ØY[™™\Ý[YKÜÙ[XÝ[ÛŠKÙ\ÜÚ[ÛŽÍML^]
+œ™\ÚXÝX[ZYÚQÔH‘ŒMˆ™YÚ\Ý\™YÜÜÙ\Ë[™XÙ\ÜØ\žHÜ˜YY[È›Ûž™\›Ë›Ý\]\ÈY[XØ[XÜ›ÜÜÈ˜[šÜÊKˆH™XÙY[™ÈX[]\ÚÈZYÚQÔH”Ìˆ\ÙHÙÍÍÍ\ÜÙY›ÜˆSÕ[™Õ“SÕÈÛ›H]È‘ŒMˆ\ÙH˜Z[Y[™Ø\È™\Z\™YˆÚ[™ÛKQÔHÙ\ÜÚ[ÛMÌH^]›Ý™\È˜]ÚY‘ŒMˆ˜XÚÝØ\™[™›Û™[\K\Ý]HØ]\Ø[[™™\™[˜ÙKˆÙY\\ÙHš[˜[[\[Y[][ÛœÈ[™›ÛÙœËˆ›È›Ü›X[™X]\™HØXÚKX\›™YSÕ˜\Ù[[™HÜˆ›Ú[™[˜ÚX\šÈ\ÈÛZ[YYÈH™\ÙX\˜ÚÛØ[™[XZ[œÈXÝ]™K‚‚‘\š[™È™\šYšYYX›XØ][Û‹Ù›ÛÝË[ÛˆØZ]ËÜšYÚ[˜[\˜Ù\[ÛˆÝÛ™\ŒLMŒÍˆ™\ÜY‘]Y]ÛÛ\][Û‹ˆHÜšYÚ[˜[‘›ØÚÚ[™ÈÙ\ÜÚ[ÛŒÍŽMÍ\›Z[˜]Y^]ÈÝšXÝ[YX\Ý\™[Y[˜[Y][ÛˆÛÛ™š\›\È[ÎKMÌÈ[XYÙ\Ë‹MÕÛÝ™\˜YÙKÜ›ÝØÛÛÑŒÒKˆ]ÌÍŒËMÈÜML
+ŽŒNMNÍLMÍLMÊKÍÍËLNHÜÌ
+ŽLMLÌLÎŽŠKˆ‘˜Z[ÈŽHZ[š[][H]^ÙYYÈŽ\™ÝÜÈ›È‘ÌÌ^Ù\[Ûˆ\È[ÝÙYˆ[š]™HÜ™[˜\žHŒ]Y]È\™H›ÝÈYX\Ý\™YÈ›Ý[™YL‹TÝ[ØZ]È›ÜˆÜšYÚ[˜[[SËÐËUSÈ]Y]ˆ\]YØ[›ÛšXØ[ÜXš[]KÜÝ]\ËÜ™\ÜÈ[™™]Z[ˆHØ[YH™YÚ\Ý\™Y‹Y\ØÚ™\Z\ˆ[™Ú^]Ý\Ø[™\Ý\ÝÛœÝ™X[HØ]\Ëˆ›È›Ü›X[˜XÚÈÜ[Z^™\ˆ][˜ÚYÈÙY\™\Ý[[™X›\Ú\È™]È[YX\Ý\™[Y[‚‚ˆÈÈL‹PˆÝ\\š\Ú[Û‹ÜÙ[X[XËÙ]˜[X][Ûˆ[\[Y[][Ûˆ[ˆ8 %Œ‹LLLL‚‚”™]š[Ý\ÈÛØ[\›ˆXYHÛÛ˜Ü™]H›ÙÜ™\ÜÎˆÛÛ\]HÜšYÚ[˜[ÒUKÐ‘ŒYX\Ý\™[Y[ËXÝX[[\Ü˜[Ý\\š\Ú[Ûˆ\ÈØ]YšÈSÕ[Û›H[\[Y[][Û‹Ý\œ™[ZYÚQÔH‘ŒM‹ØØ]\Ø[ÑÕÜ™\Ý[YH›ÛÙœËÛÝ\˜ÙHÛÛ[Z]ËØ˜XÚÝ\È[™™\šYšYYÚ]XˆX›XØ][ÛœËˆÝ\œ™[ÛÝ\˜ÙLÌÍØMMˆ\ÈÛX[ŽÈÜšYÚ[˜[›Ý[™Y\˜Ù\[ÛˆÝÛ™\ŒLMŒÍˆ[™SÕ›ÛÝË[ÛŒÎÎMˆ\™HÛÛ™š\›YY]™Kˆ™XYÕ“SÕY\\‹Ú\™Y[™ÝXYÙHœšYÙH[™LˆÙXÝ[ÛœÍ¸ $Î‹ˆHÕ“SÕ™\Ü[˜ÛÜœ™XÝHØ^\ÈSËÐËUSÈXœÙ[È[\ÜÙ]È\™H™\Ù[ˆ˜]ÈËUSÈ[\œÛ][Ûˆ™\Ù]Èœ˜[YWÚ[™^
+K™ËˆÜšYÚ[˜[œ˜[YLMÍLMÍK[\œÛ]Yœ˜[YLMÍÏLJK[™ËUSËÕSÈ[Y\šXÈQÈØØÝ\HY™™\™[ÛÝ\˜ÙH˜[Y\ÜXÙ\ÎÈ\ÚXØ[š[[˜[YHÚ›Û›ÛÙÞH[™ÜšYÚ[˜[[››Ý][ÛˆURQ[YÛ›Y[\™H™\]Z\™Yˆ[Žˆ]Y][[œÙKØ˜\ÙHÝ\\š\Ú[ÛˆÚ]›È]]ÛX]XÈ˜\™KÝ[›X\YÛ\ÜÈÜˆY[]HX™[ÎÈ[\[Y[Ú\™YULH‘T•Ü›Ú™XÝY[]›ØØX[\žHÛ\ÜÈ™X]\™\ËÙ[X[XÈÛ\ÜÚYšXØ][Û‹ØÛÛœÚ\Ý[˜ÞKÙØ]HÜÜÙ\È[™Ø[YKXÛÜ™HÕ“SÕ[\Ü˜[›ÛÝ]È[ˆÙ™šXÚX[\Ý™X[HUH[™[\[Y[ÛÛ\]HÜšYÚ[˜[˜[Y][Ûˆ^ÜÛÝ™\˜[Ø˜\ÙKÛ›Ý™[™\Ü[™ÈÚ]^XÚ]Ø]YÛÜžHX\[™ÈÛÝ[ËˆÙY\[Ü™[˜\žHÜÜÈÙZYÚÈ[™Ø]\Ëˆ›Ü›X[›Ú[Ü[Z^˜][Ûˆ™\]Z\™\ÈÙ[XÝYSÕ[Û›H[YÚXš[]H[™\È›Ý]]Üš^™YžHÛÛ˜XÝš^\™\ÈÜˆ[˜ÛÛ\]HYX\Ý\™[Y[ÎÈÈ›Ý][˜Ú]›ÝË‚‚‘[ÛÛ\[\ˆ˜Z[\™\ÈÙ\™HXYÛ›ÜÙYÙ\]Y[X[HÚ]Ý]›Ü[™È[š]ÎˆØ[Y\˜H[Y\Ý[\È™\]Z\™HÜšYÚ[˜[[™^[˜ÚÜœÈ
+ŒÌŒ^]JKTÓÕ\Ù\È[Y\šXÈš[[˜[Y\È
+ÙXÛÛ™ÛÛ[X[™\›Z[˜[^]JK[œÙH\™ÛÕ™\œÙHœ˜[YWÚYÛÛ\™\ÜÙ\ÈZ\ÜÚ[™ËZ[XYÙHØ\È
+ŒŒŒH^]NÈMËÌÍÈØ[Y\˜HšY[ÜÈ]™H›Û˜ÛÛœÝ[[˜ÚÜˆÙ™œÙ]ÊK[™Ù™šXÚX[[œÙH[››Ý][ÛœÈ[˜ÛYHš[™H™\›ËX\™XH›Þ\È
+MÌŒÈ^]JKˆ™]Z[ˆÛÝ\˜ÙHÙ[ÛY]žKØÛÝ[Ë\ÙH[X™\™Yš[[˜[Y\ÈÜˆ[Y\Ý[\[\œÛ][Ûˆ™]ÙY[ˆÜšYÚ[˜[SÈ[˜ÚÜœË[™X]™H™\›ËX\™XHÕ]™\›È[ÕKˆš[˜[ÛÛ\[\ŒŽLÍMH^]ÛÝ™\œÈ[L˜Z[ˆšY[ÜËÍLKÍLÈ[XYÙ\ËÌKKNL[š\]YH˜\ÙH[š]ÎÈL‹LLH˜\ÙH[š]ÈY\XØ]HXÜ›ÜÜÈÛÝ\˜Ù\ËÍLÈ[Ù[[Û›H˜\ÙH[š]È™[XZ[‹ˆ›Ý™[Ý[›X\Y[Ù[KMM‹ÌŒNH[š]È™]™\ˆ›ÝšYHÛ\ÜËÚY[]HX™[ËˆH[š]X[\ÜÝ[\[ÛˆÙˆY™™\š[™ÈÝ™\›\[™È[Y\šXÈQÈØ\È›ÝØœÙ\™Yˆ[Ú\™YURQÈ]™H\]X[[Y\šXÈQËˆÙY\URQ[YÛ›Y[Ú]ÜšYÚ[˜[QÈ™]Z[™YÙ\\˜][Kˆ›È˜[Y][Û‹Ý\ÝX™[È[\ˆ˜Z[š[™Ë‚‚XÝX[ŒÚ\™Y^^˜XÝ[ÛŒÍÌH^]ZY[ÌLŒÞMˆ™X]\™\Ëˆ˜\ÙKÌÌÍÈ›Ý™[Î˜]]™H‘T•Ú[šÜËÛX^LÚÙ[œËØ˜XÚØ›Û™LÈŒ™[XZ[œÈ™Y™\™[˜ÙK[Û›K›ÝÙ[XÝY›Üˆ›Ü›X[˜Z[š[™Ëˆ[\[Y[Y^\Ý[™Ë\\˜[Y]\ˆÙ[X[XÈÛ\ÜÚYšXØ][Û‹š[˜[Z\ˆÝ\\š\Ú[Û‹\œÚ\Ý[[Y[[ÜžHÛ\ÜÚYšXØ][Û‹ÛÛœÚ\Ý[˜ÞH[™Ø]H™YÝ[\š^˜][Û‹Ú][šÛ›ÝÛˆØ[™Y]KÜ›ÝËØÛÛ˜\ÝX™[ÈX\ÚÙY[™Ù\YšYY™YØ]]™\È™]Z[™YˆÚ[™ÛNÎLˆ^][™XÝX[ZYÚQÔMÍÍNH^]›Ý™H‘ŒMˆÛÛ›™XÝYY[]KÜÙ[X[XÈÜ˜YY[Ë[šÛ›ÝÛˆš\[X™[^Û\Ú[Û‹Ü™[˜\žH^\ÛÛ][Û‹[›Ý™[[™™\™[˜ÙH›ØØX[\žH[™Y[XØ[ÜÝ]\]H˜[šÜËˆ\È\ÈÛ™HØÜ˜]Ú\]HÛˆÞ[]XÈ˜XÚÈØ[™Y]\ÈÚ]XÝX[^™X]\™\Ë›Ý›Ú[˜Z[š[™ËˆÜ™[˜\žH[\Ü˜[™YÜ™\ÜÚ[ÛŒŒŒÈ[™ÌŒˆ^]\ÜÙ\È[˜Ú[™ÙYÚ^[ÜÜÈ˜[Y\ËˆXÝX[UKÐ\™ÛÕ™\œÙKÓTÓÕ[]šY[ÈØY\œÍÌM^]ÛÝ™\ŽMÍ‹ÍLKÌLMŽHœ˜[Y\È[™ÍÌLÍÌ‹ÌLMŽH[š]Ë[˜\ÙK[Û›KÜÝšXÝH[˜Ü™X\Ú[™È[YKˆ]\›Z[š\ÝXÈ›Ú[\ÚÈ˜]ÜÈÚ]™MLNSÕÌÍˆÕ“SÕ[ŒLÝ\ÎÈ™YÚ\Ý\™Y›Ø˜Xš[]Y\È™[XZ[‹KËŒÍK‚‚”[›™Y[˜Ú[™ÙYÙ™šXÚX[UHNXNÈ[™™\\™YÛÛ\]H’TË]ŒHSÈ˜[Y][ÛŒLMH^]ˆ[Í‹ÍÍH[XYÙ\ËÎNšY[ÜÎÌLL‹ÎNÌLLËLLˆÜšYÚ[˜[Õ[š]È[™MÌËÍMH˜XÚÜÈX\ÈŒNÌÌM[š]ËÌLˆ˜XÚÜÈ^XÚ]H[›X\YžHHÙ™šXÚX[Õ•˜XÚÈÞ[œÙ]ÛÛ™\œÚ[Û‹ˆÜšYÚ[˜[ŒH[[ØØ[^˜][ÛˆØÛÜH™[XZ[œÈ[˜Ú[™ÙYˆUHš^\™LŒÈ˜Z[Y™XØ]\ÙHÕUUÔÕSSPT–OQ˜[ÙHX]™\È\Ý™X[H™]\›™Y™\ÚÛ[š[š]X[^™YÈ\ÙHHÙ™šXÚX[Y˜][Ý[[X\žOUYHÚ]›ÈÛÝ\˜ÙKÛY]šXÈ[ÙYšXØ][Û‹ˆš^\™MÌˆ^ÜÙYÝ\ˆš]\XÚÙY^ÜQÈ[ØØ][™ÈYÙH[œÙH\Ý™X[HQX\ÎÈÝÜY]ÝÛ™YÞ[]XÈÛÛ[X[™
+^]MÊK™[[Ý™YHXÚÚ[™Ë[™]Ù™šXÚX[SÈ™\ÛÛ™HšY[Ë[ØØ[QËˆš[˜[ŒLN^]\ÜÙ\È\™™XÝLÜ›Û™ËXÛ\ÜÈØØ[^˜][Û‹Ø\ÜÛØÚX][ÛˆÙ\\˜][Û‹Y[]K\ÝÚ]ÚÙ[œÚ]]š]H[™›Û‹Y^]\Ý]™H[›X™[Y[Øš™XÝ™]]˜[]KÚ][\Hœ˜[Y\È™]Z[™Yˆ›È™[˜ÚX\šÈUKÛÜ™[˜\žH˜XÚÚ[™ÈØÛÜ™HÛZ[YY›È›Ü›X[›Ú[Ü[Z^™\ˆÜˆLÈ][˜ÚˆÙY\[Ú[™Ù\ÎÈÜšYÚ[˜[\˜Ù\[Ûˆ[™ÝÛœÝ™X[H]Y]Y\ÈÛÛ[YH[™\ˆ[˜Ú[™ÙYØ]\Ë‚‚‘œ™\ÚÜ™[˜\žHZYÚQÔH‘ŒMˆ™YÜ™\ÜÚ[ÛÌMÌŽH^]Y\ˆHÕ“SÕÚ[™Ù\ÈYØZ[ˆÛÛ™š\›\È[Ú^™YÚ\Ý\™YÜÜÈÜ˜YY[È[™Y[XØ[˜[šÈ\˜[Y]\œËˆ^\Ý[™ÈØ]H™XÚ\\ËØ[™Y]HØ\ËÙYYËY]šXÜÈ[™˜Z[š[™ÈØÛÜ\ÈÝ^H[˜Ú[™ÙY‚‚Ý\œ™[\ÛÝ\˜ÙHØ]\Ø[ÜÝ]HØ]™K\™[ØY™YÜ™\ÜÚ[ÛNLÎH^]\ÜÙ\ÈÛˆ›Û™[\HÝ]\Ë[˜ÛY[™ÈÜ™[˜\žH^[˜\šX[˜ÙH[™Õ“SÕ˜]ÈY[]KÑÔ•H\ÛÛ][Û‹ˆ›È[Ø[™Y]HØXÚKÚ[\H˜XÚÚ[™ÈY]šXËX\›™YSÕÚXÚÜÚ[Üˆ›Ú[™[˜ÚX\šÈY]ÈÛÛ[YHHXÝ]™HLˆÛØ[Y\ˆX›\Ú[™È\ÈÛÛ\]YÛÝ\˜ÙKÜÝ\\š\Ú[Û‹ÜÙ[X[XËÕUHÝYÙK‚‚ˆÈÈL‹PˆØ]Y›Ú[^XÝ][Ûˆ[ˆ8 %Œ‹LLLL‚‚”™]š[Ý\ÈÛØ[\›ˆXYH›ÙÜ™\ÜÎˆ[˜\ÙK[Û›H[œÙHÝ\\š\Ú[Û‹XÝX[Ú\™YŒÛ\ÜÈ™X]\™\ËØ[YKXÛÜ™HÙ[X[XËÜ\X[[X™[ÜÜÙ\ËÙ™šXÚX[UH˜[Y][ÛˆÛÛ™\œÚ[Û‹Ù^Ü[™XÝX[ZYÚQÔH›ÛÙœÈÙ\™HÛÛ[Z]YÙ˜NYXÈ[™X›\ÚYÝ™\šYšYY\ÈY™ŒØŒˆÝ\œ™[›Ú™XÝY[]KÝÛÜšÝ™YH\™HÛÜœ™XÝØÛX[ŽÈ\˜Ù\[ÛŽMMÌÜ™[˜\žNÌNH[™SÕ[Û›NÌMMÈ\™HÛÛ™š\›YY]™Kˆ™XYÝ\œ™[˜\Ù[[™H˜Z[™\‹Ù]˜[X]Ü‹›ÝØXÚH\Ù\È[™LˆÙXÝ[ÛœÍ8 $ÎKˆ[\[Y[^XÝ\Ý\›Ú[[žH[š]X[^™YÚ]]™\žHÙ[XÝYSÕ[Û›HÛÜ™H[œÛÜŽÈÛØ˜[\ÚËKËŒÍK[˜[šÜËÝÛÎYœ˜[YHÛ\Ëœ›Þ™[ˆ›Ý[™][Û‹Ð‘T•[™Ù\\˜]MYKMKÌYKMÛÜ™KØY\\ˆÜ›Ý\Ëˆ]XXÚK\Ý\›Ý[™\žH]˜[X]H]™\žHÜ™[˜\žH]ˆÙ\]Y[˜ÙH\È[SÈ˜[Y][Ûˆ›ÝYÚÙ™šXÚX[UNÈ™Z™XÝ[žH[™]šYX[ÕHÜˆ\ÜÐHÜÜÏ‹ŒH[™[™›Ü˜ÙHULÍÐ\ÜÛØÐLÍËˆY^XÝ“‘ËÛÜ[Z^™\ˆ™\Ý[YH[™Û™H›ØÚÚ[™ÈÝÛœÝ™X[HÝÛ™\ˆ]ØZ]È›Üˆ™X[SÕ[Û›HÛÛ\][Û‹Ù[YÚXš[]H™Y›Ü™HÕˆ™X]\™KXØXÚKØÛ\ÜË]^ÛÛœÝXÝ[Ûˆ[™›Ú[][˜ÚˆXÝX[Ù[X[XÈš^\™\ÈÈ›Ý]]Üš^™HH›Ü›X[[‹ˆH[˜[šË^™\›ÈY]šXÜÈØ[ˆ^ÙYYY˜][ÐÓÛÛXÝ]™H[Y[Ý]È^[™Û›HHÛÛXÝ]™HØZ][Y[Ý]Ú]›ÈÚ[™ÙHÈ]KÛY]šXÜËÛÜ[Z^™\‹Ù]˜[X][Ûˆ›Ý[™\šY\Ëˆ˜[Y]HØ]H™Z™XÝ[Û‹ÚXÚÜÚ[[š]X[^˜][Û‹Ü™\Ý[YH[™[\›˜][™Ë]\ÚÈZYÚQÔH^XÝ][Ûˆ™Y›Ü™H]Y]Z[™Ë‚‚’[\[Y[YHÛÛ\]M\Ý\›Ú[˜Z[™\‹Ù]˜[X]Üˆ[™Ø]YÝÛœÝ™X[HÝÛ™\‹ˆ™YÚ\Ý˜][Û‹Ü™Y›YÚMN[™ŽMHÛÜœ™XÝH™]\›ˆ^]ˆSÚ]™\›È›Ü›X[\]\ÈÚ[HÙ[XÝYØXÚ\ËÓSÕ[Û›H\™HXœÙ[ˆ›Ú[›Ý[™\žNNMŒ^]H^ÜÙYNKKŒ›Ø][™ÈÛÛ\\š\ÛÛˆ˜[Ù[H™Z™XÝ[™ÈH[˜Û\Ú]™L\™\ÚÛÈSÕ›Ý[™\žMNM^]H[ÛÈ^ÜÙY
+ËŒÈ™Z™XÝ[™È^XÝÜØZ[‹ˆÛÛ\\™HH™XÛÜ™YXÚ[X[ØÛÜ™\È]HØ[YH]\˜[ŒKËŒ‹ËŒÈ™\ÚÛËÚ]›È\Ú[Û‹Ù^˜H›Ý[™[™ÈÛ\˜[˜ÙHÜˆØ]HÙXZÙ[š[™Ëˆš[˜[›Ú[ŒÎH[™Ü™[˜\žLŒŒMÎ^]\ÜÈ[˜Û\Ú]™H›Ý[™\šY\Ë[™]šYX[ÕKÐ\ÜÐH™Z™XÝ[Û‹›ÝÕ“SÕØ]\Ë™Yš[™[Y[ÛÛ™][ÛœÈ[™›Ý\‹XÚXÚÜÚ[Ù[XÝ[Û‹ˆÜšYÚ[˜[Ü™[˜\žLMÎ™YÜ™\ÜÚ[Ûˆ[ÛÈ\ÜÙY™Y›Ü™H\È\™Ù]Y[Y\šXÈš^‚‚XÝX[ZYÚQÔH‘ŒMˆ[\›˜][™Ë]\ÚËÚ[š]ÛÜ[Z^™\ˆ›ÛÙŒMÎ^]\ÜÙYÈÝ™[™Ý[™YMŒŽH^]Y][Û˜[H™\ÝÜ™\ÈH™X[ØÚY[YXXÚ\ˆ™\››Ý[H“‘È›ÜˆHš]Y^XÝ™^\]HY\ˆXÝX[›Ú[ÚXÚÜÚ[Ø]™KÛØYˆ›Ý\ÙH[M‹QÛÜ™H[œÛÜœËMˆÛØ˜[Û\ËÙZYÚœ˜[Y\ËXÝX[™Y™\™[˜ÙK[Û›HŒÛ\ÜÈ^[™Þ[]XÈ˜XÚÚ[™ÈØ[™Y]\ÎÈ›È›Ü›X[Ü[Z^™\ˆ^\ÝËˆš\œÝÚÛHZYÚ\˜[šÈ›Ú[Y]˜[X][Ûˆš^\™NÌH^]H˜Z[Y]‘™YXÝYØ]YÛÜžH\œÛÛŽˆHš^\™H[˜ÛÜœ™XÝH\ÙYH˜]ÈÕ[X\È\È]XÝÜˆ›ØØX[\žKˆÛÜœ™XÝÛ›HHš^\™HÈH^\Ý[™È™YÚ\Ý\™YY\ÝšX[ˆ›ØØX[\žNÈÙY\HXÝX[‘›Ü›X[^˜][Û‹Ù™šXÚX[™XY\‹Y]šXÜÈ[™ÜšYÚ[˜[ØÛÜH[˜Ú[™ÙYˆ[ˆHÚÛH[žHYØZ[ˆ™Y›Ü™H]Y]Z[™ËÜX›XØ][Û‹‚‚‘š[˜[ÚÛH›Ú[Y]˜[X][Ûˆ›ÛÙŽNLŒŽ^]^XÝ]\ÈHXÝX[ZYÚ\˜[šÈ[žK[š]™HÙ™šXÚX[Ü™[˜\žH™XY\œË›Ý˜\ÙKÛ›Ý™[SÈš^\™HšY[ÜÈ[™Ù™šXÚX[UHÚ]ÔHÛÜšÙ\œËˆÚ[][]Y[\œ\[ÛˆY\ˆÛÛ\]YšY[È[š]È™\Ý[Y\ÈÚ]™\›ÈÛÜ™H›ÜØ\™Ø[È[™Y[XØ[[Y]šXÜËˆ\ÙHØÛÜ™\È\™H^XÚ]HÞ[]XÈ[™\™H›Ý™[˜ÚX\šÈ]šY[˜ÙNÈ›È™X[˜XÚÚ[™ËÙ›Ý[™][ÛˆÜ[Z^˜][ÛˆÜˆLÈ™XY[™\ÜÈ\ÈÛZ[YYˆÙY\^XÝÚÛKY[žH[\[Y[][Ûˆ[™[Ø]\ËˆHÝ\œ™[ÛÝ\˜ÙHÝYÙH›ÝÈ\ÈHÚ[™ÛH›ØÚÚ[™È›Ú[ÝÛœÝ™X[HÝÛ™\ˆØZ][™È›ÜˆÙ[Z[™HÛÛ\][ÛˆÙˆSÕ[Û›NÌMMÎÈÛ›HH™XÛÛ\]Y[YÚX›HÙ[XÝY™Y™\™[˜ÙH\›Z]È[˜[[˜ÙYÕ“SÕ™X]\™HØXÚ[™ËÙ[XÝYXÝX[Û\ÜÈ^[™MÈ›Ú[[‹ˆ›È]™HÛÝ\˜ÙH›ØœÈÙ\™H™\Ý\Y‚‚“][˜ÚY]Ú[™ÛH›ØÚÚ[™ÈÝÛ™\ŽˆÓTÓ•SWÕ‘PQÏLˆÒÑS’V‘T”×ÔTSSTÓOY˜[ÙH™[‹Øš[‹Ü]Ûˆ]HÛÛËÝ[šYšYYÜ]Y]YWÝL—Ú›Ú[œHK]ØZ][[Ý[Û›K\YÌMMØXÝX[QÍŒLKÜÙ\ÜÚ[ÛŒÌÌ‹ˆÝ]HÛÛ™š\›YYÐRUS‘×ÑSQÒP“WÓSÕÓÓ“NÈ[Õ˜ØXÚWÜÝ\YQ˜[ÙH[™›Ü›X[Ú›Ú[Ý˜Z[š[™×Û][˜ÚYQ˜[ÙKˆÙY\[™]È[\[Y[][ÛœËÜ›ÛÙœÈ[™X›\ÚHÛÛ\]Y›Ú[^XÝ][ÛˆÝYÙNÈH[LˆÛØ[™[XZ[œÈXÝ]™HÚ]XÝX[\˜Ù\[Û‹ØØXÚKÜÚ[\KÛX\›™YÚ›Ú[YX\Ý\™[Y[È[œ›Ý™[‹‚‚ˆÈÈLˆÙ[‹XÛÛZ[™Y˜]]™HÚXÚÜÚ[[\[Y[][Ûˆ[ˆ8 %Œ‹LLLL‚‚”™]š[Ý\ÈÛØ[\›ˆXYH›ÙÜ™\ÜÎˆØÚY[YšXÌÍMXÌMLˆ[™^XÝZYÚQÔH›Ú[^XÝ][Û‹Ü™\Ý[YKÙ]˜[X][Ûˆ›ÛÙœÈÙ\™HÛÛ[Z]Y˜XÚÙY\[™™\šYšYY]Ú]XˆÌM˜ÙNˆ›Ú™XÝ›ÛÝ\ÈÛÜœ™XÝ[™ÜšYÚ[˜[\˜Ù\[Û‹ØØXÚKØ˜\Ù[[™KÚ›Ú[ÝÛ™\œÈ\™HÛÛ™š\›YY]™Kˆ™XYXÝX[˜]]™H[[YKLˆÛÜ™H[™ÜXÚYšXØ][ÛˆÙXÝ[ÛœÎø $Î‹ˆš[˜[›Ü›X]]\Ý[X™YXÝX[SKQÜ›Ý[™[™ÑS“ËÜÚ\™Y‘T•ÚÙ[š^™\‹ØÛÛ™šYË]™\žH\œÚ\Ý[ÛÜ™KÚXY[™\ÚÈ[X™Y[™ÜÎÈHÚ\K[Û›H˜[˜XÚÈ\È[œÝY™šXÚY[ˆÝ\œ™[ÛÜ™H\È›È\ÚÈ[X™Y[™È[œÛÜ‹ˆY™\›ËZ[š]X[^™Y\ÚÈ[X™Y[™ÜÈÛ›HÈH›Ý[™YÙ[X[XÈØ]H[œ]ÈÜ™[˜\žHSÕØ]H™[XZ[œÈ^XÝH™\›È[™˜]ÈY[]KÑÔ•H™[XZ[œÈ\ÚÈ\ÛÛ]Yˆ›È›Ü›X[˜XÚÈÜ[Z^˜][Ûˆ\È™YÝ[‹ÛÈ™YÚ\Ý\ˆ\ÈZ\ÜÚ[™È™\]Z\™YÛÛ\Û™[™Y›Ü™HÙ[XÝYØXÚ\ËØÚXÚÜÚ[Ëˆ[\[Y[˜]]™H[Ù[™XÛÛœÝXÝ[Ûˆœ›ÛH[X™YY‘T•\˜Ú]XÝ\™KÝÚÙ[š^™\ˆ[™ÝšXÝ[X™YYÙZYÚËÚ]›È^\›˜[ÚXÚÜÚ[Òˆ™]˜Z[™YØYˆ˜[Y]HXÝX[ŒØ[™Y]KØÛ\ÜË]^š]Y^XÝ™[ØYØ]\Ø[Ý]H™\Ý[YH[™Ø[YKXÛÜ™H\˜[Y]\ˆÚ\š[™ÈÚ]HÛX\›H™Y™\™[˜ÙK[Û›H˜[™ÛHÛÜ™HXÚÎÈ™]™\ˆ™X]]\ÈHÙ[XÝYš[˜[ÚXÚÜÚ[ÜˆLÈ™XY[™\ÜËˆXÝX[š[˜[XÚÚ[™È]\Ý™XÛÛ\]H›Ú[[™\˜Ù\[Ûˆ[YÚXš[]H[™™]Z[ˆ[ÜšYÚ[˜[Y]Y]KÜØÛÜ\Ë‚‚“˜]]™H™Y™\™[˜ÙK\XÚÌÌMˆ^]H^ÜÙY˜›ÞZXYÛÛœÝXÝÜ‹Y\š]™YšY[ÈØ]™YY\ˆ˜]]™HÛÛ™šYÝ\˜][Ûˆ]]][ÛŽÍMÈ^]H[ˆ^ÜÙYH[˜[ÙÛÝ\È[›Ú\Ú[™Ë\]Y\žHšY[Ëˆ™[[Ý™HÛ›HÜÙHÚ^ÛÛœÝXÝÜ‹Y\š]™Y[šY\È™Y›Ü™HÙ\šX[^˜][ÛŽÈ˜]]™HÛÛœÝXÝ[Ûˆ™XÜ™X]\È[KNMˆ^]H\ÜÙYÝšXÝÛÛ\]H›Ý[™][Û‹ØÛÜ™H[œÛÜˆ™[ØY]˜Z[YÚ\™YP‘T•™X]\™H\]X[]Kˆ\™Ù]YÌMMŒ^]›Ý™\È˜]]™Hœ›ÛWÜ™]˜Z[™Y\Ù\ÈÑHÚ[H˜\™H[X™YY‘T•ÛÛœÝXÝ[Ûˆ\Ù\ÈXYÙ\ŽˆX^™X]\™H\ØÜ™\[˜ÞLKŒMYKMNÈÝ\œ™[˜]]™HÝ]]™[XZ[œÈš]Y^XÝÚ]H[[]]X›HŒ^ØXÚKˆÝÜ™H[™™\ÝÜ™HHXÝX[˜]]™H][[Ûˆ[\[Y[][Ûˆ˜]\ˆ[ˆÙXZÙ[ˆÛÛ\\š\ÛÛˆÛ\˜[˜ÙKˆ\ÚËY[X™Y[™È›Ú[ZYÚQÔMŒŽNH^]™]Z[œÈš]Y^XÝ™^ÝØÚ\ÝXÈÜ[Z^™\ˆ\]K›Ûž™\›È[X™Y[™ÈÜ˜YY[[™Ü™[˜\žHY\\ˆÜ˜Y›Û™KŒÍMˆ^]\ÜÙ\ÈØ]\Ø[Ý[\Ü˜[[™ÔHÙ[X[XÈ™YÜ™\ÜÚ[ÛœÎÈÝ™[™Ý[™YÎMˆ^]^XÚ]H\\˜œÈ\ÚÈ[X™Y[™ÜÈ[™›Ý™\ÈÜ™[˜\žHSÕ[˜Ú[™ÙYÜ˜]ÈÕ“SÕY[]H\ÛÛ][Ûˆ\È[˜Ú[™ÙY[YÚXš[]KÚ[š]X[^˜][ÛˆÚXÚÜËˆ›È›Ü›X[Ü[Z^™\‹™Y™\™[˜ÙK]™HÝÛ™\‹ÙYYÜˆØ]HØ\ÈÚ[™ÙY‚‚][[Ûˆ][\LL^]HÝ[\ÙYXYÙ\ˆ™XØ]\ÙHˆ™\ÛÛ™šYË™œ›ÛWÙXÝ]]]\ÈHÝ\YYXÝ[Û˜\žH[™Ý™\Üš]\È]—Ú[\[Y[][Ûˆœ›ÛHÝØ\™ÜÎÌMNLH™\šYšY\ÈHXÝX[XÚÙYÛ\ÜÈ™[XZ[™Y™\Ù[][[ÛˆœÈ˜]]™H™\ÙTÙ[][[Û‹ˆ\ÜÈHÛÜYYÛÛ™šYÈ\È^XÚ]][[ÛˆÝØ\™Ëˆš[˜[˜]]™LNLÍŒH^]›Ý™\È[XÝX[Œ›Ý[™][Û‹ØÛÜ™H[œÛÜœËLŒÈÛ\ÜÈ™X]\™\Ë˜]]™HSÕMLÓÕ“SÕÌØ[™Y]H™X]\™\È[™›Û™[\HÛ›[™HÝ]H™[ØYš]Y^XÝÚ]^\›˜[[œÛÜ‹ØÛÛ™šYËÜ™]˜Z[™YRˆØ[È›ÚXš]YˆŒKÕŒˆÛX[]\›Z[š\ÝXÈÙ[™\šXËÙ^™\ÜÚ[Û‹ÝYKÜÚY™›Y[YÜ˜][ÛˆÝ]]È[™Y]šXÜÈ\™Hš]Y^XÝÈ\È\ÈH™Y™\™[˜ÙK[Û›H˜[™ÛHÛÜ™HXÚË›ÝHÙ[XÝYš[˜[\Y˜XÝÜˆ˜XÚÚ[™È™[˜ÚX\šËˆ\ÚÈ[X™Y[™ÜÈ›ÝÈ\ÙHÝ\YY™\›ÈÙZYÚÈÚ]Ý]ÛÛœÝ[Z[™È“‘Ë™\Ù\š[™È[ÝXœÙ\]Y[Ú\™YXÛÜ™H[š]X[^˜][Ûˆ˜]ÜÈ]HÜšYÚ[˜[ÙYYˆš[˜[›Ú[LŒÌLØ]\Ø[Ý[\Ü˜[ÙØ]NLÌ[™ÚÛHZYÚ\˜[šÈÙ™šXÚX[]˜[X][ÛŒÌÎ^]\ÜËˆ\™Ù]YÌŒNˆ™XÛÛ\]\ÈXÝX[\˜[Y]\ˆÚ\š[™ÈY\ˆ^ÛY[™ÈÚ\™Y]XÝ[Û‹Ø\ÜÛØÚX][Û‹Û[Ý[Û‹ÛY™XÞXÛHXYÎŒŒÍ‹ÍLKNLˆÚ\™Y›Û‹ZXYœÌÌŽKÍHÛÛœÙ\˜]]™[H\ÚË\ÜXÚYšXËœ˜XÝ[Û‹ŽNNŒLŽÎKŽLˆÛ›HÛÝ[Y]Y]HÚ[™ÙY[ˆH™Y™\™[˜ÙHš[NÈXÝX[™\ÝÜ™Y›Ý[™][Û‹ØÛÜ™H[œÛÜœÈ™[XZ[ˆš]Y^XÝˆ›Ü›X[XÚÙ\ˆ™XÛÛ\]\ÈÜšYÚ[˜[\˜Ù\[Û‹ÓSÕÚ›Ú[[YÚXš[]K[X™YÈÜšYÚ[˜[ÛÝ\˜ÙKÜ›ÝØÛÛÜØ[\\‹ÜÝ\Y]Y]H[™™[XZ[œÈ[™[™ÈXÝX[Ù[XÝY\[[YH™][[Û‹ˆÙY\[Ú[™Ù\Ëˆ›ÈÙ[XÝYØXÚK™X[˜XÚÚ[™È™[˜ÚX\šË›Ü›X[Ü[Z^™\ˆÜˆLÈ™XY[™\ÜÈY]‚‚Ý\œ™[ÔHÙ[X[XÌNÌˆ^]ÛÛ™š\›\È\ÚËY[X™Y[™ÈÜ˜YY[È[™[šÛ›ÝÛ‹\›ÝËØØ[™Y]HX\ÚÜÈY\ˆ™\Ù\š[™È[š]X[^˜][Ûˆ“‘ËˆÝÜ™HÔH]šY[˜ÙHÙ\\˜][H\ÈÝ›[ÝÝ˜Z[š[™×ØÛÛ˜XÝØÜKšœÛÛ‹™]Z[š[™ÈH\ÝÜšXØ[ÔHÚ[™ÛKYœ˜[YH™\Üˆ\]YZYÚQÔH›Ú[]šY[˜ÙHÛÝ™\œÈ‘ŒMˆÜ˜YY[È[™^XÝ™\ÝÜ™HÚ]Ý\œ™[[X™Y[™ÜË‚‚ˆÈÈLˆœ›Þ™[ˆ^™]\ÙH›Üˆ\ÛÛZ[™ÈØ[™Y]HØXÚ\È8 %Œ‹LLLL‚‚”™]š[Ý\ÈÛØ[\›ˆXYH›ÙÜ™\ÜÎˆXÝX[˜]]™HÛ™KYš[HŒØÛÜ™H™XÛÛœÝXÝ[Û‹\ÚËY[X™Y[™È\ÛÛ][Ûˆ[™™X[\˜[Y]\‹\Ú\š[™ËÜ™][[Ûˆ›ÛÙœÈÙ\™HÛÛ[Z]Y˜ÍÍXË˜XÚÙY\[™™\šYšYY]Ú]XŽXÌLN‹ˆ›Ú™XÝ›ÛÝØÛX[ˆÛÜšÝ™YH™\šYšYYÈÜšYÚ[˜[ŒÜ\˜Ù\[Ûˆ[™ÝÛœÝ™X[HÝÛ™\œÈ\™H]™H[™Ü™[˜\žHØXÚH\ÈÝ[[›][˜ÚYˆ™XY˜]]™HÜ›Ý[™[™ÑS“Ëœ™YXÝˆ]™\žH[’TÈœ˜[YH™KY[˜ÛÙ\ÈHØ[YLÎ‘T•›Û\È[ÝYÚH[™ÝXYÙH˜XÚØ›Û™H\Èœ›Þ™[ŽÈ˜]]™H›Û\ÝÚÙ[‹\ÜÚ]]™K[X\™\›ØÙ\ÜÚ[™È\È[ÛÈ™\X]Yˆ[\[Y[ÛÜšÙ\‹[ØØ[š^Y]^Y[[Ú^˜][ÛˆžHÜ˜\[™È˜]]™H[™ÝXYÙH›ÜØ\™[™›Û\ÛÛœÝXÝ[Û‹™\Ù\š[™È[˜]]™H[XYÙKØ˜XÚØ›Û™KÙ[˜ÛÙ\‹ÙXÛÙ\‹Ó“TÈÜ\˜][ÛœÈ[™ÛÛš[™È™]\›™Y[œÛÜœËÛX\È™Y›Ü™H]]X›H˜]]™HÛÛœÝ[Y\œËˆ\HÛ›HÈ\ÛÛZ[™È[Ù[XÝYY›Ý[™][ÛˆØXÚHÛÜšÙ\œËÚ]Ý]Ú[™Ú[™È[žH[›š[™È[]Y]Üˆ\˜Ù\[Û‹]˜Z[š[™È›ØÙ\ÜËˆYX\Ý\™HXÝX[”ÌˆŒÛËYœ˜[YHSÕ[™[LŒËXÛ\ÜÈÕ“SÕØ[™Y]KÜÙ[XÝYY™X]\™H\]X[]K]]][Ûˆ\ÛÛ][Ûˆ[™XÝX[‘T•XØ[ÛÝ[ËÝ[Z[™ÎÈ›È\›Þ[X]H™XÚ\Ú[Û‹Ø\Ú[šË›ØØX[\žKÙYYÜˆØÛÜHÚ[™ÙKˆÙY\Û›HYˆš]Y^XÝÝ]]ÈÛ‚‚’[š]X[œ›Þ™[‹]^ÎNH^]›Ý™\ÈXÝX[”ÌˆŒ˜]]™KØØXÚYSÕML[™ÛÛ\]LLŒËXÛ\ÜÈÕ“SÕÌÛËYœ˜[YHØ[™Y]KÙ™X]\™H\š]K[œÛÜ‹ÛX\]]][Ûˆ\ÛÛ][Ûˆ[™^XÝY]Ù™\ÝÜ˜][Û‹ˆØ\›HÕ“SÕ[\ÙYKŒŒÌø¡¤ŒNNœÈ
+KŒLÍ^ØœÙ\™Y›ÝYÚ]
+KÚ]ÛËYœ˜[YH‘T•Í¸¡¤ŒÎØ[È[™[˜Ú[™ÙYˆ˜XÚØ›Û™\ËÍÍˆXÛÙ\ˆØ[Ëˆ[\[Y[Û›H[ˆ\ÛÛZ[™ÈÙ[XÝYY›Ý[™][ÛˆØXÚHÛÜšÙ\œÎÈ™XÛÜ™ÛÝ\˜ÙKÜ›ÛÙˆ›Ý™[˜[˜ÙH[ˆÜXÈ[™XÝX[ÛÝ[\œÈ[ˆ[ÛÜšÙ\‹Ù[™\ÜËˆ[YÜ˜]YŒÎ^]™XÛÛ™š\›\È[\š]H[™^XÝ]\ÈHXÝX[ÛÜšÙ\‹ÜÙ\šX[^™\ˆÛˆ^XÚ]HÙ\\˜]HÛËYœ˜[YH™Y™\™[˜ÙH[™[ÜšY\È›Üˆ›Ý\Ù\ÎˆÙ\šX[^™Y”Ì‹Ð‘ŒMˆšY[Èš]Y^XÝÙ[X[XËÙXÛÙ\ˆÝÜ˜YÙHÚ\™Y™\›ÈÕX™[ËÛÛ\]Y][š]™\Ý[YHÚ]›È[™™\™[˜ÙH[™Y[XØ[[š]X[šY™\ÝËˆš[˜[Ø\›HÕ“SÕKŒMN¸¡¤ŒÎLÜÈ
+KŒLÌÌž
+KSÕŒNNLx¡¤‹ŒNÍÎÈ
+KŒM
+NÈÚ\™YQÔHÛËYœ˜[YHØœÙ\˜][ÛœË›Ý[XØXÚHÜYY\Ý[X]\ËˆÙY\Ü[Z^˜][ÛŽÈ[XÝX[ÛÝ\˜ÙHœ˜[Y\ËÚ[šËØØ[™Y]H[Z]Ë™XÚ\Ú[Û‹ZYÚ\˜[šÈ\ÜÚYÛ›Y[›Ý\‹]›Û[YH\ÝšX][Û‹ÜšYÚ[˜[Ø]\È[™[›š[™È[›ØœÈ\™H[˜Ú[™ÙYˆ›È›Ü›X[Ù[XÝYØXÚK˜XÚÈÜ[Z^™\‹™[˜ÚX\šÈ˜XÚÚ[™ÈØÛÜ™HÜˆLÈ™XY[™\ÜÈ^\ÝÈY]‚‚ˆÈÈLˆÙ[XÝYX\Y˜XÝš[˜[^˜][Ûˆ^XÝ][Ûˆ[ˆ8 %Œ‹LLLL‚‚”™]š[Ý\ÈÛØ[\›ˆXYH›ÙÜ™\ÜÎˆš]Y^XÝ™X[Œš^Y]^™]\ÙH[™XÝX[ØXÚK]ÛÜšÙ\ˆÙ\šX[^˜][Û‹Ü™\Ý[YHÙ\™HÛÛ[Z]YXYÍMŒË˜XÚÙY\[™™\šYšYY]Ú]XÌŒLËˆÝ\œ™[›Ú™XÝÝÛÜšÝ™YH\™HÛÜœ™XÝØÛX[‹ˆÜšYÚ[˜[›Ú[›ØÚÚ[™È[™LÌÌˆ\ÈÛÛ™š\›YY]™H[™ØZ]È[YÚX›HSÕ[Û›NÈ›È›Ü›X[ÕˆØXÚKÚ›Ú[\È™YÝ[‹ˆ™XYLˆÙXÝ[ÛœÎø $ÎKÎNXÝX[XÚÙ\‹ÛX[™][[Ûˆ]Y][™›Ú[ÝÛ™\‹ˆ[\[Y[HÙ\\˜]HÚ[™ÛH›ØÚÚ[™Èš[˜[^˜][ÛˆÝÛ™\ˆØZ][™ÈÜšYÚ[˜[ÍŒLHÛÛ\][Û‹[ˆ™XÛÛ\]H[\˜Ù\[Û‹ÓSÕÚ›Ú[[YÚXš[]KXÚØYÙHHXÝX[Ù[XÝYL‹Pˆ›Ý[™][Û‹ØÛÜ™K]Y]XÝX[XÚÙY™][[Ûˆ[™[›[ÙYšYYÙ[XÝYXÛÜ™HØ]\Ø[Ú\ÛÛ][Û‹ÜØ]™K[ØY™Z]š[Ü‹[™Ù[™\˜]Hš[˜[™XY[™\ÜÈÛÛ[Hœ›ÛHÝ\œ™[[\Y˜XÝËÜ›Ý™[˜[˜ÙKˆ™Y™\™[˜ÙK[Û›HŒXÚÜÈ[™ØÜ˜]Ú›ÛÙœÈØ[››Ý[š[Ù[XÝYX\Y˜XÝØ]\Ëˆ™Z™XÝÜˆ™]Z[ˆ^XÝ[Ø›ØÚÙYÝ]\ÈÚ[ˆX\›Y\ˆØ]\È˜Z[ÈÛÛ™][Û˜[L‹PÈ™[XZ[œÈHÙ\\˜]H›Ý[™Y\ÚÈYˆ[YÚX›K™]™\ˆÝXœÝ]]HHL‹PˆXÚËˆ™\Ù\™H[[›š[™ÈÝÛ™\œÈ[™YÙ]Ëˆ\ÙH]\›Z[š\ÝXÈ™X[Ø[™Y]H›Ø™\È›ÜˆXÝX[X\›™YXYÎÈ™]™\ˆ[ÙYžHÙ[XÝYÙZYÚÈÈXZÙH[[YHÛÛ˜XÝÚXÚÜÈ\ÜË‚‚‘^\Ý[™È\ÝÜšXØ[ÛËQÔHÛ[ÚÙHYÛ›HÛ™H˜XÚÝØ\™Ú[HH™\]Y\ÝYÛË\Ý\ÛÛ˜XÝØ\ÈZ\ÜÚ[™Ëˆ\]YH^\Ý[™È›Ú[›ÛÙˆ[žHÈXØÙ\^XÝYÛÜ›Ú^™LˆÜŽÚ]Ý]Ú[™Ú[™È]ÈY˜][ZYÚ\˜[šÈ™Z]š[ÜŽÈXÝX[ÕQLÍÈÛË\˜[šÌŒLÈ^]›ÝÈÛÝ™\œÈSÕÓÕ“SÕ\]\È[™^XÝÝØÚ\ÝXÈ™^]\]HÚXÚÜÚ[Ô“‘ËÛÜ[Z^™\ˆ™\ÝÜ™Kˆœ™\ÚÚ[™ÛKQÔN^][˜ÛY\È›Ûž™\›ÈÝ\œ™[\ÚËY[X™Y[™ÈÜ˜YY[[™[˜Ú[™ÙY‘ŒMˆY[]KÜÙ[X[XÈÜÜÈ˜[Y\ÎÈ^\Ý[™ÈÝ\œ™[YZYÚQÔH]šY[˜ÙHÝ^\È[XÝˆ™Y™\™[˜ÙHÙ[XÝYXÛÜ™KX]Y][žNNL^]H^ÜÙY˜]]™HØ[™Y]HY]Y]HÝš[™ÜÈ™Z[™ÈÛÛ™Y\È[œÛÜœÎÈÛÛ™HÛ›H[œÛÜˆšY[È[™™]Z[ˆY]Y]H[˜Ú[™ÙY[ˆ™\[ˆ\™Ù]Y[žKˆ\È\È[ˆ]Y]Z[\™˜XÙH™\Z\‹›ÝHÙ[XÝY]ÙZYÚÙYYØ]HÜˆ˜Z[š[™Ë\›ÝØÛÛÚ[™ÙK‚‚”Ù[XÝYXÛÜ™H[žMÍŒ^]›ÝÈ\ÜÙ\È›Ý\ˆXÝX[˜]]™HŒSÕœ˜[Y\È[™[˜Ú[™ÙY™Y™\™[˜ÙKXÛÜ™HÙZYÚÎŒMLš\ËÜ™\X]X]Ú\ËÛ™KYœ˜[YHØØÛ\Ú[Û‹Ü™XÛÝ™\žK]\™K\Ý]H[™\[™[˜ÙK\˜š]˜\žHSÕ^[˜\šX[˜ÙK˜]ÈÕ“SÕÙš^Y\Z\ˆÔ•H\ÛÛ][Ûˆ[™š]Y^XÝÝ]H™\Ý[YH›Üˆ›Ý\ÚÜÈÛˆÛ™HÛÜ™HØš™XÝˆ™XY[™\ÜÍŽNMÌH^]\ÝÈH[™\[™[ÛÛ\]H™\]Z\™[Y[Ù]ÛX]\šX[˜Z[\™HØ\Ù\È[™HXÝX[ÓH™]\›œÌˆSÚ]Z\ÜÚ[™È[ØXÚKÜÚ[\HYX\Ý\™[Y[ËˆXÝX[Ù[XÝYX]Y]ÓMÍMÍˆ^]›ÛÙˆ™Z™XÝÈH™Y™\™[˜ÙK[Û›H˜[™ÛHXÚÈ™Y›Ü™HØXÚH™XYˆ™]šY]È›Ý[™ÛÛX[Ù[™\šXÈ™][[Ûˆ\ÙYÛ›HØ\ˆ˜]\ˆ[ˆLHÜšYÚ[˜[LY[]H›ØØX[\žNÈ\ÙHÜšYÚ[˜[“ÐÐP•ST–H[ˆš[˜[]Y][™™\]Z\™H]^XÝ›ØØX[\žH[ˆ™XY[™\ÜËˆ[]›ØØX[\žH˜]]™KÜ™Y™\™[˜ÙK\XÚÎMŒÌˆ^]\Èš]Y^XÝÛˆ›ÝŒKÕŒŽÈ[ÜšYÚ[˜[[LH™Y™\™[˜Ù\È\™H[˜Ú[™ÙY[™\ÝÜšXØ[™Y™\™[˜ÙHY]Y]H›ÝÈ˜[Y\ÈH™\ÝšXÝYØ\‹[Û›HØÛÜKˆZ\ÜÚ[™ÈXÝX[Ù[XÝY]Y]È™]™\ˆ™XÛÛYH™XY[™\ÜÈ]šY[˜ÙKˆÙY\[™\Z\œËÙ[šY\Ë‚‚“][˜ÚYÛ™H›ØÚÚ[™Èš[˜[^˜][ÛˆÝÛ™\ˆÚ]ÓTÓ•SWÕ‘PQÏLˆÒÑS’V‘T”×ÔTSSTÓOY˜[ÙH™[‹Øš[‹Ü]Ûˆ]HÛÛËÝ[šYšYYÜ]Y]YWÝL—Ùš[˜[^™KœHK]ØZ]Z›Ú[\YÍŒLKˆXÝX[QMNKÜÙ\ÜÚ[ÛŒNÍMHÛÛ™š\›\ÈÐRUS‘×ÓÔ’QÒSSÒ“ÒS•ÓÕÓ‘T‹XÚ×ÜÝ\YQ˜[ÙK™XYWÙ›Ü—ÝLÏQ˜[ÙKˆ]ØZ]È™X[ÜšYÚ[˜[ÛÛ\][Û‹™XÛÛ\]\ÈÝ\œ™[[Ù[XÝ[Û‹XÚÜÈXÝX[œ›Þ™[ˆL‹Pˆ[œÛÜœË[œÈÜšYÚ[˜[]›ØØX[\žH™][[Ûˆ[™[›[ÙYšYYÙ[XÝYXÛÜ™H]Y]Ë[ˆ™\šYšY\È]™\žHš[˜[Ø]HYØZ[œÝ›Ý[™\Y˜XÝËˆÛÛ\]Y[š]È™\Ý[YHžHXÝX[ÚXÚÜÚ[™XÙZ\È™Y™\™[˜ÙHš^\™\È[™ÛÛ™][Û˜[L‹PÈØ[››ÝÝXœÝ]]H›ÜˆÙ[XÝYL‹P‹ˆ›ÈÜšYÚ[˜[ÝÛ™\ˆØ\È™\Ý\Y›ÈY][Û˜[›Ü›X[Ü[Z^™\ˆ][˜ÚY[™›ÈLÈ™XY[™\ÜÈÛZ[YY‚‚ˆÈÈLˆ˜]]™H[XYÙKX˜]ÚYZ\ÜÚXš[]H›Ø™H8 %Œ‹LLLL‚‚”™]š[Ý\ÈÛØ[\›ˆXYH›ÙÜ™\ÜÎˆÙ[XÝYX\Y˜XÝš[˜[^˜][Ûˆ[™›Ý[™™X[X]Y]Ü™XY[™\ÜÈ[šY\ÈÙ\™HÛÛ[Z]YLÍ˜XÚÙY\[™™\šYšYY]Ú]XNL™MËˆÝ\œ™[ÛÜšÝ™YKÜ›Ú™XÝ\™HÛÜœ™XÝØÛX[ŽÈÜšYÚ[˜[[SÈ\™[ŒÍŒMH\ÈÛÛ™š\›YY]™H›ÝYÚ]È^\Ý[™È›ØÚÚ[™È[™K[™š[˜[^˜][ÛˆØZ]ÈÜšYÚ[˜[ÍŒLKˆ›ÈXÝX[›Ü›X[˜\Ù[[™KØØXÚH\È™XYKˆ™XY˜]]™H[™™\™[˜ÙWÙ]XÝÜˆ[™\Ú[Ûˆ][[Ûˆ™Y›Ü™HÛÛœÚY\š[™È]\™H›ÝYÚ]ˆ\ÝZ[XYÙHTHÝ[ÛÜÈÚ[™Û]Ûˆ\ÝÜÝ\Ú\™X\ÈH][[[Ù[\Ú[Ûˆ\Ù\ÈHØØ[\ˆX^Ý™\ˆH[˜]Úˆ›Ø™HXÝX[”Ìˆ˜]]™H˜]Úˆ™\œÝ\ÈÚ[™Û]ÛˆÛˆHÛÈš^YÜšYÚ[˜[SÕMÈœ˜[Y\Ë\ÈHÙXÛÛ™Z[XYÙH\\˜˜][ÛˆÚ[HÙY\[™ÈHš\œÝš^Yˆ\È\ÈHÛX[YZ\ÜÚXš[]HYX\Ý\™[Y[›ÝH™]È›Ü›X[]Y]ÜˆÛÝ\˜ÙKÛ[Ù[Ú[™ÙKˆ™Z™XÝ˜]Ú[™ÈYˆØ[™Y]H\š]HÜˆš\œÝYœ˜[YH[™\[™[˜ÙH˜Z[ÎÈÙY\[›š[™È›ØœËØ[™Y]HÛXÞH[™ÜšYÚ[˜[˜]]™HÚ[™Û]Ûˆ›ÝØÛÛ[˜Ú[™ÙY‚‚“˜]]™H[XYÙKX˜]Ú›Ø™LLL^]ZY[ÈHÙ[Z[™H™YØ]]™HÜ[Z^˜][Ûˆ™\Ý[ˆØ[YH˜]]™H™\›ØÙ\ÜÚ[™ÈÚ\HÛˆÛÈš^YSÕMÈœ˜[Y\Ë]˜]Úˆ›Þ\ËÜØÛÜ™\ÈY™™\ˆœ›ÛHÚ[™Û]ÛˆÛˆ›ÝˆX^Ø[YK\˜[šÈØÛÜ™HY™™\™[˜Ù\ËŒMMÍÍKËŒŒŽŽNÈ\™ÙHÛÛÜ™[˜]HY™™\™[˜Ù\ÌLÌËŽMËÌNKMH™Y›XÝÚ[™ÙYÛÜY›ÜÜØ[[YÛ›Y[[™\™H›ÝHX]ÚYX›ÞØØ[^˜][Ûˆ\œ›ÜˆYX\Ý\™[Y[ˆ[X™[È™[XZ[ˆ\]X[ˆXÝX[Ú^\Ú[ÛˆÝX›WÜÛÙX^Ì™›YÜÈ\™H˜[ÙNÈHÝ\ÜXÝYØØ[\ˆX^\È[˜XÝ]™K[™Ú[™Ú[™ÈÛ›HÙXÛÛ™Z[XYÙH^[ÈX]™\ÈHš\œÝ˜]ÚÝ]]š]Y^XÝ[ˆ\È›Ø™Kˆ™Z™XÝ˜]]™H˜]ÚˆÛˆØ[™Y]H\š]NÈ›È[Õ“SÕ˜]ÚÜˆÙ[X[XËY™X]\™H[YÜ˜][Ûˆ\È][\Y›ÈŒÌ‹Ü™XÚ\Ú[ÛˆÛ\˜[˜ÙHÜˆØ[™Y]HÛXÞH\ÈÚ[™ÙYˆÙY\˜]]™HÚ[™Û]Ûˆ\È[™XYH›Ý™[ˆš^Y]^™]\ÙKˆÜšYÚ[˜[[SËÜ\˜Ù\[Û‹Ø˜\Ù[[™KÙš[˜[^˜][Ûˆ›ØœÈ™[XZ[ˆ[™\ˆZ\ˆÜšYÚ[˜[›ØÚÚ[™ÈÝÛ™\œÈ[™Ø]\ÎÈ›È˜XÚÚ[™È™[˜ÚX\šÈÜˆLÈ™XY[™\ÜÈ\ÈÛZ[YY‚‚ˆÈÈLˆ\ÛÛZ[™È\˜Ù\[Û‹X]Y]š^Y]^™]\ÙH8 %Œ‹LLLL‚‚”™]š[Ý\ÈÛØ[\›ˆXYH›ÙÜ™\ÜÎˆXÝX[”Ìˆ˜]]™H[XYÙKX˜]Ú\š]H˜Z[\™HØ\ÈYX\Ý\™Y[™ÛÛ[Z]Y™L˜KÜX›\ÚYØŒ™ŽÈ™]Z[ˆ˜]]™HÚ[™Û]Û‹ˆÝ\œ™[›Ú™XÝÝÛÜšÝ™YH\™HÛÜœ™XÝØÛX[‹[™^\Ý[™È[SÍŒÍŒMH›ØÚÚ[™È[™H\ÈÛÛ™š\›YY]™Kˆ™XYÝ\œ™[[SÈÛÜšÙ\ˆ[™›Ý[™YY\YXÚXÚÜÚ[]˜[X][ÛˆØ[\‹ˆH[™XYHš]Y^XÝš^Y˜]]™H^™]\ÙHØ[ˆ™YXÙH™\X]YÎXØ\[Ûˆ‘T•ÛÜšÈ[ˆ\ÛÛZ[™ÈY\YSËÐËUSÈ]Y]ÈÛËˆY[ˆ^XÚ]Ü[Û˜[ÓH›YÈÚ][˜Ú[™ÙYY˜][Œ™Z]š[ÜŽÈÛ›H]\™HY\YXÚXÚÜÚ[]˜[X]Üˆ™\]Y\ÝÈ]ˆÙY\Y[XØ[Ú[™Û]Û‹Û˜]]™H“TË›ÝØÛÛËÕ[›ÛZ[˜]ÜœËÚXÚÜÚ[ÜÛÝ\˜ÙHš[™Ù\œš[Ë™\Ý[YH›ÝÜÈ[™Ø]\Ëˆ˜[Y]HXÝX[[˜Ú[™ÙYÛË\ÛÝ\˜ÙHÛ[ÚÙH›ÝÜËÜ™XØ[ÛÝ[ÈÚ][™Ú]Ý]H›YÈ™Y›Ü™H™]Z[š[™È\È[YÜ˜][Û‹ˆÈ›Ý[ÙYžHÜˆ™\Ý\HÝ\œ™[ØYYŒÛÜšÙ\œË‚‚XÝX[Z\™YÜXš[]K]ÛÜšÙ\ŒÍÍˆ^]ÛÛ™š\›\ÈÜ[Û˜[^™]\ÙNˆÜšYÚ[˜[ÛË\ÛÝ\˜ÙHÛ[ÚÙHY]Y]KÜ›ÝÜÈY[XØ[Ì›ÜÜØ[ÈXXÚSÌ˜˜\ÙKÌ[›Ý™[Õ[™ËUSÌL˜\ÙHÕ]ÛÝ[È[˜Ú[™ÙYÛ™H˜XÚØ›Û™KÚ[XYÙK‘T•ÎØ[ËÌÎ]ÈXÜ›ÜÜÈÛÈÛÛ\]LLŒËXÛ\ÜÈ\ÜÙ\Ëˆ˜]]™KÜ™]\ÙH[\ÙYLKMMÍÌLŽLÍN\È\™H[Z]YÛËZ[XYÙHÛÛÝØ\›HØœÙ\˜][ÛœË›Ý[›ÝYÚ]ˆ›YÈY˜][˜[ÙH™\Ù\™\ÈŒY]Y]KØÛÛ[X[™È[™™\Ý[XX›H^XÝœ˜[YH™Yš^\ÎÈÛ›H]\™HY\YXÚXÚÜÚ[]˜[X][Ûˆ^XÚ]H\ÜÙ\È]È™]ÈÛÜšÙ\œËˆÙY\\È™\šYšYY[YÜ˜][ÛŽÈ[ÜšYÚ[˜[[›ØÙ\ÜÙ\Ë›ÝØÛÛËÕ[›ÛZ[˜]ÜœËÙZYÚËYÙ]ËÙYYÈ[™XØÙ\[˜ÙHÜš]\šXH™[XZ[ˆ[˜Ú[™ÙYˆXÝX[Y\Y[]Y][™[˜XÚÚ[™È™\Ý[È™[XZ[ˆ[›YX\Ý\™Y‚‚ˆÈÈLˆ[ŒÛÛ\][Ûˆ[™˜]]™HÚXÚÜÚ[ØY™\Z\ˆ8 %Œ‹LLLL‚‚“ÜšYÚ[˜[›ØÚÚ[™ÈSÈ]Y]ŒÍŒMH™]\›™Y^]ÐÓÓTUNˆ[Í‹ÍÍHSÈ˜[Y][Ûˆ[™MËLÌHËUSÈÜšYÚ[˜[˜Z[š[™Èœ˜[Y\ÈYX\Ý\™YˆSÈ˜\ÙLLKÌLLMOKŽMMÍÍÍMN›Ý™[‹ÍÍËÌËMÏKŽLŽLÍNÈËUSÈ˜\ÙMLMÍKÍLËŒÏKŽMMÌÌÍLK›Ý™[[˜\XØX›Kˆ›ÝÕˆÜXš[]HÝ™X[\È\ÜÎÈ‘ÓSÕMËÓSÕŒÜ™[˜\žHŒØ]\ÈÝ[˜Z[ÛÈ›Ý[™YL‹T\È™\]Z\™Yˆ]ÈÜšYÚ[˜[ÝÛ™\ŒLMŒÍˆÙ[Z[™[H\›Z[˜]Y]˜]]™HSQ[™Ú[™HÚXÚÜÚ[ØY[™È™Y›Ü™H[žHÜ[Z^˜][Û‹™XØ]\ÙHUÜ˜Ú	ÜÈY˜][ÙZYÚ×ÛÛ›OUYH™Z™XÝÈHÜšYÚ[˜[ÚXÚÜÚ[	ÜÈ\ÝÜžPY™™\‹ˆ[Žˆ™]Z[ˆÜšYÚ[˜[[YX\Ý\™[Y[È[™^XÝZYÚQÔH™\^KÜ›ÝØÛÛÈ\HH^\Ý[™ÈLH›ØÙ\ÜË[ØØ[ÔÒÑ“ÔÑWÓ“×ÕÑRQÒ×ÓÓ“WÓÐQÛÛ™[[Û‹™\šYžHHXÝX[˜]]™HØY\ˆÛˆ[[]]X›HLTŒ‹[ˆ™\Ý[YHH[™š[š\ÚY\ØÚ[™\›Z[˜[ÝÛœÝ™X[H]Y]Y\ÈÚ]\]YÝÛ™\ˆQËˆ›ÈY]šXËÙYYYÙ]ÜˆXØÙ\[˜ÙHÚ[™ÙK‚‚•\™Ù]Y™YÜ™\ÜÚ[ÛŽMLH^]ˆ[Ú^\›Z[˜[Ú\™È^XÝHÛÝ™\LËLˆ[š\]YH™YÚ\Ý\™Yœ˜[Y\Ë]™\žHœ˜[YH\ÈÛ™H˜XÚØ›Û™HØ[[™Ì˜]]™H›ÜÜØ[Ë›ÝÛÝ\˜ÙHÕ[›ÛZ[˜]ÜœÈ[™YX\Ý\™[Y[Ý[ÈX]ÚˆH˜]]™HSQ[™Ú[™HØY\ˆ›ÝÈØYÈH[[]]X›HÒK]™\šYšYYXÝX[LTŒˆÝ]WÙXÝKŽH[œÛÜœÈ\È\ÝÜžPY™™\‹ÛÜ[Z^™\ŽÈ[[˜Ú[™ÙY™Y›YÚ\È‘PQKˆ›È\ØÚÚXÚÜÚ[Üˆš\œÝÜ[Z^˜][Ûˆ\]H^\ÝY]˜Z[\™Kˆ[›Ý\ˆÜšYÚ[˜[ÝÛœÝ™X[H[™\È™]\›™Y\›Z[˜[SÝ]\ÎÈ™XÛÝ™\ˆZ\ˆÝÛ™\œÈÛ›HY\ˆ\È]šY[˜ÙKˆÙY\HØØ[^™YÛÛ\]Xš[]Hš^‚‚”™XÛÝ™\žH›ØÚÚ[™ÈÝ\\š\ÛÜŒŒÍÍÍˆ][˜ÚYÙ[Z[™H™]ÈÝÛ™\œÈY\ˆ[Û[™\È\›Z[˜]Yˆ\˜Ù\[ÛŒLMŽKÜ™[˜\žLLMÌSÕ[Û›LLMÌK›Ú[LMÌ‹š[˜[^˜][ÛŒLMÍˆÜšYÚ[˜[˜Z[YÝ]\È™\Ù\™Y[ˆÝ]]ËÝ[šYšYYÝL‹Ü™XÛÝ™\žWÌŒŒLL‹Ê‹›ÜšYÚ[˜[ÈÜšYÚ[˜[˜Z[š[™ÈÙÈ™]Z[™YˆHÚ[™ÛHÝ\\š\ÛÜˆØZ]È\ÙH^XÝ›ØÙ\ÜÙ\ÎÈÝÛœÝ™X[H[˜Ú[™ÙYØ]\È™]™[ØXÚHÜˆ˜XÚÚ[™È][˜Ú™Y›Ü™HH[HÙ[XÝY\ÜÚ[™È›Ý[™][Û‹ˆ[YÙ]™[XZ[œÌKLÝ\ËÙ\ØÚ][ÜÝ™\ØÚË›ÛÝÙYžM‹SÕ[Û›H[™[YÚX›M›Ú[Ý\ËˆXÝX[Ù[XÝYXÚÈ[™LÈ™XY[™\ÜÈ™[XZ[ˆ[œ›Ý™[‹‚‚ˆÈÈL‹T\ØÚHÛÛ\]NÈY\Y]Y]ÛÜšÙ\ˆ\™Ý[Y[™\Z\ˆ8 %Œ‹LLLL‚‚”™XÛÝ™\žLŒÍÍÍˆ™]\›™YÙ[Z[™H\›Z[˜[^]HY\ˆ\ØÚHÛÛ\]Y[KL\]\È[™Ø]™Y\ØÚÌKœ
+ÒLYLÍØYMŒÙLNMMXLLXNÙŽLMŽN˜XNMØ˜Í˜Ù˜˜Ù˜LLŽMŽ
+KˆXÝX[ÚXÚÜÚ[ÛÛ˜XÝTÔÈÛÛ\\™\ÌH[[]]X›H‘T•ÔÝÚ[ŒÌH[œÛÜœÈš]Y^XÝHÚ]ÜšYÚ[˜[LTŒ‹ˆš\œÝXÝ[Û˜X›H]˜[X][Ûˆ˜Z[\™Nˆ[Ü™[˜\žHÛÜšÙ\œÈ^]ˆ™Y›Ü™H[™™\™[˜ÙH™XØ]\ÙHH\™[ÛZ]ÈK[YX\Ý\™[Y[ËY\‹ÛÈZ\ˆY\YXÚXÚÜÚ[\œÙ\ˆÙY\ÈHY˜][Œ\™XÝÜžKˆHSÈ\™[\ÈHØ[YHÛZ\ÜÚ[Ûˆ[™ÛÝ[˜Z[]]È™^ÝYÙKˆ[Žˆ›ÜYØ]HH[™XYH^XÚ]HÝ\YY[™\[™[\™XÝÜžH[ˆ›Ý^\Ý[™ÈÛÜšÙ\ˆÛÛ[X[™ÎÈ™\šYžHXÝX[Y\Y˜]]™HÛ[ÚÙHÛÜšÙ\œÈ›ÝYÚ›Ý\™[][˜Ú\œË™\Ù\š[™ÈÝX\™È[™ØÛÜ\ÎÈ™\Ý[YH[™š[š\ÚY[]˜[X][Ûˆœ›ÛHHÛÛ\]Y\ØÚHÚXÚÜÚ[™]™\ˆ™\[ˆ\ØÚHÜ[Z^˜][Û‹ˆ[™XÛÝ™\žHÝÛœÝ™X[HÝÛ™\œÈ\™H\›Z[˜[S[™Ú[™H™\ÝÜ™Y™Z[™H™]È\˜Ù\[ÛˆÝÛ™\‹‚‚”ÝÜ˜YÙH™X˜[[˜ÙH™\]Y\ÝYžH\Ù\ˆ8 %Œ‹LLLLŽˆ[Ý™HÛ›LLHÛÛ\]YÐÔËY^˜XÝYSÈ\˜Ú]™\Èœ›ÛHÙ]LÝ\Ù\ˆ
+ËŽNQÚP‹KM	HÙˆš[Üˆ\ØYÙJH[™Ù]LKÝ\Ù\ˆ
+KŒÌŽÚP‹Ì‰JHÈX]Ú[™ÈÙ]LËÝ\Ù\‹ÕSËP[[Ù[Ùœ˜[Y\È]Ëˆ\Ý[˜][Ûˆ\ÍÎQÚPˆœ™YNÈ^˜XÝY˜Z[‹Ý˜[Ý\Ý[XYÙH]È[™ØÚY[YšXÈ›ÝØÛÛÈ™[XZ[ˆ[˜Ú[™ÙYˆÛÈ\˜[[›Û[YH˜[œÙ™\œÈ™\šYžHXXÚ\Ý[˜][ÛˆYØZ[œÝ]È^\Ý[™ÈÝÛ›ØYÒH™Y›Ü™H]ÛZXØ[H™\XÚ[™ÈHÜšYÚ[˜[\˜Ú]™HÚ]HÞ[[[šÎÈ›ÈÛÝ\˜ÙH]H\È™[[Ý™Y™Y›Ü™H™\šYšYYÛÜZ[™Ëˆ[ˆ™XÛÜ™Y[ˆÝ]]ËÝ[šYšYYÝL‹ÜÝÜ˜YÙWÜ™X˜[[˜ÙWÌŒŒLL‹Ü[‹šœÛÛ‹‚‚•\Ù\ˆÝ\\œÙYY\˜Ú]™H™[ØØ][ÛŽˆÜšYÚ[˜[˜[œÙ™\ŽMŒHÝÜYÚ]^]MÎÈ[]Y[ŒHÔËY^˜XÝYÛÛ\]YSÈ\˜Ú]™\ÈXÜ›ÜÜÈ[›Ý\ˆ›Û[Y\È
+ÍKÍÚPŠH\ÈØ[˜Ù[Y™[ØØ][Ûˆ[\Ü˜\žHÛÜY\È
+ŽÍŒÚPŠKˆ™]È[ˆZYÜ˜]\È\›Þ[X][H[ˆÙˆÛX[™YÙ]LÝ\Ù\ˆ[™Ù]LKÝ\Ù\ˆ[XYÙHÝÜ˜YÙK\Ú[™ÈÛ›H\ÝÝ˜[Y][Ûˆ\™XÝÜšY\ÎÈ˜Z[ˆ\™XÝÜšY\È™[XZ[ˆ[ˆXÙKˆœÞ[˜È˜[Y]\È˜[œÙ™\œ™Y]K[ˆHžK\[ˆÚXÚÜÈÛÛ\]HX]Ú[™È™Y\ÎÈ[^™[˜[YX]ˆ^Ú[™ÙH]ÛZXØ[H™\XÙ\ÈXXÚÜšYÚ[˜[\™XÝÜžHÚ]H\™Ù]Þ[[[šÈ™Y›Ü™H™[[Ýš[™È]È™\šYšYY™Y[™[ÜšYÚ[˜[ÛÜKˆØÚY[YšXÈ[XYÙH]ËÜšYÚ[˜[ÛÝ\˜ÙH[››Ý][ÛœÈ[™[›ÝØÛÛÈÝ^H˜[Yˆ™]È^XÚ][ŽˆÝ]]ËÝ[šYšYYÝL‹ÜÝÜ˜YÙWÜ™X˜[[˜ÙWÌŒŒLL‹Ú[XYÙWÛZYÜ˜][Û—Ü[‹šœÛÛ‹‚‚”ÜÝXÛX[\[XYÙHZYÜ˜][ÛˆÛÛ\]YŽMH\™XÝÜžH[š]ËÙ]LÝ\Ù\ŽMÚPˆ[™Ù]LKÝ\Ù\ŽLÑÚPˆ™[ØØ]YÈÙ]LËÝ\Ù\‹XXÚKŽNNIHÙˆÛX[™Y[š]X[ØØÝ\[˜ÞKˆœÞ[˜È[]™YH\š]H\ÜÙY™Y›Ü™H]ÛZXÈÞ[[[šÈ^Ú[™ÙNÈ[ÜšYÚ[˜[[XYÙH]È™[XZ[ˆ™\ÛÛ˜X›KÛ›H\ÝÝ˜[Y][ÛˆÝÜ˜YÙH[Ý™Y˜Z[ˆ]È[™^\š[Y[[ÛÛ˜XÝÈ[˜Ú[™ÙYˆš[˜[XÝX[\™XÝÜžHÚ^™\È[™ˆ™XÛÜ™Y[ˆÝ]]ËÝ[šYšYYÝL‹ÜÝÜ˜YÙWÜ™X˜[[˜ÙWÌŒŒLL‹Ú[XYÙWÛZYÜ˜][Û—Ü™\Ý[šœÛÛ‹‚‚Y\Y][˜Ú\ˆ™YÜ™\ÜÚ[ÛŽMNNH^]ˆ›ÝYÚHXÝX[Ü™[˜\žH[™SÈ\™[][˜Ú\œËXXÚXÝX[Ú[™XÙZ]™\ÈHÙ\\˜]HYX\Ý\™[Y[È\™XÝÜžH[™™X[\ØÚHÚXÚÜÚ[ÒNÈÛ™HÜšYÚ[˜[YØ[ÒUHœ˜[YH[™ÜšYÚ[˜[ÛË\ÛÝ\˜ÙHSËÐËUSÈÛ[ÚÙHœ˜[Y\È^XÝ]H˜]]™H[™™\™[˜ÙHÝXØÙ\ÜÙ[Kˆ\Ý[Û›HÛ[ÚÙH[š™XÝ[Ûˆ[™ÛÛXÝÜˆÈ›Ý›ÙXÙH›Ü›X[YX\Ý\™[Y[ÈÜˆÙXZÙ[ˆYÙÜ™YØ]HÛÛ\][™\ÜÎÈ™\Ü\È^XÚ]H™Y™\™[˜ÙWÛÛ›Kˆ[™XÛÝ™\žHÝ\\š\ÛÜŽMNMLˆ™\Ý[Y\È\ØÚH]˜[X][Ûˆœ›ÛH^\Ý[™È\ØÚÌKœ™]È\˜Ù\[ÛŒLNMMËÛÜ™[˜\žLLNMNÓSÕ[Û›LLNMNKÚ›Ú[LNMŒÙš[˜[^˜][ÛŒLNMŒHÝÛ™\œÈ™]Z[ˆ[˜Ú[™ÙYYÙ]È[™Ø]\Ëˆ[™]š[Ý\ÈÝÛ™\œÈ™]\›™Y\›Z[˜[Z\ˆ˜Z[\™HÝ]\È™]Z[™Yˆ[LH™][[Ûˆ[™Y\YÜXš[]H™[XZ[ˆ[™[™ÎÈ›È˜XÚÚ[™ÈÜˆLÈÛZ[K‚‚•\Ù\‹\™\]Y\ÝY[™™\™[˜ÙHÚ\™[™È›ÝYÚ][ˆ8 %Œ‹LLLLŽˆ[]Y]È[™XYH\ÙN\ÚXØ[ÔHÚ\™ËÚ[H˜]]™H[LŒËXÛ\ÜÈSÈ\™›Ü›\ÌÎ][[[Ù[˜[œÙ›Ü›Y\ˆ\ÜÙ\È\ˆ[XYÙKˆ\Ù\ˆ\ÚÜÈÈÚÜ[ˆ[[YKˆ[\Ü˜\š[HÒQÔÕÔ^XÝ]˜[X]ÜŒLLNMÈ[™]È^\Ý[™ÈSÈ\™[LŒÎŽKÝÛÜšÙ\œÌLŒÎÌ‹ŒLŒÎÍË™]Z[š[™È[ÛÛ\]YÜ™[˜\žHYX\Ý\™[Y[È[™^\Ý[™ÈSÈ^XÝœ˜[YH™Yš^\ÎÈ›ÈÜšYÚ[˜[ÛÝ\˜ÙH[™™\™[˜ÙH™K\Ý\YˆYX\Ý\™LKÌ‹Í[™\[™[Ú[™Û]Ûˆ›ØÙ\ÜÙ\ÈÛˆÔLK™X[Y\Y\ØÚHÒLYLÍØKY[XØ[Lˆ™Y™\™[˜ÙHœ˜[Y\ÈÜ[›š[™ÈÜšYÚ[˜[SÈÛÝ\˜ÙHÛXZ[œË[›ØØX[\žKÛ˜]]™H”Ì‹ÜÝ]XÈ^™]\ÙH[™^XÝ›Þ\ËÜØÛÜ™\ËØÛ\ÜÙ\È\š]Kˆ\È\ÈH›Ý[™Y›ÝYÚ]›Ø™K›ÝHY]šXÈÜˆØÛÜHÚ[™ÙKˆYÜYÚ\ˆÛÛ˜Ý\œ™[˜ÞHÛ›HYˆXÝX[›ÝYÚ][\›Ý™\ÈÚ][˜Ú[™ÙYÝ]]ÎÈÝ\Ú\ÙH™]Z[ˆH˜\Ý\ÝYX\Ý\™YÛÛ˜Ý\œ™[˜ÞH[™™\Ý[YHH^\Ý[™ÈÝÛ™\‹ˆ›Ø™HÚ[ŒMÎÈÛ™XÙZ\Ý]]ËÝ[šYšYYÝL‹Ü\˜Ù\[Û—ØY\][Û‹Ý›ÝYÚ]Ü›Ø™WÚÛšœÛÛ‹‚‚”Ø[YKQÔH›Ø™MŒMÈÛÛ\]\ÎˆY[XØ[LˆXÝX[˜]]™H[]›ØØX[\žH™Y™\™[˜ÙHœ˜[Y\ÈZÙLMNŽNMœÈÚ]H›ØÙ\ÜËLKŒŽœÈÚ]ˆ[™ŒŒŒMÈÚ]È[›ÜÜØ[›Þ\ËÜØÛÜ™\ËØÛ\ÜÙ\È\™Hš]Y^XÝˆ™Z™XÝ^˜H›ØÙ\ÜÙ\ÎˆÚ[™ÛHÛÜšÙ\ˆ\ˆÔH\È˜\Ý\ÝÛˆ\ÈØ[\Kˆ[š]X[Y˜][Y]šXÙHY[[ÜžHÛÝ[\œÈÙ\™HÛˆÔL[œÝXYÙˆ[Ù[ÔLNÈÛZ]ÜÙH™\›ÈÛÝ[\œÈœ›ÛHX›\ÚYYÙÜ™YØ]K™]Z[š[™ÈXÝX[Ø[XÛØÚËÜ\š]H]šY[˜ÙK‚‚“˜]]™HY]Y]HÜ[Z^˜][ÛŽNLÛÛ\]\Îˆ^XÚ]\™Ù]ÕQHš[™[™È\ÈÛ™H[È[YÙ\‹[X™[ÛÜH›Üˆ˜]]™HX™[Û˜[Y\ÈÛÛœÝXÝ[Ûˆ™YXÙ\ÈHØ[YLL‹Yœ˜[YHØ[\HÌLËŽÌÈ
+ØœÙ\™YKLÌ^
+K›Þ\ËÜØÛÜ™\ËØÛ\ÜÙ\Èš]Y^XÝ›Üˆ[L‹˜]]™H[X™[Û˜[Y\ÈY[XØ[ÛˆHš\œÝ[]›ØØX[\žHœ˜[YNÈ˜]]™HY]ÙÈ™\ÝÜ™YˆXÝX[[Ù[ÔLHXZÈ[ØØ][ÛŒKŒ‹ÍL˜ž]\Ëˆ\ÈÛÛ\\š\ÛÛˆ[˜ÛY\ÈÕQHš[™[™È[™Ú[™ÙY˜XÚÙÜ›Ý[™ØY
+Ù]™[ˆ›Ü›X[]Y]ÛÜšÙ\œÈ™\Ý[YY
+KÛÈ]\È›Ý[ˆ\ÛÛ]YØ]\Ø[X™[XÛÜH™[˜ÚX\šÈÜˆH[\[ˆÜYYÝX\˜[YKˆÙY\[YÙ\‹[Û›HÜ[Z^˜][Ûˆ›Ýš\Ú[Û˜[NÈ™\šYžHXÝX[ÛË\ÛÝ\˜ÙH˜]]™HÛÜšÙ\ˆ›ÝÜÈ™Y›Ü™H™\Ý[Z[™È›Ü›X[™Yš^\ÈÚ]]ˆ›ØØX[\žLLŒËÚ[šÜÌÌ‹ÌÎ“TËŽÜÌ™XÚ\Ú[Û‹ÝÙZYÚËÜ›ÝØÛÛÑÕ[›ÛZ[˜]ÜœÈ™[XZ[ˆ[˜Ú[™ÙY‚‚XÝX[[È˜]]™HÛÜšÙ\ŒÍÍN^]ˆ[˜Ú[™ÙYÛË\ÛÝ\˜ÙHÛ[ÚÙH›ÝÜËÑÕ]ÛÝ[È[™™\Ý[YHY]Y]H\™H^XÝÌØ[™Y]\È\ˆœ˜[YKÛ™H˜XÚØ›Û™H\ˆœ˜[YKÍˆXYØ[ËÍŽ[YÙ\ˆÛ\ÜÈX™[ÎÈ˜]]™KØ[ÈÓHØ[ŽŽ‹ÍLKŽMœÈ[˜ÛY\È[š]X[^˜][Ûˆ[™ÛÈœ˜[Y\Ë›Ý›Ü›X[›ÝYÚ]ˆY\ˆ™\šYšYYÛÛ›ÛY[\œ\[Û‹MNMLˆ™]\›™Y\›Z[˜[^]H
+^XÝY[\œ\YSÈÛÛ[X[™
+H[™[›Ý\ˆØ]Y›ÛÝÙ\œÈ™]\›™YSÚ]Ý]˜XÚÚ[™È][˜Úˆ]™\žH^\Ý[™È^XÝSÈ™Yš^\œÙYÝXØÙ\ÜÙ[NÛÛ\]Yœ˜[Y\È™\Ù\™YXÜ›ÜÜÈ[š]X[^™YÚ\™ÎÈÚ\™HY›ÝY]Üš][ˆY]Y]HÜˆ›ÝÜËˆ[Í‹ŽÜ™[˜\žHœ˜[Y\È[™\ØÚHÜšYÚ[˜[KL\]\È™]Z[™Yˆ™]ÈÝ\\š\ÛÜMÍLÌ][˜Ú\È\˜Ù\[ÛŒLÌLÍKÛÜ™[˜\žLLÌLÍLÓSÕ[Û›LLÌLÍLKÚ›Ú[LÌLÍL‹Ùš[˜[^˜][ÛŒLÌLÍLËˆ[]˜[X][ÛˆÚÚ\ÈÛÛ\]HÜ™[˜\žHYX\Ý\™[Y[È[™™\Ý[Y\È[˜Ú[™ÙYZYÚSÈ\][ÛœÈÚ]^XÚ]ÔHš[™[™È\È[È[YÙ\ˆY]Y]NÈX™[È[Û™H[\Ü˜\š[H\ÙHÔH›Üˆ˜]]™H˜[YHÛÛœÝXÝ[Ûˆ[™™]\›ˆÈHÜšYÚ[˜[]šXÙH™Y›Ü™H“TËˆ›Ý›YÜÈ™\Ù\™H[KŒÈ›ØØX[\žKÎ˜]]™HÚ[šÜË”Ì‹˜XÚØ›Û™HÛÝ[ËÕØÛÜH[™[Ø]\Ë‚‚XÝX[\ØÚHÜ™[˜\žHÝ[[X\žNˆ‘ÜMLŽLÍMÍ[˜ÙKŽNNLÍ‹SÕMËŽÎ‹SÕŒÜMLŽNLLÍ‹ÕÜÌŽMÌÌŽKÜšYÚ[˜[YØ[ÒUKŽMŒÎMˆ[š]™H[Ü™[˜\žHÝ™X[\È\™HYX\Ý\™YÈSÕŒØ]\ÙšY\ÈH™YÚ\Ý\™YÜÌÜ›ÝÙY™\ÚÛ]›Ü›X[™YÚ\Ý˜][Û‹ÜÙ[XÝ[ÛˆÝ[ØZ]ÈÛÛ\]HSÈ[™LH™][[Û‹ˆ›ÈÙ[XÝY›Ý[™][Û‹Ø[™Y]HØXÚK˜XÚÚ[™È™[˜ÚX\šÈÜˆLÈ™XY[™\ÜÈ\ÈÛZ[YY‚‚ˆÈÈÈŒ‹LLLLÈ8 %Lˆ\˜Ù\[Ûˆ\ØÚHÙ[XÝY‚‹HÛÛ\]YH[˜Ú[™ÙY[SËÐÕSÈÜXš[]H]Y]ˆÍ‹ÍÍHÈMËLÌH[XYÙ\ËÜÌ˜\ÙH™XØ[ŽMÍŽMNHÈŽMÌŽLŒNÈSÈ›Ý™[™XØ[ŽMŒMLMLˆ
+‹LˆÈËMÊKˆ[›X\YSÈÕ™]Z[™YÙ\\˜][H
+ÌHÈÌM]ÊK‚‹H\ØÚH›Ý[™][ÛˆYLÍØYMŒÙLNMMXLLXNÙŽLMŽN˜XNMØ˜Í˜Ù˜˜Ù˜LLŽMŽ\ÜÙY[Ù]™[ˆÜXš[]HÝ™X[\È[™LH™][[ÛŽˆÙ[™\šXÈŒKÕŒˆŽNLNŒÌŒÈÈŽMÌŒŽLÎÈ^™\ÜÚ[ÛˆÜLŒKÕŒˆKŒÈŽMÎLÍÍŽˆš^YL\Z\ˆ[™ÝXYÙH]Y]YKÜÚY™›YTLÌÌLŽLLÈÈÍŽNˆÙ[™\šXÈØÛÜHŒH[XYÙ\ÎÈ^™\ÜÚ[ÛˆØÛÜHËMŒ™\™\Ù[]]™H]Y\žHœ˜[Y\ËËNNH\™Ù]™Y™\™[˜Ù\Ë‚‹HÙ[XÝ[ÛˆÛÝ\˜ÙH™XÙZ\È[™Z\ˆ™YÚ\Ý\™YYÙ\ÝÈYÜ™YNÈ™]Z[ˆ\ØÚK›ÈÙXÛÛ™Y\][Ûˆ\ØÚ™\]Z\™Yˆ^\Ý[™È™XÛÝ™\žHÝÛ™\ˆ^]YÝXØÙ\ÜÙ[H[™Y˜[˜ÙYHZYÚQÔHÜ™[˜\žHØ[™Y]HØXÚH]]ÛX]XØ[Kˆ›Ü›X[˜XÚÚ[™ÈØÛÜ™\È[™LÈ™XY[™\ÜÈ™[XZ[ˆ[™[™Ë‚‹H]šY[˜ÙNˆÝ]]ËÝ[šYšYYÝL‹Ü\˜Ù\[Û—ØY\][Û‹Ù]˜[Ù\ØÚÌKÜÙ[XÝ[Û‹šœÛÛ˜Ù]™[ˆYX\Ý\™[Y[ËÊ‹šœÛÛ˜[™Ù[™\šXËÙ^™\ÜÚ[Û‹ØÛÝ[\™˜XÝX[™\Ý[šœÛÛ˜‚‚ˆÈÈÈŒ‹LLLLÈ8 %\Ù\‹Y\™XÝYÜ›Ý[™‘Uˆ™\ÙX\˜Ú]›Ý‚‹H\Ù\ˆ\›Z[˜]Y[LˆØ[™Y]HØXÚ[™È[™]]Üš^™YÜ›Ý[™[ž][™ÈH
+È™]˜Z[™YÛ™R™]ˆ˜XÚÚ[™È™\ÙX\˜ÚÛˆ][ÜÝ›Ý\ˆÔ\ËˆÛØ[Ú[™ÙYÈ\È\È›Ý[ÛÜš]H˜Z[\™KÓ“×ÑÓË‚‹H™\šYšYYÜ›ØÈ[˜Ù\ÝžKÜÝ\XÚÜÈ[™ÝÜYLÈÛLˆ›ØÙ\ÜÙ\ÈÚ]ÒQÕT“NÈ›ÈÛ]Y]YKØØXÚHÛÜšÙ\ˆ™[XZ[œËˆÝ\ˆ›Ú™XÝÔH›ØœÈ™\Ù\™Yˆ™[[Ý™YÍ™\šYšYY™X]\™HÚ\™È
+ÎKŽHÚPˆ[ØØ]Y
+K™]Z[š[™ÈX[šY™\ÝËÙ]KÜ™\Ý[È[™ØYX›H\ØÚLHÚXÚÜÚ[ÒHYLÍØYx )ˆ
+KLKLHž]\ÊK‚‹H™]ÈÛÜšÝ™YHÙ]L‹Ý\Ù\‹ÓØØ]SSÕÑÜ›Ý[™‘Uˆ[™œ˜[˜ÚÛÙ^ÙÜ›Ý[™™]‹MÜKLŒŒLLÈ[š\š]œ™\ÚH™]ÚY™[[ÝHLMŒMØ‹ˆÙ™šXÚX[Ü›Ý[™[ž][™ËÓÛ™R™]ˆÛÙHÛÛ™Y\™XÝHÚ]Ý]›ÞNÈ\ÛÛ]Y[š\›Û›Y[ËÝÙZYÚÈÙ]\Ý\Yˆ›È™]È˜Z[š[™ÈÜˆ˜XÚÚ[™ÈY]šXÈÛZ[YY‚‹HÛÜœ™XÝ[š\š]YÝ]\È\›Z[›ÛÙÞNˆÙ[™\šXÈŽMÎÎLMÎH\ÈÜML™XØ[[ÕHK›ÝTÈ^™\ÜÚ[ÛˆÜLŒKÕŒˆ™XØ[KËŽMÎLÍÍŽÚ[HÌŒÍÍMMNËMMLN\™H]Y\žHTXYÛ›ÜÝXÜËˆ˜]È™XÙZ\È[˜Ú[™ÙY‚‹H™^ˆ™X[KÓÛ™R™]ˆØY[™ËÝÛ‹\Ý]HÚÜÛ\8¡¤ˆ[YØ[SÕšY[Ëš^YXØ[™Y]HÚ[\KÑ[ÛÛ\\š\ÛÛ‹˜XÚÚ[™ËTÑ•[™Ú\™Y“SÕÓÕ“SÕ]˜[X][Û‹ˆÙY\]šY[˜ÙKX˜\ÙY˜Z[\™H™\Z\ˆ[™š[š]H˜Z[š[™ÈYÙ]Ë‚‚ˆÈÈÈŒ‹LLLLÈ8 %Ü›Ý[™‘UˆYØ[[œ]È[™[š]X[Û›[™H[\™˜XÙ\Â‚‹H™\šYšYY™X[YØ[SÕMËLˆ]ŒŽNK[˜ÙU˜XÚÌ[]˜[LŒËSÕŒLH]ŒŒMœ˜[Y\Ëˆ›È™]È]HÝÛ›ØYÜˆ\ÝQÕXØÙ\ÜÈ™YYY›Üˆš\œÝšY[ÈÛÜšË‚‹H[\[Y[YÙ™šXÚX[YÜšYHØ[™Y]\ÈÚ]Z\ÜÚ[™È˜]]™HÛÛ™šY[˜ÙH^XÚ]H™\Ù\™Y™]˜Z[™YÛ™R™]ˆ˜]ÚYÚÚXÙKÓ›Ý[ÔØÛÜ™HY[]H[™Y™XÞXÛHY\\‹[™Ø\šX[ˆÛØ˜[ÛÛ\]][Û‹™[XX›HÛ™Ë[Y[[ÜžH\]\È[™Ø]\Ø[Ø]™KÜ™\ÝÜ™Kˆ™X[Ü›Ü]šY[˜ÙH\È^XÚ]H\Ý[˜Ýœ›ÛH[™[™È˜]]™HÜ›Ý[™[ž][™È™X]\™\Ëˆ™\^HÛÛ›Û™\Ù\™\ÈY[XØ[Ø[™Y]\È[™™\ÜÈ›È[™]ËY[™”È›ÜˆØXÚY\˜Ù\[Û‹‚‹HHÛËYœ˜[YH™X[[››Ý]YÔHš^\™H\ÜÙ\ÈY[]H\œÚ\Ý[˜ÙK^XÝ™\Ý[YYÝ]H[™™Z™XÝY\Ý[Y\Ý[\ÎÈÕ\È\ÙYÛ›H[ˆ\È^XÚ]š^\™K›Ý\ÈHÛZ[YY[[YKØ™[˜ÚX\šÈ™\Ý[ˆ™X[[Ù[[YÜ˜][Ûˆ™[XZ[œÈ[™[™È\[™[˜ÚY\È[™ÙZYÚË‚‹H[œÝ[Y[™\[™[]ÛŒËŒL‹ŒMKˆÙ\\˜]HÛ™R™]‹ÔÑÓ[™È[œÝ[ÈXÝ]™KˆVPSSÚ\™Y]ˆØÚÈ˜Z[\™Hš^YžHYXØ]YÙ]\ØXÚKˆ\™XÝ[Ù[˜[œÜÜ]\šXLˆÈ[™Ý\›ˆØ[˜Ù[][ÛŽÈ™]Z[™Yž]H™Yš^\ËˆZYÚÛÛ˜Ý\œ™[Ù™šXÚX[SZPˆ˜[™Ù\ÈÛÛ\]H[ËŒÎMÜÈ
+KŒLÍP‹ÜÈYÙÜ™YØ]JNÈYÜÚ^Y[ŽZPˆ˜[™Ù\ËÛ\™ÙH[Ù[ÛˆKŒHÚ]Ù™šXÚX[š[˜[ÙZYÚYÙ\ÝËˆ›È›ÞK›ÈÔH\ØYÙHY]‚‚ˆÈÈÈŒ‹LLLLÈ8 %Ù™šXÚX[šY[È]˜[X][Ûˆ[™[[YHÙ]\›ÙÜ™\ÜÂ‚‹HYYÛÛ\]K\ØÛÜHÜ™[˜\žHSÕ^Ü\Ú[™È[˜Ú[™ÙY˜XÚÑ]˜[L˜ÎÎLNÈ[ŽNHYØ[SÕMËLˆ]ˆœ˜[Y\È[ˆHX™[YÕÜ˜XÛHš^\™HZY[^XÝY\™™XÝY]šXÜËÞ™\›ÈQÕËÑ”Ñ“‹ˆ\È˜[Y]\È›Ü›X]ÜØÛÜH[™[™Ë›ÝÜ›Ý[™‘Uˆ\™›Ü›X[˜ÙKˆ[[YH™\^H›ÝÈÚXÚÜÈXÝX[\ÚXØ[[XYÙH]Ë‚‹HÈ]›ÚY™\X]Y][KQÐˆ\[™[˜ÞH˜[œÙ™\œËÛÜYYX]Ú[™ÈÔ]ÛŒËŒL[œÝ[Yœ˜[Y]ÛÜšÈš[\È[È[ˆ[™\[™[Û™R™]ˆ[š\›Û›Y[^ÛY[™ÈÛ˜[œÙ›Ü›Y\œËÓSQ]XÝ[Ûˆ[™ÛÝ\˜ÙHÛÛœÛÛHØÜš\Ëˆš\œÝÛÜH][\\ÙYH\ÜÝ[YY™[ˆXÚØYÙH\™XÝÜžH[™ÛÜYY™\›Èš[\ÎÈÛÜœ™XÝYÈXÝX[\ÝšX][Ûˆ›ÛÝË[ˆ™XÛÜ™Y›Ûž™\›È\ÝšX][ÛœËˆÛÝ\˜ÙH[š\›Û›Y[[ÝXÚY›ÈÚ\™YÞ[[[šÜËˆÜ˜Ú‹ŒL
+ØÝLLŽÝš\Ú[ÛŒŒH[\ÜÈ[™ÕQH]˜Z[Xš[]HÛˆÔMˆ\ÜÎÈÛ™R™]‹Õ˜[œÙ›Ü›Y\œÍKK[œÝ[Y[™[ŽHXÚØYÙH™\]Z\™[Y[ÈÛÛ\]X›K‚‹H™Y™]ÚYÙ™šXÚX[[›™Y\™ÙHTHÚY[ÈšXH™\šYšYYž]H˜[™Ù\Ëˆ^XÝ]™\œÚ[ÛˆLË[›Û™H•’QPH\[™[˜ÚY\È™]\ÙY›ÜˆÜ›Ý[™[ž][™ÉÜÈÙ\\˜]H]ÛŒËŒL‹ÕÜ˜Ú‹ŽKŒHÙ]\ˆÛÛ›ÛYXÚØYÙH˜[œÜÜ[\œ\[ÛœÈ™\Ù\™HØXÚ\ËØ›ÛÝÝ˜\ØÝ\ÝÛH™[™ÜˆÛÝ\˜ÙNÈ™[XZ[š[™ÈÙ™šXÚX[[œÝ[][Û‹ÐP’HÚXÚÈÛÛ[Y\Ëˆ[š]™\œØ[›\Ú[™™\‹XÝXš[ˆÚY[Ø\È[š]X[H^ÛYYžHH]›Ü›HÙ[XÝÜŽÈÛÜœ™XÝYœ›ÛHXÝX[THš[[˜[YH[™ÛÛ\]YHZ\ÜÚ[™ÈÚY[‚‹HÛ™H›ØÚÚ[™È™XY[™\ÜÈ]Y]YHÝÛœÈHXÝX[™]˜Z[™YSÕYœ˜[YHÚXÚËØ]YÛˆ[Ù™šXÚX[Û™R™]ˆÙZYÚ™XÙZ\ˆ[Ù[ÈÝ[ÝÛ›ØY[™ÎÈ›È™X[[[Ù[˜XÚÚ[™ÈÜˆ˜Z[š[™È™\Ý[ÛZ[YYˆÜ[Z^™\ˆÝ\È™\›Ë][ÜÝ›Ý\ˆ\ÚXØ[Ô\È[™›Ü˜ÙYžHÛÛ[[Ûˆ][˜Ú\ŽÈÝ\ˆ›Ú™XÝÈ™\Ù\™Y‚‚ˆÈÈÈŒ‹LLLM8 %š\œÝXÝX[Û™R™]ˆœ˜[YH[™ÚXÚÜÚ[]™\œÚ[Ûˆ™\Z\‚‚‹HÙ™šXÚX[Û™R™]ˆÙZYÚÈÛÛ\]H[™”ÈYÙ\ÝX]Ú\Îˆ[Ù[œØY™][œÛÜœÌ‹ŒMNLŽM˜ž]\ÈÒHØÍMÌØ˜XL˜LÙ˜XÙŒMÍÌÌŒLŒYXM˜˜L˜L˜ÙYM™˜ÎŽŒŒˆ›ÈÙZYÚÛ[Ù[ÝXœÝ]][Û‹‚‹Hš\œÝÔHØY™XYÍÍÙZYÚ[šY\È]Y˜][Ù™šXÚX[›ÜšÈÙ[‹XÚXÚÈ˜Z[È
+ŒMÈ›Ý[™Y›Ø˜Xš[]HY™™\™[˜ÙHˆŒJKˆ[š]X[Û™R™]KK[ˆ[˜ÛÜœ™XÝH™]\ÙYÜ›Ý[™[ž][™ÉÜÈ™\]Z\™[Y[ÈXÝX[ÚXÚÜÚ[ÛÛ™šYÈXÛ\™\Õ˜[œÙ›Ü›Y\œÍKŒMËŒˆ\]HÛ›H\ÛÛ]YÛ™R™]ˆÍKŒMËŒÝÚÙ[š^™\œËŒŒËŒËÙY\[Ù™šXÚX[ÚXÚÜÈ[™ŒHÛ\˜[˜ÙNÈØ[YH™]˜Z[™YÙZYÚÈ[ˆ\ÜÈ]]È˜[Y][Ûˆ[™\ÙH˜]ÚY[ÙK‚‹H™X[SÕMËLˆœ˜[YLÌˆ›ØÙ\ÜÙYÛˆÔMˆÚ]ÚÚXÙKÓ›Ý[ÔØÛÜ™Nˆ‘UËŒÍŽKÒQÓ“Ô‘KŒÌÌLKš\ÚX›H[ÜKŽMÎÍË]X[]H^XÝY]™[ŽLNNLÍKˆ™\Ù\™HH™YØ]]™HÙ[™\šXÈÚÚXÙNÈ\È\ÈHØYÚ[\™˜XÙHÚXÚË›Ý\ÜÛØÚX][ÛˆXØÝ\˜XÞKˆXÝX[™YK\]Y\Ý[Ûˆ™\]Y\ÝŒŽÌÍÜË[ØØ]ÜˆXZÌËLNKLŽÌ˜ž]\ËÝ\Ì‚‹HÜ›Ý[™[ž][™ÉÜÈ[™\[™[]ÛŒËŒL‹ÕÜ˜Ú‹ŽKŒKÕ˜[œÙ›Ü›Y\œÍKKÝ\ÝÛHÙ\™H[š\›Û›Y[ÛÛ\]\È[™Ù™šXÚX[P’HÚXÚÈ™\ÜÈÛ›H]È^XÝYÝQ“ŽKŒMˆY]Y]HÝ™\œšYK›È[™^XÝYÛÛ™›XÝËˆÚ[™ÛHHÝÛ™\ˆØZ]È›Üˆ™\šYšYY[™H[™]˜Z[X›HÔMˆY[[ÜžH™Y›Ü™HÝ\[™ÈÙ™šXÚX[[›Ú\Ú[™ÈÚ]Ý]XÈY[[ÜžHœ˜XÝ[Û‹ˆÜ›Ý[™[ž][™ÈÝÛ›ØY™[XZ[œÈXÝ]™Kˆ›È[Û›[™HšY[ÈÜˆš[™K][š[™ÈÛZ[YYY]‚‚ˆÈÈŒ‹LLLM8 %Ù™šXÚX[HÙ\šXÙH[™ÔHÝÛ™\œÚ\‚‘Ü›Ý[™[ž][™ÈHÝÛ›ØYÛÛ\]Y]H[›™YÙ™šXÚX[™]š\Ú[ÛˆÚ]š]ÈKŽËNKÌÍ‹Xž]HÙZYÚX]Ú[™ÈHÙ™šXÚX[”ÈÒLM‹ˆHÚ[™ÛBœÙ\šXÙHÝÛ™\ˆ][˜ÚYÙ™šXÚX[Ý\ÝÛHÑÓ[™È[›Ú\Ú[™ÈÛˆ\ÚXØ[ÔM‚ŠÝ]XÈY[[ÜžHœ˜XÝ[Ûˆ
+NÈH[Ù[[™Ú[™\ÜÛ™ËˆHÚ[™ÛH›ØÚÚ[™Â˜Û\ÝÛ™\ˆÝ\È›Ý\ˆ™X[SÕMÈ]ˆœ˜[Y\È\Ú[™È˜]]™HHØ[™Y]\Ëœ™]˜Z[™YÛ™R™]‹ÛØ˜[\ÜÚYÛ›Y[[™]ÈÝÛˆØ]\Ø[Y[]HY[[ÜžK‚ÛÛ\][Û‹Ý]]˜[Y]H[™˜XÚÚ[™È]X[]H\™HÝ[[™[™Ë‚‚•H\Ù\ˆ\ÚÙYÚH\ÚXØ[ÍKÍ‹ÍÈÝ[ÚÝÙY›ØÙ\ÜÙ\ËˆHÛ™K][YHÔBœ›ØÙ\ÜËØÝÙØ\™Ýˆ]Y]Y[YšYYQU˜Z[š[™ËÚ[™™\™[˜ÙHÛÍKÍËHÛÂ‘Ü›Ý[™‘Uˆ[Ù[›ØÙ\ÜÙ\ÈÛ‹[™[ˆ[œ™[]Y\Ù\ˆ›ØÙ\ÜÈÛ‹ˆ\È\Â››Ý›Ý\‹QÔHÜ›Ý[™‘Uˆ\ØYÙH[™›ÝÛLˆØXÚ[™ËˆÝ\ˆ›Ú™XÝ›ØÙ\ÜÙ\ÂÙ\™H™\Ù\™YˆÙY\H^XÚ]›Ú™XÝ]šXÙH[ÝÛ\Ý[™ÝÛ™\œÚ\˜]šX][ÛŽÈ›ÈY]šXËÙYYÜˆ›ÝØÛÛÚ[™ÙY‚‚ˆÈÈŒ‹LLLM8 %˜XÚÚ[™ÈÑ•XXÚ\ˆÝ\œšXÝ[[H\Ý\Ú\Â‚’\Ý\Ú\ÎˆH™]˜Z[™YÙ[™\šXÈXÚ\Ú[Ûˆ[Ù[™YYÈ^XÚ]˜XÚÚ[™ÂšY[]KY™XÞXÛH[™Y[[ÜžK]\]HÝ\\š\Ú[Ûˆ™Y›Ü™HÝÛ‹\Ý]H›ÛÝ]‚”™\\™H™X[M‹[ØœÙ\˜][ÛˆYØ[˜Z[š[™ÈÛ\Èœ›ÛHSÕMËL‹[˜ÙU˜XÚÌB˜[™SÕŒLKZ[™Y›ÜˆÝ™\›\ÝÈš\ÚXš[]H[™Z\ÜÚ[™ÈØœÙ\˜][ÛœË‚•\ÙHHÚ[™ÛHÚ\™Y[[YH]Y\Ý[Û‹ÜÝ]HZ[\ˆ[™˜[™ÛZ^™Y\œÚ\Ý[šY[]H[X\Ù\È\ˆÛ\ˆXXÚ\ˆÕ›ÜÜØ[ËÚ\ÝÜžH\™H[ÝÙYÛ›H[‚\È[š]X[Ý\œšXÝ[[NÈ^H\™H›ÝÜ›Ý[™[ž][™ÈÝ]]Üˆ™[˜ÚX\šÂœ™YXÝ[ÛœËˆZ\ÜÚ[™ÈÚÜ\ÝY[]H[™Ú][ÛÜœ™XÝ[Ü[Ûˆ›ÝÜÈ\™B™^XÚ]“×ÓPUÒÝ\\š\Ú[Û‹™]™\ˆZ\ÛX™[Y\È‘UËˆ[ÛÛ\][Ûˆ[ÛÂœ™\]Z\™\È™\šYšYY˜[ÙKXØ[™Y]HÝ\\š\Ú[Ûˆ[™XÝX[[Ù[\Ý]H›ÛÝ]‚‚”Ý\Ú]Ù™šXÚX[][[[Ù[[™ÝXYÙK[[Ù[[Ñ•œ›Þ™[ˆš\Ú[Û‹ŒLÜ[Z^™\ˆÝ\ËÛ™K\›ÝÈZXÜ›Ø˜]Ú\È[™›Ý\‹\›ÝÈXØÝ[][][Û‹ˆ™]Z[‚HÜšYÚ[˜[ÙYY[™YKMˆ™XÚ\K™\šYžH[›ÝÜÈš]HÚÙ[ˆ[‹Ø]™B™]™\žL\Ý\Ë[œÜXÝ™X[Ü˜YY[ËÛÜÜÈ[™™[ØYHÚXÚÜÚ[ˆBœÝXœÙ\]Y[š[š]Hš\œÝ˜Z[š[™ÈYÙ]™[XZ[œÍL8 $ÌLÝ\È[˜ÛY[™Â›[Ù[›ÛÝ]È\ÌL\Ý\ÚXÚÈÙ\È›ÝØ]\ÙžH›Ü›X[˜Z[š[™ÈÛÛ\][Û‹‚•Hš\œÝ˜]]™HÛ›[™HÛ\\È[™^XÝYHÛÝËÛÈ›Ùš[H]^XÝ]™Bœ›ØÙ\ÜÈÛ˜ÙH™Y›Ü™H›ÜÜÚ[™ÈHÜYYÚ[™ÙK‚‚ˆÈÈŒ‹LLLM8 %˜]]™HšY[È˜Z[\™KÙ™šXÚX[\œÚ[™È[™™\Ý[YB‚•H˜]]™HH
+ÈÛ™R™]ˆÛÜÛÛ\]Y™X[œ˜[Y\ÌÌ¸ $ÌÌŒÌHØ[™Y]\Â™XXÚÌÌÌKÌÌHÝ]]˜XÚÜËNŒNMÌNKËÌNKÍŒÜÈ\ˆœ˜[YKˆÛ™R™]‚˜Ü™X]YLH\œÚ\Ý[QÈžHH\™œ˜[YK]šY[˜ÙHÙˆ[˜Y\YY[]B™œ˜YÛY[][Û‹›Ý˜XÚÚ[™ÈÝXØÙ\ÜËˆH›Ý\œ˜[YH˜Z[YHÝšXÝ˜ÛY[\œÙ\ˆÚ]›Û‹XØ[›ÛšXØ[ÛÛÜ™[˜]HÜ™\š[™ËÜ™\X]Y˜\ÙH›ØÚÜË‚•H[›™\ˆ[ˆXYØÚÙY\š[™ÈÛX[\ˆ]È\™[ØZ]Y›Üˆ™›\YÈÚ[B™™›\YÈØZ]Y›Üˆ[ˆ[˜ÛÜÙY˜]ËYœ˜[YH\KˆHÛ™K][YH\™Ù]Y›ØÙ\ÜÂ™XYÛ›ÜÚ\ÈY[YšYY\ËH^XÝÝÛ™Y[˜ÛÙ\ˆ™XÙZ]™YÒQÕT“H[™[ˆÒQÒÒSY\ˆ]È™\šYšYYLÈ[Y[Ý]È›È[Ù[ÛÝ\‹\›Ú™XÝ›ØÙ\ÜÂØ\ÈÚYÛ˜[YˆHÜšYÚ[˜[˜XÙX˜XÚÈ™]\›™Y[™\È™\Ù\™Y‚‚”™\X][™ÈH^XÝœ˜[YKÜ™\]Y\Ý™YH[Y\ÈZY[YHØ[YHÝšXÝ\œÙB™\œ›Üˆ
+MËŒ\ÈÝ[
+NÈ™\Ø[\[™È\È›ÝHš^[™Y˜][[™™\™[˜ÙHÝ[\Ù\ÈÛ™H™\]Y\Ý\ˆœ˜[YHÚ][˜Ú[™ÙY[Ù[ÙXÛÙ\‹ÜØ[\[™È\˜[Y]\œË‚•H[›™YÙ™šXÚX[]˜[X][ÛˆØÛÜš[™È\œÙ\ˆ™\Ù\™\ÌÍHÙ[ÛY]šXØ[B˜[Y›Þ\È[ˆ\È™\ÜÛœÙKˆY[ˆ^XÚ]Ù™šXÚX[ÜØÛÜš[™ÈY\\ˆÛXÞB\Ú[™È][›[ÙYšYY[˜Ý[Û‹™]Z[š[™ÈÝšXÝÝÚ\™WÝ˜[YY˜[ÙK˜]ÈÝ]]˜[™\œ›Ü‹ˆH™YÜ™\ÜÚ[ÛˆÛˆHØœÙ\™Y˜Z[\™HX]Ú\È]™\žHX™[ØÛÛÜ™[˜]BÚ]HÙ™šXÚX[ØÛÜ™\ˆ[™Ý[™Z™XÝÈ[˜Ø]YÙ[™\˜][ÛœËˆÛY[œÝšXÝ[ÙH™[XZ[œÈÙ[XÝX›NÈ›ÈÕÛÛÜ™[˜]H™\Z\ˆÜˆY]šXÈÚ[™ÙK‚‚‘š^[˜ÛÙ\ˆÛX[\žHÛÜÚ[™ÈÝ[ˆ™Y›Ü™HØZ][™Ë\œÚ\ÝHš\œÝ™˜Z[\™K[™™XÛÛœÝXÝÛÛ\]YØ]\Ø[Y[]HÝ]\Èœ›ÛHØ]™Y˜]]™BÚÚXÙKÓ›Ý[ÔØÛÜ™HXÚ\Ú[ÛœËˆ™X[™Yš^™XÛÛœÝXÝ[Ûˆ™\›ÙXÙY[™YB™œ˜[Y\ÉÈÝ]]ËÙ]™[ËÜÝ]H^XÝHÚ]Ý]ÕÜˆ\\ˆ[Ù[Ø[Ë‚H™Y˜XÝÜš[™ÈZ\ÝZÙH
+[Š]Y\Ý[ÛœÊHY\ˆ[Ýš[™È™\]Y\ÝÛÛœÝXÝ[ÛŠB˜Ø]\ÙYHš\œÝ™\Ý[YY][\È˜Z[]œ˜[YLÌNÈ\ÙH[Š™\]Y\Ýœ]Y\Ý[ÛœÊB˜[™™]Z[ˆ]˜Z[Y][\ˆHÙXÛÛ™™\Ý[YHÝ\Èœ›ÛHHØ[YH™YB™\šYšYYÛÛ\]Yœ˜[Y\Ëˆ™\Ý[YYYØXÞH[Z[™ÈØ[››ÝXØÛÝ[›ÜˆB›ÜšYÚ[˜[˜Z[Y™\]Y\ÝÚ[\œ\[Û‹ÛÈ›ÈÛÛ\]H[™]ËY[™”È\ÈÛZ[YY‚‚•XXÚ\ˆÝ\œšXÝ[[NŒNYØ[M‹[ØœÙ\˜][ÛˆÛ\ËM›ÝÜËNKKLŒ\ÝÜžB”‘Èž]\ËÈ™X[™X\X\˜[˜ÙHØœÙ\˜][ÛœÈ[ˆ[˜ÙU˜XÚËˆ[MÙ™šXÚX[œ]Y\Ý[Û‹Ý\™Ù]ØÚ[X\È™\šYšYYÌMÌŽ›Ý[\™Ù]ÈÛÜœ™XÝYœ›ÛHYKÙ˜[ÙBÈHÙ™šXÚX[Y\ËÛ›ÈX™[È™Y›Ü™H[žH˜Z[š[™Ëˆ›È]™[ÜY[Ý\ÝÕ\ÙYˆÙ™šXÚX[[‹[Û›NˆLÜLÜNKÛX^MMLËÍÌŒKÍÍŒÍËÍÎNÚÙ[œË›ÝÜÂ™›ÜY]MŒÎX^[][LNÜ[ÛœÈ
+XÝX[TH[Z]MJKˆ[™]˜Z[™Y›[™ÝXYÙK[[Ù[L\Ý\ÚXÚÈ][˜ÚYÛˆ\ÚXØ[ÔMÚ]œ›Þ™[ˆš\Ú[ÛŽÂ‘Ü›Ý[™‘Uˆ›ÝÈ\Ù\ÈÛÈ\ÚXØ[Ø\™Í[™‹Ý\ˆ›ØœÈ™\Ù\™YˆH˜Z[š[™Â›ÝÛ™\ˆ\È[š\]YH[™›ØÚÚ[™Ëˆ\ÈXXÚ\ˆ\ÙHÝ[XÚÜÈÛÛ\]H˜[ÙB˜Ø[™Y]KÝ\›Z[˜][Û‹ÛÛ™ËYØ\Û[Ù[\›ÛÝ]ÛÝ™\˜YÙK^XÚ]H[™[™Â™›ÜˆH™^Ý\œšXÝ[[H[™›Ü›X[L8 $ÌLÝ\YÙ]‚‚ˆÈÈŒ‹LLLM8 %š\œÝ˜]]™HÛ›[™HÝ]][™™YØ]]™H\ÜÛØÚX][ÛˆÛÛ›Û‚‘›Ý\ˆ˜]]™HSÕMÈœ˜[Y\ÈÛÛ\]Y[™\ÜÙY™YXÝ[Û‹ÛÛ™K]Ë[Û™KÛY[[ÜžB˜[™™œ›Ø™H[YÜš]HÚXÚÜÎŒÌKÌÌKÌÌKÌÍHØ[™Y]\ËÌÌÌKÌÌKÌÍH˜XÚÜËŒ‚œ\œÚ\Ý[QË™^ÚYŒËˆÙ™šXÚX[Ø[YKXØ[™Y]MYœ˜[YH˜XÚÑ]˜[ˆ[’ÕKŒMŒŽK]KL‹\ÜÐKŒŽMŽ‹QŒKÍKŒQÕËM‘”“ŽÈÚ[\B’ÕKÍLË]KŒÌ\ÜÐKŽMLMŒKQŒKŽÍL‹RQÕËMÑ”“‹ˆ™]Z[‚\È™YØ]]™HÙ[™\šXË\™]˜Z[š[™È™\Ý[È]Ý\ÜÈ˜XÚÚ[™ÈY\][Û‹››ÝH[]šY[ËÜ\\ˆÛZ[HÜˆÛØ˜[“×ÑÓËˆH™\Ý[YY[[›ØØ][Û‚˜[ØØ]ÜˆXZÎÍLÌÎž]\ÈÛÝ™\œÈ][›ØØ][ÛˆÛ›KˆÛÛ\]B™[™]ËY[™”È™[XZ[œÈ[™XØ]\ÙHHYØXÞH[\œ\Y[ˆXÚÜÈ˜Z[Y˜][\[Z[™ÎÈÚ[\LLŽÎÑ”È\È\ÜÛØÚX][Ûˆ™\^HÛ›K‚‚•HXÝX[L\Ý\Ñ•ÚXÚÈ\È[›š[™Îˆ[ÍÙZYÚÈØYYÍL‹ŒÎSKÎL‹ŽNSBœ\˜[Y]\œÈ˜Z[˜X›Kš\œÝHÜÜÙ\Èš[š]H[™›Ûž™\›ÈÛ›Ü›KXZÌMKŒQÚP‹‚HÙ\\˜]HÚ[™ÛH›ØÚÚ[™ÈÝÛ™\ˆÝ\È[KŒÑ[˜ÙU˜XÚÌ˜[Y][Û‚™œ˜[Y\ÈÚ]˜]]™HH
+È™]˜Z[™Y[[ˆØ[YKXØ[™Y]HÚ[\H[™[˜Ú[™ÙY˜XÚÑ]˜[ˆ[\›˜[ÔH[Ûš]Üš[™È^ÛY\È›Ü™ZYÛˆ›ØœË‚‘Ü›Ý[™‘Uˆ\Ù\È\ÚXØ[[™ˆÛ›NÈ›È]Y]YKÝ\ÚÈØ\È™\Ý\Y[\XÚ]K‚‚ˆÈÈŒ‹LLLM8 %ÛÛ\]K]šY[ÈÙ[™\šXÈXÛÙ\ˆ˜Z[\™H[™Ù™šXÚX[[œÙH™\Z\‚‚‘[˜ÙU˜XÚÈ˜]]™H][\ÛÛ\]YŒœ˜[Y\È[ˆ˜Z[Yœ˜[YLŒKˆH˜]Â›Ý]]™\X]ÈHØ[YH›Þ[™[™ÈÚ]H˜Z[[™ÈÙ\\˜]ÜŽÈ]™[ˆB[›[ÙYšYYÙ™šXÚX[ØÛÜ™\ˆ™]\›œÈ›È˜[Y™YXÝ[ÛœËˆ™\Ù\™H[Œœ™X[œ˜[Y\ËH˜[Y]\ÝY[[ÜžK˜Z[\™H”ÓÓˆ[™[\›˜[H™XÛÜ™Yœ™\ÛÝ\˜ÙHXZÜËˆ[˜ÛÙ\ˆÛX[\›ÝÈ™]\›œÈH™X[˜Z[\™H›Û\K‚“›Èœ˜[YH\ÈÚÚ\YÜˆXØÙ\Y\ÈH˜[Y™YXÝ[Û‹‚‚”›ÛÝØ]\ÙH\Ý\Ú\ÎˆÙ[™\šXÈÛY[\Ù\ÈÜ™YYH[›™\‹ÛÝ]\ˆØ[\[™È˜]\‚[ˆHÙ™šXÚX[HØÝ[Y[Y[œÙH™\]Y\Ý›Ùš[KˆH[›š[™ÈÙ\™\‚–PSSš^\ÈØ[\[™×ÜÙYYŽÈ™]Z[‹ˆ›Ø™HHØ[YHœ˜[YHÚ]Ù™šXÚX[‘XÛÙUÚ\™YšY[È\È[œÙH[\\˜]\™KŒKÝÜÜŽMKÛX^NLˆ[ˆ›Ý›Ý]\ˆØ[\[™È[™™\ÝYØ[WÙWÙXÛÙKˆXÝX[›Ø™LËŒÍ\È›ÙXÙ\ÍB›Ù™šXÚX[\ØÛÜš[™Ë]˜[Y›Þ\ÎÈÝšXÝ\XØ]KXÛÛÜ™[˜]H\œ›ÜˆÝ[ÙÙÙY‚‘È›Ý™[^Ù[ÛY]žKÝ[˜Ø][Û‹ÛY]šXÈ˜[Y][ÛˆÜˆÝÚ]ÚHÈ“KÐT‹‚”[ˆH\Ý[˜Ý^XÚ]H™YÚ\Ý\™Y[œÙWÝŒˆ[šY[Èœ›ÛH]Èš\œÝ™œ˜[YH™XØ]\ÙH™\]Y\Ý[Y\šXÜÈÚ[™ÙYÈHÛŒœ˜[Y\È™[XZ[ˆHÙ\\˜]B›™YØ]]™H][\ˆ\È™\Z\ˆ\È™]Z[™Y[™[™È[]šY[È]šY[˜ÙK‚‚”Ñ•ÝÛ™\ˆ™[XZ[œÈ]™H[™\È™XXÚYØœÙ\™YÝ\Ú]š[š]HÜÜÙ\Ë››Ûž™\›ÈÜ˜YY[È[™MKŒ‘ÚPˆ[ØØ]ÜˆXZËˆ[ÚÜ\Ý\H\ÈØ]™YÈ›Â˜ÛÛ\]YL\Ý\Üˆ™[ØY™\Ý[Y]ˆ\ÚÈÚXÚÎŒÍQÚPˆœ™YHÛ‹Ù]L‹™[›ÝYÚ›ÜˆHš[š]H[Ù[Ø]™\ÎÈ™X]\™KXØXÚHYÙ][˜Ú[™ÙY‚‚ˆÈÈŒ‹LLLM8 %ÚXÚÜÚ[˜[Y][Ûˆ[™Ø[YKXØ[™Y]HÑ•ÚXÚÈ[‚‚”™]š[Ý\ÈÛØ[\›ˆXYHÛÛ˜Ü™]H›ÙÜ™\ÜÎˆ˜]]™H[Ù[˜XÚÚ[™ËÙ™šXÚX[™›Ý\‹Yœ˜[YH˜\Ù[[™HY]šXÜËXÝX[Ñ•[™™\šYšYYÚ]XˆX›XØ][Û‹‚Ý\œ™[Ú[™ÛH˜Z[š[™È[™H\È]™H]ØœÙ\™YÝ\È[œÙH[]šY[Â›ÝÛ™\ˆ\È]™H]ØœÙ\™Yœ˜[YLMˆÛÛ[YHÜÙH^XÝÝÛ™\œË‚‚Y\ˆLL\Ý\ÝÛ™\ˆ^]Ë˜[Y]H]ÈÛ™H™XÛÜ™[™š[š]HÜÜÙ\ËÂ™Ü˜YY[ÎÈÛÛ\\™HØ]™Y[™ÝXYÙK]ÙZYÚ›Ø™\ÈYØZ[œÝHÜšYÚ[˜[]BœØ[YH‘ŒMˆ™XÚ\Ú[Û‹[ˆØYHÚXÚÜÚ[ÚXÙH[™ÚXÚÈHØ[YH™X[˜XÚÚ[™ÈÚÚXÙKÓ›Ý[ÔØÛÜ™H›Ø˜Xš[]H\ÝšX][ÛœËˆ›ÛÝÈÚ]H^XÝ™›Ý\‹Yœ˜[YHØ[™Y]H™\^H™Y›Ü™KØY\ˆÛÛ›Û[™[˜Ú[™ÙY˜XÚÑ]˜[‚“›È]˜[X][ÛˆÕ[\œÈ[™™\™[˜ÙH[™›È[]šY[È™\Ý[\È[™™\œ™Yœ›ÛB\ÈÚÜØÛÜKˆ[ˆÜ™X]H™X[YØ[]˜Z[ˆ]XÝÜ‹Û[Ù[Z\ÝÜžH›ÛÝ]œÝ\\š\Ú[Ûˆ›ÜˆHš[š]H›Ü›X[Y\][ÛˆYÙ]ÈXXÚ\‹[Û›H˜Z[š[™Â™Ù\È›ÝÛÛ\]HH\™Ù]‚‚ˆÈÈŒ‹LLLM8 %L\Ý\™YØ]]™H™\Ý[[™ÛÛ\]KYœ˜[YHØÛÜš[™ÈÛXÞB‚“Ù™šXÚX[Ñ•ÛÛ\]YLÝ\ËÍ^[\\È[ŒMLKŒŒœËˆ[ÍÙZYÚ˜[Y\Âœ™]Z[™YÈ™YH‘ŒM‹X[YÛ™Y[™ÝXYÙHS›Ø™\ÈÚ[™ÙYKŽ“KÌKŒŒÓKÌKŒÓB™[[Y[ËˆÛÈ™[ØYÈZY[Y[XØ[™X[˜XÚÚ[™È›Ø˜Xš[]Y\È
+X^Y™Œ
+K[˜Ú[™ÙYÙ™šXÚX[›ÜšÈ]]ÈÚXÚÈ\ÜÙ\Ëˆ›Ý\ˆØ[YKXØ[™Y]HÙ™šXÚX[›Y]šXÜÈÛÜœÙ[ŽˆÕKŒÌŽÌÎ\ÜÐKŒMÌŒÎËQŒKŒÌLMÎËÍRQÕËMÑ”“ˆœÂœ™]˜Z[™YÕKŒMŒŽKŒQÕËˆÙY\LL\Ý\™YØ]]™HÚXÚÜÚ[ÈÈ›Ý˜ÛZ[HÛÛ\]Y›Ü›X[Y\][ÛˆÜˆ[\›Ý™[Y[œ›ÛHH˜[[™È˜Z[š[™ÈÜÜË‚‚‘[œÙH™\]Y\Ý[]šY[È][\[ÛÈÝÜÈ]œ˜[YLŒHÚ]™\X]YÛX[›Ü›YYÜ˜\\œË\Ü]HH\ÛÛ]Yœ˜[YLŒH›Ø™H\ÜÚ[™ÈX\›Y\‹ˆH™\]Y\Ý˜ÛÛ˜XÝ™\Z\ˆÙ\È›ÝÝX\˜[YH˜[YÝ]][™]\Ý›Ý™H\ØÜšX™Y˜\ÈHÛÛ\]Hš^ˆ™\Ù\™H›Ý˜Z[\™\È[™Œ˜[Y˜]]™HÝ]\Ë‚‚‘›ÜˆÛÛ\]K]šY[ÈYX\Ý\™[Y[™YÚ\Ý\ˆ^XÚ][\WØ[™Ü™XÛÜ™ÛXÞN‚HØ[YH[˜Ú[™ÙYÙ™šXÚX[ØÛÜ™\ˆ™Z™XÝÈX[›Ü›YYÝ[˜Ø]YÝ]]È\ÙBš]È[\H™YXÝ[ÛˆÙ]™XÛÜ™˜]È\œ›Üˆ[™][˜ÞK[™[ˆHXÝX[˜Ø]\Ø[˜XÚÙ\ˆÛˆ™\›ÈØ[™Y]\Ëˆ]™\žH[XYÙH™[XZ[œÈ[ˆHÙ™šXÚX[›Y]šXÈ[›ÛZ[˜]Ü‹ˆX\šÈÛÛ\][ÛˆÒUÔ‘R‘PÕQÔTÑTSÓ‹™]™\ˆ[]˜[Y›[Ù[ÝXØÙ\ÜËˆÛ›HÜ›Ý[™[™Ô›ÝØÛÛ\œ›Üˆ\È[™YÈš[KÜÙ\šXÙKÜ[[YB™˜Z[\™\ÈÝ[ÝÜˆ™]\ÙHH™\šYšYYŒYœ˜[YH™Yš^[™\ˆ[˜Ú[™ÙY›[Ù[Ü™\]Y\ÝØÛÜ™HÙ][™ÜÎÈ›ÈÚÚ\YØ[\HÜˆ™XÛÛœÝXÝY˜ZÙH›Þ‚•\È\È[ˆ^XÚ]YX\Ý\™[Y[ÛXÞK›ÝHÜ›Ý[™[ž][™È]X[]Hš^‚[˜[^™HÛÜœ™XÝ[Ü[ÛˆÛÝ™\˜YÙKÙ[XÝYY[]H[™Y[[ÜžHÛÛ[Z[˜][Û‚È]\›Z[™HÚHÕ]XXÚ\ˆÑ•\È›ÝÝY™šXÚY[™Y›Ü™H›Ü›X[›ÛÝ]Ñ•‚‚ˆÈÈŒ‹LLLM8 %Y[]H\œ›ÜˆXYÛ›ÜÚ\È[™]šY[˜ÙKY›Ü›X]ÛÛ›ÛY™\Z\‚‚”ÜÝZØÈš^YX[˜ÚÜˆXYÛ›ÜÝXÜÈÛˆHØ[YH›Ý\ˆœ˜[Y\ÈÚÝÈÛÜœ™XÝ[Ü[Û‚˜ÛÝ™\˜YÙLL	H›Üˆ›Ý™]˜Z[ˆ[™Ñ•Lˆ^\Ý[™ÈY[]HXØÝ\˜XÞH˜[Â™œ›ÛLMÍÎ
+MËŽMIJHÍ‹ÍÍ
+ŒLIJNÈ˜]]™HÛÜœ™XÝ[Ü[ÛˆX\ÜËŒNLHËŒ‹‚Ø[™Y]HÕ™XØ[\ÈHØ[YLLLKÌLÍJŽŒŒŒŠH›Üˆ[™YHÛÛ›ÛËˆBœÚÜ\Ý\È›ÝH[[YYX]HØ]\ÙHÛˆ\ÈØÛÜKˆÑ•LÛÈ[LÂ™^\Ý[™ÈY[[ÜžHØœÙ\˜][ÛœËÚ[H™]˜Z[ˆ\ÍÈÜ›Û™ËÝ[›X]ÚYY[[ÜžB\]\È[™Û›LHY[]KXÛÛœÚ\Ý[\]Kˆ™\Ù\™HXYÛ›ÜÝXÜÈ\ÂœÜÝZØÈ[˜[\Ú\Ë›ÝÙ™šXÚX[Y]šXÈ™\XÙ[Y[ÈÜˆ[™™\™[˜ÙHÕ[œ]‚‚•ÛÈÛÛ˜Ü™]H^ÜÝ\™HZ\ÛX]Ú\È™YY™\Z\Žˆ[™™\™[˜ÙHØ[™Y]\È]™H›Â™^XÚ]Ü›ÜY[YšY\œË™[Z[™ÈÛˆ^[XÛÛÜ™[˜]H\š]Y]XÈ[ˆB™[[XYÙNÈXXÚ\ˆ›ÝÜÈ\ÙM˜Ø[™Y]\ËÌMš\ÝÜšXØ[Ü[ÛœÈœÌM‹ÌÌˆ]œ[[YK[™Z\ÜÈÜ›Û™È]XÝ[ÛœËÛ[Ù[\ÝÜšY\Ëˆ™\™YÚ\Ý\ˆÜ[Û˜[Œ—ØÜ›ÜÛ[Ý[Ûˆ]šY[˜ÙNˆÝ\œ™[Ø[™Y]HÜ›ÜÚY]\È[[]]X›B˜[˜ÚÜ‹ÛÛ™ËÜ™XÙ[\ÝÜžHÚY]^XÚ]Ø]\Ø[[ÕKØÙ[\‹Y\Ý[˜ÙB›X]šXÙ\È\È™X]\™\Ë[™HÙ[Z[™H“×ÓPUÒÜ[Û‹ˆ[™Ø\šX[ˆÝ[\Ù\Â›˜]]™HÛ™R™]ˆ›Ø˜Xš[]Y\ËˆÙY\ŒH[˜Ú[™ÙY›ÜˆHÛ™ÛÚ[™È[]šY[Â˜˜\Ù[[™Kˆ[ˆ™]˜Z[ˆ[™Ñ•LÚ]Y[XØ[Œˆ]šY[˜ÙKØØ[™Y]H\ÝÂ˜\ÈHÛÛ›ÛYXYÛ›ÜÚ\È™Y›Ü™H›Ü›Z[™ÈH™]ÈÝÛ‹Z\ÝÜžHÝ\œšXÝ[[K‚‚‘]šY[˜ÙHŒˆ™]˜Z[ˆ›ÙXÙY›È˜XÚÜÎˆ[LŽØ[™Y]HXÝ[ÛœÈÙ\™B““×ÓPUÒ[˜ÛY[™ÈHš\œÝœ˜[YHÚ]›È\ÝY[]KˆH™]ÈÜš]\š[Û‚Ø\ÈÙ[X[XØ[HÝ™\›\[™ÈÚ]‘UËˆ™]Z[ˆ]™\œÚ[Û‹Ü™\Ý[È[™š[š\ÚHX]ÚYÑ•LÛÛ›Ûˆ™YÚ\Ý\ˆŒÈ\ÈHZ[š[][HÙ[X[XÈ™\Z\Žˆ“×ÓPUÒœ™\]Z\™\ÈH™]š[Ý\ÛHØœÙ\™YØš™XÝ[™\È›ÝÙ™™\™YÚ][\H\ÝÜžK‚Ý\œ™[Ü›ÜÛ[Ý[Ûˆ]šY[˜ÙHÝ\Ú\ÙHY[XØ[ˆÈ›ÝÚ[[HÝ™\Üš]BŒˆÜˆ[\ˆ]È[Ù[ØÛÜ™\Ë‚‚‘]šY[˜ÙHŒˆ™]˜Z[ˆ[™Ñ•L›ÝÛÛ\ÙHÈ“×ÓPUÒÛˆ[LŽ˜Ø[™Y]\È
+ÕL“ŒLÍJNÈ™]Z[ˆ\ÈXÝX[Ù[X[XËY\œ›Üˆ™\Ý[‚•ŒÈ™[[Ý™\È“×ÓPUÒœ›ÛH[\H\ÝÜžH[™\Ý[™ÝZ\Ú\È™]š[Ý\ÛHØœÙ\™Y›Øš™XÝÈœ›ÛH‘UËˆ™]˜Z[ˆ›ÙXÙ\ÌLÌŽKÌÌÍ]˜XÚÜËÕKŒÍÎMÒQÕË“‹‚”Ñ•L›ÙXÙ\ÌÌKÌÌÌ˜XÚÜËÕKŒNMÌÎMKQÕËLL“Žˆ™\›ÒQÕÈ\™H™Y›XÝÂ›Z\ÜÚ[™ÈÝ]]Ë›ÝÛÛÙ\ÜÛØÚX][Û‹ˆ›È[\›Ý™[Y[Üˆ[]šY[ÈÛZ[K‚•H[š]X[M‹[Ü[ÛˆXXÚ\ˆÝ\œšXÝ[[H™]™\ˆ^ÜÙ\È›ÙXÝ[ÛŒÍK[Ü[Û‚œ]Y\Ý[ÛœÎÈÙÙ]\ˆÚ]XXÚ\‹[Û›HÝ]\ËØXœÙ[Ü›Û™È]XÝ[ÛœÈ\Âœ™\]Z\™\ÈHX]ÚYY[œÚ]HÝÛ‹\Ý]HÝ\œšXÝ[[K‚‚”Ý\XÝX[ÚXÚÜÚ[LŒÈ›ÛÝ]ÈÛˆ™YHYØ[M‹[ØœÙ\˜][Ûˆ˜Z[‚˜Û\ËÌ‘Õ›ÜÜØ[È\ÈÛÈ^XÚ]HÞ[]XÈ›ÞYœ˜YÛY[™YØ]]™\Âœ\ˆ[œÙHœ˜[YKXÝX[[Ù[Ý]\ËÙXÚ\Ú[ÛœÈ[™›ÈÕÝ]HÛÜœ™XÝ[Û‹‚”™]\ÙHHØœÙ\™Y™X[[˜ÙU˜XÚÈ™X\X\˜[˜ÙHÛ\ˆ^ÜÝ\\š\ÙYœ™\]Y\ÝÈÚ]ÛÜœ™XÝH\›]]YQÈ[™Ü›Ü\ÚY]X™[ËÍK[Ü[Û‚™^ÜÝ\™HÚ\™HXÝX[Y[[ÜžH\›Z]Ë˜[ÙKXØ[™Y]HQÓ“Ô‘H[™™X[Ü›Û™ËZ\ÝÜžKÛY™XÞXÛKÛY[[ÜžHX™[Ëˆ\È\ÛÛ]\ÈXÚ\Ú[ÛˆX\›š[™ÎÂ‘Õ›ÜÜØ[È\™HXÛ\™Y›ÝZ\ÛX™[Y\ÈÜ›Ý[™[ž][™È]XÝ[ÛœË‚XÝX[K\›ÜÜØ[˜Z[š[™È›ÛÝ]™[XZ[œÈH\\ˆ™\]Z\™YÝYÙK‚‚•HXÝX[Ñ•LŒÈÝY[›ÛÝ]ÛÛ\]YYØ[ØœÙ\˜][ÛœÈ[™ÎLœÝ\\š\ÙY›ÝÜËÎMKÍÌØž]\ÈÜ›Ü]šY[˜ÙKX^Í[Ü[ÛœËˆ]\ÎM‚’QÓ“Ô‘H™YØ]]™\ËLÎS‘UÈX™[ËÝÚ][[Ü[Ûˆ“×ÓPUÒØ\Ù\ËŒ‚•T“RSUH[™ŒŒ‘PPÕUUHÝ\\š\Ú[Û‹ˆXÝÜˆY\ˆHš\œÝœ˜[YHÚÛÜÙ\Â““×ÓPUÒ[™ÙY\ÈÜÝY[[ÜžKÛÈ\Èœ˜[˜ÚÙ\È›ÝÝ\H[›ÝYÚÜ›Û™ÂšY[]H\]\Ëˆ™\Ù\™H]ÛÛ\ÙY™X[›ÛÝ][ˆÙ[™\˜]HBœØ[YH™YÚ\Ý\™YÛ\ÈÚ]H™X[™]˜Z[™YŒÈXÝÜˆÈØZ[ˆ]™\œÙBÜ›Û™È\ÜÛØÚX][Û‹ÛY[[ÜžHÝ]\Ëˆ›Ýœ˜[˜Ú\È\ÙHÕ›ÜÜØ[È\È^XÚ]BœÞ[]XÈœ˜YÛY[ËÚ]ÕX™[ÈÛ›H[ˆHÜÝZØÈÝ\\š\ÛÜ‹‚‘›Ü›X[Y\][ÛˆÚ[Z^›Ýœ˜[˜Ú\È[™[˜Ü™X\ÙHY[]H›ÝÈÙZYÚ
+^XÚ]™\X]Ø[\[™ÊH™XØ]\ÙHH[š]X[Ý\œšXÝ[[HÝ™\ÙZYÚÂ›Y™XÞXÛH™[]]™HÈ\ÜÛØÚX][Û‹ˆÙY\ÙYYÜ[Z^™\‹Ûˆ[™[™YÚ\Ý\™Y™œ˜[Y\ÎÈÈ›ÝÛZ[HHÛÛ\]Y›Ü›X[L\Ý\[ˆ[[]XÝX[H[™Ë‚‚”™]˜Z[™YŒÈ›ÛÝ]ÛÛ\]YÌ\›ÝÜËÍØœÙ\˜][ÛœËÍŒËÍŽž]\Â˜[™LˆÛÛ[Z[˜]Y\ÝÜžHØœÙ\˜][ÛœËˆÛÛXš[™YÚ]MÎL‹\›ÝÈÑ•Lœ›ÛÝ]Ú]™\ÌLËL][š\]YH›ÝÜËŒHY\ˆ^XÚ]Y[]H™\X]Ë‚“Ù™šXÚX[ÛÛ\]H[ŽˆX^ŒŽMËÜLMMLŒÜLŒŒMNÜNHŒM›ÜY˜]ÌÍŽÛÛ^ÈXÝX[ÍK[Ü[Ûˆ^ÜÝ\™Kˆš[š]ML\Ý\Ù™šXÚX[[›[™ÝXYÙK[[Ù[Ñ•™YØ[ˆœ›ÛHÚXÚÜÚ[LÚ]H[X™\˜]H™]ÈÝ\œšXÝ[[B›Ü[Z^™\‹ÙYYÛYKMˆ[˜Ú[™ÙYˆš\œÝÛÈÜÜÙ\ÌËŒÎKÎŒN[™›Ûž™\›Â™Ü˜YY[ÌŽNKŽMÎKÍLLËŒNÈXZÌNŒQÚP‹ÍKŽÍÍ‹ŒœÈ\ˆÝ\ˆ›Ü›X[ÛÛ\][Û‚˜[™™Y›Ü™KØY\ˆ™[XZ[ˆ[™[™ËˆÛÝ\˜ÙH›ÜÜØ[È™[XZ[ˆXÛ\™YÕ\ÂœÞ[]XÈœ˜YÛY[ÎÈ›ÈÛZ[HÙˆÛÛ\]YÜ›Ý[™[ž][™Ë\›ÜÜØ[›ÛÝ]‚‚ˆÈÈŒ‹LLLM8 %›ÜÜØ[X]Ø\™HY™XÞXÛHX™[™YÜ™\ÜÚ[Ûˆ[™™\Ý[YB‚H\™Ù]Y]Y]›Ý[™ŒÈÜ›Û™ÈPÕU‘KÔ‘PPÕUUHY™XÞXÛH\™Ù]ÎŒMÌÌMBœÝY[L[™ÎKÌŽLÍœ™]˜Z[ˆ›ÝÜÈX™[š\ÚXš[]H\Ü]H›ÈX]Ú[™Â˜Ý\œ™[›ÜÜØ[ˆY™XÞXÛH™\]Z\™\È\ÜÛØÚX][Û‹ÛÈ\ÙH\™Ù]È\™HÔÕ‚”ÚYÛ˜[Û›HH™\šYšYY^XÝL\Ý\˜Z[™\ˆ
+QÎNLÌ‹ÝÛˆÝÙØÛÛ™šYË”ÒQÕT“JK™\Ù\™H]Èš\œÝ[ÙÙÙYÝ\È[™[ÜšYÚ[˜[\Y˜XÝËˆ›Â˜ÚXÚÜÚ[Ø\ÈØ]™Y[ˆ\ÈX›ÜYÝYÙNÈ™\Ý[YHœ›ÛH˜[Y]YL\Ý\ÙZYÚËÙYY[˜Ú[™ÙYˆÛÝÛ™\ˆÝ]HÕÔQÑ“Ô—Õ‘T’Q’QQÓP‘SÔ‘TRT‹‚‚•H™\Z\ˆ[š]X[H\œÙYY™WÌÍMÈ\ÈÌÍMÎÈš^H[[Z]\‹™\Ù\™BH\X[\š]™Y™\Z\‹[™™YÙ[™\˜]Hœ›ÛHÜšYÚ[˜[™X[XÝÜˆ˜XÙ\Ë‚•H™[X]\™[HÝ\Y™\Z\™Y™Y›YÚÛÜœ™XÝH™Y\ÙY[˜ÛÛ\]B˜ÛÜœÜ˜H[™Y›Ý˜Z[‹ˆÛÝ\˜ÙHÛÜœÜ˜K[Ý]\ËÛYYXKY[]H[X\Ù\Â˜[™›Û‹[Y™XÞXÛH\™Ù]ÈÝ^HY[XØ[ˆ\ÜÙ\[NMLHY™XÞXÛH\™Ù]Â˜ÛÛœÚ\Ý[Ú]Ý\YYÝ\œ™[›ÜÜØ[È[™^XÝLM
+ÌÎ[X™[Ú[™Ù\Ë‚H™]ÈÛÜœ™XÝYL\Ý\ÝÛ™\ˆÝ\ÈÚ][˜Ú[™ÙYÙZYÚËÛ‹ÜÙYYØÛÛ^ÂšY[]K\™\X]YÙ]ˆHÝÜY[ˆ\È›ÝXÛ\™Y›Ü›X[ÛÛ\][Û‚›ÜˆÚ[[HÛÛXš[™Y[È[ˆ[\›Ý™Y™\Ý[‚‚ˆÈÈŒ‹LLLM8 %˜]]™HHš\ÝX[™X]\™HY\\ˆ[‚‚”™]š[Ý\ÈÛØ[\›ˆXYH™\šYšYY›ÙÜ™\ÜÎˆ™X[Ñ•Ü™[ØYÛ™YØ]]™HÛÛ›ÛËœ™X[XÝÜˆ\ÝÜšY\ËY™XÞXÛHX™[™\Z\‹Ü™YÜ™\ÜÚ[Û‹™\Ý[YYš[š]ML˜Z[š[™È[™^XÝÚ]XˆX›XØ][Û‹ˆÛÛ[YH^\Ý[™È]™HÝÛ™\œË›Ý›™]ÈÛÜY\ËˆYH˜]]™Hš\ÝX[Y\\ˆ\Ú[™ÈHÚXÚÜÚ[š\ÝX[Ü›Ú™XÝÜ‚ÙZYÚÈ[™H[›[ÙYšYYÙ™šXÚX[XYÙ\ˆ[ÛÛ•šUÒÌÈ™\›ØÙ\ÜÚ[™È]‚ÛÛ\\™HHÙ™šXÚX[™Y™\™[˜ÙHš\ÝX[[Ù[HÚ]HÑÓ[™Èš\ÝX[Y\\‚›ÛˆHØ[YH™X[[XYÙK™\Ù\™H™X]\™KYÜšYÙ[ÛY]žH›ÝYÚ™\Ú^™KÜY[™Ë[ˆ“ÒHÛÛØ[™Y]\ËˆÛ›H\ÈÛX[˜[Y][Ûˆ\Ù\È\ÚXØ[ÔMKÚ][ˆH›Ú™XÝ[ÝÛ\ÝÍØ\™ÙZ[[™ÎÈ]™H˜Z[š[™Í[™šY[Íˆ[˜Ú[™ÙY‚•\È›ÝšY\ÈÙ[Z[™H˜]]™H™X]\™\È›Üˆ[\Ü˜[Y\][Û‹ÐÛÛ\XÝ›Ý˜HÝXœÝ]]YÜ›Ü[˜ÛÙ\ˆÜˆH[Y]\Ù]ØXÚK‚‚‚ˆÈÈŒ‹LLLM8 %˜]]™H™X]\™HY\][Ûˆ[™YØ[\ÚÈÛÜÂ‚”[ˆY\ˆÛÝ\˜ÙH[œÜXÝ[ÛŽˆ™\šYžHHXÝX[Hš\ÝX[Ü›Ú™XÝÜˆÝ]]˜Z[ˆHš[š]Hœ›Þ™[‹X˜XÚØ›Û™H[\Ü˜[Y\\‹Ú\™H\ÙH™X]\™\È[Â˜Ø]\Ø[Y[[ÜžK[ˆ[ˆYØ[™Y™\‹RÒUKÕSÈÛÜÈÚ]H^\Ý[™ÈÛ™R™]‚˜ÚXÚÜÚ[[™^XÝXØ[™Y]HÚ[\HÛÛ›ÛËˆÙY\›Ü›X[Ñ•L[™B™[[˜ÙU˜XÚÈÝÛ™\ˆ[˜Ú[™ÙYÈ\ÙH\ÚXØ[H›Üˆ™]ÈÚXÚÜÈÚ][ÍKÍ‹ÍË‚‚“˜]]™HNŽ‹š\ÝX[\˜[Y]\œËÌMÌÙZYÚÎÈ™X[SÕ™YÚ[ÛœÌÌ^MŒ˜[™ØØ[ÚÙ[œÌÌ^MŒÞËˆÙ™šXÚX[Ù\š[™Èš\ÝX[[˜Ý[Ûˆ[™[[]]X›B˜ÚXÚÜÚ[™Y™\™[˜ÙH›ÝX]Ú^XÝNÈ[™\[™[“ÒHX\[™ÈY™™\œÂŽKMKMËˆ[š]X[ÛÛ™šYËšY[—ÜÚ^™HÛÚÝ\˜Z[YY\ˆ™X[›ÜØ\™Èš^Y›Û›HHY\\ˆÈ\ÙHš\Ú[Û—ØÛÛ™šYË›Ý]ÚY[—ÜÚ^™H[™™]Z[™Y˜Z[\™K‚‚•[\Ü˜[Y\\ŽŒŒÝ\ËÙYYŽLËŒÌˆÚ[™ÙY\˜[Y]\œËÜÜÍŒŒˆÂ‹ŒLL›Ûž™\›Èš[š]HÜ˜YY[ÎÈ^XÝ™[ØYY™™\™[˜ÙLˆœ›Þ™[ˆ˜]]™B˜˜XÚØ›Û™H[™XÛÙ\ˆ[˜Ú[™ÙYˆ[™\[™[RSˆØ[Xœ˜][Ûˆ™]šY]˜[ŒLÌKÌLÍKŽMÍÍŒL‹Y[XØ[È[˜Y\Y™X]\™\È
+˜[™ÛHY\\ŒLÌÌLÍ
+K‚“›È˜XÚÚ[™ËZ[\›Ý™[Y[ÜˆXÛÙ\‹Yš[™K][š[™ÈÛZ[Kˆ™X]\™\È\™H˜[œÚY[Â˜Z[š[™ËY]šXÙKÐÔK]˜Z[š[™È™YÚ[ÛœÌLKŒL‹MŒž]\ÈXXÚØ[Xœ˜][ÛŒKÌŒ‚ÚXÚÜÚ[™XÙZ\™XÛÜ™ÈXœÛÛ]H]ÌÌKŽXž]\È[™ÒLM‹‚‚”“SÕ›YØ[Ý\œ™[Œˆ˜[Y][ÛŒËÚ[™ÛJÙ[\Nœ˜[Y\È[™][JÙ[\BŒL™œ˜[Y\ËÕYœ™YH[™™\™[˜ÙKÜÚ\™YŒHÛÜ™KˆÚ[™ÛH[ÕLÒQŒOLÑ“NÂ”Ú[\HÕKŒMÑ”LKÑ“KÒQŒOLˆ][H[ÕKŒÌŒLMËÑ”M‹Ñ“ŒÌÈÚ[\B’ÕKŒNŒÑ”M‹Ñ“ŒÌÈ›ÝQŒOLˆ›ÜÜØ[\™Ù]ÛÝ™\˜YÙH][ÕKH\ÌÍB˜[™ÌÌˆš\œÝ›Ý[™XÚÈ\È™Y™\œš[™È›ÜÜØ[Ë›Ý]šY[˜ÙHÙˆ[ˆY[]BšXY[\›Ý™[Y[ˆ[™Z™XÝYÙ[\Hœ˜[Y\È™[XZ[ˆ[ˆ[›ÛZ[˜]ÜœËˆ][B™[šY[Ë\›ØÙ\ÜÚ[™È”ËMÎN[˜ÛY[™ÈÙ\šX[^˜][Û‹Ù[˜ÛÙ[™ÎÈ™[ØYYœ™[[ÝHH[š]X[^˜][Ûˆ^ÛYYˆÚ[™ÛHYØXÞHœ˜[YKXÛÛ\]H”ËŒÍÍŒBš\È^XÚ]H›ÝÛÛ\]H[™]ËY[™ÜYYˆ^XÝš^YXØ[™Y]HÛÛ›ÛÂ›™]™\ˆÛZ[H]XÝÜˆ”Ë‚‚‘]˜[X][Ûˆš\œÝ˜Z[YÛˆÕÓÐ×Ñ“Ô“PU[ˆÛˆÛZ]YSÓÈš[\È[ˆ[\Bœ]Y\žHœ˜[Y\ËˆÙ]HÛÜœ™XÝ]›Ü›X][™ÛÚÈ\›Þ\ÈÛ›HÚ[ˆBœ™[X\ÙH^™\ÜÚ[Ûˆ\È\™Ù]ÎÈ›Û™[\H\™Ù]ÈÝ[™\]Z\™H™X[X™[Ë‚“ÜšYÚ[˜[˜Z[\™\È[™™YXÝ[ÛœÈ™[XZ[ŽÈÛÛ\]Y][H[ÔÚ[\H[š]ÂÙ\™H™]\ÙYžHH™]È]˜[X][ÛˆÝÛ™\‹ˆ›ÈÕ›Þ\Ë™\ÚÛÈÜˆØÛÜ\È[\™Y‚‚•SÎœ™YÚ\Ý\™Yš\œÝšY[Í[››Ý][Ûˆœ˜[Y\È[™œ˜[YH[˜Ý[Û˜[ØÛÜK˜[LŒÙš^Y’TË]ŒH˜[Y\È[ŽM‹XÛ\ÜÈ˜]]™H™\]Y\ÝËˆ˜Z[\™H[ˆ[žHÚ[šÂœ™Z™XÝÈHÚÛHœ˜[YH^XÚ]NÈ›ÈÛ\ÜÈÜˆØ[\HÚ[[H›ÜY‚”ÛÝ\˜ÙH\ÚXØ[”È[˜]˜Z[X›KÛÈ\È[˜Ý[Û˜[ØÛÜHXÛ\™\È[››Ý][Û‚œÝ\[YH[™Ù\È›ÝÛZ[HH™\šYšYY\ÚXØ[šY[ÈÛØÚËˆ[UHÚ]˜[ÜšYÚ[˜[[Ù[ÕØØ]YÛÜžKÙœ™\]Y[˜ÞHY]Y]H\È™\]Z\™YÈÝ\œ™[H[™[™Ë‚‚“Y[[ÜžNœ™X[˜]]™H›ÜÜØ[ËÙ™X]\™\ÈÛŒ™œ˜[Y\È\ÜÈ^XÝÙ\šX[^˜][Û‹˜[˜ÚÜˆ[[]]Xš[]K[[Û™ËY™X]\™HÛÛœÚ\Ý[˜ÞH[™\Ý][YH™Z™XÝ[Û‹Ú]LŽ‹LØž]HY[[ÜžKˆŒHÜ›ÜË[Û›HÝ]H™[XZ[œÈ˜XÚÝØ\™ÛÛ\]X›K‚“™]ÈY[[ÜžHYÈXÝX[™YÚ[Û‹Ý[\Ü˜[[˜ÚÜœË™XÙ[Ü™[XX›K[Û™È™X]\™\ËŒM‹[ØœÙ\˜][Ûˆ™X]\™H\ÝÜžK˜]]™HY™XÞXÛHÝ\š]˜[›Ø˜Xš[]KY[]B™[›ÜH[™Ù[X[XÈØœÙ\˜][ÛˆÛÝ[Ëˆ\ÙH\™H\ÙYÛ›HÚ]˜]]™H[œ]‚•‘Uˆ˜]]™K[X]š^™\]Y\Ý˜Z[Y]M‹ÚÙ[œÈÛˆœ˜[YLÌÎÈ™\Ù\™H]‚•H^XÚ]HÚ[™Ù\È[Y\šXÈ]šY[˜ÙHÈÔÕˆZ[K][š]Ë™]Z[š[™È]™\žB˜Ø[™Y]KÚY[]HZ\ˆ[™HÜšYÚ[˜[ÌÍŽ[Z]ˆ]È™X[œ˜[YH\Ý\Âœ[›š[™ÎÈ›È\™›Ü›X[˜ÙHØZ[ˆÛZ[YYˆÛÛ\XÝÙ[]\ÚÈ[™™][[ÛˆÝYY\Âœ™[XZ[ˆ™\]Z\™Yˆ™]š[Ý\ÈÛØ[ÛÜšÈ\È›ÙÜ™\ÜË›ÝÛØ[ÛÛ\][Û‹‚‚‚ˆÈÈÈÛÛ\]Y˜]]™KY™X]\™HÛÛ›Û[™YX\Ý\™Y[Z]][ÛœÂ‚•HÝ[^ÙYYYÛÛ^]ÍÌLÝÚÙ[œËˆˆÛÛ\™\ÜÙ\È˜]]™KZ\ÝÜžH›ÝÜÂš[ˆY][ÛˆÈ[\Z\ˆÚ[Z[\š]HX]šXÙ\ÎÈœ˜[YLÌ[ˆ™XXÚYÍN]ÚÙ[œË‚•HÛX[\Ý\\ˆš^\ÈÛÛ^XY\]™HØ[™Y]HÜ›Ý\[™ÈÛ›HÚ[ˆB[˜Ú[™ÙYÙ™šXÚX[˜]]™H™Y›YÚ™Z™XÝÈHÜ›Ý\™Y›Ü™H[™™\™[˜ÙKˆ]™\žBœ›ÜÜØ[[™\]ÌÌˆÚÜ\ÝYY[]HÜ[ÛœÈ™[XZ[œËˆHÛÈ˜[Y•ˆ™Yš^œ˜[Y\È™\ÝÜ™H^XÝ˜]]™HÝ]]ËÜÝ]NÈ™\Ý[YHÛÛ\]\ÌÌÌÌK‚“ÜšYÚ[˜[ÕKÕˆ˜Z[Y\Y˜XÝÈ™[XZ[‹›ÈØ[\HÚÚ\Y›ÈÚÙ[‹[[Z]œ™[^][Ûˆ[™›È™]˜Z[š[™ËØÚXÚÜÚ[Ú[™ÙK‚‚“SÕMÈØ[YLLŽ˜]]™HØ[™Y]\Ëœ˜[Y\Ë[˜Ú[™ÙY˜XÚÑ]˜[‚‚ŸXÚ\Ú[ÛˆÕHQŒHQÕÈ”“ˆŸKK_KKNŸKKNŸKKNŸKKNŸKKNŸŸÚ[\H[ÕHÍLÈŽÍLˆHMÈŸš^Y[ÕH
+È˜]]™LMŒÛÜÚ[™HÌÎNŽLÍŽMÈŸš^Y[ÕH
+È˜Z[™Y[\Ü˜[LŽÛÜÚ[™HÍŒŽŽMÈˆMÈŸ™]˜Z[™YÛ™R™]ˆˆ˜]]™KØÜ›ÜÛ[Ý[ÛˆŒÍNLÌŽŒÌÌÌHŒHMÈÌÈ‚“˜]]™KÝ[\Ü˜[š^YÛÛ›ÛÈ\ÙH^XÝHH^ÜY™X]\™\ËÛÙY™šXÚY[Â‹KËK‘UÜØÛÜ™KŒËÌ‹ZY[]HÙ[ÛY]žHÚÜ\Ý[™M‹XØ[™Y]HÜ›Ý\Ëˆ^B˜\™H[˜Z[™Y\ÜÛØÚX][ÛˆÛÛ›ÛË›Ý‘U‹ÐÛÛ\XÝˆ[\Ü˜[]œË[˜]]™H\Â˜[ÛÈH[Y[œÚ[Û˜[]HÚ[™ÙNÈ˜[™ÛLLŽ[™\™Ù\ˆšY[ÈÛÛ›ÛÈ™[XZ[‚œ™\]Z\™Y™Y›Ü™H]šX][™ÈHY™™\™[˜ÙHÛÛ[HÈ˜Z[š[™Ëˆ˜]]™KY™X]\™B“Û™R™]ˆÝ[[™\œ\™›Ü›\ÈÚ[\NÈ›È\ÛÛ]Y™X]\™HÜˆ›Ý[™][ÛˆØZ[‚˜ÛZ[Kˆ^\Ý[™ËRQXYÛ›ÜÝXÈXØÝ\˜XÞNKÍÍOKŒL‹Ü[ÛˆÛÝ™\˜YÙMÌ‹ÍÍOKŽM‹›YX[ˆÛÜœ™XÝ˜]]™HX\ÜËŒŒMNÈØ[™Y]HÕÛÝ™\˜YÙH™[XZ[œÌLLKÌLÍK‚’]ÎLLMKÌL˜ž]H[ØØ]ÜˆXZÈ[™ŒŒŽ\ÜÛØÚX][Ûˆ™\^H”È^ÛYB›]™H]XÝ[ÛŽÈ™\Ý[YY[Z[™ÈÙ\È›ÝÝ\Ü[ˆ[™]ËY[™ÜYYÛZ[K‚‚•SÈš\œÝœ˜[Y\È]™H™\›È™YXÝ[ÛœÈ[™UKÓØÐKÐ\ÜÛØÐKÐÛÐL[™\ˆB[›[ÙYšYYÙ™šXÚX[ÛÝ\˜ÙHNXNØŒL˜™˜ÍYØØÌÍXÌÙLYMÍMKˆ\™B˜\™LNÕ›Þ\ËÛÝ\˜ÙHØ[›ÛšXØ[Û\ÜÈ˜XžKÜ\œÛÛ‹›‹ŒK˜\ÙKˆ›Ý™[\È[˜™XØ]\ÙH\ÈØÛÜH\È›È›Ý™[ÕÈ™]™\ˆ™\Ü]\ÈH›Ý™[™[˜ÚX\šË‚•ÛÈ]˜[X]Üˆ›Ü›X][™ÈÛÛ™šYÝ\˜][Ûˆ\œ›ÜœÈÙ\™H™\Z\™YžH™\ÝÜš[™Âš]ÈÙ™šXÚX[Y˜][ÈÕUUÔT—ÔÑTWÔ‘TÏUYH[™ÕUUÔÕSSPT–OUYNÂ›Y]šXÜËÜÛÝ\˜ÙKÑÕÜ™YXÝ[ÛœÈ[˜Ú[™ÙY˜Z[\™\È™]Z[™Y‚‚•Hš\œÝ›ØØX[\žH[ˆ™YÚ\Ý\™YLŒØÛ\ÜÙ\È]ÝÜYÛˆH™Z™XÝYŽM‹XÛ\ÜÈÚ[šÎŒNL‹ÌNL‹ÌNL‹ÌŽÛ\ÜÙ\ÈXÝX[H™\]Y\ÝYXÜ›ÜÜÈMœ˜[Y\Ë‚•\È\È™XÛÜ™Y[ˆ›ØØX[\žWØÛÝ™\˜YÙKšœÛÛ‹›ÝÛZ[YY\È^]\Ý]™BŒLŒËXÛ\ÜÈ[™™\™[˜ÙKˆH™]Èš[š]HÝÛ™\ˆ™\]Y\ÝÈSLØÚ[šÜÈÛˆ]™\žHœ˜[YKœ™XÛÜ™È]™\žH˜]]™HÝ]ÛÛYK[™Û›H[ˆ\Y\ÈHØ[YH^XÚ]Bœ™YÚ\Ý\™YÚÛKYœ˜[YK\™Z™XÝ[ÛˆÛXÞKˆ]\ÈXÝ]™H]X›XØ][Û‹‚‘š\œÝ\™Yš^[ˆ›ØÙ\ÜÚ[™È”ËŒŒŽˆ\È›Ý[]›ØØX[\žH[™™\™[˜ÙH”Ë‚“ÜšYÚ[˜[˜]È˜Z[\™\ÈÚÝÈX[žHÛ\ÜËXÛÛ™][Û™Y[XÚ[˜]Y›Þ\ËˆB›™^Ü›Ý[™[™È™\ÙX\˜Ú]\ÝY™\ÜÈ›ÜÜØ[]X[]H[™™YØ]]™HÛ\ÜÙ\Â›ÝYÚHÙ™šXÚX[Ü]X[ÑH˜Z[š[™È›Ý]KÚ][œÙKÜ™Y™\œš[™È™][[Û‹‚‚•š\ÝX[^˜][Ûˆ[YÜš]H™\šYšYYÌL‹Íœ˜[Y\ÎÈÒUH\Ü^HYÙHYYœ›ÛBŒLžÍÍHÌLžÍÍ‹™YXÝ[ÛœËÑÕÛÛÜ™[˜]\È[˜Ú[™ÙYˆ›Ü›X[L\Ý\”Ñ•[™[[˜ÙU˜XÚÈÜšYÚ[˜[›ØÚÚ[™ÈÝÛ™\œÈÛÛ[YKˆ[Ý[™š[˜[[šYšYY™\ÙX\˜ÚÛØ[™[XZ[ˆ[˜ÛÛ\]K‚‚‚ˆÈÈ™K\X›XØ][Ûˆ“SÕÕXÛÛ˜XÝ™\Z\ˆ
+]]Üš]]]™H™\Ý[ÊB‚•H™]È“SÕ]˜[X]Üˆ[˜ÛÜœ™XÝH™XY™[X\ÙHÜ[YÞH\ÈÙ[\œË‚•\ÈØ\È›Ý[™™Y›Ü™H\][™ÈÚ]X‰ÜÈœ˜[˜Úˆ^\Ý[™È\ÝX›\ÚYœ™XYÙÝ[ˆÛÛËÝ[šYšYYÝLWÙ›Ü›X[Ù^™\ÜÚ[Û—ÙØ]KœHYš[™\È›Ü›X[^™YÜ[Y]ÚˆÛÜœ™XÝY˜[œÜÜYÜ™Y\È›Üˆ[Ì\™Ù]›ÞÛÛ\\š\ÛÛœÂÍKŽKLM^[Ëˆ™YXÝ[ÛœË\™Ù]Ù]Ëœ˜[Y\ËÛÝ\˜ÙH^[ËÙYYË›Y]šXÜÈ[™™\ÚÛÈ[˜Ú[™ÙYˆÜšYÚ[˜[Y]šXÈ™XÙZ\È\™H™\Ù\™Y˜\È[˜[YØÙ[\—Ù›Ü›X]ÛY]šXÜËšœÛÛˆ[™^XÚ]HX\šÙY[˜[YÂ›ØØ[[˜[YÕšY]ÜÈ™[XZ[ˆ]˜]ÈÕ\È^ÛYYœ›ÛHÚ]X‹‚‚]]Üš]]]™HÛÜœ™XÝY™\Ý[Î‚‚Ÿ“SÕØÛÜHÈ˜XÚÙ[™ÕHQŒHQÕÈ”“ˆ›ÜÜØ[\™Ù]™XØ[[ÕKHŸKK_KKNŸKKNŸKKNŸKKNŸKKNŸKKNŸŸÚ[™ÛKÙ[\Nœ˜[Y\È[HÍHŸ^XÝØ[™Y]\ÈÚ[\HŒŒŽŒÍÍLˆÈHÍHŸ][KÙ[\LL™œ˜[Y\È[ŒNMÎLˆŒŒMÌÎLHLHHKÌÌŸ^XÝØ[™Y]\ÈÚ[\HŒÌMLHŒŒMÌÎLHLHHKÌÌ‚•HX\›Y\ˆ™\›Ë\›ÜÜØ[XÛÝ™\˜YÙHXYÛ›ÜÚ\È\È[˜[YˆÛˆHÚ[™ÛBœ]Y\žK›Ý\ˆÛÜœ™XÝØœÙ\˜][ÛœÈ\™H™\Ù[]ŒHÛ™R™]ˆÝ\™\ÜÙ\È[B˜\ÈQÓ“Ô‘NÈ\ÜÛØÚX][Û‹Øš\Ú[œ]]šY[˜ÙH\ÈHš\œÝ˜Z[\™KˆÛˆB›][\K]\™Ù]]Y\žK›ÜÜØ[ÛÝ™\˜YÙMKÌÌÝ[[Z]È]™\žH˜XÚÙ\‹‚“™^ÛÛ›ÛYÚXÚÈÚÝ[ÛÛ\\™HŒHYØZ[œÝÝ\œ™[XÜ›ÜŒÈÛˆBœØ[YH“SÕ›ÜÜØ[ËÚ[H™\Ù\š[™ÈHH][K]\™Ù]™XØ[YšXÚ]‚‘[œÙKÜ™Y™\œš[™ÈY\][Ûˆ[™ÜšYÚ[˜[™][[Ûˆ™[XZ[ˆ™\]Z\™Y]››Ý]™\žH“SÕ˜Z[\™HØ[ˆ™H]šX]YÈH\˜Ù\[Ûˆœ›Û[™‚‚•H™]È[XÛ\ÜÈSÈÝÛ™\ˆ™[XZ[œÈXÝ]™KˆNTÖMNÐˆ\™Ø\™HØ\Â™\šYšYY›ÜÍKÍŽÈ›Ü™ZYÛˆQU›ØÙ\ÜÙ\È\™H[˜Ú[™ÙYˆÜšYÚ[˜[Û™R™]‚LÝ\[™[[˜ÙU˜XÚÈÝÛ™\œÈ™[XZ[ˆ™\ÜÛœÚX›H›ÜˆZ\ˆ›ØœË‚‚‚ˆÈÈ^]\Ý]™HSÈ[˜Ý[Û˜[ÛÛ›ÛÛÛ\]Y‚[L›˜]]™H™\]Y\ÝÈÛÛ\]YŒLØÚ[šÜÈ[™LŒÙš^YØ]YÛÜšY\È›ÜˆXXÚ›Ù™YÚ\Ý\™Y[››Ý][Ûˆœ˜[Y\Ëˆ[˜Ú[™ÙYUHZY[ÌUKÓØÐKÐ\ÜÛØÐKÂÛÐH[™™YXÝ[ÛœÈ[™\ˆH™XÛÜ™YÚÛKYœ˜[YK\™Z™XÝ[ÛˆÛXÞNÈ˜\ÙL“›Ý™[[™XØ]\ÙH\ÈšY[ÉÜÈÕÛÛZ[œÈ›È›Ý™[Û\ÜËˆ›È[]šY[Â›ÜˆÛÛ\]KY]\Ù]™\Ý[\ÈÛZ[YYˆXÝX[ÛÛ\]H›ØÙ\ÜÚ[™Â‘”ËŒÍÍMÍÎMMH[˜ÛY\È[Ø[Ë\ÜÛØÚX][Û‹š[KÝšY[ÈÜš]\È[™Üš]\‚˜ÛÛ\][ÛŽÈ™[ØYY™[[ÝHHÝ\\[™\ËXÛ\ÜÈÛ™R™]ˆØY[™È^ÛYY‚‚”™Z™XÝYÜØÛÜ™YÚ[šÜÈ\ˆœ˜[YNŒLKÌ‹LÌËËÍ‹LÌËˆ[™\[™[HØÛÜ™Y˜Ú[šÜÈÛÛZ[ŒŒKÍKÍÍÍËÌÍM›Þ\Ëˆ]˜[X][Û‹[Û›HÛ\ÜËXYÛ›ÜÝXÈ\™Ù]˜ÛÝ™\˜YÙH\ÌLÌN][ÕKH™Y›Ü™HÚÛKYœ˜[YH™Z™XÝ[Û‹ˆ\È\ÈHØØ[^˜][Û‚™XYÛ›ÜÝXË›ÝUHÜˆÛ\ÜÚYšXØ][ÛˆÛÜœ™XÝ™\ÜËˆÚÛKYœ˜[YH™Z™XÝ[Û‚™\ØØ\™È\ÙY[˜]]™HÝ]]ÎÈ™]Z[ˆ\È™YØ]]™HÛÛ›Û[™™\™YÚ\Ý\‚˜H]Y\žK[]™[[\K\™YXÝ[ÛˆÛÛ›Û]™]Z[œÈ[™\[™[HØÛÜ™Y˜Ú[šÜË[Û\ÜÈ™\]Y\ÝË[Õ[™œ˜[Y\Ëˆ™]™\ˆX™[[˜[YÚ[šÜÂ˜[YÜˆÚ[™ÙHHÙ™šXÚX[\œÙ\‹ÛY]šXÜËˆ˜]È˜]]™H™\ÜÛœÙ\È™[XZ[ˆØØ[‚‚]\ÈÛÛ\][ÛˆÚXÚËHÜšYÚ[˜[›ØÚÚ[™ÈÑ•LÝÛ™\ˆ\È]™K\Ýœ™\ÜYLÝ\ËÛÜÜÌ‹ŽMÍËÌŒ‘ÚPˆ[ØØ]ÜŽÈÜšYÚ[˜[[[˜ÙU˜XÚÈÝÛ™\‚š\È]™KÛÛ\]YÍŽ[ÙŒLŒÙœ˜[Y\Ëˆ]\Ù]\ÚXØ[ÛØÚÜÈ[™\[™[B˜YÜ™YHÚ]Ù\Z[™›Î“SÕMÏLÌ‹[˜ÙU˜XÚÏLŒ‹SÕŒLR‹ˆSÈÛÝ\˜ÙQ”Âœ™[XZ[œÈ[˜]˜Z[X›H[™[››Ý][Û‹\Ý\[š]È^XÚ]HXÛ\™Y‚•MŽKYš[H˜]]™KY™X]\™KÑÕXÛÛ˜XÝÝYÙHØ\È™\šYšYYÛˆÚ]Xˆ]ŒMÌŽYLÍY˜ÙMY™YNM˜ØÙŽMLLŽXÙÙŒHÚ]^XÝØØ[™YH\]X[]K‚“›È[ÝÜˆš[˜[YÛØ[ÛÛ\][ÛˆÛZ[K‚‚‚ˆÈÈŒ‹LLLM8 %™^ÛÛ›ÛY\ÚÈXÚ\Ú[ÛœÂ‚”™]š[Ý\ÈÛØ[\›Žœ›ÙÜ™\ÜËÚ]™X[˜]]™HY\][Û‹Ý\ÚÈÛÛ›ÛÈ[™™\šYšYYÚ]XˆX›XØ][Û‹ˆÝ\œ™[›Ú™XÝ\ÈH]]Üš^™Y[™\[™[‘Ü›Ý[™‘UˆÛÜšÝ™YKˆ[ˆY\ˆÛÙH[œÜXÝ[ÛŽ™š^›ÜÜØ[ËØÚXÚÜÚ[ËÙ]BœØÛÜKÛÛ\\™H“SÕŒHœÈŒÈÝ\œ™[XÜ›Ü]šY[˜ÙH›Üˆ™]˜Z[™YÔÑ•LÂ[ˆ™]Z[ˆ[™\[™[ØÛÜ™YSÈÚ[šÜËÙY\[™È˜Z[YÚ[šÜÈ[\H[™˜[LŒØÛ\ÜÙ\ËÙ]™\žHÕÙœ˜[YKˆ™\Ù\™HÚÛKYœ˜[YH™Z™XÝ[Ûˆ\ÈHÙ\\˜]B›™YØ]]™HÛÛ›Ûˆ›ÈÙ™šXÚX[\œÙ\‹ÛY]šXÈÜˆÙYYÚ[™Ù\Ëˆ™XÛÛœÝXÝ›Û›H[™XYK\™XÛÜ™Y˜]]™H™\ÜÛœÙ\ËÚ]›ÈÕXØÙ\ÜÈÜˆ™]È]XÝÜ‚œ™\]Y\ÝÎÈ[™\Ý[[™È[Z[™ÜÈ\™H\ÜÛØÚX][Ûˆ™\^K›Ý[™]ËY[™‚HÚ[™ÛH›ØÚÚ[™ÈÝÛ™\ˆ^XÝ]\È™YÚ\Ý\™Yš[š]HÛÛ›ÛÈÛˆ\ÚXØ[NÂ›ÜšYÚ[˜[Ñ•Ñ[˜ÙU˜XÚÍˆÝÛ™\œÈÛÛ[YKˆXZÈ[Ûš]Üš[™ÈÝ^\È[\›˜[‚‚‚ˆÈÈŒ‹LLLM8 %™YÚ\Ý\™Y\ÚÈ[™[™™\™[˜ÙHÛÛ›ÛÂ‚[Ú^ÛÛ›ÛÈÛÛ\]YÛˆNÔMHÚ]ÜšYÚ[˜[Û™R™]ˆÙZYÚÈÜ‚˜XÝX[Ñ•Lˆ™YXÝ[ÛœÈ\ÙH^XÝHHØ[YHØ]™Y˜]]™HØ[™Y]\ÎÂ‘Õ\Ù\È™\šYšYYÜ[Y™Y™\‹RÒUH™[X\ÙHÛÛÜ™[˜]\È[™[˜Ú[™ÙYUK‚“Ù™šXÚX[ØÛÜ\È™[XZ[ŽÌL”“SÕœ˜[Y\È[™SÈ[››Ý][Ûˆœ˜[Y\Ë‚‚Ÿ“SÕÈŒÈÕH
+œ˜XÝ[ÛŠHQŒH”“ˆŸKK_KKNŸKKNŸKKNŸKKNŸŸÚ[™ÛH™]˜Z[™YHŸÚ[™ÛHÑ•LÈHŸ][H™]˜Z[™YŒŒŒÌŒŒMÍÍÍÎLHŸ][HÑ•LHÌ‚Ý\œ™[Ü›ÜÈ[Û™HÈ›Ýš^ÛÛQÓ“Ô‘KˆSÕ[Û›HÑ•L\È™YØ]]™B˜[œÙ™\ŽÈ]\È›Ý]šY[˜ÙHÙˆ\ÙY[“SÕš[™K][š[™ËˆÜšYÚ[˜[š[š]B“SÕÑ•LÛÛ[Y\Ë[™Z^Y]\ÚËØXÝX[\›ÜÜØ[˜Z[š[™È™[XZ[œÈ™YYY‚‚ŸSÈØÛÜ™Y\]Y\žH™][[ÛˆUH
+	JHØÐH\ÜÛØÐHÛÐHŸKK_KKNŸKKNŸKKNŸKKNŸŸš^Y˜]]™HØ[™Y]\ÈÚ[\HŒMÌHŽKLˆËŒŒHŸØ[YH˜]]™HØ[™Y]\ÈÛ™R™]ˆ[M‹ŽMHËNHŒ‹ŽNÈ‚‘˜Z[Y]Y\žHÚ[šÜÈ™[XZ[ˆ[\NÈ[™\[™[HØÛÜ™YÚ[šÜÈ™]Z[™YÚ]Ý]™K\[›š[™ÈH]XÝÜ‹š[\š[™ÈÛ\ÜÙ\ËÑÕ™\Z\š[™È[˜[YœÞ[^[\š[™ÈY]šXÜÈÜˆ›Ü[™Èœ˜[Y\Ëˆ\È\ÈH™YÚ\Ý\™YÛÛXš[™\‚˜ÛÛ›Û›Ý[ˆÝ]]Y›Ü›X]\ÜËˆ[™[XZ[œÈÛÝÙ\ˆ[™\ÜÈXØÝ\˜]K‚›ÝÛ\ÜÚYšXØ][Ûˆ\›\Ì^ÜÙHZ\ÜÚ[™ËÝÜ›Û™ÈÛ\ÜÈXÚ\Ú[ÛœÎÈH˜]]™BœÚ\™Y‘UˆÛ\ÜÈXY\ÈÝ[™\]Z\™Yˆ›Ý™[\È[[ˆ\È˜\ÙK[Û›HØÛÜK‚“›È]XÝÜ‹Z[˜Û\Ú]™HÜˆ[Y]\Ù]ÜYYÛZ[Nœ™\^H”ËŽÎŽÚ[\B˜[™ŒÍLŒŽQ[Ú][MÍÌÛX™[Ø›Þ›ÝÜÈÙ\‚‚‘^XÝXÛÛÜ™[˜]HØš™XÝZ\Ý\Ú\ÈÜ›Ý\[™È™\Ù\™\È]™\žH\Ý[˜Ý˜]]™B˜›Þ[™[X™[[\›˜]]™\ÎŒŒKÍKÍÍÍËÌÍM›ÝÜÈ™XÛÛYMMÍNÌLKÎK‚“›ÈÝ™\›\™\ÚÛÓ“TËÝÜËÑÕš[\š[™Ëˆ[™\[™[Ú[\KÑ[ÛÛ›ÛÂ˜\™HXÝ]™NÈš\œÝ˜]]™HX™[™[XZ[œÈ[ˆ^XÚ]H[›X\›™YÛ\ÜÈ˜\Ù[[™K‚H]\™HÙ[Z[™H\YÛ\ÜÚYšXØ][ÛˆXY]\Ý\ÙHH[[˜[ZXÈ›ØØX[\žK‚‚’\ÛÛ]Y“LKŒˆ
+ÈZ[›ÜÌŽŒˆYÛˆ
+ÜšYÚ[˜[[š\›Û›Y[È[ÝXÚY
+N‚‘ÑˆÙ\›™[Ì‹ŒŽKÌËŒÎÞ˜\Ý\ˆ]MËÌLÍMÚÙ[œÈY\ˆ›ÝÚY\ÉÂØ\›]\X^Ý]]Y™™\™[˜ÙKŒËš[š]HÜ˜YY[Ëˆš\œÝ[\ÜXÚÙY™Z[›ÜÈ[™Ø\Èš^YÛ›H[ˆHYÛ‹ˆš\œÝ[˜˜[[˜ÙYØ\›]\\È™\Ù\™Y˜[™Ù\È›ÝÝ\ÜŒÞÜYYˆXÝX[Û][[[Ù[Û™R™]ˆ™\]Y\ÝÈY™™\ˆ\ËŒŒLŒLH[ˆ\Y[œÝÙ\œË^ÙYY[™ÈH™\™YÚ\Ý\™YŒKˆÚÚXÙ\È[˜Ú[™ÙY˜]›Ø˜Xš[]Y\ËÛX]\šX[Y[[ÜžHØ]\ÈØ[ˆÚ[™ÙKˆXØÙ[\˜]Üˆ™Z™XÝYÂ›ÜšYÚ[˜[]]ÛX]XÈ›ÜšÈÚXÚËËŒHÛ\˜[˜ÙH™[XZ[œÈ[˜Ú[™ÙY˜Z[š[™Â˜[™ÜšYÚ[˜[šY[ÈÝÛ™\œÈÝ^HÛˆH™Y™\™[˜ÙH˜XÚÙ[™ˆ›È[™]ËY[™ØZ[‹‚‚“˜]]™HH˜Z[š[™È™\\˜][Ûˆ™XÛÛœÝXÝÈHXÝX[Ù™šXÚX[‘ÐST]Ù[ŒÑHÜ˜\\‹QKJØØ]\Ø[KØ›ØÚÌÌ‹Ú][MŽ][œÛÜˆÙ^\ËÜÚ\\Â›X]ÚYˆH™[X\ÙY”ÓÓˆ\ÌMLÌTˆ›ÝÜÎÈ™X[ÚXÚÜÚ[ÝÚÙ[š^™\ˆ]™BŒMLÌZ[˜ÛY[™ÈPTÒÌMLÌˆ˜]]™H™XÛÛœÝXÝ[Ûˆ\Ù\È™X[XY\ˆÚ^™NÈ›ÂÙZYÚ\ÈYYÜˆ˜[™ÛZ^™Y›È™]ÈTˆÝÛ›ØY™\]Z\™Yˆ[š]X[Z\ÛX]Úœ™]Z[™Yˆ\È\ÈHÙ^H]Y]›ÝÜ˜YY[›ÛÙ‹‚‚Hš[š]LÜÝ\˜]]™H›Ú™XÝÜ‹[Û›HÜ˜YY[ÚXÚÈÛˆYØ[SÕMÕRSŒŒKÌŒL˜ÛÛXš[™\ÈÜšYÚ[˜[HÜ]X[ÜÜÈ[™Ø[YKRQÛÛ˜\Ý]™H“ÒHÜÜËˆ[™ÝXYÙKÂ•šUœ›Þ™[‹›Ú™XÝÜ‘”Ì›X\Ý\œËÙYY‹[Ì\™Ù]ÈXXÚœ˜[YHÚ]›Â˜Û\[™ÈÜˆ›Ü[™Ëˆ]\ÈHÝ\ÝÛH˜]]™KXY\\ˆÛXÞK›ÝHÝØÚÈ[›[™ÝXYÙHÑ•™XÚ\HÜˆÛÛ\]YY\][Û‹ˆY]H›Ûœ\œÚ\Ý[›Ý\žHY™™\œÂš[š]X[HØ]\ÙY[ØØ][Ûˆ˜Z[\™NÈ˜]]™HXØÙ[\˜]H[š]X[^˜][Ûˆš^\Â]Ú]Ý]Ü™X][™ÈX\›™Y˜[Y\ËˆHÝšXÝ˜]]™HØXÚYZ[XYÙHØÚ[XB[ˆ™Z™XÝYH][Û›HXÝÈ™X[ÜšYÚ[˜[ž]\ËÜ]\™H›ÝÈÝ\YY‚›Ý˜Z[Y[š]È™\Ù\™Y™]È™X[YÜ˜YY[ÚXÚÈXÝ]™HÛ‘ÔMËˆ›Ý\‚œ\ÚXØ[Ô\ÍÍKÍ‹ÍÛX^È›Ü™ZYÛˆQU›ØœÈ[ÝXÚYˆ[œÙKÜ™Y™\œš[™È™][[Û‹™^ÜY[™H[™™\™[˜ÙH[™›Ü›X[Y\][Ûˆ™[XZ[ˆ™\]Z\™Y‚‚‚‘^XÝYÙ[ÛY]žHÛÛ›ÛÈÛÛ\]Y”Ú[\HULÌËŒ‹ÓØÐMLÎKÐ\ÜÛØÐMLNË‘[ŒËŒÌŒÍKŒMKÌŒŽ‹›ÝÛÐLˆÚ[\H™\^NKŽŒ‘”Ë[ŒNMÍÍÌ‹˜X›Ý]KžH[™Ü›Ý\Y[ˆ›È]XÝÜ‹Z[˜Û\Ú]™HÜYYÛZ[K›ÈX\›™Y˜Ø]YÛÜžH\ÜÚYÛ›Y[[™›È[Y˜[YÙKˆ˜]]™HÙ[ÛY]žHÙ]Ø[X™[˜[\›˜]]™\È™]Z[™YÈ]™\žHÜšYÚ[˜[Õ[™œ˜[YH]˜[X]Y‚‚“˜]]™LË\Ý\Y\][Ûˆ[ˆ^ÜÙY›Ú™XÝÜˆÝ]]\ÈH\‹Z[XYÙH[œÛÜ‚›\ÝÚXÚØ\ÈÛÜœ™XÝY\Ú[™È˜]]™HÛÛ˜Ø][˜][Û‹ˆHš\œÝ˜]]™B˜˜XÚÝØ\™]ÕQKYÜ˜\Y™][YH™\^NÈš\œÝ˜Z[Y[š]È™[XZ[ˆ[˜Ú[™ÙY‚•H™^[š]ÛÛ\[\ÈHY[XØ[˜]]™H›^][[ÛˆÜ\˜]ÜˆÚ]Ý]ÕQHÜ˜\È[™›Ø™\È˜]]™HÜ]X[[ÜÜÈ[™[\Ü˜[[ÜÜÈÜ˜YY[Âš[™\[™[H™Y›Ü™HÜ[Z^™\ˆ\]\ËˆÙYY›ØÚÈX\ÚÜËÛÜÜÈÙZYÚËÑÕ˜[™[\™Ù][œÝ[˜Ù\È[˜Ú[™ÙYˆ™\Ù\™Q”Ì››Ûœ\œÚ\Ý[›ÔHY™™\œË‚“›È˜]]™HXÛÙ\‹ÛØØ[^˜][ÛˆY\][ÛˆÝXØÙ\ÜÈ\ÈÛZ[YY[[XÝX[™š[š]HÜÜËÙÜ˜YY[ËÚ[™ÙY‘ŒMÙZYÚÈ[™ÚXÚÜÚ[™[ØY\™H™\šYšYY‚‚‚ˆÈÈÈXÝX[˜]]™HHÜ]X[[™[\Ü˜[Ü˜YY[›ÛÙ‚‚‘š[˜[ˆ˜]]™H˜Z[š[™È[š]ÛÛ\]YÛÜ[Z^™\ˆÝ\ÈÛˆYØ[SÕMÕRS‚ŒŒKÌŒL[Ì\™Ù]ÈXXÚœ˜[YH[™ÌœØ[YKRQÜÚ]]™\ËˆÙ™šXÚX[˜]]™B‘ÐST]Ù[ŒÑHQKJØØ]\Ø[KØ›ØÚÌÌˆ™]Z[™YÚ]ŒZY[]H“ÒHÛÛ˜\Ý]™B›ÜÜËˆ[™ÝXYÙH[™˜]]™HšUœ›Þ™[ŽÌËËN˜]]™H›Ú™XÝÜˆ\˜[Y]\œÂ\ÙQ”Ì›X\Ý\œËˆ[™\[™[[œÙKYÜ˜YY[›Ü›NÍNMÈ[™[\Ü˜[YÜ˜YY[››Ü›L‹ŒLÌÌÎš[š]HÛÛXš[™Y›Ü›\ÎÍÌMKÎKŒMMMËÎKŒŒNMˆ˜]]™HÜÜÙ\ÂŒKŒMÌÌKÎÌKMÍÈ[˜ÛYHY™™\™[Ø[\Y›Ú\ÙNÈÈ›ÝÛZ[H˜Z[š[™Âš[\›Ý™[Y[œ›ÛH\ÈØ\›]\Œ‹Í‹LÌQ”Ì™[[Y[È[™KMŽÍ‘ŒM™[[Y[Â˜Ú[™ÙYˆ[H™[ØYÙZYÚY™™\™[˜ÙLÌËŒNŒØž]\ËÒLM‚˜™ŽLÍØNMÍÍYMY˜ŒØXŒŒMMYLÍÍÌLYŒŒLL™NNXŽŒÍÌL˜ŒÙKœXZÌNMKÍÍŽÔXž]\Ëˆ\È›Ý™\ÈXÝX[ØØ[^˜][Ûˆ[™Y[]B™Ü˜YY[Ë›Ý›Ü›X[Y\][ÛˆÜˆ˜XÚÚ[™ÈØZ[‹‚‚ÚXÚÜÚ[‹Ù]L‹Ý\Ù\‹ÓØØ]SSÕÑÜ›Ý[™‘U‹ÛÝ]]ËÙÜ›Ý[™™]‹ÙÜ›Ý[™ØY\][Û‹Â›˜]]™WÝ˜XÚÚ[™×ÙÜ˜Y×Ý—Û˜]]™WÜ[[YWÙ›YÜËÜ›Ú™XÝÜ—Ù[Kœˆœ›Þ™[‚››Ûœ\œÚ\Ý[›Ý\žHY™™\œÈ™[XZ[‘”Ì‹ˆ˜]]™HÙ™šXÚX[ÕQKYÜ˜\›YÌ˜[™\ÚË[ØØ[Û˜]YØY™™\Q˜[ÙHXØÛÛ[[Ù]HÚXÚÜÚ[Y˜XÚÝØ\™[™š[™\[™[Ü˜YY[›Ø™\ÎÈX]ÛX\ÚÜËÛÜÜÈÙZYÚËÜÙYY[˜Ú[™ÙY‚‘˜Z[YY]KXY™™\‹Ú[XYÙK\ØÚ[XKÛ\Ý[Ý]]ÐÕQYÜ˜\ÙÛ˜][Ûˆ[š]È™]Z[™Y‚‚‘^ÜYÛÛ\]HH˜\šX[[Ù[ËÑÜ›Ý[™[ž][™ËQKU˜XÚÔ›ÚŒÈ™\XÙ\Â›Û›M[˜]]™H›Ú™XÝÜˆ[œÛÜœË™]Z[š[™È[MŽZÙ^\È[™]™\žHÝ\ˆ˜]]™BÙZYÚÝÚÙ[š^™\‹ØÛÙKØÛÛ™šYÈ[˜Ú[™ÙYŽKŽËNKÌž]\ËÒLM‚˜MŒ˜XYŽXÍX˜˜ÌMÙLØMXMLNYNLÍŽXXYYXÙXØ˜ŒŒNXØÙMÌLŒÍÍÙNK‚“ÜšYÚ[˜[[Ù[ÜÙ\™\ˆ[ÝXÚYˆH\Ý[˜ÝÔMÜ™\XØKÎLˆ[™][˜Ú[™B˜\™H\ÙY›ÜØ[YK\›Ùš[H˜]]™Hœ˜[Y\Î[œÙJÎÚ[™ÛK\™YŠÌL›][K\™Y‹›ÜšYÚ[˜[Ý\]Yš^YÚ[\H\ÜÛØÚX][Û‹ˆ™\]Y\ÝYXÛÙ\œÙYY‹Ø[YB[˜Ú[™ÙYÙ™šXÚX[\œÙ\œÈ[™]˜[X]Ü‹ˆ\ÙH[˜Ý[Û˜[™][[Ûˆ›Ø™\Â™È›ÝÝ[™[ˆ›ÜˆH[ÜšYÚ[˜[Ü›Ý[™[ž][™È™[˜ÚX\šÈÝZ]K‚•HÛ™H›ØÚÚ[™ÈÝÛ™\ˆÝÜÈÛ›H]ÈÝÛ™YY\Y™\XØHÛˆÛÛ\][Û‹‚‚‚Y\Y™\XØHš\œÝ][˜Ú\ÜÙY™X[ÙZYÚØY[™È]Õˆ›Ùš[[™È]›Y[KYœ˜XÝ[Û‹\Ý]XËŒ\›ÙXÙYH™YØ]]™HØXÚHYÙ]ˆÝÛ™Y™\XØBØ\ÈÝÜY[™˜Z[Y][˜Ú™\Ù\™Yˆ™]È\ÛÛ]Y™\XØH\Ù\Ë
+B›ÜšYÚ[˜[Ù\šXÙIÜÈÛÜšÚ[™Èœ˜XÝ[ÛŠKØ[YHÚXÚÜÚ[ÙXÛÙ\‹ÜÙYYÜØÛÜ\Ë‚“›ÈÝ\ˆ›ØÙ\ÜÈÝÜY[™›ÈÔH™^[Û™ÍKÍ‹ÍË‚‚‚ˆÈÈÈ™\šYšYY˜]]™H›Ú™XÝÜˆ™][[ÛˆÛÛ›ÛÈ
+Œ‹LLLM
+B‚[Ú^œ™\Ú[™™\™[˜ÙH[™Ù™šXÚX[]˜[X][Ûˆ[š]È\ÜÙYØÛÜH[™[˜ÛÙYšY[Èœ˜[YHÚXÚÜÎœ˜[Y\ÈÝ[›È[[YHÕÜˆ]\™HXØÙ\ÜË]™\žBœ™Z™XÝYÙ[\Hœ˜[YH™]Z[™YˆÜšYÚ[˜[™\œÝ\È›Ú™XÝÜŒÈÕKÒQŒHœ˜XÝ[ÛœÎ‚‚ŸØÛÜHÜšYÚ[˜[ÕH›Ú™XÝÜŒÈÕHÜšYÚ[˜[QŒH›Ú™XÝÜŒÈQŒHQÕÈ™Y›Ü™KØY\ˆŸKK_KKNŸKKNŸKKNŸKKNŸKKNŸŸSÕMÈœ˜[Y\ÈÍLÈÍMLŽHŽÈŽÌÌŽËÌHŸÚ[™ÛH“SÕœ˜[Y\ÈŒŽNLÍMHŒÌÎLÈŒÍÍLKÌHŸ][H“SÕL™œ˜[Y\ÈŒŒŽMLMÈŒŒÍNLˆŒŒŒŒŒŒˆŒŒLÍˆÌH‚›ÝÚ[™ÛH˜\šX[È™Z™XÝœ˜[YLMLŽÈ›Ý][H˜\šX[È™Z™XÝœ˜[YLÍ‚•\ÙHœ˜[Y\È™[XZ[ˆ[ˆÙ™šXÚX[[›ÛZ[˜]ÜœËˆXÛÙ\ˆ˜XÚÚ[™×Ù[œÙKœ™\]Y\ÝYÙYY‹Ù™šXÚX[ÜØÛÜš[™È\œÙ\‹[˜Ú[™ÙYÙ[ÛY]žHÚ[\H[™›YØ[˜[Y][ÛˆØÛÜ\È\™HY[XØ[ˆÚÜ[œÙH[™Ú[™ÛHÛÛ›ÛÂš[\›Ý™HÛYÚK][K\™Y™\œš[™ÈXÛ[™\Ëˆ\È\È›Ý›Ü›X[Y\][Û‹™[ÜšYÚ[˜[Ü›Ý[™[™ËÜ™Y™\œš[™È™[˜ÚX\šÈ™][[ÛˆÜˆHœ›ØYØZ[ˆÛZ[K‚XÝX[]XÝÜ‹Z[˜Û\Ú]™H”È\™H[ˆYÙÜ™YØ]WÜ™\Ý[ËšœÛÛŽÈÛÛ˜Ý\œ™[ÛÜšÛØYÈ[™ÜšYÚ[˜[ÔMˆ™\œÝ\È™\XØHÔMÈ™XÛYH[ˆ\ÛÛ]YÜYY˜ÛÛ\\š\ÛÛ‹ˆHš\œÝ™\XØH˜Z[YÕˆ[ØØ][Ûˆ]Y[KYœ˜XÝ[Û‹ŒNÂš]È˜Z[\™H\È™]Z[™YˆHÛÛ\]Y™\XØH\ÙY[™ÝÜY]ÈÝÛ‚œ›ØÙ\ÜÈÜ›Ý\ˆÜšYÚ[˜[Ù\™\‹Û[Ù[[™›Ü™ZYÛˆQU\™H[˜Ú[™ÙY‚‚]]Üš]]]™H™XÙZ\‚›Ý]]ËÙÜ›Ý[™™]‹ÙÜ›Ý[™ØY\][Û‹Ü›Ú™XÝÜŒ×Ü™][[Û—ÝŒ—ÛY[[ÜžWØYÙ]ØYÙÜ™YØ]WÜ™\Ý[ËšœÛÛ‹‚“Û™R™]ˆ›Ü›X[LÝ\ÝÛ™\ˆ™[XZ[œÈ]™K]\Ý™]\›™Y™\ÜLÍLÂ™[LŒÙœ˜[YH[˜ÙU˜XÚÈÝÛ™\ˆ™[XZ[œÈ]™K]\Ý™]\›™Yœ˜[YLLNË‚“›ÈÛÛ\][ÛˆÛZ[H›ÜˆZ]\‹ˆÝ\œ™[\œÚ\Ý[™X]\™HÙ\šXÙHÛB\Ù\ÈX›Ý]ÚPŽÈ›ÈÜ›Ý[™‘Uˆ›ØÙ\ÜÈ™[XZ[œÈÛÈY\ˆ™\XØHÛX[\‚“™^™\ÙX\˜Ú\Ý\Ú\Îˆ^XÝØš™XÝÙ[ÛY]žHÜ›Ý\[™È[\›Ý™\ÈØØ[^˜][Û‹˜]ÛÜZ[™ÈH˜]]™H]Y\žHX™[;ómµ¶‰žËkºwµç]\˜ÛÜÙNÌÔ]\]\Ëˆ^XÝ™\\™YÛÝ\œÙKØÛÛ™šYËÚ[š]™Y™\™[˜Ù\Ý[˜Ú[™ÙYˆ™\šYšYYŒÌKÜÝ\LŒMŽÍLÕÐRUÓ“KÛ›ØÚ[™[‹Ù[\PÕQKÌ\]\ËÙ[ÒQÕT“HšXY^XÝY™Û›NÍŒN˜XÝX[^]MËÛÝ]KÙ]H™\Ù\™Y[™[™Ù™š[[Ü™XÙZ\Ø]™Yˆ™\XÙ[Y[ÝÛ™\LNKÜÝ\LNMÍŒÎKÜÙ\ÜÚ[ÛNLˆ›ÝÚÛÑÔMÝÚ[™ÝË][˜ÚYÚÜÑ•œ›Û\Ø[YZ[™^YŒ˜ÛÛ™šYÜËˆ˜]]™XXÝX[ÌŒ”Ì‹ÍÍLŒÎLÌ[š]X[\˜[Y]\œÈX^Y™ŒœÛ˜]]™MŒ]\Ý[Ý]NÈÍÙZYÚÛØYYš\Ú[Û™œ›Þ™[‹ˆXÝX[Ü˜ÚØ\ŽMŒÎŒž]\ÊŒÌÙ]šXÙXØ\XÚ]JHÙ]È^[™X›X[ØØ]Üˆ[œ\œÚ\ÝÈ›Ü›™]ÛÝÛ™\˜Z[š[™ËÜ™[ØYÙ]˜[
+Y[[Üž[Û›K›ÈÛÛ\\˜X›\ÜYYÛZ[JKˆ›ÙXÝ[Û›Ü[Z^™\\]\ÜÝ[[œ›Ý™[ˆ]][˜ÚÛ˜\ÚÝÈØZ]XÝX[™XÛÜ™Ë›Ý[Ù[[ØY[™ØÛZ[KˆÛ[ÛYØXÞZ[™™\™[˜ÙZ›ØœÛ›ÝÝÜYÈÛ›Y]\™QÔMÛ][˜Ú\ÙY™\œ™Y[[Ú[™ÝÜ™[X\ÙK‚‚ŒŒ‹LLLMˆ8 %œ™Y^™H›Ý\X\˜[˜ÙHš\œÝ[ØÛÜ\ËØ[M[š]ÈXXÚœ›Û[ÜšYÚ[˜[ÛÛ\]YÝÛ™\œ™XÙZ\È\Ùœ™\ÚÙ™šXÚX[Ü[[YKÙœ˜[YKØØ[™Y]KÜ™Z™XÝ[Û‹ÜÝ]HÚXÚÜË›Ý™\X]šY[ÈXÛÙH[™XYYÛ™Hž[ÜšYÚ[˜[ÝÛ™\‹ˆš\œÝ›Ú™XÝ[Û™œ™Y^™\ˆ[›ØØ][ÛˆZ\ÝZÙ[›H\ÜÙY˜Z[š[™Ü[Ú]Ý]ØÛÜ\È
+Ù^Q\œ›Ü˜™Y›Ü™X[ž[Ý]]
+NÈÛÜœ™XÝYÛÝÛ™\œ™XÛÜ™Y™\ÛÛ™YØÛÛ›Û×Ü[‹šœÛÛ‹Ø[Y[ÜšYÚ[˜[ÛÝ\œÙKˆ˜[šÕSÝ˜Z[™YULMŽMÏŒMLMÛÜšYÚ[˜[][›Ý™[ÛÐLÈš^Y˜Z[™YMŒÎMOMLMËˆ™\Ù\™X[\›\ËÛ›ÈÛÛ[[Ûœ›Û[Ý[Û‹š[˜[SÕŒÝ[[›š[™Ëˆ›È[™™\™[˜ÙKÛY]šXØÚ[™ÙHÜˆ™]ÑÔK‚‚ŒŒ‹LLLMˆ8 %ŒÙX\›HÝYHXÝX[š\œÝ\ÚÜÜ[Z^™\ˆ™\šYšYYˆÝ\ÌK‹KÜÙY[‹ŒŒ[š[š]HÜÜËÐÑKÐœšY\‹ÙÜ˜Y[™ÜÚ]]™YÜ˜YÌŒ”Ì‹ÍÍLŒÎLÌ˜]]™MŒ[š]X[X\Ý\œÛX^Y™ŒˆXÝX[Ü˜ÚØ\ŽMŒÎŒž]\È\YYÈš\œÝ\XZÌM‹ŽMÚP‹›ÈØ\š]ÜÝXYQ”ËÙ[[›Y[[ÜžXÛZ[H™^[Û™\Ù]\]\ËˆÛ™Øœ˜[˜ÚÝ[›È˜XÚÚ[™ÙØZ[˜ÛZ[KˆÛÝ\˜ÙL˜]]™\[Œ›ÜÍŒ\]\Ë™XZ[ž[ÜšYÚ[˜[˜Z[™\ŒŽ\È
+›Ý^˜HØ]™YÔH[ˆÜYYÛZ[JKˆ^\Ý[™Ñ[ÔY\ØÚ›ÝÝÜYÈÛÜ˜YY[ØZ]\š[™Ù™ŒMÛÛ›Kˆœ™Y^™Yš\œÝ\›ÛÙ™œ›ÛXXÝX[ÙËÛ˜]]™Z[š]X[™XÙZ\[™^XÝÝÛ™\”QXÚËX›\ÚÛÙKÜ[‹ÐÔ[ØÚÜ›ÛÙ‹Ú[™Ù™‹Û][˜ÚÙš\œÝH\È›Ýš\œÝØÛÜX\X\˜[˜Ù\›ÛÙœËˆÛØ[™[XZ[œØXÝ]™KÜ™[˜\žLÝ\ÚÜ]X[]\Ý[[›Y]‚‚ŒŒ‹LLLMˆ8 %™]š[Ý\ÈÛØ[\›ˆ\È›ÙÜ™\ÜÎˆZ\™Y[\Ü˜[ÚÜXÝX[Ü[Z^™\œÝ\Y›Ý[™YÚ[™ÝËÐÔZ[™Ù™‹Ùš\œÝ\›Ý™[ˆ[™™\šYšYYÚ]X˜ŒXŒØŽÈÝ\œ™[ÜšYÚ[˜[NL‹ÍŽMKÍÌÌËÍÍŒŒ[™\Ø[]™KÚÜLÙÙÙY[™[NÍKÌÌÙÙÙYˆ™^\ÚXØ[\Ý\Ú\È\š]™\Ùœ›ÛXÛÛ\]YÛÛ›ÛÎˆš^YXY™š[š]]˜Z[™Y›Ú™XÝ[Ûˆ[\›Ý™\Û][T“SÕNKŽ8¡¤ŒÌKMX]”LÌÌÈ›Ø˜Xš[]K\˜[šØÛÛœÙ\˜][ÛˆÛÛ›ÛÜ™Z™XÝ›ÜÜØ[Ø]ÜÙ]T“SÕØZ[‹ˆ™Y›Ü™H[›Ý\š[\™[[Û‹]Y][[ÜšYÚ[˜[X\›™Y™Y›Ü™]˜Z™XÝÜšY\È›Üˆ^\Ý[™ËRQ›Ø˜Xš[]H[][ÛŽˆX]ÚYÕÚ]ÛÜœ™XÝÝ\š]š[™ÛÜ[Û‹Ý[T
+^\Ý[™ÊO›X^
+XÝ[ÛŠH]X^
+^\Ý[™ÒQ
+OX^
+XÝ[ÛŠKˆ\È\ÈHØ[YK\Ý]HÜ˜XÛHÝ[X[ÙXYÛ›ÜÝXÈÛ›K›Ý™]Ü™YXÝ[Û‹ÒÕHÜˆHY]šXÜ™\XÙ[Y[ˆÝ™X[[ÜšYÚ[˜[ØØ[\œ›Ø˜Xš[]Y\È[™œ›Þ™[˜š\ÕXYÛ›ÜÝXÜË›Ô“ÒKÚ[XYÙKÛ[Ù[ÑÔNÈÙY\›ËXÛÜœ™XÝX[˜ÚÜ‹Ý[›X]ÚYÜ›Ý\ÈÙ\\˜]KˆYˆÝ\ÜY\Ý˜XÝÜš^™YÛÛ™][Û˜[\X\˜[˜ÙH	ÊY
+O[Û^\Ý[™ÛX\ÜÊœÛÙX^
+ÙÛÛ
+Y
+JØÛÜËËŒÊKÙY\[™È^XÝÜšYÚ[˜[‘UËÒQÓ“Ô‘KÓ“×ÓPUÒ[™Ý[^\Ý[™ÛX\ÜÈ\ÈX\›™Y]^ÜÙ[X[XÜÎÈ›Ø˜Xš[][][\Ù]ÛX^^\Ý[™ÛÙÈ[[[Û˜[XÚ[™ÙKˆØ[YLÛ˜]]™KÜ˜[™ÛKÝ˜Z[™YÛÛ›ÛËØ[\ØÛÜ\ËÙš^Yš[˜[›Ú™XÝ[Û‹ÜšYÚ[˜[ŒÝ[\\˜]\™K›Ú[Ý][š[™Ëˆ™YÚ\Ý\ŒÓZPÝ[›Ü˜]Y]SZP‹ØÛÛ™][Û˜[Y]Y]LSZP‹Ø›Ý[™Y›Ú™XÝYÛÜšÚ[™ÌSZP‹˜Z\Ù\ÌŽŒÎŽ¸¡¤ŒŽŽMÍMÍŽÍMMŒÈ›È™]Ô“ÒKÚ[XYÙX˜[šËÜšYÚ[˜[Ô]˜Z[š[™ËÛYX\Ý\™[Y[›ÝØÛÛ[˜Ú[™ÙYˆÈ›Ý[\[Y[˜\ÙYÛˆ[XYÚ[™Y[][ÛŽÈ[œÜXÝXÝX[]Y]š\œÝ‚‚ŒŒ‹LLLMˆ8 %ÜšYÚ[˜[›Ø˜Xš[]Y[][Û˜]Y]XXÝX[^]Ø[Y[ØÛÜ\ÌŽÍÍØ[™Y]\ÎˆÜÚ]]™XÛÜœ™XÝ\ÚÜ\Ý]™[ÑMÍŽÜÚ[™ÛMLËÛ][LNLKÕSÌŒKÓSÕŒNLNMNÈ[]YKÌÌÌÌÌˆÚ[™ÛKXÛÜœ™XÝÝXœÙ]MKÌLMÌSÕŒNËÌMMÍÍÈ›ÝHÝ\ÜY^[˜][ÛˆÙ›ÜÝ“SÕ›Ú™XÝ[Û™ØZ[‹ÛÈÈ“Õ][˜ÚÛÛ™][Û˜[X\ÜÜÛXÞH›ÝËˆSÕŒÕX]ÚYŒNLŒZ[\ØÛÜœ™XÝÜ[ÛŒNLNMHX]™\ÌNNN]Ú]Ý]™\šYšYYÛÜœ™XÝÚÜ\ÝYš\È\È\È›Ý]]ÛX]XØ[HYZY[]XXœÙ[˜ÙH™XØ]\ÙHš\Õ[šÛ›ÝÛˆ[™ÚÜ\ÝZ\ÜÈØ[˜ÛÛ™›Ý[™ˆ™^ØØ[\ÔXØ]\Ø[›Ý™[˜[˜ÙH]Y]\Ý[™ÝZ\Ú\Èš\œÝØœÙ\˜][Û‹Û›ÑÕ›Ý[™š\Y][Û›ÝÛ˜š\Ü™]\™Y[]™ZÛ›ÝÛ˜š\ÛZ]Yœ›Û\ÚÜ\ÝÈ™\^HY™XÞXÛYX]Ø]\Ù\È
+X\›™Y\›Z[˜]H™Y›Ü™LÜÈœÈ[Y[Ý]œØ›Ý
+K›Ý[™Ý[˜›Ý[™š\Ë[™Ø[™Y]K\Ý\ÜYÕ]X]ˆ]Y][[ÜšYÚ[˜[ÛÛ\XÝ™Y™\™[˜Ù\È\ÎX[™XYXÛÛ\]Y˜]]™MŒÛÛ›ÛÎÈ™\šYžH™XÛÛœÝXÝYš\ÜÝ\š]˜[YØZ[œÝœ›Þ™[™^\›˜[XYÛ›ÜÝXËÙY\ÕÝšXÝ\ÜÝØË›ÑÕ™\Z\‹Ü[[YXÚ[™ÙKˆ™\\œÜÙ\[›™YÛÛ™][Û˜[Y]Y]KÝÛÜšÚ[™ÈÚ][œØ[YLÓZPœ™\Ù\™KÈ›Ý[˜Ü™X\ÙXØXÚXYÙ]Üˆ[ÙYž\[›š[™ØÛÝ\œÙ\ËˆÛ›H[˜ÚÛÜÙHÛX[\Ý\ÝYšYYY[[ÜžKØš\[\™[[Û‹‚‚ŒŒ‹LLLMˆ8 %›Ý™[˜[˜ÙX]Y]ÎNØXÝX[^]Ø[M[š]ÎˆÛÛ\XÝSÕŒÜÚ]]™LŒNLŒYš\œÝ‹Û™]™\‘Õ›Ý[™š\MÍÍŽKØ[›Ý[™š\Ü™]\™YMNNKØ[]™X]ÚÜ\ÝZ\ÜÍNLKØÛÜœ™XÝÚÜ\ÝNLNMKˆÈ›Ý[™™\ˆH\ÚXØ[QXœÙ[œ›Û][šÛ›ÝÛ˜š\š[™[™Ëˆ˜]]™QŒ8¡¤ŒÛ›ÝÛ˜š\ÌNx¡¤ŒMH[™X\›™Y™K][Y[Ý]X]Ì8¡¤ŒLÎ
+LÌQÕÝ[™\Ù[
+NÈ˜]]™H][T“SÌ8¡¤MJQÕ™\Ù[
+K\Ü]X™]\’ÕKˆÛÛ\XÝX\›ZÛ›ÝÛ‘ÕX]ÈÜÚ[™ÛLŒÛ][MËÕSÌÓSÕŒMˆÛÝ\˜ÙXÛÙY^ÜØœ›ØY\—Û˜]]™WÙ[ÙÜ›Ý\ËœHX™[È[šÛ›ÝÛ˜š\Y™XÞXÛUT“RSUK[ˆ[™XYZÛ›ÝÛˆ^Ü\œ›ÞH˜]\[œ›ÛÙœ\›X[™[^]È\È\ÛØœÙ\™YXY™Z]š[Üˆ[Ý]˜]\È[™^XÚ]ÛÛ›Û›ÝXØ]\Ø[›ÛÙˆÜˆ[\š[™ØÝ\œ™[˜Z[š[™Ëˆ™YÚ\Ý\›ÜZ[ˆ[Y[Ý]ÛÛ›Y[][ÛŽˆ™]Z[›X\›™Y›Ø˜Xš[]Y\ËØ]^[X\žKÜÙ[X[XÈÝ]]È[™Ø[YLÜÕY™\›Û›HX\›™YX\›]\›Z[˜][Û‹ˆY˜][X\›™YÛÜ—Ý[Y[Ý][™[[›š[™Ü›ÝØÛÛÝ[›[ÙYšYYˆ˜[Y]XXÝX[˜]]™JÐÛÛ\XÝ™Yš^ÙY˜][\š]KÜ™X[X\›KY[][Û™Y™\œ˜[Ý[˜Ú[™ÙY^\žK[˜[PÛÛ\XÝ[ØÛÜXÛÛ›ÛÈYØZ[œÝØ[Y[ÜšYÚ[˜[ÚXÚÜÚ[ˆ˜]]™MŒÛÝ[\œ\Ú[\Ù[ÜšYÚ[˜[ØÛÜ\ÈY\™^\Ý[™ÑÔMÝÚ[™ÝËØ˜\Ù[[™XÛÛ\][Û‹^XÝØ[YXÚXÚÜÚ[ØØ]YÛÜšY\Ü™]\ÙYÛ›]Ú\™Z\ÝÜžKZ[™\[™[[™XÛ\™YÈ›Ú[Ý]™\ÚÛ[š[™ÈÜˆ™]Ô“ÒKÚ[XYÙX˜[šËˆ[Y]Y]HÝ^\ÝÚ][œ™]š[Ý\ÌÓZPœ™\Ù\™KÙÛØ˜[ŽŽMÍMÍQÚPŽÈ›È™]ÑÔH›ÝËˆ™YØ]]™[Ý]ÛÛY\Û]\Ý™[XZ[š\ÚX›K›ÈÛXÞXYÜ[Û˜™Y›Ü™XÛÛ›ÛË‚‚ŒŒ‹LLLMˆ8 %XÝX[\›Z[˜][Û™[˜Ý[Û˜[LLÎMÙ^]ˆÛÛ\XÝÌYœ˜[Y\™Yš^Ùš\œÝX\›Yœ˜[YLŽRQK˜]]™LNKYœ˜[Y\™Yš^Ùš\œÝX\›Yœ˜[YLNRQÈÜšYÚ[˜[[™Yš^Ý]KÛÝ]]Ù^XÝ[\™[[Ûœ™]Z[œÈ^XÝYX\›KY[]YQËØ[ÛÛ[[ÛœÝ]\Ù^XÝÜšYÚ[˜[ÜÙ^\ž]™\šYšYYÚ]X™[Y[˜Ý[Û˜[[\K[ØœÙ\˜][Û˜ÛÝ[\™˜XÝX[
+›ÝØÛÜ™Yœ˜[YJKˆÔX[\ÝYNŒŽNÝ\Y›ÑÔKˆ˜]]™\]Y]YYÝÛ™\ŒÍ]Œ]ØZ]ÛÛ›ÜšYÚ[˜[ŒÝXØÙ\ÜÈ[™[™™\™[˜ÙKˆÝ]XÜ™]šY]ØØ]YÚÝ[[X\žHÙ^H˜]]™WØØ]YÛÜžWÜ™\^KXÝX[[—ÝšY[È^ÜÈØ]YÛÜžWÜ™\^Kˆš^Û™YšY[™Y›Ü™X[žQÔ]ÛÜšÎÈ™\Ù\™\]Y]YYŒXÛÙKÜÝ]H[™[™Ù™›Û›]\Û™]ÐÔ]ØZ]\ˆÈŒ‹ˆ›È^\š[Y[˜Z[YÜœØ[\\Ü™\[ˆY]ÈÈ›Ý]HÛ›ÝÛˆ]]˜[Y][Û˜YÈ™[XZ[ˆ]Y]YYˆÜšYÚ[˜[˜Z[š[™ËØÛÛ›ÛÈ™]™\œÝÜ‚‚ŒŒ‹LLLMˆ8 %˜]]™]Œ[™]ÐÔ\]Y]YMMÎLËÜÝ\LÍLÌÙ^XÝ™\šYšYYÛ›ØÚ[™[‹Ù[\PÕQKÌ[™™\™[˜ÙKY™ÒQÕT“KÌÍXXÝX[^]MÈ™\Ù\™YÈÛÜœ™XÝYŒ›ÝÛ™\MNMŒKÜÝ\LÍMÍKÜÙ\ÜÚ[ÛŽLÌØZ][™ÛÜšYÚ[˜[Œ\›Z[˜[ÝXØÙ\ÜË›ÑÔKˆ]ZÙ\Ù^Û\Ú]™QÔMÝÚ[™ÝÛÛ›XY\™\[™[˜ÞXÛÛ\][Û‹™\[œØ[˜]]™ZY[]KÛY™XÞXÛKÜØÛÜ™\œÈ]Ø[YMŒÙZYÚËÌÜÎÈØ[YKZ[XYÙK[Û›USØØ]YÛÜšY\Ü™\^YY^XÚ]Yœ›ÛXÛÛ\]YÜšYÚ[˜[ŒÛÝ\˜ÙK›ÑL‘XÛZ[Kˆ›ÈÜšYÚ[˜[›Ø\›Z[˜]YˆÛÛ\XÝš\œÝÙ[ØÛÜ\ËØ[[š]Èœ›Þ™[ŽˆÕIQ‹ŒÌMMÙ^XÝÚ[™ÛM‹Œø¡¤‹M‹][LNKŽNx¡¤ŒNKMMÎÈ][RQŒOLŒKŒ¸¡¤ŒŒKŒŒÎÒQÌMx¡¤ŒMMËÑ”ŒNx¡¤NMËÑ“ŒLM8¡¤ŒLŒKˆZ^Y›ØYÜ[ÛŽÈ™[XZ[š[™ÕSËÓSÕŒÛÛ[YK‚‚ŒŒ‹LLLMˆ8 %]\˜[Y™XÞXÛZ[™[ÜžLLŽLXXÝX[^]ˆ[\ÛÝ\˜ÙSSÕLŒN›ÝÜËÛY™XÞXÛNLÍŒPÕU‘MŒÍËÔÕLŒLMË‘PPÕUULMÍT“RSUMŽŠKŒIJKˆ˜[[˜ÙYÛÛ\]YÎŒLY™KÌLXXÚ
+IUT“RSUJNÈZ\™YÚÜÛÛ™ÜØ[YMLY™LLŽPÕU‘KÌLSÔÕÌLMÔ‘PPÕUUKÌLÌT“RSUJ‰JKˆ\ÈÝ\œ™[˜]\˜[[ÛÝ\œÙZ\Û›Ý[š\š]Y˜[[˜ÙYÝ™\œØ[\[™ÎÈÈ›ÝÝÜÜœ™]\™Ù]Û™ÛÚ[™ÛÜšYÚ[˜[˜Z[š[™Ø˜\ÙYÛˆ[[œ›Ý™[œ›ÞXØ]\Ø[]XÛZ[Kˆ[]KÝ\™Ù]È™\Ù\™YˆÛÝ\˜ÙXÛÛ˜XÝ[šÛ›ÝÛ˜š\8¡¤•T“RSUZ\Û›Ý[™\[™[\›X[™[^]]šY[˜ÙKˆÜšYÚ[˜[›Ý\‘ÔLšÜÝ][ØœÙ\™\MŒÜ™YÚ\Ý\™YØZ][™ØÚXÚÜÚ[›Ý[™ÜšYÚ[˜[ÍMÍŒKÜÝ\LÍLÌŒ[”Ì‹ÐY[KØ[˜[šÔ“‘ÙØ]][˜Ú[™ÙYÈ]\ÝÛØ˜[™X]\™]\\ŒŽŽMÍMÍ\ÜÙY\ÛY]Y][Ý™\œšYH[œÝXYÙœÝ[Z\ÝÜšXØ[\\‹ˆ\ÝÛÛ\]Y[Y\šXÛZ[\ÝÛ™\™[XZ[œÌL[[XÝX[šÜ›ÛÙ‹›Û™]ÑÔK‚‚ŒŒ‹LLLMˆ8 %XÝX[ØœÙ\™\MŒÙ^]ÌŒ[Ý]H˜[Y]YŒÌŒ]Y\Ý[ÛœÌMÍNLSÕÍÌLÔ“SËÍÌÌÓÕŽÈ[ÍLŒÎLÌ”Ì‹ÌMLÎŒY[[[ÛY[Ùš[š]K[ÌŒY[\Ý\ËÜØÚY[\‹ØÝ\œÛÜŒŒ^XÝ›Ý\œ˜[šÕÜ˜ÚÐÕQKÔ]Û‹Ó[TT“‘ÜØ]™Yˆ]ÛZXÛ]\ÝLŽLNLÎXž]\È[™[X™\™Y‘ŒM˜ÚÜ\Ý\Œ™\Ù[È]\™[]\Ý™\XÙY[X™\™Y^Ü™]Z[™Yˆ›ÈXÝX[Z[\ÝÛ™\™\Ý\Û™]Ú[™™\™[˜ÙHÜ˜ÛÛ\]Y\ØÚÛZ[Kˆ]\ÝÝ\ŒÜÜÌKŒLNÙÜ˜YLKŽÌËÙ[\ÙYŒËŒÌLœÈ\ÛØœÙ\™YÛÛ˜Ý\œ™[˜Z[š[™Ë›ÝÛÛ›ÛYÜYYˆÜšYÚ[˜[˜Z[š[™Ý[˜Ú[™ÙYˆÔ][Y[Ý]SØÛÛ\]UULMLMø¡¤ŒMLËÓ›Ý™[ÛÐLÈš\œÝ[[š]Ùœ›Þ™[‹š[˜[SÕŒÛÛ[Y\Ëˆ™\Ù\™[Z^Y˜Z[\™K]ËZ[\›Ý™K›È›Û[Ý[Û‹ˆX›\ÚÛÝ\˜ÙX]Y]ËÙY˜][\™Yš^›ÛÙ‹ÛÜ[œÛXÞKÜ]Y]YY˜]]™XÛÛ›ÛÜ™Y^XÝ][Û™š^™XÙZ\ËØXÝX[Œ›ÛÙŽÈ[™\ÜÝÚ][œÚ\™YÓZP›Y]Y]\™\Ù\˜][Û‹›Ô“ÒX˜[šËÑÔZ[˜Ü™X\ÙKˆÛØ[™[XZ[œØXÝ]™K‚‚ŒŒ‹LLLMˆ8 %ÜšYÚ[˜[[™\ÍLŒŒÌMŒ‹ÍŒŒŽÍLÌËÍNL˜[ÛÛ™š\›YY]™Kˆ˜]]™MŒSÍ™Y›Ü™X˜\Ù[[™Z\ÝÛÛ\]Y[™ÛÛœÝ[Y\LÌÝ˜[Y]YÍLŒŽØ[™Y]\ËØ[œ˜[Y\ÎÈ˜]]™MŒY˜][SÈ›ÝØXÝX[]ØZ]Ü™YÚ\Ý\™YÔMÝ˜Z[š[™ÝÚ[™ÝËˆØ[Y[ÜšYÚ[˜[ŒÚXÚÜÚ[[™Y›Ü™X˜\Ù[[™\Èœ›Þ™[Ž™›™ÕNÌÌ	KÚ[™ÛT“SÌ‹LŒ‹][M‹Í˜]ÕSÕULËÍÓØÐLŒKMÌËÐ\ÜÛØÐL‹ŽLÍ‹ÐÛÐMNŽMŽÈ˜\ÙUULÍËÍËÓ›Ý™[ŒÍŽ‹Ó›Ý™[ÛÐL
+Û›ZÛšY™KØ˜XžKÜY[\‘Õ
+Kˆ˜]]™X˜\ÙXÛ\ÜÚYšXØ][ÛœÝ›Û™Ù\[ÛÛ\XÝ]\ÜÛØÚX][ÛÙXZÎÈÈ›ÝZ^ÛÛ\Û™[Y]šXÜËÜ™YXÝÞ[]XÕUHÜ˜ÛZ[XÛÛ\]USÙ]\Ù]ËÛÜ™[˜\ž\\š]Kˆ˜\Ù[[™XÛÛ\][Ûš\Û›Ý˜]]™MŒY\˜Z[š[™ÙØZ[‹ˆÜšYÚ[˜[ÔM\™Yœ™\ÚYÛÜšÙ\š\ØY˜[˜ÙY
+œ˜[YLMŽ]\Ý
+KÔMÛSÊœ˜[YNNÜÝ\Y
+\Ý[]™NÈÜ›Ý[™™][[Ûœ]ZY]]™KˆÚÜZ\™Y˜Z[š[™Í[ÙÙÙY›È™]ØÚXÚÜÚ[ÛZ[Kˆ™XÚXÚÛÛ›XÛÛ\]Y˜\Ù[[™[ÝÛ™\œ™XÙZ\ËÛÙ™šXÚX[Ü[[YHY]Y]K™\Ù\™Z[œ]Ü™\‹ÑÕ\ÛÛ][Ûˆ[™[˜]Ü™\Ý[Ë›È™]ÑÔKÔ“ÒY™X]\™HÜˆ[™™\™[˜ÙK‚‚ŒŒ‹LLLMˆ8 %[YKY\ØÜš\[ÛˆÛÜœ™XÝ[ÛŽˆÛÝ\˜ÙUSÛX[šY™\Ý^XÚ]H\ÚXØ[ÝšY[×Ùœ×Ý™\šYšYYQ˜[ÙKÙœÌKÝ[Y\Ý[\Ì‹ŒÎKØ[››Ý][Û‹\Ý\[š]ËˆX\›Y\ˆY™XÞXÛXÛÛ›Û›ÜÙLÜÙXÛÛ™È[™›Ý™[˜[˜ÙYšY[ÙXÛÛ™×ÜÚ[˜ÙWÛ\ÝØ\ÜÚYÛ›Y[Ù\™HZ\ÛXY[™Ù›Ü•SÎÈSÕÔ“SÕ\ÚXØ[ÙXÛÛ™Ü™[XZ[˜[Yˆ[Y\šXÜ[[YZ\Ø[Ø^\Ý\ÙYÜšYÚ[˜[X[šY™\ÝÝ\Ë›ÝÜ\ÚXØ[ÙXÛÛ™Ù›Ü•SÎÈÈ›Ý[™[”ËØÚ[™ÙXÛÛ›ÛËˆÛ\šYžXÛÛ™šYÜËÙØÜÈ[™Üš]]Œ˜ÛØÚÈ›Ý™[˜[˜ÙNˆ^XÚ]\ÚXØ[ÜÙXÛÛ™ËØ[››Ý][Û—ÜÝ\È[™™YÚ\Ý\™YØÛØÚ×ÙØ\ÜÚ[˜ÙWÛ\ÝØ\ÜÚYÛ›Y[ˆ™X[ÌŽMY^][MÛœÛ™]ØÛÝ[ËØ]˜Z[Xš[]KÜ™]\™[Y[Ø]\Ù\ËÛ[Y\šXÙØ\È^XÝY\]X[ˆ™]Z[ŒKÜšYÚ[˜[™YÚ\Ý˜][ÛœÈ[™[˜Z™XÝÜšY\ËÜØÛÜ™\ÎÈYÛØÚØÛ\šYšXØ][Ûœ™XÙZ\ˆ\È\Ù\ØÜš\[Û‹ÜØÚ[XHÛÜœ™XÝ[Û›Û›K›Ý™]Ú[™™\™[˜ÙKÚ[œ]Ý[Y[Ý]ËÜ›ÝØÛÛÛ[Y\šXØ[Ú[™ÙKˆÚ\™YÓZPœ™\Ü™\Ù\˜][ÛœÝ[ÛÝ™\œØ[\Y˜XÝËˆœ™Y^™XÛÛ\]S˜]]™MŒ™Y›Ü™MØÛÜX˜\Ù[[™HÚ]ÛØÚÜ]X[YšXØ][ÛŽÈ›È]X[]\›Û[Ý[Û‹‚‚ŒŒ‹LLLMˆ8 %™]š[Ý\ÈÛØ[\›ˆ\È›ÙÜ™\ÜÎˆY™XÞXÛ\›Ý™[˜[˜ÙKÙY˜][™Yš^ØÛÛ›Û[\[Y[][Û‹XÝX[Œ›Ý\‘ÔY[Ý]H[™ÛÛ\]Y›Ý\‹\ØÛÜH˜]]™MŒ˜\Ù[[™HX›\ÚY[™™\šYšYYŽŽÈÛØÚØÛ\šYšXØ][Ûœ™]Z[œØ[[X™\œËˆÝ\œ™[NLœÚÜŒÙÙÙYÜšYÚ[˜[ÌÌÜ˜[šÙš[˜[SÕŒ]™[ËÍŽM\›Ú™XÝ[Û™š[˜[SÕŒ˜Z[š[™ÈÝ[]™NÈÜšYÚ[˜[ŒŽN[Y[Ý]Ô[ÝÛ™\ˆXÝX[^]Ø[LÛÛ›ÛÈÛÛ\]Kˆ˜[Y]KÙœ™Y^™H[H™Y›Ü™H™]ÈÛÜšË›ÈÛÛ[[Ûœ›Û[Ý[Û™œ›Û\\X[™\Ý[Ë‚‚ŒŒ‹LLLMˆ8 %™^š\XYZ\ÜÚ[Ûˆ\Ý\Ú\Èœ›ÛHXÝX[TKÙ^Ü\ˆÛÙNˆ^Ü\ˆ\™Ù]Ó“×ÓPUÒÛ›HÚ[ˆHÛÜœ™XÝš\[˜ÚÜˆ\È[ˆH]™HÛÛ]ÛZ]Yœ›ÛHÚÜ\ÝÈ‘UÈÚ[ˆ›È™XÛÝ™\˜X›H]™HÛÜœ™XÝ[˜ÚÜˆ^\ÝËˆŒÜ›Û\Ø^\È™]š[Ý\ÛHØœÙ\™Y]Ù\È›Ý^XÚ]H]X[YžH]™KÜ™]\™Y[™›ÝÛÛ\XÝÑ[ÛZ]Ý[ÛÛÛÛZ]YÛÝ[œ›ÛHXÚ\Ú[Ûˆ[œ]Ëˆ]Y][Mœ›Þ™[[š]È›ÜˆXÝX[“×ÓPUÒÚ]ÛÛ\]H]™K\ÛÛ^ÜÝ\™K[˜ÛY[™ÈÕX]ÚY™]™\‹X›Ý[™Ü™]\™YØÛÜœ™XÝ[Ü[Ûˆ[™Õ[šÛ›ÝÛˆÜ›Ý\ÎÈÈ›ÝXÛ\™H[šÛ›ÝÛ˜š\È\ÚXØ[XXœÙ[ÜˆÚ[™ÙHÛÙ[X[XÛX™[ËˆYˆÝ\ÜY\Ý^XÚ]XÝ]™K\ÛÛ^XÝ][ÛˆÛÛ˜XÝˆX]™H[ÜšYÚ[˜[[Ù[›Ø˜Xš[]Y\ËØ]^ÜÙ[X[XÜÈ[ÝXÚY›Ü˜šYÛ›HHš]˜]S“×ÓPUÒÛÜÝÚ[ˆ]™\žH]™HQ\ÈÙ™™\™Yˆ›È›Ø˜Xš[]H™[›Ü›X[^˜][ÛˆÜˆX\›™Y™\ÚÛÎÈÛØ˜[\ÜÚYÛ›Y[Ù]\™Z\ÝÜšY\ÈØ[ˆÚ[™ÙKˆ˜XÝÜšX[[PÛÛ\XÝØÛÜ\ÎˆÜšYÚ[˜[[™ÛÛ\]Y[Y[Ý]™Y™\™[˜Ù\Ë™X\ÚXš[]K[Û›H[™™X\ÚXš[]JÝ[Y[Ý]Ø[YXÚXÚÜÚ[ØØ[™Y]\ËÜØÛÜ™\œËÛ›È\‹]\ÚÜÙ[XÝ[Û‹ˆY˜][ÛXÞH[™[]™HÔXÛÝ\œÙ\È[˜Ú[™ÙYˆ\È\ÈHXÛ\™YÛÛ˜XÝÚ[\™[[ÛˆÛÛœÚ\Ý[Ú]^Ü\ˆX™[Ë›Ý›ÛÙˆÜšYÚ[˜[˜YÝY\›Û\Ø\È[\ÜÜÚX›HÜˆH˜]]™HØ[Xœ˜]YÜÝ\š[Üˆ[\›Ý™[Y[ˆ™]Ì“ZPˆ]Y]ØÛÛ›ÛY]Y]JØ›Ý[™YÛÜšÚ[™È˜Z\Ù\ÌŽŽMÍMÍ8¡¤ŒŽŽLÌLÌŽÍMMŒÈ›È™]Ô“ÒKÚ[XYÙX˜[šÈÜˆÔKˆ]Y]™Y›Ü™Z[\[Y[][Û‹‚‚ŒŒ‹LLLMˆ8 %^ÜÝ\™X]Y]ŽØXÝX[^]Ø[MˆÛÛ\XÝ[LÍ›ÝÜÈ^ÜÙXÛÛ\]\ÛÛY]L““×ÓPUÒÙ[XÝ[ÛœÈ
+ÕX]ÚYŒLÕ[›X]ÚYÌŠNÈÛÛ\]SSÕŒÛÛLÍÍÌÜ›ÝÜËÌLLŒLŽS“×ÓPUÒ
+ÕX]ÚYLLŒÎKÕ[›X]ÚYŽL
+KˆÛÜœ™XÝÛ›ÝÛ›]™X[˜ÚÜˆXÝX[[Ù™™\™Y[NNÌŽN“SÕŒÙ[XÝY“×ÓPUÒØ\Ù\ÎÈ[šÛ›ÝÛ˜š\Ü›Ý\›Ý\ÚXØ[XœÙ[˜Ù\›ÛÙ‹ˆÛÛ\XÝ“SÛÛ›LYXXÚSÌÛÛ\]\ÛÛ“×ÓPUÒˆ˜]]™MŒÛ›LØÛÛ\]\ÛÛ“×ÓPUÒÔ“SÌXXÚÈš[X\ž[˜]]™MšÜ™YÜ™\ÜÚ[Ûš\Û›Ý\ÜÝ[YYØ[YX\ÐÛÛ\XÝˆ›È™[XZ[š[™Üš[YX\ÜÞ™\›È[˜]Y]YÛÛ\]\ÛÛ›ÝÜËˆ\ÈÝ\ÜÈXÝX[ÛÛ\XÝXÝ]™K\ÛÛ™X\ÚXš[]XÛÛ›ÛÈÈ›ÝY[›Ý\‘Ô\ÝYHÈÝ\œ™[˜]]™\]Y]YKˆ[\[Y[X]Ú[™ØÛÛœÝ˜Z[Û›K™\Ù\™X[ÜšYÚ[˜[˜]Ü›Ø˜Xš[]Y\ËØÛÛ™šY[˜ÙKÙ[›ÜH[™[[Ù[]^ÜÙ[X[XÜÈÛšY[XØ[[œ]È›ÝÛÛ™][Û˜[™[›Ü›X[^˜][Û‹ˆ^˜XÝ^\Ý[™Ò[™Ø\šX[š[\ˆÚ]Ý]Ú[™Ú[™ÙY˜][\š]Y]XÈ[™™\šYžX[MÜšYÚ[˜[\ÜÚYÛ›Y[ËÌÌÎMNM˜Ø[™Y]\È\ØÛÛœÝ˜Z[™Y›ÝÙ[YÚXš[]KÜ›Ø˜Xš[]Z[[]]Xš[]H™Y›Ü™Y[˜XÝÜšX[›ÛÝ]Ëˆ[ÛÛ›ÛÍ\›\ðåÍ\ØÛÜ\ËÜšYÚ[˜[Ý[Y[Ý]™]\ÙY^XÚ]X[™Û›L›™]Ø\›\Ú[™™\‹ˆ›ÈÕXÚ\Ú[Ûœ[HÜˆ[œ]Ü›ÜÜØ[š[\‹‚‚ŒŒ‹LLLMˆ8 %™X[™X\ÚXš[]]˜[Y][ÛŒNMXXÝX[^]ˆ[MÌÌÎMNM›ÜšYÚ[˜[Y˜][\ÜÚYÛ›Y[È^XÝÜšYÚ[˜[›Ø˜Xš[]YXÝÈ[˜Ú[™ÙY›Ü˜šY[œš]˜]S“×ÓPUÒ™]™\˜ÚÜÙ[[™\›™]ØXÝ]™K\ÛÛ[ÙKœ˜[Y\ÝÚ]Ý]X\ÚÙ[\™X\ÜÚYÛ›Y[Ù^XÝˆØ[YKZ[œ]ÚYÝØ\ÜÚYÛ›Y[Ú[™Ù\ÑLÎL‹ÓSÕŒLMMNÜÚ[™ÛLKÛ][LKÕSÌÈ\ÙH\™H›Ý›ÛÝ]ÒÕHØZ[œËˆ\™ÙQÕ[›X]ÚYÌ““×ÓPUÒØ\Ù\ÝØ\››ÙœÝ[X[˜[ÙXš\Ù\XØ]\›Ø›[NÈÈ›ÝÝX\˜[YZ[\›Ý™[Y[ÜšY]ÛÜœÙ[š[™Ëˆ˜XÝÜšX[Ô[ÝÛ™\ˆÝ\YY\œ›ÛÙ‹[0åÍ[ÜšYÚ[˜[ØÛÜ\ËÛÛÜšYÚ[˜[ÛÛ\]Y™Y™\™[˜ÙX\›\ËÝÛÛ™]ØXÝX[\›\ËØ[YX˜\ÙXÚXÚÜÚ[Û›ÑÔKÛ™]Ù™X]\™X˜[šËˆ[Ù[˜]Ù\ÝšX][ÛœÈ[™ÛÛ™šY[˜ÙKÙ[›Ü\™[XZ[[˜Ú[™ÙYÛšY[XØ[[œ]ÛÜÝÛÛœÝ˜Z[Û›NÈÜšYÚ[˜[›Û\Ù^Ü\‹\Ù[X[XÙ\ØÜ™\[˜ÞYXÛ\™Yˆ^\Ý[™Û˜]]™MÍL\ÚÜÛÛ™ËÑ[˜Z[š[™Ø[™]Y]YYY™XÞXÛXÛÛ›Û™[XZ[ˆ[˜Ú[™ÙY‚‚ŒŒ‹LLLMˆ8 %™]š[Ý\È\Ù\‹\]Y\Ý[Ûˆ\›ˆØ\ÈHÝ]\È^[˜][Û‹›È™\ÙX\˜Ú\Ý]HÚ[™ÙKˆ™\Ý[YHÚ]ÛÛ˜Ü™]H]šY[˜ÙNˆÜšYÚ[˜[ŒØÛÛ™š\›YY]™H›ÝYÚ]È^\Ý[™È›ØÚÚ[™È[™Kš\œÝL™˜XÝÜšX[[š]ÈXÝX[HÛÛ\]YÈœ™Y^™HZ\ˆÙ™šXÚX[Ü[[YKÙœ˜[YKØØ[™Y]KÜ™Z™XÝ[Û‹Ùš[˜[Ý]H™XÙZ\Ëˆ™X\ÚXš[]K[Û›HÕL‹ŒÌMMø¡¤ŒL‹ŽMÍŒ‹QŒLÌŒÌŽx¡¤ŽKŒNNMK”MÎx¡¤ŒÍLK“ŒNMŒ¸¡¤ŒMMLQÌMx¡¤NNÈ›ÝØ[YQˆÚ[™ÛY™X\ÚXš[]][˜Ú[™ÙY‹ŒÎÈ[Y[Ý]Ø›Ý‹M‹ˆ][LNKŽNx¡¤ŒŒŒŽY™X\ÚX›KÌŒŒŒÍŒ˜›Ý[Y[Ý]NKMMÎˆY][Û˜[YZ\ÜÚ[ÛˆØ[››Ý™HYÜY\ÈÙ[™\˜[\ÜÛØÚX][Ûˆ™\Z\ŽÈ™\Ù\™H™YØ]]™\Ë›ÈÛÛ[[Ûœ›Û[Ý[Û‹ˆSËÓSÕŒØ[Y[ÜšYÚ[˜[ÝÛ™\ˆÛÛ[YK›È\ÚË\ÜXÚYšXÈÙ[XÝ[Û‹Û™]ÑÔHÜˆ›ÜÜØ[Ú[™ÙK‚‚ŒŒ‹LLLMˆ8 %ÜšYÚ[˜[˜[šËÜ›Ú™XÝ[Û‹Ý[Y[Ý]ÝYY\È[ÛÜÙYŒŒ
+ÌŒ
+ÌLÙ™šXÚX[[š]È[™[\ØÛÜH™XÙZ\È™]Z[™Yˆš[˜[SÕŒÜšYÚ[˜[Ü˜]Ü˜[šËÜ˜[™Û\˜[šËÝ˜Z[™Y˜[šÒÕMËÌM‹ÎŒKÍËŽLLKÎŒÌÈ˜Z[™Y˜[šÒQÌÌÌMÏŒŒŒÜšYÚ[˜[ˆš^Y˜]ËÜ˜[™ÛKÝ˜Z[™YÌKŒÌÎÌÌKLÍËÌÌKÍLË˜Z[™YQÎŽKÑ”MŒH™\œÝ\ÌŒŒÍŒÛÜšYÚ[˜[ˆ\™ÙYš^Y\Ú[Û™ØZ[š\Û›ÝX\›™Y›Ú™XÝ[Û™ØZ[ˆ™XØ]\ÙH˜]ËÜ˜[™ÛXÛÛ›ÛÈ[™XYLÌKŒËÌÌKNÈ˜Z[™Y›Ú™XÝ[Û‘˜˜Y[™[SÓ›Ý™[ÛÐLˆ[Y[Ý]SÕŒÕMËŒMÒQŒM‹ŒÌNNH™\œÝ\ÍËÌM‹Í‹ŒMÍÛX[Z^YXÜ›ÜÜÜØÛÜ\Ëˆ›È[Ù[›Û[Ý[Û‹ˆ^XÝØœÙ\™Y[ŒLÌÍŒ[™ÚÜÍKÌÍLÙÜ›ÝÜÈœ›Þ™[ˆ›Üˆ][˜Z[š[™Ø[œÝÙ\ŽÈ›È™]Ù[Ý]HØ]H™^[Û™Œ›ÑÜ›Ý[™SÛ™Z›Ú[Ü˜YY[ËÛÛ™Ð”ˆØÜÈ\]YÚ][™\Ý[ËÛ[Z]][ÛœËˆ[™]ÛY]Y]][™\™^\Ý[™Ì“ZPœ™\Ù\˜][Û‹ÙÛØ˜[ŽŽLÌLÌQÚPŽÈ›È“ÒKÚ[XYÙX˜[šÈÜˆ™]Ý˜Z[š[™Ë‚‚ŒŒ‹LLLMˆ8 %™^\™Ù]YRS‹[Û›H\Ý\Ú\ÈY\ˆ™X\ÚXš[]Q˜Z[\™NˆÜšYÚ[˜[š\]Y][™XYHš[™ÍNÌ‹ÍÎNL’QÓ“Ô‘H›ÜÜØ[ÈÚ]ÛÛYQÕ[Õx¢iLK]Ù\Û›ÝÚÝÝÚ]\ˆHÛØ˜[XÚÜÙ[ˆÛÛ\]]Üˆ\È[œÚYHHXÝX[M‹XØ[™Y]H™\]Y\Ýˆ™XY^Ü\ŽˆÛ™H[™Ø\šX[ˆÝ™\ÚÛYœ˜[YH]\›Z[™\ÈQÓ“Ô‘K[ˆ[œ]È\™YÜ›Ý\YÈ[[XYÙH™[XZ[œÝš\ÚX›Kˆ]Y][ËÌLM•RS™œ˜[Y\ËÍLXØ[™Y]\È\Ú[™ØXÝX[Ø]™YÜ›Ý\ËÜ›ÝÝ\™Ù]ËÜ™YÚ\ÝžK\Ý[™ÝZ\Ú˜XÚÙÜ›Ý[™œÑÕ\Ý\ÜYQÓ“Ô‘H[™ÛÛ\]]ÜœÚ[œÚYKÛÝ]ÚYXXÝX[Ü›Ý\ˆ™\›ÙXÙX[ÜšYÚ[˜[Õš[™[™ÜÈ[™^XÝQÓ“Ô‘]\™Ù]È™Y›Ü™XÛÝ[ÎÈX]™X[XšYÝ[Ý\Û][]\™Ù]Ø\Ù\Ù^XÚ]ˆ›ÈÛZ[Z[™ÈX][X]XØ[][›ØœÙ\˜X›HX™[È™XØ]\ÙH[Ù[ÙY\Ù[[XYÙK›È“TËÝ˜Z[š[™Ü™XÚ\KÜ›ÜÜØ[ÛY]šXØÚ[™ÙKˆÛX[ØØ[\œ™\Ü8¢iLŽÚP™œ›ÛX[™XY\™\Ù\™Y“ZP‹ÙÛØ˜[ŽŽLÌLÌŽÈ›È™]Ô“ÒKÚ[XYÙX˜[šËÑÔKÛÜ[Z^™\‹ˆÈ›Ý™]\™Ù]Û™ÛÚ[™ÍNZØÛÝ\œÙHœ›ÛX]Y][Û™K‚‚ŒŒ‹LLLMˆ8 %XÝX[MÌ™^]ˆØ[™Y]KYÜ›Ý\]Y][ÕRS‹ÌLM™œ˜[Y\ËÍLXØ[™Y]\Ë]™\ž[ÜšYÚ[˜[™YÚ\ÝžQÕš[™[™Ø[™QÓ“Ô‘KÛ›Û’QÓ“Ô‘]\™Ù]^XÝÈX]Ú\Üš[Ü˜š\]Y]ÎNL’QÓ“Ô‘KÍNÌ‘Õ\Ý\ÜYˆÍNÌN‹ŒÍÉQÕ\Ý\ÜYQÓ“Ô‘H]™[Û›[Ý]ÚYYÜ›Ý\\ÜÚYÛ™YÚ[›™\œÈ
+ÌŒÜÚ[™ÛQÕ
+KL[œÚYKÍŽ[Ý]ÚYJÝ™\›\
+KÍ›Ø\ÜÚYÛ™YÚ[›™\‹ÌŒ[][QÕˆXÝX[Í[›Û™[\YÜ›Ý\ËÛX^M‹Ù[ÛY]žKÛØØ[[™XÙ\Ù^XÝˆÜÚ]]™\ÍÍMÚ]š]˜[ËÍLÌN[Ý]ÚYKˆ[[XYÙ\^[ÜÝ[š\ÚX›NÈ›Ý›ÛÙ›X™[ÈX][X]XØ[][›ØœÙ\˜X›K›ÝØ]\Ø[˜XÚÚ[™ÙØZ[ˆÜ[š\]Y]˜[Y›ÜÜØ[Ù\YšXØ][Û‹ˆ™XYÛ›MŒÌÍLž]\™\ÜÚ][™^\Ý[™ÌLŽÚPœÝX˜[ØØ][Û‹Û›Ù^˜\™\Ù\™KÙ™X]\™\ËÑÔKˆÝ\œ™[ÛÝ\œÙ\ËÛX™[Ý[ÝXÚYÈ™^YZ\ÜÚ[Ûœ™\ÙX\˜Ú]\Ý^XÚ]\›ÝšYXÛÛ\]][Û‹˜]\[œÚ[[]\›š[™ÒQÓ“Ô‘Z[Ø˜XÚÙÜ›Ý[™ˆÜšYÚ[˜[ŒÕSÈÛÛ\]Yœ™Y^™X[M™š\œÝ[š]Îˆ™X\ÚXš[]USÕULMLMÙ^XÝÜšYÚ[˜[È›ÝMLÙ^XÝ[Y[Ý][›Ý™[ÛÐLÈš[˜[SÕŒØ[Y[ÝÛ™\œ[™[™ËˆX›\ÚYš[ÜŒNš[\Ý™\šYšYY™[[ÝLÙŒNÝ™YLXÎYLË[œ™XÛÜ™™]Ø]Y]ÕSÜ™XÙZ\Ù\\˜][KˆÛØ[›ÝÛÛ\]K‚‚ŒŒ‹LLLMˆ8 %™]š[Ý\ÙÛØ[\›œ›ÙÜ™\ÜÎˆXÝX[ÕRS™Ü›Ý\ÛÛ\]][Û˜]Y]Ùš\œÝM™˜XÝÜšX[[š]È[™ÛÙKÜ™\Ý[È™\šYšYYÚ]X˜Y˜LÌ˜™ˆÝ\œ™[ÜšYÚ[˜[ŒØÛÛ™š\›YY]™KÓSÕŒ™X\ÚX›Z[™™\™[˜ÙK›È™\Ý\ˆÛX[\Ý™^[\™[[Ûˆœ›Û[YX\Ý\™YÝ]ÚYK[Û›RQÓ“Ô‘XÛÛ\]]ÜœÎˆÜZ[ˆÝ™\›\[™ZYÚ›ÜˆØ[™Y]HÜ›Ý\[™ÈÚ][˜Ú[™ÙYM˜Ø\XÚ]KˆÙYYÝÙ\Ý™[XZ[š[™ÛÜšYÚ[˜[[™^™\X]YXYX^[][R[ÕK]ËYÜ›Ý\™[XZ[š[™ØØ[™Y]KÜšYÚ[˜[[™^YXœ™XZÎÈ›È[Õ]™\ÚÛÓ“TËÝÜËÑÕØÛ\ÜÜ[HÜ˜Ø[™Y]H™[[Ý˜[ˆÝ™X[HÛ™K]œËS™Ù[ÛY]žJ›Ó°¬™™X]\™[X]š^
+K™\Ù\™HÜšYÚ[˜[XÚ\Ú[Û‹ÛÝ]]›ÝÛÜ™\ˆY\™Ü›Ý\[Ù[Ø[Ëˆ^XÝØ[YYœ›Þ™[ÛÛ\XÝÙZYÚËÜÚÜ\ÝÌ‹ÛX\›™YXYËÙY˜][Y™JÓ“×ÓPUÒÜ™YÚ\Ý\™YÛØÚÜÎÈÜ›Ý\[™ØØ[˜Ú[™ÙX[X\›™YÝ]]ËÚÜ\ÝËÛY™KYš\œÝYÜ›Ý\Ù]\™\Ý]\Ë^XÚ][›Ý\™X\ÜÛØÚX][Û‹[Û›HÜˆ›Ø˜Xš[]XÛÛœÙ\˜][Û‹ˆ[\ØÛÜ\È™Y›Ü™KÛ™]ÙÜ›Ý\[™ËÛÛ\]Y™Y›Ü™H™Y™\™[˜Ù\È^XÚ]›È™]ÑÔKÛÜ[Z^™\‹Ø˜[šËˆ˜[Y]XXÝX[[YY˜][™Yš^Ý]\ËÛÝ]]È^XÝ[™[\›˜]]™YÜ›Ý\™X]\™KÚ[™^ÛÝ™\˜YÙH™Y›Ü™[][˜ÚÈ]X[YžURS˜ÛÛ\]]ÜˆÛËY^ÜÝ\™H\Ú[™ØXÝX[™Y™\™[˜ÙYÜ›Ý\Ë›Ý]X[][Y]šXËˆÛÜšÚ[™ÙÙ[ÛY]žx¢iSZPˆ\Ü™\Ü8¢iM’ÚPÚ][œ™[XZ[š[™È^\Ý[™Ì“ZP˜]Y]ØÛÛ›Û™\Ù\™NÈ™X]\™]\\ŒŽŽLÌLÌ[˜Ú[™ÙYˆ˜]]™Q[ÜZ\™YÛÝ\œÙ\È[˜Ú[™ÙYÈ›È]\™H˜Z[š[™Ü™XÚ\\›Û[ÝYÚ]Ý][Ý]›ÛÝ]Ë‚‚ŒŒ‹LLLMˆ8 %XÝX[ÍŽL™^]Û™]Ø[ÙÜ›Ý\]Y]™\›ÙXÙ\È]™\ž\š[Ü•RS˜ÛÝ[ÑÕš[™[™ËÒQÓ“Ô‘]\™Ù]ÈÝ™\›\™ZYÚ›ÜœÈÛ›K[Ý]ÚY]Ú[›™\8¡¤ŒŽN[œÚYLL8¡¤MLÌÜÚ]]™\ÝÚ]Ý]ÚY\š]˜[ÍLÌNx¡¤ŒÌŒˆ\È\Û›Ý™]ÛX™[Ü]X[]YØZ[‹ˆXÝX[ŒÍLŒ™^]ÌM\™X[œ˜[Y\ËÌÌÌÎXØ[™Y]\ÈXÜ›ÜÜØ[\ØÛÜ\Îˆ[Y˜][Ý]]ËÜÝ]Y^XÝ[\›˜]]™XØ]\Ø[[œ]™X]\™[ÝÛ™\œÚ\[™›Ø˜Xš[]KÝ\]KÜ]Y\žKØÛ\ÜÜ›ÝÜÈÛÜœ™XÝ\™\ÝÜ™YÛÜšYÚ[˜[Ø[™Y]Z[™XÙ\ËˆY\˜›ÝØ]\ËÜšYÚ[˜[™]ÐÔ[ÝÛ™\ŽLŒH][˜ÚY™Y›Ü™KÜ™YÜ›Ý\Y[påÌ‹Ø[YYœ›Þ™[›[Ù[ÌM˜Ø\XÚ]KÜÚÜ\ÝÌ‹Û›ÑÔKÛ™]ÛÜ[Z^™\ŽÈ™Y™\™[˜Ù\Ù^XÚ][™]ØØ[™Y]\›ÝÜØÚXÚÙY\Ù[\›]]][Û‹ˆ›È“TËÝ™\ÚÛÑÕØÛ\ÜÙš[\ŽÈ[X\›™YXYËÜÚÜ\ÝËÛY™KYš\œÝYÜ›Ý\Ù]\™Z\ÝÜšY\ÈX^XÚ[™ÙKˆÈ›ÝÛZ[X\ÜÛØÚX][Û‹[Û›KØÛÛœÝ[›Ø˜Xš[]Y\ËÙ]\™]˜Z[š[™ÙØZ[‹ˆÜšYÚ[˜[[ÜZ\™YÓ“×ÓPUÒ›ØœÈ[ÝXÚYÈÜ›Ý[™™][[ÛˆÜšYÚ[˜[LŒŒÛÛ™š\›YY]™Kˆ™]ÙÙ[ÛY]žKÜ™\ÜÛÜšÚ[™ÝÚ][œ™[XZ[š[™Ù^\Ý[™Ì“ZPœ™\Ù\˜][Û‹ÙÛØ˜[ŽŽLÌLÌŽÈ›Ô“ÒKÚ[XYÙX˜[šËˆÛØ[XÝ]™K‚‚ŒŒ‹LLLMˆ8 %™]ÙÜ›Ý\[™ÛÜšYÚ[˜[ÝÛ™\NËÜÝ\LÌŒÌÍÌKÜÙ\ÜÚ[ÛŽLŒ]™\šYšYY]™NÈš\œÝ[LŒÈXÝX[XÛÛ\]Y[™œ›Þ™[Œ›Ù™šXÚX[[š]ËˆØ[YYœ›Þ™[›[Ù[Ü›Ý\[™ÛÛ›NˆÕL‹ŒÌMMø¡¤ŒŽŽLŒK]MKŒN¸¡¤‹ŒÌ\ÜÐLMKŒÍÍ¸¡¤ŒMËŽÌ‹QŒLÌŒÌŽx¡¤ŒÌËŒÍNQÌMx¡¤ŒMNK”MÎx¡¤ÌÍ‹“ŒNMŒ¸¡¤ŒMÎMˆ[Ù\ÝÜÚ]]™QÚ]”ÛÜÝ›Ý[šY›Ü›[Y]šXÚ[\›Ý™[Y[Üœ›Ý™[\ØÛÜX™[™Yš]ˆÙY\[™[XZ[š[™Ô“SËÕSËÓSÕŒÛÛ›ÛÎÈÈ›Ý›Û[Ý\\‹]\ÚØÚXÚÜÚ[ÜÛXÞKˆ™YÚ\Ý˜][Û‹Û][˜ÚÛ˜\ÚÝ™]Z[™YÈ™]ÜÛÝ\˜ÙKÜ[[YYÜ›Ý\ØÚXÚÙY\˜Ø[™Y]Hž[ÜšYÚ[˜[ÝÛ™\‹ˆ›ÑÔKÛÜ[Z^™\‹Ù™X]\™\ØYY‚‚ŒŒ‹LLLMˆ8 %ÜšYÚ[˜[LŒXÛÛ\]Y›Ý“SÎØÛÜ\Ëœ™Y^™X[™š\œÝÛÙ™šXÚX[[š]ÎˆÚ[™ÛRÕM‹ŒÉK][LNKŽNIK]™\ž\™\ÜYÙ™šXÚX[Y]šXÈ^XÝ[ÜšYÚ[˜[ˆÈ›Ý[™™\˜[›Ø˜Xš[]KÜÝ]Y\]X[]Hœ›Û][˜Ú[™ÙYY]šXÜËˆÜ›Ý\[™ÜÜÚ]]™QÙ\Û›ÝY]ÛÛœÝ]]X[]\ÚØ™[™Yš]ÈSËÓSÕŒ[™[™È[˜Ú[™ÙYÜšYÚ[˜[ÝÛ™\‹ˆ™\Ù\™YX\›Q™XÙZ\[Û™Û]\™š\œÝÜ™XÙZ\X›\Ú[\[Y[][Û‹Ø]Y]ÙY˜][™Yš^
+Ü›ÝÛÝÛ™\œÚ\›ÛÙ‹Ü™YÚ\Ý˜][Û‹ØXÝX[ÝÛ™\›][˜ÚÙš\œÝÛY]šXÜËˆ›ÑÔKÛÜ[Z^™\‹Û™]Ô“ÒY™X]\™\Ë‚‚ŒŒ‹LLLMˆ8 %™]š[Ý\ÙÛØ[\›œ›ÙÜ™\ÜÎˆÝ™\›\[™ZYÚ›Üš[\[Y[][Û‹ÙY˜][™Yš^
+Ü›ÝØ[YÛ›Y[›ÛÙ‹Ø[ÕRS˜ÛÙ^ÜÝ\™KÙš\œÝ›Ù™šXÚX[[š]ÈX›\ÚY[™™\šYšYYLÙ˜Y˜KˆÝ\œ™[ÜšYÚ[˜[LŒUSÜ[›š[™È[™ŒÓSÕŒ™X\ÚX›[Ù™šXÚX[8¡¤™]™[ËÛÛ™š\›YY]™XžY^\Ý[™Ú[™\ÎÈ›È™\Ý\ˆÜšYÚ[˜[ÍŒŒ›ÛÝÙ\ˆ™\ÜÑ[ŒÍLÌÍÍŒNLœÚÜLL[™™X[L[Ý]NLŽLMXž]\ÈØ]™Yˆ™]\ÙY^\Ý[™ÈÚ\™YXÚXÚÜÚ[œ™Y^™\ˆÚ]^XÚ]˜Z[š[™Ü]Ù^XÝY[š]X[Œ[™[™^YÛÝ\˜ÙRSÎÈ™\Ù\™Z]ÙY˜][Û˜[[˜ÙYŒZ[š]X[^˜][Û˜™Z]š[Ü‹ˆ˜[Y]X[ÌŒX\Ý\œËÐY[KÜØÚY[\‹ØÝ\œÛÜ‹Ô“‘Ü™\Ù[˜ÙH[™XÝX[ÙYY[™^^ÜÝ\™\ÈÛ˜ÙHÛœÚÜLÝ]KˆXXÚ\œ›ÝÜÈÙ[Z[™[[XÚÜÛÝ\˜ÙWÜ›Ý×ÚYÈ[™[Üž]Z\›ÜšYÚ[˜[›ÝÒQÜÙ\\˜][KÈ›Ý[™[Û\‹\ÛÝ\˜ÙRQÈÜˆ[™›]Yœ˜[YXÛÝ[Ëˆ›È˜Z[š[™ØÚ[™ÙKÜ™\Ý\Û™]ÑÔKØ˜[šËØÚXÚÜÚ[ÛÜKÛX[ØØ[\œ›ÛÙˆÚ][™^\Ý[™Ü™\ÜÜ™\Ù\˜][Û‹ÙÛØ˜[ŽŽLÌLÌ‹ˆ˜XÚÚ[™ÙØZ[œ™[XZ[œÝ[œ›Ý™[™›Ü›™]ÜÚÜœ˜[˜Ú‚‚ŒŒ‹LLLMˆ8 %™]ØÛÛ\]YÜ›Ý[™Œ\Y˜XÝÛ›ÝÍ\ÚÜÈš\ÚX›H
+ÓÐÓË[œÙLŒš\Ñ›Û™K™YÓÐÓÙÝ˜[Ý\Ý™YÓÐÓÜ\ÊHÚ[[ÜšYÚ[˜[[[ÝÛ™\œÝ[ØZ][™Ü™[XZ[š[™ØÛY[Ëˆ^\Ý[™Ü\X[œ™Y^™\š\™ÛÙ\ÛÛ‹]\ÚÛÝ]]ÈYÛ›Y^XÚ]K[Ý]
+Y˜][Û[˜Ú[™ÙY
+HÙœ™Y^™XÝ\œ™[ÛÛ\]YÚÛ]\ÚÜÈÚ][˜Ú[™ÙYÙ™šXÚX[Ý[[X\š^™\ˆ[™^XÝÜšYÚ[˜[ÙY™™XÝ]™KÜ›ÝšY\™š[\™YÛÝ[ËˆÈ›ÝÛZ[Y[K[™™\›Z\ÜÚ[™Ý\ÚÜË][˜Ú™]ØÛY[ËÝÜÙ\šXÙ\ÈÜ˜]šX]X[ÙZYÚØ]\Ø[]NˆÜšYÚ[˜[]Y]YLÌ‹ØY\Y\Þ[˜ÜÜÝ\™XÛÝ™\žY^XÝ][Û™Y™™\œËˆ™]ÜÛX[ØØ[\œ™\Ý[ÜÝX˜[ØØ]Y^\Ý[™Ü™\ÜÜ™\Ù\™K›Ø˜[šËÑÔKØÚXÚÜÚ[ÛÜKˆ\È\ØÛÛ\][Û™]šY[˜ÙH›Üœ™\]Z\™YÛÛ›ÛYÜ›Ý[™Y\][Û‹Ù\\˜]Yœ›Û]˜XÚÚ[™ÒÕKÛÜ™[˜\ž\\š]K‚‚ŒŒ‹LLLMˆ8 %XÝX[ÎMÍY^]ÜÚÜL[Ý]NLŽLMXž]\ÎÍLŒÎLÌ”Ì‹ÌMLÎŒY[[[ÛY[Ø[š[š]KÌŒÝ\ËÜØÚY[\‹Ù\ØÚØÝ\œÛÜ™^XÝ“‘ÙšY[ÈØ]™YÚ[š]X[Œ”Ì›X^Y™ŒˆXÝX[ÙYY]Y\Ý[ÛœÓSÕLŽÔ“SÌLÌËÓÕŒLÎNÍÌÝXXÚ\“SÕ›ÝÜÝÚ]Ý]ÛÛÝ\˜ÙRQÛÝ[YÙ\\˜][KŒM\›ÝšYYÛSÕQÎÈš\œÝYYXLLMËÍÌKÌLN[˜ÛY\ÝÚY\›YØ[XXÚ\•RSš[XYÙ\Ë›Ý[\ÝÜžYœ˜[Y\ËÚ[™\[™[˜XÚÜË[ÙÙÙY›ÝÜÙš[š]Kˆ›ÌL™\Ý\Û™]Û˜]]™Z[™™\™[˜ÙHÜœÚÜŒÛÛ™ØÛÛ\][Û‹ˆ^\Ý[™ÙÙ[™\šXÙœ™Y^™\œ\˜[Y]\š^™YÛ›\]Ú[š]X[Ý\ÜÛÝ\˜ÙK[X[šY™\ÝØY\‹ÛZ\ÜÚ[™Ë\ÛÝ\˜ÙRQ[™[ÜžNÈYØXÞYY˜][È™]Z[™YÝ\œ™[™]Ü™X[ÚXÚÜÚ[›ÝšY\Ý\™Ù]Y™YÜ™\ÜÚ[Û‹ˆ›Èœ›ØY™\X]ÛŒÝ]HØØ[‹‚‚ŒŒ‹LLLMˆ8 %ÜšYÚ[˜[LŒXÛÛ\]YSØ[Èœ™Y^™Yš\œÝØ[Ù™šXÚX[[š]ÎˆÜ›Ý\[™ÕULMLMø¡¤ŒLËŽNMËØÐNŒ8¡¤‹ŒŽË\ÜÛØÐMKŒMÎ8¡¤ŒLŒ‹ÛÐLÌŒÌM8¡¤ŒKŒMŒ‹›Ý™[ÛÐLˆ\ÜÛØÚX][Û\Ú[[Ý\˜ÛÛ\Û™[ÙÝÛŽÈ›ÈÞ[]XØÛÛXš[™YØÛÜ™KØØ]YÛÜž\™\^HÜœ›Û[Ý[Û‹ˆÜšYÚ[˜[ŒÓSÕŒ™X\ÚX›K[Û›XÛÛ\]Y[MMËÌŒÍLŒÌŽˆÕMËÌM¸¡¤ŽKŽNQŒM‹ŒMÍ8¡¤ŒLŒLÌQÌŒŒ8¡¤ŒÌŽL‹”Œø¡¤M“ŒŽŒÌø¡¤ŒÌLMËˆœ™\ÚÙ™šXÚX[Ü[[YKÙœ˜[YKØØ[™Y]KÚ\ÛÛ][Û‹Ùš[˜[Ý]HÚXÚÜÈ™]Z[›ÜšYÚ[˜[[ÛÝ\˜ÙXÚXÚÜÎÈœ™Y^™[Û™XÛÛ\]Y[š]ˆÛÛXš[™Y™X\ÚX›K][Y[Ý]Ý[[›š[™ÎÈÛÛ\ÙH™[XZ[œÙ˜Z[\™KÛ›Û™]ÜÛXÞXYÜ[Û‹‚‚ŒŒ‹LLLMˆ8 %Ü›Ý[™\X[œ™Y^™\˜XÝX[^]ÛÜšYÚ[˜[]\ÚÜÎLLL›ÝÜËØY\YŒÚ^ÌNNœ›ÝÜË[ÜšYÚ[˜[YY™™XÝ]™KÜ›ÝšY\™š[\™YˆÛÛ\]YÛÛ[[Û‘Œ[R[ÕI[ÜšYø¡¤˜Y\YÓÐÓÍËŽMÎx¡¤ËMÌLË[œÙM‹Íx¡¤‹ŒMš\Ñ›Û™LŽKŒ8¡¤ŒËŽÌ™YÓÐÓÙÝ˜[LKÌÎ8¡¤ŽKŒÍÌ\ÝLKŒLNLø¡¤ŽLŒMK™YÓÐÓÜ\ÎŒÍÍŒø¡¤ŽKM‹ˆ[Ú^™YØ]]™NÈ™\Ù\™]ÚÛ[Ù™šXÚX[™\Ý[ÛÝ[Ë›ÈÜ›Ý[™Œ›Û[Ý[Û‹ˆ[™[™Ó’TËÔ™YÓÐÓËÔ™YÓÐÓÙÈ›Ý[™™\™[NÈ]Y]YLÌ›ÜšYÚ[˜[œØY\Y\Þ[˜ØY\ÕQ\™XÛÝ™\ž[YX[œÛ›Ý^Û\Ú]™]ÙZYÚØ]\Ø[]KØš]Ú\Ù\Z\™YÛZ[Kˆ›È˜XÚÚ[™ÙØZ[š[™™\œ™Yˆ^\Ý[™ØÝ\˜]Ü‹K[Ý]Û›\\˜[Y]\š^˜][Ûˆ™\Ù\™\ÛÛ\ÚÜÛ˜\ÚÝ[™[ÛÝ\˜Ù\Ë›È™]Û[Ù[ÛY[ÈÜœÙ\šXÙ\ÝÜËˆ[™]Ü›ÛÙœÝÚ][˜[™XY\™\Ù\™YØØ[\œ™\ÜËÙÛØ˜[ŽŽLÌLÌŽÈ›ÑÔKÛÜ[Z^™\‹Ø˜[šËØÚXÚÜÚ[ÛÜKˆÛØ[XÝ]™K‚‚ŒŒ‹LLLMˆ8 %™]š[Ý\ÙÛØ[\›œ›ÙÜ™\ÜÎˆXÝX[ÚÜL[ÍL“KÐY[KØÝ\œÛÜ‹ÜÛÝ\˜ÙY^ÜÝ\™]˜[Y][Û‹š\œÝÜ›Ý\[™ØÛÛ›ÛËÓSÕŒ™X\ÚX›][š][™Ú^ÚÛQÜ›Ý[™™][[Û\ÚÜÈX›\ÚY[™™\šYšYYÎMŒ˜‹ˆÝ\œ™[LŒKÍŒÛÜšYÚ[˜[[™\ØÛÛ™š\›YY]™KÙš[˜[SÕŒ\›\Ëˆ™^ÛÛ\]H]Y\Ý[Û‹XÛÛ^™]\ÙHÜÜ[š]H[ˆXÝX[[NLÜÙYYÙÛØ˜[M‹Ù›Ý\œ˜[šÈ[™^\ÚY™›Kˆ™XY˜]]™TÑ•ÜÚ\™Yˆ^\Ý[™ÈÚ\™K\™Yš^Ý\ÜÈÛ™QÔH^\XÚÙYœ˜[˜ÚX\ÚÜÎÈÜ›Ý\›ÜØ\™Ù\Û›Ý\ÙH][[[Ù[[WÚ[œ]Ë[™]Ù[ŒËHÑˆ™XÝ\œ™[Ý]H™YYÈœ˜[˜ÚX]Ø\™H[™[™ËˆØ[››Ý\Ý[˜X›Y›YÈÜœ™]\ÙH[™ÝXYÙXXÝ]˜][ÛœØXÜ›ÜÜÛÜ[Z^™\\]\Ëˆ]Y][ÜšYÚ[˜[ÛÝ\˜Ù\È\Ú[™Û˜]]™H\‹\›ÝÈ™[™\š[™ÈÚY[YžZY[XØ[Ù\šX[^™YÝ]JÛYYX\™XÚ\\ÎÈ™]\ÙX[™XY]˜[Y]Y[Ì›[™ÝÈ[™˜]]™\[—ÜÝ\ÈXÙ[Y[›ÓS][œÛÜ‹Û[Ù[Ú[™™\™[˜ÙKÑÔKˆÛÛ\]HØ[YYÛØ˜[Ý\[™Ø[Y\˜[šÈÛË[ØØÝ\œ™[˜Ù\È\ÛÜ[Z\ÝXÙ[\›ÝÝÚÙ[œØ]š[™Ý\\˜›Ý[™›ÜXÛÛœÙ\˜]]™Y^XÝ[Y]Y]HØXÚZÙ^Kˆ\ØÚ™\X]YÛÛ^È[Û™H\™[›Ý]˜Z[X›XXÜ›ÜÜØÚ[™Ú[™ÝÙZYÚÎÈ›ÝÙ[™\˜[›Ý[™Ý™\˜[ÜÜÚX›\^[Y\]Z]˜[[˜Ù\ÈÜ˜XÝX[›ÝYÚ]ˆ[›ÝÜËÙ˜[Z[Yš[\œËÛÜ™\‹ÜÙYYÈ[˜Ú[™ÙYˆ\œÚ\ÝÛ›x¢iLŽÚPœØØ[\œ™\Üœ›ÛY^\Ý[™Ù[ÛÝ\˜ÙKÜ™\Ü™\Ù\˜][Û‹›È˜]]™H™X]\™KØXÝ]˜][Ûˆ˜[šÈÜˆ™]ÛÝ™\˜[ØXÚX[ØØ][Û‹ˆ\È]Y]XÚY\ÝÚ]\ˆH]\™H^XÝœ˜[˜Ú[™È[\[Y[][ÛˆY\š]Èš[Üš]H›Ü˜Ý\œ™[™XÚ\NÈÛ›Ý™]\™Ù][›š[™Ý˜Z[š[™Ë‚‚ŒŒ‹LLLMˆ8 %›ÝÜšYÚ[˜[Ô\ÝYY\ÎLŒKÍŒØXÝX[^]Ø[XÛÜÙY[™œ™\Ú™XÙZ\ÌL
+ÌŒ[š]ËˆÜ›Ý\[™ÓSÕŒÕMËÌM¸¡¤ËŒLËQŒM‹ŒMÍ8¡¤KŒÌ‹QÌŒŒ8¡¤ŒNNL‹”Œø¡¤ŒÍK“ŒŽŒÌø¡¤ŒŽÌÍLNÈ“×ÓPUÒ›ÝSÕŒÕNKÎMŒ‹ÒQŒLLŒŒÌKÒQÌÍËÑ”LLËÑ“ŒMN™\œÝ\ÛÜšYÍËÌM‹Í‹ŒMÍÌŒŒÍŒËÌŽŒÌËˆÙY\[™YØ]]™XÜ›ÜÜÜØÛÜ\™\Ý[Ë™Z]\˜YÜYˆY˜][[Ù[ÜÛXÚY\È[˜Ú[™ÙY‚‚ŒŒ‹LLLMˆ8 %™^Ú\™YXÛÜ™H\Ý\Ú\Èœ›ÛXÛÛ\]YØ[›ÛšXØ[ÛÛ›ÛÈ[™XÝX[ÛÙNˆœ›Þ™[[˜Z[™YØ[›ÛšXØ[\ØÛÜ™HÙY\ÓSÕ^XÝSÜ\ÚXØ[ØÐLÌËŒÍKÐ\ÜÛØÐLÍKŒÍÈœÛÜšYÎŒÍKŒMÎ]Û\ÜÎKŒÍÝœÌÌŒÌM[™“SÒÕL‹ŒKÌLKÍLÝœÍ‹ŒKÌNKŽ‹ˆ^\Ý[™ØØ[›ÛšXØ[›Ý]\ÜÙ[X[XÚXYœ›ÛXØ[›ÛšXØ[Ø[™Y]]™XÝÜœÎÈXÝX[ÜXÈÛ›Y[\œÛY[X™\œÚ\]KˆYÜZ[ˆÙXÛÛ™\ÜÈÙHÐSQYœ›Þ™[•˜[œÙ›Ü›Y\‹Ý\ÚËÝ^ÜÙ[X[XÝÙZYÚÈ›ÜœÙ[X[XÜ™XYÝ]ÛÛ™][Û™YÛ˜XÝX[\ÚËÜ]Y\žNÈ\ÚXØ[X]ÚÝ\]KÜ™[XXš[]KÛY™H™[XZ[˜Ø[›ÛšXØ[ˆÛ™ZY[][Y[[ÜžH[™Û™XÛÛ[[Û˜ÚXÚÜÚ[›ÑÕÝ]H™\Z\‹Û™]Ü\˜[\ËÝ˜Z[š[™ËˆÛšY[XØ[˜]]™Z[œ]È˜[Y]\\ÏOXØ[›ÛšXØ[Ù[X[XÏO[ÜšYÚ[˜[]Y\žKXÛÝ\YSÕ[Ý]]ÏO[ÜšYÚ[˜[È[ŒXXÝX[RS˜ÛÛ^Ü›Ý\Ü\Ð˜\Ù[ØœÙ\˜][ÛœËÙXÛ\™Y]Y\ž]˜\šX[Ëˆ[ˆ™Y›Ü™KØØ[›ÛšXØ[][˜Z[™YÛ™]Ý\ÚË\™XYÝ][Yš^YØÛÜ\ËÛÛØ\›\È^XÚ]ÛÛ\]Y™Y™\™[˜Ù\Ë›È\‹]\ÚØÚXÚÜÚ[Ù[XÝ[Û‹ˆ›Ý™YXÝ[™ØÛÛXš[™YUYœ›Û[ÛÛÛ\Û™[Îˆ™]Ý˜Z™XÝÜžKÛÙ™šXÚX[Y]šXÜÈ™\]Z\™Yˆ^\Ý[™Ù[ÜZ\™Y˜]]™H˜Z[š[™Ý[˜Ú[™ÙYˆÛ›\ÛX[ØØ[\œ›ÛÙœËÛ[Ù[˜\šX[›YÈœ›Û\Ø[Y]ÙZYÚË›È˜[šËÑÔKÙ™X]\™X[ØØ][ÛŽÈÛØ˜[ŽŽLÌLÌˆ™]Z[™YˆØ]YÛÜž\Ú[™Û]ÛˆYXHY™\œ™YˆÜšYÚ[˜[œ˜[YSÕ˜ÛÝ\œÙH[˜ÛY\ØØ]\Ø[XXÚ\š\ÝÜžHÚ\™X\Û™]Ð˜\ÙLMÍ\Ý\[Y[\ÛŒKÛLÛÈÈ›ÝÛZ[X˜\Ù[[™X[™XY]˜Z[™Y^Û\Ú]™[[ÛˆÚ[™Û]Û˜ÛÛ^‚‚ŒŒ‹LLLMˆ8 %XÝX[LŒÍ™^]ØÛÛ^]Y][ÛÝ\˜Ù\ÍNLÜ›ÝÜËÛ˜]]™X]YÛY[][Û‹ÜÙYYÛ˜]]™LMžX[[™ËÝZ[KKK^XÝ\™\Ù\™YÎMÍMMœÙ\šX[^™YÝ]JÛYYXHÛÛ^ËÌMŒYYX[\ÝËˆØ[YYÛØ˜[\]LML™\X]YÛÛ^ËÌML^˜\›ÝÜÎˆ[\›ÝÝÚÙ[œØ]š[™Ý\\ŒŽMLMÍ‹ÍMŒÎMLÍLŒLŒŒ‰NÈØ[YK\˜[šÌŒËÌŒËÎLMÏLŒŽLÌÌÉKˆ\ÙXÛÛœÙ\˜]]™Y^XÝ[Y]Y]KZÙ^H›Ý[™È\™[›ÝXÝX[ÜYYØ[^[Y\]Z]˜[[˜ÙX›Ý[™ÎÈYYXK[Û›XÛÛØØÝ\œ™[˜Ù\ÈÛ‰ÝYX\Ý\™]š\Ú[Û˜ÛÜÝˆ›È›ÜØ\™ÑÔKÛÜ[Z^™\‹Ø˜[šËˆÝ\œ™[˜[™Û\ÚY™›[Ù™™\œÛ]H^XÝÚ][‹\Ý\œ˜[˜Ú™]\ÙNÈÈ“ÕÝÚ]ÚÙ™šXÚX[^Ú\™Y™Yš^[žHÜœ™[Ü™\˜Ý\œ™[˜Z[š[™Ëˆ]\™YÜ›Ý\Y™XÚ\JÛ][[[Ù[ÑÑ˜œ˜[˜ÚÝ]Z[\[Y[][ÛˆÛÝ[™YYÙ\\˜]]˜[Y][Û‹‚‚ŒŒ‹LLLMˆ8 %XÝX[ÎMÍÙ^]Û™]Ý\ÚØÛÛ™][Û™Y™XYÝ]Ü™X[Ü›Ý\ÊŒ]Ú]\ÝÜžJKÍœÜXÚ[\™[[ÛœËÌMÌŒÎÝ]][[Y[Îˆ\ÏOXØ[›ÛšXØ[[™]Y\žZ[˜\šX[ÈØ]YÛÜžKÛY[X™\œÚ\O[ÜšYÚ[˜[]Y\žXÛÝ\YÛšY[XØ[[œ]ÎÈSÕ[XYÙ^XÝÜšYÚ[˜[ŒÌÍXØ[›ÛšXØ[Ù[X[XÚ[\™[[ÛœØÚ[™ÙYˆÙ\\˜]XXÝX[ÙZYÚÛÛ\\š\ÛÛ˜[›ÛÝ]WÝ[œÛÜœËÌLMLLY[[Y[Èš]Y^XÝXÜ›ÜÜÛÛØØ[›ÛšXØ[Û™]ÎÈ›È™]Ü\˜[][œÛÜœËØ[YXØ[›ÛšXØ[Y™™\‹ˆ›Ü]X[]XÛZ[Yœ›Û]\Ù][œÛÜ˜ÚXÚÜËˆ™]ÐÔ[ÝÛ™\LNŒÛ][˜ÚY[KÌØ\›\ÈY\œ›ÛÙœËLÛÛ\]Y™Y™\™[˜Ù\ÊÍXXÝX[˜Z™XÝÜšY\ËÜšYÚ[˜[[ØÛÜ\ËÌM™Ü›Ý\ËÜÚÜ\ÝÌ‹ÕÛØÚÜËÚXYËÝ™\ÚÛËÜØÛÜ™\œÈ[˜Ú[™ÙYˆÚ[™Û[Y[[ÜžH[™Ú[™ÛXÛÛ[[Ûœ\˜[\Ù]XÜ›ÜÜØ[\ÚÜÎÈÙ[X[XØœ˜[˜ÚXÝX[\ÚËÜ]Y\žHÛÛ^Û›KˆÜšYÚ[˜[[ÜZ\™Y˜]]™H˜Z[š[™Ý[ÝXÚY›ÈÔKÛ™]Ù™X]\™X˜[šÎÈØØ[\œ›ÛÙœËÛ[Ù[˜\šX[Ú][™^\Ý[™Ü™\Ù\™\ËÛØ˜[ŽŽLÌLÌ‹ˆÛØ[XÝ]™NÈY˜][È™[XZ[›ÜšYÚ[˜[ÛÝ\YÛ›Û˜Ø[›ÛšXØ[‚‚ŒŒ‹LLLMˆ8 %™]ÍLNŒØXÝX[š\œÝËØ[[Ù™šXÚX[[š]ØÛÛ\]Y[™œ›Þ™[‹ˆÕIHÜšYÚ[˜[ØØ[›ÛšXØ[Û™]Ý\ÚÜ™XYÝ]‹ŒÌMMËÌ‹ŒÌMMËÌ‹ŒÌMMËÚ[™ÛT“SÍ‹ŒËÌ‹ŒLÌ‹ŒNK][LNKŽNKÌLKÍLÌ‹ÌLKŽLMŽKˆ™]ÜÚ[™ÛQ”ËÑ“ŒMÈœØØ[›ÛšXØ[ÌMËÛÜšYÌÌŒËÌLÎÈ™]Û][Q”MŒÑ“ŒMÌœÌNM‹ÌMÌËÛÜšYÍŒNKÌLMˆ™\ÝÜ™YØ[Y]ÙZYÚÜ]Y\žKXÛÛ™][Û™YÙ[X[XÜÜ™YXÙ\Ñ”ÛYÚX]Ù\Û›Ý™\Z\˜Ø[›ÛšXØ[\ÚXØ[Z\ÜÙ\ËØ\ÜÛØÚX][ÛŽÈ›ÈY˜][›Û[Ý[ÛˆÜˆÛZ[[™]Ý[šYšYY[\›Ý™[Y[ˆ™[XZ[š[™ÕSËÓSÕŒÜšYÚ[˜[Ø[Y[ÝÛ™\‹›È™\ÚÛÜÙYYÙœ˜[YXÚ[™Ù\ÈÜœÞ[]XØÛÛ\Û™[Z^ˆ™^X\›š[™ÝÛÜšÛ]\ÝY™\ÜÜ\ÚXØ[˜[œÙ™\‹›Ý\ÜÝ[Y\™XYÝ][Û™Yš^\Ø[\ÚÜËˆX›\ÚÛÙKÜ[‹Ý[œÛÜŠÜ\˜[Y]\œ›ÛÙœËÛ][˜ÚÙš\œÝÛY]šXÜËØ[\™]š[Ý\ØÛÛ›ÛÛÜÝ\™\ËÙ[NZØÛÛ^]Y]ˆ[[›š[™Û˜]]™QÔZ›ØœÝ[ÝXÚY‚‚ŒŒ‹LLLMˆ8 %™]š[Ý\ÙÛØ[\›œ›ÙÜ™\ÜÎˆ[NZØÛÛ^]Y][™›Ý\ØÛÜXÛÛ›ÛÛÜÝ\™\ËÛ™]Ý\ÚÜ™XYÝ][\[Y[][ÛŠÙ^XÝ[œÛÜœ›ÛÙ‹Ùš\œÝ[Y]šXÜÈX›\ÚY™\šYšYYYNÎKˆÝ\œ™[LNŒÕSÛÙ™šXÚX[8¡¤™]™[ÈÛÛ™š\›YY]™NÈÜšYÚ[˜[NLœÚÜMMLÍÍŒŒ[MLÙÜÙš[š]Kˆ™XY™\\™YÛ›ÝÛ˜š\“SÌŽ˜ÛÛ\Û™[[™[ÛÝ\˜ÙXÝ\œšXÝ[[Nˆ™]ÌN›ÛÝ]“SÈÛÛ\Û™[Ù[XÝYY[X™\œÚ\Ü™\Ù[˜Ù[Û›K›Ý\ÙLMŽY[]JÌMM\ÜÚYÛ™YÜš]H›ÝÜËˆ\È\ØÝ\œ™[XÝ\œšXÝ[[XÛÝ™\˜YÙK›Ý›ÛÙ››ÙX\›Y\”“SÕ\ÚXØ[˜Z[š[™ÈÜ]Ø\[Û™XØ]\Ù\Ù˜Z[\™K‚‚ŒŒ‹LLLMˆ8 %™\\™HX]ÚY˜]]™H[œ]ÛÛ\Û™[
+›È™]ÑÔ]˜Z[š[™ÊNˆ™]\ÙX[Ž˜Ù\YšYYÛ›ÝÛ‹Xš\\ÚXØ[]Y\Ý[ÛœËÝ\™Ù]È[™Z\˜ÛÜœ™\ÜÛ™[™ÛÜšYÚ[˜[]Y\žK[Y[X™\œÚ\]Y\Ý[Û‹Ý\™Ù]œ›Û\Ø[YXØ[™Y]Kˆ›Ý\›\ÈØ[Y[ÜšYÚ[˜[XÝX[XÝÜœÝ]KÛYYXNÈ\ÜÚYÛ™Y]Üš]HÛÛ›ÛÙ]ÈØ[YX[™XYK\Ù[XÝYZY[]HÝ]H\Ü\ÚXØ[›ÝÕ\™\Z\™Y\ÝÜžKˆÙY\ÜšYÚ[˜[›ÝÛÜ™\‹ÜZ\’QËÛÝ\˜Ù\]Y\Ý[Ûœ›Ý™[˜[˜ÙHÙ\\˜]Kˆ˜]]™H›ÝØ]YÛY[][ÛˆÚY™›\ÙY™™\™[[X™\›Ù›Ü[ÛœØ™Y›Ü™XÚÛÜÚ[™Ò”ÓÓœÝ[KÛÈØ[YHÙYYØ[›Ý\Ú\ÙYÚ]™HY™™\™[™Yš^›Ü›X]Ëˆ^XÚ]™]ÜZ\™YÛÛ\Û™[š^\Ø›ÝÝ]\ÈÈÛÝ\˜ÙKY\]Z]˜[[™]R”ÓÓœÝš[™ÎÈÙY\˜]]™H\‹\]Y\Ý[Û›Ü[Ûœ\›]]][Û‹[ˆ™\šYžX[Ž›˜]]™H™[™\™YÝ]\™Yš^\È\]X[ˆ\È\ÙXÛ\™Y\š]˜]]™Z[œ]›Ü›X]›Ý[˜Ú[™ÙYÛ˜Z[š[™Ü™XÚ\KˆÜšYÚ[˜[[œ]™Y\ËÜ]Y\Ý[ÛœËÛYYXKÛX™[È™]Z[™Y[šÛ›ÝÛ˜š\ÛZ\ÜÚ[™Ë[X]Ú›Ý[™[Y™YØ]]™Kˆ[˜›ÝÛÛ\]LŽ‹\›ÝÈ˜]]™SSPÔ\[œÈ™\›ËY›Ü™Y›Ü™Y]\™]˜Z[š[™Ü™XÚ\NÈ›ÛÜ[Z^™\ˆ][˜ÚYÜ]Y]YYžXÛÛ\Û™[ˆ™]ÍZPœØØ[\‹ÙÜ›Ý\Y]Y]\™\Ù\˜][Ûˆ˜Z\Ù\ÌŽŽLÌLÌ¸¡¤ŒŽÌÌMŒÌŽÍMMŒÈ›Ô“ÒKÚ[XYÙKØXÝ]˜][Û˜˜[šË›ÈÝ\œ™[[ÜZ\™YÛÝ\œÙHY]ËˆÛÝ\˜ÙLN›ÛÝ]NM\ÚXØ[œ˜[Y\ËÎMÍÙš[\™YYYXNÈ[˜ÚÜ˜YÙH\Û›ÝØØÛ\Ú[Û™Ø\‚‚ŒŒ‹LLLMˆ8 %XÝX[ÎÙ^]Û™]ÜZ\™Y˜]]™XÛÛ\Û™[ŽœZ\œËÌŒÍÜ›Ý\È™\\™YÈÜšYÚ[˜[˜]]™H›ÝÜÝ[]ÛÝ[Y™™\ŽNZ\œÝ[™\\Ø[Y\ÙYYY[Ü[Û‹XÛÝ[Y\[™[“‘Ëˆš^YÛÝ\˜ÙKY\]Z]˜[[™]\Ýš[™ÜÈ[[Z[˜]X[™[™\™YÝ]\™Yš^Y™™\™[˜Ù\ÈÚ[[ÜšYÚ[˜[]Y\Ý[Û‹Ý\™Ù]ÛYYXKÒ”ÓÓ™YKÛÜ™\ˆ›Ý™[˜[˜ÙY^XÝˆ\ÚXØ[MŽY[]JÌMM\ÜÚYÛ™YÜš]JN[›ËÍÌÞY\ÊKÙ[X[XÌŒŒÍÞY\ËÍ[›Ëˆ›Ý[Ž›˜]]™SSPÔ\[œÞ™\›ËY›Üˆ\ÚXØ[X^NM‹ÝÚÙ[œÌMMŒÎMLÙ[X[XÛX^MÌŒËÝÚÙ[œÌMLŒŒMÍ›Ù›ÜØ\™ÛÜ[Z^™\‹ÑÔKˆÝ[ÛÛ\Û™[MMMNXž]\Ø™Y›Ü™XÛÝ™\˜YÙ\›ÛÙZPŽÈ™]ÙÛØ˜[ŽÌÌMŒÌˆÛÝ\˜ÙY[Ý\œšXÝ[[T“SÎMÌLL›Y[X™\œÚ\
+ÌÍÌ\™\Ù[˜ÙHÛ›H
+[›™Y[™[Üž[›ÝXÝX[ÛÛœÝ[YYÛÝ[ÊNÈ›Û™[ÙŒŽ›™]Ü\ÚXØ[›ÝÜÈÚ[[Z[œÙ\Y‚‚ŒŒ‹LLLMˆ8 %ÜšYÚ[˜[LNŒØXÝX[^]Ø[M[™]Ü™XYÝ]Ù™šXÚX[[š]Ùœ›Þ™[‹ˆSÕU[ÜšYÚ[˜[MLMËØØ[›ÛšXØ[‹ŒLKÛ™]ÌÌŽNÈ™]ÓØÐLÌËŒÍKÐ\ÜÛØÐLÍKŒÍÝ[˜Ú[™ÙYØ[›ÛšXØ[ÛÐNKŒÍø¡¤ŒŒËÍÈÝ[™[ÝÛÜšYÚ[˜[ÌŒÌMÈ˜\ÙUULÌKŽLK›Ý™[ULŽŒÍØ]›Ý™[ÛÐL
+™YQÕÛ\ÜÙ\ËÛÛ™S›Ý™[Y[\‹Í[››Ý][Û™œ˜[Y\ÊKˆ›Ý[SÜ\š]HÜ“›Ý™[™XÛÙÛš][Û˜ÛZ[KˆSÕŒ[Y]šXÜÈ^XÝ[ÜšYÚ[˜[ÕMËÌM‹ÒQŒM‹ŒMÍÈ“SÜÚ[™ÛL‹ŒNKÛ][LLKŽLMŽHÝ[™[ÝÛÜšYÚ[˜[‹ŒËÌNKŽNKˆ›ÈY˜][›Û[Ý[ÛˆÜœ\‹]\ÚÛZ^ˆÜ™[˜\žLÝ\ÚÙÛØ[[›Y]‚‚ŒŒ‹LLLMˆ8 %YØXÞ[ÜšYÚ[˜[[™\ÌMŒ‹ÍŒŒŽÛÛ™š\›YY]™NÈÛ˜]]™USÛ›ÝÛ\Ýœ˜[YLLLÌ‹™Yœ™\ÚYÛÛ\]Y[Ô“SÙš\œÝØ[™Ý\Y]ÕSËˆXÝX[ÍLZ\ÝÜžK\™Yœ™\ÚÝYÙHY][Û˜[ŒÌXXÚœ›Û\Ø[YMŒ”Ìš[š]X[Ø[Y\\œÝ\˜[Z[KÝ\ÚÜËÍ\ÝÜž\›ÝÜØÚ[™ÙY›ÝÚÙ[‹Ñ“ÔX]ÚYˆÛLËŒLÍx¡¤œ™Yœ™\ÚYM‹LLˆœØ™Y›Ü™NÌÌÈÚ[™ÛT“SÌËŒÌMø¡¤Œ‹ŽÍÎHœØ™Y›Ü™L‹LŒŽÈ][M‹Žx¡¤ËLŒˆœØ™Y›Ü™M‹Íˆœ™Y^™XÛÛ\]Y™Y›Ü™KÛÛÜ™Yœ™\ÚYš\œÝÝÚÛ][š]ÈÚ]ÜšYÚ[˜[ÝÛ™\‹ÛÙ™šXÚX[Ü[[YKÜÛÝ\˜ÙYÙ[ÛY]žKÝšY[ËÜ˜]ÛÙ™šXÚX[Z[œ]ÚXÚÜÎÈ›È™\ØÛÜ™KÛ™]Û˜]]™Y›ÜØ\™›È[SØÛÛ˜Û\Ú[Û‹ˆ™]ÌSZP›˜]]™Z\ÝÜž\ØØ[\‹Ü™YXÝ[Û‹\™\Ü™\Ù\™H˜Z\Ù\ÌŽÌÌMŒÌ8¡¤ŒŽÍÌMŒŽÍMMŒÈÜšYÚ[˜[ÛÜšÙ\œËÜÙ\šXÙ\È[ÝXÚYˆÙY\X]ÚY™YØ]]™HÚ[™ÛT“SÈÝ]ÛÛY]š\ÚX›K‚‚ŒŒ‹LLLMˆ8 %XÝX[ŒMY^]œ™Y^™\È[H˜]]™H\ÝÜžHš\œÝÈ[š]È[™Z\ˆ^XÝÛÛ\™\ÜÙY˜]È™YXÝ[ÛœËÛÜšYÚ[˜[Ù™šXÚX[ØÛÜ™\ÎÍÌÍL˜ž]\ÈÚ][ˆLSZPˆ™\Ù\™KˆXÝX[ŒÌMÌ^]›Ý™\ÈØ[›ÛšXØ[™\œÝ\È\ÚË\™XYÝ]\ÚXØ[˜Z™XÝÜšY\ÈXÜ›ÜÜÈ[Lœ˜[Y\ËÌŽÍÍØ[™Y]\ËÌÌÌLŒÙ]™[È\Èš[˜[\ÚXØ[Y[[ÜšY\È^XÝÈÙ[X[XÈX™[ËØÛÝ[ÈÛ›H^ÛYYˆ™\ÝÜš[™È\ÚÈÙ[X[XÜÈ[Û™H˜Z[ÈÈ™XÛÝ™\ˆ“SÕ\ÚXØ[ÛÝ™\˜YÙKˆ™Z]\ˆÝYHÚ[™Ù\ÈHY˜][[Ù[‚‚ŒŒ‹LLLMˆ8 %™]š[Ý\È\Ù\‹\]Y\Ý[Ûˆ\›ˆÛ›H^Z[™YØÛÜH[™ØœÙ\™YÙÜÎÈ›È™\ÙX\˜Ú\Ý]HÚ[™ÙKˆ™\Ý[YHÛÛ˜Ü™]HÛÜšÎˆÜšYÚ[˜[MŒˆ›ÝÈXÝX[^]ÒTÕÔ–WÔ‘Q”‘TÒÕÓÔ’ÑT—ÐSÔ‘QÒTÕT‘QÕS’U×ÕSQUQˆÛZ\ÝÜžHSÈÛÛ\]YULKŒMŒH™\œÝ\È˜]]™MŒ™Y›Ü™LËÍ›Ý™[ÛÐLÈ™Yœ™\ÚYŒŒŽÛÛ™š\›YY]™H]œ˜[YNˆÜšYÚ[˜[NL‹ÍÍŒŒÛÛ™š\›YY]™KÚÜNMLÍÎ[™[ÍLÍØœÙ\™Y›Ý™]È[Y\šXÈÚXÚÜÚ[Ø]\Ëˆœ™Y^™HH™]ÛHÛÛ\]HÛSÈ[š]Ú]ÛÝ\˜ÙKÙXÛÙYYœ˜[YKÑÕ\ÛÛ][Ûˆ[™^XÝÙ™šXÚX[™YXÝ[Ûˆ˜[œÜÜÚXÚÜËÚ][ˆH^\Ý[™ÈYÙÜ™YØ]LSZPˆ\ÝÜžK\™\Ü™\Ù\˜][ÛˆYˆ]š]ÎÈ›È™\ØÛÜš[™ÈÜˆÔKˆX›\ÚZ\™YZ[œ]™XZ[ÛÙKÜ›ÛÙœË[H™XYÝ]ÛÜÝ\™KÛÛ\]H\ÚXØ[\›ÛÝ]›ÛÙˆ[™˜]]™H\ÝÜžH™\Ý[ËˆÝ\œ™[ÛÝ\œÙ\È[™ÜšYÚ[˜[ÛÜšÙ\œÈ[ÝXÚYÈÜ™[˜\žH™YK]\ÚÈÛØ[™[XZ[œÈ[›Y]‚‚ŒŒ‹LLLMˆ8 %XÝX[NMÎL^]ÛÛSÈ˜]]™MÛÝ\˜ÙJÙÙ[ÛY]žJÙXÛÙYšY[ÊÑÕ\ÛÛ][Ûˆ™\šYšYY^XÝ˜]È[™Ù™šXÚX[”ÓÓˆ˜XÚÙ\ˆ[œ]È™XÛÛœÝXÝYœ›ÛH]™\žHÝ]][˜ÛY[™È[šÛ›ÝÛ‹XØ]YÛÜžHLKˆÜšYÚ[˜[ULËÍ8¡¤ŒKŒMŒKØÐLŒKMÌø¡¤ŒŒËŽMKÐ\ÜÛØÐL‹ŽLÍ¸¡¤Œ‹ŽNMÌ‹ÐÛÐMNŽM¸¡¤LŒ‹›Ý™[ÛÐLˆ[LLL›Ù™šXÚX[™YXÝ[ÛœÈ™\Ù\™YÈ›È™\ØÛÜš[™ËÚ[™™\™[˜ÙKÑÔKˆš\œÝÈ\ÈÛUSÈ\Y˜XÝÈYÙÜ™YØ]NÍMÎM˜ž]\Ï^\Ý[™ÌSZPŽÈÛØ˜[ŽÍÌMŒˆ[˜Ú[™ÙYˆ™Yœ™\ÚYSÈÝ[ÜšYÚ[˜[ŒŒŽ]™K›È[™™\œ™YØÛÜ™KˆØœÙ\™YÍLÍ[™ÚÜNMLÍÎ^XÝ›ÝÜÈœ›Þ™[ˆ›Üˆš[Üˆ\Ù\ˆØÛÜH[œÝÙ\ŽÈ[Y\šXÈØ]\È™[XZ[ŒŒÌLÛ™Ì]ØœÙ\˜][Û‹‚‚ŒŒ‹LLLMˆ8 %X›XØ][ÛLØÙMYY™\šYšYYLÙš[\ËÝ™YY™ŒLMŒÈ[˜ÛY[™ÈÛÛ\]H™XYÝ]ØÛÛ›Û›ÛÙœËÛ˜]]™H™YXÝ[ÛœÈ[™Z\™YŽœ™XZ[[œ]Ë›ÈÙZYÚËØ˜[šÜËÛ]™HÜ›Ý[™ÝÛ™\‹ˆ™^XÝX[X\›š[™È™\™\]Z\Ú]NˆÛÛœÝXÝÛÈÛÛ\]L™YK]\ÚÈÛÝ\œÙ\È\Ú[™È[ÛSÕÎÕˆ\È\ÝLLNÛ“SÕ›ÝÜÈ[™[ŽœZ\™Y]Y\Ý[ÛœËˆØ[YLŒLLNÛÛ[[Ûˆ›ÝÜËÛÜ™\‹ÒQÈ[™Ø[YHZ\™Y\ÚXØ[Ý]\ËÛYYXH]XÝX[˜]]™HÛØ˜[[™XÙ\ÎÈÛ›H™YÚ\Ý\™Y]Y\Ý[Û‹Ý\™Ù]˜[Z[Y\ÈY™™\‹ˆ›Ý\ÙHØ[YH]\™H˜]]™MŒ”Ìˆ[š]X[^˜][Û‹ÙYYÛ˜]]™YÛØ˜[Ú[™^ÚY™›KŒ[XÛÝ\œÙH\]\È\ˆ\›HYˆÙ\\˜][H][˜ÚYÈ›ÈÔH]Y]YKÛÜ[Z^™\ˆ\™Kˆ˜]]™H\‹\Ý\[™ÝÜ™\š[™ÈØ[ˆY™™\‹›ÝÚÙ[‹Ñ“ÔX]ÚYˆ[ˆ›ÝÛÛ\]H˜]]™HSHÔH[œË™\›ËY›Ü™\]Z\™Yˆ™]Ì“ZPˆX[šY™\ÝËØÛÛ™šYÜËÛÙÈ™\Ù\˜][Ûˆ˜Z\Ù\ÌŽÍÌMŒ¸¡¤ŒŽÍLLÍNŽÍMMŒÈ›È™]È^[Ô“ÒKØXÝ]˜][Û˜˜[šÈÜˆY]ÈÈXÝ]™H[Ý[\Ü˜[ÛÝ\œÙ\Ëˆ\È\ÝÈ\ÚXØ[\Ý\\š\Ú[Ûˆ˜[œÙ™\‹›Ý[›Ý\ˆÙ[X[XËZXY[Û›H™\Z\‹‚‚ŒŒ‹LLLMˆ8 %XÝX[MŒÎL^]Ø›ÝÛÛ\]L˜]]™HSHÔH[œÈ™\›È›ÜËX^ÍÚÙ[œÎÈ\ÚXØ[ŒŒÌÌÜ[›™YÚÙ[œÈ™\œÝ\ÈÙ[X[XÌŒMNLŒÍË›ÝŒ˜]]™YÛØ˜[\]\Ëˆ[ŽœZ\™Y™Yš^\È^XÝ]XÝX[ŒLLN
+Ú[™XÙ\ÎÈÛÛ[[ÛŒŒLLNÛ›ÝÜÈ[˜Ú[™ÙYˆY]Y]LMÍÍž]\Ï™]Ì“ZPˆ™\Ù\˜][Û‹ÛØ˜[ŽÍLLÍNˆ™YÚ\Ý\ˆXÝX[Y][Û˜[Œ˜]]™MÍLKÌ\‹X\›H\ÚXØ[]™\œÝ\Ë\Ù[X[XÈX\›š[™ÈÝYHœ›ÛHY[XØ[™\šYšYYŒ”ÌŽÈ\ÚXØ[[ˆÙ[X[XËØ[YHÙYYÛ™]ÐY[Kš^Yš[˜[Ú\™Y[Ù[[™\ÜÚYÛ™YRQÜš]H›ÝØÛÛXÜ›ÜÜÈÜšYÚ[˜[ØÛÜ\Ëˆ›Ý˜Z[š[™ÊÜ™[ØYÝYÙ\È™XÙYHÔK[Û›HØZ]›ÜˆÜšYÚ[˜[Œ\ÜÚYÛ™YSÈ˜\Ù[[™NÈ›ÈÝXœÝ]]YŒ˜\Ù[[™HÜˆ\‹]\ÚÈÙ[XÝ[Û‹ˆÛÔMÝÛ™\ˆXÝX[^]™[X\Ù\È˜]]™HÛÝÈÛ™H][˜ÚØœÙ\˜][ÛˆÔMœ™YLÍÌÍSZP‹Ù^\Ý[™Ù[˜[šÍÎZP‹ÚXÚÜÚ[\ÚÌÍLÌÍLLž]\Ùœ™YKˆ\ÙHÔMÛ›K^\Ý[™Ù›Ý\‘Ô\˜[šÈ[ÝXÚYÜ˜ÚŒÌØØ\ŽÐ‹Ù^[™X›H[ØØ]ÜŽÈ^[™^\Ý[™È[ØØ][ÛˆÜ˜\\ˆÚ]^XÚ]K\\ÚXØ[YÜMÚ[HY˜][È[˜Ú[™ÙYˆ›È^Û\Ú]™H™\ÛÝ\˜ÙHÛZ[HÜˆ›ØÙ\ÜÈÝÜËˆ™]ÍZP›ÝÛ™\‹Ü™\Ü™\Ù\˜][Ûˆ˜Z\Ù\ÌŽÍLLÍN8¡¤ŒŽŒMŒŽÍMMŒÈ›È˜]]™H™X]\™H˜[šËÜšYÚ[˜[ÛÝ\œÙ\È[˜Ú[™ÙYˆš\œÝ™X[Ü[Z^™\ˆ\]\ËÛ˜]]™H[š]X[^˜][Ûˆ]šY[˜ÙH™\]Z\™Y™Y›Ü™HÛZ[Z[™È][˜ÚY˜Z[š[™Ë‚‚ŒŒ‹LLLMˆ8 %XÝX[™]ÛÝÛ™\ŒÍŒÍÈ[›š[™ÈÜZ\™YÜ›[ÝÜ\ÚXØ[ÜÙ[X[XÍŒÛÝÛ™\—ÝŒHœ›ÛHÛÛ[Z]YŽLMXŽÈ˜]]™HÔMŒÌØØ\ŽMŒÎŒž]\Ë^XÝŒ”Ìš[š]X^Y™ŒÍÍLŒÎLÌ[™ÝXYÙH\˜[Y]\œËˆÜšYÚ[˜[›ØÚÚ[™È[™H[Z]Y\]\ÌK‹KÜÜÙ\ËÜÜÚ]]™YÜ˜YY[Èš[š]KŒ]Y\Ý[ÛœËˆ[[]]X›Hš\œÝ]˜[Y]ÜÌÎMXXÝX[^]ÛÛ™š\›\ÈÝÛ™\ˆQÜÝ\XÚËØÝÙÜØÜš\[™^XÝ›ÝÜÍÎÌL‹ÌM‹ÌŒÈ˜]]™HÙYYÛÝ\˜ÙH^ÜÝ\™\ÎSSÕÍ”“SÕÍSÕˆ[˜ÛY[™Ì›™]Ô“SÕY[]H›ÝÜËˆš\œÝUÜ˜ÚXZÌMËŽÍNMÚP‹›Ý[\[ˆXZËÜÝX›HÜYYÜˆ]X[]HØZ[‹ˆÙ[X[XÌ]Û˜\ÚÝ›Ý[Œ[™›Ý\‹\ØÛÜH\ÜÚYÛ™YRQÛÛ›ÛÈ[™[™Ëˆ\È\ÈH™X[ÔM[ØØ][Û‹]Ü˜\\ˆ™YÜ™\ÜÚ[ÛŽÈY˜][ÔMÈÓH™]Z[™Y[™ÜšYÚ[˜[[Ý[\Ü˜[ÛÜšÙ\œÈ[ÝXÚYˆ›È™]È˜]]™H™X]\™H˜[šËÝ\œ™[ÛØ˜[ŽŒMŒQÚP‹ˆ™\Ù\™H˜Z[Y™\Ý[È[™[ÛØ[XÝ]™K‚‚ŒŒ‹LLLNH8 %Ìˆ›ÝØÛÛ™\Z\ˆ[™ÛX[ˆÛÝ™\˜YÙH][˜Úˆ™XY[Û›H]Y]ÛÛ™š\›YYH\ÝÜšXØ[NNLLË\›ÝÈÌˆX[šY™\ÝÛÛZ[œÈÌÌMÈSÕŒLH›ÝÜËÛÈ›Ü›X[ÙÌ—ÌLŒÑÌ‹T™[XZ[ˆ[™Ú[™Y\š[™È]šY[˜ÙH˜]\ˆ[ˆ[™\[™[[[Ý]]šY[˜ÙKˆZ[[[]]X›HÌ—ÐÓPS—Ñ•SÐÓÕ‘TQÑWÕŒˆ
+NÌLH[š\]YH›ÝÜËŒH™Z™XÝËSÕŒLHXœÙ[SÈ›Ý™[ÜÜ\œÙH™YØ]]™\È^ÛYY[YØ[™Y™\‹RÒUHœ˜[Y\Ë^XÝ“SÕ]Y\Ý[ÛœË•T”ÕØ\^XÚ]È›ÝÜÈÒHŽLNXLXÙŽLŒØMÍ™XMÍXMM™YÍ™™XXÌŒNYŒŒMLXXŽY™™Y™™MÌJKˆYY^XÝ[Û˜ÙHÛÝ\˜ÙKÝšY[ËÚ[XYÙHÛÝ™\˜YÙHXØÛÝ[[™ËÛØ˜[X˜]ÚÜ˜YY[XØÝ[][][ÛˆÚ]›×ÜÞ[˜ËÚÙ[‹XYÙ]ÚXÚÜË\‹\Ý\ÚÙ[‹ÙÜ˜YY[ÜXZË[Y[[ÜžHÙÜË[™ÝšXÝ˜\ÙKÛX[šY™\ÝÓÔKÛÜ[Z^™\‹ÜØÚY[\‹Ü\‹\˜[šËT“‘È™\Ý[YH˜[Y][Û‹ˆÔLËÑÔMH”ÌˆÛ[ÚÙH[™ÛË\˜[šÈÝ\LH™\Ý[YH™\^H\ÜÙYÈ”Î™\ÛÝ\˜ÙH›Ø™H˜Z[YÚ]H™X[š\Ú[ÛˆÓÓH[™\È™]Z[™Yˆ›Ü›X[ÛX[ˆÝÛ™\ˆ\È[›š[™Èœ›ÛHÌÚ]ZXÜ›ËX˜]Ú‹XØÝ[][][ÛŽÛØ˜[˜]ÚÌˆ[™NŒÈ[›™YÜ[Z^™\ˆ\]\ËˆŒH™[XZ[œÈXÝ]™H]\˜X›HÝ\ŒÎMMÌHÙY[ˆ›ÝÜÎÈ›È]X[]HY]šXÈ\ÈÛZ[YY™Y›Ü™H\›Z[˜[™XÙZ\È[™š^Y[™\[™[]˜[X][Û‹‚‚ŒŒ‹LLLNH8 %ÌSÕŒLHÙ™šXÚX[ØÛÜH]˜[X][ÛˆÛÛ\]Yœ›ÛHH™\Ù\™YMNYœ˜[YH^Üˆ˜XÚÑ]˜[™XÙZ\™\ÜÈÕHÌÍK]HŒÎÍ\ÜÐHŒŽMMKQŒHLKQÕÈŒŒÎK”ŒÌK“ˆNÌNÈNÈ™Z™XÝY\\˜Ù\[Ûˆœ˜[Y\È™[XZ[ˆ[ˆHÙ™šXÚX[[›ÛZ[˜]Ü‹]˜[X][Û‹[Û›HRSˆÕØ\È\ÙY[™Ù™šXÚX[\ÝX™[ÈÙ\™H›Ý™XYˆ\È\ÈHÌ™Y™\™[˜ÙHØÛÜK›ÝHÛX[ˆÌˆ[[Ý]™\Ý[™XØ]\ÙHSÕŒLH\È^ÛYYœ›ÛHÌ—ÐÓPS—Ñ•SÐÓÕ‘TQÑWÕŒ‹‚‚ŒŒ‹LLLNH8 %ÜÝ[][˜Ú[[YHÛ˜\ÚÝY\ˆHÌØÛÜ™\ŽˆHÛX[ˆÌˆÝÛ™\ˆ™[XZ[œÈ•S“’S‘È]Ü[Z^™\ˆÝ\ÌNŒËÚ]MˆÛØ˜[Ø[\\ËMÍŒLY™™XÝ]™HÛØ˜[ÚÙ[œËš[š]HÜÜÈKÌNMKÜ˜YY[›Ü›H‹ŽLH[™MËŒÍÌMHÚPˆXZÈ]šXÙHY[[ÜžH[ˆ]È]\Ý]™[ˆŒH™[XZ[œÈ•S“’S‘ÈÛˆÔMÑÔMˆ]\˜X›HÝ\LÌLŒÚ]LÍŽ›ÝÜÈÙY[ŽÈ›È\›Z[˜[™XÙZ\Üˆ]X[]HÛZ[H\ÈXYH›ÜˆZ]\ˆÛÝ\œÙKˆHÌˆ[™ŒHÝÛ™\œÈÙ\™H›Ý™\Ý\YÜˆ[ÙYšYY‚‚ŒŒ‹LLLNH8 %ŒˆØ[™Y]K\ÛÝ\˜ÙH]Y]ÛÜœ™XÝYH˜Z[š[™È[ž\Ú[ˆH˜[[˜ÙYÛ™Z™]—Ý[šYšYYÛX]ÚYŒÝŒ‹Û˜]]™HX[šY™\Ý\È™\Ù\™Y]™Z™XÝY›ÜˆØ[™Y]KYš]™[ˆŒˆ™XØ]\ÙH]ÈSÕ›ÝÜÈ\ÙHYØ[RSˆÕ›ÜÜØ[È\È^XÚ]Þ[]XÈœ˜YÛY[È[™]ÈÕ“SÕ›ÝÜÈ\ÙH™YÚ\Ý\™Y˜Z[‹P˜\ÙHXXÚ\ˆÜ›ÜÎÈÛ›H]È™\X]YÍ‹\›ÝÈ“SÕÛÛ\Û™[\È˜]]™HÜ›Ý[™[ž][™ËˆÒHLÍ™ŽYŒL™ÌYLXÍÌ˜ÙØÍÙ™MLÎÎXŒ™NYÌ™X˜ŽX˜ŒMXÌXX™ŒŒMM‹LLŽˆ›ÝÜËˆHÙ\\˜]HÝ™X[Z[™È[™[ÜžH™XÛÜ™ÈH\ØX›HÛÝ\˜Ù\ÎˆLÌLŒM˜]]™HSÕ›ÝÜÈœ›ÛHÈSÕMÈÙ\]Y[˜Ù\È
+ÒHŒŽXŒŽLYX˜ŒLLÍŒYXMMÙŒÙMLÌØØÙ˜Ø™LŒÎŒÌ˜ØÍÙŒ˜MØ
+KÍˆ˜]]™H“SÕ›ÝÜÈœ›ÛHÌˆš]œ˜[Y\È
+ÒHÙŒYLÎÍ™Œ˜™ØÌŽMLÌ˜ŽMÌŽÌŒLLLÙYÍŽMŽÎYMLJK[™ÌÕ“SÕXXÚ\‹XÛÛ›Û›ÝÜÈ
+ÒHŽLNXÌ˜NX˜Y˜YÍLMÙNNL™LL™LÍÙLÙÌY˜Í™ÍXÙ™MXŠKˆ›ÈŒˆÜ[Z^™\ˆØ\È][˜ÚYÈ˜]]™HÕ“SÕØ[™Y]\È[™œ›ØY\ˆYØ[ÛÝ™\˜YÙH™[XZ[ˆ™\]Z\™YY\ˆÌKÑÌˆ]XÝÜˆ^Ü‚‚ŒŒ‹LLLNH8 %™YÚ\Ý\™Y[™Ý\YHÔMHÌHÛÛ[X][ÛˆÝÛ™\ˆ™Z[™HXÝ]™HÛX[ˆÌˆ[‹ˆÝÛ™\ˆÙ\ÜÚ[ÛˆŽÍMH\ÈØZ][™ÈÛˆH]]Üš]]]™HÌˆ\›Z[˜[™XÙZ\È]™Y\Ù\ÈÈ][˜ÚYˆÌˆ˜Z[Ë˜Z[œÈHœ™\ÚŒ\Ý\›Ú™XÝÜˆœ›ÛHÌÛ›HY\ˆÔMH™[X\ÙK^ÜÈH™]ÈÌKQÔMH[™HÚ]Ý]ÝXÚ[™ÈÌKÑÌŒ[ˆ[œÈš^YM‹Yœ˜[YHÌÑÌŒÑÌH˜]]™HÛÛ›ÛËˆ\È\ÈH]Y]YY^XÝ]X›HÝÛ™\‹›ÝHÛZ[H]ÌH\ÈÛÛ\]Y‚‚ŒŒ‹LLLNH8 %™KX]Y]YH^XÝÛX[ˆÌˆX[šY™\ÝY\ˆ][˜ÚˆH™XY[Û›H]Y]›Ý[™NËLH›ÝÜÈ[™[š\]YHQË™\›ÈSÕŒLH›ÝÜË™\›È“SÕXÙZÛ\ˆ]Y\Ý[ÛœË[™›ÈÜ›ÜÜË\ÛÝ\˜ÙHXœÛÛ]HYYXK\]Ý™\›\ˆ]È˜]ÈSÕŒ˜[Y]H[™[ÜžHÝ[˜[Y\ÈH^ÛYYSÕŒLH\™XÝÜžH™XØ]\ÙHH]Y]ØØ[œÈHÛÝ\˜ÙH™YNÈHÛX[ˆ›ÝÈš[\ˆ™[XZ[œÈSÕŒLKÌ‹ÌÈÛ›Kˆ]šY[˜ÙNˆÙ]LËÝ\Ù\‹ÓØØ]SSÕ\[œËÑÜ›Ý[™[ž][™ÑÌ‹ÑÌ—ÐÓPS—Ñ•SÐÓÕ‘TQÑWÕŒ‹ÙÌ—ØÛX[—Ù]WØÛÛ˜XÝØ]Y]ÝŒ‹šœÛÛ˜ˆ›ÈXÝ]™H›ØÙ\ÜÈÜˆÚXÚÜÚ[Ø\È[ÙYšYY‚‚ŒŒ‹LLLNH8 %ÛX[ˆÌˆ\Þ[Y[^Ü[™Ù™ˆ™YÚ\Ý\™Yˆ]Y]YWÙÌ—ØÛX[—Ø[™WÙ^ÜœH\ÈHÛÛHÔK[Û›HÝÛœÝ™X[HÝÛ™\‹ˆ]ØZ]È›ÜˆH^XÝÛX[ˆÌˆ\›Z[˜[™XÙZ\[™HÔMHÌH]Y]YH™XÙZ\[ˆ^ÜÈHœ™\ÚMŽK][œÛÜˆÜ›Ý[™[ž][™ËQKQÌ‹PÓPS‹UŒˆ[™HÚ]HX[šY™\ÝÒH[™[[]]X›HÛÝ\˜ÙHÚXÚËˆ]™Y\Ù\ÈÝ™\Üš]H[™™XÛÜ™È^XÚ]\[™[˜ÞH˜Z[\™HÝ]\ÎÈ›È]XÝÜˆÜˆ]˜[X][ÛˆÛZ[H\ÈXYH™Y›Ü™HÌ—ÐÓPS—ÑTÖSQS•Ð•S‘WÑVÔ•Q‚‹HŒ‹LLLŒ8 %Ü›Ý[™‘Uˆ\[™[˜ÞH™Y›YÚ\ÜÙYÚ]Ý][ØØ][™ÈHÔHÜ‚ˆÝ\[™ÈH›ØÙ\ÜËˆHÌH[‹Ý˜Z[™\‹Ìˆ[™H]Y]YK[™\[™[[[Ý]ˆ]Y]YKÛ™R™]ˆ™XÛÝ™\žH]Y]YK™YÚ\Ý\™Y[Ù[ØÚXÚÜÚ[ÛX[šY™\Ý]È[™ˆ^\›˜[Û™R™]ˆÛÝ\˜ÙH[^\Ýˆ[›Ý\ˆÝÛ™\ˆÝ]\È\œÙH[™™\ÜˆØZ][™ÈÝ]\ÈÚ]˜Z[Y[[ˆ™XÙZ\‚ˆØÜËÑÔ“ÕS‘‘U‹ÑTS‘SÖWÔ‘Q“QÒÌŒŒLŒžÚœÛÛ‹YX‚‹HŒ‹LLLŒŒŽNH
+ÌˆH›ÝXÝYÌˆÛX[ˆÝÛ™\ˆ™[XZ[œÈ]™HÛ‚ˆ\ÚXØ[Ô\ÈËÍH[™Y˜[˜ÙYÈ]™[Ý\LÌLÌNŒËˆHš[˜[ˆ™XÙZ\\ÈÝ[XœÙ[H›Ý\ˆ\[™[˜ÞH]Y]Y\È™[XZ[ˆ]™H[™ØZ][™Ëˆ[™HYX\Ý\™Y[™X\ˆ™[XZ[™\ˆ\È\›Þ[X][HŒËŽx $ÌŽÝ\œË‚‚ŒŒ‹LLLŒŒÎŒˆ
+Ì8 %Ü›Ý[™‘UˆÝ]\È™Yœ™\Úˆ›ÝXÝYÌˆÛX[ˆÜ˜Ú[ˆ™[XZ[œÈ]™HÛˆ\ÚXØ[Ô\ÈËÍH[™™XXÚY]™[Ý\LÌ‹ÌNŒÈÚ]š[š]HÜÜÈŒŒÍÍÈ[™L‹ŽŽHÚPˆXZÈY[[ÜžNÈš[˜[™XÙZ\XœÙ[[™]\Ý\˜X›HÚXÚÜÚ[™[XZ[œÈY\\‹\Ý\LLÜÝ\LLˆÌKÌˆ[™H^Ü[™\[™[ÔMÈ[[Ý][™[\ÛÝ\˜ÙHÛ™R™]ˆ™\Ý[YHÝÛ™\œÈ™[XZ[ˆ]™HÚ]˜Z[Y[[[™ØZ][™ÈÝ]\Ëˆ›ÈXÝ]™HSÕ[Û›HÜ[Z^™\ˆ›ØÙ\ÜÈ\È™\Ù[ˆ\È\ÈH[[YH]šY[˜ÙH™Yœ™\ÚÈ›ÈY]šXÈÛZ[HÜˆ›ÝØÛÛÚ[™ÙK‚ŒŒ‹LLLŒŒÎŒ
+Ì8 %Ü›Ý[™‘Uˆ˜XÚÒ‘Uˆ[[YH™Y›YÚÛÛ\]Y[ˆH™YÚ\Ý\™YÛ™R™]ˆ]ÛˆËŒL[š\›Û›Y[ˆÛÛ\[X[\ÜÙY›ÜˆÜ›Ý[™‘UˆÛÙKÜØÜš\Ë[™XÚ\Ú[Û‹[^Y\‹[Ù[[™˜]]™HY\\ˆÙ[‹]\ÝÈ[™]\›™YTÔËˆ›ÈÔHØ\È[ØØ]Y[™›È˜XÚÚ[™ÈY]šXÈÛZ[HØ\ÈXYNÈ™XÙZ\\ÈØÜËÑÔ“ÕS‘‘U‹ÕPÒÒ‘U—Ô•S•SQWÔ‘Q“QÒÌŒŒLŒžÚœÛÛ‹YKˆH›ÝXÝYÌˆÝÛ™\ˆ™[XZ[™Y[ÝXÚY‚‚ŒŒ‹LLLŒŒÎŒH
+Ì8 %™XY[Û›HÌˆÛX[ˆ]™KY]™[Ø[š]H\ÜÙY›ÝYÚÝ\LÍ‹ÌNŒÎˆLÍˆ]™[ÈÝšXÝH[˜Ü™X\Ú[™Ë[ÜÜËÙÜ˜YY[ÛY[[ÜžKÓˆ˜[Y\Èš[š]K[™]™\žH]™[™]Z[™YH™YÚ\Ý\™YZXÜ›ËX˜]ÚÈMˆÛØ˜[\Ø[\HÛÛ˜XÝˆš[˜[™XÙZ\™[XZ[œÈXœÙ[È›ÈY]šXÈÛZ[Kˆ™XÙZ\ˆØÜËÑÔ“ÕS‘‘U‹ÑÌ—ÓU‘WÑU‘S•ÔÐS’UWÌŒŒLŒžÚœÛÛ‹YK‚‚ŒŒ‹LLLŒŒÎŒˆ
+Ì8 %[™\[™[Ìˆ[[Ý]X[šY™\Ý™Y›YÚ\ÜÙY›ÜˆSÕŒLH˜[Y][Û‹Z[ˆ
+MMÊK“SÕÚ[™ÛLÈ
+
+K“SÕ][LÈ
+
+K[™SÈÕ“SÕšY[ÌLH
+
+Nˆ\ÚÈ›YÜËœ˜[YHÛÛ˜XÝË[Û›ÝÛšXÈ[š\]YHœ˜[YH[X™\œË[™[ØØ[[XYÙH]È™\šYšYYˆ]Y]YHÝ[\™›Ü›\È^XÝRSˆÝ™\›\]Y]™Y›Ü™H[™™\™[˜ÙNÈ›ÈY]šXÈÛZ[Kˆ™XÙZ\ˆØÜËÑÔ“ÕS‘‘U‹ÑÌ—ÒSÕUÓPS’Q‘TÕÔ‘Q“QÒÌŒŒLŒžÚœÛÛ‹YK‚ŒŒ‹LLLŒ8 %š^YÛÛËÙÜ›Ý[™™]‹Ý˜[Y]WÙ[ÜÛÝ\˜ÙWØÜWØÛÛ\][Û‹œX[[YHÜXš[]Nˆ™YÚ\Ý\™YÔK\[ˆ™XÙZ\È[™ÛÝ\˜ÙHX[šY™\ÝÈ]™H[™\ˆÙ]L‹Ý\Ù\‹ÓØØ]SSÕÑÜ›Ý[™‘U˜Ú[HH›Ú™XÝÛÜšÝ™YH\ÈÙ]L‹Ý\Ù\‹ÓØØ]SSÕˆH˜[Y]Üˆ›ÝÈ™\ÛÛ™\È›Ú™XÝÜ[[YH\Y˜XÝÈ]\›Z[š\ÝXØ[H[™™\ÜÈH\›Z[˜[™XÙZ\]ˆ\™Ù]Y™\[ˆ\ÜÙYˆNLÈ›ÝÜË™\›È›ÜËŽŽL[›™Y\]\ËÛÜ›Ú^™H^XÝÙ\šX[Ü\˜[[[œË[™“SÕ^ÜÝ\™H]Y]™]Z[™YÈXÝX[Ü[Z^™\ˆ\]\È™[XZ[ˆ›Üˆ\ÈÔH˜[Y][Û‹‚‚ŒŒ‹LLLŒŒÎŒL
+Ì8 %™XY[Û›H™\ÛÝ\˜ÙHØ]H]Y]ˆ™YÚ\Ý\™YÛ™R™]ˆ™\Ý[YH™\]Z\™\È^Û\Ú]™HÔ\ÈÍKÍ‹ÍÎÈHØ]H\È›ÝØ]\ÙšYY™XØ]\ÙH^\Ý[™ÈÛÛ\]HQÈ™[XZ[ˆÛˆ™\]Y\ÝY]šXÙ\È
+ÔMH[ÛÈÜÝÈ›ÝXÝYÌŠKˆœ™YHY[[ÜžH\ÈX›Ý™HÌˆÚPˆ]Ú\š[™ÈØ\È›Ý[˜X›YÈ›È›Ü™ZYÛˆÜˆÜ›Ý[™‘Uˆ›ØÙ\ÜÈØ\ÈÝÜYˆ™XÙZ\ˆØÜËÑÔ“ÕS‘‘U‹Ô‘TÓÕTÑWÑÐUWÐUQUÌŒŒLŒžÚœÛÛ‹YK‚ŒŒ‹LLLŒ8 %[\›Ý™YÜ›Ý[™‘UˆØZ][™Ë[ÝÛ™\ˆØœÙ\˜Xš[]HÚ]Ý]Ú[™Ú[™ÈH^Û\Ú]™HÔHÛÛ˜XÝˆHÔMÈ[™\[™[[[Ý]]Y]YH[™›Ý\‹QÔHÛ™R™]ˆ™\Ý[YH]Y]YH›ÝÈ\œÚ\Ý]™\žH™\ÛÝ\˜ÙH›Ø™H[™[ˆ^XÚ]™\ÛÝ\˜ÙWÙØ]X™XÛÜ™
+™XYX[KÚ\™YÛY[[ÜžWÛ[ÙOY˜[ÙX
+H™Y›Ü™HÛY\[™Ëˆ›ÝØÜš\È\ÜÙYWØÛÛ\[H[™Ú]Y™ˆKXÚXÚÎÈXÝ]™HÝÛ™\ˆ›ØÙ\ÜÙ\ÈÙ\™H›Ý™\Ý\Y‚ŒŒ‹LLLŒŒÎŒLÈ
+Ì8 %ÌHÔMH˜XÚÚ[™ÌŒ[œ]ÜØÚY[H™Y›YÚ\ÜÙY[ˆH™YÚ\Ý\™YÜ›Ý[™‘Uˆ[[YHÚ]Ý]ÔH[ØØ][ÛŽˆLLˆ›ÝÜËMˆZ\œËÌˆ[š\]YH[XYÙ\Ë˜]]™H›ÜÜØ[ËŒŽ[YÛ™Y™YÚ[ÛœÎÈHÔMH[ˆ^XÝHX]Ú\ÈH™\Ù\™YÔMˆ™Y™\™[˜ÙHØÚY[H[™™]Z[œÈY[]K[ÜÜÈÛÙY™šXÚY[ÈŒKÌŒKˆ›ÈÜ[Z^™\ˆ\]HÜˆY]šXÈÛZ[Kˆ™XÙZ\ˆØÜËÑÔ“ÕS‘‘U‹ÑÌWÑÔMWÒS”UÔ‘Q“QÒÌŒŒLŒžÚœÛÛ‹YK‚ŒŒ‹LLLŒŒÎŒM
+Ì8 %™YÚ\Ý\™Y^\Ý[™È™X[Z[œ]]šY[˜ÙNˆÛ™R™]‹LŽˆØYYÛˆH™X[SÕMÈœ˜[YH
+ÔM‹KŒHÈØYŒŽÈÈXÚ\Ú[Û‹ËŒLˆÐˆXZÊH[™H™\Ù\™Y˜]]™HKÓÛ™R™]ˆ›Ý\‹Yœ˜[YHSÕMËLˆ[˜Ý[Û˜[™XÙZ\ÛÝ™\œÈœ˜[Y\ÈÌ¸ $ÌÌHÚ]ÝšXÝÚ\™KY\œ›Üˆ[™›ËY˜XœšXØ]Y\ØÛÜ™HÝX\™Ëˆ\ÙH\™H[Xš[™ÈÚXÚÜÈÛ›K›Ý˜XÚÚ[™ÈÜˆÌKÑÌˆY]šXÈÛZ[\Ëˆ™XÙZ\ˆØÜËÑÔ“ÕS‘‘U‹ÕPÒÒ‘U—Ô‘PSÒS”UÑU’QSÑWÌŒŒLŒžÚœÛÛ‹YK‚‚ŒŒ‹LLLŒŒÎŒMH
+Ì8 %™XY[Û›HÌˆ\˜X›HÚXÚÜÚ[›ÝXÝ[Ûˆ\ÜÙY]Ý\LLˆ]\ÝÝ˜Z[š[™×ÜÝ]Kœ[™Y\\‹\Ý\LLœ\™H™\Ù[X[šY™\ÝÒHX]Ú\ÈŽLNXx )‹Ü[Z^™\‹ÜØÚY[\‹ÜØ[\\‹Ü\‹\˜[šÈ“‘ÈšY[È\™H™]Z[™Y[™š[˜[™XÙZ\™[XZ[œÈXœÙ[ˆ™XÙZ\ˆØÜËÑÔ“ÕS‘‘U‹ÑÌ—ÑTP“WÐÒPÒÔÒS•Ô“ÕPÕSÓ—ÌŒŒLŒžÚœÛÛ‹YK‚‚ŒŒ‹LLLŒ8 %Ù[™\˜]YÝ\œ™[Ü›Ý[™‘UˆÛØ[ÛÛ\][ÛˆX]š^œ›ÛH]™H™XÙZ\ËÛÝÛ™\ˆÝ]\Ëˆ]^XÚ]HX]™\ÈÌˆ\›Z[˜[˜Z[š[™ËÌHÔMHY\][Û‹[™H^Ü[™\[™[[[Ý]Y]šXÜË[™[\ÛÝ\˜ÙHÛ™R™]ˆ\›Z[˜[™XÙZ\[˜ÛÛ\]NÈ›È™[[Z[˜\žH™\Ý[Ø\È›Û[ÝYˆ™XÙZ\ˆØÜËÑÔ“ÕS‘‘U‹ÑÓÐSÐÓÓTUSÓ—ÓPU’VÌŒŒLŒžÚœÛÛ‹YK‚‚ŒŒ‹LLLŒH8 %Ü›Ý[™‘Uˆ™Y\™XÝ[ÛˆÚXÚÜÚ[ˆ™\šYšYY›Ú™XÝ›ÛÝÙ]L‹Ý\Ù\‹ÓØØ]SSÕ[™›ÝXÝY›Ü›X[ÌˆÛX[‹ˆH]™HÛË\˜[šÈÌˆÝÛ™\ˆ™XXÚY]™[Ý\LMÌÍKÌNŒÈÚ]š[š]HÜÜÈŒŒLËÜ˜YY[›Ü›HKŽÌÍÌLKXZÈL‹ŽŽLŽHÚPŽÈ]\Ý\˜X›HÚXÚÜÚ[™[XZ[œÈÝ\LML[™HL\Ý\Ú[™ÝÈ\ÈLKŒMÈËÜÝ\
+[™X\ˆ™[XZ[™\ˆX›Ý]ŒŽH
+KˆÌSÕŒLH™YÚ\Ý\™YMMËYœ˜[YH˜[Y][Û‹Z[ˆ^Ü™[XZ[œÈ\›Z[˜[È]Èœ™\Ú˜]]™K\ÛÝ\˜ÙHÛÛ›Û\È™]Z[™YÚ]Ý]H[TÕÛZ[Kˆ›È]™H[™\[™[SÕ[Û›HÜ[Z^™\ˆ›ØÙ\ÜÈ^\ÝËˆH\ÝÜšXØ[›Ý\‹QÔH[™\[™[Û™R™]ˆ™\Ý[YHØ\ÈØZ][™È™Y›Ü™H][˜Ú]\˜X›HÝ\ÌÛÈ]Ø\ÈØY™[H]\ÙY[™]ÈÚXÚÜÚ[ÛÜ[Z^™\‹Ô“‘ËØÛÛ™šYËÛÙÜÈ™\Ù\™YÈHÛÙK[]™[]\ÙHX\šÙ\ˆÝX\™›ÝÈ›ØÚÜÈXØÚY[[]]Ë\Ý\[›\ÜÈK\™\Ý[YK\]\ÙY\È^XÚ]HÝ\YYˆÌHÔMKÛX[ˆ[™H^Ü[™[™\[™[[[Ý]™[XZ[ˆØZ][™ÈÛˆZ\ˆ™YÚ\Ý\™Y\[™[˜ÚY\Ëˆ›È›Ü›X[Ì‹ÑÌKÚ[[Ý]\™›Ü›X[˜ÙHÛZ[HØ\ÈXYKˆ]šY[˜ÙNˆØÜËÑÔ“ÕS‘‘U‹ÐPÕU‘WÑÓÐSÔÕUT×ÌŒŒLŒKžÚœÛÛ‹YX[™H]Y]YHÝÛ™\ˆÝ]K‚‚ˆÈÈŒ‹LLLŒH8 %ÛÜœ™XÝY™X[™YK]\ÚÈÛ™R™]ˆÛÝ\˜ÙH™YÚ\Ý˜][Û‚‚•H\ÝÜšXØ[[\ÛÝ\˜ÙHX[šY™\ÝØ\È™Z™XÝY›ÜˆH[™\[™[ÛÛ\\š\ÛÛˆ™XØ]\ÙH]ÈÛÝ\˜ÙH[™[ÜžH[˜ÛYYSÕŒLH›ÝÜËˆHÝ™X[YY[™]Y]YH™\XÙ[Y[X[šY™\Ý]Ù]L‹Ý\Ù\‹ÓØØ]SSÕÑÜ›Ý[™‘U‹ÛÝ]]ËÙÜ›Ý[™™]‹Ý˜Z[š[™×Ù]KÜ™X[Ý™YWÝ\Ú×Ú›Ú[ÝŒKØˆLÌKŒM˜]]™HSÕY[]H›ÝÜËÍˆ˜]]™H“SÕY[X™\œÚ\Ü™\Ù[˜ÙH›ÝÜË[™Ì™YÚ\Ý\™YÕ“SÕ˜\ÙHXXÚ\‹XÛÛ›Û›ÝÜÈ
+LÌKNLÝ[
+Kˆ\XØ]HQË˜Z[ˆÜ]˜[Z[Hš[\œË›ÝÈÛÝ[ËYYXH]Ë›Ü˜šY[ˆSÕŒLKÝ\ÝX\šÙ\œË[™ÛÝ\˜ÙHÒKLMˆ˜[Y\È\ÜÙYˆH™YÚ\Ý\™YSÈ˜]]™H\˜Ú]™H
+œ˜[Y\ËÌÍKŒŽØ[™Y]\ÊH\È›ÈØ]YÛÜžHÝ\\š\Ú[Û‹ÛÈ˜]]™HÕ“SÕ˜Z[š[™È›ÝÜÈ™[XZ[ˆ[™[™È[™›È™[X™[[™ÈÜˆÜ[Z^™\ˆ][˜ÚØ\È\™›Ü›YYˆHÛ[™\[™[›Ý\‹QÔHÛ™R™]ˆ]Y]YH™[XZ[œÈ]\ÙY‚‚ˆÈÈŒ‹LLLŒH8 %\ÙHÈØ]\Ø[Y[[ÜžH[œ]ÛÛ˜XÝ‚’[ˆH\ÛÛ]Y™\ÙX\˜ÚÙÜ›Ý[™™]‹XÛÝ\Y\Ú[™ÛKX˜XÚØ›Û™KLŒŒLŒXÛÜšÝ™YKYY[ˆÜZ[ˆ[š™XÝÚY[]WÛY[[ÜžXÛÛ˜XÝˆ][œÙ\È›Ú™XÝYØ]\Ø[Y[]HÚÙ[œÈ™Y›Ü™HH™YÚ\Ý\™YÝ\œ™[X[œÝÙ\ˆ[™^™\Ù\™\ÈHÜšYÚ[˜[›Û\[œÛÜœÈ^XÝHÚ[ˆ\ØX›Y[™™]\›œÈHÙ™œÙ]™YYYÈÚYHX™[ËˆZYÚ›ØÝ\ÙYÔHÛÛ˜XÝ\ÝÈ\ÜÙY[˜ÛY[™È›Ú™XÝÜˆÜ˜YY[›ÝÈ[™[œÙ\[ÛˆÜ™\‹ˆ\È\È[ˆ[™Ú[™Y\š[™È[œ]ÛÛ˜XÝÛ›NÈHÜ›Ý[™[ž][™ÈXÛÙ\ˆÛÚË™X[ÔHÌÐÌKÐÌˆ™\^KÙ[™\˜]YX›Þ™XØ[[™ÕKÒQŒHY™™XÝÈ™[XZ[ˆ[›YX\Ý\™Y‚‚ˆÈÈŒ‹LLLŒH8 %ÛÜœ™XÝY™YK]\ÚÈÛ™R™]ˆÝÛ™\ˆ™YÚ\Ý\™Y‚•H\ÝÜšXØ[[™\[™[›Ý\‹QÔH™\Ý[YH™[XZ[œÈ]\ÙYˆHÙ\\˜]HÝÛ™\ˆ™X[Ý™YWÝ\Ú×Ú›Ú[ÝŒWÜ]Y]YXØ\È™YÚ\Ý\™Y[™Ý\Y[ˆHØZ][™ÈÝ]Kˆ]\Ù\ÈH]Y]YLÌKNL\›ÝÈX[šY™\ÝH™]È[ˆ\™XÝÜžK[™HYXØ]YÛ™R™]ˆ[š\›Û›Y[È]Ú[›ÝÛZ[HÔ\ÈÍKÍ‹ÍÈ[[ÌˆÛX[‹ÌHÔMHY\][Û‹[™H^Ü[[Ý]]˜[X][Û‹[™[ˆ^Û\Ú]™H™\ÛÝ\˜ÙHÚ[™ÝÈ\™H\›Z[˜[ˆH[ˆ\È^XÚ]HH˜\ÙHÕ“SÕXXÚ\‹XÛÛ›ÛÛÛ\\š\ÛÛˆÚ[H˜]]™HSÈØ]YÛÜžH›ÝÜÈ™[XZ[ˆ[™[™ÎÈ]Ø[››Ý™H™\ÜY\ÈHš[˜[Ú[™ÛKX˜XÚØ›Û™HÜ›Ý[™‘Uˆ™\Ý[‚‚ˆÈÈŒ‹LLLŒH8 %›Ú[]Y]YHÛÛ™šYÝ\˜][Ûˆ™YÜ™\ÜÚ[Ûˆš^Y‚•HYXØ]YÛ™R™]ˆ\œÙ\ˆ™Z™XÝY›Ý\ˆ]Y][Û›HÙ^\ÈXØÚY[[HXÙY[ˆH[[YH˜Z[š[™È”ÓÓ‹ˆH™[[Ý™YÜÙHÙ^\Èœ›ÛH™X[Ý™YWÝ\Ú×Ú›Ú[ÝŒWÜ[[YKšœÛÛ˜[™Ù\HØ[YH›Ý™[˜[˜ÙH[ˆH]Y]YHÝ]H[™™\ÙX\˜Ú™XÛÜ™ËˆH™YÚ\Ý\™Y™[‹[Û™Z™]‹\LÌL\œÙ\ˆ›ÝÈXØÙ\ÈHÛÛ™šYÈ[™™\ÛÛ™\ÈHÛÜœ™XÝYÛÝ\˜ÙHX[šY™\ÝÛ™H\ØÚ[™ÛØ˜[M‹\›ÝÈXØÝ[][][Û‹‚‚ˆÈÈŒ‹LLLŒH8 %™YK]\ÚÈÔH™Y›YÚ›Ý[™^XÚ]Ý™\›[™Ý›ÝÜÂ‚•H™YÚ\Ý\™YÛ™R™]ˆÔH[ˆ™[™\™Y[LÌKNL›ÝÜÈ[ˆÈÙXÛÛ™Ëˆ]HÌ‹ÍŽ]ÚÙ[ˆ˜Z[š[™ÈÛÛ˜XÝLŽKLH›ÝÜÈ\™H˜Z[˜X›H[™‹NHYÚXØ[™Y]HSÕY[]H›ÝÜÈ^ÙYYH[Z]
+LL‹ÌŒÈLKŽNÈNHËŒÎÈX^[][HM‹ÌÍ
+KˆH™]È]Y]YH™XÛÜ™È\È^Û\Ú[Ûˆ^XÚ]H[™Ø[››Ý™\Ü[\ÛÝ\˜ÙH^ÜÝ\™KˆHÙ\\˜]HÛÛ\XÝ[™ËÛÛ™Ë\›ÝÈÛÝ\œÙH™[XZ[œÈ™\]Z\™Y‚‚ˆÈÈŒ‹LLLŒH8 %ÛÛ\XÝ™\›ËY›Ü™YK]\ÚÈÛÝ\˜ÙHŒ‚•HŒH˜]]™HSÕÔ“SÕÓÕ“SÕÛÝ\˜ÙH[ˆØ\È˜[Y]^ÛYY‹NHYÚXØ[™Y]HSÕY[]H›ÝÜÈÝ™\ˆHÌ‹ÍŽ]ÚÙ[ˆ[Z]ˆHØ]\ÙHØ\È™\X]Y[œÙH°åÓˆ[ÕH[™Ù[\‹Y\Ý[˜ÙHÔÕˆX]šXÙ\È[ˆ]™\žHSÕ›ÝË›ÝZ\ÜÚ[™ÈYYXHÜˆHÚ[™ÙYØ[™Y]HÛÝ\˜ÙKˆYYH^XÚ]ÛÛ\XÝØÛÛ\]][Û—ÝŒXX[šY™\Ý˜[œÙ›Ü›Nˆ˜]]™H”ÓÓ“™[XZ[œÈ[[]]X›NÈ^XÝ›ÝÈQË\™Ù]ËYYXH]È[™Ø[™Y]H›Þ\È\™H™\Ù\™YÈ[ÜÚ]]™KR[ÕHYÙ\È™]Z[ˆ˜]]™H›Ý[™Y[ÕH[™Ù[\ˆ\Ý[˜ÙNÈ™\›ËR[ÕHÙ[ÛY]žH\È\š]˜X›Hœ›ÛHH™]Z[™Y›Þ\ËˆHŒˆÔH[ˆ™[™\™Y[LÌKNL›ÝÜÈÚ]™\›È›ÜÈ
+LÜLÜNKÛX^ËLÎKÌL‹MÌËÌM‹LÌŽMMˆÚÙ[œÎÈLÛÜ›MÝ\ÊKÚ]›ÈÔHÜˆÜ[Z^™\ˆ\]\ËˆHÛŒHØZ][™ÈÝÛ™\ˆØ\ÈÝ\\œÙYY™Y›Ü™H[žH˜Z[š[™ÎÈHÙ\\˜]HŒˆÝÛ™\ˆ\ÈØZ][™ÈÛˆÌ‹ÑÌKØ[™KÚ[[Ý]Ø]\È[™^Û\Ú]™HÔ\Ëˆ˜]]™HSÈØ]YÛÜžH›ÝÜÈ™[XZ[ˆ[™[™ËÛÈ\È\ÈÝ[H™YÚ\Ý\™Y˜\ÙHXXÚ\‹XÛÛ›ÛÛÝ\œÙH˜]\ˆ[ˆHš[˜[Õ“SÕÛZ[K‚‚ˆÈÈŒ‹LLLŒH8 %˜]]™HY\Õ˜XÚÈŒˆ]Y]YY™Z[™[ˆ^Û\Ú]™HÔMÈØ]B‚”™YÚ\Ý\™YH™X[˜]]™HY\Õ˜XÚÈÛÜœ\ÈÚ]Ìˆ˜Z[ˆ›ÝÜÈ[™ÎLš^Y˜[Y][Ûˆ›ÝÜÈ
+˜Z[ˆÒB˜LÌÍÙ™™YØLŒÍÍÙ˜ŽMMMØÎYXŒÍÍÎYXØLXYXŒXNŽMŒÍŽY˜LMX˜™YM˜˜[Y][Û‚”ÒHŒØNY˜ŒMŽLYÍYL˜ŒMŒMØÍXÍM˜XÎÌYŽMMY˜ŒÌMÙLNM˜ŒÌÌÙ
+KˆBÔH™[™\š[™È[ˆ\ÜÙYÚ]™\›È›ÝÜÈÝ™\ˆÌ‹ÍŽÚÙ[œÈ
+X^‹MNNÈLBœ[›™YÜ[Z^™\ˆÝ\È\ˆ\ØÚÌÈÝ™\ˆ™YH\ØÚÊKˆYYH™X[ÔB›ÝÛ™\ˆ]ØZ]È›ÜˆÔMÈÈ]™H›Â˜ÛÛ\]HQ[™]X\ÝÌˆÚPˆœ™YK˜Z[œÈ˜]]™H][[[Ù[ÔH›Üˆ™YB™\ØÚË[ˆ]˜[X]\Èœ›Þ™[ˆ˜\ÙH[™[™YY\\ˆÛˆY[XØ[[[Ý]›ÝÜÂ\Ú[™ÈUT“ÐË‹PUPËXØÝ\˜XÞKœšY\‹PÑK˜[ÙH™Z™XÝ[Ûˆ[™˜[ÙB˜XØÙ\[˜ÙKˆHÝÛ™\ˆÙ\È›ÝÝÜÝ\ˆ\Ù\œÈ[™Üš]\È\›Z[˜[™XÙZ\Â›Û›HY\ˆ˜Z[š[™È[™›Ý]˜[X][ÛœÈÝXØÙYYˆ]™YÚ\Ý˜][ÛˆÔMÈØ\Â›ØØÝ\YYÛÈ›ÈY\Õ˜XÚÈY]šXÈ\ÈÛZ[YYÈš[Üˆ\›ÝÈ™XYÝ]ÛÛ›ÛÈ™[XZ[‚™[™Ú[™Y\š[™È]šY[˜ÙHÛ›Kˆ˜XÚÚ[™ÈÕKÐ\ÜÐKÒQŒKÒQÕÈÝ[™\]Z\™\ÈH]\‚™š^YXØ[™Y]H\ÚXØ[X˜\Ù[[™H[YÜ˜][Û‹‚‚ˆÈÈŒ‹LLLŒH8 %]™HÌˆÛX[ˆÚXÚÜÚ[™Yœ™\Ú]Ý\LŒ‚‚HÚ[™ÛH]]Üš]]]™H™XYÙˆH›Ü›X[]™[ÙÈ›Ý[™ÌˆÛX[ˆ]]™[Ý\LŒ‹ÌNŒËÚ]š[š]HÜÜÈŒŽNŽMÜ˜YY[›Ü›HLŒŒMMÌÍËXZÈY[[ÜžHL‹ŽŽHÚP‹[™H™YÚ\Ý\™Y[ZXÜ›ËX˜]ÚÌM‹\Ø[\HÛÛ˜XÝˆH\š[ÙXÈY\\ˆÚXÚÜÚ[\ÈY\\‹\Ý\LŒœ[™ÚXÚÜÚ[ËÛ]\ÝÝ˜Z[š[™×ÜÝ]Kœ\È™\Ù[ÈH\›Z[˜[™XÙZ\\ÈÝ[XœÙ[ˆH™XÙ[L\Ý\˜]H\ÈLKŒMHËÜÝ\H[™X\ˆ™[XZ[™\ˆÙˆ\›Þ[X][HŒŒHÝ\œËˆÌK[™K[[Ý]Y\Õ˜XÚË[™™\›ËY›Ü™YK]\ÚÈŒˆ™[XZ[ˆØZ][™ÈÝÛ™\œÎÈ›ÈY]šXÈÛZ[HØ\È›Û[ÝY[™›È›ÝXÝY›ØÙ\ÜÈØ\È[ÙYšYYˆ]šY[˜ÙNˆØÜËÑÔ“ÕS‘‘U‹ÔÕUT×ÔÓTÒÕÌŒŒLŒWÑÌ—ÔÕTLŒ‹žÚœÛÛ‹YX‚‚ˆÈÈŒ‹LLLŒH8 %›ØÙ\ÜË\ØÛÜH]Y]ÛÛ™š\›\È›È]™HSÕ[Û›KÒŒHÜ[Z^™\‚‚Hœ™\Ú›ØÙ\ÜË]X›H]Y]›Ý[™ÌˆÛX[ˆ\ÈHÛ›HXÝ]™HÜ›Ý[™‘UˆÜ[Z^™\ˆ
+]™[Ý\LŒL‹ÌNŒÈÛˆÔ\ÈËÍJKˆÌHÔMK\Þ[Y[[™K[™\[™[[[Ý]Y\Õ˜XÚÈ[™™\›ËY›Ü™YK]\ÚÈŒˆ\™H]™H\[™[˜ÞKÜ™\ÛÝ\˜ÙHØZ]\œËˆ›È[™\[™[SÕ[Û›HÜˆYØXÞHŒHÛ™R™]ˆÜ[Z^™\ˆ\È]™NÈ\ÝÜšXØ[ÚXÚÜÚ[È[™ÙÜÈ™[XZ[ˆ™\Ù\™Yˆ›Ü™ZYÛˆ’TÓH›ØœÈÙ\™H[ÝXÚY[™›È›ØÙ\ÜÈØ\ÈÝÜYˆ]šY[˜ÙNˆØÜËÑÔ“ÕS‘‘U‹Ô“ÐÑTÔ×ÐUQUÌŒŒLŒKžÚœÛÛ‹YX‚‚ˆÈÈŒ‹LLLŒH8 %ÌˆÝ\LLŒ™XÛÝ™\žHÚXÚÜÚ[˜[Y]Y‚”™XYH›ÝXÝYÌˆ]\ÝÝ˜Z[š[™×ÜÝ]Kœ[™Y\\‹\Ý\LŒœÚ]H™YÚ\Ý\™YØØ[˜Z[™\ˆ[š\›Û›Y[ˆ›ÝØYÝXØÙ\ÜÙ[H[™Ø\œžH›Ü›X]Ü›Ý[™[ž][™ËYÌ‹\›Ú™XÝÜ‹\]Ù[ŒË[Ü˜K]Œ‹\ÝšXÝÝ\LŒX[šY™\ÝÒHŽLNXx )Œ™MÌXŽLÈ˜Z[˜X›H[œÛÜœËÜÚYÛ˜]\™H[šY\ËÜ[Z^™\ˆ[™ØÚY[\ˆÝ]K“‘ÈÝ]KÛÈ˜[šÈ“‘È]ËØ[\\ˆÜÚ][ÛˆMŒ[™ÛÜ›Ú^™H‹ˆH\›Z[˜[™XÙZ\\ÈÝ[XœÙ[ÛÈ\È›Ý™\È™XÛÝ™\˜Xš[]HÛ›H[™›È\™›Ü›X[˜ÙHÛZ[KˆUÜ˜Ú‹‰ÜÈY˜][ÙZYÚË[Û›H™XY\ˆ™Z™XÝÈHÝÜ™Y[TH“‘ÈØš™XÝÈHÛÛ›ÛY]Y]\ÙY\ÝYÙZYÚ×ÛÛ›OQ˜[ÙX[™Y›Ý[ÙYžHš[\Ëˆ]šY[˜ÙNˆØÜËÑÔ“ÕS‘‘U‹ÑÌ—ÐÒPÒÔÒS•ÕSQUSÓ—ÌŒŒLŒKžÚœÛÛ‹YX‚‚ˆÈÈŒ‹LLLŒH8 %ÌˆÛX[ˆ]\Ù]ØÛÜH]Y]Y‚•H›ÝXÝYÌˆÛX[ˆX[šY™\ÝÛÛZ[œÈNËLHRSˆ›ÝÜÈœ›ÛHY\šX[Z[™
+ŽKÍN
+K[š[X[˜XÚÈ
+LKMÊK[˜ÙU˜XÚÈ
+KÎMŠKSÕMÈ
+MKM
+KSÕŒ
+KŒMŠK“SÕˆ
+ŽM
+K™Y™\‹RÒUKUŒˆ
+ÍÎKÍJKÜÜÓSÕ
+ŽMÍ
+H[™SËP[[Ù[
+ÌÎJKˆ]\ÈÜ›Ý[™[ž][™È\˜Ù\[ÛˆY\][Ûˆ
+›Ú™XÝÜˆ
+È]Ù[ŒÈÔJK›ÝŒKÓÛ™R™]ˆY[]H˜Z[š[™ËˆSÕŒLH\È^XÚ]H[Ý]È•T”Õ\È^ÛYY›ÜˆXÚÈÙˆHYØ[RSˆ[XYÙH›ÛÝÈSÈ›Ý™[[››Ý][ÛœÈ\™H^ÛYYˆX[šY™\ÝÒH\ÈŽLNXLXÙŽLŒØMÍ™XMÍXMM™YÍ™™XXÌŒNYŒŒMLXXŽY™™Y™™MÌXˆ]šY[˜ÙNˆØÜËÑÔ“ÕS‘‘U‹ÑÌ—ÐÓPS—ÑUTÑUÔÐÓÔWÌŒŒLŒKžÚœÛÛ‹YX‚‚ˆÈÈŒ‹LLLŒH8 %Ü›Ý[™‘Uˆ\ÙHH™X[ÌˆÚ[™ÛKX˜XÚØ›Û™HÛ[ÚÙB‚’[\[Y[YH\ÛÛ]YØØ][[ÝÙÜ›Ý[™™]‹ØÛÝ\Y]ˆœ˜[YKÛ[Ù[\›Ý™[˜[˜ÙHÚXÚÙYÚ\™YÝ]KÌˆ™X]\™HœšYÙK\Y[˜[ZXÈY[]HÛÝËÝ\›ÙXÝ‘Uˆ™XYÝ]Ë^XÚ]Y\ËÓ›ËØYZ]ÛY™XÞXÛKÛY[[ÜžHXYËØ]\Ø[Y[]HY[[ÜžKØY™HY™XÞXÛHÛÛ›Û\ÜÚYÛ›Y[XÛÛ™][Û™YY[[ÜžHÜš]\È[™HÛ™K]Ë[Û™H[[YKˆÔH˜XÚÝØ\™[™Ø]\Ø[[[YH\ÝÈ\ÜÙYˆH™X[ÔHÛ[ÚÙHØYYHÙ™šXÚX[Ü›Ý[™[ž][™Èš\ÝX[[Ù[Hœ›ÛHH™YÚ\Ý\™YÌˆ˜\ÙHÚXÚÜÚ[
+ØÙŒLÍMXÙNÙÍØÙÍÍ™LMÌŒÌYMÌ˜ÌYŒŒØŒŽÌYŽLÌÍŽŽX˜YL˜
+K[˜ÛÙYÛ™HSÕMÈ[XYÙHÛ˜ÙKÛÛYÛÈ™X[›Þ\È[ÈžMŒ™YÚ[ÛˆÚÙ[œË[™ÛÛ\]Yš[š]H\YÜÜËØ˜XÚÝØ\™ÛÜ[Z^™\‹\Ý\ˆÝ[ÜÜÈŒMÎNLÍ‹ËŒÈÚPˆXZÈ[ØØ]YMÈËœšYÙH›ÜØ\™ÛÝ[K[™\[™[“H[œÝ[˜Ù\Èˆ\È\È[™Ú[™Y\š[™È]šY[˜ÙHÛ›NÈ›È˜XÚÚ[™ÈÜˆØÚY[YšXÈØZ[ˆ\ÈÛZ[YY[™ÛÛ^X[[™ÝXYÙK\Ý]H™]\›ˆ\ÈY[]KXÛÛ™][Û™YÜ›Ý[™[™È™[XZ[ˆ[™[™ËˆHš\œÝLÌL][\˜Z[Y™Y›Ü™H[Ù[ÛÛœÝXÝ[Ûˆ™XØ]\ÙHX˜\ÙM\ÈXœÙ[ÈHÝXØÙ\ÜÙ[[ˆ\ÙYH^\Ý[™ÈÜ›Ý[™[ž][™ÈÙ\š[™È[š\›Û›Y[[™HØ[YH[[]]X›HÚXÚÜÚ[ˆ]šY[˜ÙNˆØÜËÑÔ“ÕS‘‘U‹ÔTÑWÐWÔ‘PSÔÓSÒÑWÌŒŒLŒKžÚœÛÛ‹YX‚‚ˆÈÈŒ‹LLLŒH8 %Ü›Ý[™‘Uˆ\ÙHˆÚÚXÙKÖY\ËS›È[ÝÛÛ\]Y‚H›Ý[™Y™X[[Ý™]\ÙYÌˆSÕMËL‹Q”Ó“ˆRSˆœ˜[Y\È[™NLˆš[Üˆ˜]]™HÜ›Ý[™[ž][™È›ÜÜØ[›Þ\Ë™K\ÛÛYÛ˜ÙH\ˆœ˜[YHÚ]HÌˆ˜\ÙHš\ÝX[ÚXÚÜÚ[ÒHØÙŒLÍMXÙNÙÍØÙÍÍ™LMÌŒÌYMÌ˜ÌYŒŒØŒŽÌYŽLÌÍŽŽX˜YL˜ˆHœ›Þ™[ˆÌˆ]šY[˜ÙH™Y\YY[]HÚÚXÙKYZ]Y\ËÓ›ËY™XÞXÛH[™Y[[ÜžH™XYÝ]ÎÈœ˜[Y\È™XÙZ]™YNLˆÜ[Z^™\ˆ\]\È[™Hš[˜[œ˜[Y\ÈÙ\™HHØ[YK]šY[È[\Ü˜[]™[ÜY[ÛÝ]ˆY[]HXØÝ\˜XÞHÚ[™ÙY˜Z[ˆŒŒNOŒÌŒ[™[\Ü˜[Y]ˆŒÍŒËOŒLŽÈYZ]XØÝ\˜XÞHÚ[™ÙY˜Z[ˆŒLŒ‹OŒŽLÈ[™[\Ü˜[Y]ˆŒLÌÌKOŒŽLMLËˆ[ˆXÝX[ZYÚYœ˜[YH™\^HÚ]Ý]XXÚ\ˆY[[ÜžH›ÙXÙY™YH\œÚ\Ý[™YXÝY˜XÚÜÈÚ]Û™HØXÚYÌˆ™X]\™H›ÜØ\™\ˆœ˜[YKˆ\È\ÈHXXÚ\‹Y›Ü˜ÙY[™Ú[™Y\š[™ÈÛÛ›Û›Ý[ˆ[™\[™[ÕKÙÙ[™\˜[^˜][Ûˆ™\Ý[È[™ÝXYÙHY[‹\Ý]HÛÝ\[™È[™Y[]KXÛÛ™][Û™YÜ›Ý[™[™È™[XZ[ˆ[›YX\Ý\™YˆHš\œÝ™\^H˜Z[YÛˆHYØXÞKÛ™]ÈY[[ÜžHšY[Z\ÛX]Ú[™Ø\Èš^YÚ]Ý]Ú[™Ú[™È]HÜˆYÙ]ˆ]šY[˜ÙNˆØÜËÑÔ“ÕS‘‘U‹ÔTÑWÐ—ÔSÕÌŒŒLŒKžÚœÛÛ‹YX‚‚ÚXÚÜÚ[™XÙZ\š[˜[^™Y›ÜˆH\ÙHˆ[ÝˆY\\‹\Ý\NL‹œÒLMˆÎM™ŒØÎXÎMXLXLÍŒÍ˜ÍÎÍMLÍ˜ÍØ˜ŽM˜LØMYÙYYLÙLÙLÌ˜ÎLÈHš[˜\žH™[XZ[œÈØØ[[™\ˆH™YÚ\Ý\™YÝ]]\™XÝÜžH[™\È›Ý\ÚYÈÚ]X‹‚‚ˆÈÈŒ‹LLLŒH8 %˜]]™HÌˆÛX[ˆY[‹\Ý]H›Ø™HÛÛ\]Y‚•H›ÝXÝYÌˆÛX[ˆ˜\ÙH\ÈY\\‹\Ý\LŒœ
+Y\\ˆÒHŒ™MYY™˜™™ŒNX™NŒŒYLŒNŒŒ˜ŒÍMÌMŽMÙ˜˜NYY˜M™XYL˜Ý\LŒX[šY™\ÝÒHŽLNXx )Œ™MÌX
+HÛÛ\]YH˜]]™HÜ›Ý[™[ž][™ÈHÛX[ˆ]Ûˆ™X[›ÝÈ[ÝM×ÓSÕMËL‹QWÌWÙ[œÙWØÛX[—ÝŒ˜œ›ÛHSÕMÈRS‹ˆH™X[[XYÙHØ\È[˜ÛÙYÛ˜ÙNÈHÛX[ˆ[X™Y[™È[™XœšY[[™ÝXYÙHY[ˆÝ]HÙ\™H›ÝÌKLML‹MŒXÚ]K[XYÙK\YY[ˆ™XÝÜœËˆ›È[™\[™[“H[œÝ[˜ÙHØ\ÈÜ™X]YˆH›Ø™H\ÙYH›Ü›X[‘ŒMˆ]]ØØ\Ý›Ý[™\žH[™H^\Ý[™È›ØÙ\ÜË[ØØ[˜[œÙ›Ü›Y\œÈKŒMÈØXÚWÜÜÚ][Û˜ÛÛ\]Xš[]HÚ[KˆHš\œÝ\H[™TH˜Z[\™\ÈÙ\™H™\Ù\™Y[™š^Y]H›Ø™H›Ý[™\žKˆ\È\ÝX›\Ú\È˜]]™HY[‹\Ý]H]˜Z[Xš[]H›ÜˆHÚ\™YX˜XÚØ›Û™HÛÜšÈÛ›NÈ]\È›ÝH˜XÚÚ[™ÈY]šXËY[]HØZ[‹Ü›Ý[™[™È[\›Ý™[Y[ÜˆÙ[™\˜[^˜][Ûˆ™\Ý[ˆ]šY[˜ÙNˆØÜËÑÔ“ÕS‘‘U—ÐÓÕTQÔTÑWÐWÓUU‘WÒQS—Ô“Ð‘WÌŒŒLŒKžÚœÛÛ‹YX‚‚ˆÈÈŒ‹LLLŒH8 %˜]]™HÌˆÛX[ˆHÛÝ\Y\ÙHÈÛ[ÚÙHÛÛ\]Y‚•H™]È˜]]™QÌÛX[‘T›ÝšY\˜™\ÝÜ™\ÈH›ÝXÝYÌˆÝ\LLŒY\\ˆ[ˆY[[ÜžK™[™\œÈÛ™H™X[SÕMÈRSˆ›ÝË[™\Ù\ÈÛ™H˜]]™HÛX[ˆH›ÜØ\™È›ÙXÙH›ÝK[XYÙHY[ˆÚÙ[œÈ[™HÌKMŒX›Û‹Z[XYÙHÛÛ^X[ÚÙ[‹ˆHØ[YKX˜XÚØ›Û™HœšYÙHÛÛYÛÈ™X[Ø[™Y]H›Þ\Ë\ÙYHÛÛ^X[ÚÙ[ˆ[ÈH\YÜ›Ý[™‘Uˆ™XYÝ][™ÛÛ\]YHš[š]HÔH˜XÚÝØ\™\ÈÜ[Z^™\ˆÝ\ˆÝ[ÜÜÈKLÌÎËÛ\YÜ˜YY[›Ü›HÌËŒÌŒL‹ŒNHÚPˆXZÈ[ØØ][Û‹M‹ŽLHËœšYÙKÛ˜]]™H›ÜØ\™ÛÝ[È›ÝK[™\[™[“H[œÝ[˜Ù\Èˆ\È›Ý™\ÈHš\ÝX[
+ØÛX[‹[[™ÝXYÙHÛÝ\[™È[\™˜XÙH[œÈÛˆH™X[ÚXÚÜÚ[È]\ÈÝ[[ˆ[™Ú[™Y\š[™ÈÛ[ÚÙHÚ]›ÈÕKÒQŒKÜ›Ý[™[™È™XØ[Y[]HØZ[ˆÜˆÙ[™\˜[^˜][ÛˆÛZ[KˆUÜ˜Ú[Z]YH‘ŒM‹Ñ”Ìˆ“TÓ›Ü›H˜[˜XÚÈØ\›š[™È[ˆHœ›Þ™[ˆ[™ÝXYÙH]È]Y›Ý›ÙXÙHH›Û‹Yš[š]H˜[YH[™™[XZ[œÈ™XÛÜ™Y[ˆH™XÙZ\ˆH›Ü›X[Ìˆ[ˆ\™XÝÜžHØ\È[ÝXÚYˆ]šY[˜ÙNˆØÜËÑÔ“ÕS‘‘U—ÐÓÕTQÔTÑWÐ×ÓUU‘WÑWÐÓÕTQÔÓSÒÑWÌŒŒLŒKžÚœÛÛ‹YX‚‚ˆÈÈŒ‹LLLŒH8 %˜]]™HÌˆÛÛ^™XYÝ]ÌH[ÝÛÛ\]Y‚H›Ý[™YZYÚYœ˜[YHSÕMËL‹Q”Ó“ˆ[Ý\ÙYÌˆÝ\LŒÚ]HÙ™šXÚX[Hœ›Þ™[‹ˆXXÚÙˆ™X[œ˜[Y\ÈYÛ™H˜]]™HH›ÜØ\™ÈHÝÛœÝ™X[HÜ›Ý[™‘Uˆ\Y™XYÝ]™XÙZ]™YHÛÛY[XYÙH™YÚ[ÛœÈ\ÈØ[YKYœ˜[YHÛX[‹[[™ÝXYÙHÛÛ^ˆ›Ý\ˆœ˜[Y\ÈÙ\™H˜Z[ˆ[™›Ý\ˆØ[YK]šY[È[\Ü˜[]™[ÜY[Ú]™]š[Ý\ËYœ˜[YHÕ[X]ÚY™YÚ[ÛˆÚÙ[œÈ\È^XÚ]XXÚ\‹Y›Ü˜ÙYØ]\Ø[ÛÝËˆÙ[™H™XYÝ]\]\ÈÚ[™ÙYY[]HXØÝ\˜XÞH˜Z[ˆŒÌŒN8¡¤ŒÌNˆ[™[\Ü˜[Y]ˆŒÌŒN8¡¤ŒÌŒŽÈYZ]XØÝ\˜XÞHÚ[™ÙY˜Z[ˆŽLLLŽL8¡¤ŒŽLLLŽL[™[\Ü˜[Y]ˆÎLÌŒø¡¤ŒŽLLLŽLˆ\È\ÈH›Ý[™YX\›˜Xš[]HÛÛ›ÛÛ›Nˆ›ÈÕKÒQŒK[™\[™[]šY[ÈÜˆš[˜[˜XÚÚ[™ÈÛZ[KˆHš\œÝ][\ÛÛ\]YHÛÜ]˜Z[Y]™XÙZ\Üš][™È™XØ]\ÙHHÝ]]\™XÝÜžHØ\ÈXœÙ[ÈH\™XÝÜžHš^Ø\ÈHÛ›H™\[ˆÚ[™ÙH[™H˜Z[Y][\\È^ÛYYˆ]šY[˜ÙNˆØÜËÑÔ“ÕS‘‘U—ÐÓÕTQÔTÑWÐ×ÓUU‘WÐÓÓ•VÔSÕÌŒŒLŒKžÚœÛÛ‹YX‚‚ˆÈÈŒ‹LLLŒH8 %XÝ]™HÛØ[Û˜\ÚÝ]ÌˆÝ\LŒMLÂ‚•H›ÝXÝY›Ü›X[ÌˆÛX[ˆÝÛ™\ˆ\È[]™HÛˆÔ\ÈËÍH]]™[Ý\LŒMLËÌNŒÎÈ™XÙ[]™[˜]H\ÈLKŒMËÜÝ\[™H[™X\ˆ™[XZ[š[™È\Ý[X]H\ÈNKˆˆH]\Ý\˜X›HÚXÚÜÚ[\ÈY\\‹\Ý\LŒœÚ]›È\›Z[˜[™XÙZ\ˆÌSÕŒLH˜[Y][Û‹Z[ˆ^Ü\È\›Z[˜[›ÜˆKMÈœ˜[Y\È
+ÕHŒÌÌÍŽMŒKQŒHŒNMNNLKQÕÈNLÌÊNÈ\È™[XZ[œÈH˜[Y][Û‹Z[ˆÛÛ›Û˜]\ˆ[ˆH[TÕÛZ[KˆÌK[™K[[Ý]Y\Õ˜XÚÈ[™ÛÛ\XÝ™YK]\ÚÈÛ™R™]ˆÝÛ™\œÈ\™H[]™H[™ØZ][™ÈÛˆZ\ˆ™YÚ\Ý\™Y\[™[˜ÚY\ËÜ™\ÛÝ\˜ÙHØ]\ÈÚ]›È™XÛÜ™Y˜Z[\™NÈÛÛ\XÝÛ™R™]ˆÜ[Z^™\ˆ\]\È™[XZ[ˆˆH›ØÙ\ÜÈ]Y]›Ý[™›È]™HSÕ[Û›HÜ[Z^™\‹ˆ]šY[˜ÙNˆØÜËÑÔ“ÕS‘‘U‹ÐPÕU‘WÑÓÐSÔÕUT×ÌŒŒLŒWÑÌ—ÔÕTLŒMLËžÚœÛÛ‹YX‚‚ˆÈÈŒ‹LLLŒH8 %Y\™ÙY\ÙHÈØ]\Ø[Y[[ÜžH[œ]ÛÛ˜XÝ‚“Y\™ÙYH\ÛÛ]YÚ[™ÛKX˜XÚØ›Û™HY[[ÜžKZ[œ][\[Y[][Ûˆ[ÈHÜ›Ý[™‘Uˆ]šY[˜ÙHœ˜[˜ÚˆY[[ÜžUÚÙ[”›Ú™XÝÜ˜\ÙYžHH\Y™XYÝ]™[XZ[œÈÛÛ\]X›NÈH™]ÈY[]SY[[ÜžUÚÙ[”›Ú™XÝÜ˜[™[š™XÝÚY[]WÛY[[ÜžX[œÙ\Û›HØ]\Ø[Y[]HÚÙ[œÈ™Y›Ü™HH™YÚ\Ý\™Y[œÝÙ\ˆ[™^™]\›ˆH[œÙ\[ÛˆÙ™œÙ]›ÜˆX™[ÚY[™Ë[™X]™HH\ØX›Y][œÛÜ‹ZY[XØ[ÈHÌˆ˜\Ù[[™KˆH›ØÝ\ÙYÛÛ˜XÝ\ÝÈ\ÜÙY[ˆHÙ\š[™ÈUÜ˜Ú[š\›Û›Y[
+È\ÝÊH[™H^\Ý[™È\ÙHHÛÜ™H[˜Ý[ÛœÈ\ÜÙY
+ÈÚXÚÜÊNÈÛÝ\YÛÝ\˜Ù\ÈÛÛ\[Kˆ\È\È[ˆ[œ]XÛÛ˜XÝ™\Ý[Û›NˆHÙ™šXÚX[HXÛÙ\ˆÛÚËÙ[™\˜]YX›Þ™XØ[[™ÌÐÌKÐÌˆÕKÒQŒH]˜[X][Ûˆ™[XZ[ˆ[™[™Ë‚‚ˆÈÈŒ‹LLLŒH8 %›ØÚÙYXØÚY[[XXÚ\‹[Û›HÕ“SÕ][˜Ú‚•H™YÚ\Ý\™Y™X[™YK]\ÚÈŒˆX[šY™\ÝÛÛZ[œÈLÌKŒM˜]]™HSÕ›ÝÜËÍˆ˜]]™H“SÕ›ÝÜË[™ÌÕ“SÕ˜\ÙHXXÚ\‹XÛÛ›Û›ÝÜÎÈ]ÈYœ˜[YH˜]]™HSÈ\˜Ú]™H\È›ÈØ]YÛÜžHX™[È[™\È˜[Y][Û‹[Û›KˆHØZ][™È›Ý\‹QÔHÛ™R™]ˆÝÛ™\ˆY™\›ÈÜ[Z^™\ˆ\]\ËˆHÝÜY]ØZ][™ÈÝÛ™\ˆ™Y›Ü™H[žH][˜Ú™\Ù\™Y]ÈÝ]HÛ˜\ÚÝ[™X\šÙY]UTÑQÑ“Ô—ÓUU‘WÓÕ“SÕÔ“ÕÔØˆH]Y]YHØ]H›ÝÈ™\]Z\™\È[ˆ^XÚ]˜]]™HÕ“SÕRSˆØ[™Y]KØ[››Ý][Ûˆ›Ú[ˆ
+˜]]™WÛÝ›[ÝÝ˜Z[š[™×Ü›ÝÜÏ]YXÝ›[ÝÝ˜Z[š[™×Û[ÙO[˜]]™X
+H[™™]\›œÈÐRUS‘×ÓUU‘WÓÕ“SÕÔ“ÕÔØÝ\Ú\ÙKˆ›È™YK]\ÚÈ˜Z[š[™ÈÜˆÕ“SÕØZ[ˆ\ÈÛZ[YYÈH\ÝÜšXØ[ÛÝ\˜ÙHÛÝ\œÙH™[XZ[œÈ™\Ù\™Y‚‚ˆÈÈŒ‹LLLŒH8 %XÝ]™HÛØ[Û˜\ÚÝ]ÌˆÝ\LŒNMB‚HÚ[™ÛH]]Üš]]]™H™XYÙˆH›ÝXÝYÌˆ]™[ÙÈ›Ý[™]™[Ý\LŒNMKÌNŒÈÚ]š[š]HÜÜÈŒŒNLÌMKÜ˜YY[›Ü›HKMŒÍKXZÈY[[ÜžHL‹ŽŽLÈÚP‹[™HL\Ý\˜]HÙˆLKŒNËÜÝ\
+[™X\ˆ™[XZ[™\ˆX›Ý]NKH
+KˆH]\Ý\˜X›HÚXÚÜÚ[™[XZ[œÈY\\‹\Ý\LŒœ[™H\›Z[˜[™XÙZ\\ÈXœÙ[ˆÌSÕŒLH™[XZ[œÈHÛÛ\]HMMËYœ˜[YH˜[Y][Û‹Z[ˆ˜]\˜[]š\ÚXš[]HÛÛ›ÛÚ]ÕHŒÌÌÍŽMŒH[™QŒHŒNMNNLNÈ]\È›ÝH[TÕÛZ[KˆHÛÛ\XÝ™YK]\ÚÈ]Y]YH\È]\ÙY™Y›Ü™HÜ[Z^™\ˆ][˜Ú™XØ]\ÙH˜]]™HÕ“SÕRSˆ›ÝÜÈ\™HZ\ÜÚ[™ÎÈ]ÈÜ[Z^™\ˆ\]HÛÝ[™[XZ[œÈ™\›È[™HÝX\™™\]Z\™\È˜]]™HÕ“SÕ›Ý™[˜[˜ÙKÛ[ÙKˆ›Èš[˜[ÌKÚ[[Ý]ÓÛ™R™]‹ÖY\Õ˜XÚÈ™\Ý[Ø\È›Û[ÝYˆ]šY[˜ÙNˆØÜËÑÔ“ÕS‘‘U‹ÐPÕU‘WÑÓÐSÔÕUT×ÌŒŒLŒWÑÌ—ÔÕTLŒNMKžÚœÛÛ‹YK‚‚ˆÈÈŒ‹LLLŒH8 %˜]]™HÕ“SÕRSˆ›Ú[ˆ\[[™H™\\™Y‚YYÛÛËÙÜ›Ý[™™]‹Ü™\\™WÛ˜]]™WÛÝ›[ÝÝ˜Z[—Ú›Ú[‹œXHÔK[Û›H›Ú[™\ˆ›ÜˆH]\™HÛÛ\]H˜]]™HÜ›Ý[™[ž][™ÈSÈRSˆÝ™X[Kˆ]˜[Y]\ÈÙœ˜[Y\ËÝ˜Z[‹Ø›Ý™[˜[˜ÙK™\]Z\™\È˜]]™H™YÚ[Ûˆ™X]\™\È[™ÕYœ™YH[Ù[Y]Y]K™\Ù\™\ÈØ[™Y]H›Þ\Ë\ÜÚYÛœÈÙ™šXÚX[˜\ÙHØ]YÛÜžH\™Ù]ÈÛ›H›ÝYÚ]\›Z[š\ÝXÈÛ™K]Ë[Û™H[ÕHLHX]Ú[™ÈÈSÈRSˆ[››Ý][ÛœË[™[Z]ÈH^\Ý[™ÈY\˜\˜ÚXØ[Ø]YÛÜžH]Y\Ý[ÛœÈÚ]Û‹Y[X[™™X[Z[XYÙHÜ›Ü™XÚ\\ËˆH™YÚ\Ý\™YSÈRSˆÛÝ\˜ÙHÛÛZ[œÈNÍ[XYÙ\ËMŒÎH[››Ý][ÛœÈ[™ÍH˜\ÙHØ]YÛÜšY\ÈX\YÈHLŒËXÛ\ÜÈ›ØØX[\žNÈLHØ]YÛÜšY\È\™H^XÚ]H[›X\YˆHÝ\œ™[Yœ˜[YKÌÍLŒŽXØ[™Y]H˜]]™HSÈ\˜Ú]™H\È˜[Y][Û‹[Û›H[™\È™Z™XÝYžHHRSˆ]ÝX\™ˆWØÛÛ\[XÛ™KYœ˜[YHÞ[]XÈ™Y›YÚ[™˜[Y][Û‹\ØÛÜH™Z™XÝ[Ûˆ\ÜÙYÈ›ÈÔHÜˆÜ[Z^™\ˆ\]HØØÝ\œ™YˆHÛÛ\XÝ™YK]\ÚÈÝÛ™\ˆ™[XZ[œÈ]\ÙY[™[™ÈHÛÛ\]H˜]]™HÕ“SÕRSˆ\˜Ú]™Kˆ]šY[˜ÙNˆØÜËÑÔ“ÕS‘‘U‹ÓUU‘WÓÕ“SÕÕRS—Ò“ÒS—ÌŒŒLŒKžÚœÛÛ‹YK‚‚ˆÈÈŒ‹LLLŒH8 %SÈRSˆ˜]]™HÕ“SÕØÛÜH™YÚ\Ý\™Y‚”™YÚ\Ý\™YHÔK[Û›HØÛÜHX[šY™\Ý›Üˆ[NÍSÈRSˆ[XYÙ\ÈXÜ›ÜÜÈLšY[ÜËˆH[[YHX[šY™\ÝÛÛZ[œÈÛ›HXœÛÛ]H[XYÙH]È[™Hš^YLŒËXØ]YÛÜžH]Y\žH›ØØX[\žNÈ]Ø\œšY\È˜Z[š[™×ÛÛ—Ý\×ÜØÛÜO]YX›Üˆ[ˆ^XÚ]^ÜØ]H]›ÈÕšY[ËX™[ÈÜˆ]˜[X][Ûˆ]KˆÝ™X[WÝ[×Û˜]]™WØØ[™Y]\ËœX›ÝÈ™\]Z\™\ÈKX[ÝË]˜Z[š[™Ë\ØÛÜX›Üˆ\ÈX[šY™\Ý[™™Z™XÝÈ˜[Y][ÛˆX[šY™\ÝÈÚ]]›YÎÈHØÛÜHØ]HØ\È\ÝYÚ]Ý][\Ü[™ÈH[Ù[Ù\šXÙKˆH^Ü\ˆØ\È›Ý][˜ÚY™XØ]\ÙHÝ\œ™[Ô\È™[XZ[ˆØØÝ\YYÛÈ˜]]™HØ[™Y]H›ÝÜÈ[™Ü[Z^™\ˆ\]\È\™HÝ[™\›Ëˆ]šY[˜ÙNˆØÜËÑÔ“ÕS‘‘U‹ÕS×ÕRS—ÓUU‘WÔÐÓÔWÌŒŒLŒKžÚœÛÛ‹YK‚‚ˆÈÈŒ‹LLLŒH8 %ÛÜœ™XÝY›ØÙ\ÜÈ]Y]]ÌˆÝ\LŒŒÍB‚HÛÜœ™XÝY›ØÙ\ÜË]X›H]Y]
+Hš\œÝ\Ù\›˜[YKYš[\™Y][\Ø\È[˜[Y™XØ]\ÙHHXØÛÝ[\È\X
+H›Ý[™H›ÝXÝYÌˆ\™[Ü˜[šÜÈ[]™H]LŒŒÍKÌNŒÈÛˆÔ\ÈËÍKÌKØ[™KÖY\Õ˜XÚÈØZ]\œÈ[]™K[™›È™YÚ\Ý\™YSÕ[Û›HÜˆYØXÞHŒHÛ™R™]ˆÜ[Z^™\ˆÛÛ[X[™ˆHÛÛ\XÝ™YK]\ÚÈÝÛ™\ˆ™[XZ[œÈ]\ÙY™Y›Ü™HÜ[Z^™\ˆ\]\È™XØ]\ÙH˜]]™HÕ“SÕRSˆ›ÝÜÈ\™HXœÙ[ˆ›Ü™ZYÛˆÔH›ØœÈÙ\™H›ÝÝXÚYˆ]šY[˜ÙNˆØÜËÑÔ“ÕS‘‘U‹Ô“ÐÑTÔ×ÐUQUÌŒŒLŒWÑÌ—ÔÕTLŒŒÌËžÚœÛÛ‹YK‚‚ˆÈÈŒ‹LLLŒH8 %XÝ]™HÛØ[Û˜\ÚÝ]ÌˆÝ\LŒB‚•H›ÝXÝYÌˆÛX[ˆ]™[ÙÈ™XXÚYLŒKÌNŒÈÚ]š[š]HÜÜÈŒNMLMNÈH\ÝL\Ý\˜]H\ÈLKŒˆËÜÝ\[™H[™X\ˆ™[XZ[™\ˆ\ÈX›Ý]NKŒÈˆH\˜X›HÚXÚÜÚ[™[XZ[œÈÝ\LŒ[™›Èš[˜[™XÙZ\^\ÝËˆÌ™[XZ[œÈHMMËYœ˜[YHSÕŒLH˜[Y][Û‹Z[ˆÛÛ›Û
+ÕHŒÌÌÍŽMŒKQŒHŒNMNNLJNÈHÛÛ\XÝ™YK]\ÚÈ]Y]YH™[XZ[œÈ]\ÙYÚ]™\›ÈÜ[Z^™\ˆ\]\È[™[™È˜]]™HÕ“SÕRSˆ›ÝÜËˆ]šY[˜ÙNˆØÜËÑÔ“ÕS‘‘U‹ÐPÕU‘WÑÓÐSÔÕUT×ÌŒŒLŒWÑÌ—ÔÕTLŒKžÚœÛÛ‹YK‚‚ˆÈÈŒ‹LLLŒH8 %Ü›Ý[™‘Uˆš^YXØ[™Y]HSÕŒLÈ™\^H\ÝX›\Ú\È˜Z[\™H›Ý[™\žB‚YYH™\›ÙXÚX›HÔH]˜[X]Üˆ›ÜˆH[[]]X›H˜]]™HÜ›Ý[™[ž][™ÈØ[™Y]KÜ™YÚ[ÛˆØXÚKˆHÝ\œ™[NL‹\Ý\ÛÝ\Y™XYÝ]™\^YY[LŽ™YÚ\Ý\™YSÕŒLÈRSˆœ˜[Y\È
+MÎØ[™Y]\ËLŽØXÚY™X]\™HØ[ÊHÚ]Ý]HÙXÛÛ™“H[™Ù[™\˜]YMLˆ™YXÝ[ÛœÈÛˆÍˆœ˜[Y\Ëˆ˜XÚÑ]˜[™]\›™YÕHŒÎLK]HŒNNMLË\ÜÐHŒÍÎMÌKQŒHŒLŒÌÌKQÕÈK”K“ˆMLÈLKŒˆØ[™Y]\ÈÙ\™H^XÚ]‘R‘PÕˆHØXÚH™Y]\ÈHÝ\œ™[ÌˆÛX[ˆ\›Z[˜[ÚXÚÜÚ[[™Ý™\›\ÈRSˆØÛÜKÛÈ\È\ÈHš^YXØ[™Y]H\ÜÛØÚX][Û‹Ü[[YHXYÛ›ÜÝXË›Ý[™\[™[ÌˆÜˆ[™]ËY[™]šY[˜ÙKˆHš\œÝ]˜[X]Üˆ][\È^ÜÙYÛ›H\™XÝY[žHÞ\Ëœ][™[TKL‹ÛÛU˜XÚÑ]˜[ÛÛ\]Xš[]H\ÜÝY\ÎÈ›ÝÙ\™Hš^YØØ[HÚ]Ý]Ú[™Ú[™ÈY]šXÈÛÙHÜˆ[œ]Ëˆ]šY[˜ÙNˆØÜËÑÔ“ÕS‘‘U—ÐÓÕTQÔTÑWÐ—Ñ’VQÐÐS‘QUWÑUSÌŒŒLŒKžÚœÛÛ‹YX[™H™YÚ\Ý\™YÝ]]™XÙZ\‚‚•HØ[YKZ[œ]\ÝÜšXØ[ÛÛ\XÝÛÛ›Û
+ÚXÚÜÚ[›[ÝÛ˜]]™MÌ—ÜÝYÙWÝŒKØœ›ØYÛ˜]]™WÝ˜Z[š[™ËØÚXÚÜÚ[œ
+H™]\›™YÕHŒÌÍLMK]HŒÌNÌÌË\ÜÐHŒÍMÌŒKQŒHŒÍNLÌŒMŽKQÕÈMNK”LNH[™“ˆKÌ‹ˆ]\È[ˆÙ™›[™H][KXÛÛ\Û™[™Y™\™[˜ÙK›ÝHÚ[™ÛKX˜XÚØ›Û™H™\Ý[ˆHØ\ÛÛ™š\›\È]HÛÝ\Y™XYÝ]	ÜÈŒÎLHÕH\ÈH™X[\ÜÛØÚX][Û‹ØYZ\ÜÚ[Ûˆ˜Z[\™H[™ÚÝ[šYÙÙ\ˆH›Ý[™Y™\Z\ˆÝYH˜]\ˆ[ˆHÛ™È›Ú[š[™][™K‚‚ˆÈÈŒ‹LLLŒH8 %\ÙHÈØ]\Ø[Y[[ÜžH™Yš[ÛÛ˜XÝ‚YYØØ][[ÝÙÜ›Ý[™™]‹ØÛÝ\YØØ]\Ø[ÛY[[ÜžKœXÚXÚ[œÙ\ÈØ]\Ø[Y[]HÚÙ[œÈÛ›H]H\›Z[˜[›Û\›Ý[™\žH\ÙYžHÜ›Ý[™[ž][™ÈØ]\Ø[˜›ÞÙ[™\˜][Û‹^[™È][[Û‹ÜÜÚ][Û‹ØØXÚH[œ]Ë[™™\Ù\™\ÈH\ØX›Y]žH[œÛÜˆY[]KˆHÙ]™[‹]\ÝÔHÛÛ˜XÝÝZ]H\ÜÙYÈH˜ZÙH[™ÝXYÙHÝÙ\ˆÚÝÙYHÚ[™ÙY™^]ÚÙ[ˆÙÚ]Y\ˆY[[ÜžH[œÙ\[ÛˆÚ]^XÝHÛ™H™Yš[Ø[[™›ÈÙXÛÛ™“Kˆ™X[ÌˆÔH™Yš[ÛÜœ™XÝ]™\œÝ\Ë\ÚY™›YY[[ÜžH›ÞÙ[™\˜][Û‹[™ÕKÒQŒHY™™XÝÈ™[XZ[ˆ[™[™È™XØ]\ÙHÔ\ÈËÍH\™H›ÝXÝYžH›Ü›X[Ìˆ[™HÝ\ˆ]šXÙ\È]™H›Ü™ZYÛˆÛÛ\]HÝÛ™\œËˆ]šY[˜ÙNˆØÜËÑÔ“ÕS‘‘U—ÐÓÕTQÔTÑWÐ×ÓQSSÔ–WÔ‘Q’SÐÓÓ•PÕÌŒŒLŒKžÚœÛÛ‹YX‚‚ˆÈÈŒ‹LLLŒH8 %]]Üš]]]™HÌˆ›ÙÜ™\ÜÈ™Yœ™\Ú]Ý\LŒŽM‚HÚ[™ÛH›Û‹\Û[™È]Y]›Ý[™H›ÝXÝY›Ü›X[ÌˆÛX[ˆ\™[Ü˜[šÜÈ[]™HÛˆÔ\ÈËÍH]]™[Ý\LŒŽMÌNŒËˆH]™[\Èš[š]H
+ÜÜÈŒŒMËÜ˜YY[›Ü›HKMLLL‹XZÈY[[ÜžHL‹ŽŽÍÚPŠNÈY\\‹\Ý\LŒœ[™]\ÝÝ˜Z[š[™×ÜÝ]Kœ™[XZ[ˆH]\Ý\˜X›HÚXÚÜÚ[È[™š[˜[Ü™XÙZ\šœÛÛ˜\ÈXœÙ[ˆÌK[™K[[Ý]Y\Õ˜XÚÈ[™ÛÛ\XÝ™YK]\ÚÈÝÛ™\œÈ™[XZ[ˆ\[™[˜ÞKÜ™\ÛÝ\˜ÙHØZ]\œËˆ›È›ÝXÝY›ØÙ\ÜÈÜˆ^\š[Y[[›ÝØÛÛØ\ÈÚ[™ÙYˆHØ]\Ø[[Y[[ÜžH™Yš[ÛÛ˜XÝ™[XZ[œÈ[™Ú[™Y\š[™Ë[Û›H[™[™È[ˆ^Û\Ú]™HÔHÚ[™ÝÈ›Üˆ™X[Ù[™\˜]YX›ÞÛÛ\\š\ÛÛ‹‚‚ˆÈÈŒ‹LLLŒH8 %š^YXØ[™Y]HXÝ[Û‹Y\ÝšX][Ûˆ™\Z\ˆÛÛ\]Y‚•Hš\œÝSÕŒLÈš^YXØ[™Y]H™\^HÚÝÙYHØ[™Y]HÛÛÚ]‹ŽIHÕX›ÞÛÝ™\˜YÙH][ÕHHK]HÚÜSÕMË]˜Z[™Y™XYÝ]Ù[XÝY‘R‘PÕ›ÜˆÍËM	HÙˆMÎØ[™Y]\È[™Ü™X]YÛ›HÛÈš\ËˆH›Ý[™Y™\Z\ˆ˜Z[™YÛ›HÛˆHš\œÝœ˜[Y\ÈÙˆH™YÚ\Ý\™YSÕŒLÈRSˆÛ\ÙZYÚYY[]KXÚÚXÙHÛ\ÜÙ\Èœ›ÛH]˜Z[š[™È[ˆÚ][ˆ[™\œÙKYœ™\]Y[˜ÞHØ\Ùˆ[™œ›Þ™HHš[˜[œ˜[Y\È™Y›Ü™HÜ[Z^˜][Û‹ˆY\ˆNÔH\]\Ë[\Ü˜[Y]ˆ™XYÝ]Y[]HXØÝ\˜XÞHØ\ÈŽÌMÌŒ[™YZ]XØÝ\˜XÞHŽLÎŒÈ™YXÝY[Y[[ÜžH[[YH™\^H™]\›™YÕHŒÌŽMK]HŒŒÍNŒK\ÜÐHŒÎ‹QŒHŒMÍÌŽKQÕÈN”Ë“ˆKŒÍÛˆKLH™YXÝ[ÛœÈXÜ›ÜÜÈŒHœ˜[Y\ËˆH™X]\™HØ[È\ÙYHØXÚYÚ[™ÛKX˜XÚØ›Û™HÝ]H[™›ÈÙXÛÛ™“Kˆ\È\ÈHRS‹\ØÛÜHYXÚ[š\ÛH™\Z\‹›Ý[ˆ[™\[™[™[˜ÚX\šÈÜˆÌˆÛX[ˆ™\Ý[È]ÈØÛÜH[™XXÚ\‹Y›Ü˜ÙYÛ\ÜÚYšXØ][Ûˆ›Ý[™\žH\™H^XÚ][ˆØÜËÑÔ“ÕS‘‘U—ÐÓÕTQÔTÑWÐ—Ñ’VQÐÐS‘QUWÔ‘TRT—ÌŒŒLŒKžÚœÛÛ‹YX‚ˆÈÈŒ‹LLLŒH8 %™Y\™XÝÛØ[]Y]]ÌˆÝ\LŒÌ‚‚HÚ[™ÛH]]Üš]]]™H]Y]ÛÛ™š\›YYH™YÚ\Ý\™YSÕŒLHÌ˜]]™H^Ü\È\›Z[˜[›ÜˆKMÈ˜[Y][Û‹Z[ˆœ˜[Y\È
+ÕHŒÌÌÍËQŒHŒNMNN
+H[™›Ý[™›È]™HÜ›Ý[™‘UˆSÕ[Û›HÜ[Z^™\ŽÈ›È\ÝÜšXØ[›ØÙ\ÜÈØ\ÈÝÜYÜˆÝ™\Üš][‹ˆ›Ü›X[ÌˆÛX[ˆ™[XZ[œÈ[]™HÛˆÔ\ÈËÍH]Ý\LŒÌ‹ÌNŒËÚ]HL\Ý\˜]HÙˆLKˆÙXÛÛ™È\ˆÝ\[™H[™X\ˆ™[XZ[™\ˆÙˆX›Ý]NKŒÝ\œËˆH]\Ý\˜X›HÚXÚÜÚ[\ÈÚXÚÜÚ[ËØY\\‹\Ý\LŒœ[™Hš[˜[™XÙZ\\ÈXœÙ[ˆÌHÔMK[™K[[Ý][™Y\Õ˜XÚÈÝÛ™\œÈ™[XZ[ˆØZ][™ÎÈHÛÜœ™XÝY™X[™YK]\ÚÈÛ™R™]ˆÝÛ™\ˆ™[XZ[œÈ]\ÙY]™\›ÈÜ[Z^™\ˆ\]\È™XØ]\ÙH˜]]™HSÈRSˆÕ“SÕ›ÝÜÈ\™H›Ý™\Ù[ˆ]šY[˜ÙNˆØÜËÑÔ“ÕS‘‘U‹ÐPÕU‘WÑÓÐSÔÕUT×ÌŒŒLŒWÑÌ—ÔÕTLŒÌ‹žÚœÛÛ‹YX‚‚ˆÈÈŒ‹LLLŒH8 %Ü›ÜÜËY\ÚÈ˜]]™HÕ“SÕ\˜Ú]™H]Y]]ÌˆÝ\LŒÍB‚H™XY[Û›HÙX\˜ÚÙˆÙ]LÝ\Ù\˜Ù]LKÝ\Ù\˜[™Ù]LËÝ\Ù\˜›Ý[™›ÈÛÛ\]HSÈRSˆ˜]]™HØ[™Y]H\˜Ú]™KˆHÛ›H^\Ý[™È˜]]™HSÈØ[™Y]H\˜Ú]™H™[XZ[œÈHYœ˜[YHœ˜[Y\ËÝ˜[Ý™X[H[™\È[™[YÚX›H›ÜˆRSˆ›Ú[š[™ËˆHÛÜœ™XÝY™X[™YK]\ÚÈ]Y]YH™[XZ[œÈ]\ÙYÚ]™\›ÈÜ[Z^™\ˆ\]\ÎÈ›È˜[Y][Ûˆ\˜Ú]™HØ\È™[X™[Y[™›ÈXXÚ\‹[Û›H˜[˜XÚÈØ\È][˜ÚYˆ]šY[˜ÙNˆØÜËÑÔ“ÕS‘‘U‹ÓUU‘WÓÕ“SÕÐTÒU‘WÐUQUÌŒŒLŒKžÚœÛÛ‹YX‚‚ˆÈÈŒ‹LLLŒH8 %Ü›Ý[™‘Uˆ›Ú[Y[]HÛÜœ\È™XZ[ÛÛ˜XÝ[™\ÙHˆX›][ÛœÂ‚YYÛÛËÙÜ›Ý[™™]‹ØÛÝ\YØZ[Ú›Ú[ÚY[]WØÛÜœ\ËœX[™]È›ØÝ\ÙY˜ÛÛ˜XÝ\ÝËˆHZ[\ˆ›Ü›X[^™\È™YÚ\Ý\™YSÕÔ“SÕÓÕ“SÕ›ÝÜÈÚ]Ý]š[™[[™È›Þ\ÈÜˆ\™Ù]Ë™XÛÜ™ÈØ[™Y]H›Ý™[˜[˜ÙH[™Ø]\Ø[Y[[ÜžKœ™Z™XÝÈ]\™KÝ\Ý]šY[˜ÙK[™\È[ˆ^XÚ]˜]]™K[Û›HØ]H]™Z™XÝÂXXÚ\ˆÜ›ÜËˆH™X[L‹\›ÝÈØ[\Hœ›ÛHH™YÚ\Ý\™Y\ÙKPˆÛÜœ\È›ÙXÙYHSÕÈ“SÕ[™Õ“SÕ›ÝÜÎÈ›ÝÜÈY˜]]™HØ[™Y]\È[™™[XZ[™Y™^XÚ]˜\ÙHXXÚ\‹Ù[\KXØ[™Y]H›ÝÜËÛÈ˜]]™WÛÝ›[ÝÝ˜Z[š[™×Ü›ÝÜØØ\Â™˜[ÙKˆH^\Ý[™ÈÌˆÝ\LLLŒÐŒKÐŒˆ›Ý[™Y™XYÝ]™XÙZ\ÈÙ\™B˜ÛÛœÛÛY]Y[ÈØÜËÑÔ“ÕS‘‘U—ÐÓÕTQÔTÑWÐ—ÐP“USÓ”×ÌŒŒLŒKžÚœÛÛ‹YX‚•H™YHŒ]\]H\›\È[™Yœ˜[YHØ]\Ø[™\^H\™H[™Ú[™Y\š[™È]šY[˜ÙB›Û›NÈ›ÈÙ™šXÚX[˜XÚÚ[™ÈY]šXÈÜˆÕ“SÕ˜]]™K]˜Z[š[™ÈÛZ[HØ\È›Û[ÝY‚‚•H˜]]™K[Û›HÛÜœ\ÈØ]HØ\È[ˆÝ™[™Ý[™YÈ™Z™XÝ›ÝÜÈØ\œžZ[™È[‚™^XÚ]ÝÚ[—Û[Ù[Ú[œ]ØÕÒQ×Ú[—Û[Ù[Ú[œ]›YÈ]™[ˆÚ[ˆZ\‚˜Ø[™Y]K\ÛÝ\˜ÙHÝš[™ÈÛÚÜÈ˜]]™KˆH›ØÝ\ÙYÛÛ˜XÝÝZ]H›ÝÈ\ÈL‚œ\ÜÚ[™ÈÚXÚÜÎÈ›ÈÛÝ\˜ÙH›ÝÜÈÜˆ˜Z[š[™È]Y]Y\ÈÙ\™HÚ[™ÙY‚‚•H\ÙKPˆ›Ú[ÛÜœ\ÈØ\È[ÛÈ]Y]YYØZ[œÝ[NËLHÌˆÛX[ˆRS‚œ›ÝÜËˆ\™H\™HÎ^XÝ[XYÙK\]Ý™\›\ÈÛÝ™\š[™ÈŽL[XYÙ\È
+ŒŒBšY[]K\Z\‹LNHØØÛ\Ú[Û‹\™XÛÝ™\žKÌÎ“SÕ
+NÈHÌÕ“SÕXXÚ\ˆ›ÝÜÂš]™H›È^XÝÝ™\›\ˆH]Y]™XYÈ›ÈÙ™šXÚX[]\ÝX™[È[™X\šÜÈBš›Ú[ÛÜœ\È\ÈRS‹\ØÛÜHÛÛ›ÛÈÛ›Kˆ]šY[˜ÙN‚˜ØÜËÑÔ“ÕS‘‘U—ÐÓÕTQÑUWÓÕ‘T“TÐUQUÌŒŒLŒKžÚœÛÛ‹YX‚‚ˆÈÈŒ‹LLLŒH8 %\™Ù]Y˜]]™HSÈ\˜Ú]™H™\ØØ[‚‚”™K\™XY]™\žH\ØÛÝ™\™YSÈØ[™Y]H\˜Ú]™H[™\ˆÙ]L‹Ý\Ù\‹ÓØØ]SSÕÑÜ›Ý[™‘U‹ÛÝ]]ËÙÜ›Ý[™™]˜ˆHÛÈÛX[Ø[™Y]HÛÛ›ÛÈ[™HYœ˜[YHÝ™X[\È[™\ÛÛ™HÈœ˜[Y\ËÝ˜[ÈH\™Ù\ˆYœ˜[YHÝ™X[H\ÈÍKŒŽØ[™Y]\È[™H˜]]™H™X]\™HØXÚH]\È^XÚ]HH˜[Y][ÛˆÝ™X[KˆÛ™H[˜\ÙKÓ›Ý™[Ý™X[H\È[\H[™˜Z[Y[™H™YÚ\Ý\™YNÍZ[XYÙKÍL]šY[ÈSÈRSˆX[šY™\Ý\È˜]]™WØØ[™Y]WÙ^ÜÜÝ\YY˜[ÙX[™˜]]™WÛÝ›[ÝÝ˜Z[š[™×Ü›ÝÜÏY˜[ÙXˆ›ÈÛÛ\]HSÈRSˆ˜]]™HØ[™Y]H\˜Ú]™H^\ÝËÛÈHÛÜœ™XÝY™YK]\ÚÈ]Y]YH™[XZ[œÈ]\ÙY]™\›ÈÜ[Z^™\ˆ\]\Ëˆ˜[Y][ÛˆÝ]]ÈÙ\™H›Ý™[X™[Y[™›ÈXXÚ\‹[Û›H˜[˜XÚÈØ\È›Û[ÝYˆ]šY[˜ÙNˆØÜËÑÔ“ÕS‘‘U‹ÓUU‘WÓÕ“SÕÐTÒU‘WÔ‘TÐÐS—ÌŒŒLŒKžÚœÛÛ‹YX‚ˆÈÈŒ‹LLLŒH8 %Ú[™ÛH]]Üš]]]™HÌˆ›ÙÜ™\ÜÈ™Yœ™\Ú]Ý\LMÂ‚“Û™H›Û‹\Û[™ÈÝ]\È™XY›Ý[™H›ÝXÝY›Ü›X[ÌˆÛX[ˆ˜[šÜÈ[]™HÛˆÔ\ÈËÍH]]™[Ý\L‹MËÌNŒÈÚ]š[š]HÜÜÈŒNÎLLMŽˆH]\Ý\˜X›HY\\ˆ™[XZ[œÈÚXÚÜÚ[ËØY\\‹\Ý\LŒœÈÚXÚÜÚ[ËÛ]\ÝÝ˜Z[š[™×ÜÝ]Kœ\È™\Ù[[™š[˜[Ü™XÙZ\šœÛÛ˜\ÈXœÙ[ˆÌKH\Þ[Y[[™K[[Ý]]˜[X][Ûˆ[™Y\Õ˜XÚÈ™[XZ[ˆ\[™[˜ÞKÜ™\ÛÝ\˜ÙHØZ]\œËˆHÛÜœ™XÝY™YK]\ÚÈ]Y]YH™[XZ[œÈUTÑQÑ“Ô—ÓUU‘WÓÕ“SÕÔ“ÕÔØÚ]™\›ÈÜ[Z^™\ˆ\]\Ëˆ›È›ÝXÝY›ØÙ\ÜÈÜˆ^\š[Y[[›ÝØÛÛØ\ÈÚ[™ÙYˆ]šY[˜ÙH\ÈH]™HÌˆ[ˆ\™XÝÜžH\ÈH™Yœ™\ÚYX]š^‚‚ˆÈÈŒ‹LLLŒH8 %SÈRSˆ˜]]™H^ÜÚ\™È™YÚ\Ý\™Y‚™XØ]\ÙHH[QÔHÛ˜\ÚÝØ\ÈØØÝ\YYžH›ÝXÝYÙ›Ü™ZYÛˆ›ØœË›È˜]]™HSÈ^ÜØ\È][˜ÚYˆ[œÝXYYYØÜš\ËÙÜ›Ý[™™]‹Ü™\\™WÝ[×Ý˜Z[—Û˜]]™WÜÚ\™ËœX[™™YÚ\Ý\™YZYÚÛÛYÝ[Ý\Ë\Ú›Ú[X™[Yœ™YHX[šY™\ÝÈÛÝ™\š[™È[NÍSÈRSˆ[XYÙ\È
+LšY[ÜÊHÚ]\™[X[šY™\ÝÒHÍXYXY™ŒŽŒNNNNÙMÍX˜ÎL™MÙXØN™XÍ˜ÙLMNNNYŒØMˆÔHÛÝ™\˜YÙH˜[Y][Ûˆ™\ÜÈNÍÛÝ™\™Yœ˜[Y\Ë™\›ÈZ\ÜÚ[™È[™™\›È\XØ]\Ëˆ]™\žHÚ\™™[XZ[œÈ˜]]™WÛÝ›[ÝÝ˜Z[š[™×Ü›ÝÜÏY˜[ÙXÈ\ÈÛ›HXZÙ\ÈH]\™H˜]]™HÝ™X[H™\Ý[XX›KÜ\˜[[[™Ù\È›Ý[˜›ØÚÈ˜Z[š[™ËˆHš\œÝ™Y›YÚ^ÜÙYHÛXÙK[[™Ý\ÜÙ\[ÛˆYËÚXÚØ\Èš^Y™Y›Ü™HXØÙ\[™ÈHŒˆ™YÚ\Ý˜][ÛŽÈH˜Z[Y\X[\™XÝÜžHØ\È™\Ù\™YÙ\\˜][Kˆ]šY[˜ÙNˆØÜËÑÔ“ÕS‘‘U‹ÕS×ÕRS—ÓUU‘WÔÒT‘×ÌŒŒLŒKžÚœÛÛ‹YX[™H^\›˜[Ú\™™XÙZ\Ë‚‚YYØÜš\ËÙÜ›Ý[™™]‹ÛY\™ÙWÝ[×Û˜]]™WÜÚ\™ËœX\ÈHÛ›H›Û[Ý[Ûˆ]Y\ˆÝ™X[Z[™Ëˆ]ÚXÚÜÈ]™\žHÚ\™™XÙZ\\™[ÒK^XÝ[XYÙHÜ™\‹ÕYœ™YHY]Y]K[™\Ú›Ú[[ÛÝ™\˜YÙH™Y›Ü™H›ÙXÚ[™ÈHÛÛXš[™YØ[™Y]H\˜Ú]™KˆH™Y›YÚYØZ[œÝH™YÚ\Ý\™YX]][œÝ™X[YYŒˆ\™XÝÜžH™Z™XÝYHZ\ÜÚ[™ÈÚ\™™XÙZ\]Ú\™\È[[™YÈ›È˜]]™HRSˆ›ÝÜÈÜˆÜ[Z^™\ˆ\]\ÈÙ\™HÜ™X]Y‚‚•HY\™ÙHÛÛ˜XÝ[ÛÈ\ÜÙYHÞ[]XÈ›Ý\‹Yœ˜[YKÝÛË\Ú\™ÕYœ™YHš^\™KÛÝ™\š[™ÈHÝXØÙ\ÜÙ[™XÙZ\]Ú]Ý]ÝXÚ[™È]\Ù]ÜˆÔHÝ]K‚‚ˆÈÈŒ‹LLLŒH8 %™\Ý[XX›HSÈRSˆ˜]]™HÝÛ™\ˆÝ\Y‚YYØÜš\ËÙÜ›Ý[™™]‹Ü]Y]YWÝ[×Û˜]]™WÝ˜Z[—ÜÚ\™ËœX[™Þ[˜Ú›Ûš^™YH[[YHÝ™X[HÛÜHÛÈÚ\™\ÜXÚYšXÈÜ›Ý[™[ž][™È[™˜]]™KY™X]\™HÜÈ\™HÝ\ÜYÚ[HHY˜][˜[Y][ÛˆÜÈ™[XZ[ˆ[˜Ú[™ÙYˆHÝÛ™\ˆ\È]™H[ˆÐRUS‘×ÑÌ—ÐÓPS—ÔÕPÐÑTÔØ™\ÝšXÝYÈ\ÚXØ[Ô\ÈÍ‹[™™X]È[žH^\Ý[™ÈÛÛ\]H\XØ][Ûˆ\È[˜]˜Z[X›NÈÔ\ÈËÍH[™È\™H^ÛYYÈ›ÝXÝÌ‹ÑÌH[™[[Ý]ÖY\Õ˜XÚËˆ]Ú[[ˆHZYÚ˜]]™HRSˆÚ\™È[™ÝšXÝY\™ÙHÛ›HY\ˆH^XÝÌˆ\›Z[˜[™XÙZ\ˆHš\œÝ˜XÚÙÜ›Ý[™][˜ÚØ\È™X\YžHH\›Z[˜[Ü˜\\ˆ™Y›Ü™HÜš][™ÈÝ]NÈH\œÚ\Ý[\Ù\ÜÚ[Ûˆ][˜ÚÜ›ÝHHØZ][™ÈÝ]H[™XYH›ÈÔHÜˆ›Ü™ZYÛ‹Z›ØˆÚ[™ÙKˆ]šY[˜ÙNˆØÜËÑÔ“ÕS‘‘U‹ÕS×ÕRS—ÓUU‘WÔUQUQWÌŒŒLŒKžÚœÛÛ‹YX‚‚ˆÈÈŒ‹LLLŒH8 %]]Üš]]]™HÌˆ™Yœ™\Ú]Ý\L‚‚•H›ÝXÝYÌˆÛX[ˆ˜[šÜÈ™[XZ[ˆ[]™HÛˆÔ\ÈËÍH]]™[Ý\L‹‹ÌNŒÈÚ]š[š]HÜÜÈŒŒŽÌÍÌLXÈH]\Ý\˜X›HY\\ˆ\ÈÝ[ÚXÚÜÚ[ËØY\\‹\Ý\LŒœH˜Z[š[™Ë\Ý]HÚXÚÜÚ[\È™\Ù[[™š[˜[Ü™XÙZ\šœÛÛ˜\ÈXœÙ[ˆÌKÛX[‹X[™K[[Ý][™Y\Õ˜XÚÈÝÛ™\œÈ™[XZ[ˆ]™H\[™[˜ÞKÜ™\ÛÝ\˜ÙHØZ]\œÎÈHÛÜœ™XÝY™YK]\ÚÈÝÛ™\ˆ™[XZ[œÈ]\ÙY]™\›È\]\È™XØ]\ÙH˜]]™HSÈRSˆ›ÝÜÈ\™H›Ý]˜Z[X›Kˆ›È›ÝXÝY›ØÙ\ÜÈÜˆ›ÝØÛÛØ\ÈÚ[™ÙY‚‚ˆÈÈŒ‹LLLŒH8 %˜]]™HSÈ›Ú[ˆÝÛ™\ˆ[™˜]]™H™YK]\ÚÈ][˜ÚØ]H™\Z\™Y‚YYHÔK[Û›HÝÛ™\ˆ›ÜˆHÛÛ\]H˜]]™HSÈRSˆÝ™X[H[™HÙ\\˜]Bœ™\Ý[XX›HÝÛ™\ˆ›ÜˆH]\™H™X[SÕÔ“SÕÓÕ“SÕÛ™R™]ˆ[‹ˆH›Ú[ˆÝÛ™\‚ØZ]È›ÜˆHÝšXÝZYÚ\Ú\™Y\™ÙH™XÙZ\[œÈHÚXÚÙY[Ý]˜™\\™WÛ˜]]™WÛÝ›[ÝÝ˜Z[—Ú›Ú[‹œX[™™\\™WÜ™X[Ý™YWÝ\Ú×Ú›Ú[ÛX[šY™\ÝœX˜[™™]™\ˆ][˜Ú\ÈH[Ù[ÜˆÜ[Z^™\‹ˆ]È[š]X[Ý]H\Â˜ÐRUS‘×ÐÓÓTUWÓUU‘WÕS×ÔÕ‘PSXˆH˜]]™H™YK]\ÚÈÝÛ™\ˆ\È›ÝÈ]™B˜\ÈH\[™[˜ÞHØZ]\ˆ]ÐRUS‘×ÓUU‘WÓÕ“SÕÓPS’Q‘TÕÈ]\È][˜ÚY›Â‘ÔH›ØÙ\ÜÈÜˆÜ[Z^™\ˆ[™Ú[\HH›Ú[™Y[X[šY™\Ý\È\›Z[˜[‘Ì‹ÑÌKØ[™KÚ[[Ý][™^Û\Ú]™KQÔHØ]\È]\‹ˆH\ÝÜšXØ[XXÚ\‹XÛÛ›Û]Y]YH™[XZ[œÈ]\ÙY]™\›È\]\Ë‚‚‘\š[™ÈH]Y]H›Ú[ˆÝÛ™\ˆØ\ÈÛÜœ™XÝYÈ™\ÛÛ™H™\ÜÚ]ÜžH›Ú[™\œÂ™œ›ÛHÙ]L‹Ý\Ù\‹ÓØØ]SSÕ™XØ]\ÙHH[[YHÝ]]™YHÙ\È›ÝZ\œ›Ü‚ÜÙHÛÝ\˜ÙHš[\ËˆH]\ÙYÛÛ\XÝ]Y]YHØ\È[ÛÈÛÜœ™XÝYÈXØÙ\B˜XÝX[[™H\›Z[˜[Ý]\ÈÌ—ÐÓPS—ÑTÖSQS•Ð•S‘WÑVÔ•QÚ[Bœ™]Z[š[™ÈH\ÝÜšXØ[Ü[[™È›ÜˆÛ™XÙZ\Ëˆ›È]KÚXÚÜÚ[Ü‚œ[›š[™È›ØÙ\ÜÈØ\ÈÚ[™ÙYˆ]šY[˜ÙN‚˜ØÜËÑÔ“ÕS‘‘U‹ÕS×ÓUU‘WÒ“ÒS—ÔUQUQWÌŒŒLŒKžÚœÛÛ‹YX[™˜ØÜËÑÔ“ÕS‘‘U‹Ô‘PSÕ‘QWÕTÒ×ÓUU‘WÔUQUQWÌŒŒLŒKžÚœÛÛ‹YX‚‚ˆÈÈŒ‹LLLŒH8 %SÈ˜]]™HÝÛ™\ˆÛÜœ™XÝYÈ\ÙHH\›Z[˜[Ìˆ[™B‚•HSÈRSˆÚ\™ÝÛ™\ˆØ\È]Y]Y™Y›Ü™H]Èš\œÝÔH][˜Úˆ]Â›ÜšYÚ[˜[[Ù[ÛÛœÝ[Ú[Y]HX›\ÚYÌ[™KÚXÚÛÝ[]™B›XYHH]\ˆ˜]]™HØ[™Y]H\˜Ú]™H[\ÜÜÚX›HÈ]šX]HÈÌ‹ˆHÝÛ™\‚››ÝÈØZ]È›ÜˆH^XÝÌˆ™XÙZ\Y\™Ù\ÈY\\—Ü›Ú™XÝÜ—Ùš[˜[œ[ÂHš]˜]HÜ›Ý[™[ž][™ËQKQÌ‹PÓPS‹SUU‘KUSËUŒX[™K˜[Y]\ÈBMŽK][œÛÜ‹Ù^ÜÛX[šY™\ÝÛÛ˜XÝ[™Û›H[ˆÝ\ÈÚ\™Ù\šXÙ\ËˆBœš]˜]H[™H\È™]™\ˆZ^YÚ]ÜˆÜš][ˆÝ™\ˆÌÌKÜˆHÜ™[˜\žHÌ‚™\Þ[Y[[™KˆHÝÛ™\ˆ›ØÙ\ÜÈY›ÝÝ\YHÚ\™ÛÈ]Ø\Âœ™\Ý\YÚ]HÛÜœ™XÝYÛÙHÚ[H™[XZ[š[™È[ˆ]ÈÌˆØZ]Ý]K‚‘]šY[˜ÙNˆØÜš\ËÙÜ›Ý[™™]‹Ü]Y]YWÝ[×Û˜]]™WÝ˜Z[—ÜÚ\™ËœX[™˜ØÜËÑÔ“ÕS‘‘U‹ÕS×ÕRS—ÓUU‘WÔUQUQWÌŒŒLŒKžÚœÛÛ‹YX‚‚ˆÈÈŒ‹LLLŒH8 %XÛÝ\YH\›Z[˜[Ìˆ[™Hœ›ÛHHÌHÛÛ\\š\ÛÛˆ\›B‚•HÛX[ˆ\Þ[Y[ÝÛ™\ˆ™]š[Ý\ÛHØZ]Y›Üˆ›ÝH^XÝÌˆ™XÙZ\[™‘ÌHÔMHÛÛ\][Û‹ˆ]Ü™\š[™ÈÛÝ[›ØÚÈ[™\[™[Ìˆ[[Ý]›YX\Ý\™[Y[[™˜]]™HÌˆØ[™Y]H^Ü™Z[™[ˆÜ[Û˜[ÛÛ\\š\ÛÛˆ\›K‚•HÝÛ™\ˆ›ÝÈØZ]ÈÛ›H›ÜˆH^XÝ[Û˜ÙHÌˆ\›Z[˜[™XÙZ\\™›Ü›\ÈBœØ[YHÔK[Û›HMŽK][œÛÜˆY\™ÙH[ÈHÙ\\˜]HÌ‹PÓPS‹UŒˆ[™K[™X]™\Â‘ÌH\È[ˆ[™\[™[ÔMHY\][Û‹ØÛÛ›ÛˆH^\Ý[™ÈÝÛ™\ˆØ\ÈÝ[[‚š]È™K[][˜ÚØZ]Ý]KÛÈ›È[Ù[ÜˆÝ]]Ø\ÈÚ[™ÙYÈ]Ú[™Bœ™\Ý\YÚ]HÛÜœ™XÝYØ]Kˆ]šY[˜ÙNˆÛÛËÙÜ›Ý[™™]‹Ü]Y]YWÙÌ—ØÛX[—Ø[™WÙ^ÜœX‚‚•HÝÛ™\ˆ™\Ý\[ÛÈ^ÜÙYH™\Ý[XXš[]HY™XÝˆ]ÈÛØZ][™È\™XÝÜžBØ\È™X]Y\È[ˆ^\Ý[™È^Ü[™™Y\ÙYÈÝ\ˆH™\Ý\ÝX\™›ÝÂ˜XØÙ\ÈH™\Ù\™Y™K[][˜ÚÐRUS‘×ÑÌ—ÐS‘ÑÌWÕT“RSSÝ]H
+\ÈÙ[\Â•ÐRUS‘×ÑÌ—ÐÓPS—ÔÕPÐÑTÔÊK™Y\Ù\È]™H\XØ]HÝÛ™\œÈ[™[žH\X[˜[™K[™™\Ý[Y\ÈÚ]Ý][][™ÈH\ÝÜšXØ[Ý]KˆHÛÜœ™XÝYÝÛ™\‚š\È]™HYØZ[ˆ[ˆÐRUS‘×ÑÌ—ÐÓPS—ÔÕPÐÑTÔË‚‚ˆÈÈŒ‹LLLŒH8 %˜]]™H™YK]\ÚÈÝÛ™\ˆ›ÈÛ™Ù\ˆÙÚXØ[H\[™ÈÛˆÌB‚•H™]È™X[˜]]™HSÕÔ“SÕÓÕ“SÕÝÛ™\ˆØ\È˜\œ›ÝÙYÈ™\]Z\™HH˜]]™B•SÈX[šY™\Ý\›Z[˜[Ì‹[™\[™[Ìˆ[™H[™[[Ý]™XÙZ\ËˆÌB‘ÔMHY\][Ûˆ™[XZ[œÈ[ˆÜ[Û˜[ÛÛ\\š\ÛÛˆ™XÙZ\È]È\ÚXØ[ÔMB›ÝÛ™\œÚ\\ÈÝ[™\ÜXÝYžHH›Ý\‹QÔH™\ÛÝ\˜ÙH›Ø™Kˆ\È™\Ù\™\Â‘ÌKÑÌŒÑÌÛÛ›ÛÈÚ]Ý]XZÚ[™ÈHš[˜[QÌˆ›Ú[›Ý]HØZ]ÛˆHÙ\\˜]B˜Y\][Ûˆ\›KˆH\ÝÜšXØ[]\ÙYXXÚ\‹XÛÛ›Û]Y]YHØ\È›ÝÚ[™ÙY‚‚ˆÈÈŒ‹LLLŒH8 %ÌHÔMHØZ][™ÈÝÛ™\ˆXYH™\Ý[XX›B‚•HÌHÔMHÝÛ™\ˆYHØ[YH™K[][˜Ú™XÛÝ™\žHY™XÝˆY\ˆH›ØÙ\ÜÂœ™\Ý\]È™\Ù\™YÐRUS‘×ÑÌ—ÐÓPS—ÔÕPÐÑTÔÈ\™XÝÜžHØ\È™X]Y\È[‚™^\Ý[™È\Y˜XÝ[™HÝÛ™\ˆÛÝ[›Ý™H™\Ý[YYˆHÝ\\ÝX\™›ÝÂœ™Z™XÝÈH]™H\XØ]HÝÛ™\ˆ[™[žH\X[Ý]]]XØÙ\ÈH[\Bœ™\Ù\™YØZ][™È\™XÝÜžH[™™XÛÜ™È™\Ý[YYÝØZ]ÛÝÛ™\˜ˆHÛØZ][™Â›ÝÛ™\ˆØ\ÈÝÜY[™™\Ý\YÚ]H™YÚ\Ý\™Y˜Ü›Ý[™[ž][™ËQKU˜XÚÔ›Ú‘ÌKQÔMKUŒ˜[™H]ˆ]™[XZ[œÈ]˜ÐRUS‘×ÑÌ—ÐÓPS—ÔÕPÐÑTÔØÈ›ÈÌHÜ[Z^™\ˆÜˆÔH›ØÙ\ÜÈ\ÈÝ\Y‚‚ˆÈÈŒ‹LLLŒH8 %˜]]™H™YK]\ÚÈÝÛ™\ˆXYH™\Ý[XX›B‚•H™X[˜]]™HSÕÔ“SÕÓÕ“SÕÝÛ™\ˆYHÙXZÙ\ˆ™\Ý\›Ý[™\žNˆHXYØZ][™È›ØÙ\ÜÈÛÝ[™]Üš]H]È]Y]YH\™XÝÜžHÚ]Ý]\Ý[™ÝZ\Ú[™ÈB˜ÛX[ˆØZ]œ›ÛH\X[˜Z[š[™ÈÝ]]ˆÝ\\›ÝÈXØÙ\ÈÛ›HHÛ›ÝÛ‚œ™K[][˜ÚØZ][™ÈÝ]\Ë™\Ù\™\ÈHÜ[Û˜[[[YHÛÛ™šYÈÚ[ˆ]Ø\Â˜[™XYHÜ™X]Y™Z™XÝÈ[™^XÝYš[\Ë™Y\Ù\È]™H\XØ]\Ë[™™XÛÜ™Â˜™\Ý[YYÝØZ]ÛÝÛ™\˜ˆH^\Ý[™ÈÝÛ™\ˆ\È™Z[™È™\Ý\YÛ›H[ˆ]ÂÔK[Û›HÐRUS‘×ÓUU‘WÓÕ“SÕÓPS’Q‘TÕÝ]NÈ›ÈÜ[Z^™\ˆÜˆÔH›ØÙ\ÜÈ\ÂœÝ\Y‚‚ˆÈÈŒ‹LLLŒH8 %Y\Õ˜XÚÈØZ][™ÈÝÛ™\ˆXYH™\Ý[XX›B‚•H˜]]™HY\Õ˜XÚÈŒˆÝÛ™\ˆØ\ÈÝ[ØZ][™È›Üˆ[ˆ^Û\Ú]™HÔMÈ[™Y››ÈÜ[Z^™\ˆÜˆ]˜[X][Ûˆ\Y˜XÝËˆ]ÈÝ\\ÝX\™›ÝÈ™\Ý[Y\ÈÛ›HBšÛ›ÝÛˆ[\HÐRUS‘×ÑÔM×ÑVÓTÒU‘X]Y]YH
+[™H™KXÜ™X]Y\™ÜËšœÛÛ˜
+Kœ™Z™XÝÈ\X[]Y]YKÝ˜Z[š[™ÈÝ]]Ë™Y\Ù\È]™H\XØ]\Ë[™™XÛÜ™Â˜™\Ý[YYÝØZ]ÛÝÛ™\˜ˆHØZ][™ÈÝÛ™\ˆ\È™\Ý\YÚ]Ý][ØØ][™ÈÔMÎÂH[™\[™[Y\Õ˜XÚÈ[ˆ™[XZ[œÈ[™[™Ë‚‚ˆÈÈŒ‹LLLŒH8 %[[Ý]ÝÛ™\ˆXYH™\Ý[XX›B‚•HÔMÈÌÑÌˆ[™\[™[[[Ý]ÝÛ™\ˆØ\ÈÝ[ÔK[Û›H[‚˜ÐRUS‘×ÑÌ—ÐÓPS—Ð•S‘WÐS‘ÑÔMØÈ]È\™XÝÜžHÛÛZ[™YÛ›HHÝ\œ™[ØZ]™XÙZ\[™H™\Ù\™Y\ÝÜšXØ[™KSSÕ™XÙZ\ˆÝ\\›ÝÈXØÙ\Â]^XÝÛX[ˆØZ]Ý]K™\Ù\™\ÈH\ÝÜšXØ[™XÙZ\™Z™XÝÈ[žB[™^XÝY\X[]˜[X][ÛˆÝ]]Ë™Y\Ù\È]™H\XØ]\Ë[™™XÛÜ™Â˜™\Ý[YYÝØZ]ÛÝÛ™\˜ˆHÝÛ™\ˆ\È™\Ý\YÚ]Ý][ØØ][™ÈÔMË‚ˆÈÈŒ‹LLLŒH8 %Ìˆ›ÙÜ™\ÜÈ]šY[˜ÙH™Yœ™\ÚY‚•H›ÝXÝY›Ü›X[ÌˆÛX[ˆÝÛ™\ˆ™[XZ[œÈ]™HÛˆ\ÚXØ[Ô\ÈËÍKˆB›]\ÝØœÙ\™Y˜Z[š[™È]™[\ÈÝ\L‹MËÌNŒÈÚ]š[š]HÜÜÂŒŒÌMLŒÎÈY\\‹\Ý\LLœ[™]\ÝÝ˜Z[š[™×ÜÝ]KœØYÚ]H™YÚ\Ý\™YÛX[ˆX[šY™\ÝÒKˆ›È\›Z[˜[™XÙZ\Üˆš[˜[Y\\ˆ^\ÝÂžY]ÛÈ›ÈÝÛœÝ™X[H[™K[[Ý]Y]šXËÌH\]KÜˆ›Ú[Ü[Z^™\‚\]H\ÈÛZ[YYˆHØZ][™ÈÝÛ™\œÈ™[XZ[ˆ[ÝXÚY[™™XÛÝ™\˜X›K‚‚ˆÈÈŒ‹LLLŒH8 %Ìˆ›ÙÜ™\ÜÈ]šY[˜ÙH™Yœ™\ÚY
+Ý\LMÎ
+B‚[ˆ]]Üš]]]™H]™[™XY]NŒ
+Ì™XÛÜ™ÈH›ÝXÝY›Ü›X[Ì‚ÛX[ˆ[ˆ]Ý\L‹MÎÌNŒÈÚ]š[š]HÜÜÈŒMMÎLŒŽNLÍÍKˆHÛÂ™\ÝšX]Y˜[šÜÈ\™HÝ[HÛ›HXÝ]™HÜ[Z^™\ˆ[ˆ\È›Ý]HÛˆ\ÚXØ[‘Ô\ÈËÍKˆH]\Ý\˜X›HÚXÚÜÚ[™[XZ[œÈY\\‹\Ý\LLœÚ]˜]\ÝÝ˜Z[š[™×ÜÝ]KœÈš[˜[Ü™XÙZ\šœÛÛ˜[™H\›Z[˜[Y\\ˆ\™BœÝ[XœÙ[ˆ›ÈÌK[™H^Ü[[Ý]Y]šXËY\Õ˜XÚÈ\]KÜˆ˜]]™B™YK]\ÚÈ\]H\ÈÛZ[YY™Y›Ü™H]\›Z[˜[™XÙZ\ˆ\È\È]šY[˜ÙHÙ‚˜ÛÛ[YYX[H›ÙÜ™\ÜÈÛ›NÈHš[Üˆ\ÝÜšXØ[™\Ý[›Ý[™\šY\È™[XZ[‹‚‚ˆÈÈŒ‹LLLŒH8 %Ü›Ý[™‘UˆÛÝ\Y™YÜ™\ÜÚ[Ûˆ™Yœ™\ÚY‚•H›Ý[™YÛÝ\YXÛÜ™H™YÜ™\ÜÚ[ÛˆØ\È™\[ˆY\ˆH]Y]YK[ÝÛ™\ˆÚ[™Ù\ÎˆLÂ[š]\ÝÈÛÝ™\š[™È›Ú[Y[]HÛÜœ\Ë\ÙHHÛÜ™KY[[ÜžKXÛÛ™][Û™Y[œ]™š^YXØ[™Y]HÛÛ˜XÝ[™Ø]\Ø[[Y[[ÜžH™Yš[[\ÜÙYˆH™YÚ\Ý\™Y‘ÌKÑÌ‹X[™KÕSËÛ˜]]™KZ›Ú[ÖY\Õ˜XÚÈ]Y]YH[ž\Ú[È[ÛÈ\ÜÙYWØÛÛ\[X˜[™HÛÝ\Y\È˜XÚÒ‘UˆXÚØYÙ\È\ÜÙYÛÛ\[X[ˆ\È™\šYšY\ÈBœ™XÛÝ™\˜X›H][˜ÚÝ\™˜XÙHÛ›NÈ]Ù\È›Ý›Û[ÝH[žH[Ù[Üˆ[\HB˜XÚÚ[™ÈY]šXÈÚ[HÌˆXÚÜÈ]È\›Z[˜[™XÙZ\‚‚ˆÈÈŒ‹LLLŒH8 %ØZ][™Ë[ÝÛ™\ˆÛÝ\˜ÙH™\ÛÛ][Ûˆ]Y]‚H™XY[Û›HÜ›ØØ]Y]ÙˆHÙ]™[ˆ™YÚ\Ý\™YØZ][™ÈÝÛ™\œÈÛÛ™š\›YY]˜[ÛÛ[X[™È[ˆÚ]ÝÙÙ]L‹Ý\Ù\‹ÓØØ]SSÕˆHÌH[™Ì‹X[™HÝÛ™\œÂœ™\ÛÛ™HÛÛËÙÜ›Ý[™™]‹Ë‹‹˜Ú[HHSË\Ú\™[[Ý]Y\Õ˜XÚË˜]]™Bš›Ú[‹[™˜]]™H™YK]\ÚÈÝÛ™\œÈ™\ÛÛ™HØÜš\ËÙÜ›Ý[™™]‹Ë‹‹˜ÜˆBœ™YÚ\Ý\™Y›Ú[ˆ[ž\Ú[œ›ÛH\È›Ú™XÝ›ÛÝˆHÚX›[™È[[YHÚXÚÛÝ]Ø\È›Ý\ÙYÈ][˜Ú\ÙHÝÛ™\œËˆ\ÈÛÜÙ\ÈH™\›ÙXÚXš[]H[XšYÝZ]BÚ]Ý]Ú[™Ú[™È[žHÝÛ™\‹ÚXÚÜÚ[ÜˆÔH[ØØ][Û‹‚‚‚ˆÈÈŒ‹LLLŒH8 %Ìˆ]™[Z[YÜš]H]Y]
+Ý\LNM
+B‚•H›Ü›X[Ìˆ]™[Ý™X[HÛÛZ[œÈL‹NMÜ[Z^™\ˆ]™[Èœ›ÛHÝ\H›ÝYÚœÝ\L‹NMÚ]›ÈÝ\Ø\ËˆÜÜËÜ˜YY[›Ü›KY[[ÜžKX\›š[™È˜]\Ë[™˜[Ý\ˆ™XÛÜ™Y[Y\šXÈšY[È\™Hš[š]HXÜ›ÜÜÈHÝ™X[KˆH™XÙ[›ÝYÚ]\ÈÝX›H]ÌKŽÝ\ËÚÝ\ˆÝ™\ˆLÝ\ËÌLKŽHÝ™\ˆLÝ\Ë˜[™ÌLŽHÝ™\ˆKÝ\ËˆÚXÚÜÚ[]™[È\™H™\Ù[]XXÚL\Ý\˜›Ý[™\žH›ÝYÚY\\‹\Ý\LLœÈH\›Z[˜[™XÙZ\™[XZ[œÈXœÙ[‚•\ÈÝ\ÜÈX[HÛÛ[X][Ûˆ[™[ˆ\Ý[X]YKŒÌÈ™[XZ[š[™È\]\È]œ›ÝYÚHÌLHÝ\ËÚÝ\‹]]\È›ÝH[Ù[\]X[]HÜˆÙ[™\˜[^˜][ÛˆÛZ[K‚‚ˆÈÈŒ‹LLLŒH8 %YÚ[™YÌHÜÝQÌˆ\›Z[˜[Ø]B‚•H™\Ý[XX›HÔMHÌHÝÛ™\ˆ™]š[Ý\ÛHXØÙ\YHÌˆ™XÙZ\Ú]Ý\È]Ü‚˜X›Ý™HH™YÚ\Ý\™YYÙ][™Y›Ý^XÚ]H™\]Z\™HH\›Z[˜[Y\\‚™š[Kˆ]ÈÜÝQÌˆØ]H›ÝÈ™\]Z\™\ÈÝ]\Â˜Ì—ÑVPÕÐÓÕ‘TQÑWÕRS’S‘×ÐÓÓTUX^XÝHNŒÈÝ\ËH™YÚ\Ý\™YÛX[‚›X[šY™\ÝÒK[™Y\\—Ü›Ú™XÝÜ—Ùš[˜[œˆH[\Ü˜\žK\™XÙZ\™YÜ™\ÜÚ[Û‚˜ÛÛ™š\›YY]Z\ÜÚ[™ÈY\\ˆ[™Ü›Û™Ë\Ý\™XÙZ\È\™H™Z™XÝYÚ[HB˜ÛÛ\]HÛÛ˜XÝ\ÈXØÙ\YˆH]™HØZ][™ÈÝÛ™\ˆØ\È›Ý™\Ý\YÜ‚›[ÙYšYYÈ\È]Ú›ÝXÝÈ]\™H™XÛÝ™\žH[™][˜Ú]Ë‚‚‚ˆÈÈŒ‹LLLŒH8 %Ìˆ›ÙÜ™\ÜÈÛ˜\ÚÝ
+Ý\LŒL
+B‚•H›ÝXÝYÌˆÛX[ˆ[ˆ™XXÚYÝ\L‹ŒLÌNŒÈ]NŒLMH
+ÌÚ]™š[š]HÜÜÈŒŒMÌÍŒÌKˆH™YH^XÝY˜Z[š[™È›ØÙ\ÜÙ\È™[XZ[ˆ]™H[™˜š[˜[Ü™XÙZ\šœÛÛ˜\ÈÝ[XœÙ[ˆ\ÈÛ˜\ÚÝÚ[™Ù\ÈÛ›H›ÙÜ™\ÜÂ™]šY[˜ÙNÈ›ÈÝÛœÝ™X[H[Ù[[[Ý]Y]šXËÜˆÙ[™\˜[^˜][ÛˆÛZ[H\Â›XYK‚‚ˆÈÈŒ‹LLLŒH8 %ÛÝ\Y[[YHY™XÞXÛH^XÝ][Ûˆ™\Z\‚‚”\ÙKPH™]šY]È›Ý[™]HÚ[™ÛKX˜XÚØ›Û™H[[YHXÛÙYY™XÞXÛHÙÚ]Â˜]YÛ›Ü™Y[Nˆ]™\žH\ÜÚYÛ™Y˜XÚÈØ\È›Ü˜ÙYÈPÕU‘X]™\žHXœÙ[˜XÚÈÛ›HXØÝ[][]YÔÕ[™[ˆ\ÜÚYÛ›Y[XÛÛ™][Û™YY[[ÜžHÜš]HÛÝ[œ™XXÝ]˜]HH˜XÚÈÚÜÙHY™XÞXÛHXÚ\Ú[ÛˆØ\ÈÔÕˆHÛX[\Ý[YÛ™Y™š^›ÝÈ^XÝ]\ÈPÕU‘KÔ‘PPÕUUKÓÔÕXÚ\Ú[ÛœË™X]ÈT“RSUXÛˆB›X]ÚYØœÙ\˜][Ûˆ\È™XÛÝ™\˜X›HPÕU‘X›ØÚÜÈY[[ÜžHÜš]\È›Ü‚˜ÔÕÕT“RSUX[™\Y\ÈH™YÚ\Ý\™Y[Y[Ý]™Y›Ü™H\œ™]™\œÚX›B\›Z[˜][ÛˆÙˆ[ˆ[›X]ÚY˜XÚËˆHÛÛ›ÛYØ]\Ø[™\^H™\šYšYYÛ™B˜š\HX]ÚYÔÕXÚ\Ú[ÛˆÚ]H[Y[[ÜžHÜš]K[™[Y[Ý]\›Z[˜][ÛŽÈHÛ™KY™X]\™KY›ÜØ\™[™Y[[ÜžKXØ]\Ø[]H™YÜ™\ÜÚ[ÛœÈÝ[œ\ÜËˆ\È\ÈH[[YHÛÜœ™XÝ™\ÜÈ™\Z\‹›ÝH˜XÚÚ[™Ë\\™›Ü›X[˜ÙHÛZ[K‚‚ˆÈÈŒ‹LLLŒH8 %ÔHØ]H›ÜˆH™^™X[[Ý‚•HÚ[™ÛH™\ÛÝ\˜ÙH]Y]›Ý[™[ZYÚNÔ\ÈØØÝ\YYˆ\ÚXØ[Ô\ÂŒËÍH™[XZ[ˆH›ÝXÝYÌˆ˜[šÜËÔMÈ™]Z[œÈ[ˆ[œ™[]YÛÛ\]HÝÛ™\‹[™H™[XZ[š[™ÈØ\™È[ÛÈ]™HXÝ]™HÛÛ\]HÛÜšÛØYÎÈ›ÈØ\™\È[‚™^Û\Ú]™H][˜ÚÚ[™ÝÈ›ÜˆH\ÙKPˆ™X[QÌˆ[ÝˆH]\Ý\˜X›HÌ‚˜Y\\ˆ™[XZ[œÈÚXÚÜÚ[ËØY\\‹\Ý\LLœÚ]˜]\ÝÝ˜Z[š[™×ÜÝ]KœÈH\›Z[˜[™XÙZ\\ÈÝ[›Ý™\Ù[ˆBœ[ÝØ\È\™Y›Ü™H›ÝÝ\YÛˆHÚ\™YØ\™[™›È›ØÙ\ÜÈØ\ÈÚ[YÜ‚œ™]\ÙYˆ\È™\Ù\™\ÈH™YÚ\Ý\™Y˜Z[š[™ÈÛÛ˜XÝÚ[HH^\Ý[™Â‘ÌˆÛÛ\][ÛˆØZ]\ˆ™[XZ[œÈHÛ›HÛ™Ë\[›š[™ÈØœÙ\™\‹‚‚ˆÈÈŒ‹LLLŒH8 %ÛÜœ™XÝYÌÑÌˆ]šY[˜ÙH›Ý[™\žH›ÜˆX\›HÛÝ\Y[ÝÂ‚[ˆ]Y]ÙˆH\ÝÜšXØ[\ÙKPHÛ[ÚÙH[™\ÙKPˆ™XYÝ][Ý›Ý[™]Z\ˆÚXÚÜÚ[Ø\ÈH[˜Y\YÜ›Ý[™[ž][™ËQX[™H[™™Z]\‚œ™XÙZ\™XÛÜ™YHÌˆY\\‹ˆHY]šXÜÈ[™ÜÜÈ˜[Y\È\™H™\Ù\™Y\Â‘Ì˜]]™K]š\ÝX[ÛÛ›ÛÈÛ›NÈ^H\™H›ÝÌˆÛX[ˆ]šY[˜ÙH[™\™H›Ý\ÙY™›ÜˆHÌˆ\™›Ü›X[˜ÙHÛZ[KˆH]\™H\ÙKPH[™\ÙKPˆ[ž\Ú[È›ÝÂœ™\]Z\™H›Ý[ˆ^XÚ]Y\\ˆ[™H˜]]™HÛX[‹QHØY\‹[™™XÛÜ™HY\\‹Ü[[YH›Ý™[˜[˜ÙKˆ\Èš^\ÈH›Ý™[˜[˜ÙH\œ›ÜˆÚ]Ý]›Ý™\Üš][™ÈH\ÝÜšXØ[ÛÛ›Û\Y˜XÝË‚‚ˆÈÈŒ‹LLLŒH8 %›ÝXÝYÌˆ›ÙÜ™\ÜÈÛ˜\ÚÝ
+Ý\LÌJB‚•H]]Üš]]]™H]™[Ý™X[H›ÝÈÛÛZ[œÈÛÛYÝ[Ý\È›ÝÜÈ›ÝYÚÝ\ŒL‹ÌKÌNŒÎÈH]\Ý›ÝÈ]NŒŽŒNH
+Ì\Èš[š]HÜÜÂŒŒŒŒNMLKˆH\˜X›HÚXÚÜÚ[Ù]Ý[[™È]˜ÚXÚÜÚ[ËØY\\‹\Ý\LLœÚ]˜ÚXÚÜÚ[ËÛ]\ÝÝ˜Z[š[™×ÜÝ]KœÚ[Hš[˜[Ü™XÙZ\šœÛÛ˜\ÈXœÙ[˜[™˜Z[™\—ØÛÛ˜XÝšœÛÛ˜™[XZ[œÈÌ—Ñ“Ô“PSÕRS’S‘×Ô•S“’S‘ØˆH][˜Ú\‚š\ÈÝ[]™Kˆ\È\ÈÛ›HHX[K\›ÙÜ™\ÜÈ™XÛÜ™È]Ù\È›Ý›Û[ÝHB˜ÚXÚÜÚ[ÜˆÛZ[HH˜XÚÚ[™ÈY]šXË‚‚ˆÈÈŒ‹LLLŒH8 %˜]]™H™YK]\ÚÈ˜Z[š[™ÈÝ\XÛÛ˜XÝ]Y]‚•H™YÚ\Ý\™Y]Y]YWÜ™X[Ý™YWÝ\Ú×Û˜]]™KœXÜš]\È\ØÚÏLX[™˜X^ÜÝ\ÏL[È]ÈÙ[™\˜]YÛÛ™šYËˆH[›™Y˜Z[‹ÜÙœXÛÛ˜XÝš[\œ™]ÈH˜[ÞHX^ÜÝ\Ø\ÈH[[›™Y\ØÚŠÝ\×Ü\—Ù\ØÚ
+ˆ\ØÚØ
+K˜]\ˆ[ˆH™\›Ë\Ý\[‹ˆH]Y]YH[‚œ™\]Z\™\ÈH\›Z[˜[Û™X™XÛÜ™È™\Ü^[\\ÈOH˜]]™HX[šY™\Ýœ›ÝÜØ[™H›Û‹[Z\ÜÚ[™È\›Z[˜[™XÛÜ™™Y›Ü™HXÛ\š[™ÈÛÛ\][Û‹ˆ\ÂšÙY\ÈH™X[SÕÔ“SÕÛ˜]]™KSÕ“SÕ[ˆœ›ÛH™Z[™ÈZ\ÝZÙ[ˆ›ÜˆHÔK[Û›HÜ‚™[\HÜ[Z^™\ˆ][˜Ú‚‚ˆÈÈŒ‹LLLŒH8 %ÌHÔMH[ˆ›Ý™[˜[˜ÙH™\Z\‚‚•HÌH]Y]YH\È^XÚ]H›Ý[™È\ÚXØ[ÔMK]HÛ\‚˜˜]]™WÙÜ›Ý[™Ý˜XÚÚ[™ÌŒÌŒŒLMšœÛÛ˜™]Z[™YH\ÝÜšXØ[˜\ÚXØ[Ý˜Z[š[™×ÑÔNˆØšY[ˆ][ˆ\È™\Ù\™Y[˜Ú[™ÙYÈHÌBœ]Y]YH›ÝÈ™Y™\™[˜Ù\ÈH™\œÚ[Û™YÔMH[ˆÚ]X]Ú[™È\ÚXØ[Y]šXÙB›Y]Y]H[™[ˆ^XÚ]]Y]YK[ÝÛ™\ˆ›Ý™[˜[˜ÙH›ÝKˆHÛÜœ™XÝY[ˆÚ[˜™H™XYÛ›HÚ[ˆ]È^XÝÌˆ\›Z[˜[Ø]HÜ[œË‚‚•H[™XYK\[›š[™ÈØZ][Û›HÝÛ™\ˆYØYYHÛ[ˆ][ˆY[[ÜžKÛÂš]Ø\ÈØY™[H™\XÙY™Y›Ü™H[žHÔHÛÜšÈ™YØ[ˆ
+ÛQLMŒÌŒH^]YÈ™]ÂØZ]ÝÛ™\ˆQMÎLLH\ÈÐRUS‘×ÑÌ—ÐÓPS—ÔÕPÐÑTÔØ
+Kˆ]ÈÝ]]\™XÝÜžK˜[™KÛÛ›ÛÈ[™\ÝÜšXØ[Ý]HÙ\™H™\Ù\™YÈH™]ÈÝÛ™\ˆ™XÛÜ™Â˜˜]]™WÙÜ›Ý[™Ý˜XÚÚ[™ÌŒÙÜMWÌŒŒLŒKšœÛÛ˜[™Ý[ÝÛœÈ›ÈÔK‚‚ˆÈÈŒ‹LLLŒH8 %›ÝXÝYÌˆ›ÝYÚ]Û˜\ÚÝ
+Ý\LÌÌJB‚•H›Ü›X[Ìˆ]™[Ý™X[H\ÈÛÛYÝ[Ý\È›ÝYÚÝ\L‹ÌÌKÌNŒÈÚ]›Â››Û‹Yš[š]HÜÜËÜ˜YY[Y[[ÜžHÜˆX\›š[™Ë\˜]HšY[ËˆHYX\Ý\™Y˜]\Â˜\™HÌLËÌËÌL‹ŒÌH[™ÌLKŒÝ\ËÚÝ\ˆÝ™\ˆH\ÝLL[™KœÝ\Ë™\ÜXÝ]™[Kˆ\ÈX]™\ÈKMˆ\]\È[™H[™X\ˆ\Ý[X]HÙ‚˜X›Ý]MËx $ÌMËÈÝ\œËˆš[˜[Ü™XÙZ\šœÛÛ˜[™H\›Z[˜[Y\\ˆ™[XZ[‚˜XœÙ[ÛÈ\È\ÈH›ÝYÚ]Ü›ÙÜ™\ÜÈ™XÛÜ™Û›H[™Ù\È›ÝÜ[ˆ[žB™ÝÛœÝ™X[H\™›Ü›X[˜ÙHÛZ[K‚‚ˆÈÈŒ‹LLLŒH8 %Ìˆ\˜X›HÚXÚÜÚ[ÛÛ˜XÝ]Y]‚•H]\Ý\˜X›HÌˆ™XÛÝ™\žHZ\ˆ™[XZ[œÈ[XÝˆY\\‹\Ý\LLœ˜[™]\ÝÝ˜Z[š[™×ÜÝ]Kœ\™H™\Ù[]ŽKËNL[™ŽKËNMÂ˜ž]\ËˆHØYYÝ]H™\ÜÈÝ\L‹L›Ü›X]˜Ü›Ý[™[ž][™ËYÌ‹\›Ú™XÝÜ‹\]Ù[ŒË[Ü˜K]Œ‹\ÝšXÝH™YÚ\Ý\™YX[šY™\Ý”ÒKÛÜ›Ú^™H‹Ü[Z^™\ˆ[™ØÚY[\ˆÝ]K›Ý˜[šÈ“‘È]ËØ[\\‚œÝ]K[™H[˜Z[š[™ÈÛÛ˜XÝˆ\È˜[Y]\È™XÛÝ™\˜Xš[]HÛ›NÂH›Ü›X[[ˆ\ÈÝ[›Ý\›Z[˜[[™›ÈÝÛœÝ™X[H[Ù[ÛZ[H\ÈXYK‚‚ˆÈÈŒ‹LLLŒH8 %\ÝÜšXØ[ÌˆZY\›HØÛÜH]Y]‚’[™^YHÛX[ˆŒˆRSˆX[šY™\Ý
+NËLH›ÝÜÎÈÒKLMˆŽLNXLXÙŽLŒØMÍ™XMÍXMM™YÍ™™XXÌŒNYŒŒMLXXŽY™™Y™™MÌX
+HYØZ[œÝ[\ÝÜšXØ[Ý\LÌÌ‹T[œ]œ˜[Y\Ëˆ[SÕMËL‹Q”Ó“ˆœ˜[Y\È\™HRS‹\ØÛÜNÈHYœ˜[YH[™L‹Yœ˜[YH™Y™\‹RÒUKLÈ“SÕÛ\È]™H™\›È^XÝ[XYÙK\]Ý™\›\Ú]HÛX[ˆš][™^ˆ]™\žHœ˜[YH][™ÛÛ[ÒKLMˆ\È™XÛÜ™YˆHÚÜÛ\È™[XZ[ˆXYÛ›ÜÝXÜÈ[™È›Ý\›Z][ˆ[™\[™[Ù[™\˜[^˜][ÛˆÛZ[Kˆ]šY[˜ÙNˆØÜËÑÔ“ÕS‘‘U‹ÑÌ—ÓRQT“WÔÐÓÔWÐUQUÌŒŒLŒKžÚœÛÛ‹YX‚‚ˆÈÈŒ‹LLLŒH8 %ŒH\›Z[˜[ÚXÚÜÚ[ÛÜœ™XÝ[Û‚‚•H\ÝÜšXØ[˜XÚÚ™]—ÌÝ\Ú×ÒŒWÝØš\ÛÝ\œÙH\È\›Z[˜[]KŒÌKŒ\]\Ë›ÝXÝ]™NˆNKMÈ›ÝÜÈÙ\™HÛÛœÝ[YYHš[˜[Y\\ˆ[™[”Ì‹ÐY[KÜØÚY[\‹Ô“‘ÈÝ]H\™H™\Ù[[™›ÈŒHÜ[Z^™\ˆ\È]™KˆHX\›Y\ˆYÙ]›ÝHYÛ›HØœÙ\™YÝ\L[™\ÈÛÜœ™XÝYÚ]Ý]™\Ý\[™ÈH[‹ˆ]šY[˜ÙNˆØÜËÑÔ“ÕS‘‘U‹ÒŒWÕT“RSSÔ‘PÑRTÌŒŒLŒKšœÛÛ˜[™H\]YŒWÒŒ—ÕRS’S‘×Ð•QÑUÐUQU›Y‚‚ˆÈÈŒ‹LLLŒH8 %Õ“SÕ]˜[X]Üˆ™\Z\ˆ™\›ÙXÙYÛˆœ™\ÚÛÜY\Â‚•HÙ™šXÚX[UH]˜[X]ÜˆØ\È™\[ˆÛˆœ™\ÚÛÜY\ÈÙˆH^\Ý[™ÈšY[ËMŒÈÛÛ›Û[™šY[ËM˜]]™HXYÛ›ÜÝXËˆHÝ\œ™[ÛÛ™šYÝ\˜][ÛˆÙY\ÈÕUUÔÕSSPT–OUYXÕUUÕSWÔU×ÑUOUYX[™ÕUUÔT—ÔÑTWÔ‘TÏUYXÚXÚš^\ÈHÛÈ™]š[Ý\ÛH™XÛÜ™Y]˜[X]Üˆ˜Z[\™\ÈÚ]Ý]Ú[™Ú[™ÈÕÜˆ™YXÝ[ÛœËˆšY[ÈŒÈÛÛ\]Y]È[™\[™[Yœ˜[YHSÈ˜[Y][ÛˆØÛÜHÚ]UHNØÐHËŒLM\ÜÛØÐHŽŒN[™ÍKŒŽ™YXÝ[ÛœÎÈ]\ÈHÚ[\KX˜XÚÙ[™ÛÛ›Û›ÝÌ‹ÑÌKÓÛ™R™]ˆY\][Ûˆ]šY[˜ÙKˆšY[È™[XZ[œÈÛ›HH›Ý\‹Yœ˜[YH˜]]™HXYÛ›ÜÝXÎˆ[›Ý\ˆœ˜[Y\ÈÙ\™HØY™[H™Z™XÝY›Üˆ\XØ]KÝ[œÛÜYØ[›ÛšXØ[ÛÛÜ™[˜]H\\È[™›ÙXÙY™\›È™YXÝ[ÛœËˆH[Yœ˜[YHšY[ËM˜]]™H]˜[X][Ûˆ\È›ÝÛZ[YY[[]\œÙ\‹ÛÝ]]›ØÚÙ\ˆ\È™\Z\™Yˆ™XÙZ\ˆØÜËÑÔ“ÕS‘‘U‹ÓÕ“SÕÑUSPUÔ—Ô‘TRT—ÌŒŒLŒKžÚœÛÛ‹YX‚‚ˆÈÈŒ‹LLLŒH8 %ÛÛœÙ\˜]]™HÕ“SÕ˜]]™K[Ý]]\œÙ\ˆ™\Z\‚‚•HÝšXÝ˜]]™H\œÙ\ˆ™Z™XÝÈšY[ËM™XØ]\ÙHÝ\Ú\ÙHÛÛ\]HÜ›Ý[™[ž][™È™\ÜÛœÙ\ÈÛÛZ[ˆ\XØ]KÝ[œÛÜYÝ]]\ÈX[›Ü›YYœ˜YÛY[È
+[™Û[™È›ÞÚÙ[œÈ[™™\ÝYØš™XÝ™Y™\™[˜Ù\ÊKˆYYØØ][[ÝÙÜ›Ý[™™]‹Û˜]]™WÛÝ]]Ü™\Z\‹œX[™HÙ™šXÚX[ÜØÛÜš[™×Ü™\Z\™YY\\ˆÛXÞKˆH™\Z\ˆÙY\ÈÛ›HÛÛ\]HØš™XÝ\™Y‹Ø›ÞZ\œÈÚ]˜[Y›Ý\‹XÛÛÜ™[˜]HÙ[ÛY]žK›ÜÈ[™™XÛÜ™ÈX[›Ü›YYœ˜YÛY[Ë[™™]™\ˆš[ÈÜˆ™[Ü™\œÈÛÛÜ™[˜]\ËˆH\™Ù]YÙ[‹]\Ý\ÜÙYÈÙ™›[™H™Y›YÚÙˆH›Ý\ˆ™\Ù\™Y˜]È™\ÜÛœÙ\È™XÛÝ™\™YLÌLŽKÌLÌËÎNÛÛ\]HZ\œËˆHœ™\Ú]™H™]žH[YYÝ]]HÜ›Ý[™[ž][™ÈÙ\šXÙH™Y›Ü™Hœ˜[YHÍLKÛÈ›È™]È˜]]™HY]šXÈ\ÈÛZ[YY[™šY[ËM™[XZ[œÈ[™[™ÈÙ\šXÙH™XÛÝ™\žKˆ]šY[˜ÙH\È[ˆØÜËÑÔ“ÕS‘‘U‹ÓÕ“SÕÑUSPUÔ—Ô‘TRT—ÌŒŒLŒKžÚœÛÛ‹YX‚‚ˆÈÈŒ‹LLLŒH8 %ÌˆÛX[ˆ›ÙÜ™\ÜÈÛ˜\ÚÝ]Ý\LŽÌÂ‚•H›Ü›X[ÌˆÛX[ˆ]™[Ý™X[HY˜[˜ÙYÈLŽÌËÌNŒÈ\š[™ÈH]Y]ÈH]\Ý]™[]Œ‹LLLŒHŽŒNŒ
+Ì\Èš[š]HÜÜÈŒÌÌÍÍÜ˜YY[›Ü›HLKŽNML‹[™XZÈY[[ÜžHL‹ŽŽHÚP‹ˆH\ÝLÍLÌK]\]HÚ[™ÝÜÈYX\Ý\™HÌLŽÌÌL‹ŒŒËÌÌLKLÈÝ\ËÚÝ\‹Ú]š[™ÈH[™X\ˆUH™X\ˆŒ‹LLLŒUŒÎŒLŽŒÍŽ
+ÌŒˆH\˜X›HY\\‹ÜÝ]HZ\ˆ™[XZ[œÈ]Y\\‹\Ý\LLœ\È]\ÝÝ˜Z[š[™×ÜÝ]KœÈ›È\›Z[˜[™XÙZ\^\ÝÈ[™[ÝÛœÝ™X[H]Y]Y\È™[XZ[ˆÛÜœ™XÝHØ]Yˆ]šY[˜ÙNˆØÜËÑÔ“ÕS‘‘U‹ÑÌ—Ô“ÑÔ‘TÔ×ÔÓTÒÕÌŒŒLŒWÔÕTLŽÌËžÚœÛÛ‹YX‚‚ˆÈÈŒ‹LLLŒH8 %˜]]™H›Ú[]Y]YHÛÛ™šYÈÛÛ˜XÝ™\Z\‚‚•HÜÝQÌˆ˜]]™H™YK]\ÚÈÝÛ™\ˆØ\È›Ý[™È[š™XÝH]Y][Û›B˜˜]]™WÛX[šY™\ÝÜ›ÝÜØšY[[È]ÈÙ[™\˜]YÛ™R™]ˆÛÛ™šYËˆH[›™Y˜˜Z[‹œÙ\œÙ\ˆ™Z™XÝÈ[šÛ›ÝÛˆÙ^\ËÛÈ\ÈÛÝ[]™H˜Z[Y™Y›Ü™HB™š\œÝ[Ù[ØYÚ[ˆ[\[™[˜ÞHØ]\ÈÜ[™Yˆ™[[Ý™Y]šY[œ›ÛHB™Ù[™\˜]YÛÛ™šYÎÈH˜]]™HX[šY™\Ý›ÝÈÛÝ[™[XZ[œÈ[ˆHÝÛ™\ˆÝ]H[™š\ÈÚXÚÙYYØZ[œÝH\›Z[˜[Û™K™^[\\Ø™XÙZ\ˆ˜[Y]YB››Ü›X[^™YÛÛ™šYÈYØZ[œÝ˜Z[‹œÙ˜Z[Ü\œÙ\˜ÛÛ™š\›YYX^Ü›ÝÜÏLX\Â›Û›HH\‹[ZXÜ›Ø˜]ÚØ\Ú]XØÝ[WÜ›ÝÜÏLM˜[™˜[ˆÛÛ\[KÚ[\ÜÛ[ÚÙ\Ë‚“›ÈÌˆÝ]HÜˆ›ØÙ\ÜÈØ\ÈÚ[™ÙYˆ™XÙZ\‚˜ØÜËÑÔ“ÕS‘‘U—ÐÓÕTQÔ‘PSÓUU‘WÐÓÓ‘’Q×ÐUQUÌŒŒLŒKžÚœÛÛ‹YX‚‚ˆÈÈŒ‹LLLŒH8 %ÛÜœ™XÝYÛÝ\Y\˜Ú]XÝ\™H›Ý[™\žB‚•H\˜Ú]XÝ\™KÜÛÝ\˜ÙH]Y]YÝ[HÛÜ™[™È]\ØÜšX™YHœšYÙH\Âš\ÝX[[Û›KˆHÝ\œ™[ÛÙH[˜ÛY\È˜]]™QÌÛX[‘T›ÝšY\˜[™B”\ÙKPÈ™XÙZ\™XÛÜ™ÈÛ™H™X[ÌˆÛX[ˆš\ÝX[\\Ë[[™ÝXYÙH›ÜØ\™Ú]œØ[YKYœ˜[YHÛÛ^ÛÛœÝ[YYžHH\Y™XYÝ]ˆ\]YH]Y]ÈÝ]B]˜]]™HÛÛ^\ÈÛÛ\]HÚ[HÑÓ[™È[YÜ˜][Ûˆ[™˜Z[™Yœ™KYÜ›Ý[™[™ÈY[[ÜžH™YY˜XÚÈ™[XZ[ˆÜ[ˆØ]\Ëˆ›ÈY]šXÈÜˆ[Ù[ÛZ[HØ\Â˜Ú[™ÙY‚‚ˆÈÈŒ‹LLLŒH8 %Ü[™YÌˆ™Yš[˜Z[š[™ÈÜ˜YY[]‚•HØ]\Ø[Y[[ÜžH™Yš[Y\\ˆ™]š[Ý\ÛHÜ˜\Y]™\žHØ[[‚˜Ü˜Úš[™™\™[˜ÙWÛ[ÙXÚXÚØ\ÈÛÜœ™XÝ›Üˆ\Þ[Y[]ÛÝ[Ú[[B˜›ØÚÈÜ˜YY[È›ÜˆHY[[ÜžKXÛÛ™][Û™Y˜Z[š[™È[‹ˆYY[ˆ^XÚ]˜[™™\™[˜ÙWÛ[ÙXÝÚ]Ú]™\Ù\™\ÈY˜][[™™\™[˜ÙH™Z]š[Üˆ[™[ÝÜÂ˜Z[š[™ÈØ[\œÈÈ\ÜÈ˜[ÙXˆH™]È˜XÚÝØ\™\ÝÛÛ™š\›\ÈH[œÙ\Y›Y[[ÜžHÚÙ[ˆ™XÙZ]™\Èš[š]HÜ˜YY[›ÝYÚH™Yš[[™™XYÝ]ˆ\Âš\È[ˆ[\™˜XÙHÛÜœ™XÝ[Û‹›ÝH˜XÚÚ[™ÈÜˆÜ›Ý[™[™ÈØZ[‹‚‚ˆÈÈŒ‹LLLŒH8 %ÌˆÛX[ˆ›ÙÜ™\ÜÈÛ˜\ÚÝ]Ý\LŽLÂ‚•H›ÝXÝYÌˆ]™[Ý™X[H\ÈÛÛYÝ[Ý\È›ÝYÚL‹LËÌNŒËˆH]\Ý™]™[]ŽŒÎMH
+Ì\Èš[š]HÜÜÈŒNLŽLÌÌ‹Ü˜YY[›Ü›HKŒLŒÍLK˜[™XZÈY[[ÜžHL‹ŽŽÚP‹ˆ\ÝLLÍLÌK\Ý\›ÝYÚ]\ÂŒÌL‹ŒÌÌL‹ŒÌKÌÌLKÝ\È\ˆÝ\‹X]š[™ÈKÌŒ\]\È[™H[™X\‚‘UH\›Ý[™ŒÎŒL8 $ÌŒÎŒLÈ\ÚXKÔÚ[™ÚZKˆH\˜X›H™XÛÝ™\žHZ\ˆ™[XZ[œÂ˜ÚXÚÜÚ[ËØY\\‹\Ý\LLœ[™ÚXÚÜÚ[ËÛ]\ÝÝ˜Z[š[™×ÜÝ]KœÂ\™H\È›Èš[˜[™XÙZ\ˆ[ÝÛœÝ™X[HÝÛ™\œÈ™[XZ[ˆØ]Yˆ]šY[˜ÙN‚˜ØÜËÑÔ“ÕS‘‘U‹ÑÌ—Ô“ÑÔ‘TÔ×ÔÓTÒÕÌŒŒLŒWÔÕTLŽLËžÚœÛÛ‹YX‚‚ˆÈÈŒ‹LLLŒH8 %™\Z\™YÌHÔMHØZ]\ˆ[[YH]Â‚•HÌHØZ]\ˆØ\ÈÛÜœ™XÝHYH]]È]\™HÛÛ[X[™™\ÛÛ™YH[Ù[‘Ü›Ý[™[ž][™ÈÛÝ\˜ÙH[™Ü›Ý[™]˜Z[ˆ]Ûˆ[š\›Û›Y[[™\ˆHÛÙB˜ÚXÚÛÝ]Ú\™H^HÈ›Ý^\Ýˆ\]YH]Y]YHÈ[ˆ˜Z[š[™Ë^Ü˜[™ÛÛ›ÛÈœ›ÛHÙ]L‹Ý\Ù\‹ÓØØ]SSÕÑÜ›Ý[™‘U˜Ú[H™\Ù\š[™ÈHÛÙB˜ÚXÚÛÝ]›ÜˆH™YÚ\Ý\™Y[ˆ[™]KÜ›ÝØÛÛš[\Ëˆ™\šYšYYH[[YBœ]Ë\›Z[˜]YÛ›HHÛØZ][Û›HÝÛ™\ˆQMÎLLK[™Ý\YQŒÌLÍHÚ]Ý]\ÈÐRUS‘×ÑÌ—ÐÓPS—ÔÕPÐÑTÔØ™\›ÈÜ[Z^™\ˆ\]\È[™›Â‘ÔH][˜ÚˆÌˆ[™\ÝÜšXØ[\Y˜XÝÈÙ\™H[ÝXÚYˆ]šY[˜ÙN‚˜ØÜËÑÔ“ÕS‘‘U‹ÑÌWÑÔMWÔ•S•SQWÔUÔ‘TRT—ÌŒŒLŒKžÚœÛÛ‹YX‚‚ˆÈÈŒ‹LLLŒH8 %™\Z\™YÌˆ[™H[™SÈ^Ü\ˆ[[YH]Â‚•HÌˆ\Þ[Y[X[™HÝÛ™\ˆ[™H˜]]™HSÈÚ\™ÝÛ™\ˆÙ\™HØZ][™ÈÛ‚H›Ü›X[Ìˆ™XÙZ\]›Ý]\™H^ÜØ[È™\ÛÛ™YH˜\ÙH[Ù[[™™^Ü\ˆ[™\ˆHÛÝ\˜ÙHÚXÚÛÝ]ˆ]ÚXÚÛÝ][[[Û˜[H\È›Â˜[Ù[ËÑÜ›Ý[™[ž][™ËQXÈHYXØ]YÜ›Ý[™‘Uˆ[[YHÙ\Ëˆ›Ý]Y]Y\Â››ÝÈ[›ÚÙHH[[YHÜ›Ý[™[ž][™È]Ûˆ[™[[YH^Ü\ˆœ›ÛB˜Ù]L‹Ý\Ù\‹ÓØØ]SSÕÑÜ›Ý[™‘U˜Ú[HHÛÝ\˜ÙHÚXÚÛÝ]™[XZ[œÈHÛÙB˜[™X[šY™\Ý]]Üš]KˆHÛÈØZ][Û›HÝÛ™\œÈÙ\™H™\XÙYÚ]Ý]ÝXÚ[™ÈÌŽˆ[™HQŒÍˆ[™SÈQŒÍÈ\™H›ÝÝ[Ø]Y]˜ÐRUS‘×ÑÌ—ÐÓPS—ÔÕPÐÑTÔØÚ]›ÈÜ[Z^™\ˆ\]\ÈÜˆÔH[ØØ][Û‹‚˜WØÛÛ\[X[™H[[YHÜ˜Ú[\Ü\ÜÙYˆ]šY[˜ÙN‚˜ØÜËÑÔ“ÕS‘‘U‹ÑÌ—Ð•S‘WÔ•S•SQWÔUÔ‘TRT—ÌŒŒLŒKžÚœÛÛ‹YX‚‚ˆÈÈŒ‹LLLŒH8 %ÌˆÛX[ˆ›ÙÜ™\ÜÈÛ˜\ÚÝ]Ý\LŽLÎ‚•H›ÝXÝY]™[Ý™X[HY˜[˜ÙYÈLŽLÎÌNŒËˆH]\Ýš[š]H]™[]ŒŽŒLÎL
+Ì\ÈÜÜÈŒNLNÌNNÜ˜YY[›Ü›HLŒÎNMNNK[™XZÂ˜[ØØ]YY[[ÜžHL‹ŽŽHÚP‹ˆ™XÙ[LÍLÌL\Ý\˜]\È\™BŒÌLËŒÌM‹ÌÌL‹ŒŽËÌÌLKŽLÝ\È\ˆÝ\‹Ú]š[™ÈH[™X\ˆUH\›Ý[™ŒŒÎŒ¸ $ÌŒÎŒLH\ÚXKÔÚ[™ÚZKˆHš[˜[™XÙZ\\ÈXœÙ[ÈY\\‹\Ý\LL[™›]\ÝÝ˜Z[š[™×ÜÝ]Kœ™[XZ[ˆH\˜X›H™XÛÝ™\žHZ\‹ˆ\È\ÈH˜Z[š[™ÂšX[Û˜\ÚÝÛ›K›ÝH˜XÚÚ[™È™\Ý[ˆ]šY[˜ÙN‚˜ØÜËÑÔ“ÕS‘‘U‹ÑÌ—Ô“ÑÔ‘TÔ×ÔÓTÒÕÌŒŒLŒWÔÕTLŽLÎžÚœÛÛ‹YX‚‚ˆÈÈŒ‹LLLŒH8 %ÛÜœ™XÝYÌˆ˜]]™H]˜[X][ÛˆY[]H[™[[YH]Â‚•HÚÜXÛÛ›Û[ž\Ú[Ý[\™XÛÙY]ÈY\Y\›H\ÈÌ‹T[™œ™\ÛÛ™Y]\™H[™™\™[˜ÙKÜØÛÜš[™ÈØÜš\Èœ›ÛHH\ÝÜšXØ[Û™R™]ˆÚXÚÛÝ]‚’]›ÝÈ\š]™\ÈHÛX[ˆ\›H\ÈÌ‹PÓPS‹UŒ˜˜[Y]\ÈH\›Z[˜[Y\\‚œÝ\NŒËÛX[ˆRSˆX[šY™\ÝÒKY\™ÙY[Ù[ÒH[™^Ü™XÙZ\™Y›Ü™B›][˜Ú[™^XÝ]\Èœ›ÛHÙ]L‹Ý\Ù\‹ÓØØ]SSÕÑÜ›Ý[™‘U˜ˆH\ÝÜšXØ[˜Ü›Ý[™[ž][™ËQKQÌ‹T][X™\˜][HÙY\ÈHÌ‹TX™[[™\È›Ýœ™XÛ\ÜÚYšYYˆHÛÙHØ\ÈÛÛ\[Y[™H\ÝÜšXØ[Y[]H]Ø\ÂœÛ[ÚÙK]\ÝYÈ›ÈÙ\šXÙHÜˆÔHØ\ÈÝ\Yˆ]šY[˜ÙN‚˜ØÜËÑÔ“ÕS‘‘U‹ÑÌ—ÓUU‘WÑUSÒQS•UWÔ‘TRT—ÌŒŒLŒKžÚœÛÛ‹YX‚‚ˆÈÈŒ‹LLLŒH8 %™[][˜ÚY^]YÌHÔMHØZ]ÝÛ™\‚‚•HÌH\[™[˜ÞHÝÛ™\ˆY^]YÚ]Û›H]È[š]X[˜ÐRUS‘×ÑÌ—ÐÓPS—ÔÕPÐÑTÔØÝ]NÈ›È˜Z[š[™ÈÝ]]Ü[Z^™\ˆ\]HÜˆÔMB›][˜Ú^\ÝYˆY\ˆ™\šYžZ[™È]H™YÚ\Ý\™YÝ]]\™XÝÜžHÝ[˜ÛÛZ[™YÛ›HHÝÛ™\ˆÝ]K™[][˜ÚY]Ú]HØ[YHÌˆ›ÛÝ[[YB‘Ü›Ý[™[ž][™È˜\ÙKÝ]][™H[™ÛÛ›Û]Ëˆ™]ÈQLH\È]™B˜[™ØZ][™ÎÈ›ÝXÝYÌˆØ\È[ÝXÚYˆ]šY[˜ÙN‚˜ØÜËÑÔ“ÕS‘‘U‹ÑÌWÑÔMWÕÐRUÓÕÓ‘T—Ô‘SUSÒÌŒŒLŒKžÚœÛÛ‹YX‚‚ˆÈÈŒ‹LLLŒH8 %ÌˆÛX[ˆ]™HX[Û˜\ÚÝ]Ý\LŽM‚•H›ÝXÝYÛË\˜[šÈÌˆ›ØÙ\ÜÈ™[XZ[œÈ[›š[™ÈÛˆ\ÚXØ[Ô\ÈËÍNÈ›Ýœ˜[šÜÈ\™H[ˆHÛÛ\]HÛÜÚ]X›Ý]NKŒÈÚPˆ[ØØ]YXXÚˆH]™[œÝ™X[H\ÈÛÛYÝ[Ý\È›ÝYÚLŽMÌNŒËÚ]š[š]HÜÜÈŒÌŒMÍÌŒN™Ü˜YY[›Ü›HLËÌÍŽN[™XZÈY[[ÜžHL‹ŽŽHÚP‹ˆ™XÙ[›ÝYÚ]\ÂŒÌL‹LÌÌL‹ŒËÌÌLKŽLÝ\È\ˆÝ\ˆÝ™\ˆLÍLÌL\]\ËÚ]š[™ÈB›[™X\ˆUH\›Ý[™ŒÎŒx $ÌŒÎŒLKˆ›È\›Z[˜[™XÙZ\^\ÝÈ[™›ÈY]šXÈÛZ[Bš\ÈXYKˆ]šY[˜ÙN‚˜ØÜËÑÔ“ÕS‘‘U‹ÑÌ—Ô“ÑÔ‘TÔ×ÔÓTÒÕÌŒŒLŒWÔÕTLŽMžÚœÛÛ‹YX‚‚ˆÈÈŒ‹LLLŒH8 %ÝÛœÝ™X[H™K[][˜ÚÛÛ˜XÝ™Y›YÚ‚•Ú[HÌˆ™[XZ[™Y›Û‹]\›Z[˜[]Ý\LŽMÌ[\ÜY]™\žH™YÚ\Ý\™YÌK‘Ìˆ[™K[[Ý]SË˜]]™H›Ú[‹™YK]\ÚÈ[™Y\Õ˜XÚÈ]Y]YH[Ù[NÂ˜[\™Ù]Y]ÛˆÛÛ\[][ÛˆÚXÚÜÈ\ÜÙYˆHYXØ]Y[[YH]Û‚™[š\›Û›Y[ËÜ›Ý[™[ž][™È˜\ÙKÙ\šXÙH[\œ™]\‹^Ü\‹šY[È[›™\‚˜[™ÛX[ˆRSˆX[šY™\ÝÙ\™H™\Ù[ˆ›ÈÔKÜ[Z^™\ˆÜˆ[Ù[Ù\šXÙHØ\ÂœÝ\Yˆ]šY[˜ÙN‚˜ØÜËÑÔ“ÕS‘‘U‹ÑÕÓ”Õ‘PSWÔ‘SUSÒÔ‘Q“QÒÌŒŒLŒKžÚœÛÛ‹YX‚‚ˆÈÈŒ‹LLLŒH8 %ÌˆÛX[ˆ]™H›ÙÜ™\ÜÈÛ˜\ÚÝ]Ý\LŽN‚•H›ÝXÝYÛË\˜[šÈÌˆÛX[ˆ›ØÙ\ÜÈ™[XZ[œÈ[]™H[™]È]™[Ý™X[H\Â™š[š]H[™ÛÛYÝ[Ý\È›ÝYÚLŽNÌNŒËˆH]\Ý]™[]ŒŒ‹LLLŒHŽŒŒNMˆ
+Ì\ÈÜÜÈŒŒŽNMLŒKÜ˜YY[›Ü›BŒLKÍNMM[™XZÈ]™[Y[[ÜžHL‹ŽŽLÈÚP‹‚•HYX\Ý\™YLÍLÌL\Ý\˜]\È\™BŒÌL‹KÌÌL‹ŒL‹ÌÌLKŽÍÂœÝ\È\ˆÝ\‹Ú]š[™ÈH[™X\ˆ\Ý[X]HÙˆX›Ý]M‹ŽMÈÝ\œÈœ›ÛHBL\Ý\Ú[™ÝËˆHš[˜[™XÙZ\\ÈÝ[XœÙ[ÈY\\‹\Ý\LL[™›]\ÝÝ˜Z[š[™×ÜÝ]Kœ™[XZ[ˆH\˜X›H™XÛÝ™\žHZ\‹ˆÝÛœÝ™X[HÝÛ™\œÈ\™BœÝ[\[™[˜ÞKYØ]Y[™]™H›ÈÜ[Z^™\ˆ\]\Ëˆ\È\ÈH˜Z[š[™ËZX[œÛ˜\ÚÝÛ›H[™XZÙ\È›È˜XÚÚ[™ÈÜˆ™[˜ÚX\šÈÛZ[Kˆ]šY[˜ÙN‚˜ØÜËÑÔ“ÕS‘‘U‹ÑÌ—Ô“ÑÔ‘TÔ×ÓU‘WÌŒŒLŒWÔÕTLŽNžÚœÛÛ‹YX‚‚ˆÈÈŒ‹LLLŒH8 %Y\Õ˜XÚÈÔMÈ™\ÛÝ\˜ÙHØ]HÛÛ™š\›YY‚•H]™HY\Õ˜XÚÈÝÛ™\ˆ™[XZ[œÈÐRUS‘×ÑÔM×ÑVÓTÒU‘X™XØ]\ÙH\ÚXØ[ÔMÂš\È[ˆ[œ™[]Y›ØÙ\ÜÈ
+QNL‹\Ù\ˆš’TÓKÐÕPˆ˜Z[š[™ÊH\Ú[™ÈX›Ý]ŒM‹ŒˆÚPˆ]L	H][^˜][Û‹ˆH]Y]YIÜÈ[H\È›ÈÛÛ\]HQÈ[™]X\ÝŒÌÍŽZPˆœ™YNÈH^\›˜[›ØÙ\ÜÈØ\ÈY[ÝXÚYˆ\È\È[ˆØœÙ\™Yœ™\ÛÝ\˜ÙHØ]K›ÝH˜Z[š[™ÈÜˆY]šXÈ™\Ý[ˆ]šY[˜ÙN‚˜ØÜËÑÔ“ÕS‘‘U‹ÖQTÕPÒ×ÑÔM×Ô‘TÓÕTÑWÑÐUWÌŒŒLŒKžÚœÛÛ‹YX‚‚ˆÈÈŒ‹LLLŒH8 %SÕ[Û›HÛ™Ë]˜Z[š[™ÈØY™KXÛÜÙH]Y]‚H›ØÙ\ÜË[˜[YH]Y]Ý™\ˆ[\X]Û‹ÝÜ˜ÚÝ˜Z[‹Ù]˜[ÜÙ\šXÙH›ØÙ\ÜÙ\Â™›Ý[™›È™\ÚYX[SÕ[Û›HÜˆÛÛ™R™]ˆÛ™ÈÜ[Z^™\‹ˆHÛ›H›Ú™XÝ›Ü[Z^™\ˆ\ÈH›ÝXÝYÌˆÛX[ˆÛË\˜[šÈ[ˆ]Ý\LŽNLKÌNŒÂ›Ûˆ\ÚXØ[Ô\ÈËÍKˆ\[™[˜ÞH]Y]Y\È[™HÜ›Ý[™[ž][™ÈÙ\šXÙH™[XZ[‚œ™YÚ\Ý\™YÈ›ÈYØXÞHSÕ[Û›H›ØÙ\ÜÈØ\È™\Ý\Yˆ]šY[˜ÙN‚˜ØÜËÑÔ“ÕS‘‘U‹ÓSÕÓÓ“WÔÐQ‘WÐÓÔÑWÐUQUÌŒŒLŒKžÚœÛÛ‹YX‚‚ˆÈÈŒ‹LLLŒH8 %ÌSÕŒÛ™È^Ü\›Z[˜[™XÙZ\]Y]Y‚•Hœ›Þ™[ˆÌÛ™È^Ü\È[ˆ]]Üš]]]™HÙ™šXÚX[\ØÛÜH™XÙZ\›Ü‚“SÕŒLNˆMNYØ[RSˆœ˜[Y\ËÕHÌÍK‘]HŒÎÍ\ÜÐHŒŽMMKQŒBŒLKQÕÈŒŒÎKˆH™XÙZ\\ÈB‘ÌRS‹Ý˜[Y][Û‹\ØÛÜH™Y™\™[˜ÙHÛ›NÈ]\È›ÝSÕŒTÕ[™\È›Ý[‚š[™\[™[Ìˆ[[Ý]ÛZ[KˆHÛ\ˆKMËYœ˜[YHXYÛ›ÜÝXÈ\Y˜XÝ\ÂšÙ\Ù\\˜]Kˆ]šY[˜ÙN‚˜ØÜËÑÔ“ÕS‘‘U‹ÑÌÓSÕŒÓÓ‘×ÑVÔ•ÐUQUÌŒŒLŒKžÚœÛÛ‹YX‚‚ˆÈÈŒ‹LLLŒH8 %]™HÛÛ\][ÛˆX]š^™Yœ™\ÚY]ÌˆÝ\LŽNMÂ‚•H™]š[Ý\ÈX]š^Ø\ÈÝ[H]Ý\LŒ‹ˆH™]È^XÝ][Û‹\Ý]HX]š^™XÛÜ™Â‘ÌSÕŒLHÛ™È^ÜÛÛ\]H[ˆ]ÈYØ[RSˆØÛÜKSÕ[Û›HØY™[HÛÜÙY‘Ìˆ[›š[™È]LŽNMËÌNŒÈÛˆÔ\ÌËÍK[™[ÝÛœÝ™X[HÌKÕSËÚ[[Ý]Â™YK]\ÚËÖY\Õ˜XÚÈØ]\ÈÚ]Z\ˆÝ\œ™[Ý]\Ù\ËˆØÚY[YšXÈØZ[ˆ™[XZ[œÂ[œ›Ý™[ˆ[™[™\[™[Y]šXÜÈ™[XZ[ˆ[™[™Ëˆ]šY[˜ÙN‚˜ØÜËÑÔ“ÕS‘‘U‹ÑÓÐSÐÓÓTUSÓ—ÓPU’VÓU‘WÌŒŒLŒWÔÕTLŽNMËžÚœÛÛ‹YX‚‚ˆÈÈŒ‹LLLŒH8 %Ìˆ™XÛÝ™\žHÚXÚÜÚ[˜[Y]YÛˆÔB‚•Ú[HH›ÝXÝYÌˆ[ˆÛÛ[YYH]\Ý\˜X›H˜Z[š[™ÈÚXÚÜÚ[Ø\ÈØYYÚ]HÔK[Û›H[[YKˆ]\ÈÝ\LÌ]ÛÜ›Ú^™BŒ‹[™ÛÛZ[œÈ[Ù[˜Z[˜X›HÝ]KÜ[Z^™\‹ØÚY[\‹œØ[\\ˆÜÚ][Û‹]Û‹Ó[TKÕÜ˜ÚÐÕQH“‘ÈÝ]KH˜Z[š[™ÈÛÛ˜XÝ[™˜Z[˜X›H]Y]ˆHY\\‹\Ý\LLš[H\È[ÛÈ™\Ù[ˆ›ÈÔHØ\ÈÝXÚY˜[™›ÈY]šXÈÛZ[H\ÈXYKˆ]šY[˜ÙN‚˜ØÜËÑÔ“ÕS‘‘U‹ÑÌ—ÐÒPÒÔÒS•Ô‘PÓÕ‘T–WÐUQUÌŒŒLŒKžÚœÛÛ‹YX‚‚ˆÈÈŒ‹LLLŒH8 %ÌˆÛX[ˆ]™H›ÙÜ™\ÜÈ]Ý\LÌB‚•H›ÝXÝYÛË\˜[šÈÌˆÛX[ˆ[ˆY˜[˜ÙYÈÝ\LÌKÌNŒÈÚ[H›Ý˜[šÜÈ™[XZ[™Y]™HÛˆÔ\ÈËÍKˆH]™[Ý™X[H™[XZ[œÈš[š]HÚ]š[š]HÜÜÈ[™Ü˜YY[›Ü›NÈ›Èš[˜[™XÙZ\^\ÝÈY]ÛÈÝÛœÝ™X[HÌK˜]]™HSËÓÕ“SÕ›Ú[š[™Ë™YK]\ÚÈÛ™R™]ˆÜ[Z^˜][Ûˆ[™[™\[™[[[Ý]]˜[X][Ûˆ™[XZ[ˆØ]Yˆ\È™XÙZ\™XÛÜ™È˜Z[š[™ÈX[Û›H[™XZÙ\È›ÈØÚY[YšXÈY]šXÈÛZ[Kˆ]šY[˜ÙNˆØÜËÑÔ“ÕS‘‘U‹ÑÌ—Ô“ÑÔ‘TÔ×ÓU‘WÌŒŒLŒWÔÕTLÌKžÚœÛÛ‹YX‚‚ˆÈÈŒ‹LLLŒH8 %Ìˆ›ÝYÚ]\Ý[X]H]Ý\LÌÌ‚‚•\Ú[™ÈXÝX[]™[[Y\Ý[\Èœ›ÛHH›ÝXÝYÛË\˜[šÈÌˆÛX[ˆ[‹H™XÙ[LÍLÌLY]™[Ú[™ÝÜÈÚ]™H\›Þ[X][HKŒŒÝ\ËÛZ[ˆ[™M‹LˆÝ\œÈÈÝ\NŒËˆ\È\È[ˆÜ\˜][Û˜[UHÛ›NÈ]\È›ÝHY]šXÈÜˆ]X[]HÛZ[Kˆ]šY[˜ÙNˆØÜËÑÔ“ÕS‘‘U‹ÑÌ—Õ“ÕQÒUÑTÕSPUWÌŒŒLŒWÔÕTLÌÌ‹žÚœÛÛ‹YX‚‚ˆÈÈŒ‹LLLŒH8 %ÌˆY\\ˆÚXÚÜÚ[Ý\LÌ]Y]Y]]™[Ý\LÌÍ‚‚•H›ÝXÝYÌˆÛX[ˆ[ˆY˜[˜ÙYÈ]™[Ý\LÌÍ‹ÌNŒÈ[™›ÙXÙYH\˜X›HY\\‹\Ý\LÌœÚXÚÜÚ[ˆ]ÈÒKLMˆ\ÈÙŒŽLÌXÙYŒXŒŒÎMMÌŽŒŒYLLLØXÍÍXÙÙÍ˜YY™L˜XŒX˜Ì™X™™MNXÈH]\Ý[™XÛÝ™\žHÝ]H™[XZ[œÈÝ\LÌÚ]ÒKLMˆMÎXØ™ŒÙMMŽY™˜ÍM˜XYŽMÍMŒLÎ˜ŽØÌŒL™ŒLÍLŒÌXØML™™Œ˜ˆHš[˜[™XÙZ\\ÈXœÙ[ÛÈÝÛœÝ™X[HØ]\È™[XZ[ˆÛÜÙYˆ\È\ÈÚXÚÜÚ[[™˜Z[š[™ËZX[]šY[˜ÙHÛ›Kˆ]šY[˜ÙNˆØÜËÑÔ“ÕS‘‘U‹ÑÌ—ÐÒPÒÔÒS•Ô“ÑÔ‘TÔ×ÌŒŒLŒWÔÕTLÌÍ‹žÚœÛÛ‹YX‚‚ˆÈÈŒ‹LLLŒH8 %]™HÛØ[XÛÛ\][ÛˆX]š^]ÌˆÝ\LÌLM‚‚•H^XÝ][ÛˆX]š^Ø\È™Yœ™\ÚYœ›ÛHHÝ\œ™[Ìˆ]™[Ý™X[H[™ÝÛœÝ™X[HÝÛ™\ˆÝ]\ËˆÌSÕŒÛ™È^Ü™[XZ[œÈÛÛ\]H[ˆYØ[RSˆØÛÜH[™SÕ[Û›H˜Z[š[™È™[XZ[œÈØY™[HÛÜÙYÈÌˆ\ÈÝ[[›š[™È]Ý\LÌLM‹ÌNŒËÚ[HÌK˜]]™HSËÓÕ“SÕ›Ú[š[™Ë™YK]\ÚÈÛ™R™]‹Y\Õ˜XÚÈ[™[[Ý]]˜[X][Ûˆ™[XZ[ˆØ]Yˆ\È\È[ˆ^XÝ][Ûˆ]Y][™XZÙ\È›ÈØÚY[YšXÈY]šXÈÛZ[Kˆ]šY[˜ÙNˆØÜËÑÔ“ÕS‘‘U‹ÑÓÐSÐÓÓTUSÓ—ÓPU’VÓU‘WÌŒŒLŒWÔÕTLÌLM‹žÚœÛÛ‹YX‚‚ˆÈÈŒ‹LLLŒH8 %ÌˆY\\ˆÚXÚÜÚ[Ý\MML]Y]Y]]™[Ý\MMÌÍÂ‚•H›ÝXÝYÛË\˜[šÈÌˆÛX[ˆ[ˆY˜[˜ÙYÈ]™[Ý\MMÌÍËÌNŒÈÛˆ\ÚXØ[Ô\ÈÈ[™H[™›ÙXÙYH\˜X›HY\\‹\Ý\MMLÚXÚÜÚ[ˆHY\\ˆ[™]\Ý[™XÛÝ™\žHÝ]H›ÝØYYÛˆÔHÚ]ÙZYÚ×ÛÛ›OQ˜[ÙXÈÜ[Z^™\‹ØÚY[\‹Ø[\\ˆ[™“‘ÈÝ]H\™H™\Ù[ˆH\›Z[˜[™XÙZ\\ÈÝ[XœÙ[ÛÈÌ‹Y\[™[[™H^ÜÌK˜]]™HSËÓÕ“SÕ›Ú[š[™Ë™YK]\ÚÈÛ™R™]ˆÜ[Z^˜][Ûˆ[™[[Ý]ÖY\Õ˜XÚÈ]˜[X][Ûˆ™[XZ[ˆØ]Yˆ\È\ÈÚXÚÜÚ[[™˜Z[š[™ËZX[]šY[˜ÙHÛ›NÈ]Ù\È›Ý\ÝX›\ÚHÛÝ\Y‘UˆY]šXÈ[\›Ý™[Y[ˆ]šY[˜ÙNˆØÜËÑÔ“ÕS‘‘U‹ÑÌ—ÐÒPÒÔÒS•Ô“ÑÔ‘TÔ×ÌŒŒLŒWÔÕTMMLžÚœÛÛ‹YX‚‚ˆÈÈŒ‹LLLŒH8 %ÌˆY\\ˆÚXÚÜÚ[Ý\MŒ]Y]Y]]™[Ý\MŒM‚•H›ÝXÝYÛË\˜[šÈÌˆÛX[ˆ[ˆY˜[˜ÙYÈ]™[Ý\MŒMÌNŒÈÛˆ\ÚXØ[Ô\ÈÈ[™H[™›ÙXÙYH\˜X›HY\\‹\Ý\MŒÚXÚÜÚ[ˆHY\\ˆ[™]\Ý[™XÛÝ™\žHÝ]H›ÝØYYÛˆÔHÚ]ÙZYÚ×ÛÛ›OQ˜[ÙXÈÜ[Z^™\‹ØÚY[\‹Ø[\\ˆ[™“‘ÈÝ]H\™H™\Ù[[™H™YÚ\Ý\™YÛX[ˆX[šY™\ÝÒHX]Ú\ËˆH\›Z[˜[™XÙZ\\ÈÝ[XœÙ[ÛÈÌ‹Y\[™[[™H^ÜÌK˜]]™HSËÓÕ“SÕ›Ú[š[™Ë™YK]\ÚÈÛ™R™]ˆÜ[Z^˜][Ûˆ[™[[Ý]ÖY\Õ˜XÚÈ]˜[X][Ûˆ™[XZ[ˆØ]Yˆ\È\ÈÚXÚÜÚ[[™˜Z[š[™ËZX[]šY[˜ÙHÛ›NÈ]Ù\È›Ý\ÝX›\ÚHÛÝ\Y‘UˆY]šXÈ[\›Ý™[Y[ˆ]šY[˜ÙNˆØÜËÑÔ“ÕS‘‘U‹ÑÌ—ÐÒPÒÔÒS•Ô“ÑÔ‘TÔ×ÌŒŒLŒWÔÕTMŒžÚœÛÛ‹YX‚‚ˆÈÈŒ‹LLLŒH8 %ÌˆY\\ˆÚXÚÜÚ[Ý\ML]Y]Y]]™[Ý\MLB‚•H›ÝXÝYÛË\˜[šÈÌˆÛX[ˆ[ˆY˜[˜ÙYÈ]™[Ý\MLKÌNŒÈÛˆ\ÚXØ[Ô\ÈÈ[™H[™›ÙXÙYH\˜X›HY\\‹\Ý\MLÚXÚÜÚ[ˆHY\\ˆ[™]\Ý[™XÛÝ™\žHÝ]H›ÝØYYÛˆÔHÚ]ÙZYÚ×ÛÛ›OQ˜[ÙXÈÜ[Z^™\‹ØÚY[\‹Ø[\\ˆ[™“‘ÈÝ]H\™H™\Ù[[™H™YÚ\Ý\™YÛX[ˆX[šY™\ÝÒHX]Ú\ËˆH\›Z[˜[™XÙZ\\ÈÝ[XœÙ[ÛÈÌ‹Y\[™[[™H^ÜÌK˜]]™HSËÓÕ“SÕ›Ú[š[™Ë™YK]\ÚÈÛ™R™]ˆÜ[Z^˜][Ûˆ[™[[Ý]ÖY\Õ˜XÚÈ]˜[X][Ûˆ™[XZ[ˆØ]Yˆ\È\ÈÚXÚÜÚ[[™˜Z[š[™ËZX[]šY[˜ÙHÛ›NÈ]Ù\È›Ý\ÝX›\ÚHÛÝ\Y‘UˆY]šXÈ[\›Ý™[Y[ˆ]šY[˜ÙNˆØÜËÑÔ“ÕS‘‘U‹ÑÌ—ÐÒPÒÔÒS•Ô“ÑÔ‘TÔ×ÌŒŒLŒWÔÕTMLžÚœÛÛ‹YX‚ˆÈÈŒ‹LLLŒH8 %9gd9¨!ùb¨9§`ú )¹d"Ý\Œ9.ãy§*¹ h¹i#yç'ùk§¹¨a‚‚¹g*9a®ùîäÈÌˆÝ\MÌ9æ¡9bcy£ä9."ûï#9.ã¹cã9n£ùb%ú )¹d"Ý\9 h¹i#yb,Ý\Œ;ï#9/oùå*9gd9¨!ÈÚÙ[ˆ9§`úaãHKŒ;ï#SÕŒLËÌH9alHˆ9.*ˆ˜[œÚ][Û¸à LL9«(z)áº)âyï%¹è {ï#9«hùo#ÈÌˆ9§*¹¥.ybª8à ‘Ü›Ý[™[™ÈXXÚ\‹Y›Ü˜Ú[™ÈÜÜÈ9§*ù«iy..ˆ‹ŒN;ï#‘UˆÝXÝ\™YÜÜÈ9..ˆŒÍÎ{ï&ù.)9.*¹n£ùb%ùæ¡PUÒÐQRUÖY\ËS›ËÐPÕU‘H9.ãy..ˆKŒ;ï#9/aˆÌˆÜ™YYH9¨a¹nlùgaÈ[ÕH9.ãy..ˆ8à ¹kîHÝ\Œ9`f¹¥è9¦í9¥¬ÚÙ[ˆ˜XÙ{ï#Ìˆ9gd9¨!ùgaù`/9£gùi,zfcyb,‹MMMÌ‹MŒ{ï#9cm9.ãy¥è9¬åz-*¹oàùå'ù¢$:i¥¹.*¹gd9¨!ÈŒM˜ØÌÎO˜;ï"9b!¹b*ú/¤ùaîˆO˜Ø›ÞÜÝ\˜;ï"xà ¹îäú+®»ï&º )¹d":dïº-ëùç'ùk§º+«yîàù§"y¥b9olydãHÚÙ[ˆ9© ¹ã¡ûï#9/aº/¤ùaî¹gd9¨!ù£©ycèËú+ï¹ê"ù.ãy§*¹¢dú`&»ï#9`g9«h¹æì¹æë¹b¨9«i{ï#9."ù. 9«iy¥.ygd9¨!ú/¤ùaî¹æë¹¨!ù¢%¹¦/¹o#ù`&z`"y¨a¹§hy.í¹nmºaãy¥¬9`f¹âë9êâú)áºh¤zj£:+à{ï&ù.#yk¨ùéìSÕÔ“SÕÓÕ“SÕ9£ä9caøà º+ày£k»ï&˜ØÜËÑÔ“ÕS‘‘U—ÐÓÕTQÔTÑWÐ×Ô‘PSÑÌ—ÐÓÕTQÐÓÓÔ‘SUWÕÑRQÒÔÕTMÌÌŒŒLŒKžÚœÛÛ‹YX8à ‚ˆÈÈŒ‹LLLŒH8 %˜]]™Hš\ÝX[\›Û\Y[[ÜžH[ÛÈX]™\ÈÌˆÙ[ÛY]žH[˜Ú[™ÙY‚¹å*Ü›Ý[™[ž][™È9k¦9¥®HZ[Ýš\ÝX[Ü›Û\9¢¢¹."¹. 9n)ùd"9¬åy¨a¹/g9..¹odùbcyn)Èš\ÝX[™Y™\™[˜Ù{ï#SÕŒLËÌH9d!H9n)ùalHL9«(z)áº)âyï%¹è {ï#ÌˆÝ\MÌ9a®ùîäøà y¥è9cà¹¥l9¦í9¥¬8à y¥è9ë+9.£9.*ˆ“xà ¹¢`9§"HÌˆ:/¤ùaîº`ïz ïz(ªùk¦9¥®H\œÙ\ˆ9 h¹i#y..¹d"9¬åy¨a»ï#9/a¹.)9n£ùb%ÈÌˆ9nlùgaÈ[ÕH9gaù..ˆ;ï&úi¥¹.*¹gd9¨!ù.ãy£©z/äya®ùîäÈÌˆ:e&z+ëùgî¹î¯øà ¹îäú+®»ï&¹c§ùå'È™Y™\™[˜ÙKX›Þ9£©ycèù§+:.ªù.#z ïy/ë¹i#yodùbcygd9¨!ùi-;ï#9.#z ïy¢¢º+éz+â¹¥«yéì9..º-çú.*¹¥-¹æâ¸à º+ày£k»ï&˜ØÜËÑÔ“ÕS‘‘U—ÐÓÕTQÔTÑWÐ×Õ’TÕPSÔ“ÓTÓQSSÔ–WÔÕTMÌÌŒŒLŒKžÚœÛÛ‹YX8à ‚‚ˆÈÈŒ‹LLLŒH8 %Y[]H
+È™]š[Ý\ËX›ÞÝ]H›Ú™XÝÜˆ9cã9n£ùb%ú )¹d"9i,z-)z/®yåc‚¹¥¬9h§¹l#ùg¢ÈY[]P›ÞÝ]UÚÙ[”›Ú™XÝÜ˜;ï#9l!¹."¹. 9n)ùaly.ªú)áº)ây¤f:) yd£9£ y.ay¨a¹gd9¨!ù. :-mù£ä¹aiHÌˆØ]\Ø[›Û\;ï&ùa®ùîäÈÌˆÝ\MÌ;ï#SÕŒLËÌH9alHˆ9.*ˆ˜[œÚ][Û»ï#9ç'ùk§ˆÔH9¦í9¥¬Lˆ9«ixà ‘Ü›Ý[™[™ÈÜÜÈ:fcz!ìÈKÌÎ{ï#\Y‘UˆPUÒÐQRUÖY\ËS›ËÐPÕU‘H9g*9.)9n£ùb%ùgaù..ˆKŒ;ï#9/aˆÌˆÜ™YYH9¨aˆ[ÕH9.ãy..ˆ;ï#:i¥¹gd9¨!ù.ãz/¤ùaîˆO˜Ø˜8à ¹îäú+®»ï&¹cê¹b¨9aiy¥l9`/9¨a¹â­¹  y.ãy.#z-¬ù.éy£©ùb-ˆÌˆ9gd9¨!ùi-;ï#9."ù. 9«izg :) yd"9¬åyæ¡ÛÛÜ™[˜]K[Ý]]Y\][Û‹ù`&z`"y§hy.íº+«yîàûï#: #9.#y¦+ùæì¹æë¹h§¹b¨‘Uˆ9«iy¥l8à º+ày£k»ï&˜ØÜËÑÔ“ÕS‘‘U—ÐÓÕTQÔTÑWÐ×ÔÕUWÐÓÓ‘USÓ‘QÓQSSÔ–WÔÕTMÌÌŒŒLŒKžÚœÛÛ‹YX8à ‚ˆÈÈŒ‹LLLŒH8 %ÛÜœ™XÝY[œÙHÌˆÛÛ˜XÝ^ÜÙ\ÈÛ™KX›Þ˜\Ù[[™B‚¹k¨z+¨ycäyã¬9«i9bcH\™Ù][Û›H: )¹d"[Ý9l!ˆØØ]H[\œÛÛœØ9.#¹ceyæë¹¨!È[œÝÙ\ˆ9­íùå*;ï#9.#z ïy£k¹«i:)èúaâˆÌˆ9gd9¨!ùi-8à ¹¥¬9h§¹i&¹¨aˆØ]\Ø[XÛÙ\»ï&¹«ãù.*¹¨a¹æ¡9fæù.*¹gd9¨!ùcåùk¦9¥®HÚÙ[ˆ:# ùfí9î©¹§gûï#9cê¹g*[WÙ[™˜9`g9«h»ï#9nm¹g*SÕŒLËÌH9d!È9.*¹ç'ùk§¹n)ù/çyåfyaj:`êÕ\œÛÛˆ›Þ\øà ¹a®ùîäÈÌˆÝ\MÌ8à Mˆ9«(z)áº)âyï%¹è xà y¥è9cà¹¥l9¦í9¥¬9¥í»ï#9ª(yg¢ù.ãyg*9«ãùn)ùcêº/¤ùaî¹. 9.*¹d"9¬åy¨a»ï&Ò[ÕLH9cë9fç¹gaù`/SÕŒLÏXŒLÍX8à SSÕŒLOXŒÎ8à ¹îäú+®»ï&º/æy¦+ÈÌˆ[œÙH9bcyêëùæ¡9ç'ùk§¹gî¹î¯ûï&ùd#¹îëz )¹d":+«yîàùoázhnù/oùå*9k£9¥m9i&¹¨a¹d"9d#9¢%¹d"9¬åH™Y™\œš[™ËÝš\ÝX[\›Û\9d"9d#;ï#9.bùbcH\™Ù][Û›H[ÕH9îäù§§:fcyî©ù..¹ccú+«¹.#yc.zacyæ¡9£©ycèú+â¹¥«xà º+ày£k»ï&˜ØÜËÑÔ“ÕS‘‘U—ÐÓÕTQÔTÑWÐ×Ô‘PSÑÌ—ÑS”ÑWÓUSP“ÖÔÕTMÌÌŒŒLŒKžÚœÛÛ‹YX8à ‚‚ˆÈÈŒ‹LLLŒH8 %ÌˆÛX[ˆ]™H›ÙÜ™\ÜÈ]Ý\MÍ‚•H›ÝXÝYÛË\˜[šÈÌˆÛX[ˆ[ˆ™[XZ[œÈ]™H]MÍÌNŒØÛˆÔ\ÈËÍK‚•H]\Ý]™[\Èš[š]H
+ÜÜÈŒMLŒÌŒLÍÍØÜ˜YY[›Ü›HŒÎMMÍØXZÂ˜L‹ŽŽÚP˜
+NÈ™XÙ[L\Ý\›ÝYÚ]\ÈÌËŽLNHÝ\ËÚÝ\˜Ú]š[™ÈB›[™X\ˆ™[XZ[™\ˆ\Ý[X]HÙˆX›Ý]‹ˆH\˜X›H™XÛÝ™\žHÝ]H[™˜Y\\‹\Ý\MÌœ\™H™\Ù[Ú[HH\›Z[˜[™XÙZ\\ÈXœÙ[‚‘ÌK[™H^Ü˜]]™HÕ“SÕ›Ú[š[™Ë™YK]\ÚÈÜ[Z^˜][Ûˆ[™[[Ý]™]˜[X][Ûˆ™[XZ[ˆØ]YÈ›È[™\[™[Û™R™]‹ÖY\Õ˜XÚÈÜ[Z^™\ˆØ\ÈÝ\Y‚•\È\ÈH˜Z[š[™ËZX[Ü™XÛÝ™\˜Xš[]H™XÛÜ™Û›Kˆ]šY[˜ÙN‚˜ØÜËÑÔ“ÕS‘‘U‹ÑÌ—Ô“ÑÔ‘TÔ×ÓU‘WÌŒŒLŒWÔÕTMÍžÚœÛÛ‹YX‚‚ˆÈÈŒ‹LLLŒH8 %Ü›Ý[™‘Uˆš^YXØ[™Y]HÜ›ÜÜË\Ù\]Y[˜ÙHXYÛ›ÜÝXÈÛˆSÕŒLB‚¹a®ùîäùg*SÕŒLÈRSˆ™\Z\ˆÜ]9."º+«yîàùæ¡N\Ý\™XYÝ];ï#9g*9.#yd#9æ¡“SÕŒLHRSˆ:)áºh¤yn)ÈÍ¸ $ÎLûï"LŽ9n)ûï"y."ºfí¹¦í9¥¬:/ä:(c;ï&ù.ãy/oùå*9d#9. 9¬ê9a£9æ¡›˜]]™HØ[™Y]KÜ™YÚ[ÛˆØXÚH9d"9d#9d£9cey..ùnl¹ï$ùkf9fç¹¥/¸à •˜XÚÑ]˜[9o¥ùb,’ÕOXŒLMM˜8à Q]OXŒMÎÎX8à P\ÜÐOXŒLNLØ8à RQŒOXŒÌMN8à B’QÕÏXÍX8à Q”XNX8à Q“XŒMØ;ï#Lˆ9n)ù§"z/¤ùaî»ï#9alú e9fç¹¥/¹î©ˆKŒˆ”Ø8à ‚¹æî9«åSÕŒLÈ9d#:)áºh¤H[\Ü˜[™\Z\ˆ9æ¡ÕOXŒÌŽMX8à RQŒOXŒMÍÌŽX8à B’QÕÏXN;ï#:-ê:)áºh¤y¦#¹¦/º` 9c%»ï#:+í9¦#¹odùbcHš^YXØ[™Y]H™XYÝ]9l&¹§*¹¬æùc%¸à ‚¹.)9.*º# ùfí9gaù..ˆRS»ï#9ï$ùkf9¥êy.£ˆÌˆÛX[ˆ9îâ9à®{ï#9.#z ïyodù/gÌˆÛX[¸à UTÕ9¢%‚¹§ 9îâÜ›Ý[™‘Uˆ9h§¹æâ¸à º+ày£k»ï&‚˜ØÜËÑÔ“ÕS‘‘U—ÐÓÕTQÔTÑWÐ—Ñ’VQÐÐS‘QUWÐÔ“ÔÔ×ÔÑTUQSÑWÓSÕŒÌWÌŒŒLŒKžÚœÛÛ‹YX8à ‚‚ˆÈÈŒ‹LLLŒH8 %™YÚ\Ý\™YÜ›Ý[™‘UˆÛÝ\YšY[È[ž\Ú[‚YYÛÛËÙÜ›Ý[™™]‹ØÛÝ\YÜ[—ØÛÝ\YÝšY[ËœX\ÈHÛX[‹XÚXÚÛÝ]™[ž\Ú[›ÜˆH[™XYK]\ÝYš^YXØ[™Y]HÜ›Ý[™‘UˆšY[È]˜[X]Ü‹‚’]›ÜØ\™ÈH™X[Û\ØÚXÚÜÚ[ÛÝ]]Ù]šXÙH\™Ý[Y[ÈÈH^\Ý[™ÂœÚ[™ÛKX˜XÚØ›Û™H[[YKÙY\ÈH˜XÚÑ]˜[ØÛÜH^XÚ][™Ù\È›ÝÝ\˜HÙXÛÛ™“HÜˆ™[X™[ØXÚY™X]\™\È\È\›Z[˜[ÌˆÛX[ˆÝ]]ˆH™]Â™[ž\Ú[\ÜÙ\ÈWØÛÛ\[X[™KZ[È›ÈÔH›ØˆØ\È][˜ÚYžH\Â˜Ú[™ÙK‚‚ˆÈÈŒ‹LLLŒH8 %ÌˆÛX[ˆÝ\MÍLÚXÚÜÚ[™XÛÝ™\žH]Y]‚¹g*9cåù/çy¢©9æ¡9.)9chHÌˆ:+«yîàùîéùîëz/ä:(c9§'úeí;ï#9å*9¬ê9a£ÔH9ã«ùh ùcêº+îùb¨:/oB˜Y\\‹\Ý\MÍLœ9d£]\ÝÝ˜Z[š[™×ÜÝ]Kœ8à ¹.): !ygaù¢©ydbˆÝ\ŒMÍL8à ]ÛÜ›Ú^™H¸à y.)y¨/Ìˆ9¨/9o#ùd£9. :!í9æ¡ÛX[ˆX[šY™\ÝÒ{ï&ØY\\ˆ9.#‚¹k£9¥mÝ]H9d!9§"HŽLÈ9.*ˆ˜Z[˜X›H[œÛÜœûï#Ü[Z^™\‹ÜØÚY[\‹ÜØ[\\‹Ô“‘Â¹â­¹  ygaùkf9g*;ï#Y\\ˆ9­k¹à®ycà¹¥l9aj:`ê9§"zfd8à ¹îâ9  H™XÙZ\9.ãy§*¹å'ù¢$;ï#:+«yîàú/æùê"Â¹§*¹/ë¹¥.xà º+ày£k»ï&˜ØÜËÑÔ“ÕS‘‘U‹ÑÌ—ÐÒPÒÔÒS•Ô“ÑÔ‘TÔ×ÌŒŒLŒWÔÕTMÍLžÚœÛÛ‹YX8à ‚‚ˆÈÈŒ‹LLLŒH8 %ÜÝQÌˆÝÛœÝ™X[H]Y]YHÛÛ˜XÝ]Y]‚¹g*9«hùo#ÈÌˆ9.ãz/ä:(c9§'úeí;ï#9kîyîâ9  yd#º!ê¹bª9¢iú(c9æ¡Ìˆ[™xà QÔMHÌxà [˜]]™B“Õ“SÕ›Ú[¸à [˜]]™HSÕÔ“SÕÓÕ“SÕ9."y.îùb¨yd£9âë9êâÈ[[Ý]9.¥9.*¹aiycèù¢iú(c9cêº+îÂ¹d"9d#9k¨z+¨xà ¹.¥9.*º!&¹§+9gaú`&º/áù¬ê9a£]Ûˆ9ã«ùh ùæ¡WØÛÛ\[X;ï&ùîâ9  HÌ‚œÝ]\ËÜÝ\ÛX[šY™\Ý9¨(zj£8à X[™H™XÙZ\8à [˜]]™HÕ“SÕX[šY™\ÝØ]xà Bš[[Ý]ØÛÜHØ]H9d£:-a9®¤9ëbyo¡y§hy.í¹gaùkf9g*;ï#9§*¹d+ùbª9.îù/eHÔH9¢%ˆÜ[Z^™\¸à ‚º/æy¦+ùîâ9  ybcyïk¹k¨z+¨{ï#9.#y.èú(j9."ù®.9mì¹k£9¢$8à ˆ‚ˆÈÈŒ‹LLLŒH8 %Ý\MÍLÛÝ\YXÛÙ\ˆ™YÜ™\ÜÚ[Ûˆ[™[˜ÙU˜XÚÈ[Y[œÚ[Ûˆ™\Z\‚‚‘ÌˆÝ\MÍL9/çy£ ya®ùîäûï#9g*9.)9.*¹ç'ùk§ˆ[˜ÙU˜XÚÈ9n£ùb%ùd!:+«yîàù. 9.*ˆ˜[œÚ][Û¸à yalH‚¹.*ˆÜ[Z^™\ˆÝ\ûï&ùk¦9¥®HY\˜\˜ÚWÙ[˜[ZXØ:)èùè yg*9.*ˆ˜[œÚ][Ûˆ9."¹gaú/å9fç‚¹d"9¬åy¨a¸à ÌÐÌˆ™XØ[[ÕLH9b!¹b*ù..ˆKÍø¡¤Œ‹Íûï"{ï"yd£KÍ¸¡¤Œ‹Í»ï"M»ï"{ï#¹cê¹/g9..¹cåúfd: )¹d"9o 9cäz+ày£k¸à ¹fç¹od¹cäyã¬9k¦9¥®H]˜[X]Üˆ9¢¢ˆ[˜ÙU˜XÚËLMˆ9a¦y¢$ŒLŽ0åÍÌŒ;ï#9k§ºfaHÙ\Z[™›Ëš[šX9¦+ÈNLŒ0åÌL;ï&ùmì¹/ë¹«hùnm¹å*9d#9. ÚXÚÜÚ[:aãz-ä{ï#¹¬¨y§"z)é¹è¬9«hùo#ÈÌ¸à ¹§*¹¢©ydbˆÕKÒQŒKÕUH9¢%¹âë9êâù¬æùc%¹£ä9caøà º+ày£k»ï&‚˜ØÜËÑÔ“ÕS‘‘U—ÐÓÕTQÔTÑWÐ×Ô‘PSÑÌ—ÑS”ÑWÐÓÕTS‘×ÔÕTMÍLÌŒŒLŒKžÚœÛÛ‹YX8à ‚‚ˆÈÈŒ‹LLLŒH8 %›Ü›X[Ìˆ™[XZ[œÈ]™NÈ›ÈÝÛœÝ™X[H™\Ý\‚¹cey«(y§`ùj yâ­¹  y¨à9§éyèkº+©9«hùo#ÈÌˆ][˜Ú\ˆQMÎNLÍNX9.ãykf9g*;ï&ùîâ9  H™XÙZ\9.#‚˜Y\\—Ü›Ú™XÝÜ—Ùš[˜[œ9l&¹§*¹å'ù¢$;ï#9§ 9¥¬9cëùå*9dj9§'ÈY\\ˆ9.ãy..‚˜Y\\‹\Ý\MÍLœ;ï#9k£9¥m™XÛÝ™\žHÝ]H9/çyåfxà ‘ÌHÔMxà QÌˆ[™xà QÔMÂ¹âë9êâÈ[[Ý]8à USÈ˜]]™HÚ\™È9d£˜]]™H9."y.îùb¨HÝÛ™\ˆ9b!¹b*ù.ãyi!9.£¹¬ê9a£9æ¡9ëbyo¡B¹â­¹  {ï#9."y.îùb¨HÝÛ™\ˆÜ[Z^™\ˆ\]\È9..ˆ8à ¹¬¨y§"zaãyd+øà z)¡¹æå¹¢%¹£ä9bcy¦bùcaúgg¹îâ9  B˜ÚXÚÜÚ[8à º+ày£k»ï&˜ØÜËÑÔ“ÕS‘‘U‹ÑÌ—ÓU‘WÕÐRUÌŒŒLŒKžÚœÛÛ‹YX8à ‚‚ˆÈÈŒ‹LLLŒH8 %›Ü›X[Ìˆ]™[Ý\MÍNLÈ]™H›ÙÜ™\ÜÂ‚ºaãy¥¬:+îùcå¹d#9. 9.*¹«hùo#È]™[Ý™X[{ï#9èkº+©Ìˆ9mì¹.ãˆÝ\MÍL9îéùîëy£ª:/æùb,˜MÍNLËÌNŒØ;ï&ù§ 9d#¹.¢ù.íˆÜÜÏXŒMÌLÎØ8à YÜ˜YY[›Ü›OXLŒLÌ8à \XZÂ›Y[[ÜžOXL‹ŽŽHÚP˜;ï#9§ :/äHL9«iyd'¹d$9î©ˆÌËŒHÝ\ËÚÝ\˜;ï#9î¯ù )ùbjy/fyî©‚˜‹ŒH8à ›][˜Ú\ˆQMÎNLÍNX9.ãykf9­.ûï#9îâ9  H™XÙZ\Ùš[˜[Y\\ˆ9.ãyï.¹i,{ï#¹¢`9.éy¬¨y§"yd+ùbª9¢%¹¥.ya¦y.îù/ey."ù®.ÝÛ™\¸à º+ày£k»ï&‚˜ØÜËÑÔ“ÕS‘‘U‹ÑÌ—Ô“ÑÔ‘TÔ×ÓU‘WÌŒŒLŒWÔÕTMÍNLËžÚœÛÛ‹YX8à ‚‚ˆÈÈŒ‹LLLŒH8 %ÝÛœÝ™X[HÛÝ\[™È™YÜ™\ÜÚ[Ûˆ™[XZ[œÈÜ™Y[ˆ\š[™ÈÌˆØZ]‚¹g*9«hùo#ÈÌˆ9îéùîëych9å*ÔLËÍxà yîâ9  H™XÙZ\9l&¹§*¹å'ù¢$9§'úeí;ï#9kîB˜ØØ][[ÝÙÜ›Ý[™™]‹ØÛÝ\Y8à XÛÛËÙÜ›Ý[™™]‹ØÛÝ\Y9d£˜ØÜš\ËÙÜ›Ý[™™]˜9¢iú(c™YÚ\Ý\™Y]Ûˆ9ã«ùh ùæ¡ÛÛ\[X[;ï&úf£ùd#º/ä:(cŒLH9.*¹¨.9oàÈÛÝ\[™È9ceya`ù­bú+å{ï"Ù™šXÚX[HY[[Üžxà XØ]\Ø[™Yš[8à [Y[[ÜžB˜ÛÛ™][Û™Y[œ]8à T\ÙKPHÛÜ™{ï"{ï#9îäù§§9aj:`ê:`&º/áøà ¹¬¨y§"yd+ùbªÔxà y/ë¹¥.HÌˆ9¢%‚¹¥.ycæ9."ù®.9ëbyo¡y§hy.í»ï&ú+ézj£:+àycêº+ày¦#¹.èùè yaiycèùcëúaãynî»ï#9.#y§¡9¢$9 )ú ïyîäù§§8à ‚‚ˆÈÈŒ‹LLLŒH8 %Ìˆ]\Ý™XÛÝ™\žHÝ]HÔH[YÜš]H™XÚXÚÂ‚¹g*9«hùo#ÈÌˆ9.ãz/ä:(c9b,]™[Ý\MÍŒMxà yîâ9  H™XÙZ\9l&¹ï.¹i,y§'úeí;ï#9å*™YÚ\Ý\™Y™Ü›Ý[™]˜Z[ˆ]Ûˆ9ã«ùh ùcêº+îùb¨:/oHÚXÚÜÚ[ËÛ]\ÝÝ˜Z[š[™×ÜÝ]Kœ8à ‚œÝ]H9¢©ydbˆ\˜X›HÝ\MÍL8à ]ÛÜ›Ú^™L¸à LŽLÈ9.*ˆ˜Z[˜X›H[œÛÜœûï#›Ü[Z^™\‹ÜØÚY[\¸à \Ø[\\ˆÜÚ][Û¸à yfæùìnÈ“‘È9d£:+«yîàùd"9d#9keù«­ygaùkf9g*;ï&ù¢`9§"B¹­k¹à®H˜Z[˜X›H[œÛÜœÈ9§"zfd;ï#9¥¡ù.íˆÒOXXXYÙ˜™˜™˜ØXŒÎ™YXÌYLÎYXLÍŒ˜ÌLŒ™ŒØMÙLMNMŒLÎX8à ‚¹§*¹¥.ya¦HÚXÚÜÚ[8à y§*¹d+ùbªÔ{ï#9èkº+©9«hùo#ÈÌˆ9.ãycëùk¢yaj9 h¹i#xà ‚‚ˆÈÈŒ‹LLLŒH8 %[™\[™[[[Ý][XYÙK[Ý™\›\Ø]HÛX\™Y‚¹g*Ìˆ9îâ9  ybcyå*ÔK[Û›H9æí9£©z, ùå*9¬ê9a£9æ¡[[Ý]Ý™\›\Ø]Y]
+
+X;ï#9kîB“SÕŒLH˜[Y][Û‹Z[ˆKMÈ9n)øà T“SÕÚ[™ÛH9n)øà T“SÕ][H9n)ùd£•SÈÕ“SÕ9n)ú`$:hny«å9kîHÌˆÛX[ˆRSˆ›ÝÜûï&ùfæù.*º# ùfí^XÝ[XYÙHÝ™\›\¹gaù..ˆ;ï#RSˆX[šY™\ÝÒH9..‚˜NLÎYŽXLÌ™LYYÙŒL™MMØLLXYŒ˜Y™ŒŒÎLÌ™ŽLÙ˜NXÌLNXX˜X8à ¹¬¨y§"yª(yg¢Â¹£ª9ä!¹¢%ˆÔH9b!ºac{ï&ú+éyîäù§§9cê¹®!zfi9âë9êâù )úeê9©æûï#9.#y.èú(j9.îù/ey )ú ïy£!ù¨!øà º+ày£k»ï&‚˜ØÜËÑÔ“ÕS‘‘U‹ÒSÕUÓÕ‘T“TÐUQUÌŒŒLŒKžÚœÛÛ‹YX8à ‚‚ˆÈÈŒ‹LLLŒH8 %[™\[™[[[Ý][œ]™Y›YÚ\ÜÙY‚¹kîy¬ê9a£9æ¡9fæù.*¹âë9êâÈ[[Ý]X[šY™\Ý9`fˆÔK[Û›H9¥¡ù.í¹¨à9§é{ï&“SÕŒLH˜[Y][Û‚ŒKMÈ9n)øà T“SÕÚ[™ÛH9n)øà T“SÕ][H9n)ùd£SÈÕ“SÕ9n)ùfï¹âaú-ëùo¡9aj:`ê¹kf9g*;ï"Z\ÜÚ[™ÏL;ï"{ï#9.%9gaùhì9¦#ˆ˜Z[š[™×ÛÛ—Ý\×ÜØÛÜOY˜[ÙX8à ¹¬¨y§"HÔH9£ª9ä!¹¢%‚¹£!ù¨!ú+¨yë¥ûï&ú/æycê¹/çz+àyîâ9  HÌˆ[™H9å'ù¢$9d#ˆ[[Ý]ÝÛ™\ˆ9.#y/&¹fè:/¤ùaiz-ëùo¡9ï.¹i,B¹i,z-)xà º+ày£k»ï&˜ØÜËÑÔ“ÕS‘‘U‹ÒSÕUÒS”UÔ‘Q“QÒÌŒŒLŒKžÚœÛÛ‹YX8à ‚‚ˆÈÈŒ‹LLLŒH8 %ÌÑÌŒÑÌHÛÛ\\š\ÛÛˆX]š^[YÛ™YÚ]HÛÝ\YXZ[›[™B‚¹£"y§ 9¥¬Ü›Ý[™‘Uˆ9cey..ùnlº )¹d"9¥®yd$zaãy¥¬9¨.9kîynm¹ænú+¬9."yîá9kîyáiûï&‘Ì9æ¡SÕŒLBŒKN9n)ùd"9¬åHRSˆ:eoùkï9aî¹mì¹k£9¢$;ï&ÑÌŒ9¦+ùâjyä!ˆÔMH9."¹k£9¢$9æ¡Œ9«izf¥9é®ùk¦¹/cB¹£©ùb-»ï#9/çyåfHSÕMËLˆ9fæùn)øà T“SÕÚ[™ÛNÛ][LLˆ9æ¡9çëyb§ú ïH™XÙZ\;ï&ù¥¬ÌB‘ÔMHÝÛ™\ˆ9.ãy..ˆÐRUS‘×ÑÌ—ÐÓPS—ÔÕPÐÑTÔØ;ï#Ü[Z^™\ˆ\]\È9..ˆ;ï#9§*¹d+ùbªº+«yîàøà º )¹d"9k§¹ã¬;ï"9k¦9¥®H[œÙH9i&¹¨aº)èùè xà ]\Y‘U¸à z.ªù.ïKù¨a¹â­¹  HY[[Üžxà yfî¹k¦¹`&z`"Bº)áºh¤yfç¹¥/»ï"ymì¹§"ycåúfd9ç'ùk§¹¥l9£kº+ày£k»ï#9/a¹¬¨y§"y¢¢¹çëyâaù¢%º-ê9n£ùb%ú+â¹¥«ycaùî©ù..¹âë9êâù )ú ïy£ä9caøà ‚º+ày£k»ï&˜ØÜËÑÔ“ÕS‘‘U‹ÑÌÑÌŒÑÌWÐÓÓTT’TÓÓ—ÓPU’VÌŒŒLŒKžÚœÛÛ‹YX8à ‚‚ˆÈÈŒ‹LLLŒH8 %Y\Õ˜XÚÈ›Ý]HÛÜœ™XÝYÈ]^[X\žHÙ™›[™H™Y™\™[˜ÙB‚¹£"y¥¬9æ¡Ü›Ý[™‘Uˆ9cey..ùnlº )¹d"9.îùb¨zaãy¥¬9¨(y«hù¢iú(c:-ëùî¯ûï&¹âë9êâÈY\Õ˜XÚËÓÛ™R™]‚¹.#ya£y/g9..¹g*9î¯ù..ùª(yg¢ûï#9.gù.#yn¥:f.ùhgˆÌ¸à R‘Uˆ9îäù§¡9c%¹a¬ùëe¹¢%¹£ yîëz.ªù.ïz+¬9oá¹æ¡: )¹d":+«yîàøà ‚–Y\Õ˜XÚÈ9æ¡Y\ËÓ›È9¥l9£k¹îá9îáùd£9© ¹ã¡ú+îùcå¹cê¹/g9..¹aly.ªÈÜ›Ý[™[ž][™È9..ùnl¹."¹æ¡:/¡ybªyæäyçhÂ¹.#¹é®ùî¯ùcàº  ùkîyáiûï&ù/çyåfy¥è¹§"yc¡¹cì¹îäù§§;ï#9.#yd+ùbª9¥¬9æ¡9âë9êâÈY\Õ˜XÚÈ:eoú+«yîàøà ¹«hùo#ù..ùî¯ù.ãy¦+Â‘Ü›Ý[™[ž][™ÈY[ˆÝ]\È
+È\Y‘UˆÚÚXÙKÓ‘UËÓ“×ÓPUÒ
+È\œÚ\Ý[Y[]B›Y[[ÜžH
+ÈÛ™K]Ë[Û™H\ÜÚYÛ›Y[8à ‚‚ˆÈÈŒ‹LLLŒH8 %[™\[™[˜]]™HÛ™R™]ˆÝÛ™\ˆ]\ÙY[™ÛÝ\Y™\XÙ[Y[™YÚ\Ý\™Y‚¹k¨z+¨ycäyã¬™X[Ý™YWÝ\Ú×Ú›Ú[Û˜]]™WÝŒWÜ]Y]YX:&oyá-¹l&¹§*¹d+ùbªÔ{ï#9/a¹îâ9  yd#¹/&º, ùå*¹âë9êâÈ[—ÜÛÝ\˜ÙWÛX[šY™\ÝÜÙœX;ï#9.#¹¥¬9æ¡9cey..ùnlˆÜ›Ý[™‘Uˆ:-ëùî¯ùa¬¹ê xà º+éHÝÛ™\ˆ9mì¹k¢yaj¹`g9g*UTÑQÑ“Ô—ÑÔ“ÕS‘‘U—ÔÒS‘ÓWÐPÒÐ“Ó‘X;ï#9c§ÈX[šY™\ÝØÛÛ™šYÈ9d£ÝÛ™\ˆ9â­¹  y/çyåf{ï#¹¬¨y§"y.îù/eHÜ[Z^™\ˆ\]xà ¹¥¬9h§ˆ]Y]YWÙÜ›Ý[™™]—Û˜]]™WÝ™YWÝ\ÚËœX9.#‚˜˜Z[—Û˜]]™WÝ™YWÝ\ÚËœX;ï&¹/§z-e¹ì¯¹èkˆÌˆÛX[ˆ9îâ9  yd£˜]]™HSÈ9."y.îùb¨HX[šY™\Ý;ï#¹g*ÔM9."¹cê¹b¨:/oy. 9.*ˆÌˆ9..ùnl»ï#9£"HSÕÔ“SÕÓÕ“SÕ9gaú(hy¨-ù§+9£ä9cå¹. 9«(z)áº)âHY[ˆÝ]{ï#º+«yîàùaly.ªÈ\Y‘U¸à yfè9§§Y[[ÜžH›Ú™XÝÜˆ9d£9l#ùg¢ÈÕ“SÕØ]YÛÜžH™XYÝ];ï&ù.#yd+ùbª¹âë9êâÈÛ™R™]‹ÖY\Õ˜XÚøà ÔHØY\¸à [ÜÜËØ˜XÚÝØ\™Þ[]XÈ™YÜ™\ÜÚ[Û¸à XÛÛ\[X[9d£ŒLH9.*¹¥è¹§"HÛÝ\[™È\ÝÈ9gaú`&º/áûï#9l&¹§*¹d+ùbªÔH:+«yîàûï#9o¡H˜]]™HX[šY™\Ý9.#ˆÌˆ9îâ9  zeê¹¢dùo 9d#º!ê¹bª9 h¹i#xà ‚‚ˆÈÈŒ‹LLLŒH8 %ÛÝ\Y™YK]\ÚÈÝÛ™\ˆÛÛ™š\›YY]\[™[˜ÞHØ]B‚¹¥¬9æ¡]Y]YWÙÜ›Ý[™™]—Û˜]]™WÝ™YWÝ\ÚËœX9mì¹g*9âë9êâÈÝÛ™\ˆ9/&º+çy.+z/ä:(c;ï#9odùbcyâ­¹  y..‚˜ÐRUS‘×ÑÌ—ÓUU‘WÓPS’Q‘TÕ;ï#Ü[Z^™\—Ý\]\ÏL8à XÜWÛ][˜ÚYY˜[ÙX8à ¹k ù¬¨y§"ych9å*‘Ô{ï#9.gù¬¨y§"zaãyi#yd+ùbª9¥éÈÛ™R™]»ï&ÑÌˆÛX[ˆ9îâ9  yd£˜]]™HSÈ9."y.îùb¨HX[šY™\Ý9.ãy¦+ùe+ù. ¹d+ùbª9§hy.í¸à º+éyëbyo¡y¦+ùcëù h¹i#yæ¡9ç'ùk§ˆÝÛ™\ˆ9â­¹  {ï#9.#y¦+ú+«yîàùîäù§§9¢%¹£!ù¨!øà ‚‚ˆÈÈŒ‹LLLŒH8 %ÌˆÛX[ˆ]™H›ÙÜ™\ÜÈ]Ý\MÍÌŽ‚¹d#9. 9.*¹cåù/çy¢©ÌˆÛX[ˆ:+«yîàùcéy§á9.ãyg*9£ª:/æûï#]™[Ý™X[H9mì¹b,˜MÍÌŽÌNŒØ;ï"Œ‹LLLŒHŒNŒÌÎŒŽ
+Ì;ï"{ï#ÜÜÏXŒLLMÎØ8à B™Ü˜YY[›Ü›OXLŒÍLLÌŽX8à ¹§ :/äHLÍLÌL9.¢ù.í¹d'¹d$9î©¹..‚˜Ž‹ÌËÌÌËŒÌÌËNHÝ\ËÚÝ\˜;ï#9î¯ù )ùbjy/fyî©ˆKÍÌKËÌKŒŒˆ8à ‚¹îâ9  H™XÙZ\9d£9îâ9  HY\\ˆ9l&¹§*¹aî¹ã¬;ï#9£ y.ay h¹i#ykîy.ãy..‚˜Y\\‹\Ý\MÍLœ9.#ˆÚXÚÜÚ[ËÛ]\ÝÝ˜Z[š[™×ÜÝ]Kœ;ï&ù¬¨y§"yd+ùbª9¢%‚¹¥.ya¦y.îù/ey."ù®.ÝÛ™\¸à º/æy¦+ú+«yîàù`iyn­ËÑUH:+ày£k»ï#9.#y¦+ÈSÕÔ“SÕÓÕ“SÕ9£!ù¨!ùîäù§§8à ‚º+ày£k»ï&˜ØÜËÑÔ“ÕS‘‘U‹ÑÌ—Ô“ÑÔ‘TÔ×ÓU‘WÌŒŒLŒWÔÕTMÍÌŽžÚœÛÛ‹YX8à ‚‚ˆÈÈŒ‹LLLŒH8 %ÌˆÛX[ˆ]™H›ÙÜ™\ÜÈ]Ý\MÍÍL‚™]™[Ý™X[H9mì¹b,MÍÍLÌNŒØ;ï"Œ‹LLLŒHŒNŒŒ
+Ì;ï"{ï#9§ 9¥¬›ÜÜÏXŒMŒMÌŒLØ8à YÜ˜YY[›Ü›OXËÎMÎLÍ;ï#9gaù§"zfd8à ¹îâ9  H™XÙZ\9d£¹îâ9  HY\\ˆ9l&¹§*¹å'ù¢$;ï#9£ y.ay h¹i#ykîy.ãy..ˆY\\‹\Ý\MÍLœ9.#‚˜ÚXÚÜÚ[ËÛ]\ÝÝ˜Z[š[™×ÜÝ]Kœ;ï&ÑÌxà USÈ˜]]™xà Z[[Ý]9d£9aly.ªù."y.îùb¨B›ÝÛ™\ˆ9îéùîëycåù/§z-eºeê9/çy¢©8à º/æy¦+ú+«yîàù`iyn­ú+ày£k»ï#9.#y¦+ÈSÕÔ“SÕÓÕ“SÕ9£!ù¨!ùîäù§§8à ‚º+ày£k»ï&˜ØÜËÑÔ“ÕS‘‘U‹ÑÌ—Ô“ÑÔ‘TÔ×ÓU‘WÌŒŒLŒWÔÕTMÍÍLžÚœÛÛ‹YX8à ‚‚ˆÈÈŒ‹LLLŒH8 %ÌSÕŒLH:eoù¥í¹kï9aî¹îâ9  yi#y¨.‚ºaãy¥¬:+îùcåˆÌ9§`ùj HÝÛ™\ˆ9.#¹k£9¢$™XÙZ\;ï&˜[ÝŒÌWÙ[Ý˜[Y][Û—ÙÜMWÝŒX9..‚˜UTSÓSÕŒÔÐÓÔWÐS‘Ñ”“Ö‘S—ÓQSSÔ–WÐÓÓ•“Ó×ÐÓÓTUX;ï#œ™\ÚÛÝ\˜ÙH:/¤ùaîº)¡¹æå‚ŒMMÈ9n)ûï#9k¦9¥®y£!ù¨!È™XÙZ\9k£9¥m9.%9od¹¨hù¨(zj£:`&º/áûï"ÕOLŒÌÌÍŽM¸à Q]OLŒLŽNøà B\ÜÐOLŒNMÍøà RQŒOLŒNMNNxà RQÕÏLNLÌøà Q”MMøà Q“LŽŽMûï"xà º+éHÌ9îäù§§¹/çyåfy/g9..¹kîyáiûï#9.#z(ªù¥¬9æ¡Ü›Ý[™‘Uˆ9cey..ùnlº )¹d":+«yîàú)¡¹æå¸à ‚‚ˆÈÈŒ‹LLLŒH8 %ÌˆÛX[ˆ]™H›ÙÜ™\ÜÈ]Ý\MÎM‚¹d#9. 9cåù/çy¢©ÌˆÛX[ˆ9céy§á9£ª:/æú!ìÈMÎMÌNŒØ;ï"Œ‹LLLŒHŒŽŒŒH
+Ì;ï"{ï#º/äHLÌL9.¢ù.í¹d'¹d$9î©ˆŒÎL‹ÌŒHÝ\ËÜØ;ï#9î¯ù )ùbjy/fyî©ˆKŒÌKÌKŒˆ8à ‚˜š[˜[Ü™XÙZ\šœÛÛ˜9.#ˆY\\—Ü›Ú™XÝÜ—Ùš[˜[œ9l&¹§*¹aî¹ã¬;ï&ù."ù®.Ìxà USÈ˜]]™xà Bš[[Ý]9d£9aly.ªù."y.îùb¨HÝÛ™\ˆ9.ãyi!9.£¹/§z-e¹ëbyo¡{ï#9§*¹d+ùbª:aãyi#z+«yîàù¢%¹âë9êâÈY\Õ˜XÚøà ‚‚ˆÈÈŒ‹LLLŒH8 %ÌˆÛX[ˆ^XÝXÛÝ™\˜YÙH˜Z[š[™È\›Z[˜[‚¹cåù/çy¢©9æ¡ÌˆÛX[ˆ^XÝXÛÝ™\˜YÙH:+«yîàùmì¹b,:/¯¹îâ9  HNŒËÌNŒØ;ï#9«hùo#È™XÙZ\¹..ˆÌ—ÑVPÕÐÓÕ‘TQÑWÕRS’S‘×ÐÓÓTUX8à º+«yîàùd"9d#9..ˆÛÜ›Ú^™H¸à YY™™XÝ]™B™ÛØ˜[˜]ÚÌ¸à Y^XÝ[Û˜ÙHÛÝ™\˜YÙ{ï&ÛX[šY™\ÝÒLMˆ9..‚˜ŽLNXLXÙŽLŒØMÍ™XMÍXMM™YÍ™™XXÌŒNYŒŒMLXXŽY™™Y™™MÌX8à ¹îâ9  B˜Y\\ˆÒLMˆ9..‚˜ÙŒXXM™ŒŽLXYMXLM˜YYŒÙ™X˜Í™LÙŽNXØMLŒØ˜XÌŒÍÌ™MÍ˜;ï#9 h¹i#BœÝ]HÒLMˆ9..‚˜ØXÎLYY˜ÌÎLÍŒÍ˜ÍMŽMÙL™XÎYL˜Ù™MLŽL˜ÙÙ8à ¹§ 9d#‚º+«yîàù.¢ù.íˆÜÜÏXŒLŒ8à YÜ˜YY[›Ü›OX‹ŒMNNX8à \XZÈY[[ÜžB˜MËŒÍÍLˆÚP˜9gaù§"zfd;ï&ú/æycê¹¦+ú+«yîàùîâ9  y.#¹cëù h¹i#y )ú+ày£k»ï#9.#yk¨ùéì9.îù/eB“SÕÔ“SÕÓÕ“SÕ9 )ú ïy£ä9caøà ‘Ìˆ[™H9mì¹k£9¢$;ï#SÈ˜]]™H9kï9aî¹d£ÔMHÌB¹d+ùbª9å,y£ y.aHÝÛ™\ˆ:!ê¹bª9£ª:/æûï&ùaly.ªù."y.îùb¨z+«yîàù.ãyëbyo¡yc§ùå'ÈX[šY™\Ý;ï#9§*¹¢bùbª:aãyi#yd+ùbª8à ‚‚ˆÈÈŒ‹LLLŒH8 %SÈ˜]]™H^Ü™\ÛÝ\˜ÙKYØ]H™\Z\‚‚•SÈ˜]]™HÕ“SÕ9æ¡9ajù.*º/¤ùaiHÚ\™X[šY™\Ý9d£Ìˆ˜]]™HY\™ÙY[™H9mì¹îãÂ¹kf9g*;ï#9/a¹c§ù¬ê9a£ÝÛ™\ˆ9fî¹k¦¹ëbyo¡HÔMÍ»ï&ú/æy.)9o(9chy£ yîëz(ªùi%º`ê’TÓKÔÚY“SÕ¹/g9.&¹ch9å*;ï#9fè9«i9¬¨y§"y.©ùå'È˜]]™HØ[™Y]xà ¹§*¹îâ9«h¹¢%¹/ë¹¥.z/æy.¦ùi%º`ê9/g9.&¸à ¹£"yodùbcB¹¦/¹kf9k§¹­bûï#9l!ˆÝÛ™\ˆ9k¢yaj9`g9«h¹nm¹.ã¹§*¹k£9¢$9æ¡Ú\™:/®yåc9 h¹i#yb,ÔLKÌûï&ù¥¬9æ¡:-a9®¤¹d"9d#:) y¬`¹«ãùo(:`"yk¦¹chz!ìùl$y/çyåfHLMLˆZPˆœ™Y{ï#9a`z+®:+¬9oeyalykf:/æùê"ù/a¹.#yîäù§gùk ù.ë8à ‚‘ÌˆÚXÚÜÚ[9§*ºaãz+«{ï#9."y.îùb¨HÝÛ™\ˆ9.ãycê¹ëbyo¡yd"9nm¹d#¹æ¡˜]]™HX[šY™\Ý;ï&ú/æy¦+Âº-a9®¤:eê9/ë¹i#{ï#9.#y¦+ùª(yg¢ù£!ù¨!ùîäù§§8à ‚‚¹d#9. 9 h¹i#z/áùê"ù.+{ï#9ë+9. 9«(y.ã¹.©9.¤ˆÚ[9d#¹cì9d+ùbª9æ¡ÝÛ™\ˆ9g*Ú[9îäù§gù¥íº(ªÂ”ÒQÒT9¥-¹l/»ï#9åfy."ù.¡ºgg¹îâ9  yæ¡9¥éùâ­¹  y¥¡ù.í¹/a¹¬¨y§"y¥.ybª9.îù/eHÚ\™8à ¹mìº+á¹b*ú+ézi¥¹.*‚¹cëù¤ãy/g9c§ùfè;ï#9nm¹å*›Ú\Ù]ÚY:aãy¥¬9£ º-mùd#9. 9.*ˆÝÛ™\»ï&ùodùbcy h¹i#y.ãy.ã¹mì¹§"B›X[šY™\ÝÜÚ\™:/®yåc9o 9iâûï#9.#zaãz+«HÌ¸à y.#z)¡¹æåº`ê9b!º/¤ùaî¸à ‚‚¹ h¹i#yd#¹æ¡SÈÝÛ™\ˆ9mìº`&º/áÈÌˆ˜]]™H[™HØ]{ï#:/æùaiHÕ‘PSRS‘×ÕS×ÓUU‘WÕRS—ÔÒT‘Ø;ï&Â‘ÔLKÌÈ9æ¡:-a9®¤9£¨ºd¢9b!¹b*ú+¬9oeHLŽÍÍÍMÈZPˆœ™Y{ï#9nmº(c9i!9ä!ˆÚ\™Ì{ï#9§*¹îâ9«h‚¹alykf9æ¡9i%º`ê:/æùê"øà ‘ÌHÔMHÝÛ™\ˆ9mìº/æùaiH•S“’S‘×ÑÌWÑÔMWÒTÓÓUQÐÓÓ•“ÓØ8à ‚¹."y.îùb¨z )¹d"ÝÛ™\ˆ9.ãy/çy£ HÜ[Z^™\—Ý\]\ÏL;ï#9ëbyo¡yajù.*ˆÚ\™9d"9nm¹d#¹æ¡˜]]™B›X[šY™\Ý;ï&ùodùbcy¬¨y§"y£ä9bcyk¨ùéì9."y.îùb¨y£!ù¨!øà ‚‚ºf£ùd#ºj£:+àyb,ÔLKÌÈ9.#ylg¹.£ˆÜ›Ý[™‘Uˆ9æ¡9d"9¬åyâjyä!ˆÔH[ÝÛ\ÝÍK‹×X;ï&Â¹.)9.ïy§#yb¨yg*™XY[™\ÜÈ9bcyå,HÙ\™WÙÜ›Ý[™[ž][™ËœX9¢ä¹îç{ï#:i¥¹.*¹cëù¤ãy/g:e&z+ëù..‚˜HLH][˜Ú™\]Z\™\È^XÝHÛ™H™YÚ\Ý\™Y\ÚXØ[ÔX8à ¹i,z-)yâ­¹  ymì¹/çykf9..‚˜]Y]YWÛÝÛ™\—ÜÝ]WÙ˜Z[YÙÜLWÙÜL×Ø[ÝÛ\ÝšœÛÛ˜;ï#9¬¨y§"y.©ùå'ù`&z`"y¢%º)¡¹æåº/¤ùaî¸à ¹mì‚¹ h¹i#yb,9d"9¬åHÔMÍûï#9nm¹l!º-a9®¤:eê:+¯¹..¹«ãùchz!ìùl$HÌÍŽZPˆœ™Y{ï&ÑÌH9îéùîëy/çyåfHÔM{ï#¹i%º`ê:/æùê"ù.#z(ªùîâ9«h¸à ‚‚¹d"9¬åy h¹i#yd#¹æ¡Ù\šXÙ\×ÙÜM9.#ˆÙ\šXÙ\×ÙÜMØ9mìº`&º/áùd+ùbª9¨à9§é{ï#9¥éyoåùaî¹ã¬9ç'ùk§‚˜Ô‘Q’SX:+íù¬`»ï#:+í9¦#ˆSÈÚ\™ÌH9mìº/æùaiyª(yg¢ù£ª9ä!»ï#: #:gg¹.áyb&ùnî¹ëbyo¡z/æùê"øà ‚¹.)9.ïH˜]]™WÜÝ™X[K›ÙØ9l&¹§*¹a¦yaiyîâ9  H™XÙZ\;ï#9¥ayodùbcy.ãy.#yd"9nmˆ˜]]™HX[šY™\Ý;ï#¹.gù.#yd+ùbª9."y.îùb¨HÜ[Z^™\ˆ\]xà ‚‚ˆÈÈŒ‹LLLŒˆ8 %™\XÙH[™™X\ÚX›H[SÈÝ™X[HÚ]™YÚ\Ý\™Y˜]]™HÝXœÙ]‚¹§`ùj H\™[X[šY™\Ý9k¨z+¨y¦/¹é.¹aj:aãÈSÈRSˆ9..ˆNÍ9n)øà ML9.*º)áºh¤xà LLŒÂ¹ìnùb*ûï&ùaj:aãÈÝ™X[H9g*9.©ùå'ùîâ9  y`&z`"ybcymì¹k¢yaj9.+y«h»ï#ÝÛ™Y9§#yb¨yd£:/æùê"ùoêùáiù/çyåf{ï#œÛÝ\˜ÙHX[šY™\Ý9§*¹/ë¹¥.xà ¹..¹ë)¹d"8 '9.#znæ:+©9kï9aî¹aj:`ê9ï$ùkf8 'yæ¡9¢iú(c9î©¹§gûï#9¥¬9h§¹¦#¹èk¹¬ê9a£9æ¡9n)ËÍ:)áºh¤HRSˆ9kd:fá»ï&¹«ãù.*¹gaùc 9¢¯y¨-ú)áºh¤z`"y¢êy. 9.*¹§"H[YÚX›HRSˆ[››Ý][Û‚¹æ¡9n)ûï#9.ãykîy«ãùn)ú+íù¬`¹aj:`êLŒÈ9ìnùb*ûï#9b!¹..¹fæù.*ˆMˆ9n)ÈÚ\™8à š›Ú[ˆÛÛ˜XÝ9a`z+®9.%¹¦#¹èk¹¨!ú+¬™YÚ\Ý\™YÝ˜Z[—ÜÝXœÙ]]YX8à X[Ý˜Z[—Ú[XYÙWÜØÛÜOY˜[ÙX;ï&ú/æycêº ïB¹/g9..¹."y.îùb¨z e9d":+«yîàÈÛÝ\˜Ù{ï#9.#y/g9aj:aãÈSÈ9 )ú ïyîäú+®¸à ¹¥¬9æ¡ÝÛ™\ˆ9/oùå*9d"9¬åHÔMÍKÍ‹ÍÂ¹nmº+¬9oey¦/¹kf9.#¹alykf:/æùê"ûï#Ì‹ÑÌKØÚXÚÜÚ[9.#ycæ8à ‚‚ˆÈÈŒ‹LLLŒˆ8 %ÌHÔMHY\][Ûˆ[™ÛÛ›ÛÈ\›Z[˜[‚‘ÌHÔMHÝÛ™\ˆ9mì¹k£9¢$UU‘WÑÔ“ÕS‘ÕPÒÒS‘ÌŒÕRS’S‘×ÐÓÓTUX;ï#9alHŒœÝ\ûï#9aj:`ê™YÚ\Ý\™Y˜Z[š[™ÈZ\œÈš\Ú]Y;ï#ÚXÚÜÚ[™[ØY9§ 9i)ùmë¹o ¹..‚ŒŒ8à œ›Ú™XÝÜˆ[H9¥.ycæMŒŒLMÍL9.*ˆ‘ŒMˆ9a`ùí(;ï#9kï9aîˆMŽH9.*ˆ˜]]™H›Ú™XÝÜ‚[œÛÜœÈ9b,Ü›Ý[™[ž][™ËQKU˜XÚÔ›Ú‘ÌKQÔMKUŒ˜;ï&ÜÛÝ\˜ÙH[™H9§*º)¡¹æå¸à ‚ºf£ùd#¹k£9¢$Lˆ9.*ˆ\ÛÛ]YÛÛ›Û[š]øà yalHMˆ9.*ˆ™YÚ\Ý\™Y˜]]™Hœ˜[Y\ûï#:)¡¹æå‚“SÕ[œÙM8à T“SÕ™Y™\‹\Ú[™ÛN9d£“SÕ™Y™\‹[][LL»ï#9."z !zaãyi#z/ä:(c9gaù/çy£ yd#9. œ˜]ÈÚ\™HØ[™Y]\È9d£Ý]]øà º+éyîâ9  z+ày¦#ˆÌH:` ºacyd£9£©ùb-¹. :!í9 )ûï#9.#yk¨ùéì9aj9¥l9£kºfá‚˜™[˜ÚX\šÈ9£ä9caûï&ÕSÈ˜]]™HÚ\™9£ª9ä!¹d£9."y.îùb¨z )¹d":+«yîàù.ãyg*9îéùîëxà ‚‚¹¬ê9a£9kd:fáˆÝÛ™\ˆ9mìº/æùaiyk§ºfay£ª9ä!ºf-¹«­{ï&9.*ˆÝ™X[H:/æùê"ùb!¹b*ù/oùå*9d"9¬åHÔMÍKÍ‹Íûï#¹kîyn¥Ü›Ý[™[ž][™È9§#yb¨y¥éyoåùmì¹aî¹ã¬9¥l9æoº!ìù."¹c`ù«(HÔ‘Q’SX:+íù¬`¸à ¹fæù.*ˆÚ\™¹.ãy§*¹.©ùå'ùîâ9  H™XÙZ\;ï#9¥ay."y.îùb¨HÝÛ™\ˆ9îéùîëyëbyo¡H˜]]™HX[šY™\Ý;ï&ù¬¨y§"y¢¢¹§#yb¨yd+ùbª¹¢%º`ê9b!º+íù¬`º+¨y/g:+«yîàù£!ù¨!øà ‚‚ˆÈÈŒ‹LLLŒˆ8 %Ìˆ\›Z[˜[˜\Ú\È[™›Ý[™Y˜]]™HÕ“SÕ›Û[Ý[Û‚‚¹£"y§ 9¥¬Ü›Ý[™‘Uˆ9cey..ùnl¹.îùb¨y.iºaãy¥¬9¨.9kî{ï&‘ÌˆÛX[ˆ9mì¹îâ9  {ï#9.#ya£yîéùîëHÌˆ9«hùo#ú+«yîàøà ‚¹c§È9n)ÈSÈ9¬ê9a£9kd:fá¹kï9aî¹g*9.*¹k£9¥m9n)ú+¬9oeyd#¹k¢yaj9¥-¹l/»ï#9fæù.*ˆÚ\™9æ¡:`ê9b!º/¤ùaî¹d£¹§#yb¨y¥éyoåùgaù/çyåfyg*[×Û˜]]™WÛÝ›[ÝÝ˜Z[—ÜÝXœÙ]ÝŒX8à ¹¥¬9h§‚˜›Û[ÝWØÛÛ\]YÝ[×ÜÝXœÙ]œX9cêºj£:+àynm¹£ä9caùmì¹îãÈ›\Ú9æ¡9n)ËÎ:)áºh¤{ï#9§*¹hjùaaB¹ï.¹i,yn)øà y§*º+îùcå¹­bú+åy¨!ùëo¸à y§*¹¥.ybª9`&z`"y¨a»ï&ù.©ùâjy¦#¹èk¹¨!ú+¬˜™YÚ\Ý\™YÝ˜Z[—ÜÝXœÙ]]YX8à X[Ý˜Z[—Ú[XYÙWÜØÛÜOY˜[ÙX;ï#9.#y/g9aj:aãÈÕ“SÕ9îäú+®¸à ‚º+éykd:fá¹îãùk¦9¥®HRSˆ[››Ý][Ûˆ9é®ùî¯ù. 9kîy. [ÕH›Ú[ˆ9o¥ùb,N:(c˜]]™HÕ“SÕ9æäyçhÂ»ï"ŽHÜ›Ý\8à LŽHXY»ï"{ï#9.#ˆLÌLŒMSÕ8à LÍˆ“SÕ:(c9îá9¢$: e9d"X[šY™\Ý;ï&ÛX[šY™\ÝÒLM‚¹..ˆØÍŒÌŒLMXXL˜ŽÌMŒYÍØŽLÙÌØÍÌYLLŒLMÎMMNXMÍLYMÌÍŒNLÍÌX8à ‚‚ˆÈÈŒ‹LLLŒˆ8 %Ü›Ý[™‘Uˆš[˜[QÌˆÛÝ\Y™XYÝ][Ý‚¹/oùå*9§ 9îâÌˆY\\ˆÝ\NŒûï"Y\\ˆÒLM‚˜ÙŒXXM™ŒŽLXYMXLM˜YYŒÙ™X˜Í™LÙŽNXØMLŒØ˜XÌŒÍÌ™MÍ˜;ï#˜\ÙH[Ù[”ÒLMˆØÙŒLÍMXÙNÙÍØÙÍÍ™LMÌŒÌYMÌ˜ÌYŒŒØŒŽÌYŽLÌÍŽŽX˜YL˜;ï"{ï#9g*‘ÔLÈ9.éycey..ùnlˆ˜]]™HH›ÜØ\™:/ä:(c9§"yåc\Ý\[Ý8à º+«yîàùcê¹¦í9¥¬9aly.ªÈ‘U‚œ™XYÝ]8à VY\ËÓ›øà yå'ùdoydj9§'Ëú+¬9oá¹¢¥yolyd£Õ“SÕØ]YÛÜžHXYûï#Ìˆ˜XÚØ›Û™H9a®ùîäûï&Â¹¬¨y§"yb¨:/oyâë9êâÈÛ™R™]ˆ9¢%ˆY\Õ˜XÚøà ¹å,y.£ˆSÕ:(c9§ 9i&¹d*È9.*¹`&z`"{ï#˜]]™HH:/¤ùaiBºaáùå*9§"yk¨z+¨yæ¡Mˆ9¨a¹êç¹.¢yê¥ùcèûï#9iâùîâ9/çyåfyæë¹¨!ù`&z`"{ï&ÌNH:(c9cäyå'ú(àybj»ï#9c§ùiâú(c9d£9ëe¹åiygaÂ¹/çyåfyg*™XÙZ\8à ‚‚¹îâ9  HÝÛ™\»ï&˜Ü›Ý[™™]—Û˜]]™WÝ™YWÝ\Ú×ÝŒWÜ™]žWÝ—ÙÜLØ;ï#9â­¹  B˜Ô“ÕS‘‘U—ÓUU‘WÕ‘QWÕTÒ×ÕRS’S‘×ÐÓÓTUX;ï&ùk§ºfay§"y¥b9¦í9¥¬SÕÔ“SÕÓÕ“SÕ¹d!Ìˆ9«({ï":+íù¬`ˆ9«i{ï#9am¹.+H9.*ˆY[]H\™Ù]9fè9c¡¹cìˆÛÝ9ï.¹i,z #9d"9¬åHX\Úûï"{ï#[š\]YHš\ÝX[[œ]ÏMøà [˜]]™Hš\ÝX[›ÜØ\™ÏMøà \XZÈ[ØØ]YY[[ÜžB¹î©ˆKŒÍHÚP¸à z %ù¥íˆÍŒMˆøà ˜ÚXÚÜÚ[9..‚˜Ù]LËÝ\Ù\‹ÓØØ]SSÕXÚXÚÜÚ[ËÙÜ›Ý[™™]—Û˜]]™WÝ™YWÝ\Ú×ÝŒKÙÜ›Ý[™™]‹[˜]]™K]™YK]\ÚË\Ý\œ8à ‚˜™Y›Ü™KØY\ˆ9cê¹¦+ùg*9d#9. Ì‹\›ÝÈØ[\Y[Ý9."¹æ¡™XYÝ]XØÝ\˜XÞ{ï&“SÕŒ8¡¤ŒKŒ8à T“SÕø¡¤ŒŽÍxà SÕ“SÕŒMø¡¤ŒÌûï&ú/æy.¦ù¦+ú+«yîàúfá¹l#ù¨-ù§+9¢çùd"º+ày£k»ï#9îçy.#y¦+ú)áºh¤yî©ÈÕKÕUH9¢%¹¬æùc%¹îäú+®¸à ¹."ù. 9«iyoázhnù/oùå*:+éHÚXÚÜÚ[9`f¹fî¹k¦¹`&z`"Bº)áºh¤H™\^H9d£9âë9êâÈ[[Ý]:+á9­bøà ‚‚ˆÈÈŒ‹LLLŒˆ8 %ÛÝ\Y[Ý][˜Ú™\Z\œÂ‚º+¬9oeynm¹/çyåfy."y«(y§*¹¦í9¥¬9i,z-){ï&ºi¥¹«(yfè[—ÝÚ]Ü™\ÛÝ\˜Ù\ËœX9ï.¹l$H^XÝ]X›Hš];ï#ºf£ùd#¹fè9îâ9  HÌˆY\\ˆ9/oùå*Ý]X: #9¥éÈØY\ˆ9cêº+îùcå‚˜[Ù[Ý˜Z[˜X›WÜÝ]X;ï#9a£zf£ùd#¹fè9aj:aãÈSÕ9`&z`"y.,¹aiH˜]]™HH:)é¹cäHÕQH[YØ[›Y[[ÜžHXØÙ\Üøà ¹§ 9l#ù/ë¹i#yb!¹b*ù..¹¦/¹o#È]Ûˆ:, ùå*:-a9®¤[›™\¸à y.)y¨/9ao9k®y.)9éãymì¹ænú+¬Y\\‚¹¨/9o#øà y.éycâº+¬9oeynmºfd9b-ˆ˜]]™HH9«ãù«(y§ 9i&ˆMˆ9.*¹êç¹.¢y¨a»ï&ÑÌˆ9«hùo#ùæë¹oeyd£9c¡¹cì¹îäù§§9§*¹¥.ybª8à ‚‚ˆÈÈŒ‹LLLŒˆ8 %š[˜[QÌˆÛÝ\YšY[ÈXYÛ›ÜÝXÈ[™[™\[™[]Y]YB‚¹..¹/oùîâ9  z )¹d"ÚXÚÜÚ[: ïz/æùaiymì¹§"z)áºh¤yî©ùaiycèûï#9/ë¹i#yfî¹k¦¹`&z`"z+á9­bùfj9d#9¥íº+îùcå¹c¡¹cì‚˜[Ù[ÜÝ]X9d£9§+:/kˆÜ›Ý[™™]—Û[Ù[ÚXÚÜÚ[ØÚ[X{ï#9nm¹/çyåfHÕ“SÕXYÈ9.#¹ceB¹..ùnl¹î©¹§gøà ¹§ 9îâÌˆÝ\NŒÈ9æ¡ÛÝ\Y™XYÝ]9g*SÕŒLÈ9æ¡9.#ycëùcæLŽ9n)ùï$ùkf9."‚¹k£9¢$˜XÚÑ]˜[;ï&’ÕOLŒMLMÍøà Q]OLŒŒŒ¸à P\ÜÐOLŒLMŒ¸à RQŒOLŒMŒ¸à B’QÕÏLN»ï#9fî¹k¦¹`&z`"yfç¹¥/ˆLËŒH”øà º+éyï$ùkf9lg¹.£¹¬ê9a£RSˆØÛÜH9.%9¥êy.£¹îâ9  HÌ»ï#¹fè9«i9cê¹ænú+¬9..¹alú eÜ[[YH:+â¹¥«{ï#9.#y/gÌˆ9âë9êâù¬æùc%¹£ä9caøà ‚‚‘ÔMÈ9æ¡9âë9êâùåfyaîˆÝÛ™\ˆ9.ãz(ªùi%º`ê9/g9.&¹ch9å*;ï&ùg*9.#yîâ9«h¹i%º`ê:/æùê"ùæ¡9bcy£ä9."ûï#9¥¬9h§ˆÔLÂ›ÝÛ™\ˆÌ—ØÛX[—Ú[™\[™[ÙÜL×ÝŒX;ï#:/ä:(c9æî9d#ÌÑÌ¸à SSÕÔ“SÕÓÕ“SÕ8à z)èù§¤9fj8à B™XÛÙ\¸à ]˜XÚÙ\ˆ9d£ØÛÜ™\¸à ›ÝÛ™\ˆ9mìº/æùaiHÌSÕŒLH9k£9¥m:j£:+à{ï#9îâ9  yk¦9¥®y£!ù¨!ùl&¹§*‚¹å'ù¢$;ï&ùg*™XÙZ\9.bùbcy.#yk¨ùéì[[Ý]9îäù§§8à ‚‚ˆÈÈŒ‹LLLŒˆ8 %Û™Ù\ˆÛÝ\Y[ˆÔMH˜Z[\™H[™›Ý[™Y™]žB‚¹..º`oùacy¢¢ˆ9«iycëú(c9 )È[Ý9odù¢$: e9d":+«yîàùk£9¢$;ï#9d+ùbª9âë9êâùæ¡Ì9«ixà y«ãù.îùb¨HNL‚º(c8à yd#9. Mˆ9¨a¹."ºfd9æ¡Ìˆ9."y.îùb¨z )¹d"[¸à ‘ÔMHÝÛ™\ˆ9g*˜]]™HH:h¡9ï%¹è zf-¹«­B˜Ü[Z^™\—Ý\]\ÏL;ï#:i¥¹.*¹cëù¤ãy/g:e&z+ëù¦+È]Ù[ŒÈS9a¡yæ¡ÕQH[YØ[Y[[ÜžHXØÙ\ÜØ;ï&Â¹¥éyoåú+¬9oeHÔMH9odù¥í¹kf9g*9i%º`ê’TÓH:+¨yë¥ÈQ8à y/a¹¦/¹kf9.ãy§"HLŽHZP¸à ¹¬¨y§"HÚXÚÜÚ[¹¢%¹£!ù¨!ùå'ù¢$;ï#9i,z-)yæë¹oeyd£9k£9¥m9¥éyoåù/çyåf{ï#9§*ºaãz+åHÌ¸à ‚‚¹g*ÔMˆ9."¹kîyd#9. ˆ9.*¹k§ºfaz`"y.+z/¤ùaiy`f¹n)º(c9cíùæ¡9bcyd$z+â¹¥«{ï#9bcHMÈ9.*º/¤ùaiz/ç¹îëyk£9¢$;ï#¹§*¹cäyã¬9§ä9.*¹`&z`"y¨a¹¢%¹fï¹`ãù¨/9o#ùæ¡9êâùclúe&z+ëûï&ú+â¹¥«ycåÈŒ9éä¹."ºfd9¥-¹l/»ï#9.#z ïy/g9..¹ )ú ïyîäù§§8à ‚ºf£ùd#¹£"yæî9d#X[šY™\Ý8à \ÙYY8à \›ÝÜøà \Ý\øà y`&z`"y."ºfd9d£Ü[Z^™\ˆ9d"9d#9l!ˆÌ9«iH[‚º/àyéîú!ìÈÔM»ï#:/¤ùaî¹.#ˆÔMH9k£9aj9b!¹é®ûï#9odùbcyëbyo¡yîâ9  H™XÙZ\8à ‚‚‘ÔMˆ9æ¡9§*¹b!¹geùd£8 '9«ãÈ9.*º/¤ùaizaãynîˆ›ÝšY\ˆ
+ÈÕQH9d#9«ix 'y.)9«(zaãz+åz`ïyg*˜]]™Bºh¡9ï%¹è zf-¹«­xà [Ü[Z^™\—Ý\]\ÏL9i!:)é¹cäyd#9ìnÈ[YØ[XØÙ\Üûï&ù¬¨y§"y.©ùå'ÈÚXÚÜÚ[8à ‚¹fè9«iÌ9«iH[ˆ9¦ ¹.#y/g9..¹îäù§§;ï#9b!¹geùk§¹ã¬9d£9."y.ïyi,z-)H™XÙZ\ÛÙÈ9gaù/çyåfxà ¹odùbcy§"y¥bº+ày£k¹.ãy¦+ÈÔLÈ9¥è9i%º`ê:+¨yë¥ù¥í¹k£9¢$9æ¡9«iH[Ý;ï&ùd#¹îëzeoÈ[ˆ9ëbyâë9êâÈÔLÈ9åfyaîˆÝÛ™\‚¹îâ9  yd#¹a£yg*9d#9. 9ênºeì¹chy h¹i#{ï#:`oùacyîéùîëyg*9alykfÔH9."¹­¢: %ùi,z-)yk§ºj£8à ‚‚ˆÈÈŒ‹LLLŒˆ8 %Ìˆ\›Z[˜[Ý]H[™Ý\œ™[[™\[™[[[Ý][‚‚¹£"ycey..ùnlˆÜ›Ý[™‘Uˆ9.îùb¨y.iºaãy¥¬9kîzod9d#»ï#ÌˆÛX[ˆ9mì¹g*Ý\NŒÈ9îâ9  yk£9¢$9nm¹k£9¢$¹âë9êâÈY\™ÙY[™H9kï9aî»ï&ù.#ya£y/ë¹¥.HÌˆÜ[Z^™\¸à \ØÚY[\¸à \Ø[\\¸à T“‘È9¢%¹c¡¹cì‚¹§`úaãxà ¹odùbcHÔLÈÝÛ™\ˆÌ—ØÛX[—Ú[™\[™[ÙÜL×ÝŒX9îéùîëy¢iú(c9fî¹k¦ˆ\œÙ\¸à YXÛÙ\¸à B˜XÚÙ\ˆ9d£ØÛÜ™\ˆ9æ¡9âë9êâùåfyaîºdï»ï#9ab:-äHÌ9£©ùb-¹a£z-äHÌˆ9.#ˆ“SÕÓÕ“SÕØÛÜxà ¹§ :/äy¨.:j£9¥í‚˜[ÝŒÌWÝ˜[Y][ÛŒMMØ9.ãyi!9.£ˆÌ˜]]™H\˜Ù\[Û»ï"9¥éyoåùmì¹b,œ˜[YHNNMÈ9æ¡¹i!9ä!¹aiycèûï#9l&¹§*¹å'ù¢$9k¦9¥®H™XÙZ\;ï"{ï#9fè9«i9¦ ¹.#y¢©ydb¹.îù/eHÌˆ9âë9êâù¬æùc%¹£!ù¨!øà š[[Ý]¹k£9¢$9d#¹å,yd#9. ÝÛ™\ˆ:)é¹cäzf¥9é®ùæ¡Ì\Ý\9."y.îùb¨z )¹d"9 h¹i#zf'ùb%ûï&ù.#zaãyd+ùmì¹îãùk£9¢$9æ¡Ì»ï#¹.#y¢¢¹l#ù¨-ù§+\Ý\[Ý9¢%¹ï$ùkf™\^H:+â¹¥«ya¦y¢$:)áºh¤yî©ù )ú ïy£ä9caøà ‚‚ˆÈÈŒ‹LLLŒˆ8 %[[Ý]ÝÛ™\ˆ™[XZ[œÈ]™HY\ˆÌˆÛÛ\][Û‚‚¹i#yå*9d#9. ÔLÈ[[Ý]ÝÛ™\ˆ9ëbyo¡y.¡¹. 9.*¹k£9¥m:f.ùhg¹ê¥ùcèùnmºaãy¥¬9¨.:j£;ï&›ÝÛ™\‚˜Ì—ØÛX[—Ú[™\[™[ÙÜL×ÝŒX9.ãy..ˆ•S“’S‘×ÑÌÛ[ÝŒÌWÝ˜[Y][ÛŒMMØ;ï#˜˜Z[Y[[;ï#Ì9§#yb¨yd£:)áºh¤y£ª9ä!º/æùê"ùgaùkf9­.ûï&ù¥éyoåùmì¹£ª:/æùb,œ˜[YHŒMH9æ¡˜˜]]™WÜ\˜Ù\[Û˜9aiycèøà “SÕŒLH˜[Y][ÛˆX[šY™\Ý9æ¡9k£9¥m:# ùfí9.ãy..ˆMMÈ9n)ûï#¹l&¹§*¹.©ùå'ùk¦9¥®HÌ™XÙZ\;ï#9fè9«i9¬¨y§"y¢¢¹odùbcyn)ù¥l9a¦y¢$ÕKÒQŒH9îäù§§8à º-a9®¤9oêùáiù¦/¹é.‚‘ÔLÈ9æ¡Ü›Ý[™[ž][™È9§#yb¨yî©¹chNÚP»ï&ÑÔMÍ‹ÍÈ9gaù§"yi%º`ê:+¨yë¥ûï#9§*¹d+ùbª9nmº(c9bkù§+8à B¹§*¹îâ9«h¹alykf9.îùb¨xà ‘Ì9k£9¢$9d#ˆÝÛ™\ˆ9.ãy/&¹£"y¬ê9a£:hn¹n£ú/ä:(cÌ¸à T“SÕ9d£Õ“SÕ;ï#9.bùd#¹¢cBº)é¹cäzf¥9é®ùæ¡Ì\Ý\9."y.îùb¨z )¹d"9 h¹i#xà ‚‚ˆÈÈŒ‹LLLŒˆ8 %[[Ý]ÌÛÛ›ÛÝ[›ÙÜ™\ÜÚ[™Â‚¹d#9. ÝÛ™\ˆ9a£y«(yîãú/áúf.ùhg¹ëbyo¡yd#¹.ãyá-¹kf9­.ûï#9â­¹  y/çy£ B˜•S“’S‘×ÑÌÛ[ÝŒÌWÝ˜[Y][ÛŒMMØ8à XÝ\œ™[Û[Ù[QÌ8à X˜Z[Y[[;ï&Â¹¥éyoåùmì¹£ª:/æú!ìÈœ˜[YHŒÍˆ9æ¡˜]]™H\˜Ù\[Û»ï"œ˜[YHŒÍH9mì¹k£9¢$\ÜÛØÚX][Û»ï#¹ceyn)ú+¬9oeyî©ˆL‹ŽNûï"xà ¹¬¨y§"yå'ù¢$9k¦9¥®HY]šXÜËÜ™XÙZ\;ï#9.gù¬¨y§"y£ä9bcyb!ù£h¹ª(yg¢ù¢%¹/ë¹¥.Bº+á9­bú# ùfí8à º+éz/æùn©¹¦+ÈÌ9£©ùb-¹æ¡:/ä:(c:+ày£k»ï#9.#y¦+ÈÌˆ9 )ú ïyîäù§§;ï&ÑÌ‹Ô“SÕÓÕ“SÕ9d£9d#¹îëBº )¹d":+«yîàù.ãyå,yd#9. ÝÛ™\ˆ9£"zhn¹n£ù¢iú(c8à ‚‚ˆÈÈŒ‹LLLŒˆ8 %\˜[[Ì‹[Û›H[[Ý]ÝÛ™\ˆ][˜ÚYÛˆÔMB‚‘ÌÓSÕŒLHÔLÈ9åfyaî¹.ãyg*:eoù¥íº/ä:(c;ï"9.#zaãyd+øà y.#y¥.yccú+«»ï"xà ¹..¹ï*yçëyîâ9  y«å:/ ùëbyo¡{ï#¹¥¬9h§ˆK[[Ù[Ø9.#¹¦/¹o#ÈKX[ÝË\Ú\™YYÜX9aiycèûï#9/çyåfyæî9d#[[Ý]Ý™\›\]Y]8à B›Ù™šXÚX[\œÙ\‹ÙXÛÙ\‹Ý˜XÚÙ\‹ÜØÛÜ™\ˆ9d£:`$9n)ùd"9d#;ï&ùg*9âë9êâú/¤ùaî¹æë¹oeB˜Ì—ØÛX[—Ú[™\[™[ÙÜMWÝŒX8à yêëùcèÈŒ9d+ùbª9cêº+á9­bùîâ9  B˜Ü›Ý[™[ž][™ËQKQÌ‹PÓPS‹UŒ˜9æ¡ÝÛ™\¸à ‘ÔMH9d+ùbª9oêùáiù..ˆLŽHZPˆœ™Y{ï#9i%º`ê”’TÓHQÌNNMŒH9chMŒLMˆZP»ï&ùaly.ªùª(yo#ùcê¹g*9.ãy§"z!ìùl$HÌÍŽZPˆ9ênºeì¹¥í¹¥/º(c;ï#9§*‚¹îâ9«h¹i%º`ê9/g9.&¸à ›ÝÛ™\ˆ9mìº`&º/áÈÌˆ\›Z[˜[[™HØ]{ï#9â­¹  z/æùaiB˜•S“’S‘×ÑÌ—ÐÓPS—ÕŒ—Û[ÝŒÌWÝ˜[Y][ÛŒMMØ;ï&ÑÌÝÛ™\ˆ9d£9c¡¹cìˆÌ‹ÑÌHÚXÚÜÚ[¹/çy£ y.#ycæ8à º+éynmº(c:/¤ùaî¹l!¹g*9âë9êâÈ™XÙZ\9.©ùå'ùd#¹.#ˆÌ9îäù§§9£"yæî9d#:/¤ùaiz# ùfí9«å:/ øà ‚‚ˆÈÈŒ‹LLLŒˆ8 %YØXÞHÝÛ™\ˆ]Y]Ú[H[[Ý][œÂ‚¹cêº+îù¨.:j£ÌÑÌŒÑÌxà y¥éÈÛ™R™]‹ÓSÕ[Û›H9d£9«i9bcy."y.îùb¨yl'z+åyæ¡ÝÛ™\ˆQ;ï&¹¢`9§"B¹îâ9  xà yi,z-)y¢%¹¦ ¹`gÝÛ™\ˆ9æ¡:+¬9oeHQ9gaùmì¹.#ykf9g*;ï#9§*¹cäyã¬9¥éÈSÕ[Û›H:eoú+«yîàù¢%¹âë9êâÂ“Û™R™]ˆ:+«yîàù.ãyg*:/ä:(c;ï&ÑÌHÔMH:` ºacy/çy£ yîâ9  HÌWÑÔMWÐQTUSÓ—ÐS‘ÐÓÓ•“Ó×ÐÓÓTUX;ï#¹¥éÈ™X[Ý™YWÝ\Ú×Ú›Ú[Û˜]]™WÝŒWÜ]Y]YX9.ãy..ˆUTÑQÑ“Ô—ÑÔ“ÕS‘‘U—ÔÒS‘ÓWÐPÒÐ“Ó‘X8à ‚¹odùbcye+ù. Ü›Ý[™‘Uˆ9..ùî¯ú/ä:(c: !y.ãy¦+ÈÔLÈ9æ¡9âë9êâÈÌÑÌˆ[[Ý]ÝÛ™\»ï#9¥ay¬¨y§"y®!yä!‚¹c¡¹cìˆÚXÚÜÚ[9¢%º)¡¹æå¹kîyáiùîäù§§8à ‚‚ˆÈÈŒ‹LLLŒˆ8 %[[Ý]ÌÝÛ™\ˆ™[XZ[œÈX[B‚¹a£y«(yëbyo¡ynm¹¨.:j£9d#9. :/æùê"ùd#»ï#ÔLÈÝÛ™\ˆ9.ãyi!9.£‚˜•S“’S‘×ÑÌÛ[ÝŒÌWÝ˜[Y][ÛŒMMØ;ï#Ý\œ™[Û[Ù[QÌ8à X˜Z[Y[[;ï&ù¥éyoåÂ¹mì¹£ª:/æùb,œ˜[YHŒL»ï"œ˜[YHŒLH9k£9¢$\ÜÛØÚX][Û»ï#:+¬9oez %ù¥íˆLKŒÌÈûï"xà ¹odùbcy.ãB¹¬¨y§"yk¦9¥®HÌÑÌˆ™XÙZ\9¢%¹£!ù¨!ù¥¡ù.í»ï#9¥ay.#y£ä9bcy¢©ydb¹âë9êâù )ú ïxà º/æùê"ùcéy§á9d£9§#yb¨y/çy£ yc§ù¨-ûï#¹d#¹îëHÌ‹Ô“SÕÓÕ“SÕ9câˆÌ\Ý\: )¹d"9 h¹i#zf'ùb%ù.#ycæ8à ‚‚ˆÈÈŒ‹LLLŒˆ8 %[[Ý]›ÝYÚ]XÛÛ\ÜÚ][Û‚‚¹cêº+îù )ú ïyb!º)èù¦/¹é.¹odùbcy¡h¹à®y§iz!êˆÌˆ˜]]™HH9£ª9ä!º #:ggº)áºh¤yï%¹è {ï&¹¢*º!ìù§+9«(y¨à9§é{ï#‘ÌšY[È\[[™H9.+y/cyceyn)ùî©ˆMËŒMûï"ŒH9n)ûï"{ï#ÔMHÌ‹[Û›H9î©ˆKûï"9n)ûï"{ï#‘ÔMˆÌ‹[Û›H9î©ˆKŒÈûï"Ìˆ9n)ûï"{ï&ù§#yb¨yêëÈ‘Q’S9§+:.ªù.áyî©ˆŒKLÎ\ûï#:eoú %ù¥í¹§iz!ê‚¹k¦9¥®z)èùè Kù`&z`"yå'ù¢$9d£:`$9n)ùccú+«¸à ¹§*ºfcy/cˆÚÙ[‹ù`&z`"yd"9d#9¢%¹¢¢º`ê9b!¹n)ùcaùî©ù..¹«hùo#ù£!ù¨!ûï#9."z-ëÂ›ÝÛ™\ˆ9îéùîëy/çyåfyk£9¥m:/¤ùaî¸à ‚‚ˆÈÈŒ‹LLLŒˆ8 %\˜[[ÌˆÝÛ™\ˆ[\™Y™X[[™™\™[˜ÙB‚ºf.ùhg¹ëbyo¡yd#ºaãy¥¬9¨.:j£;ï&‘ÔLÈÌÝÛ™\ˆ9mì¹£ª:/æùb,œ˜[YHŒMN{ï#ÔMHÌ‹[Û›HÝÛ™\ˆ9mì‚¹ç'ù«hú/æùaiyd#9. SÕŒLHX[šY™\Ý9æ¡˜]]™H[™™\™[˜Ù{ï"œ˜[YHMÍ»ï"{ï#9.): !ygaù..‚˜˜Z[Y[[;ï#9l&¹¥èÙ™šXÚX[Y]šXÜøà ‘ÔMH9i%º`ê’TÓH9.ãyg*:/ä:(c;ï#9¢`9.éHÌ‹[Û›B¹d'¹d$9/c¹.£ˆÔLûï&ù/çyåfz+éynmº(cÝÛ™\ˆ9/g9..¹âë9êâú+ày£k»ï#9.#y¢¢º`ê9b!¹n)ù¥l9odù¢$:+á9­bùîäù§§8à ‚‚‘ÔMH9aly.ªú/ä:(c9cåùi%º`ê’TÓH:-'ú/oyolydãz/ ùi)ûï#9¥ayg*ÔMˆ9clù¥í¹£¨¹­bùb,9î©ˆŽÚPˆœ™Yxà B][^˜][ÛL	H9.%9.áy§"HM‹ÚPˆ9i%º`ê:/æùê"ùd#»ï#9câ9d+ùbª9âë9êâÈÌ‹[Û›HÝÛ™\‚˜Ì—ØÛX[—Ú[™\[™[ÙÜM—ÝŒX;ï"9êëùcèÈŒ{ï"xà º+éHÝÛ™\ˆ9d#9¨-ú`&º/áÈ[™KÛÝ™\›\¹k¨z+¨ynmº/æùaiHSÕŒLH˜]]™H[™™\™[˜Ù{ï"œ˜[YHMŒ»ï"{ï#ÔLËÑÔMKÑÔMˆ9."y.*º/¤ùaî‚¹æë¹oey.¤¹.#z)¡¹æå»ï#9i%º`êQ9gaù/çyåf{ï&ù§ 9îâ9cêºaáùî¬ù.©ùå'ùk£9¥m™XÙZ\9æ¡:/ä:(c8à ‚‚ˆÈÈŒ‹LLLŒˆ8 %ÌˆÛX[ˆ[[Ý]]Y]YHØÛÜH]Y]‚¹i#y¨.]Y]YWÙÌ—Ú[™\[™[Ú[Ý]Ù]˜[œX9d#¹èkº+©;ï#ÔMKÑÔMˆ9æ¡ÌˆÛX[ˆÝÛ™\‚¹g*SÕŒLH9k£9¢$9d#¹/&¹g*9d!:!êˆÔH9."¹îéùîëy¢iú(c9d#9. 9ieùfî¹k¦¹ccú+«¹æ¡“SÕÚ[™Ûxà T“SÕ›][H9.#ˆÕ“SÕSÈØÛÜ{ï&ù.)9.*ˆÝÛ™\ˆ9oo9«i9nmº(c;ï#:/¤ùaî¹æë¹oeyd£™XÙZ\9b!¹é®øà ¹odùbcB”“SÕØÛÜH9d!9..ˆ9n)ûï#Õ“SÕSÈšY[ÈLH9..ˆ9.*¹¨!ù¬ê9n)ûï#9."y.ïHX[šY™\Ý9gaù..‚¹âë9êâúj£:+àz# ùfí9.%˜Z[š[™×ÛÛ—Ý\×ÜØÛÜOY˜[ÙX8à ¹fè9«i9.#ya£zaãyi#yd+ùbª:h§yi%º/æùê"ûï#9.gù.#B¹£ä9bcy¢¢º`ê9b!¹n)ù¥l9a¦y¢$9£!ù¨!ûï&ùk£9¢$9d#¹.ázaáùî¬ù§"yk£9¥m[™™\™[˜Ùxà \ØÛÜ™\¸à Yœ˜[YKXÛÛ˜XÝ¹d£Ù™šXÚX[[Y]šXÜÈ™XÙZ\9æ¡9îäù§§8à ‚‚‘ÌˆÛX[ˆ9æ¡NËLH:(cRSˆX[šY™\Ý:/æ9c!yd*ÈY\šX[Z[™8à P[š[X[˜XÚøà Q[˜ÙU˜XÚøà B“SÕMøà SSÕŒ8à T“SÕ¸à T™Y™\‹RÒUKUŒ¸à TÜÜÓSÕ9d£SËP[[Ù[˜\Ùxà ¹odùbcy¬ê9a£9æ¡¹am¹k ùgçùi&¹¥l9cê¹§"HRSˆ9j¤¹/dù¢%¹¨!ùëo»ï&ù/¢ùi ˆSÕMËL‹Q”Ó“ˆ9.#ˆÌˆRSˆ9§"HŒÍŒ¹o(9ì¯¹èk¹fï¹`ãúaãycè;ï#9.#z ïy¢¢¹k ùodù¢$9âë9êâù­bú+åxà ¹fè9«i9§+:/k¹cê¹¢¢¹mì¹k£9¢$Ý™\›\9k¨z+¨yæ¡“SÕŒLxà T™Y™\‹RÒUKUŒˆ“SÕÈ9.)9.*º(j:/¯¹o#ùd£SÈšY[ÈLH9î¬ùaiyâë9êâúf'ùb%ûï#¹am¹k ùgçùo¡y§"yd"9¬åH[[Ý]Ü]9d£:+á9­bù¨!ùëo¹d#¹a£yb¨9aixà ‚‚ˆÈÈŒ‹LLLŒˆ8 %ÛXZ[‹Z[[Ý]ÛÛ[X][ÛˆÝÛ™\œÈ™YÚ\Ý\™Y‚¹..º)¡¹æåˆÌˆÛX[ˆ9æ¡9am¹k ùd"9¬åzj£:+àygçûï#9¥¬9h§¹nm¹k¨z+¨y.)9.*¹âë9êâÈØÛÜ{ï&¹k£9¥m‘[˜ÙU˜XÚÈ˜[Y][Ûˆ[˜Ù]˜XÚÌ;ï"LŒÈ9n)ûï"yd£[š[X[˜XÚÈ9k¦9¥®H\Ý˜ÚXÚÙ[—ÌX;ï"Ìˆ9n)ûï"xà ¹.): !ykîHÌˆRSˆ9`f¹.¡¹ì¯¹èkˆ[XYÙK\]9.#ˆšY[Ë[]™[¹k¨z+¨{ï#9gaù¥è:aãycè8à ‘ÔMHÛÛ[X][ÛˆÝÛ™\ˆÌ—ÙÛXZ[—Ù[˜Ù]˜XÚ×ÙÜMWÝŒX9d£‘ÔMˆÛÛ[X][ÛˆÝÛ™\ˆÌ—ÙÛXZ[—Ø[š[X[˜XÚ×ÙÜM—ÝŒX9mì¹.éyâë9êâú/æùê"ù¬ê9a£;ï#9odùbcB¹ëbyo¡ykîyn¥SÕŒÔ“SÕÓÕ“SÕÝÛ™\ˆ9îâ9  {ï&ùîâ9  yd#¹d!:!ê¹d+ùbªÌˆÛX[ˆ9§#yb¨xà yk£9¥m:)áºh¤B¹£ª9ä!¹d£9k¦9¥®H˜XÚÑ]˜[;ï#:/¤ùaî¹.#z)¡¹æå¹mì¹§"yîäù§§8à ‚‚¹kîH[[YH]˜[X]WÝšY[ËœX9`f¹.¡ˆH9n)È[š[X[˜XÚÈØÛÜ™\ˆ9fç¹od»ï&¹/oùå*9ç'ùk§‚˜ÚXÚÙ[—ÌXÕ8à yênºh¡9­bùd£[š[X[˜XÚØ›ÝØÛÛ;ï#˜XÚÑ]˜[9«hùn.9å'ù¢$˜Ñ‘’PÒPSÔÐÓÔWÑUSPUSÓ—ÐÓÓTUX;ï"“LŒ;ï#ÕKÒQŒOL9.áy..¹¨/9o#ùfç¹od»ï#9.#z ïBº)èúaâ¹..¹ª(yg¢ù )ú ï{ï"xà ¹fè9«i9£©yb¦ÈÝÛ™\ˆ9æ¡9k£9¥mÌˆ9n)ÈØÛÜ™\ˆ:-ëùo¡9mì¹amùi!ùcëú/ä:(c9d"9d#8à ‚‚¹¥¬9h§ˆÛÛXÝÙÌ—Ú[Ý]Ü™XÙZ\ËœX9nmº/ä:(c9. 9«(yodùbcyâ­¹  y¬aù .ûï&‘ÌÑÌˆSÕŒ›ÝÛ™\œÈ9gaù.ãy..ˆ•S“’S‘ûï#9.)9.*¹gçù¢jyleHÝÛ™\ˆ9gaù..¹ëbyo¡ykîyn¥ÝÛ™\ˆ9îâ9  {ï#9odùbcB˜XØÙ\YÜØÛÜWØÛÝ[L8à ¹¬aù .ùfj:+¬9oey.¡ˆÌˆ[™HÒH9d£RSˆX[šY™\ÝÒ{ï#¹cê¹£©ycåùk£9¥mÙ™šXÚX[™XÙZ\;ï#9.#yl!º/ä:(c9.+yn)ù¥l9caùî©ù..¹£!ù¨!øà ‚‚¹¥¬9h§¹nm¹d+ùbª]Y]YWÙÌ—Ú[Ý]Ùš[˜[^™KœX9/g9..¹. 9«(y )ùîâ9  y¥-¹cèÈÝÛ™\¸à ¹k ùa¡z`ê¹ëbyo¡HÌ8à y.):-ëÈÌˆÛX[ˆ9d£9.)9.*¹gçù¢jyleHÝÛ™\ˆ9aj:`ê:/æùaiHÓÓTUKÑRSQ;ï#9a£z/ä:(cœ™XÙZ\ÛÛXÝÜˆ9a¦yaî¹§ 9îâ9¬aù .ûï&ùodùbcy.#y/&¹¥.ycæ9.îù/eHÔH9.îùb¨y¢%¹£ª9ä!¹ccú+«¸à ‚‚ˆÈÈŒ‹LLLŒˆ8 %[[YYX]HÛË\™\ÚY[ÛXZ[ˆ˜[Y][ÛˆÝ\‚¹å*9¢-ú) y¬`¹.#yëbyo¡HSÕŒÝÛ™\ˆ9îäù§gûï#9êâùclùnmº(c:j£:+àyam¹k ÈÌˆ9gçøà ¹. 9«(y )ú-a9®¤9£¨¹­bù¦/¹é.‚‘ÔMH9ênºeìˆŒ‹LNKÎKLŒZP¸à QÔMˆ9ênºeìˆ‹MLKÎKLŒZP»ï#9gaújæ9.£¹gçúj£:+àzf'ùb%ùæ¡ŒÌ‹ÍŽZPˆ:eê9©æûï&ùã¬9§"HÔMKÑÔMˆSÕŒÝÛ™\ˆ9câ¹am¹§#yb¨y§*¹`g9«h¸à y§*º)¡¹æå¸à ¹®!yä!¹.¡¹.áB¹i!9.£ˆÐRUS‘È9â­¹  yæ¡9¥éùgçù£©yb¦ú/æùê"ûï#9nm¹¢¢ˆ]Y]YWÙÌ—ÙÛXZ[—Ú[Ý]ØY\—Ù^\Ý[™ËœX¹h§¹b¨9..ˆK\Ý\[›ÝØ9ª(yo#ûï&¹/çyåfyodùbcHÝÛ™\ˆ:+ày£k»ï#:+¬9oeH\˜[[ÜÝ\Y]YX;ï#¹/oùå*9âë9êâùêëùcèÈŒÌÎŒÌH9d£9âë9êâú/¤ùaî¹æë¹oeyêâùclùd+ùbª[˜ÙU˜XÚÈ[˜Ù]˜XÚÌ»ï"ÔM{ï"ycâˆ[š[X[˜XÚÈÚXÚÙ[—ÌX;ï"ÔM»ï"xà ¹.):-ëÈÝÛ™\ˆ9mìº/æùaiB˜ÐRUS‘×ÑÌ—ÐÓPS—ÕŒ—ÔÑT•’PÑWÑÔMKÍ˜9æ¡9§#yb¨yd+ùbª:f-¹«­{ï#9odùbcHSÕŒ:/¤ùaî¹.ãycåù/çy¢©;ï&Â¹§ 9îâ9cêºaáùî¬ùk£9¥m[™™\™[˜Ùxà \ØÛÜ™\¸à Yœ˜[YKXÛÛ˜XÝ9d£Ù™šXÚX[[Y]šXÜÈ™XÙZ\8à ‚‚¹d+ùbª9d#¹fç¹od¹¨.:j£;ï&¹.):-ëÈÙ\™WÙÜ›Ý[™[ž][™ËœX9gaùmì¹kf9­.ùnm¹aî¹ã¬9ç'ùk§ˆÔ‘Q’SXº+íù¬`»ï#ÝÛ™\ˆ9mì¹b!¹b*ú/æùaiH•S“’S‘×ÑÌ—ÐÓPS—ÕŒ—Ù[˜Ù]˜XÚÌÝ˜[LŒØ;ï"ÔM{ï#œÙ\šXÙHQLLŒ{ï"yd£•S“’S‘×ÑÌ—ÐÓPS—ÕŒ—Ø[š[X[˜XÚ×ØÚXÚÙ[ŒWÝ\ÝÌ˜»ï"ÔM»ï#Ù\šXÙHQLLŒ»ï"{ï#˜Z[Y[[8à º/æycêº+ày¦#¹nmº(c9£ª9ä!¹mì¹o 9iâûï#9.#y¢¢¹.+zeí9n)Â¹¢%¹§#yb¨y¥éyoåùodù¢$9«hùo#ù£!ù¨!ûï&ùo¡yk£9¥m:`$9n)ù£ª9ä!¹.#¹k¦9¥®HØÛÜ™\ˆ™XÙZ\9îäù§gùd#¹a£y¥-¹oeyîäù§§8à ‚‚ˆÈÈŒ‹LLLŒˆ8 %ÔMÈ˜]]™H™YK]\ÚÈ^[œÚ[Û‚‚‘ÔMÈ9. 9«(y )ú-a9®¤9£¨¹­bù..ˆÎKNNKÎKLŒZPˆœ™Y{ï#9cê¹§"yî©ˆKHÚPˆ9i%º`ê:+¨yë¥ùch9å*8à ‚¹c§ùab9.ãy`g9g*ÐRUS‘×ÑÌ—ÐÓPS—Ð•S‘WÐS‘ÑÔMØ9æ¡9¥éÈ[[Ý]9ëbyo¡HÝÛ™\ˆ9¬¨y§"yd+ùbª¹§#yb¨{ï&ùmì¹ab9/çykf9..ˆÝÛ™\—ÜÝ]WÜ™WÙÜM×Û˜]]™WÙ^[œÚ[Û‹šœÛÛ˜;ï#9a£yl!¹am¹k¢yaj9¦ ¹`g;ï#º`oùacyk ùg*ÔMÈ9."¹.#¹¥¬9k§ºj£9êç¹.¢xà ºf£ùd#¹d+ùbª9âë9êâùæ¡9ceychyç'ùk§ˆÜ›Ý[™‘Uˆ9."y.îùb¨y¢jyleB˜Ü›Ý[™™]—Û˜]]™WÝ™YWÝ\Ú×Ù^[œÚ[Û—ÙÜM×ÝŒ˜;ï&¹/oùå*9§ 9îâÌˆY\\ˆÝ\NŒøà B¹d#9. ˜]]™HSÕÔ“SÕÓÕ“SÕX[šY™\Ý;ï"ÒLM‚˜ØÍŒÌŒLMXXL˜ŽÌMŒYÍØŽLÙÌØÍÌYLLŒLMÎMMNXMÍLYMÌÍŒNLÍÌX;ï"{ï#9«ãù.îùb¨zaáù¨-ÂÌˆ:(c8à LLŒ9.*ˆÜ[Z^™\ˆÝ\øà LMˆ9¨a¹êç¹.¢yê¥ùcèøà ycey. 9a®ùîäÈÌˆ9..ùnl¸à ¹ë+9. 9«(yl'z+åyg*¹d+ùbª[—ÝÚ]Ü™\ÛÝ\˜Ù\ËœX9¥í¹fè:!&¹§+9ï.¹l$H^XÝ]X›Hš]9êâùclùi,z-){ï"Ü[Z^™\—Ý\]\ÏL;ï#¹§*¹å'ù¢$ÚXÚÜÚ[;ï"{ï&ùmì¹£"zi¥¹.*¹cëù¤ãy/g9c§ùfè9¥.y..¹¦/¹o#È]Ûˆ:, ùå*9nm¹.éyaj9¥¬Œˆ:/¤ùaî¹æë¹oeB¹ h¹i#xà ŒˆÝÛ™\ˆ9mìº/æùaiHÔM×ÓUU‘WÕ‘QWÕTÒ×ÑVS”ÒSÓ—Ô•S“’S‘ËÈRS’S‘Ø;ï#9.#y¥.ybª‘ÔLËÍKÍˆ9æ¡9âë9êâÈ[[Ý]:/¤ùaî»ï&ùk£9¢$9d#¹cê¹£©ycåùc!yd*ÈSÕ8à T“SÕ8à SÕ“SÕ9."yìnù¦í9¥¬9d£¹k£9¥m™XÙZ\9æ¡ÚXÚÜÚ[8à ‚‚ˆÈÈŒ‹LLLŒˆ8 %ÔMÈ˜]]™H^[œÚ[Ûˆ[YØ[XXØÙ\ÜÈ™\Z\ˆ[™ŒÈ™\Ý\‚‘ÔMÈŒˆ:i¥¹«(yç'ùk§ˆLŒ\Ý\9¢jyleyg*˜]]™H™X]\™H[˜ÛÙ[™È9æ¡9ë+Í9.*ˆ[š\]YH:/¤ùaiBº)é¹cäHÕQH[YØ[Y[[ÜžHXØÙ\Üûï&ú`$:/¤ùaiy."¹."ù¥¡ùk¦¹/cyb,˜˜]]™WÜ›[ÝÌÌ×ÜLWØ˜]ÚÛY[X™\œÚ\Ì˜8à SSÕÔ“SÕÓÕ“SÕ˜]]™HX[šY™\Ý;ï#:e&z+ëÂ¹¨":$/yg*9."¹®.HÜ™X]WØ›ØÚ×ÛX\ÚØ9æ¡9bª9  H[™XÝÜ‹Õš]ÛˆÙ\›™[;ï#: #9.#y¦+È‘U‚›Ü[Z^™\¸à ¹ceyn)ÈÔMÈ›ÜØ\™Ø˜XÚÝØ\™9fç¹odº`&º/áûï#:+ày¦#ˆÚXÚÜÚ[8à XY\\ˆ9d£:+¯¹i!Â¹§+:.ªùcëùå*;ï&Í:(cù.îùb¨xà LLˆÝ\È9æ¡Ú[šÏM9fç¹od¹.gú`&º/áûï#9/a¹¦­:g,¹.¡ˆ™XÙZ\9.+ymì¹b(:fi˜œšYÙX9æ¡˜[YQ\œ›Ü»ï#9mì¹¥.y..º+îùcåˆ™X]\™WØ]Y]˜Y\\—ÜÝ\8à ‚‚¹£"y."¹®.XœšYœX9mì¹£ä9/¦ùæ¡9ê,ùk¦º-ëùo¡;ï#˜]]™H›ÝšY\ˆ9ã¬9g*:næ:+©:+¯¹ïk‚˜ÐSWÑWÔÕP“WÐ“ÐÒ×ÓPTÒÏLX;ï#9nmº+ªHÔMÈÝÛ™\ˆ9d#9¥í¹d+ùå*˜ÕQWÓUSÒÐ“ÐÒÒS‘ÏLX8à ¹/ë¹i#yd#¹æ¡:(cù.îùb¨xà LÝ\È9fç¹od¹g*ÔMÈ9k£9¥m:`&º/áûï&‚ÌH9.*¹ç'ùk§º)áº)âz/¤ùaixà SSÕÔ“SÕÓÕ“SÕ9d!:(c;ï#Ü[Z^™\ˆ\]\È9b!¹b*ù..‚ŽÍÌ‹ÍÌ»ï#ÚXÚÜÚ[9..‚˜Ù]LËÝ\Ù\‹ÓØØ]SSÕXÚXÚÜÚ[ËÙÜ›Ý[™™]—Û˜]]™WÝ™YWÝ\Ú×Ü™YÜ™\ÜÚ[Û—ÙÜM×Ü›ÝÜÌÜÝX›KÙÜ›Ý[™™]‹[˜]]™K]™YK]\ÚË\Ý\œ8à ‚º/æycê¹¦+ùê,ùk¦¹ )ù.#º e9d"9¦í9¥¬9fç¹od»ï#9.#y/g9âë9êâù )ú ïyîäú+®¸à ºf£ùd#¹.éyæî9d#X[šY™\Ý8à QÌˆÝ\NŒøà BÌˆ:(cù.îùb¨yd£LŒÝ\È9d+ùbª9âë9êâÈÜ›Ý[™™]—Û˜]]™WÝ™YWÝ\Ú×Ù^[œÚ[Û—ÙÜM×ÝŒØ;ï#¹odùbcymìº/æùaiHRS’S‘Ø;ï&ÝŒˆ9i,z-)yæë¹oexà y¥éyoåùd£™XÙZ\9ï.¹i,y.¢ùk§¹gaù/çyåfxà ‚‚¹/ë¹i#yd#¹æ¡9. 9«(yâ­¹  z+îùcå¹¦/¹é.ˆÌSÕŒLH9mì¹a¦yaiHMŒÌËÌMMÈ9n)ûï#ÌˆÔMKÑÔMˆ9b!¹b*Â¹a¦yaiHM‹ÌÍÍH9n)ûï#[˜ÙU˜XÚËÐ[š[X[˜XÚÈ9gçù¢jyleyb!¹b*ùa¦yaiHÍŽÌMÈ9n)ûï&ù.¥9.*ˆ[[Ý]›ÝÛ™\ˆ9.ãy..ˆ˜Z[Y[[;ï#ÔMÈŒÈ9.ãyg*RS’S‘ûï#9l&¹§*¹å'ù¢$9§ 9îâ9k¦9¥®y£!ù¨!ù¢%¹."y.îùb¨B¹¢jyleH™XÙZ\8à ‚‚ˆÈÈŒ‹LLLŒˆ8 %[[Ý]ÝÛ™\œÈÛÛ[YHY\ˆÝX›K[X\ÚÈ™\Z\‚‚¹.ã¹d!œ˜[YWÙXÚ\Ú[ÛœËšœÛÛ›9¥¡ù.í¹l/º`ê:+îùcå¹æ¡9§ 9¥¬9mì¹£ä9.©9n)ùcíù..»ï&‘ÌSÕŒLB˜ÌŽM˜;ï#ÌˆÔMHŒÌMØ;ï#ÌˆÔMˆŒÍ;ï#[˜ÙU˜XÚÈÎL;ï#[š[X[˜XÚÈMM˜8à ‚¹.¥9.*ˆÝÛ™\ˆ9.ãy..º/ä:(c9  y.%˜Z[Y[[;ï&ú/æy.¦ù¦+ú`$9n)ú/æùn©¹d£9d'¹d$:+ày£k»ï#9l&¹§*¹caùî©ù..‚’ÕKÒQŒH9¢%¹am¹k ù«hùo#ù£!ù¨!øà ‚‚ˆÈÈŒ‹LLLŒˆ8 %[[Ý]\[[™\ÈY˜[˜Ú[™ÈÚ]Ý]\›Z[˜[™XÙZ\Â‚¹. 9«(y )ú+îùcå¹odùbcz`$9n)ú/¤ùaî»ï"9cêº+¬9oeymì¹a¦yaiz(c;ï#9.#ycaùî©ù..¹£!ù¨!ûï"{ï&‘ÌSÕŒLH9mì¹a¦yaiBŒMNL‹ÌMMÈ9n)ûï&ÑÌˆÔMH9mì¹a¦yaiHŒH9n)øà QÔMˆ9mì¹a¦yaiHÍŒÈ9n)ûï&Ñ[˜ÙU˜XÚÈ9gçù¢jyleymì‚¹a¦yaiHLÌLŒÈ9n)ûï&Ð[š[X[˜XÚÈ9gçù¢jyleymì¹a¦yaiHËÌÌˆ9n)øà ¹.¥9.*ˆÝÛ™\ˆ9gaù.ãy..‚˜˜Z[Y[[;ï#9k¦9¥®HÙ™šXÚX[ÛY]šXÜËšœÛÛ˜9d£9§ 9îâ9¥-¹cèÈ™XÙZ\9l&¹§*¹å'ù¢$8à ‘ÌÑÌ‚º`$9n)ùd"9d#9îéùîëy/çyåf{ï#9odùbcz`ê9b!º/¤ùaî¹.áy/g9..º/ä:(c:/æùn©º+ày£k¸à ‚‚ˆÈÈŒ‹LLLŒˆ8 %[[YYX]H\˜[[SÈÕ“SÕØÛÜB‚¹å*9¢-ú) y¬`¹.#yëbyo¡zeoÈSÕŒ:f'ùb%ûï#9îéùîëynmº(c9­bú+åymì¹îãùk£9¢$9o«º, ùæ¡ÌˆÛX[¸à ‘ÔMH9æ¡9. 9«(y )Âº-a9®¤:+îùcå¹¦/¹é.¹î©ˆÈÚPˆœ™Y{ï"9mì¹§"y.)9.*ˆNŒˆÚPˆ9mé¹cìùæ¡Ìˆ9§#yb¨{ï"{ï#9fè9«i9¥¬9h§¹âë9êâÂ¹¥àz-ëÈÝÛ™\ˆÌ—Ü\˜[[ÛÝ›[ÝÙÜMWÝŒX;ï#9/oùå*9êëùcèÈŒÌˆ9d£Ý›[ÝÝ[×Ú[™\[™[LWÙ[šœÛÛ˜¹æ¡SÈšY[ÈLHÈ9n)ÈØÛÜxà º+éHX[šY™\Ý9mì¹ænú+¬˜Z[š[™×ÛÛ—Ý\×ÜØÛÜOY˜[ÙX;ï#¹nm¹.%9âë9êâùk¨z+¨y..ˆ9.*¹ì¯¹èk¹fï¹`ãúaãycè;ï&ú/ä:(c9aiycèùfî¹k¦¹..ˆÌˆÛX[ˆŒ¸à [Ù™šXÚX[ÜØÛÜš[™Âœ\œÙ\¸à ]˜XÚÚ[™×Ù[œÙHXÛÙ\¸à [˜]]™WÛX™[Ø]YÛÜžHÛXÞH9d£9k¦9¥®H][]\ÚÈØÛÜ™\¸à ‚¹¥¬9h§º!&¹§+ØÜš\ËÙÜ›Ý[™™]‹Ü[—ÙÌ—Ü\˜[[ÜØÛÜKœX9cêº-'ú-(ú/æy. ØÛÜ{ï#9a¦yaî¹âë9êâÂ›ÝÛ™\ˆÝ]xà z`$9n)ùd"9d#9d£™XÙZ\;ï#9.#z)¡¹æå¹ã¬9§"HSÕŒ8à Q[˜ÙU˜XÚøà P[š[X[˜XÚÈ:/¤ùaî¸à ‚‘ÔMˆ9odù¥í¹.áyî©ˆŽŒÈÚPˆœ™Y{ï#9§*¹a£yb¨9§#yb¨{ï#:`oùacy.#¹ã¬9§"HÌ‹Ð[š[X[˜XÚÈÝÛ™\ˆ9.¢yå*9¦/¹kf8à ‚‚ˆÈÈŒ‹LLLŒˆ8 %ÌHÔMHY\][Ûˆ[[Ý]ÛÛ›ÛÝ\Y‚¹..¹oh¹¢$ÌÑÌ‹ÑÌH9æ¡9d#:/¤ùaiygçùkîyáiûï#9i#yå*9mì¹îãùk¨z+¨y..¹âë9êâùæ¡[˜ÙU˜XÚÂ˜[˜Ù]˜XÚÌÝ˜[LŒØLŒÈ9n)ÈX[šY™\Ý;ï#9g*ÔLÈ9æ¡9bjy/fy¦/¹kf9."¹d+ùbªÌHÔMBº` ºacH[™HÜ›Ý[™[ž][™ËQKU˜XÚÔ›Ú‘ÌKQÔMKUŒ˜;ï#9êëùcèÈŒÌûï#:/¤ùaî¹æë¹oeB˜ÌWÙ[˜Ù]˜XÚ×ÙÜL×ÝŒX8à ‘ÌSÕŒÝÛ™\ˆ9§*¹`g9«h»ï#Ìˆ[˜ÙU˜XÚÈÝÛ™\ˆ9§*º)¡¹æå»ï&ù¥¬›ÝÛ™\ˆ9.ãy/oùå*9æî9d#[—ÝšY[øà [Ù™šXÚX[ÜØÛÜš[™È\œÙ\¸à ]˜XÚÚ[™×Ù[œÙHXÛÙ\¸à B™[\WØ[™Ü™XÛÜ™˜Z[\™HÛXÞH9d£9k¦9¥®HSÕØÛÜ™\¸à º+éz/ä:(c9å*9.£¹d#:# ùfí9£©ùb-¹«å:/ ûï#¹g*9k£9¥mØÛÜ™\ˆ™XÙZ\9å'ù¢$9bcy.#yk¨ùéìÌH9£!ù¨!øà ‚‚ˆÈÈŒ‹LLLŒˆ8 %^[™Y[[Ý]š[˜[^™\ˆ™YÚ\Ý\™Y‚¹c§ù§"HÌˆš[˜[^™\ˆ9cêº)¡¹æå¹.¥9.*¹¥êyab9¬ê9a£9æ¡ÌÑÌ‹ÙÛXZ[ˆÝÛ™\¸à ¹..º`oùacy¥¬9d+ùbª9æ¡SÂ“Õ“SÕ9¥àz-ëùd£ÌH9d#9gçù£©ùb-º(ªú`eù¯#ûï#9¥¬9h§¹nm¹d+ùbª˜]Y]YWÙÜ›Ý[™™]—Ú[Ý]Ùš[˜[^™WÙ^[™YœX;ï#9ëbyo¡y. ù.*ˆÝÛ™\»ï"ÌSÕŒ8à y.):-ëÂ‘ÌˆSÕŒ8à QÌˆ[˜ÙU˜XÚøà QÌˆ[š[X[˜XÚøà QÌˆSÈÕ“SÕšY[ÌLxà QÌH[˜ÙU˜XÚûï"B¹b!¹b*ú/æùaiHÓÓTUKÑRSQ9d#»ï#:, ùå*9d#9. 9.)y¨/™XÙZ\ÛÛXÝÜˆ9a¦yaî¹âë9êâÈ^[™Y˜ÛÛXÝ[Û‹Ùš[˜[^˜][Ûˆ™XÙZ\;ï&ùc§ù§"y.¥ÝÛ™\ˆš[˜[^™\ˆ9d£9c¡¹cì¹îäù§§9/çy£ y.#ycæ8à ‚‚ˆÈÈŒ‹LLLŒˆ8 %ÌŒØ[YKYÛXZ[ˆÛÛ›Û™\ÛÝ\˜ÙHØ]B‚¹l'z+åyg*ÔLÈ9æ¡ÌÑÌH9alykf9ê¥ùcèùd+ùbªÜ›Ý[™[ž][™ËQKU˜XÚÔ›ÚŒŒ9æ¡9d#9. ‘[˜ÙU˜XÚÈ9âë9êâÈØÛÜ{ï#9oh¹¢$ÌÑÌŒÑÌKÑÌˆ9d#:/¤ùaiy«å:/ øà ¹d+ùbª9bcz-a9®¤:eê9¨à9­bùb,ÔLÂ¹.áybjHMËMHZPˆœ™Y{ï#9/c¹.£ˆÌ‹ÍŽZPˆ9æ¡9§#yb¨yd+ùbª:eê9©æûï#9fè9«iÝÛ™\‚˜ÌŒÙ[˜Ù]˜XÚ×ÙÜL×ÝŒX9g*9§#yb¨yd+ùbª9bcyk¢yaj9i,z-){ï"Ü[Z^™\‹Ú[™™\™[˜ÙH\]\ÏL;ï"{ï#¹¬¨y§"z)é¹è¬ÌÑÌH:/ä:(c;ï#9.gù¬¨y§"y¢¢¹i,z-)yl'z+åyodù¢$9£!ù¨!øà ‘ÌŒ9mì¹§"yæ¡9n)ùk¦9¥®y£©ùb-ˆ™XÙZ\¹d£[™H9/çyåfy/g9..¹ã¬9§"ykîyáiú+ày£k»ï&ù.#yg*9odùbcyfæùchyê¥ùcèùîéùîëyo.º(c9b¨9§#yb¨xà ‚‚ˆÈÈŒ‹LLLŒˆ8 %ÌSÕŒLH[™\[™[Ù™šXÚX[™\Ý[‚‘ÌÝÛ™\ˆÌ—ØÛX[—Ú[™\[™[ÙÜL×ÝŒX9mì¹k£9¢$9.#ˆÌˆ9æî9d#:/¤ùaiyd"9d#9æ¡SÕŒLB˜[Y][Û‹Z[ˆ9âë9êâú+á9­bûï&ŒMMËÌMMÈ9n)øà SSÕŒLH9cez)áºh¤xà z/ä:(c9¥í¹§*º+îùcå¹k¦9¥®HTÕ¹¨!ùëo¸à ¹k¦9¥®HØÛÜ™\ˆ™XÙZ\9îæyaîˆÕHŒÍŒMMNX8à Q]HŒLŒMX8à P\ÜÐB˜ŒMÍMNMX8à RQŒHŒŽLLÌÌL8à RQÕÈLÍÌL˜8à Q”NLŽL8à Q“ˆÎNM;ï#¹êëùb,9êëÈ”ÈŒÎX;ï#9¡'ùçéy¢ä¹îçyã¡ÈŒMÌMX;ï"H9n)ûï#9.%:+¨yaiyk¦9¥®yb!¹«ã{ï"xà º/æy¦+Â¹âë9êâÈÌ9£©ùb-¹îäù§§;ï#9.#y¦+ÈÌˆ9£ä9caùîäú+®»ï&ùd#9. ÝÛ™\ˆ9mì¹£"y¬ê9a£:hn¹n£ú/æùaiH“SÕÚ[™ÛBŒûï#ÌˆÔMKÑÔMˆSÕŒ9d£9am¹k ùgçÈÝÛ™\ˆ9§*º(ªù¥.ybª8à ‚‚ˆÈÈŒ‹LLLŒˆ8 %ÔMÈÚ\™YQÌˆ™YK]\ÚÈ™XYÝ]\›Z[˜[‚‘ÔMÈ9æ¡9ç'ùk§¹cey..ùnlº e9d"™XYÝ]9mì¹k£9¢$:+íù¬`¹æ¡LŒÜ[Z^™\ˆÝ\ûï#™XÙZ\˜Ô“ÕS‘‘U—ÓUU‘WÕ‘QWÕTÒ×ÐÓÕTQÔ‘PQÕUÐÓÓTUX8à ¹k ùa®ùîäù§ 9îâÌˆY\\‚œÝ\NŒØ;ï#9/oùå*9d#9. ˜]]™HX[šY™\Ý;ï"ÒLM‚˜ØÍŒÌŒLMXXL˜ŽÌMŒYÍØŽLÙÌØÍÌYLLŒLMÎMMNXMÍLYMÌÍŒNLÍÌX;ï"xà ycey. Ì‚º)áº)ây..ùnl»ï"[™\[™[Ý›WÚ[œÝ[˜Ù\ÏL;ï"{ï#MÎ9.*ˆ[š\]YHš\ÝX[[œ]È9cê¹ï%¹è y. 9«({ï#¹alHŒˆ:(c;ï&“SÕÌ¸à T“SÕÌ¸à SÕ“SÕN;ï&ù.îùb¨y¦í9¥¬:+¨y¥l9..ˆÌÌÍÌ‹ÌÌÌ{ï#Lˆ9.*ˆY[]B\™Ù]9d"9¬åHX\Úøà ˜ÚXÚÜÚ[9..‚˜Ù]LËÝ\Ù\‹ÓØØ]SSÕXÚXÚÜÚ[ËÙÜ›Ý[™™]—Û˜]]™WÝ™YWÝ\Ú×Ù^[œÚ[Û—ÙÜM×ÝŒËÙÜ›Ý[™™]‹[˜]]™K]™YK]\ÚË\Ý\LŒœ»ï"ÒLMˆ˜ÍÙŒMÍŒXYXŒÙYLØ™MÍØ˜X™NL™Ž˜Í˜ÍÍÍXÌÌXÙŒXMMLLŒX;ï"xà º/æz+ày¦#‚¹ç'ùk§ˆÔH9."y.îùb¨yaly.ªËQÌˆ™XYÝ]:+«yîàùd£9cëù h¹i#HÚXÚÜÚ[9mì¹k£9¢$;ï&Ü™XÙZ\9¦#¹èk¹.#y/gº)áºh¤yî©ÈÕKÕUH9¬æùc%¹¢%¹âë9êâÈÛ™R™]ˆ9ª(yg¢ù )ú ïyîäú+®¸à ‚‚ºf£ùd#¹.éHÙZYÚ×ÛÛ›OQ˜[ÙX9g*ÔH:aãy¥¬9b¨:/oz+éHÚXÚÜÚ[;ï&˜Ý\LLŒ8à [X[šY™\ÝÛ[Ù[”ÒH9.#ˆ™XÙZ\9. :!í;ï#Ü›Ý[™™]—Û[Ù[9d*ÈNH9.*ˆ[œÛÜ¸à L‹LNNH9.*¹cà¹¥l9a`ùí(;ï#9§*¹cäyã¬ºgg¹§"zfd9`/;ï&ùfè9«i:+éy¥¡ù.í¹¦+ùcëù h¹i#HÚXÚÜÚ[;ï#: #9.#y¦+ùcê¹kf9g*9¥¡ù.í¹d#yæ¡:+«yîàù¨!ú+¬8à ‚‚ˆÈÈŒ‹LLLŒˆ8 %ÔMÈ[[YYX]H[™\[™[“SÕ^[œÚ[Û‚‚‘ÔMÈ9g*9."y.îùb¨H™XYÝ]9k£9¢$9d#ºaâ¹¥/»ï&ù..¹.#yëbyo¡HÔMKÑÔMˆ9æ¡SÕŒ:eoùn£ùb%ûï#9êâùclùd+ùbª¹.)9.*ˆÌˆÛX[ˆ9âë9êâÈ“SÕÝÛ™\»ï&”™Y™\‹RÒUHŒˆÙ\]Y[˜ÙHÈ9æ¡Ú[™ÛH^™\ÜÚ[Û‚Ž9n)ûï"9êëùcèÈŒÍ{ï"yd£][H^™\ÜÚ[Ûˆ9n)ûï"9êëùcèÈŒÍ»ï"xà ¹.): !y/oùå*9mì¹ænú+¬˜˜Z[š[™×ÛÛ—Ý\×ÜØÛÜOY˜[ÙXX[šY™\Ý8à yæî9d#Ù™šXÚX[ÜØÛÜš[™È\œÙ\¸à ]˜XÚÚ[™×Ù[œÙB™XÛÙ\¸à \Ú[\H˜XÚÙ\ˆ9d£][]\ÚÈØÛÜ™\»ï#:/¤ùaî¹æë¹oey.¤¹æî9âë9êâûï&ÑÔLËÍKÍˆ9æ¡9¥è¹§"B›ÝÛ™\ˆ9§*¹/ë¹¥.xà ¹¥¬9h§ˆ]Y]YWÙÜ›Ý[™™]—Ú[Ý]Ùš[˜[^™WØ[œX;ï#9¢¢º/æy.):-ëùb¨9aiyaj:aãÂš[[Ý]9¥-¹cèûï#9c§ù§"y.¥:-ëËù. ú-ëÈš[˜[^™\ˆ9.©ùâjy.ãy/çyåfxà ‚‚ºf£ùd#¹l'z+åyg*ÔMÈ9.):-ëÈ“SÕ9§#yb¨yalykf9¥í¹a£yd+ùbª9d#9. SÈšY[ÌLHÕ“SÕØÛÜ{ï#:-a9®¤ºeê9¨à9­bùb,9.áybjHŽKLHZPˆœ™Y{ï#9/c¹.£ˆÌ‹ÍŽZPˆ:eê9©æûï&ú+éyl'z+åyg*9§#yb¨yd+ùbª9bcyk¢yaj¹i,z-){ï#9§*¹olydãy.):-ëÈ“SÕ8à •SÈÕ“SÕ9.ãyå,HÔMH9æ¡9âë9êâÈÝÛ™\ˆ:/ä:(c;ï#9.#y¢¢º-a9®¤9¢ä¹îçyodù/gº+á9­bùîäù§§8à ‚‚¹..¹ï*yçëHSÈÕ“SÕ9æ¡:+ãz(j:+íù¬`¹o :e ;ï#9¥¬9h§ˆ]Y]YWÙÌ—ÛÝ›[ÝØY\—ÙÜMËœX;ï&¹k ùg*9odùbcB¹.):-ëÈ“SÕÝÛ™\ˆ:aâ¹¥/º!ìùl$HÌ‹ÍŽZPˆ9d#º!ê¹bª9d+ùbª9âë9êâÈÔMÈÕ“SÕÝÛ™\»ï#9/çy£ yæî9d#‘Ì‹Ü\œÙ\‹ÙXÛÙ\‹ÜØÛÜ™\ˆ9d"9d#;ï#9.áy¢¢¹mì¹ænú+¬9æ¡›ØØX[\žHÚ[šÈ9.ãˆMˆ:, ùb,NL»ï&Â¹odùbczf'ùb%ùmì¹èkº+©9i!9.£ˆÐRUS‘×ÑÔM×ÑTÕÓÕ“SÕÓQSSÔ–X;ï"ÔMÈœ™YHŽKLHZP»ï"{ï#9.#B¹¢¨¹ch“SÕ;ï#9.gù.#z)¡¹æåˆÔMH9æ¡M‹XÛ\ÜÈÕ“SÕ:+ày£k¸à ‚‚¹å'ù¢$9nm¹/çyåfHØÜËÑÔ“ÕS‘‘U‹ÐPÕU‘WÑÓÐSÓU‘WÌŒŒLŒ‹šœÛÛ˜9câ¹am¹cëúaãz-äyaiycèÂ˜ØÜš\ËÙÜ›Ý[™™]‹ÝÜš]WÛ]™WÙÛØ[ÜÝ]\ËœX8à º+éyoêùáiú+¬9oey.gy.*ˆ[[Ý]ÝÛ™\ˆ9æ¡¹â­¹  xà z`$9n)ú(c9¥l8à QÔH9¦/¹kf9d£9odùbcye+ù. 9k£9¥mÙ™šXÚX[Y]šXÜûï&ù¦#¹èk¹¢¢º/ä:(c9.+yn)ù¥l9d£ˆ9§#yb¨yâ­¹  y¨!ù..ˆ›ÙÜ™\ÜÈ]šY[˜Ù{ï#9.#ycaùî©ù..¹£!ù¨!øà ‚‚ˆÈÈŒ‹LLLŒˆ8 %Ìˆ[š[X[˜XÚÈ[™\[™[Ù™šXÚX[™\Ý[‚‘ÌˆÛX[ˆÔMˆ[š[X[˜XÚÈÝÛ™\ˆ9mì¹k£9¢$9âë9êâÈÚXÚÙ[—ÌX\ÝØÛÜH9æ¡9aj:`êÌ‹ÌÌ‚¹n)ûï#ÝÛ™\ˆ9â­¹  y..ˆÌ—ÑÓPRS—ÒSÕUÐÓÓTUX;ï#œ˜[YHÛÛ˜XÝ9.#ˆX[šY™\Ý9æ¡ŒK‹ŒÌˆ9k£9aj9. :!í8à ¹k¦9¥®H™XÙZ\9îæyaîˆÕHMÍNMÍX8à Q]HNŽLMMÍL8à B\ÜÐHŒÌÍŒÌLLŒX8à RQŒHÌÍMÌÌMØ8à RQÕÈM8à Q”LŒÌX8à Q“ˆŒ;ï#¹êëùb,9êëÈ”ÈŒLŒLŒÍÌØ8à º/æy¦+ÈÌˆÛX[ˆ9æ¡9âë9êâùbª9âjygçùîäù§§;ï#9.#y.#ˆÌÑÌH9¢%¹am¹k ùgçÂ¹­íùd"9od¹fè;ï&Û]™H™XÙZ\ÛÛXÝÜˆ9odùbcy£©ycåùæ¡9k£9¥mØÛÜH9¥l9..ˆ»ï"ÌSÕŒ9.#º+éB[š[X[˜XÚûï"{ï#9am¹/fHÝÛ™\ˆ9.ãy£"yd!:!ê¹ccú+«º/ä:(c8à ‚‚ˆÈÈŒ‹LLLŒˆ8 %ÌH[š[X[˜XÚÈ][KYÛXZ[ˆÛÛ›ÛÝ\Y‚‘Ìˆ[š[X[˜XÚÈÌˆ9n)ùâë9êâÈØÛÜH9k£9¢$9nmºaâ¹¥/ˆÔMˆ9§#yb¨yd#»ï#9êâùclùg*9d#9. ØÛÜH9d+ùbª‘ÌHÔMH:` ºacH[™HÜ›Ý[™[ž][™ËQKU˜XÚÔ›Ú‘ÌKQÔMKUŒ˜;ï"9êëùcèÈŒÎ{ï#:/¤ùaî‚˜ÌWØ[š[X[˜XÚ×ÙÜM—ÝŒX;ï"xà ¹k ù¬¯ùå*9.#ˆÌˆ[š[X[˜XÚÈ9k£9aj9æî9d#9æ¡X[šY™\Ý8à \\œÙ\¸à B™XÛÙ\¸à ]˜XÚÙ\ˆ9d£Ù™šXÚX[SÕØÛÜ™\»ï#9.#¹mìº/ä:(c9æ¡ÌH[˜ÙU˜XÚÈ9îá9¢$9i&¹gçù£©ùb-»ï&Â‘ÔMˆ9æ¡ÌˆSÕŒÝÛ™\ˆ9§*¹`g9«h»ï#ÌHÝÛ™\ˆ9g*9k£9¥m™XÙZ\9bcy.#y/g9£!ù¨!ùîäú+®¸à ‚‚¹..¹èk¹/çy¥¬9h§ˆÌH[š[X[˜XÚÈØÛÜH9.#z(ªù¥êyab9.gK[ÝÛ™\ˆš[˜[^™\ˆ:`eù¯#ûï#9¥¬9h§¹nm¹d+ùbª˜]Y]YWÙÜ›Ý[™™]—Ú[Ý]Ùš[˜[^™WÛ][YÛXZ[‹œX;ï#9ëbyo¡yc`y.*ˆÌÑÌ‹ÑÌKÔ“SÕÕSÂ›ÝÛ™\ˆ9aj:`ê:/æùaiHÓÓTUKÑRSQ9d#»ï#9å*9d#9. ™XÙZ\ÛÛXÝÜˆ9a¦yaî¹âë9êâùæ¡›][YÛXZ[ˆš[˜[^˜][Ûˆ\Y˜XÝ;ï&ù¥éùæ¡9.¥:-ëøà y. ú-ëøà y.gz-ëù¥-¹cèù¥¡ù.í¹.#z)¡¹æå¸à ‚‚ˆÈÈŒ‹LLLŒˆ8 %›Ý\‹QÔH\˜[[˜[Y][Ûˆ]™HÛ˜\ÚÝ‚¹§+9«(z/núaãù¥-¹cèùèkº+©9fæùo(9è%9êm¹chy.ãy£"y¥è¹k¦¹ccú+«¹nmº(c;ï&‘ÔLÈ9æ¡Ì“SÕÚ[™ÛH9.#ˆÌB‘[˜ÙU˜XÚûï#ÔMH9æ¡ÌˆSÕŒ8à QÌˆ[˜ÙU˜XÚøà QÌˆSÈÕ“SÕ;ï#ÔMˆ9æ¡ÌˆSÕŒ¹.#ˆÌH[š[X[˜XÚûï#ÔMÈ9æ¡Ìˆ“SÕÚ[™ÛKÛ][xà ¹odùbcz`$9n)ú/æùn©¹..ˆÌH[š[X[˜XÚÂŒMKÌÌ¸à QÌH[˜ÙU˜XÚÈKÌLŒøà QÌˆSÕŒÔMHŽLÌMMøà QÔMˆÎMKÌMMøà QÌ‚‘[˜ÙU˜XÚÈŽLKÌLŒøà USÈ‹Í8à T“SÕÚ[™ÛHÌ‹Î8à T“SÕ][HÎMKÎ;ï&ú/æy.¦Â¹¥l9keù.áy¦+ú/ä:(c:+ày£k»ï#9§*¹caùî©ù..¹£!ù¨!øà ‘ÔMKÍˆ9ênºeì¹¦/¹kf9î©ˆKÌŽŒHÚP»ï#9/c¹.£ˆ[›™\‚¹æ¡ÌˆÚPˆ9d+ùbª:eê9©æûï#9fè9«i9¬¨y§"yo.º(c9a£yo 9§#yb¨{ï&ÑÔMÈ9æ¡9oêú`'ÈÕ“SÕ:f'ùb%ùîéùîëyëbyo¡y.):-ëÂ”“SÕ:aâ¹¥/¹¦/¹kf8à ›]™H™XÙZ\ÛÛXÝÜˆ9odùbcyc!yd*ÈL9.*ˆÝÛ™\»ï#9.ãycê¹§"ymì¹k£9¢$9æ¡‘ÌSÕŒ9.#ˆÌˆ[š[X[˜XÚÈ9.)9.*ˆÙ™šXÚX[ØÛÜ{ï"XØÙ\YÜØÛÜWØÛÝ[L»ï"xà ‚‚ˆÈÈŒ‹LLLŒˆ8 %ÌŒ[˜ÙU˜XÚÈÛÛ›Û™\Ý[YYÛˆ™[X\ÙYÔLÈØ\XÚ]B‚‘ÔLÈ9d#¹îëzaâ¹¥/º!ìùî©ˆÈÚPˆœ™Y{ï#9®èz-¬ùd#9. [›™\ˆ9æ¡ÌˆÚPˆ™\ÛÝ\˜ÙHØ]{ï&ùfè9«i¹g*9.#yh§¹b¨ÔH9¥l:aãøà y.#z)é¹è¬ÌÑÌH9¥è¹§"y§#yb¨yæ¡9bcy£ä9."ûï#9d+ùbª9âë9êâÈÌŒ[˜ÙU˜XÚÂ›ÝÛ™\ˆÌŒÙ[˜Ù]˜XÚ×ÙÜL×ÝŒ˜;ï"9êëùcèÈ;ï#[Ù[X™[˜ÌŒÕPÒÒS‘ÌŒ;ï"xà ¹c§ÈÌŒÙ[˜Ù]˜XÚ×ÙÜL×ÝŒX9æ¡MËMHZPˆ:-a9®¤9¢ä¹îçy.ãB¹/çyåfy..¹i,z-)z+¬9oe{ï#9.#z)¡¹æå»ï&ù¥¬9h§ˆÌŒÝÛ™\ˆ9î¬ùaiyâë9êâùc`y. [ÝÛ™\ˆš[˜[^™\»ï#9cê¹§"yk£9¥m›Ù™šXÚX[™XÙZ\9¢cy/&º/æùaiHXØÙ\YÛÛXÝ[Û¸à ‚‚ˆÈÈŒ‹LLLŒˆ8 %SÈÕ“SÕÛÝË\]XYÛ›ÜÚ\Â‚‘ÔMH9æ¡ÌˆSÈÕ“SÕÝÛ™\ˆ9.ãyg*9«hùn.:/ä:(c;ï&ùâë9êâÈX[šY™\Ý9æ¡9n)ù¦+Â˜KÌKŒK‹‹‹LMÌX9æ¡9ê 9å£ùn)ûï#9fè9«i9odùbcHœ˜[YWÙXÚ\Ú[ÛœËšœÛÛ›9æ¡È:(c9kîyn¥9mì¹k£9¢$¹æ¡9bcy."y.*ˆX[šY™\Ý9n)ûï#: #9.#y¦+ÈËÌLŒÈ9æ¡9¯#ùn)øà ¹«ãù.*ˆLŒËXÛ\ÜÈ:+íù¬`¹î©º %ù¥íˆ9éä»ï#¹..ú) yo :e 9§iz!êº+ãz(j9b!¹geøà ¹ª(yg¢ú/¤ùaî¹i&¹«(yc!yd*úaãyi#ygd9¨!È\{ï#Ù™šXÚX[ÜØÛÜš[™Ø\œÙ\‚¹£"y¥è¹k¦ˆÝšXÝÚ\™HÛÛ˜XÝ9¢ä¹îçy¥m9n)ùnm¹/çyåfyc§ùiâú/¤ùaî»ï&ù¬¨y§"y¢¢¹¢ä¹îçyîäù§§9ã'9­bù..¹d"9¬åy¨a¸à ‚‘ÔMÈ9æ¡NL‹XÛ\ÜÈÚ[šÈ9âë9êâúf'ùb%ùîéùîëyëbyo¡yk¢yaj9¦/¹kf9ê¥ùcèûï#9å*9.£¹«å:/ ú+ãz(j9b!¹geùd'¹d$;ï#9.#z ïBº)¡¹æå¹odùbcHM‹XÛ\ÜÈ:+ày£k¸à ‚‚ˆÈÈŒ‹LLLŒˆ8 %™\Ý[XX›HÛ™R™]ˆ™YK]\ÚÈÛÛ[X][Ûˆ™YÚ\Ý\™Y‚¹odùbcz/æùê"ú(j9¬¨y§"H[—ÜÛÝ\˜ÙWÛX[šY™\ÝÜÙœX8à SSÕ[Û›H9¢%¹¥éÈŒHÜ[Z^™\»ï&ùc¡¹cì‚˜Û™Z™]—Ù[Ú›Ú[ÜÛÝ\˜ÙWÙ\ØÚWÝŒX9g*:gg¹îâ9  HÝ\ÍL:fa:/äz` 9aî»ï#9/aˆÝ\Ì9æ¡¹k£9¥m”Ì‹ÐY[KÔ“‘È9â­¹  yd£]\ÝÝ˜Z[š[™×ÜÝ]KšœÛÛ˜9mìºj£:+àykf9g*;ï"KŽKNLËB˜ž]\ûï#Ý\LÌ;ï"xà ¹fè9«i9¬¨y§"zaãyd+ùc¡¹cì¹æë¹oe{ï#9.gù¬¨y§"y¢¢¹.+y¥«z+ëù¢©y¢$9k£9¢$8à ‚‚¹¥¬9h§¹nm¹d+ùbª]Y]YWÛÛ™Z™]—Ù[Ú›Ú[Ü™\Ý[YWØY\—Ú[Ý]œX;ï&¹k ùëbyo¡yodùbcyc`y. 9§hBš[[Ý]ÝÛ™\ˆ9d£ÌŒš[˜[^™\ˆ:/æùaiyîâ9  {ï#9èkº+©ÔLËÍKÍ‹ÍÈ9¥è:+¨yë¥ú/æùê"ù.%9«ãùchz!ìùl$BŒÌˆÚPˆœ™YH9d#»ï#9.ãº+éHÝ\Ì9â­¹  y h¹i#yç'ùk§ˆSÕÔ“SÕÓÕ“SÕÛÝ\˜ÙK[X[šY™\Ý: e9d"º+«yîàûï#:/¤ùaî¹b,9¥¬9æ¡Ù]LËÝ\Ù\‹ÓØØ]SSÕXÚXÚÜÚ[ËÛÛ™Z™]—Ù[Ú›Ú[ÜÛÝ\˜ÙWÙ\ØÚWØY\—Ú[Ý]ÝŒX8à ‚¹c¡¹cì¹æë¹oey/çy£ ycêº+îú+ày£k»ï#:f'ùb%ùodùbcyi!9.£ˆÐRUS‘×ÒSÕUÕT“RSSÐS‘ÑVÓTÒU‘WÑÔWÔÑU8à ‚‚ˆÈÈŒ‹LLLŒˆ8 %“SÕ][HÙ™šXÚX[™XÙZ\[™˜\ÝSÈÕ“SÕ][˜Ú‚‘ÌˆÛX[ˆ“SÕ][HØ™XXÚY]ÈÛÛ\]HÎYœ˜[YHÛÛ˜XÝˆHÙ™šXÚX[œ™XÙZ\™\ÜÈÕHLŽŽMØ]HMÍMŒŒM\ÜÐHNMŒNNŒXQŒB˜MŒNÍØQÕÈL”ML“ˆNXÈH™XÙZ\[ÛÈ™XÛÜ™ÈHÙ™šXÚX[™[™]ËY[™[Z[™ËˆHš\œÝ]™HÛÛXÝ[ÛˆÛZ]Y\È˜[Y™\Ý[™XØ]\ÙHHÙ[™\šXÂœ[›™\ˆÝÜ™\ÈÛ™HÛÛ\]Y›ØÚÈ\™XÝH]ÝÛ™\ˆ]™[Ú[HHÛÛXÝÜˆÛ›H[™YHÛ\ˆØÛÜK[™\ÝYÚ\KˆHÛÛXÝÜˆ›ÝÈ›Ü›X[^™\È›ÝÚ\\ÎÈXØÙ\YØÛÜB˜ÛÝ[›ÜÙHœ›ÛHˆÈÈÚ]Ý]Ú[™Ú[™È[žH™\Ý[ÜˆØÛÜ™K‚‚”“SÕ][H™[X\ÙYÔMÈØ\XÚ]KˆHØZ][™ÈSÈÕ“SÕÛÛ›ÛÜ›ÜÜÙYHÌˆÚPˆØ]BŠØœÙ\™Y‹ÈZPˆœ™YJH[™Ý\YÛˆÔMÈÚ]›ØØX[\žHÚ[šÈÚ^™HNL‹Ú[HB›ÜšYÚ[˜[ÔMHM‹XÛ\ÜÈ[ˆ™[XZ[œÈ[ÝXÚYˆH™]ÈÙ[™K[ÝÛ™\ˆš[˜[^™\ˆ[™]™BœÛ˜\ÚÝ[˜ÛYH\È˜\ÝÕ“SÕÛÛ›ÛÈ]\ÈH›ÝYÚ]ÛÛ\\š\ÛÛ‹›ÝH™\XÙ[Y[™›ÜˆHÜšYÚ[˜[›ÝØÛÛ‚‚ˆÈÈŒ‹LLLŒˆ8 %Ì“SÕÚ[™ÛHÙ™šXÚX[™XÙZ\[™Ì][HÛÛ[X][Û‚‚‘ÌÝÛ™\ˆÌ—ØÛX[—Ú[™\[™[ÙÜL×ÝŒXÛÛ\]Y“SÕÚ[™ÛHØÚ]H[ŽYœ˜[YHÛÛ˜XÝ[™[[YYX][HY˜[˜ÙYÈH™YÚ\Ý\™YÌ“SÕ][HØÛÜKˆB›Ù™šXÚX[Ú[™ÛH™XÙZ\™\ÜÈÕHŒLÌLŒÌÎX]HŒÌÍNM\ÜÐB˜ŒÎÍLMŽXQŒHŒMÎL˜QÕÈ˜”LÍŒX“ˆØÈHÝÛ™\ˆ›ÝÈ\ÈÛÂ˜XØÙ\YÙ™šXÚX[ØÛÜ\È
+SÕŒ[™“SÕÚ[™ÛJH[™\È›Ý™Z[™È™\Ý\Y‚‚•H]™HÛÛXÝ[Ûˆ\™Y›Ü™HÛÛZ[œÈ›Ý\ˆXØÙ\YØÛÜ\ÎˆÌSÕŒÌ“SÕÚ[™ÛK‘Ìˆ[š[X[˜XÚË[™Ìˆ“SÕ][KˆHÔMÈÚ[šËLNLˆSÈÕ“SÕÝÛ™\ˆ\È[\™Y˜S‘‘T‘SÑXY\ˆH“SÕ][HÙ\šXÙH™[X\ÙYY[[ÜžNÈ]\È›ÈXØÙ\YY]šXÈY]‚‚ˆÈÈŒ‹LLLŒˆŽUÈ8 %\Ù\‹Y\™XÝY\˜[[[[Ý]]˜[X][Ûˆ™[XZ[œÈXÝ]™B‹HXÝ[ÛŽˆÙ\H\›Z]Y™\ÙX\˜ÚÙ]ÛˆÔ\ÈËÍKÍ‹ÍÈ[™ÛÛ[YY[™\[™[ÌÑÌKÑÌ‹ÑÌŒÓÕ“SÕØÛÜ\È[ˆ\˜[[ˆÔMH[™ÔMˆ[™XYH]™HXÝ]™HÌˆÙ\šXÙ\È\ÈÛXZ[‹ÓSÕ[œÎÈœ™YHY[[ÜžHØ\ÈX›Ý]HÚPˆ[™ŽŒHÚP‹™[ÝÈHÌˆÚPˆ™]Ë\Ù\™\ˆØ]KÛÈ›È[œØY™H^˜H[Ù[Ù\™\ˆØ\ÈYY‚‹HÝ\œ™[ØÛÜ\ÎˆÌ“SÕ[][HÛÛ[X][ÛŽÈÌˆSÕŒÛˆÔ\ÈKÍŽÈÌˆ[˜ÙU˜XÚÈ[™SÈÕ“SÕÛˆÔMNÈÌˆ[š[X[˜XÚÈÛÛ\]NÈÌH[˜ÙU˜XÚËÐ[š[X[˜XÚÎÈÌŒ[˜ÙU˜XÚÎÈ“SÕÚ[™ÛH[™˜\ÝSÈÕ“SÕÛˆÔMË‚‹HHÛÈ[™\[™[Ìˆ]Y]Y\È\™H[™XYHÛÛ™šYÝ\™YÈ›ØÙYYœ›ÛHSÕŒÈ“SÕÚ[™ÛK“SÕ][K[™[™\[™[SÈÕ“SÕ\Ú[™ÈHØ[YHÙ\šXÙHÛÛ˜XÝY\ˆXXÚØÛÜKˆ\È\ÈH›ÙÜ™\ÜÈ™XÛÜ™Û›NÈ›È[˜ÛÛ\]Hœ˜[YHÛÝ[\È™X]Y\ÈHY]šXË‚‚ˆÈÈŒ‹LLLŒˆL\ÚXKÔÚ[™ÚZH8 %ÌˆÛX[ˆSÈ˜\ÙKÓ›Ý™[šY[ÍŒÈYY[ˆ\˜[[‹HXÝ[ÛŽˆÔMÈYÎKÎMÈZPˆœ™YHÚ[HH˜\ÝSÈÛÛ›ÛØ\ÈXÝ]™KÛÈHÙXÛÛ™ŒÌÜ›Ý[™[ž][™ÈÌˆÛX[ˆÙ\šXÙHØ\ÈÝ\YÛˆÜH›ÜˆH™YÚ\Ý\™YSÈšY[ÍŒÈ˜\ÙKÓ›Ý™[X[šY™\Ý
+Ý›[ÝÝ[×Ø˜\ÙWÛ›Ý™[Œ×Ù[šœÛÛ˜[››Ý][Ûˆœ˜[Y\ËMŒ]˜[X][Û‹[Û›HÕ›Þ\ÊKˆH[ˆ\Ù\ÈHØ[YHÙ™šXÚX[\œÙ\‹˜XÚÚ[™×Ù[œÙHXÛÙ\‹Ú[\H\ÜÛØÚX]Ü‹˜]]™K[X™[ÛXÞH[™›ØØX[\žHÚ[šÈÚ^™HNL‹‚‹HH[[Ý]ÌŒš[˜[^™\‹˜\ÝSÕ“SÕš[˜[^™\‹[™Û™R™]ˆ™\Ý[YH]Y]YHÙ\™H™\Ý\YÚ]H™]ÈšY[ÍŒÈÝÛ™\ˆ[˜ÛYY[ˆZ\ˆ\›Z[˜[Ø]\Ëˆ^\Ý[™È[Ù[Ù]˜[X][Ûˆ›ØÙ\ÜÙ\ÈÙ\™HY[ÝXÚY‚‹HØÛÜH\ÈÝ[[›š[™ÎÈ›È\X[œ˜[YHÛÝ[\È›Û[ÝYÈHY]šXËˆ\ÈÛÜÙ\ÈHX\›Y\ˆØ\Ú\™HÛ›HSÈšY[ÌLHØ\ÈXÝ]™H›ÜˆHÝ\œ™[ÌˆÛX[ˆÕ“SÕÝÙY\‚‚ˆÈÈŒ‹LLLŒˆLMH\ÚXKÔÚ[™ÚZH8 %™XÙZ\\Ú[œšXÚY[‹HH[[Ý]ÛÛXÝÜˆ›ÝÈ™\ÛÛ™\È[™H\™XÝÜšY\ÈÈ[Ù[œØY™][œÛÜœØ™Y›Ü™H\Ú[™È[™™XÛÜ™È[Ù[ÛX[šY™\ÝÒKLMˆ\ˆXØÙ\YØÛÜKˆ\Èš^\ÈHš[Üˆ\™XÝÜžKZ\ÚÛZ\ÜÚ[ÛˆÚ]Ý]Ú[™Ú[™È[™™\™[˜ÙHÜˆØÛÜš[™Ë‚‚ˆÈÈŒ‹LLLŒˆLNŒ\ÚXKÔÚ[™ÚZH8 %ÌHY\][Ûˆ]šY[˜ÙH™YÚ\Ý\™Y[ˆ]™HÛ˜\ÚÝ‹HHÛÛ\]YÔMHÜ›Ý[™[ž][™ÈÌHY\][ÛˆÝÛ™\ˆ\È›ÝÈ[˜ÛYY[ˆH]™H]šY[˜ÙHÛ˜\ÚÝ[Û™ÜÚYH]È[[Ý][˜ÙU˜XÚËÐ[š[X[˜XÚÈ[™™\™[˜ÙHÝÛ™\œËˆ]È™XÙZ\™XÛÜ™ÈŒ˜]]™H˜XÚÚ[™ÌŒ˜Z[š[™ÈÝ\Ë^ÜY[™HÒKLMˆY™YÙŒYN™NXØ˜ŒLÙMY™NLXXMÍÎLÌ˜ÌN˜XŒÌXLX[™Lˆ\ÛÛ]YÛÛ›Û[š]ÈÝ™\ˆMˆ™YÚ\Ý\™Yœ˜[Y\ÎÈÜÙHÛÛ›ÛÈ\™H›Ý›Û[ÝY\È[Y]\Ù]\™›Ü›X[˜ÙK‚‚ˆÈÈŒ‹LLLŒˆLNŒH\ÚXKÔÚ[™ÚZH8 %[[Ý]Ø]HÛÜœ™XÝY›Üˆ›ÝSÈÛÛ›ÛÂ‹HHš[X\žHÌŒš[˜[^™\ˆ[™Û™R™]ˆ™\Ý[YHØ]H›ÝÈ™\]Z\™H›ÝSÈÕ“SÕÝÛ™\œÎˆHÜšYÚ[˜[Ú[šËNMˆšY[ÌLH[‹H˜\ÝÚ[šËLNLˆšY[ÌLHÛÛ›Û[™H™]ÛH][˜ÚY˜\ÙKÓ›Ý™[šY[ÍŒÈ[‹ˆ\È™]™[ÈH›Ú[™\Ý[YHœ›ÛHÝ\[™ÈÚ[HH\˜[[SÈÛÛ›Û™[XZ[œÈ[˜ÛÛ\]K‚‚ˆÈÈŒ‹LLLŒˆLNŒMH\ÚXKÔÚ[™ÚZH8 %Õ“SÕ\XØ]KXÛÛÜ™[˜]H›ÛÝØ]\ÙH[™™\Z\™Y™\[‚‹HXYÛ›ÜÚ\ÎˆSÈšY[ÌLHœ˜[YLÌH™]\›™YLÛÛ\]HZ\œÈ\ÈÛÈ^XÝ\XØ]HÛÛÜ™[˜]H\\Ë][ÛÈHX[›Ü›YYÛÛ˜Ø][˜]YX™[œ˜YÛY[ˆHÝšXÝ›ÝØÛÛ˜Z\ÙY\XØ]HÛÛÜ™[˜]H\\È\™H›ÝØ[›ÛšXØ[ÈH[›™YØÛÜš[™È\œÙ\ˆ[ˆ™XÛÝ™\™Y›ÈØY™HÛÛ\]HÙ\]Y[˜ÙKÛÈHÚÛHÚ[šÈ™XØ[YH[ˆ[\KÜ™Z™XÝYœ˜[YK‚‹H[™\[™[\œÙ\ˆÚXÚÈÛˆHØ]™Y˜]È™\ÜÛœÙH™XÛÝ™\™YLÛÛ\]HX™[Ø›ÞZ\œË™[[Ý™YÛ›Hˆ^XÝ\XØ]\Ë›ÜYœ˜YÛY[Ë[™š[YÜ™[Ü™\™Y›ÈÛÛÜ™[˜]\Ë‚‹HÚ[™ÙNˆ™]ÈÕ“SÕ[›ØØ][ÛœÈ›ÝÈ\ÙHÙ™šXÚX[ÜØÛÜš[™×Ü™\Z\™YÚXÚ™\Ù\™\ÈÝšXÝXYÛ›ÜÝXÜÈÚ[H™]Z[š[™ÈÛ›HÛÛ\]HØ[›ÛšXØ[Z\œËˆH[™š[š\ÚYÝšXÝSÈšY[ÍŒÈXYÛ›ÜÝXÈØ\È™\Ù\™Y[™X\šÙYÝ\\œÙYYÈHœ™\Ú™\Z\™YšY[ÍŒÈÝÛ™\ˆØ\È][˜ÚYÚ]HÙ\\˜]HÝ]]\™XÝÜžKˆ^\Ý[™ÈÝšXÝšY[ÌLH™[XZ[œÈHXYÛ›ÜÝXÈÛÛ›Û‚‚ˆÈÈŒ‹LLLŒˆ\ÚXKÔÚ[™ÚZH8 %ÑÓ[™È™\ÛÝ\˜ÙH™YXÝ[Û‚‹H™\ÛÝ\˜ÙHXÝ[ÛŽˆ™[X\ÙY™YHÝÛ™Y›ØÙ\ÜÈÜ›Ý\ÈÈ]›ÚYØØÝ\Z[™ÈÚ\™YÔHØ\XÚ]NˆHÝ\\œÙYYÝšXÝSÈšY[ÌLH[ˆÛˆÔMH
+Ì—Ü\˜[[ÛÝ›[ÝÙÜMWÝŒX
+KH\XØ]H[SÕŒ[ˆÛˆÔMˆ
+Ì—ØÛX[—Ú[™\[™[ÙÜM—ÝŒXØ[YH[œ]\ÈH™]Z[™YÔMH[ŠK[™HÜœ[™Y\ÝÜšXØ[Ù\šXÙHÛˆÜLHÚÜÙHØÚY[\ˆØ\È[™XYHY[˜Ý‚‹H\X[Ý]]ÈÙ\™H™\Ù\™YˆHÛÈ[\œ\YÝÛ™\œÈÙ\™HX\šÙYRSQÔ‘TÓÕTÑWÔ‘PÓRSQQÚ][Ý]ØÛZ[OY˜[ÙXÈ™Z]\ˆ\X[Ý]]\È\ÙY\ÈHY]šXË‚‹HHXÝ]™HÑÓ[™ÈØÚY[\ˆÛÝ[›ÜYœ›ÛHL]™HØÚY[\œÈ\ÈÛ™H›ÛXšYHÈ]™HØÚY[\œËˆ™[XZ[š[™ÈÙ\šXÙ\È\™HÌÌKÌ‹ÌŒ[™™\Z\™YSÈØÛÜ\ÎÈ›È™]ÈÙ\™\ˆÚ[™HYYÈÔMˆ[[H]Y]YYØÛÜH™YYÈ]‚‚ˆÈÈŒ‹LLLŒˆ\ÚXKÔÚ[™ÚZH8 %Ý[H˜]]™K]˜Z[š[™ÈØZ]\œÈ™]\™Y‹HÛÈ\ÝÜšXØ[Ú[ØZ]\œÈÙ\™HÝ[[]™NˆÛ™HØZ][™ÈÛˆH˜Z[Y˜]]™K]™YK]\ÚÈÝÛ™\ˆ[™Û™HØÚY[YÈ][˜Ú]Y]YWÙÜ›Ý[™™]—Û˜]]™WÝ™YWÝ\ÚËœXY\ˆÌ™XØ[YH\›Z[˜[ˆ^HÙ\™H›Ý\ÙˆHÝ\œ™[Û™R™]ˆ[Z›Ú[]Y]YH[™ÛÝ[]™HÛÛ\]Y›ÜˆÔH™\ÛÝ\˜Ù\ÈY\ˆH[[Ý]Ø]K‚‹H›Ý›ØÙ\ÜÈÜ›Ý\ÈÙ\™H\›Z[˜]YÚ]Ý]ÝXÚ[™ÈXÝ]™H[™™\™[˜ÙHÝÛ™\œËˆ^\Ý[™È˜]]™K]˜Z[š[™È˜Z[\™H™XÙZ\È™[XZ[ˆ[˜Ú[™ÙYÈH™XÛÝ™\˜X›H˜Z[š[™È[žH\È›ÝÈH^XÚ]]Y]YWÛÛ™Z™]—Ù[Ú›Ú[Ü™\Ý[YWØY\—Ú[Ý]œX]‚‚ˆÈÈŒ‹LLLŒˆ\ÚXKÔÚ[™ÚZH8 %Ì“SÕ][H™XÙZ\™XÛÝ™\™Y‹HHÌÝÛ™\ˆ›ÙXÙYHÛÛ\]HÙ™šXÚX[“SÕ][HØ™XÙZ\Ú][™YÚ\Ý\™Yœ˜[Y\ËˆY]šXÜÈ\™HÕHŒÌMŽMÌÌ]HŒÌLÍŽLMŽ\ÜÐHŒÌÌÌLÌÎQŒHŒÍÍŒŒÌLXQÕÈLŒØ”LL“ˆMÎX‚‹HH\X[[[Ý]ÛÛXÝ[ÛˆØ\ÈÙ[™\˜]Y]Ù]L‹Ý\Ù\‹ÓØØ]SSÕÑÜ›Ý[™‘U‹ÛÝ]]ËÙÜ›Ý[™™]‹Ú[Ý]ÙÜ›Ý[™™]—Ú[Ý]Ü\X[ØÛÛXÝ[Û—ÌŒŒLŒ‹šœÛÛ˜È]˜[Y]\È›Ý\ˆÛÛ\]HØÛÜ\È
+ÌSÕŒÌ“SÕÚ[™ÛKÌ“SÕ][KÌˆ[š[X[˜XÚÊKˆ[›š[™È[™™\ÛÝ\˜ÙK\™XÛZ[YYÝÛ™\œÈ™[XZ[ˆÝ]\È]šY[˜ÙHÛ›K‚‚ˆÈÈŒ‹LLLŒˆ\ÚXKÔÚ[™ÚZH8 %Ìˆ[˜ÙU˜XÚÈ[[Ý]™XÙZ\‹HÌˆÛX[ˆ[˜ÙU˜XÚÈ[˜Ù]˜XÚÌÝ˜[LŒØÛÛ\]Y[LŒÈœ˜[Y\ÈÚ]Ù™šXÚX[ÕHŒLŒÍŽLL]HLLŽMŽ\ÜÐHŒÍÎNNQŒHŒLŽNLLXQÕÈMÍ”ÌX“ˆM˜‚‹HH™Yœ™\ÚY\X[ÛÛXÝ[ÛˆÜ›Ý[™™]—Ú[Ý]Ü\X[ØÛÛXÝ[Û—ÌŒŒLŒ—ÝŒ‹šœÛÛ˜˜[Y]\Èš]™HÛÛ\]HØÛÜ\ÎˆÌSÕŒÌ“SÕÚ[™ÛKÛ][KÌˆ[˜ÙU˜XÚË[™Ìˆ[š[X[˜XÚËˆSËÌKÌŒ[™HÌSÈÛÛ›Û™[XZ[ˆ[™[™È[™\™H^ÛYYœ›ÛHHXØÙ\YÛÝ[‚‚ˆÈÈŒ‹LLLŒˆ\ÚXKÔÚ[™ÚZH8 %Ý\\œÙYYÝšXÝÌSÈÛÛ›ÛØY™[HÛÜÙY‹HHYØXÞHÌÝÛ™\ˆYY˜[˜ÙYÈÝ›[ÝÝ[ÌLXÚ]H™K\™\Z\ˆÝšXÝ\œÙ\ˆ[™›ØØX[\žHÚ[šÈÚ^™HM‹ˆ]ÈÌSÕŒÔ“SÕ™XÙZ\ÈÙ\™H[™XYHÛÛ\]KÚ[H\È^˜HÛÛ›ÛÛÝ[]™H[HÛ™R™]ˆ\›Z[˜[Ø]H›ÜˆÝ\œÈ[™Ø\È›ÝH™\Z\™YÕ“SÕ]šY[˜ÙK‚‹HÛ›HHÌSÈ[—ÝšY[ËœXÚ[Ø\È\›Z[˜]YˆHÝÛ™\ˆÜ›ÝHÌ—ÐÓPS—Ñ•SÒS‘TS‘S•ÒSÕUÑRSQÚ]HÛÛ[X[™˜Z[\™H[™™\Ù\™Y\X[Ý]]È^\Ý[™ÈÌSÕŒÔ“SÕ™XÙZ\È™[XZ[ˆXØÙ\YˆH™\Z\™YÌˆSÈšY[ÍŒËÝšY[ÌLHÝÛ™\œÈÙ\™HY[ÝXÚY‚‚ˆÈÈŒ‹LLLŒˆ\ÚXKÔÚ[™ÚZH8 %ÌH[š[X[˜XÚÈ[[Ý]™XÙZ\‹HHÔMˆÜ›Ý[™[ž][™ÈÌHY\\ˆÝÛ™\ˆÛÛ\]YH[™\[™[[š[X[˜XÚÈÚXÚÙ[—ÌH\ÝØÛÜHÚ][Ìˆœ˜[Y\ËˆÙ™šXÚX[Y]šXÜÎˆÕHŒLŒMNX]HMLMMLŽ\ÜÐHÍNÌMXQŒHNLŒÎLNM˜QÕÈMX”MŒÎX“ˆLÌ‚‹H\È\ÈH]XÝÜ‹XY\][Ûˆ[[Ý]™\Ý[[™\ˆHÌH[™H[™HØ[YH\œÙ\‹ÙXÛÙ\‹Ý˜XÚÙ\‹ÜØÛÜ™\ˆÛÛ˜XÝÈÌH[˜ÙU˜XÚÈ™[XZ[œÈ[™[™ËÛÈ›È][KYÛXZ[ˆYÙÜ™YØ]HÛZ[H\ÈXYK‚‚ˆÈÈŒ‹LLLŒˆ\ÚXKÔÚ[™ÚZH8 %Ø[YKQÔHÑÓ[™ÈØÚY[\œÈÙ\šX[^™Y‹H™\ÛÝ\˜ÙHÛ˜\ÚÝ›Ý[™š]™HXÝ]™HÜ›Ý[™[ž][™ÈØÚY[\œÎˆÌH[™ÌŒÛˆÔLËÌˆSÕŒÛˆÔMK[™™\Z\™YSÈšY[ÍŒËÝšY[ÌLHÛˆÔMËˆHÛÈZ\œÈÛˆÔLËÑÔMÈXXÚÛÛœÝ[YY›ÝYÚHN8 $ÌŒÚPˆ\ˆØÚY[\ˆ[™Y›È\ÙY[ÛÛ\]HXY›ÛÛHÛˆÔMË‚‹HÈ]›ÚYØØÝ\Z[™ÈÚ\™YØ\XÚ]KHÌŒ[™™\Z\™YSÈšY[ÌLHÚ[ØÛÜ\ÈÙ\™HÝÜYÛX[›HY\ˆ™\Ù\š[™ÈZ\ˆ\X[Ý]]ËˆZ\ˆÝÛ™\œÈÜ›ÝH^XÚ]Ì—ÔTSSÔÐÓÔWÑRSQ™XÙZ\ÈÚ]™]\›ˆÛÙHLMXÈÜÙH\X[ØÛÜ\È\™H›ÝY]šXÜË‚‹HYY]Y]YWÙÜ›Ý[™™]—ÜÙ\šX[ÜØÛÜKœXˆ]ØZ]È›ÜˆÌH[˜ÙU˜XÚÈÜˆ™\Z\™YSÈšY[ÍŒÈÈ™XXÚH\›Z[˜[Ý]H[™›Üˆ]X\ÝÌˆÚPˆœ™YHÛˆHØ[YHÔK[ˆ™\[œÈH^XÝÜšYÚ[˜[X[šY™\ÝÜ\œÙ\‹ÙXÛÙ\‹Ý˜XÚÙ\‹ÜØÛÜ™\ˆÛÛ˜XÝ[ˆœ™\ÚÝ]]\™XÝÜšY\ËˆHš[˜[^™\œËÛ™R™]ˆØ]KÛÛXÝÜˆY˜][È[™]™HÛ˜\ÚÝ[˜ÛYHHÙ\šX[ÝÛ™\ˆ]ËÛÈH›Ú[™\Ý[YHØ[››ÝÚÚ\[K‚‹HY\ˆ\ÈÚ[™ÙHHÝÛ™YØÚY[\ˆÛÝ[\È™YH
+Û™HXXÚÛˆÔLËÔMH[™ÔMÊNÈÔMˆ™[XZ[œÈ[ÝXÚYˆ›È˜Z[š[™ÈÚXÚÜÚ[Üˆ\ÝÜšXØ[™\Ý[Ø\ÈÝ™\Üš][‹‚
