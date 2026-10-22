@@ -1,8 +1,8 @@
 {
   "schema": "groundjev.active_goal.live.v1",
   "project_root": "/data2/user/LocateMOT",
-  "generated_at_utc": "2026-10-22T02:49:19.024752+00:00",
-  "git_commit": "daae4d883e6e6a1be01110a918642ccfdce6c799",
+  "generated_at_utc": "2026-10-22T02:50:30.202669+00:00",
+  "git_commit": "6f1c6c2259e203929da9e2a1c92add3c71e9b055",
   "owners": {
     "G0": {
       "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g2_clean_independent_gpu3_v1/owner_state.json",
@@ -157,16 +157,16 @@
   },
   "frame_progress_rows": {
     "G0_RMOT": 800,
-    "G2_MOT_GPU5": 720,
-    "G2_MOT_GPU6": 415,
-    "G2_DANCE": 987,
+    "G2_MOT_GPU5": 721,
+    "G2_MOT_GPU6": 416,
+    "G2_DANCE": 1001,
     "G2_ANIMAL": 306,
     "G2_TAO": 6,
     "G2_TAO_FAST": 2,
     "G2_TAO63": 0,
-    "G1_DANCE": 595,
-    "G1_ANIMAL": 157,
-    "G200_DANCE": 285,
+    "G1_DANCE": 610,
+    "G1_ANIMAL": 163,
+    "G200_DANCE": 302,
     "RMOT_SINGLE": 800,
     "RMOT_MULTI": 800
   },
@@ -2489,8 +2489,8 @@
     },
     {
       "index": 1,
-      "memory_used_MiB": 49058,
-      "memory_free_MiB": 32096,
+      "memory_used_MiB": 44722,
+      "memory_free_MiB": 36432,
       "utilization_percent": 100
     },
     {
@@ -2501,14 +2501,14 @@
     },
     {
       "index": 3,
-      "memory_used_MiB": 59346,
-      "memory_free_MiB": 21808,
+      "memory_used_MiB": 55058,
+      "memory_free_MiB": 26096,
       "utilization_percent": 100
     },
     {
       "index": 4,
-      "memory_used_MiB": 54178,
-      "memory_free_MiB": 26976,
+      "memory_used_MiB": 49892,
+      "memory_free_MiB": 31262,
       "utilization_percent": 100
     },
     {
@@ -2519,8 +2519,8 @@
     },
     {
       "index": 6,
-      "memory_used_MiB": 57993,
-      "memory_free_MiB": 23161,
+      "memory_used_MiB": 53707,
+      "memory_free_MiB": 27447,
       "utilization_percent": 100
     },
     {
@@ -2537,7 +2537,7 @@
     "state": {
       "status": "WAITING_HELDOUT_TERMINAL_AND_EXCLUSIVE_GPU_SET",
       "current_stage": "WAITING_HELDOUT_TERMINAL_AND_EXCLUSIVE_GPU_SET",
-      "owner_pid": 304942,
+      "owner_pid": 310189,
       "project_root": "/data2/user/LocateMOT",
       "runtime_root": "/data2/user/LocateMOT_GroundJEV",
       "heldout_finalizer": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/groundjev_heldout_g200_finalization_receipt.json",
