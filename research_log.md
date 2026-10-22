@@ -3578,3 +3578,19 @@ GPU5 空闲 62,919/81,920 MiB、GPU6 空闲 46,551/81,920 MiB，均高于域验�
 service PID 110861）和 `RUNNING_G2_CLEAN_V2_animaltrack_chicken1_test306`
 （GPU6，service PID 110862），`failed=null`。这只证明并行推理已开始，不把中间帧
 或服务日志当成正式指标；待完整逐帧推理与官方 scorer receipt 结束后再收录结果。
+
+## 2026-10-22 — GPU7 native three-task expansion
+
+GPU7 一次性资源探测为 79,599/81,920 MiB free，只有约 1.5 GiB 外部计算占用。
+原先仍停在 `WAITING_G2_CLEAN_BUNDLE_AND_GPU7` 的旧 held-out 等待 owner 没有启动
+服务；已先保存为 `owner_state_pre_gpu7_native_expansion.json`，再将其安全暂停，
+避免它在 GPU7 上与新实验竞争。随后启动独立的单卡真实 GroundJEV 三任务扩展
+`groundjev_native_three_task_expansion_gpu7_v2`：使用最终 G2 adapter step 18227、
+同一 native MOT/RMOT/OVMOT manifest（SHA256
+`cc632115aa2b87161dc7b8413d08c3c471e1225179559a76509e7366190764c1`），每任务采样
+72 行、1200 个 optimizer steps、16 框竞争窗口、单一冻结 G2 主干。第一次尝试在
+启动 `run_with_resources.py` 时因脚本缺少 executable bit 立即失败（optimizer_updates=0，
+未生成 checkpoint）；已按首个可操作原因改为显式 Python 调用并以全新 v2 输出目录
+恢复。v2 owner 已进入 `GPU7_NATIVE_THREE_TASK_EXPANSION_RUNNING/ TRAINING`，不改动
+GPU3/5/6 的独立 held-out 输出；完成后只接受包含 MOT、RMOT、OVMOT 三类更新和
+完整 receipt 的 checkpoint。
