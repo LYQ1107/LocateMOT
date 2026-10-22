@@ -4499,3 +4499,15 @@ RMOT multi released GPU7 capacity. The waiting TAO OVMOT control crossed the 32 
 original GPU5 96-class run remains untouched. A new twelve-owner finalizer and live
 snapshot include this fast OVMOT control; it is a throughput comparison, not a replacement
 for the original protocol.
+
+## 2026-10-22 — G0 RMOT single official receipt and G0 multi continuation
+
+G0 owner `g2_clean_independent_gpu3_v1` completed RMOT single `0007` with the full
+800-frame contract and immediately advanced to the registered G0 RMOT multi scope. The
+official single receipt reports HOTA `0.0531207079`, DetA `0.0073404994`, AssA
+`0.3847650569`, IDF1 `0.0143884892`, IDSW `2`, FP `1361`, FN `7`; the owner now has two
+accepted official scopes (MOT20 and RMOT single) and is not being restarted.
+
+The live collection therefore contains four accepted scopes: G0 MOT20, G0 RMOT single,
+G2 AnimalTrack, and G2 RMOT multi. The GPU7 chunk-192 TAO OVMOT owner has entered
+`INFERENCE` after the RMOT multi service released memory; it has no accepted metric yet.
