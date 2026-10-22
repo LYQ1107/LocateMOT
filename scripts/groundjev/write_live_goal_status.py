@@ -12,6 +12,7 @@ from datetime import datetime, timezone
 ROOT = Path("/data2/user/LocateMOT")
 RUNTIME = Path("/data2/user/LocateMOT_GroundJEV")
 OUT = ROOT / "docs/GROUNDJEV/ACTIVE_GOAL_LIVE_20261022.json"
+JOINT_RESUME = RUNTIME / "outputs/groundjev/training/full_joint_source_epoch1_resume_after_heldout_v1/owner_state.json"
 
 OWNERS = {
     "G0": RUNTIME / "outputs/groundjev/heldout/g2_clean_independent_gpu3_v1/owner_state.json",
@@ -94,6 +95,7 @@ def main() -> int:
         "gpu_snapshot": gpu_snapshot(),
         "joint_checkpoint": str(Path("/data3/user/LocateMOT-checkpoints/groundjev_native_three_task_expansion_gpu7_v3/groundjev-native-three-task-step001200.pt")),
         "joint_receipt": str(Path("/data3/user/LocateMOT-checkpoints/groundjev_native_three_task_expansion_gpu7_v3/receipt.json")),
+        "onejev_full_joint_resume": {"path": str(JOINT_RESUME), "state": read(JOINT_RESUME)},
         "claim_boundary": "Only complete official_metrics receipts are metrics; frame counts and running states are progress evidence.",
     }
     OUT.parent.mkdir(parents=True, exist_ok=True)

@@ -1,8 +1,8 @@
 {
   "schema": "groundjev.active_goal.live.v1",
   "project_root": "/data2/user/LocateMOT",
-  "generated_at_utc": "2026-10-22T02:30:10.079618+00:00",
-  "git_commit": "12226bcd4984b3543fe2b72b558770588fb3aef7",
+  "generated_at_utc": "2026-10-22T02:32:11.927806+00:00",
+  "git_commit": "62af2a06f93e49634b764ed38a846f719155e6be",
   "owners": {
     "G0": {
       "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g2_clean_independent_gpu3_v1/owner_state.json",
@@ -106,17 +106,17 @@
     }
   },
   "frame_progress_rows": {
-    "G0_RMOT": 554,
-    "G2_MOT_GPU5": 698,
-    "G2_MOT_GPU6": 400,
-    "G2_DANCE": 766,
+    "G0_RMOT": 609,
+    "G2_MOT_GPU5": 701,
+    "G2_MOT_GPU6": 402,
+    "G2_DANCE": 789,
     "G2_ANIMAL": 306,
-    "G2_TAO": 3,
-    "G1_DANCE": 339,
-    "G1_ANIMAL": 46,
-    "G200_DANCE": 41,
-    "RMOT_SINGLE": 444,
-    "RMOT_MULTI": 584
+    "G2_TAO": 4,
+    "G1_DANCE": 366,
+    "G1_ANIMAL": 58,
+    "G200_DANCE": 67,
+    "RMOT_SINGLE": 489,
+    "RMOT_MULTI": 646
   },
   "official_metrics": {
     "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g2_domain_animaltrack_gpu6_v1/G2_CLEAN_V2/animaltrack_chicken1_test306/official_metrics.json": {
@@ -2243,5 +2243,29 @@
   ],
   "joint_checkpoint": "/data3/user/LocateMOT-checkpoints/groundjev_native_three_task_expansion_gpu7_v3/groundjev-native-three-task-step001200.pt",
   "joint_receipt": "/data3/user/LocateMOT-checkpoints/groundjev_native_three_task_expansion_gpu7_v3/receipt.json",
+  "onejev_full_joint_resume": {
+    "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/full_joint_source_epoch1_resume_after_heldout_v1/owner_state.json",
+    "state": {
+      "status": "WAITING_HELDOUT_TERMINAL_AND_EXCLUSIVE_GPU_SET",
+      "current_stage": "WAITING_HELDOUT_TERMINAL_AND_EXCLUSIVE_GPU_SET",
+      "owner_pid": 262985,
+      "project_root": "/data2/user/LocateMOT",
+      "runtime_root": "/data2/user/LocateMOT_GroundJEV",
+      "heldout_finalizer": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/groundjev_heldout_g200_finalization_receipt.json",
+      "physical_gpus": [
+        3,
+        5,
+        6,
+        7
+      ],
+      "historical_training_root": "/data3/user/LocateMOT-checkpoints/onejev_full_joint_source_epoch1_v1",
+      "resume_state": "/data3/user/LocateMOT-checkpoints/onejev_full_joint_source_epoch1_v1/latest_training_state.pt",
+      "resume_step": 3000,
+      "expected_total_steps": 28690,
+      "new_training_root": "/data3/user/LocateMOT-checkpoints/onejev_full_joint_source_epoch1_after_heldout_v1",
+      "other_active_jobs_untouched": true,
+      "failed": null
+    }
+  },
   "claim_boundary": "Only complete official_metrics receipts are metrics; frame counts and running states are progress evidence."
 }

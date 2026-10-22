@@ -4470,3 +4470,16 @@ GPU5 的 G2 TAO OVMOT owner 仍在正常运行；独立 manifest 的 40 帧是
 按既定 strict wire contract 拒绝整帧并保留原始输出；没有把拒绝结果猜测为合法框。
 GPU7 的 192-class chunk 独立队列继续等待安全显存窗口，用于比较词表分块吞吐，不能
 覆盖当前 96-class 证据。
+
+## 2026-10-22 — resumable OneJev three-task continuation registered
+
+当前进程表没有 `run_source_manifest_sft.py`、MOT-only 或旧 J1 optimizer；历史
+`onejev_full_joint_source_epoch1_v1` 在非终态 step 3500 附近退出，但 step3000 的
+完整 FP32/Adam/RNG 状态和 `latest_training_state.json` 已验证存在（9,029,193,825
+bytes，step=3000）。因此没有重启历史目录，也没有把中断误报成完成。
+
+新增并启动 `queue_onejev_full_joint_resume_after_heldout.py`：它等待当前十一条
+held-out owner 和 G200 finalizer 进入终态，确认 GPU3/5/6/7 无计算进程且每卡至少
+32 GiB free 后，从该 step3000 状态恢复真实 MOT/RMOT/OVMOT source-manifest 联合
+训练，输出到新的 `/data3/user/LocateMOT-checkpoints/onejev_full_joint_source_epoch1_after_heldout_v1`。
+历史目录保持只读证据，队列当前处于 `WAITING_HELDOUT_TERMINAL_AND_EXCLUSIVE_GPU_SET`。
