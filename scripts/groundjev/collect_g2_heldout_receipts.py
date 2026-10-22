@@ -1,0 +1,100 @@
+#!/usr/bin/env python3
+"""Collect complete G2/G0 held-out receipts without promoting partial runs."""
+
+from __future__ import annotations
+
+import argparse
+import hashlib
+import json
+from pathlib import Path
+from typing import Any
+
+
+RUNTIME_ROOT = Path("/data2/user/LocateMOT_GroundJEV")
+DEFAULT_OWNERS = (
+    RUNTIME_ROOT / "outputs/groundjev/heldout/g2_clean_independent_gpu3_v1/owner_state.json",
+    RUNTIME_ROOT / "outputs/groundjev/heldout/g2_clean_independent_gpu5_v1/owner_state.json",
+    RUNTIME_ROOT / "outputs/groundjev/heldout/g2_clean_independent_gpu6_v1/owner_state.json",
+    RUNTIME_ROOT / "outputs/groundjev/heldout/g2_domain_dancetrack_gpu5_v1/owner_state.json",
+    RUNTIME_ROOT / "outputs/groundjev/heldout/g2_domain_animaltrack_gpu6_v1/owner_state.json",
+)
+G2_BUNDLE = RUNTIME_ROOT / "models/GroundAnything-DLM-G2-CLEAN-V2/model.safetensors"
+G2_MANIFEST = Path(
+    "/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/"
+    "g2_clean_train_manifest.json"
+)
+
+
+def read_json(path: Path) -> dict[str, Any] | None:
+    try:
+        return json.loads(path.read_text())
+    except (FileNotFoundError, json.JSONDecodeError, OSError):
+        return None
+
+
+def sha256(path: Path) -> str | None:
+    if not path.is_file():
+        return None
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(1 << 20), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def collect(path: Path) -> dict[str, Any]:
+    state = read_json(path)
+    if state is None:
+        return {"owner_state": str(path), "status": "MISSING", "accepted": {}}
+    accepted: dict[str, Any] = {}
+    for name, item in (state.get("completed") or {}).items():
+        if name == "g2_dependency" or not isinstance(item, dict):
+            continue
+        metrics = item.get("official_metrics")
+        result = item.get("result")
+        frames = item.get("frames")
+        if isinstance(metrics, dict) and isinstance(result, dict) and isinstance(frames, int):
+            accepted[name] = {
+                "task": item.get("task"),
+                "model": item.get("model"),
+                "manifest": item.get("manifest"),
+                "frames": frames,
+                "official_metrics": metrics,
+                "result_status": result.get("status"),
+            }
+    return {
+        "owner_state": str(path),
+        "status": state.get("status"),
+        "current_scope": state.get("current_scope", state.get("scope")),
+        "physical_gpu": state.get("physical_gpu"),
+        "failed": state.get("failed"),
+        "accepted": accepted,
+        "claim_boundary": "Only accepted entries have complete official receipts; partial or failed entries are status evidence only.",
+    }
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--out", type=Path, required=True)
+    parser.add_argument("--owner", type=Path, action="append", default=[])
+    args = parser.parse_args()
+    owners = args.owner or list(DEFAULT_OWNERS)
+    report = {
+        "schema": "groundjev.g2.heldout.receipt_collection.v1",
+        "project_root": "/data2/user/LocateMOT",
+        "g2_bundle": str(G2_BUNDLE),
+        "g2_bundle_sha256": sha256(G2_BUNDLE),
+        "g2_train_manifest": str(G2_MANIFEST),
+        "g2_train_manifest_sha256": sha256(G2_MANIFEST),
+        "owners": [collect(path) for path in owners],
+    }
+    report["accepted_scope_count"] = sum(len(owner["accepted"]) for owner in report["owners"])
+    args.out.parent.mkdir(parents=True, exist_ok=True)
+    args.out.write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n")
+    print(json.dumps({"out": str(args.out), "accepted_scope_count": report["accepted_scope_count"],
+                      "owner_count": len(report["owners"])}, ensure_ascii=False))
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
