@@ -1,8 +1,8 @@
 {
   "schema": "groundjev.active_goal.live.v1",
   "project_root": "/data2/user/LocateMOT",
-  "generated_at_utc": "2026-10-22T02:41:26.215807+00:00",
-  "git_commit": "1c95259d00486250a2ac53524b525a905d7b20c8",
+  "generated_at_utc": "2026-10-22T02:42:43.250823+00:00",
+  "git_commit": "c6e3867f49b2029627c4799cfcf33c8fcbadae15",
   "owners": {
     "G0": {
       "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g2_clean_independent_gpu3_v1/owner_state.json",
@@ -122,16 +122,16 @@
   },
   "frame_progress_rows": {
     "G0_RMOT": 800,
-    "G2_MOT_GPU5": 711,
+    "G2_MOT_GPU5": 712,
     "G2_MOT_GPU6": 410,
-    "G2_DANCE": 894,
+    "G2_DANCE": 908,
     "G2_ANIMAL": 306,
     "G2_TAO": 5,
-    "G2_TAO_FAST": 0,
-    "G1_DANCE": 488,
-    "G1_ANIMAL": 112,
-    "G200_DANCE": 185,
-    "RMOT_SINGLE": 704,
+    "G2_TAO_FAST": 1,
+    "G1_DANCE": 505,
+    "G1_ANIMAL": 119,
+    "G200_DANCE": 201,
+    "RMOT_SINGLE": 731,
     "RMOT_MULTI": 800
   },
   "official_metrics": {
