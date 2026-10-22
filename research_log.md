@@ -3627,3 +3627,10 @@ optimizer。单帧 GPU7 forward/backward 回归通过，证明 checkpoint、adap
 写入 656/375 帧，DanceTrack/AnimalTrack 域扩展分别写入 368/147 帧；五个 held-out
 owner 仍为 `failed=null`，GPU7 v3 仍在 TRAINING，尚未生成最终官方指标或三任务
 扩展 receipt。
+
+## 2026-10-22 — Held-out owners continue after stable-mask repair
+
+从各 `frame_decisions.jsonl` 文件尾部读取的最新已提交帧号为：G0 MOT20-05
+`3296`，G2 GPU5 `2317`，G2 GPU6 `2034`，DanceTrack `390`，AnimalTrack `156`。
+五个 owner 仍为运行态且 `failed=null`；这些是逐帧进度和吞吐证据，尚未升级为
+HOTA/IDF1 或其它正式指标。
