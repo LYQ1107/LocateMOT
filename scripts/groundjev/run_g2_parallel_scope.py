@@ -87,6 +87,7 @@ def main() -> int:
     parser.add_argument("--label", required=True)
     parser.add_argument("--model", type=Path, default=G2_BUNDLE)
     parser.add_argument("--model-label", default="G2_CLEAN_V2")
+    parser.add_argument("--ovmot-chunk-size", type=int, default=96)
     args = parser.parse_args()
 
     owner_path = args.out / "owner_state.json"
@@ -166,7 +167,9 @@ def main() -> int:
             "--perception-failure-policy", "empty_and_record", "--out", str(output),
         ]
         if args.task == "ovmot":
-            command += ["--grounding-vocabulary-chunk-size", "96", "--category-policy", "native_label"]
+            if args.ovmot_chunk_size <= 0:
+                raise ValueError("--ovmot-chunk-size must be positive")
+            command += ["--grounding-vocabulary-chunk-size", str(args.ovmot_chunk_size), "--category-policy", "native_label"]
         state.update(status=f"RUNNING_{args.model_label}_{args.label}", current_stage="INFERENCE", current_scope=args.label)
         save(owner_path, state)
         run_logged(command, RUNTIME_ROOT, env, args.out / "G2_CLEAN_V2_inference.log")

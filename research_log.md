@@ -4405,3 +4405,9 @@ held-out 收口，原有五路/七路 finalizer 产物仍保留。
 门检测到仅剩 29,109 MiB free，低于 32,768 MiB 门槛；该尝试在服务启动前安全
 失败，未影响两路 RMOT。TAO OVMOT 仍由 GPU5 的独立 owner 运行，不把资源拒绝当作
 评测结果。
+
+为缩短 TAO OVMOT 的词表请求开销，新增 `queue_g2_ovmot_after_gpu7.py`：它在当前
+两路 RMOT owner 释放至少 32,768 MiB 后自动启动独立 GPU7 OVMOT owner，保持相同
+G2/parser/decoder/scorer 合同，仅把已登记的 vocabulary chunk 从 96 调到 192；
+当前队列已确认处于 `WAITING_GPU7_FAST_OVMOT_MEMORY`（GPU7 free 29,109 MiB），不
+抢占 RMOT，也不覆盖 GPU5 的 96-class OVMOT 证据。
