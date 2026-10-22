@@ -3572,3 +3572,9 @@ GPU5 空闲 62,919/81,920 MiB、GPU6 空闲 46,551/81,920 MiB，均高于域验�
 （GPU5）及 AnimalTrack `chicken_1`（GPU6）。两路 owner 已进入
 `WAITING_G2_CLEAN_V2_SERVICE_GPU5/6` 的服务启动阶段，当前 MOT20 输出仍受保护；
 最终只采纳完整 inference、scorer、frame-contract 和 official-metrics receipt。
+
+启动后回归核验：两路 `serve_groundanything.py` 均已存活并出现真实 `[PREFILL]`
+请求，owner 已分别进入 `RUNNING_G2_CLEAN_V2_dancetrack0004_val1203`（GPU5，
+service PID 110861）和 `RUNNING_G2_CLEAN_V2_animaltrack_chicken1_test306`
+（GPU6，service PID 110862），`failed=null`。这只证明并行推理已开始，不把中间帧
+或服务日志当成正式指标；待完整逐帧推理与官方 scorer receipt 结束后再收录结果。
