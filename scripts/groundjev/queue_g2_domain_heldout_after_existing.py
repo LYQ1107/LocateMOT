@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
-"""Run one additional legal G2 Clean domain scope after a current owner ends.
+"""Run one additional legal G2 Clean domain scope.
 
 The two instances are launched independently: GPU5 receives DanceTrack
-validation and GPU6 receives AnimalTrack test.  Each instance waits internally
-for its existing G2 held-out owner to reach a terminal state, then performs a
-fresh service/inference/scoring run with separate receipts.
+validation and GPU6 receives AnimalTrack test.  By default each instance waits
+for its existing G2 held-out owner to reach a terminal state.  ``--start-now``
+allows a co-resident run when the assigned GPU still has enough free memory;
+the existing MOT20 owner remains untouched and the new run uses its own port
+and receipts.
 """
 
 from __future__ import annotations
@@ -116,6 +118,11 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--gpu", type=int, choices=tuple(ASSIGNMENTS), required=True)
     parser.add_argument("--poll-seconds", type=int, default=60)
+    parser.add_argument(
+        "--start-now",
+        action="store_true",
+        help="start immediately beside the current held-out owner when memory permits",
+    )
     args = parser.parse_args()
     assignment = ASSIGNMENTS[args.gpu]
     out = Path(assignment["out"])
@@ -124,15 +131,24 @@ def main() -> int:
         old = read_json(owner_path)
         if old and str(old.get("status", "")).endswith(("COMPLETE", "FAILED")):
             raise FileExistsError(f"terminal domain owner already exists: {owner_path}")
-        raise FileExistsError(f"refusing to overwrite domain owner output: {out}")
+        if args.start_now and old and str(old.get("status", "")).startswith("WAITING_EXISTING_GPU") and not old.get("service_pid"):
+            unexpected = [p.name for p in out.iterdir() if p.name != "owner_state.json"]
+            if unexpected:
+                raise FileExistsError(f"refusing to resume owner with unexpected output files: {unexpected}")
+        else:
+            raise FileExistsError(f"refusing to overwrite domain owner output: {out}")
     manifest = read_json(Path(assignment["manifest"]))
     if manifest is None or manifest.get("training_on_this_scope") is not False:
         raise RuntimeError(f"invalid independent manifest: {assignment['manifest']}")
     if not (G2_BUNDLE / "model.safetensors").is_file():
         raise FileNotFoundError(G2_BUNDLE / "model.safetensors")
+    initial_stage = (
+        f"PARALLEL_START_NOW_GPU{args.gpu}"
+        if args.start_now else f"WAITING_EXISTING_GPU{args.gpu}_HELDOUT_TERMINAL"
+    )
     state = {
-        "status": f"WAITING_EXISTING_GPU{args.gpu}_HELDOUT_TERMINAL",
-        "current_stage": f"WAITING_EXISTING_GPU{args.gpu}_HELDOUT_TERMINAL",
+        "status": initial_stage,
+        "current_stage": initial_stage,
         "owner_pid": os.getpid(),
         "physical_gpu": args.gpu,
         "scope": assignment["name"],
@@ -146,16 +162,25 @@ def main() -> int:
     save(owner_path, state)
     service = None
     try:
-        while True:
-            current = read_json(CURRENT_OWNERS[args.gpu])
-            current_status = str(current.get("status", "")) if current else "MISSING"
-            if current_status.endswith(("COMPLETE", "FAILED")):
-                state["completed"]["dependency_owner"] = {
-                    "status": current_status,
-                    "state_path": str(CURRENT_OWNERS[args.gpu]),
-                }
-                break
-            time.sleep(args.poll_seconds)
+        current = read_json(CURRENT_OWNERS[args.gpu])
+        current_status = str(current.get("status", "")) if current else "MISSING"
+        if args.start_now:
+            state["completed"]["dependency_owner"] = {
+                "status": current_status,
+                "state_path": str(CURRENT_OWNERS[args.gpu]),
+                "parallel_started": True,
+            }
+        else:
+            while True:
+                current = read_json(CURRENT_OWNERS[args.gpu])
+                current_status = str(current.get("status", "")) if current else "MISSING"
+                if current_status.endswith(("COMPLETE", "FAILED")):
+                    state["completed"]["dependency_owner"] = {
+                        "status": current_status,
+                        "state_path": str(CURRENT_OWNERS[args.gpu]),
+                    }
+                    break
+                time.sleep(args.poll_seconds)
         while True:
             try:
                 free, resource = gpu_ready(args.gpu)
