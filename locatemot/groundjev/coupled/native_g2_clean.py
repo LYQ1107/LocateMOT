@@ -37,6 +37,11 @@ class NativeG2CleanDLMProvider:
         if self.device.type != "cuda" or not torch.cuda.is_available():
             raise RuntimeError("NativeG2CleanDLMProvider requires CUDA")
         os.environ.setdefault("GAM_DLM_FLEX_CUDAGRAPHS", "0")
+        # The native coupling path uses variable-length multimodal streams.
+        # Transformers 2.9/Inductor can emit an invalid-address kernel while
+        # compiling the dynamic block mask; the upstream model provides this
+        # deterministic CPU tile-index fallback for that case.
+        os.environ.setdefault("GAM_DLM_STABLE_BLOCK_MASK", "1")
         os.environ.setdefault(
             "LOCATEMOT_GROUNDANYTHING_ROOT",
             str(self.runtime_root / "external/GroundAnything"),
