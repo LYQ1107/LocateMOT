@@ -1,8 +1,8 @@
 {
   "schema": "groundjev.active_goal.live.v1",
   "project_root": "/data2/user/LocateMOT",
-  "generated_at_utc": "2026-10-22T05:20:05.543596+00:00",
-  "git_commit": "b9459ace9b9573f3789634a809407c5fdea6c3ab",
+  "generated_at_utc": "2026-10-22T07:06:39.470660+00:00",
+  "git_commit": "c93146d9e8a35dc1d517d3220a199d7989304279",
   "owners": {
     "G0": {
       "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g2_clean_independent_gpu3_v1/owner_state.json",
@@ -218,10 +218,16 @@
     },
     "G2_TAO105_SERIAL_V2": {
       "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g2_parallel_ovmot_gpu7_video105_serial_v2/owner_state.json",
-      "status": "G2_PARALLEL_SCOPE_SERVICE_STARTING",
-      "current_stage": "SERVICE_STARTING",
+      "status": "G2_PARALLEL_SCOPE_COMPLETE",
+      "current_stage": "COMPLETE",
       "failed": null,
-      "completed": [],
+      "completed": [
+        "frames",
+        "result",
+        "official_metrics",
+        "inference_command",
+        "scorer_command"
+      ],
       "physical_gpu": 7
     },
     "RMOT_SINGLE": {
@@ -255,7 +261,7 @@
   },
   "frame_progress_rows": {
     "G0_RMOT": 800,
-    "G2_MOT_GPU5": 1092,
+    "G2_MOT_GPU5": 1260,
     "G2_MOT_GPU6": 420,
     "G2_DANCE": 1203,
     "G2_ANIMAL": 306,
@@ -270,7 +276,7 @@
     "G200_DANCE_SERIAL": 0,
     "G200_DANCE_SERIAL_V2": 1203,
     "G2_TAO105_SERIAL": 0,
-    "G2_TAO105_SERIAL_V2": 0,
+    "G2_TAO105_SERIAL_V2": 40,
     "RMOT_SINGLE": 800,
     "RMOT_MULTI": 800
   },
@@ -1586,6 +1592,129 @@
       "rejected_frames_in_official_denominator": true,
       "end_to_end_fps": 0.3338274286047331,
       "association_replay_fps": null
+    },
+    "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g2_parallel_ovmot_gpu7_video105_serial_v2/G2_CLEAN_V2/tao_video105_independent40_repaired/official_metrics.json": {
+      "status": "OFFICIAL_REGISTERED_MULTITASK_SCOPE_EVALUATION_COMPLETE",
+      "task": "ovmot",
+      "dataset": "tao_amodal",
+      "sequence": "val/HACS/Making_a_sandwich_v_6RjriKVIkR4_scene_0_0-4638",
+      "scope": "independent_full_validation_video_annotation_frames",
+      "frames": 40,
+      "all_registered_frames_included": true,
+      "GT_access": "evaluation only",
+      "official_test_labels_read": false,
+      "end_to_end_fps": 0.006335555364792386,
+      "association_replay_fps": null,
+      "perception_rejected_frames": [
+        1,
+        31,
+        61,
+        91,
+        121,
+        151,
+        181,
+        211,
+        241,
+        271,
+        301,
+        331,
+        361,
+        391,
+        421,
+        451,
+        481,
+        511,
+        541,
+        571,
+        601,
+        631,
+        661,
+        691,
+        721,
+        751,
+        781,
+        811,
+        841,
+        871,
+        901,
+        931,
+        961,
+        991,
+        1021,
+        1051,
+        1081,
+        1111,
+        1141,
+        1171
+      ],
+      "evaluator": "unmodified official TETA OVMOT recipe; non-exhaustive TAO",
+      "evaluator_commit": "b498aa87b252bfb75d7cc0d8d6435c3e1e74e4de",
+      "metrics": {
+        "TETA": 0.0,
+        "LocA": 0.0,
+        "AssocA": 0.0,
+        "ClsA": 0.0,
+        "LocRe": 0.0,
+        "LocPr": 0.0,
+        "AssocRe": 0.0,
+        "AssocPr": 0.0,
+        "ClsRe": 0.0,
+        "ClsPr": 0.0
+      },
+      "base_novel": {
+        "base": {
+          "TETA": 0.0,
+          "LocA": 0.0,
+          "AssocA": 0.0,
+          "ClsA": 0.0,
+          "LocRe": 0.0,
+          "LocPr": 0.0,
+          "AssocRe": 0.0,
+          "AssocPr": 0.0,
+          "ClsRe": 0.0,
+          "ClsPr": 0.0
+        },
+        "novel": {
+          "TETA": 0.0,
+          "LocA": 0.0,
+          "AssocA": 0.0,
+          "ClsA": 0.0,
+          "LocRe": 0.0,
+          "LocPr": 0.0,
+          "AssocRe": 0.0,
+          "AssocPr": 0.0,
+          "ClsRe": 0.0,
+          "ClsPr": 0.0
+        }
+      },
+      "metric_scale": "official TETA summary percent",
+      "evaluated_categories": [
+        {
+          "name": "bowl",
+          "group": "base"
+        },
+        {
+          "name": "bun",
+          "group": "base"
+        },
+        {
+          "name": "baby",
+          "group": "base"
+        },
+        {
+          "name": "shaker",
+          "group": "novel"
+        }
+      ],
+      "GT_boxes": 225,
+      "predictions": 0,
+      "unmapped_predicted_labels": [],
+      "unmapped_policy": "retain boxes with unknown category -1; never discard predictions or GT",
+      "prediction_score": "constant unscored sentinel 1; no detector confidence and no score-based truncation",
+      "GT_policy": "all original modal xywh boxes; no clipping, visibility, or category exclusions",
+      "novel_evaluation_GT_used_for_training": false,
+      "official_complete_dataset_result": false,
+      "timestamp_policy": "annotation-step units; physical source FPS unavailable"
     },
     "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g2_domain_animaltrack_gpu6_v1/G2_CLEAN_V2/animaltrack_chicken1_test306/official_metrics.json": {
       "status": "OFFICIAL_SCOPE_EVALUATION_COMPLETE",
@@ -6888,7 +7017,7 @@
       "index": 1,
       "memory_used_MiB": 22327,
       "memory_free_MiB": 58828,
-      "utilization_percent": 94
+      "utilization_percent": 100
     },
     {
       "index": 2,
@@ -6898,27 +7027,27 @@
     },
     {
       "index": 3,
-      "memory_used_MiB": 5719,
-      "memory_free_MiB": 75435,
-      "utilization_percent": 73
+      "memory_used_MiB": 32447,
+      "memory_free_MiB": 48708,
+      "utilization_percent": 100
     },
     {
       "index": 4,
-      "memory_used_MiB": 27443,
-      "memory_free_MiB": 53712,
-      "utilization_percent": 100
+      "memory_used_MiB": 26257,
+      "memory_free_MiB": 54898,
+      "utilization_percent": 88
     },
     {
       "index": 5,
-      "memory_used_MiB": 18236,
-      "memory_free_MiB": 62919,
-      "utilization_percent": 0
+      "memory_used_MiB": 44964,
+      "memory_free_MiB": 36191,
+      "utilization_percent": 100
     },
     {
       "index": 6,
-      "memory_used_MiB": 41014,
-      "memory_free_MiB": 40140,
-      "utilization_percent": 100
+      "memory_used_MiB": 5623,
+      "memory_free_MiB": 75531,
+      "utilization_percent": 61
     },
     {
       "index": 7,

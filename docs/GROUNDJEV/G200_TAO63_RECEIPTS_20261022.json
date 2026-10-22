@@ -1,5 +1,5 @@
 {
-  "schema": "groundjev.g200_tao63.receipts.v1",
+  "schema": "groundjev.g200_tao.receipts.v2",
   "project_root": "/data2/user/LocateMOT",
   "generated_from_runtime": "/data2/user/LocateMOT_GroundJEV",
   "scopes": [
@@ -1268,7 +1268,7 @@
         "association_replay_fps": null
       },
       "receipt": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g200_dancetrack_gpu3_serial_v2/receipt.json",
-      "claim_boundary": "Complete official receipt; G200 is a control and TAO video63 is a valid zero-prediction OVMOT result, neither is a broad broad generalization claim."
+      "claim_boundary": "Complete official receipt; G200 is a control and both TAO scopes are valid zero-prediction OVMOT results, not broad generalization claims."
     },
     {
       "scope_key": "G2_TAO_VIDEO63_REPAIRED",
@@ -1402,7 +1402,145 @@
         "timestamp_policy": "annotation-step units; physical source FPS unavailable; display at one step per second"
       },
       "receipt": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g2_parallel_ovmot_gpu7_video63_repaired_v1/receipt.json",
-      "claim_boundary": "Complete official receipt; G200 is a control and TAO video63 is a valid zero-prediction OVMOT result, neither is a broad broad generalization claim."
+      "claim_boundary": "Complete official receipt; G200 is a control and both TAO scopes are valid zero-prediction OVMOT results, not broad generalization claims."
+    },
+    {
+      "scope_key": "G2_TAO_VIDEO105_REPAIRED",
+      "status": "G2_PARALLEL_SCOPE_COMPLETE",
+      "task": "ovmot",
+      "model_label": "G2_CLEAN_V2",
+      "model": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM-G2-CLEAN-V2",
+      "model_safetensors_sha256": "7c4a81349e333a304e32f42cf1999db289802d8c31eba415b85827038d14801f",
+      "manifest": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_pilot_data/ovmot_tao_independent105_full.json",
+      "manifest_frame_count": 40,
+      "observed_frame_count": 40,
+      "parser_policy": "official_scoring_repaired",
+      "same_input_parser_decoder_tracker_scorer": true,
+      "official_metrics": {
+        "status": "OFFICIAL_REGISTERED_MULTITASK_SCOPE_EVALUATION_COMPLETE",
+        "task": "ovmot",
+        "dataset": "tao_amodal",
+        "sequence": "val/HACS/Making_a_sandwich_v_6RjriKVIkR4_scene_0_0-4638",
+        "scope": "independent_full_validation_video_annotation_frames",
+        "frames": 40,
+        "all_registered_frames_included": true,
+        "GT_access": "evaluation only",
+        "official_test_labels_read": false,
+        "end_to_end_fps": 0.006335555364792386,
+        "association_replay_fps": null,
+        "perception_rejected_frames": [
+          1,
+          31,
+          61,
+          91,
+          121,
+          151,
+          181,
+          211,
+          241,
+          271,
+          301,
+          331,
+          361,
+          391,
+          421,
+          451,
+          481,
+          511,
+          541,
+          571,
+          601,
+          631,
+          661,
+          691,
+          721,
+          751,
+          781,
+          811,
+          841,
+          871,
+          901,
+          931,
+          961,
+          991,
+          1021,
+          1051,
+          1081,
+          1111,
+          1141,
+          1171
+        ],
+        "evaluator": "unmodified official TETA OVMOT recipe; non-exhaustive TAO",
+        "evaluator_commit": "b498aa87b252bfb75d7cc0d8d6435c3e1e74e4de",
+        "metrics": {
+          "TETA": 0.0,
+          "LocA": 0.0,
+          "AssocA": 0.0,
+          "ClsA": 0.0,
+          "LocRe": 0.0,
+          "LocPr": 0.0,
+          "AssocRe": 0.0,
+          "AssocPr": 0.0,
+          "ClsRe": 0.0,
+          "ClsPr": 0.0
+        },
+        "base_novel": {
+          "base": {
+            "TETA": 0.0,
+            "LocA": 0.0,
+            "AssocA": 0.0,
+            "ClsA": 0.0,
+            "LocRe": 0.0,
+            "LocPr": 0.0,
+            "AssocRe": 0.0,
+            "AssocPr": 0.0,
+            "ClsRe": 0.0,
+            "ClsPr": 0.0
+          },
+          "novel": {
+            "TETA": 0.0,
+            "LocA": 0.0,
+            "AssocA": 0.0,
+            "ClsA": 0.0,
+            "LocRe": 0.0,
+            "LocPr": 0.0,
+            "AssocRe": 0.0,
+            "AssocPr": 0.0,
+            "ClsRe": 0.0,
+            "ClsPr": 0.0
+          }
+        },
+        "metric_scale": "official TETA summary percent",
+        "evaluated_categories": [
+          {
+            "name": "bowl",
+            "group": "base"
+          },
+          {
+            "name": "bun",
+            "group": "base"
+          },
+          {
+            "name": "baby",
+            "group": "base"
+          },
+          {
+            "name": "shaker",
+            "group": "novel"
+          }
+        ],
+        "GT_boxes": 225,
+        "predictions": 0,
+        "unmapped_predicted_labels": [],
+        "unmapped_policy": "retain boxes with unknown category -1; never discard predictions or GT",
+        "prediction_score": "constant unscored sentinel 1; no detector confidence and no score-based truncation",
+        "GT_policy": "all original modal xywh boxes; no clipping, visibility, or category exclusions",
+        "novel_evaluation_GT_used_for_training": false,
+        "official_complete_dataset_result": false,
+        "timestamp_policy": "annotation-step units; physical source FPS unavailable"
+      },
+      "receipt": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g2_parallel_ovmot_gpu7_video105_serial_v2/receipt.json",
+      "claim_boundary": "Complete official receipt; G200 is a control and both TAO scopes are valid zero-prediction OVMOT results, not broad generalization claims."
     }
   ]
 }
