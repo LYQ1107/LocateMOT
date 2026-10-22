@@ -1,8 +1,8 @@
 {
   "schema": "groundjev.active_goal.live.v1",
   "project_root": "/data2/user/LocateMOT",
-  "generated_at_utc": "2026-10-22T05:10:56.377338+00:00",
-  "git_commit": "3487aa1f1a7c41913278688560d2c8cfe1207b7c",
+  "generated_at_utc": "2026-10-22T05:20:05.543596+00:00",
+  "git_commit": "b9459ace9b9573f3789634a809407c5fdea6c3ab",
   "owners": {
     "G0": {
       "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g2_clean_independent_gpu3_v1/owner_state.json",
@@ -208,8 +208,18 @@
     },
     "G2_TAO105_SERIAL": {
       "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g2_parallel_ovmot_gpu7_video105_serial_v1/owner_state.json",
-      "status": "RUNNING_G2_CLEAN_V2_tao_video105_independent40_repaired",
-      "current_stage": "INFERENCE",
+      "status": "G2_PARALLEL_SCOPE_FAILED",
+      "current_stage": "FAILED",
+      "failed": {
+        "error": "RuntimeError('command failed (1); see /data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g2_parallel_ovmot_gpu7_video105_serial_v1/G2_CLEAN_V2_inference.log')"
+      },
+      "completed": [],
+      "physical_gpu": 7
+    },
+    "G2_TAO105_SERIAL_V2": {
+      "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g2_parallel_ovmot_gpu7_video105_serial_v2/owner_state.json",
+      "status": "G2_PARALLEL_SCOPE_SERVICE_STARTING",
+      "current_stage": "SERVICE_STARTING",
       "failed": null,
       "completed": [],
       "physical_gpu": 7
@@ -245,7 +255,7 @@
   },
   "frame_progress_rows": {
     "G0_RMOT": 800,
-    "G2_MOT_GPU5": 1068,
+    "G2_MOT_GPU5": 1092,
     "G2_MOT_GPU6": 420,
     "G2_DANCE": 1203,
     "G2_ANIMAL": 306,
@@ -260,6 +270,7 @@
     "G200_DANCE_SERIAL": 0,
     "G200_DANCE_SERIAL_V2": 1203,
     "G2_TAO105_SERIAL": 0,
+    "G2_TAO105_SERIAL_V2": 0,
     "RMOT_SINGLE": 800,
     "RMOT_MULTI": 800
   },
@@ -6877,7 +6888,7 @@
       "index": 1,
       "memory_used_MiB": 22327,
       "memory_free_MiB": 58828,
-      "utilization_percent": 100
+      "utilization_percent": 94
     },
     {
       "index": 2,
@@ -6889,7 +6900,7 @@
       "index": 3,
       "memory_used_MiB": 5719,
       "memory_free_MiB": 75435,
-      "utilization_percent": 20
+      "utilization_percent": 73
     },
     {
       "index": 4,
@@ -6901,13 +6912,13 @@
       "index": 5,
       "memory_used_MiB": 18236,
       "memory_free_MiB": 62919,
-      "utilization_percent": 64
+      "utilization_percent": 0
     },
     {
       "index": 6,
-      "memory_used_MiB": 40966,
-      "memory_free_MiB": 40188,
-      "utilization_percent": 99
+      "memory_used_MiB": 41014,
+      "memory_free_MiB": 40140,
+      "utilization_percent": 100
     },
     {
       "index": 7,
@@ -6923,7 +6934,7 @@
     "state": {
       "status": "WAITING_HELDOUT_TERMINAL_AND_EXCLUSIVE_GPU_SET",
       "current_stage": "WAITING_HELDOUT_TERMINAL_AND_EXCLUSIVE_GPU_SET",
-      "owner_pid": 493017,
+      "owner_pid": 637444,
       "project_root": "/data2/user/LocateMOT",
       "runtime_root": "/data2/user/LocateMOT_GroundJEV",
       "heldout_finalizer": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/groundjev_heldout_g200_finalization_receipt.json",

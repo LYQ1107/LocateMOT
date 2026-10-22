@@ -32,6 +32,7 @@ OWNERS = {
     "G200_DANCE_SERIAL": RUNTIME / "outputs/groundjev/heldout/g200_dancetrack_gpu3_serial_v1/owner_state.json",
     "G200_DANCE_SERIAL_V2": RUNTIME / "outputs/groundjev/heldout/g200_dancetrack_gpu3_serial_v2/owner_state.json",
     "G2_TAO105_SERIAL": RUNTIME / "outputs/groundjev/heldout/g2_parallel_ovmot_gpu7_video105_serial_v1/owner_state.json",
+    "G2_TAO105_SERIAL_V2": RUNTIME / "outputs/groundjev/heldout/g2_parallel_ovmot_gpu7_video105_serial_v2/owner_state.json",
     "RMOT_SINGLE": RUNTIME / "outputs/groundjev/heldout/g2_parallel_rmot_single_gpu7_v1/owner_state.json",
     "RMOT_MULTI": RUNTIME / "outputs/groundjev/heldout/g2_parallel_rmot_multi_gpu7_v1/owner_state.json",
 }
@@ -53,6 +54,7 @@ FRAME_FILES = {
     "G200_DANCE_SERIAL": RUNTIME / "outputs/groundjev/heldout/g200_dancetrack_gpu3_serial_v1/G200_TRACKING200/dancetrack0004_val1203/frame_decisions.jsonl",
     "G200_DANCE_SERIAL_V2": RUNTIME / "outputs/groundjev/heldout/g200_dancetrack_gpu3_serial_v2/G200_TRACKING200/dancetrack0004_val1203/frame_decisions.jsonl",
     "G2_TAO105_SERIAL": RUNTIME / "outputs/groundjev/heldout/g2_parallel_ovmot_gpu7_video105_serial_v1/G2_CLEAN_V2/tao_video105_independent40_repaired/frame_decisions.jsonl",
+    "G2_TAO105_SERIAL_V2": RUNTIME / "outputs/groundjev/heldout/g2_parallel_ovmot_gpu7_video105_serial_v2/G2_CLEAN_V2/tao_video105_independent40_repaired/frame_decisions.jsonl",
     "RMOT_SINGLE": RUNTIME / "outputs/groundjev/heldout/g2_parallel_rmot_single_gpu7_v1/G2_CLEAN_V2/rmot_single0007/frame_decisions.jsonl",
     "RMOT_MULTI": RUNTIME / "outputs/groundjev/heldout/g2_parallel_rmot_multi_gpu7_v1/G2_CLEAN_V2/rmot_multi0007/frame_decisions.jsonl",
 }
