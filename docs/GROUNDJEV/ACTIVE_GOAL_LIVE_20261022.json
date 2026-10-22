@@ -1,18 +1,19 @@
 {
   "schema": "groundjev.active_goal.live.v1",
   "project_root": "/data2/user/LocateMOT",
-  "generated_at_utc": "2026-10-22T02:59:02.215637+00:00",
-  "git_commit": "bf2995edac169de59817bc5a40f743a1f8e47e6c",
+  "generated_at_utc": "2026-10-22T03:03:19.805089+00:00",
+  "git_commit": "e9735b00b1ddffd39a4e218b0a3c8efe92a1b96e",
   "owners": {
     "G0": {
       "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g2_clean_independent_gpu3_v1/owner_state.json",
-      "status": "RUNNING_G0_rmot_multi0007",
-      "current_stage": "RUNNING_G0_rmot_multi0007",
+      "status": "RUNNING_G0_ovmot_tao105",
+      "current_stage": "RUNNING_G0_ovmot_tao105",
       "failed": null,
       "completed": [
         "g2_dependency",
         "G0/mot20_05_validation1657",
-        "G0/rmot_single0007"
+        "G0/rmot_single0007",
+        "G0/rmot_multi0007"
       ],
       "physical_gpu": 3
     },
@@ -187,18 +188,18 @@
   },
   "frame_progress_rows": {
     "G0_RMOT": 800,
-    "G2_MOT_GPU5": 736,
+    "G2_MOT_GPU5": 743,
     "G2_MOT_GPU6": 420,
-    "G2_DANCE": 1121,
+    "G2_DANCE": 1195,
     "G2_ANIMAL": 306,
     "G2_TAO": 7,
     "G2_TAO_FAST": 3,
-    "G2_TAO105_REPAIRED": 0,
+    "G2_TAO105_REPAIRED": 1,
     "G2_TAO63": 0,
     "G2_TAO63_REPAIRED": 1,
-    "G1_DANCE": 710,
-    "G1_ANIMAL": 214,
-    "G200_DANCE": 396,
+    "G1_DANCE": 770,
+    "G1_ANIMAL": 261,
+    "G200_DANCE": 451,
     "RMOT_SINGLE": 800,
     "RMOT_MULTI": 800
   },
@@ -2510,6 +2511,67 @@
       "rejected_frames_in_official_denominator": true,
       "end_to_end_fps": 0.04880792827996516,
       "association_replay_fps": null
+    },
+    "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g2_clean_independent_gpu3_v1/G0/rmot_multi0007/official_metrics.json": {
+      "status": "OFFICIAL_REGISTERED_MULTITASK_SCOPE_EVALUATION_COMPLETE",
+      "task": "rmot",
+      "dataset": "refer_kitti_v2",
+      "sequence": "0007",
+      "scope": "full_legal_validation_video",
+      "frames": 800,
+      "all_registered_frames_included": true,
+      "GT_access": "evaluation only",
+      "official_test_labels_read": false,
+      "end_to_end_fps": 0.6076066757499464,
+      "association_replay_fps": null,
+      "perception_rejected_frames": [
+        34,
+        107,
+        108,
+        109,
+        110,
+        117,
+        133,
+        138,
+        286,
+        291,
+        292,
+        379,
+        508,
+        708,
+        711,
+        771,
+        774,
+        778,
+        789
+      ],
+      "evaluator": "unmodified official TrackEval HOTA/CLEAR/Identity",
+      "evaluator_commit": "12c8791b303e0a0b50f753af204249e622d0281a",
+      "metrics": {
+        "HOTA": 0.3148685730204827,
+        "DetA": 0.30136811677119285,
+        "AssA": 0.33272507379577676,
+        "IDF1": 0.37422324510932103,
+        "IDSW": 123,
+        "FP": 1100,
+        "FN": 979
+      },
+      "metric_scale": "fraction; counts for IDSW/FP/FN",
+      "release_query_GT_boxes": 2112,
+      "multi_target_frames": 439,
+      "posthoc_proposal_coverage_IoU_05": {
+        "covered": 1134,
+        "GT_boxes": 2112,
+        "recall": 0.5369318181818182,
+        "scope": "evaluation-only target coverage; not HOTA; never used to correct runtime state"
+      },
+      "empty_target_frames": 247,
+      "empty_target_frame_predictions": 368,
+      "GT_transport_class": "class1 is a query-target transport convention, including cars and people",
+      "GT_policy": "only release expression target IDs; empty frames retained; exact release boxes without clipping",
+      "release_box_format": "normalized top-left xywh",
+      "ignore_policy": "registered expressions have empty release ignore fields",
+      "official_complete_dataset_result": false
     }
   },
   "gpu_snapshot": [
@@ -2533,8 +2595,8 @@
     },
     {
       "index": 3,
-      "memory_used_MiB": 53629,
-      "memory_free_MiB": 27526,
+      "memory_used_MiB": 56015,
+      "memory_free_MiB": 25140,
       "utilization_percent": 100
     },
     {
@@ -2547,7 +2609,7 @@
       "index": 5,
       "memory_used_MiB": 36436,
       "memory_free_MiB": 44718,
-      "utilization_percent": 100
+      "utilization_percent": 85
     },
     {
       "index": 6,

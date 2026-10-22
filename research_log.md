@@ -4544,3 +4544,7 @@ G2 AnimalTrack, and G2 RMOT multi. The GPU7 chunk-192 TAO OVMOT owner has entere
 ## 2026-10-22 Asia/Shanghai — stale native-training waiters retired
 - Two historical shell waiters were still alive: one waiting on a failed native-three-task owner and one scheduled to launch `queue_groundjev_native_three_task.py` after G0 became terminal. They were not part of the current OneJev full-joint queue and would have competed for GPU resources after the held-out gate.
 - Both process groups were terminated without touching active inference owners. Existing native-training failure receipts remain unchanged; the recoverable training entry is now the explicit `queue_onejev_full_joint_resume_after_heldout.py` path.
+
+## 2026-10-22 Asia/Shanghai — G0 RMOT multi receipt recovered
+- The G0 owner produced a complete official RMOT multi `0007` receipt with all 800 registered frames. Metrics are HOTA `0.3148685730`, DetA `0.3013681168`, AssA `0.3327250738`, IDF1 `0.3742232451`, IDSW `123`, FP `1100`, FN `979`.
+- A partial held-out collection was generated at `/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/groundjev_heldout_partial_collection_20261022.json`; it validates four complete scopes (G0 MOT20, G0 RMOT single, G0 RMOT multi, G2 AnimalTrack). Running and resource-reclaimed owners remain status evidence only.
