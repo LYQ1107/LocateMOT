@@ -1,8 +1,8 @@
 {
   "schema": "groundjev.active_goal.live.v1",
   "project_root": "/data2/user/LocateMOT",
-  "generated_at_utc": "2026-10-22T02:44:24.981037+00:00",
-  "git_commit": "bea7c99d38985b65391f4bb42be3689bd9d02fd4",
+  "generated_at_utc": "2026-10-22T02:48:01.523452+00:00",
+  "git_commit": "5ae497d720bb3a8813ef0ad37e51b5f0e793696d",
   "owners": {
     "G0": {
       "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g2_clean_independent_gpu3_v1/owner_state.json",
@@ -73,6 +73,14 @@
       "completed": [],
       "physical_gpu": 7
     },
+    "G2_TAO63": {
+      "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g2_parallel_ovmot_gpu7_video63_v1/owner_state.json",
+      "status": "RUNNING_G2_CLEAN_V2_tao_video63_base_novel40",
+      "current_stage": "INFERENCE",
+      "failed": null,
+      "completed": [],
+      "physical_gpu": 7
+    },
     "G1_DANCE": {
       "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g1_dancetrack_gpu3_v1/owner_state.json",
       "status": "RUNNING_G1_GPU5_dancetrack0004_val1203",
@@ -99,10 +107,16 @@
     },
     "RMOT_SINGLE": {
       "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g2_parallel_rmot_single_gpu7_v1/owner_state.json",
-      "status": "RUNNING_G2_CLEAN_V2_rmot_single0007",
-      "current_stage": "INFERENCE",
+      "status": "G2_PARALLEL_SCOPE_COMPLETE",
+      "current_stage": "COMPLETE",
       "failed": null,
-      "completed": [],
+      "completed": [
+        "frames",
+        "result",
+        "official_metrics",
+        "inference_command",
+        "scorer_command"
+      ],
       "physical_gpu": 7
     },
     "RMOT_MULTI": {
@@ -122,19 +136,80 @@
   },
   "frame_progress_rows": {
     "G0_RMOT": 800,
-    "G2_MOT_GPU5": 714,
-    "G2_MOT_GPU6": 412,
-    "G2_DANCE": 929,
+    "G2_MOT_GPU5": 718,
+    "G2_MOT_GPU6": 415,
+    "G2_DANCE": 972,
     "G2_ANIMAL": 306,
     "G2_TAO": 6,
-    "G2_TAO_FAST": 1,
-    "G1_DANCE": 530,
-    "G1_ANIMAL": 129,
-    "G200_DANCE": 223,
-    "RMOT_SINGLE": 768,
+    "G2_TAO_FAST": 2,
+    "G2_TAO63": 0,
+    "G1_DANCE": 579,
+    "G1_ANIMAL": 150,
+    "G200_DANCE": 270,
+    "RMOT_SINGLE": 800,
     "RMOT_MULTI": 800
   },
   "official_metrics": {
+    "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g2_parallel_rmot_single_gpu7_v1/G2_CLEAN_V2/rmot_single0007/official_metrics.json": {
+      "status": "OFFICIAL_REGISTERED_MULTITASK_SCOPE_EVALUATION_COMPLETE",
+      "task": "rmot",
+      "dataset": "refer_kitti_v2",
+      "sequence": "0007",
+      "scope": "full_legal_validation_video",
+      "frames": 800,
+      "all_registered_frames_included": true,
+      "GT_access": "evaluation only",
+      "official_test_labels_read": false,
+      "end_to_end_fps": 0.380705565822738,
+      "association_replay_fps": null,
+      "perception_rejected_frames": [
+        48,
+        57,
+        77,
+        107,
+        144,
+        173,
+        179,
+        251,
+        288,
+        297,
+        372,
+        553,
+        584,
+        674,
+        750,
+        758,
+        759,
+        769
+      ],
+      "evaluator": "unmodified official TrackEval HOTA/CLEAR/Identity",
+      "evaluator_commit": "12c8791b303e0a0b50f753af204249e622d0281a",
+      "metrics": {
+        "HOTA": 0.06582249096978554,
+        "DetA": 0.007564887197376508,
+        "AssA": 0.574839736915782,
+        "IDF1": 0.013813517513566848,
+        "IDSW": 4,
+        "FP": 1991,
+        "FN": 0
+      },
+      "metric_scale": "fraction; counts for IDSW/FP/FN",
+      "release_query_GT_boxes": 18,
+      "multi_target_frames": 0,
+      "posthoc_proposal_coverage_IoU_05": {
+        "covered": 18,
+        "GT_boxes": 18,
+        "recall": 1.0,
+        "scope": "evaluation-only target coverage; not HOTA; never used to correct runtime state"
+      },
+      "empty_target_frames": 782,
+      "empty_target_frame_predictions": 1975,
+      "GT_transport_class": "class1 is a query-target transport convention, including cars and people",
+      "GT_policy": "only release expression target IDs; empty frames retained; exact release boxes without clipping",
+      "release_box_format": "normalized top-left xywh",
+      "ignore_policy": "registered expressions have empty release ignore fields",
+      "official_complete_dataset_result": false
+    },
     "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g2_domain_animaltrack_gpu6_v1/G2_CLEAN_V2/animaltrack_chicken1_test306/official_metrics.json": {
       "status": "OFFICIAL_SCOPE_EVALUATION_COMPLETE",
       "dataset": "animaltrack",
@@ -2413,7 +2488,7 @@
       "index": 4,
       "memory_used_MiB": 48461,
       "memory_free_MiB": 32694,
-      "utilization_percent": 99
+      "utilization_percent": 100
     },
     {
       "index": 5,
@@ -2429,8 +2504,8 @@
     },
     {
       "index": 7,
-      "memory_used_MiB": 58216,
-      "memory_free_MiB": 22939,
+      "memory_used_MiB": 57586,
+      "memory_free_MiB": 23569,
       "utilization_percent": 100
     }
   ],
@@ -2441,7 +2516,7 @@
     "state": {
       "status": "WAITING_HELDOUT_TERMINAL_AND_EXCLUSIVE_GPU_SET",
       "current_stage": "WAITING_HELDOUT_TERMINAL_AND_EXCLUSIVE_GPU_SET",
-      "owner_pid": 262985,
+      "owner_pid": 304942,
       "project_root": "/data2/user/LocateMOT",
       "runtime_root": "/data2/user/LocateMOT_GroundJEV",
       "heldout_finalizer": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/groundjev_heldout_g200_finalization_receipt.json",
