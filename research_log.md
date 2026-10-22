@@ -4344,3 +4344,12 @@ GPU6 当时仅约 28.3 GiB free，未再加服务，避免与现有 G2/AnimalTra
 owner 仍使用相同 run_video、official_scoring parser、tracking_dense decoder、
 empty_and_record failure policy 和官方 MOT scorer。该运行用于同范围控制比较，
 在完整 scorer receipt 生成前不宣称 G1 指标。
+
+## 2026-10-22 — Extended held-out finalizer registered
+
+原有 G2 finalizer 只覆盖五个早先注册的 G0/G2/domain owner。为避免新启动的 TAO
+OVMOT 旁路和 G1 同域控制被遗漏，新增并启动
+`queue_groundjev_heldout_finalize_extended.py`，等待七个 owner（G0 MOT20、两路
+G2 MOT20、G2 DanceTrack、G2 AnimalTrack、G2 TAO OVMOT video105、G1 DanceTrack）
+分别进入 COMPLETE/FAILED 后，调用同一严格 receipt collector 写出独立 extended
+collection/finalization receipt；原有五 owner finalizer 和历史结果保持不变。
