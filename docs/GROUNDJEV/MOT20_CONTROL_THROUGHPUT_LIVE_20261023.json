@@ -1,6 +1,6 @@
 {
   "schema": "groundjev.mot20.control.throughput.live.v1",
-  "recorded_at": "2026-10-23T05:04:33.377180+08:00",
+  "recorded_at": "2026-10-23T05:37:33.250443+08:00",
   "manifest": "/data3/user/LocateMOT-runs/GroundJEV/g2_step3000_full_eval_mot20_05/mot20_05_validation_half.json",
   "registered_frames": 1657,
   "physical_frame_range": [
@@ -14,18 +14,18 @@
       "gpu": 5,
       "status": "RUNNING_G1_GPU5_V2_mot20_05_validation1657",
       "current_stage": "INFERENCE",
-      "last_physical_frame": 2150,
+      "last_physical_frame": 2211,
       "registered_last_frame": 3315,
-      "completed_rows": 492,
-      "remaining_frames": 1165,
+      "completed_rows": 553,
+      "remaining_frames": 1104,
       "recent_samples": 20,
-      "recent_mean_seconds": 33.13162837537239,
-      "recent_median_seconds": 27.780714090447873,
-      "eta_hours_mean": 10.721763071474674,
-      "eta_hours_median": 8.990147754269938,
+      "recent_mean_seconds": 36.011409387888854,
+      "recent_median_seconds": 31.53164981736336,
+      "eta_hours_mean": 11.043498878952581,
+      "eta_hours_median": 9.66970594399143,
       "metric_claim": "none_until_terminal_receipt",
       "resume_source": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g1_mot20_05_gpu4_v1/G1_GPU5_V2/mot20_05_validation1657",
-      "latest_frame_seconds": 17.982287367107347
+      "latest_frame_seconds": 24.237624150002375
     },
     {
       "owner": "g200_mot20_05_gpu7_v1",
@@ -33,20 +33,20 @@
       "gpu": 7,
       "status": "RUNNING_G200_TRACKING200_mot20_05_validation1657",
       "current_stage": "INFERENCE",
-      "last_physical_frame": 2185,
+      "last_physical_frame": 2247,
       "registered_last_frame": 3315,
-      "completed_rows": 527,
-      "remaining_frames": 1130,
+      "completed_rows": 589,
+      "remaining_frames": 1068,
       "recent_samples": 20,
-      "recent_mean_seconds": 33.85547805224778,
-      "recent_median_seconds": 26.786132860463113,
-      "eta_hours_mean": 10.626858388622221,
-      "eta_hours_median": 8.40786948120092,
+      "recent_mean_seconds": 28.098013580508997,
+      "recent_median_seconds": 25.22017524705734,
+      "eta_hours_mean": 8.335744028884337,
+      "eta_hours_median": 7.481985323293678,
       "metric_claim": "none_until_terminal_receipt",
       "resume_source": null,
-      "latest_frame_seconds": 42.62048975098878
+      "latest_frame_seconds": 24.452960474882275
     }
   ],
-  "diagnosis": "Both owners and services were verified alive and advancing in INFERENCE; this snapshot is progress evidence only and carries no metric claim.",
+  "diagnosis": "Both owners and services were verified alive and advancing in INFERENCE; progress only, no partial metric claim.",
   "action": "Preserve both runs; do not restart, score, or promote partial outputs. Recompute official metrics only after terminal receipts."
 }
