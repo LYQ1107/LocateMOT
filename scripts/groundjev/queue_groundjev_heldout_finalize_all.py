@@ -1,0 +1,73 @@
+#!/usr/bin/env python3
+"""Finalize every currently registered GroundJEV held-out owner.
+
+This supersedes neither earlier finalizer; it writes a separate artifact and
+adds the GPU7 RMOT owners launched after the shared-G2 readout completed.
+"""
+
+from __future__ import annotations
+
+import json
+import os
+from pathlib import Path
+import subprocess
+import time
+
+
+ROOT = Path("/data2/user/LocateMOT")
+RUNTIME = Path("/data2/user/LocateMOT_GroundJEV")
+PYTHON = RUNTIME / ".venv-onejev-py310/bin/python"
+COLLECTOR = ROOT / "scripts/groundjev/collect_g2_heldout_receipts.py"
+OWNERS = (
+    RUNTIME / "outputs/groundjev/heldout/g2_clean_independent_gpu3_v1/owner_state.json",
+    RUNTIME / "outputs/groundjev/heldout/g2_clean_independent_gpu5_v1/owner_state.json",
+    RUNTIME / "outputs/groundjev/heldout/g2_clean_independent_gpu6_v1/owner_state.json",
+    RUNTIME / "outputs/groundjev/heldout/g2_domain_dancetrack_gpu5_v1/owner_state.json",
+    RUNTIME / "outputs/groundjev/heldout/g2_domain_animaltrack_gpu6_v1/owner_state.json",
+    RUNTIME / "outputs/groundjev/heldout/g2_parallel_ovmot_gpu5_v1/owner_state.json",
+    RUNTIME / "outputs/groundjev/heldout/g1_dancetrack_gpu3_v1/owner_state.json",
+    RUNTIME / "outputs/groundjev/heldout/g2_parallel_rmot_single_gpu7_v1/owner_state.json",
+    RUNTIME / "outputs/groundjev/heldout/g2_parallel_rmot_multi_gpu7_v1/owner_state.json",
+)
+OUT = RUNTIME / "outputs/groundjev/heldout/groundjev_heldout_all_finalization_receipt.json"
+COLLECTION = RUNTIME / "outputs/groundjev/heldout/groundjev_heldout_all_receipt_collection.json"
+
+
+def read(path: Path) -> dict | None:
+    try:
+        return json.loads(path.read_text())
+    except (FileNotFoundError, json.JSONDecodeError, OSError):
+        return None
+
+
+def terminal(state: dict | None) -> bool:
+    return bool(state) and str(state.get("status", "")).endswith(("COMPLETE", "FAILED"))
+
+
+def main() -> int:
+    OUT.parent.mkdir(parents=True, exist_ok=True)
+    while True:
+        states = {str(path): read(path) for path in OWNERS}
+        if all(terminal(state) for state in states.values()):
+            break
+        time.sleep(60)
+    command = [str(PYTHON), str(COLLECTOR), "--out", str(COLLECTION)]
+    for owner in OWNERS:
+        command.extend(("--owner", str(owner)))
+    subprocess.run(command, cwd=ROOT, check=True)
+    collection = read(COLLECTION) or {}
+    report = {
+        "schema": "groundjev.heldout.all_finalization.v1",
+        "project_root": str(ROOT),
+        "owners": states,
+        "collection": str(COLLECTION),
+        "accepted_scope_count": collection.get("accepted_scope_count", 0),
+        "finalized_by_pid": os.getpid(),
+    }
+    OUT.write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n")
+    print(json.dumps({"out": str(OUT), "accepted_scope_count": report["accepted_scope_count"]}), flush=True)
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

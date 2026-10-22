@@ -4386,3 +4386,13 @@ target 合法 mask。checkpoint 为
 （SHA256 `fc7f0de761aeb3ede3be77babe92f82c6c47764b44d1c0c05b7d21a45650e209`）。这证明
 真实 GPU 三任务共享-G2 readout 训练和可恢复 checkpoint 已完成；receipt 明确不作
 视频级 HOTA/TETA 泛化或独立 OneJev 模型性能结论。
+
+## 2026-10-22 — GPU7 immediate independent RMOT expansion
+
+GPU7 在三任务 readout 完成后释放；为不等待 GPU5/GPU6 的 MOT20 长序列，立即启动
+两个 G2 Clean 独立 RMOT owner：Refer-KITTI v2 sequence 0007 的 single expression
+800 帧（端口 8235）和 multi expression 800 帧（端口 8236）。两者使用已登记
+`training_on_this_scope=false` manifest、相同 official_scoring parser、tracking_dense
+decoder、simple tracker 和 multitask scorer，输出目录互相独立；GPU3/5/6 的既有
+owner 未修改。新增 `queue_groundjev_heldout_finalize_all.py`，把这两路加入全量
+held-out 收口，原有五路/七路 finalizer 产物仍保留。
