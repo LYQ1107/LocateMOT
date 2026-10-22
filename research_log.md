@@ -4426,3 +4426,11 @@ AssA `0.3363050521`、IDF1 `0.4335730657`、IDSW `144`、FP `1231`、FN `2040`�
 端到端 FPS `0.1212373`。这是 G2 Clean 的独立动物域结果，不与 G0/G1 或其它域
 混合归因；live receipt collector 当前接受的完整 scope 数为 2（G0 MOT20 与该
 AnimalTrack），其余 owner 仍按各自协议运行。
+
+## 2026-10-22 — G1 AnimalTrack multi-domain control started
+
+G2 AnimalTrack 306 帧独立 scope 完成并释放 GPU6 服务后，立即在同一 scope 启动
+G1 GPU5 适配 bundle `GroundAnything-DLM-TrackProjG1-GPU5-V2`（端口 8239，输出
+`g1_animaltrack_gpu6_v1`）。它沿用与 G2 AnimalTrack 完全相同的 manifest、parser、
+decoder、tracker 和 official MOT scorer，与已运行的 G1 DanceTrack 组成多域控制；
+GPU6 的 G2 MOT20 owner 未停止，G1 owner 在完整 receipt 前不作指标结论。

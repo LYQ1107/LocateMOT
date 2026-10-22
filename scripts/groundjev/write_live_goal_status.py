@@ -21,6 +21,7 @@ OWNERS = {
     "G2_ANIMAL": RUNTIME / "outputs/groundjev/heldout/g2_domain_animaltrack_gpu6_v1/owner_state.json",
     "G2_TAO": RUNTIME / "outputs/groundjev/heldout/g2_parallel_ovmot_gpu5_v1/owner_state.json",
     "G1_DANCE": RUNTIME / "outputs/groundjev/heldout/g1_dancetrack_gpu3_v1/owner_state.json",
+    "G1_ANIMAL": RUNTIME / "outputs/groundjev/heldout/g1_animaltrack_gpu6_v1/owner_state.json",
     "RMOT_SINGLE": RUNTIME / "outputs/groundjev/heldout/g2_parallel_rmot_single_gpu7_v1/owner_state.json",
     "RMOT_MULTI": RUNTIME / "outputs/groundjev/heldout/g2_parallel_rmot_multi_gpu7_v1/owner_state.json",
 }
@@ -33,6 +34,7 @@ FRAME_FILES = {
     "G2_ANIMAL": RUNTIME / "outputs/groundjev/heldout/g2_domain_animaltrack_gpu6_v1/G2_CLEAN_V2/animaltrack_chicken1_test306/frame_decisions.jsonl",
     "G2_TAO": RUNTIME / "outputs/groundjev/heldout/g2_parallel_ovmot_gpu5_v1/G2_CLEAN_V2/tao_video105_independent40/frame_decisions.jsonl",
     "G1_DANCE": RUNTIME / "outputs/groundjev/heldout/g1_dancetrack_gpu3_v1/G1_GPU5/dancetrack0004_val1203/frame_decisions.jsonl",
+    "G1_ANIMAL": RUNTIME / "outputs/groundjev/heldout/g1_animaltrack_gpu6_v1/G1_GPU5/animaltrack_chicken1_test306/frame_decisions.jsonl",
     "RMOT_SINGLE": RUNTIME / "outputs/groundjev/heldout/g2_parallel_rmot_single_gpu7_v1/G2_CLEAN_V2/rmot_single0007/frame_decisions.jsonl",
     "RMOT_MULTI": RUNTIME / "outputs/groundjev/heldout/g2_parallel_rmot_multi_gpu7_v1/G2_CLEAN_V2/rmot_multi0007/frame_decisions.jsonl",
 }
