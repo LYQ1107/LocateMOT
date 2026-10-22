@@ -4411,3 +4411,8 @@ held-out 收口，原有五路/七路 finalizer 产物仍保留。
 G2/parser/decoder/scorer 合同，仅把已登记的 vocabulary chunk 从 96 调到 192；
 当前队列已确认处于 `WAITING_GPU7_FAST_OVMOT_MEMORY`（GPU7 free 29,109 MiB），不
 抢占 RMOT，也不覆盖 GPU5 的 96-class OVMOT 证据。
+
+生成并保留 `docs/GROUNDJEV/ACTIVE_GOAL_LIVE_20261022.json` 及其可重跑入口
+`scripts/groundjev/write_live_goal_status.py`。该快照记录九个 held-out owner 的
+状态、逐帧行数、GPU 显存和当前唯一完整 official metrics；明确把运行中帧数和
+服务状态标为 progress evidence，不升级为指标。
