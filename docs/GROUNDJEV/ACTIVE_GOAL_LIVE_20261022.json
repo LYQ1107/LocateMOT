@@ -1,14 +1,16 @@
 {
   "schema": "groundjev.active_goal.live.v1",
   "project_root": "/data2/user/LocateMOT",
-  "generated_at_utc": "2026-10-22T03:07:10.521552+00:00",
-  "git_commit": "26a9597929ada63722a4246c9f872974ef5c90c7",
+  "generated_at_utc": "2026-10-22T03:08:08.469874+00:00",
+  "git_commit": "f1ba1e22e639e88d98a137c0a5c107bda99b7db1",
   "owners": {
     "G0": {
       "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g2_clean_independent_gpu3_v1/owner_state.json",
-      "status": "RUNNING_G0_ovmot_tao105",
-      "current_stage": "RUNNING_G0_ovmot_tao105",
-      "failed": null,
+      "status": "G2_CLEAN_FULL_INDEPENDENT_HELDOUT_FAILED",
+      "current_stage": "FAILED",
+      "failed": {
+        "error": "RuntimeError('command failed (-15): /data2/user/LocateMOT_GroundJEV/.venv-onejev-py310/bin/python /data2/user/LocateMOT_GroundJEV/tools/groundjev/run_video.py --task ovmot --video /data2/user/LocateMOT_GroundJEV/outputs/groundjev/multitask_pilot_data/ovmot_tao_independent105_full.json --backend simple --grounding-url http://127.0.0.1:8223/v1 --grounding-parser official_scoring --grounding-decoder-policy tracking_dense --perception-failure-policy empty_and_record --out /data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g2_clean_independent_gpu3_v1/G0/ovmot_tao105 --grounding-vocabulary-chunk-size 96 --category-policy native_label; see /data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g2_clean_independent_gpu3_v1/G0_ovmot_tao105_inference.log')"
+      },
       "completed": [
         "g2_dependency",
         "G0/mot20_05_validation1657",
@@ -189,7 +191,7 @@
   },
   "frame_progress_rows": {
     "G0_RMOT": 800,
-    "G2_MOT_GPU5": 750,
+    "G2_MOT_GPU5": 752,
     "G2_MOT_GPU6": 420,
     "G2_DANCE": 1203,
     "G2_ANIMAL": 306,
@@ -198,9 +200,9 @@
     "G2_TAO105_REPAIRED": 2,
     "G2_TAO63": 0,
     "G2_TAO63_REPAIRED": 2,
-    "G1_DANCE": 817,
-    "G1_ANIMAL": 297,
-    "G200_DANCE": 499,
+    "G1_DANCE": 829,
+    "G1_ANIMAL": 305,
+    "G200_DANCE": 514,
     "RMOT_SINGLE": 800,
     "RMOT_MULTI": 800
   },
@@ -3850,8 +3852,8 @@
     },
     {
       "index": 3,
-      "memory_used_MiB": 56835,
-      "memory_free_MiB": 24320,
+      "memory_used_MiB": 35396,
+      "memory_free_MiB": 45758,
       "utilization_percent": 100
     },
     {
@@ -3864,13 +3866,13 @@
       "index": 5,
       "memory_used_MiB": 18236,
       "memory_free_MiB": 62919,
-      "utilization_percent": 53
+      "utilization_percent": 63
     },
     {
       "index": 6,
       "memory_used_MiB": 34140,
       "memory_free_MiB": 47015,
-      "utilization_percent": 66
+      "utilization_percent": 100
     },
     {
       "index": 7,
