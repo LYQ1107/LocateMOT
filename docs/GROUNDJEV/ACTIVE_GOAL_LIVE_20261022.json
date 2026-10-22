@@ -1,8 +1,8 @@
 {
   "schema": "groundjev.active_goal.live.v1",
   "project_root": "/data2/user/LocateMOT",
-  "generated_at_utc": "2026-10-22T16:10:18.361717+00:00",
-  "git_commit": "dd86e61b8f143f2fd9daf8570729244cfa5894a8",
+  "generated_at_utc": "2026-10-22T16:29:13.167285+00:00",
+  "git_commit": "bdd62f83a1f4a340402101fab1f1457efb6bf694",
   "owners": {
     "G0": {
       "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g2_clean_independent_gpu3_v1/owner_state.json",
@@ -21,14 +21,15 @@
     },
     "G2_GPU5": {
       "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g2_clean_independent_gpu5_v1/owner_state.json",
-      "status": "RUNNING_G2_CLEAN_V2_ovmot_tao105",
-      "current_stage": "RUNNING_G2_CLEAN_V2_ovmot_tao105",
+      "status": "G2_CLEAN_FULL_INDEPENDENT_HELDOUT_COMPLETE",
+      "current_stage": "COMPLETE",
       "failed": null,
       "completed": [
         "g2_dependency",
         "G2-CLEAN-V2/mot20_05_validation1657",
         "G2-CLEAN-V2/rmot_single0007",
-        "G2-CLEAN-V2/rmot_multi0007"
+        "G2-CLEAN-V2/rmot_multi0007",
+        "G2-CLEAN-V2/ovmot_tao105"
       ],
       "physical_gpu": 5
     },
@@ -261,13 +262,13 @@
       ],
       "physical_gpu": 7
     },
-    "G1_MOT20_GPU4": {
-      "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g1_mot20_05_gpu4_v1/owner_state.json",
-      "status": "RUNNING_G1_GPU5_V2_mot20_05_validation1657",
-      "current_stage": "INFERENCE",
+    "G1_MOT20_GPU5_RESUMED": {
+      "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g1_mot20_05_gpu5_resume_v1/owner_state.json",
+      "status": "G2_PARALLEL_SCOPE_SERVICE_STARTING",
+      "current_stage": "SERVICE_STARTING",
       "failed": null,
       "completed": [],
-      "physical_gpu": 4
+      "physical_gpu": 5
     },
     "G200_MOT20_GPU7": {
       "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g200_mot20_05_gpu7_v1/owner_state.json",
@@ -298,8 +299,8 @@
     "G2_TAO105_SERIAL_V2": 40,
     "RMOT_SINGLE": 800,
     "RMOT_MULTI": 800,
-    "G1_MOT20_GPU4": 6,
-    "G200_MOT20_GPU7": 10
+    "G1_MOT20_GPU5_RESUMED": 0,
+    "G200_MOT20_GPU7": 39
   },
   "official_metrics": {
     "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g2_parallel_rmot_single_gpu7_v1/G2_CLEAN_V2/rmot_single0007/official_metrics.json": {
@@ -419,6 +420,129 @@
       "release_box_format": "normalized top-left xywh",
       "ignore_policy": "registered expressions have empty release ignore fields",
       "official_complete_dataset_result": false
+    },
+    "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g2_clean_independent_gpu5_v1/G2_CLEAN_V2/ovmot_tao105/official_metrics.json": {
+      "status": "OFFICIAL_REGISTERED_MULTITASK_SCOPE_EVALUATION_COMPLETE",
+      "task": "ovmot",
+      "dataset": "tao_amodal",
+      "sequence": "val/HACS/Making_a_sandwich_v_6RjriKVIkR4_scene_0_0-4638",
+      "scope": "independent_full_validation_video_annotation_frames",
+      "frames": 40,
+      "all_registered_frames_included": true,
+      "GT_access": "evaluation only",
+      "official_test_labels_read": false,
+      "end_to_end_fps": 0.002698112694896295,
+      "association_replay_fps": null,
+      "perception_rejected_frames": [
+        1,
+        31,
+        61,
+        91,
+        121,
+        151,
+        181,
+        211,
+        241,
+        271,
+        301,
+        331,
+        361,
+        391,
+        421,
+        451,
+        481,
+        511,
+        541,
+        571,
+        601,
+        631,
+        661,
+        691,
+        721,
+        751,
+        781,
+        811,
+        841,
+        871,
+        901,
+        931,
+        961,
+        991,
+        1021,
+        1051,
+        1081,
+        1111,
+        1141,
+        1171
+      ],
+      "evaluator": "unmodified official TETA OVMOT recipe; non-exhaustive TAO",
+      "evaluator_commit": "b498aa87b252bfb75d7cc0d8d6435c3e1e74e4de",
+      "metrics": {
+        "TETA": 0.0,
+        "LocA": 0.0,
+        "AssocA": 0.0,
+        "ClsA": 0.0,
+        "LocRe": 0.0,
+        "LocPr": 0.0,
+        "AssocRe": 0.0,
+        "AssocPr": 0.0,
+        "ClsRe": 0.0,
+        "ClsPr": 0.0
+      },
+      "base_novel": {
+        "base": {
+          "TETA": 0.0,
+          "LocA": 0.0,
+          "AssocA": 0.0,
+          "ClsA": 0.0,
+          "LocRe": 0.0,
+          "LocPr": 0.0,
+          "AssocRe": 0.0,
+          "AssocPr": 0.0,
+          "ClsRe": 0.0,
+          "ClsPr": 0.0
+        },
+        "novel": {
+          "TETA": 0.0,
+          "LocA": 0.0,
+          "AssocA": 0.0,
+          "ClsA": 0.0,
+          "LocRe": 0.0,
+          "LocPr": 0.0,
+          "AssocRe": 0.0,
+          "AssocPr": 0.0,
+          "ClsRe": 0.0,
+          "ClsPr": 0.0
+        }
+      },
+      "metric_scale": "official TETA summary percent",
+      "evaluated_categories": [
+        {
+          "name": "bowl",
+          "group": "base"
+        },
+        {
+          "name": "bun",
+          "group": "base"
+        },
+        {
+          "name": "baby",
+          "group": "base"
+        },
+        {
+          "name": "shaker",
+          "group": "novel"
+        }
+      ],
+      "GT_boxes": 225,
+      "predictions": 0,
+      "unmapped_predicted_labels": [],
+      "unmapped_policy": "retain boxes with unknown category -1; never discard predictions or GT",
+      "prediction_score": "constant unscored sentinel 1; no detector confidence and no score-based truncation",
+      "GT_policy": "all original modal xywh boxes; no clipping, visibility, or category exclusions",
+      "novel_evaluation_GT_used_for_training": false,
+      "official_complete_dataset_result": false,
+      "timestamp_policy": "annotation-step units; physical source FPS unavailable"
     },
     "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g2_clean_independent_gpu5_v1/G2_CLEAN_V2/mot20_05_validation1657/official_metrics.json": {
       "status": "OFFICIAL_SCOPE_EVALUATION_COMPLETE",
@@ -8967,7 +9091,7 @@
       "index": 1,
       "memory_used_MiB": 74164,
       "memory_free_MiB": 6990,
-      "utilization_percent": 81
+      "utilization_percent": 100
     },
     {
       "index": 2,
@@ -8977,33 +9101,33 @@
     },
     {
       "index": 3,
-      "memory_used_MiB": 80990,
-      "memory_free_MiB": 164,
+      "memory_used_MiB": 81082,
+      "memory_free_MiB": 72,
       "utilization_percent": 100
     },
     {
       "index": 4,
-      "memory_used_MiB": 48051,
-      "memory_free_MiB": 33104,
+      "memory_used_MiB": 29910,
+      "memory_free_MiB": 51244,
       "utilization_percent": 100
     },
     {
       "index": 5,
-      "memory_used_MiB": 39548,
-      "memory_free_MiB": 41607,
+      "memory_used_MiB": 38815,
+      "memory_free_MiB": 42340,
       "utilization_percent": 100
     },
     {
       "index": 6,
-      "memory_used_MiB": 47146,
-      "memory_free_MiB": 34008,
+      "memory_used_MiB": 47238,
+      "memory_free_MiB": 33916,
       "utilization_percent": 100
     },
     {
       "index": 7,
-      "memory_used_MiB": 38749,
-      "memory_free_MiB": 42406,
-      "utilization_percent": 100
+      "memory_used_MiB": 20638,
+      "memory_free_MiB": 60517,
+      "utilization_percent": 98
     }
   ],
   "joint_checkpoint": "/data3/user/LocateMOT-checkpoints/groundjev_native_three_task_expansion_gpu7_v3/groundjev-native-three-task-step001200.pt",

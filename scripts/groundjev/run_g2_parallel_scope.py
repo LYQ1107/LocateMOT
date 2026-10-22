@@ -87,6 +87,12 @@ def main() -> int:
     parser.add_argument("--label", required=True)
     parser.add_argument("--model", type=Path, default=G2_BUNDLE)
     parser.add_argument("--model-label", default="G2_CLEAN_V2")
+    parser.add_argument(
+        "--resume-from",
+        type=Path,
+        default=None,
+        help="restore the completed causal prefix from an immutable partial run into this fresh output",
+    )
     parser.add_argument("--ovmot-chunk-size", type=int, default=96)
     parser.add_argument(
         "--grounding-parser",
@@ -109,6 +115,12 @@ def main() -> int:
         raise RuntimeError(f"scope is not independent: {args.manifest}")
     if not (args.model / "model.safetensors").is_file():
         raise FileNotFoundError(args.model / "model.safetensors")
+    if args.resume_from is not None:
+        source_decisions = args.resume_from / "frame_decisions.jsonl"
+        if not source_decisions.is_file():
+            raise FileNotFoundError(f"resume source has no frame_decisions.jsonl: {source_decisions}")
+        if args.resume_from.resolve() == args.out.resolve():
+            raise ValueError("resume source and fresh output must be different directories")
 
     state = {
         "status": f"G2_PARALLEL_SCOPE_GPU{args.gpu}_STARTING",
@@ -124,6 +136,7 @@ def main() -> int:
         "model_label": args.model_label,
         "same_input_parser_decoder_tracker_scorer": True,
         "grounding_parser_policy": args.grounding_parser or ("official_scoring_repaired" if args.task == "ovmot" else "official_scoring"),
+        "resume_from": str(args.resume_from) if args.resume_from else None,
         "completed": {},
         "failed": None,
     }
@@ -178,6 +191,8 @@ def main() -> int:
             if args.ovmot_chunk_size <= 0:
                 raise ValueError("--ovmot-chunk-size must be positive")
             command += ["--grounding-vocabulary-chunk-size", str(args.ovmot_chunk_size), "--category-policy", "native_label"]
+        if args.resume_from is not None:
+            command += ["--resume-from", str(args.resume_from)]
         state.update(status=f"RUNNING_{args.model_label}_{args.label}", current_stage="INFERENCE", current_scope=args.label)
         save(owner_path, state)
         run_logged(command, RUNTIME_ROOT, env, args.out / "G2_CLEAN_V2_inference.log")
@@ -196,6 +211,8 @@ def main() -> int:
         state["completed"] = {
             "frames": len(observed), "result": result, "official_metrics": metrics,
             "inference_command": command, "scorer_command": scorer_command,
+            "resumed_completed_frames": result.get("resumed_completed_frames", 0),
+            "timing_limitations": result.get("timing_limitations"),
         }
         state.update(status="G2_PARALLEL_SCOPE_COMPLETE", current_stage="COMPLETE", heldout_claim=True)
         state["receipt"] = {"status": state["status"], "task": args.task, "label": args.label,
