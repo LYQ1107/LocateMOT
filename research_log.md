@@ -3622,3 +3622,8 @@ optimizer。单帧 GPU7 forward/backward 回归通过，证明 checkpoint、adap
 这只是稳定性与联合更新回归，不作独立性能结论。随后以相同 manifest、G2 step18227、
 72 行/任务和 1200 steps 启动独立 `groundjev_native_three_task_expansion_gpu7_v3`，
 当前已进入 `TRAINING`；v2 失败目录、日志和 receipt 缺失事实均保留。
+
+修复后的一次状态读取显示 G0 MOT20-05 已写入 1633/1657 帧，G2 GPU5/GPU6 分别
+写入 656/375 帧，DanceTrack/AnimalTrack 域扩展分别写入 368/147 帧；五个 held-out
+owner 仍为 `failed=null`，GPU7 v3 仍在 TRAINING，尚未生成最终官方指标或三任务
+扩展 receipt。
