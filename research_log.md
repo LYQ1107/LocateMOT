@@ -3560,3 +3560,15 @@ utilization=0% 且仅有 16.4 GiB 外部进程后，又启动独立 G2-only owne
 `g2_clean_independent_gpu6_v1`（端口 8225）。该 owner 同样通过 bundle/overlap
 审计并进入 MOT20-05 native inference（frame 1662），GPU3/GPU5/GPU6 三个输出
 目录互不覆盖，外部 PID 均保留；最终只采纳产生完整 receipt 的运行。
+
+## 2026-10-22 — Immediate co-resident domain validation start
+
+用户要求不等待 MOT20 owner 结束，立即并行验证其它 G2 域。一次性资源探测显示
+GPU5 空闲 62,919/81,920 MiB、GPU6 空闲 46,551/81,920 MiB，均高于域验证队列的
+32,768 MiB 门槛；现有 GPU5/GPU6 MOT20 owner 及其服务未停止、未覆盖。清理了仅
+处于 WAITING 状态的旧域接力进程，并把 `queue_g2_domain_heldout_after_existing.py`
+增加为 `--start-now` 模式：保留当前 owner 证据，记录 `parallel_started=true`，
+使用独立端口 8230/8231 和独立输出目录立即启动 DanceTrack `dancetrack0004`
+（GPU5）及 AnimalTrack `chicken_1`（GPU6）。两路 owner 已进入
+`WAITING_G2_CLEAN_V2_SERVICE_GPU5/6` 的服务启动阶段，当前 MOT20 输出仍受保护；
+最终只采纳完整 inference、scorer、frame-contract 和 official-metrics receipt。
