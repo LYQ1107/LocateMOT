@@ -1,0 +1,46 @@
+{
+  "recorded_at": "2026-10-22T23:58:00.590511+08:00",
+  "project_root": "/data2/user/LocateMOT",
+  "purpose": "two additional parallel model controls on the same independent MOT20-05 registered validation scope",
+  "scope": {
+    "manifest": "/data3/user/LocateMOT-runs/GroundJEV/g2_step3000_full_eval_mot20_05/mot20_05_validation_half.json",
+    "dataset": "MOT20",
+    "sequence": "MOT20-05",
+    "registered_frames": 1657,
+    "training_on_this_scope": false,
+    "same_parser_decoder_tracker_scorer": true,
+    "metric_claim_status": "pending_until_terminal_receipt_and_exact_frame_check"
+  },
+  "runs": [
+    {
+      "name": "g1_mot20_05_gpu4_v1",
+      "model_label": "G1_GPU5_V2",
+      "model": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM-TrackProjG1-GPU5-V2",
+      "gpu": 4,
+      "port": 8240,
+      "owner_state": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g1_mot20_05_gpu4_v1/owner_state.json",
+      "status": "RUNNING_G1_GPU5_V2_mot20_05_validation1657"
+    },
+    {
+      "name": "g200_mot20_05_gpu7_v1",
+      "model_label": "G200_TRACKING200",
+      "model": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM-TrackProj200",
+      "gpu": 7,
+      "port": 8238,
+      "owner_state": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g200_mot20_05_gpu7_v1/owner_state.json",
+      "status": "RUNNING_G200_TRACKING200_mot20_05_validation1657"
+    }
+  ],
+  "resource_snapshot": {
+    "gpu4_free_mib": 51336,
+    "gpu7_free_mib": 60638,
+    "minimum_gate_mib": 32768,
+    "existing_g2_gpu5_owner_preserved": true,
+    "gpu3_and_gpu6_not_used_because_occupied": true,
+    "additional_scheduler_policy": "at most one new scheduler per GPU4/GPU7; no same-GPU duplicate"
+  },
+  "notes": [
+    "GPU4/GPU7 already had unrelated processes; no process was terminated.",
+    "These are controls/expanded evidence only; no partial output is a metric."
+  ]
+}
