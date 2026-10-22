@@ -47,6 +47,8 @@ def collect(path: Path) -> dict[str, Any]:
     if state is None:
         return {"owner_state": str(path), "status": "MISSING", "accepted": {}}
     accepted: dict[str, Any] = {}
+    default_model = state.get("model") or state.get("g2_bundle")
+    default_manifest = state.get("manifest")
     for name, item in (state.get("completed") or {}).items():
         if name == "g2_dependency" or not isinstance(item, dict):
             continue
@@ -55,9 +57,9 @@ def collect(path: Path) -> dict[str, Any]:
         frames = item.get("frames")
         if isinstance(metrics, dict) and isinstance(result, dict) and isinstance(frames, int):
             accepted[name] = {
-                "task": item.get("task"),
-                "model": item.get("model"),
-                "manifest": item.get("manifest"),
+                "task": item.get("task") or state.get("task"),
+                "model": item.get("model") or default_model,
+                "manifest": item.get("manifest") or default_manifest,
                 "frames": frames,
                 "official_metrics": metrics,
                 "result_status": result.get("status"),
@@ -68,6 +70,10 @@ def collect(path: Path) -> dict[str, Any]:
         "current_scope": state.get("current_scope", state.get("scope")),
         "physical_gpu": state.get("physical_gpu"),
         "failed": state.get("failed"),
+        "model": default_model,
+        "model_sha256": sha256(Path(default_model)) if default_model else None,
+        "manifest": default_manifest,
+        "manifest_sha256": sha256(Path(default_manifest)) if default_manifest else None,
         "accepted": accepted,
         "claim_boundary": "Only accepted entries have complete official receipts; partial or failed entries are status evidence only.",
     }
