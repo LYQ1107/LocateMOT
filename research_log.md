@@ -4540,3 +4540,7 @@ G2 AnimalTrack, and G2 RMOT multi. The GPU7 chunk-192 TAO OVMOT owner has entere
 - Resource action: released three owned process groups to avoid occupying shared GPU capacity: the superseded strict TAO video105 run on GPU5 (`g2_parallel_ovmot_gpu5_v1`), the duplicate full MOT20 run on GPU6 (`g2_clean_independent_gpu6_v1`, same input as the retained GPU5 run), and the orphaned historical service on port 8101 whose scheduler was already defunct.
 - Partial outputs were preserved. The two interrupted owners were marked `FAILED/RESOURCE_RECLAIMED` with `heldout_claim=false`; neither partial output is used as a metric.
 - The active SGLang scheduler count dropped from 10 live schedulers plus one zombie to 8 live schedulers. Remaining services are G0, G1, G2, G200, and repaired TAO scopes; no new server will be added to GPU6 until a queued scope needs it.
+
+## 2026-10-22 Asia/Shanghai — stale native-training waiters retired
+- Two historical shell waiters were still alive: one waiting on a failed native-three-task owner and one scheduled to launch `queue_groundjev_native_three_task.py` after G0 became terminal. They were not part of the current OneJev full-joint queue and would have competed for GPU resources after the held-out gate.
+- Both process groups were terminated without touching active inference owners. Existing native-training failure receipts remain unchanged; the recoverable training entry is now the explicit `queue_onejev_full_joint_resume_after_heldout.py` path.
