@@ -4439,3 +4439,15 @@ GPU6 的 G2 MOT20 owner 未停止，G1 owner 在完整 receipt 前不作指标�
 `queue_groundjev_heldout_finalize_multidomain.py`，等待十个 G0/G2/G1/RMOT/TAO
 owner 全部进入 COMPLETE/FAILED 后，用同一 receipt collector 写出独立的
 multidomain finalization artifact；旧的五路、七路、九路收口文件不覆盖。
+
+## 2026-10-22 — four-GPU parallel validation live snapshot
+
+本次轻量收口确认四张研究卡仍按既定协议并行：GPU3 的 G0 RMOT single 与 G1
+DanceTrack，GPU5 的 G2 MOT20、G2 DanceTrack、G2 TAO OVMOT，GPU6 的 G2 MOT20
+与 G1 AnimalTrack，GPU7 的 G2 RMOT single/multi。当前逐帧进度为 G1 AnimalTrack
+15/306、G1 DanceTrack 245/1203、G2 MOT20 GPU5 690/1657、GPU6 395/1657、G2
+DanceTrack 691/1203、TAO 2/40、RMOT single 302/800、RMOT multi 395/800；这些
+数字仅是运行证据，未升级为指标。GPU5/6 空闲显存约 24.5/28.1 GiB，低于 runner
+的 32 GiB 启动门槛，因此没有强行再开服务；GPU7 的快速 OVMOT 队列继续等待两路
+RMOT 释放显存。live receipt collector 当前包含 10 个 owner，仍只有已完成的
+G0 MOT20 与 G2 AnimalTrack 两个 official scope（accepted_scope_count=2）。

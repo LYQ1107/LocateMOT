@@ -1,8 +1,8 @@
 {
   "schema": "groundjev.active_goal.live.v1",
   "project_root": "/data2/user/LocateMOT",
-  "generated_at_utc": "2026-10-22T02:21:22.541666+00:00",
-  "git_commit": "7b0b83f405bb1b3c48359ff84837c096fa9e6463",
+  "generated_at_utc": "2026-10-22T02:24:27.635409+00:00",
+  "git_commit": "c13c88ba9f73aefad6564cd3ab2897fd52523f46",
   "owners": {
     "G0": {
       "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g2_clean_independent_gpu3_v1/owner_state.json",
@@ -74,8 +74,8 @@
     },
     "G1_ANIMAL": {
       "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g1_animaltrack_gpu6_v1/owner_state.json",
-      "status": "G2_PARALLEL_SCOPE_SERVICE_STARTING",
-      "current_stage": "SERVICE_STARTING",
+      "status": "RUNNING_G1_GPU5_animaltrack_chicken1_test306",
+      "current_stage": "INFERENCE",
       "failed": null,
       "completed": [],
       "physical_gpu": 6
@@ -98,16 +98,16 @@
     }
   },
   "frame_progress_rows": {
-    "G0_RMOT": 291,
-    "G2_MOT_GPU5": 686,
-    "G2_MOT_GPU6": 394,
-    "G2_DANCE": 660,
+    "G0_RMOT": 375,
+    "G2_MOT_GPU5": 690,
+    "G2_MOT_GPU6": 395,
+    "G2_DANCE": 696,
     "G2_ANIMAL": 306,
     "G2_TAO": 2,
-    "G1_DANCE": 198,
-    "G1_ANIMAL": 0,
-    "RMOT_SINGLE": 237,
-    "RMOT_MULTI": 310
+    "G1_DANCE": 252,
+    "G1_ANIMAL": 17,
+    "RMOT_SINGLE": 311,
+    "RMOT_MULTI": 406
   },
   "official_metrics": {
     "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g2_domain_animaltrack_gpu6_v1/G2_CLEAN_V2/animaltrack_chicken1_test306/official_metrics.json": {
@@ -2205,13 +2205,13 @@
       "index": 3,
       "memory_used_MiB": 36436,
       "memory_free_MiB": 44718,
-      "utilization_percent": 98
+      "utilization_percent": 100
     },
     {
       "index": 4,
       "memory_used_MiB": 48461,
       "memory_free_MiB": 32694,
-      "utilization_percent": 100
+      "utilization_percent": 92
     },
     {
       "index": 5,
@@ -2221,8 +2221,8 @@
     },
     {
       "index": 6,
-      "memory_used_MiB": 34604,
-      "memory_free_MiB": 46551,
+      "memory_used_MiB": 52372,
+      "memory_free_MiB": 28783,
       "utilization_percent": 100
     },
     {
