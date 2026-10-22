@@ -1,8 +1,8 @@
 {
   "schema": "groundjev.active_goal.live.v1",
   "project_root": "/data2/user/LocateMOT",
-  "generated_at_utc": "2026-10-22T16:29:13.167285+00:00",
-  "git_commit": "bdd62f83a1f4a340402101fab1f1457efb6bf694",
+  "generated_at_utc": "2026-10-22T16:34:14.286638+00:00",
+  "git_commit": "7008197746a47a4bb3d15ff55f0868ce4b2cb7ae",
   "owners": {
     "G0": {
       "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g2_clean_independent_gpu3_v1/owner_state.json",
@@ -264,8 +264,8 @@
     },
     "G1_MOT20_GPU5_RESUMED": {
       "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g1_mot20_05_gpu5_resume_v1/owner_state.json",
-      "status": "G2_PARALLEL_SCOPE_SERVICE_STARTING",
-      "current_stage": "SERVICE_STARTING",
+      "status": "RUNNING_G1_GPU5_V2_mot20_05_validation1657",
+      "current_stage": "INFERENCE",
       "failed": null,
       "completed": [],
       "physical_gpu": 5
@@ -299,8 +299,8 @@
     "G2_TAO105_SERIAL_V2": 40,
     "RMOT_SINGLE": 800,
     "RMOT_MULTI": 800,
-    "G1_MOT20_GPU5_RESUMED": 0,
-    "G200_MOT20_GPU7": 39
+    "G1_MOT20_GPU5_RESUMED": 27,
+    "G200_MOT20_GPU7": 47
   },
   "official_metrics": {
     "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g2_parallel_rmot_single_gpu7_v1/G2_CLEAN_V2/rmot_single0007/official_metrics.json": {
@@ -9091,7 +9091,7 @@
       "index": 1,
       "memory_used_MiB": 74164,
       "memory_free_MiB": 6990,
-      "utilization_percent": 100
+      "utilization_percent": 97
     },
     {
       "index": 2,
@@ -9109,12 +9109,12 @@
       "index": 4,
       "memory_used_MiB": 29910,
       "memory_free_MiB": 51244,
-      "utilization_percent": 100
+      "utilization_percent": 90
     },
     {
       "index": 5,
-      "memory_used_MiB": 38815,
-      "memory_free_MiB": 42340,
+      "memory_used_MiB": 42717,
+      "memory_free_MiB": 38438,
       "utilization_percent": 100
     },
     {
@@ -9127,7 +9127,7 @@
       "index": 7,
       "memory_used_MiB": 20638,
       "memory_free_MiB": 60517,
-      "utilization_percent": 98
+      "utilization_percent": 95
     }
   ],
   "joint_checkpoint": "/data3/user/LocateMOT-checkpoints/groundjev_native_three_task_expansion_gpu7_v3/groundjev-native-three-task-step001200.pt",
@@ -9137,7 +9137,7 @@
     "state": {
       "status": "WAITING_HELDOUT_TERMINAL_AND_EXCLUSIVE_GPU_SET",
       "current_stage": "WAITING_HELDOUT_TERMINAL_AND_EXCLUSIVE_GPU_SET",
-      "owner_pid": 2170086,
+      "owner_pid": 2306542,
       "project_root": "/data2/user/LocateMOT",
       "runtime_root": "/data2/user/LocateMOT_GroundJEV",
       "heldout_finalizer": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/groundjev_heldout_g200_finalization_receipt.json",
