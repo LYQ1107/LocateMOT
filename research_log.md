@@ -4353,3 +4353,12 @@ OVMOT 旁路和 G1 同域控制被遗漏，新增并启动
 G2 MOT20、G2 DanceTrack、G2 AnimalTrack、G2 TAO OVMOT video105、G1 DanceTrack）
 分别进入 COMPLETE/FAILED 后，调用同一严格 receipt collector 写出独立 extended
 collection/finalization receipt；原有五 owner finalizer 和历史结果保持不变。
+
+## 2026-10-22 — G200 same-domain control resource gate
+
+尝试在 GPU3 的 G0/G1 共存窗口启动 `GroundAnything-DLM-TrackProj200` 的同一
+DanceTrack 独立 scope，形成 G0/G200/G1/G2 同输入比较。启动前资源门检测到 GPU3
+仅剩 17,949 MiB free，低于 32,768 MiB 的服务启动门槛，因此 owner
+`g200_dancetrack_gpu3_v1` 在服务启动前安全失败（optimizer/inference updates=0），
+没有触碰 G0/G1 运行，也没有把失败尝试当成指标。G200 已有的 48 帧官方控制 receipt
+和 bundle 保留作为现有对照证据；不在当前四卡窗口继续强行加服务。
