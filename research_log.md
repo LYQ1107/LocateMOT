@@ -4387,6 +4387,10 @@ target 合法 mask。checkpoint 为
 真实 GPU 三任务共享-G2 readout 训练和可恢复 checkpoint 已完成；receipt 明确不作
 视频级 HOTA/TETA 泛化或独立 OneJev 模型性能结论。
 
+随后以 `weights_only=False` 在 CPU 重新加载该 checkpoint：`step=1200`、manifest/model
+SHA 与 receipt 一致，`groundjev_model` 含 19 个 tensor、2,100,999 个参数元素，未发现
+非有限值；因此该文件是可恢复 checkpoint，而不是只存在文件名的训练标记。
+
 ## 2026-10-22 — GPU7 immediate independent RMOT expansion
 
 GPU7 在三任务 readout 完成后释放；为不等待 GPU5/GPU6 的 MOT20 长序列，立即启动
