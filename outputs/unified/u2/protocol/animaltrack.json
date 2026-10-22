@@ -1,0 +1,13 @@
+{
+  "dataset": "animaltrack",
+  "format": "locatemot-u2-animaltrack-v1",
+  "gt_policy": {
+    "boxes": "original AnimalTrack MOT-style xywh rows",
+    "positive": "release test annotations",
+    "recall_unit": "one positive animal identity per frame",
+    "visibility_cutoff": null
+  },
+  "official_test_labels_read": false,
+  "license": "AnimalTrack official research release",
+  "note": "Only registered official test videos may be reported as independent held-out evaluation."
+}
