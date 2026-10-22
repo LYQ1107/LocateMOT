@@ -33,14 +33,24 @@ def read_json(path: Path) -> dict[str, Any] | None:
         return None
 
 
-def sha256(path: Path) -> str | None:
-    if not path.is_file():
+def sha256(path: Path | None) -> str | None:
+    if path is None or not path.is_file():
         return None
     digest = hashlib.sha256()
     with path.open("rb") as handle:
         for chunk in iter(lambda: handle.read(1 << 20), b""):
             digest.update(chunk)
     return digest.hexdigest()
+
+
+def model_artifact(path: str | None) -> Path | None:
+    """Resolve a model bundle directory to its immutable weight file."""
+    if not path:
+        return None
+    candidate = Path(path)
+    if candidate.is_dir():
+        candidate = candidate / "model.safetensors"
+    return candidate
 
 
 def collect(path: Path) -> dict[str, Any]:
@@ -70,14 +80,19 @@ def collect(path: Path) -> dict[str, Any]:
         result = item.get("result")
         frames = item.get("frames")
         if isinstance(metrics, dict) and isinstance(result, dict) and isinstance(frames, int):
+            model_path = item.get("model") or default_model
+            manifest_path = item.get("manifest") or default_manifest
             accepted[name] = {
                 "task": item.get("task") or state.get("task"),
-                "model": item.get("model") or default_model,
-                "manifest": item.get("manifest") or default_manifest,
+                "model": model_path,
+                "model_sha256": sha256(model_artifact(model_path)),
+                "manifest": manifest_path,
+                "manifest_sha256": sha256(Path(manifest_path)) if manifest_path else None,
                 "frames": frames,
                 "official_metrics": metrics,
                 "result_status": result.get("status"),
             }
+    model_file = model_artifact(default_model)
     return {
         "owner_state": str(path),
         "status": state.get("status"),
@@ -85,7 +100,7 @@ def collect(path: Path) -> dict[str, Any]:
         "physical_gpu": state.get("physical_gpu"),
         "failed": state.get("failed"),
         "model": default_model,
-        "model_sha256": sha256(Path(default_model)) if default_model else None,
+        "model_sha256": sha256(model_file) if model_file else None,
         "manifest": default_manifest,
         "manifest_sha256": sha256(Path(default_manifest)) if default_manifest else None,
         "accepted": accepted,

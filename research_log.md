@@ -4521,3 +4521,6 @@ G2 AnimalTrack, and G2 RMOT multi. The GPU7 chunk-192 TAO OVMOT owner has entere
 - Action: GPU7 had 39,397 MiB free while the fast TAO control was active, so a second `.30` GroundAnything G2 Clean service was started on port 8241 for the registered TAO video63 Base/Novel manifest (`ovmot_tao_base_novel63_full.json`, 40 annotation frames, 160 evaluation-only GT boxes). The run uses the same official parser, tracking_dense decoder, Simple associator, native-label policy and vocabulary chunk size 192.
 - The held-out G200 finalizer, fast-OVMOT finalizer, and OneJev resume queue were restarted with the new video63 owner included in their terminal gates. Existing model/evaluation processes were left untouched.
 - Scope is still running; no partial frame count is promoted to a metric. This closes the earlier gap where only TAO video105 was active for the current G2 Clean OVMOT sweep.
+
+## 2026-10-22 10:55 Asia/Shanghai — receipt hash enrichment
+- The held-out collector now resolves bundle directories to `model.safetensors` before hashing and records model/manifest SHA-256 per accepted scope. This fixes the prior directory-hash omission without changing inference or scoring.
