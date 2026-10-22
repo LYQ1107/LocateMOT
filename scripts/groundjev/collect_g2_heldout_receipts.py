@@ -49,7 +49,20 @@ def collect(path: Path) -> dict[str, Any]:
     accepted: dict[str, Any] = {}
     default_model = state.get("model") or state.get("g2_bundle")
     default_manifest = state.get("manifest")
-    for name, item in (state.get("completed") or {}).items():
+    completed_root = state.get("completed") or {}
+    # Older owners store one completed block under a scope key; the generic
+    # parallel runner stores that same block directly at the owner level.
+    # Normalize both shapes before applying the receipt acceptance contract.
+    if isinstance(completed_root, dict) and (
+        "frames" in completed_root
+        and ("result" in completed_root or "official_metrics" in completed_root)
+    ):
+        completed_items = {
+            state.get("current_scope", state.get("scope", state.get("label", "completed"))): completed_root
+        }
+    else:
+        completed_items = completed_root
+    for name, item in completed_items.items():
         if name == "g2_dependency" or not isinstance(item, dict):
             continue
         metrics = item.get("official_metrics")

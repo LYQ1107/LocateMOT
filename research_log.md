@@ -4483,3 +4483,19 @@ held-out owner 和 G200 finalizer 进入终态，确认 GPU3/5/6/7 无计算进�
 32 GiB free 后，从该 step3000 状态恢复真实 MOT/RMOT/OVMOT source-manifest 联合
 训练，输出到新的 `/data3/user/LocateMOT-checkpoints/onejev_full_joint_source_epoch1_after_heldout_v1`。
 历史目录保持只读证据，队列当前处于 `WAITING_HELDOUT_TERMINAL_AND_EXCLUSIVE_GPU_SET`。
+
+## 2026-10-22 — RMOT multi official receipt and fast TAO OVMOT launch
+
+G2 Clean RMOT multi `0007` reached its complete 800/800-frame contract. The official
+receipt reports HOTA `0.5028468967`, DetA `0.4257416214`, AssA `0.5942019821`, IDF1
+`0.5618408437`, IDSW `108`, FP `1450`, FN `459`; the receipt also records the official
+end-to-end timing. The first live collection omitted this valid result because the generic
+runner stores one completed block directly at owner level while the collector only handled
+the older scope-nested shape. The collector now normalizes both shapes; accepted scope
+count rose from 2 to 3 without changing any result or score.
+
+RMOT multi released GPU7 capacity. The waiting TAO OVMOT control crossed the 32 GiB gate
+(observed 42,827 MiB free) and started on GPU7 with vocabulary chunk size 192, while the
+original GPU5 96-class run remains untouched. A new twelve-owner finalizer and live
+snapshot include this fast OVMOT control; it is a throughput comparison, not a replacement
+for the original protocol.
