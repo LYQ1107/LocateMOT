@@ -410,11 +410,18 @@ def encode_features(
                     torch.cuda.empty_cache()
                 active_bridge = bridge_factory()
                 provider_restarts += 1
-            state = active_bridge.encode(
-                None, item.boxes, item.labels, frame_id=next_frame,
-                image_key=str(item.image_path), task_query=item.query,
-                metadata={"joint_task": item.task, "source_row_id": str(item.row.get("id"))},
-            )
+            try:
+                state = active_bridge.encode(
+                    None, item.boxes, item.labels, frame_id=next_frame,
+                    image_key=str(item.image_path), task_query=item.query,
+                    metadata={"joint_task": item.task, "source_row_id": str(item.row.get("id"))},
+                )
+            except Exception as error:
+                raise RuntimeError(
+                    "native feature encoding failed at "
+                    f"unique_input_index={next_frame}, row_id={item.row.get('id')!r}, "
+                    f"image={str(item.image_path)!r}, task={item.task!r}"
+                ) from error
             cache[key] = (
                 state.vision_tokens.detach().to("cpu", dtype=torch.float32),
                 (state.contextual_tokens.detach().to("cpu", dtype=torch.float32)
@@ -669,7 +676,7 @@ def main() -> int:
         "step": args.steps,
         "model_sha256": args.model_sha256,
         "adapter": str(Path(args.adapter).resolve()),
-        "adapter_step": int(getattr(bridge.provider, "adapter_step", -1)),
+        "adapter_step": int(feature_audit.get("adapter_step", -1)),
         "manifest": str(manifest),
         "manifest_sha256": audit["manifest_sha256"],
         "groundjev_model": model.state_dict(),
