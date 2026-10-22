@@ -1,0 +1,39 @@
+{
+  "schema": "groundjev.g1.multidomain.heldout_receipts.v1",
+  "project_root": "/data2/user/LocateMOT",
+  "generated_at": "2026-10-22T03:09:26.954006+00:00",
+  "claim_boundary": "Only completed official receipts are accepted; pending scopes are status evidence only.",
+  "owners": [
+    {
+      "owner": "g1_animaltrack_gpu6_v1",
+      "status": "G2_PARALLEL_SCOPE_COMPLETE",
+      "model_label": "G1_GPU5",
+      "model": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM-TrackProjG1-GPU5-V2",
+      "manifest": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout_inputs/g2_domain_v1/animaltrack_chicken1_test306.json",
+      "completed": {
+        "result": {
+          "frames": 306,
+          "official_metrics": {
+            "status": "COMPLETE",
+            "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g1_animaltrack_gpu6_v1/G1_GPU5/animaltrack_chicken1_test306/official_metrics.json",
+            "scope": "animaltrack_chicken1_test306",
+            "frames": 306
+          },
+          "result_status": null
+        }
+      },
+      "current_scope": "animaltrack_chicken1_test306"
+    },
+    {
+      "owner": "g1_dancetrack_gpu3_v1",
+      "status": "RUNNING_G1_GPU5_dancetrack0004_val1203",
+      "model_label": "G1_GPU5",
+      "model": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM-TrackProjG1-GPU5-V2",
+      "manifest": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout_inputs/g2_domain_v1/dancetrack0004_val1203.json",
+      "completed": {},
+      "current_scope": "dancetrack0004_val1203"
+    }
+  ],
+  "accepted_scope_count": 1,
+  "pending_scope_count": 1
+}
