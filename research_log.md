@@ -4524,3 +4524,6 @@ G2 AnimalTrack, and G2 RMOT multi. The GPU7 chunk-192 TAO OVMOT owner has entere
 
 ## 2026-10-22 10:55 Asia/Shanghai — receipt hash enrichment
 - The held-out collector now resolves bundle directories to `model.safetensors` before hashing and records model/manifest SHA-256 per accepted scope. This fixes the prior directory-hash omission without changing inference or scoring.
+
+## 2026-10-22 11:00 Asia/Shanghai — G1 adaptation evidence registered in live snapshot
+- The completed GPU5 GroundAnything G1 adaptation owner is now included in the live evidence snapshot alongside its held-out DanceTrack/AnimalTrack inference owners. Its receipt records 200 native Tracking200 training steps, exported bundle SHA-256 `0efd9d7ddb241d588be85cb6b08853de5dfd18011aa477932c0580bab3265a25`, and 12 isolated control units over 96 registered frames; those controls are not promoted as full-dataset performance.

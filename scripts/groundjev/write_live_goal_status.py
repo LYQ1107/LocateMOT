@@ -20,6 +20,7 @@ OWNERS = {
     "G2_GPU6": RUNTIME / "outputs/groundjev/heldout/g2_clean_independent_gpu6_v1/owner_state.json",
     "G2_DANCE": RUNTIME / "outputs/groundjev/heldout/g2_domain_dancetrack_gpu5_v1/owner_state.json",
     "G2_ANIMAL": RUNTIME / "outputs/groundjev/heldout/g2_domain_animaltrack_gpu6_v1/owner_state.json",
+    "G1_ADAPTATION": RUNTIME / "outputs/groundjev/ground_adaptation/g1_gpu5_isolated96_v1/owner_state.json",
     "G2_TAO": RUNTIME / "outputs/groundjev/heldout/g2_parallel_ovmot_gpu5_v1/owner_state.json",
     "G2_TAO_FAST": RUNTIME / "outputs/groundjev/heldout/g2_parallel_ovmot_gpu7_fast_v1/owner_state.json",
     "G2_TAO63": RUNTIME / "outputs/groundjev/heldout/g2_parallel_ovmot_gpu7_video63_v1/owner_state.json",
