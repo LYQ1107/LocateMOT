@@ -4530,3 +4530,8 @@ G2 AnimalTrack, and G2 RMOT multi. The GPU7 chunk-192 TAO OVMOT owner has entere
 
 ## 2026-10-22 11:05 Asia/Shanghai — held-out gate corrected for both TAO controls
 - The primary G200 finalizer and OneJev resume gate now require both TAO OVMOT owners: the original chunk-96 video105 run, the fast chunk-192 video105 control, and the newly launched Base/Novel video63 run. This prevents the joint resume from starting while a parallel TAO control remains incomplete.
+
+## 2026-10-22 11:15 Asia/Shanghai — OVMOT duplicate-coordinate root cause and repaired rerun
+- Diagnosis: TAO video105 frame31 returned 100 complete pairs plus two exact duplicate coordinate tuples, but also a malformed concatenated label fragment. The strict protocol raised `duplicate coordinate tuples are not canonical`; the pinned scoring parser then recovered no safe complete sequence, so the whole chunk became an empty/rejected frame.
+- Independent parser check on the saved raw response recovered 100 complete label/box pairs, removed only 2 exact duplicates, dropped 0 fragments, and filled/reordered no coordinates.
+- Change: new OVMOT invocations now use `official_scoring_repaired`, which preserves strict diagnostics while retaining only complete canonical pairs. The unfinished strict TAO video63 diagnostic was preserved and marked superseded; a fresh repaired video63 owner was launched with a separate output directory. Existing strict video105 remains a diagnostic control.

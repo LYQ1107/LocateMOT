@@ -342,9 +342,10 @@ def main() -> int:
                 time.sleep(2)
             for name, task, manifest in SCOPES:
                 output = args.out / label.replace("-", "_") / name
+                parser_policy = "official_scoring_repaired" if task == "ovmot" else "official_scoring"
                 command = [
                     str(VENV), str(RUN_VIDEO), "--task", task, "--video", str(manifest), "--backend", "simple",
-                    "--grounding-url", f"http://127.0.0.1:{PORT}/v1", "--grounding-parser", "official_scoring",
+                    "--grounding-url", f"http://127.0.0.1:{PORT}/v1", "--grounding-parser", parser_policy,
                     "--grounding-decoder-policy", "tracking_dense", "--perception-failure-policy", "empty_and_record",
                     "--out", str(output),
                 ]

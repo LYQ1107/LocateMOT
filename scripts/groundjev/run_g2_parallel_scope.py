@@ -88,6 +88,12 @@ def main() -> int:
     parser.add_argument("--model", type=Path, default=G2_BUNDLE)
     parser.add_argument("--model-label", default="G2_CLEAN_V2")
     parser.add_argument("--ovmot-chunk-size", type=int, default=96)
+    parser.add_argument(
+        "--grounding-parser",
+        choices=("official_scoring", "official_scoring_repaired"),
+        default=None,
+        help="Explicit parser policy; OVMOT defaults to complete-pair repair while retaining strict diagnostics.",
+    )
     args = parser.parse_args()
 
     owner_path = args.out / "owner_state.json"
@@ -117,6 +123,7 @@ def main() -> int:
         "model": str(args.model),
         "model_label": args.model_label,
         "same_input_parser_decoder_tracker_scorer": True,
+        "grounding_parser_policy": args.grounding_parser or ("official_scoring_repaired" if args.task == "ovmot" else "official_scoring"),
         "completed": {},
         "failed": None,
     }
@@ -160,10 +167,11 @@ def main() -> int:
             time.sleep(2)
 
         output = args.out / args.model_label / args.label
+        parser_policy = args.grounding_parser or ("official_scoring_repaired" if args.task == "ovmot" else "official_scoring")
         command = [
             str(VENV), str(RUN_VIDEO), "--task", args.task, "--video", str(args.manifest),
             "--backend", "simple", "--grounding-url", f"http://127.0.0.1:{args.port}/v1",
-            "--grounding-parser", "official_scoring", "--grounding-decoder-policy", "tracking_dense",
+            "--grounding-parser", parser_policy, "--grounding-decoder-policy", "tracking_dense",
             "--perception-failure-policy", "empty_and_record", "--out", str(output),
         ]
         if args.task == "ovmot":
