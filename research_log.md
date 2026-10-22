@@ -4646,3 +4646,8 @@ G2 AnimalTrack, and G2 RMOT multi. The GPU7 chunk-192 TAO OVMOT owner has entere
 - A direct snapshot found both current owners and services alive: G1 GPU5 reached 397 rows through physical frame 2055, and G200 GPU7 reached 439 rows through physical frame 2097. The correct owner waiter remains active; no inference process was restarted.
 - The legal scope is unchanged at 1,657 validation-half frames (physical 1659–3315, `training_on_this_scope=false`). These row counts are progress evidence only and carry no metric claim.
 - The live throughput receipt was refreshed while the files were advancing; the latest recomputed snapshot reached 399/440 rows (G1/G200) with recent-20-row median estimates near 26.0/26.4 s per frame and rough remaining times near 9.1/8.9 hours. Treat these as scheduling estimates, not performance results.
+
+## 2026-10-23 — MOT20 controls continue after extended wait
+- A fresh snapshot verified both owner/service pairs still alive and advancing: G1 GPU5 reached 491 rows through physical frame 2149, and G200 GPU7 reached 526 rows through physical frame 2184.
+- The refreshed live snapshot subsequently recorded 492/527 rows (G1/G200), with recent-20-row median estimates of approximately 27.8/26.8 s per frame and rough remaining times of 9.0/8.4 hours. These remain scheduling estimates only; neither scope has a terminal official receipt or metric claim.
+- Preserve the current runs and corrected owner waiter; OneJev remains gated on both terminal held-out scopes and exclusive GPU `(4,5,6,7)`.
