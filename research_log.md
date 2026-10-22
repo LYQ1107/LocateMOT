@@ -4641,3 +4641,8 @@ G2 AnimalTrack, and G2 RMOT multi. The GPU7 chunk-192 TAO OVMOT owner has entere
 - The resumed G1 GPU5 output advanced to 264 registered rows through physical frame 1922; the G200 GPU7 output advanced to 310 rows through physical frame 1968. The legal manifest remains 1,657 validation-half frames (physical 1659–3315, `training_on_this_scope=false`).
 - Over the latest 20 rows, median wall time was approximately 49.7 s/frame for G1 and 24.7 s/frame for G200, giving rough remaining estimates of 19.2 h and 9.2 h. These are scheduling estimates only; neither owner has a terminal official receipt, so no partial metric is claimed.
 - Refreshed `docs/GROUNDJEV/MOT20_CONTROL_THROUGHPUT_LIVE_20261023.json` with the snapshot. Preserve both runs without restart; OneJev remains gated on terminal held-out owners and exclusive GPU `(4,5,6,7)`.
+
+## 2026-10-23 — MOT20 controls verified advancing after extended wait
+- A direct snapshot found both current owners and services alive: G1 GPU5 reached 397 rows through physical frame 2055, and G200 GPU7 reached 439 rows through physical frame 2097. The correct owner waiter remains active; no inference process was restarted.
+- The legal scope is unchanged at 1,657 validation-half frames (physical 1659–3315, `training_on_this_scope=false`). These row counts are progress evidence only and carry no metric claim.
+- The live throughput receipt was refreshed while the files were advancing; the latest recomputed snapshot reached 399/440 rows (G1/G200) with recent-20-row median estimates near 26.0/26.4 s per frame and rough remaining times near 9.1/8.9 hours. Treat these as scheduling estimates, not performance results.
