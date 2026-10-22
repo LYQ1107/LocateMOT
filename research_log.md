@@ -3602,3 +3602,23 @@ GPU3/5/6 的独立 held-out 输出；完成后只接受包含 MOT、RMOT、OVMOT
 写入 100/1203 帧；AnimalTrack 域扩展已写入 43/306 帧。五个 owner 均仍为
 `failed=null`，官方 `official_metrics.json` 和最终收口 receipt 尚未生成。G0/G2
 逐帧合同继续保留，当前部分输出仅作为运行进度证据。
+
+## 2026-10-22 — GPU7 native expansion illegal-access repair and v3 restart
+
+GPU7 v2 首次真实 1200-step 扩展在 native feature encoding 的第 34 个 unique 输入
+触发 CUDA illegal memory access；逐输入上下文定位到
+`native_rmot_0008_3_q1_batch0_membership_2`、MOT/RMOT/OVMOT native manifest，错误
+栈落在上游 DLM `create_block_mask` 的动态 Inductor/Triton kernel，而不是 JEV
+optimizer。单帧 GPU7 forward/backward 回归通过，证明 checkpoint、adapter 和设备
+本身可用；4 行/任务、12 steps 的 chunk=64 回归也通过，但暴露了 receipt 中已删除
+`bridge` 的 NameError，已改为读取 `feature_audit.adapter_step`。
+
+按上游 `hybrid.py` 已提供的稳定路径，native provider 现在默认设置
+`GAM_DLM_STABLE_BLOCK_MASK=1`，并让 GPU7 owner 同时启用
+`CUDA_LAUNCH_BLOCKING=1`。修复后的 24 行/任务、240 steps 回归在 GPU7 完整通过：
+71 个真实视觉输入、MOT/RMOT/OVMOT 各 24 行，optimizer updates 分别为
+68/72/72，checkpoint 为
+`/data3/user/LocateMOT-checkpoints/groundjev_native_three_task_regression_gpu7_rows24_stable/groundjev-native-three-task-step000240.pt`。
+这只是稳定性与联合更新回归，不作独立性能结论。随后以相同 manifest、G2 step18227、
+72 行/任务和 1200 steps 启动独立 `groundjev_native_three_task_expansion_gpu7_v3`，
+当前已进入 `TRAINING`；v2 失败目录、日志和 receipt 缺失事实均保留。
