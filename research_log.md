@@ -3594,3 +3594,11 @@ GPU7 一次性资源探测为 79,599/81,920 MiB free，只有约 1.5 GiB 外部�
 恢复。v2 owner 已进入 `GPU7_NATIVE_THREE_TASK_EXPANSION_RUNNING/ TRAINING`，不改动
 GPU3/5/6 的独立 held-out 输出；完成后只接受包含 MOT、RMOT、OVMOT 三类更新和
 完整 receipt 的 checkpoint。
+
+## 2026-10-22 — Held-out pipelines advancing without terminal receipts
+
+一次性读取当前逐帧输出（只记录已写入行，不升级为指标）：G0 MOT20-05 已写入
+1592/1657 帧；G2 GPU5 已写入 625 帧、GPU6 已写入 363 帧；DanceTrack 域扩展已
+写入 100/1203 帧；AnimalTrack 域扩展已写入 43/306 帧。五个 owner 均仍为
+`failed=null`，官方 `official_metrics.json` 和最终收口 receipt 尚未生成。G0/G2
+逐帧合同继续保留，当前部分输出仅作为运行进度证据。
