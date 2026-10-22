@@ -4334,3 +4334,13 @@ parser、tracking_dense decoder、native_label category policy 和官方 multita
 新增脚本 `scripts/groundjev/run_g2_parallel_scope.py` 只负责这一 scope，写出独立
 owner state、逐帧合同和 receipt，不覆盖现有 MOT20、DanceTrack、AnimalTrack 输出。
 GPU6 当时仅约 28.3 GiB free，未再加服务，避免与现有 G2/AnimalTrack owner 争用显存。
+
+## 2026-10-22 — G1 GPU5 adaptation held-out control started
+
+为形成 G0/G2/G1 的同输入域对照，复用已经审计为独立的 DanceTrack
+`dancetrack0004_val1203` 1203 帧 manifest，在 GPU3 的剩余显存上启动 G1 GPU5
+适配 bundle `GroundAnything-DLM-TrackProjG1-GPU5-V2`，端口 8233，输出目录
+`g1_dancetrack_gpu3_v1`。G0 MOT20 owner 未停止，G2 DanceTrack owner 未覆盖；新
+owner 仍使用相同 run_video、official_scoring parser、tracking_dense decoder、
+empty_and_record failure policy 和官方 MOT scorer。该运行用于同范围控制比较，
+在完整 scorer receipt 生成前不宣称 G1 指标。

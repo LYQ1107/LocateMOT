@@ -85,6 +85,8 @@ def main() -> int:
     parser.add_argument("--manifest", type=Path, required=True)
     parser.add_argument("--out", type=Path, required=True)
     parser.add_argument("--label", required=True)
+    parser.add_argument("--model", type=Path, default=G2_BUNDLE)
+    parser.add_argument("--model-label", default="G2_CLEAN_V2")
     args = parser.parse_args()
 
     owner_path = args.out / "owner_state.json"
@@ -98,8 +100,8 @@ def main() -> int:
         raise FileNotFoundError(args.manifest)
     if manifest.get("training_on_this_scope") is not False:
         raise RuntimeError(f"scope is not independent: {args.manifest}")
-    if not (G2_BUNDLE / "model.safetensors").is_file():
-        raise FileNotFoundError(G2_BUNDLE / "model.safetensors")
+    if not (args.model / "model.safetensors").is_file():
+        raise FileNotFoundError(args.model / "model.safetensors")
 
     state = {
         "status": f"G2_PARALLEL_SCOPE_GPU{args.gpu}_STARTING",
@@ -111,7 +113,8 @@ def main() -> int:
         "label": args.label,
         "manifest": str(args.manifest),
         "manifest_sha256": None,
-        "g2_bundle": str(G2_BUNDLE),
+        "model": str(args.model),
+        "model_label": args.model_label,
         "same_input_parser_decoder_tracker_scorer": True,
         "completed": {},
         "failed": None,
@@ -137,7 +140,7 @@ def main() -> int:
         launch = [
             "python3", str(RUNTIME_ROOT / "tools/groundjev/run_with_resources.py"),
             "--gpus", str(args.gpu), "--", str(RUNTIME_ROOT / "external/GroundAnything/.venv-serve/bin/python"),
-            str(SERVE_PY), "--model", str(G2_BUNDLE), "--port", str(args.port),
+            str(SERVE_PY), "--model", str(args.model), "--port", str(args.port),
             "--mem-fraction-static", ".30", "--max-queued-requests", "2",
             "--out", str(args.out / "G2_CLEAN_V2_service"),
         ]
@@ -155,7 +158,7 @@ def main() -> int:
                 raise TimeoutError("service readiness timeout")
             time.sleep(2)
 
-        output = args.out / "G2_CLEAN_V2" / args.label
+        output = args.out / args.model_label / args.label
         command = [
             str(VENV), str(RUN_VIDEO), "--task", args.task, "--video", str(args.manifest),
             "--backend", "simple", "--grounding-url", f"http://127.0.0.1:{args.port}/v1",
@@ -164,7 +167,7 @@ def main() -> int:
         ]
         if args.task == "ovmot":
             command += ["--grounding-vocabulary-chunk-size", "96", "--category-policy", "native_label"]
-        state.update(status=f"RUNNING_G2_CLEAN_V2_{args.label}", current_stage="INFERENCE", current_scope=args.label)
+        state.update(status=f"RUNNING_{args.model_label}_{args.label}", current_stage="INFERENCE", current_scope=args.label)
         save(owner_path, state)
         run_logged(command, RUNTIME_ROOT, env, args.out / "G2_CLEAN_V2_inference.log")
         scorer = MOT_SCORER if args.task == "mot" else MULTITASK_SCORER
