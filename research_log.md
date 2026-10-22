@@ -4451,3 +4451,12 @@ DanceTrack 691/1203、TAO 2/40、RMOT single 302/800、RMOT multi 395/800；这�
 的 32 GiB 启动门槛，因此没有强行再开服务；GPU7 的快速 OVMOT 队列继续等待两路
 RMOT 释放显存。live receipt collector 当前包含 10 个 owner，仍只有已完成的
 G0 MOT20 与 G2 AnimalTrack 两个 official scope（accepted_scope_count=2）。
+
+## 2026-10-22 — G200 DanceTrack control resumed on released GPU3 capacity
+
+GPU3 后续释放至约 44.7 GiB free，满足同一 runner 的 32 GiB resource gate；因此
+在不增加 GPU 数量、不触碰 G0/G1 既有服务的前提下，启动独立 G200 DanceTrack
+owner `g200_dancetrack_gpu3_v2`（端口 8240，model label
+`G200_TRACKING200`）。原 `g200_dancetrack_gpu3_v1` 的 17,949 MiB 资源拒绝仍
+保留为失败记录，不覆盖；新增 G200 owner 纳入独立十一-owner finalizer，只有完整
+official receipt 才会进入 accepted collection。
