@@ -4434,3 +4434,8 @@ G1 GPU5 适配 bundle `GroundAnything-DLM-TrackProjG1-GPU5-V2`（端口 8239，�
 `g1_animaltrack_gpu6_v1`）。它沿用与 G2 AnimalTrack 完全相同的 manifest、parser、
 decoder、tracker 和 official MOT scorer，与已运行的 G1 DanceTrack 组成多域控制；
 GPU6 的 G2 MOT20 owner 未停止，G1 owner 在完整 receipt 前不作指标结论。
+
+为确保新增 G1 AnimalTrack scope 不被早先九-owner finalizer 遗漏，新增并启动
+`queue_groundjev_heldout_finalize_multidomain.py`，等待十个 G0/G2/G1/RMOT/TAO
+owner 全部进入 COMPLETE/FAILED 后，用同一 receipt collector 写出独立的
+multidomain finalization artifact；旧的五路、七路、九路收口文件不覆盖。
