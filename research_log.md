@@ -4415,4 +4415,14 @@ G2/parser/decoder/scorer 合同，仅把已登记的 vocabulary chunk 从 96 调
 生成并保留 `docs/GROUNDJEV/ACTIVE_GOAL_LIVE_20261022.json` 及其可重跑入口
 `scripts/groundjev/write_live_goal_status.py`。该快照记录九个 held-out owner 的
 状态、逐帧行数、GPU 显存和当前唯一完整 official metrics；明确把运行中帧数和
-服务状态标为 progress evidence，不升级为指标。
+ 服务状态标为 progress evidence，不升级为指标。
+
+## 2026-10-22 — G2 AnimalTrack independent official result
+
+G2 Clean GPU6 AnimalTrack owner 已完成独立 `chicken_1` test scope 的全部 306/306
+帧，owner 状态为 `G2_DOMAIN_HELDOUT_COMPLETE`，frame contract 与 manifest 的
+1..306 完全一致。官方 receipt 给出 HOTA `0.4014759675`、DetA `0.4986915750`、
+AssA `0.3363050521`、IDF1 `0.4335730657`、IDSW `144`、FP `1231`、FN `2040`，
+端到端 FPS `0.1212373`。这是 G2 Clean 的独立动物域结果，不与 G0/G1 或其它域
+混合归因；live receipt collector 当前接受的完整 scope 数为 2（G0 MOT20 与该
+AnimalTrack），其余 owner 仍按各自协议运行。
