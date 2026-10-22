@@ -4460,3 +4460,13 @@ owner `g200_dancetrack_gpu3_v2`（端口 8240，model label
 `G200_TRACKING200`）。原 `g200_dancetrack_gpu3_v1` 的 17,949 MiB 资源拒绝仍
 保留为失败记录，不覆盖；新增 G200 owner 纳入独立十一-owner finalizer，只有完整
 official receipt 才会进入 accepted collection。
+
+## 2026-10-22 — TAO OVMOT slow-path diagnosis
+
+GPU5 的 G2 TAO OVMOT owner 仍在正常运行；独立 manifest 的 40 帧是
+`1,31,61,...,1171` 的稀疏帧，因此当前 `frame_decisions.jsonl` 的 3 行对应已完成
+的前三个 manifest 帧，而不是 3/1203 的漏帧。每个 1203-class 请求约耗时 400 秒，
+主要开销来自词表分块。模型输出多次包含重复坐标 tuple，`official_scoring` parser
+按既定 strict wire contract 拒绝整帧并保留原始输出；没有把拒绝结果猜测为合法框。
+GPU7 的 192-class chunk 独立队列继续等待安全显存窗口，用于比较词表分块吞吐，不能
+覆盖当前 96-class 证据。
