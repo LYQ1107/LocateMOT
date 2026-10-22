@@ -4556,3 +4556,7 @@ G2 AnimalTrack, and G2 RMOT multi. The GPU7 chunk-192 TAO OVMOT owner has entere
 ## 2026-10-22 Asia/Shanghai — superseded strict G0 TAO control safely closed
 - The legacy G0 owner had advanced to `ovmot_tao105` with the pre-repair strict parser and vocabulary chunk size 96. Its G0 MOT20/RMOT receipts were already complete, while this extra control would have held the OneJev terminal gate for hours and was not the repaired OVMOT evidence.
 - Only the G0 TAO `run_video.py` child was terminated. The owner wrote `G2_CLEAN_FULL_INDEPENDENT_HELDOUT_FAILED` with the command failure and preserved partial output; existing G0 MOT20/RMOT receipts remain accepted. The repaired G2 TAO video63/video105 owners were left untouched.
+
+## 2026-10-22 Asia/Shanghai — G1 AnimalTrack held-out receipt
+- The GPU6 GroundAnything G1 adapter owner completed the independent AnimalTrack chicken_1 test scope with all 306 frames. Official metrics: HOTA `0.4661208959`, DetA `0.5490949528`, AssA `0.4067583015`, IDF1 `0.4992391856`, IDSW `145`, FP `1639`, FN `1300`.
+- This is a detector-adaptation held-out result under the G1 bundle and the same parser/decoder/tracker/scorer contract; G1 DanceTrack remains pending, so no multi-domain aggregate claim is made.
