@@ -1,8 +1,8 @@
 {
   "schema": "groundjev.active_goal.live.v1",
   "project_root": "/data2/user/LocateMOT",
-  "generated_at_utc": "2026-10-22T02:52:32.654867+00:00",
-  "git_commit": "e80c116b9b79621fa1283b4bf153e4cb9cba0cba",
+  "generated_at_utc": "2026-10-22T02:52:59.860466+00:00",
+  "git_commit": "74451937994886c7307df7a4fba295c7854700a2",
   "owners": {
     "G0": {
       "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g2_clean_independent_gpu3_v1/owner_state.json",
@@ -107,8 +107,8 @@
     },
     "G2_TAO63_REPAIRED": {
       "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g2_parallel_ovmot_gpu7_video63_repaired_v1/owner_state.json",
-      "status": "G2_PARALLEL_SCOPE_SERVICE_STARTING",
-      "current_stage": "SERVICE_STARTING",
+      "status": "RUNNING_G2_CLEAN_V2_tao_video63_base_novel40_repaired",
+      "current_stage": "INFERENCE",
       "failed": null,
       "completed": [],
       "physical_gpu": 7
@@ -168,17 +168,17 @@
   },
   "frame_progress_rows": {
     "G0_RMOT": 800,
-    "G2_MOT_GPU5": 724,
-    "G2_MOT_GPU6": 417,
-    "G2_DANCE": 1025,
+    "G2_MOT_GPU5": 725,
+    "G2_MOT_GPU6": 418,
+    "G2_DANCE": 1030,
     "G2_ANIMAL": 306,
     "G2_TAO": 7,
     "G2_TAO_FAST": 3,
     "G2_TAO63": 0,
     "G2_TAO63_REPAIRED": 0,
-    "G1_DANCE": 633,
-    "G1_ANIMAL": 172,
-    "G200_DANCE": 322,
+    "G1_DANCE": 638,
+    "G1_ANIMAL": 174,
+    "G200_DANCE": 326,
     "RMOT_SINGLE": 800,
     "RMOT_MULTI": 800
   },
@@ -2537,8 +2537,8 @@
     },
     {
       "index": 7,
-      "memory_used_MiB": 53956,
-      "memory_free_MiB": 27199,
+      "memory_used_MiB": 57586,
+      "memory_free_MiB": 23569,
       "utilization_percent": 100
     }
   ],
