@@ -28,7 +28,7 @@ WAIT_OWNERS = (
 )
 MANIFEST = RUNTIME / "outputs/groundjev/multitask_pilot_data/ovmot_tao_base_novel63_full.json"
 MODEL = RUNTIME / "models/GroundAnything-DLM-TrackProj200"
-RESUME_FROM = RUNTIME / "outputs/groundjev/heldout/g200_ovmot_dedicated_gpu7_v2_superseded_before_ovmot_timeout180/G200_GPU7_OVMOT_DEDICATED_RETRY/tao_video63_base_novel40_dedicated_retry"
+RESUME_FROM = RUNTIME / "outputs/groundjev/heldout/g200_ovmot_dedicated_gpu7_v2_superseded_before_ovmot_wall_timeout/G200_GPU7_OVMOT_DEDICATED_RETRY/tao_video63_base_novel40_dedicated_retry"
 OUT = RUNTIME / "outputs/groundjev/heldout/g200_ovmot_dedicated_gpu7_v2"
 QUEUE_STATE = RUNTIME / "outputs/groundjev/heldout/g200_ovmot_dedicated_gpu7_retry_v3.queue_state.json"
 MIN_FREE_MIB = 32768
@@ -81,7 +81,7 @@ def main() -> int:
         "resume_from": str(RESUME_FROM),
         "out": str(OUT),
         "preserved_failed_attempt": str(RUNTIME / "outputs/groundjev/heldout/g200_ovmot_dedicated_gpu7_v1/failure_receipt.json"),
-        "preserved_superseded_attempt": str(RUNTIME / "outputs/groundjev/heldout/g200_ovmot_dedicated_gpu7_v2_superseded_before_ovmot_timeout180/superseded_failure_receipt.json"),
+        "preserved_superseded_attempt": str(RUNTIME / "outputs/groundjev/heldout/g200_ovmot_dedicated_gpu7_v2_superseded_before_ovmot_wall_timeout/superseded_failure_receipt.json"),
         "no_foreign_process_termination": True,
         "failed": None,
     }
