@@ -1,3 +1,7 @@
+## 2026-10-24 — real native 三任务联合训练 step1225 进度审计
+
+当前 compact native GroundJEV/OneJev 联合训练仍在 GPU3、GPU7 运行，使用 131,618 行原生 MOT/RMOT/OVMOT manifest（`compact_competition_v1`，SHA-256 `7c92778fb4417ea1e49bf286cab7758ceef1443d683ab059e5e758e5bd823aa3`），计划 8,227 steps。最新权威事件为 step1225/8227、examples=19,600，loss=1.627591、CE=1.209416、Brier=0.418175、slot_acc=0.615，梯度与显存均有限。step1000 的完整恢复状态和 adapter 已在 CPU 重载核验，SHA 分别为 `f3b37033f57963dce452b384503009fc587531ac05f6cc16742dd511103e5213` 和 `10a54906af4f001ba466b58ee3cc9c0655721594cc7de8f70f3938256fd505b8`。这是训练健康/可恢复性证据，尚不构成 MOT/RMOT/OVMOT 性能提升结论。证据：`docs/GROUNDJEV/REAL_NATIVE_COUPLING_PROGRESS_STEP1225_20261024.{json,md}`。
+
 ## 2026-10-21 — 双序列耦合训练 step48 审计：JEV 学会但 C2 坐标未学会
 
 MOT20-03 与 MOT20-05 各 5 帧、6 个 transition，共恢复到 step48；冻结 G2 step17000，10 帧各一次视觉编码。teacher-forced Grounding loss 从 4.6592 降至 1.1808，两个序列的 typed JEV MATCH/ADMIT/Yes-No/ACTIVE 达到 1.0，但实际 greedy C2 框在两个序列平均 IoU 仍为 0.0000，C0 也为 0.0。部分 C2 输出合法但坐标接近冻结基线，部分出现前缀/解析失败。结论：离散 JEV 监督已可学习，单 token memory 到 G2 坐标生成的优化尚未打通；停止无界加步，转向 coordinate-token 级诊断/目标、wrong-memory 与多身份竞争。证据：`docs/GROUNDJEV_COUPLED/PHASE_C_REAL_G2_COUPLED_MULTISEQUENCE_STEP17000_20261021.{json,md}`。
