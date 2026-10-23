@@ -30,6 +30,8 @@ DEFAULT_OWNERS = (
     RUNTIME_ROOT / "outputs/groundjev/heldout/g1_rmot_shared_gpu5_v2/owner_state.json",
     RUNTIME_ROOT / "outputs/groundjev/heldout/g200_ovmot_shared_gpu7_v2/owner_state.json",
     RUNTIME_ROOT / "outputs/groundjev/heldout/g200_ovmot_dedicated_gpu7_v1/owner_state.json",
+    RUNTIME / "outputs/groundjev/heldout/g1_ovmot_shared_gpu5_v1/owner_state.json",
+    RUNTIME / "outputs/groundjev/heldout/g200_rmot_shared_gpu7_v1/owner_state.json",
 )
 G2_BUNDLE = RUNTIME_ROOT / "models/GroundAnything-DLM-G2-CLEAN-V2/model.safetensors"
 G2_MANIFEST = Path(
