@@ -4989,3 +4989,10 @@ G2 AnimalTrack, and G2 RMOT multi. The GPU7 chunk-192 TAO OVMOT owner has entere
 - One blocking wait completed; the post-wait integrity check found all six active evaluation clients still writing and no failure receipt.
 - Current frame decisions are G1/G200 MOT20 1,592/1,472 of 1,657, G1/G200 RMOT 448/316 of 800, G1 OVMOT 31 of 40 sampled frames, and G200 AnimalTrack 278 of 306. Prediction-line counts are 241,309 / 221,633 / 1,097 / 1,241 / 0 / 6,316 respectively; these are partial evidence only.
 - The retry queues and finalizer orchestrator remain in their registered waiting states. Exactly two project SGLang services are present; no third scheduler was started. No official metric is promoted yet, and native three-task OneJev remains gated until terminal held-out receipts.
+
+
+## 2026-10-23 — held-out scopes remain live after another blocking wait
+
+- The next 240-second blocking wait produced no owner-status transition, but post-wait validation showed continued writes from the active scopes and no failure receipt.
+- Current frame decisions are G1/G200 MOT20 1,599/1,480 of 1,657, G1/G200 RMOT 455/325 of 800, G1 OVMOT 32 of 40 sampled frames, and G200 AnimalTrack 287 of 306. Prediction-line counts are 242,423 / 222,961 / 1,111 / 1,262 / 0 / 6,502; these remain partial evidence and are not scored.
+- Exactly two project SGLang schedulers remain. The retry queues and held-out finalizer orchestrator are still waiting; no native OneJev optimizer update or official metric has been promoted.
