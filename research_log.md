@@ -4802,3 +4802,9 @@ G2 AnimalTrack, and G2 RMOT multi. The GPU7 chunk-192 TAO OVMOT owner has entere
 - A further 180-second blocking wait returned no terminal owner transition; post-wait validation showed all active scopes continued writing and no failure receipt appeared.
 - Current frame-decision counts are G1/G200 MOT20 1,459/1,280 of 1,657, G1/G200 RMOT 298/110 of 800, G1 OVMOT 10 of 40 sampled frames, and G200 AnimalTrack 73 of 306.
 - The two shared services remain the only SGLang schedulers. OVMOT continues at its measured multi-minute per-sample rate; no process was duplicated or restarted, and the OneJev gate remains closed until terminal held-out receipts are available.
+
+
+## 2026-10-23 — held-out scopes continue writing under the two-service cap
+- A further blocking wait returned no terminal owner transition, but authoritative output validation showed all six active clients advancing with no failure receipt.
+- Current frame-decision counts are G1/G200 MOT20 1,464/1,286 of 1,657, G1/G200 RMOT 303/117 of 800, G1 OVMOT 11 of 40 sampled frames, and G200 AnimalTrack 80 of 306.
+- The two GroundAnything services remain the only project schedulers. No partial result is scored or promoted; the orchestrator still holds native three-task OneJev until terminal held-out contracts are satisfied.
