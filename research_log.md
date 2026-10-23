@@ -5094,3 +5094,10 @@ G2 AnimalTrack, and G2 RMOT multi. The GPU7 chunk-192 TAO OVMOT owner has entere
 - The first retry (v3) stalled because the completed G1 MOT20 owner orphaned its SGLang service in graceful shutdown; v4 also exposed an output-root collision because the new service log was placed inside the retry root. Both failures are preserved with receipts.
 - The repaired v5 path starts a replacement G1 service on the same GPU5/8240 endpoint with an isolated service output directory, restores the exact 660-frame v2 prefix, and completes all 800 RMOT frames. Official metrics: HOTA=0.0377768821, DetA=0.0056875540, AssA=0.2524360693, IDF1=0.0089435439, IDSW=3, FP=1,760, FN=7; 45 perception-rejected frames are retained in the denominator. This is a complete but weak result, with no gain claim.
 - The v5 scope now has both queue and scope owner receipts; DanceTrack v3 is running on the same replacement service. Exactly two SGLang schedulers remain.
+
+
+## 2026-10-23 — post-RMOT repair scopes continue under two schedulers
+
+- G1 RMOT v5 remains complete at 800/800 with its official receipt; G1 DanceTrack v3 is now at 252/1,203 frames on the replacement GPU5 service.
+- G200 MOT20 is at 1,615/1,657 frames and G200 RMOT at 591/800; both continue writing with no failure receipt.
+- Exactly two SGLang schedulers remain. The retry collector and held-out finalizer are waiting for terminal G1 DanceTrack/G200 scopes; no partial metric or OneJev update is promoted.
