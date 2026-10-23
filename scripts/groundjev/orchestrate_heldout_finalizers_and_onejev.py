@@ -40,7 +40,7 @@ ONEJEV_MANIFEST = RUNTIME / "outputs/groundjev/training_data/real_three_task_joi
 EXTRA_WAIT_STATE_FILES = (
     QUEUE_ROOT / "g200_animaltrack_shared_gpu7_v1/owner_state.json",
     QUEUE_ROOT / "g1_dancetrack_shared_gpu5_retry.queue_state.json",
-    QUEUE_ROOT / "g200_ovmot_dedicated_gpu7_retry.queue_state.json",
+    QUEUE_ROOT / "g200_ovmot_dedicated_gpu7_retry_v2.queue_state.json",
     QUEUE_ROOT / "extra_shared_controls_collection.queue_state.json",
 )
 
