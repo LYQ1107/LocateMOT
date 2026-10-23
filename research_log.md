@@ -5134,3 +5134,10 @@ G2 AnimalTrack, and G2 RMOT multi. The GPU7 chunk-192 TAO OVMOT owner has entere
 
 - The three held-out finalizer scripts were updated to include the current G1 DanceTrack v3, G200 AnimalTrack shared, and G200 OVMOT retry-v2 owner receipts. This prevents the final evidence collection from silently omitting the retry scopes that the orchestrator already gates.
 - All three scripts compile cleanly. The running orchestrator will execute the updated files after the remaining owners become terminal; no active inference process was restarted.
+
+
+## 2026-10-23 — G200 RMOT timeout isolated and causal retry resumed
+
+- The G200 shared RMOT owner reached a real `TimeoutError` at frame 777 after writing the exact 0–776 prefix. The failed owner, failure receipt and prefix remain preserved; no metric is promoted from the incomplete run.
+- Added `queue_g200_rmot_shared_retry.py`, which reuses GPU7/8238, raises only the per-request timeout to 900 seconds, restores the exact prefix into `g200_rmot_shared_gpu7_v2`, and writes a separate owner/official-scoring receipt. The retry is currently running from frame 777 with no additional scheduler.
+- The pre-start G200 OVMOT queue was stopped and marked superseded before it could pass the old failed RMOT dependency. Its new queue state waits on the repaired RMOT owner. The orchestrator and extra-control collector were restarted with the repaired dependency paths; JEV remains gated.
