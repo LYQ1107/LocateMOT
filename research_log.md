@@ -5066,3 +5066,10 @@ G2 AnimalTrack, and G2 RMOT multi. The GPU7 chunk-192 TAO OVMOT owner has entere
 - G1 MOT20 has written all 1,657 frame decisions (251,751 prediction lines); its owner is still marked running, so the final scorer/receipt has not yet been promoted.
 - Current unfinished counts are G200 MOT20 1,541/1,657, G1/G200 RMOT 584/440 of 800. G1 OVMOT is complete at 40/40 with the documented all-rejected zero TETA receipt; G200 AnimalTrack is complete at 306/306.
 - Exactly two SGLang schedulers remain and no duplicate client was started. Official metrics are reported only after each owner reaches its terminal receipt.
+
+
+## 2026-10-23 — G1 MOT20 full held-out scope scored
+
+- G1 GPU5 MOT20-05 reached `G2_PARALLEL_SCOPE_COMPLETE` after all 1,657 frames were processed. Official metrics: HOTA=0.3502305038, DetA=0.6632209880, AssA=0.1852801070, IDF1=0.2993288355, IDSW=10,993, FP=14,516, FN=81,990. Six perception-rejected frames remain explicitly in the denominator; this is a complete scope result, not a partial estimate.
+- The result is below the preserved G0/G2 references on this scope and is retained as an honest G1 adaptation measurement; no gain claim is made.
+- Remaining G200 MOT20 and both RMOT scopes are still running. Two SGLang schedulers remain and the terminal gate is still closed.
