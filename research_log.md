@@ -4790,3 +4790,9 @@ G2 AnimalTrack, and G2 RMOT multi. The GPU7 chunk-192 TAO OVMOT owner has entere
 - The latest blocking wait had no terminal owner transition, while the other held-out outputs continued advancing. A focused log audit of `g1_ovmot_shared_gpu5_v1` found the client alive in `run_video.py` and the shared GPU5 service processing the next TAO sample (physical frame 233, the ninth sampled frame in the 40-frame manifest).
 - The completed TAO samples take roughly 315–378 seconds each because the 1,203-class vocabulary is requested in chunks. Several raw outputs fail the canonical wire schema (duplicate coordinate tuples or a missing box-start token); the repaired official parser records the rejection and the contract emits an empty prediction set, without guessing boxes or claiming a metric.
 - This is an observed throughput/parser limitation, not an infrastructure hang. The OVMOT client remains under the same two-service limit and is not restarted or duplicated.
+
+
+## 2026-10-23 — held-out batch continues after extended wait
+- A 240-second blocking wait produced no terminal owner transition, but post-wait file validation showed all six clients healthy and advancing; no retry or service was restarted.
+- Current frame-decision counts are G1/G200 MOT20 1,455/1,274 of 1,657, G1/G200 RMOT 294/103 of 800, G1 OVMOT 9 of 40 sampled frames (the next TAO request is in flight), and G200 AnimalTrack 66 of 306.
+- Exactly two project SGLang services and six evaluation clients remain. Partial rows, including OVMOT rejected outputs, remain excluded from official metrics; the orchestrator continues to gate finalizers and native three-task OneJev.
