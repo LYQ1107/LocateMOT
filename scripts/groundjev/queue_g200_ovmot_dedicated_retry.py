@@ -24,13 +24,13 @@ GPU = 7
 PORT = 8243
 WAIT_OWNERS = (
     RUNTIME / "outputs/groundjev/heldout/g200_mot20_05_gpu7_v1/owner_state.json",
-    RUNTIME / "outputs/groundjev/heldout/g200_rmot_shared_gpu7_v2/owner_state.json",
+    RUNTIME / "outputs/groundjev/heldout/g200_rmot_shared_gpu7_v3/owner_state.json",
 )
 MANIFEST = RUNTIME / "outputs/groundjev/multitask_pilot_data/ovmot_tao_base_novel63_full.json"
 MODEL = RUNTIME / "models/GroundAnything-DLM-TrackProj200"
 RESUME_FROM = RUNTIME / "outputs/groundjev/heldout/g200_ovmot_shared_gpu7_v2/G200_GPU7_OVMOT/tao_video63_base_novel40_shared"
 OUT = RUNTIME / "outputs/groundjev/heldout/g200_ovmot_dedicated_gpu7_v2"
-QUEUE_STATE = RUNTIME / "outputs/groundjev/heldout/g200_ovmot_dedicated_gpu7_retry_v2.queue_state.json"
+QUEUE_STATE = RUNTIME / "outputs/groundjev/heldout/g200_ovmot_dedicated_gpu7_retry_v3.queue_state.json"
 MIN_FREE_MIB = 32768
 POLL_SECONDS = 60
 MAX_WAIT_SECONDS = 24 * 60 * 60
