@@ -34,6 +34,11 @@ ONEJEV_QUEUE = ROOT / "scripts/groundjev/queue_real_three_task_native.py"
 ONEJEV_QUEUE_ROOT = RUNTIME / "outputs/groundjev/training/real_three_task_joint_native_after_heldout_v2_queue"
 ONEJEV_TRAIN_ROOT = Path("/data3/user/LocateMOT-checkpoints/onejev_real_three_task_joint_native_after_heldout_v2")
 ONEJEV_MANIFEST = RUNTIME / "outputs/groundjev/training_data/real_three_task_joint_native_v1/train.sources.json"
+EXTRA_WAIT_STATE_FILES = (
+    QUEUE_ROOT / "g200_animaltrack_shared_gpu7_v1/owner_state.json",
+    QUEUE_ROOT / "g1_dancetrack_shared_gpu5_retry.queue_state.json",
+    QUEUE_ROOT / "g200_ovmot_dedicated_gpu7_retry.queue_state.json",
+)
 
 
 def read(path: Path) -> dict | None:
@@ -62,6 +67,7 @@ def main() -> int:
         "current_stage": "WAITING_ALL_REGISTERED_HELDOUT_OWNERS",
         "owner_pid": os.getpid(),
         "owner_dirs": [str(path) for path in OWNER_DIRS],
+        "extra_wait_state_files": [str(path) for path in EXTRA_WAIT_STATE_FILES],
         "finalizers": [str(path) for path in FINALIZERS],
         "onejev_queue": str(ONEJEV_QUEUE),
         "failed": None,
@@ -69,6 +75,7 @@ def main() -> int:
     save(state)
     while True:
         states = {str(path): read(path / "owner_state.json") for path in OWNER_DIRS}
+        states.update({str(path): read(path) for path in EXTRA_WAIT_STATE_FILES})
         if all(terminal(item) for item in states.values()):
             state["heldout_states"] = {
                 path: (item or {}).get("status", "MISSING") for path, item in states.items()
