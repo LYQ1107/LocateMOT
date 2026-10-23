@@ -5017,3 +5017,10 @@ G2 AnimalTrack, and G2 RMOT multi. The GPU7 chunk-192 TAO OVMOT owner has entere
 - The latest 240-second blocking wait produced no owner-status transition, but every active scope continued writing and no failure receipt appeared.
 - Current frame decisions are G1/G200 MOT20 1,618/1,498 of 1,657, G1/G200 RMOT 474/346 of 800, G1 OVMOT 35 of 40 sampled frames, and G200 AnimalTrack 303 of 306. Prediction-line counts are 245,439 / 226,201 / 1,157 / 1,304 / 0 / 6,920; partial evidence is not scored.
 - Exactly two SGLang schedulers remain. The terminal gate, retry queues and native three-task OneJev remain waiting for complete receipts; no official metric is promoted.
+
+
+## 2026-10-23 — G200 AnimalTrack held-out scope completed with official metrics
+
+- The G200 shared GPU7 AnimalTrack scope reached `SHARED_SERVICE_SCOPE_COMPLETE` after all 306 frames were processed. The contract reports no perception rejection and keeps the same parser/decoder/tracker/scorer path.
+- Official AnimalTrack chicken_1 metrics: HOTA=0.4430628110, DetA=0.5497700434, AssA=0.3673280145, IDF1=0.4720116618, IDSW=142, FP=1,581, FN=1,323; end-to-end FPS=0.0289838. These values are promoted only for this complete scope, not as a cross-task claim.
+- The remaining G1/G200 MOT20, RMOT and G1 OVMOT scopes are still running; the finalizer/OneJev gate remains closed until the registered complete receipt set is available.
