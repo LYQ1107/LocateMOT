@@ -5052,3 +5052,10 @@ G2 AnimalTrack, and G2 RMOT multi. The GPU7 chunk-192 TAO OVMOT owner has entere
 - The latest blocking wait produced no owner-status transition, but all unfinished scopes advanced and no failure receipt appeared.
 - Current frame decisions are G1/G200 MOT20 1,641/1,527 of 1,657, G1/G200 RMOT 500/411 of 800, and G1 OVMOT 39 of 40 sampled frames. G200 AnimalTrack remains complete at 306/306.
 - The two-scheduler cap is unchanged. G1 OVMOT is processing its final sampled frame; partial outputs remain excluded until the complete receipt and scorer finish.
+
+
+## 2026-10-23 — G1 OVMOT held-out scope completed; all 40 frames rejected
+
+- The G1 GPU5 OVMOT scope reached `SHARED_SERVICE_SCOPE_COMPLETE` with all 40 registered TAO validation samples processed. The official TETA recipe receipt is complete, but every frame was rejected by the strict wire/parser contract (40/40, rejection rate 1.0), so predictions=0.
+- Official registered OVMOT metrics are explicitly zero: TETA=0, LocA=0, AssocA=0, ClsA=0, and all recall/precision components=0. End-to-end FPS=0.00307586. This is a valid failure-boundary result, not a detector or generalization gain.
+- Remaining G1/G200 MOT20 and RMOT scopes continue running; finalizer and native OneJev remain gated until their complete receipts are available.
