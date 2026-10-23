@@ -3,10 +3,10 @@
 
 The evaluation owners are independent long-running processes. This
 orchestrator is the one blocking waiter for the current batch: it waits for
-all registered owners (including the shared-service additions), runs the
-three receipt finalizers, then hands control to the real native
-MOT/RMOT/OVMOT OneJev queue. The historical teacher-control resume queue is
-preserved and is never invoked here.
+all registered owners (including the shared-service additions), prints a
+consolidated result receipt, runs the three receipt finalizers, and only then
+hands control to the real native MOT/RMOT/OVMOT OneJev queue. The historical
+teacher-control resume queue is preserved and is never invoked here.
 """
 
 from __future__ import annotations
@@ -30,6 +30,9 @@ FINALIZERS = (
     ROOT / "scripts/groundjev/queue_groundjev_heldout_finalize_with_g200.py",
     ROOT / "scripts/groundjev/queue_groundjev_heldout_finalize_with_g200_fast_ovmot.py",
 )
+RESULT_PRINTER = ROOT / "scripts/groundjev/print_heldout_consolidated_result.py"
+RESULT_JSON = QUEUE_ROOT / "groundjev_heldout_consolidated_result_20261023.json"
+RESULT_MD = QUEUE_ROOT / "groundjev_heldout_consolidated_result_20261023.md"
 ONEJEV_QUEUE = ROOT / "scripts/groundjev/queue_real_three_task_native.py"
 ONEJEV_QUEUE_ROOT = RUNTIME / "outputs/groundjev/training/real_three_task_joint_native_after_heldout_v2_queue"
 ONEJEV_TRAIN_ROOT = Path("/data3/user/LocateMOT-checkpoints/onejev_real_three_task_joint_native_after_heldout_v2")
@@ -38,6 +41,7 @@ EXTRA_WAIT_STATE_FILES = (
     QUEUE_ROOT / "g200_animaltrack_shared_gpu7_v1/owner_state.json",
     QUEUE_ROOT / "g1_dancetrack_shared_gpu5_retry.queue_state.json",
     QUEUE_ROOT / "g200_ovmot_dedicated_gpu7_retry.queue_state.json",
+    QUEUE_ROOT / "extra_shared_controls_collection.queue_state.json",
 )
 
 
@@ -63,12 +67,15 @@ def save(state: dict) -> None:
 
 def main() -> int:
     state = {
-        "status": "WAITING_ALL_REGISTERED_HELDOUT_OWNERS",
-        "current_stage": "WAITING_ALL_REGISTERED_HELDOUT_OWNERS",
+        "status": "WAITING_ALL_REGISTERED_HELDOUT_OWNERS_AND_EXTRA_CONTROLS",
+        "current_stage": "WAITING_ALL_REGISTERED_HELDOUT_OWNERS_AND_EXTRA_CONTROLS",
         "owner_pid": os.getpid(),
         "owner_dirs": [str(path) for path in OWNER_DIRS],
         "extra_wait_state_files": [str(path) for path in EXTRA_WAIT_STATE_FILES],
         "finalizers": [str(path) for path in FINALIZERS],
+        "result_printer": str(RESULT_PRINTER),
+        "result_json": str(RESULT_JSON),
+        "result_markdown": str(RESULT_MD),
         "onejev_queue": str(ONEJEV_QUEUE),
         "failed": None,
     }
@@ -82,6 +89,21 @@ def main() -> int:
             }
             break
         time.sleep(60)
+
+    state.update(status="PRINTING_HELDOUT_CONSOLIDATED_RESULT", current_stage="CONSOLIDATED_RESULT")
+    save(state)
+    result_command = [
+        str(PYTHON), str(RESULT_PRINTER),
+        "--out", str(RESULT_JSON),
+        "--markdown-out", str(RESULT_MD),
+    ]
+    result = subprocess.run(result_command, cwd=ROOT, check=False)
+    state["consolidated_result_exit_code"] = result.returncode
+    if result.returncode:
+        state.update(status="HELDOUT_CONSOLIDATED_RESULT_FAILED", current_stage="FAILED")
+        state["failed"] = {"result_printer_exit_code": result.returncode}
+        save(state)
+        return result.returncode
 
     state.update(status="RUNNING_HELDOUT_FINALIZERS", current_stage="FINALIZERS")
     save(state)
