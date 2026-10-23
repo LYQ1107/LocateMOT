@@ -5177,3 +5177,8 @@ G2 AnimalTrack, and G2 RMOT multi. The GPU7 chunk-192 TAO OVMOT owner has entere
 
 - The first waitable OVMOT retry reached only five output frames after 26 minutes; completed requests took 482–773 seconds and the next request was still active. The 900-second timeout was therefore too permissive for this service behavior.
 - Stopped only the project-owned OVMOT groups, preserved the five-row causal prefix at g200_ovmot_dedicated_gpu7_v2_superseded_before_ovmot_timeout180, and reduced the dedicated request timeout to 180 seconds with the one-time circuit breaker. No partial output is promoted to metrics.
+
+## 2026-10-23 — OVMOT socket timeout replaced by full-call wall timeout
+
+- The 180-second socket timeout still did not interrupt a server that kept the HTTP connection alive while taking 634 seconds on frame 146. Six output rows were preserved at g200_ovmot_dedicated_gpu7_v2_superseded_before_ovmot_wall_timeout; no metric is promoted.
+- Added a SIGALRM wall-clock guard around the entire GroundAnything client call. The dedicated OVMOT retry remains at 180 seconds and the one-time circuit breaker; this bounds server-side slow responses as well as idle sockets without guessing boxes.
