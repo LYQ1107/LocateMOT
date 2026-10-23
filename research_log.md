@@ -4778,3 +4778,9 @@ G2 AnimalTrack, and G2 RMOT multi. The GPU7 chunk-192 TAO OVMOT owner has entere
 - A single 180-second blocking wait returned without a terminal owner transition; a follow-up authoritative audit confirmed all six active evaluation clients and both retry waiters remain live, with no new failure receipt.
 - Current output progress from the legal manifests is G1 MOT20 1,443/1,657 frame decisions, G200 MOT20 1,256/1,657, G1 RMOT 278/800, G200 RMOT 80/800, G1 OVMOT 7/40, and G200 AnimalTrack 43/306. These are partial-row counts only; no official metric is promoted until the full frame contract and scorer receipt pass.
 - The GPU3 orphan G0 service has been reclaimed; exactly two project-owned SGLang schedulers remain (G1/GPU5 port 8240 and G200/GPU7 port 8238). GPU6 and foreign workloads remain untouched. The unified orchestrator is still waiting for all registered owners before finalizers and native three-task OneJev.
+
+
+## 2026-10-23 — held-out inference continues with advancing outputs
+- A second 180-second blocking wait returned no terminal owner transition, but output files advanced and all six evaluation clients remained alive; this is progress rather than a restart or hang.
+- The latest frame-decision counts are G1/G200 MOT20 1,448/1,259 of 1,657, G1/G200 RMOT 283/86 of 800, G1 OVMOT 8 of 40, and G200 AnimalTrack 49 of 306. These counts are partial evidence only and remain excluded from official metrics until terminal receipts pass.
+- The two shared GroundAnything services and six clients are still the only project inference handles. The orchestrator remains gated; native MOT/RMOT/OVMOT OneJev optimization has not started early.
