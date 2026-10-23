@@ -1,0 +1,7 @@
+# GroundJEV native coupling retry root causes — 2026-10-23
+
+The first real native MOT/RMOT/OVMOT coupling launch loaded the OneJev checkpoint but stopped before optimizer update 1 because the inherited `max_len=32768` sampler contract detected 2,099 of 131,618 over-length rows (p99 47,023; maximum 96,734). No rows were silently accepted and no checkpoint was produced. A CPU plan at `max_len=98304` fit all 131,618 rows, but the dense-context retry reached only five updates at roughly 68–150 seconds per update and was superseded before a checkpoint.
+
+The actionable runtime cause was a stale copy of `run_source_manifest_sft.py`: the repository's registered `compact_competition_v1` transform and `compact_state.py` were absent from the runtime, so reconstructible dense N×N IoU/center-distance matrices were rendered. The immutable v2 manifest keeps row IDs, targets, media, candidate boxes and positive-IoU edges while omitting only those reconstructible matrices. The compact CPU plan fits every row at `max_len=32768` (p50/p90/p99/max 7,948/12,182/16,050/28,156; 8,227 planned world-2 steps). The queue validator was also widened to the registered GPU allowlist `{3,4,5,6,7}`, while the active retry remains capped at two GPUs.
+
+These failures are preserved as superseded attempts. The current compact real three-task queue uses the same immutable native MOT/RMOT/OVMOT sources and has no metric claim until a checkpoint and independent held-out evaluation exist.
