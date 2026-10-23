@@ -5148,3 +5148,10 @@ G2 AnimalTrack, and G2 RMOT multi. The GPU7 chunk-192 TAO OVMOT owner has entere
 - The pre-start OVMOT queue had already spawned a detached GPU7 service/client group on port 8243 before its parent was stopped. The command lines and output root were verified as this project; the group was terminated without touching foreign processes.
 - Its two-frame partial output was moved to `g200_ovmot_dedicated_gpu7_v2_superseded_before_rmot_repair` with a superseded failure receipt, so the fresh v2 OVMOT retry cannot overwrite it. Port 8243 is now free; GPU7 is serving only the G200 RMOT retry on 8238.
 - A new OVMOT queue is waiting on `g200_rmot_shared_gpu7_v2/owner_state.json`; the consolidated-result and JEV gates remain closed.
+
+## 2026-10-23 — RMOT v2 timeout reproduced and bounded rejection repair activated
+
+- The second G200 RMOT attempt reproduced the same real HTTP TimeoutError at frame 777 after preserving an exact 777-frame prefix. Its failed owner and queue receipt remain immutable at g200_rmot_shared_gpu7_v2; no incomplete output is eligible for official metrics.
+- The runner was repaired at the request boundary: under the registered empty_and_record policy, a request timeout now writes an explicit empty rejected frame, retains that frame in the metric denominator, and emits no guessed box. The stop policy remains unchanged. The runtime copy was patched and compile/import checked.
+- The detached OVMOT v2 child group that had survived its failed parent was reclaimed after command-line/output ownership verification. Its two-frame partial output was moved to g200_ovmot_dedicated_gpu7_v2_superseded_before_rmot_retry_v3 with a superseded receipt; port 8243 is free again.
+- Restarted the single held-out orchestrator and extra-control collector with v3 dependency paths, launched queue_g200_rmot_shared_retry_v3.py on the existing GPU7/8238 service, and launched the gated OVMOT v3 queue. At launch the RMOT v3 owner entered RUNNING_G200_RMOT_RETRY; OVMOT remains waiting on its terminal RMOT dependency. No extra SGLang scheduler was created.
