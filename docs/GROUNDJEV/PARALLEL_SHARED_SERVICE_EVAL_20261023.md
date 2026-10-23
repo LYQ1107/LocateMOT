@@ -11,4 +11,4 @@ Both use `run_video.py`, the `simple` tracker, `tracking_dense` decoding, explic
 
 The launcher is [run_shared_service_scope.py](/data2/user/LocateMOT/scripts/groundjev/run_shared_service_scope.py). The two failed first background starts were non-experiment launch errors (one shell-session reaping and one typo in the model path); their empty launch directories were not used or promoted.
 
-The single blocking waiter watches these two owners together with the existing G1/G200 MOT20 owners. OneJev remains gated on the registered held-out finalizer and the exclusive `(4,5,6,7)` GPU contract.
+The single blocking waiter watches all 24 registered owner directories, including these two, then runs the held-out finalizers and the OneJev gate. Its current state is `WAITING_ALL_REGISTERED_HELDOUT_OWNERS`; OneJev remains gated on the exclusive `(4,5,6,7)` GPU contract.
