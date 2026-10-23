@@ -95,6 +95,8 @@ def main() -> int:
     )
     parser.add_argument("--ovmot-chunk-size", type=int, default=96)
     parser.add_argument("--grounding-request-timeout", type=float, default=600)
+    parser.add_argument("--max-consecutive-timeouts", type=int, default=0,
+                        help="pass a bounded timeout circuit breaker to run_video")
     parser.add_argument(
         "--grounding-parser",
         choices=("official_scoring", "official_scoring_repaired"),
@@ -187,7 +189,8 @@ def main() -> int:
             "--backend", "simple", "--grounding-url", f"http://127.0.0.1:{args.port}/v1",
             "--grounding-parser", parser_policy, "--grounding-decoder-policy", "tracking_dense",
             "--perception-failure-policy", "empty_and_record", "--grounding-request-timeout",
-            str(args.grounding_request_timeout), "--out", str(output),
+            str(args.grounding_request_timeout), "--max-consecutive-timeouts",
+            str(args.max_consecutive_timeouts), "--out", str(output),
         ]
         if args.task == "ovmot":
             if args.ovmot_chunk_size <= 0:
