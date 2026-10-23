@@ -4761,3 +4761,7 @@ G2 AnimalTrack, and G2 RMOT multi. The GPU7 chunk-192 TAO OVMOT owner has entere
 
 ## 2026-10-23 — automatic post-run collection queued
 - Started durable `queue_collect_extra_shared_controls.py` (PID 3535083). It waits for the G200 AnimalTrack owner and both G1/G200 retry queue states to become terminal, then writes `extra_shared_controls_final_receipt.json` through the non-blocking collector. It does not start a GPU service and does not affect the OneJev gate.
+
+## 2026-10-23 — stopped accidental full collector smoke processes
+- A prior collector smoke command that hashed the full model for every owner was still running (PIDs 3528263 and 3529284) and had never produced a receipt. Both command lines were verified as this project's `collect_g2_heldout_receipts.py` processes and were terminated explicitly; all GPU inference services, retry queues, and the durable extra-control collector were left untouched.
+- The collector fix remains compile-tested; the full hash smoke is not accepted as an experiment result. Future collection is performed only by the bounded extra-control queue after its owners reach terminal states.
