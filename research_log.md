@@ -5031,3 +5031,10 @@ G2 AnimalTrack, and G2 RMOT multi. The GPU7 chunk-192 TAO OVMOT owner has entere
 - After G200 AnimalTrack completed, another blocking wait produced no additional owner transition. The completed scope remains at all 306 frames; no duplicate client or scheduler was launched.
 - Remaining frame decisions are G1/G200 MOT20 1,624/1,505 of 1,657, G1/G200 RMOT 482/361 of 800, and G1 OVMOT 36 of 40 sampled frames. Partial outputs remain excluded from official metrics.
 - Exactly two SGLang schedulers remain. The finalizer and retry queues remain gated until all registered held-out owners have terminal receipts.
+
+
+## 2026-10-23 — held-out batch advances after AnimalTrack completion
+
+- A further blocking wait produced no additional owner transition; the completed G200 AnimalTrack scope remains intact at 306/306 frames.
+- Remaining frame decisions are G1/G200 MOT20 1,630/1,512 of 1,657, G1/G200 RMOT 489/377 of 800, and G1 OVMOT 37 of 40 sampled frames. All active scopes continue writing and no failure receipt is present.
+- The two-scheduler resource cap remains intact. No partial output is promoted and the finalizer/OneJev gate remains waiting for all registered held-out receipts.
