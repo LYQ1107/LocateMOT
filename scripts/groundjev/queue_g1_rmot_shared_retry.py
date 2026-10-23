@@ -159,12 +159,14 @@ def main() -> int:
         state.update(status="G1_RMOT_SHARED_RETRY_COMPLETE", current_stage="COMPLETE")
         save(state)
         (OUT / "receipt.json").write_text(json.dumps(state, indent=2, ensure_ascii=False) + "\n")
+        (OUT / "owner_state.json").write_text(json.dumps(state, indent=2, ensure_ascii=False) + "\n")
         return 0
     except Exception as error:
         state.update(status="G1_RMOT_SHARED_RETRY_FAILED", current_stage="FAILED", failed={"error": repr(error)})
         save(state)
         (OUT / "failure_receipt.json").parent.mkdir(parents=True, exist_ok=True)
         (OUT / "failure_receipt.json").write_text(json.dumps(state, indent=2, ensure_ascii=False) + "\n")
+        (OUT / "owner_state.json").write_text(json.dumps(state, indent=2, ensure_ascii=False) + "\n")
         return 1
 
 
