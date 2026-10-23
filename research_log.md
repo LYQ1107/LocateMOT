@@ -5188,3 +5188,8 @@ G2 AnimalTrack, and G2 RMOT multi. The GPU7 chunk-192 TAO OVMOT owner has entere
 - The final G200 dedicated OVMOT retry completed its 40 registered TAO annotation frames with the official unmodified TETA recipe. All 40 frames were explicit perception rejections, predictions were 0, and TETA/LocA/AssocA/ClsA were all 0. The slow-response prefixes and resource-gate failures remain archived separately and are not mixed into this result.
 - The terminal-only consolidated receipt was generated at outputs/groundjev/heldout/groundjev_heldout_consolidated_result_20261023.{json,md} and published under docs/GROUNDJEV/results/ on the research branch. It includes G2/G1/G200 MOT20, DanceTrack, AnimalTrack, RMOT and OVMOT rows, frame counts, rejection counts, official metrics and failure/supersession evidence.
 - The orchestrator reached RUNNING_HELDOUT_FINALIZERS; JEV coupling is still gated behind the finalizers and will start only after this result receipt has been printed and the finalizer records complete.
+
+## 2026-10-23 — JEV launch permission failure isolated and fixed
+
+- All three held-out finalizers completed successfully and the orchestrator then attempted the real native three-task queue on GPUs 5/7. The first launch made zero optimizer updates and failed before training because it executed run_with_resources.py directly even though that Python file has no executable bit (PermissionError(13)).
+- Patched queue_real_three_task_native.py to invoke the resource wrapper through the validated OneJev Python interpreter. The failed queue state and preflight args.json remain preserved; no training checkpoint or metric was claimed from the failed launch.
