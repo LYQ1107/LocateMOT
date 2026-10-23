@@ -65,6 +65,12 @@ OWNER_DIRS = (
     RUNTIME / "outputs/groundjev/heldout/g200_ovmot_dedicated_gpu7_v1",
     RUNTIME / "outputs/groundjev/heldout/g1_ovmot_shared_gpu5_v1",
     RUNTIME / "outputs/groundjev/heldout/g200_rmot_shared_gpu7_v1",
+    # Current retry/extra-control owners are registered alongside their
+    # preserved failed or superseded predecessors.
+    RUNTIME / "outputs/groundjev/heldout/g1_dancetrack_shared_gpu5_v3",
+    RUNTIME / "outputs/groundjev/heldout/g200_animaltrack_shared_gpu7_v1",
+    RUNTIME / "outputs/groundjev/heldout/g200_rmot_shared_gpu7_v2",
+    RUNTIME / "outputs/groundjev/heldout/g200_ovmot_dedicated_gpu7_v2",
 )
 
 
