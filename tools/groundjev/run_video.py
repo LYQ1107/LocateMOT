@@ -4,6 +4,7 @@ from contextlib import nullcontext
 from datetime import datetime, timezone
 import json
 import resource
+import signal
 from pathlib import Path
 import subprocess
 import sys
@@ -27,6 +28,22 @@ class ReplayFrames:
             return decode_candidate_row(row, self.directory)
         raise ValueError(f'Native replay lacks requested frame {number}; frame cannot be skipped')
     def close(self): self.file.close()
+
+
+def call_with_wall_timeout(frontend, image, task, vocabulary, expression, image_path, seconds):
+    """Bound the whole client call, including a server that keeps the socket alive."""
+    if seconds <= 0:
+        return frontend(image, task, vocabulary, expression, image_path=image_path)
+    previous = signal.getsignal(signal.SIGALRM)
+    def raise_timeout(_signum, _frame):
+        raise TimeoutError(f'grounding request exceeded {seconds:g}s wall-clock limit')
+    signal.signal(signal.SIGALRM, raise_timeout)
+    signal.setitimer(signal.ITIMER_REAL, seconds)
+    try:
+        return frontend(image, task, vocabulary, expression, image_path=image_path)
+    finally:
+        signal.setitimer(signal.ITIMER_REAL, 0)
+        signal.signal(signal.SIGALRM, previous)
 
 
 def restore_completed_prefix(tracker, rows, frames, fps, specification, timestamps=None):
@@ -338,7 +355,9 @@ def main():
                 else:
                     print(json.dumps({'frame': frame_number, 'stage': 'native_perception'}), flush=True)
                     try:
-                        candidates, perception = frontend(image, args.task, vocabulary, args.expression, image_path=path)
+                        candidates, perception = call_with_wall_timeout(
+                            frontend, image, args.task, vocabulary, args.expression, path,
+                            args.grounding_request_timeout)
                         consecutive_timeout_count = 0
                     except GroundingProtocolError as error:
                         if args.perception_failure_policy == 'stop':
