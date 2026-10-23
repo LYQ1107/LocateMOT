@@ -1,0 +1,51 @@
+{
+  "schema": "groundjev.coupling_checkpoint_receipt.v1",
+  "generated_at": "2026-10-23T23:39:53+0800",
+  "queue_owner": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/real_three_task_joint_native_v2_compact_queue_v1/owner_state.json",
+  "status": "REAL_NATIVE_THREE_TASK_TRAINING_RUNNING",
+  "physical_gpus": [
+    3,
+    7
+  ],
+  "manifest": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/real_three_task_joint_native_v2_compact/train.sources.json",
+  "manifest_sha256": "7c92778fb4417ea1e49bf286cab7758ceef1443d683ab059e5e758e5bd823aa3",
+  "rows": 131618,
+  "planned_steps": 8227,
+  "checkpoint_step": 500,
+  "seen_examples": 8000,
+  "training_root": "/data3/user/LocateMOT-checkpoints/onejev_real_three_task_joint_native_v2_compact_v1",
+  "recovery_state": {
+    "path": "/data3/user/LocateMOT-checkpoints/onejev_real_three_task_joint_native_v2_compact_v1/latest_training_state.pt",
+    "bytes": 130383561,
+    "sha256": "bc5146c2d333fab05ed95fb1695f3a8531125e39e628de35cb74ed1ad58a2517",
+    "format": "groundjev-full-fp32-adam-rng-v1",
+    "fp32_masters_and_adam_moments_saved": true,
+    "scheduler_and_all_rng_saved": true
+  },
+  "adapter": {
+    "path": "/data3/user/LocateMOT-checkpoints/onejev_real_three_task_joint_native_v2_compact_v1/adapter-step500/adapter_model.safetensors",
+    "bytes": 43346432,
+    "sha256": "e33232bdd5c1f74194d5764ef3c80e40f836b8ea2d45c8f5bd38329dfd0e5aad",
+    "tensor_count": 372,
+    "trainable_parameters": 10822656
+  },
+  "latest_event": {
+    "step": 500,
+    "epoch": 0,
+    "examples": 8000,
+    "loss": 1.8230519780796022,
+    "ce": 1.3548280280956533,
+    "brier": 0.4682239493758243,
+    "slot_acc": 0.575,
+    "grad_norm": 5.314520568847656,
+    "lr": 1.995043832863594e-05,
+    "rows_per_step": 16.0,
+    "examples_per_s": 0.7032564347887147,
+    "tokens_per_s": 5551.112472618633,
+    "sec_per_step": 22.751302666440605,
+    "peak_mem_gb": 7.795579433441162,
+    "elapsed_s": 11424.934643219924
+  },
+  "world_size": 2,
+  "metric_claim": "none; this is a recovery checkpoint and training-health receipt, not an independent performance result"
+}
