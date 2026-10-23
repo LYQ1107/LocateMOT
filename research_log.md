@@ -4755,3 +4755,6 @@ G2 AnimalTrack, and G2 RMOT multi. The GPU7 chunk-192 TAO OVMOT owner has entere
 
 ## 2026-10-23 — receipt collector repair
 - Audited `scripts/groundjev/collect_g2_heldout_receipts.py` before the finalizers can run. Two default owner entries referenced an undefined `RUNTIME` symbol, and one repaired OVMOT owner was duplicated. Replaced the stale symbol with `RUNTIME_ROOT` and removed the duplicate; the collector now compiles cleanly and preserves one record per owner. The expensive full model-hash smoke invocation was not used as an acceptance result.
+
+## 2026-10-23 — reproducible collector for the two extra controls
+- Added `scripts/groundjev/collect_extra_shared_control_receipts.py`, a non-blocking collector for the requested G1 DanceTrack/G200 AnimalTrack controls and their retry receipts. It records model/manifest hashes and official metrics only when a complete result block exists; queue states, failures, and partial outputs remain status evidence. A one-owner queue-state smoke check passed (`accepted_scope_count=0`, as required).
