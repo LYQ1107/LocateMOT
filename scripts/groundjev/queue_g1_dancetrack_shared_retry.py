@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 """Retry the G1 DanceTrack control after the shared GPU5 queue drains.
 
-The first attempt is preserved as a failed receipt: GPU5/8240 returned HTTP
-503 while three existing clients were using the same service. This queue does
-not start another server. It waits until the two extra G1 shared-service
-clients have terminal receipts, then retries the identical independent scope
-under a fresh output root.
+The first attempts are preserved as failed receipts: GPU5/8240 returned HTTP
+503 while three existing clients were using the same service, and the first
+retry output root was already non-empty. This queue does not start another
+server. It waits until the repaired G1 RMOT retry and OVMOT scope have terminal
+receipts, then retries the identical independent scope under a fresh output
+root.
 """
 
 from __future__ import annotations
@@ -25,12 +26,12 @@ GPU = 5
 SERVICE_URL = "http://127.0.0.1:8240"
 SERVICE_OWNER = RUNTIME / "outputs/groundjev/heldout/g1_mot20_05_gpu5_resume_v1/owner_state.json"
 WAIT_OWNERS = (
-    RUNTIME / "outputs/groundjev/heldout/g1_rmot_shared_gpu5_v2/owner_state.json",
+    RUNTIME / "outputs/groundjev/heldout/g1_rmot_shared_gpu5_retry.queue_state.json",
     RUNTIME / "outputs/groundjev/heldout/g1_ovmot_shared_gpu5_v1/owner_state.json",
 )
 MANIFEST = RUNTIME / "outputs/groundjev/heldout_inputs/g2_domain_v1/dancetrack0004_val1203.json"
 MODEL = RUNTIME / "models/GroundAnything-DLM-TrackProjG1-GPU5-V2"
-OUT = RUNTIME / "outputs/groundjev/heldout/g1_dancetrack_shared_gpu5_v2"
+OUT = RUNTIME / "outputs/groundjev/heldout/g1_dancetrack_shared_gpu5_v3"
 QUEUE_STATE = RUNTIME / "outputs/groundjev/heldout/g1_dancetrack_shared_gpu5_retry.queue_state.json"
 MIN_WAIT_SECONDS = 60
 MAX_WAIT_SECONDS = 12 * 60 * 60
