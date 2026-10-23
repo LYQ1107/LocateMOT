@@ -110,6 +110,8 @@ def main():
                         help='OVMOT: exhaustively request this many vocabulary classes at a time, then associate the union once')
     parser.add_argument('--grounding-request-timeout', type=float, default=600,
                         help='seconds allowed for one GroundAnything request; recorded in the receipt')
+    parser.add_argument('--max-consecutive-timeouts', type=int, default=0,
+                        help='after this many consecutive request timeouts, record remaining frames as empty without issuing more requests; 0 disables the circuit breaker')
     parser.add_argument('--perception-failure-policy', choices=['stop', 'empty_and_record'], default='stop',
                         help='official scorer rejection is an explicitly logged empty prediction, included in every metric denominator')
     parser.add_argument('--candidate-replay', type=Path, help='exact prior frame log for a fixed-candidate association control; no end-to-end FPS claim')
@@ -250,6 +252,8 @@ def main():
     if args.candidate_replay:
         replay = ReplayFrames(args.candidate_replay)
     fps, latencies, rejected_frames, strict_invalid_frames = manifest['fps'], [], [], []
+    consecutive_timeout_count = 0
+    timeout_circuit_open = False
     timestamps = dict(zip(manifest['frame_numbers'], manifest['timestamps'])) if 'timestamps' in manifest else None
     resumed = []
     specification = {'task': args.task, 'vocabulary': vocabulary, 'expression': args.expression}
@@ -281,6 +285,14 @@ def main():
             feature_source.close()
         if len(resumed) > len(frames):
             raise ValueError('Resume prefix is longer than the requested video')
+        if args.max_consecutive_timeouts:
+            for prior in reversed(resumed):
+                parse_error = ((prior.get('perception') or {}).get('result') or {}).get('parse_error')
+                if parse_error in ('request_timeout', 'request_timeout_circuit_open'):
+                    consecutive_timeout_count += 1
+                else:
+                    break
+            timeout_circuit_open = consecutive_timeout_count >= args.max_consecutive_timeouts
         restore_completed_prefix(tracker, resumed, frames, fps, specification, timestamps)
         write_memory('resume_memory')
         print(json.dumps({'restored_completed_frames': len(resumed), 'source': str(args.resume_from),
@@ -311,10 +323,23 @@ def main():
                     candidates, perception = original['candidates'], {'mode': 'fixed_candidate_replay',
                         'source': str(args.candidate_replay), 'original_perception': original['perception'],
                         'model_response_rejected': original['perception'].get('model_response_rejected',False)}
+                elif timeout_circuit_open:
+                    candidates, perception = [], {
+                        'task': args.task,
+                        'model_response_rejected': True,
+                        'rejected_output_policy': 'empty official prediction set; timeout circuit open and frame retained for all metrics',
+                        'error_type': 'TimeoutCircuitOpen',
+                        'error': f'{consecutive_timeout_count} consecutive request timeouts reached the registered breaker',
+                        'strict_wire_valid': False,
+                        'result': {'parse_error': 'request_timeout_circuit_open'},
+                    }
+                    print(json.dumps({'frame': frame_number, 'stage': 'perception_timeout_circuit_open',
+                                      'error': perception['error']}), flush=True)
                 else:
                     print(json.dumps({'frame': frame_number, 'stage': 'native_perception'}), flush=True)
                     try:
                         candidates, perception = frontend(image, args.task, vocabulary, args.expression, image_path=path)
+                        consecutive_timeout_count = 0
                     except GroundingProtocolError as error:
                         if args.perception_failure_policy == 'stop':
                             raise
@@ -339,6 +364,9 @@ def main():
                             'strict_wire_valid': False,
                             'result': {'parse_error': 'request_timeout'},
                         }
+                        consecutive_timeout_count += 1
+                        if args.max_consecutive_timeouts and consecutive_timeout_count >= args.max_consecutive_timeouts:
+                            timeout_circuit_open = True
                         print(json.dumps({'frame': frame_number, 'stage': 'perception_timeout_rejected',
                                           'error': str(error)}), flush=True)
                 if perception.get('model_response_rejected'):
