@@ -4752,3 +4752,6 @@ G2 AnimalTrack, and G2 RMOT multi. The GPU7 chunk-192 TAO OVMOT owner has entere
 ## 2026-10-23 — held-out gate extended to new parallel controls
 - The durable orchestrator was restarted once after a code change (the old process was verified as our PID and was still in the pre-finalizer waiting stage). Its gate now includes the running G200 AnimalTrack owner and both retry queue state files, so native OneJev cannot claim GPU5/7 while the newly requested controls or their recoverable retries are still active.
 - The restarted orchestrator is PID 3525198 and remains in `WAITING_ALL_REGISTERED_HELDOUT_OWNERS`; no finalizer or OneJev process was started by this restart.
+
+## 2026-10-23 — receipt collector repair
+- Audited `scripts/groundjev/collect_g2_heldout_receipts.py` before the finalizers can run. Two default owner entries referenced an undefined `RUNTIME` symbol, and one repaired OVMOT owner was duplicated. Replaced the stale symbol with `RUNTIME_ROOT` and removed the duplicate; the collector now compiles cleanly and preserves one record per owner. The expensive full model-hash smoke invocation was not used as an acceptance result.
