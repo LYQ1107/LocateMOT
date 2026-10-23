@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
-"""Resume the second failed G200 shared RMOT attempt with timeout rejection recorded.
+"""Resume the bounded G200 shared RMOT attempt with a timeout circuit breaker.
 
-The first client reached frame 776 and the first retry reached frame 776
-again before the same frame-777 HTTP ``TimeoutError``. Both failed owners and
-their exact 777-frame prefixes remain immutable evidence. This queue reuses
-the existing GPU7/8238 service; the repaired runner records a timeout as an
-empty rejected frame under the registered policy and emits no guessed box.
+The first client and first retry reached frame 776 before the same timeout.
+The first repaired run recorded three 900-second timeout frames before it was
+superseded; that exact 780-row prefix remains immutable evidence. This queue
+reuses GPU7/8238 and opens a one-time circuit after a timeout: every remaining
+frame is recorded as an explicit empty rejection without another unbounded
+request, so the official denominator is complete without guessing boxes.
 """
 
 from __future__ import annotations
@@ -30,7 +31,7 @@ SERVICE_OWNER = RUNTIME / "outputs/groundjev/heldout/g200_mot20_05_gpu7_v1/owner
 WAIT_OWNERS = (SERVICE_OWNER,)
 MANIFEST = RUNTIME / "outputs/groundjev/multitask_pilot_data/rmot_multi_empty_full.json"
 MODEL = RUNTIME / "models/GroundAnything-DLM-TrackProj200"
-RESUME_FROM = RUNTIME / "outputs/groundjev/heldout/g200_rmot_shared_gpu7_v2/G200_GPU7_RMOT_RETRY/rmot_multi0007_g200_shared_retry"
+RESUME_FROM = RUNTIME / "outputs/groundjev/heldout/g200_rmot_shared_gpu7_v3_superseded_before_timeout_circuit/G200_GPU7_RMOT_RETRY_V3/rmot_multi0007_g200_shared_retry"
 OUT = RUNTIME / "outputs/groundjev/heldout/g200_rmot_shared_gpu7_v3"
 QUEUE_STATE = RUNTIME / "outputs/groundjev/heldout/g200_rmot_shared_gpu7_v3_retry.queue_state.json"
 POLL_SECONDS = 30
@@ -93,7 +94,7 @@ def main() -> int:
         "resume_from": str(RESUME_FROM),
         "out": str(OUT),
         "request_timeout_seconds": REQUEST_TIMEOUT_SECONDS,
-        "preserved_failed_attempts": [str(RUNTIME / "outputs/groundjev/heldout/g200_rmot_shared_gpu7_v1/failure_receipt.json"), str(RUNTIME / "outputs/groundjev/heldout/g200_rmot_shared_gpu7_v2/failure_receipt.json")],
+        "preserved_failed_attempts": [str(RUNTIME / "outputs/groundjev/heldout/g200_rmot_shared_gpu7_v1/failure_receipt.json"), str(RUNTIME / "outputs/groundjev/heldout/g200_rmot_shared_gpu7_v2/failure_receipt.json"), str(RUNTIME / "outputs/groundjev/heldout/g200_rmot_shared_gpu7_v3_superseded_before_timeout_circuit/superseded_failure_receipt.json")],
         "no_extra_scheduler": True,
         "failed": None,
     }
@@ -127,7 +128,7 @@ def main() -> int:
             "--backend", "simple", "--grounding-url", SERVICE_URL.rstrip("/") + "/v1",
             "--grounding-parser", "official_scoring", "--grounding-decoder-policy", "tracking_dense",
             "--perception-failure-policy", "empty_and_record", "--grounding-request-timeout",
-            str(REQUEST_TIMEOUT_SECONDS), "--resume-from", str(RESUME_FROM), "--out", str(output),
+            str(REQUEST_TIMEOUT_SECONDS), "--max-consecutive-timeouts", "1", "--resume-from", str(RESUME_FROM), "--out", str(output),
         ]
         state.update(status="RUNNING_G200_RMOT_RETRY", current_stage="INFERENCE", command=command)
         save(state)
