@@ -23,7 +23,7 @@ HELDOUT = RUNTIME / "outputs/groundjev/heldout"
 EXTRA_STATE_FILES = (
     HELDOUT / "g200_animaltrack_shared_gpu7_v1/owner_state.json",
     HELDOUT / "g1_dancetrack_shared_gpu5_retry.queue_state.json",
-    HELDOUT / "g200_ovmot_dedicated_gpu7_retry_v2.queue_state.json",
+    HELDOUT / "g200_ovmot_dedicated_gpu7_retry_v3.queue_state.json",
     HELDOUT / "extra_shared_controls_collection.queue_state.json",
 )
 
