@@ -1,0 +1,48 @@
+{
+  "experiment": "real_native_three_task_joint_v2_compact_v1",
+  "status": "REAL_NATIVE_THREE_TASK_TRAINING_RUNNING",
+  "training_root": "/data3/user/LocateMOT-checkpoints/onejev_real_three_task_joint_native_v2_compact_v1",
+  "manifest": {
+    "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/real_three_task_joint_native_v2_compact/train.sources.json",
+    "sha256": "7c92778fb4417ea1e49bf286cab7758ceef1443d683ab059e5e758e5bd823aa3",
+    "rows": 131618,
+    "transform": "compact_competition_v1",
+    "tasks": ["MOT", "RMOT", "OVMOT"]
+  },
+  "contract": {
+    "planned_steps": 8227,
+    "world_size": 2,
+    "gpus": [3, 7],
+    "max_rows_per_step": 16,
+    "accumulation_rows": 16,
+    "save_every": 500,
+    "max_len": 32768
+  },
+  "latest_event": {
+    "step": 1225,
+    "examples": 19600,
+    "loss": 1.6275910484202905,
+    "cross_entropy": 1.2094160445517628,
+    "brier": 0.41817499877115094,
+    "slot_accuracy": 0.615,
+    "grad_norm": 7.9178149604797365,
+    "learning_rate": 0.000019267900734191515,
+    "rows_per_step": 16,
+    "examples_per_second": 0.5227093704142404,
+    "tokens_per_second": 4396.120402846643,
+    "seconds_per_step": 30.6097439717222,
+    "peak_memory_gib": 7.79557991027832
+  },
+  "latest_verified_checkpoint": {
+    "step": 1000,
+    "state_path": "/data3/user/LocateMOT-checkpoints/onejev_real_three_task_joint_native_v2_compact_v1/latest_training_state.pt",
+    "state_sha256": "f3b37033f57963dce452b384503009fc587531ac05f6cc16742dd511103e5213",
+    "adapter_path": "/data3/user/LocateMOT-checkpoints/onejev_real_three_task_joint_native_v2_compact_v1/adapter-step1000/adapter_model.safetensors",
+    "adapter_sha256": "10a54906af4f001ba466b58ee3cc9c0655721594cc7de8f70f3938256fd505b8",
+    "adapter_tensors": 372,
+    "adapter_parameters": 10822656,
+    "checkpoint_format": "groundjev-full-fp32-adam-rng-v1",
+    "cpu_reload_verified": true
+  },
+  "interpretation": "Training-health and resumability evidence only. No MOT/RMOT/OVMOT performance improvement is claimed until the terminal checkpoint and independent held-out evaluation are complete."
+}
