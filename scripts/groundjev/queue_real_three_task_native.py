@@ -124,7 +124,7 @@ def devices_ready(gpus: tuple[int, ...]) -> tuple[bool, dict]:
     return ready, probes
 
 
-def build_config(manifest_path: Path, training_root: Path) -> dict:
+def build_config(manifest_path: Path, training_root: Path, max_len: int | None = None) -> dict:
     config = json.loads(BASE_CONFIG.read_text())
     config.update({
         "train": str(manifest_path),
@@ -133,6 +133,10 @@ def build_config(manifest_path: Path, training_root: Path) -> dict:
         "max_steps": 0,
         "epochs": 1,
     })
+    if max_len is not None:
+        if max_len <= 0:
+            raise ValueError("--max-len must be positive")
+        config["max_len"] = int(max_len)
     # ``train.sft`` rejects unknown config keys.  Keep the manifest row count
     # in the queue owner/receipt (where it is part of the launch audit), rather
     # than injecting an audit-only key into the OneJev argparse config.
@@ -147,13 +151,19 @@ def main() -> int:
     parser.add_argument("--native-manifest", type=Path, default=MANIFEST)
     parser.add_argument("--native-receipt", type=Path, default=None)
     parser.add_argument("--gpus", type=int, nargs="+", default=list(GPUS))
+    parser.add_argument(
+        "--max-len",
+        type=int,
+        default=None,
+        help="override the native OneJev context cap for this run; use only with a preflight proving zero dropped rows",
+    )
     args = parser.parse_args()
     args.queue_root = args.queue_root.resolve()
     args.training_root = args.training_root.resolve()
     args.native_manifest = args.native_manifest.resolve()
     native_receipt = (args.native_receipt or args.native_manifest.parent / "manifest_receipt.json").resolve()
     gpus = tuple(args.gpus)
-    if not gpus or len(set(gpus)) != len(gpus) or len(gpus) > 4 or not set(gpus) <= {4, 5, 6, 7}:
+    if not gpus or len(set(gpus)) != len(gpus) or len(gpus) > 4 or not set(gpus) <= {3, 4, 5, 6, 7}:
         raise ValueError("--gpus must be one to four distinct devices from the GroundJEV allowlist")
     owner = args.queue_root / "owner_state.json"
     old = read_json(owner)
@@ -210,7 +220,7 @@ def main() -> int:
             break
         manifest = ne["manifest"]
         rows = int(manifest["rows"])
-        config = build_config(args.native_manifest, args.training_root)
+        config = build_config(args.native_manifest, args.training_root, args.max_len)
         config_out = args.queue_root / "native_runtime.json"
         if config_out.exists() and json.loads(config_out.read_text()) != config:
             raise FileExistsError(f"refusing to overwrite a different config: {config_out}")
@@ -220,6 +230,7 @@ def main() -> int:
         state["native_manifest_sha256"] = sha256(args.native_manifest)
         state["rows"] = rows
         state["rows_per_task"] = manifest.get("rows_per_task")
+        state["max_len_override"] = config.get("max_len") if args.max_len is not None else None
         state["completed"]["native_manifest"] = ne["receipt"]
         state.update(status="WAITING_G2_BUNDLE_HELDOUT_AND_GPUS", current_stage="WAITING_G2_BUNDLE_HELDOUT_AND_GPUS")
         save(owner, state)
