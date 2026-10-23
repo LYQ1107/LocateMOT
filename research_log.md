@@ -5193,3 +5193,10 @@ G2 AnimalTrack, and G2 RMOT multi. The GPU7 chunk-192 TAO OVMOT owner has entere
 
 - All three held-out finalizers completed successfully and the orchestrator then attempted the real native three-task queue on GPUs 5/7. The first launch made zero optimizer updates and failed before training because it executed run_with_resources.py directly even though that Python file has no executable bit (PermissionError(13)).
 - Patched queue_real_three_task_native.py to invoke the resource wrapper through the validated OneJev Python interpreter. The failed queue state and preflight args.json remain preserved; no training checkpoint or metric was claimed from the failed launch.
+
+
+## 2026-10-23 — native coupling context repair and compact retry
+
+- The first native coupling attempt failed before optimizer update 1 because the v1 runtime rendered 2,099 of 131,618 rows over max_len=32768. A 98,304-token retry completed 5 real updates but was impractical at roughly 68–150 seconds per update; its zero-checkpoint log is preserved and the owner is marked superseded.
+- Restored the registered compact_competition_v1 loader/module and created an immutable v2 manifest from the same 131,618 native MOT/RMOT/OVMOT rows. Candidate boxes, row IDs, targets, media and all positive-IoU edges are retained; only reconstructible dense matrices are omitted. The CPU plan proves 0 over-length rows at max_len=32768 (p50/p90/p99/max 7948/12182/16050/28156; 8,227 planned steps).
+- The current compact native coupling run is active on GPUs 3 and 7 with the same full source exposure. At the last receipt it reached step 50/8,227, with 0.57–0.90 rows/s and no checkpoint yet (save interval 500). GPU5 was excluded because its free memory was 1.7 GiB; the old GPU5/7 wait and uncompact retry remain preserved.
