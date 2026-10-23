@@ -5101,3 +5101,9 @@ G2 AnimalTrack, and G2 RMOT multi. The GPU7 chunk-192 TAO OVMOT owner has entere
 - G1 RMOT v5 remains complete at 800/800 with its official receipt; G1 DanceTrack v3 is now at 252/1,203 frames on the replacement GPU5 service.
 - G200 MOT20 is at 1,615/1,657 frames and G200 RMOT at 591/800; both continue writing with no failure receipt.
 - Exactly two SGLang schedulers remain. The retry collector and held-out finalizer are waiting for terminal G1 DanceTrack/G200 scopes; no partial metric or OneJev update is promoted.
+
+
+## 2026-10-23 — G1 DanceTrack and G200 scopes continue after RMOT repair
+
+- G1 DanceTrack v3 advanced to 387/1,203 frames on the replacement GPU5 service; G200 MOT20 advanced to 1,624/1,657 and G200 RMOT to 610/800.
+- G1 RMOT v5 remains complete at 800/800 with the official low-score receipt. Exactly two SGLang schedulers remain; all partial outputs stay outside official metrics and OneJev remains gated.
