@@ -1,0 +1,42 @@
+{
+  "schema": "groundjev.coupling_training_live_status.v1",
+  "generated_at": "2026-10-23T22:04:09+0800",
+  "queue_owner": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/real_three_task_joint_native_v2_compact_queue_v1/owner_state.json",
+  "status": "REAL_NATIVE_THREE_TASK_TRAINING_RUNNING",
+  "physical_gpus": [
+    3,
+    7
+  ],
+  "manifest": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/real_three_task_joint_native_v2_compact/train.sources.json",
+  "manifest_sha256": "7c92778fb4417ea1e49bf286cab7758ceef1443d683ab059e5e758e5bd823aa3",
+  "rows": 131618,
+  "planned_steps": 8227,
+  "latest_event": {
+    "step": 250,
+    "epoch": 0,
+    "examples": 4000,
+    "loss": 1.9836426002485679,
+    "ce": 1.4663744723517447,
+    "brier": 0.5172681250427559,
+    "slot_acc": 0.525,
+    "grad_norm": 7.486610708236694,
+    "lr": 1.9999993025606835e-05,
+    "rows_per_step": 16.0,
+    "examples_per_s": 0.7180534942618473,
+    "tokens_per_s": 5591.189953018093,
+    "sec_per_step": 22.282462417995557,
+    "peak_mem_gb": 7.795579433441162,
+    "elapsed_s": 5696.496745805955
+  },
+  "checkpoint_files": [],
+  "training_root": "/data3/user/LocateMOT-checkpoints/onejev_real_three_task_joint_native_v2_compact_v1",
+  "processes_verified": [
+    1076666,
+    1076686,
+    1076688,
+    1076811,
+    1076812
+  ],
+  "contract": "native MOT/RMOT/OVMOT joint LoRA SFT; immutable compact_competition_v1 manifest; world_size=2; max_rows=1; accum_rows=16",
+  "metric_claim": "none until terminal checkpoint and independent held-out evaluation"
+}
