@@ -323,6 +323,24 @@ def main():
                             rejected_output_policy='empty official prediction set; frame retained for all metrics')
                         print(json.dumps({'frame': frame_number,'stage':'decoder_output_rejected',
                             'error':perception['result']['parse_error']}),flush=True)
+                    except TimeoutError as error:
+                        # A bounded request timeout is a perception rejection
+                        # under ``empty_and_record``.  Preserve the frame in
+                        # the denominator and emit no guessed box; only the
+                        # explicit ``stop`` policy may abort the video.
+                        if args.perception_failure_policy == 'stop':
+                            raise
+                        candidates, perception = [], {
+                            'task': args.task,
+                            'model_response_rejected': True,
+                            'rejected_output_policy': 'empty official prediction set; timeout frame retained for all metrics',
+                            'error_type': type(error).__name__,
+                            'error': str(error),
+                            'strict_wire_valid': False,
+                            'result': {'parse_error': 'request_timeout'},
+                        }
+                        print(json.dumps({'frame': frame_number, 'stage': 'perception_timeout_rejected',
+                                          'error': str(error)}), flush=True)
                 if perception.get('model_response_rejected'):
                     rejected_frames.append(frame_number)
                 diagnostic = perception
