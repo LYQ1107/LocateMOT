@@ -5003,3 +5003,10 @@ G2 AnimalTrack, and G2 RMOT multi. The GPU7 chunk-192 TAO OVMOT owner has entere
 - A further 240-second blocking wait produced no owner-status transition, but all non-OVMOT scopes continued writing and no failure receipt appeared.
 - Current frame decisions are G1/G200 MOT20 1,605/1,488 of 1,657, G1/G200 RMOT 461/333 of 800, G1 OVMOT 33 of 40 sampled frames, and G200 AnimalTrack 295 of 306. Prediction-line counts are 243,408 / 224,304 / 1,123 / 1,270 / 0 / 6,714; these are partial evidence only.
 - G1 OVMOT has advanced one sampled frame since the previous audit and remains within the expected multi-minute TAO vocabulary latency. Exactly two SGLang schedulers remain; no partial metric or OneJev optimizer update is promoted.
+
+
+## 2026-10-23 — held-out inference remains healthy under two schedulers
+
+- The latest 240-second blocking wait had no owner-status transition; output validation still found active writes and no failure receipt.
+- Current frame decisions are G1/G200 MOT20 1,611/1,492 of 1,657, G1/G200 RMOT 468/339 of 800, G1 OVMOT 34 of 40 sampled frames, and G200 AnimalTrack 297 of 306. Prediction-line counts are 244,335 / 225,159 / 1,145 / 1,276 / 0 / 6,771; partial evidence is not scored.
+- Exactly two SGLang schedulers remain. The held-out finalizer and retry queues remain gated on terminal receipts; no native OneJev optimizer update or official metric is claimed.
