@@ -4832,3 +4832,9 @@ G2 AnimalTrack, and G2 RMOT multi. The GPU7 chunk-192 TAO OVMOT owner has entere
 - The latest blocking wait returned no terminal owner transition, but the active scopes continued writing with no failure receipt.
 - Current frame decisions are G1/G200 MOT20 1,482/1,312 of 1,657, G1/G200 RMOT 323/147 of 800, and G200 AnimalTrack 109 of 306. G1 OVMOT completed physical frame 349 and is processing frame 378, the fourteenth sampled frame of 40.
 - The two-service resource cap remains intact. OVMOT parser rejections remain explicit empty predictions under the official contract; no partial result is scored or promoted and OneJev remains gated.
+
+
+## 2026-10-23 — held-out clients continue toward terminal manifests
+- The latest blocking wait returned no terminal transition, but all six clients continued to advance and no failure receipt appeared.
+- Current frame decisions are G1/G200 MOT20 1,488/1,318 of 1,657, G1/G200 RMOT 328/154 of 800, G1 OVMOT 14 of 40 sampled frames, and G200 AnimalTrack 116 of 306.
+- The two existing schedulers remain the complete project service set. No partial rows are scored, and the OneJev launch gate remains closed until the registered held-out receipts and finalizers complete.
