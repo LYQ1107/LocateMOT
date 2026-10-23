@@ -1,6 +1,6 @@
 {
   "schema": "groundjev.mot20.control.throughput.live.v1",
-  "recorded_at": "2026-10-23T08:12:39.132119+08:00",
+  "recorded_at": "2026-10-23T10:43:28.632014+08:00",
   "manifest": "/data3/user/LocateMOT-runs/GroundJEV/g2_step3000_full_eval_mot20_05/mot20_05_validation_half.json",
   "registered_frames": 1657,
   "physical_frame_range": [
@@ -14,18 +14,18 @@
       "gpu": 5,
       "status": "RUNNING_G1_GPU5_V2_mot20_05_validation1657",
       "current_stage": "INFERENCE",
-      "last_physical_frame": 2579,
+      "last_physical_frame": 3072,
       "registered_last_frame": 3315,
-      "completed_rows": 921,
-      "remaining_frames": 736,
+      "completed_rows": 1413,
+      "remaining_frames": 244,
       "recent_samples": 20,
-      "recent_mean_seconds": 19.35525236155372,
-      "recent_median_seconds": 14.751302699442022,
-      "eta_hours_mean": 3.9570738161398715,
-      "eta_hours_median": 3.0158218852192578,
+      "recent_mean_seconds": 44.880072407028635,
+      "recent_median_seconds": 45.06088142551016,
+      "eta_hours_mean": 3.04,
+      "eta_hours_median": 3.05,
       "metric_claim": "none_until_terminal_receipt",
       "resume_source": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g1_mot20_05_gpu4_v1/G1_GPU5_V2/mot20_05_validation1657",
-      "latest_frame_seconds": 31.149517185986042
+      "latest_frame_seconds": 44.83368202089332
     },
     {
       "owner": "g200_mot20_05_gpu7_v1",
@@ -33,20 +33,20 @@
       "gpu": 7,
       "status": "RUNNING_G200_TRACKING200_mot20_05_validation1657",
       "current_stage": "INFERENCE",
-      "last_physical_frame": 2592,
+      "last_physical_frame": 2864,
       "registered_last_frame": 3315,
-      "completed_rows": 934,
-      "remaining_frames": 723,
+      "completed_rows": 1206,
+      "remaining_frames": 451,
       "recent_samples": 20,
-      "recent_mean_seconds": 30.961353200033773,
-      "recent_median_seconds": 20.85162897501141,
-      "eta_hours_mean": 6.218071767673449,
-      "eta_hours_median": 4.1877021524814575,
+      "recent_mean_seconds": 35.837039750558326,
+      "recent_median_seconds": 34.23435708740726,
+      "eta_hours_mean": 4.49,
+      "eta_hours_median": 4.29,
       "metric_claim": "none_until_terminal_receipt",
       "resume_source": null,
-      "latest_frame_seconds": 18.645868766121566
+      "latest_frame_seconds": 34.23865546192974
     }
   ],
-  "diagnosis": "Both owners and services were verified alive and advancing in INFERENCE; progress only, no partial metric claim.",
-  "action": "Preserve both runs; do not restart, score, or promote partial outputs. Recompute official metrics only after terminal receipts."
+  "diagnosis": "Both MOT20 controls remain in INFERENCE and have advanced under the same legal 1,657-frame validation-half contract; timing estimates are progress evidence only and no partial metric claim is made.",
+  "action": "Preserve the active owners and recompute official metrics only after terminal receipts and frame-contract validation."
 }

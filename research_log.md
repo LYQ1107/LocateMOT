@@ -4725,3 +4725,16 @@ G2 AnimalTrack, and G2 RMOT multi. The GPU7 chunk-192 TAO OVMOT owner has entere
 - Patched `queue_real_three_task_native.py` to use the unified held-out finalizer, accept a fresh queue/checkpoint root and explicit GPU list, and require only the measured free-memory floor while recording foreign PIDs. The new course uses GPU5/7 after the held-out services terminate; GPU4/6 foreign jobs remain untouched.
 - Patched `orchestrate_heldout_finalizers_and_onejev.py` to invoke the fresh native queue after all 27 owners and three finalizers complete. The historical teacher-control/step-3000 queue remains preserved and is not invoked.
 - Compile/import checks passed and the native manifest loaded 131,618 rows in the source trainer preflight before CPU token-length planning was stopped to avoid occupying the host for an extended dry run. No optimizer or GPU training update was made by this preflight.
+
+## 2026-10-23 — held-out owners advance under the expanded shared-service batch
+- A current progress snapshot found G1 MOT20 at 1,413/1,657 rows through physical frame 3,072 and G200 MOT20 at 1,206/1,657 rows through physical frame 2,864. Recent-20 medians were about 45.1 s and 34.2 s per frame, giving rough remaining estimates of 3.1 h and 4.3 h.
+- The two added shared-service scopes remain active: G1 RMOT 245/800, G200 RMOT 26/800, G1 OVMOT 2/40, and dedicated G200 OVMOT 5/40. These are row-count observations only; no official metric is promoted from partial output.
+- The unified orchestrator remains in `WAITING_ALL_REGISTERED_HELDOUT_OWNERS`; native OneJev has not launched. The live MOT20 receipt was refreshed with the current counts and timing estimates.
+
+## 2026-10-23 — two additional cross-model held-out controls launched
+- User requested two more tasks in parallel. To avoid increasing `sglang::scheduler` count, both jobs reuse validated shared services: G1/GPU5 on `http://127.0.0.1:8240` and G200/GPU7 on `http://127.0.0.1:8238`.
+- `g1_dancetrack_shared_gpu5_v1`: DanceTrack `dancetrack0004` validation, 1,203 frames, G1 bundle `GroundAnything-DLM-TrackProjG1-GPU5-V2`, official scoring parser.
+- `g200_animaltrack_shared_gpu7_v1`: AnimalTrack `chicken_1` test, 306 frames, G200 bundle `GroundAnything-DLM-TrackProj200`, official scoring parser.
+- Both scopes reuse the existing independent manifests from `heldout_inputs/g2_domain_v1`; outputs are isolated and use the same input/parser/decoder/tracker/scorer contract. GPU6 was left untouched because it has another user's active workload.
+- Launch receipt: `/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/parallel_two_shared_launch_20261023.json`; runner PIDs at launch were 3511892 and 3511893. No new SGLang service was created. Initial wrapper failure caused by precreating non-empty output dirs was cleaned without inference; relaunch uses directory-external launcher logs.
+- Metrics are intentionally not claimed until each owner writes a terminal receipt and official metrics.
