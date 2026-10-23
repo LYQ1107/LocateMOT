@@ -4765,3 +4765,6 @@ G2 AnimalTrack, and G2 RMOT multi. The GPU7 chunk-192 TAO OVMOT owner has entere
 ## 2026-10-23 — stopped accidental full collector smoke processes
 - A prior collector smoke command that hashed the full model for every owner was still running (PIDs 3528263 and 3529284) and had never produced a receipt. Both command lines were verified as this project's `collect_g2_heldout_receipts.py` processes and were terminated explicitly; all GPU inference services, retry queues, and the durable extra-control collector were left untouched.
 - The collector fix remains compile-tested; the full hash smoke is not accepted as an experiment result. Future collection is performed only by the bounded extra-control queue after its owners reach terminal states.
+
+## 2026-10-23 — reclaimed orphaned failed G200 OVMOT service
+- The failed `g200_ovmot_dedicated_gpu7_v1` receipt still had an orphaned GroundAnything service group on port 8242. Its command line was verified against the failed owner/model/output before cleanup; only that process group was terminated. The active G200 MOT/RMOT service on port 8238, G1 services, new AnimalTrack evaluation, retry queues, and foreign processes were not touched. A follow-up process check found no remaining 8242/failed-owner service.
