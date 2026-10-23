@@ -5167,3 +5167,8 @@ G2 AnimalTrack, and G2 RMOT multi. The GPU7 chunk-192 TAO OVMOT owner has entere
 - RMOT v3 completed all 800 registered frames and passed the official unmodified TrackEval scorer. The terminal receipt reports HOTA 0.4011940792, DetA 0.3276041719, AssA 0.4921537914, IDF1 0.4630333756, IDSW 83, FP 1349, FN 839.
 - Frames 777–799 are explicit perception rejections (23/800, 2.875%) after the first timeout circuit opened; they remain in the denominator and contain no guessed boxes. Because the output resumed from an interrupted prefix, end-to-end FPS is not claimed; the resumed pipeline timer is recorded separately.
 - The G200 OVMOT dedicated queue is now released by the terminal RMOT owner. Its runner also receives the one-time timeout circuit breaker so repeated invalid requests cannot consume hours; all OVMOT frames and official TETA components remain pending.
+
+## 2026-10-23 — OVMOT launch resource race preserved and made waitable
+
+- The first post-RMOT OVMOT launch passed the queue's 32-GiB probe but lost memory to concurrent GPU7 work before the child scope's second probe (25,310 MiB); it exited before inference. The empty owner and resource receipt were moved to g200_ovmot_dedicated_gpu7_v2_superseded_resource_gate and are excluded from metrics.
+- Patched run_g2_parallel_scope.py to wait up to 24 hours for the same 32-GiB floor rather than fail on this race. Foreign GPU7 processes are untouched. The dedicated OVMOT queue remains bounded by the timeout circuit and will be relaunched after the waitable gate is live.
