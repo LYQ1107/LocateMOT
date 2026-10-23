@@ -4758,3 +4758,6 @@ G2 AnimalTrack, and G2 RMOT multi. The GPU7 chunk-192 TAO OVMOT owner has entere
 
 ## 2026-10-23 — reproducible collector for the two extra controls
 - Added `scripts/groundjev/collect_extra_shared_control_receipts.py`, a non-blocking collector for the requested G1 DanceTrack/G200 AnimalTrack controls and their retry receipts. It records model/manifest hashes and official metrics only when a complete result block exists; queue states, failures, and partial outputs remain status evidence. A one-owner queue-state smoke check passed (`accepted_scope_count=0`, as required).
+
+## 2026-10-23 — automatic post-run collection queued
+- Started durable `queue_collect_extra_shared_controls.py` (PID 3535083). It waits for the G200 AnimalTrack owner and both G1/G200 retry queue states to become terminal, then writes `extra_shared_controls_final_receipt.json` through the non-blocking collector. It does not start a GPU service and does not affect the OneJev gate.
