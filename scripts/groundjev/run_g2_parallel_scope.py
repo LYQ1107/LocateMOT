@@ -146,14 +146,21 @@ def main() -> int:
     save(owner_path, state)
     service = None
     try:
-        free_text = subprocess.run(
-            ["nvidia-smi", "-i", str(args.gpu), "--query-gpu=memory.free", "--format=csv,noheader,nounits"],
-            capture_output=True, text=True, check=True,
-        ).stdout.strip()
-        free = int(free_text.splitlines()[0])
-        state["resource_probe"] = {"free_memory_MiB": free, "minimum_free_memory_MiB": 32768}
-        if free < 32768:
-            raise RuntimeError(f"insufficient free memory on GPU{args.gpu}: {free} MiB")
+        resource_deadline = time.monotonic() + 24 * 60 * 60
+        while True:
+            free_text = subprocess.run(
+                ["nvidia-smi", "-i", str(args.gpu), "--query-gpu=memory.free", "--format=csv,noheader,nounits"],
+                capture_output=True, text=True, check=True,
+            ).stdout.strip()
+            free = int(free_text.splitlines()[0])
+            state["resource_probe"] = {"free_memory_MiB": free, "minimum_free_memory_MiB": 32768}
+            if free >= 32768:
+                break
+            if time.monotonic() > resource_deadline:
+                raise TimeoutError(f"GPU{args.gpu} did not reach the 32768 MiB floor within 24 hours")
+            state.update(status=f"G2_PARALLEL_SCOPE_GPU{args.gpu}_WAITING_MEMORY", current_stage="RESOURCE_GATE")
+            save(owner_path, state)
+            time.sleep(60)
 
         env = os.environ.copy()
         env["CUDA_VISIBLE_DEVICES"] = ""
