@@ -5128,3 +5128,9 @@ G2 AnimalTrack, and G2 RMOT multi. The GPU7 chunk-192 TAO OVMOT owner has entere
 - G200 MOT20 reached `G2_PARALLEL_SCOPE_COMPLETE` after all 1,657 frames; its scorer receipt is now terminal and the completed output is immutable.
 - The shared GPU7 service remains reachable for the still-running G200 RMOT client, which advanced to 777/800 frame decisions; G1 DanceTrack advanced to 919/1,203. No service replacement or extra scheduler was started.
 - G200 OVMOT retry remains gated on terminal G200 RMOT; the consolidated-result printer and JEV coupling gate remain closed. Exactly two GroundAnything service endpoints (GPU5/8240 and GPU7/8238) remain in use.
+
+
+## 2026-10-23 — finalizer owner lists repaired before terminal collection
+
+- The three held-out finalizer scripts were updated to include the current G1 DanceTrack v3, G200 AnimalTrack shared, and G200 OVMOT retry-v2 owner receipts. This prevents the final evidence collection from silently omitting the retry scopes that the orchestrator already gates.
+- All three scripts compile cleanly. The running orchestrator will execute the updated files after the remaining owners become terminal; no active inference process was restarted.
