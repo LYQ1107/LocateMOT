@@ -68,10 +68,10 @@ def line_count(path: Path) -> int | None:
 def metric_files(owner_path: Path, state: dict[str, Any]) -> list[Path]:
     candidates: set[Path] = set()
     for raw in nested_paths(state):
+        # Read explicit metric-file references, but do not recursively scan
+        # arbitrary model/data directories found in the receipt.
         if raw.is_file() and raw.name == "official_metrics.json":
             candidates.add(raw)
-        if raw.is_dir():
-            candidates.update(raw.rglob("official_metrics.json"))
     out = state.get("out")
     if isinstance(out, str):
         output_root = Path(out)
@@ -79,7 +79,7 @@ def metric_files(owner_path: Path, state: dict[str, Any]) -> list[Path]:
             candidates.update(output_root.rglob("official_metrics.json"))
     # Owner directories are usually the most reliable scope root.  The
     # bounded fallback also handles old receipts that omitted ``out``.
-    if not candidates and owner_path.is_dir():
+    if not candidates and owner_path.is_dir() and owner_path != HELDOUT:
         candidates.update(owner_path.rglob("official_metrics.json"))
     return sorted(path for path in candidates if path.is_file())
 
