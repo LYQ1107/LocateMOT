@@ -5141,3 +5141,10 @@ G2 AnimalTrack, and G2 RMOT multi. The GPU7 chunk-192 TAO OVMOT owner has entere
 - The G200 shared RMOT owner reached a real `TimeoutError` at frame 777 after writing the exact 0–776 prefix. The failed owner, failure receipt and prefix remain preserved; no metric is promoted from the incomplete run.
 - Added `queue_g200_rmot_shared_retry.py`, which reuses GPU7/8238, raises only the per-request timeout to 900 seconds, restores the exact prefix into `g200_rmot_shared_gpu7_v2`, and writes a separate owner/official-scoring receipt. The retry is currently running from frame 777 with no additional scheduler.
 - The pre-start G200 OVMOT queue was stopped and marked superseded before it could pass the old failed RMOT dependency. Its new queue state waits on the repaired RMOT owner. The orchestrator and extra-control collector were restarted with the repaired dependency paths; JEV remains gated.
+
+
+## 2026-10-23 — superseded OVMOT child group reclaimed before RMOT retry
+
+- The pre-start OVMOT queue had already spawned a detached GPU7 service/client group on port 8243 before its parent was stopped. The command lines and output root were verified as this project; the group was terminated without touching foreign processes.
+- Its two-frame partial output was moved to `g200_ovmot_dedicated_gpu7_v2_superseded_before_rmot_repair` with a superseded failure receipt, so the fresh v2 OVMOT retry cannot overwrite it. Port 8243 is now free; GPU7 is serving only the G200 RMOT retry on 8238.
+- A new OVMOT queue is waiting on `g200_rmot_shared_gpu7_v2/owner_state.json`; the consolidated-result and JEV gates remain closed.
