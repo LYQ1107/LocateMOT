@@ -16,7 +16,7 @@ COLLECTOR = ROOT / "scripts/groundjev/collect_extra_shared_control_receipts.py"
 WAIT_STATES = (
     RUNTIME / "outputs/groundjev/heldout/g200_animaltrack_shared_gpu7_v1/owner_state.json",
     RUNTIME / "outputs/groundjev/heldout/g1_dancetrack_shared_gpu5_retry.queue_state.json",
-    RUNTIME / "outputs/groundjev/heldout/g200_ovmot_dedicated_gpu7_retry.queue_state.json",
+    RUNTIME / "outputs/groundjev/heldout/g200_ovmot_dedicated_gpu7_retry_v2.queue_state.json",
 )
 OUT = RUNTIME / "outputs/groundjev/heldout/extra_shared_controls_final_receipt.json"
 QUEUE_STATE = RUNTIME / "outputs/groundjev/heldout/extra_shared_controls_collection.queue_state.json"
