@@ -5161,3 +5161,9 @@ G2 AnimalTrack, and G2 RMOT multi. The GPU7 chunk-192 TAO OVMOT owner has entere
 - The first repaired RMOT v3 client recorded explicit timeout rejections at frames 777–779, each taking the full 900-second request budget; its immutable 780-row prefix was moved to g200_rmot_shared_gpu7_v3_superseded_before_timeout_circuit and marked ineligible for metrics.
 - Added max-consecutive-timeouts to the runner. The new retry keeps the exact prefix, issues at most one further request, and then records the remaining frames as empty request_timeout_circuit_open rejections while preserving the official denominator and tracker state. This prevents a dead service from consuming hours on repeated invalid requests.
 - The shared GPU7/8238 service was kept alive; the old RMOT client/queue were terminated only after ownership verification. The existing OVMOT gate will continue to wait on the terminal RMOT v3 owner, and no extra scheduler was created.
+
+## 2026-10-23 — G200 RMOT full legal scope completed after bounded recovery
+
+- RMOT v3 completed all 800 registered frames and passed the official unmodified TrackEval scorer. The terminal receipt reports HOTA 0.4011940792, DetA 0.3276041719, AssA 0.4921537914, IDF1 0.4630333756, IDSW 83, FP 1349, FN 839.
+- Frames 777–799 are explicit perception rejections (23/800, 2.875%) after the first timeout circuit opened; they remain in the denominator and contain no guessed boxes. Because the output resumed from an interrupted prefix, end-to-end FPS is not claimed; the resumed pipeline timer is recorded separately.
+- The G200 OVMOT dedicated queue is now released by the terminal RMOT owner. Its runner also receives the one-time timeout circuit breaker so repeated invalid requests cannot consume hours; all OVMOT frames and official TETA components remain pending.
