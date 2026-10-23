@@ -5172,3 +5172,8 @@ G2 AnimalTrack, and G2 RMOT multi. The GPU7 chunk-192 TAO OVMOT owner has entere
 
 - The first post-RMOT OVMOT launch passed the queue's 32-GiB probe but lost memory to concurrent GPU7 work before the child scope's second probe (25,310 MiB); it exited before inference. The empty owner and resource receipt were moved to g200_ovmot_dedicated_gpu7_v2_superseded_resource_gate and are excluded from metrics.
 - Patched run_g2_parallel_scope.py to wait up to 24 hours for the same 32-GiB floor rather than fail on this race. Foreign GPU7 processes are untouched. The dedicated OVMOT queue remains bounded by the timeout circuit and will be relaunched after the waitable gate is live.
+
+## 2026-10-23 — OVMOT slow-response bound tightened after direct timing audit
+
+- The first waitable OVMOT retry reached only five output frames after 26 minutes; completed requests took 482–773 seconds and the next request was still active. The 900-second timeout was therefore too permissive for this service behavior.
+- Stopped only the project-owned OVMOT groups, preserved the five-row causal prefix at g200_ovmot_dedicated_gpu7_v2_superseded_before_ovmot_timeout180, and reduced the dedicated request timeout to 180 seconds with the one-time circuit breaker. No partial output is promoted to metrics.
