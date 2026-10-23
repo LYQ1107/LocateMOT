@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 """Single durable gate for the registered held-out finalizers and OneJev.
 
-The evaluation owners are independent long-running processes.  This
+The evaluation owners are independent long-running processes. This
 orchestrator is the one blocking waiter for the current batch: it waits for
 all registered owners (including the shared-service additions), runs the
-three historical receipt finalizers, then hands control to the registered
-exclusive-GPU OneJev resume queue.
+three receipt finalizers, then hands control to the real native
+MOT/RMOT/OVMOT OneJev queue. The historical teacher-control resume queue is
+preserved and is never invoked here.
 """
 
 from __future__ import annotations
@@ -29,7 +30,10 @@ FINALIZERS = (
     ROOT / "scripts/groundjev/queue_groundjev_heldout_finalize_with_g200.py",
     ROOT / "scripts/groundjev/queue_groundjev_heldout_finalize_with_g200_fast_ovmot.py",
 )
-ONEJEV_QUEUE = ROOT / "scripts/groundjev/queue_onejev_full_joint_resume_after_heldout.py"
+ONEJEV_QUEUE = ROOT / "scripts/groundjev/queue_real_three_task_native.py"
+ONEJEV_QUEUE_ROOT = RUNTIME / "outputs/groundjev/training/real_three_task_joint_native_after_heldout_v2_queue"
+ONEJEV_TRAIN_ROOT = Path("/data3/user/LocateMOT-checkpoints/onejev_real_three_task_joint_native_after_heldout_v2")
+ONEJEV_MANIFEST = RUNTIME / "outputs/groundjev/training_data/real_three_task_joint_native_v1/train.sources.json"
 
 
 def read(path: Path) -> dict | None:
@@ -85,21 +89,27 @@ def main() -> int:
         state["finalizer_results"] = finalizer_results
         save(state)
 
-    state.update(status="RUNNING_ONEJEV_EXCLUSIVE_RESUME_QUEUE", current_stage="ONEJEV_QUEUE")
+    state.update(status="RUNNING_ONEJEV_REAL_NATIVE_QUEUE", current_stage="ONEJEV_QUEUE")
     save(state)
     log_path = QUEUE_ROOT / "orchestrator_onejev_queue.log"
     with log_path.open("w", encoding="utf-8") as log:
         result = subprocess.run(
-            [str(PYTHON), str(ONEJEV_QUEUE)], cwd=ROOT, stdout=log, stderr=subprocess.STDOUT, check=False
+            [
+                str(PYTHON), str(ONEJEV_QUEUE),
+                "--queue-root", str(ONEJEV_QUEUE_ROOT),
+                "--training-root", str(ONEJEV_TRAIN_ROOT),
+                "--native-manifest", str(ONEJEV_MANIFEST),
+                "--gpus", "5", "7",
+            ], cwd=ROOT, stdout=log, stderr=subprocess.STDOUT, check=False
         )
     state["onejev_exit_code"] = result.returncode
     state["onejev_log"] = str(log_path)
     if result.returncode:
-        state.update(status="HELDOUT_FINALIZERS_COMPLETE_ONEJEV_FAILED", current_stage="FAILED")
+        state.update(status="HELDOUT_FINALIZERS_COMPLETE_REAL_NATIVE_ONEJEV_FAILED", current_stage="FAILED")
         state["failed"] = {"onejev_exit_code": result.returncode}
         save(state)
         return result.returncode
-    state.update(status="HELDOUT_FINALIZERS_AND_ONEJEV_COMPLETE", current_stage="COMPLETE")
+    state.update(status="HELDOUT_FINALIZERS_AND_REAL_NATIVE_ONEJEV_COMPLETE", current_stage="COMPLETE")
     save(state)
     return 0
 

@@ -26,17 +26,16 @@ NATIVE_ROOT = RUNTIME_ROOT / "outputs/groundjev/training_data/real_three_task_jo
 MANIFEST = NATIVE_ROOT / "train.sources.json"
 MANIFEST_RECEIPT = NATIVE_ROOT / "manifest_receipt.json"
 BASE_CONFIG = PROJECT_ROOT / "configs/groundjev/real_three_task_joint_v2_compact_runtime.json"
-QUEUE_ROOT = RUNTIME_ROOT / "outputs/groundjev/training/real_three_task_joint_native_v1_queue"
-TRAIN_ROOT = Path("/data3/user/LocateMOT-checkpoints/onejev_real_three_task_joint_native_v1")
-CONFIG_OUT = QUEUE_ROOT / "native_runtime.json"
+QUEUE_ROOT = RUNTIME_ROOT / "outputs/groundjev/training/real_three_task_joint_native_after_heldout_v2_queue"
+TRAIN_ROOT = Path("/data3/user/LocateMOT-checkpoints/onejev_real_three_task_joint_native_after_heldout_v2")
 G2_ROOT = Path("/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/formal_clean_coverage_v2_final")
 G1_STATE = RUNTIME_ROOT / "outputs/groundjev/ground_adaptation/native_tracking200_gpu5_g1_v1/queue_owner_state.json"
 BUNDLE_STATE = RUNTIME_ROOT / "outputs/groundjev/ground_adaptation/g2_clean_bundle_export_v1/owner_state.json"
-HELDOUT_STATE = RUNTIME_ROOT / "outputs/groundjev/heldout/g2_clean_independent_gpu7_v1/owner_state.json"
+HELDOUT_FINALIZER = RUNTIME_ROOT / "outputs/groundjev/heldout/groundjev_heldout_g200_finalization_receipt.json"
 PYTHON = RUNTIME_ROOT / ".venv-onejev-py310/bin/python"
 RUNNER = RUNTIME_ROOT / "tools/groundjev/run_with_resources.py"
 SFT = RUNTIME_ROOT / "tools/groundjev/run_source_manifest_sft.py"
-GPUS = (4, 5, 6, 7)
+GPUS = (5, 7)
 G2_MANIFEST_SHA = "f682519a1cf9204ca76ea75a56dad36dbdeac26259f202551ab9f66fefd06e71"
 G2_STEPS = 18227
 
@@ -84,38 +83,53 @@ def g2_status() -> tuple[str, dict | None]:
     return ("complete", value) if valid else ("failed", value)
 
 
-def native_status() -> tuple[str, dict | None]:
-    manifest = read_json(MANIFEST)
-    receipt = read_json(MANIFEST_RECEIPT)
+def native_status(manifest_path: Path, receipt_path: Path) -> tuple[str, dict | None]:
+    manifest = read_json(manifest_path)
+    receipt = read_json(receipt_path)
     if manifest is None or receipt is None:
         return "waiting", None
     if manifest.get("native_ovmot_training_rows") is not True or manifest.get("ovmot_training_mode") != "native":
         return "failed", {"reason": "native OVMOT gate is false", "manifest": manifest}
     if int(manifest.get("rows", -1)) <= 0 or int(receipt.get("optimizer_updates", -1)) != 0 or receipt.get("gpu_launched") is not False:
         return "failed", {"reason": "native manifest receipt contract mismatch", "receipt": receipt}
-    if receipt.get("manifest_sha256") != sha256(MANIFEST):
+    if receipt.get("manifest_sha256") != sha256(manifest_path):
         return "failed", {"reason": "native manifest SHA mismatch", "receipt": receipt}
-    return "complete", {"manifest": manifest, "receipt": receipt}
+    return "complete", {"manifest": manifest, "receipt": receipt, "manifest_path": str(manifest_path)}
 
 
-def devices_ready() -> tuple[bool, dict]:
+def heldout_status(path: Path) -> tuple[str, dict | None]:
+    """Use the current unified finalizer instead of the superseded G2-only owner."""
+    value = read_json(path)
+    if value is None:
+        return "waiting", None
+    if value.get("schema", "").startswith("groundjev.heldout.") and value.get("collection"):
+        if int(value.get("accepted_scope_count", 0)) > 0:
+            return "complete", value
+    if value.get("failed"):
+        return "failed", value
+    return "waiting", value
+
+
+def devices_ready(gpus: tuple[int, ...]) -> tuple[bool, dict]:
     probes = {}
     ready = True
-    for gpu in GPUS:
+    for gpu in gpus:
         apps = subprocess.run(["nvidia-smi", "-i", str(gpu), "--query-compute-apps=pid", "--format=csv,noheader,nounits"], capture_output=True, text=True, check=True).stdout
         free = int(subprocess.run(["nvidia-smi", "-i", str(gpu), "--query-gpu=memory.free", "--format=csv,noheader,nounits"], capture_output=True, text=True, check=True).stdout.strip().splitlines()[0])
         pids = [line.strip() for line in apps.splitlines() if line.strip()]
         probes[str(gpu)] = {"compute_apps": pids, "free_memory_MiB": free}
-        ready = ready and not pids and free >= 32768
+        # Foreign jobs are never terminated. Co-residency is allowed only
+        # after the free-memory floor is measured and the PIDs are recorded.
+        ready = ready and free >= 32768
     return ready, probes
 
 
-def build_config() -> dict:
+def build_config(manifest_path: Path, training_root: Path) -> dict:
     config = json.loads(BASE_CONFIG.read_text())
     config.update({
-        "train": str(MANIFEST),
-        "name": "onejev_real_three_task_joint_native_v1",
-        "runs_dir": str(TRAIN_ROOT.parent),
+        "train": str(manifest_path),
+        "name": training_root.name,
+        "runs_dir": str(training_root.parent),
         "max_steps": 0,
         "epochs": 1,
     })
@@ -129,7 +143,18 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--poll-seconds", type=int, default=60)
     parser.add_argument("--queue-root", type=Path, default=QUEUE_ROOT)
+    parser.add_argument("--training-root", type=Path, default=TRAIN_ROOT)
+    parser.add_argument("--native-manifest", type=Path, default=MANIFEST)
+    parser.add_argument("--native-receipt", type=Path, default=None)
+    parser.add_argument("--gpus", type=int, nargs="+", default=list(GPUS))
     args = parser.parse_args()
+    args.queue_root = args.queue_root.resolve()
+    args.training_root = args.training_root.resolve()
+    args.native_manifest = args.native_manifest.resolve()
+    native_receipt = (args.native_receipt or args.native_manifest.parent / "manifest_receipt.json").resolve()
+    gpus = tuple(args.gpus)
+    if not gpus or len(set(gpus)) != len(gpus) or len(gpus) > 4 or not set(gpus) <= {4, 5, 6, 7}:
+        raise ValueError("--gpus must be one to four distinct devices from the GroundJEV allowlist")
     owner = args.queue_root / "owner_state.json"
     old = read_json(owner)
     if old and str(old.get("status", "")).endswith(("_COMPLETE", "_FAILED")):
@@ -156,11 +181,12 @@ def main() -> int:
         "status": "WAITING_NATIVE_OVMOT_MANIFEST",
         "current_stage": "WAITING_NATIVE_OVMOT_MANIFEST",
         "owner_pid": os.getpid(),
-        "manifest": str(MANIFEST),
+        "manifest": str(args.native_manifest),
+        "native_receipt": str(native_receipt),
         "native_manifest_sha256": None,
-        "physical_gpus": list(GPUS),
-        "training_root": str(TRAIN_ROOT),
-        "config": str(CONFIG_OUT),
+        "physical_gpus": list(gpus),
+        "training_root": str(args.training_root),
+        "config": str(args.queue_root / "native_runtime.json"),
         "optimizer_updates": 0,
         "gpu_launched": False,
         "old_teacher_queue_preserved": True,
@@ -171,7 +197,7 @@ def main() -> int:
     save(owner, state)
     try:
         while True:
-            native, ne = native_status()
+            native, ne = native_status(args.native_manifest, native_receipt)
             if native == "failed":
                 state.update(status="NATIVE_JOINT_MANIFEST_FAILED", current_stage="FAILED", failed=ne)
                 save(owner, state)
@@ -184,12 +210,14 @@ def main() -> int:
             break
         manifest = ne["manifest"]
         rows = int(manifest["rows"])
-        config = build_config()
-        if CONFIG_OUT.exists() and json.loads(CONFIG_OUT.read_text()) != config:
-            raise FileExistsError(f"refusing to overwrite a different config: {CONFIG_OUT}")
+        config = build_config(args.native_manifest, args.training_root)
+        config_out = args.queue_root / "native_runtime.json"
+        if config_out.exists() and json.loads(config_out.read_text()) != config:
+            raise FileExistsError(f"refusing to overwrite a different config: {config_out}")
         args.queue_root.mkdir(parents=True, exist_ok=True)
-        CONFIG_OUT.write_text(json.dumps(config, indent=2, ensure_ascii=False) + "\n")
-        state["native_manifest_sha256"] = sha256(MANIFEST)
+        config_out.write_text(json.dumps(config, indent=2, ensure_ascii=False) + "\n")
+        state["config"] = str(config_out)
+        state["native_manifest_sha256"] = sha256(args.native_manifest)
         state["rows"] = rows
         state["rows_per_task"] = manifest.get("rows_per_task")
         state["completed"]["native_manifest"] = ne["receipt"]
@@ -198,7 +226,7 @@ def main() -> int:
         while True:
             g2, ge = g2_status()
             bundle, be = dependency(BUNDLE_STATE, {"G2_CLEAN_DEPLOYMENT_BUNDLE_EXPORTED", "G2_CLEAN_BUNDLE_EXPORT_COMPLETE"})
-            heldout, he = dependency(HELDOUT_STATE, {"G2_CLEAN_FULL_INDEPENDENT_HELDOUT_COMPLETE"})
+            heldout, he = heldout_status(HELDOUT_FINALIZER)
             g1, g1e = dependency(G1_STATE, {"G1_GPU5_ADAPTATION_AND_CONTROLS_COMPLETE"})
             snapshot = {"g2": g2, "g1_optional": g1, "bundle": bundle, "heldout": heldout}
             state["dependency_snapshot"] = snapshot
@@ -207,7 +235,7 @@ def main() -> int:
                 save(owner, state)
                 return 3
             if all(item == "complete" for item in (g2, bundle, heldout)):
-                ready, probes = devices_ready()
+                ready, probes = devices_ready(gpus)
                 state["resource_probe"] = probes
                 if ready:
                     state["completed"].update({"g2": ge, "bundle": be, "heldout": he})
@@ -216,14 +244,14 @@ def main() -> int:
                     break
             save(owner, state)
             time.sleep(args.poll_seconds)
-        command = [str(RUNNER), "--gpus", *map(str, GPUS), "--", str(PYTHON), "-m", "torch.distributed.run", "--standalone", "--nproc-per-node", "4", str(SFT), "--source-training-backend", "fla", "--config", str(CONFIG_OUT), "--paired-index-shuffle", "--distributed-sft", "--deterministic-execution", "--seed-global-rngs"]
+        command = [str(RUNNER), "--gpus", *map(str, gpus), "--", str(PYTHON), "-m", "torch.distributed.run", "--standalone", "--nproc-per-node", str(len(gpus)), str(SFT), "--source-training-backend", "fla", "--config", str(config_out), "--paired-index-shuffle", "--distributed-sft", "--deterministic-execution", "--seed-global-rngs"]
         state.update(status="REAL_NATIVE_THREE_TASK_TRAINING_RUNNING", current_stage="REAL_NATIVE_THREE_TASK_TRAINING_RUNNING", command=command, gpu_launched=True)
         save(owner, state)
         log_path = args.queue_root / "TRAINING.log"
         with log_path.open("w", encoding="utf-8") as log:
             result = subprocess.run(command, cwd=RUNTIME_ROOT, stdout=log, stderr=subprocess.STDOUT, check=False)
         records = []
-        log_jsonl = TRAIN_ROOT / "log.jsonl"
+        log_jsonl = args.training_root / "log.jsonl"
         if log_jsonl.is_file():
             for line in log_jsonl.read_text(errors="ignore").splitlines():
                 try:
