@@ -5087,3 +5087,10 @@ G2 AnimalTrack, and G2 RMOT multi. The GPU7 chunk-192 TAO OVMOT owner has entere
 - The G1 shared RMOT v2 owner failed at frame 660 with a real HTTP `TimeoutError` during native perception. Its completed 660-frame prefix and failure receipt are preserved; no metric was promoted.
 - Added `queue_g1_rmot_shared_retry.py`: it reuses the same GPU5 service, restores the exact v2 causal prefix into fresh `g1_rmot_shared_gpu5_v3`, raises only the per-request timeout to 900 seconds, reruns the unchanged official parser/scorer, and verifies the full 800-frame contract before accepting a receipt.
 - The G1 DanceTrack retry was moved to fresh v3 output and now waits for RMOT v3 plus the completed OVMOT scope. The finalizer/OneJev owner list and collector were updated to use RMOT v3 while retaining v2 as historical failure evidence. Compilation and diff checks pass; exactly two SGLang schedulers remain.
+
+
+## 2026-10-23 — G1 RMOT v5 completed after service-lifecycle repair
+
+- The first retry (v3) stalled because the completed G1 MOT20 owner orphaned its SGLang service in graceful shutdown; v4 also exposed an output-root collision because the new service log was placed inside the retry root. Both failures are preserved with receipts.
+- The repaired v5 path starts a replacement G1 service on the same GPU5/8240 endpoint with an isolated service output directory, restores the exact 660-frame v2 prefix, and completes all 800 RMOT frames. Official metrics: HOTA=0.0377768821, DetA=0.0056875540, AssA=0.2524360693, IDF1=0.0089435439, IDSW=3, FP=1,760, FN=7; 45 perception-rejected frames are retained in the denominator. This is a complete but weak result, with no gain claim.
+- The v5 scope now has both queue and scope owner receipts; DanceTrack v3 is running on the same replacement service. Exactly two SGLang schedulers remain.
