@@ -114,6 +114,7 @@ def main() -> int:
             "--manifest", str(MANIFEST), "--out", str(OUT), "--label", "tao_video63_base_novel40_dedicated_retry",
             "--model", str(MODEL), "--model-label", "G200_GPU7_OVMOT_DEDICATED_RETRY",
             "--ovmot-chunk-size", "192", "--grounding-parser", "official_scoring_repaired",
+            "--grounding-request-timeout", "900",
             "--resume-from", str(RESUME_FROM),
         ]
         state.update(status="STARTING_G200_OVMOT_DEDICATED_RETRY", current_stage="STARTING", command=command)

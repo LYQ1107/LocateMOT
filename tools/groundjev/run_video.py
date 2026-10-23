@@ -108,6 +108,8 @@ def main():
     parser.add_argument('--grounding-decoder-policy', choices=['generic_greedy', 'tracking_dense'], default='generic_greedy')
     parser.add_argument('--grounding-vocabulary-chunk-size', type=int,
                         help='OVMOT: exhaustively request this many vocabulary classes at a time, then associate the union once')
+    parser.add_argument('--grounding-request-timeout', type=float, default=600,
+                        help='seconds allowed for one GroundAnything request; recorded in the receipt')
     parser.add_argument('--perception-failure-policy', choices=['stop', 'empty_and_record'], default='stop',
                         help='official scorer rejection is an explicitly logged empty prediction, included in every metric denominator')
     parser.add_argument('--candidate-replay', type=Path, help='exact prior frame log for a fixed-candidate association control; no end-to-end FPS claim')
@@ -164,7 +166,8 @@ def main():
         parser.error('feature omission requires the retained exact shared input source or current native archive')
     args.out.mkdir(parents=True, exist_ok=True)
     frontend = GroundAnythingAdapter(args.grounding_url, parser_policy=args.grounding_parser,
-        decoder_policy=args.grounding_decoder_policy, vocabulary_chunk_size=args.grounding_vocabulary_chunk_size)
+        decoder_policy=args.grounding_decoder_policy, vocabulary_chunk_size=args.grounding_vocabulary_chunk_size,
+        request_timeout=args.grounding_request_timeout)
     if args.backend=='simple': decision=SimpleDecision()
     elif args.backend in ('simple_native','simple_temporal'): decision=FeatureDecision(temporal=args.backend=='simple_temporal')
     elif args.backend=='compact':
@@ -417,6 +420,7 @@ def main():
               'grounding_parser_policy': args.grounding_parser,
               'grounding_decoder_policy': args.grounding_decoder_policy,
               'grounding_vocabulary_chunk_size':args.grounding_vocabulary_chunk_size,
+              'grounding_request_timeout':args.grounding_request_timeout,
               'specification':specification,
               'timestamp_policy':manifest.get('timestamp_policy','physical frame number / registered video FPS'),
               'perception_failure_policy': args.perception_failure_policy,

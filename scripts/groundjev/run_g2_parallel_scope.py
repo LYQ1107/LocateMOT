@@ -94,6 +94,7 @@ def main() -> int:
         help="restore the completed causal prefix from an immutable partial run into this fresh output",
     )
     parser.add_argument("--ovmot-chunk-size", type=int, default=96)
+    parser.add_argument("--grounding-request-timeout", type=float, default=600)
     parser.add_argument(
         "--grounding-parser",
         choices=("official_scoring", "official_scoring_repaired"),
@@ -185,7 +186,8 @@ def main() -> int:
             str(VENV), str(RUN_VIDEO), "--task", args.task, "--video", str(args.manifest),
             "--backend", "simple", "--grounding-url", f"http://127.0.0.1:{args.port}/v1",
             "--grounding-parser", parser_policy, "--grounding-decoder-policy", "tracking_dense",
-            "--perception-failure-policy", "empty_and_record", "--out", str(output),
+            "--perception-failure-policy", "empty_and_record", "--grounding-request-timeout",
+            str(args.grounding_request_timeout), "--out", str(output),
         ]
         if args.task == "ovmot":
             if args.ovmot_chunk_size <= 0:

@@ -28,11 +28,14 @@ FALLBACK_VOCABULARIES = (('pedestrian',), ('person .',), ('person',))
 
 
 class GroundAnythingAdapter:
-    def __init__(self, base_url='http://127.0.0.1:8101/v1', max_tokens=8192, parser_policy='strict_client', decoder_policy='generic_greedy', vocabulary_chunk_size=None):
+    def __init__(self, base_url='http://127.0.0.1:8101/v1', max_tokens=8192, parser_policy='strict_client', decoder_policy='generic_greedy', vocabulary_chunk_size=None, request_timeout=600):
         self.base_url, self.max_tokens = base_url.rstrip('/'), max_tokens
         self.parser_policy = parser_policy
         self.decoder_policy = decoder_policy
         self.vocabulary_chunk_size = vocabulary_chunk_size
+        self.request_timeout = float(request_timeout)
+        if self.request_timeout <= 0:
+            raise ValueError('request_timeout must be positive')
         self.decode_parameters = None
         if decoder_policy == 'tracking_dense':
             profiles = json.loads((ROOT/'external/GroundAnything/infer/decode/configs/task_profiles.json').read_text())
@@ -162,7 +165,7 @@ class GroundAnythingAdapter:
                         custom_params={'gam_dlm_decode': self.decode_parameters})
         start = time.perf_counter()
         request = Request(self.base_url + '/chat/completions', json.dumps(body).encode(), {'Content-Type': 'application/json'})
-        with urlopen(request, timeout=600) as response:
+        with urlopen(request, timeout=self.request_timeout) as response:
             response = json.load(response)
         elapsed = time.perf_counter() - start
         return self.adapt_response(response, image, image_path, mime, prompt, elapsed)
