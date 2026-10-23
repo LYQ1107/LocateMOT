@@ -30,6 +30,7 @@ OWNERS = (
     RUNTIME / "outputs/groundjev/heldout/g1_dancetrack_gpu3_v1/owner_state.json",
     RUNTIME / "outputs/groundjev/heldout/g1_rmot_shared_gpu5_v2/owner_state.json",
     RUNTIME / "outputs/groundjev/heldout/g200_ovmot_shared_gpu7_v2/owner_state.json",
+    RUNTIME / "outputs/groundjev/heldout/g200_ovmot_dedicated_gpu7_v1/owner_state.json",
 )
 OUT = RUNTIME / "outputs/groundjev/heldout/groundjev_heldout_extended_finalization_receipt.json"
 COLLECTION = RUNTIME / "outputs/groundjev/heldout/groundjev_heldout_extended_receipt_collection.json"
