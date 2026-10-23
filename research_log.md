@@ -5080,3 +5080,10 @@ G2 AnimalTrack, and G2 RMOT multi. The GPU7 chunk-192 TAO OVMOT owner has entere
 - After G1 MOT20 completion, the active unfinished scopes continued writing with no failure receipt: G200 MOT20 1,551/1,657, G1 RMOT 660/800, and G200 RMOT 460/800.
 - G1 OVMOT (40/40, official TETA=0 due 40 rejected frames) and G200 AnimalTrack (306/306, official metrics already recorded) remain complete.
 - The retry queues correctly remain dependency-gated on the still-running RMOT/MOT20 owners. The two-scheduler cap is unchanged.
+
+
+## 2026-10-23 — G1 RMOT timeout isolated and safe v3 resume launched
+
+- The G1 shared RMOT v2 owner failed at frame 660 with a real HTTP `TimeoutError` during native perception. Its completed 660-frame prefix and failure receipt are preserved; no metric was promoted.
+- Added `queue_g1_rmot_shared_retry.py`: it reuses the same GPU5 service, restores the exact v2 causal prefix into fresh `g1_rmot_shared_gpu5_v3`, raises only the per-request timeout to 900 seconds, reruns the unchanged official parser/scorer, and verifies the full 800-frame contract before accepting a receipt.
+- The G1 DanceTrack retry was moved to fresh v3 output and now waits for RMOT v3 plus the completed OVMOT scope. The finalizer/OneJev owner list and collector were updated to use RMOT v3 while retaining v2 as historical failure evidence. Compilation and diff checks pass; exactly two SGLang schedulers remain.
