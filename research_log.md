@@ -5114,3 +5114,10 @@ G2 AnimalTrack, and G2 RMOT multi. The GPU7 chunk-192 TAO OVMOT owner has entere
 - The active held-out batch remains the only prerequisite for the next phase. Current progress after the latest blocking wait: G1 DanceTrack 496/1,203 frame decisions, G200 MOT20 1,630/1,657, and G200 RMOT 622/800; completed scopes retain their terminal official receipts. The G200 OVMOT retry and extra shared-control collector remain dependency-gated.
 - The orchestrator now waits for the registered owners plus the retry/extra-control queue, writes and prints a terminal-only consolidated receipt, and only after that runs the held-out finalizers and starts the real native MOT/RMOT/OVMOT JEV coupling queue. Partial JSONL rows cannot trigger training.
 - Added `scripts/groundjev/print_heldout_consolidated_result.py` and updated `orchestrate_heldout_finalizers_and_onejev.py`; both compile cleanly. The replacement orchestrator is live under a new PID and exactly two project SGLang schedulers remain. No JEV optimizer update has started.
+
+
+## 2026-10-23 — held-out clients advanced during the verified wait
+
+- The blocking wait timed out without a terminal owner transition, but the post-wait audit confirmed continued writes and no failure: G1 DanceTrack 900/1,203, G200 MOT20 1,657/1,657 frame decisions (scorer/receipt still running), and G200 RMOT 772/800.
+- G200 OVMOT retry remains correctly gated on terminal G200 MOT20/RMOT controls; the extra shared-control collector and consolidated-result gate remain waiting. No consolidated result has been printed and no JEV optimizer update has started.
+- Exactly two project SGLang schedulers remain. Partial frame rows are still excluded from official metrics.
