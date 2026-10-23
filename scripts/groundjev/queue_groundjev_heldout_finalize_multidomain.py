@@ -33,6 +33,11 @@ OWNERS = (
     RUNTIME / "outputs/groundjev/heldout/g200_ovmot_dedicated_gpu7_v1/owner_state.json",
     RUNTIME / "outputs/groundjev/heldout/g1_ovmot_shared_gpu5_v1/owner_state.json",
     RUNTIME / "outputs/groundjev/heldout/g200_rmot_shared_gpu7_v1/owner_state.json",
+    # Current shared/retry owners are part of the same held-out contract;
+    # keep the final receipt from omitting them after the retry queue drains.
+    RUNTIME / "outputs/groundjev/heldout/g1_dancetrack_shared_gpu5_v3/owner_state.json",
+    RUNTIME / "outputs/groundjev/heldout/g200_animaltrack_shared_gpu7_v1/owner_state.json",
+    RUNTIME / "outputs/groundjev/heldout/g200_ovmot_dedicated_gpu7_v2/owner_state.json",
 )
 OUT = RUNTIME / "outputs/groundjev/heldout/groundjev_heldout_multidomain_finalization_receipt.json"
 COLLECTION = RUNTIME / "outputs/groundjev/heldout/groundjev_heldout_multidomain_receipt_collection.json"
