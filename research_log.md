@@ -5121,3 +5121,10 @@ G2 AnimalTrack, and G2 RMOT multi. The GPU7 chunk-192 TAO OVMOT owner has entere
 - The blocking wait timed out without a terminal owner transition, but the post-wait audit confirmed continued writes and no failure: G1 DanceTrack 900/1,203, G200 MOT20 1,657/1,657 frame decisions (scorer/receipt still running), and G200 RMOT 772/800.
 - G200 OVMOT retry remains correctly gated on terminal G200 MOT20/RMOT controls; the extra shared-control collector and consolidated-result gate remain waiting. No consolidated result has been printed and no JEV optimizer update has started.
 - Exactly two project SGLang schedulers remain. Partial frame rows are still excluded from official metrics.
+
+
+## 2026-10-23 — G200 MOT20 terminal; G200 RMOT remains live
+
+- G200 MOT20 reached `G2_PARALLEL_SCOPE_COMPLETE` after all 1,657 frames; its scorer receipt is now terminal and the completed output is immutable.
+- The shared GPU7 service remains reachable for the still-running G200 RMOT client, which advanced to 777/800 frame decisions; G1 DanceTrack advanced to 919/1,203. No service replacement or extra scheduler was started.
+- G200 OVMOT retry remains gated on terminal G200 RMOT; the consolidated-result printer and JEV coupling gate remain closed. Exactly two GroundAnything service endpoints (GPU5/8240 and GPU7/8238) remain in use.
