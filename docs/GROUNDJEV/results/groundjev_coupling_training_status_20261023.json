@@ -1,0 +1,89 @@
+{
+  "schema": "groundjev.coupling_training_status.v1",
+  "generated_at": "2026-10-23T20:56:11+0800",
+  "project_root": "/data2/user/LocateMOT",
+  "heldout_result": {
+    "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/groundjev_heldout_consolidated_result_20261023.json",
+    "sha256": "679e068b1f917026f9ff7783bd280064a39f4b5a0f758b9687427fdbc5307dff"
+  },
+  "g0": {
+    "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/natural_memory/mot20_05_full_validation_gpu5_v1/owner_state.json",
+    "status": "NATURAL_MOT20_SCOPE_AND_FROZEN_MEMORY_CONTROLS_COMPLETE",
+    "current_stage": null,
+    "failed": null
+  },
+  "g1": {
+    "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/ground_adaptation/native_tracking200_gpu5_g1_v1/training/owner_state.json",
+    "status": "NATIVE_GROUND_TRACKING200_TRAINING_COMPLETE",
+    "current_stage": null,
+    "failed": null
+  },
+  "g2_bundle": {
+    "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/ground_adaptation/g2_clean_bundle_export_v1/owner_state.json",
+    "status": "G2_CLEAN_DEPLOYMENT_BUNDLE_EXPORTED",
+    "current_stage": "COMPLETE",
+    "failed": null
+  },
+  "coupling": {
+    "queue_owner": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training/real_three_task_joint_native_v2_compact_queue_v1/owner_state.json",
+    "status": "REAL_NATIVE_THREE_TASK_TRAINING_RUNNING",
+    "physical_gpus": [
+      3,
+      7
+    ],
+    "manifest": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/real_three_task_joint_native_v2_compact/train.sources.json",
+    "manifest_sha256": "7c92778fb4417ea1e49bf286cab7758ceef1443d683ab059e5e758e5bd823aa3",
+    "rows": 131618,
+    "rows_per_task": {
+      "category_group": 29,
+      "category_leaf": 29,
+      "empty_query_presence": 16,
+      "identity": 131214,
+      "query_membership": 330
+    },
+    "protocol": "immutable-native-sources-family-filter-full-exposure-v2",
+    "state_transform": "compact_competition_v1",
+    "max_len": 32768,
+    "zero_overlength_plan": true,
+    "planned_steps_world4": 8227,
+    "training_root": "/data3/user/LocateMOT-checkpoints/onejev_real_three_task_joint_native_v2_compact_v1",
+    "latest_event": {
+      "step": 75,
+      "epoch": 0,
+      "examples": 1200,
+      "loss": 3.3526790034165606,
+      "ce": 2.285406290022656,
+      "brier": 1.0672727102119826,
+      "slot_acc": 0.1825,
+      "grad_norm": 9.401009101867675,
+      "lr": 6.0728744939271254e-06,
+      "rows_per_step": 16.0,
+      "examples_per_s": 0.7008054473727477,
+      "tokens_per_s": 5510.107358158887,
+      "sec_per_step": 22.830872762165964,
+      "peak_mem_gb": 7.795474529266357,
+      "elapsed_s": 1738.2480546890292
+    },
+    "checkpoint_files": [],
+    "training_contract": "native three-task MOT/RMOT/OVMOT joint LoRA SFT; immutable source rows; compact_competition_v1; max_rows=1; accum_rows=16; world_size=2"
+  },
+  "superseded_attempts": [
+    {
+      "queue": "real_three_task_joint_native_after_heldout_v2_queue_retry_v1",
+      "reason": "paired sampler detected 2099 overlength rows at max_len 32768; zero updates"
+    },
+    {
+      "queue": "real_three_task_joint_native_after_heldout_v2_context98304_queue_v3",
+      "reason": "5 updates at 68-150 sec/update with dense context; superseded before checkpoint"
+    }
+  ],
+  "reclaimed_services": {
+    "ports": [
+      8238,
+      8240,
+      8243
+    ],
+    "active_clients_verified": false
+  },
+  "scientific_boundary": "G2 MOT/RMOT gains are held-out perception/association evidence; JEV coupling has no metric claim until its checkpoint and independent evaluation complete."
+}
