@@ -244,7 +244,10 @@ def main() -> int:
                     break
             save(owner, state)
             time.sleep(args.poll_seconds)
-        command = [str(RUNNER), "--gpus", *map(str, gpus), "--", str(PYTHON), "-m", "torch.distributed.run", "--standalone", "--nproc-per-node", str(len(gpus)), str(SFT), "--source-training-backend", "fla", "--config", str(config_out), "--paired-index-shuffle", "--distributed-sft", "--deterministic-execution", "--seed-global-rngs"]
+        # run_with_resources.py is a Python module without an executable bit;
+        # invoke it through the validated OneJev interpreter so a permission
+        # failure cannot prevent the authorized coupling run from starting.
+        command = [str(PYTHON), str(RUNNER), "--gpus", *map(str, gpus), "--", str(PYTHON), "-m", "torch.distributed.run", "--standalone", "--nproc-per-node", str(len(gpus)), str(SFT), "--source-training-backend", "fla", "--config", str(config_out), "--paired-index-shuffle", "--distributed-sft", "--deterministic-execution", "--seed-global-rngs"]
         state.update(status="REAL_NATIVE_THREE_TASK_TRAINING_RUNNING", current_stage="REAL_NATIVE_THREE_TASK_TRAINING_RUNNING", command=command, gpu_launched=True)
         save(owner, state)
         log_path = args.queue_root / "TRAINING.log"
