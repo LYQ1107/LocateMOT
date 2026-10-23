@@ -4768,3 +4768,8 @@ G2 AnimalTrack, and G2 RMOT multi. The GPU7 chunk-192 TAO OVMOT owner has entere
 
 ## 2026-10-23 — reclaimed orphaned failed G200 OVMOT service
 - The failed `g200_ovmot_dedicated_gpu7_v1` receipt still had an orphaned GroundAnything service group on port 8242. Its command line was verified against the failed owner/model/output before cleanup; only that process group was terminated. The active G200 MOT/RMOT service on port 8238, G1 services, new AnimalTrack evaluation, retry queues, and foreign processes were not touched. A follow-up process check found no remaining 8242/failed-owner service.
+
+## 2026-10-23 — reclaimed idle GPU3 G0 scheduler
+- A single blocking status wait returned without a new terminal scope; the authoritative owner states remained six running held-out evaluations plus three durable wait queues, with no reported failure or restart.
+- Audited the remaining GPU3 `GroundAnything-DLM` service on port 8223. Its owner was already terminal `G2_CLEAN_FULL_INDEPENDENT_HELDOUT_FAILED`, no `run_video.py` client or live owner existed, and the scheduler was an orphan reparented to PID 1.
+- Terminated only that verified project-owned orphan. The active G1/G200 shared services (ports 8240/8238), evaluation clients, retry queues, orchestrator, and foreign GPU workloads were left untouched; no metric was promoted from the failed G0 receipt.
