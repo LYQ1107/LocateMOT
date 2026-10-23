@@ -26,7 +26,7 @@ GPU = 5
 SERVICE_URL = "http://127.0.0.1:8240"
 SERVICE_OWNER = RUNTIME / "outputs/groundjev/heldout/g1_mot20_05_gpu5_resume_v1/owner_state.json"
 WAIT_OWNERS = (
-    RUNTIME / "outputs/groundjev/heldout/g1_rmot_shared_gpu5_v4_retry.queue_state.json",
+    RUNTIME / "outputs/groundjev/heldout/g1_rmot_shared_gpu5_v5_retry.queue_state.json",
     RUNTIME / "outputs/groundjev/heldout/g1_ovmot_shared_gpu5_v1/owner_state.json",
 )
 MANIFEST = RUNTIME / "outputs/groundjev/heldout_inputs/g2_domain_v1/dancetrack0004_val1203.json"
