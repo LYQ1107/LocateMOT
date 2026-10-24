@@ -1,0 +1,91 @@
+{
+  "status": "TRACKJEV_BOX_CONTRACT_AUDIT_COMPLETE",
+  "paths": [
+    "/data2/user/LocateMOT_OneJev_CVPR/outputs/groundjev/full_data_v2/trackjev_sft_v1/rows.jsonl"
+  ],
+  "counts": {
+    "rows": 512,
+    "rows_with_competition": 512,
+    "stored_matches_xyxy": 512,
+    "stored_matches_gt_converted_xywh": 512,
+    "missing_box_format_tag": 512
+  },
+  "samples": [
+    {
+      "path": "/data2/user/LocateMOT_OneJev_CVPR/outputs/groundjev/full_data_v2/trackjev_sft_v1/rows.jsonl",
+      "line": 1,
+      "id": "MOT17-02-FRCNN_000001_c0_admit",
+      "candidates": 18,
+      "stored_matches_xyxy": true,
+      "stored_matches_gt_converted_xywh": true,
+      "stored_matches_raw_as_xywh": false,
+      "stored_first_row": "1000,44,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
+      "expected_xyxy_first_row": "1000,44,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
+      "expected_gt_converted_xywh_first_row": "1000,44,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
+      "expected_raw_as_xywh_first_row": "1000,571,510,446,333,353,278,295,230,219,0,0,0,0,0,0,0,0",
+      "box_format_tag": null
+    },
+    {
+      "path": "/data2/user/LocateMOT_OneJev_CVPR/outputs/groundjev/full_data_v2/trackjev_sft_v1/rows.jsonl",
+      "line": 2,
+      "id": "MOT17-02-FRCNN_000001_c0_identity",
+      "candidates": 18,
+      "stored_matches_xyxy": true,
+      "stored_matches_gt_converted_xywh": true,
+      "stored_matches_raw_as_xywh": false,
+      "stored_first_row": "1000,44,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
+      "expected_xyxy_first_row": "1000,44,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
+      "expected_gt_converted_xywh_first_row": "1000,44,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
+      "expected_raw_as_xywh_first_row": "1000,571,510,446,333,353,278,295,230,219,0,0,0,0,0,0,0,0",
+      "box_format_tag": null
+    },
+    {
+      "path": "/data2/user/LocateMOT_OneJev_CVPR/outputs/groundjev/full_data_v2/trackjev_sft_v1/rows.jsonl",
+      "line": 3,
+      "id": "MOT17-02-FRCNN_000001_c0_memory",
+      "candidates": 18,
+      "stored_matches_xyxy": true,
+      "stored_matches_gt_converted_xywh": true,
+      "stored_matches_raw_as_xywh": false,
+      "stored_first_row": "1000,44,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
+      "expected_xyxy_first_row": "1000,44,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
+      "expected_gt_converted_xywh_first_row": "1000,44,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
+      "expected_raw_as_xywh_first_row": "1000,571,510,446,333,353,278,295,230,219,0,0,0,0,0,0,0,0",
+      "box_format_tag": null
+    },
+    {
+      "path": "/data2/user/LocateMOT_OneJev_CVPR/outputs/groundjev/full_data_v2/trackjev_sft_v1/rows.jsonl",
+      "line": 4,
+      "id": "MOT17-02-FRCNN_000001_c1_admit",
+      "candidates": 18,
+      "stored_matches_xyxy": true,
+      "stored_matches_gt_converted_xywh": true,
+      "stored_matches_raw_as_xywh": false,
+      "stored_first_row": "1000,44,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
+      "expected_xyxy_first_row": "1000,44,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
+      "expected_gt_converted_xywh_first_row": "1000,44,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
+      "expected_raw_as_xywh_first_row": "1000,571,510,446,333,353,278,295,230,219,0,0,0,0,0,0,0,0",
+      "box_format_tag": null
+    },
+    {
+      "path": "/data2/user/LocateMOT_OneJev_CVPR/outputs/groundjev/full_data_v2/trackjev_sft_v1/rows.jsonl",
+      "line": 5,
+      "id": "MOT17-02-FRCNN_000001_c1_identity",
+      "candidates": 18,
+      "stored_matches_xyxy": true,
+      "stored_matches_gt_converted_xywh": true,
+      "stored_matches_raw_as_xywh": false,
+      "stored_first_row": "1000,44,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
+      "expected_xyxy_first_row": "1000,44,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
+      "expected_gt_converted_xywh_first_row": "1000,44,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
+      "expected_raw_as_xywh_first_row": "1000,571,510,446,333,353,278,295,230,219,0,0,0,0,0,0,0,0",
+      "box_format_tag": null
+    }
+  ],
+  "row_limit": 512,
+  "interpretation": {
+    "native_runtime": "xyxy",
+    "mot_gt_matching": "xywh",
+    "active_manifest_unchanged": true
+  }
+}
