@@ -1,3 +1,7 @@
+## 2026-10-24 — G2 Clean vs G0 独立 held-out 比较
+
+在相同输入、解析器、dense decoder、Simple tracker 和官方 TrackEval scorer 下，G2 Clean step18227 相比冻结 G0：MOT20-05 validation1657 的 HOTA 0.342615→0.444739（+0.102123，+29.80%），IDF1 0.290533→0.400865，IDSW 13,712→8,464；RMOT multi0007 的 HOTA 0.314869→0.507575（+0.192706，+61.20%），IDF1 0.374223→0.565583，IDSW 123→107。RMOT single0007 的 HOTA 0.053121→0.061876，但 IDF1 0.014388→0.012878 且 IDSW 2→3，属于混合变化。TAO OVMOT video105 两者均 40/40 帧拒绝、TETA=0。四个 held-out scope 与 G2 TRAIN manifest 的 exact image overlap 为空。该结果是 G2 感知前端+固定 Simple tracker 证据，不是 JEV/OneJev 联合模型指标。证据：`docs/GROUNDJEV/G2_CLEAN_VS_G0_HELDOUT_COMPARISON_20261024.{json,md}`。
+
 ## 2026-10-24 — real native 三任务联合训练 step1225 进度审计
 
 当前 compact native GroundJEV/OneJev 联合训练仍在 GPU3、GPU7 运行，使用 131,618 行原生 MOT/RMOT/OVMOT manifest（`compact_competition_v1`，SHA-256 `7c92778fb4417ea1e49bf286cab7758ceef1443d683ab059e5e758e5bd823aa3`），计划 8,227 steps。最新权威事件为 step1225/8227、examples=19,600，loss=1.627591、CE=1.209416、Brier=0.418175、slot_acc=0.615，梯度与显存均有限。step1000 的完整恢复状态和 adapter 已在 CPU 重载核验，SHA 分别为 `f3b37033f57963dce452b384503009fc587531ac05f6cc16742dd511103e5213` 和 `10a54906af4f001ba466b58ee3cc9c0655721594cc7de8f70f3938256fd505b8`。这是训练健康/可恢复性证据，尚不构成 MOT/RMOT/OVMOT 性能提升结论。证据：`docs/GROUNDJEV/REAL_NATIVE_COUPLING_PROGRESS_STEP1225_20261024.{json,md}`。
