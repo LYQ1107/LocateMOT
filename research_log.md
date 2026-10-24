@@ -1,3 +1,7 @@
+## 2026-10-24 — real native 三任务联合训练 step3000 checkpoint 完整
+
+联合 GroundJEV/OneJev native MOT/RMOT/OVMOT 训练已到 step3000/8227（examples=48,000），最近事件 loss=1.356744、CE=0.983385、Brier=0.373359、slot_acc=0.6875、sec/step=23.481。\`adapter-step3000\` 已完整落盘；\`adapter_model.safetensors\` 为 43,346,432 bytes，SHA-256 \`f83220d5e43e3e6b3791290004aa17fd91bebc31a6e85d0f29cf04588084a166\`。owner 仍为 \`REAL_NATIVE_THREE_TASK_TRAINING_RUNNING\`，尚无 terminal receipt，JEV held-out 评测尚未启动。
+
 ## 2026-10-24 — real native 三任务联合训练 step2500 checkpoint 完整
 
 现有 compact native GroundJEV/OneJev 联合训练推进到 step2500/8227（examples=40,000），最近事件 loss=1.410957、CE=1.020909、Brier=0.390047、slot_acc=0.67、sec/step=23.615。\`adapter-step2500\` 已完整落盘并通过文件级 SHA-256/PEFT 配置审计（adapter safetensors 43,346,432 bytes，SHA-256 \`2a5301825abe51d59f21808b826843b4870cb2a386c57809c76d976d94107e99\`）；基础模型路径仍为 \`onejev_unified600_native_v2/ckpt-step600\`。训练 owner 仍 RUNNING，无终止 receipt，尚未进行 JEV held-out 指标评测。
