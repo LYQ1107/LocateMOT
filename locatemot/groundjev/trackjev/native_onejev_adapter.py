@@ -200,9 +200,10 @@ class NativeOneJevAdapter:
             if competition is not None and len(indices) != len(group):
                 boxes = [c["box"] for c in subgroup]
                 features = [c.get("native_region_feature") for c in subgroup]
-                edges = sparse_edges(boxes, features if any(f is not None for f in features) else None)
+                edges = sparse_edges(boxes, features if any(f is not None for f in features) else None,
+                                     box_format="xyxy")
                 clusters = entity_clusters(boxes, edges)
-                local_competition = competition_rows(boxes, clusters, edges)
+                local_competition = competition_rows(boxes, clusters, edges, box_format="xyxy")
             request, media = self.build_request(
                 image=image, group=subgroup, tracks=tracks, timestamp=timestamp,
                 specification=specification, task_query=task_query, competition=local_competition)
@@ -282,9 +283,10 @@ class NativeOneJevAdapter:
         if competition is not None:
             boxes = [c["box"] for c in local_group]
             features = [c.get("native_region_feature") for c in local_group]
-            edges = sparse_edges(boxes, features if any(f is not None for f in features) else None)
+            edges = sparse_edges(boxes, features if any(f is not None for f in features) else None,
+                                 box_format="xyxy")
             clusters = entity_clusters(boxes, edges)
-            local_competition = competition_rows(boxes, clusters, edges)
+            local_competition = competition_rows(boxes, clusters, edges, box_format="xyxy")
         state = self.build_state(image=image, group=local_group, competition=local_competition,
                                  tracks=tracks[:self.shortlist], timestamp=timestamp,
                                  specification=specification)
