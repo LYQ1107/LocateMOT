@@ -1,0 +1,249 @@
+{
+  "schema": "groundjev.g2_vs_g0_heldout_comparison.v1",
+  "generated_at": "2026-10-24T00:00:00+08:00",
+  "project_root": "/data2/user/LocateMOT",
+  "conclusion": "G2 improves MOT20-05 and RMOT multi on the registered independent held-out scopes, with a small HOTA gain but IDF1 regression on RMOT single; OVMOT remains zero due to 100% perception rejection.",
+  "comparison_contract": {
+    "same_input_parser_decoder_tracker_scorer": true,
+    "train_overlap_exact_image_overlap": {
+      "mot20_05_validation1657": [],
+      "rmot_single0007": [],
+      "rmot_multi0007": [],
+      "ovmot_tao105": []
+    },
+    "g2_train_manifest_sha256": "4a8e39d29a30fe1ef7df10484be57a10ab5f0baff0638130ff93fa9c1181ab6a",
+    "g2_bundle_model_safetensors_sha256": "7c4a81349e333a304e32f42cf1999db289802d8c31eba415b85827038d14801f",
+    "g2_base_model_safetensors_sha256": "3cf09355cde8cf4877cdc76e0a72301d572c1d6263b2831f8a03368285bb65e2",
+    "g2_adapter_sha256": "cf1b5a6f626810ead94eb4e16adaf3feb6c6da3f99ca5023b6b5c234726f5742",
+    "g2_checkpoint_step": 18227,
+    "g2_bundle": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM-G2-CLEAN-V2",
+    "g0_bundle": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM",
+    "official_trackeval_commit": "12c8791b303e0a0b50f753af204249e622d0281a"
+  },
+  "scopes": {
+    "mot20_05_validation1657": {
+      "task": "mot",
+      "dataset": "MOT20",
+      "sequence": "MOT20-05",
+      "frames": 1657,
+      "manifest_sha256": "2be2233c2e66323b22ccdb1b9b386646c6b792d9de5e77554cc1143b80ba42a6",
+      "g0": {
+        "HOTA": 0.3426154581046515,
+        "DetA": 0.6661209465449908,
+        "AssA": 0.17656659448918746,
+        "IDF1": 0.29053324099722994,
+        "IDSW": 13712,
+        "FP": 19290,
+        "FN": 79814,
+        "rejected_frames": 9,
+        "fps": 0.04880792827996516
+      },
+      "g2": {
+        "HOTA": 0.44473861203046366,
+        "DetA": 0.7696739945571459,
+        "AssA": 0.25798112162715026,
+        "IDF1": 0.40086512551411146,
+        "IDSW": 8464,
+        "FP": 14347,
+        "FN": 31983,
+        "rejected_frames": 65,
+        "fps": 0.028881305886213925
+      },
+      "g0_receipt": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g2_clean_independent_gpu3_v1/G0/mot20_05_validation1657/official_metrics.json",
+      "g2_receipt": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g2_clean_independent_gpu5_v1/G2_CLEAN_V2/mot20_05_validation1657/official_metrics.json",
+      "delta": {
+        "HOTA": {
+          "absolute": 0.10212315392581217,
+          "relative": 0.29806931214008087
+        },
+        "DetA": {
+          "absolute": 0.10355304801215515,
+          "relative": 0.155456825895147
+        },
+        "AssA": {
+          "absolute": 0.0814145271379628,
+          "relative": 0.4610981333898267
+        },
+        "IDF1": {
+          "absolute": 0.11033188451688153,
+          "relative": 0.3797564923661643
+        },
+        "IDSW": {
+          "absolute": -5248,
+          "relative": -0.38273045507584597
+        },
+        "FP": {
+          "absolute": -4943,
+          "relative": -0.2562467599792639
+        },
+        "FN": {
+          "absolute": -47831,
+          "relative": -0.5992808279249254
+        },
+        "rejected_frames": {
+          "absolute": 56,
+          "relative": 6.222222222222222
+        },
+        "fps": {
+          "absolute": -0.019926622393751238,
+          "relative": -0.4082660972506547
+        }
+      }
+    },
+    "rmot_single0007": {
+      "task": "rmot",
+      "dataset": "RMOT",
+      "sequence": "0007 single",
+      "frames": 800,
+      "manifest_sha256": "79e4286fc904209df00a54a5ccc58171e4f267d915a2256e80e5c3db5df5d32c",
+      "g0": {
+        "HOTA": 0.05312070787881171,
+        "DetA": 0.0073404994163848505,
+        "AssA": 0.38476505687272883,
+        "IDF1": 0.014388489208633094,
+        "IDSW": 2,
+        "FP": null,
+        "FN": null
+      },
+      "g2": {
+        "HOTA": 0.06187591535095842,
+        "DetA": 0.006721964734016438,
+        "AssA": 0.574113093634887,
+        "IDF1": 0.012877662209014363,
+        "IDSW": 3,
+        "FP": null,
+        "FN": null
+      },
+      "g0_receipt": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g2_clean_independent_gpu3_v1/G0/rmot_single0007/official_metrics.json",
+      "g2_receipt": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g2_clean_independent_gpu5_v1/G2_CLEAN_V2/rmot_single0007/official_metrics.json",
+      "delta": {
+        "HOTA": {
+          "absolute": 0.008755207472146712,
+          "relative": 0.16481722141430474
+        },
+        "DetA": {
+          "absolute": -0.0006185346823684122,
+          "relative": -0.08426329698872677
+        },
+        "AssA": {
+          "absolute": 0.18934803676215822,
+          "relative": 0.49211339070426574
+        },
+        "IDF1": {
+          "absolute": -0.0015108269996187314,
+          "relative": -0.10500247647350182
+        },
+        "IDSW": {
+          "absolute": 1,
+          "relative": 0.5
+        }
+      }
+    },
+    "rmot_multi0007": {
+      "task": "rmot",
+      "dataset": "RMOT",
+      "sequence": "0007 multi",
+      "frames": 800,
+      "manifest_sha256": "fc09932ae678be52e6091178a08b565e41a7895d5ff76192d50b89caa27e5e14",
+      "g0": {
+        "HOTA": 0.3148685730204827,
+        "DetA": 0.30136811677119285,
+        "AssA": 0.33272507379577676,
+        "IDF1": 0.37422324510932103,
+        "IDSW": 123,
+        "FP": null,
+        "FN": null
+      },
+      "g2": {
+        "HOTA": 0.507574976079327,
+        "DetA": 0.4252243552851766,
+        "AssA": 0.6061358012717729,
+        "IDF1": 0.5655831739961759,
+        "IDSW": 107,
+        "FP": null,
+        "FN": null
+      },
+      "g0_receipt": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g2_clean_independent_gpu3_v1/G0/rmot_multi0007/official_metrics.json",
+      "g2_receipt": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g2_clean_independent_gpu5_v1/G2_CLEAN_V2/rmot_multi0007/official_metrics.json",
+      "delta": {
+        "HOTA": {
+          "absolute": 0.1927064030588443,
+          "relative": 0.6120217118216762
+        },
+        "DetA": {
+          "absolute": 0.12385623851398375,
+          "relative": 0.4109799000669301
+        },
+        "AssA": {
+          "absolute": 0.27341072747599615,
+          "relative": 0.8217316607879479
+        },
+        "IDF1": {
+          "absolute": 0.19135992888685482,
+          "relative": 0.5113523314965462
+        },
+        "IDSW": {
+          "absolute": -16,
+          "relative": -0.13008130081300814
+        }
+      }
+    },
+    "ovmot_tao105": {
+      "task": "ovmot",
+      "dataset": "TAO-Base/Novel",
+      "sequence": "video105",
+      "frames": 40,
+      "manifest_sha256": "522cde4bfc776b7b8a18807a5caee30330c322eb9dd8df86fc472d150db9e261",
+      "g0": {
+        "TETA": 0.0,
+        "LocA": 0.0,
+        "AssocA": 0.0,
+        "ClsA": 0.0,
+        "rejected_frames": 40,
+        "fps": 0.0027
+      },
+      "g2": {
+        "TETA": 0.0,
+        "LocA": 0.0,
+        "AssocA": 0.0,
+        "ClsA": 0.0,
+        "rejected_frames": 40,
+        "fps": 0.0027
+      },
+      "g0_receipt": null,
+      "g2_receipt": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g2_clean_independent_gpu5_v1/G2_CLEAN_V2/ovmot_tao105/official_metrics.json",
+      "delta": {
+        "TETA": {
+          "absolute": 0.0,
+          "relative": null
+        },
+        "LocA": {
+          "absolute": 0.0,
+          "relative": null
+        },
+        "AssocA": {
+          "absolute": 0.0,
+          "relative": null
+        },
+        "ClsA": {
+          "absolute": 0.0,
+          "relative": null
+        },
+        "rejected_frames": {
+          "absolute": 0,
+          "relative": 0.0
+        },
+        "fps": {
+          "absolute": 0.0,
+          "relative": 0.0
+        }
+      }
+    }
+  },
+  "claim_boundary": [
+    "These are independent held-out comparisons against the same frozen G0 bundle, not the older 1,658-frame G0 MOT20 TRAIN-scope receipt.",
+    "Metrics are GroundAnything perception plus the fixed Simple tracker; they are not post-JEV coupled-model metrics.",
+    "No OVMOT improvement is established: both models reject all 40 TAO video105 frames in the registered run."
+  ],
+  "source_consolidated_result": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/groundjev_heldout_consolidated_result_20261023.json"
+}
