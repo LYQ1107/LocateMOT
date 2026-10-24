@@ -31,6 +31,11 @@ SEQ = Path("/data2/user/LocateMOT/data/MOT17/MOT17/train/MOT17-02-FRCNN")
 FRAME = 2   # frame 1 exists so the causal history (previous-frame GT) is non-empty
 
 
+def xywh_to_xyxy(box):
+    x, y, w, h = (float(v) for v in box[:4])
+    return [x, y, x + w, y + h]
+
+
 def build_case():
     images = mot_challenge.list_images(mot_challenge.image_dir(SEQ))
     image_path = images[FRAME - 1]
@@ -41,8 +46,10 @@ def build_case():
     gt_boxes = [b.box for b in frame_boxes]
     gt_ids = [b.identity for b in frame_boxes]
     # candidates = GT boxes plus one deliberate duplicate of the first box
-    candidates = [{"box": list(b.box)} for b in frame_boxes]
-    duplicate = list(frame_boxes[0].box)
+    # Runtime GroundAnything/OnlineTracker candidates are pixel xyxy.  Keep
+    # GT in MOT xywh separately for the supervision-only audit below.
+    candidates = [{"box": xywh_to_xyxy(b.box)} for b in frame_boxes]
+    duplicate = list(candidates[0]["box"])
     duplicate[0] += 3.0
     duplicate[1] += 2.0
     candidates.append({"box": duplicate})
@@ -62,14 +69,16 @@ def main() -> int:
 
     image_path, candidates, gt_boxes, gt_ids = build_case()
     image = Image.open(image_path).convert("RGB")
+    candidate_boxes = [c["box"] for c in candidates]
+    edges = cc.sparse_edges(candidate_boxes, box_format="xyxy")
     competition = cc.competition_rows(
-        [c["box"] for c in candidates], *((lambda b, e: (cc.entity_clusters(b, e), e))(
-            [c["box"] for c in candidates], cc.sparse_edges([c["box"] for c in candidates]))))
+        candidate_boxes, cc.entity_clusters(candidate_boxes, edges), edges, box_format="xyxy")
 
     # causal memory built from the GT boxes of the *previous* frame only
     previous = [b for b in mot_challenge.parse_mot_gt(SEQ / "gt" / "gt.txt")
                 if b.frame == FRAME - 1]
-    tracks = [{"track_id": b.identity, "box": list(b.box), "predicted_box": list(b.box),
+    tracks = [{"track_id": b.identity, "box": xywh_to_xyxy(b.box),
+               "predicted_box": xywh_to_xyxy(b.box),
                "lost_age": 0, "age": 1, "state": "ACTIVE", "last_reliable_timestamp": 0.0}
               for b in previous[:8]]
 
@@ -85,10 +94,13 @@ def main() -> int:
                                      "expression": None})
     elapsed = time.time() - started
 
-    supervision = cc.admission_targets([c["box"] for c in candidates], gt_boxes, gt_ids,
+    candidate_boxes_xywh = [[c["box"][0], c["box"][1],
+                             c["box"][2] - c["box"][0], c["box"][3] - c["box"][1]]
+                            for c in candidates]
+    supervision = cc.admission_targets(candidate_boxes_xywh, gt_boxes, gt_ids,
                                        clusters=cc.entity_clusters(
-                                           [c["box"] for c in candidates],
-                                           cc.sparse_edges([c["box"] for c in candidates])))
+                                           candidate_boxes_xywh,
+                                           cc.sparse_edges(candidate_boxes_xywh)))
     payload = {
         "status": "TRACKJEV_NATIVE_SMOKE_COMPLETE",
         "scope": ("plumbing validation on GT-derived candidates of one real MOT17 frame; "
