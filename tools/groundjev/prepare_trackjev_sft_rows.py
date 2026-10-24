@@ -26,7 +26,7 @@ import json
 import sys
 from collections import Counter, defaultdict
 from pathlib import Path
-from typing import Any, Optional
+from typing import Any, Optional, Sequence
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
@@ -51,7 +51,9 @@ def build_crop_sheet(image, boxes, out_path: Path, cell=(160, 192), columns=4):
     for index, box in enumerate(boxes):
         x, y = (index % columns) * cell[0], (index // columns) * cell[1]
         draw.text((x + 2, y + 2), f"Candidate {index}", fill="black")
-        crop = image.crop((int(box[0]), int(box[1]), int(box[0] + box[2]), int(box[1] + box[3])))
+        # GroundAnything candidates are pixel xyxy.  Keep the crop and state
+        # geometry in that convention; GT remains MOT xywh below.
+        crop = image.crop((int(box[0]), int(box[1]), int(box[2]), int(box[3])))
         crop = crop.convert("RGB")
         crop.thumbnail((cell[0] - 6, cell[1] - 26))
         sheet.paste(crop, (x + 3, y + 22))
@@ -152,7 +154,8 @@ def export_video(*, candidates_path: Path, image_root: Path, gt_path: Path,
             if not candidates:
                 counters["frames_without_candidates"] += 1
                 continue
-            boxes = [xyxy_to_xywh(c["box"]) for c in candidates]  # geometry in GT convention
+            candidate_boxes = [list(c["box"]) for c in candidates]  # native pixel xyxy
+            boxes = [xyxy_to_xywh(box) for box in candidate_boxes]  # GT matching only: MOT xywh
             image_path = Path(entry.get("image_path") or (image_root / f"{frame:06d}.jpg"))
             if not image_path.is_file():
                 counters["missing_images"] += 1
@@ -162,9 +165,9 @@ def export_video(*, candidates_path: Path, image_root: Path, gt_path: Path,
             gt_ids = [b.identity for b in frame_gt]
             visibility_by_id = {b.identity: b.visibility for b in frame_gt}
 
-            edges = cc.sparse_edges(boxes, None)
+            edges = cc.sparse_edges(candidate_boxes, None, box_format="xyxy")
             clusters = cc.entity_clusters(boxes, edges)
-            competition = cc.competition_rows(boxes, clusters, edges)
+            competition = cc.competition_rows(candidate_boxes, clusters, edges, box_format="xyxy")
             admission = cc.admission_targets(boxes, gt_boxes, gt_ids, clusters=clusters,
                                              annotation_exhaustive=annotation_exhaustive)
 
@@ -186,7 +189,7 @@ def export_video(*, candidates_path: Path, image_root: Path, gt_path: Path,
 
             image = Image.open(image_path).convert("RGB")
             sheet_path = MEDIA_ROOT / video / f"{frame:06d}_candidates.png"
-            build_crop_sheet(image, boxes, sheet_path)
+            build_crop_sheet(image, candidate_boxes, sheet_path)
             media = [
                 {"type": "image", "path": str(image_path), "w": image.width, "h": image.height},
                 {"type": "image", "path": str(sheet_path),
