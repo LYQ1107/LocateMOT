@@ -93,9 +93,11 @@ class TrackJEVModel:
         if not self.config.use_competition:
             return None
         boxes = [c["box"] for c in candidates]
-        edges = sparse_edges(boxes, features)
+        # OnlineTracker/RunVideo candidates are pixel xyxy; keep the legacy
+        # xywh default for historical SFT rows and controls.
+        edges = sparse_edges(boxes, features, box_format="xyxy")
         clusters = entity_clusters(boxes, edges)
-        return competition_rows(boxes, clusters, edges)
+        return competition_rows(boxes, clusters, edges, box_format="xyxy")
 
     # ------------------------------------------------------------------ step
     def step(self, *, image: Any, candidates: Sequence[dict[str, Any]],
