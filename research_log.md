@@ -1,5 +1,9 @@
-Warning: truncated output (original token count: 168810)
-Total output lines: 5219
+Warning: truncated output (original token count: 169035)
+Total output lines: 5223
+
+## 2026-10-24 — bounded audit confirms immutable source/runtime box mismatch
+
+The full 131,214-row recomputation was intentionally stopped after about 20 minutes because it was auxiliary CPU work and risked slowing the protected GPU training. A deterministic 512-row prefix audit completed: all 512 stored matrices match the correct native `xyxy` calculation and the converted GT `xywh` calculation, while 0/512 match the historical raw-`xyxy`-as-`xywh` runtime interpretation; all 512 lack an explicit box-format tag. The first row is stored `1000,44,...`, correct native `xyxy` is `44`, and raw-as-`xywh` is `571`. This confirms the active immutable source was generated consistently in converted geometry but is unsafe to consume through an implicit runtime convention. No source row or active checkpoint was modified. Evidence: `docs/GROUNDJEV/TRACKJEV_BOX_CONTRACT_AUDIT_20261024.{json,md}`.
 
 ## 2026-10-24 — TrackJEV xyxy/xywh 契约审计与运行时修复
 
@@ -2120,20 +2124,7 @@ explicit. Same candidates/nativeROI and decodedframes validated for all four
 short scopes. MOT HOTA66.911->71.556%, butIDSW1->3. SingleRMOT8.932->0%,
 multi0->0%; TAOBaseTETA14.013->39.272%,ClsA0->58.286%,AssocA21.350->17.971%.
 Reject a unified-success claim. Posthoc evaluation finds all6single/all8multi
-GT-covered candidate observations have membership below.008 and no emitted
-coveredboxes. Keep threshold.5, allGT/frames/negative results unchanged.
-Hypothesis: limited-fit teacher region supervision and frozen token means do
-not transfer expression membership to native validation proposals; covered
-regions show semantic suppression, not an absence of proposals. Preserve
-stage as an ablation, not production promotion. Next training must use broader
-legal fit/native proposal supervision and verified query sensitivity.
-
-Full1203DanceTrack Compact300/setGT/MLP and freshFullV3 controls are terminal
-and validated. Original same-candidate HOTA20.157/5.977/11.197% vsSimple8.530%
-andFullV1 2.145%; single-video/seed only. FreshV3 HOTA2.389% vs its exactSimple
-8.257%, detector-inclusive uninterrupted E2EFPS.118560 excluding model/server
-initialization; do not compare fresh responses toV1 as identical candidates.
-Register/execute joint1200 retention on all1203sameCompa…68810 tokens truncated…t. The recent 500-step rate is 11.615 s/step, a linear remainder of approximately 20.1 hours. G1, bundle, held-out, YesTrack, and zero-drop three-task v2 remain waiting owners; no metric claim was promoted and no protected process was modified. Evidence: `docs/GROUNDJEV/STATUS_SNAPSHOT_20261021_G2_STEP12002.{json,md}`.
+GT-covered candidate observations have membership below.008 and no emit…69035 tokens truncated…t. The recent 500-step rate is 11.615 s/step, a linear remainder of approximately 20.1 hours. G1, bundle, held-out, YesTrack, and zero-drop three-task v2 remain waiting owners; no metric claim was promoted and no protected process was modified. Evidence: `docs/GROUNDJEV/STATUS_SNAPSHOT_20261021_G2_STEP12002.{json,md}`.
 
 ## 2026-10-21 — process-scope audit confirms no live MOT-only/J1 optimizer
 
