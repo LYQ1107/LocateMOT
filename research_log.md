@@ -1,5 +1,15 @@
-Warning: truncated output (original token count: 169035)
-Total output lines: 5223
+Warning: truncated output (original token count: 169167)
+Total output lines: 5233
+
+## 2026-10-24 — post-joint OneJev merge gate prepared
+
+The active native three-task trainer saves a PEFT LoRA adapter, while the
+TrackJEV runtime requires a standalone multimodal model directory. Added
+`tools/groundjev/merge_onejev_adapter.py`, which is gated for post-terminal use:
+it refuses a non-empty output, preserves the base and adapter, merges on CPU,
+copies the processor/tokenizer and writes a load-contract receipt. It has only
+been compiled; no model was loaded and no GPU or active training process was
+touched.
 
 ## 2026-10-24 — bounded audit confirms immutable source/runtime box mismatch
 
@@ -2117,14 +2127,7 @@ configs/groundjev/onejev_own_history_v3_exact500_replay_stateful.json.
 
 ### Completed joint semantic controls and full-video evidence
 
-Joint1200 truly trained1,146,511 shared parameters with exact3task reload.
-Pack149nativeMOT+45RMOT+62TAO teacher groups,112declaredteacherframes,
-5emptyframeswithoutregionexamples. TeacherGT/idealupdate proxies remain
-explicit. Same candidates/nativeROI and decodedframes validated for all four
-short scopes. MOT HOTA66.911->71.556%, butIDSW1->3. SingleRMOT8.932->0%,
-multi0->0%; TAOBaseTETA14.013->39.272%,ClsA0->58.286%,AssocA21.350->17.971%.
-Reject a unified-success claim. Posthoc evaluation finds all6single/all8multi
-GT-covered candidate observations have membership below.008 and no emit…69035 tokens truncated…t. The recent 500-step rate is 11.615 s/step, a linear remainder of approximately 20.1 hours. G1, bundle, held-out, YesTrack, and zero-drop three-task v2 remain waiting owners; no metric claim was promoted and no protected process was modified. Evidence: `docs/GROUNDJEV/STATUS_SNAPSHOT_20261021_G2_STEP12002.{json,md}`.
+Joint1200 truly trained1,146,511 shared parameters with exact3tas…69167 tokens truncated…t. The recent 500-step rate is 11.615 s/step, a linear remainder of approximately 20.1 hours. G1, bundle, held-out, YesTrack, and zero-drop three-task v2 remain waiting owners; no metric claim was promoted and no protected process was modified. Evidence: `docs/GROUNDJEV/STATUS_SNAPSHOT_20261021_G2_STEP12002.{json,md}`.
 
 ## 2026-10-21 — process-scope audit confirms no live MOT-only/J1 optimizer
 
