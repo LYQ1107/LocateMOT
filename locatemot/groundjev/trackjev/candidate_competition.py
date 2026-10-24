@@ -26,6 +26,7 @@ from typing import Any, Iterable, Optional, Sequence
 
 MAX_GROUP = 16
 MILLI = 1000
+BOX_FORMATS = ("xywh", "xyxy")
 
 
 @dataclass
@@ -40,19 +41,38 @@ class Edge:
         return dict(self.__dict__)
 
 
-def _box_iou(a: Sequence[float], b: Sequence[float]) -> float:
-    ax1, ay1, ax2, ay2 = a[0], a[1], a[0] + a[2], a[1] + a[3]
-    bx1, by1, bx2, by2 = b[0], b[1], b[0] + b[2], b[1] + b[3]
+def _box_bounds(box: Sequence[float], box_format: str = "xywh") -> tuple[float, float, float, float]:
+    """Return ``(x1, y1, x2, y2)`` for an explicit box convention.
+
+    The legacy TrackJEV data contract uses top-left ``xywh``.  Native
+    GroundAnything/runtime candidates use pixel ``xyxy``.  Keeping the
+    conversion at this boundary prevents silently mixing the two conventions.
+    """
+    if box_format not in BOX_FORMATS:
+        raise ValueError(f"unsupported box_format={box_format!r}; expected one of {BOX_FORMATS}")
+    x1, y1, a, b = (float(v) for v in box[:4])
+    if box_format == "xywh":
+        return x1, y1, x1 + a, y1 + b
+    return x1, y1, a, b
+
+
+def _box_iou(a: Sequence[float], b: Sequence[float], box_format: str = "xywh") -> float:
+    ax1, ay1, ax2, ay2 = _box_bounds(a, box_format)
+    bx1, by1, bx2, by2 = _box_bounds(b, box_format)
     iw = max(0.0, min(ax2, bx2) - max(ax1, bx1))
     ih = max(0.0, min(ay2, by2) - max(ay1, by1))
     inter = iw * ih
-    union = a[2] * a[3] + b[2] * b[3] - inter
+    union = max(0.0, ax2 - ax1) * max(0.0, ay2 - ay1) + \
+        max(0.0, bx2 - bx1) * max(0.0, by2 - by1) - inter
     return inter / union if union > 0 else 0.0
 
 
-def _center_distance(a: Sequence[float], b: Sequence[float], scale: float) -> float:
-    dx = (a[0] + a[2] / 2) - (b[0] + b[2] / 2)
-    dy = (a[1] + a[3] / 2) - (b[1] + b[3] / 2)
+def _center_distance(a: Sequence[float], b: Sequence[float], scale: float,
+                     box_format: str = "xywh") -> float:
+    ax1, ay1, ax2, ay2 = _box_bounds(a, box_format)
+    bx1, by1, bx2, by2 = _box_bounds(b, box_format)
+    dx = ((ax1 + ax2) / 2) - ((bx1 + bx2) / 2)
+    dy = ((ay1 + ay2) / 2) - ((by1 + by2) / 2)
     return math.hypot(dx, dy) / max(scale, 1e-6)
 
 
@@ -69,19 +89,22 @@ def sparse_edges(boxes: Sequence[Sequence[float]],
                  features: Optional[Sequence[Optional[Sequence[float]]]] = None,
                  *, iou_threshold: float = 0.0, cosine_threshold: Optional[float] = None,
                  max_neighbors: int = 8,
-                 scale: Optional[float] = None) -> list[Edge]:
+                 scale: Optional[float] = None,
+                 box_format: str = "xywh") -> list[Edge]:
     """All candidate pairs worth showing to the model, capped per candidate."""
+    if box_format not in BOX_FORMATS:
+        raise ValueError(f"unsupported box_format={box_format!r}; expected one of {BOX_FORMATS}")
     n = len(boxes)
     if n < 2:
         return []
     if scale is None:
-        width = max((b[0] + b[2] for b in boxes), default=1.0)
-        height = max((b[1] + b[3] for b in boxes), default=1.0)
+        width = max((_box_bounds(b, box_format)[2] for b in boxes), default=1.0)
+        height = max((_box_bounds(b, box_format)[3] for b in boxes), default=1.0)
         scale = math.hypot(width, height)
     edges: list[Edge] = []
     for i in range(n):
         for j in range(i + 1, n):
-            iou = _box_iou(boxes[i], boxes[j])
+            iou = _box_iou(boxes[i], boxes[j], box_format)
             cosine = _cosine(features[i] if features else None,
                              features[j] if features else None)
             overlap_hit = iou > 0.0 and iou >= iou_threshold
@@ -90,7 +113,7 @@ def sparse_edges(boxes: Sequence[Sequence[float]],
             if not (overlap_hit or appearance_hit):
                 continue
             edges.append(Edge(i, j, round(iou, 4),
-                              round(_center_distance(boxes[i], boxes[j], scale), 4),
+                              round(_center_distance(boxes[i], boxes[j], scale, box_format), 4),
                               None if cosine is None else round(cosine, 4)))
     # keep the strongest few neighbours per candidate, deterministic order
     by_candidate: dict[int, list[Edge]] = {}
@@ -218,15 +241,18 @@ def admission_targets(boxes: Sequence[Sequence[float]],
 
 
 def competition_rows(boxes: Sequence[Sequence[float]], clusters: Sequence[Sequence[int]],
-                     edges: Sequence[Edge], *, scale: Optional[float] = None) -> dict[str, Any]:
+                     edges: Sequence[Edge], *, scale: Optional[float] = None,
+                     box_format: str = "xywh") -> dict[str, Any]:
     """Compact, token-efficient competition context for the OneJev state.
 
     Matrices are emitted as CSV row strings in integer milli-units (the encoding
     already validated in evidence formats v5/v6), never as pretty JSON.
     """
+    if box_format not in BOX_FORMATS:
+        raise ValueError(f"unsupported box_format={box_format!r}; expected one of {BOX_FORMATS}")
     if scale is None:
-        width = max((b[0] + b[2] for b in boxes), default=1.0)
-        height = max((b[1] + b[3] for b in boxes), default=1.0)
+        width = max((_box_bounds(b, box_format)[2] for b in boxes), default=1.0)
+        height = max((_box_bounds(b, box_format)[3] for b in boxes), default=1.0)
         scale = math.hypot(width, height)
     iou = [[0 for _ in boxes] for _ in boxes]
     distance = [[0 for _ in boxes] for _ in boxes]
@@ -236,8 +262,8 @@ def competition_rows(boxes: Sequence[Sequence[float]], clusters: Sequence[Sequen
                 iou[i][j] = MILLI
                 distance[i][j] = 0
                 continue
-            iou[i][j] = round(_box_iou(boxes[i], boxes[j]) * MILLI)
-            distance[i][j] = round(_center_distance(boxes[i], boxes[j], scale) * MILLI)
+            iou[i][j] = round(_box_iou(boxes[i], boxes[j], box_format) * MILLI)
+            distance[i][j] = round(_center_distance(boxes[i], boxes[j], scale, box_format) * MILLI)
     group_of = {candidate: group_index for group_index, cluster in enumerate(clusters)
                 for candidate in cluster}
     return {
@@ -246,6 +272,7 @@ def competition_rows(boxes: Sequence[Sequence[float]], clusters: Sequence[Sequen
         "competition_iou_rows_milli": [",".join(str(v) for v in row) for row in iou],
         "competition_center_distance_rows_milli": [",".join(str(v) for v in row) for row in distance],
         "competition_edge_count": len(edges),
+        "competition_box_format": box_format,
         "competition_numeric_encoding": ("CSV rows in candidate order, integer/1000 units, "
                                          "diagonal IoU=1000, no truncation of candidates"),
     }
