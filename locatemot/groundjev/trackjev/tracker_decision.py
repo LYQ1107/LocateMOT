@@ -62,9 +62,10 @@ class TrackJEVTrackerDecision:
             return None
         boxes = [c["box"] for c in candidates]
         features = [c.get("native_region_feature") for c in candidates]
-        edges = sparse_edges(boxes, features if any(f is not None for f in features) else None)
+        edges = sparse_edges(boxes, features if any(f is not None for f in features) else None,
+                             box_format="xyxy")
         clusters = entity_clusters(boxes, edges)
-        return competition_rows(boxes, clusters, edges)
+        return competition_rows(boxes, clusters, edges, box_format="xyxy")
 
     # ------------------------------------------------------------ main entry
     def decide(self, image: Any, candidates: Sequence[dict[str, Any]],
