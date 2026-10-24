@@ -1,3 +1,7 @@
+## 2026-10-24 — real native 三任务联合训练 step2500 checkpoint 完整
+
+现有 compact native GroundJEV/OneJev 联合训练推进到 step2500/8227（examples=40,000），最近事件 loss=1.410957、CE=1.020909、Brier=0.390047、slot_acc=0.67、sec/step=23.615。\`adapter-step2500\` 已完整落盘并通过文件级 SHA-256/PEFT 配置审计（adapter safetensors 43,346,432 bytes，SHA-256 \`2a5301825abe51d59f21808b826843b4870cb2a386c57809c76d976d94107e99\`）；基础模型路径仍为 \`onejev_unified600_native_v2/ckpt-step600\`。训练 owner 仍 RUNNING，无终止 receipt，尚未进行 JEV held-out 指标评测。
+
 ## 2026-10-24 — real native 三任务联合训练 step2400 进度与恢复点
 
 现有 compact native GroundJEV/OneJev 联合训练仍在 GPU3、GPU7 运行，未重启、未迁移 world size。权威 `log.jsonl` 已到 step2400/8227（examples=38,400），最近一步 loss=1.384645、CE=1.023810、Brier=0.360835、slot_acc=0.6975、sec/step=24.218、峰值显存约 7.80 GiB；最近完整 adapter checkpoint 为 `adapter-step2000`，并保留 `adapter-step500/1000/1500`。owner 状态仍为 `REAL_NATIVE_THREE_TASK_TRAINING_RUNNING`，尚无终止 receipt 或 JEV held-out 指标。训练健康但不能据此宣称性能提升；终止后先 CPU merge 到独立模型目录，再用相同 held-out scopes 进行 TrackJEV 官方评测。
