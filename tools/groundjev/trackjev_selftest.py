@@ -50,6 +50,22 @@ def main() -> int:
         "iou_row0": rows["competition_iou_rows_milli"][0],
     }
 
+    # Native GroundAnything/OnlineTracker geometry is xyxy.  Verify the
+    # explicit boundary gives the same overlap as the equivalent xywh case.
+    native_boxes = [[100.0, 100.0, 150.0, 200.0],
+                    [104.0, 102.0, 154.0, 202.0],
+                    [400.0, 120.0, 460.0, 210.0]]
+    native_edges = cc.sparse_edges(native_boxes, None, box_format="xyxy")
+    native_clusters = cc.entity_clusters(native_boxes, native_edges)
+    native_rows = cc.competition_rows(native_boxes, native_clusters, native_edges,
+                                      box_format="xyxy")
+    assert native_rows["competition_box_format"] == "xyxy", native_rows
+    assert native_rows["competition_iou_rows_milli"][0].split(",")[1] == rows["competition_iou_rows_milli"][0].split(",")[1]
+    report["native_xyxy_contract"] = {
+        "box_format": native_rows["competition_box_format"],
+        "iou_row0": native_rows["competition_iou_rows_milli"][0],
+    }
+
     # partial annotation must never produce background labels
     partial = cc.admission_targets(boxes, gt_boxes, gt_ids, clusters=clusters,
                                    annotation_exhaustive=False)
