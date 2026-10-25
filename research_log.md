@@ -1,5 +1,5 @@
-Warning: truncated output (original token count: 171931)
-Total output lines: 5286
+Warning: truncated output (original token count: 172051)
+Total output lines: 5288
 
 ## 2026-10-24 — real native 三任务联合训练 step3500 checkpoint 完整
 
@@ -771,7 +771,88 @@ The protected two-rank G2 Clean event stream advanced to `13,361/18,227` at `202
 - Results: 300 finite predictions, finite boxes and finite scores;
   `outputs/unified/u1_foundation_smoke.json` records the exact config,
   checkpoint hash, device and legal frame. This is a compatibility smoke only;
-  no proposal re…141931 tokens truncated…y output dirs was cleaned without inference; relaunch uses directory-external launcher logs.
+  no proposal recall, expression grounding metric or tracking result is
+  claimed. Official-test labels and screening ground truth remain unread.
+- Checkpoint/GPU/walltime: no LocateMOT-U checkpoint; one A800-equivalent GPU;
+  model build/forward about 9 s. Next gate is label-free proposal and
+  expression grounding on legal development frames.
+
+## LocateMOT-U U1 — proposal gate diagnostic — 2026-10-01
+
+- Hypothesis: the loaded Swin-B foundation would provide sufficiently localized
+  open-vocabulary candidates for the shared semantic/tracking path on a fixed
+  legal development slice.
+- Protocol: 16 V1/V2 calibration/validation expression-frame rows, 50 target
+  boxes, 300 candidates per row; model inference completed before each
+  corresponding label file was opened. No threshold fitting, training,
+  official-test labels or screening ground truth.
+- Result after correcting the MMDetection BGR input contract: best-IoU
+  `>=0.25` was `0.5400`, best-IoU `>=0.50` was `0.0400`, mean best IoU
+  `0.2756`, and mean score at best IoU `0.01312`. Boxes and scores were finite.
+  This remains below a usable proposal gate, so semantic-head/tracking training
+  from this stream is disallowed. The initial RGB/BGR-swapped diagnostic was
+  discarded and is not used as evidence.
+- Diagnosis/next change: inspect prompt tokenization/category assignment, box
+  decoding and proposal selection on this same legal slice. Preserve the split,
+  rows, checkpoint and labels; do not tune a threshold or delete hard cases.
+  Authoritative output: `outputs/unified/u1_proposal_gate.json` and
+  `reports/unified/U1_PROPOSAL_GATE.md`.
+- Selection-only check: retaining all 900 decoder queries raised IoU@0.50 to
+  `0.1000` and mean best IoU to `0.3341`, so top-k selection contributes but
+  does not repair localization. The top-900 output is retained separately and
+  is not used as a training bank.
+- A fixed class prompt (`car . pedestrian . cyclist .`) with all 900 queries
+  reached IoU@0.25 `0.9000`, IoU@0.50 `0.1800`, mean best IoU `0.3635`; this is
+  a useful direction for the repair but still below the stage gate and remains
+  excluded from training. Output:
+  `outputs/unified/u1_proposal_gate_generic_classes_top900.json`.
+
+## LocateMOT-U U1.3 — proposal-selection repair diagnostics finalized — 2026-10-01
+
+- Change: made the canonical 300-query output reproducible with explicit
+  `max_per_img` and prompt metadata, and synchronized the report/status values
+  with the corrected BGR run. Re-ran the 300-query baseline, the 900-query
+  selection diagnostic, and the fixed class prompt (`car . pedestrian .
+  cyclist .`) diagnostic on the identical legal 16-row slice.
+- Results: the baseline stayed at IoU@0.25 `0.5400`, IoU@0.50 `0.0400`, and
+  mean best IoU `0.2756`; retaining 900 queries reached `0.1000` at IoU@0.50;
+  the fixed class prompt with 900 queries reached `0.1800` at IoU@0.50 and
+  `0.9000` at IoU@0.25. All boxes/scores were finite, no rows were skipped,
+  and no official-test labels or screening ground truth were read.
+- Interpretation: prompt/category assignment and top-k selection are concrete
+  repair directions, but the proposal gate remains below the stage criterion.
+  No semantic-head/tracking training bank was created and no training was
+  launched. The next experiment must keep this split/checkpoint fixed while
+  inspecting prompt tokenization, category assignment and box decoding.
+- Verification: unified modules/tools compile; CPU skeleton smoke is finite;
+  parameter-sharing audit remains skeleton-only with non-head fraction
+  `0.9998259786`; legal guard accepts V1 `0004` and rejects reserved `0013`.
+
+## LocateMOT-U U0R/U1R measurement-contract repair — 2026-10-01
+
+- Scope: resumed from `014b8a5ec81bb83c5993b56da171089f8a440a11` on
+  `codex/u0r-u1r-foundation-repair-20261001`; no U2 work and no training was
+  launched. The project root was verified as `/data2/user/LocateMOT`.
+- Reproducibility hypothesis: a fresh checkout should import the unified data…140051 tokens truncated…rted before the new clients were launched, so OneJev cannot start while either client is unfinished.
+- No partial rows are metrics. Full-frame order, the official scorer, model/manifest hashes and terminal receipts are still required before any result is promoted.
+
+## 2026-10-23 — OneJev gate switched to the real native three-task course
+- Audited `/data2/user/LocateMOT_GroundJEV/outputs/groundjev/training_data/real_three_task_joint_native_v1/train.sources.json`: `native_ovmot_training_rows=true`, `ovmot_training_mode=native`, 131,618 rows total (131,214 MOT identity, 346 RMOT membership/presence, 58 native TAO category group/leaf rows). The native OVMOT component is a registered TRAIN subset sourced from the preserved candidate/annotation join; it is not a full-TAO claim and has zero optimizer updates so far.
+- Patched `queue_real_three_task_native.py` to use the unified held-out finalizer, accept a fresh queue/checkpoint root and explicit GPU list, and require only the measured free-memory floor while recording foreign PIDs. The new course uses GPU5/7 after the held-out services terminate; GPU4/6 foreign jobs remain untouched.
+- Patched `orchestrate_heldout_finalizers_and_onejev.py` to invoke the fresh native queue after all 27 owners and three finalizers complete. The historical teacher-control/step-3000 queue remains preserved and is not invoked.
+- Compile/import checks passed and the native manifest loaded 131,618 rows in the source trainer preflight before CPU token-length planning was stopped to avoid occupying the host for an extended dry run. No optimizer or GPU training update was made by this preflight.
+
+## 2026-10-23 — held-out owners advance under the expanded shared-service batch
+- A current progress snapshot found G1 MOT20 at 1,413/1,657 rows through physical frame 3,072 and G200 MOT20 at 1,206/1,657 rows through physical frame 2,864. Recent-20 medians were about 45.1 s and 34.2 s per frame, giving rough remaining estimates of 3.1 h and 4.3 h.
+- The two added shared-service scopes remain active: G1 RMOT 245/800, G200 RMOT 26/800, G1 OVMOT 2/40, and dedicated G200 OVMOT 5/40. These are row-count observations only; no official metric is promoted from partial output.
+- The unified orchestrator remains in `WAITING_ALL_REGISTERED_HELDOUT_OWNERS`; native OneJev has not launched. The live MOT20 receipt was refreshed with the current counts and timing estimates.
+
+## 2026-10-23 — two additional cross-model held-out controls launched
+- User requested two more tasks in parallel. To avoid increasing `sglang::scheduler` count, both jobs reuse validated shared services: G1/GPU5 on `http://127.0.0.1:8240` and G200/GPU7 on `http://127.0.0.1:8238`.
+- `g1_dancetrack_shared_gpu5_v1`: DanceTrack `dancetrack0004` validation, 1,203 frames, G1 bundle `GroundAnything-DLM-TrackProjG1-GPU5-V2`, official scoring parser.
+- `g200_animaltrack_shared_gpu7_v1`: AnimalTrack `chicken_1` test, 306 frames, G200 bundle `GroundAnything-DLM-TrackProj200`, official scoring parser.
+- Both scopes reuse the existing independent manifests from `heldout_inputs/g2_domain_v1`; outputs are isolated and use the same input/parser/decoder/tracker/scorer contract. GPU6 was left untouched because it has another user's active workload.
+- Launch receipt: `/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/parallel_two_shared_launch_20261023.json`; runner PIDs at launch were 3511892 and 3511893. No new SGLang service was created. Initial wrapper failure caused by precreating non-empty output dirs was cleaned without inference; relaunch uses directory-external launcher logs.
 - Metrics are intentionally not claimed until each owner writes a terminal receipt and official metrics.
 
 ## 2026-10-23 — recoverable retries queued after shared-service failures
@@ -1277,3 +1358,5 @@ The merged final native OneJev step8227 was evaluated with the repaired TrackJEV
 Registered TAO OVMOT video105 (40 annotation frames) completed through the official non-exhaustive TETA evaluator. The upstream GroundAnything candidate replay rejected all 40 frames, produced zero predictions, and the receipt reports TETA/LocA/AssocA/ClsA and all recall/precision fields equal to 0; this is a measured perception rejection boundary, not evidence about the JEV decoder. The TETA evaluator commit is `b498aa87b252bfb75d7cc0d8d6435c3e1e74e4de`. Full independent MOT20-05 TrackJEV evaluation is still running on GPU7 with the same merged step8227 model, exact G2 candidate replay and no GT feedback; its official TrackEval step will be run only after all 1,657 frames finish.
 
 The repaired `locatemot/groundjev/trackjev/native_onejev_adapter.py` was synchronized to the research branch at GitHub commit `93cd1f9f2cae0f3f907fd7771965edb54d10f7a7` (blob SHA `30dfaf0c036cd2eb2234781d09fcdd5abe37331a`). This is the bounded native candidate-request batching fix validated by compileall and the TrackJEV/OneJev self-tests; it keeps all candidates and leaves global assignment unchanged.
+
+A temporary batch-size comparison on GPU4 used the same merged step8227 model and frozen G2 candidate replay for a four-frame functional scope. `batch_candidates=16` completed without GT reads but took 16.71/16.48/16.08 seconds on the non-empty frames, slower than the preserved batch-8 smoke (15.47/15.29/14.56 seconds). The configurable CLI experiment is not retained and no second full-video run was started; the existing GPU7 batch-8 evaluation remains the registered scope.
