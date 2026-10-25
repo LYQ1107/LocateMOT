@@ -187,7 +187,16 @@ class NativeOneJevAdapter:
         batches: list[dict[str, Any]] = []
         options = None
 
-        pending = [list(range(len(group)))]
+        # Keep the request size bounded before constructing a potentially
+        # quadratic competition payload.  ``batch_candidates`` has always
+        # been part of the adapter contract; using it here avoids first
+        # materializing an overlong full-frame request and then relying on a
+        # ValueError retry.  Every candidate remains in exactly one subgroup,
+        # while the tracker still performs the final global assignment over
+        # the concatenated decisions.
+        capacity = max(1, self.batch_candidates)
+        pending = [list(range(start, min(start + capacity, len(group))))
+                   for start in range(0, len(group), capacity)]
         split_events: list[dict[str, Any]] = []
         while pending:
             indices = pending.pop(0)
@@ -247,6 +256,7 @@ class NativeOneJevAdapter:
             "shortlist_limit": self.shortlist,
             "shortlist_ids": shortlist_ids,
             "shortlist_truncated_ids": truncated,
+            "batch_candidates": capacity,
             "option_count": len(options),
             "batches": batches,
             "context_splits": split_events,
