@@ -1,0 +1,144 @@
+{
+  "entries": [
+    {
+      "action": "updated",
+      "new_status": "TERMINAL_RECONCILED_NO_LIVE_PROCESS",
+      "old_status": "RUNNING_UNMODIFIED_FULL_DENSE_REF9_BASELINE",
+      "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/ground_retention/original_dense_ref9_v3_queue32/owner_state.json",
+      "pids": [
+        {
+          "alive": false,
+          "field": "owned_server_process_group",
+          "pid": 1345024
+        }
+      ]
+    },
+    {
+      "action": "updated",
+      "new_status": "TERMINAL_RECONCILED_NO_LIVE_PROCESS",
+      "old_status": "RUNNING_UNMODIFIED_FULL_DENSE_REF9_ADAPTED",
+      "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/ground_retention/trackproj200_dense_ref9_v3_sync/owner_state.json",
+      "pids": [
+        {
+          "alive": false,
+          "field": "owned_server_process_group",
+          "pid": 1450601
+        }
+      ]
+    },
+    {
+      "action": "updated",
+      "new_status": "TERMINAL_RECONCILED_NO_LIVE_PROCESS",
+      "old_status": "RESUMING_VERIFIED_UNFINISHED_CANONICAL_UNITS",
+      "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/ground_retention/full9_queue_recovery_v3_verified/owner_state.json",
+      "pids": []
+    },
+    {
+      "action": "updated",
+      "new_status": "SUPERSEDED_PROCESS_VERIFIED_GONE",
+      "old_status": "RUNNING_G200_GPU7_OVMOT_DEDICATED_RETRY_tao_video63_base_novel40_dedicated_retry",
+      "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g200_ovmot_dedicated_gpu7_v2_superseded_before_ovmot_timeout180/owner_state.json",
+      "pids": [
+        {
+          "alive": false,
+          "field": "owner_pid",
+          "pid": 521333
+        },
+        {
+          "alive": false,
+          "field": "service_pid",
+          "pid": 521342
+        }
+      ]
+    },
+    {
+      "action": "updated",
+      "new_status": "SUPERSEDED_PROCESS_VERIFIED_GONE",
+      "old_status": "RUNNING_G200_GPU7_OVMOT_DEDICATED_RETRY_tao_video63_base_novel40_dedicated_retry",
+      "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g200_ovmot_dedicated_gpu7_v2_superseded_before_ovmot_timeout_circuit/owner_state.json",
+      "pids": [
+        {
+          "alive": false,
+          "field": "owner_pid",
+          "pid": 434651
+        },
+        {
+          "alive": false,
+          "field": "service_pid",
+          "pid": 434656
+        }
+      ]
+    },
+    {
+      "action": "updated",
+      "new_status": "SUPERSEDED_PROCESS_VERIFIED_GONE",
+      "old_status": "RUNNING_G200_GPU7_OVMOT_DEDICATED_RETRY_tao_video63_base_novel40_dedicated_retry",
+      "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g200_ovmot_dedicated_gpu7_v2_superseded_before_ovmot_wall_timeout/owner_state.json",
+      "pids": [
+        {
+          "alive": false,
+          "field": "owner_pid",
+          "pid": 609686
+        },
+        {
+          "alive": false,
+          "field": "service_pid",
+          "pid": 609703
+        }
+      ]
+    },
+    {
+      "action": "updated",
+      "new_status": "SUPERSEDED_PROCESS_VERIFIED_GONE",
+      "old_status": "RUNNING_G200_GPU7_OVMOT_DEDICATED_RETRY_tao_video63_base_novel40_dedicated_retry",
+      "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g200_ovmot_dedicated_gpu7_v2_superseded_before_rmot_repair/owner_state.json",
+      "pids": [
+        {
+          "alive": false,
+          "field": "owner_pid",
+          "pid": 153367
+        },
+        {
+          "alive": false,
+          "field": "service_pid",
+          "pid": 153372
+        }
+      ]
+    },
+    {
+      "action": "updated",
+      "new_status": "SUPERSEDED_PROCESS_VERIFIED_GONE",
+      "old_status": "RUNNING_G200_GPU7_OVMOT_DEDICATED_RETRY_tao_video63_base_novel40_dedicated_retry",
+      "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g200_ovmot_dedicated_gpu7_v2_superseded_before_rmot_retry_v3/owner_state.json",
+      "pids": [
+        {
+          "alive": false,
+          "field": "owner_pid",
+          "pid": 221228
+        },
+        {
+          "alive": false,
+          "field": "service_pid",
+          "pid": 221253
+        }
+      ]
+    },
+    {
+      "action": "updated",
+      "new_status": "SUPERSEDED_PROCESS_VERIFIED_GONE",
+      "old_status": "G2_PARALLEL_SCOPE_FAILED",
+      "path": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g200_ovmot_dedicated_gpu7_v2_superseded_resource_gate/owner_state.json",
+      "pids": [
+        {
+          "alive": false,
+          "field": "owner_pid",
+          "pid": 513917
+        }
+      ]
+    }
+  ],
+  "external_receipt": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/ground_retention/status_reconciliation_20261026.json",
+  "g0_recovery_evidence": "outputs/groundjev/ground_retention/reattached_full9_owner_v1/owner_state.json",
+  "reconciled_at_utc": "2026-10-25T23:30:47.569864+00:00",
+  "status": "GROUNDJEV_STALE_OWNER_RECONCILIATION_COMPLETE"
+}
