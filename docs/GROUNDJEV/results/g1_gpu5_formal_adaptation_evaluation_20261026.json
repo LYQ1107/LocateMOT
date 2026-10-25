@@ -1,0 +1,349 @@
+{
+  "export": {
+    "BF16_changed_elements": 16211750,
+    "all_other_native_tensors_unmodified": true,
+    "bytes": 9687419704,
+    "native_tensor_count": 569,
+    "output": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM-TrackProjG1-GPU5-V2",
+    "seed": 42,
+    "sha256": "0efd9d7ddb241d588be85cb6b08853de5dfd18011aa477932c0580bab3265a25",
+    "status": "COMPLETE_NATIVE_DLM_PROJECTOR_DELTA_BUNDLE_EXPORTED",
+    "training_steps": 200
+  },
+  "generated_utc": "2026-10-25T23:32:54.120532+00:00",
+  "independent_heldout": {
+    "animaltrack_chicken1": {
+      "dataset": "animaltrack",
+      "decision_rows": 306,
+      "fps": 0.10918982640727351,
+      "frames": 306,
+      "metrics": {
+        "AssA": 0.40675830148350467,
+        "DetA": 0.5490949527602852,
+        "FN": 1300,
+        "FP": 1639,
+        "HOTA": 0.4661208958929352,
+        "IDF1": 0.4992391855662633,
+        "IDSW": 145
+      },
+      "model_label": "G1_GPU5",
+      "official_metrics": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g1_animaltrack_gpu6_v1/G1_GPU5/animaltrack_chicken1_test306/official_metrics.json",
+      "perception_rejected_frames": 0,
+      "sequence": "chicken_1",
+      "task": "mot"
+    },
+    "dancetrack0004": {
+      "dataset": "dancetrack",
+      "decision_rows": 1203,
+      "fps": 0.24665979146308595,
+      "frames": 1203,
+      "metrics": {
+        "AssA": 0.03483657593427392,
+        "DetA": 0.290472039276607,
+        "FN": 155,
+        "FP": 9038,
+        "HOTA": 0.10019939388818279,
+        "IDF1": 0.05117695929105511,
+        "IDSW": 618
+      },
+      "model_label": "G1_GPU5",
+      "official_metrics": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g1_dancetrack_gpu3_v1/G1_GPU5/dancetrack0004_val1203/official_metrics.json",
+      "perception_rejected_frames": 0,
+      "sequence": "dancetrack0004",
+      "task": "mot"
+    },
+    "mot20_05": {
+      "dataset": "mot20",
+      "decision_rows": 1657,
+      "fps": null,
+      "frames": 1657,
+      "metrics": {
+        "AssA": 0.18528010702617692,
+        "DetA": 0.6632209879874228,
+        "FN": 81990,
+        "FP": 14516,
+        "HOTA": 0.3502305038178144,
+        "IDF1": 0.2993288355384211,
+        "IDSW": 10993
+      },
+      "model_label": "G1_GPU5_V2",
+      "official_metrics": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g1_mot20_05_gpu5_resume_v1/G1_GPU5_V2/mot20_05_validation1657/official_metrics.json",
+      "perception_rejected_frames": 6,
+      "sequence": "MOT20-05",
+      "task": "mot"
+    },
+    "ovmot_video63": {
+      "dataset": "tao_amodal",
+      "decision_rows": 40,
+      "fps": 0.003075863942995901,
+      "frames": 40,
+      "metrics": {
+        "AssocA": 0.0,
+        "AssocPr": 0.0,
+        "AssocRe": 0.0,
+        "ClsA": 0.0,
+        "ClsPr": 0.0,
+        "ClsRe": 0.0,
+        "LocA": 0.0,
+        "LocPr": 0.0,
+        "LocRe": 0.0,
+        "TETA": 0.0
+      },
+      "model_label": "G1_GPU5_OVMOT_SHARED",
+      "official_metrics": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g1_ovmot_shared_gpu5_v1/G1_GPU5_OVMOT_SHARED/tao_video63_base_novel40_g1_shared/official_metrics.json",
+      "perception_rejected_frames": 40,
+      "sequence": "val/HACS/Making_a_sandwich_v_SMk4troNhwE_scene_0_0-2482",
+      "task": "ovmot"
+    },
+    "rmot_single0007": {
+      "dataset": "refer_kitti_v2",
+      "decision_rows": 800,
+      "fps": null,
+      "frames": 800,
+      "metrics": {
+        "AssA": 0.25243606932549684,
+        "DetA": 0.005687553967683795,
+        "FN": 7,
+        "FP": 1760,
+        "HOTA": 0.03777688214558536,
+        "IDF1": 0.008943543879262158,
+        "IDSW": 3
+      },
+      "model_label": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM-TrackProjG1-GPU5-V2",
+      "official_metrics": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g1_rmot_shared_gpu5_v5/G1_GPU5_RMOT_RETRY/rmot_single0007_shared_retry/official_metrics.json",
+      "perception_rejected_frames": 45,
+      "sequence": "0007",
+      "task": "rmot"
+    }
+  },
+  "interpretation": [
+    "G1 projector adaptation physically completed on GPU5 for 200 steps and exported without overwriting the base bundle.",
+    "Official independent outputs exist for MOT20-05, DanceTrack, AnimalTrack, RMOT single0007 and TAO OVMOT video63.",
+    "G1 improves the listed G0 reference on MOT20-05 and AnimalTrack, while DanceTrack and RMOT single0007 are lower; no universal gain claim is made.",
+    "G1 OVMOT video63 rejected all 40 frames and reports TETA=0; this is an upstream perception boundary.",
+    "The 96-frame repeated controls are deterministic and validate the adaptation path, but they do not replace full-domain metrics."
+  ],
+  "isolated_controls": {
+    "completed_units": 12,
+    "owner": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/ground_adaptation/g1_gpu5_isolated96_v1/owner_state.json",
+    "repeat_checks": {
+      "dense_mot4": {
+        "frames": 4,
+        "same_raw_wire_candidates_and_outputs": true
+      },
+      "refer_multi12": {
+        "frames": 12,
+        "same_raw_wire_candidates_and_outputs": true
+      },
+      "refer_single8": {
+        "frames": 8,
+        "same_raw_wire_candidates_and_outputs": true
+      }
+    },
+    "runs": {
+      "g1_gpu5": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/ground_adaptation/g1_gpu5_isolated96_v1/g1_gpu5",
+      "g1_gpu5_repeat": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/ground_adaptation/g1_gpu5_isolated96_v1/g1_gpu5_repeat",
+      "original": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/ground_adaptation/g1_gpu5_isolated96_v1/original",
+      "projector200": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/ground_adaptation/g1_gpu5_isolated96_v1/projector200"
+    },
+    "scope": null,
+    "status": "ISOLATED_ORDERED_GROUND_CONTROLS_COMPLETE"
+  },
+  "same_scope_references_and_deltas": {
+    "animaltrack_chicken1": {
+      "delta": {
+        "AssA": 0.07045324942499942,
+        "DetA": 0.050403377805075145,
+        "HOTA": 0.06464492838219582,
+        "IDF1": 0.06566611989013904,
+        "IDSW": 1
+      },
+      "g0_reference": {
+        "dataset": "animaltrack",
+        "decision_rows": 306,
+        "fps": 0.1212373058929488,
+        "frames": 306,
+        "metrics": {
+          "AssA": 0.33630505205850525,
+          "DetA": 0.49869157495521005,
+          "FN": 2040,
+          "FP": 1231,
+          "HOTA": 0.4014759675107394,
+          "IDF1": 0.43357306567612425,
+          "IDSW": 144
+        },
+        "model_label": null,
+        "official_metrics": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g2_domain_animaltrack_gpu6_v1/G2_CLEAN_V2/animaltrack_chicken1_test306/official_metrics.json",
+        "perception_rejected_frames": 0,
+        "sequence": "chicken_1",
+        "task": null
+      },
+      "g1": {
+        "dataset": "animaltrack",
+        "decision_rows": 306,
+        "fps": 0.10918982640727351,
+        "frames": 306,
+        "metrics": {
+          "AssA": 0.40675830148350467,
+          "DetA": 0.5490949527602852,
+          "FN": 1300,
+          "FP": 1639,
+          "HOTA": 0.4661208958929352,
+          "IDF1": 0.4992391855662633,
+          "IDSW": 145
+        },
+        "model_label": "G1_GPU5",
+        "official_metrics": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g1_animaltrack_gpu6_v1/G1_GPU5/animaltrack_chicken1_test306/official_metrics.json",
+        "perception_rejected_frames": 0,
+        "sequence": "chicken_1",
+        "task": "mot"
+      }
+    },
+    "dancetrack0004": {
+      "delta": {
+        "AssA": 0.007048556114868626,
+        "DetA": -0.23354090353022244,
+        "HOTA": -0.020077518507740214,
+        "IDF1": -0.0017112317675350847,
+        "IDSW": 44
+      },
+      "g0_reference": {
+        "dataset": "dancetrack",
+        "decision_rows": 1203,
+        "fps": 0.23387370605961352,
+        "frames": 1203,
+        "metrics": {
+          "AssA": 0.02778801981940529,
+          "DetA": 0.5240129428068294,
+          "FN": 96,
+          "FP": 3025,
+          "HOTA": 0.120276912395923,
+          "IDF1": 0.052888191058590196,
+          "IDSW": 574
+        },
+        "model_label": null,
+        "official_metrics": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g2_domain_dancetrack_gpu5_v1/G2_CLEAN_V2/dancetrack0004_val1203/official_metrics.json",
+        "perception_rejected_frames": 1,
+        "sequence": "dancetrack0004",
+        "task": null
+      },
+      "g1": {
+        "dataset": "dancetrack",
+        "decision_rows": 1203,
+        "fps": 0.24665979146308595,
+        "frames": 1203,
+        "metrics": {
+          "AssA": 0.03483657593427392,
+          "DetA": 0.290472039276607,
+          "FN": 155,
+          "FP": 9038,
+          "HOTA": 0.10019939388818279,
+          "IDF1": 0.05117695929105511,
+          "IDSW": 618
+        },
+        "model_label": "G1_GPU5",
+        "official_metrics": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g1_dancetrack_gpu3_v1/G1_GPU5/dancetrack0004_val1203/official_metrics.json",
+        "perception_rejected_frames": 0,
+        "sequence": "dancetrack0004",
+        "task": "mot"
+      }
+    },
+    "mot20_05": {
+      "g0_reference": null,
+      "g1": {
+        "dataset": "mot20",
+        "decision_rows": 1657,
+        "fps": null,
+        "frames": 1657,
+        "metrics": {
+          "AssA": 0.18528010702617692,
+          "DetA": 0.6632209879874228,
+          "FN": 81990,
+          "FP": 14516,
+          "HOTA": 0.3502305038178144,
+          "IDF1": 0.2993288355384211,
+          "IDSW": 10993
+        },
+        "model_label": "G1_GPU5_V2",
+        "official_metrics": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g1_mot20_05_gpu5_resume_v1/G1_GPU5_V2/mot20_05_validation1657/official_metrics.json",
+        "perception_rejected_frames": 6,
+        "sequence": "MOT20-05",
+        "task": "mot"
+      }
+    },
+    "ovmot_video63": {
+      "g0_reference": null,
+      "g1": {
+        "dataset": "tao_amodal",
+        "decision_rows": 40,
+        "fps": 0.003075863942995901,
+        "frames": 40,
+        "metrics": {
+          "AssocA": 0.0,
+          "AssocPr": 0.0,
+          "AssocRe": 0.0,
+          "ClsA": 0.0,
+          "ClsPr": 0.0,
+          "ClsRe": 0.0,
+          "LocA": 0.0,
+          "LocPr": 0.0,
+          "LocRe": 0.0,
+          "TETA": 0.0
+        },
+        "model_label": "G1_GPU5_OVMOT_SHARED",
+        "official_metrics": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g1_ovmot_shared_gpu5_v1/G1_GPU5_OVMOT_SHARED/tao_video63_base_novel40_g1_shared/official_metrics.json",
+        "perception_rejected_frames": 40,
+        "sequence": "val/HACS/Making_a_sandwich_v_SMk4troNhwE_scene_0_0-2482",
+        "task": "ovmot"
+      }
+    },
+    "rmot_single0007": {
+      "g0_reference": null,
+      "g1": {
+        "dataset": "refer_kitti_v2",
+        "decision_rows": 800,
+        "fps": null,
+        "frames": 800,
+        "metrics": {
+          "AssA": 0.25243606932549684,
+          "DetA": 0.005687553967683795,
+          "FN": 7,
+          "FP": 1760,
+          "HOTA": 0.03777688214558536,
+          "IDF1": 0.008943543879262158,
+          "IDSW": 3
+        },
+        "model_label": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM-TrackProjG1-GPU5-V2",
+        "official_metrics": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g1_rmot_shared_gpu5_v5/G1_GPU5_RMOT_RETRY/rmot_single0007_shared_retry/official_metrics.json",
+        "perception_rejected_frames": 45,
+        "sequence": "0007",
+        "task": "rmot"
+      }
+    }
+  },
+  "source_consolidated": "/data2/user/LocateMOT/docs/GROUNDJEV/results/groundjev_heldout_consolidated_result_20261023.json",
+  "status": "G1_GPU5_FORMAL_HELDOUT_EVALUATION_AUDITED",
+  "training": {
+    "all_registered_pairs_visited": true,
+    "changed_BF16_elements": 16211750,
+    "checkpoint_reload_max_difference": 0.0,
+    "corpus": {
+      "dense_rows": 32,
+      "native_aligned_regions": 628,
+      "native_pair_contrastive_support": 24,
+      "native_proposals": 884,
+      "negative_referring_rows": 0,
+      "pairs": 56,
+      "referring_rows": 80,
+      "rows": 112,
+      "unique_images": 72
+    },
+    "owner": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/ground_adaptation/native_tracking200_gpu5_g1_v1/training/owner_state.json",
+    "physical_gpu": 5,
+    "registered_pairs": 56,
+    "seed": 42,
+    "status": "NATIVE_GROUND_TRACKING200_TRAINING_COMPLETE",
+    "steps": 200,
+    "target_steps": 200
+  }
+}
