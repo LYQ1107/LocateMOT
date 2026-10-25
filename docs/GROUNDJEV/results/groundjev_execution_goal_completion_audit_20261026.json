@@ -1,0 +1,65 @@
+{
+  "generated_utc": "2026-10-25T23:34:07.015062+00:00",
+  "project_root": "/data2/user/LocateMOT",
+  "requirements": {
+    "g0_g200_g1_controls_and_checkpoints": {
+      "all_evaluation_owners_terminal": true,
+      "consolidated_rows": 24,
+      "g1_audit": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/ground_adaptation/native_tracking200_gpu5_g1_v1/formal_adaptation_evaluation_20261026.json",
+      "official_metric_rows": 24
+    },
+    "g0_mot20_long_export": {
+      "adapted_complete_all9": true,
+      "adapted_rows": 91124,
+      "original_complete_all9": true,
+      "original_rows": 91124,
+      "status": "EXISTING_NATIVE_RUNNERS_FINISHED_RECOVERED_SUMMARIES_VALIDATED"
+    },
+    "g1_gpu5_multi_domain_adaptation": {
+      "audit_status": "G1_GPU5_FORMAL_HELDOUT_EVALUATION_AUDITED",
+      "bundle_sha256": "0efd9d7ddb241d588be85cb6b08853de5dfd18011aa477932c0580bab3265a25",
+      "independent_scopes": [
+        "animaltrack_chicken1",
+        "dancetrack0004",
+        "mot20_05",
+        "ovmot_video63",
+        "rmot_single0007"
+      ],
+      "physical_gpu": 5,
+      "training_steps": 200
+    },
+    "independent_heldout_and_github_sync": {
+      "consolidated": "/data2/user/LocateMOT/docs/GROUNDJEV/results/groundjev_heldout_consolidated_result_20261023.json",
+      "final_trackjev_mot20_receipt": "/data3/user/LocateMOT-checkpoints/onejev_real_three_task_joint_native_v2_compact_v1/heldout_mot20_05_trackjev_step8227_full/official_metrics.json",
+      "github_branch": "codex/groundjev-full-evidence-20261020"
+    },
+    "mot_only_long_training_safely_closed": {
+      "live_process_lines": [],
+      "reconciliation_receipt": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/ground_retention/status_reconciliation_20261026.json",
+      "status": "NO_LIVE_PROJECT_PROCESS"
+    },
+    "onejev_three_task_joint": {
+      "checkpoint_root": "/data3/user/LocateMOT-checkpoints/onejev_real_three_task_joint_native_v2_compact_v1",
+      "current_stage": "COMPLETE",
+      "failed": null,
+      "final_adapter": "/data3/user/LocateMOT-checkpoints/onejev_real_three_task_joint_native_v2_compact_v1/adapter/adapter_model.safetensors",
+      "merged_model": "/data3/user/LocateMOT-checkpoints/onejev_real_three_task_joint_native_v2_compact_v1/merged-final-step8227",
+      "owner_status": "REAL_NATIVE_THREE_TASK_TRAINING_COMPLETE"
+    }
+  },
+  "scientific_boundaries": {
+    "final_onejev_ovmot": "TETA=0 with all 40 frames rejected",
+    "final_onejev_trackjev_mot20": {
+      "AssA": 0.0,
+      "DetA": 0.0,
+      "FN": 319062,
+      "FP": 0,
+      "HOTA": 0.0,
+      "IDF1": 0.0,
+      "IDSW": 0
+    },
+    "g1_claim": "mixed across domains; no universal gain claim",
+    "g2_clean_fixed_simple_mot20_gain": "G2 perception + fixed Simple tracker improved HOTA 0.3426154581 -> 0.4447386120 and IDSW 13712 -> 8464."
+  },
+  "status": "GROUNDJEV_MOT_EXECUTION_GOAL_COMPLETE_AUDIT"
+}
