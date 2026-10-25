@@ -1,3 +1,7 @@
+## 2026-10-25 — real native 三任务联合训练 step6000 checkpoint 完整
+
+联合 GroundJEV/OneJev native MOT/RMOT/OVMOT 训练已到 step6000/8227（examples=96,000），最近事件 loss=0.903464、CE=0.639255、Brier=0.264209、slot_acc=0.805、sec/step=19.505、tokens/s=6634.281、峰值显存约 7.80 GiB。adapter-step6000 已完整落盘；adapter_model.safetensors 为 43,346,432 bytes，SHA-256 c20f8e0bfd0065febc82f8ffed77ac97495cf60ec8dd42a90f87929c570101cb，372 个 tensor 的 CPU safe_open 校验通过。owner 仍为 REAL_NATIVE_THREE_TASK_TRAINING_RUNNING，尚无 terminal receipt 或 JEV held-out 指标；该训练进度不构成性能提升结论。
+
 ## 2026-10-25 — real native 三任务联合训练 step5500 checkpoint 完整
 
 联合 GroundJEV/OneJev native MOT/RMOT/OVMOT 训练已到 step5500/8227（examples=88,000），最近事件 loss=0.823151、CE=0.570731、Brier=0.252420、slot_acc=0.8125、sec/step=16.493、tokens/s=7805.095、峰值显存约 7.80 GiB。adapter-step5500 已完整落盘；adapter_model.safetensors 为 43,346,432 bytes，SHA-256 13404900e546c08443790e5c3b496cd1403916b5b5724857a0254e9f5366dee0，372 个 tensor 的 CPU safe_open 校验通过，adapter/config 文件可读。owner 仍为 REAL_NATIVE_THREE_TASK_TRAINING_RUNNING，尚无 terminal receipt 或 JEV held-out 指标；该训练进度不构成性能提升结论。
