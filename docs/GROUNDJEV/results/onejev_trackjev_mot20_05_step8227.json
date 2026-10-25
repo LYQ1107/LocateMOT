@@ -32,16 +32,16 @@
   "complete_video_wall_seconds": 21265.43643698399,
   "interpretation": "Negative final TrackJEV result: no accepted tracks on this scope; do not claim JEV improvement.",
   "g2_clean_fixed_simple_comparison": {
-    "HOTA_before": 0.342615,
-    "HOTA_after": 0.444739,
-    "IDF1_before": 0.290533,
-    "IDF1_after": 0.400865,
+    "HOTA_before": 0.3426154581046515,
+    "HOTA_after": 0.44473861203046366,
+    "IDF1_before": 0.29053324099722994,
+    "IDF1_after": 0.40086512551411146,
     "IDSW_before": 13712,
     "IDSW_after": 8464,
-    "DetA_before": 0.6661,
-    "DetA_after": 0.7697,
-    "AssA_before": 0.1766,
-    "AssA_after": 0.258,
+    "DetA_before": 0.6661209465449908,
+    "DetA_after": 0.7696739945571459,
+    "AssA_before": 0.17656659448918746,
+    "AssA_after": 0.25798112162715026,
     "scope": "MOT20-05 full 1657 frames, G0 vs G2 Clean, fixed Simple tracker"
   }
 }
