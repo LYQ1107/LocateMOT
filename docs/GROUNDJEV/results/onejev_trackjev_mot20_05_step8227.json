@@ -1,0 +1,47 @@
+{
+  "status": "OFFICIAL_SCOPE_EVALUATION_COMPLETE",
+  "project": "GroundJEV-MOT",
+  "task": "MOT",
+  "dataset": "MOT20",
+  "sequence": "MOT20-05",
+  "scope": "complete_registered_validation_scope_natural_visibility_challenge",
+  "frames": 1657,
+  "model": {
+    "name": "OneJev native three-task joint",
+    "checkpoint": "merged-final-step8227",
+    "checkpoint_path": "/data3/user/LocateMOT-checkpoints/onejev_real_three_task_joint_native_v2_compact_v1/merged-final-step8227",
+    "adapter_sha256": "6f71d15e001b2a3600ceb3adc3e012e74d10b47069cbb5a13e2866b7010b18a6",
+    "manifest_sha256": "7c92778fb4417ea1e49bf286cab7758ceef1443d683ab059e5e758e5bd823aa3"
+  },
+  "candidate_replay": "/data2/user/LocateMOT_GroundJEV/outputs/groundjev/heldout/g2_clean_independent_gpu5_v1/G2_CLEAN_V2/mot20_05_validation1657/frame_decisions.jsonl",
+  "runtime_gt_access": "none",
+  "metrics": {
+    "HOTA": 0.0,
+    "DetA": 0.0,
+    "AssA": 0.0,
+    "IDF1": 0.0,
+    "IDSW": 0,
+    "FP": 0,
+    "FN": 319062
+  },
+  "metric_scale": "fraction, counts for IDSW/FP/FN",
+  "trackeval_commit": "12c8791b303e0a0b50f753af204249e622d0281a",
+  "perception_rejected_frames": 65,
+  "perception_rejection_rate": 0.03922751961375981,
+  "association_replay_fps": 0.0779954751566498,
+  "complete_video_wall_seconds": 21265.43643698399,
+  "interpretation": "Negative final TrackJEV result: no accepted tracks on this scope; do not claim JEV improvement.",
+  "g2_clean_fixed_simple_comparison": {
+    "HOTA_before": 0.342615,
+    "HOTA_after": 0.444739,
+    "IDF1_before": 0.290533,
+    "IDF1_after": 0.400865,
+    "IDSW_before": 13712,
+    "IDSW_after": 8464,
+    "DetA_before": 0.6661,
+    "DetA_after": 0.7697,
+    "AssA_before": 0.1766,
+    "AssA_after": 0.258,
+    "scope": "MOT20-05 full 1657 frames, G0 vs G2 Clean, fixed Simple tracker"
+  }
+}
