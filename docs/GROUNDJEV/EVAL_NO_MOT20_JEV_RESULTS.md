@@ -4,11 +4,11 @@ Status: INCOMPLETE. Values are fractions except counts.
 
 | Dataset | Arm | Jobs | Videos | Frames | HOTA | DetA | AssA | IDF1 | IDSW | Association FPS |
 |---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| sportsmot | j1 | 2 | 2 | 465 | 0.181 | 0.069 | 0.479 | 0.099 | 0 | 0.639 |
-| sportsmot | coupled | 5 | 5 | 1240 | 0.216 | 0.307 | 0.153 | 0.203 | 351 | 107.088 |
-| animaltrack | j1 | 2 | 2 | 502 | 0.118 | 0.032 | 0.429 | 0.048 | 0 | 0.296 |
-| animaltrack | coupled | 6 | 6 | 1691 | 0.083 | 0.180 | 0.039 | 0.061 | 4580 | 74.927 |
-| refer_kitti_v2 | j1 | 2 | 1 | 418 | 0.019 | 0.016 | 0.024 | 0.012 | 0 | 1.467 |
+| sportsmot | j1 | 7 | 7 | 1779 | 0.154 | 0.063 | 0.375 | 0.081 | 0 | 0.683 |
+| sportsmot | coupled | 7 | 7 | 1779 | 0.215 | 0.304 | 0.152 | 0.201 | 479 | 98.552 |
+| animaltrack | j1 | 7 | 7 | 1998 | 0.087 | 0.033 | 0.234 | 0.032 | 172 | 0.305 |
+| animaltrack | coupled | 7 | 7 | 1998 | 0.084 | 0.199 | 0.036 | 0.061 | 6361 | 67.554 |
+| refer_kitti_v2 | j1 | 7 | 1 | 1463 | 0.098 | 0.071 | 0.138 | 0.073 | 0 | 1.389 |
 
 No unweighted mean of per-video HOTA is used. Only paired complete scopes support net-gain claims. OVMOT requires official TETA, not MOT HOTA.
 
@@ -28,5 +28,5 @@ Coupled JEV currently supports ordinary MOT only. RMOT/OVMOT: `NOT_SUPPORTED_BY_
 
 | OVMOT arm | Complete videos | TETA | LocA | AssocA | ClsA |
 |---|---:|---:|---:|---:|---:|
-| j1 | 1 | 0.000 | 0.000 | 0.000 | 0.000 |
-| j1 base | 1 | 0.000 | 0.000 | 0.000 | 0.000 |
+| j1 | 7 | 0.000 | 0.000 | 0.000 | 0.000 |
+| j1 base | 7 | 0.000 | 0.000 | 0.000 | 0.000 |
