@@ -3217,3 +3217,7 @@ Production observer completed:64 new persisted query-frames and83 native request
 ## 2026-10-26 user-directed architecture pivot
 
 Safely paused old four-GPU full evaluation and recovery owners, preserved SQLite consistency snapshots and all outputs (PAUSED_BY_USER_FOR_ARCHITECTURE_PIVOT). No queue state promotion, no auto resume. See docs/GROUNDJEV_DENSE_HEAD/OLD_EVAL_PAUSE_REPORT.md. Hypothesis: frozen final G2 native image-only spatial features plus Hungarian-trained parallel object queries can improve detection coverage without native language format failure. Start matched G0/G2 SportsMOT+AnimalTrack TRAIN-internal video-disjoint pilot (<=1000 steps initially, <=24 GPU-hours total); no JEV retraining or G2 full unfreeze.
+
+## 2026-10-26 spatial decoder engineering audit
+
+Real GPU G0/G2 smoke passed: image-only2560x24x42, final18227 verified, no GT leakage, all head gradients, frozen vision unchanged, exact restore. Encoder weights equal; five G2 projector tensors differ. Native BF16/FP32 cosine>0.9996. Video-group split57 TRAIN/20 DEV; DEV previously in G2 TRAIN (explicit limitation). Freeze matched100-query/3-layer heads,1000 steps, batch4, seed42, LR2e-4,12GiB combined bounded feature cache. External A0 cache comparison frozen before fitting:1607 frames/6 videos. No scientific gain claimed yet.

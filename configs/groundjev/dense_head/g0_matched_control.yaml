@@ -1,0 +1,23 @@
+{
+  "arm": "g0",
+  "root": "/data3/user/LocateMOT-runs/G2_Spatial_DenseHead_20261026",
+  "output_root": "/data3/user/LocateMOT-runs/G2_Spatial_DenseHead_20261026/g0",
+  "old_pause_receipt": "/data3/user/LocateMOT-runs/GroundJEV_Eval_NoMOT20_4GPU/request_local_seed_v2/architecture_pivot_pause_20261026/pause_audit.json",
+  "model": "/data2/user/LocateMOT_GroundJEV_DenseHead/models/GroundAnything-DLM",
+  "train_index": "/data3/user/LocateMOT-runs/G2_Spatial_DenseHead_20261026/data/train.jsonl",
+  "dev_index": "/data3/user/LocateMOT-runs/G2_Spatial_DenseHead_20261026/data/dev.jsonl",
+  "full_dev_index": "/data3/user/LocateMOT-runs/G2_Spatial_DenseHead_20261026/data/dev_full.jsonl",
+  "steps": 1000,
+  "batch_images": 4,
+  "lr": 0.0002,
+  "weight_decay": 0.0001,
+  "seed": 42,
+  "queries": 100,
+  "hidden_dim": 256,
+  "layers": 3,
+  "max_tokens": 1024,
+  "feature_cache_bytes": 6442450944,
+  "eval_every": 250,
+  "max_wall_seconds": 36000,
+  "external_index": "/data3/user/LocateMOT-runs/G2_Spatial_DenseHead_20261026/data/external_frozen.jsonl"
+}

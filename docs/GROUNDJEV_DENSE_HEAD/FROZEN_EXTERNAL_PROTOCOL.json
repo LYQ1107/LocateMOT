@@ -1,0 +1,85 @@
+{
+  "status": "FROZEN_BEFORE_HEAD_PILOT",
+  "selection": "first3 distinct raw-source Sports videos / distinct Animal categories in SHA256 order; completed-cache eligibility, never head metrics",
+  "jobs": [
+    {
+      "dataset": "sportsmot",
+      "expression_id": null,
+      "frames": 270,
+      "id": "sportsmot__v_0kUtTtmLaJA_c010__ae75f08a115f04f4",
+      "manifest_sha256": "035100bff2c7f8f01b368a6166523e411e942efd3ec1c67b4d990f5858f266a1",
+      "path": "/data3/user/LocateMOT-runs/GroundJEV_Eval_NoMOT20_4GPU/request_local_seed_v2/jobs/sportsmot__v_0kUtTtmLaJA_c010__ae75f08a115f04f4",
+      "planned_requests": 270,
+      "query_hash": "6fb5d9845fa7a8b9930f1c46898ebecf14e961e9924904267b33b836c13f2fb0",
+      "sequence": "v_0kUtTtmLaJA_c010",
+      "task": "mot"
+    },
+    {
+      "dataset": "sportsmot",
+      "expression_id": null,
+      "frames": 269,
+      "id": "sportsmot__v_9MHDmAMxO5I_c006__cdb67f74ddad11b3",
+      "manifest_sha256": "faad42d6445b7cb1cbe97b27e7b020af128e517efd30ab053ccac1ddef869d25",
+      "path": "/data3/user/LocateMOT-runs/GroundJEV_Eval_NoMOT20_4GPU/request_local_seed_v2/jobs/sportsmot__v_9MHDmAMxO5I_c006__cdb67f74ddad11b3",
+      "planned_requests": 269,
+      "query_hash": "6fb5d9845fa7a8b9930f1c46898ebecf14e961e9924904267b33b836c13f2fb0",
+      "sequence": "v_9MHDmAMxO5I_c006",
+      "task": "mot"
+    },
+    {
+      "dataset": "sportsmot",
+      "expression_id": null,
+      "frames": 259,
+      "id": "sportsmot__v_cC2mHWqMcjk_c008__6ec845472cac25c4",
+      "manifest_sha256": "5336d1ba3246800ee1e6fd5855b736c268f047c3082f15874db18dd7206a726f",
+      "path": "/data3/user/LocateMOT-runs/GroundJEV_Eval_NoMOT20_4GPU/request_local_seed_v2/jobs/sportsmot__v_cC2mHWqMcjk_c008__6ec845472cac25c4",
+      "planned_requests": 259,
+      "query_hash": "6fb5d9845fa7a8b9930f1c46898ebecf14e961e9924904267b33b836c13f2fb0",
+      "sequence": "v_cC2mHWqMcjk_c008",
+      "task": "mot"
+    },
+    {
+      "dataset": "animaltrack",
+      "expression_id": null,
+      "frames": 306,
+      "id": "animaltrack__chicken_1__58a079d630f401d9",
+      "manifest_sha256": "c63a004f361b200cc2f7343963df7b18cadc2fafd255e3b3d98cfea147026444",
+      "path": "/data3/user/LocateMOT-runs/GroundJEV_Eval_NoMOT20_4GPU/request_local_seed_v2/jobs/animaltrack__chicken_1__58a079d630f401d9",
+      "planned_requests": 306,
+      "query_hash": "c59a733f6a2a381b09fda9278ed1dbd2e7d039fd5b5febeba3217aa592e2272a",
+      "sequence": "chicken_1",
+      "task": "mot"
+    },
+    {
+      "dataset": "animaltrack",
+      "expression_id": null,
+      "frames": 307,
+      "id": "animaltrack__deer_3__e89d749a492b0ffc",
+      "manifest_sha256": "94a432b21816839267cf0d26980c98a3315d7ff14756c68608abc4ec9bf8adac",
+      "path": "/data3/user/LocateMOT-runs/GroundJEV_Eval_NoMOT20_4GPU/request_local_seed_v2/jobs/animaltrack__deer_3__e89d749a492b0ffc",
+      "planned_requests": 307,
+      "query_hash": "d57f798779e4a5832c54898466908411e1dd5b088b6042ac4d062fe538f69e18",
+      "sequence": "deer_3",
+      "task": "mot"
+    },
+    {
+      "dataset": "animaltrack",
+      "expression_id": null,
+      "frames": 196,
+      "id": "animaltrack__duck_2__37075e40f13ce4a2",
+      "manifest_sha256": "4ba4b7066f16f2ba241b0b68a72edd8603a418f99fa737c0d634cbdd1ad0e1ac",
+      "path": "/data3/user/LocateMOT-runs/GroundJEV_Eval_NoMOT20_4GPU/request_local_seed_v2/jobs/animaltrack__duck_2__37075e40f13ce4a2",
+      "planned_requests": 196,
+      "query_hash": "5fc789ad0a7e97d3f4556269f6bcb2c559433647e651e7c1927aa8fdbb11e1f4",
+      "sequence": "duck_2",
+      "task": "mot"
+    }
+  ],
+  "frames": 1607,
+  "index_SHA256": "6c8f1f8d0bf4101f3bd3b9226299df3f6cd4cae6c869b2d2f86d42b1b364a7e5",
+  "A0_model_step": 18227,
+  "A0_model_SHA": "7c4a81349e333a304e32f42cf1999db289802d8c31eba415b85827038d14801f",
+  "A0_AP_allowed": false,
+  "do_not_tune_on_external_scope": true,
+  "prior_research_use": "Previously measured for native G2/tracking; video-disjoint from G2/head TRAIN. This is a frozen comparative audit, not untouched final TEST."
+}

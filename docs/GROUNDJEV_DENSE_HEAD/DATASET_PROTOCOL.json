@@ -1,0 +1,2163 @@
+{
+  "status": "FROZEN_TRAIN_INTERNAL_VIDEO_SPLIT",
+  "seed": 42,
+  "videos": [
+    {
+      "dataset": "sportsmot",
+      "sequence": "v_-6Os86HzwCs_c001",
+      "source_group": "v_-6Os86HzwCs",
+      "category": "person",
+      "GT_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_-6Os86HzwCs_c001/gt/gt.txt",
+      "GT_sha256": "8e4d9658416fbac188869eda029f49eb9bfe933344b3d76287f62f6ae6d5a50d",
+      "frames": 825,
+      "identities": 10,
+      "image_size": [
+        1280,
+        720
+      ],
+      "target_boxes": 8074,
+      "GT_audit": {
+        "valid": 8074
+      },
+      "representative_image_sha256": {
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_-6Os86HzwCs_c001/img1/000001.jpg": "bfc4297d75b765368b53565a4cd460ec9e104dfab2230e173d2a76344e1ed108",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_-6Os86HzwCs_c001/img1/000413.jpg": "3a96eab94738e8915ee399402c436f200c6eccaafa9556e52eb4876e7235f2d7",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_-6Os86HzwCs_c001/img1/000825.jpg": "b6fb3b30160f541907092d4f4f2ee89508c1c5439d6e0bb9a1484f273d57180c"
+      },
+      "head_split": "train",
+      "seen_in_G2_TRAIN": true
+    },
+    {
+      "dataset": "sportsmot",
+      "sequence": "v_-6Os86HzwCs_c003",
+      "source_group": "v_-6Os86HzwCs",
+      "category": "person",
+      "GT_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_-6Os86HzwCs_c003/gt/gt.txt",
+      "GT_sha256": "4f6ba3ae76ccb67f493c7f89b88c8361ecf1e573c1f18f9da4dc7d673acf55b6",
+      "frames": 403,
+      "identities": 10,
+      "image_size": [
+        1280,
+        720
+      ],
+      "target_boxes": 3692,
+      "GT_audit": {
+        "valid": 3692
+      },
+      "representative_image_sha256": {
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_-6Os86HzwCs_c003/img1/000001.jpg": "f8397b08608d3026a79d66b73a80a14d0382fd24df732be1982cc6050444b5d5",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_-6Os86HzwCs_c003/img1/000202.jpg": "e7416fa4d7c4b9470293229d98f521edefae17aa8e4ce13bfc4b8f78fe55657e",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_-6Os86HzwCs_c003/img1/000403.jpg": "317a82d5d462d58d4cd9bdd680433852050a5129ba39c760458cdf7f4546f326"
+      },
+      "head_split": "train",
+      "seen_in_G2_TRAIN": true
+    },
+    {
+      "dataset": "sportsmot",
+      "sequence": "v_-6Os86HzwCs_c007",
+      "source_group": "v_-6Os86HzwCs",
+      "category": "person",
+      "GT_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_-6Os86HzwCs_c007/gt/gt.txt",
+      "GT_sha256": "122d57e40596a55b4dd86ec7323534d5d03708461493f8631ac3b89c02a29b59",
+      "frames": 550,
+      "identities": 10,
+      "image_size": [
+        1280,
+        720
+      ],
+      "target_boxes": 5227,
+      "GT_audit": {
+        "valid": 5227
+      },
+      "representative_image_sha256": {
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_-6Os86HzwCs_c007/img1/000001.jpg": "7076c18e3aa1579cc5e41c40651e7a4700aaa364e2746593bc747abf8b078dae",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_-6Os86HzwCs_c007/img1/000275.jpg": "7e032d0befdd0f5527ad548fb0f84dcca2d16ba01fc0dc234c3d3d6fe881265d",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_-6Os86HzwCs_c007/img1/000550.jpg": "b488cdcfac877d5923ce21a707e68eb16be4836816b9c84e5c304a8dbe43a3bf"
+      },
+      "head_split": "train",
+      "seen_in_G2_TRAIN": true
+    },
+    {
+      "dataset": "sportsmot",
+      "sequence": "v_-6Os86HzwCs_c009",
+      "source_group": "v_-6Os86HzwCs",
+      "category": "person",
+      "GT_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_-6Os86HzwCs_c009/gt/gt.txt",
+      "GT_sha256": "9c83c04cc43bc43d2a8fa5ca66d25eb026a01a0491e5ad90e02a85001796b845",
+      "frames": 500,
+      "identities": 10,
+      "image_size": [
+        1280,
+        720
+      ],
+      "target_boxes": 4991,
+      "GT_audit": {
+        "valid": 4991
+      },
+      "representative_image_sha256": {
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_-6Os86HzwCs_c009/img1/000001.jpg": "ab1bb0d6c1a1ae474b5a0dee336b9c7c272846d87021f8ebb5605804fb85ebc5",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_-6Os86HzwCs_c009/img1/000251.jpg": "13406eac1f4da79b02e4feab0de9eb25afda39798e68bcedaef7ddc1e77a8856",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_-6Os86HzwCs_c009/img1/000500.jpg": "535929ceb8f79366550bf199e1b6351023221b3fbbfb077a905931f5c95a919e"
+      },
+      "head_split": "train",
+      "seen_in_G2_TRAIN": true
+    },
+    {
+      "dataset": "sportsmot",
+      "sequence": "v_1LwtoLPw2TU_c006",
+      "source_group": "v_1LwtoLPw2TU",
+      "category": "person",
+      "GT_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_1LwtoLPw2TU_c006/gt/gt.txt",
+      "GT_sha256": "06e6e0314f657a7fe371f31cb0b92cd126ae56f17dc0c8fe30c624db08281159",
+      "frames": 286,
+      "identities": 12,
+      "image_size": [
+        1280,
+        720
+      ],
+      "target_boxes": 3175,
+      "GT_audit": {
+        "valid": 3175
+      },
+      "representative_image_sha256": {
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_1LwtoLPw2TU_c006/img1/000001.jpg": "4fcb5d7a76c391588c266a62e46593add1cadf21a203a30f3ccacfd377512545",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_1LwtoLPw2TU_c006/img1/000143.jpg": "874ac74118ef992c870761778c437f11666301d3725fdfb9866227559ce73c9a",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_1LwtoLPw2TU_c006/img1/000286.jpg": "51494d2135dbaaf6204cb77cee92a61405e541bd1d73209e677595468e72f541"
+      },
+      "head_split": "train",
+      "seen_in_G2_TRAIN": true
+    },
+    {
+      "dataset": "sportsmot",
+      "sequence": "v_1LwtoLPw2TU_c012",
+      "source_group": "v_1LwtoLPw2TU",
+      "category": "person",
+      "GT_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_1LwtoLPw2TU_c012/gt/gt.txt",
+      "GT_sha256": "914c7fa77b938b042be734e5d31121460fa2ef23dec475f377bbc791ae4e8d44",
+      "frames": 250,
+      "identities": 12,
+      "image_size": [
+        1280,
+        720
+      ],
+      "target_boxes": 2933,
+      "GT_audit": {
+        "valid": 2933
+      },
+      "representative_image_sha256": {
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_1LwtoLPw2TU_c012/img1/000001.jpg": "3fe1825b6dae691b1fd8b5632e239640d7b39fc2bf2fd3a89bc22649b7969662",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_1LwtoLPw2TU_c012/img1/000125.jpg": "a7a168630ad679894df0cb347efabeca348b92946f8b6358ef9c703f998b019c",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_1LwtoLPw2TU_c012/img1/000250.jpg": "b5ead5c2d060151eb5cca06d4fe05afd8a999e7d227a2ad64230c0b1ede311a3"
+      },
+      "head_split": "train",
+      "seen_in_G2_TRAIN": true
+    },
+    {
+      "dataset": "sportsmot",
+      "sequence": "v_1LwtoLPw2TU_c014",
+      "source_group": "v_1LwtoLPw2TU",
+      "category": "person",
+      "GT_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_1LwtoLPw2TU_c014/gt/gt.txt",
+      "GT_sha256": "2eabb5241d2a30e2facfc5a32c04d1a6b29b32935eef8b10aea9f6518808ef39",
+      "frames": 544,
+      "identities": 12,
+      "image_size": [
+        1280,
+        720
+      ],
+      "target_boxes": 6525,
+      "GT_audit": {
+        "valid": 6525
+      },
+      "representative_image_sha256": {
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_1LwtoLPw2TU_c014/img1/000001.jpg": "2891546286a56e22eb4d3354fee33cb3f2fc632bd666f545349c97513871b477",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_1LwtoLPw2TU_c014/img1/000273.jpg": "c0cce55bd9c13f81f4a489719e11e28f880bf352b0d4f7d1ad84a50ff8d70bfa",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_1LwtoLPw2TU_c014/img1/000544.jpg": "ddb18489e6d6578dfad34b2bedc3c9124877dbf3ac05c065df8bfe0d93f3764a"
+      },
+      "head_split": "train",
+      "seen_in_G2_TRAIN": true
+    },
+    {
+      "dataset": "sportsmot",
+      "sequence": "v_1LwtoLPw2TU_c016",
+      "source_group": "v_1LwtoLPw2TU",
+      "category": "person",
+      "GT_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_1LwtoLPw2TU_c016/gt/gt.txt",
+      "GT_sha256": "f93938fcdb66c3731a074c5c9110f09917322be58c9d845ca334fb5a545760af",
+      "frames": 295,
+      "identities": 12,
+      "image_size": [
+        1280,
+        720
+      ],
+      "target_boxes": 3407,
+      "GT_audit": {
+        "valid": 3407
+      },
+      "representative_image_sha256": {
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_1LwtoLPw2TU_c016/img1/000001.jpg": "5eee1eddda5a8f83a672a1e47ab0ec639daf98ff20a9580e52b68ec5a9e37ca1",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_1LwtoLPw2TU_c016/img1/000148.jpg": "e76deae15af17274c6051dda63cdf65b1b31bddcc56ccc0e3e9849449bc4b271",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_1LwtoLPw2TU_c016/img1/000295.jpg": "d8187a31aa2f07a57dc39fcda076de30760f2c666c478e23b21783cd12d1c33d"
+      },
+      "head_split": "train",
+      "seen_in_G2_TRAIN": true
+    },
+    {
+      "dataset": "sportsmot",
+      "sequence": "v_1yHWGw8DH4A_c029",
+      "source_group": "v_1yHWGw8DH4A",
+      "category": "person",
+      "GT_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_1yHWGw8DH4A_c029/gt/gt.txt",
+      "GT_sha256": "31397f737ab10df18bb70863987e7ccccde8eae48e52ce54831614f9b5a4142e",
+      "frames": 725,
+      "identities": 22,
+      "image_size": [
+        1280,
+        720
+      ],
+      "target_boxes": 9989,
+      "GT_audit": {
+        "valid": 9989
+      },
+      "representative_image_sha256": {
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_1yHWGw8DH4A_c029/img1/000001.jpg": "adabc92ff1a72e7388cadff41eb0f689198064860675f592db8058a0623f3dbd",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_1yHWGw8DH4A_c029/img1/000363.jpg": "f2b18113a6d8206cb056f597877b174a7dfe6e5b98befd2329bf1963a81992b8",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_1yHWGw8DH4A_c029/img1/000725.jpg": "01411190c236494561716381a58fc0dc5e9bb2860fded2fff297fb72b6131527"
+      },
+      "head_split": "train",
+      "seen_in_G2_TRAIN": true
+    },
+    {
+      "dataset": "sportsmot",
+      "sequence": "v_1yHWGw8DH4A_c047",
+      "source_group": "v_1yHWGw8DH4A",
+      "category": "person",
+      "GT_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_1yHWGw8DH4A_c047/gt/gt.txt",
+      "GT_sha256": "3a652ce55a367fa9462e03b044ed2cc9ccf30f90355f4584897f257c9ca44770",
+      "frames": 537,
+      "identities": 21,
+      "image_size": [
+        1280,
+        720
+      ],
+      "target_boxes": 6135,
+      "GT_audit": {
+        "valid": 6135
+      },
+      "representative_image_sha256": {
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_1yHWGw8DH4A_c047/img1/000001.jpg": "b92ca8be2857ae9f323d041a69c4fde3aad020113e1e083f5926ff004d5c5c9a",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_1yHWGw8DH4A_c047/img1/000269.jpg": "7ace9e6792d75e79525352daac2df3248aa5480141ce52f76d2c66cae6145903",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_1yHWGw8DH4A_c047/img1/000537.jpg": "d7acdf3a7f7530d7ba65f3a6dae4252ff8c210f816d05d4ac1ac17fdffa479c0"
+      },
+      "head_split": "train",
+      "seen_in_G2_TRAIN": true
+    },
+    {
+      "dataset": "sportsmot",
+      "sequence": "v_1yHWGw8DH4A_c077",
+      "source_group": "v_1yHWGw8DH4A",
+      "category": "person",
+      "GT_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_1yHWGw8DH4A_c077/gt/gt.txt",
+      "GT_sha256": "2ca69323f2dee2990d50c8fbcf7b675ac343442cd7dab889632375c584a6dedb",
+      "frames": 1197,
+      "identities": 22,
+      "image_size": [
+        1280,
+        720
+      ],
+      "target_boxes": 16229,
+      "GT_audit": {
+        "valid": 16229
+      },
+      "representative_image_sha256": {
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_1yHWGw8DH4A_c077/img1/000001.jpg": "250a4069156a98824a509c111027564ec4888fb3042c013c71898f4be07ecc31",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_1yHWGw8DH4A_c077/img1/000599.jpg": "55c0cd38f6bdb370f8b2421a771b2da3310d78298ebb7c871d73c47533488ca9",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_1yHWGw8DH4A_c077/img1/001197.jpg": "7c09a8dfc5e7770ac94ecc506ad732adbf5a6c046275f0d96f2c46aa7ce80e00"
+      },
+      "head_split": "train",
+      "seen_in_G2_TRAIN": true
+    },
+    {
+      "dataset": "sportsmot",
+      "sequence": "v_1yHWGw8DH4A_c601",
+      "source_group": "v_1yHWGw8DH4A",
+      "category": "person",
+      "GT_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_1yHWGw8DH4A_c601/gt/gt.txt",
+      "GT_sha256": "0b5b0ea87d8cc8897e3ee531b6718180db4c67e71b7e61b97899b5a40717a86a",
+      "frames": 552,
+      "identities": 18,
+      "image_size": [
+        1280,
+        720
+      ],
+      "target_boxes": 6834,
+      "GT_audit": {
+        "valid": 6834
+      },
+      "representative_image_sha256": {
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_1yHWGw8DH4A_c601/img1/000001.jpg": "14c68b0c552307fcfb8097dffd5be7c4d53a1ea0ad19c97cde9fffaf4b595bf7",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_1yHWGw8DH4A_c601/img1/000277.jpg": "1b6456713fa1245694200cf99a5799965821875c3800a9c16674f4f72f24b14b",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_1yHWGw8DH4A_c601/img1/000552.jpg": "4d73650110cdb80d50e4ef5cb000509d5f84ba9a2dcac0862b2fc82ae916aa79"
+      },
+      "head_split": "train",
+      "seen_in_G2_TRAIN": true
+    },
+    {
+      "dataset": "sportsmot",
+      "sequence": "v_1yHWGw8DH4A_c609",
+      "source_group": "v_1yHWGw8DH4A",
+      "category": "person",
+      "GT_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_1yHWGw8DH4A_c609/gt/gt.txt",
+      "GT_sha256": "281b0a0e49b0bd6d42fead5e1cf5ccc6b0bdc4a04d90e11d08d4e646baf9f1ad",
+      "frames": 500,
+      "identities": 21,
+      "image_size": [
+        1280,
+        720
+      ],
+      "target_boxes": 7364,
+      "GT_audit": {
+        "valid": 7364
+      },
+      "representative_image_sha256": {
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_1yHWGw8DH4A_c609/img1/000001.jpg": "094539d167a49e4ee86b90387a2e110687af0fe5de30b48d7ef71d183111a994",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_1yHWGw8DH4A_c609/img1/000251.jpg": "97cf3d575e495d6a4483be95670404fcbd09a7e995a5371bde3a75682529115f",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_1yHWGw8DH4A_c609/img1/000500.jpg": "8912c47603de3a8b31dea3750285f0b4be175983fb855350a69c42cbcca7e005"
+      },
+      "head_split": "train",
+      "seen_in_G2_TRAIN": true
+    },
+    {
+      "dataset": "sportsmot",
+      "sequence": "v_1yHWGw8DH4A_c610",
+      "source_group": "v_1yHWGw8DH4A",
+      "category": "person",
+      "GT_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_1yHWGw8DH4A_c610/gt/gt.txt",
+      "GT_sha256": "00ea8a58e85e7dcbc873e180cb8f9cd5d72e17c172744d1336a9b8ce92b727c0",
+      "frames": 535,
+      "identities": 18,
+      "image_size": [
+        1280,
+        720
+      ],
+      "target_boxes": 7254,
+      "GT_audit": {
+        "valid": 7254
+      },
+      "representative_image_sha256": {
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_1yHWGw8DH4A_c610/img1/000001.jpg": "50cf40d4073ba60d72b766c080c6ac8a2e79c7a2ae48fab0a6dc7f32d28c1017",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_1yHWGw8DH4A_c610/img1/000268.jpg": "ea8133325d9451771b6916c7b7c1fa4aa86c5815195eddf9e29406f4a4d8314b",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_1yHWGw8DH4A_c610/img1/000535.jpg": "13aba2fb438c43703e441698a1bc4e41c7706648d9f9bbf9b2ef3f4c08ed39fd"
+      },
+      "head_split": "train",
+      "seen_in_G2_TRAIN": true
+    },
+    {
+      "dataset": "sportsmot",
+      "sequence": "v_2j7kLB-vEEk_c001",
+      "source_group": "v_2j7kLB-vEEk",
+      "category": "person",
+      "GT_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_2j7kLB-vEEk_c001/gt/gt.txt",
+      "GT_sha256": "ecc228cc1689c7ad6a3bb53a2ea53c9387b7d2ed5745010ae4454f7dc0ba977b",
+      "frames": 826,
+      "identities": 10,
+      "image_size": [
+        1280,
+        720
+      ],
+      "target_boxes": 7323,
+      "GT_audit": {
+        "valid": 7323
+      },
+      "representative_image_sha256": {
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_2j7kLB-vEEk_c001/img1/000001.jpg": "5e60c42f2aa471d99f6f36de4b30b7dbcb1b7fa46b6804b8330f0abb1104808f",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_2j7kLB-vEEk_c001/img1/000413.jpg": "26f302dce1e771cdabb26b5d2d0ce87e11a728a8965ebad3c85b3050354ae663",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_2j7kLB-vEEk_c001/img1/000826.jpg": "68b0065fc940bcfdf20c941c426b2ee3eefe9f05da49f94835ecf1a5c2f0cad4"
+      },
+      "head_split": "train",
+      "seen_in_G2_TRAIN": true
+    },
+    {
+      "dataset": "sportsmot",
+      "sequence": "v_2j7kLB-vEEk_c002",
+      "source_group": "v_2j7kLB-vEEk",
+      "category": "person",
+      "GT_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_2j7kLB-vEEk_c002/gt/gt.txt",
+      "GT_sha256": "5602a14d1ea0feb2527127352f0fc457da136303d6b39302891753a79db2e62c",
+      "frames": 1176,
+      "identities": 10,
+      "image_size": [
+        1280,
+        720
+      ],
+      "target_boxes": 10746,
+      "GT_audit": {
+        "valid": 10746
+      },
+      "representative_image_sha256": {
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_2j7kLB-vEEk_c002/img1/000001.jpg": "cef3775ba2e432a51deaed25174a061dba5fc4b86ca89e774b07089418ef6535",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_2j7kLB-vEEk_c002/img1/000589.jpg": "7b1f5165a4705cff58d7822e16c4eb55ea38446b9e912a21e7ce862519f35597",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_2j7kLB-vEEk_c002/img1/001176.jpg": "7dff6df54704f5eb0e1c77734ab5778b98fef1c35872b7b51588215d2799ab38"
+      },
+      "head_split": "train",
+      "seen_in_G2_TRAIN": true
+    },
+    {
+      "dataset": "sportsmot",
+      "sequence": "v_2j7kLB-vEEk_c005",
+      "source_group": "v_2j7kLB-vEEk",
+      "category": "person",
+      "GT_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_2j7kLB-vEEk_c005/gt/gt.txt",
+      "GT_sha256": "2cd13473b3ab259b299b5f9d36e6d917f622fdc4e230fec48bc7a55a43619044",
+      "frames": 1197,
+      "identities": 10,
+      "image_size": [
+        1280,
+        720
+      ],
+      "target_boxes": 9320,
+      "GT_audit": {
+        "valid": 9320
+      },
+      "representative_image_sha256": {
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_2j7kLB-vEEk_c005/img1/000001.jpg": "90fe3ee3d5d9b8a1ecd92746f2ba1ab755769d2bb3123be7a6b0e3fb7b6417b1",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_2j7kLB-vEEk_c005/img1/000599.jpg": "6c926e7452b6e0c4a6f53e1c060eb37bd5d89db17a5de592f3146c577a2f8b2c",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_2j7kLB-vEEk_c005/img1/001197.jpg": "12815c6adc8de298f6c75e5198e5710c102e7538624e002022eddddd4341e783"
+      },
+      "head_split": "train",
+      "seen_in_G2_TRAIN": true
+    },
+    {
+      "dataset": "sportsmot",
+      "sequence": "v_2j7kLB-vEEk_c007",
+      "source_group": "v_2j7kLB-vEEk",
+      "category": "person",
+      "GT_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_2j7kLB-vEEk_c007/gt/gt.txt",
+      "GT_sha256": "8a43e148bb73b3959174a0ed8422f6c287cdcabd481b9737445fabfcdac7f3de",
+      "frames": 726,
+      "identities": 10,
+      "image_size": [
+        1280,
+        720
+      ],
+      "target_boxes": 6274,
+      "GT_audit": {
+        "valid": 6274
+      },
+      "representative_image_sha256": {
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_2j7kLB-vEEk_c007/img1/000001.jpg": "a8b6de706bcb1a457f42493c3c4e83b7b9a5f628f0718d8eb18e97d63f84cead",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_2j7kLB-vEEk_c007/img1/000363.jpg": "9a3d11cb97719bd0b675822320a7f820700dd1b8e9effc3b8b8b8f4534020d48",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_2j7kLB-vEEk_c007/img1/000726.jpg": "331a0ec3d516e2fb4706408c6679155658c41b15d6151900d36ca1aa471425a4"
+      },
+      "head_split": "train",
+      "seen_in_G2_TRAIN": true
+    },
+    {
+      "dataset": "sportsmot",
+      "sequence": "v_2j7kLB-vEEk_c009",
+      "source_group": "v_2j7kLB-vEEk",
+      "category": "person",
+      "GT_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_2j7kLB-vEEk_c009/gt/gt.txt",
+      "GT_sha256": "461ecfeaceb929160c8e06f74e93505bccf1c925accb591b0a8c205f83b33c67",
+      "frames": 1825,
+      "identities": 10,
+      "image_size": [
+        1280,
+        720
+      ],
+      "target_boxes": 15130,
+      "GT_audit": {
+        "valid": 15130
+      },
+      "representative_image_sha256": {
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_2j7kLB-vEEk_c009/img1/000001.jpg": "1105258214bdd98db42c60bf0353eede4304c3db31cb803d5777b379be5b7a73",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_2j7kLB-vEEk_c009/img1/000913.jpg": "daca442b110fff66c4a9ce1bc504c45f39af2cd6fbff60eeef64a76055df443b",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_2j7kLB-vEEk_c009/img1/001825.jpg": "1aaffb52b3ef226f26e814710d6764f441634968c7faeea9a7b4080699dee700"
+      },
+      "head_split": "train",
+      "seen_in_G2_TRAIN": true
+    },
+    {
+      "dataset": "sportsmot",
+      "sequence": "v_2j7kLB-vEEk_c010",
+      "source_group": "v_2j7kLB-vEEk",
+      "category": "person",
+      "GT_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_2j7kLB-vEEk_c010/gt/gt.txt",
+      "GT_sha256": "eb10454dbcde0c1fef2fc0028c84793f179575376d47c5bb7a1778f34eaf9397",
+      "frames": 651,
+      "identities": 10,
+      "image_size": [
+        1280,
+        720
+      ],
+      "target_boxes": 5715,
+      "GT_audit": {
+        "valid": 5715
+      },
+      "representative_image_sha256": {
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_2j7kLB-vEEk_c010/img1/000001.jpg": "85cf9b33e253b718bcef4e9bdc91459b7bfaa457a6bb96223fd493e6aba31956",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_2j7kLB-vEEk_c010/img1/000326.jpg": "c98e8651f7f80da97d87d2305a9ca5702c7caec462b6e48be8aacda853ec7c49",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_2j7kLB-vEEk_c010/img1/000651.jpg": "5090a82030dd72930612a4cc23791fa5bb31eb1d184e7a27f35a5fc734a919b2"
+      },
+      "head_split": "train",
+      "seen_in_G2_TRAIN": true
+    },
+    {
+      "dataset": "sportsmot",
+      "sequence": "v_4LXTUim5anY_c002",
+      "source_group": "v_4LXTUim5anY",
+      "category": "person",
+      "GT_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_4LXTUim5anY_c002/gt/gt.txt",
+      "GT_sha256": "85bfb5cd140b4e8dd5682c8c2c1fc8065a0f51a12f8ae79f7ed2438eb0ed6512",
+      "frames": 876,
+      "identities": 10,
+      "image_size": [
+        1280,
+        720
+      ],
+      "target_boxes": 7696,
+      "GT_audit": {
+        "valid": 7696
+      },
+      "representative_image_sha256": {
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_4LXTUim5anY_c002/img1/000001.jpg": "6fcac05436868ac5aea8dc8928f6879043b348ae0e3b2e1481869b0f57e4b58d",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_4LXTUim5anY_c002/img1/000439.jpg": "d5de9aa5f41573057582fe4856990bab2b9953831f27354003e8cdd601896064",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_4LXTUim5anY_c002/img1/000876.jpg": "26e63e9adc7d5333643f2bf3bbf17a20c20a264d64d11ff4bac4a25577f05160"
+      },
+      "head_split": "train",
+      "seen_in_G2_TRAIN": true
+    },
+    {
+      "dataset": "sportsmot",
+      "sequence": "v_4LXTUim5anY_c003",
+      "source_group": "v_4LXTUim5anY",
+      "category": "person",
+      "GT_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_4LXTUim5anY_c003/gt/gt.txt",
+      "GT_sha256": "eafbdb2d8b7b3346cc94ad70ca09f7a66beadf57f64df9bae7de7b9219341779",
+      "frames": 702,
+      "identities": 10,
+      "image_size": [
+        1280,
+        720
+      ],
+      "target_boxes": 6425,
+      "GT_audit": {
+        "valid": 6425
+      },
+      "representative_image_sha256": {
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_4LXTUim5anY_c003/img1/000001.jpg": "8fad0c1c25c6cdebee114096a14905fa3d87c789e8f1b9cf7f28822867fd2c71",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_4LXTUim5anY_c003/img1/000351.jpg": "600ef6fc83998cd938ccfc00fbf5372242a60c9b68f59deab7c1fcb1b2c0c4a4",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_4LXTUim5anY_c003/img1/000702.jpg": "1bff6b49ab499abd3253d5c9ee456a31370aac42e6c35bc2cee18eae0ad56b3b"
+      },
+      "head_split": "train",
+      "seen_in_G2_TRAIN": true
+    },
+    {
+      "dataset": "sportsmot",
+      "sequence": "v_4LXTUim5anY_c010",
+      "source_group": "v_4LXTUim5anY",
+      "category": "person",
+      "GT_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_4LXTUim5anY_c010/gt/gt.txt",
+      "GT_sha256": "733c3903c9b14f0064c198ee212d5bf33c1d0b19bf70e663d23c609131401ee6",
+      "frames": 526,
+      "identities": 10,
+      "image_size": [
+        1280,
+        720
+      ],
+      "target_boxes": 4820,
+      "GT_audit": {
+        "valid": 4820
+      },
+      "representative_image_sha256": {
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_4LXTUim5anY_c010/img1/000001.jpg": "27e33b5277e910a8d07171c9922ee38f79f4e07f4a5252471d33391fc2cf493b",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_4LXTUim5anY_c010/img1/000263.jpg": "b106891e3ad345661a51987f7f9671be1950d419e83a94453958087f8655e687",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_4LXTUim5anY_c010/img1/000526.jpg": "b37575c327e2b8b65e7fdb4918a4545e1a74866c9a98d1d5a31778d05e32d55d"
+      },
+      "head_split": "train",
+      "seen_in_G2_TRAIN": true
+    },
+    {
+      "dataset": "sportsmot",
+      "sequence": "v_4LXTUim5anY_c012",
+      "source_group": "v_4LXTUim5anY",
+      "category": "person",
+      "GT_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_4LXTUim5anY_c012/gt/gt.txt",
+      "GT_sha256": "60585f603c2c4545a0e31d0682229ab8b51d0bada3f946edecff134eb8908ad5",
+      "frames": 875,
+      "identities": 10,
+      "image_size": [
+        1280,
+        720
+      ],
+      "target_boxes": 6791,
+      "GT_audit": {
+        "valid": 6791
+      },
+      "representative_image_sha256": {
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_4LXTUim5anY_c012/img1/000001.jpg": "9231281c03c77018109bb62aed0de1dcdd37cb5f758d02f95af8338425aadaf1",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_4LXTUim5anY_c012/img1/000438.jpg": "1248cabf97476c4a17f16ee4e9dad719f3b6103c939d9cc546134021e8f66a79",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_4LXTUim5anY_c012/img1/000875.jpg": "a17a684f3a44f940232a89ff968489039bd08b0d8d0769eaa6be42ca17b4f07c"
+      },
+      "head_split": "train",
+      "seen_in_G2_TRAIN": true
+    },
+    {
+      "dataset": "sportsmot",
+      "sequence": "v_4LXTUim5anY_c013",
+      "source_group": "v_4LXTUim5anY",
+      "category": "person",
+      "GT_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_4LXTUim5anY_c013/gt/gt.txt",
+      "GT_sha256": "e7cefc059cc520d71b38e4e8ec73d36ea601ac8547da066bf9af571b9c0b93f4",
+      "frames": 726,
+      "identities": 10,
+      "image_size": [
+        1280,
+        720
+      ],
+      "target_boxes": 6624,
+      "GT_audit": {
+        "valid": 6624
+      },
+      "representative_image_sha256": {
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_4LXTUim5anY_c013/img1/000001.jpg": "8f068eef81596ddedfdffd1d39fc39787b1736fb788bc908c5540de3c62878c0",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_4LXTUim5anY_c013/img1/000363.jpg": "eeb1151e73549f6f21f60828b403d4333ab83b8bc86080e519792c06b8fd98cc",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_4LXTUim5anY_c013/img1/000726.jpg": "ed38993595a2b3c6a66d7157c2ef61c53e31b1db46c32b500064deeb9c5a1351"
+      },
+      "head_split": "train",
+      "seen_in_G2_TRAIN": true
+    },
+    {
+      "dataset": "sportsmot",
+      "sequence": "v_ApPxnw_Jffg_c001",
+      "source_group": "v_ApPxnw_Jffg",
+      "category": "person",
+      "GT_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_ApPxnw_Jffg_c001/gt/gt.txt",
+      "GT_sha256": "f2789d8cc4e39b98c720c2934a2876acabc442b37b6a4fc2b3e78ad4c6a7f93a",
+      "frames": 235,
+      "identities": 12,
+      "image_size": [
+        1280,
+        720
+      ],
+      "target_boxes": 2338,
+      "GT_audit": {
+        "valid": 2338
+      },
+      "representative_image_sha256": {
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_ApPxnw_Jffg_c001/img1/000001.jpg": "89bc79f00bd9bb7d997178065450e67ced695482a8db3f326d7d1649c2922032",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_ApPxnw_Jffg_c001/img1/000118.jpg": "38855febeec46b987ec922c530536a0ba3e0d4bb7cb43dd2c8dc3e5808bfecb2",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_ApPxnw_Jffg_c001/img1/000235.jpg": "65fbacbd82bf523d1201efab4408f8bcbb0ed44a02c298bd378564d562708805"
+      },
+      "head_split": "dev",
+      "seen_in_G2_TRAIN": true
+    },
+    {
+      "dataset": "sportsmot",
+      "sequence": "v_ApPxnw_Jffg_c002",
+      "source_group": "v_ApPxnw_Jffg",
+      "category": "person",
+      "GT_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_ApPxnw_Jffg_c002/gt/gt.txt",
+      "GT_sha256": "9ff629f981c48b0d6e769c3f55c937ab0fe24467330d2ae10fae20af2d763844",
+      "frames": 250,
+      "identities": 12,
+      "image_size": [
+        1280,
+        720
+      ],
+      "target_boxes": 2904,
+      "GT_audit": {
+        "valid": 2904
+      },
+      "representative_image_sha256": {
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_ApPxnw_Jffg_c002/img1/000001.jpg": "4a3423da521879560c912862d7e904e115a07e1f4fba46bbe7da2cf4ad9c8671",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_ApPxnw_Jffg_c002/img1/000125.jpg": "5e8c5c16a41f091aa521c6bb7dd1f60ed38beb67d5cb8adc7f19bd998c2b21c5",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_ApPxnw_Jffg_c002/img1/000250.jpg": "90353b80993d78adc41eb022dece6a34f5a744222b483e4c636dd795a5abfb8e"
+      },
+      "head_split": "dev",
+      "seen_in_G2_TRAIN": true
+    },
+    {
+      "dataset": "sportsmot",
+      "sequence": "v_ApPxnw_Jffg_c009",
+      "source_group": "v_ApPxnw_Jffg",
+      "category": "person",
+      "GT_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_ApPxnw_Jffg_c009/gt/gt.txt",
+      "GT_sha256": "0f3670920cffdf582684d4f62c62094ca57c649f566920f809190958a1476122",
+      "frames": 575,
+      "identities": 12,
+      "image_size": [
+        1280,
+        720
+      ],
+      "target_boxes": 6874,
+      "GT_audit": {
+        "valid": 6874
+      },
+      "representative_image_sha256": {
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_ApPxnw_Jffg_c009/img1/000001.jpg": "334f6e6cca171b0fc2c90b41a6551aa7a6a33b65f205113a537b287450af831c",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_ApPxnw_Jffg_c009/img1/000288.jpg": "247eec4313b03fdecb354110459219e13cbef3c3347c5c2993d4ce973f49159e",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_ApPxnw_Jffg_c009/img1/000575.jpg": "81c13b01f144284c18b97964d41f3a3401c8b37530a903183b8dda3fbb96b25a"
+      },
+      "head_split": "dev",
+      "seen_in_G2_TRAIN": true
+    },
+    {
+      "dataset": "sportsmot",
+      "sequence": "v_ApPxnw_Jffg_c015",
+      "source_group": "v_ApPxnw_Jffg",
+      "category": "person",
+      "GT_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_ApPxnw_Jffg_c015/gt/gt.txt",
+      "GT_sha256": "814693bc1f2a1c1f58c3a9534760d11d7e5d4b151f95a6d836dd5f3a9cd2e0f3",
+      "frames": 246,
+      "identities": 12,
+      "image_size": [
+        1280,
+        720
+      ],
+      "target_boxes": 2452,
+      "GT_audit": {
+        "valid": 2452
+      },
+      "representative_image_sha256": {
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_ApPxnw_Jffg_c015/img1/000001.jpg": "5ba12390311dca886bb0af6a93c5f4650f0a5d9e47cd7771d025694e40f7a692",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_ApPxnw_Jffg_c015/img1/000123.jpg": "1ac391999d5967a26277328d8a4ab03c037518bdbd98bb368b32a2f94e87131a",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_ApPxnw_Jffg_c015/img1/000246.jpg": "53d39ee930ba3c4be5cde948fe4e7d4ccf6bba0600ca2f340cfe2b97fc9feda1"
+      },
+      "head_split": "dev",
+      "seen_in_G2_TRAIN": true
+    },
+    {
+      "dataset": "sportsmot",
+      "sequence": "v_ApPxnw_Jffg_c016",
+      "source_group": "v_ApPxnw_Jffg",
+      "category": "person",
+      "GT_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_ApPxnw_Jffg_c016/gt/gt.txt",
+      "GT_sha256": "0435238bde091c022f8063a8c48465b47d2f911463ccdcb3b6fcd0e7c0107b73",
+      "frames": 352,
+      "identities": 12,
+      "image_size": [
+        1280,
+        720
+      ],
+      "target_boxes": 3922,
+      "GT_audit": {
+        "valid": 3922
+      },
+      "representative_image_sha256": {
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_ApPxnw_Jffg_c016/img1/000001.jpg": "4a17e66504aba176946b47233c56c4bf2bbbd92c354caaeb9fb5d43e4d8e54b2",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_ApPxnw_Jffg_c016/img1/000177.jpg": "83afc9dae606b46b3763e05743a6237d49f77b2cbefe6c322678893e0124ddb4",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_ApPxnw_Jffg_c016/img1/000352.jpg": "4911a57aa6fdf51759eec332bb96ae3a9a41e842167f98293f9eea4c936a2bc1"
+      },
+      "head_split": "dev",
+      "seen_in_G2_TRAIN": true
+    },
+    {
+      "dataset": "sportsmot",
+      "sequence": "v_CW0mQbgYIF4_c004",
+      "source_group": "v_CW0mQbgYIF4",
+      "category": "person",
+      "GT_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_CW0mQbgYIF4_c004/gt/gt.txt",
+      "GT_sha256": "8a407e0bc42f2fb33f3cffe80a5de7f1d132d1c8cb89bd7eaf70c5ad312ef13b",
+      "frames": 383,
+      "identities": 12,
+      "image_size": [
+        1280,
+        720
+      ],
+      "target_boxes": 4494,
+      "GT_audit": {
+        "valid": 4494
+      },
+      "representative_image_sha256": {
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_CW0mQbgYIF4_c004/img1/000001.jpg": "289f5f99d484ec1993dfe6782ba8e61d42d41292c26cc06d6c641bb9cfe42a33",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_CW0mQbgYIF4_c004/img1/000192.jpg": "1771917b24ac1fa0cb73d2fbd85331e6ee790a5a14df8707f6d94ebb801c120f",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_CW0mQbgYIF4_c004/img1/000383.jpg": "c33531b5ba69c55726268e0cf5a35010106002e4e8bdead20fc6e406311f611c"
+      },
+      "head_split": "train",
+      "seen_in_G2_TRAIN": true
+    },
+    {
+      "dataset": "sportsmot",
+      "sequence": "v_CW0mQbgYIF4_c005",
+      "source_group": "v_CW0mQbgYIF4",
+      "category": "person",
+      "GT_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_CW0mQbgYIF4_c005/gt/gt.txt",
+      "GT_sha256": "d87a26bc1dc715233e60ec165fed004314ba3de28431888ad7cdde17a81bd650",
+      "frames": 465,
+      "identities": 12,
+      "image_size": [
+        1280,
+        720
+      ],
+      "target_boxes": 5462,
+      "GT_audit": {
+        "valid": 5462
+      },
+      "representative_image_sha256": {
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_CW0mQbgYIF4_c005/img1/000001.jpg": "cb64f7928a368c2117654eb99dc77d3716b00870244591ec85d2eebca9c8a651",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_CW0mQbgYIF4_c005/img1/000233.jpg": "f1764e16cbc9a8d481a14865a730afa223fad17bf95b947d7d2f98d63918374f",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_CW0mQbgYIF4_c005/img1/000465.jpg": "6c969cb37fbc3b116aef4d9e59f9aeee93cc94137ed5b877ed7bc630b730efaf"
+      },
+      "head_split": "train",
+      "seen_in_G2_TRAIN": true
+    },
+    {
+      "dataset": "sportsmot",
+      "sequence": "v_CW0mQbgYIF4_c006",
+      "source_group": "v_CW0mQbgYIF4",
+      "category": "person",
+      "GT_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_CW0mQbgYIF4_c006/gt/gt.txt",
+      "GT_sha256": "3ef159a34510a6819eb903200f92105e48669cf919b0bc8966b43dc7cadd50af",
+      "frames": 243,
+      "identities": 12,
+      "image_size": [
+        1280,
+        720
+      ],
+      "target_boxes": 2819,
+      "GT_audit": {
+        "valid": 2819
+      },
+      "representative_image_sha256": {
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_CW0mQbgYIF4_c006/img1/000001.jpg": "dcc39e95e56821a53b3947dea463a1c7ab65608ca464d5997e55ae1661c52f9a",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_CW0mQbgYIF4_c006/img1/000122.jpg": "5020ed6a7fae4da75d4042b03223449fa7c43c66a8b8ad037bfd1bdb38928c40",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_CW0mQbgYIF4_c006/img1/000243.jpg": "451736619f7897131abfea918b72fbd760fff4acf8bca67e207f6d1b6a19b298"
+      },
+      "head_split": "train",
+      "seen_in_G2_TRAIN": true
+    },
+    {
+      "dataset": "sportsmot",
+      "sequence": "v_Dk3EpDDa3o0_c002",
+      "source_group": "v_Dk3EpDDa3o0",
+      "category": "person",
+      "GT_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_Dk3EpDDa3o0_c002/gt/gt.txt",
+      "GT_sha256": "73b617532e5640721cd652857b900aac376296be8186add9008b6fdc6e80663d",
+      "frames": 239,
+      "identities": 12,
+      "image_size": [
+        1280,
+        720
+      ],
+      "target_boxes": 2845,
+      "GT_audit": {
+        "valid": 2845
+      },
+      "representative_image_sha256": {
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_Dk3EpDDa3o0_c002/img1/000001.jpg": "a53d0565c612e8c8b9ff7c7a8a418896070e27503ab46902b15bd0b5b104bd77",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_Dk3EpDDa3o0_c002/img1/000120.jpg": "1ef71f8ebc336b11e4a0d21915ddaddacd89eff1bfc38bdc57271dd8aa9643dd",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_Dk3EpDDa3o0_c002/img1/000239.jpg": "068c57c58da2eb635d685caec54f646464e31f2da1530b80d11bb336f11651dd"
+      },
+      "head_split": "train",
+      "seen_in_G2_TRAIN": true
+    },
+    {
+      "dataset": "sportsmot",
+      "sequence": "v_Dk3EpDDa3o0_c007",
+      "source_group": "v_Dk3EpDDa3o0",
+      "category": "person",
+      "GT_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_Dk3EpDDa3o0_c007/gt/gt.txt",
+      "GT_sha256": "c80fe84888a08dde7a89bcad9d6dd1d66b3334d50eda5d5bf36b2795ac598908",
+      "frames": 442,
+      "identities": 12,
+      "image_size": [
+        1280,
+        720
+      ],
+      "target_boxes": 5271,
+      "GT_audit": {
+        "valid": 5271
+      },
+      "representative_image_sha256": {
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_Dk3EpDDa3o0_c007/img1/000001.jpg": "a01ff3b7bb369ebd280735d2e1979df33014eaa533a81d3ae3f9b7436d339dd7",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_Dk3EpDDa3o0_c007/img1/000221.jpg": "1678f1873c2bd149b7baca0c6d4deed0febdb199437532764bd4eb32fd65189b",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_Dk3EpDDa3o0_c007/img1/000442.jpg": "9e177065f3c8032df09f36c9d868069ff1df7bafe2236ec37357b6e204f39e93"
+      },
+      "head_split": "train",
+      "seen_in_G2_TRAIN": true
+    },
+    {
+      "dataset": "sportsmot",
+      "sequence": "v_HdiyOtliFiw_c003",
+      "source_group": "v_HdiyOtliFiw",
+      "category": "person",
+      "GT_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_HdiyOtliFiw_c003/gt/gt.txt",
+      "GT_sha256": "412eece7b029c22c0291afd3956ac0a4c972998781e7496dd933a4f46a7d56c4",
+      "frames": 775,
+      "identities": 21,
+      "image_size": [
+        1280,
+        720
+      ],
+      "target_boxes": 11518,
+      "GT_audit": {
+        "valid": 11518
+      },
+      "representative_image_sha256": {
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_HdiyOtliFiw_c003/img1/000001.jpg": "57d94033247e0b5e71a55988172b2c813a68eb6993beda8dc0afcb105a66e4d6",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_HdiyOtliFiw_c003/img1/000388.jpg": "5818d3f3f13263757c5384899f8cfb0b153613d6a8f74125cbec91f93ef4a00f",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_HdiyOtliFiw_c003/img1/000775.jpg": "4f51e848c791f60fee0390d8cbce83291afa2c01f107a49fcb79b9ef52766526"
+      },
+      "head_split": "dev",
+      "seen_in_G2_TRAIN": true
+    },
+    {
+      "dataset": "sportsmot",
+      "sequence": "v_HdiyOtliFiw_c004",
+      "source_group": "v_HdiyOtliFiw",
+      "category": "person",
+      "GT_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_HdiyOtliFiw_c004/gt/gt.txt",
+      "GT_sha256": "a7b7425761c10b6a999eabe324e46d34c8f8d9e2fee13e266cbd0ec8a3599f43",
+      "frames": 1025,
+      "identities": 20,
+      "image_size": [
+        1280,
+        720
+      ],
+      "target_boxes": 13273,
+      "GT_audit": {
+        "valid": 13273
+      },
+      "representative_image_sha256": {
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_HdiyOtliFiw_c004/img1/000001.jpg": "0fbd916bbf57acdef54d5965551167e6912afec9893935ae0471c1c62cfd22dc",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_HdiyOtliFiw_c004/img1/000513.jpg": "bbe8fe6a6b5adeac8fa12bf206a9ad30f6ffda5f50ad589324e097d8f29fd392",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_HdiyOtliFiw_c004/img1/001025.jpg": "fe61e6c2f01a0e267c567166a0a528a99c6a80be6092e9edc70e4119f9a54556"
+      },
+      "head_split": "dev",
+      "seen_in_G2_TRAIN": true
+    },
+    {
+      "dataset": "sportsmot",
+      "sequence": "v_HdiyOtliFiw_c008",
+      "source_group": "v_HdiyOtliFiw",
+      "category": "person",
+      "GT_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_HdiyOtliFiw_c008/gt/gt.txt",
+      "GT_sha256": "322d645001ff9ad7b14ebb530fa5c1337fcc7c32988af1f613dbc646805d48a8",
+      "frames": 549,
+      "identities": 21,
+      "image_size": [
+        1280,
+        720
+      ],
+      "target_boxes": 7800,
+      "GT_audit": {
+        "valid": 7800
+      },
+      "representative_image_sha256": {
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_HdiyOtliFiw_c008/img1/000001.jpg": "9494900ab9ad6657445ba08a0aaa863a9fdea4cd04ff8b76a169673884c916f5",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_HdiyOtliFiw_c008/img1/000275.jpg": "55db5472ea08d5d847ef2d94057163252158ffaabebee14c167bbad3ec7b7b93",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_HdiyOtliFiw_c008/img1/000549.jpg": "918fe091a3e5aee6deb6f42753e65c849c5404ba5094597c0482f7fa650c059a"
+      },
+      "head_split": "dev",
+      "seen_in_G2_TRAIN": true
+    },
+    {
+      "dataset": "sportsmot",
+      "sequence": "v_HdiyOtliFiw_c010",
+      "source_group": "v_HdiyOtliFiw",
+      "category": "person",
+      "GT_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_HdiyOtliFiw_c010/gt/gt.txt",
+      "GT_sha256": "458daa3068ca9c94eb615c8f10e1f0b1168962fe746c431553d4bb6699b0ee28",
+      "frames": 892,
+      "identities": 21,
+      "image_size": [
+        1280,
+        720
+      ],
+      "target_boxes": 14356,
+      "GT_audit": {
+        "valid": 14356
+      },
+      "representative_image_sha256": {
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_HdiyOtliFiw_c010/img1/000001.jpg": "0b9715a14353d87f612232df9919753e6f344d8b5ef6f42f52a8f234690cf843",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_HdiyOtliFiw_c010/img1/000447.jpg": "f5a45b27ec890a3a9f781dda4756ff2eaf71ecb7204c8ca113a5dedfc10f2b5b",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_HdiyOtliFiw_c010/img1/000892.jpg": "42ac04cf93da73581651ec42ff18b93ebc2ac9ddab4583af34c7aaaa28d6f624"
+      },
+      "head_split": "dev",
+      "seen_in_G2_TRAIN": true
+    },
+    {
+      "dataset": "sportsmot",
+      "sequence": "v_HdiyOtliFiw_c602",
+      "source_group": "v_HdiyOtliFiw",
+      "category": "person",
+      "GT_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_HdiyOtliFiw_c602/gt/gt.txt",
+      "GT_sha256": "59de96c871a0d86e6789c5ea13a6d289a088d8879f44b55d8a1e3936bf325cae",
+      "frames": 475,
+      "identities": 21,
+      "image_size": [
+        1280,
+        720
+      ],
+      "target_boxes": 5183,
+      "GT_audit": {
+        "valid": 5183
+      },
+      "representative_image_sha256": {
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_HdiyOtliFiw_c602/img1/000001.jpg": "5bb1ca44a4daf69c81d0d2cc0d59579601d31213b529e82dd225c2be3733e04c",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_HdiyOtliFiw_c602/img1/000238.jpg": "478eb11d225bf6d4088bcdd70d1a6a9263a8b2803162c68abd6842c95a76d8d1",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_HdiyOtliFiw_c602/img1/000475.jpg": "01e5c83144fe103b1a1b2beec19b80870fd2ab1bc665a48a6eb055194d5b97ed"
+      },
+      "head_split": "dev",
+      "seen_in_G2_TRAIN": true
+    },
+    {
+      "dataset": "sportsmot",
+      "sequence": "v_dChHNGIfm4Y_c003",
+      "source_group": "v_dChHNGIfm4Y",
+      "category": "person",
+      "GT_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_dChHNGIfm4Y_c003/gt/gt.txt",
+      "GT_sha256": "b84741cf290048dbf80027efd1710cbbd108d6c332ac4b73fcbd534e3c26c3df",
+      "frames": 272,
+      "identities": 12,
+      "image_size": [
+        1280,
+        720
+      ],
+      "target_boxes": 3082,
+      "GT_audit": {
+        "valid": 3082
+      },
+      "representative_image_sha256": {
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_dChHNGIfm4Y_c003/img1/000001.jpg": "f10bbbf9c8eee6f4ff4a9214a830629f3f3191a233ff772d054d6710ba9e2f6a",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_dChHNGIfm4Y_c003/img1/000137.jpg": "463cb57840689c9a1a79a7548be3ef5290bbbd304b645222793216c72d652747",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_dChHNGIfm4Y_c003/img1/000272.jpg": "9a3eb712ad94173a048dbdfd1f922e69df0d9be57f0e7c698dcd42155be1ee35"
+      },
+      "head_split": "train",
+      "seen_in_G2_TRAIN": true
+    },
+    {
+      "dataset": "sportsmot",
+      "sequence": "v_gQNyhv8y0QY_c003",
+      "source_group": "v_gQNyhv8y0QY",
+      "category": "person",
+      "GT_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_gQNyhv8y0QY_c003/gt/gt.txt",
+      "GT_sha256": "4250b3ba686f6a39a68e6328f7dfd14f43ac25e185389cd9ef58dcca3f28ad81",
+      "frames": 700,
+      "identities": 20,
+      "image_size": [
+        1280,
+        720
+      ],
+      "target_boxes": 7537,
+      "GT_audit": {
+        "valid": 7537
+      },
+      "representative_image_sha256": {
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_gQNyhv8y0QY_c003/img1/000001.jpg": "fb9e09eae9bd5b157f3f36106f6d004ed72bf513c6b43ba03c5c67f51ddd6a94",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_gQNyhv8y0QY_c003/img1/000351.jpg": "91cd4105ae384ca35c80046876816d006fc05571ad479b58834419a87d2351b8",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_gQNyhv8y0QY_c003/img1/000700.jpg": "24b1e2d388deba033d6a5a00bf73ac6d00f5e477157b6576517f3b3924771e27"
+      },
+      "head_split": "train",
+      "seen_in_G2_TRAIN": true
+    },
+    {
+      "dataset": "sportsmot",
+      "sequence": "v_gQNyhv8y0QY_c012",
+      "source_group": "v_gQNyhv8y0QY",
+      "category": "person",
+      "GT_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_gQNyhv8y0QY_c012/gt/gt.txt",
+      "GT_sha256": "1b06d2bc6a5f1909b19c69341ce876335ca8aff0a5dabb3551574d15b5255330",
+      "frames": 1325,
+      "identities": 21,
+      "image_size": [
+        1280,
+        720
+      ],
+      "target_boxes": 14150,
+      "GT_audit": {
+        "valid": 14150
+      },
+      "representative_image_sha256": {
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_gQNyhv8y0QY_c012/img1/000001.jpg": "7cd7d64a16c767ce3acdf91b82133085efcb1bf00e1433cdd957e84f50c2c80b",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_gQNyhv8y0QY_c012/img1/000663.jpg": "22ec0741b47d7588f438879553155c527570473ab203a611c4f1e37a5d1e13f3",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_gQNyhv8y0QY_c012/img1/001325.jpg": "22e677246f51634cb7687fd4aa47c19da78304131594c0cd801a952bbfc351ad"
+      },
+      "head_split": "train",
+      "seen_in_G2_TRAIN": true
+    },
+    {
+      "dataset": "sportsmot",
+      "sequence": "v_gQNyhv8y0QY_c013",
+      "source_group": "v_gQNyhv8y0QY",
+      "category": "person",
+      "GT_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_gQNyhv8y0QY_c013/gt/gt.txt",
+      "GT_sha256": "4d9b5193b963148640c094368806442d31a678e0c6fcb15e2cd49dae6d8ab371",
+      "frames": 875,
+      "identities": 20,
+      "image_size": [
+        1280,
+        720
+      ],
+      "target_boxes": 10557,
+      "GT_audit": {
+        "valid": 10557
+      },
+      "representative_image_sha256": {
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_gQNyhv8y0QY_c013/img1/000001.jpg": "99b5cb7b31b624199fa85cbc15440b3d3f43152ea8331dc60ecc3ec1b71c2360",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_gQNyhv8y0QY_c013/img1/000438.jpg": "53cbb0f0447c3415b7d3fcadcc1be6c010c9d0f622eb26ddbb7e1ab95c9a59c1",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_gQNyhv8y0QY_c013/img1/000875.jpg": "ea34ffaa925115cb5964d29ca58f10538f0ba965a8dc7927644c6f7443c7a0e8"
+      },
+      "head_split": "train",
+      "seen_in_G2_TRAIN": true
+    },
+    {
+      "dataset": "sportsmot",
+      "sequence": "v_iIxMOsCGH58_c013",
+      "source_group": "v_iIxMOsCGH58",
+      "category": "person",
+      "GT_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_iIxMOsCGH58_c013/gt/gt.txt",
+      "GT_sha256": "1e5b81b025e2cc26131529bee47cf73eb16d236c4df7d4589f00d4d9173bf269",
+      "frames": 451,
+      "identities": 22,
+      "image_size": [
+        1280,
+        720
+      ],
+      "target_boxes": 7049,
+      "GT_audit": {
+        "valid": 7049
+      },
+      "representative_image_sha256": {
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_iIxMOsCGH58_c013/img1/000001.jpg": "12c395e35778eaa3bb7c1785dc98220085aacd78744e51ffa6f67bc0c0577181",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_iIxMOsCGH58_c013/img1/000226.jpg": "ce46dc302a5bc4a58d983d0b4bdee97f39a3640f409c24916e3a9a05a52fa878",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_iIxMOsCGH58_c013/img1/000451.jpg": "70fb50055efac4301a5b285a84286436f07b10fd19fddae4258515f70740c0de"
+      },
+      "head_split": "train",
+      "seen_in_G2_TRAIN": true
+    },
+    {
+      "dataset": "animaltrack",
+      "sequence": "chicken_3",
+      "source_group": "chicken_3",
+      "category": "chicken",
+      "GT_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/gt_all/chicken_3_gt.txt",
+      "GT_sha256": "f4344f52850d298f23158824a4983171230d85f396e63fb4dd97325d8840f8dd",
+      "frames": 326,
+      "identities": 32,
+      "image_size": [
+        2560,
+        1440
+      ],
+      "target_boxes": 7695,
+      "GT_audit": {
+        "valid": 7695
+      },
+      "representative_image_sha256": {
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/chicken_3/0001.jpg": "8525771a6c6981ac2e27302b78431781ddeb9013329dc61e4309cdc106bd2b5e",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/chicken_3/0163.jpg": "4c390f61bd5c2e5e0844d72fceaa72a8599891f9e733003f0340d7f5deabac08",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/chicken_3/0326.jpg": "44d5462971610932c6467816a22cd59af5a032baa3abbbc0ad281f1acd08ee8b"
+      },
+      "head_split": "dev",
+      "seen_in_G2_TRAIN": true
+    },
+    {
+      "dataset": "animaltrack",
+      "sequence": "chicken_4",
+      "source_group": "chicken_4",
+      "category": "chicken",
+      "GT_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/gt_all/chicken_4_gt.txt",
+      "GT_sha256": "c6b154dcc26df2d645e81841b3976d348eeaef6bf3c0610ca2b6aaf472acd57c",
+      "frames": 309,
+      "identities": 29,
+      "image_size": [
+        2560,
+        1440
+      ],
+      "target_boxes": 7681,
+      "GT_audit": {
+        "valid": 7681
+      },
+      "representative_image_sha256": {
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/chicken_4/0001.jpg": "cd7cd2dfaabb866582941d601305f997f5cd72c3b3eacfb7e5c4fec01c21c947",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/chicken_4/0155.jpg": "55121cc3fc40ac0dab1055074daa76642c353d08ba23d147e6c4d80a405bdf91",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/chicken_4/0309.jpg": "52b34c08adf6682446b616d4e906f280a181e1316849e73226f273a897acea3d"
+      },
+      "head_split": "train",
+      "seen_in_G2_TRAIN": true
+    },
+    {
+      "dataset": "animaltrack",
+      "sequence": "chicken_5",
+      "source_group": "chicken_5",
+      "category": "chicken",
+      "GT_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/gt_all/chicken_5_gt.txt",
+      "GT_sha256": "da04f4b8fe9d9b4deb9dbb0b64175cd05c9ee42df1e928c139103cd610474e07",
+      "frames": 318,
+      "identities": 6,
+      "image_size": [
+        2560,
+        1440
+      ],
+      "target_boxes": 1868,
+      "GT_audit": {
+        "valid": 1868
+      },
+      "representative_image_sha256": {
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/chicken_5/0001.jpg": "f6399b0b1845c7e710e32a82391638c089aeebb0ac113399d3cc6bfdb5bdb00a",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/chicken_5/0159.jpg": "9abc966be29d2c0a2241c81d059500b827d3a5ab6143bae07b169cf78d7c7447",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/chicken_5/0318.jpg": "7858fef88c239ad5711a12facf2466682f29b2c077b6040ef1993bc0e1aa02c6"
+      },
+      "head_split": "train",
+      "seen_in_G2_TRAIN": true
+    },
+    {
+      "dataset": "animaltrack",
+      "sequence": "deer_4",
+      "source_group": "deer_4",
+      "category": "deer",
+      "GT_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/gt_all/deer_4_gt.txt",
+      "GT_sha256": "fa494ca3660f42efb585ddb944c07bd3a6590c64428d9f10e8e55542d94548b5",
+      "frames": 321,
+      "identities": 10,
+      "image_size": [
+        2560,
+        1440
+      ],
+      "target_boxes": 2462,
+      "GT_audit": {
+        "valid": 2462
+      },
+      "representative_image_sha256": {
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/deer_4/0001.jpg": "7906d670f832c468513e2bf68d521e93c939dac50fb4f6750d2dad12085414b6",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/deer_4/0161.jpg": "6dee830f84e5fa0c7ae4e59b4cd8dfba13fbba312f69cf5c3bbdc6365a9962c2",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/deer_4/0321.jpg": "7582da40daf543ad9d08122a06030e26a9d80fd5f85a612bc73f085826c9a9e0"
+      },
+      "head_split": "train",
+      "seen_in_G2_TRAIN": true
+    },
+    {
+      "dataset": "animaltrack",
+      "sequence": "deer_5",
+      "source_group": "deer_5",
+      "category": "deer",
+      "GT_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/gt_all/deer_5_gt.txt",
+      "GT_sha256": "e885ee8e4b878b658bcedc92e5bcfa2aeed2439a44df7a9239314911a024ab2d",
+      "frames": 269,
+      "identities": 7,
+      "image_size": [
+        2560,
+        1440
+      ],
+      "target_boxes": 1771,
+      "GT_audit": {
+        "valid": 1771
+      },
+      "representative_image_sha256": {
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/deer_5/0001.jpg": "1ddd84506479d65671a49321cf3c4c8fa94c6d667967288a05c28f3237868504",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/deer_5/0135.jpg": "667943e31e865c82371947373b6ef4d6d88ce09bc28a5e94ded83d09e3b065bc",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/deer_5/0269.jpg": "4e72fefce9748d2e6908e0690fa27460bf29e9ff87ba2d673c2cc7e0644457e9"
+      },
+      "head_split": "train",
+      "seen_in_G2_TRAIN": true
+    },
+    {
+      "dataset": "animaltrack",
+      "sequence": "deer_6",
+      "source_group": "deer_6",
+      "category": "deer",
+      "GT_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/gt_all/deer_6_gt.txt",
+      "GT_sha256": "bfdcd84ba4f2c6a11fb079a19043b648e9c89ff9e75e6f9f2530465e21e0d814",
+      "frames": 305,
+      "identities": 50,
+      "image_size": [
+        2560,
+        1440
+      ],
+      "target_boxes": 14815,
+      "GT_audit": {
+        "valid": 14815
+      },
+      "representative_image_sha256": {
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/deer_6/0001.jpg": "4dcc32addd9588fcaba5bb0ba30459ed280c026fc076412832005a0744a41149",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/deer_6/0153.jpg": "7fa788bf31f9106b6047c8cbd4259fce26523a231925750e8e0d49072e39706e",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/deer_6/0305.jpg": "cc3f35dde1e4ab78876a07ac48b11007a9cc2a82d0202f6ce8b43b5d3c571ba1"
+      },
+      "head_split": "dev",
+      "seen_in_G2_TRAIN": true
+    },
+    {
+      "dataset": "animaltrack",
+      "sequence": "deer_7",
+      "source_group": "deer_7",
+      "category": "deer",
+      "GT_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/gt_all/deer_7_gt.txt",
+      "GT_sha256": "9a9e4e60209eb4a4905cf2b15abec19e38da693870776c9524d1f407f779301e",
+      "frames": 303,
+      "identities": 27,
+      "image_size": [
+        2560,
+        1440
+      ],
+      "target_boxes": 4989,
+      "GT_audit": {
+        "valid": 4989
+      },
+      "representative_image_sha256": {
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/deer_7/0001.jpg": "b590c85beae4e1ad6f8d96c8c91f21db1eaac755f09db92bd0820af44afb7aad",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/deer_7/0152.jpg": "3d5f2b84abe54a17f8a8fded46d687a9816dde60a372dc422e807d2112c5083e",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/deer_7/0303.jpg": "ca05a822c3c47c39a9bff152c0d3961bb9265ae3be85f5ec92568a2cc4c47f6a"
+      },
+      "head_split": "train",
+      "seen_in_G2_TRAIN": true
+    },
+    {
+      "dataset": "animaltrack",
+      "sequence": "dolphin_4",
+      "source_group": "dolphin_4",
+      "category": "dolphin",
+      "GT_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/gt_all/dolphin_4_gt.txt",
+      "GT_sha256": "63fb7bd5c743fb26f15030359517243ff4828beaf59039be51f11c2ffbe46068",
+      "frames": 208,
+      "identities": 16,
+      "image_size": [
+        2560,
+        1440
+      ],
+      "target_boxes": 2477,
+      "GT_audit": {
+        "valid": 2477
+      },
+      "representative_image_sha256": {
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/dolphin_4/0001.jpg": "c231d1f6aa0735be5d903ae4ebf0f5296847c05c947e6e9032ffef59b098e9ab",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/dolphin_4/0105.jpg": "7c7e18740557432d3ea4a6a6d785e9b106b0d8c58064141f77bf028c634667fb",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/dolphin_4/0208.jpg": "500d7c5255b536796e6081fe4b0bc0511d9d07ead29dfe28646a80712e4ebcbb"
+      },
+      "head_split": "train",
+      "seen_in_G2_TRAIN": true
+    },
+    {
+      "dataset": "animaltrack",
+      "sequence": "dolphin_5",
+      "source_group": "dolphin_5",
+      "category": "dolphin",
+      "GT_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/gt_all/dolphin_5_gt.txt",
+      "GT_sha256": "a3945f6b2af9a4cd99675296d3a6a843b86b1d5a5a75f306bc79c5420dca4092",
+      "frames": 236,
+      "identities": 23,
+      "image_size": [
+        2560,
+        1440
+      ],
+      "target_boxes": 4189,
+      "GT_audit": {
+        "valid": 4189
+      },
+      "representative_image_sha256": {
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/dolphin_5/0001.jpg": "07191270ea7fe14f40ad865aa66a48d5515dd769deddf4d91fe02a0b17820412",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/dolphin_5/0119.jpg": "fd9852cb31dae3e0fd95bacdaca3669dc399efa29251a5a148e426800e3c0128",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/dolphin_5/0236.jpg": "7f1c7ab75998c8aebaad820bacd5761d9a440448bf7e9078f46eec46c91d7045"
+      },
+      "head_split": "train",
+      "seen_in_G2_TRAIN": true
+    },
+    {
+      "dataset": "animaltrack",
+      "sequence": "dolphin_6",
+      "source_group": "dolphin_6",
+      "category": "dolphin",
+      "GT_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/gt_all/dolphin_6_gt.txt",
+      "GT_sha256": "182664cf95e7e3092877068fee58088811c94e03321948e49141c2dac4f14ac3",
+      "frames": 302,
+      "identities": 37,
+      "image_size": [
+        2560,
+        1440
+      ],
+      "target_boxes": 8301,
+      "GT_audit": {
+        "valid": 8301
+      },
+      "representative_image_sha256": {
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/dolphin_6/0001.jpg": "8e4a5fb8990053beff05c56efa9339540d52bbbc1c1a6353a305840f3f6ff94c",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/dolphin_6/0151.jpg": "5d773af897098c3f55d0d559ecaccd8cec37fa4ccc28e77014b7963ce9b51513",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/dolphin_6/0302.jpg": "34c3e55e5b3c6ac1b705076729279184125b6f00ba01d6d20175920267d22508"
+      },
+      "head_split": "dev",
+      "seen_in_G2_TRAIN": true
+    },
+    {
+      "dataset": "animaltrack",
+      "sequence": "duck_4",
+      "source_group": "duck_4",
+      "category": "duck",
+      "GT_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/gt_all/duck_4_gt.txt",
+      "GT_sha256": "015bb39f228372a83c17c0512e3a5cea0dba2796e6d1d9f9474d499158008d8f",
+      "frames": 321,
+      "identities": 53,
+      "image_size": [
+        2560,
+        1440
+      ],
+      "target_boxes": 3314,
+      "GT_audit": {
+        "valid": 3314
+      },
+      "representative_image_sha256": {
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/duck_4/0001.jpg": "4d6c764372d0afbf51364da15f8fc5a56683dbba75bbbd6f6b5818c929b4e291",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/duck_4/0161.jpg": "f70bfaaf8bc85f071f2f17ba87201c86764fc7ba495aca91922a0057060ada52",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/duck_4/0321.jpg": "063d2a638dfc10cb9cf15d0f8e7e8b99e5a3fd7ebebb5e7f9a1724702b085e9d"
+      },
+      "head_split": "train",
+      "seen_in_G2_TRAIN": true
+    },
+    {
+      "dataset": "animaltrack",
+      "sequence": "duck_5",
+      "source_group": "duck_5",
+      "category": "duck",
+      "GT_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/gt_all/duck_5_gt.txt",
+      "GT_sha256": "929c7b913cecb92126e2bd22a2df375d77b954c2067ef35d003dd56015e81ec1",
+      "frames": 1509,
+      "identities": 25,
+      "image_size": [
+        2560,
+        1440
+      ],
+      "target_boxes": 18716,
+      "GT_audit": {
+        "valid": 18716
+      },
+      "representative_image_sha256": {
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/duck_5/0001.jpg": "bc9e7fbd32e01f752c0730d633c7062b66e287bd090fb5e8b687508a0d71d099",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/duck_5/0755.jpg": "314a575b6a0f85a0bad66b5e7d9db31f398096affc8a830c9e08a0e0c3416c86",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/duck_5/1509.jpg": "169b69af23f7a14ba51979a2952b990339ac2a16f34464616ff9cde164e2ab8d"
+      },
+      "head_split": "train",
+      "seen_in_G2_TRAIN": true
+    },
+    {
+      "dataset": "animaltrack",
+      "sequence": "duck_6",
+      "source_group": "duck_6",
+      "category": "duck",
+      "GT_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/gt_all/duck_6_gt.txt",
+      "GT_sha256": "15fd4a3f036690ccb40f26bfaa8c9353aa1851c8c0392ee4b80bf30ef6b0db7e",
+      "frames": 255,
+      "identities": 49,
+      "image_size": [
+        2560,
+        1440
+      ],
+      "target_boxes": 5409,
+      "GT_audit": {
+        "valid": 5409
+      },
+      "representative_image_sha256": {
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/duck_6/0001.jpg": "90b78d71aa5942701a709847a78d3fd69589f636718a1920ed75d48bd789f682",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/duck_6/0128.jpg": "219cac6ba0ed3c6045a68003dd14302e1ec56404833214c4b3171ade2cc26a52",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/duck_6/0255.jpg": "0bab72a2005442449a766fdbf7a8afd407c2c417039e256e9e3ce2532c72e406"
+      },
+      "head_split": "dev",
+      "seen_in_G2_TRAIN": true
+    },
+    {
+      "dataset": "animaltrack",
+      "sequence": "goose_4",
+      "source_group": "goose_4",
+      "category": "goose",
+      "GT_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/gt_all/goose_4_gt.txt",
+      "GT_sha256": "eb62546f43d2111e67d10c073d202df45ad5f3c29601635091b0a8f8bd3c3c4c",
+      "frames": 328,
+      "identities": 17,
+      "image_size": [
+        2560,
+        1440
+      ],
+      "target_boxes": 3094,
+      "GT_audit": {
+        "valid": 3094
+      },
+      "representative_image_sha256": {
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/goose_4/0001.jpg": "45c9ef4f4671c095403a60d17b3e7d0dc6083d3fbca87a722bbbb0d1390ff0f5",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/goose_4/0165.jpg": "c825931a37b3a64f981371b1d5b13520249aa924eb6059acbb28ff9f0758230f",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/goose_4/0328.jpg": "6328482b7dd99cfc022eddc9d656db317314da1256abd98c8eb831d4ad8c9539"
+      },
+      "head_split": "dev",
+      "seen_in_G2_TRAIN": true
+    },
+    {
+      "dataset": "animaltrack",
+      "sequence": "goose_5",
+      "source_group": "goose_5",
+      "category": "goose",
+      "GT_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/gt_all/goose_5_gt.txt",
+      "GT_sha256": "4a098c8f1d6dec65d677dcc9a66fef0168149518b8879d46277b78baaaae0272",
+      "frames": 276,
+      "identities": 27,
+      "image_size": [
+        2560,
+        1440
+      ],
+      "target_boxes": 6872,
+      "GT_audit": {
+        "valid": 6872
+      },
+      "representative_image_sha256": {
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/goose_5/0001.jpg": "b93476f3ed10efe76118f4005309e19029cc2a3677d4e7003d5c1bddbacb7bb6",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/goose_5/0139.jpg": "4c824678ce8b0479dc426b4f6ca957fbee16a6ce2f0534a27d32893b38f11bcc",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/goose_5/0276.jpg": "a839aee3118a433159fb2f805f59f80ddaf8a8a97bfba29d82b59ce4f546bcab"
+      },
+      "head_split": "train",
+      "seen_in_G2_TRAIN": true
+    },
+    {
+      "dataset": "animaltrack",
+      "sequence": "goose_6",
+      "source_group": "goose_6",
+      "category": "goose",
+      "GT_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/gt_all/goose_6_gt.txt",
+      "GT_sha256": "f57c326809e3dd9a0e0eed64ef9be156c7ea1c384b971d7ba8076661aa3109b3",
+      "frames": 323,
+      "identities": 31,
+      "image_size": [
+        2560,
+        1440
+      ],
+      "target_boxes": 3717,
+      "GT_audit": {
+        "valid": 3717
+      },
+      "representative_image_sha256": {
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/goose_6/0001.jpg": "87148c9e2aae6b66f75eff1aa2db7cb25e52ee7e0774efd4bddbe3241c3a61a8",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/goose_6/0162.jpg": "e1525c4ede1e62b880740080c5d1150c44aa60ec57b41f98fd1eb8bbce764bda",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/goose_6/0323.jpg": "aa26da3da122d39528ce0a3a974ec4182257804d23bb12582a01367cdbe49e59"
+      },
+      "head_split": "train",
+      "seen_in_G2_TRAIN": true
+    },
+    {
+      "dataset": "animaltrack",
+      "sequence": "horse_4",
+      "source_group": "horse_4",
+      "category": "horse",
+      "GT_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/gt_all/horse_4_gt.txt",
+      "GT_sha256": "9d200e84aa69a25e8b37af7675317476398da5752687694a4cac21b992ea2497",
+      "frames": 206,
+      "identities": 20,
+      "image_size": [
+        2560,
+        1440
+      ],
+      "target_boxes": 3731,
+      "GT_audit": {
+        "valid": 3731
+      },
+      "representative_image_sha256": {
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/horse_4/0001.jpg": "469e1cdbc26be2bc4a7475fdd64aebfefe1f3b477975fc3c6e3154e85551ceef",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/horse_4/0103.jpg": "4efff5c35f3ce7032261fa1fb1cb142d47621bb9b33516cd5f78a8886046c1d5",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/horse_4/0206.jpg": "4011543c44a3f860fdc96db144b069f3359e4113e1fbd8dd08f69385c243c514"
+      },
+      "head_split": "train",
+      "seen_in_G2_TRAIN": true
+    },
+    {
+      "dataset": "animaltrack",
+      "sequence": "horse_5",
+      "source_group": "horse_5",
+      "category": "horse",
+      "GT_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/gt_all/horse_5_gt.txt",
+      "GT_sha256": "6f221d5f424d8cd88ad10129bd4b0c6d2438aed9f6bec42cd6b96786fdbf48f3",
+      "frames": 325,
+      "identities": 20,
+      "image_size": [
+        2560,
+        1440
+      ],
+      "target_boxes": 5603,
+      "GT_audit": {
+        "valid": 5603
+      },
+      "representative_image_sha256": {
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/horse_5/0001.jpg": "79fbc264b91c2a6c2dddefb93ee14c2d0ea903175db8574188e337e0b6a130ca",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/horse_5/0163.jpg": "eb8755ff130ad225939ad262525c0cfe28d9fa8b4e6395745ef25428b1ed8a44",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/horse_5/0325.jpg": "1bbba901f29c4257c0f40dedbc90740cd6d2f363ebee86a2a720c0ca4ca4d5f0"
+      },
+      "head_split": "dev",
+      "seen_in_G2_TRAIN": true
+    },
+    {
+      "dataset": "animaltrack",
+      "sequence": "horse_6",
+      "source_group": "horse_6",
+      "category": "horse",
+      "GT_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/gt_all/horse_6_gt.txt",
+      "GT_sha256": "b05b9de47af4692cd44ad89c302d5dbef698ca2682697eb6716b1860f5e18d85",
+      "frames": 315,
+      "identities": 29,
+      "image_size": [
+        2560,
+        1440
+      ],
+      "target_boxes": 7879,
+      "GT_audit": {
+        "valid": 7879
+      },
+      "representative_image_sha256": {
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/horse_6/0001.jpg": "a4f95083eb827bf9e36db869127c41ca906e3d6b43ce178ffd42b463a6b3d143",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/horse_6/0158.jpg": "47bf972ddb02025a24b62e5c9dda6b88442f732c583c400406cb48611ec0016e",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/horse_6/0315.jpg": "c3d8a1a605d0cb8904136b2fd136c735805ed22792c8e3b71c5d444c78366201"
+      },
+      "head_split": "train",
+      "seen_in_G2_TRAIN": true
+    },
+    {
+      "dataset": "animaltrack",
+      "sequence": "horse_7",
+      "source_group": "horse_7",
+      "category": "horse",
+      "GT_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/gt_all/horse_7_gt.txt",
+      "GT_sha256": "247d89b19bd0d5e5092e278b7686df44f983f38783f8e95d0f8dc39ce9195f6c",
+      "frames": 1315,
+      "identities": 19,
+      "image_size": [
+        2560,
+        1440
+      ],
+      "target_boxes": 10091,
+      "GT_audit": {
+        "valid": 10091
+      },
+      "representative_image_sha256": {
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/horse_7/0001.jpg": "785198f6e83753d1ffabc3f9e96b4aa36149ea63026cf99c2b1cd2704c5f95b7",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/horse_7/0658.jpg": "e090ae618eb0f354877f9a13d740cfe26b8b5cea746eb57db6a8624f77a982bb",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/horse_7/1315.jpg": "6989836bb75c3f2b67c01be567a48d8ddc92b6ad339f8c520081c0ee056229b1"
+      },
+      "head_split": "train",
+      "seen_in_G2_TRAIN": true
+    },
+    {
+      "dataset": "animaltrack",
+      "sequence": "penguin_4",
+      "source_group": "penguin_4",
+      "category": "penguin",
+      "GT_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/gt_all/penguin_4_gt.txt",
+      "GT_sha256": "dacea5e649a2159186fabd94d0559d73f8cab79d0d41080d83e12d16d8d957cc",
+      "frames": 328,
+      "identities": 22,
+      "image_size": [
+        2560,
+        1440
+      ],
+      "target_boxes": 6290,
+      "GT_audit": {
+        "valid": 6290
+      },
+      "representative_image_sha256": {
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/penguin_4/0001.jpg": "aa2567160b18be662ef332a9a30577642b5ac5c87ecc301f45ca58b17e9bfc54",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/penguin_4/0165.jpg": "ecb42291625dd25f4c6eb10ba8cf02a4a78caedcd4179584ed04ab9997b8d9d8",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/penguin_4/0328.jpg": "8fa9fe7fc227cfe344437319d84d4786002929314981185bef1294223261398a"
+      },
+      "head_split": "train",
+      "seen_in_G2_TRAIN": true
+    },
+    {
+      "dataset": "animaltrack",
+      "sequence": "penguin_5",
+      "source_group": "penguin_5",
+      "category": "penguin",
+      "GT_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/gt_all/penguin_5_gt.txt",
+      "GT_sha256": "b5ea612f5b96fe83524ceea06c351b55f0fc4083b950111dc7c3ed1aadc850d8",
+      "frames": 321,
+      "identities": 17,
+      "image_size": [
+        2560,
+        1440
+      ],
+      "target_boxes": 3732,
+      "GT_audit": {
+        "valid": 3732
+      },
+      "representative_image_sha256": {
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/penguin_5/0001.jpg": "7214ff7fdaf84828e0ab2093688daafe4ca1d927ce04210c6ff15f57c05b83ba",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/penguin_5/0161.jpg": "556fcc9a09d8eae70d845e083fa89ce6992d46f3d13a699fbe2800ef70dff790",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/penguin_5/0321.jpg": "9ef34188a1f2b3a4c19a1a4137f0d7000c31c3190ba8e8dc9b75f197de7c4cc9"
+      },
+      "head_split": "dev",
+      "seen_in_G2_TRAIN": true
+    },
+    {
+      "dataset": "animaltrack",
+      "sequence": "penguin_6",
+      "source_group": "penguin_6",
+      "category": "penguin",
+      "GT_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/gt_all/penguin_6_gt.txt",
+      "GT_sha256": "8466ef6c7dcb617ce031b72a80f190548b2af052215dff9acd7bd43289f0f451",
+      "frames": 234,
+      "identities": 21,
+      "image_size": [
+        2560,
+        1440
+      ],
+      "target_boxes": 4025,
+      "GT_audit": {
+        "valid": 4025
+      },
+      "representative_image_sha256": {
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/penguin_6/0001.jpg": "32b7a64251404c7c67b0c1a0fc8407127318959ce959fca56605ed965c9ee8b5",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/penguin_6/0117.jpg": "ad6d656fce4d0a9608dd2972563fe590d3e0c1073e4c40496b3f0f7502706779",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/penguin_6/0234.jpg": "ba50d6c70c2db32e224e27b36c2c62be14ec4b6af805eeb52445bb650fdef10c"
+      },
+      "head_split": "train",
+      "seen_in_G2_TRAIN": true
+    },
+    {
+      "dataset": "animaltrack",
+      "sequence": "pig_3",
+      "source_group": "pig_3",
+      "category": "pig",
+      "GT_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/gt_all/pig_3_gt.txt",
+      "GT_sha256": "3c4f5b5bd34eca913eb84923a79212d73f7af790b1695ef72832433cc6b43e70",
+      "frames": 312,
+      "identities": 24,
+      "image_size": [
+        2560,
+        1440
+      ],
+      "target_boxes": 6761,
+      "GT_audit": {
+        "valid": 6761
+      },
+      "representative_image_sha256": {
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/pig_3/0001.jpg": "b7ab62a5e38618ed0981bcbb631d35fa1610e9f18ce20e7d606a83811ac46c8d",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/pig_3/0157.jpg": "72fac28d67a2eee1d8ee813e21ad755371ab1a92ff2bb89fe5e669bf87b11020",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/pig_3/0312.jpg": "814b0aaccf94f78343714189dbefcad5666645fb3a431cef58cc2be1e37e28ac"
+      },
+      "head_split": "dev",
+      "seen_in_G2_TRAIN": true
+    },
+    {
+      "dataset": "animaltrack",
+      "sequence": "pig_4",
+      "source_group": "pig_4",
+      "category": "pig",
+      "GT_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/gt_all/pig_4_gt.txt",
+      "GT_sha256": "e3bf2ebd39a47c4a612da5147bb05f1d2d2e1e9b086976a6b42ee10335d385a0",
+      "frames": 274,
+      "identities": 29,
+      "image_size": [
+        2560,
+        1440
+      ],
+      "target_boxes": 6567,
+      "GT_audit": {
+        "valid": 6567
+      },
+      "representative_image_sha256": {
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/pig_4/0001.jpg": "40a9fccf1a67f181d67b00197b64e3dd5bc20d77f313645b91359ba0851b8a3e",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/pig_4/0137.jpg": "30a11616c52b2206731a571a29a9279ca94cf3cf7d620c0bd1071c832a67a95c",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/pig_4/0274.jpg": "b3c9582f3bd8f9e3351920fc812e30a9b10f7e77c955c52b697c98f20f839c25"
+      },
+      "head_split": "train",
+      "seen_in_G2_TRAIN": true
+    },
+    {
+      "dataset": "animaltrack",
+      "sequence": "pig_5",
+      "source_group": "pig_5",
+      "category": "pig",
+      "GT_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/gt_all/pig_5_gt.txt",
+      "GT_sha256": "00091ec076129714c5ef6c5fce283739a9d5719cdcd4c270850e80ee5067286c",
+      "frames": 318,
+      "identities": 23,
+      "image_size": [
+        2560,
+        1440
+      ],
+      "target_boxes": 5468,
+      "GT_audit": {
+        "valid": 5468
+      },
+      "representative_image_sha256": {
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/pig_5/0001.jpg": "ddbcd90a13f96d85a855a0a0446ec5059a138eabbd4b6e1b97e766ffc076bb80",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/pig_5/0159.jpg": "814cbefb729918d13d39613e91736111a6348ab5245b281706ae015914428e72",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/pig_5/0318.jpg": "d150b54d2969d5bd9a959f91126cdb69b7703a940dd3015d0ca3e8d196b76d2e"
+      },
+      "head_split": "train",
+      "seen_in_G2_TRAIN": true
+    },
+    {
+      "dataset": "animaltrack",
+      "sequence": "rabbit_3",
+      "source_group": "rabbit_3",
+      "category": "rabbit",
+      "GT_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/gt_all/rabbit_3_gt.txt",
+      "GT_sha256": "b2cd37afab5091ddfd63df125d3ef5ea01cfd8884e99eb4969f31a88f2899367",
+      "frames": 327,
+      "identities": 29,
+      "image_size": [
+        2560,
+        1440
+      ],
+      "target_boxes": 7640,
+      "GT_audit": {
+        "valid": 7640
+      },
+      "representative_image_sha256": {
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/rabbit_3/0001.jpg": "12d95dda8320ec18aa64124cf501b32f39cb697f1b471c6c0255a82610056798",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/rabbit_3/0164.jpg": "21d2a72a566e92eecb71dd364a42af191074b3ca54cd3e223fa594cc77d0ffda",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/rabbit_3/0327.jpg": "3d1a4504905767cb6a72577965868830690b32f199c0269e5146a11c2300cb36"
+      },
+      "head_split": "train",
+      "seen_in_G2_TRAIN": true
+    },
+    {
+      "dataset": "animaltrack",
+      "sequence": "rabbit_4",
+      "source_group": "rabbit_4",
+      "category": "rabbit",
+      "GT_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/gt_all/rabbit_4_gt.txt",
+      "GT_sha256": "e86f004032c36203b60a8a6a3787b2d8ec50aee74330b0cbdda797dc306ca90b",
+      "frames": 308,
+      "identities": 31,
+      "image_size": [
+        1920,
+        1080
+      ],
+      "target_boxes": 4411,
+      "GT_audit": {
+        "valid": 4411
+      },
+      "representative_image_sha256": {
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/rabbit_4/0001.jpg": "907744879dc75ec98b244490abc19fef9a16b8dc11818d54747275887f94eaa1",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/rabbit_4/0155.jpg": "1fbd6f4228b1340a874f03365f52ba4fc684cb157394c13d0c15da70a56cc46f",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/rabbit_4/0308.jpg": "56b9ec4416251111bfb8e656762908311386cfb1f2b26d35bc0aa82b95ac1740"
+      },
+      "head_split": "train",
+      "seen_in_G2_TRAIN": true
+    },
+    {
+      "dataset": "animaltrack",
+      "sequence": "rabbit_5",
+      "source_group": "rabbit_5",
+      "category": "rabbit",
+      "GT_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/gt_all/rabbit_5_gt.txt",
+      "GT_sha256": "3bbd20e6dbc0ae1d2f6fa36fe7393b6519dedc3466df04cee4fda08d6d745de7",
+      "frames": 302,
+      "identities": 52,
+      "image_size": [
+        2560,
+        1440
+      ],
+      "target_boxes": 5496,
+      "GT_audit": {
+        "valid": 5496
+      },
+      "representative_image_sha256": {
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/rabbit_5/0001.jpg": "ab70d8e9f353978b423ddbe2737fd2f673b27d774839dc0e4119b38ca62fa857",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/rabbit_5/0151.jpg": "9d4b9a45f6d5a65e6e069bd560eedba489125e22b102397e8936d82c29c16f0f",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/rabbit_5/0302.jpg": "d5b0977fe0a237c33ac81e7cece86ce0839f9b5a5c308ed77615aedfdfbe9ad5"
+      },
+      "head_split": "dev",
+      "seen_in_G2_TRAIN": true
+    },
+    {
+      "dataset": "animaltrack",
+      "sequence": "zebra_3",
+      "source_group": "zebra_3",
+      "category": "zebra",
+      "GT_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/gt_all/zebra_3_gt.txt",
+      "GT_sha256": "5ff432660df03c003e8f8fe4f3abac9201539fc9d805b40916e7dc060deae3e5",
+      "frames": 286,
+      "identities": 19,
+      "image_size": [
+        2560,
+        1440
+      ],
+      "target_boxes": 4623,
+      "GT_audit": {
+        "valid": 4623
+      },
+      "representative_image_sha256": {
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/zebra_3/0001.jpg": "62088a3f044194b8780671d956ebdecc057c6dd04a34234b9b122b788da0978e",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/zebra_3/0143.jpg": "e6abce58a84b87242eeafe47ace96b830bfe2b24426b3ccf83f5d584195b21e0",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/zebra_3/0286.jpg": "1f6b0dcd1089a1c9f8077ecb1ca37283280a3b5d418b29276188b61a4ba7c410"
+      },
+      "head_split": "train",
+      "seen_in_G2_TRAIN": true
+    },
+    {
+      "dataset": "animaltrack",
+      "sequence": "zebra_4",
+      "source_group": "zebra_4",
+      "category": "zebra",
+      "GT_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/gt_all/zebra_4_gt.txt",
+      "GT_sha256": "0c5f5ed0af834ae13b2bfbfa66098c5593f506181962b43ca580a6fc49a86668",
+      "frames": 243,
+      "identities": 20,
+      "image_size": [
+        2560,
+        1440
+      ],
+      "target_boxes": 3540,
+      "GT_audit": {
+        "valid": 3540
+      },
+      "representative_image_sha256": {
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/zebra_4/0001.jpg": "6c7ecb1d4a62f07a1018b43e59428c6783bcb5f182cc7fa67c7cc2f39877fce5",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/zebra_4/0122.jpg": "f7f6f6f3328216e9d87c2ae750d2921585ebc00e7d01cb2dd812c97b9150957f",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/zebra_4/0243.jpg": "f944f243ee4d56c45afe83f56416c1ba1605d602c96a5903d8c10b090b6630f1"
+      },
+      "head_split": "train",
+      "seen_in_G2_TRAIN": true
+    },
+    {
+      "dataset": "animaltrack",
+      "sequence": "zebra_5",
+      "source_group": "zebra_5",
+      "category": "zebra",
+      "GT_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/gt_all/zebra_5_gt.txt",
+      "GT_sha256": "e3ed9f3fe9d5c8a1cdca5f37252c2ed6a2e4dfea1f0cc73594465b4fca1760a3",
+      "frames": 220,
+      "identities": 13,
+      "image_size": [
+        2560,
+        1440
+      ],
+      "target_boxes": 2386,
+      "GT_audit": {
+        "valid": 2386
+      },
+      "representative_image_sha256": {
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/zebra_5/0001.jpg": "6057a0b4c76bfd3ec5db823f1a0caad6f4497436ad988a950d53e1b182a0a474",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/zebra_5/0111.jpg": "db5d1db5b3d32ce3121e2f8dd5758a273a1d532a0f236dbd5524b3206966f40c",
+        "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/zebra_5/0220.jpg": "3615e78020a2e55d3a84c98adba6935fdce3989de8db23759c5df984215bb030"
+      },
+      "head_split": "dev",
+      "seen_in_G2_TRAIN": true
+    }
+  ],
+  "split_source_groups": {
+    "train": [
+      [
+        "animaltrack",
+        "chicken_4"
+      ],
+      [
+        "animaltrack",
+        "chicken_5"
+      ],
+      [
+        "animaltrack",
+        "deer_4"
+      ],
+      [
+        "animaltrack",
+        "deer_5"
+      ],
+      [
+        "animaltrack",
+        "deer_7"
+      ],
+      [
+        "animaltrack",
+        "dolphin_4"
+      ],
+      [
+        "animaltrack",
+        "dolphin_5"
+      ],
+      [
+        "animaltrack",
+        "duck_4"
+      ],
+      [
+        "animaltrack",
+        "duck_5"
+      ],
+      [
+        "animaltrack",
+        "goose_5"
+      ],
+      [
+        "animaltrack",
+        "goose_6"
+      ],
+      [
+        "animaltrack",
+        "horse_4"
+      ],
+      [
+        "animaltrack",
+        "horse_6"
+      ],
+      [
+        "animaltrack",
+        "horse_7"
+      ],
+      [
+        "animaltrack",
+        "penguin_4"
+      ],
+      [
+        "animaltrack",
+        "penguin_6"
+      ],
+      [
+        "animaltrack",
+        "pig_4"
+      ],
+      [
+        "animaltrack",
+        "pig_5"
+      ],
+      [
+        "animaltrack",
+        "rabbit_3"
+      ],
+      [
+        "animaltrack",
+        "rabbit_4"
+      ],
+      [
+        "animaltrack",
+        "zebra_3"
+      ],
+      [
+        "animaltrack",
+        "zebra_4"
+      ],
+      [
+        "sportsmot",
+        "v_-6Os86HzwCs"
+      ],
+      [
+        "sportsmot",
+        "v_1LwtoLPw2TU"
+      ],
+      [
+        "sportsmot",
+        "v_1yHWGw8DH4A"
+      ],
+      [
+        "sportsmot",
+        "v_2j7kLB-vEEk"
+      ],
+      [
+        "sportsmot",
+        "v_4LXTUim5anY"
+      ],
+      [
+        "sportsmot",
+        "v_CW0mQbgYIF4"
+      ],
+      [
+        "sportsmot",
+        "v_Dk3EpDDa3o0"
+      ],
+      [
+        "sportsmot",
+        "v_dChHNGIfm4Y"
+      ],
+      [
+        "sportsmot",
+        "v_gQNyhv8y0QY"
+      ],
+      [
+        "sportsmot",
+        "v_iIxMOsCGH58"
+      ]
+    ],
+    "dev": [
+      [
+        "animaltrack",
+        "chicken_3"
+      ],
+      [
+        "animaltrack",
+        "deer_6"
+      ],
+      [
+        "animaltrack",
+        "dolphin_6"
+      ],
+      [
+        "animaltrack",
+        "duck_6"
+      ],
+      [
+        "animaltrack",
+        "goose_4"
+      ],
+      [
+        "animaltrack",
+        "horse_5"
+      ],
+      [
+        "animaltrack",
+        "penguin_5"
+      ],
+      [
+        "animaltrack",
+        "pig_3"
+      ],
+      [
+        "animaltrack",
+        "rabbit_5"
+      ],
+      [
+        "animaltrack",
+        "zebra_5"
+      ],
+      [
+        "sportsmot",
+        "v_ApPxnw_Jffg"
+      ],
+      [
+        "sportsmot",
+        "v_HdiyOtliFiw"
+      ]
+    ]
+  },
+  "source_overlap": [],
+  "representative_image_duplicates": [],
+  "G2_training_manifest": "/data3/user/LocateMOT-runs/GroundAnythingG2/G2_CLEAN_FULL_COVERAGE_V2/g2_clean_train_manifest.json",
+  "G2_training_rows_sha256": "f682519a1cf9204ca76ea75a56dad36dbdeac26259f202551ab9f66fefd06e71",
+  "head_DEV_is_not_independent_of_G2_finetuning": true,
+  "query_selection": {
+    "max_TRAIN_boxes": 29,
+    "queries": 100,
+    "policy": "ceil(1.25*TRAIN_max/32)*32, bounded100..300"
+  },
+  "pilot_train_frames_per_video": 64,
+  "dev_check_frames_per_video": 24,
+  "indices": {
+    "train": {
+      "path": "/data3/user/LocateMOT-runs/G2_Spatial_DenseHead_20261026/data/train.jsonl",
+      "sha256": "cc5d9f3d0b1fec9f4477c3eb390b1cb526f6e4701152ed4505bb39551c08b0d1",
+      "frames": 3648,
+      "boxes": 46423,
+      "videos": 57,
+      "by_domain": {
+        "sportsmot": 2240,
+        "animaltrack": 1408
+      }
+    },
+    "dev": {
+      "path": "/data3/user/LocateMOT-runs/G2_Spatial_DenseHead_20261026/data/dev.jsonl",
+      "sha256": "0fd65cd628b37243ec435f7fd6600a3827b49aa0ccec17b5fa66131fbf7f9fb0",
+      "frames": 480,
+      "boxes": 7997,
+      "videos": 20,
+      "by_domain": {
+        "sportsmot": 240,
+        "animaltrack": 240
+      }
+    },
+    "dev_full": {
+      "path": "/data3/user/LocateMOT-runs/G2_Spatial_DenseHead_20261026/data/dev_full.jsonl",
+      "sha256": "3f24308b917b4c2a42af1c0dbee625ce5a9e66e4a07cf0b6df3ca48efd8df1f5",
+      "frames": 8370,
+      "boxes": 133912,
+      "videos": 20,
+      "by_domain": {
+        "sportsmot": 5374,
+        "animaltrack": 2996
+      }
+    }
+  },
+  "cross_dataset_audit": "MOT17 detector variants canonicalize to same MOT17-XX; RMOT26 aliases overlap MOT17/DanceTrack G2 training. None enters this head optimization. Sports clips grouped by original YouTube ID; Animal physical files disjoint, three representative contents hashed per video; no proof of unseen-camera independence.",
+  "TAO_policy": "Existing TRAIN Base only; Novel excluded. Non-exhaustive: positive-only or category-qualified negatives required. Not in this pilot optimizer.",
+  "Refer_policy": "Existing TRAIN physical labels required; expression-selected boxes cannot define exhaustive background. Not in this pilot optimizer."
+}

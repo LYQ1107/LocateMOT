@@ -1,0 +1,69 @@
+{
+  "status": "REAL_GPU_G0_G2_FEATURE_COMPARISON",
+  "unchanged_vision_encoder": true,
+  "changed_visual_weights": [
+    {
+      "key": "base_model.model.visual.projector.fc1.weight",
+      "relative_L2": 0.01652383804321289
+    },
+    {
+      "key": "base_model.model.visual.projector.fc2.weight",
+      "relative_L2": 0.016664722934365273
+    },
+    {
+      "key": "base_model.model.visual.projector.post_norm.weight",
+      "relative_L2": 0.0007735044928267598
+    },
+    {
+      "key": "base_model.model.visual.projector.pre_norm.bias",
+      "relative_L2": 0.011693150736391544
+    },
+    {
+      "key": "base_model.model.visual.projector.pre_norm.weight",
+      "relative_L2": 0.001989344134926796
+    }
+  ],
+  "feature_shape": [
+    1,
+    2560,
+    24,
+    42
+  ],
+  "feature_relative_L2": 0.2689676582813263,
+  "feature_cosine": 0.9638208150863647,
+  "G0_control_method": "exact same encoder weights; replace all native projector tensors with G0; identical image processor",
+  "Qwen_LoRA_effect_in_this_feature_path": false,
+  "metadata": {
+    "feature_source": "official_DLM_native_MoonViT_and_trained_projector",
+    "checkpoint": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM-G2-CLEAN-V2",
+    "weight_prefix": "base_model.model.visual.",
+    "native_parameters": 428482048,
+    "native_weight_entries": 170,
+    "image_size": [
+      1280,
+      720
+    ],
+    "grid_thw": [
+      1,
+      48,
+      84
+    ],
+    "merged_grid": [
+      24,
+      42
+    ],
+    "resize_and_padding": {
+      "num_tokens": 1008,
+      "new_width": 1173,
+      "new_height": 660,
+      "pad_width": 3,
+      "pad_height": 12,
+      "sampled_nframes": 1
+    },
+    "feature_dimension": 2560,
+    "attention": "official eager",
+    "seconds": 1.7238648610655218,
+    "image_only": true,
+    "max_tokens": 1024
+  }
+}
