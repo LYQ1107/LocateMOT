@@ -1,0 +1,37 @@
+{
+  "status": "MISSED_COMPLETE_PREFLIGHT_SIMPLE_SCOPE_REPAIRED",
+  "preflight": {
+    "dataset": "tao_amodal",
+    "functional_only": true,
+    "gpu": 1,
+    "inputs": 32,
+    "job": "/data3/user/LocateMOT-runs/GroundJEV_Eval_NoMOT20_4GPU/request_local_seed_v2/jobs/tao_amodal__val_AVA_BCiuXAuCKAU_scene_16_109527-110290__e597df32d6583b53",
+    "status": "REAL_GPU_32_INPUT_PREFLIGHT_COMPLETE",
+    "uuid": "GPU-f35654b3-bbf5-7303-cfcb-9bd5d3e16e69",
+    "wall_seconds": 14818.463497407036
+  },
+  "job": "/data3/user/LocateMOT-runs/GroundJEV_Eval_NoMOT20_4GPU/request_local_seed_v2/jobs/tao_amodal__val_AVA_BCiuXAuCKAU_scene_16_109527-110290__e597df32d6583b53",
+  "input": {
+    "candidate_sha256": "09e2ae80cc8d4dfafb7944b2e98454c412d9dd6609d3dcecc57ff37a3da777ae",
+    "frames": 32,
+    "identical_geometry_order_labels_scores_rejection": true
+  },
+  "metrics": {
+    "AssocA": 0.0,
+    "AssocPr": 0.0,
+    "AssocRe": 0.0,
+    "ClsA": 0.0,
+    "ClsPr": 0.0,
+    "ClsRe": 0.0,
+    "LocA": 0.0,
+    "LocPr": 0.0,
+    "LocRe": 0.0,
+    "TETA": 0.0
+  },
+  "CPU_pipeline_regression_ready": true,
+  "frozen_receipt_unchanged_on_repeat": true,
+  "G2_calls": 0,
+  "live_services_restarted": false,
+  "root_cause": "The 32-input preflight was the complete32-frame video. Queue unit was marked COMPLETE before the ordinary-unit Simple/JEV completion path, so it was never scored until reconciliation.",
+  "source_fix": "Preflight and ordinary queue units now call the same complete-video slot handler."
+}

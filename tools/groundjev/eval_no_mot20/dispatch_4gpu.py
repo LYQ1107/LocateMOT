@@ -224,6 +224,17 @@ def run_jev_for_video(config,worker,job,directory,env):
             print(json.dumps({'event':'JEV_ARM_FAILED','arm':arm,'job':job.name,'error':repr(error)}),flush=True)
 
 
+def finish_ready_video(config,worker,job,directory,env,process,handle):
+    if not finish_video_pipeline(config,worker,job,directory,env):return process,handle
+    with (job/'.jev_pipeline.lock').open('w') as pipeline_lock:
+        try:fcntl.flock(pipeline_lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
+        except BlockingIOError:return process,handle
+        # Rotate this physical slot to JEV; never allocate a fifth GPU.
+        stop_service(process,handle)
+        run_jev_for_video(config,worker,job,directory,env)
+        return start_service(config,worker,directory)
+
+
 def detection_worker(config,worker,first,context):
     run=Path(config['output_root']);directory=run/'workers'/worker['name'];directory.mkdir(parents=True,exist_ok=True)
     queue=Queue(run/'queue.sqlite');process=handle=None
@@ -247,6 +258,9 @@ def detection_worker(config,worker,first,context):
                     'functional_only':True})
             key=f"{first['id']}:0:{min(32,first['frames'])}"
             queue.finish(key)
+            # A 32-frame preflight can be the entire physical video. It must
+            # enter the same Simple-before-JEV pipeline as later queue units.
+            process,handle=finish_ready_video(config,worker,job,directory,env,process,handle)
         while True:
             unit=queue.claim(worker['name'])
             if unit is None:break
@@ -260,15 +274,7 @@ def detection_worker(config,worker,first,context):
                 queue.finish(key);units+=1
                 save(directory/'status.json',{'status':'DETECTING','last_unit':key,'completed_units':units,
                      'elapsed_seconds':time.perf_counter()-began,'gpu':worker['gpu']})
-                if finish_video_pipeline(config,worker,job,directory,env):
-                    with (job/'.jev_pipeline.lock').open('w') as pipeline_lock:
-                        try:fcntl.flock(pipeline_lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
-                        except BlockingIOError:continue
-                        # Rotate this physical slot to JEV while the other
-                        # workers continue detecting; never allocate a fifth GPU.
-                        stop_service(process,handle);process=handle=None
-                        run_jev_for_video(config,worker,job,directory,env)
-                        process,handle=start_service(config,worker,directory)
+                process,handle=finish_ready_video(config,worker,job,directory,env,process,handle)
             except Exception as error:
                 queue.finish(key,repr(error))
                 save(directory/'last_error.json',{'unit':key,'error':repr(error),'time':time.time()})
