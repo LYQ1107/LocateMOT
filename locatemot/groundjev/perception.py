@@ -71,6 +71,7 @@ class GroundAnythingAdapter:
                 # independently.
                 parsed = sys.modules[name]._parse_gam_predictions_deduplicated(result.raw_output, 'bbox')
         metadata = {'seconds': elapsed, 'prompt': prompt, 'result': result.to_dict(),
+                    'response_usage': response.get('usage'),
                     'parser_policy': self.parser_policy, 'strict_wire_valid': result.valid,
                     'decoder_policy': self.decoder_policy, 'request_decode_parameters': self.decode_parameters,
                     'official_scoring_recovery': not result.valid and bool(parsed),

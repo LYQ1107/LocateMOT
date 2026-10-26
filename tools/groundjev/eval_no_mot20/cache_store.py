@@ -22,16 +22,21 @@ class CacheStore:
         self.manifest = job_manifest(job)
         self.identity = fingerprint(manifest_identity(self.manifest))
         self.db = sqlite3.connect(job / 'detector.sqlite', timeout=120)
-        self.db.execute('PRAGMA journal_mode=WAL')
-        self.db.execute('PRAGMA synchronous=FULL')
-        self.db.executescript('''
-            CREATE TABLE IF NOT EXISTS metadata(key TEXT PRIMARY KEY, value TEXT NOT NULL);
-            CREATE TABLE IF NOT EXISTS requests(frame INTEGER, chunk INTEGER, data BLOB NOT NULL,
-                PRIMARY KEY(frame,chunk));
-            CREATE TABLE IF NOT EXISTS frames(frame INTEGER PRIMARY KEY, data BLOB NOT NULL);
-        ''')
-        with self.db:
-            self.db.execute('INSERT OR IGNORE INTO metadata VALUES (?,?)', ('identity', self.identity))
+        # Distinct frame units can first open this video's database together.
+        # WAL activation itself does not reliably wait via SQLite busy_timeout.
+        with (job / '.initialize.lock').open('a') as lock:
+            fcntl.flock(lock, fcntl.LOCK_EX)
+            if self.db.execute('PRAGMA journal_mode').fetchone()[0] != 'wal':
+                self.db.execute('PRAGMA journal_mode=WAL')
+            self.db.execute('PRAGMA synchronous=FULL')
+            self.db.executescript('''
+                CREATE TABLE IF NOT EXISTS metadata(key TEXT PRIMARY KEY, value TEXT NOT NULL);
+                CREATE TABLE IF NOT EXISTS requests(frame INTEGER, chunk INTEGER, data BLOB NOT NULL,
+                    PRIMARY KEY(frame,chunk));
+                CREATE TABLE IF NOT EXISTS frames(frame INTEGER PRIMARY KEY, data BLOB NOT NULL);
+            ''')
+            with self.db:
+                self.db.execute('INSERT OR IGNORE INTO metadata VALUES (?,?)', ('identity', self.identity))
         actual = self.db.execute('SELECT value FROM metadata WHERE key=?', ('identity',)).fetchone()[0]
         if actual != self.identity:
             raise ValueError('Cache model, images, query or decoder differs from immutable manifest')

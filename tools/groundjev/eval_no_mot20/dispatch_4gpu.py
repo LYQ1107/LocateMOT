@@ -164,6 +164,18 @@ def concurrency_gate(config,worker,context):
             except GroundingProtocolError as error:candidates=[];metadata=error.metadata;rejected=True
         return {'frame':frame,'image_path':path,'candidates':candidates,
                 'perception':{'model_response_rejected':rejected},'raw_metadata':metadata}
+    if context.get('resume_gate'):
+        gate=load(Path(config['output_root'])/'engineering_checks/worker_consistency.json')
+        if (gate['status']!='FOUR_WORKER_NATIVE_CONSISTENCY_PASSED' or
+                len(gate['workers'])!=4 or gate['seed']!=42 or gate['seed_scope']!='request_local_v1'):
+            raise ValueError('A worker recovery requires the completed four-worker gate')
+        actual=native()
+        if candidate_payload(actual)!=candidate_payload(gate['baseline']):
+            raise RuntimeError('Recovered service changed the native baseline output')
+        save(Path(config['output_root'])/'workers'/worker['name']/'recovery_gate.json',{
+            'status':'RECOVERED_NATIVE_OUTPUT_IDENTICAL','seed':42,'seed_scope':'request_local_v1',
+            'prior_four_worker_gate_preserved':True,'worker':worker['name'],'time':time.time()})
+        return
     barrier=context['barrier'];barrier.wait(timeout=700)
     if worker['name']==config['workers'][0]['name']:context['baseline']=native()
     barrier.wait(timeout=700)
@@ -271,10 +283,34 @@ def detection_worker(config,worker,first,context):
 def main():
     parser=argparse.ArgumentParser();parser.add_argument('--config',type=Path,required=True)
     parser.add_argument('--stage',choices=['detection','simple','jev'],required=True)
-    parser.add_argument('--resume',action='store_true');args=parser.parse_args()
+    parser.add_argument('--resume',action='store_true')
+    parser.add_argument('--recover-worker',help='Resume one stopped worker without disturbing other workers')
+    args=parser.parse_args()
     config=load(args.config);run=Path(config['output_root']);registry=load(run/'jobs.json')
     if len(config['workers'])>4 or len({w['gpu'] for w in config['workers']})!=len(config['workers']):
         raise ValueError('At most four distinct physical GPUs')
+    if args.recover_worker:
+        if args.stage!='detection':raise ValueError('Worker recovery is a detection operation')
+        worker=next(w for w in config['workers'] if w['name']==args.recover_worker)
+        directory=run/'workers'/worker['name']
+        with (directory/'.recovery.lock').open('a') as lock:
+            fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
+            if not load(directory/'resource_receipt.json')['all_owned_service_processes_stopped']:
+                raise RuntimeError('Original worker has not stopped')
+            old_pid=load(directory/'service_ready.json')['pid']
+            try:os.kill(old_pid,0)
+            except ProcessLookupError:pass
+            else:raise RuntimeError(f'Original service PID {old_pid} is still present')
+            queue=Queue(run/'queue.sqlite')
+            with queue.db:
+                retry=queue.db.execute("SELECT id,state,error FROM units WHERE owner=? AND state IN ('FAILED','RUNNING')",(worker['name'],)).fetchall()
+                queue.db.execute("UPDATE units SET state='PENDING',owner=NULL WHERE owner=? AND state IN ('FAILED','RUNNING')",(worker['name'],))
+            save(directory/'recovery.json',{'worker':worker['name'],'time':time.time(),
+                 'retry_units':retry,'completed_cache_records_preserved':True,'original_service_pid':old_pid})
+            test_job=min((j for j in registry['jobs'] if j['dataset']=='sportsmot' and j['frames']>=32),
+                         key=lambda j:(j['frames'],j['id']))
+            print(json.dumps(detection_worker(config,worker,None,{'resume_gate':True,'test_job':test_job})),flush=True)
+        return
     with (run/f'.dispatch_{args.stage}.lock').open('w') as lock:
         fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
         if args.stage=='detection':

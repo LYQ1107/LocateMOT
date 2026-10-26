@@ -3080,3 +3080,35 @@ zero GT. Add a documented evaluation-only species-to-class1 transport,
 preserving original geometry, identity and mark; visibility=-1 is unknown.
 Archive the invalid metrics and re-score unchanged predictions. This is an
 evaluation fix, not a detector/threshold change or new training.
+
+## 2026-10-26 — complete-video negative results and independent worker recovery
+
+The formal request-local seed42 protocol passed the real four-GPU native-output
+gate. Completed scopes now include SportsMOT, AnimalTrack, Refer-KITTI and the
+first complete TAO video. The immutable snapshot records exact jobs, frame counts,
+candidate/prediction digests, evaluator metrics, stage timing and checkpoint IDs.
+The first two complete SportsMOT videos give official combined HOTA
+Simple 0.619010, J1 0.170348 and Coupled 0.254628. This is a negative paired
+association result; zero J1 IDSW accompanies FN 4647 versus Simple 143.
+AnimalTrack and RMOT paired results are also negative in HOTA/IDF1 on the first
+completed scopes. Keep these checkpoints and failures; do not tune on VAL.
+
+TAO's first complete 15-frame video performed 195 full-vocabulary block requests
+in 3917.508 detector seconds. All 15 frames were rejected under the registered
+whole-frame policy, yielding zero Simple/J1 TETA. Its GT has Base classes only;
+Novel is unavailable in this scope. Raw successful and failed chunks are retained.
+CPU analysis of persisted outputs identifies malformed coordinate payloads,
+wrappers, labels and geometry, rather than missing GT or a missing scorer.
+Retokenized responses average roughly 1.3k tokens per request in the first clips;
+this plus 13 serial requests explains much of the per-frame cost. Preserve the
+native parser and weights while investigating execution overhead independently.
+
+Operational failures were a concurrent initial WAL transition and the old live
+dispatcher's port probe during short replay rotations. Serialize initialization
+(four-writer/48-record regression passed); recover stopped A/C workers separately
+with the fixed port probe and verify native gate output equality. Their completed
+cache rows are preserved. Add an internal blocking recovery supervisor so worker
+failures need not wait for agent-level process polling. No fifth GPU is allocated.
+Official TETA is combined jointly across videos, never averaged per-video.
+The full 45 SportsMOT, 26 AnimalTrack, 1694 RMOT queries and 993 TAO video scope
+remains registered and incomplete. No training or checkpoint rewrite occurred.

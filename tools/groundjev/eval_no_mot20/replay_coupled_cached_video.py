@@ -36,6 +36,16 @@ def replay(job,config):
         audit=load(RUN/'model_audit.json');checkpoint=Path(audit['coupled']['path']);device=torch.device('cuda:0')
         started=time.perf_counter();model=load_model(checkpoint,device)
         bridge=G2FeatureBridge.from_checkpoint(config['g2_model'],device=str(device),model_sha256=G2_SHA)
+        class TimedNativeProvider:
+            def __init__(self,provider):self.provider=provider
+            def __call__(self,image,boxes):
+                torch.cuda.synchronize();began=time.perf_counter()
+                pooled,local,metadata=self.provider(image,boxes)
+                torch.cuda.synchronize()
+                metadata=dict(metadata,region_feature_seconds=time.perf_counter()-began,
+                              timing_scope='synchronized native visual forward plus ROI pooling')
+                return pooled,local,metadata
+        bridge.provider=TimedNativeProvider(bridge.provider)
         runtime=CoupledGroundJEVRuntime(bridge,model,admit_threshold=.5)
         load_seconds=time.perf_counter()-started
         rows=[json.loads(l) for l in (job/'detector_candidates.jsonl').open()]
@@ -66,7 +76,7 @@ def replay(job,config):
                 result=runtime.step(rgb,[c['box'] for c in candidates],[c['label'] for c in candidates],
                     frame_id=frame,image_key=row['image_path'],task_query=None)
                 torch.cuda.synchronize();duration=time.perf_counter()-began
-                native=float(result['state'].metadata.get('seconds',0.))
+                native=float(result['state'].metadata['region_feature_seconds'])
                 feature_seconds+=native;association_seconds+=max(0,duration-native)
                 outputs=[{'track_id':int(track),'box':list(candidates[i]['box']),'label':candidates[i]['label']}
                          for i,track in result['assignments'].items()]
@@ -107,7 +117,10 @@ def replay(job,config):
                 'metrics':load(out/'official_metrics.json'),'checkpoint':str(checkpoint),
                 'checkpoint_sha256':audit['coupled']['sha256'],'G2_detector_calls':0,
                 'prediction_sha256':sha_file(out/'predictions.txt')}
-        save(out/'frozen_receipt.json',frozen);return frozen
+        save(out/'frozen_receipt.json',frozen)
+        from tools.groundjev.eval_no_mot20.compare_arms import compare
+        compare(job,'coupled')
+        return frozen
 
 
 def main():

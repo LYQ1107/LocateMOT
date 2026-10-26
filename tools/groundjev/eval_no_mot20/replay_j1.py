@@ -47,6 +47,8 @@ def replay(job,checkpoint,python=sys.executable,device='cuda:0'):
                  'prediction_sha256':sha_file(output/'predictions.txt'),
                  'OVMOT_semantics':'fixed native G2 labels; J1 identity only; no J1 classification improvement claim'}
         save(output/'frozen_receipt.json',receipt)
+        from tools.groundjev.eval_no_mot20.compare_arms import compare
+        compare(job,'j1')
         return receipt
 
 

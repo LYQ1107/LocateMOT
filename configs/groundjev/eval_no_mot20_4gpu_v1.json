@@ -25,5 +25,6 @@
   "prompt_fallback": false,
   "invalid_frame_policy": "empty_and_record; entire TAO frame rejected if any registered chunk is invalid",
   "MOT20_jobs": 0,
-  "new_training": false
+  "new_training": false,
+  "publication_mode": "connected_github"
 }
