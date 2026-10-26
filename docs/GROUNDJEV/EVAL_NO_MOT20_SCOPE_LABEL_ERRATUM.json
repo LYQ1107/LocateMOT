@@ -74,6 +74,12 @@
       "immutable_receipt": "/data3/user/LocateMOT-runs/GroundJEV_Eval_NoMOT20_4GPU/request_local_seed_v2/jobs/sportsmot__v_9MHDmAMxO5I_c003__d743f9a1134bb802/j1_current_crops_v3/frozen_receipt.json"
     },
     {
+      "job": "sportsmot__v_9MHDmAMxO5I_c003__d743f9a1134bb802",
+      "arm": "j1_current_crops_memory_v4",
+      "frames": 226,
+      "immutable_receipt": "/data3/user/LocateMOT-runs/GroundJEV_Eval_NoMOT20_4GPU/request_local_seed_v2/jobs/sportsmot__v_9MHDmAMxO5I_c003__d743f9a1134bb802/j1_current_crops_memory_v4/frozen_receipt.json"
+    },
+    {
       "job": "sportsmot__v_cC2mHWqMcjk_c008__6ec845472cac25c4",
       "arm": "simple",
       "frames": 259,

@@ -1,0 +1,24 @@
+{
+  "status": "PUBLISHED_CLEAN_ARCHIVE_IMPORTS_COMPILE_PASSED",
+  "commit": "248e78ac433b55e09568b5351130b81a1dc9da2f",
+  "local_immutable_assets": {
+    "external": "/data2/user/LocateMOT_GroundJEV/external",
+    "models": "/data2/user/LocateMOT_GroundJEV/models",
+    "third_party": "/data2/user/LocateMOT_GroundJEV/third_party"
+  },
+  "checks": {
+    "trackjev_modules": [
+      "candidate_competition",
+      "decision_schema",
+      "global_assignment",
+      "losses",
+      "model",
+      "native_onejev_adapter",
+      "tracker_decision"
+    ],
+    "imports_passed": true,
+    "compileall_passed": true
+  },
+  "GPU_inference_claim": false,
+  "real_GPU_control_receipt": "engineering_checks/j1_input_contract/receipt.json"
+}

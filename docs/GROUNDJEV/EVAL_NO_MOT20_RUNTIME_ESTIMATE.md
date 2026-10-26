@@ -4,21 +4,21 @@ Status: INCOMPLETE. Estimates use actual input-specific native request times, in
 
 | Dataset | Cached frames / registered | Requests saved | Measured inputs | FPS | Remaining GPU-hours |
 |---|---:|---:|---:|---:|---:|
-| sportsmot | 974/26970 | 974 | 32 | 0.363 | 22.510 |
-| animaltrack | 1379/13167 | 1379 | 32 | 0.225 | 13.924 |
-| refer_kitti_v2 | 855/854073 | 855 | 32 | 0.950 | 426.523 |
-| tao_amodal | 79/36562 | 1043 | 45 | 0.004 | 2710.041 |
+| sportsmot | 1259/26970 | 1259 | 32 | 0.363 | 22.272 |
+| animaltrack | 1691/13167 | 1691 | 32 | 0.225 | 13.371 |
+| refer_kitti_v2 | 1254/854073 | 1254 | 32 | 0.950 | 446.756 |
+| tao_amodal | 99/36562 | 1294 | 32 | 0.002 | 3320.644 |
 
 sportsmot: registered 32-input preflight; mean 2.757 s, p95 2.990 s.
 animaltrack: registered 32-input preflight; mean 4.442 s, p95 5.361 s.
 refer_kitti_v2: registered 32-input preflight; mean 1.052 s, p95 1.151 s.
-tao_amodal: completed full-video caches; registered 32-input preflight unfinished; mean 267.416 s, p95 PENDING s.
+tao_amodal: registered 32-input preflight; mean 463.046 s, p95 510.957 s.
 
 Remaining-work forecasts prefer all completed native video/query scopes over the original short preflight. The early completed videos are a small, size-prioritized sample, so these are provisional cost extrapolations, not completion-date guarantees.
-sportsmot forecast: all completed native video/query caches, 974 measured frames.
-animaltrack forecast: all completed native video/query caches, 1081 measured frames.
-refer_kitti_v2 forecast: all completed native video/query caches, 836 measured frames.
-tao_amodal forecast: all completed native video/query caches, 45 measured frames.
+sportsmot forecast: all completed native video/query caches, 1240 measured frames.
+animaltrack forecast: all completed native video/query caches, 1691 measured frames.
+refer_kitti_v2 forecast: all completed native video/query caches, 1254 measured frames.
+tao_amodal forecast: all completed native video/query caches, 92 measured frames.
 
 Workers: four shared A800 GPUs, physical 3/4/6/1, UUIDs and memory limits in the committed configuration. A service runs one native request at a time. Allocation time and sampled utilization are recorded separately. No fourfold speedup is assumed.
 
