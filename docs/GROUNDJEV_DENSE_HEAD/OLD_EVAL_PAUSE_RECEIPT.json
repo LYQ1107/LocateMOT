@@ -1,0 +1,2617 @@
+{
+  "status": "PAUSED_BY_USER_FOR_ARCHITECTURE_PIVOT",
+  "pause_audit_sha256": "80653066ce9d4ce65be12ff2b697cc9d3d21e65586363f8a726b71f52d30d3f6",
+  "old_git_sha": "28567e6fd227809d88ca7fba5ad3eb66de3467f2",
+  "run": "/data3/user/LocateMOT-runs/GroundJEV_Eval_NoMOT20_4GPU/request_local_seed_v2",
+  "snapshot_directory": "/data3/user/LocateMOT-runs/GroundJEV_Eval_NoMOT20_4GPU/request_local_seed_v2/architecture_pivot_pause_20261026",
+  "queue_states": {
+    "COMPLETE": 246,
+    "PENDING": 29887,
+    "RUNNING": 2
+  },
+  "queue_integrity": "ok",
+  "interrupted_units": [
+    {
+      "id": "tao_amodal__val_ArgoVerse_1cf38cbe-deec-3675-9313-d736e02d1b58__c792357498df1027:0:16",
+      "job": "/data3/user/LocateMOT-runs/GroundJEV_Eval_NoMOT20_4GPU/request_local_seed_v2/jobs/tao_amodal__val_ArgoVerse_1cf38cbe-deec-3675-9313-d736e02d1b58__c792357498df1027",
+      "start": 0,
+      "stop": 16,
+      "owner": "B",
+      "preserved_files": [
+        {
+          "name": "manifest.json",
+          "bytes": 17542
+        },
+        {
+          "name": "evaluation.json",
+          "bytes": 409
+        },
+        {
+          "name": "detector.sqlite-wal",
+          "bytes": 1643912
+        },
+        {
+          "name": ".initialize.lock",
+          "bytes": 0
+        },
+        {
+          "name": "detector.sqlite",
+          "bytes": 4096
+        },
+        {
+          "name": "detector.sqlite-shm",
+          "bytes": 32768
+        }
+      ],
+      "cache_integrity": "ok",
+      "committed_frames": 7,
+      "last_complete_frame": 180,
+      "requests": 95
+    },
+    {
+      "id": "animaltrack__dolphin_3__ed42a8e56f990243:256:288",
+      "job": "/data3/user/LocateMOT-runs/GroundJEV_Eval_NoMOT20_4GPU/request_local_seed_v2/jobs/animaltrack__dolphin_3__ed42a8e56f990243",
+      "start": 256,
+      "stop": 288,
+      "owner": "D",
+      "preserved_files": [
+        {
+          "name": "manifest.json",
+          "bytes": 31850
+        },
+        {
+          "name": "evaluation.json",
+          "bytes": 334
+        },
+        {
+          "name": ".initialize.lock",
+          "bytes": 0
+        },
+        {
+          "name": "errors.jsonl",
+          "bytes": 150
+        },
+        {
+          "name": "detector.sqlite",
+          "bytes": 667648
+        }
+      ],
+      "cache_integrity": "ok",
+      "committed_frames": 269,
+      "last_complete_frame": 269,
+      "requests": 269
+    }
+  ],
+  "verified_stopped_processes": [
+    {
+      "pid": 113634,
+      "uid": 1009,
+      "ppid": 3305864,
+      "pgid": 3305851,
+      "start_ticks": 140530879,
+      "command": "/data2/user/LocateMOT_GroundJEV/.venv-onejev-py310/bin/python /data2/user/LocateMOT_GroundJEV_Eval_NoMOT20/tools/groundjev/eval_no_mot20/dispatch_4gpu.py --config /data2/user/LocateMOT_GroundJEV_Eval_"
+    },
+    {
+      "pid": 124831,
+      "uid": 1009,
+      "ppid": 113634,
+      "pgid": 124831,
+      "start_ticks": 140534540,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python -m infer.sglang_server --model-path /data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM-G2-CLEAN-V2 --served-model-"
+    },
+    {
+      "pid": 129552,
+      "uid": 1009,
+      "ppid": 124831,
+      "pgid": 124831,
+      "start_ticks": 140535773,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python -c from multiprocessing.resource_tracker import main;main(50)"
+    },
+    {
+      "pid": 129553,
+      "uid": 1009,
+      "ppid": 124831,
+      "pgid": 124831,
+      "start_ticks": 140535773,
+      "command": "sglang::scheduler"
+    },
+    {
+      "pid": 129554,
+      "uid": 1009,
+      "ppid": 124831,
+      "pgid": 124831,
+      "start_ticks": 140535773,
+      "command": "sglang::detokenizer"
+    },
+    {
+      "pid": 135299,
+      "uid": 1009,
+      "ppid": 129553,
+      "pgid": 124831,
+      "start_ticks": 140537984,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 136788,
+      "uid": 1009,
+      "ppid": 135299,
+      "pgid": 124831,
+      "start_ticks": 140538297,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 136791,
+      "uid": 1009,
+      "ppid": 135299,
+      "pgid": 124831,
+      "start_ticks": 140538298,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 136794,
+      "uid": 1009,
+      "ppid": 135299,
+      "pgid": 124831,
+      "start_ticks": 140538298,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 136797,
+      "uid": 1009,
+      "ppid": 135299,
+      "pgid": 124831,
+      "start_ticks": 140538299,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 136812,
+      "uid": 1009,
+      "ppid": 135299,
+      "pgid": 124831,
+      "start_ticks": 140538299,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 136858,
+      "uid": 1009,
+      "ppid": 135299,
+      "pgid": 124831,
+      "start_ticks": 140538299,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 136902,
+      "uid": 1009,
+      "ppid": 135299,
+      "pgid": 124831,
+      "start_ticks": 140538300,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 136933,
+      "uid": 1009,
+      "ppid": 135299,
+      "pgid": 124831,
+      "start_ticks": 140538300,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 136935,
+      "uid": 1009,
+      "ppid": 135299,
+      "pgid": 124831,
+      "start_ticks": 140538300,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 136937,
+      "uid": 1009,
+      "ppid": 135299,
+      "pgid": 124831,
+      "start_ticks": 140538301,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 136939,
+      "uid": 1009,
+      "ppid": 135299,
+      "pgid": 124831,
+      "start_ticks": 140538301,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 136940,
+      "uid": 1009,
+      "ppid": 135299,
+      "pgid": 124831,
+      "start_ticks": 140538301,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 136942,
+      "uid": 1009,
+      "ppid": 135299,
+      "pgid": 124831,
+      "start_ticks": 140538302,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 136944,
+      "uid": 1009,
+      "ppid": 135299,
+      "pgid": 124831,
+      "start_ticks": 140538302,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 136946,
+      "uid": 1009,
+      "ppid": 135299,
+      "pgid": 124831,
+      "start_ticks": 140538302,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 136948,
+      "uid": 1009,
+      "ppid": 135299,
+      "pgid": 124831,
+      "start_ticks": 140538303,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 136951,
+      "uid": 1009,
+      "ppid": 135299,
+      "pgid": 124831,
+      "start_ticks": 140538303,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 136953,
+      "uid": 1009,
+      "ppid": 135299,
+      "pgid": 124831,
+      "start_ticks": 140538303,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 136955,
+      "uid": 1009,
+      "ppid": 135299,
+      "pgid": 124831,
+      "start_ticks": 140538304,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 136957,
+      "uid": 1009,
+      "ppid": 135299,
+      "pgid": 124831,
+      "start_ticks": 140538304,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 136960,
+      "uid": 1009,
+      "ppid": 135299,
+      "pgid": 124831,
+      "start_ticks": 140538305,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 136961,
+      "uid": 1009,
+      "ppid": 135299,
+      "pgid": 124831,
+      "start_ticks": 140538305,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 136971,
+      "uid": 1009,
+      "ppid": 135299,
+      "pgid": 124831,
+      "start_ticks": 140538305,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 136983,
+      "uid": 1009,
+      "ppid": 135299,
+      "pgid": 124831,
+      "start_ticks": 140538306,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 136995,
+      "uid": 1009,
+      "ppid": 135299,
+      "pgid": 124831,
+      "start_ticks": 140538306,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 137011,
+      "uid": 1009,
+      "ppid": 135299,
+      "pgid": 124831,
+      "start_ticks": 140538306,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 137028,
+      "uid": 1009,
+      "ppid": 135299,
+      "pgid": 124831,
+      "start_ticks": 140538307,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 137040,
+      "uid": 1009,
+      "ppid": 135299,
+      "pgid": 124831,
+      "start_ticks": 140538307,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 137044,
+      "uid": 1009,
+      "ppid": 135299,
+      "pgid": 124831,
+      "start_ticks": 140538307,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 137046,
+      "uid": 1009,
+      "ppid": 135299,
+      "pgid": 124831,
+      "start_ticks": 140538308,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 137049,
+      "uid": 1009,
+      "ppid": 135299,
+      "pgid": 124831,
+      "start_ticks": 140538308,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 137050,
+      "uid": 1009,
+      "ppid": 135299,
+      "pgid": 124831,
+      "start_ticks": 140538308,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 264780,
+      "uid": 1009,
+      "ppid": 113634,
+      "pgid": 3305851,
+      "start_ticks": 140600824,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV_Eval_NoMOT20/tools/groundjev/eval_no_mot20/export_g2_candidates.py --job /data3/user/Loca"
+    },
+    {
+      "pid": 3123376,
+      "uid": 1009,
+      "ppid": 3015,
+      "pgid": 3123376,
+      "start_ticks": 138131336,
+      "command": "python3 -u tools/groundjev/eval_no_mot20/dispatch_4gpu.py --config configs/groundjev/eval_no_mot20_4gpu_v1.json --stage detection --resume"
+    },
+    {
+      "pid": 3190354,
+      "uid": 1009,
+      "ppid": 3015,
+      "pgid": 3190354,
+      "start_ticks": 138377564,
+      "command": "/data2/user/LocateMOT_GroundJEV/.venv-onejev-py310/bin/python tools/groundjev/eval_no_mot20/monitor_run.py --config configs/groundjev/eval_no_mot20_4gpu_v1.json --publish"
+    },
+    {
+      "pid": 3303793,
+      "uid": 1009,
+      "ppid": 3015,
+      "pgid": 3303793,
+      "start_ticks": 138783942,
+      "command": "/data2/user/LocateMOT_GroundJEV/.venv-onejev-py310/bin/python tools/groundjev/eval_no_mot20/dispatch_4gpu.py --config configs/groundjev/eval_no_mot20_4gpu_v1.json --stage detection --recover-worker C"
+    },
+    {
+      "pid": 3305851,
+      "uid": 1009,
+      "ppid": 3015,
+      "pgid": 3305851,
+      "start_ticks": 138790943,
+      "command": "/bin/bash -lc python3 -m compileall -q tools/groundjev/eval_no_mot20; /data2/user/LocateMOT_GroundJEV/.venv-onejev-py310/bin/python tools/groundjev/eval_no_mot20/supervise_workers.py --config configs/"
+    },
+    {
+      "pid": 3305864,
+      "uid": 1009,
+      "ppid": 3305851,
+      "pgid": 3305851,
+      "start_ticks": 138790952,
+      "command": "/data2/user/LocateMOT_GroundJEV/.venv-onejev-py310/bin/python tools/groundjev/eval_no_mot20/supervise_workers.py --config configs/groundjev/eval_no_mot20_4gpu_v1.json"
+    },
+    {
+      "pid": 3959270,
+      "uid": 1009,
+      "ppid": 3303793,
+      "pgid": 3959270,
+      "start_ticks": 140131180,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python -m infer.sglang_server --model-path /data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM-G2-CLEAN-V2 --served-model-"
+    },
+    {
+      "pid": 3960093,
+      "uid": 1009,
+      "ppid": 3959270,
+      "pgid": 3959270,
+      "start_ticks": 140132364,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python -c from multiprocessing.resource_tracker import main;main(50)"
+    },
+    {
+      "pid": 3960094,
+      "uid": 1009,
+      "ppid": 3959270,
+      "pgid": 3959270,
+      "start_ticks": 140132364,
+      "command": "sglang::scheduler"
+    },
+    {
+      "pid": 3960095,
+      "uid": 1009,
+      "ppid": 3959270,
+      "pgid": 3959270,
+      "start_ticks": 140132364,
+      "command": "sglang::detokenizer"
+    },
+    {
+      "pid": 3960884,
+      "uid": 1009,
+      "ppid": 3960094,
+      "pgid": 3959270,
+      "start_ticks": 140133917,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 3961054,
+      "uid": 1009,
+      "ppid": 3960884,
+      "pgid": 3959270,
+      "start_ticks": 140134226,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 3961055,
+      "uid": 1009,
+      "ppid": 3960884,
+      "pgid": 3959270,
+      "start_ticks": 140134226,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 3961057,
+      "uid": 1009,
+      "ppid": 3960884,
+      "pgid": 3959270,
+      "start_ticks": 140134227,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 3961060,
+      "uid": 1009,
+      "ppid": 3960884,
+      "pgid": 3959270,
+      "start_ticks": 140134227,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 3961062,
+      "uid": 1009,
+      "ppid": 3960884,
+      "pgid": 3959270,
+      "start_ticks": 140134227,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 3961064,
+      "uid": 1009,
+      "ppid": 3960884,
+      "pgid": 3959270,
+      "start_ticks": 140134227,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 3961066,
+      "uid": 1009,
+      "ppid": 3960884,
+      "pgid": 3959270,
+      "start_ticks": 140134228,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 3961068,
+      "uid": 1009,
+      "ppid": 3960884,
+      "pgid": 3959270,
+      "start_ticks": 140134228,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 3961070,
+      "uid": 1009,
+      "ppid": 3960884,
+      "pgid": 3959270,
+      "start_ticks": 140134228,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 3961072,
+      "uid": 1009,
+      "ppid": 3960884,
+      "pgid": 3959270,
+      "start_ticks": 140134229,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 3961074,
+      "uid": 1009,
+      "ppid": 3960884,
+      "pgid": 3959270,
+      "start_ticks": 140134229,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 3961077,
+      "uid": 1009,
+      "ppid": 3960884,
+      "pgid": 3959270,
+      "start_ticks": 140134229,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 3961078,
+      "uid": 1009,
+      "ppid": 3960884,
+      "pgid": 3959270,
+      "start_ticks": 140134230,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 3961080,
+      "uid": 1009,
+      "ppid": 3960884,
+      "pgid": 3959270,
+      "start_ticks": 140134230,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 3961082,
+      "uid": 1009,
+      "ppid": 3960884,
+      "pgid": 3959270,
+      "start_ticks": 140134230,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 3961084,
+      "uid": 1009,
+      "ppid": 3960884,
+      "pgid": 3959270,
+      "start_ticks": 140134231,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 3961087,
+      "uid": 1009,
+      "ppid": 3960884,
+      "pgid": 3959270,
+      "start_ticks": 140134231,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 3961090,
+      "uid": 1009,
+      "ppid": 3960884,
+      "pgid": 3959270,
+      "start_ticks": 140134231,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 3961092,
+      "uid": 1009,
+      "ppid": 3960884,
+      "pgid": 3959270,
+      "start_ticks": 140134231,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 3961094,
+      "uid": 1009,
+      "ppid": 3960884,
+      "pgid": 3959270,
+      "start_ticks": 140134232,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 3961096,
+      "uid": 1009,
+      "ppid": 3960884,
+      "pgid": 3959270,
+      "start_ticks": 140134232,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 3961098,
+      "uid": 1009,
+      "ppid": 3960884,
+      "pgid": 3959270,
+      "start_ticks": 140134232,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 3961100,
+      "uid": 1009,
+      "ppid": 3960884,
+      "pgid": 3959270,
+      "start_ticks": 140134233,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 3961103,
+      "uid": 1009,
+      "ppid": 3960884,
+      "pgid": 3959270,
+      "start_ticks": 140134233,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 3961105,
+      "uid": 1009,
+      "ppid": 3960884,
+      "pgid": 3959270,
+      "start_ticks": 140134233,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 3961107,
+      "uid": 1009,
+      "ppid": 3960884,
+      "pgid": 3959270,
+      "start_ticks": 140134233,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 3961109,
+      "uid": 1009,
+      "ppid": 3960884,
+      "pgid": 3959270,
+      "start_ticks": 140134234,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 3961111,
+      "uid": 1009,
+      "ppid": 3960884,
+      "pgid": 3959270,
+      "start_ticks": 140134234,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 3961113,
+      "uid": 1009,
+      "ppid": 3960884,
+      "pgid": 3959270,
+      "start_ticks": 140134234,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 3961115,
+      "uid": 1009,
+      "ppid": 3960884,
+      "pgid": 3959270,
+      "start_ticks": 140134235,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 3961117,
+      "uid": 1009,
+      "ppid": 3960884,
+      "pgid": 3959270,
+      "start_ticks": 140134235,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 3961119,
+      "uid": 1009,
+      "ppid": 3960884,
+      "pgid": 3959270,
+      "start_ticks": 140134235,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 3982748,
+      "uid": 1009,
+      "ppid": 3303793,
+      "pgid": 3303793,
+      "start_ticks": 140174394,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV_Eval_NoMOT20/tools/groundjev/eval_no_mot20/export_g2_candidates.py --job /data3/user/Loca"
+    },
+    {
+      "pid": 4104808,
+      "uid": 1009,
+      "ppid": 3123376,
+      "pgid": 4104808,
+      "start_ticks": 140353100,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python -m infer.sglang_server --model-path /data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM-G2-CLEAN-V2 --served-model-"
+    },
+    {
+      "pid": 4105535,
+      "uid": 1009,
+      "ppid": 4104808,
+      "pgid": 4104808,
+      "start_ticks": 140354272,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python -c from multiprocessing.resource_tracker import main;main(50)"
+    },
+    {
+      "pid": 4105537,
+      "uid": 1009,
+      "ppid": 4104808,
+      "pgid": 4104808,
+      "start_ticks": 140354272,
+      "command": "sglang::scheduler"
+    },
+    {
+      "pid": 4105538,
+      "uid": 1009,
+      "ppid": 4104808,
+      "pgid": 4104808,
+      "start_ticks": 140354272,
+      "command": "sglang::detokenizer"
+    },
+    {
+      "pid": 4106557,
+      "uid": 1009,
+      "ppid": 4105537,
+      "pgid": 4104808,
+      "start_ticks": 140355832,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 4106721,
+      "uid": 1009,
+      "ppid": 4106557,
+      "pgid": 4104808,
+      "start_ticks": 140356136,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 4106722,
+      "uid": 1009,
+      "ppid": 4106557,
+      "pgid": 4104808,
+      "start_ticks": 140356136,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 4106724,
+      "uid": 1009,
+      "ppid": 4106557,
+      "pgid": 4104808,
+      "start_ticks": 140356137,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 4106726,
+      "uid": 1009,
+      "ppid": 4106557,
+      "pgid": 4104808,
+      "start_ticks": 140356137,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 4106728,
+      "uid": 1009,
+      "ppid": 4106557,
+      "pgid": 4104808,
+      "start_ticks": 140356138,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 4106730,
+      "uid": 1009,
+      "ppid": 4106557,
+      "pgid": 4104808,
+      "start_ticks": 140356138,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 4106733,
+      "uid": 1009,
+      "ppid": 4106557,
+      "pgid": 4104808,
+      "start_ticks": 140356138,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 4106735,
+      "uid": 1009,
+      "ppid": 4106557,
+      "pgid": 4104808,
+      "start_ticks": 140356139,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 4106737,
+      "uid": 1009,
+      "ppid": 4106557,
+      "pgid": 4104808,
+      "start_ticks": 140356139,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 4106739,
+      "uid": 1009,
+      "ppid": 4106557,
+      "pgid": 4104808,
+      "start_ticks": 140356139,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 4106741,
+      "uid": 1009,
+      "ppid": 4106557,
+      "pgid": 4104808,
+      "start_ticks": 140356139,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 4106743,
+      "uid": 1009,
+      "ppid": 4106557,
+      "pgid": 4104808,
+      "start_ticks": 140356140,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 4106744,
+      "uid": 1009,
+      "ppid": 4106557,
+      "pgid": 4104808,
+      "start_ticks": 140356140,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 4106746,
+      "uid": 1009,
+      "ppid": 4106557,
+      "pgid": 4104808,
+      "start_ticks": 140356140,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 4106748,
+      "uid": 1009,
+      "ppid": 4106557,
+      "pgid": 4104808,
+      "start_ticks": 140356141,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 4106751,
+      "uid": 1009,
+      "ppid": 4106557,
+      "pgid": 4104808,
+      "start_ticks": 140356141,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 4106753,
+      "uid": 1009,
+      "ppid": 4106557,
+      "pgid": 4104808,
+      "start_ticks": 140356141,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 4106756,
+      "uid": 1009,
+      "ppid": 4106557,
+      "pgid": 4104808,
+      "start_ticks": 140356142,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 4106760,
+      "uid": 1009,
+      "ppid": 4106557,
+      "pgid": 4104808,
+      "start_ticks": 140356142,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 4106762,
+      "uid": 1009,
+      "ppid": 4106557,
+      "pgid": 4104808,
+      "start_ticks": 140356142,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 4106765,
+      "uid": 1009,
+      "ppid": 4106557,
+      "pgid": 4104808,
+      "start_ticks": 140356143,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 4106766,
+      "uid": 1009,
+      "ppid": 4106557,
+      "pgid": 4104808,
+      "start_ticks": 140356143,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 4106769,
+      "uid": 1009,
+      "ppid": 4106557,
+      "pgid": 4104808,
+      "start_ticks": 140356143,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 4106770,
+      "uid": 1009,
+      "ppid": 4106557,
+      "pgid": 4104808,
+      "start_ticks": 140356144,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 4106773,
+      "uid": 1009,
+      "ppid": 4106557,
+      "pgid": 4104808,
+      "start_ticks": 140356144,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 4106774,
+      "uid": 1009,
+      "ppid": 4106557,
+      "pgid": 4104808,
+      "start_ticks": 140356144,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 4106776,
+      "uid": 1009,
+      "ppid": 4106557,
+      "pgid": 4104808,
+      "start_ticks": 140356145,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 4106778,
+      "uid": 1009,
+      "ppid": 4106557,
+      "pgid": 4104808,
+      "start_ticks": 140356145,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 4106781,
+      "uid": 1009,
+      "ppid": 4106557,
+      "pgid": 4104808,
+      "start_ticks": 140356145,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 4106782,
+      "uid": 1009,
+      "ppid": 4106557,
+      "pgid": 4104808,
+      "start_ticks": 140356145,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 4106784,
+      "uid": 1009,
+      "ppid": 4106557,
+      "pgid": 4104808,
+      "start_ticks": 140356146,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 4106786,
+      "uid": 1009,
+      "ppid": 4106557,
+      "pgid": 4104808,
+      "start_ticks": 140356146,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/lib/python3.12/site-packages/torch/_inductor/compile_"
+    },
+    {
+      "pid": 4148692,
+      "uid": 1009,
+      "ppid": 4148689,
+      "pgid": 4148689,
+      "start_ticks": 140425563,
+      "command": "/data2/user/LocateMOT_GroundJEV/.venv-onejev-py310/bin/python -"
+    },
+    {
+      "pid": 4151006,
+      "uid": 1009,
+      "ppid": 3123376,
+      "pgid": 3123376,
+      "start_ticks": 140429111,
+      "command": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python /data2/user/LocateMOT_GroundJEV_Eval_NoMOT20/tools/groundjev/eval_no_mot20/export_g2_candidates.py --job /data3/user/Loca"
+    }
+  ],
+  "signal_events": [
+    {
+      "pid": 3305851,
+      "pgid": null,
+      "signal": "SIGTERM",
+      "time": 1793029335.4925191
+    },
+    {
+      "pid": 3305864,
+      "pgid": null,
+      "signal": "SIGTERM",
+      "time": 1793029335.4926095
+    },
+    {
+      "pid": 113634,
+      "pgid": null,
+      "signal": "SIGSTOP",
+      "time": 1793029335.4926982
+    },
+    {
+      "pid": 3123376,
+      "pgid": null,
+      "signal": "SIGSTOP",
+      "time": 1793029335.4927766
+    },
+    {
+      "pid": 3303793,
+      "pgid": null,
+      "signal": "SIGSTOP",
+      "time": 1793029335.492854
+    },
+    {
+      "pid": 3190354,
+      "pgid": null,
+      "signal": "SIGTERM",
+      "time": 1793029335.4929297
+    },
+    {
+      "pid": 4148692,
+      "pgid": null,
+      "signal": "SIGTERM",
+      "time": 1793029335.4930022
+    },
+    {
+      "pid": null,
+      "pgid": 124831,
+      "signal": "SIGTERM",
+      "time": 1793029370.6394842
+    },
+    {
+      "pid": null,
+      "pgid": 4104808,
+      "signal": "SIGTERM",
+      "time": 1793029370.8159704
+    },
+    {
+      "pid": 4151006,
+      "pgid": null,
+      "signal": "SIGTERM",
+      "time": 1793029370.816103
+    },
+    {
+      "pid": 113634,
+      "pgid": null,
+      "signal": "SIGTERM",
+      "time": 1793029370.8163507
+    },
+    {
+      "pid": 113634,
+      "pgid": null,
+      "signal": "SIGCONT",
+      "time": 1793029370.8164291
+    },
+    {
+      "pid": 3123376,
+      "pgid": null,
+      "signal": "SIGTERM",
+      "time": 1793029370.8165166
+    },
+    {
+      "pid": 3123376,
+      "pgid": null,
+      "signal": "SIGCONT",
+      "time": 1793029370.8166099
+    },
+    {
+      "pid": 3303793,
+      "pgid": null,
+      "signal": "SIGTERM",
+      "time": 1793029370.8166971
+    },
+    {
+      "pid": 3303793,
+      "pgid": null,
+      "signal": "SIGCONT",
+      "time": 1793029370.8167708
+    },
+    {
+      "pid": 124831,
+      "pgid": null,
+      "signal": "SIGKILL",
+      "time": 1793029378.8253167
+    },
+    {
+      "pid": 129552,
+      "pgid": null,
+      "signal": "SIGKILL",
+      "time": 1793029378.8255117
+    },
+    {
+      "pid": 4104808,
+      "pgid": null,
+      "signal": "SIGKILL",
+      "time": 1793029378.8274407
+    },
+    {
+      "pid": 4105535,
+      "pgid": null,
+      "signal": "SIGKILL",
+      "time": 1793029378.8276188
+    }
+  ],
+  "queue_mutations": [],
+  "remaining_owned_processes": [],
+  "automatic_recovery_disabled": true,
+  "external_launchers": "no tmux/screen/cron or matching user systemd service/timer",
+  "foreign_processes_preserved": true,
+  "complete_jobs": {
+    "sportsmot__v_0kUtTtmLaJA_c006__4ec33e2672d75440": {
+      "dataset": "sportsmot",
+      "sequence": "v_0kUtTtmLaJA_c006",
+      "frames": 346,
+      "arms": [
+        "simple",
+        "j1_current_crops_memory_v4",
+        "coupled"
+      ]
+    },
+    "sportsmot__v_0kUtTtmLaJA_c007__48899a46b3f11be2": {
+      "dataset": "sportsmot",
+      "sequence": "v_0kUtTtmLaJA_c007",
+      "frames": 271,
+      "arms": [
+        "simple",
+        "j1_current_crops_memory_v4",
+        "coupled"
+      ]
+    },
+    "sportsmot__v_0kUtTtmLaJA_c008__8b2da8ad8a99257a": {
+      "dataset": "sportsmot",
+      "sequence": "v_0kUtTtmLaJA_c008",
+      "frames": 266,
+      "arms": [
+        "simple",
+        "j1_current_crops_memory_v4",
+        "coupled"
+      ]
+    },
+    "sportsmot__v_0kUtTtmLaJA_c010__ae75f08a115f04f4": {
+      "dataset": "sportsmot",
+      "sequence": "v_0kUtTtmLaJA_c010",
+      "frames": 270,
+      "arms": [
+        "simple",
+        "j1_current_crops_memory_v4",
+        "coupled"
+      ]
+    },
+    "sportsmot__v_4-EmEtrturE_c009__3ae432000bedc80d": {
+      "dataset": "sportsmot",
+      "sequence": "v_4-EmEtrturE_c009",
+      "frames": 250,
+      "arms": [
+        "simple",
+        "j1_current_crops_memory_v4",
+        "coupled"
+      ]
+    },
+    "sportsmot__v_9MHDmAMxO5I_c002__bd2fa61e4541282d": {
+      "dataset": "sportsmot",
+      "sequence": "v_9MHDmAMxO5I_c002",
+      "frames": 239,
+      "arms": [
+        "simple",
+        "j1_current_crops_memory_v4",
+        "coupled"
+      ]
+    },
+    "sportsmot__v_9MHDmAMxO5I_c003__d743f9a1134bb802": {
+      "dataset": "sportsmot",
+      "sequence": "v_9MHDmAMxO5I_c003",
+      "frames": 226,
+      "arms": [
+        "simple",
+        "j1_current_crops_memory_v4",
+        "coupled"
+      ]
+    },
+    "sportsmot__v_9MHDmAMxO5I_c006__cdb67f74ddad11b3": {
+      "dataset": "sportsmot",
+      "sequence": "v_9MHDmAMxO5I_c006",
+      "frames": 269,
+      "arms": [
+        "simple",
+        "j1_current_crops_memory_v4",
+        "coupled"
+      ]
+    },
+    "sportsmot__v_cC2mHWqMcjk_c008__6ec845472cac25c4": {
+      "dataset": "sportsmot",
+      "sequence": "v_cC2mHWqMcjk_c008",
+      "frames": 259,
+      "arms": [
+        "simple",
+        "j1_current_crops_memory_v4",
+        "coupled"
+      ]
+    },
+    "animaltrack__chicken_1__58a079d630f401d9": {
+      "dataset": "animaltrack",
+      "sequence": "chicken_1",
+      "frames": 306,
+      "arms": [
+        "simple",
+        "j1_current_crops_memory_v4",
+        "coupled"
+      ]
+    },
+    "animaltrack__deer_3__e89d749a492b0ffc": {
+      "dataset": "animaltrack",
+      "sequence": "deer_3",
+      "frames": 307,
+      "arms": [
+        "simple",
+        "j1_current_crops_memory_v4",
+        "coupled"
+      ]
+    },
+    "animaltrack__duck_1__860d03d46f5e664e": {
+      "dataset": "animaltrack",
+      "sequence": "duck_1",
+      "frames": 301,
+      "arms": [
+        "simple",
+        "j1_current_crops_memory_v4",
+        "coupled"
+      ]
+    },
+    "animaltrack__duck_2__37075e40f13ce4a2": {
+      "dataset": "animaltrack",
+      "sequence": "duck_2",
+      "frames": 196,
+      "arms": [
+        "simple",
+        "j1_current_crops_memory_v4",
+        "coupled"
+      ]
+    },
+    "animaltrack__horse_1__c41a12132cc572b1": {
+      "dataset": "animaltrack",
+      "sequence": "horse_1",
+      "frames": 284,
+      "arms": [
+        "simple",
+        "j1_current_crops_memory_v4",
+        "coupled"
+      ]
+    },
+    "animaltrack__horse_2__85a50c1a46ef265d": {
+      "dataset": "animaltrack",
+      "sequence": "horse_2",
+      "frames": 310,
+      "arms": [
+        "simple",
+        "j1_current_crops_memory_v4",
+        "coupled"
+      ]
+    },
+    "animaltrack__pig_2__215efc8b245470b6": {
+      "dataset": "animaltrack",
+      "sequence": "pig_2",
+      "frames": 312,
+      "arms": [
+        "simple",
+        "j1_current_crops_memory_v4",
+        "coupled"
+      ]
+    },
+    "animaltrack__rabbit_1__da8189ca5927d832": {
+      "dataset": "animaltrack",
+      "sequence": "rabbit_1",
+      "frames": 300,
+      "arms": [
+        "simple",
+        "j1_current_crops_memory_v4",
+        "coupled"
+      ]
+    },
+    "animaltrack__zebra_1__43ac4c0429040eb8": {
+      "dataset": "animaltrack",
+      "sequence": "zebra_1",
+      "frames": 304,
+      "arms": [
+        "simple",
+        "j1_current_crops_memory_v4",
+        "coupled"
+      ]
+    },
+    "refer_kitti_v2__0016__048bc18de5cde4e7": {
+      "dataset": "refer_kitti_v2",
+      "sequence": "0016",
+      "frames": 209,
+      "arms": [
+        "simple",
+        "j1_current_crops_memory_v4"
+      ]
+    },
+    "refer_kitti_v2__0016__065d454abc8323d1": {
+      "dataset": "refer_kitti_v2",
+      "sequence": "0016",
+      "frames": 209,
+      "arms": [
+        "simple",
+        "j1_current_crops_memory_v4"
+      ]
+    },
+    "refer_kitti_v2__0016__03a2699a3ef911f5": {
+      "dataset": "refer_kitti_v2",
+      "sequence": "0016",
+      "frames": 209,
+      "arms": [
+        "simple",
+        "j1_current_crops_memory_v4"
+      ]
+    },
+    "refer_kitti_v2__0016__05ab35bca7b28526": {
+      "dataset": "refer_kitti_v2",
+      "sequence": "0016",
+      "frames": 209,
+      "arms": [
+        "simple",
+        "j1_current_crops_memory_v4"
+      ]
+    },
+    "refer_kitti_v2__0016__00daf55116f6e7c3": {
+      "dataset": "refer_kitti_v2",
+      "sequence": "0016",
+      "frames": 209,
+      "arms": [
+        "simple",
+        "j1_current_crops_memory_v4"
+      ]
+    },
+    "refer_kitti_v2__0016__01b7ebd4d25bcbf9": {
+      "dataset": "refer_kitti_v2",
+      "sequence": "0016",
+      "frames": 209,
+      "arms": [
+        "simple",
+        "j1_current_crops_memory_v4"
+      ]
+    },
+    "refer_kitti_v2__0016__03c8958347a6955f": {
+      "dataset": "refer_kitti_v2",
+      "sequence": "0016",
+      "frames": 209,
+      "arms": [
+        "simple",
+        "j1_current_crops_memory_v4"
+      ]
+    },
+    "refer_kitti_v2__0016__045af61a7158b3bf": {
+      "dataset": "refer_kitti_v2",
+      "sequence": "0016",
+      "frames": 209,
+      "arms": [
+        "simple",
+        "j1_current_crops_memory_v4"
+      ]
+    },
+    "refer_kitti_v2__0016__00cd9522ff6583c5": {
+      "dataset": "refer_kitti_v2",
+      "sequence": "0016",
+      "frames": 209,
+      "arms": [
+        "simple",
+        "j1_current_crops_memory_v4"
+      ]
+    },
+    "tao_amodal__val_ArgoVerse_side_left_273c1883-673a-36bf-b124-88311b1a80be__621d07178dd1c86f": {
+      "dataset": "tao_amodal",
+      "sequence": "val/ArgoVerse/side_left_273c1883-673a-36bf-b124-88311b1a80be",
+      "frames": 15,
+      "arms": [
+        "simple",
+        "j1_current_crops_memory_v4"
+      ]
+    },
+    "tao_amodal__val_ArgoVerse_rear_right_25952736-2595-2595-2595-225953853440__71b0e223d2ba9566": {
+      "dataset": "tao_amodal",
+      "sequence": "val/ArgoVerse/rear_right_25952736-2595-2595-2595-225953853440",
+      "frames": 15,
+      "arms": [
+        "simple",
+        "j1_current_crops_memory_v4"
+      ]
+    },
+    "tao_amodal__val_AVA_BCiuXAuCKAU_scene_16_109527-110290__e597df32d6583b53": {
+      "dataset": "tao_amodal",
+      "sequence": "val/AVA/BCiuXAuCKAU_scene_16_109527-110290",
+      "frames": 32,
+      "arms": [
+        "simple",
+        "j1_current_crops_memory_v4"
+      ]
+    },
+    "tao_amodal__val_ArgoVerse_028d5cb1-f74d-366c-85ad-84fde69b0fd3__7fab9fd1f0ef5895": {
+      "dataset": "tao_amodal",
+      "sequence": "val/ArgoVerse/028d5cb1-f74d-366c-85ad-84fde69b0fd3",
+      "frames": 16,
+      "arms": [
+        "simple",
+        "j1_current_crops_memory_v4"
+      ]
+    },
+    "tao_amodal__val_ArgoVerse_273c1883-673a-36bf-b124-88311b1a80be__de656dfbbfe75581": {
+      "dataset": "tao_amodal",
+      "sequence": "val/ArgoVerse/273c1883-673a-36bf-b124-88311b1a80be",
+      "frames": 15,
+      "arms": [
+        "simple",
+        "j1_current_crops_memory_v4"
+      ]
+    },
+    "tao_amodal__val_ArgoVerse_043aeba7-14e5-3cde-8a5c-639389b6d3a6__3415da83c5a6d818": {
+      "dataset": "tao_amodal",
+      "sequence": "val/ArgoVerse/043aeba7-14e5-3cde-8a5c-639389b6d3a6",
+      "frames": 16,
+      "arms": [
+        "simple",
+        "j1_current_crops_memory_v4"
+      ]
+    },
+    "tao_amodal__val_ArgoVerse_02cf0ce1-699a-373b-86c0-eb6fd5f4697a__468401552bf3c30a": {
+      "dataset": "tao_amodal",
+      "sequence": "val/ArgoVerse/02cf0ce1-699a-373b-86c0-eb6fd5f4697a",
+      "frames": 16,
+      "arms": [
+        "simple",
+        "j1_current_crops_memory_v4"
+      ]
+    },
+    "tao_amodal__val_ArgoVerse_25952736-2595-2595-2595-225953853440__9d1704f6ccc8e6ee": {
+      "dataset": "tao_amodal",
+      "sequence": "val/ArgoVerse/25952736-2595-2595-2595-225953853440",
+      "frames": 15,
+      "arms": [
+        "simple",
+        "j1_current_crops_memory_v4"
+      ]
+    },
+    "tao_amodal__val_ArgoVerse_10b8dee6-778f-33e4-a946-d842d2d9c3d7__16d10437ea8a1258": {
+      "dataset": "tao_amodal",
+      "sequence": "val/ArgoVerse/10b8dee6-778f-33e4-a946-d842d2d9c3d7",
+      "frames": 16,
+      "arms": [
+        "simple",
+        "j1_current_crops_memory_v4"
+      ]
+    }
+  },
+  "partial_caches": [
+    {
+      "id": "animaltrack__dolphin_3__ed42a8e56f990243",
+      "frames": 269,
+      "requests": 269,
+      "last_complete_frame": 269
+    },
+    {
+      "id": "tao_amodal__val_ArgoVerse_1cf38cbe-deec-3675-9313-d736e02d1b58__c792357498df1027",
+      "frames": 7,
+      "requests": 95,
+      "last_complete_frame": 180
+    }
+  ],
+  "worker_complete_units": {
+    "A": [
+      "animaltrack__duck_2__37075e40f13ce4a2:64:96",
+      "animaltrack__duck_2__37075e40f13ce4a2:160:192",
+      "sportsmot__v_9MHDmAMxO5I_c003__d743f9a1134bb802:0:32",
+      "animaltrack__horse_1__c41a12132cc572b1:32:64",
+      "sportsmot__v_9MHDmAMxO5I_c002__bd2fa61e4541282d:96:128",
+      "sportsmot__v_9MHDmAMxO5I_c002__bd2fa61e4541282d:160:192",
+      "sportsmot__v_9MHDmAMxO5I_c002__bd2fa61e4541282d:224:239",
+      "tao_amodal__val_ArgoVerse_273c1883-673a-36bf-b124-88311b1a80be__de656dfbbfe75581:0:15",
+      "animaltrack__duck_1__860d03d46f5e664e:0:32",
+      "animaltrack__duck_1__860d03d46f5e664e:64:96",
+      "animaltrack__duck_1__860d03d46f5e664e:128:160",
+      "animaltrack__duck_1__860d03d46f5e664e:160:192",
+      "animaltrack__duck_1__860d03d46f5e664e:224:256",
+      "animaltrack__duck_1__860d03d46f5e664e:288:301",
+      "refer_kitti_v2__0016__03a2699a3ef911f5:0:32",
+      "refer_kitti_v2__0016__03a2699a3ef911f5:32:64",
+      "refer_kitti_v2__0016__03a2699a3ef911f5:64:96",
+      "refer_kitti_v2__0016__03a2699a3ef911f5:96:128",
+      "refer_kitti_v2__0016__03a2699a3ef911f5:128:160",
+      "refer_kitti_v2__0016__03a2699a3ef911f5:160:192",
+      "refer_kitti_v2__0016__03a2699a3ef911f5:192:209",
+      "sportsmot__v_cC2mHWqMcjk_c008__6ec845472cac25c4:0:32",
+      "sportsmot__v_cC2mHWqMcjk_c008__6ec845472cac25c4:32:64",
+      "sportsmot__v_cC2mHWqMcjk_c008__6ec845472cac25c4:64:96",
+      "sportsmot__v_cC2mHWqMcjk_c008__6ec845472cac25c4:96:128",
+      "sportsmot__v_cC2mHWqMcjk_c008__6ec845472cac25c4:128:160",
+      "sportsmot__v_cC2mHWqMcjk_c008__6ec845472cac25c4:160:192",
+      "sportsmot__v_cC2mHWqMcjk_c008__6ec845472cac25c4:192:224",
+      "sportsmot__v_cC2mHWqMcjk_c008__6ec845472cac25c4:256:259",
+      "tao_amodal__val_ArgoVerse_side_left_273c1883-673a-36bf-b124-88311b1a80be__621d07178dd1c86f:0:15",
+      "animaltrack__chicken_1__58a079d630f401d9:32:64",
+      "animaltrack__chicken_1__58a079d630f401d9:96:128",
+      "animaltrack__chicken_1__58a079d630f401d9:160:192",
+      "animaltrack__chicken_1__58a079d630f401d9:224:256",
+      "animaltrack__chicken_1__58a079d630f401d9:288:306",
+      "refer_kitti_v2__0016__045af61a7158b3bf:0:32",
+      "refer_kitti_v2__0016__045af61a7158b3bf:32:64",
+      "refer_kitti_v2__0016__045af61a7158b3bf:64:96",
+      "refer_kitti_v2__0016__045af61a7158b3bf:96:128",
+      "refer_kitti_v2__0016__045af61a7158b3bf:128:160",
+      "refer_kitti_v2__0016__045af61a7158b3bf:160:192",
+      "refer_kitti_v2__0016__045af61a7158b3bf:192:209",
+      "sportsmot__v_9MHDmAMxO5I_c006__cdb67f74ddad11b3:96:128",
+      "sportsmot__v_9MHDmAMxO5I_c006__cdb67f74ddad11b3:224:256",
+      "animaltrack__deer_3__e89d749a492b0ffc:192:224",
+      "animaltrack__deer_3__e89d749a492b0ffc:256:288",
+      "refer_kitti_v2__0016__048bc18de5cde4e7:0:32",
+      "refer_kitti_v2__0016__048bc18de5cde4e7:32:64",
+      "refer_kitti_v2__0016__048bc18de5cde4e7:64:96",
+      "refer_kitti_v2__0016__048bc18de5cde4e7:96:128",
+      "refer_kitti_v2__0016__048bc18de5cde4e7:128:160",
+      "refer_kitti_v2__0016__048bc18de5cde4e7:192:209",
+      "sportsmot__v_0kUtTtmLaJA_c010__ae75f08a115f04f4:224:256",
+      "tao_amodal__val_ArgoVerse_043aeba7-14e5-3cde-8a5c-639389b6d3a6__3415da83c5a6d818:0:16",
+      "sportsmot__v_0kUtTtmLaJA_c006__4ec33e2672d75440:192:224",
+      "sportsmot__v_0kUtTtmLaJA_c006__4ec33e2672d75440:256:288"
+    ],
+    "B": [
+      "animaltrack__duck_2__37075e40f13ce4a2:0:32",
+      "animaltrack__duck_2__37075e40f13ce4a2:96:128",
+      "animaltrack__duck_2__37075e40f13ce4a2:192:196",
+      "refer_kitti_v2__0016__00cd9522ff6583c5:32:64",
+      "refer_kitti_v2__0016__00cd9522ff6583c5:64:96",
+      "refer_kitti_v2__0016__00cd9522ff6583c5:128:160",
+      "refer_kitti_v2__0016__00cd9522ff6583c5:192:209",
+      "sportsmot__v_9MHDmAMxO5I_c003__d743f9a1134bb802:32:64",
+      "sportsmot__v_9MHDmAMxO5I_c003__d743f9a1134bb802:64:96",
+      "sportsmot__v_9MHDmAMxO5I_c003__d743f9a1134bb802:128:160",
+      "sportsmot__v_9MHDmAMxO5I_c003__d743f9a1134bb802:192:224",
+      "animaltrack__horse_1__c41a12132cc572b1:0:32",
+      "animaltrack__horse_1__c41a12132cc572b1:64:96",
+      "animaltrack__horse_1__c41a12132cc572b1:96:128",
+      "animaltrack__horse_1__c41a12132cc572b1:128:160",
+      "animaltrack__horse_1__c41a12132cc572b1:160:192",
+      "animaltrack__horse_1__c41a12132cc572b1:192:224",
+      "animaltrack__horse_1__c41a12132cc572b1:224:256",
+      "animaltrack__horse_1__c41a12132cc572b1:256:284",
+      "refer_kitti_v2__0016__00daf55116f6e7c3:0:32",
+      "refer_kitti_v2__0016__00daf55116f6e7c3:32:64",
+      "refer_kitti_v2__0016__00daf55116f6e7c3:64:96",
+      "refer_kitti_v2__0016__00daf55116f6e7c3:96:128",
+      "refer_kitti_v2__0016__00daf55116f6e7c3:128:160",
+      "refer_kitti_v2__0016__00daf55116f6e7c3:160:192",
+      "refer_kitti_v2__0016__00daf55116f6e7c3:192:209",
+      "sportsmot__v_9MHDmAMxO5I_c002__bd2fa61e4541282d:0:32",
+      "sportsmot__v_9MHDmAMxO5I_c002__bd2fa61e4541282d:32:64",
+      "sportsmot__v_9MHDmAMxO5I_c002__bd2fa61e4541282d:64:96",
+      "sportsmot__v_9MHDmAMxO5I_c002__bd2fa61e4541282d:128:160",
+      "sportsmot__v_9MHDmAMxO5I_c002__bd2fa61e4541282d:192:224",
+      "animaltrack__rabbit_1__da8189ca5927d832:0:32",
+      "animaltrack__rabbit_1__da8189ca5927d832:32:64",
+      "animaltrack__rabbit_1__da8189ca5927d832:64:96",
+      "animaltrack__rabbit_1__da8189ca5927d832:96:128",
+      "animaltrack__rabbit_1__da8189ca5927d832:128:160",
+      "animaltrack__rabbit_1__da8189ca5927d832:160:192",
+      "animaltrack__rabbit_1__da8189ca5927d832:192:224",
+      "animaltrack__rabbit_1__da8189ca5927d832:224:256",
+      "animaltrack__rabbit_1__da8189ca5927d832:256:288",
+      "animaltrack__rabbit_1__da8189ca5927d832:288:300",
+      "refer_kitti_v2__0016__01b7ebd4d25bcbf9:0:32",
+      "refer_kitti_v2__0016__01b7ebd4d25bcbf9:32:64",
+      "refer_kitti_v2__0016__01b7ebd4d25bcbf9:64:96",
+      "refer_kitti_v2__0016__01b7ebd4d25bcbf9:96:128",
+      "refer_kitti_v2__0016__01b7ebd4d25bcbf9:128:160",
+      "refer_kitti_v2__0016__01b7ebd4d25bcbf9:160:192",
+      "refer_kitti_v2__0016__01b7ebd4d25bcbf9:192:209",
+      "sportsmot__v_4-EmEtrturE_c009__3ae432000bedc80d:0:32",
+      "sportsmot__v_4-EmEtrturE_c009__3ae432000bedc80d:32:64",
+      "sportsmot__v_4-EmEtrturE_c009__3ae432000bedc80d:64:96",
+      "sportsmot__v_4-EmEtrturE_c009__3ae432000bedc80d:96:128",
+      "sportsmot__v_4-EmEtrturE_c009__3ae432000bedc80d:160:192",
+      "sportsmot__v_4-EmEtrturE_c009__3ae432000bedc80d:224:250",
+      "tao_amodal__val_ArgoVerse_rear_right_25952736-2595-2595-2595-225953853440__71b0e223d2ba9566:0:15",
+      "animaltrack__zebra_1__43ac4c0429040eb8:0:32",
+      "animaltrack__zebra_1__43ac4c0429040eb8:64:96",
+      "animaltrack__zebra_1__43ac4c0429040eb8:128:160",
+      "animaltrack__zebra_1__43ac4c0429040eb8:192:224",
+      "animaltrack__zebra_1__43ac4c0429040eb8:224:256",
+      "animaltrack__zebra_1__43ac4c0429040eb8:288:304",
+      "sportsmot__v_0kUtTtmLaJA_c008__8b2da8ad8a99257a:224:256",
+      "tao_amodal__val_ArgoVerse_028d5cb1-f74d-366c-85ad-84fde69b0fd3__7fab9fd1f0ef5895:0:16",
+      "refer_kitti_v2__0016__048bc18de5cde4e7:160:192",
+      "sportsmot__v_0kUtTtmLaJA_c010__ae75f08a115f04f4:0:32",
+      "sportsmot__v_0kUtTtmLaJA_c010__ae75f08a115f04f4:32:64",
+      "sportsmot__v_0kUtTtmLaJA_c010__ae75f08a115f04f4:64:96",
+      "sportsmot__v_0kUtTtmLaJA_c010__ae75f08a115f04f4:96:128",
+      "sportsmot__v_0kUtTtmLaJA_c010__ae75f08a115f04f4:128:160",
+      "sportsmot__v_0kUtTtmLaJA_c010__ae75f08a115f04f4:160:192",
+      "sportsmot__v_0kUtTtmLaJA_c010__ae75f08a115f04f4:192:224",
+      "sportsmot__v_0kUtTtmLaJA_c010__ae75f08a115f04f4:256:270",
+      "animaltrack__horse_2__85a50c1a46ef265d:64:96",
+      "animaltrack__horse_2__85a50c1a46ef265d:96:128",
+      "animaltrack__horse_2__85a50c1a46ef265d:160:192",
+      "animaltrack__horse_2__85a50c1a46ef265d:192:224",
+      "animaltrack__horse_2__85a50c1a46ef265d:256:288",
+      "animaltrack__horse_2__85a50c1a46ef265d:288:310",
+      "sportsmot__v_0kUtTtmLaJA_c007__48899a46b3f11be2:224:256",
+      "animaltrack__pig_2__215efc8b245470b6:0:32",
+      "animaltrack__pig_2__215efc8b245470b6:32:64",
+      "animaltrack__pig_2__215efc8b245470b6:64:96",
+      "animaltrack__pig_2__215efc8b245470b6:96:128",
+      "animaltrack__pig_2__215efc8b245470b6:128:160",
+      "animaltrack__pig_2__215efc8b245470b6:192:224",
+      "animaltrack__pig_2__215efc8b245470b6:224:256",
+      "animaltrack__pig_2__215efc8b245470b6:288:312",
+      "refer_kitti_v2__0016__065d454abc8323d1:0:32",
+      "refer_kitti_v2__0016__065d454abc8323d1:32:64",
+      "refer_kitti_v2__0016__065d454abc8323d1:64:96",
+      "refer_kitti_v2__0016__065d454abc8323d1:96:128",
+      "refer_kitti_v2__0016__065d454abc8323d1:128:160",
+      "refer_kitti_v2__0016__065d454abc8323d1:160:192",
+      "refer_kitti_v2__0016__065d454abc8323d1:192:209",
+      "sportsmot__v_0kUtTtmLaJA_c006__4ec33e2672d75440:0:32",
+      "sportsmot__v_0kUtTtmLaJA_c006__4ec33e2672d75440:32:64",
+      "sportsmot__v_0kUtTtmLaJA_c006__4ec33e2672d75440:64:96",
+      "sportsmot__v_0kUtTtmLaJA_c006__4ec33e2672d75440:96:128",
+      "sportsmot__v_0kUtTtmLaJA_c006__4ec33e2672d75440:128:160",
+      "sportsmot__v_0kUtTtmLaJA_c006__4ec33e2672d75440:160:192",
+      "sportsmot__v_0kUtTtmLaJA_c006__4ec33e2672d75440:224:256",
+      "sportsmot__v_0kUtTtmLaJA_c006__4ec33e2672d75440:288:320"
+    ],
+    "C": [
+      "animaltrack__duck_2__37075e40f13ce4a2:32:64",
+      "animaltrack__duck_2__37075e40f13ce4a2:128:160",
+      "refer_kitti_v2__0016__00cd9522ff6583c5:0:32",
+      "refer_kitti_v2__0016__00cd9522ff6583c5:96:128",
+      "refer_kitti_v2__0016__00cd9522ff6583c5:160:192",
+      "sportsmot__v_9MHDmAMxO5I_c003__d743f9a1134bb802:96:128",
+      "sportsmot__v_9MHDmAMxO5I_c003__d743f9a1134bb802:160:192",
+      "sportsmot__v_9MHDmAMxO5I_c003__d743f9a1134bb802:224:226",
+      "tao_amodal__val_ArgoVerse_25952736-2595-2595-2595-225953853440__9d1704f6ccc8e6ee:0:15",
+      "sportsmot__v_4-EmEtrturE_c009__3ae432000bedc80d:128:160",
+      "sportsmot__v_4-EmEtrturE_c009__3ae432000bedc80d:192:224",
+      "animaltrack__duck_1__860d03d46f5e664e:32:64",
+      "animaltrack__duck_1__860d03d46f5e664e:96:128",
+      "animaltrack__duck_1__860d03d46f5e664e:192:224",
+      "animaltrack__duck_1__860d03d46f5e664e:256:288",
+      "sportsmot__v_cC2mHWqMcjk_c008__6ec845472cac25c4:224:256",
+      "animaltrack__zebra_1__43ac4c0429040eb8:32:64",
+      "animaltrack__zebra_1__43ac4c0429040eb8:96:128",
+      "animaltrack__zebra_1__43ac4c0429040eb8:160:192",
+      "animaltrack__zebra_1__43ac4c0429040eb8:256:288",
+      "refer_kitti_v2__0016__03c8958347a6955f:0:32",
+      "refer_kitti_v2__0016__03c8958347a6955f:32:64",
+      "refer_kitti_v2__0016__03c8958347a6955f:64:96",
+      "refer_kitti_v2__0016__03c8958347a6955f:96:128",
+      "refer_kitti_v2__0016__03c8958347a6955f:128:160",
+      "refer_kitti_v2__0016__03c8958347a6955f:160:192",
+      "refer_kitti_v2__0016__03c8958347a6955f:192:209",
+      "sportsmot__v_0kUtTtmLaJA_c008__8b2da8ad8a99257a:0:32",
+      "sportsmot__v_0kUtTtmLaJA_c008__8b2da8ad8a99257a:32:64",
+      "sportsmot__v_0kUtTtmLaJA_c008__8b2da8ad8a99257a:64:96",
+      "sportsmot__v_0kUtTtmLaJA_c008__8b2da8ad8a99257a:96:128",
+      "sportsmot__v_0kUtTtmLaJA_c008__8b2da8ad8a99257a:128:160",
+      "sportsmot__v_0kUtTtmLaJA_c008__8b2da8ad8a99257a:160:192",
+      "sportsmot__v_0kUtTtmLaJA_c008__8b2da8ad8a99257a:192:224",
+      "sportsmot__v_0kUtTtmLaJA_c008__8b2da8ad8a99257a:256:266",
+      "animaltrack__chicken_1__58a079d630f401d9:0:32",
+      "animaltrack__chicken_1__58a079d630f401d9:64:96",
+      "animaltrack__chicken_1__58a079d630f401d9:128:160",
+      "animaltrack__chicken_1__58a079d630f401d9:192:224",
+      "animaltrack__chicken_1__58a079d630f401d9:256:288",
+      "sportsmot__v_9MHDmAMxO5I_c006__cdb67f74ddad11b3:160:192",
+      "sportsmot__v_9MHDmAMxO5I_c006__cdb67f74ddad11b3:192:224",
+      "tao_amodal__val_ArgoVerse_02cf0ce1-699a-373b-86c0-eb6fd5f4697a__468401552bf3c30a:0:16",
+      "refer_kitti_v2__0016__05ab35bca7b28526:160:192",
+      "sportsmot__v_0kUtTtmLaJA_c007__48899a46b3f11be2:32:64",
+      "sportsmot__v_0kUtTtmLaJA_c007__48899a46b3f11be2:96:128",
+      "sportsmot__v_0kUtTtmLaJA_c007__48899a46b3f11be2:160:192",
+      "sportsmot__v_0kUtTtmLaJA_c007__48899a46b3f11be2:192:224",
+      "tao_amodal__val_ArgoVerse_10b8dee6-778f-33e4-a946-d842d2d9c3d7__16d10437ea8a1258:0:16"
+    ],
+    "D": [
+      "sportsmot__v_9MHDmAMxO5I_c006__cdb67f74ddad11b3:0:32",
+      "sportsmot__v_9MHDmAMxO5I_c006__cdb67f74ddad11b3:32:64",
+      "sportsmot__v_9MHDmAMxO5I_c006__cdb67f74ddad11b3:64:96",
+      "sportsmot__v_9MHDmAMxO5I_c006__cdb67f74ddad11b3:128:160",
+      "sportsmot__v_9MHDmAMxO5I_c006__cdb67f74ddad11b3:256:269",
+      "animaltrack__deer_3__e89d749a492b0ffc:0:32",
+      "animaltrack__deer_3__e89d749a492b0ffc:32:64",
+      "animaltrack__deer_3__e89d749a492b0ffc:64:96",
+      "animaltrack__deer_3__e89d749a492b0ffc:96:128",
+      "animaltrack__deer_3__e89d749a492b0ffc:128:160",
+      "animaltrack__deer_3__e89d749a492b0ffc:160:192",
+      "animaltrack__deer_3__e89d749a492b0ffc:224:256",
+      "animaltrack__deer_3__e89d749a492b0ffc:288:307",
+      "animaltrack__horse_2__85a50c1a46ef265d:0:32",
+      "animaltrack__horse_2__85a50c1a46ef265d:32:64",
+      "animaltrack__horse_2__85a50c1a46ef265d:128:160",
+      "animaltrack__horse_2__85a50c1a46ef265d:224:256",
+      "refer_kitti_v2__0016__05ab35bca7b28526:0:32",
+      "refer_kitti_v2__0016__05ab35bca7b28526:32:64",
+      "refer_kitti_v2__0016__05ab35bca7b28526:64:96",
+      "refer_kitti_v2__0016__05ab35bca7b28526:96:128",
+      "refer_kitti_v2__0016__05ab35bca7b28526:128:160",
+      "refer_kitti_v2__0016__05ab35bca7b28526:192:209",
+      "sportsmot__v_0kUtTtmLaJA_c007__48899a46b3f11be2:0:32",
+      "sportsmot__v_0kUtTtmLaJA_c007__48899a46b3f11be2:64:96",
+      "sportsmot__v_0kUtTtmLaJA_c007__48899a46b3f11be2:128:160",
+      "sportsmot__v_0kUtTtmLaJA_c007__48899a46b3f11be2:256:271",
+      "animaltrack__pig_2__215efc8b245470b6:160:192",
+      "animaltrack__pig_2__215efc8b245470b6:256:288",
+      "sportsmot__v_0kUtTtmLaJA_c006__4ec33e2672d75440:320:346",
+      "animaltrack__dolphin_3__ed42a8e56f990243:0:32",
+      "animaltrack__dolphin_3__ed42a8e56f990243:32:64",
+      "animaltrack__dolphin_3__ed42a8e56f990243:64:96",
+      "animaltrack__dolphin_3__ed42a8e56f990243:96:128",
+      "animaltrack__dolphin_3__ed42a8e56f990243:128:160",
+      "animaltrack__dolphin_3__ed42a8e56f990243:160:192",
+      "animaltrack__dolphin_3__ed42a8e56f990243:192:224",
+      "animaltrack__dolphin_3__ed42a8e56f990243:224:256",
+      "tao_amodal__val_AVA_BCiuXAuCKAU_scene_16_109527-110290__e597df32d6583b53:0:32"
+    ]
+  },
+  "resource_measurement": {
+    "sampled_owned_residency_GPU_hours_estimate": 26.119199588828618,
+    "by_GPU": {
+      "1": {
+        "GPU_hours_estimate": 6.778394004702568,
+        "sampled_peak_owned_MiB": 22916
+      },
+      "3": {
+        "GPU_hours_estimate": 6.397729518678453,
+        "sampled_peak_owned_MiB": 39494
+      },
+      "4": {
+        "GPU_hours_estimate": 6.726880202558306,
+        "sampled_peak_owned_MiB": 35176
+      },
+      "6": {
+        "GPU_hours_estimate": 6.21619586288929,
+        "sampled_peak_owned_MiB": 22236
+      }
+    },
+    "peak_simultaneous_registered_owned_GPUs": 4,
+    "telemetry_covered_seconds": 24561.29109096527,
+    "maximum_sample_gap_seconds": 1554.7893226146698,
+    "measurement": "Left-held resident-process samples, including idle model residency; not kernel busy time or foreign-job utilization. Sampled memory peaks are lower bounds."
+  },
+  "preserved_storage": {
+    "logical_bytes": 891147954,
+    "allocated_bytes": 912437248,
+    "detector_cache_logical_bytes": 58800093,
+    "files": 7720
+  },
+  "datasets": {
+    "animaltrack": {
+      "FP_per_frame": 4.3561068702290076,
+      "GT_boxes": 62265,
+      "Recall@0.50": 0.5291415723118927,
+      "Recall@0.75": 0.3320966835300731,
+      "complete_detection_jobs": 9,
+      "completed_detection_frames": 2889,
+      "forecast_frames": 2620,
+      "forecast_source": "all completed native video/query caches",
+      "latency_mean_seconds": 4.4424805184753495,
+      "latency_p95_seconds": 5.361160391010344,
+      "legacy_j1_diagnostic": {
+        "complete_jobs": 4,
+        "limitation": "legacy inference interpreted runtime xyxy coordinates as xywh competition geometry",
+        "official_combined_metrics": {
+          "AssA": 0.1599690893222126,
+          "DetA": 0.024961298288613095,
+          "FN": 23396,
+          "FP": 309,
+          "HOTA": 0.06286773844934956,
+          "IDF1": 0.021280851234049363,
+          "IDSW": 0,
+          "MOTA": 0.014058145822068793
+        }
+      },
+      "measured_detection_FPS": 0.2250994677053076,
+      "measured_preflight_FPS": 0.2250994677053076,
+      "paired_gains": {
+        "coupled": {
+          "Corrected": 270,
+          "Harmed": 17515,
+          "attribution_jobs": 9,
+          "jobs": 9,
+          "official_delta": {
+            "AssA": -0.18686046072045012,
+            "HOTA": -0.19529286369739363,
+            "IDF1": -0.230293546469468,
+            "IDSW": 5628
+          },
+          "scope": "identical complete scopes and official combine_sequences"
+        },
+        "j1": {
+          "Corrected": 76,
+          "Harmed": 21105,
+          "attribution_jobs": 9,
+          "jobs": 9,
+          "official_delta": {
+            "AssA": -0.023781829640014435,
+            "HOTA": -0.19828642387281664,
+            "IDF1": -0.26137138073850763,
+            "IDSW": -3132
+          },
+          "scope": "identical complete scopes and official combine_sequences"
+        }
+      },
+      "perception_fps_complete_scopes": 0.21647716866063166,
+      "persisted_requests": 2889,
+      "planned_DLM_requests": 13167,
+      "preflight_inputs": 32,
+      "prior_j1_diagnostics": {
+        "j1": {
+          "complete_jobs": 4,
+          "frames": 1081,
+          "official_combined_metrics": {
+            "AssA": 0.1599690893222126,
+            "DetA": 0.024961298288613095,
+            "FN": 23396,
+            "FP": 309,
+            "HOTA": 0.06286773844934956,
+            "IDF1": 0.021280851234049363,
+            "IDSW": 0,
+            "MOTA": 0.014058145822068793
+          },
+          "scope": "historical inference protocol; separate from current J1"
+        },
+        "j1_competition_xyxy_v2": {
+          "complete_jobs": 2,
+          "frames": 500,
+          "official_combined_metrics": {
+            "AssA": 0.24602172979932296,
+            "DetA": 0.023413066963221044,
+            "FN": 15366,
+            "FP": 47,
+            "HOTA": 0.07586625739138725,
+            "IDF1": 0.028675158451787582,
+            "IDSW": 0,
+            "MOTA": 0.02356667722521381
+          },
+          "scope": "historical inference protocol; separate from current J1"
+        }
+      },
+      "registered_jobs": 26,
+      "registered_query_frames": 13167,
+      "registered_videos": 26,
+      "rejected_complete_jobs": 243,
+      "remaining_detection_GPU_hours_estimate": 13.188457783627726,
+      "scope": "REGISTERED_COMPLETE_VIDEO",
+      "scored_detection_jobs": 9,
+      "scored_frames": 2620,
+      "scored_videos": 9,
+      "timing_measured_inputs": 32,
+      "timing_measurement_scope": "registered 32-input preflight",
+      "tracking": {
+        "coupled": {
+          "aggregation": "unmodified TrackEval metric.combine_sequences",
+          "artifact_directory": "coupled",
+          "association_only_FPS": 63.15404562090638,
+          "complete_jobs": 9,
+          "frames": 2620,
+          "job_ids": [
+            "animaltrack__chicken_1__58a079d630f401d9",
+            "animaltrack__deer_3__e89d749a492b0ffc",
+            "animaltrack__duck_1__860d03d46f5e664e",
+            "animaltrack__duck_2__37075e40f13ce4a2",
+            "animaltrack__horse_1__c41a12132cc572b1",
+            "animaltrack__horse_2__85a50c1a46ef265d",
+            "animaltrack__pig_2__215efc8b245470b6",
+            "animaltrack__rabbit_1__da8189ca5927d832",
+            "animaltrack__zebra_1__43ac4c0429040eb8"
+          ],
+          "official_combined_metrics": {
+            "AssA": 0.03413502766579155,
+            "DetA": 0.200676103449631,
+            "FN": 46628,
+            "FP": 3537,
+            "HOTA": 0.08174326577060755,
+            "IDF1": 0.060929038912560324,
+            "IDSW": 9035,
+            "MOTA": 0.04922508632458042
+          },
+          "peak_decision_GPU_bytes": 3090080768,
+          "scope": "REGISTERED_COMPLETE_VIDEO",
+          "videos": 9
+        },
+        "j1": {
+          "aggregation": "unmodified TrackEval metric.combine_sequences",
+          "artifact_directory": "j1_current_crops_memory_v4",
+          "association_only_FPS": 0.2911361013434617,
+          "complete_jobs": 9,
+          "frames": 2620,
+          "job_ids": [
+            "animaltrack__chicken_1__58a079d630f401d9",
+            "animaltrack__deer_3__e89d749a492b0ffc",
+            "animaltrack__duck_1__860d03d46f5e664e",
+            "animaltrack__duck_2__37075e40f13ce4a2",
+            "animaltrack__horse_1__c41a12132cc572b1",
+            "animaltrack__horse_2__85a50c1a46ef265d",
+            "animaltrack__pig_2__215efc8b245470b6",
+            "animaltrack__rabbit_1__da8189ca5927d832",
+            "animaltrack__zebra_1__43ac4c0429040eb8"
+          ],
+          "official_combined_metrics": {
+            "AssA": 0.19721365874622723,
+            "DetA": 0.03199474744783373,
+            "FN": 60030,
+            "FP": 623,
+            "HOTA": 0.0787497055951845,
+            "IDF1": 0.029851204643520722,
+            "IDSW": 275,
+            "MOTA": 0.02147273749297358
+          },
+          "peak_decision_GPU_bytes": 7937196032,
+          "scope": "REGISTERED_COMPLETE_VIDEO",
+          "videos": 9
+        },
+        "simple": {
+          "aggregation": "unmodified TrackEval metric.combine_sequences",
+          "artifact_directory": "simple",
+          "association_only_FPS": 36.97181205355851,
+          "complete_jobs": 9,
+          "frames": 2620,
+          "job_ids": [
+            "animaltrack__chicken_1__58a079d630f401d9",
+            "animaltrack__deer_3__e89d749a492b0ffc",
+            "animaltrack__duck_1__860d03d46f5e664e",
+            "animaltrack__duck_2__37075e40f13ce4a2",
+            "animaltrack__horse_1__c41a12132cc572b1",
+            "animaltrack__horse_2__85a50c1a46ef265d",
+            "animaltrack__pig_2__215efc8b245470b6",
+            "animaltrack__rabbit_1__da8189ca5927d832",
+            "animaltrack__zebra_1__43ac4c0429040eb8"
+          ],
+          "official_combined_metrics": {
+            "AssA": 0.22099548838624167,
+            "DetA": 0.366720969632889,
+            "FN": 30434,
+            "FP": 11459,
+            "HOTA": 0.27703612946800116,
+            "IDF1": 0.29122258538202833,
+            "IDSW": 3407,
+            "MOTA": 0.2724644663936401
+          },
+          "peak_decision_GPU_bytes": 0,
+          "scope": "REGISTERED_COMPLETE_VIDEO",
+          "videos": 9
+        }
+      }
+    },
+    "refer_kitti_v2": {
+      "FP_per_frame": 2.646996278575226,
+      "GT_boxes": 6748,
+      "Recall@0.50": 0.3534380557202134,
+      "Recall@0.75": 0.2691167753408417,
+      "complete_detection_jobs": 9,
+      "completed_detection_frames": 1881,
+      "forecast_frames": 1881,
+      "forecast_source": "all completed native video/query caches",
+      "latency_mean_seconds": 1.0524543501378503,
+      "latency_p95_seconds": 1.150782208191231,
+      "legacy_j1_diagnostic": {
+        "complete_jobs": 4,
+        "limitation": "legacy inference interpreted runtime xyxy coordinates as xywh competition geometry",
+        "official_combined_metrics": {
+          "AssA": 0.12524275877679722,
+          "DetA": 0.059821352712960005,
+          "FN": 3093,
+          "FP": 384,
+          "HOTA": 0.0864048198955706,
+          "IDF1": 0.0663816947447825,
+          "IDSW": 0,
+          "MOTA": -0.040083757104397245
+        }
+      },
+      "measured_detection_FPS": 0.9501599759353174,
+      "measured_preflight_FPS": 0.9501599759353174,
+      "paired_gains": {
+        "j1": {
+          "Corrected": 58,
+          "Harmed": 1012,
+          "attribution_jobs": 9,
+          "jobs": 9,
+          "official_delta": {
+            "AssA": -0.009328012980178269,
+            "HOTA": -0.05786199749082453,
+            "IDF1": -0.07188554751329254,
+            "IDSW": -482
+          },
+          "scope": "identical complete scopes and official combine_sequences"
+        }
+      },
+      "perception_fps_complete_scopes": 0.5133867855793182,
+      "persisted_requests": 1881,
+      "planned_DLM_requests": 854073,
+      "preflight_inputs": 32,
+      "prior_j1_diagnostics": {
+        "j1": {
+          "complete_jobs": 4,
+          "frames": 836,
+          "official_combined_metrics": {
+            "AssA": 0.12524275877679722,
+            "DetA": 0.059821352712960005,
+            "FN": 3093,
+            "FP": 384,
+            "HOTA": 0.0864048198955706,
+            "IDF1": 0.0663816947447825,
+            "IDSW": 0,
+            "MOTA": -0.040083757104397245
+          },
+          "scope": "historical inference protocol; separate from current J1"
+        },
+        "j1_competition_xyxy_v2": {
+          "complete_jobs": 1,
+          "frames": 209,
+          "official_combined_metrics": {
+            "AssA": 0.13007758069615055,
+            "DetA": 0.10278477082059974,
+            "FN": 1169,
+            "FP": 25,
+            "HOTA": 0.11539234661702186,
+            "IDF1": 0.07040417209908735,
+            "IDSW": 0,
+            "MOTA": 0.10828976848394324
+          },
+          "scope": "historical inference protocol; separate from current J1"
+        }
+      },
+      "registered_jobs": 1694,
+      "registered_query_frames": 854073,
+      "registered_videos": 3,
+      "rejected_complete_jobs": 367,
+      "remaining_detection_GPU_hours_estimate": 461.0948443732914,
+      "scope": "REGISTERED_COMPLETE_VIDEO",
+      "scored_detection_jobs": 9,
+      "scored_frames": 1881,
+      "scored_videos": 1,
+      "timing_measured_inputs": 32,
+      "timing_measurement_scope": "registered 32-input preflight",
+      "tracking": {
+        "j1": {
+          "aggregation": "unmodified TrackEval metric.combine_sequences",
+          "artifact_directory": "j1_current_crops_memory_v4",
+          "association_only_FPS": 1.4733543266531743,
+          "complete_jobs": 9,
+          "frames": 1881,
+          "job_ids": [
+            "refer_kitti_v2__0016__048bc18de5cde4e7",
+            "refer_kitti_v2__0016__065d454abc8323d1",
+            "refer_kitti_v2__0016__03a2699a3ef911f5",
+            "refer_kitti_v2__0016__05ab35bca7b28526",
+            "refer_kitti_v2__0016__00daf55116f6e7c3",
+            "refer_kitti_v2__0016__01b7ebd4d25bcbf9",
+            "refer_kitti_v2__0016__03c8958347a6955f",
+            "refer_kitti_v2__0016__045af61a7158b3bf",
+            "refer_kitti_v2__0016__00cd9522ff6583c5"
+          ],
+          "official_combined_metrics": {
+            "AssA": 0.1338011272498351,
+            "DetA": 0.07026980324580435,
+            "FN": 6127,
+            "FP": 870,
+            "HOTA": 0.09671226015479704,
+            "IDF1": 0.0713678844519966,
+            "IDSW": 0,
+            "MOTA": -0.036899822169531714
+          },
+          "peak_decision_GPU_bytes": 7482774016,
+          "scope": "REGISTERED_COMPLETE_VIDEO",
+          "videos": 1
+        },
+        "simple": {
+          "aggregation": "unmodified TrackEval metric.combine_sequences",
+          "artifact_directory": "simple",
+          "association_only_FPS": 555.0064400049756,
+          "complete_jobs": 9,
+          "frames": 1881,
+          "job_ids": [
+            "refer_kitti_v2__0016__048bc18de5cde4e7",
+            "refer_kitti_v2__0016__065d454abc8323d1",
+            "refer_kitti_v2__0016__03a2699a3ef911f5",
+            "refer_kitti_v2__0016__05ab35bca7b28526",
+            "refer_kitti_v2__0016__00daf55116f6e7c3",
+            "refer_kitti_v2__0016__01b7ebd4d25bcbf9",
+            "refer_kitti_v2__0016__03c8958347a6955f",
+            "refer_kitti_v2__0016__045af61a7158b3bf",
+            "refer_kitti_v2__0016__00cd9522ff6583c5"
+          ],
+          "official_combined_metrics": {
+            "AssA": 0.14312914023001336,
+            "DetA": 0.16920104146266582,
+            "FN": 4419,
+            "FP": 4982,
+            "HOTA": 0.15457425764562158,
+            "IDF1": 0.14325343196528914,
+            "IDSW": 482,
+            "MOTA": -0.4645820983995258
+          },
+          "peak_decision_GPU_bytes": 0,
+          "scope": "REGISTERED_COMPLETE_VIDEO",
+          "videos": 1
+        }
+      }
+    },
+    "sportsmot": {
+      "FP_per_frame": 1.424457429048414,
+      "GT_boxes": 26034,
+      "Recall@0.50": 0.985634170699854,
+      "Recall@0.75": 0.8736652070369517,
+      "complete_detection_jobs": 9,
+      "completed_detection_frames": 2396,
+      "forecast_frames": 2396,
+      "forecast_source": "all completed native video/query caches",
+      "latency_mean_seconds": 2.7565156437121914,
+      "latency_p95_seconds": 2.989855091786012,
+      "legacy_j1_diagnostic": {
+        "complete_jobs": 3,
+        "limitation": "legacy inference interpreted runtime xyxy coordinates as xywh competition geometry",
+        "official_combined_metrics": {
+          "AssA": 0.4435476559565896,
+          "DetA": 0.07546371661327865,
+          "FN": 7207,
+          "FP": 35,
+          "HOTA": 0.1829474508784111,
+          "IDF1": 0.10392340028024288,
+          "IDSW": 0,
+          "MOTA": 0.07956278596847992
+        }
+      },
+      "measured_detection_FPS": 0.3627768274346896,
+      "measured_preflight_FPS": 0.3627768274346896,
+      "paired_gains": {
+        "coupled": {
+          "Corrected": 162,
+          "Harmed": 15809,
+          "attribution_jobs": 9,
+          "jobs": 9,
+          "official_delta": {
+            "AssA": -0.3095780484640341,
+            "HOTA": -0.3685269641858754,
+            "IDF1": -0.34943073793179025,
+            "IDSW": 1
+          },
+          "scope": "identical complete scopes and official combine_sequences"
+        },
+        "j1": {
+          "Corrected": 16,
+          "Harmed": 22614,
+          "attribution_jobs": 9,
+          "jobs": 9,
+          "official_delta": {
+            "AssA": -0.11431021679256415,
+            "HOTA": -0.4491371011081523,
+            "IDF1": -0.4894523092197255,
+            "IDSW": -780
+          },
+          "scope": "identical complete scopes and official combine_sequences"
+        }
+      },
+      "perception_fps_complete_scopes": 0.2882434873968975,
+      "persisted_requests": 2396,
+      "planned_DLM_requests": 26970,
+      "preflight_inputs": 32,
+      "prior_j1_diagnostics": {
+        "j1": {
+          "complete_jobs": 3,
+          "frames": 715,
+          "official_combined_metrics": {
+            "AssA": 0.4435476559565896,
+            "DetA": 0.07546371661327865,
+            "FN": 7207,
+            "FP": 35,
+            "HOTA": 0.1829474508784111,
+            "IDF1": 0.10392340028024288,
+            "IDSW": 0,
+            "MOTA": 0.07956278596847992
+          },
+          "scope": "historical inference protocol; separate from current J1"
+        },
+        "j1_competition_xyxy_v2": {
+          "complete_jobs": 5,
+          "frames": 1240,
+          "official_combined_metrics": {
+            "AssA": 0.34675957226386345,
+            "DetA": 0.07820461497353155,
+            "FN": 12508,
+            "FP": 79,
+            "HOTA": 0.16466934515657747,
+            "IDF1": 0.09246460444205865,
+            "IDSW": 0,
+            "MOTA": 0.07895507097907214
+          },
+          "scope": "historical inference protocol; separate from current J1"
+        },
+        "j1_current_crops_v3": {
+          "complete_jobs": 1,
+          "frames": 226,
+          "official_combined_metrics": {
+            "AssA": 0.25133589933293876,
+            "DetA": 0.07439721812391427,
+            "FN": 2235,
+            "FP": 16,
+            "HOTA": 0.13670489775644504,
+            "IDF1": 0.07810739767179872,
+            "IDSW": 0,
+            "MOTA": 0.07783695206882425
+          },
+          "scope": "historical inference protocol; separate from current J1"
+        }
+      },
+      "registered_jobs": 45,
+      "registered_query_frames": 26970,
+      "registered_videos": 45,
+      "rejected_complete_jobs": 0,
+      "remaining_detection_GPU_hours_estimate": 23.681753134328005,
+      "scope": "REGISTERED_COMPLETE_VIDEO",
+      "scored_detection_jobs": 9,
+      "scored_frames": 2396,
+      "scored_videos": 9,
+      "timing_measured_inputs": 32,
+      "timing_measurement_scope": "registered 32-input preflight",
+      "tracking": {
+        "coupled": {
+          "aggregation": "unmodified TrackEval metric.combine_sequences",
+          "artifact_directory": "coupled",
+          "association_only_FPS": 89.37521177798887,
+          "complete_jobs": 9,
+          "frames": 2396,
+          "job_ids": [
+            "sportsmot__v_0kUtTtmLaJA_c006__4ec33e2672d75440",
+            "sportsmot__v_0kUtTtmLaJA_c007__48899a46b3f11be2",
+            "sportsmot__v_0kUtTtmLaJA_c008__8b2da8ad8a99257a",
+            "sportsmot__v_0kUtTtmLaJA_c010__ae75f08a115f04f4",
+            "sportsmot__v_4-EmEtrturE_c009__3ae432000bedc80d",
+            "sportsmot__v_9MHDmAMxO5I_c002__bd2fa61e4541282d",
+            "sportsmot__v_9MHDmAMxO5I_c003__d743f9a1134bb802",
+            "sportsmot__v_9MHDmAMxO5I_c006__cdb67f74ddad11b3",
+            "sportsmot__v_cC2mHWqMcjk_c008__6ec845472cac25c4"
+          ],
+          "official_combined_metrics": {
+            "AssA": 0.14736649093888837,
+            "DetA": 0.32276639035443866,
+            "FN": 16319,
+            "FP": 1024,
+            "HOTA": 0.21782965407843316,
+            "IDF1": 0.20748919043863703,
+            "IDSW": 781,
+            "MOTA": 0.3038334485672582
+          },
+          "peak_decision_GPU_bytes": 3082932224,
+          "scope": "REGISTERED_COMPLETE_VIDEO",
+          "videos": 9
+        },
+        "j1": {
+          "aggregation": "unmodified TrackEval metric.combine_sequences",
+          "artifact_directory": "j1_current_crops_memory_v4",
+          "association_only_FPS": 0.69627196618945,
+          "complete_jobs": 9,
+          "frames": 2396,
+          "job_ids": [
+            "sportsmot__v_0kUtTtmLaJA_c006__4ec33e2672d75440",
+            "sportsmot__v_0kUtTtmLaJA_c007__48899a46b3f11be2",
+            "sportsmot__v_0kUtTtmLaJA_c008__8b2da8ad8a99257a",
+            "sportsmot__v_0kUtTtmLaJA_c010__ae75f08a115f04f4",
+            "sportsmot__v_4-EmEtrturE_c009__3ae432000bedc80d",
+            "sportsmot__v_9MHDmAMxO5I_c002__bd2fa61e4541282d",
+            "sportsmot__v_9MHDmAMxO5I_c003__d743f9a1134bb802",
+            "sportsmot__v_9MHDmAMxO5I_c006__cdb67f74ddad11b3",
+            "sportsmot__v_cC2mHWqMcjk_c008__6ec845472cac25c4"
+          ],
+          "official_combined_metrics": {
+            "AssA": 0.3426343226103583,
+            "DetA": 0.054963475050764085,
+            "FN": 24494,
+            "FP": 143,
+            "HOTA": 0.13721951715615618,
+            "IDF1": 0.06746761915070174,
+            "IDSW": 0,
+            "MOTA": 0.05366059767995698
+          },
+          "peak_decision_GPU_bytes": 8003601920,
+          "scope": "REGISTERED_COMPLETE_VIDEO",
+          "videos": 9
+        },
+        "simple": {
+          "aggregation": "unmodified TrackEval metric.combine_sequences",
+          "artifact_directory": "simple",
+          "association_only_FPS": 260.7619862312404,
+          "complete_jobs": 9,
+          "frames": 2396,
+          "job_ids": [
+            "sportsmot__v_0kUtTtmLaJA_c006__4ec33e2672d75440",
+            "sportsmot__v_0kUtTtmLaJA_c007__48899a46b3f11be2",
+            "sportsmot__v_0kUtTtmLaJA_c008__8b2da8ad8a99257a",
+            "sportsmot__v_0kUtTtmLaJA_c010__ae75f08a115f04f4",
+            "sportsmot__v_4-EmEtrturE_c009__3ae432000bedc80d",
+            "sportsmot__v_9MHDmAMxO5I_c002__bd2fa61e4541282d",
+            "sportsmot__v_9MHDmAMxO5I_c003__d743f9a1134bb802",
+            "sportsmot__v_9MHDmAMxO5I_c006__cdb67f74ddad11b3",
+            "sportsmot__v_cC2mHWqMcjk_c008__6ec845472cac25c4"
+          ],
+          "official_combined_metrics": {
+            "AssA": 0.45694453940292246,
+            "DetA": 0.7569649535393747,
+            "FN": 811,
+            "FP": 3469,
+            "HOTA": 0.5863566182643085,
+            "IDF1": 0.5569199283704273,
+            "IDSW": 780,
+            "MOTA": 0.8056387800568487
+          },
+          "peak_decision_GPU_bytes": 0,
+          "scope": "REGISTERED_COMPLETE_VIDEO",
+          "videos": 9
+        }
+      }
+    },
+    "tao_amodal": {
+      "FP_per_frame": null,
+      "GT_boxes": 490,
+      "Recall@0.50": 0.0,
+      "Recall@0.75": 0.0,
+      "complete_detection_jobs": 9,
+      "completed_detection_frames": 163,
+      "forecast_frames": 156,
+      "forecast_source": "all completed native video/query caches",
+      "joint_TETA": {
+        "j1": {
+          "GT_boxes": 490,
+          "GT_policy": "official amodal LVIS-v1 validation annotations; non-exhaustive categories retained",
+          "aggregation": "unmodified official TETA over joint GT/predictions, never mean per-video TETA",
+          "arm": "j1",
+          "artifact_directory": "j1_current_crops_memory_v4",
+          "base_novel": {
+            "base": {
+              "AssocA": 0.0,
+              "AssocPr": 0.0,
+              "AssocRe": 0.0,
+              "ClsA": 0.0,
+              "ClsPr": 0.0,
+              "ClsRe": 0.0,
+              "LocA": 0.0,
+              "LocPr": 0.0,
+              "LocRe": 0.0,
+              "TETA": 0.0
+            },
+            "novel": null
+          },
+          "evaluated_categories": [
+            {
+              "group": "base",
+              "name": "bus_(vehicle)"
+            },
+            {
+              "group": "base",
+              "name": "car_(automobile)"
+            },
+            {
+              "group": "base",
+              "name": "coat"
+            },
+            {
+              "group": "base",
+              "name": "person"
+            },
+            {
+              "group": "base",
+              "name": "pickup_truck"
+            },
+            {
+              "group": "base",
+              "name": "truck"
+            },
+            {
+              "group": "base",
+              "name": "water_bottle"
+            }
+          ],
+          "evaluator": "unmodified official TETA OVMOT recipe; non-exhaustive TAO",
+          "evaluator_commit": "b498aa87b252bfb75d7cc0d8d6435c3e1e74e4de",
+          "frames": 156,
+          "job_ids": [
+            "tao_amodal__val_ArgoVerse_side_left_273c1883-673a-36bf-b124-88311b1a80be__621d07178dd1c86f",
+            "tao_amodal__val_ArgoVerse_rear_right_25952736-2595-2595-2595-225953853440__71b0e223d2ba9566",
+            "tao_amodal__val_AVA_BCiuXAuCKAU_scene_16_109527-110290__e597df32d6583b53",
+            "tao_amodal__val_ArgoVerse_028d5cb1-f74d-366c-85ad-84fde69b0fd3__7fab9fd1f0ef5895",
+            "tao_amodal__val_ArgoVerse_273c1883-673a-36bf-b124-88311b1a80be__de656dfbbfe75581",
+            "tao_amodal__val_ArgoVerse_043aeba7-14e5-3cde-8a5c-639389b6d3a6__3415da83c5a6d818",
+            "tao_amodal__val_ArgoVerse_02cf0ce1-699a-373b-86c0-eb6fd5f4697a__468401552bf3c30a",
+            "tao_amodal__val_ArgoVerse_25952736-2595-2595-2595-225953853440__9d1704f6ccc8e6ee",
+            "tao_amodal__val_ArgoVerse_10b8dee6-778f-33e4-a946-d842d2d9c3d7__16d10437ea8a1258"
+          ],
+          "metric_scale": "official TETA summary percent",
+          "metrics": {
+            "AssocA": 0.0,
+            "AssocPr": 0.0,
+            "AssocRe": 0.0,
+            "ClsA": 0.0,
+            "ClsPr": 0.0,
+            "ClsRe": 0.0,
+            "LocA": 0.0,
+            "LocPr": 0.0,
+            "LocRe": 0.0,
+            "TETA": 0.0
+          },
+          "novel_evaluation_GT_used_for_training": false,
+          "official_complete_dataset_result": false,
+          "prediction_score": "constant unscored sentinel 1; no detector confidence and no score-based truncation",
+          "predictions": 0,
+          "scope": "REGISTERED_COMPLETE_VIDEO",
+          "signature": "0afeb7e08a5c7711cf04c7b28c80c09317bc26c4e5ddac69a444db2a41f58598",
+          "status": "OFFICIAL_JOINT_TETA_COMPLETE",
+          "timestamp_policy": "TAO source frame_index / 30; only sparse annotated frames inferred",
+          "unmapped_policy": "retain boxes with unknown category -1; never discard predictions or GT",
+          "unmapped_predicted_labels": [],
+          "videos": 9
+        },
+        "simple": {
+          "GT_boxes": 490,
+          "GT_policy": "official amodal LVIS-v1 validation annotations; non-exhaustive categories retained",
+          "aggregation": "unmodified official TETA over joint GT/predictions, never mean per-video TETA",
+          "arm": "simple",
+          "artifact_directory": "simple",
+          "base_novel": {
+            "base": {
+              "AssocA": 0.0,
+              "AssocPr": 0.0,
+              "AssocRe": 0.0,
+              "ClsA": 0.0,
+              "ClsPr": 0.0,
+              "ClsRe": 0.0,
+              "LocA": 0.0,
+              "LocPr": 0.0,
+              "LocRe": 0.0,
+              "TETA": 0.0
+            },
+            "novel": null
+          },
+          "evaluated_categories": [
+            {
+              "group": "base",
+              "name": "bus_(vehicle)"
+            },
+            {
+              "group": "base",
+              "name": "car_(automobile)"
+            },
+            {
+              "group": "base",
+              "name": "coat"
+            },
+            {
+              "group": "base",
+              "name": "person"
+            },
+            {
+              "group": "base",
+              "name": "pickup_truck"
+            },
+            {
+              "group": "base",
+              "name": "truck"
+            },
+            {
+              "group": "base",
+              "name": "water_bottle"
+            }
+          ],
+          "evaluator": "unmodified official TETA OVMOT recipe; non-exhaustive TAO",
+          "evaluator_commit": "b498aa87b252bfb75d7cc0d8d6435c3e1e74e4de",
+          "frames": 156,
+          "job_ids": [
+            "tao_amodal__val_ArgoVerse_side_left_273c1883-673a-36bf-b124-88311b1a80be__621d07178dd1c86f",
+            "tao_amodal__val_ArgoVerse_rear_right_25952736-2595-2595-2595-225953853440__71b0e223d2ba9566",
+            "tao_amodal__val_AVA_BCiuXAuCKAU_scene_16_109527-110290__e597df32d6583b53",
+            "tao_amodal__val_ArgoVerse_028d5cb1-f74d-366c-85ad-84fde69b0fd3__7fab9fd1f0ef5895",
+            "tao_amodal__val_ArgoVerse_273c1883-673a-36bf-b124-88311b1a80be__de656dfbbfe75581",
+            "tao_amodal__val_ArgoVerse_043aeba7-14e5-3cde-8a5c-639389b6d3a6__3415da83c5a6d818",
+            "tao_amodal__val_ArgoVerse_02cf0ce1-699a-373b-86c0-eb6fd5f4697a__468401552bf3c30a",
+            "tao_amodal__val_ArgoVerse_25952736-2595-2595-2595-225953853440__9d1704f6ccc8e6ee",
+            "tao_amodal__val_ArgoVerse_10b8dee6-778f-33e4-a946-d842d2d9c3d7__16d10437ea8a1258"
+          ],
+          "metric_scale": "official TETA summary percent",
+          "metrics": {
+            "AssocA": 0.0,
+            "AssocPr": 0.0,
+            "AssocRe": 0.0,
+            "ClsA": 0.0,
+            "ClsPr": 0.0,
+            "ClsRe": 0.0,
+            "LocA": 0.0,
+            "LocPr": 0.0,
+            "LocRe": 0.0,
+            "TETA": 0.0
+          },
+          "novel_evaluation_GT_used_for_training": false,
+          "official_complete_dataset_result": false,
+          "prediction_score": "constant unscored sentinel 1; no detector confidence and no score-based truncation",
+          "predictions": 0,
+          "scope": "REGISTERED_COMPLETE_VIDEO",
+          "signature": "f4d52cde222fa15f45b261ba7873cd4e5c78aba747bc891b9f25d14296ee8526",
+          "status": "OFFICIAL_JOINT_TETA_COMPLETE",
+          "timestamp_policy": "TAO source frame_index / 30; only sparse annotated frames inferred",
+          "unmapped_policy": "retain boxes with unknown category -1; never discard predictions or GT",
+          "unmapped_predicted_labels": [],
+          "videos": 9
+        }
+      },
+      "latency_mean_seconds": 463.0456890262867,
+      "latency_p95_seconds": 510.957381069893,
+      "measured_detection_FPS": 0.0021596141022343714,
+      "measured_preflight_FPS": 0.0021596141022343714,
+      "paired_TETA_gain": {
+        "AssocA": 0.0,
+        "ClsA": 0.0,
+        "LocA": 0.0,
+        "TETA": 0.0
+      },
+      "paired_gains": {},
+      "perception_fps_complete_scopes": 0.0033309425675535726,
+      "persisted_requests": 2123,
+      "planned_DLM_requests": 475306,
+      "preflight_inputs": 32,
+      "prior_j1_diagnostics": {},
+      "registered_jobs": 993,
+      "registered_query_frames": 36562,
+      "registered_videos": 993,
+      "rejected_complete_jobs": 156,
+      "remaining_detection_GPU_hours_estimate": 3035.427098570266,
+      "scope": "REGISTERED_COMPLETE_VIDEO",
+      "scored_detection_jobs": 9,
+      "scored_frames": 156,
+      "scored_videos": 9,
+      "timing_measured_inputs": 32,
+      "timing_measurement_scope": "registered 32-input preflight",
+      "tracking": {},
+      "tracking_note": "TETA must be recomputed jointly across completed videos; per-video scores are not averaged"
+    }
+  },
+  "full_evaluation_complete": false,
+  "automatic_resume_authorized": false
+}
