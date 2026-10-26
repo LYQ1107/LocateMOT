@@ -39,7 +39,10 @@ def score_output(job,output):
         subprocess.run([sys.executable,str(ROOT/'tools/groundjev'/script),'--video',str(evaluation_path),
                         '--run',str(output)],cwd=ROOT,stdout=log,stderr=subprocess.STDOUT,check=True)
     measured=load(output/'official_metrics.json');measured['official_scoring_seconds']=time.perf_counter()-start
-    measured['result_scope']=evaluation['result_scope'];save(output/'official_metrics.json',measured)
+    # Every job is one complete video or one expression/video. Only the
+    # aggregate can establish that all official validation jobs are finished.
+    measured['registered_manifest_scope_label']=evaluation['result_scope']
+    measured['result_scope']='REGISTERED_COMPLETE_VIDEO';save(output/'official_metrics.json',measured)
     return measured
 
 

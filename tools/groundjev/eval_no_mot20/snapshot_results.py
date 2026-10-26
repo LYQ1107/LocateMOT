@@ -57,6 +57,9 @@ def snapshot(run=RUN):
     payload={'status':'PARTIAL_COMPLETE_VIDEO_RESULTS_FULL_GOAL_INCOMPLETE',
         'created_utc':datetime.now(timezone.utc).isoformat(),'project':'GroundJEV',
         'source_git_commit':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
+        'source_git_tree':subprocess.check_output(['git','rev-parse','HEAD^{tree}'],cwd=ROOT,text=True).strip(),
+        'runtime_code_matches_source_commit':subprocess.run(
+            ['git','diff','--quiet','HEAD','--','locatemot','tools','configs','tests'],cwd=ROOT).returncode==0,
         'runtime_root':str(run),'engineering':load(docs/'EVAL_NO_MOT20_ENGINEERING_RECEIPT.json'),
         'aggregate':report,'completed_jobs':jobs,'MOT20_jobs':0,'new_training':False,
         'sampled_owned_resident_peak_MiB_by_GPU':gpu_peaks,

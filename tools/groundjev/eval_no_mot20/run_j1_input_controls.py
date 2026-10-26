@@ -91,7 +91,9 @@ def main():
                 result['log'] = str(directory/f"{arm['arm']}.log")
             results.append(result)
             save(directory/'progress.json', {'results':results,'full_video_frames':simple['input']['frames']})
-            print(json.dumps({'event':'J1_INPUT_CONTROL_FINISHED',**result}), flush=True)
+            print(json.dumps({'event':'J1_INPUT_CONTROL_FINISHED',**arm,
+                'exit_code':exit_code,'wall_seconds':result['wall_seconds'],
+                'metrics':result.get('frozen_receipt',{}).get('metrics',{}).get('metrics')}), flush=True)
         receipt = {'status':'FULL_VIDEO_INPUT_CONTROLS_COMPLETE' if all(r['exit_code']==0 for r in results)
                    else 'INPUT_CONTROLS_HAVE_EXPLICIT_FAILURES', 'registration':registration,'results':results,
                    'same_checkpoint_and_candidates':True,'new_training':False}

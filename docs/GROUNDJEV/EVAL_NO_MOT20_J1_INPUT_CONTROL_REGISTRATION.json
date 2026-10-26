@@ -1,0 +1,60 @@
+{
+  "G2_sha256": "7c4a81349e333a304e32f42cf1999db289802d8c31eba415b85827038d14801f",
+  "G2_step": 18227,
+  "GT_runtime_access": false,
+  "J1": {
+    "path": "/data2/user/LocateMOT_OneJev_CVPR/outputs/groundjev/full_data_v2/post_j1_heldout_gate_v1/merged_3task_J1_v4_birth",
+    "receipt": {
+      "adapter": "/data3/user/LocateMOT-runs/TrackJEV_FullDataV2/trackjev_3task_J1_v4_birth/adapter-step1200",
+      "adapter_pairs": 186,
+      "alpha": 64,
+      "base": "/data2/user/LocateMOT_OneJev_CVPR/models/OneJev-0.8B",
+      "base_tensors": 474,
+      "note": "language/decision weights only; vision tower and tokenizer unchanged",
+      "out": "/data2/user/LocateMOT_OneJev_CVPR/outputs/groundjev/full_data_v2/post_j1_heldout_gate_v1/merged_3task_J1_v4_birth",
+      "rank": 32,
+      "scale": 2.0,
+      "status": "LORA_MERGED_INTO_FULL_MODEL",
+      "tensors_updated": 186,
+      "unmatched_adapter_keys": [],
+      "unmatched_count": 0
+    },
+    "step": 1200,
+    "weight_sha256": {
+      "model.safetensors": "5cc64d1bcae70db4a4d8596c655bc38ce0e8c1d63cb3bd2bf14d30e9848c07a5"
+    }
+  },
+  "arms": [
+    {
+      "arm": "j1_current_crops_v3",
+      "candidate_evidence": "train_current_crops",
+      "memory_transport": "legacy"
+    },
+    {
+      "arm": "j1_current_crops_memory_v4",
+      "candidate_evidence": "train_current_crops",
+      "memory_transport": "local_xyxy"
+    }
+  ],
+  "competition_geometry": "xyxy",
+  "dataset": "sportsmot",
+  "frozen_thresholds": true,
+  "gpu": 3,
+  "gpu_uuid": "GPU-6cb11599-704e-c3aa-9e28-5f15faa25c7c",
+  "input": {
+    "candidate_sha256": "46fce75613893b8642a0b0be118b0462e2e89996e38fba2feec7b711159e34b6",
+    "frames": 226,
+    "identical_geometry_order_labels_scores_rejection": true
+  },
+  "job": "/data3/user/LocateMOT-runs/GroundJEV_Eval_NoMOT20_4GPU/request_local_seed_v2/jobs/sportsmot__v_9MHDmAMxO5I_c003__d743f9a1134bb802",
+  "main_evaluation_arm_unchanged": true,
+  "new_training": false,
+  "physical_gpu_pool": [
+    3,
+    4,
+    6,
+    1
+  ],
+  "source_commit": "a38dabf51d45d6f4e278a50e2a727fee647e480f",
+  "status": "REGISTERED_BEFORE_CONTROL_INFERENCE"
+}

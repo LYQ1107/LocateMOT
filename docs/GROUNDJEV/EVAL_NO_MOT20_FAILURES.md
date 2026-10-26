@@ -44,3 +44,21 @@ native TAO generation and its execution cost, complete joint official TETA over
 all available finished videos, and maintain paired Simple/J1/Coupled comparisons.
 An execution optimization is adoptable only after native outputs remain equal;
 changing vocabulary, decoder, precision or parser is a separate experiment.
+
+Follow-up input audit and controls (2026-10-26):
+
+- All43,533 frozen J1 TRAIN rows declare a second current-crop image; the
+  legacy adapter omitted it. A44-candidate real TRAIN PNG is reproduced
+  exactly. A separate226-frame crop-only arm has HOTA13.6705%, IDF17.8107%,
+  FN2235 and one output identity. It does not resolve the failure.
+- Compact memory requests used original assignment keys against locally
+  renumbered candidates and xyxy boxes against xywh competition. The repair
+  is a separately named control; it does not rewrite v2 or legacy results.
+- All3,471 birth supervision questions lack a candidate index. Two identical
+  upstream-rendered input groups conflict across39 TRAIN rows. This is a
+  verified data defect; its quantitative causal contribution remains unknown,
+  and no original row or checkpoint is modified in this evaluation-only goal.
+- Historical per-video SportsMOT receipts inherited an incorrect full-VAL
+  scope label. Their actual denominators and existing aggregate scopes were
+  correct. An explicit erratum preserves those immutable receipts and fixes
+  future reporting to REGISTERED_COMPLETE_VIDEO.

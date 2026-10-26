@@ -33,6 +33,7 @@ def combine_mot(paths):
 
 def aggregate(run=RUN,with_teta=False):
     registry=load(run/'jobs.json');groups=defaultdict(list)
+    config=load(ROOT/'configs/groundjev/eval_no_mot20_4gpu_v1.json')
     arm_dirs={arm:arm_directory(arm) for arm in ('simple','j1','coupled')}
     for job in registry['jobs']:groups[job['dataset']].append(job)
     report={'status':'INCOMPLETE','created_utc_seconds':time.time(),'G2_step':18227,'G2_SHA':G2_SHA,
@@ -141,6 +142,18 @@ def aggregate(run=RUN,with_teta=False):
             if legacy:value['legacy_j1_diagnostic']={'complete_jobs':len(legacy),
                 'official_combined_metrics':combine_mot(legacy),
                 'limitation':'legacy inference interpreted runtime xyxy coordinates as xywh competition geometry'}
+        value['prior_j1_diagnostics']={}
+        for historical in config.get('j1_diagnostic_arms',[]):
+            if historical==arm_dirs['j1']:continue
+            paths=[Path(j['path'])/historical/'official_metric_components.json' for j in jobs
+                   if (Path(j['path'])/historical/'frozen_receipt.json').exists()
+                   and (Path(j['path'])/historical/'official_metric_components.json').exists()]
+            if paths:
+                value['prior_j1_diagnostics'][historical]={
+                    'complete_jobs':len(paths),
+                    'frames':sum(load(p.parent/'result.json')['frames'] for p in paths),
+                    'official_combined_metrics':combine_mot(paths),
+                    'scope':'historical inference protocol; separate from current J1'}
         if dataset=='tao_amodal':
             value['tracking_note']='TETA must be recomputed jointly across completed videos; per-video scores are not averaged'
             # Preserve completed joint measurements when a lightweight refresh
@@ -202,15 +215,15 @@ def render_docs(report,run):
                 t=d['tracking'][arm];m=t['official_combined_metrics']
                 rows.append(f"| {name} | {arm} | {t['complete_jobs']} | {t['videos']} | {t['frames']} | {number(m['HOTA'])} | {number(m['DetA'])} | {number(m['AssA'])} | {number(m['IDF1'])} | {m['IDSW']} | {number(t['association_only_FPS'])} |")
         rows+=['','No unweighted mean of per-video HOTA is used. Only paired complete scopes support net-gain claims. OVMOT requires official TETA, not MOT HOTA.','',
-               f"Current J1 artifact directory: `{arm_directory('j1')}`. Legacy `j1` outputs remain separate diagnostics after the confirmed competition-coordinate transport bug.", '',
+               f"Current J1 artifact directory: `{arm_directory('j1')}`. Historical J1 input variants remain separate diagnostics; their different scopes are never combined into the current arm.", '',
                'Coupled JEV currently supports ordinary MOT only. RMOT/OVMOT: `NOT_SUPPORTED_BY_CURRENT_CHECKPOINT`. Its selected checkpoint was trained on base-G0 cached features; evaluation on the final-G2 projector is an explicitly recorded feature-distribution shift. J1 step1200 and the separate step8227 OneJev model are not interchanged.']
         if 'j1' in arms:
-            rows+=['','| Legacy J1 diagnostic | Complete jobs | HOTA | IDF1 |','|---|---:|---:|---:|']
+            rows+=['','| Dataset | Historical J1 arm | Complete jobs | Frames | HOTA | IDF1 |',
+                   '|---|---|---:|---:|---:|---:|']
             for name,d in report['datasets'].items():
-                legacy=d.get('legacy_j1_diagnostic')
-                if legacy:
-                    metric=legacy['official_combined_metrics']
-                    rows.append(f"| {name} | {legacy['complete_jobs']} | {number(metric['HOTA'])} | {number(metric['IDF1'])} |")
+                for historical,prior in d.get('prior_j1_diagnostics',{}).items():
+                    metric=prior['official_combined_metrics']
+                    rows.append(f"| {name} | {historical} | {prior['complete_jobs']} | {prior['frames']} | {number(metric['HOTA'])} | {number(metric['IDF1'])} |")
         tao=report['datasets'].get('tao_amodal',{})
         if tao.get('joint_TETA'):
             rows+=['','| OVMOT arm | Complete videos | TETA | LocA | AssocA | ClsA |','|---|---:|---:|---:|---:|---:|']

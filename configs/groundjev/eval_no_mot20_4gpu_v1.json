@@ -29,7 +29,10 @@
   "publication_mode": "connected_github",
   "execution_probe_after_j1": true,
   "execution_probe_modes": ["fast_eager", "triton_graph"],
-  "j1_artifact_dir": "j1_competition_xyxy_v2",
+  "j1_artifact_dir": "j1_current_crops_memory_v4",
   "j1_competition_geometry": "xyxy",
-  "j1_backfill_legacy": true
+  "j1_candidate_evidence": "train_current_crops",
+  "j1_memory_transport": "local_xyxy",
+  "j1_backfill_ready": true,
+  "j1_diagnostic_arms": ["j1", "j1_competition_xyxy_v2", "j1_current_crops_v3"]
 }

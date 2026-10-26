@@ -99,17 +99,28 @@ def main():
     parser.add_argument('--no-followups',action='store_true',help='run only this explicitly registered control')
     args=parser.parse_args();config_path=ROOT/'configs/groundjev/eval_no_mot20_4gpu_v1.json';config=load(config_path)
     arm=args.arm or arm_directory('j1',config)
-    geometry=args.competition_geometry or config.get('j1_competition_geometry','legacy_xywh')
-    evidence=args.candidate_evidence or config.get('j1_candidate_evidence','full_frame')
-    memory=args.memory_transport or config.get('j1_memory_transport','legacy')
+    # Named historical arms must remain reconstructible after the main
+    # protocol advances; an explicit legacy arm cannot inherit new images.
+    known={
+        'j1':('legacy_xywh','full_frame','legacy'),
+        'j1_competition_xyxy_v2':('xyxy','full_frame','legacy'),
+        'j1_current_crops_v3':('xyxy','train_current_crops','legacy'),
+        'j1_current_crops_memory_v4':('xyxy','train_current_crops','local_xyxy'),
+    }
+    defaults=known.get(arm,(config.get('j1_competition_geometry','legacy_xywh'),
+                           config.get('j1_candidate_evidence','full_frame'),
+                           config.get('j1_memory_transport','legacy')))
+    geometry=args.competition_geometry or defaults[0]
+    evidence=args.candidate_evidence or defaults[1]
+    memory=args.memory_transport or defaults[2]
     print(json.dumps(replay(args.job,args.checkpoint,arm=arm,competition_geometry=geometry,
                             candidate_evidence=evidence,memory_transport=memory)),flush=True)
     if args.no_followups:return
-    # Backfill one already completed legacy scope in the same reserved GPU
+    # Backfill one already scored Simple scope in the same reserved GPU
     # slot; detection caches and historical J1 predictions stay untouched.
-    if config.get('j1_backfill_legacy') and arm!='j1':
+    if (config.get('j1_backfill_ready') or config.get('j1_backfill_legacy')) and arm!='j1':
         jobs=load(Path(config['output_root'])/'jobs.json')['jobs']
-        pending=[j for j in jobs if (Path(j['path'])/'j1/frozen_receipt.json').exists()
+        pending=[j for j in jobs if (Path(j['path'])/'simple/frozen_receipt.json').exists()
                  and not (Path(j['path'])/arm/'frozen_receipt.json').exists()]
         if pending:
             entry=min(pending,key=lambda j:(j['dataset']!='sportsmot',j['frames'],j['id']))

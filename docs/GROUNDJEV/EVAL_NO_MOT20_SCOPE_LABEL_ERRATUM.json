@@ -1,0 +1,94 @@
+{
+  "status": "PER_JOB_SCOPE_METADATA_ERRATUM",
+  "affected_frozen_receipts": [
+    {
+      "job": "sportsmot__v_0kUtTtmLaJA_c008__8b2da8ad8a99257a",
+      "arm": "simple",
+      "frames": 266,
+      "immutable_receipt": "/data3/user/LocateMOT-runs/GroundJEV_Eval_NoMOT20_4GPU/request_local_seed_v2/jobs/sportsmot__v_0kUtTtmLaJA_c008__8b2da8ad8a99257a/simple/frozen_receipt.json"
+    },
+    {
+      "job": "sportsmot__v_0kUtTtmLaJA_c008__8b2da8ad8a99257a",
+      "arm": "j1_competition_xyxy_v2",
+      "frames": 266,
+      "immutable_receipt": "/data3/user/LocateMOT-runs/GroundJEV_Eval_NoMOT20_4GPU/request_local_seed_v2/jobs/sportsmot__v_0kUtTtmLaJA_c008__8b2da8ad8a99257a/j1_competition_xyxy_v2/frozen_receipt.json"
+    },
+    {
+      "job": "sportsmot__v_4-EmEtrturE_c009__3ae432000bedc80d",
+      "arm": "simple",
+      "frames": 250,
+      "immutable_receipt": "/data3/user/LocateMOT-runs/GroundJEV_Eval_NoMOT20_4GPU/request_local_seed_v2/jobs/sportsmot__v_4-EmEtrturE_c009__3ae432000bedc80d/simple/frozen_receipt.json"
+    },
+    {
+      "job": "sportsmot__v_4-EmEtrturE_c009__3ae432000bedc80d",
+      "arm": "j1",
+      "frames": 250,
+      "immutable_receipt": "/data3/user/LocateMOT-runs/GroundJEV_Eval_NoMOT20_4GPU/request_local_seed_v2/jobs/sportsmot__v_4-EmEtrturE_c009__3ae432000bedc80d/j1/frozen_receipt.json"
+    },
+    {
+      "job": "sportsmot__v_4-EmEtrturE_c009__3ae432000bedc80d",
+      "arm": "j1_competition_xyxy_v2",
+      "frames": 250,
+      "immutable_receipt": "/data3/user/LocateMOT-runs/GroundJEV_Eval_NoMOT20_4GPU/request_local_seed_v2/jobs/sportsmot__v_4-EmEtrturE_c009__3ae432000bedc80d/j1_competition_xyxy_v2/frozen_receipt.json"
+    },
+    {
+      "job": "sportsmot__v_9MHDmAMxO5I_c002__bd2fa61e4541282d",
+      "arm": "simple",
+      "frames": 239,
+      "immutable_receipt": "/data3/user/LocateMOT-runs/GroundJEV_Eval_NoMOT20_4GPU/request_local_seed_v2/jobs/sportsmot__v_9MHDmAMxO5I_c002__bd2fa61e4541282d/simple/frozen_receipt.json"
+    },
+    {
+      "job": "sportsmot__v_9MHDmAMxO5I_c002__bd2fa61e4541282d",
+      "arm": "j1",
+      "frames": 239,
+      "immutable_receipt": "/data3/user/LocateMOT-runs/GroundJEV_Eval_NoMOT20_4GPU/request_local_seed_v2/jobs/sportsmot__v_9MHDmAMxO5I_c002__bd2fa61e4541282d/j1/frozen_receipt.json"
+    },
+    {
+      "job": "sportsmot__v_9MHDmAMxO5I_c002__bd2fa61e4541282d",
+      "arm": "j1_competition_xyxy_v2",
+      "frames": 239,
+      "immutable_receipt": "/data3/user/LocateMOT-runs/GroundJEV_Eval_NoMOT20_4GPU/request_local_seed_v2/jobs/sportsmot__v_9MHDmAMxO5I_c002__bd2fa61e4541282d/j1_competition_xyxy_v2/frozen_receipt.json"
+    },
+    {
+      "job": "sportsmot__v_9MHDmAMxO5I_c003__d743f9a1134bb802",
+      "arm": "simple",
+      "frames": 226,
+      "immutable_receipt": "/data3/user/LocateMOT-runs/GroundJEV_Eval_NoMOT20_4GPU/request_local_seed_v2/jobs/sportsmot__v_9MHDmAMxO5I_c003__d743f9a1134bb802/simple/frozen_receipt.json"
+    },
+    {
+      "job": "sportsmot__v_9MHDmAMxO5I_c003__d743f9a1134bb802",
+      "arm": "j1",
+      "frames": 226,
+      "immutable_receipt": "/data3/user/LocateMOT-runs/GroundJEV_Eval_NoMOT20_4GPU/request_local_seed_v2/jobs/sportsmot__v_9MHDmAMxO5I_c003__d743f9a1134bb802/j1/frozen_receipt.json"
+    },
+    {
+      "job": "sportsmot__v_9MHDmAMxO5I_c003__d743f9a1134bb802",
+      "arm": "j1_competition_xyxy_v2",
+      "frames": 226,
+      "immutable_receipt": "/data3/user/LocateMOT-runs/GroundJEV_Eval_NoMOT20_4GPU/request_local_seed_v2/jobs/sportsmot__v_9MHDmAMxO5I_c003__d743f9a1134bb802/j1_competition_xyxy_v2/frozen_receipt.json"
+    },
+    {
+      "job": "sportsmot__v_9MHDmAMxO5I_c003__d743f9a1134bb802",
+      "arm": "j1_current_crops_v3",
+      "frames": 226,
+      "immutable_receipt": "/data3/user/LocateMOT-runs/GroundJEV_Eval_NoMOT20_4GPU/request_local_seed_v2/jobs/sportsmot__v_9MHDmAMxO5I_c003__d743f9a1134bb802/j1_current_crops_v3/frozen_receipt.json"
+    },
+    {
+      "job": "sportsmot__v_cC2mHWqMcjk_c008__6ec845472cac25c4",
+      "arm": "simple",
+      "frames": 259,
+      "immutable_receipt": "/data3/user/LocateMOT-runs/GroundJEV_Eval_NoMOT20_4GPU/request_local_seed_v2/jobs/sportsmot__v_cC2mHWqMcjk_c008__6ec845472cac25c4/simple/frozen_receipt.json"
+    },
+    {
+      "job": "sportsmot__v_cC2mHWqMcjk_c008__6ec845472cac25c4",
+      "arm": "j1_competition_xyxy_v2",
+      "frames": 259,
+      "immutable_receipt": "/data3/user/LocateMOT-runs/GroundJEV_Eval_NoMOT20_4GPU/request_local_seed_v2/jobs/sportsmot__v_cC2mHWqMcjk_c008__6ec845472cac25c4/j1_competition_xyxy_v2/frozen_receipt.json"
+    }
+  ],
+  "correct_scope": "REGISTERED_COMPLETE_VIDEO",
+  "reason": "SportsMOT per-video manifests incorrectly inherited OFFICIAL_FULL_VAL. Official metric denominators cover the registered full physical video, not all45 validation videos. Aggregate reports already use full-validation scope only after all45 jobs are scored.",
+  "prediction_or_metric_values_changed": false,
+  "old_receipts_preserved": true,
+  "new_score_metadata_corrected": true
+}

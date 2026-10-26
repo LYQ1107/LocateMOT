@@ -125,7 +125,7 @@ def add_mot(reg, coverage, j1):
                      'image_size': [config.getint('Sequence','imWidth'),config.getint('Sequence','imHeight')],
                      'fps': fps, 'physical_frames_complete': True},
                     {'protocol': str(protocol_path), 'gt_path_for_evaluation_only': str(seq / 'gt/gt.txt'),
-                     'gt_format': 'motchallenge', 'result_scope': 'OFFICIAL_FULL_VAL'})
+                     'gt_format': 'motchallenge', 'result_scope': 'REGISTERED_COMPLETE_VIDEO'})
 
 
 def add_animal(reg, coverage):

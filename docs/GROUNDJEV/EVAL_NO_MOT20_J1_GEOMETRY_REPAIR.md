@@ -34,8 +34,9 @@ be evaluated in separately named follow-up arms, without rewriting v2 results.
 
 The original `j1` directories remain historical diagnostics. Reconstruct that
 contract explicitly with `replay_j1.py --arm j1 --competition-geometry legacy_xywh`.
-Current tables and paired gains select the corrected arm through the committed
-config; they never mix legacy and repaired predictions. Existing source snapshots
+Current tables select the subsequent current-crop/memory v4 contract through
+the committed config; v2 is retained as a separate historical diagnostic.
+They never mix predictions from these variants. Existing source snapshots
 and the published negative results remain available in Git history.
 
 The repair does not establish that J1 will improve over Simple. Large NO_MATCH

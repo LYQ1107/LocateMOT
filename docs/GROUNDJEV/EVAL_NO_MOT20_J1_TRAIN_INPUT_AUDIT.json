@@ -1,0 +1,140 @@
+{
+  "birth_input_groups_with_conflicting_targets": 2,
+  "birth_rows_in_conflicting_input_groups": 39,
+  "birth_targets": {
+    "{\"NEW\":1.0}": 3384,
+    "{\"NO_MATCH\":1.0}": 69,
+    "{\"REJECT\":1.0}": 18
+  },
+  "conflict_examples": [
+    {
+      "candidate_count": 12,
+      "question": {
+        "criteria": {
+          "NEW": "A genuinely new physical entity that has no identity in this video yet and is not a duplicate of another current candidate",
+          "NO_MATCH": "A valid physical object that was observed before in this video, but none of the listed identities supports its match. Hold the association instead of creating a new identity.",
+          "REJECT": "Invalid or duplicate proposal: background, a second box of the same physical entity already accepted in this frame, or unusable evidence"
+        },
+        "instructions": "No persistent identity exists yet in this sequence. Which option owns current candidate?",
+        "type": "choice"
+      },
+      "row_ids": [
+        "MOT17-09-FRCNN_000016_c3_identity_birth",
+        "MOT17-09-FRCNN_000016_c6_identity_birth"
+      ],
+      "same_frozen_upstream_rendered_prompt": true,
+      "same_media_entries": true,
+      "source": "MOT17-09-FRCNN",
+      "targets": [
+        {
+          "NEW": 1.0
+        },
+        {
+          "REJECT": 1.0
+        }
+      ]
+    },
+    {
+      "candidate_count": 12,
+      "question": {
+        "criteria": {
+          "NEW": "A genuinely new physical entity that has no identity in this video yet and is not a duplicate of another current candidate",
+          "NO_MATCH": "A valid physical object that was observed before in this video, but none of the listed identities supports its match. Hold the association instead of creating a new identity.",
+          "REJECT": "Invalid or duplicate proposal: background, a second box of the same physical entity already accepted in this frame, or unusable evidence"
+        },
+        "instructions": "No persistent identity exists yet in this sequence. Which option owns current candidate?",
+        "type": "choice"
+      },
+      "row_ids": [
+        "MOT17-09-FRCNN_000015_c10_identity_birth",
+        "MOT17-09-FRCNN_000015_c2_identity_birth"
+      ],
+      "same_frozen_upstream_rendered_prompt": true,
+      "same_media_entries": true,
+      "source": "MOT17-09-FRCNN",
+      "targets": [
+        {
+          "REJECT": 1.0
+        },
+        {
+          "NO_MATCH": 1.0
+        }
+      ]
+    }
+  ],
+  "counts": {
+    "birth_rows": 3471,
+    "birth_rows_with_multiple_candidates_and_no_question_index": 3471,
+    "declared_crop_with_two_media": 43533,
+    "rows_declaring_current_crop_image": 43533,
+    "rows_with_more_than_two_media": 0,
+    "rows_with_nonempty_historical_tracks": 39985,
+    "total_rows": 43533
+  },
+  "declared_image_roles": {
+    "current_candidate_crop_sheet": 43533,
+    "current_frame": 43533
+  },
+  "interpretation": "Identical state/question/media with different labels is conflicting supervision. This audit does not establish how much it caused the measured tracking failure. TRAIN random slot permutations do not supply a missing candidate index.",
+  "new_training": false,
+  "rows_file": "/data2/user/LocateMOT_OneJev_CVPR/outputs/groundjev/full_data_v2/three_task_sft_v2b/rows.jsonl",
+  "runtime_GT_read": false,
+  "status": "FROZEN_J1_TRAIN_INPUT_AUDIT_COMPLETE",
+  "training_recipe": {
+    "accum_rows": 0,
+    "augment": true,
+    "batch_tokens": 196608,
+    "brier_weight": 1.0,
+    "chat_template": null,
+    "config": null,
+    "device": "cuda:0",
+    "disable_fla_kernels": false,
+    "dist_backend": "nccl",
+    "distributed_sft": true,
+    "dtype": "bfloat16",
+    "dump_first_grad": null,
+    "epochs": 1,
+    "eval_at_start": false,
+    "eval_every": 0,
+    "eval_files": [],
+    "eval_limit": 0,
+    "eval_max_len": 0,
+    "fsdp": false,
+    "full_finetune": false,
+    "gradient_checkpointing": true,
+    "limit": null,
+    "log_every": 20,
+    "lora_alpha": 64,
+    "lora_autocast": false,
+    "lora_dropout": 0.05,
+    "lora_r": 32,
+    "lr": 0.0001,
+    "max_grad_norm": 1.0,
+    "max_len": 32768,
+    "max_rows": 8,
+    "max_steps": 1200,
+    "media_root": "/data2/user/LocateMOT_OneJev_CVPR",
+    "merge": false,
+    "merged_dir": null,
+    "model": "/data2/user/LocateMOT_GroundJEV/models/OneJev-0.8B",
+    "multimodal": true,
+    "name": "trackjev_3task_J1_v4_birth",
+    "no_autocast": false,
+    "pad_options": 0.0,
+    "plan_only": false,
+    "runs_dir": "/data3/user/LocateMOT-runs/TrackJEV_FullDataV2",
+    "save_every": 50,
+    "seed": 0,
+    "share_prefix": false,
+    "split": null,
+    "step_rows": 24,
+    "target_modules": null,
+    "train_file": "outputs/groundjev/full_data_v2/three_task_sft_v2b/rows.jsonl",
+    "train_vision": false,
+    "warmup_frac": 0.03,
+    "weight_decay": 0.0,
+    "world_size": 2,
+    "worst_case": null
+  },
+  "unique_birth_inputs": 732
+}
