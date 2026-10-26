@@ -1,0 +1,24 @@
+{
+  "old_pause_audit": "/data3/user/LocateMOT-runs/GroundJEV_Eval_NoMOT20_4GPU/request_local_seed_v2/architecture_pivot_pause_20261026/pause_audit.json",
+  "python": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python",
+  "arms": {
+    "g2": {
+      "gpu": 1,
+      "uuid": "GPU-f35654b3-bbf5-7303-cfcb-9bd5d3e16e69",
+      "free_MiB_at_registration": 58828,
+      "config": "g2_spatial_prior_pilot.yaml"
+    },
+    "g0": {
+      "gpu": 7,
+      "uuid": "GPU-0322c0e7-ffbf-e068-5bdd-587b8216a9d9",
+      "free_MiB_at_registration": 27344,
+      "config": "g0_spatial_prior_control.yaml"
+    }
+  },
+  "maximum_task_physical_GPUs": 4,
+  "main_v1_GPUs": [
+    4,
+    6
+  ],
+  "combined_feature_cache_bytes": 21474836480
+}

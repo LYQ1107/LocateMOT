@@ -24,8 +24,10 @@ def position_2d(height, width, dim, device, dtype):
 
 
 class ObjectDecoder(nn.Module):
-    def __init__(self, input_dim=2560, hidden_dim=256, queries=128, layers=3):
+    def __init__(self, input_dim=2560, hidden_dim=256, queries=128, layers=3,
+                 spatial_attention_sigma=None):
         super().__init__()
+        self.spatial_attention_sigma = spatial_attention_sigma
         self.projection = nn.Conv2d(input_dim, hidden_dim, 1)
         self.memory_norm = nn.LayerNorm(hidden_dim)
         self.queries = nn.Embedding(queries, hidden_dim)
@@ -58,10 +60,23 @@ class ObjectDecoder(nn.Module):
                                 (torch.arange(w, device=memory.device) + .5) / w,
                                 indexing="ij")
         mask = ((xx >= valid_ratio[0]) | (yy >= valid_ratio[1])).flatten()[None].expand(b, -1)
+        attention_bias = None
+        padding_mask = mask
+        if self.spatial_attention_sigma is not None:
+            # A data-independent spatial prior ties each object query to its
+            # own learned reference center. The centers are model parameters,
+            # never GT/proposals. This is ordinary attention-mask arithmetic.
+            centers = self.reference_logits[:, :2].sigmoid()
+            dx = xx.flatten()[None] - centers[:, 0:1]
+            dy = yy.flatten()[None] - centers[:, 1:2]
+            attention_bias = -(dx.square() + dy.square()) / (2*self.spatial_attention_sigma**2)
+            attention_bias = attention_bias.masked_fill(mask[0:1], float('-inf'))
+            padding_mask = None
         query = self.queries.weight[None].expand(b, -1, -1)
         outputs = []
         for layer in self.layers:
-            query = layer(query, memory + position, memory_key_padding_mask=mask)
+            query = layer(query, memory + position, memory_mask=attention_bias,
+                          memory_key_padding_mask=padding_mask)
             tokens = self.norm(query)
             outputs.append({"boxes": (self.box_head(tokens) + self.reference_logits).sigmoid(),
                             "logits": self.objectness(tokens).squeeze(-1),

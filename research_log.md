@@ -3221,3 +3221,7 @@ Safely paused old four-GPU full evaluation and recovery owners, preserved SQLite
 ## 2026-10-26 spatial decoder engineering audit
 
 Real GPU G0/G2 smoke passed: image-only2560x24x42, final18227 verified, no GT leakage, all head gradients, frozen vision unchanged, exact restore. Encoder weights equal; five G2 projector tensors differ. Native BF16/FP32 cosine>0.9996. Video-group split57 TRAIN/20 DEV; DEV previously in G2 TRAIN (explicit limitation). Freeze matched100-query/3-layer heads,1000 steps, batch4, seed42, LR2e-4,12GiB combined bounded feature cache. External A0 cache comparison frozen before fitting:1607 frames/6 videos. No scientific gain claimed yet.
+
+## 2026-10-27 bounded spatial-prior control, frozen before external head results
+
+V1globalqueries atG2step750: macroDEV AP50=0.819%, fixed0.5 outputs empty; G0step750=1.446%. Real GPU two-TRAIN-frame300-step overfit givesR75/Precision100%, validating geometry/matching/head capacity only. Hypothesis: global cross-attention is poorly localized with a short query-training budget. Freeze one matchedV2pair with additiveGaussian attention bias at learned reference centers (sigma0.08), identical parameter count/data/seed/order/1000steps/optimizer. No GT/proposals enter attention. G0/G2 GPU7/1, alongsideV1GPU4/6, peak4physicalGPUs.20GiB combined feature cap, global24GPU-hour budget. Real GPUV2smoke passed finite loss/allgrads/frozen backbone/exactrestore. No external head metrics have been observed; no identity or backbone training. KeepV1negative evidence.

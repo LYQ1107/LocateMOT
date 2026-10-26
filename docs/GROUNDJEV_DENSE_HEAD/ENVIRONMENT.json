@@ -1,0 +1,14 @@
+{
+  "torch": "2.9.1",
+  "torchvision": "0.24.1",
+  "transformers": "5.5.4",
+  "safetensors": "0.8.0",
+  "numpy": "2.5.4",
+  "scipy": "1.18.1",
+  "Pillow": "12.3.0",
+  "PyYAML": "6.0.3",
+  "accelerate": "not installed",
+  "einops": "0.8.2",
+  "flash-attn": "not installed",
+  "sglang": "0.5.6.post2"
+}

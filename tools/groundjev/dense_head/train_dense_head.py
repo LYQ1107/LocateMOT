@@ -39,6 +39,10 @@ def main():
     a=p.parse_args();c=yaml.safe_load(a.config.read_text());torch.set_num_threads(4)
     assert torch.cuda.is_available()
     arm=c['arm'];run=Path(c['output_root']);run.mkdir(parents=True,exist_ok=True)
+    if (run/'receipt.json').exists():
+        raise RuntimeError('This pilot is complete; use a new output_root for another experiment.')
+    if (run/'last.pt').exists() and not a.resume:
+        raise RuntimeError('Preserved checkpoint exists; explicitly resume it or use a new output_root.')
     audit=json.loads((Path(c['root'])/'audits'/arm/'receipt.json').read_text())
     assert audit['status']=='REAL_GPU_SPATIAL_SMOKE_PASSED'
     assert Path(c['old_pause_receipt']).exists()
@@ -46,9 +50,12 @@ def main():
     registration=json.loads((Path(c['root'])/'GPU_REGISTRATION.json').read_text())
     assert os.environ['CUDA_VISIBLE_DEVICES']==str(registration['arms'][arm]['gpu'])
     train=load_rows(c['train_index']);dev=load_rows(c['dev_index']);full_dev=load_rows(c['full_dev_index'])
+    protocol=json.loads((Path(c['root'])/'data/protocol.json').read_text())
+    assert c['queries']==protocol['query_selection']['queries']
     backbone=SpatialBackbone(c['model'],max_tokens=c['max_tokens'])
     torch.manual_seed(c['seed']);np.random.seed(c['seed']);rng=random.Random(c['seed'])
-    head=ObjectDecoder(hidden_dim=c['hidden_dim'],queries=c['queries'],layers=c['layers']).cuda()
+    head=ObjectDecoder(hidden_dim=c['hidden_dim'],queries=c['queries'],layers=c['layers'],
+                       spatial_attention_sigma=c.get('spatial_attention_sigma')).cuda()
     initial_hash=hashlib.sha256(b''.join(p.detach().cpu().numpy().tobytes() for p in head.parameters())).hexdigest()
     optimizer=torch.optim.AdamW(head.parameters(),lr=c['lr'],weight_decay=c['weight_decay'])
     scheduler=torch.optim.lr_scheduler.LambdaLR(optimizer,lambda s:min(1.,(s+1)/50)*(.1 if s>=800 else 1.))
@@ -63,6 +70,15 @@ def main():
         head.load_state_dict(saved['head']);optimizer.load_state_dict(saved['optimizer']);scheduler.load_state_dict(saved['scheduler'])
         first=saved['step']+1;rng.setstate(saved['sampler_rng']);torch.set_rng_state(saved['torch_rng']);torch.cuda.set_rng_state(saved['cuda_rng'])
         best=saved.get('best_macro_AP50',-1.)
+        # Reconstruct the prefix trace from the exact deterministic sampler.
+        # This preserves truthful unique-image/exposure/order receipts on resume.
+        prefix=random.Random(c['seed'])
+        for prior in range(1,first):
+            for batch in range(c['batch_images']):
+                domain=domains[((prior-1)*c['batch_images']+batch)%len(domains)]
+                sequence=prefix.choice(sequence_lists[domain]);row=prefix.choice(grouped[domain][sequence])
+                key=row['image_path'];sample_hash.update((key+'\n').encode());used.add(key);exposures[domain]+=1
+        assert prefix.getstate()==rng.getstate()
     started=time.perf_counter();training_seconds=0.;stop_requested=[]
     signal.signal(signal.SIGTERM,lambda *_:stop_requested.append(True))
     versions={n:p._version for n,p in backbone.visual.named_parameters()}

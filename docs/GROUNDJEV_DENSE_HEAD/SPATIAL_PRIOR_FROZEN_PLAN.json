@@ -1,0 +1,19 @@
+{
+  "status": "SPATIAL_PRIOR_CONTROL_FROZEN_BEFORE_EXTERNAL_HEAD_METRICS",
+  "time_unix": 1793033620.7474716,
+  "reason": "Global-query DEV AP50 below1% atG2step750 despite300-step 2-TRAIN-image perfect-overfit sanity; test reference-centered spatial attention prior",
+  "only_architecture_change": "Gaussian additive memory attention bias at learned uniform-initialized reference centers, sigma0.08 in padded normalized image coordinates; no new trainable parameters",
+  "controls": "G0/G2 exact same100queries/3layers/seed42/initialization/data/order/1000steps/optimizer/LR/metrics; no new GT; no external parameter selection",
+  "training_source_commit_before_change": "7829ff666f29340e2008b1210bd74133f4e6b6f0",
+  "v1_retained": true,
+  "v1_external_metrics_observed_before_this_choice": false,
+  "whole_task_GPU_hour_budget": 24,
+  "four_concurrent_GPU_limit": [
+    4,
+    6,
+    1,
+    7
+  ],
+  "feature_cache_total_budget_GiB": 20,
+  "v2_run": "/data3/user/LocateMOT-runs/G2_Spatial_DenseHead_20261026/spatial_prior_v2"
+}

@@ -5,6 +5,7 @@ import argparse
 from collections import Counter, defaultdict
 import hashlib
 import json
+import os
 from pathlib import Path
 import re
 
@@ -22,7 +23,9 @@ def digest(path):
 def write_json(path, value):
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(value, indent=2, allow_nan=False) + '\n')
+    temporary=path.with_name(path.name+f'.{os.getpid()}.tmp')
+    temporary.write_text(json.dumps(value, indent=2, allow_nan=False) + '\n')
+    temporary.replace(path)
 
 
 def physical_source(dataset, sequence):
@@ -60,6 +63,12 @@ def prepare(out=RUN, train_frames_per_video=64, dev_check_frames=24):
     out = Path(out)
     data = out/'data'
     data.mkdir(parents=True, exist_ok=True)
+    if (data/'protocol.json').exists():
+        receipt=json.loads((data/'protocol.json').read_text())
+        for index in receipt['indices'].values():
+            assert digest(index['path'])==index['sha256'], 'frozen data index changed'
+        print(json.dumps({'status':'EXISTING_FROZEN_PROTOCOL_REUSED','protocol':str(data/'protocol.json')}))
+        return receipt
     records, videos = [], []
     for dataset in ['sportsmot', 'animaltrack']:
         root = FULL/('SportsMOT' if dataset == 'sportsmot' else 'AnimalTrack')

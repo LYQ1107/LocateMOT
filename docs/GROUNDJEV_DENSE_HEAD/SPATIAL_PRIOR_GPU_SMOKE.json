@@ -1,0 +1,23 @@
+{
+  "status": "SPATIAL_PRIOR_REAL_GPU_SMOKE_PASSED",
+  "GPU": "1",
+  "feature_shape": [
+    1,
+    2560,
+    24,
+    42
+  ],
+  "sigma": 0.08,
+  "trainable_parameters": 3975829,
+  "losses": [
+    6.767385959625244,
+    7.5030622482299805,
+    6.390968322753906
+  ],
+  "all_gradients_nonzero": true,
+  "reference_logits_gradient_norm": 2.705233097076416,
+  "checkpoint_restore_exact": true,
+  "frozen_backbone": true,
+  "GT_in_attention_prior": false,
+  "elapsed_seconds": 14.402656004065648
+}

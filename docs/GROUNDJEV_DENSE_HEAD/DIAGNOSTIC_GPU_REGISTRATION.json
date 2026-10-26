@@ -1,0 +1,12 @@
+{
+  "gpu": 1,
+  "uuid": "GPU-f35654b3-bbf5-7303-cfcb-9bd5d3e16e69",
+  "free_MiB": 58828,
+  "purpose": "bounded TRAIN-only 2-image overfit diagnosis, <=180 seconds",
+  "other_registered_GPUs": [
+    4,
+    6
+  ],
+  "maximum_simultaneous_GroundJEV_GPUs_this_task": 3,
+  "time": 1793032182.9474223
+}

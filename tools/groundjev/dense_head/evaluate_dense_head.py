@@ -136,7 +136,7 @@ def main():
     import yaml
     from locatemot.groundjev.dense_head.spatial_backbone import SpatialBackbone,BoundedFeatureStore
     from locatemot.groundjev.dense_head.object_decoder import ObjectDecoder
-    c=yaml.safe_load(a.config.read_text());torch.set_num_threads(4);b=SpatialBackbone(c['model']);h=ObjectDecoder(queries=c['queries']).cuda()
+    c=yaml.safe_load(a.config.read_text());torch.set_num_threads(4);b=SpatialBackbone(c['model']);h=ObjectDecoder(queries=c['queries'],spatial_attention_sigma=c.get('spatial_attention_sigma')).cuda()
     saved=torch.load(a.checkpoint,map_location='cpu',weights_only=False);h.load_state_dict(saved['head'])
     store=BoundedFeatureStore(b,a.out.parent/'temporary_features',c['feature_cache_bytes'])
     rows=load_rows(a.index);pred,timing=predict(h,store,rows,use_cache=False)

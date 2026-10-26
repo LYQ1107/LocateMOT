@@ -10,6 +10,11 @@ from tools.groundjev.dense_head.prepare_train_data import RUN,write_json,digest,
 
 
 def main():
+    if (RUN/'data/external_protocol.json').exists():
+        receipt=json.loads((RUN/'data/external_protocol.json').read_text())
+        assert digest(RUN/'data/external_frozen.jsonl')==receipt['index_SHA256']
+        print(json.dumps({'status':'EXISTING_FROZEN_EXTERNAL_SCOPE_REUSED','frames':receipt['frames']}))
+        return
     old=Path('/data3/user/LocateMOT-runs/GroundJEV_Eval_NoMOT20_4GPU/request_local_seed_v2')
     jobs=json.loads((old/'jobs.json').read_text())['jobs'];selected=[]
     for dataset in ['sportsmot','animaltrack']:

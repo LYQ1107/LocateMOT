@@ -1,0 +1,2 @@
+# Install separately with --target; do not modify the active torch environment.
+matplotlib==3.11.2
