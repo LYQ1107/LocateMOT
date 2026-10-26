@@ -1,0 +1,350 @@
+{
+  "argmax_diagnostic_scope": "Candidate-wise diagnostics only; actual outputs use the unchanged global one-to-one assignment.",
+  "arms": {
+    "j1": {
+      "action_counts": {
+        "ACTIVE": 225,
+        "IGNORE": 2434,
+        "NEW": 1
+      },
+      "actual_output_boxes": 226,
+      "candidate_decisions": 2660,
+      "candidate_evidence": "full_frame",
+      "distinct_output_ids": 1,
+      "empty_history_question": "identity",
+      "frames": 226,
+      "input": {
+        "candidate_sha256": "46fce75613893b8642a0b0be118b0462e2e89996e38fba2feec7b711159e34b6",
+        "frames": 226,
+        "identical_geometry_order_labels_scores_rejection": true
+      },
+      "legal_NO_MATCH_mask_only_argmax_counts": {
+        "IGNORE": 1587,
+        "NEW": 1,
+        "existing": 1072
+      },
+      "mean_raw_probability": {
+        "IGNORE": 0.3168401887218045,
+        "NEW": 0.0008577255639097751,
+        "NO_MATCH": 0.2992999007518797,
+        "maximum_existing": 0.3830021774436091
+      },
+      "mean_raw_reference_score": null,
+      "memory_transport": "legacy",
+      "metrics": {
+        "AssA": 0.2425345961608393,
+        "DetA": 0.07640215414266614,
+        "FN": 2230,
+        "FP": 15,
+        "HOTA": 0.13608296432712855,
+        "IDF1": 0.07799025121859768,
+        "IDSW": 0,
+        "MOTA": 0.08029496108152397
+      },
+      "native_probabilities": true,
+      "prediction_sha256": "295055e811d84fd66998d43a30265701e8af8d0cc8e316e2a54bd29667b24466",
+      "raw_decision_argmax_counts": {
+        "IGNORE": 1395,
+        "NO_MATCH": 300,
+        "existing": 965
+      },
+      "status": "FROZEN_FULL_VIDEO_SAME_CANDIDATES",
+      "timing": {
+        "association_only_seconds": 232.0134996685665,
+        "association_replay_fps": 0.9682309390928139,
+        "complete_video_wall_seconds": 233.49951792880893,
+        "end_to_end_fps": null,
+        "peak_decision_gpu_memory_bytes": 7282902016
+      }
+    },
+    "j1_competition_xyxy_v2": {
+      "action_counts": {
+        "ACTIVE": 225,
+        "IGNORE": 2434,
+        "NEW": 1
+      },
+      "actual_output_boxes": 226,
+      "candidate_decisions": 2660,
+      "candidate_evidence": "full_frame",
+      "distinct_output_ids": 1,
+      "empty_history_question": "identity",
+      "frames": 226,
+      "input": {
+        "candidate_sha256": "46fce75613893b8642a0b0be118b0462e2e89996e38fba2feec7b711159e34b6",
+        "frames": 226,
+        "identical_geometry_order_labels_scores_rejection": true
+      },
+      "legal_NO_MATCH_mask_only_argmax_counts": {
+        "IGNORE": 1661,
+        "NEW": 1,
+        "existing": 998
+      },
+      "mean_raw_probability": {
+        "IGNORE": 0.327622232330827,
+        "NEW": 0.0006786368421052633,
+        "NO_MATCH": 0.3024071733082703,
+        "maximum_existing": 0.36929194586466213
+      },
+      "mean_raw_reference_score": null,
+      "memory_transport": "legacy",
+      "metrics": {
+        "AssA": 0.23931232994319027,
+        "DetA": 0.07644610990452476,
+        "FN": 2230,
+        "FP": 15,
+        "HOTA": 0.13521956305655708,
+        "IDF1": 0.0764904386951631,
+        "IDSW": 0,
+        "MOTA": 0.08029496108152397
+      },
+      "native_probabilities": true,
+      "prediction_sha256": "f7fb380b19f846dd602e9bd2669d3a764f4b03b52fe554858d2f64df2559c5dc",
+      "raw_decision_argmax_counts": {
+        "IGNORE": 1374,
+        "NO_MATCH": 388,
+        "existing": 898
+      },
+      "status": "FROZEN_FULL_VIDEO_SAME_CANDIDATES",
+      "timing": {
+        "association_only_seconds": 337.43181411968544,
+        "association_replay_fps": 0.6668676801356275,
+        "complete_video_wall_seconds": 338.9838398708962,
+        "end_to_end_fps": null,
+        "peak_decision_gpu_memory_bytes": 7273189376
+      }
+    },
+    "j1_current_crops_memory_v4": {
+      "action_counts": {
+        "ACTIVE": 221,
+        "IGNORE": 2438,
+        "NEW": 1
+      },
+      "actual_output_boxes": 222,
+      "candidate_decisions": 2660,
+      "candidate_evidence": "train_current_crops",
+      "distinct_output_ids": 1,
+      "empty_history_question": "identity",
+      "frames": 226,
+      "input": {
+        "candidate_sha256": "46fce75613893b8642a0b0be118b0462e2e89996e38fba2feec7b711159e34b6",
+        "frames": 226,
+        "identical_geometry_order_labels_scores_rejection": true
+      },
+      "legal_NO_MATCH_mask_only_argmax_counts": {
+        "IGNORE": 1575,
+        "NEW": 1,
+        "existing": 1084
+      },
+      "mean_raw_probability": {
+        "IGNORE": 0.2797636270676692,
+        "NEW": 0.0007230484962406005,
+        "NO_MATCH": 0.3875296233082705,
+        "maximum_existing": 0.3319836969924816
+      },
+      "mean_raw_reference_score": null,
+      "memory_transport": "local_xyxy",
+      "metrics": {
+        "AssA": 0.25133589933293876,
+        "DetA": 0.07439721812391427,
+        "FN": 2235,
+        "FP": 16,
+        "HOTA": 0.13670489775644504,
+        "IDF1": 0.07810739767179872,
+        "IDSW": 0,
+        "MOTA": 0.07783695206882425
+      },
+      "native_probabilities": true,
+      "prediction_sha256": "79a5ccae3911d18ffbff8d66119a71c300fe3232691fbc0947ca091c145591bb",
+      "raw_decision_argmax_counts": {
+        "IGNORE": 619,
+        "NO_MATCH": 1256,
+        "existing": 785
+      },
+      "status": "FROZEN_FULL_VIDEO_SAME_CANDIDATES",
+      "timing": {
+        "association_only_seconds": 344.1475810771808,
+        "association_replay_fps": 0.6539452657121351,
+        "complete_video_wall_seconds": 345.6798726259731,
+        "end_to_end_fps": null,
+        "peak_decision_gpu_memory_bytes": 7628613632
+      }
+    },
+    "j1_current_crops_v3": {
+      "action_counts": {
+        "ACTIVE": 221,
+        "IGNORE": 2438,
+        "NEW": 1
+      },
+      "actual_output_boxes": 222,
+      "candidate_decisions": 2660,
+      "candidate_evidence": "train_current_crops",
+      "distinct_output_ids": 1,
+      "empty_history_question": "identity",
+      "frames": 226,
+      "input": {
+        "candidate_sha256": "46fce75613893b8642a0b0be118b0462e2e89996e38fba2feec7b711159e34b6",
+        "frames": 226,
+        "identical_geometry_order_labels_scores_rejection": true
+      },
+      "legal_NO_MATCH_mask_only_argmax_counts": {
+        "IGNORE": 1575,
+        "NEW": 1,
+        "existing": 1084
+      },
+      "mean_raw_probability": {
+        "IGNORE": 0.2797636270676692,
+        "NEW": 0.0007230484962406005,
+        "NO_MATCH": 0.3875296233082705,
+        "maximum_existing": 0.3319836969924816
+      },
+      "mean_raw_reference_score": null,
+      "memory_transport": "legacy",
+      "metrics": {
+        "AssA": 0.25133589933293876,
+        "DetA": 0.07439721812391427,
+        "FN": 2235,
+        "FP": 16,
+        "HOTA": 0.13670489775644504,
+        "IDF1": 0.07810739767179872,
+        "IDSW": 0,
+        "MOTA": 0.07783695206882425
+      },
+      "native_probabilities": true,
+      "prediction_sha256": "79a5ccae3911d18ffbff8d66119a71c300fe3232691fbc0947ca091c145591bb",
+      "raw_decision_argmax_counts": {
+        "IGNORE": 619,
+        "NO_MATCH": 1256,
+        "existing": 785
+      },
+      "status": "FROZEN_FULL_VIDEO_SAME_CANDIDATES",
+      "timing": {
+        "association_only_seconds": 388.04378718836233,
+        "association_replay_fps": 0.5802480787546915,
+        "complete_video_wall_seconds": 389.5724740359001,
+        "end_to_end_fps": null,
+        "peak_decision_gpu_memory_bytes": 7628897280
+      }
+    },
+    "j1_train_birth_prompt_v5": {
+      "action_counts": {
+        "ACTIVE": 1348,
+        "IGNORE": 1304,
+        "LOST": 85,
+        "NEW": 7,
+        "REACTIVATE": 1,
+        "TERMINATE": 1
+      },
+      "actual_output_boxes": 1356,
+      "candidate_decisions": 2660,
+      "candidate_evidence": "train_current_crops",
+      "distinct_output_ids": 7,
+      "empty_history_question": "train_birth_v1",
+      "frames": 226,
+      "input": {
+        "candidate_sha256": "46fce75613893b8642a0b0be118b0462e2e89996e38fba2feec7b711159e34b6",
+        "frames": 226,
+        "identical_geometry_order_labels_scores_rejection": true
+      },
+      "legal_NO_MATCH_mask_only_argmax_counts": {
+        "IGNORE": 635,
+        "NEW": 7,
+        "existing": 2018
+      },
+      "mean_raw_probability": {
+        "IGNORE": 0.10092952406015025,
+        "NEW": 0.0027980902255639096,
+        "NO_MATCH": 0.12891019586466188,
+        "maximum_existing": 0.5092433289473682
+      },
+      "mean_raw_reference_score": null,
+      "memory_transport": "local_xyxy",
+      "metrics": {
+        "AssA": 0.07977778537721271,
+        "DetA": 0.4442464926004329,
+        "FN": 1177,
+        "FP": 92,
+        "HOTA": 0.1881330086191524,
+        "IDF1": 0.16855412167500658,
+        "IDSW": 844,
+        "MOTA": 0.13437115936091765
+      },
+      "native_probabilities": true,
+      "prediction_sha256": "2bbdcee8ce6d77da5b4819f58b6f100faa5ac59409e4eb2c15d5b34e18e8d808",
+      "raw_decision_argmax_counts": {
+        "IGNORE": 159,
+        "NEW": 7,
+        "NO_MATCH": 580,
+        "existing": 1914
+      },
+      "status": "FROZEN_FULL_VIDEO_SAME_CANDIDATES",
+      "timing": {
+        "association_only_seconds": 622.848133061314,
+        "association_replay_fps": 0.3620239771735838,
+        "complete_video_wall_seconds": 624.41809457005,
+        "end_to_end_fps": null,
+        "peak_decision_gpu_memory_bytes": 8221299712
+      }
+    },
+    "simple": {
+      "action_counts": {
+        "ACTIVE": 2489,
+        "LOST": 8936,
+        "NEW": 128,
+        "REACTIVATE": 43,
+        "TERMINATE": 110
+      },
+      "actual_output_boxes": 2660,
+      "candidate_decisions": 2660,
+      "candidate_evidence": "full_frame",
+      "distinct_output_ids": 128,
+      "empty_history_question": "identity",
+      "frames": 226,
+      "input": {
+        "candidate_sha256": "46fce75613893b8642a0b0be118b0462e2e89996e38fba2feec7b711159e34b6",
+        "frames": 226,
+        "identical_geometry_order_labels_scores_rejection": true
+      },
+      "legal_NO_MATCH_mask_only_argmax_counts": {
+        "NEW": 93,
+        "existing": 2567
+      },
+      "mean_raw_probability": null,
+      "mean_raw_reference_score": {
+        "IGNORE": 0.0,
+        "NEW": 0.29999999999998883,
+        "NO_MATCH": 0.0,
+        "maximum_existing": 0.8174986460924482
+      },
+      "memory_transport": "legacy",
+      "metrics": {
+        "AssA": 0.5479838884064842,
+        "DetA": 0.7699594908495238,
+        "FN": 67,
+        "FP": 286,
+        "HOTA": 0.647157164686784,
+        "IDF1": 0.6355616545775338,
+        "IDSW": 52,
+        "MOTA": 0.8340843916427694
+      },
+      "native_probabilities": false,
+      "prediction_sha256": "8800866c8d901a2cea15d2c601b966f0535cc9f71234f78350ea77d925d15b82",
+      "raw_decision_argmax_counts": {
+        "NEW": 93,
+        "existing": 2567
+      },
+      "status": "FROZEN_FULL_VIDEO_SAME_CANDIDATES",
+      "timing": {
+        "association_only_seconds": 0.866468554129824,
+        "association_replay_fps": 95.45607187276549,
+        "complete_video_wall_seconds": 3.8777039870619774,
+        "end_to_end_fps": null,
+        "peak_decision_gpu_memory_bytes": null
+      }
+    }
+  },
+  "job": "/data3/user/LocateMOT-runs/GroundJEV_Eval_NoMOT20_4GPU/request_local_seed_v2/jobs/sportsmot__v_9MHDmAMxO5I_c003__d743f9a1134bb802",
+  "new_training": false,
+  "probabilities_modified_for_analysis": false,
+  "scope_note": "Full video diagnostic, not a full-dataset result. Low IDSW must be interpreted with FN and actual output counts. GPU sharing prevents a controlled speed claim.",
+  "status": "PAIRED_J1_INPUT_CONTROLS_FULL_VIDEO"
+}

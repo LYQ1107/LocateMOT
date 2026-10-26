@@ -56,6 +56,21 @@ def current_candidate_sheet(image: Any, group: Sequence[dict[str, Any]]):
     return sheet
 
 
+def historical_track_sheet(tracks: Sequence[dict[str, Any]]):
+    """Render prior anchor/long/recent images; track IDs are model predictions."""
+    from PIL import Image, ImageDraw
+
+    sheet=Image.new('RGB',(4*288,max(1,math.ceil(len(tracks)/4))*144),'white')
+    draw=ImageDraw.Draw(sheet)
+    for index,track in enumerate(tracks):
+        x,y=(index%4)*288,(index//4)*144
+        draw.text((x+2,y+2),f"ID {track['track_id']} anchor / long / recent",fill='black')
+        for column,source in enumerate(track['causal_images']):
+            crop=source.copy();crop.thumbnail((92,112))
+            sheet.paste(crop,(x+column*96,y+22))
+    return sheet
+
+
 @dataclass
 class AdapterOutput:
     decisions: list[ParsedDecision]
@@ -80,7 +95,8 @@ class NativeOneJevAdapter:
                  engine: Optional[Any] = None, competition_geometry: str = 'xyxy',
                  candidate_evidence: str = 'full_frame',
                  memory_transport: str = 'legacy',
-                 empty_history_question: str = 'identity') -> None:
+                 empty_history_question: str = 'identity',
+                 history_evidence: str = 'none') -> None:
         self.checkpoint = str(Path(checkpoint).resolve())
         self.batch_candidates = int(batch_candidates)
         self.shortlist = min(int(shortlist), MAX_SHORTLIST)
@@ -92,6 +108,7 @@ class NativeOneJevAdapter:
         self.candidate_evidence = candidate_evidence
         self.memory_transport = memory_transport
         self.empty_history_question = empty_history_question
+        self.history_evidence = history_evidence
         if engine is not None:
             self.engine = engine
         else:
@@ -134,11 +151,14 @@ class NativeOneJevAdapter:
             state.update(competition)
         return state
 
-    def _image_media(self, state, image, group):
+    def _image_media(self, state, image, group, tracks=()):
         media = [{"type": "image", "image": image}]
         if self.candidate_evidence == 'train_current_crops' and group:
             state['current_candidate_crop_sheet'] = '<image:2>'
             media.append({'type': 'image', 'image': current_candidate_sheet(image, group)})
+        if self.history_evidence=='causal_crops' and tracks:
+            state['historical_anchor_and_recent_crops']=f'<image:{len(media)+1}>'
+            media.append({'type':'image','image':historical_track_sheet(tracks)})
         return media
 
     # ---------------------------------------------------------------- request
@@ -154,7 +174,7 @@ class NativeOneJevAdapter:
         state = self.build_state(image=image, group=group, competition=competition,
                                  tracks=tracks[:self.shortlist], timestamp=timestamp,
                                  specification=specification, task_query=task_query)
-        media = self._image_media(state, image, group)
+        media = self._image_media(state, image, group, tracks[:self.shortlist])
 
         questions: dict[str, Any] = {}
         for index in range(len(group)):
@@ -283,6 +303,7 @@ class NativeOneJevAdapter:
             "candidate_evidence": self.candidate_evidence,
             "memory_transport": self.memory_transport,
             "empty_history_question": self.empty_history_question,
+            "history_evidence": self.history_evidence,
             "native_probabilities": True,
             "gt_read": False,
             "shortlist_limit": self.shortlist,
@@ -343,7 +364,7 @@ class NativeOneJevAdapter:
             state["original_candidate_indices"] = selected
         state["assignment_condition"] = ("these ids are the actual final allocation of this frame; "
                                          "decide whether each one deserves a long-term memory update")
-        media = self._image_media(state, image, local_group)
+        media = self._image_media(state, image, local_group, tracks[:self.shortlist])
         request = SystemOneRequest(state=state, model="jev-latest", questions=local_questions)
         response, meta = self.engine.decide(request, media=media)
         updates: dict[int, dict[str, Any]] = {}

@@ -24,14 +24,17 @@ def main():
     parser.add_argument('--config', type=Path, default=ROOT/'configs/groundjev/eval_no_mot20_4gpu_v1.json')
     parser.add_argument('--job', type=Path, required=True)
     parser.add_argument('--gpu', type=int, required=True)
-    parser.add_argument('--birth-only', action='store_true', help='isolated TRAIN birth-question control against v4')
+    modes=parser.add_mutually_exclusive_group()
+    modes.add_argument('--birth-only', action='store_true', help='isolated TRAIN birth-question control against v4')
+    modes.add_argument('--history-only', action='store_true', help='isolated causal history image control against v5')
     args = parser.parse_args()
     config = load(args.config)
     worker = next(w for w in config['workers'] if w['gpu'] == args.gpu)
     run = Path(config['output_root'])
     audit = load(run/'model_audit.json')
     manifest = job_manifest(args.job)
-    baseline_arm='j1_current_crops_memory_v4' if args.birth_only else 'j1_competition_xyxy_v2'
+    baseline_arm=('j1_train_birth_prompt_v5' if args.history_only else
+                  'j1_current_crops_memory_v4' if args.birth_only else 'j1_competition_xyxy_v2')
     baseline = load(args.job/baseline_arm/'frozen_receipt.json')
     simple = load(args.job/'simple/frozen_receipt.json')
     if baseline['input'] != simple['input']:
@@ -45,7 +48,12 @@ def main():
     if args.birth_only:
         arms=[{'arm':'j1_train_birth_prompt_v5','candidate_evidence':'train_current_crops',
                'memory_transport':'local_xyxy','empty_history_question':'train_birth_v1'}]
-    directory = run/'engineering_checks'/('j1_birth_question_contract' if args.birth_only else 'j1_input_contract')
+    if args.history_only:
+        arms=[{'arm':'j1_causal_history_v6','candidate_evidence':'train_current_crops',
+               'memory_transport':'local_xyxy','empty_history_question':'train_birth_v1',
+               'history_evidence':'causal_crops'}]
+    directory = run/'engineering_checks'/('j1_causal_history_contract' if args.history_only else
+                                         'j1_birth_question_contract' if args.birth_only else 'j1_input_contract')
     directory.mkdir(parents=True, exist_ok=True)
     with (directory/'owner.lock').open('a') as lock:
         fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
@@ -72,7 +80,7 @@ def main():
             raw = subprocess.check_output(['nvidia-smi','-i',str(args.gpu),
                 '--query-gpu=uuid,memory.free','--format=csv,noheader,nounits'], text=True).strip()
             uuid, free = [value.strip() for value in raw.split(',')]
-            required_free=config['minimum_free_MiB']+12288 if args.birth_only else 12288
+            required_free=config['minimum_free_MiB']+12288 if args.birth_only or args.history_only else 12288
             if uuid != worker['uuid'] or int(free) < required_free:
                 raise RuntimeError(f'Registered GPU has insufficient space for a J1 control: {raw}')
             command = [config['onejev_python'],str(ROOT/'tools/groundjev/eval_no_mot20/replay_j1.py'),
@@ -81,6 +89,7 @@ def main():
                        '--candidate-evidence',arm['candidate_evidence'],
                        '--memory-transport',arm['memory_transport'],'--no-followups']
             command+=['--empty-history-question',arm.get('empty_history_question','identity')]
+            command+=['--history-evidence',arm.get('history_evidence','none')]
             started = time.time()
             with (directory/f"{arm['arm']}.log").open('a') as log:
                 child = subprocess.Popen(command, cwd=ROOT, env=env, stdout=log, stderr=subprocess.STDOUT)

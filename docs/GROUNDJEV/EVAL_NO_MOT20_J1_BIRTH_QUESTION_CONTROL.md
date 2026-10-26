@@ -1,6 +1,6 @@
 # Frozen J1 empty-history question control
 
-Status: preregistered; no measured tracking improvement claimed.
+Status: complete226-frame control; association quality degrades despite higher detection retention.
 
 The completed J1 TRAIN recipe contains3,471 birth rows with a dedicated
 empty-history question. The runtime used the ordinary identity question even
@@ -26,3 +26,20 @@ CUDA_VISIBLE_DEVICES=4 /data2/user/LocateMOT_GroundJEV/.venv-onejev-py310/bin/py
 The main v4 evaluation and four physical GPU limit remain in force. No extra
 SGLang service is started. Receipts are under
 `engineering_checks/j1_birth_question_contract/`.
+
+The frozen v5 result has HOTA18.8133%, DetA44.4246%, AssA7.9778%,
+IDF116.8554%, IDSW844, FN1177 and FP92. It outputs1356 boxes/7 IDs, compared
+with v4’s222 boxes/1 ID. This fixes the initial multi-ID birth failure while
+exposing poor identity association. It is not an effective improvement over
+Simple (HOTA64.7157%, AssA54.7984%, IDF163.5562%, IDSW52 on the same scope),
+and the main v4 evaluation remains unchanged.
+
+A post-hoc adjacent-frame diagnostic finds1237 observations with a previous
+GT-matched output and a current GT-matched candidate. All previous IDs are
+in the model options; the raw best existing-ID choice preserves that ID in
+344 cases. Actual assignment preserves219, switches748 and omits270. Mean
+model probability of the previous ID is0.2313 versus0.5406 for the strongest
+other ID. Every identity request has only the current frame/current crops.
+These diagnostics are computed after inference and do not replace official
+IDSW or establish a causal fraction of the error. See the separate JSON
+receipts. No runtime GT input, probability change or new training occurred.

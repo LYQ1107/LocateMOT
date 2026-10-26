@@ -83,6 +83,7 @@ def main():
     parser.add_argument('--trackjev-candidate-evidence',choices=['full_frame','train_current_crops'],default='full_frame')
     parser.add_argument('--trackjev-memory-transport',choices=['legacy','local_xyxy'],default='legacy')
     parser.add_argument('--trackjev-empty-history-question',choices=['identity','train_birth_v1'],default='identity')
+    parser.add_argument('--trackjev-history-evidence',choices=['none','causal_crops'],default='none')
     parser.add_argument('--backend', choices=['simple', 'simple_native', 'simple_temporal', 'full', 'compact', 'trackjev'], default='full')
     parser.add_argument('--compact-device',choices=['cpu','cuda:0'],default='cuda:0',help='explicit device for trained Compact replay; report actual device, no detector E2E claim')
     parser.add_argument('--global-identity',action='store_true',help='isolated Global Identity Compact checkpoint')
@@ -204,6 +205,7 @@ def main():
                                       candidate_evidence=args.trackjev_candidate_evidence,
                                       memory_transport=args.trackjev_memory_transport,
                                       empty_history_question=args.trackjev_empty_history_question,
+                                      history_evidence=args.trackjev_history_evidence,
                                       ask_risk=(arm == 'B6'))
         config = TrackerDecisionConfig(shortlist=args.trackjev_shortlist,
                                        use_competition=arm in ('B3', 'B4', 'B6'),
@@ -502,6 +504,7 @@ def main():
         result['trackjev_candidate_evidence']=args.trackjev_candidate_evidence
         result['trackjev_memory_transport']=args.trackjev_memory_transport
         result['trackjev_empty_history_question']=args.trackjev_empty_history_question
+        result['trackjev_history_evidence']=args.trackjev_history_evidence
     if args.backend in ('full','compact','trackjev') or args.category_policy == 'native_hierarchical':
         import torch
         cpu_compact=args.backend=='compact' and args.compact_device=='cpu'

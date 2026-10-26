@@ -53,10 +53,14 @@ class TrackJEVTrackerDecision:
             key=lambda t: (-max((overlap(c["box"], t.predicted_box(self._timestamp)) for c in candidates),
                                 default=0.0),
                            t.lost_age, t.track_id))[: self.config.shortlist]
-        return [{"track_id": t.track_id, "lost_age": t.lost_age,
+        rows=[{"track_id": t.track_id, "lost_age": t.lost_age,
                  "box": list(t.box), "predicted_box": t.predicted_box(self._timestamp),
                  "age": t.age, "state": t.state,
                  "last_reliable_timestamp": t.last_reliable_timestamp} for t in ranked]
+        if self.adapter.history_evidence=='causal_crops':
+            for row,track in zip(rows,ranked):
+                row['causal_images']=[track.anchor_image,track.long_image,track.recent_image]
+        return rows
 
     def _competition(self, candidates: Sequence[dict[str, Any]]) -> Optional[dict[str, Any]]:
         if not self.config.use_competition:

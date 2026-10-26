@@ -1,0 +1,193 @@
+{
+  "GT_access": "post-inference diagnostic only",
+  "arm": "j1_train_birth_prompt_v5",
+  "counts": {
+    "actual_different_identity": 748,
+    "actual_no_output_for_candidate": 270,
+    "actual_same_identity": 219,
+    "adjacent_previous_output_and_current_candidate_GT_matches": 1237,
+    "previous_identity_in_options": 1237,
+    "raw_best_existing_preserves_previous_GT_matched_identity": 344,
+    "raw_best_feasible_action_preserves_previous_identity": 334
+  },
+  "input": {
+    "candidate_sha256": "46fce75613893b8642a0b0be118b0462e2e89996e38fba2feec7b711159e34b6",
+    "frames": 226,
+    "identical_geometry_order_labels_scores_rejection": true
+  },
+  "job": "/data3/user/LocateMOT-runs/GroundJEV_Eval_NoMOT20_4GPU/request_local_seed_v2/jobs/sportsmot__v_9MHDmAMxO5I_c003__d743f9a1134bb802",
+  "mean_native_probability": {
+    "best_other_identity_probability": 0.5405536022635409,
+    "previous_identity_probability": 0.2312945949878735
+  },
+  "native_identity_request_image_counts": {
+    "2": 226
+  },
+  "official_metrics": {
+    "AssA": 0.07977778537721271,
+    "DetA": 0.4442464926004329,
+    "FN": 1177,
+    "FP": 92,
+    "HOTA": 0.1881330086191524,
+    "IDF1": 0.16855412167500658,
+    "IDSW": 844,
+    "MOTA": 0.13437115936091765
+  },
+  "prediction_or_metrics_modified": false,
+  "scope": "adjacent registered frames; GT/candidate and GT/output Hungarian IoU>=.5 matching. Not an official IDSW replacement or an independent causal decomposition.",
+  "status": "POSTHOC_ADJACENT_IDENTITY_PROBABILITY_DIAGNOSTIC",
+  "switch_examples": [
+    {
+      "actual_identity_probability": 0.744051,
+      "actual_output_id": 4,
+      "candidate": 4,
+      "evaluation_GT_identity": 0,
+      "frame": 2,
+      "previous_identity_probability": 0.037951,
+      "previous_output_id": 5,
+      "raw_best_existing_id": 4,
+      "shortlist_ids": [
+        5,
+        6,
+        7,
+        4,
+        1,
+        3,
+        2
+      ]
+    },
+    {
+      "actual_identity_probability": 0.575416,
+      "actual_output_id": 6,
+      "candidate": 1,
+      "evaluation_GT_identity": 1,
+      "frame": 2,
+      "previous_identity_probability": 0.026972,
+      "previous_output_id": 2,
+      "raw_best_existing_id": 6,
+      "shortlist_ids": [
+        5,
+        6,
+        7,
+        4,
+        1,
+        3,
+        2
+      ]
+    },
+    {
+      "actual_identity_probability": 0.915688,
+      "actual_output_id": 3,
+      "candidate": 1,
+      "evaluation_GT_identity": 1,
+      "frame": 3,
+      "previous_identity_probability": 0.001211,
+      "previous_output_id": 6,
+      "raw_best_existing_id": 3,
+      "shortlist_ids": [
+        7,
+        3,
+        1,
+        4,
+        2,
+        5,
+        6
+      ]
+    },
+    {
+      "actual_identity_probability": 0.915219,
+      "actual_output_id": 7,
+      "candidate": 0,
+      "evaluation_GT_identity": 2,
+      "frame": 3,
+      "previous_identity_probability": 0.00371,
+      "previous_output_id": 5,
+      "raw_best_existing_id": 7,
+      "shortlist_ids": [
+        7,
+        3,
+        1,
+        4,
+        2,
+        5,
+        6
+      ]
+    },
+    {
+      "actual_identity_probability": 0.253086,
+      "actual_output_id": 6,
+      "candidate": 4,
+      "evaluation_GT_identity": 0,
+      "frame": 4,
+      "previous_identity_probability": 0.023778,
+      "previous_output_id": 2,
+      "raw_best_existing_id": 4,
+      "shortlist_ids": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        1
+      ]
+    },
+    {
+      "actual_identity_probability": 0.940125,
+      "actual_output_id": 2,
+      "candidate": 0,
+      "evaluation_GT_identity": 2,
+      "frame": 4,
+      "previous_identity_probability": 0.001983,
+      "previous_output_id": 7,
+      "raw_best_existing_id": 2,
+      "shortlist_ids": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        1
+      ]
+    },
+    {
+      "actual_identity_probability": 0.337751,
+      "actual_output_id": 5,
+      "candidate": 3,
+      "evaluation_GT_identity": 0,
+      "frame": 5,
+      "previous_identity_probability": 0.115398,
+      "previous_output_id": 6,
+      "raw_best_existing_id": 2,
+      "shortlist_ids": [
+        3,
+        4,
+        2,
+        5,
+        6,
+        7,
+        1
+      ]
+    },
+    {
+      "actual_identity_probability": 0.634388,
+      "actual_output_id": 4,
+      "candidate": 1,
+      "evaluation_GT_identity": 1,
+      "frame": 5,
+      "previous_identity_probability": 0.255576,
+      "previous_output_id": 3,
+      "raw_best_existing_id": 4,
+      "shortlist_ids": [
+        3,
+        4,
+        2,
+        5,
+        6,
+        7,
+        1
+      ]
+    }
+  ]
+}

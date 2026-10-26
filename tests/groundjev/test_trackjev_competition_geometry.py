@@ -73,3 +73,38 @@ def test_train_birth_question_keeps_native_reject_and_only_applies_to_empty_hist
     assert set(question.criteria) == {'NEW','NO_MATCH','REJECT'}
     request,_ = adapter.build_request(tracks=[{'track_id':10}],**arguments)
     assert request.questions['identity_0'].instructions.startswith('Which identity owns current candidate 0?')
+
+
+def test_history_images_precede_current_observation_and_are_not_serialized_as_state():
+    import json
+    from types import SimpleNamespace
+    from PIL import Image
+    from locatemot.groundjev.trackjev.native_onejev_adapter import NativeOneJevAdapter
+    from locatemot.groundjev.trackjev.tracker_decision import TrackJEVTrackerDecision
+    from locatemot.groundjev.tracker import OnlineTracker
+
+    class CaptureEngine:
+        def __init__(self):self.calls=[]
+        def decide(self,request,media):
+            self.calls.append((request,media))
+            if 'identity_0' in request.questions:
+                known=bool(request.state['historical_tracks'])
+                probabilities={'1':1.,'NEW':0.,'NO_MATCH':0.,'REJECT':0.} if known else {'NEW':1.,'NO_MATCH':0.,'REJECT':0.}
+                answers={'identity_0':SimpleNamespace(probabilities=probabilities)}
+            else:answers={'memory_0':SimpleNamespace(noul=.9)}
+            return SimpleNamespace(answers=answers),{}
+
+    engine=CaptureEngine()
+    adapter=NativeOneJevAdapter('.',engine=engine,candidate_evidence='train_current_crops',
+                               memory_transport='local_xyxy',history_evidence='causal_crops')
+    tracker=OnlineTracker(TrackJEVTrackerDecision(adapter),no_match_policy='only_if_omitted')
+    candidates=[{'box':[0,0,10,10],'label':'person','native_score':None}]
+    tracker.step(Image.new('RGB',(20,20),'red'),candidates,0.,{'task':'mot'})
+    tracker.step(Image.new('RGB',(20,20),'green'),candidates,1.,{'task':'mot'})
+    request,media=engine.calls[1]
+    assert request.state['historical_anchor_and_recent_crops']=='<image:3>'
+    assert len(media)==3
+    assert media[0]['image'].getpixel((5,5))==(0,128,0)
+    assert media[2]['image'].getpixel((5,24))==(255,0,0)
+    assert tracker.tracks[1].recent_image.getpixel((5,5))==(0,128,0)
+    assert 'causal_images' not in json.dumps(request.state)
