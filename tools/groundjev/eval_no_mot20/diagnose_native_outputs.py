@@ -2,7 +2,7 @@
 from __future__ import annotations
 
 import argparse
-from collections import Counter
+from collections import Counter,defaultdict
 import gzip
 import importlib.util
 import json
@@ -54,8 +54,11 @@ def diagnose(run=RUN,tokenizer=None):
         db=sqlite3.connect(f'file:{path}?mode=ro',uri=True,timeout=30)
         statuses=Counter();failures=Counter();strict=Counter();seconds=characters=tokens=0
         usage_tokens=0;usage_requests=0;examples=[]
+        frame_chunks=defaultdict(dict)
         for frame,chunk,blob in db.execute('SELECT frame,chunk,data FROM requests ORDER BY frame,chunk'):
             row=json.loads(gzip.decompress(blob));meta=row['metadata'];result=meta['result'];text=result['raw_output']
+            frame_chunks[frame][chunk]={'accepted':row['status']=='SCORED',
+                                        'proposals':len(row['candidates'])}
             statuses[row['status']]+=1;seconds+=row['seconds'];characters+=len(text)
             if tokenizer is not None:tokens+=len(tokenizer.encode(text,add_special_tokens=False))
             usage=meta.get('response_usage') or {}
@@ -68,7 +71,23 @@ def diagnose(run=RUN,tokenizer=None):
                     'strict_error':result.get('parse_error'),'response_prefix':text[:240]})
         db.close();count=sum(statuses.values())
         if not count:continue
+        manifest=load(job/'manifest.json')
+        chunk_size=manifest['vocabulary_chunk_size']
+        expected_chunks=(len(manifest['vocabulary'])+chunk_size-1)//chunk_size
+        complete=[chunks for chunks in frame_chunks.values()
+                  if set(chunks)==set(range(expected_chunks))]
+        rejected=[chunks for chunks in complete if not all(r['accepted'] for r in chunks.values())]
+        histogram=Counter(sum(not r['accepted'] for r in chunks.values()) for chunks in complete)
+        funnel={'registered_chunks_per_frame':expected_chunks,'complete_request_frames':len(complete),
+            'partial_request_frames':len(frame_chunks)-len(complete),
+            'whole_frame_rejected':len(rejected),
+            'invalid_chunk_count_histogram':{str(k):v for k,v in sorted(histogram.items())},
+            'accepted_chunk_proposals_in_complete_frames':sum(r['proposals'] for chunks in complete for r in chunks.values()),
+            'accepted_chunk_proposals_suppressed_by_frame_rejection':sum(r['proposals'] for chunks in rejected for r in chunks.values()),
+            'scope':'Native chunk proposal counts before the frozen whole-frame rejection rule. '
+                    'Not rescued predictions, GT coverage or a valid partial-vocabulary score.'}
         results.append({'job':entry['id'],'requests':count,'status_counts':dict(statuses),
+            'frame_rejection_funnel':funnel,
             'reference_parser_failure_categories':dict(failures),'strict_parse_errors':dict(strict),
             'request_seconds':seconds,'mean_request_seconds':seconds/count,'mean_output_characters':characters/count,
             'retokenized_output_tokens':tokens if tokenizer is not None else None,
@@ -76,6 +95,8 @@ def diagnose(run=RUN,tokenizer=None):
             'server_completion_tokens':usage_tokens,'requests_with_server_usage':usage_requests,'examples':examples})
     report={'status':'PERSISTED_NATIVE_OUTPUT_DIAGNOSIS','jobs':results,'GT_read':False,
         'predictions_changed':False,'protocol_changed':False,
+        'failure_category_policy':'First structural issue located in each rejected raw request; '
+                                  'multiple issues may coexist. Not a causal decomposition.',
         'retokenized_speed_scope':'response retokenization divided by full request wall time, including prefill/transport; not server decode-only TPS'}
     save(run/'native_output_diagnosis.json',report);return report
 
