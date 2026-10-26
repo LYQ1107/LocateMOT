@@ -79,7 +79,8 @@ class NativeOneJevAdapter:
                  risk_horizon: int = 30, ask_risk: bool = False,
                  engine: Optional[Any] = None, competition_geometry: str = 'xyxy',
                  candidate_evidence: str = 'full_frame',
-                 memory_transport: str = 'legacy') -> None:
+                 memory_transport: str = 'legacy',
+                 empty_history_question: str = 'identity') -> None:
         self.checkpoint = str(Path(checkpoint).resolve())
         self.batch_candidates = int(batch_candidates)
         self.shortlist = min(int(shortlist), MAX_SHORTLIST)
@@ -90,6 +91,7 @@ class NativeOneJevAdapter:
         self.competition_geometry = competition_geometry
         self.candidate_evidence = candidate_evidence
         self.memory_transport = memory_transport
+        self.empty_history_question = empty_history_question
         if engine is not None:
             self.engine = engine
         else:
@@ -164,12 +166,17 @@ class NativeOneJevAdapter:
                     criteria[option.token] = option.text
                 else:
                     criteria[option.token] = option.text
+            instructions = (f"Which identity owns current candidate {index}? Judge only from the "
+                            f"visual evidence, the competition rows and the identity history. "
+                            f"A class label alone is never identity evidence.")
+            if not tracks and self.empty_history_question == 'train_birth_v1':
+                # Exact question from the frozen step1200 TRAIN birth rows.
+                # Its missing candidate index is an audited corpus defect;
+                # this isolated control does not invent a new training prompt.
+                instructions = ("No persistent identity exists yet in this sequence. "
+                                "Which option owns current candidate?")
             questions[f"identity_{index}"] = ChoiceQuestion(
-                type="choice",
-                instructions=(f"Which identity owns current candidate {index}? Judge only from the "
-                              f"visual evidence, the competition rows and the identity history. "
-                              f"A class label alone is never identity evidence."),
-                criteria=criteria)
+                type="choice", instructions=instructions, criteria=criteria)
         for track in tracks[:self.shortlist]:
             questions[f"life_{track['track_id']}"] = ChoiceQuestion(
                 type="choice",
@@ -275,6 +282,7 @@ class NativeOneJevAdapter:
             "competition_geometry": self.competition_geometry,
             "candidate_evidence": self.candidate_evidence,
             "memory_transport": self.memory_transport,
+            "empty_history_question": self.empty_history_question,
             "native_probabilities": True,
             "gt_read": False,
             "shortlist_limit": self.shortlist,

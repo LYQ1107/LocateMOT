@@ -47,3 +47,29 @@ def test_memory_subset_aligns_indices_geometry_and_crop_evidence():
     assert len(engine.media) == 2
     assert engine.media[1]['image'].size == (640,192)
     assert result['updates'] == {1:{'noul':.9},3:{'noul':.1}}
+
+
+def test_train_birth_question_keeps_native_reject_and_only_applies_to_empty_history():
+    from types import SimpleNamespace
+    from PIL import Image
+    from locatemot.groundjev.trackjev.native_onejev_adapter import NativeOneJevAdapter
+
+    class RejectEngine:
+        def decide(self, request, media):
+            self.request = request
+            return SimpleNamespace(answers={'identity_0': SimpleNamespace(
+                probabilities={'NEW':.01,'NO_MATCH':.01,'REJECT':.98})}), {}
+
+    engine = RejectEngine()
+    adapter = NativeOneJevAdapter('.', engine=engine, empty_history_question='train_birth_v1')
+    arguments = dict(image=Image.new('RGB',(20,20)),group=[{'box':[0,0,10,10]}],
+                     timestamp=0.,specification={'task':'mot'})
+    output = adapter.decide(tracks=[],**arguments)
+    assert output.decisions[0].decision == 'REJECT'
+    assert output.decisions[0].probabilities == {'NEW':.01,'NO_MATCH':.01,'REJECT':.98}
+    question = engine.request.questions['identity_0']
+    assert question.instructions == ('No persistent identity exists yet in this sequence. '
+                                     'Which option owns current candidate?')
+    assert set(question.criteria) == {'NEW','NO_MATCH','REJECT'}
+    request,_ = adapter.build_request(tracks=[{'track_id':10}],**arguments)
+    assert request.questions['identity_0'].instructions.startswith('Which identity owns current candidate 0?')

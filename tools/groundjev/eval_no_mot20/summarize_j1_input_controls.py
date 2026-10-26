@@ -12,11 +12,12 @@ sys.path.insert(0, str(ROOT))
 from tools.groundjev.eval_no_mot20.common import RUN, load, save
 
 
-def summarize(job):
+def summarize(job,include_birth=False):
     baseline = load(job/'simple/frozen_receipt.json')['input']
     results = {}
-    for arm in ('simple','j1','j1_competition_xyxy_v2',
-                'j1_current_crops_v3','j1_current_crops_memory_v4'):
+    arms=('simple','j1','j1_competition_xyxy_v2','j1_current_crops_v3','j1_current_crops_memory_v4')
+    if include_birth:arms+=('j1_train_birth_prompt_v5',)
+    for arm in arms:
         directory = job/arm
         if not (directory/'frozen_receipt.json').exists():
             results[arm] = {'status':'PENDING_FULL_VIDEO_RECEIPT'}
@@ -72,6 +73,7 @@ def summarize(job):
                 'complete_video_wall_seconds','end_to_end_fps','peak_decision_gpu_memory_bytes')},
             'candidate_evidence':frozen.get('candidate_evidence','full_frame'),
             'memory_transport':frozen.get('memory_transport','legacy'),
+            'empty_history_question':frozen.get('empty_history_question','identity'),
         }
     return {'status':'PAIRED_J1_INPUT_CONTROLS_FULL_VIDEO' if all(
             result['status']=='FROZEN_FULL_VIDEO_SAME_CANDIDATES' for result in results.values())
@@ -87,8 +89,9 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--job',type=Path,required=True)
     parser.add_argument('--out',type=Path,default=RUN/'engineering_checks/j1_input_contract/paired_summary.json')
+    parser.add_argument('--include-birth',action='store_true')
     args = parser.parse_args()
-    result = summarize(args.job)
+    result = summarize(args.job,args.include_birth)
     save(args.out,result)
     print(json.dumps(result),flush=True)
 
