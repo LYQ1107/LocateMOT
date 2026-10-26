@@ -4,7 +4,7 @@ Status: INCOMPLETE. Values are fractions except counts.
 
 | Dataset | Arm | Jobs | Videos | Frames | HOTA | DetA | AssA | IDF1 | IDSW | Association FPS |
 |---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| sportsmot | simple | 5 | 5 | 1240 | 0.641 | 0.781 | 0.529 | 0.626 | 347 | 283.874 |
+| sportsmot | simple | 6 | 6 | 1509 | 0.623 | 0.763 | 0.511 | 0.609 | 409 | 273.432 |
 | animaltrack | simple | 6 | 6 | 1691 | 0.249 | 0.326 | 0.204 | 0.247 | 2605 | 36.936 |
 | refer_kitti_v2 | simple | 6 | 1 | 1254 | 0.157 | 0.169 | 0.147 | 0.147 | 324 | 572.297 |
 

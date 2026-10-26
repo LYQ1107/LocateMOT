@@ -1,0 +1,203 @@
+{
+  "status": "CURRENT_J1_V4_CROSS_FAMILY_FROZEN_VIDEO_RECEIPTS",
+  "main_arm": "j1_current_crops_memory_v4",
+  "new_training": false,
+  "scopes": [
+    {
+      "job": "animaltrack__duck_2__37075e40f13ce4a2",
+      "dataset": "animaltrack",
+      "task": "mot",
+      "arms": {
+        "simple": {
+          "input": {
+            "candidate_sha256": "78d9f06484724c334b71b402e72c2c5cbd0e4a32dc0d49c41c5d6c1f8c514716",
+            "frames": 196,
+            "identical_geometry_order_labels_scores_rejection": true
+          },
+          "metrics": {
+            "AssA": 0.1800884164519053,
+            "DetA": 0.4744151815147811,
+            "FN": 2051,
+            "FP": 768,
+            "HOTA": 0.2900587349247827,
+            "IDF1": 0.29927641099855284,
+            "IDSW": 303,
+            "MOTA": 0.4639423076923077
+          },
+          "prediction_sha256": "822466af508de8ae170082126f3dd344744b9ae2db15b1c7e45833da426dd617",
+          "G2_calls": 0,
+          "metric_scale": "fraction, counts for IDSW/FP/FN",
+          "scope": "registered_complete_video_or_query"
+        },
+        "j1_competition_xyxy_v2": {
+          "input": {
+            "candidate_sha256": "78d9f06484724c334b71b402e72c2c5cbd0e4a32dc0d49c41c5d6c1f8c514716",
+            "frames": 196,
+            "identical_geometry_order_labels_scores_rejection": true
+          },
+          "metrics": {
+            "AssA": 0.1858721129535057,
+            "DetA": 0.024728766314795345,
+            "FN": 5663,
+            "FP": 11,
+            "HOTA": 0.06779290887219767,
+            "IDF1": 0.023682454969979987,
+            "IDSW": 0,
+            "MOTA": 0.025755494505494504
+          },
+          "prediction_sha256": "0ee354c5f2c9fb7ef12e1962c7be459e337c8eaf31baecca7368dc915d7f48f2",
+          "G2_calls": 0,
+          "metric_scale": "fraction, counts for IDSW/FP/FN",
+          "scope": "registered_complete_video_or_query"
+        },
+        "j1_current_crops_memory_v4": {
+          "input": {
+            "candidate_sha256": "78d9f06484724c334b71b402e72c2c5cbd0e4a32dc0d49c41c5d6c1f8c514716",
+            "frames": 196,
+            "identical_geometry_order_labels_scores_rejection": true
+          },
+          "metrics": {
+            "AssA": 0.20476575444429365,
+            "DetA": 0.024919981002334585,
+            "FN": 5661,
+            "FP": 9,
+            "HOTA": 0.07142329242748227,
+            "IDF1": 0.02401601067378252,
+            "IDSW": 0,
+            "MOTA": 0.026442307692307692
+          },
+          "prediction_sha256": "6833f2ed3243bffaabcb3b3cb444e493dfc06b6c9cf417bf23ffaa646f34408d",
+          "G2_calls": 0,
+          "metric_scale": "fraction, counts for IDSW/FP/FN",
+          "scope": "registered_complete_video_or_query"
+        }
+      }
+    },
+    {
+      "job": "refer_kitti_v2__0016__00cd9522ff6583c5",
+      "dataset": "refer_kitti_v2",
+      "task": "rmot",
+      "arms": {
+        "simple": {
+          "input": {
+            "candidate_sha256": "26d1e8aff2605cf20b83a11f98c5975dec7e3a90a06e76d68a447cbcf03604c3",
+            "frames": 209,
+            "identical_geometry_order_labels_scores_rejection": true
+          },
+          "metrics": {
+            "AssA": 0.07255265066188632,
+            "DetA": 0.03376178976565727,
+            "FN": 1268,
+            "FP": 612,
+            "HOTA": 0.04929880199168552,
+            "IDF1": 0.04253214638971316,
+            "IDSW": 12,
+            "MOTA": -0.4129947722180732
+          },
+          "prediction_sha256": "de45a21745b5d5fe9425b8a011f6fad30039e246cb2a62bfcb15cce9c754ddea",
+          "G2_calls": 0,
+          "metric_scale": "fraction; counts for IDSW/FP/FN",
+          "scope": "registered_complete_video_or_query"
+        },
+        "j1_current_crops_memory_v4": {
+          "input": {
+            "candidate_sha256": "26d1e8aff2605cf20b83a11f98c5975dec7e3a90a06e76d68a447cbcf03604c3",
+            "frames": 209,
+            "identical_geometry_order_labels_scores_rejection": true
+          },
+          "metrics": {
+            "AssA": 0.02430476955207229,
+            "DetA": 0.018487008650251692,
+            "FN": 1309,
+            "FP": 147,
+            "HOTA": 0.021092104979154237,
+            "IDF1": 0.014511873350923483,
+            "IDSW": 0,
+            "MOTA": -0.08737864077669903
+          },
+          "prediction_sha256": "6d14ecce534744c0133e0ff6c87df9af7837032e50fe6ad6335b081c74a6c075",
+          "G2_calls": 0,
+          "metric_scale": "fraction; counts for IDSW/FP/FN",
+          "scope": "registered_complete_video_or_query"
+        }
+      }
+    },
+    {
+      "job": "tao_amodal__val_ArgoVerse_25952736-2595-2595-2595-225953853440__9d1704f6ccc8e6ee",
+      "dataset": "tao_amodal",
+      "task": "ovmot",
+      "arms": {
+        "simple": {
+          "input": {
+            "candidate_sha256": "fb9757a9c22680f1e363944cff252043fe6c4edad7fd09e9284b3b53d96650bd",
+            "frames": 15,
+            "identical_geometry_order_labels_scores_rejection": true
+          },
+          "metrics": {
+            "AssocA": 0.0,
+            "AssocPr": 0.0,
+            "AssocRe": 0.0,
+            "ClsA": 0.0,
+            "ClsPr": 0.0,
+            "ClsRe": 0.0,
+            "LocA": 0.0,
+            "LocPr": 0.0,
+            "LocRe": 0.0,
+            "TETA": 0.0
+          },
+          "prediction_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "G2_calls": 0,
+          "metric_scale": "official TETA summary percent",
+          "scope": "registered_complete_video_annotation_scope"
+        },
+        "j1_competition_xyxy_v2": {
+          "input": {
+            "candidate_sha256": "fb9757a9c22680f1e363944cff252043fe6c4edad7fd09e9284b3b53d96650bd",
+            "frames": 15,
+            "identical_geometry_order_labels_scores_rejection": true
+          },
+          "metrics": {
+            "AssocA": 0.0,
+            "AssocPr": 0.0,
+            "AssocRe": 0.0,
+            "ClsA": 0.0,
+            "ClsPr": 0.0,
+            "ClsRe": 0.0,
+            "LocA": 0.0,
+            "LocPr": 0.0,
+            "LocRe": 0.0,
+            "TETA": 0.0
+          },
+          "prediction_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "G2_calls": 0,
+          "metric_scale": "official TETA summary percent",
+          "scope": "registered_complete_video_annotation_scope"
+        },
+        "j1_current_crops_memory_v4": {
+          "input": {
+            "candidate_sha256": "fb9757a9c22680f1e363944cff252043fe6c4edad7fd09e9284b3b53d96650bd",
+            "frames": 15,
+            "identical_geometry_order_labels_scores_rejection": true
+          },
+          "metrics": {
+            "AssocA": 0.0,
+            "AssocPr": 0.0,
+            "AssocRe": 0.0,
+            "ClsA": 0.0,
+            "ClsPr": 0.0,
+            "ClsRe": 0.0,
+            "LocA": 0.0,
+            "LocPr": 0.0,
+            "LocRe": 0.0,
+            "TETA": 0.0
+          },
+          "prediction_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "G2_calls": 0,
+          "metric_scale": "official TETA summary percent",
+          "scope": "registered_complete_video_annotation_scope"
+        }
+      }
+    }
+  ],
+  "interpretation": "No effective J1 tracking advantage is established on these initial independent scopes. TAO native G2 candidates are empty after frozen whole-frame rejection; TETA0 does not measure useful OneJev identity/classification behavior."
+}

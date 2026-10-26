@@ -4,10 +4,11 @@ Status: INCOMPLETE. Values are fractions except counts.
 
 | Dataset | Arm | Jobs | Videos | Frames | HOTA | DetA | AssA | IDF1 | IDSW | Association FPS |
 |---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| sportsmot | j1 | 1 | 1 | 226 | 0.137 | 0.074 | 0.251 | 0.078 | 0 | 0.657 |
+| sportsmot | j1 | 2 | 2 | 465 | 0.181 | 0.069 | 0.479 | 0.099 | 0 | 0.639 |
 | sportsmot | coupled | 5 | 5 | 1240 | 0.216 | 0.307 | 0.153 | 0.203 | 351 | 107.088 |
-| animaltrack | coupled | 5 | 5 | 1385 | 0.076 | 0.160 | 0.036 | 0.054 | 3672 | 74.339 |
-| refer_kitti_v2 | j1 | 1 | 1 | 209 | 0.001 | 0.001 | 0.001 | 0.000 | 0 | 1.408 |
+| animaltrack | j1 | 2 | 2 | 502 | 0.118 | 0.032 | 0.429 | 0.048 | 0 | 0.296 |
+| animaltrack | coupled | 6 | 6 | 1691 | 0.083 | 0.180 | 0.039 | 0.061 | 4580 | 74.927 |
+| refer_kitti_v2 | j1 | 2 | 1 | 418 | 0.019 | 0.016 | 0.024 | 0.012 | 0 | 1.467 |
 
 No unweighted mean of per-video HOTA is used. Only paired complete scopes support net-gain claims. OVMOT requires official TETA, not MOT HOTA.
 
@@ -27,3 +28,5 @@ Coupled JEV currently supports ordinary MOT only. RMOT/OVMOT: `NOT_SUPPORTED_BY_
 
 | OVMOT arm | Complete videos | TETA | LocA | AssocA | ClsA |
 |---|---:|---:|---:|---:|---:|
+| j1 | 1 | 0.000 | 0.000 | 0.000 | 0.000 |
+| j1 base | 1 | 0.000 | 0.000 | 0.000 | 0.000 |

@@ -4,9 +4,10 @@ Status: INCOMPLETE. All differences use exactly paired complete native candidate
 
 | Dataset | Compared arms | Jobs | ΔHOTA | ΔAssA | ΔIDF1 | ΔIDSW | Corrected | Harmed |
 |---|---|---:|---:|---:|---:|---:|---:|---:|
-| sportsmot | Simple → j1 | 1 | -0.510 | -0.297 | -0.557 | -52 | 3 | 2090 |
+| sportsmot | Simple → j1 | 2 | -0.438 | -0.024 | -0.518 | -150 | 3 | 4341 |
 | sportsmot | Simple → coupled | 5 | -0.425 | -0.376 | -0.422 | 4 | 93 | 8706 |
-| animaltrack | Simple → coupled | 5 | -0.144 | -0.136 | -0.160 | 1246 | 163 | 7348 |
-| refer_kitti_v2 | Simple → j1 | 1 | -0.012 | -0.025 | -0.013 | -1 | 0 | 1 |
+| animaltrack | Simple → j1 | 2 | -0.216 | 0.184 | -0.306 | -482 | 18 | 5720 |
+| animaltrack | Simple → coupled | 6 | -0.166 | -0.165 | -0.186 | 1975 | 220 | 9400 |
+| refer_kitti_v2 | Simple → j1 | 2 | -0.022 | -0.046 | -0.021 | -13 | 0 | 29 |
 
 Corrected/Harmed are post-hoc GT-matched temporal-edge diagnostics (IoU>=.5); they do not replace official HOTA/IDSW. Missing detections remain failures. Per-job details include births, occlusion returns and explicitly logged contradictory memory writes.
