@@ -29,7 +29,7 @@ def main():
     seq = manifest['sequence']
     protocol = json.loads(Path(manifest['protocol']).read_text())
     dataset = protocol['dataset']
-    if dataset not in ('mot17','mot20','dancetrack') or result['task'] != 'mot':
+    if dataset not in ('mot17','mot20','dancetrack','sportsmot','animaltrack') or result['task'] != 'mot':
         parser.error('this entrypoint is ordinary MOT; RMOT/OVMOT require their own official evaluator')
     source = verify_trackeval_source()
     key = f'{dataset}/dev/{seq}'
@@ -38,6 +38,20 @@ def main():
     gt = directory/'gt'
     view = prepare_gt_view(dataset,[group],{key:{'source_path':manifest['gt_path_for_evaluation_only'],
                            'sha256':digest(Path(manifest['gt_path_for_evaluation_only']))}},gt)
+    animal_transport=None
+    if dataset=='animaltrack':
+        # AnimalTrack uses species IDs (duck=4, etc.), not pedestrian class 1.
+        # Each public sequence is one species. Map that *evaluation transport*
+        # class to the unchanged MOT reader, preserving all boxes/IDs/marks.
+        path=gt/seq/'gt/gt.txt';lines=[];classes=set();positives=0
+        for line in path.read_text().splitlines():
+            fields=line.split(',');classes.add(int(float(fields[7])))
+            fields[7]='1';lines.append(','.join(fields));positives+=float(fields[6])>0
+        if len(classes)!=1:raise ValueError('AnimalTrack single-species transport requires one public class per video')
+        path.write_text('\n'.join(lines)+'\n')
+        view['sources'][0].update(view_sha256=digest(path),positive_gt_units_before_official_preprocessing=positives)
+        animal_transport={'original_species_class_ids':sorted(classes),'transport_class':1,
+                          'geometry_id_mark_unchanged':True,'visibility_minus1_is_unknown':True}
     prediction_root = directory/'trackers'
     target = prediction_root/'groundjev/data'/f'{seq}.txt'
     target.parent.mkdir(parents=True,exist_ok=True)
@@ -63,13 +77,18 @@ def main():
     if messages[adapter.get_name()]['groundjev'] != 'Success':
         raise RuntimeError('Official evaluation did not complete')
     values = raw[adapter.get_name()]['groundjev']['COMBINED_SEQ']['pedestrian']
+    def serial(value):
+        if isinstance(value, dict): return {k: serial(v) for k,v in value.items()}
+        return value.tolist() if hasattr(value, 'tolist') else value
+    (args.run/'official_metric_components.json').write_text(json.dumps(serial(values))+'\n')
     measured = {k:float(np.mean(values['HOTA'][k])) for k in ('HOTA','DetA','AssA')}
-    measured.update(IDF1=float(values['Identity']['IDF1']),IDSW=int(values['CLEAR']['IDSW']),
+    measured.update(MOTA=float(values['CLEAR']['MOTA']),IDF1=float(values['Identity']['IDF1']),IDSW=int(values['CLEAR']['IDSW']),
                     FP=int(values['CLEAR']['CLR_FP']),FN=int(values['CLEAR']['CLR_FN']))
     report = {'status':'OFFICIAL_SCOPE_EVALUATION_COMPLETE','dataset':dataset,'sequence':seq,
               'scope':manifest['scope'],'frames':len(rows),'metrics':measured,
               'metric_scale':'fraction, counts for IDSW/FP/FN','trackeval_commit':source['commit'],
               'gt_view':view,'gt_access':'evaluation only','official_test_labels_read':False,
+              'animal_class_transport':animal_transport,
               'fixture_only':args.fixture_only,'model_score_claim':not args.fixture_only,
               'perception_rejected_frames':result.get('perception_rejected_frames',[]),
               'perception_rejection_rate':result.get('perception_rejection_rate',0.),

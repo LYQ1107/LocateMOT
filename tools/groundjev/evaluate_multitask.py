@@ -77,8 +77,12 @@ def rmot(manifest, rows, directory):
     raw,messages=evaluator.evaluate([adapter],metrics)
     if messages[adapter.get_name()]['groundjev']!='Success': raise RuntimeError('TrackEval failed')
     values=raw[adapter.get_name()]['groundjev'][sequence]['pedestrian']
+    def serial(value):
+        if isinstance(value,dict): return {k:serial(v) for k,v in value.items()}
+        return value.tolist() if hasattr(value,'tolist') else value
+    (directory.parent/'official_metric_components.json').write_text(json.dumps(serial(values))+'\n')
     measured={k:float(np.mean(values['HOTA'][k])) for k in ('HOTA','DetA','AssA')}
-    measured.update(IDF1=float(values['Identity']['IDF1']),IDSW=int(values['CLEAR']['IDSW']),
+    measured.update(MOTA=float(values['CLEAR']['MOTA']),IDF1=float(values['Identity']['IDF1']),IDSW=int(values['CLEAR']['IDSW']),
                     FP=int(values['CLEAR']['CLR_FP']),FN=int(values['CLEAR']['CLR_FN']))
     empty=[row for row,count in zip(rows,target_counts) if not count]
     return {'evaluator':'unmodified official TrackEval HOTA/CLEAR/Identity','evaluator_commit':source['commit'],
@@ -112,7 +116,8 @@ def ovmot(manifest, rows, directory):
     annotations=[a for a in annotation['annotations'] if a['image_id'] in selected]
     track_ids={a['track_id'] for a in annotations}
     gt={k:annotation[k] for k in ('info','categories','licenses')}
-    gt.update(videos=[v for v in annotation['videos'] if v['id']==manifest['video_id']],
+    video_ids=set(manifest.get('video_ids',[manifest.get('video_id')]))
+    gt.update(videos=[v for v in annotation['videos'] if v['id'] in video_ids],
               images=[i for i in annotation['images'] if i['id'] in selected],annotations=annotations,
               tracks=[t for t in annotation['tracks'] if t['id'] in track_ids])
     gt_path=directory/'gt.json';gt_path.write_text(json.dumps(gt))
@@ -127,12 +132,13 @@ def ovmot(manifest, rows, directory):
             for alias in [category['name']]+category['synonyms']:
                 aliases[normalize_label(alias)]=category_by_synset[category['synset']]
     predictions,unmapped=[],[]
+    image_video_ids={i['id']:i['video_id'] for i in gt['images']}
     for row,image_id in zip(rows,manifest['image_ids']):
         for prediction in row['outputs']:
             category_id=aliases.get(normalize_label(prediction['label']),-1)
             if category_id==-1: unmapped.append({'frame':row['frame'],'label':prediction['label']})
             x,y,x2,y2=prediction['box']
-            predictions.append({'image_id':image_id,'video_id':manifest['video_id'],
+            predictions.append({'image_id':image_id,'video_id':image_video_ids[image_id],
                 'track_id':prediction['track_id'],'category_id':category_id,
                 'bbox':[x,y,x2-x,y2-y], 'score':1.})
     tracker=directory/'trackers/groundjev/data';tracker.mkdir(parents=True,exist_ok=True)

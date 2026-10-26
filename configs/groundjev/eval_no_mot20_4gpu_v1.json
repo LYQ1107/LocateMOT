@@ -1,0 +1,29 @@
+{
+  "goal": "GOAL_G2_4GPU_NO_MOT20_DETECTION_SIMPLE_JEV_EVALUATION",
+  "output_root": "/data3/user/LocateMOT-runs/GroundJEV_Eval_NoMOT20_4GPU/request_local_seed_v2",
+  "g2_model": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM-G2-CLEAN-V2",
+  "g2_step": 18227,
+  "g2_sha256": "7c4a81349e333a304e32f42cf1999db289802d8c31eba415b85827038d14801f",
+  "ground_python": "/data2/user/LocateMOT_GroundJEV/external/GroundAnything/.venv-serve/bin/python",
+  "onejev_python": "/data2/user/LocateMOT_GroundJEV/.venv-onejev-py310/bin/python",
+  "memory_fraction": 0.30,
+  "minimum_free_MiB": 40000,
+  "request_timeout": 600,
+  "detection_unit_frames": 32,
+  "feature_cache_budget_bytes": 26843545600,
+  "workers": [
+    {"name": "A", "gpu": 3, "uuid": "GPU-6cb11599-704e-c3aa-9e28-5f15faa25c7c", "port": 8273, "initial_dataset": "sportsmot"},
+    {"name": "B", "gpu": 4, "uuid": "GPU-44f62835-4095-23ec-d3dd-5af16a00705c", "port": 8274, "initial_dataset": "animaltrack"},
+    {"name": "C", "gpu": 6, "uuid": "GPU-883c8be3-25b0-3d19-6fa8-4c2e335e67d2", "port": 8276, "initial_dataset": "refer_kitti_v2"},
+    {"name": "D", "gpu": 1, "uuid": "GPU-f35654b3-bbf5-7303-cfcb-9bd5d3e16e69", "port": 8271, "initial_dataset": "tao_amodal"}
+  ],
+  "parser": "official_scoring",
+  "decoder": "tracking_dense",
+  "sampling_seed": 42,
+  "sampling_seed_scope": "request_local_v1",
+  "decoder_overlay": "tools/groundjev/eval_no_mot20/decoder_overlay",
+  "prompt_fallback": false,
+  "invalid_frame_policy": "empty_and_record; entire TAO frame rejected if any registered chunk is invalid",
+  "MOT20_jobs": 0,
+  "new_training": false
+}

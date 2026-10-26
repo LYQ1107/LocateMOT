@@ -3055,3 +3055,28 @@ benchmark 提升；TAO native shard 推理和三任务耦合训练仍在继续�
 对应 GroundAnything 服务日志已出现数百至上千次 `[PREFILL]` 请求。四个 shard
 仍未产生终态 receipt，故三任务 owner 继续等待 native manifest；没有把服务启动
 或部分请求计作训练指标。
+# 2026-10-26 — final G2 evaluation without MOT20
+
+Hypothesis: frozen native final-G2 detections allow a fair Simple/J1/Coupled
+association comparison. Work started from fetched `1cf48ce9` in an isolated
+evaluation worktree. No new training; all existing checkpoints preserved.
+Initial failure in prior scope assumptions: RMOT26 training includes all 25
+local DanceTrack val videos; G2 also saw labeled MOT17 videos. Exclude these
+from independent claims. SportsMOT val (45 clips) is source-video disjoint.
+Implement detector-only persistence and complete-video cached replay before
+measuring model gains. Results remain pending until genuine inference/scoring.
+
+The first real four-worker gate FAILED: native GAMDecodeV2Block adds the
+service-local request ordinal to sampling seed42. The same image therefore
+changed candidates across workers/order. Preserve the original cache root as
+`protocol_v1_failure.json` diagnostic evidence. The new `request_local_seed_v2`
+root uses an explicit local decoder overlay that removes only the ordinal
+term; seed42, weights, sampling temperature, native parser and block policy
+remain unchanged. No shared GroundAnything source is modified.
+
+The first AnimalTrack public-test video exposed a scorer adapter bug:
+duck species class4 was discarded by the pedestrian-only MOT reader, yielding
+zero GT. Add a documented evaluation-only species-to-class1 transport,
+preserving original geometry, identity and mark; visibility=-1 is unknown.
+Archive the invalid metrics and re-score unchanged predictions. This is an
+evaluation fix, not a detector/threshold change or new training.

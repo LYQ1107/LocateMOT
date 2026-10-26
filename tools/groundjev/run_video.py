@@ -111,6 +111,7 @@ def main():
     parser.add_argument('--perception-failure-policy', choices=['stop', 'empty_and_record'], default='stop',
                         help='official scorer rejection is an explicitly logged empty prediction, included in every metric denominator')
     parser.add_argument('--candidate-replay', type=Path, help='exact prior frame log for a fixed-candidate association control; no end-to-end FPS claim')
+    parser.add_argument('--no-video', action='store_true', help='omit visualization only; predictions, decisions and memory are preserved')
     parser.add_argument('--resume-from', type=Path, help='preserve source run and restore its completed causal prefix in this fresh output')
     parser.add_argument('--memory-policy',choices=['gated','always','ema','frame_only'],default='gated')
     parser.add_argument('--memory-feature-view',choices=['all','recent','ema'],default='all')
@@ -247,6 +248,7 @@ def main():
     if args.candidate_replay:
         replay = ReplayFrames(args.candidate_replay)
     fps, latencies, rejected_frames, strict_invalid_frames = manifest['fps'], [], [], []
+    association_latencies=[]
     timestamps = dict(zip(manifest['frame_numbers'], manifest['timestamps'])) if 'timestamps' in manifest else None
     resumed = []
     specification = {'task': args.task, 'vocabulary': vocabulary, 'expression': args.expression}
@@ -304,6 +306,7 @@ def main():
                     row = resumed[index]
                     candidates, perception, outputs, state = (row[k] for k in ('candidates','perception','outputs','state'))
                     elapsed = row['seconds']
+                    association_elapsed=row.get('association_seconds')
                 elif replay:
                     candidates, perception = original['candidates'], {'mode': 'fixed_candidate_replay',
                         'source': str(args.candidate_replay), 'original_perception': original['perception'],
@@ -342,8 +345,11 @@ def main():
                     timestamp = timestamps[frame_number] if timestamps is not None else frame_number/fps
                     if category_replay is not None:
                         category_replay.begin_frame(path, frame_number)
+                    association_started=time.perf_counter()
                     outputs, state = tracker.step(image, candidates, timestamp, specification)
+                    association_elapsed=time.perf_counter()-association_started
                     elapsed = time.perf_counter()-start
+                association_latencies.append(association_elapsed)
                 latencies.append(elapsed)
                 for row in outputs:
                     x1,y1,x2,y2 = row['box']
@@ -353,28 +359,31 @@ def main():
                 recorded_candidates = candidates
                 if args.omit_replay_feature_vectors:
                     recorded_candidates = [{k:v for k,v in c.items() if k not in ('native_region_feature','temporal_region_feature')} for c in candidates]
-                log.write(json.dumps({'frame': frame_number, 'image_path': path, 'seconds': elapsed, 'candidates': recorded_candidates,
+                log.write(json.dumps({'frame': frame_number, 'image_path': path, 'seconds': elapsed,
+                                     'association_seconds':association_elapsed,'candidates': recorded_candidates,
                                      'outputs': outputs, 'state': state, 'perception': perception})+'\n')
                 log.flush()
                 predictions.flush()
                 if index >= len(resumed) and args.memory_export_interval and (index+1)%args.memory_export_interval==0:
                     write_memory('latest_identity_memory')
-                canvas = image.copy()
-                draw = ImageDraw.Draw(canvas)
-                for row in outputs:
-                    draw.rectangle(row['box'], outline='lime', width=2)
-                    draw.text((row['box'][0], row['box'][1]), str(row['track_id']), fill='red')
-                if video_writer is None:
-                    video_writer = subprocess.Popen(['ffmpeg', '-hide_banner', '-loglevel', 'error', '-y',
-                        '-f', 'rawvideo', '-pixel_format', 'rgb24', '-video_size', f'{image.width}x{image.height}',
-                        '-framerate', str(fps), '-i', '-', '-an', '-vf', 'pad=ceil(iw/2)*2:ceil(ih/2)*2',
-                        '-c:v', 'libx264', '-pix_fmt', 'yuv420p',
-                        str(args.out/'tracks.mp4')], stdin=subprocess.PIPE)
-                video_writer.stdin.write(canvas.tobytes())
+                if not args.no_video:
+                    canvas = image.copy()
+                    draw = ImageDraw.Draw(canvas)
+                    for row in outputs:
+                        draw.rectangle(row['box'], outline='lime', width=2)
+                        draw.text((row['box'][0], row['box'][1]), str(row['track_id']), fill='red')
+                    if video_writer is None:
+                        video_writer = subprocess.Popen(['ffmpeg', '-hide_banner', '-loglevel', 'error', '-y',
+                            '-f', 'rawvideo', '-pixel_format', 'rgb24', '-video_size', f'{image.width}x{image.height}',
+                            '-framerate', str(fps), '-i', '-', '-an', '-vf', 'pad=ceil(iw/2)*2:ceil(ih/2)*2',
+                            '-c:v', 'libx264', '-pix_fmt', 'yuv420p',
+                            str(args.out/'tracks.mp4')], stdin=subprocess.PIPE)
+                    video_writer.stdin.write(canvas.tobytes())
                 print(json.dumps({'frame': frame_number, 'seconds': elapsed, 'tracks': len(outputs)}), flush=True)
-        video_writer.stdin.close()
-        if video_writer.wait() != 0:
-            raise RuntimeError('Visualization encoder failed')
+        if video_writer is not None:
+            video_writer.stdin.close()
+            if video_writer.wait() != 0:
+                raise RuntimeError('Visualization encoder failed')
     except Exception as error:
         failure = {'status': 'VIDEO_INFERENCE_FAILED', 'frame': frame_number,
                    'image_path': path, 'error_type': type(error).__name__, 'error': str(error),
@@ -430,11 +439,16 @@ def main():
               'timing_scope':'all image reads, native requests including service queueing, association, memory persistence, prediction/log writes, drawing, video encoding and encoder completion; preloaded remote DLM server startup excluded',
               'successful_frame_pipeline_fps': len(frames)/sum(latencies),
               'association_replay_fps': len(frames)/sum(latencies) if replay and not resumed else None,
+              'association_only_seconds':sum(association_latencies) if all(v is not None for v in association_latencies) else None,
+              'association_only_fps':len(frames)/sum(association_latencies) if all(v is not None for v in association_latencies) and sum(association_latencies)>0 else None,
+              'association_only_timing_scope':'tracker.step, including identity inference and causal memory update; excludes image IO and output serialization',
               'resume_source': str(args.resume_from) if args.resume_from else None,
               'resumed_completed_frames': len(resumed),
               'timing_limitations': 'resumed legacy run lacks original failed-attempt/interruption timing; no complete end-to-end FPS claim' if resumed else None,
               'official_metrics': 'PENDING_OFFICIAL_EVALUATOR',
-              'checkpoint': str(args.checkpoint) if args.backend in ('full','compact') or args.category_policy == 'native_hierarchical' else None,
+              'checkpoint': str(args.checkpoint) if args.backend in ('full','compact','trackjev') or args.category_policy == 'native_hierarchical' else None,
+              'grounding_requests_in_this_run': 0 if replay else None,
+              'visualization_enabled': not args.no_video,
               'motchallenge_confidence_column': 'constant unscored-output sentinel; native detection score is absent',
               'gt_read_by_runtime': False, 'future_frames_read_by_runtime': False,
               'memory_policy':args.memory_policy,'memory_feature_view':args.memory_feature_view,
@@ -474,10 +488,10 @@ def main():
             result['frozen_CPU_text_table']={'shape':list(table.shape),'dtype':str(table.dtype),
                 'parameters':table.numel(),'nominal_tensor_bytes':table.numel()*table.element_size(),
                 'device':str(table.device),'scope':'frozen originalOneJev lookup table, not decoder inference; nominal bytes are not resident RSS'}
-    if args.backend in ('full','compact') or args.category_policy == 'native_hierarchical':
+    if args.backend in ('full','compact','trackjev') or args.category_policy == 'native_hierarchical':
         import torch
         cpu_compact=args.backend=='compact' and args.compact_device=='cpu'
-        result['decision_device']=args.compact_device if args.backend=='compact' else 'cuda:0'
+        result['decision_device']=args.compact_device if args.backend=='compact' else args.trackjev_device if args.backend=='trackjev' else 'cuda:0'
         result['peak_decision_gpu_memory_bytes'] = 0 if cpu_compact else torch.cuda.max_memory_allocated()
     (args.out/'result.json').write_text(json.dumps(result, indent=2)+'\n')
     print(json.dumps(result), flush=True)
