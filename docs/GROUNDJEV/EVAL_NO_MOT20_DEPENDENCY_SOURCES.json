@@ -1,0 +1,22 @@
+{
+  "GroundAnything": {
+    "commit": "8a3b43a1b42952e117960e85d63ff173bb9fba0a",
+    "remote": "https://github.com/groundingpi/GroundAnything.git",
+    "tracked_source_clean": true
+  },
+  "OneJev": {
+    "commit": "2470c7595688c6a402560cf18b4753feb1fe290a",
+    "remote": "https://github.com/OmniJev/OneJev.git",
+    "tracked_source_clean": true
+  },
+  "TrackEval": {
+    "commit": "12c8791b303e0a0b50f753af204249e622d0281a",
+    "remote": "https://github.com/JonathonLuiten/TrackEval.git",
+    "tracked_source_clean": true
+  },
+  "TETA": {
+    "commit": "b498aa87b252bfb75d7cc0d8d6435c3e1e74e4de",
+    "remote": "https://github.com/siyuanliii/TETA",
+    "tracked_source_clean": true
+  }
+}

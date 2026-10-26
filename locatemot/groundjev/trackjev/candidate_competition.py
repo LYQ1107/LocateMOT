@@ -28,6 +28,17 @@ MAX_GROUP = 16
 MILLI = 1000
 
 
+def runtime_competition_boxes(boxes, geometry='xyxy'):
+    """Transport runtime xyxy boxes to this module's training xywh contract.
+
+    The legacy mode is retained only to reproduce historical inference.
+    Candidate boxes passed to the model and tracker are never changed here.
+    """
+    if geometry=='legacy_xywh':return [list(box) for box in boxes]
+    if geometry!='xyxy':raise ValueError(f'Unknown competition geometry: {geometry}')
+    return [[x1,y1,x2-x1,y2-y1] for x1,y1,x2,y2 in boxes]
+
+
 @dataclass
 class Edge:
     i: int

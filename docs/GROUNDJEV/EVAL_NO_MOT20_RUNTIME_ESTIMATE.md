@@ -4,10 +4,10 @@ Status: INCOMPLETE. Estimates use actual input-specific native request times, in
 
 | Dataset | Cached frames / registered | Requests saved | Measured inputs | FPS | Remaining GPU-hours |
 |---|---:|---:|---:|---:|---:|
-| sportsmot | 715/26970 | 715 | 32 | 0.363 | 20.103 |
-| animaltrack | 781/13167 | 781 | 32 | 0.225 | 15.285 |
-| refer_kitti_v2 | 627/854073 | 627 | 32 | 0.950 | 249.504 |
-| tao_amodal | 45/36562 | 596 | 30 | 0.004 | 2687.802 |
+| sportsmot | 974/26970 | 974 | 32 | 0.363 | 19.905 |
+| animaltrack | 1081/13167 | 1081 | 32 | 0.225 | 14.914 |
+| refer_kitti_v2 | 836/854073 | 836 | 32 | 0.950 | 249.442 |
+| tao_amodal | 71/36562 | 946 | 30 | 0.004 | 2685.888 |
 
 sportsmot: registered 32-input preflight; mean 2.757 s, p95 2.990 s.
 animaltrack: registered 32-input preflight; mean 4.442 s, p95 5.361 s.

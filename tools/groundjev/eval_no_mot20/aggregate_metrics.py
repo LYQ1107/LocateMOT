@@ -10,7 +10,7 @@ import sys
 import time
 
 ROOT=Path(__file__).resolve().parents[3];sys.path.insert(0,str(ROOT))
-from tools.groundjev.eval_no_mot20.common import RUN,load,save,G2_SHA,TRAIN_SHA
+from tools.groundjev.eval_no_mot20.common import RUN,load,save,G2_SHA,TRAIN_SHA,arm_directory
 
 
 def combine_mot(paths):
@@ -33,6 +33,7 @@ def combine_mot(paths):
 
 def aggregate(run=RUN,with_teta=False):
     registry=load(run/'jobs.json');groups=defaultdict(list)
+    arm_dirs={arm:arm_directory(arm) for arm in ('simple','j1','coupled')}
     for job in registry['jobs']:groups[job['dataset']].append(job)
     report={'status':'INCOMPLETE','created_utc_seconds':time.time(),'G2_step':18227,'G2_SHA':G2_SHA,
             'TRAIN_manifest_SHA':TRAIN_SHA,'MOT20_jobs':0,'datasets':{},
@@ -52,8 +53,8 @@ def aggregate(run=RUN,with_teta=False):
                 finally:db.close()
             if (path/'detection_metrics.json').exists():detection.append(load(path/'detection_metrics.json'))
             for arm in ('simple','j1','coupled'):
-                p=path/arm/'official_metric_components.json'
-                if p.exists() and (path/arm/'frozen_receipt.json').exists():arm_rows[arm].append(p)
+                physical_arm=arm_dirs[arm];p=path/physical_arm/'official_metric_components.json'
+                if p.exists() and (path/physical_arm/'frozen_receipt.json').exists():arm_rows[arm].append(p)
         # Estimate from actual cached native request/frame records. This is a
         # dataset-specific measurement, not a borrowed MOT20 speed.
         for worker in (run/'workers').glob('*/preflight.json'):
@@ -103,38 +104,51 @@ def aggregate(run=RUN,with_teta=False):
                                                 if caches and sum(c['detector_seconds'] for c in caches) else None)
         for arm,paths in arm_rows.items():
             value['tracking'][arm]={'official_combined_metrics':combine_mot(paths),
+                'artifact_directory':arm_dirs[arm],
                 'complete_jobs':len(paths),'aggregation':'unmodified TrackEval metric.combine_sequences',
                 'scope':'REGISTERED_COMPLETE_VIDEO','job_ids':[p.parent.parent.name for p in paths]}
             timing=[load(p.parent/'result.json') for p in paths]
+            completed_ids={p.parent.parent.name for p in paths}
+            value['tracking'][arm]['frames']=sum(r['frames'] for r in timing)
+            value['tracking'][arm]['videos']=len({j['sequence'] for j in jobs if j['id'] in completed_ids})
             seconds=[r.get('association_only_seconds',r.get('association_seconds')) for r in timing]
             value['tracking'][arm]['association_only_FPS']=(sum(r['frames'] for r in timing)/sum(seconds)
                 if all(s is not None for s in seconds) and sum(seconds)>0 else None)
             value['tracking'][arm]['peak_decision_GPU_bytes']=max((r.get('peak_decision_gpu_memory_bytes',r.get('peak_gpu_memory_bytes',0)) for r in timing),default=0)
         value['paired_gains']={}
         for arm in ('j1','coupled'):
-            pairs=[(Path(j['path'])/'simple/official_metric_components.json',Path(j['path'])/arm/'official_metric_components.json')
-                   for j in jobs if (Path(j['path'])/arm/'frozen_receipt.json').exists()
+            physical_arm=arm_dirs[arm]
+            pairs=[(Path(j['path'])/'simple/official_metric_components.json',Path(j['path'])/physical_arm/'official_metric_components.json')
+                   for j in jobs if (Path(j['path'])/physical_arm/'frozen_receipt.json').exists()
                    and (Path(j['path'])/'simple/frozen_receipt.json').exists()
-                   and (Path(j['path'])/arm/'official_metric_components.json').exists()]
+                   and (Path(j['path'])/physical_arm/'official_metric_components.json').exists()]
             if not pairs:continue
             baseline=combine_mot([a for a,b in pairs]);candidate=combine_mot([b for a,b in pairs])
-            diagnostics=[load(Path(j['path'])/f'comparison_simple_{arm}.json') for j in jobs
-                         if (Path(j['path'])/f'comparison_simple_{arm}.json').exists()]
+            diagnostics=[load(Path(j['path'])/f'comparison_simple_{physical_arm}.json') for j in jobs
+                         if (Path(j['path'])/f'comparison_simple_{physical_arm}.json').exists()]
             value['paired_gains'][arm]={'jobs':len(pairs),'official_delta':{k:candidate[k]-baseline[k] for k in ('HOTA','AssA','IDF1','IDSW')},
                 'Corrected':sum(d['Corrected'] for d in diagnostics),'Harmed':sum(d['Harmed'] for d in diagnostics),
                 'attribution_jobs':len(diagnostics),'scope':'identical complete scopes and official combine_sequences'}
+        if arm_dirs['j1']!='j1':
+            legacy=[Path(j['path'])/'j1/official_metric_components.json' for j in jobs
+                    if (Path(j['path'])/'j1/frozen_receipt.json').exists()
+                    and (Path(j['path'])/'j1/official_metric_components.json').exists()]
+            if legacy:value['legacy_j1_diagnostic']={'complete_jobs':len(legacy),
+                'official_combined_metrics':combine_mot(legacy),
+                'limitation':'legacy inference interpreted runtime xyxy coordinates as xywh competition geometry'}
         if dataset=='tao_amodal':
             value['tracking_note']='TETA must be recomputed jointly across completed videos; per-video scores are not averaged'
             # Preserve completed joint measurements when a lightweight refresh
             # does not request a new official aggregation.
             if not with_teta and (run/'aggregate_metrics.json').exists():
                 previous=load(run/'aggregate_metrics.json')['datasets'].get(dataset,{})
-                for key in ('joint_TETA','paired_TETA_gain'):
-                    if key in previous:value[key]=previous[key]
+                current={arm:result for arm,result in previous.get('joint_TETA',{}).items()
+                         if result.get('artifact_directory',arm)==arm_dirs[arm]}
+                if current:value['joint_TETA']=current
             if with_teta:
                 from tools.groundjev.eval_no_mot20.aggregate_teta import aggregate as joint_teta
                 value['joint_TETA']={arm:joint_teta(arm,run) for arm in ('simple','j1')}
-                paired={j['id'] for j in jobs if all((Path(j['path'])/arm/'frozen_receipt.json').exists() for arm in ('simple','j1'))}
+                paired={j['id'] for j in jobs if all((Path(j['path'])/arm_dirs[arm]/'frozen_receipt.json').exists() for arm in ('simple','j1'))}
                 if paired:
                     left=joint_teta('simple',run,paired);right=joint_teta('j1',run,paired)
                     value['paired_TETA_gain']={key:right['metrics'][key]-left['metrics'][key]
@@ -173,15 +187,23 @@ def render_docs(report,run):
     (docs/'EVAL_NO_MOT20_G2_DETECTION.md').write_text('\n'.join(rows)+'\n')
     for filename,arms in [('EVAL_NO_MOT20_SIMPLE_RESULTS.md',('simple',)),('EVAL_NO_MOT20_JEV_RESULTS.md',('j1','coupled'))]:
         rows=['# Fixed final-G2 candidate tracking results','', 'Status: INCOMPLETE. Values are fractions except counts.','',
-              '| Dataset | Arm | Complete jobs | HOTA | DetA | AssA | IDF1 | IDSW | Association FPS |',
-              '|---|---|---:|---:|---:|---:|---:|---:|---:|']
+              '| Dataset | Arm | Jobs | Videos | Frames | HOTA | DetA | AssA | IDF1 | IDSW | Association FPS |',
+              '|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|']
         for name,d in report['datasets'].items():
             for arm in arms:
                 if arm not in d['tracking']:continue
                 t=d['tracking'][arm];m=t['official_combined_metrics']
-                rows.append(f"| {name} | {arm} | {t['complete_jobs']} | {number(m['HOTA'])} | {number(m['DetA'])} | {number(m['AssA'])} | {number(m['IDF1'])} | {m['IDSW']} | {number(t['association_only_FPS'])} |")
+                rows.append(f"| {name} | {arm} | {t['complete_jobs']} | {t['videos']} | {t['frames']} | {number(m['HOTA'])} | {number(m['DetA'])} | {number(m['AssA'])} | {number(m['IDF1'])} | {m['IDSW']} | {number(t['association_only_FPS'])} |")
         rows+=['','No unweighted mean of per-video HOTA is used. Only paired complete scopes support net-gain claims. OVMOT requires official TETA, not MOT HOTA.','',
+               f"Current J1 artifact directory: `{arm_directory('j1')}`. Legacy `j1` outputs remain separate diagnostics after the confirmed competition-coordinate transport bug.", '',
                'Coupled JEV currently supports ordinary MOT only. RMOT/OVMOT: `NOT_SUPPORTED_BY_CURRENT_CHECKPOINT`. Its selected checkpoint was trained on base-G0 cached features; evaluation on the final-G2 projector is an explicitly recorded feature-distribution shift. J1 step1200 and the separate step8227 OneJev model are not interchanged.']
+        if 'j1' in arms:
+            rows+=['','| Legacy J1 diagnostic | Complete jobs | HOTA | IDF1 |','|---|---:|---:|---:|']
+            for name,d in report['datasets'].items():
+                legacy=d.get('legacy_j1_diagnostic')
+                if legacy:
+                    metric=legacy['official_combined_metrics']
+                    rows.append(f"| {name} | {legacy['complete_jobs']} | {number(metric['HOTA'])} | {number(metric['IDF1'])} |")
         tao=report['datasets'].get('tao_amodal',{})
         if tao.get('joint_TETA'):
             rows+=['','| OVMOT arm | Complete videos | TETA | LocA | AssocA | ClsA |','|---|---:|---:|---:|---:|---:|']

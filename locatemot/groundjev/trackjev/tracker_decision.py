@@ -17,7 +17,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Any, Optional, Sequence
 
-from .candidate_competition import competition_rows, entity_clusters, sparse_edges
+from .candidate_competition import competition_rows, entity_clusters, sparse_edges, runtime_competition_boxes
 from .decision_schema import MAX_SHORTLIST, NO_MATCH_TOKEN, NEW_TOKEN, REJECT_TOKEN, IdentityOption
 from .native_onejev_adapter import NativeOneJevAdapter
 
@@ -32,6 +32,7 @@ class TrackerDecisionConfig:
     ask_risk: bool = False
     memory_threshold: float = 0.5
     duplicate_penalty: float = 0.0
+    competition_geometry: str = 'xyxy'
 
 
 class TrackJEVTrackerDecision:
@@ -60,7 +61,7 @@ class TrackJEVTrackerDecision:
     def _competition(self, candidates: Sequence[dict[str, Any]]) -> Optional[dict[str, Any]]:
         if not self.config.use_competition:
             return None
-        boxes = [c["box"] for c in candidates]
+        boxes = runtime_competition_boxes([c["box"] for c in candidates],self.config.competition_geometry)
         features = [c.get("native_region_feature") for c in candidates]
         edges = sparse_edges(boxes, features if any(f is not None for f in features) else None)
         clusters = entity_clusters(boxes, edges)

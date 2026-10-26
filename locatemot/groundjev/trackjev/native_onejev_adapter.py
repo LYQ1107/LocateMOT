@@ -31,7 +31,7 @@ from .decision_schema import (
     build_identity_options,
     parse_identity_answer,
 )
-from .candidate_competition import competition_rows, entity_clusters, sparse_edges
+from .candidate_competition import competition_rows, entity_clusters, sparse_edges, runtime_competition_boxes
 
 ROOT = Path(__file__).resolve().parents[3]
 ONEJEV_ROOT = ROOT / "external" / "OneJev"
@@ -58,7 +58,7 @@ class NativeOneJevAdapter:
                  dtype: str = "bfloat16", batch_candidates: int = 8,
                  shortlist: int = MAX_SHORTLIST, evidence_format: str = "trackjev_v1",
                  risk_horizon: int = 30, ask_risk: bool = False,
-                 engine: Optional[Any] = None) -> None:
+                 engine: Optional[Any] = None, competition_geometry: str = 'xyxy') -> None:
         self.checkpoint = str(Path(checkpoint).resolve())
         self.batch_candidates = int(batch_candidates)
         self.shortlist = min(int(shortlist), MAX_SHORTLIST)
@@ -66,6 +66,7 @@ class NativeOneJevAdapter:
         self.risk_horizon = int(risk_horizon)
         self.ask_risk = bool(ask_risk)
         self.device = device
+        self.competition_geometry = competition_geometry
         if engine is not None:
             self.engine = engine
         else:
@@ -198,7 +199,7 @@ class NativeOneJevAdapter:
             # retry exceed OneJev's context limit on dense frames.
             local_competition = competition
             if competition is not None and len(indices) != len(group):
-                boxes = [c["box"] for c in subgroup]
+                boxes = runtime_competition_boxes([c["box"] for c in subgroup],self.competition_geometry)
                 features = [c.get("native_region_feature") for c in subgroup]
                 edges = sparse_edges(boxes, features if any(f is not None for f in features) else None)
                 clusters = entity_clusters(boxes, edges)
@@ -241,6 +242,7 @@ class NativeOneJevAdapter:
             "backend": "trackjev_native_onejev",
             "checkpoint": self.checkpoint,
             "evidence_format": self.evidence_format,
+            "competition_geometry": self.competition_geometry,
             "native_probabilities": True,
             "gt_read": False,
             "shortlist_limit": self.shortlist,

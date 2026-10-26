@@ -21,6 +21,10 @@ def main():
                         help='separate launch/bundle directory for an adapted checkpoint service')
     parser.add_argument('--decoder-overlay',type=Path,
                         help='explicit local runtime-only repair overlay; recorded in launch receipt')
+    parser.add_argument('--fast-eager-diagnostics',action='store_true',
+                        help='suppress only native per-forward diagnostic sync/print; requires output-equivalence validation')
+    parser.add_argument('--triton-block-graph',action='store_true',
+                        help='experimental official single-request B32 graph; requires native-output equivalence validation')
     args = parser.parse_args()
     if args.decoder_overlay:
         os.environ['GROUNDJEV_OFFICIAL_SOURCE']=str(SOURCE.resolve())
@@ -56,6 +60,12 @@ def main():
     output.mkdir(parents=True, exist_ok=True)
     command, env, settings, algorithm = build_launch(model, output, 'denoise', mask[0], vocab,
         tokenizer.convert_tokens_to_ids('<|im_end|>'), paths, os.environ, port=args.port)
+    if args.fast_eager_diagnostics:env['GAM_SGLANG_FAST_EAGER']='1'
+    if args.triton_block_graph:
+        command.remove('--disable-cuda-graph')
+        command+=['--cuda-graph-bs','1','--cuda-graph-max-bs','1']
+        env.update(GAM_SGLANG_DISABLE_CUDA_GRAPH='0',GAM_SGLANG_ALLOW_TRITON_DLM_GRAPH='1',
+                   GAM_SGLANG_TRITON_GRAPH_METADATA_V2='1')
     command[command.index('--mem-fraction-static')+1] = str(args.mem_fraction_static)
     command[command.index('--max-queued-requests')+1] = str(args.max_queued_requests)
     algorithm.write_text(yaml.safe_dump(settings['algorithm_config']))
@@ -65,6 +75,8 @@ def main():
                'max_queued_requests': args.max_queued_requests, 'max_running_requests': 1,
                'decoder_overlay':str(args.decoder_overlay.resolve()) if args.decoder_overlay else None,
                'sampling_seed_scope':'request_local_v1_seed42' if args.decoder_overlay else 'upstream_request_ordinal',
+               'fast_eager_diagnostics_suppressed':args.fast_eager_diagnostics,
+               'triton_block_cuda_graph_requested':args.triton_block_graph,
                'packages': {n: importlib.metadata.version(n) for n in ('torch','transformers','sglang','sgl-kernel')}}
     (output/'launch.json').write_text(json.dumps(receipt, indent=2)+'\n')
     print(json.dumps(receipt), flush=True)

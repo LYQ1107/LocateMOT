@@ -12,26 +12,27 @@ import sys
 import time
 
 ROOT=Path(__file__).resolve().parents[3];sys.path.insert(0,str(ROOT))
-from tools.groundjev.eval_no_mot20.common import RUN,load,save,job_manifest,sha_file
+from tools.groundjev.eval_no_mot20.common import RUN,load,save,job_manifest,sha_file,arm_directory
 from tools.groundjev.eval_no_mot20.replay_simple import audit_input,score_output
 
 
-def replay(job,checkpoint,python=sys.executable,device='cuda:0'):
+def replay(job,checkpoint,python=sys.executable,device='cuda:0',arm='j1',competition_geometry='legacy_xywh'):
     if not (job/'simple/frozen_receipt.json').exists():raise ValueError('Simple must be officially scored and frozen first')
-    with (job/'.j1.lock').open('w') as lock:
+    with (job/f'.{arm}.lock').open('w') as lock:
         try:fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
         except BlockingIOError:return {'status':'ALREADY_RUNNING'}
-        output=job/'j1'
+        output=job/arm
         if (output/'frozen_receipt.json').exists():return load(output/'frozen_receipt.json')
         manifest=job_manifest(job)
         if not (output/'result.json').exists():
             extra=[]
             if output.exists() and any(output.iterdir()):
-                previous=job/f'j1_partial_{time.time_ns()}';output.rename(previous)
+                previous=job/f'{arm}_partial_{time.time_ns()}';output.rename(previous)
                 if (previous/'frame_decisions.jsonl').is_file():extra=['--resume-from',str(previous)]
             command=[python,str(ROOT/'tools/groundjev/run_video.py'),'--task',manifest['task'],
                 '--video',str(job/'manifest.json'),'--backend','trackjev','--checkpoint',str(checkpoint),
                 '--trackjev-arm','B4','--trackjev-shortlist','31','--trackjev-device',device,
+                '--trackjev-competition-geometry',competition_geometry,
                 '--candidate-replay',str(job/'detector_candidates.jsonl'),
                 '--grounding-parser','official_scoring','--grounding-decoder-policy','tracking_dense',
                 '--perception-failure-policy','empty_and_record','--no-match-policy','only_if_omitted',
@@ -42,13 +43,14 @@ def replay(job,checkpoint,python=sys.executable,device='cuda:0'):
                 subprocess.run(command,cwd=ROOT,stdout=log,stderr=subprocess.STDOUT,check=True)
         actual=audit_input(job,output);measured=score_output(job,output)
         receipt={'status':'J1_FIXED_CANDIDATE_EVALUATION_COMPLETE','model_step':1200,
+                 'artifact_arm':arm,'competition_geometry':competition_geometry,
                  'checkpoint':str(checkpoint),'model_audit':str(RUN/'model_audit.json'),
                  'input':actual,'metrics':measured,'G2_calls':0,
                  'prediction_sha256':sha_file(output/'predictions.txt'),
                  'OVMOT_semantics':'fixed native G2 labels; J1 identity only; no J1 classification improvement claim'}
         save(output/'frozen_receipt.json',receipt)
         from tools.groundjev.eval_no_mot20.compare_arms import compare
-        compare(job,'j1')
+        compare(job,arm)
         return receipt
 
 
@@ -86,8 +88,40 @@ def evaluate_jev_queue(config,jobs):
 
 def main():
     parser=argparse.ArgumentParser();parser.add_argument('--job',type=Path,required=True)
-    parser.add_argument('--checkpoint',type=Path,required=True);args=parser.parse_args()
-    print(json.dumps(replay(args.job,args.checkpoint)),flush=True)
+    parser.add_argument('--checkpoint',type=Path,required=True)
+    parser.add_argument('--arm');parser.add_argument('--competition-geometry',choices=['xyxy','legacy_xywh'])
+    args=parser.parse_args();config_path=ROOT/'configs/groundjev/eval_no_mot20_4gpu_v1.json';config=load(config_path)
+    arm=args.arm or arm_directory('j1',config)
+    geometry=args.competition_geometry or config.get('j1_competition_geometry','legacy_xywh')
+    print(json.dumps(replay(args.job,args.checkpoint,arm=arm,competition_geometry=geometry)),flush=True)
+    # Backfill one already completed legacy scope in the same reserved GPU
+    # slot; detection caches and historical J1 predictions stay untouched.
+    if config.get('j1_backfill_legacy') and arm!='j1':
+        jobs=load(Path(config['output_root'])/'jobs.json')['jobs']
+        pending=[j for j in jobs if (Path(j['path'])/'j1/frozen_receipt.json').exists()
+                 and not (Path(j['path'])/arm/'frozen_receipt.json').exists()]
+        if pending:
+            entry=min(pending,key=lambda j:(j['dataset']!='sportsmot',j['frames'],j['id']))
+            print(json.dumps(replay(Path(entry['path']),args.checkpoint,arm=arm,competition_geometry=geometry)),flush=True)
+    for probe_mode in config.get('execution_probe_modes',['fast_eager']) if config.get('execution_probe_after_j1') else []:
+        receipt=Path(config['output_root'])/'engineering_checks'/probe_mode/'receipt.json'
+        if receipt.exists():continue
+        # The dispatcher has stopped this slot's detector and is waiting for
+        # this child. Native J1 inference has exited before the execution probe.
+        visible=os.environ.get('CUDA_VISIBLE_DEVICES','')
+        worker=next((w for w in config['workers'] if str(w['gpu'])==visible),None)
+        if worker is not None:
+            with (args.job/'.jev_pipeline.lock').open('a') as slot_lock:
+                try:fcntl.flock(slot_lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
+                except BlockingIOError:
+                    log=Path(config['output_root'])/'engineering_checks/execution_profile_owner.log'
+                    with log.open('a') as handle:
+                        result=subprocess.run([config['ground_python'],str(ROOT/'tools/groundjev/eval_no_mot20/profile_execution.py'),
+                            '--config',str(config_path),'--worker',worker['name'],'--mode',probe_mode],cwd=ROOT,
+                            stdout=handle,stderr=subprocess.STDOUT)
+                    if result.returncode:save(log.with_suffix('.error.json'),{
+                        'status':'EXECUTION_PROFILE_FAILED_TRACKING_RESULT_PRESERVED',
+                        'exit_code':result.returncode,'log':str(log)})
 
 
 if __name__=='__main__':main()

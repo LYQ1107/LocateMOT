@@ -3112,3 +3112,43 @@ failures need not wait for agent-level process polling. No fifth GPU is allocate
 Official TETA is combined jointly across videos, never averaged per-video.
 The full 45 SportsMOT, 26 AnimalTrack, 1694 RMOT queries and 993 TAO video scope
 remains registered and incomplete. No training or checkpoint rewrite occurred.
+
+## 2026-10-26 — actual image audit and J1 competition geometry root cause
+
+A separate pass over all 583251 actual G2 TRAIN rows compares their image keys
+with all 78084 distinct registered evaluation images, normalizing TAO disk
+aliases. There is no exact-image overlap for any of the 26 AnimalTrack videos,
+45 SportsMOT videos, 1694 RMOT queries or 993 TAO videos. This supplements the
+source-video exclusion audit and does not assert pretraining disjointness.
+
+Further J1 attribution found a real interface bug: OnlineTracker candidates are
+xyxy, but the TrackJEV competition module consumes xywh. Full-frame and split-
+subgroup paths both passed the wrong convention. Actual TRAIN row
+MOT17-04-FRCNN_000001_c7_identity_birth has 44 candidates: legacy competition
+differs in 520 saved IoU entries, whereas geometry-only conversion matches all
+entries. The first SportsMOT frame also changes 18 pair entries and its groups.
+Keep historical `j1` predictions untouched and evaluate the correction separately
+as `j1_competition_xyxy_v2`, with the same checkpoint/candidates/options/policies.
+The disjoint-object regression and two relevant existing tests pass (3 total).
+Old negative results describe the legacy adapter, not an isolated measure of
+J1 checkpoint quality. Improved tracking from the repair is still unproven.
+
+Native execution profiling is registered separately: same 16 persisted native
+inputs over all four task families, eager / diagnostic-sync suppression / eager.
+No precision, parser, decoding, seed or weight change is allowed in this probe;
+raw text, candidates and rejection status must agree before any adoption.
+
+The geometry-only full-video control finished on the exact same SportsMOT
+226-frame cache. HOTA Simple/legacy-J1/corrected-J1 is
+0.647157/0.136083/0.135220; both J1 arms have exactly NEW1/ACTIVE225/IGNORE2434,
+FN2230 and IDSW0. This is not a performance improvement. Keep the mathematically
+correct transport and investigate the evidence/training contract; do not tune
+birth thresholds or force NEW. The rerun shared existing physical GPU3 (57,235
+MiB free at launch), adding zero physical GPUs; no speed-ratio claim.
+
+The 16-input execution probe passed raw-text/candidate/rejection equivalence.
+Native eager / diagnostic-sync suppression / eager repeat took
+130.785/95.054/95.253 request seconds. The first-phase timing is confounded;
+the warm-repeat difference is only 0.209%. Do not adopt or advertise an 18.9%
+steady speedup. The separate native BF16 Triton B32 Graph probe is pending;
+no graph or FP8 change has been applied to formal detection.

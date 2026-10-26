@@ -1,1 +1,1 @@
-{"status":"CLEAN_PUBLISHED_TREE_IMPORTS_PASSED","commit":"facf54449d4c7a4e08d2f560598068932417d417","assets":"existing immutable server assets linked; no data/model copied","training_started":false}
+{"TrackJEV_modules": 8, "assets": "existing immutable server assets linked; no data/model copied", "commit": "43342db03fffcbed4579123bf71fd58b14a0ec96", "status": "CLEAN_PUBLISHED_TREE_IMPORTS_AND_COMPILE_PASSED", "targeted_pytest": {"passed": 2, "scope": "fixed native candidate geometry contract and complete native-output pair parsing"}, "training_started": false}

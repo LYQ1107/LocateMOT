@@ -32,6 +32,12 @@ Coupled-step180 weights remain unchanged; no new training was started.
   must be read with the large increase in FN and the paired HOTA/IDF1 decreases.
   All negative results are retained. Coupled is also worse than Simple on the
   first complete MOT videos and does not support RMOT/OVMOT with this checkpoint.
+- A subsequent TRAIN-contract check found the J1 competition-coordinate bug:
+  runtime xyxy was interpreted as xywh. A real 44-candidate TRAIN matrix has 520
+  mismatches before the transport fix and none after it. The original `j1`
+  outputs remain legacy diagnostics; `j1_competition_xyxy_v2` is the isolated
+  corrected arm. Its gains must be measured; the earlier negative numbers cannot
+  be attributed entirely to checkpoint quality.
 
 Remaining work: finish the full immutable registered video/query scope, diagnose
 native TAO generation and its execution cost, complete joint official TETA over

@@ -22,7 +22,7 @@ from urllib.request import urlopen
 
 ROOT=Path(__file__).resolve().parents[3]
 sys.path.insert(0,str(ROOT))
-from tools.groundjev.eval_no_mot20.common import load,save,job_manifest
+from tools.groundjev.eval_no_mot20.common import load,save,job_manifest,arm_directory
 
 
 def gpu_environment(gpu):
@@ -116,6 +116,10 @@ def start_service(config,worker,directory):
              '--max-queued-requests','2','--out',str(directory/'service')]
     if config.get('decoder_overlay'):
         command+=['--decoder-overlay',str(ROOT/config['decoder_overlay'])]
+    if worker.get('fast_eager_diagnostics'):
+        command+=['--fast-eager-diagnostics']
+    if worker.get('triton_block_graph'):
+        command+=['--triton-block-graph']
     handle=(directory/'service.log').open('a')
     began=time.perf_counter()
     process=subprocess.Popen(command,cwd=ROOT,env=env,stdout=handle,stderr=subprocess.STDOUT,start_new_session=True)
@@ -204,7 +208,8 @@ def finish_video_pipeline(config,worker,job,directory,env):
 def run_jev_for_video(config,worker,job,directory,env):
     audit=load(Path(config['output_root'])/'model_audit.json');manifest=job_manifest(job)
     for arm in ('j1','coupled'):
-        if (job/arm/'frozen_receipt.json').exists() or (job/arm/'status.json').exists():continue
+        physical_arm=arm_directory(arm,config)
+        if (job/physical_arm/'frozen_receipt.json').exists() or (job/physical_arm/'status.json').exists():continue
         if arm=='coupled' and manifest['task']!='mot':
             save(job/arm/'status.json',{'status':'NOT_SUPPORTED_BY_CURRENT_CHECKPOINT',
                 'reason':'no trained referring expression / open-vocabulary semantic head'})

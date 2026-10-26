@@ -45,6 +45,12 @@ def load(path: Path) -> Any:
     return json.loads(path.read_text())
 
 
+def arm_directory(arm: str, config=None) -> str:
+    if arm!='j1':return arm
+    if config is None:config=load(ROOT/'configs/groundjev/eval_no_mot20_4gpu_v1.json')
+    return config.get('j1_artifact_dir','j1')
+
+
 def assert_no_mot20(manifest: dict) -> None:
     # Explicit user-requested dataset boundary, also catches aliased manifests.
     values = [manifest.get(k, '') for k in ('dataset', 'sequence', 'video_id', 'images')]

@@ -8,7 +8,7 @@ import subprocess
 import sys
 
 ROOT=Path(__file__).resolve().parents[3];sys.path.insert(0,str(ROOT))
-from tools.groundjev.eval_no_mot20.common import RUN,load,save,sha_file
+from tools.groundjev.eval_no_mot20.common import RUN,load,save,sha_file,arm_directory
 from tools.groundjev.eval_no_mot20.aggregate_metrics import aggregate,render_docs
 
 
@@ -24,13 +24,13 @@ def snapshot(run=RUN):
         result['detection']=load(job/'detection_metrics.json') if (job/'detection_metrics.json').exists() else None
         result['arms']={}
         for arm in ('simple','j1','coupled'):
-            path=job/arm
+            physical_arm=arm_directory(arm);path=job/physical_arm
             if not (path/'frozen_receipt.json').exists():
                 if (path/'status.json').exists():result['arms'][arm]=load(path/'status.json')
                 continue
             frozen=load(path/'frozen_receipt.json');timing=load(path/'result.json')
             metrics=load(path/'official_metrics.json')
-            result['arms'][arm]={'status':frozen['status'],'input':frozen['input'],
+            result['arms'][arm]={'status':frozen['status'],'artifact_directory':physical_arm,'input':frozen['input'],
                 'prediction_sha256':frozen['prediction_sha256'],'metrics':metrics['metrics'],
                 'metric_scale':metrics.get('metric_scale'),'official_frames':metrics['frames'],
                 'GT_boxes':metrics.get('GT_boxes'),'base_novel':metrics.get('base_novel'),
@@ -40,7 +40,7 @@ def snapshot(run=RUN):
                     'association_replay_fps','feature_seconds','image_io_seconds','model_initialization_seconds',
                     'complete_video_wall_seconds','end_to_end_fps','resumed_completed_frames')},
                 'official_receipt_path':str(path/'official_metrics.json')}
-            comparison=job/f'comparison_simple_{arm}.json'
+            comparison=job/f'comparison_simple_{physical_arm}.json'
             if comparison.exists():result['arms'][arm]['paired_attribution']=load(comparison)
         jobs.append(result)
     gpu_peaks={}
