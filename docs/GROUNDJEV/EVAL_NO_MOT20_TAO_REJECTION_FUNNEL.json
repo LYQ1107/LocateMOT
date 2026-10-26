@@ -1,0 +1,383 @@
+{
+  "GT_read": false,
+  "completed_cache_cross_checks": [
+    {
+      "frames": 15,
+      "job": "tao_amodal__val_ArgoVerse_side_left_273c1883-673a-36bf-b124-88311b1a80be__621d07178dd1c86f",
+      "rejected": 15,
+      "request_count": 195
+    },
+    {
+      "frames": 15,
+      "job": "tao_amodal__val_ArgoVerse_rear_right_25952736-2595-2595-2595-225953853440__71b0e223d2ba9566",
+      "rejected": 15,
+      "request_count": 195
+    },
+    {
+      "frames": 32,
+      "job": "tao_amodal__val_AVA_BCiuXAuCKAU_scene_16_109527-110290__e597df32d6583b53",
+      "rejected": 32,
+      "request_count": 416
+    },
+    {
+      "frames": 16,
+      "job": "tao_amodal__val_ArgoVerse_028d5cb1-f74d-366c-85ad-84fde69b0fd3__7fab9fd1f0ef5895",
+      "rejected": 16,
+      "request_count": 208
+    },
+    {
+      "frames": 15,
+      "job": "tao_amodal__val_ArgoVerse_273c1883-673a-36bf-b124-88311b1a80be__de656dfbbfe75581",
+      "rejected": 15,
+      "request_count": 195
+    },
+    {
+      "frames": 16,
+      "job": "tao_amodal__val_ArgoVerse_02cf0ce1-699a-373b-86c0-eb6fd5f4697a__468401552bf3c30a",
+      "rejected": 16,
+      "request_count": 208
+    },
+    {
+      "frames": 15,
+      "job": "tao_amodal__val_ArgoVerse_25952736-2595-2595-2595-225953853440__9d1704f6ccc8e6ee",
+      "rejected": 15,
+      "request_count": 195
+    }
+  ],
+  "jobs": [
+    {
+      "frame_rejection_funnel": {
+        "accepted_chunk_proposals_in_complete_frames": 3527,
+        "accepted_chunk_proposals_suppressed_by_frame_rejection": 3527,
+        "complete_request_frames": 15,
+        "invalid_chunk_count_histogram": {
+          "10": 2,
+          "11": 3,
+          "12": 4,
+          "13": 1,
+          "7": 1,
+          "9": 4
+        },
+        "partial_request_frames": 0,
+        "registered_chunks_per_frame": 13,
+        "scope": "Native chunk proposal counts before the frozen whole-frame rejection rule. Not rescued predictions, GT coverage or a valid partial-vocabulary score.",
+        "whole_frame_rejected": 15
+      },
+      "job": "tao_amodal__val_ArgoVerse_side_left_273c1883-673a-36bf-b124-88311b1a80be__621d07178dd1c86f",
+      "reference_parser_failure_categories": {
+        "invalid_native_box_geometry": 9,
+        "invalid_native_label": 17,
+        "malformed_coordinate_payload": 92,
+        "malformed_wrappers_or_entry_separators": 31,
+        "missing_complete_native_wrappers": 7,
+        "strict_failure_then_reference_fallback_rejects_None_entry": 1
+      },
+      "requests": 195,
+      "requests_with_server_usage": 195,
+      "retokenized_output_tokens": 264558,
+      "status_counts": {
+        "REJECTED": 157,
+        "SCORED": 38
+      }
+    },
+    {
+      "frame_rejection_funnel": {
+        "accepted_chunk_proposals_in_complete_frames": 3135,
+        "accepted_chunk_proposals_suppressed_by_frame_rejection": 3135,
+        "complete_request_frames": 15,
+        "invalid_chunk_count_histogram": {
+          "10": 3,
+          "11": 7,
+          "12": 3,
+          "8": 1,
+          "9": 1
+        },
+        "partial_request_frames": 0,
+        "registered_chunks_per_frame": 13,
+        "scope": "Native chunk proposal counts before the frozen whole-frame rejection rule. Not rescued predictions, GT coverage or a valid partial-vocabulary score.",
+        "whole_frame_rejected": 15
+      },
+      "job": "tao_amodal__val_ArgoVerse_rear_right_25952736-2595-2595-2595-225953853440__71b0e223d2ba9566",
+      "reference_parser_failure_categories": {
+        "invalid_native_box_geometry": 8,
+        "invalid_native_label": 36,
+        "malformed_coordinate_payload": 83,
+        "malformed_wrappers_or_entry_separators": 31,
+        "missing_complete_native_wrappers": 2
+      },
+      "requests": 195,
+      "requests_with_server_usage": 195,
+      "retokenized_output_tokens": 265157,
+      "status_counts": {
+        "REJECTED": 160,
+        "SCORED": 35
+      }
+    },
+    {
+      "frame_rejection_funnel": {
+        "accepted_chunk_proposals_in_complete_frames": 6298,
+        "accepted_chunk_proposals_suppressed_by_frame_rejection": 6298,
+        "complete_request_frames": 32,
+        "invalid_chunk_count_histogram": {
+          "10": 9,
+          "11": 8,
+          "12": 5,
+          "13": 2,
+          "8": 1,
+          "9": 7
+        },
+        "partial_request_frames": 0,
+        "registered_chunks_per_frame": 13,
+        "scope": "Native chunk proposal counts before the frozen whole-frame rejection rule. Not rescued predictions, GT coverage or a valid partial-vocabulary score.",
+        "whole_frame_rejected": 32
+      },
+      "job": "tao_amodal__val_AVA_BCiuXAuCKAU_scene_16_109527-110290__e597df32d6583b53",
+      "reference_parser_failure_categories": {
+        "invalid_native_box_geometry": 14,
+        "invalid_native_label": 60,
+        "malformed_coordinate_payload": 201,
+        "malformed_wrappers_or_entry_separators": 43,
+        "missing_complete_native_wrappers": 11,
+        "strict_failure_then_reference_fallback_rejects_None_entry": 6
+      },
+      "requests": 416,
+      "requests_with_server_usage": 0,
+      "retokenized_output_tokens": 545622,
+      "status_counts": {
+        "REJECTED": 335,
+        "SCORED": 81
+      }
+    },
+    {
+      "frame_rejection_funnel": {
+        "accepted_chunk_proposals_in_complete_frames": 5379,
+        "accepted_chunk_proposals_suppressed_by_frame_rejection": 5379,
+        "complete_request_frames": 16,
+        "invalid_chunk_count_histogram": {
+          "10": 4,
+          "12": 2,
+          "13": 1,
+          "6": 1,
+          "7": 1,
+          "8": 2,
+          "9": 5
+        },
+        "partial_request_frames": 0,
+        "registered_chunks_per_frame": 13,
+        "scope": "Native chunk proposal counts before the frozen whole-frame rejection rule. Not rescued predictions, GT coverage or a valid partial-vocabulary score.",
+        "whole_frame_rejected": 16
+      },
+      "job": "tao_amodal__val_ArgoVerse_028d5cb1-f74d-366c-85ad-84fde69b0fd3__7fab9fd1f0ef5895",
+      "reference_parser_failure_categories": {
+        "invalid_native_box_geometry": 5,
+        "invalid_native_label": 32,
+        "malformed_coordinate_payload": 65,
+        "malformed_wrappers_or_entry_separators": 43,
+        "missing_complete_native_wrappers": 6
+      },
+      "requests": 208,
+      "requests_with_server_usage": 208,
+      "retokenized_output_tokens": 284194,
+      "status_counts": {
+        "REJECTED": 151,
+        "SCORED": 57
+      }
+    },
+    {
+      "frame_rejection_funnel": {
+        "accepted_chunk_proposals_in_complete_frames": 4998,
+        "accepted_chunk_proposals_suppressed_by_frame_rejection": 4998,
+        "complete_request_frames": 15,
+        "invalid_chunk_count_histogram": {
+          "10": 4,
+          "11": 3,
+          "12": 1,
+          "7": 1,
+          "8": 2,
+          "9": 4
+        },
+        "partial_request_frames": 0,
+        "registered_chunks_per_frame": 13,
+        "scope": "Native chunk proposal counts before the frozen whole-frame rejection rule. Not rescued predictions, GT coverage or a valid partial-vocabulary score.",
+        "whole_frame_rejected": 15
+      },
+      "job": "tao_amodal__val_ArgoVerse_273c1883-673a-36bf-b124-88311b1a80be__de656dfbbfe75581",
+      "reference_parser_failure_categories": {
+        "invalid_native_box_geometry": 15,
+        "invalid_native_label": 39,
+        "malformed_coordinate_payload": 62,
+        "malformed_wrappers_or_entry_separators": 25,
+        "missing_complete_native_wrappers": 2,
+        "strict_failure_then_reference_fallback_rejects_None_entry": 1
+      },
+      "requests": 195,
+      "requests_with_server_usage": 0,
+      "retokenized_output_tokens": 259488,
+      "status_counts": {
+        "REJECTED": 144,
+        "SCORED": 51
+      }
+    },
+    {
+      "frame_rejection_funnel": {
+        "accepted_chunk_proposals_in_complete_frames": 3844,
+        "accepted_chunk_proposals_suppressed_by_frame_rejection": 3844,
+        "complete_request_frames": 7,
+        "invalid_chunk_count_histogram": {
+          "10": 3,
+          "6": 1,
+          "7": 1,
+          "8": 2
+        },
+        "partial_request_frames": 1,
+        "registered_chunks_per_frame": 13,
+        "scope": "Native chunk proposal counts before the frozen whole-frame rejection rule. Not rescued predictions, GT coverage or a valid partial-vocabulary score.",
+        "whole_frame_rejected": 7
+      },
+      "job": "tao_amodal__val_ArgoVerse_043aeba7-14e5-3cde-8a5c-639389b6d3a6__3415da83c5a6d818",
+      "reference_parser_failure_categories": {
+        "invalid_native_box_geometry": 3,
+        "invalid_native_label": 17,
+        "malformed_coordinate_payload": 32,
+        "malformed_wrappers_or_entry_separators": 10,
+        "missing_complete_native_wrappers": 2
+      },
+      "requests": 96,
+      "requests_with_server_usage": 96,
+      "retokenized_output_tokens": 134399,
+      "status_counts": {
+        "REJECTED": 64,
+        "SCORED": 32
+      }
+    },
+    {
+      "frame_rejection_funnel": {
+        "accepted_chunk_proposals_in_complete_frames": 6443,
+        "accepted_chunk_proposals_suppressed_by_frame_rejection": 6443,
+        "complete_request_frames": 16,
+        "invalid_chunk_count_histogram": {
+          "10": 3,
+          "11": 3,
+          "7": 3,
+          "8": 4,
+          "9": 3
+        },
+        "partial_request_frames": 0,
+        "registered_chunks_per_frame": 13,
+        "scope": "Native chunk proposal counts before the frozen whole-frame rejection rule. Not rescued predictions, GT coverage or a valid partial-vocabulary score.",
+        "whole_frame_rejected": 16
+      },
+      "job": "tao_amodal__val_ArgoVerse_02cf0ce1-699a-373b-86c0-eb6fd5f4697a__468401552bf3c30a",
+      "reference_parser_failure_categories": {
+        "invalid_native_box_geometry": 5,
+        "invalid_native_label": 26,
+        "malformed_coordinate_payload": 82,
+        "malformed_wrappers_or_entry_separators": 25,
+        "missing_complete_native_wrappers": 4,
+        "strict_failure_then_reference_fallback_rejects_None_entry": 1
+      },
+      "requests": 208,
+      "requests_with_server_usage": 208,
+      "retokenized_output_tokens": 277344,
+      "status_counts": {
+        "REJECTED": 143,
+        "SCORED": 65
+      }
+    },
+    {
+      "frame_rejection_funnel": {
+        "accepted_chunk_proposals_in_complete_frames": 4131,
+        "accepted_chunk_proposals_suppressed_by_frame_rejection": 4131,
+        "complete_request_frames": 15,
+        "invalid_chunk_count_histogram": {
+          "10": 3,
+          "11": 4,
+          "12": 1,
+          "13": 1,
+          "5": 1,
+          "8": 2,
+          "9": 3
+        },
+        "partial_request_frames": 0,
+        "registered_chunks_per_frame": 13,
+        "scope": "Native chunk proposal counts before the frozen whole-frame rejection rule. Not rescued predictions, GT coverage or a valid partial-vocabulary score.",
+        "whole_frame_rejected": 15
+      },
+      "job": "tao_amodal__val_ArgoVerse_25952736-2595-2595-2595-225953853440__9d1704f6ccc8e6ee",
+      "reference_parser_failure_categories": {
+        "invalid_native_box_geometry": 9,
+        "invalid_native_label": 34,
+        "malformed_coordinate_payload": 74,
+        "malformed_wrappers_or_entry_separators": 25,
+        "missing_complete_native_wrappers": 5
+      },
+      "requests": 195,
+      "requests_with_server_usage": 0,
+      "retokenized_output_tokens": 254365,
+      "status_counts": {
+        "REJECTED": 147,
+        "SCORED": 48
+      }
+    },
+    {
+      "frame_rejection_funnel": {
+        "accepted_chunk_proposals_in_complete_frames": 468,
+        "accepted_chunk_proposals_suppressed_by_frame_rejection": 468,
+        "complete_request_frames": 1,
+        "invalid_chunk_count_histogram": {
+          "9": 1
+        },
+        "partial_request_frames": 1,
+        "registered_chunks_per_frame": 13,
+        "scope": "Native chunk proposal counts before the frozen whole-frame rejection rule. Not rescued predictions, GT coverage or a valid partial-vocabulary score.",
+        "whole_frame_rejected": 1
+      },
+      "job": "tao_amodal__val_ArgoVerse_10b8dee6-778f-33e4-a946-d842d2d9c3d7__16d10437ea8a1258",
+      "reference_parser_failure_categories": {
+        "invalid_native_label": 2,
+        "malformed_coordinate_payload": 6,
+        "malformed_wrappers_or_entry_separators": 2,
+        "missing_complete_native_wrappers": 1
+      },
+      "requests": 16,
+      "requests_with_server_usage": 16,
+      "retokenized_output_tokens": 24575,
+      "status_counts": {
+        "REJECTED": 11,
+        "SCORED": 5
+      }
+    }
+  ],
+  "predictions_changed": false,
+  "protocol_changed": false,
+  "status": "PERSISTED_NATIVE_OUTPUT_DIAGNOSIS",
+  "completed_video_summary": {
+    "completed_videos": 7,
+    "annotated_frames": 124,
+    "native_requests": 1612,
+    "accepted_chunks": 375,
+    "rejected_chunks": 1237,
+    "accepted_chunk_native_proposals_suppressed": 33911,
+    "invalid_chunks_per_complete_frame_histogram": {
+      "10": 28,
+      "11": 28,
+      "12": 16,
+      "13": 5,
+      "7": 6,
+      "9": 27,
+      "8": 12,
+      "6": 1,
+      "5": 1
+    },
+    "first_failure_category_counts": {
+      "invalid_native_box_geometry": 65,
+      "invalid_native_label": 244,
+      "malformed_coordinate_payload": 659,
+      "malformed_wrappers_or_entry_separators": 223,
+      "missing_complete_native_wrappers": 37,
+      "strict_failure_then_reference_fallback_rejects_None_entry": 9
+    }
+  },
+  "created_utc": "2026-10-26T14:45:56.330270+00:00",
+  "diagnostic_source_commit": "419a2ce360ed4e6b71618b98a9a4c45ec95cd7bb"
+}
