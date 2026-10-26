@@ -75,6 +75,9 @@ def aggregate(run=RUN,with_teta=False):
             # another worker's longer registered preflight is still running.
             measured=[c['detector_seconds']/c['frames'] for c in caches for _ in range(c['frames'])]
             measurement_scope='completed full-video caches; registered 32-input preflight unfinished'
+        forecast_frames=sum(c['frames'] for c in caches)
+        forecast_seconds_per_frame=(sum(c['detector_seconds'] for c in caches)/forecast_frames
+                                    if forecast_frames else sum(measured)/len(measured) if measured else None)
         value={'scope':'OFFICIAL_FULL_VAL' if len(detection)==len(jobs) and dataset=='sportsmot' else
                        'REGISTERED_COMPLETE_VIDEO' if detection else 'INCOMPLETE',
                'registered_videos':len({j['sequence'] for j in jobs}),'registered_jobs':len(jobs),
@@ -94,7 +97,9 @@ def aggregate(run=RUN,with_teta=False):
                'measured_preflight_FPS':preflight_inputs/sum(measured) if preflight_inputs and sum(measured) else None,
                'measured_detection_FPS':len(measured)/sum(measured) if measured and sum(measured) else None,
                'remaining_detection_GPU_hours_estimate':
-                   (total_frames-completed_frames)*sum(measured)/len(measured)/3600 if measured else None,
+                   (total_frames-completed_frames)*forecast_seconds_per_frame/3600 if forecast_seconds_per_frame else None,
+               'forecast_source':'all completed native video/query caches' if forecast_frames else 'registered preflight only',
+               'forecast_frames':forecast_frames if forecast_frames else len(measured),
                'tracking':{}}
         scored_frames=sum(d['frames'] for d in detection)
         value['FP_per_frame']=(sum(d['unmatched_candidates'] for d in detection)/scored_frames
@@ -176,6 +181,8 @@ def render_docs(report,run):
     def number(v):return 'PENDING' if v is None else f'{v:.3f}'
     for name,d in report['datasets'].items():rows.append(f"| {name} | {d['completed_detection_frames']}/{d['registered_query_frames']} | {d['persisted_requests']} | {d['timing_measured_inputs']} | {number(d['measured_detection_FPS'])} | {number(d['remaining_detection_GPU_hours_estimate'])} |")
     rows+=['']+[f"{name}: {d['timing_measurement_scope']}; mean {number(d['latency_mean_seconds'])} s, p95 {number(d['latency_p95_seconds'])} s." for name,d in report['datasets'].items()]
+    rows+=['','Remaining-work forecasts prefer all completed native video/query scopes over the original short preflight. The early completed videos are a small, size-prioritized sample, so these are provisional cost extrapolations, not completion-date guarantees.']
+    rows += [f"{name} forecast: {d['forecast_source']}, {d['forecast_frames']} measured frames." for name,d in report['datasets'].items()]
     rows+=['','Workers: four shared A800 GPUs, physical 3/4/6/1, UUIDs and memory limits in the committed configuration. A service runs one native request at a time. Allocation time and sampled utilization are recorded separately. No fourfold speedup is assumed.','',
            'Association replay FPS is separate from detector throughput. A sum of measured stage costs is an estimate, never a directly measured end-to-end FPS.']
     (docs/'EVAL_NO_MOT20_RUNTIME_ESTIMATE.md').write_text('\n'.join(rows)+'\n')

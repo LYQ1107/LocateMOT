@@ -3152,3 +3152,12 @@ Native eager / diagnostic-sync suppression / eager repeat took
 the warm-repeat difference is only 0.209%. Do not adopt or advertise an 18.9%
 steady speedup. The separate native BF16 Triton B32 Graph probe is pending;
 no graph or FP8 change has been applied to formal detection.
+
+The native BF16 Triton B32 Graph probe completed on existing GPU6. All 16
+ordinary eager baseline/repeat requests are exact, but zero of the 16 Graph
+responses match: coordinates and candidate counts change, including one TAO
+chunk switching from rejected/empty to 114 parsed candidates. Thus Graph's
+103.420 request seconds versus warm eager 118.094 is not a matched-output speed
+comparison. Reject Graph for formal inference and preserve all probe artifacts.
+The formal workers continue the original native BF16 eager profile; no FP8,
+decoder, parser, seed, precision or checkpoint change was adopted.

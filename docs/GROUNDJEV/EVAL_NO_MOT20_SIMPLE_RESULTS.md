@@ -16,5 +16,5 @@ Coupled JEV currently supports ordinary MOT only. RMOT/OVMOT: `NOT_SUPPORTED_BY_
 
 | OVMOT arm | Complete videos | TETA | LocA | AssocA | ClsA |
 |---|---:|---:|---:|---:|---:|
-| simple | 2 | 0.000 | 0.000 | 0.000 | 0.000 |
-| simple base | 2 | 0.000 | 0.000 | 0.000 | 0.000 |
+| simple | 3 | 0.000 | 0.000 | 0.000 | 0.000 |
+| simple base | 3 | 0.000 | 0.000 | 0.000 | 0.000 |
