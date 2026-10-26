@@ -3161,3 +3161,12 @@ chunk switching from rejected/empty to 114 parsed candidates. Thus Graph's
 comparison. Reject Graph for formal inference and preserve all probe artifacts.
 The formal workers continue the original native BF16 eager profile; no FP8,
 decoder, parser, seed, precision or checkpoint change was adopted.
+
+
+### 2026-10-26 — J1 current-crop and memory-input controls (registered before inference)
+
+Canonical project remains GroundJEV; all work uses its authorized no-MOT20 evaluation worktree. Main native G2 final step18227 queue remains intact on physical GPUs 3/4/6/1. No new training or checkpoint writes. The previous geometry control completed 226 SportsMOT frames and did not fix the one-identity collapse (HOTA 13.5220% vs legacy 13.6083%).
+
+Hypothesis: runtime misses TRAIN's current-candidate crop sheet. Separately, memory requests renumber candidates but retain original assignment keys, and still feed xyxy boxes to xywh competition. Add independently selectable current-crop evidence and local-memory transport; defaults reproduce historical inputs. Preserve all prior directories and compare new full-video arms against the already frozen v2 and Simple results on exactly the same native candidates.
+
+Controls: `j1_current_crops_v3` adds only current crops to v2; `j1_current_crops_memory_v4` adds aligned memory indices/geometry to that crop arm. Register the complete first SportsMOT video (226 frames, candidate SHA 46fce75613893b8642a0b0be118b0462e2e89996e38fba2feec7b711159e34b6) before measuring either. No probability threshold, NEW/NO_MATCH policy, seed or GT-dependent change. Verify crop rendering against a real saved TRAIN crop sheet, and verify noncontiguous memory assignment remapping. Any GPU control must share an already registered physical GPU with adequate free memory, never a fifth GPU. Unit request capture is an engineering check, not research performance.

@@ -37,6 +37,25 @@ ROOT = Path(__file__).resolve().parents[3]
 ONEJEV_ROOT = ROOT / "external" / "OneJev"
 
 
+def current_candidate_sheet(image: Any, group: Sequence[dict[str, Any]]):
+    """Render the current crops with the layout used by the J1 TRAIN builder.
+
+    Runtime candidates are xyxy. Only the source pixels and local candidate
+    numbers enter this image; no annotation or predicted identity is drawn.
+    """
+    from PIL import Image, ImageDraw
+
+    sheet = Image.new('RGB', (640, max(1, math.ceil(len(group) / 4)) * 192), 'white')
+    draw = ImageDraw.Draw(sheet)
+    for index, candidate in enumerate(group):
+        x, y = (index % 4) * 160, (index // 4) * 192
+        draw.text((x + 2, y + 2), f'Candidate {index}', fill='black')
+        crop = image.crop(tuple(int(value) for value in candidate['box'])).convert('RGB')
+        crop.thumbnail((154, 166))
+        sheet.paste(crop, (x + 3, y + 22))
+    return sheet
+
+
 @dataclass
 class AdapterOutput:
     decisions: list[ParsedDecision]
@@ -58,7 +77,9 @@ class NativeOneJevAdapter:
                  dtype: str = "bfloat16", batch_candidates: int = 8,
                  shortlist: int = MAX_SHORTLIST, evidence_format: str = "trackjev_v1",
                  risk_horizon: int = 30, ask_risk: bool = False,
-                 engine: Optional[Any] = None, competition_geometry: str = 'xyxy') -> None:
+                 engine: Optional[Any] = None, competition_geometry: str = 'xyxy',
+                 candidate_evidence: str = 'full_frame',
+                 memory_transport: str = 'legacy') -> None:
         self.checkpoint = str(Path(checkpoint).resolve())
         self.batch_candidates = int(batch_candidates)
         self.shortlist = min(int(shortlist), MAX_SHORTLIST)
@@ -67,6 +88,8 @@ class NativeOneJevAdapter:
         self.ask_risk = bool(ask_risk)
         self.device = device
         self.competition_geometry = competition_geometry
+        self.candidate_evidence = candidate_evidence
+        self.memory_transport = memory_transport
         if engine is not None:
             self.engine = engine
         else:
@@ -109,6 +132,13 @@ class NativeOneJevAdapter:
             state.update(competition)
         return state
 
+    def _image_media(self, state, image, group):
+        media = [{"type": "image", "image": image}]
+        if self.candidate_evidence == 'train_current_crops' and group:
+            state['current_candidate_crop_sheet'] = '<image:2>'
+            media.append({'type': 'image', 'image': current_candidate_sheet(image, group)})
+        return media
+
     # ---------------------------------------------------------------- request
     def build_request(self, *, image: Any, group: Sequence[dict[str, Any]],
                       tracks: Sequence[dict[str, Any]], timestamp: float,
@@ -122,7 +152,7 @@ class NativeOneJevAdapter:
         state = self.build_state(image=image, group=group, competition=competition,
                                  tracks=tracks[:self.shortlist], timestamp=timestamp,
                                  specification=specification, task_query=task_query)
-        media = [{"type": "image", "image": image}]
+        media = self._image_media(state, image, group)
 
         questions: dict[str, Any] = {}
         for index in range(len(group)):
@@ -243,6 +273,8 @@ class NativeOneJevAdapter:
             "checkpoint": self.checkpoint,
             "evidence_format": self.evidence_format,
             "competition_geometry": self.competition_geometry,
+            "candidate_evidence": self.candidate_evidence,
+            "memory_transport": self.memory_transport,
             "native_probabilities": True,
             "gt_read": False,
             "shortlist_limit": self.shortlist,
@@ -273,8 +305,9 @@ class NativeOneJevAdapter:
         # identity. Do not carry the full detector proposal bank (and its
         # quadratic competition rows) into this second request: dense frames
         # otherwise exceed the OneJev context limit even when one identity is
-        # being updated. Keep the original candidate ids in the state for
-        # auditability while using local question indices for the compact group.
+        # being updated. The versioned local_xyxy contract aligns state,
+        # questions and assignment keys to the compact group's local indices.
+        # The legacy transport remains available for historical controls.
         selected = sorted(int(i) for i in assigned)
         local_group = [group[i] for i in selected]
         local_assigned = {local: assigned[original]
@@ -282,7 +315,8 @@ class NativeOneJevAdapter:
         local_questions = self.build_memory_questions(local_assigned)
         local_competition = None
         if competition is not None:
-            boxes = [c["box"] for c in local_group]
+            boxes = ([c["box"] for c in local_group] if self.memory_transport == 'legacy' else
+                     runtime_competition_boxes([c["box"] for c in local_group], self.competition_geometry))
             features = [c.get("native_region_feature") for c in local_group]
             edges = sparse_edges(boxes, features if any(f is not None for f in features) else None)
             clusters = entity_clusters(boxes, edges)
@@ -290,13 +324,20 @@ class NativeOneJevAdapter:
         state = self.build_state(image=image, group=local_group, competition=local_competition,
                                  tracks=tracks[:self.shortlist], timestamp=timestamp,
                                  specification=specification)
-        state["assigned_identity_per_candidate"] = {
-            str(original): assigned[original] for original in selected
-        }
+        if self.memory_transport == 'legacy':
+            state["assigned_identity_per_candidate"] = {
+                str(original): assigned[original] for original in selected
+            }
+        else:
+            state["assigned_identity_per_candidate"] = {
+                str(local): identity for local, identity in local_assigned.items()
+            }
+            state["original_candidate_indices"] = selected
         state["assignment_condition"] = ("these ids are the actual final allocation of this frame; "
                                          "decide whether each one deserves a long-term memory update")
+        media = self._image_media(state, image, local_group)
         request = SystemOneRequest(state=state, model="jev-latest", questions=local_questions)
-        response, meta = self.engine.decide(request, media=[{"type": "image", "image": image}])
+        response, meta = self.engine.decide(request, media=media)
         updates: dict[int, dict[str, Any]] = {}
         for local, candidate in enumerate(selected):
             key = f"memory_{local}"
@@ -306,4 +347,6 @@ class NativeOneJevAdapter:
             if risk_key in response.answers:
                 updates.setdefault(candidate, {})["risk"] = response.answers[risk_key].score
         return {"asked": len(questions), "updates": updates, "metadata": meta,
+                "candidate_evidence": self.candidate_evidence, "memory_transport": self.memory_transport,
+                "selected_original_candidate_indices": selected,
                 "policy": "memory write conditioned on the final assigned identity"}

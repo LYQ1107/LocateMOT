@@ -80,6 +80,8 @@ def main():
     parser.add_argument('--trackjev-duplicate-penalty', type=float, default=0.0)
     parser.add_argument('--trackjev-device', default='cuda:0')
     parser.add_argument('--trackjev-competition-geometry',choices=['xyxy','legacy_xywh'],default='xyxy')
+    parser.add_argument('--trackjev-candidate-evidence',choices=['full_frame','train_current_crops'],default='full_frame')
+    parser.add_argument('--trackjev-memory-transport',choices=['legacy','local_xyxy'],default='legacy')
     parser.add_argument('--backend', choices=['simple', 'simple_native', 'simple_temporal', 'full', 'compact', 'trackjev'], default='full')
     parser.add_argument('--compact-device',choices=['cpu','cuda:0'],default='cuda:0',help='explicit device for trained Compact replay; report actual device, no detector E2E claim')
     parser.add_argument('--global-identity',action='store_true',help='isolated Global Identity Compact checkpoint')
@@ -198,6 +200,8 @@ def main():
                                       shortlist=args.trackjev_shortlist,
                                       evidence_format='trackjev_v1',
                                       competition_geometry=args.trackjev_competition_geometry,
+                                      candidate_evidence=args.trackjev_candidate_evidence,
+                                      memory_transport=args.trackjev_memory_transport,
                                       ask_risk=(arm == 'B6'))
         config = TrackerDecisionConfig(shortlist=args.trackjev_shortlist,
                                        use_competition=arm in ('B3', 'B4', 'B6'),
@@ -491,7 +495,10 @@ def main():
             result['frozen_CPU_text_table']={'shape':list(table.shape),'dtype':str(table.dtype),
                 'parameters':table.numel(),'nominal_tensor_bytes':table.numel()*table.element_size(),
                 'device':str(table.device),'scope':'frozen originalOneJev lookup table, not decoder inference; nominal bytes are not resident RSS'}
-    if args.backend=='trackjev':result['trackjev_competition_geometry']=args.trackjev_competition_geometry
+    if args.backend=='trackjev':
+        result['trackjev_competition_geometry']=args.trackjev_competition_geometry
+        result['trackjev_candidate_evidence']=args.trackjev_candidate_evidence
+        result['trackjev_memory_transport']=args.trackjev_memory_transport
     if args.backend in ('full','compact','trackjev') or args.category_policy == 'native_hierarchical':
         import torch
         cpu_compact=args.backend=='compact' and args.compact_device=='cpu'

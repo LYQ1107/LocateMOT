@@ -16,7 +16,8 @@ from tools.groundjev.eval_no_mot20.common import RUN,load,save,job_manifest,sha_
 from tools.groundjev.eval_no_mot20.replay_simple import audit_input,score_output
 
 
-def replay(job,checkpoint,python=sys.executable,device='cuda:0',arm='j1',competition_geometry='legacy_xywh'):
+def replay(job,checkpoint,python=sys.executable,device='cuda:0',arm='j1',competition_geometry='legacy_xywh',
+           candidate_evidence='full_frame',memory_transport='legacy'):
     if not (job/'simple/frozen_receipt.json').exists():raise ValueError('Simple must be officially scored and frozen first')
     with (job/f'.{arm}.lock').open('w') as lock:
         try:fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
@@ -33,6 +34,8 @@ def replay(job,checkpoint,python=sys.executable,device='cuda:0',arm='j1',competi
                 '--video',str(job/'manifest.json'),'--backend','trackjev','--checkpoint',str(checkpoint),
                 '--trackjev-arm','B4','--trackjev-shortlist','31','--trackjev-device',device,
                 '--trackjev-competition-geometry',competition_geometry,
+                '--trackjev-candidate-evidence',candidate_evidence,
+                '--trackjev-memory-transport',memory_transport,
                 '--candidate-replay',str(job/'detector_candidates.jsonl'),
                 '--grounding-parser','official_scoring','--grounding-decoder-policy','tracking_dense',
                 '--perception-failure-policy','empty_and_record','--no-match-policy','only_if_omitted',
@@ -44,6 +47,7 @@ def replay(job,checkpoint,python=sys.executable,device='cuda:0',arm='j1',competi
         actual=audit_input(job,output);measured=score_output(job,output)
         receipt={'status':'J1_FIXED_CANDIDATE_EVALUATION_COMPLETE','model_step':1200,
                  'artifact_arm':arm,'competition_geometry':competition_geometry,
+                 'candidate_evidence':candidate_evidence,'memory_transport':memory_transport,
                  'checkpoint':str(checkpoint),'model_audit':str(RUN/'model_audit.json'),
                  'input':actual,'metrics':measured,'G2_calls':0,
                  'prediction_sha256':sha_file(output/'predictions.txt'),
@@ -90,10 +94,17 @@ def main():
     parser=argparse.ArgumentParser();parser.add_argument('--job',type=Path,required=True)
     parser.add_argument('--checkpoint',type=Path,required=True)
     parser.add_argument('--arm');parser.add_argument('--competition-geometry',choices=['xyxy','legacy_xywh'])
+    parser.add_argument('--candidate-evidence',choices=['full_frame','train_current_crops'])
+    parser.add_argument('--memory-transport',choices=['legacy','local_xyxy'])
+    parser.add_argument('--no-followups',action='store_true',help='run only this explicitly registered control')
     args=parser.parse_args();config_path=ROOT/'configs/groundjev/eval_no_mot20_4gpu_v1.json';config=load(config_path)
     arm=args.arm or arm_directory('j1',config)
     geometry=args.competition_geometry or config.get('j1_competition_geometry','legacy_xywh')
-    print(json.dumps(replay(args.job,args.checkpoint,arm=arm,competition_geometry=geometry)),flush=True)
+    evidence=args.candidate_evidence or config.get('j1_candidate_evidence','full_frame')
+    memory=args.memory_transport or config.get('j1_memory_transport','legacy')
+    print(json.dumps(replay(args.job,args.checkpoint,arm=arm,competition_geometry=geometry,
+                            candidate_evidence=evidence,memory_transport=memory)),flush=True)
+    if args.no_followups:return
     # Backfill one already completed legacy scope in the same reserved GPU
     # slot; detection caches and historical J1 predictions stay untouched.
     if config.get('j1_backfill_legacy') and arm!='j1':
@@ -102,7 +113,8 @@ def main():
                  and not (Path(j['path'])/arm/'frozen_receipt.json').exists()]
         if pending:
             entry=min(pending,key=lambda j:(j['dataset']!='sportsmot',j['frames'],j['id']))
-            print(json.dumps(replay(Path(entry['path']),args.checkpoint,arm=arm,competition_geometry=geometry)),flush=True)
+            print(json.dumps(replay(Path(entry['path']),args.checkpoint,arm=arm,competition_geometry=geometry,
+                                    candidate_evidence=evidence,memory_transport=memory)),flush=True)
     for probe_mode in config.get('execution_probe_modes',['fast_eager']) if config.get('execution_probe_after_j1') else []:
         receipt=Path(config['output_root'])/'engineering_checks'/probe_mode/'receipt.json'
         if receipt.exists():continue
