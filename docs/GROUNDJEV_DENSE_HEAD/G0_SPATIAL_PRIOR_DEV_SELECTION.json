@@ -1,0 +1,33 @@
+{
+  "best_step": 1000,
+  "threshold": 0.3,
+  "threshold_candidates": [
+    {
+      "threshold": 0.05,
+      "macro_domain_F1": 0.12593965142516192
+    },
+    {
+      "threshold": 0.1,
+      "macro_domain_F1": 0.14386791153790446
+    },
+    {
+      "threshold": 0.2,
+      "macro_domain_F1": 0.18498382183976492
+    },
+    {
+      "threshold": 0.3,
+      "macro_domain_F1": 0.2148507377525476
+    },
+    {
+      "threshold": 0.5,
+      "macro_domain_F1": 0.009697661152310326
+    },
+    {
+      "threshold": 0.7,
+      "macro_domain_F1": 0.0
+    }
+  ],
+  "selection_scope": "TRAIN-internal DEV sampled frames only",
+  "architecture_and_training_fixed": true,
+  "time_unix": 1793037573.8857207
+}

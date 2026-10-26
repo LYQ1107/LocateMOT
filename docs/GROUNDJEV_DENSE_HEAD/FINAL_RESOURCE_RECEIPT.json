@@ -1,0 +1,138 @@
+{
+  "status": "BOUNDED_SPATIAL_PILOT_FINISHED_GPU_CONTEXTS_RELEASED",
+  "time_UTC": "2026-10-26T19:59:38.747422+00:00",
+  "old_evaluation_state": "PAUSED_BY_USER_FOR_ARCHITECTURE_PIVOT",
+  "old_worktree_remaining_processes": [],
+  "dense_training_or_diagnostic_processes_remaining": [],
+  "owned_CUDA_contexts_remaining": [],
+  "other_project_or_foreign_GPU_contexts_preserved": [
+    {
+      "GPU_UUID": "GPU-bf21a95d-d96d-9ec5-cb15-b0fb7ad50536",
+      "pid": 753558,
+      "memory_MiB": "28650",
+      "UID": null,
+      "belongs_to_paused_or_dense_worktree": false
+    },
+    {
+      "GPU_UUID": "GPU-bf21a95d-d96d-9ec5-cb15-b0fb7ad50536",
+      "pid": 1593343,
+      "memory_MiB": "16024",
+      "UID": null,
+      "belongs_to_paused_or_dense_worktree": false
+    },
+    {
+      "GPU_UUID": "GPU-f35654b3-bbf5-7303-cfcb-9bd5d3e16e69",
+      "pid": 3571193,
+      "memory_MiB": "16376",
+      "UID": null,
+      "belongs_to_paused_or_dense_worktree": false
+    },
+    {
+      "GPU_UUID": "GPU-f35654b3-bbf5-7303-cfcb-9bd5d3e16e69",
+      "pid": 365778,
+      "memory_MiB": "5932",
+      "UID": null,
+      "belongs_to_paused_or_dense_worktree": false
+    },
+    {
+      "GPU_UUID": "GPU-c2484ded-5f87-237c-bbf0-d23fcb74fdb2",
+      "pid": 753559,
+      "memory_MiB": "33404",
+      "UID": null,
+      "belongs_to_paused_or_dense_worktree": false
+    },
+    {
+      "GPU_UUID": "GPU-6cb11599-704e-c3aa-9e28-5f15faa25c7c",
+      "pid": 365778,
+      "memory_MiB": "5710",
+      "UID": null,
+      "belongs_to_paused_or_dense_worktree": false
+    },
+    {
+      "GPU_UUID": "GPU-6cb11599-704e-c3aa-9e28-5f15faa25c7c",
+      "pid": 34862,
+      "memory_MiB": "67738",
+      "UID": null,
+      "belongs_to_paused_or_dense_worktree": false
+    },
+    {
+      "GPU_UUID": "GPU-44f62835-4095-23ec-d3dd-5af16a00705c",
+      "pid": 365778,
+      "memory_MiB": "5710",
+      "UID": null,
+      "belongs_to_paused_or_dense_worktree": false
+    },
+    {
+      "GPU_UUID": "GPU-44f62835-4095-23ec-d3dd-5af16a00705c",
+      "pid": 753560,
+      "memory_MiB": "29204",
+      "UID": null,
+      "belongs_to_paused_or_dense_worktree": false
+    },
+    {
+      "GPU_UUID": "GPU-c6523d98-cb2d-95ed-4cb2-a84936acceb6",
+      "pid": 3862715,
+      "memory_MiB": "53206",
+      "UID": null,
+      "belongs_to_paused_or_dense_worktree": false
+    },
+    {
+      "GPU_UUID": "GPU-883c8be3-25b0-3d19-6fa8-4c2e335e67d2",
+      "pid": 365778,
+      "memory_MiB": "5614",
+      "UID": null,
+      "belongs_to_paused_or_dense_worktree": false
+    },
+    {
+      "GPU_UUID": "GPU-883c8be3-25b0-3d19-6fa8-4c2e335e67d2",
+      "pid": 753561,
+      "memory_MiB": "33316",
+      "UID": null,
+      "belongs_to_paused_or_dense_worktree": false
+    },
+    {
+      "GPU_UUID": "GPU-0322c0e7-ffbf-e068-5bdd-587b8216a9d9",
+      "pid": 3862716,
+      "memory_MiB": "52106",
+      "UID": null,
+      "belongs_to_paused_or_dense_worktree": false
+    }
+  ],
+  "signals_sent_during_final_audit": [],
+  "old_queue_counts_unchanged_since_pause": {
+    "COMPLETE": 246,
+    "PENDING": 29887,
+    "RUNNING": 2
+  },
+  "old_queue_integrity": "ok",
+  "old_queue_mutations": [],
+  "owner_completions": {
+    "global": {
+      "status": "ALL_PILOT_OWNERS_EXITED",
+      "exit_codes": {
+        "g2": 0,
+        "g0": 0
+      },
+      "elapsed_seconds": 11802.838501214981,
+      "old_evaluation_restarted": false,
+      "gpu_processes_started": 2
+    },
+    "spatial_prior": {
+      "status": "ALL_PILOT_OWNERS_EXITED",
+      "exit_codes": {
+        "g2": 0,
+        "g0": 0
+      },
+      "elapsed_seconds": 10321.511718511581,
+      "old_evaluation_restarted": false,
+      "gpu_processes_started": 2
+    }
+  },
+  "temporary_feature_bytes": 21461151776,
+  "temporary_feature_GiB": 19.98725512623787,
+  "old_branch_SHA": "28567e6fd227809d88ca7fba5ad3eb66de3467f2",
+  "old_eval_automatically_resumed": false,
+  "new_identity_or_full_G2_training_launched": false,
+  "checkpoint_paths_and_hashes": "PILOT_RESULTS.json / per-arm pilot receipts",
+  "all_original_data_and_weights_preserved": true
+}

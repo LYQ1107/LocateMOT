@@ -15,16 +15,19 @@ from locatemot.groundjev.dense_head.object_decoder import ObjectDecoder
 from locatemot.groundjev.dense_head.model import targets_on_grid,boxes_to_original,valid_ratio
 from locatemot.groundjev.dense_head.hungarian_criterion import HungarianCriterion
 from tools.groundjev.eval_no_mot20.evaluate_g2_detection import iou_matrix
-from tools.groundjev.dense_head.prepare_train_data import RUN,write_json
+from tools.groundjev.dense_head.prepare_train_data import RUN,write_json,digest
 
 
 def main():
     parser=argparse.ArgumentParser();parser.add_argument('--run-root',type=Path,default=RUN)
     args=parser.parse_args();run=args.run_root
     started=time.perf_counter();torch.set_num_threads(4)
-    assert json.loads((run/'g2/receipt.json').read_text())['status']=='REAL_GPU_PILOT_AND_FULL_DEV_COMPLETE'
     saved=torch.load(run/'g2/best_dev.pt',map_location='cpu',weights_only=False)
     selection=json.loads((run/'g2/frozen_selection.json').read_text());threshold=selection['threshold']
+    # Selection is frozen only after the complete optimizer loop. The separate
+    # full-video evaluation can still be running on its own immutable model.
+    assert saved['step']==selection['best_step']
+    evaluation_complete=(run/'g2/receipt.json').exists()
     backbone=SpatialBackbone(saved['config']['model']);head=ObjectDecoder(queries=saved['config']['queries'],
         spatial_attention_sigma=saved['config'].get('spatial_attention_sigma')).cuda()
     head.load_state_dict(saved['head']);head.eval();out=[]
@@ -46,6 +49,8 @@ def main():
                     'AP_Precision_TETA':None,'reason':'Single TRAIN diagnostic, partial/category-limited annotation, class-agnostic decoder'} )
     write_json(RUN/'audits/auxiliary_GPU_diagnostic.json',{'status':'REAL_GPU_DIRECT_DECODER_INTERFACE_DIAGNOSTIC_COMPLETE',
         'trained_run':str(run),'spatial_attention_sigma':saved['config'].get('spatial_attention_sigma'),
+        'head_checkpoint_SHA256':digest(run/'g2/best_dev.pt'),'head_step':saved['step'],
+        'main_full_video_evaluation_complete_at_diagnostic':evaluation_complete,
         'physical_gpu':os.environ['CUDA_VISIBLE_DEVICES'],'rows':out,'optimizer_updates':0,'Novel_labels_used':False,
         'elapsed_seconds':time.perf_counter()-started,'GPU_hours':(time.perf_counter()-started)/3600,
         'open_vocabulary_1203_class_claim':False,'RMOT_expression_satisfaction_claim':False})

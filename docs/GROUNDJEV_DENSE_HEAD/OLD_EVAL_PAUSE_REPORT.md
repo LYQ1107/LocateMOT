@@ -12,6 +12,15 @@ The live old code does not recognize the pause marker. Actual termination, not t
 
 SQLite backup API snapshots: `/data3/user/LocateMOT-runs/GroundJEV_Eval_NoMOT20_4GPU/request_local_seed_v2/architecture_pivot_pause_20261026/queue_before.sqlite` and `/data3/user/LocateMOT-runs/GroundJEV_Eval_NoMOT20_4GPU/request_local_seed_v2/architecture_pivot_pause_20261026/queue_paused.sqlite`. Both integrity checks: ok. Before counts: {'COMPLETE': 244, 'PENDING': 29888, 'RUNNING': 3}; paused counts: {'COMPLETE': 246, 'PENDING': 29887, 'RUNNING': 2}. No queue states were edited. Confirmed interrupted RUNNING units and their last committed frames are in OLD_EVAL_PAUSE_RECEIPT.json; their detector databases also have consistent backups.
 
+|Worker|COMPLETE queue units|Interrupted RUNNING units|
+|---|---:|---:|
+|A|56|0|
+|B|102|1|
+|C|49|0|
+|D|39|1|
+
+These are atomic queue units, not complete videos. Worker B's interrupted TAO job retained 7 committed frames / 95 chunk requests (last physical frame180); worker D's Animal dolphin job retained269 committed frames (last269). No incomplete unit was promoted to COMPLETE.
+
 Preserved run storage: 0.8299 GiB logical, 0.8498 GiB allocated; detector/cache artifacts 0.0548 GiB logical. No models, caches, predictions, metrics, source manifests or raw data were deleted.
 
 Measured owned GPU residency: 26.1192 GPU-hours over 6.823 recorded hours. Includes idle resident models, excludes foreign jobs, is not kernel-busy time; telemetry begins after initial launch, so this is recorded-window cost, not an invented full-lifetime total.
@@ -48,3 +57,5 @@ Models preserved: G2 final step18227 and merged bundle, original J1 step1200, Co
 |tao_amodal|993|9|984|163|
 
 The five uncommitted automatic Markdown reports from the old worktree are also archived with SHA256 in `architecture_pivot_pause_20261026/original_worktree_reports/` and `uncommitted_reports_manifest.json`. The old source branch remains unchanged; these archived reports are not confused with the newer sealed metric summary.
+
+After the new detector pilot ended, FINAL_RESOURCE_RECEIPT.json reconfirmed zero old-worktree processes and unchanged queue counts (246 COMPLETE /29887 PENDING /2 interrupted RUNNING), with integrity `ok`. The old branch still points to28567e6f. No automatic recovery or queue mutation occurred during the pilot.

@@ -1,0 +1,11 @@
+{
+  "source": "live nvidia-smi hardware identity; no foreign process changes",
+  "devices_csv": "0, GPU-bf21a95d-d96d-9ec5-cb15-b0fb7ad50536, NVIDIA A800-SXM4-80GB, 81920\n1, GPU-f35654b3-bbf5-7303-cfcb-9bd5d3e16e69, NVIDIA A800-SXM4-80GB, 81920\n2, GPU-c2484ded-5f87-237c-bbf0-d23fcb74fdb2, NVIDIA A800-SXM4-80GB, 81920\n3, GPU-6cb11599-704e-c3aa-9e28-5f15faa25c7c, NVIDIA A800-SXM4-80GB, 81920\n4, GPU-44f62835-4095-23ec-d3dd-5af16a00705c, NVIDIA A800-SXM4-80GB, 81920\n5, GPU-c6523d98-cb2d-95ed-4cb2-a84936acceb6, NVIDIA A800-SXM4-80GB, 81920\n6, GPU-883c8be3-25b0-3d19-6fa8-4c2e335e67d2, NVIDIA A800-SXM4-80GB, 81920\n7, GPU-0322c0e7-ffbf-e068-5bdd-587b8216a9d9, NVIDIA A800-SXM4-80GB, 81920\n",
+  "used_physical_indices": [
+    1,
+    4,
+    6,
+    7
+  ],
+  "clean_GPU_framework_properties": "_CudaDeviceProperties(name='NVIDIA A800-SXM4-80GB', major=8, minor=0, total_memory=81153MB, multi_processor_count=108, uuid=44f62835-4095-23ec-d3dd-5af16a00705c, pci_bus_id=142, pci_device_id=0, pci_domain_id=0, L2_cache_size=40MB)"
+}

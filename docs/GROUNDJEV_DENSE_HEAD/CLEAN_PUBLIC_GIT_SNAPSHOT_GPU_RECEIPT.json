@@ -1,0 +1,137 @@
+{
+  "status": "CLEAN_PUBLIC_GIT_SNAPSHOT_REAL_GPU_CHECK_PASSED",
+  "source_commit": "2b19711914008464080de3dfba5d0e6d64a773b8",
+  "tree_SHA": "afe7b1839bccf49df04f96a7c980b1ac29e63523",
+  "snapshot_root": "/tmp/GroundJEV-dense-public-2b197119",
+  "repository_module_paths": {
+    "NativeGroundFeatures": "/tmp/GroundJEV-dense-public-2b197119/locatemot/groundjev/native_features.py",
+    "SpatialBackbone": "/tmp/GroundJEV-dense-public-2b197119/locatemot/groundjev/dense_head/spatial_backbone.py",
+    "ObjectDecoder": "/tmp/GroundJEV-dense-public-2b197119/locatemot/groundjev/dense_head/object_decoder.py",
+    "HungarianCriterion": "/tmp/GroundJEV-dense-public-2b197119/locatemot/groundjev/dense_head/hungarian_criterion.py",
+    "boxes_to_original": "/tmp/GroundJEV-dense-public-2b197119/locatemot/groundjev/dense_head/model.py"
+  },
+  "checkpoint": "/data3/user/LocateMOT-runs/G2_Spatial_DenseHead_20261026/g2/best_dev.pt",
+  "checkpoint_SHA256": "0133e58b88032e28d385a0cf766481a04e56cb7a442c7782e1f892e45a8e2d0f",
+  "head_step": 1000,
+  "backbone_G2_step": 18227,
+  "backbone_G2_model_SHA256": "7c4a81349e333a304e32f42cf1999db289802d8c31eba415b85827038d14801f",
+  "spatial_attention_sigma": null,
+  "physical_GPU_environment": "4",
+  "CUDA_device_properties": "_CudaDeviceProperties(name='NVIDIA A800-SXM4-80GB', major=8, minor=0, total_memory=81153MB, multi_processor_count=108, uuid=44f62835-4095-23ec-d3dd-5af16a00705c, pci_bus_id=142, pci_device_id=0, pci_domain_id=0, L2_cache_size=40MB)",
+  "frames": [
+    {
+      "dataset": "sportsmot",
+      "image_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/SportsMOT/train/v_ApPxnw_Jffg_c001/img1/000001.jpg",
+      "image_size": [
+        1280,
+        720
+      ],
+      "feature_shape": [
+        1,
+        2560,
+        24,
+        42
+      ],
+      "feature_SHA256": "a549c8be92036a3b83fd1c85c37fb3b8716e2b0cd5dea7b7c54391031be5aa97",
+      "raw_query_boxes": 100,
+      "above_frozen_DEV_threshold": 49,
+      "finite_original_pixel_coordinates": true,
+      "native_feature_metadata": {
+        "feature_source": "official_DLM_native_MoonViT_and_trained_projector",
+        "checkpoint": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM-G2-CLEAN-V2",
+        "weight_prefix": "base_model.model.visual.",
+        "native_parameters": 428482048,
+        "native_weight_entries": 170,
+        "image_size": [
+          1280,
+          720
+        ],
+        "grid_thw": [
+          1,
+          48,
+          84
+        ],
+        "merged_grid": [
+          24,
+          42
+        ],
+        "resize_and_padding": {
+          "num_tokens": 1008,
+          "new_width": 1173,
+          "new_height": 660,
+          "pad_width": 3,
+          "pad_height": 12,
+          "sampled_nframes": 1
+        },
+        "feature_dimension": 2560,
+        "attention": "official eager",
+        "seconds": 2.2171945739537477,
+        "image_only": true,
+        "max_tokens": 1024
+      }
+    },
+    {
+      "dataset": "animaltrack",
+      "image_path": "/data2/user/LocateMOT_FullDataV2_spill/datasets/AnimalTrack/frames_all/chicken_3/0001.jpg",
+      "image_size": [
+        2560,
+        1440
+      ],
+      "feature_shape": [
+        1,
+        2560,
+        24,
+        42
+      ],
+      "feature_SHA256": "d8d226c4ee01a8b6b4f7bfe6048f0b128f4fa98d853c1b06b8c600ffe6d88488",
+      "raw_query_boxes": 100,
+      "above_frozen_DEV_threshold": 85,
+      "finite_original_pixel_coordinates": true,
+      "native_feature_metadata": {
+        "feature_source": "official_DLM_native_MoonViT_and_trained_projector",
+        "checkpoint": "/data2/user/LocateMOT_GroundJEV/models/GroundAnything-DLM-G2-CLEAN-V2",
+        "weight_prefix": "base_model.model.visual.",
+        "native_parameters": 428482048,
+        "native_weight_entries": 170,
+        "image_size": [
+          2560,
+          1440
+        ],
+        "grid_thw": [
+          1,
+          48,
+          84
+        ],
+        "merged_grid": [
+          24,
+          42
+        ],
+        "resize_and_padding": {
+          "num_tokens": 1008,
+          "new_width": 1173,
+          "new_height": 660,
+          "pad_width": 3,
+          "pad_height": 12,
+          "sampled_nframes": 1
+        },
+        "feature_dimension": 2560,
+        "attention": "official eager",
+        "seconds": 0.63870709692128,
+        "image_only": true,
+        "max_tokens": 1024
+      }
+    }
+  ],
+  "checkpoint_restore_exact": true,
+  "optimizer_updates": 0,
+  "GT_or_answer_tokens_input": false,
+  "online_TRAIN_detection_loss": 4.216371059417725,
+  "online_projector_fc2_gradient_norm": 4.408883094787598,
+  "encoder_gradients": null,
+  "G2_parameter_versions_unchanged": true,
+  "new_autoregressive_generation": false,
+  "peak_allocated_MiB": 2967.0185546875,
+  "elapsed_seconds": 17.242892215959728,
+  "GPU_hours": 0.004789692741922207,
+  "performance_scope": "Two real images for checkout/loading/inference integrity, not a detection benchmark"
+}

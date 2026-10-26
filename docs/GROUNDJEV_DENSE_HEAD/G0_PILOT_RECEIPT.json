@@ -1,0 +1,31 @@
+{
+  "status": "REAL_GPU_PILOT_AND_FULL_DEV_COMPLETE",
+  "arm": "g0",
+  "optimizer_steps": 1000,
+  "selected_step": 750,
+  "selected_threshold": 0.3,
+  "elapsed_seconds": 11786.546305214055,
+  "GPU_hours": 3.2740406403372373,
+  "train_seconds": 2647.133646863047,
+  "physical_gpu": "6",
+  "peak_allocated_GPU_MiB": 3010.65576171875,
+  "peak_reserved_GPU_MiB": 3594.0,
+  "unique_optimizer_images": 2400,
+  "sample_exposures": {
+    "animaltrack": 2000,
+    "sportsmot": 2000
+  },
+  "sampling_order_SHA256": "1decdab6a517bad8e24478ef4d8a973cced11611a4c75179f48a79872af721b9",
+  "initial_head_SHA256": "194aa2e2abf1f6b0342186ad07bffcd8444de2b671553d7cd7adc144593829af",
+  "frozen_backbone_unchanged": true,
+  "no_GT_in_features": true,
+  "temporary_feature_bytes": 6439378312,
+  "checkpoint_last": "/data3/user/LocateMOT-runs/G2_Spatial_DenseHead_20261026/g0/last.pt",
+  "checkpoint_best": "/data3/user/LocateMOT-runs/G2_Spatial_DenseHead_20261026/g0/best_dev.pt",
+  "checkpoint_last_SHA256": "d5e3b0a31bc22024b9648e17306ca98ae0164ed6a2f38a7111ae3dd2e985facc",
+  "checkpoint_best_SHA256": "91e98e29b949224d2cc3271a5a28377ef306aaea5abeab5ddf6839969098c8b3",
+  "source_commit": "2b19711914008464080de3dfba5d0e6d64a773b8",
+  "best_DEV_macro_AP50": 0.014463438541652114,
+  "final_results": "/data3/user/LocateMOT-runs/G2_Spatial_DenseHead_20261026/g0/dev_full_results.json",
+  "scientific_improvement_claim": "requires matched A0/A1/A2 final comparison"
+}
