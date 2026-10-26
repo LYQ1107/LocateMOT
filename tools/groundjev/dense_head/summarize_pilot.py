@@ -94,3 +94,77 @@ def main():
 
 
 if __name__=='__main__':main()
+
+
+def append_spatial_prior_controls():
+    """Retain the original weak pilot and compare the pre-frozen spatial prior."""
+    docs=ROOT/'docs/GROUNDJEV_DENSE_HEAD';path=docs/'PILOT_RESULTS.json'
+    summary=json.loads(path.read_text());v2=RUN/'spatial_prior_v2';controls={}
+    for arm in ['g0','g2']:
+        receipt=json.loads((v2/arm/'receipt.json').read_text());assert receipt['status']=='REAL_GPU_PILOT_AND_FULL_DEV_COMPLETE'
+        assert digest(receipt['checkpoint_best'])==receipt['checkpoint_best_SHA256']
+        assert digest(receipt['checkpoint_last'])==receipt['checkpoint_last_SHA256']
+        base=summary['receipts'][arm]
+        for key in ['optimizer_steps','initial_head_SHA256','sampling_order_SHA256','unique_optimizer_images','sample_exposures']:
+            assert receipt[key]==base[key],(arm,key)
+        controls[arm]={'receipt':receipt,'registration':json.loads((v2/arm/'registration.json').read_text()),
+                      'full_DEV':json.loads((v2/arm/'dev_full_results.json').read_text()),
+                      'external':json.loads((v2/arm/'external_results.json').read_text())}
+        shutil.copy2(v2/arm/'receipt.json',docs/(arm.upper()+'_SPATIAL_PRIOR_PILOT_RECEIPT.json'))
+        shutil.copy2(v2/arm/'frozen_selection.json',docs/(arm.upper()+'_SPATIAL_PRIOR_DEV_SELECTION.json'))
+    for arm in ['g0','g2']:
+        summary['receipts'][arm]['execution_source_at_launch']=json.loads((RUN/arm/'registration.json').read_text())['source_commit']
+        summary['receipts'][arm]['completion_source_field_note']='Older entrypoint read current HEAD again at completion; execution source is the separately preserved launch registration.'
+    summary['spatial_prior_controls']=controls
+    summary['spatial_prior_plan']=json.loads((v2/'frozen_plan.json').read_text())
+    summary['global_budget_receipt']=json.loads((v2/'global_budget_receipt.json').read_text())
+    summary['GPU_hours_train_and_eval_residency']+=sum(c['receipt']['GPU_hours'] for c in controls.values())
+    assert summary['global_budget_receipt']['GPU_hours_upper_estimate_including_one_hour_smoke_reserve']<=24
+    write_json(path,summary);write_json(RUN/'final_comparison.json',summary)
+    def tables(scope):
+        lines=['|Architecture/model/dataset|Frames|R50|R75|Precision|FP/frame|FN|Duplicates|AP50 / AP75 / mAP|',
+               '|---|---:|---:|---:|---:|---:|---:|---:|---:|']
+        groups={'G0 spatial prior':controls['g0'][scope]['metrics'],'G2 spatial prior':controls['g2'][scope]['metrics']}
+        for label,value in groups.items():
+            for dataset,m in value.items():
+                if dataset=='per_video':continue
+                ap=' / '.join(f'{100*m[k]:.3f}' for k in ['AP50','AP75','mAP'])
+                lines.append(f"|{label}/{dataset}|{m['frames']}|{100*m['Recall50']:.3f}|{100*m['Recall75']:.3f}|{100*m['Precision']:.3f}|{m['FP_per_frame']:.3f}|{m['FN']}|{m['duplicates']}|{ap}|")
+        return '\n'.join(lines)
+    text=['\n## Pre-frozen spatial attention controls','',
+          'Weak global-query DEV AP and successful two-image overfit motivated one additional bounded matched pair. Before reading any external head metrics, sigma0.08 Gaussian additive attention bias at the model reference centers was frozen. No GT/proposal enters the prior and no trainable parameter was added. Same100 queries/3 layers/seed42/initial weights/sampling stream/1,000 steps/optimizer/LR. Entire sampling SHA, unique optimizer images and domain exposures match across all four runs. G2 usesGPU1 and G0GPU7; original global pair remainsGPU4/6. Combined feature cache limit20GiB (<25GiB). Whole-task budget monitors both pairs, with one GPU-hour conservatively reserved for functional audits. Original results/checkpoints remain preserved.', '',
+          '### Full internal DEV (still seen by G2 TRAIN)','',tables('full_DEV'),'',
+          '### Same frozen external videos, no external selection','',tables('external'),'',
+          '|Arm|Best step|Threshold|Allocated MiB|GPU-hours|Fresh end-to-end detection FPS|Vision FPS|Decoder FPS|',
+          '|---|---:|---:|---:|---:|---:|---:|---:|']
+    for arm,c in controls.items():
+        r=c['receipt'];timing=c['full_DEV']['timing']
+        text.append(f"|{arm} spatial prior|{r['selected_step']}|{r['selected_threshold']}|{r['peak_allocated_GPU_MiB']:.1f}|{r['GPU_hours']:.4f}|{timing['evaluation_wall_FPS']:.3f}|{timing['vision_FPS']:.3f}|{timing['decoder_FPS']:.3f}|")
+    total=summary['GPU_hours_train_and_eval_residency']
+    text+=['',f'All four measured train+evaluation residency costs total **{total:.4f} GPU-hours**. The recorded global upper estimate including a full1GPU-hour functional-audit reserve is {summary["global_budget_receipt"]["GPU_hours_upper_estimate_including_one_hour_smoke_reserve"]:.4f}, within24. GPU diagnostics and raw weights remain on server. No external frame/query was used in an optimizer update.', '',
+           'Source provenance: original global heads launched at7829ff66; spatial-prior heads launched at5254d8bc. Their launch registrations are authoritative. The older original entrypoint also stored current Git HEAD at completion, which may be a newer reporting/control commit; it is not the launch SHA. The newer source preserves original global numerical behavior when the optional spatial prior is None. Full source SHAs and registration config are in PILOT_RESULTS.json.']
+    with (docs/'PILOT_TRAINING.md').open('a') as f:f.write('\n'.join(text)+'\n')
+    a0=summary['external_comparison']['A0']['metrics'];g2=controls['g2']['external']['metrics'];g0=controls['g0']['external']['metrics']
+    decision=['# Evidence-based next research decision','',
+              'Four real GPU1,000-step trials and complete internal DEV/frozen external comparisons are complete. This completes the bounded spatial-decoder pilot, not the unified GroundJEV/identity research.', '',
+              '1. **Can G2 spatial features support direct detection?** The image-only path trains with a frozen encoder/projector, passes no-label-leakage/geometry/restore checks, and emits direct scored boxes without language parsing. Two TRAIN images can be memorized perfectly. Usable generalization is judged by the following completed video metrics; successful training alone does not establish it.', '',
+              '|Frozen external scope|Native G2 R50 / FP-frame|Spatial G2 R50 / FP-frame|Spatial G0 R50 / FP-frame|',
+              '|---|---:|---:|---:|']
+    for dataset in ['animaltrack','sportsmot']:
+        n,a,b=a0[dataset],g2[dataset],g0[dataset]
+        decision.append(f"|{dataset}|{100*n['Recall50']:.3f}% / {n['FP_per_frame']:.3f}|{100*a['Recall50']:.3f}% / {a['FP_per_frame']:.3f}|{100*b['Recall50']:.3f}% / {b['FP_per_frame']:.3f}|")
+    decision+=['',
+        '2. **Which native errors improve?** Direct numeric output removes the autoregressive grammar/parser failure mechanism. It does not by itself improve missed-target recall or false positives. Compare the coverage, one-to-one recall, AP, duplicate count and small/dense groups in PILOT_RESULTS.json; native A0 AP is undefined. The two-TRAIN-image diagnostic is not a validation result.', '',
+        '3. **Attribution/fairness:** All four heads have the same3,975,829 parameters, initial weight SHA, training images/order/exposures/steps and optimizer. Within each architecture, G0/G2 differ only in five native projector tensors; their encoder is identical and Qwen LoRA is not run. Spatial prior vs global queries is the sole numerical architecture change; the smaller per-arm frozen feature cache changes wall time, not samples or updates. Native vs a supervised new head also changes the learned prediction mechanism; this is not proof of a pure architecture-only gain independent of supervised readout optimization. No extra distinct GT dataset was added.', '',
+        '4. **AnimalTrack:** Use the recorded precision/FP/duplicates and per-category metrics alongside recall; external scope covers chicken/deer/duck only. Full internal DEV covers all10 animal types but was in G2 TRAIN. Do not claim whole-dataset generalization or a gain from lowering external thresholds.', '',
+        '5. **SportsMOT:** Native final G2 starts from very high coverage. Any substantial recall loss means the new head should not replace that front end, even if Animal coverage rises. The fixed0.5 scores and DEV-selected scores are both retained; no threshold was chosen on external labels.', '',
+        '6. **TAO/Refer:** Existing TRAIN Base177-class annotations and all supplied physical Refer labels have audited interfaces. Neither enters these optimizers. Refer157 missing target-ID references must be handled explicitly in future supervision; non-exhaustive negatives must stay masked. A two-image class-agnostic GPU diagnostic cannot establish1203-class detection, RMOT language satisfaction or TETA.', '',
+        '7. **Shared temporal identity decoder:** Do not launch full identity training merely because detector training finished. First require adequate target coverage and false-positive behavior on the frozen development protocol. ObjectState already exposes boxes/scores/query visual tokens/geometry and reserved language/category/history/causal fields. Keep original JEV checkpoints; no old JEV retraining or HOTA benefit is claimed here.', '',
+        '8. **Further backbone tuning:** Current gradients update only the head; detached caches are not joint G2 adaptation. A real GPU online projector gradient was validated, but unfreezing is not justified solely by a weak query readout. If continuing, the next bounded study should target the demonstrated localization/optimization failure on internal DEV before large unfreezing. Qwen LoRA requires an answer-free causal language path and a new resource/gradient audit.', '',
+        'Old full evaluation remains PAUSED_BY_USER_FOR_ARCHITECTURE_PIVOT, with all caches/weights/SQLite snapshots intact and no automatic recovery. All weak/failed intermediate scopes, exact checkpoint hashes, frame counts, GPU-memory/FPS/cost and source provenance remain available.']
+    (docs/'NEXT_RESEARCH_DECISION.md').write_text('\n'.join(decision)+'\n')
+    print(json.dumps({'status':'ALL_FOUR_MATCHED_TRIALS_COMPARISON_COMPLETE','total_GPU_hours':total,
+                      'spatial_G2_external':{d:{k:g2[d][k] for k in ['Recall50','Recall75','Precision','FP_per_frame','AP50']} for d in ['sportsmot','animaltrack']}},indent=2))
+
+
+if __name__=='__main__':append_spatial_prior_controls()

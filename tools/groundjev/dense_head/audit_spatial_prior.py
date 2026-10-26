@@ -1,6 +1,6 @@
 import sys,json,os,time
 from pathlib import Path
-root=Path('/data2/user/LocateMOT_GroundJEV_DenseHead');sys.path.insert(0,str(root))
+root=Path(__file__).resolve().parents[3];sys.path.insert(0,str(root))
 import torch
 from PIL import Image
 from locatemot.groundjev.dense_head.spatial_backbone import SpatialBackbone

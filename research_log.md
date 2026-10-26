@@ -3225,3 +3225,7 @@ Real GPU G0/G2 smoke passed: image-only2560x24x42, final18227 verified, no GT le
 ## 2026-10-27 bounded spatial-prior control, frozen before external head results
 
 V1globalqueries atG2step750: macroDEV AP50=0.819%, fixed0.5 outputs empty; G0step750=1.446%. Real GPU two-TRAIN-frame300-step overfit givesR75/Precision100%, validating geometry/matching/head capacity only. Hypothesis: global cross-attention is poorly localized with a short query-training budget. Freeze one matchedV2pair with additiveGaussian attention bias at learned reference centers (sigma0.08), identical parameter count/data/seed/order/1000steps/optimizer. No GT/proposals enter attention. G0/G2 GPU7/1, alongsideV1GPU4/6, peak4physicalGPUs.20GiB combined feature cap, global24GPU-hour budget. Real GPUV2smoke passed finite loss/allgrads/frozen backbone/exactrestore. No external head metrics have been observed; no identity or backbone training. KeepV1negative evidence.
+
+## 2026-10-27 all four bounded readouts completed1,000 updates
+
+All models trained on the same4,000-image stream /2,400 unique TRAIN images; head initializationSHA194aa2... identical. Global-query best macro internal-DEVAP50: G0=1.4463% (step750), G2=1.1576% (step1000). Spatial-prior best: G0=8.2262%, G2=8.8295% (bothstep1000). These480 DEV frames are G2-TRAIN-scope and do not establish independent performance. Best/last real checkpoints and hashes preserved; complete8,370-frame DEV and1,607-frame fixed cached comparison still running. No G2/identity optimizer update. No hidden omitted failed global pilot.

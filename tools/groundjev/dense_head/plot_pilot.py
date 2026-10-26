@@ -14,17 +14,20 @@ from matplotlib import pyplot as plt
 
 def main():
     fig,axes=plt.subplots(1,3,figsize=(14,3.8),layout='constrained')
-    for arm,color in [('g0','#377eb8'),('g2','#e66101')]:
-        rows=[json.loads(line) for line in (RUN/arm/'loss.jsonl').open()]
+    for variant,style in [('', '--'),('spatial_prior_v2','-')]:
+      for arm,color in [('g0','#377eb8'),('g2','#e66101')]:
+        directory=RUN/variant/arm
+        label=arm.upper()+(' global' if not variant else ' spatial prior')
+        rows=[json.loads(line) for line in (directory/'loss.jsonl').open()]
         steps=np.array([r['step'] for r in rows]);loss=np.array([r['loss'] for r in rows])
         axes[0].plot(steps,loss,color=color,alpha=.15,lw=.6)
         smooth=np.convolve(loss,np.ones(30)/30,mode='valid')
-        axes[0].plot(steps[29:],smooth,color=color,label=arm.upper()+' (30-step mean)')
-        checks=[json.loads(p.read_text()) for p in sorted((RUN/arm).glob('dev_step*.json'))]
+        axes[0].plot(steps[29:],smooth,color=color,ls=style,label=label)
+        checks=[json.loads(p.read_text()) for p in sorted(directory.glob('dev_step*.json'))]
         for dataset,axis in [('sportsmot',axes[1]),('animaltrack',axes[2])]:
             axis.plot([r['step'] for r in checks],
                       [100*r['metrics_at_0.5'][dataset]['AP50'] for r in checks],
-                      '-o',color=color,label=arm.upper(),ms=4)
+                      marker='o',ls=style,color=color,label=label,ms=4)
     axes[0].set(title='Optimizer loss (not a performance claim)',ylabel='Hungarian detection loss')
     axes[1].set(title='SportsMOT internal DEV',ylabel='Class-agnostic AP50 (%)')
     axes[2].set(title='AnimalTrack internal DEV',ylabel='Class-agnostic AP50 (%)')

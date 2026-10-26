@@ -37,3 +37,14 @@ TAO retains malformed coordinate/label/separator output in raw per-chunk SQLite 
 4. Restart recovery/monitor launchers only after the explicit resume audit. Do not launch broad `--resume` concurrently with recover owners. This pivot does not perform any restoration.
 
 Models preserved: G2 final step18227 and merged bundle, original J1 step1200, Coupled step180, all Simple/JEV predictions and TrackEval/TETA outputs. Large assets stay on the server; Git carries this receipt and reproducible indices.
+
+## Remaining paused ranges
+
+|Dataset|Registered jobs|Complete detection jobs|Unfinished registered jobs|Preserved detector frames (incl partial)|
+|---|---:|---:|---:|---:|
+|animaltrack|26|9|17|2889|
+|refer_kitti_v2|1694|9|1685|1881|
+|sportsmot|45|9|36|2396|
+|tao_amodal|993|9|984|163|
+
+The five uncommitted automatic Markdown reports from the old worktree are also archived with SHA256 in `architecture_pivot_pause_20261026/original_worktree_reports/` and `uncommitted_reports_manifest.json`. The old source branch remains unchanged; these archived reports are not confused with the newer sealed metric summary.

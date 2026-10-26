@@ -1,0 +1,3216 @@
+{
+  "status": "FOUR_REAL_GPU_READOUTS_TRAINED_FULL_VIDEO_EVALUATION_RUNNING",
+  "training_complete": true,
+  "full_evaluation_complete": false,
+  "old_full_evaluation_status": "PAUSED_BY_USER_FOR_ARCHITECTURE_PIVOT",
+  "trials": {
+    "global/g0": {
+      "optimizer_steps": 1000,
+      "selected_best_DEV_step": 750,
+      "last_checkpoint": "/data3/user/LocateMOT-runs/G2_Spatial_DenseHead_20261026/g0/last.pt",
+      "last_SHA256": "d5e3b0a31bc22024b9648e17306ca98ae0164ed6a2f38a7111ae3dd2e985facc",
+      "best_checkpoint": "/data3/user/LocateMOT-runs/G2_Spatial_DenseHead_20261026/g0/best_dev.pt",
+      "best_SHA256": "91e98e29b949224d2cc3271a5a28377ef306aaea5abeab5ddf6839969098c8b3",
+      "backbone_model_SHA256": "3cf09355cde8cf4877cdc76e0a72301d572c1d6263b2831f8a03368285bb65e2",
+      "backbone_step": 0,
+      "launch_source_commit": "7829ff666f29340e2008b1210bd74133f4e6b6f0",
+      "initial_head_SHA256": "194aa2e2abf1f6b0342186ad07bffcd8444de2b671553d7cd7adc144593829af",
+      "unique_images_from_frozen_sampler": 2400,
+      "training_image_exposures": 4000,
+      "domain_exposures": {
+        "sportsmot": 2000,
+        "animaltrack": 2000
+      },
+      "GPU": "6",
+      "GPU_UUID": "GPU-883c8be3-25b0-3d19-6fa8-4c2e335e67d2",
+      "peak_allocated_MiB": 3010.65576171875,
+      "loss_first": 6.311703324317932,
+      "loss_last": 4.065634489059448,
+      "DEV_sampled_AP50_history": [
+        {
+          "step": 250,
+          "macro_AP50": 0.004710497539621194,
+          "datasets": {
+            "animaltrack": {
+              "frames": 240,
+              "videos": 10,
+              "GT": 5035,
+              "predictions": 0,
+              "threshold": 0.5,
+              "Recall50": 0.0,
+              "Recall75": 0.0,
+              "one_to_one_Recall50": 0.0,
+              "one_to_one_Recall75": 0.0,
+              "Precision": 0.0,
+              "FP_per_frame": 0.0,
+              "FP": 0,
+              "FN": 5035,
+              "duplicates": 0,
+              "mean_best_IoU": 0.0,
+              "groups": {
+                "dense_ge20": {
+                  "GT": 3487,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "chicken": {
+                  "GT": 567,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "large": {
+                  "GT": 4496,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "non_dense": {
+                  "GT": 1548,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "deer": {
+                  "GT": 1165,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "medium": {
+                  "GT": 539,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "dolphin": {
+                  "GT": 656,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "duck": {
+                  "GT": 509,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "goose": {
+                  "GT": 227,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "horse": {
+                  "GT": 413,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "penguin": {
+                  "GT": 279,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "pig": {
+                  "GT": 519,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "rabbit": {
+                  "GT": 440,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "zebra": {
+                  "GT": 260,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                }
+              },
+              "F1": 0.0,
+              "AP50": 0.008512970632539987,
+              "AP75": 1.4595742358494277e-05,
+              "mAP": 0.0015911531715991107,
+              "AP_protocol": "class-agnostic 101-point, all queries; not official COCO"
+            },
+            "sportsmot": {
+              "frames": 240,
+              "videos": 10,
+              "GT": 2962,
+              "predictions": 0,
+              "threshold": 0.5,
+              "Recall50": 0.0,
+              "Recall75": 0.0,
+              "one_to_one_Recall50": 0.0,
+              "one_to_one_Recall75": 0.0,
+              "Precision": 0.0,
+              "FP_per_frame": 0.0,
+              "FP": 0,
+              "FN": 2962,
+              "duplicates": 0,
+              "mean_best_IoU": 0.0,
+              "groups": {
+                "medium": {
+                  "GT": 2805,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "non_dense": {
+                  "GT": 2922,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "person": {
+                  "GT": 2962,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "large": {
+                  "GT": 153,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "small": {
+                  "GT": 4,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "dense_ge20": {
+                  "GT": 40,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                }
+              },
+              "F1": 0.0,
+              "AP50": 0.0009080244467024016,
+              "AP75": 1.5915431761790552e-06,
+              "mAP": 0.0001518667268944385,
+              "AP_protocol": "class-agnostic 101-point, all queries; not official COCO"
+            }
+          }
+        },
+        {
+          "step": 500,
+          "macro_AP50": 0.008381218400476318,
+          "datasets": {
+            "animaltrack": {
+              "frames": 240,
+              "videos": 10,
+              "GT": 5035,
+              "predictions": 0,
+              "threshold": 0.5,
+              "Recall50": 0.0,
+              "Recall75": 0.0,
+              "one_to_one_Recall50": 0.0,
+              "one_to_one_Recall75": 0.0,
+              "Precision": 0.0,
+              "FP_per_frame": 0.0,
+              "FP": 0,
+              "FN": 5035,
+              "duplicates": 0,
+              "mean_best_IoU": 0.0,
+              "groups": {
+                "dense_ge20": {
+                  "GT": 3487,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "chicken": {
+                  "GT": 567,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "large": {
+                  "GT": 4496,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "non_dense": {
+                  "GT": 1548,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "deer": {
+                  "GT": 1165,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "medium": {
+                  "GT": 539,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "dolphin": {
+                  "GT": 656,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "duck": {
+                  "GT": 509,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "goose": {
+                  "GT": 227,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "horse": {
+                  "GT": 413,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "penguin": {
+                  "GT": 279,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "pig": {
+                  "GT": 519,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "rabbit": {
+                  "GT": 440,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "zebra": {
+                  "GT": 260,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                }
+              },
+              "F1": 0.0,
+              "AP50": 0.010795031561195694,
+              "AP75": 7.727072894181214e-05,
+              "mAP": 0.0018354829117110509,
+              "AP_protocol": "class-agnostic 101-point, all queries; not official COCO"
+            },
+            "sportsmot": {
+              "frames": 240,
+              "videos": 10,
+              "GT": 2962,
+              "predictions": 0,
+              "threshold": 0.5,
+              "Recall50": 0.0,
+              "Recall75": 0.0,
+              "one_to_one_Recall50": 0.0,
+              "one_to_one_Recall75": 0.0,
+              "Precision": 0.0,
+              "FP_per_frame": 0.0,
+              "FP": 0,
+              "FN": 2962,
+              "duplicates": 0,
+              "mean_best_IoU": 0.0,
+              "groups": {
+                "medium": {
+                  "GT": 2805,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "non_dense": {
+                  "GT": 2922,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "person": {
+                  "GT": 2962,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "large": {
+                  "GT": 153,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "small": {
+                  "GT": 4,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "dense_ge20": {
+                  "GT": 40,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                }
+              },
+              "F1": 0.0,
+              "AP50": 0.005967405239756944,
+              "AP75": 0.00017680339462517678,
+              "mAP": 0.001080897049899394,
+              "AP_protocol": "class-agnostic 101-point, all queries; not official COCO"
+            }
+          }
+        },
+        {
+          "step": 750,
+          "macro_AP50": 0.014463438541652114,
+          "datasets": {
+            "animaltrack": {
+              "frames": 240,
+              "videos": 10,
+              "GT": 5035,
+              "predictions": 0,
+              "threshold": 0.5,
+              "Recall50": 0.0,
+              "Recall75": 0.0,
+              "one_to_one_Recall50": 0.0,
+              "one_to_one_Recall75": 0.0,
+              "Precision": 0.0,
+              "FP_per_frame": 0.0,
+              "FP": 0,
+              "FN": 5035,
+              "duplicates": 0,
+              "mean_best_IoU": 0.0,
+              "groups": {
+                "dense_ge20": {
+                  "GT": 3487,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "chicken": {
+                  "GT": 567,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "large": {
+                  "GT": 4496,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "non_dense": {
+                  "GT": 1548,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "deer": {
+                  "GT": 1165,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "medium": {
+                  "GT": 539,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "dolphin": {
+                  "GT": 656,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "duck": {
+                  "GT": 509,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "goose": {
+                  "GT": 227,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "horse": {
+                  "GT": 413,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "penguin": {
+                  "GT": 279,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "pig": {
+                  "GT": 519,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "rabbit": {
+                  "GT": 440,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "zebra": {
+                  "GT": 260,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                }
+              },
+              "F1": 0.0,
+              "AP50": 0.011602601884342168,
+              "AP75": 8.462384700008463e-05,
+              "mAP": 0.0019066553226822509,
+              "AP_protocol": "class-agnostic 101-point, all queries; not official COCO"
+            },
+            "sportsmot": {
+              "frames": 240,
+              "videos": 10,
+              "GT": 2962,
+              "predictions": 0,
+              "threshold": 0.5,
+              "Recall50": 0.0,
+              "Recall75": 0.0,
+              "one_to_one_Recall50": 0.0,
+              "one_to_one_Recall75": 0.0,
+              "Precision": 0.0,
+              "FP_per_frame": 0.0,
+              "FP": 0,
+              "FN": 2962,
+              "duplicates": 0,
+              "mean_best_IoU": 0.0,
+              "groups": {
+                "medium": {
+                  "GT": 2805,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "non_dense": {
+                  "GT": 2922,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "person": {
+                  "GT": 2962,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "large": {
+                  "GT": 153,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "small": {
+                  "GT": 4,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "dense_ge20": {
+                  "GT": 40,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                }
+              },
+              "F1": 0.0,
+              "AP50": 0.01732427519896206,
+              "AP75": 0.00025099835643686234,
+              "mAP": 0.003545744619820968,
+              "AP_protocol": "class-agnostic 101-point, all queries; not official COCO"
+            }
+          }
+        },
+        {
+          "step": 1000,
+          "macro_AP50": 0.011203950061681244,
+          "datasets": {
+            "animaltrack": {
+              "frames": 240,
+              "videos": 10,
+              "GT": 5035,
+              "predictions": 0,
+              "threshold": 0.5,
+              "Recall50": 0.0,
+              "Recall75": 0.0,
+              "one_to_one_Recall50": 0.0,
+              "one_to_one_Recall75": 0.0,
+              "Precision": 0.0,
+              "FP_per_frame": 0.0,
+              "FP": 0,
+              "FN": 5035,
+              "duplicates": 0,
+              "mean_best_IoU": 0.0,
+              "groups": {
+                "dense_ge20": {
+                  "GT": 3487,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "chicken": {
+                  "GT": 567,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "large": {
+                  "GT": 4496,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "non_dense": {
+                  "GT": 1548,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "deer": {
+                  "GT": 1165,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "medium": {
+                  "GT": 539,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "dolphin": {
+                  "GT": 656,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "duck": {
+                  "GT": 509,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "goose": {
+                  "GT": 227,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "horse": {
+                  "GT": 413,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "penguin": {
+                  "GT": 279,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "pig": {
+                  "GT": 519,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "rabbit": {
+                  "GT": 440,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "zebra": {
+                  "GT": 260,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                }
+              },
+              "F1": 0.0,
+              "AP50": 0.015741584041750502,
+              "AP75": 9.005801179517459e-05,
+              "mAP": 0.0026839694052078343,
+              "AP_protocol": "class-agnostic 101-point, all queries; not official COCO"
+            },
+            "sportsmot": {
+              "frames": 240,
+              "videos": 10,
+              "GT": 2962,
+              "predictions": 0,
+              "threshold": 0.5,
+              "Recall50": 0.0,
+              "Recall75": 0.0,
+              "one_to_one_Recall50": 0.0,
+              "one_to_one_Recall75": 0.0,
+              "Precision": 0.0,
+              "FP_per_frame": 0.0,
+              "FP": 0,
+              "FN": 2962,
+              "duplicates": 0,
+              "mean_best_IoU": 0.0,
+              "groups": {
+                "medium": {
+                  "GT": 2805,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "non_dense": {
+                  "GT": 2922,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "person": {
+                  "GT": 2962,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "large": {
+                  "GT": 153,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "small": {
+                  "GT": 4,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "dense_ge20": {
+                  "GT": 40,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                }
+              },
+              "F1": 0.0,
+              "AP50": 0.006666316081611985,
+              "AP75": 3.4378437843784377e-05,
+              "mAP": 0.0012026041486269724,
+              "AP_protocol": "class-agnostic 101-point, all queries; not official COCO"
+            }
+          }
+        }
+      ],
+      "full_video_metrics_pending": true
+    },
+    "global/g2": {
+      "optimizer_steps": 1000,
+      "selected_best_DEV_step": 1000,
+      "last_checkpoint": "/data3/user/LocateMOT-runs/G2_Spatial_DenseHead_20261026/g2/last.pt",
+      "last_SHA256": "b028f06aa1ccaa2525c707eaf8d796bad00c874463a37f38c904adbb7df89926",
+      "best_checkpoint": "/data3/user/LocateMOT-runs/G2_Spatial_DenseHead_20261026/g2/best_dev.pt",
+      "best_SHA256": "0133e58b88032e28d385a0cf766481a04e56cb7a442c7782e1f892e45a8e2d0f",
+      "backbone_model_SHA256": "7c4a81349e333a304e32f42cf1999db289802d8c31eba415b85827038d14801f",
+      "backbone_step": 18227,
+      "launch_source_commit": "7829ff666f29340e2008b1210bd74133f4e6b6f0",
+      "initial_head_SHA256": "194aa2e2abf1f6b0342186ad07bffcd8444de2b671553d7cd7adc144593829af",
+      "unique_images_from_frozen_sampler": 2400,
+      "training_image_exposures": 4000,
+      "domain_exposures": {
+        "sportsmot": 2000,
+        "animaltrack": 2000
+      },
+      "GPU": "4",
+      "GPU_UUID": "GPU-44f62835-4095-23ec-d3dd-5af16a00705c",
+      "peak_allocated_MiB": 3010.65576171875,
+      "loss_first": 6.314680814743042,
+      "loss_last": 4.026003897190094,
+      "DEV_sampled_AP50_history": [
+        {
+          "step": 250,
+          "macro_AP50": 0.002387188707775154,
+          "datasets": {
+            "animaltrack": {
+              "frames": 240,
+              "videos": 10,
+              "GT": 5035,
+              "predictions": 0,
+              "threshold": 0.5,
+              "Recall50": 0.0,
+              "Recall75": 0.0,
+              "one_to_one_Recall50": 0.0,
+              "one_to_one_Recall75": 0.0,
+              "Precision": 0.0,
+              "FP_per_frame": 0.0,
+              "FP": 0,
+              "FN": 5035,
+              "duplicates": 0,
+              "mean_best_IoU": 0.0,
+              "groups": {
+                "chicken": {
+                  "GT": 567,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "large": {
+                  "GT": 4496,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "dense_ge20": {
+                  "GT": 3487,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "non_dense": {
+                  "GT": 1548,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "deer": {
+                  "GT": 1165,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "medium": {
+                  "GT": 539,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "dolphin": {
+                  "GT": 656,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "duck": {
+                  "GT": 509,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "goose": {
+                  "GT": 227,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "horse": {
+                  "GT": 413,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "penguin": {
+                  "GT": 279,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "pig": {
+                  "GT": 519,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "rabbit": {
+                  "GT": 440,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "zebra": {
+                  "GT": 260,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                }
+              },
+              "F1": 0.0,
+              "AP50": 0.004327476693794227,
+              "AP75": 5.861794789450612e-06,
+              "mAP": 0.0006609632668210306,
+              "AP_protocol": "class-agnostic 101-point, all queries; not official COCO"
+            },
+            "sportsmot": {
+              "frames": 240,
+              "videos": 10,
+              "GT": 2962,
+              "predictions": 0,
+              "threshold": 0.5,
+              "Recall50": 0.0,
+              "Recall75": 0.0,
+              "one_to_one_Recall50": 0.0,
+              "one_to_one_Recall75": 0.0,
+              "Precision": 0.0,
+              "FP_per_frame": 0.0,
+              "FP": 0,
+              "FN": 2962,
+              "duplicates": 0,
+              "mean_best_IoU": 0.0,
+              "groups": {
+                "medium": {
+                  "GT": 2805,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "non_dense": {
+                  "GT": 2922,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "person": {
+                  "GT": 2962,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "large": {
+                  "GT": 153,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "small": {
+                  "GT": 4,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "dense_ge20": {
+                  "GT": 40,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                }
+              },
+              "F1": 0.0,
+              "AP50": 0.00044690072175608087,
+              "AP75": 1.865998887864663e-06,
+              "mAP": 7.281739137496003e-05,
+              "AP_protocol": "class-agnostic 101-point, all queries; not official COCO"
+            }
+          }
+        },
+        {
+          "step": 500,
+          "macro_AP50": 0.007975818682177506,
+          "datasets": {
+            "animaltrack": {
+              "frames": 240,
+              "videos": 10,
+              "GT": 5035,
+              "predictions": 0,
+              "threshold": 0.5,
+              "Recall50": 0.0,
+              "Recall75": 0.0,
+              "one_to_one_Recall50": 0.0,
+              "one_to_one_Recall75": 0.0,
+              "Precision": 0.0,
+              "FP_per_frame": 0.0,
+              "FP": 0,
+              "FN": 5035,
+              "duplicates": 0,
+              "mean_best_IoU": 0.0,
+              "groups": {
+                "chicken": {
+                  "GT": 567,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "large": {
+                  "GT": 4496,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "dense_ge20": {
+                  "GT": 3487,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "non_dense": {
+                  "GT": 1548,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "deer": {
+                  "GT": 1165,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "medium": {
+                  "GT": 539,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "dolphin": {
+                  "GT": 656,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "duck": {
+                  "GT": 509,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "goose": {
+                  "GT": 227,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "horse": {
+                  "GT": 413,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "penguin": {
+                  "GT": 279,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "pig": {
+                  "GT": 519,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "rabbit": {
+                  "GT": 440,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "zebra": {
+                  "GT": 260,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                }
+              },
+              "F1": 0.0,
+              "AP50": 0.01135064901654131,
+              "AP75": 1.8369183857161226e-05,
+              "mAP": 0.001848893782491238,
+              "AP_protocol": "class-agnostic 101-point, all queries; not official COCO"
+            },
+            "sportsmot": {
+              "frames": 240,
+              "videos": 10,
+              "GT": 2962,
+              "predictions": 0,
+              "threshold": 0.5,
+              "Recall50": 0.0,
+              "Recall75": 0.0,
+              "one_to_one_Recall50": 0.0,
+              "one_to_one_Recall75": 0.0,
+              "Precision": 0.0,
+              "FP_per_frame": 0.0,
+              "FP": 0,
+              "FN": 2962,
+              "duplicates": 0,
+              "mean_best_IoU": 0.0,
+              "groups": {
+                "medium": {
+                  "GT": 2805,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "non_dense": {
+                  "GT": 2922,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "person": {
+                  "GT": 2962,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "large": {
+                  "GT": 153,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "small": {
+                  "GT": 4,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "dense_ge20": {
+                  "GT": 40,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                }
+              },
+              "F1": 0.0,
+              "AP50": 0.004600988347813702,
+              "AP75": 4.091318222731364e-05,
+              "mAP": 0.000835294368452086,
+              "AP_protocol": "class-agnostic 101-point, all queries; not official COCO"
+            }
+          }
+        },
+        {
+          "step": 750,
+          "macro_AP50": 0.008189749304782924,
+          "datasets": {
+            "animaltrack": {
+              "frames": 240,
+              "videos": 10,
+              "GT": 5035,
+              "predictions": 0,
+              "threshold": 0.5,
+              "Recall50": 0.0,
+              "Recall75": 0.0,
+              "one_to_one_Recall50": 0.0,
+              "one_to_one_Recall75": 0.0,
+              "Precision": 0.0,
+              "FP_per_frame": 0.0,
+              "FP": 0,
+              "FN": 5035,
+              "duplicates": 0,
+              "mean_best_IoU": 0.0,
+              "groups": {
+                "chicken": {
+                  "GT": 567,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "large": {
+                  "GT": 4496,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "dense_ge20": {
+                  "GT": 3487,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "non_dense": {
+                  "GT": 1548,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "deer": {
+                  "GT": 1165,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "medium": {
+                  "GT": 539,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "dolphin": {
+                  "GT": 656,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "duck": {
+                  "GT": 509,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "goose": {
+                  "GT": 227,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "horse": {
+                  "GT": 413,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "penguin": {
+                  "GT": 279,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "pig": {
+                  "GT": 519,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "rabbit": {
+                  "GT": 440,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "zebra": {
+                  "GT": 260,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                }
+              },
+              "F1": 0.0,
+              "AP50": 0.010668949625999293,
+              "AP75": 5.8200940577740624e-05,
+              "mAP": 0.0018283560533860737,
+              "AP_protocol": "class-agnostic 101-point, all queries; not official COCO"
+            },
+            "sportsmot": {
+              "frames": 240,
+              "videos": 10,
+              "GT": 2962,
+              "predictions": 0,
+              "threshold": 0.5,
+              "Recall50": 0.0,
+              "Recall75": 0.0,
+              "one_to_one_Recall50": 0.0,
+              "one_to_one_Recall75": 0.0,
+              "Precision": 0.0,
+              "FP_per_frame": 0.0,
+              "FP": 0,
+              "FN": 2962,
+              "duplicates": 0,
+              "mean_best_IoU": 0.0,
+              "groups": {
+                "medium": {
+                  "GT": 2805,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "non_dense": {
+                  "GT": 2922,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "person": {
+                  "GT": 2962,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "large": {
+                  "GT": 153,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "small": {
+                  "GT": 4,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "dense_ge20": {
+                  "GT": 40,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                }
+              },
+              "F1": 0.0,
+              "AP50": 0.0057105489835665565,
+              "AP75": 8.21658929378415e-05,
+              "mAP": 0.0010696332220931294,
+              "AP_protocol": "class-agnostic 101-point, all queries; not official COCO"
+            }
+          }
+        },
+        {
+          "step": 1000,
+          "macro_AP50": 0.011576387303681143,
+          "datasets": {
+            "animaltrack": {
+              "frames": 240,
+              "videos": 10,
+              "GT": 5035,
+              "predictions": 0,
+              "threshold": 0.5,
+              "Recall50": 0.0,
+              "Recall75": 0.0,
+              "one_to_one_Recall50": 0.0,
+              "one_to_one_Recall75": 0.0,
+              "Precision": 0.0,
+              "FP_per_frame": 0.0,
+              "FP": 0,
+              "FN": 5035,
+              "duplicates": 0,
+              "mean_best_IoU": 0.0,
+              "groups": {
+                "chicken": {
+                  "GT": 567,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "large": {
+                  "GT": 4496,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "dense_ge20": {
+                  "GT": 3487,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "non_dense": {
+                  "GT": 1548,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "deer": {
+                  "GT": 1165,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "medium": {
+                  "GT": 539,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "dolphin": {
+                  "GT": 656,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "duck": {
+                  "GT": 509,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "goose": {
+                  "GT": 227,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "horse": {
+                  "GT": 413,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "penguin": {
+                  "GT": 279,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "pig": {
+                  "GT": 519,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "rabbit": {
+                  "GT": 440,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "zebra": {
+                  "GT": 260,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                }
+              },
+              "F1": 0.0,
+              "AP50": 0.013794238195095268,
+              "AP75": 6.380672298314437e-05,
+              "mAP": 0.002263700363044655,
+              "AP_protocol": "class-agnostic 101-point, all queries; not official COCO"
+            },
+            "sportsmot": {
+              "frames": 240,
+              "videos": 10,
+              "GT": 2962,
+              "predictions": 0,
+              "threshold": 0.5,
+              "Recall50": 0.0,
+              "Recall75": 0.0,
+              "one_to_one_Recall50": 0.0,
+              "one_to_one_Recall75": 0.0,
+              "Precision": 0.0,
+              "FP_per_frame": 0.0,
+              "FP": 0,
+              "FN": 2962,
+              "duplicates": 0,
+              "mean_best_IoU": 0.0,
+              "groups": {
+                "medium": {
+                  "GT": 2805,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "non_dense": {
+                  "GT": 2922,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "person": {
+                  "GT": 2962,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "large": {
+                  "GT": 153,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "small": {
+                  "GT": 4,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "dense_ge20": {
+                  "GT": 40,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                }
+              },
+              "F1": 0.0,
+              "AP50": 0.009358536412267016,
+              "AP75": 0.00015253144258016346,
+              "mAP": 0.0018329704192042856,
+              "AP_protocol": "class-agnostic 101-point, all queries; not official COCO"
+            }
+          }
+        }
+      ],
+      "full_video_metrics_pending": true
+    },
+    "spatial_prior_v2/g0": {
+      "optimizer_steps": 1000,
+      "selected_best_DEV_step": 1000,
+      "last_checkpoint": "/data3/user/LocateMOT-runs/G2_Spatial_DenseHead_20261026/spatial_prior_v2/g0/last.pt",
+      "last_SHA256": "03adf283e38f5e1904056b499340472f2c8570c40036384b8d3673437f61cf94",
+      "best_checkpoint": "/data3/user/LocateMOT-runs/G2_Spatial_DenseHead_20261026/spatial_prior_v2/g0/best_dev.pt",
+      "best_SHA256": "b7693376e46102a156b914781f8dabad42f617e4f5cb8289982130763fb2a832",
+      "backbone_model_SHA256": "3cf09355cde8cf4877cdc76e0a72301d572c1d6263b2831f8a03368285bb65e2",
+      "backbone_step": 0,
+      "launch_source_commit": "5254d8bc8b6b74d160d603f5321defd9ef86bf2e",
+      "initial_head_SHA256": "194aa2e2abf1f6b0342186ad07bffcd8444de2b671553d7cd7adc144593829af",
+      "unique_images_from_frozen_sampler": 2400,
+      "training_image_exposures": 4000,
+      "domain_exposures": {
+        "sportsmot": 2000,
+        "animaltrack": 2000
+      },
+      "GPU": "7",
+      "GPU_UUID": "GPU-0322c0e7-ffbf-e068-5bdd-587b8216a9d9",
+      "peak_allocated_MiB": 3010.65576171875,
+      "loss_first": 6.338684320449829,
+      "loss_last": 3.369775354862213,
+      "DEV_sampled_AP50_history": [
+        {
+          "step": 250,
+          "macro_AP50": 0.015587911578666932,
+          "datasets": {
+            "animaltrack": {
+              "frames": 240,
+              "videos": 10,
+              "GT": 5035,
+              "predictions": 332,
+              "threshold": 0.5,
+              "Recall50": 0.0031777557100297915,
+              "Recall75": 0.0,
+              "one_to_one_Recall50": 0.0029791459781529296,
+              "one_to_one_Recall75": 0.0,
+              "Precision": 0.045180722891566265,
+              "FP_per_frame": 1.3208333333333333,
+              "FP": 317,
+              "FN": 5020,
+              "duplicates": 0,
+              "mean_best_IoU": 0.03183146765961293,
+              "groups": {
+                "chicken": {
+                  "GT": 567,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "dense_ge20": {
+                  "GT": 3487,
+                  "covered50": 11,
+                  "covered75": 0,
+                  "Recall50": 0.0031545741324921135,
+                  "Recall75": 0.0
+                },
+                "large": {
+                  "GT": 4496,
+                  "covered50": 16,
+                  "covered75": 0,
+                  "Recall50": 0.0035587188612099642,
+                  "Recall75": 0.0
+                },
+                "non_dense": {
+                  "GT": 1548,
+                  "covered50": 5,
+                  "covered75": 0,
+                  "Recall50": 0.003229974160206718,
+                  "Recall75": 0.0
+                },
+                "deer": {
+                  "GT": 1165,
+                  "covered50": 9,
+                  "covered75": 0,
+                  "Recall50": 0.007725321888412017,
+                  "Recall75": 0.0
+                },
+                "medium": {
+                  "GT": 539,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "dolphin": {
+                  "GT": 656,
+                  "covered50": 2,
+                  "covered75": 0,
+                  "Recall50": 0.003048780487804878,
+                  "Recall75": 0.0
+                },
+                "duck": {
+                  "GT": 509,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "goose": {
+                  "GT": 227,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "horse": {
+                  "GT": 413,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "penguin": {
+                  "GT": 279,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "pig": {
+                  "GT": 519,
+                  "covered50": 2,
+                  "covered75": 0,
+                  "Recall50": 0.0038535645472061657,
+                  "Recall75": 0.0
+                },
+                "rabbit": {
+                  "GT": 440,
+                  "covered50": 3,
+                  "covered75": 0,
+                  "Recall50": 0.006818181818181818,
+                  "Recall75": 0.0
+                },
+                "zebra": {
+                  "GT": 260,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                }
+              },
+              "F1": 0.005589714924538849,
+              "AP50": 0.02594917238865911,
+              "AP75": 0.00013015539305098818,
+              "mAP": 0.0044644981722782254,
+              "AP_protocol": "class-agnostic 101-point, all queries; not official COCO"
+            },
+            "sportsmot": {
+              "frames": 240,
+              "videos": 10,
+              "GT": 2962,
+              "predictions": 0,
+              "threshold": 0.5,
+              "Recall50": 0.0,
+              "Recall75": 0.0,
+              "one_to_one_Recall50": 0.0,
+              "one_to_one_Recall75": 0.0,
+              "Precision": 0.0,
+              "FP_per_frame": 0.0,
+              "FP": 0,
+              "FN": 2962,
+              "duplicates": 0,
+              "mean_best_IoU": 0.0,
+              "groups": {
+                "person": {
+                  "GT": 2962,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "non_dense": {
+                  "GT": 2922,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "medium": {
+                  "GT": 2805,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "large": {
+                  "GT": 153,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "small": {
+                  "GT": 4,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "dense_ge20": {
+                  "GT": 40,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                }
+              },
+              "F1": 0.0,
+              "AP50": 0.0052266507686747525,
+              "AP75": 0.00010880208900010882,
+              "mAP": 0.0009019993127066727,
+              "AP_protocol": "class-agnostic 101-point, all queries; not official COCO"
+            }
+          }
+        },
+        {
+          "step": 500,
+          "macro_AP50": 0.046315994672732716,
+          "datasets": {
+            "animaltrack": {
+              "frames": 240,
+              "videos": 10,
+              "GT": 5035,
+              "predictions": 28,
+              "threshold": 0.5,
+              "Recall50": 0.00019860973187686197,
+              "Recall75": 0.0,
+              "one_to_one_Recall50": 0.00019860973187686197,
+              "one_to_one_Recall75": 0.0,
+              "Precision": 0.03571428571428571,
+              "FP_per_frame": 0.1125,
+              "FP": 27,
+              "FN": 5034,
+              "duplicates": 0,
+              "mean_best_IoU": 0.0012689727895933704,
+              "groups": {
+                "chicken": {
+                  "GT": 567,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "dense_ge20": {
+                  "GT": 3487,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "large": {
+                  "GT": 4496,
+                  "covered50": 1,
+                  "covered75": 0,
+                  "Recall50": 0.00022241992882562276,
+                  "Recall75": 0.0
+                },
+                "non_dense": {
+                  "GT": 1548,
+                  "covered50": 1,
+                  "covered75": 0,
+                  "Recall50": 0.0006459948320413437,
+                  "Recall75": 0.0
+                },
+                "deer": {
+                  "GT": 1165,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "medium": {
+                  "GT": 539,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "dolphin": {
+                  "GT": 656,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "duck": {
+                  "GT": 509,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "goose": {
+                  "GT": 227,
+                  "covered50": 1,
+                  "covered75": 0,
+                  "Recall50": 0.004405286343612335,
+                  "Recall75": 0.0
+                },
+                "horse": {
+                  "GT": 413,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "penguin": {
+                  "GT": 279,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "pig": {
+                  "GT": 519,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "rabbit": {
+                  "GT": 440,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "zebra": {
+                  "GT": 260,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                }
+              },
+              "F1": 0.00039502271380604387,
+              "AP50": 0.05557854591703623,
+              "AP75": 0.00023481278600627495,
+              "mAP": 0.00993942672699846,
+              "AP_protocol": "class-agnostic 101-point, all queries; not official COCO"
+            },
+            "sportsmot": {
+              "frames": 240,
+              "videos": 10,
+              "GT": 2962,
+              "predictions": 0,
+              "threshold": 0.5,
+              "Recall50": 0.0,
+              "Recall75": 0.0,
+              "one_to_one_Recall50": 0.0,
+              "one_to_one_Recall75": 0.0,
+              "Precision": 0.0,
+              "FP_per_frame": 0.0,
+              "FP": 0,
+              "FN": 2962,
+              "duplicates": 0,
+              "mean_best_IoU": 0.0,
+              "groups": {
+                "person": {
+                  "GT": 2962,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "non_dense": {
+                  "GT": 2922,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "medium": {
+                  "GT": 2805,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "large": {
+                  "GT": 153,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "small": {
+                  "GT": 4,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "dense_ge20": {
+                  "GT": 40,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                }
+              },
+              "F1": 0.0,
+              "AP50": 0.0370534434284292,
+              "AP75": 0.0004720298363420912,
+              "mAP": 0.006712783359199415,
+              "AP_protocol": "class-agnostic 101-point, all queries; not official COCO"
+            }
+          }
+        },
+        {
+          "step": 750,
+          "macro_AP50": 0.07559661028324888,
+          "datasets": {
+            "animaltrack": {
+              "frames": 240,
+              "videos": 10,
+              "GT": 5035,
+              "predictions": 40,
+              "threshold": 0.5,
+              "Recall50": 0.00019860973187686197,
+              "Recall75": 0.0,
+              "one_to_one_Recall50": 0.00019860973187686197,
+              "one_to_one_Recall75": 0.0,
+              "Precision": 0.025,
+              "FP_per_frame": 0.1625,
+              "FP": 39,
+              "FN": 5034,
+              "duplicates": 0,
+              "mean_best_IoU": 0.0020070285100323147,
+              "groups": {
+                "chicken": {
+                  "GT": 567,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "dense_ge20": {
+                  "GT": 3487,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "large": {
+                  "GT": 4496,
+                  "covered50": 1,
+                  "covered75": 0,
+                  "Recall50": 0.00022241992882562276,
+                  "Recall75": 0.0
+                },
+                "non_dense": {
+                  "GT": 1548,
+                  "covered50": 1,
+                  "covered75": 0,
+                  "Recall50": 0.0006459948320413437,
+                  "Recall75": 0.0
+                },
+                "deer": {
+                  "GT": 1165,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "medium": {
+                  "GT": 539,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "dolphin": {
+                  "GT": 656,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "duck": {
+                  "GT": 509,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "goose": {
+                  "GT": 227,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "horse": {
+                  "GT": 413,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "penguin": {
+                  "GT": 279,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "pig": {
+                  "GT": 519,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "rabbit": {
+                  "GT": 440,
+                  "covered50": 1,
+                  "covered75": 0,
+                  "Recall50": 0.0022727272727272726,
+                  "Recall75": 0.0
+                },
+                "zebra": {
+                  "GT": 260,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                }
+              },
+              "F1": 0.0003940886699507389,
+              "AP50": 0.09602194818161232,
+              "AP75": 0.0013030179863874607,
+              "mAP": 0.020244691853916953,
+              "AP_protocol": "class-agnostic 101-point, all queries; not official COCO"
+            },
+            "sportsmot": {
+              "frames": 240,
+              "videos": 10,
+              "GT": 2962,
+              "predictions": 0,
+              "threshold": 0.5,
+              "Recall50": 0.0,
+              "Recall75": 0.0,
+              "one_to_one_Recall50": 0.0,
+              "one_to_one_Recall75": 0.0,
+              "Precision": 0.0,
+              "FP_per_frame": 0.0,
+              "FP": 0,
+              "FN": 2962,
+              "duplicates": 0,
+              "mean_best_IoU": 0.0,
+              "groups": {
+                "person": {
+                  "GT": 2962,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "non_dense": {
+                  "GT": 2922,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "medium": {
+                  "GT": 2805,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "large": {
+                  "GT": 153,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "small": {
+                  "GT": 4,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "dense_ge20": {
+                  "GT": 40,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                }
+              },
+              "F1": 0.0,
+              "AP50": 0.05517127238488545,
+              "AP75": 0.0006830439129666261,
+              "mAP": 0.01181124044425524,
+              "AP_protocol": "class-agnostic 101-point, all queries; not official COCO"
+            }
+          }
+        },
+        {
+          "step": 1000,
+          "macro_AP50": 0.08226238795889577,
+          "datasets": {
+            "animaltrack": {
+              "frames": 240,
+              "videos": 10,
+              "GT": 5035,
+              "predictions": 224,
+              "threshold": 0.5,
+              "Recall50": 0.011320754716981131,
+              "Recall75": 0.00019860973187686197,
+              "one_to_one_Recall50": 0.01012909632571996,
+              "one_to_one_Recall75": 0.00019860973187686197,
+              "Precision": 0.22767857142857142,
+              "FP_per_frame": 0.7208333333333333,
+              "FP": 173,
+              "FN": 4984,
+              "duplicates": 0,
+              "mean_best_IoU": 0.024914699522620987,
+              "groups": {
+                "chicken": {
+                  "GT": 567,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "dense_ge20": {
+                  "GT": 3487,
+                  "covered50": 54,
+                  "covered75": 1,
+                  "Recall50": 0.015486091195870376,
+                  "Recall75": 0.00028677946659019213
+                },
+                "large": {
+                  "GT": 4496,
+                  "covered50": 56,
+                  "covered75": 1,
+                  "Recall50": 0.012455516014234875,
+                  "Recall75": 0.00022241992882562276
+                },
+                "non_dense": {
+                  "GT": 1548,
+                  "covered50": 3,
+                  "covered75": 0,
+                  "Recall50": 0.001937984496124031,
+                  "Recall75": 0.0
+                },
+                "deer": {
+                  "GT": 1165,
+                  "covered50": 35,
+                  "covered75": 0,
+                  "Recall50": 0.030042918454935622,
+                  "Recall75": 0.0
+                },
+                "medium": {
+                  "GT": 539,
+                  "covered50": 1,
+                  "covered75": 0,
+                  "Recall50": 0.0018552875695732839,
+                  "Recall75": 0.0
+                },
+                "dolphin": {
+                  "GT": 656,
+                  "covered50": 4,
+                  "covered75": 0,
+                  "Recall50": 0.006097560975609756,
+                  "Recall75": 0.0
+                },
+                "duck": {
+                  "GT": 509,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "goose": {
+                  "GT": 227,
+                  "covered50": 1,
+                  "covered75": 0,
+                  "Recall50": 0.004405286343612335,
+                  "Recall75": 0.0
+                },
+                "horse": {
+                  "GT": 413,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "penguin": {
+                  "GT": 279,
+                  "covered50": 1,
+                  "covered75": 0,
+                  "Recall50": 0.0035842293906810036,
+                  "Recall75": 0.0
+                },
+                "pig": {
+                  "GT": 519,
+                  "covered50": 13,
+                  "covered75": 1,
+                  "Recall50": 0.025048169556840076,
+                  "Recall75": 0.0019267822736030828
+                },
+                "rabbit": {
+                  "GT": 440,
+                  "covered50": 3,
+                  "covered75": 0,
+                  "Recall50": 0.006818181818181818,
+                  "Recall75": 0.0
+                },
+                "zebra": {
+                  "GT": 260,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                }
+              },
+              "F1": 0.01939532230462065,
+              "AP50": 0.10473368536604921,
+              "AP75": 0.0019119829970159776,
+              "mAP": 0.022449481837224866,
+              "AP_protocol": "class-agnostic 101-point, all queries; not official COCO"
+            },
+            "sportsmot": {
+              "frames": 240,
+              "videos": 10,
+              "GT": 2962,
+              "predictions": 0,
+              "threshold": 0.5,
+              "Recall50": 0.0,
+              "Recall75": 0.0,
+              "one_to_one_Recall50": 0.0,
+              "one_to_one_Recall75": 0.0,
+              "Precision": 0.0,
+              "FP_per_frame": 0.0,
+              "FP": 0,
+              "FN": 2962,
+              "duplicates": 0,
+              "mean_best_IoU": 0.0,
+              "groups": {
+                "person": {
+                  "GT": 2962,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "non_dense": {
+                  "GT": 2922,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "medium": {
+                  "GT": 2805,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "large": {
+                  "GT": 153,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "small": {
+                  "GT": 4,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "dense_ge20": {
+                  "GT": 40,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                }
+              },
+              "F1": 0.0,
+              "AP50": 0.05979109055174233,
+              "AP75": 0.0010140704321050704,
+              "mAP": 0.012004087919101408,
+              "AP_protocol": "class-agnostic 101-point, all queries; not official COCO"
+            }
+          }
+        }
+      ],
+      "full_video_metrics_pending": true
+    },
+    "spatial_prior_v2/g2": {
+      "optimizer_steps": 1000,
+      "selected_best_DEV_step": 1000,
+      "last_checkpoint": "/data3/user/LocateMOT-runs/G2_Spatial_DenseHead_20261026/spatial_prior_v2/g2/last.pt",
+      "last_SHA256": "79c834e73ce4e930a7664884afdbaa85a66375ca5bb51f01f243ebbefb00d9af",
+      "best_checkpoint": "/data3/user/LocateMOT-runs/G2_Spatial_DenseHead_20261026/spatial_prior_v2/g2/best_dev.pt",
+      "best_SHA256": "c8ebe445a291e551662333cb826d5253bfafce338a96167069bde4db09854317",
+      "backbone_model_SHA256": "7c4a81349e333a304e32f42cf1999db289802d8c31eba415b85827038d14801f",
+      "backbone_step": 18227,
+      "launch_source_commit": "5254d8bc8b6b74d160d603f5321defd9ef86bf2e",
+      "initial_head_SHA256": "194aa2e2abf1f6b0342186ad07bffcd8444de2b671553d7cd7adc144593829af",
+      "unique_images_from_frozen_sampler": 2400,
+      "training_image_exposures": 4000,
+      "domain_exposures": {
+        "sportsmot": 2000,
+        "animaltrack": 2000
+      },
+      "GPU": "1",
+      "GPU_UUID": "GPU-f35654b3-bbf5-7303-cfcb-9bd5d3e16e69",
+      "peak_allocated_MiB": 3010.65576171875,
+      "loss_first": 6.3421982526779175,
+      "loss_last": 3.5410385131835938,
+      "DEV_sampled_AP50_history": [
+        {
+          "step": 250,
+          "macro_AP50": 0.020491314589325207,
+          "datasets": {
+            "animaltrack": {
+              "frames": 240,
+              "videos": 10,
+              "GT": 5035,
+              "predictions": 703,
+              "threshold": 0.5,
+              "Recall50": 0.010327706057596822,
+              "Recall75": 0.0007944389275074479,
+              "one_to_one_Recall50": 0.01012909632571996,
+              "one_to_one_Recall75": 0.0007944389275074479,
+              "Precision": 0.07254623044096728,
+              "FP_per_frame": 2.716666666666667,
+              "FP": 652,
+              "FN": 4984,
+              "duplicates": 1,
+              "mean_best_IoU": 0.05568505766863374,
+              "groups": {
+                "large": {
+                  "GT": 4496,
+                  "covered50": 52,
+                  "covered75": 4,
+                  "Recall50": 0.011565836298932384,
+                  "Recall75": 0.0008896797153024911
+                },
+                "dense_ge20": {
+                  "GT": 3487,
+                  "covered50": 36,
+                  "covered75": 2,
+                  "Recall50": 0.010324060797246917,
+                  "Recall75": 0.0005735589331803843
+                },
+                "chicken": {
+                  "GT": 567,
+                  "covered50": 9,
+                  "covered75": 1,
+                  "Recall50": 0.015873015873015872,
+                  "Recall75": 0.001763668430335097
+                },
+                "non_dense": {
+                  "GT": 1548,
+                  "covered50": 16,
+                  "covered75": 2,
+                  "Recall50": 0.0103359173126615,
+                  "Recall75": 0.0012919896640826874
+                },
+                "deer": {
+                  "GT": 1165,
+                  "covered50": 17,
+                  "covered75": 0,
+                  "Recall50": 0.014592274678111588,
+                  "Recall75": 0.0
+                },
+                "medium": {
+                  "GT": 539,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "dolphin": {
+                  "GT": 656,
+                  "covered50": 11,
+                  "covered75": 1,
+                  "Recall50": 0.01676829268292683,
+                  "Recall75": 0.001524390243902439
+                },
+                "duck": {
+                  "GT": 509,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "goose": {
+                  "GT": 227,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "horse": {
+                  "GT": 413,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "penguin": {
+                  "GT": 279,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "pig": {
+                  "GT": 519,
+                  "covered50": 3,
+                  "covered75": 0,
+                  "Recall50": 0.005780346820809248,
+                  "Recall75": 0.0
+                },
+                "rabbit": {
+                  "GT": 440,
+                  "covered50": 10,
+                  "covered75": 1,
+                  "Recall50": 0.022727272727272728,
+                  "Recall75": 0.0022727272727272726
+                },
+                "zebra": {
+                  "GT": 260,
+                  "covered50": 2,
+                  "covered75": 1,
+                  "Recall50": 0.007692307692307693,
+                  "Recall75": 0.0038461538461538464
+                }
+              },
+              "F1": 0.017776228651097944,
+              "AP50": 0.020747439851154882,
+              "AP75": 7.755344725073029e-05,
+              "mAP": 0.0030775591101378287,
+              "AP_protocol": "class-agnostic 101-point, all queries; not official COCO"
+            },
+            "sportsmot": {
+              "frames": 240,
+              "videos": 10,
+              "GT": 2962,
+              "predictions": 5,
+              "threshold": 0.5,
+              "Recall50": 0.00033760972316002703,
+              "Recall75": 0.00033760972316002703,
+              "one_to_one_Recall50": 0.00033760972316002703,
+              "one_to_one_Recall75": 0.00033760972316002703,
+              "Precision": 0.2,
+              "FP_per_frame": 0.016666666666666666,
+              "FP": 4,
+              "FN": 2961,
+              "duplicates": 0,
+              "mean_best_IoU": 0.0007432710931403433,
+              "groups": {
+                "medium": {
+                  "GT": 2805,
+                  "covered50": 1,
+                  "covered75": 1,
+                  "Recall50": 0.00035650623885918,
+                  "Recall75": 0.00035650623885918
+                },
+                "non_dense": {
+                  "GT": 2922,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "person": {
+                  "GT": 2962,
+                  "covered50": 1,
+                  "covered75": 1,
+                  "Recall50": 0.00033760972316002703,
+                  "Recall75": 0.00033760972316002703
+                },
+                "large": {
+                  "GT": 153,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "small": {
+                  "GT": 4,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "dense_ge20": {
+                  "GT": 40,
+                  "covered50": 1,
+                  "covered75": 1,
+                  "Recall50": 0.025,
+                  "Recall75": 0.025
+                }
+              },
+              "F1": 0.0006740815638692282,
+              "AP50": 0.02023518932749553,
+              "AP75": 0.0033003300330033,
+              "mAP": 0.0048336991800666295,
+              "AP_protocol": "class-agnostic 101-point, all queries; not official COCO"
+            }
+          }
+        },
+        {
+          "step": 500,
+          "macro_AP50": 0.060084424687205366,
+          "datasets": {
+            "animaltrack": {
+              "frames": 240,
+              "videos": 10,
+              "GT": 5035,
+              "predictions": 5,
+              "threshold": 0.5,
+              "Recall50": 0.0,
+              "Recall75": 0.0,
+              "one_to_one_Recall50": 0.0,
+              "one_to_one_Recall75": 0.0,
+              "Precision": 0.0,
+              "FP_per_frame": 0.020833333333333332,
+              "FP": 5,
+              "FN": 5035,
+              "duplicates": 0,
+              "mean_best_IoU": 0.00045301760425623213,
+              "groups": {
+                "large": {
+                  "GT": 4496,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "dense_ge20": {
+                  "GT": 3487,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "chicken": {
+                  "GT": 567,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "non_dense": {
+                  "GT": 1548,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "deer": {
+                  "GT": 1165,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "medium": {
+                  "GT": 539,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "dolphin": {
+                  "GT": 656,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "duck": {
+                  "GT": 509,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "goose": {
+                  "GT": 227,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "horse": {
+                  "GT": 413,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "penguin": {
+                  "GT": 279,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "pig": {
+                  "GT": 519,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "rabbit": {
+                  "GT": 440,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "zebra": {
+                  "GT": 260,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                }
+              },
+              "F1": 0.0,
+              "AP50": 0.08350374155999003,
+              "AP75": 0.0008380361885084613,
+              "mAP": 0.01671393394044264,
+              "AP_protocol": "class-agnostic 101-point, all queries; not official COCO"
+            },
+            "sportsmot": {
+              "frames": 240,
+              "videos": 10,
+              "GT": 2962,
+              "predictions": 0,
+              "threshold": 0.5,
+              "Recall50": 0.0,
+              "Recall75": 0.0,
+              "one_to_one_Recall50": 0.0,
+              "one_to_one_Recall75": 0.0,
+              "Precision": 0.0,
+              "FP_per_frame": 0.0,
+              "FP": 0,
+              "FN": 2962,
+              "duplicates": 0,
+              "mean_best_IoU": 0.0,
+              "groups": {
+                "medium": {
+                  "GT": 2805,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "non_dense": {
+                  "GT": 2922,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "person": {
+                  "GT": 2962,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "large": {
+                  "GT": 153,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "small": {
+                  "GT": 4,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "dense_ge20": {
+                  "GT": 40,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                }
+              },
+              "F1": 0.0,
+              "AP50": 0.0366651078144207,
+              "AP75": 0.0005144843758772697,
+              "mAP": 0.007020156497533273,
+              "AP_protocol": "class-agnostic 101-point, all queries; not official COCO"
+            }
+          }
+        },
+        {
+          "step": 750,
+          "macro_AP50": 0.06504865064376184,
+          "datasets": {
+            "animaltrack": {
+              "frames": 240,
+              "videos": 10,
+              "GT": 5035,
+              "predictions": 0,
+              "threshold": 0.5,
+              "Recall50": 0.0,
+              "Recall75": 0.0,
+              "one_to_one_Recall50": 0.0,
+              "one_to_one_Recall75": 0.0,
+              "Precision": 0.0,
+              "FP_per_frame": 0.0,
+              "FP": 0,
+              "FN": 5035,
+              "duplicates": 0,
+              "mean_best_IoU": 0.0,
+              "groups": {
+                "large": {
+                  "GT": 4496,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "dense_ge20": {
+                  "GT": 3487,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "chicken": {
+                  "GT": 567,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "non_dense": {
+                  "GT": 1548,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "deer": {
+                  "GT": 1165,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "medium": {
+                  "GT": 539,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "dolphin": {
+                  "GT": 656,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "duck": {
+                  "GT": 509,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "goose": {
+                  "GT": 227,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "horse": {
+                  "GT": 413,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "penguin": {
+                  "GT": 279,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "pig": {
+                  "GT": 519,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "rabbit": {
+                  "GT": 440,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "zebra": {
+                  "GT": 260,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                }
+              },
+              "F1": 0.0,
+              "AP50": 0.08679523225087908,
+              "AP75": 0.0008284328665472861,
+              "mAP": 0.01732659166230008,
+              "AP_protocol": "class-agnostic 101-point, all queries; not official COCO"
+            },
+            "sportsmot": {
+              "frames": 240,
+              "videos": 10,
+              "GT": 2962,
+              "predictions": 0,
+              "threshold": 0.5,
+              "Recall50": 0.0,
+              "Recall75": 0.0,
+              "one_to_one_Recall50": 0.0,
+              "one_to_one_Recall75": 0.0,
+              "Precision": 0.0,
+              "FP_per_frame": 0.0,
+              "FP": 0,
+              "FN": 2962,
+              "duplicates": 0,
+              "mean_best_IoU": 0.0,
+              "groups": {
+                "medium": {
+                  "GT": 2805,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "non_dense": {
+                  "GT": 2922,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "person": {
+                  "GT": 2962,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "large": {
+                  "GT": 153,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "small": {
+                  "GT": 4,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "dense_ge20": {
+                  "GT": 40,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                }
+              },
+              "F1": 0.0,
+              "AP50": 0.043302069036644575,
+              "AP75": 0.0003067370480688873,
+              "mAP": 0.008597980402394092,
+              "AP_protocol": "class-agnostic 101-point, all queries; not official COCO"
+            }
+          }
+        },
+        {
+          "step": 1000,
+          "macro_AP50": 0.08829545382237233,
+          "datasets": {
+            "animaltrack": {
+              "frames": 240,
+              "videos": 10,
+              "GT": 5035,
+              "predictions": 156,
+              "threshold": 0.5,
+              "Recall50": 0.007348560079443893,
+              "Recall75": 0.00019860973187686197,
+              "one_to_one_Recall50": 0.007149950347567031,
+              "one_to_one_Recall75": 0.00019860973187686197,
+              "Precision": 0.23076923076923078,
+              "FP_per_frame": 0.5,
+              "FP": 120,
+              "FN": 4999,
+              "duplicates": 0,
+              "mean_best_IoU": 0.023807890402093676,
+              "groups": {
+                "large": {
+                  "GT": 4496,
+                  "covered50": 35,
+                  "covered75": 1,
+                  "Recall50": 0.007784697508896797,
+                  "Recall75": 0.00022241992882562276
+                },
+                "dense_ge20": {
+                  "GT": 3487,
+                  "covered50": 33,
+                  "covered75": 0,
+                  "Recall50": 0.00946372239747634,
+                  "Recall75": 0.0
+                },
+                "chicken": {
+                  "GT": 567,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "non_dense": {
+                  "GT": 1548,
+                  "covered50": 4,
+                  "covered75": 1,
+                  "Recall50": 0.002583979328165375,
+                  "Recall75": 0.0006459948320413437
+                },
+                "deer": {
+                  "GT": 1165,
+                  "covered50": 25,
+                  "covered75": 0,
+                  "Recall50": 0.02145922746781116,
+                  "Recall75": 0.0
+                },
+                "medium": {
+                  "GT": 539,
+                  "covered50": 2,
+                  "covered75": 0,
+                  "Recall50": 0.0037105751391465678,
+                  "Recall75": 0.0
+                },
+                "dolphin": {
+                  "GT": 656,
+                  "covered50": 2,
+                  "covered75": 0,
+                  "Recall50": 0.003048780487804878,
+                  "Recall75": 0.0
+                },
+                "duck": {
+                  "GT": 509,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "goose": {
+                  "GT": 227,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "horse": {
+                  "GT": 413,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "penguin": {
+                  "GT": 279,
+                  "covered50": 2,
+                  "covered75": 0,
+                  "Recall50": 0.007168458781362007,
+                  "Recall75": 0.0
+                },
+                "pig": {
+                  "GT": 519,
+                  "covered50": 4,
+                  "covered75": 0,
+                  "Recall50": 0.007707129094412331,
+                  "Recall75": 0.0
+                },
+                "rabbit": {
+                  "GT": 440,
+                  "covered50": 3,
+                  "covered75": 1,
+                  "Recall50": 0.006818181818181818,
+                  "Recall75": 0.0022727272727272726
+                },
+                "zebra": {
+                  "GT": 260,
+                  "covered50": 1,
+                  "covered75": 0,
+                  "Recall50": 0.0038461538461538464,
+                  "Recall75": 0.0
+                }
+              },
+              "F1": 0.01387015989212098,
+              "AP50": 0.10605655849795886,
+              "AP75": 0.0016587533014911341,
+              "mAP": 0.022430515373482316,
+              "AP_protocol": "class-agnostic 101-point, all queries; not official COCO"
+            },
+            "sportsmot": {
+              "frames": 240,
+              "videos": 10,
+              "GT": 2962,
+              "predictions": 0,
+              "threshold": 0.5,
+              "Recall50": 0.0,
+              "Recall75": 0.0,
+              "one_to_one_Recall50": 0.0,
+              "one_to_one_Recall75": 0.0,
+              "Precision": 0.0,
+              "FP_per_frame": 0.0,
+              "FP": 0,
+              "FN": 2962,
+              "duplicates": 0,
+              "mean_best_IoU": 0.0,
+              "groups": {
+                "medium": {
+                  "GT": 2805,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "non_dense": {
+                  "GT": 2922,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "person": {
+                  "GT": 2962,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "large": {
+                  "GT": 153,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "small": {
+                  "GT": 4,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                },
+                "dense_ge20": {
+                  "GT": 40,
+                  "covered50": 0,
+                  "covered75": 0,
+                  "Recall50": 0.0,
+                  "Recall75": 0.0
+                }
+              },
+              "F1": 0.0,
+              "AP50": 0.0705343491467858,
+              "AP75": 0.0013373928371549185,
+              "mAP": 0.014511326076340494,
+              "AP_protocol": "class-agnostic 101-point, all queries; not official COCO"
+            }
+          }
+        }
+      ],
+      "full_video_metrics_pending": true
+    }
+  }
+}

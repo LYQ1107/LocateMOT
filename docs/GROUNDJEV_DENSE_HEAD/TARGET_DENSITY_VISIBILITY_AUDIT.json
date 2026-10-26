@@ -1,0 +1,59 @@
+{
+  "sportsmot": {
+    "full_legal_TRAIN_frames": 28574,
+    "target_density_quantiles": {
+      "0": 3.0,
+      "0.5": 10.0,
+      "0.95": 16.0,
+      "1": 21.0
+    },
+    "supplied_visibility_values": {
+      "visible_ge0.5": 312579
+    },
+    "categories_and_targets": {
+      "person": 312579
+    },
+    "distinct_image_sizes": [
+      [
+        1280,
+        720
+      ]
+    ],
+    "visibility_interpretation": "Animal public field is usually unknown; no fabricated occlusion grouping. Supplied Sports visibility may be constant."
+  },
+  "animaltrack": {
+    "full_legal_TRAIN_frames": 11543,
+    "target_density_quantiles": {
+      "0": 2.0,
+      "0.5": 15.0,
+      "0.95": 28.0,
+      "1": 50.0
+    },
+    "supplied_visibility_values": {
+      "unknown_negative": 185613
+    },
+    "categories_and_targets": {
+      "chicken": 17244,
+      "deer": 24037,
+      "dolphin": 14967,
+      "duck": 27439,
+      "goose": 13683,
+      "horse": 27304,
+      "penguin": 14047,
+      "pig": 18796,
+      "rabbit": 17547,
+      "zebra": 10549
+    },
+    "distinct_image_sizes": [
+      [
+        1920,
+        1080
+      ],
+      [
+        2560,
+        1440
+      ]
+    ],
+    "visibility_interpretation": "Animal public field is usually unknown; no fabricated occlusion grouping. Supplied Sports visibility may be constant."
+  }
+}
